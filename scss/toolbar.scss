@@ -1,0 +1,104 @@
+// original: components/core-toolbar/core-toolbar.css
+
+.toolbar {
+    display: block;
+    position: relative;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    height: 64px;
+    font-size: 1.3em;
+    background-color: #CFD8DC;
+
+    &.animate {
+        transition: height 0.18s ease-in;
+    }
+
+    &.medium-tall {
+      height: 128px;
+    }
+
+    &.tall {
+      height: 192px;
+    }
+
+    .narrow {
+        height: 56px;
+
+        .toolbar-tools {
+            height: 56px;
+            padding: 0;
+        }
+    }
+
+    .narrow.medium-tall {
+        height: 112px;
+    }
+
+    .narrow.tall {
+        height: 168px;
+    }
+
+    .middleBar {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+    }
+    &.tall .middleBar {
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+    }
+
+    .bottomBar {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+
+    .toolbar-tools {
+        /* make elements (e.g. buttons) respond to mouse/touch events */
+        > *:not([disabled]) {
+            pointer-events: auto;
+        }
+
+        /* elements spacing */
+        > * {
+            margin: 0 8px;
+        }
+
+        /* misc helpers */
+        > .fit {
+            position: absolute;
+            top: auto;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: auto;
+            margin: 0;
+        }
+
+        > .indent {
+            margin-left: 60px;
+        }
+    }
+
+    .header {
+        @extend .single-line;
+    }
+}
+
+.toolbar-tools {
+    position: relative;
+    height: 64px;
+    padding: 0 8px;
+    pointer-events: none;
+}
+
+// Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+// This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+// The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+// The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+// Code distributed by Google as part of the polymer project is also
+// subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+

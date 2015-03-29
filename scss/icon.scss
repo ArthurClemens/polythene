@@ -1,0 +1,19 @@
+.icon {
+    display: inline-block;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    //fill: currentcolor;
+    position: relative;
+    height: $iconSize;
+    width: $iconSize;
+
+    [fit] {
+        height: $iconSize;
+    }
+
+    i {
+        font-size: $iconSize;
+        line-height: $iconSize;
+        display: block;
+    }
+}
