@@ -16,9 +16,9 @@ module.exports = function(opts) {
     'use strict';
 
     var m = require('mithril');
-    var styler = require('../polythene/styler.js');
-    styler('icon-button', require('./icon-button.jss'));
-    var icon = require('../icon/icon.js');
+    var p = require('../polythene/polythene');
+    p.addStyle('icon-button', require('./icon-button.jss'));
+    var icon = require('../icon/icon');
 
     var container,
         inner,

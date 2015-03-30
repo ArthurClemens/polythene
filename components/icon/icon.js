@@ -2,8 +2,10 @@ module.exports = function (opts) {
     'use strict';
 
     var m = require('mithril');
-    var styler = require('../polythene/styler.js');
-    styler('icon', require('./icon.jss'));
+    // use webfont material-design-icon-font
+    require('../font-iconic/font-iconic');
+    var p = require('../polythene/polythene');
+    p.addStyle('icon', require('./icon.jss'));
 
     var controller,
         container,
@@ -16,6 +18,7 @@ module.exports = function (opts) {
         return m('div', {class: 'icon'}, inner);
     };
 
+    // function(opts, controller)
     inner = opts.inner || function(opts) {
         var iconClass = opts.iconClass || '';
         return m('i[fit]', {class: ['md', iconClass].join(' ')});

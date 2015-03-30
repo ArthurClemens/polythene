@@ -52,8 +52,8 @@ module.exports = function(opts) {
 
     var m = require('mithril');
 
-    var styler = require('../polythene/styler.js');
-    styler('header-panel', require('./header-panel.jss'));
+    var p = require('../polythene/polythene');
+    p.addStyle('header-panel', require('./header-panel.jss'));
 
     var container,
         inner,

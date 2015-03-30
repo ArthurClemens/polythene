@@ -20,8 +20,8 @@ module.exports = function(opts) {
 
     var m = require('mithril');
 
-    var styler = require('../polythene/styler.js');
-    styler('toolbar', require('./toolbar.jss'));
+    var p = require('../polythene/polythene');
+    p.addStyle('toolbar', require('./toolbar.jss'));
 
     var container,
         inner,
