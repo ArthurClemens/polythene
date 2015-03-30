@@ -1,108 +1,116 @@
-var m = require("mithril");
-var headerPanel = require("../../components/header-panel/header-panel.js");
-var toolbar = require("../../components/toolbar/toolbar.js");
-var iconButton = require("../../components/icon-button/icon-button.js");
-var icon = require("../../components/icon/icon.js");
+'use strict';
+require('../../components/font-roboto/font-roboto.js');
+var m = require('mithril');
+var headerPanel = require('../../components/header-panel/header-panel.js');
+var toolbar = require('../../components/toolbar/toolbar.js');
+var iconButton = require('../../components/icon-button/icon-button.js');
 
 (function() {
+    
     var template = [
         '<div class="content">',
         [
-            "Harun Omar and Master Hafiz",
-            "keep your dead beautiful ladies",
-            "Mine is a little lovelier",
-            "than any of your ladies were.",
-            "",
-            "In her perfectest array",
-            "my lady, moving in the day,",
-            "is a little stranger thing",
-            "than crisp Sheba with her king",
-            "in the morning wandering.",
-            ].join("<br />"),
-        '</div>'].join("");
+            'Harun Omar and Master Hafiz',
+            'keep your dead beautiful ladies',
+            'Mine is a little lovelier',
+            'than any of your ladies were.',
+            '',
+            'In her perfectest array',
+            'my lady, moving in the day,',
+            'is a little stranger thing',
+            'than crisp Sheba with her king',
+            'in the morning wandering.',
+            ].join('<br />'),
+        '</div>'].join('');
 
-    function createToolbar (label) {
-        return new toolbar({
-            mode: "tall",
+    var createToolbar = function(mode, label) {
+        return toolbar({
+            mode: mode,
             bottomBar: [
-                new iconButton({
-                    iconClass: "md-menu",
+                iconButton({
+                    iconClass: 'md-menu',
                     clickHandler: function(e) {
-                        console.log("menu clicked", e.target);
+                        console.log('menu clicked', e.target);
                     }
                 }).view(),
-                m("span[flex]", label),
-                new iconButton({
-                    iconClass: "md-refresh",
+                m('span[flex]', label),
+                iconButton({
+                    iconClass: 'md-refresh',
                     clickHandler: function(e) {
-                        console.log("refresh clicked", e.target);
+                        console.log('refresh clicked', e.target);
                     }
                 }).view(),
-                new iconButton({
-                    iconClass: "md-add",
+                iconButton({
+                    iconClass: 'md-add',
                     clickHandler: function(e) {
-                        console.log("add clicked", e.target);
+                        console.log('add clicked', e.target);
                     }
                 }).view()
             ]
         });
     };
 
-    function createContainer(className) {
-        var div = document.createElement("div");
+    var createContainer = function(className) {
+        var div = document.createElement('div');
         div.className = className;
         document.body.appendChild(div);
         return div;
     };
 
-    m.module(createContainer("flex-container"), headerPanel({
-        mode: "standard",
+    m.module(createContainer('flex-container'), headerPanel({
+        mode: 'standard',
         container: function(inner) {
-            return m("div[flex]", {class: "header-panel"}, inner);
+            return m('div[flex]', {class: 'header-panel'}, inner);
         },
-        header: m("div", {class: "header"}, "Flex"),
+        header: m('div', {class: 'header'}, 'Flex'),
         body: m.trust(template)
     }));
 
-    m.module(createContainer("container"), headerPanel({
-        mode: "standard",
-        header: m("div", {class: "header"}, "Standard"),
+    m.module(createContainer('container'), headerPanel({
+        mode: 'standard',
+        header: m('div', {class: 'header'}, 'Standard'),
         body: m.trust(template)
     }));
 
-    m.module(createContainer("container"), headerPanel({
-        mode: "seamed",
-        header: m("div", {class: "header"}, "Seamed"),
+    m.module(createContainer('container'), headerPanel({
+        mode: 'seamed',
+        header: m('div', {class: 'header'}, 'Seamed'),
         body: m.trust(template)
     }));
 
-    m.module(createContainer("container"), headerPanel({
-        mode: "waterfall",
-        header: m("div", {class: "header"}, "Waterfall"),
+    m.module(createContainer('container'), headerPanel({
+        mode: 'waterfall',
+        header: m('div', {class: 'header'}, 'Waterfall'),
         body: m.trust(template)
     }));
 
-    m.module(createContainer("container"), headerPanel({
-        mode: "tall",
-        header: m("div", {class: "header"}, "Waterfall tall"),
+    m.module(createContainer('container'), headerPanel({
+        mode: 'tall',
+        header: m('div', {class: 'header'}, 'Waterfall tall'),
         body: m.trust(template)
     }));
-    m.module(createContainer("container"), headerPanel({
-        mode: "tall",
-        header: m("div", {class: "header medium-tall"}, "Waterfall tall (tallClass: medium-tall)"),
+    m.module(createContainer('container'), headerPanel({
+        mode: 'tall',
+        header: m('div', {class: 'header medium-tall'}, 'Waterfall tall (tallClass: medium-tall)'),
         body: m.trust(template),
-        tallClass: "medium-tall"
+        tallClass: 'medium-tall'
     }));
 
-    m.module(createContainer("container"), headerPanel({
-        mode: "scroll",
-        header: m("div", {class: "header"}, "Scroll"),
+    m.module(createContainer('container'), headerPanel({
+        mode: 'scroll',
+        header: m('div', {class: 'header'}, 'Scroll'),
         body: m.trust(template)
     }));
 
-    m.module(createContainer("container"), headerPanel({
-        mode: "standard",
-        header: createToolbar("Toolbar").view(),
+    m.module(createContainer('container'), headerPanel({
+        mode: 'standard',
+        header: createToolbar('standard', 'Toolbar').view(),
+        body: m.trust(template)
+    }));
+
+    m.module(createContainer('container'), headerPanel({
+        mode: 'standard',
+        header: createToolbar('tall', 'Toolbar').view(),
         body: m.trust(template)
     }));
 

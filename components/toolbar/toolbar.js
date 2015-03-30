@@ -20,8 +20,8 @@ module.exports = function(opts) {
 
     var m = require('mithril');
 
-    var style = require('../polythene/style.js');
-    style('toolbar', require('./toolbar.jss'));
+    var styler = require('../polythene/styler.js');
+    styler('toolbar', require('./toolbar.jss'));
 
     var container,
         inner,
@@ -35,11 +35,13 @@ module.exports = function(opts) {
         return body === null ? null : m('div[center][horizontal][layout]', {class: ['toolbar-tools', className].join(' ')}, body);
     };
 
-    container = opts.container || function(inner, opts, controller) {
+    // function(inner, opts, controller)
+    container = opts.container || function(inner, opts) {
         return m('div', {class: ['toolbar', opts.mode].join(' ')}, inner);
     };
 
-    inner = opts.inner || function(opts, controller) {
+    // function(opts, controller)
+    inner = opts.inner || function(opts) {
         var body = opts.body || null;
         var topBar = !body && opts.topBar || null;
         var middleBar = !body && opts.middleBar || null;
@@ -50,7 +52,7 @@ module.exports = function(opts) {
             bar(topBar, 'topBar'),
             bar(middleBar, 'middleBar'),
             bar(bottomBar, 'bottomBar')
-        ]
+        ];
     };
 
     controller = opts.controller || function() {};
@@ -62,7 +64,7 @@ module.exports = function(opts) {
                 inner(opts, controller),
                 opts,
                 controller
-            )
+            );
         }
-    }
+    };
 };

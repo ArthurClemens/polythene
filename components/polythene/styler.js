@@ -1,9 +1,8 @@
+'use strict';
 var cache = {};
 
 module.exports = function (key, rules) {
-    'use strict';
-
-    var jss = require("jss");
+    var jss = require('jss');
 
     if (!key) return;
     if (!cache[key]) {

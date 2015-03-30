@@ -52,8 +52,8 @@ module.exports = function(opts) {
 
     var m = require('mithril');
 
-    var style = require('../polythene/style.js');
-    style('header-panel', require('./header-panel.jss'));
+    var styler = require('../polythene/styler.js');
+    styler('header-panel', require('./header-panel.jss'));
 
     var container,
         inner,
@@ -83,7 +83,8 @@ module.exports = function(opts) {
         console.log('scrollHandler', e);
     };
 
-    initScroll = function(element, isInitialized, context) {
+    // function(element, isInitialized, context)
+    initScroll = function(element, isInitialized) {
         if (isInitialized) return;
         if (opts.mode !== 'tall') return; // FIXME: premature optimization?
         element.addEventListener('scroll', scrollHandler);
@@ -95,11 +96,13 @@ module.exports = function(opts) {
 */
     };
 
-    container = opts.container || function(inner, opts, controller) {
+    // function(inner, opts, controller)
+    container = opts.container || function(inner) {
         return m('div', {class: 'header-panel'}, inner);
     };
 
-    inner = opts.inner || function(opts, controller) {
+    // function(opts, controller)
+    inner = opts.inner || function(opts) {
         var header = opts.header || '';
         var body = opts.body || '';
         /*
@@ -134,7 +137,7 @@ module.exports = function(opts) {
                 inner(opts, controller),
                 opts,
                 controller
-            )
+            );
         }
-    }
+    };
 };
