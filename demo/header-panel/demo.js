@@ -1,9 +1,10 @@
 'use strict';
 require('../../components/font-roboto/font-roboto.js');
+//require('../../components/layout/layout');
 var m = require('mithril');
-var headerPanel = require('../../components/header-panel/header-panel.js');
-var toolbar = require('../../components/toolbar/toolbar.js');
-var iconButton = require('../../components/icon-button/icon-button.js');
+var headerPanel = require('../../components/header-panel/header-panel');
+var toolbar = require('../../components/toolbar/toolbar');
+var iconButton = require('../../components/icon-button/icon-button');
 
 (function() {
     
