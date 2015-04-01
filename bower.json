@@ -1,15 +1,6 @@
 {
-    "name": "md",
-    "version": "0.0.1",
-    "description": "Material Design",
-    "license": "MIT",
-    "ignore": [
-        "**/.*"
-    ],
-    "dependencies": {
-    	"material-design-iconic-font": null,
-        "mithril": null,
-        "requirejs": null,
-        "jsstyles": null
+    "name": "Polythene dependencies",
+    "devDependencies": {
+    	"material-design-iconic-font": null
     }
 }

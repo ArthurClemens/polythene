@@ -147,7 +147,6 @@
 }
 
 /* alignment in cross axis */
-
 [layout][start] {
   -ms-flex-align: start;
   -webkit-align-items: flex-start;
@@ -168,7 +167,6 @@
 }
 
 /* alignment in main axis */
-
 [layout][start-justified] {
   -ms-flex-pack: start;
   -webkit-justify-content: flex-start;
@@ -201,7 +199,6 @@
 }
 
 /* self alignment */
-
 [self-start] {
   -ms-align-self: flex-start;
   -webkit-align-self: flex-start;
@@ -229,7 +226,6 @@
 /*******************************
           Other Layout
 *******************************/
-
 [block] {
   display: block;
 }
@@ -259,7 +255,6 @@ body[fullbleed] {
 /*******************************
             Other
 *******************************/
-
 [segment],
 segment {
   display: block;

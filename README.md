@@ -2,7 +2,7 @@
 
 Polymer inspired modular implementation of Material Design. Use standalone or with Mithril.
 
-Work in progress.
+Alpha status. Things will break.
 
 ## License
 
