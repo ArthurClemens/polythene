@@ -2,9 +2,9 @@ bower_components
 node_modules/*
 !node_modules/polythene
 !node_modules/polythene-demo
-example/*/assets/*
+example/css/lib/*
+example/js/lib/*
 lib/font-iconic/material-design-iconic-font
 .sass-cache
 .sass-cache/*
 .DS_Store
-

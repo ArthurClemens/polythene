@@ -1,10 +1,10 @@
-$iconSize: 24px;
+@import "../polythene/polythene";
 
 .icon {
     display: inline-block;
     vertical-align: middle;
     background-repeat: no-repeat;
-    //fill: currentcolor;
+    fill: currentcolor;
     position: relative;
     height: $iconSize;
     width: $iconSize;

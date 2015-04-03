@@ -2,6 +2,7 @@
   display: inline-block;
   vertical-align: middle;
   background-repeat: no-repeat;
+  fill: currentcolor;
   position: relative;
   height: 24px;
   width: 24px;

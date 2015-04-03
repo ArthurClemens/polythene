@@ -1,3 +1,4 @@
+'use strict';
 var webpack = require('webpack');
 
 module.exports = {
@@ -13,7 +14,7 @@ module.exports = {
 		extensions: ['', '.js', '.json', '.html'], // to use require('file') instead of require('file.js')
 		modulesDirectories: ['polythene'], // for lookup: require('polythene/lib/my-module')
 		alias: {
-			mithril: "../../node_modules/mithril"
+			mithril: '../../node_modules/mithril'
 		}
 	},
 	plugins: [

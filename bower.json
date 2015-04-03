@@ -1,6 +1,15 @@
 {
-    "name": "Polythene dependencies",
-    "devDependencies": {
-    	"material-design-iconic-font": null
+    "name": "Polythene",
+    "version": "0.0.1",
+    "description": "Polymer inspired implementation of Material Design. Use standalone or with Mithril.",
+    "license": "MIT",
+    "ignore": [
+        "**/.*"
+    ],
+    "dependencies": {
+        "mithril": "^0.1.33",
+        "requirejs": "^2.1.17",
+        "require-css": "^0.1.8",
+        "material-design-iconic-font": "^1.1.1"
     }
 }
