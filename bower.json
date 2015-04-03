@@ -7,9 +7,9 @@
         "**/.*"
     ],
     "dependencies": {
-        "mithril": "^0.1.33",
-        "requirejs": "^2.1.17",
-        "require-css": "^0.1.8",
-        "material-design-iconic-font": "^1.1.1"
+        "mithril": "",
+        "requirejs": "",
+        "require-css": "",
+        "material-design-iconic-font": ""
     }
 }

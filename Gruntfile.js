@@ -17,19 +17,7 @@ module.exports = function(grunt) {
         },
         bowercopy: {
             options: {
-                clean: true
-            },
-            example_lib: {
-                options: {
-                    destPrefix: 'example'                    
-                },
-                files: {
-                    'js/lib/mithril/mithril.js': 'mithril/mithril.js',
-                    'js/lib/requirejs/require.js': 'requirejs/require.js',
-                    'js/lib/require-css': 'require-css/*.js',
-                    'css/lib/material-design-iconic-font/css': 'material-design-iconic-font/css/*',
-                    'css/lib/material-design-iconic-font/fonts': 'material-design-iconic-font/fonts/*'
-                }
+                clean: false
             },
             iconic_font: {
                 options: {
