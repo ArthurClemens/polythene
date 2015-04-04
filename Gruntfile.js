@@ -25,7 +25,15 @@ module.exports = function(grunt) {
                 },
                 files: {
                     'material-design-iconic-font/css': 'material-design-iconic-font/css/*',
-                    'material-design-iconic-font/fonts': 'material-design-iconic-font/fonts/*'
+                    'material-design-iconic-font/fonts': 'material-design-iconic-font/fonts/*',
+                }
+            },
+            svgs: {
+                options: {
+                    destPrefix: 'lib/svg'
+                },
+                files: {
+                    'svgs': 'material-design-iconic-font/svg/*'
                 }
             }
         }
