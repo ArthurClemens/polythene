@@ -33,7 +33,8 @@ module.exports = function(grunt) {
                     destPrefix: 'lib/svg'
                 },
                 files: {
-                    'svgs': 'material-design-iconic-font/svg/*'
+                    'material-design-iconic-font': 'material-design-iconic-font/svg/*',
+                    'mdi': 'mdi/icons/svg/*'
                 }
             }
         }

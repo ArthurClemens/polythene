@@ -14,7 +14,8 @@
     "mithril": "git://github.com/lhorie/mithril.js#components",
     "requirejs": "",
     "require-css": "",
-    "material-design-iconic-font": ""
+    "material-design-iconic-font": "",
+    "mdi": "git://github.com/Templarian/MaterialDesign"
   },
   "homepage": "https://github.com/ArthurClemens/Polythene",
   "authors": [
