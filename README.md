@@ -1,25 +1,67 @@
 # Polythene
 
-Polymer inspired modular implementation of Material Design. Use with [Mithril](http://lhorie.github.io/mithril) or as HTML/CSS modules.
+Polymer inspired modular implementation of Material Design. Use with [Mithril](http://lhorie.github.io/mithril) or as plain HTML/CSS.
 
 Alpha status. Things will break.
 
 
 
-## Motivation
+## Background
 
-This is a first stab at a collection of [Mithril](http://lhorie.github.io/mithril) frontend modules. Polythene borrows a great deal from [Polymer](http://polymer.github.io) (CSS styles, component names), but the architecture is fundamentally different.
+Polythene borrows a great deal from [Polymer](http://polymer.github.io) (CSS styles, component names), but their architectures are fundamentally different.
  
 Polymer is the leading framework of Web Components - an extensive collection of reusable user interface widgets, each with its own encapsulated code (HTML, CSS, JS). Components can be loosely coupled using each predefined component interface. You _can_ build app logic with Web Components, but without a framework (Angular, React) this can become quite messy.
 
-Mithril is a small and fast MVC framework that encourages a clean app architecture. In Mithril pretty much everything is a function. Templates are functions that return objects, so they can be passed around, composed, mixed, have lazy rendering, etcetera.
+[Mithril](http://lhorie.github.io/mithril) is a small and fast MVC framework that encourages a clean app architecture. In Mithril pretty much everything is a function. Templates are functions that return objects, so they can be passed around, composed, mixed, have lazy rendering, etcetera.
 
-So Polythene modules are functions with all the flexibility that Mithril brings. This makes it easy to combine smaller components into larger and to add interactivity.
+So Polythene components are functions with all the flexibility that Mithril brings. This makes it easy to compose larger components from smaller ones, and to mix and match components together.
 
-Module dependencies are handled through [RequireJS](http://requirejs.org) (still the cleanest choice for asynchronous modules), including module specific CSS.
+Component dependencies are handled through [RequireJS](http://requirejs.org) (still the cleanest choice for asynchronous JS modules), that also takes care of loading component specific CSS.
 
-The generated HTML is styled by CSS. It is also possible to just use the HTML and CSS if you don't want to use Mithril.
+The generated HTML is styled by CSS. It is also possible to just use the HTML and CSS if you don't want to use Mithril. But of course you will not have the benefit of integration that components bring.
 
+
+
+## Composition
+
+"Icon" is a small example how components can be combined. It is a wrapper around an SVG object (or PNG if you wish):
+
+	var icon = require('polythene/icon/icon');
+	icon({
+	    svg: {
+	        group: 'navigation',
+	        name: 'menu'
+	    }
+	});
+
+So `icon` is a function that takes an `args` object, where `svg` passes args to the "svg" component.
+
+Polythene renders this function as HTML. But the function can also be used to create a larger component, such as `an "icon button".
+
+	var icon = require('polythene/icon/icon');
+	var menuIcon = icon({
+	    svg: {
+	        group: 'navigation',
+	        name: 'menu'
+	    }
+	});
+
+	var iconBtn = require('polythene/icon-button/icon-button');
+	iconBtn({
+		content: menuIcon
+	})
+
+Or using Object notation:
+
+	var iconBtn = require('polythene/icon-button/icon-button');
+	iconBtn({
+		icon: {
+		    svg: {
+		        group: 'navigation',
+		        name: 'menu'
+		    }
+		}
+	})
 
 
 ## Examples
