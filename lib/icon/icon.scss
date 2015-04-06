@@ -10,13 +10,17 @@
     width: $iconSize;
 
     [fit] {
-        height: $iconSize;
+        height: 100%;
     }
 
     i {
         font-size: $iconSize;
         line-height: $iconSize;
         display: block;
+
+        img {
+            height: 100%;
+        }
 
         svg {
             width: 100% !important;

@@ -8,12 +8,15 @@
   width: 24px;
 }
 .icon [fit] {
-  height: 24px;
+  height: 100%;
 }
 .icon i {
   font-size: 24px;
   line-height: 24px;
   display: block;
+}
+.icon i img {
+  height: 100%;
 }
 .icon i svg {
   width: 100% !important;
