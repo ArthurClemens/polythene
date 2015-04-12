@@ -5,16 +5,20 @@ Polymer inspired modular implementation of Material Design. Use with [Mithril](h
 Alpha status. Things will break.
 
 
+## Examples
+
+See [Polythene Examples](https://github.com/ArthurClemens/Polythene-Examples).
+
 
 ## Background
 
-Polythene borrows a great deal from [Polymer](http://polymer.github.io) (CSS styles, component names), but their architectures are fundamentally different.
+Polythene borrows a great deal from [Polymer](http://polymer.github.io) (CSS styles, component names), but its architecture is fundamentally different.
  
 Polymer is the leading framework of Web Components - an extensive collection of reusable user interface widgets, each with its own encapsulated code (HTML, CSS, JS). Components can be loosely coupled using each predefined component interface. You _can_ build app logic with Web Components, but without a framework (Angular, React) this can become quite messy.
 
 [Mithril](http://lhorie.github.io/mithril) is a small and fast MVC framework that encourages a clean app architecture. In Mithril pretty much everything is a function. Templates are functions that return objects, so they can be passed around, composed, mixed, have lazy rendering, etcetera.
 
-So Polythene components are functions with all the flexibility that Mithril brings. This makes it easy to compose larger components from smaller ones, and to mix and match components together.
+So Polythene components are not Web Components, but instead functions with all the flexibility that Mithril brings. This makes it easy to compose larger components from smaller ones, and to mix and match components together.
 
 Component dependencies are handled through [RequireJS](http://requirejs.org) (still the cleanest choice for asynchronous JS modules), that also takes care of loading component specific CSS.
 
@@ -64,29 +68,21 @@ Or using Object notation:
 	})
 
 
-## Examples
-
-See [Polythene Examples](https://github.com/ArthurClemens/Polythene-Examples).
+## Wiring up
 
 
+## Overriding/subclassing components
 
-## Dependencies
 
-To use Polythene, you will need:
+## Layout
 
-* [Mithril](http://lhorie.github.io/mithril)
-* [RequireJS](http://requirejs.org)
-* [require-css](https://github.com/guybedford/require-css)
-* [Material Design Iconic Font](https://github.com/zavoloklom/material-design-iconic-font)
+
+## Performance
+
+
 
 
 ## Installation
-
-See the Examples repository.
-
-
-
-## Development
 
 NodeJS scripts are used for installing the development dependencies. For this step you need to have `npm` installed.
 
@@ -98,6 +94,15 @@ In the root directory, run the following commands:
 If you want to change/extend Polythene and compile Sass files to Css, run:
 
 * `grunt css`
+
+
+Dependencies are:
+
+* [Mithril](http://lhorie.github.io/mithril)
+* [RequireJS](http://requirejs.org)
+* [require-css](https://github.com/guybedford/require-css)
+* [Material Design Iconic Font](https://github.com/zavoloklom/material-design-iconic-font)
+* [Material Design Iconics](https://github.com/Templarian/MaterialDesign)
 
 
 
