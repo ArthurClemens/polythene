@@ -102,7 +102,7 @@ Dependencies are:
 * [RequireJS](http://requirejs.org)
 * [require-css](https://github.com/guybedford/require-css)
 * [Material Design Iconic Font](https://github.com/zavoloklom/material-design-iconic-font)
-* [Material Design Iconics](https://github.com/Templarian/MaterialDesign)
+* [Material Design Icons](https://github.com/Templarian/MaterialDesign)
 
 
 
