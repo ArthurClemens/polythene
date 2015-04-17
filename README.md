@@ -1,6 +1,6 @@
 # Polythene
 
-Polymer inspired modular implementation of Material Design. Use with [Mithril](http://lhorie.github.io/mithril) or as plain HTML/CSS.
+Polymer inspired modular implementation of Material Design for [Mithril](http://lhorie.github.io/mithril). 
 
 Alpha status. Things will break.
 
