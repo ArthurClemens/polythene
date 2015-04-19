@@ -1,7 +1,40 @@
-$iconSize: 24px;
+$component_grid_unit: 8;
+$component_grid_unit_px: 8px;
+
+$line_height: 1.3em;
+
+$iconSizeLarge:  5 * $component_grid_unit_px; // 40
+$iconSizeMedium: 4 * $component_grid_unit_px; // 32
+$iconSize: 		 3 * $component_grid_unit_px; // 24
+$iconSizeSmall:  2 * $component_grid_unit_px; // 16
+
 
 @mixin single-line {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
+
+@mixin vertical-center($position: relative) {
+	position: $position;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+@mixin vertical-center-parent {
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+
+@mixin box-sizing($type: border-box) {
+    -webkit-box-sizing: $type;
+       -moz-box-sizing: $type;
+         -o-box-sizing: $type;
+        -ms-box-sizing: $type;
+            box-sizing: $type;
+}
+
+

@@ -1,4 +1,5 @@
 module.exports = function(grunt) {
+    'use strict';
     grunt.initConfig({
         sass: {
             dist: {
@@ -13,6 +14,15 @@ module.exports = function(grunt) {
                     dest: 'lib/',
                     ext: '.css'
                 }]
+            }
+        },
+        watch: {
+            scripts: {
+                files: ['lib/*/*.scss'],
+                tasks: ['sass'],
+                options: {
+                    interrupt: true,
+                }
             }
         },
         bowercopy: {
@@ -41,6 +51,7 @@ module.exports = function(grunt) {
     });
     grunt.loadNpmTasks('grunt-bowercopy');
     grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.registerTask('deps', ['bowercopy']);
     grunt.registerTask('css', ['sass']);
 };

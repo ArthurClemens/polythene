@@ -12,10 +12,11 @@
     "requirejs": "latest",
     "grunt": "latest",
     "grunt-contrib-sass": "latest",
+    "grunt-contrib-watch": "latest",
     "grunt-bowercopy": "latest",
     "bower": "latest",
     "grunt-cli": "latest",
-    "almond": "latest"
+    "almond": "latest" 
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
