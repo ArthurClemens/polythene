@@ -47,11 +47,18 @@ module.exports = function(grunt) {
                     'mdi': 'mdi/icons/svg/*'
                 }
             }
+        },
+        shell: {
+            docs: {
+                command: './tools/copy_docs ../gh-pages/app/docs'
+            }
         }
     });
     grunt.loadNpmTasks('grunt-bowercopy');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.registerTask('deps', ['bowercopy']);
+    grunt.loadNpmTasks('grunt-shell');
+    grunt.registerTask('deps', ['bowercopy:iconic_font', 'bowercopy:svgs']);
+    grunt.registerTask('author_docs', ['shell:docs']);
     grunt.registerTask('css', ['sass']);
 };
