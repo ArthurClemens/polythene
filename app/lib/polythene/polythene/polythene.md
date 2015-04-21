@@ -2,7 +2,7 @@
 
 Polymer inspired modular implementation of Material Design for [Mithril](http://lhorie.github.io/mithril). Available on [Github](https://github.com/ArthurClemens/Polythene).
 
-<p style='color: red'>Work in progress.</p>
+<p style='color: red'>Work in progress</p>
 
 <a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/index.html">All demos</a>
 
@@ -13,7 +13,7 @@ Polythene borrows a great deal from [Polymer](http://polymer.github.io) (CSS sty
 
 Mithril is a small and fast MVC framework that encourages a clean app architecture. In Mithril pretty much everything is a function. Templates are functions that return objects, so they can be passed around, composed, mixed, have lazy rendering, etcetera.
 
-Polythene components are Mithril components, with all of their flexibility.
+Polythene components inherit all of the flexibility of Mithril components.
 
 
 
@@ -48,4 +48,11 @@ Or using object notation:
 		    src: 'img/arrow.png'
 		}
 	});
+
+
+## Requirements
+
+See the [main project page](https://github.com/ArthurClemens/Polythene).
+
+
 
