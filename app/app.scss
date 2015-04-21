@@ -3,11 +3,11 @@
 $_main_side_padding: 48px;
 $_header_top_padding: 2 * $_main_side_padding;
 $_header_bottom_padding: 0.5 * $_main_side_padding;
-$_primary_color: #0097A7;
 $_side_color: #263238;
 $_drawer_color: #37474F;
 $_drawer_highlight_color: #455A64;
 $_main_color: #00BCD4;
+$_link_color: $_main_color;
 $_light_border: #ddd;
 $_header_font_size: 32px;
 $_logo_color: #00E676;
@@ -64,7 +64,7 @@ body {
     background: #fff;
 
     a {
-        color: $_primary_color;
+        color: $_link_color;
         text-decoration: none;
     }
 

@@ -8,22 +8,21 @@ Displays an icon (image or SVG) as a 24px square. Other sizes can be set using t
 
 	var icon = require('polythene/icon/icon');
 
-	m.component(icon, {
+	var myIcon = m.component(icon, {
 		src: 'img/arrow.png'
 	});
 
 To use SVG instead of an image, pass an [svg](#svg) option object:
 
-	m.component(icon, {
+	var myIcon = m.component(icon, {
 		svg: {
-		    src: 'img/arrow.png'
+		    src: 'img/arrow.svg'
 		}
 	});
 
 Or pass `iconset` (sub folder) and filename (without `.svg`):
 
-
-	m.component(icon, {
+	var myIcon = m.component(icon, {
 		svg: {
 			iconset: 'mdi',
 		    name: 'emoticon-happy'

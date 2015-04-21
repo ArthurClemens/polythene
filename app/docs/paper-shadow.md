@@ -8,14 +8,14 @@ Adds a configurable shadow to an element.
 
 	var paperShadow = require('polythene/paper-shadow/paper-shadow');
 
-	m.component(paperShadow, {
+	var myShadow = m.component(paperShadow, {
 		z: 1,
 		content: 'My shadow'
 	});
 
 To animated the shadow:
 
-	m.component(paperShadow, {
+	var myShadow = m.component(paperShadow, {
 		z: 1,
 		animated: true,
 		content: 'My shadow'
