@@ -1,10 +1,6 @@
 bower_components
 node_modules/*
-example/css/lib/*
-example/js/lib/*
-lib/font-iconic/material-design-iconic-font
-lib/svg/mdi
-lib/svg/material-design-iconic-font
-.sass-cache
-.sass-cache/*
+src/app/app.css.map
+src/app/lib
 .DS_Store
+src/app/.sass-cache

@@ -1,0 +1,238 @@
+@import url("http://fonts.googleapis.com/css?family=Inconsolata");
+
+$_main_side_padding: 48px;
+$_header_top_padding: 2 * $_main_side_padding;
+$_header_bottom_padding: 0.5 * $_main_side_padding;
+$_primary_color: #0097A7;
+$_side_color: #263238;
+$_drawer_color: #37474F;
+$_drawer_highlight_color: #455A64;
+$_main_color: #00ACC1;
+$_light_border: #ddd;
+$_header_font_size: 32px;
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: 'RobotoDraft', arial, sans-serif;
+    background: $_side_color;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    line-height: 1.3;
+    color: #333;
+    min-width: 320px;
+}
+.scaffold {
+    min-height: 100%;
+}
+.drawer {
+    background: $_drawer_color;
+    position: relative;
+    color: #fff;
+
+    h2 {
+        font-size: $_header_font_size;
+        font-weight: 400;
+        background: $_side_color;
+
+        &, a {
+            color: #fff;
+            text-decoration: none;
+        }
+    }
+
+    .logo {
+        position: absolute;
+        fill: #00E676;
+    }
+
+    .highlight {
+        background: $_drawer_highlight_color;
+    }
+}
+
+.main {
+    width: 100%;
+    overflow: hidden;
+    background: #fff;
+
+    a {
+        color: $_primary_color;
+        text-decoration: none;
+    }
+
+    .btn-demo {
+        background: $_main_color;
+        color: #fff;
+        padding: 6px 10px;
+        display: inline-block;
+        margin: 0 0 10px 0;
+        text-transform: uppercase;
+        border-radius: 3px;
+
+        &:hover {
+            background: #00838F;
+        }
+    }
+    code, pre {
+        font-family: 'Inconsolata', courier, monospace;
+    }
+
+    h1 {
+        color: #fff;
+        background: $_main_color;
+        font-size: $_header_font_size;
+        margin: 0;
+    }
+    h1,
+    h2,
+    h3 {
+        font-weight: 400;
+    }
+    h2, h3 {
+        margin: 35px 0 15px 0;
+    }
+    pre {
+        padding: 16px;
+        background: #f0f0f0;
+        overflow-x: scroll;
+    }
+    table {
+        border-collapse: collapse;
+        overflow-x: scroll;
+
+        th, td {
+            padding: 8px 16px;
+            border: none;
+            border-bottom: 1px solid $_light_border;
+            vertical-align: top;
+        }
+        th,
+        th strong {
+            font-weight: normal;
+            color: #aaa;
+            text-align: left;
+        }
+    }
+}
+
+.footer {
+    padding: 20px 16px;
+    font-size: 14px;
+    color: #aaa;
+    text-align: center;
+
+    a {
+        color: #ddd;
+        text-decoration: none;
+    }
+}
+
+@media (max-width: 640px) {
+    $_main_side_padding: 24px;
+    $_header_font_size: 24px;
+    $_header_top_padding: 1*$_main_side_padding;
+
+    .scaffold {
+        -ms-flex-direction: column !important;
+        -webkit-flex-direction: column !important;
+        flex-direction: column !important;
+    }
+    .drawer {
+        padding: 16px 0;
+
+        h2 {
+            display: none;
+        }
+
+        .logo {
+            display: none;
+        }
+    }
+
+    .main {
+        padding: 0 $_main_side_padding $_main_side_padding $_main_side_padding;
+
+        h1 {
+            margin: 0 (-$_main_side_padding) 32px (-$_main_side_padding);
+            padding: $_header_top_padding $_main_side_padding $_main_side_padding $_main_side_padding;
+            font-size: $_header_font_size;
+        }
+
+        pre {
+            padding: 10px;
+            font-size: 12px;
+        }
+
+        table {
+            font-size: 12px;
+            th, td {
+                padding: 4px 8px;
+            }
+        }
+    }
+}
+
+@media (min-width: 640px) and (max-width: 960px) {
+    $_main_side_padding: 24px;
+    $_header_font_size: 24px;
+    $_header_top_padding: 2 * $_main_side_padding;
+    $_header_bottom_padding: 1 * $_main_side_padding;
+
+    .drawer {
+        min-width: 200px;
+
+        h2 {
+            font-size: $_header_font_size;
+            margin: 0 0 16px 0;
+            padding: $_header_top_padding 16px $_header_bottom_padding 16px;
+        }
+
+        .logo {
+            width: 28px;
+            height: 28px;
+            top: 16px;
+            left: 16px;
+        }
+    }
+    .main {
+        padding: 0 $_main_side_padding $_main_side_padding $_main_side_padding;
+
+        h1 {
+            margin: 0 (-$_main_side_padding) 32px (-$_main_side_padding);
+            padding: $_header_top_padding $_main_side_padding $_header_bottom_padding $_main_side_padding;
+            font-size: $_header_font_size;
+        }
+    }
+}
+
+@media (min-width: 960px) {
+    .drawer {
+        min-width: 240px;
+
+        h2 {
+            margin: 0 0 16px 0;
+            padding: $_header_top_padding 16px $_header_bottom_padding 16px;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            top: 52px;
+            left: 16px;
+        }
+    }
+    .main {
+        padding: 0 $_main_side_padding $_main_side_padding $_main_side_padding;
+
+        h1 {
+            margin: 0 (-$_main_side_padding) 32px (-$_main_side_padding);
+            padding: $_header_top_padding $_main_side_padding $_header_bottom_padding $_main_side_padding;
+        }
+    }
+}
+
