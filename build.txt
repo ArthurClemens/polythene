@@ -63,5 +63,5 @@ app/lib/polythene/toolbar/toolbar.css
 common.js
 ----------------
 common.js
-app/lib/require-css/css.js
+app/lib/require-css/css.min.js
 app/lib/requirejs-text/text.js
