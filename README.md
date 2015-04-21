@@ -26,7 +26,7 @@ If you want to change/extend Polythene and compile Sass files to Css, run:
 
 Dependencies are:
 
-* [Mithril](http://lhorie.github.io/mithril)
+* [Mithril](http://lhorie.github.io/mithril) ("components branch")
 * [RequireJS](http://requirejs.org)
 * [require-css](https://github.com/guybedford/require-css)
 * [Material Design Iconic Font](https://github.com/zavoloklom/material-design-iconic-font)
