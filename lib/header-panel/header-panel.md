@@ -8,7 +8,7 @@ Displays a content panel with header.
 
 	var headerPanel = require('polythene/header-panel/header-panel');
 
-	m.component(headerPanel, {
+	var myHeaderPanel = m.component(headerPanel, {
 	    header: {
 	        content: 'My title'
 	    },
@@ -17,7 +17,7 @@ Displays a content panel with header.
 
 To make the panel stretch the width, use `div[flex]`:
 
-	m.component(headerPanel, {
+	var myHeaderPanel = m.component(headerPanel, {
 		tag: 'div[flex]',
 	    header: {
 	        content: 'Flex'
