@@ -2,6 +2,8 @@
 
 <a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/header-panel.html">Demo</a>
 
+Displays a content panel with header.
+
 ## Usage
 
 	var headerPanel = require('polythene/header-panel/header-panel');
@@ -9,6 +11,16 @@
 	m.component(headerPanel, {
 	    header: {
 	        content: 'My title'
+	    },
+	    content: 'My content'
+	})
+
+To make the panel stretch the width, use `div[flex]`:
+
+	m.component(headerPanel, {
+		tag: 'div[flex]',
+	    header: {
+	        content: 'Flex'
 	    },
 	    content: 'My content'
 	})
@@ -86,9 +98,8 @@ Or use a Mithril template:
 
 ## TODO
 
-* Mode `cover`: The panel covers the whole `header-panel` including the header. This allows user to style the panel in such a way that the panel is partially covering the header.
-* Remove scroll listener on detach
-* To have the content fits to the main area, use fit attribute.
+* Test and document: Mode `cover`: The panel covers the whole `header-panel` including the header. This allows user to style the panel in such a way that the panel is partially covering the header.
+* Test and document: To have the content fits to the main area, use fit attribute.
 * Check: If you want to use other than toolbar for the header, add 'header' class to that element.
 
 
