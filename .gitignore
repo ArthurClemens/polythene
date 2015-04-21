@@ -8,3 +8,4 @@ lib/svg/material-design-iconic-font
 .sass-cache
 .sass-cache/*
 .DS_Store
+src
