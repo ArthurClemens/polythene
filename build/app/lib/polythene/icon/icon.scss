@@ -1,0 +1,44 @@
+@import "../polythene/polythene";
+
+@mixin iconSize($size: 24px) {
+    width: $size;
+    height: $size;
+}
+
+.icon {
+    @include iconSize;
+    display: inline-block;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    fill: currentcolor;
+    position: relative;
+
+    [fit] {
+        height: 100%;
+    }
+
+    i {
+        display: block;
+        font-size: inherit;
+        line-height: inherit;
+
+        img {
+            height: 100%;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &.icon-small {
+        @include iconSize($iconSizeSmall);
+    }
+    &.icon-normal {}
+    &.icon-medium {
+        @include iconSize($iconSizeMedium);
+    }
+    &.icon-large {
+        @include iconSize($iconSizeLarge);
+    }
+}
