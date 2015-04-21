@@ -1,22 +1,22 @@
 # Icon
 
-[Demo](http://arthurclemens.github.io/Polythene-Examples/icon.html)
+<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/icon.html">Demo</a>
 
-Displays an icon as a 24px square. Other sizes can be set using the `type` parameter or with CSS (in conjuction with `className`).
+Displays an icon (image or SVG) as a 24px square. Other sizes can be set using the `type` parameter or with CSS (in conjuction with `className`).
 
 ## Usage
 
 	var icon = require('polythene/icon/icon');
 
 	m.component(icon, {
-		src: 'app/icon/img/ic_directions_black_48dp.png'
+		src: 'img/arrow.png'
 	});
 
-To use SVG instead of an image, pass an [svg](/svg) option object:
+To use SVG instead of an image, pass an [svg](#svg) option object:
 
 	m.component(icon, {
 		svg: {
-		    src: 'app/icon/img/ic_pin_drop_48px.svg'
+		    src: 'img/arrow.png'
 		}
 	});
 

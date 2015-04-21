@@ -1,6 +1,6 @@
 # Header Panel
 
-[Demo](http://arthurclemens.github.io/Polythene-Examples/header-panel.html)
+<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/header-panel.html">Demo</a>
 
 ## Usage
 
@@ -53,7 +53,7 @@ A header can be create by passing a content string:
 
 in which case a div with class 'header' is created.
 
-Alternatively, pass [toolbar](/toolbar) options to use a toolbar as header:
+Alternatively, pass [toolbar](#toolbar) options to use a toolbar as header:
 
     header: {
         toolbar: {
