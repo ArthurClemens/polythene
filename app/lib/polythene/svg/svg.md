@@ -45,7 +45,7 @@ SVG options can be passed to [icon](#icon).
 
 ## Icon sets
 
-By default 2 icons sets are included (after running bower):
+By default 2 icons sets are included (after running `grunt`):
 
 * Iconset `material-design-iconic-font`: [GitHub project](https://github.com/zavoloklom/material-design-iconic-font)
 * Iconset `mdi`: [GitHub project](https://github.com/Templarian/MaterialDesign)
