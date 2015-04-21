@@ -2,158 +2,158 @@
 
 [layout][horizontal],
 [layout][vertical] {
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
 }
 
 [layout][horizontal][inline],
 [layout][vertical][inline] {
-  display: -ms-inline-flexbox;
-  display: -webkit-inline-flex;
-  display: inline-flex;
+    display: -ms-inline-flexbox;
+    display: -webkit-inline-flex;
+    display: inline-flex;
 }
 
 [layout][horizontal] {
-  -ms-flex-direction: row;
-  -webkit-flex-direction: row;
-  flex-direction: row;
+    -ms-flex-direction: row;
+    -webkit-flex-direction: row;
+    flex-direction: row;
 }
 
 [layout][horizontal][reverse] {
-  -ms-flex-direction: row-reverse;
-  -webkit-flex-direction: row-reverse;
-  flex-direction: row-reverse;
+    -ms-flex-direction: row-reverse;
+    -webkit-flex-direction: row-reverse;
+    flex-direction: row-reverse;
 }
 
 [layout][vertical] {
-  -ms-flex-direction: column;
-  -webkit-flex-direction: column;
-  flex-direction: column;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
 }
 
 [layout][vertical][reverse] {
-  -ms-flex-direction: column-reverse;
-  -webkit-flex-direction: column-reverse;
-  flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    -webkit-flex-direction: column-reverse;
+    flex-direction: column-reverse;
 }
 
 [layout][wrap] {
-  -ms-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
 }
 
 [layout][wrap-reverse] {
-  -ms-flex-wrap: wrap-reverse;
-  -webkit-flex-wrap: wrap-reverse;
-  flex-wrap: wrap-reverse;
+    -ms-flex-wrap: wrap-reverse;
+    -webkit-flex-wrap: wrap-reverse;
+    flex-wrap: wrap-reverse;
 }
 
 [flex] {
-  -ms-flex: 1 1 0.000000001px;
-  -webkit-flex: 1;
-  flex: 1;
-  -webkit-flex-basis: 0.000000001px;
-  flex-basis: 0.000000001px;
+    -ms-flex: 1 1 0.000000001px;
+    -webkit-flex: 1;
+    flex: 1;
+    -webkit-flex-basis: 0.000000001px;
+    flex-basis: 0.000000001px;
 }
 
 [vertical][layout] > [flex][auto-vertical] {
-  -ms-flex: 1 1 auto;
-  -webkit-flex-basis: auto;
-  flex-basis: auto;
+    -ms-flex: 1 1 auto;
+    -webkit-flex-basis: auto;
+    flex-basis: auto;
 }
 
 [flex][auto] {
-  -ms-flex: 1 1 auto;
-  -webkit-flex-basis: auto;
-  flex-basis: auto;
+    -ms-flex: 1 1 auto;
+    -webkit-flex-basis: auto;
+    flex-basis: auto;
 }
 
 [flex][none] {
-  -ms-flex: none;
-  -webkit-flex: none;
-  flex: none;
+    -ms-flex: none;
+    -webkit-flex: none;
+    flex: none;
 }
 
 [flex][one] {
-  -ms-flex: 1;
-  -webkit-flex: 1;
-  flex: 1;
+    -ms-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
 }
 
 [flex][two] {
-  -ms-flex: 2;
-  -webkit-flex: 2;
-  flex: 2;
+    -ms-flex: 2;
+    -webkit-flex: 2;
+    flex: 2;
 }
 
 [flex][three] {
-  -ms-flex: 3;
-  -webkit-flex: 3;
-  flex: 3;
+    -ms-flex: 3;
+    -webkit-flex: 3;
+    flex: 3;
 }
 
 [flex][four] {
-  -ms-flex: 4;
-  -webkit-flex: 4;
-  flex: 4;
+    -ms-flex: 4;
+    -webkit-flex: 4;
+    flex: 4;
 }
 
 [flex][five] {
-  -ms-flex: 5;
-  -webkit-flex: 5;
-  flex: 5;
+    -ms-flex: 5;
+    -webkit-flex: 5;
+    flex: 5;
 }
 
 [flex][six] {
-  -ms-flex: 6;
-  -webkit-flex: 6;
-  flex: 6;
+    -ms-flex: 6;
+    -webkit-flex: 6;
+    flex: 6;
 }
 
 [flex][seven] {
-  -ms-flex: 7;
-  -webkit-flex: 7;
-  flex: 7;
+    -ms-flex: 7;
+    -webkit-flex: 7;
+    flex: 7;
 }
 
 [flex][eight] {
-  -ms-flex: 8;
-  -webkit-flex: 8;
-  flex: 8;
+    -ms-flex: 8;
+    -webkit-flex: 8;
+    flex: 8;
 }
 
 [flex][nine] {
-  -ms-flex: 9;
-  -webkit-flex: 9;
-  flex: 9;
+    -ms-flex: 9;
+    -webkit-flex: 9;
+    flex: 9;
 }
 
 [flex][ten] {
-  -ms-flex: 10;
-  -webkit-flex: 10;
-  flex: 10;
+    -ms-flex: 10;
+    -webkit-flex: 10;
+    flex: 10;
 }
 
 [flex][eleven] {
-  -ms-flex: 11;
-  -webkit-flex: 11;
-  flex: 11;
+    -ms-flex: 11;
+    -webkit-flex: 11;
+    flex: 11;
 }
 
 [flex][twelve] {
-  -ms-flex: 12;
-  -webkit-flex: 12;
-  flex: 12;
+    -ms-flex: 12;
+    -webkit-flex: 12;
+    flex: 12;
 }
 
 /* alignment in cross axis */
 
 [layout][start] {
-  -ms-flex-align: start;
-  -webkit-align-items: flex-start;
-  align-items: flex-start;
+    -ms-flex-align: start;
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
 }
 
 [layout][center],
