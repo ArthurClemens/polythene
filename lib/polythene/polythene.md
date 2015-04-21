@@ -4,6 +4,9 @@ Polymer inspired modular implementation of Material Design for [Mithril](http://
 
 <p style='color: red'>Work in progress.</p>
 
+<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/index.html">All demos</a>
+
+
 ## Background
 
 Polythene borrows a great deal from [Polymer](http://polymer.github.io) (CSS styles, component names), but instead of using Web Components, it is built on top of [Mithril](http://lhorie.github.io/mithril).
