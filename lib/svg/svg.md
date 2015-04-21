@@ -2,7 +2,7 @@
 
 <a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/svg.html">Demo</a>
 
-Loads SVG code asychronously.
+Loads SVG code asychronously and displays this on the page, for instance in an icon.
 
 ## Usage
 
@@ -12,20 +12,22 @@ Loads SVG code asychronously.
 		src: 'img/arrow.svg'
 	});
 
-To load an SVG from one of the included icon sets, pass `iconset` and `name`:
+To load an SVG from one of the included icon sets, pass `iconset` and `name`. To load `polythene/svg/mdi/headphones.svg`:
 
 	m.component(svg, {
 		iconset: 'mdi',
 		name: 'headphones'
 	});
 
-If the iconset has subfolders, pass the group name:
+If the iconset has subfolders, pass the folder name as `group`. To load `polythene/svg/material-design-iconic-font/action/alarm.svg`:
 
 	m.component(svg, {
-	    iconset: 'mdi',
+	    iconset: 'material-design-iconic-font',
 	    group: 'action',
 	    name: 'alarm'
-	})
+	});
+
+SVG options can be passed to [icon](#icon).
 
 
 ## Options
@@ -34,26 +36,27 @@ If the iconset has subfolders, pass the group name:
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **tag** | optional | String | 'div' | HTML tag |
 | **className** | optional | String |  | CSS class appended to 'svg' |
-| **src** | src or svg must be passed | String |  | Icon URL (for `img` only; for `svg` pass this in the svg parameter) |
-| **svg** | src or svg must be passed | Object |  | Parameters for [svg](/svg) |
-| **type** | optional | String | 'normal' | Either 'small' (16px), 'normal' (24px), 'medium' (32px), 'large' (40px). Adds CSS class 'icon-small', 'icon-normal', 'icon-medium', 'icon-large.' `type: 'medium'` is the equivalent of passing `className: 'icon-medium'`. |
+| **src** | src or iconset+name must be passed | String |  | SVG URL |
+| **iconset** | src or iconset+name must be passed | String |  | Iconset name - see below |
+| **group** | optional | String |  | Subfolder within iconset |
+| **name** | src or iconset+name must be passed | String |  | SVG filename without .svg extension |
+| **refresh** | optional | Boolean | false | Set to true to fetch the SVG resource on reloads |
 
 
-	## Default generated HTML
+## Icon sets
 
-		<div class="icon icon-normal">
-			<i fit="true">
-				img or svg
-			</i>
-		</div>
+By default 2 icons sets are included (after running bower):
+
+* Iconset `material-design-iconic-font`: [GitHub project](https://github.com/zavoloklom/material-design-iconic-font)
+* Iconset `mdi`: [GitHub project](https://github.com/Templarian/MaterialDesign)
 
 
-Options:
 
-    src: (optional) (String): icon URL
-    or
-    iconset: (optional) (String): sub-directory name inside directory 'svg'
-    group: (optional) (String): sub-sub-directory
-    name: (mandatory) (String): icon filename (without extension)
-    
-*/
+## Default generated HTML
+
+	<div class="svg">
+		<svg ...>
+			...
+		</svg>
+	</div>
+
