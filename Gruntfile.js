@@ -50,7 +50,7 @@ module.exports = function(grunt) {
         },
         shell: {
             docs: {
-                command: './tools/copy_docs ../gh-pages/app/docs'
+                command: './tools/copy_docs ../gh-pages/src/app/docs'
             }
         }
     });
