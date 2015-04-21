@@ -7,9 +7,12 @@ $_primary_color: #0097A7;
 $_side_color: #263238;
 $_drawer_color: #37474F;
 $_drawer_highlight_color: #455A64;
-$_main_color: #00ACC1;
+$_main_color: #00BCD4;
 $_light_border: #ddd;
 $_header_font_size: 32px;
+$_logo_color: #00E676;
+$_button_color: #69F0AE;
+$_button_color_highlight: $_logo_color;
 
 html, body {
     height: 100%;
@@ -47,7 +50,7 @@ body {
 
     .logo {
         position: absolute;
-        fill: #00E676;
+        fill: $_logo_color;
     }
 
     .highlight {
@@ -66,16 +69,18 @@ body {
     }
 
     .btn-demo {
-        background: $_main_color;
-        color: #fff;
+        background: $_button_color;
+        color: rgba(0,0,0,.7);
         padding: 6px 10px;
         display: inline-block;
         margin: 0 0 10px 0;
         text-transform: uppercase;
         border-radius: 3px;
+        font-weight: 400;
 
         &:hover {
-            background: #00838F;
+            background: $_main_color;
+            color: #fff;
         }
     }
     code, pre {
@@ -220,9 +225,9 @@ body {
         }
 
         .logo {
-            width: 40px;
-            height: 40px;
-            top: 52px;
+            width: 48px;
+            height: 48px;
+            top: 48px;
             left: 16px;
         }
     }

@@ -1,24 +1,3 @@
-/*
-Usage:
-
-var paperShadow = require('polythene/paper-shadow/paper-shadow');
-m.component(paperShadow, {
-    z: 1,
-    content: 'z=1',
-    animated: true
-})
-
-Options:
-
-    tag (optional) (String): default 'div'
-    className (optional) (String): extra CSS class appended to 'icon-button'
-    props
-    events
-    z (optional) (Number 0-5): the z-depth of the shadow
-    animated (optional) (Boolean): set this to true to animate the shadow when setting a new `z` value
-    content
-*/
-
 define([
     'polythene/polythene/polythene',
     'mithril',

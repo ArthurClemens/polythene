@@ -37,20 +37,22 @@ body {
     color: #0097A7;
     text-decoration: none; }
   .main .btn-demo {
-    background: #00ACC1;
-    color: #fff;
+    background: #69F0AE;
+    color: rgba(0, 0, 0, 0.7);
     padding: 6px 10px;
     display: inline-block;
     margin: 0 0 10px 0;
     text-transform: uppercase;
-    border-radius: 3px; }
+    border-radius: 3px;
+    font-weight: 400; }
     .main .btn-demo:hover {
-      background: #00838F; }
+      background: #00BCD4;
+      color: #fff; }
   .main code, .main pre {
     font-family: 'Inconsolata', courier, monospace; }
   .main h1 {
     color: #fff;
-    background: #00ACC1;
+    background: #00BCD4;
     font-size: 32px;
     margin: 0; }
   .main h1,
@@ -133,9 +135,9 @@ body {
       margin: 0 0 16px 0;
       padding: 96px 16px 24px 16px; }
     .drawer .logo {
-      width: 40px;
-      height: 40px;
-      top: 52px;
+      width: 48px;
+      height: 48px;
+      top: 48px;
       left: 16px; }
   .main {
     padding: 0 48px 48px 48px; }

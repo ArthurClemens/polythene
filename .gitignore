@@ -4,3 +4,5 @@ src/app/app.css.map
 src/app/lib
 .DS_Store
 src/app/.sass-cache
+
+*.scssc

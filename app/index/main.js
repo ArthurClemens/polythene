@@ -33,8 +33,14 @@ define(function(require) {
         url: 'icon',
         name: 'Icon'
     }, {
+        url: 'paper-shadow',
+        name: 'Paper Shadow'
+    }, {
         url: 'header-panel',
         name: 'Header Panel'
+    }, {
+        url: 'font-roboto',
+        name: 'Roboto Font'
     }];
 
     baseUrl = links[0].url;
