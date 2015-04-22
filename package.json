@@ -20,7 +20,8 @@
     "almond": "latest" 
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install-fonts": "webfont-dl \"https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic\" -o lib/font-roboto/fonts/font-roboto.css --font-out=lib/font-roboto/fonts --woff2=link --woff1==link --svg==link --ttf==link --eot==link"
   },
   "repository": {
     "type": "git",
