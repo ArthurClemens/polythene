@@ -17,10 +17,12 @@ Options:
 */
 
 define([
+    'polythene/polythene/polythene',
     'mithril',
     'polythene/icon/icon',
     'css!./item'
 ], function(
+    p,
     m,
     icon
 ) {
@@ -28,10 +30,16 @@ define([
 
     return {
         view: function(ctrl, opts) {
+            var defaultProps, tag, props;
             opts = opts || {};
-            return m((opts.tag || 'div[center][horizontal][layout]'), {
+            defaultProps = {
                 class: ['item', (opts.className || '')].join(' ')
-            }, [
+            };
+            tag = opts.tag || 'div[center][horizontal][layout]';
+            props = p.handleEventProps(defaultProps, opts, ctrl, this);
+            p.merge(props, opts.props);
+
+            return m(tag, props, [
                 opts.icon ? m.component(icon, opts.icon) : null,
                 opts.label ? m('div', opts.label) : null,
                 opts.content ? opts.content : null

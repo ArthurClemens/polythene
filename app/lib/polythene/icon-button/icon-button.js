@@ -12,14 +12,12 @@ define([
 
     return {
         view: function(ctrl, opts) {
-            opts = opts || {};
             var defaultProps, tag, props;
-
+            opts = opts || {};
             defaultProps = {
                 class: ['icon-button', (opts.active ? 'selected' : ''), (opts.className || '')].join(' ')
             };
             tag = opts.tag || 'div';
-
             props = p.handleEventProps(defaultProps, opts, ctrl, this);
             p.merge(props, opts.props);
 

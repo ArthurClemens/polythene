@@ -36,6 +36,9 @@ define(function(require) {
         url: 'icon-button',
         name: 'Icon Button'
     }, {
+        url: 'item',
+        name: 'Item'
+    }, {
         url: 'paper-shadow',
         name: 'Paper Shadow'
     }, {

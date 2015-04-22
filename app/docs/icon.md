@@ -37,7 +37,7 @@ Or pass `iconset` (sub folder) and filename (without `.svg`):
 | **tag** | optional | String | 'div' | HTML tag |
 | **className** | optional | String |  | Extra CSS class appended to 'icon' |
 | **src** | src or svg must be passed | String |  | Icon URL (for `img` only; for `svg` pass this in the svg parameter) |
-| **svg** | src or svg must be passed | Object |  | Parameters for [svg](/svg) |
+| **svg** | src or svg must be passed | Object |  | [svg](#svg) options object |
 | **type** | optional | String | 'normal' | Either 'small' (16px), 'normal' (24px), 'medium' (32px), 'large' (40px). Adds CSS class 'icon-small', 'icon-normal', 'icon-medium', 'icon-large.' `type: 'medium'` is the equivalent of passing `className: 'icon-medium'`. |
 
 
