@@ -47,6 +47,9 @@ define(function(require) {
     }, {
         url: 'font-roboto',
         name: 'Roboto Font'
+    }, {
+        url: 'layout',
+        name: 'Layout'
     }];
 
     baseUrl = links[0].url;
