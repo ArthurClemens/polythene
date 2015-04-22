@@ -1,49 +1,3 @@
-/*
-Usage:
-
-var listTile = require('polythene/list-tile/list-tile');
-m.component(listTile, {
-    title: 'Toolbar',
-    icon: {
-        type: 'medium',
-        className: 'demo-cirle-icon',
-        svg: {
-            name: 'folder',
-            iconset: 'mdi'
-        }
-    },
-    url: 'toolbar.html',
-    url_config: null,
-    secondary_url: 'javascript:alert("Faved Toolbar")',
-    secondary_url_config: null,
-    secondary: m.component(icon, {
-        svg: {
-            name: 'heart-outline',
-            iconset: 'mdi'
-        }
-    })
-})
-
-Options:
-
-    tag (optional) (String): default 'div'
-    className (optional) (String): extra CSS class appended to 'icon'
-    title (required) (String or HTML Content)
-    info (optional) (String or HTML Content): info text (1 line high)
-    info_double_line (String or HTML Content): info text (2 lines high)
-    icon (optional) (Object): icon module options
-
-    primary_tag (optional) (String): default: 'a[flex]'
-    primary_url (optional) (String): URL
-    primary_url_config (optional) (Object): default: m.route; override with another object or 'null'
-
-    secondary (optional) (HTML Content or Mithril template or component): secondary content
-    secondary_tag (optional) (String): default: 'a[horizontal][layout][center]' (for one or two lines) and 'a[vertical][layout][start]' (for info_double_line)
-    secondary_url (optional) (String): URL
-    secondary_url_config (optional) (Object): default: m.route; override with another object or 'null'
-
-*/
-
 define([
     'polythene/polythene/polythene',
     'mithril',
@@ -65,7 +19,7 @@ define([
             heightClass = 'list-tile-single-line';
             if (opts.info) {
                 heightClass = 'list-tile-two-line';
-            } else if (opts.info_double_line) {
+            } else if (opts.info_high) {
                 heightClass = 'list-tile-three-line';
             }
 
@@ -99,7 +53,7 @@ define([
                 m('.list-tile-content', [
                     m('.list-tile-title', opts.title),
                     opts.info ? m('.list-tile-info', opts.info) : null,
-                    opts.info_double_line ? m('.list-tile-info.list-tile-double-info', opts.info_double_line) : null
+                    opts.info_high ? m('.list-tile-info.list-tile-double-info', opts.info_high) : null
                 ])
             ]);
 
@@ -115,7 +69,7 @@ define([
 
             if (opts.secondary) {
                 var defaultSecondaryTag = 'a[horizontal][layout][center]';
-                if (opts.info_double_line) {
+                if (opts.info_high) {
                     defaultSecondaryTag = 'a[vertical][layout][start]';
                 }
                 secondaryContent = m((opts.secondary_tag ? opts.secondary_tag : defaultSecondaryTag), {

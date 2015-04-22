@@ -39,6 +39,9 @@ define(function(require) {
         url: 'item',
         name: 'Item'
     }, {
+        url: 'list-tile',
+        name: 'List Tile'
+    }, {
         url: 'paper-shadow',
         name: 'Paper Shadow'
     }, {
