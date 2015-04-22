@@ -33,6 +33,9 @@ define(function(require) {
         url: 'icon',
         name: 'Icon'
     }, {
+        url: 'icon-button',
+        name: 'Icon Button'
+    }, {
         url: 'paper-shadow',
         name: 'Paper Shadow'
     }, {
@@ -130,7 +133,7 @@ define(function(require) {
                 main(docData),
                 drawer()
             ]),
-            m('.footer', m.trust('Project by Arthur Clemens 2015. Project page on <a href="https://github.com/ArthurClemens/Polythene">Github</a>. Logo icon design by <a href="https://thenounproject.com/acider/">Miguel C Balandrano</a>.'))
+            m('.footer', m.trust('Polythene by Arthur Clemens 2015. Project page on <a href="https://github.com/ArthurClemens/Polythene">Github</a>. Logo icon design by <a href="https://thenounproject.com/acider/">Miguel C Balandrano</a>.'))
         ];
     };
 

@@ -16,7 +16,7 @@ body {
 .drawer {
   background: #37474F;
   position: relative;
-  color: #fff; }
+  color: rgba(255, 255, 255, 0.6); }
   .drawer h2 {
     font-size: 32px;
     font-weight: 400;
@@ -28,7 +28,8 @@ body {
     position: absolute;
     fill: #00E676; }
   .drawer .highlight {
-    background: #455A64; }
+    color: #fff;
+    font-weight: 500; }
 .main {
   width: 100%;
   overflow: hidden;
@@ -37,17 +38,18 @@ body {
     color: #00BCD4;
     text-decoration: none; }
   .main .btn-demo {
-    background: #69F0AE;
+    background: #B9F6CA;
     color: rgba(0, 0, 0, 0.7);
     padding: 6px 10px;
     display: inline-block;
     margin: 0 0 10px 0;
     text-transform: uppercase;
     border-radius: 3px;
-    font-weight: 400; }
+    font-weight: 400;
+    border: 1px solid #69F0AE;
+    line-height: 1; }
     .main .btn-demo:hover {
-      background: #00BCD4;
-      color: #fff; }
+      background: #69F0AE; }
   .main code, .main pre {
     font-family: 'Inconsolata', courier, monospace; }
   .main h1 {

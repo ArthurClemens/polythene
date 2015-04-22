@@ -1,31 +1,10 @@
-/*
-Usage:
-
-var iconButton = require('polythene/icon-button/icon-button');
-m.component(iconButton, {
-    icon: {
-        className: 'md',
-        svg: {
-            group: 'navigation',
-            name: 'menu'
-        }
-    }
-})
-
-Options:
-
-    tag (optional) (String): default 'div'
-    className (optional) (String): extra CSS class appended to 'icon-button'
-    clickHandler (optional) (Function): default null
-    icon (mandatory) (Object): parameters for icon
-    content
-*/
-
 define([
+    'polythene/polythene/polythene',
     'mithril',
     'polythene/icon/icon',
     'css!./icon-button'
 ], function(
+    p,
     m,
     icon
 ) {
@@ -34,10 +13,17 @@ define([
     return {
         view: function(ctrl, opts) {
             opts = opts || {};
-            return m((opts.tag || 'div'), {
-                    class: ['icon-button', opts.className || null].join(' '),
-                    onclick: (opts.clickHandler || null)
-                },
+            var defaultProps, tag, props;
+
+            defaultProps = {
+                class: ['icon-button', (opts.active ? 'selected' : ''), (opts.className || '')].join(' ')
+            };
+            tag = opts.tag || 'div';
+
+            props = p.handleEventProps(defaultProps, opts, ctrl, this);
+            p.merge(props, opts.props);
+
+            return m(tag, props,
                 opts.content || m.component(icon, opts.icon)
             );
         }

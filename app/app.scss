@@ -11,8 +11,8 @@ $_link_color: $_main_color;
 $_light_border: #ddd;
 $_header_font_size: 32px;
 $_logo_color: #00E676;
-$_button_color: #69F0AE;
-$_button_color_highlight: $_logo_color;
+$_button_color: #B9F6CA;
+$_button_color_highlight: #69F0AE;
 
 html, body {
     height: 100%;
@@ -35,7 +35,7 @@ body {
 .drawer {
     background: $_drawer_color;
     position: relative;
-    color: #fff;
+    color: rgba(255,255,255,0.6);
 
     h2 {
         font-size: $_header_font_size;
@@ -54,7 +54,8 @@ body {
     }
 
     .highlight {
-        background: $_drawer_highlight_color;
+        color: #fff;
+        font-weight: 500;
     }
 }
 
@@ -77,10 +78,11 @@ body {
         text-transform: uppercase;
         border-radius: 3px;
         font-weight: 400;
+        border: 1px solid #69F0AE;
+        line-height: 1;
 
         &:hover {
-            background: $_main_color;
-            color: #fff;
+            background: $_button_color_highlight;
         }
     }
     code, pre {
