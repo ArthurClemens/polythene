@@ -6,7 +6,7 @@ Alpha status. Things will break.
 
 
 * [Examples](https://github.com/ArthurClemens/Polythene-Examples)
-* [Documentation](http://arthurclemens.github.io/Polythene/#polythene)
+* [Documentation](http://polythene.js.org)
 
 
 
