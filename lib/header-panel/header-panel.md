@@ -38,7 +38,7 @@ The header-panel will not display if its parent does not have a height.
 | **tag** | optional | String | 'div' | HTML tag |
 | **className** | optional | String |  | Extra CSS class appended to 'header-panel' |
 | **mode** | optional | String | 'standard'| Controls header and scrolling behavior - see below |
-| **header** | optional | Mithril template or Object | | The header above the scrolling area - see below |
+| **header** | optional | Mithril template or options object | | The header above the scrolling area - see below |
 | **content** | optional | Mithril template or String | | Panel contents |
 | **shadow** | optional | Boolean | true | If set to `false`, no shadow will be shown, regardless the mode |
 | **tallClass** | optional | String | 'tall' | Set this when the header has a class other than 'tall' and the height needs to be toggled. |
