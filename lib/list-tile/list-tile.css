@@ -24,6 +24,9 @@
   position: absolute;
   top: 0;
 }
+.list-tile.indent .list-tile-primary {
+  margin-left: 56px;
+}
 .list-tile .list-tile-secondary {
   margin-left: 16px;
   height: 32px;

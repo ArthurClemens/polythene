@@ -9,6 +9,7 @@
     $_icon_size_medium: 24px;
     $_icon_size_small: 16px;
     $_side_padding: 2 * $component_grid_unit_px;
+    $_indent: 72px;
 
     position: relative;
     padding: 8px $_side_padding;
@@ -32,6 +33,12 @@
         .icon {
             position: absolute;
             top: 0;
+        }
+    }
+
+    &.indent {
+        .list-tile-primary {
+            margin-left: $_indent - $_side_padding;
         }
     }
 
@@ -93,7 +100,7 @@
     }
 
     .icon + .list-tile-content {
-        margin-left: 72px - $_side_padding;
+        margin-left: $_indent - $_side_padding;
     }
 
     .list-tile-info {
