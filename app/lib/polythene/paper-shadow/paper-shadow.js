@@ -16,17 +16,17 @@ define([
             };
         },
         view: function(ctrl, opts) {
-            var z, defaultProps, tag, helperTag, props;
+            var z, defaultProps, tag, helperTag, eventProps, props;
             opts = opts || {};
             z = ctrl.z();
             defaultProps = {
-                class: ['paper-shadow', (opts.className || '')].join(' '),
+                class: ['paper-shadow', (opts.className || null)].join(' '),
                 z: z
             };
             tag = opts.tag || 'div';
-            helperTag = 'div[fit]' + (opts.animated ? '[animated]' : '');
-            props = p.handleEventProps(defaultProps, opts, ctrl, this);
-            p.merge(props, opts.props);
+            helperTag = 'div[fit]' + (opts.animated ? '[animated]' : null);
+            eventProps = p.handleEventProps(opts.events, this, ctrl);
+            props = p.assign(defaultProps, eventProps, opts.props);
 
             return m(tag, props, [
                 m(helperTag, {

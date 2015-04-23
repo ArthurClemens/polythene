@@ -16,7 +16,7 @@ define([
         if (opts.content) {
             return opts.content;
         } else if (opts.svg) {
-            var svgopts = p.copy(opts.svg); // copy object
+            var svgopts = p.assign({}, opts.svg);
             svgopts.tag = svgopts.tag || 'i[fit]';
             return m.component(svg, svgopts);
         } else {
@@ -30,18 +30,18 @@ define([
 
     return {
         view: function(ctrl, opts) {
-            var defaultProps, tag, props;
+            var defaultProps, tag, props, eventProps;
             opts = opts || {};
             if (!opts.svg && !opts.src) {
                 if (console) console.log('polythene/icon/icon: missing opts.src or opts.svg');
                 return;
             }
             defaultProps = {
-                class: ['icon', 'icon-' + (opts.type || 'normal'), (opts.className || '')].join(' ')
+                class: ['icon', 'icon-' + (opts.type || 'normal'), (opts.className || null)].join(' ')
             };
             tag = opts.tag || 'div';
-            props = p.handleEventProps(defaultProps, opts, ctrl, this);
-            p.merge(props, opts.props);
+            eventProps = p.handleEventProps(opts.events, this, ctrl);
+            props = p.assign(defaultProps, eventProps, opts.props);
 
             return m(tag, props, content(opts));
         }

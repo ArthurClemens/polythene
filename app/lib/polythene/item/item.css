@@ -13,7 +13,7 @@
   width: 1.5em;
 }
 .item.selected {
-  font-weight: bold;
+  font-weight: 700;
 }
 .item .icon:not([role=img]) {
   margin: 0 16px 0 4px;

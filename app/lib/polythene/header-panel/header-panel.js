@@ -55,7 +55,7 @@ define([
                 return m.component(toolbar, opts.toolbar);
             } else if (opts.content) {
                 return m('.header animate', {
-                    className: [(opts.className || ''), isTall ? tallClass : ''].join(' ')
+                    className: [(opts.className || null), isTall ? tallClass : null].join(' ')
                 }, opts.content);
             } else {
                 return m('div', opts);
@@ -100,7 +100,7 @@ define([
             };
         },
         view: function(ctrl, opts) {
-            var defaultProps, tag, header, props, initElements;
+            var defaultProps, tag, header, props, eventProps, initElements;
             opts = opts || {};
             opts.header = opts.header || {};
 
@@ -118,13 +118,13 @@ define([
             header = opts.header ? m.component(headerComponent, opts.header, ctrl.isTall(), ctrl.tallClass()) : null;
 
             defaultProps = {
-                class: ['header-panel', (opts.className || '')].join(' '),
+                class: ['header-panel', (opts.className || null)].join(' '),
                 mode: mode
             };
             tag = opts.tag || 'div';
 
-            props = p.handleEventProps(defaultProps, opts, ctrl, this);
-            p.merge(props, opts.props);
+            eventProps = p.handleEventProps(opts.events, this, ctrl);
+            props = p.assign(defaultProps, eventProps, opts.props);
 
             initElements = function(outerContainer, inited) {
                 if (inited) return;

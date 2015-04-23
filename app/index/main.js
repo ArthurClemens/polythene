@@ -4,6 +4,7 @@ define(function(require) {
     var m = require('mithril'),
         _ = require('lodash'),
         marked = require('marked'),
+        list = require('polythene/list/list'),
         listTile = require('polythene/list-tile/list-tile'),
         icon = require('polythene/icon/icon'),
         app,
@@ -11,6 +12,7 @@ define(function(require) {
         navItem,
         drawer,
         main,
+        introLinks,
         links,
         defaultTitle,
         baseUrl;
@@ -22,11 +24,13 @@ define(function(require) {
 
     defaultTitle = 'Polythene Documentation';
 
-    links = [{
+    introLinks = [{
         url: 'polythene',
         name: 'Introduction',
         title: defaultTitle
-    }, {
+    }];
+
+    links = [{
         url: 'svg',
         name: 'SVG'
     }, {
@@ -41,6 +45,9 @@ define(function(require) {
     }, {
         url: 'list-tile',
         name: 'List Tile'
+    }, {
+        url: 'list',
+        name: 'List'
     }, {
         url: 'paper-shadow',
         name: 'Paper Shadow'
@@ -70,7 +77,7 @@ define(function(require) {
 
     drawer = function() {
         var highlight;
-        return m('.drawer', [
+        return m('.drawer.dark-theme', [
             m.component(icon, {
                 svg: {
                     src: 'app/img/recycle.svg'
@@ -81,9 +88,20 @@ define(function(require) {
                 href: baseUrl,
                 config: m.route
             }, 'Polythene')),
-            links.map(function(link) {
-                highlight = (m.route() === link.url);
-                return navItem(link.name, link.url, highlight);
+            m.component(list, {
+                tiles: introLinks.map(function(link) {
+                    highlight = (m.route() === link.url);
+                    return navItem(link.name, link.url, highlight);
+                })
+            }),
+            m.component(list, {
+                header: {
+                    title: 'Components'
+                },
+                tiles: links.map(function(link) {
+                    highlight = (m.route() === link.url);
+                    return navItem(link.name, link.url, highlight);
+                })
             })
         ]);
     };

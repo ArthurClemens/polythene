@@ -6,11 +6,15 @@ define(function() {
     return {
         iconSet: defaultIconSet,
 
-        handleEventProps: function(props, args, ctrl, component) {
-            var n, fn;
-            var copy = this.copy(props);
-            for (n in args.events) {
-                fn = args.events[n];
+        handleEventProps: function(eventProps, component, ctrl) {
+            var n, fn, copy;
+            if (eventProps === undefined || eventProps === null) {
+                return {};
+            }
+            copy = {};
+            eventProps = eventProps || {};
+            for (n in eventProps) {
+                fn = eventProps[n];
                 copy[n] = function(e) {
                     fn(e, component, ctrl);
                 };
@@ -18,21 +22,29 @@ define(function() {
             return copy;
         },
 
-        merge: function(obj1, obj2) {
-            if (!obj1 || !obj2) {
-                return;
+        assign: function(target) {
+            if (target === undefined || target === null) {
+                throw new TypeError('Cannot convert first argument to object');
             }
-            for (var n in obj2) {
-                obj1[n] = obj2[n];
-            }
-        },
 
-        copy: function(obj) {
-            var n, copy = {};
-            for (n in obj) {
-                copy[n] = obj[n];
+            var to = Object(target);
+            for (var i = 1; i < arguments.length; i++) {
+                var nextSource = arguments[i];
+                if (nextSource === undefined || nextSource === null) {
+                    continue;
+                }
+                nextSource = Object(nextSource);
+
+                var keysArray = Object.keys(Object(nextSource));
+                for (var nextIndex = 0, len = keysArray.length; nextIndex < len; nextIndex++) {
+                    var nextKey = keysArray[nextIndex];
+                    var desc = Object.getOwnPropertyDescriptor(nextSource, nextKey);
+                    if (desc !== undefined && desc.enumerable) {
+                        to[nextKey] = nextSource[nextKey];
+                    }
+                }
             }
-            return copy;
+            return to;
         }
     };
 }.call());

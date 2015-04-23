@@ -8,6 +8,17 @@ $iconSizeMedium: 4 * $component_grid_unit_px; // 32
 $iconSize: 		 3 * $component_grid_unit_px; // 24
 $iconSizeSmall:  2 * $component_grid_unit_px; // 16
 
+$fontWeightNormal: 400;
+$fontWeightMedium: 500;
+$fontWeightBold: 700;
+
+$textColorPrimary: rgba(0,0,0,.87);
+$textColorSecondary: rgba(0,0,0,.54);
+$textColorHints: rgba(0,0,0,.26);
+
+$textColorDarkThemePrimary: rgba(255,255,255,1);
+$textColorDarkThemeSecondary: rgba(255,255,255,.7);
+$textColorDarkThemeHints: rgba(255,255,255,.3);
 
 @mixin single-line {
 	white-space: nowrap;

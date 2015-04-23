@@ -17,7 +17,7 @@
     }
 
     &.selected {
-      font-weight: bold;
+      font-weight: $fontWeightBold;
     }
     .icon:not([role=img]) {
         margin: 0 16px 0 4px;

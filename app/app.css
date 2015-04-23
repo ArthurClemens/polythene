@@ -16,7 +16,7 @@ body {
 .drawer {
   background: #37474F;
   position: relative;
-  color: rgba(255, 255, 255, 0.6); }
+  color: white; }
   .drawer h2 {
     font-size: 32px;
     font-weight: 400;
@@ -28,8 +28,10 @@ body {
     position: absolute;
     fill: #00E676; }
   .drawer .highlight {
-    color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
     font-weight: 500; }
+  .drawer .list .list-tile.subheader {
+    color: rgba(255, 255, 255, 0.3); }
 .main {
   width: 100%;
   overflow: hidden;
@@ -63,10 +65,14 @@ body {
     font-weight: 400; }
   .main h2, .main h3 {
     margin: 35px 0 15px 0; }
-  .main pre {
+  .main pre,
+  .main blockquote {
     padding: 16px;
     background: #f0f0f0;
-    overflow-x: scroll; }
+    overflow-x: scroll;
+    margin: 1em 0; }
+  .main blockquote {
+    font-style: italic; }
   .main table {
     border-collapse: collapse;
     overflow-x: scroll; }

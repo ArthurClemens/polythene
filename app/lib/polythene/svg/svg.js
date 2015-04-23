@@ -22,7 +22,7 @@ define([
 
     return {
         controller: function(opts) {
-            this.svg = m.prop('');
+            this.svg = m.prop();
             opts = opts || {};
             var path = opts.src ? opts.src : getPath(opts),
                 requirePath = 'text!' + path,
@@ -39,19 +39,18 @@ define([
             }
         },
         view: function(ctrl, opts) {
-            var defaultProps, tag, props;
+            var defaultProps, tag, props, eventProps;
             opts = opts || {};
             if (!opts.src && !opts.name) {
                 if (console) console.log('polythene/svg/svg: missing opts.src or opts.name');
                 return;
             }
             defaultProps = {
-                class: ['svg', (opts.className || '')].join(' ')
+                class: ['svg', (opts.className || null)].join(' ')
             };
             tag = opts.tag || 'div';
-
-            props = p.handleEventProps(defaultProps, opts, ctrl, this);
-            p.merge(props, opts.props);
+            eventProps = p.handleEventProps(opts.events, this, ctrl);
+            props = p.assign(defaultProps, eventProps, opts.props);
 
             return m(tag, props, m.trust(ctrl.svg()));
         }
