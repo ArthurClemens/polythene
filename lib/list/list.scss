@@ -1,0 +1,11 @@
+@import "../polythene/polythene";
+
+.list {
+    $_side_padding: 2 * $component_grid_unit_px;
+
+    padding: 8px 0;
+
+    &.list-has-subheader {
+        padding: 0;
+    }
+}

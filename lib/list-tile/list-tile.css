@@ -2,6 +2,16 @@
   position: relative;
   padding: 8px 16px;
   height: 48px;
+  color: rgba(0, 0, 0, 0.87);
+}
+.list-tile.subheader {
+  height: 48px;
+  padding: 0 16px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.54);
+}
+.list-tile.subheader .list-tile-title {
+  font-size: 14px;
 }
 .list-tile .list-tile-title {
   font-size: 16px;
@@ -85,9 +95,20 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: rgba(0, 0, 0, 0.54);
 }
 .list-tile .list-tile-info.list-tile-double-info {
   height: 2.6em;
   max-height: 2.6em;
   white-space: normal;
+}
+
+.dark-theme .list-tile {
+  color: white;
+}
+.dark-theme .list-tile.subheader {
+  color: rgba(255, 255, 255, 0.7);
+}
+.dark-theme .list-tile .list-tile-info {
+  color: rgba(255, 255, 255, 0.7);
 }

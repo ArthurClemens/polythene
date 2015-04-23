@@ -14,6 +14,18 @@
     position: relative;
     padding: 8px $_side_padding;
     height: $_one_line_height;
+    color: $textColorPrimary;
+
+    &.subheader {
+        height: 48px;
+        padding: 0 $_side_padding;
+        font-weight: $fontWeightMedium;
+        color: $textColorSecondary;
+
+        .list-tile-title {
+            font-size: 14px;
+        }
+    }
 
     .list-tile-title {
         font-size: 16px;
@@ -108,11 +120,26 @@
         line-height: $line_height;
         max-height: $line_height;
         @include single-line;
+        color: $textColorSecondary;
 
         &.list-tile-double-info {
             height: 2 * $line_height;
             max-height: 2 * $line_height;
             white-space: normal;
+        }
+    }
+}
+
+.dark-theme {
+    .list-tile {
+        color: $textColorDarkThemePrimary;
+
+        &.subheader {
+            color: $textColorDarkThemeSecondary;
+        }
+
+        .list-tile-info {
+            color: $textColorDarkThemeSecondary;
         }
     }
 }

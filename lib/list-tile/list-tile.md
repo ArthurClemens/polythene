@@ -2,7 +2,7 @@
 
 <a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/list-tile.html">Demo</a>
 
-Displays a list element, part of a list.
+Displays a list element.
 
 
 ## Variations
