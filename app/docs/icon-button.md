@@ -49,8 +49,8 @@ Instead of an `icon` options object, you can pass an icon component:
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **tag** | optional | String | 'div' | HTML tag |
 | **className** | optional | String |  | Extra CSS class appended to 'icon-button' |
-| **icon** | icon or content must be passed | Object |  | [icon](#icon) options object |
-| **content** | icon or content must be passed | Mithril template or String | | Alternative content if no icon object is used |
+| **icon** | either icon or content must be passed | Object |  | [icon](#icon) options object |
+| **content** | either icon or content must be passed | Mithril template or String | | Alternative content if no icon object is used |
 | **active** | optional | Boolean | | Set to true to show the active state (with border and background) |
 
 

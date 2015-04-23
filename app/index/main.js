@@ -45,6 +45,9 @@ define(function(require) {
         url: 'paper-shadow',
         name: 'Paper Shadow'
     }, {
+        url: 'toolbar',
+        name: 'Toolbar'
+    }, {
         url: 'header-panel',
         name: 'Header Panel'
     }, {

@@ -45,10 +45,10 @@ Note that in this case `require('polythene/svg/svg')` is not needed (this is han
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **tag** | optional | String | 'div' | HTML tag |
 | **className** | optional | String |  | CSS class appended to 'svg' |
-| **src** | src or iconset+name must be passed | String |  | SVG URL |
-| **iconset** | src or iconset+name must be passed | String |  | Iconset name - see below |
+| **src** | either src or iconset+name must be passed | String |  | SVG URL |
+| **iconset** | either src or iconset+name must be passed | String |  | Iconset name - see below |
 | **group** | optional | String |  | Subfolder within iconset |
-| **name** | src or iconset+name must be passed | String |  | SVG filename without .svg extension |
+| **name** | either src or iconset+name must be passed | String |  | SVG filename without .svg extension |
 | **refresh** | optional | Boolean | false | Set to true to fetch the SVG resource on reloads |
 
 

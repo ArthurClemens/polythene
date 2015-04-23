@@ -4,6 +4,8 @@
 
 Displays a list element, part of a list.
 
+## Variations
+
 A list tile can have 1 to 3 lines:
 
 * `title`: first line
