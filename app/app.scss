@@ -36,6 +36,7 @@ body {
     background: $_drawer_color;
     position: relative;
     color: rgba(255,255,255,1);
+    padding: 0 0 24px 0;
 
     h2 {
         font-size: $_header_font_size;
@@ -60,7 +61,7 @@ body {
 
     .list {
         .list-tile.subheader {
-            color: rgba(255,255,255,.3);
+            color: rgba(255,255,255,.35);
         }
     }
 }
@@ -118,6 +119,10 @@ body {
     }
     blockquote {
         font-style: italic;
+
+        p {
+            margin: 0;
+        }
     }
     table {
         border-collapse: collapse;

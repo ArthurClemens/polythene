@@ -2,7 +2,7 @@
 
 <a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/svg.html">Demo</a>
 
-Loads SVG code asychronously and displays this on the page, for instance in an icon.
+Loads SVG code asychronously and displays this on the page, for instance in an [icon](#icon).
 
 ## Usage
 

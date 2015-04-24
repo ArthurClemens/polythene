@@ -2,11 +2,11 @@
 
 <a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/icon-button.html">Demo</a>
 
-Displays an icon as a button.
+Displays an [icon](#icon) as a button.
 
 ## Usage
 
-Icon Button takes an [icon](#icon) options object:
+Icon Button takes an icon options object:
 
 	var iconBtn = require('polythene/icon-button/icon-button');
 

@@ -16,7 +16,8 @@ body {
 .drawer {
   background: #37474F;
   position: relative;
-  color: white; }
+  color: white;
+  padding: 0 0 24px 0; }
   .drawer h2 {
     font-size: 32px;
     font-weight: 400;
@@ -31,7 +32,7 @@ body {
     background-color: rgba(255, 255, 255, 0.1);
     font-weight: 500; }
   .drawer .list .list-tile.subheader {
-    color: rgba(255, 255, 255, 0.3); }
+    color: rgba(255, 255, 255, 0.35); }
 .main {
   width: 100%;
   overflow: hidden;
@@ -73,6 +74,8 @@ body {
     margin: 1em 0; }
   .main blockquote {
     font-style: italic; }
+    .main blockquote p {
+      margin: 0; }
   .main table {
     border-collapse: collapse;
     overflow-x: scroll; }

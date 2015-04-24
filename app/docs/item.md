@@ -2,7 +2,13 @@
 
 <a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/item.html">Demo</a>
 
-Item is a simple horizontal element with a label and an optional icon. Item can be extended with CSS and custom content.
+Item is a simple horizontal element with a label and an optional icon.
+
+
+## Variations
+
+Item can be extended with CSS and custom content - see the custom example below.
+
 
 ## Usage
 

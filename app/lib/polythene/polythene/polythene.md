@@ -40,7 +40,7 @@ This principle can also be used to create a larger component, such as an icon bu
 		content: menuIcon
 	});
 
-Or using object notation:
+Because icon button accepts an icon options object, we can also use object notation:
 
 	var iconBtn = require('polythene/icon-button/icon-button');
 	var myIconBtn = m.component(iconBtn({
