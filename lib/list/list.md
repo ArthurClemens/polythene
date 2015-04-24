@@ -2,15 +2,16 @@
 
 <a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/list.html">Demo</a>
 
-Displays a list of [List Tiles](#list-tile), with an optional header (itself a list tile). 
+Displays a list of [list tiles](#list-tile), with an optional header (which is also a list tile). 
 
 
 ## Variations
 
 > If there is a floating action button left-aligned with the avatar/icon in a list,
 > align the subheader with the text content.
+> [source](http://www.google.com/design/spec/components/subheaders.html#subheaders-list-subheaders)
 
-To align the subheader with the text, use `className: 'indent'`.
+To align the subheader with the text, add parameter `className` with value `'indent'`.
 
 
 ## Usage
@@ -39,9 +40,9 @@ To align the subheader with the text, use `className: 'indent'`.
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **tag** | optional | String | 'div' | HTML tag |
-| **className** | optional | String |  | Extra CSS class appended to 'list-tile' |
-| **header** | optional | Object | | Options object for a [List Tile](#list-tile) |
-| **tiles** | optional | Array of type Mithril template| | List of [List Tiles](#list-tile) |
+| **className** | optional | String |  | Extra CSS class appended to 'list-tile'; use 'indent' to align the subheader with text contents of the list tiles below |
+| **header** | optional | Object | | Options object for a [list tile](#list-tile); use `title` for the text label |
+| **tiles** | optional | Array of type Mithril template | | List of [list tiles](#list-tile) |
 
 
 ## Default generated HTML
@@ -64,3 +65,7 @@ To align the subheader with the text, use `className: 'indent'`.
 	    </div>
 	</div>
 
+
+## TODO
+
+* Sticky headers

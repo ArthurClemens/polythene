@@ -2,7 +2,9 @@
 
 <a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/list-tile.html">Demo</a>
 
-Displays a list element.
+Displays a list element as part of a [list](#list).
+
+Material Design lists are not part of Polymer. This implementation follows [the design specification](http://www.google.com/design/spec/components/lists.html).
 
 
 ## Variations
