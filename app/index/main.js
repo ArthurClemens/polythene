@@ -12,8 +12,8 @@ define(function(require) {
         navItem,
         drawer,
         main,
-        introLinks,
         links,
+        linkMap,
         defaultTitle,
         baseUrl;
 
@@ -24,48 +24,57 @@ define(function(require) {
 
     defaultTitle = 'Polythene Documentation';
 
-    introLinks = [{
-        url: 'polythene',
-        name: 'Introduction',
-        title: defaultTitle
-    }];
-
     links = [{
-        url: 'svg',
-        name: 'SVG'
+        label: null,
+        links: [{
+            url: 'polythene',
+            name: 'Introduction',
+            title: defaultTitle
+        }]
     }, {
-        url: 'icon',
-        name: 'Icon'
-    }, {
-        url: 'icon-button',
-        name: 'Icon Button'
-    }, {
-        url: 'item',
-        name: 'Item'
-    }, {
-        url: 'list-tile',
-        name: 'List Tile'
-    }, {
-        url: 'list',
-        name: 'List'
-    }, {
-        url: 'paper-shadow',
-        name: 'Paper Shadow'
-    }, {
-        url: 'toolbar',
-        name: 'Toolbar'
-    }, {
-        url: 'header-panel',
-        name: 'Header Panel'
-    }, {
-        url: 'font-roboto',
-        name: 'Roboto Font'
-    }, {
-        url: 'layout',
-        name: 'Layout'
+        label: 'Components',
+        links: [{
+            url: 'svg',
+            name: 'SVG'
+        }, {
+            url: 'icon',
+            name: 'Icon'
+        }, {
+            url: 'icon-button',
+            name: 'Icon Button'
+        }, {
+            url: 'item',
+            name: 'Item'
+        }, {
+            url: 'list-tile',
+            name: 'List Tile'
+        }, {
+            url: 'list',
+            name: 'List'
+        }, {
+            url: 'paper-shadow',
+            name: 'Paper Shadow'
+        }, {
+            url: 'toolbar',
+            name: 'Toolbar'
+        }, {
+            url: 'header-panel',
+            name: 'Header Panel'
+        }, {
+            url: 'font-roboto',
+            name: 'Roboto Font'
+        }, {
+            url: 'layout',
+            name: 'Layout'
+        }]
     }];
 
-    baseUrl = links[0].url;
+    linkMap = {};
+    _.forEach(_.flatten(_.pluck(links, 'links')), function(link) {
+        linkMap[link.url] = link; 
+    });
+
+    baseUrl = links[0].links[0].url;
 
     navItem = function(title, url, highlight) {
         return m.component(listTile, {
@@ -88,53 +97,34 @@ define(function(require) {
                 href: baseUrl,
                 config: m.route
             }, 'Polythene')),
-            m.component(list, {
-                tiles: introLinks.map(function(link) {
-                    highlight = (m.route() === link.url);
-                    return navItem(link.name, link.url, highlight);
-                })
-            }),
-            m.component(list, {
-                header: {
-                    title: 'Components'
-                },
-                tiles: links.map(function(link) {
-                    highlight = (m.route() === link.url);
-                    return navItem(link.name, link.url, highlight);
-                })
+            links.map(function(group) {
+                return m.component(list, {
+                    header: group.label ? {
+                        title: group.label
+                    } : null,
+                    tiles: group.links.map(function(link) {
+                        highlight = (m.route() === link.url);
+                        return navItem(link.name, link.url, highlight);
+                    })
+                });
             })
         ]);
     };
 
-    main = function(content) {
+    main = function(title, content) {
         var parsed = content ? marked(content) : '';
-        return m('.main', m.trust(parsed));
+        return m('.main',
+            m('h1', title),
+            m.trust(parsed)
+        );
     };
 
     app = {};
 
     app.vm = {
         init: function() {
-            app.vm.data = function() {
-                var moduleName, url;
-                moduleName = m.route.param('module');
-                url = 'app/docs/' + moduleName + '.md';
-                return m.request({
-                    method: 'GET',
-                    url: url,
-                    deserialize: function(value) {
-                        return value;
-                    }
-                });
-            };
-
             app.vm.currentLink = function() {
-                var moduleName, currentLink;
-                moduleName = m.route.param('module');
-                currentLink = _.find(links, function(link) {
-                    return link.url === moduleName;
-                });
-                return currentLink;
+                return linkMap[m.route.param('module')];
             };
 
             app.vm.updateHead = function() {
@@ -147,20 +137,31 @@ define(function(require) {
     };
 
     app.controller = function() {
+        var docs;
         app.vm.init();
-        this.data = app.vm.data().then(function(data) {
-            return data;
-        }, function(error) {
-            if (console) console.log('no data loaded:', error);
+        docs = m.request({
+            method: 'GET',
+            url: 'app/docs/' + m.route.param('module') + '.md',
+            background: true,
+            deserialize: function(value) {
+                return value;
+            }
         });
+        docs.then(m.redraw);
+        return {
+            docs: docs
+        };
     };
 
     app.view = function(ctrl) {
-        var docData;
-        docData = ctrl.data();
+        var docData, currentLink;
+        docData = ctrl.docs();
+        currentLink = app.vm.currentLink();
         return [
-            m('.scaffold[layout][horizontal][reverse]', {config: app.vm.updateHead}, [
-                main(docData),
+            m('.scaffold[layout][horizontal][reverse]', {
+                config: app.vm.updateHead
+            }, [
+                main(currentLink.name, docData),
                 drawer()
             ]),
             m('.footer', m.trust('Polythene by Arthur Clemens 2015. Project page on <a href="https://github.com/ArthurClemens/Polythene">Github</a>. Logo icon design by <a href="https://thenounproject.com/acider/">Miguel C Balandrano</a>.'))
@@ -168,7 +169,7 @@ define(function(require) {
     };
 
     doc = {};
-    
+
 
     m.route.mode = 'hash';
     m.route(document.body, baseUrl, {

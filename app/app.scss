@@ -102,6 +102,9 @@ body {
         font-size: $_header_font_size;
         margin: 0;
     }
+    h1 + h1 {
+        display: none;
+    }
     h1,
     h2,
     h3 {

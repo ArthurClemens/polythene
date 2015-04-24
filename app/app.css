@@ -60,6 +60,8 @@ body {
     background: #00BCD4;
     font-size: 32px;
     margin: 0; }
+  .main h1 + h1 {
+    display: none; }
   .main h1,
   .main h2,
   .main h3 {
