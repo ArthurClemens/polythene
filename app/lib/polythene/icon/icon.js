@@ -37,13 +37,16 @@ define([
                 return;
             }
             defaultProps = {
-                class: ['icon', 'icon-' + (opts.type || 'normal'), (opts.className || null)].join(' ')
+                class: ['icon', 'icon-' + (opts.type || 'normal'), (opts.ripple ? 'has-ripple' : null), (opts.className || null)].join(' ')
             };
             tag = opts.tag || 'div';
             eventProps = p.handleEventProps(opts.events, this, ctrl);
             props = p.assign(defaultProps, eventProps, opts.props);
 
-            return m(tag, props, content(opts));
+            return m(tag, props, [
+                content(opts),
+                opts.ripple ? opts.ripple : null
+            ]);
         }
     };
 });

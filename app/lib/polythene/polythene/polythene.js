@@ -1,7 +1,26 @@
 define(function() {
     'use strict';
 
-    var defaultIconSet = 'material-design-iconic-font';
+    var defaultIconSet,
+        transitionEvent;
+
+    defaultIconSet = 'material-design-iconic-font';
+
+    transitionEvent = (function() {
+        var a, el, animations;
+        el = document.createElement('fakeelement');
+        animations = {
+            'animation': 'animationend',
+            'OAnimation': 'oAnimationEnd',
+            'MozAnimation': 'animationend',
+            'WebkitAnimation': 'webkitAnimationEnd'
+        };
+        for (a in animations) {
+            if (el.style[a] !== undefined) {
+                return animations[a];
+            }
+        }
+    }).call();
 
     return {
         iconSet: defaultIconSet,
@@ -45,6 +64,10 @@ define(function() {
                 }
             }
             return to;
+        },
+
+        whichTransitionEvent: function() {
+            return transitionEvent;
         }
     };
 }.call());

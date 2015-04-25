@@ -48,9 +48,9 @@ app/lib/polythene/list-tile/list-tile.css
 ----------------
 app/lib/polythene/list-tile/list-tile.css
 
-app/lib/polythene/paper-shadow/paper-shadow.css
+app/lib/polythene/paper-ripple/paper-ripple.css
 ----------------
-app/lib/polythene/paper-shadow/paper-shadow.css
+app/lib/polythene/paper-ripple/paper-ripple.css
 
 app/lib/polythene/polythene/polythene.css
 ----------------
@@ -59,6 +59,10 @@ app/lib/polythene/polythene/polythene.css
 app/lib/polythene/polythene/typography.css
 ----------------
 app/lib/polythene/polythene/typography.css
+
+app/lib/polythene/shadow/shadow.css
+----------------
+app/lib/polythene/shadow/shadow.css
 
 app/lib/polythene/toolbar/toolbar.css
 ----------------

@@ -1,0 +1,110 @@
+@import "../polythene/polythene";
+
+.paper-ripple {
+	$_end_scale: 1.5;
+	position: relative;
+
+	.waves {
+		display: block;
+		position: absolute;
+		border-radius: 100%;
+		z-index: 0;
+
+		-webkit-transform: scale(0);
+		-ms-transform: scale(0);
+		-o-transform: scale(0);
+		transform: scale(0);
+
+		&.animated {
+			animation: ripple linear;
+			-webkit-animation: ripple linear;
+			-moz-animation: ripple linear;
+			-o-animation: ripple linear;
+		}
+	}
+
+	@keyframes ripple {
+		100% {
+			-webkit-transform: scale($_end_scale);
+			-ms-transform: scale($_end_scale);
+			-o-transform: scale($_end_scale);
+			transform: scale($_end_scale);
+		}
+	}
+	@-webkit-keyframes ripple {
+		100% {
+			-webkit-transform: scale($_end_scale);
+			-ms-transform: scale($_end_scale);
+			-o-transform: scale($_end_scale);
+			transform: scale($_end_scale);
+			opacity: 0;
+		}
+	}
+	@-o-keyframes ripple {
+		100% {
+			-webkit-transform: scale($_end_scale);
+			-ms-transform: scale($_end_scale);
+			-o-transform: scale($_end_scale);
+			transform: scale($_end_scale);
+			opacity: 0;
+		}
+	}
+	@-moz-keyframes ripple {
+		100% {
+			-webkit-transform: scale($_end_scale);
+			-ms-transform: scale($_end_scale);
+			-o-transform: scale($_end_scale);
+			transform: scale($_end_scale);
+			opacity: 0;
+		}
+	}
+}
+
+.has-ripple {
+	overflow: hidden;
+	position: relative;
+	user-select: none;
+}
+
+/*
+.paper-ripple {
+	display: block;
+	position: relative;
+	border-radius: inherit;
+	overflow: hidden;
+
+	&[noink] {
+		pointer-events: none;
+	}
+
+	.bg, .waves, .wave-container, .wave {
+		pointer-events: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg, .wave {
+		opacity: 0;
+	}
+
+	.waves, .wave {
+		overflow: hidden;
+	}
+
+	.wave-container, .wave {
+		border-radius: 50%;
+	}
+
+	&.circle .bg,
+	&.circle .waves {
+		border-radius: 50%;
+	}
+
+	&.circle .wave-container {
+		overflow: hidden;
+	}
+}
+*/

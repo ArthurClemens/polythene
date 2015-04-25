@@ -15,15 +15,16 @@ define([
             var defaultProps, tag, props, eventProps;
             opts = opts || {};
             defaultProps = {
-                class: ['icon-button', (opts.active ? 'selected' : null), (opts.className || null)].join(' ')
+                class: ['icon-button', (opts.active ? 'selected' : null), (opts.ripple ? 'has-ripple' : null), (opts.className || null)].join(' ')
             };
             tag = opts.tag || 'div';
             eventProps = p.handleEventProps(opts.events, this, ctrl);
             props = p.assign(defaultProps, eventProps, opts.props);
 
-            return m(tag, props,
-                opts.content || m.component(icon, opts.icon)
-            );
+            return m(tag, props, [
+                opts.content || m.component(icon, opts.icon),
+                opts.ripple ? opts.ripple : null
+            ]);
         }
     };
 });
