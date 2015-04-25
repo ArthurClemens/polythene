@@ -54,6 +54,8 @@ Use an options object to define specific behavior:
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **constrained** | optional | Boolean | true | Set to `false` to make the ripple shape no longer bound to the clicked element |
 | **className** | optional | String |  | Extra CSS class appended to 'ripple' |
+| **initialOpacity** | optional | Number | 0.2 | Opacity at the start of the ripple |
+| **opacityDecayVelocity** | optional | Number | 0.4 | Velocity of decrease of opacity |
 | **start** | optional | Function | | Callback function just before the ripple starts |
 | **end** | optional | Function | | Callback function when the ripple has ended |
 
@@ -69,3 +71,4 @@ Use an options object to define specific behavior:
 
 	where:
 	    Event :: AnimationEvent
+
