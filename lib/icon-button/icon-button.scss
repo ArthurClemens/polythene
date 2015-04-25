@@ -1,7 +1,5 @@
 .icon-button {
     display: inline-block;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
@@ -11,7 +9,9 @@
     vertical-align: middle;
     font-size: 1rem;
     cursor: pointer;
-
+    position: relative;
+    z-index: 1;
+    
     &[disabled] {
         opacity: 0.6;
         pointer-events: none;

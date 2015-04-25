@@ -11,6 +11,8 @@
   vertical-align: middle;
   font-size: 1rem;
   cursor: pointer;
+  position: relative;
+  z-index: 1;
 }
 .icon-button[disabled] {
   opacity: 0.6;
