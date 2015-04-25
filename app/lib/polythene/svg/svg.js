@@ -22,37 +22,41 @@ define([
 
     return {
         controller: function(opts) {
-            this.svg = m.prop();
-            opts = opts || {};
             var path = opts.src ? opts.src : getPath(opts),
-                requirePath = 'text!' + path,
-                self = this;
-            if (!opts.refresh && cache[requirePath]) {
-                this.svg(cache[requirePath]);
-            } else {
-                m.startComputation();
-                require([requirePath], function(xml) {
-                    self.svg(xml);
-                    if (!opts.refresh) cache[requirePath] = xml;
-                    m.endComputation();
-                });
-            }
+                requireUrl = require.toUrl(path);
+
+            return {
+                retain: m.prop(false),
+
+                svg: (!opts.refresh && cache[requireUrl]) ? m.prop(cache[requireUrl]) : m.request({
+                    method: 'GET',
+                    url: requireUrl,
+                    background: false,
+                    deserialize: function(value) {
+                        if (!opts.refresh) cache[requireUrl] = value;
+                        return value;
+                    },
+                    initialValue: ''
+                })
+            };
         },
         view: function(ctrl, opts) {
-            var defaultProps, tag, props, eventProps;
+            var tag, props, content;
             opts = opts || {};
+
             if (!opts.src && !opts.name) {
                 if (console) console.log('polythene/svg/svg: missing opts.src or opts.name');
                 return;
             }
-            defaultProps = {
-                class: ['svg', (opts.className || null)].join(' ')
-            };
-            tag = opts.tag || 'div';
-            eventProps = p.handleEventProps(opts.events, this, ctrl);
-            props = p.assign(defaultProps, eventProps, opts.props);
 
-            return m(tag, props, m.trust(ctrl.svg()));
+            tag = opts.tag || 'div';
+            props = p.componentProps({
+                classList: ['svg']
+            }, opts, this, ctrl);
+
+            content = m.trust(ctrl.svg());
+
+            return m(tag, props, p.embellish(content, opts));
         }
     };
 });

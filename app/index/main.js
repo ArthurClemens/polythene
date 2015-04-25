@@ -34,12 +34,6 @@ define(function(require) {
     }, {
         label: 'Components',
         links: [{
-            url: 'svg',
-            name: 'SVG'
-        }, {
-            url: 'icon',
-            name: 'Icon'
-        }, {
             url: 'icon-button',
             name: 'Icon Button'
         }, {
@@ -52,14 +46,26 @@ define(function(require) {
             url: 'list',
             name: 'List'
         }, {
-            url: 'paper-shadow',
-            name: 'Paper Shadow'
-        }, {
             url: 'toolbar',
             name: 'Toolbar'
         }, {
             url: 'header-panel',
             name: 'Header Panel'
+        }]
+    }, {
+        label: 'Building blocks',
+        links: [{
+            url: 'svg',
+            name: 'SVG'
+        }, {
+            url: 'icon',
+            name: 'Icon'
+        }, {
+            url: 'ripple',
+            name: 'Ripple'
+        }, {
+            url: 'shadow',
+            name: 'Shadow'
         }, {
             url: 'font-roboto',
             name: 'Roboto Font'

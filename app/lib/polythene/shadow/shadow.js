@@ -16,19 +16,21 @@ define([
             };
         },
         view: function(ctrl, opts) {
-            var z, defaultProps, tag, helperTag, eventProps, props;
+            var tag, props, content,
+                helperTag,
+                z;
+
             opts = opts || {};
             z = ctrl.z();
-            defaultProps = {
-                class: ['shadow', (opts.className || null)].join(' '),
-                z: z
-            };
-            tag = opts.tag || 'div';
-            helperTag = 'div[fit]' + (opts.animated ? '[animated]' : null);
-            eventProps = p.handleEventProps(opts.events, this, ctrl);
-            props = p.assign(defaultProps, eventProps, opts.props);
 
-            return m(tag, props, [
+            tag = opts.tag || 'div';
+            props = p.componentProps({
+                classList: ['shadow'],
+                z: z
+            }, opts, this, ctrl);
+
+            helperTag = 'div[fit]' + (opts.animated ? '[animated]' : null);
+            content = [
                 m(helperTag, {
                     class: 'shadow-bottom shadow-bottom-z-' + z
                 }),
@@ -36,7 +38,9 @@ define([
                     class: 'shadow-top shadow-top-z-' + z
                 }),
                 opts.content ? opts.content : null
-            ]);
+            ];
+
+            return m(tag, props, content);
         }
     };
 });

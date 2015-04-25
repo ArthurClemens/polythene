@@ -12,19 +12,21 @@ define([
 
     return {
         view: function(ctrl, opts) {
-            var defaultProps, tag, props, eventProps;
+            var tag, props, content;
             opts = opts || {};
-            defaultProps = {
-                class: ['icon-button', (opts.active ? 'selected' : null), (opts.ripple ? 'has-ripple' : null), (opts.className || null)].join(' ')
-            };
-            tag = opts.tag || 'div';
-            eventProps = p.handleEventProps(opts.events, this, ctrl);
-            props = p.assign(defaultProps, eventProps, opts.props);
 
-            return m(tag, props, [
-                opts.content || m.component(icon, opts.icon),
-                opts.ripple ? opts.ripple : null
-            ]);
+            tag = opts.tag || 'div';
+            if (opts.disabled) {
+                tag += '[disabled]';
+            }
+            props = p.componentProps({
+                classList: ['icon-button', (opts.active ? 'selected' : null)]
+            }, opts, this, ctrl);
+
+            content = [
+                opts.content || m.component(icon, opts.icon)
+            ];
+            return m(tag, props, p.embellish(content, opts));
         }
     };
 });

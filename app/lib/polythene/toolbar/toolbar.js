@@ -37,21 +37,21 @@ define([
 
     return {
         view: function(ctrl, opts) {
-            var defaultProps, tag, barClassName, props, eventProps;
+            var tag, props, content,
+                barClassName;
             opts = opts || {};
             barClassName = 'topBar';
             barClassName = opts.middleBar ? 'middleBar' : barClassName;
             barClassName = opts.bottomBar ? 'bottomBar' : barClassName;
-            defaultProps = {
-                class: ['toolbar animate', barClassName, (opts.mode || 'standard'), (opts.className || null)].join(' ')
-            };
-            tag = opts.tag || 'div';
-            eventProps = p.handleEventProps(opts.events, this, ctrl);
-            props = p.assign(defaultProps, eventProps, opts.props);
 
-            return m(tag, props,
-                bar(opts)
-            );
+            tag = opts.tag || 'div';
+            props = p.componentProps({
+                classList: ['toolbar animate', barClassName, (opts.mode || 'standard')]
+            }, opts, this, ctrl);
+
+            content = bar(opts);
+
+            return m(tag, props, p.embellish(content, opts));
         }
     };
 });

@@ -12,24 +12,24 @@ define([
 
     return {
         view: function(ctrl, opts) {
-            var defaultProps, tag, props, eventProps;
+            var tag, props, content;
             opts = opts || {};
             
-            defaultProps = {
-                class: ['list', (opts.header ? 'list-has-subheader' : null), (opts.className || null)].join(' ')
-            };
             tag = opts.tag || 'div';
-            eventProps = p.handleEventProps(opts.events, this, ctrl);
-            props = p.assign(defaultProps, eventProps, opts.props);
+            props = p.componentProps({
+                classList: ['list', (opts.header ? 'list-has-subheader' : null)]
+            }, opts, this, ctrl);
 
             if (opts.header) {
                 opts.header.className = ['subheader', (opts.header.className || null)].join(' ');
             }
 
-            return m(tag, props, [
+            content = [
                 opts.header ? m.component(listTile, opts.header) : null,
                 opts.tiles ? opts.tiles : null
-            ]);
+            ];
+
+            return m(tag, props, p.embellish(content, opts));
         }
     };
 });

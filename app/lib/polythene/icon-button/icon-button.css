@@ -1,7 +1,5 @@
 .icon-button {
   display: inline-block;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
   user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
@@ -11,10 +9,15 @@
   vertical-align: middle;
   font-size: 1rem;
   cursor: pointer;
+  position: relative;
+  z-index: 1;
 }
 .icon-button[disabled] {
-  opacity: 0.6;
+  background-color: none;
   pointer-events: none;
+}
+.icon-button[disabled] .icon {
+  opacity: 0.26;
 }
 .icon-button.outline {
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
@@ -30,22 +33,23 @@
   background-color: rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.12);
 }
-.icon-button.dark-theme.outline {
+.icon-button .icon {
+  pointer-events: none;
+}
+.dark-theme .icon-button.outline {
   background-color: rgba(200, 200, 200, 0.05);
   box-shadow: 0 0 0 1px rgba(200, 200, 200, 0.1);
 }
-.icon-button.dark-theme:hover {
+.dark-theme .icon-button:hover {
   background-color: rgba(200, 200, 200, 0.05);
   box-shadow: 0 1px 0 0 rgba(200, 200, 200, 0.12), 0 0 0 1px rgba(200, 200, 200, 0.1);
 }
-.icon-button.dark-theme.selected {
+.dark-theme .icon-button.selected {
   background-color: rgba(220, 220, 220, 0.05);
   box-shadow: inset 0 1px 0 0 rgba(200, 200, 200, 0.05), 0 0 0 1px rgba(200, 200, 200, 0.12);
 }
-.icon-button.dark-theme:active, .icon-button.dark-theme.selected:active {
+.dark-theme .icon-button:active,
+.dark-theme .icon-button.selected:active {
   background-color: rgba(200, 200, 200, 0.05);
   box-shadow: inset 0 1px 0 0 rgba(200, 200, 200, 0.1), 0 0 0 1px rgba(200, 200, 200, 0.12);
-}
-.icon-button .icon {
-  pointer-events: none;
 }

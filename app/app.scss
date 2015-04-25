@@ -1,6 +1,7 @@
 @import url("http://fonts.googleapis.com/css?family=Inconsolata");
 
 $_main_side_padding: 48px;
+$_main_bottom_padding: 1.5 * $_main_side_padding;
 $_header_top_padding: 2 * $_main_side_padding;
 $_header_bottom_padding: 0.5 * $_main_side_padding;
 $_side_color: #263238;
@@ -160,6 +161,7 @@ body {
 
 @media (max-width: 640px) {
     $_main_side_padding: 24px;
+    $_main_bottom_padding: 1.5 * $_main_side_padding;
     $_header_font_size: 24px;
     $_header_top_padding: 1*$_main_side_padding;
 
@@ -181,7 +183,7 @@ body {
     }
 
     .main {
-        padding: 0 $_main_side_padding $_main_side_padding $_main_side_padding;
+        padding: 0 $_main_side_padding $_main_bottom_padding $_main_side_padding;
 
         h1 {
             margin: 0 (-$_main_side_padding) 32px (-$_main_side_padding);
@@ -205,6 +207,7 @@ body {
 
 @media (min-width: 640px) and (max-width: 960px) {
     $_main_side_padding: 24px;
+    $_main_bottom_padding: 1.5 * $_main_side_padding;
     $_header_font_size: 24px;
     $_header_top_padding: 2 * $_main_side_padding;
     $_header_bottom_padding: 1 * $_main_side_padding;
@@ -226,7 +229,7 @@ body {
         }
     }
     .main {
-        padding: 0 $_main_side_padding $_main_side_padding $_main_side_padding;
+        padding: 0 $_main_side_padding $_main_bottom_padding $_main_side_padding;
 
         h1 {
             margin: 0 (-$_main_side_padding) 32px (-$_main_side_padding);
@@ -253,7 +256,7 @@ body {
         }
     }
     .main {
-        padding: 0 $_main_side_padding $_main_side_padding $_main_side_padding;
+        padding: 0 $_main_side_padding $_main_bottom_padding $_main_side_padding;
 
         h1 {
             margin: 0 (-$_main_side_padding) 32px (-$_main_side_padding);

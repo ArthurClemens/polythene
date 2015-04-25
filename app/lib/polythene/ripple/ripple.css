@@ -1,0 +1,67 @@
+.ripple {
+  -webkit-transform: translate3d(0, 0, 0);
+}
+.ripple[noink] {
+  pointer-events: none;
+}
+.ripple.constrained {
+  overflow: hidden;
+}
+.ripple .waves {
+  display: block;
+  position: absolute;
+  border-radius: 100%;
+  z-index: 0;
+  -webkit-transform: scale(0.1);
+  -ms-transform: scale(0.1);
+  -o-transform: scale(0.1);
+  transform: scale(0.1);
+  opacity: 0.2;
+  pointer-events: none;
+  display: none;
+}
+.ripple .waves.animated {
+  display: block;
+  animation: ripple ease-out;
+  -webkit-animation: ripple ease-out;
+  -moz-animation: ripple ease-out;
+  -o-animation: ripple ease-out;
+}
+@keyframes ripple {
+  100% {
+    -webkit-transform: scale(2);
+    -ms-transform: scale(2);
+    -o-transform: scale(2);
+    transform: scale(2);
+  }
+}
+@-webkit-keyframes ripple {
+  100% {
+    -webkit-transform: scale(2);
+    -ms-transform: scale(2);
+    -o-transform: scale(2);
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+@-o-keyframes ripple {
+  100% {
+    -webkit-transform: scale(2);
+    -ms-transform: scale(2);
+    -o-transform: scale(2);
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+@-moz-keyframes ripple {
+  100% {
+    -webkit-transform: scale(2);
+    -ms-transform: scale(2);
+    -o-transform: scale(2);
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+[disabled] .ripple {
+  pointer-events: none;
+}

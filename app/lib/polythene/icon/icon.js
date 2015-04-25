@@ -10,9 +10,9 @@ define([
 ) {
     'use strict';
 
-    var content;
+    var layoutContent;
 
-    content = function(opts) {
+    layoutContent = function(opts) {
         if (opts.content) {
             return opts.content;
         } else if (opts.svg) {
@@ -30,23 +30,22 @@ define([
 
     return {
         view: function(ctrl, opts) {
-            var defaultProps, tag, props, eventProps;
+            var tag, props, content;
             opts = opts || {};
             if (!opts.svg && !opts.src) {
                 if (console) console.log('polythene/icon/icon: missing opts.src or opts.svg');
                 return;
             }
-            defaultProps = {
-                class: ['icon', 'icon-' + (opts.type || 'normal'), (opts.ripple ? 'has-ripple' : null), (opts.className || null)].join(' ')
-            };
-            tag = opts.tag || 'div';
-            eventProps = p.handleEventProps(opts.events, this, ctrl);
-            props = p.assign(defaultProps, eventProps, opts.props);
 
-            return m(tag, props, [
-                content(opts),
-                opts.ripple ? opts.ripple : null
-            ]);
+            tag = opts.tag || 'div';
+            props = p.componentProps({
+                classList: ['icon', 'icon-' + (opts.type || 'normal')]
+            }, opts, this, ctrl);
+            
+            content = [
+                layoutContent(opts)
+            ];
+            return m(tag, props, p.embellish(content, opts));
         }
     };
 });

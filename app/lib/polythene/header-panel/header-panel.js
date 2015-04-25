@@ -100,10 +100,12 @@ define([
             };
         },
         view: function(ctrl, opts) {
-            var defaultProps, tag, header, props, eventProps, initElements;
-            opts = opts || {};
-            opts.header = opts.header || {};
+            var tag, props, content,
+                header,
+                initElements;
 
+            opts = opts || {};
+            
             var mode;
             if (opts.mode) {
                 mode = opts.mode;
@@ -115,17 +117,18 @@ define([
             mode = mode || 'standard';
             ctrl.isTall(modeConfigs.tallMode[mode] || false);
             ctrl.tallClass(opts.tallClass || 'tall');
+
+            opts.header = opts.header || {};
             header = opts.header ? m.component(headerComponent, opts.header, ctrl.isTall(), ctrl.tallClass()) : null;
 
-            defaultProps = {
-                class: ['header-panel', (opts.className || null)].join(' '),
-                mode: mode
-            };
             tag = opts.tag || 'div';
-
-            eventProps = p.handleEventProps(opts.events, this, ctrl);
-            props = p.assign(defaultProps, eventProps, opts.props);
-
+            props = p.componentProps({
+                classList: ['header-panel'],
+                props: {
+                    mode: mode
+                }
+            }, opts, this, ctrl);
+            
             initElements = function(outerContainer, inited) {
                 if (inited) return;
                 var headerElem = outerContainer.querySelector('.header') || outerContainer.querySelector('.toolbar');
@@ -133,24 +136,23 @@ define([
                 ctrl.updateStates(0, true, mode, ctrl);
             };
 
-            return m(tag, props,
-                m('.outerContainer[vertical][layout]', {
-                    config: initElements
-                }, [
-                    header,
-                    m('.mainPanel[flex][vertical][layout]', [
-                        m('.mainContainer[flex]', {
-                                onscroll: (getScrollerContainer(mode) === 'main') ? function() {
-                                    ctrl.onScroll(this, mode, ctrl);
-                                } : null
-                            },
-                            opts.content ? opts.content : null
-                        ), (mode === 'seamed' || opts.shadow === false) ? null : m('.dropShadow', {
-                            config: ctrl.shadowElem
-                        })
-                    ])
+            content = m('.outerContainer[vertical][layout]', {
+                config: initElements
+            }, [
+                header,
+                m('.mainPanel[flex][vertical][layout]', [
+                    m('.mainContainer[flex]', {
+                            onscroll: (getScrollerContainer(mode) === 'main') ? function() {
+                                ctrl.onScroll(this, mode, ctrl);
+                            } : null
+                        },
+                        opts.content ? opts.content : null
+                    ), (mode === 'seamed' || opts.shadow === false) ? null : m('.dropShadow', {
+                        config: ctrl.shadowElem
+                    })
                 ])
-            );
+            ]);
+            return m(tag, props, p.embellish(content, opts));
         }
     };
 });

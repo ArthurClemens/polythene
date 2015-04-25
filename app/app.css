@@ -111,7 +111,7 @@ body {
     .drawer .logo {
       display: none; }
   .main {
-    padding: 0 24px 24px 24px; }
+    padding: 0 24px 36px 24px; }
     .main h1 {
       margin: 0 -24px 32px -24px;
       padding: 24px 24px 24px 24px;
@@ -136,7 +136,7 @@ body {
       top: 16px;
       left: 16px; }
   .main {
-    padding: 0 24px 24px 24px; }
+    padding: 0 24px 36px 24px; }
     .main h1 {
       margin: 0 -24px 32px -24px;
       padding: 48px 24px 24px 24px;
@@ -153,7 +153,7 @@ body {
       top: 48px;
       left: 16px; }
   .main {
-    padding: 0 48px 48px 48px; }
+    padding: 0 48px 72px 48px; }
     .main h1 {
       margin: 0 -48px 32px -48px;
       padding: 96px 48px 24px 48px; } }
