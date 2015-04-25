@@ -8,18 +8,18 @@ define([
 
     var ripple,
         stopRipple,
-        SPEED,
         MIN_DURATION,
         MAX_DURATION,
-        START_OPACITY;
+        START_OPACITY,
+        OPACITY_DECAY_VELOCITY;
 
-    SPEED = 1000; // px per second
-    MIN_DURATION = 0.35;
-    MAX_DURATION = 0.8;
+    MIN_DURATION = 0; //0.35;
+    MAX_DURATION = 10.8;
     START_OPACITY = 0.2;
+    OPACITY_DECAY_VELOCITY = 0.4;
 
     ripple = function(e, opts, ctrl, p) {
-        var el, wavesEl, mx, my, rx, ry, rect, top, left, w, h, waveRadius, transitionEvent, duration, color, onEnd;
+        var el, wavesEl, mx, my, rx, ry, rect, top, left, w, h, waveRadius, transitionEvent, duration, color, onEnd, initialOpacity, opacityDecayVelocity;
         el = ctrl.rippleEl();
         wavesEl = ctrl.wavesEl();
         wavesEl.classList.remove('animated');
@@ -40,7 +40,10 @@ define([
         wavesEl.style.top = ry + 'px';
         wavesEl.style.left = rx + 'px';
 
-        duration = Math.min(Math.max(waveRadius / SPEED, MIN_DURATION), MAX_DURATION);
+        initialOpacity = (opts.initialOpacity !== undefined) ? opts.initialOpacity : START_OPACITY;
+        opacityDecayVelocity = (opts.opacityDecayVelocity !== undefined) ? opts.opacityDecayVelocity : OPACITY_DECAY_VELOCITY;
+
+        duration = Math.min(Math.max(1 / opacityDecayVelocity * initialOpacity, MIN_DURATION), MAX_DURATION);
 
         wavesEl.style['animation-duration'] =
             wavesEl.style['-webkit-animation-duration'] =
@@ -49,7 +52,7 @@ define([
 
         color = window.getComputedStyle(el).color;
         wavesEl.style.backgroundColor = color;
-        wavesEl.style.opacity = START_OPACITY;
+        wavesEl.style.opacity = initialOpacity;
 
         transitionEvent = p.whichTransitionEvent();
         onEnd = function(evt) {
@@ -79,8 +82,10 @@ define([
             };
         },
         view: function(ctrl, opts, p, m) {
-            var defaultProps, tag, eventProps, props, initRipple, initWaves;
-            
+            var tag, props, content,
+                initRipple,
+                initWaves;
+
             if (typeof opts !== 'object') {
                 opts = {};
             }
@@ -95,25 +100,27 @@ define([
                 ctrl.wavesEl(waves);
             };
 
-            defaultProps = {
-                class: ['ripple', (opts.constrained !== false ? 'constrained' : null), (opts.className || null)].join(' '),
-                onmousedown: function(e) {
-                    ripple(e, opts, ctrl, p);
-                    return true;
-                },
-                onmouseup: function(e) {
-                    stopRipple(e, opts, ctrl, p);
-                    return true;
-                },
-                config: initRipple
-            };
             tag = opts.tag || 'div[fit]';
-            eventProps = p.handleEventProps(opts.events, this, ctrl);
-            props = p.assign(defaultProps, eventProps, opts.props);
+            props = p.componentProps({
+                classList: ['ripple', (opts.constrained !== false ? 'constrained' : null)],
+                props: {
+                    onmousedown: function(e) {
+                        ripple(e, opts, ctrl, p);
+                        return true;
+                    },
+                    onmouseup: function(e) {
+                        stopRipple(e, opts, ctrl, p);
+                        return true;
+                    },
+                    config: initRipple
+                }
+            }, opts, this, ctrl);
 
-            return m(tag, props, m('.waves', {
+            content = m('.waves', {
                 config: initWaves
-            }));
+            });
+
+            return m(tag, props, content);
         }
     };
 });
