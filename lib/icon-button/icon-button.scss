@@ -13,8 +13,12 @@
     z-index: 1;
     
     &[disabled] {
-        opacity: 0.6;
+        background-color: none;
         pointer-events: none;
+
+        .icon {
+            opacity: 0.26;
+        }
     }
 
     &.outline {

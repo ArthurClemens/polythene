@@ -13,8 +13,11 @@
   z-index: 1;
 }
 .icon-button[disabled] {
-  opacity: 0.6;
+  background-color: none;
   pointer-events: none;
+}
+.icon-button[disabled] .icon {
+  opacity: 0.26;
 }
 .icon-button.outline {
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
