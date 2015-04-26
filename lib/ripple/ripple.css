@@ -1,4 +1,5 @@
 .ripple {
+  border-radius: inherit;
   -webkit-transform: translate3d(0, 0, 0);
 }
 .ripple[noink] {
@@ -16,6 +17,10 @@
   -ms-transform: scale(0.1);
   -o-transform: scale(0.1);
   transform: scale(0.1);
+  animation-duration: 0.3s;
+  -webkit-animation-duration: 0.3s;
+  -moz-animation-duration: 0.3s;
+  -o-animation-duration: 0.3s;
   opacity: 0.2;
   pointer-events: none;
   display: none;
