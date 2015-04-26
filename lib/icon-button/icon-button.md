@@ -56,6 +56,7 @@ Instead of an `icon` options object, you can pass an icon component:
 | **tag** | optional | String | 'div' | HTML tag |
 | **className** | optional | String |  | Extra CSS class appended to 'icon-button' |
 | **icon** | either icon or content must be passed | Object |  | [icon](#icon) options object |
+| **wash** | optional | Boolean | true | Set to false to hide the 'active' overlay; wash is mostly redundant is also ripple is used |
 | **content** | either icon or content must be passed | Mithril template or String | | Alternative content if no icon object is used |
 | **active** | optional | Boolean | | Set to true to show the active state (with border and background) |
 | **before** | optional | Mithril template or String or Array | | Extra content before main content |
