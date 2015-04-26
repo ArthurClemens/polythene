@@ -4,7 +4,7 @@
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   height: 64px;
-  font-size: 1.3em;
+  font-size: 20px;
   background-color: #CFD8DC;
 }
 .toolbar.animate {
@@ -45,28 +45,38 @@
   bottom: 0;
   left: 0;
 }
-.toolbar .toolbar-tools {
-  
-  
-  
-}
 .toolbar .toolbar-tools > *:not([disabled]) {
   pointer-events: auto;
 }
-.toolbar .toolbar-tools > * {
-  margin: 0 8px;
+.toolbar .toolbar-tools > :first-child {
+  margin-left: 4px;
 }
-.toolbar .toolbar-tools > .fit {
+.toolbar .toolbar-tools > :last-child {
+  margin-right: 4px;
+}
+.toolbar .toolbar-tools > .icon-button + span {
+  margin-left: 20px;
+}
+.toolbar .toolbar-tools > span:first-child,
+.toolbar .toolbar-tools > .indent {
+  margin-left: 72px;
+}
+.toolbar .toolbar-tools > span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.toolbar .toolbar-tools .fit {
   position: absolute;
-  top: auto;
+  top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   width: auto;
   margin: 0;
 }
-.toolbar .toolbar-tools > .indent {
-  margin-left: 60px;
+.toolbar .toolbar-tools .fit.bottom {
+  top: auto;
 }
 .toolbar .header {
   white-space: nowrap;
@@ -76,6 +86,5 @@
 .toolbar-tools {
   position: relative;
   height: 64px;
-  padding: 0 8px;
   pointer-events: none;
 }

@@ -19,3 +19,9 @@
   height: 40px;
   padding: 8px;
 }
+.fab.icon-button {
+  padding: 16px;
+}
+.fab.mini.icon-button {
+  padding: 8px;
+}

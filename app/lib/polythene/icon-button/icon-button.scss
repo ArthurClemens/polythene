@@ -3,8 +3,7 @@
 .icon-button {
     display: inline-block;
     @include user-select-none;
-    width: $buttonSize;
-    height: $buttonSize;
+    // don't set button size to facilitate different icon sizes
     padding: ($buttonSize - $iconSize) / 2;
     vertical-align: middle;
     cursor: pointer;
@@ -15,7 +14,6 @@
     color: $textColorIcon;
 
     &[disabled] {
-        background-color: none;
         pointer-events: none;
         color: $textColorDisabled;
     }
@@ -23,11 +21,25 @@
     &.selected:not([disabled]),
     &:active:not([disabled]),
     &.selected:active:not([disabled]) {
-        background-color: $backgroundColorButton;
+        .wash {
+            opacity: 1;
+        }
     }
 
     .icon {
         pointer-events: none;
+        z-index: 1;
+    }
+
+    .wash {
+        opacity: 0;
+        border-radius: inherit;
+        background-color: $backgroundColorButton;
+
+        transition: opacity $surfaceReactionDuration ease-out;
+        -webkit-transition: opacity $surfaceReactionDuration ease-out;
+        -moz-transition: opacity $surfaceReactionDuration ease-out;
+        -webkit-transition: opacity $surfaceReactionDuration ease-out;
     }
 }
 
@@ -41,6 +53,12 @@
     &.selected:not([disabled]),
     &:active:not([disabled]),
     &.selected:active:not([disabled]) {
+        .wash {
+            opacity: 1;
+        }
+    }
+
+    .wash {
         background-color: $backgroundColorDarkThemeButton;
     }
 }

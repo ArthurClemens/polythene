@@ -1,3 +1,5 @@
+@import "../polythene/polythene";
+
 .fab {
 	$_size_regular: 56px;
 	$_padding_regular: 16px;
@@ -26,5 +28,12 @@
 		width: $_size_mini;
 		height: $_size_mini;
 		padding: $_padding_mini;
+	}
+
+	&.icon-button {
+		padding: ($_size_regular - $iconSize) / 2;
+	}
+	&.mini.icon-button {
+		padding: ($_size_mini - $iconSize) / 2;
 	}
 }

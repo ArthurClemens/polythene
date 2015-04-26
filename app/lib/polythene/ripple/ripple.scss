@@ -6,6 +6,7 @@
 	$_start_opacity: 0.2;
 	$_end_opacity: 0;
 
+	border-radius: inherit;
 	// Prevent flickering
 	-webkit-transform:translate3d(0,0,0);
 
@@ -14,7 +15,10 @@
 	}
 
 	&.constrained {
+		border-radius: inherit;
 		overflow: hidden;
+		// Fix issue with Safari that does not correctly mask a shape when border-radius is set
+	    -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
 	}
 	
 	.waves {
@@ -22,10 +26,18 @@
 		position: absolute;
 		border-radius: 100%;
 		z-index: 0;
+		
 		-webkit-transform: scale($_start_scale);
 		-ms-transform: scale($_start_scale);
 		-o-transform: scale($_start_scale);
 		transform: scale($_start_scale);
+
+		// default durations; finally set in js
+		animation-duration: $surfaceReactionDuration;
+		-webkit-animation-duration: $surfaceReactionDuration;
+		-moz-animation-duration: $surfaceReactionDuration;
+		-o-animation-duration: $surfaceReactionDuration;
+
 		opacity: $_start_opacity;
 		pointer-events: none;
 		display: none;

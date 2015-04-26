@@ -4,21 +4,30 @@
 
 Adds a configurable shadow to an element.
 
+Other than Polymer, the shadow component does not wrap content. Instead the shadow component is added below another element's content.
+
+
 ## Usage
 
 	var shadow = require('polythene/shadow/shadow');
 
 	var myShadow = m.component(shadow, {
-		z: 1,
-		content: 'My shadow'
+		z: 1
 	});
 
-To animated the shadow:
+Add the shadow to a Mithril template:
+
+	var myCard = m('.card', [
+        m('div[self-center]', 'Card!'),
+        myShadow
+    ]);
+
+
+To animated the shadow use `animated`:
 
 	var myShadow = m.component(shadow, {
 		z: 1,
-		animated: true,
-		content: 'My shadow'
+		animated: true
 	});
 
 
@@ -28,16 +37,15 @@ To animated the shadow:
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **tag** | optional | String | 'div' | HTML tag |
 | **className** | optional | String |  | Extra CSS class appended to 'shadow' |
-| **content** | optional | Mithril template or String | | Content that will get the shadow |
 | **z** | optional | Number 0-5 | 0 | Depth of the shadow |
 | **animated** | optional | Boolean | false | Set to true to animate the shadow when setting a new z value. |
 
 
 ## Default generated HTML
 
-	<div class="shadow card" z="0">
-		<div fit="true" class="shadow-bottom shadow-bottom-z-0"></div>
-		<div fit="true" class="shadow-top shadow-top-z-0"></div>
-		<div>Content...</div>
+	<div fit="true" class="shadow">
+		<div fit="true" class="shadow-bottom shadow-bottom-z-1"></div>
+		<div fit="true" class="shadow-top shadow-top-z-1"></div>
 	</div>
+
 

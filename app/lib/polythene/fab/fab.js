@@ -1,14 +1,14 @@
 define([
     'polythene/polythene/polythene',
     'mithril',
-    'polythene/icon/icon',
+    'polythene/icon-button/icon-button',
     'polythene/ripple/ripple',
     'polythene/shadow/shadow',
     'css!./fab'
 ], function(
     p,
     m,
-    icon,
+    iconBtn,
     ripple,
     shadow
 ) {
@@ -19,10 +19,14 @@ define([
             opts = opts || {};
             opts.className = ['fab', (opts.mini ? 'mini' : null), opts.className].join(' ');
             opts.z = (opts.z !== undefined) ? opts.z : 1;
-            opts.content = m.component(icon, opts.icon);
-            opts.after = m.component(ripple, opts.ripple);
+            opts.after = opts.after || [];
+            opts.after.push(m.component(ripple));
+            opts.after.push(m.component(shadow, {
+                z: opts.z,
+                animated: opts.animated
+            }));
 
-            return m.component(shadow, opts);
+            return m.component(iconBtn, opts);
         }
     };
 });

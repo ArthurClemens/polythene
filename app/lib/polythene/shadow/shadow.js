@@ -9,38 +9,31 @@ define([
     'use strict';
 
     return {
-        controller: function(opts) {
-            var z = m.prop(opts.z || 0);
-            return {
-                z: z
-            };
-        },
         view: function(ctrl, opts) {
             var tag, props, content,
                 helperTag,
                 z;
 
             opts = opts || {};
-            z = ctrl.z();
+            z = opts.z;
 
-            tag = opts.tag || 'div';
+            tag = opts.tag || 'div[fit]';
             props = p.componentProps({
                 classList: ['shadow'],
-                z: z
             }, opts, this, ctrl);
 
             helperTag = 'div[fit]' + (opts.animated ? '[animated]' : null);
             content = [
+                opts.content ? opts.content : null,
                 m(helperTag, {
                     class: 'shadow-bottom shadow-bottom-z-' + z
                 }),
                 m(helperTag, {
                     class: 'shadow-top shadow-top-z-' + z
-                }),
-                opts.content ? opts.content : null
+                })
             ];
 
-            return m(tag, props, p.embellish(content, opts));
+            return m(tag, props, content);
         }
     };
 });

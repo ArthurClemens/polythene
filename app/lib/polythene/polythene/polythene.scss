@@ -9,6 +9,14 @@ $iconSizeMedium: 4 * $component_grid_unit_px; // 32
 $iconSize: 		 3 * $component_grid_unit_px; // 24
 $iconSizeSmall:  2 * $component_grid_unit_px; // 16
 
+$iconButtonPadding: ($buttonSize - $iconSize) / 2;
+
+$indent: 72px;
+
+$toolbarHeightDesktop: 64px;
+$toolbarHeightMobilePortrait: 56px;
+$toolbarHeightMobileLandscape: 48px;
+
 $fontWeightNormal: 400;
 $fontWeightMedium: 500;
 $fontWeightBold: 700;
@@ -27,6 +35,11 @@ $textColorDarkThemeDisabled: $textColorDarkThemeHints;
 
 $backgroundColorButton: rgba(0,0,0,.12);
 $backgroundColorDarkThemeButton: rgba(255,255,255,.12);
+
+$surfaceReactionDuration: .3s;
+
+$fontSizeTitle: 20px;
+
 
 @mixin single-line {
 	white-space: nowrap;
@@ -60,6 +73,14 @@ $backgroundColorDarkThemeButton: rgba(255,255,255,.12);
          -o-box-sizing: $type;
         -ms-box-sizing: $type;
             box-sizing: $type;
+}
+
+@mixin fit {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
 }
 
 
