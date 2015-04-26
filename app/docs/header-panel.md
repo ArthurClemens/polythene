@@ -42,7 +42,8 @@ The header-panel will not display if its parent does not have a height.
 | **content** | optional | Mithril template or String | | Panel contents |
 | **shadow** | optional | Boolean | true | If set to `false`, no shadow will be shown, regardless the mode |
 | **tallClass** | optional | String | 'tall' | Set this when the header has a class other than 'tall' and the height needs to be toggled. |
-
+| **before** | optional | Mithril template or String or Array | | Extra content before main content |
+| **after** | optional | Mithril template or String or Array | | Extra content after main content |
 
 ### Mode
 

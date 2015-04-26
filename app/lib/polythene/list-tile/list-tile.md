@@ -117,6 +117,8 @@ To show secondary content at the right, including a link:
 | **secondary_url** | optional | String | | URL for secondary content |
 | **primary_url_config** | optional | m.route Object | `m.route` | The config for the primary URL |
 | **secondary_url_config** | optional | m.route Object | `m.route` | The config for the secondary URL |
+| **before** | optional | Mithril template or String or Array | | Extra content before main content |
+| **after** | optional | Mithril template or String or Array | | Extra content after main content |
 
 
 ## Layout of secondary content

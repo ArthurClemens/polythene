@@ -52,6 +52,8 @@ Instead of an `icon` options object, you can pass an icon component:
 | **icon** | either icon or content must be passed | Object |  | [icon](#icon) options object |
 | **content** | either icon or content must be passed | Mithril template or String | | Alternative content if no icon object is used |
 | **active** | optional | Boolean | | Set to true to show the active state (with border and background) |
+| **before** | optional | Mithril template or String or Array | | Extra content before main content |
+| **after** | optional | Mithril template or String or Array | | Extra content after main content |
 
 
 ## Default generated HTML

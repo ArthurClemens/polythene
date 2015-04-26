@@ -1,10 +1,4 @@
-define([
-    'mithril',
-    'polythene/ripple/ripple'
-], function(
-    m,
-    ripple
-) {
+define(function() {
     'use strict';
 
     var defaultIconSet,
@@ -91,8 +85,11 @@ define([
 
         embellish: function(content, opts) {
             opts = opts || {};
-            if (opts.ripple) {
-                content.push(m.component(ripple, opts.ripple, this, m));
+            if (opts.before) {
+                content.unshift(opts.before);
+            }
+            if (opts.after) {
+                content.push(opts.after);
             }
             return content;
         }

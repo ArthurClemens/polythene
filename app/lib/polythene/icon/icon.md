@@ -45,6 +45,8 @@ Or pass `iconset` (sub folder) and filename (without `.svg`):
 | **src** | either src or svg must be passed | String |  | Icon URL (for `img` only; for `svg` pass this in the svg parameter) |
 | **svg** | either src or svg must be passed | Object |  | [svg](#svg) options object |
 | **type** | optional | String | 'normal' | Either 'small' (16px), 'normal' (24px), 'medium' (32px), 'large' (40px). Adds CSS class 'icon-small', 'icon-normal', 'icon-medium', 'icon-large.' `type: 'medium'` is the equivalent of passing `className: 'icon-medium'`. |
+| **before** | optional | Mithril template or String or Array | | Extra content before main content |
+| **after** | optional | Mithril template or String or Array | | Extra content after main content |
 
 
 ## Default generated HTML

@@ -55,6 +55,9 @@ define(function(require) {
     }, {
         label: 'Building blocks',
         links: [{
+            url: 'element',
+            name: 'Element'
+        }, {
             url: 'svg',
             name: 'SVG'
         }, {

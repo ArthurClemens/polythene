@@ -1,12 +1,9 @@
 define([
     'polythene/polythene/polythene',
-    'mithril',
-    'polythene/icon/icon',
-    'css!./item'
+    'mithril'
 ], function(
     p,
-    m,
-    icon
+    m
 ) {
     'use strict';
 
@@ -15,14 +12,10 @@ define([
             var tag, props, content;
             opts = opts || {};
 
-            tag = opts.tag || 'div[center][horizontal][layout]';
-            props = p.componentProps({
-                classList: ['item']
-            }, opts, this, ctrl);
+            tag = opts.tag || 'div';
+            props = p.componentProps({}, opts, this, ctrl);
 
             content = [
-                opts.icon ? m.component(icon, opts.icon) : null,
-                opts.label ? m('div', opts.label) : null,
                 opts.content ? opts.content : null
             ];
             return m(tag, props, p.embellish(content, opts));
