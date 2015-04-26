@@ -5,6 +5,11 @@
 Displays an [icon](#icon) as a button.
 
 
+## Variations
+
+The icon color is set with the CSS `color` attribute of the parent element.
+
+
 ## Usage
 
 Icon Button takes an icon options object:
