@@ -4,6 +4,7 @@
 
 Displays an [icon](#icon) as a button.
 
+
 ## Usage
 
 Icon Button takes an icon options object:

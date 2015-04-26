@@ -3,6 +3,7 @@ $component_grid_unit_px: 8px;
 
 $line_height: 1.3em;
 
+$buttonSize:     6 * $component_grid_unit_px; // 48
 $iconSizeLarge:  5 * $component_grid_unit_px; // 40
 $iconSizeMedium: 4 * $component_grid_unit_px; // 32
 $iconSize: 		 3 * $component_grid_unit_px; // 24
@@ -14,16 +15,29 @@ $fontWeightBold: 700;
 
 $textColorPrimary: rgba(0,0,0,.87);
 $textColorSecondary: rgba(0,0,0,.54);
+$textColorIcon: $textColorSecondary;
 $textColorHints: rgba(0,0,0,.26);
+$textColorDisabled: $textColorHints;
 
 $textColorDarkThemePrimary: rgba(255,255,255,1);
 $textColorDarkThemeSecondary: rgba(255,255,255,.7);
+$textColorDarkThemeIcon: $textColorDarkThemeSecondary;
 $textColorDarkThemeHints: rgba(255,255,255,.3);
+$textColorDarkThemeDisabled: $textColorDarkThemeHints;
+
+$backgroundColorButton: rgba(0,0,0,.12);
+$backgroundColorDarkThemeButton: rgba(255,255,255,.12);
 
 @mixin single-line {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+}
+
+@mixin user-select-none {
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
 }
 
 @mixin vertical-center($position: relative) {
