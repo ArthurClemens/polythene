@@ -1,0 +1,30 @@
+.fab {
+	$_size_regular: 56px;
+	$_padding_regular: 16px;
+	$_size_mini: 40px;
+	$_padding_mini: 8px;
+	$_default_background_color: #d23f31;
+	$_default_color: #fff;
+
+	display: inline-block;
+	position: relative;
+	outline: none;
+	-webkit-user-select: none;
+	user-select: none;
+	cursor: pointer;
+	z-index: 0;
+
+	box-sizing: border-box;
+	width: $_size_regular;
+	height: $_size_regular;
+	background: $_default_background_color;
+	color: $_default_color;
+	border-radius: 50%;
+	padding: $_padding_regular;
+
+	&.mini {
+		width: $_size_mini;
+		height: $_size_mini;
+		padding: $_padding_mini;
+	}
+}

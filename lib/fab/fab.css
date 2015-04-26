@@ -1,0 +1,21 @@
+.fab {
+  display: inline-block;
+  position: relative;
+  outline: none;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  z-index: 0;
+  box-sizing: border-box;
+  width: 56px;
+  height: 56px;
+  background: #d23f31;
+  color: #fff;
+  border-radius: 50%;
+  padding: 16px;
+}
+.fab.mini {
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+}
