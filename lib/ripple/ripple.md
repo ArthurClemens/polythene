@@ -18,10 +18,9 @@ By default the inherited color from the parent element is used.
 
 ## Usage
 
-This component should not be used standalone. Instead add a `ripple` property to a regular module.
+Use parameter `after` to append the ripple to the content:
 
-Use `true` to simply enable the ripple with default values:
-
+	var ripple = require('polythene/ripple/ripple');
 	var iconBtn = require('polythene/icon-button/icon-button');
 
 	var myIconBtn = m.component(iconBtn, {
@@ -30,7 +29,7 @@ Use `true` to simply enable the ripple with default values:
 			    src: 'img/arrow.svg'
 			}
 		},
-		ripple: true
+		after: m.component(ripple)
 	});
 
 Use an options object to define specific behavior:
@@ -41,10 +40,10 @@ Use an options object to define specific behavior:
 			    src: 'img/arrow.svg'
 			}
 		},
-		ripple: {
+		after: m.component(ripple, {
             constrained: false,
             className: 'colored-ripple'
-        }
+        })
 	});
 
 
