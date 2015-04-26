@@ -2,10 +2,12 @@
 
 .shadow,
 .animated-shadow {
-	position: relative;
+	pointer-events: none;
 }
 
 .shadow {
+	border-radius: inherit;
+
 	.shadow-bottom,
 	.shadow-top {
 		border-radius: inherit;
