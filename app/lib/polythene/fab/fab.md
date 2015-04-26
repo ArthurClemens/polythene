@@ -47,3 +47,13 @@ A circular main button with a [shadow](#shadow) and [ripple](#ripple) effect.
 	        <div class="waves"></div>
 	    </div>
 	</div>
+
+
+## TODO
+
+* "The floating action button has an ink wash upon focus and lifts upon being selected."
+* "The floating action button animates onto the screen as an expanding piece of material, by default. The icon within it may be animated."
+* "The floating action button can transform into a toolbar upon press or scroll. The toolbar can contain related actions, text and search fields, or any other items that would be useful at hand."
+* "The floating action button can fling out related actions upon press."
+* "The floating action button can transform into a single piece of material which contains all the actions."
+* "The floating action button can transform into sheets of material that are part of the app structure."
