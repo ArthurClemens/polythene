@@ -3,6 +3,10 @@ app/app.css
 ----------------
 app/app.css
 
+app/lib/polythene/fab/fab.css
+----------------
+app/lib/polythene/fab/fab.css
+
 app/lib/polythene/font-iconic/font-iconic.css
 ----------------
 app/lib/polythene/font-iconic/./material-design-iconic-font/css/material-design-iconic-font.min.css

@@ -37,6 +37,9 @@ define(function(require) {
             url: 'icon-button',
             name: 'Icon Button'
         }, {
+            url: 'fab',
+            name: 'Floating Action Button'
+        }, {
             url: 'item',
             name: 'Item'
         }, {

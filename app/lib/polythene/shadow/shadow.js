@@ -40,7 +40,7 @@ define([
                 opts.content ? opts.content : null
             ];
 
-            return m(tag, props, content);
+            return m(tag, props, p.embellish(content, opts));
         }
     };
 });
