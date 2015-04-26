@@ -2,7 +2,7 @@
 
 @import "../polythene/polythene";
 
-$_sidePadding: 4px;
+$_sideMargin: 16px - $iconButtonPadding;
 
 .toolbar {
     display: block;
@@ -10,7 +10,7 @@ $_sidePadding: 4px;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     height: $toolbarHeightDesktop;
-    font-size: 20px;
+    font-size: $fontSizeTitle;
     background-color: #CFD8DC;
 
     &.animate {
@@ -67,13 +67,13 @@ $_sidePadding: 4px;
         }
 
         > :first-child {
-            margin-left: $_sidePadding;
+            margin-left: $_sideMargin;
         }
         > :last-child {
-            margin-right: $_sidePadding;
+            margin-right: $_sideMargin;
         }
         > .icon-button + span {
-            margin-left: $indent - $_sidePadding - $buttonSize;
+            margin-left: $indent - $_sideMargin - $buttonSize;
         }
         > span:first-child,
         > .indent {
@@ -84,13 +84,13 @@ $_sidePadding: 4px;
         }
 
         .fit {
-            position: absolute;
-            top: auto;
-            right: 0;
-            bottom: 0;
-            left: 0;
+            @include fit;
             width: auto;
             margin: 0;
+
+            &.bottom {
+                top: auto;
+            }
         }
     }
 
@@ -104,11 +104,3 @@ $_sidePadding: 4px;
     height: $toolbarHeightDesktop;
     pointer-events: none;
 }
-
-// Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
-// This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-// The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-// The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-// Code distributed by Google as part of the polymer project is also
-// subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
-

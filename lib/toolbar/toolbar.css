@@ -68,12 +68,15 @@
 }
 .toolbar .toolbar-tools .fit {
   position: absolute;
-  top: auto;
+  top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   width: auto;
   margin: 0;
+}
+.toolbar .toolbar-tools .fit.bottom {
+  top: auto;
 }
 .toolbar .header {
   white-space: nowrap;
