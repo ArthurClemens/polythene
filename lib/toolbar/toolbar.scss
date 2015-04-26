@@ -2,13 +2,15 @@
 
 @import "../polythene/polythene";
 
+$_sidePadding: 4px;
+
 .toolbar {
     display: block;
     position: relative;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
-    height: 64px;
-    font-size: 1.3em;
+    height: $toolbarHeightDesktop;
+    font-size: 20px;
     background-color: #CFD8DC;
 
     &.animate {
@@ -16,18 +18,18 @@
     }
 
     &.medium-tall {
-      height: 128px;
+      height: 2 * $toolbarHeightDesktop;
     }
 
     &.tall {
-      height: 192px;
+      height: 3 * $toolbarHeightDesktop;
     }
 
     .narrow {
-        height: 56px;
+        height: $toolbarHeightMobilePortrait;
 
         .toolbar-tools {
-            height: 56px;
+            height: $toolbarHeightMobilePortrait;
             padding: 0;
         }
     }
@@ -59,18 +61,29 @@
     }
 
     .toolbar-tools {
-        /* make elements (e.g. buttons) respond to mouse/touch events */
+        // make elements (e.g. buttons) respond to mouse/touch events
         > *:not([disabled]) {
             pointer-events: auto;
         }
 
-        /* elements spacing */
-        > * {
-            margin: 0 8px;
+        > :first-child {
+            margin-left: $_sidePadding;
+        }
+        > :last-child {
+            margin-right: $_sidePadding;
+        }
+        > .icon-button + span {
+            margin-left: $indent - $_sidePadding - $buttonSize;
+        }
+        > span:first-child,
+        > .indent {
+            margin-left: $indent;
+        }
+        > span {
+            @include single-line;
         }
 
-        /* misc helpers */
-        > .fit {
+        .fit {
             position: absolute;
             top: auto;
             right: 0;
@@ -78,10 +91,6 @@
             left: 0;
             width: auto;
             margin: 0;
-        }
-
-        > .indent {
-            margin-left: 60px;
         }
     }
 
@@ -92,8 +101,7 @@
 
 .toolbar-tools {
     position: relative;
-    height: 64px;
-    padding: 0 8px;
+    height: $toolbarHeightDesktop;
     pointer-events: none;
 }
 
