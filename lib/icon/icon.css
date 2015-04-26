@@ -21,6 +21,11 @@
 .icon i svg {
   width: 100%;
   height: 100%;
+  fill: currentcolor;
+  color: inherit;
+}
+.icon i svg path:not([fill='none']) {
+  fill: currentcolor;
 }
 .icon.icon-small {
   width: 16px;

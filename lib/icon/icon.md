@@ -7,7 +7,9 @@ Displays an icon (image or [SVG](#svg)) as a 24px square.
 
 ## Variations
 
-Other icon sizes can be set using the `type` parameter or with CSS (in conjuction with `className`).
+The size is set with the `type` parameter or with CSS (in conjuction with `className`).
+
+The color is set with the CSS `color` attribute of the parent element.
 
 
 ## Usage
