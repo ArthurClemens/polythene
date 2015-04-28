@@ -40,6 +40,24 @@ The ripple effect on click can be hidden with `ink: false`.
 | **disabled** | optional | Boolean | false | Disables the button |
 
 
+## Default generated HTML
+
+	<div raised="true" class="button">
+		<div class="content">
+			<span>Button label</span>
+			<div fit="true" class="ripple constrained">
+				<div class="ripple-mask">
+					<div class="ripple-waves" style=""></div>
+				</div>
+			</div>
+			<div fit="true" class="wash"></div>
+			<div fit="true" class="shadow">
+				<div fit="true" class="shadow-bottom shadow-bottom-z-1"></div>
+				<div fit="true" class="shadow-top shadow-top-z-1"></div>
+			</div>
+		</div>
+	</div>
+	
 
 ## TODO
 
