@@ -1,0 +1,69 @@
+@import "../polythene/polythene";
+
+.button {
+    $_margin_v: $grid_unit_px;
+    $_padding_h: (($buttonTouchHeight - $buttonHeight) / 2);
+
+    display: inline-block;
+    min-width: 8 * $component_grid_unit_px;
+    height: $buttonTouchHeight;
+    margin: 0 $_margin_v;
+    padding: $_padding_h 0;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    text-transform: uppercase;
+    outline: none;
+    cursor: pointer;
+    @include user-select-none;
+    font-size: $buttonFontSize;
+    font-weight: $buttonFontWeight;
+
+    .content {
+        position: relative;
+        height: $buttonHeight;
+        line-height: $buttonHeight;
+        padding: 0 2*$grid_unit_px;
+        border-radius: $buttonBorderRadius;
+
+        > span {
+            position: relative;
+            z-index: 3; // to make it float above .wash and .ripple
+            pointer-events: none;
+        }
+
+        .ripple {
+            // let ripple cover the entire button click area so that ripples will be generated on click
+            // then mask this extra space with ripple-mask
+            $_extra_click_room: 2;
+
+            z-index: 2;
+            top: -($_margin_v + $_extra_click_room);
+            bottom: -($_margin_v + $_extra_click_room);
+
+            .ripple-mask {
+                top: $_margin_v + $_extra_click_room;
+                bottom: $_margin_v + $_extra_click_room;
+            }
+        }
+        .wash {
+            z-index: 1;
+        }
+    }
+
+    &[disabled] {
+        cursor: auto;
+        pointer-events: none;
+    }
+
+    .wash {
+        background-color: transparent;
+        border-radius: inherit;
+        pointer-events: none;
+
+        transition: background-color $surfaceReactionDuration ease-in-out;
+        -webkit-transition: background-color $surfaceReactionDuration ease-in-out;
+        -moz-transition: background-color $surfaceReactionDuration ease-in-out;
+        -webkit-transition: background-color $surfaceReactionDuration ease-in-out;
+    }
+}

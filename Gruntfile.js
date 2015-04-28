@@ -46,6 +46,14 @@ module.exports = function(grunt) {
                     'material-design-iconic-font': 'material-design-iconic-font/svg/*',
                     'mdi': 'mdi/icons/svg/*'
                 }
+            },
+            sass: {
+                options: {
+                    destPrefix: 'lib/polythene'
+                },
+                files: {
+                    '_material-design-colors.scss': 'material-colors/dist/colors.scss'
+                }
             }
         },
         shell: {
@@ -58,7 +66,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-shell');
-    grunt.registerTask('deps', ['bowercopy:iconic_font', 'bowercopy:svgs']);
+    grunt.registerTask('deps', ['bowercopy:iconic_font', 'bowercopy:svgs', 'bowercopy:sass']);
     grunt.registerTask('author_docs', ['shell:docs']);
     grunt.registerTask('css', ['sass']);
 };

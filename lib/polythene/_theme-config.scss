@@ -1,0 +1,147 @@
+@import "material-design-colors";
+
+$lightTextColorPrimary: rgba(#000,.87);
+$lightTextColorSecondary: rgba(#000,.54);
+$lightTextColorDisabled: rgba(#000,.26);
+$lightTextColorHints: $lightTextColorDisabled;
+
+$darkTextColorPrimary: rgba(#fff,1);
+$darkTextColorSecondary: rgba(255,255,255,.7);
+$darkTextColorDisabled: rgba(#000,.26);
+$darkTextColorHints: textColorDisabled;
+
+// OLD: to be replaced
+$textColorIcon: $lightTextColorSecondary; // icon-button
+$textColorDisabled: $lightTextColorHints; // icon-button
+
+
+$themeConfig: (
+    light: (
+        button: (
+            flat: (
+                normal: (
+                    background: transparent,
+                    color: $lightTextColorPrimary
+                ),
+                hover: (
+                    background: rgba(#000,.08) // comparable to rgba(#999,.2)
+                ),
+                active: (
+                    background: rgba(#000,.13) // rgba(#000,.16) is comparable to rgba(#999,.4) // 
+                ),
+                disabled: (
+                    background: transparent,
+                    color: $lightTextColorDisabled
+                )
+            ),
+            raised: (
+                normal: (
+                    background: #E0E0E0,
+                    color: $lightTextColorPrimary
+                ),
+                hover: (
+                    background: transparent
+                ),
+                active: (
+                    background: rgba(#000,.08) // comparable to rgba(#999,.2)
+                ),
+                disabled: (
+                    background: rgba(0,0,0,.07),
+                    color: $lightTextColorDisabled
+                )
+            )
+        ),
+        icon: (
+            flat: (
+                normal: (
+                    color: $lightTextColorSecondary
+                )
+            ),
+            raised: (
+                normal: (
+                    color: $lightTextColorSecondary
+                )
+            )
+            // other styles: use button
+        ),
+        "list-tile": (
+            header: $lightTextColorPrimary,
+            subheader: $lightTextColorSecondary
+        )
+    ),
+    dark: (
+        button: (
+            flat: (
+                normal: (
+                    background: transparent,
+                    color: #fff
+                ),
+                hover: (
+                    background: rgba(#ccc, .15)
+                ),
+                active: (
+                    background: rgba(#ccc, .25)
+                ),
+                disabled: (
+                    background: transparent,
+                    color: rgba(#fff,.3)
+                )
+            ),
+            raised: (
+                normal: (
+                    background: $md-blue-500,
+                    color: $darkTextColorPrimary
+                ),
+                hover: (
+                    background: $md-blue-600
+                ),
+                active: (
+                    background: $md-blue-700
+                ),
+                disabled: (
+                    background: rgba(#fff,.12),
+                    color: rgba(#fff,.3)
+                )
+            )
+        ),
+        icon: (
+            flat: (
+                normal: (
+                    color: $darkTextColorSecondary
+                )
+            ),
+            raised: (
+                normal: (
+                    color: $darkTextColorSecondary
+                )
+            )
+            // other styles: use button
+        ),
+        "list-tile": (
+            header: $darkTextColorPrimary,
+            subheader: $darkTextColorSecondary
+        )
+    )
+);
+
+
+
+$textColorDarkThemeSecondary: rgba(255,255,255,.7);
+$textColorDarkThemeIcon: $textColorDarkThemeSecondary;
+$textColorDarkThemeHints: rgba(255,255,255,.3);
+$textColorDarkThemeDisabled: $textColorDarkThemeHints;
+
+
+
+
+$backgroundColorButton: rgba(0,0,0,.12);
+$backgroundColorButtonHover: rgba(#999,.2);
+$backgroundColorButtonActive: rgba(#999,.4);
+$backgroundColorButtonDisabled: rgba(0,0,0,.12);
+$textColorButtonDisabled: rgba(0,0,0,.26);
+
+$backgroundColorDarkThemeButton: rgba(255,255,255,.12);
+$backgroundColorDarkThemeButtonHover: rgba(204,204,204,.15);
+$backgroundColorDarkThemeButtonActive: rgba(204,204,204,.25);
+$backgroundColorDarkThemeButtonDisabled: rgba(255,255,255,.12);
+$textColorDarkThemeButtonDisabled: rgba(255,255,255,.3);

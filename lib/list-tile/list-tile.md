@@ -111,7 +111,7 @@ To show secondary content at the right, including a link:
 | **info** | optional | String | | Secondary text content (1 line high) |
 | **info_high** | optional | String | | Secondary text content (2 lines high) |
 | **icon** | optional | Object |  | [icon](#icon) options object |
-| **primary_tag** | optional | String | 'a[flex]' | HTML tag for primary content; note that this is a link tag but lacking a href attribute |
+| **primary_tag** | optional | String | 'a[flex]' or 'div[flex]' | HTML tag for primary content |
 | **secondary_tag** | optional | String | See below | HTML tag for secondary content |
 | **primary_url** | optional | String | | URL for primary content |
 | **secondary_url** | optional | String | | URL for secondary content |
@@ -125,8 +125,8 @@ To show secondary content at the right, including a link:
 
 The default tag for secondary content depends on the content of the tile:
 
-* 1 or 2 lines: `a[horizontal][layout][center]` (to vertically center align)
-* 3 lines: `a[vertical][layout][start]` (to vertically align to top)
+* 1 or 2 lines: `div[horizontal][layout][center]` (to vertically center align)
+* 3 lines: `div[vertical][layout][start]` (to vertically align to top)
 
 To show 2 elements, one at the top and one at the bottom of the right side, we use [flex] to separate the 2:
 
@@ -149,17 +149,17 @@ And then use this tag:
 ## Default generated HTML
 
 	<div horizontal="true" layout="true" center="true" class="list-tile list-tile-single-line">
-	    <a flex="true" class="list-tile-primary">
+	    <div flex="true" class="list-tile-primary">
 	        <div class="list-tile-content">
 	            <div class="list-tile-title">...</div>
 	        </div>
-	    </a>
+	    </div>
 	</div>
 
 When using a large icon (avatar image):
 
 	<div horizontal="true" layout="true" center="true" class="list-tile list-tile-single-line list-tile-has-icon">
-	    <a flex="true" class="list-tile-primary">
+	    <div flex="true" class="list-tile-primary">
 	        <div class="icon icon-large">
 	            <i fit="true">
 	                <img src="app/list-tile/avatars/1.png" />
@@ -168,6 +168,6 @@ When using a large icon (avatar image):
             <div class="list-tile-content">
                 <div class="list-tile-title">...</div>
             </div>
-        </a>
+        </div>
     </div>
 

@@ -9,3 +9,4 @@ lib/svg/material-design-iconic-font
 .sass-cache/*
 .DS_Store
 src
+lib/polythene/_material-design-colors.scss

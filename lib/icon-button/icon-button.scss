@@ -11,19 +11,9 @@
     font-size: 1rem;
     border-radius: 50%;
     z-index: 1; // to work with ripple
-    color: $textColorIcon;
 
     &[disabled] {
         pointer-events: none;
-        color: $textColorDisabled;
-    }
-
-    &.selected:not([disabled]),
-    &:active:not([disabled]),
-    &.selected:active:not([disabled]) {
-        .wash {
-            opacity: 1;
-        }
     }
 
     .icon {
@@ -32,33 +22,13 @@
     }
 
     .wash {
-        opacity: 0;
+        background-color: transparent;
         border-radius: inherit;
-        background-color: $backgroundColorButton;
+        pointer-events: none;
 
-        transition: opacity $surfaceReactionDuration ease-out;
-        -webkit-transition: opacity $surfaceReactionDuration ease-out;
-        -moz-transition: opacity $surfaceReactionDuration ease-out;
-        -webkit-transition: opacity $surfaceReactionDuration ease-out;
-    }
-}
-
-.dark-theme .icon-button {
-    color: $textColorDarkThemeIcon;
-
-    &[disabled] {
-        color: $textColorDarkThemeDisabled;
-    }
-
-    &.selected:not([disabled]),
-    &:active:not([disabled]),
-    &.selected:active:not([disabled]) {
-        .wash {
-            opacity: 1;
-        }
-    }
-
-    .wash {
-        background-color: $backgroundColorDarkThemeButton;
+        transition: background-color $surfaceReactionDuration ease-in-out;
+        -webkit-transition: background-color $surfaceReactionDuration ease-in-out;
+        -moz-transition: background-color $surfaceReactionDuration ease-in-out;
+        -webkit-transition: background-color $surfaceReactionDuration ease-in-out;
     }
 }

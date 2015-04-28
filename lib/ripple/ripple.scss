@@ -21,11 +21,18 @@
 	    -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
 	}
 	
-	.waves {
+	.ripple-mask {
+		@include fit;
+	}
+	&.constrained {
+		.ripple-mask {
+			overflow: hidden;
+		}
+	}
+	.ripple-waves {
 		display: block;
 		position: absolute;
 		border-radius: 100%;
-		z-index: 0;
 		
 		-webkit-transform: scale($_start_scale);
 		-ms-transform: scale($_start_scale);

@@ -1,0 +1,42 @@
+@mixin _theme($tint, $depth) {
+
+	color: theme($tint, "icon", $depth, "normal", "color");
+
+	// The other style use button values
+
+	background-color: theme($tint, "button", $depth, "normal", "background");
+
+	&[disabled] {
+	    background-color: theme($tint, "button", $depth, "disabled", "background");
+	    color: theme($tint, "button", $depth, "disabled", "color");
+	}
+
+	&:hover {
+	    .wash {
+	        background-color: theme($tint, "button", $depth, "hover", "background");
+	    }
+	}
+	&:active,
+	&.selected {
+	    .wash {
+	        background-color: theme($tint, "button", $depth, "active", "background");
+	    }
+	}
+
+}
+
+.icon-button {
+	@include _theme("light", "flat");
+}
+.icon-button[raised] {
+	@include _theme("light", "raised");
+}
+
+.dark-theme {
+	.icon-button:not([raised]) {
+		@include _theme("dark", "flat");
+	}
+	.icon-button[raised] {
+		@include _theme("dark", "raised");
+	}
+}

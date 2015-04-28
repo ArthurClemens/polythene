@@ -2,7 +2,7 @@
 
 @import "../polythene/polythene";
 
-$_sideMargin: 16px - $iconButtonPadding;
+$_sideMargin: 2*$component_grid_unit_px - $iconButtonPadding;
 
 .toolbar {
     display: block;

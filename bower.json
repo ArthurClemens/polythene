@@ -15,7 +15,8 @@
     "requirejs": "",
     "require-css": "",
     "material-design-iconic-font": "",
-    "mdi": "git://github.com/Templarian/MaterialDesign"
+    "mdi": "git://github.com/Templarian/MaterialDesign",
+    "material-colors": ""
   },
   "homepage": "https://github.com/ArthurClemens/Polythene",
   "authors": [

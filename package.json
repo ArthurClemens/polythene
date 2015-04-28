@@ -4,20 +4,23 @@
   "description": "Polymer inspired modular implementation of Material Design for Mithril.",
   "main": "index.js",
   "directories": {
-     "example": "example"
+    "example": "example"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
-    "requirejs": "latest",
+    "almond": "latest",
+    "bower": "latest",
     "grunt": "latest",
+    "grunt-bowercopy": "latest",
+    "grunt-cli": "latest",
     "grunt-contrib-sass": "latest",
     "grunt-contrib-watch": "latest",
-    "grunt-bowercopy": "latest",
     "grunt-shell": "latest",
-    "bower": "latest",
-    "grunt-cli": "latest",
-    "almond": "latest" 
+    "gulp": "^3.8.11",
+    "gulp-concat": "^2.5.2",
+    "gulp-minify-css": "^1.1.0",
+    "gulp-sass": "^1.3.3",
+    "requirejs": "latest"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
