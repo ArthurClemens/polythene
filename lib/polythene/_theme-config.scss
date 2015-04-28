@@ -10,11 +10,6 @@ $darkTextColorSecondary: rgba(255,255,255,.7);
 $darkTextColorDisabled: rgba(#000,.26);
 $darkTextColorHints: textColorDisabled;
 
-// OLD: to be replaced
-$textColorIcon: $lightTextColorSecondary; // icon-button
-$textColorDisabled: $lightTextColorHints; // icon-button
-
-
 $themeConfig: (
     light: (
         button: (
@@ -124,24 +119,3 @@ $themeConfig: (
     )
 );
 
-
-
-$textColorDarkThemeSecondary: rgba(255,255,255,.7);
-$textColorDarkThemeIcon: $textColorDarkThemeSecondary;
-$textColorDarkThemeHints: rgba(255,255,255,.3);
-$textColorDarkThemeDisabled: $textColorDarkThemeHints;
-
-
-
-
-$backgroundColorButton: rgba(0,0,0,.12);
-$backgroundColorButtonHover: rgba(#999,.2);
-$backgroundColorButtonActive: rgba(#999,.4);
-$backgroundColorButtonDisabled: rgba(0,0,0,.12);
-$textColorButtonDisabled: rgba(0,0,0,.26);
-
-$backgroundColorDarkThemeButton: rgba(255,255,255,.12);
-$backgroundColorDarkThemeButtonHover: rgba(204,204,204,.15);
-$backgroundColorDarkThemeButtonActive: rgba(204,204,204,.25);
-$backgroundColorDarkThemeButtonDisabled: rgba(255,255,255,.12);
-$textColorDarkThemeButtonDisabled: rgba(255,255,255,.3);
