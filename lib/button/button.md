@@ -24,6 +24,14 @@ See also: [Icon Button](#icon-button), [Floating Action Button](#fab)
 		raised: true
 	});
 
+Add a URL:
+
+	var myBtn = m.component(btn, {
+		label: 'Button',
+		raised: true,
+		url: {href: 'index.html'}
+	});
+
 
 ## Options
 
