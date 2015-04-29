@@ -10,37 +10,20 @@
   font-size: 1rem;
   border-radius: 50%;
   z-index: 1;
-  color: rgba(0, 0, 0, 0.54);
 }
 .icon-button[disabled] {
   pointer-events: none;
-  color: rgba(0, 0, 0, 0.26);
-}
-.icon-button.selected:not([disabled]) .wash, .icon-button:active:not([disabled]) .wash, .icon-button.selected:active:not([disabled]) .wash {
-  opacity: 1;
 }
 .icon-button .icon {
   pointer-events: none;
   z-index: 1;
 }
 .icon-button .wash {
-  opacity: 0;
+  background-color: transparent;
   border-radius: inherit;
-  background-color: rgba(0, 0, 0, 0.12);
-  transition: opacity 0.3s ease-out;
-  -webkit-transition: opacity 0.3s ease-out;
-  -moz-transition: opacity 0.3s ease-out;
-  -webkit-transition: opacity 0.3s ease-out;
-}
-.dark-theme .icon-button {
-  color: rgba(255, 255, 255, 0.7);
-}
-.dark-theme .icon-button[disabled] {
-  color: rgba(255, 255, 255, 0.3);
-}
-.dark-theme .icon-button.selected:not([disabled]) .wash, .dark-theme .icon-button:active:not([disabled]) .wash, .dark-theme .icon-button.selected:active:not([disabled]) .wash {
-  opacity: 1;
-}
-.dark-theme .icon-button .wash {
-  background-color: rgba(255, 255, 255, 0.12);
+  pointer-events: none;
+  transition: background-color 0.2s ease-in-out;
+  -webkit-transition: background-color 0.2s ease-in-out;
+  -moz-transition: background-color 0.2s ease-in-out;
+  -webkit-transition: background-color 0.2s ease-in-out;
 }

@@ -36,6 +36,9 @@ define(function() {
             return props;
         },
 
+        /*
+        Merge multiple objects, returns a copy.
+        */
         assign: function(target) {
             if (target === undefined || target === null) {
                 throw new TypeError('Cannot convert first argument to object');

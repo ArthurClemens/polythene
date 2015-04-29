@@ -3,6 +3,10 @@ app/app.css
 ----------------
 app/app.css
 
+app/lib/polythene/button/button.css
+----------------
+app/lib/polythene/button/button.css
+
 app/lib/polythene/fab/fab.css
 ----------------
 app/lib/polythene/fab/fab.css
@@ -52,10 +56,6 @@ app/lib/polythene/list-tile/list-tile.css
 ----------------
 app/lib/polythene/list-tile/list-tile.css
 
-app/lib/polythene/polythene/polythene.css
-----------------
-app/lib/polythene/polythene/polythene.css
-
 app/lib/polythene/polythene/typography.css
 ----------------
 app/lib/polythene/polythene/typography.css
@@ -67,6 +67,10 @@ app/lib/polythene/ripple/ripple.css
 app/lib/polythene/shadow/shadow.css
 ----------------
 app/lib/polythene/shadow/shadow.css
+
+app/lib/polythene/theme/theme.css
+----------------
+app/lib/polythene/theme/theme.css
 
 app/lib/polythene/toolbar/toolbar.css
 ----------------

@@ -34,6 +34,9 @@ define(function(require) {
     }, {
         label: 'Components',
         links: [{
+            url: 'button',
+            name: 'Button'
+        }, {
             url: 'icon-button',
             name: 'Icon Button'
         }, {
@@ -56,7 +59,7 @@ define(function(require) {
             name: 'Header Panel'
         }]
     }, {
-        label: 'Building blocks',
+        label: 'Smallest components',
         links: [{
             url: 'element',
             name: 'Element'
@@ -91,7 +94,7 @@ define(function(require) {
     navItem = function(title, url, highlight) {
         return m.component(listTile, {
             title: title,
-            url: url,
+            url: {href: url, config: m.route},
             className: highlight ? 'highlight' : ''
         });
     };

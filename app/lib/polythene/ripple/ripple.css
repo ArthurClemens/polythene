@@ -10,24 +10,33 @@
   overflow: hidden;
   -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
 }
-.ripple .waves {
+.ripple .ripple-mask {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.ripple.constrained .ripple-mask {
+  overflow: hidden;
+}
+.ripple .ripple-waves {
   display: block;
   position: absolute;
   border-radius: 100%;
-  z-index: 0;
   -webkit-transform: scale(0.1);
   -ms-transform: scale(0.1);
   -o-transform: scale(0.1);
   transform: scale(0.1);
-  animation-duration: 0.3s;
-  -webkit-animation-duration: 0.3s;
-  -moz-animation-duration: 0.3s;
-  -o-animation-duration: 0.3s;
+  animation-duration: 0.2s;
+  -webkit-animation-duration: 0.2s;
+  -moz-animation-duration: 0.2s;
+  -o-animation-duration: 0.2s;
   opacity: 0.2;
   pointer-events: none;
   display: none;
 }
-.ripple .waves.animated {
+.ripple .ripple-waves.animated {
   display: block;
   animation: ripple ease-out;
   -webkit-animation: ripple ease-out;

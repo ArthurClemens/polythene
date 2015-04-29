@@ -17,6 +17,10 @@
         height: 100%;
     }
 
+    &.avatar img {
+        border-radius: 50%;
+    }
+
     i {
         display: block;
         font-size: inherit;
