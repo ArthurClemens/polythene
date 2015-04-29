@@ -74,8 +74,7 @@ To make the primary content a link:
 		    type: 'large',
 		    src: 'app/list-tile/avatars/1.png'
 		},
-		url: 'toolbar.html',
-		url_config: null
+		url: {href: 'toolbar', config: m.route}
 	});
 
 To show secondary content at the right, including a link:
@@ -95,8 +94,7 @@ To show secondary content at the right, including a link:
                 iconset: 'mdi'
             }
         }),
-        secondary_url: 'faved',
-        secondary_url_config: null
+        secondary_url: {'faved', config: m.route}
 	});
                             
 
@@ -111,12 +109,13 @@ To show secondary content at the right, including a link:
 | **info** | optional | String | | Secondary text content (1 line high) |
 | **info_high** | optional | String | | Secondary text content (2 lines high) |
 | **icon** | optional | Object |  | [icon](#icon) options object |
-| **primary_tag** | optional | String | 'a[flex]' or 'div[flex]' | HTML tag for primary content |
-| **secondary_tag** | optional | String | See below | HTML tag for secondary content |
-| **primary_url** | optional | String | | URL for primary content |
-| **secondary_url** | optional | String | | URL for secondary content |
-| **primary_url_config** | optional | m.route Object | `m.route` | The config for the primary URL |
-| **secondary_url_config** | optional | m.route Object | `m.route` | The config for the secondary URL |
+| **tag** | optional | String | 'a[flex]' or 'div[flex]' | HTML tag for primary content |
+| **url** | optional | Object | | URL for primary content; options object containing `href` and `config` |
+| **secondary** | optional | Object | | Options for secondary content |
+| **secondary.tag** | optional | String | See below | HTML tag for secondary content |
+| **secondary.icon** | optional | Object |  | [icon](#icon) options object for icon in secondary content |
+| **secondary.url** | optional | Object | | URL for secondary content; options object containing `href` and `config` |
+| **secondary.content** | optional | String | | Secondary content |
 | **before** | optional | Mithril template or String or Array | | Extra content before main content |
 | **after** | optional | Mithril template or String or Array | | Extra content after main content |
 
@@ -128,22 +127,21 @@ The default tag for secondary content depends on the content of the tile:
 * 1 or 2 lines: `div[horizontal][layout][center]` (to vertically center align)
 * 3 lines: `div[vertical][layout][start]` (to vertically align to top)
 
-To show 2 elements, one at the top and one at the bottom of the right side, we use [flex] to separate the 2:
+To show 2 elements, one at the top and one at the bottom of the right side, we use [flex] to separate the 2, and use a custom `secondary.tag`:
 
-	secondary: [
-	    m('div', '15 min'),
-	    m('div[flex]'),
-	    m.component(icon, {
+	secondary: {
+		content: [
+		    m('div', '15 min'),
+		    m('div[flex]')
+		],
+	    icon: {
 	        svg: {
 	            name: 'star-outline',
 	            iconset: 'mdi'
 	        }
-	    })
-	]
-
-And then use this tag:
-
-	secondary_tag: 'div[layout][vertical][end]'
+	    },
+	    tag: 'div[layout][vertical][end]'
+	}
 
 
 ## Default generated HTML
