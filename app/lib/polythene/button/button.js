@@ -18,9 +18,9 @@ define([
                 noink;
             opts = opts || {};
 
-            tag = opts.tag || 'div';
+            tag = opts.tag || (opts.url ? 'a' : 'div');
             noink = (opts.ink !== undefined && !opts.ink);
-            
+
             if (opts.disabled) {
                 tag += '[disabled]';
             }
@@ -31,15 +31,16 @@ define([
                 tag += '[raised]';
             }
             props = p.componentProps({
-                classList: ['button']
+                classList: ['button'],
+                props: opts.url ? opts.url : null
             }, opts, this, ctrl);
 
             content = [
-                m('div', {class: 'content'}, [
+                m('div', {
+                    class: 'content'
+                }, [
                     opts.label ? m('span', opts.label) : null,
-                    noink ? null : m.component(ripple),
-                    (opts.wash !== undefined && !opts.wash) ? null : m('.wash[fit]'),
-                    (opts.raised && !opts.disabled) ? m.component(shadow, {
+                    noink ? null : m.component(ripple), (opts.wash !== undefined && !opts.wash) ? null : m('.wash[fit]'), (opts.raised && !opts.disabled) ? m.component(shadow, {
                         z: (opts.z !== undefined) ? opts.z : 1,
                         animated: opts.animated
                     }) : null

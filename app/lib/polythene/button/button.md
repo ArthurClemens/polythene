@@ -9,11 +9,10 @@ See also: [Icon Button](#icon-button), [Floating Action Button](#fab)
 
 ## Variations
 
-Buttons can be flat or raised. Using `raised` gives the button a shadow.
-
-The hover effect can be hidden with `wash: false`.
-
-The ripple effect on click can be hidden with `ink: false`.
+* Buttons can be flat or raised. Using `raised` gives the button a shadow.
+* The hover effect can be hidden with `wash: false`.
+* The ripple effect on click can be hidden with `ink: false`.
+* No icon in button, as this is not part of the Material Design guidelines; use [icon Button](#icon-button) instead
 
 
 ## Usage
@@ -25,6 +24,14 @@ The ripple effect on click can be hidden with `ink: false`.
 		raised: true
 	});
 
+Add a URL:
+
+	var myBtn = m.component(btn, {
+		label: 'Button',
+		raised: true,
+		url: {href: 'index.html'}
+	});
+
 
 ## Options
 
@@ -33,6 +40,7 @@ The ripple effect on click can be hidden with `ink: false`.
 | **tag** | optional | String | 'div' | HTML tag |
 | **className** | optional | String |  | Extra CSS class appended to 'button' |
 | **label** | required | String | | The button label |
+| **url** | optional | Object | | Button URL; options object containing `href` and `config` |
 | **wash** | optional | Boolean | true | Set to false to hide the effect on hover |
 | **ink** | optional | Boolean | true | Set to false to disable the ripple effect on click/tap |
 | **raised** | optional | Boolean | false | Shows a shadow |
@@ -57,9 +65,10 @@ The ripple effect on click can be hidden with `ink: false`.
 			</div>
 		</div>
 	</div>
-	
+
 
 ## TODO
 
+* Option to wait for ripple to finish
 * Animated z change on press
 
