@@ -87,14 +87,16 @@ To show secondary content at the right, including a link:
 		    type: 'large',
 		    src: 'app/list-tile/avatars/1.png'
 		},
-		secondary: m.component(icon, {
-            type: 'small',
-            svg: {
-                name: 'heart-outline',
-                iconset: 'mdi'
-            }
-        }),
-        secondary_url: {'faved', config: m.route}
+		secondary: {
+			icon: {
+	            type: 'small',
+	            svg: {
+	                name: 'heart-outline',
+	                iconset: 'mdi'
+	            }
+			},
+			url: {'faved', config: m.route}
+        })
 	});
                             
 
@@ -112,10 +114,10 @@ To show secondary content at the right, including a link:
 | **tag** | optional | String | 'a[flex]' or 'div[flex]' | HTML tag for primary content |
 | **url** | optional | Object | | URL for primary content; options object containing `href` and `config` |
 | **secondary** | optional | Object | | Options for secondary content |
-| **secondary.tag** | optional | String | See below | HTML tag for secondary content |
-| **secondary.icon** | optional | Object |  | [icon](#icon) options object for icon in secondary content |
+| **secondary.tag** | optional | String | See "Layout of secondary content" below | HTML tag for secondary content |
+| **secondary.icon** | optional | Object |  | [icon](#icon) options object for icon in secondary content; will be placed above secondary.content |
 | **secondary.url** | optional | Object | | URL for secondary content; options object containing `href` and `config` |
-| **secondary.content** | optional | String | | Secondary content |
+| **secondary.content** | optional | Mithril template or String or Array | | Secondary content |
 | **before** | optional | Mithril template or String or Array | | Extra content before main content |
 | **after** | optional | Mithril template or String or Array | | Extra content after main content |
 
@@ -127,19 +129,20 @@ The default tag for secondary content depends on the content of the tile:
 * 1 or 2 lines: `div[horizontal][layout][center]` (to vertically center align)
 * 3 lines: `div[vertical][layout][start]` (to vertically align to top)
 
-To show 2 elements, one at the top and one at the bottom of the right side, we use [flex] to separate the 2, and use a custom `secondary.tag`:
+To show 2 elements, one at the top and one at the bottom of the right side, we use [flex] to separate the 2:
 
 	secondary: {
-		content: [
+		content: {
 		    m('div', '15 min'),
-		    m('div[flex]')
-		],
-	    icon: {
-	        svg: {
-	            name: 'star-outline',
-	            iconset: 'mdi'
-	        }
-	    },
+		    m('div[flex]'),
+		    m.component(icon, {
+		        svg: {
+		                name: 'star-outline',
+		                iconset: 'mdi'
+		            }
+		        }
+		    )
+		},
 	    tag: 'div[layout][vertical][end]'
 	}
 
