@@ -5,7 +5,12 @@
 		color: theme($tint, $element, "header");
 	}
 
-	&.subheader,
+	&.subheader {
+		.list-tile-title {
+			color: theme($tint, $element, "subheader");
+		}
+	}
+	
 	.list-tile-info {
 	    color: theme($tint, $element, "subheader");
 	}

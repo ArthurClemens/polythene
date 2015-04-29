@@ -318,7 +318,9 @@ body[fullbleed] {
 
 .list-tile, .list-tile .list-tile-title {
   color: rgba(0, 0, 0, 0.87); }
-.list-tile.subheader, .list-tile .list-tile-info {
+.list-tile.subheader .list-tile-title {
+  color: rgba(0, 0, 0, 0.54); }
+.list-tile .list-tile-info {
   color: rgba(0, 0, 0, 0.54); }
 .list-tile .list-tile-primary, .list-tile .list-tile-primary a, .list-tile .list-tile-secondary, .list-tile .list-tile-secondary a {
   color: inherit; }
@@ -327,7 +329,9 @@ body[fullbleed] {
 
 .dark-theme .list-tile, .dark-theme .list-tile .list-tile-title {
   color: white; }
-.dark-theme .list-tile.subheader, .dark-theme .list-tile .list-tile-info {
+.dark-theme .list-tile.subheader .list-tile-title {
+  color: rgba(255, 255, 255, 0.7); }
+.dark-theme .list-tile .list-tile-info {
   color: rgba(255, 255, 255, 0.7); }
 .dark-theme .list-tile .list-tile-primary, .dark-theme .list-tile .list-tile-primary a, .dark-theme .list-tile .list-tile-secondary, .dark-theme .list-tile .list-tile-secondary a {
   color: inherit; }
