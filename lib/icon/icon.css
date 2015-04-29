@@ -10,6 +10,9 @@
 .icon [fit] {
   height: 100%;
 }
+.icon.avatar img {
+  border-radius: 50%;
+}
 .icon i {
   display: block;
   font-size: inherit;
