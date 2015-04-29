@@ -2,7 +2,7 @@
 
 Polymer inspired modular implementation of Material Design for [Mithril](http://lhorie.github.io/mithril). 
 
-Alpha status. Things will break.
+Alpha status.
 
 
 * [Examples](https://github.com/ArthurClemens/Polythene-Examples)
