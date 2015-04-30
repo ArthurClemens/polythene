@@ -2,9 +2,9 @@
 
 <a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/button.html">Demo</a>
 
-Displays a text button.
+Displays a text button with a [shadow](#shadow) and [ripple](#ripple) effect.
 
-See also: [Icon Button](#icon-button), [Floating Action Button](#fab)
+See also: [Icon Button](#icon-button) and [Floating Action Button](#fab)
 
 
 ## Usage
@@ -27,7 +27,7 @@ Add a URL:
 
 ## Variations
 
-* Buttons can be flat or raised. Using `raised` gives the button a shadow.
+* Buttons can be flat or raised. Using `raised` without specifying `z` gives the button a default shadow.
 * The hover effect can be hidden with `wash: false`.
 * The ripple effect on click can be hidden with `ink: false`.
 * No icon in button, as this is not part of the Material Design guidelines; use [icon Button](#icon-button) instead
