@@ -36,4 +36,30 @@
 	.content {
 		border-radius: inherit;
 	}
+
+	.icon {
+	    pointer-events: none;
+	    z-index: 3;
+	}
+
+	.ripple {
+	    border-radius: inherit;
+	    z-index: 2;
+
+	    .ripple-mask {
+	        border-radius: inherit;
+	    }
+	}
+
+	.wash {
+	    background-color: transparent;
+	    border-radius: inherit;
+	    pointer-events: none;
+	    z-index: 1;
+
+	    transition: background-color $surfaceReactionDuration ease-in-out;
+	    -webkit-transition: background-color $surfaceReactionDuration ease-in-out;
+	    -moz-transition: background-color $surfaceReactionDuration ease-in-out;
+	    -webkit-transition: background-color $surfaceReactionDuration ease-in-out;
+	}
 }
