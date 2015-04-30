@@ -10,10 +10,10 @@ define([
 
     var MIN_DURATION,
         MAX_DURATION,
-        START_OPACITY,
+        DEFAULT_START_OPACITY,
         OPACITY_DECAY_VELOCITY;
 
-    START_OPACITY = 0.2;
+    DEFAULT_START_OPACITY = 0.2;
     OPACITY_DECAY_VELOCITY = 0.36;
 
     return {
@@ -47,7 +47,7 @@ define([
                     wavesEl.style.top = ry + 'px';
                     wavesEl.style.left = rx + 'px';
 
-                    initialOpacity = (opts.initialOpacity !== undefined) ? opts.initialOpacity : START_OPACITY;
+                    initialOpacity = (opts.initialOpacity !== undefined) ? opts.initialOpacity : DEFAULT_START_OPACITY;
                     opacityDecayVelocity = (opts.opacityDecayVelocity !== undefined) ? opts.opacityDecayVelocity : OPACITY_DECAY_VELOCITY;
 
                     duration = 1 / opacityDecayVelocity * initialOpacity;

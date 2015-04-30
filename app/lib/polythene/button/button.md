@@ -43,8 +43,8 @@ Add a URL:
 | **url** | optional | Object | | Button URL; options object containing `href` and `config` |
 | **wash** | optional | Boolean | true | Set to false to hide the effect on hover |
 | **ink** | optional | Boolean | true | Set to false to disable the ripple effect on click/tap |
-| **raised** | optional | Boolean | false | Shows a shadow |
-| **z** | optional | Number 0-5 | | The shadow depth for a raised button |
+| **raised** | optional | Boolean | false | Shows a shadow; on button press the shadow depth is increased by 1 |
+| **z** | optional | Number 0-5 | 1 | The shadow depth for a raised button; raised buttons have a default z of 1 |
 | **disabled** | optional | Boolean | false | Disables the button |
 
 
@@ -70,5 +70,4 @@ Add a URL:
 ## TODO
 
 * Option to wait for ripple to finish
-* Animated z change on press
 
