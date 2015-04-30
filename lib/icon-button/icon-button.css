@@ -8,20 +8,30 @@
   cursor: pointer;
   position: relative;
   font-size: 1rem;
+}
+.icon-button .content {
   border-radius: 50%;
-  z-index: 1;
 }
 .icon-button[disabled] {
   pointer-events: none;
 }
 .icon-button .icon {
   pointer-events: none;
-  z-index: 1;
+  z-index: 3;
+}
+.icon-button .ripple {
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 2;
+}
+.icon-button .ripple .ripple-mask {
+  border-radius: inherit;
 }
 .icon-button .wash {
   background-color: transparent;
   border-radius: inherit;
   pointer-events: none;
+  z-index: 1;
   transition: background-color 0.2s ease-in-out;
   -webkit-transition: background-color 0.2s ease-in-out;
   -moz-transition: background-color 0.2s ease-in-out;

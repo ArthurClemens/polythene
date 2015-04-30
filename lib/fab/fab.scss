@@ -11,18 +11,17 @@
 	display: inline-block;
 	position: relative;
 	outline: none;
-	-webkit-user-select: none;
-	user-select: none;
+
+	@include user-select-none;
 	cursor: pointer;
 	z-index: 0;
 
-	box-sizing: border-box;
 	width: $_size_regular;
 	height: $_size_regular;
+	padding: $_padding_regular;
 	background: $_default_background_color;
 	color: $_default_color;
 	border-radius: 50%;
-	padding: $_padding_regular;
 
 	&.mini {
 		width: $_size_mini;
@@ -30,10 +29,11 @@
 		padding: $_padding_mini;
 	}
 
-	&.icon-button {
-		padding: ($_size_regular - $iconSize) / 2;
-	}
-	&.mini.icon-button {
+	&.mini {
 		padding: ($_size_mini - $iconSize) / 2;
+	}
+
+	.content {
+		border-radius: inherit;
 	}
 }
