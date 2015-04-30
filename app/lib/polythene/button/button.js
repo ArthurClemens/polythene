@@ -3,16 +3,46 @@ define([
     'mithril',
     'polythene/ripple/ripple',
     'polythene/shadow/shadow',
-    'polythene/shadow/tap-fn',
     'css!./button'
 ], function(
     p,
     m,
     ripple,
-    shadow,
-    tapFn
+    shadow
 ) {
     'use strict';
+
+    var initTapEvents,
+        clearTapEvents;
+
+    initTapEvents = function(el, ctrl, opts) {
+        var MAX_Z, baseZ, increase;
+        MAX_Z = 5;
+        baseZ = ctrl.baseZ();
+        increase = opts.increase || 1;
+
+        el.addEventListener('mousedown', function() {
+            if (baseZ == 5) return;
+            var z = ctrl.z();
+            z = z + increase;
+            z = Math.min(z, MAX_Z);
+            ctrl.z(z);
+            m.redraw();
+        });
+        el.addEventListener('mouseup', function() {
+            if (baseZ == 5) return;
+            var z = ctrl.z();
+            z = z - increase;
+            z = Math.max(z, baseZ);
+            ctrl.z(z);
+            m.redraw();
+        });
+    };
+
+    clearTapEvents = function(el) {
+        el.removeEventListener('mousedown');
+        el.removeEventListener('mouseup');
+    };
 
     return {
         controller: function(opts) {
@@ -25,6 +55,8 @@ define([
             var tag, props, content,
                 noink, label;
             opts = opts || {};
+            opts.ripple = opts.ripple || {};
+            opts.shadow = opts.shadow || {};
 
             tag = opts.tag || (opts.url ? 'a' : 'div');
             noink = (opts.ink !== undefined && !opts.ink);
@@ -41,7 +73,16 @@ define([
 
             props = p.componentProps({
                 classList: [opts.parentClass || 'button'],
-                props: p.assign(tapFn(ctrl), (opts.url ? opts.url : null))
+                props: p.assign({
+                    config: function(el, isInited, context) {
+                        if (isInited) return;
+                        initTapEvents(el, ctrl, opts.shadow);
+
+                        context.onunload = function() {
+                            clearTapEvents(el);
+                        };
+                    }
+                }, (opts.url ? opts.url : null))
             }, opts, this, ctrl);
 
             label = null;
@@ -57,7 +98,7 @@ define([
                     class: 'content'
                 }, [
                     label,
-                    noink ? null : m.component(ripple),
+                    noink ? null : m.component(ripple, opts.ripple),
                     (opts.wash !== undefined && !opts.wash) ? null : m('.wash[fit]'),
                     (opts.raised && !opts.disabled) ? m.component(shadow, {
                         z: ctrl.z(),

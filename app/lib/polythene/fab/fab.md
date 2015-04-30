@@ -33,7 +33,11 @@ A circular main button with a [shadow](#shadow) and [ripple](#ripple) effect.
 
 ## Inheritance
 
-FAB inherits from [icon button](#icon-button) (which inherits from [button](#button). Button options `raised` is set to true.
+FAB inherits from [icon button](#icon-button) (which inherits from [button](#button), with these adjustments:
+
+* Button options `raised` is set to true
+* The ripple eminates from the center of the button
+* The ripple has a 2/3 decay speed
 
 
 ## Default generated HTML

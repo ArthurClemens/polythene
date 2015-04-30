@@ -21,7 +21,6 @@
 }
 .icon-button .ripple {
   border-radius: inherit;
-  pointer-events: none;
   z-index: 2;
 }
 .icon-button .ripple .ripple-mask {

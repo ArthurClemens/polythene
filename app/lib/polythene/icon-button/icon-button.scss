@@ -13,7 +13,7 @@
     .content {
         border-radius: 50%;
     }
-    
+
     &[disabled] {
         pointer-events: none;
     }
@@ -25,7 +25,6 @@
 
     .ripple {
         border-radius: inherit;
-        pointer-events: none;
         z-index: 2;
 
         .ripple-mask {

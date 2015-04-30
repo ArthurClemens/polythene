@@ -8,13 +8,27 @@ define([
 ) {
     'use strict';
 
-    var MIN_DURATION,
-        MAX_DURATION,
-        DEFAULT_START_OPACITY,
-        OPACITY_DECAY_VELOCITY;
+    var DEFAULT_START_OPACITY,
+        OPACITY_DECAY_VELOCITY,
+        initTapEvents,
+        clearTapEvents;
 
     DEFAULT_START_OPACITY = 0.2;
     OPACITY_DECAY_VELOCITY = 0.36;
+
+    initTapEvents = function(el, ctrl, opts) {
+        el.addEventListener('mousedown', function(e) {
+            ctrl.start(e, ctrl, opts);
+        });
+        el.addEventListener('mouseup', function(e) {
+            ctrl.stop(e, ctrl, opts);
+        });
+    };
+
+    clearTapEvents = function(el) {
+        el.removeEventListener('mousedown');
+        el.removeEventListener('mouseup');
+    };
 
     return {
         controller: function(opts) {
@@ -25,9 +39,10 @@ define([
                 waves: m.prop(),
                 delegate: m.prop(),
 
-                start: function(e, ctrl) {
+                start: function(e, ctrl, opts) {
                     var el, wavesEl, mx, my, rx, ry, rect, top, left, w, h, waveRadius, transitionEvent, duration, color, onEnd, initialOpacity, opacityDecayVelocity;
                     el = ctrl.ripple();
+
                     wavesEl = ctrl.waves();
                     wavesEl.classList.remove('animated');
                     w = el.offsetWidth;
@@ -36,14 +51,20 @@ define([
                     waveRadius = Math.sqrt(w * w + h * h);
                     wavesEl.style.width = wavesEl.style.height = waveRadius + 'px';
 
-                    mx = e.clientX;
-                    my = e.clientY;
                     rect = el.getBoundingClientRect();
+
+                    if (opts.center) {
+                        mx = rect.left + rect.width / 2;
+                        my = rect.top + rect.height / 2;
+                    } else {
+                        mx = e.clientX;
+                        my = e.clientY;
+                    }
 
                     top = rect.top - document.body.scrollTop;
                     left = rect.left - document.body.scrollLeft;
-                    rx = e.clientX - rect.left - waveRadius / 2;
-                    ry = e.clientY - rect.top - waveRadius / 2;
+                    rx = mx - rect.left - waveRadius / 2;
+                    ry = my - rect.top - waveRadius / 2;
                     wavesEl.style.top = ry + 'px';
                     wavesEl.style.left = rx + 'px';
 
@@ -86,12 +107,17 @@ define([
             var tag, props, content,
                 initRipple,
                 initWaves;
-
             opts = opts || {};
 
-            initRipple = function(ripple, inited) {
+            initRipple = function(ripple, inited, context) {
                 if (inited) return;
                 ctrl.ripple(ripple);
+
+                initTapEvents(ripple, ctrl, opts);
+
+                context.onunload = function() {
+                    clearTapEvents(ripple);
+                };
             };
 
             initWaves = function(waves, inited) {
@@ -103,14 +129,6 @@ define([
             props = p.componentProps({
                 classList: ['ripple', (opts.constrained !== false ? 'constrained' : null)],
                 props: {
-                    onmousedown: function(e) {
-                        ctrl.start(e, ctrl);
-                        return true;
-                    },
-                    onmouseup: function(e) {
-                        ctrl.stop(e, ctrl);
-                        return true;
-                    },
                     config: initRipple
                 }
             }, opts, this, ctrl);

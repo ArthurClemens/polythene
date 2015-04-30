@@ -25,3 +25,24 @@
 .fab .content {
   border-radius: inherit;
 }
+.fab .icon {
+  pointer-events: none;
+  z-index: 3;
+}
+.fab .ripple {
+  border-radius: inherit;
+  z-index: 2;
+}
+.fab .ripple .ripple-mask {
+  border-radius: inherit;
+}
+.fab .wash {
+  background-color: transparent;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 1;
+  transition: background-color 0.2s ease-in-out;
+  -webkit-transition: background-color 0.2s ease-in-out;
+  -moz-transition: background-color 0.2s ease-in-out;
+  -webkit-transition: background-color 0.2s ease-in-out;
+}
