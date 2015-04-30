@@ -8,6 +8,7 @@
   cursor: pointer;
   position: relative;
   font-size: 1rem;
+  border-radius: 50%;
 }
 .icon-button .content {
   border-radius: 50%;
