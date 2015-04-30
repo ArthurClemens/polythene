@@ -7,14 +7,6 @@ Displays a text button.
 See also: [Icon Button](#icon-button), [Floating Action Button](#fab)
 
 
-## Variations
-
-* Buttons can be flat or raised. Using `raised` gives the button a shadow.
-* The hover effect can be hidden with `wash: false`.
-* The ripple effect on click can be hidden with `ink: false`.
-* No icon in button, as this is not part of the Material Design guidelines; use [icon Button](#icon-button) instead
-
-
 ## Usage
 
 	var btn = require('polythene/button/button');
@@ -31,6 +23,14 @@ Add a URL:
 		raised: true,
 		url: {href: 'index.html'}
 	});
+
+
+## Variations
+
+* Buttons can be flat or raised. Using `raised` gives the button a shadow.
+* The hover effect can be hidden with `wash: false`.
+* The ripple effect on click can be hidden with `ink: false`.
+* No icon in button, as this is not part of the Material Design guidelines; use [icon Button](#icon-button) instead
 
 
 ## Options

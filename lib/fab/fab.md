@@ -18,7 +18,6 @@ A circular main button with a [shadow](#shadow) and [ripple](#ripple) effect.
     });
 
 
-
 ## Options
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
@@ -27,31 +26,35 @@ A circular main button with a [shadow](#shadow) and [ripple](#ripple) effect.
 | **className** | optional | String |  | Extra CSS class appended to 'fab' |
 | **icon** | required | Object |  | [icon](#icon) options object |
 | **z** | optional | Number 0-5 | 1 | Depth of the shadow |
-| **small** | optional | Boolean | false | Set to true to display a small button |
+| **small** | optional | Boolean | false | Set to true to display a small button (class name `fab mini`) |
 | **before** | optional | Mithril template or String or Array | | Extra content before main content |
 | **after** | optional | Mithril template or String or Array | | Extra content after main content |
 
 
+## Inheritance
+
+FAB inherits from [icon button](#icon-button) (which inherits from [button](#button). Button options `raised` is set to true.
+
 
 ## Default generated HTML
 
-	<div class="shadow fab">
-	    <div fit="true" class="shadow-bottom shadow-bottom-z-1"></div>
-	    <div fit="true" class="shadow-top shadow-top-z-1"></div>
-	    <div class="icon icon-normal">
-	        <i fit="true" class="svg">
-	            svg...
-	        </i>
-	    </div>
-	    <div fit="true" class="ripple constrained">
-	        <div class="waves"></div>
+	<div noink="true" raised="true" class="fab">
+	    <div class="content">
+	        <div class="icon icon-normal">
+	            <i fit="true" class="svg ">
+	                svg...
+	            </i>
+	        </div>
+	        <div fit="true" class="shadow">
+	            <div fit="true" animated="true" class="shadow-bottom shadow-bottom-z-2"></div>
+	            <div fit="true" animated="true" class="shadow-top shadow-top-z-2"></div>
+	        </div>
 	    </div>
 	</div>
 
 
 ## TODO
 
-* "The floating action button has an ink wash upon focus and lifts upon being selected."
 * "The floating action button animates onto the screen as an expanding piece of material, by default. The icon within it may be animated."
 * "The floating action button can transform into a toolbar upon press or scroll. The toolbar can contain related actions, text and search fields, or any other items that would be useful at hand."
 * "The floating action button can fling out related actions upon press."

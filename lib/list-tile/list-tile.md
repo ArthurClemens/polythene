@@ -7,21 +7,6 @@ Displays a list element as part of a [list](#list).
 Material Design lists are not part of Polymer. This implementation follows [the design specification](http://www.google.com/design/spec/components/lists.html).
 
 
-## Variations
-
-A list tile can have 1 to 3 lines:
-
-* `title`: first line
-* `info`: secondary line
-* `info_high`: secondary line runs over 2 lines
-
-A list tile can optionally have an icon.
-
-Text and icon are taken together as primary content. Primary content can optionally have a link.
-
-A list tile can optionally have secondary content, displayed to the right. Secondary content can contain any content, and conditionally have a link.
-
-
 ## Usage
 
 	var listTile = require('polythene/list-tile/list-tile');
@@ -99,6 +84,20 @@ To show secondary content at the right, including a link:
         })
 	});
                             
+
+## Variations
+
+A list tile can have 1 to 3 lines:
+
+* `title`: first line
+* `info`: secondary line
+* `info_high`: secondary line runs over 2 lines
+
+A list tile can optionally have an icon.
+
+Text and icon are taken together as primary content. Primary content can optionally have a link.
+
+A list tile can optionally have secondary content, displayed to the right. Secondary content can contain any content, and conditionally have a link.
 
 
 ## Options

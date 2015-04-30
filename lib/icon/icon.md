@@ -5,13 +5,6 @@
 Displays an icon (image or [SVG](#svg)) as a 24px square. 
 
 
-## Variations
-
-The size is set with the `type` parameter or with CSS (in conjuction with `className`).
-
-The color is set with the CSS `color` attribute of the parent element.
-
-
 ## Usage
 
 	var icon = require('polythene/icon/icon');
@@ -38,6 +31,12 @@ Or pass `iconset` (sub folder) and filename (without `.svg`):
 	});
 
 
+## Variations
+
+* The size is set with the `type` parameter or with CSS (in conjuction with `className`).
+* The color is set with the CSS `color` attribute of the parent element.
+
+
 ## Options
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
@@ -58,9 +57,4 @@ Or pass `iconset` (sub folder) and filename (without `.svg`):
 			img or svg
 		</i>
 	</div>
-
-
-## TODO
-
-* alt option: Alternative text content for accessibility support. If alt is present and not empty, it will set the element's role to img and add an aria-label whose content matches alt. If alt is present and is an empty string, '', it will hide the element from the accessibility layer If alt is not present, it will set the element's role to img and the element will fallback to using the icon attribute for its aria-label.
 

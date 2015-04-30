@@ -5,27 +5,6 @@
 Displays a horizontal bar containing a label and action items. One toolbar can have 1 to 3 horizontal bars.
 
 
-## Variations
-
-Toolbar wraps 3 optional sub components:
-* `topBar`
-* `middleBar`
-* `bottomBar`
-
-Alternatively:
-* `content` can be passed as substitute for the bars
-
-Each bar contains the class 'toolbar-tools', plus the name of the bar type (f.i. 'topBar').
-
-A toolbar can have different heights, set with param `mode`:
-
-* `standard` (default)
-* `medium-tall`
-* `tall`
-
-These heights are predefined by the toolbar CSS.
-
-
 ## Usage
 
 	var toolbar = require('polythene/toolbar/toolbar');
@@ -68,6 +47,27 @@ To show 3 bars:
 		middleBar: m.trust('<div flex class="middle indent">label aligns to the middle</div>'),
 		bottomBar: m.trust('<div class="bottom indent" style="color: #666; font-size: 18px;">some stuffs align to the bottom</div>')
     });
+
+
+## Variations
+
+Toolbar wraps 3 optional sub components:
+* `topBar`
+* `middleBar`
+* `bottomBar`
+
+Alternatively:
+* `content` can be passed as substitute for the bars
+
+Each bar contains the class 'toolbar-tools', plus the name of the bar type (f.i. 'topBar').
+
+A toolbar can have different heights, set with param `mode`:
+
+* `standard` (default)
+* `medium-tall`
+* `tall`
+
+These heights are predefined by the toolbar CSS.
 
 
 ## Options
