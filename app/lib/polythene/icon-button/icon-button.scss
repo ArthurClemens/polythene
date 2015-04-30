@@ -9,22 +9,35 @@
     cursor: pointer;
     position: relative;
     font-size: 1rem;
-    border-radius: 50%;
-    z-index: 1; // to work with ripple
 
+    .content {
+        border-radius: 50%;
+    }
+    
     &[disabled] {
         pointer-events: none;
     }
 
     .icon {
         pointer-events: none;
-        z-index: 1;
+        z-index: 3;
+    }
+
+    .ripple {
+        border-radius: inherit;
+        pointer-events: none;
+        z-index: 2;
+
+        .ripple-mask {
+            border-radius: inherit;
+        }
     }
 
     .wash {
         background-color: transparent;
         border-radius: inherit;
         pointer-events: none;
+        z-index: 1;
 
         transition: background-color $surfaceReactionDuration ease-in-out;
         -webkit-transition: background-color $surfaceReactionDuration ease-in-out;

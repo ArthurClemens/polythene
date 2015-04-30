@@ -5,11 +5,6 @@
 Displays an [icon](#icon) as a button.
 
 
-## Variations
-
-The icon color is set with the CSS `color` attribute of the parent element.
-
-
 ## Usage
 
 Icon Button takes an icon options object:
@@ -48,6 +43,20 @@ Instead of an `icon` options object, you can pass an icon component:
 	});
 
 
+## Variations
+
+The icon color is set with the CSS `color` attribute of the parent element. For example:
+
+	/* CSS */
+	.icon-button.colored {
+		color: red;
+	}
+
+	// JS
+	var myIconBtn = m.component(iconBtn, {
+		className: 'colored'
+	});
+
 
 ## Options
 
@@ -56,20 +65,26 @@ Instead of an `icon` options object, you can pass an icon component:
 | **tag** | optional | String | 'div' | HTML tag |
 | **className** | optional | String |  | Extra CSS class appended to 'icon-button' |
 | **icon** | either icon or content must be passed | Object |  | [icon](#icon) options object |
-| **wash** | optional | Boolean | true | Set to false to hide the 'active' overlay; wash is mostly redundant is also ripple is used |
 | **content** | either icon or content must be passed | Mithril template or String | | Alternative content if no icon object is used |
 | **active** | optional | Boolean | | Set to true to show the active state (with border and background) |
 | **before** | optional | Mithril template or String or Array | | Extra content before main content |
 | **after** | optional | Mithril template or String or Array | | Extra content after main content |
 
 
+## Inheritance
+
+Icon button inherits from [button](#button). Button options `ink` and `wash` are set to false.
+
+
 ## Default generated HTML
 
-	<div class="icon-button">
-		<div class="icon icon-normal">
-			<i fit="true" class="svg ">
-				img or svg
-			</i>
-		</div>
+	<div noink="true" class="icon-button">
+	    <div class="content">
+	        <div class="icon icon-normal">
+	            <i fit="true" class="svg ">
+	                svg...
+	            </i>
+	        </div>
+	    </div>
 	</div>
 

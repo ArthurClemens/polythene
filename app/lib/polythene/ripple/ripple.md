@@ -5,17 +5,6 @@
 Adds a touch ripple effect to an element.
 
 
-## Variations
-
-The ripple color can be set in CSS:
-
-	.colored-ripple {
-		color: green;
-	}
-
-By default the inherited color from the parent element is used.
-
-
 ## Usage
 
 Use parameter `after` to append the ripple to the content:
@@ -45,6 +34,17 @@ Use an options object to define specific behavior:
             className: 'colored-ripple'
         })
 	});
+
+
+## Variations
+
+The ripple color can be set in CSS:
+
+	.colored-ripple {
+		color: green;
+	}
+
+By default the inherited color from the parent element is used.
 
 
 ## Options

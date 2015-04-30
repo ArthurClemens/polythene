@@ -5,11 +5,6 @@
 Item is a simple horizontal element with a label and an optional icon.
 
 
-## Variations
-
-Item can be extended with CSS and custom content - see the custom example below.
-
-
 ## Usage
 
 	var item = require('polythene/item/item');
@@ -103,6 +98,11 @@ Create a custom item:
             })
         ]
     }
+
+
+## Variations
+
+Item can be extended with CSS and custom content - see the custom example below.
 
 
 ## Options

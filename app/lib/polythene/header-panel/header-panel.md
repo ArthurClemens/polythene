@@ -4,6 +4,7 @@
 
 Displays a content panel with header.
 
+
 ## Usage
 
 	var headerPanel = require('polythene/header-panel/header-panel');
@@ -44,6 +45,7 @@ The header-panel will not display if its parent does not have a height.
 | **tallClass** | optional | String | 'tall' | Set this when the header has a class other than 'tall' and the height needs to be toggled. |
 | **before** | optional | Mithril template or String or Array | | Extra content before main content |
 | **after** | optional | Mithril template or String or Array | | Extra content after main content |
+
 
 ### Mode
 

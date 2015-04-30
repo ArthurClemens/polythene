@@ -4,6 +4,7 @@
 
 Loads SVG code asychronously and displays this on the page, for instance in an [icon](#icon).
 
+
 ## Usage
 
 	var svg = require('polythene/svg/svg');

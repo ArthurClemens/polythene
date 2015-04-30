@@ -5,15 +5,6 @@
 Displays a list of [list tiles](#list-tile), with an optional header (which is also a list tile). 
 
 
-## Variations
-
-> If there is a floating action button left-aligned with the avatar/icon in a list,
-> align the subheader with the text content.
-> [source](http://www.google.com/design/spec/components/subheaders.html#subheaders-list-subheaders)
-
-To align the subheader with the text, add parameter `className` with value `'indent'`.
-
-
 ## Usage
 
 	var list = require('polythene/list/list');
@@ -33,6 +24,15 @@ To align the subheader with the text, add parameter `className` with value `'ind
 		    })
 		]
 	});
+
+
+## Variations
+
+> If there is a floating action button left-aligned with the avatar/icon in a list,
+> align the subheader with the text content.
+> [source](http://www.google.com/design/spec/components/subheaders.html#subheaders-list-subheaders)
+
+To align the subheader with the text, add parameter `className` with value `'indent'`.
 
 
 ## Options
