@@ -11,6 +11,9 @@
 .list-tile.subheader .list-tile-title {
   font-size: 14px;
 }
+.list-tile a {
+  display: block;
+}
 .list-tile .list-tile-title {
   font-size: 16px;
   white-space: nowrap;
@@ -27,10 +30,12 @@
   -webkit-transform-style: preserve-3d;
   -moz-transform-style: preserve-3d;
   transform-style: preserve-3d;
+  position: relative;
 }
 .list-tile .list-tile-primary .icon {
   position: absolute;
   top: 0;
+  left: 0;
 }
 .list-tile.indent .list-tile-primary {
   margin-left: 56px;

@@ -7,8 +7,6 @@ $_sideMargin: 2*$component_grid_unit_px - $iconButtonPadding;
 .toolbar {
     display: block;
     position: relative;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
     height: $toolbarHeightDesktop;
     font-size: $fontSizeTitle;
     background-color: #CFD8DC;
@@ -61,6 +59,7 @@ $_sideMargin: 2*$component_grid_unit_px - $iconButtonPadding;
     }
 
     .toolbar-tools {
+        width: 100%;
         // make elements (e.g. buttons) respond to mouse/touch events
         > *:not([disabled]) {
             pointer-events: auto;
@@ -72,15 +71,18 @@ $_sideMargin: 2*$component_grid_unit_px - $iconButtonPadding;
         > :last-child {
             margin-right: $_sideMargin;
         }
-        > .icon-button + span {
+        > .icon-button + span,
+        > .icon-button + .title {
             margin-left: $indent - $_sideMargin - $buttonSize;
         }
         > span:first-child,
         > .indent {
             margin-left: $indent;
         }
-        > span {
+        > span,
+        > .title {
             @include single-line;
+            display: block;
         }
 
         .fit {

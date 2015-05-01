@@ -108,6 +108,10 @@ define([
                 initRipple,
                 initWaves;
             opts = opts || {};
+            
+            if (opts.disabled) {
+                return m('');
+            }
 
             initRipple = function(ripple, inited, context) {
                 if (inited) return;

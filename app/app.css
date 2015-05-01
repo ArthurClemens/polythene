@@ -17,7 +17,8 @@ body {
   background: #37474F;
   position: relative;
   color: white;
-  padding: 0 0 24px 0; }
+  padding: 0 0 24px 0;
+  width: 20%; }
   .drawer h2 {
     font-size: 32px;
     font-weight: 400;
@@ -34,7 +35,7 @@ body {
   .drawer .list .list-tile.subheader {
     color: rgba(255, 255, 255, 0.35); }
 .main {
-  width: 100%;
+  width: 80%;
   overflow: hidden;
   background: #fff; }
   .main a {

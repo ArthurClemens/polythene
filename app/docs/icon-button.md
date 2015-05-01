@@ -79,7 +79,7 @@ Icon button inherits from [button](#button). Button options `ink` and `wash` are
 ## Default generated HTML
 
 	<div noink="true" class="icon-button">
-	    <div class="content">
+	    <div class="button-content">
 	        <div class="icon icon-normal">
 	            <i fit="true" class="svg ">
 	                svg...

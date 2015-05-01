@@ -9,18 +9,20 @@
     cursor: pointer;
     position: relative;
     font-size: 1rem;
-
-    .content {
+    border-radius: 50%;
+    
+    .button-content {
         border-radius: 50%;
+        pointer-events: none;
+
+        .icon {
+            pointer-events: none;
+        }
     }
 
     &[disabled] {
+        cursor: auto;
         pointer-events: none;
-    }
-
-    .icon {
-        pointer-events: none;
-        z-index: 3;
     }
 
     .ripple {

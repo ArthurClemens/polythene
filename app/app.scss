@@ -38,6 +38,7 @@ body {
     position: relative;
     color: rgba(255,255,255,1);
     padding: 0 0 24px 0;
+    width: 20%; // for IE10
 
     h2 {
         font-size: $_header_font_size;
@@ -68,7 +69,7 @@ body {
 }
 
 .main {
-    width: 100%;
+    width: 80%; // for IE10
     overflow: hidden;
     background: #fff;
 

@@ -43,7 +43,7 @@ FAB inherits from [icon button](#icon-button) (which inherits from [button](#but
 ## Default generated HTML
 
 	<div noink="true" raised="true" class="fab">
-	    <div class="content">
+	    <div class="button-content">
 	        <div class="icon icon-normal">
 	            <i fit="true" class="svg ">
 	                svg...

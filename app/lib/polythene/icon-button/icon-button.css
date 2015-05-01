@@ -8,16 +8,18 @@
   cursor: pointer;
   position: relative;
   font-size: 1rem;
-}
-.icon-button .content {
   border-radius: 50%;
 }
-.icon-button[disabled] {
+.icon-button .button-content {
+  border-radius: 50%;
   pointer-events: none;
 }
-.icon-button .icon {
+.icon-button .button-content .icon {
   pointer-events: none;
-  z-index: 3;
+}
+.icon-button[disabled] {
+  cursor: auto;
+  pointer-events: none;
 }
 .icon-button .ripple {
   border-radius: inherit;

@@ -22,7 +22,7 @@
 .fab.mini {
   padding: 8px;
 }
-.fab .content {
+.fab .button-content {
   border-radius: inherit;
 }
 .fab .icon {
