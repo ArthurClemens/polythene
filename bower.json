@@ -11,7 +11,7 @@
     "tests"
   ],
   "dependencies": {
-    "mithril": "git://github.com/lhorie/mithril.js#components",
+    "mithril": "git://github.com/lhorie/mithril.js#7478ad948e98a657f2514e9f8706d39b3ad2fe90",
     "requirejs": "",
     "require-css": "",
     "material-design-iconic-font": "",
