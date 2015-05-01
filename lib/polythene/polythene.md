@@ -2,6 +2,8 @@
 
 Polymer inspired modular implementation of Material Design for [Mithril](http://lhorie.github.io/mithril). Available on [Github](https://github.com/ArthurClemens/Polythene).
 
+Polythene uses flexbox, so works in IE10 and other browsers.
+
 <p style='color: red'>Work in progress</p>
 
 <a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/index.html">All demos</a>
