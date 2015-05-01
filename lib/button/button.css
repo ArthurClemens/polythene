@@ -25,11 +25,11 @@
 }
 .button .button-content > span {
   position: relative;
-  z-index: 3;
-  pointer-events: none;
+  z-index: 2;
+  pointer-events: auto;
 }
 .button .button-content .ripple {
-  z-index: 2;
+  z-index: 3;
   top: -6px;
   bottom: -6px;
 }
