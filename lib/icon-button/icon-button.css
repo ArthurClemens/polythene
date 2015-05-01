@@ -10,15 +10,16 @@
   font-size: 1rem;
   border-radius: 50%;
 }
-.icon-button .content {
+.icon-button .button-content {
   border-radius: 50%;
+  pointer-events: none;
+}
+.icon-button .button-content .icon {
+  pointer-events: none;
 }
 .icon-button[disabled] {
+  cursor: auto;
   pointer-events: none;
-}
-.icon-button .icon {
-  pointer-events: none;
-  z-index: 3;
 }
 .icon-button .ripple {
   border-radius: inherit;

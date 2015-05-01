@@ -25,6 +25,10 @@
         }
     }
 
+    a {
+        display: block;
+    }
+    
     .list-tile-title {
         font-size: 16px;
         @include single-line;
@@ -39,10 +43,12 @@
 
     .list-tile-primary {
         @include vertical-center-parent;
+        position: relative;
 
         .icon {
             position: absolute;
             top: 0;
+            left: 0;
         }
     }
 

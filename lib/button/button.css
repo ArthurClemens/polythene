@@ -16,28 +16,28 @@
   font-size: 14px;
   font-weight: 500;
 }
-.button .content {
+.button .button-content {
   position: relative;
   height: 36px;
   line-height: 36px;
   padding: 0 8px;
   border-radius: 2px;
 }
-.button .content > span {
+.button .button-content > span {
   position: relative;
   z-index: 3;
   pointer-events: none;
 }
-.button .content .ripple {
+.button .button-content .ripple {
   z-index: 2;
   top: -6px;
   bottom: -6px;
 }
-.button .content .ripple .ripple-mask {
+.button .button-content .ripple .ripple-mask {
   top: 6px;
   bottom: 6px;
 }
-.button .content .wash {
+.button .button-content .wash {
   z-index: 1;
 }
 .button[disabled] {

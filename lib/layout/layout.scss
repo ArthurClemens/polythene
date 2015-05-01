@@ -58,6 +58,11 @@
     flex-basis: 0.000000001px;
 }
 
+span[flex] {
+    // for IE 10
+    display: block;
+}
+
 [vertical][layout] > [flex][auto-vertical] {
     -ms-flex: 1 1 auto;
     -webkit-flex-basis: auto;

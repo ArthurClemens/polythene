@@ -64,6 +64,7 @@
 			-ms-transform: scale($_end_scale);
 			-o-transform: scale($_end_scale);
 			transform: scale($_end_scale);
+			opacity: $_end_opacity;
 		}
 	}
 	@-webkit-keyframes ripple {

@@ -2,9 +2,8 @@
   "name": "polythene",
   "version": "0.0.1",
   "description": "Polymer inspired modular implementation of Material Design for Mithril.",
-  "main": "index.js",
+  "main": "",
   "directories": {
-    "example": "example"
   },
   "dependencies": {},
   "devDependencies": {

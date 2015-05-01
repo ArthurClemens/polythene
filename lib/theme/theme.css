@@ -45,6 +45,9 @@
   -webkit-flex-basis: 0.0px;
   flex-basis: 0.0px; }
 
+span[flex] {
+  display: block; }
+
 [vertical][layout] > [flex][auto-vertical] {
   -ms-flex: 1 1 auto;
   -webkit-flex-basis: auto;
