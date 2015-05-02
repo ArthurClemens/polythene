@@ -21,10 +21,10 @@
     "copy-docs": "mkdir -p src/app/docs && cp ../lib/**/*.md src/app/docs/",
     "dev-css": "sass --watch --sourcemap=none src/app/app.scss:src/app/app.css",
     "build-css": "sass --sourcemap=none --style=compressed src/app/app.scss:src/app/app.css",
-    "build-copy-to-gh": "cp -R build/* ../../gh-pages/ && cd ../../gh-pages/ && rm build*",
+    "build-copy-to-gh": "cp -R build/* ../../gh-pages/ && cd ../../gh-pages/",
     "setup": "npm run setup-symlink && npm run setup-libs",
-    "build": "npm run copy-docs && npm run build-css",
-    "github": "npm run build-copy-to-gh"
+    "build": "npm run copy-docs && npm run build-css && r.js -o src/build.js && rm build/build* && rm build/app/app.scss",
+    "github": "rm -rf ../../gh-pages/app && npm run build-copy-to-gh"
   },
   "repository": {
     "type": "git",
