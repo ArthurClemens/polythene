@@ -7,5 +7,5 @@
  	removeCombined: true,
 
     include: ['css', 'text'],
-    name: '../../../node_modules/almond/almond',
+    name: '../../node_modules/almond/almond',
 })
