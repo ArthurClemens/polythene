@@ -1,10 +1,10 @@
 @mixin _theme($tint, $element, $depth) {
-	.content {
+	.button-content {
 	    background-color: theme($tint, $element, $depth, "normal", "background");
 	    color: theme($tint, $element, $depth, "normal", "color");
 	}
 	&[disabled] {
-	    .content {
+	    .button-content {
 	        background-color: theme($tint, $element, $depth, "disabled", "background");
 	        color: theme($tint, $element, $depth, "disabled", "color");
 	    }

@@ -179,40 +179,40 @@ body[fullbleed] {
   -webkit-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
   border-radius: 5px 5px 5px 5px; }
-.button .content {
+.button .button-content {
   background-color: transparent;
   color: rgba(0, 0, 0, 0.87); }
-.button[disabled] .content {
+.button[disabled] .button-content {
   background-color: transparent;
   color: rgba(0, 0, 0, 0.26); }
 .button:hover .wash {
   background-color: rgba(0, 0, 0, 0.08); }
 .button:active .wash, .button.selected .wash {
   background-color: rgba(0, 0, 0, 0.13); }
-.button[raised] .content {
+.button[raised] .button-content {
   background-color: #E0E0E0;
   color: rgba(0, 0, 0, 0.87); }
-.button[raised][disabled] .content {
+.button[raised][disabled] .button-content {
   background-color: rgba(0, 0, 0, 0.07);
   color: rgba(0, 0, 0, 0.26); }
 .button[raised]:hover .wash {
   background-color: transparent; }
 .button[raised]:active .wash, .button[raised].selected .wash {
   background-color: rgba(0, 0, 0, 0.08); }
-.dark-theme .button .content {
+.dark-theme .button .button-content {
   background-color: transparent;
   color: #fff; }
-.dark-theme .button[disabled] .content {
+.dark-theme .button[disabled] .button-content {
   background-color: transparent;
   color: rgba(255, 255, 255, 0.3); }
 .dark-theme .button:hover .wash {
   background-color: rgba(204, 204, 204, 0.15); }
 .dark-theme .button:active .wash, .dark-theme .button.selected .wash {
   background-color: rgba(204, 204, 204, 0.25); }
-.dark-theme .button[raised] .content {
+.dark-theme .button[raised] .button-content {
   background-color: #2196f3;
   color: white; }
-.dark-theme .button[raised][disabled] .content {
+.dark-theme .button[raised][disabled] .button-content {
   background-color: rgba(255, 255, 255, 0.12);
   color: rgba(255, 255, 255, 0.3); }
 .dark-theme .button[raised]:hover .wash {

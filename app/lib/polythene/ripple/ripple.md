@@ -52,6 +52,7 @@ By default the inherited color from the parent element is used.
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **constrained** | optional | Boolean | true | Set to `false` to make the ripple shape no longer bound to the clicked element |
+| **center** | optional | Boolean | false | Set to `true` to start the ripple from the center |
 | **className** | optional | String |  | Extra CSS class appended to 'ripple' |
 | **initialOpacity** | optional | Number | 0.2 | Opacity at the start of the ripple |
 | **opacityDecayVelocity** | optional | Number | 0.4 | Velocity of decrease of opacity |

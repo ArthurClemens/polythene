@@ -28,8 +28,8 @@
 
         > span {
             position: relative;
-            z-index: 3; // to make it float above .wash and .ripple
-            pointer-events: none;
+            z-index: 2; // to make it float above .wash and .ripple
+            pointer-events: auto;
         }
 
         .ripple {
@@ -37,7 +37,7 @@
             // then mask this extra space with ripple-mask
             $_extra_click_room: 2;
 
-            z-index: 2;
+            z-index: 3;
             top: -($_margin_v + $_extra_click_room);
             bottom: -($_margin_v + $_extra_click_room);
 

@@ -1,3 +1,1 @@
-define(['css!./font-roboto'], function () {
-	'use strict';
-});
+define(["css!./font-roboto"],function(){});
