@@ -1,21 +1,23 @@
 require.config({
-    baseUrl: 'app/lib',
+    baseUrl: 'app',
     paths: {
-        'mithril': 'mithril/mithril',
+        'mithril': 'lib/mithril/mithril.min',
+        'polythene': 'lib/polythene',
 
-        'css': 'require-css/css',
-        'text': 'requirejs-text/text',
+        'css': 'lib/require-css/css.min',
+        'text': 'lib/requirejs-text/text',
 
-        'app': '..',
-        'app-css': '../app',
-        'common': '../../common',
-        'nav': '../app-nav',
-        'github': '../app-github'
+        'nav': 'app-nav',
+        'github': 'app-github',
+
+        'app': '.',
+        'app-css': 'app',
+        'common': '../common'
     },
     map: {
       '*': {
-          'css': 'require-css/css',
-          'text': 'requirejs-text/text'
+          'css': 'lib/require-css/css.min',
+          'text': 'lib/requirejs-text/text'
       }
     },
     shim: {},

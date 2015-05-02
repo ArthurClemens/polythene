@@ -36,10 +36,10 @@ define(function(require) {
     }, {
         baseUrl: 'header-panel',
         name: 'Header Panel'
-    }, {
+    }, /*{
         baseUrl: 'scroll-header-panel',
         name: 'Scroll Header Panel'
-    }, {
+    },*/ {
         baseUrl: 'shadow',
         name: 'Shadow'
     }, {
