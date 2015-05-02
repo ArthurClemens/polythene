@@ -11,8 +11,7 @@
     "requirejs": "",
     "require-css": "",
     "requirejs-text": "",
-    "almond": "",
-    "http-server": ""
+    "almond": ""
   },
   "scripts": {
     "setup-symlink": "cd ../ && mkdir -p examples/src/app/lib && ln -s \"$(pwd)/lib/\" examples/src/app/lib/polythene",

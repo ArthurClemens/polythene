@@ -1,5 +1,6 @@
 bower_components
 node_modules
+external_modules
 build
 docs/src/app/docs
 docs/src/app/lib

@@ -11,31 +11,20 @@ Alpha status.
 
 ## Browser support
 
-Th default theme uses flexbox, so this works in IE10 and other browsers. For IE9 you will need to adapt the theme.
+The default theme uses flexbox, so this works in IE10 and other browsers. For IE9 you will need to adapt the theme.
 
 
 
-## Installation
+## Setup
 
-NodeJS scripts are used for installing the development dependencies. For this step you need to have `npm` installed.
-
-In the root directory, run the following commands:
-
-1. `npm install` - installs grunt, grunt plugins and bower
-2. `grunt deps` - lets bower install the frontend dependencies
-
-If you want to change/extend Polythene and compile Sass files to Css, run:
-
-* `grunt css`
+* `npm install`
+* `npm run setup` - installs additional dependencies and copies files to lib folders
 
 
-Dependencies are:
+## Developing
 
-* [Mithril](http://lhorie.github.io/mithril)
-* [RequireJS](http://requirejs.org)
-* [require-css](https://github.com/guybedford/require-css)
-* [Material Design Iconic Font](https://github.com/zavoloklom/material-design-iconic-font) (optional)
-* [Material Design Icons](https://github.com/Templarian/MaterialDesign) (optional)
+* `npm run dev-css` - to continuously build CSS
+* `npm run build-theme-css` - to create/update the theme CSS
 
 
 

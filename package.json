@@ -7,23 +7,22 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "almond": "latest",
-    "bower": "latest",
-    "grunt": "latest",
-    "grunt-bowercopy": "latest",
-    "grunt-cli": "latest",
-    "grunt-contrib-sass": "latest",
-    "grunt-contrib-watch": "latest",
-    "grunt-shell": "latest",
-    "gulp": "^3.8.11",
-    "gulp-concat": "^2.5.2",
-    "gulp-minify-css": "^1.1.0",
-    "gulp-sass": "^1.3.3",
-    "requirejs": "latest"
+    "mithril": "^0.2.0",
+    "requirejs": "",
+    "require-css": "",
+    "requirejs-text": "",
+    "material-colors": ""
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "install-fonts": "webfont-dl \"https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic\" -o lib/font-roboto/fonts/font-roboto.css --font-out=lib/font-roboto/fonts --woff2=link --woff1==link --svg==link --ttf==link --eot==link"
+    "install-mdif": "mkdir -p external_modules && cd external_modules && git clone git@github.com:zavoloklom/material-design-iconic-font.git",
+    "copy-mdif": "mkdir -p lib/font-iconic/material-design-iconic-font/css && cp external_modules/material-design-iconic-font/css/* lib/font-iconic/material-design-iconic-font/css/ && mkdir -p lib/font-iconic/material-design-iconic-font/fonts && cp external_modules/material-design-iconic-font/fonts/* lib/font-iconic/material-design-iconic-font/fonts/ && mkdir -p lib/svg/material-design-iconic-font && cp -R external_modules/material-design-iconic-font/svg/* lib/svg/material-design-iconic-font/",
+    "install-mdi": "mkdir -p external_modules && cd external_modules && git clone git://github.com/Templarian/MaterialDesign",
+    "copy-mdi": "mkdir -p lib/svg/mdi && cp -R external_modules/MaterialDesign/icons/svg/* lib/svg/mdi/",
+    "install-roboto-webfont": "webfont-dl \"https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic\" -o lib/font-roboto/fonts/font-roboto.css --font-out=lib/font-roboto/fonts --woff2=link --woff1==link --svg==link --ttf==link --eot==link",
+    "dev-css": "sass --watch --sourcemap=none lib/",
+    "build-theme-css": "cd lib/theme/ && cat _base.scss ../**/_theme.scss | scss --sourcemap=none --style=compressed > theme.css && rm -rf .sass-cache",
+    "build-css": "sass --update -f --sourcemap=none lib/",
+    "setup": "rm -rf external_modules && npm run install-mdif && npm run install-mdi && npm run copy-mdif && npm run copy-mdi"
   },
   "repository": {
     "type": "git",
