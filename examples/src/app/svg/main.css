@@ -1,0 +1,33 @@
+
+.demo-icons {
+	font-size: 0;
+}
+.demo-icon {
+	display: inline-block;
+	font-size: 1rem;
+	color: orange;
+}
+.demo-icon + .demo-icon {
+	margin: 0 0 0 10px;
+}
+.p-block .demo-svg {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.p-block .demo-svg + span {
+	margin-left: 5px;
+}
+
+.p-block .demo-svg svg {
+	width: 24px;
+	height: 24px;
+}
+
+.p-block .demo-svg {
+    fill: currentcolor;
+}
+
+.p-block .demo-svg path:not([fill='none']) {
+    fill: currentcolor;
+}

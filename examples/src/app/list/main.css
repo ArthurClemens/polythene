@@ -1,0 +1,8 @@
+.demo-list {
+	width: 480px;
+	background-color: #fafafa;
+}
+
+.demo-list.list.dark-theme {
+    background-color: #303030;
+}

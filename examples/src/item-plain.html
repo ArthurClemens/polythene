@@ -1,0 +1,211 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Item (plain HTML)</title>
+		<meta charset="utf-8">
+        <meta name='viewport' content='width=320, initial-scale=1.0'>
+
+        <!-- common -->
+        <link rel='stylesheet' href='app/lib/polythene/theme/theme.css' />
+        <link rel='stylesheet' href='app/app.css'>
+
+        <!-- this module -->
+        <link rel='stylesheet' href='app/lib/polythene/icon/icon.css'>
+		<link rel='stylesheet' href='app/lib/polythene/item/item.css'>
+
+        <!-- this example -->
+        <link rel='stylesheet' href='app/item/main.css'>
+	</head>
+    <body>
+
+        <div center="true" horizontal="true" layout="true" class="p-nav-block">
+            <a href="index.html" class="icon-button">
+                <div class="icon">
+                    <i fit="true" class="material-design-iconic-font">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+                            <path d="M8 16h8v-8h-8v8zm12 24h8v-8h-8v8zm-12 0h8v-8h-8v8zm0-12h8v-8h-8v8zm12 0h8v-8h-8v8zm12-20v8h8v-8h-8zm-12 8h8v-8h-8v8zm12 12h8v-8h-8v8zm0 12h8v-8h-8v8z"></path>
+                            <path d="M0 0h48v48h-48z" fill="none"></path>
+                        </svg>
+                    </i>
+                </div>
+            </a>
+            <div class="p-title indent">Item
+                <span>Plain version</span>
+            </div>
+            <span flex="true"></span>
+            <div class="p-version">
+                <span>Plain</span>
+                <a href="./item.html">Mithril</a>
+            </div>
+        </div>
+
+    	
+        <div class="p-block">
+            <h2>Items with icon and label</h2>
+            <div class="p-block p-inner-block">
+                <div center="true" horizontal="true" layout="true" class="item ">
+                    <div class="icon md">
+                        <i fit="true">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+                                <path d="M0 0h48v48h-48z" fill="none"></path>
+                                <path d="M38.86 25.95c.08-.64.14-1.29.14-1.95s-.06-1.31-.14-1.95l4.23-3.31c.38-.3.49-.84.24-1.28l-4-6.93c-.25-.43-.77-.61-1.22-.43l-4.98 2.01c-1.03-.79-2.16-1.46-3.38-1.97l-.75-5.3c-.09-.47-.5-.84-1-.84h-8c-.5 0-.91.37-.99.84l-.75 5.3c-1.22.51-2.35 1.17-3.38 1.97l-4.98-2.01c-.45-.17-.97 0-1.22.43l-4 6.93c-.25.43-.14.97.24 1.28l4.22 3.31c-.08.64-.14 1.29-.14 1.95s.06 1.31.14 1.95l-4.22 3.31c-.38.3-.49.84-.24 1.28l4 6.93c.25.43.77.61 1.22.43l4.98-2.01c1.03.79 2.16 1.46 3.38 1.97l.75 5.3c.08.47.49.84.99.84h8c.5 0 .91-.37.99-.84l.75-5.3c1.22-.51 2.35-1.17 3.38-1.97l4.98 2.01c.45.17.97 0 1.22-.43l4-6.93c.25-.43.14-.97-.24-1.28l-4.22-3.31zm-14.86 5.05c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"></path>
+                            </svg>
+                        </i>
+                    </div>
+                    <div>Settings</div>
+                </div>
+            </div>
+            <div class="p-block p-inner-block">
+                <div center="true" horizontal="true" layout="true" class="item ">
+                    <div class="icon md">
+                        <i fit="true">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+                                <path d="M6 10v28c0 2.21 1.79 4 4 4h28c2.21 0 4-1.79 4-4v-28c0-2.21-1.79-4-4-4h-28c-2.21 0-4 1.79-4 4zm24 8c0 3.32-2.69 6-6 6s-6-2.68-6-6c0-3.31 2.69-6 6-6s6 2.69 6 6zm-18 16c0-4 8-6.2 12-6.2s12 2.2 12 6.2v2h-24v-2z"></path>
+                                <path d="M0 0h48v48h-48z" fill="none"></path>
+                            </svg>
+                        </i>
+                    </div>
+                    <div>Account</div>
+                </div>
+            </div>
+        </div>
+        <div class="p-block">
+            <h2>Items with label only</h2>
+            <div class="p-block p-inner-block">
+                <div center="true" horizontal="true" layout="true" class="item ">
+                    <div>Settings</div>
+                </div>
+            </div>
+            <div class="p-block p-inner-block">
+                <div center="true" horizontal="true" layout="true" class="item ">
+                    <div>Account</div>
+                </div>
+            </div>
+        </div>
+        <div class="p-block">
+            <h2>Links (using &lt;a&gt;)</h2>
+            <div class="p-block p-inner-block">
+                <div center="true" horizontal="true" layout="true" class="item ">
+                    <div class="icon md">
+                        <i fit="true">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+                                <path d="M0 0h48v48h-48z" fill="none"></path>
+                                <path d="M38.86 25.95c.08-.64.14-1.29.14-1.95s-.06-1.31-.14-1.95l4.23-3.31c.38-.3.49-.84.24-1.28l-4-6.93c-.25-.43-.77-.61-1.22-.43l-4.98 2.01c-1.03-.79-2.16-1.46-3.38-1.97l-.75-5.3c-.09-.47-.5-.84-1-.84h-8c-.5 0-.91.37-.99.84l-.75 5.3c-1.22.51-2.35 1.17-3.38 1.97l-4.98-2.01c-.45-.17-.97 0-1.22.43l-4 6.93c-.25.43-.14.97.24 1.28l4.22 3.31c-.08.64-.14 1.29-.14 1.95s.06 1.31.14 1.95l-4.22 3.31c-.38.3-.49.84-.24 1.28l4 6.93c.25.43.77.61 1.22.43l4.98-2.01c1.03.79 2.16 1.46 3.38 1.97l.75 5.3c.08.47.49.84.99.84h8c.5 0 .91-.37.99-.84l.75-5.3c1.22-.51 2.35-1.17 3.38-1.97l4.98 2.01c.45.17.97 0 1.22-.43l4-6.93c.25-.43.14-.97-.24-1.28l-4.22-3.31zm-14.86 5.05c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"></path>
+                            </svg>
+                        </i>
+                    </div>
+                    <div>Settings</div>
+                    <a href="#settings" target="_self"></a>
+                </div>
+            </div>
+            <div class="p-block p-inner-block">
+                <div center="true" horizontal="true" layout="true" class="item ">
+                    <div class="icon md">
+                        <i fit="true">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+                                <path d="M6 10v28c0 2.21 1.79 4 4 4h28c2.21 0 4-1.79 4-4v-28c0-2.21-1.79-4-4-4h-28c-2.21 0-4 1.79-4 4zm24 8c0 3.32-2.69 6-6 6s-6-2.68-6-6c0-3.31 2.69-6 6-6s6 2.69 6 6zm-18 16c0-4 8-6.2 12-6.2s12 2.2 12 6.2v2h-24v-2z"></path>
+                                <path d="M0 0h48v48h-48z" fill="none"></path>
+                            </svg>
+                        </i>
+                    </div>
+                    <div>Account</div>
+                    <a href="#account" target="_self"></a>
+                </div>
+            </div>
+        </div>
+        <div class="p-block">
+            <h2>Items sized with CSS</h2>
+            <div class="p-block p-inner-block">
+                <div center="true" horizontal="true" layout="true" class="item font-scalable big">
+                    <div class="icon md">
+                        <i fit="true">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+                                <path d="M0 0h48v48h-48z" fill="none"></path>
+                                <path d="M38.86 25.95c.08-.64.14-1.29.14-1.95s-.06-1.31-.14-1.95l4.23-3.31c.38-.3.49-.84.24-1.28l-4-6.93c-.25-.43-.77-.61-1.22-.43l-4.98 2.01c-1.03-.79-2.16-1.46-3.38-1.97l-.75-5.3c-.09-.47-.5-.84-1-.84h-8c-.5 0-.91.37-.99.84l-.75 5.3c-1.22.51-2.35 1.17-3.38 1.97l-4.98-2.01c-.45-.17-.97 0-1.22.43l-4 6.93c-.25.43-.14.97.24 1.28l4.22 3.31c-.08.64-.14 1.29-.14 1.95s.06 1.31.14 1.95l-4.22 3.31c-.38.3-.49.84-.24 1.28l4 6.93c.25.43.77.61 1.22.43l4.98-2.01c1.03.79 2.16 1.46 3.38 1.97l.75 5.3c.08.47.49.84.99.84h8c.5 0 .91-.37.99-.84l.75-5.3c1.22-.51 2.35-1.17 3.38-1.97l4.98 2.01c.45.17.97 0 1.22-.43l4-6.93c.25-.43.14-.97-.24-1.28l-4.22-3.31zm-14.86 5.05c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"></path>
+                            </svg>
+                        </i>
+                    </div>
+                    <div>Settings</div>
+                </div>
+            </div>
+            <div class="p-block p-inner-block">
+                <div center="true" horizontal="true" layout="true" class="item font-scalable big">
+                    <div class="icon md">
+                        <i fit="true">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+                                <path d="M6 10v28c0 2.21 1.79 4 4 4h28c2.21 0 4-1.79 4-4v-28c0-2.21-1.79-4-4-4h-28c-2.21 0-4 1.79-4 4zm24 8c0 3.32-2.69 6-6 6s-6-2.68-6-6c0-3.31 2.69-6 6-6s6 2.69 6 6zm-18 16c0-4 8-6.2 12-6.2s12 2.2 12 6.2v2h-24v-2z"></path>
+                                <path d="M0 0h48v48h-48z" fill="none"></path>
+                            </svg>
+                        </i>
+                    </div>
+                    <div>Account</div>
+                </div>
+            </div>
+            <div class="p-block p-inner-block">
+                <div center="true" horizontal="true" layout="true" class="item font-scalable small">
+                    <div class="icon md">
+                        <i fit="true">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+                                <path d="M0 0h48v48h-48z" fill="none"></path>
+                                <path d="M38.86 25.95c.08-.64.14-1.29.14-1.95s-.06-1.31-.14-1.95l4.23-3.31c.38-.3.49-.84.24-1.28l-4-6.93c-.25-.43-.77-.61-1.22-.43l-4.98 2.01c-1.03-.79-2.16-1.46-3.38-1.97l-.75-5.3c-.09-.47-.5-.84-1-.84h-8c-.5 0-.91.37-.99.84l-.75 5.3c-1.22.51-2.35 1.17-3.38 1.97l-4.98-2.01c-.45-.17-.97 0-1.22.43l-4 6.93c-.25.43-.14.97.24 1.28l4.22 3.31c-.08.64-.14 1.29-.14 1.95s.06 1.31.14 1.95l-4.22 3.31c-.38.3-.49.84-.24 1.28l4 6.93c.25.43.77.61 1.22.43l4.98-2.01c1.03.79 2.16 1.46 3.38 1.97l.75 5.3c.08.47.49.84.99.84h8c.5 0 .91-.37.99-.84l.75-5.3c1.22-.51 2.35-1.17 3.38-1.97l4.98 2.01c.45.17.97 0 1.22-.43l4-6.93c.25-.43.14-.97-.24-1.28l-4.22-3.31zm-14.86 5.05c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"></path>
+                            </svg>
+                        </i>
+                    </div>
+                    <div>Settings</div>
+                </div>
+            </div>
+            <div class="p-block p-inner-block">
+                <div center="true" horizontal="true" layout="true" class="item font-scalable small">
+                    <div class="icon md">
+                        <i fit="true">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+                                <path d="M6 10v28c0 2.21 1.79 4 4 4h28c2.21 0 4-1.79 4-4v-28c0-2.21-1.79-4-4-4h-28c-2.21 0-4 1.79-4 4zm24 8c0 3.32-2.69 6-6 6s-6-2.68-6-6c0-3.31 2.69-6 6-6s6 2.69 6 6zm-18 16c0-4 8-6.2 12-6.2s12 2.2 12 6.2v2h-24v-2z"></path>
+                                <path d="M0 0h48v48h-48z" fill="none"></path>
+                            </svg>
+                        </i>
+                    </div>
+                    <div>Account</div>
+                </div>
+            </div>
+        </div>
+        <div class="p-block">
+            <h2>Custom item</h2>
+            <div class="p-block p-inner-block">
+                <div center="true" horizontal="true" layout="true" class="item contact-item">
+                    <div class="icon md">
+                        <i fit="true">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+                                <path d="M24 4c-11.05 0-20 8.95-20 20s8.95 20 20 20 20-8.95 20-20-8.95-20-20-20zm0 6c3.31 0 6 2.69 6 6 0 3.32-2.69 6-6 6s-6-2.68-6-6c0-3.31 2.69-6 6-6zm0 28.4c-5.01 0-9.41-2.56-12-6.44.05-3.97 8.01-6.16 12-6.16s11.94 2.19 12 6.16c-2.59 3.88-6.99 6.44-12 6.44z"></path>
+                                <path d="M0 0h48v48h-48z" fill="none"></path>
+                            </svg>
+                        </i>
+                    </div>
+                    <div flex="true">
+                        <div class="name">John Doe</div>
+                        <div class="address">123 A Street, San Francisco, CA</div>
+                    </div>
+                    <div role="img" class="icon ">
+                        <i fit="true">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+                                <path d="M0 0h48v48h-48z" fill="none"></path>
+                                <path d="M24 16c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 4c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 12c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"></path>
+                            </svg>
+                        </i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </body>
+</html>

@@ -1,0 +1,44 @@
+
+h1 {
+	width: 480px;
+	margin: 0 auto;
+	padding: 0;
+	color: #fff;
+	font-weight: 400;
+	font-size: 25px;
+}
+.p-title-block {
+	margin: 0;
+	padding: 30px 0;
+	background-color: #607D8B;
+}
+.index {
+	margin: 0;
+	padding: 20px 0;
+	background: #fff;
+}
+.index-list {
+	width: 480px;
+	margin: 0 auto;
+}
+.index-list .list-tile {
+	border-bottom: 1px solid #ddd;
+}
+.index-list .list-tile:first-child {
+	border-top: 1px solid #ddd;
+}
+.index-list .icon.index-cirle-icon {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-color: #37474F;
+}
+.index-list .icon.index-cirle-icon i {
+	padding: 8px;
+}
+.index-list .icon.index-cirle-icon svg path {
+	fill: #fff;
+}
+.index-list .list-tile-secondary {
+	color: #757575;
+}

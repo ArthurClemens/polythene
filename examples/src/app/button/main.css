@@ -1,0 +1,22 @@
+.p-block {
+	background-color: #eee;
+}
+.p-block.dark-theme {
+	background-color: #424242;
+	color: #fff;
+}
+
+.p-block.custom-label .button:not([disabled]) .button-content span {
+	color: #2196f3;
+}
+
+.p-block.custom-bg .button:not([disabled]) .button-content {
+	background-color: #FF9800; /* orange 500 */
+	color: #fff;
+}
+.p-block.custom-bg .button:not([disabled]):hover .button-content {
+	background-color: #FB8C00; /* orange 600 */
+}
+.p-block.custom-bg .button:not([disabled]):active .button-content {
+	background-color: #F57C00; /* orange 700 */
+}

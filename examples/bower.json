@@ -1,0 +1,15 @@
+{
+    "name": "Polythene Examples",
+    "version": "0.0.1",
+    "description": "Polymer inspired modular implementation of Material Design for Mithril: examples.",
+    "license": "MIT",
+    "ignore": ["**/.*"],
+    "dependencies": {
+        "Polythene": "",
+        "mithril": "git://github.com/lhorie/mithril.js#7478ad948e98a657f2514e9f8706d39b3ad2fe90",
+        "requirejs": "",
+        "require-css": "",
+        "requirejs-text": "",
+        "material-design-iconic-font": ""
+    }
+}

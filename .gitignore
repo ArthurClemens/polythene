@@ -1,12 +1,10 @@
 bower_components
-node_modules/*
-example/css/lib/*
-example/js/lib/*
+node_modules
 lib/font-iconic/material-design-iconic-font
 lib/svg/mdi
 lib/svg/material-design-iconic-font
 .sass-cache
 .sass-cache/*
 .DS_Store
-src
+./src
 lib/polythene/_material-design-colors.scss

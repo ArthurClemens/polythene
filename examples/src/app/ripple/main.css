@@ -1,0 +1,18 @@
+.demo-button + .demo-button {
+    margin-left: 20px;
+}
+
+.demo-list.demo-bordered {
+	background: none;
+}
+.demo-button .ripple {
+    color: #000;
+}
+.demo-button .ripple.colored-ripple {
+	color: green;
+}
+
+.p-block.dark-theme {
+	background-color: #424242;
+	color: #fff;
+}

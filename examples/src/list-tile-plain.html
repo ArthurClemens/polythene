@@ -1,0 +1,971 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Paper-Shadow (plain HTML)</title>
+        <meta charset="utf-8">
+        <meta name='viewport' content='width=320, initial-scale=1.0' />
+        <!-- common -->
+        <link rel='stylesheet' href='app/lib/polythene/theme/theme.css' />
+        <link rel='stylesheet' href='app/app.css' />
+        <link rel='stylesheet' href='app/lib/polythene/icon/icon.css'>
+            <!-- this module -->
+            <link rel='stylesheet' href='app/lib/polythene/list-tile/list-tile.css' />
+            <!-- this example -->
+            <link rel='stylesheet' href='app/list-tile/main.css'>
+            </head>
+            <body>
+                <div center="true" horizontal="true" layout="true" class="p-nav-block">
+                    <a href="index.html" class="icon-button">
+                    <div class="icon">
+                        <i fit="true" class="material-design-iconic-font">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+                        <path d="M8 16h8v-8h-8v8zm12 24h8v-8h-8v8zm-12 0h8v-8h-8v8zm0-12h8v-8h-8v8zm12 0h8v-8h-8v8zm12-20v8h8v-8h-8zm-12 8h8v-8h-8v8zm12 12h8v-8h-8v8zm0 12h8v-8h-8v8z"></path>
+                    <path d="M0 0h48v48h-48z" fill="none"></path>
+                </svg>
+                </i>
+            </div>
+            </a>
+            <div class="p-title indent">List Tile
+                <span>Plain version</span>
+            </div>
+            <span flex="true"></span>
+            <div class="p-version">
+                <span>Plain</span>
+                <a href="./list-tile.html">Mithril</a>
+            </div>
+        </div>
+
+        <div class="p-block p-block-separate">
+            <p>List tiles with zebra stripes to show demarcations.</p>
+        </div>
+        
+        <div>
+            <div class="p-block">
+                <h2>Single line, no icons</h2>
+                <div class="demo-list">
+                    <div horizontal="true" layout="true" center="true" class="list-tile list-tile-single-line  ">
+                        <div flex="true" class="list-tile-primary">
+                            <div class="list-tile-content">
+                                <div class="list-tile-title">Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</div>
+                            </div>
+                        </div>
+                        <div horizontal="true" layout="true" center="true" class="list-tile-secondary"></div>
+                    </div>
+                    <div horizontal="true" layout="true" center="true" class="list-tile list-tile-single-line  ">
+                        <div flex="true" class="list-tile-primary">
+                            <div class="list-tile-content">
+                                <div class="list-tile-title">Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</div>
+                            </div>
+                        </div>
+                        <div horizontal="true" layout="true" center="true" class="list-tile-secondary"></div>
+                    </div>
+                    <div horizontal="true" layout="true" center="true" class="list-tile list-tile-single-line  ">
+                        <div flex="true" class="list-tile-primary">
+                            <div class="list-tile-content">
+                                <div class="list-tile-title">Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</div>
+                            </div>
+                        </div>
+                        <div horizontal="true" layout="true" center="true" class="list-tile-secondary"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-block">
+                <h2>Double line</h2>
+                <div class="demo-list">
+                    <div horizontal="true" layout="true" center="true" class="list-tile list-tile-two-line  ">
+                        <div flex="true" class="list-tile-primary">
+                            <div class="list-tile-content">
+                                <div class="list-tile-title">Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</div>
+                                <div class="list-tile-info">Secondary text Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                            </div>
+                        </div>
+                        <div horizontal="true" layout="true" center="true" class="list-tile-secondary"></div>
+                    </div>
+                    <div horizontal="true" layout="true" center="true" class="list-tile list-tile-two-line  ">
+                        <div flex="true" class="list-tile-primary">
+                            <div class="list-tile-content">
+                                <div class="list-tile-title">Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</div>
+                                <div class="list-tile-info">Secondary text Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                            </div>
+                        </div>
+                        <div horizontal="true" layout="true" center="true" class="list-tile-secondary"></div>
+                    </div>
+                    <div horizontal="true" layout="true" center="true" class="list-tile list-tile-two-line  ">
+                        <div flex="true" class="list-tile-primary">
+                            <div class="list-tile-content">
+                                <div class="list-tile-title">Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</div>
+                                <div class="list-tile-info">Secondary text Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                            </div>
+                        </div>
+                        <div horizontal="true" layout="true" center="true" class="list-tile-secondary"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-block">
+                <h2>Three lines</h2>
+                <div class="demo-list">
+                    <div horizontal="true" layout="true" center="true" class="list-tile list-tile-three-line  ">
+                        <div flex="true" class="list-tile-primary">
+                            <div class="list-tile-content">
+                                <div class="list-tile-title">Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</div>
+                                <div class="list-tile-info list-tile-double-info">Secondary text Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                            </div>
+                        </div>
+                        <div vertical="true" layout="true" start="true" class="list-tile-secondary"></div>
+                    </div>
+                    <div horizontal="true" layout="true" center="true" class="list-tile list-tile-three-line  ">
+                        <div flex="true" class="list-tile-primary">
+                            <div class="list-tile-content">
+                                <div class="list-tile-title">Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</div>
+                                <div class="list-tile-info list-tile-double-info">Secondary text Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                            </div>
+                        </div>
+                        <div vertical="true" layout="true" start="true" class="list-tile-secondary"></div>
+                    </div>
+                    <div horizontal="true" layout="true" center="true" class="list-tile list-tile-three-line  ">
+                        <div flex="true" class="list-tile-primary">
+                            <div class="list-tile-content">
+                                <div class="list-tile-title">Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</div>
+                                <div class="list-tile-info list-tile-double-info">Secondary text Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                            </div>
+                        </div>
+                        <div vertical="true" layout="true" start="true" class="list-tile-secondary"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-block">
+                <h2>Single line with avatar</h2>
+                <div class="demo-list">
+                    <div horizontal="true" layout="true" center="true" class="list-tile list-tile-single-line list-tile-has-icon ">
+                        <div flex="true" class="list-tile-primary">
+                            <div class="icon icon-large avatar">
+                                <i fit="true">
+                                <img src="app/list-tile/avatars/1.png">
+                                </i>
+                            </div>
+                            <div class="list-tile-content">
+                                <div class="list-tile-title">Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</div>
+                            </div>
+                        </div>
+                        <div horizontal="true" layout="true" center="true" class="list-tile-secondary"></div>
+                    </div>
+                    <div horizontal="true" layout="true" center="true" class="list-tile list-tile-single-line list-tile-has-icon ">
+                        <div flex="true" class="list-tile-primary">
+                            <div class="icon icon-large avatar">
+                                <i fit="true">
+                                <img src="app/list-tile/avatars/2.png">
+                                </i>
+                            </div>
+                            <div class="list-tile-content">
+                                <div class="list-tile-title">Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</div>
+                            </div>
+                        </div>
+                        <div horizontal="true" layout="true" center="true" class="list-tile-secondary"></div>
+                    </div>
+                    <div horizontal="true" layout="true" center="true" class="list-tile list-tile-single-line list-tile-has-icon ">
+                        <div flex="true" class="list-tile-primary">
+                            <div class="icon icon-large avatar">
+                                <i fit="true">
+                                <img src="app/list-tile/avatars/3.png">
+                                </i>
+                            </div>
+                            <div class="list-tile-content">
+                                <div class="list-tile-title">Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</div>
+                            </div>
+                        </div>
+                        <div horizontal="true" layout="true" center="true" class="list-tile-secondary"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-block">
+                <h2>Double line with avatar</h2>
+                <div class="demo-list">
+                    <div horizontal="true" layout="true" center="true" class="list-tile list-tile-two-line list-tile-has-icon ">
+                        <div flex="true" class="list-tile-primary">
+                            <div class="icon icon-large avatar">
+                                <i fit="true">
+                                <img src="app/list-tile/avatars/1.png">
+                                </i>
+                            </div>
+                            <div class="list-tile-content">
+                                <div class="list-tile-title">Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</div>
+                                <div class="list-tile-info">Secondary text Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                            </div>
+                        </div>
+                        <div horizontal="true" layout="true" center="true" class="list-tile-secondary"></div>
+                    </div>
+                    <div horizontal="true" layout="true" center="true" class="list-tile list-tile-two-line list-tile-has-icon ">
+                        <div flex="true" class="list-tile-primary">
+                            <div class="icon icon-large avatar">
+                                <i fit="true">
+                                <img src="app/list-tile/avatars/2.png">
+                                </i>
+                            </div>
+                            <div class="list-tile-content">
+                                <div class="list-tile-title">Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</div>
+                                <div class="list-tile-info">Secondary text Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                            </div>
+                        </div>
+                        <div horizontal="true" layout="true" center="true" class="list-tile-secondary"></div>
+                    </div>
+                    <div horizontal="true" layout="true" center="true" class="list-tile list-tile-two-line list-tile-has-icon ">
+                        <div flex="true" class="list-tile-primary">
+                            <div class="icon icon-large avatar">
+                                <i fit="true">
+                                <img src="app/list-tile/avatars/3.png">
+                                </i>
+                            </div>
+                            <div class="list-tile-content">
+                                <div class="list-tile-title">Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</div>
+                                <div class="list-tile-info">Secondary text Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                            </div>
+                        </div>
+                        <div horizontal="true" layout="true" center="true" class="list-tile-secondary"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-block">
+                <h2>Three lines with avatar</h2>
+                <div class="demo-list">
+                    <div horizontal="true" layout="true" center="true" class="list-tile list-tile-three-line list-tile-has-icon ">
+                        <div flex="true" class="list-tile-primary">
+                            <div class="icon icon-large avatar">
+                                <i fit="true">
+                                <img src="app/list-tile/avatars/1.png">
+                                </i>
+                            </div>
+                            <div class="list-tile-content">
+                                <div class="list-tile-title">Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</div>
+                                <div class="list-tile-info list-tile-double-info">Secondary text Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                            </div>
+                        </div>
+                        <div vertical="true" layout="true" start="true" class="list-tile-secondary"></div>
+                    </div>
+                    <div horizontal="true" layout="true" center="true" class="list-tile list-tile-three-line list-tile-has-icon ">
+                        <div flex="true" class="list-tile-primary">
+                            <div class="icon icon-large avatar">
+                                <i fit="true">
+                                <img src="app/list-tile/avatars/2.png">
+                                </i>
+                            </div>
+                            <div class="list-tile-content">
+                                <div class="list-tile-title">Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</div>
+                                <div class="list-tile-info list-tile-double-info">Secondary text Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                            </div>
+                        </div>
+                        <div vertical="true" layout="true" start="true" class="list-tile-secondary"></div>
+                    </div>
+                    <div horizontal="true" layout="true" center="true" class="list-tile list-tile-three-line list-tile-has-icon ">
+                        <div flex="true" class="list-tile-primary">
+                            <div class="icon icon-large avatar">
+                                <i fit="true">
+                                <img src="app/list-tile/avatars/3.png">
+                                </i>
+                            </div>
+                            <div class="list-tile-content">
+                                <div class="list-tile-title">Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</div>
+                                <div class="list-tile-info list-tile-double-info">Secondary text Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                            </div>
+                        </div>
+                        <div vertical="true" layout="true" start="true" class="list-tile-secondary"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-block">
+                <h2>Single line with icon</h2>
+                <div class="demo-list">
+                    <div horizontal="true" layout="true" center="true" class="list-tile list-tile-single-line list-tile-has-icon ">
+                        <div flex="true" class="list-tile-primary">
+                            <div class="icon icon-normal ">
+                                <i fit="true" class="svg ">
+                                <!--?xml version="1.0" encoding="utf-8"?-->
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve">
+                                <path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 11.9994,15.3943L 8.2364,17.6643L 9.2314,13.3833L 5.9094,10.5053L 10.2894,10.1293L 11.9994,6.09327L 13.7094,10.1293L 18.0894,10.5053L 14.7674,13.3833L 15.7624,17.6643M 21.9994,9.24227L 14.8084,8.62526L 11.9994,1.99827L 9.1904,8.62526L 1.9994,9.24227L 7.4544,13.9693L 5.8194,20.9983L 11.9994,17.2703L 18.1794,20.9983L 16.5444,13.9693L 21.9994,9.24227 Z "></path>
+                            </svg>
+                            </i>
+                        </div>
+                        <div class="list-tile-content">
+                            <div class="list-tile-title">Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</div>
+                        </div>
+                    </div>
+                    <div horizontal="true" layout="true" center="true" class="list-tile-secondary"></div>
+                </div>
+                <div horizontal="true" layout="true" center="true" class="list-tile list-tile-single-line list-tile-has-icon ">
+                    <div flex="true" class="list-tile-primary">
+                        <div class="icon icon-normal ">
+                            <i fit="true" class="svg ">
+                            <!--?xml version="1.0" encoding="utf-8"?-->
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve">
+                            <path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 11.9994,15.3943L 8.2364,17.6643L 9.2314,13.3833L 5.9094,10.5053L 10.2894,10.1293L 11.9994,6.09327L 13.7094,10.1293L 18.0894,10.5053L 14.7674,13.3833L 15.7624,17.6643M 21.9994,9.24227L 14.8084,8.62526L 11.9994,1.99827L 9.1904,8.62526L 1.9994,9.24227L 7.4544,13.9693L 5.8194,20.9983L 11.9994,17.2703L 18.1794,20.9983L 16.5444,13.9693L 21.9994,9.24227 Z "></path>
+                        </svg>
+                        </i>
+                    </div>
+                    <div class="list-tile-content">
+                        <div class="list-tile-title">Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</div>
+                    </div>
+                </div>
+                <div horizontal="true" layout="true" center="true" class="list-tile-secondary"></div>
+            </div>
+            <div horizontal="true" layout="true" center="true" class="list-tile list-tile-single-line list-tile-has-icon ">
+                <div flex="true" class="list-tile-primary">
+                    <div class="icon icon-normal ">
+                        <i fit="true" class="svg ">
+                        <!--?xml version="1.0" encoding="utf-8"?-->
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve">
+                        <path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 11.9994,15.3943L 8.2364,17.6643L 9.2314,13.3833L 5.9094,10.5053L 10.2894,10.1293L 11.9994,6.09327L 13.7094,10.1293L 18.0894,10.5053L 14.7674,13.3833L 15.7624,17.6643M 21.9994,9.24227L 14.8084,8.62526L 11.9994,1.99827L 9.1904,8.62526L 1.9994,9.24227L 7.4544,13.9693L 5.8194,20.9983L 11.9994,17.2703L 18.1794,20.9983L 16.5444,13.9693L 21.9994,9.24227 Z "></path>
+                    </svg>
+                    </i>
+                </div>
+                <div class="list-tile-content">
+                    <div class="list-tile-title">Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</div>
+                </div>
+            </div>
+            <div horizontal="true" layout="true" center="true" class="list-tile-secondary"></div>
+        </div>
+    </div>
+</div>
+<div class="p-block">
+    <h2>Double line with icon</h2>
+    <div class="demo-list">
+        <div horizontal="true" layout="true" center="true" class="list-tile list-tile-two-line list-tile-has-icon ">
+            <div flex="true" class="list-tile-primary">
+                <div class="icon icon-normal ">
+                    <i fit="true" class="svg ">
+                    <!--?xml version="1.0" encoding="utf-8"?-->
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve">
+                    <path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 11.9994,15.3943L 8.2364,17.6643L 9.2314,13.3833L 5.9094,10.5053L 10.2894,10.1293L 11.9994,6.09327L 13.7094,10.1293L 18.0894,10.5053L 14.7674,13.3833L 15.7624,17.6643M 21.9994,9.24227L 14.8084,8.62526L 11.9994,1.99827L 9.1904,8.62526L 1.9994,9.24227L 7.4544,13.9693L 5.8194,20.9983L 11.9994,17.2703L 18.1794,20.9983L 16.5444,13.9693L 21.9994,9.24227 Z "></path>
+                </svg>
+                </i>
+            </div>
+            <div class="list-tile-content">
+                <div class="list-tile-title">Double line tile</div>
+                <div class="list-tile-info">Secondary text Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+            </div>
+        </div>
+        <div horizontal="true" layout="true" center="true" class="list-tile-secondary"></div>
+    </div>
+    <div horizontal="true" layout="true" center="true" class="list-tile list-tile-two-line list-tile-has-icon ">
+        <div flex="true" class="list-tile-primary">
+            <div class="icon icon-normal ">
+                <i fit="true" class="svg ">
+                <!--?xml version="1.0" encoding="utf-8"?-->
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve">
+                <path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 11.9994,15.3943L 8.2364,17.6643L 9.2314,13.3833L 5.9094,10.5053L 10.2894,10.1293L 11.9994,6.09327L 13.7094,10.1293L 18.0894,10.5053L 14.7674,13.3833L 15.7624,17.6643M 21.9994,9.24227L 14.8084,8.62526L 11.9994,1.99827L 9.1904,8.62526L 1.9994,9.24227L 7.4544,13.9693L 5.8194,20.9983L 11.9994,17.2703L 18.1794,20.9983L 16.5444,13.9693L 21.9994,9.24227 Z "></path>
+            </svg>
+            </i>
+        </div>
+        <div class="list-tile-content">
+            <div class="list-tile-title">Double line tile</div>
+            <div class="list-tile-info">Secondary text Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+        </div>
+    </div>
+    <div horizontal="true" layout="true" center="true" class="list-tile-secondary"></div>
+</div>
+<div horizontal="true" layout="true" center="true" class="list-tile list-tile-two-line list-tile-has-icon ">
+    <div flex="true" class="list-tile-primary">
+        <div class="icon icon-normal ">
+            <i fit="true" class="svg ">
+            <!--?xml version="1.0" encoding="utf-8"?-->
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve">
+            <path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 11.9994,15.3943L 8.2364,17.6643L 9.2314,13.3833L 5.9094,10.5053L 10.2894,10.1293L 11.9994,6.09327L 13.7094,10.1293L 18.0894,10.5053L 14.7674,13.3833L 15.7624,17.6643M 21.9994,9.24227L 14.8084,8.62526L 11.9994,1.99827L 9.1904,8.62526L 1.9994,9.24227L 7.4544,13.9693L 5.8194,20.9983L 11.9994,17.2703L 18.1794,20.9983L 16.5444,13.9693L 21.9994,9.24227 Z "></path>
+        </svg>
+        </i>
+    </div>
+    <div class="list-tile-content">
+        <div class="list-tile-title">Double line tile</div>
+        <div class="list-tile-info">Secondary text Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+    </div>
+</div>
+<div horizontal="true" layout="true" center="true" class="list-tile-secondary"></div>
+</div>
+</div>
+</div>
+<div class="p-block">
+<h2>Three lines with icon</h2>
+<div class="demo-list">
+<div horizontal="true" layout="true" center="true" class="list-tile list-tile-three-line list-tile-has-icon ">
+<div flex="true" class="list-tile-primary">
+    <div class="icon icon-normal ">
+        <i fit="true" class="svg ">
+        <!--?xml version="1.0" encoding="utf-8"?-->
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve">
+        <path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 11.9994,15.3943L 8.2364,17.6643L 9.2314,13.3833L 5.9094,10.5053L 10.2894,10.1293L 11.9994,6.09327L 13.7094,10.1293L 18.0894,10.5053L 14.7674,13.3833L 15.7624,17.6643M 21.9994,9.24227L 14.8084,8.62526L 11.9994,1.99827L 9.1904,8.62526L 1.9994,9.24227L 7.4544,13.9693L 5.8194,20.9983L 11.9994,17.2703L 18.1794,20.9983L 16.5444,13.9693L 21.9994,9.24227 Z "></path>
+    </svg>
+    </i>
+</div>
+<div class="list-tile-content">
+    <div class="list-tile-title">Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</div>
+    <div class="list-tile-info list-tile-double-info">Secondary text Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+</div>
+</div>
+<div vertical="true" layout="true" start="true" class="list-tile-secondary"></div>
+</div>
+<div horizontal="true" layout="true" center="true" class="list-tile list-tile-three-line list-tile-has-icon ">
+<div flex="true" class="list-tile-primary">
+<div class="icon icon-normal ">
+    <i fit="true" class="svg ">
+    <!--?xml version="1.0" encoding="utf-8"?-->
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve">
+    <path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 11.9994,15.3943L 8.2364,17.6643L 9.2314,13.3833L 5.9094,10.5053L 10.2894,10.1293L 11.9994,6.09327L 13.7094,10.1293L 18.0894,10.5053L 14.7674,13.3833L 15.7624,17.6643M 21.9994,9.24227L 14.8084,8.62526L 11.9994,1.99827L 9.1904,8.62526L 1.9994,9.24227L 7.4544,13.9693L 5.8194,20.9983L 11.9994,17.2703L 18.1794,20.9983L 16.5444,13.9693L 21.9994,9.24227 Z "></path>
+</svg>
+</i>
+</div>
+<div class="list-tile-content">
+<div class="list-tile-title">Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</div>
+<div class="list-tile-info list-tile-double-info">Secondary text Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+</div>
+</div>
+<div vertical="true" layout="true" start="true" class="list-tile-secondary"></div>
+</div>
+<div horizontal="true" layout="true" center="true" class="list-tile list-tile-three-line list-tile-has-icon ">
+<div flex="true" class="list-tile-primary">
+<div class="icon icon-normal ">
+<i fit="true" class="svg ">
+<!--?xml version="1.0" encoding="utf-8"?-->
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve">
+<path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 11.9994,15.3943L 8.2364,17.6643L 9.2314,13.3833L 5.9094,10.5053L 10.2894,10.1293L 11.9994,6.09327L 13.7094,10.1293L 18.0894,10.5053L 14.7674,13.3833L 15.7624,17.6643M 21.9994,9.24227L 14.8084,8.62526L 11.9994,1.99827L 9.1904,8.62526L 1.9994,9.24227L 7.4544,13.9693L 5.8194,20.9983L 11.9994,17.2703L 18.1794,20.9983L 16.5444,13.9693L 21.9994,9.24227 Z "></path>
+</svg>
+</i>
+</div>
+<div class="list-tile-content">
+<div class="list-tile-title">Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</div>
+<div class="list-tile-info list-tile-double-info">Secondary text Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+</div>
+</div>
+<div vertical="true" layout="true" start="true" class="list-tile-secondary"></div>
+</div>
+</div>
+</div>
+<div class="p-block">
+<h2>Single line with secondary item, small icon</h2>
+<div class="demo-list">
+<div horizontal="true" layout="true" center="true" class="list-tile list-tile-single-line list-tile-has-icon ">
+<div flex="true" class="list-tile-primary">
+<div class="icon icon-large avatar">
+<i fit="true">
+<img src="app/list-tile/avatars/1.png">
+</i>
+</div>
+<div class="list-tile-content">
+<div class="list-tile-title">Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</div>
+</div>
+</div>
+<div horizontal="true" layout="true" center="true" class="list-tile-secondary">
+<div class="icon icon-small ">
+<i fit="true" class="svg ">
+<!--?xml version="1.0" encoding="utf-8"?-->
+<svg
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve">
+<path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 12.1044,18.5522L 11.9994,18.6472L 11.8944,18.5522C 7.14038,14.2372 3.99939,11.3873 3.99939,8.49823C 3.99939,6.50323 5.50439,4.99823 7.49939,4.99823C 9.03738,4.99823 10.5384,5.99023 11.0664,7.35925L 12.9324,7.35925C 13.4604,5.99023 14.9614,4.99823 16.4994,4.99823C 18.4944,4.99823 19.9994,6.50323 19.9994,8.49823C 19.9994,11.3873 16.8584,14.2372 12.1044,18.5522 Z M 16.4994,2.99823C 14.7584,2.99823 13.0904,3.80524 11.9994,5.08423C 10.9084,3.80524 9.24039,2.99823 7.49939,2.99823C 4.41537,2.99823 1.99939,5.41425 1.99939,8.49823C 1.99939,12.2733 5.4014,15.3602 10.5504,20.0333L 11.9994,21.3492L 13.4484,20.0333C 18.5974,15.3602 21.9994,12.2733 21.9994,8.49823C 21.9994,5.41425 19.5834,2.99823 16.4994,2.99823 Z "></path>
+</svg>
+</i>
+</div>
+</div>
+</div>
+<div horizontal="true" layout="true" center="true" class="list-tile list-tile-single-line list-tile-has-icon ">
+<div flex="true" class="list-tile-primary">
+<div class="icon icon-large avatar">
+<i fit="true">
+<img src="app/list-tile/avatars/2.png">
+</i>
+</div>
+<div class="list-tile-content">
+<div class="list-tile-title">Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</div>
+</div>
+</div>
+<div horizontal="true" layout="true" center="true" class="list-tile-secondary">
+<div class="icon icon-small ">
+<i fit="true" class="svg ">
+<!--?xml version="1.0" encoding="utf-8"?-->
+<svg
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve">
+<path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 12.1044,18.5522L 11.9994,18.6472L 11.8944,18.5522C 7.14038,14.2372 3.99939,11.3873 3.99939,8.49823C 3.99939,6.50323 5.50439,4.99823 7.49939,4.99823C 9.03738,4.99823 10.5384,5.99023 11.0664,7.35925L 12.9324,7.35925C 13.4604,5.99023 14.9614,4.99823 16.4994,4.99823C 18.4944,4.99823 19.9994,6.50323 19.9994,8.49823C 19.9994,11.3873 16.8584,14.2372 12.1044,18.5522 Z M 16.4994,2.99823C 14.7584,2.99823 13.0904,3.80524 11.9994,5.08423C 10.9084,3.80524 9.24039,2.99823 7.49939,2.99823C 4.41537,2.99823 1.99939,5.41425 1.99939,8.49823C 1.99939,12.2733 5.4014,15.3602 10.5504,20.0333L 11.9994,21.3492L 13.4484,20.0333C 18.5974,15.3602 21.9994,12.2733 21.9994,8.49823C 21.9994,5.41425 19.5834,2.99823 16.4994,2.99823 Z "></path>
+</svg>
+</i>
+</div>
+</div>
+</div>
+<div horizontal="true" layout="true" center="true" class="list-tile list-tile-single-line list-tile-has-icon ">
+<div flex="true" class="list-tile-primary">
+<div class="icon icon-large avatar">
+<i fit="true">
+<img src="app/list-tile/avatars/3.png">
+</i>
+</div>
+<div class="list-tile-content">
+<div class="list-tile-title">Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</div>
+</div>
+</div>
+<div horizontal="true" layout="true" center="true" class="list-tile-secondary">
+<div class="icon icon-small ">
+<i fit="true" class="svg ">
+<!--?xml version="1.0" encoding="utf-8"?-->
+<svg
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve">
+<path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 11.9994,21.3497L 10.5504,20.0327C 5.4014,15.3607 1.99939,12.2736 1.99939,8.49762C 1.99939,5.41364 4.41537,2.99762 7.49939,2.99762C 9.24039,2.99762 10.9084,3.80566 11.9994,5.08362C 13.0904,3.80566 14.7584,2.99762 16.4994,2.99762C 19.5834,2.99762 21.9994,5.41364 21.9994,8.49762C 21.9994,12.2736 18.5974,15.3607 13.4484,20.0327L 11.9994,21.3497 Z "></path>
+</svg>
+</i>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-block">
+<h2>Double line with secondary item, normal icon</h2>
+<div class="demo-list">
+<div horizontal="true" layout="true" center="true" class="list-tile list-tile-two-line list-tile-has-icon ">
+<div flex="true" class="list-tile-primary">
+<div class="icon icon-large avatar">
+<i fit="true">
+<img src="app/list-tile/avatars/1.png">
+</i>
+</div>
+<div class="list-tile-content">
+<div class="list-tile-title">Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</div>
+<div class="list-tile-info">Secondary text Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+</div>
+</div>
+<div horizontal="true" layout="true" center="true" class="list-tile-secondary">
+<div class="icon icon-normal ">
+<i fit="true" class="svg ">
+<!--?xml version="1.0" encoding="utf-8"?-->
+<svg
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve">
+<path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 12.1044,18.5522L 11.9994,18.6472L 11.8944,18.5522C 7.14038,14.2372 3.99939,11.3873 3.99939,8.49823C 3.99939,6.50323 5.50439,4.99823 7.49939,4.99823C 9.03738,4.99823 10.5384,5.99023 11.0664,7.35925L 12.9324,7.35925C 13.4604,5.99023 14.9614,4.99823 16.4994,4.99823C 18.4944,4.99823 19.9994,6.50323 19.9994,8.49823C 19.9994,11.3873 16.8584,14.2372 12.1044,18.5522 Z M 16.4994,2.99823C 14.7584,2.99823 13.0904,3.80524 11.9994,5.08423C 10.9084,3.80524 9.24039,2.99823 7.49939,2.99823C 4.41537,2.99823 1.99939,5.41425 1.99939,8.49823C 1.99939,12.2733 5.4014,15.3602 10.5504,20.0333L 11.9994,21.3492L 13.4484,20.0333C 18.5974,15.3602 21.9994,12.2733 21.9994,8.49823C 21.9994,5.41425 19.5834,2.99823 16.4994,2.99823 Z "></path>
+</svg>
+</i>
+</div>
+</div>
+</div>
+<div horizontal="true" layout="true" center="true" class="list-tile list-tile-two-line list-tile-has-icon ">
+<div flex="true" class="list-tile-primary">
+<div class="icon icon-large avatar">
+<i fit="true">
+<img src="app/list-tile/avatars/2.png">
+</i>
+</div>
+<div class="list-tile-content">
+<div class="list-tile-title">Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</div>
+<div class="list-tile-info">Secondary text Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+</div>
+</div>
+<div horizontal="true" layout="true" center="true" class="list-tile-secondary">
+<div class="icon icon-normal ">
+<i fit="true" class="svg ">
+<!--?xml version="1.0" encoding="utf-8"?-->
+<svg
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve">
+<path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 12.1044,18.5522L 11.9994,18.6472L 11.8944,18.5522C 7.14038,14.2372 3.99939,11.3873 3.99939,8.49823C 3.99939,6.50323 5.50439,4.99823 7.49939,4.99823C 9.03738,4.99823 10.5384,5.99023 11.0664,7.35925L 12.9324,7.35925C 13.4604,5.99023 14.9614,4.99823 16.4994,4.99823C 18.4944,4.99823 19.9994,6.50323 19.9994,8.49823C 19.9994,11.3873 16.8584,14.2372 12.1044,18.5522 Z M 16.4994,2.99823C 14.7584,2.99823 13.0904,3.80524 11.9994,5.08423C 10.9084,3.80524 9.24039,2.99823 7.49939,2.99823C 4.41537,2.99823 1.99939,5.41425 1.99939,8.49823C 1.99939,12.2733 5.4014,15.3602 10.5504,20.0333L 11.9994,21.3492L 13.4484,20.0333C 18.5974,15.3602 21.9994,12.2733 21.9994,8.49823C 21.9994,5.41425 19.5834,2.99823 16.4994,2.99823 Z "></path>
+</svg>
+</i>
+</div>
+</div>
+</div>
+<div horizontal="true" layout="true" center="true" class="list-tile list-tile-two-line list-tile-has-icon ">
+<div flex="true" class="list-tile-primary">
+<div class="icon icon-large avatar">
+<i fit="true">
+<img src="app/list-tile/avatars/3.png">
+</i>
+</div>
+<div class="list-tile-content">
+<div class="list-tile-title">Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</div>
+<div class="list-tile-info">Secondary text Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+</div>
+</div>
+<div horizontal="true" layout="true" center="true" class="list-tile-secondary">
+<div class="icon icon-normal ">
+<i fit="true" class="svg ">
+<!--?xml version="1.0" encoding="utf-8"?-->
+<svg
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve">
+<path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 11.9994,21.3497L 10.5504,20.0327C 5.4014,15.3607 1.99939,12.2736 1.99939,8.49762C 1.99939,5.41364 4.41537,2.99762 7.49939,2.99762C 9.24039,2.99762 10.9084,3.80566 11.9994,5.08362C 13.0904,3.80566 14.7584,2.99762 16.4994,2.99762C 19.5834,2.99762 21.9994,5.41364 21.9994,8.49762C 21.9994,12.2736 18.5974,15.3607 13.4484,20.0327L 11.9994,21.3497 Z "></path>
+</svg>
+</i>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-block">
+<h2>Three lines with secondary item, medium icon</h2>
+<div class="demo-list">
+<div horizontal="true" layout="true" center="true" class="list-tile list-tile-three-line list-tile-has-icon ">
+<div flex="true" class="list-tile-primary">
+<div class="icon icon-large avatar">
+<i fit="true">
+<img src="app/list-tile/avatars/1.png">
+</i>
+</div>
+<div class="list-tile-content">
+<div class="list-tile-title">Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</div>
+<div class="list-tile-info list-tile-double-info">Secondary text Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+</div>
+</div>
+<div vertical="true" layout="true" start="true" class="list-tile-secondary">
+<div class="icon icon-medium ">
+<i fit="true" class="svg ">
+<!--?xml version="1.0" encoding="utf-8"?-->
+<svg
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve">
+<path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 12.1044,18.5522L 11.9994,18.6472L 11.8944,18.5522C 7.14038,14.2372 3.99939,11.3873 3.99939,8.49823C 3.99939,6.50323 5.50439,4.99823 7.49939,4.99823C 9.03738,4.99823 10.5384,5.99023 11.0664,7.35925L 12.9324,7.35925C 13.4604,5.99023 14.9614,4.99823 16.4994,4.99823C 18.4944,4.99823 19.9994,6.50323 19.9994,8.49823C 19.9994,11.3873 16.8584,14.2372 12.1044,18.5522 Z M 16.4994,2.99823C 14.7584,2.99823 13.0904,3.80524 11.9994,5.08423C 10.9084,3.80524 9.24039,2.99823 7.49939,2.99823C 4.41537,2.99823 1.99939,5.41425 1.99939,8.49823C 1.99939,12.2733 5.4014,15.3602 10.5504,20.0333L 11.9994,21.3492L 13.4484,20.0333C 18.5974,15.3602 21.9994,12.2733 21.9994,8.49823C 21.9994,5.41425 19.5834,2.99823 16.4994,2.99823 Z "></path>
+</svg>
+</i>
+</div>
+</div>
+</div>
+<div horizontal="true" layout="true" center="true" class="list-tile list-tile-three-line list-tile-has-icon ">
+<div flex="true" class="list-tile-primary">
+<div class="icon icon-large avatar">
+<i fit="true">
+<img src="app/list-tile/avatars/2.png">
+</i>
+</div>
+<div class="list-tile-content">
+<div class="list-tile-title">Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</div>
+<div class="list-tile-info list-tile-double-info">Secondary text Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+</div>
+</div>
+<div vertical="true" layout="true" start="true" class="list-tile-secondary">
+<div class="icon icon-medium ">
+<i fit="true" class="svg ">
+<!--?xml version="1.0" encoding="utf-8"?-->
+<svg
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve">
+<path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 12.1044,18.5522L 11.9994,18.6472L 11.8944,18.5522C 7.14038,14.2372 3.99939,11.3873 3.99939,8.49823C 3.99939,6.50323 5.50439,4.99823 7.49939,4.99823C 9.03738,4.99823 10.5384,5.99023 11.0664,7.35925L 12.9324,7.35925C 13.4604,5.99023 14.9614,4.99823 16.4994,4.99823C 18.4944,4.99823 19.9994,6.50323 19.9994,8.49823C 19.9994,11.3873 16.8584,14.2372 12.1044,18.5522 Z M 16.4994,2.99823C 14.7584,2.99823 13.0904,3.80524 11.9994,5.08423C 10.9084,3.80524 9.24039,2.99823 7.49939,2.99823C 4.41537,2.99823 1.99939,5.41425 1.99939,8.49823C 1.99939,12.2733 5.4014,15.3602 10.5504,20.0333L 11.9994,21.3492L 13.4484,20.0333C 18.5974,15.3602 21.9994,12.2733 21.9994,8.49823C 21.9994,5.41425 19.5834,2.99823 16.4994,2.99823 Z "></path>
+</svg>
+</i>
+</div>
+</div>
+</div>
+<div horizontal="true" layout="true" center="true" class="list-tile list-tile-three-line list-tile-has-icon ">
+<div flex="true" class="list-tile-primary">
+<div class="icon icon-large avatar">
+<i fit="true">
+<img src="app/list-tile/avatars/3.png">
+</i>
+</div>
+<div class="list-tile-content">
+<div class="list-tile-title">Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</div>
+<div class="list-tile-info list-tile-double-info">Secondary text Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+</div>
+</div>
+<div vertical="true" layout="true" start="true" class="list-tile-secondary">
+<div class="icon icon-medium ">
+<i fit="true" class="svg ">
+<!--?xml version="1.0" encoding="utf-8"?-->
+<svg
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve">
+<path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 11.9994,21.3497L 10.5504,20.0327C 5.4014,15.3607 1.99939,12.2736 1.99939,8.49762C 1.99939,5.41364 4.41537,2.99762 7.49939,2.99762C 9.24039,2.99762 10.9084,3.80566 11.9994,5.08362C 13.0904,3.80566 14.7584,2.99762 16.4994,2.99762C 19.5834,2.99762 21.9994,5.41364 21.9994,8.49762C 21.9994,12.2736 18.5974,15.3607 13.4484,20.0327L 11.9994,21.3497 Z "></path>
+</svg>
+</i>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-block">
+<h2>SVG icon</h2>
+<div class="demo-list demo-no-zebra demo-bordered">
+<div horizontal="true" layout="true" center="true" class="list-tile list-tile-two-line list-tile-has-icon ">
+<div flex="true" class="list-tile-primary">
+<div class="icon icon-medium demo-cirle-icon">
+<i fit="true" class="svg ">
+<!--?xml version="1.0" encoding="utf-8"?-->
+<svg
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve">
+<path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 9.99936,3.99807L 3.99936,3.99807C 2.89436,3.99807 2.00936,4.89406 2.00936,5.99807L 1.99936,17.9981C 1.99936,19.1021 2.89436,19.9981 3.99936,19.9981L 19.9994,19.9981C 21.1029,19.9981 21.9994,19.1021 21.9994,17.9981L 21.9994,7.99807C 21.9994,6.89406 21.1029,5.99807 19.9994,5.99807L 11.9994,5.99807L 9.99936,3.99807 Z "></path>
+</svg>
+</i>
+</div>
+<div class="list-tile-content">
+<div class="list-tile-title">Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</div>
+<div class="list-tile-info">Secondary text Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+</div>
+</div>
+<div horizontal="true" layout="true" center="true" class="list-tile-secondary">
+<div class="icon icon-small ">
+<i fit="true" class="svg ">
+<!--?xml version="1.0" encoding="utf-8"?-->
+<svg
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve">
+<path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 12.9994,8.99805L 10.9994,8.99805L 10.9994,6.99805L 12.9994,6.99805M 12.9994,16.998L 10.9994,16.998L 10.9994,10.998L 12.9994,10.998M 11.9994,1.99805C 6.47642,1.99805 1.99943,6.47504 1.99943,11.998C 1.99943,17.5211 6.47642,21.998 11.9994,21.998C 17.5224,21.998 21.9994,17.5211 21.9994,11.998C 21.9994,6.47504 17.5224,1.99805 11.9994,1.99805 Z "></path>
+</svg>
+</i>
+</div>
+</div>
+</div>
+<div horizontal="true" layout="true" center="true" class="list-tile list-tile-two-line list-tile-has-icon ">
+<div flex="true" class="list-tile-primary">
+<div class="icon icon-medium demo-cirle-icon">
+<i fit="true" class="svg ">
+<!--?xml version="1.0" encoding="utf-8"?-->
+<svg
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve">
+<path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 9.99936,3.99807L 3.99936,3.99807C 2.89436,3.99807 2.00936,4.89406 2.00936,5.99807L 1.99936,17.9981C 1.99936,19.1021 2.89436,19.9981 3.99936,19.9981L 19.9994,19.9981C 21.1029,19.9981 21.9994,19.1021 21.9994,17.9981L 21.9994,7.99807C 21.9994,6.89406 21.1029,5.99807 19.9994,5.99807L 11.9994,5.99807L 9.99936,3.99807 Z "></path>
+</svg>
+</i>
+</div>
+<div class="list-tile-content">
+<div class="list-tile-title">Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</div>
+<div class="list-tile-info">Secondary text Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+</div>
+</div>
+<div horizontal="true" layout="true" center="true" class="list-tile-secondary">
+<div class="icon icon-small ">
+<i fit="true" class="svg ">
+<!--?xml version="1.0" encoding="utf-8"?-->
+<svg
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve">
+<path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 12.9994,8.99805L 10.9994,8.99805L 10.9994,6.99805L 12.9994,6.99805M 12.9994,16.998L 10.9994,16.998L 10.9994,10.998L 12.9994,10.998M 11.9994,1.99805C 6.47642,1.99805 1.99943,6.47504 1.99943,11.998C 1.99943,17.5211 6.47642,21.998 11.9994,21.998C 17.5224,21.998 21.9994,17.5211 21.9994,11.998C 21.9994,6.47504 17.5224,1.99805 11.9994,1.99805 Z "></path>
+</svg>
+</i>
+</div>
+</div>
+</div>
+<div horizontal="true" layout="true" center="true" class="list-tile list-tile-two-line list-tile-has-icon ">
+<div flex="true" class="list-tile-primary">
+<div class="icon icon-medium demo-cirle-icon">
+<i fit="true" class="svg ">
+<!--?xml version="1.0" encoding="utf-8"?-->
+<svg
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve">
+<path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 9.99936,3.99807L 3.99936,3.99807C 2.89436,3.99807 2.00936,4.89406 2.00936,5.99807L 1.99936,17.9981C 1.99936,19.1021 2.89436,19.9981 3.99936,19.9981L 19.9994,19.9981C 21.1029,19.9981 21.9994,19.1021 21.9994,17.9981L 21.9994,7.99807C 21.9994,6.89406 21.1029,5.99807 19.9994,5.99807L 11.9994,5.99807L 9.99936,3.99807 Z "></path>
+</svg>
+</i>
+</div>
+<div class="list-tile-content">
+<div class="list-tile-title">Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</div>
+<div class="list-tile-info">Secondary text Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+</div>
+</div>
+<div horizontal="true" layout="true" center="true" class="list-tile-secondary">
+<div class="icon icon-small ">
+<i fit="true" class="svg ">
+<!--?xml version="1.0" encoding="utf-8"?-->
+<svg
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve">
+<path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 12.9994,8.99805L 10.9994,8.99805L 10.9994,6.99805L 12.9994,6.99805M 12.9994,16.998L 10.9994,16.998L 10.9994,10.998L 12.9994,10.998M 11.9994,1.99805C 6.47642,1.99805 1.99943,6.47504 1.99943,11.998C 1.99943,17.5211 6.47642,21.998 11.9994,21.998C 17.5224,21.998 21.9994,17.5211 21.9994,11.998C 21.9994,6.47504 17.5224,1.99805 11.9994,1.99805 Z "></path>
+</svg>
+</i>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-block">
+<h2>Custom secondary content</h2>
+<p>This example uses parameter
+<code>secondary.tag: 'div[layout][vertical][end]'</code>
+</p>
+<div class="demo-list demo-no-zebra demo-bordered">
+<div horizontal="true" layout="true" center="true" class="list-tile list-tile-three-line  ">
+<div flex="true" class="list-tile-primary">
+<div class="list-tile-content">
+<div class="list-tile-title">Ali Connors</div>
+<div class="list-tile-info list-tile-double-info">
+<div class="demo-first">Brunch this weekend?</div>
+<div class="demo-second">I'll be in your neighborhood doing errands.</div>
+</div>
+</div>
+</div>
+<div layout="true" vertical="true" end="true" class="list-tile-secondary">
+<div>15 min</div>
+<div flex="true"></div>
+<div class="icon icon-normal ">
+<i fit="true" class="svg ">
+<!--?xml version="1.0" encoding="utf-8"?-->
+<svg
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve">
+<path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 11.9994,15.3943L 8.2364,17.6643L 9.2314,13.3833L 5.9094,10.5053L 10.2894,10.1293L 11.9994,6.09327L 13.7094,10.1293L 18.0894,10.5053L 14.7674,13.3833L 15.7624,17.6643M 21.9994,9.24227L 14.8084,8.62526L 11.9994,1.99827L 9.1904,8.62526L 1.9994,9.24227L 7.4544,13.9693L 5.8194,20.9983L 11.9994,17.2703L 18.1794,20.9983L 16.5444,13.9693L 21.9994,9.24227 Z "></path>
+</svg>
+</i>
+</div>
+</div>
+</div>
+<div horizontal="true" layout="true" center="true" class="list-tile list-tile-three-line  ">
+<div flex="true" class="list-tile-primary">
+<div class="list-tile-content">
+<div class="list-tile-title">me, Scott, Jennifer</div>
+<div class="list-tile-info list-tile-double-info">
+<div class="demo-first">Summer BBQ</div>
+<div class="demo-second">I wish I could come, but I am out of town this weekend.</div>
+</div>
+</div>
+</div>
+<div layout="true" vertical="true" end="true" class="list-tile-secondary">
+<div>2 hr</div>
+<div flex="true"></div>
+<div class="icon icon-normal ">
+<i fit="true" class="svg ">
+<!--?xml version="1.0" encoding="utf-8"?-->
+<svg
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve">
+<path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 11.9994,15.3943L 8.2364,17.6643L 9.2314,13.3833L 5.9094,10.5053L 10.2894,10.1293L 11.9994,6.09327L 13.7094,10.1293L 18.0894,10.5053L 14.7674,13.3833L 15.7624,17.6643M 21.9994,9.24227L 14.8084,8.62526L 11.9994,1.99827L 9.1904,8.62526L 1.9994,9.24227L 7.4544,13.9693L 5.8194,20.9983L 11.9994,17.2703L 18.1794,20.9983L 16.5444,13.9693L 21.9994,9.24227 Z "></path>
+</svg>
+</i>
+</div>
+</div>
+</div>
+<div horizontal="true" layout="true" center="true" class="list-tile list-tile-three-line  ">
+<div flex="true" class="list-tile-primary">
+<div class="list-tile-content">
+<div class="list-tile-title">Sandra Adams</div>
+<div class="list-tile-info list-tile-double-info">
+<div class="demo-first">Oui oui</div>
+<div class="demo-second">Do you have any recommendations? Have received some nice stories but cannot make up my mind.</div>
+</div>
+</div>
+</div>
+<div layout="true" vertical="true" end="true" class="list-tile-secondary">
+<div>6 hr</div>
+<div flex="true"></div>
+<div class="icon icon-normal ">
+<i fit="true" class="svg ">
+<!--?xml version="1.0" encoding="utf-8"?-->
+<svg
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve">
+<path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 11.9994,15.3943L 8.2364,17.6643L 9.2314,13.3833L 5.9094,10.5053L 10.2894,10.1293L 11.9994,6.09327L 13.7094,10.1293L 18.0894,10.5053L 14.7674,13.3833L 15.7624,17.6643M 21.9994,9.24227L 14.8084,8.62526L 11.9994,1.99827L 9.1904,8.62526L 1.9994,9.24227L 7.4544,13.9693L 5.8194,20.9983L 11.9994,17.2703L 18.1794,20.9983L 16.5444,13.9693L 21.9994,9.24227 Z "></path>
+</svg>
+</i>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-block">
+<h2>URLs</h2>
+<p>Passing parameters
+<code>url</code> for the primary content, and
+<code>secondary.url</code> for the secondary content (the fav icon).
+</p>
+<div class="demo-list">
+<div horizontal="true" layout="true" center="true" class="list-tile list-tile-single-line list-tile-has-icon ">
+<a flex="true" class="list-tile-primary" href="toolbar.html" target="_blank">
+<div class="icon icon-medium demo-cirle-icon">
+<i fit="true" class="svg ">
+<!--?xml version="1.0" encoding="utf-8"?-->
+<svg
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve">
+<path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 9.99936,3.99807L 3.99936,3.99807C 2.89436,3.99807 2.00936,4.89406 2.00936,5.99807L 1.99936,17.9981C 1.99936,19.1021 2.89436,19.9981 3.99936,19.9981L 19.9994,19.9981C 21.1029,19.9981 21.9994,19.1021 21.9994,17.9981L 21.9994,7.99807C 21.9994,6.89406 21.1029,5.99807 19.9994,5.99807L 11.9994,5.99807L 9.99936,3.99807 Z "></path>
+</svg>
+</i>
+</div>
+<div class="list-tile-content">
+<div class="list-tile-title">Toolbar</div>
+</div>
+</a>
+<a horizontal="true" layout="true" center="true" class="list-tile-secondary" href='javascript:alert("Faved Toolbar")'>
+<div class="icon icon-normal ">
+<i fit="true" class="svg ">
+<!--?xml version="1.0" encoding="utf-8"?-->
+<svg
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve">
+<path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 12.1044,18.5522L 11.9994,18.6472L 11.8944,18.5522C 7.14038,14.2372 3.99939,11.3873 3.99939,8.49823C 3.99939,6.50323 5.50439,4.99823 7.49939,4.99823C 9.03738,4.99823 10.5384,5.99023 11.0664,7.35925L 12.9324,7.35925C 13.4604,5.99023 14.9614,4.99823 16.4994,4.99823C 18.4944,4.99823 19.9994,6.50323 19.9994,8.49823C 19.9994,11.3873 16.8584,14.2372 12.1044,18.5522 Z M 16.4994,2.99823C 14.7584,2.99823 13.0904,3.80524 11.9994,5.08423C 10.9084,3.80524 9.24039,2.99823 7.49939,2.99823C 4.41537,2.99823 1.99939,5.41425 1.99939,8.49823C 1.99939,12.2733 5.4014,15.3602 10.5504,20.0333L 11.9994,21.3492L 13.4484,20.0333C 18.5974,15.3602 21.9994,12.2733 21.9994,8.49823C 21.9994,5.41425 19.5834,2.99823 16.4994,2.99823 Z "></path>
+</svg>
+</i>
+</div>
+</a>
+</div>
+<div horizontal="true" layout="true" center="true" class="list-tile list-tile-single-line list-tile-has-icon ">
+<a flex="true" class="list-tile-primary" href="icon.html" target="_blank">
+<div class="icon icon-medium demo-cirle-icon">
+<i fit="true" class="svg ">
+<!--?xml version="1.0" encoding="utf-8"?-->
+<svg
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve">
+<path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 9.99936,3.99807L 3.99936,3.99807C 2.89436,3.99807 2.00936,4.89406 2.00936,5.99807L 1.99936,17.9981C 1.99936,19.1021 2.89436,19.9981 3.99936,19.9981L 19.9994,19.9981C 21.1029,19.9981 21.9994,19.1021 21.9994,17.9981L 21.9994,7.99807C 21.9994,6.89406 21.1029,5.99807 19.9994,5.99807L 11.9994,5.99807L 9.99936,3.99807 Z "></path>
+</svg>
+</i>
+</div>
+<div class="list-tile-content">
+<div class="list-tile-title">Icon</div>
+</div>
+</a>
+<a horizontal="true" layout="true" center="true" class="list-tile-secondary" href='javascript:alert("Faved Icon")'>
+<div class="icon icon-normal ">
+<i fit="true" class="svg ">
+<!--?xml version="1.0" encoding="utf-8"?-->
+<svg
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve">
+<path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 12.1044,18.5522L 11.9994,18.6472L 11.8944,18.5522C 7.14038,14.2372 3.99939,11.3873 3.99939,8.49823C 3.99939,6.50323 5.50439,4.99823 7.49939,4.99823C 9.03738,4.99823 10.5384,5.99023 11.0664,7.35925L 12.9324,7.35925C 13.4604,5.99023 14.9614,4.99823 16.4994,4.99823C 18.4944,4.99823 19.9994,6.50323 19.9994,8.49823C 19.9994,11.3873 16.8584,14.2372 12.1044,18.5522 Z M 16.4994,2.99823C 14.7584,2.99823 13.0904,3.80524 11.9994,5.08423C 10.9084,3.80524 9.24039,2.99823 7.49939,2.99823C 4.41537,2.99823 1.99939,5.41425 1.99939,8.49823C 1.99939,12.2733 5.4014,15.3602 10.5504,20.0333L 11.9994,21.3492L 13.4484,20.0333C 18.5974,15.3602 21.9994,12.2733 21.9994,8.49823C 21.9994,5.41425 19.5834,2.99823 16.4994,2.99823 Z "></path>
+</svg>
+</i>
+</div>
+</a>
+</div>
+<div horizontal="true" layout="true" center="true" class="list-tile list-tile-single-line list-tile-has-icon ">
+<a flex="true" class="list-tile-primary" href="header-panel.html" target="_blank">
+<div class="icon icon-medium demo-cirle-icon">
+<i fit="true" class="svg ">
+<!--?xml version="1.0" encoding="utf-8"?-->
+<svg
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve">
+<path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 9.99936,3.99807L 3.99936,3.99807C 2.89436,3.99807 2.00936,4.89406 2.00936,5.99807L 1.99936,17.9981C 1.99936,19.1021 2.89436,19.9981 3.99936,19.9981L 19.9994,19.9981C 21.1029,19.9981 21.9994,19.1021 21.9994,17.9981L 21.9994,7.99807C 21.9994,6.89406 21.1029,5.99807 19.9994,5.99807L 11.9994,5.99807L 9.99936,3.99807 Z "></path>
+</svg>
+</i>
+</div>
+<div class="list-tile-content">
+<div class="list-tile-title">Header Panel</div>
+</div>
+</a>
+<a horizontal="true" layout="true" center="true" class="list-tile-secondary" href='javascript:alert("Faved Header Panel")'>
+<div class="icon icon-normal ">
+<i fit="true" class="svg ">
+<!--?xml version="1.0" encoding="utf-8"?-->
+<svg
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve">
+<path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 12.1044,18.5522L 11.9994,18.6472L 11.8944,18.5522C 7.14038,14.2372 3.99939,11.3873 3.99939,8.49823C 3.99939,6.50323 5.50439,4.99823 7.49939,4.99823C 9.03738,4.99823 10.5384,5.99023 11.0664,7.35925L 12.9324,7.35925C 13.4604,5.99023 14.9614,4.99823 16.4994,4.99823C 18.4944,4.99823 19.9994,6.50323 19.9994,8.49823C 19.9994,11.3873 16.8584,14.2372 12.1044,18.5522 Z M 16.4994,2.99823C 14.7584,2.99823 13.0904,3.80524 11.9994,5.08423C 10.9084,3.80524 9.24039,2.99823 7.49939,2.99823C 4.41537,2.99823 1.99939,5.41425 1.99939,8.49823C 1.99939,12.2733 5.4014,15.3602 10.5504,20.0333L 11.9994,21.3492L 13.4484,20.0333C 18.5974,15.3602 21.9994,12.2733 21.9994,8.49823C 21.9994,5.41425 19.5834,2.99823 16.4994,2.99823 Z "></path>
+</svg>
+</i>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
