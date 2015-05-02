@@ -1,0 +1,14 @@
+{
+    "name": "Polythene Documentation",
+    "description": "Polymer inspired modular implementation of Material Design for Mithril: documentation.",
+    "license": "MIT",
+    "ignore": ["**/.*"],
+    "dependencies": {
+        "mithril": "git://github.com/lhorie/mithril.js#7478ad948e98a657f2514e9f8706d39b3ad2fe90",
+        "requirejs": "",
+        "require-css": "",
+        "requirejs-text": "",
+        "marked": "",
+        "lodash": ""
+    }
+}
