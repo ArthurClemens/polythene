@@ -1,7 +1,19 @@
 # Polythene Documentation
 
-	npm install
-	bower install
-	grunt
-	grunt build
+## Setup
 
+* `npm install`
+* `npm run setup`
+
+## Developing
+
+* `npm run copy-docs` - to copy Polythene (Markdown) documents
+* `npm run dev-css` - to continuously build CSS
+
+## Building
+
+* `npm run build` - compile everything to the build directory
+
+## Viewing
+
+* `http-server ./src`

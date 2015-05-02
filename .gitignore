@@ -1,6 +1,8 @@
 bower_components
 node_modules
 build
+docs/src/app/docs
+docs/src/app/lib
 lib/font-iconic/material-design-iconic-font
 lib/svg/mdi
 lib/svg/material-design-iconic-font
