@@ -1,1 +1,1 @@
-define(["css!./layout"],function(){});
+define(["css!./layout"],function(){"use strict"});

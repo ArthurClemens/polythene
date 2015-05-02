@@ -1,1 +1,1 @@
-define(["css!./font-iconic"],function(){});
+define(["css!./font-iconic"],function(){"use strict"});

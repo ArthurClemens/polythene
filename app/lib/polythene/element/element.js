@@ -1,1 +1,1 @@
-define(["polythene/polythene/polythene","mithril"],function(n,e){return{view:function(t,o){var i,l,r;return o=o||{},i=o.tag||"div",l=n.componentProps({},o,this,t),r=[o.content?o.content:null],e(i,l,n.embellish(r,o))}}});
+define(["polythene/polythene/polythene","mithril"],function(e,n){"use strict";return{view:function(t,i){var o,l,r;return i=i||{},o=i.tag||"div",l=e.componentProps({},i,this,t),r=[i.content?i.content:null],n(o,l,e.embellish(r,i))}}});
