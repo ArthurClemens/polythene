@@ -17,7 +17,7 @@ module.exports = function(grunt) {
             },
             built: {
                 options: {
-                    destPrefix: '../gh-pages-examples'                    
+                    destPrefix: '../../gh-pages-examples'                    
                 },
                 files: {
                     './': '../build/*',
