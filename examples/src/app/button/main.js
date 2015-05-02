@@ -40,12 +40,12 @@ define(function(require) {
             disabled: true,
             raised: opts.raised
         }, {
-            label: 'No ink',
+            label: 'Wash only',
             ink: false,
             raised: opts.raised
         },
         {
-            label: 'No wash',
+            label: 'Ink only',
             ink: true,
             raised: opts.raised,
             wash: false
