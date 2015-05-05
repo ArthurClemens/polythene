@@ -152,7 +152,7 @@ define(function (require) {
     kitchensink.view = function () {
         var currentLink = linkMap[m.route()];
         return m('.' + currentLink.url, m.component(headerPanel, {
-                tag: 'div[flex]',
+                tag: 'div[fit]',
                 mode: 'waterfall-tall',
                 tallClass: 'medium-tall',
                 condenses: true,
@@ -195,7 +195,7 @@ define(function (require) {
         };
 
         return m('.' + currentLink.url, m.component(headerPanel, {
-            tag: 'div[flex]',
+            tag: 'div[fit]',
             mode: 'waterfall-tall',
             condenses: true,
             header: {
@@ -213,7 +213,7 @@ define(function (require) {
     demo2.view = function () {
         var currentLink = linkMap[m.route()];
         return m('.' + currentLink.url, m.component(headerPanel, {
-                tag: 'div[flex]',
+                tag: 'div[fit]',
                 mode: 'waterfall-tall',
                 tallClass: 'medium-tall',
                 condenses: true,
@@ -231,7 +231,7 @@ define(function (require) {
     demo3.view = function () {
         var currentLink = linkMap[m.route()];
         return m('.' + currentLink.url, m.component(headerPanel, {
-                tag: 'div[flex]',
+                tag: 'div[fit]',
                 mode: 'waterfall-tall',
                 animated: true,
                 fixed: true,
@@ -249,7 +249,7 @@ define(function (require) {
     demo4.view = function () {
         var currentLink = linkMap[m.route()];
         return m('.' + currentLink.url, m.component(headerPanel, {
-                tag: 'div[flex]',
+                tag: 'div[fit]',
                 mode: 'tall',
                 condenses: true,
                 noReveal: true,
@@ -267,7 +267,7 @@ define(function (require) {
     demo5.view = function () {
         var currentLink = linkMap[m.route()];
         return m('.' + currentLink.url, m.component(headerPanel, {
-                tag: 'div[flex]',
+                tag: 'div[fit]',
                 fixed: true,
                 header: {
                     toolbar: {
@@ -283,7 +283,7 @@ define(function (require) {
     demo6.view = function () {
         var currentLink = linkMap[m.route()];
         return m('.' + currentLink.url, m.component(headerPanel, {
-                tag: 'div[flex]',
+                tag: 'div[fit]',
                 mode: 'waterfall-tall',
                 condenses: true,
                 keepCondensedHeader: true,

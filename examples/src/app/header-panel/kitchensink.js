@@ -228,7 +228,6 @@ define(function(require) {
             panel: {
                 mode: 'waterfall-tall',
                 condenses: true,
-                shadow: false,
                 header: {
                     toolbar: {
                         mode: 'tall',
