@@ -26,15 +26,6 @@ define(['mithril', 'polythene/icon/icon'], function(m) {
                     args.title,
                     m.trust(' '),
                     m('span', args.subtitle)
-                ]),
-                m('span[flex]'),
-                m('div', {
-                    class: 'p-version'
-                }, [
-                    args.baseFileName ? m('a', {
-                        href: './' + args.baseFileName + '-plain.html',
-                    }, 'Plain') : null,
-                    m('span', 'Mithril')
                 ])
             ]);
         }

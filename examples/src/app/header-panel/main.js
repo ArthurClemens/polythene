@@ -28,7 +28,8 @@ define(function (require) {
     links = [{
         url: 'kitchensink',
         name: 'Kitchen sink of small panels',
-        sub: 'waterfall transitions and toolbar components'
+        sub: 'waterfall transitions and toolbar components',
+        icon: 'app/header-panel/svg/grid.svg'
     }, {
         url: 'demo1',
         name: 'Condenses',
@@ -60,18 +61,18 @@ define(function (require) {
         linkMap[link.url] = link;
     });
 
-    item = function (title, sub, url) {
+    item = function (link) {
         return m.component(listTile, {
-            title: title,
-            info: sub, 
+            title: link.name,
+            info: link.sub, 
             icon: {
                 type: 'medium',
                 className: 'index-cirle-icon',
                 svg: {
-                    src: 'app/header-panel/window-maximize.svg'
+                    src: link.icon ? link.icon : 'app/header-panel/svg/window.svg'
                 }
             },
-            url: {href: url, config: m.route}
+            url: {href: link.url, config: m.route}
         });
     };
 
@@ -141,7 +142,7 @@ define(function (require) {
             m('div', {
                 class: 'index'
             }, m('.index-list', links.map(function (link) {
-                return item(link.name, link.sub, link.url);
+                return item(link);
             }))),
             github
         ]);

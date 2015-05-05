@@ -127,20 +127,6 @@ define(function(require) {
             },
             panel: {
                 mode: 'waterfall-tall',
-                fixed: false,
-                animated: true,
-                header: {
-                    content: 'Waterfall animated not fixed'
-                },
-                content: m.trust(template)
-            }
-        }),
-        m.component(panel, {
-            props: {
-                className: 'container'
-            },
-            panel: {
-                mode: 'waterfall-tall',
                 tallClass: 'medium-tall',
                 fixed: true,
                 header: {
@@ -234,7 +220,25 @@ define(function(require) {
                 header: m('.demo-header', 'Custom styled header'),
                 content: m.trust(template)
             }
-        })
+        }),
+        m.component(panel, {
+            props: {
+                className: 'container'
+            },
+            panel: {
+                mode: 'waterfall-tall',
+                condenses: true,
+                shadow: false,
+                header: {
+                    toolbar: {
+                        mode: 'tall',
+                        topBar: toolbarRow(),
+                        bottomBar: m.trust('<div flex class="bottom indent">Not fixed condenses</div>')
+                    }
+                },
+                content: m.trust(template)
+            }
+        }),
     ];
 
     return content;
