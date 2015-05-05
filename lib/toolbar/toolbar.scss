@@ -58,6 +58,10 @@ $_sideMargin: 2*$component_grid_unit_px - $iconButtonPadding;
         left: 0;
     }
 
+    .icon-button {
+        color: inherit;
+    }
+    
     .toolbar-tools {
         width: 100%;
         // make elements (e.g. buttons) respond to mouse/touch events
@@ -76,13 +80,17 @@ $_sideMargin: 2*$component_grid_unit_px - $iconButtonPadding;
             margin-left: $indent - $_sideMargin - $buttonSize;
         }
         > span:first-child,
-        > .indent {
+        .indent {
             margin-left: $indent;
         }
         > span,
         > .title {
             @include single-line;
             display: block;
+            // align left when scaling with transform
+            transform-origin: left 50%;
+            -webkit-transform-origin: left 50%;
+            -moz-origin: left 50%;
         }
 
         .fit {

@@ -1,52 +1,110 @@
-define(function(require) {
+define(function (require) {
     'use strict';
 
-    var m = require('mithril'),
+    var p = require('polythene/polythene/polythene'),
+        m = require('mithril'),
+        nav = require('nav'),
+        kitchensinkContent = require('header-panel/kitchensink'),
+        listTile = require('polythene/list-tile/list-tile'),
         headerPanel = require('polythene/header-panel/header-panel'),
         iconBtn = require('polythene/icon-button/icon-button'),
-        nav = require('nav'),
+        github = require('github'),
+        links,
+        linkMap,
+        routeMap,
+        item,
         btn,
         toolbarRow,
         panel,
-        content,
-        template;
+        template,
+        repeatText,
+        createBottomBarTemplate;
 
     require('css!polythene/theme/theme');
     require('css!app-css');
+    require('css!index/main');
     require('css!./main');
 
+    links = [{
+        url: 'kitchensink',
+        name: 'Kitchen sink of small panels',
+        sub: 'waterfall transitions and toolbar components'
+    }, {
+        url: 'demo1',
+        name: 'Condenses',
+        sub: 'mode "waterfall-tall"'
+    }, {
+        url: 'demo2',
+        name: 'Condenses',
+        sub: 'mode "waterfall-tall", tallClass "medium-tall"'
+    }, {
+        url: 'demo3',
+        name: 'Waterfall',
+        sub: 'animated'
+    }, {
+        url: 'demo4',
+        name: 'No reveal',
+        sub: 'noReveal and condenses'
+    }, {
+        url: 'demo5',
+        name: 'Fixed header',
+        sub: 'fixed'
+    }, {
+        url: 'demo6',
+        name: 'Keep condensed header',
+        sub: 'keepCondensedHeader and condenses'
+    }];
+
+    linkMap = {};
+    links.map(function(link) {
+        linkMap[link.url] = link;
+    });
+
+    item = function (title, sub, url) {
+        return m.component(listTile, {
+            title: title,
+            info: sub, 
+            icon: {
+                type: 'medium',
+                className: 'index-cirle-icon',
+                svg: {
+                    src: 'app/header-panel/window-maximize.svg'
+                }
+            },
+            url: {href: url, config: m.route}
+        });
+    };
+
+    repeatText = function(text, count) {
+        var out = '';
+        while (count > 0) {
+            out += text;
+            count--;
+        }
+        return out;
+    };
+
     template = [
-        '<div class="content">', [
-            'Once a dream did weave a shade',
-            'O\'er my angel-guarded bed,',
-            'That an emmet lost its way',
-            'Where on grass methought I lay.',
-            '',
-            'Troubled, wildered, and forlorn,',
-            'Dark, benighted, travel-worn,',
-            'Over many a tangle spray,',
-            'All heart-broke, I heard her say:',
-            '',
-            '"Oh my children! do they cry,',
-            'Do they hear their father sigh?',
-            'Now they look abroad to see,',
-            'Now return and weep for me."',
-            '',
-            'Pitying, I dropped a tear:',
-            'But I saw a glow-worm near,',
-            'Who replied, "What wailing wight',
-            'Calls the watchman of the night?',
-            '',
-            '"I am set to light the ground,',
-            'While the beetle goes his round:',
-            'Follow now the beetle\'s hum;',
-            'Little wanderer, hie thee home!"'
-        ].join('<br />'),
+        '<div class="content">',
+        repeatText('<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', 16),
         '</div>'
     ].join('');
 
-    btn = function(group, name) {
+    createBottomBarTemplate = function(currentLink) {
+        var text = '';
+        if (currentLink.name) {
+            text += currentLink.name;
+        }
+        if (currentLink.sub) {
+            text += ': ';
+            text += currentLink.sub;
+        }
+        return m.trust('<div class="bottom indent title">' + text + '</div>');
+    };
+
+    btn = function (group, name, url) {
         return m.component(iconBtn, {
+            url: url ? {href: url, config: null} : null,
             icon: {
                 svg: {
                     group: group,
@@ -56,187 +114,197 @@ define(function(require) {
         });
     };
 
-    toolbarRow = function(title) {
+    toolbarRow = function (title) {
         return [
-            btn('navigation', 'menu'),
+            btn('navigation', 'menu', '#'),
             m('span[flex]', title),
             btn('navigation', 'refresh')
         ];
     };
 
     panel = {
-        view: function(ctrl, args) {
+        view: function (ctrl, args) {
             return m('div', args.props, [
                 m.component(headerPanel, args.panel)
             ]);
         }
     };
 
-    content = {
-        view: function() {
-            return [
-                m.component(nav, {
-                    baseFileName: 'header-panel',
-                    title: 'Header Panel',
-                    subtitle: 'Mithril version'
-                }),
-                m('.p-block p-block-separate',
-                    m('p', 'Kitchen sink examples of header panels with waterfall transitions and toolbar components.')
-                ),
-                m.component(panel, {
-                    props: {
-                        className: 'flex-container'
-                    },
-                    panel: {
-                        tag: 'div[flex]',
-                        header: {
-                            content: 'Flex'
-                        },
-                        content: m.trust(template)
-                    }
-                }),
-                m.component(panel, {
-                    props: {
-                        className: 'container'
-                    },
-                    panel: {
-                        header: {
-                            content: 'Standard'
-                        },
-                        content: m.trust(template)
-                    }
-                }),
-                m.component(panel, {
-                    props: {
-                        className: 'container'
-                    },
-                    panel: {
-                        mode: 'seamed',
-                        header: {
-                            content: 'Seamed'
-                        },
-                        content: m.trust(template)
-                    }
-                }),
-                m.component(panel, {
-                    props: {
-                        className: 'container'
-                    },
-                    panel: {
-                        mode: 'waterfall',
-                        header: {
-                            content: 'Waterfall'
-                        },
-                        content: m.trust(template)
-                    }
-                }),
-                m.component(panel, {
-                    props: {
-                        className: 'container'
-                    },
-                    panel: {
-                        mode: 'waterfall-tall',
-                        header: {
-                            content: 'Waterfall tall'
-                        },
-                        content: m.trust(template)
-                    }
-                }),
-                m.component(panel, {
-                    props: {
-                        className: 'container'
-                    },
-                    panel: {
-                        mode: 'waterfall-tall',
-                        tallClass: 'medium-tall',
-                        header: {
-                            content: 'Waterfall tall (tallClass: medium-tall)'
-                        },
-                        content: m.trust(template)
-                    }
-                }),
-                m.component(panel, {
-                    props: {
-                        className: 'container'
-                    },
-                    panel: {
-                        mode: 'scroll',
-                        header: {
-                            content: 'Scroll'
-                        },
-                        content: m.trust(template)
-                    }
-                }),
-                m.component(panel, {
-                    props: {
-                        className: 'container'
-                    },
-                    panel: {
-                        header: {
-                            toolbar: {
-                                content: toolbarRow('Toolbar comp')
-                            }
-                        },
-                        content: m.trust(template)
-                    }
-                }),
-                m.component(panel, {
-                    props: {
-                        className: 'container'
-                    },
-                    panel: {
-                        mode: 'waterfall',
-                        header: {
-                            toolbar: {
-                                content: toolbarRow('Waterfall')
-                            }
-                        },
-                        content: m.trust(template)
-                    }
-                }),
-                m.component(panel, {
-                    props: {
-                        className: 'container'
-                    },
-                    panel: {
-                        mode: 'waterfall-tall',
-                        header: {
-                            toolbar: {
-                                mode: 'tall',
-                                content: toolbarRow('Waterfall tall')
-                            }
-                        },
-                        content: m.trust(template)
-                    }
-                }),
-                m.component(panel, {
-                    props: {
-                        className: 'container'
-                    },
-                    panel: {
-                        mode: 'waterfall-tall',
-                        shadow: false,
-                        header: {
-                            toolbar: {
-                                mode: 'tall',
-                                content: toolbarRow('No shadow')
-                            }
-                        },
-                        content: m.trust(template)
-                    }
-                }),
-                m.component(panel, {
-                    props: {
-                        className: 'container'
-                    },
-                    panel: {
-                        header: m('.demo-header', 'My custom header'),
-                        content: m.trust(template)
-                    }
-                })
-            ];
-        }
+    var list = {};
+    list.controller = function () {};
+    list.view = function () {
+        return m('.app', [
+            m.component(nav, {
+                title: 'Scroll Header Panel',
+                subtitle: 'Mithril version'
+            }),
+            m('div', {
+                class: 'index'
+            }, m('.index-list', links.map(function (link) {
+                return item(link.name, link.sub, link.url);
+            }))),
+            github
+        ]);
     };
 
-    m.mount(document.body, content);
+    var kitchensink = {};
+    kitchensink.view = function () {
+        var currentLink = linkMap[m.route()];
+        return m('.' + currentLink.url, m.component(headerPanel, {
+                tag: 'div[flex]',
+                mode: 'waterfall-tall',
+                tallClass: 'medium-tall',
+                condenses: true,
+                header: {
+                    toolbar: {
+                        topBar: toolbarRow(''),
+                        bottomBar: createBottomBarTemplate(currentLink)
+                    } 
+                },
+                content: kitchensinkContent
+            }));
+    };
+
+    var demo1 = {};
+    demo1.view = function () {
+
+        var currentLink,
+            initPanel,
+            observeHeaderTransform,
+            minScale;
+
+        currentLink = linkMap[m.route()];
+        minScale = 0.65;
+
+        observeHeaderTransform = function (e) {
+            var titleStyle = document.querySelector('.title').style;
+            var m = e.height - e.condensedHeight;
+            var scale = Math.max(minScale, (m - e.y) / (m / (1 - minScale)) + minScale);
+            titleStyle.transform = titleStyle.webkitTransform =
+                'scale(' + scale + ') translateZ(0)';
+        };
+
+        initPanel = function (el, inited, context) {
+            if (inited) return;
+            p.observable.on(['header-transform'], observeHeaderTransform);
+
+            context.onunload = function () {
+                p.observable.off(observeHeaderTransform);
+            };
+        };
+
+        return m('.' + currentLink.url, m.component(headerPanel, {
+            tag: 'div[flex]',
+            mode: 'waterfall-tall',
+            condenses: true,
+            header: {
+                toolbar: {
+                    topBar: toolbarRow(''),
+                    bottomBar: createBottomBarTemplate(currentLink)
+                } 
+            },
+            config: initPanel,
+            content: m.trust(template)
+        }));
+    };
+
+    var demo2 = {};
+    demo2.view = function () {
+        var currentLink = linkMap[m.route()];
+        return m('.' + currentLink.url, m.component(headerPanel, {
+                tag: 'div[flex]',
+                mode: 'waterfall-tall',
+                tallClass: 'medium-tall',
+                condenses: true,
+                header: {
+                    toolbar: {
+                        topBar: toolbarRow(''),
+                        bottomBar: createBottomBarTemplate(currentLink)
+                    } 
+                },
+                content: m.trust(template)
+            }));
+    };
+
+    var demo3 = {};
+    demo3.view = function () {
+        var currentLink = linkMap[m.route()];
+        return m('.' + currentLink.url, m.component(headerPanel, {
+                tag: 'div[flex]',
+                mode: 'waterfall-tall',
+                animated: true,
+                fixed: true,
+                header: {
+                    toolbar: {
+                        topBar: toolbarRow(''),
+                        bottomBar: createBottomBarTemplate(currentLink)
+                    } 
+                },
+                content: m.trust(template)
+            }));
+    };
+
+    var demo4 = {};
+    demo4.view = function () {
+        var currentLink = linkMap[m.route()];
+        return m('.' + currentLink.url, m.component(headerPanel, {
+                tag: 'div[flex]',
+                mode: 'tall',
+                condenses: true,
+                noReveal: true,
+                header: {
+                    toolbar: {
+                        topBar: toolbarRow(''),
+                        bottomBar: createBottomBarTemplate(currentLink)
+                    } 
+                },
+                content: m.trust(template)
+            }));
+    };
+
+    var demo5 = {};
+    demo5.view = function () {
+        var currentLink = linkMap[m.route()];
+        return m('.' + currentLink.url, m.component(headerPanel, {
+                tag: 'div[flex]',
+                fixed: true,
+                header: {
+                    toolbar: {
+                        topBar: toolbarRow(''),
+                        bottomBar: createBottomBarTemplate(currentLink)
+                    } 
+                },
+                content: m.trust(template)
+            }));
+    };
+
+    var demo6 = {};
+    demo6.view = function () {
+        var currentLink = linkMap[m.route()];
+        return m('.' + currentLink.url, m.component(headerPanel, {
+                tag: 'div[flex]',
+                mode: 'waterfall-tall',
+                condenses: true,
+                keepCondensedHeader: true,
+                headerHeight: 256,
+                condensedHeaderHeight: 140,
+                header: {
+                    toolbar: {
+                        topBar: toolbarRow(''),
+                        bottomBar: createBottomBarTemplate(currentLink)
+                    } 
+                },
+                content: m.trust(template)
+            }));
+    };
+
+    routeMap = {
+        '/': list
+    };
+    links.map(function(link) {
+        routeMap[link.url] = eval(link.url);
+    });
+
+    m.route.mode = 'hash';
+    m.route(document.body, '/', routeMap);
 });

@@ -47,6 +47,22 @@ The header-panel will not display if its parent does not have a height.
 | **after** | optional | Mithril template or String or Array | | Extra content after main content |
 
 
+| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
+| **condenses** | optional | Boolean | false | Set to true to condense the header's height to `condensedHeaderHeight` when scrolling |
+| **condensedHeaderHeight** | optional | Number | 1/3 of either: 1. the measured header height; 2. `headerHeight` | xxx |
+| **headerHeight** | optional | Number | the measured header height | xxx |
+| **scrollAwayTopbar** | optional | Boolean |
+| **noReveal** | optional | Boolean | false | Set to true to not let the header slide back in when scrolling back up. |
+| **fixed** | optional | Boolean | false | Set to true to keep the header fixed to the top |
+TODO:
+
+| keepCondensedHeader | optional | Boolean |
+noDissolve
+
+
+
+
 ### Mode
 
 Controls header and scrolling behavior. Options are 'standard', 'seamed', 'waterfall', 'waterfall-tall', 'scroll' and 'cover'.

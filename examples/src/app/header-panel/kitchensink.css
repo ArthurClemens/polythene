@@ -1,0 +1,65 @@
+.kitchensink .container {
+	float: left;
+	width: 300px;
+	height: 400px;
+	margin: 16px 0 16px 16px;
+}
+.kitchensink .flex-container {
+	height: 200px;
+	margin: 0 0 10px 0;
+}
+
+.kitchensink .header-panel {
+	height: 100%;
+}
+
+.kitchensink .header-panel[mode=cover] .mainContainer {
+	left: 70px;
+}
+
+.kitchensink .header-panel .header {
+	height: 48px;
+	line-height: 48px;
+	font-size: 18px;
+	padding: 0 16px;
+	background-color: #2196F3;
+	color: #FFF;
+}
+
+.kitchensink .header-panel .header,
+.kitchensink .header-panel .toolbar {
+	transition: height 0.25s;
+	-webkit-transition: height 0.25s;
+}
+.kitchensink .mainContainer .header-panel .toolbar {
+	font-size: 18px;
+	background-color: #2196F3;
+	color: #fff;
+}
+
+.kitchensink .header-panel .header.tall {
+	height: 180px;
+}
+
+.kitchensink .header-panel .header.medium-tall {
+	height: 120px;
+}
+
+.kitchensink .header-panel .content {
+	padding: 16px;
+	height: 1000px;
+	background: #FAFAFA;
+}
+
+.kitchensink .header-panel .content p {
+	margin: 0 0 1em 0;
+}
+
+.kitchensink .demo-header {
+	height: 64px;
+	line-height: 64px;
+	font-size: 18px;
+	padding: 0 24px;
+	background-color: #E91E63;
+	color: #FFF;
+}

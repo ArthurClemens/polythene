@@ -1,4 +1,4 @@
-define(function(require) {
+define(function (require) {
     'use strict';
 
     var m = require('mithril'),
@@ -36,10 +36,7 @@ define(function(require) {
     }, {
         baseUrl: 'header-panel',
         name: 'Header Panel'
-    }, /*{
-        baseUrl: 'scroll-header-panel',
-        name: 'Scroll Header Panel'
-    },*/ {
+    }, {
         baseUrl: 'shadow',
         name: 'Shadow'
     }, {
@@ -53,7 +50,7 @@ define(function(require) {
         name: 'List'
     }];
 
-    item = function(title, url, secondaryUrl) {
+    item = function (title, url) {
         return m.component(listTile, {
             title: title,
             icon: {
@@ -69,7 +66,7 @@ define(function(require) {
     };
 
     content = {
-        view: function() {
+        view: function () {
             return [
                 m('div', {
                         class: 'p-title-block'
@@ -78,7 +75,7 @@ define(function(require) {
                 ),
                 m('div', {
                     class: 'index'
-                }, m('.index-list', links.map(function(link) {
+                }, m('.index-list', links.map(function (link) {
                     return item(link.name, link.baseUrl + '.html');
                 }))),
                 github

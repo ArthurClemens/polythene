@@ -1,60 +1,58 @@
-body {
-	margin: 0;
-	padding: 0;
-}
-
-.container {
-	float: left;
-	width: 300px;
-	height: 400px;
-	margin: 10px;
-}
-.flex-container {
-	height: 200px;
-	margin: 0 0 10px 0;
-}
-
-.header-panel {
+html, body {
 	height: 100%;
 }
 
-.header-panel[mode=cover] .mainContainer {
-	left: 70px;
+body {
+	margin: 0;
+	padding: 0;	
+}
+
+.flex-container {
+	height: 100%;
 }
 
 .header-panel .header {
 	height: 64px;
 	line-height: 64px;
-	font-size: 21px;
 	padding: 0 10px;
-	background-color: #4F7DC9;
-	color: #FFF;
+	background-color: #ddd;
 }
 
-.header-panel .header,
-.header-panel .toolbar {
-	transition: height 0.2s;
+.header-panel {
+	background: #E3F2FD;
 }
 
-.header-panel .header.tall {
-	height: 180px;
-}
-
-.header-panel .header.medium-tall {
+.header-panel .toolbar.medium-tall {
 	height: 120px;
 }
 
-.header-panel .content {
-	padding: 10px;
-	height: 2000px;
-	background: linear-gradient(rgb(214, 227, 231), lightblue);
+.header-panel .toolbar {
+	background: #01579B;
+	color: #fff;
 }
 
-.demo-header {
-	height: 50px;
-	line-height: 50px;
-	font-size: 18px;
-	padding: 0 10px;
-	background-color: #E91E63;
-	color: #FFF;
+.header-panel .title {
+	font-size: 24px;
+}
+
+.demo1 .header-panel .title {
+	font-size: 36px;
+	color: #fff;
+}
+
+.header-panel .content {
+	padding: 16px 36px 36px 72px;
+}
+.header-panel .content + .content {
+	margin-top: -36px;
+}
+
+.demo3 .header-panel .header,
+.demo3 .header-panel .toolbar {
+	transition: height 0.35s;
+	-webkit-transition: height 0.35s;
+}
+
+.demo6 .toolbar.tall {
+	height: 256px;
 }

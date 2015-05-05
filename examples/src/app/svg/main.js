@@ -187,5 +187,4 @@ define(function(require) {
         '/:refresh': app
     });
 
-    //m.mount(document.body, content);
 });

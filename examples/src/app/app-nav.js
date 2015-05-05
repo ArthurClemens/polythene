@@ -31,9 +31,9 @@ define(['mithril', 'polythene/icon/icon'], function(m) {
                 m('div', {
                     class: 'p-version'
                 }, [
-                    m('a', {
+                    args.baseFileName ? m('a', {
                         href: './' + args.baseFileName + '-plain.html',
-                    }, 'Plain'),
+                    }, 'Plain') : null,
                     m('span', 'Mithril')
                 ])
             ]);
