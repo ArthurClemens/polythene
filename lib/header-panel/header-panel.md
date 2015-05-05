@@ -2,29 +2,53 @@
 
 <a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/header-panel.html">Demo</a>
 
-Displays a content panel with header.
+Displays a content panel with header with various scrolling behaviors.
+
+
+## Comparison with Polymer
+
+In Polymer, `core-header-panel` and `core-scroll-header-panel` are two different components. That makes it impossible to have scrolling behaviors like `condenses` for 'normal' core-header-panels.
+
+In Polythene all behaviors are offered in the current component.
+
 
 
 ## Usage
 
+For small panels, the header will often be fixed:
+
 	var headerPanel = require('polythene/header-panel/header-panel');
 
 	var myHeaderPanel = m.component(headerPanel, {
+		fixed: true,
 	    header: {
 	        content: 'My title'
 	    },
 	    content: 'My content'
-	})
+	});
 
-To make the panel stretch the width, use `div[flex]`:
+To make the panel stretch the width and height of the page, use `div[fit]`:
 
 	var myHeaderPanel = m.component(headerPanel, {
-		tag: 'div[flex]',
+		tag: 'div[fit]',
 	    header: {
 	        content: 'Flex'
 	    },
 	    content: 'My content'
-	})
+	});
+
+To make a tall header condensing when scrolling: 
+
+	var myHeaderPanel = m.component(headerPanel, {
+	    header: {
+	        toolbar: {
+	            mode: 'tall',
+	            topBar: 'Top bar',
+	            bottomBar: 'Bottom bar'
+	        }
+	    },
+	    content: 'My content'
+	});
 
 
 ## Requirements
@@ -43,29 +67,20 @@ The header-panel will not display if its parent does not have a height.
 | **content** | optional | Mithril template or String | | Panel contents |
 | **shadow** | optional | Boolean | true | If set to `false`, no shadow will be shown, regardless the mode |
 | **tallClass** | optional | String | 'tall' | Set this when the header has a class other than 'tall' and the height needs to be toggled. |
+| **condenses** | optional | Boolean | false | Set to true to condense the header's height to `condensedHeaderHeight` when scrolling |
+| **condensedHeaderHeight** | optional | Number | 1/3 of either: 1. the measured header height; 2. `headerHeight` | The height of the header when it is condensed |
+| **headerHeight** | optional | Number | the measured header height | The height of the header when it is at its full size |
+| **scrollAwayTopbar** | optional | Boolean | false | Set to true to scroll away the top part ([toolbar's topBar](#toolbar)) of the header to be scrolled away |
+| **noReveal** | optional | Boolean | false | Set to true to not let the header slide back in when scrolling back up |
+| **fixed** | optional | Boolean | false | Set to true to keep the header fixed to the top |
+| **keepCondensedHeader** | optional | Boolean | false | Set to true to not move away the condensed header |
 | **before** | optional | Mithril template or String or Array | | Extra content before main content |
 | **after** | optional | Mithril template or String or Array | | Extra content after main content |
 
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
-| ------------- | -------------- | -------- | ----------- | --------------- |
-| **condenses** | optional | Boolean | false | Set to true to condense the header's height to `condensedHeaderHeight` when scrolling |
-| **condensedHeaderHeight** | optional | Number | 1/3 of either: 1. the measured header height; 2. `headerHeight` | xxx |
-| **headerHeight** | optional | Number | the measured header height | xxx |
-| **scrollAwayTopbar** | optional | Boolean |
-| **noReveal** | optional | Boolean | false | Set to true to not let the header slide back in when scrolling back up. |
-| **fixed** | optional | Boolean | false | Set to true to keep the header fixed to the top |
-TODO:
-
-| keepCondensedHeader | optional | Boolean |
-noDissolve
-
-
-
-
 ### Mode
 
-Controls header and scrolling behavior. Options are 'standard', 'seamed', 'waterfall', 'waterfall-tall', 'scroll' and 'cover'.
+Controls header and scrolling behavior. Options:
 
 * `standard`: The header is a step above the panel. The header will consume the panel at the point of entry, preventing it from passing through to the opposite side.
 * `seamed`: The header is presented as seamed with the panel.
@@ -100,25 +115,24 @@ Or use a Mithril template:
 
 ## Default generated HTML
 
-	<div class="header-panel" mode="standard">
-		<div vertical="true" layout="true" class="outerContainer">
-			<div class="header animate">My header title</div>
-			<div flex="true" vertical="true" layout="true" class="mainPanel">
-				<div flex="true" class="mainContainer">
-					<div class="content">
-						My content
-					</div>
-				</div>
-				<div class="dropShadow"></div>
-			</div>
-		</div>
+	<div mode="standard" class="header-panel">
+	    <div vertical="true" layout="true" class="outerContainer cascaded">
+	        <div class="headerContainer">
+	            <div class="header">Header</div>
+	            <div class="dropShadow"></div>
+	        </div>
+	        <div flex="true" class="mainContainer">
+	            <div class="content">
+	                Content
+	            </div>
+	        </div>
+	    </div>
 	</div>
 
 
 ## TODO
 
+* Fading background; param 'noDissolve'
 * Test and document: Mode `cover`: The panel covers the whole `header-panel` including the header. This allows user to style the panel in such a way that the panel is partially covering the header.
-* Test and document: To have the content fits to the main area, use fit attribute.
-* Check: If you want to use other than toolbar for the header, add 'header' class to that element.
 
 
