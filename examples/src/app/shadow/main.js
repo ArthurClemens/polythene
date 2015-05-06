@@ -45,7 +45,8 @@ define(function(require) {
                 m('div[self-center]', 'z = ' + ctrl.getZ()),
                 m.component(shadow, {
                     z: ctrl.getZ(),
-                    animated: true
+                    animated: true,
+                    refresh: true
                 })
             ]);
         }

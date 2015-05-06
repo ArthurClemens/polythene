@@ -4,36 +4,31 @@
 
 Adds a touch ripple effect to an element.
 
+Buttons have a ripple element by default. This page documents how to add a ripple to other components.
+
 
 ## Usage
 
 Use parameter `after` to append the ripple to the content:
 
 	var ripple = require('polythene/ripple/ripple');
-	var iconBtn = require('polythene/icon-button/icon-button');
+	var listTile = require('polythene/list-tile/list-tile');
 
-	var myIconBtn = m.component(iconBtn, {
-		icon: {
-			svg: {
-			    src: 'img/arrow.svg'
-			}
-		},
-		after: m.component(ripple)
+	var myListTile = m.component(listTile, {
+	    title: 'Title',
+	    after: m.component(ripple)
 	});
 
 Use an options object to define specific behavior:
 
-	var myIconBtn = m.component(iconBtn, {
-		icon: {
-			svg: {
-			    src: 'img/arrow.svg'
-			}
-		},
-		after: m.component(ripple, {
-            constrained: false,
-            className: 'colored-ripple'
-        })
+	var myListTile = m.component(listTile, {
+	    title: 'Title',
+	    after: m.component(ripple, {
+	    	constrained: false,
+	    	className: 'colored-ripple'
+    	})
 	});
+
 
 
 ## Variations
