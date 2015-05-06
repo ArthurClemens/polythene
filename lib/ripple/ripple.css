@@ -1,1 +1,68 @@
-.ripple{border-radius:inherit;-webkit-transform:translate3d(0, 0, 0)}.ripple[noink]{pointer-events:none}.ripple.constrained{border-radius:inherit;overflow:hidden;-webkit-mask-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC)}.ripple .ripple-mask{position:absolute;top:0;right:0;bottom:0;left:0}.ripple.constrained .ripple-mask{overflow:hidden}.ripple .ripple-waves{display:block;position:absolute;border-radius:100%;-webkit-transform:scale(0.1);-ms-transform:scale(0.1);-o-transform:scale(0.1);transform:scale(0.1);animation-duration:0.2s;-webkit-animation-duration:0.2s;-moz-animation-duration:0.2s;-o-animation-duration:0.2s;opacity:0.2;pointer-events:none;display:none}.ripple .ripple-waves.animated{display:block;animation:ripple ease-out;-webkit-animation:ripple ease-out;-moz-animation:ripple ease-out;-o-animation:ripple ease-out}@keyframes ripple{100%{-webkit-transform:scale(2);-ms-transform:scale(2);-o-transform:scale(2);transform:scale(2);opacity:0}}@-webkit-keyframes ripple{100%{-webkit-transform:scale(2);-ms-transform:scale(2);-o-transform:scale(2);transform:scale(2);opacity:0}}@-o-keyframes ripple{100%{-webkit-transform:scale(2);-ms-transform:scale(2);-o-transform:scale(2);transform:scale(2);opacity:0}}@-moz-keyframes ripple{100%{-webkit-transform:scale(2);-ms-transform:scale(2);-o-transform:scale(2);transform:scale(2);opacity:0}}[disabled] .ripple{pointer-events:none}
+.ripple {
+  border-radius: inherit;
+  -webkit-transform: translate3d(0, 0, 0); }
+  .ripple[noink] {
+    pointer-events: none; }
+  .ripple.constrained {
+    border-radius: inherit;
+    overflow: hidden;
+    -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC); }
+  .ripple .ripple-mask {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0; }
+  .ripple.constrained .ripple-mask {
+    overflow: hidden; }
+  .ripple .ripple-waves {
+    display: block;
+    position: absolute;
+    border-radius: 100%;
+    -webkit-transform: scale(0.1);
+    -ms-transform: scale(0.1);
+    -o-transform: scale(0.1);
+    transform: scale(0.1);
+    animation-duration: 0.2s;
+    -webkit-animation-duration: 0.2s;
+    -moz-animation-duration: 0.2s;
+    -o-animation-duration: 0.2s;
+    opacity: 0.2;
+    pointer-events: none;
+    display: none; }
+    .ripple .ripple-waves.animated {
+      display: block;
+      animation: ripple ease-out;
+      -webkit-animation: ripple ease-out;
+      -moz-animation: ripple ease-out;
+      -o-animation: ripple ease-out; }
+@keyframes ripple {
+  100% {
+    -webkit-transform: scale(2);
+    -ms-transform: scale(2);
+    -o-transform: scale(2);
+    transform: scale(2);
+    opacity: 0; } }
+@-webkit-keyframes ripple {
+  100% {
+    -webkit-transform: scale(2);
+    -ms-transform: scale(2);
+    -o-transform: scale(2);
+    transform: scale(2);
+    opacity: 0; } }
+@-o-keyframes ripple {
+  100% {
+    -webkit-transform: scale(2);
+    -ms-transform: scale(2);
+    -o-transform: scale(2);
+    transform: scale(2);
+    opacity: 0; } }
+@-moz-keyframes ripple {
+  100% {
+    -webkit-transform: scale(2);
+    -ms-transform: scale(2);
+    -o-transform: scale(2);
+    transform: scale(2);
+    opacity: 0; } }
+[disabled] .ripple {
+  pointer-events: none; }
