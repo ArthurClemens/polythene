@@ -1,5 +1,4 @@
-
-@import url("https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic");
+//@import url("https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic");
 
 html, body {
     min-height: 100%;
@@ -143,20 +142,21 @@ code {
 }
 
 .ribbon {
-  background-color: #FF5722;
-  overflow: hidden;
-  white-space: nowrap;
-  /* top left corner */
-  position: fixed;
-  right: -50px;
-  bottom: 40px;
-  z-index: 2;
-  /* 45 deg ccw rotation */
-  -webkit-transform: rotate(-45deg);
-     -moz-transform: rotate(-45deg);
-      -ms-transform: rotate(-45deg);
-       -o-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+    $_deg: 45deg;
+    background-color: #FF5722;
+    overflow: hidden;
+    white-space: nowrap;
+    /* top left corner */
+    position: fixed;
+    right: -50px;
+    top: 40px;
+    z-index: 2;
+    /* 45 deg ccw rotation */
+    -webkit-transform: rotate($_deg);
+     -moz-transform: rotate($_deg);
+      -ms-transform: rotate($_deg);
+       -o-transform: rotate($_deg);
+          transform: rotate($_deg);
 
     a {
         color: #fff;

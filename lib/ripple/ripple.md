@@ -51,8 +51,8 @@ By default the inherited color from the parent element is used.
 | **className** | optional | String |  | Extra CSS class appended to 'ripple' |
 | **initialOpacity** | optional | Number | 0.2 | Opacity at the start of the ripple |
 | **opacityDecayVelocity** | optional | Number | 0.4 | Velocity of decrease of opacity |
-| **start** | optional | Function | | Callback function just before the ripple starts |
-| **end** | optional | Function | | Callback function when the ripple has ended |
+| **start** | optional | Function | | Callback function just before the ripple starts; see Callback functions |
+| **end** | optional | Function | | Callback function when the ripple has ended; see Callback functions |
 
 
 ## Callback functions

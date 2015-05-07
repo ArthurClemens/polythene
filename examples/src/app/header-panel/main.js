@@ -1,8 +1,7 @@
 define(function (require) {
     'use strict';
 
-    var p = require('polythene/polythene/polythene'),
-        m = require('mithril'),
+    var m = require('mithril'),
         nav = require('nav'),
         kitchensinkContent = require('header-panel/kitchensink'),
         listTile = require('polythene/list-tile/list-tile'),
@@ -53,7 +52,7 @@ define(function (require) {
     }, {
         url: 'demo6',
         name: 'Keep condensed header',
-        sub: 'keepCondensedHeader and condenses'
+        sub: 'condenses and keepCondensedHeader'
     }];
 
     linkMap = {};
@@ -117,9 +116,9 @@ define(function (require) {
 
     toolbarRow = function (title) {
         return [
-            btn('navigation', 'menu', '#'),
+            btn('navigation', 'arrow-back', '#'),
             m('span[flex]', title),
-            btn('navigation', 'refresh')
+            btn('action', 'search')
         ];
     };
 
@@ -153,9 +152,11 @@ define(function (require) {
         var currentLink = linkMap[m.route()];
         return m('.' + currentLink.url, m.component(headerPanel, {
                 tag: 'div[fit]',
+                className: 'dark-theme',
                 mode: 'waterfall-tall',
                 tallClass: 'medium-tall',
                 condenses: true,
+                keepCondensedHeader: true,
                 header: {
                     toolbar: {
                         topBar: toolbarRow(''),
@@ -168,16 +169,15 @@ define(function (require) {
 
     var demo1 = {};
     demo1.view = function () {
-
-        var currentLink,
-            initPanel,
-            observeHeaderTransform,
+        var panel,
+            currentLink,
+            onHeaderTransform,
             minScale;
 
         currentLink = linkMap[m.route()];
         minScale = 0.65;
 
-        observeHeaderTransform = function (e) {
+        onHeaderTransform = function (e) {
             var titleStyle = document.querySelector('.title').style;
             var m = e.height - e.condensedHeight;
             var scale = Math.max(minScale, (m - e.y) / (m / (1 - minScale)) + minScale);
@@ -185,17 +185,9 @@ define(function (require) {
                 'scale(' + scale + ') translateZ(0)';
         };
 
-        initPanel = function (el, inited, context) {
-            if (inited) return;
-            p.observable.on(['header-transform'], observeHeaderTransform);
-
-            context.onunload = function () {
-                p.observable.off(observeHeaderTransform);
-            };
-        };
-
-        return m('.' + currentLink.url, m.component(headerPanel, {
+        panel = m.component(headerPanel, {
             tag: 'div[fit]',
+            className: 'dark-theme',
             mode: 'waterfall-tall',
             condenses: true,
             header: {
@@ -204,9 +196,10 @@ define(function (require) {
                     bottomBar: createBottomBarTemplate(currentLink)
                 } 
             },
-            config: initPanel,
-            content: m.trust(template)
-        }));
+            content: m.trust(template),
+            ontransform: onHeaderTransform
+        });
+        return m('.' + currentLink.url, panel);
     };
 
     var demo2 = {};
@@ -214,6 +207,7 @@ define(function (require) {
         var currentLink = linkMap[m.route()];
         return m('.' + currentLink.url, m.component(headerPanel, {
                 tag: 'div[fit]',
+                className: 'dark-theme',
                 mode: 'waterfall-tall',
                 tallClass: 'medium-tall',
                 condenses: true,
@@ -232,6 +226,7 @@ define(function (require) {
         var currentLink = linkMap[m.route()];
         return m('.' + currentLink.url, m.component(headerPanel, {
                 tag: 'div[fit]',
+                className: 'dark-theme',
                 mode: 'waterfall-tall',
                 animated: true,
                 fixed: true,
@@ -250,6 +245,7 @@ define(function (require) {
         var currentLink = linkMap[m.route()];
         return m('.' + currentLink.url, m.component(headerPanel, {
                 tag: 'div[fit]',
+                className: 'dark-theme',
                 mode: 'tall',
                 condenses: true,
                 noReveal: true,
@@ -268,6 +264,7 @@ define(function (require) {
         var currentLink = linkMap[m.route()];
         return m('.' + currentLink.url, m.component(headerPanel, {
                 tag: 'div[fit]',
+                className: 'dark-theme',
                 fixed: true,
                 header: {
                     toolbar: {
@@ -284,6 +281,7 @@ define(function (require) {
         var currentLink = linkMap[m.route()];
         return m('.' + currentLink.url, m.component(headerPanel, {
                 tag: 'div[fit]',
+                className: 'dark-theme',
                 mode: 'waterfall-tall',
                 condenses: true,
                 keepCondensedHeader: true,

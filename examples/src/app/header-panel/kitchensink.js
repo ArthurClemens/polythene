@@ -237,7 +237,7 @@ define(function(require) {
                 },
                 content: m.trust(template)
             }
-        }),
+        })
     ];
 
     return content;

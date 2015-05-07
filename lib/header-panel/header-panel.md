@@ -63,7 +63,7 @@ The header-panel will not display if its parent does not have a height.
 | **tag** | optional | String | 'div' | HTML tag |
 | **className** | optional | String |  | Extra CSS class appended to 'header-panel' |
 | **mode** | optional | String | 'standard'| Controls header and scrolling behavior - see below |
-| **header** | optional | Mithril template or options object | | The header above the scrolling area - see below |
+| **header** | required | Mithril template or options object | | The header above the scrolling area - see below |
 | **content** | optional | Mithril template or String | | Panel contents |
 | **shadow** | optional | Boolean | true | If set to `false`, no shadow will be shown, regardless the mode |
 | **tallClass** | optional | String | 'tall' | Set this when the header has a class other than 'tall' and the height needs to be toggled. |
@@ -74,6 +74,8 @@ The header-panel will not display if its parent does not have a height.
 | **noReveal** | optional | Boolean | false | Set to true to not let the header slide back in when scrolling back up |
 | **fixed** | optional | Boolean | false | Set to true to keep the header fixed to the top |
 | **keepCondensedHeader** | optional | Boolean | false | Set to true to not move away the condensed header |
+| **onscroll** | optional | Function | | Callback function when the header panel scrolls; see Callback functions |
+| **ontransform** | optional | Function | | Callback function when the header panel is transforming; see Callback functions |
 | **before** | optional | Mithril template or String or Array | | Extra content before main content |
 | **after** | optional | Mithril template or String or Array | | Extra content after main content |
 
@@ -111,6 +113,15 @@ Alternatively, pass [toolbar](#toolbar) options to use a toolbar as header:
 Or use a Mithril template:
 
 	header: m('.demo-header', 'My custom header')
+
+
+## Callback functions
+
+	void onscroll(UIEvent event)
+
+	void ontransform({Number y, Number height, Number condensedHeight})
+
+
 
 
 ## Default generated HTML
