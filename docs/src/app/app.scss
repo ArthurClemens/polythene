@@ -138,6 +138,11 @@ body {
             border: none;
             border-bottom: 1px solid $_light_border;
             vertical-align: top;
+
+            width: 15%;
+            &:last-child {
+                width: 40%;
+            }
         }
         th,
         th strong {

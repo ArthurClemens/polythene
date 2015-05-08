@@ -95,7 +95,7 @@ define(function(require) {
         return m.component(listTile, {
             title: title,
             url: {href: url, config: m.route},
-            className: highlight ? 'highlight' : ''
+            class: highlight ? 'highlight' : ''
         });
     };
 
@@ -106,7 +106,7 @@ define(function(require) {
                 svg: {
                     src: 'app/img/recycle.svg'
                 },
-                className: 'logo'
+                class: 'logo'
             }),
             m('h2', m('a', {
                 href: baseUrl,
