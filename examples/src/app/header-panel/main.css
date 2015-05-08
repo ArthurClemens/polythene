@@ -19,7 +19,7 @@ body {
 }
 
 .header-panel {
-	background: #E3F2FD;
+	background: #F5F5F5;
 }
 
 .header-panel .toolbar.medium-tall {
@@ -27,7 +27,7 @@ body {
 }
 
 .header-panel .toolbar {
-	background: #01579B;
+	background: #3F51B5;
 	color: #fff;
 }
 
@@ -56,3 +56,17 @@ body {
 .demo6 .toolbar.tall {
 	height: 256px;
 }
+
+.header-panel.animate .toolbar {
+	background-color: #9C27B0;
+}
+
+.header-panel.noReveal .toolbar {
+	background-color: #FFC107;
+}
+
+.header-panel.keepCondensed .toolbar {
+	background-color: #F44336;
+}
+
+

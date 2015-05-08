@@ -113,6 +113,7 @@ define(function(require) {
             },
             panel: {
                 mode: 'waterfall-tall',
+                class: 'animate',
                 fixed: true,
                 animated: true,
                 header: {

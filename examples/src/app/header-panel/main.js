@@ -31,28 +31,24 @@ define(function (require) {
         icon: 'app/header-panel/svg/grid.svg'
     }, {
         url: 'demo1',
-        name: 'Condenses',
+        name: 'Condenses variant 1',
         sub: 'mode "waterfall-tall"'
     }, {
         url: 'demo2',
-        name: 'Condenses',
+        name: 'Condenses variant 2',
         sub: 'mode "waterfall-tall", tallClass "medium-tall"'
     }, {
         url: 'demo3',
-        name: 'Waterfall',
-        sub: 'animated'
+        name: 'Animated'
     }, {
         url: 'demo4',
-        name: 'No reveal',
-        sub: 'noReveal and condenses'
+        name: 'No reveal'
     }, {
         url: 'demo5',
-        name: 'Fixed header',
-        sub: 'fixed'
+        name: 'Fixed header'
     }, {
         url: 'demo6',
-        name: 'Keep condensed header',
-        sub: 'condenses and keepCondensedHeader'
+        name: 'Keep condensed header'
     }];
 
     linkMap = {};
@@ -63,7 +59,6 @@ define(function (require) {
     item = function (link) {
         return m.component(listTile, {
             title: link.name,
-            info: link.sub, 
             icon: {
                 type: 'medium',
                 class: 'index-cirle-icon',
@@ -226,7 +221,7 @@ define(function (require) {
         var currentLink = linkMap[m.route()];
         return m('.' + currentLink.url, m.component(headerPanel, {
                 tag: 'div[fit]',
-                class: 'dark-theme',
+                class: 'dark-theme animate',
                 mode: 'waterfall-tall',
                 animated: true,
                 fixed: true,
@@ -245,7 +240,7 @@ define(function (require) {
         var currentLink = linkMap[m.route()];
         return m('.' + currentLink.url, m.component(headerPanel, {
                 tag: 'div[fit]',
-                class: 'dark-theme',
+                class: 'dark-theme noReveal',
                 mode: 'tall',
                 condenses: true,
                 noReveal: true,
@@ -281,7 +276,7 @@ define(function (require) {
         var currentLink = linkMap[m.route()];
         return m('.' + currentLink.url, m.component(headerPanel, {
                 tag: 'div[fit]',
-                class: 'dark-theme',
+                class: 'dark-theme keepCondensed',
                 mode: 'waterfall-tall',
                 condenses: true,
                 keepCondensedHeader: true,

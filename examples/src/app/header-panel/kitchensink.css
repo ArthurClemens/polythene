@@ -62,4 +62,9 @@
 	padding: 0 24px;
 	background-color: #E91E63;
 	color: #FFF;
+	text-align: center;
+}
+
+.kitchensink .header-panel.animate .header {
+	background-color: #9C27B0;
 }
