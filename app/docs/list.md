@@ -32,7 +32,7 @@ Displays a list of [list tiles](#list-tile), with an optional header (which is a
 > align the subheader with the text content.
 > [source](http://www.google.com/design/spec/components/subheaders.html#subheaders-list-subheaders)
 
-To align the subheader with the text, add parameter `className` with value `'indent'`.
+To align the subheader with the text, add parameter `class` with value `'indent'`.
 
 
 ## Options
@@ -40,7 +40,7 @@ To align the subheader with the text, add parameter `className` with value `'ind
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **tag** | optional | String | 'div' | HTML tag |
-| **className** | optional | String |  | Extra CSS class appended to 'list-tile'; use 'indent' to align the subheader with text contents of the list tiles below |
+| **class** | optional | String |  | Extra CSS class appended to 'list-tile'; use 'indent' to align the subheader with text contents of the list tiles below |
 | **header** | optional | Object | | Options object for a [list tile](#list-tile); use `title` for the text label |
 | **tiles** | optional | Array of type Mithril template | | List of [list tiles](#list-tile) |
 | **before** | optional | Mithril template or String or Array | | Extra content before main content |

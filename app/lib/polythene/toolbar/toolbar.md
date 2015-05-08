@@ -75,8 +75,8 @@ These heights are predefined by the toolbar CSS.
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **tag** | optional | String | 'div' | HTML tag |
-| **className** | optional | String |  | Extra CSS class appended to 'toolbar animate' (animate is used to transition the height) |
-| **mode** | optional | String | 'standard' | CSS height class added to className; mode 'tall' is the same as using className 'tall' |
+| **class** | optional | String |  | Extra CSS class appended to 'toolbar animate' (animate is used to transition the height) |
+| **mode** | optional | String | 'standard' | CSS height class added to class; mode 'tall' is the same as using class 'tall' |
 | **content** | either a bar or content must be passed | Mithril template | | Top bar content; use this if you only show 1 bar |
 | **topBar** | either a bar or content must be passed | Mithril template | | Top bar content |
 | **middleBar** | either a bar or content must be passed | Mithril template | | Middle bar content |

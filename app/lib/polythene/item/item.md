@@ -38,7 +38,7 @@ To make the item a link, set its content as the link:
         content: m('a', {href: '#settings'})
     });
 
-To make a big item, pass className `font-scalable` - the icon will scale automatically:
+To make a big item, pass class `font-scalable` - the icon will scale automatically:
 
 	// CSS
 	.big {
@@ -50,7 +50,7 @@ To make a big item, pass className `font-scalable` - the icon will scale automat
 
 	// JS
 	var myItem = m.component(item, {
-		className: 'font-scalable big',
+		class: 'font-scalable big',
 		label: 'Settings',
         icon: {
 	        svg: {
@@ -60,7 +60,7 @@ To make a big item, pass className `font-scalable` - the icon will scale automat
 	    }
     });
 	var myItem = m.component(item, {
-		className: 'font-scalable small',
+		class: 'font-scalable small',
 		label: 'Settings',
         icon: {
 	        svg: {
@@ -75,7 +75,7 @@ Create a custom item:
 	icon = require('polythene/icon/icon');
 
 	var myItem = m.component(item, {
-        className: 'contact-item',
+        class: 'contact-item',
         icon: {
 	        svg: {
 	            group: 'action',
@@ -110,7 +110,7 @@ Item can be extended with CSS and custom content - see the custom example below.
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **tag** | optional | String | 'div' | HTML tag |
-| **className** | optional | String |  | Extra CSS class appended to 'item'; to make the item scale with CSS, add class `font-scalable` (see above) |
+| **class** | optional | String |  | Extra CSS class appended to 'item'; to make the item scale with CSS, add class `font-scalable` (see above) |
 | **icon** | optional | Object |  | [icon](#icon) options object |
 | **label** | optional | String | | Item label |
 | **content** | optional | Mithril template or String | | Additional content; can co-exist with icon and label |

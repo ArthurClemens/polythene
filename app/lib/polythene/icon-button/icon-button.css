@@ -1,1 +1,33 @@
-.icon-button{display:inline-block;user-select:none;-moz-user-select:none;-webkit-user-select:none;padding:12px;vertical-align:middle;cursor:pointer;position:relative;font-size:1rem;border-radius:50%}.icon-button .button-content{border-radius:50%;pointer-events:none}.icon-button .button-content .icon{pointer-events:none}.icon-button[disabled]{cursor:auto;pointer-events:none}.icon-button .ripple{border-radius:inherit;z-index:2}.icon-button .ripple .ripple-mask{border-radius:inherit}.icon-button .wash{background-color:transparent;border-radius:inherit;pointer-events:none;z-index:1;transition:background-color 0.2s ease-in-out;-webkit-transition:background-color 0.2s ease-in-out;-moz-transition:background-color 0.2s ease-in-out;-webkit-transition:background-color 0.2s ease-in-out}
+.icon-button {
+  display: inline-block;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  padding: 12px;
+  vertical-align: middle;
+  cursor: pointer;
+  position: relative;
+  font-size: 1rem;
+  border-radius: 50%; }
+  .icon-button .button-content {
+    border-radius: 50%;
+    pointer-events: none; }
+    .icon-button .button-content .icon {
+      pointer-events: none; }
+  .icon-button[disabled] {
+    cursor: auto;
+    pointer-events: none; }
+  .icon-button .ripple {
+    border-radius: inherit;
+    z-index: 2; }
+    .icon-button .ripple .ripple-mask {
+      border-radius: inherit; }
+  .icon-button .wash {
+    background-color: transparent;
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 1;
+    transition: background-color 0.2s ease-in-out;
+    -webkit-transition: background-color 0.2s ease-in-out;
+    -moz-transition: background-color 0.2s ease-in-out;
+    -webkit-transition: background-color 0.2s ease-in-out; }

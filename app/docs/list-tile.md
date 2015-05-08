@@ -105,7 +105,7 @@ A list tile can optionally have secondary content, displayed to the right. Secon
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **tag** | optional | String | 'div' | HTML tag |
-| **className** | optional | String |  | Extra CSS class appended to 'list-tile' |
+| **class** | optional | String |  | Extra CSS class appended to 'list-tile' |
 | **title** | required | String | | The text content |
 | **info** | optional | String | | Secondary text content (1 line high) |
 | **info_high** | optional | String | | Secondary text content (2 lines high) |

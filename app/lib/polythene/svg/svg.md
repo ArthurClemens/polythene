@@ -45,7 +45,7 @@ Note that in this case `require('polythene/svg/svg')` is not needed (this is han
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **tag** | optional | String | 'div' | HTML tag |
-| **className** | optional | String |  | CSS class appended to 'svg' |
+| **class** | optional | String |  | CSS class appended to 'svg' |
 | **src** | either src or iconset+name must be passed | String |  | SVG URL |
 | **iconset** | either src or iconset+name must be passed | String |  | Iconset name - see below |
 | **group** | optional | String |  | Subfolder within iconset |

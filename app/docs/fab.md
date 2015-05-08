@@ -23,7 +23,7 @@ A circular main button with a [shadow](#shadow) and [ripple](#ripple) effect.
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **tag** | optional | String | 'div' | HTML tag |
-| **className** | optional | String |  | Extra CSS class appended to 'fab' |
+| **class** | optional | String |  | Extra CSS class appended to 'fab' |
 | **icon** | required | Object |  | [icon](#icon) options object |
 | **z** | optional | Number 0-5 | 1 | Depth of the shadow |
 | **small** | optional | Boolean | false | Set to true to display a small button (class name `fab mini`) |

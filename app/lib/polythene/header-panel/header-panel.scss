@@ -1,10 +1,17 @@
 @import "../polythene/polythene";
 
 .header-panel {
-    
-    display: block;
     position: relative;
+    overflow: hidden;
     height: 100%;
+
+    &[fit] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
 
     .outerContainer {
         position: absolute;
@@ -23,19 +30,41 @@
         overflow-y: auto;
         overflow-x: hidden;
         -webkit-overflow-scrolling: touch;
+        z-index: 0;
     }
 
     .dropShadow {
+        opacity: 0;
         position: absolute;
-        top: 0;
+        top: auto;
         left: 0;
         right: 0;
         height: 6px;
         box-shadow: inset 0px 5px 6px -3px rgba(0, 0, 0, 0.4);
+        z-index: 1;
+        transition: opacity 0.25s;
+        -webkit-transition: opacity 0.25s;
     }
 
-    .dropShadow.hidden {
-        display: none;
+    .outerContainer.cascaded > .headerContainer > .dropShadow {
+        opacity: 1;
+    }
+
+    &:not([fixed]) > .outerContainer > .headerContainer {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1;
+
+        .bg-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
     }
 
     &[mode=seamed] {

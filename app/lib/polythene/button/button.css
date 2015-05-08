@@ -1,1 +1,47 @@
-.button{display:inline-block;min-width:64px;height:48px;margin:0 4px;padding:6px 0;background:transparent;text-align:center;font:inherit;text-transform:uppercase;outline:none;cursor:pointer;user-select:none;-moz-user-select:none;-webkit-user-select:none;font-size:14px;font-weight:500}.button .button-content{position:relative;height:36px;line-height:36px;padding:0 8px;border-radius:2px}.button .button-content>span{position:relative;z-index:2;pointer-events:auto}.button .button-content .ripple{z-index:3;top:-6px;bottom:-6px}.button .button-content .ripple .ripple-mask{top:6px;bottom:6px}.button .button-content .wash{z-index:1}.button[disabled]{cursor:auto;pointer-events:none}.button .wash{background-color:transparent;border-radius:inherit;pointer-events:none;transition:background-color 0.2s ease-in-out;-webkit-transition:background-color 0.2s ease-in-out;-moz-transition:background-color 0.2s ease-in-out;-webkit-transition:background-color 0.2s ease-in-out}
+.button {
+  display: inline-block;
+  min-width: 64px;
+  height: 48px;
+  margin: 0 4px;
+  padding: 6px 0;
+  background: transparent;
+  text-align: center;
+  font: inherit;
+  text-transform: uppercase;
+  outline: none;
+  cursor: pointer;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  font-size: 14px;
+  font-weight: 500; }
+  .button .button-content {
+    position: relative;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 8px;
+    border-radius: 2px; }
+    .button .button-content > span {
+      position: relative;
+      z-index: 2;
+      pointer-events: auto; }
+    .button .button-content .ripple {
+      z-index: 3;
+      top: -6px;
+      bottom: -6px; }
+      .button .button-content .ripple .ripple-mask {
+        top: 6px;
+        bottom: 6px; }
+    .button .button-content .wash {
+      z-index: 1; }
+  .button[disabled] {
+    cursor: auto;
+    pointer-events: none; }
+  .button .wash {
+    background-color: transparent;
+    border-radius: inherit;
+    pointer-events: none;
+    transition: background-color 0.2s ease-in-out;
+    -webkit-transition: background-color 0.2s ease-in-out;
+    -moz-transition: background-color 0.2s ease-in-out;
+    -webkit-transition: background-color 0.2s ease-in-out; }

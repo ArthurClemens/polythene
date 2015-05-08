@@ -36,7 +36,7 @@ To animated the shadow use `animated`:
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **tag** | optional | String | 'div' | HTML tag |
-| **className** | optional | String |  | Extra CSS class appended to 'shadow' |
+| **class** | optional | String |  | Extra CSS class appended to 'shadow' |
 | **z** | optional | Number 0-5 | 0 | Depth of the shadow |
 | **animated** | optional | Boolean | false | Set to true to animate the shadow when setting a new z value. |
 

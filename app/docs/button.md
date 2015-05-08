@@ -38,7 +38,7 @@ Add a URL:
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **tag** | optional | String | 'div' | HTML tag |
-| **className** | optional | String |  | Extra CSS class appended to 'button' |
+| **class** | optional | String |  | Extra CSS class appended to 'button' |
 | **label** | required | String | | The button label |
 | **url** | optional | Object | | Button URL; options object containing `href` and `config` |
 | **wash** | optional | Boolean | true | Set to false to hide the effect on hover |
