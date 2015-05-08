@@ -55,7 +55,7 @@ define(function (require) {
             title: title,
             icon: {
                 type: 'medium',
-                className: 'index-cirle-icon',
+                class: 'index-cirle-icon',
                 svg: {
                     name: 'folder',
                     iconset: 'mdi'

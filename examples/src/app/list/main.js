@@ -41,7 +41,7 @@ define(function(require) {
                 m.component(titleBlock, {
                     title: 'No subheader',
                     content: m.component(list, {
-                        className: 'demo-list',
+                        class: 'demo-list',
                         tiles: [
                             m.component(listTile, {
                                 title: titleLineText,
@@ -62,7 +62,7 @@ define(function(require) {
                 m.component(titleBlock, {
                     title: 'Subheader',
                     content: m.component(list, {
-                        className: 'demo-list',
+                        class: 'demo-list',
                         header: {
                             title: 'Subheader'
                         },
@@ -86,10 +86,10 @@ define(function(require) {
                 m.component(titleBlock, {
                     title: 'Indented subheader',
                     content: m.component(list, {
-                        className: 'demo-list',
+                        class: 'demo-list',
                         header: {
                             title: 'Subheader',
-                            className: 'indent'
+                            class: 'indent'
                         },
                         tiles: [
                             m.component(listTile, {
@@ -97,7 +97,7 @@ define(function(require) {
                                 info: infoLineText,
                                 icon: {
                                     type: 'large',
-                                    className: 'avatar',
+                                    class: 'avatar',
                                     src: 'app/list-tile/avatars/1.png'
                                 }
                             }),
@@ -106,7 +106,7 @@ define(function(require) {
                                 info: infoLineText,
                                 icon: {
                                     type: 'large',
-                                    className: 'avatar',
+                                    class: 'avatar',
                                     src: 'app/list-tile/avatars/2.png'
                                 }
                             }),
@@ -115,7 +115,7 @@ define(function(require) {
                                 info: infoLineText,
                                 icon: {
                                     type: 'large',
-                                    className: 'avatar',
+                                    class: 'avatar',
                                     src: 'app/list-tile/avatars/3.png'
                                 }
                             })
@@ -126,10 +126,10 @@ define(function(require) {
                 m.component(titleBlock, {
                     title: 'Dark theme',
                     content: m.component(list, {
-                        className: 'demo-list demo-no-zebra dark-theme',
+                        class: 'demo-list demo-no-zebra dark-theme',
                         header: {
                             title: 'Subheader',
-                            className: 'indent'
+                            class: 'indent'
                         },
                         tiles: [
                             m.component(listTile, {
@@ -137,7 +137,7 @@ define(function(require) {
                                 info: infoLineText,
                                 icon: {
                                     type: 'large',
-                                    className: 'avatar',
+                                    class: 'avatar',
                                     src: 'app/list-tile/avatars/1.png'
                                 }
                             }),
@@ -146,7 +146,7 @@ define(function(require) {
                                 info: infoLineText,
                                 icon: {
                                     type: 'large',
-                                    className: 'avatar',
+                                    class: 'avatar',
                                     src: 'app/list-tile/avatars/2.png'
                                 }
                             }),
@@ -155,7 +155,7 @@ define(function(require) {
                                 info: infoLineText,
                                 icon: {
                                     type: 'large',
-                                    className: 'avatar',
+                                    class: 'avatar',
                                     src: 'app/list-tile/avatars/3.png'
                                 }
                             })

@@ -36,7 +36,7 @@ define(function(require) {
         },
         view: function(ctrl, args) {
             return m('div[animated][layout][horizontal]', {
-                class: args.className,
+                class: args.class,
                 onclick: function() {
                     var z = ctrl.z();
                     ctrl.z(++z);
@@ -57,11 +57,11 @@ define(function(require) {
             var indices = [0, 1, 2, 3, 4, 5];
             var tapItems = [{
                 id: 1,
-                className: 'card',
+                class: 'card',
                 initZ: 1
             }, {
                 id: 2,
-                className: 'fab',
+                class: 'fab',
                 initZ: 3
             }];
             return [
@@ -93,7 +93,7 @@ define(function(require) {
                         tapItems.map(function(item) {
                             return m.component(interactiveShadow, {
                                 id: item.id,
-                                className: item.className,
+                                class: item.class,
                                 initZ: item.initZ
                             });
                         })

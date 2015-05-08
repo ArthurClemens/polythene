@@ -29,7 +29,7 @@ define(function(require) {
 
     titleBlock = {
         view: function(ctrl, args) {
-            return m('.p-block', {class: args.className || ''}, [
+            return m('.p-block', {class: args.class || ''}, [
                 m('.p-block-header', args.title),
                 args.content
             ]);
@@ -51,7 +51,7 @@ define(function(require) {
                             m.component(block, {
                                 fab: {
                                     icon: fabIcon,
-                                    className: 'demo-fab',
+                                    class: 'demo-fab',
                                     z: 1
                                 }
                             })
@@ -64,14 +64,14 @@ define(function(require) {
                                 fab: {
                                     mini: true,
                                     icon: fabIcon,
-                                    className: 'demo-fab green',
+                                    class: 'demo-fab green',
                                     z: 1
                                 }
                             }),
                             m.component(block, {
                                 fab: {
                                     icon: fabIcon,
-                                    className: 'demo-fab mini red',
+                                    class: 'demo-fab mini red',
                                     z: 1
                                 }
                             })
@@ -79,12 +79,12 @@ define(function(require) {
                     }),
                     m.component(titleBlock, {
                         title: 'Dark theme, raised more',
-                        className: 'dark-theme',
+                        class: 'dark-theme',
                         content: [
                             m.component(block, {
                                 fab: {
                                     icon: fabIcon,
-                                    className: 'demo-fab',
+                                    class: 'demo-fab',
                                     z: 2
                                 }
                             })
@@ -96,7 +96,7 @@ define(function(require) {
                             m.component(block, {
                                 fab: {
                                     icon: fabIcon,
-                                    className: 'demo-fab',
+                                    class: 'demo-fab',
                                     z: 5
                                 }
                             })

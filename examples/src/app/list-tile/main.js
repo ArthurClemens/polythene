@@ -103,7 +103,7 @@ define(function(require) {
                                 title: titleLineText,
                                 icon: {
                                     type: 'large',
-                                    className: 'avatar',
+                                    class: 'avatar',
                                     src: 'app/list-tile/avatars/1.png'
                                 }
                             }),
@@ -111,7 +111,7 @@ define(function(require) {
                                 title: titleLineText,
                                 icon: {
                                     type: 'large',
-                                    className: 'avatar',
+                                    class: 'avatar',
                                     src: 'app/list-tile/avatars/2.png'
                                 }
                             }),
@@ -119,7 +119,7 @@ define(function(require) {
                                 title: titleLineText,
                                 icon: {
                                     type: 'large',
-                                    className: 'avatar',
+                                    class: 'avatar',
                                     src: 'app/list-tile/avatars/3.png'
                                 }
                             })
@@ -133,7 +133,7 @@ define(function(require) {
                                 info: infoDoubleLineText,
                                 icon: {
                                     type: 'large',
-                                    className: 'avatar',
+                                    class: 'avatar',
                                     src: 'app/list-tile/avatars/1.png'
                                 }
                             }),
@@ -142,7 +142,7 @@ define(function(require) {
                                 info: infoDoubleLineText,
                                 icon: {
                                     type: 'large',
-                                    className: 'avatar',
+                                    class: 'avatar',
                                     src: 'app/list-tile/avatars/2.png'
                                 }
                             }),
@@ -151,7 +151,7 @@ define(function(require) {
                                 info: infoDoubleLineText,
                                 icon: {
                                     type: 'large',
-                                    className: 'avatar',
+                                    class: 'avatar',
                                     src: 'app/list-tile/avatars/3.png'
                                 }
                             })
@@ -165,7 +165,7 @@ define(function(require) {
                                 info_high: infoDoubleLineText,
                                 icon: {
                                     type: 'large',
-                                    className: 'avatar',
+                                    class: 'avatar',
                                     src: 'app/list-tile/avatars/1.png'
                                 }
                             }),
@@ -174,7 +174,7 @@ define(function(require) {
                                 info_high: infoDoubleLineText,
                                 icon: {
                                     type: 'large',
-                                    className: 'avatar',
+                                    class: 'avatar',
                                     src: 'app/list-tile/avatars/2.png'
                                 }
                             }),
@@ -183,7 +183,7 @@ define(function(require) {
                                 info_high: infoDoubleLineText,
                                 icon: {
                                     type: 'large',
-                                    className: 'avatar',
+                                    class: 'avatar',
                                     src: 'app/list-tile/avatars/3.png'
                                 }
                             })
@@ -304,7 +304,7 @@ define(function(require) {
                                 title: titleLineText,
                                 icon: {
                                     type: 'large',
-                                    className: 'avatar',
+                                    class: 'avatar',
                                     src: 'app/list-tile/avatars/1.png'
                                 },
                                 secondary: {
@@ -321,7 +321,7 @@ define(function(require) {
                                 title: titleLineText,
                                 icon: {
                                     type: 'large',
-                                    className: 'avatar',
+                                    class: 'avatar',
                                     src: 'app/list-tile/avatars/2.png'
                                 },
                                 secondary: {
@@ -338,7 +338,7 @@ define(function(require) {
                                 title: titleLineText,
                                 icon: {
                                     type: 'large',
-                                    className: 'avatar',
+                                    class: 'avatar',
                                     src: 'app/list-tile/avatars/3.png'
                                 },
                                 secondary: {
@@ -361,7 +361,7 @@ define(function(require) {
                                 info: infoDoubleLineText,
                                 icon: {
                                     type: 'large',
-                                    className: 'avatar',
+                                    class: 'avatar',
                                     src: 'app/list-tile/avatars/1.png'
                                 },
                                 secondary: {
@@ -378,7 +378,7 @@ define(function(require) {
                                 info: infoDoubleLineText,
                                 icon: {
                                     type: 'large',
-                                    className: 'avatar',
+                                    class: 'avatar',
                                     src: 'app/list-tile/avatars/2.png'
                                 },
                                 secondary: {
@@ -395,7 +395,7 @@ define(function(require) {
                                 info: infoDoubleLineText,
                                 icon: {
                                     type: 'large',
-                                    className: 'avatar',
+                                    class: 'avatar',
                                     src: 'app/list-tile/avatars/3.png'
                                 },
                                 secondary: {
@@ -417,7 +417,7 @@ define(function(require) {
                                 info_high: infoDoubleLineText,
                                 icon: {
                                     type: 'large',
-                                    className: 'avatar',
+                                    class: 'avatar',
                                     src: 'app/list-tile/avatars/1.png'
                                 },
                                 secondary: {
@@ -435,7 +435,7 @@ define(function(require) {
                                 info_high: infoDoubleLineText,
                                 icon: {
                                     type: 'large',
-                                    className: 'avatar',
+                                    class: 'avatar',
                                     src: 'app/list-tile/avatars/2.png'
                                 },
                                 secondary: {
@@ -453,7 +453,7 @@ define(function(require) {
                                 info_high: infoDoubleLineText,
                                 icon: {
                                     type: 'large',
-                                    className: 'avatar',
+                                    class: 'avatar',
                                     src: 'app/list-tile/avatars/3.png'
                                 },
                                 secondary: {
@@ -479,7 +479,7 @@ define(function(require) {
                                 info: infoDoubleLineText,
                                 icon: {
                                     type: 'medium',
-                                    className: 'demo-cirle-icon',
+                                    class: 'demo-cirle-icon',
                                     svg: {
                                         name: 'folder',
                                         iconset: 'mdi'
@@ -500,7 +500,7 @@ define(function(require) {
                                 info: infoDoubleLineText,
                                 icon: {
                                     type: 'medium',
-                                    className: 'demo-cirle-icon',
+                                    class: 'demo-cirle-icon',
                                     svg: {
                                         name: 'folder',
                                         iconset: 'mdi'
@@ -521,7 +521,7 @@ define(function(require) {
                                 info: infoDoubleLineText,
                                 icon: {
                                     type: 'medium',
-                                    className: 'demo-cirle-icon',
+                                    class: 'demo-cirle-icon',
                                     svg: {
                                         name: 'folder',
                                         iconset: 'mdi'
@@ -619,7 +619,7 @@ define(function(require) {
                                 title: 'Toolbar',
                                 icon: {
                                     type: 'medium',
-                                    className: 'demo-cirle-icon',
+                                    class: 'demo-cirle-icon',
                                     svg: {
                                         name: 'folder',
                                         iconset: 'mdi'
@@ -640,7 +640,7 @@ define(function(require) {
                                 title: 'Icon',
                                 icon: {
                                     type: 'medium',
-                                    className: 'demo-cirle-icon',
+                                    class: 'demo-cirle-icon',
                                     svg: {
                                         name: 'folder',
                                         iconset: 'mdi'
@@ -661,7 +661,7 @@ define(function(require) {
                                 title: 'Header Panel',
                                 icon: {
                                     type: 'medium',
-                                    className: 'demo-cirle-icon',
+                                    class: 'demo-cirle-icon',
                                     svg: {
                                         name: 'folder',
                                         iconset: 'mdi'

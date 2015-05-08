@@ -59,7 +59,7 @@ define(function(require) {
     titleBlock = {
         view: function(ctrl, args) {
             return m('.p-block', {
-                class: args.className
+                class: args.class
             }, [
                 m('.p-block-header', args.title),
                 args.content.map(function(c) {
@@ -80,7 +80,7 @@ define(function(require) {
                 m('div', 
                     m.component(titleBlock, {
                         title: 'Raised Light / Light theme',
-                        className: '',
+                        class: '',
                         content: buttonRow({
                             raised: true
                         })
@@ -93,28 +93,28 @@ define(function(require) {
                     }),
                     m.component(titleBlock, {
                         title: 'Raised Dark / Dark theme',
-                        className: 'dark-theme',
+                        class: 'dark-theme',
                         content: buttonRow({
                             raised: true
                         })
                     }),
                     m.component(titleBlock, {
                         title: 'Flat Dark / Dark theme',
-                        className: 'dark-theme',
+                        class: 'dark-theme',
                         content: buttonRow({
                             raised: false
                         })
                     }),
                     m.component(titleBlock, {
                         title: 'Custom label color',
-                        className: 'custom-label',
+                        class: 'custom-label',
                         content: buttonRow({
                             raised: false
                         })
                     }),
                     m.component(titleBlock, {
                         title: 'Custom background color',
-                        className: 'custom-bg',
+                        class: 'custom-bg',
                         content: buttonRow({
                             raised: true
                         })

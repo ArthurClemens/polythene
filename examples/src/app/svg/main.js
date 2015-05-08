@@ -59,21 +59,21 @@ define(function(require) {
                             svg: {
                                 group: 'navigation',
                                 name: 'menu',
-                                className: 'demo-svg md'
+                                class: 'demo-svg md'
                             }
                         }),
                         m.component(block, {
                             svg: {
                                 group: 'content',
                                 name: 'add',
-                                className: 'demo-svg md'
+                                class: 'demo-svg md'
                             }
                         }),
                         m.component(block, {
                             svg: {
                                 group: 'navigation',
                                 name: 'refresh',
-                                className: 'demo-svg md'
+                                class: 'demo-svg md'
                             }
                         })
                     ]
@@ -89,21 +89,21 @@ define(function(require) {
                             svg: {
                                 name: 'barcode',
                                 iconset: 'mdi',
-                                className: 'demo-svg mdi'
+                                class: 'demo-svg mdi'
                             }
                         }),
                         m.component(block, {
                             svg: {
                                 name: 'emoticon-happy',
                                 iconset: 'mdi',
-                                className: 'demo-svg mdi'
+                                class: 'demo-svg mdi'
                             }
                         }),
                         m.component(block, {
                             svg: {
                                 name: 'headphones',
                                 iconset: 'mdi',
-                                className: 'demo-svg mdi'
+                                class: 'demo-svg mdi'
                             }
                         })
                     ]
@@ -115,13 +115,13 @@ define(function(require) {
                         m.component(block, {
                             svg: {
                                 src: 'app/icon/img/ic_flight_24px.svg',
-                                className: 'demo-svg google'
+                                class: 'demo-svg google'
                             }
                         }),
                         m.component(block, {
                             svg: {
                                 src: 'app/icon/img/ic_pin_drop_48px.svg',
-                                className: 'demo-svg google'
+                                class: 'demo-svg google'
                             }
                         })
                     ]
@@ -152,7 +152,7 @@ define(function(require) {
                             svg: {
                                 name: 'headphones',
                                 iconset: 'mdi',
-                                className: 'demo-svg mdi'
+                                class: 'demo-svg mdi'
                             }
                         }),
                         m.component(block, {
@@ -160,7 +160,7 @@ define(function(require) {
                             svg: {
                                 name: 'barcode',
                                 iconset: 'mdi',
-                                className: 'demo-svg mdi',
+                                class: 'demo-svg mdi',
                                 refresh: true
                             }
                         })

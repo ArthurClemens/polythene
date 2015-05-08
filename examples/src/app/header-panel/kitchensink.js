@@ -58,7 +58,7 @@ define(function(require) {
     content = [
         m.component(panel, {
             props: {
-                className: 'container'
+                class: 'container'
             },
             panel: {
                 fixed: true,
@@ -70,7 +70,7 @@ define(function(require) {
         }),
         m.component(panel, {
             props: {
-                className: 'container'
+                class: 'container'
             },
             panel: {
                 mode: 'seamed',
@@ -83,7 +83,7 @@ define(function(require) {
         }),
         m.component(panel, {
             props: {
-                className: 'container'
+                class: 'container'
             },
             panel: {
                 mode: 'waterfall',
@@ -96,7 +96,7 @@ define(function(require) {
         }),
         m.component(panel, {
             props: {
-                className: 'container'
+                class: 'container'
             },
             panel: {
                 mode: 'waterfall-tall',
@@ -109,7 +109,7 @@ define(function(require) {
         }),
         m.component(panel, {
             props: {
-                className: 'container'
+                class: 'container'
             },
             panel: {
                 mode: 'waterfall-tall',
@@ -123,7 +123,7 @@ define(function(require) {
         }),
         m.component(panel, {
             props: {
-                className: 'container'
+                class: 'container'
             },
             panel: {
                 mode: 'waterfall-tall',
@@ -137,7 +137,7 @@ define(function(require) {
         }),
         m.component(panel, {
             props: {
-                className: 'container'
+                class: 'container'
             },
             panel: {
                 mode: 'scroll',
@@ -149,7 +149,7 @@ define(function(require) {
         }),
         m.component(panel, {
             props: {
-                className: 'container'
+                class: 'container'
             },
             panel: {
                 fixed: true,
@@ -163,7 +163,7 @@ define(function(require) {
         }),
         m.component(panel, {
             props: {
-                className: 'container'
+                class: 'container'
             },
             panel: {
                 mode: 'waterfall',
@@ -178,7 +178,7 @@ define(function(require) {
         }),
         m.component(panel, {
             props: {
-                className: 'container'
+                class: 'container'
             },
             panel: {
                 mode: 'tall',
@@ -195,7 +195,7 @@ define(function(require) {
         }),
         m.component(panel, {
             props: {
-                className: 'container'
+                class: 'container'
             },
             panel: {
                 mode: 'waterfall-tall',
@@ -213,7 +213,7 @@ define(function(require) {
         }),
         m.component(panel, {
             props: {
-                className: 'container'
+                class: 'container'
             },
             panel: {
                 fixed: true,
@@ -223,7 +223,7 @@ define(function(require) {
         }),
         m.component(panel, {
             props: {
-                className: 'container'
+                class: 'container'
             },
             panel: {
                 mode: 'waterfall-tall',

@@ -18,7 +18,7 @@ define(function(require) {
     require('css!./main');
 
     settingsIcon = {
-        className: 'md',
+        class: 'md',
         svg: {
             group: 'action',
             name: 'settings'
@@ -26,7 +26,7 @@ define(function(require) {
     };
 
     accountIcon = {
-        className: 'md',
+        class: 'md',
         svg: {
             group: 'action',
             name: 'account-box'
@@ -34,7 +34,7 @@ define(function(require) {
     };
 
     accountCircleIcon = {
-        className: 'md',
+        class: 'md',
         svg: {
             group: 'action',
             name: 'account-circle'
@@ -122,28 +122,28 @@ define(function(require) {
                     content: [
                         m.component(block, {
                             item: {
-                                className: 'font-scalable big',
+                                class: 'font-scalable big',
                                 icon: settingsIcon,
                                 label: 'Settings'
                             }
                         }),
                         m.component(block, {
                             item: {
-                                className: 'font-scalable big',
+                                class: 'font-scalable big',
                                 icon: accountIcon,
                                 label: 'Account'
                             }
                         }),
                         m.component(block, {
                             item: {
-                                className: 'font-scalable small',
+                                class: 'font-scalable small',
                                 icon: settingsIcon,
                                 label: 'Settings'
                             }
                         }),
                         m.component(block, {
                             item: {
-                                className: 'font-scalable small',
+                                class: 'font-scalable small',
                                 icon: accountIcon,
                                 label: 'Account'
                             }
@@ -155,7 +155,7 @@ define(function(require) {
                     content: [
                         m.component(block, {
                             item: {
-                                className: 'contact-item',
+                                class: 'contact-item',
                                 icon: accountCircleIcon,
                                 content: [
                                     m('div[flex]', [

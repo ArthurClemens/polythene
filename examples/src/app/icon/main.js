@@ -53,7 +53,7 @@ define(function(require) {
                                         group: 'navigation',
                                         name: 'menu'
                                     },
-                                    className: 'md'
+                                    class: 'md'
                                 }
                             }),
                             m.component(block, {
@@ -63,7 +63,7 @@ define(function(require) {
                                         group: 'content',
                                         name: 'add'
                                     },
-                                    className: 'md'
+                                    class: 'md'
                                 }
                             }),
                             m.component(block, {
@@ -73,7 +73,7 @@ define(function(require) {
                                         group: 'navigation',
                                         name: 'refresh'
                                     },
-                                    className: 'md'
+                                    class: 'md'
                                 }
                             })
                         ]
@@ -92,7 +92,7 @@ define(function(require) {
                                         name: 'barcode',
                                         iconset: 'mdi'
                                     },
-                                    className: 'mdi'
+                                    class: 'mdi'
                                 }
                             }),
                             m.component(block, {
@@ -102,7 +102,7 @@ define(function(require) {
                                         name: 'emoticon-happy',
                                         iconset: 'mdi'
                                     },
-                                    className: 'mdi'
+                                    class: 'mdi'
                                 }
                             }),
                             m.component(block, {
@@ -112,7 +112,7 @@ define(function(require) {
                                         name: 'headphones',
                                         iconset: 'mdi'
                                     },
-                                    className: 'mdi'
+                                    class: 'mdi'
                                 }
                             })
                         ]
@@ -129,7 +129,7 @@ define(function(require) {
                                         name: 'emoticon-happy',
                                         iconset: 'mdi'
                                     },
-                                    className: 'mdi'
+                                    class: 'mdi'
                                 }
                             }),
                             m.component(block, {
@@ -140,7 +140,7 @@ define(function(require) {
                                         name: 'emoticon-happy',
                                         iconset: 'mdi'
                                     },
-                                    className: 'mdi'
+                                    class: 'mdi'
                                 }
                             }),
                             m.component(block, {
@@ -151,7 +151,7 @@ define(function(require) {
                                         name: 'emoticon-happy',
                                         iconset: 'mdi'
                                     },
-                                    className: 'mdi'
+                                    class: 'mdi'
                                 }
                             }),
                             m.component(block, {
@@ -162,7 +162,7 @@ define(function(require) {
                                         name: 'emoticon-happy',
                                         iconset: 'mdi'
                                     },
-                                    className: 'mdi'
+                                    class: 'mdi'
                                 }
                             })
                         ]
@@ -177,7 +177,7 @@ define(function(require) {
                                     svg: {
                                         src: 'app/icon/img/ic_flight_24px.svg'
                                     },
-                                    className: 'google'
+                                    class: 'google'
                                 }
                             }),
                             m.component(block, {
@@ -186,7 +186,7 @@ define(function(require) {
                                     svg: {
                                         src: 'app/icon/img/ic_pin_drop_48px.svg'
                                     },
-                                    className: 'google'
+                                    class: 'google'
                                 }
                             })
                         ]

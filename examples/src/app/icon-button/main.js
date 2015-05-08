@@ -17,7 +17,7 @@ define(function(require) {
 
     iconBlock = {
         view: function(ctrl, args) {
-            return m('.p-block', {class: args.className || ''}, [
+            return m('.p-block', {class: args.class || ''}, [
                 m('.p-block-header', args.label),
                 m.component(iconBtn, args.btn)
             ]);
@@ -29,7 +29,7 @@ define(function(require) {
             iconset: 'mdi',
             name: 'heart'
         },
-        className: 'mdi'
+        class: 'mdi'
     };
 
     myCustomIconComponent = m.component(icon, {
@@ -54,7 +54,7 @@ define(function(require) {
                     m.component(iconBlock, {
                         label: 'Colored',
                         btn: {
-                            className: 'colored',
+                            class: 'colored',
                             icon: myIcon
                         }
                     }),
@@ -67,14 +67,14 @@ define(function(require) {
                     }),
                     m.component(iconBlock, {
                         label: 'Dark theme',
-                        className: 'dark-theme',
+                        class: 'dark-theme',
                         btn: {
                             icon: myIcon
                         }
                     }),
                     m.component(iconBlock, {
                         label: 'Dark theme disabled',
-                        className: 'dark-theme',
+                        class: 'dark-theme',
                         btn: {
                             disabled: true,
                             icon: myIcon

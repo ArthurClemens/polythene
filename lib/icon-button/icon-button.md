@@ -54,7 +54,7 @@ The icon color is set with the CSS `color` attribute of the parent element. For 
 
 	// JS
 	var myIconBtn = m.component(iconBtn, {
-		className: 'colored'
+		class: 'colored'
 	});
 
 
@@ -63,7 +63,7 @@ The icon color is set with the CSS `color` attribute of the parent element. For 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **tag** | optional | String | 'div' | HTML tag |
-| **className** | optional | String |  | Extra CSS class appended to 'icon-button' |
+| **class** | optional | String |  | Extra CSS class appended to 'icon-button' |
 | **icon** | either icon or content must be passed | Object |  | [icon](#icon) options object |
 | **content** | either icon or content must be passed | Mithril template or String | | Alternative content if no icon object is used |
 | **url** | optional | Object | | Button URL; options object containing `href` and `config` |

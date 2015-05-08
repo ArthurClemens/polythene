@@ -55,11 +55,11 @@ define(function(require) {
                         name: 'menu'
                     },
                     type: 'large',
-                    className: 'md'
+                    class: 'md'
                 },
                 wash: (iconOpts.wash !== undefined) ? iconOpts.wash : true,
                 disabled: iconOpts.disabled,
-                className: 'demo-button',
+                class: 'demo-button',
                 after: m.component(ripple, opts)
             }),
             m.component(iconBtn, {
@@ -68,11 +68,11 @@ define(function(require) {
                         group: 'navigation',
                         name: 'menu'
                     },
-                    className: 'md'
+                    class: 'md'
                 },
                 wash: (iconOpts.wash !== undefined) ? iconOpts.wash : true,
                 disabled: iconOpts.disabled,
-                className: 'demo-button',
+                class: 'demo-button',
                 after: m.component(ripple, opts)
             })
         ];
@@ -80,7 +80,7 @@ define(function(require) {
 
     titleBlock = {
         view: function(ctrl, args) {
-            return m('.p-block', {class: args.className}, [
+            return m('.p-block', {class: args.class}, [
                 m('.p-block-header', args.title),
                 args.content
             ]);
@@ -113,19 +113,19 @@ define(function(require) {
 
                 m.component(titleBlock, {
                     title: 'Colored ripple',
-                    content: iconButtons({className: 'colored-ripple'}, {wash: false})
+                    content: iconButtons({class: 'colored-ripple'}, {wash: false})
                 }),
 
                 m.component(titleBlock, {
                     title: 'Dark ripple',
-                    className: "dark-theme",
+                    class: "dark-theme",
                     content: iconButtons()
                 }),
 
                 m.component(titleBlock, {
                     title: 'Large ripple',
                     content: m.component(list, {
-                        className: 'demo-list demo-bordered',
+                        class: 'demo-list demo-bordered',
                         tiles: [
                             m.component(listTile, {
                                 title: titleLineText,
@@ -139,13 +139,13 @@ define(function(require) {
                 m.component(titleBlock, {
                     title: 'Custom opacity and speed',
                     content: m.component(list, {
-                        className: 'demo-list demo-bordered',
+                        class: 'demo-list demo-bordered',
                         tiles: [
                             m.component(listTile, {
                                 title: titleLineText,
                                 info: infoLineText,
                                 after: m.component(ripple, {
-                                    className: 'colored-ripple',
+                                    class: 'colored-ripple',
                                     initialOpacity: 0.6,
                                     opacityDecayVelocity: 0.2
                                 })
@@ -157,7 +157,7 @@ define(function(require) {
                 m.component(titleBlock, {
                     title: 'Callbacks',
                     content: m.component(list, {
-                        className: 'demo-list demo-bordered',
+                        class: 'demo-list demo-bordered',
                         tiles: [
                             m.component(listTile, {
                                 title: titleLineText,

@@ -25,7 +25,7 @@ Use an options object to define specific behavior:
 	    title: 'Title',
 	    after: m.component(ripple, {
 	    	constrained: false,
-	    	className: 'colored-ripple'
+	    	class: 'colored-ripple'
     	})
 	});
 
@@ -48,7 +48,7 @@ By default the inherited color from the parent element is used.
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **constrained** | optional | Boolean | true | Set to `false` to make the ripple shape no longer bound to the clicked element |
 | **center** | optional | Boolean | false | Set to `true` to start the ripple from the center |
-| **className** | optional | String |  | Extra CSS class appended to 'ripple' |
+| **class** | optional | String |  | Extra CSS class appended to 'ripple' |
 | **initialOpacity** | optional | Number | 0.2 | Opacity at the start of the ripple |
 | **opacityDecayVelocity** | optional | Number | 0.4 | Velocity of decrease of opacity |
 | **start** | optional | Function | | Callback function just before the ripple starts; see Callback functions |

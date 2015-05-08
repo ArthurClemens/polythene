@@ -60,7 +60,7 @@ define(function(require) {
                     m.component(toolbarBlock, {
                         label: 'Class dark-theme',
                         toolbar: {
-                            className: 'dark-theme',
+                            class: 'dark-theme',
                             content: toolbarRow
                         }
                     }),
