@@ -25,7 +25,7 @@ require.config({
     callback: function(require) {
         'use strict';
 
-        var path = (location.pathname === '/') ? '/index.html' : location.pathname,
+        var path = (location.pathname === '/' || location.pathname === '/Polythene-Examples/') ? '/index.html' : location.pathname,
             filename = path.match(/\/([^\/]*)$/),
             modulename;
 
