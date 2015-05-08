@@ -22,11 +22,7 @@ define(['mithril', 'polythene/icon/icon'], function(m) {
                 ),
                 m('div', {
                     class: 'p-title indent'
-                }, [
-                    args.title,
-                    m.trust(' '),
-                    m('span', args.subtitle)
-                ])
+                }, args.title)
             ]);
         }
     };
