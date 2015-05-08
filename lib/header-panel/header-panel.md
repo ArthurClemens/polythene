@@ -74,8 +74,8 @@ The header-panel will not display if its parent does not have a height.
 | **noReveal** | optional | Boolean | false | Set to true to not let the header slide back in when scrolling back up |
 | **fixed** | optional | Boolean | false | Set to true to keep the header fixed to the top |
 | **keepCondensedHeader** | optional | Boolean | false | Set to true to not move away the condensed header |
-| **onscroll** | optional | Function | | Callback function when the header panel scrolls; see Callback functions |
-| **ontransform** | optional | Function | | Callback function when the header panel is transforming; see Callback functions |
+| **scroll** | optional | Function | | Callback function when the header panel scrolls; see Callback functions |
+| **transform** | optional | Function | | Callback function when the header panel is transforming; see Callback functions |
 | **before** | optional | Mithril template or String or Array | | Extra content before main content |
 | **after** | optional | Mithril template or String or Array | | Extra content after main content |
 
@@ -117,9 +117,9 @@ Or use a Mithril template:
 
 ## Callback functions
 
-	void onscroll(UIEvent event)
+	void scroll(UIEvent event)
 
-	void ontransform({Number y, Number height, Number condensedHeight})
+	void transform({Number y, Number height, Number condensedHeight})
 
 
 
