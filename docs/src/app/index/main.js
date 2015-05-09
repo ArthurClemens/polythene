@@ -17,7 +17,7 @@ define(function(require) {
         defaultTitle,
         baseUrl;
 
-    require('polythene/layout/layout');
+    require('css!polythene/theme/theme');
     require('css!polythene/polythene/typography');
     require('polythene/font-roboto/font-roboto');
     require('css!app-css');
