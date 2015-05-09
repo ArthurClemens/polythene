@@ -9,6 +9,7 @@ define(function(require) {
         github = require('github'),
         app,
         titleBlock,
+        exampleTiles,
         titleLineText,
         infoLineText,
         exampleList,
@@ -31,62 +32,68 @@ define(function(require) {
         }
     };
 
-    exampleList = m.component(list, {
-        class: 'demo-list',
-        header: {
-            title: 'Subheader',
-            class: 'indent'
-        },
-        tiles: [
-            m.component(listTile, {
-                title: titleLineText,
-                info: infoLineText,
-                icon: {
-                    type: 'large',
-                    class: 'avatar',
-                    src: 'app/list-tile/avatars/1.png'
-                }
-            }),
-            m.component(listTile, {
-                title: titleLineText,
-                info: infoLineText,
-                icon: {
-                    type: 'large',
-                    class: 'avatar',
-                    src: 'app/list-tile/avatars/2.png'
-                }
-            }),
-            m.component(listTile, {
-                title: titleLineText,
-                info: infoLineText,
-                icon: {
-                    type: 'large',
-                    class: 'avatar',
-                    src: 'app/list-tile/avatars/3.png'
-                }
-            })
-        ]
-    });
+    exampleTiles = [
+        m.component(listTile, {
+            title: titleLineText,
+            info: infoLineText
+        }),
+        m.component(listTile, {
+            title: titleLineText,
+            info: infoLineText
+        }),
+        m.component(listTile, {
+            title: titleLineText,
+            info: infoLineText
+        })
+    ];
+
+    exampleList = function(opts) {
+        opts = opts || {};
+        return m.component(list, {
+            class: [opts.class ? opts.class : null, 'demo-list'].join(' '),
+            mode: opts.mode,
+            header: {
+                title: 'Subheader',
+                indent: opts.indent
+            },
+            tiles: [
+                m.component(listTile, {
+                    title: titleLineText,
+                    info: infoLineText,
+                    icon: {
+                        type: 'large',
+                        class: 'avatar',
+                        src: 'app/list-tile/avatars/1.png'
+                    }
+                }),
+                m.component(listTile, {
+                    title: titleLineText,
+                    info: infoLineText,
+                    icon: {
+                        type: 'large',
+                        class: 'avatar',
+                        src: 'app/list-tile/avatars/2.png'
+                    }
+                }),
+                m.component(listTile, {
+                    title: titleLineText,
+                    info: infoLineText,
+                    icon: {
+                        type: 'large',
+                        class: 'avatar',
+                        src: 'app/list-tile/avatars/3.png'
+                    }
+                })
+            ]
+        });
+    };
 
     content = [
         m.component(titleBlock, {
             title: 'No subheader',
             content: m.component(list, {
                 class: 'demo-list',
-                tiles: [
-                    m.component(listTile, {
-                        title: titleLineText,
-                        info: infoLineText
-                    }),
-                    m.component(listTile, {
-                        title: titleLineText,
-                        info: infoLineText
-                    }),
-                    m.component(listTile, {
-                        title: titleLineText,
-                        info: infoLineText
-                    })
-                ]
+                tiles: exampleTiles
             })
         }),
 
@@ -97,36 +104,61 @@ define(function(require) {
                 header: {
                     title: 'Subheader'
                 },
-                tiles: [
-                    m.component(listTile, {
-                        title: titleLineText,
-                        info: infoLineText
-                    }),
-                    m.component(listTile, {
-                        title: titleLineText,
-                        info: infoLineText
-                    }),
-                    m.component(listTile, {
-                        title: titleLineText,
-                        info: infoLineText
-                    })
-                ]
+                tiles: exampleTiles
             })
         }),
 
         m.component(titleBlock, {
-            title: 'Indented subheader',
-            content: [
-                exampleList,
-                exampleList
-            ]
+            title: 'Avatars',
+            content: m('div', [
+                exampleList(),
+                exampleList()
+            ])
         }),
 
         m.component(titleBlock, {
-            title: 'Dark theme',
+            title: 'Avatars dark theme',
             content: m('.dark-theme', [
-                exampleList,
-                exampleList
+                exampleList(),
+                exampleList()
+            ])
+        }),
+
+        m.component(titleBlock, {
+            title: 'Bordered list items',
+            content: m.component(list, {
+                class: 'demo-list',
+                mode: 'bordered',
+                header: {
+                    title: 'Subheader'
+                },
+                tiles: exampleTiles
+            })
+        }),
+
+        m.component(titleBlock, {
+            title: 'Bordered list items with avatars',
+            content: m('div', [
+                exampleList({
+                    mode: 'bordered'
+                }),
+                exampleList({
+                    mode: 'bordered'
+                })
+            ])
+        }),
+
+        m.component(titleBlock, {
+            title: 'Indented borders and subheaders',
+            content: m('div', [
+                exampleList({
+                    mode: 'bordered-indent',
+                    indent: true
+                }),
+                exampleList({
+                    mode: 'bordered-indent',
+                    indent: true
+                })
             ])
         })
     ];

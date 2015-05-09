@@ -62,7 +62,7 @@ define(function(require) {
             name: 'List Tile'
         }]
     }, {
-        label: 'Smallest components',
+        label: 'Building block components',
         links: [{
             url: 'element',
             name: 'Element'

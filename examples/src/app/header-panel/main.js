@@ -171,7 +171,7 @@ define(function(require) {
                 return m.component(list, {
                     header: {
                         title: linkGroup.label,
-                        class: 'indent'
+                        indent: true
                     },
                     tiles: linkGroup.links.map(function(link) {
                         return item(link);

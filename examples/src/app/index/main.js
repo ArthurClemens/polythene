@@ -48,7 +48,7 @@ define(function(require) {
             name: 'List Tile'
         }]
     }, {
-        label: 'Smallest components',
+        label: 'Building block components',
         links: [{
             url: 'svg',
             name: 'SVG'
@@ -125,7 +125,7 @@ define(function(require) {
                         return m.component(list, {
                             header: {
                                 title: linkGroup.label,
-                                class: 'indent'
+                                indent: true
                             },
                             tiles: linkGroup.links.map(function(link) {
                                 return item(link.name, link.url + '.html');
