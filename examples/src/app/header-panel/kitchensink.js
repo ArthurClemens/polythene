@@ -7,6 +7,7 @@ define(function(require) {
         btn,
         toolbarRow,
         panel,
+        panelBlock,
         content,
         repeatText,
         template;
@@ -39,7 +40,7 @@ define(function(require) {
         });
     };
 
-    toolbarRow = function (title) {
+    toolbarRow = function(title) {
         return [
             btn('navigation', 'menu', '#'),
             m('span[flex]', title),
@@ -49,109 +50,86 @@ define(function(require) {
 
     panel = {
         view: function(ctrl, args) {
-            return m('div', args.props, [
+            return m('.container', [
                 m.component(headerPanel, args.panel)
             ]);
         }
     };
 
+    panelBlock = {
+        view: function(ctrl, args) {
+            return m('.p-block', [
+                m('.p-block-header', args.title),
+                m('.panel-row', [
+                    args.content.map(function(panel) {
+                        return m('.container', [
+                            m.component(headerPanel, panel)
+                        ]);
+                    })
+                ])
+            ]);
+        }
+    };
+
     content = [
-        m.component(panel, {
-            props: {
-                class: 'container'
-            },
-            panel: {
-                fixed: true,
-                header: {
-                    content: 'Standard'
-                },
-                content: m.trust(template)
-            }
+        m.component(panelBlock, {
+            title: 'Scroll modes',
+            content: [{
+                    fixed: true,
+                    header: {
+                        content: 'Standard'
+                    },
+                    content: m.trust(template)
+                }, {
+                    mode: 'seamed',
+                    fixed: true,
+                    header: {
+                        content: 'Seamed'
+                    },
+                    content: m.trust(template)
+                }, {
+                    mode: 'waterfall',
+                    fixed: true,
+                    header: {
+                        content: 'Waterfall'
+                    },
+                    content: m.trust(template)
+                }, {
+                    mode: 'waterfall-tall',
+                    fixed: true,
+                    header: {
+                        content: 'Waterfall tall'
+                    },
+                    content: m.trust(template)
+                }, {
+                    mode: 'waterfall-tall',
+                    tallClass: 'medium-tall',
+                    fixed: true,
+                    header: {
+                        content: 'Waterfall medium-tall'
+                    },
+                    content: m.trust(template)
+                }, {
+                    mode: 'scroll',
+                    header: {
+                        content: 'Scroll'
+                    },
+                    content: m.trust(template)
+                }, {
+                    mode: 'waterfall-tall',
+                    fixed: true,
+                    animated: true,
+                    header: {
+                        content: 'Waterfall tall animated'
+                    },
+                    content: m.trust(template)
+                }
+                // TODO: Cover
+            ]
         }),
-        m.component(panel, {
-            props: {
-                class: 'container'
-            },
-            panel: {
-                mode: 'seamed',
-                fixed: true,
-                header: {
-                    content: 'Seamed'
-                },
-                content: m.trust(template)
-            }
-        }),
-        m.component(panel, {
-            props: {
-                class: 'container'
-            },
-            panel: {
-                mode: 'waterfall',
-                fixed: true,
-                header: {
-                    content: 'Waterfall'
-                },
-                content: m.trust(template)
-            }
-        }),
-        m.component(panel, {
-            props: {
-                class: 'container'
-            },
-            panel: {
-                mode: 'waterfall-tall',
-                fixed: true,
-                header: {
-                    content: 'Waterfall tall'
-                },
-                content: m.trust(template)
-            }
-        }),
-        m.component(panel, {
-            props: {
-                class: 'container'
-            },
-            panel: {
-                mode: 'waterfall-tall',
-                fixed: true,
-                animated: true,
-                header: {
-                    content: 'Waterfall tall animated'
-                },
-                content: m.trust(template)
-            }
-        }),
-        m.component(panel, {
-            props: {
-                class: 'container'
-            },
-            panel: {
-                mode: 'waterfall-tall',
-                tallClass: 'medium-tall',
-                fixed: true,
-                header: {
-                    content: 'Waterfall medium-tall'
-                },
-                content: m.trust(template)
-            }
-        }),
-        m.component(panel, {
-            props: {
-                class: 'container'
-            },
-            panel: {
-                mode: 'scroll',
-                header: {
-                    content: 'Scroll'
-                },
-                content: m.trust(template)
-            }
-        }),
-        m.component(panel, {
-            props: {
-                class: 'container'
-            },
-            panel: {
+        m.component(panelBlock, {
+            title: 'Toolbar as header',
+            content: [{
                 fixed: true,
                 header: {
                     toolbar: {
@@ -159,13 +137,7 @@ define(function(require) {
                     }
                 },
                 content: m.trust(template)
-            }
-        }),
-        m.component(panel, {
-            props: {
-                class: 'container'
-            },
-            panel: {
+            }, {
                 mode: 'waterfall',
                 fixed: true,
                 header: {
@@ -174,13 +146,7 @@ define(function(require) {
                     }
                 },
                 content: m.trust(template)
-            }
-        }),
-        m.component(panel, {
-            props: {
-                class: 'container'
-            },
-            panel: {
+            }, {
                 mode: 'tall',
                 fixed: true,
                 animated: true,
@@ -191,13 +157,7 @@ define(function(require) {
                     }
                 },
                 content: m.trust(template)
-            }
-        }),
-        m.component(panel, {
-            props: {
-                class: 'container'
-            },
-            panel: {
+            }, {
                 mode: 'waterfall-tall',
                 fixed: true,
                 shadow: false,
@@ -209,23 +169,11 @@ define(function(require) {
                     }
                 },
                 content: m.trust(template)
-            }
+            }]
         }),
-        m.component(panel, {
-            props: {
-                class: 'container'
-            },
-            panel: {
-                fixed: true,
-                header: m('.demo-header', 'Custom styled header'),
-                content: m.trust(template)
-            }
-        }),
-        m.component(panel, {
-            props: {
-                class: 'container'
-            },
-            panel: {
+        m.component(panelBlock, {
+            title: 'Condensing',
+            content: [{
                 mode: 'waterfall-tall',
                 condenses: true,
                 header: {
@@ -236,7 +184,41 @@ define(function(require) {
                     }
                 },
                 content: m.trust(template)
-            }
+            }, {
+                mode: 'waterfall-tall',
+                condenses: true,
+                tallClass: 'medium-tall',
+                header: {
+                    toolbar: {
+                        mode: 'tall',
+                        topBar: toolbarRow(),
+                        bottomBar: m.trust('<div flex class="bottom indent">tallClass "medium-tall"</div>')
+                    }
+                },
+                content: m.trust(template)
+            }, {
+                mode: 'waterfall-tall',
+                condenses: true,
+                keepCondensedHeader: true,
+                headerHeight: 2*64,
+                condensedHeaderHeight: 64,
+                header: {
+                    toolbar: {
+                        mode: 'tall',
+                        topBar: toolbarRow(),
+                        bottomBar: m.trust('<div flex class="bottom indent">Keep condensed header</div>')
+                    }
+                },
+                content: m.trust(template)
+            }]
+        }),
+        m.component(panelBlock, {
+            title: 'Custom style',
+            content: [{
+                fixed: true,
+                header: m('.header.demo-header', 'Custom styled header'),
+                content: m.trust(template)
+            }]
         })
     ];
 

@@ -1,8 +1,11 @@
+.kitchensink .panel-row {
+	margin-left: -16px;
+}
 .kitchensink .container {
 	display: inline-block;
 	width: 300px;
 	height: 400px;
-	margin: 16px 0 16px 16px;
+	margin: 16px 16px 16px 16px;
 }
 .kitchensink .flex-container {
 	height: 200px;
@@ -48,14 +51,14 @@
 .kitchensink .header-panel .content {
 	padding: 16px;
 	height: 1000px;
-	background: #FAFAFA;
+	background: #f2f2f2;
 }
 
 .kitchensink .header-panel .content p {
 	margin: 0 0 1em 0;
 }
 
-.kitchensink .demo-header {
+.kitchensink .header.demo-header {
 	height: 64px;
 	line-height: 64px;
 	font-size: 18px;
@@ -68,4 +71,8 @@
 .kitchensink .header-panel[animated] .header,
 .kitchensink .header-panel[animated] .toolbar {
 	background-color: #9C27B0;
+}
+
+.kitchensink .p-block .toolbar {
+	margin: 0;
 }
