@@ -53,6 +53,7 @@ body {
 }
 .background1 .headerBg {
 	background-image: url(images/bg3.jpg);
+	background-color: #222;
 }
 
 .background2 .headerContainer {

@@ -1,7 +1,7 @@
 define(function(require) {
     'use strict';
 
-    var NAME = 'Scroll Header Panel',
+    var NAME = 'Header Panel',
         _ = require('lodash'),
         m = require('mithril'),
         nav = require('nav'),
