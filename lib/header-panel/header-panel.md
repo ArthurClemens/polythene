@@ -74,6 +74,8 @@ The header-panel will not display if its parent does not have a height.
 | **noReveal** | optional | Boolean | false | Set to true to not let the header slide back in when scrolling back up |
 | **fixed** | optional | Boolean | false | Set to true to keep the header fixed to the top |
 | **keepCondensedHeader** | optional | Boolean | false | Set to true to not move away the condensed header |
+| **noDissolve** | optional | Boolean | false | Set to true to keep the background the same opacity when scrolling |
+| **backgroundScrollSpeed** | optional | Number | 0.5 | The speed of the background when scrolling; this value is multiplied with the scroll distance; use 0 to keep the background in place |
 | **scroll** | optional | Function | | Callback function when the header panel scrolls; see Callback functions |
 | **transform** | optional | Function | | Callback function when the header panel is transforming; see Callback functions |
 | **before** | optional | Mithril template or String or Array | | Extra content before main content |
@@ -117,6 +119,35 @@ Or use a Mithril template:
 A custom header must have class `header` or `toolbar`!
 
 
+## Header background images
+
+Background images are set with CSS:
+
+	/* make sure that the toolbar does not have a background color */
+	.toolbar {
+		background-color: transparent;
+	}
+
+	/* set header background color */
+	.headerContainer {
+		background-color: #673ab7;
+	}
+
+	/* set image as background image */
+	.headerBg {
+		background-image: url(images/bg1.jpg);
+	}
+
+	/* optionally also set condensed header background color */
+	.condensedHeaderBg {
+		background-color: #f4b400;
+	}
+
+	/* for cross-fading images, use the condensed header background image */
+	.condensedHeaderBg {
+		background-image: url(images/bg2.jpg);
+	}
+
 
 ## Callback functions
 
@@ -146,7 +177,6 @@ A custom header must have class `header` or `toolbar`!
 
 ## TODO
 
-* Fading background; param 'noDissolve'
 * Test and document: Mode `cover`: The panel covers the whole `header-panel` including the header. This allows user to style the panel in such a way that the panel is partially covering the header.
 
 
