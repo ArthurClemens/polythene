@@ -112,7 +112,10 @@ Alternatively, pass [toolbar](#toolbar) options to use a toolbar as header:
 
 Or use a Mithril template:
 
-	header: m('.demo-header', 'My custom header')
+	header: m('.header.demo-header', 'My custom header')
+
+A custom header must have class `header` or `toolbar`!
+
 
 
 ## Callback functions

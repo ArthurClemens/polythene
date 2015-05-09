@@ -7,10 +7,6 @@
 
     &[fit] {
         position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
     }
 
     .outerContainer {
@@ -44,6 +40,12 @@
         z-index: 1;
         transition: opacity 0.25s;
         -webkit-transition: opacity 0.25s;
+    }
+
+    &[mode=standard] {
+        .dropShadow {
+            opacity: 1;
+        }
     }
 
     .outerContainer.cascaded > .headerContainer > .dropShadow {
