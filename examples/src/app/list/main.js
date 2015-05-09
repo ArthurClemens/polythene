@@ -11,6 +11,7 @@ define(function(require) {
         titleBlock,
         titleLineText,
         infoLineText,
+        exampleList,
         content;
 
     require('css!polythene/theme/theme');
@@ -29,6 +30,43 @@ define(function(require) {
             ]);
         }
     };
+
+    exampleList = m.component(list, {
+        class: 'demo-list',
+        header: {
+            title: 'Subheader',
+            class: 'indent'
+        },
+        tiles: [
+            m.component(listTile, {
+                title: titleLineText,
+                info: infoLineText,
+                icon: {
+                    type: 'large',
+                    class: 'avatar',
+                    src: 'app/list-tile/avatars/1.png'
+                }
+            }),
+            m.component(listTile, {
+                title: titleLineText,
+                info: infoLineText,
+                icon: {
+                    type: 'large',
+                    class: 'avatar',
+                    src: 'app/list-tile/avatars/2.png'
+                }
+            }),
+            m.component(listTile, {
+                title: titleLineText,
+                info: infoLineText,
+                icon: {
+                    type: 'large',
+                    class: 'avatar',
+                    src: 'app/list-tile/avatars/3.png'
+                }
+            })
+        ]
+    });
 
     content = [
         m.component(titleBlock, {
@@ -78,82 +116,18 @@ define(function(require) {
 
         m.component(titleBlock, {
             title: 'Indented subheader',
-            content: m.component(list, {
-                class: 'demo-list',
-                header: {
-                    title: 'Subheader',
-                    class: 'indent'
-                },
-                tiles: [
-                    m.component(listTile, {
-                        title: titleLineText,
-                        info: infoLineText,
-                        icon: {
-                            type: 'large',
-                            class: 'avatar',
-                            src: 'app/list-tile/avatars/1.png'
-                        }
-                    }),
-                    m.component(listTile, {
-                        title: titleLineText,
-                        info: infoLineText,
-                        icon: {
-                            type: 'large',
-                            class: 'avatar',
-                            src: 'app/list-tile/avatars/2.png'
-                        }
-                    }),
-                    m.component(listTile, {
-                        title: titleLineText,
-                        info: infoLineText,
-                        icon: {
-                            type: 'large',
-                            class: 'avatar',
-                            src: 'app/list-tile/avatars/3.png'
-                        }
-                    })
-                ]
-            })
+            content: [
+                exampleList,
+                exampleList
+            ]
         }),
 
         m.component(titleBlock, {
             title: 'Dark theme',
-            content: m.component(list, {
-                class: 'demo-list demo-no-zebra dark-theme',
-                header: {
-                    title: 'Subheader',
-                    class: 'indent'
-                },
-                tiles: [
-                    m.component(listTile, {
-                        title: titleLineText,
-                        info: infoLineText,
-                        icon: {
-                            type: 'large',
-                            class: 'avatar',
-                            src: 'app/list-tile/avatars/1.png'
-                        }
-                    }),
-                    m.component(listTile, {
-                        title: titleLineText,
-                        info: infoLineText,
-                        icon: {
-                            type: 'large',
-                            class: 'avatar',
-                            src: 'app/list-tile/avatars/2.png'
-                        }
-                    }),
-                    m.component(listTile, {
-                        title: titleLineText,
-                        info: infoLineText,
-                        icon: {
-                            type: 'large',
-                            class: 'avatar',
-                            src: 'app/list-tile/avatars/3.png'
-                        }
-                    })
-                ]
-            })
+            content: m('.dark-theme', [
+                exampleList,
+                exampleList
+            ])
         })
     ];
 
