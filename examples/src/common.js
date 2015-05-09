@@ -12,7 +12,9 @@ require.config({
 
         'app': '.',
         'app-css': 'app',
-        'common': '../common'
+        'common': '../common',
+        
+        'lodash': 'lib/lodash/lodash.min'
     },
     map: {
       '*': {

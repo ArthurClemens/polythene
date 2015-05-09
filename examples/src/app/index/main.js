@@ -2,10 +2,13 @@ define(function(require) {
     'use strict';
 
     var m = require('mithril'),
+        _ = require('lodash'),
         headerPanel = require('polythene/header-panel/header-panel'),
+        list = require('polythene/list/list'),
         listTile = require('polythene/list-tile/list-tile'),
         icon = require('polythene/icon/icon'),
         github = require('github'),
+        linkMap,
         item,
         content,
         links;
@@ -15,42 +18,56 @@ define(function(require) {
     require('css!./main');
 
     links = [{
-        baseUrl: 'svg',
-        name: 'SVG'
+        label: 'Aggregate components',
+        links: [{
+            url: 'header-panel',
+            name: 'Header Panel'
+        }, {
+            url: 'toolbar',
+            name: 'Toolbar'
+        }, {
+            url: 'list',
+            name: 'List'
+        }]
     }, {
-        baseUrl: 'icon',
-        name: 'Icon'
+        label: 'Regular components',
+        links: [{
+            url: 'button',
+            name: 'Button'
+        }, {
+            url: 'icon-button',
+            name: 'Icon Button'
+        }, {
+            url: 'fab',
+            name: 'Floating Action Button'
+        }, {
+            url: 'item',
+            name: 'Item'
+        }, {
+            url: 'list-tile',
+            name: 'List Tile'
+        }]
     }, {
-        baseUrl: 'button',
-        name: 'Button'
-    }, {
-        baseUrl: 'icon-button',
-        name: 'Icon Button'
-    }, {
-        baseUrl: 'fab',
-        name: 'Floating Action Button'
-    }, {
-        baseUrl: 'item',
-        name: 'Item'
-    }, {
-        baseUrl: 'toolbar',
-        name: 'Toolbar'
-    }, {
-        baseUrl: 'header-panel',
-        name: 'Header Panel'
-    }, {
-        baseUrl: 'shadow',
-        name: 'Shadow'
-    }, {
-        baseUrl: 'ripple',
-        name: 'Ripple'
-    }, {
-        baseUrl: 'list-tile',
-        name: 'List Tile'
-    }, {
-        baseUrl: 'list',
-        name: 'List'
+        label: 'Smallest components',
+        links: [{
+            url: 'svg',
+            name: 'SVG'
+        }, {
+            url: 'icon',
+            name: 'Icon'
+        }, {
+            url: 'ripple',
+            name: 'Ripple'
+        }, {
+            url: 'shadow',
+            name: 'Shadow'
+        }]
     }];
+
+    linkMap = {};
+    _.forEach(_.flatten(_.pluck(links, 'links')), function(link) {
+        linkMap[link.url] = link;
+    });
 
     item = function(title, url) {
         return m.component(listTile, {
@@ -76,7 +93,7 @@ define(function(require) {
 
             minScale = 0.65;
 
-            onHeaderTransform = function (e) {
+            onHeaderTransform = function(e) {
                 var titleStyle = document.querySelector('.title').style;
                 var m = e.height - e.condensedHeight;
                 var scale = Math.max(minScale, (m - e.y) / (m / (1 - minScale)) + minScale);
@@ -104,8 +121,16 @@ define(function(require) {
                     },
                     content: m('div', {
                         class: 'index'
-                    }, m('.index-list', links.map(function(link) {
-                        return item(link.name, link.baseUrl + '.html');
+                    }, m('.index-list', links.map(function(linkGroup) {
+                        return m.component(list, {
+                            header: {
+                                title: linkGroup.label,
+                                class: 'indent'
+                            },
+                            tiles: linkGroup.links.map(function(link) {
+                                return item(link.name, link.url + '.html');
+                            })
+                        });
                     }))),
                     transform: onHeaderTransform
                 }),

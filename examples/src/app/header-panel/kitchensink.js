@@ -60,7 +60,7 @@ define(function(require) {
         view: function(ctrl, args) {
             return m('.p-block', [
                 m('.p-block-header', args.title),
-                m('.panel-row', [
+                m('[horizontal][layout][wrap]', {class: 'panel-row'}, [
                     args.content.map(function(panel) {
                         return m('.container', [
                             m.component(headerPanel, panel)

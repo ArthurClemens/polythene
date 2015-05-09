@@ -68,7 +68,7 @@ define(function(require) {
         return [
             m.component(titleBlock, {
                 title: 'Shadows',
-                content: m('div[layout][horizontal]', [
+                content: m('div[layout][horizontal][wrap]', [
                     indices.map(function(z) {
                         return m('div[layout][horizontal]', {
                             class: 'card'

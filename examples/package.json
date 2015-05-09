@@ -11,11 +11,12 @@
     "requirejs": "",
     "require-css": "",
     "requirejs-text": "",
-    "almond": ""
+    "almond": "",
+    "lodash": "git@github.com:lodash/lodash.git"
   },
   "scripts": {
     "setup-symlink": "rm -rf src/app/lib/polythene && mkdir -p src/app/lib && cd .. && ln -s \"$(pwd)/lib/\" examples/src/app/lib/polythene",
-    "setup-libs": "mkdir -p src/app/lib/mithril/ && cp node_modules/mithril/mithril.min.js src/app/lib/mithril/ && cp node_modules/mithril/mithril.min.js.map src/app/lib/mithril/ && mkdir -p src/app/lib/requirejs/ && cp node_modules/requirejs/require.js src/app/lib/requirejs/require.js && mkdir -p src/app/lib/require-css/ && cp node_modules/require-css/*.js src/app/lib/require-css/ && mkdir -p src/app/lib/requirejs-text/ && cp node_modules/requirejs-text/*.js src/app/lib/requirejs-text/",
+    "setup-libs": "mkdir -p src/app/lib/mithril/ && cp node_modules/mithril/mithril.min.js src/app/lib/mithril/ && cp node_modules/mithril/mithril.min.js.map src/app/lib/mithril/ && mkdir -p src/app/lib/requirejs/ && cp node_modules/requirejs/require.js src/app/lib/requirejs/require.js && mkdir -p src/app/lib/require-css/ && cp node_modules/require-css/*.js src/app/lib/require-css/ && mkdir -p src/app/lib/requirejs-text/ && cp node_modules/requirejs-text/*.js src/app/lib/requirejs-text/ && mkdir -p src/app/lib/lodash/ && cp node_modules/lodash/lodash.min.js src/app/lib/lodash/lodash.min.js",
     "dev-css": "sass --watch --sourcemap=none src/app/app.scss:src/app/app.css",
     "build-css": "sass --sourcemap=none --style=compressed src/app/app.scss:src/app/app.css",
     "build-copy-to-gh": "cp -R build/* ../../gh-pages-examples/ && cd ../../gh-pages-examples/",

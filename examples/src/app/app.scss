@@ -28,7 +28,7 @@ h1, h2 {
     height: 100%;
 }
 .header-panel.app-header {
-    .toolbar:first-of-type {
+    .headerContainer:first-of-type .toolbar {
         background-color: #00BFA5;
         font-size: 18px;
     }
@@ -90,6 +90,10 @@ h1, h2 {
     font-size: 24px;
     color: #333;
 }
+.p-block.dark-theme .p-block-header {
+    color: #f0f0f0;
+}
+
 .p-nav-block {
     padding: 16px 32px;
     height: 68px;

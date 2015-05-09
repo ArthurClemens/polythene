@@ -1,10 +1,12 @@
-define(function (require) {
+define(function(require) {
     'use strict';
 
     var NAME = 'Scroll Header Panel',
+        _ = require('lodash'),
         m = require('mithril'),
         nav = require('nav'),
         kitchensinkContent = require('header-panel/kitchensink'),
+        list = require('polythene/list/list'),
         listTile = require('polythene/list-tile/list-tile'),
         headerPanel = require('polythene/header-panel/header-panel'),
         iconBtn = require('polythene/icon-button/icon-button'),
@@ -26,49 +28,78 @@ define(function (require) {
     require('css!./main');
 
     links = [{
-        url: 'kitchensink',
-        name: 'Kitchen sink of small panels',
-        sub: 'waterfall transitions and toolbar components',
-        icon: 'app/header-panel/svg/grid.svg'
+        label: 'Small header panels',
+        links: [{
+            url: 'kitchensink',
+            name: 'Kitchen sink of small panels',
+            sub: 'waterfall transitions and toolbar components',
+        }]
     }, {
-        url: 'demo1',
-        name: 'Condenses variant 1',
-        sub: 'mode "waterfall-tall"'
+        label: 'Page wide header panels',
+        links: [{
+            url: 'demo1',
+            name: 'Condenses variant 1',
+            sub: 'mode "waterfall-tall"'
+        }, {
+            url: 'demo2',
+            name: 'Condenses variant 2',
+            sub: 'mode "waterfall-tall", tallClass "medium-tall"'
+        }, {
+            url: 'demo3',
+            name: 'Animated'
+        }, {
+            url: 'demo4',
+            name: 'No reveal'
+        }, {
+            url: 'demo5',
+            name: 'Fixed header'
+        }, {
+            url: 'demo6',
+            name: 'Keep condensed header'
+        }]
     }, {
-        url: 'demo2',
-        name: 'Condenses variant 2',
-        sub: 'mode "waterfall-tall", tallClass "medium-tall"'
-    }, {
-        url: 'demo3',
-        name: 'Animated'
-    }, {
-        url: 'demo4',
-        name: 'No reveal'
-    }, {
-        url: 'demo5',
-        name: 'Fixed header'
-    }, {
-        url: 'demo6',
-        name: 'Keep condensed header'
+        label: 'Header background images',
+        links: [{
+            url: 'background1',
+            name: 'Sliding background variant 1',
+            sub: 'No dissolve, still image'
+        }, {
+            url: 'background2',
+            name: 'Sliding background variant 2',
+            sub: 'Dissolve'
+        }, {
+            url: 'background3',
+            name: 'Sliding background variant 3',
+            sub: 'Keep condensed header'
+        }, {
+            url: 'background4',
+            name: 'Sliding background variant 4',
+            sub: 'Mixing images'
+        }]
     }];
 
     linkMap = {};
-    links.map(function(link) {
+    _.forEach(_.flatten(_.pluck(links, 'links')), function(link) {
         linkMap[link.url] = link;
     });
 
-    item = function (link) {
+    item = function(link) {
         return m.component(listTile, {
             title: link.name,
             icon: {
                 type: 'medium',
                 class: 'index-cirle-icon',
-                svg: link.icon ? {src: link.icon} : {
+                svg: link.icon ? {
+                    src: link.icon
+                } : {
                     name: 'arrow-right',
                     iconset: 'mdi'
                 }
             },
-            url: {href: link.url, config: m.route}
+            url: {
+                href: link.url,
+                config: m.route
+            }
         });
     };
 
@@ -93,15 +124,18 @@ define(function (require) {
             text += currentLink.name;
         }
         if (currentLink.sub) {
-            text += ': ';
+            text += ' - ';
             text += currentLink.sub;
         }
         return m.trust('<div class="bottom indent title">' + text + '</div>');
     };
 
-    btn = function (group, name, url) {
+    btn = function(group, name, url) {
         return m.component(iconBtn, {
-            url: url ? {href: url, config: null} : null,
+            url: url ? {
+                href: url,
+                config: null
+            } : null,
             icon: {
                 svg: {
                     group: group,
@@ -111,57 +145,65 @@ define(function (require) {
         });
     };
 
-    toolbarRow = function (title) {
+    toolbarRow = function(title) {
         return [
-            btn('navigation', 'arrow-back', 'header-panel.html'),
+            btn('navigation', 'arrow-back', '#'),
             m('span[flex]', title),
             btn('action', 'search')
         ];
     };
 
     panel = {
-        view: function (ctrl, args) {
+        view: function(ctrl, args) {
             return m('div', args.props, [
                 m.component(headerPanel, args.panel)
             ]);
         }
     };
 
-    var list = {};
-    list.controller = function () {};
-    list.view = function () {
-        return nav(NAME, 
+    var index = {};
+    index.controller = function() {};
+    index.view = function() {
+        return nav(NAME,
             m('div', {
                 class: 'index'
-            }, m('.index-list', links.map(function (link) {
-                return item(link);
+            }, m('.index-list', links.map(function(linkGroup) {
+                return m.component(list, {
+                    header: {
+                        title: linkGroup.label,
+                        class: 'indent'
+                    },
+                    tiles: linkGroup.links.map(function(link) {
+                        return item(link);
+                    })
+                });
             }))),
             github
         );
     };
 
     var kitchensink = {};
-    kitchensink.view = function () {
+    kitchensink.view = function() {
         var currentLink = linkMap[m.route()];
         return m('.' + currentLink.url, m.component(headerPanel, {
-                tag: 'div[fit]',
-                class: 'dark-theme',
-                mode: 'waterfall-tall',
-                tallClass: 'medium-tall',
-                condenses: true,
-                keepCondensedHeader: true,
-                header: {
-                    toolbar: {
-                        topBar: toolbarRow(''),
-                        bottomBar: createBottomBarTemplate(currentLink)
-                    } 
-                },
-                content: kitchensinkContent
-            }));
+            tag: 'div[fit]',
+            class: 'dark-theme',
+            mode: 'waterfall-tall',
+            tallClass: 'medium-tall',
+            condenses: true,
+            keepCondensedHeader: true,
+            header: {
+                toolbar: {
+                    topBar: toolbarRow(''),
+                    bottomBar: createBottomBarTemplate(currentLink)
+                }
+            },
+            content: kitchensinkContent
+        }));
     };
 
     var demo1 = {};
-    demo1.view = function () {
+    demo1.view = function() {
         var panel,
             currentLink,
             onHeaderTransform,
@@ -170,7 +212,7 @@ define(function (require) {
         currentLink = linkMap[m.route()];
         minScale = 0.65;
 
-        onHeaderTransform = function (e) {
+        onHeaderTransform = function(e) {
             var titleStyle = document.querySelector('.title').style;
             var m = e.height - e.condensedHeight;
             var scale = Math.max(minScale, (m - e.y) / (m / (1 - minScale)) + minScale);
@@ -187,7 +229,7 @@ define(function (require) {
                 toolbar: {
                     topBar: toolbarRow(''),
                     bottomBar: createBottomBarTemplate(currentLink)
-                } 
+                }
             },
             content: m.trust(template),
             transform: onHeaderTransform
@@ -196,104 +238,187 @@ define(function (require) {
     };
 
     var demo2 = {};
-    demo2.view = function () {
+    demo2.view = function() {
         var currentLink = linkMap[m.route()];
         return m('.' + currentLink.url, m.component(headerPanel, {
-                tag: 'div[fit]',
-                class: 'dark-theme',
-                mode: 'waterfall-tall',
-                tallClass: 'medium-tall',
-                condenses: true,
-                header: {
-                    toolbar: {
-                        topBar: toolbarRow(''),
-                        bottomBar: createBottomBarTemplate(currentLink)
-                    } 
-                },
-                content: m.trust(template)
-            }));
+            tag: 'div[fit]',
+            class: 'dark-theme',
+            mode: 'waterfall-tall',
+            tallClass: 'medium-tall',
+            condenses: true,
+            header: {
+                toolbar: {
+                    topBar: toolbarRow(''),
+                    bottomBar: createBottomBarTemplate(currentLink)
+                }
+            },
+            content: m.trust(template)
+        }));
     };
 
     var demo3 = {};
-    demo3.view = function () {
+    demo3.view = function() {
         var currentLink = linkMap[m.route()];
         return m('.' + currentLink.url, m.component(headerPanel, {
-                tag: 'div[fit]',
-                class: 'dark-theme animate',
-                mode: 'waterfall-tall',
-                animated: true,
-                fixed: true,
-                header: {
-                    toolbar: {
-                        topBar: toolbarRow(''),
-                        bottomBar: createBottomBarTemplate(currentLink)
-                    } 
-                },
-                content: m.trust(template)
-            }));
+            tag: 'div[fit]',
+            class: 'dark-theme animate',
+            mode: 'waterfall-tall',
+            animated: true,
+            fixed: true,
+            header: {
+                toolbar: {
+                    topBar: toolbarRow(''),
+                    bottomBar: createBottomBarTemplate(currentLink)
+                }
+            },
+            content: m.trust(template)
+        }));
     };
 
     var demo4 = {};
-    demo4.view = function () {
+    demo4.view = function() {
         var currentLink = linkMap[m.route()];
         return m('.' + currentLink.url, m.component(headerPanel, {
-                tag: 'div[fit]',
-                class: 'dark-theme noReveal',
-                mode: 'tall',
-                condenses: true,
-                noReveal: true,
-                header: {
-                    toolbar: {
-                        topBar: toolbarRow(''),
-                        bottomBar: createBottomBarTemplate(currentLink)
-                    } 
-                },
-                content: m.trust(template)
-            }));
+            tag: 'div[fit]',
+            class: 'dark-theme noReveal',
+            mode: 'tall',
+            condenses: true,
+            noReveal: true,
+            header: {
+                toolbar: {
+                    topBar: toolbarRow(''),
+                    bottomBar: createBottomBarTemplate(currentLink)
+                }
+            },
+            content: m.trust(template)
+        }));
     };
 
     var demo5 = {};
-    demo5.view = function () {
+    demo5.view = function() {
         var currentLink = linkMap[m.route()];
         return m('.' + currentLink.url, m.component(headerPanel, {
-                tag: 'div[fit]',
-                class: 'dark-theme',
-                fixed: true,
-                header: {
-                    toolbar: {
-                        topBar: toolbarRow(''),
-                        bottomBar: createBottomBarTemplate(currentLink)
-                    } 
-                },
-                content: m.trust(template)
-            }));
+            tag: 'div[fit]',
+            class: 'dark-theme',
+            fixed: true,
+            header: {
+                toolbar: {
+                    topBar: toolbarRow(''),
+                    bottomBar: createBottomBarTemplate(currentLink)
+                }
+            },
+            content: m.trust(template)
+        }));
     };
 
     var demo6 = {};
-    demo6.view = function () {
+    demo6.view = function() {
         var currentLink = linkMap[m.route()];
         return m('.' + currentLink.url, m.component(headerPanel, {
-                tag: 'div[fit]',
-                class: 'dark-theme keepCondensed',
-                mode: 'waterfall-tall',
-                condenses: true,
-                keepCondensedHeader: true,
-                headerHeight: 256,
-                condensedHeaderHeight: 140,
-                header: {
-                    toolbar: {
-                        topBar: toolbarRow(''),
-                        bottomBar: createBottomBarTemplate(currentLink)
-                    } 
-                },
-                content: m.trust(template)
-            }));
+            tag: 'div[fit]',
+            class: 'dark-theme keepCondensed',
+            mode: 'waterfall-tall',
+            condenses: true,
+            keepCondensedHeader: true,
+            headerHeight: 256,
+            condensedHeaderHeight: 140,
+            header: {
+                toolbar: {
+                    topBar: toolbarRow(''),
+                    bottomBar: createBottomBarTemplate(currentLink)
+                }
+            },
+            content: m.trust(template)
+        }));
+    };
+
+    var background1 = {};
+    background1.view = function() {
+        var currentLink = linkMap[m.route()];
+        return m('.' + currentLink.url, m.component(headerPanel, {
+            tag: 'div[fit]',
+            class: 'dark-theme background1',
+            mode: 'waterfall-tall',
+            condenses: true,
+            noDissolve: true,
+            noReveal: true,
+            backgroundScrollSpeed: 0,
+            header: {
+                toolbar: {
+                    topBar: toolbarRow(''),
+                    bottomBar: createBottomBarTemplate(currentLink)
+                }
+            },
+            content: m.trust(template),
+        }));
+    };
+
+    var background2 = {};
+    background2.view = function() {
+        var currentLink = linkMap[m.route()];
+        return m('.' + currentLink.url, m.component(headerPanel, {
+            tag: 'div[fit]',
+            class: 'dark-theme background2',
+            mode: 'waterfall-tall',
+            condenses: true,
+            noReveal: true,
+            header: {
+                toolbar: {
+                    topBar: toolbarRow(''),
+                    bottomBar: createBottomBarTemplate(currentLink)
+                }
+            },
+            content: m.trust(template),
+        }));
+    };
+
+    var background3 = {};
+    background3.view = function() {
+        var currentLink = linkMap[m.route()];
+        return m('.' + currentLink.url, m.component(headerPanel, {
+            tag: 'div[fit]',
+            class: 'dark-theme background3',
+            mode: 'waterfall-tall',
+            condenses: true,
+            keepCondensedHeader: true,
+            headerHeight: 256,
+            condensedHeaderHeight: 140,
+            header: {
+                toolbar: {
+                    topBar: toolbarRow(''),
+                    bottomBar: createBottomBarTemplate(currentLink)
+                }
+            },
+            content: m.trust(template),
+        }));
+    };
+
+    var background4 = {};
+    background4.view = function() {
+        var currentLink = linkMap[m.route()];
+        return m('.' + currentLink.url, m.component(headerPanel, {
+            tag: 'div[fit]',
+            class: 'dark-theme background4',
+            mode: 'waterfall-tall',
+            condenses: true,
+            shadow: false,
+            keepCondensedHeader: true,
+            headerHeight: 256,
+            condensedHeaderHeight: 140,
+            header: {
+                toolbar: {
+                    topBar: toolbarRow(''),
+                    bottomBar: createBottomBarTemplate(currentLink)
+                }
+            },
+            content: m.trust(template),
+        }));
     };
 
     routeMap = {
-        '/': list
+        '/': index
     };
-    links.map(function(link) {
+    _.forEach(_.flatten(_.pluck(links, 'links')), function(link) {
         routeMap[link.url] = eval(link.url);
     });
 

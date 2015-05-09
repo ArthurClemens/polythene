@@ -32,7 +32,19 @@ define(function(require) {
             title: defaultTitle
         }]
     }, {
-        label: 'Components',
+        label: 'Aggregate components',
+        links: [{
+            url: 'header-panel',
+            name: 'Header Panel'
+        }, {
+            url: 'toolbar',
+            name: 'Toolbar'
+        }, {
+            url: 'list',
+            name: 'List'
+        }]
+    }, {
+        label: 'Regular components',
         links: [{
             url: 'button',
             name: 'Button'
@@ -48,15 +60,6 @@ define(function(require) {
         }, {
             url: 'list-tile',
             name: 'List Tile'
-        }, {
-            url: 'list',
-            name: 'List'
-        }, {
-            url: 'toolbar',
-            name: 'Toolbar'
-        }, {
-            url: 'header-panel',
-            name: 'Header Panel'
         }]
     }, {
         label: 'Smallest components',
