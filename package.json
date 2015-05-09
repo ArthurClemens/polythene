@@ -20,7 +20,7 @@
     "copy-mdi": "mkdir -p lib/svg/mdi && cp -R external_modules/MaterialDesign/icons/svg/* lib/svg/mdi/",
     "install-roboto-webfont": "webfont-dl \"https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic\" -o lib/font-roboto/fonts/font-roboto.css --font-out=lib/font-roboto/fonts --woff2=link --woff1==link --svg==link --ttf==link --eot==link",
     "dev-css": "sass --watch --sourcemap=none lib/",
-    "build-theme-css": "cd lib/theme/ && cat _base.scss ../**/_theme.scss | scss --sourcemap=none --style=compressed > theme.css && rm -rf .sass-cache",
+    "build-theme-css": "cd lib/theme/ && cat _base.scss ../**/_theme.scss | scss --sourcemap=none > theme.css && rm -rf .sass-cache",
     "build-css": "sass --update -f --sourcemap=none lib/",
     "setup": "rm -rf external_modules && npm run install-mdif && npm run install-mdi && npm run copy-mdif && npm run copy-mdi",
     "build": "npm run build-css && npm run build-theme-css"

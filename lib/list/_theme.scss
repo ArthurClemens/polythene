@@ -1,0 +1,17 @@
+@mixin _theme($tint, $element) {
+
+	& + .list {
+		border-top: 1px solid theme($tint, $element, "border-color");
+	}
+
+}
+
+.list {
+	@include _theme("light", "list");
+}
+
+.dark-theme {
+    .list {
+    	@include _theme("dark", "list");
+    }
+}

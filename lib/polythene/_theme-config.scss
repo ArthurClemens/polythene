@@ -4,11 +4,13 @@ $lightTextColorPrimary: rgba(#000,.87);
 $lightTextColorSecondary: rgba(#000,.54);
 $lightTextColorDisabled: rgba(#000,.26);
 $lightTextColorHints: $lightTextColorDisabled;
+$lightBorderColor: rgba(#000,.13);
 
 $darkTextColorPrimary: rgba(#fff,1);
-$darkTextColorSecondary: rgba(255,255,255,.7);
-$darkTextColorDisabled: rgba(#000,.26);
+$darkTextColorSecondary: rgba(#fff,.7);
+$darkTextColorDisabled: rgba(#fff,.26);
 $darkTextColorHints: textColorDisabled;
+$darkBorderColor: rgba(#fff,.13);
 
 $themeConfig: (
     light: (
@@ -59,9 +61,12 @@ $themeConfig: (
             )
             // other styles: use button
         ),
-        "list-tile": (
+        list-tile: (
             header: $lightTextColorPrimary,
             subheader: $lightTextColorSecondary
+        ),
+        list: (
+            border-color: $lightBorderColor
         )
     ),
     dark: (
@@ -112,9 +117,12 @@ $themeConfig: (
             )
             // other styles: use button
         ),
-        "list-tile": (
+        list-tile: (
             header: $darkTextColorPrimary,
             subheader: $darkTextColorSecondary
+        ),
+        list: (
+            border-color: $darkBorderColor
         )
     )
 );
