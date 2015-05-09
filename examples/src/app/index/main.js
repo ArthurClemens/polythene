@@ -71,6 +71,19 @@ define(function(require) {
 
     content = {
         view: function() {
+            var minScale,
+                onHeaderTransform;
+
+            minScale = 0.65;
+
+            onHeaderTransform = function (e) {
+                var titleStyle = document.querySelector('.title').style;
+                var m = e.height - e.condensedHeight;
+                var scale = Math.max(minScale, (m - e.y) / (m / (1 - minScale)) + minScale);
+                titleStyle.transform = titleStyle.webkitTransform =
+                    'scale(' + scale + ') translateZ(0)';
+            };
+
             return [
                 m.component(headerPanel, {
                     class: 'app-header index-header',
@@ -78,7 +91,7 @@ define(function(require) {
                     keepCondensedHeader: true,
                     header: {
                         toolbar: {
-                            bottomBar: m('.indent', [
+                            bottomBar: m('.indent.title', [
                                 m.component(icon, {
                                     svg: {
                                         src: 'app/img/recycle.svg'
@@ -93,7 +106,8 @@ define(function(require) {
                         class: 'index'
                     }, m('.index-list', links.map(function(link) {
                         return item(link.name, link.baseUrl + '.html');
-                    })))
+                    }))),
+                    transform: onHeaderTransform
                 }),
                 github
             ];
