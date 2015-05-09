@@ -54,7 +54,7 @@
       display: block;
       transform-origin: left 50%;
       -webkit-transform-origin: left 50%;
-      -moz-origin: left 50%; }
+      -moz-transform-origin: left 50%; }
     .toolbar .toolbar-tools .fit {
       position: absolute;
       top: 0;
