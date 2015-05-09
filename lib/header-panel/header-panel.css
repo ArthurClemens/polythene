@@ -29,6 +29,8 @@
     z-index: 1;
     transition: opacity 0.25s;
     -webkit-transition: opacity 0.25s; }
+  .header-panel[mode=standard] .dropShadow {
+    opacity: 1; }
   .header-panel .outerContainer.cascaded > .headerContainer > .dropShadow {
     opacity: 1; }
   .header-panel:not([fixed]) > .outerContainer > .headerContainer {

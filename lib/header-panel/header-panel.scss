@@ -42,6 +42,12 @@
         -webkit-transition: opacity 0.25s;
     }
 
+    &[mode=standard] {
+        .dropShadow {
+            opacity: 1;
+        }
+    }
+
     .outerContainer.cascaded > .headerContainer > .dropShadow {
         opacity: 1;
     }
