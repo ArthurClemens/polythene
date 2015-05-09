@@ -1,10 +1,12 @@
 define(function(require) {
     'use strict';
 
-    var m = require('mithril'),
+    var NAME = 'Shadow',
+        m = require('mithril'),
         shadow = require('polythene/shadow/shadow'),
         nav = require('nav'),
         github = require('github'),
+        app,
         titleBlock,
         interactiveShadow,
         content;
@@ -52,57 +54,55 @@ define(function(require) {
         }
     };
 
-    content = {
-        view: function() {
-            var indices = [0, 1, 2, 3, 4, 5];
-            var tapItems = [{
-                id: 1,
-                class: 'card',
-                initZ: 1
-            }, {
-                id: 2,
-                class: 'fab',
-                initZ: 3
-            }];
-            return [
-                m.component(nav, {
-                    baseFileName: 'shadow',
-                    title: 'Shadow',
-                    subtitle: 'Mithril version'
-                }),
-
-                m.component(titleBlock, {
-                    title: 'Shadows',
-                    content: m('div[layout][horizontal]', [
-                        indices.map(function(z) {
-                            return m('div[layout][horizontal]', {
-                                class: 'card'
-                            }, [
-                                m('div[self-center]', 'z = ' + z),
-                                m.component(shadow, {
-                                    z: z
-                                })
-                            ]);
-                        })
-                    ])
-                }),
-
-                m.component(titleBlock, {
-                    title: 'Interactive and animated',
-                    content: m('div[layout][horizontal]', [
-                        tapItems.map(function(item) {
-                            return m.component(interactiveShadow, {
-                                id: item.id,
-                                class: item.class,
-                                initZ: item.initZ
-                            });
-                        })
-                    ])
-                }),
-                github
-            ];
-        }
+    content = function() {
+        var indices = [0, 1, 2, 3, 4, 5];
+        var tapItems = [{
+            id: 1,
+            class: 'card',
+            initZ: 1
+        }, {
+            id: 2,
+            class: 'fab',
+            initZ: 3
+        }];
+        return [
+            m.component(titleBlock, {
+                title: 'Shadows',
+                content: m('div[layout][horizontal]', [
+                    indices.map(function(z) {
+                        return m('div[layout][horizontal]', {
+                            class: 'card'
+                        }, [
+                            m('div[self-center]', 'z = ' + z),
+                            m.component(shadow, {
+                                z: z
+                            })
+                        ]);
+                    })
+                ])
+            }),
+            m.component(titleBlock, {
+                title: 'Interactive and animated',
+                content: m('div[layout][horizontal]', [
+                    tapItems.map(function(item) {
+                        return m.component(interactiveShadow, {
+                            id: item.id,
+                            class: item.class,
+                            initZ: item.initZ
+                        });
+                    })
+                ])
+            })
+        ];
     };
 
-    m.mount(document.body, content);
+    app = {};
+    app.view = function() {
+        return [
+            nav(NAME, content()),
+            github
+        ];
+    };
+
+    m.mount(document.body, app);
 });

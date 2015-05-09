@@ -1,7 +1,8 @@
 define(function (require) {
     'use strict';
 
-    var m = require('mithril'),
+    var NAME = 'Scroll Header Panel',
+        m = require('mithril'),
         nav = require('nav'),
         kitchensinkContent = require('header-panel/kitchensink'),
         listTile = require('polythene/list-tile/list-tile'),
@@ -62,8 +63,9 @@ define(function (require) {
             icon: {
                 type: 'medium',
                 class: 'index-cirle-icon',
-                svg: {
-                    src: link.icon ? link.icon : 'app/header-panel/svg/window.svg'
+                svg: link.icon ? {src: link.icon} : {
+                    name: 'arrow-right',
+                    iconset: 'mdi'
                 }
             },
             url: {href: link.url, config: m.route}
@@ -111,7 +113,7 @@ define(function (require) {
 
     toolbarRow = function (title) {
         return [
-            btn('navigation', 'arrow-back', '#'),
+            btn('navigation', 'arrow-back', 'header-panel.html'),
             m('span[flex]', title),
             btn('action', 'search')
         ];
@@ -128,18 +130,14 @@ define(function (require) {
     var list = {};
     list.controller = function () {};
     list.view = function () {
-        return m('.app', [
-            m.component(nav, {
-                title: 'Scroll Header Panel',
-                subtitle: 'Mithril version'
-            }),
+        return nav(NAME, 
             m('div', {
                 class: 'index'
             }, m('.index-list', links.map(function (link) {
                 return item(link);
             }))),
             github
-        ]);
+        );
     };
 
     var kitchensink = {};

@@ -1,29 +1,43 @@
-define(['mithril', 'polythene/icon/icon'], function(m) {
+define(function(require) {
     'use strict';
 
-    return {
-        view: function(ctrl, args) {
-            return m('div[center][horizontal][layout]', {
-                class: 'p-nav-block'
-            }, [
-                m('a', {
-                        href: 'index.html',
-                        class: 'icon-button'
-                    },
-                    m('div', {
-                            class: 'icon'
-                        },
-                        m('i[fit]', {
-                                class: 'material-design-iconic-font'
-                            },
-                            m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><path d="M8 16h8v-8h-8v8zm12 24h8v-8h-8v8zm-12 0h8v-8h-8v8zm0-12h8v-8h-8v8zm12 0h8v-8h-8v8zm12-20v8h8v-8h-8zm-12 8h8v-8h-8v8zm12 12h8v-8h-8v8zm0 12h8v-8h-8v8z"/><path d="M0 0h48v48h-48z" fill="none"/></svg>')
-                        )
-                    )
-                ),
-                m('div', {
-                    class: 'p-title indent'
-                }, args.title)
-            ]);
-        }
+    var m = require('mithril'),
+        headerPanel = require('polythene/header-panel/header-panel'),
+        iconBtn = require('polythene/icon-button/icon-button'),
+        btn,
+        toolbarRow;
+
+    btn = function (group, name, url) {
+        return m.component(iconBtn, {
+            url: url ? {href: url, config: null} : null,
+            icon: {
+                svg: {
+                    group: group,
+                    name: name
+                }
+            }
+        });
     };
+
+    toolbarRow = function (title) {
+        return [
+            btn('navigation', 'apps', 'index.html'),
+            m('span[flex]', title)
+        ];
+    };
+
+    return function(title, content) {
+        return m.component(headerPanel, {
+            class: 'app-header',
+            mode: 'waterfall',
+            fixed: true,
+            header: {
+                toolbar: {
+                    topBar: toolbarRow(title)
+                }
+            },
+            content: content
+        });
+    };
+
 });

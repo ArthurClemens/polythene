@@ -11,24 +11,12 @@ body {
 	height: 100%;
 }
 
-.header-panel .header {
-	height: 64px;
-	line-height: 64px;
-	padding: 0 10px;
-	background-color: #ddd;
-}
-
-.header-panel {
-	background: #F5F5F5;
+.header-panel .toolbar {
+	background-color: #B0BEC5;
 }
 
 .header-panel .toolbar.medium-tall {
 	height: 120px;
-}
-
-.header-panel .toolbar {
-	background: #3F51B5;
-	color: #fff;
 }
 
 .header-panel .title {
@@ -55,18 +43,6 @@ body {
 
 .demo6 .toolbar.tall {
 	height: 256px;
-}
-
-.header-panel.animate .toolbar {
-	background-color: #9C27B0;
-}
-
-.header-panel.noReveal .toolbar {
-	background-color: #FFC107;
-}
-
-.header-panel.keepCondensed .toolbar {
-	background-color: #F44336;
 }
 
 

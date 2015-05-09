@@ -1,16 +1,18 @@
 define(function(require) {
     'use strict';
 
-    var m = require('mithril'),
+    var NAME = 'Floating Action Button',
+        m = require('mithril'),
         fab = require('polythene/fab/fab'),
         nav = require('nav'),
         github = require('github'),
+        app,
         fabIcon,
         block,
         titleBlock,
         content;
 
-    require('polythene/layout/layout');
+    require('css!polythene/theme/theme');
     require('css!app-css');
     require('css!./main');
 
@@ -36,77 +38,73 @@ define(function(require) {
         }
     };
 
-    content = {
-        view: function() {
-            return [
-                m.component(nav, {
-                    baseFileName: 'fab',
-                    title: 'Floating Action Button',
-                    subtitle: 'Mithril version'
+    content = [
+        m.component(titleBlock, {
+            title: 'Regular size',
+            content: [
+                m.component(block, {
+                    fab: {
+                        icon: fabIcon,
+                        class: 'demo-fab',
+                        z: 1
+                    }
+                })
+            ]
+        }),
+        m.component(titleBlock, {
+            title: 'Small size',
+            content: [
+                m.component(block, {
+                    fab: {
+                        mini: true,
+                        icon: fabIcon,
+                        class: 'demo-fab green',
+                        z: 1
+                    }
                 }),
-                m('div', 
-                    m.component(titleBlock, {
-                        title: 'Regular size',
-                        content: [
-                            m.component(block, {
-                                fab: {
-                                    icon: fabIcon,
-                                    class: 'demo-fab',
-                                    z: 1
-                                }
-                            })
-                        ]
-                    }),
-                    m.component(titleBlock, {
-                        title: 'Small size',
-                        content: [
-                            m.component(block, {
-                                fab: {
-                                    mini: true,
-                                    icon: fabIcon,
-                                    class: 'demo-fab green',
-                                    z: 1
-                                }
-                            }),
-                            m.component(block, {
-                                fab: {
-                                    icon: fabIcon,
-                                    class: 'demo-fab mini red',
-                                    z: 1
-                                }
-                            })
-                        ]
-                    }),
-                    m.component(titleBlock, {
-                        title: 'Dark theme, raised more',
-                        class: 'dark-theme',
-                        content: [
-                            m.component(block, {
-                                fab: {
-                                    icon: fabIcon,
-                                    class: 'demo-fab',
-                                    z: 2
-                                }
-                            })
-                        ]
-                    }),
-                    m.component(titleBlock, {
-                        title: 'Fully raised',
-                        content: [
-                            m.component(block, {
-                                fab: {
-                                    icon: fabIcon,
-                                    class: 'demo-fab',
-                                    z: 5
-                                }
-                            })
-                        ]
-                    })
-                ),
-                github
-            ];
-        }
+                m.component(block, {
+                    fab: {
+                        icon: fabIcon,
+                        class: 'demo-fab mini red',
+                        z: 1
+                    }
+                })
+            ]
+        }),
+        m.component(titleBlock, {
+            title: 'Dark theme, raised more',
+            class: 'dark-theme',
+            content: [
+                m.component(block, {
+                    fab: {
+                        icon: fabIcon,
+                        class: 'demo-fab',
+                        z: 2
+                    }
+                })
+            ]
+        }),
+        m.component(titleBlock, {
+            title: 'Fully raised',
+            content: [
+                m.component(block, {
+                    fab: {
+                        icon: fabIcon,
+                        class: 'demo-fab',
+                        z: 5
+                    }
+                })
+            ]
+        })
+    ];
+
+    app = {};
+    app.view = function() {
+        return [
+            nav(NAME, content),
+            github
+        ];
     };
 
-    m.mount(document.body, content);
+    m.mount(document.body, app);
 });

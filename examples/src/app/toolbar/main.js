@@ -1,11 +1,13 @@
 define(function(require) {
     'use strict';
 
-    var m = require('mithril'),
+    var NAME = 'Toolbar',
+        m = require('mithril'),
         toolbar = require('polythene/toolbar/toolbar'),
         iconBtn = require('polythene/icon-button/icon-button'),
         nav = require('nav'),
         github = require('github'),
+        app,
         toolbarBlock,
         content,
         btn,
@@ -27,7 +29,7 @@ define(function(require) {
 
     toolbarRow = [
         btn('navigation', 'menu'),
-        m('span[flex]', 'Toolbar title lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'),
+        m('span[flex]', 'Toolbar title lorem ipsum dolor sit amet'),
         btn('action', 'search'),
         btn('action', 'favorite'),
         btn('navigation', 'more-vert')
@@ -42,66 +44,62 @@ define(function(require) {
         }
     };
 
-    content = m.component({
-        view: function() {
-            return [
-                m.component(nav, {
-                    baseFileName: 'toolbar',
-                    title: 'Toolbar',
-                    subtitle: 'Mithril version'
-                }),
-                m('div',
-                    m.component(toolbarBlock, {
-                        label: 'Content',
-                        toolbar: {
-                            content: toolbarRow
-                        }
-                    }),
-                    m.component(toolbarBlock, {
-                        label: 'Class dark-theme',
-                        toolbar: {
-                            class: 'dark-theme',
-                            content: toolbarRow
-                        }
-                    }),
-                    m.component(toolbarBlock, {
-                        label: 'Tall with elements pinned to the bottom',
-                        toolbar: {
-                            mode: 'tall',
-                            bottomBar: toolbarRow
-                        }
-                    }),
-                    m.component(toolbarBlock, {
-                        label: 'Medium-tall with label aligns to the bottom',
-                        toolbar: {
-                            mode: 'medium-tall',
-                            topBar: toolbarRow,
-                            bottomBar: m.trust('<span flex class="indent">Bottom content</span>')
-                        }
-                    }),
-                    m.component(toolbarBlock, {
-                        label: 'Three bars',
-                        toolbar: {
-                            mode: 'tall',
-                            topBar: toolbarRow,
-                            middleBar: m.trust('<div flex class="middle indent">label aligns to the middle</div>'),
-                            bottomBar: m.trust('<div class="bottom indent" style="color: #666; font-size: 18px;">some stuffs align to the bottom</div>')
-                        }
-                    }),
-                    m.component(toolbarBlock, {
-                        label: 'With loader bar',
-                        toolbar: {
-                            mode: 'tall',
-                            topBar: toolbarRow,
-                            middleBar: m.trust('<div flex class="middle indent">element (e.g. progress) fits at the bottom of the toolbar</div>'),
-                            bottomBar: m.trust('<div flex class="bottom fit" style="height: 20px; background-color: #0f9d58;"></div>')
-                        }
-                    })
-                ),
-                github
-            ];
-        }
-    });
+    content = [
+        m.component(toolbarBlock, {
+            label: 'Content',
+            toolbar: {
+                content: toolbarRow
+            }
+        }),
+        m.component(toolbarBlock, {
+            label: 'Class dark-theme',
+            toolbar: {
+                class: 'dark-theme',
+                content: toolbarRow
+            }
+        }),
+        m.component(toolbarBlock, {
+            label: 'Tall with elements pinned to the bottom',
+            toolbar: {
+                mode: 'tall',
+                bottomBar: toolbarRow
+            }
+        }),
+        m.component(toolbarBlock, {
+            label: 'Medium-tall with label aligns to the bottom',
+            toolbar: {
+                mode: 'medium-tall',
+                topBar: toolbarRow,
+                bottomBar: m.trust('<span flex class="indent">Bottom content</span>')
+            }
+        }),
+        m.component(toolbarBlock, {
+            label: 'Three bars',
+            toolbar: {
+                mode: 'tall',
+                topBar: toolbarRow,
+                middleBar: m.trust('<div flex class="middle indent">label aligns to the middle</div>'),
+                bottomBar: m.trust('<div class="bottom indent" style="color: #666; font-size: 18px;">some stuffs align to the bottom</div>')
+            }
+        }),
+        m.component(toolbarBlock, {
+            label: 'With loader bar',
+            toolbar: {
+                mode: 'tall',
+                topBar: toolbarRow,
+                middleBar: m.trust('<div flex class="middle indent">element (e.g. progress) fits at the bottom of the toolbar</div>'),
+                bottomBar: m.trust('<div flex class="bottom fit" style="height: 20px; background-color: #0f9d58;"></div>')
+            }
+        })
+    ];
     
-    m.mount(document.body, content);
+    app = {};
+    app.view = function() {
+        return [
+            nav(NAME, content),
+            github
+        ];
+    };
+
+    m.mount(document.body, app);
 });

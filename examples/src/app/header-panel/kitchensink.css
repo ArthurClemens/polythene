@@ -1,5 +1,5 @@
 .kitchensink .container {
-	float: left;
+	display: inline-block;
 	width: 300px;
 	height: 400px;
 	margin: 16px 0 16px 16px;
@@ -65,6 +65,7 @@
 	text-align: center;
 }
 
-.kitchensink .header-panel.animate .header {
+.kitchensink .header-panel[animated] .header,
+.kitchensink .header-panel[animated] .toolbar {
 	background-color: #9C27B0;
 }

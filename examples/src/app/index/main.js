@@ -1,8 +1,10 @@
-define(function (require) {
+define(function(require) {
     'use strict';
 
     var m = require('mithril'),
+        headerPanel = require('polythene/header-panel/header-panel'),
         listTile = require('polythene/list-tile/list-tile'),
+        icon = require('polythene/icon/icon'),
         github = require('github'),
         item,
         content,
@@ -50,34 +52,49 @@ define(function (require) {
         name: 'List'
     }];
 
-    item = function (title, url) {
+    item = function(title, url) {
         return m.component(listTile, {
             title: title,
             icon: {
                 type: 'medium',
                 class: 'index-cirle-icon',
                 svg: {
-                    name: 'folder',
+                    name: 'arrow-right',
                     iconset: 'mdi'
                 }
             },
-            url: {href: url}
+            url: {
+                href: url
+            }
         });
     };
 
     content = {
-        view: function () {
+        view: function() {
             return [
-                m('div', {
-                        class: 'p-title-block'
+                m.component(headerPanel, {
+                    class: 'app-header index-header',
+                    mode: 'waterfall-tall',
+                    keepCondensedHeader: true,
+                    header: {
+                        toolbar: {
+                            bottomBar: m('.indent', [
+                                m.component(icon, {
+                                    svg: {
+                                        src: 'app/img/recycle.svg'
+                                    },
+                                    class: 'logo'
+                                }),
+                                'Polythene Examples'
+                            ])
+                        }
                     },
-                    m('h1', 'Polythene Examples')
-                ),
-                m('div', {
-                    class: 'index'
-                }, m('.index-list', links.map(function (link) {
-                    return item(link.name, link.baseUrl + '.html');
-                }))),
+                    content: m('div', {
+                        class: 'index'
+                    }, m('.index-list', links.map(function(link) {
+                        return item(link.name, link.baseUrl + '.html');
+                    })))
+                }),
                 github
             ];
         }

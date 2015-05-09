@@ -1,13 +1,13 @@
 define(function(require) {
     'use strict';
 
-    var m = require('mithril'),
+    var NAME = 'SVG',
+        m = require('mithril'),
         svg = require('polythene/svg/svg'),
         nav = require('nav'),
         github = require('github'),
         block,
         titleBlock,
-        navContent,
         content,
         app;
 
@@ -31,18 +31,6 @@ define(function(require) {
                 args.info ? args.info : null,
                 m('.demo-icons', args.content)
             ]);
-        }
-    };
-
-    navContent = {
-        view: function() {
-            return m('div',
-                m.component(nav, {
-                    baseFileName: 'svg',
-                    title: 'SVG',
-                    subtitle: 'Mithril version'
-                })
-            );
         }
     };
 
@@ -110,7 +98,10 @@ define(function(require) {
                 }),
 
                 m.component(titleBlock, {
-                    title: 'svg.src',
+                    title: 'File reference',
+                    info: m('p',
+                        m.trust('src: file.svg')
+                    ),
                     content: [
                         m.component(block, {
                             svg: {
@@ -171,14 +162,14 @@ define(function(require) {
     };
 
     app = {};
-    app.controller = function() {};
     app.view = function() {
-        return m('.app', [
-            navContent,
-            dynamic,
-            m('div', content),
+        return [
+            nav(NAME, [
+                dynamic,
+                m('div', content)
+            ]),
             github
-        ]);
+        ];
     };
 
     m.route.mode = 'hash';

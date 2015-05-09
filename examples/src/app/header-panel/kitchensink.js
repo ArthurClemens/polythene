@@ -113,7 +113,6 @@ define(function(require) {
             },
             panel: {
                 mode: 'waterfall-tall',
-                class: 'animate',
                 fixed: true,
                 animated: true,
                 header: {
@@ -206,7 +205,7 @@ define(function(require) {
                 header: {
                     toolbar: {
                         mode: 'tall',
-                        content: toolbarRow('Waterfall no shadow')
+                        content: toolbarRow('Animated no shadow')
                     }
                 },
                 content: m.trust(template)

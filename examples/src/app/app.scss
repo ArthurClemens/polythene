@@ -2,12 +2,12 @@
 
 html, body {
     min-height: 100%;
+    height: 100%;
 }
 body {
     font-family: 'RobotoDraft', arial, sans-serif;
     background: #eee;
     margin: 0;
-    padding: 0 0 20px 0;
 }
 h1 {
     margin: 20px 0 0 0;
@@ -24,16 +24,61 @@ h1 {
 h1, h2 {
     color: #37474F;
 }
+.app {
+    height: 100%;
+}
+.header-panel.app-header {
+    .toolbar:first-of-type {
+        background-color: #00BFA5;
+        font-size: 18px;
+    }
+}
+
+.mainContainer {
+    background-color: #eee;
+}
+
+.index {
+    margin: 0;
+    padding: 32px 0;
+}
+.index-list {
+    width: 400px;
+    margin: 0 auto;
+}
+
+.index-list {
+    background-color: #fff;
+    padding: 8px 0;
+
+    .icon.index-cirle-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #B0BEC5;
+
+        svg path {
+            fill: #fff;
+        }
+    }
+
+    .icon.index-cirle-icon i {
+        padding: 8px;
+    }
+    .list-tile-secondary {
+        color: #757575;
+    }
+}
 .p-block {
-    margin: 20px 0 0 0;
-    padding: 20px 30px;
+    margin: 24px 0;
+    padding: 24px 20px;
 }
 .p-block-separate {
-    margin-bottom: 20px;
+    margin-bottom: 24px;
 }
 .p-title-block {
-    margin: 0 0 20px 0;
-    padding: 20px 30px;
+    margin: 0 0 24px 0;
+    padding: 24px 32px;
 }
 .p-block.p-inner-block {
     padding: 10px 0;
@@ -42,10 +87,11 @@ h1, h2 {
 }
 .p-block .p-block-header {
     font-weight: 500;
-    margin: 20px 0;
+    margin: 24px 0;
+    font-size: 24px;
 }
 .p-nav-block {
-    padding: 15px 30px;
+    padding: 16px 32px;
     height: 68px;
     margin: 0 0 20px 0;
     background-color: #37474F;
@@ -92,7 +138,7 @@ h1, h2 {
     line-height: inherit;
     font-size: 1.6em;
 }
-a {
+.mainContainer a {
     text-decoration: none;
     color: #1565C0;
 }

@@ -6,6 +6,10 @@
 	color: #fff;
 }
 
+.button-row {
+	margin-left: -4px;
+}
+
 .p-block.custom-label .button:not([disabled]) .button-content span {
 	color: #2196f3;
 }

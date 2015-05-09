@@ -1,10 +1,12 @@
 define(function(require) {
     'use strict';
 
-    var m = require('mithril'),
+    var NAME = 'Button',
+        m = require('mithril'),
         button = require('polythene/button/button'),
         nav = require('nav'),
         github = require('github'),
+        app,
         block,
         buttonComponent,
         titleBlock,
@@ -33,7 +35,9 @@ define(function(require) {
             raised: opts.raised
         }, {
             label: 'Linked',
-            url: {href: 'index.html'},
+            url: {
+                href: 'index.html'
+            },
             raised: opts.raised
         }, {
             label: 'Disabled',
@@ -43,8 +47,7 @@ define(function(require) {
             label: 'Wash only',
             ink: false,
             raised: opts.raised
-        },
-        {
+        }, {
             label: 'Ink only',
             ink: true,
             raised: opts.raised,
@@ -62,68 +65,66 @@ define(function(require) {
                 class: args.class
             }, [
                 m('.p-block-header', args.title),
-                args.content.map(function(c) {
-                    return buttonComponent(c);
-                })
+                m('.button-row',
+                    args.content.map(function(c) {
+                        return buttonComponent(c);
+                    })
+                )
             ]);
         }
     };
 
-    content = {
-        view: function() {
-            return [
-                m.component(nav, {
-                    baseFileName: 'button',
-                    title: 'Button',
-                    subtitle: 'Mithril version'
-                }),
-                m('div', 
-                    m.component(titleBlock, {
-                        title: 'Raised Light / Light theme',
-                        class: '',
-                        content: buttonRow({
-                            raised: true
-                        })
-                    }),
-                    m.component(titleBlock, {
-                        title: 'Flat Light / Light theme',
-                        content: buttonRow({
-                            raised: false
-                        })
-                    }),
-                    m.component(titleBlock, {
-                        title: 'Raised Dark / Dark theme',
-                        class: 'dark-theme',
-                        content: buttonRow({
-                            raised: true
-                        })
-                    }),
-                    m.component(titleBlock, {
-                        title: 'Flat Dark / Dark theme',
-                        class: 'dark-theme',
-                        content: buttonRow({
-                            raised: false
-                        })
-                    }),
-                    m.component(titleBlock, {
-                        title: 'Custom label color',
-                        class: 'custom-label',
-                        content: buttonRow({
-                            raised: false
-                        })
-                    }),
-                    m.component(titleBlock, {
-                        title: 'Custom background color',
-                        class: 'custom-bg',
-                        content: buttonRow({
-                            raised: true
-                        })
-                    })
-                ),
-                github
-            ];
-        }
+    content = [
+        m.component(titleBlock, {
+            title: 'Raised Light / Light theme',
+            class: '',
+            content: buttonRow({
+                raised: true
+            })
+        }),
+        m.component(titleBlock, {
+            title: 'Flat Light / Light theme',
+            content: buttonRow({
+                raised: false
+            })
+        }),
+        m.component(titleBlock, {
+            title: 'Raised Dark / Dark theme',
+            class: 'dark-theme',
+            content: buttonRow({
+                raised: true
+            })
+        }),
+        m.component(titleBlock, {
+            title: 'Flat Dark / Dark theme',
+            class: 'dark-theme',
+            content: buttonRow({
+                raised: false
+            })
+        }),
+        m.component(titleBlock, {
+            title: 'Custom label color',
+            class: 'custom-label',
+            content: buttonRow({
+                raised: false
+            })
+        }),
+        m.component(titleBlock, {
+            title: 'Custom background color',
+            class: 'custom-bg',
+            content: buttonRow({
+                raised: true
+            })
+        })
+    ];
+
+    app = {};
+    app.view = function() {
+        return [
+            nav(NAME, content),
+            github
+        ];
     };
 
-    m.mount(document.body, content);
+    m.mount(document.body, app);
 });
