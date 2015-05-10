@@ -4,13 +4,14 @@ define(function(require) {
     var m = require('mithril'),
         _ = require('lodash'),
         marked = require('marked'),
+        headerPanel = require('polythene/header-panel/header-panel'),
         list = require('polythene/list/list'),
         listTile = require('polythene/list-tile/list-tile'),
         icon = require('polythene/icon/icon'),
         app,
         doc,
         navItem,
-        drawer,
+        createDrawer,
         main,
         links,
         linkMap,
@@ -89,7 +90,7 @@ define(function(require) {
 
     linkMap = {};
     _.forEach(_.flatten(_.pluck(links, 'links')), function(link) {
-        linkMap[link.url] = link; 
+        linkMap[link.url] = link;
     });
 
     baseUrl = links[0].links[0].url;
@@ -97,62 +98,77 @@ define(function(require) {
     navItem = function(title, url, highlight) {
         return m.component(listTile, {
             title: title,
-            url: {href: url, config: m.route},
+            url: {
+                href: url,
+                config: m.route
+            },
             class: highlight ? 'highlight' : ''
         });
     };
 
-    drawer = function() {
+    createDrawer = function() {
         var highlight;
-        return m('.drawer.dark-theme', [
-            m.component(icon, {
-                svg: {
-                    src: 'app/img/recycle.svg'
+        return m('.drawer.dark-theme',
+            m.component(headerPanel, {
+                header: {
+                    toolbar: {
+                        topBar: m('.title', 'Polythene')
+                    }
                 },
-                class: 'logo'
-            }),
-            m('h2', m('a', {
-                href: baseUrl,
-                config: m.route
-            }, 'Polythene')),
-            links.map(function(group) {
-                return m.component(list, {
-                    header: group.label ? {
-                        title: group.label
-                    } : null,
-                    tiles: group.links.map(function(link) {
-                        highlight = (m.route() === link.url);
-                        return navItem(link.name, link.url, highlight);
-                    })
-                });
+                mode: 'waterfall',
+                fixed: true,
+                content: links.map(function(group) {
+                    return m.component(list, {
+                        header: group.label ? {
+                            title: group.label
+                        } : null,
+                        tiles: group.links.map(function(link) {
+                            highlight = (m.route() === link.url);
+                            return navItem(link.name, link.url, highlight);
+                        })
+                    });
+                })
             })
-        ]);
+        );
     };
 
     main = function(title, content) {
-        var parsed = content ? marked(content) : '';
+        var parsed;
+
+        parsed = content ? marked(content) : '';
+
         return m('.main',
-            m('h1', title),
-            m.trust(parsed)
+            m.component(headerPanel, {
+                header: {
+                    toolbar: {
+                        topBar: m('.title', title)
+                    }
+                },
+                mode: 'waterfall',
+                fixed: true,
+                content: m('.doc-content', m.trust(parsed))
+            })
         );
     };
 
     app = {};
 
-    app.vm = {
-        init: function() {
-            app.vm.currentLink = function() {
-                return linkMap[m.route.param('module')];
-            };
+    app.vm = function() {
+        return {
+            init: function() {
+                app.vm.currentLink = function() {
+                    return linkMap[m.route.param('module')];
+                };
 
-            app.vm.updateHead = function() {
-                var currentLink, title;
-                currentLink = app.vm.currentLink() || {};
-                title = currentLink.title || (currentLink.name + ' - ' + defaultTitle);
-                document.title = title;
-            };
-        }
-    };
+                app.vm.updateHead = function() {
+                    var currentLink, title;
+                    currentLink = app.vm.currentLink() || {};
+                    title = currentLink.title || (currentLink.name + ' - ' + defaultTitle);
+                    document.title = title;
+                };
+            }
+        };
+    }.call();
 
     app.controller = function() {
         var docs;
@@ -160,12 +176,12 @@ define(function(require) {
         docs = m.request({
             method: 'GET',
             url: 'app/docs/' + m.route.param('module') + '.md',
-            background: true,
+            background: false,
             deserialize: function(value) {
                 return value;
             }
         });
-        docs.then(m.redraw);
+
         return {
             docs: docs
         };
@@ -180,7 +196,7 @@ define(function(require) {
                 config: app.vm.updateHead
             }, [
                 main(currentLink.name, docData),
-                drawer()
+                createDrawer()
             ]),
             m('.footer', m.trust('Polythene by Arthur Clemens 2015. Project page on <a href="https://github.com/ArthurClemens/Polythene">Github</a>. Logo icon design by <a href="https://thenounproject.com/acider/">Miguel C Balandrano</a>.'))
         ];
