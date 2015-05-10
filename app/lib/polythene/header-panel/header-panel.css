@@ -28,12 +28,13 @@
     box-shadow: inset 0px 5px 6px -3px rgba(0, 0, 0, 0.4);
     z-index: 1;
     transition: opacity 0.25s;
-    -webkit-transition: opacity 0.25s; }
+    -webkit-transition: opacity 0.25s;
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0); }
   .header-panel[mode=standard] .dropShadow {
     opacity: 1; }
   .header-panel .headerContainer {
-    position: relative;
-    overflow: hidden; }
+    position: relative; }
   .header-panel .outerContainer.cascaded > .headerContainer > .dropShadow {
     opacity: 1; }
   .header-panel:not([fixed]) > .outerContainer > .headerContainer {
