@@ -4,6 +4,35 @@
 		border-top: 1px solid theme($tint, $element, "border-color");
 	}
 
+	&.bordered {
+		.list-tile:not(.subheader) {
+			&:not(:last-child) {
+				.list-tile-content,
+				.list-tile-content-icon {
+					border-bottom: 1px solid theme($tint, $element, "border-color");
+				}
+			}
+		}
+	}
+
+	&.bordered-indent {
+		border-top: none;
+
+		.list-tile:not(.subheader) {
+			&:not(:last-child) {
+				.list-tile-content {
+					border-bottom: 1px solid theme($tint, $element, "border-color");
+				}
+			}
+		}
+		&:not(:first-child) {
+			.list-tile.subheader {
+				.list-tile-content {
+					border-top: 1px solid theme($tint, $element, "border-color");
+				}
+			}
+		}
+	}
 }
 
 .list {
