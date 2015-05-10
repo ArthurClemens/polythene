@@ -48,6 +48,11 @@
         }
     }
 
+    .headerContainer {
+        position: relative;
+        overflow: hidden;
+    }
+    
     .outerContainer.cascaded > .headerContainer > .dropShadow {
         opacity: 1;
     }
