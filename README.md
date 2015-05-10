@@ -1,5 +1,7 @@
 # Polythene
 
+[![Join the chat at https://gitter.im/ArthurClemens/Polythene](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ArthurClemens/Polythene?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Polymer inspired modular implementation of Material Design for [Mithril](http://lhorie.github.io/mithril). 
 
 Alpha status.
