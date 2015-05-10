@@ -145,8 +145,11 @@ body {
             border: none;
             border-bottom: 1px solid $_light_border;
             vertical-align: top;
+            overflow-x: scroll;
 
             width: 15%;
+            word-break: break-all; 
+
             &:last-child {
                 width: 40%;
             }
