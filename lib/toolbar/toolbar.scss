@@ -11,6 +11,10 @@ $_sideMargin: 2*$component_grid_unit_px - $iconButtonPadding;
     font-size: $fontSizeTitle;
     background-color: #CFD8DC;
 
+    // use hardware-acceleration
+    transform: translate3d(0,0,0);
+    -webkit-transform: translate3d(0,0,0);
+
     &.animate {
         transition: height 0.18s ease-in;
     }

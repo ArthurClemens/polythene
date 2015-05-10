@@ -40,6 +40,8 @@
         z-index: 1;
         transition: opacity 0.25s;
         -webkit-transition: opacity 0.25s;
+        transform: translate3d(0,0,0);
+        -webkit-transform: translate3d(0,0,0);
     }
 
     &[mode=standard] {
@@ -50,7 +52,6 @@
 
     .headerContainer {
         position: relative;
-        overflow: hidden;
     }
     
     .outerContainer.cascaded > .headerContainer > .dropShadow {

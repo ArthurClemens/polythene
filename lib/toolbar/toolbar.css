@@ -3,7 +3,9 @@
   position: relative;
   height: 64px;
   font-size: 20px;
-  background-color: #CFD8DC; }
+  background-color: #CFD8DC;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0); }
   .toolbar.animate {
     transition: height 0.18s ease-in; }
   .toolbar.medium-tall {
