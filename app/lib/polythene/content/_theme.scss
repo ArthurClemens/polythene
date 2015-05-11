@@ -1,0 +1,27 @@
+@mixin _theme($tint, $element) {
+
+	&,
+	.content-title {
+		color: theme($tint, $element, "header");
+	}
+
+	&.subheader {
+		.content-title {
+			color: theme($tint, $element, "subheader");
+		}
+	}
+	
+	.content-info {
+	    color: theme($tint, $element, "subheader");
+	}
+}
+
+.content {
+	@include _theme("light", "content");
+}
+
+.dark-theme {
+    .content {
+    	@include _theme("dark", "content");
+    }
+}

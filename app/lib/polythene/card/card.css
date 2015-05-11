@@ -1,0 +1,28 @@
+.card {
+  position: relative;
+  border-radius: 2px; }
+  .card .card-content {
+    padding: 16px; }
+  .card .card-media {
+    position: relative;
+    padding-bottom: 56.25%;
+    overflow: hidden;
+    background-color: #eee; }
+    .card .card-media:first-child img {
+      border-radius: 2px 2px 0 0; }
+  .card .card-media img {
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0; }
+  .card .card-header .content .content-title {
+    font-size: 14px;
+    line-height: 1.5em; }
+  .card .card-primary .content .content-wrapper {
+    height: auto;
+    padding-top: 24px; }
+  .card .card-primary .content .content-title {
+    font-size: 24px; }

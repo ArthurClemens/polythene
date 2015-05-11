@@ -1,0 +1,45 @@
+.card {
+	position: relative;
+	border-radius: 2px;
+
+	.card-content {
+		padding: 16px;
+	}
+	.card-media {
+		position: relative;
+		padding-bottom: 100% / 16 * 9;
+		overflow: hidden;
+		background-color: #eee;
+
+		&:first-child img {
+			border-radius: 2px 2px 0 0;
+		}
+	}
+	.card-media img {
+		display: block;
+	    width: 100%;
+	    position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+
+	.card-header {
+		.content .content-title {
+			font-size: 14px;
+			line-height: 1.5em;
+		}
+	}
+	.card-primary {
+		.content {
+			.content-wrapper {
+				height: auto;
+				padding-top: 24px;
+			}
+			.content-title {
+				font-size: 24px;
+			}
+		}
+	}
+}

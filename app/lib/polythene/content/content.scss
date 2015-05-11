@@ -1,0 +1,170 @@
+@import "../polythene/polythene";
+
+.content {
+    $_one_line_height: 48px;
+    $_one_line_height_with_icon: 56px;
+    $_two_line_height: 72px;
+    $_three_line_height: 88px;
+    $_one_line_padding: 8px;
+    $_two_line_padding: 16px;
+    $_three_line_padding: 16px;
+    $_icon_element_width: 72px;
+    $_icon_size: 40px;
+    $_icon_size_medium: 24px;
+    $_icon_size_small: 16px;
+    $_side_padding: 2 * $component_grid_unit_px;
+    $_indent: 72px;
+
+    position: relative; // for example to for ripple boundaries
+
+    &.content-single-line {
+        .content-wrapper-icon {
+            .icon {
+                @include vertical-center(absolute);
+            }
+        }
+        .content-wrapper-icon,
+        .content-wrapper {
+            height: $_one_line_height;
+            padding: $_one_line_padding 0;
+        }
+        .content-wrapper {
+            padding-left: $_side_padding;
+            padding-right: $_side_padding;
+
+            .content-title {
+                padding: 5px 0;
+                line-height: $_one_line_height - 2*$_one_line_padding - 2*5 + 1;
+            }
+        }
+    }
+
+    &.content-single-line,
+    &.content-two-line,
+    &.content-three-line {
+        &.content-has-icon {
+            .content-wrapper-icon {
+                .icon {
+                    left: $_side_padding;
+                }
+            }
+            .content-wrapper {
+                padding-left: 0;
+                padding-right: $_side_padding;
+            }
+        }
+
+        &.subheader,
+        &.content-has-icon.subheader {
+            font-weight: $fontWeightMedium;
+
+            .content-wrapper-icon,
+            .content-wrapper {
+                height: $_one_line_height;
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+            .content-wrapper {
+                .content-title {
+                    font-size: 14px;
+                    line-height: $_one_line_height;
+                    padding: 0;
+                }
+            }
+        }
+    }
+
+    &.content-single-line.content-has-icon {
+        .content-wrapper-icon,
+        .content-wrapper {
+            height: $_one_line_height_with_icon;
+        }
+        .content-wrapper-icon,
+        .content-wrapper {
+            height: $_one_line_height_with_icon;
+        }
+        .content-wrapper {
+            .content-title {
+                line-height: $_one_line_height_with_icon - 2*$_one_line_padding - 2*5 + 1;
+            }
+        }
+    }
+
+    &.content-two-line {
+        .content-wrapper-icon {
+            .icon {
+                @include vertical-center(absolute);
+            }
+        }
+        .content-wrapper-icon,
+        .content-wrapper {
+            height: $_two_line_height;
+            padding: $_two_line_padding 0;
+        }
+        .content-wrapper {
+            padding-left: $_side_padding;
+            padding-right: $_side_padding;
+
+            .content-title {
+                padding: 0;
+                line-height: $line_height;
+            }
+        }
+    }
+
+    &.content-three-line {
+        .content-wrapper-icon {
+            .icon {
+                top: $_three_line_padding;
+            }
+        }
+        .content-wrapper-icon,
+        .content-wrapper {
+            height: $_three_line_height;
+            padding: $_three_line_padding 0;
+        }
+        .content-wrapper {
+            padding-left: $_side_padding;
+            padding-right: $_side_padding;
+
+            .content-title {
+                padding: 0;
+                line-height: $line_height;
+            }
+        }
+    }
+
+    .content-wrapper-icon {
+        position: relative;
+        width: $_icon_element_width;
+
+        .icon {
+            position: absolute;
+            left: 0;
+        }
+    }
+
+    .content-wrapper-icon,
+    .content-wrapper {
+        position: relative;
+        @include vertical-center-parent;
+    }
+
+    .content-title {
+        font-size: 16px;
+        @include single-line;
+    }
+
+    .content-info {
+        font-size: 14px;
+        line-height: $line_height;
+        max-height: $line_height;
+        @include single-line;
+
+        &.content-double-info {
+            height: 2 * $line_height;
+            max-height: 2 * $line_height;
+            white-space: normal;
+        }
+    }
+}

@@ -7,8 +7,8 @@
 	&.bordered {
 		.list-tile:not(.subheader) {
 			&:not(:last-child) {
-				.list-tile-content,
-				.list-tile-content-icon {
+				.content-wrapper,
+				.content-wrapper-icon {
 					border-bottom: 1px solid theme($tint, $element, "border-color");
 				}
 			}
@@ -20,14 +20,14 @@
 
 		.list-tile:not(.subheader) {
 			&:not(:last-child) {
-				.list-tile-content {
+				.content-wrapper {
 					border-bottom: 1px solid theme($tint, $element, "border-color");
 				}
 			}
 		}
 		&:not(:first-child) {
 			.list-tile.subheader {
-				.list-tile-content {
+				.content-wrapper {
 					border-top: 1px solid theme($tint, $element, "border-color");
 				}
 			}
