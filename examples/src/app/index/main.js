@@ -122,7 +122,7 @@ define(function(require) {
                             ])
                         }
                     },
-                    content: m('div', {
+                    content: m('.demo-content', {
                         class: 'index'
                     }, m('.index-list', links.map(function(linkGroup) {
                         return m.component(list, {

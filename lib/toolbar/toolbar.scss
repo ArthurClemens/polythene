@@ -82,6 +82,7 @@ $_sideMargin: 2*$component_grid_unit_px - $iconButtonPadding;
         > span:first-child,
         .indent {
             margin-left: $indent;
+            @include single-line;
         }
         > span,
         > .title {

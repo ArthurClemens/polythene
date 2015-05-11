@@ -61,13 +61,14 @@ $themeConfig: (
             )
             // other styles: use button
         ),
-        list-tile: (
+        content: (
             header: $lightTextColorPrimary,
             subheader: $lightTextColorSecondary
         ),
         list: (
             border-color: $lightBorderColor
-        )
+        ),
+        list-tile: ()
     ),
     dark: (
         button: (
@@ -117,13 +118,14 @@ $themeConfig: (
             )
             // other styles: use button
         ),
-        list-tile: (
+        content: (
             header: $darkTextColorPrimary,
             subheader: $darkTextColorSecondary
         ),
         list: (
             border-color: $darkBorderColor
-        )
+        ),
+        list-tile: ()
     )
 );
 

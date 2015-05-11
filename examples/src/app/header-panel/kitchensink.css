@@ -43,13 +43,13 @@
 	height: 120px;
 }
 
-.kitchensink .header-panel .content {
+.kitchensink .header-panel .demo-content {
 	padding: 16px;
-	height: 1000px;
+	height: auto;
 	background: #f2f2f2;
 }
 
-.kitchensink .header-panel .content p {
+.kitchensink .header-panel .demo-content p {
 	margin: 0 0 1em 0;
 }
 

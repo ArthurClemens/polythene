@@ -28,10 +28,10 @@ body {
 	color: #fff;
 }
 
-.header-panel .content {
+.header-panel .demo-content {
 	padding: 16px 36px 36px 72px;
 }
-.header-panel .content + .content {
+.header-panel .demo-content + .demo-content {
 	margin-top: -36px;
 }
 

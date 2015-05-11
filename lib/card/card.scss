@@ -3,7 +3,7 @@
 	border-radius: 2px;
 
 	.card-content {
-		padding: 20px;
+		padding: 16px;
 	}
 	.card-media {
 		position: relative;
@@ -26,18 +26,18 @@
 	}
 
 	.card-header {
-		.list-tile .list-tile-title {
+		.content .content-title {
 			font-size: 14px;
 			line-height: 1.5em;
 		}
 	}
 	.card-primary {
-		.list-tile {
-			.list-tile-content {
+		.content {
+			.content-wrapper {
 				height: auto;
 				padding-top: 24px;
 			}
-			.list-tile-title {
+			.content-title {
 				font-size: 24px;
 			}
 		}

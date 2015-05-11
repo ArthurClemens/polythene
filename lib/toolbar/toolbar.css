@@ -47,7 +47,10 @@
       margin-left: 20px; }
     .toolbar .toolbar-tools > span:first-child,
     .toolbar .toolbar-tools .indent {
-      margin-left: 72px; }
+      margin-left: 72px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; }
     .toolbar .toolbar-tools > span,
     .toolbar .toolbar-tools > .title {
       white-space: nowrap;

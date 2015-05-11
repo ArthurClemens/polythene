@@ -2,7 +2,7 @@
   position: relative;
   border-radius: 2px; }
   .card .card-content {
-    padding: 20px; }
+    padding: 16px; }
   .card .card-media {
     position: relative;
     padding-bottom: 56.25%;
@@ -18,11 +18,11 @@
     left: 0;
     right: 0;
     bottom: 0; }
-  .card .card-header .list-tile .list-tile-title {
+  .card .card-header .content .content-title {
     font-size: 14px;
     line-height: 1.5em; }
-  .card .card-primary .list-tile .list-tile-content {
+  .card .card-primary .content .content-wrapper {
     height: auto;
     padding-top: 24px; }
-  .card .card-primary .list-tile .list-tile-title {
+  .card .card-primary .content .content-title {
     font-size: 24px; }
