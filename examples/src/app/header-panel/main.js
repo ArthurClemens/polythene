@@ -61,19 +61,19 @@ define(function(require) {
         label: 'Header background images',
         links: [{
             url: 'background1',
-            name: 'Sliding background variant 1',
+            name: 'Image background variant 1',
             sub: 'No dissolve, still image'
         }, {
             url: 'background2',
-            name: 'Sliding background variant 2',
+            name: 'Image background variant 2',
             sub: 'Dissolve'
         }, {
             url: 'background3',
-            name: 'Sliding background variant 3',
+            name: 'Image background variant 3',
             sub: 'Keep condensed header'
         }, {
             url: 'background4',
-            name: 'Sliding background variant 4',
+            name: 'Image background variant 4',
             sub: 'Mixing images'
         }]
     }];

@@ -52,7 +52,7 @@ body {
 	background-color: transparent;
 }
 .background1 .headerBg {
-	background-image: url(images/bg3.jpg);
+	background-image: url(../images/bg3.jpg);
 	background-color: #222;
 }
 
@@ -66,7 +66,7 @@ body {
 	color: #fff;
 }
 .background2 .headerBg {
-	background-image: url(images/bg3.jpg);
+	background-image: url(../images/bg3.jpg);
 }
 
 .background3 .toolbar.tall {
@@ -82,7 +82,7 @@ body {
 	color: #fff;
 }
 .background3 .headerBg {
-	background-image: url(images/bg1.jpg);
+	background-image: url(../images/bg1.jpg);
 }
 
 .background4 .toolbar.tall {
@@ -101,8 +101,8 @@ body {
 	color: #fff;
 }
 .background4 .headerBg {
-	background-image: url(images/bg2.jpg);
+	background-image: url(../images/bg2.jpg);
 }
 .background4 .condensedHeaderBg {
-	background-image: url(images/bg1.jpg);
+	background-image: url(../images/bg1.jpg);
 }

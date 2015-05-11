@@ -88,7 +88,7 @@ define(function(require) {
         });
     };
 
-    content = [
+    content = m('.demo-content', [
         m.component(titleBlock, {
             title: 'No subheader',
             content: m.component(list, {
@@ -161,7 +161,7 @@ define(function(require) {
                 })
             ])
         })
-    ];
+    ]);
 
     app = {};
     app.view = function() {

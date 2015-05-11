@@ -38,7 +38,7 @@ define(function(require) {
         src: 'app/icon/img/ic_chat_black_48dp.png'
     });
 
-    content = [
+    content = m('.demo-content', [
         m.component(iconBlock, {
             label: 'Normal',
             btn: {
@@ -80,7 +80,7 @@ define(function(require) {
                 content: myCustomIconComponent
             }
         })
-    ];
+    ]);
 
     app = {};
     app.view = function() {

@@ -49,7 +49,10 @@ define(function(require) {
         }]
     }, {
         label: 'Building block components',
-        links: [{
+        links: [/*{
+            url: 'card',
+            name: 'Card'
+        }, */{
             url: 'svg',
             name: 'SVG'
         }, {
@@ -111,7 +114,7 @@ define(function(require) {
                             bottomBar: m('.indent.title', [
                                 m.component(icon, {
                                     svg: {
-                                        src: 'app/img/recycle.svg'
+                                        src: 'app/images/recycle.svg'
                                     },
                                     class: 'logo'
                                 }),

@@ -58,20 +58,20 @@ define(function(require) {
         var indices = [0, 1, 2, 3, 4, 5];
         var tapItems = [{
             id: 1,
-            class: 'card',
+            class: 'shadow-card',
             initZ: 1
         }, {
             id: 2,
-            class: 'fab',
+            class: 'shadow-fab',
             initZ: 3
         }];
-        return [
+        return m('.demo-content', [
             m.component(titleBlock, {
                 title: 'Shadows',
                 content: m('div[layout][horizontal][wrap]', [
                     indices.map(function(z) {
                         return m('div[layout][horizontal]', {
-                            class: 'card'
+                            class: 'shadow-card'
                         }, [
                             m('div[self-center]', 'z = ' + z),
                             m.component(shadow, {
@@ -93,7 +93,7 @@ define(function(require) {
                     })
                 ])
             })
-        ];
+        ]);
     };
 
     app = {};

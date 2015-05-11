@@ -36,7 +36,7 @@ define(function(require) {
             m('p', 'List tiles with zebra stripes to show demarcations.')
         ),
 
-        m('div', 
+        m('.demo-content', 
 
             // Text only
 

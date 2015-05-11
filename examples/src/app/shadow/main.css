@@ -1,12 +1,12 @@
-.card, .fab {
+.shadow-card, .shadow-fab {
     display: inline-block;
     position: relative;
     background: #FFC400;
     text-align: center;
-    width: 100px;
-    height: 100px;
-    margin: 20px 50px 50px 0;
-    line-height: 100px;
+    width: 90px;
+    height: 90px;
+    margin: 0 20px 20px 0;
+    line-height: 90px;
     box-sizing: border-box;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -15,17 +15,19 @@
     -ms-user-select: none;
     user-select: none;
 }
-.card {
+.shadow-card {
     border-radius: 2px;
 }
-.fab {
+.shadow-fab {
     border-radius: 50%;
     text-align: center;
 }
-.card[animated], .fab[animated] {
+.shadow-card[animated],
+.shadow-fab[animated] {
     cursor: pointer;
 }
-.card [self-center], .fab [self-center] {
+.shadow-card [self-center],
+.shadow-fab [self-center] {
 	width: 100%;
 	pointer-events: none;
 }

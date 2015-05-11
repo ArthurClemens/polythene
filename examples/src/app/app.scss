@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic");
 
+$margin: 20px;
+$list_width: 400px;
+$block_max_width: 720px;
+
 html, body {
     min-height: 100%;
     height: 100%;
@@ -38,13 +42,17 @@ h1, h2 {
     background-color: #eee;
 }
 
+.demo-content {
+    padding: 0 0 1px 0;
+}
+
 .index {
     margin: 0;
-    padding: 32px 0;
+    padding: 0;
 }
 .index-list {
-    width: 400px;
-    margin: 0 auto;
+    width: $list_width;
+    margin: $margin auto;
 }
 
 .index-list {
@@ -69,9 +77,22 @@ h1, h2 {
     }
 }
 .p-block {
-    margin: 24px 0;
-    padding: 24px 20px;
+    max-width: $block_max_width;
+    margin: $margin auto;
+    padding: 24px;
 }
+
+@media (max-width: ($block_max_width + 2 * $margin)) {
+    .p-block {
+        margin: $margin;
+    }
+}
+@media (max-width: $list_width + 2 * $margin) {
+    .index-list {
+        margin: $margin;
+    }
+}
+
 .p-block-separate {
     margin-bottom: 24px;
 }
@@ -86,8 +107,8 @@ h1, h2 {
 }
 .p-block .p-block-header {
     font-weight: 500;
-    margin: 24px 0;
-    font-size: 24px;
+    margin: 0 0 24px 0;
+    font-size: 21px;
     color: #333;
 }
 .p-block.dark-theme .p-block-header {
