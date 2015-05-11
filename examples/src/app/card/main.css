@@ -1,4 +1,6 @@
 .demo-card {
 	width: 400px;
-	padding: 24px;
+}
+.demo-card + .demo-card {
+	margin: 20px 0 0 0;
 }
