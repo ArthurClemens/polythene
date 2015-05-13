@@ -24,6 +24,13 @@ Add a URL:
 		url: {href: 'index.html'}
 	});
 
+Add an onclick event:
+
+	var myBtn = m.component(btn, {
+		label: 'Button',
+		raised: true,
+		events: {onclick: function() {console.log('click');}}
+	});
 
 ## Variations
 
@@ -40,7 +47,8 @@ Add a URL:
 | **tag** | optional | String | 'div' | HTML tag |
 | **class** | optional | String |  | Extra CSS class appended to 'button' |
 | **label** | required | String | | The button label |
-| **url** | optional | Object | | Button URL; options object containing `href` and `config` |
+| **url** | optional | Object | | Button URL or click handler; options object containing `href` and `config`, or use `onclick` event |
+| **events** | optional | Object | | Button event; options object containing one or more events like `onclick` |
 | **wash** | optional | Boolean | true | Set to false to hide the effect on hover |
 | **ink** | optional | Boolean | true | Set to false to disable the ripple effect on click/tap |
 | **raised** | optional | Boolean | false | Shows a shadow; on button press the shadow depth is increased by 1 |

@@ -19,7 +19,9 @@ define(function(require) {
 
     iconBlock = {
         view: function(ctrl, args) {
-            return m('.p-block', {class: args.class || ''}, [
+            return m('.p-block', {
+                class: args.class || ''
+            }, [
                 m('.p-block-header', args.label),
                 m.component(iconBtn, args.btn)
             ]);
@@ -79,7 +81,24 @@ define(function(require) {
             btn: {
                 content: myCustomIconComponent
             }
-        })
+        }),
+        m.component(iconBlock, {
+            label: 'Button events',
+            btn: {
+                icon: myIcon,
+                events: {
+                    onmouseover: function() {
+                        console.log('mouse over');
+                    },
+                    onmouseout: function() {
+                        console.log('mouse out');
+                    },
+                    onclick: function() {
+                        console.log('click');
+                    }
+                }
+            }
+        }),
     ]);
 
     app = {};
