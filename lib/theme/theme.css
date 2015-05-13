@@ -298,8 +298,10 @@ segment {
   color: rgba(255, 255, 255, 0.7); }
 
 .icon-button {
-  color: rgba(0, 0, 0, 0.54);
   background-color: transparent; }
+  .icon-button,
+  a.icon-button {
+    color: rgba(0, 0, 0, 0.54); }
   .icon-button[disabled] {
     background-color: transparent;
     color: rgba(0, 0, 0, 0.26); }
@@ -309,8 +311,10 @@ segment {
     background-color: rgba(0, 0, 0, 0.13); }
 
 .icon-button[raised] {
-  color: rgba(0, 0, 0, 0.54);
   background-color: #E0E0E0; }
+  .icon-button[raised],
+  a.icon-button[raised] {
+    color: rgba(0, 0, 0, 0.54); }
   .icon-button[raised][disabled] {
     background-color: rgba(0, 0, 0, 0.07);
     color: rgba(0, 0, 0, 0.26); }
@@ -320,8 +324,10 @@ segment {
     background-color: rgba(0, 0, 0, 0.08); }
 
 .dark-theme .icon-button:not([raised]) {
-  color: rgba(255, 255, 255, 0.7);
   background-color: transparent; }
+  .dark-theme .icon-button:not([raised]),
+  a.dark-theme .icon-button:not([raised]) {
+    color: rgba(255, 255, 255, 0.7); }
   .dark-theme .icon-button:not([raised])[disabled] {
     background-color: transparent;
     color: rgba(255, 255, 255, 0.3); }
@@ -330,8 +336,10 @@ segment {
   .dark-theme .icon-button:not([raised]):active .wash, .dark-theme .icon-button:not([raised]).selected .wash {
     background-color: rgba(204, 204, 204, 0.25); }
 .dark-theme .icon-button[raised] {
-  color: rgba(255, 255, 255, 0.7);
   background-color: #2196f3; }
+  .dark-theme .icon-button[raised],
+  a.dark-theme .icon-button[raised] {
+    color: rgba(255, 255, 255, 0.7); }
   .dark-theme .icon-button[raised][disabled] {
     background-color: rgba(255, 255, 255, 0.12);
     color: rgba(255, 255, 255, 0.3); }
