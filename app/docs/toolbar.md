@@ -81,8 +81,8 @@ These heights are predefined by the toolbar CSS.
 | **topBar** | either a bar or content must be passed | Mithril template | | Top bar content |
 | **middleBar** | either a bar or content must be passed | Mithril template | | Middle bar content |
 | **bottomBar** | either a bar or content must be passed | Mithril template | | Bottom bar content |
-| **before** | optional | Mithril template or String or Array | | Extra content before main content |
-| **after** | optional | Mithril template or String or Array | | Extra content after main content |
+| **before** | optional | Mithril template or String | | Extra content before main content |
+| **after** | optional | Mithril template or String | | Extra content after main content |
 
 
 ## Default generated HTML

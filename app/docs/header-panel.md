@@ -78,8 +78,8 @@ The header-panel will not display if its parent does not have a height.
 | **backgroundScrollSpeed** | optional | Number | 0.5 | The speed of the background when scrolling; this value is multiplied with the scroll distance; use 0 to keep the background in place |
 | **scroll** | optional | Function | | Callback function when the header panel scrolls; see Callback functions |
 | **transform** | optional | Function | | Callback function when the header panel is transforming; see Callback functions |
-| **before** | optional | Mithril template or String or Array | | Extra content before main content |
-| **after** | optional | Mithril template or String or Array | | Extra content after main content |
+| **before** | optional | Mithril template or String | | Extra content before main content |
+| **after** | optional | Mithril template or String | | Extra content after main content |
 
 
 ### Mode
@@ -154,7 +154,6 @@ Background images are set with CSS:
 	void scroll(UIEvent event)
 
 	void transform({Number y, Number height, Number condensedHeight})
-
 
 
 

@@ -1,13 +1,19 @@
 @import "material-design-colors";
 
 $lightTextColorPrimary: rgba(#000,.87);
+$lightTextColorText: #444;
+$lightTextColorButton: #4D4D4D;
 $lightTextColorSecondary: rgba(#000,.54);
+$lightTextColorTertiary: rgba(#000,.4);
 $lightTextColorDisabled: rgba(#000,.26);
 $lightTextColorHints: $lightTextColorDisabled;
 $lightBorderColor: rgba(#000,.11);
 
 $darkTextColorPrimary: rgba(#fff,1);
+$darkTextColorText: #fff;
+$darkTextColorButton: #b2b2b2;
 $darkTextColorSecondary: rgba(#fff,.7);
+$darkTextColorTertiary: rgba(#fff,.4);
 $darkTextColorDisabled: rgba(#fff,.26);
 $darkTextColorHints: textColorDisabled;
 $darkBorderColor: rgba(#fff,.11);
@@ -61,14 +67,27 @@ $themeConfig: (
             )
             // other styles: use button
         ),
-        content: (
-            header: $lightTextColorPrimary,
-            subheader: $lightTextColorSecondary
+        card: (
+            title: (
+                color: $lightTextColorPrimary
+            ),
+            subtitle: (
+                color: $lightTextColorSecondary
+            ),
+            text: (
+                color: $lightTextColorText
+            ),
+            actions: (
+                border-color: $lightBorderColor
+            ) 
         ),
         list: (
             border-color: $lightBorderColor
         ),
-        list-tile: ()
+        list-tile: (
+            header: $lightTextColorPrimary,
+            subheader: $lightTextColorTertiary
+        )
     ),
     dark: (
         button: (
@@ -118,14 +137,27 @@ $themeConfig: (
             )
             // other styles: use button
         ),
-        content: (
-            header: $darkTextColorPrimary,
-            subheader: $darkTextColorSecondary
+        card: (
+            title: (
+                color: $darkTextColorPrimary
+            ),
+            subtitle: (
+                color: $darkTextColorSecondary
+            ),
+            text: (
+                color: $darkTextColorSecondary
+            ),
+            actions: (
+                border-color: $darkBorderColor
+            ) 
         ),
         list: (
             border-color: $darkBorderColor
         ),
-        list-tile: ()
+        list-tile: (
+            header: $darkTextColorPrimary,
+            subheader: $darkTextColorTertiary
+        )
     )
 );
 

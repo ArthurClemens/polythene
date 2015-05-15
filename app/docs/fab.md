@@ -27,8 +27,8 @@ A circular main button with a [shadow](#shadow) and [ripple](#ripple) effect.
 | **icon** | required | Object |  | [icon](#icon) options object |
 | **z** | optional | Number 0-5 | 1 | Depth of the shadow |
 | **small** | optional | Boolean | false | Set to true to display a small button (class name `fab mini`) |
-| **before** | optional | Mithril template or String or Array | | Extra content before main content |
-| **after** | optional | Mithril template or String or Array | | Extra content after main content |
+| **before** | optional | Mithril template or String | | Extra content before main content |
+| **after** | optional | Mithril template or String | | Extra content after main content |
 
 
 ## Inheritance

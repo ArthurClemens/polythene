@@ -1,5 +1,20 @@
 @mixin _theme($tint, $element) {
 
+	&,
+	.list-tile-title {
+		color: theme($tint, $element, "header");
+	}
+
+	&.subheader {
+		.list-tile-title {
+			color: theme($tint, $element, "subheader");
+		}
+	}
+	
+	.list-tile-info {
+	    color: theme($tint, $element, "subheader");
+	}
+
 	.list-tile-primary,
 	.list-tile-secondary {
 		&, a {

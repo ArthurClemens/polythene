@@ -44,8 +44,8 @@ To align the subheader with the text, add parameter `class` with value `'indent'
 | **header** | optional | Object | | Options object for a [list tile](#list-tile); use `title` for the text label |
 | **tiles** | optional | Array of type Mithril template | | List of [list tiles](#list-tile) |
 | **mode** | optional | String | | Give borders to list tiles; use either `bordered` or `bordered-indent` |
-| **before** | optional | Mithril template or String or Array | | Extra content before main content |
-| **after** | optional | Mithril template or String or Array | | Extra content after main content |
+| **before** | optional | Mithril template or String | | Extra content before main content |
+| **after** | optional | Mithril template or String | | Extra content after main content |
 
 
 ## Default generated HTML

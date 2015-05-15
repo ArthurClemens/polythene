@@ -1,6 +1,11 @@
 @mixin _theme($tint, $depth) {
 
-	color: theme($tint, "icon", $depth, "normal", "color");
+	@at-root {
+		&,
+	    a#{&} {
+	        color: theme($tint, "icon", $depth, "normal", "color");
+	    }
+	}
 
 	// The other style use button values
 

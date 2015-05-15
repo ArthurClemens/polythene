@@ -9,7 +9,7 @@ Polymer inspired modular implementation of Material Design for [Mithril](http://
 
 ## Background
 
-Polythene borrows a great deal from [Polymer](http://polymer.github.io) (CSS styles, component names), but instead of using Web Components, it is built on top of [Mithril](http://lhorie.github.io/mithril).
+Polythene borrows a great deal from [Polymer](http://polymer.github.io) (CSS styles, component names), but instead of using Web Components, it is built with [Mithril](http://lhorie.github.io/mithril).
 
 Mithril is a small and fast MVC framework that encourages a clean app architecture. In Mithril pretty much everything is a function. Templates are functions that return objects, so they can be passed around, composed, mixed, have lazy rendering, etcetera.
 
