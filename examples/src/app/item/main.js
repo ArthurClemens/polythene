@@ -15,6 +15,7 @@ define(function(require) {
         accountIcon,
         accountCircleIcon;
 
+    require('polythene/font-roboto/font-roboto');
     require('css!polythene/theme/theme');
     require('css!app-css');
     require('css!./main');
@@ -60,7 +61,7 @@ define(function(require) {
         }
     };
 
-    content = [
+    content = m('.demo-content', [
         m.component(titleBlock, {
             title: 'Items with icon and label',
             content: [
@@ -181,7 +182,7 @@ define(function(require) {
                 })
             ]
         })
-    ];
+    ]);
 
     app = {};
     app.view = function() {

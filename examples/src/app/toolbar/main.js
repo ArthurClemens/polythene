@@ -13,6 +13,7 @@ define(function(require) {
         btn,
         toolbarRow;
 
+    require('polythene/font-roboto/font-roboto');
     require('css!polythene/theme/theme');
     require('css!app-css');
 
@@ -44,7 +45,7 @@ define(function(require) {
         }
     };
 
-    content = [
+    content = m('.demo-content', [
         m.component(toolbarBlock, {
             label: 'Content',
             toolbar: {
@@ -91,7 +92,7 @@ define(function(require) {
                 bottomBar: m.trust('<div flex class="bottom fit" style="height: 20px; background-color: #0f9d58;"></div>')
             }
         })
-    ];
+    ]);
     
     app = {};
     app.view = function() {

@@ -22,6 +22,7 @@ define(function(require) {
         repeatText,
         createBottomBarTemplate;
 
+    require('polythene/font-roboto/font-roboto');
     require('css!polythene/theme/theme');
     require('css!app-css');
     require('css!index/main');

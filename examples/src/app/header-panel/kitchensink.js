@@ -71,7 +71,7 @@ define(function(require) {
         }
     };
 
-    content = [
+    content = m('.demo-content', [
         m.component(panelBlock, {
             title: 'Scroll modes',
             content: [{
@@ -218,7 +218,7 @@ define(function(require) {
                 content: m.trust(template)
             }]
         })
-    ];
+    ]);
 
     return content;
 });

@@ -19,6 +19,7 @@ define(function(require) {
         toolbarRow,
         content;
 
+    require('polythene/font-roboto/font-roboto');
     require('css!polythene/theme/theme');
     require('css!app-css');
     require('css!app/list-tile/main');
@@ -89,7 +90,7 @@ define(function(require) {
         }
     };
 
-    content = [
+    content = m('.demo-content', [
         m.component(titleBlock, {
             title: 'Constrained ripple',
             content: iconButtons()
@@ -179,7 +180,7 @@ define(function(require) {
                 after: m.component(ripple)
             })
         })
-    ];
+    ]);
 
     app = {};
     app.view = function() {

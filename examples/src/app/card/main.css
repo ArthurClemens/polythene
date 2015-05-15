@@ -1,6 +1,32 @@
+.demo-cards {
+	margin: -10px;
+}
 .demo-card {
 	width: 400px;
+	margin: 10px;
 }
 .demo-card + .demo-card {
-	margin: 20px 0 0 0;
+	
+}
+.demo-card :not(.card-overlay.dark-theme) .button .button-content {
+	color: #5C6BC0;
+}
+
+.demo-card:not(.small) .card-overlay .card-overlay-content {
+	background-color: rgba(0,0,0,0.3);
+}
+
+.demo-card.small {
+	width: 170px;
+}
+.demo-card.small .card-overlay {
+	background: none;
+}
+
+.demo-card.small .card-overlay-dimmer {
+	box-shadow: inset 0px 0px 40px rgba(0,0,0,.6);
+}
+
+.demo-card.extra-large {
+	width: 360px;
 }
