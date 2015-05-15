@@ -281,21 +281,40 @@ segment {
 .dark-theme .button[raised]:active .wash, .dark-theme .button[raised].selected .wash {
   background-color: #1976d2; }
 
-.content,
-.content .content-title {
+.card.title,
+.card .title {
   color: rgba(0, 0, 0, 0.87); }
-.content.subheader .content-title {
+.card.subtitle,
+.card .subtitle {
   color: rgba(0, 0, 0, 0.54); }
-.content .content-info {
-  color: rgba(0, 0, 0, 0.54); }
-
-.dark-theme .content,
-.dark-theme .content .content-title {
+.card.text,
+.card .text {
+  color: #444; }
+.card .card-actions.bordered {
+  border-top: 1px solid rgba(0, 0, 0, 0.11); }
+.card .dark-theme.title,
+.card .dark-theme .title {
   color: white; }
-.dark-theme .content.subheader .content-title {
+.card .dark-theme.subtitle,
+.card .dark-theme .subtitle {
   color: rgba(255, 255, 255, 0.7); }
-.dark-theme .content .content-info {
+.card .dark-theme.text,
+.card .dark-theme .text {
+  color: #bbb; }
+.card .dark-theme .card-actions.bordered {
+  border-top: 1px solid rgba(255, 255, 255, 0.11); }
+
+.dark-theme .card.title,
+.dark-theme .card .title {
+  color: white; }
+.dark-theme .card.subtitle,
+.dark-theme .card .subtitle {
   color: rgba(255, 255, 255, 0.7); }
+.dark-theme .card.text,
+.dark-theme .card .text {
+  color: #bbb; }
+.dark-theme .card .card-actions.bordered {
+  border-top: 1px solid rgba(255, 255, 255, 0.11); }
 
 .icon-button {
   background-color: transparent; }
@@ -348,6 +367,13 @@ segment {
   .dark-theme .icon-button[raised]:active .wash, .dark-theme .icon-button[raised].selected .wash {
     background-color: #1976d2; }
 
+.list-tile,
+.list-tile .list-tile-title {
+  color: rgba(0, 0, 0, 0.87); }
+.list-tile.subheader .list-tile-title {
+  color: rgba(0, 0, 0, 0.54); }
+.list-tile .list-tile-info {
+  color: rgba(0, 0, 0, 0.54); }
 .list-tile .list-tile-primary, .list-tile .list-tile-primary a,
 .list-tile .list-tile-secondary,
 .list-tile .list-tile-secondary a {
@@ -356,6 +382,13 @@ segment {
 .list-tile .list-tile-secondary .icon {
   color: rgba(0, 0, 0, 0.54); }
 
+.dark-theme .list-tile,
+.dark-theme .list-tile .list-tile-title {
+  color: white; }
+.dark-theme .list-tile.subheader .list-tile-title {
+  color: rgba(255, 255, 255, 0.7); }
+.dark-theme .list-tile .list-tile-info {
+  color: rgba(255, 255, 255, 0.7); }
 .dark-theme .list-tile .list-tile-primary, .dark-theme .list-tile .list-tile-primary a,
 .dark-theme .list-tile .list-tile-secondary,
 .dark-theme .list-tile .list-tile-secondary a {
@@ -366,26 +399,26 @@ segment {
 
 .list + .list {
   border-top: 1px solid rgba(0, 0, 0, 0.11); }
-.list.bordered .list-tile:not(.subheader):not(:last-child) .content-wrapper,
-.list.bordered .list-tile:not(.subheader):not(:last-child) .content-wrapper-icon {
+.list.bordered .list-tile:not(.subheader):not(:last-child) .list-tile-content,
+.list.bordered .list-tile:not(.subheader):not(:last-child) .list-tile-content-icon {
   border-bottom: 1px solid rgba(0, 0, 0, 0.11); }
 .list.bordered-indent {
   border-top: none; }
-  .list.bordered-indent .list-tile:not(.subheader):not(:last-child) .content-wrapper {
+  .list.bordered-indent .list-tile:not(.subheader):not(:last-child) .list-tile-content {
     border-bottom: 1px solid rgba(0, 0, 0, 0.11); }
-  .list.bordered-indent:not(:first-child) .list-tile.subheader .content-wrapper {
+  .list.bordered-indent:not(:first-child) .list-tile.subheader .list-tile-content {
     border-top: 1px solid rgba(0, 0, 0, 0.11); }
 
 .dark-theme .list + .list {
   border-top: 1px solid rgba(255, 255, 255, 0.11); }
-.dark-theme .list.bordered .list-tile:not(.subheader):not(:last-child) .content-wrapper,
-.dark-theme .list.bordered .list-tile:not(.subheader):not(:last-child) .content-wrapper-icon {
+.dark-theme .list.bordered .list-tile:not(.subheader):not(:last-child) .list-tile-content,
+.dark-theme .list.bordered .list-tile:not(.subheader):not(:last-child) .list-tile-content-icon {
   border-bottom: 1px solid rgba(255, 255, 255, 0.11); }
 .dark-theme .list.bordered-indent {
   border-top: none; }
-  .dark-theme .list.bordered-indent .list-tile:not(.subheader):not(:last-child) .content-wrapper {
+  .dark-theme .list.bordered-indent .list-tile:not(.subheader):not(:last-child) .list-tile-content {
     border-bottom: 1px solid rgba(255, 255, 255, 0.11); }
-  .dark-theme .list.bordered-indent:not(:first-child) .list-tile.subheader .content-wrapper {
+  .dark-theme .list.bordered-indent:not(:first-child) .list-tile.subheader .list-tile-content {
     border-top: 1px solid rgba(255, 255, 255, 0.11); }
 
 a, a:active, a:focus {

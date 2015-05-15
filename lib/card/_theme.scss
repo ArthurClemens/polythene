@@ -1,0 +1,35 @@
+@mixin _theme($tint, $element) {
+
+	&.title,
+    .title {
+    	color: theme($tint, $element, "title", "color");
+    }
+
+    &.subtitle,
+    .subtitle {
+        color: theme($tint, $element, "subtitle", "color");
+	}
+
+	&.text,
+	.text {
+        color: theme($tint, $element, "text", "color");
+	}
+
+    .card-actions.bordered {
+        border-top: 1px solid theme($tint, $element, "actions", "border-color");
+    }
+}
+
+.card {
+	@include _theme("light", "card");
+
+    .dark-theme {
+        @include _theme("dark", "card");
+    }
+}
+
+.dark-theme {
+    .card {
+    	@include _theme("dark", "card");
+    }
+}

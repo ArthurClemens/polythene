@@ -13,6 +13,7 @@ define(function(require) {
         content,
         links;
 
+    require('polythene/font-roboto/font-roboto');
     require('css!polythene/theme/theme');
     require('css!app-css');
     require('css!./main');
@@ -28,6 +29,9 @@ define(function(require) {
         }, {
             url: 'list',
             name: 'List'
+        }, {
+            url: 'card',
+            name: 'Card'
         }]
     }, {
         label: 'Regular components',
@@ -49,10 +53,7 @@ define(function(require) {
         }]
     }, {
         label: 'Building block components',
-        links: [/*{
-            url: 'card',
-            name: 'Card'
-        }, */{
+        links: [{
             url: 'svg',
             name: 'SVG'
         }, {
@@ -122,9 +123,7 @@ define(function(require) {
                             ])
                         }
                     },
-                    content: m('.demo-content', {
-                        class: 'index'
-                    }, m('.index-list', links.map(function(linkGroup) {
+                    content: m('.demo-content.index', m('.index-list', links.map(function(linkGroup) {
                         return m.component(list, {
                             header: {
                                 title: linkGroup.label,
