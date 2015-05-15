@@ -114,8 +114,8 @@ Item can be extended with CSS and custom content - see the custom example below.
 | **icon** | optional | Object |  | [icon](#icon) options object |
 | **label** | optional | String | | Item label |
 | **content** | optional | Mithril template or String | | Additional content; can co-exist with icon and label |
-| **before** | optional | Mithril template or String or Array | | Extra content before main content |
-| **after** | optional | Mithril template or String or Array | | Extra content after main content |
+| **before** | optional | Mithril template or String | | Extra content before main content |
+| **after** | optional | Mithril template or String | | Extra content after main content |
 
 
 ## Default generated HTML

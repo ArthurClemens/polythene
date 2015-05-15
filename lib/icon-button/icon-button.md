@@ -64,12 +64,12 @@ The icon color is set with the CSS `color` attribute of the parent element. For 
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **tag** | optional | String | 'div' | HTML tag |
 | **class** | optional | String |  | Extra CSS class appended to 'icon-button' |
-| **icon** | either icon or content must be passed | Object |  | [icon](#icon) options object |
+| **icon** | either icon or content must be passed | Object |  | [icon](#icon) options object; also used to show an round "avatar" portrait image |
 | **content** | either icon or content must be passed | Mithril template or String | | Alternative content if no icon object is used |
-| **url** | optional | Object | | Button URL; options object containing `href` and `config` |
+| **url** | optional | Object with `href`, optionally `config` | | Button URL |
 | **active** | optional | Boolean | | Set to true to show the active state (with border and background) |
-| **before** | optional | Mithril template or String or Array | | Extra content before main content |
-| **after** | optional | Mithril template or String or Array | | Extra content after main content |
+| **before** | optional | Mithril template or String | | Extra content before main content |
+| **after** | optional | Mithril template or String | | Extra content after main content |
 
 
 ## Inheritance

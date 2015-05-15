@@ -35,6 +35,7 @@ To show an icon:
 		title: 'My title',
 		icon: {
 		    type: 'large',
+		    class: 'avatar',
 		    src: 'app/list-tile/avatars/1.png'
 		}
 	});
@@ -111,14 +112,14 @@ A list tile can optionally have secondary content, displayed to the right. Secon
 | **info_high** | optional | String | | Secondary text content (2 lines high) |
 | **icon** | optional | Object |  | [icon](#icon) options object |
 | **tag** | optional | String | 'a[flex]' or 'div[flex]' | HTML tag for primary content |
-| **url** | optional | Object | | URL for primary content; options object containing `href` and `config` |
+| **url** | optional | Object with `href`, optionally `config` | | URL for primary content |
 | **secondary** | optional | Object | | Options for secondary content |
 | **secondary.tag** | optional | String | See "Layout of secondary content" below | HTML tag for secondary content |
 | **secondary.icon** | optional | Object |  | [icon](#icon) options object for icon in secondary content; will be placed above secondary.content |
 | **secondary.url** | optional | Object | | URL for secondary content; options object containing `href` and `config` |
-| **secondary.content** | optional | Mithril template or String or Array | | Secondary content |
-| **before** | optional | Mithril template or String or Array | | Extra content before main content |
-| **after** | optional | Mithril template or String or Array | | Extra content after main content |
+| **secondary.content** | optional | Mithril template or String | | Secondary content |
+| **before** | optional | Mithril template or String | | Extra content before main content |
+| **after** | optional | Mithril template or String | | Extra content after main content |
 
 
 ## Layout of secondary content

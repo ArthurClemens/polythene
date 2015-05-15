@@ -51,8 +51,8 @@ Note that in this case `require('polythene/svg/svg')` is not needed (this is han
 | **group** | optional | String |  | Subfolder within iconset |
 | **name** | either src or iconset+name must be passed | String |  | SVG filename without .svg extension |
 | **refresh** | optional | Boolean | false | Set to true to fetch the SVG resource on reloads |
-| **before** | optional | Mithril template or String or Array | | Extra content before main content |
-| **after** | optional | Mithril template or String or Array | | Extra content after main content |
+| **before** | optional | Mithril template or String | | Extra content before main content |
+| **after** | optional | Mithril template or String | | Extra content after main content |
 
 
 ## Icon sets
