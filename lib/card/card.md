@@ -10,6 +10,13 @@ To write
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 
+
+tag
+class
+url
+events
+z
+
 text
 	tag
 	class
@@ -24,6 +31,8 @@ media
 header
 	tag
 	class
+	url
+	events
 	title
 	info
 	icon

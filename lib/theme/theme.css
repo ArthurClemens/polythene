@@ -290,18 +290,25 @@ segment {
 .card.text,
 .card .text {
   color: #444; }
-.card .card-actions.bordered {
+.card .actions.bordered {
   border-top: 1px solid rgba(0, 0, 0, 0.11); }
+.card.dark-theme.title,
+.card.dark-theme .title,
 .card .dark-theme.title,
 .card .dark-theme .title {
   color: white; }
+.card.dark-theme.subtitle,
+.card.dark-theme .subtitle,
 .card .dark-theme.subtitle,
 .card .dark-theme .subtitle {
   color: rgba(255, 255, 255, 0.7); }
+.card.dark-theme.text,
+.card.dark-theme .text,
 .card .dark-theme.text,
 .card .dark-theme .text {
-  color: #bbb; }
-.card .dark-theme .card-actions.bordered {
+  color: rgba(255, 255, 255, 0.7); }
+.card.dark-theme .actions.bordered,
+.card .dark-theme .actions.bordered {
   border-top: 1px solid rgba(255, 255, 255, 0.11); }
 
 .dark-theme .card.title,
@@ -312,8 +319,8 @@ segment {
   color: rgba(255, 255, 255, 0.7); }
 .dark-theme .card.text,
 .dark-theme .card .text {
-  color: #bbb; }
-.dark-theme .card .card-actions.bordered {
+  color: rgba(255, 255, 255, 0.7); }
+.dark-theme .card .actions.bordered {
   border-top: 1px solid rgba(255, 255, 255, 0.11); }
 
 .icon-button {

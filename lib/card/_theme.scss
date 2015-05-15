@@ -15,7 +15,7 @@
         color: theme($tint, $element, "text", "color");
 	}
 
-    .card-actions.bordered {
+    .actions.bordered {
         border-top: 1px solid theme($tint, $element, "actions", "border-color");
     }
 }
@@ -23,6 +23,7 @@
 .card {
 	@include _theme("light", "card");
 
+    &.dark-theme,
     .dark-theme {
         @include _theme("dark", "card");
     }

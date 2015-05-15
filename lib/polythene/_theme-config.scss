@@ -9,7 +9,7 @@ $lightTextColorHints: $lightTextColorDisabled;
 $lightBorderColor: rgba(#000,.11);
 
 $darkTextColorPrimary: rgba(#fff,1);
-$darkTextColorText: #bbb;
+$darkTextColorText: #fff;
 $darkTextColorButton: #b2b2b2;
 $darkTextColorSecondary: rgba(#fff,.7);
 $darkTextColorDisabled: rgba(#fff,.26);
@@ -143,7 +143,7 @@ $themeConfig: (
                 color: $darkTextColorSecondary
             ),
             text: (
-                color: $darkTextColorText
+                color: $darkTextColorSecondary
             ),
             actions: (
                 border-color: $darkBorderColor

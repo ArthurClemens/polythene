@@ -5,12 +5,11 @@
   -moz-border-radius: 2px; }
   .card .shadow {
     z-index: 0; }
-  .card .card-media {
+  .card .media-content {
     position: relative;
     overflow: hidden;
-    background-color: #eee;
     -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC); }
-    .card .card-media img {
+    .card .media-content img {
       display: none;
       width: 100%;
       position: absolute;
@@ -18,42 +17,42 @@
       left: 0;
       right: 0;
       bottom: 0; }
-    .card .card-media.landscape {
+    .card .media-content.landscape {
       padding-bottom: 56.25%; }
-    .card .card-media.square {
+    .card .media-content.square {
       padding-bottom: 100%; }
-    .card .card-media.crop-x img {
+    .card .media-content.crop-x img {
       width: 100%;
       height: auto;
       display: block; }
-    .card .card-media.crop-y img {
+    .card .media-content.crop-y img {
       height: 100%;
       width: auto;
       display: block; }
-    .card .card-media:last-child, .card .card-media:last-child img {
+    .card .media-content:last-child, .card .media-content:last-child img {
       border-bottom-left-radius: 2px;
       border-bottom-right-radius: 2px;
       -webkit-border-bottom-left-radius: 2px;
       -webkit-border-bottom-right-radius: 2px;
       -moz-border-bottom-left-radius: 2px;
       -moz-border-bottom-right-radius: 2px; }
-  .card .shadow + .card-media, .card .shadow + .card-media img {
+  .card .shadow + .media, .card .shadow + .media img {
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
     -webkit-border-top-left-radius: 2px;
     -webkit-border-top-right-radius: 2px;
     -moz-border-top-left-radius: 2px;
     -moz-border-top-right-radius: 2px; }
-  .card .card-overlay,
-  .card .card-overlay-dimmer {
+  .card .overlay,
+  .card .image-dimmer {
     position: absolute;
     bottom: 0;
     top: 0;
     right: 0;
     left: 0; }
-  .card .card-overlay-dimmer {
+  .card .image-dimmer {
     z-index: 1; }
-  .card .card-overlay-content {
+  .card .overlay-content {
     position: absolute;
     bottom: 0;
     top: auto;
@@ -80,82 +79,86 @@
         -webkit-transform: translateY(-50%);
         -ms-transform: translateY(-50%);
         transform: translateY(-50%); }
-  .card .card-primary {
+  .card .primary {
     position: relative; }
-    .card .card-primary .title {
+    .card .primary.has-media {
+      margin-bottom: 16px; }
+    .card .primary + .actions, .card .primary + .text {
+      margin-top: -16px; }
+    .card .primary .title {
       padding: 24px 16px 17px 16px;
       font-size: 24px;
       line-height: 32px; }
-    .card .card-primary .subtitle {
+    .card .primary .subtitle {
       font-size: 14px;
       line-height: 24px;
       margin-top: -1px; }
-    .card .card-primary.tight .title {
+    .card .primary.tight .title {
       padding-bottom: 9px; }
-    .card .card-primary .media {
+    .card .primary .media {
       margin: 16px 16px 0 16px; }
-      .card .card-primary .media .card-media, .card .card-primary .media .card-media img {
+      .card .primary .media .media, .card .primary .media .media img {
         border-radius: 0;
         -webkit-border-radius: 0;
         -moz-border-radius: 0; }
-      .card .card-primary .media.small {
+      .card .primary .media.small {
         width: 80px; }
-      .card .card-primary .media.medium {
+      .card .primary .media.medium {
         width: 112px; }
-      .card .card-primary .media.large {
+      .card .primary .media.large {
         width: 160px; }
-      .card .card-primary .media.extra-large {
+      .card .primary .media.extra-large {
         width: 240px;
         margin-bottom: 16px; }
-    .card .card-primary .card-actions {
+    .card .primary .actions {
       padding: 8px;
       margin: 16px 16px 16px 0; }
-  .card .card-actions {
+  .card .actions {
     min-height: 52px;
     padding: 2px 8px; }
-    .card .card-actions.tight {
+    .card .actions.tight {
       min-height: 0; }
-    .card .card-actions .icon-button {
+    .card .actions .icon-button {
       padding: 8px; }
-    .card .card-actions[horizontal]:not([justified]) :first-child {
+    .card .actions[horizontal]:not([justified]) :first-child {
       margin-left: 0; }
-    .card .card-actions[horizontal]:not([justified]) .icon-button + .icon-button {
+    .card .actions[horizontal]:not([justified]) .button {
+      min-width: 0; }
+    .card .actions[horizontal]:not([justified]) .icon-button + .icon-button {
       margin-left: 8px; }
-    .card .card-actions [flex] + .icon-button {
+    .card .actions [flex] + .icon-button {
       margin-right: 2px; }
-    .card .card-actions[vertical] {
+    .card .actions[vertical] {
       padding-top: 6px;
       padding-bottom: 6px; }
-      .card .card-actions[vertical] .card-actions {
+      .card .actions[vertical] .actions {
         margin-left: -8px;
         margin-right: -8px;
         min-height: 0; }
-        .card .card-actions[vertical] .card-actions:first-child {
+        .card .actions[vertical] .actions:first-child {
           margin-top: -6px; }
-        .card .card-actions[vertical] .card-actions:last-child {
+        .card .actions[vertical] .actions:last-child {
           margin-bottom: -6px; }
-        .card .card-actions[vertical] .card-actions :first-child {
+        .card .actions[vertical] .actions :first-child {
           margin-left: 0; }
-      .card .card-actions[vertical] .button {
+      .card .actions[vertical] .button {
         height: 36px;
         padding: 0;
         margin-top: 2px;
         margin-bottom: 2px; }
-  .card .card-text {
+  .card .text {
     padding-top: 10px;
     padding-right: 16px;
     padding-left: 16px;
     padding-bottom: 9px;
     font-size: 14px;
     line-height: 24px; }
-    .card .card-text:last-child {
+    .card .text:last-child {
       padding-bottom: 17px; }
-    .card .card-text.tight {
+    .card .text.tight {
       padding-bottom: 9px; }
-  .card .content + .content {
-    margin-top: -24px; }
-  .card .content + .card-actions:not(:last-child) {
+  .card .content + .actions:not(:last-child) {
     margin-top: -9px;
     margin-bottom: -7px; }
-  .card .card-actions + .card-text {
+  .card .actions + .text {
     margin-top: 8px; }
