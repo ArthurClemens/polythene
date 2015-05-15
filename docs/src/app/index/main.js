@@ -7,7 +7,9 @@ define(function(require) {
         headerPanel = require('polythene/header-panel/header-panel'),
         list = require('polythene/list/list'),
         listTile = require('polythene/list-tile/list-tile'),
-        icon = require('polythene/icon/icon'),
+        card = require('polythene/card/card'),
+        button = require('polythene/button/button'),
+        //icon = require('polythene/icon/icon'),
         app,
         doc,
         navItem,
@@ -33,7 +35,7 @@ define(function(require) {
             title: defaultTitle
         }]
     }, {
-        label: 'Aggregate components',
+        label: 'Combined components',
         links: [{
             url: 'header-panel',
             name: 'Header Panel'
@@ -45,8 +47,11 @@ define(function(require) {
             name: 'List'
         }]
     }, {
-        label: 'Regular components',
+        label: 'Components',
         links: [{
+            url: 'card',
+            name: 'Card'
+        }, {
             url: 'button',
             name: 'Button'
         }, {
@@ -63,7 +68,7 @@ define(function(require) {
             name: 'List Tile'
         }]
     }, {
-        label: 'Building block components',
+        label: 'Elementary components',
         links: [{
             url: 'element',
             name: 'Element'
@@ -117,27 +122,54 @@ define(function(require) {
                 },
                 mode: 'waterfall',
                 fixed: true,
-                content: links.map(function(group) {
-                    return m.component(list, {
-                        header: group.label ? {
-                            title: group.label
-                        } : null,
-                        tiles: group.links.map(function(link) {
-                            highlight = (m.route() === link.url);
-                            return navItem(link.name, link.url, highlight);
-                        })
-                    });
-                })
+                content: [
+                    links.map(function(group) {
+                        return m.component(list, {
+                            header: group.label ? {
+                                title: group.label
+                            } : null,
+                            tiles: group.links.map(function(link) {
+                                highlight = (m.route() === link.url);
+                                return navItem(link.name, link.url, highlight);
+                            })
+                        });
+                    }),
+                    m('.footer', m.trust('Polythene by Arthur Clemens 2015. Project page on <a href="https://github.com/ArthurClemens/Polythene">Github</a>.')) // Logo icon design by <a href="https://thenounproject.com/acider/">Miguel C Balandrano</a>
+                ]
             })
         );
     };
 
-    main = function(title, content) {
-        var parsed;
-
+    main = function(title, id, content) {
+        var parsed, url, demoCard;
         parsed = content ? marked(content) : '';
+        url = {
+            href: 'http://arthurclemens.github.io/Polythene-Examples/' + id + '.html',
+            target: '_blank'
+        };
 
-        return m('.main',
+        demoCard = (id === 'polythene') ? null : m.component(card, {
+            url: url,
+            content: [{
+                primary: {
+                    title: 'Demo',
+                    subtitle: title
+                }
+            }, {
+                actions: {
+                    class: 'bordered',
+                    content: [
+                        m('[flex]'),
+                        m.component(button, {
+                            label: 'View',
+                            url: url
+                        })
+                    ]
+                }
+            }]
+        });
+
+        return m('.main[flex]',
             m.component(headerPanel, {
                 header: {
                     toolbar: {
@@ -146,7 +178,10 @@ define(function(require) {
                 },
                 mode: 'waterfall',
                 fixed: true,
-                content: m('.doc-content', m.trust(parsed))
+                content: m('.doc-content', [
+                    demoCard,
+                    m.trust(parsed)
+                ])
             })
         );
     };
@@ -195,10 +230,9 @@ define(function(require) {
             m('.scaffold[layout][horizontal][reverse]', {
                 config: app.vm.updateHead
             }, [
-                main(currentLink.name, docData),
+                main(currentLink.name, currentLink.url, docData),
                 createDrawer()
-            ]),
-            m('.footer', m.trust('Polythene by Arthur Clemens 2015. Project page on <a href="https://github.com/ArthurClemens/Polythene">Github</a>. Logo icon design by <a href="https://thenounproject.com/acider/">Miguel C Balandrano</a>.'))
+            ])
         ];
     };
 
