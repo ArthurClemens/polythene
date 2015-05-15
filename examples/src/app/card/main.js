@@ -16,6 +16,7 @@ define(function(require) {
         iconButtonRow,
         justifiedButtonRow,
         floatingImage,
+        floatingImageExtraLarge,
         block,
         content;
 
@@ -114,6 +115,57 @@ define(function(require) {
                         m.component(button, {
                             label: 'Action 2'
                         })
+                    ]
+                }
+            }]
+        };
+    };
+
+    floatingImageExtraLarge = function(ratio) {
+        return {
+            class: 'demo-card extra-large',
+            content: [{
+                primary: {
+                    content: [{
+                            media: {
+                                ratio: ratio,
+                                type: 'extra-large',
+                                content: m('img', {
+                                    src: 'app/images/1.jpg'
+                                })
+                            }
+                        },
+                        m('[flex]'), {
+                            actions: {
+                                tag: '[layout][vertical]',
+                                content: [
+                                    m.component(iconBtn, {
+                                        icon: {
+                                            svg: {
+                                                iconset: 'mdi',
+                                                name: 'heart'
+                                            }
+                                        }
+                                    }),
+                                    m.component(iconBtn, {
+                                        icon: {
+                                            svg: {
+                                                iconset: 'mdi',
+                                                name: 'bookmark'
+                                            }
+                                        }
+                                    }),
+                                    m.component(iconBtn, {
+                                        icon: {
+                                            svg: {
+                                                iconset: 'mdi',
+                                                name: 'share'
+                                            }
+                                        }
+                                    })
+                                ]
+                            }
+                        }
                     ]
                 }
             }]
@@ -625,58 +677,19 @@ define(function(require) {
         }),
 
         m.component(block, {
-            label: 'Floating images',
+            label: 'Title images',
             cards: [
-                floatingImage('small', 'Floating image small'),
-                floatingImage('medium', 'Floating image medium'),
-                floatingImage('large', 'Floating image large'), {
-                    class: 'demo-card extra-large',
-                    content: [{
-                        primary: {
-                            content: [{
-                                    media: {
-                                        ratio: 'square',
-                                        type: 'extra-large',
-                                        content: m('img', {
-                                            src: 'app/images/1.jpg'
-                                        })
-                                    }
-                                },
-                                m('[flex]'), {
-                                    actions: {
-                                        tag: '[layout][vertical]',
-                                        content: [
-                                            m.component(iconBtn, {
-                                                icon: {
-                                                    svg: {
-                                                        iconset: 'mdi',
-                                                        name: 'heart'
-                                                    }
-                                                }
-                                            }),
-                                            m.component(iconBtn, {
-                                                icon: {
-                                                    svg: {
-                                                        iconset: 'mdi',
-                                                        name: 'bookmark'
-                                                    }
-                                                }
-                                            }),
-                                            m.component(iconBtn, {
-                                                icon: {
-                                                    svg: {
-                                                        iconset: 'mdi',
-                                                        name: 'share'
-                                                    }
-                                                }
-                                            })
-                                        ]
-                                    }
-                                }
-                            ]
-                        }
-                    }]
-                }
+                floatingImage('small', 'Title image small'),
+                floatingImage('medium', 'Title image medium'),
+                floatingImage('large', 'Title image large')
+            ]
+        }),
+
+        m.component(block, {
+            label: 'Title image extra large',
+            cards: [
+                floatingImageExtraLarge('square'),
+                floatingImageExtraLarge('landscape')
             ]
         }),
 

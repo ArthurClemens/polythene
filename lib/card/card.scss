@@ -26,7 +26,7 @@
 	$_primary_title_line_height_natural_padding_top: 7px;
 	$_primary_title_line_height_natural_padding_bottom: 9px;
 	$_subtitle_line_height_natural_padding_top: 3px;
-	$_subtitle_line_height_natural_padding_bottom: 6px;
+	$_subtitle_line_height_natural_padding_bottom: 7px;
 	$_text_line_height_natural_padding_top: 6px;
 	$_text_line_height_natural_padding_bottom: 7px;	
 
@@ -147,19 +147,19 @@
 		position: relative;
 
 		.title {
-			padding: $_v_padding_title $_h_padding_title;
-			padding-bottom: $_v_padding_title - $_subtitle_line_height_natural_padding_bottom;
+			padding: $_v_padding_title $_h_padding_title ($_v_padding_title - $_subtitle_line_height_natural_padding_bottom) $_h_padding_title;
 			font-size: 24px;
 			line-height: 32px;
 		}
 		.subtitle {
 			font-size: 14px;
 	        line-height: 24px;
+	        margin-top: -1px; // because of smaller line height
 		}
 
 		&.tight {
-			.title:last-child {
-				padding-bottom: $_v_padding_title_bottom_tight;
+			.title {
+				padding-bottom: $_v_padding_title_bottom_tight - $_subtitle_line_height_natural_padding_bottom;;
 			}
 		}
 
@@ -270,7 +270,7 @@
 	}
 
 	.content + .content {
-		margin-top: -$_v_padding;
+		margin-top: -24px;
 	}
 
 	.content + .card-actions:not(:last-child) {

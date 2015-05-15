@@ -83,15 +83,15 @@
   .card .card-primary {
     position: relative; }
     .card .card-primary .title {
-      padding: 24px 16px;
-      padding-bottom: 18px;
+      padding: 24px 16px 17px 16px;
       font-size: 24px;
       line-height: 32px; }
     .card .card-primary .subtitle {
       font-size: 14px;
-      line-height: 24px; }
-    .card .card-primary.tight .title:last-child {
-      padding-bottom: 16px; }
+      line-height: 24px;
+      margin-top: -1px; }
+    .card .card-primary.tight .title {
+      padding-bottom: 9px; }
     .card .card-primary .media {
       margin: 16px 16px 0 16px; }
       .card .card-primary .media .card-media, .card .card-primary .media .card-media img {
@@ -153,7 +153,7 @@
     .card .card-text.tight {
       padding-bottom: 9px; }
   .card .content + .content {
-    margin-top: -6px; }
+    margin-top: -24px; }
   .card .content + .card-actions:not(:last-child) {
     margin-top: -9px;
     margin-bottom: -7px; }
