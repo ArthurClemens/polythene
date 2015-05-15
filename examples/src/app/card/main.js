@@ -178,6 +178,7 @@ define(function(require) {
                 class: args.class || ''
             }, [
                 m('.p-block-header', args.label),
+                args.info ? args.info : null,
                 m('.demo-cards[horizontal][layout][wrap]', [
                     args.card ? m.component(card, args.card) : null,
                     args.cards ? args.cards.map(function(cardArgs) {
@@ -399,17 +400,17 @@ define(function(require) {
                     actions: {
                         tag: '[layout][vertical]',
                         content: [
-                            m('.card-actions bordered',
+                            m('.actions bordered',
                                 m.component(button, {
                                     label: 'Action 1'
                                 })
                             ),
-                            m('.card-actions bordered',
+                            m('.actions bordered',
                                 m.component(button, {
                                     label: 'Action 2'
                                 })
                             ),
-                            m('.card-actions bordered',
+                            m('.actions bordered',
                                 m.component(button, {
                                     label: 'Action 3'
                                 })
@@ -421,58 +422,14 @@ define(function(require) {
         }),
 
         m.component(block, {
-            label: 'Media, default center',
+            label: '16:9 media with square image',
+            info: m('p', 'Anchor origin: default, start, end'),
             cards: [{
                 class: 'demo-card',
                 content: [{
                     media: {
                         content: m('img', {
-                            src: 'app/images/circle.jpg'
-                        })
-                    }
-                }, {
-                    actions: {
-                        content: iconButtonRow
-                    }
-                }]
-            }, {
-                class: 'demo-card',
-                content: [{
-                    media: {
-                        content: m('img', {
-                            src: 'app/images/1.jpg'
-                        })
-                    }
-                }, {
-                    actions: {
-                        content: iconButtonRow
-                    }
-                }]
-            }, {
-                class: 'demo-card',
-                content: [{
-                    media: {
-                        content: m('img', {
-                            src: 'app/images/2.jpg'
-                        })
-                    }
-                }, {
-                    actions: {
-                        content: iconButtonRow
-                    }
-                }]
-            }]
-        }),
-
-        m.component(block, {
-            label: 'Media origin start',
-            cards: [{
-                class: 'demo-card',
-                content: [{
-                    media: {
-                        origin: 'start',
-                        content: m('img', {
-                            src: 'app/images/circle.jpg'
+                            src: 'app/images/circle.png'
                         })
                     }
                 }, {
@@ -486,7 +443,7 @@ define(function(require) {
                     media: {
                         origin: 'start',
                         content: m('img', {
-                            src: 'app/images/1.jpg'
+                            src: 'app/images/circle.png'
                         })
                     }
                 }, {
@@ -495,31 +452,45 @@ define(function(require) {
                     }
                 }]
             }, {
-                class: 'demo-card',
-                content: [{
-                    media: {
-                        origin: 'start',
-                        content: m('img', {
-                            src: 'app/images/2.jpg'
-                        })
-                    }
-                }, {
-                    actions: {
-                        content: iconButtonRow
-                    }
-                }]
-            }]
-        }),
-
-        m.component(block, {
-            label: 'Media origin end',
-            cards: [{
                 class: 'demo-card',
                 content: [{
                     media: {
                         origin: 'end',
                         content: m('img', {
-                            src: 'app/images/circle.jpg'
+                            src: 'app/images/circle.png'
+                        })
+                    }
+                }, {
+                    actions: {
+                        content: iconButtonRow
+                    }
+                }]
+            }]
+        }),
+
+        m.component(block, {
+            label: '16:9 media with landscape image',
+            info: m('p', 'Anchor origin: default, start, end'),
+            cards: [{
+                class: 'demo-card',
+                content: [{
+                    media: {
+                        content: m('img', {
+                            src: 'app/images/1.jpg'
+                        })
+                    }
+                }, {
+                    actions: {
+                        content: iconButtonRow
+                    }
+                }]
+            }, {
+                class: 'demo-card',
+                content: [{
+                    media: {
+                        origin: 'start',
+                        content: m('img', {
+                            src: 'app/images/1.jpg'
                         })
                     }
                 }, {
@@ -541,6 +512,39 @@ define(function(require) {
                         content: iconButtonRow
                     }
                 }]
+            }]
+        }),
+
+        m.component(block, {
+            label: '16:9 media with portrait image',
+            info: m('p', 'Anchor origin: default, start, end'),
+            cards: [{
+                class: 'demo-card',
+                content: [{
+                    media: {
+                        content: m('img', {
+                            src: 'app/images/2.jpg'
+                        })
+                    }
+                }, {
+                    actions: {
+                        content: iconButtonRow
+                    }
+                }]
+            }, {
+                class: 'demo-card',
+                content: [{
+                    media: {
+                        origin: 'start',
+                        content: m('img', {
+                            src: 'app/images/2.jpg'
+                        })
+                    }
+                }, {
+                    actions: {
+                        content: iconButtonRow
+                    }
+                }]
             }, {
                 class: 'demo-card',
                 content: [{
@@ -559,8 +563,9 @@ define(function(require) {
         }),
 
         m.component(block, {
-            label: 'Media square, default center',
-            card: {
+            label: '1:1 media with square image',
+            info: m('p', 'Anchor origin: default, start, end'),
+            cards: [{
                 class: 'demo-card',
                 content: [{
                     media: {
@@ -574,11 +579,7 @@ define(function(require) {
                         content: iconButtonRow
                     }
                 }]
-            }
-        }),
-        m.component(block, {
-            label: 'Media square, origin start',
-            card: {
+            }, {
                 class: 'demo-card',
                 content: [{
                     media: {
@@ -593,7 +594,22 @@ define(function(require) {
                         content: iconButtonRow
                     }
                 }]
-            }
+            }, {
+                class: 'demo-card',
+                content: [{
+                    media: {
+                        ratio: 'square',
+                        origin: 'end',
+                        content: m('img', {
+                            src: 'app/images/1.jpg'
+                        })
+                    }
+                }, {
+                    actions: {
+                        content: iconButtonRow
+                    }
+                }]
+            }]
         }),
 
         m.component(block, {
@@ -694,7 +710,234 @@ define(function(require) {
         }),
 
         m.component(block, {
-            label: 'Combined',
+            label: 'Card URL',
+            cards: [{
+                class: 'demo-card',
+                url: {
+                    href: 'http://en.wikipedia.org/wiki/Road_to_Nowhere',
+                    config: null
+                },
+                content: [{
+                    header: {
+                        title: titleLineText,
+                        subtitle: infoLineText,
+                        icon: {
+                            type: 'large',
+                            class: 'avatar',
+                            src: 'app/list-tile/avatars/1.png'
+                        },
+                        url: {href: 'http://www.imdb.com/name/nm0260632/', config: null}
+                    }
+                }, {
+                    media: {
+                        content: m('img', {
+                            src: 'app/images/1.jpg'
+                        })
+                    }
+                }, {
+                    primary: {
+                        title: 'Primary title',
+                        subtitle: 'Subtitle'
+                    }
+                }, {
+                    actions: {
+                        content: [
+                            m.component(button, {
+                                label: 'Action 1',
+                                events: {
+                                    onclick: function(e) {
+                                        // prevent URL
+                                        e.preventDefault();
+                                    }
+                                },
+                            }),
+                            m.component(button, {
+                                label: 'Action 2',
+                                events: {
+                                    onclick: function(e) {
+                                        // prevent URL
+                                        e.preventDefault();
+                                    }
+                                },
+                            })
+                        ]
+                    }
+                }]
+            }]
+        }),
+
+        m.component(block, {
+            label: 'Card events',
+            cards: [{
+                class: 'demo-card',
+                events: {
+                    onmouseover: function() {
+                        this.classList.add('on');
+                    },
+                    onmouseout: function() {
+                        this.classList.remove('on');
+                    },
+                    onclick: function() {
+                        window.alert('Card clicked');
+                    }
+                },
+                content: [{
+                    header: {
+                        title: titleLineText,
+                        subtitle: infoLineText,
+                        icon: {
+                            type: 'large',
+                            class: 'avatar',
+                            src: 'app/list-tile/avatars/1.png'
+                        }
+                    }
+                }, {
+                    media: {
+                        content: m('img', {
+                            src: 'app/images/1.jpg'
+                        })
+                    }
+                }, {
+                    primary: {
+                        title: 'Primary title',
+                        subtitle: 'Subtitle'
+                    }
+                }, {
+                    actions: {
+                        content: [
+                            m.component(button, {
+                                label: 'Action 1',
+                                events: {
+                                    onclick: function(e) {
+                                        // prevent card event
+                                        e.stopPropagation();
+                                        window.alert('Action 1 clicked');
+                                    }
+                                },
+                            }),
+                            m.component(button, {
+                                label: 'Action 2',
+                                events: {
+                                    onclick: function(e) {
+                                        // prevent card event
+                                        e.stopPropagation();
+                                        window.alert('Action 2 clicked');
+                                    }
+                                },
+                            })
+                        ]
+                    }
+                }]
+            }]
+        }),
+
+        m.component(block, {
+            label: 'Custom cards',
+            cards: [{
+                class: 'demo-card custom custom-travel',
+                content: [{
+                    primary: {
+                        content: [{
+                            title: m('.title[flex]', [
+                                m('.subtitle', 'Travel'),
+                                m('span', 'Road Trip')
+                            ])
+                        }, {
+                            media: {
+                                ratio: 'square',
+                                type: 'small',
+                                content: m('img', {
+                                    src: 'app/images/1.jpg'
+                                })
+                            }
+                        }]
+                    },
+                }, {
+                    text: {
+                        content: 'A road trip is a long distance journey on the road. Typically, road trips are long distances traveled by automobile.'
+                    }
+                }, {
+                    actions: {
+                        content: [
+                            m.component(button, {
+                                label: 'Action 1'
+                            }),
+                            m.component(button, {
+                                label: 'Action 2'
+                            })
+                        ]
+                    }
+                }]
+            }, {
+                class: 'demo-card custom custom-sand dark-theme',
+                content: [{
+                    primary: {
+                        title: 'Get Ready',
+                        subtitle: '2 Unlimited',
+                        media: {
+                            ratio: 'square',
+                            type: 'medium',
+                            content: m('img', {
+                                src: 'http://www.the2unlimited.com/pochettes/GET%20READY%2001.JPG'
+                            })
+                        }
+                    }
+                }, {
+                    actions: {
+                        content: [
+                            m.component(button, {
+                                label: 'Listen now'
+                            })
+                        ]
+                    }
+                }] 
+            }, {
+                class: 'demo-card custom custom-sky dark-theme',
+                content: [{
+                    primary: {
+                        title: 'Supermodel',
+                        subtitle: 'Foster the People',
+                        media: {
+                            ratio: 'square',
+                            type: 'medium',
+                            content: m('img', {
+                                src: 'http://upload.wikimedia.org/wikipedia/en/f/f9/Foster_the_People_-_Supermodel.jpg'
+                            })
+                        }
+                    }
+                }, {
+                    actions: {
+                        content: [
+                            m.component(button, {
+                                label: 'Listen now'
+                            })
+                        ]
+                    }
+                }]
+            }, {
+                class: 'demo-card custom custom-bucket dark-theme',
+                content: [{
+                    primary: {
+                        title: 'Bucket List'
+                    }
+                }, {
+                    text: {
+                        content: m.trust('<ul><li>Skydiving</li><li>Alaska</li><li>Kite surfing</li></ul>')
+                    }
+                }, {
+                    actions: {
+                        content: [
+                            m.component(button, {
+                                label: 'Edit'
+                            })
+                        ]
+                    }
+                }]
+            }]
+        }),
+
+        m.component(block, {
+            label: 'Separate elements combined',
             cards: [{
                 class: 'demo-card',
                 content: [{
