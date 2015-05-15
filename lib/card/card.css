@@ -3,13 +3,16 @@
   border-radius: 2px;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px; }
+  .card,
+  a.card {
+    display: block; }
   .card .shadow {
     z-index: 0; }
-  .card .media-content {
+  .card .media {
     position: relative;
     overflow: hidden;
     -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC); }
-    .card .media-content img {
+    .card .media img {
       display: none;
       width: 100%;
       position: absolute;
@@ -17,26 +20,26 @@
       left: 0;
       right: 0;
       bottom: 0; }
-    .card .media-content.landscape {
+    .card .media.landscape {
       padding-bottom: 56.25%; }
-    .card .media-content.square {
+    .card .media.square {
       padding-bottom: 100%; }
-    .card .media-content.crop-x img {
+    .card .media.crop-x img {
       width: 100%;
       height: auto;
       display: block; }
-    .card .media-content.crop-y img {
+    .card .media.crop-y img {
       height: 100%;
       width: auto;
       display: block; }
-    .card .media-content:last-child, .card .media-content:last-child img {
+    .card .media:last-child, .card .media:last-child img {
       border-bottom-left-radius: 2px;
       border-bottom-right-radius: 2px;
       -webkit-border-bottom-left-radius: 2px;
       -webkit-border-bottom-right-radius: 2px;
       -moz-border-bottom-left-radius: 2px;
       -moz-border-bottom-right-radius: 2px; }
-  .card .shadow + .media, .card .shadow + .media img {
+  .card .shadow + .primary-media, .card .shadow + .primary-media img {
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
     -webkit-border-top-left-radius: 2px;
@@ -59,19 +62,19 @@
     right: 0;
     left: 0;
     z-index: 2; }
-  .card .card-header {
+  .card .header {
     height: 72px; }
-    .card .card-header .title {
+    .card .header .title {
       padding: 8px 0;
       font-size: 14px;
       line-height: 20px;
       margin-top: 3px; }
-    .card .card-header .content-icon {
+    .card .header .content-icon {
       position: relative;
       width: 68px;
       height: 72px;
       padding: 8px 0; }
-      .card .card-header .content-icon .icon {
+      .card .header .content-icon .icon {
         position: absolute;
         left: 16px;
         position: absolute;
@@ -82,8 +85,10 @@
   .card .primary {
     position: relative; }
     .card .primary.has-media {
-      margin-bottom: 16px; }
-    .card .primary + .actions, .card .primary + .text {
+      padding-bottom: 16px; }
+      .card .primary.has-media + .actions {
+        margin-top: -16px; }
+    .card .primary + .text {
       margin-top: -16px; }
     .card .primary .title {
       padding: 24px 16px 17px 16px;
@@ -95,19 +100,19 @@
       margin-top: -1px; }
     .card .primary.tight .title {
       padding-bottom: 9px; }
-    .card .primary .media {
+    .card .primary .primary-media {
       margin: 16px 16px 0 16px; }
-      .card .primary .media .media, .card .primary .media .media img {
+      .card .primary .primary-media .media, .card .primary .primary-media .media img {
         border-radius: 0;
         -webkit-border-radius: 0;
         -moz-border-radius: 0; }
-      .card .primary .media.small {
+      .card .primary .primary-media.small {
         width: 80px; }
-      .card .primary .media.medium {
+      .card .primary .primary-media.medium {
         width: 112px; }
-      .card .primary .media.large {
+      .card .primary .primary-media.large {
         width: 160px; }
-      .card .primary .media.extra-large {
+      .card .primary .primary-media.extra-large {
         width: 240px;
         margin-bottom: 16px; }
     .card .primary .actions {
@@ -157,7 +162,8 @@
       padding-bottom: 17px; }
     .card .text.tight {
       padding-bottom: 9px; }
-  .card .content + .actions:not(:last-child) {
+  .card .text + .actions:not(:last-child),
+  .card .primary + .actions:not(:last-child) {
     margin-top: -9px;
     margin-bottom: -7px; }
   .card .actions + .text {
