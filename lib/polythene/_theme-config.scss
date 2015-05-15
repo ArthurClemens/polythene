@@ -4,6 +4,7 @@ $lightTextColorPrimary: rgba(#000,.87);
 $lightTextColorText: #444;
 $lightTextColorButton: #4D4D4D;
 $lightTextColorSecondary: rgba(#000,.54);
+$lightTextColorTertiary: rgba(#000,.4);
 $lightTextColorDisabled: rgba(#000,.26);
 $lightTextColorHints: $lightTextColorDisabled;
 $lightBorderColor: rgba(#000,.11);
@@ -12,6 +13,7 @@ $darkTextColorPrimary: rgba(#fff,1);
 $darkTextColorText: #fff;
 $darkTextColorButton: #b2b2b2;
 $darkTextColorSecondary: rgba(#fff,.7);
+$darkTextColorTertiary: rgba(#fff,.4);
 $darkTextColorDisabled: rgba(#fff,.26);
 $darkTextColorHints: textColorDisabled;
 $darkBorderColor: rgba(#fff,.11);
@@ -84,7 +86,7 @@ $themeConfig: (
         ),
         list-tile: (
             header: $lightTextColorPrimary,
-            subheader: $lightTextColorSecondary
+            subheader: $lightTextColorTertiary
         )
     ),
     dark: (
@@ -154,7 +156,7 @@ $themeConfig: (
         ),
         list-tile: (
             header: $darkTextColorPrimary,
-            subheader: $darkTextColorSecondary
+            subheader: $darkTextColorTertiary
         )
     )
 );

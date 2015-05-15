@@ -378,9 +378,9 @@ segment {
 .list-tile .list-tile-title {
   color: rgba(0, 0, 0, 0.87); }
 .list-tile.subheader .list-tile-title {
-  color: rgba(0, 0, 0, 0.54); }
+  color: rgba(0, 0, 0, 0.4); }
 .list-tile .list-tile-info {
-  color: rgba(0, 0, 0, 0.54); }
+  color: rgba(0, 0, 0, 0.4); }
 .list-tile .list-tile-primary, .list-tile .list-tile-primary a,
 .list-tile .list-tile-secondary,
 .list-tile .list-tile-secondary a {
@@ -393,9 +393,9 @@ segment {
 .dark-theme .list-tile .list-tile-title {
   color: white; }
 .dark-theme .list-tile.subheader .list-tile-title {
-  color: rgba(255, 255, 255, 0.7); }
+  color: rgba(255, 255, 255, 0.4); }
 .dark-theme .list-tile .list-tile-info {
-  color: rgba(255, 255, 255, 0.7); }
+  color: rgba(255, 255, 255, 0.4); }
 .dark-theme .list-tile .list-tile-primary, .dark-theme .list-tile .list-tile-primary a,
 .dark-theme .list-tile .list-tile-secondary,
 .dark-theme .list-tile .list-tile-secondary a {
