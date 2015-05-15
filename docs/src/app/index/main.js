@@ -141,19 +141,24 @@ define(function(require) {
     };
 
     main = function(title, id, content) {
-        var parsed, url, demoCard;
+        var parsed, url, urlId, subtitle, demoCard;
         parsed = content ? marked(content) : '';
+
+        urlId = (id === 'polythene') ? 'index' : id;
+
         url = {
-            href: 'http://arthurclemens.github.io/Polythene-Examples/' + id + '.html',
+            href: 'http://arthurclemens.github.io/Polythene-Examples/' + urlId + '.html',
             target: '_blank'
         };
 
-        demoCard = (id === 'polythene') ? null : m.component(card, {
+        subtitle = (id === 'polythene') ? 'All components' : title;
+
+        demoCard = m.component(card, {
             url: url,
             content: [{
                 primary: {
                     title: 'Demo',
-                    subtitle: title
+                    subtitle: subtitle
                 }
             }, {
                 actions: {
