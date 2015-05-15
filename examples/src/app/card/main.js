@@ -15,8 +15,8 @@ define(function(require) {
         shortIpsum,
         iconButtonRow,
         justifiedButtonRow,
-        floatingImage,
-        floatingImageExtraLarge,
+        titleImage,
+        titleImageExtraLarge,
         block,
         content;
 
@@ -91,7 +91,7 @@ define(function(require) {
         ]
     };
 
-    floatingImage = function(type, title) {
+    titleImage = function(type, title) {
         return {
             class: 'demo-card',
             content: [{
@@ -121,7 +121,7 @@ define(function(require) {
         };
     };
 
-    floatingImageExtraLarge = function(ratio) {
+    titleImageExtraLarge = function(ratio) {
         return {
             class: 'demo-card extra-large',
             content: [{
@@ -695,17 +695,17 @@ define(function(require) {
         m.component(block, {
             label: 'Title images',
             cards: [
-                floatingImage('small', 'Title image small'),
-                floatingImage('medium', 'Title image medium'),
-                floatingImage('large', 'Title image large')
+                titleImage('small', 'Title image small'),
+                titleImage('medium', 'Title image medium'),
+                titleImage('large', 'Title image large')
             ]
         }),
 
         m.component(block, {
             label: 'Title image extra large',
             cards: [
-                floatingImageExtraLarge('square'),
-                floatingImageExtraLarge('landscape')
+                titleImageExtraLarge('square'),
+                titleImageExtraLarge('landscape')
             ]
         }),
 

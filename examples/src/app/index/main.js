@@ -19,7 +19,7 @@ define(function(require) {
     require('css!./main');
 
     links = [{
-        label: 'Aggregate components',
+        label: 'Combined components',
         links: [{
             url: 'header-panel',
             name: 'Header Panel'
@@ -29,13 +29,13 @@ define(function(require) {
         }, {
             url: 'list',
             name: 'List'
-        }, {
-            url: 'card',
-            name: 'Card'
         }]
     }, {
-        label: 'Regular components',
+        label: 'Components',
         links: [{
+            url: 'card',
+            name: 'Card'
+        }, {
             url: 'button',
             name: 'Button'
         }, {
@@ -52,7 +52,7 @@ define(function(require) {
             name: 'List Tile'
         }]
     }, {
-        label: 'Building block components',
+        label: 'Elementary components',
         links: [{
             url: 'svg',
             name: 'SVG'
