@@ -27,7 +27,7 @@
     "watch-css": "nodemon -e scss -w lib/ -x 'npm run build-css'",
     "watch": "npm run watch-css",
     "build": "npm run copy-docs && npm run build-css && r.js -o src/build.js && rm build/build* && rm build/app/app.scss",
-    "github": "rm -rf ../../gh-pages/app && npm run build-copy-to-gh"
+    "github": "rm -rf ../../gh-pages/app && npm run build && npm run build-copy-to-gh"
   },
   "repository": {
     "type": "git",

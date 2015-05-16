@@ -29,7 +29,7 @@
     "setup": "npm run setup-symlink && npm run setup-libs",
     "build": "npm run build-css && r.js -o src/build.js && rm build/build* && rm build/app/app.scss",
     "watch": "npm run watch-css",
-    "github": "rm -rf ../../gh-pages-examples/app && npm run build-copy-to-gh"
+    "github": "rm -rf ../../gh-pages-examples/app && npm run build && npm run build-copy-to-gh"
   },
   "repository": {
     "type": "git",
