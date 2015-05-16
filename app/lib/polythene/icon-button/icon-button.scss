@@ -39,10 +39,6 @@
         border-radius: inherit;
         pointer-events: none;
         z-index: 1;
-
         transition: background-color $surfaceReactionDuration ease-in-out;
-        -webkit-transition: background-color $surfaceReactionDuration ease-in-out;
-        -moz-transition: background-color $surfaceReactionDuration ease-in-out;
-        -webkit-transition: background-color $surfaceReactionDuration ease-in-out;
     }
 }

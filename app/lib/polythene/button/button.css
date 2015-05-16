@@ -10,9 +10,10 @@
   text-transform: uppercase;
   outline: none;
   cursor: pointer;
-  user-select: none;
-  -moz-user-select: none;
   -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   font-size: 14px;
   font-weight: 500; }
   .button .button-content {
@@ -41,7 +42,4 @@
     background-color: transparent;
     border-radius: inherit;
     pointer-events: none;
-    transition: background-color 0.2s ease-in-out;
-    -webkit-transition: background-color 0.2s ease-in-out;
-    -moz-transition: background-color 0.2s ease-in-out;
-    -webkit-transition: background-color 0.2s ease-in-out; }
+    transition: background-color 0.2s ease-in-out; }

@@ -36,18 +36,21 @@
   -ms-flex: 1 1 0.000000001px;
   -webkit-flex: 1;
   flex: 1;
-  -webkit-flex-basis: 0.000000001px;
-  flex-basis: 0.000000001px; }
+  -ms-flex-preferred-size: 0.000000001px;
+          -webkit-flex-basis: 0.000000001px;
+          flex-basis: 0.000000001px; }
 span[flex] {
   display: block; }
 [vertical][layout] > [flex][auto-vertical] {
   -ms-flex: 1 1 auto;
-  -webkit-flex-basis: auto;
-  flex-basis: auto; }
+  -ms-flex-preferred-size: auto;
+          -webkit-flex-basis: auto;
+          flex-basis: auto; }
 [flex][auto] {
   -ms-flex: 1 1 auto;
-  -webkit-flex-basis: auto;
-  flex-basis: auto; }
+  -ms-flex-preferred-size: auto;
+          -webkit-flex-basis: auto;
+          flex-basis: auto; }
 [flex][none] {
   -ms-flex: none;
   -webkit-flex: none;
@@ -136,25 +139,25 @@ span[flex] {
   justify-content: space-between; }
 [self-start] {
   -ms-align-self: flex-start;
-  -webkit-align-self: flex-start;
-  align-self: flex-start; }
+      -ms-flex-item-align: start;
+          -webkit-align-self: flex-start;
+          align-self: flex-start; }
 [self-center] {
   -ms-align-self: center;
-  -webkit-align-self: center;
-  align-self: center; }
+      -ms-flex-item-align: center;
+          -webkit-align-self: center;
+          align-self: center; }
 [self-end] {
   -ms-align-self: flex-end;
-  -webkit-align-self: flex-end;
-  align-self: flex-end; }
+      -ms-flex-item-align: end;
+          -webkit-align-self: flex-end;
+          align-self: flex-end; }
 [self-stretch] {
   -ms-align-self: stretch;
-  -webkit-align-self: stretch;
-  align-self: stretch; }
+      -ms-flex-item-align: stretch;
+          -webkit-align-self: stretch;
+          align-self: stretch; }
 * {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -o-box-sizing: border-box;
-  -ms-box-sizing: border-box;
   box-sizing: border-box; }
 [block] {
   display: block; }
@@ -175,12 +178,10 @@ body[fullbleed] {
 segment {
   display: block;
   position: relative;
-  -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
   margin: 1em 0.5em;
   padding: 1em;
   background-color: white;
-  -webkit-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
   border-radius: 5px 5px 5px 5px; }

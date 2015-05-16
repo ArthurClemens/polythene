@@ -2,9 +2,10 @@
   display: inline-block;
   position: relative;
   outline: none;
-  user-select: none;
-  -moz-user-select: none;
   -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   cursor: pointer;
   z-index: 0;
   width: 56px;
@@ -34,7 +35,4 @@
     border-radius: inherit;
     pointer-events: none;
     z-index: 1;
-    transition: background-color 0.2s ease-in-out;
-    -webkit-transition: background-color 0.2s ease-in-out;
-    -moz-transition: background-color 0.2s ease-in-out;
-    -webkit-transition: background-color 0.2s ease-in-out; }
+    transition: background-color 0.2s ease-in-out; }

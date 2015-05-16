@@ -2,6 +2,7 @@
 
 	& + .list {
 		border-top: 1px solid theme($tint, $element, "border-color");
+		@include hairline("border-top");
 	}
 
 	&.bordered {
@@ -10,6 +11,7 @@
 				.list-tile-content,
 				.list-tile-content-icon {
 					border-bottom: 1px solid theme($tint, $element, "border-color");
+					@include hairline("border-bottom");
 				}
 			}
 		}
@@ -22,6 +24,7 @@
 			&:not(:last-child) {
 				.list-tile-content {
 					border-bottom: 1px solid theme($tint, $element, "border-color");
+					@include hairline("border-bottom");
 				}
 			}
 		}
@@ -29,6 +32,7 @@
 			.list-tile.subheader {
 				.list-tile-content {
 					border-top: 1px solid theme($tint, $element, "border-color");
+					@include hairline("border-top");
 				}
 			}
 		}

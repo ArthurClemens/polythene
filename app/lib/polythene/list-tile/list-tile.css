@@ -4,8 +4,7 @@
     position: absolute;
     top: 50%;
     -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%); }
+            transform: translateY(-50%); }
   .list-tile.list-tile-single-line .list-tile-content-icon,
   .list-tile.list-tile-single-line .list-tile-content {
     height: 48px;
@@ -49,8 +48,7 @@
     position: absolute;
     top: 50%;
     -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%); }
+            transform: translateY(-50%); }
   .list-tile.list-tile-two-line .list-tile-content-icon,
   .list-tile.list-tile-two-line .list-tile-content {
     height: 72px;
@@ -83,8 +81,7 @@
   .list-tile .list-tile-content {
     position: relative;
     -webkit-transform-style: preserve-3d;
-    -moz-transform-style: preserve-3d;
-    transform-style: preserve-3d; }
+            transform-style: preserve-3d; }
   .list-tile .list-tile-title {
     font-size: 16px;
     white-space: nowrap;

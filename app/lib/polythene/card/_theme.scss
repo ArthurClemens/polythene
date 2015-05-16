@@ -17,6 +17,7 @@
 
     .actions.bordered {
         border-top: 1px solid theme($tint, $element, "actions", "border-color");
+        @include hairline("border-top");
     }
 }
 
