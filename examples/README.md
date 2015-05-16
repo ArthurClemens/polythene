@@ -12,7 +12,7 @@ Public site: [Polythene Examples](http://arthurclemens.github.io/Polythene-Examp
 
 ## Developing
 
-* `npm run dev-css` - to continuously build CSS
+* `npm run watch-css` - to watch scss file changes
 * `npm run build-css` - to build CSS
 
 ## Building

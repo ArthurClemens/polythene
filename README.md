@@ -19,15 +19,23 @@ The default theme uses flexbox, so this works in IE10 and other browsers. For IE
 
 ## Setup
 
+Install global npm packages:
+
+* `npm install -g http-server requirejs autoprefixer nodemon`
+
+
+
+Then run:
+
 * `npm install`
 * `npm run setup` - installs additional dependencies and copies files to lib folders
 
 
+
 ## Developing
 
-* `npm run dev-css` - to continuously build CSS
-* `npm run build-theme-css` - to create/update the theme CSS
-
+* `npm run watch-css` - to watch scss file changes
+* `npm run build-css` - to compile all CSS
 
 
 ## License
