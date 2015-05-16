@@ -209,30 +209,12 @@ code {
     color: #795548;
 }
 
-.ribbon {
-    $_deg: 45deg;
-    background-color: #FF5722;
-    overflow: hidden;
-    white-space: nowrap;
-    /* top left corner */
-    position: fixed;
-    right: -50px;
-    top: 40px;
-    z-index: 2;
-    /* 45 deg ccw rotation */
-    -webkit-transform: rotate($_deg);
-     -moz-transform: rotate($_deg);
-      -ms-transform: rotate($_deg);
-       -o-transform: rotate($_deg);
-          transform: rotate($_deg);
+.github {
+    margin: 24px 0 0 0;
+    text-align: center;
+    padding: 24px 16px;
+    border-top: 1px solid rgba(0,0,0,.15);
+    font-size: 14px;
+    color: rgba(0,0,0,.4);
 
-    a {
-        color: #fff;
-        display: block;
-        font: bold 81.25% 'arial', sans-serif;
-        margin: 1px 0;
-        padding: 10px 50px;
-        text-align: center;
-        text-decoration: none;
-    }
 }

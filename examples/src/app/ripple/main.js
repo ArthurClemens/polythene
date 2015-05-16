@@ -179,14 +179,15 @@ define(function(require) {
                 bottomBar: m.trust('<div class="bottom indent" style="color: #666; font-size: 18px;">some stuffs align to the bottom</div>'),
                 after: m.component(ripple)
             })
-        })
+        }),
+
+        github
     ]);
 
     app = {};
     app.view = function() {
         return [
-            nav(NAME, content),
-            github
+            nav(NAME, content)
         ];
     };
 

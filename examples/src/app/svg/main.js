@@ -117,7 +117,9 @@ define(function(require) {
                             }
                         })
                     ]
-                })
+                }),
+
+                github
             ]);
         }
     };
@@ -168,8 +170,7 @@ define(function(require) {
             nav(NAME, [
                 dynamic,
                 m('div', content)
-            ]),
-            github
+            ])
         ];
     };
 

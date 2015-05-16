@@ -181,8 +181,7 @@ define(function(require) {
                         return item(link);
                     })
                 });
-            }))),
-            github
+            })), github)
         );
     };
 
@@ -202,7 +201,10 @@ define(function(require) {
                     bottomBar: createBottomBarTemplate(currentLink)
                 }
             },
-            content: kitchensinkContent
+            content: [
+                kitchensinkContent,
+                github
+            ]
         }));
     };
 
@@ -235,7 +237,10 @@ define(function(require) {
                     bottomBar: createBottomBarTemplate(currentLink)
                 }
             },
-            content: m.trust(template),
+            content: [
+                m.trust(template),
+                github
+            ],
             transform: onHeaderTransform,
             cache: cache
         });
@@ -257,7 +262,10 @@ define(function(require) {
                     bottomBar: createBottomBarTemplate(currentLink)
                 }
             },
-            content: m.trust(template),
+            content: [
+                m.trust(template),
+                github
+            ],
             cache: cache
         }));
     };
@@ -277,7 +285,10 @@ define(function(require) {
                     bottomBar: createBottomBarTemplate(currentLink)
                 }
             },
-            content: m.trust(template),
+            content: [
+                m.trust(template),
+                github
+            ],
             cache: cache
         }));
     };
@@ -297,7 +308,10 @@ define(function(require) {
                     bottomBar: createBottomBarTemplate(currentLink)
                 }
             },
-            content: m.trust(template),
+            content: [
+                m.trust(template),
+                github
+            ],
             cache: cache
         }));
     };
@@ -315,7 +329,10 @@ define(function(require) {
                     bottomBar: createBottomBarTemplate(currentLink)
                 }
             },
-            content: m.trust(template),
+            content: [
+                m.trust(template),
+                github
+            ],
             cache: cache
         }));
     };
@@ -337,7 +354,10 @@ define(function(require) {
                     bottomBar: createBottomBarTemplate(currentLink)
                 }
             },
-            content: m.trust(template),
+            content: [
+                m.trust(template),
+                github
+            ],
             cache: cache
         }));
     };
@@ -359,7 +379,10 @@ define(function(require) {
                     bottomBar: createBottomBarTemplate(currentLink)
                 }
             },
-            content: m.trust(template),
+            content: [
+                m.trust(template),
+                github
+            ],
             cache: cache
         }));
     };
@@ -379,7 +402,10 @@ define(function(require) {
                     bottomBar: createBottomBarTemplate(currentLink)
                 }
             },
-            content: m.trust(template),
+            content: [
+                m.trust(template),
+                github
+            ],
             cache: cache
         }));
     };
@@ -401,7 +427,10 @@ define(function(require) {
                     bottomBar: createBottomBarTemplate(currentLink)
                 }
             },
-            content: m.trust(template),
+            content: [
+                m.trust(template),
+                github
+            ],
             cache: cache
         }));
     };
@@ -424,7 +453,10 @@ define(function(require) {
                     bottomBar: createBottomBarTemplate(currentLink)
                 }
             },
-            content: m.trust(template),
+            content: [
+                m.trust(template),
+                github
+            ],
             cache: cache
         }));
     };

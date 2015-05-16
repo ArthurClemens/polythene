@@ -276,15 +276,16 @@ define(function(require) {
         m.component(titleBlock, {
             title: 'Sorting a list',
             content: sortableList
-        })
+        }),
+
+        github
 
     ]);
 
     app = {};
     app.view = function() {
         return [
-            nav(NAME, content),
-            github
+            nav(NAME, content)
         ];
     };
 

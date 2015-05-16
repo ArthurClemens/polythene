@@ -116,14 +116,14 @@ define(function(require) {
             content: buttonRow({
                 raised: true
             })
-        })
+        }),
+        github
     ];
 
     app = {};
     app.view = function() {
         return [
-            nav(NAME, content),
-            github
+            nav(NAME, content)
         ];
     };
 
