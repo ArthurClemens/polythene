@@ -51,6 +51,7 @@
         }
     }
 
+    &.selected,
     &[disabled] {
         cursor: auto;
         pointer-events: none;
