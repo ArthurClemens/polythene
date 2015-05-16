@@ -245,7 +245,7 @@ segment {
 .button[disabled] .button-content {
   background-color: transparent;
   color: rgba(0, 0, 0, 0.26); }
-.button:hover .wash {
+.no-touch .button:hover .wash {
   background-color: rgba(0, 0, 0, 0.08); }
 .button:active .wash, .button.selected .wash {
   background-color: rgba(0, 0, 0, 0.13); }
@@ -256,7 +256,7 @@ segment {
 .button[raised][disabled] .button-content {
   background-color: rgba(0, 0, 0, 0.07);
   color: rgba(0, 0, 0, 0.26); }
-.button[raised]:hover .wash {
+.no-touch .button[raised]:hover .wash {
   background-color: transparent; }
 .button[raised]:active .wash, .button[raised].selected .wash {
   background-color: rgba(0, 0, 0, 0.08); }
@@ -267,7 +267,7 @@ segment {
 .dark-theme .button[disabled] .button-content {
   background-color: transparent;
   color: rgba(255, 255, 255, 0.3); }
-.dark-theme .button:hover .wash {
+.no-touch .dark-theme .button:hover .wash {
   background-color: rgba(255, 255, 255, 0.08); }
 .dark-theme .button:active .wash, .dark-theme .button.selected .wash {
   background-color: rgba(204, 204, 204, 0.25); }
@@ -277,7 +277,7 @@ segment {
 .dark-theme .button[raised][disabled] .button-content {
   background-color: rgba(255, 255, 255, 0.12);
   color: rgba(255, 255, 255, 0.3); }
-.dark-theme .button[raised]:hover .wash {
+.no-touch .dark-theme .button[raised]:hover .wash {
   background-color: #1e88e5; }
 .dark-theme .button[raised]:active .wash, .dark-theme .button[raised].selected .wash {
   background-color: #1976d2; }
@@ -345,7 +345,7 @@ segment {
   .icon-button[disabled] {
     background-color: transparent;
     color: rgba(0, 0, 0, 0.26); }
-  .icon-button:hover .wash {
+  .no-touch .icon-button:hover .wash {
     background-color: rgba(0, 0, 0, 0.08); }
   .icon-button:active .wash, .icon-button.selected .wash {
     background-color: rgba(0, 0, 0, 0.13); }
@@ -358,7 +358,7 @@ segment {
   .icon-button[raised][disabled] {
     background-color: rgba(0, 0, 0, 0.07);
     color: rgba(0, 0, 0, 0.26); }
-  .icon-button[raised]:hover .wash {
+  .no-touch .icon-button[raised]:hover .wash {
     background-color: transparent; }
   .icon-button[raised]:active .wash, .icon-button[raised].selected .wash {
     background-color: rgba(0, 0, 0, 0.08); }
@@ -371,7 +371,7 @@ segment {
   .dark-theme .icon-button:not([raised])[disabled] {
     background-color: transparent;
     color: rgba(255, 255, 255, 0.3); }
-  .dark-theme .icon-button:not([raised]):hover .wash {
+  .no-touch .dark-theme .icon-button:not([raised]):hover .wash {
     background-color: rgba(255, 255, 255, 0.08); }
   .dark-theme .icon-button:not([raised]):active .wash, .dark-theme .icon-button:not([raised]).selected .wash {
     background-color: rgba(204, 204, 204, 0.25); }
@@ -383,7 +383,7 @@ segment {
   .dark-theme .icon-button[raised][disabled] {
     background-color: rgba(255, 255, 255, 0.12);
     color: rgba(255, 255, 255, 0.3); }
-  .dark-theme .icon-button[raised]:hover .wash {
+  .no-touch .dark-theme .icon-button[raised]:hover .wash {
     background-color: #1e88e5; }
   .dark-theme .icon-button[raised]:active .wash, .dark-theme .icon-button[raised].selected .wash {
     background-color: #1976d2; }
@@ -446,7 +446,7 @@ segment {
     @media screen and (-webkit-min-device-pixel-ratio: 2), screen and (min-resolution: 2dppx) {
       .list.bordered-indent:not(:first-child) .list-tile.subheader .list-tile-content {
         border-top-width: 0.5px; } }
-.list.hoverable .list-tile:not(.subheader):hover {
+.no-touch .list.hoverable .list-tile:not(.subheader):hover {
   background-color: rgba(0, 0, 0, 0.08); }
 
 .dark-theme .list + .list {
@@ -477,7 +477,7 @@ segment {
     @media screen and (-webkit-min-device-pixel-ratio: 2), screen and (min-resolution: 2dppx) {
       .dark-theme .list.bordered-indent:not(:first-child) .list-tile.subheader .list-tile-content {
         border-top-width: 0.5px; } }
-.dark-theme .list.hoverable .list-tile:not(.subheader):hover {
+.no-touch .dark-theme .list.hoverable .list-tile:not(.subheader):hover {
   background-color: rgba(255, 255, 255, 0.08); }
 
 a, a:active, a:focus {

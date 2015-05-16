@@ -38,9 +38,11 @@
 		}
 	}
 
-	&.hoverable {
-		.list-tile:not(.subheader):hover {
-			background-color: theme($tint, $element, "background-hover-color");
+	.no-touch & {
+		&.hoverable {
+			.list-tile:not(.subheader):hover {
+				background-color: theme($tint, $element, "background-hover-color");
+			}
 		}
 	}
 }
