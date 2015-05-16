@@ -152,12 +152,11 @@
 	.primary {
 		position: relative;
 
-		&.has-media {
+		&.has-media:not(:last-child) {
 			padding-bottom: 16px;
-
-			& + .actions {
-				margin-top: -16px;
-			}
+		}
+		&.has-media + .actions {
+			margin-top: -16px;
 		}
 
 		& + .text {

@@ -54,6 +54,7 @@ Add an onclick event:
 | **raised** | optional | Boolean | false | Shows a shadow; on button press the shadow depth is increased by 1 |
 | **z** | optional | Number 0-5 | 1 | The shadow depth for a raised button; raised buttons have a default z of 1 |
 | **disabled** | optional | Boolean | false | Disables the button |
+| **selected** | optional | Boolean | false | Set to true to show the button as selected |
 
 
 ## Default generated HTML

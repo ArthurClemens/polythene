@@ -34,8 +34,8 @@
         bottom: 6px; }
     .button .button-content .wash {
       z-index: 1; }
-  .button[disabled] {
-    cursor: auto;
+  .button.selected, .button[disabled] {
+    cursor: default;
     pointer-events: none; }
   .button .wash {
     background-color: transparent;

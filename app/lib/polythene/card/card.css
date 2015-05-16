@@ -84,10 +84,10 @@
         transform: translateY(-50%); }
   .card .primary {
     position: relative; }
-    .card .primary.has-media {
+    .card .primary.has-media:not(:last-child) {
       padding-bottom: 16px; }
-      .card .primary.has-media + .actions {
-        margin-top: -16px; }
+    .card .primary.has-media + .actions {
+      margin-top: -16px; }
     .card .primary + .text {
       margin-top: -16px; }
     .card .primary .title {
