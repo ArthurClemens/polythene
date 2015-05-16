@@ -30,7 +30,6 @@ define(function(require) {
         return m.component(headerPanel, {
             class: 'app-header',
             mode: 'waterfall',
-            fixed: true,
             header: {
                 toolbar: {
                     topBar: toolbarRow(title)

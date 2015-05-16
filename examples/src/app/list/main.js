@@ -200,7 +200,7 @@ define(function(require) {
         }),
 
         m.component(titleBlock, {
-            title: 'Hoverable',
+            title: 'Hoverable (not on touch device)',
             content: m.component(list, {
                 class: 'demo-list',
                 tiles: exampleTiles,

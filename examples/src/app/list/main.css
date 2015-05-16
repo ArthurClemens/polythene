@@ -1,8 +1,12 @@
 .p-block {
 	background: none;
+	width: 320px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0;
 }
 .demo-list {
-	width: 320px;
+	width: 100%;
 	background-color: #fff;
 }
 
