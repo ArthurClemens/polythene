@@ -46,11 +46,12 @@ To align the subheader with the text, add parameter `class` with value `'indent'
 | **mode** | optional | String | | Give borders to list tiles; use either `bordered` or `bordered-indent` |
 | **before** | optional | Mithril template or String | | Extra content before main content |
 | **after** | optional | Mithril template or String | | Extra content after main content |
+| **hoverable** | optional | Boolean | false | Set to true to show a hover effect on list tiles |
 
 
 ## Default generated HTML
 
-	<div class="list list-has-subheader">
+	<div class="list has-subheader">
 	    <div horizontal="true" layout="true" center="true" class="list-tile list-tile-single-line subheader">
 	        <a flex="true" class="list-tile-primary">
 	            <div class="list-tile-content">

@@ -4,6 +4,7 @@ define(function(require) {
     var NAME = 'List',
         m = require('mithril'),
         list = require('polythene/list/list'),
+        button = require('polythene/button/button'),
         listTile = require('polythene/list-tile/list-tile'),
         nav = require('nav'),
         github = require('github'),
@@ -13,6 +14,7 @@ define(function(require) {
         titleLineText,
         infoLineText,
         exampleList,
+        sortableList,
         content;
 
     require('polythene/font-roboto/font-roboto');
@@ -53,6 +55,7 @@ define(function(require) {
         return m.component(list, {
             class: [opts.class ? opts.class : null, 'demo-list'].join(' '),
             mode: opts.mode,
+            hoverable: opts.hoverable,
             header: {
                 title: 'Subheader',
                 indent: opts.indent
@@ -89,12 +92,118 @@ define(function(require) {
         });
     };
 
+    sortableList = {
+        controller: function() {
+            var mode, now, items, pastRange;
+
+            mode = m.prop('name');
+            now = new Date();
+            pastRange = 1000 * 3600 * 24 * 31 * 6;
+
+            items = [{
+                name: 'John',
+                date: new Date(now - Math.random() * pastRange)
+            }, {
+                name: 'Edward',
+                date: new Date(now - Math.random() * pastRange)
+            }, {
+                name: 'Atilla',
+                date: new Date(now - Math.random() * pastRange)
+            }, {
+                name: 'Bernd',
+                date: new Date(now - Math.random() * pastRange)
+            }, {
+                name: 'George',
+                date: new Date(now - Math.random() * pastRange)
+            }, {
+                name: 'Cedric',
+                date: new Date(now - Math.random() * pastRange)
+            }];
+
+            return {
+                mode: mode,
+                items: items
+            };
+        },
+        view: function(ctrl) {
+            var sortList, sortByName, sortByDate, sortedList;
+
+            sortByName = function(a, b) {
+                if (a.name.toLowerCase() < b.name.toLowerCase()) {
+                    return -1;
+                }
+                if (a.name.toLowerCase() > b.name.toLowerCase()) {
+                    return 1;
+                }
+                return 0;
+            };
+
+            sortByDate = function(a, b) {
+                if (a.date < b.date) {
+                    return -1;
+                }
+                if (a.date > b.date) {
+                    return 1;
+                }
+                return 0;
+            };
+
+            sortList = function() {
+                return ctrl.mode() === 'name' ? sortByName : sortByDate;
+            };
+
+            sortedList = ctrl.items.sort(sortList());
+
+            return m('.demo-list.sortable-list',
+                m('.controls[layout][horizontal]', 
+                    m.component(button, {
+                        label: 'Sort by name',
+                        selected: ctrl.mode() === 'name',
+                        events: {
+                            onclick: function() {
+                                ctrl.mode('name');
+                            }
+                        }
+                    }),
+                    m.component(button, {
+                        label: 'Sort by date',
+                        selected: ctrl.mode() === 'date',
+                        events: {
+                            onclick: function() {
+                                ctrl.mode('date');
+                            }
+                        }
+                    })
+                ),
+                m.component(list, {
+                    tiles: sortedList.map(function(item) {
+                        return m.component(listTile, {
+                            title: item.name,
+                            info: item.date.toLocaleDateString()
+                        });
+                    }),
+                    hoverable: true
+                })
+            );
+        }
+    };
+
     content = m('.demo-content', [
+
         m.component(titleBlock, {
             title: 'No subheader',
             content: m.component(list, {
                 class: 'demo-list',
                 tiles: exampleTiles
+            })
+        }),
+
+        m.component(titleBlock, {
+            title: 'Hoverable',
+            content: m.component(list, {
+                class: 'demo-list',
+                tiles: exampleTiles,
+                hoverable: true
             })
         }),
 
@@ -120,8 +229,8 @@ define(function(require) {
         m.component(titleBlock, {
             title: 'Avatars dark theme',
             content: m('.dark-theme', [
-                exampleList(),
-                exampleList()
+                exampleList({hoverable: true}),
+                exampleList({hoverable: true})
             ])
         }),
 
@@ -161,6 +270,11 @@ define(function(require) {
                     indent: true
                 })
             ])
+        }),
+
+        m.component(titleBlock, {
+            title: 'Sortable list',
+            content: sortableList
         })
     ]);
 

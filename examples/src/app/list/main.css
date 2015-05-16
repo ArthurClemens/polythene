@@ -6,3 +6,14 @@
 .dark-theme .demo-list.list {
     background-color: #303030;
 }
+
+.sortable-list a {
+	cursor: pointer;
+}
+.sortable-list .controls {
+	padding: 0 16px;
+	border-bottom: 1px solid #eee;
+}
+.sortable-list .controls .button:first-child {
+	margin-left: -8px;
+}

@@ -8,6 +8,7 @@ $lightTextColorTertiary: rgba(#000,.4);
 $lightTextColorDisabled: rgba(#000,.26);
 $lightTextColorHints: $lightTextColorDisabled;
 $lightBorderColor: rgba(#000,.11);
+$lightHoverColor: rgba(#000,.08); // comparable to rgba(#999,.2)
 
 $darkTextColorPrimary: rgba(#fff,1);
 $darkTextColorText: #fff;
@@ -17,6 +18,7 @@ $darkTextColorTertiary: rgba(#fff,.4);
 $darkTextColorDisabled: rgba(#fff,.26);
 $darkTextColorHints: textColorDisabled;
 $darkBorderColor: rgba(#fff,.11);
+$darkHoverColor: rgba(#ccc, .15);
 
 $themeConfig: (
     light: (
@@ -27,7 +29,7 @@ $themeConfig: (
                     color: $lightTextColorPrimary
                 ),
                 hover: (
-                    background: rgba(#000,.08) // comparable to rgba(#999,.2)
+                    background: $lightHoverColor
                 ),
                 active: (
                     background: rgba(#000,.13) // rgba(#000,.16) is comparable to rgba(#999,.4) // 
@@ -82,11 +84,12 @@ $themeConfig: (
             ) 
         ),
         list: (
-            border-color: $lightBorderColor
+            border-color: $lightBorderColor,
+            background-hover-color: $lightHoverColor
         ),
         list-tile: (
             header: $lightTextColorPrimary,
-            subheader: $lightTextColorTertiary
+            subheader: $lightTextColorTertiary,
         )
     ),
     dark: (
@@ -97,7 +100,7 @@ $themeConfig: (
                     color: #fff
                 ),
                 hover: (
-                    background: rgba(#ccc, .15)
+                    background: $darkHoverColor
                 ),
                 active: (
                     background: rgba(#ccc, .25)
@@ -152,7 +155,8 @@ $themeConfig: (
             ) 
         ),
         list: (
-            border-color: $darkBorderColor
+            border-color: $darkBorderColor,
+            background-hover-color: $darkHoverColor
         ),
         list-tile: (
             header: $darkTextColorPrimary,
