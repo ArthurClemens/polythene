@@ -10,7 +10,8 @@ define(function(require) {
         panelBlock,
         content,
         repeatText,
-        template;
+        template,
+        cache;
 
     require('css!./kitchensink');
 
@@ -28,6 +29,8 @@ define(function(require) {
         repeatText('<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', 16),
         '</div>'
     ].join('');
+
+    cache = true;
 
     btn = function(group, name) {
         return m.component(iconBtn, {
@@ -79,28 +82,32 @@ define(function(require) {
                     header: {
                         content: 'Standard'
                     },
-                    content: m.trust(template)
+                    content: m.trust(template),
+                    cache: cache
                 }, {
                     mode: 'seamed',
                     fixed: true,
                     header: {
                         content: 'Seamed'
                     },
-                    content: m.trust(template)
+                    content: m.trust(template),
+                    cache: cache
                 }, {
                     mode: 'waterfall',
                     fixed: true,
                     header: {
                         content: 'Waterfall'
                     },
-                    content: m.trust(template)
+                    content: m.trust(template),
+                    cache: cache
                 }, {
                     mode: 'waterfall-tall',
                     fixed: true,
                     header: {
                         content: 'Waterfall tall'
                     },
-                    content: m.trust(template)
+                    content: m.trust(template),
+                    cache: cache
                 }, {
                     mode: 'waterfall-tall',
                     tallClass: 'medium-tall',
@@ -108,13 +115,15 @@ define(function(require) {
                     header: {
                         content: 'Waterfall medium-tall'
                     },
-                    content: m.trust(template)
+                    content: m.trust(template),
+                    cache: cache
                 }, {
                     mode: 'scroll',
                     header: {
                         content: 'Scroll'
                     },
-                    content: m.trust(template)
+                    content: m.trust(template),
+                    cache: cache
                 }, {
                     mode: 'waterfall-tall',
                     fixed: true,
@@ -122,7 +131,8 @@ define(function(require) {
                     header: {
                         content: 'Waterfall tall animated'
                     },
-                    content: m.trust(template)
+                    content: m.trust(template),
+                    cache: cache
                 }
                 // TODO: Cover
             ]
@@ -136,7 +146,8 @@ define(function(require) {
                         content: toolbarRow('Toolbar component')
                     }
                 },
-                content: m.trust(template)
+                content: m.trust(template),
+                cache: cache
             }, {
                 mode: 'waterfall',
                 fixed: true,
@@ -145,7 +156,8 @@ define(function(require) {
                         content: toolbarRow('Toolbar waterfall')
                     }
                 },
-                content: m.trust(template)
+                content: m.trust(template),
+                cache: cache
             }, {
                 mode: 'tall',
                 fixed: true,
@@ -156,7 +168,8 @@ define(function(require) {
                         content: toolbarRow('Tall animated')
                     }
                 },
-                content: m.trust(template)
+                content: m.trust(template),
+                cache: cache
             }, {
                 mode: 'waterfall-tall',
                 fixed: true,
@@ -168,7 +181,8 @@ define(function(require) {
                         content: toolbarRow('Animated no shadow')
                     }
                 },
-                content: m.trust(template)
+                content: m.trust(template),
+                cache: cache
             }]
         }),
         m.component(panelBlock, {
@@ -183,7 +197,8 @@ define(function(require) {
                         bottomBar: m.trust('<div flex class="bottom indent">Not fixed condenses</div>')
                     }
                 },
-                content: m.trust(template)
+                content: m.trust(template),
+                cache: cache
             }, {
                 mode: 'waterfall-tall',
                 condenses: true,
@@ -195,7 +210,8 @@ define(function(require) {
                         bottomBar: m.trust('<div flex class="bottom indent">tallClass "medium-tall"</div>')
                     }
                 },
-                content: m.trust(template)
+                content: m.trust(template),
+                cache: cache
             }, {
                 mode: 'waterfall-tall',
                 condenses: true,
@@ -207,7 +223,8 @@ define(function(require) {
                         bottomBar: m.trust('<div flex class="bottom indent">Keep condensed header</div>')
                     }
                 },
-                content: m.trust(template)
+                content: m.trust(template),
+                cache: cache
             }]
         }),
         m.component(panelBlock, {
@@ -215,7 +232,8 @@ define(function(require) {
             content: [{
                 fixed: true,
                 header: m('.header.demo-header', 'Custom styled header'),
-                content: m.trust(template)
+                content: m.trust(template),
+                cache: cache
             }]
         })
     ]);

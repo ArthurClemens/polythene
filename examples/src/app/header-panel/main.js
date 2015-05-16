@@ -20,7 +20,8 @@ define(function(require) {
         panel,
         template,
         repeatText,
-        createBottomBarTemplate;
+        createBottomBarTemplate,
+        cache;
 
     require('polythene/font-roboto/font-roboto');
     require('css!polythene/theme/theme');
@@ -162,6 +163,8 @@ define(function(require) {
         }
     };
 
+    cache = true;
+
     var index = {};
     index.controller = function() {};
     index.view = function() {
@@ -233,7 +236,8 @@ define(function(require) {
                 }
             },
             content: m.trust(template),
-            transform: onHeaderTransform
+            transform: onHeaderTransform,
+            cache: cache
         });
         return m('.' + currentLink.url, panel);
     };
@@ -253,7 +257,8 @@ define(function(require) {
                     bottomBar: createBottomBarTemplate(currentLink)
                 }
             },
-            content: m.trust(template)
+            content: m.trust(template),
+            cache: cache
         }));
     };
 
@@ -272,7 +277,8 @@ define(function(require) {
                     bottomBar: createBottomBarTemplate(currentLink)
                 }
             },
-            content: m.trust(template)
+            content: m.trust(template),
+            cache: cache
         }));
     };
 
@@ -291,7 +297,8 @@ define(function(require) {
                     bottomBar: createBottomBarTemplate(currentLink)
                 }
             },
-            content: m.trust(template)
+            content: m.trust(template),
+            cache: cache
         }));
     };
 
@@ -308,7 +315,8 @@ define(function(require) {
                     bottomBar: createBottomBarTemplate(currentLink)
                 }
             },
-            content: m.trust(template)
+            content: m.trust(template),
+            cache: cache
         }));
     };
 
@@ -329,7 +337,8 @@ define(function(require) {
                     bottomBar: createBottomBarTemplate(currentLink)
                 }
             },
-            content: m.trust(template)
+            content: m.trust(template),
+            cache: cache
         }));
     };
 
@@ -351,6 +360,7 @@ define(function(require) {
                 }
             },
             content: m.trust(template),
+            cache: cache
         }));
     };
 
@@ -370,6 +380,7 @@ define(function(require) {
                 }
             },
             content: m.trust(template),
+            cache: cache
         }));
     };
 
@@ -391,6 +402,7 @@ define(function(require) {
                 }
             },
             content: m.trust(template),
+            cache: cache
         }));
     };
 
@@ -413,6 +425,7 @@ define(function(require) {
                 }
             },
             content: m.trust(template),
+            cache: cache
         }));
     };
 
