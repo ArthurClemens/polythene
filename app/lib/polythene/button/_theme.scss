@@ -9,10 +9,12 @@
 	        color: theme($tint, $element, $depth, "disabled", "color");
 	    }
 	}
-	&:hover {
-	    .wash {
-	        background-color: theme($tint, $element, $depth, "hover", "background");
-	    }
+	.no-touch & {
+		&:hover {
+		    .wash {
+		        background-color: theme($tint, $element, $depth, "hover", "background");
+		    }
+		}
 	}
 	&:active,
 	&.selected {

@@ -16,9 +16,12 @@
 	    color: theme($tint, "button", $depth, "disabled", "color");
 	}
 
-	&:hover {
-	    .wash {
-	        background-color: theme($tint, "button", $depth, "hover", "background");
+
+	.no-touch & {
+		&:hover {
+	    	.wash {
+	        	background-color: theme($tint, "button", $depth, "hover", "background");
+	    	}
 	    }
 	}
 	&:active,
@@ -27,7 +30,6 @@
 	        background-color: theme($tint, "button", $depth, "active", "background");
 	    }
 	}
-
 }
 
 .icon-button {
