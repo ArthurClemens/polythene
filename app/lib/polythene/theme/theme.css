@@ -211,7 +211,7 @@ segment {
   background-color: transparent;
   color: rgba(255, 255, 255, 0.3); }
 .dark-theme .button:hover .wash {
-  background-color: rgba(204, 204, 204, 0.15); }
+  background-color: rgba(255, 255, 255, 0.08); }
 .dark-theme .button:active .wash, .dark-theme .button.selected .wash {
   background-color: rgba(204, 204, 204, 0.25); }
 .dark-theme .button[raised] .button-content {
@@ -232,7 +232,7 @@ segment {
   color: rgba(0, 0, 0, 0.54); }
 .card.text,
 .card .text {
-  color: #444; }
+  color: rgba(0, 0, 0, 0.73); }
 .card .actions.bordered {
   border-top: 1px solid rgba(0, 0, 0, 0.11); }
 .card.dark-theme.title,
@@ -297,7 +297,7 @@ segment {
     background-color: transparent;
     color: rgba(255, 255, 255, 0.3); }
   .dark-theme .icon-button:not([raised]):hover .wash {
-    background-color: rgba(204, 204, 204, 0.15); }
+    background-color: rgba(255, 255, 255, 0.08); }
   .dark-theme .icon-button:not([raised]):active .wash, .dark-theme .icon-button:not([raised]).selected .wash {
     background-color: rgba(204, 204, 204, 0.25); }
 .dark-theme .icon-button[raised] {
@@ -365,6 +365,6 @@ segment {
   .dark-theme .list.bordered-indent:not(:first-child) .list-tile.subheader .list-tile-content {
     border-top: 1px solid rgba(255, 255, 255, 0.11); }
 .dark-theme .list.hoverable .list-tile:not(.subheader):hover {
-  background-color: rgba(204, 204, 204, 0.15); }
+  background-color: rgba(255, 255, 255, 0.08); }
 a, a:active, a:focus {
   outline: none; }

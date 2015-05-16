@@ -55,4 +55,41 @@ Because icon button accepts an icon options object, we can also use object notat
 See the [main project page](https://github.com/ArthurClemens/Polythene).
 
 
+## Project progress
+
+### Done
+
+* Header panel
+* Toolbar
+* List
+* Card
+* Button
+* Icon button
+* Icon
+* SVG
+* Ripple
+* Shadow
+* Floating Action Button
+* List tile
+* Subheader (part of List)
+* Divider (part of List)
+
+### To do
+
+1. Tab
+1. Dialog
+1. Menu
+1. Grid list
+1. List: Control
+1. Form: Text field
+1. Form: Selection control
+1. Data table
+1. Bottom sheet
+1. Chip
+1. Picker
+1. Progress & activity
+1. Slider
+1. Snackbar & toast
+1. Tooltip
+
 
