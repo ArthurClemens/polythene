@@ -81,6 +81,7 @@ See the [main project page](https://github.com/ArthurClemens/Polythene).
 1. Menu
 1. Grid list
 1. List: Control
+1. Toggle button
 1. Form: Text field
 1. Form: Selection control
 1. Data table
@@ -91,5 +92,12 @@ See the [main project page](https://github.com/ArthurClemens/Polythene).
 1. Slider
 1. Snackbar & toast
 1. Tooltip
+
+### Wish list
+
+* Page transitions
+* Loading animation
+* Pull to refresh
+* Localstorage/offline use
 
 
