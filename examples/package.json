@@ -13,7 +13,9 @@
     "requirejs-text": "",
     "almond": "",
     "lodash": "git@github.com:lodash/lodash.git",
-    "autoprefixer": ""
+    "autoprefixer": "",
+    "clean-css": "",
+    "uglify-js": ""
   },
   "devDependencies": {},
   "scripts": {

@@ -4,6 +4,7 @@
     mainConfigFile: 'common.js',
  
     optimize: 'uglify2',
+    optimizeCss: 'standard.keepLines',
  	removeCombined: true,
 
     include: ['css', 'text'],
