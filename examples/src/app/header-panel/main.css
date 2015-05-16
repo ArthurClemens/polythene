@@ -29,7 +29,9 @@ body {
 }
 
 .header-panel .demo-content {
-	padding: 16px 36px 36px 72px;
+	padding: 16px 16px 36px 16px;
+	max-width: 600px;
+	margin: 0 auto;
 }
 .header-panel .demo-content + .demo-content {
 	margin-top: -36px;

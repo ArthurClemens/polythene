@@ -182,7 +182,8 @@ define(function(require) {
                             info: item.date.toLocaleDateString()
                         });
                     }),
-                    hoverable: true
+                    hoverable: true,
+                    mode: 'bordered'
                 })
             );
         }
@@ -273,9 +274,10 @@ define(function(require) {
         }),
 
         m.component(titleBlock, {
-            title: 'Sortable list',
+            title: 'Sorting a list',
             content: sortableList
         })
+
     ]);
 
     app = {};
