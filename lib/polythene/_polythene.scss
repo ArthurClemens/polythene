@@ -61,30 +61,20 @@ $fontSizeTitle: 20px;
 
 @mixin user-select-none {
 	user-select: none;
-	-moz-user-select: none;
-	-webkit-user-select: none;
 }
 
 @mixin vertical-center($position: relative) {
 	position: $position;
 	top: 50%;
-	-webkit-transform: translateY(-50%);
-	-ms-transform: translateY(-50%);
 	transform: translateY(-50%);
 }
 
 @mixin vertical-center-parent {
-	-webkit-transform-style: preserve-3d;
-	-moz-transform-style: preserve-3d;
 	transform-style: preserve-3d;
 }
 
 @mixin box-sizing($type: border-box) {
-    -webkit-box-sizing: $type;
-       -moz-box-sizing: $type;
-         -o-box-sizing: $type;
-        -ms-box-sizing: $type;
-            box-sizing: $type;
+	box-sizing: $type;
 }
 
 @mixin fit {
@@ -95,4 +85,10 @@ $fontSizeTitle: 20px;
 	left: 0;
 }
 
-
+@mixin hairline($which) {
+	#{$which}-width: 1px;
+	
+	@media screen and (min-resolution: 2dppx) {
+		#{$which}-width: 0.5px;
+	}
+}

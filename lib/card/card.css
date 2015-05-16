@@ -1,8 +1,6 @@
 .card {
   position: relative;
-  border-radius: 2px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px; }
+  border-radius: 2px; }
   .card,
   a.card {
     display: block; }
@@ -34,18 +32,10 @@
       display: block; }
     .card .media:last-child, .card .media:last-child img {
       border-bottom-left-radius: 2px;
-      border-bottom-right-radius: 2px;
-      -webkit-border-bottom-left-radius: 2px;
-      -webkit-border-bottom-right-radius: 2px;
-      -moz-border-bottom-left-radius: 2px;
-      -moz-border-bottom-right-radius: 2px; }
+      border-bottom-right-radius: 2px; }
   .card .shadow + .primary-media, .card .shadow + .primary-media img {
     border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
-    -webkit-border-top-left-radius: 2px;
-    -webkit-border-top-right-radius: 2px;
-    -moz-border-top-left-radius: 2px;
-    -moz-border-top-right-radius: 2px; }
+    border-top-right-radius: 2px; }
   .card .overlay,
   .card .image-dimmer {
     position: absolute;
@@ -80,8 +70,7 @@
         position: absolute;
         top: 50%;
         -webkit-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-        transform: translateY(-50%); }
+                transform: translateY(-50%); }
   .card .primary {
     position: relative; }
     .card .primary.has-media:not(:last-child) {
@@ -103,9 +92,7 @@
     .card .primary .primary-media {
       margin: 16px 16px 0 16px; }
       .card .primary .primary-media .media, .card .primary .primary-media .media img {
-        border-radius: 0;
-        -webkit-border-radius: 0;
-        -moz-border-radius: 0; }
+        border-radius: 0; }
       .card .primary .primary-media.small {
         width: 80px; }
       .card .primary .primary-media.medium {

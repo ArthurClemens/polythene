@@ -31,9 +31,7 @@
  * THE SOFTWARE.
  */
 body {
-  font-family: 'RobotoDraft', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-size-adjust: 100%; }
+  font-family: 'RobotoDraft', sans-serif; }
 
 .text-display-4 {
   font-size: 112px;

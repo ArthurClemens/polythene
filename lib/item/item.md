@@ -4,6 +4,8 @@
 
 Item is a simple horizontal element with a label and an optional icon.
 
+This is a Polymer component and not part of the Material Design specification.
+
 
 ## Usage
 

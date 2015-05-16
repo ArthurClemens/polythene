@@ -4,8 +4,8 @@
   height: 64px;
   font-size: 20px;
   background-color: #CFD8DC;
-  transform: translate3d(0, 0, 0);
-  -webkit-transform: translate3d(0, 0, 0); }
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0); }
   .toolbar.animate {
     transition: height 0.18s ease-in; }
   .toolbar.medium-tall {
@@ -28,7 +28,7 @@
     left: 0; }
   .toolbar.tall .middleBar {
     -webkit-transform: translateY(100%);
-    transform: translateY(100%); }
+            transform: translateY(100%); }
   .toolbar .bottomBar {
     position: absolute;
     right: 0;
@@ -57,9 +57,8 @@
       overflow: hidden;
       text-overflow: ellipsis;
       display: block;
-      transform-origin: left 50%;
       -webkit-transform-origin: left 50%;
-      -moz-transform-origin: left 50%; }
+              transform-origin: left 50%; }
     .toolbar .toolbar-tools .fit {
       position: absolute;
       top: 0;
