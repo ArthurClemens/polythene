@@ -1,6 +1,9 @@
+.p-block {
+	background-color: #f5f5f5;
+}
 .demo-list {
 	width: 320px;
-	background-color: #fafafa;
+	background-color: #fff;
 }
 
 .dark-theme .demo-list.list {

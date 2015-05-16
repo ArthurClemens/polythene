@@ -1,24 +1,24 @@
 @import "material-design-colors";
 
 $lightTextColorPrimary: rgba(#000,.87);
-$lightTextColorText: #444;
-$lightTextColorButton: #4D4D4D;
+$lightTextColorText: rgba(#000,.73);
+$lightTextColorButton: rgba(#000,.69);
 $lightTextColorSecondary: rgba(#000,.54);
-$lightTextColorTertiary: rgba(#000,.4);
+$lightTextColorTertiary: rgba(#000,.40);
 $lightTextColorDisabled: rgba(#000,.26);
 $lightTextColorHints: $lightTextColorDisabled;
 $lightBorderColor: rgba(#000,.11);
 $lightHoverColor: rgba(#000,.08); // comparable to rgba(#999,.2)
 
 $darkTextColorPrimary: rgba(#fff,1);
-$darkTextColorText: #fff;
-$darkTextColorButton: #b2b2b2;
+$darkTextColorText: $darkTextColorPrimary;
 $darkTextColorSecondary: rgba(#fff,.7);
+$darkTextColorButton: $darkTextColorSecondary;
 $darkTextColorTertiary: rgba(#fff,.4);
 $darkTextColorDisabled: rgba(#fff,.26);
 $darkTextColorHints: textColorDisabled;
 $darkBorderColor: rgba(#fff,.11);
-$darkHoverColor: rgba(#ccc, .15);
+$darkHoverColor: rgba(#fff, .08);
 
 $themeConfig: (
     light: (
