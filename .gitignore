@@ -9,6 +9,8 @@ examples/src/app/app.css
 lib/font-iconic/material-design-iconic-font
 lib/svg/mdi
 lib/svg/material-design-iconic-font
+lib/deps
+!lib/deps/README
 .sass-cache
 .sass-cache/*
 .DS_Store

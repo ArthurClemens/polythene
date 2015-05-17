@@ -14,7 +14,7 @@ define(function(require) {
         toolbarRow;
 
     require('polythene/font-roboto/font-roboto');
-    require('css!polythene/theme/theme');
+    require('polythene/theme/theme');
     require('css!app-css');
 
     btn = function(group, name) {

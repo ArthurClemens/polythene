@@ -13,7 +13,7 @@ define(function(require) {
         content;
 
     require('polythene/font-roboto/font-roboto');
-    require('css!polythene/theme/theme');
+    require('polythene/theme/theme');
     require('css!app-css');
     require('css!./main');
 

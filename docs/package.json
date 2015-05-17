@@ -7,18 +7,17 @@
      "src": "src"
   },
   "dependencies": {
-    "mithril": "^0.2.0",
-    "requirejs": "",
-    "require-css": "",
-    "requirejs-text": "",
     "marked": "",
     "lodash": "git@github.com:lodash/lodash.git",
-    "almond": ""
+    "almond": "",
+    "autoprefixer": ""
   },
   "scripts": {
     "setup-symlink": "rm -rf src/app/lib/polythene && mkdir -p src/app/lib && cd .. && ln -s \"$(pwd)/lib/\" docs/src/app/lib/polythene",
-    "setup-libs": "mkdir -p src/app/lib/mithril/ && cp node_modules/mithril/mithril.min.js src/app/lib/mithril/ && cp node_modules/mithril/mithril.min.js.map src/app/lib/mithril/ && mkdir -p src/app/lib/requirejs/ && cp node_modules/requirejs/require.js src/app/lib/requirejs/require.js && mkdir -p src/app/lib/require-css/ && cp node_modules/require-css/*.js src/app/lib/require-css/ && mkdir -p src/app/lib/requirejs-text/ && cp node_modules/requirejs-text/*.js src/app/lib/requirejs-text/ && mkdir -p src/app/lib/marked/ && cp node_modules/marked/marked.min.js src/app/lib/marked/ && mkdir -p src/app/lib/lodash/ && cp node_modules/lodash/lodash.min.js src/app/lib/lodash/lodash.min.js",
-    "setup": "npm run setup-symlink && npm run setup-libs",
+    "copy-lodash": "mkdir -p src/app/lib/lodash/ && cp node_modules/lodash/lodash.min.js src/app/lib/lodash/lodash.min.js",
+    "copy-marked": "mkdir -p src/app/lib/marked/ && cp node_modules/marked/marked.min.js src/app/lib/marked/",
+    "copy-deps": "npm run copy-lodash && npm run copy-marked",
+    "setup": "npm run setup-symlink && npm run copy-deps",
     "copy-docs": "mkdir -p src/app/docs && cp ../lib/**/*.md src/app/docs/",
     "autoprefixer": "autoprefixer src/app/*.css -b 'last 2 versions'",
     "sass": "sass --update --sourcemap=none src/app/",
