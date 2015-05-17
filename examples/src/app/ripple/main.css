@@ -4,9 +4,7 @@
 
 .demo-list.demo-bordered {
 	background: none;
-}
-.demo-button .ripple {
-    color: #000;
+	max-width: 100%;
 }
 .demo-button .ripple.colored-ripple {
 	color: green;

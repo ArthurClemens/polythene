@@ -123,18 +123,21 @@ define(function(require) {
                             ])
                         }
                     },
-                    content: m('.demo-content.index',
-                        m('.index-list', links.map(function(linkGroup) {
-                            return m.component(list, {
-                                header: {
-                                    title: linkGroup.label,
-                                    indent: true
-                                },
-                                tiles: linkGroup.links.map(function(link) {
-                                    return item(link.name, link.url + '.html');
-                                })
-                            });
-                        })), github),
+                    content: [
+                        m('.demo-content.index',
+                            m('.index-list', links.map(function(linkGroup) {
+                                return m.component(list, {
+                                    header: {
+                                        title: linkGroup.label,
+                                        indent: true
+                                    },
+                                    tiles: linkGroup.links.map(function(link) {
+                                        return item(link.name, link.url + '.html');
+                                    })
+                                });
+                            }))),
+                        github
+                    ],
                     transform: onHeaderTransform
                 })
             ];

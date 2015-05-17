@@ -168,7 +168,7 @@ define(function(require) {
     var index = {};
     index.controller = function() {};
     index.view = function() {
-        return nav(NAME,
+        return nav(NAME, [
             m('div', {
                 class: 'index'
             }, m('.index-list', links.map(function(linkGroup) {
@@ -181,8 +181,9 @@ define(function(require) {
                         return item(link);
                     })
                 });
-            })), github)
-        );
+            }))),
+            github
+        ]);
     };
 
     var kitchensink = {};

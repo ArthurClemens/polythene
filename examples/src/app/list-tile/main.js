@@ -676,15 +676,13 @@ define(function(require) {
                     })
                 ])
             })
-        ),
-
-        github
+        )
     ];
 
     app = {};
     app.view = function() {
         return [
-            nav(NAME, content)
+            nav(NAME, [content, github])
         ];
     };
 

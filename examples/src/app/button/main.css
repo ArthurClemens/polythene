@@ -2,7 +2,12 @@
 	background-color: #424242;
 	color: #fff;
 }
-
+.mainContainer {
+	background: #fff;
+}
+.p-block {
+	background: #eee;
+}
 .button-row {
 	margin-left: -4px;
 }

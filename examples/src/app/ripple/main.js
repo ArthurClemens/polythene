@@ -142,7 +142,7 @@ define(function(require) {
                         after: m.component(ripple, {
                             class: 'colored-ripple',
                             initialOpacity: 0.6,
-                            opacityDecayVelocity: 0.2
+                            opacityDecayVelocity: 0.24
                         })
                     })
                 ]
@@ -179,15 +179,13 @@ define(function(require) {
                 bottomBar: m.trust('<div class="bottom indent" style="color: #666; font-size: 18px;">some stuffs align to the bottom</div>'),
                 after: m.component(ripple)
             })
-        }),
-
-        github
+        })
     ]);
 
     app = {};
     app.view = function() {
         return [
-            nav(NAME, content)
+            nav(NAME, [content, github])
         ];
     };
 

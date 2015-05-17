@@ -17,10 +17,11 @@
 .sortable-list a {
 	cursor: pointer;
 }
-.sortable-list .controls {
+.sortable-list .controls-row {
 	padding: 0 16px;
 	border-bottom: 1px solid #eee;
 }
-.sortable-list .controls .button:first-child {
+.sortable-list .controls {
 	margin-left: -8px;
+	margin-right: -8px;
 }

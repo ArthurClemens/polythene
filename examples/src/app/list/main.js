@@ -155,25 +155,29 @@ define(function(require) {
             sortedList = ctrl.items.sort(sortList());
 
             return m('.demo-list.sortable-list',
-                m('.controls[layout][horizontal]', 
-                    m.component(button, {
-                        label: 'Sort by name',
-                        selected: ctrl.mode() === 'name',
-                        events: {
-                            onclick: function() {
-                                ctrl.mode('name');
+                m('.controls-row', 
+                    m('.controls[layout][horizontal]', 
+                        m.component(button, {
+                            tag: '[flex]',
+                            label: 'Sort by name',
+                            selected: ctrl.mode() === 'name',
+                            events: {
+                                onclick: function() {
+                                    ctrl.mode('name');
+                                }
                             }
-                        }
-                    }),
-                    m.component(button, {
-                        label: 'Sort by date',
-                        selected: ctrl.mode() === 'date',
-                        events: {
-                            onclick: function() {
-                                ctrl.mode('date');
+                        }),
+                        m.component(button, {
+                            tag: '[flex]',
+                            label: 'Sort by date',
+                            selected: ctrl.mode() === 'date',
+                            events: {
+                                onclick: function() {
+                                    ctrl.mode('date');
+                                }
                             }
-                        }
-                    })
+                        })
+                    )
                 ),
                 m.component(list, {
                     tiles: sortedList.map(function(item) {
@@ -276,16 +280,14 @@ define(function(require) {
         m.component(titleBlock, {
             title: 'Sorting a list',
             content: sortableList
-        }),
-
-        github
+        })
 
     ]);
 
     app = {};
     app.view = function() {
         return [
-            nav(NAME, content)
+            nav(NAME, [content, github])
         ];
     };
 
