@@ -57,10 +57,12 @@ Note that in this case `require('polythene/svg/svg')` is not needed (this is han
 
 ## Icon sets
 
-By default 2 icons sets are included (after running `grunt`):
+By default 2 icons sets are included in the `deps/svg/` folder (after running `npm run setup`):
 
 * Iconset `material-design-iconic-font`: [GitHub project](https://github.com/zavoloklom/material-design-iconic-font)
 * Iconset `mdi`: [GitHub project](https://github.com/Templarian/MaterialDesign)
+
+Other icon sets can be placed in `deps/svg/` and referred to by parameter `iconset`.
 
 
 
