@@ -1,4 +1,5 @@
 .ripple {
+  color: inherit;
   border-radius: inherit;
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0); }
@@ -31,12 +32,12 @@
       display: block;
       -webkit-animation: ripple ease-out;
               animation: ripple ease-out; }
-@keyframes ripple {
+@-webkit-keyframes ripple {
   100% {
     -webkit-transform: scale(2);
             transform: scale(2);
     opacity: 0; } }
-@-webkit-keyframes ripple {
+@keyframes ripple {
   100% {
     -webkit-transform: scale(2);
             transform: scale(2);

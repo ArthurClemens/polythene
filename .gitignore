@@ -15,4 +15,4 @@ lib/deps
 .sass-cache/*
 .DS_Store
 ./src
-lib/polythene/_material-design-colors.scss
+lib/theme/_material-design-colors.scss

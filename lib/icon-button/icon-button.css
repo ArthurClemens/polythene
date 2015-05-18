@@ -10,10 +10,10 @@
   position: relative;
   font-size: 1rem;
   border-radius: 50%; }
-  .icon-button .button-content {
+  .icon-button .content {
     border-radius: 50%;
     pointer-events: none; }
-    .icon-button .button-content .icon {
+    .icon-button .content .icon {
       pointer-events: none; }
   .icon-button[disabled] {
     cursor: auto;
@@ -26,6 +26,4 @@
   .icon-button .wash {
     background-color: transparent;
     border-radius: inherit;
-    pointer-events: none;
-    z-index: 1;
-    transition: background-color 0.2s ease-in-out; }
+    pointer-events: none; }

@@ -9,6 +9,7 @@ $lightTextColorDisabled: rgba(#000,.26);
 $lightTextColorHints: $lightTextColorDisabled;
 $lightBorderColor: rgba(#000,.11);
 $lightHoverColor: rgba(#000,.08); // comparable to rgba(#999,.2)
+$lightActiveColor: rgba(#000,.14);
 
 $darkTextColorPrimary: rgba(#fff,1);
 $darkTextColorText: $darkTextColorPrimary;
@@ -19,6 +20,7 @@ $darkTextColorDisabled: rgba(#fff,.26);
 $darkTextColorHints: textColorDisabled;
 $darkBorderColor: rgba(#fff,.17);
 $darkHoverColor: rgba(#fff, .08);
+$darkActiveColor: rgba(#fff,.14);
 
 $themeConfig: (
     light: (
@@ -32,7 +34,7 @@ $themeConfig: (
                     background: $lightHoverColor
                 ),
                 active: (
-                    background: rgba(#000,.13) // rgba(#000,.16) is comparable to rgba(#999,.4) // 
+                    background: $lightActiveColor
                 ),
                 disabled: (
                     background: transparent,
@@ -103,7 +105,7 @@ $themeConfig: (
                     background: $darkHoverColor
                 ),
                 active: (
-                    background: rgba(#ccc, .25)
+                    background: $darkActiveColor
                 ),
                 disabled: (
                     background: transparent,

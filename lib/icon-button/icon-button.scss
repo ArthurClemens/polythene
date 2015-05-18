@@ -11,7 +11,7 @@
     font-size: 1rem;
     border-radius: 50%;
     
-    .button-content {
+    .content {
         border-radius: 50%;
         pointer-events: none;
 
@@ -38,7 +38,5 @@
         background-color: transparent;
         border-radius: inherit;
         pointer-events: none;
-        z-index: 1;
-        transition: background-color $surfaceReactionDuration ease-in-out;
     }
 }

@@ -1,38 +1,16 @@
 @mixin _theme($tint, $depth) {
 
 	@at-root {
-		&,
-	    a#{&} {
-	        color: theme($tint, "icon", $depth, "normal", "color");
-	    }
-	}
-
-	// The other style use button values
-
-	background-color: theme($tint, "button", $depth, "normal", "background");
-
-	&[disabled] {
-	    background-color: theme($tint, "button", $depth, "disabled", "background");
-	    color: theme($tint, "button", $depth, "disabled", "color");
-	}
-
-
-	.no-touch & {
-		&:hover {
-	    	.wash {
-	        	background-color: theme($tint, "button", $depth, "hover", "background");
-	    	}
-	    }
-	}
-	&:active,
-	&.selected {
-	    .wash {
-	        background-color: theme($tint, "button", $depth, "active", "background");
-	    }
+		.theme & {
+			&,
+		    a#{&} {
+		        color: theme($tint, "icon", $depth, "normal", "color");
+		    }
+		}
 	}
 }
 
-.icon-button {
+.icon-button:not([raised]) {
 	@include _theme("light", "flat");
 }
 .icon-button[raised] {

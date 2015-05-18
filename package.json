@@ -2,18 +2,19 @@
   "name": "polythene",
   "version": "0.0.1",
   "description": "Polymer inspired modular implementation of Material Design for Mithril.",
+  "license": "MIT",
   "main": "",
   "directories": {
   },
   "dependencies": {},
   "devDependencies": {
     "mithril": "^0.2.0",
-    "fastclick": "",
     "requirejs": "",
     "require-css": "",
     "requirejs-text": "",
     "material-colors": "",
     "autoprefixer": "",
+    "tapjs": "",
     "nodemon": ""
   },
   "scripts": {
@@ -23,8 +24,8 @@
     "copy-mdi": "mkdir -p lib/deps/svg/mdi && cp -R external_modules/MaterialDesign/icons/svg/* lib/deps/svg/mdi/",
     "copy-mithril": "mkdir -p lib/deps/ && mkdir -p lib/deps/mithril/ && cp node_modules/mithril/mithril.min.js lib/deps/mithril/ && cp node_modules/mithril/mithril.min.js.map lib/deps/mithril/",
     "copy-requirejs": "mkdir -p lib/deps/requirejs/ && cp node_modules/requirejs/require.js lib/deps/requirejs/require.js && mkdir -p lib/deps/require-css/ && cp node_modules/require-css/*.js lib/deps/require-css/ && mkdir -p lib/deps/requirejs-text/ && cp node_modules/requirejs-text/*.js lib/deps/requirejs-text/",
-    "copy-fastclick": "mkdir -p lib/deps/fastclick/ && cp -R node_modules/fastclick/lib/* lib/deps/fastclick/",
-    "copy-deps": "npm run copy-mdif && npm run copy-mdi && npm run copy-mithril && npm run copy-requirejs && npm run copy-fastclick",
+    "copy-tapjs": "mkdir -p lib/deps/ && mkdir -p lib/deps/tapjs/ && cp node_modules/tapjs/dist/tap.js lib/deps/tapjs/",
+    "copy-deps": "npm run copy-mdif && npm run copy-mdi && npm run copy-mithril && npm run copy-requirejs",
     "install-roboto-webfont": "webfont-dl \"https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic\" -o lib/font-roboto/fonts/font-roboto.css --font-out=lib/font-roboto/fonts --woff2=link --woff1==link --svg==link --ttf==link --eot==link",
     "setup": "rm -rf external_modules && npm run install-mdif && npm run install-mdi && npm run copy-mdif && npm run copy-mdi && npm run copy-deps",
     "autoprefixer": "autoprefixer lib/*/*.css -b 'last 2 versions'",

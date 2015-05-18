@@ -60,7 +60,7 @@ Add an onclick event:
 ## Default generated HTML
 
 	<div raised="true" class="button">
-		<div class="button-content">
+		<div class="content">
 			<span>Button label</span>
 			<div fit="true" class="ripple constrained">
 				<div class="ripple-mask">

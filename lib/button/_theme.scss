@@ -1,26 +1,40 @@
 @mixin _theme($tint, $element, $depth) {
-	.button-content {
-	    background-color: theme($tint, $element, $depth, "normal", "background");
-	    color: theme($tint, $element, $depth, "normal", "color");
-	}
-	&[disabled] {
-	    .button-content {
-	        background-color: theme($tint, $element, $depth, "disabled", "background");
-	        color: theme($tint, $element, $depth, "disabled", "color");
-	    }
-	}
-	.no-touch & {
-		&:hover {
-		    .wash {
-		        background-color: theme($tint, $element, $depth, "hover", "background");
-		    }
+	
+	@at-root {
+		.theme & {
+			.content {
+			    background-color: theme($tint, $element, $depth, "normal", "background");
+			    color: theme($tint, $element, $depth, "normal", "color");
+			}
+			&[disabled] {
+			    .content {
+			        background-color: theme($tint, $element, $depth, "disabled", "background");
+			        color: theme($tint, $element, $depth, "disabled", "color");
+			    }
+			}
 		}
 	}
-	&:active,
-	&.selected {
-	    .wash {
-	        background-color: theme($tint, $element, $depth, "active", "background");
-	    }
+	
+	@at-root {
+		.theme.no-touch & {
+			&:hover {
+			    .wash {
+			        background-color: theme($tint, $element, $depth, "hover", "background");
+			    }
+			}
+		}
+	}
+
+	@at-root {
+		.theme.touch &,
+		.theme.no-touch & {
+			&:active,
+			&.selected {
+			    .wash {
+			        background-color: theme($tint, $element, $depth, "active", "background");
+			    }
+			}
+		}
 	}
 }
 
@@ -39,4 +53,3 @@
 		@include _theme("dark", "button", "raised");
 	}
 }
-
