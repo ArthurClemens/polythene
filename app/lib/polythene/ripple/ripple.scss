@@ -6,6 +6,7 @@
 	$_start_opacity: 0.2;
 	$_end_opacity: 0;
 
+	color: inherit;
 	border-radius: inherit;
 	// Prevent flickering
 	transform:translate3d(0,0,0);
@@ -48,24 +49,6 @@
 	}
 
 	@keyframes ripple {
-		100% {
-			transform: scale($_end_scale);
-			opacity: $_end_opacity;
-		}
-	}
-	@-webkit-keyframes ripple {
-		100% {;
-			transform: scale($_end_scale);
-			opacity: $_end_opacity;
-		}
-	}
-	@-o-keyframes ripple {
-		100% {
-			transform: scale($_end_scale);
-			opacity: $_end_opacity;
-		}
-	}
-	@-moz-keyframes ripple {
 		100% {
 			transform: scale($_end_scale);
 			opacity: $_end_opacity;

@@ -1,23 +1,27 @@
 @mixin _theme($tint, $element) {
 
-	&.title,
-    .title {
-    	color: theme($tint, $element, "title", "color");
-    }
+    @at-root {
+        .theme & {
+        	&.title,
+            .title {
+            	color: theme($tint, $element, "title", "color");
+            }
 
-    &.subtitle,
-    .subtitle {
-        color: theme($tint, $element, "subtitle", "color");
-	}
+            &.subtitle,
+            .subtitle {
+                color: theme($tint, $element, "subtitle", "color");
+        	}
 
-	&.text,
-	.text {
-        color: theme($tint, $element, "text", "color");
-	}
+        	&.text,
+        	.text {
+                color: theme($tint, $element, "text", "color");
+        	}
 
-    .actions.bordered {
-        border-top: 1px solid theme($tint, $element, "actions", "border-color");
-        @include hairline("border-top");
+            .actions.bordered {
+                border-top: 1px solid theme($tint, $element, "actions", "border-color");
+                @include hairline("border-top");
+            }
+        }
     }
 }
 

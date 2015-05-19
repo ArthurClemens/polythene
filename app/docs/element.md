@@ -1,6 +1,6 @@
 # Element
 
-A simple element to wrap a component around a Mithril template.
+A simple element to wrap a component around a Mithril template. It doesn't do anything out of itself.
 
 
 ## Usage

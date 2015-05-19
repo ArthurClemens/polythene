@@ -1,0 +1,1 @@
+define(["css!./theme"],function(){"use strict";var e=document.querySelector("html");e.classList.add("theme")});

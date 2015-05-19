@@ -1,4 +1,4 @@
-@import "theme-config";
+@import "../theme/theme-config";
 
 // Variables, functions and mixins
 
@@ -91,4 +91,15 @@ $fontSizeTitle: 20px;
 	@media screen and (min-resolution: 2dppx) {
 		#{$which}-width: 0.5px;
 	}
+}
+
+@mixin font-smoothing($value: on) {
+    @if $value == on {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    @else {
+        -webkit-font-smoothing: subpixel-antialiased;
+        -moz-osx-font-smoothing: auto;
+    }
 }

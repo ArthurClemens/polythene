@@ -1,47 +1,54 @@
 @mixin _theme($tint, $element) {
 
-	& + .list {
-		border-top: 1px solid theme($tint, $element, "border-color");
-		@include hairline("border-top");
-	}
+	@at-root {
+		.theme & {
 
-	&.bordered {
-		.list-tile:not(.subheader) {
-			&:not(:last-child) {
-				.list-tile-content,
-				.list-tile-content-icon {
-					border-bottom: 1px solid theme($tint, $element, "border-color");
-					@include hairline("border-bottom");
+			& + .list {
+				border-top: 1px solid theme($tint, $element, "border-color");
+				@include hairline("border-top");
+			}
+
+			&.bordered {
+				.list-tile:not(.subheader) {
+					&:not(:last-child) {
+						.list-tile-content,
+						.list-tile-content-icon {
+							border-bottom: 1px solid theme($tint, $element, "border-color");
+							@include hairline("border-bottom");
+						}
+					}
+				}
+			}
+
+			&.bordered-indent {
+				border-top: none;
+
+				.list-tile:not(.subheader) {
+					&:not(:last-child) {
+						.list-tile-content {
+							border-bottom: 1px solid theme($tint, $element, "border-color");
+							@include hairline("border-bottom");
+						}
+					}
+				}
+				&:not(:first-child) {
+					.list-tile.subheader {
+						.list-tile-content {
+							border-top: 1px solid theme($tint, $element, "border-color");
+							@include hairline("border-top");
+						}
+					}
 				}
 			}
 		}
 	}
 
-	&.bordered-indent {
-		border-top: none;
-
-		.list-tile:not(.subheader) {
-			&:not(:last-child) {
-				.list-tile-content {
-					border-bottom: 1px solid theme($tint, $element, "border-color");
-					@include hairline("border-bottom");
+	@at-root {
+		.theme.no-touch & {
+			&.hoverable {
+				.list-tile:not(.subheader):hover {
+					background-color: theme($tint, $element, "background-hover-color");
 				}
-			}
-		}
-		&:not(:first-child) {
-			.list-tile.subheader {
-				.list-tile-content {
-					border-top: 1px solid theme($tint, $element, "border-color");
-					@include hairline("border-top");
-				}
-			}
-		}
-	}
-
-	.no-touch & {
-		&.hoverable {
-			.list-tile:not(.subheader):hover {
-				background-color: theme($tint, $element, "background-hover-color");
 			}
 		}
 	}
