@@ -9,7 +9,6 @@ define(function(require) {
         listTile = require('polythene/list-tile/list-tile'),
         card = require('polythene/card/card'),
         button = require('polythene/button/button'),
-        //icon = require('polythene/icon/icon'),
         app,
         doc,
         navItem,
@@ -20,7 +19,7 @@ define(function(require) {
         defaultTitle,
         baseUrl;
 
-    require('css!polythene/theme/theme');
+    require('polythene/theme/theme');
     require('css!polythene/polythene/typography');
     require('polythene/font-roboto/font-roboto');
     require('css!app-css');
@@ -32,7 +31,8 @@ define(function(require) {
         links: [{
             url: 'polythene',
             name: 'Introduction',
-            title: defaultTitle
+            title: defaultTitle,
+            demo: 'index'
         }]
     }, {
         label: 'Combined components',
@@ -70,9 +70,6 @@ define(function(require) {
     }, {
         label: 'Elementary components',
         links: [{
-            url: 'element',
-            name: 'Element'
-        }, {
             url: 'svg',
             name: 'SVG'
         }, {
@@ -85,11 +82,20 @@ define(function(require) {
             url: 'shadow',
             name: 'Shadow'
         }, {
+            url: 'element',
+            name: 'Element',
+            demo: null
+        }, {
             url: 'font-roboto',
             name: 'Roboto Font'
         }, {
+            url: 'theme',
+            name: 'Theme',
+            demo: null
+        }, {
             url: 'layout',
-            name: 'Layout'
+            name: 'Layout',
+            demo: null
         }]
     }];
 
@@ -140,39 +146,40 @@ define(function(require) {
         );
     };
 
-    main = function(title, id, content) {
-        var parsed, url, urlId, subtitle, demoCard;
+    main = function(currentLinkData, content) {
+        var title, id, parsed, url, urlId, demoCard, demoCardSubtitle = null;
+        title = currentLinkData.name;
+        id = currentLinkData.url;
         parsed = content ? marked(content) : '';
 
-        urlId = (id === 'polythene') ? 'index' : id;
-
-        url = {
-            href: 'http://arthurclemens.github.io/Polythene-Examples/' + urlId + '.html',
-            target: '_blank'
-        };
-
-        subtitle = (id === 'polythene') ? 'All components' : title;
-
-        demoCard = m.component(card, {
-            url: url,
-            content: [{
-                primary: {
-                    title: 'Demo',
-                    subtitle: subtitle
-                }
-            }, {
-                actions: {
-                    class: 'bordered',
-                    content: [
-                        m('[flex]'),
-                        m.component(button, {
-                            label: 'View',
-                            url: url
-                        })
-                    ]
-                }
-            }]
-        });
+        if (currentLinkData.demo !== null) {
+            urlId = currentLinkData.demo || id;
+            url = {
+                href: 'http://arthurclemens.github.io/Polythene-Examples/' + urlId + '.html',
+                target: '_blank'
+            };
+            demoCardSubtitle = (id === 'polythene') ? 'All components' : title;
+            demoCard = m.component(card, {
+                url: url,
+                content: [{
+                    primary: {
+                        title: 'Demo',
+                        subtitle: demoCardSubtitle
+                    }
+                }, {
+                    actions: {
+                        class: 'bordered',
+                        content: [
+                            m('[flex]'),
+                            m.component(button, {
+                                label: 'View',
+                                url: url
+                            })
+                        ]
+                    }
+                }]
+            });
+        }
 
         return m('.main[flex]',
             m.component(headerPanel, {
@@ -235,7 +242,7 @@ define(function(require) {
             m('.scaffold[layout][horizontal][reverse]', {
                 config: app.vm.updateHead
             }, [
-                main(currentLink.name, currentLink.url, docData),
+                main(currentLink, docData),
                 createDrawer()
             ])
         ];
