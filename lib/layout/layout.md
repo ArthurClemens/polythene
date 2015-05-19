@@ -2,6 +2,8 @@
 
 Adds Polymer's layout system built on top of CSS Flexbox. See Polymer's [Layout attributes](https://www.polymer-project.org/0.5/docs/polymer/layout-attrs.html).
 
+Layout styles are automatically included in the [default theme](#theme). If you use the theme, you don't need to require layout.
+
 
 ## Usage
 
