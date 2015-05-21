@@ -207,42 +207,49 @@ define(function(require) {
                     return linkMap[m.route.param('module')];
                 };
 
-                app.vm.updateHead = function() {
-                    var currentLink, title;
+                app.vm.updateUI = function() {
+                    var currentLink, title, main;
                     currentLink = app.vm.currentLink() || {};
                     title = currentLink.title || (currentLink.name + ' - ' + defaultTitle);
                     document.title = title;
+                    main = document.querySelector('.mainContainer');
+                    if (main) {
+                        main.scrollTop = 0;
+                    }
                 };
             }
         };
     }.call();
 
     app.controller = function() {
-        var docs;
+        var docPage, currentLink, deferred;
+
         app.vm.init();
-        docs = m.request({
+        currentLink = app.vm.currentLink();
+
+        m.startComputation();
+        deferred = m.deferred();
+        docPage = deferred.promise;
+        m.request({
             method: 'GET',
             url: 'app/docs/' + m.route.param('module') + '.md',
             background: false,
             deserialize: function(value) {
-                return value;
+                deferred.resolve(main(currentLink, value));
+                app.vm.updateUI();
+                m.endComputation();
             }
         });
 
         return {
-            docs: docs
+            docPage: docPage
         };
     };
 
-    app.view = function(ctrl) {
-        var docData, currentLink;
-        docData = ctrl.docs();
-        currentLink = app.vm.currentLink();
+    app.view = function(ctrl) {        
         return [
-            m('.scaffold[layout][horizontal][reverse]', {
-                config: app.vm.updateHead
-            }, [
-                main(currentLink, docData),
+            m('.scaffold[layout][horizontal][reverse]', [
+                ctrl.docPage(),
                 createDrawer()
             ])
         ];
@@ -250,10 +257,19 @@ define(function(require) {
 
     doc = {};
 
+    function route(sub) {
+        return {
+            controller: function() {
+                m.redraw.strategy('diff');
+                return new sub.controller();
+            },
+            view: sub.view
+        };
+    }
 
     m.route.mode = 'hash';
     m.route(document.body, baseUrl, {
-        ':module': app
+        ':module': route(app)
     });
 
 });
