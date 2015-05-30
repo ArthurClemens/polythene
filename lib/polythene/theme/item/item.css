@@ -1,0 +1,1 @@
+.item{display:block;position:relative;min-height:40px;white-space:nowrap}.item.font-scalable{min-height:2.5em}.item.font-scalable .icon:not([role=img]){margin:0 1em 0 .25em;height:1.5em;width:1.5em}.item.selected{font-weight:700}.item .icon:not([role=img]){margin:0 16px 0 4px}.item>a{position:absolute;top:0;right:0;bottom:0;left:0;background-color:transparent}

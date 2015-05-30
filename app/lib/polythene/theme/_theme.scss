@@ -1,9 +1,0 @@
-// Remove dotted link borders in Firefox
-a, a:active, a:focus {
-    outline: none;
-}
-
-html {
-    // remove tap highlight in mobile Safari
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-}

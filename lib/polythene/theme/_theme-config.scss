@@ -1,0 +1,210 @@
+@import "../deps/material-colors/colors";
+
+$lightPrimaryTextColor: rgba(#000,.87);
+$lightTextColor: rgba(#000,.73);
+$lightButtonLabelColor: rgba(#000,.69);
+$lightSecondaryTextAlpha: 0.54;
+$lightSecondaryTextColor: rgba(#000, $lightSecondaryTextAlpha);
+$lightTertiaryTextColor: rgba(#000,.40);
+$lightDisabledTextColor: rgba(#000,.26);
+$lightHintTextColor: $lightDisabledTextColor;
+$lightBorderColor: rgba(#000,.11);
+$lightHoverBackgroundAlpha: 0.08;
+$lightHoverBackgroundColor: rgba(#000, $lightHoverBackgroundAlpha); // comparable to rgba(#999,.2)
+$lightActiveBackgroundAlpha: 0.14;
+$lightActiveBackgroundColor: rgba(#000, $lightActiveBackgroundAlpha);
+
+$darkPrimaryTextColor: rgba(#fff,1);
+$darkTextColor: $darkPrimaryTextColor;
+$darkSecondaryTextAlpha: 0.7;
+$darkSecondaryTextColor: rgba(#fff, $darkSecondaryTextAlpha);
+$darkButtonLabelColor: $darkSecondaryTextColor;
+$darkTertiaryTextColor: rgba(#fff,.4);
+$darkDisabledTextColor: rgba(#fff,.26);
+$darkHintTextColor: textColorDisabled;
+$darkBorderColor: rgba(#fff,.17);
+$darkHoverBackgroundAlpha: 0.08;
+$darkHoverBackgroundColor: rgba(#fff, $darkHoverBackgroundAlpha);
+$darkActiveBackgroundAlpha: 0.14;
+$darkActiveBackgroundColor: rgba(#fff, $darkActiveBackgroundAlpha);
+
+$themeConfig: (
+    light: (
+        button: (
+            flat: (
+                normal: (
+                    background: transparent,
+                    color: $lightPrimaryTextColor
+                ),
+                hover: (
+                    background: $lightHoverBackgroundColor
+                ),
+                active: (
+                    background: $lightActiveBackgroundColor
+                ),
+                disabled: (
+                    background: transparent,
+                    color: $lightDisabledTextColor
+                )
+            ),
+            raised: (
+                normal: (
+                    background: #E0E0E0,
+                    color: $lightPrimaryTextColor
+                ),
+                hover: (
+                    background: transparent
+                ),
+                active: (
+                    background: $lightHoverBackgroundColor // same as :hover
+                ),
+                disabled: (
+                    background: rgba(0,0,0,.07),
+                    color: $lightDisabledTextColor
+                )
+            )
+        ),
+        icon-button: (
+            flat: (
+                normal: (
+                    color: $lightSecondaryTextColor
+                ),
+                hover: (
+                    background: $lightHoverBackgroundColor
+                ),
+                active: (
+                    background: $lightActiveBackgroundColor
+                ),
+                disabled: (
+                    color: $lightDisabledTextColor
+                )
+            ),
+            raised: (
+                normal: (
+                    color: $lightSecondaryTextColor
+                ),
+                hover: (
+                    background: transparent,
+                    opacity: 0
+                ),
+                active: (
+                    background: $lightHoverBackgroundColor // same as :hover
+                ),
+                disabled: (
+                    color: $lightDisabledTextColor
+                )
+            )
+        ),
+        card: (
+            title: (
+                color: $lightPrimaryTextColor
+            ),
+            subtitle: (
+                color: $lightSecondaryTextColor
+            ),
+            text: (
+                color: $lightTextColor
+            ),
+            actions: (
+                border-color: $lightBorderColor
+            ) 
+        ),
+        list: (
+            border-color: $lightBorderColor,
+            background-hover-color: $lightHoverBackgroundColor
+        ),
+        list-tile: (
+            header: $lightPrimaryTextColor,
+            subheader: $lightTertiaryTextColor,
+        )
+    ),
+    dark: (
+        button: (
+            flat: (
+                normal: (
+                    background: transparent,
+                    color: #fff
+                ),
+                hover: (
+                    background: $darkHoverBackgroundColor
+                ),
+                active: (
+                    background: $darkActiveBackgroundColor
+                ),
+                disabled: (
+                    background: transparent,
+                    color: rgba(#fff,.3)
+                )
+            ),
+            raised: (
+                normal: (
+                    background: $md-blue-500,
+                    color: $darkPrimaryTextColor
+                ),
+                hover: (
+                    background: $md-blue-600
+                ),
+                active: (
+                    background: $md-blue-700
+                ),
+                disabled: (
+                    background: rgba(#fff,.12),
+                    color: rgba(#fff,.3)
+                )
+            )
+        ),
+        icon-button: (
+            flat: (
+                normal: (
+                    color: $darkSecondaryTextColor
+                ),
+                hover: (
+                    background: $darkHoverBackgroundColor
+                ),
+                active: (
+                    background: $darkActiveBackgroundColor
+                ),
+                disabled: (
+                    color: rgba(#fff,.3)
+                )
+            ),
+            raised: (
+                normal: (
+                    color: $darkSecondaryTextColor
+                ),
+                hover: (
+                    background: $md-blue-600
+                ),
+                active: (
+                    background: $md-blue-700
+                ),
+                disabled: (
+                    color: rgba(#fff,.3)
+                )
+            )
+        ),
+        card: (
+            title: (
+                color: $darkPrimaryTextColor
+            ),
+            subtitle: (
+                color: $darkSecondaryTextColor
+            ),
+            text: (
+                color: $darkSecondaryTextColor
+            ),
+            actions: (
+                border-color: $darkBorderColor
+            ) 
+        ),
+        list: (
+            border-color: $darkBorderColor,
+            background-hover-color: $darkHoverBackgroundColor
+        ),
+        list-tile: (
+            header: $darkPrimaryTextColor,
+            subheader: $darkTertiaryTextColor
+        )
+    )
+);
+

@@ -1,0 +1,30 @@
+@import "../polythene/polythene";
+
+.button {
+    $_margin_v: $grid_unit_px;
+    $_padding_h: (($buttonTouchHeight - $buttonHeight) / 2);
+
+    display: inline-block;
+    min-width: 8 * $component_grid_unit_px;
+    height: $buttonTouchHeight;
+    margin: 0 $_margin_v;
+    padding: $_padding_h 0;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    text-transform: uppercase;
+    outline: none;
+    cursor: pointer;
+    @include user-select-none;
+    font-size: $buttonFontSize;
+    font-weight: $buttonFontWeight;
+    border-radius: $buttonBorderRadius;
+
+    @import "../button/button-effects";
+
+    .content {
+        height: $buttonHeight;
+        line-height: $buttonHeight;
+        padding: 0 2*$grid_unit_px;
+    }
+}

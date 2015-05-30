@@ -1,0 +1,37 @@
+@import "../polythene/polythene";
+
+.content {
+    position: relative;
+    border-radius: inherit;
+
+    > span {
+        position: relative;
+        display: block;
+        border-radius: inherit;
+        z-index: 2; // to make it float above .wash and .ripple
+        pointer-events: auto;
+        @include font-smoothing(on);
+    }
+}
+
+.ripple {
+    // let ripple cover the entire button click area so that ripples will be generated on click
+    // then mask this extra space with ripple-mask
+    $_extra_click_room: 2;
+
+    border-radius: inherit;
+    z-index: 3;
+}
+
+&.selected,
+&[disabled] {
+    cursor: default;
+    pointer-events: none;
+}
+
+.wash {
+    z-index: 1;
+    border-radius: inherit;
+    pointer-events: none;
+    transition: background-color $surfaceReactionDuration ease-in-out;
+}

@@ -1,0 +1,111 @@
+@import "../polythene/polythene";
+
+$_sideMargin: 2*$component_grid_unit_px - $iconButtonPadding;
+
+.toolbar {
+    display: block;
+    position: relative;
+    height: $toolbarHeightDesktop;
+    font-size: $fontSizeTitle;
+    background-color: #CFD8DC; // just a default color
+
+    // use hardware-acceleration
+    transform: translate3d(0,0,0);
+
+    &.animate {
+        transition: height 0.18s ease-in;
+    }
+
+    &.medium-tall {
+      height: 2 * $toolbarHeightDesktop;
+    }
+
+    &.tall {
+      height: 3 * $toolbarHeightDesktop;
+    }
+
+    .narrow {
+        height: $toolbarHeightMobilePortrait;
+
+        .toolbar-tools {
+            height: $toolbarHeightMobilePortrait;
+            padding: 0;
+        }
+    }
+
+    .narrow.medium-tall {
+        height: 112px;
+    }
+
+    .narrow.tall {
+        height: 168px;
+    }
+
+    .middleBar {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+    }
+    &.tall .middleBar {
+        transform: translateY(100%);
+    }
+
+    .bottomBar {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+    
+    .toolbar-tools {
+        width: 100%;
+        // make elements (e.g. buttons) respond to mouse/touch events
+        > *:not([disabled]) {
+            pointer-events: auto;
+        }
+
+        > :first-child {
+            margin-left: $_sideMargin;
+        }
+        > :last-child {
+            margin-right: $_sideMargin;
+        }
+        > .icon-button + span,
+        > .icon-button + .title {
+            margin-left: $indent - $_sideMargin - $buttonSize;
+        }
+        > span:first-child,
+        .indent {
+            margin-left: $indent;
+            @include single-line;
+        }
+        > span,
+        > .title {
+            @include single-line;
+            display: block;
+            // align left when scaling with transform
+            transform-origin: left 50%;
+        }
+
+        .fit {
+            @include fit;
+            width: auto;
+            margin: 0;
+
+            &.bottom {
+                top: auto;
+            }
+        }
+    }
+
+    .header {
+        @include single-line;
+    }
+}
+
+.toolbar-tools {
+    position: relative;
+    height: $toolbarHeightDesktop;
+    pointer-events: none;
+}
