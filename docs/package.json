@@ -35,7 +35,7 @@
         "build-copy-to-gh": "cp -R build/* ../../gh-pages/",
         "build": "npm run copy-docs && npm run build-css && node scripts/build-app.js",
         "watch": "npm run watch-css & npm run watch-es6 & npm run watch-doc",
-        "github": "rm -rf ../../gh-pages/* && npm run build && npm run build-copy-to-gh"
+        "github": "rm -rf ../../gh-pages/app && rm -rf ../../gh-pages/lib && rm -rf ../../gh-pages/config.js && rm -rf ../../gh-pages/index.html && npm run build && npm run build-copy-to-gh"
     },
     "repository": {
         "type": "git",
