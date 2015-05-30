@@ -19,9 +19,3 @@ Polymer adds a number of other useful layout classes, such as
 * `[relative]`
 * `[fit]`
 * `body[fullbleed]`
-
-Polythene adds to this:
-
-	* {
-	    box-sizing: border-box;
-	}

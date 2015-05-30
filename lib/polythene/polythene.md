@@ -1,6 +1,9 @@
 # Polythene: Material Design for Mithril
 
-Polymer inspired modular implementation of Material Design for [Mithril](http://lhorie.github.io/mithril). Available on [Github](https://github.com/ArthurClemens/Polythene).
+Modular implementation of Material Design for [Mithril](http://lhorie.github.io/mithril). Available on [Github](https://github.com/ArthurClemens/Polythene).
+
+The components are generic enough to be used with other designs too. It is actually quite easy to create a theme or change the style entirely.
+
 
 <p style='color: red'>Version v0.0.1-alpha</p>
 
@@ -8,8 +11,6 @@ Polymer inspired modular implementation of Material Design for [Mithril](http://
 
 
 ## Background
-
-Polythene borrows a great deal from [Polymer](http://polymer.github.io) (CSS styles, component names), but instead of using Web Components, it is built with [Mithril](http://lhorie.github.io/mithril).
 
 Mithril is a small and fast MVC framework that encourages a clean app architecture. In Mithril pretty much everything is a function. Templates are functions that return objects, so they can be passed around, composed, mixed, have lazy rendering, etcetera.
 
@@ -73,6 +74,7 @@ See the [main project page](https://github.com/ArthurClemens/Polythene).
 * List tile
 * Subheader (part of List)
 * Divider (part of List)
+* Theming
 
 ### To do
 

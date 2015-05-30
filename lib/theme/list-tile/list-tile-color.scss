@@ -1,0 +1,40 @@
+@import "../polythene/polythene";
+@import "../theme-config";
+
+@mixin _theme($tint, $element) {
+
+	&,
+	.list-tile-title {
+		color: theme($tint, $element, "header");
+	}
+
+	&.subheader {
+		.list-tile-title {
+			color: theme($tint, $element, "subheader");
+		}
+	}
+	
+	.list-tile-info {
+	    color: theme($tint, $element, "subheader");
+	}
+
+	.list-tile-primary,
+	.list-tile-secondary {
+		&, a {
+			color: inherit;
+		}
+		.icon {
+			color: theme($tint, "icon-button", "flat", "normal", "color");
+		}
+	}
+}
+
+.list-tile {
+	@include _theme("light", "list-tile");
+}
+
+.dark-theme {
+    .list-tile {
+    	@include _theme("dark", "list-tile");
+    }
+}

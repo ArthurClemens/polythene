@@ -1,0 +1,19 @@
+@import "../polythene/polythene";
+
+.icon-button {
+    display: inline-block;
+    @include user-select-none;
+    // don't set button size to facilitate different icon sizes
+    
+    vertical-align: middle;
+    cursor: pointer;
+    position: relative;
+    font-size: 1rem;
+    border-radius: 50%;
+    
+    @import "../button/button-effects";
+
+    .content > span {
+        padding: ($buttonSize - $iconSize) / 2;
+    }
+}

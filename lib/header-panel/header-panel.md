@@ -76,6 +76,7 @@ The header-panel will not display if its parent does not have a height.
 | **keepCondensedHeader** | optional | Boolean | false | Set to true to not move away the condensed header |
 | **noDissolve** | optional | Boolean | false | Set to true to keep the background the same opacity when scrolling |
 | **backgroundScrollSpeed** | optional | Number | 0.5 | The speed of the background when scrolling; this value is multiplied with the scroll distance; use 0 to keep the background in place |
+| **renderContentOnScroll** | Boolean | false | Set to true to "unfreeze" panel contents during scrolling; for performance this is set to false by default |
 | **scroll** | optional | Function | | Callback function when the header panel scrolls; see Callback functions |
 | **transform** | optional | Function | | Callback function when the header panel is transforming; see Callback functions |
 | **before** | optional | Mithril template or String | | Extra content before main content |
@@ -148,6 +149,12 @@ Background images are set with CSS:
 		background-image: url(images/bg2.jpg);
 	}
 
+
+An additional HTML element to control the image is 'image-dimmer'. To create a fuzzy dark border all around use an inset box shadow: 
+
+	.image-dimmer {
+		box-shadow: inset 0px 0px 200px rgba(0,0,0,.6);
+	}
 
 ## Callback functions
 

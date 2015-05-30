@@ -7,8 +7,8 @@
 
 ## Developing
 
-* `npm run copy-docs` - to copy Polythene (Markdown) documents
-* `npm run watch-css` - to watch scss file changes
+* `npm run copy-docs` - copy Polythene (Markdown) documents
+* `npm run watch-css` - watch scss file changes
 
 ## Building
 

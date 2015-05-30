@@ -1,0 +1,49 @@
+@import "../polythene/polythene";
+@import "../theme-config";
+
+@mixin _theme($tint, $element, $depth) {
+	
+	.content {
+	    background-color: theme($tint, $element, $depth, "normal", "background");
+	    color: theme($tint, $element, $depth, "normal", "color");
+	}
+	&[disabled] {
+	    .content {
+	        background-color: theme($tint, $element, $depth, "disabled", "background");
+	        color: theme($tint, $element, $depth, "disabled", "color");
+	    }
+	}
+	
+	@at-root {
+		.no-touch & {
+			&:hover {
+			    .wash {
+			        background-color: theme($tint, $element, $depth, "hover", "background");
+			    }
+			}
+		}
+	}
+
+	&:active,
+	&.selected {
+	    .wash {
+	        background-color: theme($tint, $element, $depth, "active", "background");
+	    }
+	}
+}
+
+.button {
+	@include _theme("light", "button", "flat");
+}
+.button[raised] {
+	@include _theme("light", "button", "raised");
+}
+
+.dark-theme {
+	.button {
+		@include _theme("dark", "button", "flat");
+	}
+	.button[raised] {
+		@include _theme("dark", "button", "raised");
+	}
+}

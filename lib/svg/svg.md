@@ -39,6 +39,17 @@ SVG options can be passed to [icon](#icon):
 
 Note that in this case `require('polythene/svg/svg')` is not needed (this is handled by icon). 
 
+When after user interaction another SVG is shown, the app is more responsive when the other SVG is already preloaded and cached. Param `preload` accepts a list of option objects:
+
+	var mySvg = m.component(svg, {
+        name: opts.favorite ? 'star' : 'star-outline',
+        iconset: 'mdi',
+        preload: [{
+            name: opts.favorite ? 'star-outline' : 'star',
+            iconset: 'mdi'
+        }]
+    }
+
 
 ## Options
 
@@ -50,7 +61,7 @@ Note that in this case `require('polythene/svg/svg')` is not needed (this is han
 | **iconset** | either src or iconset+name must be passed | String |  | Iconset name - see below |
 | **group** | optional | String |  | Subfolder within iconset |
 | **name** | either src or iconset+name must be passed | String |  | SVG filename without .svg extension |
-| **refresh** | optional | Boolean | false | Set to true to fetch the SVG resource on reloads |
+| **preload** | optional | Array of svg option objects | | List of SVG items (property `name`, `src`, `group`, `iconset`) to preload; will be fetched after `name` has been loaded |
 | **before** | optional | Mithril template or String | | Extra content before main content |
 | **after** | optional | Mithril template or String | | Extra content after main content |
 

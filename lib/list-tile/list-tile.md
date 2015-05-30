@@ -19,14 +19,14 @@ To show a secondary line:
 
 	var myListTile = m.component(listTile, {
 		title: 'My title',
-		info: 'My info'
+		subtitle: 'My subtitle'
 	});
 
 To show 2 secondary lines:
 
 	var myListTile = m.component(listTile, {
 		title: 'My title',
-		info_high: 'My loooooooooooong info'
+		highSubtitle: 'My loooooooooooong subtitle'
 	});
 
 To show an icon:
@@ -91,8 +91,8 @@ To show secondary content at the right, including a link:
 A list tile can have 1 to 3 lines:
 
 * `title`: first line
-* `info`: secondary line
-* `info_high`: secondary line runs over 2 lines
+* `subtitle`: secondary line
+* `highSubtitle`: secondary line runs over 2 lines
 
 A list tile can optionally have an icon.
 
@@ -108,10 +108,10 @@ A list tile can optionally have secondary content, displayed to the right. Secon
 | **tag** | optional | String | 'div' | HTML tag |
 | **class** | optional | String |  | Extra CSS class appended to 'list-tile' |
 | **title** | required | String | | The text content |
-| **info** | optional | String | | Secondary text content (1 line high) |
-| **info_high** | optional | String | | Secondary text content (2 lines high) |
+| **subtitle** | optional | String | | Secondary text content (1 line high) |
+| **highSubtitle** | optional | String | | Secondary text content (2 lines high) |
 | **icon** | optional | Object |  | [icon](#icon) options object |
-| **tag** | optional | String | 'a[flex]' or 'div[flex]' | HTML tag for primary content |
+| **tag** | optional | String | 'a[flex]' | HTML tag for primary content |
 | **url** | optional | Object with `href`, optionally `config` | | URL for primary content |
 | **secondary** | optional | Object | | Options for secondary content |
 | **secondary.tag** | optional | String | See "Layout of secondary content" below | HTML tag for secondary content |

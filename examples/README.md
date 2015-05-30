@@ -8,12 +8,11 @@ Public site: [Polythene Examples](http://arthurclemens.github.io/Polythene-Examp
 ## Setup
 
 * `npm install`
-* `npm run setup`
 
 ## Developing
 
-* `npm run watch-css` - to watch scss file changes
-* `npm run build-css` - to build CSS
+* `npm run watch` - watch file changes
+* `npm run build-css` - build CSS
 
 ## Building
 
@@ -23,4 +22,3 @@ Public site: [Polythene Examples](http://arthurclemens.github.io/Polythene-Examp
 
 * `npm install -g http-server`
 * `http-server ./src`
-

@@ -59,7 +59,7 @@ Add an onclick event:
 
 ## Default generated HTML
 
-	<div raised="true" class="button">
+	<a raised="true" class="button">
 		<div class="content">
 			<span>Button label</span>
 			<div fit="true" class="ripple constrained">
@@ -73,10 +73,10 @@ Add an onclick event:
 				<div fit="true" class="shadow-top shadow-top-z-1"></div>
 			</div>
 		</div>
-	</div>
+	</a>
 
 
 ## TODO
 
-* Option to wait for ripple to finish
+* Option to wait for ripple to finish before url/event is followed
 

@@ -1,26 +1,32 @@
 @import "../deps/material-colors/colors";
 
-$lightTextColorPrimary: rgba(#000,.87);
-$lightTextColorText: rgba(#000,.73);
-$lightTextColorButton: rgba(#000,.69);
-$lightTextColorSecondary: rgba(#000,.54);
-$lightTextColorTertiary: rgba(#000,.40);
-$lightTextColorDisabled: rgba(#000,.26);
-$lightTextColorHints: $lightTextColorDisabled;
+$lightPrimaryTextColor: rgba(#000,.87);
+$lightTextColor: rgba(#000,.73);
+$lightButtonLabelColor: rgba(#000,.69);
+$lightSecondaryTextAlpha: 0.54;
+$lightSecondaryTextColor: rgba(#000, $lightSecondaryTextAlpha);
+$lightTertiaryTextColor: rgba(#000,.40);
+$lightDisabledTextColor: rgba(#000,.26);
+$lightHintTextColor: $lightDisabledTextColor;
 $lightBorderColor: rgba(#000,.11);
-$lightHoverColor: rgba(#000,.08); // comparable to rgba(#999,.2)
-$lightActiveColor: rgba(#000,.14);
+$lightHoverBackgroundAlpha: 0.08;
+$lightHoverBackgroundColor: rgba(#000, $lightHoverBackgroundAlpha); // comparable to rgba(#999,.2)
+$lightActiveBackgroundAlpha: 0.14;
+$lightActiveBackgroundColor: rgba(#000, $lightActiveBackgroundAlpha);
 
-$darkTextColorPrimary: rgba(#fff,1);
-$darkTextColorText: $darkTextColorPrimary;
-$darkTextColorSecondary: rgba(#fff,.7);
-$darkTextColorButton: $darkTextColorSecondary;
-$darkTextColorTertiary: rgba(#fff,.4);
-$darkTextColorDisabled: rgba(#fff,.26);
-$darkTextColorHints: textColorDisabled;
+$darkPrimaryTextColor: rgba(#fff,1);
+$darkTextColor: $darkPrimaryTextColor;
+$darkSecondaryTextAlpha: 0.7;
+$darkSecondaryTextColor: rgba(#fff, $darkSecondaryTextAlpha);
+$darkButtonLabelColor: $darkSecondaryTextColor;
+$darkTertiaryTextColor: rgba(#fff,.4);
+$darkDisabledTextColor: rgba(#fff,.26);
+$darkHintTextColor: textColorDisabled;
 $darkBorderColor: rgba(#fff,.17);
-$darkHoverColor: rgba(#fff, .08);
-$darkActiveColor: rgba(#fff,.14);
+$darkHoverBackgroundAlpha: 0.08;
+$darkHoverBackgroundColor: rgba(#fff, $darkHoverBackgroundAlpha);
+$darkActiveBackgroundAlpha: 0.14;
+$darkActiveBackgroundColor: rgba(#fff, $darkActiveBackgroundAlpha);
 
 $themeConfig: (
     light: (
@@ -28,58 +34,76 @@ $themeConfig: (
             flat: (
                 normal: (
                     background: transparent,
-                    color: $lightTextColorPrimary
+                    color: $lightPrimaryTextColor
                 ),
                 hover: (
-                    background: $lightHoverColor
+                    background: $lightHoverBackgroundColor
                 ),
                 active: (
-                    background: $lightActiveColor
+                    background: $lightActiveBackgroundColor
                 ),
                 disabled: (
                     background: transparent,
-                    color: $lightTextColorDisabled
+                    color: $lightDisabledTextColor
                 )
             ),
             raised: (
                 normal: (
                     background: #E0E0E0,
-                    color: $lightTextColorPrimary
+                    color: $lightPrimaryTextColor
                 ),
                 hover: (
                     background: transparent
                 ),
                 active: (
-                    background: rgba(#000,.08) // comparable to rgba(#999,.2)
+                    background: $lightHoverBackgroundColor // same as :hover
                 ),
                 disabled: (
                     background: rgba(0,0,0,.07),
-                    color: $lightTextColorDisabled
+                    color: $lightDisabledTextColor
                 )
             )
         ),
-        icon: (
+        icon-button: (
             flat: (
                 normal: (
-                    color: $lightTextColorSecondary
+                    color: $lightSecondaryTextColor
+                ),
+                hover: (
+                    background: $lightHoverBackgroundColor
+                ),
+                active: (
+                    background: $lightActiveBackgroundColor
+                ),
+                disabled: (
+                    color: $lightDisabledTextColor
                 )
             ),
             raised: (
                 normal: (
-                    color: $lightTextColorSecondary
+                    color: $lightSecondaryTextColor
+                ),
+                hover: (
+                    background: transparent,
+                    opacity: 0
+                ),
+                active: (
+                    background: $lightHoverBackgroundColor // same as :hover
+                ),
+                disabled: (
+                    color: $lightDisabledTextColor
                 )
             )
-            // other styles: use button
         ),
         card: (
             title: (
-                color: $lightTextColorPrimary
+                color: $lightPrimaryTextColor
             ),
             subtitle: (
-                color: $lightTextColorSecondary
+                color: $lightSecondaryTextColor
             ),
             text: (
-                color: $lightTextColorText
+                color: $lightTextColor
             ),
             actions: (
                 border-color: $lightBorderColor
@@ -87,11 +111,11 @@ $themeConfig: (
         ),
         list: (
             border-color: $lightBorderColor,
-            background-hover-color: $lightHoverColor
+            background-hover-color: $lightHoverBackgroundColor
         ),
         list-tile: (
-            header: $lightTextColorPrimary,
-            subheader: $lightTextColorTertiary,
+            header: $lightPrimaryTextColor,
+            subheader: $lightTertiaryTextColor,
         )
     ),
     dark: (
@@ -102,10 +126,10 @@ $themeConfig: (
                     color: #fff
                 ),
                 hover: (
-                    background: $darkHoverColor
+                    background: $darkHoverBackgroundColor
                 ),
                 active: (
-                    background: $darkActiveColor
+                    background: $darkActiveBackgroundColor
                 ),
                 disabled: (
                     background: transparent,
@@ -115,7 +139,7 @@ $themeConfig: (
             raised: (
                 normal: (
                     background: $md-blue-500,
-                    color: $darkTextColorPrimary
+                    color: $darkPrimaryTextColor
                 ),
                 hover: (
                     background: $md-blue-600
@@ -129,28 +153,45 @@ $themeConfig: (
                 )
             )
         ),
-        icon: (
+        icon-button: (
             flat: (
                 normal: (
-                    color: $darkTextColorSecondary
+                    color: $darkSecondaryTextColor
+                ),
+                hover: (
+                    background: $darkHoverBackgroundColor
+                ),
+                active: (
+                    background: $darkActiveBackgroundColor
+                ),
+                disabled: (
+                    color: rgba(#fff,.3)
                 )
             ),
             raised: (
                 normal: (
-                    color: $darkTextColorSecondary
+                    color: $darkSecondaryTextColor
+                ),
+                hover: (
+                    background: $md-blue-600
+                ),
+                active: (
+                    background: $md-blue-700
+                ),
+                disabled: (
+                    color: rgba(#fff,.3)
                 )
             )
-            // other styles: use button
         ),
         card: (
             title: (
-                color: $darkTextColorPrimary
+                color: $darkPrimaryTextColor
             ),
             subtitle: (
-                color: $darkTextColorSecondary
+                color: $darkSecondaryTextColor
             ),
             text: (
-                color: $darkTextColorSecondary
+                color: $darkSecondaryTextColor
             ),
             actions: (
                 border-color: $darkBorderColor
@@ -158,11 +199,11 @@ $themeConfig: (
         ),
         list: (
             border-color: $darkBorderColor,
-            background-hover-color: $darkHoverColor
+            background-hover-color: $darkHoverBackgroundColor
         ),
         list-tile: (
-            header: $darkTextColorPrimary,
-            subheader: $darkTextColorTertiary
+            header: $darkPrimaryTextColor,
+            subheader: $darkTertiaryTextColor
         )
     )
 );

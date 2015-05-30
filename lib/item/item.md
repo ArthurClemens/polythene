@@ -4,7 +4,7 @@
 
 Item is a simple horizontal element with a label and an optional icon.
 
-This is a Polymer component and not part of the Material Design specification.
+This component does not belong to the Material Design specification, but was introduced by <a href="https://www.polymer-project.org/0.5/docs/elements/core-item.html" target="_blank">Polymer</a>.
 
 
 ## Usage

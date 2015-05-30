@@ -1,46 +1,53 @@
 {
-  "name": "polythene-documentation",
-  "version": "0.0.1",
-  "description": "Polythene documentation",
-  "main": "index.js",
-  "directories": {
-     "src": "src"
-  },
-  "dependencies": {
-    "marked": "",
-    "lodash": "git@github.com:lodash/lodash.git",
-    "almond": "",
-    "autoprefixer": ""
-  },
-  "scripts": {
-    "setup-symlink": "rm -rf src/app/lib/polythene && mkdir -p src/app/lib && cd .. && ln -s \"$(pwd)/lib/\" docs/src/app/lib/polythene",
-    "copy-lodash": "mkdir -p src/app/lib/lodash/ && cp node_modules/lodash/lodash.min.js src/app/lib/lodash/lodash.min.js",
-    "copy-marked": "mkdir -p src/app/lib/marked/ && cp node_modules/marked/marked.min.js src/app/lib/marked/",
-    "copy-deps": "npm run copy-lodash && npm run copy-marked",
-    "setup": "npm run setup-symlink && npm run copy-deps",
-    "copy-docs": "mkdir -p src/app/docs && cp ../lib/**/*.md src/app/docs/",
-    "autoprefixer": "autoprefixer src/app/*.css -b 'last 2 versions'",
-    "sass": "sass --update --sourcemap=none src/app/",
-    "build-copy-to-gh": "cp -R build/* ../../gh-pages/ && cd ../../gh-pages/",
-    "build-css": "npm run sass && npm run autoprefixer",
-    "watch-css": "nodemon -e scss -w lib/ -x 'npm run build-css'",
-    "watch": "npm run watch-css",
-    "build": "npm run copy-docs && npm run build-css && r.js -o src/build.js && rm build/build* && rm build/app/app.scss",
-    "github": "rm -rf ../../gh-pages/app && npm run build && npm run build-copy-to-gh"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ArthurClemens/Polythene.git"
-  },
-  "author": "Arthur Clemens",
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://www.opensource.org/licenses/mit-license.php"
-    }
-  ],
-  "bugs": {
-    "url": "https://github.com/ArthurClemens/Polythene/issues"
-  },
-  "homepage": "https://github.com/ArthurClemens/Polythene"
+    "name": "polythene-documentation",
+    "version": "0.0.1",
+    "description": "Polythene documentation",
+    "license": "MIT",
+    "main": "index.js",
+    "directories": {
+        "src": "src"
+    },
+    "dependencies": {
+        "marked": "",
+        "autoprefixer": "",
+        "systemjs": "",
+        "systemjs-builder": "",
+        "es6-module-loader": "",
+        "babel-core": "",
+        "babel-plugin-closure-elimination": "",
+        "mithril": "^0.2.0",
+        "lodash": "git@github.com:lodash/lodash.git",
+        "system-css": "",
+        "system-text": ""
+    },
+    "scripts": {
+        "postinstall": "npm run setup-babel && npm run setup-symlink && npm run copy-libs",
+        "setup-symlink": "rm -rf src/lib/polythene && mkdir -p src/lib && cd .. && ln -s \"$(pwd)/lib/\" docs/src/lib/polythene",
+        "setup-babel": "cd node_modules/babel-core && npm install",
+        "copy-libs": "node scripts/copy-libs src/lib",
+        "autoprefixer": "autoprefixer src/app/*.css -b 'last 2 versions'",
+        "sass": "sass --update --sourcemap=none src/app/",
+        "copy-docs": "mkdir -p src/app/docs && cp ../lib/**/*.md src/app/docs/",
+        "watch-es6": "node ../scripts/watch-es6.js src/",
+        "build-css": "npm run sass && npm run autoprefixer",
+        "watch-css": "node ../scripts/watch-scss.js src/",
+        "watch-doc": "node ../scripts/watch-doc.js ../lib/",
+        "build-copy-to-gh": "cp -R build/* ../../gh-pages/",
+        "build": "npm run copy-docs && npm run build-css && node scripts/build-app.js",
+        "watch": "npm run watch-css & npm run watch-es6 & npm run watch-doc",
+        "github": "rm -rf ../../gh-pages/* && npm run build && npm run build-copy-to-gh"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ArthurClemens/Polythene.git"
+    },
+    "author": "Arthur Clemens",
+    "licenses": [{
+        "type": "MIT",
+        "url": "http://www.opensource.org/licenses/mit-license.php"
+    }],
+    "bugs": {
+        "url": "https://github.com/ArthurClemens/Polythene/issues"
+    },
+    "homepage": "https://github.com/ArthurClemens/Polythene"
 }

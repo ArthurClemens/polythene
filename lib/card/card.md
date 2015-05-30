@@ -167,7 +167,7 @@ Next to the card itself, each content parts has a set of options:
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **tag** | optional | String | 'a' (if `url` is passed) or 'div' | HTML tag |
+| **tag** | optional | String | 'a' | HTML tag |
 | **class** | optional | String |  | Extra CSS class appended to 'card' |
 | **url** | optional | Object with `href`, optionally `config` | | URL for the entire card |
 | **events** | optional | Object | | Card events; options object containing one or more events like `onclick` |
@@ -200,7 +200,7 @@ Next to the card itself, each content parts has a set of options:
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **tag** | optional | String | 'a[layout][horizontal][center]' (if `url` is passed) or 'div[layout][horizontal][center]' | HTML tag |
+| **tag** | optional | String | 'a[layout][horizontal][center]' | HTML tag |
 | **class** | optional | String |  | Extra CSS class appended to 'header' |
 | **url** | optional | Object | | URL for the entire card; options object containing `href` and `config` |
 | **events** | optional | Object | | Card events; options object containing one or more events like `onclick` |
@@ -213,7 +213,7 @@ Next to the card itself, each content parts has a set of options:
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **tag** | optional | String | 'div' | HTML tag |
+| **tag** | optional | String | 'a' or div' | HTML tag |
 | **class** | optional | String |  | Extra CSS class appended to 'media' |
 | **content** | required | Mithril template |  | The image |
 | **ratio** | optional | String: 'landscape' or 'square' | 'landscape' | Image ratio; 'landscape' translates to `16:9` ratio |

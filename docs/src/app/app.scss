@@ -1,5 +1,6 @@
 @import url("http://fonts.googleapis.com/css?family=Inconsolata");
 
+$_font_size: 15px;
 $_main_side_padding: 80px;
 $_main_background_color: #f3f3f5;
 $_side_color: #00C853;
@@ -23,18 +24,18 @@ body {
     position: relative;
     margin: 0;
     padding: 0;
-    font-size: 16px;
-    line-height: 1.4;
+    font-size: $_font_size;
+    line-height: 1.4 * $_font_size;
     color: #333;
     min-width: 320px;
 }
 .scaffold {
     height: 100%;
 }
-.drawer {
+.drawer,
+.drawer.dark-theme {
     background: $_drawer_color;
     position: relative;
-    color: rgba(255,255,255,.7);
     height: 100%;
 
     .toolbar {
@@ -54,9 +55,16 @@ body {
         background-color: $_side_color;
     }
     
+    .list-tile.subheader .list-tile-title {
+        font-weight: 400;
+    }
+    .list-tile .list-tile-title {
+        font-size: $_font_size;
+        color: rgba(255,255,255,.9);
+    }
     .highlight .list-tile-title,
-    .list-tile a:hover {
-        color: $_drawer_highlight_color;
+    .list-tile a[href]:hover .list-tile-title {
+        color: rgba(255,255,255,.9);
     }
 }
 
@@ -225,6 +233,10 @@ body {
         .logo {
             display: none;
         }
+
+        .highlight {
+            background-color: #37474F;
+        }
     }
 
     .main {
@@ -274,9 +286,10 @@ body {
 
 @media (min-width: 640px) and (max-width: 960px) {
     $_main_side_padding: 40px;
+    $_drawer_width: 240px;
 
     .drawer {
-        width: 240px;
+        width: $_drawer_width;
     }
 
     .main {
@@ -321,9 +334,10 @@ body {
 
 @media (min-width: 960px) {
     $_main_side_padding: 96px;
+    $_drawer_width: 280px;
 
     .drawer {
-        min-width: 240px;
+        min-width: $_drawer_width;
 
         .topBar {
             font-size: $_header_font_size;
