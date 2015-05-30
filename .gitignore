@@ -1,10 +1,11 @@
-bower_components
 node_modules
 external_modules
 build
-jspm_packages
+*.js
+!*.es6.js
+*.css
 docs/src/app/docs
-docs/src/app/lib
+docs/src/lib
 examples/src/lib
 lib/font-iconic/material-design-iconic-font
 lib/svg/mdi
