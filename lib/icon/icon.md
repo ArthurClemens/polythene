@@ -2,20 +2,20 @@
 
 <a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/icon.html">Demo</a>
 
-Displays an icon (image or [SVG](#svg)) as a 24px square. 
+Displays an icon (image or [SVG](#svg)) as a 24px (but configurable) square. 
 
 
 ## Usage
 
-	var icon = require('polythene/icon/icon');
+	import icon from 'polythene/icon/icon';
 
-	var myIcon = m.component(icon, {
+	let myIcon = m.component(icon, {
 		src: 'img/arrow.png'
 	});
 
 To use SVG instead of an image, pass an [svg](#svg) option object:
 
-	var myIcon = m.component(icon, {
+	let myIcon = m.component(icon, {
 		svg: {
 		    src: 'img/arrow.svg'
 		}
@@ -23,7 +23,7 @@ To use SVG instead of an image, pass an [svg](#svg) option object:
 
 Or pass `iconset` (sub folder) and filename (without `.svg`):
 
-	var myIcon = m.component(icon, {
+	let myIcon = m.component(icon, {
 		svg: {
 			iconset: 'mdi',
 		    name: 'emoticon-happy'
