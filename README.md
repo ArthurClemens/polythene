@@ -25,6 +25,8 @@ Source files are written in es6 and transpiled to es5. Components are async es6 
 To keep the components modular (and only required when needed) I have chosen to keep the async aspect. 
 The `examples` and `docs` directories show a more complete "real world" setup of a Mithril/Polythene application using SystemJS.
 
+Polythene works both in es6 and es5 applications.
+
 
 ## Installation
 
@@ -36,6 +38,7 @@ The `examples` and `docs` directories show a more complete "real world" setup of
 
 * `npm run watch` - watch: scss and es6 files
 * `npm run build` - compile all CSS
+
 
 
 ## License
