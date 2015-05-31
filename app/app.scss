@@ -8,8 +8,8 @@ $_drawer_color: #263238;
 $_drawer_highlight_color: #00C853;
 $_main_header_background_color: #00E676;
 $_body_background_color: #37474F;
-$_link_color: #00C853;
-$_link_hover_color: #009C3F;
+$_link_color: #1E88E5;
+$_link_hover_color: #1565C0;
 $_light_border: #eee;
 $_header_font_size: 20px;
 $_logo_color: rgba(0,0,0,.87);
@@ -76,7 +76,7 @@ body {
     a {
         color: $_link_color;
         text-decoration: none;
-        font-weight: 500;
+        font-weight: 400;
 
         &:hover {
             color: $_link_hover_color;

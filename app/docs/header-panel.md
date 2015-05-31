@@ -2,7 +2,7 @@
 
 <a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/header-panel.html">Demo</a>
 
-Displays a content panel with header with various scrolling behaviors.
+Displays a content panel with header with various scrolling behaviors. Use this for a page with a header bar (like the current page), or a title/menu bar.
 
 
 ## Comparison with Polymer
@@ -17,9 +17,9 @@ In Polythene all behaviors are offered in the current component.
 
 For small panels, the header will often be fixed:
 
-	var headerPanel = require('polythene/header-panel/header-panel');
+	import headerPanel from 'polythene/header-panel/header-panel';
 
-	var myHeaderPanel = m.component(headerPanel, {
+	let myHeaderPanel = m.component(headerPanel, {
 		fixed: true,
 	    header: {
 	        content: 'My title'
@@ -29,7 +29,7 @@ For small panels, the header will often be fixed:
 
 To make the panel stretch the width and height of the page, use `div[fit]`:
 
-	var myHeaderPanel = m.component(headerPanel, {
+	let myHeaderPanel = m.component(headerPanel, {
 		tag: 'div[fit]',
 	    header: {
 	        content: 'Flex'
@@ -39,7 +39,7 @@ To make the panel stretch the width and height of the page, use `div[fit]`:
 
 To make a tall header condensing when scrolling: 
 
-	var myHeaderPanel = m.component(headerPanel, {
+	let myHeaderPanel = m.component(headerPanel, {
 	    header: {
 	        toolbar: {
 	            mode: 'tall',

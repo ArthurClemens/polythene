@@ -7,9 +7,9 @@ Displays a list of [list tiles](#list-tile), with an optional header (which is a
 
 ## Usage
 
-	var list = require('polythene/list/list');
+	import list from 'polythene/list/list';
 
-	var myList = m.component(list, {
+	let myList = m.component(list, {
 		header: {
 			title: 'My header'
 		},
@@ -32,7 +32,7 @@ Displays a list of [list tiles](#list-tile), with an optional header (which is a
 > align the subheader with the text content.
 > [source](http://www.google.com/design/spec/components/subheaders.html#subheaders-list-subheaders)
 
-To align the subheader with the text, add parameter `class` with value `'indent'`.
+In this situation we want to indent the subheader, and if we show borders, indent them too. We do so by adding the parameter `class` with value `'indent'`, and optionally set `mode` to `bordered-indent`.
 
 
 ## Options

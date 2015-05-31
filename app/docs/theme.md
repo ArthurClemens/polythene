@@ -85,5 +85,3 @@ Instead of rewriting styles from scratch, it is possible to enhance existing sty
 	require('polythene/theme/icon/icon.css!');
 	// add new style from current directory
 	require('polythene-theme/icon/icon-colors.css!');
-
-

@@ -9,16 +9,16 @@ See also: [Icon Button](#icon-button) and [Floating Action Button](#fab)
 
 ## Usage
 
-	var btn = require('polythene/button/button');
+	import btn from 'polythene/button/button';
 
-	var myBtn = m.component(btn, {
+	let myBtn = m.component(btn, {
 		label: 'Button',
 		raised: true
 	});
 
 Add a URL:
 
-	var myBtn = m.component(btn, {
+	let myBtn = m.component(btn, {
 		label: 'Button',
 		raised: true,
 		url: {href: 'index.html'}
@@ -26,7 +26,7 @@ Add a URL:
 
 Add an onclick event:
 
-	var myBtn = m.component(btn, {
+	let myBtn = m.component(btn, {
 		label: 'Button',
 		raised: true,
 		events: {onclick: function() {console.log('click');}}

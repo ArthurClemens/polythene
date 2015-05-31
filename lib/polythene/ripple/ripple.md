@@ -11,17 +11,17 @@ Buttons have a ripple element by default. This page documents how to add a rippl
 
 Use parameter `after` to append the ripple to the content:
 
-	var ripple = require('polythene/ripple/ripple');
-	var listTile = require('polythene/list-tile/list-tile');
+	import ripple from 'polythene/ripple/ripple';
+	import listTile from 'polythene/list-tile/list-tile';
 
-	var myListTile = m.component(listTile, {
+	let myListTile = m.component(listTile, {
 	    title: 'Title',
 	    after: m.component(ripple)
 	});
 
 Use an options object to define specific behavior:
 
-	var myListTile = m.component(listTile, {
+	let myListTile = m.component(listTile, {
 	    title: 'Title',
 	    after: m.component(ripple, {
 	    	constrained: false,

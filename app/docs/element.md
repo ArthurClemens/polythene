@@ -5,9 +5,9 @@ A simple element to wrap a component around a Mithril template. It doesn't do an
 
 ## Usage
 
-	var element = require('polythene/element/element');
+	import element from 'polythene/element/element';
 
-	var myElement = m.component(element, {
+	let myElement = m.component(element, {
         content: m('.content', 'My content')
     });
 

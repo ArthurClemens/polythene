@@ -9,11 +9,11 @@ This implementation closely follows the [design specification](http://www.google
 
 ## Usage
 
-	var card = require('polythene/card/card');
+	import card from 'polythene/card/card';
 
 The card can contain various elements. The `content` parameter accepts an array of element options. Element `primary` contains the title and subtitle:
 
-	var myCard = m.component(card, {
+	let myCard = m.component(card, {
 		content: [{
 		    primary: {
 		        title: 'Primary title',
@@ -34,7 +34,7 @@ To show in order:
 
 these are passed in this order to `content`:
 
-	var myCard = m.component(card, {
+	let myCard = m.component(card, {
 		content: [{
 		    header: {
 		        title: 'Name',

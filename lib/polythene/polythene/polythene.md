@@ -1,11 +1,6 @@
 # Polythene: Material Design for Mithril
 
-Modular implementation of Material Design for [Mithril](http://lhorie.github.io/mithril). Available on [Github](https://github.com/ArthurClemens/Polythene).
-
-The components are generic enough to be used with other designs too. It is actually quite easy to create a theme or change the style entirely.
-
-
-<p style='color: red'>Version v0.0.1-alpha</p>
+Modular implementation of Material Design for [Mithril](http://lhorie.github.io/mithril). Available on [Github](https://github.com/ArthurClemens/Polythene). <span style='color: red'>Version v0.0.1-alpha</span>
 
 <a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/index.html">All demos</a>
 
@@ -18,37 +13,80 @@ Polythene components inherit all of the flexibility of Mithril components.
 
 
 
+## Material Design, or custom design
+
+Polythene (NOTE: work in progress) modules closely follow the [Material Design specification](http://www.google.com/design/spec/material-design/introduction.html), more so than related projects like [Polymer](http://polymer-project.org) and [Angular Material](https://material.angularjs.org/).
+
+But styling is set up in a flexible way. It is actually quite easy to create a theme or change the style entirely. See [Theming](#theme).
+
+
+
 ## Composition
 
-The icon component is a small example how components can be combined. It is a wrapper around an image or SVG:
+Basically, everything is a Mithril component: from an icon to a page wide header plus contents. Components can be combined and nested.
 
-	var icon = require('polythene/icon/icon');
-	var myIcon = m.component(icon, {
+The icon component is a small example how components can be combined. It is a wrapper around an image or SVG (itself a component too):
+
+	import icon from 'polythene/icon/icon';
+	let myIcon = m.component(icon, {
 		src: 'app/icon/img/ic_directions_black_48dp.png'
 	});
 
-[m.component](https://github.com/lhorie/mithril.js/blob/components/docs/mithril.component.md) is a Mithril function that instantiates a component with an options object; in this case a simple object with the single key `src`.
+[m.component](https://github.com/lhorie/mithril.js/blob/components/docs/mithril.component.md) is a Mithril function that instantiates a component with an options object; in this case a simple object with the single attribute `src`.
 
-This principle can also be used to create a larger component, such as an icon button:
+This principle can also be used to create a larger component, such as an [icon button](#icon-button):
 
-	var icon = require('polythene/icon/icon');
-	var menuIcon = m.component(icon, {
+	import icon from 'polythene/icon/icon';
+	let menuIcon = m.component(icon, {
 	    src: 'img/arrow.png'
 	});
 
-	var iconBtn = require('polythene/icon-button/icon-button');
-	var myIconBtn = m.component(iconBtn, {
+	import iconBtn from 'polythene/icon-button/icon-button';
+	let myIconBtn = m.component(iconBtn, {
 		content: menuIcon
 	});
 
-Because icon button accepts an icon options object, we can also use object notation:
+Because icon-button accepts an icon options object, we can use object notation as well:
 
-	var iconBtn = require('polythene/icon-button/icon-button');
-	var myIconBtn = m.component(iconBtn({
+	import iconBtn from 'polythene/icon-button/icon-button';
+	let myIconBtn = m.component(iconBtn({
 		icon: {
 		    src: 'img/arrow.png'
 		}
 	});
+
+If we want to create a toolbar with buttons, it is easier to create a function that generates buttons:
+
+	import iconBtn from 'polythene/icon-button/icon-button';
+	let btn = (group, name) => {
+	    return m.component(iconBtn, {
+	        icon: {
+	            svg: {
+	                group: group,
+	                name: name
+	            }
+	        }
+	    });
+	};
+
+The button row is an Array of icon button components and a Mithril element for the title:
+
+	let toolbarRow = [
+	    btn('navigation', 'menu'),
+	    m('span[flex]', 'Title'),
+	    btn('action', 'search'),
+	    btn('action', 'favorite'),
+	    btn('navigation', 'more-vert')
+	];
+
+And the toolbar incorporates the row:
+
+	import toolbar from 'polythene/toolbar/toolbar';
+	m.component(toolbar, {
+        class: 'dark-theme',
+        content: toolbarRow
+    });
+
 
 
 ## Requirements
