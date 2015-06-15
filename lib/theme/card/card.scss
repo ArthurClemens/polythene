@@ -66,12 +66,12 @@
 		&.square {
 			padding-bottom: 100%;
 		}
-		&.crop-x img {
+		img.crop-x {
 			width: 100%;
 			height: auto;
 			display: block;
 		}
-		&.crop-y img {
+		img.crop-y {
 			height: 100%;
 			width: auto;
 			display: block;
