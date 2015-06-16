@@ -4,20 +4,12 @@ var DESTINATION = 'build';
 var DESTINATION_DIR = [DESTINATION, '/'].join('');
 var appDir = [DESTINATION_DIR, 'app', '/'].join('');
 
-var SUB_DIRS = [
-    'index'
-];
-
 var filesToMinify = [
     DESTINATION_DIR + 'lib/system-css/css.js',
     DESTINATION_DIR + 'lib/system-text/text.js',
     DESTINATION_DIR + 'lib/systemjs/es6-module-loader.js',
     DESTINATION_DIR + 'lib/systemjs/system.js'
 ];
-
-var getSubDirPath = function(name) {
-    return ['app', name, name].join('/');
-};
 
 var execute = function(command) {
     var exec = require('child_process').exec;
@@ -30,7 +22,7 @@ var execute = function(command) {
 };
 
 var cmds = [
-    'rm', '-R', DESTINATION,
+    'rm', '-fR', DESTINATION,
     '&&',
     'mkdir', '-p', DESTINATION,
     '&&',
@@ -62,11 +54,13 @@ var cmds = [
     'rm', appDir + '**/*.es6.js',
     '&&',
     'rm', '-R', appDir + '**/.sass-cache'
-].concat(filesToMinify.map(function(file) {
-    return ['&&', 'uglifyjs', '-o', file, file].join(' ');
-}));
+];
 
 execute(cmds.join(' '));
+
+filesToMinify.map(function(file) {
+    execute([__dirname + '/../node_modules/.bin/uglifyjs', '-o', file, file].join(' '));
+});
 
 var builder = new Builder({
     'baseURL': 'src',
@@ -93,16 +87,7 @@ var buildOpts = {
     lowResSourceMaps: true
 };
 
-Promise.all(SUB_DIRS.map(function(dir) {
-        return builder.trace(getSubDirPath(dir));
-    })).then(function(trees) {
-        var commonTree = builder.intersectTrees.apply(this, trees);
-        return Promise.all([
-            builder.buildTree(commonTree, 'build/app/app/common.js', buildOpts)
-        ].concat(trees.map(function(tree, index) {
-            return builder.buildTree(builder.subtractTrees(tree, commonTree), DESTINATION_DIR + getSubDirPath(SUB_DIRS[index]) + '.js', buildOpts);
-        })));
-    }).then(function() {
+builder.build('app/index/index', DESTINATION + '/app/index/index.js', buildOpts).then(function() {
         console.log('Build complete');
     })
     .catch(function(err) {
