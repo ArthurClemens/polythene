@@ -13,6 +13,7 @@ require('app/app/app.css!');
 require('./card.css!');
 
 const NAME = 'Card';
+const IMG_URL = 'http://arthurclemens.github.io/assets/polythene/examples/';
 
 let app,
     titleLineText,
@@ -103,7 +104,7 @@ titleImage = function(type, title) {
                     ratio: 'square',
                     type: type,
                     content: m('img', {
-                        src: 'app/images/1.jpg'
+                        src: IMG_URL + '1.jpg'
                     })
                 }
             }
@@ -132,7 +133,7 @@ titleImageExtraLarge = function(ratio) {
                             ratio: ratio,
                             type: 'extra-large',
                             content: m('img', {
-                                src: 'app/images/1.jpg'
+                                src: IMG_URL + '1.jpg'
                             })
                         }
                     },
@@ -239,7 +240,7 @@ content = m('.demo-content', [
             }, {
                 media: {
                     content: m('img', {
-                        src: 'app/images/grey.jpg'
+                        src: IMG_URL + 'grey.jpg'
                     })
                 }
             }]
@@ -253,7 +254,7 @@ content = m('.demo-content', [
             content: [{
                 media: {
                     content: m('img', {
-                        src: 'app/images/grey.jpg'
+                        src: IMG_URL + 'grey.jpg'
                     })
                 }
             }, {
@@ -272,7 +273,7 @@ content = m('.demo-content', [
             content: [{
                 media: {
                     content: m('img', {
-                        src: 'app/images/grey.jpg'
+                        src: IMG_URL + 'grey.jpg'
                     })
                 }
             }, {
@@ -295,7 +296,7 @@ content = m('.demo-content', [
             content: [{
                 media: {
                     content: m('img', {
-                        src: 'app/images/grey.jpg'
+                        src: IMG_URL + 'grey.jpg'
                     })
                 }
             }, {
@@ -349,7 +350,7 @@ content = m('.demo-content', [
             }, {
                 media: {
                     content: m('img', {
-                        src: 'app/images/grey.jpg'
+                        src: IMG_URL + 'grey.jpg'
                     })
                 }
             }, {
@@ -394,7 +395,7 @@ content = m('.demo-content', [
             }, {
                 media: {
                     content: m('img', {
-                        src: 'app/images/grey.jpg'
+                        src: IMG_URL + 'grey.jpg'
                     })
                 }
             }, {
@@ -430,7 +431,7 @@ content = m('.demo-content', [
             content: [{
                 media: {
                     content: m('img', {
-                        src: 'app/images/circle.png'
+                        src: IMG_URL + 'circle.png'
                     })
                 }
             }, {
@@ -444,7 +445,7 @@ content = m('.demo-content', [
                 media: {
                     origin: 'start',
                     content: m('img', {
-                        src: 'app/images/circle.png'
+                        src: IMG_URL + 'circle.png'
                     })
                 }
             }, {
@@ -458,7 +459,7 @@ content = m('.demo-content', [
                 media: {
                     origin: 'end',
                     content: m('img', {
-                        src: 'app/images/circle.png'
+                        src: IMG_URL + 'circle.png'
                     })
                 }
             }, {
@@ -477,7 +478,7 @@ content = m('.demo-content', [
             content: [{
                 media: {
                     content: m('img', {
-                        src: 'app/images/1.jpg'
+                        src: IMG_URL + '1.jpg'
                     })
                 }
             }, {
@@ -491,7 +492,7 @@ content = m('.demo-content', [
                 media: {
                     origin: 'start',
                     content: m('img', {
-                        src: 'app/images/1.jpg'
+                        src: IMG_URL + '1.jpg'
                     })
                 }
             }, {
@@ -505,7 +506,7 @@ content = m('.demo-content', [
                 media: {
                     origin: 'end',
                     content: m('img', {
-                        src: 'app/images/1.jpg'
+                        src: IMG_URL + '1.jpg'
                     })
                 }
             }, {
@@ -524,7 +525,7 @@ content = m('.demo-content', [
             content: [{
                 media: {
                     content: m('img', {
-                        src: 'app/images/2.jpg'
+                        src: IMG_URL + '2.jpg'
                     })
                 }
             }, {
@@ -538,7 +539,7 @@ content = m('.demo-content', [
                 media: {
                     origin: 'start',
                     content: m('img', {
-                        src: 'app/images/2.jpg'
+                        src: IMG_URL + '2.jpg'
                     })
                 }
             }, {
@@ -552,7 +553,7 @@ content = m('.demo-content', [
                 media: {
                     origin: 'end',
                     content: m('img', {
-                        src: 'app/images/2.jpg'
+                        src: IMG_URL + '2.jpg'
                     })
                 }
             }, {
@@ -572,7 +573,7 @@ content = m('.demo-content', [
                 media: {
                     ratio: 'square',
                     content: m('img', {
-                        src: 'app/images/1.jpg'
+                        src: IMG_URL + '1.jpg'
                     })
                 }
             }, {
@@ -587,7 +588,7 @@ content = m('.demo-content', [
                     ratio: 'square',
                     origin: 'start',
                     content: m('img', {
-                        src: 'app/images/1.jpg'
+                        src: IMG_URL + '1.jpg'
                     })
                 }
             }, {
@@ -602,7 +603,7 @@ content = m('.demo-content', [
                     ratio: 'square',
                     origin: 'end',
                     content: m('img', {
-                        src: 'app/images/1.jpg'
+                        src: IMG_URL + '1.jpg'
                     })
                 }
             }, {
@@ -621,7 +622,7 @@ content = m('.demo-content', [
                 media: {
                     ratio: 'square',
                     content: m('img', {
-                        src: 'app/images/1.jpg'
+                        src: IMG_URL + '1.jpg'
                     }),
                     overlay: {
                         class: 'dark-theme',
@@ -656,7 +657,7 @@ content = m('.demo-content', [
                 media: {
                     ratio: 'square',
                     content: m('img', {
-                        src: 'app/images/1.jpg'
+                        src: IMG_URL + '1.jpg'
                     }),
                     overlay: {
                         class: 'dark-theme',
@@ -676,7 +677,7 @@ content = m('.demo-content', [
                 media: {
                     ratio: 'square',
                     content: m('img', {
-                        src: 'app/images/1.jpg'
+                        src: IMG_URL + '1.jpg'
                     }),
                     overlay: {
                         class: 'dark-theme',
@@ -732,7 +733,7 @@ content = m('.demo-content', [
             }, {
                 media: {
                     content: m('img', {
-                        src: 'app/images/1.jpg'
+                        src: IMG_URL + '1.jpg'
                     })
                 }
             }, {
@@ -795,7 +796,7 @@ content = m('.demo-content', [
             }, {
                 media: {
                     content: m('img', {
-                        src: 'app/images/1.jpg'
+                        src: IMG_URL + '1.jpg'
                     })
                 }
             }, {
@@ -848,7 +849,7 @@ content = m('.demo-content', [
                             ratio: 'square',
                             type: 'small',
                             content: m('img', {
-                                src: 'app/images/1.jpg'
+                                src: IMG_URL + '1.jpg'
                             })
                         }
                     }]
@@ -944,7 +945,7 @@ content = m('.demo-content', [
             content: [{
                 media: {
                     content: m('img', {
-                        src: 'app/images/3.jpg'
+                        src: IMG_URL + '3.jpg'
                     })
                 }
             }]
