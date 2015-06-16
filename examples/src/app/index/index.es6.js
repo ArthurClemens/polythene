@@ -23,6 +23,9 @@ links = [{
         url: 'header-panel',
         name: 'Header Panel'
     }, {
+        url: 'infinite',
+        name: 'Header Panel with infinite scroll'
+    }, {
         url: 'toolbar',
         name: 'Toolbar'
     }, {
@@ -91,12 +94,8 @@ item = function(title, url) {
 
 content = {
     view: function() {
-        let minScale,
-            onHeaderTransform;
-
-        minScale = 20/32;
-
-        onHeaderTransform = function(e) {
+        let minScale = 22 / 32;
+        let onHeaderTransform = function(e) {
             let titleStyle = document.querySelector('.title').style;
             let middle = e.height - e.condensedHeight;
             let scale = Math.max(minScale, (middle - e.y) / (middle / (1 - minScale)) + minScale);

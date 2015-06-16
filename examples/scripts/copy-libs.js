@@ -42,8 +42,17 @@ copy('mithril', [
     'node_modules/mithril/mithril.min.js.map'
 ]);
 
+copy('mithril-infinite', [
+    'node_modules/mithril-infinite/lib/infinite.es6.js',
+    'node_modules/mithril-infinite/lib/infinite.scss'
+]);
+
 copy('lodash', [
     'node_modules/lodash/lodash.min.js'
+]);
+
+copy('verge', [
+    'node_modules/verge/verge.min.js'
 ]);
 
 

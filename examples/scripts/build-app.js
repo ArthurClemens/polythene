@@ -44,7 +44,7 @@ var execute = function(command) {
 };
 
 var cmds = [
-    'rm', '-R', DESTINATION,
+    'rm', '-fR', DESTINATION,
     '&&',
     'mkdir', '-p', DESTINATION,
     '&&',

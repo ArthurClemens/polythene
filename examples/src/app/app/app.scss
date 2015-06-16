@@ -30,12 +30,12 @@ h1, h2 {
     height: 100%;
 }
 .header-panel.app-header {
-    .headerContainer:first-of-type {
-        .toolbar {
+    > .outerContainer > .headerContainer:first-of-type {
+        > .toolbar {
             background-color: #00C853;
             font-size: 20px;
 
-            .topBar {
+            > .topBar {
                 color: #fff;
 
                 .icon-button .content {

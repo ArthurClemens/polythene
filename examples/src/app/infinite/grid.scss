@@ -1,0 +1,94 @@
+$_grid_spacing: 8px;
+$_item_width: 210px;
+$_item_width_full: $_item_width + $_grid_spacing;
+$_main_padding: 8px;
+
+.scroll-view.grid {
+    margin: 0 auto;
+    background: #fff;
+
+    .scroll-content {
+        padding: 2*$_grid_spacing 0;
+        margin: 0 -$_grid_spacing/2;
+
+        .content {
+            margin: 0 auto;
+            font-size: 0;
+
+            .grid-item {
+                display: inline-block;
+                height: $_item_width;
+                width: $_item_width;
+                background-color: #f0f0f0;
+                margin: 0 $_grid_spacing/2 $_grid_spacing $_grid_spacing/2;
+
+                .image-holder {
+                    $_padding: 10px;
+                    height: $_item_width - 2*$_padding;
+                    width: $_item_width - 2*$_padding;
+                    overflow: hidden;
+                    position: relative;
+                    margin: $_padding;
+
+                    .image {
+                        position: absolute;
+                        left: auto;
+                        top: 0;
+                        right: auto;
+                        bottom: 0;
+                        width: 100%;
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        background-position-x: 50%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 5*$_item_width_full + 4*$_grid_spacing) {
+    .scroll-view.grid {
+        .scroll-content {
+            .content {
+                width: 4*$_item_width_full + 3*$_grid_spacing;
+            }
+        }
+    }
+}
+@media (max-width: 5*$_item_width_full + 4*$_grid_spacing) {
+    .scroll-view.grid {
+        .scroll-content {
+            .content {
+                width: 4*$_item_width_full + 3*$_grid_spacing;
+            }
+        }
+    }
+}
+@media (max-width: 4*$_item_width_full + 3*$_grid_spacing) {
+    .scroll-view.grid {
+        .scroll-content {
+            .content {
+                width: 3*$_item_width_full + 2*$_grid_spacing;
+            }
+        }
+    }
+}
+@media (max-width: 3*$_item_width_full + 2*$_grid_spacing) {
+    .scroll-view.grid {
+        .scroll-content {
+            .content {
+                width: 2*$_item_width_full + 1*$_grid_spacing;
+            }
+        }
+    }
+}
+@media (max-width: 2*$_item_width_full + 1*$_grid_spacing) {
+    .scroll-view.grid {
+        .scroll-content {
+            .content {
+                width: 1*$_item_width_full + 0*$_grid_spacing;
+            }
+        }
+    }
+}
