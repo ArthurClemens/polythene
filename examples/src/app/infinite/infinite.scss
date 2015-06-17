@@ -1,8 +1,19 @@
-.mainContainer,
 .demo-content {
     height: 100%;
-}
-.demo-content {
     padding: 0;
-    min-height: 100%;
+    background: #fff;
+}
+
+.before,
+.after {
+	font-size: 16px;
+	padding: 16px;
+	margin: 0 0 16px 0;
+	background-color: #eee;
+}
+.before {
+	margin: 0 0 16px 0;
+}
+.after {
+	margin: 8px 0 16px 0;
 }

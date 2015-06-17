@@ -63,7 +63,7 @@ titleBlock = {
 
 content = m('.demo-content', [
 
-    m('.p-block p-block-separate',
+    m('.p-block.p-block-separate',
         m('p', m.trust('This component does not belong to the Material Design specification, but was introduced by <a href="https://www.polymer-project.org/0.5/docs/elements/core-item.html" target="_blank">Polymer</a>.'))
     ),
 

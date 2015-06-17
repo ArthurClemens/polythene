@@ -32,19 +32,22 @@ const item = (data) => {
     );
 };
 
-let content = m('.demo-content', [
-    m.component(infinite, {
-        maxPages: 16, // pages of 12 items each
-        item: item,
-        pageUrl: page => 'app/infinite/data/page-' + page + '.json',
-        class: 'grid'
-    })
-]);
+let content = m.component(infinite, {
+    maxPages: 16, // pages of 12 items each
+    item: item,
+    pageUrl: page => 'app/infinite/data/page-' + page + '.json',
+    scrollView: '.mainContainer',
+    class: 'demo-content grid',
+    before: m('p', m.trust('In order to update the scrolling contents, we need to set <code>renderContentOnScroll</code> to <code>true</code>, and we assign header panel\'s <code>mainContainer</code> as <code>scrollView</code>.')),
+    after: m('p', m.trust('That was the last pug.'))
+});
 
 let app = {};
 app.view = function() {
     return [
-        nav(NAME, [content])
+        nav(NAME, [content], {
+            renderContentOnScroll: true
+        })
     ];
 };
 
