@@ -27,7 +27,7 @@ toolbarRow = function (title) {
     ];
 };
 
-nav = function(title, content, opts) {
+nav = function(title, content, opts = {}) {
     return m.component(headerPanel, Object.assign(opts, {
         class: 'app-header',
         mode: 'waterfall',
