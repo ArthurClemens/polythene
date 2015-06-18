@@ -60,6 +60,7 @@ iconButtons = function(opts, iconOpts) {
                 class: 'md'
             },
             wash: (iconOpts.wash !== undefined) ? iconOpts.wash : true,
+            center: iconOpts.center || false,
             disabled: iconOpts.disabled,
             class: 'demo-button',
             after: m.component(ripple, opts)
@@ -73,6 +74,7 @@ iconButtons = function(opts, iconOpts) {
                 class: 'md'
             },
             wash: (iconOpts.wash !== undefined) ? iconOpts.wash : true,
+            center: iconOpts.center || false,
             disabled: iconOpts.disabled,
             class: 'demo-button',
             after: m.component(ripple, opts)
@@ -93,6 +95,11 @@ content = m('.demo-content', [
     m.component(titleBlock, {
         title: 'Constrained ripple',
         content: iconButtons()
+    }),
+
+    m.component(titleBlock, {
+        title: 'Centered ripple',
+        content: iconButtons({center: true})
     }),
 
     m.component(titleBlock, {
