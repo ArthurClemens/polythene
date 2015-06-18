@@ -13,20 +13,11 @@ require('./list.css!');
 
 const NAME = 'List';
 
-let app,
-    titleBlock,
-    exampleTiles,
-    titleLineText,
-    infoLineText,
-    exampleList,
-    sortableList,
-    content;
+const titleLineText = 'Two-line item';
+const infoLineText = 'Secondary text';
 
-titleLineText = 'Two-line item';
-infoLineText = 'Secondary text';
-
-titleBlock = {
-    view: function(ctrl, args) {
+const titleBlock = {
+    view: (ctrl, args) => {
         return m('.p-block', [
             m('.p-block-header', args.title),
             args.info ? m('p', args.info) : null,
@@ -35,7 +26,7 @@ titleBlock = {
     }
 };
 
-exampleTiles = [
+const exampleTiles = [
     m.component(listTile, {
         title: titleLineText,
         subtitle: infoLineText
@@ -50,8 +41,7 @@ exampleTiles = [
     })
 ];
 
-exampleList = opts => {
-    opts = opts || {};
+const exampleList = (opts = {}) => {
     return m.component(list, {
         class: [opts.class ? opts.class : null, 'demo-list'].join(' '),
         mode: opts.mode,
@@ -92,15 +82,12 @@ exampleList = opts => {
     });
 };
 
-sortableList = {
+const sortableList = {
     controller: () => {
-        let mode, now, items, pastRange;
-
-        mode = m.prop('name');
-        now = new Date();
-        pastRange = 1000 * 3600 * 24 * 31 * 6;
-
-        items = [{
+        const mode = m.prop('name');
+        const now = new Date();
+        const pastRange = 1000 * 3600 * 24 * 31 * 6;
+        const items = [{
             name: 'John',
             date: new Date(now - Math.random() * pastRange),
             favorite: 0
@@ -125,21 +112,16 @@ sortableList = {
             date: new Date(now - Math.random() * pastRange),
             favorite: 0
         }];
-
         return {
             mode: mode,
-
             items: items,
-
-            toggleFavorite: (item) => {
+            toggleFavorite: item => {
                 item.favorite = 1 - item.favorite;
             }
         };
     },
     view: ctrl => {
-        let sortList, sortByName, sortByDate, sortedList;
-
-        sortByName = (a, b) => {
+        const sortByName = (a, b) => {
             if (a.name.toLowerCase() < b.name.toLowerCase()) {
                 return -1;
             }
@@ -148,8 +130,7 @@ sortableList = {
             }
             return 0;
         };
-
-        sortByDate = (a, b) => {
+        const sortByDate = (a, b) => {
             if (a.date < b.date) {
                 return -1;
             }
@@ -158,11 +139,8 @@ sortableList = {
             }
             return 0;
         };
-
-        sortList = () => ctrl.mode() === 'name' ? sortByName : sortByDate;
-
-        sortedList = ctrl.items.sort(sortList());
-
+        const sortList = () => ctrl.mode() === 'name' ? sortByName : sortByDate;
+        const sortedList = ctrl.items.sort(sortList());
         return m('.demo-list.sortable-list',
             m('.controls-row',
                 m('.controls[layout][horizontal]',
@@ -226,7 +204,7 @@ sortableList = {
     }
 };
 
-content = m('.demo-content', [
+const content = m('.demo-content', [
 
     m.component(titleBlock, {
         title: 'Sorting a list',
@@ -317,7 +295,7 @@ content = m('.demo-content', [
 
 ]);
 
-app = {};
+let app = {};
 app.view = function() {
     return [
         nav(NAME, [content, github])
