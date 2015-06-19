@@ -10,7 +10,7 @@
 		border-radius: inherit;
 		pointer-events: none;
 
-		&[animated] {
+		&.animated {
 			transition: box-shadow $_duration cubic-bezier(0.4, 0, 0.2, 1);
 		}
 	}	

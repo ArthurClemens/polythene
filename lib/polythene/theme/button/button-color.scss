@@ -7,7 +7,7 @@
 	    background-color: theme($tint, $element, $depth, "normal", "background");
 	    color: theme($tint, $element, $depth, "normal", "color");
 	}
-	&[disabled] {
+	[disabled] {
 	    .content {
 	        background-color: theme($tint, $element, $depth, "disabled", "background");
 	        color: theme($tint, $element, $depth, "disabled", "color");
@@ -35,7 +35,7 @@
 .button {
 	@include _theme("light", "button", "flat");
 }
-.button[raised] {
+.button.raised {
 	@include _theme("light", "button", "raised");
 }
 
@@ -43,7 +43,7 @@
 	.button {
 		@include _theme("dark", "button", "flat");
 	}
-	.button[raised] {
+	.button.raised {
 		@include _theme("dark", "button", "raised");
 	}
 }

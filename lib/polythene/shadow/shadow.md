@@ -18,7 +18,7 @@ Other than Polymer, the shadow component does not wrap content. Instead the shad
 Add the shadow to a Mithril template:
 
 	let myCard = m('.card', [
-        m('div[self-center]', 'Card!'),
+        m('div.self-center', 'Card!'),
         myShadow
     ]);
 

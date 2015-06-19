@@ -167,7 +167,7 @@ main = function(currentLinkData, content) {
                 actions: {
                     class: 'bordered',
                     content: [
-                        m('[flex]'),
+                        m('.flex'),
                         m.component(button, {
                             label: 'View',
                             url: url
@@ -178,7 +178,7 @@ main = function(currentLinkData, content) {
         });
     }
 
-    return m('.main[flex]',
+    return m('.main.flex',
         m.component(headerPanel, {
             header: {
                 toolbar: {
@@ -236,7 +236,7 @@ app.view = function(ctrl) {
     docData = ctrl.docs();
     currentLink = app.vm.currentLink();
     return [
-        m('.scaffold[layout][horizontal][reverse]', {
+        m('.scaffold.layout.horizontal.reverse', {
             config: app.vm.updateHead
         }, [
             main(currentLink, docData),

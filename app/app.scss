@@ -221,7 +221,7 @@ body {
                 overflow-x: visible;
             }
 
-            .mainContainer[flex] {
+            .mainContainer.flex {
                 flex: none;
                 -webkit-flex: none;
             }
