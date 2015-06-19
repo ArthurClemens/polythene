@@ -57,7 +57,7 @@ content = m('.demo-content', [
         }
     }),
     m.component(iconBlock, {
-        label: 'Without wash and ink',
+        label: 'No wash, no ink',
         btn: {
             icon: myIcon,
             wash: false,

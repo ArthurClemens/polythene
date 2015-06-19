@@ -5,7 +5,7 @@
 	
     color: theme($tint, $element, $depth, "normal", "color");
 	
-	&[disabled] {
+	[disabled] {
         color: theme($tint, $element, $depth, "disabled", "color");
 	}
 
@@ -30,7 +30,7 @@
 .icon-button {
 	@include _theme("light", "icon-button", "flat");
 }
-.icon-button[raised] {
+.icon-button.raised {
 	@include _theme("light", "icon-button", "raised");
 }
 
@@ -38,7 +38,7 @@
 	.icon-button {
 		@include _theme("dark", "icon-button", "flat");
 	}
-	.icon-button[raised] {
+	.icon-button.raised {
 		@include _theme("dark", "icon-button", "raised");
 	}
 }

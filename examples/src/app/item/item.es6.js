@@ -165,7 +165,7 @@ content = m('.demo-content', [
                     class: 'contact-item',
                     icon: accountCircleIcon,
                     content: [
-                        m('div[flex]', [
+                        m('div.flex', [
                             m('div', {
                                 class: 'name'
                             }, 'John Doe'),

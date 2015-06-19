@@ -36,8 +36,7 @@ content = [
         content: [
             m.component(block, {
                 element: {
-                    content: 'This is an element',
-                    cache: true
+                    content: 'This is an element'
                 }
             })
         ]

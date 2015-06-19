@@ -30,7 +30,7 @@ For small panels, the header will often be fixed:
 To make the panel stretch the width and height of the page, use `div[fit]`:
 
 	let myHeaderPanel = m.component(headerPanel, {
-		tag: 'div[fit]',
+		tag: 'div.fit',
 	    header: {
 	        content: 'Flex'
 	    },
@@ -76,7 +76,7 @@ The header-panel will not display if its parent does not have a height.
 | **keepCondensedHeader** | optional | Boolean | false | Set to true to not move away the condensed header |
 | **noDissolve** | optional | Boolean | false | Set to true to keep the background the same opacity when scrolling |
 | **backgroundScrollSpeed** | optional | Number | 0.5 | The speed of the background when scrolling; this value is multiplied with the scroll distance; use 0 to keep the background in place |
-| **renderContentOnScroll** | Boolean | false | Set to true to "unfreeze" panel contents during scrolling; for performance this is set to false by default |
+| **updateContentOnScroll** | Boolean | false | Set to true to "unfreeze" panel contents during scrolling; for performance this is set to false by default |
 | **scroll** | optional | Function | | Callback function when the header panel scrolls; see Callback functions |
 | **transform** | optional | Function | | Callback function when the header panel is transforming; see Callback functions |
 | **before** | optional | Mithril template or String | | Extra content before main content |

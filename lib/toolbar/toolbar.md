@@ -30,7 +30,7 @@ To show a toolbar with a label and 3 icon buttons:
 
 	let toolbarRow = [
         btn('navigation', 'menu'),
-        m('span[flex]', 'Toolbar'),
+        m('span.flex', 'Toolbar'),
         btn('navigation', 'refresh'),
         btn('content', 'add')
     ];

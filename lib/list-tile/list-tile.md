@@ -111,7 +111,7 @@ A list tile can optionally have secondary content, displayed to the right. Secon
 | **subtitle** | optional | String | | Secondary text content (1 line high) |
 | **highSubtitle** | optional | String | | Secondary text content (2 lines high) |
 | **icon** | optional | Object |  | [icon](#icon) options object |
-| **tag** | optional | String | 'a[flex]' | HTML tag for primary content |
+| **tag** | optional | String | 'a.flex' | HTML tag for primary content |
 | **url** | optional | Object with `href`, optionally `config` | | URL for primary content |
 | **secondary** | optional | Object | | Options for secondary content |
 | **secondary.tag** | optional | String | See "Layout of secondary content" below | HTML tag for secondary content |
@@ -126,15 +126,15 @@ A list tile can optionally have secondary content, displayed to the right. Secon
 
 The default tag for secondary content depends on the content of the tile:
 
-* 1 or 2 lines: `div[horizontal][layout][center]` (to vertically center align)
-* 3 lines: `div[vertical][layout][start]` (to vertically align to top)
+* 1 or 2 lines: `.horizontal.layout.center` (to vertically center align)
+* 3 lines: `.vertical.layout.start` (to vertically align to top)
 
-To show 2 elements, one at the top and one at the bottom of the right side, we use [flex] to separate the 2:
+To show 2 elements, one at the top and one at the bottom of the right side, we use `.flex` to separate the 2:
 
 	secondary: {
 		content: {
 		    m('div', '15 min'),
-		    m('div[flex]'),
+		    m('.flex'),
 		    m.component(icon, {
 		        svg: {
 		                name: 'star-outline',
@@ -143,7 +143,7 @@ To show 2 elements, one at the top and one at the bottom of the right side, we u
 		        }
 		    )
 		},
-	    tag: 'div[layout][vertical][end]'
+	    tag: '.layout.vertical.end'
 	}
 
 

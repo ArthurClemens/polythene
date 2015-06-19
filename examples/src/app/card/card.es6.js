@@ -35,7 +35,7 @@ ipsum = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmo
 shortIpsum = 'quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat';
 
 iconButtonRow = [
-    m('[flex]'),
+    m('.flex'),
     m.component(iconBtn, {
         icon: {
             svg: {
@@ -63,7 +63,7 @@ iconButtonRow = [
 ];
 
 justifiedButtonRow = {
-    tag: '[layout][horizontal][justified]',
+    tag: '.layout.horizontal.justified',
     class: 'tight',
     content: [
         m.component(iconBtn, {
@@ -137,9 +137,9 @@ titleImageExtraLarge = function(ratio) {
                             })
                         }
                     },
-                    m('[flex]'), {
+                    m('.flex'), {
                         actions: {
-                            tag: '[layout][vertical]',
+                            tag: '.layout.vertical',
                             content: [
                                 m.component(iconBtn, {
                                     icon: {
@@ -181,7 +181,7 @@ block = {
         }, [
             m('.p-block-header', args.label),
             args.info ? args.info : null,
-            m('.demo-cards[horizontal][layout][wrap]', [
+            m('.demo-cards.horizontal.layout.wrap', [
                 args.card ? m.component(card, args.card) : null,
                 args.cards ? args.cards.map(function(cardArgs) {
                     return m.component(card, cardArgs);
@@ -313,7 +313,7 @@ content = m('.demo-content', [
                         m.component(button, {
                             label: 'Action 2'
                         }),
-                        m('[flex]'),
+                        m('.flex'),
                         m.component(iconBtn, {
                             icon: {
                                 type: 'medium',
@@ -367,7 +367,7 @@ content = m('.demo-content', [
                         m.component(button, {
                             label: 'Action 2'
                         }),
-                        m('[flex]'),
+                        m('.flex'),
                         m.component(iconBtn, {
                             icon: {
                                 type: 'medium',
@@ -400,7 +400,7 @@ content = m('.demo-content', [
                 }
             }, {
                 actions: {
-                    tag: '[layout][vertical]',
+                    tag: '.layout.vertical',
                     content: [
                         m('.actions bordered',
                             m.component(button, {
@@ -840,7 +840,7 @@ content = m('.demo-content', [
             content: [{
                 primary: {
                     content: [{
-                        title: m('.title[flex]', [
+                        title: m('.title.flex', [
                             m('.subtitle', 'Travel'),
                             m('span', 'Road Trip')
                         ])
@@ -1012,7 +1012,7 @@ content = m('.demo-content', [
             class: 'demo-card',
             content: [{
                 actions: {
-                    tag: '[layout][vertical][start]',
+                    tag: '.layout.vertical.start',
                     content: [
                         m.component(button, {
                             label: 'Action 1'

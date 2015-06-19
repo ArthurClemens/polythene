@@ -38,7 +38,7 @@ let content = m.component(infinite, {
     pageUrl: page => 'app/infinite/data/page-' + page + '.json',
     scrollView: '.mainContainer',
     class: 'demo-content grid',
-    before: m('p', m.trust('This example uses <a href="https://github.com/ArthurClemens/mithril-infinite">mithril-infinite</a>. In order to update the scrolling contents, we need to set <code>renderContentOnScroll</code> to <code>true</code>, and we assign header panel\'s <code>mainContainer</code> as <code>scrollView</code>.')),
+    before: m('p', m.trust('This example uses <a href="https://github.com/ArthurClemens/mithril-infinite">mithril-infinite</a>. In order to update the scrolling contents, we need to set <code>updateContentOnScroll</code> to <code>true</code>, and we assign header panel\'s <code>mainContainer</code> as <code>scrollView</code>.')),
     after: m('p', m.trust('That was the last pug.'))
 });
 
@@ -46,7 +46,7 @@ let app = {};
 app.view = function() {
     return [
         nav(NAME, [content], {
-            renderContentOnScroll: true
+            updateContentOnScroll: true
         })
     ];
 };

@@ -24,7 +24,7 @@
 }
 
 &.selected,
-&[disabled] {
+[disabled] {
     cursor: default;
     pointer-events: none;
 }

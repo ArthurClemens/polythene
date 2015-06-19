@@ -216,7 +216,7 @@
 			padding: 8px;
 		}
 		
-		&[horizontal]:not([justified]) {
+		&.horizontal:not(.justified) {
 			:first-child {
 				margin-left: 0;
 			}
@@ -228,7 +228,7 @@
 			}
 		}
 
-		&[vertical] {
+		&.vertical {
 			$_v_button_margin: 2px;
 			$_v_padding: $_v_actions_padding - $_v_button_margin;
 

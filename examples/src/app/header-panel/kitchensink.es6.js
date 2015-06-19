@@ -12,8 +12,7 @@ let btn,
     panelBlock,
     content,
     repeatText,
-    template,
-    cache;
+    template;
 
 repeatText = function(text, count) {
     let out = '';
@@ -30,8 +29,6 @@ template = [
     '</div>'
 ].join('');
 
-cache = true;
-
 btn = function(group, name) {
     return m.component(iconBtn, {
         icon: {
@@ -46,7 +43,7 @@ btn = function(group, name) {
 toolbarRow = function(title) {
     return [
         btn('navigation', 'menu', '#'),
-        m('span[flex]', title),
+        m('span.flex', title),
         btn('navigation', 'refresh')
     ];
 };
@@ -63,7 +60,7 @@ panelBlock = {
     view: function(ctrl, args) {
         return m('.p-block', [
             m('.p-block-header', args.title),
-            m('[horizontal][layout][wrap]', {class: 'panel-row'}, [
+            m('.horizontal.layout.wrap', {class: 'panel-row'}, [
                 args.content.map(function(panel1) {
                     return m('.container', [
                         m.component(headerPanel, panel1)
@@ -82,32 +79,28 @@ content = m('.demo-content', [
                 header: {
                     content: 'Standard'
                 },
-                content: m.trust(template),
-                cache: cache
+                content: m.trust(template)
             }, {
                 mode: 'seamed',
                 fixed: true,
                 header: {
                     content: 'Seamed'
                 },
-                content: m.trust(template),
-                cache: cache
+                content: m.trust(template)
             }, {
                 mode: 'waterfall',
                 fixed: true,
                 header: {
                     content: 'Waterfall'
                 },
-                content: m.trust(template),
-                cache: cache
+                content: m.trust(template)
             }, {
                 mode: 'waterfall-tall',
                 fixed: true,
                 header: {
                     content: 'Waterfall tall'
                 },
-                content: m.trust(template),
-                cache: cache
+                content: m.trust(template)
             }, {
                 mode: 'waterfall-tall',
                 tallClass: 'medium-tall',
@@ -115,15 +108,13 @@ content = m('.demo-content', [
                 header: {
                     content: 'Waterfall medium-tall'
                 },
-                content: m.trust(template),
-                cache: cache
+                content: m.trust(template)
             }, {
                 mode: 'scroll',
                 header: {
                     content: 'Scroll'
                 },
-                content: m.trust(template),
-                cache: cache
+                content: m.trust(template)
             }, {
                 mode: 'waterfall-tall',
                 fixed: true,
@@ -131,8 +122,7 @@ content = m('.demo-content', [
                 header: {
                     content: 'Waterfall tall animated'
                 },
-                content: m.trust(template),
-                cache: cache
+                content: m.trust(template)
             }
             // TODO: Cover
         ]
@@ -146,8 +136,7 @@ content = m('.demo-content', [
                     content: toolbarRow('Toolbar component')
                 }
             },
-            content: m.trust(template),
-            cache: cache
+            content: m.trust(template)
         }, {
             mode: 'waterfall',
             fixed: true,
@@ -156,8 +145,7 @@ content = m('.demo-content', [
                     content: toolbarRow('Toolbar waterfall')
                 }
             },
-            content: m.trust(template),
-            cache: cache
+            content: m.trust(template)
         }, {
             mode: 'tall',
             fixed: true,
@@ -168,8 +156,7 @@ content = m('.demo-content', [
                     content: toolbarRow('Tall animated')
                 }
             },
-            content: m.trust(template),
-            cache: cache
+            content: m.trust(template)
         }, {
             mode: 'waterfall-tall',
             fixed: true,
@@ -181,8 +168,7 @@ content = m('.demo-content', [
                     content: toolbarRow('Animated no shadow')
                 }
             },
-            content: m.trust(template),
-            cache: cache
+            content: m.trust(template)
         }]
     }),
     m.component(panelBlock, {
@@ -197,8 +183,7 @@ content = m('.demo-content', [
                     bottomBar: m.trust('<div flex class="bottom indent">Not fixed condenses</div>')
                 }
             },
-            content: m.trust(template),
-            cache: cache
+            content: m.trust(template)
         }, {
             mode: 'waterfall-tall',
             condenses: true,
@@ -210,8 +195,7 @@ content = m('.demo-content', [
                     bottomBar: m.trust('<div flex class="bottom indent">tallClass "medium-tall"</div>')
                 }
             },
-            content: m.trust(template),
-            cache: cache
+            content: m.trust(template)
         }, {
             mode: 'waterfall-tall',
             condenses: true,
@@ -223,8 +207,7 @@ content = m('.demo-content', [
                     bottomBar: m.trust('<div flex class="bottom indent">Keep condensed header</div>')
                 }
             },
-            content: m.trust(template),
-            cache: cache
+            content: m.trust(template)
         }]
     }),
     m.component(panelBlock, {
@@ -232,8 +215,7 @@ content = m('.demo-content', [
         content: [{
             fixed: true,
             header: m('.header.demo-header', 'Custom styled header'),
-            content: m.trust(template),
-            cache: cache
+            content: m.trust(template)
         }]
     })
 ]);

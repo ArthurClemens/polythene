@@ -143,9 +143,9 @@ const sortableList = {
         const sortedList = ctrl.items.sort(sortList());
         return m('.demo-list.sortable-list',
             m('.controls-row',
-                m('.controls[layout][horizontal]',
+                m('.controls.layout.horizontal',
                     m.component(button, {
-                        tag: '[flex]',
+                        tag: '.flex',
                         label: 'Sort by name',
                         selected: ctrl.mode() === 'name',
                         events: {
@@ -155,7 +155,7 @@ const sortableList = {
                         }
                     }),
                     m.component(button, {
-                        tag: '[flex]',
+                        tag: '.flex',
                         label: 'Sort by date',
                         selected: ctrl.mode() === 'date',
                         events: {

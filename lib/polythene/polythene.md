@@ -73,7 +73,7 @@ The button row is an Array of icon button components and a Mithril element for t
 
 	let toolbarRow = [
 	    btn('navigation', 'menu'),
-	    m('span[flex]', 'Title'),
+	    m('span.flex', 'Title'),
 	    btn('action', 'search'),
 	    btn('action', 'favorite'),
 	    btn('navigation', 'more-vert')

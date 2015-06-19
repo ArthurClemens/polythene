@@ -30,7 +30,7 @@ btn = function(group, name) {
 
 toolbarRow = [
     btn('navigation', 'menu'),
-    m('span[flex]', 'Toolbar title lorem ipsum dolor sit amet'),
+    m('span.flex', 'Toolbar title lorem ipsum dolor sit amet'),
     btn('action', 'search'),
     btn('action', 'favorite'),
     btn('navigation', 'more-vert')

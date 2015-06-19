@@ -19,7 +19,7 @@ const btn = function (group, name, url) {
 const toolbarRow = function (title) {
     return [
         btn('navigation', 'apps', 'index.html'),
-        m('span[flex]', title)
+        m('span.flex', title)
     ];
 };
 

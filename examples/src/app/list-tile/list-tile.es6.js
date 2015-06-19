@@ -626,7 +626,7 @@ content = [
         }),
         m.component(titleBlock, {
             title: 'Custom secondary content',
-            info: m.trust('This example uses parameter <code>secondary.tag: \'div[layout][vertical][end]\'</code>'),
+            info: m.trust('This example uses parameter <code>secondary.tag: \'div.layout.vertical.end\'</code>'),
             content: m('.demo-list.demo-no-zebra.demo-bordered', [
                 m.component(listTile, {
                     title: 'Ali Connors',
@@ -637,7 +637,7 @@ content = [
                     secondary: {
                         content: [
                             m('div', '15 min'),
-                            m('div[flex]'),
+                            m('div.flex'),
                             m.component(icon, {
                                 svg: {
                                     name: 'star-outline',
@@ -645,7 +645,7 @@ content = [
                                 }
                             })
                         ],
-                        tag: 'div[layout][vertical][end]'
+                        tag: 'div.layout.vertical.end'
                     }
                 }),
                 m.component(listTile, {
@@ -657,7 +657,7 @@ content = [
                     secondary: {
                         content: [
                             m('div', '2 hr'),
-                            m('div[flex]'),
+                            m('div.flex'),
                             m.component(icon, {
                                 svg: {
                                     name: 'star-outline',
@@ -665,7 +665,7 @@ content = [
                                 }
                             })
                         ],
-                        tag: 'div[layout][vertical][end]'
+                        tag: 'div.layout.vertical.end'
                     }
                 }),
                 m.component(listTile, {
@@ -677,7 +677,7 @@ content = [
                     secondary: {
                         content: [
                             m('div', '6 hr'),
-                            m('div[flex]'),
+                            m('div.flex'),
                             m.component(icon, {
                                 svg: {
                                     name: 'star-outline',
@@ -685,7 +685,7 @@ content = [
                                 }
                             })
                         ],
-                        tag: 'div[layout][vertical][end]'
+                        tag: 'div.layout.vertical.end'
                     }
                 })
             ])

@@ -24,8 +24,7 @@ let links,
     toolbarRow,
     template,
     repeatText,
-    createBottomBarTemplate,
-    cache;
+    createBottomBarTemplate;
 
 links = [{
     label: 'Small header panels',
@@ -148,12 +147,10 @@ btn = function(group, name, url) {
 toolbarRow = function(title) {
     return [
         btn('navigation', 'arrow-back', '#'),
-        m('span[flex]', title),
+        m('span.flex', title),
         btn('action', 'search')
     ];
 };
-
-cache = true;
 
 let index = {};
 index.controller = function() {};
@@ -180,7 +177,7 @@ let kitchensink = {};
 kitchensink.view = function() {
     let currentLink = linkMap[m.route()];
     return m('.' + currentLink.url, m.component(headerPanel, {
-        tag: 'div[fit]',
+        tag: 'div.fit',
         class: 'dark-theme',
         mode: 'waterfall-tall',
         tallClass: 'medium-tall',
@@ -218,7 +215,7 @@ demo1.view = function() {
     };
 
     panel = m.component(headerPanel, {
-        tag: 'div[fit]',
+        tag: 'div.fit',
         class: 'dark-theme',
         mode: 'waterfall-tall',
         condenses: true,
@@ -232,8 +229,7 @@ demo1.view = function() {
             m.trust(template),
             github
         ],
-        transform: onHeaderTransform,
-        cache: cache
+        transform: onHeaderTransform
     });
     return m('.' + currentLink.url, panel);
 };
@@ -242,7 +238,7 @@ let demo2 = {};
 demo2.view = function() {
     let currentLink = linkMap[m.route()];
     return m('.' + currentLink.url, m.component(headerPanel, {
-        tag: 'div[fit]',
+        tag: 'div.fit',
         class: 'dark-theme',
         mode: 'waterfall-tall',
         tallClass: 'medium-tall',
@@ -256,8 +252,7 @@ demo2.view = function() {
         content: [
             m.trust(template),
             github
-        ],
-        cache: cache
+        ]
     }));
 };
 
@@ -265,7 +260,7 @@ let demo3 = {};
 demo3.view = function() {
     let currentLink = linkMap[m.route()];
     return m('.' + currentLink.url, m.component(headerPanel, {
-        tag: 'div[fit]',
+        tag: 'div.fit',
         class: 'dark-theme animate',
         mode: 'waterfall-tall',
         animated: true,
@@ -279,8 +274,7 @@ demo3.view = function() {
         content: [
             m.trust(template),
             github
-        ],
-        cache: cache
+        ]
     }));
 };
 
@@ -288,7 +282,7 @@ let demo4 = {};
 demo4.view = function() {
     let currentLink = linkMap[m.route()];
     return m('.' + currentLink.url, m.component(headerPanel, {
-        tag: 'div[fit]',
+        tag: 'div.fit',
         class: 'dark-theme noReveal',
         mode: 'tall',
         condenses: true,
@@ -302,8 +296,7 @@ demo4.view = function() {
         content: [
             m.trust(template),
             github
-        ],
-        cache: cache
+        ]
     }));
 };
 
@@ -311,7 +304,7 @@ let demo5 = {};
 demo5.view = function() {
     let currentLink = linkMap[m.route()];
     return m('.' + currentLink.url, m.component(headerPanel, {
-        tag: 'div[fit]',
+        tag: 'div.fit',
         class: 'dark-theme',
         fixed: true,
         header: {
@@ -323,8 +316,7 @@ demo5.view = function() {
         content: [
             m.trust(template),
             github
-        ],
-        cache: cache
+        ]
     }));
 };
 
@@ -332,7 +324,7 @@ let demo6 = {};
 demo6.view = function() {
     let currentLink = linkMap[m.route()];
     return m('.' + currentLink.url, m.component(headerPanel, {
-        tag: 'div[fit]',
+        tag: 'div.fit',
         class: 'dark-theme keepCondensed',
         mode: 'waterfall-tall',
         condenses: true,
@@ -348,8 +340,7 @@ demo6.view = function() {
         content: [
             m.trust(template),
             github
-        ],
-        cache: cache
+        ]
     }));
 };
 
@@ -357,7 +348,7 @@ let background1 = {};
 background1.view = function() {
     let currentLink = linkMap[m.route()];
     return m('.' + currentLink.url, m.component(headerPanel, {
-        tag: 'div[fit]',
+        tag: 'div.fit',
         class: 'dark-theme background1',
         mode: 'waterfall-tall',
         condenses: true,
@@ -373,8 +364,7 @@ background1.view = function() {
         content: [
             m.trust(template),
             github
-        ],
-        cache: cache
+        ]
     }));
 };
 
@@ -382,7 +372,7 @@ let background2 = {};
 background2.view = function() {
     let currentLink = linkMap[m.route()];
     return m('.' + currentLink.url, m.component(headerPanel, {
-        tag: 'div[fit]',
+        tag: 'div.fit',
         class: 'dark-theme background2',
         mode: 'waterfall-tall',
         condenses: true,
@@ -396,8 +386,7 @@ background2.view = function() {
         content: [
             m.trust(template),
             github
-        ],
-        cache: cache
+        ]
     }));
 };
 
@@ -405,7 +394,7 @@ let background3 = {};
 background3.view = function() {
     let currentLink = linkMap[m.route()];
     return m('.' + currentLink.url, m.component(headerPanel, {
-        tag: 'div[fit]',
+        tag: 'div.fit',
         class: 'dark-theme background3',
         mode: 'waterfall-tall',
         condenses: true,
@@ -421,8 +410,7 @@ background3.view = function() {
         content: [
             m.trust(template),
             github
-        ],
-        cache: cache
+        ]
     }));
 };
 
@@ -430,7 +418,7 @@ let background4 = {};
 background4.view = function() {
     let currentLink = linkMap[m.route()];
     return m('.' + currentLink.url, m.component(headerPanel, {
-        tag: 'div[fit]',
+        tag: 'div.fit',
         class: 'dark-theme background4',
         mode: 'waterfall-tall',
         condenses: true,
@@ -447,8 +435,7 @@ background4.view = function() {
         content: [
             m.trust(template),
             github
-        ],
-        cache: cache
+        ]
     }));
 };
 
