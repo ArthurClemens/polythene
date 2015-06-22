@@ -1,0 +1,101 @@
+
+# Tabs
+
+<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/tabs.html">Demo</a>
+
+Displays a tab row.
+
+
+## Usage
+
+	import tabs from 'polythene/tabs/tabs';
+
+	const tabButtons = [
+		{
+			label: 'New'
+		},
+		{
+			label: 'Favorites'
+		},
+		{
+			label: 'Saved'
+		}
+	];
+
+	const myTabs = m.component(tabs, {
+		buttons: tabButtons,
+		autofit: true
+	})
+
+## Styling
+
+Set the selected button color and corresponding indicator background:
+
+	.tabs .tab.selected {
+		color: #00bcd4;
+	}
+	.tabs .tabIndicator {
+		background-color: #00bcd4;
+	}
+
+To use a fixed width without `autofit`:
+
+	.tabs .tab {
+		width: 150px;
+	}
+
+
+## Options
+
+### Tab row options
+
+| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
+| **tag** | optional | String | 'div' | HTML tag |
+| **class** | optional | String |  | Extra CSS class appended to 'tabs' |
+| **buttons** | required | Array of options Objects |  | Tab buttons |
+| **autofit** | optional | Boolean | false | Set to true to let the buttons fill the button row |
+| **scrollable** | optional | Boolean | false | Set to true to make the button row scrollable; this automatically sets autofit to `false` |
+| **centered** | optional | Boolean | false | Set to true to center the button row; this automatically sets autofit to `false` |
+| **selectedTab** | optional | Number | 0 | The Array index of the selected tab |
+| **hideIndicator** | optional | Boolean | false | Set to true to hide the tab indicator |
+| **noIndicatorSlide** | optional | Boolean | false | Set to true not let the tab indicator slide to the new position |
+
+### Tab button options
+
+Tab buttons use the same parameters as [button](#button), except for `wash` (disabled), `raised` and `z` (makes visually no difference).
+
+| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
+| **tag** | optional | String | 'a' (if `url` is passed) or 'div' | HTML tag |
+| **class** | optional | String |  | Extra CSS class appended to 'button' |
+| **label** | required | String | | The button label |
+| **url** | optional | Object with `href`, optionally `config` | | Button URL or click handler |
+| **events** | optional | Object | | Button events; options object containing one or more events like `onclick` |
+| **ink** | optional | Boolean | true | Set to false to disable the ripple effect on click/tap |
+| **disabled** | optional | Boolean | false | Disables the button |
+| **selected** | optional | Boolean | false | Set to true to show the button as selected |
+
+
+## Default generated HTML
+
+	<div class="tabs">
+	    <div class="tabRow layout horizontal">
+	        <a class="button tab flex none js-tab-index-0">
+	            <div class="content">
+	                <div class="layout vertical">
+	                    <div class="flex"></div>
+	                    <div class="label">New</div>
+	                    <div class="flex"></div>
+	                </div>
+	                <div class="fit ripple constrained">
+	                    <div class="ripple-mask">
+	                        <div class="ripple-waves" style=""></div>
+	                    </div>
+	                </div>
+	            </div>
+	        </a>
+	        ... same for other tab buttons
+	        <div class="tabIndicator" style=""></div>
+	    </div>
+	</div>
