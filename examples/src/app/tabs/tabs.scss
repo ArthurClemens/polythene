@@ -1,0 +1,65 @@
+@import "../../lib/polythene/theme/polythene/polythene";
+
+.demo-content {
+	$_accentColor: #00bcd4;
+	$_mobileWidth: 320px;
+
+	.tabs {
+		.tab.selected {
+			color: $_accentColor;
+		}
+		.tabIndicator {
+			background-color: $_accentColor;
+		}
+	}
+	.tabArea {
+		background-color: #FAFAFA;
+		padding-top: 50px;
+
+		&.hasToolbar {
+			padding-top: 0;
+		}
+
+		&.mobile {
+			width: $_mobileWidth;
+		}
+	}
+	.demo-tabs.mobile {
+		width: $_mobileWidth;
+		border-bottom: 1px solid #D2D2D2;
+		@include hairline("border-bottom");
+	}
+
+	.demo-tabs.fixedWidth {
+		.tab {
+			width: 150px;
+		}
+	}
+
+	.p-block .toolbar {
+		$_accentColor: #FFFF8D;
+
+		background: #00BCD4;
+		color: #fff;
+
+		.icon-button {
+			color: #fff;
+		}
+
+		.tab.selected {
+			color: #fff;
+		}
+		.tabIndicator {
+			background-color: $_accentColor;
+		}
+	}
+}
+
+@media (max-width: 480px) {
+	.p-block {
+		margin: 0;
+	}
+	.tabArea {
+		margin: 0 -24px;
+	}
+}

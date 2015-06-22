@@ -21,7 +21,9 @@ Add a URL:
 	let myBtn = m.component(btn, {
 		label: 'Button',
 		raised: true,
-		url: {href: 'index.html'}
+		url: {
+			href: 'index.html'
+		}
 	});
 
 Add an onclick event:
@@ -29,7 +31,9 @@ Add an onclick event:
 	let myBtn = m.component(btn, {
 		label: 'Button',
 		raised: true,
-		events: {onclick: function() {console.log('click');}}
+		events: {
+			onclick: () => console.log('click')
+		}
 	});
 
 ## Variations
@@ -59,20 +63,22 @@ Add an onclick event:
 
 ## Default generated HTML
 
-	<a raised="true" class="button">
-		<div class="content">
-			<span>Button label</span>
-			<div fit="true" class="ripple constrained">
-				<div class="ripple-mask">
-					<div class="ripple-waves" style=""></div>
-				</div>
-			</div>
-			<div fit="true" class="wash"></div>
-			<div fit="true" class="shadow">
-				<div fit="true" class="shadow-bottom shadow-bottom-z-1"></div>
-				<div fit="true" class="shadow-top shadow-top-z-1"></div>
-			</div>
-		</div>
+	<a class="raised button">
+	    <div class="content layout vertical">
+	        <span class="flex"></span>
+	        <span>Normal</span>
+	        <span class="flex"></span>
+	        <div class="fit ripple constrained">
+	            <div class="ripple-mask">
+	                <div class="ripple-waves" style=""></div>
+	            </div>
+	        </div>
+	        <div class="wash fit"></div>
+	        <div class="fit shadow">
+	            <div class="fit animated shadow-bottom shadow-bottom-z-1"></div>
+	            <div class="fit animated shadow-top shadow-top-z-1"></div>
+	        </div>
+	    </div>
 	</a>
 
 

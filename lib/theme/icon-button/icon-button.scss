@@ -13,7 +13,9 @@
     
     @import "../button/button-effects";
 
-    .content > span {
-        padding: ($buttonSize - $iconSize) / 2;
+    .content {
+        .label {
+            padding: ($buttonSize - $iconSize) / 2;
+        }
     }
 }

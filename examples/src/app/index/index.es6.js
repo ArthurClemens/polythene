@@ -38,6 +38,9 @@ links = [{
         url: 'card',
         name: 'Card'
     }, {
+        url: 'tabs',
+        name: 'Tabs'
+    }, {
         url: 'button',
         name: 'Button'
     }, {

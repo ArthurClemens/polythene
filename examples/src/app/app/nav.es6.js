@@ -1,6 +1,7 @@
 'use strict';
 
 import m from 'mithril';
+import p from 'polythene/polythene/polythene';
 import headerPanel from 'polythene/header-panel/header-panel';
 import iconBtn from 'polythene/icon-button/icon-button';
 

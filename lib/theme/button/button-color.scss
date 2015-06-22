@@ -3,14 +3,16 @@
 
 @mixin _theme($tint, $element, $depth) {
 	
+	color: theme($tint, $element, $depth, "normal", "color");
+
 	.content {
 	    background-color: theme($tint, $element, $depth, "normal", "background");
-	    color: theme($tint, $element, $depth, "normal", "color");
 	}
 	[disabled] {
+		color: theme($tint, $element, $depth, "disabled", "color");
+		
 	    .content {
 	        background-color: theme($tint, $element, $depth, "disabled", "background");
-	        color: theme($tint, $element, $depth, "disabled", "color");
 	    }
 	}
 	

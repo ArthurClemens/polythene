@@ -12,19 +12,22 @@
     background: transparent;
     text-align: center;
     font: inherit;
-    text-transform: uppercase;
     outline: none;
     cursor: pointer;
     @include user-select-none;
-    font-size: $buttonFontSize;
-    font-weight: $buttonFontWeight;
     border-radius: $buttonBorderRadius;
 
     @import "../button/button-effects";
 
     .content {
         height: $buttonHeight;
-        line-height: $buttonHeight;
         padding: 0 2*$grid_unit_px;
+
+        .label {
+            line-height: $buttonHeight;
+            font-size: $buttonFontSize;
+            font-weight: $buttonFontWeight;
+            text-transform: uppercase;
+        }
     }
 }
