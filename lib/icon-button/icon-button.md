@@ -95,12 +95,19 @@ Icon button inherits from [button](#button).
 
 ## Default generated HTML
 
-	<a noink="true" class="icon-button">
-	    <div class="button-content">
-	        <div class="icon icon-normal">
-	            <i fit="true" class="svg ">
-	                svg...
-	            </i>
+	<a class="icon-button">
+	    <div class="content">
+	        <div class="label">
+	            <div class="icon icon-normal">
+	                <i class="fit svg">
+	                    <svg>...</svg>
+	                </i>
+	            </div>
+	        </div>
+	        <div class="fit ripple constrained ">
+	            <div class="ripple-mask">
+	                <div class="ripple-waves" style=""></div>
+	            </div>
 	        </div>
 	    </div>
 	</a>

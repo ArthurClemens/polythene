@@ -167,14 +167,19 @@ An additional HTML element to control the image is 'image-dimmer'. To create a f
 ## Default generated HTML
 
 	<div mode="standard" class="header-panel">
-	    <div vertical="true" layout="true" class="outerContainer cascaded">
+	    <div class="outerContainer vertical layout cascaded">
 	        <div class="headerContainer">
+	            <div class="bg-container">
+	                <div class="condensedHeaderBg"></div>
+	                <div class="headerBg"></div>
+	                <div class="image-dimmer"></div>
+	            </div>
 	            <div class="header">Header</div>
 	            <div class="dropShadow"></div>
 	        </div>
-	        <div flex="true" class="mainContainer">
+	        <div class="mainContainer flex">
 	            <div class="content">
-	                Content
+	            	Content
 	            </div>
 	        </div>
 	    </div>

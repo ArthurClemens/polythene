@@ -124,12 +124,13 @@ Item can be extended with CSS and custom content - see the custom example below.
 
 When using an SVG icon:
 
-	<div center="true" horizontal="true" layout="true" class="item">
-		<div class="icon icon-normal">
-			<i fit="true" class="svg">
-				<svg ...>...</svg>
-			</i>
-		</div>
-		<div>Settings</div>
+	<div class="center horizontal layout item">
+	    <div class="icon icon-normal">
+	        <i class="fit svg">
+	            <svg>...</svg>
+	        </i>
+	    </div>
+	    <div>Label</div>
 	</div>
+
 

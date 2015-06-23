@@ -224,6 +224,19 @@ content = m('.demo-content', [
     }),
 
     m.component(block, {
+        label: 'Text only',
+        card: {
+            class: 'demo-card',
+            content: [{
+                primary: {
+                    title: 'Primary title',
+                    subtitle: 'Subtitle'
+                }
+            }]
+        }
+    }),
+
+    m.component(block, {
         label: 'Header with icon',
         cards: [{
             class: 'demo-card',

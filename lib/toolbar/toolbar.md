@@ -89,25 +89,80 @@ These heights are predefined by the toolbar CSS.
 
 When using a label and 3 icon buttons:
 
-	<div class="toolbar animate topBar standard">
-		<div center="true" horizontal="true" layout="true" class="toolbar-tools topBar">
-			<div class="icon-button">
-				<div class="icon icon-normal">
-					<i fit="true" class="svg">svg...</i>
-				</div>
-			</div><span flex="true">Toolbar</span>
-			<div class="icon-button">
-				<div class="icon icon-normal">
-					<i fit="true" class="svg ">svg...</i>
-				</div>
-			</div>
-			<div class="icon-button">
-				<div class="icon icon-normal">
-					<i fit="true" class="svg ">svg...</i>
-				</div>
-			</div>
-		</div>
+	<div class="fit shadow">
+	    <div class="fit shadow-bottom shadow-bottom-z-1"></div>
+	    <div class="fit shadow-top shadow-top-z-1"></div>
 	</div>
+	<div class="toolbar animate standard">
+	    <div class="center horizontal layout toolbar-tools topBar">
+	        <a class="icon-button">
+	            <div class="content">
+	                <div class="label">
+	                    <div class="icon icon-normal">
+	                        <i class="fit svg">
+	                            <svg>...</svg>
+	                        </i>
+	                    </div>
+	                </div>
+	                <div class="fit ripple constrained">
+	                    <div class="ripple-mask">
+	                        <div class="ripple-waves"></div>
+	                    </div>
+	                </div>
+	            </div>
+	        </a>
+	        <span class="flex">Toolbar title</span>
+	        <a class="icon-button">
+	            <div class="content">
+	                <div class="label">
+	                    <div class="icon icon-normal">
+	                        <i class="fit svg">
+	                            <svg>...</svg>
+	                        </i>
+	                    </div>
+	                </div>
+	                <div class="fit ripple constrained">
+	                    <div class="ripple-mask">
+	                        <div class="ripple-waves"></div>
+	                    </div>
+	                </div>
+	            </div>
+	        </a>
+	        <a class="icon-button">
+	            <div class="content">
+	                <div class="label">
+	                    <div class="icon icon-normal">
+	                        <i class="fit svg">
+	                            <svg>...</svg>
+	                        </i>
+	                    </div>
+	                </div>
+	                <div class="fit ripple constrained">
+	                    <div class="ripple-mask">
+	                        <div class="ripple-waves"></div>
+	                    </div>
+	                </div>
+	            </div>
+	        </a>
+	        <a class="icon-button">
+	            <div class="content">
+	                <div class="label">
+	                    <div class="icon icon-normal">
+	                        <i class="fit svg">
+	                            <svg>...</svg>
+	                        </i>
+	                    </div>
+	                </div>
+	                <div class="fit ripple constrained">
+	                    <div class="ripple-mask">
+	                        <div class="ripple-waves"></div>
+	                    </div>
+	                </div>
+	            </div>
+	        </a>
+	    </div>
+	</div>
+
 
 
 ## TODO

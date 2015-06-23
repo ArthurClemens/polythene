@@ -80,8 +80,6 @@ Other icon sets can be placed in `deps/svg/` and referred to by parameter `icons
 ## Default generated HTML
 
 	<div class="svg">
-		<svg ...>
-			...
-		</svg>
+		<svg>...</svg>
 	</div>
 

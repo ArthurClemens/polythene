@@ -42,19 +42,27 @@ FAB inherits from [icon button](#icon-button) (which inherits from [button](#but
 
 ## Default generated HTML
 
-	<div noink="true" raised="true" class="fab">
-	    <div class="button-content">
-	        <div class="icon icon-normal">
-	            <i fit="true" class="svg ">
-	                svg...
-	            </i>
+	<a class="raised fab">
+	    <div class="content">
+	        <div class="label">
+	            <div class="icon icon-normal">
+	                <i class="fit svg">
+	                    <svg>...</svg>
+	                </i>
+	            </div>
 	        </div>
-	        <div fit="true" class="shadow">
-	            <div fit="true" animated="true" class="shadow-bottom shadow-bottom-z-2"></div>
-	            <div fit="true" animated="true" class="shadow-top shadow-top-z-2"></div>
+	        <div class="fit ripple constrained">
+	            <div class="ripple-mask">
+	                <div class="ripple-waves" style=""></div>
+	            </div>
+	        </div>
+	        <div class="wash fit"></div>
+	        <div class="fit shadow ">
+	            <div class="fit animated shadow-bottom shadow-bottom-z-2"></div>
+	            <div class="fit animated shadow-top shadow-top-z-2"></div>
 	        </div>
 	    </div>
-	</div>
+	</a>
 
 
 ## TODO

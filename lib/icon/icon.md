@@ -54,8 +54,9 @@ Or pass `iconset` (sub folder) and filename (without `.svg`):
 ## Default generated HTML
 
 	<div class="icon icon-normal">
-		<i fit="true">
-			img or svg
-		</i>
+	    <i class="fit svg">
+	        <svg>...</svg>
+	    </i>
 	</div>
+
 

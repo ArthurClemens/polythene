@@ -43,9 +43,9 @@ To animated the shadow use `animated`:
 
 ## Default generated HTML
 
-	<div fit="true" class="shadow">
-		<div fit="true" class="shadow-bottom shadow-bottom-z-1"></div>
-		<div fit="true" class="shadow-top shadow-top-z-1"></div>
+	<div class="fit shadow">
+	    <div class="fit shadow-bottom shadow-bottom-z-1"></div>
+	    <div class="fit shadow-top shadow-top-z-1"></div>
 	</div>
 
 

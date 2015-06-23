@@ -51,23 +51,31 @@ In this situation we want to indent the subheader, and if we show borders, inden
 
 ## Default generated HTML
 
+List with subheader and two-line items:
+
 	<div class="list has-subheader">
-	    <div horizontal="true" layout="true" center="true" class="list-tile list-tile-single-line subheader">
-	        <a flex="true" class="list-tile-primary">
-	            <div class="list-tile-content">
-	                <div class="list-tile-title">Subheader</div>
+	    <div class="horizontal layout center list-tile list-tile-single-line subheader">
+	        <div class="flex list-tile-primary">
+	            <div class="layout horizontal center">
+	                <div class="flex list-tile-content">
+	                    <div class="list-tile-title">Subheader</div>
+	                </div>
 	            </div>
-	        </a>
+	        </div>
 	    </div>
-	    <div horizontal="true" layout="true" center="true" class="list-tile list-tile-two-line">
-	        <a flex="true" class="list-tile-primary">
-	            <div class="list-tile-content">
-	                <div class="list-tile-title">Two-line item</div>
-	                <div class="list-tile-info">Secondary text</div>
+	    <div class="horizontal layout center list-tile list-tile-two-line">
+	        <div class="flex list-tile-primary">
+	            <div class="layout horizontal center">
+	                <div class="flex list-tile-content">
+	                    <div class="list-tile-title">Two-line item
+	                        <div class="list-tile-info">Secondary text</div>
+	                    </div>
+	                </div>
 	            </div>
-	        </a>
+	        </div>
 	    </div>
 	</div>
+
 
 
 ## TODO

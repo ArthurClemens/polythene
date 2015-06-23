@@ -236,12 +236,12 @@ Next to the card itself, each content parts has a set of options:
 For a card with title only:
 
 	<div class="card">
-	    <div fit="true" class="shadow">
-	        <div fit="true" animated="true" class="shadow-bottom shadow-bottom-z-1"></div>
-	        <div fit="true" animated="true" class="shadow-top shadow-top-z-1"></div>
+	    <div class="fit shadow ">
+	        <div class="fit animated shadow-bottom shadow-bottom-z-1"></div>
+	        <div class="fit animated shadow-top shadow-top-z-1"></div>
 	    </div>
-	    <div layout="true" horizontal="true" class="primary">
-	        <div flex="true" class="title">Primary title
+	    <div class="layout horizontal primary">
+	        <div class="title flex">Primary title
 	            <div class="subtitle">Subtitle</div>
 	        </div>
 	    </div>
@@ -249,55 +249,40 @@ For a card with title only:
 
 For a card with header, image, title and actions:
 
-	<div class="card">
-	    <div fit="true" class="shadow ">
-	        <div fit="true" animated="true" class="shadow-bottom shadow-bottom-z-1"></div>
-	        <div fit="true" animated="true" class="shadow-top shadow-top-z-1"></div>
+	<div class="card demo-card">
+	    <div class="fit shadow ">
+	        <div class="fit animated shadow-bottom shadow-bottom-z-1"></div>
+	        <div class="fit animated shadow-top shadow-top-z-1"></div>
 	    </div>
-	    <div layout="true" horizontal="true" center="true" class="header">
+	    <a class="layout horizontal center header">
 	        <div class="content-icon">
 	            <div class="icon icon-large avatar">
-	                <i fit="true">
-	                    <img src="app/list-tile/avatars/1.png" />
+	                <i class="fit">
+	                    <img src="..." />
                     </i>
                 </div>
             </div>
-            <div flex="true" class="title">Title
+            <div class="title flex">Title
                 <div class="subtitle">Subhead</div>
             </div>
-        </div>
-        <div class="media landscape crop-y">
-            <img src="app/images/1.jpg" style="margin-left: -71.11111111111114px;" />
+        </a>
+        <div class="media landscape">
+            <img src="..." class="crop-x" style="" />
             <div class="image-dimmer"></div>
         </div>
-        <div layout="true" horizontal="true" class="primary">
-            <div flex="true" class="title">Primary title
-                <div class="subtitle">Subtitle</div>
-            </div>
-        </div>
-        <div layout="true" horizontal="true" center="true" class="actions">
-            <div class="button ">
-                <div class="button-content">
-                    <span>Action 1</span>
-                    <div fit="true" class="ripple constrained ">
+        <div class="text ">Text</div>
+        <div class="layout horizontal center actions bordered">
+            <a class="button">
+                <div class="content">
+                    <div class="label">Action 1</div>
+                    <div class="fit ripple constrained ">
                         <div class="ripple-mask">
                             <div class="ripple-waves"></div>
                         </div>
                     </div>
-                    <div fit="true" class="wash"></div>
+                    <div class="wash fit"></div>
                 </div>
-            </div>
-            <div class="button">
-                <div class="button-content">
-                    <span>Action 2</span>
-                    <div fit="true" class="ripple constrained">
-                        <div class="ripple-mask">
-                            <div class="ripple-waves"></div>
-                        </div>
-                    </div>
-                    <div fit="true" class="wash"></div>
-                </div>
-            </div>
+            </a>
         </div>
     </div>
 

@@ -67,3 +67,11 @@ By default the inherited color from the parent element is used.
 	where:
 	    Event :: AnimationEvent
 
+
+## Default generated HTML
+
+    <div class="fit ripple constrained">
+        <div class="ripple-mask">
+            <div class="ripple-waves" style=""></div>
+        </div>
+    </div>

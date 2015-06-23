@@ -149,25 +149,31 @@ To show 2 elements, one at the top and one at the bottom of the right side, we u
 
 ## Default generated HTML
 
-	<div horizontal="true" layout="true" center="true" class="list-tile list-tile-single-line">
-	    <div flex="true" class="list-tile-primary">
-	        <div class="list-tile-content">
-	            <div class="list-tile-title">...</div>
+Single line item:
+
+	<div class="flex list-tile-primary">
+	    <div class="layout horizontal center">
+	        <div class="flex list-tile-content">
+	            <div class="list-tile-title">Title</div>
 	        </div>
 	    </div>
 	</div>
 
 When using a large icon (avatar image):
 
-	<div horizontal="true" layout="true" center="true" class="list-tile list-tile-single-line list-tile-has-icon">
-	    <div flex="true" class="list-tile-primary">
-	        <div class="icon icon-large">
-	            <i fit="true">
-	                <img src="app/list-tile/avatars/1.png" />
-                </i>
-            </div>
-            <div class="list-tile-content">
-                <div class="list-tile-title">...</div>
+	<div class="horizontal layout center list-tile list-tile-single-line list-tile-has-icon">
+	    <div class="flex list-tile-primary">
+	        <div class="layout horizontal center">
+	            <div class="list-tile-content-icon">
+	                <div class="icon icon-large avatar">
+	                    <i class="fit">
+	                        <img src="..." />
+                        </i>
+                    </div>
+                </div>
+                <div class="flex list-tile-content">
+                    <div class="list-tile-title">Title</div>
+                </div>
             </div>
         </div>
     </div>
