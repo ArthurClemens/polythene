@@ -1,6 +1,8 @@
 # Polythene: Material Design for Mithril
 
-Modular implementation of Material Design for [Mithril](http://lhorie.github.io/mithril). Available on [Github](https://github.com/ArthurClemens/Polythene). <span style='color: red'>Version v0.0.1-alpha</span>
+Modular implementation of Material Design for [Mithril](http://lhorie.github.io/mithril). Available on [Github](https://github.com/ArthurClemens/Polythene).
+
+<span style='color: red'>Version v0.0.4-alpha</span>
 
 <a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/index.html">All demos</a>
 
@@ -114,9 +116,12 @@ See the [main project page](https://github.com/ArthurClemens/Polythene).
 * Divider (part of List)
 * Theming
 
+### In progress
+
+* Tabs
+
 ### To do
 
-1. Tab
 1. Dialog
 1. Menu
 1. Grid list
