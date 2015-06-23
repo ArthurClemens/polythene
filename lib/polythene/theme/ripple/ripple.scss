@@ -30,6 +30,11 @@
 			overflow: hidden;
 		}
 	}
+	// Firefox needs overflow: hidden; but this breaks Chrome. Use this hack:
+	_:-moz-tree-row(hover), &.constrained {
+		overflow: hidden;
+	}
+
 	.ripple-waves {
 		display: block;
 		position: absolute;
