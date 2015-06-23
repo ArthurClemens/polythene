@@ -19,7 +19,7 @@
 		@include user-select-none;
 	}
 
-	.button.tab {
+	.tab {
 		margin: 0;
 		border-radius: 0;
 		height: $_tabHeight;
@@ -113,7 +113,7 @@
 
 @media (min-width: $screenSizeMedium) {
 	.tabs:not(.small):not(.medium) {
-		.button.tab {
+		.tab {
 			min-width: 160px;
 		}
 	}

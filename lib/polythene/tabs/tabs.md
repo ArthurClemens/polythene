@@ -65,6 +65,15 @@ Icons and text combined:
 		autofit: true
 	})
 
+To disable ripple (ink) effect:
+
+	const myTabs = m.component(tabs, {
+		buttons: tabButtons,
+		tabsOpts: {
+			ink: false
+		}
+	})
+
 
 ### Styling
 
@@ -88,10 +97,9 @@ To make all tabs the width of the largest tab, use parameter `largestWidth`.
 
 To use a fixed width without `autofit`:
 
-	.tabs .tab {
-		width: 150px;
+	.tabs:not(.small):not(.medium) .tab {
+		min-width: 100px;
 	}
-
 
 
 ## Options
@@ -110,10 +118,13 @@ To use a fixed width without `autofit`:
 | **selectedTab** | optional | Number | 0 | The Array index of the selected tab |
 | **hideIndicator** | optional | Boolean | false | Set to true to hide the tab indicator |
 | **noIndicatorSlide** | optional | Boolean | false | Set to true not let the tab indicator slide to the new position |
+| **tabsOpts** | optional | Options Object | | Tab button options that will be applied to all tabs |
 
 ### Tab button options
 
 Tab buttons use the same parameters as [button](#button), except for `wash` (disabled), `raised` and `z` (makes visually no difference).
+
+These options can be grouped into `tabsOpts` and applied to all tabs.
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
