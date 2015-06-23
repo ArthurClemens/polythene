@@ -9,7 +9,7 @@ Displays a horizontal bar containing a label and action items. One toolbar can h
 
 	import toolbar from 'polythene/toolbar/toolbar';
 
-	let myToolbar = m.component(toolbar, {
+	const myToolbar = m.component(toolbar, {
         content: ...
     });
 
@@ -17,7 +17,7 @@ To show a toolbar with a label and 3 icon buttons:
 
 	import iconBtn from 'polythene/icon-button/icon-button';
 	
-	let btn = function(group, name) {
+	const btn = function(group, name) {
 	    return m.component(iconBtn, {
 	        icon: {
 	            svg: {
@@ -28,20 +28,20 @@ To show a toolbar with a label and 3 icon buttons:
 	    });
 	};
 
-	let toolbarRow = [
+	const toolbarRow = [
         btn('navigation', 'menu'),
         m('span.flex', 'Toolbar'),
         btn('navigation', 'refresh'),
         btn('content', 'add')
     ];
 
-	let myToolbar = m.component(toolbar, {
+	const myToolbar = m.component(toolbar, {
         content: toolbarRow
     });
 
 To show 3 bars:
 
-	let myToolbar = m.component(toolbar, {
+	const myToolbar = m.component(toolbar, {
 		mode: 'tall',
 		topBar: toolbarRow,
 		middleBar: m.trust('<div flex class="middle indent">label aligns to the middle</div>'),
@@ -89,25 +89,80 @@ These heights are predefined by the toolbar CSS.
 
 When using a label and 3 icon buttons:
 
-	<div class="toolbar animate topBar standard">
-		<div center="true" horizontal="true" layout="true" class="toolbar-tools topBar">
-			<div class="icon-button">
-				<div class="icon icon-normal">
-					<i fit="true" class="svg">svg...</i>
-				</div>
-			</div><span flex="true">Toolbar</span>
-			<div class="icon-button">
-				<div class="icon icon-normal">
-					<i fit="true" class="svg ">svg...</i>
-				</div>
-			</div>
-			<div class="icon-button">
-				<div class="icon icon-normal">
-					<i fit="true" class="svg ">svg...</i>
-				</div>
-			</div>
-		</div>
+	<div class="fit shadow">
+	    <div class="fit shadow-bottom shadow-bottom-z-1"></div>
+	    <div class="fit shadow-top shadow-top-z-1"></div>
 	</div>
+	<div class="toolbar animate standard">
+	    <div class="center horizontal layout toolbar-tools topBar">
+	        <a class="icon-button">
+	            <div class="content">
+	                <div class="label">
+	                    <div class="icon icon-normal">
+	                        <i class="fit svg">
+	                            <svg>...</svg>
+	                        </i>
+	                    </div>
+	                </div>
+	                <div class="fit ripple constrained">
+	                    <div class="ripple-mask">
+	                        <div class="ripple-waves"></div>
+	                    </div>
+	                </div>
+	            </div>
+	        </a>
+	        <span class="flex">Toolbar title</span>
+	        <a class="icon-button">
+	            <div class="content">
+	                <div class="label">
+	                    <div class="icon icon-normal">
+	                        <i class="fit svg">
+	                            <svg>...</svg>
+	                        </i>
+	                    </div>
+	                </div>
+	                <div class="fit ripple constrained">
+	                    <div class="ripple-mask">
+	                        <div class="ripple-waves"></div>
+	                    </div>
+	                </div>
+	            </div>
+	        </a>
+	        <a class="icon-button">
+	            <div class="content">
+	                <div class="label">
+	                    <div class="icon icon-normal">
+	                        <i class="fit svg">
+	                            <svg>...</svg>
+	                        </i>
+	                    </div>
+	                </div>
+	                <div class="fit ripple constrained">
+	                    <div class="ripple-mask">
+	                        <div class="ripple-waves"></div>
+	                    </div>
+	                </div>
+	            </div>
+	        </a>
+	        <a class="icon-button">
+	            <div class="content">
+	                <div class="label">
+	                    <div class="icon icon-normal">
+	                        <i class="fit svg">
+	                            <svg>...</svg>
+	                        </i>
+	                    </div>
+	                </div>
+	                <div class="fit ripple constrained">
+	                    <div class="ripple-mask">
+	                        <div class="ripple-waves"></div>
+	                    </div>
+	                </div>
+	            </div>
+	        </a>
+	    </div>
+	</div>
+
 
 
 ## TODO

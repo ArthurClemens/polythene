@@ -11,14 +11,14 @@ See also: [Icon Button](#icon-button) and [Floating Action Button](#fab)
 
 	import btn from 'polythene/button/button';
 
-	let myBtn = m.component(btn, {
+	const myBtn = m.component(btn, {
 		label: 'Button',
 		raised: true
 	});
 
 Add a URL:
 
-	let myBtn = m.component(btn, {
+	const myBtn = m.component(btn, {
 		label: 'Button',
 		raised: true,
 		url: {
@@ -28,7 +28,7 @@ Add a URL:
 
 Add an onclick event:
 
-	let myBtn = m.component(btn, {
+	const myBtn = m.component(btn, {
 		label: 'Button',
 		raised: true,
 		events: {

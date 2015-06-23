@@ -19,7 +19,7 @@ For small panels, the header will often be fixed:
 
 	import headerPanel from 'polythene/header-panel/header-panel';
 
-	let myHeaderPanel = m.component(headerPanel, {
+	const myHeaderPanel = m.component(headerPanel, {
 		fixed: true,
 	    header: {
 	        content: 'My title'
@@ -29,7 +29,7 @@ For small panels, the header will often be fixed:
 
 To make the panel stretch the width and height of the page, use `div[fit]`:
 
-	let myHeaderPanel = m.component(headerPanel, {
+	const myHeaderPanel = m.component(headerPanel, {
 		tag: 'div.fit',
 	    header: {
 	        content: 'Flex'
@@ -39,7 +39,7 @@ To make the panel stretch the width and height of the page, use `div[fit]`:
 
 To make a tall header condensing when scrolling: 
 
-	let myHeaderPanel = m.component(headerPanel, {
+	const myHeaderPanel = m.component(headerPanel, {
 	    header: {
 	        toolbar: {
 	            mode: 'tall',
@@ -167,14 +167,19 @@ An additional HTML element to control the image is 'image-dimmer'. To create a f
 ## Default generated HTML
 
 	<div mode="standard" class="header-panel">
-	    <div vertical="true" layout="true" class="outerContainer cascaded">
+	    <div class="outerContainer vertical layout cascaded">
 	        <div class="headerContainer">
+	            <div class="bg-container">
+	                <div class="condensedHeaderBg"></div>
+	                <div class="headerBg"></div>
+	                <div class="image-dimmer"></div>
+	            </div>
 	            <div class="header">Header</div>
 	            <div class="dropShadow"></div>
 	        </div>
-	        <div flex="true" class="mainContainer">
+	        <div class="mainContainer flex">
 	            <div class="content">
-	                Content
+	            	Content
 	            </div>
 	        </div>
 	    </div>

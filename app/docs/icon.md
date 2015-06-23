@@ -9,13 +9,13 @@ Displays an icon (image or [SVG](#svg)) as a 24px (but configurable) square.
 
 	import icon from 'polythene/icon/icon';
 
-	let myIcon = m.component(icon, {
+	const myIcon = m.component(icon, {
 		src: 'img/arrow.png'
 	});
 
 To use SVG instead of an image, pass an [svg](#svg) option object:
 
-	let myIcon = m.component(icon, {
+	const myIcon = m.component(icon, {
 		svg: {
 		    src: 'img/arrow.svg'
 		}
@@ -23,7 +23,7 @@ To use SVG instead of an image, pass an [svg](#svg) option object:
 
 Or pass `iconset` (sub folder) and filename (without `.svg`):
 
-	let myIcon = m.component(icon, {
+	const myIcon = m.component(icon, {
 		svg: {
 			iconset: 'mdi',
 		    name: 'emoticon-happy'
@@ -54,8 +54,9 @@ Or pass `iconset` (sub folder) and filename (without `.svg`):
 ## Default generated HTML
 
 	<div class="icon icon-normal">
-		<i fit="true">
-			img or svg
-		</i>
+	    <i class="fit svg">
+	        <svg>...</svg>
+	    </i>
 	</div>
+
 

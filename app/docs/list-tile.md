@@ -11,27 +11,27 @@ Material Design lists are not part of Polymer. This implementation follows [the 
 
 	import listTile from 'polythene/list-tile/list-tile';
 
-	let myListTile = m.component(listTile, {
+	const myListTile = m.component(listTile, {
 		title: 'My title'
 	});
 
 To show a secondary line:
 
-	let myListTile = m.component(listTile, {
+	const myListTile = m.component(listTile, {
 		title: 'My title',
 		subtitle: 'My subtitle'
 	});
 
 To show 2 secondary lines:
 
-	let myListTile = m.component(listTile, {
+	const myListTile = m.component(listTile, {
 		title: 'My title',
 		highSubtitle: 'My loooooooooooong subtitle'
 	});
 
 To show an icon:
 
-	let myListTile = m.component(listTile, {
+	const myListTile = m.component(listTile, {
 		title: 'My title',
 		icon: {
 		    type: 'large',
@@ -42,7 +42,7 @@ To show an icon:
 
 Or use an SVG as icon:
 
-	let myListTile = m.component(listTile, {
+	const myListTile = m.component(listTile, {
 		title: 'My title',
 		icon: {
             svg: {
@@ -54,7 +54,7 @@ Or use an SVG as icon:
 
 To make the primary content a link:
 
-	let myListTile = m.component(listTile, {
+	const myListTile = m.component(listTile, {
 		title: 'My title',
 		icon: {
 		    type: 'large',
@@ -67,7 +67,7 @@ To show secondary content at the right, including a link:
 
 	import icon from 'polythene/icon/icon';
 
-	let myListTile = m.component(listTile, {
+	const myListTile = m.component(listTile, {
 		title: 'My title',
 		icon: {
 		    type: 'large',
@@ -149,25 +149,31 @@ To show 2 elements, one at the top and one at the bottom of the right side, we u
 
 ## Default generated HTML
 
-	<div horizontal="true" layout="true" center="true" class="list-tile list-tile-single-line">
-	    <div flex="true" class="list-tile-primary">
-	        <div class="list-tile-content">
-	            <div class="list-tile-title">...</div>
+Single line item:
+
+	<div class="flex list-tile-primary">
+	    <div class="layout horizontal center">
+	        <div class="flex list-tile-content">
+	            <div class="list-tile-title">Title</div>
 	        </div>
 	    </div>
 	</div>
 
 When using a large icon (avatar image):
 
-	<div horizontal="true" layout="true" center="true" class="list-tile list-tile-single-line list-tile-has-icon">
-	    <div flex="true" class="list-tile-primary">
-	        <div class="icon icon-large">
-	            <i fit="true">
-	                <img src="app/list-tile/avatars/1.png" />
-                </i>
-            </div>
-            <div class="list-tile-content">
-                <div class="list-tile-title">...</div>
+	<div class="horizontal layout center list-tile list-tile-single-line list-tile-has-icon">
+	    <div class="flex list-tile-primary">
+	        <div class="layout horizontal center">
+	            <div class="list-tile-content-icon">
+	                <div class="icon icon-large avatar">
+	                    <i class="fit">
+	                        <img src="..." />
+                        </i>
+                    </div>
+                </div>
+                <div class="flex list-tile-content">
+                    <div class="list-tile-title">Title</div>
+                </div>
             </div>
         </div>
     </div>

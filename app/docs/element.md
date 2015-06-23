@@ -7,7 +7,7 @@ A simple element to wrap a component around a Mithril template. It doesn't do an
 
 	import element from 'polythene/element/element';
 
-	let myElement = m.component(element, {
+	const myElement = m.component(element, {
         content: m('.content', 'My content')
     });
 
