@@ -25,6 +25,63 @@ const threeButtons = [
 	}
 ];
 
+const iconButtons = [
+	{
+		icon: {
+            svg: {
+                iconSet: 'mdi',
+                name: 'heart'
+            }
+        }
+	},
+	{
+		icon: {
+            svg: {
+                iconSet: 'mdi',
+                name: 'bell'
+            }
+        }
+	},
+	{
+		icon: {
+            svg: {
+                iconSet: 'mdi',
+                name: 'cog'
+            }
+        }
+	}
+];
+
+const iconTextButtons = [
+	{
+		icon: {
+            svg: {
+                iconSet: 'mdi',
+                name: 'heart'
+            }
+        },
+        label: 'Favs'
+	},
+	{
+		icon: {
+            svg: {
+                iconSet: 'mdi',
+                name: 'bell'
+            }
+        },
+        label: 'Notifs'
+	},
+	{
+		icon: {
+            svg: {
+                iconSet: 'mdi',
+                name: 'cog'
+            }
+        },
+        label: 'Custom'
+	}
+];
+
 const longLabels = [
 	{
 		label: 'New'
@@ -180,7 +237,7 @@ const content = m('.demo-content', [
 				mode: 'medium-tall',
 				topBar: toolbarRow,
 				bottomBar: m.component(tabs, {
-					class: 'demo-tabs',
+					class: 'demo-tabs small',
 					buttons: longList,
 					scrollable: true
 				})
@@ -205,7 +262,7 @@ const content = m('.demo-content', [
 			m.component(tabs, {
 				class: 'demo-tabs small',
 				buttons: threeButtons,
-				autofit: false,
+				autofit: true,
 				hideIndicator: true
 			})
 		)
@@ -217,11 +274,11 @@ const content = m('.demo-content', [
 			m.component(tabs, {
 				class: 'demo-tabs small',
 				buttons: threeButtons,
-				autofit: false,
+				autofit: true,
 				noIndicatorSlide: true
 			})
 		)
-    })
+    }),
 
 /*
     m.component(titleBlock, {
@@ -235,20 +292,40 @@ const content = m('.demo-content', [
 			})
 		)
     }),
+*/
 
     m.component(titleBlock, {
-        title: 'Icon buttons TODO',
+        title: 'Tabs with icons',
         content: m('.tabArea.small',
 			m.component(tabs, {
 				class: 'demo-tabs small',
-				buttons: threeButtons,
-				autofit: false,
-				scrollable: true
+				buttons: iconButtons,
+				autofit: true
+			})
+		)
+    }),
+
+    m.component(titleBlock, {
+        title: 'Tabs with icons (dark theme)',
+        content: m('.tabArea.small',
+			m.component(tabs, {
+				class: 'dark-theme demo-tabs small',
+				buttons: iconButtons,
+				autofit: true
+			})
+		)
+    }),
+
+    m.component(titleBlock, {
+        title: 'Tabs with icons and text',
+        content: m('.tabArea.small',
+			m.component(tabs, {
+				class: 'demo-tabs small',
+				buttons: iconTextButtons,
+				autofit: true
 			})
 		)
     })
-*/
-
 
 ]);
 

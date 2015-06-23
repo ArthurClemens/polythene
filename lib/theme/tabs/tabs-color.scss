@@ -1,0 +1,25 @@
+@import "../polythene/polythene";
+@import "../theme-config";
+
+@mixin _theme($tint, $element, $depth) {
+    color: theme($tint, $element, $depth, "normal", "color");
+}
+
+.tabs {
+	.tab:not(.selected) {
+		.icon {
+			@include _theme("light", "icon-button", "flat");
+		}
+	}
+
+
+}
+
+.dark-theme .tabs,
+.tabs.dark-theme {
+	.tab:not(.selected) {
+		.icon {
+			@include _theme("dark", "icon-button", "flat");
+		}
+	}
+}

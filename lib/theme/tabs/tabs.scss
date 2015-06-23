@@ -2,6 +2,7 @@
 
 .tabs {
 	$_tabHeight: 48px;
+	$_tabIconLabelHeight: 72px;
 	$_fontSize: $buttonFontSize;
 
 	overflow-x: auto;
@@ -37,7 +38,8 @@
 				height: inherit;
 			}
 
-			.label {
+			.label,
+			.icon {
 				$_lineHeight: 1.1 * $_fontSize;
 				$_verticalOffset: $_lineHeight - $_fontSize;
 				max-width: 264px; // or .tabs width minus 56dp
@@ -46,13 +48,34 @@
 				overflow: hidden;
 				margin: $_verticalOffset 0 0 0;
 				white-space: normal;
+			}
+			.label {
 				opacity: .7;
+			}
+			.icon {
+				margin-left: auto;
+				margin-right: auto;
 			}
 		}
 
 		&.selected {
 			.content .label {
 				opacity: 1;
+			}
+		}
+
+		&.hasIconLabel {
+			&,
+			.content {
+				height: $_tabIconLabelHeight;
+
+				.label,
+				.icon {
+					margin: 0 auto;
+				}
+				.icon {
+					margin-bottom: 8px;
+				}
 			}
 		}
 	}
