@@ -13,7 +13,7 @@ This implementation closely follows the [design specification](http://www.google
 
 The card can contain various elements. The `content` parameter accepts an array of element options. Element `primary` contains the title and subtitle:
 
-	let myCard = m.component(card, {
+	const myCard = m.component(card, {
 		content: [{
 		    primary: {
 		        title: 'Primary title',
@@ -34,7 +34,7 @@ To show in order:
 
 these are passed in this order to `content`:
 
-	let myCard = m.component(card, {
+	const myCard = m.component(card, {
 		content: [{
 		    header: {
 		        title: 'Name',

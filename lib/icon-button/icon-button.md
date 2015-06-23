@@ -11,7 +11,7 @@ Icon Button takes an icon options object:
 
 	import iconBtn from 'polythene/icon-button/icon-button';
 
-	let myIconBtn = m.component(iconBtn, {
+	const myIconBtn = m.component(iconBtn, {
 		icon: {
 			src: 'img/arrow.png'
 		}
@@ -19,7 +19,7 @@ Icon Button takes an icon options object:
 
 To use SVG instead of an image, pass an [svg](#svg) option object:
 
-	let myIconBtn = m.component(iconBtn, {
+	const myIconBtn = m.component(iconBtn, {
 		icon: {
 			svg: {
 			    src: 'img/arrow.svg'
@@ -31,14 +31,14 @@ Instead of an `icon` options object, you can pass an icon component:
 	
 	import icon from 'polythene/icon/icon';
 
-	let myIcon = m.component(icon, {
+	const myIcon = m.component(icon, {
 	    svg: {
 	        name: 'emoticon-happy',
 	        iconset: 'mdi'
 	    }
 	});
 
-	let myIconBtn = m.component(iconBtn, {
+	const myIconBtn = m.component(iconBtn, {
 		content: myIcon
 	});
 
@@ -53,13 +53,13 @@ The icon color is set with the CSS (text) `color` attribute of the parent elemen
 	}
 
 	// JS
-	let myIconBtn = m.component(iconBtn, {
+	const myIconBtn = m.component(iconBtn, {
 		class: 'colored'
 	});
 
 Disable hover and ripple effects:
 
-	let myIconBtn = m.component(iconBtn, {
+	const myIconBtn = m.component(iconBtn, {
 		icon: {
 			svg: {
 			    src: 'img/arrow.svg'

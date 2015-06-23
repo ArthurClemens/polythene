@@ -11,27 +11,27 @@ Material Design lists are not part of Polymer. This implementation follows [the 
 
 	import listTile from 'polythene/list-tile/list-tile';
 
-	let myListTile = m.component(listTile, {
+	const myListTile = m.component(listTile, {
 		title: 'My title'
 	});
 
 To show a secondary line:
 
-	let myListTile = m.component(listTile, {
+	const myListTile = m.component(listTile, {
 		title: 'My title',
 		subtitle: 'My subtitle'
 	});
 
 To show 2 secondary lines:
 
-	let myListTile = m.component(listTile, {
+	const myListTile = m.component(listTile, {
 		title: 'My title',
 		highSubtitle: 'My loooooooooooong subtitle'
 	});
 
 To show an icon:
 
-	let myListTile = m.component(listTile, {
+	const myListTile = m.component(listTile, {
 		title: 'My title',
 		icon: {
 		    type: 'large',
@@ -42,7 +42,7 @@ To show an icon:
 
 Or use an SVG as icon:
 
-	let myListTile = m.component(listTile, {
+	const myListTile = m.component(listTile, {
 		title: 'My title',
 		icon: {
             svg: {
@@ -54,7 +54,7 @@ Or use an SVG as icon:
 
 To make the primary content a link:
 
-	let myListTile = m.component(listTile, {
+	const myListTile = m.component(listTile, {
 		title: 'My title',
 		icon: {
 		    type: 'large',
@@ -67,7 +67,7 @@ To show secondary content at the right, including a link:
 
 	import icon from 'polythene/icon/icon';
 
-	let myListTile = m.component(listTile, {
+	const myListTile = m.component(listTile, {
 		title: 'My title',
 		icon: {
 		    type: 'large',

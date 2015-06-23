@@ -14,14 +14,14 @@ Use parameter `after` to append the ripple to the content:
 	import ripple from 'polythene/ripple/ripple';
 	import listTile from 'polythene/list-tile/list-tile';
 
-	let myListTile = m.component(listTile, {
+	const myListTile = m.component(listTile, {
 	    title: 'Title',
 	    after: m.component(ripple)
 	});
 
 Use an options object to define specific behavior:
 
-	let myListTile = m.component(listTile, {
+	const myListTile = m.component(listTile, {
 	    title: 'Title',
 	    after: m.component(ripple, {
 	    	constrained: false,

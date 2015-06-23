@@ -9,7 +9,7 @@ Displays a list of [list tiles](#list-tile), with an optional header (which is a
 
 	import list from 'polythene/list/list';
 
-	let myList = m.component(list, {
+	const myList = m.component(list, {
 		header: {
 			title: 'My header'
 		},

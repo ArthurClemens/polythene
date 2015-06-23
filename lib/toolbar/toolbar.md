@@ -9,7 +9,7 @@ Displays a horizontal bar containing a label and action items. One toolbar can h
 
 	import toolbar from 'polythene/toolbar/toolbar';
 
-	let myToolbar = m.component(toolbar, {
+	const myToolbar = m.component(toolbar, {
         content: ...
     });
 
@@ -17,7 +17,7 @@ To show a toolbar with a label and 3 icon buttons:
 
 	import iconBtn from 'polythene/icon-button/icon-button';
 	
-	let btn = function(group, name) {
+	const btn = function(group, name) {
 	    return m.component(iconBtn, {
 	        icon: {
 	            svg: {
@@ -28,20 +28,20 @@ To show a toolbar with a label and 3 icon buttons:
 	    });
 	};
 
-	let toolbarRow = [
+	const toolbarRow = [
         btn('navigation', 'menu'),
         m('span.flex', 'Toolbar'),
         btn('navigation', 'refresh'),
         btn('content', 'add')
     ];
 
-	let myToolbar = m.component(toolbar, {
+	const myToolbar = m.component(toolbar, {
         content: toolbarRow
     });
 
 To show 3 bars:
 
-	let myToolbar = m.component(toolbar, {
+	const myToolbar = m.component(toolbar, {
 		mode: 'tall',
 		topBar: toolbarRow,
 		middleBar: m.trust('<div flex class="middle indent">label aligns to the middle</div>'),

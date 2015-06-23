@@ -9,20 +9,20 @@ Loads SVG code asychronously and displays this on the page, for instance in an [
 
 	import svg from 'polythene/svg/svg';
 
-	let mySvg = m.component(svg, {
+	const mySvg = m.component(svg, {
 		src: 'img/arrow.svg'
 	});
 
 To load an SVG from one of the included icon sets, pass `iconset` and `name`. To load `polythene/svg/mdi/headphones.svg`:
 
-	let mySvg = m.component(svg, {
+	const mySvg = m.component(svg, {
 		iconset: 'mdi',
 		name: 'headphones'
 	});
 
 If the iconset has subfolders, pass the folder name as `group`. To load `polythene/svg/material-design-iconic-font/action/alarm.svg`:
 
-	let mySvg = m.component(svg, {
+	const mySvg = m.component(svg, {
 	    iconset: 'material-design-iconic-font',
 	    group: 'action',
 	    name: 'alarm'
@@ -31,7 +31,7 @@ If the iconset has subfolders, pass the folder name as `group`. To load `polythe
 SVG options can be passed to [icon](#icon):
 
 	import icon from 'polythene/icon/icon';
-	let myIcon = m.component(icon, {
+	const myIcon = m.component(icon, {
 	    iconset: 'material-design-iconic-font',
 	    group: 'action',
 	    name: 'alarm'
@@ -41,7 +41,7 @@ Note that in this case `import svg from 'polythene/svg/svg'` is not needed (this
 
 When after user interaction another SVG is shown, the app is more responsive when the other SVG is already preloaded and cached. Param `preload` accepts a list of option objects:
 
-	let mySvg = m.component(svg, {
+	const mySvg = m.component(svg, {
         name: opts.favorite ? 'star' : 'star-outline',
         iconset: 'mdi',
         preload: [{

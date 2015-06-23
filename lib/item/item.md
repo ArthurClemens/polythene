@@ -11,13 +11,13 @@ This component does not belong to the Material Design specification, but was int
 
 	import item from 'polythene/item/item';
 
-	let myItem = m.component(item, {
+	const myItem = m.component(item, {
         label: 'Settings'
     });
 
 To add an icon, pass an [icon](#icon) options object:
 
-	let myItem = m.component(item, {
+	const myItem = m.component(item, {
 		label: 'Settings',
         icon: {
 	        svg: {
@@ -29,7 +29,7 @@ To add an icon, pass an [icon](#icon) options object:
 
 To make the item a link, set its content as the link:
 
-	let myItem = m.component(item, {
+	const myItem = m.component(item, {
 		label: 'Settings',
         icon: {
 	        svg: {
@@ -51,7 +51,7 @@ To make a big item, pass class `font-scalable` - the icon will scale automatical
 	}
 
 	// js
-	let myItem = m.component(item, {
+	const myItem = m.component(item, {
 		class: 'font-scalable big',
 		label: 'Settings',
         icon: {
@@ -61,7 +61,7 @@ To make a big item, pass class `font-scalable` - the icon will scale automatical
 	        }
 	    }
     });
-	let myItem = m.component(item, {
+	const myItem = m.component(item, {
 		class: 'font-scalable small',
 		label: 'Settings',
         icon: {
@@ -76,7 +76,7 @@ Create a custom item:
 
 	import icon from 'polythene/icon/icon';
 
-	let myItem = m.component(item, {
+	const myItem = m.component(item, {
         class: 'contact-item',
         icon: {
 	        svg: {
