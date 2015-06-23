@@ -24,8 +24,7 @@
 		height: $_tabHeight;
 		padding: 0;
 		color: inherit;
-		min-width: 72px; // for smaller screens
-		// min-width: 160px; // for larger screens TODO
+		min-width: 72px; // for smaller screens; see also media query below
 		max-width: 264px; // or .tabs width minus 56dp TODO
 		@include user-select-none;
 
@@ -85,6 +84,14 @@
 
 		.tabRow.indent {
 			overflow: visible;
+		}
+	}
+}
+
+@media (min-width: $screenSizeMedium) {
+	.tabs:not(.small):not(.medium) {
+		.button.tab {
+			min-width: 160px;
 		}
 	}
 }

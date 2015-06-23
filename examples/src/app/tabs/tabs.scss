@@ -20,11 +20,11 @@
 			padding-top: 0;
 		}
 
-		&.mobile {
+		&.small {
 			width: $_mobileWidth;
 		}
 	}
-	.demo-tabs.mobile {
+	.demo-tabs.small {
 		width: $_mobileWidth;
 		border-bottom: 1px solid #D2D2D2;
 		@include hairline("border-bottom");
@@ -56,9 +56,6 @@
 }
 
 @media (max-width: 480px) {
-	.p-block {
-		margin: 0;
-	}
 	.tabArea {
 		margin: 0 -24px;
 	}

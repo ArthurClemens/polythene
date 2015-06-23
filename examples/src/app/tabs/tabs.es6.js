@@ -92,9 +92,9 @@ const content = m('.demo-content', [
 
     m.component(titleBlock, {
         title: 'Default (no autofit)',
-        content: m('.tabArea.mobile',
+        content: m('.tabArea.small',
 			m.component(tabs, {
-				class: 'demo-tabs mobile',
+				class: 'demo-tabs small',
 				buttons: threeButtons
 			})
 		)
@@ -102,9 +102,9 @@ const content = m('.demo-content', [
 
     m.component(titleBlock, {
         title: 'Autofit',
-        content: m('.tabArea.mobile',
+        content: m('.tabArea.small',
 			m.component(tabs, {
-				class: 'demo-tabs mobile',
+				class: 'demo-tabs small',
 				buttons: threeButtons,
 				autofit: true
 			})
@@ -113,12 +113,24 @@ const content = m('.demo-content', [
 
     m.component(titleBlock, {
         title: 'Centered (auto width)',
-        content: m('.tabArea.mobile',
+        content: m('.tabArea.small',
 			m.component(tabs, {
-				class: 'demo-tabs mobile',
+				class: 'demo-tabs small',
 				buttons: threeButtons,
 				centered: true,
 				autofit: false
+			})
+		)
+    }),
+
+    m.component(titleBlock, {
+        title: 'Centered (largest tab width)',
+        content: m('.tabArea',
+			m.component(tabs, {
+				class: 'demo-tabs small',
+				buttons: threeButtons,
+				centered: true,
+				largestWidth: true
 			})
 		)
     }),
@@ -136,9 +148,9 @@ const content = m('.demo-content', [
 
     m.component(titleBlock, {
         title: 'Preselected tab',
-        content: m('.tabArea.mobile',
+        content: m('.tabArea.small',
 			m.component(tabs, {
-				class: 'demo-tabs mobile',
+				class: 'demo-tabs small',
 				buttons: threeButtons,
 				autofit: true,
 				selectedTab: 1
@@ -163,7 +175,7 @@ const content = m('.demo-content', [
 
 	m.component(titleBlock, {
         title: 'In toolbar and scrollable',
-        content: m('.tabArea.mobile.hasToolbar',
+        content: m('.tabArea.small.hasToolbar',
 			m.component(toolbar, {
 				mode: 'medium-tall',
 				topBar: toolbarRow,
@@ -178,9 +190,9 @@ const content = m('.demo-content', [
 
     m.component(titleBlock, {
         title: 'Long label: wrap to second line',
-        content: m('.tabArea.mobile',
+        content: m('.tabArea.small',
 			m.component(tabs, {
-				class: 'demo-tabs mobile',
+				class: 'demo-tabs small',
 				buttons: longLabels,
 				autofit: true
 			})
@@ -189,9 +201,9 @@ const content = m('.demo-content', [
 
     m.component(titleBlock, {
         title: 'Hide indicator',
-        content: m('.tabArea.mobile',
+        content: m('.tabArea.small',
 			m.component(tabs, {
-				class: 'demo-tabs mobile',
+				class: 'demo-tabs small',
 				buttons: threeButtons,
 				autofit: false,
 				hideIndicator: true
@@ -201,9 +213,9 @@ const content = m('.demo-content', [
 
     m.component(titleBlock, {
         title: 'No indicator slide',
-        content: m('.tabArea.mobile',
+        content: m('.tabArea.small',
 			m.component(tabs, {
-				class: 'demo-tabs mobile',
+				class: 'demo-tabs small',
 				buttons: threeButtons,
 				autofit: false,
 				noIndicatorSlide: true
@@ -214,9 +226,9 @@ const content = m('.demo-content', [
 /*
     m.component(titleBlock, {
         title: 'More button dropdown TODO',
-        content: m('.tabArea.mobile',
+        content: m('.tabArea.small',
 			m.component(tabs, {
-				class: 'demo-tabs mobile',
+				class: 'demo-tabs small',
 				buttons: threeButtons,
 				autofit: false,
 				scrollable: true
@@ -226,9 +238,9 @@ const content = m('.demo-content', [
 
     m.component(titleBlock, {
         title: 'Icon buttons TODO',
-        content: m('.tabArea.mobile',
+        content: m('.tabArea.small',
 			m.component(tabs, {
-				class: 'demo-tabs mobile',
+				class: 'demo-tabs small',
 				buttons: threeButtons,
 				autofit: false,
 				scrollable: true
