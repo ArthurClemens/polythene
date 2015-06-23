@@ -184,7 +184,7 @@ const content = m('.demo-content', [
         title: 'Centered (largest tab width)',
         content: m('.tabArea',
 			m.component(tabs, {
-				class: 'demo-tabs small',
+				class: 'demo-tabs',
 				buttons: threeButtons,
 				centered: true,
 				largestWidth: true
@@ -276,6 +276,20 @@ const content = m('.demo-content', [
 				buttons: threeButtons,
 				autofit: true,
 				noIndicatorSlide: true
+			})
+		)
+    }),
+
+    m.component(titleBlock, {
+        title: 'No ink',
+        content: m('.tabArea.small',
+			m.component(tabs, {
+				class: 'demo-tabs small',
+				buttons: threeButtons,
+				autofit: true,
+				tabOpts: {
+					ink: false
+				}
 			})
 		)
     }),

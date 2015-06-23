@@ -31,8 +31,8 @@
 	}
 
 	.demo-tabs.fixedWidth {
-		.tab {
-			width: 150px;
+		&.tabs:not(.small):not(.medium) .tab {
+			min-width: 100px;
 		}
 	}
 
