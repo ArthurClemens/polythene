@@ -27,6 +27,43 @@ Displays a tab row.
 		autofit: true
 	})
 
+To use icons instead of text labels:
+
+	const iconButtons = [
+		{
+			icon: {
+	            svg: {
+	                iconSet: 'mdi',
+	                name: 'heart'
+	            }
+	        }
+		},
+		...
+	];
+
+	const myTabs = m.component(tabs, {
+		buttons: iconButtons,
+		autofit: true
+	})
+
+Icons and text combined:
+
+	const iconTextButtons = [
+		{
+			icon: {
+	            svg: {
+	                iconSet: 'mdi',
+	                name: 'heart'
+	            }
+	        },
+	        label: 'Favs'
+		},
+		...
+
+	const myTabs = m.component(tabs, {
+		buttons: iconTextButtons,
+		autofit: true
+	})
 
 
 ### Styling
@@ -112,3 +149,9 @@ Tab buttons use the same parameters as [button](#button), except for `wash` (dis
 	        <div class="tabIndicator" style=""></div>
 	    </div>
 	</div>
+
+
+## TODO
+
+* Scroll buttons for desktop
+* Tab with More dropdown menu

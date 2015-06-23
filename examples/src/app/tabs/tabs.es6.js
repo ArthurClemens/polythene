@@ -280,20 +280,6 @@ const content = m('.demo-content', [
 		)
     }),
 
-/*
-    m.component(titleBlock, {
-        title: 'More button dropdown TODO',
-        content: m('.tabArea.small',
-			m.component(tabs, {
-				class: 'demo-tabs small',
-				buttons: threeButtons,
-				autofit: false,
-				scrollable: true
-			})
-		)
-    }),
-*/
-
     m.component(titleBlock, {
         title: 'Tabs with icons',
         content: m('.tabArea.small',
@@ -326,6 +312,20 @@ const content = m('.demo-content', [
 			})
 		)
     })
+
+    /*
+    m.component(titleBlock, {
+        title: 'More button dropdown TODO',
+        content: m('.tabArea.small',
+			m.component(tabs, {
+				class: 'demo-tabs small',
+				buttons: threeButtons,
+				autofit: false,
+				scrollable: true
+			})
+		)
+    }),
+    */
 
 ]);
 
