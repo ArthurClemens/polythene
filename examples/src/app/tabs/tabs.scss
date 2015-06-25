@@ -18,6 +18,10 @@
 
 		&.hasToolbar {
 			padding-top: 0;
+
+			.demo-tabs.small {
+				border-bottom: 0;
+			}
 		}
 
 		&.small {
