@@ -47,7 +47,7 @@ Or use an SVG as icon:
 		icon: {
             svg: {
                 name: 'star-outline',
-                iconset: 'mdi'
+                iconSet: 'mdi'
             }
         }
 	});
@@ -78,7 +78,7 @@ To show secondary content at the right, including a link:
 	            type: 'small',
 	            svg: {
 	                name: 'heart-outline',
-	                iconset: 'mdi'
+	                iconSet: 'mdi'
 	            }
 			},
 			url: {'faved', config: m.route}
@@ -138,7 +138,7 @@ To show 2 elements, one at the top and one at the bottom of the right side, we u
 		    m.component(icon, {
 		        svg: {
 		                name: 'star-outline',
-		                iconset: 'mdi'
+		                iconSet: 'mdi'
 		            }
 		        }
 		    )

@@ -34,7 +34,7 @@ Instead of an `icon` options object, you can pass an icon component:
 	const myIcon = m.component(icon, {
 	    svg: {
 	        name: 'emoticon-happy',
-	        iconset: 'mdi'
+	        iconSet: 'mdi'
 	    }
 	});
 
