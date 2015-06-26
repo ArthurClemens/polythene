@@ -26,7 +26,7 @@
 		padding: 0;
 		color: inherit;
 		min-width: 72px; // for smaller screens; see also media query below
-		max-width: 264px; // or .tabs width minus 56dp TODO
+		// max-width: 264px; // set in theme js
 		@include user-select-none;
 
 		.content {
