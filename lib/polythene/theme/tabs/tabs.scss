@@ -6,16 +6,19 @@
 	$_fontSize: $buttonFontSize;
 
 	overflow-x: auto;
-	position: relative;
+	overflow-y: hidden;
 	transform: translate3d(0,0,0);
 	@include user-select-none;
 
-	::-webkit-scrollbar { 
-	    display: none; 
+	::-webkit-scrollbar {
+	    display: none;
 	}
+	-webkit-overflow-scrolling: touch;
 
 	.tabRow {
+		position: relative;
 		white-space: nowrap;
+		overflow: auto;
 		@include user-select-none;
 	}
 
@@ -26,7 +29,7 @@
 		padding: 0;
 		color: inherit;
 		min-width: 72px; // for smaller screens; see also media query below
-		max-width: 264px; // or .tabs width minus 56dp TODO
+		// max-width: 264px; // set in theme js
 		@include user-select-none;
 
 		.content {
@@ -81,8 +84,9 @@
 	}
 
 	.tabIndicator {
+		$_indicatorHeight: 2px;
 		position: absolute;
-		height: 2px;
+		height: $_indicatorHeight;
 		bottom: 0;
 		left: 0;
 		width: 100%; // and transformed with js
@@ -90,6 +94,22 @@
 		transform: translate3d(0,0,0);
 		transform-origin: left 50%;
 		transition: all .3s ease-out;
+	}
+
+	&.scrollable {
+		// hide scrollbar (this approach is required for Firefox)
+		max-height: $_tabHeight; // TODO: solve higher tabs, perhaps using `mode` param like header-panel
+	
+		.tabRow {
+			$_scrollbarOffset: 20px;
+
+			padding-bottom: $_scrollbarOffset;
+			margin-bottom: -$_scrollbarOffset;
+
+			.tabIndicator {
+				bottom: $_scrollbarOffset;
+			}
+		}
 	}
 }
 
@@ -106,7 +126,9 @@
 		}
 
 		.tabRow.indent {
-			overflow: visible;
+			margin: 0;
+			padding-left: $indent;
+			overflow: auto;
 		}
 	}
 }

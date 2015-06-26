@@ -39,9 +39,9 @@ The component script file `theme.js` loads site wide styles; by default `layout`
 
 The theme directory further contains component subdirectories, each containing a script file and a CSS file. For example: 
 
-	polythene
-	└── theme
-	    └── icon
+	polythene/
+	└── theme/
+	    └── icon/
 	        ├── icon.js // loads icon.css
 	        └── icon.css
 
@@ -50,6 +50,12 @@ The Icon component loads the component style script located at `polythene-theme/
 	require('polythene/theme/icon/icon.css!');
 
 which points to the CSS file in the same directory. Note that the suffix exclamation mark is needed for SystemJS' text plugin.
+
+
+#### Styling in Javascript
+
+Styling code is relayed to theme js. See for instance `theme/tabs/tab.js` where the scrollable tabs are aligned to the header above.
+
 
 
 ## Custom theme / overriding default styles
