@@ -2,7 +2,7 @@
 
 Modular implementation of Material Design for [Mithril](http://lhorie.github.io/mithril). Available on [Github](https://github.com/ArthurClemens/Polythene).
 
-<span style='color: red'>Version v0.0.5-alpha</span>
+<span style='color: red'>Version v0.0.6-alpha</span>
 
 <a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/index.html">All demos</a>
 
