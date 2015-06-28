@@ -102,6 +102,7 @@ See the [main project page](https://github.com/ArthurClemens/Polythene).
 
 * Header panel
 * Toolbar
+* Tabs
 * List
 * Card
 * Button
@@ -116,9 +117,9 @@ See the [main project page](https://github.com/ArthurClemens/Polythene).
 * Divider (part of List)
 * Theming
 
-### In progress
 
-* Tabs
+### In progress
+...
 
 ### To do
 
