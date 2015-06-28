@@ -2,24 +2,42 @@
 @import "../theme-config";
 
 @mixin _theme($tint, $element, $depth) {
-    color: theme($tint, $element, $depth, "normal", "color");
+	.tab {
+		.content .label {
+			opacity: .7;
+		}
+		&.selected {
+			.content .label {
+				opacity: 1;
+			}
+		}
+	}
+	.tab:not(.selected) {
+		.icon {
+	    	color: theme($tint, $element, $depth, "normal", "color");
+	    }
+	}
+
+	&.scrollable {
+		.scroll-btn {
+			.icon {
+				opacity: .7;
+			}
+
+			&.inactive {
+				.icon {
+					opacity: 0;
+				}
+			}
+		}
+	}
 }
 
 .tabs {
-	.tab:not(.selected) {
-		.icon {
-			@include _theme("light", "icon-button", "flat");
-		}
-	}
-
-
+	@include _theme("light", "icon-button", "flat");
 }
 
 .dark-theme .tabs,
 .tabs.dark-theme {
-	.tab:not(.selected) {
-		.icon {
-			@include _theme("dark", "icon-button", "flat");
-		}
-	}
+	@include _theme("dark", "icon-button", "flat");
 }

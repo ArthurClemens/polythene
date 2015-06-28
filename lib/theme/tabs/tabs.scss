@@ -1,10 +1,11 @@
 @import "../polythene/polythene";
 
-.tabs {
-	$_tabHeight: 48px;
-	$_tabIconLabelHeight: 72px;
-	$_fontSize: $buttonFontSize;
+$_tabHeight: 48px;
+$_tabIconLabelHeight: 72px;
+$_fontSize: $buttonFontSize;
+$_scrollButtonFadeDuration: .25s;
 
+.tabs {
 	overflow-x: auto;
 	overflow-y: hidden;
 	transform: translate3d(0,0,0);
@@ -52,18 +53,9 @@
 				margin: $_verticalOffset 0 0 0;
 				white-space: normal;
 			}
-			.label {
-				opacity: .7;
-			}
 			.icon {
 				margin-left: auto;
 				margin-right: auto;
-			}
-		}
-
-		&.selected {
-			.content .label {
-				opacity: 1;
 			}
 		}
 
@@ -89,14 +81,22 @@
 		height: $_indicatorHeight;
 		bottom: 0;
 		left: 0;
+		z-index: 9;
 		width: 100%; // and transformed with js
 		// background-color defined in implementation/theme css
 		transform: translate3d(0,0,0);
 		transform-origin: left 50%;
-		transition: all .3s ease-out;
+		transition-property: all;
+		transition-timing-function: ease-out;
+		// duration set in js
 	}
 
 	&.scrollable {
+		.scroll-btn {
+			// default hide, show with html.no-touch
+			display: none;
+		}
+
 		// hide scrollbar (this approach is required for Firefox)
 		max-height: $_tabHeight; // TODO: solve higher tabs, perhaps using `mode` param like header-panel
 	
@@ -116,6 +116,8 @@
 .toolbar {
 	> div,
 	> .toolbar-tools {
+		background-color: inherit;
+
 		// any bar
 		> .tabs,
 		> .tabs:last-child {
@@ -129,6 +131,45 @@
 			margin: 0;
 			padding-left: $indent;
 			overflow: auto;
+		}
+	}
+}
+
+.no-touch {
+	.tabs.scrollable {
+		background-color: inherit;
+
+		.scroll-btn {
+			position: absolute;
+			display: block;
+			top: 0;
+			background-color: inherit;
+			z-index: 4;
+			pointer-events: auto;
+			cursor: pointer;
+
+			.content {
+				border-radius: 0;
+				background-color: inherit;
+
+				.icon {
+					transition-property: opacity;
+					transition-duration: $_scrollButtonFadeDuration;
+					transition-timing-function: ease-out;
+					transition-delay: .15s;
+				}
+			}
+
+			&.inactive {
+				pointer-events: none;
+				cursor: auto;
+			}
+		}
+		.scroll-btn-left {
+			left: 0;
+		}
+		.scroll-btn-right {
+			right: 0;
 		}
 	}
 }

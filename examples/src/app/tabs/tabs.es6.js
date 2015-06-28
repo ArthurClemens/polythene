@@ -115,7 +115,6 @@ const longList = [
 	}
 ];
 
-
 const btn = function(group, name) {
     return m.component(iconBtn, {
         icon: {
@@ -231,13 +230,28 @@ const content = m('.demo-content', [
     }),
 
 	m.component(titleBlock, {
-        title: 'In toolbar and scrollable',
+        title: 'In toolbar and scrollable (small)',
         content: m('.tabArea.small.hasToolbar',
 			m.component(toolbar, {
 				mode: 'medium-tall',
 				topBar: toolbarRow,
 				bottomBar: m.component(tabs, {
 					class: 'demo-tabs small',
+					buttons: longList,
+					scrollable: true
+				})
+			})
+		)
+    }),
+
+	m.component(titleBlock, {
+        title: 'In toolbar and scrollable (desktop)',
+        content: m('.tabArea.hasToolbar',
+			m.component(toolbar, {
+				mode: 'medium-tall',
+				topBar: toolbarRow,
+				bottomBar: m.component(tabs, {
+					class: 'demo-tabs',
 					buttons: longList,
 					scrollable: true
 				})

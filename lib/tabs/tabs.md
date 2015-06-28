@@ -112,7 +112,7 @@ To use a fixed width without `autofit`:
 | **class** | optional | String |  | Extra CSS class appended to 'tabs' |
 | **buttons** | required | Array of options Objects |  | Tab buttons |
 | **autofit** | optional | Boolean | false | Set to true to let the buttons fill the button row |
-| **scrollable** | optional | Boolean | false | Set to true to make the button row scrollable; this automatically sets autofit to `false` |
+| **scrollable** | optional | Boolean | false | Set to true to make the button row scrollable; this automatically sets autofit to `false`; on no-touch devices 2 scrollbuttons will be added to navigate tabs |
 | **centered** | optional | Boolean | false | Set to true to center the button row; this automatically sets autofit to `false` |
 | **largestWidth** | optional | Boolean | false | Set to true to make all tabs the width of the largest tab |
 | **selectedTab** | optional | Number | 0 | The Array index of the selected tab |
@@ -164,5 +164,4 @@ These options can be grouped into `tabsOpts` and applied to all tabs.
 
 ## TODO
 
-* Scroll buttons for desktop
 * Tab with More dropdown menu
