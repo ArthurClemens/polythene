@@ -21,11 +21,11 @@ To use SVG instead of an image, pass an [svg](#svg) option object:
 		}
 	});
 
-Or pass `iconset` (sub folder) and filename (without `.svg`):
+Or pass `iconSet` (sub folder) and filename (without `.svg`):
 
 	const myIcon = m.component(icon, {
 		svg: {
-			iconset: 'mdi',
+			iconSet: 'mdi',
 		    name: 'emoticon-happy'
 		}
 	});
