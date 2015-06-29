@@ -6,81 +6,97 @@ import icon from 'polythene/icon/icon';
 import list from 'polythene/list/list';
 import listTile from 'polythene/list-tile/list-tile';
 import headerPanel from 'polythene/header-panel/header-panel';
+import nav from 'app/app/nav';
 import github from 'app/app/github';
 
 require('polythene-theme/theme');
 require('app/app/app.css!');
 require('./index.css!');
 
-let linkMap,
-    item,
-    content,
-    links;
-
-links = [{
+const links = [{
     label: 'Combined components',
     links: [{
-        url: 'header-panel',
+        url: 'header-panel.html',
+        config: null,
         name: 'Header Panel'
     }, {
-        url: 'infinite',
+        url: 'infinite.html',
+        config: null,
         name: 'Header Panel with infinite scroll'
     }, {
-        url: 'toolbar',
+        url: '/toolbar',
+        import: 'app/toolbar/toolbar',
         name: 'Toolbar'
     }, {
-        url: 'list',
+        url: '/list',
+        import: 'app/list/list',
         name: 'List'
     }]
 }, {
     label: 'Components',
     links: [{
-        url: 'card',
+        url: '/card',
+        import: 'app/card/card',
         name: 'Card'
     }, {
-        url: 'tabs',
+        url: '/tabs',
+        import: 'app/tabs/tabs',
         name: 'Tabs'
     }, {
-        url: 'button',
+        url: '/button',
+        import: 'app/button/button',
         name: 'Button'
     }, {
-        url: 'icon-button',
+        url: '/icon-button',
+        import: 'app/icon-button/icon-button',
         name: 'Icon Button'
     }, {
-        url: 'fab',
+        url: '/fab',
+        import: 'app/fab/fab',
         name: 'Floating Action Button'
     }, {
-        url: 'item',
+        url: '/item',
+        import: 'app/item/item',
         name: 'Item'
     }, {
-        url: 'list-tile',
+        url: '/list-tile',
+        import: 'app/list-tile/list-tile',
         name: 'List Tile'
     }]
 }, {
     label: 'Elementary components',
     links: [{
-        url: 'svg',
+        url: '/svg',
+        import: 'app/svg/svg',
         name: 'SVG'
     }, {
-        url: 'icon',
+        url: '/icon',
+        import: 'app/icon/icon',
         name: 'Icon'
     }, {
-        url: 'ripple',
+        url: '/ripple',
+        import: 'app/ripple/ripple',
         name: 'Ripple'
     }, {
-        url: 'shadow',
+        url: '/shadow',
+        import: 'app/shadow/shadow',
         name: 'Shadow'
+    }, {
+        url: '/element',
+        name: 'Element',
+        import: 'app/element/element',
+        hidden: true
     }]
 }];
 
-linkMap = {};
+let linkMap = {};
 _.forEach(_.flatten(_.pluck(links, 'links')), function(link) {
     linkMap[link.url] = link;
 });
 
-item = function(title, url) {
+const item = function(link) {
     return m.component(listTile, {
-        title: title,
+        title: link.name,
         icon: {
             type: 'medium',
             class: 'index-cirle-icon',
@@ -90,12 +106,13 @@ item = function(title, url) {
             }
         },
         url: {
-            href: url
+            href: link.url,
+            config: (link.config !== undefined) ? link.config : m.route
         }
     });
 };
 
-content = {
+const content = {
     view: function() {
         let minScale = 22 / 32;
         let onHeaderTransform = function(e) {
@@ -106,7 +123,7 @@ content = {
                 'scale(' + scale + ') translateZ(0)';
         };
 
-        return [
+        return m('.demo-content',
             m.component(headerPanel, {
                 class: 'app-header index-header',
                 mode: 'waterfall-tall',
@@ -125,26 +142,66 @@ content = {
                     }
                 },
                 content: [
-                    m('.demo-content',
-                        m('.index',
-                            m('.index-list', links.map(function(linkGroup) {
-                                return m.component(list, {
-                                    header: {
-                                        title: linkGroup.label,
-                                        indent: true
-                                    },
-                                    tiles: linkGroup.links.map(function(link) {
-                                        return item(link.name, link.url + '.html');
-                                    })
-                                });
-                            })))
-                        ),
+                    m('.index',
+                        m('.index-list', links.map(function(linkGroup) {
+                            return m.component(list, {
+                                header: {
+                                    title: linkGroup.label,
+                                    indent: true
+                                },
+                                tiles: linkGroup.links.map(function(link) {
+                                    return link.hidden ? null : item(link);
+                                })
+                            });
+                        }))
+                    ),
                     github
                 ],
                 transform: onHeaderTransform
             })
-        ];
+        );
     }
 };
 
-m.mount(document.body, content);
+let app = {};
+app.controller = () => {
+    let module = m.prop();
+    let loading = m.prop(false);
+
+    const link = linkMap[m.route()];
+    if (link) {
+        const importPath = link.import;
+        if (importPath) {
+            loading(true);
+            System.import(importPath).then(function(imported) {
+                loading(false);
+                module(imported);
+                m.redraw();
+            });
+        }
+    }
+    return {
+        module: module,
+        loading: loading
+    };
+};
+app.view = (ctrl) => {
+    if (ctrl.loading()) {
+        return {subtree: 'retain'};
+    }
+    const module = ctrl.module();
+    if (module) {
+        const name = linkMap[m.route()].name;
+        return nav(name, [
+            m('.demo-content', m.component(module)),
+            github
+        ]);
+    } else {
+        return m.component(content);
+    }
+};
+
+m.route.mode = 'hash';
+m.route(document.body, '/', {
+    '/:any...': app
+});

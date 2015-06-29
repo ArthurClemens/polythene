@@ -4,14 +4,7 @@ import m from 'mithril';
 import list from 'polythene/list/list';
 import listTile from 'polythene/list-tile/list-tile';
 import button from 'polythene/button/button';
-import nav from 'app/app/nav';
-import github from 'app/app/github';
-
-require('polythene-theme/theme');
-require('app/app/app.css!');
 require('./list.css!');
-
-const NAME = 'List';
 
 const titleLineText = 'Two-line item';
 const infoLineText = 'Secondary text';
@@ -204,102 +197,98 @@ const sortableList = {
     }
 };
 
-const content = m('.demo-content', [
+let module = {};
+module.view = () => {
+    return m('.module-list', [
 
-    m.component(titleBlock, {
-        title: 'Sorting a list',
-        content: sortableList
-    }),
+        m.component(titleBlock, {
+            title: 'Sorting a list',
+            content: sortableList
+        }),
 
-    m.component(titleBlock, {
-        title: 'No subheader',
-        content: m.component(list, {
-            class: 'demo-list',
-            tiles: exampleTiles
-        })
-    }),
-
-    m.component(titleBlock, {
-        title: 'Hoverable (not on touch device)',
-        content: m.component(list, {
-            class: 'demo-list',
-            tiles: exampleTiles,
-            hoverable: true
-        })
-    }),
-
-    m.component(titleBlock, {
-        title: 'Subheader',
-        content: m.component(list, {
-            class: 'demo-list',
-            header: {
-                title: 'Subheader'
-            },
-            tiles: exampleTiles
-        })
-    }),
-
-    m.component(titleBlock, {
-        title: 'Avatars',
-        content: m('div', [
-            exampleList(),
-            exampleList()
-        ])
-    }),
-
-    m.component(titleBlock, {
-        title: 'Avatars dark theme',
-        content: m('.dark-theme', [
-            exampleList({hoverable: true}),
-            exampleList({hoverable: true})
-        ])
-    }),
-
-    m.component(titleBlock, {
-        title: 'Bordered list items',
-        content: m.component(list, {
-            class: 'demo-list',
-            mode: 'bordered',
-            header: {
-                title: 'Subheader'
-            },
-            tiles: exampleTiles
-        })
-    }),
-
-    m.component(titleBlock, {
-        title: 'Bordered list items with avatars',
-        content: m('div', [
-            exampleList({
-                mode: 'bordered'
-            }),
-            exampleList({
-                mode: 'bordered'
+        m.component(titleBlock, {
+            title: 'No subheader',
+            content: m.component(list, {
+                class: 'demo-list',
+                tiles: exampleTiles
             })
-        ])
-    }),
+        }),
 
-    m.component(titleBlock, {
-        title: 'Indented borders and subheaders',
-        content: m('div', [
-            exampleList({
-                mode: 'bordered-indent',
-                indent: true
-            }),
-            exampleList({
-                mode: 'bordered-indent',
-                indent: true
+        m.component(titleBlock, {
+            title: 'Hoverable (not on touch device)',
+            content: m.component(list, {
+                class: 'demo-list',
+                tiles: exampleTiles,
+                hoverable: true
             })
-        ])
-    })
+        }),
 
-]);
+        m.component(titleBlock, {
+            title: 'Subheader',
+            content: m.component(list, {
+                class: 'demo-list',
+                header: {
+                    title: 'Subheader'
+                },
+                tiles: exampleTiles
+            })
+        }),
 
-let app = {};
-app.view = function() {
-    return [
-        nav(NAME, [content, github])
-    ];
+        m.component(titleBlock, {
+            title: 'Avatars',
+            content: m('div', [
+                exampleList(),
+                exampleList()
+            ])
+        }),
+
+        m.component(titleBlock, {
+            title: 'Avatars dark theme',
+            content: m('.dark-theme', [
+                exampleList({hoverable: true}),
+                exampleList({hoverable: true})
+            ])
+        }),
+
+        m.component(titleBlock, {
+            title: 'Bordered list items',
+            content: m.component(list, {
+                class: 'demo-list',
+                mode: 'bordered',
+                header: {
+                    title: 'Subheader'
+                },
+                tiles: exampleTiles
+            })
+        }),
+
+        m.component(titleBlock, {
+            title: 'Bordered list items with avatars',
+            content: m('div', [
+                exampleList({
+                    mode: 'bordered'
+                }),
+                exampleList({
+                    mode: 'bordered'
+                })
+            ])
+        }),
+
+        m.component(titleBlock, {
+            title: 'Indented borders and subheaders',
+            content: m('div', [
+                exampleList({
+                    mode: 'bordered-indent',
+                    indent: true
+                }),
+                exampleList({
+                    mode: 'bordered-indent',
+                    indent: true
+                })
+            ])
+        })
+
+    ]);
 };
 
-m.mount(document.body, app);
+export default module;

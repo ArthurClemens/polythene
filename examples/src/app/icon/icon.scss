@@ -1,13 +1,14 @@
+.module-icon {
+	.demo-icons {
+		font-size: 0;
+	}
+	.demo-icon {
+		display: inline-block;
+		font-size: 1rem;
+		color: orange;
 
-.demo-icons {
-	font-size: 0;
-}
-.demo-icon {
-	display: inline-block;
-	font-size: 1rem;
-	color: orange;
-
-	& + & {
-		margin: 0 0 0 10px;
+		& + & {
+			margin: 0 0 0 10px;
+		}
 	}
 }

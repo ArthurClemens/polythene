@@ -1,24 +1,26 @@
-.p-block .item {
-  &.big {
-    font-size: 30px;
-  }
-  &.small {
-    font-size: 14px;
-  }
-  &.contact-item {
-    height: 50px;
-    background-color: #efefef;
-    border: 1px solid #ddd;
-    width: 300px;
-    padding: 5px;
-    .icon svg {
-      fill: #222;
+.module-item {
+  .p-block .item {
+    &.big {
+      font-size: 30px;
     }
-    .name {
-      font-size: 1em;
+    &.small {
+      font-size: 14px;
     }
-    .address {
-      font-size: 0.6em;
+    &.contact-item {
+      height: 50px;
+      background-color: #efefef;
+      border: 1px solid #ddd;
+      width: 300px;
+      padding: 5px;
+      .icon svg {
+        fill: #222;
+      }
+      .name {
+        font-size: 1em;
+      }
+      .address {
+        font-size: 0.6em;
+      }
     }
   }
 }

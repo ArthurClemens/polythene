@@ -1,36 +1,37 @@
-
-.demo-icons {
-	font-size: 0;
-	height: 30px;
-}
-
-.demo-icon {
-	display: inline-block;
-	font-size: 1rem;
-	color: orange;
-
-	& + & {
-		margin: 0 0 0 10px;
+.module-svg {
+	.demo-icons {
+		font-size: 0;
+		height: 30px;
 	}
-}
 
-.p-block {
-	.demo-svg {
+	.demo-icon {
 		display: inline-block;
-		vertical-align: middle;
-		fill: currentcolor;
+		font-size: 1rem;
+		color: orange;
 
-		& + span {
-			margin-left: 5px;
+		& + & {
+			margin: 0 0 0 10px;
 		}
+	}
 
-		svg {
-			width: 24px;
-			height: 24px;
-		}
+	.p-block {
+		.demo-svg {
+			display: inline-block;
+			vertical-align: middle;
+			fill: currentcolor;
 
-		path:not([fill='none']) {
-		    fill: currentcolor;
+			& + span {
+				margin-left: 5px;
+			}
+
+			svg {
+				width: 24px;
+				height: 24px;
+			}
+
+			path:not([fill='none']) {
+			    fill: currentcolor;
+			}
 		}
 	}
 }

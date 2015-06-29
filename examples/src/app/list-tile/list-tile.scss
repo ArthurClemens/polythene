@@ -1,58 +1,60 @@
-.demo-list {
-  width: 480px;
-  background-color: pink;
-  &:not(.demo-no-zebra) > {
-    :nth-child(even) {
-      background-color: #f1f1f1;
+.module-list-tile {
+  .demo-list {
+    width: 480px;
+    background-color: pink;
+    &:not(.demo-no-zebra) > {
+      :nth-child(even) {
+        background-color: #f1f1f1;
+      }
+      :nth-child(odd) {
+        background-color: #e1e1e1;
+      }
     }
-    :nth-child(odd) {
-      background-color: #e1e1e1;
+    &.demo-bordered .list-tile {
+      border-bottom: 1px solid #ddd;
+      background-color: #fff;
+      &:first-child {
+        border-top: 1px solid #ddd;
+      }
+    }
+    .icon svg path {
+      fill: #757575;
     }
   }
-  &.demo-bordered .list-tile {
-    border-bottom: 1px solid #ddd;
-    background-color: #fff;
-    &:first-child {
-      border-top: 1px solid #ddd;
-    }
-  }
-  .icon svg path {
-    fill: #757575;
-  }
-}
 
 
-@media (max-width: 640px) {
-    .demo-list {
-        width: 320px;
-    }
-}
-
-.list-tile-secondary .icon svg path {
-  fill: #aaa;
-}
-
-.demo-list {
-  .icon.demo-cirle-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #B2B2B2;
-    i {
-      padding: 8px;
-    }
-    svg path {
-      fill: #fff;
-    }
+  @media (max-width: 640px) {
+      .demo-list {
+          width: 320px;
+      }
   }
-  .list-tile-info {
-    .demo-first, .demo-second {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+
+  .list-tile-secondary .icon svg path {
+    fill: #aaa;
   }
-  &.list.dark-theme {
-    background-color: #263238;
+
+  .demo-list {
+    .icon.demo-cirle-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #B2B2B2;
+      i {
+        padding: 8px;
+      }
+      svg path {
+        fill: #fff;
+      }
+    }
+    .list-tile-info {
+      .demo-first, .demo-second {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+    &.list.dark-theme {
+      background-color: #263238;
+    }
   }
 }

@@ -2,21 +2,9 @@
 
 import m from 'mithril';
 import shadow from 'polythene/shadow/shadow';
-import nav from 'app/app/nav';
-import github from 'app/app/github';
-
-require('polythene-theme/theme');
-require('app/app/app.css!');
 require('./shadow.css!');
 
-const NAME = 'Shadow';
-
-let app,
-    titleBlock,
-    interactiveShadow,
-    createContent;
-
-titleBlock = {
+const titleBlock = {
     view: function(ctrl, args) {
         return m('.p-block', [
             m('.p-block-header', args.title),
@@ -25,7 +13,7 @@ titleBlock = {
     }
 };
 
-interactiveShadow = {
+const interactiveShadow = {
     controller: function(args) {
         let STEPS = 5;
 
@@ -55,18 +43,20 @@ interactiveShadow = {
     }
 };
 
-createContent = function() {
-    let indices = [0, 1, 2, 3, 4, 5];
-    let tapItems = [{
-        id: 1,
-        class: 'shadow-card',
-        initZ: 1
-    }, {
-        id: 2,
-        class: 'shadow-fab',
-        initZ: 3
-    }];
-    return m('.demo-content', [
+const indices = [0, 1, 2, 3, 4, 5];
+const tapItems = [{
+    id: 1,
+    class: 'shadow-card',
+    initZ: 1
+}, {
+    id: 2,
+    class: 'shadow-fab',
+    initZ: 3
+}];
+
+let module = {};
+module.view = () => {
+    return m('.module-shadow', [
         m.component(titleBlock, {
             title: 'Shadows',
             content: m('div.layout.horizontal.wrap', [
@@ -97,11 +87,5 @@ createContent = function() {
     ]);
 };
 
-app = {};
-app.view = function() {
-    return [
-        nav(NAME, [createContent(), github])
-    ];
-};
+export default module;
 
-m.mount(document.body, app);

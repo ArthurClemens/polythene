@@ -3,18 +3,9 @@
 import m from 'mithril';
 import headerPanel from 'polythene/header-panel/header-panel';
 import iconBtn from 'polythene/icon-button/icon-button';
-
 require('./kitchensink.css!');
 
-let btn,
-    toolbarRow,
-    panel,
-    panelBlock,
-    content,
-    repeatText,
-    template;
-
-repeatText = function(text, count) {
+const repeatText = function(text, count) {
     let out = '';
     while (count > 0) {
         out += text;
@@ -23,13 +14,13 @@ repeatText = function(text, count) {
     return out;
 };
 
-template = [
+const template = [
     '<div class="demo-content">',
     repeatText('<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', 16),
     '</div>'
 ].join('');
 
-btn = function(group, name) {
+const btn = function(group, name) {
     return m.component(iconBtn, {
         icon: {
             svg: {
@@ -40,7 +31,7 @@ btn = function(group, name) {
     });
 };
 
-toolbarRow = function(title) {
+const toolbarRow = function(title) {
     return [
         btn('navigation', 'menu', '#'),
         m('span.flex', title),
@@ -48,15 +39,7 @@ toolbarRow = function(title) {
     ];
 };
 
-panel = {
-    view: function(ctrl, args) {
-        return m('.container', [
-            m.component(headerPanel, args.panel)
-        ]);
-    }
-};
-
-panelBlock = {
+const panelBlock = {
     view: function(ctrl, args) {
         return m('.p-block', [
             m('.p-block-header', args.title),
@@ -71,7 +54,7 @@ panelBlock = {
     }
 };
 
-content = m('.demo-content', [
+const content = m('.demo-content', [
     m.component(panelBlock, {
         title: 'Scroll modes',
         content: [{

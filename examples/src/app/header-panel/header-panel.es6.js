@@ -9,24 +9,13 @@ import iconBtn from 'polythene/icon-button/icon-button';
 import kitchensinkContent from './kitchensink';
 import nav from 'app/app/nav';
 import github from 'app/app/github';
-
 require('polythene-theme/theme');
 require('app/app/app.css!');
 require('./header-panel.css!');
 
 const NAME = 'Header Panel';
 
-let links,
-    linkMap,
-    routeMap,
-    item,
-    btn,
-    toolbarRow,
-    template,
-    repeatText,
-    createBottomBarTemplate;
-
-links = [{
+const links = [{
     label: 'Small header panels',
     links: [{
         url: 'kitchensink',
@@ -77,12 +66,12 @@ links = [{
     }]
 }];
 
-linkMap = {};
+let linkMap = {};
 _.forEach(_.flatten(_.pluck(links, 'links')), function(link) {
     linkMap[link.url] = link;
 });
 
-item = function(link) {
+const item = function(link) {
     return m.component(listTile, {
         title: link.name,
         icon: {
@@ -102,7 +91,7 @@ item = function(link) {
     });
 };
 
-repeatText = function(text, count) {
+const repeatText = function(text, count) {
     let out = '';
     while (count > 0) {
         out += text;
@@ -111,13 +100,13 @@ repeatText = function(text, count) {
     return out;
 };
 
-template = [
+const template = [
     '<div class="demo-content">',
     repeatText('<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', 16),
     '</div>'
 ].join('');
 
-createBottomBarTemplate = function(currentLink) {
+const createBottomBarTemplate = function(currentLink) {
     let text = '';
     if (currentLink.name) {
         text += currentLink.name;
@@ -129,7 +118,7 @@ createBottomBarTemplate = function(currentLink) {
     return m.trust('<div class="bottom indent title">' + text + '</div>');
 };
 
-btn = function(group, name, url) {
+const btn = function(group, name, url) {
     return m.component(iconBtn, {
         url: url ? {
             href: url,
@@ -144,7 +133,7 @@ btn = function(group, name, url) {
     });
 };
 
-toolbarRow = function(title) {
+const toolbarRow = function(title) {
     return [
         btn('navigation', 'arrow-back', '#'),
         m('span.flex', title),
@@ -170,7 +159,9 @@ index.view = function() {
             });
         }))),
         github
-    ]);
+    ], {
+        urlConfig: null
+    });
 };
 
 let kitchensink = {};
@@ -208,8 +199,8 @@ demo1.view = function() {
 
     onHeaderTransform = function(e) {
         let titleStyle = document.querySelector('.title').style;
-        let m = e.height - e.condensedHeight;
-        let scale = Math.max(minScale, (m - e.y) / (m / (1 - minScale)) + minScale);
+        let h = e.height - e.condensedHeight;
+        let scale = Math.max(minScale, (h - e.y) / (h / (1 - minScale)) + minScale);
         titleStyle.transform = titleStyle.webkitTransform =
             'scale(' + scale + ') translateZ(0)';
     };
@@ -439,7 +430,7 @@ background4.view = function() {
     }));
 };
 
-routeMap = {
+let routeMap = {
     '/': index
 };
 _.forEach(_.flatten(_.pluck(links, 'links')), function(link) {

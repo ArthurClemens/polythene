@@ -1,6 +1,6 @@
 @import "../../lib/polythene/theme/polythene/polythene";
 
-.demo-content {
+.module-tabs {
 	$_accentColor: #00bcd4;
 	$_mobileWidth: 320px;
 
@@ -60,7 +60,9 @@
 }
 
 @media (max-width: 480px) {
-	.tabArea {
-		margin: 0 -24px;
+	.module-tabs {
+		.tabArea {
+			margin: 0 -24px;
+		}
 	}
 }

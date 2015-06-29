@@ -3,29 +3,12 @@
 import m from 'mithril';
 import listTile from 'polythene/list-tile/list-tile';
 import icon from 'polythene/icon/icon';
-import nav from 'app/app/nav';
-import github from 'app/app/github';
-
-require('polythene-theme/theme');
-require('app/app/app.css!');
 require('./list-tile.css!');
 
-const NAME = 'List Tile';
+const titleLineText = 'Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco';
+const infoDoubleLineText = 'Secondary text Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 
-let app,
-    titleBlock,
-    titleLineText,
-    infoDoubleLineText,
-    urlListTile,
-    createFavoritesRow,
-    favorites,
-    content;
-
-titleLineText = 'Title line Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco';
-
-infoDoubleLineText = 'Secondary text Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
-
-titleBlock = {
+const titleBlock = {
     view: function(ctrl, args) {
         return m('.p-block', [
             m('.p-block-header', args.title),
@@ -35,7 +18,7 @@ titleBlock = {
     }
 };
 
-urlListTile = m.component(listTile, {
+const urlListTile = m.component(listTile, {
     title: 'Click to go to Toolbar',
     icon: {
         type: 'medium',
@@ -46,9 +29,8 @@ urlListTile = m.component(listTile, {
         }
     },
     url: {
-        href: 'toolbar.html',
-        target: '_blank',
-        config: null
+        href: '/toolbar',
+        config: m.route
     },
     secondary: {
         icon: {
@@ -65,7 +47,7 @@ urlListTile = m.component(listTile, {
     }
 });
 
-createFavoritesRow = (ctrl, opts = {}) => {
+const createFavoritesRow = (ctrl, opts = {}) => {
     return m.component(listTile, {
         title: (opts.favorited ? 'Starred!' : 'Click the star'),
         icon: {
@@ -93,7 +75,7 @@ createFavoritesRow = (ctrl, opts = {}) => {
     });
 };
 
-favorites = {
+const favorites = {
     controller: () => {
         return {
             items: [{
@@ -120,9 +102,9 @@ favorites = {
     }
 };
 
-content = [
-
-    m('.demo-content',
+let module = {};
+module.view = () => {
+    return m('.module-list-tile', [
 
         m('.p-block p-block-separate',
             m('p', 'List tiles with zebra stripes to show demarcations.')
@@ -709,14 +691,8 @@ content = [
             content: m.component(favorites)
         })
 
-    )
-];
-
-app = {};
-app.view = function() {
-    return [
-        nav(NAME, [content, github])
-    ];
+    ]);
 };
 
-m.mount(document.body, app);
+export default module;
+

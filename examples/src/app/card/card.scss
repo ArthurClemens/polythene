@@ -1,45 +1,47 @@
-.demo-cards {
-    margin: -10px;
-}
-.demo-card {
-    width: 400px;
-    margin: 10px;
-    :not(.overlay.dark-theme) .button .button-content {
-        color: #5C6BC0;
+.module-card {
+    .demo-cards {
+        margin: -10px;
     }
-    &:not(.small) .overlay .overlay-content {
-        background-color: rgba(0, 0, 0, 0.3);
-    }
-    &.small {
-        width: 170px;
-        .overlay {
-            background: none;
-        }
-    }
-}
-a[href].demo-card:hover .image-dimmer {
-    box-shadow: inset 0px 0px 40px rgba(0, 0, 0, 0.6);
-}
-.demo-card {
-    &.on .image-dimmer, &.small .image-dimmer {
-        box-shadow: inset 0px 0px 40px rgba(0, 0, 0, 0.6);
-    }
-    &.extra-large {
-        width: 360px;
-    }
-    &.custom {
-        width: 344px;
-        &.custom-travel .button .button-content {
+    .demo-card {
+        width: 400px;
+        margin: 10px;
+        :not(.overlay.dark-theme) .button .button-content {
             color: #5C6BC0;
         }
+        &:not(.small) .overlay .overlay-content {
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+        &.small {
+            width: 170px;
+            .overlay {
+                background: none;
+            }
+        }
     }
-    &.custom-sand {
-        background-color: #B89E58;
+    a[href].demo-card:hover .image-dimmer {
+        box-shadow: inset 0px 0px 40px rgba(0, 0, 0, 0.6);
     }
-    &.custom-sky {
-        background-color: #227586;
-    }
-    &.custom-bucket {
-        background-color: #871E6A;
+    .demo-card {
+        &.on .image-dimmer, &.small .image-dimmer {
+            box-shadow: inset 0px 0px 40px rgba(0, 0, 0, 0.6);
+        }
+        &.extra-large {
+            width: 360px;
+        }
+        &.custom {
+            width: 344px;
+            &.custom-travel .button .button-content {
+                color: #5C6BC0;
+            }
+        }
+        &.custom-sand {
+            background-color: #B89E58;
+        }
+        &.custom-sky {
+            background-color: #227586;
+        }
+        &.custom-bucket {
+            background-color: #871E6A;
+        }
     }
 }

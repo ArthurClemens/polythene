@@ -46,7 +46,8 @@ let app = {};
 app.view = function() {
     return [
         nav(NAME, [content], {
-            updateContentOnScroll: true
+            updateContentOnScroll: true,
+            urlConfig: null
         })
     ];
 };

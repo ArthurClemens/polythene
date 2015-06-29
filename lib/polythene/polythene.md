@@ -125,6 +125,7 @@ See the [main project page](https://github.com/ArthurClemens/Polythene).
 
 1. Dialog
 1. Menu
+1. Simple menu
 1. Grid list
 1. List: Control
 1. Toggle button

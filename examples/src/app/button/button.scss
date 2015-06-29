@@ -1,28 +1,30 @@
-.p-block.dark-theme {
-	background-color: #424242;
-	color: #fff;
-}
-.mainContainer {
-	background: #fff;
-}
-.p-block {
-	background: #eee;
-}
-.button-row {
-	margin-left: -4px;
-}
+.module-button {
+	.p-block.dark-theme {
+		background-color: #424242;
+		color: #fff;
+	}
+	.mainContainer {
+		background: #fff;
+	}
+	.p-block {
+		background: #eee;
+	}
+	.button-row {
+		margin-left: -4px;
+	}
 
-.p-block.custom-label .button:not([disabled]) .content span {
-	color: #2196f3;
-}
+	.p-block.custom-label .button:not([disabled]) .content .label {
+		color: #2196f3;
+	}
 
-.p-block.custom-bg .button:not([disabled]) .content {
-	background-color: #FF9800; /* orange 500 */
-	color: #fff;
-}
-.p-block.custom-bg .button:not([disabled]):hover .content {
-	background-color: #FB8C00; /* orange 600 */
-}
-.p-block.custom-bg .button:not([disabled]):active .content {
-	background-color: #F57C00; /* orange 700 */
+	.p-block.custom-bg .button:not([disabled]) .content {
+		background-color: #FF9800; /* orange 500 */
+		color: #fff;
+	}
+	.p-block.custom-bg .button:not([disabled]):hover .content {
+		background-color: #FB8C00; /* orange 600 */
+	}
+	.p-block.custom-bg .button:not([disabled]):active .content {
+		background-color: #F57C00; /* orange 700 */
+	}
 }

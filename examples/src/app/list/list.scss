@@ -1,30 +1,32 @@
-.p-block {
-  background: none;
-  width: 320px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0;
-}
-
-.demo-list {
-  width: 100%;
-  background-color: #fff;
-}
-
-.dark-theme .demo-list.list {
-  background-color: #1A237E;
-}
-
-.sortable-list {
-  a {
-    cursor: pointer;
+.module-list {
+  .p-block {
+    background: none;
+    width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
   }
-  .controls-row {
-    padding: 0 16px;
-    border-bottom: 1px solid #eee;
+
+  .demo-list {
+    width: 100%;
+    background-color: #fff;
   }
-  .controls {
-    margin-left: -8px;
-    margin-right: -8px;
+
+  .dark-theme .demo-list.list {
+    background-color: #1A237E;
+  }
+
+  .sortable-list {
+    a {
+      cursor: pointer;
+    }
+    .controls-row {
+      padding: 0 16px;
+      border-bottom: 1px solid #eee;
+    }
+    .controls {
+      margin-left: -8px;
+      margin-right: -8px;
+    }
   }
 }
