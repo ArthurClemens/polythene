@@ -1,3 +1,5 @@
+@import "../app/variables";
+
 .module-ripple {
 	.demo-button + .demo-button {
 	    margin-left: 20px;
@@ -19,5 +21,15 @@
 	.p-block.dark-theme {
 		background-color: #424242;
 		color: #fff;
+	}
+}
+
+
+@media (max-width: $media_mobile) {
+	.module-ripple {
+	    .toolbar {
+	    	margin-left: -$margin;
+	    	margin-right: -$margin;
+	    }
 	}
 }

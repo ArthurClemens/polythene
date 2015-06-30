@@ -1,8 +1,8 @@
+@import "../app/variables";
 @import "../../lib/polythene/theme/polythene/polythene";
 
 .module-tabs {
 	$_accentColor: #00bcd4;
-	$_mobileWidth: 320px;
 
 	.tabs {
 		.tab.selected {
@@ -11,25 +11,29 @@
 		.tabIndicator {
 			background-color: $_accentColor;
 		}
+		&.dark-theme {
+		    background-color: #263238;
+		    color: #fff;
+		}
 	}
+
 	.tabArea {
 		background-color: #FAFAFA;
 		padding-top: 24px;
 
-		&.hasToolbar {
-			padding-top: 0;
+		&.small {
+			max-width: $list_width;
+		}
 
-			.demo-tabs.small {
+		&.hasToolbar {
+			.demo-tabs {
 				border-bottom: 0;
 			}
 		}
-
-		&.small {
-			width: $_mobileWidth;
-		}
 	}
+
 	.demo-tabs.small {
-		width: $_mobileWidth;
+		max-width: $list_width;
 		border-bottom: 1px solid #D2D2D2;
 		@include hairline("border-bottom");
 	}
@@ -59,10 +63,27 @@
 	}
 }
 
-@media (max-width: 480px) {
+@media (max-width: $media_tablet) {
 	.module-tabs {
-		.tabArea {
-			margin: 0 -24px;
-		}
+	    .p-block {
+	        max-width: 480px;
+			margin-left: auto;
+			margin-right: auto;
+	    }
+	}
+}
+
+@media (max-width: $media_mobile) {
+	.module-tabs {
+	    .p-block {
+	        max-width: $list_width;
+			margin-left: auto;
+			margin-right: auto;
+
+			.tabArea {
+				margin-left: -$margin;
+				margin-right: -$margin;
+			}
+	    }
 	}
 }

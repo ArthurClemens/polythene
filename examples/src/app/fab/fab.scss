@@ -1,26 +1,25 @@
 .module-fab {
-  .fab.demo-fab {
-    background: #2196F3;
-    color: #fff;
-    svg path {
-      fill: #fff;
+    .fab.demo-fab {
+        background: #2196F3;
+        color: #fff;
+        svg path {
+            fill: #fff;
+        }
+        &.green {
+            background: #00C853;
+            color: #fff;
+        }
+        &.red {
+            background: #F44336;
+            color: #fff;
+        }
+        &.mini {
+            display: inline-block;
+            margin: 0 20px 0 0;
+        }
     }
-    &.green {
-      background: #00C853;
-      color: #fff;
+    .p-block.dark-theme {
+        background-color: #424242;
+        color: #fff;
     }
-    &.red {
-      background: #F44336;
-      color: #fff;
-    }
-    &.mini {
-      display: inline-block;
-      margin: 0 20px 0 0;
-    }
-  }
-
-  .p-block.dark-theme {
-    background-color: #424242;
-    color: #fff;
-  }
 }

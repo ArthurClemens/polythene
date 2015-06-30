@@ -3,6 +3,7 @@
 import m from 'mithril';
 import toolbar from 'polythene/toolbar/toolbar';
 import iconBtn from 'polythene/icon-button/icon-button';
+require('./toolbar.css!');
 
 const btn = function(group, name) {
     return m.component(iconBtn, {

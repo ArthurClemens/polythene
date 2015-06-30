@@ -143,9 +143,9 @@ module.view = () => {
 
         m.component(titleBlock, {
             title: 'Default (no autofit)',
-            content: m('.tabArea.small',
+            content: m('.tabArea',
                 m.component(tabs, {
-                    class: 'demo-tabs small',
+                    class: 'demo-tabs',
                     buttons: threeButtons
                 })
             )
@@ -153,9 +153,9 @@ module.view = () => {
 
         m.component(titleBlock, {
             title: 'Autofit',
-            content: m('.tabArea.small',
+            content: m('.tabArea',
                 m.component(tabs, {
-                    class: 'demo-tabs small',
+                    class: 'demo-tabs',
                     buttons: threeButtons,
                     autofit: true
                 })
@@ -164,9 +164,9 @@ module.view = () => {
 
         m.component(titleBlock, {
             title: 'Centered (auto width)',
-            content: m('.tabArea.small',
+            content: m('.tabArea',
                 m.component(tabs, {
-                    class: 'demo-tabs small',
+                    class: 'demo-tabs',
                     buttons: threeButtons,
                     centered: true,
                     autofit: false
@@ -199,9 +199,9 @@ module.view = () => {
 
         m.component(titleBlock, {
             title: 'Preselected tab',
-            content: m('.tabArea.small',
+            content: m('.tabArea',
                 m.component(tabs, {
-                    class: 'demo-tabs small',
+                    class: 'demo-tabs',
                     buttons: threeButtons,
                     autofit: true,
                     selectedTab: 1
@@ -211,7 +211,7 @@ module.view = () => {
 
         m.component(titleBlock, {
             title: 'In toolbar',
-            content: m('div',
+            content: m('.tabArea.hasToolbar',
                 m.component(toolbar, {
                     mode: 'medium-tall',
                     topBar: toolbarRow,

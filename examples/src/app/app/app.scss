@@ -1,6 +1,4 @@
-$margin: 20px;
-$list_width: 400px;
-$block_max_width: 720px;
+@import "variables";
 
 html, body {
     min-height: 100%;
@@ -27,9 +25,11 @@ h1 {
 h1, h2 {
     color: #37474F;
 }
+/*
 .app {
     height: 100%;
 }
+*/
 .header-panel.app-header {
     > .outerContainer > .headerContainer:first-of-type {
         > .toolbar {
@@ -89,17 +89,6 @@ h1, h2 {
     max-width: $block_max_width;
     margin: $margin auto;
     padding: 24px;
-}
-
-@media (max-width: ($block_max_width + 2 * $margin)) {
-    .p-block {
-        margin: $margin;
-    }
-}
-@media (max-width: $list_width + 2 * $margin) {
-    .index-list {
-        margin: $margin;
-    }
 }
 
 .p-block-separate {
@@ -201,19 +190,6 @@ a {
 }
 
 .p-block {
-    .toolbar {
-        background-color: #BBDEFB;
-        /*color: #222;*/
-        margin: 0 0 20px 0;
-    }
-    .toolbar.dark-theme,
-    .tabs.dark-theme {
-        background-color: #263238;
-        color: #fff;
-    }
-    .toolbar {
-        margin: 10px 0 0 0;
-    }
     .secondary {
     	color: #aaa;
     }
@@ -226,14 +202,28 @@ code {
     margin: 24px 0 0 0;
     text-align: center;
     padding: 24px 16px;
-    border-top: 1px solid rgba(0,0,0,.1);
+    border-top: 1px solid rgba(0,0,0,.08);
     font-size: 14px;
-    color: rgba(0,0,0,.4);
+    color: rgba(0,0,0,.35);
 
 }
 
-@media (max-width: 480px) {
+
+@media (max-width: $media_tablet) {
     .p-block {
-        margin: 0;
+        margin: $margin 0;
+        padding: 16px;
+    }
+}
+
+@media (max-width: $media_mobile) {
+    .p-block {
+        margin: $margin 0;
+    }
+    .p-block .p-block-header {
+        margin: 0 0 16px 0;
+    }
+    .index-list {
+        margin: $margin 0;
     }
 }
