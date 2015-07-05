@@ -15,6 +15,7 @@
     outline: none;
     cursor: pointer;
     @include user-select-none;
+    border: none;
     border-radius: $buttonBorderRadius;
 
     @import "button-effects";
