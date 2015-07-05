@@ -28,6 +28,9 @@
         &.extra-large {
             width: 360px;
         }
+        &.dark-theme {
+            background-color: #222;
+        }
         &.custom {
             width: 344px;
             &.custom-travel .button .button-content {

@@ -827,6 +827,29 @@ module.view = () => {
         }),
 
         m.component(block, {
+            label: 'Dark theme',
+            card: {
+                class: 'demo-card dark-theme',
+                content: [{
+                    media: {
+                        content: m('img', {
+                            src: IMG_URL + 'grey.jpg'
+                        })
+                    }
+                }, {
+                    primary: {
+                        title: 'Primary title ' + shortIpsum,
+                        subtitle: 'Subtitle ' + shortIpsum
+                    }
+                }, {
+                    text: {
+                        content: ipsum
+                    }
+                }]
+            }
+        }),
+
+        m.component(block, {
             label: 'Custom cards',
             cards: [{
                 class: 'demo-card custom custom-travel',
