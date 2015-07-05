@@ -1,6 +1,6 @@
 # Icon Button
 
-<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/icon-button.html">Demo</a>
+<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/index.html#/icon-button">Demo</a>
 
 Displays an [icon](#icon) as a button.
 

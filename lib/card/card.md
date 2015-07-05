@@ -1,6 +1,6 @@
 # Card
 
-<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/card.html">Demo</a>
+<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/index.html#/card">Demo</a>
 
 Displays a small piece of "summary" content - a photo, text, a link - about a single subject, as trigger to more detailed information.
 

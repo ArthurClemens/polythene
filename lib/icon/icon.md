@@ -1,6 +1,6 @@
 # Icon
 
-<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/icon.html">Demo</a>
+<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/index.html#/icon">Demo</a>
 
 Displays an icon (image or [SVG](#svg)) as a 24px (but configurable) square. 
 

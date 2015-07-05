@@ -1,6 +1,6 @@
 # Ripple
 
-<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/ripple.html">Demo</a>
+<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/index.html#/ripple">Demo</a>
 
 Adds a touch ripple effect to an element.
 

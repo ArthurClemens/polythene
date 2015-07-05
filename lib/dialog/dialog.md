@@ -1,5 +1,7 @@
 # Dialog
 
+<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/index.html#/dialog">Demo</a>
+
 Displays a dialog.
 
 
