@@ -46,6 +46,9 @@ links = [{
     }, {
         url: 'list',
         name: 'List'
+    }, {
+        url: 'dialog',
+        name: 'Dialog'
     }]
 }, {
     label: 'Components',

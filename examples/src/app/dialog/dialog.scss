@@ -1,0 +1,23 @@
+.demo-dialog {
+
+	.dialog-content {
+		max-width: 56px * 8;
+	}
+	p {
+		margin: 0;
+	}
+	.dialog-footer {
+		.button:not([disabled]) {
+			color: #009688;
+		}
+		.button.disabled {
+			color: #ccc;
+		}
+	}
+
+	&.dark-theme {
+		.dialog-content {
+			background-color: #222;
+		}
+	}
+}

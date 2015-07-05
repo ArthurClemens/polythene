@@ -31,6 +31,10 @@ const links = [{
         url: '/list',
         import: 'app/list/list',
         name: 'List'
+    }, {
+        url: '/dialog',
+        import: 'app/dialog/dialog',
+        name: 'Dialog'
     }]
 }, {
     label: 'Components',
@@ -163,6 +167,8 @@ const content = {
     }
 };
 
+window.dialog = null;
+
 let app = {};
 app.controller = () => {
     let module = m.prop();
@@ -192,10 +198,13 @@ app.view = (ctrl) => {
     const module = ctrl.module();
     if (module) {
         const name = linkMap[m.route()].name;
-        return nav(name, [
-            m('.demo-content', m.component(module)),
-            github
-        ]);
+        return [
+            window.dialog ? window.dialog.call() : null,
+            nav(name, [
+                m('.demo-content', m.component(module)),
+                github
+            ])
+        ];
     } else {
         return m.component(content);
     }
