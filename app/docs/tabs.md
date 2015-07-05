@@ -1,7 +1,7 @@
 
 # Tabs
 
-<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/tabs.html">Demo</a>
+<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/index.html#/tabs">Demo</a>
 
 Displays a tab row.
 

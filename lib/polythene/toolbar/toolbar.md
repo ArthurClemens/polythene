@@ -1,6 +1,6 @@
 # Toolbar
 
-<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/toolbar.html">Demo</a>
+<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/index.html#/toolbar">Demo</a>
 
 Displays a horizontal bar containing a label and action items. One toolbar can have 1 to 3 horizontal bars.
 
