@@ -14,7 +14,7 @@ $grid_unit_px: 4px;
 $component_grid_unit: 8;
 $component_grid_unit_px: 8px;
 
-$line_height: 1.3em;
+$lineHeight: 1.3em;
 
 $buttonSize:     6 * $component_grid_unit_px; // 48
 $iconSizeLarge:  5 * $component_grid_unit_px; // 40
@@ -91,11 +91,12 @@ $fontSizeTitle: 20px;
 }
 
 @mixin hairline($which) {
-	#{$which}-width: 1px;
-	
-	@media screen and (min-resolution: 2dppx) {
-		#{$which}-width: 0.5px;
-	}
+// does not work in Chrome
+
+// #{$which}-width: 1px;
+// @media screen and (min-resolution: 2dppx) {
+//     #{$which}-width: 0.5px;
+// }
 }
 
 @mixin font-smoothing($value: on) {

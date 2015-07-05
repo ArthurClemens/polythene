@@ -118,7 +118,7 @@
 
             .list-tile-title {
                 padding: 0;
-                line-height: $line_height;
+                line-height: $lineHeight;
             }
         }
     }
@@ -140,7 +140,7 @@
 
             .list-tile-title {
                 padding: 0;
-                line-height: $line_height;
+                line-height: $lineHeight;
             }
         }
     }
@@ -180,13 +180,13 @@
 
     .list-tile-info {
         font-size: 14px;
-        line-height: $line_height;
-        max-height: $line_height;
+        line-height: $lineHeight;
+        max-height: $lineHeight;
         @include single-line;
 
         &.list-tile-double-info {
-            height: 2 * $line_height;
-            max-height: 2 * $line_height;
+            height: 2 * $lineHeight;
+            max-height: 2 * $lineHeight;
             white-space: normal;
         }
     }
