@@ -29,7 +29,7 @@ links = [{
         url: 'polythene',
         name: 'Introduction',
         title: defaultTitle,
-        demo: 'index'
+        demo: 'http://arthurclemens.github.io/Polythene-Examples/index.html'
     }, {
         url: 'theme',
         name: 'Appearance / Theming',
@@ -39,55 +39,70 @@ links = [{
     label: 'Combined components',
     links: [{
         url: 'header-panel',
-        name: 'Header Panel'
+        name: 'Header Panel',
+        demo: 'http://arthurclemens.github.io/Polythene-Examples/header-panel.html'
     }, {
         url: 'toolbar',
-        name: 'Toolbar'
+        name: 'Toolbar',
+        demo: 'http://arthurclemens.github.io/Polythene-Examples/index.html#/toolbar'
     }, {
         url: 'list',
-        name: 'List'
+        name: 'List',
+        demo: 'http://arthurclemens.github.io/Polythene-Examples/index.html#/list'
     }, {
         url: 'dialog',
-        name: 'Dialog'
+        name: 'Dialog',
+        demo: 'http://arthurclemens.github.io/Polythene-Examples/index.html#/dialog'
     }]
 }, {
     label: 'Components',
     links: [{
         url: 'card',
-        name: 'Card'
+        name: 'Card',
+        demo: 'http://arthurclemens.github.io/Polythene-Examples/index.html#/card'
     }, {
         url: 'tabs',
-        name: 'Tabs'
+        name: 'Tabs',
+        demo: 'http://arthurclemens.github.io/Polythene-Examples/index.html#/tabs'
     }, {
         url: 'button',
-        name: 'Button'
+        name: 'Button',
+        demo: 'http://arthurclemens.github.io/Polythene-Examples/index.html#/button'
     }, {
         url: 'icon-button',
-        name: 'Icon Button'
+        name: 'Icon Button',
+        demo: 'http://arthurclemens.github.io/Polythene-Examples/index.html#/icon-button'
     }, {
         url: 'fab',
-        name: 'Floating Action Button'
+        name: 'Floating Action Button',
+        demo: 'http://arthurclemens.github.io/Polythene-Examples/index.html#/fab'
     }, {
         url: 'item',
-        name: 'Item'
+        name: 'Item',
+        demo: 'http://arthurclemens.github.io/Polythene-Examples/index.html#/item'
     }, {
         url: 'list-tile',
-        name: 'List Tile'
+        name: 'List Tile',
+        demo: 'http://arthurclemens.github.io/Polythene-Examples/index.html#/list-tile'
     }]
 }, {
     label: 'Elementary components',
     links: [{
         url: 'svg',
-        name: 'SVG'
+        name: 'SVG',
+        demo: 'http://arthurclemens.github.io/Polythene-Examples/index.html#/svg'
     }, {
         url: 'icon',
-        name: 'Icon'
+        name: 'Icon',
+        demo: 'http://arthurclemens.github.io/Polythene-Examples/index.html#/icon'
     }, {
         url: 'ripple',
-        name: 'Ripple'
+        name: 'Ripple',
+        demo: 'http://arthurclemens.github.io/Polythene-Examples/index.html#/ripple'
     }, {
         url: 'shadow',
-        name: 'Shadow'
+        name: 'Shadow',
+        demo: 'http://arthurclemens.github.io/Polythene-Examples/index.html#/shadow'
     }, {
         url: 'element',
         name: 'Element',
@@ -150,15 +165,14 @@ createDrawer = function() {
 };
 
 main = function(currentLinkData, content) {
-    var title, id, parsed, url, urlId, demoCard, demoCardSubtitle = null;
+    var title, id, parsed, url, demoCard, demoCardSubtitle = null;
     title = currentLinkData.name;
     id = currentLinkData.url;
     parsed = content ? marked(content) : '';
 
     if (currentLinkData.demo !== null) {
-        urlId = currentLinkData.demo || id;
         url = {
-            href: 'http://arthurclemens.github.io/Polythene-Examples/' + urlId + '.html',
+            href: currentLinkData.demo,
             target: '_blank'
         };
         demoCardSubtitle = (id === 'polythene') ? 'All components' : title;
