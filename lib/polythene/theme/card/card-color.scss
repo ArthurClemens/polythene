@@ -26,15 +26,9 @@
 
 .card {
 	@include _theme("light", "card");
-
-    &.dark-theme,
-    .dark-theme {
-        @include _theme("dark", "card");
-    }
 }
 
-.dark-theme {
-    .card {
-    	@include _theme("dark", "card");
-    }
+.card.dark-theme,
+.dark-theme .card {
+	@include _theme("dark", "card");
 }

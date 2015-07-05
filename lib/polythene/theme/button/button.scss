@@ -15,9 +15,10 @@
     outline: none;
     cursor: pointer;
     @include user-select-none;
+    border: none;
     border-radius: $buttonBorderRadius;
 
-    @import "../button/button-effects";
+    @import "button-effects";
 
     .content {
         height: $buttonHeight;

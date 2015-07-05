@@ -1,0 +1,91 @@
+@import "../polythene/polythene";
+
+.dialog {
+	$_padding: 24px;
+	$_header_bottom: 20px;
+	$_border_radius: 2px;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    opacity: 0;
+    transition-property: opacity;
+    transition-timing-function: ease-in-out;
+    // duration set in js
+    height: 100%;
+    padding: $_padding 40px;
+
+    .dialog-content {
+    	position: relative;
+    	max-height: 100%;
+    	min-width: 56px * 5;
+    	border-radius: $_border_radius;
+    }
+
+	.dialog-header {
+		padding: ($_padding - 4) $_padding ($_header_bottom - 4) $_padding;
+		min-height: 60px;
+
+		> .title {
+			font-size: $fontSizeTitle;
+			line-height: 24px;
+			font-weight: 500;
+			@include single-line;
+	        display: block;
+	    }
+	}
+
+	.dialog-body {
+		padding: $_padding;
+		overflow-y: scroll;
+		-webkit-overflow-scrolling: touch;
+		border-width: 0;
+	}
+
+	&.topOverflow .dialog-body,
+	&.bottomOverflow .dialog-body {
+		border-width: 1px;
+	}
+	&.topOverflow .dialog-body {
+		border-top-style: solid;
+		@include hairline("border-top");
+	}
+	&.bottomOverflow .dialog-body {
+		border-bottom-style: solid;
+		@include hairline("border-bottom");
+	}
+
+	.dialog-header + .dialog-body {
+		padding-top: 0;
+	}
+
+	.dialog-footer {
+		$_padding: 8px;
+
+		padding: $_padding;
+		min-height: 52px;
+		font-size: 0; // remove inline block spacing
+
+		.button {
+			height: 36px;
+			padding: 0;
+
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+	}
+	
+}
+
+.dialog-open body {
+	overflow: hidden;
+	left: 0;
+    -webkit-overflow-scrolling: touch;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}

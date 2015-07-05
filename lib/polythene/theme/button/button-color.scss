@@ -8,7 +8,7 @@
 	.content {
 	    background-color: theme($tint, $element, $depth, "normal", "background");
 	}
-	[disabled] {
+	&[disabled] {
 		color: theme($tint, $element, $depth, "disabled", "color");
 		
 	    .content {

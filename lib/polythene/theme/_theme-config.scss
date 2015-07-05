@@ -116,6 +116,21 @@ $themeConfig: (
         list-tile: (
             header: $lightPrimaryTextColor,
             subheader: $lightTertiaryTextColor,
+        ),
+        dialog: (
+            content: (
+                background: #fff
+            ),
+            title: (
+                color: $lightPrimaryTextColor
+            ),
+            body: (
+                color: $lightTextColor,
+                border: $lightBorderColor
+            ),
+            backdrop: (
+                background: rgba(0, 0, 0, .5)
+            )
         )
     ),
     dark: (
@@ -204,6 +219,21 @@ $themeConfig: (
         list-tile: (
             header: $darkPrimaryTextColor,
             subheader: $darkTertiaryTextColor
+        ),
+        dialog: (
+            content: (
+                background: #222
+            ),
+            title: (
+                color: $darkPrimaryTextColor
+            ),
+            body: (
+                color: $darkTextColor,
+                border: $darkBorderColor
+            ),
+            backdrop: (
+                background: rgba(0, 0, 0, .5)
+            )
         )
     )
 );
