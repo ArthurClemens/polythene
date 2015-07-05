@@ -104,9 +104,9 @@ h1, h2 {
     font-size: 1.2em;
 }
 .p-block .p-block-header {
-    font-weight: 500;
+    font-weight: 400;
     margin: 0 0 24px 0;
-    font-size: 21px;
+    font-size: 20px;
     color: #333;
 }
 .p-block.dark-theme .p-block-header {
@@ -212,7 +212,7 @@ code {
 @media (max-width: $media_tablet) {
     .p-block {
         margin: $margin 0;
-        padding: 16px;
+        padding: 24px 16px;
     }
 }
 
