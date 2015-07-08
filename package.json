@@ -18,7 +18,7 @@
   },
   "scripts": {
     "install-mdif": "mkdir -p external_modules && cd external_modules && git clone git@github.com:zavoloklom/material-design-iconic-font.git",
-    "copy-mdif": "mkdir -p lib/deps/material-design-iconic-font/css && cp external_modules/material-design-iconic-font/css/* lib/deps/material-design-iconic-font/css/ && mkdir -p lib/deps/material-design-iconic-font/fonts && cp external_modules/material-design-iconic-font/fonts/* lib/deps/material-design-iconic-font/fonts/ && mkdir -p lib/deps/svg/material-design-iconic-font && cp -R external_modules/material-design-iconic-font/svg/* lib/deps/svg/material-design-iconic-font/",
+    "copy-mdif": "mkdir -p lib/deps/material-design-iconic-font/css && cp external_modules/material-design-iconic-font/dist/css/* lib/deps/material-design-iconic-font/css/ && mkdir -p lib/deps/material-design-iconic-font/fonts && cp external_modules/material-design-iconic-font/dist/fonts/* lib/deps/material-design-iconic-font/fonts/ && mkdir -p lib/deps/svg/material-design-iconic-font && cp -R external_modules/material-design-iconic-font/svg/* lib/deps/svg/material-design-iconic-font/",
     "install-mdi": "mkdir -p external_modules && cd external_modules && git clone git://github.com/Templarian/MaterialDesign",
     "copy-mdi": "mkdir -p lib/deps/svg/mdi && cp -R external_modules/MaterialDesign/icons/svg/* lib/deps/svg/mdi/",
     "copy-material-colors": "mkdir -p lib/deps/material-colors/ && cp node_modules/material-colors/dist/colors.scss lib/deps/material-colors/",
