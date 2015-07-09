@@ -5,10 +5,11 @@
   "license": "MIT",
   "main": "",
   "directories": {},
-  "dependencies": {},
+  "dependencies": {
+    "material-colors": ""
+  },
   "devDependencies": {
     "mithril": "^0.2.0",
-    "material-colors": "",
     "autoprefixer": "",
     "clean-css": "",
     "uglify-js": "",
