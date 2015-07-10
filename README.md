@@ -4,7 +4,7 @@
 
 Modular implementation of Material Design for [Mithril](http://lhorie.github.io/mithril). 
 
-Version 0.0.9
+Version 0.0.10
 
 
 * [Examples](http://arthurclemens.github.io/Polythene-Examples/index.html)
