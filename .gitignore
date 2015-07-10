@@ -1,9 +1,7 @@
 node_modules
 external_modules
 build
-*.js
 !*.es6.js
-*.css
 docs/src/app/docs
 docs/src/lib
 examples/src/lib
