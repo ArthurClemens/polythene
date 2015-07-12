@@ -86,7 +86,7 @@ execute(cmds.join(' '));
 
 var builder = new Builder({
     'baseURL': 'src',
-    'transpiler': 'babel',
+    'defaultJSExtensions': true,
     'paths': {
         '*': '*.js',
         '*.css': '*.css',
@@ -95,6 +95,7 @@ var builder = new Builder({
     'map': {
         'lodash': 'lib/lodash/lodash.min',
         'mithril': 'lib/mithril/mithril.min',
+        'mithril-infinite': 'lib/mithril-infinite/mithril-infinite',
         'polythene': 'lib/polythene',
         'polythene-theme': 'lib/polythene/theme',
         'css': 'lib/system-css/css',

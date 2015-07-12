@@ -64,7 +64,7 @@ filesToMinify.map(function(file) {
 
 var builder = new Builder({
     'baseURL': 'src',
-    'transpiler': 'babel',
+    'defaultJSExtensions': true,
     'paths': {
         '*': '*.js',
         '*.css': '*.css',

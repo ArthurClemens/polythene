@@ -43,8 +43,8 @@ copy('mithril', [
 ]);
 
 copy('mithril-infinite', [
-    'node_modules/mithril-infinite/lib/infinite.es6.js',
-    'node_modules/mithril-infinite/lib/infinite.scss'
+    'node_modules/mithril-infinite/lib/mithril-infinite.es6.js',
+    'node_modules/mithril-infinite/lib/mithril-infinite.scss'
 ]);
 
 copy('lodash', [

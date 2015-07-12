@@ -1,6 +1,6 @@
 System.config({
+    'defaultJSExtensions': true,
     'baseURL': '.',
-    'transpiler': 'babel',
     'paths': {
         '*': '*.js',
         '*.css': '*.css',
@@ -9,7 +9,7 @@ System.config({
     'map': {
         'lodash': 'lib/lodash/lodash.min',
         'mithril': 'lib/mithril/mithril.min',
-        'mithril-infinite': 'lib/mithril-infinite/infinite',
+        'mithril-infinite': 'lib/mithril-infinite/mithril-infinite',
         'verge': 'lib/verge/verge.min',
         'polythene': 'lib/polythene',
         'polythene-theme': 'lib/polythene/theme',
