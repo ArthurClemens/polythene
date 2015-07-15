@@ -96,16 +96,18 @@ But this causes the dialog to disappear abruptly. A quick fade out gives a much 
 
 We use parameter function `shouldHide` that returns a boolean. If this returns `true`, the default dialog hide function is invoked (that uses a fade out):
 
-	const modalDialog = () => {
-        return m.component(dialog, {
-            body: 'Discard draft?',
-            footer: footerButtons,
-            modal: true,
-            backdrop: true,
-            shouldHide: () => {
-                return window.dialog.hide;
-            }
-        });
+	const modalDialog = {
+        view: () => {
+	        return m.component(dialog, {
+	            body: 'Discard draft?',
+	            footer: footerButtons,
+	            modal: true,
+	            backdrop: true,
+	            shouldHide: () => {
+	                return window.dialog.hide;
+	            }
+	        });
+	    }
     };
 
 Here we use a second global variable (again this can be any variable as long as it is accessible to both the modal component caller and the closing event emitter). The Cancel button comes first to mind:
@@ -136,17 +138,19 @@ So on Cancel:
 
 After fading out, param callback function `didHide` is called. Now we can nullify the global dialog variable:
 
-	const modalDialog = () => {
-        return m.component(dialog, {
-            ...
-            shouldHide: () => {
-                return window.dialog.hide;
-            },
-            didHide: () => {
-                window.dialog = null;
-                m.redraw(); // remove dialog from app.view
-            }
-        });
+	const modalDialog = {
+        view: () => {
+	        return m.component(dialog, {
+	            ...
+	            shouldHide: () => {
+	                return window.dialog.hide;
+	            },
+	            didHide: () => {
+	                window.dialog = null;
+	                m.redraw(); // remove dialog from app.view
+	            }
+	        });
+	    }
     };
 
 
