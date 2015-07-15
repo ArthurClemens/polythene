@@ -51,7 +51,7 @@ To not be limited to one specific component, we need to use a variable that othe
 
 	app.view = (ctrl) => {
         return [
-        	window.dialog ? window.dialog.call() : null,
+        	window.dialog ? window.dialog : null,
         	content
         ];
 	};
@@ -67,16 +67,18 @@ Now we can have a button somewhere deeply nested in the app:
         }
     });
 
-	const modalDialog = () => {
-        return m.component(dialog, {
-            body: 'Discard draft?',
-            footer: footerButtons,
-            modal: true,
-            backdrop: true
-        });
+	const modalDialog = {
+        view: () => {
+	        return m.component(dialog, {
+	            body: 'Discard draft?',
+	            footer: footerButtons,
+	            modal: true,
+	            backdrop: true
+	        });
+	    }
     };
 
-We are setting `window.dialog` to a function, so that the dialog content is redrawn (for instance enabling/disabling a submit button based on form input).
+We have wrapped the dialog in a component (modalDialog) so that the dialog will be updated when Mithril redraws.
 
 Note that we can use any global variable instead of `window.dialog`.
 
