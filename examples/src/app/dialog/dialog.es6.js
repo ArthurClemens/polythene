@@ -70,81 +70,91 @@ module.view = () => {
         }
     };
 
-	const shortDialog = () => {
-        return m.component(dialog, Object.assign({}, commonDialogProps, {
-            body: shortBodyText
-        }));
+	const shortDialog = {
+        view: () => {
+            return m.component(dialog, Object.assign({}, commonDialogProps, {
+                body: shortBodyText
+            }));
+        }
     };
 
-    const formDialog = () => {
-        return m.component(dialog, Object.assign({}, commonDialogProps, {
-            title: 'Select a file...',
-            body: m('input', {
-                type: 'file',
-                id: 'file',
-                name: 'file',
-                onchange: (e) => {
-                    const fileInput = e.target;
-                    isEmptyValue = (fileInput.value === undefined);
-                    m.redraw();
-                }
-            }),
-            formOptions: {
-                name: 'demo',
-                type: 'post',
-                enctype: 'multipart/form-data',
-                onsubmit: (e) => {
-                    e.preventDefault();
-                    const form = e.target;
-                    alert('Posted: ' + form.file.value);
-                    window.dialog.hide = true;
-                    isEmptyValue = true;
-                    m.redraw(); // remove dialog from app.view
-                }
-            },
-            footer: [
-                m.component(button, {
-                    label: 'Cancel',
-                    events: {
-                        onclick: () => {
-                            window.dialog.hide = true;
-                        }
+    const formDialog = {
+        view: () => {
+            return m.component(dialog, Object.assign({}, commonDialogProps, {
+                title: 'Select a file...',
+                body: m('input', {
+                    type: 'file',
+                    id: 'file',
+                    name: 'file',
+                    onchange: (e) => {
+                        const fileInput = e.target;
+                        isEmptyValue = (fileInput.value === undefined);
+                        m.redraw();
                     }
                 }),
-                m.component(button, {
-                    disabled: isEmptyValue ? true : false,
-                    label: 'Post',
-                    tag: 'button',
-                    type: 'submit'
-                })
-            ]
-        }));
+                formOptions: {
+                    name: 'demo',
+                    type: 'post',
+                    enctype: 'multipart/form-data',
+                    onsubmit: (e) => {
+                        e.preventDefault();
+                        const form = e.target;
+                        alert('Posted: ' + form.file.value);
+                        window.dialog.hide = true;
+                        isEmptyValue = true;
+                        m.redraw(); // remove dialog from app.view
+                    }
+                },
+                footer: [
+                    m.component(button, {
+                        label: 'Cancel',
+                        events: {
+                            onclick: () => {
+                                window.dialog.hide = true;
+                            }
+                        }
+                    }),
+                    m.component(button, {
+                        disabled: isEmptyValue ? true : false,
+                        label: 'Post',
+                        tag: 'button',
+                        type: 'submit'
+                    })
+                ]
+            }));
+        }
     };
 
-	const longDialog = () => {
-        return m.component(dialog, Object.assign({}, commonDialogProps, {
-            title: 'Long dialog with a very long title that surely won\'t fit here',
-            body: m.trust(template)
-        }));
+	const longDialog = {
+        view: () => {
+            return m.component(dialog, Object.assign({}, commonDialogProps, {
+                title: 'Long dialog with a very long title that surely won\'t fit here',
+                body: m.trust(template)
+            }));
+        }
     };
 
-	const modalDialog = () => {
-        return m.component(dialog, Object.assign({}, commonDialogProps, {
-            title: 'Modal',
-            body: m.trust(template),
-            modal: true,
-            backdrop: true
-        }));
+	const modalDialog = {
+        view: () => {
+            return m.component(dialog, Object.assign({}, commonDialogProps, {
+                title: 'Modal',
+                body: m.trust(template),
+                modal: true,
+                backdrop: true
+            }));
+        }
     };
 
-    const darkDialog = () => {
-        return m.component(dialog, Object.assign({}, commonDialogProps, {
-            class: 'demo-dialog dark-theme',
-            title: 'Modal dialog dark theme',
-            body: m.trust(template),
-            modal: true,
-            backdrop: true
-        }));
+    const darkDialog = {
+        view: () => {
+            return m.component(dialog, Object.assign({}, commonDialogProps, {
+                class: 'demo-dialog dark-theme',
+                title: 'Modal dialog dark theme',
+                body: m.trust(template),
+                modal: true,
+                backdrop: true
+            }));
+        }
     };
 
     return m('.module-dialog', [

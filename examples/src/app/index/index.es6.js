@@ -199,7 +199,7 @@ app.view = (ctrl) => {
     if (module) {
         const name = linkMap[m.route()].name;
         return [
-            window.dialog ? window.dialog.call() : null,
+            window.dialog ? window.dialog : null,
             nav(name, [
                 m('.demo-content', m.component(module)),
                 github
