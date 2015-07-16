@@ -60,6 +60,8 @@ $_sideMargin: 2*$component_grid_unit_px - $iconButtonPadding;
     
     .toolbar-tools {
         width: 100%;
+        color: inherit;
+
         // make elements (e.g. buttons) respond to mouse/touch events
         > *:not(.disabled) {
             pointer-events: auto;

@@ -8,6 +8,8 @@ In index.es6.js the dialog is rendered in the app.view function.
 import m from 'mithril';
 import dialog from 'polythene/dialog/dialog';
 import button from 'polythene/button/button';
+import iconBtn from 'polythene/icon-button/icon-button';
+import headerPanel from 'polythene/header-panel/header-panel';
 require('./dialog.css!');
 
 const repeatText = function(text, count) {
@@ -32,7 +34,7 @@ const cancelOkButtons = [
         label: 'Cancel',
         events: {
             onclick: () => {
-                window.dialog.hide = true;
+                window.dialog.shouldHide = true;
             }
         }
     }),
@@ -52,6 +54,90 @@ const titleBlock = {
     }
 };
 
+const fullscreenToolbarRow = function(title, opts) {
+    return [
+        m.component(iconBtn, {
+            icon: {
+                svg: {
+                    group: 'navigation',
+                    name: 'close'
+                }
+            },
+            events: {
+                onclick: () => {
+                    opts.confirmDialogShown(true);
+                }
+            }
+        }),
+        m('span.flex', title),
+        m.component(button, {
+            label: 'Save',
+            events: {
+                onclick: () => {
+                    alert('Settings saved. Of course this message should be a notification...');
+                    window.dialog.shouldHide = true;
+                    // redraw because of the time passed during alert shown
+                    m.redraw();
+                }
+            }
+        })
+    ];
+};
+
+const fullscreenPanelBlock = {
+    view: function(ctrl, opts) {
+        return m.component(headerPanel, {
+            class: 'dark-theme',
+            fixed: true,
+            header: {
+                toolbar: {
+                    content: fullscreenToolbarRow('New event', opts)
+                }
+            },
+            content: m.trust(template)
+        });
+    }
+};
+
+const fullscreenPanelConfirmDialog = {
+    view: (ctrl, opts) => {
+        return m.component(dialog, {
+            class: 'demo-dialog',
+            footer: [
+                m.component(button, {
+                    label: 'Cancel',
+                    events: {
+                        onclick: () => {
+                            // start hiding confirm dialog
+                            opts.shouldHideConfirmDialog(true);
+                        }
+                    }
+                }),
+                m.component(button, {
+                    label: 'Discard',
+                    events: {
+                        onclick: () => {
+                            // start hiding fullscreen dialog
+                            window.dialog.shouldHide = true;
+                        }
+                    }
+                })
+            ],
+            body: shortBodyText,
+            modal: true,
+            backdrop: true,
+            shouldHide: () => {
+                return opts.shouldHideConfirmDialog();
+            },
+            didHide: () => {
+                opts.confirmDialogShown(false);
+                // reset for next time
+                opts.shouldHideConfirmDialog(false);
+                m.redraw(); // remove dialog from app.view
+            }
+        });
+    }
+};
 let isEmptyValue = true;
 
 let module = {};
@@ -61,7 +147,7 @@ module.view = () => {
         class: 'demo-dialog',
         footer: cancelOkButtons,
         shouldHide: () => {
-            return window.dialog.hide;
+            return window.dialog.shouldHide;
         },
         didHide: () => {
             window.dialog = null;
@@ -100,7 +186,7 @@ module.view = () => {
                         e.preventDefault();
                         const form = e.target;
                         alert('Posted: ' + form.file.value);
-                        window.dialog.hide = true;
+                        window.dialog.shouldHide = true;
                         isEmptyValue = true;
                         m.redraw(); // remove dialog from app.view
                     }
@@ -110,7 +196,7 @@ module.view = () => {
                         label: 'Cancel',
                         events: {
                             onclick: () => {
-                                window.dialog.hide = true;
+                                window.dialog.shouldHide = true;
                             }
                         }
                     }),
@@ -157,73 +243,77 @@ module.view = () => {
         }
     };
 
-    return m('.module-dialog', [
+    const fullscreenDialog = {
+        controller: () => {
+            return {
+                confirmDialogShown: m.prop(false),
+                shouldHideConfirmDialog: m.prop(false)
+            };
+        },
+        view: (ctrl) => {
+            return m.component(dialog, Object.assign({}, commonDialogProps, {
+                class: 'demo-dialog',
+                body: [
+                    ctrl.confirmDialogShown() ? m.component(fullscreenPanelConfirmDialog, {
+                        confirmDialogShown: ctrl.confirmDialogShown,
+                        shouldHideConfirmDialog: ctrl.shouldHideConfirmDialog
+                    }) : null,
+                    m.component(fullscreenPanelBlock, {
+                        confirmDialogShown: ctrl.confirmDialogShown
+                    })
+                ],
+                fullscreen: true
+            }));
+        }
+    };
 
-        m.component(titleBlock, {
+    const exampleData = [
+        {
             title: 'Short dialog',
-            content: m.component(button, {
-                label: 'Open',
-                raised: true,
-                events: {
-					onclick: () => {
-						window.dialog = shortDialog;
-					}
-                }
-            })
-        }),
-
-        m.component(titleBlock, {
+            dialog: shortDialog
+        },
+        {
             title: 'Form dialog',
-            content: m.component(button, {
-                label: 'Open',
-                raised: true,
-                events: {
-                    onclick: () => {
-                        window.dialog = formDialog;
-                    }
-                }
-            })
-        }),
-
-        m.component(titleBlock, {
+            dialog: formDialog,
+            info: 'Shows conditional button states.'
+        },
+        {
             title: 'Long dialog',
-            content: m.component(button, {
-                label: 'Open',
-                raised: true,
-                events: {
-					onclick: () => {
-						window.dialog = longDialog;
-					}
-                }
-            })
-        }),
-
-        m.component(titleBlock, {
+            dialog: longDialog,
+            info: 'Shows content borders with scrolled content.'
+        },
+        {
             title: 'Modal dialog with backdrop',
-            content: m.component(button, {
-                label: 'Open',
-                raised: true,
-                events: {
-					onclick: () => {
-						window.dialog = modalDialog;
-					}
-                }
-            })
-        }),
-
-        m.component(titleBlock, {
+            dialog: modalDialog
+        },
+        {
             title: 'Modal dialog dark theme',
-            content: m.component(button, {
-                label: 'Open',
-                raised: true,
-                events: {
-                    onclick: () => {
-                        window.dialog = darkDialog;
+            dialog: darkDialog
+        },
+        {
+            title: 'Fullscreen dialog',
+            dialog: fullscreenDialog,
+            info: 'Example for mobile screen. Click the close button to see the second dialog.'
+        }
+    ];
+
+    return m('.module-dialog', exampleData.map(exampleData1 => {
+        return m.component(titleBlock, {
+            title: exampleData1.title,
+            content: [
+                exampleData1.info ? m('p', exampleData1.info) : null,
+                m.component(button, {
+                    label: 'Open',
+                    raised: true,
+                    events: {
+                        onclick: () => {
+                            window.dialog = exampleData1.dialog;
+                        }
                     }
-                }
-            })
-        })
-    ]);
+                })
+            ]
+        });
+    }));
 };
 
 export default module;

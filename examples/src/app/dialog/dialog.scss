@@ -20,4 +20,22 @@
 			background-color: #222;
 		}
 	}
+
+	.toolbar {
+		background-color: #009688;
+		color: #fff;	
+	}
+	&.fullscreen {
+		.header-panel .mainContainer {
+			padding: 24px;
+		}
+	}
+}
+
+.module-dialog {
+	.p-block {
+		.button {
+			margin-left: 0;
+		}
+	}
 }
