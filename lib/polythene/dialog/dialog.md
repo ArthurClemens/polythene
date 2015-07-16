@@ -104,7 +104,7 @@ We use parameter function `shouldHide` that returns a boolean. If this returns `
 	            modal: true,
 	            backdrop: true,
 	            shouldHide: () => {
-	                return window.dialog.hide;
+	                return window.dialog.shouldHide;
 	            }
 	        });
 	    }
@@ -117,7 +117,7 @@ Here we use a second global variable (again this can be any variable as long as 
 	        label: 'Cancel',
 	        events: {
 	            onclick: () => {
-	                window.dialog.hide = true;
+	                window.dialog.shouldHide = true;
 	            }
 	        }
 	    }),
@@ -143,7 +143,7 @@ After fading out, param callback function `didHide` is called. Now we can nullif
 	        return m.component(dialog, {
 	            ...
 	            shouldHide: () => {
-	                return window.dialog.hide;
+	                return window.dialog.shouldHide;
 	            },
 	            didHide: () => {
 	                window.dialog = null;
@@ -153,6 +153,32 @@ After fading out, param callback function `didHide` is called. Now we can nullif
 	    }
     };
 
+
+### Fullscreen dialogs
+
+A fullscreen dialog uses [Header Panel](#header-panel) to implement its own header (it ignores `title` and `footer`). Pass a header panel component in the body:
+
+	const fullscreenDialog = {
+        view: () => {
+	        return m.component(dialog, {
+		        body: {
+				    view: function() {
+				        return m.component(headerPanel, {
+				            class: 'dark-theme',
+				            fixed: true,
+				            header: {
+				                toolbar: {
+				                    content: toolbarRow('New event')
+				                }
+				            },
+				            content: m.trust("content")
+				        });
+				    }
+				},
+		        fullscreen: true
+	        });
+	    }
+    };
 
 
 ## Options
@@ -167,6 +193,7 @@ After fading out, param callback function `didHide` is called. Now we can nullif
 | **footer** | optional | Mithril template |  | Footer actions, usually an array of buttons |
 | **z** | optional | Number 0-5 | 3 | Depth of the shadow |
 | **modal** | optional | Boolean | false | Set to true to create a modal dialog; tapping the backdrop will not close the dialog |
+| **fullscreen** | optional | Boolean | false | Set to true to make the dialog fullscreen; should be done for mobile screens only; `title` and `footer` will be ignored; pass a [Header Panel](#header-panel) to `body` |
 | **backdrop** | optional | Boolean | false | Set to true show a backdrop background color |
 | **shouldHide** | optional | Function |  | Function that returns a Boolean; see: "Hiding dialogs" above  |
 | **didHide** | optional | Function |  | Callback function that is called when the fade out animation is done; see: "Hiding dialogs" above  |
@@ -231,5 +258,4 @@ With an array of footer buttons:
 
 * URL based (use back to discard)
 * Simple dialog: list
-* Fullscreen dialog (mobile only)
 * Stacked full-width buttons

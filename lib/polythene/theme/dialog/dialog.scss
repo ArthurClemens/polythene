@@ -79,6 +79,29 @@
 		}
 	}
 	
+	&.fullscreen {
+		padding: 0;
+
+		> .dialog-content {
+			border-radius: 0;
+			max-width: none;
+			height: 100%;
+			width: 100%;
+
+			> .dialog-header,
+			> .dialog-footer {
+				display: none;
+			}
+			> .dialog-body {
+				padding: 0;
+				height: 100%;
+			}
+		}
+		
+		.mainContainer {
+			// padding needs to be set by theme
+		}
+	}
 }
 
 .dialog-open body {
