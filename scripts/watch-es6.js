@@ -2,9 +2,10 @@
 
 var chokidar = require('chokidar');
 var what = process.argv[2];
+var ignore = process.argv[3];
 var extensionRe = /\.([\u00C0-\u1FFF\u2C00-\uD7FF\w-_.\d]{1,})$/;
 var validExtension = 'es6.js';
-var maxDepth = 4;
+var maxDepth = 5;
 
 var watcher = chokidar.watch(what, {
     ignored: /[\/\\]\./,
@@ -28,6 +29,12 @@ var extension = function(path) {
     }
 };
 
+var isIgnored = function(path) {
+    if (!ignore) return false;
+    var ignoreRe = new RegExp("^" + ignore);
+    return path.match(ignoreRe);
+};
+
 var isValidExtension = function(path) {
     return (extension(path) === validExtension);
 };
@@ -37,7 +44,7 @@ var hasValidDepth = function(path) {
 };
 
 var isValidFile = function(path) {
-    return isValidExtension(path) && hasValidDepth(path);
+    return isValidExtension(path) && hasValidDepth(path) && !isIgnored(path);
 };
 
 var createOutPath = function(inPath) {
