@@ -40,6 +40,7 @@ const dialogProps = {
         return window.dialog.shouldHide;
     },
     didHide: () => {
+        window.dialog.shouldHide = false; // yes, this is really necessary, even when window.dialog is nullified
         window.dialog = null;
         m.redraw(); // remove dialog from app.view
     }

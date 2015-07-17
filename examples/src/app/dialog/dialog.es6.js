@@ -14,6 +14,7 @@ import formDialog from './dialogs/dialog-form';
 import modalDialog from './dialogs/dialog-modal';
 import darkDialog from './dialogs/dialog-dark';
 import fullscreenDialog from './dialogs/dialog-fullscreen';
+import simpleDialog from './dialogs/dialog-simple';
 import common from './dialogs/common';
 require('./dialog.css!');
 
@@ -57,6 +58,11 @@ module.view = () => {
             title: 'Fullscreen dialog',
             dialog: m.component(fullscreenDialog),
             info: 'Example for mobile screen. Click the close button to see the second dialog.'
+        },
+        {
+            title: 'Simple dialog',
+            dialog: simpleDialog,
+            info: 'Simple dialogs can present additional details about a list item or provide actions related to the primary task.'
         }
     ];
 

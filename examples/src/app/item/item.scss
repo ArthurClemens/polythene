@@ -14,8 +14,13 @@
             border: 1px solid #ddd;
             max-width: $list_width;
             padding: 5px;
-            .icon svg {
-                fill: #222;
+
+            .icon {
+                margin-left: 4px;
+
+                svg {
+                    fill: #222;
+                }
             }
             .name {
                 font-size: 1em;
