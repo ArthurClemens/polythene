@@ -15,6 +15,7 @@ import modalDialog from './dialogs/dialog-modal';
 import darkDialog from './dialogs/dialog-dark';
 import fullscreenDialog from './dialogs/dialog-fullscreen';
 import simpleDialog from './dialogs/dialog-simple';
+import fullWidthDialog from './dialogs/dialog-fullwidth';
 import common from './dialogs/common';
 require('./dialog.css!');
 
@@ -63,6 +64,11 @@ module.view = () => {
             title: 'Simple dialog',
             dialog: simpleDialog,
             info: 'Simple dialogs can present additional details about a list item or provide actions related to the primary task.'
+        },
+        {
+            title: 'Fullwidth button',
+            dialog: fullWidthDialog,
+            info: 'Stacked butons.'
         }
     ];
 

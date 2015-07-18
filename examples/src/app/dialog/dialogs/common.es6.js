@@ -29,7 +29,12 @@ const cancelOkButtons = [
         }
     }),
     m.component(button, {
-        label: 'Discard'
+        label: 'Discard',
+        events: {
+            onclick: () => {
+                window.dialog.shouldHide = true;
+            }
+        }
     })
 ];
 

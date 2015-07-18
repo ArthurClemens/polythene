@@ -256,6 +256,6 @@ With an array of footer buttons:
 
 ## TODO
 
+* Simple menu
 * URL based (use back to discard)
-* Simple dialog: list
-* Stacked full-width buttons
+

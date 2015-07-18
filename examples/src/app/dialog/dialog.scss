@@ -38,6 +38,12 @@
 	.item.demo-item {
 		height: 56px;
 	}
+
+	&.fullwidth-dialog {
+		.dialog-content {
+			width: 280px;
+		}
+	}
 }
 
 .module-dialog {
