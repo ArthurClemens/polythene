@@ -5,7 +5,7 @@
 	
     color: theme($tint, $element, $depth, "normal", "color");
 	
-	[disabled] {
+	&[disabled] {
         color: theme($tint, $element, $depth, "disabled", "color");
 	}
 

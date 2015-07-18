@@ -25,21 +25,31 @@
     	border-radius: $_border_radius;
     }
 
+    .dialog-header,
+    .dialog-body {
+    	> .title {
+    		font-size: $fontSizeTitle;
+    		line-height: 24px;
+    		font-weight: 500;
+            display: block;
+        }
+        > .title + div {
+        	margin-top: 16px;
+        }
+    }
+
 	.dialog-header {
 		padding: ($_padding - 4) $_padding ($_header_bottom - 4) $_padding;
 		min-height: 60px;
 
 		> .title {
-			font-size: $fontSizeTitle;
-			line-height: 24px;
-			font-weight: 500;
 			@include single-line;
 	        display: block;
 	    }
 	}
 
 	.dialog-body {
-		padding: $_padding;
+		padding: $_padding $_padding ($_padding - 5) $_padding;
 		overflow-y: scroll;
 		-webkit-overflow-scrolling: touch;
 		border-width: 0;
@@ -63,19 +73,24 @@
 	}
 
 	.dialog-footer {
-		$_padding: 8px;
-
-		padding: $_padding;
+		padding: 2px 8px;
 		min-height: 52px;
 		font-size: 0; // remove inline block spacing
 
+		&.high {
+			// set by js when buttons are stacked vertically
+			padding-bottom: 8px;
+		}
+
+		.actions {
+			margin: 0 -4px;
+		}
+
 		.button {
 			height: 36px;
+			margin-top: 6px;
+			margin-bottom: 6px;
 			padding: 0;
-
-			&:last-child {
-				margin-right: 0;
-			}
 		}
 	}
 	
