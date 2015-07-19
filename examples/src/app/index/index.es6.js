@@ -98,6 +98,10 @@ _.forEach(_.flatten(_.pluck(links, 'links')), function(link) {
     linkMap[link.url] = link;
 });
 
+const getRouteBase = (route) => {
+    return '/' + route.split(/\//)[1];
+}
+
 const item = function(link) {
     return m.component(listTile, {
         title: link.name,
@@ -173,19 +177,21 @@ let app = {};
 app.controller = () => {
     let module = m.prop();
     let loading = m.prop(false);
-
-    const link = linkMap[m.route()];
+    const route = getRouteBase(m.route());
+    const link = linkMap[route];
     if (link) {
         const importPath = link.import;
         if (importPath) {
             loading(true);
             System.import(importPath).then(function(imported) {
                 loading(false);
-                module(imported);
+                const view = imported.subview ? imported.subview(m.route()) : imported;
+                module(view);
                 m.redraw();
             });
         }
     }
+
     return {
         module: module,
         loading: loading
@@ -196,8 +202,10 @@ app.view = (ctrl) => {
         return {subtree: 'retain'};
     }
     const module = ctrl.module();
+    const route = getRouteBase(m.route());
+
     if (module) {
-        const name = linkMap[m.route()].name;
+        const name = linkMap[route].name;
         return [
             window.dialog ? window.dialog : null,
             nav(name, [
@@ -209,8 +217,10 @@ app.view = (ctrl) => {
         return m.component(content);
     }
 };
+window.app = app;
 
-m.route.mode = 'hash';
-m.route(document.body, '/', {
+window.routes = {
     '/:any...': app
-});
+};
+m.route.mode = 'hash';
+m.route(document.body, '/', window.routes);

@@ -11,7 +11,8 @@ const darkDialog = {
             title: 'Modal dialog dark theme',
             body: m.trust(common.template),
             modal: true,
-            backdrop: true
+            backdrop: true,
+            transition: (window.dialog && window.dialog.transition === false) ? 'out' : 'both'
         }));
     }
 };

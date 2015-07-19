@@ -22,6 +22,7 @@ const shortBodyText = 'Discard draft?';
 const cancelOkButtons = [
     m.component(button, {
         label: 'Cancel',
+        url: {href: '/dialog', config: m.route},
         events: {
             onclick: () => {
                 window.dialog.shouldHide = true;
@@ -30,6 +31,7 @@ const cancelOkButtons = [
     }),
     m.component(button, {
         label: 'Discard',
+        url: {href: '/dialog', config: m.route},
         events: {
             onclick: () => {
                 window.dialog.shouldHide = true;
@@ -44,8 +46,13 @@ const dialogProps = {
     shouldHide: () => {
         return window.dialog.shouldHide;
     },
+    willHide: () => {
+        m.route('/dialog');
+    },
     didHide: () => {
-        window.dialog.shouldHide = false; // yes, this is really necessary, even when window.dialog is nullified
+        if (window.dialog) {
+            window.dialog.shouldHide = false; // yes, this is really necessary, even when window.dialog is nullified
+        }
         window.dialog = null;
         m.redraw(); // remove dialog from app.view
     }

@@ -37,6 +37,7 @@ const formDialog = {
             footer: [
                 m.component(button, {
                     label: 'Cancel',
+                    url: {href: '/dialog', config: m.route},
                     events: {
                         onclick: () => {
                             window.dialog.shouldHide = true;
@@ -44,6 +45,7 @@ const formDialog = {
                     }
                 }),
                 m.component(button, {
+                    url: {href: '/dialog', config: m.route},
                     disabled: isEmptyValue ? true : false,
                     label: 'Post',
                     tag: 'button',
@@ -51,10 +53,14 @@ const formDialog = {
                 })
             ],
             didHide: () => {
+                if (window.dialog) {
+                    window.dialog.shouldHide = false; // yes, this is really necessary, even when window.dialog is nullified
+                }
                 window.dialog = null;
                 isEmptyValue = true;
                 m.redraw(); // remove dialog from app.view
-            }
+            },
+            transition: (window.dialog && window.dialog.transition === false) ? 'out' : 'both'
         }));
     }
 };

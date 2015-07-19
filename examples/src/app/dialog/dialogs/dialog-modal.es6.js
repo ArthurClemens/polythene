@@ -10,7 +10,8 @@ const modalDialog = {
             title: 'Modal',
             body: m.trust(common.template),
             modal: true,
-            backdrop: true
+            backdrop: true,
+            transition: (window.dialog && window.dialog.transition === false) ? 'out' : 'both'
         }));
     }
 };

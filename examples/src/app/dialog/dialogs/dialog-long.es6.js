@@ -8,7 +8,8 @@ const longDialog = {
     view: () => {
         return m.component(dialog, Object.assign({}, common.dialogProps, {
             title: 'Long dialog with a very long title that surely won\'t fit here',
-            body: m.trust(common.template)
+            body: m.trust(common.template),
+            transition: (window.dialog && window.dialog.transition === false) ? 'out' : 'both'
         }));
     }
 };

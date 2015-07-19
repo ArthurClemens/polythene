@@ -25,7 +25,7 @@ const simpleDialog = {
                     class: 'demo-item',
                     label: 'Account',
                     content: m('a', {
-                        href: m.route(),
+                        href: '/dialog',
                         config: m.route
                     }),
                     events: {
@@ -35,7 +35,8 @@ const simpleDialog = {
                     }
                 })
             }),
-            footer: null
+            footer: null,
+            transition: (window.dialog && window.dialog.transition === false) ? 'out' : 'both'
         }));
     }
 };

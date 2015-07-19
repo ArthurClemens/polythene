@@ -17,7 +17,7 @@
     "babel-plugin-closure-elimination": "",
     "es6-module-loader": "",
     "lodash": "git@github.com:lodash/lodash.git",
-    "mithril-infinite": "^0.1.11",
+    "mithril-infinite": "^0.1.12",
     "system-css": "",
     "system-text": "",
     "systemjs": "",

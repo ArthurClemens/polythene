@@ -25,6 +25,7 @@ const fullscreenToolbarRow = function(title, opts) {
         m('span.flex', title),
         m.component(button, {
             label: 'Save',
+            url: {href: '/dialog', config: m.route},
             events: {
                 onclick: () => {
                     alert('Settings saved. Of course this message should be a notification...');
@@ -68,6 +69,7 @@ const fullscreenPanelConfirmDialog = {
                 }),
                 m.component(button, {
                     label: 'Discard',
+                    url: {href: '/dialog', config: m.route},
                     events: {
                         onclick: () => {
                             // start hiding fullscreen dialog
@@ -82,12 +84,16 @@ const fullscreenPanelConfirmDialog = {
             shouldHide: () => {
                 return opts.shouldHideConfirmDialog();
             },
+            willHide: () => {
+                m.route('/dialog');
+            },
             didHide: () => {
                 opts.confirmDialogShown(false);
                 // reset for next time
                 opts.shouldHideConfirmDialog(false);
                 m.redraw(); // remove dialog from app.view
-            }
+            },
+            transition: 'both'
         });
     }
 };
@@ -111,7 +117,8 @@ const fullscreenDialog = {
                     confirmDialogShown: ctrl.confirmDialogShown
                 })
             ],
-            fullscreen: true
+            fullscreen: true,
+            transition: (window.dialog && window.dialog.transition === false) ? 'out' : 'both'
         }));
     }
 };
