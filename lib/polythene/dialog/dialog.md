@@ -195,7 +195,9 @@ A fullscreen dialog uses [Header Panel](#header-panel) to implement its own head
 | **modal** | optional | Boolean | false | Set to true to create a modal dialog; tapping the backdrop will not close the dialog |
 | **fullscreen** | optional | Boolean | false | Set to true to make the dialog fullscreen; should be done for mobile screens only; `title` and `footer` will be ignored; pass a [Header Panel](#header-panel) to `body` |
 | **backdrop** | optional | Boolean | false | Set to true show a backdrop background color |
-| **shouldHide** | optional | Function |  | Function that returns a Boolean; see: "Hiding dialogs" above  |
+| **transition** | optional | String: 'in', 'out', 'both', 'none' | 'both' | Set to 'out' (or 'none') to immediately show the dialog without fading in, for instance when showing the dialog when the view is loaded |
+| **shouldHide** | optional | Function |  | Function that returns a Boolean; see: "Hiding dialogs" above |
+| **willHide** | optional | Function |  | Function is called just before the dialog starts hiding |
 | **didHide** | optional | Function |  | Callback function that is called when the fade out animation is done; see: "Hiding dialogs" above  |
 | **updateContentOnScroll** | Boolean | false | Set to true to "unfreeze" dialog contents during scrolling; for performance this is set to false by default |
 
@@ -225,29 +227,8 @@ With an array of footer buttons:
 	        <div class="dialog-body">Body text</div>
 	        <div class="dialog-footer layout end">
 	            <div class="flex"></div>
-	            <div class="actions layout horizontal end">
-	                <a class="button">
-	                    <div class="content">
-	                        <div class="label">Cancel</div>
-	                        <div class="fit ripple constrained ">
-	                            <div class="ripple-mask">
-	                                <div class="ripple-waves"></div>
-	                            </div>
-	                        </div>
-	                        <div class="wash fit"></div>
-	                    </div>
-	                </a>
-	                <a class="button">
-	                    <div class="content">
-	                        <div class="label">Discard</div>
-	                        <div class="fit ripple constrained">
-	                            <div class="ripple-mask">
-	                                <div class="ripple-waves"></div>
-	                            </div>
-	                        </div>
-	                        <div class="wash fit"></div>
-	                    </div>
-	                </a>
+	            <div class="actions layout horizontal end-justified wrap">
+	                footer content...
 	            </div>
 	        </div>
 	    </div>
@@ -257,5 +238,4 @@ With an array of footer buttons:
 ## TODO
 
 * Simple menu
-* URL based (use back to discard)
 
