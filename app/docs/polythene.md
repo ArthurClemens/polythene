@@ -2,7 +2,7 @@
 
 Modular implementation of Material Design for [Mithril](http://lhorie.github.io/mithril). Available on [Github](https://github.com/ArthurClemens/Polythene).
 
-<span style='color: red'>Version 0.0.10 (alpha)</span>
+Version 0.1.0
 
 <a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/index.html">All demos</a>
 
@@ -104,6 +104,7 @@ See the [main project page](https://github.com/ArthurClemens/Polythene).
 * Toolbar
 * Tabs
 * List
+* Dialog
 * Card
 * Button
 * Icon button
@@ -117,13 +118,8 @@ See the [main project page](https://github.com/ArthurClemens/Polythene).
 * Divider (part of List)
 * Theming
 
-
-### In progress
-...
-
 ### To do
 
-1. Dialog
 1. Menu
 1. Simple menu
 1. Grid list
@@ -145,6 +141,6 @@ See the [main project page](https://github.com/ArthurClemens/Polythene).
 * Page transitions
 * Loading animation
 * Pull to refresh
-* Localstorage/offline use
+* Local storage/offline use
 
 
