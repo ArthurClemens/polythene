@@ -69,7 +69,6 @@ const fullscreenPanelConfirmDialog = {
                 }),
                 m.component(button, {
                     label: 'Discard',
-                    url: {href: '/dialog', config: m.route},
                     events: {
                         onclick: () => {
                             // start hiding fullscreen dialog
@@ -84,13 +83,11 @@ const fullscreenPanelConfirmDialog = {
             shouldHide: () => {
                 return opts.shouldHideConfirmDialog();
             },
-            willHide: () => {
-                m.route('/dialog');
-            },
             didHide: () => {
                 opts.confirmDialogShown(false);
                 // reset for next time
                 opts.shouldHideConfirmDialog(false);
+                m.route('/dialog');
                 m.redraw(); // remove dialog from app.view
             },
             transition: 'both'

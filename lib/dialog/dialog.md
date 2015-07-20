@@ -147,6 +147,7 @@ After fading out, param callback function `didHide` is called. Now we can nullif
 	            },
 	            didHide: () => {
 	                window.dialog = null;
+	                // optionally call m.route() to reset url
 	                m.redraw(); // remove dialog from app.view
 	            }
 	        });
@@ -197,7 +198,7 @@ A fullscreen dialog uses [Header Panel](#header-panel) to implement its own head
 | **backdrop** | optional | Boolean | false | Set to true show a backdrop background color |
 | **transition** | optional | String: 'in', 'out', 'both', 'none' | 'both' | Set to 'out' (or 'none') to immediately show the dialog without fading in, for instance when showing the dialog when the view is loaded |
 | **shouldHide** | optional | Function |  | Function that returns a Boolean; see: "Hiding dialogs" above |
-| **willHide** | optional | Function |  | Function is called just before the dialog starts hiding |
+| **willHide** | optional | Function |  | Function is called just before the dialog starts hiding; it is not recommended to call `m.route()` from here, instead use `didHide` |
 | **didHide** | optional | Function |  | Callback function that is called when the fade out animation is done; see: "Hiding dialogs" above  |
 | **updateContentOnScroll** | Boolean | false | Set to true to "unfreeze" dialog contents during scrolling; for performance this is set to false by default |
 
@@ -234,8 +235,4 @@ With an array of footer buttons:
 	    </div>
 	</form>
 
-
-## TODO
-
-* Simple menu
 

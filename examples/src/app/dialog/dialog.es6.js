@@ -6,9 +6,9 @@ In index.es6.js the dialog is rendered in the app.view function.
 'use strict';
 
 import m from 'mithril';
-import dialog from 'polythene/dialog/dialog';
 import button from 'polythene/button/button';
 import shortDialog from './dialogs/dialog-short';
+import noTransitionDialog from './dialogs/dialog-notransition';
 import longDialog from './dialogs/dialog-long';
 import formDialog from './dialogs/dialog-form';
 import modalDialog from './dialogs/dialog-modal';
@@ -16,7 +16,6 @@ import darkDialog from './dialogs/dialog-dark';
 import fullscreenDialog from './dialogs/dialog-fullscreen';
 import simpleDialog from './dialogs/dialog-simple';
 import fullWidthDialog from './dialogs/dialog-fullwidth';
-import common from './dialogs/common';
 require('./dialog.css!');
 
 const titleBlock = {
@@ -34,7 +33,14 @@ const dialogsData = [
     {
         title: 'Short dialog',
         dialog: m.component(shortDialog),
+        info: 'Dialog without title.',
         url: '/dialog/short'
+    },
+    {
+        title: 'No transition',
+        dialog: m.component(noTransitionDialog),
+        info: 'Dialog appears without fadein/out.',
+        url: '/dialog/notransition'
     },
     {
         title: 'Form dialog',
@@ -51,6 +57,7 @@ const dialogsData = [
     {
         title: 'Modal dialog with backdrop',
         dialog: m.component(modalDialog),
+        info: 'A modal dialog can only be closed by a confirming action.',
         url: '/dialog/modal'
     },
     {
@@ -71,7 +78,7 @@ const dialogsData = [
         url: '/dialog/simple'
     },
     {
-        title: 'Fullwidth button',
+        title: 'Full width button',
         dialog: m.component(fullWidthDialog),
         info: 'Stacked buttons.',
         url: '/dialog/fullwidth'

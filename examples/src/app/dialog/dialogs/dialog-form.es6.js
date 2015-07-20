@@ -37,7 +37,6 @@ const formDialog = {
             footer: [
                 m.component(button, {
                     label: 'Cancel',
-                    url: {href: '/dialog', config: m.route},
                     events: {
                         onclick: () => {
                             window.dialog.shouldHide = true;
@@ -45,7 +44,6 @@ const formDialog = {
                     }
                 }),
                 m.component(button, {
-                    url: {href: '/dialog', config: m.route},
                     disabled: isEmptyValue ? true : false,
                     label: 'Post',
                     tag: 'button',

@@ -16,11 +16,11 @@ const accountCircleIcon = {
 
 const simpleDialog = {
     view: () => {
-    	return m.component(dialog, Object.assign({}, common.dialogProps, {
+        return m.component(dialog, Object.assign({}, common.dialogProps, {
             class: 'demo-dialog',
             title: 'Set backup account',
-            body: [1,2,3].map(() => {
-            	return m.component(item, {
+            body: [1, 2, 3].map(() => {
+                return m.component(item, {
                     icon: accountCircleIcon,
                     class: 'demo-item',
                     label: 'Account',
@@ -33,7 +33,7 @@ const simpleDialog = {
                             window.dialog.shouldHide = true;
                         }
                     }
-                })
+                });
             }),
             footer: null,
             transition: (window.dialog && window.dialog.transition === false) ? 'out' : 'both'
