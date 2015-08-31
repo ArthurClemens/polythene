@@ -1,6 +1,8 @@
 'use strict';
 
-import _ from 'lodash';
+import pluck from 'lodash/collection/pluck';
+import forEach from 'lodash/collection/forEach';
+import array from 'lodash/array';
 import m from 'mithril';
 import icon from 'polythene/icon/icon';
 import list from 'polythene/list/list';
@@ -94,13 +96,13 @@ const links = [{
 }];
 
 let linkMap = {};
-_.forEach(_.flatten(_.pluck(links, 'links')), function(link) {
+forEach(array.flatten(pluck(links, 'links')), function(link) {
     linkMap[link.url] = link;
 });
 
 const getRouteBase = (route) => {
     return '/' + route.split(/\//)[1];
-}
+};
 
 const item = function(link) {
     return m.component(listTile, {

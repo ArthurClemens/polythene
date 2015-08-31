@@ -6,6 +6,7 @@ docs/src/app/docs
 docs/src/lib
 examples/src/lib
 lib/font-iconic/material-design-iconic-font
+lib/font-roboto/fonts
 lib/svg/mdi
 lib/svg/material-design-iconic-font
 lib/deps

@@ -2,7 +2,8 @@
 
 var chokidar = require('chokidar');
 var what = process.argv[2];
-var ignore = process.argv[3];
+var ignore = (process.argv[3] && process.argv[3] !== 'null') ? process.argv[3] : null;
+var persistent = !(process.argv[4] === 'once');
 var extensionRe = /\.([\u00C0-\u1FFF\u2C00-\uD7FF\w-_]+)(?:[\?#]|$)/;
 var underscoreRe = /(_[\u00C0-\u1FFF\u2C00-\uD7FF\w-_]+)\.([\u00C0-\u1FFF\u2C00-\uD7FF\w-_]+)(?:[\?#]|$)/;
 var validExtension = 'scss';
@@ -10,7 +11,7 @@ var maxDepth = 5;
 
 var watcher = chokidar.watch(what, {
     ignored: /[\/\\]\./,
-    persistent: true
+    persistent: persistent
 });
 
 var execute = function(command) {
@@ -31,8 +32,10 @@ var extension = function(path) {
 };
 
 var isIgnored = function(path) {
-    if (!ignore) return false;
-    var ignoreRe = new RegExp("^" + ignore);
+    if (!ignore) {
+        return false;
+    }
+    var ignoreRe = new RegExp('^' + ignore);
     return path.match(ignoreRe);
 };
 
@@ -69,7 +72,7 @@ var transform = function(inPath, outPath) {
     execute([
         'cd', dir,
         '&&',
-        'sass --sourcemap=none', inFileName, '>', outFileName,
+        'sass --sourcemap=none --style=expanded', inFileName, '>', outFileName,
         '&&',
         'autoprefixer -b \'last 2 versions\'', outFileName,
         '&&',
@@ -80,13 +83,17 @@ var transform = function(inPath, outPath) {
 watcher
     .on('add', function(path) {
         if (isValidFile(path)) {
-            console.log('watch-scss', validExtension, 'file', path, 'has been added');
+            if (persistent) {
+                console.log('watch-es6', validExtension, 'file', path, 'has been added');
+            } else {
+                console.log('transpiling', validExtension, 'file', path);
+            }
             transform(path, createOutPath(path));
         }
     })
     .on('change', function(path) {
         if (isValidFile(path)) {
-            console.log('watch-scss', validExtension, 'file', path, 'has been changed');
+            console.log('watch-es6', validExtension, 'file', path, 'has been changed');
             transform(path, createOutPath(path));
         }
     });

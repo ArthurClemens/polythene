@@ -7,12 +7,12 @@ Public site: [Polythene Examples](http://arthurclemens.github.io/Polythene-Examp
 
 ## Setup
 
-* `npm install`
+* `npm install` - installs dependencies and copies a subset to the app/lib folder
 
 ## Developing
 
-* `npm run watch` - watch file changes
-* `npm run build-css` - build CSS
+* `npm run watch` - watch es6 and scss file changes
+* `npm run transpile` - transpile es6 and scss files once
 
 ## Building
 

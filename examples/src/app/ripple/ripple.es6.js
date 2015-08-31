@@ -24,10 +24,10 @@ const btn = function(group, name) {
 };
 
 const toolbarRow = [
-    btn('navigation', 'menu'),
+    btn('google/navigation', 'menu'),
     m('span.flex', 'Toolbar'),
-    btn('navigation', 'refresh'),
-    btn('content', 'add')
+    btn('google/navigation', 'refresh'),
+    btn('google/content', 'add')
 ];
 
 const iconButtons = function(opts, iconOpts) {
@@ -37,7 +37,7 @@ const iconButtons = function(opts, iconOpts) {
         m.component(iconBtn, {
             icon: {
                 svg: {
-                    group: 'navigation',
+                    group: 'google/navigation',
                     name: 'menu'
                 },
                 type: 'large',
@@ -52,7 +52,7 @@ const iconButtons = function(opts, iconOpts) {
         m.component(iconBtn, {
             icon: {
                 svg: {
-                    group: 'navigation',
+                    group: 'google/navigation',
                     name: 'menu'
                 },
                 class: 'md'

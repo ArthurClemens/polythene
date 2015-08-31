@@ -72,7 +72,7 @@ var builder = new Builder({
     },
     'map': {
         'marked': 'lib/marked/marked.min',
-        'lodash': 'lib/lodash/lodash.min',
+        'lodash': 'lib/lodash',
         'mithril': 'lib/mithril/mithril.min',
         'polythene': 'lib/polythene',
         'polythene-theme': 'lib/polythene/theme',
@@ -82,7 +82,7 @@ var builder = new Builder({
 });
 
 var buildOpts = {
-    minify: true,
+    minify: false,
     sourceMaps: true,
     lowResSourceMaps: true
 };

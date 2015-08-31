@@ -9,7 +9,7 @@ const accountCircleIcon = {
     class: 'accountCircleIcon',
     type: 'large',
     svg: {
-        group: 'action',
+        group: 'google/action',
         name: 'account-circle'
     }
 };

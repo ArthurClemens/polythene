@@ -93,7 +93,7 @@ var builder = new Builder({
         '*.svg': '*.svg'
     },
     'map': {
-        'lodash': 'lib/lodash/lodash.min',
+        'lodash': 'lib/lodash',
         'mithril': 'lib/mithril/mithril.min',
         'mithril-infinite': 'lib/mithril-infinite/mithril-infinite',
         'polythene': 'lib/polythene',

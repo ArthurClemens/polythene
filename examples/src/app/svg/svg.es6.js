@@ -87,21 +87,21 @@ module.view = () => {
             content: [
                 m.component(block, {
                     svg: {
-                        group: 'navigation',
+                        group: 'google/navigation',
                         name: 'menu',
                         class: 'demo-svg md'
                     }
                 }),
                 m.component(block, {
                     svg: {
-                        group: 'content',
+                        group: 'google/content',
                         name: 'add',
                         class: 'demo-svg md'
                     }
                 }),
                 m.component(block, {
                     svg: {
-                        group: 'navigation',
+                        group: 'google/navigation',
                         name: 'refresh',
                         class: 'demo-svg md'
                     }

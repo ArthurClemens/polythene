@@ -8,7 +8,7 @@ require('./item.css!');
 const settingsIcon = {
     class: 'md',
     svg: {
-        group: 'action',
+        group: 'google/action',
         name: 'settings'
     }
 };
@@ -16,7 +16,7 @@ const settingsIcon = {
 const accountIcon = {
     class: 'md',
     svg: {
-        group: 'action',
+        group: 'google/action',
         name: 'account-box'
     }
 };
@@ -24,7 +24,7 @@ const accountIcon = {
 const accountCircleIcon = {
     class: 'md',
     svg: {
-        group: 'action',
+        group: 'google/action',
         name: 'account-circle'
     }
 };
@@ -165,7 +165,7 @@ module.view = () => {
                                     role: 'img'
                                 },
                                 svg: {
-                                    group: 'navigation',
+                                    group: 'google/navigation',
                                     name: 'more-vert'
                                 }
                             })

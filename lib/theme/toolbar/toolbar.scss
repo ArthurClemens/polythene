@@ -89,7 +89,6 @@ $_sideMargin: 2*$component_grid_unit_px - $iconButtonPadding;
             // align left when scaling with transform
             transform-origin: left 50%;
         }
-
         .fit {
             @include fit;
             width: auto;

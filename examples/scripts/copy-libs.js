@@ -20,6 +20,12 @@ var copy = function(name, files) {
     });
 };
 
+var copyDir = function(name, dir) {
+    var nameDir = [DESTINATION_DIR, '/', name].join('');
+    execute(['mkdir', '-p', nameDir].join(' '));
+    execute(['cp', '-R', dir, nameDir + '/'].join(' '));
+};
+
 execute(['mkdir', '-p', DESTINATION_DIR].join(' '));
 
 copy('systemjs', [
@@ -47,8 +53,8 @@ copy('mithril-infinite', [
     'node_modules/mithril-infinite/lib/mithril-infinite.css'
 ]);
 
-copy('lodash', [
-    'node_modules/lodash/lodash.min.js'
+copyDir('lodash', [
+    'node_modules/lodash/*'
 ]);
 
 copy('verge', [

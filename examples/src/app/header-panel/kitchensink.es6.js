@@ -33,9 +33,9 @@ const btn = function(group, name) {
 
 const toolbarRow = function(title) {
     return [
-        btn('navigation', 'menu', '#'),
+        btn('google/navigation', 'menu', '#'),
         m('span.flex', title),
-        btn('navigation', 'refresh')
+        btn('google/navigation', 'refresh')
     ];
 };
 

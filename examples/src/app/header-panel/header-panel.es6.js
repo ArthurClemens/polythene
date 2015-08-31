@@ -1,6 +1,8 @@
 'use strict';
 
-import _ from 'lodash';
+import pluck from 'lodash/collection/pluck';
+import forEach from 'lodash/collection/forEach';
+import array from 'lodash/array';
 import m from 'mithril';
 import list from 'polythene/list/list';
 import listTile from 'polythene/list-tile/list-tile';
@@ -67,7 +69,7 @@ const links = [{
 }];
 
 let linkMap = {};
-_.forEach(_.flatten(_.pluck(links, 'links')), function(link) {
+forEach(array.flatten(pluck(links, 'links')), function(link) {
     linkMap[link.url] = link;
 });
 
@@ -135,9 +137,9 @@ const btn = function(group, name, url) {
 
 const toolbarRow = function(title) {
     return [
-        btn('navigation', 'arrow-back', '#'),
+        btn('google/navigation', 'arrow-back', '#'),
         m('span.flex', title),
-        btn('action', 'search')
+        btn('google/action', 'search')
     ];
 };
 
@@ -433,7 +435,7 @@ background4.view = function() {
 let routeMap = {
     '/': index
 };
-_.forEach(_.flatten(_.pluck(links, 'links')), function(link) {
+forEach(array.flatten(pluck(links, 'links')), function(link) {
     routeMap[link.url] = eval(link.url);
 });
 

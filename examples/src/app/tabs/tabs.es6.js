@@ -120,10 +120,10 @@ const btn = function(group, name) {
 };
 
 const toolbarRow = [
-    btn('navigation', 'menu'),
+    btn('google/navigation', 'menu'),
     m('span.flex', 'Page title'),
-    btn('action', 'search'),
-    btn('navigation', 'more-vert')
+    btn('google/action', 'search'),
+    btn('google/navigation', 'more-vert')
 ];
 
 const titleBlock = {

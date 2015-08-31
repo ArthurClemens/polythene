@@ -17,11 +17,11 @@ const btn = function(group, name) {
 };
 
 const toolbarRow = [
-    btn('navigation', 'menu'),
+    btn('google/navigation', 'menu'),
     m('span.flex', 'Toolbar title lorem ipsum dolor sit amet'),
-    btn('action', 'search'),
-    btn('action', 'favorite'),
-    btn('navigation', 'more-vert')
+    btn('google/action', 'search'),
+    btn('google/action', 'favorite'),
+    btn('google/navigation', 'more-vert')
 ];
 
 const toolbarBlock = {

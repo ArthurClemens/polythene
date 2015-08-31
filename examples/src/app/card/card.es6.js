@@ -311,7 +311,7 @@ module.view = () => {
                                 icon: {
                                     type: 'medium',
                                     svg: {
-                                        group: 'navigation',
+                                        group: 'google/navigation',
                                         name: 'expand-less'
                                     }
                                 }
@@ -365,7 +365,7 @@ module.view = () => {
                                 icon: {
                                     type: 'medium',
                                     svg: {
-                                        group: 'navigation',
+                                        group: 'google/navigation',
                                         name: 'expand-more'
                                     }
                                 }

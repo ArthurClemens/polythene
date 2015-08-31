@@ -2,13 +2,12 @@
 
 ## Setup
 
-* `npm install`
-* `npm run setup`
+* `npm install` - installs dependencies and copies a subset to the app/lib folder
 
 ## Developing
 
-* `npm run copy-docs` - copy Polythene (Markdown) documents
-* `npm run watch-css` - watch scss file changes
+* `npm run watch` - watch es6, scss and markdown file changes
+* `npm run transpile` - transpile es6 and scss files once
 
 ## Building
 

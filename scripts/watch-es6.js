@@ -2,14 +2,15 @@
 
 var chokidar = require('chokidar');
 var what = process.argv[2];
-var ignore = process.argv[3];
+var ignore = (process.argv[3] && process.argv[3] !== 'null') ? process.argv[3] : null;
+var persistent = !(process.argv[4] === 'once');
 var extensionRe = /\.([\u00C0-\u1FFF\u2C00-\uD7FF\w-_.\d]{1,})$/;
 var validExtension = 'es6.js';
 var maxDepth = 5;
 
 var watcher = chokidar.watch(what, {
     ignored: /[\/\\]\./,
-    persistent: true
+    persistent: persistent
 });
 
 var execute = function(command) {
@@ -30,8 +31,10 @@ var extension = function(path) {
 };
 
 var isIgnored = function(path) {
-    if (!ignore) return false;
-    var ignoreRe = new RegExp("^" + ignore);
+    if (!ignore) {
+        return false;
+    }
+    var ignoreRe = new RegExp('^' + ignore);
     return path.match(ignoreRe);
 };
 
@@ -62,7 +65,11 @@ var transform = function(inPath, outPath) {
 watcher
     .on('add', function(path) {
         if (isValidFile(path)) {
-            console.log('watch-es6', validExtension, 'file', path, 'has been added');
+            if (persistent) {
+                console.log('watch-es6', validExtension, 'file', path, 'has been added');
+            } else {
+                console.log('transpiling', validExtension, 'file', path);
+            }
             transform(path, createOutPath(path));
         }
     })

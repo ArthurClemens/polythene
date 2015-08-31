@@ -24,7 +24,7 @@ If the icon set has subfolders, pass the folder name as `group`. To load `polyth
 
 	const mySvg = m.component(svg, {
 	    iconSet: 'material-design-iconic-font',
-	    group: 'action',
+	    group: 'google/action',
 	    name: 'alarm'
 	});
 
@@ -33,7 +33,7 @@ SVG options can be passed to [icon](#icon):
 	import icon from 'polythene/icon/icon';
 	const myIcon = m.component(icon, {
 	    iconSet: 'material-design-iconic-font',
-	    group: 'action',
+	    group: 'google/action',
 	    name: 'alarm'
 	});
 
@@ -59,7 +59,7 @@ When after user interaction another SVG is shown, the app is more responsive whe
 | **class** | optional | String |  | CSS class appended to 'svg' |
 | **src** | either src or iconSet+name must be passed | String |  | SVG URL |
 | **iconSet** | either src or iconSet+name must be passed | String |  | Iconset name - see below |
-| **group** | optional | String |  | Subfolder within iconSet |
+| **group** | optional | String (file path) |  | Subfolder path within iconSet |
 | **name** | either src or iconSet+name must be passed | String |  | SVG filename without .svg extension |
 | **preload** | optional | Array of svg option objects | | List of SVG items (property `name`, `src`, `group`, `iconSet`) to preload; will be fetched after `name` has been loaded |
 | **before** | optional | Mithril template or String | | Extra content before main content |

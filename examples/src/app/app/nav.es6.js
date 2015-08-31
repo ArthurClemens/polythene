@@ -1,7 +1,7 @@
 'use strict';
 
 import m from 'mithril';
-import p from 'polythene/polythene/polythene';
+require('polythene/polythene/polythene');
 import headerPanel from 'polythene/header-panel/header-panel';
 import iconBtn from 'polythene/icon-button/icon-button';
 
@@ -22,7 +22,7 @@ const btn = function (group, name, opts) {
 
 const toolbarRow = function (title, opts) {
     return [
-        btn('navigation', 'apps', opts),
+        btn('google/navigation', 'apps', opts),
         m('span.flex', title)
     ];
 };

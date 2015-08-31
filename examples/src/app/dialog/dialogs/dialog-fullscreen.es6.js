@@ -12,7 +12,7 @@ const fullscreenToolbarRow = function(title, opts) {
         m.component(iconBtn, {
             icon: {
                 svg: {
-                    group: 'navigation',
+                    group: 'google/navigation',
                     name: 'close'
                 }
             },
