@@ -1,6 +1,8 @@
 'use strict';
 
-import _ from 'lodash';
+import pluck from 'lodash/collection/pluck';
+import forEach from 'lodash/collection/forEach';
+import array from 'lodash/array';
 import m from 'mithril';
 import marked from 'marked';
 import list from 'polythene/list/list';
@@ -118,7 +120,7 @@ links = [{
 }];
 
 linkMap = {};
-_.forEach(_.flatten(_.pluck(links, 'links')), function(link) {
+forEach(array.flatten(pluck(links, 'links')), function(link) {
     linkMap[link.url] = link;
 });
 

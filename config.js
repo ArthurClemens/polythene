@@ -1,4 +1,5 @@
 System.config({
+    'defaultJSExtensions': true,
     'baseURL': '.',
     'transpiler': 'babel',
     'paths': {
@@ -7,7 +8,7 @@ System.config({
         '*.svg': '*.svg'
     },
     'map': {
-        'lodash': 'lib/lodash/lodash.min',
+        'lodash': 'lib/lodash',
         'marked': 'lib/marked/marked.min',
         'mithril': 'lib/mithril/mithril.min',
         'polythene': 'lib/polythene',

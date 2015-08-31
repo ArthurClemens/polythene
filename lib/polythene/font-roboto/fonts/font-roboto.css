@@ -1,0 +1,48 @@
+@font-face {
+  font-family: 'RobotoDraft';
+  font-style: italic;
+  font-weight: 400;
+  src: local("RobotoDraft Italic"), 
+    local("RobotoDraft-Italic"), 
+    url("robotodraft-f014a816b8c07c0dcd7e82ed1695d4b87798fec9.woff2") format("woff2"), 
+    url("robotodraft-ba86c818d3f88abb08afd97c27d0611e06b7aaa7.woff") format("woff"), 
+    url("robotodraft-18521a86019df7b9b2b6fe60ff90b5e730812e2e.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'RobotoDraft';
+  font-style: normal;
+  font-weight: 400;
+  /* IE6-8 compat */
+  src: url("robotodraft-e5c5f8e5c539947d13d9594ef6d53fef9d54e32d.eot");
+  src: local("RobotoDraft"), 
+    local("RobotoDraft-Regular"), 
+    url("robotodraft-46a04a3b45e5e0a8a916acd298f07b9ca2978daa.woff2") format("woff2"), 
+    url("robotodraft-ed6be76b9064405f57c54555b6e41a809ba3b01f.woff") format("woff"), 
+    url("robotodraft-b4258172d392cc36af8b12000de8e9eec84083e1.svg#RobotoDraft") format("svg"), 
+    url("robotodraft-e5c5f8e5c539947d13d9594ef6d53fef9d54e32d.eot") format("embedded-opentype"), 
+    url("robotodraft-42bfcd4deccb5b3ecd254c026cbb5733ab867da0.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'RobotoDraft';
+  font-style: normal;
+  font-weight: 500;
+  src: local("RobotoDraft Medium"), 
+    local("RobotoDraft-Medium"), 
+    url("robotodraft-a072d181e6b53c89a43e778490d4588b43d6543c.woff2") format("woff2"), 
+    url("robotodraft-ca6194e2a356a5fb2eaf1eefd38c5b92043b098b.woff") format("woff"), 
+    url("robotodraft-17c44e52f2b78c53a53d133f260b5945bcb91964.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'RobotoDraft';
+  font-style: normal;
+  font-weight: 700;
+  src: local("RobotoDraft Bold"), 
+    local("RobotoDraft-Bold"), 
+    url("robotodraft-f29ed1e24f2cd2ff7dd9161a495b39db6748bd9f.woff2") format("woff2"), 
+    url("robotodraft-806d04e7bac63dc157b620c0a5a41111f8980e50.woff") format("woff"), 
+    url("robotodraft-9457bd2fe9bbbb7c37cb84297f170b943ebeff5f.ttf") format("truetype");
+}
+
