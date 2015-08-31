@@ -1,6 +1,6 @@
 {
   "name": "polythene",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Polymer inspired modular implementation of Material Design for Mithril.",
   "license": "MIT",
   "main": "",
@@ -26,7 +26,7 @@
     "copy-material-colors": "mkdir -p lib/deps/material-colors/ && cp node_modules/material-colors/dist/colors.scss lib/deps/material-colors/",
     "copy-deps": "npm run copy-mdif && npm run copy-mdi && npm run copy-material-colors",
     "install-roboto-webfont": "webfont-dl \"https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic\" -o lib/font-roboto/fonts/font-roboto.css --font-out=lib/font-roboto/fonts --woff2=link --woff1==link --svg==link --ttf==link --eot==link",
-    "postinstall": "rm -rf external_modules && npm run install-mdif && npm run install-mdi && npm run copy-mdif && npm run copy-mdi && npm run copy-deps",
+    "postinstall": "rm -rf external_modules && npm run install-mdi && npm run copy-mdif && npm run copy-mdi && npm run copy-deps",
     "watch-css": "node scripts/watch-scss.js lib/",
     "watch-es6": "node scripts/watch-es6.js lib/",
     "watch": "npm run watch-css & npm run watch-es6",

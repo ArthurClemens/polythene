@@ -25,7 +25,7 @@
         "setup-symlink": "rm -rf src/lib/polythene && mkdir -p src/lib && cd .. && ln -s \"$(pwd)/lib/\" docs/src/lib/polythene",
         "setup-babel": "cd node_modules/babel-core && npm install",
         "copy-libs": "node scripts/copy-libs src/lib",
-        "copy-docs": "mkdir -p src/app/docs && cp ../lib/**/*.md src/app/docs/",
+        "copy-docs": "mkdir -p src/app/docs && find ../lib/ -name \"*.md\" -print0 | xargs -0 -I {} cp {} ./src/app/docs/",
         "watch-es6": "node ../scripts/watch-es6.js src/ src/lib/",
         "watch-css": "node ../scripts/watch-scss.js src/ src/lib/",
         "watch-doc": "node ../scripts/watch-doc.js ../lib/",
