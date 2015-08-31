@@ -1056,49 +1056,6 @@ var m = function a(b, c) {
 
 _removeDefine();
 })();
-System.registerDynamic("lib/polythene/list/list", ["lib/polythene/polythene/polythene", "lib/mithril/mithril.min", "lib/polythene/list-tile/list-tile", "lib/polythene/theme/list/list"], true, function(require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  "use strict";
-  Object.defineProperty(exports, "__esModule", {value: true});
-  function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : {"default": obj};
-  }
-  var _polythenePolythenePolythene = require("lib/polythene/polythene/polythene");
-  var _polythenePolythenePolythene2 = _interopRequireDefault(_polythenePolythenePolythene);
-  var _mithril = require("lib/mithril/mithril.min");
-  var _mithril2 = _interopRequireDefault(_mithril);
-  var _polytheneListTileListTile = require("lib/polythene/list-tile/list-tile");
-  var _polytheneListTileListTile2 = _interopRequireDefault(_polytheneListTileListTile);
-  require("lib/polythene/theme/list/list");
-  var createView = function createView(ctrl) {
-    var opts = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
-    var tag = opts.tag || "div";
-    var listModeClass = opts.mode ? opts.mode : null;
-    var props = {
-      "class": ["list", listModeClass, opts.hoverable ? "hoverable" : null, opts.header ? "has-subheader" : null, opts["class"]].join(" "),
-      config: opts.config
-    };
-    var headerOpts = undefined;
-    if (opts.header) {
-      headerOpts = Object.assign({}, opts.header);
-      headerOpts["class"] = ["subheader", headerOpts["class"] || null].join(" ");
-    }
-    var content = [headerOpts ? _mithril2["default"].component(_polytheneListTileListTile2["default"], headerOpts) : null, opts.tiles ? opts.tiles : null];
-    return (0, _mithril2["default"])(tag, props, _polythenePolythenePolythene2["default"].insertContent(content, opts));
-  };
-  var component = {view: function view(ctrl) {
-      var opts = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
-      return createView(ctrl, opts);
-    }};
-  exports["default"] = component;
-  module.exports = exports["default"];
-  global.define = __define;
-  return module.exports;
-});
-
 (function() {
 var _removeDefine = System.get("@@amd-helpers").createDefine();
 (function() {
@@ -2001,6 +1958,306 @@ System.registerDynamic("lib/polythene/list-tile/list-tile", ["lib/polythene/poly
   return module.exports;
 });
 
+System.registerDynamic("lib/polythene/card/card", ["lib/polythene/polythene/polythene", "lib/mithril/mithril.min", "lib/polythene/shadow/shadow", "lib/polythene/icon/icon", "lib/polythene/theme/card/card"], true, function(require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  "use strict";
+  Object.defineProperty(exports, "__esModule", {value: true});
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {"default": obj};
+  }
+  var _polythenePolythenePolythene = require("lib/polythene/polythene/polythene");
+  var _polythenePolythenePolythene2 = _interopRequireDefault(_polythenePolythenePolythene);
+  var _mithril = require("lib/mithril/mithril.min");
+  var _mithril2 = _interopRequireDefault(_mithril);
+  var _polytheneShadowShadow = require("lib/polythene/shadow/shadow");
+  var _polytheneShadowShadow2 = _interopRequireDefault(_polytheneShadowShadow);
+  var _polytheneIconIcon = require("lib/polythene/icon/icon");
+  var _polytheneIconIcon2 = _interopRequireDefault(_polytheneIconIcon);
+  require("lib/polythene/theme/card/card");
+  var imageRatios = {
+    landscape: 16 / 9,
+    square: 1
+  };
+  var contentMap = undefined;
+  var createOverlay = function createOverlay() {
+    var opts = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+    var tag = opts.tag || "div";
+    var className = ["overlay-content", opts["class"]].join(" ");
+    var content = opts.content.map(function(o) {
+      var key = Object.keys(o)[0];
+      return contentMap[key](o);
+    });
+    return (0, _mithril2["default"])(".overlay", [(0, _mithril2["default"])(tag, {"class": className}, content), (0, _mithril2["default"])(".image-dimmer")]);
+  };
+  var createText = function createText(o) {
+    var opts = o.text || {};
+    var className = ["text", opts["class"]].join(" ");
+    var tag = "div" || opts.tag;
+    return (0, _mithril2["default"])(tag, {"class": className}, _mithril2["default"].trust(opts.content));
+  };
+  var createMedia = function createMedia(o) {
+    var opts = o.media || {};
+    var ratio = opts.ratio || "landscape";
+    var origin = opts.origin || "center";
+    var className = ["media", opts.type || null, ratio, opts["class"]].join(" ");
+    var tag = "div" || opts.tag;
+    var initImage = function initImage(el, inited) {
+      if (inited) {
+        return;
+      }
+      var img = el.querySelector("img");
+      if (img) {
+        img.onload = function() {
+          var w = this.naturalWidth;
+          var h = this.naturalHeight;
+          var naturalRatio = w / h;
+          var cropClass = naturalRatio < imageRatios[ratio] ? "crop-x" : "crop-y";
+          img.className = cropClass;
+          if (origin !== "start") {
+            var clientWidth = el.clientWidth;
+            var clientHeight = el.clientHeight;
+            if (naturalRatio < imageRatios[ratio]) {
+              var imageHeight = clientWidth / naturalRatio;
+              var diff = clientHeight - imageHeight;
+              var offset = origin === "center" ? diff / 2 : diff;
+              this.style.marginTop = offset + "px";
+            } else {
+              var imageWidth = clientHeight * naturalRatio;
+              var diff = clientWidth - imageWidth;
+              var offset = origin === "center" ? diff / 2 : diff;
+              this.style.marginLeft = offset + "px";
+            }
+          }
+        };
+      }
+    };
+    return (0, _mithril2["default"])(tag, {
+      "class": className,
+      config: initImage
+    }, [opts.content, opts.overlay ? createOverlay(opts.overlay) : (0, _mithril2["default"])(".image-dimmer")]);
+  };
+  var createHeader = function createHeader(o) {
+    var opts = o.header || {};
+    var tag = opts.tag || "a.layout.horizontal.center";
+    var props = Object.assign({
+      "class": ["header", opts["class"]].join(" "),
+      config: opts.config
+    }, opts.url ? opts.url : null, opts.events ? opts.events : null);
+    return (0, _mithril2["default"])(tag, props, [opts.icon ? (0, _mithril2["default"])(".content-icon", _mithril2["default"].component(_polytheneIconIcon2["default"], opts.icon)) : null, (0, _mithril2["default"])(".title.flex", [opts.title ? _mithril2["default"].trust(opts.title) : null, opts.subtitle ? (0, _mithril2["default"])(".subtitle", _mithril2["default"].trust(opts.subtitle)) : null])]);
+  };
+  var createActions = function createActions(o) {
+    var opts = o.actions || {};
+    var tag = opts.tag || ".layout.horizontal.center";
+    var className = ["actions", opts["class"]].join(" ");
+    return (0, _mithril2["default"])(tag, {"class": className}, opts.content);
+  };
+  var createPrimary = function createPrimary(o) {
+    var className = undefined,
+        content = undefined,
+        key = undefined,
+        partOpts = undefined,
+        hasMedia = undefined;
+    var opts = o.primary || {};
+    var tag = ".layout.horizontal" || opts.tag;
+    className = ["primary", opts.media ? "has-media" : null, opts["class"]].join(" ");
+    hasMedia = false;
+    var lookup = {
+      title: function title(pops) {
+        return pops.attrs ? pops : (0, _mithril2["default"])(".title.flex", [pops.title ? _mithril2["default"].trust(pops.title) : null, pops.subtitle ? (0, _mithril2["default"])(".subtitle", _mithril2["default"].trust(pops.subtitle)) : null]);
+      },
+      media: function media(pops) {
+        hasMedia = true;
+        return (0, _mithril2["default"])("div", {"class": ["primary-media", pops.type].join(" ")}, createMedia({media: pops}));
+      },
+      actions: function actions(pops) {
+        return createActions({actions: pops});
+      }
+    };
+    if (Array.isArray(opts.content)) {
+      content = opts.content.map(function(part) {
+        key = Object.keys(part)[0];
+        partOpts = part[key];
+        if (lookup[key]) {
+          return lookup[key](partOpts);
+        } else {
+          return part;
+        }
+      });
+    } else {
+      content = [opts.title ? lookup.title({
+        title: opts.title,
+        subtitle: opts.subtitle
+      }) : null, opts.media ? lookup.media(opts.media) : null, opts.actions ? lookup.actions(opts.actions) : null];
+    }
+    if (hasMedia) {
+      className += " has-media";
+    }
+    return (0, _mithril2["default"])(tag, {"class": className}, content);
+  };
+  var createView = function createView(ctrl) {
+    var opts = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+    var tag = opts.tag || opts.url ? "a" : "div";
+    var props = Object.assign({
+      "class": ["card", opts["class"]].join(" "),
+      config: opts.config
+    }, opts.url ? opts.url : null, opts.events ? opts.events : null);
+    var content = opts.content.map(function(o) {
+      var key = Object.keys(o)[0];
+      return contentMap[key](o);
+    });
+    content.unshift(_mithril2["default"].component(_polytheneShadowShadow2["default"], {
+      z: ctrl.z(),
+      animated: true
+    }));
+    return (0, _mithril2["default"])(tag, props, _polythenePolythenePolythene2["default"].insertContent(content, opts));
+  };
+  contentMap = {
+    text: createText,
+    media: createMedia,
+    header: createHeader,
+    primary: createPrimary,
+    actions: createActions
+  };
+  var component = {
+    controller: function controller() {
+      var opts = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+      var z = opts.z !== undefined ? opts.z : 1;
+      return {z: _mithril2["default"].prop(z)};
+    },
+    view: function view(ctrl) {
+      var opts = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+      return createView(ctrl, opts);
+    }
+  };
+  exports["default"] = component;
+  module.exports = exports["default"];
+  global.define = __define;
+  return module.exports;
+});
+
+System.registerDynamic("lib/polythene/button/button", ["lib/polythene/polythene/polythene", "lib/mithril/mithril.min", "lib/polythene/ripple/ripple", "lib/polythene/shadow/shadow", "lib/polythene/theme/button/button"], true, function(require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  "use strict";
+  Object.defineProperty(exports, "__esModule", {value: true});
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {"default": obj};
+  }
+  var _polythenePolythenePolythene = require("lib/polythene/polythene/polythene");
+  var _polythenePolythenePolythene2 = _interopRequireDefault(_polythenePolythenePolythene);
+  var _mithril = require("lib/mithril/mithril.min");
+  var _mithril2 = _interopRequireDefault(_mithril);
+  var _polytheneRippleRipple = require("lib/polythene/ripple/ripple");
+  var _polytheneRippleRipple2 = _interopRequireDefault(_polytheneRippleRipple);
+  var _polytheneShadowShadow = require("lib/polythene/shadow/shadow");
+  var _polytheneShadowShadow2 = _interopRequireDefault(_polytheneShadowShadow);
+  require("lib/polythene/theme/button/button");
+  var tapStart = undefined,
+      tapEnd = undefined;
+  var initTapEvents = function initTapEvents(el, ctrl, opts) {
+    var tapHandler = function tapHandler(evt) {
+      var baseZ = ctrl.baseZ();
+      if (baseZ === 5) {
+        return;
+      }
+      var MAX_Z = 5;
+      var increase = opts.increase || 1;
+      var z = ctrl.z();
+      if (evt === "down") {
+        z = z + increase;
+        z = Math.min(z, MAX_Z);
+      } else if (evt === "up") {
+        z = z - increase;
+        z = Math.max(z, baseZ);
+      }
+      ctrl.z(z);
+      _mithril2["default"].redraw();
+    };
+    tapStart = function() {
+      tapHandler("down");
+    };
+    tapEnd = function() {
+      tapHandler("up");
+    };
+    el.addEventListener("mousedown", tapStart);
+    el.addEventListener("mouseup", tapEnd);
+  };
+  var clearTapEvents = function clearTapEvents(el) {
+    el.removeEventListener("mousedown", tapStart);
+    el.removeEventListener("mouseup", tapEnd);
+  };
+  var createView = function createView(ctrl) {
+    var opts = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+    var tag = undefined,
+        label = undefined;
+    opts.ripple = opts.ripple || {};
+    opts.shadow = opts.shadow || {};
+    tag = opts.tag || "a";
+    var noink = opts.ink !== undefined && !opts.ink;
+    var disabled = opts.disabled === true;
+    if (disabled) {
+      tag += "[disabled]";
+    }
+    if (noink) {
+      tag += ".noink";
+    }
+    if (opts.raised) {
+      tag += ".raised";
+    }
+    var props0 = {"class": [opts.parentClass || "button", opts.selected ? "selected" : null, opts["class"]].join(" ")};
+    var props = !disabled ? Object.assign({}, props0, {config: function config(el, isInited, context) {
+        if (opts.config) {
+          opts.config(el, isInited, context);
+        }
+        if (isInited) {
+          return;
+        }
+        initTapEvents(el, ctrl, opts.shadow);
+        context.onunload = function() {
+          clearTapEvents(el);
+        };
+      }}, opts.url ? opts.url : null, opts.events ? opts.events : null) : props0;
+    label = null;
+    if (opts.content) {
+      label = opts.content;
+    } else if (opts.label) {
+      if (typeof opts.label === "object") {
+        label = opts.label;
+      } else {
+        label = (0, _mithril2["default"])(".label", opts.label);
+      }
+    }
+    var content = (0, _mithril2["default"])("div", {"class": "content"}, [label, disabled || noink ? null : _mithril2["default"].component(_polytheneRippleRipple2["default"], opts.ripple), disabled || opts.wash !== undefined && !opts.wash ? null : (0, _mithril2["default"])(".wash.fit"), opts.raised && !disabled ? _mithril2["default"].component(_polytheneShadowShadow2["default"], {
+      z: ctrl.z(),
+      animated: true
+    }) : null]);
+    return (0, _mithril2["default"])(tag, props, _polythenePolythenePolythene2["default"].insertContent(content, opts));
+  };
+  var component = {
+    controller: function controller() {
+      var opts = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+      var z = opts.z !== undefined ? opts.z : 1;
+      return {
+        baseZ: _mithril2["default"].prop(z),
+        z: _mithril2["default"].prop(z)
+      };
+    },
+    view: function view(ctrl) {
+      var opts = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+      return createView(ctrl, opts);
+    }
+  };
+  exports["default"] = component;
+  module.exports = exports["default"];
+  global.define = __define;
+  return module.exports;
+});
+
 System.registerDynamic("lib/polythene/header-panel/header-panel", ["lib/polythene/polythene/polythene", "lib/mithril/mithril.min", "lib/polythene/toolbar/toolbar", "lib/polythene/theme/header-panel/header-panel"], true, function(require, exports, module) {
   ;
   var global = this,
@@ -2357,7 +2614,7 @@ System.registerDynamic("lib/polythene/header-panel/header-panel", ["lib/polythen
   return module.exports;
 });
 
-System.registerDynamic("lib/polythene/card/card", ["lib/polythene/polythene/polythene", "lib/mithril/mithril.min", "lib/polythene/shadow/shadow", "lib/polythene/icon/icon", "lib/polythene/theme/card/card"], true, function(require, exports, module) {
+System.registerDynamic("lib/polythene/list/list", ["lib/polythene/polythene/polythene", "lib/mithril/mithril.min", "lib/polythene/list-tile/list-tile", "lib/polythene/theme/list/list"], true, function(require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -2371,166 +2628,29 @@ System.registerDynamic("lib/polythene/card/card", ["lib/polythene/polythene/poly
   var _polythenePolythenePolythene2 = _interopRequireDefault(_polythenePolythenePolythene);
   var _mithril = require("lib/mithril/mithril.min");
   var _mithril2 = _interopRequireDefault(_mithril);
-  var _polytheneShadowShadow = require("lib/polythene/shadow/shadow");
-  var _polytheneShadowShadow2 = _interopRequireDefault(_polytheneShadowShadow);
-  var _polytheneIconIcon = require("lib/polythene/icon/icon");
-  var _polytheneIconIcon2 = _interopRequireDefault(_polytheneIconIcon);
-  require("lib/polythene/theme/card/card");
-  var imageRatios = {
-    landscape: 16 / 9,
-    square: 1
-  };
-  var contentMap = undefined;
-  var createOverlay = function createOverlay() {
-    var opts = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-    var tag = opts.tag || "div";
-    var className = ["overlay-content", opts["class"]].join(" ");
-    var content = opts.content.map(function(o) {
-      var key = Object.keys(o)[0];
-      return contentMap[key](o);
-    });
-    return (0, _mithril2["default"])(".overlay", [(0, _mithril2["default"])(tag, {"class": className}, content), (0, _mithril2["default"])(".image-dimmer")]);
-  };
-  var createText = function createText(o) {
-    var opts = o.text || {};
-    var className = ["text", opts["class"]].join(" ");
-    var tag = "div" || opts.tag;
-    return (0, _mithril2["default"])(tag, {"class": className}, _mithril2["default"].trust(opts.content));
-  };
-  var createMedia = function createMedia(o) {
-    var opts = o.media || {};
-    var ratio = opts.ratio || "landscape";
-    var origin = opts.origin || "center";
-    var className = ["media", opts.type || null, ratio, opts["class"]].join(" ");
-    var tag = "div" || opts.tag;
-    var initImage = function initImage(el, inited) {
-      if (inited) {
-        return;
-      }
-      var img = el.querySelector("img");
-      if (img) {
-        img.onload = function() {
-          var w = this.naturalWidth;
-          var h = this.naturalHeight;
-          var naturalRatio = w / h;
-          var cropClass = naturalRatio < imageRatios[ratio] ? "crop-x" : "crop-y";
-          img.className = cropClass;
-          if (origin !== "start") {
-            var clientWidth = el.clientWidth;
-            var clientHeight = el.clientHeight;
-            if (naturalRatio < imageRatios[ratio]) {
-              var imageHeight = clientWidth / naturalRatio;
-              var diff = clientHeight - imageHeight;
-              var offset = origin === "center" ? diff / 2 : diff;
-              this.style.marginTop = offset + "px";
-            } else {
-              var imageWidth = clientHeight * naturalRatio;
-              var diff = clientWidth - imageWidth;
-              var offset = origin === "center" ? diff / 2 : diff;
-              this.style.marginLeft = offset + "px";
-            }
-          }
-        };
-      }
-    };
-    return (0, _mithril2["default"])(tag, {
-      "class": className,
-      config: initImage
-    }, [opts.content, opts.overlay ? createOverlay(opts.overlay) : (0, _mithril2["default"])(".image-dimmer")]);
-  };
-  var createHeader = function createHeader(o) {
-    var opts = o.header || {};
-    var tag = opts.tag || "a.layout.horizontal.center";
-    var props = Object.assign({
-      "class": ["header", opts["class"]].join(" "),
-      config: opts.config
-    }, opts.url ? opts.url : null, opts.events ? opts.events : null);
-    return (0, _mithril2["default"])(tag, props, [opts.icon ? (0, _mithril2["default"])(".content-icon", _mithril2["default"].component(_polytheneIconIcon2["default"], opts.icon)) : null, (0, _mithril2["default"])(".title.flex", [opts.title ? _mithril2["default"].trust(opts.title) : null, opts.subtitle ? (0, _mithril2["default"])(".subtitle", _mithril2["default"].trust(opts.subtitle)) : null])]);
-  };
-  var createActions = function createActions(o) {
-    var opts = o.actions || {};
-    var tag = opts.tag || ".layout.horizontal.center";
-    var className = ["actions", opts["class"]].join(" ");
-    return (0, _mithril2["default"])(tag, {"class": className}, opts.content);
-  };
-  var createPrimary = function createPrimary(o) {
-    var className = undefined,
-        content = undefined,
-        key = undefined,
-        partOpts = undefined,
-        hasMedia = undefined;
-    var opts = o.primary || {};
-    var tag = ".layout.horizontal" || opts.tag;
-    className = ["primary", opts.media ? "has-media" : null, opts["class"]].join(" ");
-    hasMedia = false;
-    var lookup = {
-      title: function title(pops) {
-        return pops.attrs ? pops : (0, _mithril2["default"])(".title.flex", [pops.title ? _mithril2["default"].trust(pops.title) : null, pops.subtitle ? (0, _mithril2["default"])(".subtitle", _mithril2["default"].trust(pops.subtitle)) : null]);
-      },
-      media: function media(pops) {
-        hasMedia = true;
-        return (0, _mithril2["default"])("div", {"class": ["primary-media", pops.type].join(" ")}, createMedia({media: pops}));
-      },
-      actions: function actions(pops) {
-        return createActions({actions: pops});
-      }
-    };
-    if (Array.isArray(opts.content)) {
-      content = opts.content.map(function(part) {
-        key = Object.keys(part)[0];
-        partOpts = part[key];
-        if (lookup[key]) {
-          return lookup[key](partOpts);
-        } else {
-          return part;
-        }
-      });
-    } else {
-      content = [opts.title ? lookup.title({
-        title: opts.title,
-        subtitle: opts.subtitle
-      }) : null, opts.media ? lookup.media(opts.media) : null, opts.actions ? lookup.actions(opts.actions) : null];
-    }
-    if (hasMedia) {
-      className += " has-media";
-    }
-    return (0, _mithril2["default"])(tag, {"class": className}, content);
-  };
+  var _polytheneListTileListTile = require("lib/polythene/list-tile/list-tile");
+  var _polytheneListTileListTile2 = _interopRequireDefault(_polytheneListTileListTile);
+  require("lib/polythene/theme/list/list");
   var createView = function createView(ctrl) {
     var opts = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
-    var tag = opts.tag || opts.url ? "a" : "div";
-    var props = Object.assign({
-      "class": ["card", opts["class"]].join(" "),
+    var tag = opts.tag || "div";
+    var listModeClass = opts.mode ? opts.mode : null;
+    var props = {
+      "class": ["list", listModeClass, opts.hoverable ? "hoverable" : null, opts.header ? "has-subheader" : null, opts["class"]].join(" "),
       config: opts.config
-    }, opts.url ? opts.url : null, opts.events ? opts.events : null);
-    var content = opts.content.map(function(o) {
-      var key = Object.keys(o)[0];
-      return contentMap[key](o);
-    });
-    content.unshift(_mithril2["default"].component(_polytheneShadowShadow2["default"], {
-      z: ctrl.z(),
-      animated: true
-    }));
+    };
+    var headerOpts = undefined;
+    if (opts.header) {
+      headerOpts = Object.assign({}, opts.header);
+      headerOpts["class"] = ["subheader", headerOpts["class"] || null].join(" ");
+    }
+    var content = [headerOpts ? _mithril2["default"].component(_polytheneListTileListTile2["default"], headerOpts) : null, opts.tiles ? opts.tiles : null];
     return (0, _mithril2["default"])(tag, props, _polythenePolythenePolythene2["default"].insertContent(content, opts));
   };
-  contentMap = {
-    text: createText,
-    media: createMedia,
-    header: createHeader,
-    primary: createPrimary,
-    actions: createActions
-  };
-  var component = {
-    controller: function controller() {
-      var opts = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-      var z = opts.z !== undefined ? opts.z : 1;
-      return {z: _mithril2["default"].prop(z)};
-    },
-    view: function view(ctrl) {
+  var component = {view: function view(ctrl) {
       var opts = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
       return createView(ctrl, opts);
-    }
-  };
+    }};
   exports["default"] = component;
   module.exports = exports["default"];
   global.define = __define;
@@ -2550,126 +2670,6 @@ System.registerDynamic("lib/polythene/theme/theme", ["lib/polythene/layout/layou
     return "ontouchstart" in window || navigator.MaxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
   };
   document.querySelector("html").classList.add(isTouchDevice() ? "touch" : "no-touch");
-  global.define = __define;
-  return module.exports;
-});
-
-System.registerDynamic("lib/polythene/button/button", ["lib/polythene/polythene/polythene", "lib/mithril/mithril.min", "lib/polythene/ripple/ripple", "lib/polythene/shadow/shadow", "lib/polythene/theme/button/button"], true, function(require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  "use strict";
-  Object.defineProperty(exports, "__esModule", {value: true});
-  function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : {"default": obj};
-  }
-  var _polythenePolythenePolythene = require("lib/polythene/polythene/polythene");
-  var _polythenePolythenePolythene2 = _interopRequireDefault(_polythenePolythenePolythene);
-  var _mithril = require("lib/mithril/mithril.min");
-  var _mithril2 = _interopRequireDefault(_mithril);
-  var _polytheneRippleRipple = require("lib/polythene/ripple/ripple");
-  var _polytheneRippleRipple2 = _interopRequireDefault(_polytheneRippleRipple);
-  var _polytheneShadowShadow = require("lib/polythene/shadow/shadow");
-  var _polytheneShadowShadow2 = _interopRequireDefault(_polytheneShadowShadow);
-  require("lib/polythene/theme/button/button");
-  var tapStart = undefined,
-      tapEnd = undefined;
-  var initTapEvents = function initTapEvents(el, ctrl, opts) {
-    var tapHandler = function tapHandler(evt) {
-      var baseZ = ctrl.baseZ();
-      if (baseZ === 5) {
-        return;
-      }
-      var MAX_Z = 5;
-      var increase = opts.increase || 1;
-      var z = ctrl.z();
-      if (evt === "down") {
-        z = z + increase;
-        z = Math.min(z, MAX_Z);
-      } else if (evt === "up") {
-        z = z - increase;
-        z = Math.max(z, baseZ);
-      }
-      ctrl.z(z);
-      _mithril2["default"].redraw();
-    };
-    tapStart = function() {
-      tapHandler("down");
-    };
-    tapEnd = function() {
-      tapHandler("up");
-    };
-    el.addEventListener("mousedown", tapStart);
-    el.addEventListener("mouseup", tapEnd);
-  };
-  var clearTapEvents = function clearTapEvents(el) {
-    el.removeEventListener("mousedown", tapStart);
-    el.removeEventListener("mouseup", tapEnd);
-  };
-  var createView = function createView(ctrl) {
-    var opts = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
-    var tag = undefined,
-        label = undefined;
-    opts.ripple = opts.ripple || {};
-    opts.shadow = opts.shadow || {};
-    tag = opts.tag || "a";
-    var noink = opts.ink !== undefined && !opts.ink;
-    var disabled = opts.disabled === true;
-    if (disabled) {
-      tag += "[disabled]";
-    }
-    if (noink) {
-      tag += ".noink";
-    }
-    if (opts.raised) {
-      tag += ".raised";
-    }
-    var props0 = {"class": [opts.parentClass || "button", opts.selected ? "selected" : null, opts["class"]].join(" ")};
-    var props = !disabled ? Object.assign({}, props0, {config: function config(el, isInited, context) {
-        if (opts.config) {
-          opts.config(el, isInited, context);
-        }
-        if (isInited) {
-          return;
-        }
-        initTapEvents(el, ctrl, opts.shadow);
-        context.onunload = function() {
-          clearTapEvents(el);
-        };
-      }}, opts.url ? opts.url : null, opts.events ? opts.events : null) : props0;
-    label = null;
-    if (opts.content) {
-      label = opts.content;
-    } else if (opts.label) {
-      if (typeof opts.label === "object") {
-        label = opts.label;
-      } else {
-        label = (0, _mithril2["default"])(".label", opts.label);
-      }
-    }
-    var content = (0, _mithril2["default"])("div", {"class": "content"}, [label, disabled || noink ? null : _mithril2["default"].component(_polytheneRippleRipple2["default"], opts.ripple), disabled || opts.wash !== undefined && !opts.wash ? null : (0, _mithril2["default"])(".wash.fit"), opts.raised && !disabled ? _mithril2["default"].component(_polytheneShadowShadow2["default"], {
-      z: ctrl.z(),
-      animated: true
-    }) : null]);
-    return (0, _mithril2["default"])(tag, props, _polythenePolythenePolythene2["default"].insertContent(content, opts));
-  };
-  var component = {
-    controller: function controller() {
-      var opts = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-      var z = opts.z !== undefined ? opts.z : 1;
-      return {
-        baseZ: _mithril2["default"].prop(z),
-        z: _mithril2["default"].prop(z)
-      };
-    },
-    view: function view(ctrl) {
-      var opts = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
-      return createView(ctrl, opts);
-    }
-  };
-  exports["default"] = component;
-  module.exports = exports["default"];
   global.define = __define;
   return module.exports;
 });
@@ -3247,6 +3247,20 @@ System.registerDynamic("lib/lodash/array/remove", ["lib/lodash/internal/baseCall
   return module.exports;
 });
 
+System.registerDynamic("lib/lodash/array/rest", ["lib/lodash/array/drop"], true, function(require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  var drop = require("lib/lodash/array/drop");
+  function rest(array) {
+    return drop(array, 1);
+  }
+  module.exports = rest;
+  global.define = __define;
+  return module.exports;
+});
+
 System.registerDynamic("lib/lodash/array/slice", ["lib/lodash/internal/baseSlice", "lib/lodash/internal/isIterateeCall"], true, function(require, exports, module) {
   ;
   var global = this,
@@ -3266,20 +3280,6 @@ System.registerDynamic("lib/lodash/array/slice", ["lib/lodash/internal/baseSlice
     return baseSlice(array, start, end);
   }
   module.exports = slice;
-  global.define = __define;
-  return module.exports;
-});
-
-System.registerDynamic("lib/lodash/array/rest", ["lib/lodash/array/drop"], true, function(require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  var drop = require("lib/lodash/array/drop");
-  function rest(array) {
-    return drop(array, 1);
-  }
-  module.exports = rest;
   global.define = __define;
   return module.exports;
 });
@@ -3699,18 +3699,6 @@ System.registerDynamic("lib/polythene/polythene/polythene", [], true, function(r
   return module.exports;
 });
 
-System.registerDynamic("lib/polythene/theme/list/list", ["lib/polythene/theme/list/list.css!lib/system-css/css", "lib/polythene/theme/list/list-color.css!lib/system-css/css"], true, function(require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  "use strict";
-  require("lib/polythene/theme/list/list.css!lib/system-css/css");
-  require("lib/polythene/theme/list/list-color.css!lib/system-css/css");
-  global.define = __define;
-  return module.exports;
-});
-
 System.registerDynamic("lib/polythene/icon/icon", ["lib/polythene/polythene/polythene", "lib/mithril/mithril.min", "lib/polythene/svg/svg", "lib/polythene/theme/icon/icon"], true, function(require, exports, module) {
   ;
   var global = this,
@@ -3771,73 +3759,6 @@ System.registerDynamic("lib/polythene/theme/list-tile/list-tile", ["lib/polythen
   return module.exports;
 });
 
-System.registerDynamic("lib/polythene/toolbar/toolbar", ["lib/polythene/polythene/polythene", "lib/mithril/mithril.min", "lib/polythene/theme/toolbar/toolbar"], true, function(require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  "use strict";
-  Object.defineProperty(exports, "__esModule", {value: true});
-  function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : {"default": obj};
-  }
-  var _polythenePolythenePolythene = require("lib/polythene/polythene/polythene");
-  var _polythenePolythenePolythene2 = _interopRequireDefault(_polythenePolythenePolythene);
-  var _mithril = require("lib/mithril/mithril.min");
-  var _mithril2 = _interopRequireDefault(_mithril);
-  require("lib/polythene/theme/toolbar/toolbar");
-  var barWrapper = function barWrapper(className, content) {
-    return (0, _mithril2["default"])("div.center.horizontal.layout", {"class": ["toolbar-tools", className].join(" ")}, content);
-  };
-  var bar = function bar() {
-    var opts = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-    var bars = [];
-    if (opts.content) {
-      bars.push(barWrapper("topBar", opts.content));
-    } else {
-      if (opts.topBar) {
-        bars.push(barWrapper("topBar", opts.topBar));
-      }
-      if (opts.middleBar) {
-        bars.push(barWrapper("middleBar", opts.middleBar));
-      }
-      if (opts.bottomBar) {
-        bars.push(barWrapper("bottomBar", opts.bottomBar));
-      }
-    }
-    return bars;
-  };
-  var createView = function createView(ctrl) {
-    var opts = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
-    var tag = opts.tag || "div";
-    var props = {
-      "class": ["toolbar animate", opts.mode || "standard", opts["class"]].join(" "),
-      config: opts.config
-    };
-    var content = bar(opts);
-    return (0, _mithril2["default"])(tag, props, _polythenePolythenePolythene2["default"].insertContent(content, opts));
-  };
-  var component = {view: function view(ctrl) {
-      var opts = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
-      return createView(ctrl, opts);
-    }};
-  exports["default"] = component;
-  module.exports = exports["default"];
-  global.define = __define;
-  return module.exports;
-});
-
-System.registerDynamic("lib/polythene/theme/header-panel/header-panel", ["lib/polythene/theme/header-panel/header-panel.css!lib/system-css/css"], true, function(require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  "use strict";
-  require("lib/polythene/theme/header-panel/header-panel.css!lib/system-css/css");
-  global.define = __define;
-  return module.exports;
-});
-
 System.registerDynamic("lib/polythene/shadow/shadow", ["lib/mithril/mithril.min", "lib/polythene/theme/shadow/shadow"], true, function(require, exports, module) {
   ;
   var global = this,
@@ -3881,28 +3802,6 @@ System.registerDynamic("lib/polythene/theme/card/card", ["lib/polythene/theme/ca
   "use strict";
   require("lib/polythene/theme/card/card.css!lib/system-css/css");
   require("lib/polythene/theme/card/card-color.css!lib/system-css/css");
-  global.define = __define;
-  return module.exports;
-});
-
-System.registerDynamic("lib/polythene/layout/layout", ["lib/polythene/theme/layout/layout"], true, function(require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  "use strict";
-  require("lib/polythene/theme/layout/layout");
-  global.define = __define;
-  return module.exports;
-});
-
-System.registerDynamic("lib/polythene/font-roboto/font-roboto", ["lib/polythene/font-roboto/font-roboto.css!lib/system-css/css"], true, function(require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  "use strict";
-  require("lib/polythene/font-roboto/font-roboto.css!lib/system-css/css");
   global.define = __define;
   return module.exports;
 });
@@ -4048,6 +3947,107 @@ System.registerDynamic("lib/polythene/theme/button/button", ["lib/polythene/them
   "use strict";
   require("lib/polythene/theme/button/button.css!lib/system-css/css");
   require("lib/polythene/theme/button/button-color.css!lib/system-css/css");
+  global.define = __define;
+  return module.exports;
+});
+
+System.registerDynamic("lib/polythene/toolbar/toolbar", ["lib/polythene/polythene/polythene", "lib/mithril/mithril.min", "lib/polythene/theme/toolbar/toolbar"], true, function(require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  "use strict";
+  Object.defineProperty(exports, "__esModule", {value: true});
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {"default": obj};
+  }
+  var _polythenePolythenePolythene = require("lib/polythene/polythene/polythene");
+  var _polythenePolythenePolythene2 = _interopRequireDefault(_polythenePolythenePolythene);
+  var _mithril = require("lib/mithril/mithril.min");
+  var _mithril2 = _interopRequireDefault(_mithril);
+  require("lib/polythene/theme/toolbar/toolbar");
+  var barWrapper = function barWrapper(className, content) {
+    return (0, _mithril2["default"])("div.center.horizontal.layout", {"class": ["toolbar-tools", className].join(" ")}, content);
+  };
+  var bar = function bar() {
+    var opts = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+    var bars = [];
+    if (opts.content) {
+      bars.push(barWrapper("topBar", opts.content));
+    } else {
+      if (opts.topBar) {
+        bars.push(barWrapper("topBar", opts.topBar));
+      }
+      if (opts.middleBar) {
+        bars.push(barWrapper("middleBar", opts.middleBar));
+      }
+      if (opts.bottomBar) {
+        bars.push(barWrapper("bottomBar", opts.bottomBar));
+      }
+    }
+    return bars;
+  };
+  var createView = function createView(ctrl) {
+    var opts = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+    var tag = opts.tag || "div";
+    var props = {
+      "class": ["toolbar animate", opts.mode || "standard", opts["class"]].join(" "),
+      config: opts.config
+    };
+    var content = bar(opts);
+    return (0, _mithril2["default"])(tag, props, _polythenePolythenePolythene2["default"].insertContent(content, opts));
+  };
+  var component = {view: function view(ctrl) {
+      var opts = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+      return createView(ctrl, opts);
+    }};
+  exports["default"] = component;
+  module.exports = exports["default"];
+  global.define = __define;
+  return module.exports;
+});
+
+System.registerDynamic("lib/polythene/theme/header-panel/header-panel", ["lib/polythene/theme/header-panel/header-panel.css!lib/system-css/css"], true, function(require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  "use strict";
+  require("lib/polythene/theme/header-panel/header-panel.css!lib/system-css/css");
+  global.define = __define;
+  return module.exports;
+});
+
+System.registerDynamic("lib/polythene/theme/list/list", ["lib/polythene/theme/list/list.css!lib/system-css/css", "lib/polythene/theme/list/list-color.css!lib/system-css/css"], true, function(require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  "use strict";
+  require("lib/polythene/theme/list/list.css!lib/system-css/css");
+  require("lib/polythene/theme/list/list-color.css!lib/system-css/css");
+  global.define = __define;
+  return module.exports;
+});
+
+System.registerDynamic("lib/polythene/layout/layout", ["lib/polythene/theme/layout/layout"], true, function(require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  "use strict";
+  require("lib/polythene/theme/layout/layout");
+  global.define = __define;
+  return module.exports;
+});
+
+System.registerDynamic("lib/polythene/font-roboto/font-roboto", ["lib/polythene/font-roboto/font-roboto.css!lib/system-css/css"], true, function(require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  "use strict";
+  require("lib/polythene/font-roboto/font-roboto.css!lib/system-css/css");
   global.define = __define;
   return module.exports;
 });
@@ -4282,30 +4282,6 @@ System.registerDynamic("lib/lodash/internal/bindCallback", ["lib/lodash/utility/
   return module.exports;
 });
 
-System.registerDynamic("lib/lodash/internal/isIterateeCall", ["lib/lodash/internal/isArrayLike", "lib/lodash/internal/isIndex", "lib/lodash/lang/isObject"], true, function(require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  var isArrayLike = require("lib/lodash/internal/isArrayLike"),
-      isIndex = require("lib/lodash/internal/isIndex"),
-      isObject = require("lib/lodash/lang/isObject");
-  function isIterateeCall(value, index, object) {
-    if (!isObject(object)) {
-      return false;
-    }
-    var type = typeof index;
-    if (type == 'number' ? (isArrayLike(object) && isIndex(index, object.length)) : (type == 'string' && index in object)) {
-      var other = object[index];
-      return value === value ? (value === other) : (other !== other);
-    }
-    return false;
-  }
-  module.exports = isIterateeCall;
-  global.define = __define;
-  return module.exports;
-});
-
 System.registerDynamic("lib/lodash/internal/baseSlice", [], true, function(require, exports, module) {
   ;
   var global = this,
@@ -4331,6 +4307,30 @@ System.registerDynamic("lib/lodash/internal/baseSlice", [], true, function(requi
     return result;
   }
   module.exports = baseSlice;
+  global.define = __define;
+  return module.exports;
+});
+
+System.registerDynamic("lib/lodash/internal/isIterateeCall", ["lib/lodash/internal/isArrayLike", "lib/lodash/internal/isIndex", "lib/lodash/lang/isObject"], true, function(require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  var isArrayLike = require("lib/lodash/internal/isArrayLike"),
+      isIndex = require("lib/lodash/internal/isIndex"),
+      isObject = require("lib/lodash/lang/isObject");
+  function isIterateeCall(value, index, object) {
+    if (!isObject(object)) {
+      return false;
+    }
+    var type = typeof index;
+    if (type == 'number' ? (isArrayLike(object) && isIndex(index, object.length)) : (type == 'string' && index in object)) {
+      var other = object[index];
+      return value === value ? (value === other) : (other !== other);
+    }
+    return false;
+  }
+  module.exports = isIterateeCall;
   global.define = __define;
   return module.exports;
 });
@@ -4414,19 +4414,6 @@ System.registerDynamic("lib/lodash/internal/baseFlatten", ["lib/lodash/internal/
   return module.exports;
 });
 
-System.registerDynamic("lib/lodash/internal/isObjectLike", [], true, function(require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  function isObjectLike(value) {
-    return !!value && typeof value == 'object';
-  }
-  module.exports = isObjectLike;
-  global.define = __define;
-  return module.exports;
-});
-
 System.registerDynamic("lib/lodash/internal/isArrayLike", ["lib/lodash/internal/getLength", "lib/lodash/internal/isLength"], true, function(require, exports, module) {
   ;
   var global = this,
@@ -4438,6 +4425,19 @@ System.registerDynamic("lib/lodash/internal/isArrayLike", ["lib/lodash/internal/
     return value != null && isLength(getLength(value));
   }
   module.exports = isArrayLike;
+  global.define = __define;
+  return module.exports;
+});
+
+System.registerDynamic("lib/lodash/internal/isObjectLike", [], true, function(require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  function isObjectLike(value) {
+    return !!value && typeof value == 'object';
+  }
+  module.exports = isObjectLike;
   global.define = __define;
   return module.exports;
 });
@@ -5014,17 +5014,6 @@ System.registerDynamic("lib/polythene/theme/icon/icon", ["lib/polythene/theme/ic
   return module.exports;
 });
 
-System.registerDynamic("lib/polythene/theme/toolbar/toolbar", ["lib/polythene/theme/toolbar/toolbar.css!lib/system-css/css"], true, function(require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  "use strict";
-  require("lib/polythene/theme/toolbar/toolbar.css!lib/system-css/css");
-  global.define = __define;
-  return module.exports;
-});
-
 System.registerDynamic("lib/polythene/theme/shadow/shadow", ["lib/polythene/theme/shadow/shadow.css!lib/system-css/css"], true, function(require, exports, module) {
   ;
   var global = this,
@@ -5032,6 +5021,28 @@ System.registerDynamic("lib/polythene/theme/shadow/shadow", ["lib/polythene/them
   global.define = undefined;
   "use strict";
   require("lib/polythene/theme/shadow/shadow.css!lib/system-css/css");
+  global.define = __define;
+  return module.exports;
+});
+
+System.registerDynamic("lib/polythene/theme/ripple/ripple", ["lib/polythene/theme/ripple/ripple.css!lib/system-css/css"], true, function(require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  "use strict";
+  require("lib/polythene/theme/ripple/ripple.css!lib/system-css/css");
+  global.define = __define;
+  return module.exports;
+});
+
+System.registerDynamic("lib/polythene/theme/toolbar/toolbar", ["lib/polythene/theme/toolbar/toolbar.css!lib/system-css/css"], true, function(require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  "use strict";
+  require("lib/polythene/theme/toolbar/toolbar.css!lib/system-css/css");
   global.define = __define;
   return module.exports;
 });
@@ -5047,13 +5058,31 @@ System.registerDynamic("lib/polythene/theme/layout/layout", ["lib/polythene/them
   return module.exports;
 });
 
-System.registerDynamic("lib/polythene/theme/ripple/ripple", ["lib/polythene/theme/ripple/ripple.css!lib/system-css/css"], true, function(require, exports, module) {
+System.registerDynamic("lib/lodash/internal/baseMatches", ["lib/lodash/internal/baseIsMatch", "lib/lodash/internal/getMatchData", "lib/lodash/internal/toObject"], true, function(require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  "use strict";
-  require("lib/polythene/theme/ripple/ripple.css!lib/system-css/css");
+  var baseIsMatch = require("lib/lodash/internal/baseIsMatch"),
+      getMatchData = require("lib/lodash/internal/getMatchData"),
+      toObject = require("lib/lodash/internal/toObject");
+  function baseMatches(source) {
+    var matchData = getMatchData(source);
+    if (matchData.length == 1 && matchData[0][2]) {
+      var key = matchData[0][0],
+          value = matchData[0][1];
+      return function(object) {
+        if (object == null) {
+          return false;
+        }
+        return object[key] === value && (value !== undefined || (key in toObject(object)));
+      };
+    }
+    return function(object) {
+      return baseIsMatch(object, matchData);
+    };
+  }
+  module.exports = baseMatches;
   global.define = __define;
   return module.exports;
 });
@@ -5095,35 +5124,6 @@ System.registerDynamic("lib/lodash/internal/baseMatchesProperty", ["lib/lodash/i
     };
   }
   module.exports = baseMatchesProperty;
-  global.define = __define;
-  return module.exports;
-});
-
-System.registerDynamic("lib/lodash/internal/baseMatches", ["lib/lodash/internal/baseIsMatch", "lib/lodash/internal/getMatchData", "lib/lodash/internal/toObject"], true, function(require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  var baseIsMatch = require("lib/lodash/internal/baseIsMatch"),
-      getMatchData = require("lib/lodash/internal/getMatchData"),
-      toObject = require("lib/lodash/internal/toObject");
-  function baseMatches(source) {
-    var matchData = getMatchData(source);
-    if (matchData.length == 1 && matchData[0][2]) {
-      var key = matchData[0][0],
-          value = matchData[0][1];
-      return function(object) {
-        if (object == null) {
-          return false;
-        }
-        return object[key] === value && (value !== undefined || (key in toObject(object)));
-      };
-    }
-    return function(object) {
-      return baseIsMatch(object, matchData);
-    };
-  }
-  module.exports = baseMatches;
   global.define = __define;
   return module.exports;
 });
@@ -5426,42 +5426,6 @@ System.registerDynamic("lib/polythene/theme/svg/svg", [], false, function(__requ
   return _retrieveGlobal();
 });
 
-System.registerDynamic("lib/lodash/internal/baseIsEqual", ["lib/lodash/internal/baseIsEqualDeep", "lib/lodash/lang/isObject", "lib/lodash/internal/isObjectLike"], true, function(require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  var baseIsEqualDeep = require("lib/lodash/internal/baseIsEqualDeep"),
-      isObject = require("lib/lodash/lang/isObject"),
-      isObjectLike = require("lib/lodash/internal/isObjectLike");
-  function baseIsEqual(value, other, customizer, isLoose, stackA, stackB) {
-    if (value === other) {
-      return true;
-    }
-    if (value == null || other == null || (!isObject(value) && !isObjectLike(other))) {
-      return value !== value && other !== other;
-    }
-    return baseIsEqualDeep(value, other, baseIsEqual, customizer, isLoose, stackA, stackB);
-  }
-  module.exports = baseIsEqual;
-  global.define = __define;
-  return module.exports;
-});
-
-System.registerDynamic("lib/lodash/internal/isStrictComparable", ["lib/lodash/lang/isObject"], true, function(require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  var isObject = require("lib/lodash/lang/isObject");
-  function isStrictComparable(value) {
-    return value === value && !isObject(value);
-  }
-  module.exports = isStrictComparable;
-  global.define = __define;
-  return module.exports;
-});
-
 System.registerDynamic("lib/lodash/internal/baseIsMatch", ["lib/lodash/internal/baseIsEqual", "lib/lodash/internal/toObject"], true, function(require, exports, module) {
   ;
   var global = this,
@@ -5506,6 +5470,62 @@ System.registerDynamic("lib/lodash/internal/baseIsMatch", ["lib/lodash/internal/
   return module.exports;
 });
 
+System.registerDynamic("lib/lodash/internal/getMatchData", ["lib/lodash/internal/isStrictComparable", "lib/lodash/object/pairs"], true, function(require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  var isStrictComparable = require("lib/lodash/internal/isStrictComparable"),
+      pairs = require("lib/lodash/object/pairs");
+  function getMatchData(object) {
+    var result = pairs(object),
+        length = result.length;
+    while (length--) {
+      result[length][2] = isStrictComparable(result[length][1]);
+    }
+    return result;
+  }
+  module.exports = getMatchData;
+  global.define = __define;
+  return module.exports;
+});
+
+System.registerDynamic("lib/lodash/internal/baseIsEqual", ["lib/lodash/internal/baseIsEqualDeep", "lib/lodash/lang/isObject", "lib/lodash/internal/isObjectLike"], true, function(require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  var baseIsEqualDeep = require("lib/lodash/internal/baseIsEqualDeep"),
+      isObject = require("lib/lodash/lang/isObject"),
+      isObjectLike = require("lib/lodash/internal/isObjectLike");
+  function baseIsEqual(value, other, customizer, isLoose, stackA, stackB) {
+    if (value === other) {
+      return true;
+    }
+    if (value == null || other == null || (!isObject(value) && !isObjectLike(other))) {
+      return value !== value && other !== other;
+    }
+    return baseIsEqualDeep(value, other, baseIsEqual, customizer, isLoose, stackA, stackB);
+  }
+  module.exports = baseIsEqual;
+  global.define = __define;
+  return module.exports;
+});
+
+System.registerDynamic("lib/lodash/internal/isStrictComparable", ["lib/lodash/lang/isObject"], true, function(require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  var isObject = require("lib/lodash/lang/isObject");
+  function isStrictComparable(value) {
+    return value === value && !isObject(value);
+  }
+  module.exports = isStrictComparable;
+  global.define = __define;
+  return module.exports;
+});
+
 System.registerDynamic("lib/lodash/lang/isNative", ["lib/lodash/lang/isFunction", "lib/lodash/internal/isObjectLike"], true, function(require, exports, module) {
   ;
   var global = this,
@@ -5532,22 +5552,15 @@ System.registerDynamic("lib/lodash/lang/isNative", ["lib/lodash/lang/isFunction"
   return module.exports;
 });
 
-System.registerDynamic("lib/lodash/internal/getMatchData", ["lib/lodash/internal/isStrictComparable", "lib/lodash/object/pairs"], true, function(require, exports, module) {
+System.registerDynamic("lib/lodash/internal/baseToString", [], true, function(require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var isStrictComparable = require("lib/lodash/internal/isStrictComparable"),
-      pairs = require("lib/lodash/object/pairs");
-  function getMatchData(object) {
-    var result = pairs(object),
-        length = result.length;
-    while (length--) {
-      result[length][2] = isStrictComparable(result[length][1]);
-    }
-    return result;
+  function baseToString(value) {
+    return value == null ? '' : (value + '');
   }
-  module.exports = getMatchData;
+  module.exports = baseToString;
   global.define = __define;
   return module.exports;
 });
@@ -5574,19 +5587,6 @@ System.registerDynamic("lib/lodash/internal/createBaseFor", ["lib/lodash/interna
     };
   }
   module.exports = createBaseFor;
-  global.define = __define;
-  return module.exports;
-});
-
-System.registerDynamic("lib/lodash/internal/baseToString", [], true, function(require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  function baseToString(value) {
-    return value == null ? '' : (value + '');
-  }
-  module.exports = baseToString;
   global.define = __define;
   return module.exports;
 });
@@ -5638,6 +5638,30 @@ System.registerDynamic("lib/lodash/internal/cachePush", ["lib/lodash/lang/isObje
     }
   }
   module.exports = cachePush;
+  global.define = __define;
+  return module.exports;
+});
+
+System.registerDynamic("lib/lodash/object/pairs", ["lib/lodash/object/keys", "lib/lodash/internal/toObject"], true, function(require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  var keys = require("lib/lodash/object/keys"),
+      toObject = require("lib/lodash/internal/toObject");
+  function pairs(object) {
+    object = toObject(object);
+    var index = -1,
+        props = keys(object),
+        length = props.length,
+        result = Array(length);
+    while (++index < length) {
+      var key = props[index];
+      result[index] = [key, object[key]];
+    }
+    return result;
+  }
+  module.exports = pairs;
   global.define = __define;
   return module.exports;
 });
@@ -5728,30 +5752,6 @@ System.registerDynamic("lib/lodash/lang/isFunction", ["lib/lodash/lang/isObject"
     return isObject(value) && objToString.call(value) == funcTag;
   }
   module.exports = isFunction;
-  global.define = __define;
-  return module.exports;
-});
-
-System.registerDynamic("lib/lodash/object/pairs", ["lib/lodash/object/keys", "lib/lodash/internal/toObject"], true, function(require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  var keys = require("lib/lodash/object/keys"),
-      toObject = require("lib/lodash/internal/toObject");
-  function pairs(object) {
-    object = toObject(object);
-    var index = -1,
-        props = keys(object),
-        length = props.length,
-        result = Array(length);
-    while (++index < length) {
-      var key = props[index];
-      result[index] = [key, object[key]];
-    }
-    return result;
-  }
-  module.exports = pairs;
   global.define = __define;
   return module.exports;
 });
