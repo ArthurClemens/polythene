@@ -12,6 +12,9 @@
     "mithril": "^0.2.0"
   },
   "devDependencies": {
+    "shelljs": "",
+    "rimraf": "",
+    "sass": "",
     "autoprefixer": "",
     "babel-core": "",
     "babel-plugin-closure-elimination": "",
@@ -25,10 +28,9 @@
     "verge": "^1.9.1"
   },
   "scripts": {
-    "preinstall": "npm run setup-symlink",
-    "postinstall": "npm run setup-babel && npm run copy-libs",
-    "setup-symlink": "rm -rf src/lib/polythene && mkdir -p src/lib && cd .. && ln -s \"$(pwd)/lib/\" examples/src/lib/polythene",
-    "copy-libs": "node scripts/copy-libs src/lib",
+    "postinstall": "npm run copy-libs && npm run transpile",
+    "symlink-polythene": "node ../scripts/symlink-polythene.js ../lib src/lib/polythene",
+    "copy-libs": "node scripts/copy-libs src/lib && npm run symlink-polythene",
     "watch-es6": "node ../scripts/watch-es6.js src/ src/lib/",
     "watch-css": "node ../scripts/watch-scss.js src/ src/lib/",
     "watch": "npm run watch-css & npm run watch-es6",
@@ -37,8 +39,8 @@
     "transpile": "npm run transpile-css && npm run transpile-js",
     "build": "npm run transpile && node scripts/build-app.js",
     "build-copy-to-gh": "cp -R build/* ../../gh-pages-examples/",
-    "github": "rm -rf ../../gh-pages-examples/app && rm -rf ../../gh-pages-examples/*.html && rm -rf ../../gh-pages-examples/lib && rm -rf ../../gh-pages-examples/config.js && npm run build && npm run build-copy-to-gh",
-    "clean": "rm -rf ./build && rm -rf ./node_modules && rm -rf ./src/lib && find ./src/app -name \"*.js\" -not -name \"*.es6.js\" -print | xargs rm -rf && find ./src/app -name \"*.css\" -print | xargs rm -rf"
+    "github": "rimraf ../../gh-pages-examples/app && rimraf ../../gh-pages-examples/*.html && rimraf ../../gh-pages-examples/lib && rimraf ../../gh-pages-examples/config.js && npm run build && npm run build-copy-to-gh",
+    "clean": "rimraf ./build && rimraf ./src/lib && find ./src/app -name \"*.js\" -not -name \"*.es6.js\" -print | xargs rimraf && find ./src/app -name \"*.css\" -print | xargs rimraf && rimraf ./node_modules"
   },
   "repository": {
     "type": "git",

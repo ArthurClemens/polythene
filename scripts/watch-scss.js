@@ -7,7 +7,7 @@ var persistent = !(process.argv[4] === 'once');
 var extensionRe = /\.([\u00C0-\u1FFF\u2C00-\uD7FF\w-_]+)(?:[\?#]|$)/;
 var underscoreRe = /(_[\u00C0-\u1FFF\u2C00-\uD7FF\w-_]+)\.([\u00C0-\u1FFF\u2C00-\uD7FF\w-_]+)(?:[\?#]|$)/;
 var validExtension = 'scss';
-var maxDepth = 5;
+var isWin = /^win/.test(process.platform);
 
 var watcher = chokidar.watch(what, {
     ignored: /[\/\\]\./,
@@ -51,12 +51,8 @@ var hasUnderscore = function(path) {
     return false;
 };
 
-var hasValidDepth = function(path) {
-    return ((path.match(/\//g).length + 1) <= maxDepth);
-};
-
 var isValidFile = function(path) {
-    return (!isIgnored(path) && isValidExtension(path) && hasValidDepth(path) && !hasUnderscore(path));
+    return (!isIgnored(path) && isValidExtension(path) && !hasUnderscore(path));
 };
 
 var createOutPath = function(inPath) {
@@ -64,36 +60,38 @@ var createOutPath = function(inPath) {
 };
 
 var transform = function(inPath, outPath) {
-    var pathParts = inPath.split(/\//);
+    var delimiter = isWin ? '\\' : '/';
+    var pathParts = inPath.split(delimiter);
     var inFileName = pathParts.pop();
     var dir = pathParts.join('/');
-    var outPathParts = outPath.split(/\//);
+    var outPathParts = outPath.split(delimiter);
     var outFileName = outPathParts.pop();
-    execute([
+    var cmd = [
         'cd', dir,
         '&&',
         'sass --sourcemap=none --style=expanded', inFileName, '>', outFileName,
         '&&',
-        'autoprefixer -b \'last 2 versions\'', outFileName,
+        'postcss -u autoprefixer --autoprefixer.browsers "last 2 versions" -o', outFileName, outFileName,
         '&&',
         'cleancss', '-o', outFileName, outFileName
-    ].join(' '));
+    ].join(' ');
+    execute(cmd);
 };
 
-watcher
-    .on('add', function(path) {
+
+if (persistent) {
+    watcher.on('change', function(path) {
         if (isValidFile(path)) {
-            if (persistent) {
-                console.log('watch-es6', validExtension, 'file', path, 'has been added');
-            } else {
-                console.log('transpiling', validExtension, 'file', path);
-            }
-            transform(path, createOutPath(path));
-        }
-    })
-    .on('change', function(path) {
-        if (isValidFile(path)) {
-            console.log('watch-es6', validExtension, 'file', path, 'has been changed');
+            console.log(validExtension, 'file changed, transpiling', path);
             transform(path, createOutPath(path));
         }
     });
+} else {
+    watcher.on('add', function(path) {
+        if (isValidFile(path)) {
+            console.log(validExtension, 'file found, transpiling', path);
+            transform(path, createOutPath(path));
+            watcher.unwatch(path);
+        }
+    });
+}

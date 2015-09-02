@@ -1,3 +1,7 @@
+/*
+NOTE: this build script does not work on Windows, yet
+*/
+
 var Builder = require('systemjs-builder');
 
 var DESTINATION = 'build';

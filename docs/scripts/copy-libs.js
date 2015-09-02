@@ -1,36 +1,30 @@
 'use strict';
 
+require('shelljs/global');
+
 var DESTINATION_DIR = process.argv[2];
 
-var execute = function(command) {
-    var exec = require('child_process').exec;
-    var logError = function(error, stdout) {
-        if (error && stdout) {
-            console.log(error, stdout);
-        }
-    };
-    exec(command, logError);
-};
-
 var copy = function(name, files) {
-    var nameDir = [DESTINATION_DIR, '/', name].join('');
-    execute(['mkdir', '-p', nameDir].join(' '));
+    var dest = [DESTINATION_DIR, '/', name, '/'].join('');
+    mkdir('-p', dest);
     files.map(function(file) {
-        execute(['cp', file, nameDir].join(' '));
+        cp(file, dest);
     });
 };
 
 var copyDir = function(name, dir) {
-    var nameDir = [DESTINATION_DIR, '/', name].join('');
-    execute(['mkdir', '-p', nameDir].join(' '));
-    execute(['cp', '-R', dir, nameDir + '/'].join(' '));
+    var dest = [DESTINATION_DIR, '/', name].join('');
+    mkdir('-p', dest);
+    cp('-R', dir, dest);
 };
 
-execute(['mkdir', '-p', DESTINATION_DIR].join(' '));
+mkdir('-p', DESTINATION_DIR);
 
 copy('systemjs', [
     'node_modules/systemjs/dist/system.js',
     'node_modules/systemjs/dist/system.js.map',
+    'node_modules/systemjs/dist/system-polyfills.js',
+    'node_modules/systemjs/dist/system-polyfills.js.map',
     'node_modules/es6-module-loader/dist/es6-module-loader.js',
     'node_modules/es6-module-loader/dist/es6-module-loader.js.map'
 ]);

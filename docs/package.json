@@ -7,7 +7,11 @@
     "directories": {
         "src": "src"
     },
-    "dependencies": {
+    "devDependencies": {
+        "shelljs": "",
+        "rimraf": "",
+        "sass": "",
+        "autoprefixer": "",
         "marked": "",
         "autoprefixer": "",
         "systemjs": "",
@@ -21,11 +25,10 @@
         "system-text": ""
     },
     "scripts": {
-        "postinstall": "npm run setup-babel && npm run setup-symlink && npm run copy-libs",
-        "setup-symlink": "rm -rf src/lib/polythene && mkdir -p src/lib && cd .. && ln -s \"$(pwd)/lib/\" docs/src/lib/polythene",
-        "setup-babel": "cd node_modules/babel-core && npm install",
+        "postinstall": "npm run copy-libs && npm run symlink-polythene && npm run transpile",
+        "symlink-polythene": "node ../scripts/symlink-polythene.js ../lib src/lib/polythene",
         "copy-libs": "node scripts/copy-libs src/lib",
-        "copy-docs": "mkdir -p src/app/docs && find ../lib/ -name \"*.md\" -print0 | xargs -0 -I {} cp {} ./src/app/docs/",
+        "copy-docs": "node scripts/copy-docs ../lib/ ./src/app/docs/",
         "watch-es6": "node ../scripts/watch-es6.js src/ src/lib/",
         "watch-css": "node ../scripts/watch-scss.js src/ src/lib/",
         "watch-doc": "node ../scripts/watch-doc.js ../lib/",
@@ -36,8 +39,8 @@
         "build": "npm run transpile && node scripts/build-app.js",
         "build-copy-to-gh": "cp -R build/* ../../gh-pages/",
         "build": "npm run copy-docs && npm run transpile && node scripts/build-app.js",
-        "github": "rm -rf ../../gh-pages/app && rm -rf ../../gh-pages/lib && rm -rf ../../gh-pages/config.js && rm -rf ../../gh-pages/index.html && npm run build && npm run build-copy-to-gh",
-        "clean": "rm -rf ./build && rm -rf ./node_modules && rm -rf ./src/lib && find ./src/app -name \"*.js\" -not -name \"*.es6.js\" -print | xargs rm -rf && find ./src/app -name \"*.css\" -print | xargs rm -rf"
+        "github": "rimraf ../../gh-pages/app && rimraf ../../gh-pages/lib && rimraf ../../gh-pages/config.js && rimraf ../../gh-pages/index.html && npm run build && npm run build-copy-to-gh",
+        "clean": "rimraf ./build && rimraf ./node_modules && rimraf ./src/lib && find ./src/app -name \"*.js\" -not -name \"*.es6.js\" -print | xargs rimraf && find ./src/app -name \"*.css\" -print | xargs rimraf"
     },
     "repository": {
         "type": "git",

@@ -2,9 +2,11 @@
 
 var chokidar = require('chokidar');
 var what = process.argv[2];
+var ignore = (process.argv[3] && process.argv[3] !== 'null') ? process.argv[3] : null;
+var persistent = !(process.argv[4] === 'once');
 var extensionRe = /\.([\u00C0-\u1FFF\u2C00-\uD7FF\w-_]+)(?:[\?#]|$)/;
+//var underscoreRe = /(_[\u00C0-\u1FFF\u2C00-\uD7FF\w-_]+)\.([\u00C0-\u1FFF\u2C00-\uD7FF\w-_]+)(?:[\?#]|$)/;
 var validExtension = 'md';
-var maxDepth = 4;
 
 var watcher = chokidar.watch(what, {
     ignored: /[\/\\]\./,
@@ -32,34 +34,44 @@ var isValidExtension = function(path) {
     return (extension(path) === validExtension);
 };
 
-var hasValidDepth = function(path) {
-    return ((path.match(/\//g).length + 1) <= maxDepth);
+var isIgnored = function(path) {
+    if (!ignore) {
+        return false;
+    }
+    var ignoreRe = new RegExp('^' + ignore);
+    return path.match(ignoreRe);
 };
 
 var isValidFile = function(path) {
-    return (isValidExtension(path) && hasValidDepth(path));
+    return isValidExtension(path) && !isIgnored(path);
 };
 
-var transform = function(path) {
-    var pathParts = path.split(/\//);
+var createOutPath = function(inPath) {
+    var pathParts = inPath.split(/\//);
     var fileName = pathParts.pop();
     var outPath = 'src/app/docs/' + fileName;
+    return outPath;
+};
 
+var transform = function(path, outPath) {
     execute([
         'cp', path, outPath
     ].join(' '));
 };
 
-watcher
-    .on('add', function(path) {
+if (persistent) {
+    watcher.on('change', function(path) {
         if (isValidFile(path)) {
-            console.log('watch-doc', validExtension, 'file', path, 'has been added');
-            transform(path);
-        }
-    })
-    .on('change', function(path) {
-        if (isValidFile(path)) {
-            console.log('watch-doc', validExtension, 'file', path, 'has been changed');
-            transform(path);
+            console.log(validExtension, 'file changed, transpiling', path);
+            transform(path, createOutPath(path));
         }
     });
+} else {
+    watcher.on('add', function(path) {
+        if (isValidFile(path)) {
+            console.log(validExtension, 'file found, transpiling', path);
+            transform(path, createOutPath(path));
+            watcher.unwatch(path);
+        }
+    });
+}

@@ -1,5 +1,6 @@
 node_modules
 external_modules
+tmp
 build
 !*.es6.js
 docs/src/app/docs

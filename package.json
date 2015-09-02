@@ -10,6 +10,12 @@
     "material-design-iconic-font": "^2.1.2"
   },
   "devDependencies": {
+    "shelljs": "",
+    "rimraf": "",
+    "mkdirp": "",
+    "cpr": "",
+    "find": "",
+    "sass": "",
     "mithril": "^0.2.0",
     "autoprefixer": "",
     "clean-css": "",
@@ -20,20 +26,14 @@
     "webfont-dl": ""
   },
   "scripts": {
-    "copy-mdif": "mkdir -p lib/deps/svg/material-design-iconic-font && cp -R node_modules/material-design-iconic-font/svg/* lib/deps/svg/material-design-iconic-font/",
-    "install-mdi": "mkdir -p external_modules && rm -rf external_modules/MaterialDesign && cd external_modules && git clone git://github.com/Templarian/MaterialDesign",
-    "copy-mdi": "mkdir -p lib/deps/svg/mdi && cp -R external_modules/MaterialDesign/icons/svg/* lib/deps/svg/mdi/",
-    "copy-material-colors": "mkdir -p lib/deps/material-colors/ && cp node_modules/material-colors/dist/colors.scss lib/deps/material-colors/",
-    "copy-deps": "npm run copy-mdif && npm run copy-mdi && npm run copy-material-colors",
-    "install-roboto-webfont": "webfont-dl \"https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic\" -o lib/font-roboto/fonts/font-roboto.css --font-out=lib/font-roboto/fonts --woff2=link --woff1==link --svg==link --ttf==link --eot==link",
-    "postinstall": "rm -rf external_modules && npm run install-mdi && npm run copy-mdif && npm run copy-mdi && npm run copy-deps",
+    "postinstall": "node scripts/copy-deps.js",
     "watch-css": "node scripts/watch-scss.js lib/",
     "watch-es6": "node scripts/watch-es6.js lib/",
     "watch": "npm run watch-css & npm run watch-es6",
     "transpile-css": "node scripts/watch-scss.js lib/ null once",
     "transpile-js": "node scripts/watch-es6.js lib/ null once",
     "transpile": "npm run transpile-css && npm run transpile-js",
-    "clean": "rm -rf node_modules && rm -rf external_modules && rm -rf lib/deps/ && find ./lib -name \"*.js\" -not -name \"*.es6.js\" -print | xargs rm -rf && find ./lib -name \"*.css\" -print | xargs rm -rf"
+    "clean": "rimraf node_modules && rimraf external_modules && rimraf lib/deps/ && find ./lib -name \"*.js\" -not -name \"*.es6.js\" -print | xargs rimraf && find ./lib -name \"*.css\" -print | xargs rimraf"
   },
   "repository": {
     "type": "git",

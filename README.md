@@ -4,7 +4,7 @@
 
 Modular implementation of Material Design for [Mithril](http://lhorie.github.io/mithril). 
 
-Version 0.1.2
+Version 0.1.3
 
 
 * [Examples](http://arthurclemens.github.io/Polythene-Examples/index.html)
@@ -36,6 +36,9 @@ Polythene works both in es6 and es5 applications.
 
 ## Developing
 
+* Install Sass.
+* Install postcss globally: `npm install postcss-cli -g`
+* Install cleancss globally: `npm install clean-css -g`
 * `npm run watch` - watch: scss and es6 files
 * `npm run build` - compile all CSS
 

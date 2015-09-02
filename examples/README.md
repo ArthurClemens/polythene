@@ -11,6 +11,9 @@ Public site: [Polythene Examples](http://arthurclemens.github.io/Polythene-Examp
 
 ## Developing
 
+* Install Sass.
+* Install postcss globally: `npm install postcss-cli -g`
+* Install cleancss globally: `npm install clean-css -g`
 * `npm run watch` - watch es6 and scss file changes
 * `npm run transpile` - transpile es6 and scss files once
 
