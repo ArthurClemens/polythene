@@ -35,17 +35,28 @@ Polythene works both in es6 and es5 applications.
 
 ## Examples
 
+Follow instructions in the examples folder:
+
 * `cd examples`
-* See README in that folder
+* See the README in that folder
 
 
 ## Developing
 
-* Install Sass.
-* Install postcss globally: `npm install postcss-cli -g`
-* Install cleancss globally: `npm install clean-css -g`
-* `npm run watch` - watch: scss and es6 files
+For compiling/transpiling, you need to install the following:
+
+* `npm install sass -g`
+* `npm install postcss-cli -g`
+* `npm install clean-css -g`
+* `npm install babel -g`
+
+Compile (transpile) everything:
+
 * `npm run build` - compile all CSS
+
+While developing:
+
+* `npm run watch` - watch changes to scss and es6 files
 
 
 
