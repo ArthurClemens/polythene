@@ -31,7 +31,12 @@ Polythene works both in es6 and es5 applications.
 ## Installation
 
 * `npm install`
-* `npm run setup` - installs additional dependencies and copies files to lib folders
+
+
+## Examples
+
+* `cd examples`
+* See README in that folder
 
 
 ## Developing
