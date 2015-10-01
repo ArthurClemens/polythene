@@ -1,24 +1,24 @@
 'use strict';
 
-require('shelljs/global');
+var shell = require('shelljs');
 
 var DESTINATION_DIR = process.argv[2];
 
 var copy = function(name, files) {
     var dest = [DESTINATION_DIR, '/', name, '/'].join('');
-    mkdir('-p', dest);
+    shell.mkdir('-p', dest);
     files.map(function(file) {
-        cp(file, dest);
+        shell.cp(file, dest);
     });
 };
 
 var copyDir = function(name, dir) {
     var dest = [DESTINATION_DIR, '/', name].join('');
-    mkdir('-p', dest);
-    cp('-R', dir, dest);
+    shell.mkdir('-p', dest);
+    shell.cp('-R', dir, dest);
 };
 
-mkdir('-p', DESTINATION_DIR);
+shell.mkdir('-p', DESTINATION_DIR);
 
 copy('systemjs', [
     'node_modules/systemjs/dist/system.js',
