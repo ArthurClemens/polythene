@@ -30,7 +30,13 @@ Polythene works both in es6 and es5 applications.
 
 ## Installation
 
+Either:
+* Download or clone from Github
 * `npm install`
+
+Or:
+* `npm install Polythene`
+
 
 
 ## Examples
@@ -45,14 +51,13 @@ Follow instructions in the examples folder:
 
 For compiling/transpiling, you need to install the following:
 
-* `npm install sass -g`
 * `npm install postcss-cli -g`
 * `npm install clean-css -g`
 * `npm install babel -g`
 
 Compile (transpile) everything:
 
-* `npm run build` - compile all CSS
+* `npm run transpile` - compile all scss and es6 files
 
 While developing:
 

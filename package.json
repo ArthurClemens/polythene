@@ -10,30 +10,30 @@
     "material-design-iconic-font": "^2.1.2"
   },
   "devDependencies": {
-    "shelljs": "",
-    "rimraf": "",
-    "mkdirp": "",
-    "cpr": "",
-    "find": "",
-    "sass": "",
+    "autoprefixer": "^6.0.3",
+    "babel": "^5.8.23",
+    "babel-plugin-closure-elimination": "0.0.2",
+    "chokidar": "^1.0.6",
+    "clean-css": "^3.4.3",
+    "cpr": "^0.4.2",
+    "find": "^0.2.3",
     "mithril": "^0.2.0",
-    "autoprefixer": "",
-    "clean-css": "",
-    "uglify-js": "",
-    "babel": "",
-    "babel-plugin-closure-elimination": "",
-    "chokidar": "",
-    "webfont-dl": ""
+    "mkdirp": "^0.5.1",
+    "node-sass": "^3.3.3",
+    "rimraf": "^2.4.3",
+    "shelljs": "^0.5.3",
+    "uglify-js": "^2.4.24",
+    "webfont-dl": "^0.1.2"
   },
   "scripts": {
     "postinstall": "node scripts/copy-deps.js",
-    "watch-css": "node scripts/watch-scss.js lib/",
-    "watch-es6": "node scripts/watch-es6.js lib/",
+    "watch-css": "node scripts/watch-scss.js lib/ lib/deps/",
+    "watch-es6": "node scripts/watch-es6.js lib/ lib/deps/",
     "watch": "npm run watch-css & npm run watch-es6",
     "transpile-css": "node scripts/watch-scss.js lib/ null once",
-    "transpile-js": "node scripts/watch-es6.js lib/ null once",
+    "transpile-js": "node scripts/watch-es6.js lib/ lib/deps/ once",
     "transpile": "npm run transpile-css && npm run transpile-js",
-    "clean": "rimraf node_modules && rimraf external_modules && rimraf lib/deps/ && find ./lib -name \"*.js\" -not -name \"*.es6.js\" -print | xargs rimraf && find ./lib -name \"*.css\" -print | xargs rimraf"
+    "clean": "rimraf external_modules && rimraf lib/deps/ && find ./lib -name \"*.js\" -not -name \"*.es6.js\" -print | xargs rimraf && find ./lib -name \"*.css\" -print | xargs rimraf && rimraf node_modules"
   },
   "repository": {
     "type": "git",
