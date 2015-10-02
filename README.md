@@ -4,7 +4,7 @@
 
 Modular implementation of Material Design for [Mithril](http://lhorie.github.io/mithril). 
 
-Version 0.1.4
+Version 0.1.5
 
 
 * [Examples](http://arthurclemens.github.io/Polythene-Examples/index.html)
@@ -32,10 +32,13 @@ Polythene works both in es6 and es5 applications.
 
 Either:
 * Download or clone from Github
+* cd into the directory
 * `npm install`
+* `npm run copy-deps`
 
 Or:
-* `npm install Polythene`
+* `npm install polythene`
+* `npm run copy-deps`
 
 
 

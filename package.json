@@ -1,6 +1,6 @@
 {
   "name": "polythene",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Polymer inspired modular implementation of Material Design for Mithril.",
   "license": "MIT",
   "main": "",
@@ -26,7 +26,7 @@
     "webfont-dl": "^0.1.2"
   },
   "scripts": {
-    "postinstall": "node scripts/copy-deps.js",
+    "copy-deps": "node scripts/copy-deps.js",
     "watch-css": "node scripts/watch-scss.js lib/ lib/deps/",
     "watch-es6": "node scripts/watch-es6.js lib/ lib/deps/",
     "watch": "npm run watch-css & npm run watch-es6",

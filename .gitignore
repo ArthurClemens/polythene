@@ -8,12 +8,12 @@ docs/src/lib
 examples/src/lib
 lib/font-iconic/material-design-iconic-font
 lib/font-roboto/fonts
-lib/svg/mdi
-lib/svg/material-design-iconic-font
-lib/deps
-!lib/deps/README
+lib/deps/svg/mdi
+lib/deps/svg/material-design-iconic-font
 .sass-cache
 .sass-cache/*
 .DS_Store
 ./src
 lib/theme/_material-design-colors.scss
+
+lib/deps/material-colors/_colors.scss
