@@ -1,14 +1,9 @@
 {
   "name": "polythene",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Polymer inspired modular implementation of Material Design for Mithril.",
   "license": "MIT",
   "main": "",
-  "directories": {},
-  "dependencies": {
-    "material-colors": "^1.0.0",
-    "material-design-iconic-font": "^2.1.2"
-  },
   "devDependencies": {
     "autoprefixer": "^6.0.3",
     "babel": "^5.8.23",
@@ -17,6 +12,8 @@
     "clean-css": "^3.4.3",
     "cpr": "^0.4.2",
     "find": "^0.2.3",
+    "material-colors": "^1.0.0",
+    "material-design-iconic-font": "^2.1.2",
     "mithril": "^0.2.0",
     "mkdirp": "^0.5.1",
     "node-sass": "^3.3.3",
