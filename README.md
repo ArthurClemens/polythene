@@ -4,7 +4,7 @@
 
 Modular implementation of Material Design for [Mithril](http://lhorie.github.io/mithril). 
 
-Version 0.1.6
+Version 0.1.7
 
 
 * [Examples](http://arthurclemens.github.io/Polythene-Examples/index.html)
@@ -54,6 +54,7 @@ Follow instructions in the examples folder:
 
 For compiling/transpiling, you need to install the following:
 
+* `npm install node-sass -g`
 * `npm install postcss-cli -g`
 * `npm install clean-css -g`
 * `npm install babel -g`

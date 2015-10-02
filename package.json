@@ -1,6 +1,6 @@
 {
   "name": "polythene",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Polymer inspired modular implementation of Material Design for Mithril.",
   "license": "MIT",
   "main": "",
@@ -16,7 +16,6 @@
     "material-design-iconic-font": "^2.1.2",
     "mithril": "^0.2.0",
     "mkdirp": "^0.5.1",
-    "node-sass": "^3.3.3",
     "rimraf": "^2.4.3",
     "shelljs": "^0.5.3",
     "uglify-js": "^2.4.24",
