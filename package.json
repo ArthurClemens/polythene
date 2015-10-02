@@ -1,6 +1,6 @@
 {
   "name": "polythene",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "Polymer inspired modular implementation of Material Design for Mithril.",
   "license": "MIT",
   "main": "",
@@ -14,7 +14,6 @@
     "chokidar": ">= 1.0.6",
     "clean-css": ">= 3.4.3",
     "mithril": ">= 0.2.0",
-    "node-sass": ">= 3.3.3",
     "rimraf": ">= 2.4.3",
     "shelljs": ">= 0.5.3",
     "uglify-js": ">= 2.4.24",
