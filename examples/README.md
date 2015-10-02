@@ -21,7 +21,7 @@ All js and css files are included in the distro, so no need to compile anything 
 
 If you want to play with the code, things need to get compiled. Install the following:
 
-* `npm install sass -g`
+* `npm install node-sass -g`
 * `npm install postcss-cli -g`
 * `npm install clean-css -g`
 * `npm install babel -g`

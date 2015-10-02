@@ -6,6 +6,7 @@
 
 ## Developing
 
+* Install node-sass globally: * `npm install node-sass -g`
 * Install postcss globally: `npm install postcss-cli -g`
 * Install cleancss globally: `npm install clean-css -g`
 * `npm run watch` - watch es6, scss and markdown file changes
