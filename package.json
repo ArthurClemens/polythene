@@ -1,25 +1,26 @@
 {
   "name": "polythene",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Polymer inspired modular implementation of Material Design for Mithril.",
   "license": "MIT",
   "main": "",
+  "directories": {},
+  "dependencies": {
+   "material-colors": ">= 1.0.0",
+    "material-design-iconic-font": ">= 2.1.2"
+  },
   "devDependencies": {
-    "autoprefixer": "^6.0.3",
-    "babel": "^5.8.23",
-    "babel-plugin-closure-elimination": "0.0.2",
-    "chokidar": "^1.0.6",
-    "clean-css": "^3.4.3",
-    "cpr": "^0.4.2",
-    "find": "^0.2.3",
-    "material-colors": "^1.0.0",
-    "material-design-iconic-font": "^2.1.2",
-    "mithril": "^0.2.0",
-    "mkdirp": "^0.5.1",
-    "rimraf": "^2.4.3",
-    "shelljs": "^0.5.3",
-    "uglify-js": "^2.4.24",
-    "webfont-dl": "^0.1.2"
+    "autoprefixer": ">= 6.0.3",
+    "babel": ">= 5.8.23",
+    "babel-plugin-closure-elimination": ">= 0.0.2",
+    "chokidar": ">= 1.0.6",
+    "clean-css": ">= 3.4.3",
+    "mithril": ">= 0.2.0",
+    "node-sass": ">= 3.3.3",
+    "rimraf": ">= 2.4.3",
+    "shelljs": ">= 0.5.3",
+    "uglify-js": ">= 2.4.24",
+    "webfont-dl": ">= 0.1.2"
   },
   "scripts": {
     "copy-deps": "node scripts/copy-deps.js",
