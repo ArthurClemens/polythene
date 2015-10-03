@@ -4,10 +4,10 @@
 
 Modular implementation of Material Design for [Mithril](http://lhorie.github.io/mithril). 
 
-Version 0.1.12
+Version 0.1.13
 
 
-* [Examples](http://arthurclemens.github.io/Polythene-Examples/index.html)
+* [Examples](http://arthurclemens.github.io/Polythene-examples/index.html)
 * [Documentation](http://polythene.js.org)
 
 
@@ -26,6 +26,8 @@ Polythene works both in es6 and es5 applications.
 
 ## Installation
 
+Install both Polythene and the default theme:
+
 ### npm
 
 ```
@@ -41,7 +43,7 @@ jspm install github:ArthurClemens/Polythene-theme
 ```
 
 
-## Examples
+## Example code
 
 See [Polythene-examples](https://github.com/ArthurClemens/Polythene-examples).
 
