@@ -11,10 +11,6 @@ Version 0.1.12
 * [Documentation](http://polythene.js.org)
 
 
-## Browser support
-
-The default theme uses flexbox, so this works in IE10 and other browsers. For IE9 you will need to adapt the theme.
-
 
 ## Setup
 
@@ -30,24 +26,25 @@ Polythene works both in es6 and es5 applications.
 
 ## Installation
 
-Either:
-* Download or clone from Github
-* cd into the directory
-* `npm install`
-* `npm run copy-deps`
+### npm
 
-Or:
-* `npm install polythene`
-* `npm run copy-deps`
+```
+npm install polythene
+npm install polythene-theme
+```
 
+### jspm
+
+```
+jspm install github:ArthurClemens/Polythene
+jspm install github:ArthurClemens/Polythene-theme
+```
 
 
 ## Examples
 
-Follow instructions in the examples folder:
+See [Polythene-examples](https://github.com/ArthurClemens/Polythene-examples).
 
-* `cd examples`
-* See the README in that folder
 
 
 ## Developing
@@ -66,6 +63,11 @@ Compile (transpile) everything:
 While developing:
 
 * `npm run watch` - watch changes to scss and es6 files
+
+
+## Browser support
+
+The default theme uses flexbox, so this works in IE10 and other browsers. For IE9 you will need to adapt the theme.
 
 
 

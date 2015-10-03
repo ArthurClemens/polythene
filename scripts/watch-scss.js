@@ -1,13 +1,17 @@
 'use strict';
 
-var watch = require('./watch');
+// argv[2]: state (run once or watch)
+// argv[3]: which dir to watch
+// argv[4]: which dir to ignore
+
+var watch = require('transpile-watch');
 var underscoreRe = /(_[\u00C0-\u1FFF\u2C00-\uD7FF\w-_]+)\.([\u00C0-\u1FFF\u2C00-\uD7FF\w-_]+)(?:[\?#]|$)/;
 var isWin = /^win/.test(process.platform);
 
 watch ({
-    what: process.argv[2],
-    ignore: (process.argv[3] && process.argv[3] !== 'null') ? process.argv[3] : null,
-    persistent: !(process.argv[4] === 'once'),
+    persistent: !(process.argv[2] === 'once'),
+    what: process.argv[3],
+    ignore: (process.argv[4] && process.argv[4] !== 'null') ? process.argv[4] : null,
     extension: 'scss',
     createOutPath: function(inPath) {
         return inPath.replace(/scss$/, 'css');
