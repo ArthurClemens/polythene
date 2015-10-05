@@ -146,6 +146,7 @@ After fading out, param callback function `didHide` is called. Now we can nullif
 	                return window.dialog.shouldHide;
 	            },
 	            didHide: () => {
+                    window.dialog.shouldHide = false; // yes this should be reset first, even if we will be nulling window.dialog
 	                window.dialog = null;
 	                // optionally call m.route() to reset url
 	                m.redraw(); // remove dialog from app.view
@@ -234,5 +235,3 @@ With an array of footer buttons:
 	        </div>
 	    </div>
 	</form>
-
-

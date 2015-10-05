@@ -26,7 +26,7 @@ Polythene works both in es6 and es5 applications.
 
 ## Installation
 
-Install both Polythene and the default theme:
+Install both Polythene and [the default theme](https://github.com/ArthurClemens/Polythene-theme):
 
 ### npm
 
