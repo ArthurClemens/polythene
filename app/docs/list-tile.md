@@ -1,6 +1,6 @@
 # List Tile
 
-<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/index.html#/list-tile">Demo</a>
+<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-examples/index.html#/list-tile">Demo</a>
 
 Displays a list element as part of a [list](#list).
 
