@@ -19,14 +19,19 @@ Polythene uses Node tools to build. It can run in Node and in the browser.
 Source files are written in es6 and transpiled to es5. Components are async es6 modules and loaded when needed, but using [SystemJS Builder](https://github.com/systemjs/builder) or [jspm](https://github.com/jspm/jspm-cli) it is also possible to create bundles where all required modules are combined.
 
 To keep the components modular (and only required when needed) I have chosen to keep the async aspect.
-The `examples` and `docs` directories show a more complete "real world" setup of a Mithril/Polythene application using SystemJS.
+The [examples](http://arthurclemens.github.io/Polythene-examples/index.html) show a more complete "real world" setup of a Mithril/Polythene application using SystemJS.
 
 Polythene works both in es6 and es5 applications.
 
 
 ## Installation
 
-Install both Polythene and [the default theme](https://github.com/ArthurClemens/Polythene-theme) (check installation instructions).
+You will need:
+
+* `Polythene` - the core components (this repository; see instructions below)
+* [Polythene theme](https://github.com/ArthurClemens/Polythene-theme) - the default theme
+* [Polythene examples](https://github.com/ArthurClemens/Polythene-examples) - (optional) to see implementations of components
+
 
 ### npm
 
@@ -43,28 +48,15 @@ jspm install github:ArthurClemens/Polythene-theme
 ```
 
 
-## Example code
-
-See [Polythene-examples](https://github.com/ArthurClemens/Polythene-examples).
-
-
-
 ## Developing
 
-For compiling/transpiling, you need to install the following:
+Transpile everything once:
 
-* `npm install node-sass -g`
-* `npm install postcss-cli -g`
-* `npm install clean-css -g`
-* `npm install babel -g`
+* `npm run transpile`
 
-Compile (transpile) everything:
+Watch changes while developing:
 
-* `npm run transpile` - compile all scss and es6 files
-
-While developing:
-
-* `npm run watch` - watch changes to scss and es6 files
+* `npm run watch`
 
 
 ## Browser support
