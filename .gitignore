@@ -1,5 +1,6 @@
 node_modules
 external_modules
+.jspm-hash
 tmp
 build
 !*.es6.js
