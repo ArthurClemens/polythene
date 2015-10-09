@@ -60,6 +60,13 @@ Add an onclick event:
 | **disabled** | optional | Boolean | false | Disables the button |
 | **selected** | optional | Boolean | false | Set to true to show the button as selected |
 
+### Developer options
+
+| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
+| **animateOnTap** | optional | Boolean | true | Set to false to remove z-animation and subsequent redraw |
+| **onTap** | optional | Function | | Callback function on button tap "down" and "up"" |
+
 
 ## Default generated HTML
 
@@ -85,4 +92,3 @@ Add an onclick event:
 ## TODO
 
 * Option to wait for ripple to finish before url/event is followed
-
