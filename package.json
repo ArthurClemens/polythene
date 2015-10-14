@@ -1,31 +1,21 @@
 {
   "name": "polythene",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "description": "Polymer inspired modular implementation of Material Design for Mithril.",
   "license": "MIT",
-  "main": "lib",
+  "main": "",
   "directories": {},
-  "dependencies": {
-    "material-colors": ">= 1.0.0",
-    "material-design-iconic-font": ">= 2.1.2"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "autoprefixer": ">= 6.0.3",
     "babel": ">= 5.8.23",
-    "babel-plugin-closure-elimination": ">= 0.0.2",
-    "chokidar": ">= 1.0.6",
-    "clean-css": ">= 3.4.3",
-    "shelljs": ">= 0.5.3",
     "transpile-watch": "0.0.2",
-    "uglify-js": ">= 2.4.24"
+    "uglify-js": "^2.5.0"
   },
   "scripts": {
-    "watch-css": "node scripts/watch-scss.js watch lib/ lib/deps/",
-    "watch-es6": "node scripts/watch-es6.js watch lib/ lib/deps/",
-    "watch": "npm run watch-css & npm run watch-es6",
-    "transpile-css": "node scripts/watch-scss.js once lib/ null",
-    "transpile-js": "node scripts/watch-es6.js once lib/ lib/deps",
-    "transpile": "npm run transpile-css && npm run transpile-js"
+    "watch-es6": "node watch-es6.js watch . node_modules",
+    "watch": "npm run watch-es6",
+    "transpile-js": "node watch-es6.js once . node_modules",
+    "transpile": "npm run transpile-js"
   },
   "repository": {
     "type": "git",
@@ -42,12 +32,25 @@
     "url": "https://github.com/ArthurClemens/Polythene/issues"
   },
   "homepage": "https://github.com/ArthurClemens/Polythene",
-  "jspm": {
-    "directories": {
-      "lib": "lib"
-    },
-    "files": [
-      "lib"
-    ]
-  }
+  "files": [
+    "button",
+    "card",
+    "common",
+    "dialog",
+    "element",
+    "fab",
+    "header-panel",
+    "icon",
+    "icon-button",
+    "item",
+    "list",
+    "list-tile",
+    "polythene",
+    "ripple",
+    "shadow",
+    "svg",
+    "tabs",
+    "toolbar",
+    "watch-es6.js"
+  ]
 }

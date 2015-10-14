@@ -9,7 +9,7 @@ watch ({
     persistent: !(process.argv[2] === 'once'),
     what: process.argv[3],
     ignore: (process.argv[4] && process.argv[4] !== 'null') ? process.argv[4] : null,
-    extension: 'es6.js',
+    extension: '.es6.js',
     createOutPath: function(inPath) {
         return inPath.replace(/es6.js$/, 'js');
     },
