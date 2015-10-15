@@ -17,39 +17,44 @@ In Polythene all behaviors are offered in the current component.
 
 For small panels, the header will often be fixed:
 
-	import headerPanel from 'polythene/header-panel/header-panel';
+~~~javascript
+import headerPanel from 'polythene/header-panel/header-panel';
 
-	const myHeaderPanel = m.component(headerPanel, {
-		fixed: true,
-	    header: {
-	        content: 'My title'
-	    },
-	    content: 'My content'
-	});
+const myHeaderPanel = m.component(headerPanel, {
+	fixed: true,
+    header: {
+        content: 'My title'
+    },
+    content: 'My content'
+});
+~~~
 
 To make the panel stretch the width and height of the page, use `div[fit]`:
 
-	const myHeaderPanel = m.component(headerPanel, {
-		tag: 'div.fit',
-	    header: {
-	        content: 'Flex'
-	    },
-	    content: 'My content'
-	});
+~~~javascript
+const myHeaderPanel = m.component(headerPanel, {
+	tag: 'div.fit',
+    header: {
+        content: 'Flex'
+    },
+    content: 'My content'
+});
+~~~
 
-To make a tall header condensing when scrolling: 
+To make a tall header condensing when scrolling:
 
-	const myHeaderPanel = m.component(headerPanel, {
-	    header: {
-	        toolbar: {
-	            mode: 'tall',
-	            topBar: 'Top bar',
-	            bottomBar: 'Bottom bar'
-	        }
-	    },
-	    content: 'My content'
-	});
-
+~~~javascript
+const myHeaderPanel = m.component(headerPanel, {
+    header: {
+        toolbar: {
+            mode: 'tall',
+            topBar: 'Top bar',
+            bottomBar: 'Bottom bar'
+        }
+    },
+    content: 'My content'
+});
+~~~
 
 ## Requirements
 
@@ -98,24 +103,30 @@ Controls header and scrolling behavior. Options:
 
 A header can be create by passing a content string:
 
-	header: {
-	    content: 'My title'
-	}
+~~~javascript
+header: {
+    content: 'My title'
+}
+~~~
 
 in which case a div with class 'header' is created.
 
 Alternatively, pass [toolbar](#toolbar) options to use a toolbar as header:
 
-    header: {
-        toolbar: {
-            mode: 'tall',
-            content: toolbarRow
-        }
+~~~javascript
+header: {
+    toolbar: {
+        mode: 'tall',
+        content: toolbarRow
     }
+}
+~~~
 
 Or use a Mithril template:
 
-	header: m('.header.demo-header', 'My custom header')
+~~~javascript
+header: m('.header.demo-header', 'My custom header')
+~~~
 
 A custom header must have class `header` or `toolbar`!
 
@@ -124,70 +135,73 @@ A custom header must have class `header` or `toolbar`!
 
 Background images are set with CSS:
 
-	/* make sure that the toolbar does not have a background color */
-	.toolbar {
-		background-color: transparent;
-	}
+~~~css
+/* make sure that the toolbar does not have a background color */
+.toolbar {
+	background-color: transparent;
+}
 
-	/* set header background color */
-	.headerContainer {
-		background-color: #673ab7;
-	}
+/* set header background color */
+.headerContainer {
+	background-color: #673ab7;
+}
 
-	/* set image as background image */
-	.headerBg {
-		background-image: url(images/bg1.jpg);
-	}
+/* set image as background image */
+.headerBg {
+	background-image: url(images/bg1.jpg);
+}
 
-	/* optionally also set condensed header background color */
-	.condensedHeaderBg {
-		background-color: #f4b400;
-	}
+/* optionally also set condensed header background color */
+.condensedHeaderBg {
+	background-color: #f4b400;
+}
 
-	/* for cross-fading images, use the condensed header background image */
-	.condensedHeaderBg {
-		background-image: url(images/bg2.jpg);
-	}
+/* for cross-fading images, use the condensed header background image */
+.condensedHeaderBg {
+	background-image: url(images/bg2.jpg);
+}
+~~~
 
+An additional HTML element to control the image is 'image-dimmer'. To create a fuzzy dark border all around use an inset box shadow:
 
-An additional HTML element to control the image is 'image-dimmer'. To create a fuzzy dark border all around use an inset box shadow: 
-
-	.image-dimmer {
-		box-shadow: inset 0px 0px 200px rgba(0,0,0,.6);
-	}
+~~~css
+.image-dimmer {
+	box-shadow: inset 0px 0px 200px rgba(0,0,0,.6);
+}
+~~~
 
 ## Callback functions
 
-	void scroll(UIEvent event)
+~~~javascript
+void scroll(UIEvent event)
 
-	void transform({Number y, Number height, Number condensedHeight})
-
+void transform({Number y, Number height, Number condensedHeight})
+~~~
 
 
 ## Default generated HTML
 
-	<div mode="standard" class="header-panel">
-	    <div class="outerContainer vertical layout cascaded">
-	        <div class="headerContainer">
-	            <div class="bg-container">
-	                <div class="condensedHeaderBg"></div>
-	                <div class="headerBg"></div>
-	                <div class="image-dimmer"></div>
-	            </div>
-	            <div class="header">Header</div>
-	            <div class="dropShadow"></div>
-	        </div>
-	        <div class="mainContainer flex">
-	            <div class="content">
-	            	Content
-	            </div>
-	        </div>
-	    </div>
-	</div>
-
+~~~html
+<div mode="standard" class="header-panel">
+    <div class="outerContainer vertical layout cascaded">
+        <div class="headerContainer">
+            <div class="bg-container">
+                <div class="condensedHeaderBg"></div>
+                <div class="headerBg"></div>
+                <div class="image-dimmer"></div>
+            </div>
+            <div class="header">Header</div>
+            <div class="dropShadow"></div>
+        </div>
+        <div class="mainContainer flex">
+            <div class="content">
+            	Content
+            </div>
+        </div>
+    </div>
+</div>
+~~~
 
 ## TODO
 
 * Test and document: Mode `cover`: The panel covers the whole `header-panel` including the header. This allows user to style the panel in such a way that the panel is partially covering the header.
-
-

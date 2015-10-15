@@ -9,18 +9,22 @@ This implementation closely follows the [design specification](http://www.google
 
 ## Usage
 
-	import card from 'polythene/card/card';
+~~~javascript
+import card from 'polythene/card/card';
+~~~
 
 The card can contain various elements. The `content` parameter accepts an array of element options. Element `primary` contains the title and subtitle:
 
-	const myCard = m.component(card, {
-		content: [{
-		    primary: {
-		        title: 'Primary title',
-		        subtitle: 'Subtitle'
-		    }
-		}]
-	});
+~~~javascript
+const myCard = m.component(card, {
+	content: [{
+	    primary: {
+	        title: 'Primary title',
+	        subtitle: 'Subtitle'
+	    }
+	}]
+});
+~~~
 
 Content parts are processed in the order as they are written. Of course this makes it possible to wildly deviate from the design specs.
 
@@ -34,45 +38,47 @@ To show in order:
 
 these are passed in this order to `content`:
 
-	const myCard = m.component(card, {
-		content: [{
-		    header: {
-		        title: 'Name',
-		        subtitle: 'date',
-		        icon: {
-		            type: 'large',
-		            class: 'avatar',
-		            src: 'app/list-tile/avatars/1.png'
-		        }
-		    }
-		}, {
-		    media: {
-		        content: m('img', {
-		            src: 'app/images/1.jpg'
-		        })
-		    }
-		}, {
-		    primary: {
-		        title: 'Primary title',
-		        subtitle: 'Subtitle'
-		    }
-		}, {
-            actions: {
-                content: [
-                    m.component(button, {
-                        label: 'Action 1'
-                    }),
-                    m.component(button, {
-                        label: 'Action 2'
-                    })
-                ]
-            }
-        }, {
-            text: {
-                content: 'More text'
-            }
-        }]
-	});
+~~~javascript
+const myCard = m.component(card, {
+	content: [{
+	    header: {
+	        title: 'Name',
+	        subtitle: 'date',
+	        icon: {
+	            type: 'large',
+	            class: 'avatar',
+	            src: 'app/list-tile/avatars/1.png'
+	        }
+	    }
+	}, {
+	    media: {
+	        content: m('img', {
+	            src: 'app/images/1.jpg'
+	        })
+	    }
+	}, {
+	    primary: {
+	        title: 'Primary title',
+	        subtitle: 'Subtitle'
+	    }
+	}, {
+        actions: {
+            content: [
+                m.component(button, {
+                    label: 'Action 1'
+                }),
+                m.component(button, {
+                    label: 'Action 2'
+                })
+            ]
+        }
+    }, {
+        text: {
+            content: 'More text'
+        }
+    }]
+});
+~~~
 
 ## Images
 
@@ -82,72 +88,80 @@ An image that does not fit the ratio is cropped by CSS. An additional parameter 
 
 To show the left side of a landscape image:
 
-	content: [{
-	    media: {
-	        origin: 'start',
-	        content: m('img', {
-	            src: 'app/images/1.png'
-	        })
-	    }
-	}]
+~~~javascript
+content: [{
+    media: {
+        origin: 'start',
+        content: m('img', {
+            src: 'app/images/1.png'
+        })
+    }
+}]
+~~~
 
 Images with an overlay (text, actions) can be created with `media.overlay`:
 
-	content: [{
-	    media: {
-	        ratio: 'square',
-	        content: m('img', {
-	            src: 'app/images/1.jpg'
-	        }),
-	        overlay: {
-	            class: 'dark-theme',
-	            content: [{
-	                primary: {
-	                    title: 'Primary title',
-	                    subtitle: 'Subtitle'
-	                }
-	            }, {
-	                actions: {
-	                    content: [
-	                        m.component(button, {
-	                            label: 'Action 1'
-	                        }),
-	                        m.component(button, {
-	                            label: 'Action 2'
-	                        })
-	                    ]
-	                }
-	            }]
-	        }
-	    }
-	}]
+~~~javascript
+content: [{
+    media: {
+        ratio: 'square',
+        content: m('img', {
+            src: 'app/images/1.jpg'
+        }),
+        overlay: {
+            class: 'dark-theme',
+            content: [{
+                primary: {
+                    title: 'Primary title',
+                    subtitle: 'Subtitle'
+                }
+            }, {
+                actions: {
+                    content: [
+                        m.component(button, {
+                            label: 'Action 1'
+                        }),
+                        m.component(button, {
+                            label: 'Action 2'
+                        })
+                    ]
+                }
+            }]
+        }
+    }
+}]
+~~~
 
 CSS class 'dark-theme' is used as a quick way to get white text on a dark background.
 
-An additional HTML element to control the image is 'image-dimmer'. To create a fuzzy dark border all around use an inset box shadow: 
+An additional HTML element to control the image is 'image-dimmer'. To create a fuzzy dark border all around use an inset box shadow:
 
-	.image-dimmer {
-		box-shadow: inset 0px 0px 40px rgba(0,0,0,.6);
-	}
-	.overlay-content {
-		/* something else */
-	}
+~~~css
+.image-dimmer {
+	box-shadow: inset 0px 0px 40px rgba(0,0,0,.6);
+}
+.overlay-content {
+	/* something else */
+}
+~~~
 
 To create a square image at the right side of the title, use `primary.media`:
 
-	content: [{
-	    primary: {
-	        title: title,
-	        subtitle: 'Subtitle',
-	        media: {
-	            ratio: 'square',
-	            type: type,
-	            content: m('img', {
-	                src: 'app/images/1.jpg'
-	            })
-	        }
-	    }
-	}]
+~~~javascript
+content: [{
+    primary: {
+        title: title,
+        subtitle: 'Subtitle',
+        media: {
+            ratio: 'square',
+            type: type,
+            content: m('img', {
+                src: 'app/images/1.jpg'
+            })
+        }
+    }
+}]
+~~~
 
 For further control over the `primary` content, you can pass an array to `primary.content`. See the demo page (function `titleImageExtraLarge`) how this can be used.
 
@@ -235,54 +249,57 @@ Next to the card itself, each content parts has a set of options:
 
 For a card with title only:
 
-	<div class="card">
-	    <div class="fit shadow ">
-	        <div class="fit animated shadow-bottom shadow-bottom-z-1"></div>
-	        <div class="fit animated shadow-top shadow-top-z-1"></div>
-	    </div>
-	    <div class="layout horizontal primary">
-	        <div class="title flex">Primary title
-	            <div class="subtitle">Subtitle</div>
-	        </div>
-	    </div>
-	</div>
+~~~html
+<div class="card">
+    <div class="fit shadow ">
+        <div class="fit animated shadow-bottom shadow-bottom-z-1"></div>
+        <div class="fit animated shadow-top shadow-top-z-1"></div>
+    </div>
+    <div class="layout horizontal primary">
+        <div class="title flex">Primary title
+            <div class="subtitle">Subtitle</div>
+        </div>
+    </div>
+</div>
+~~~
 
 For a card with header, image, title and actions:
 
-	<div class="card demo-card">
-	    <div class="fit shadow ">
-	        <div class="fit animated shadow-bottom shadow-bottom-z-1"></div>
-	        <div class="fit animated shadow-top shadow-top-z-1"></div>
-	    </div>
-	    <a class="layout horizontal center header">
-	        <div class="content-icon">
-	            <div class="icon icon-large avatar">
-	                <i class="fit">
-	                    <img src="..." />
-                    </i>
-                </div>
+~~~html
+<div class="card demo-card">
+    <div class="fit shadow ">
+        <div class="fit animated shadow-bottom shadow-bottom-z-1"></div>
+        <div class="fit animated shadow-top shadow-top-z-1"></div>
+    </div>
+    <a class="layout horizontal center header">
+        <div class="content-icon">
+            <div class="icon icon-large avatar">
+                <i class="fit">
+                    <img src="..." />
+                </i>
             </div>
-            <div class="title flex">Title
-                <div class="subtitle">Subhead</div>
+        </div>
+        <div class="title flex">Title
+            <div class="subtitle">Subhead</div>
+        </div>
+    </a>
+    <div class="media landscape">
+        <img src="..." class="crop-x" style="" />
+        <div class="image-dimmer"></div>
+    </div>
+    <div class="text ">Text</div>
+    <div class="layout horizontal center actions bordered">
+        <a class="button">
+            <div class="content">
+                <div class="label">Action 1</div>
+                <div class="fit ripple constrained ">
+                    <div class="ripple-mask">
+                        <div class="ripple-waves"></div>
+                    </div>
+                </div>
+                <div class="wash fit"></div>
             </div>
         </a>
-        <div class="media landscape">
-            <img src="..." class="crop-x" style="" />
-            <div class="image-dimmer"></div>
-        </div>
-        <div class="text ">Text</div>
-        <div class="layout horizontal center actions bordered">
-            <a class="button">
-                <div class="content">
-                    <div class="label">Action 1</div>
-                    <div class="fit ripple constrained ">
-                        <div class="ripple-mask">
-                            <div class="ripple-waves"></div>
-                        </div>
-                    </div>
-                    <div class="wash fit"></div>
-                </div>
-            </a>
-        </div>
     </div>
-
+</div>
+~~~

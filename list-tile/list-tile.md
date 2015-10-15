@@ -9,82 +9,95 @@ Material Design lists are not part of Polymer. This implementation follows [the 
 
 ## Usage
 
-	import listTile from 'polythene/list-tile/list-tile';
+~~~javascript
+import listTile from 'polythene/list-tile/list-tile';
 
-	const myListTile = m.component(listTile, {
-		title: 'My title'
-	});
+const myListTile = m.component(listTile, {
+	title: 'My title'
+});
+~~~
 
 To show a secondary line:
 
-	const myListTile = m.component(listTile, {
-		title: 'My title',
-		subtitle: 'My subtitle'
-	});
+~~~javascript
+const myListTile = m.component(listTile, {
+	title: 'My title',
+	subtitle: 'My subtitle'
+});
+~~~
 
 To show 2 secondary lines:
 
-	const myListTile = m.component(listTile, {
-		title: 'My title',
-		highSubtitle: 'My loooooooooooong subtitle'
-	});
+~~~javascript
+const myListTile = m.component(listTile, {
+	title: 'My title',
+	highSubtitle: 'My loooooooooooong subtitle'
+});
+~~~
 
 To show an icon:
 
-	const myListTile = m.component(listTile, {
-		title: 'My title',
-		icon: {
-		    type: 'large',
-		    class: 'avatar',
-		    src: 'app/list-tile/avatars/1.png'
-		}
-	});
+~~~javascript
+const myListTile = m.component(listTile, {
+	title: 'My title',
+	icon: {
+	    type: 'large',
+	    class: 'avatar',
+	    src: 'app/list-tile/avatars/1.png'
+	}
+});
+~~~
 
 Or use an SVG as icon:
 
-	const myListTile = m.component(listTile, {
-		title: 'My title',
-		icon: {
-            svg: {
-                name: 'star-outline',
-                iconSet: 'mdi'
-            }
+~~~javascript
+const myListTile = m.component(listTile, {
+	title: 'My title',
+	icon: {
+        svg: {
+            name: 'star-outline',
+            iconSet: 'mdi'
         }
-	});
+    }
+});
+~~~
 
 To make the primary content a link:
 
-	const myListTile = m.component(listTile, {
-		title: 'My title',
-		icon: {
-		    type: 'large',
-		    src: 'app/list-tile/avatars/1.png'
-		},
-		url: {href: 'toolbar', config: m.route}
-	});
+~~~javascript
+const myListTile = m.component(listTile, {
+	title: 'My title',
+	icon: {
+	    type: 'large',
+	    src: 'app/list-tile/avatars/1.png'
+	},
+	url: {href: 'toolbar', config: m.route}
+});
+~~~
 
 To show secondary content at the right, including a link:
 
-	import icon from 'polythene/icon/icon';
+~~~javascript
+import icon from 'polythene/icon/icon';
 
-	const myListTile = m.component(listTile, {
-		title: 'My title',
+const myListTile = m.component(listTile, {
+	title: 'My title',
+	icon: {
+	    type: 'large',
+	    src: 'app/list-tile/avatars/1.png'
+	},
+	secondary: {
 		icon: {
-		    type: 'large',
-		    src: 'app/list-tile/avatars/1.png'
+            type: 'small',
+            svg: {
+                name: 'heart-outline',
+                iconSet: 'mdi'
+            }
 		},
-		secondary: {
-			icon: {
-	            type: 'small',
-	            svg: {
-	                name: 'heart-outline',
-	                iconSet: 'mdi'
-	            }
-			},
-			url: {'faved', config: m.route}
-        })
-	});
-                            
+		url: {'faved', config: m.route}
+    })
+});
+~~~
 
 ## Variations
 
@@ -131,6 +144,7 @@ The default tag for secondary content depends on the content of the tile:
 
 To show 2 elements, one at the top and one at the bottom of the right side, we use `.flex` to separate the 2:
 
+~~~javascript
 	secondary: {
 		content: {
 		    m('div', '15 min'),
@@ -145,36 +159,39 @@ To show 2 elements, one at the top and one at the bottom of the right side, we u
 		},
 	    tag: '.layout.vertical.end'
 	}
-
+~~~
 
 ## Default generated HTML
 
 Single line item:
 
-	<div class="flex list-tile-primary">
-	    <div class="layout horizontal center">
-	        <div class="flex list-tile-content">
-	            <div class="list-tile-title">Title</div>
-	        </div>
-	    </div>
-	</div>
+~~~html
+<div class="flex list-tile-primary">
+    <div class="layout horizontal center">
+        <div class="flex list-tile-content">
+            <div class="list-tile-title">Title</div>
+        </div>
+    </div>
+</div>
+~~~
 
 When using a large icon (avatar image):
 
-	<div class="horizontal layout center list-tile list-tile-single-line list-tile-has-icon">
-	    <div class="flex list-tile-primary">
-	        <div class="layout horizontal center">
-	            <div class="list-tile-content-icon">
-	                <div class="icon icon-large avatar">
-	                    <i class="fit">
-	                        <img src="..." />
-                        </i>
-                    </div>
+~~~html
+<div class="horizontal layout center list-tile list-tile-single-line list-tile-has-icon">
+    <div class="flex list-tile-primary">
+        <div class="layout horizontal center">
+            <div class="list-tile-content-icon">
+                <div class="icon icon-large avatar">
+                    <i class="fit">
+                        <img src="..." />
+                    </i>
                 </div>
-                <div class="flex list-tile-content">
-                    <div class="list-tile-title">Title</div>
-                </div>
+            </div>
+            <div class="flex list-tile-content">
+                <div class="list-tile-title">Title</div>
             </div>
         </div>
     </div>
-
+</div>
+~~~

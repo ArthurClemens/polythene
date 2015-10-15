@@ -7,32 +7,35 @@ Displays a dialog.
 
 ## Usage
 
-	import dialog from 'polythene/dialog/dialog';
-	import button from 'polythene/button/button';
+~~~javascript
+import dialog from 'polythene/dialog/dialog';
+import button from 'polythene/button/button';
 
-	const footerButtons = [
-	    m.component(button, {
-	        label: 'Cancel'
-	    }),
-	    m.component(button, {
-	        label: 'Discard'
-	    })
-	];
+const footerButtons = [
+    m.component(button, {
+        label: 'Cancel'
+    }),
+    m.component(button, {
+        label: 'Discard'
+    })
+];
 
-	const myDialog = m.component(dialog, {
-        body: 'Discard draft?',
-        footer: footerButtons
-    });
+const myDialog = m.component(dialog, {
+    body: 'Discard draft?',
+    footer: footerButtons
+});
+~~~
 
 Create a modal dialog with `modal` and (optional) `backdrop`:
 
-	const myDialog = m.component(dialog, {
-        body: 'Discard draft?',
-        footer: footerButtons,
-		modal: true,
-		backdrop: true
-    });
-
+~~~javascript
+const myDialog = m.component(dialog, {
+    body: 'Discard draft?',
+    footer: footerButtons,
+	modal: true,
+	backdrop: true
+});
+~~~
 
 ### Managing app dialogs
 
@@ -40,43 +43,49 @@ A dialog should float on top of everything else. Therefore you cannot just call 
 
 Let's say you have a component called `app`. The dialog should be placed at the same level as the content:
 
-	app.view = (ctrl) => {
-        return [
-        	myDialog,
-        	content
-        ];
-	};
+~~~javascript
+app.view = (ctrl) => {
+    return [
+    	myDialog,
+    	content
+    ];
+};
+~~~
 
 To not be limited to one specific component, we need to use a variable that other components can access:
 
-	app.view = (ctrl) => {
-        return [
-        	window.dialog ? window.dialog : null,
-        	content
-        ];
-	};
+~~~javascript
+app.view = (ctrl) => {
+    return [
+    	window.dialog ? window.dialog : null,
+    	content
+    ];
+};
+~~~
 
 Now we can have a button somewhere deeply nested in the app:
 
-	m.component(button, {
-        label: 'Open dialog',
-        events: {
-			onclick: () => {
-				window.dialog = modalDialog;
-			}
-        }
-    });
+~~~javascript
+m.component(button, {
+    label: 'Open dialog',
+    events: {
+		onclick: () => {
+			window.dialog = modalDialog;
+		}
+    }
+});
 
-	const modalDialog = {
-        view: () => {
-	        return m.component(dialog, {
-	            body: 'Discard draft?',
-	            footer: footerButtons,
-	            modal: true,
-	            backdrop: true
-	        });
-	    }
-    };
+const modalDialog = {
+    view: () => {
+        return m.component(dialog, {
+            body: 'Discard draft?',
+            footer: footerButtons,
+            modal: true,
+            backdrop: true
+        });
+    }
+};
+~~~
 
 We have wrapped the dialog in a component (modalDialog) so that the dialog will be updated when Mithril redraws.
 
@@ -96,35 +105,39 @@ But this causes the dialog to disappear abruptly. A quick fade out gives a much 
 
 We use parameter function `shouldHide` that returns a boolean. If this returns `true`, the default dialog hide function is invoked (that uses a fade out):
 
-	const modalDialog = {
-        view: () => {
-	        return m.component(dialog, {
-	            body: 'Discard draft?',
-	            footer: footerButtons,
-	            modal: true,
-	            backdrop: true,
-	            shouldHide: () => {
-	                return window.dialog.shouldHide;
-	            }
-	        });
-	    }
-    };
+~~~javascript
+const modalDialog = {
+    view: () => {
+        return m.component(dialog, {
+            body: 'Discard draft?',
+            footer: footerButtons,
+            modal: true,
+            backdrop: true,
+            shouldHide: () => {
+                return window.dialog.shouldHide;
+            }
+        });
+    }
+};
+~~~
 
 Here we use a second global variable (again this can be any variable as long as it is accessible to both the modal component caller and the closing event emitter). The Cancel button comes first to mind:
 
-	const cancelOkButtons = [
-	    m.component(button, {
-	        label: 'Cancel',
-	        events: {
-	            onclick: () => {
-	                window.dialog.shouldHide = true;
-	            }
-	        }
-	    }),
-	    m.component(button, {
-	        label: 'Discard'
-	    })
-	];
+~~~javascript
+const cancelOkButtons = [
+    m.component(button, {
+        label: 'Cancel',
+        events: {
+            onclick: () => {
+                window.dialog.shouldHide = true;
+            }
+        }
+    }),
+    m.component(button, {
+        label: 'Discard'
+    })
+];
+~~~
 
 So on Cancel:
 
@@ -138,50 +151,52 @@ So on Cancel:
 
 After fading out, param callback function `didHide` is called. Now we can nullify the global dialog variable:
 
-	const modalDialog = {
-        view: () => {
-	        return m.component(dialog, {
-	            ...
-	            shouldHide: () => {
-	                return window.dialog.shouldHide;
-	            },
-	            didHide: () => {
-                    window.dialog.shouldHide = false; // yes this should be reset first, even if we will be nulling window.dialog
-	                window.dialog = null;
-	                // optionally call m.route() to reset url
-	                m.redraw(); // remove dialog from app.view
-	            }
-	        });
-	    }
-    };
-
+~~~javascript
+const modalDialog = {
+    view: () => {
+        return m.component(dialog, {
+            ...
+            shouldHide: () => {
+                return window.dialog.shouldHide;
+            },
+            didHide: () => {
+                window.dialog.shouldHide = false; // yes this should be reset first, even if we will be nulling window.dialog
+                window.dialog = null;
+                // optionally call m.route() to reset url
+                m.redraw(); // remove dialog from app.view
+            }
+        });
+    }
+};
+~~~
 
 ### Fullscreen dialogs
 
 A fullscreen dialog uses [Header Panel](#header-panel) to implement its own header (it ignores `title` and `footer`). Pass a header panel component in the body:
 
-	const fullscreenDialog = {
-        view: () => {
-	        return m.component(dialog, {
-		        body: {
-				    view: function() {
-				        return m.component(headerPanel, {
-				            class: 'dark-theme',
-				            fixed: true,
-				            header: {
-				                toolbar: {
-				                    content: toolbarRow('New event')
-				                }
-				            },
-				            content: m.trust("content")
-				        });
-				    }
-				},
-		        fullscreen: true
-	        });
-	    }
-    };
-
+~~~javascript
+const fullscreenDialog = {
+    view: () => {
+        return m.component(dialog, {
+	        body: {
+			    view: function() {
+			        return m.component(headerPanel, {
+			            class: 'dark-theme',
+			            fixed: true,
+			            header: {
+			                toolbar: {
+			                    content: toolbarRow('New event')
+			                }
+			            },
+			            content: m.trust("content")
+			        });
+			    }
+			},
+	        fullscreen: true
+        });
+    }
+};
+~~~
 
 ## Options
 
@@ -208,30 +223,34 @@ A fullscreen dialog uses [Header Panel](#header-panel) to implement its own head
 
 Without buttons:
 
-	<form class="dialog layout center-center" style="">
-	    <div class="dialog-content layout vertical">
-	        <div class="fit shadow">
-	            <div class="fit animated shadow-bottom shadow-bottom-z-3"></div>
-	            <div class="fit animated shadow-top shadow-top-z-3"></div>
-	        </div>
-	        <div class="dialog-body">Body text</div>
-	    </div>
-	</form>
+~~~html
+<form class="dialog layout center-center" style="">
+    <div class="dialog-content layout vertical">
+        <div class="fit shadow">
+            <div class="fit animated shadow-bottom shadow-bottom-z-3"></div>
+            <div class="fit animated shadow-top shadow-top-z-3"></div>
+        </div>
+        <div class="dialog-body">Body text</div>
+    </div>
+</form>
+~~~
 
 With an array of footer buttons:
 
-	<form class="dialog layout center-center " style="">
-	    <div class="dialog-content layout vertical">
-	        <div class="fit shadow">
-	            <div class="fit animated shadow-bottom shadow-bottom-z-3"></div>
-	            <div class="fit animated shadow-top shadow-top-z-3"></div>
-	        </div>
-	        <div class="dialog-body">Body text</div>
-	        <div class="dialog-footer layout end">
-	            <div class="flex"></div>
-	            <div class="actions layout horizontal end-justified wrap">
-	                footer content...
-	            </div>
-	        </div>
-	    </div>
-	</form>
+~~~html
+<form class="dialog layout center-center " style="">
+    <div class="dialog-content layout vertical">
+        <div class="fit shadow">
+            <div class="fit animated shadow-bottom shadow-bottom-z-3"></div>
+            <div class="fit animated shadow-top shadow-top-z-3"></div>
+        </div>
+        <div class="dialog-body">Body text</div>
+        <div class="dialog-footer layout end">
+            <div class="flex"></div>
+            <div class="actions layout horizontal end-justified wrap">
+                footer content...
+            </div>
+        </div>
+    </div>
+</form>
+~~~

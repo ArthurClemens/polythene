@@ -9,27 +9,31 @@ Other than Polymer, the shadow component does not wrap content. Instead the shad
 
 ## Usage
 
-	import shadow from 'polythene/shadow/shadow';
+~~~javascript
+import shadow from 'polythene/shadow/shadow';
 
-	const myShadow = m.component(shadow, {
-		z: 1
-	});
+const myShadow = m.component(shadow, {
+	z: 1
+});
+~~~
 
 Add the shadow to a Mithril template:
 
-	const myCard = m('.card', [
-        m('div.self-center', 'Card!'),
-        myShadow
-    ]);
-
+~~~javascript
+const myCard = m('.card', [
+    m('div.self-center', 'Card!'),
+    myShadow
+]);
+~~~
 
 To animated the shadow use `animated`:
 
-	const myShadow = m.component(shadow, {
-		z: 1,
-		animated: true
-	});
-
+~~~javascript
+const myShadow = m.component(shadow, {
+	z: 1,
+	animated: true
+});
+~~~
 
 ## Options
 
@@ -43,9 +47,9 @@ To animated the shadow use `animated`:
 
 ## Default generated HTML
 
-	<div class="fit shadow">
-	    <div class="fit shadow-bottom shadow-bottom-z-1"></div>
-	    <div class="fit shadow-top shadow-top-z-1"></div>
-	</div>
-
-
+~~~html
+<div class="fit shadow">
+    <div class="fit shadow-bottom shadow-bottom-z-1"></div>
+    <div class="fit shadow-top shadow-top-z-1"></div>
+</div>
+~~~

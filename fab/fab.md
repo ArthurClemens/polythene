@@ -7,16 +7,17 @@ A circular main button with a [shadow](#shadow) and [ripple](#ripple) effect.
 
 ## Usage
 
-	import fab from 'polythene/fab/fab';
+~~~javascript
+import fab from 'polythene/fab/fab';
 
-	const myFab = m.component(fab, {
-        icon: {
-        	svg: {
-        	    src: 'img/arrow.svg'
-        	}
-        }
-    });
-
+const myFab = m.component(fab, {
+    icon: {
+    	svg: {
+    	    src: 'img/arrow.svg'
+    	}
+    }
+});
+~~~
 
 ## Options
 
@@ -42,28 +43,29 @@ FAB inherits from [icon button](#icon-button) (which inherits from [button](#but
 
 ## Default generated HTML
 
-	<a class="raised fab">
-	    <div class="content">
-	        <div class="label">
-	            <div class="icon icon-normal">
-	                <i class="fit svg">
-	                    <svg>...</svg>
-	                </i>
-	            </div>
-	        </div>
-	        <div class="fit ripple constrained">
-	            <div class="ripple-mask">
-	                <div class="ripple-waves" style=""></div>
-	            </div>
-	        </div>
-	        <div class="wash fit"></div>
-	        <div class="fit shadow ">
-	            <div class="fit animated shadow-bottom shadow-bottom-z-2"></div>
-	            <div class="fit animated shadow-top shadow-top-z-2"></div>
-	        </div>
-	    </div>
-	</a>
-
+~~~html
+<a class="raised fab">
+    <div class="content">
+        <div class="label">
+            <div class="icon icon-normal">
+                <i class="fit svg">
+                    <svg>...</svg>
+                </i>
+            </div>
+        </div>
+        <div class="fit ripple constrained">
+            <div class="ripple-mask">
+                <div class="ripple-waves" style=""></div>
+            </div>
+        </div>
+        <div class="wash fit"></div>
+        <div class="fit shadow ">
+            <div class="fit animated shadow-bottom shadow-bottom-z-2"></div>
+            <div class="fit animated shadow-top shadow-top-z-2"></div>
+        </div>
+    </div>
+</a>
+~~~
 
 ## TODO
 

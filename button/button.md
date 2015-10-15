@@ -9,32 +9,38 @@ See also: [Icon Button](#icon-button) and [Floating Action Button](#fab)
 
 ## Usage
 
-	import btn from 'polythene/button/button';
+~~~javascript
+import btn from 'polythene/button/button';
 
-	const myBtn = m.component(btn, {
-		label: 'Button',
-		raised: true
-	});
+const myBtn = m.component(btn, {
+	label: 'Button',
+	raised: true
+});
+~~~
 
 Add a URL:
 
-	const myBtn = m.component(btn, {
-		label: 'Button',
-		raised: true,
-		url: {
-			href: 'index.html'
-		}
-	});
+~~~javascript
+const myBtn = m.component(btn, {
+	label: 'Button',
+	raised: true,
+	url: {
+		href: 'index.html'
+	}
+});
+~~~
 
 Add an onclick event:
 
-	const myBtn = m.component(btn, {
-		label: 'Button',
-		raised: true,
-		events: {
-			onclick: () => console.log('click')
-		}
-	});
+~~~javascript
+const myBtn = m.component(btn, {
+	label: 'Button',
+	raised: true,
+	events: {
+		onclick: () => console.log('click')
+	}
+});
+~~~
 
 ## Variations
 
@@ -70,24 +76,25 @@ Add an onclick event:
 
 ## Default generated HTML
 
-	<a class="raised button">
-	    <div class="content layout vertical">
-	        <span class="flex"></span>
-	        <span>Normal</span>
-	        <span class="flex"></span>
-	        <div class="fit ripple constrained">
-	            <div class="ripple-mask">
-	                <div class="ripple-waves" style=""></div>
-	            </div>
-	        </div>
-	        <div class="wash fit"></div>
-	        <div class="fit shadow">
-	            <div class="fit animated shadow-bottom shadow-bottom-z-1"></div>
-	            <div class="fit animated shadow-top shadow-top-z-1"></div>
-	        </div>
-	    </div>
-	</a>
-
+~~~html
+<a class="raised button">
+    <div class="content layout vertical">
+        <span class="flex"></span>
+        <span>Normal</span>
+        <span class="flex"></span>
+        <div class="fit ripple constrained">
+            <div class="ripple-mask">
+                <div class="ripple-waves" style=""></div>
+            </div>
+        </div>
+        <div class="wash fit"></div>
+        <div class="fit shadow">
+            <div class="fit animated shadow-bottom shadow-bottom-z-1"></div>
+            <div class="fit animated shadow-top shadow-top-z-1"></div>
+        </div>
+    </div>
+</a>
+~~~
 
 ## TODO
 

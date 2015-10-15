@@ -9,98 +9,109 @@ This component does not belong to the Material Design specification, but was int
 
 ## Usage
 
-	import item from 'polythene/item/item';
+~~~javascript
+import item from 'polythene/item/item';
 
-	const myItem = m.component(item, {
-        label: 'Settings'
-    });
+const myItem = m.component(item, {
+    label: 'Settings'
+});
+~~~
 
 To add an icon, pass an [icon](#icon) options object:
 
-	const myItem = m.component(item, {
-		label: 'Settings',
-        icon: {
-	        svg: {
-	            group: 'action',
-	            name: 'settings'
-	        }
-	    }
-    });
+~~~javascript
+const myItem = m.component(item, {
+	label: 'Settings',
+    icon: {
+        svg: {
+            group: 'action',
+            name: 'settings'
+        }
+    }
+});
+~~~
 
 To make the item a link, set its content as the link:
 
-	const myItem = m.component(item, {
-		label: 'Settings',
-        icon: {
-	        svg: {
-	            group: 'action',
-	            name: 'settings'
-	        }
-	    },
-        content: m('a', {href: '#settings'})
-    });
+~~~javascript
+const myItem = m.component(item, {
+	label: 'Settings',
+    icon: {
+        svg: {
+            group: 'action',
+            name: 'settings'
+        }
+    },
+    content: m('a', {href: '#settings'})
+});
+~~~
 
 To make a big item, pass class `font-scalable` - the icon will scale automatically:
 
-	// CSS
-	.big {
-		font-size: 30px;
-	}
-	.small {
-		font-size: 14px;
-	}
+~~~css
+// CSS
+.big {
+	font-size: 30px;
+}
+.small {
+	font-size: 14px;
+}
+~~~
 
-	// js
-	const myItem = m.component(item, {
-		class: 'font-scalable big',
-		label: 'Settings',
-        icon: {
-	        svg: {
-	            group: 'action',
-	            name: 'settings'
-	        }
-	    }
-    });
-	const myItem = m.component(item, {
-		class: 'font-scalable small',
-		label: 'Settings',
-        icon: {
-	        svg: {
-	            group: 'action',
-	            name: 'settings'
-	        }
-	    }
-    });
+~~~javascript
+// js
+const myItem = m.component(item, {
+	class: 'font-scalable big',
+	label: 'Settings',
+    icon: {
+        svg: {
+            group: 'action',
+            name: 'settings'
+        }
+    }
+});
+const myItem = m.component(item, {
+	class: 'font-scalable small',
+	label: 'Settings',
+    icon: {
+        svg: {
+            group: 'action',
+            name: 'settings'
+        }
+    }
+});
+~~~
 
 Create a custom item:
 
-	import icon from 'polythene/icon/icon';
+~~~javascript
+import icon from 'polythene/icon/icon';
 
-	const myItem = m.component(item, {
-        class: 'contact-item',
-        icon: {
-	        svg: {
-	            group: 'action',
-	            name: 'account-circle'
-	        }
-	    },
-        content: [
-            m('div[flex]', [
-                m('div', {class: 'name'}, 'John Doe'),
-                m('div', {class: 'address'}, '123 A Street, San Francisco, CA')
-            ]),
-            m.component(icon, {
-                attr: {
-                    role: 'img'
-                },
-                svg: {
-                    group: 'navigation',
-                    name: 'more-vert'
-                }
-            })
-        ]
-    }
-
+const myItem = m.component(item, {
+    class: 'contact-item',
+    icon: {
+        svg: {
+            group: 'action',
+            name: 'account-circle'
+        }
+    },
+    content: [
+        m('div[flex]', [
+            m('div', {class: 'name'}, 'John Doe'),
+            m('div', {class: 'address'}, '123 A Street, San Francisco, CA')
+        ]),
+        m.component(icon, {
+            attr: {
+                role: 'img'
+            },
+            svg: {
+                group: 'navigation',
+                name: 'more-vert'
+            }
+        })
+    ]
+}
+~~~
 
 ## Variations
 
@@ -124,13 +135,13 @@ Item can be extended with CSS and custom content - see the custom example below.
 
 When using an SVG icon:
 
-	<div class="center horizontal layout item">
-	    <div class="icon icon-normal">
-	        <i class="fit svg">
-	            <svg>...</svg>
-	        </i>
-	    </div>
-	    <div>Label</div>
-	</div>
-
-
+~~~html
+<div class="center horizontal layout item">
+    <div class="icon icon-normal">
+        <i class="fit svg">
+            <svg>...</svg>
+        </i>
+    </div>
+    <div>Label</div>
+</div>
+~~~

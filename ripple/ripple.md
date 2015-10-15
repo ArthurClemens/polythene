@@ -11,33 +11,38 @@ Buttons have a ripple element by default. This page documents how to add a rippl
 
 Use parameter `after` to append the ripple to the content:
 
-	import ripple from 'polythene/ripple/ripple';
-	import listTile from 'polythene/list-tile/list-tile';
+~~~javascript
+import ripple from 'polythene/ripple/ripple';
+import listTile from 'polythene/list-tile/list-tile';
 
-	const myListTile = m.component(listTile, {
-	    title: 'Title',
-	    after: m.component(ripple)
-	});
+const myListTile = m.component(listTile, {
+    title: 'Title',
+    after: m.component(ripple)
+});
+~~~
 
 Use an options object to define specific behavior:
 
-	const myListTile = m.component(listTile, {
-	    title: 'Title',
-	    after: m.component(ripple, {
-	    	constrained: false,
-	    	class: 'colored-ripple'
-    	})
-	});
-
+~~~javascript
+const myListTile = m.component(listTile, {
+    title: 'Title',
+    after: m.component(ripple, {
+    	constrained: false,
+    	class: 'colored-ripple'
+	})
+});
+~~~
 
 
 ## Variations
 
 The ripple color can be set in CSS:
 
-	.colored-ripple {
-		color: green;
-	}
+~~~css
+.colored-ripple {
+	color: green;
+}
+~~~
 
 By default the inherited color from the parent element is used.
 
@@ -70,8 +75,10 @@ By default the inherited color from the parent element is used.
 
 ## Default generated HTML
 
-    <div class="fit ripple constrained">
-        <div class="ripple-mask">
-            <div class="ripple-waves" style=""></div>
-        </div>
+~~~html
+<div class="fit ripple constrained">
+    <div class="ripple-mask">
+        <div class="ripple-waves" style=""></div>
     </div>
+</div>
+~~~

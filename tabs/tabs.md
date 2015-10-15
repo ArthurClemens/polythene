@@ -8,112 +8,121 @@ Displays a tab row.
 
 ## Usage
 
-	import tabs from 'polythene/tabs/tabs';
+~~~javascript
+import tabs from 'polythene/tabs/tabs';
 
-	const tabButtons = [
-		{
-			label: 'New'
-		},
-		{
-			label: 'Favorites'
-		},
-		{
-			label: 'Saved'
-		}
-	];
+const tabButtons = [
+	{
+		label: 'New'
+	},
+	{
+		label: 'Favorites'
+	},
+	{
+		label: 'Saved'
+	}
+];
 
-	const myTabs = m.component(tabs, {
-		buttons: tabButtons,
-		autofit: true
-	})
+const myTabs = m.component(tabs, {
+	buttons: tabButtons,
+	autofit: true
+})
+~~~
 
 To use icons instead of text labels:
 
-	const iconButtons = [
-		{
-			icon: {
-	            svg: {
-	                iconSet: 'mdi',
-	                name: 'heart'
-	            }
-	        }
-		},
-		...
-	];
+~~~javascript
+const iconButtons = [
+	{
+		icon: {
+            svg: {
+                iconSet: 'mdi',
+                name: 'heart'
+            }
+        }
+	},
+	...
+];
 
-	const myTabs = m.component(tabs, {
-		buttons: iconButtons,
-		autofit: true
-	})
+const myTabs = m.component(tabs, {
+	buttons: iconButtons,
+	autofit: true
+})
+~~~
 
 Icons and text combined:
 
-	const iconTextButtons = [
-		{
-			icon: {
-	            svg: {
-	                iconSet: 'mdi',
-	                name: 'heart'
-	            }
-	        },
-	        label: 'Favs'
-		},
-		...
+~~~javascript
+const iconTextButtons = [
+	{
+		icon: {
+            svg: {
+                iconSet: 'mdi',
+                name: 'heart'
+            }
+        },
+        label: 'Favs'
+	},
+	...
 
-	const myTabs = m.component(tabs, {
-		buttons: iconTextButtons,
-		autofit: true
-	})
+const myTabs = m.component(tabs, {
+	buttons: iconTextButtons,
+	autofit: true
+})
+~~~
 
 To disable ripple (ink) effect:
 
-	const myTabs = m.component(tabs, {
-		buttons: tabButtons,
-		tabsOpts: {
-			ink: false
-		}
-	})
-
+~~~javascript
+const myTabs = m.component(tabs, {
+	buttons: tabButtons,
+	tabsOpts: {
+		ink: false
+	}
+})
+~~~
 
 ### Scrollable tabs
 
 Set `scrollable` to true and pass scroll icons to the tabs options:
 
-    const myTabs = m.component(tabs, {
-        buttons: tabButtons,
-        scrollable: true,
-        scrollIconLeft: scrollIconLeft,
-        scrollIconRight: scrollIconRight
-    })
+~~~javascript
+const myTabs = m.component(tabs, {
+    buttons: tabButtons,
+    scrollable: true,
+    scrollIconLeft: scrollIconLeft,
+    scrollIconRight: scrollIconRight
+})
 
-    const scrollIconLeft = {
-        svg: {
-            name: 'chevron-left',
-            group: 'google/navigation',
-            iconSet: 'mdi'
-        }
-    };
+const scrollIconLeft = {
+    svg: {
+        name: 'chevron-left',
+        group: 'google/navigation',
+        iconSet: 'mdi'
+    }
+};
 
-    const scrollIconRight = {
-        svg: {
-            name: 'chevron-right',
-            group: 'google/navigation',
-            iconSet: 'mdi'
-        }
-    };
-
+const scrollIconRight = {
+    svg: {
+        name: 'chevron-right',
+        group: 'google/navigation',
+        iconSet: 'mdi'
+    }
+};
+~~~
 
 ### Styling
 
 Set the selected button color and corresponding indicator background:
 
-	.tabs .tab.selected {
-		color: #00bcd4;
-	}
-	.tabs .tabIndicator {
-		background-color: #00bcd4;
-	}
-
+~~~css
+.tabs .tab.selected {
+	color: #00bcd4;
+}
+.tabs .tabIndicator {
+	background-color: #00bcd4;
+}
+~~~
 
 ### Tab widths
 
@@ -171,27 +180,28 @@ These options can be grouped into `tabsOpts` and applied to all tabs.
 
 ## Default generated HTML
 
-	<div class="tabs">
-	    <div class="tabRow layout horizontal">
-	        <a class="button tab flex none">
-	            <div class="content">
-	                <div class="layout vertical">
-	                    <div class="flex"></div>
-	                    <div class="label">New</div>
-	                    <div class="flex"></div>
-	                </div>
-	                <div class="fit ripple constrained">
-	                    <div class="ripple-mask">
-	                        <div class="ripple-waves" style=""></div>
-	                    </div>
-	                </div>
-	            </div>
-	        </a>
-	        ... same for other tab buttons
-	        <div class="tabIndicator" style=""></div>
-	    </div>
-	</div>
-
+~~~html
+<div class="tabs">
+    <div class="tabRow layout horizontal">
+        <a class="button tab flex none">
+            <div class="content">
+                <div class="layout vertical">
+                    <div class="flex"></div>
+                    <div class="label">New</div>
+                    <div class="flex"></div>
+                </div>
+                <div class="fit ripple constrained">
+                    <div class="ripple-mask">
+                        <div class="ripple-waves" style=""></div>
+                    </div>
+                </div>
+            </div>
+        </a>
+        ... same for other tab buttons
+        <div class="tabIndicator" style=""></div>
+    </div>
+</div>
+~~~
 
 ## TODO
 

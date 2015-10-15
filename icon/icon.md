@@ -11,54 +11,63 @@ Displays an icon (image or [SVG](#svg)) as a 24px (but configurable) square.
 
 SVG embedded in a Mithril template works best because the JavaScript can be inlined, which saves a server call for each icon.
 
-A "Mithril-ified" SVG icon is basically
+A "Mithril-ified" SVG icon ("msvg") is basically:
 
-    m.trust('<svg><path>...</path></svg>')
+~~~javascript
+m.trust('<svg><path>...</path></svg>')
+~~~
 
+A large collection of msvg icons is available at [mmsvg](https://github.com/ArthurClemens/mmsvg).
 
 Use param `msvg`:
 
-    import icon from 'polythene/icon/icon';
-    import gIconStars from 'google-material-design-icons/action/stars';
+~~~javascript
+import icon from 'polythene/icon/icon';
+import gIconStars from 'mmsvg/google/action/stars';
 
-    const myIcon = m.component(icon, {
-    	msvg: gIconStars
-    });
+const myIcon = m.component(icon, {
+	msvg: gIconStars
+});
+~~~
 
 msvg icons can be created using this template:
 
-    var m = require('mithril');
-    module.exports = m.trust('paste svg contents here');
-
-
-Alternatively, a large collection of msvg icons is available at  [mithril-material-design-icons](https://github.com/ArthurClemens/mithril-material-design-icons).
+~~~javascript
+var m = require('mithril');
+module.exports = m.trust('paste svg contents here');
+~~~
 
 
 ### Using PNG or SVG files
 
-	import icon from 'polythene/icon/icon';
+~~~javascript
+import icon from 'polythene/icon/icon';
 
-	const myIcon = m.component(icon, {
-		src: 'img/arrow.png'
-	});
+const myIcon = m.component(icon, {
+	src: 'img/arrow.png'
+});
+~~~
 
 To use SVG instead of an image, pass an [svg](#svg) option object:
 
-	const myIcon = m.component(icon, {
-		svg: {
-		    src: 'img/arrow.svg'
-		}
-	});
+~~~javascript
+const myIcon = m.component(icon, {
+	svg: {
+	    src: 'img/arrow.svg'
+	}
+});
+~~~
 
 Or pass `iconSet` (sub folder) and filename (without `.svg`):
 
-	const myIcon = m.component(icon, {
-		svg: {
-			iconSet: 'mdi',
-		    name: 'emoticon-happy'
-		}
-	});
-
+~~~javascript
+const myIcon = m.component(icon, {
+	svg: {
+		iconSet: 'mdi',
+	    name: 'emoticon-happy'
+	}
+});
+~~~
 
 ## Variations
 
@@ -89,8 +98,10 @@ Or pass `iconSet` (sub folder) and filename (without `.svg`):
 
 ## Default generated HTML
 
-	<div class="icon icon-normal">
-	    <i class="fit svg">
-	        <svg>...</svg>
-	    </i>
-	</div>
+~~~html
+<div class="icon icon-normal">
+    <i class="fit svg">
+        <svg>...</svg>
+    </i>
+</div>
+~~~
