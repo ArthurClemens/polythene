@@ -1,13 +1,8 @@
-# Roboto Font
-
-Adds CSS to load the RobotoDraft font.
+The Roboto font is included in the default theme. It is loaded through Google's webfont loader.
 
 
 ## Usage
 
-	require('polythene/font-roboto/font-roboto');
-
-
-## Generated CSS
-
-	@import url("https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic");
+~~~javascript
+import 'polythene-theme/font-roboto/font-roboto';
+~~~

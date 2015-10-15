@@ -1,91 +1,128 @@
 
 # Tabs
 
-<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-examples/index.html#/tabs">Demo</a>
+<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/index.html#/tabs">Demo</a>
 
 Displays a tab row.
 
 
 ## Usage
 
-	import tabs from 'polythene/tabs/tabs';
+~~~javascript
+import tabs from 'polythene/tabs/tabs';
 
-	const tabButtons = [
-		{
-			label: 'New'
-		},
-		{
-			label: 'Favorites'
-		},
-		{
-			label: 'Saved'
-		}
-	];
+const tabButtons = [
+	{
+		label: 'New'
+	},
+	{
+		label: 'Favorites'
+	},
+	{
+		label: 'Saved'
+	}
+];
 
-	const myTabs = m.component(tabs, {
-		buttons: tabButtons,
-		autofit: true
-	})
+const myTabs = m.component(tabs, {
+	buttons: tabButtons,
+	autofit: true
+})
+~~~
 
 To use icons instead of text labels:
 
-	const iconButtons = [
-		{
-			icon: {
-	            svg: {
-	                iconSet: 'mdi',
-	                name: 'heart'
-	            }
-	        }
-		},
-		...
-	];
+~~~javascript
+const iconButtons = [
+	{
+		icon: {
+            svg: {
+                iconSet: 'mdi',
+                name: 'heart'
+            }
+        }
+	},
+	...
+];
 
-	const myTabs = m.component(tabs, {
-		buttons: iconButtons,
-		autofit: true
-	})
+const myTabs = m.component(tabs, {
+	buttons: iconButtons,
+	autofit: true
+})
+~~~
 
 Icons and text combined:
 
-	const iconTextButtons = [
-		{
-			icon: {
-	            svg: {
-	                iconSet: 'mdi',
-	                name: 'heart'
-	            }
-	        },
-	        label: 'Favs'
-		},
-		...
+~~~javascript
+const iconTextButtons = [
+	{
+		icon: {
+            svg: {
+                iconSet: 'mdi',
+                name: 'heart'
+            }
+        },
+        label: 'Favs'
+	},
+	...
 
-	const myTabs = m.component(tabs, {
-		buttons: iconTextButtons,
-		autofit: true
-	})
+const myTabs = m.component(tabs, {
+	buttons: iconTextButtons,
+	autofit: true
+})
+~~~
 
 To disable ripple (ink) effect:
 
-	const myTabs = m.component(tabs, {
-		buttons: tabButtons,
-		tabsOpts: {
-			ink: false
-		}
-	})
+~~~javascript
+const myTabs = m.component(tabs, {
+	buttons: tabButtons,
+	tabsOpts: {
+		ink: false
+	}
+})
+~~~
 
+### Scrollable tabs
+
+Set `scrollable` to true and pass scroll icons to the tabs options:
+
+~~~javascript
+const myTabs = m.component(tabs, {
+    buttons: tabButtons,
+    scrollable: true,
+    scrollIconLeft: scrollIconLeft,
+    scrollIconRight: scrollIconRight
+})
+
+const scrollIconLeft = {
+    svg: {
+        name: 'chevron-left',
+        group: 'google/navigation',
+        iconSet: 'mdi'
+    }
+};
+
+const scrollIconRight = {
+    svg: {
+        name: 'chevron-right',
+        group: 'google/navigation',
+        iconSet: 'mdi'
+    }
+};
+~~~
 
 ### Styling
 
 Set the selected button color and corresponding indicator background:
 
-	.tabs .tab.selected {
-		color: #00bcd4;
-	}
-	.tabs .tabIndicator {
-		background-color: #00bcd4;
-	}
-
+~~~css
+.tabs .tab.selected {
+	color: #00bcd4;
+}
+.tabs .tabIndicator {
+	background-color: #00bcd4;
+}
+~~~
 
 ### Tab widths
 
@@ -113,12 +150,15 @@ To use a fixed width without `autofit`:
 | **buttons** | required | Array of options Objects |  | Tab buttons |
 | **autofit** | optional | Boolean | false | Set to true to let the buttons fill the button row |
 | **scrollable** | optional | Boolean | false | Set to true to make the button row scrollable; this automatically sets autofit to `false`; on no-touch devices 2 scrollbuttons will be added to navigate tabs |
+| **scrollIconLeft** | required when scrollable is `true` | [Icon](#icon) options object  | | Icon options for left button |
+| **scrollIconRight** | required when scrollable is `true` | [Icon](#icon) options object  | | Icon options for right button |
 | **centered** | optional | Boolean | false | Set to true to center the button row; this automatically sets autofit to `false` |
 | **largestWidth** | optional | Boolean | false | Set to true to make all tabs the width of the largest tab |
 | **selectedTab** | optional | Number | 0 | The Array index of the selected tab |
 | **hideIndicator** | optional | Boolean | false | Set to true to hide the tab indicator |
 | **noIndicatorSlide** | optional | Boolean | false | Set to true not let the tab indicator slide to the new position |
 | **tabsOpts** | optional | Options Object | | Tab button options that will be applied to all tabs |
+
 
 ### Tab button options
 
@@ -140,27 +180,28 @@ These options can be grouped into `tabsOpts` and applied to all tabs.
 
 ## Default generated HTML
 
-	<div class="tabs">
-	    <div class="tabRow layout horizontal">
-	        <a class="button tab flex none">
-	            <div class="content">
-	                <div class="layout vertical">
-	                    <div class="flex"></div>
-	                    <div class="label">New</div>
-	                    <div class="flex"></div>
-	                </div>
-	                <div class="fit ripple constrained">
-	                    <div class="ripple-mask">
-	                        <div class="ripple-waves" style=""></div>
-	                    </div>
-	                </div>
-	            </div>
-	        </a>
-	        ... same for other tab buttons
-	        <div class="tabIndicator" style=""></div>
-	    </div>
-	</div>
-
+~~~html
+<div class="tabs">
+    <div class="tabRow layout horizontal">
+        <a class="button tab flex none">
+            <div class="content">
+                <div class="layout vertical">
+                    <div class="flex"></div>
+                    <div class="label">New</div>
+                    <div class="flex"></div>
+                </div>
+                <div class="fit ripple constrained">
+                    <div class="ripple-mask">
+                        <div class="ripple-waves" style=""></div>
+                    </div>
+                </div>
+            </div>
+        </a>
+        ... same for other tab buttons
+        <div class="tabIndicator" style=""></div>
+    </div>
+</div>
+~~~
 
 ## TODO
 

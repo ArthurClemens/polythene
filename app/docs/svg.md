@@ -1,55 +1,66 @@
 # SVG
 
-<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-examples/index.html#/svg">Demo</a>
+<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/index.html#/svg">Demo</a>
 
 Loads SVG code asychronously and displays this on the page, for instance in an [icon](#icon).
+
+Note: the preferred way to show SVG is embedding it in JavaScript as "Mithril-ified" SVG. The JavaScript can be inlined, which saves a server call for each icon. A large collection of msvg icons is available at [mmsvg](https://github.com/ArthurClemens/mmsvg). See [icon](#icon) for usage instructions.
 
 
 ## Usage
 
-	import svg from 'polythene/svg/svg';
+~~~javascript
+import svg from 'polythene/svg/svg';
 
-	const mySvg = m.component(svg, {
-		src: 'img/arrow.svg'
-	});
+const mySvg = m.component(svg, {
+	src: 'img/arrow.svg'
+});
+~~~
 
 To load an SVG from one of the included icon sets, pass `iconSet` and `name`. To load `polythene/svg/mdi/headphones.svg`:
 
-	const mySvg = m.component(svg, {
-		iconSet: 'mdi',
-		name: 'headphones'
-	});
+~~~javascript
+const mySvg = m.component(svg, {
+	iconSet: 'mdi',
+	name: 'headphones'
+});
+~~~
 
 If the icon set has subfolders, pass the folder name as `group`. To load `polythene/svg/material-design-iconic-font/action/alarm.svg`:
 
-	const mySvg = m.component(svg, {
-	    iconSet: 'material-design-iconic-font',
-	    group: 'google/action',
-	    name: 'alarm'
-	});
+~~~javascript
+const mySvg = m.component(svg, {
+    iconSet: 'material-design-iconic-font',
+    group: 'google/action',
+    name: 'alarm'
+});
+~~~
 
 SVG options can be passed to [icon](#icon):
 
-	import icon from 'polythene/icon/icon';
-	const myIcon = m.component(icon, {
-	    iconSet: 'material-design-iconic-font',
-	    group: 'google/action',
-	    name: 'alarm'
-	});
+~~~javascript
+import icon from 'polythene/icon/icon';
+const myIcon = m.component(icon, {
+    iconSet: 'material-design-iconic-font',
+    group: 'google/action',
+    name: 'alarm'
+});
+~~~
 
-Note that in this case `import svg from 'polythene/svg/svg'` is not needed (this is handled by icon). 
+Note that in this case `import svg from 'polythene/svg/svg'` is not needed (this is handled by icon).
 
 When after user interaction another SVG is shown, the app is more responsive when the other SVG is already preloaded and cached. Param `preload` accepts a list of option objects:
 
-	const mySvg = m.component(svg, {
-        name: opts.favorite ? 'star' : 'star-outline',
-        iconSet: 'mdi',
-        preload: [{
-            name: opts.favorite ? 'star-outline' : 'star',
-            iconSet: 'mdi'
-        }]
-    }
-
+~~~javascript
+const mySvg = m.component(svg, {
+    name: opts.favorite ? 'star' : 'star-outline',
+    iconSet: 'mdi',
+    preload: [{
+        name: opts.favorite ? 'star-outline' : 'star',
+        iconSet: 'mdi'
+    }]
+}
+~~~
 
 ## Options
 
@@ -79,7 +90,8 @@ Other icon sets can be placed in `deps/svg/` and referred to by parameter `iconS
 
 ## Default generated HTML
 
-	<div class="svg">
-		<svg>...</svg>
-	</div>
-
+~~~html
+<div class="svg">
+	<svg>...</svg>
+</div>
+~~~

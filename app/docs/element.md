@@ -5,12 +5,13 @@ A simple element to wrap a component around a Mithril template. It doesn't do an
 
 ## Usage
 
-	import element from 'polythene/element/element';
+~~~javascript
+import element from 'polythene/element/element';
 
-	const myElement = m.component(element, {
-        content: m('.content', 'My content')
-    });
-
+const myElement = m.component(element, {
+    content: m('.content', 'My content')
+});
+~~~
 
 ## Options
 
@@ -25,6 +26,8 @@ A simple element to wrap a component around a Mithril template. It doesn't do an
 
 ## Default generated HTML
 
-	<div>
-	    ...
-	</div>
+~~~html
+<div>
+    ...
+</div>
+~~~
