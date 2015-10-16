@@ -5,15 +5,23 @@ import ripple from 'polythene/ripple/ripple';
 import shadow from 'polythene/shadow/shadow';
 import 'polythene-theme/button/button';
 
-let tapStart,
+let startType,
+    endType,
+    tapStart,
     tapEnd;
 
 const initTapEvents = (el, ctrl, opts) => {
+    const isTouch = !document.documentElement.classList.contains('no-touch');
+    startType =  isTouch ? 'click' : 'mousedown';
+    endType = 'mouseup';
+    // disable z animation on touch
+    const animateOnTap = opts.animateOnTap && !isTouch;
+
     const tapHandler = function tapHandler(evt) {
         if (opts.onTap) {
             opts.onTap(evt);
         }
-        if (!opts.animateOnTap) {
+        if (!animateOnTap) {
             return;
         }
         const baseZ = ctrl.baseZ();
@@ -39,13 +47,13 @@ const initTapEvents = (el, ctrl, opts) => {
     tapEnd = function() {
         tapHandler('up');
     };
-    el.addEventListener('mousedown', tapStart);
-    el.addEventListener('mouseup', tapEnd);
+    el.addEventListener(startType, tapStart);
+    el.addEventListener(endType, tapEnd);
 };
 
 const clearTapEvents = function(el) {
-    el.removeEventListener('mousedown', tapStart);
-    el.removeEventListener('mouseup', tapEnd);
+    el.removeEventListener(startType, tapStart);
+    el.removeEventListener(endType, tapEnd);
 };
 
 const createView = (ctrl, opts = {}) => {

@@ -12,6 +12,7 @@ let tapStart,
 tapListeners = [];
 
 const initTapEvents = (el, ctrl, opts = {}) => {
+    // use mousedown on desktop
     const startType = document.documentElement.classList.contains('no-touch') ? 'mousedown' : 'click';
     const endType = 'mouseup';
 

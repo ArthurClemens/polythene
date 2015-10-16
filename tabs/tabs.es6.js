@@ -167,11 +167,13 @@ const setSelectedTab = (index, animate, ctrl) => {
     if (ctrl.managesScroll) {
         updateScrollButtons(ctrl);
     }
+    m.redraw();
 };
 
 const createTab = (index, opts, tabsOpts, ctrl) => {
     const autofit = (tabsOpts.scrollable || tabsOpts.centered) ? false : (tabsOpts.autofit ? true : false);
     const tabIcon = opts.icon ? m.component(icon, opts.icon) : null;
+    // create a button
     const tabButtonOptions = Object.assign({}, {
         content: m('.layout.vertical', [
             m('.flex'),
@@ -255,6 +257,23 @@ const createView = (ctrl, opts = {}) => {
         scrollButtonRight = createScrollButton(ctrl, POSITION_RIGHT, opts);
     }
 
+    const tabIndicator = opts.hideIndicator ? null : m('.tabIndicator', {
+        // show indicator after widths have been set
+        style: {
+            display: 'none'
+        },
+        config: (el, inited) => {
+            if (inited) {
+                return;
+            }
+            ctrl.tabIndicatorEl = el;
+            setTimeout(() => {
+                el.style.display = '';
+            }, 0);
+
+        }
+    });
+
     const content = [
         opts.scrollable ? scrollButtonLeft : null,
         m('div', {
@@ -268,14 +287,7 @@ const createView = (ctrl, opts = {}) => {
         }, [
             opts.centered ? m('.flex') : null,
             tabRow,
-            opts.hideIndicator ? null : m('.tabIndicator', {
-                config: (el, inited) => {
-                    if (inited) {
-                        return;
-                    }
-                    ctrl.tabIndicatorEl = el;
-                }
-            }),
+            tabIndicator,
             opts.centered ? m('.flex') : null
         ]),
         opts.scrollable ? scrollButtonRight : null
