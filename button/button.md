@@ -41,10 +41,18 @@ const myBtn = m.component(btn, {
 ```
 
 ## Variations
+
 - Buttons can be flat or raised. Using `raised` without specifying `z` gives the button a default shadow.
 - The hover effect can be hidden with `wash: false`.
 - The ripple effect on click can be hidden with `ink: false`.
 - No icon in button, as this is not part of the Material Design guidelines; use [icon Button](#icon-button) instead
+
+
+## Mobile taps
+
+To remove the tap delay on mobile it is advisable to use [Fastclick](https://github.com/ftlabs/fastclick) or similar.
+
+
 
 ## Options
 
