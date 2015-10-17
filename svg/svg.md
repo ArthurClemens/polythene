@@ -4,61 +4,96 @@
 
 Loads SVG code asychronously and displays this on the page, for instance in an [icon](#icon).
 
-Note: the preferred way to show SVG is embedding it in JavaScript as "Mithril-ified" SVG. The JavaScript can be inlined, which saves a server call for each icon. A large collection of msvg icons is available at [mmsvg](https://github.com/ArthurClemens/mmsvg). See [icon](#icon) for usage instructions.
-
 
 ## Usage
+
+If you want to use SVG for icons, the best method is to use [icon](#icon) directly.
+
+For other usages, there are several methods to embed SVG on the page.
+
+
+### Using msvg (Mitril-ified SVG) files
+
+#### About msvg
+
+SVG embedded in a Mithril template works best because the JavaScript can be inlined, which saves a server call for each icon.
+
+A "Mithril-ified" SVG icon ("msvg") is basically:
+
+~~~javascript
+m.trust('<svg><path>...</path></svg>')
+~~~
+
+A large collection of msvg icons is available at [mmsvg](https://github.com/ArthurClemens/mmsvg).
+
+#### Example
+
+Assuming that 'stars.js' is a msvg file:
+
+~~~javascript
+import svg from 'polythene/svg/svg';
+import iconStars from 'mmsvg/google/msvg/action/stars';
+
+const mySvg = m.component(svg, {
+	content: iconStars
+});
+~~~
+
+
+### Using SVG XML
+
+This is the same as "msvg", but with the raw SVG XML at hand:
 
 ~~~javascript
 import svg from 'polythene/svg/svg';
 
 const mySvg = m.component(svg, {
-	src: 'img/arrow.svg'
+	content: m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>')
 });
 ~~~
 
-To load an SVG from one of the included icon sets, pass `iconSet` and `name`. To load `polythene/svg/mdi/headphones.svg`:
+
+### Dynamically loading a file
+
+This method requires SystemJS to be installed. Note that you even deploy this if you are using Browserify - see the [Polythene-examples](https://github.com/ArthurClemens/Polythene-examples) build with the SVG example.
+
+When using SystemJS, you need to use the `system-text` plugin to load SVG files. The filename includes the extension '!text' to call the text plugin:
 
 ~~~javascript
+import svg from 'polythene/svg/svg';
+
 const mySvg = m.component(svg, {
-	iconSet: 'mdi',
-	name: 'headphones'
+	src: 'img/arrow.svg!text'
 });
 ~~~
 
-If the icon set has subfolders, pass the folder name as `group`. To load `polythene/svg/material-design-iconic-font/action/alarm.svg`:
 
-~~~javascript
-const mySvg = m.component(svg, {
-    iconSet: 'material-design-iconic-font',
-    group: 'google/action',
-    name: 'alarm'
-});
-~~~
+
+## Usage with icon
 
 SVG options can be passed to [icon](#icon):
 
 ~~~javascript
 import icon from 'polythene/icon/icon';
+
 const myIcon = m.component(icon, {
-    iconSet: 'material-design-iconic-font',
-    group: 'google/action',
-    name: 'alarm'
+    svg: {
+        src: 'img/arrow.svg!text'
+    }
 });
 ~~~
 
-Note that in this case `import svg from 'polythene/svg/svg'` is not needed (this is handled by icon).
+## Optimizing dynamic loading
 
-When after user interaction another SVG is shown, the app is more responsive when the other SVG is already preloaded and cached. Param `preload` accepts a list of option objects:
+The interface is quicker to respond when dynamic files are preloaded. Param `preload` accepts a list of src files:
 
 ~~~javascript
+const filename = opts.favorite ? 'star.svg' : 'star-outline.svg';
+const preloadFilename = !opts.favorite ? 'star.svg' : 'star-outline.svg';
+
 const mySvg = m.component(svg, {
-    name: opts.favorite ? 'star' : 'star-outline',
-    iconSet: 'mdi',
-    preload: [{
-        name: opts.favorite ? 'star-outline' : 'star',
-        iconSet: 'mdi'
-    }]
+    src: filename,
+    preload: [preloadFilename]
 }
 ~~~
 
@@ -68,23 +103,11 @@ const mySvg = m.component(svg, {
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **tag** | optional | String | 'div' | HTML tag |
 | **class** | optional | String |  | CSS class appended to 'svg' |
-| **src** | either src or iconSet+name must be passed | String |  | SVG URL |
-| **iconSet** | either src or iconSet+name must be passed | String |  | Iconset name - see below |
-| **group** | optional | String (file path) |  | Subfolder path within iconSet |
-| **name** | either src or iconSet+name must be passed | String |  | SVG filename without .svg extension |
-| **preload** | optional | Array of svg option objects | | List of SVG items (property `name`, `src`, `group`, `iconSet`) to preload; will be fetched after `name` has been loaded |
+| **src** | either src or content must be passed | String |  | SVG URL |
+| **content** | either src or iconSet+name must be passed | String |  | SVG XML |
+| **preload** | optional | Array of strings | | List of src locations to preload |
 | **before** | optional | Mithril template or String | | Extra content before main content |
 | **after** | optional | Mithril template or String | | Extra content after main content |
-
-
-## Icon sets
-
-By default 2 icons sets are included in the `deps/svg/` folder (after running `npm run setup`):
-
-* Iconset `material-design-iconic-font`: [GitHub project](https://github.com/zavoloklom/material-design-iconic-font)
-* Iconset `mdi`: [GitHub project](https://github.com/Templarian/MaterialDesign)
-
-Other icon sets can be placed in `deps/svg/` and referred to by parameter `iconSet`.
 
 
 
