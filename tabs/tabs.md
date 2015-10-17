@@ -143,13 +143,14 @@ To use a fixed width without `autofit`:
 
 ### Mobile bottom menu
 
-Use class `menu` to remove the minimum width settings from the tab buttons.
+Use class `menu` to remove the minimum width settings from the tab buttons and compress padding and label font size.
 
 ~~~javascript
 m.component(tabs, {
     class: 'menu',
     buttons: tabButtons,
-    autofit: true
+    autofit: true,
+    hideIndicator: true
 })
 ~~~
 

@@ -204,8 +204,11 @@ const createTab = (index, opts, tabsOpts, ctrl) => {
 
 const createView = (ctrl, opts = {}) => {
     const tag = opts.tag || 'div';
+
     // keep selected tab up to date
-    ctrl.selectedTabIndex(opts.selectedTab);
+    if (opts.selectedTab !== undefined && opts.buttons[0].url) {
+        ctrl.selectedTabIndex(opts.selectedTab);
+    }
 
     const props = {
         class: ['tabs', opts.scrollable ? 'scrollable' : null, opts.class].join(' '),
