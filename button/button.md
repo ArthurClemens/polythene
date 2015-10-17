@@ -1,5 +1,5 @@
 # Button
-<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/index.html#/button">Demo</a>
+<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-examples/index.html#/button">Demo</a>
 
 Displays a text button with a [shadow](#shadow) and [ripple](#ripple) effect.
 

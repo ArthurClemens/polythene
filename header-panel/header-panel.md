@@ -1,6 +1,6 @@
 # Header Panel
 
-<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/header-panel.html">Demo</a>
+<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-examples/header-panel.html">Demo</a>
 
 Displays a content panel with header with various scrolling behaviors. Use this for a page with a header bar (like the current page), or a title/menu bar.
 

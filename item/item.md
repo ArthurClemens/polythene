@@ -1,6 +1,6 @@
 # Item
 
-<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/index.html#/item">Demo</a>
+<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-examples/index.html#/item">Demo</a>
 
 Item is a simple horizontal element with a label and an optional icon.
 
