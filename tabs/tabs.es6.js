@@ -95,7 +95,7 @@ const updateScrollButtons = (ctrl) => {
     }
 };
 
-const manageScroll = (ctrl, context) => {
+const manageScroll = (ctrl, context, opts) => {
     const minTabIndex = 0;
     const maxTabIndex = ctrl.tabs.length - 1;
     const tabs = ctrl.tabs;
@@ -117,7 +117,8 @@ const manageScroll = (ctrl, context) => {
         const newIndex = getNewIndex(currentTabIndex)[direction];
         scrollToTab(newIndex, tabs, scrollerEl);
         if (newIndex !== currentTabIndex) {
-            setSelectedTab(newIndex, true, ctrl);
+            setSelectedTab(newIndex, true, ctrl, opts);
+            m.redraw();
         }
         updateScrollButtons(ctrl);
     };
@@ -144,7 +145,7 @@ const manageScroll = (ctrl, context) => {
     };
 };
 
-const setSelectedTab = (index, animate, ctrl) => {
+const setSelectedTab = (index, animate, ctrl, opts) => {
     ctrl.selectedTabIndex(index);
     const selectedTabEl = ctrl.tabs[index];
     if (selectedTabEl && ctrl.tabIndicatorEl && ctrl.tabsEl) {
@@ -167,7 +168,6 @@ const setSelectedTab = (index, animate, ctrl) => {
     if (ctrl.managesScroll) {
         updateScrollButtons(ctrl);
     }
-    m.redraw();
 };
 
 const createTab = (index, opts, tabsOpts, ctrl) => {
@@ -185,7 +185,11 @@ const createTab = (index, opts, tabsOpts, ctrl) => {
         wash: false,
         onTap: (evt) => {
             if (evt === 'down') {
-                setSelectedTab(index, tabsOpts.noIndicatorSlide ? false : true, ctrl);
+                setSelectedTab(index, tabsOpts.noIndicatorSlide ? false : true, ctrl, tabsOpts);
+                // no route change, no redraw, so do an extra redraw
+                if (!opts.url) {
+                    m.redraw();
+                }
             }
         },
         config: (el, inited) => {
@@ -200,6 +204,9 @@ const createTab = (index, opts, tabsOpts, ctrl) => {
 
 const createView = (ctrl, opts = {}) => {
     const tag = opts.tag || 'div';
+    // keep selected tab up to date
+    ctrl.selectedTabIndex(opts.selectedTab);
+
     const props = {
         class: ['tabs', opts.scrollable ? 'scrollable' : null, opts.class].join(' '),
         config: (el, inited, context) => {
@@ -223,11 +230,11 @@ const createView = (ctrl, opts = {}) => {
             // handle scroll
             if (opts.scrollable && document.documentElement.classList.contains('no-touch')) {
                 ctrl.managesScroll = true;
-                manageScroll(ctrl, context);
+                manageScroll(ctrl, context, opts);
             }
 
             const onResize = () => {
-                setSelectedTab(ctrl.selectedTabIndex(), false, ctrl);
+                setSelectedTab(ctrl.selectedTabIndex(), false, ctrl, opts);
                 m.redraw();
             };
             p.addListener('resize', onResize);
@@ -236,7 +243,8 @@ const createView = (ctrl, opts = {}) => {
                 p.removeListener('resize', onResize);
             };
             setTimeout(() => {
-                setSelectedTab(opts.selectedTab || 0, false, ctrl);
+                setSelectedTab(opts.selectedTab || 0, false, ctrl, opts);
+                m.redraw();
             }, 0);
         }
     };
