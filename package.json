@@ -1,7 +1,7 @@
 {
   "name": "polythene",
-  "version": "0.1.21",
-  "description": "Polymer inspired modular implementation of Material Design for Mithril.",
+  "version": "0.1.22",
+  "description": "Modular implementation of Material Design for Mithril.",
   "license": "MIT",
   "main": "",
   "directories": {},

@@ -111,6 +111,7 @@ const scrollIconRight = {
 };
 ~~~
 
+
 ### Styling
 
 Set the selected button color and corresponding indicator background:
@@ -134,9 +135,23 @@ To make all tabs the width of the largest tab, use parameter `largestWidth`.
 
 To use a fixed width without `autofit`:
 
-	.tabs:not(.small):not(.medium) .tab {
-		min-width: 100px;
-	}
+~~~css
+.tabs:not(.small):not(.medium) .tab {
+	min-width: 100px;
+}
+~~~
+
+### Mobile bottom menu
+
+Use class `menu` to remove the minimum width settings from the tab buttons.
+
+~~~javascript
+m.component(tabs, {
+    class: 'menu',
+    buttons: tabButtons,
+    autofit: true
+})
+~~~
 
 
 ## Options
@@ -158,7 +173,6 @@ To use a fixed width without `autofit`:
 | **hideIndicator** | optional | Boolean | false | Set to true to hide the tab indicator |
 | **noIndicatorSlide** | optional | Boolean | false | Set to true not let the tab indicator slide to the new position |
 | **tabsOpts** | optional | Options Object | | Tab button options that will be applied to all tabs |
-
 
 ### Tab button options
 
