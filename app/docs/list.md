@@ -1,6 +1,6 @@
 # List
 
-<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-Examples/index.html#/list">Demo</a>
+<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-examples/index.html#/list">Demo</a>
 
 Displays a list of [list tiles](#list-tile), with an optional header (which is also a list tile).
 
