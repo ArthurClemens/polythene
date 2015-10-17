@@ -248,7 +248,7 @@ const createView = (ctrl, opts = {}) => {
         return createTab(index, buttonOpts, opts, ctrl);
     }).concat([
         // offset for right scroll button
-        m('.scrollButtonOffset.flex.none')
+        opts.scrollable ? m('.scrollButtonOffset.flex.none') : null
     ]);
 
     let scrollButtonLeft, scrollButtonRight;
