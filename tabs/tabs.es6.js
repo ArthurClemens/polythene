@@ -118,9 +118,9 @@ const manageScroll = (ctrl, context, opts) => {
         scrollToTab(newIndex, tabs, scrollerEl);
         if (newIndex !== currentTabIndex) {
             setSelectedTab(newIndex, true, ctrl, opts);
-            m.redraw();
         }
         updateScrollButtons(ctrl);
+        m.redraw();
     };
 
     const onLeftScrollButtonClick = (e) => {
@@ -163,6 +163,7 @@ const setSelectedTab = (index, animate, ctrl, opts) => {
         style.transform =
             style['-webkit-transform'] =
             style['-moz-transform'] =
+            style['-ms-transform'] =
             style['-o-transform'] = transformCmd;
     }
     if (ctrl.managesScroll) {
@@ -231,7 +232,7 @@ const createView = (ctrl, opts = {}) => {
                 alignToTitle(ctrl);
             }
             // handle scroll
-            if (opts.scrollable && document.documentElement.classList.contains('no-touch')) {
+            if (opts.scrollable && !p.isTouch()) {
                 ctrl.managesScroll = true;
                 manageScroll(ctrl, context, opts);
             }
@@ -269,19 +270,14 @@ const createView = (ctrl, opts = {}) => {
     }
 
     const tabIndicator = opts.hideIndicator ? null : m('.tabIndicator', {
-        // show indicator after widths have been set
-        style: {
-            display: 'none'
-        },
         config: (el, inited) => {
             if (inited) {
                 return;
             }
-            ctrl.tabIndicatorEl = el;
             setTimeout(() => {
-                el.style.display = '';
+                el.style.display = 'block';
             }, 0);
-
+            ctrl.tabIndicatorEl = el;
         }
     });
 
