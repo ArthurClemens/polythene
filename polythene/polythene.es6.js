@@ -2,36 +2,48 @@ const RESIZE_TIMER = 200; // Debounce window resize
 
 let listeners = {};
 
-let resizeTimer = 0;
-window.onresize = () => {
-    if (!listeners.resize) {
+const isTouch = () => {
+    return (('ontouchstart' in window) || (navigator.MaxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));
+};
+
+const addListener = (eventName, listener) => {
+    listeners[eventName] = listeners[eventName] || [];
+    listeners[eventName].push(listener);
+};
+
+const removeListener = (eventName, listener) => {
+    if (!listeners[eventName]) {
         return;
     }
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-        listeners.resize.forEach(listener => listener.call());
-    }, RESIZE_TIMER);
+    const index = listeners[eventName].indexOf(listener);
+    if (index > -1) {
+        listeners[eventName].splice(index, 1);
+    }
 };
+
+const emitEvent = (eventName, event) => {
+    if (!listeners[eventName]) {
+        return;
+    }
+    listeners[eventName].forEach(listener => listener.call(event));
+};
+
+window.addEventListener('resize', (e) => {
+    emitEvent('resize', e);
+});
+
+window.addEventListener('scroll', (e) => {
+    emitEvent('scroll', e);
+});
 
 const polythene = {
     insertContent: (content, opts = {}) => {
         return [].concat(opts.before, content, opts.after);
     },
-
-    addListener: (event, listener) => {
-        listeners[event] = listeners[event] || [];
-        listeners[event].push(listener);
-    },
-
-    removeListener: (event, listener) => {
-        if (!listeners[event]) {
-            return;
-        }
-        const index = listeners[event].indexOf(listener);
-        if (index > -1) {
-            listeners[event].splice(index, 1);
-        }
-    }
+    isTouch: isTouch,
+    addListener: addListener,
+    removeListener: removeListener,
+    emitEvent: emitEvent
 };
 
 export default polythene;
