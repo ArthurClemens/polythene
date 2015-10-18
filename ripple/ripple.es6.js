@@ -12,7 +12,8 @@ let tapStart,
 tapListeners = [];
 
 const initTapEvents = (el, ctrl, opts = {}) => {
-    const startType = 'click';
+    const isTouch = !document.documentElement.classList.contains('no-touch');
+    const startType = isTouch ? 'click' : 'mousedown';
     const endType = 'mouseup';
 
     tapStart = function(e) {

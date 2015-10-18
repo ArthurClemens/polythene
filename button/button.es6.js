@@ -12,7 +12,7 @@ let startType,
 
 const initTapEvents = (el, ctrl, opts) => {
     const isTouch = !document.documentElement.classList.contains('no-touch');
-    startType = 'click';
+    startType = isTouch ? 'click' : 'mousedown';
     endType = 'mouseup';
     // disable z animation on touch
     const animateOnTap = opts.animateOnTap && !isTouch;
