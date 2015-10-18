@@ -1,4 +1,5 @@
 import m from 'mithril';
+import p from 'polythene/polythene/polythene';
 import whichTransitionEvent from 'polythene/common/transitionEvent';
 import 'polythene-theme/ripple/ripple';
 
@@ -12,8 +13,7 @@ let tapStart,
 tapListeners = [];
 
 const initTapEvents = (el, ctrl, opts = {}) => {
-    const isTouch = !document.documentElement.classList.contains('no-touch');
-    const startType = isTouch ? 'click' : 'mousedown';
+    const startType = p.isTouch() ? 'click' : 'mousedown';
     const endType = 'mouseup';
 
     tapStart = function(e) {
