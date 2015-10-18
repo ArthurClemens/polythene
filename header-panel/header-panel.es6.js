@@ -92,7 +92,10 @@ const createViewContent = (ctrl, scrollConfig, opts = {}) => {
     return [
         m('.mainContainer.flex', {
                 config: initMainContainer,
-                onscroll: scrollConfig.main
+                onscroll: (e) => {
+                    scrollConfig.main(e);
+                    p.emitEvent('scroll', e);
+                }
             },
             opts.content ? opts.content : null)
     ];
@@ -161,7 +164,10 @@ const createView = (ctrl, opts = {}) => {
 
     const content = m('.outerContainer.vertical.layout', {
         config: initOuterContainer,
-        onscroll: scrollConfig.outer
+        onscroll: (e) => {
+            scrollConfig.outer(e);
+            p.emitEvent('scroll', e);
+        }
     }, [
         header,
         ignoreContent ? {
@@ -189,7 +195,7 @@ const component = {
             mode = opts.header.mode;
         }
         mode = mode || 'standard';
-        const isTouch = !document.documentElement.classList.contains('no-touch');
+        const isTouch = p.isTouch();
         const tall = modeConfigs.tallMode[mode] || false;
         const tallClass = opts.tallClass || 'tall';
         const animated = opts.animated || false;
