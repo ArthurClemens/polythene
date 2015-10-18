@@ -253,7 +253,7 @@ const component = {
                         sy = Math.max(sy, headerMargin);
                     }
                 }
-                if (sy > 0) {
+                if (sy >= 0) {
                     ctrl.transformHeader(sy);
                 } else if (isTouch) {
                     ctrl.enlargeImage(sy);
