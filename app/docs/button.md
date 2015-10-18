@@ -48,10 +48,13 @@ const myBtn = m.component(btn, {
 - No icon in button, as this is not part of the Material Design guidelines; use [icon Button](#icon-button) instead
 
 
-## Mobile taps
+## Mobile and tap delay
 
-To remove the tap delay on mobile it is advisable to use [Fastclick](https://github.com/ftlabs/fastclick) or similar.
+To remove the tap delay on mobile it is advisable to use a library like [Fastclick](https://github.com/ftlabs/fastclick). But because Fastclick has an unresolved issue with tap events while scrolling on iOS, it is better to use the convenience wrapper provided in the default theme. This temporarily removes the Fastclick event an element is scrolled.
 
+~~~javascript
+import noTapDelay from 'polythene-theme/common/no-tap-delay';
+~~~
 
 
 ## Options
