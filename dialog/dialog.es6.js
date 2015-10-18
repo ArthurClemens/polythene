@@ -197,11 +197,11 @@ const createView = (ctrl, opts = {}) => {
             z: ctrl.z(),
             animated: true
         }),
-        opts.title ? m('.dialog-header.layout.start', [
+        opts.title ? m('.dialog-header.start', [
             m('.title', opts.title)
         ]) : null,
         body,
-        opts.footer ? m('.dialog-footer.layout.end', {
+        opts.footer ? m('.dialog-footer.end', {
             config: (el, inited) => {
                 if (inited) {
                     return;
