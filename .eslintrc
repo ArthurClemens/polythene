@@ -15,6 +15,12 @@
         "semi": [
             2,
             "always"
+        ],
+        "no-unused-vars": [
+            2, {
+                "vars": "all",
+                "args": "after-used"
+            }
         ]
     },
     "globals": {

@@ -1,5 +1,4 @@
 import m from 'mithril';
-import closest from 'closest';
 import p from 'polythene/polythene/polythene';
 import whichTransitionEvent from 'polythene/common/transitionEvent';
 import 'polythene-theme/ripple/ripple';
@@ -18,10 +17,7 @@ const initTapEvents = (el, ctrl, opts = {}) => {
     const endType = 'mouseup';
 
     tapStart = function(e) {
-        const inactive = closest(el, '.inactive');
-        if (!inactive) {
-            ctrl.start(e, ctrl, opts);
-        }
+        ctrl.start(e, ctrl, opts);
     };
     tapEnd = function(e) {
         ctrl.stop(e, ctrl, opts);

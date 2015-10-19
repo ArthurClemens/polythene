@@ -76,7 +76,7 @@ const createView = (ctrl, opts = {}) => {
         tag += '.raised';
     }
     const props0 = {
-        'class': [opts.parentClass || 'button', opts.selected ? 'selected' : null, opts.class].join(' ')
+        'class': [opts.parentClass || 'button', opts.selected ? 'selected' : null, opts.disabled ? 'disabled' : null, opts.class].join(' ')
     };
 
     // handle multiple configs:
@@ -95,7 +95,7 @@ const createView = (ctrl, opts = {}) => {
     const optsConfig = opts.config || (() => {});
     const urlConfig = (opts.url && opts.url.config) ? opts.url.config : (() => {});
 
-    const props = (!disabled) ? Object.assign({},
+    const props = Object.assign({},
         props0,
         opts.url ? opts.url : null,
         opts.events ? opts.events : null, {
@@ -105,7 +105,7 @@ const createView = (ctrl, opts = {}) => {
                 urlConfig(...args)
             ]
         }
-    ) : props0;
+    );
     label = null;
     if (opts.content) {
         label = opts.content;

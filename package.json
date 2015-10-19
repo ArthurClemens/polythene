@@ -1,13 +1,11 @@
 {
   "name": "polythene",
-  "version": "0.1.28",
+  "version": "0.1.29",
   "description": "Modular implementation of Material Design for Mithril.",
   "license": "MIT",
   "main": "",
   "directories": {},
-  "dependencies": {
-    "closest": "0.0.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel": ">= 5.8.23",
     "transpile-watch": "0.0.2",

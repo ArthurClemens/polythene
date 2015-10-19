@@ -1,5 +1,6 @@
 import 'polythene/common/object.assign';
 import p from 'polythene/polythene/polythene';
+require('polythene/common/object.assign');
 import m from 'mithril';
 import button from 'polythene/button/button';
 import icon from 'polythene/icon/icon';
@@ -12,21 +13,52 @@ const SCROLL_DURATION = 380; // milliseconds
 const POSITION_LEFT = (1 << 1);
 const POSITION_RIGHT = (1 << 2);
 
+const getNewIndex = (index, tabs) => {
+    const minTabIndex = 0;
+    const maxTabIndex = tabs.length - 1;
+    return {
+        left: Math.max(index - 1, minTabIndex),
+        right: Math.min(index + 1, maxTabIndex)
+    };
+};
+
+const handleScrollButtonClick = (e, direction, ctrl) => {
+    e.stopPropagation();
+    e.preventDefault();
+    const tabs = ctrl.tabs;
+    const currentTabIndex = ctrl.selectedTabIndex();
+    const newIndex = getNewIndex(currentTabIndex, tabs)[direction];
+    scrollToTab(newIndex, tabs, ctrl.scrollerEl);
+    if (newIndex !== currentTabIndex) {
+        setSelectedTab(newIndex, true, ctrl);
+        updateScrollButtons(ctrl);
+        m.redraw();
+    }
+};
+
 const createScrollButton = (ctrl, position, opts) => {
     return m.component(iconBtn, {
         class: ['scroll-btn', (position === POSITION_LEFT ? 'scroll-btn-left' : 'scroll-btn-right')].join(' '),
         icon: position === POSITION_LEFT ? opts.scrollIconLeft : opts.scrollIconRight,
+        disabled: opts.disabled,
         ripple: {
             center: true
         },
-        config: (el, inited) => {
-            if (inited) {
+        config: (el) => {
+            if (ctrl.scrollButtonLeftEl && ctrl.scrollButtonRightEl) {
                 return;
             }
             if (position === POSITION_LEFT) {
                 ctrl.scrollButtonLeftEl = el;
             } else {
                 ctrl.scrollButtonRightEl = el;
+            }
+        },
+        events: {
+            onclick: (position === POSITION_LEFT) ? (e) => {
+                handleScrollButtonClick(e, 'left', ctrl);
+            } : (e) => {
+                handleScrollButtonClick(e, 'right', ctrl);
             }
         }
     });
@@ -74,97 +106,39 @@ const updateScrollButtons = (ctrl) => {
     const currentTabIndex = ctrl.selectedTabIndex();
     const tabs = ctrl.tabs;
     const tabsEl = ctrl.tabsEl;
-    const scrollButtonLeftEl = ctrl.scrollButtonLeftEl;
-    const scrollButtonRightEl = ctrl.scrollButtonRightEl;
     const minTabIndex = 0;
     const maxTabIndex = tabs.length - 1;
     const isAtLeft = (scrollerEl.scrollLeft === 0) && (currentTabIndex === minTabIndex);
     const isAtRight = (scrollLeft >= (scrollerEl.scrollWidth - tabsEl.getBoundingClientRect().width - 1)) && (currentTabIndex === maxTabIndex);
-    if (isAtLeft && !ctrl.isLeft) {
-        ctrl.isLeft = true;
-        scrollButtonLeftEl.classList.add('inactive');
-    } else if (!isAtLeft && ctrl.isLeft) {
-        ctrl.isLeft = false;
-        scrollButtonLeftEl.classList.remove('inactive');
-    } else if (isAtRight && !ctrl.isRight) {
-        ctrl.isRight = true;
-        scrollButtonRightEl.classList.add('inactive');
-    } else if (!isAtRight && ctrl.isRight) {
-        ctrl.isRight = false;
-        scrollButtonRightEl.classList.remove('inactive');
-    }
+    ctrl.scrollButtonStates.left = !isAtLeft;
+    ctrl.scrollButtonStates.right = !isAtRight;
 };
 
-const manageScroll = (ctrl, context, opts) => {
-    const minTabIndex = 0;
-    const maxTabIndex = ctrl.tabs.length - 1;
-    const tabs = ctrl.tabs;
-    const scrollerEl = ctrl.scrollerEl;
-    const scrollButtonLeftEl = ctrl.scrollButtonLeftEl;
-    const scrollButtonRightEl = ctrl.scrollButtonRightEl;
-
-    const getNewIndex = (index) => {
-        return {
-            left: Math.max(index - 1, minTabIndex),
-            right: Math.min(index + 1, maxTabIndex)
-        };
-    };
-
-    const handleScrollButtonClick = (e, direction) => {
-        e.stopPropagation();
-        e.preventDefault();
-        const currentTabIndex = ctrl.selectedTabIndex();
-        const newIndex = getNewIndex(currentTabIndex)[direction];
-        scrollToTab(newIndex, tabs, scrollerEl);
-        if (newIndex !== currentTabIndex) {
-            setSelectedTab(newIndex, true, ctrl, opts);
-        }
-        updateScrollButtons(ctrl);
-        m.redraw();
-    };
-
-    const onLeftScrollButtonClick = (e) => {
-        handleScrollButtonClick(e, 'left');
-    };
-    const onRightScrollButtonClick = (e) => {
-        handleScrollButtonClick(e, 'right');
-    };
-    const onScroll = () => {
-        updateScrollButtons(ctrl);
-    };
-
-    createRightButtonOffset(ctrl);
-    scrollButtonLeftEl.addEventListener('click', onLeftScrollButtonClick, false);
-    scrollButtonRightEl.addEventListener('click', onRightScrollButtonClick, false);
-    scrollerEl.addEventListener('scroll', onScroll);
-
-    context.onunload = () => {
-        scrollerEl.removeEventListener('scroll', onScroll);
-        scrollButtonLeftEl.removeEventListener('click', onLeftScrollButtonClick, false);
-        scrollButtonRightEl.removeEventListener('click', onRightScrollButtonClick, false);
-    };
+const animateIndicator = (selectedTabEl, animate, ctrl) => {
+    const parentRect = ctrl.tabsEl.getBoundingClientRect();
+    const rect = selectedTabEl.getBoundingClientRect();
+    const style = ctrl.tabIndicatorEl.style;
+    const translateX = rect.left - parentRect.left + ctrl.scrollerEl.scrollLeft;
+    const transformCmd = 'translate(' + translateX + 'px, 0)';
+    const duration = animate ? SLIDE_DURATION : 0;
+    // use width instead of scale to please IE10
+    style.width = rect.width + 'px';
+    style['transition-duration'] =
+        style['-webkit-transition-duration'] =
+        style['-moz-transition-duration'] =
+        style['-o-transition-duration'] = duration + 'ms';
+    style.transform =
+        style['-webkit-transform'] =
+        style['-moz-transform'] =
+        style['-ms-transform'] =
+        style['-o-transform'] = transformCmd;
 };
 
-const setSelectedTab = (index, animate, ctrl, opts) => {
+const setSelectedTab = (index, animate, ctrl) => {
     ctrl.selectedTabIndex(index);
     const selectedTabEl = ctrl.tabs[index];
     if (selectedTabEl && ctrl.tabIndicatorEl && ctrl.tabsEl) {
-        const parentRect = ctrl.tabsEl.getBoundingClientRect();
-        const rect = selectedTabEl.getBoundingClientRect();
-        const style = ctrl.tabIndicatorEl.style;
-        const scaleX = 1 / parentRect.width * rect.width;
-        const translateX = (rect.left - parentRect.left + ctrl.scrollerEl.scrollLeft) / scaleX;
-        const transformCmd = 'scaleX(' + scaleX + ') translate(' + translateX + 'px)';
-        const duration = animate ? SLIDE_DURATION : 0;
-        style['transition-duration'] =
-            style['-webkit-transition-duration'] =
-            style['-moz-transition-duration'] =
-            style['-o-transition-duration'] = duration + 'ms';
-        style.transform =
-            style['-webkit-transform'] =
-            style['-moz-transform'] =
-            style['-ms-transform'] =
-            style['-o-transform'] = transformCmd;
+        animateIndicator(selectedTabEl, animate, ctrl);
     }
     if (ctrl.managesScroll) {
         updateScrollButtons(ctrl);
@@ -186,7 +160,7 @@ const createTab = (index, opts, tabsOpts, ctrl) => {
         wash: false,
         onTap: (evt) => {
             if (evt === 'down') {
-                setSelectedTab(index, tabsOpts.noIndicatorSlide ? false : true, ctrl, tabsOpts);
+                setSelectedTab(index, tabsOpts.noIndicatorSlide ? false : true, ctrl);
                 // no route change, no redraw, so do an extra redraw
                 if (!opts.url) {
                     m.redraw();
@@ -234,11 +208,11 @@ const createView = (ctrl, opts = {}) => {
             // handle scroll
             if (opts.scrollable && !p.isTouch()) {
                 ctrl.managesScroll = true;
-                manageScroll(ctrl, context, opts);
+                createRightButtonOffset(ctrl);
             }
 
             const onResize = () => {
-                setSelectedTab(ctrl.selectedTabIndex(), false, ctrl, opts);
+                setSelectedTab(ctrl.selectedTabIndex(), false, ctrl);
                 m.redraw();
             };
             p.addListener('resize', onResize);
@@ -247,7 +221,7 @@ const createView = (ctrl, opts = {}) => {
                 p.removeListener('resize', onResize);
             };
             setTimeout(() => {
-                setSelectedTab(opts.selectedTab || 0, false, ctrl, opts);
+                setSelectedTab(opts.selectedTab || 0, false, ctrl);
                 m.redraw();
             }, 0);
         }
@@ -265,8 +239,12 @@ const createView = (ctrl, opts = {}) => {
 
     let scrollButtonLeft, scrollButtonRight;
     if (opts.scrollable) {
-        scrollButtonLeft = createScrollButton(ctrl, POSITION_LEFT, opts);
-        scrollButtonRight = createScrollButton(ctrl, POSITION_RIGHT, opts);
+        scrollButtonLeft = createScrollButton(ctrl, POSITION_LEFT, Object.assign({}, opts, {
+            disabled: ctrl.scrollButtonStates.left === false
+        }));
+        scrollButtonRight = createScrollButton(ctrl, POSITION_RIGHT, Object.assign({}, opts, {
+            disabled: ctrl.scrollButtonStates.right === false
+        }));
     }
 
     const tabIndicator = opts.hideIndicator ? null : m('.tabIndicator', {
@@ -290,11 +268,14 @@ const createView = (ctrl, opts = {}) => {
                     return;
                 }
                 ctrl.scrollerEl = el;
+            },
+            onscroll: () => {
+                updateScrollButtons(ctrl);
             }
         }, [
+            tabIndicator,
             opts.centered ? m('.flex') : null,
             tabRow,
-            tabIndicator,
             opts.centered ? m('.flex') : null
         ]),
         opts.scrollable ? scrollButtonRight : null
@@ -310,9 +291,11 @@ const component = {
             tabs: [],
             tabIndicatorEl: null,
             selectedTabIndex: m.prop(0),
-            isLeft: false,
-            isRight: false,
-            managesScroll: false
+            managesScroll: false,
+            scrollButtonStates: {
+                left: false,
+                right: false
+            }
         };
     },
     view: (ctrl, opts = {}) => {
