@@ -10,6 +10,9 @@ const FADE_IN_DELAY = 0; // prevent flickering
 const FADE_OUT_DELAY = 0; // prevent flickering
 const SCROLL_WATCH_TIMER = 150;
 
+const d = document.documentElement.style;
+const alignSelfSupported = ('alignSelf' in d) || ('WebkitAlignSelf' in d);
+
 const willHide = (ctrl, opts) => {
     const deferred = m.deferred();
     if (opts.willHide) {
@@ -124,8 +127,20 @@ const updateFooterState = (ctrl) => {
 };
 
 const createViewContent = (ctrl, opts) => {
+    // if flex "self-stretch" is not supported, calculate the maximum height
+    let style = {};
+    if (ctrl.dialogEl && !alignSelfSupported) {
+        const styles = window.getComputedStyle(ctrl.dialogEl);
+        const partsHeights = (ctrl.headerHeight || 0) + (ctrl.footerHeight || 0);
+        const dialogPadding = parseFloat(styles.paddingTop) + parseFloat(styles.paddingBottom);
+        style = {
+            'max-height': 'calc(100vh - ' + dialogPadding + 'px - ' + partsHeights + 'px)'
+        };
+    }
+
     return m('div', {
-        class: 'dialog-body',
+        class: 'dialog-body self-stretch',
+        style: style,
         config: (el, inited) => {
             if (inited) {
                 return;
@@ -192,17 +207,23 @@ const createView = (ctrl, opts = {}) => {
     const body = opts.body ? (ignoreContent ? {
         subtree: 'retain'
     } : createViewContent(ctrl, opts)) : null;
+
     const content = m('.dialog-content.layout.vertical', [
         opts.fullscreen ? null : m.component(shadow, {
             z: ctrl.z(),
             animated: true
         }),
-        opts.title ? m('.dialog-header.start', [
+        opts.fullscreen ? null : opts.title ? m('.dialog-header', {
+            config: (el) => {
+                ctrl.headerHeight = el.scrollHeight;
+            }
+        }, [
             m('.title', opts.title)
         ]) : null,
         body,
-        opts.footer ? m('.dialog-footer.end', {
+        opts.fullscreen ? null : opts.footer ? m('.dialog-footer', {
             config: (el, inited) => {
+                ctrl.footerHeight = el.scrollHeight;
                 if (inited) {
                     return;
                 }
@@ -229,7 +250,9 @@ const component = {
             bottomOverflow: false,
             scrollWatchId: 0,
             isScrolling: m.prop(false),
-            isTransitioning: false
+            isTransitioning: false,
+            headerHeight: 0,
+            footerHeight: 0,
         };
     },
     view: (ctrl, opts = {}) => {

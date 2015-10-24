@@ -3,7 +3,7 @@ import 'polythene-theme/shadow/shadow';
 
 const createView = (ctrl, opts = {}) => {
     const z = opts.z;
-    const tag = opts.tag || 'div.fit';
+    const tag = opts.tag || 'div';
     const props = {
         class: ['shadow', opts.class].join(' '),
         config: opts.config
