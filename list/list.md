@@ -40,8 +40,9 @@ In this situation we want to indent the subheader, and if we show borders, inden
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **tag** | optional | String | 'div' | HTML tag |
+| **tag** | optional | String | 'div' | HTML element tag |
 | **class** | optional | String |  | Extra CSS class appended to 'list-tile'; use 'indent' to align the subheader with text contents of the list tiles below |
+| **id** | optional | String | | HTML element id |
 | **header** | optional | Object | | Options object for a [list tile](#list-tile); use `title` for the text label |
 | **tiles** | optional | Array of type Mithril template | | List of [list tiles](#list-tile) |
 | **mode** | optional | String | | Give borders to list tiles; use either `bordered` or `bordered-indent` |

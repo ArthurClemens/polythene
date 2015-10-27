@@ -59,19 +59,20 @@ import noTapDelay from 'polythene-theme/common/no-tap-delay';
 
 ## Options
 
-**Parameter** | **Mandatory** | **Type**                                | **Default**                       | **Description**
-------------- | ------------- | --------------------------------------- | --------------------------------- | --------------------------------------------------------------------------
-**tag**       | optional      | String                                  | 'a' (if `url` is passed) or 'div' | HTML tag
-**class**     | optional      | String                                  |                                   | Extra CSS class appended to 'button'
-**label**     | required      | String                                  |                                   | The button label
-**url**       | optional      | Object with `href`, optionally `config` |                                   | Button URL or click handler
-**events**    | optional      | Object                                  |                                   | Button events; options object containing one or more events like `onclick`
-**wash**      | optional      | Boolean                                 | true                              | Set to false to hide the effect on hover
-**ink**       | optional      | Boolean                                 | true                              | Set to false to disable the ripple effect on click/tap
-**raised**    | optional      | Boolean                                 | false                             | Shows a shadow; on button press the shadow depth is increased by 1
-**z**         | optional      | Number 0-5                              | 1                                 | The shadow depth for a raised button; raised buttons have a default z of 1
-**disabled**  | optional      | Boolean                                 | false                             | Disables the button
-**selected**  | optional      | Boolean                                 | false                             | Set to true to show the button as selected
+| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
+| **tag** | optional | String | 'a' (if `url` is passed) or 'div' | HTML element tag |
+| **class** | optional | String | | Extra CSS class appended to 'button' |
+| **id** | optional | String | | HTML element id |
+| **label** | required | String | | The button label |
+| **url** | optional | Object with `href`, optionally `config` | | Button URL or click handler |
+| **events** | optional | Object | | Button events; options object containing one or more events like `onclick` |
+| **wash** | optional | Boolean | true | Set to false to hide the effect on hover |
+| **ink** | optional | Boolean | true | Set to false to disable the ripple effect on click/tap |
+| **raised** | optional | Boolean | false | Shows a shadow; on button press the shadow depth is increased by 1 |
+| **z** | optional | Number 0-5 | 1 | The shadow depth for a raised button; raised buttons have a default z of 1 |
+| **disabled** | optional | Boolean | false | Disables the button |
+| **selected** | optional | Boolean | false | Set to true to show the button as selected |
 
 ### Developer options
 

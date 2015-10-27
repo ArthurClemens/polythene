@@ -65,8 +65,9 @@ The header-panel will not display if its parent does not have a height.
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **tag** | optional | String | 'div' | HTML tag |
+| **tag** | optional | String | 'div' | HTML element tag |
 | **class** | optional | String |  | Extra CSS class appended to 'header-panel' |
+| **id** | optional | String | | HTML element id |
 | **mode** | optional | String | 'standard'| Controls header and scrolling behavior - see below |
 | **header** | required | Mithril template or options object | | The header above the scrolling area - see below |
 | **content** | optional | Mithril template or String | | Panel contents |

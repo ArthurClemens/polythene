@@ -202,11 +202,13 @@ const fullscreenDialog = {
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **tag** | optional | String | 'form' | HTML tag |
+| **tag** | optional | String | 'form' | HTML element tag |
 | **class** | optional | String |  | Extra CSS class appended to 'dialog' |
+| **id** | optional | String | | HTML element id |
 | **formOptions** | optional | Options Object | | Form attribute options such as `type` or `enctype` |
 | **title** | optional | String |  | Header title; if omitted, no header will be shown |
 | **body** | optional | Mithril template or String |  | Body content; if omitted, no body will be shown |
+| **menu** | optional | [Menu](#menu) options object |  | Pass a menu to use the dialog as enhanced (higher) menu |
 | **footer** | optional | Mithril template |  | Footer actions, usually an array of buttons |
 | **z** | optional | Number 0-5 | 3 | Depth of the shadow |
 | **modal** | optional | Boolean | false | Set to true to create a modal dialog; tapping the backdrop will not close the dialog |

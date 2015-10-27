@@ -65,6 +65,7 @@ const createView = (ctrl, opts = {}) => {
     const tag = opts.tag || 'div.fit';
     const props = {
         class: ['ripple', (opts.constrained !== false ? 'constrained' : null), opts.class].join(' '),
+        id: opts.id || '',
         config: initRipple
     };
     const content = m('.ripple-mask',

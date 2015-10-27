@@ -154,6 +154,7 @@ const createView = (ctrl, opts = {}) => {
             ctrl.fixed ? 'fixed' : null,
             opts.class
         ].join(' '),
+        id: opts.id || '',
         config: (el, inited) => {
             if (inited) {
                 return;

@@ -6,10 +6,12 @@ import 'polythene-theme/dialog/dialog';
 
 const FADE_IN_DURATION = 150;
 const FADE_OUT_DURATION = 150;
-const FADE_IN_DELAY = 0; // prevent flickering
-const FADE_OUT_DELAY = 0; // prevent flickering
+const FADE_IN_DELAY = 0;
+const FADE_OUT_DELAY = 0;
 const SCROLL_WATCH_TIMER = 150;
 
+// test for flexbox 2 specs
+// in practice, IE10 needs a different treatment
 const d = document.documentElement.style;
 const alignSelfSupported = ('alignSelf' in d) || ('WebkitAlignSelf' in d);
 
@@ -60,7 +62,6 @@ const transitionHide = (ctrl, opts) => {
 
 const hide = (ctrl, opts = {}) => {
     ctrl.isTransitioning = true;
-
     willHide(ctrl, opts)
         .then(transitionHide(ctrl, opts)
             .then(function() {
@@ -137,7 +138,7 @@ const createViewContent = (ctrl, opts) => {
             'max-height': 'calc(100vh - ' + dialogPadding + 'px - ' + partsHeights + 'px)'
         };
     }
-
+    const bodyOpts = opts.body || opts.menu;
     return m('div', {
         class: 'dialog-body self-stretch',
         style: style,
@@ -156,15 +157,17 @@ const createViewContent = (ctrl, opts) => {
                 ctrl.isScrolling(false);
             }, SCROLL_WATCH_TIMER);
         }
-    }, opts.body);
+    }, bodyOpts);
 };
 
 const createView = (ctrl, opts = {}) => {
+    const bodyOpts = opts.body || opts.menu;
     const updateContentOnScroll = opts.updateContentOnScroll || false;
     const ignoreContent = !updateContentOnScroll && ctrl.isScrolling();
     const tag = opts.tag || 'form';
     const props = Object.assign({}, {
         class: ['dialog layout center-center', (opts.fullscreen ? 'fullscreen' : null), (opts.backdrop ? 'hasBackdrop' : null), (ctrl.topOverflow ? 'topOverflow' : null), (ctrl.bottomOverflow ? 'bottomOverflow' : null), opts.class].join(' '),
+        id: opts.id || '',
         config: (el, inited, context, vdom) => {
             if (inited) {
                 return;
@@ -204,13 +207,15 @@ const createView = (ctrl, opts = {}) => {
         }
     }, opts.formOptions ? opts.formOptions : null);
 
-    const body = opts.body ? (ignoreContent ? {
+    const body = bodyOpts ? (ignoreContent ? {
         subtree: 'retain'
     } : createViewContent(ctrl, opts)) : null;
 
-    const content = m('.dialog-content.layout.vertical', [
+    const content = m('div', {
+        class: ['dialog-content', 'layout', 'vertical', (opts.menu ? 'menu-content' : null)].join(' ')
+    }, [
         opts.fullscreen ? null : m.component(shadow, {
-            z: ctrl.z(),
+            z: ctrl.z,
             animated: true
         }),
         opts.fullscreen ? null : opts.title ? m('.dialog-header', {
@@ -241,7 +246,7 @@ const component = {
     controller: (opts = {}) => {
         let z = (opts.z !== undefined) ? opts.z : 3;
         return {
-            z: m.prop(z),
+            z: z,
             dialogEl: null,
             parentEl: null,
             scrollEl: null,

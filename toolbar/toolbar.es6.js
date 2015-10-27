@@ -29,7 +29,8 @@ const bar = (opts = {}) => {
 const createView = (ctrl, opts = {}) => {
     const tag = opts.tag || 'div';
     const props = {
-        class: ['toolbar animate', (opts.mode || 'standard'), opts.class].join(' '),
+        class: ['toolbar', 'animate', (opts.mode || 'standard'), opts.class].join(' '),
+        id: opts.id || '',
         config: opts.config
     };
     const content = bar(opts);

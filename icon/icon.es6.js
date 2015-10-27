@@ -26,6 +26,7 @@ const createView = (ctrl, opts = {}) => {
     const tag = opts.tag || 'div';
     const props = {
         class: ['icon', 'icon-' + (opts.type || 'normal'), opts.class].join(' '),
+        id: opts.id || '',
         config: opts.config
     };
     const content = layoutContent(opts);

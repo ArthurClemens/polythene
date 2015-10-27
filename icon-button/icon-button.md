@@ -94,8 +94,9 @@ const myIconBtn = m.component(iconBtn, {
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **tag** | optional | String | 'div' | HTML tag |
+| **tag** | optional | String | 'div' | HTML element tag |
 | **class** | optional | String |  | Extra CSS class appended to 'icon-button' |
+| **id** | optional | String | | HTML element id |
 | **icon** | either icon or content must be passed | Object |  | [icon](#icon) options object; also used to show an round "avatar" portrait image |
 | **content** | either icon or content must be passed | Mithril template or String | | Alternative content if no icon object is used |
 | **url** | optional | Object with `href`, optionally `config` | | Button URL |

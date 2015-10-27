@@ -187,6 +187,7 @@ const createView = (ctrl, opts = {}) => {
 
     const props = {
         class: ['tabs', opts.scrollable ? 'scrollable' : null, opts.class].join(' '),
+        id: opts.id || '',
         config: (el, inited, context) => {
             if (inited) {
                 return;

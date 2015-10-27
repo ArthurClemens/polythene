@@ -6,6 +6,7 @@ const createView = (ctrl, opts = {}) => {
     const tag = opts.tag || 'div';
     const props = {
         class: ['shadow', opts.class].join(' '),
+        id: opts.id || '',
         config: opts.config
     };
     const helperTag = 'div.fit' + (opts.animated ? '.animated' : '');

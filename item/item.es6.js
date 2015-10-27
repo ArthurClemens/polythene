@@ -8,6 +8,7 @@ const createView = (ctrl, opts = {}) => {
     const tag = opts.tag || 'div.center.horizontal.layout';
     const props = Object.assign({}, {
         class: ['item', opts.class].join(' '),
+        id: opts.id || '',
         config: opts.config
     }, opts.events ? opts.events : null);
     const content = [

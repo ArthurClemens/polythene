@@ -79,8 +79,9 @@ const myIcon = m.component(icon, {
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **tag** | optional | String | 'div' | HTML tag |
+| **tag** | optional | String | 'div' | HTML element tag |
 | **class** | optional | String |  | Extra CSS class appended to 'icon'; use convenience class `avatar` to make square images round |
+| **id** | optional | String | | HTML element id |
 | **msvg** | either `src` or `svg` or `msvg` must be passed | Mithril template |  | Mithril-ified SVG icon |
 | **type** | optional | String | 'normal' | Either 'small' (16px), 'normal' (24px), 'medium' (32px), 'large' (40px). Adds CSS class 'icon-small', 'icon-normal', 'icon-medium', 'icon-large.' `type: 'medium'` is the equivalent of passing `class: 'icon-medium'`. |
 | **before** | optional | Mithril template or String | | Extra content before main content |

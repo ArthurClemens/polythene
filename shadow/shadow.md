@@ -39,8 +39,9 @@ const myShadow = m.component(shadow, {
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **tag** | optional | String | 'div' | HTML tag |
+| **tag** | optional | String | 'div' | HTML element tag |
 | **class** | optional | String |  | Extra CSS class appended to 'shadow' |
+| **id** | optional | String | | HTML element id |
 | **z** | optional | Number 0-5 | 0 | Depth of the shadow |
 | **animated** | optional | Boolean | false | Set to true to animate the shadow when setting a new z value. |
 

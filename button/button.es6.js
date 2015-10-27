@@ -76,7 +76,8 @@ const createView = (ctrl, opts = {}) => {
         tag += '.raised';
     }
     const props0 = {
-        'class': [opts.parentClass || 'button', opts.selected ? 'selected' : null, opts.disabled ? 'disabled' : null, opts.class].join(' ')
+        'class': [opts.parentClass || 'button', opts.selected ? 'selected' : null, opts.disabled ? 'disabled' : null, opts.class].join(' '),
+        id: opts.id || ''
     };
 
     // handle multiple configs:

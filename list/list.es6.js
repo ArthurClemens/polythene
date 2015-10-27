@@ -10,6 +10,7 @@ const createView = (ctrl, opts = {}) => {
     const listModeClass = opts.mode ? opts.mode : null;
     const props = {
         class: ['list', listModeClass, (opts.hoverable ? 'hoverable' : null), (opts.header ? 'has-subheader' : null), opts.class].join(' '),
+        id: opts.id || '',
         config: opts.config
     };
     let headerOpts;

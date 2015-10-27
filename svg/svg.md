@@ -101,8 +101,9 @@ const mySvg = m.component(svg, {
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **tag** | optional | String | 'div' | HTML tag |
+| **tag** | optional | String | 'div' | HTML element tag |
 | **class** | optional | String |  | CSS class appended to 'svg' |
+| **id** | optional | String | | HTML element id |
 | **src** | either src or content must be passed | String |  | SVG URL |
 | **content** | either src or iconSet+name must be passed | String |  | SVG XML |
 | **preload** | optional | Array of strings | | List of src locations to preload |

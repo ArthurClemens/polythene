@@ -174,6 +174,7 @@ const createView = (ctrl, opts = {}) => {
     const tag = opts.tag || opts.url ? 'a' : 'div';
     const props = Object.assign({
         class: ['card', opts.class].join(' '),
+        id: opts.id || '',
         config: opts.config
     }, (opts.url ? opts.url : null), (opts.events ? opts.events : null));
     let content = opts.content.map(function(o) {
