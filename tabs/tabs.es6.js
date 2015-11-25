@@ -147,13 +147,12 @@ const setSelectedTab = (index, animate, ctrl) => {
 
 const createTab = (index, opts, tabsOpts, ctrl) => {
     const autofit = (tabsOpts.scrollable || tabsOpts.centered) ? false : (tabsOpts.autofit ? true : false);
-    const tabIcon = opts.icon ? m.component(icon, opts.icon) : null;
     // create a button
     const tabButtonOptions = Object.assign({}, {
         content: m('.layout.vertical', [
             m('.flex'),
-            tabIcon,
-            m('.label', m('span', opts.label)),
+            opts.icon ? m.component(icon, opts.icon) : null,
+            opts.label ? m('.label', m('span', opts.label)) : null,
             m('.flex')
         ]),
         class: ['tab', (autofit ? 'flex' : 'flex none'), (opts.icon && opts.label ? 'hasIconLabel' : null), opts.class].join(' '),
