@@ -29,8 +29,10 @@ const fadeOut = (el, opts) => {
     const duration = (opts.transition === 'out' || opts.transition === 'both') ? FADE_OUT_DURATION : 0;
     const delay = (opts.transition === 'out' || opts.transition === 'both') ? FADE_OUT_DELAY : 0;
     setTimeout(() => {
-        el.style.transitionDuration = duration + 'ms';
-        el.style.opacity = 0;
+        if (el) {
+            el.style.transitionDuration = duration + 'ms';
+            el.style.opacity = 0;
+        }
         deferred.resolve();
     }, delay);
     return deferred.promise;
@@ -73,8 +75,10 @@ const hide = (ctrl, opts = {}) => {
 const fadeIn = (el, opts) => {
     const deferred = m.deferred();
     const f = (duration) => {
-        el.style.transitionDuration = duration + 'ms';
-        el.style.opacity = 1;
+        if (el) {
+            el.style.transitionDuration = duration + 'ms';
+            el.style.opacity = 1;
+        }
         deferred.resolve();
     };
     if (opts.transition === 'in' || opts.transition === 'both') {
