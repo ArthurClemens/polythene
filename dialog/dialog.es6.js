@@ -194,7 +194,11 @@ const createView = (ctrl, opts = {}) => {
             };
 
             show(ctrl, opts).then(() => {
-                onResize();
+                updateScrollState(ctrl);
+                updateFooterState(ctrl);
+                if (ctrl.topOverflow || ctrl.bottomOverflow) {
+                    setTimeout(() => (m.redraw()), 0);
+                }
             });
         },
         onclick: (e) => {

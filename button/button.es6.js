@@ -38,13 +38,17 @@ const initTapEvents = (el, ctrl, opts) => {
             z = z - increase;
             z = Math.max(z, baseZ);
         }
-        ctrl.z(z);
-        m.redraw();
+        if (z !== ctrl.z()) {
+            ctrl.z(z);
+            m.redraw();
+        }
     };
-    tapStart = function() {
+    tapStart = function(e) {
+        e.preventDefault();
         tapHandler('down');
     };
-    tapEnd = function() {
+    tapEnd = function(e) {
+        e.preventDefault();
         tapHandler('up');
     };
     el.addEventListener(startType, tapStart);
