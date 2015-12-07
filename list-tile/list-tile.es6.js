@@ -2,6 +2,7 @@ import 'polythene/common/object.assign';
 import p from 'polythene/polythene/polythene';
 import m from 'mithril';
 import icon from 'polythene/icon/icon';
+import ripple from 'polythene/ripple/ripple';
 import 'polythene-theme/list-tile/list-tile';
 
 const parsePrimaryContent = (opts) => {
@@ -78,10 +79,12 @@ const createView = (ctrl, opts = {}) => {
 
     const iconClass = (opts.icon || opts.indent) ? 'list-tile-has-icon' : null;
     const props = {
-        class: ['list-tile', heightClass, iconClass, opts.class].join(' '),
+        class: ['list-tile', (opts.selected ? 'selected' : null), (opts.disabled ? 'disabled' : null), heightClass, iconClass, opts.class].join(' '),
+        id: opts.id || '',
         config: opts.config
     };
     const content = [
+        opts.ink ? m.component(ripple, opts.ripple) : null,
         parsePrimaryContent(opts),
         opts.secondary ? parseSecondaryContent(opts) : null
     ];

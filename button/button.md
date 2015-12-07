@@ -69,6 +69,7 @@ import noTapDelay from 'polythene-theme/common/no-tap-delay';
 | **events** | optional | Object | | Button events; options object containing one or more events like `onclick` |
 | **wash** | optional | Boolean | true | Set to false to hide the effect on hover |
 | **ink** | optional | Boolean | true | Set to false to disable the ripple effect on click/tap |
+| **ripple** | optional (valid if `ink` is `true`) | Options object | | Pass [ripple](#ripple) options to define ripple behavior |
 | **raised** | optional | Boolean | false | Shows a shadow; on button press the shadow depth is increased by 1 |
 | **z** | optional | Number 0-5 | 1 | The shadow depth for a raised button; raised buttons have a default z of 1 |
 | **disabled** | optional | Boolean | false | Disables the button |
