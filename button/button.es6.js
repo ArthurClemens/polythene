@@ -52,12 +52,12 @@ const initTapEvents = (el, ctrl, opts) => {
         tapHandler('up');
     };
     el.addEventListener(startType, tapStart);
-    el.addEventListener(endType, tapEnd);
+    document.body.addEventListener(endType, tapEnd);
 };
 
 const clearTapEvents = function(el) {
     el.removeEventListener(startType, tapStart);
-    el.removeEventListener(endType, tapEnd);
+    document.body.removeEventListener(endType, tapEnd);
 };
 
 const createView = (ctrl, opts = {}) => {
