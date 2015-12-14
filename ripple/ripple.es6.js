@@ -1,8 +1,9 @@
 import m from 'mithril';
 import p from 'polythene/polythene/polythene';
-import whichTransitionEvent from 'polythene/common/transitionEvent';
+import whichTransitionEvent from 'polythene/common/transition-event';
 import 'polythene-theme/ripple/ripple';
 
+const transitionEvent = whichTransitionEvent();
 const DEFAULT_START_OPACITY = 0.2;
 const OPACITY_DECAY_VELOCITY = 0.35;
 
@@ -98,7 +99,6 @@ const component = {
                 const opacityDecayVelocity = (opts.opacityDecayVelocity !== undefined) ? opts.opacityDecayVelocity : OPACITY_DECAY_VELOCITY;
                 const duration = 1 / opacityDecayVelocity * initialOpacity;
                 const color = window.getComputedStyle(el).color;
-                const transitionEvent = whichTransitionEvent();
                 const onEnd = function(evt) {
                     wavesEl.classList.remove('animated');
                     wavesEl.removeEventListener(transitionEvent, onEnd, false);
