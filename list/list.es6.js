@@ -9,7 +9,7 @@ const createView = (ctrl, opts = {}) => {
     // create class for mode 'bordered' and 'bordered-indent'
     const listModeClass = opts.mode ? opts.mode : null;
     const props = {
-        class: ['list', listModeClass, (opts.hoverable ? 'hoverable' : null), (opts.header ? 'has-subheader' : null), opts.class].join(' '),
+        class: ['list', listModeClass, (opts.hoverable ? 'hoverable' : null), (opts.selectable ? 'selectable' : null), (opts.header ? 'has-subheader' : null), opts.class].join(' '),
         id: opts.id || '',
         config: opts.config
     };
