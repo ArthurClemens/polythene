@@ -84,7 +84,7 @@ const createView = (ctrl, opts = {}) => {
         config: opts.config
     };
     const content = [
-        opts.ink ? m.component(ripple, opts.ripple) : null,
+        (opts.ink && !opts.disabled) ? m.component(ripple, opts.ripple) : null,
         parsePrimaryContent(opts),
         opts.secondary ? parseSecondaryContent(opts) : null
     ];
