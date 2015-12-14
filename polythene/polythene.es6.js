@@ -1,4 +1,3 @@
-const RESIZE_TIMER = 200; // Debounce window resize
 
 let listeners = {};
 
