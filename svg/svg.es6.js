@@ -26,7 +26,7 @@ const createView = (ctrl, opts = {}) => {
             } else {
                 // load new, then wait until file has been loaded
                 ctrl.path(path);
-                loadSvg(path, ctrl, opts);
+                loadSvg(path, ctrl, opts).then(m.redraw);
             }
         } else {
             // use the current svg
@@ -42,16 +42,13 @@ const createView = (ctrl, opts = {}) => {
 const loadSvg = (path, ctrl, opts, preloading = false) => {
     if (System && System.import) {
         const normalizedName = System.normalizeSync(path);
-        const deferred = m.deferred();
-        System.import(normalizedName).then(function(data) {
-            deferred.resolve(data);
+        return System.import(normalizedName).then(function(data) {
             if (preloading) {
                 globalCache[path] = data;
                 ctrl.preloadingIndex++;
                 preloadNext(ctrl, opts);
             } else {
                 ctrl.svg(data);
-                m.redraw();
             }
         });
     } else {
