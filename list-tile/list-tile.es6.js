@@ -35,8 +35,9 @@ const parsePrimaryContent = (opts) => {
         }, [
             m('.list-tile-title', [
                 opts.title,
-                opts.subtitle ? m('.list-tile-info', opts.subtitle) : null,
-                opts.highSubtitle ? m('.list-tile-info.list-tile-double-info', opts.highSubtitle) : null
+                opts.subtitle ? m('.list-tile-subtitle', opts.subtitle) : null,
+                opts.info ? m('.list-tile-subtitle.list-tile-info', opts.info) : null,
+                opts.highSubtitle ? m('.list-tile-subtitle.list-tile-double-subtitle', opts.highSubtitle) : null
             ])
         ])
     ]));
@@ -79,7 +80,7 @@ const createView = (ctrl, opts = {}) => {
 
     const iconClass = (opts.icon || opts.indent) ? 'list-tile-has-icon' : null;
     const props = {
-        class: ['list-tile', (opts.selected ? 'selected' : null), (opts.disabled ? 'disabled' : null), heightClass, iconClass, opts.class].join(' '),
+        class: ['list-tile', (opts.selected ? 'selected' : null), (opts.disabled ? 'disabled' : null), (opts.sticky ? 'sticky' : null) ,heightClass, iconClass, opts.class].join(' '),
         id: opts.id || '',
         config: opts.config
     };
