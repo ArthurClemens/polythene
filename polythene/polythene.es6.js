@@ -24,7 +24,7 @@ const emitEvent = (eventName, event) => {
     if (!listeners[eventName]) {
         return;
     }
-    listeners[eventName].forEach(listener => listener.call(event));
+    listeners[eventName].forEach(listener => listener(event));
 };
 
 window.addEventListener('resize', (e) => {
@@ -33,6 +33,10 @@ window.addEventListener('resize', (e) => {
 
 window.addEventListener('scroll', (e) => {
     emitEvent('scroll', e);
+});
+
+window.addEventListener('keyup', (e) => {
+    emitEvent('keyup', e);
 });
 
 const polythene = {
