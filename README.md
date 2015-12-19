@@ -14,10 +14,7 @@ Modular implementation of Material Design for [Mithril](http://lhorie.github.io/
 
 Polythene uses Node tools to build. It can run in Node and in the browser.
 
-Source files are written in es6 and transpiled to es5. Components are async es6 modules and loaded when needed, but using [SystemJS Builder](https://github.com/systemjs/builder) or [jspm](https://github.com/jspm/jspm-cli) it is also possible to create bundles where all required modules are combined.
-
-To keep the components modular (and only required when needed) I have chosen to keep the async aspect.
-The [examples](http://arthurclemens.github.io/Polythene-examples/index.html) show a more complete "real world" setup of a Mithril/Polythene application using SystemJS.
+Source files are written in es6 and transpiled to es5. The building blocks are async es6 modules and loaded when needed, but using SystemJS / jspm / Browserify  it is also possible to create bundles where all required modules are combined.
 
 Polythene works both in es6 and es5 applications.
 
@@ -31,14 +28,14 @@ You will need:
 * [Polythene examples](https://github.com/ArthurClemens/Polythene-examples) - (optional) to see implementations of components
 
 
-### npm
+### Using npm with SystemJS or Browserify
 
 ```
 npm install polythene
 npm install polythene-theme
 ```
 
-### jspm
+### Using jspm
 
 ```
 jspm install github:ArthurClemens/Polythene
