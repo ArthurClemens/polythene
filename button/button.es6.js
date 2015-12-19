@@ -68,7 +68,7 @@ const createView = (ctrl, opts = {}) => {
 
     tag = opts.tag || 'a';
     const noink = opts.ink !== undefined && !opts.ink;
-    const disabled = opts.disabled === true;
+    const disabled = !!opts.disabled;
 
     if (disabled) {
         tag += '[disabled]';
