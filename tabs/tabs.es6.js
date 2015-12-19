@@ -194,7 +194,7 @@ const createView = (ctrl, opts = {}) => {
             ctrl.tabsEl = el;
 
             if (opts.largestWidth) {
-                const widths = ctrl.tabs.map(tab => tab.getBoundingClientRect().width).sort();
+                const widths = ctrl.tabs.map(tab => tab.getBoundingClientRect().width).sort().reverse();
                 const largest = widths[0];
                 ctrl.tabs.forEach(tab => tab.style.width = largest + 'px');
             }
