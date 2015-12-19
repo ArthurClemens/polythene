@@ -5,7 +5,7 @@ import m from 'mithril';
 import button from 'polythene/button/button';
 import icon from 'polythene/icon/icon';
 import iconBtn from 'polythene/icon-button/icon-button';
-import scrollTo from 'polythene/common/scrollTo';
+import scrollTo from 'polythene/common/scroll-to';
 import 'polythene-theme/tabs/tabs';
 
 const SLIDE_DURATION = 250; // milliseconds
