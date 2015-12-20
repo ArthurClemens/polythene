@@ -113,6 +113,7 @@ See the [main project page](https://github.com/ArthurClemens/Polythene).
 * Tabs
 * List
 * Dialog
+* Menu, Simple menu
 * Card
 * Button
 * Icon button
@@ -128,8 +129,6 @@ See the [main project page](https://github.com/ArthurClemens/Polythene).
 
 ### To do
 
-1. Menu
-1. Simple menu
 1. Grid list
 1. List: Control
 1. Toggle button

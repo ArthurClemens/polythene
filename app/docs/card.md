@@ -183,6 +183,7 @@ Next to the card itself, each content parts has a set of options:
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **tag** | optional | String | 'a' | HTML tag |
 | **class** | optional | String |  | Extra CSS class appended to 'card' |
+| **id** | optional | String | | HTML element id |
 | **url** | optional | Object with `href`, optionally `config` | | URL for the entire card |
 | **events** | optional | Object | | Card events; options object containing one or more events like `onclick` |
 | **content** | required | Array |  | List of option objects for distinct areas - see below |
@@ -193,7 +194,7 @@ Next to the card itself, each content parts has a set of options:
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **tag** | optional | String | '[layout][horizontal]' | HTML tag |
+| **tag** | optional | String | '[layout][horizontal]' | HTML element tag |
 | **class** | optional | String |  | Extra CSS class appended to 'primary'; if `media` is passed, class 'has-media' is automatically added too; use class `tight` to reduce bottom padding |
 | **title** | optional | String |  | Title text |
 | **subtitle** | optional | String |  | Subtitle text |

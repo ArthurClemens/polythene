@@ -122,8 +122,9 @@ Item can be extended with CSS and custom content - see the custom example below.
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **tag** | optional | String | 'div' | HTML tag |
+| **tag** | optional | String | 'div' | HTML element tag |
 | **class** | optional | String |  | Extra CSS class appended to 'item'; to make the item scale with CSS, add class `font-scalable` (see above) |
+| **id** | optional | String | | HTML element id |
 | **icon** | optional | Object |  | [icon](#icon) options object |
 | **label** | optional | String | | Item label |
 | **content** | optional | Mithril template or String | | Additional content; can co-exist with icon and label |

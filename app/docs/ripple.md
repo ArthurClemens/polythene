@@ -51,6 +51,9 @@ By default the inherited color from the parent element is used.
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
+| **tag** | optional | String | 'div' | HTML element tag |
+| **class** | optional | String |  | Extra CSS class appended to 'ripple' |
+| **id** | optional | String | | HTML element id |
 | **constrained** | optional | Boolean | true | Set to `false` to make the ripple shape no longer bound to the clicked element |
 | **center** | optional | Boolean | false | Set to `true` to start the ripple from the center |
 | **class** | optional | String |  | Extra CSS class appended to 'ripple' |

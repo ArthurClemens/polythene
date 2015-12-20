@@ -161,7 +161,7 @@ m.component(tabs, {
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **tag** | optional | String | 'div' | HTML tag |
+| **tag** | optional | String | 'div' | HTML element tag |
 | **class** | optional | String |  | Extra CSS class appended to 'tabs' |
 | **buttons** | required | Array of options Objects |  | Tab buttons |
 | **autofit** | optional | Boolean | false | Set to true to let the buttons fill the button row |
@@ -183,7 +183,7 @@ These options can be grouped into `tabsOpts` and applied to all tabs.
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **tag** | optional | String | 'a' (if `url` is passed) or 'div' | HTML tag |
+| **tag** | optional | String | 'a' (if `url` is passed) or 'div' | HTML element tag |
 | **class** | optional | String |  | Extra CSS class appended to 'button' |
 | **label** | required | String | | The button label |
 | **url** | optional | Object with `href`, optionally `config` | | Button URL or click handler |

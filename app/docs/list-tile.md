@@ -4,8 +4,6 @@
 
 Displays a list element as part of a [list](#list).
 
-Material Design lists are not part of Polymer. This implementation follows [the design specification](http://www.google.com/design/spec/components/lists.html).
-
 
 ## Usage
 
@@ -113,19 +111,28 @@ Text and icon are taken together as primary content. Primary content can optiona
 
 A list tile can optionally have secondary content, displayed to the right. Secondary content can contain any content, and conditionally have a link.
 
+`Polythene-theme` Use class `list-tile-info` for lighter subtitle text.
+
+`Polythene-theme` Use class 'compact' to reduce the vertical padding.
+
 
 ## Options
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **tag** | optional | String | 'div' | HTML tag |
+| **tag** | optional | String | 'a.flex' | HTML tag for primary content |
 | **class** | optional | String |  | Extra CSS class appended to 'list-tile' |
+| **id** | optional | String | | HTML element id |
 | **title** | required | String | | The text content |
 | **subtitle** | optional | String | | Secondary text content (1 line high) |
 | **highSubtitle** | optional | String | | Secondary text content (2 lines high) |
 | **icon** | optional | Object |  | [icon](#icon) options object |
-| **tag** | optional | String | 'a.flex' | HTML tag for primary content |
 | **url** | optional | Object with `href`, optionally `config` | | URL for primary content |
+| **selected** | optional | Boolean | false | Set to `true` to show a selected state; adds class 'selected' |
+| **disabled** | optional | Boolean | false | Set to `true` to deactivate the url and hover state (in case of [list](#list) with setting `hoverable`) and show a disabled state; adds class 'disabled' |
+| **ink** | optiona; | Boolean | false | Set to `true` to show a ripple effect when the tile is tapped |
+| **ripple** | optional (valid if `ink` is `true`) | Options object | | Pass [ripple](#ripple) options to define ripple behavior |
+| **sticky** | optional | Boolean | | Make list tile sticky when scrolling; this is normally set in the [list](#list) component as `header.sticky`; [does not work in Chrome](http://caniuse.com/#feat=css-sticky); adds class "sticky"  |
 | **secondary** | optional | Object | | Options for secondary content |
 | **secondary.tag** | optional | String | See "Layout of secondary content" below | HTML tag for secondary content |
 | **secondary.icon** | optional | Object |  | [icon](#icon) options object for icon in secondary content; will be placed above secondary.content |

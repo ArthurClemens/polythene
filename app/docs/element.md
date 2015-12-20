@@ -17,8 +17,9 @@ const myElement = m.component(element, {
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **tag** | optional | String | 'div' | HTML tag |
+| **tag** | optional | String | 'div' | HTML element tag |
 | **class** | optional | String |  | Extra CSS class appended to 'element' |
+| **id** | optional | String | | HTML element id |
 | **content** | optional | Mithril template or String | | Content |
 | **before** | optional | Mithril template or String | | Extra content before main content |
 | **after** | optional | Mithril template or String | | Extra content after main content |
