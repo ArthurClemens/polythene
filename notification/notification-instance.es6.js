@@ -1,9 +1,7 @@
 import m from 'mithril';
 import Timer from 'polythene/common/timer';
-import snackbar from 'polythene/snackbar/snackbar';
-import 'polythene-theme/snackbar/snackbar';
-import transitionEffects from 'polythene-theme/snackbar/snackbar-transitions';
 import transition from 'polythene/common/transition';
+import 'polythene/common/object.assign';
 
 const DEFAULT_TIME_OUT = 4000;
 
@@ -30,11 +28,17 @@ const stopTimer = (ctrl) => {
 const show = (ctrl, opts) => {
     stopTimer(ctrl);
     ctrl.isTransitioning = true;
-    return transition.show(Object.assign({}, opts, transitionEffects.show(ctrl, opts))).then(() => {
+    return transition.show(Object.assign({}, opts, ctrl.transitions.show(ctrl, opts))).then(() => {
         ctrl.isTransitioning = false;
+        if (ctrl.didShow) {
+            // notify multiple
+            ctrl.didShow(ctrl.instanceId);
+        }
         if (opts.didShow) {
+            // notify other listener
             opts.didShow(opts.id);
         }
+        // set timer to hide in a few seconds
         const timeout = opts.timeout;
         if (timeout === 0) {
             // do not time out
@@ -50,11 +54,15 @@ const show = (ctrl, opts) => {
 const hide = (ctrl, opts) => {
     stopTimer(ctrl);
     ctrl.isTransitioning = true;
-    return transition.hide(Object.assign({}, opts, transitionEffects.hide(ctrl, opts))).then(() => {
-        snackbar.remove(ctrl.instanceId);
+    return transition.hide(Object.assign({}, opts, ctrl.transitions.hide(ctrl, opts))).then(() => {
         stopTimer(ctrl);
         ctrl.isTransitioning = false;
+        if (ctrl.didHide) {
+            // notify multiple
+            ctrl.didHide(ctrl.instanceId);
+        }
         if (opts.didHide) {
+            // notify other listener
             opts.didHide(opts.id);
         }
         m.redraw(); // removes remainder of drawn component
@@ -83,7 +91,7 @@ const createView = (ctrl, opts = {}) => {
     // };
     const tag = opts.tag || 'div.layout.center';
     const props = {
-        class: ['snackbar', opts.class || 'dark-theme'].join(' '),
+        class: [ctrl.class, opts.class || 'dark-theme'].join(' '),
         id: opts.id || '',
         config: (el, inited, context, vdom) => {
             if (inited) return;
@@ -136,15 +144,14 @@ const createView = (ctrl, opts = {}) => {
 const component = {
     controller: (instanceData = {}) => {
         // instanceData contains {id, opts}
-        return {
-            instanceId: instanceData.instanceId,
+        return Object.assign({}, instanceData, {
             el: null,
             containerEl: null,
             dismissEl: null,
             isTransitioning: false,
             timer: null,
             isPaused: false
-        };
+        });
     },
     view: (ctrl, instanceData) => {
         // instanceData contains {id, opts}

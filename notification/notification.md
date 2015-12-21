@@ -1,8 +1,14 @@
-# Snackbar
+# Notification and Snackbar
 
-<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-examples/index.html#/snackbar">Demo</a>
+<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-examples/index.html#/notification">Demo</a>
 
 Shows a temporary message. Messages can be queued.
+
+---
+
+The information on this page refers to the `snackbar` component, but can also be used for the `notification` component - both components use the same code base, and only differ in appearance (style and transitions).
+
+`notification` is a message that appears at the center of the screen. It is not used by Material Design, but is a common enough design pattern to warrant a ready-made component. To use `notification`, use the example code below and substitute `snackbar` with `notification`.
 
 ## Usage
 
@@ -28,9 +34,9 @@ This snackbar component is then called using:
 ~~~javascript
 snackbar.show(options);
 snackbar.hide();
-snackbar.pause();
-snackbar.unpause();
 ~~~
+
+For all functions - see below.
 
 Any time `show` is called to show a message, this message will be queued. Subsequent messages will wait until the displayed message is hidden.
 
@@ -119,6 +125,21 @@ snackbar.show({
 
 ### Function calls
 
+~~~javascript
+snackbar.show(options);
+snackbar.hide();
+snackbar.pause();
+snackbar.unpause();
+snackbar.clear();
+snackbar.count();
+~~~
+
+Functions that return a promise:
+
+* show
+* hide
+
+
 #### show
 
 ~~~javascript
@@ -153,6 +174,32 @@ Unpauses the timer of the current message.
 snackbar.unpause();
 ~~~
 
+#### clear
+
+Clears the lists of messages.
+
+~~~javascript
+snackbar.clear();
+~~~
+
+If a message is on screen, this would suddenly disappear. You might first want to hide the current message before clearing all:
+
+~~~javascript
+onclick: () => {
+    snackbar.hide().then(() => {
+        snackbar.clear();
+        m.redraw();
+    });
+}
+~~~
+
+#### count
+
+Returns the number of messages.
+
+~~~javascript
+let messages = snackbar.count();
+~~~
 
 ### Transitions
 

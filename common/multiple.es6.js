@@ -2,6 +2,7 @@
 Helper module to manage multiple items of the same component type.
 */
 import m from 'mithril';
+import 'polythene/common/object.assign';
 
 /*
 mOpts:
@@ -38,73 +39,104 @@ const multiple = (mOpts) => {
         }
     };
 
-    const setPauseState = (pause, instanceId) => {
-        const item = findItem(instanceId);
-        if (item) {
-            if (pause) {
-                item.unpause = false;
-                item.pause = true;
-            } else {
-                item.pause = false;
-                item.unpause = true;
-            }
+    const remove = (instanceId) => {
+        if (mOpts.queue) {
+            items.shift();
+            // add time to remove the previous instance before drawing the next one
+            setTimeout(() => {
+                next();
+            }, 0);
+        } else {
+            removeItem(instanceId);
         }
     };
 
+    const setPauseState = (pause, instanceId) => {
+        const item = findItem(instanceId);
+        if (item) {
+            item.pause = pause;
+            item.unpause = !pause;
+        }
+    };
+
+    const didShow = (instanceId) => {
+        const item = findItem(instanceId);
+        item.showDeferred.resolve();
+    };
+
+    const didHide = (instanceId) => {
+        const item = findItem(instanceId);
+        item.hideDeferred.resolve();
+        if (mOpts.queue) {
+            remove(instanceId);
+        }
+
+    };
+
+    const makeItem = (opts, instanceId) => {
+        return Object.assign({}, mOpts, {
+            instanceId,
+            opts,
+            show: mOpts.queue ? false : true,
+            showDeferred: m.deferred(),
+            hideDeferred: m.deferred(),
+            didShow,
+            didHide
+        });
+    };
+
     return {
+
         count: () => (items.length),
+
+        clear: () => (items.length = 0),
+
         show: (opts, instanceId = mOpts.defaultId) => {
+            console.log("multi show", instanceId);
+            let item;
             if (mOpts.queue) {
-                items.push({
-                    instanceId,
-                    opts
-                });
+                item = makeItem(opts, instanceId);
+                items.push(item);
                 if (items.length === 1) {
                     next();
                 }
             } else {
-                const item = findItem(instanceId);
+                item = findItem(instanceId);
                 if (!item) {
-                    items.push({
-                        instanceId,
-                        opts,
-                        show: true
-                    });
+                    item = makeItem(opts, instanceId);
+                    items.push(item);
                 }
             }
+            return item.showDeferred.promise;
         },
+
         hide: (instanceId = mOpts.defaultId) => {
+            console.log("multi hide", instanceId)
+            let item;
             if (mOpts.queue) {
                 if (items.length) {
-                    const item = items[0];
-                    if (item) {
-                        item.hide = true;
-                    }
+                    item = items[0];
                 }
             } else {
-                const item = findItem(instanceId);
-                if (item) {
-                    item.hide = true;
-                }
+                item = findItem(instanceId);
             }
+            console.log("item", item)
+            item.hide = true;
+            return item.hideDeferred.promise;
         },
+
         remove: (instanceId = mOpts.defaultId) => {
-            if (mOpts.queue) {
-                items.splice(0, 1);
-                // add time to remove the previous component before drawing the next one
-                setTimeout(() => {
-                    next();
-                }, 0);
-            } else {
-                removeItem(instanceId);
-            }
+            remove(instanceId);
         },
+
         pause: (instanceId = mOpts.defaultId) => {
             setPauseState(true, instanceId);
         },
+
         unpause: (instanceId = mOpts.defaultId) => {
             setPauseState(false, instanceId);
         },
+
         view: () => {
             const toShowItems = items.filter((item) => {
                 return item.show;
@@ -116,10 +148,10 @@ const multiple = (mOpts) => {
             } else {
                 document.body.classList.add(mOpts.bodyShowClass);
             }
-            return m(mOpts.tag, toShowItems.map((itemData, index) => {
+            return m(mOpts.tag, toShowItems.map((itemData) => {
                 if (itemData.show) {
                     return m.component(mOpts.instance, Object.assign({}, itemData, {
-                        key: index
+                        transitions: mOpts.transitions
                     }));
                 }
             }));
