@@ -20,6 +20,14 @@ const hide = (opts) => {
     return transition(opts, 'hide');
 };
 
+/*
+opts:
+- transition
+- showDuration
+- hideDuration
+
+- state (show, hide)
+*/
 const getDuration = (opts, state) => {
     const transition = opts.transition || TRANSITION;
     if (transition === 'none') {
@@ -38,9 +46,10 @@ const getDuration = (opts, state) => {
 /*
 opts:
 - transition (show, hide, both)
-- state (show, hide)
 - showDelay
 - hideDelay
+
+- state (show, hide)
 */
 const getDelay = (opts, state) => {
     const transition = opts.transition || TRANSITION;
@@ -67,6 +76,10 @@ opts:
 - show
 - hide
 - afterHide
+- showDelay
+- hideDelay
+
+- state (show, hide)
 */
 const transition = (opts, state) => {
     const deferred = m.deferred();
@@ -88,10 +101,10 @@ const transition = (opts, state) => {
         if (opts.showClass) {
             el.classList[(state === 'show') ? 'add' : 'remove'](opts.showClass);
         }
-        if (opts.show && state === 'show') {
+        if (opts.show && typeof opts.show === 'function' && state === 'show') {
             opts.show();
         }
-        if (opts.hide && state === 'hide') {
+        if (opts.hide && typeof opts.hide === 'function' && state === 'hide') {
             opts.hide();
         }
     };
