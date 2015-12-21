@@ -92,7 +92,6 @@ const multiple = (mOpts) => {
         clear: () => (items.length = 0),
 
         show: (opts, instanceId = mOpts.defaultId) => {
-            console.log("multi show", instanceId);
             let item;
             if (mOpts.queue) {
                 item = makeItem(opts, instanceId);
@@ -111,7 +110,6 @@ const multiple = (mOpts) => {
         },
 
         hide: (instanceId = mOpts.defaultId) => {
-            console.log("multi hide", instanceId)
             let item;
             if (mOpts.queue) {
                 if (items.length) {
@@ -120,7 +118,6 @@ const multiple = (mOpts) => {
             } else {
                 item = findItem(instanceId);
             }
-            console.log("item", item)
             item.hide = true;
             return item.hideDeferred.promise;
         },
