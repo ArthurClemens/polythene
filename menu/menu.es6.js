@@ -66,7 +66,7 @@ const show = (ctrl, opts) => {
         ctrl.isTransitioning = false;
         ctrl.visible = true;
         if (opts.didShow) {
-            opts.didShow.call(opts.id);
+            opts.didShow(opts.id);
         }
     });
 };
@@ -80,7 +80,7 @@ const hide = (ctrl, opts) => {
         ctrl.isTransitioning = false;
         ctrl.visible = false;
         if (opts.didHide) {
-            opts.didHide.call(opts.id);
+            opts.didHide(opts.id);
         }
         m.redraw(); // removes remainder of drawn component
     });

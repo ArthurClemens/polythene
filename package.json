@@ -1,6 +1,6 @@
 {
   "name": "polythene",
-  "version": "0.1.34",
+  "version": "0.1.35",
   "description": "Modular implementation of Material Design for Mithril.",
   "license": "MIT",
   "main": "",
@@ -49,6 +49,7 @@
     "polythene",
     "ripple",
     "shadow",
+    "snackbar",
     "svg",
     "tabs",
     "toolbar",

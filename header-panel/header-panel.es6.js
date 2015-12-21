@@ -40,9 +40,9 @@ const setTransform = (document.documentElement.style.transform !== undefined) ? 
     style.webkitTransform = string;
 });
 
-const translateY = (s, y) => {
-    const t = y === null ? '' : 'translate3d(0, ' + y + 'px, 0)';
-    setTransform(s, t);
+const translateY = (style, y) => {
+    const t = (y === null) ? '' : 'translate3d(0, ' + y + 'px, 0)';
+    setTransform(style, t);
 };
 
 const createHeaderComponent = (opts = {}) => {
@@ -91,13 +91,13 @@ const createViewContent = (ctrl, scrollConfig, opts = {}) => {
     };
     return [
         m('.mainContainer.flex', {
-                config: initMainContainer,
-                onscroll: (e) => {
-                    scrollConfig.main(e);
-                    p.emitEvent('scroll', e);
-                }
-            },
-            opts.content ? opts.content : null)
+            config: initMainContainer,
+            onscroll: (e) => {
+                scrollConfig.main(e);
+                p.emitEvent('scroll', e);
+            }
+        },
+        opts.content ? opts.content : null)
     ];
 };
 

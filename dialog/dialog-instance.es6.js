@@ -47,7 +47,7 @@ const show = (ctrl, opts) => {
         ctrl.isTransitioning = false;
         ctrl.visible = true;
         if (opts.didShow) {
-            opts.didShow.call(id);
+            opts.didShow(id);
         }
     });
 };
@@ -63,7 +63,7 @@ const hide = (ctrl, opts) => {
         ctrl.isTransitioning = false;
         ctrl.visible = false;
         if (opts.didHide) {
-            opts.didHide.call(id);
+            opts.didHide(id);
         }
         m.redraw(); // removes remainder of drawn component
     });
@@ -209,7 +209,6 @@ const createView = (ctrl, opts = {}) => {
 };
 
 const component = {
-    id: 'dialog-instance',
     controller: (instanceData = {}) => {
         // instanceData contains {id, opts}
         const opts = instanceData.opts || {};

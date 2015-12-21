@@ -5,8 +5,8 @@ Generic show/hide transition module
 import m from 'mithril';
 
 // defaults
-const SHOW_DURATION = 200;
-const HIDE_DURATION = 180;
+const SHOW_DURATION = 200; // default dialog timing
+const HIDE_DURATION = 180; // default dialog timing
 const SHOW_DELAY = 10; // prevent flickering with Safari
 const HIDE_DELAY = 50; // prevent flickering with Safari
 const TRANSITION = 'both';
@@ -30,9 +30,7 @@ const getDuration = (opts, state) => {
         return 0;
     } else {
         // both
-        return (state === 'show')
-            ? (opts.showDuration !== undefined) ? opts.showDuration : SHOW_DURATION
-            : (opts.hideDuration !== undefined) ? opts.hideDuration : HIDE_DURATION;
+        return (state === 'show') ? (opts.showDuration !== undefined) ? opts.showDuration : SHOW_DURATION : (opts.hideDuration !== undefined) ? opts.hideDuration : HIDE_DURATION;
     }
     return 0;
 };
@@ -54,9 +52,7 @@ const getDelay = (opts, state) => {
         return 0;
     } else {
         // both
-        return (state === 'show')
-            ? (opts.showDelay !== undefined) ? opts.showDelay : SHOW_DELAY
-            : (opts.hideDelay !== undefined) ? opts.hideDelay : HIDE_DELAY;
+        return (state === 'show') ? (opts.showDelay !== undefined) ? opts.showDelay : SHOW_DELAY : (opts.hideDelay !== undefined) ? opts.hideDelay : HIDE_DELAY;
     }
     return 0;
 };
@@ -64,38 +60,57 @@ const getDelay = (opts, state) => {
 /*
 opts:
 - el
-- showClass
-- parentShowClass
 - duration
 - delay
+- showClass
+- beforeShow
+- show
+- hide
+- afterHide
 */
 const transition = (opts, state) => {
-    const cssAction = (state === 'show') ? 'add' : 'remove';
-    const el = opts.el;
-    const duration = getDuration(opts, state);
-    const delay = getDelay(opts, state);
-    const setTransitionCss = () => {
-        el.style.transitionDuration = duration + 'ms';
-        el.style.transitionDelay = delay + 'ms';
-        el.classList[cssAction](opts.showClass);
-    };
-
     const deferred = m.deferred();
-    if (duration === 0) {
-        // immediate effect
-        setTransitionCss();
+    const el = opts.el;
+    const transitionDuration = getDuration(opts, state);
+    const delay = getDelay(opts, state);
+    const style = el.style;
+
+    const beforeTransition = () => {
+        if (opts.beforeShow && state === 'show') {
+            style.transitionDuration = '0ms';
+            style.transitionDelay = '0ms';
+            opts.beforeShow();
+        }
+    };
+    const applyTransition = () => {
+        style.transitionDuration = transitionDuration + 'ms';
+        style.transitionDelay = delay + 'ms';
+        if (opts.showClass) {
+            el.classList[(state === 'show') ? 'add' : 'remove'](opts.showClass);
+        }
+        if (opts.show && state === 'show') {
+            opts.show();
+        }
+        if (opts.hide && state === 'hide') {
+            opts.hide();
+        }
+    };
+    const applyAfterTransition = () => {
+        if (opts.afterHide && state === 'hide') {
+            style.transitionDuration = '0ms';
+            style.transitionDelay = '0ms';
+            opts.afterHide();
+        }
+    };
+    beforeTransition();
+    // Use setTimeout to apply changing transitionDuration settings
+    setTimeout(() => {
+        applyTransition();
         setTimeout(() => {
+            applyAfterTransition();
             deferred.resolve();
-        }, duration);
-    } else {
-        // wait to prevent flickering
-        setTimeout(() => {
-            setTransitionCss();
-            setTimeout(() => {
-                deferred.resolve();
-            }, duration + delay);
-        }, 0);
-    }
+        }, transitionDuration + delay);
+    }, 0); // prevent flickering
     return deferred.promise;
 };
 

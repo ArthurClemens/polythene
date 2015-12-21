@@ -7,7 +7,7 @@ Displays a dialog. Stacked dialogs are possible.
 
 ## Usage
 
-Other than other components, `dialog` is invoked through function calls `show` and `hide`.
+Other than most other components, `dialog` is invoked through function calls `show` and `hide`.
 
 Because a dialog should float on top of everything else, outside of the context of the caller, it can be considered a global component. It needs a place in the root view so that it is not obstructed by other components:
 
@@ -26,8 +26,8 @@ app.view = (ctrl, opts) => {
 The dialog component itself does not accept any options. Instead, you pass options when calling `show` - allowing to create custom dialogs from anywhere in the app.
 
 ~~~javascript
-dialog.show(options);
-dialog.hide();
+dialog.show(options, id);
+dialog.hide(id);
 ~~~
 
 `options` can be a regular options object:
