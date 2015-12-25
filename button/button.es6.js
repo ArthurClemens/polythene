@@ -43,20 +43,20 @@ const initTapEvents = (el, ctrl, opts) => {
             m.redraw();
         }
     };
-    tapStart = function(e) {
-        e.preventDefault();
+    tapStart = function() {
         tapHandler('down');
     };
-    tapEnd = function(e) {
-        e.preventDefault();
+    tapEnd = function() {
         tapHandler('up');
     };
     el.addEventListener(startType, tapStart);
+    el.addEventListener(endType, tapEnd);
     document.body.addEventListener(endType, tapEnd);
 };
 
 const clearTapEvents = function(el) {
     el.removeEventListener(startType, tapStart);
+    el.removeEventListener(endType, tapEnd);
     document.body.removeEventListener(endType, tapEnd);
 };
 
