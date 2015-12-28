@@ -123,15 +123,18 @@ See the [main project page](https://github.com/ArthurClemens/Polythene).
 * Shadow
 * Floating Action Button
 * List tile
+* Notification and Snackbar
+* Slider
 * Subheader (part of List)
 * Divider (part of List)
 * Theming
 
 ### To do
 
+1. Checkbox
+1. Toggle button
 1. Grid list
 1. List: Control
-1. Toggle button
 1. Form: Text field
 1. Form: Selection control
 1. Data table
@@ -139,12 +142,7 @@ See the [main project page](https://github.com/ArthurClemens/Polythene).
 1. Chip
 1. Picker
 1. Progress & activity
-1. Slider
-1. Snackbar & toast
 1. Tooltip
-
-### Nice to have
-
-* Loading animation
-* Pull to refresh
-* Local storage/offline use
+1. Search
+1. Side menu
+1. Reorder list
