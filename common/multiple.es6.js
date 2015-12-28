@@ -146,11 +146,9 @@ const multiple = (mOpts) => {
                 document.body.classList.add(mOpts.bodyShowClass);
             }
             return m(mOpts.tag, toShowItems.map((itemData) => {
-                if (itemData.show) {
-                    return m.component(mOpts.instance, Object.assign({}, itemData, {
-                        transitions: mOpts.transitions
-                    }));
-                }
+                return m.component(mOpts.instance, Object.assign({}, itemData, {
+                    transitions: mOpts.transitions
+                }));
             }));
         }
     };
