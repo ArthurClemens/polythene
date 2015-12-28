@@ -31,7 +31,6 @@ const handleScrollButtonClick = (e, direction, ctrl) => {
     scrollToTab(newIndex, tabs, ctrl.scrollerEl);
     if (newIndex !== currentTabIndex) {
         setSelectedTab(newIndex, true, ctrl);
-        updateScrollButtons(ctrl);
         m.redraw();
     }
 };
@@ -181,7 +180,7 @@ const createView = (ctrl, opts = {}) => {
 
     // keep selected tab up to date
     if (opts.selectedTab !== undefined && opts.buttons[0].url) {
-        ctrl.selectedTabIndex(opts.selectedTab);
+        setSelectedTab(opts.selectedTab, true, ctrl);
     }
 
     const props = {
