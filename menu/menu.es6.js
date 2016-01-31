@@ -2,11 +2,26 @@ import p from 'polythene/polythene/polythene';
 import m from 'mithril';
 import shadow from 'polythene/shadow/shadow';
 import transition from 'polythene/common/transition';
-import 'polythene-theme/menu/menu';
+import 'polythene/menu/theme/theme';
+
+const CSS_CLASSES = {
+    block: 'pe-menu',
+    content: 'pe-menu__content',
+    placeholder: 'pe-menu--placeholder',
+    visible: 'pe-menu--visible',
+    permanent: 'pe-menu--permanent',
+    target: 'pe-menu--target',
+    width_n: 'pe-menu--width-',
+    width_auto: 'pe-menu--width-auto',
+
+    // lookup
+    listTile: 'pe-list-tile',
+    selectedListTile: 'pe-list-tile--selected'
+};
 
 const OFFSET_V = -8;
 const DEFAULT_OFFSET_H = 16;
-const SHOW_CLASS = 'visible';
+const MIN_SIZE = 1.5;
 
 const positionMenu = (ctrl, opts) => {
     if (!opts.target) {
@@ -26,9 +41,9 @@ const positionMenu = (ctrl, opts) => {
     const reposition = opts.reposition === false ? false : true;
     let positionOffset = 0;
     if (reposition) {
-        const firstItem = contentEl.querySelectorAll('.list .list-tile')[0];
-        const selectedItem = contentEl.querySelector('.list-tile.selected');
-        if (selectedItem) {
+        const firstItem = contentEl.querySelectorAll('.' + CSS_CLASSES.listTile)[0];
+        const selectedItem = contentEl.querySelector('.' + CSS_CLASSES.selectedListTile);
+        if (firstItem && selectedItem) {
             // calculate v position: menu should shift upward relative to the first item
             const firstItemRect = firstItem.getBoundingClientRect();
             const selectedItemRect = selectedItem.getBoundingClientRect();
@@ -59,10 +74,13 @@ const positionMenu = (ctrl, opts) => {
 
 const show = (ctrl, opts) => {
     ctrl.isTransitioning = true;
-    return transition.show(Object.assign({}, opts, {
-        el: ctrl.el,
-        showClass: SHOW_CLASS
-    })).then(() => {
+    return transition.show(Object.assign(
+        {},
+        opts, {
+            el: ctrl.el,
+            showClass: CSS_CLASSES.visible
+        }
+    )).then(() => {
         ctrl.isTransitioning = false;
         ctrl.visible = true;
         if (opts.didShow) {
@@ -73,10 +91,13 @@ const show = (ctrl, opts) => {
 
 const hide = (ctrl, opts) => {
     ctrl.isTransitioning = true;
-    return transition.hide(Object.assign({}, opts, {
-        el: ctrl.el,
-        showClass: SHOW_CLASS
-    })).then(() => {
+    return transition.hide(Object.assign(
+        {},
+        opts, {
+            el: ctrl.el,
+            showClass: CSS_CLASSES.visible
+        }
+    )).then(() => {
         ctrl.isTransitioning = false;
         ctrl.visible = false;
         if (opts.didHide) {
@@ -87,15 +108,12 @@ const hide = (ctrl, opts) => {
 };
 
 const unifySize = (size) => {
-    return (size < 1.5) ? 1.5 : size;
+    return (size < MIN_SIZE) ? MIN_SIZE : size;
 };
 
 const widthClass = (size) => {
-    if (size === 1.5) {
-        return 'width-1-half';
-    } else {
-        return 'width-' + size;
-    }
+    const sizeStr = size.toString().replace('.', '-');
+    return CSS_CLASSES.width_n + sizeStr;
 };
 
 const createView = (ctrl, opts = {}) => {
@@ -112,7 +130,7 @@ const createView = (ctrl, opts = {}) => {
         }
         deActivateDismissTap();
         if (e.defaultPrevented) {
-            // clicked on .menu-content
+            // clicked on .pe-menu__content
             hide(ctrl, opts);
         } else {
             hide(ctrl, Object.assign({}, opts, {hideDelay: 0}));
@@ -120,7 +138,7 @@ const createView = (ctrl, opts = {}) => {
     };
     const tag = opts.tag || 'div';
     const props = {
-        class: ['menu', (opts.permanent ? 'permanent' : null), (opts.target ? 'target' : 'layout center-center'), (opts.size ? widthClass(unifySize(opts.size)) : null), opts.class].join(' '),
+        class: [CSS_CLASSES.block, (opts.permanent ? CSS_CLASSES.permanent : null), (opts.target ? CSS_CLASSES.target : 'layout center-center'), (opts.size ? widthClass(unifySize(opts.size)) : null), opts.class].join(' '),
 
         id: opts.id || '',
         config: (el, inited, context, vdom) => {
@@ -162,7 +180,8 @@ const createView = (ctrl, opts = {}) => {
             positionMenu(ctrl, opts);
         }
     };
-    const content = m('.menu-content', {
+    const content = m('div', {
+        class: CSS_CLASSES.content,
         config: (el, inited) => {
             if (!inited) {
                 ctrl.contentEl = el;
@@ -178,7 +197,7 @@ const createView = (ctrl, opts = {}) => {
         }),
         opts.content ? opts.content : null
     ]);
-    return m(tag, props, p.insertContent(content, opts));
+    return m(tag, props, [opts.before, content, opts.after]);
 };
 
 const component = {
@@ -199,7 +218,7 @@ const component = {
         if (ctrl.visible) {
             return createView(ctrl, opts);
         } else {
-            return m('span.menu-placeholder');
+            return m('span', {class: CSS_CLASSES.placeholder});
         }
     }
 };

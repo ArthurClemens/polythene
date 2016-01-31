@@ -2,7 +2,7 @@
 
 <a class="btn-demo" href="http://arthurclemens.github.io/Polythene-examples/index.html#/icon-button">Demo</a>
 
-Displays an [icon](#icon) as a button.
+Displays an [icon](#icon) as a button. Also called toggle button.
 
 
 ## Usage
@@ -10,6 +10,7 @@ Displays an [icon](#icon) as a button.
 Icon Button takes an icon options object:
 
 ~~~javascript
+import m from 'mithril';
 import iconBtn from 'polythene/icon-button/icon-button';
 
 const myIconBtn = m.component(iconBtn, {
@@ -64,7 +65,7 @@ The icon color is set with the CSS (text) `color` attribute of the parent elemen
 
 ~~~css
 /* CSS */
-.icon-button.colored {
+.pe-button--icon {
 	color: red;
 }
 ~~~
@@ -92,45 +93,37 @@ const myIconBtn = m.component(iconBtn, {
 
 ## Options
 
+### Common component options
+
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **tag** | optional | String | 'div' | HTML element tag |
-| **class** | optional | String |  | Extra CSS class appended to 'icon-button' |
+| **class** | optional | String |  | Extra CSS class appended to 'pe-button--icon' |
 | **id** | optional | String | | HTML element id |
+| **events** | optional | Object | | Options object containing one or more standard events such as `onclick` |
+| **before** | optional | Mithril element | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
+| **after** | optional | Mithril element | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
+
+### Icon button specific options
+
+| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
 | **icon** | either icon or content must be passed | Object |  | [icon](#icon) options object; also used to show an round "avatar" portrait image |
-| **content** | either icon or content must be passed | Mithril template or String | | Alternative content if no icon object is used |
-| **url** | optional | Object with `href`, optionally `config` | | Button URL |
-| **wash** | optional | Boolean | false | Opposite to [button](#button): set to true to show the effect on hover |
+| **content** | either icon or content must be passed | Mithril element | | Alternative content if no icon object is used |
+| **url** | optional | Object with `href`, optionally `config` | | Button URL data |
+| **inactive** | optional | Boolean | | Set to `true` to disable events |
+
+### Icon button appearance options
+
+| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
+| **wash** | optional | Boolean | false | Set to true to show the effect on hover |
 | **ink** | optional | Boolean | true | Set to false to disable the ripple effect on click/tap |
 | **raised** | optional | Boolean | false | Shows a shadow; on button press the shadow depth is increased by 1 |
 | **z** | optional | Number 0-5 | 1 | The shadow depth for a raised button; raised buttons have a default z of 1 |
 | **active** | optional | Boolean | | Set to true to show the active state (with border and background) |
-| **before** | optional | Mithril template or String | | Extra content before main content |
-| **after** | optional | Mithril template or String | | Extra content after main content |
 
 
-## Inheritance
+## Inheritance/composition
 
-Icon button inherits from [button](#button).
-
-
-## Default generated HTML
-
-~~~html
-<a class="icon-button">
-    <div class="content">
-        <div class="label">
-            <div class="icon icon-normal">
-                <i class="fit svg">
-                    <svg>...</svg>
-                </i>
-            </div>
-        </div>
-        <div class="fit ripple constrained ">
-            <div class="ripple-mask">
-                <div class="ripple-waves" style=""></div>
-            </div>
-        </div>
-    </div>
-</a>
-~~~
+Icon button is composed with [button](#button).

@@ -1,9 +1,18 @@
+import 'polythene/common/object.assign';
 import m from 'mithril';
 import Timer from 'polythene/common/timer';
 import transition from 'polythene/common/transition';
-import 'polythene/common/object.assign';
 
-const DEFAULT_TIME_OUT = 4000;
+const CSS_CLASSES = {
+    content: 'pe-notification__content',
+    title: 'pe-notification__title',
+    multilineTitle: 'pe-notification__title--multiline',
+    action: 'pe-notification__action',
+    horizontal: 'pe-notification--horizontal',
+    vertical: 'pe-notification--vertical'
+};
+
+const DEFAULT_TIME_OUT = 3;
 
 const pause = (ctrl) => {
     ctrl.isPaused = true;
@@ -28,7 +37,11 @@ const stopTimer = (ctrl) => {
 const show = (ctrl, opts) => {
     stopTimer(ctrl);
     ctrl.isTransitioning = true;
-    return transition.show(Object.assign({}, opts, ctrl.transitions.show(ctrl, opts))).then(() => {
+    return transition.show(Object.assign(
+        {},
+        opts,
+        ctrl.transitions.show(ctrl, opts)
+    )).then(() => {
         ctrl.isTransitioning = false;
         if (ctrl.didShow) {
             // notify multiple
@@ -43,10 +56,10 @@ const show = (ctrl, opts) => {
         if (timeout === 0) {
             // do not time out
         } else {
-            const timeoutMs = (timeout !== undefined) ? timeout : DEFAULT_TIME_OUT;
+            const timeoutSeconds = (timeout !== undefined) ? timeout : DEFAULT_TIME_OUT;
             ctrl.timer = new Timer(() => {
                 hide(ctrl, opts);
-            }, timeoutMs);
+            }, timeoutSeconds * 1000);
         }
     });
 };
@@ -54,7 +67,11 @@ const show = (ctrl, opts) => {
 const hide = (ctrl, opts) => {
     stopTimer(ctrl);
     ctrl.isTransitioning = true;
-    return transition.hide(Object.assign({}, opts, ctrl.transitions.hide(ctrl, opts))).then(() => {
+    return transition.hide(Object.assign(
+        {},
+        opts,
+        ctrl.transitions.hide(ctrl, opts)
+    )).then(() => {
         stopTimer(ctrl);
         ctrl.isTransitioning = false;
         if (ctrl.didHide) {
@@ -70,28 +87,9 @@ const hide = (ctrl, opts) => {
 };
 
 const createView = (ctrl, opts = {}) => {
-    // const activateDismissTap = (ctrl) => {
-    //     ctrl.dismissEl.addEventListener('click', handleDismissTap);
-    // };
-    // const deActivateDismissTap = (ctrl) => {
-    //     ctrl.dismissEl.removeEventListener('click', handleDismissTap);
-    // };
-    // const handleDismissTap = (e) => {
-    //     // small delay to detect isPaused (will be set after the click)
-    //     setTimeout(() => {
-    //         if (e.target === ctrl.el) {
-    //             return;
-    //         }
-    //         if (ctrl.isPaused) {
-    //             return;
-    //         }
-    //         deActivateDismissTap(ctrl);
-    //         hide(ctrl, Object.assign({}, opts, {hideDelay: 0}));
-    //     }, 0);
-    // };
-    const tag = opts.tag || 'div.layout.center';
+    const tag = opts.tag || 'div';
     const props = {
-        class: [ctrl.class, opts.class || 'dark-theme'].join(' '),
+        class: [ctrl.class, (opts.layout === 'vertical' ? CSS_CLASSES.vertical : CSS_CLASSES.horizontal), opts.class].join(' '),
         id: opts.id || '',
         config: (el, inited, context, vdom) => {
             if (inited) return;
@@ -99,14 +97,9 @@ const createView = (ctrl, opts = {}) => {
                 opts.config(el, inited, context, vdom);
             }
             ctrl.el = el;
-            ctrl.containerEl = document.querySelector('#' + opts.container);
 
-            ctrl.dismissEl = opts.dismissSelector ? document.querySelector(opts.dismissSelector) : document.body;
-            // activateDismissTap(ctrl);
-
-            // context.onunload = () => {
-            //     deActivateDismissTap(ctrl);
-            // };
+            // container element is used for transitioning the notification
+            ctrl.containerEl = document.querySelector(opts.containerSelector || '.pe-notification__holder');
             show(ctrl, opts);
         },
         onclick: (e) => {
@@ -120,20 +113,19 @@ const createView = (ctrl, opts = {}) => {
         const paddingTop = parseInt(window.getComputedStyle(el).paddingTop, 10);
         const paddingBottom = parseInt(window.getComputedStyle(el).paddingBottom, 10);
         if (height > (lineHeight + paddingTop + paddingBottom)) {
-            el.classList.add('multi-line');
+            el.classList.add(CSS_CLASSES.multilineTitle);
         }
     };
-    const verticalLayout = opts.layout === 'vertical';
     const title = opts.title;
-    const content = m(verticalLayout ? '.layout.vertical' : '.layout.horizontal', {
-        class: 'content'
+    const content = m('div', {
+        class: CSS_CLASSES.content
     }, [
-        title ? m(verticalLayout ? 'div' : '.flex', {
-            class: 'title',
+        title ? m('div', {
+            class: CSS_CLASSES.title,
             config: titleConfig
         }, title) : null,
-        opts.action ? m(verticalLayout ? '.layout.end-justified' : '.layout.center', {
-            class: 'action'
+        opts.action ? m('div', {
+            class: CSS_CLASSES.action
         }, [
             opts.action
         ]) : null

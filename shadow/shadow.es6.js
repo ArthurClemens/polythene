@@ -1,22 +1,31 @@
 import m from 'mithril';
-import 'polythene-theme/shadow/shadow';
+import 'polythene/shadow/theme/theme';
+
+const CSS_CLASSES = {
+    block: 'pe-shadow',
+    topShadow: 'pe-shadow__top',
+    bottomShadow: 'pe-shadow__bottom',
+    animated: 'pe-shadow--animated',
+    depth_n: 'pe-shadow--z-'
+};
+
+const classForDepth = (z = 1) => (CSS_CLASSES.depth_n + Math.min(5, z));
 
 const createView = (ctrl, opts = {}) => {
-    const z = opts.z;
+    const depthClass = classForDepth(opts.z);
     const tag = opts.tag || 'div';
     const props = {
-        class: ['shadow', opts.class].join(' '),
+        class: [CSS_CLASSES.block, (opts.animated ? CSS_CLASSES.animated : ''), opts.class].join(' '),
         id: opts.id || '',
         config: opts.config
     };
-    const helperTag = 'div.fit' + (opts.animated ? '.animated' : '');
     const content = [
         opts.content ? opts.content : null,
-        m(helperTag, {
-            class: 'shadow-bottom shadow-bottom-z-' + z
+        m('div', {
+            class: [CSS_CLASSES.bottomShadow, depthClass].join(' ')
         }),
-        m(helperTag, {
-            class: 'shadow-top shadow-top-z-' + z
+        m('div', {
+            class: [CSS_CLASSES.topShadow, depthClass].join(' ')
         })
     ];
     return m(tag, props, content);

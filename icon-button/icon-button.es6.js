@@ -1,7 +1,13 @@
 import m from 'mithril';
 import icon from 'polythene/icon/icon';
 import button from 'polythene/button/button';
-import 'polythene-theme/icon-button/icon-button';
+import 'polythene/base-button/base-button';
+import 'polythene/icon-button/theme/theme';
+
+const CSS_CLASSES = {
+    block: 'pe-button pe-button--icon',
+    label: 'pe-button__label'
+};
 
 const createView = (ctrl, opts = {}) => {
     let content;
@@ -10,8 +16,8 @@ const createView = (ctrl, opts = {}) => {
     } else if (opts.content) {
         content = opts.content;
     }
-    opts.content = m('.label', content);
-    opts.parentClass = opts.parentClass || 'icon-button';
+    opts.content = m('div', {class: CSS_CLASSES.label}, content);
+    opts.parentClass = opts.parentClass || CSS_CLASSES.block;
     // default do not show hover effect
     opts.wash = (opts.wash !== undefined) ? opts.wash : false;
     opts.animateOnTap = (opts.animateOnTap !== undefined) ? opts.animateOnTap : false;

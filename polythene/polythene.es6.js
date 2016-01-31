@@ -1,9 +1,6 @@
+const listeners = {};
 
-let listeners = {};
-
-const isTouch = () => {
-    return (('ontouchstart' in window) || (navigator.MaxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));
-};
+const isTouch =  (('ontouchstart' in window) || (navigator.MaxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));
 
 const addListener = (eventName, listener) => {
     listeners[eventName] = listeners[eventName] || [];
@@ -32,13 +29,10 @@ window.addEventListener('scroll', e => (emitEvent('scroll', e)));
 window.addEventListener('keydown', e => (emitEvent('keydown', e)));
 
 const polythene = {
-    insertContent: (content, opts = {}) => {
-        return [].concat(opts.before, content, opts.after);
-    },
-    isTouch: isTouch,
-    addListener: addListener,
-    removeListener: removeListener,
-    emitEvent: emitEvent
+    isTouch,
+    addListener,
+    removeListener,
+    emitEvent
 };
 
 export default polythene;

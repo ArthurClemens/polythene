@@ -4,7 +4,7 @@ import instance from 'polythene/dialog/dialog-instance';
 export default Multiple({
     instance,
     defaultId: 'default_dialog',
-    tag: 'div.dialog-holder',
-    noneTag: 'span.dialog-placeholder',
-    bodyShowClass: 'dialog-open'
+    tag: '.pe-dialog__holder',
+    noneTag: 'span.pe-dialog__placeholder',
+    bodyShowClass: 'pe-dialog--open'
 });

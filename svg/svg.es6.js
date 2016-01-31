@@ -1,17 +1,24 @@
-import p from 'polythene/polythene/polythene';
+import 'polythene/common/object.assign';
 import m from 'mithril';
-import 'polythene-theme/svg/svg';
+import 'polythene/svg/theme/theme';
 
-let globalCache = {};
+const CSS_CLASSES = {
+    block: 'pe-svg'
+};
+
+const globalCache = {};
 
 const createView = (ctrl, opts = {}) => {
     let content, svg;
     const tag = opts.tag || 'div';
-    const props = {
-        class: ['svg', opts.class].join(' '),
-        id: opts.id || '',
-        config: opts.config
-    };
+    const props = Object.assign({},
+        {
+            class: [CSS_CLASSES.block, opts.class].join(' '),
+            id: opts.id || '',
+            config: opts.config
+        },
+        opts.events ? opts.events : null
+    );
     if (opts.content) {
         content = opts.content;
     } else {
@@ -36,7 +43,7 @@ const createView = (ctrl, opts = {}) => {
             preloadNext(ctrl, opts);
         }
     }
-    return m(tag, props, p.insertContent(content, opts));
+    return m(tag, props, [opts.before, content, opts.after]);
 };
 
 const loadSvg = (path, ctrl, opts, preloading = false) => {

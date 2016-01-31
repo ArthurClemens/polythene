@@ -3,24 +3,34 @@ import p from 'polythene/polythene/polythene';
 import m from 'mithril';
 import ripple from 'polythene/ripple/ripple';
 import shadow from 'polythene/shadow/shadow';
-import 'polythene-theme/button/button';
+import 'polythene/base-button/base-button';
+import 'polythene/button/theme/theme';
 
-let startType,
-    endType,
-    tapStart,
+const CSS_CLASSES = {
+    block: 'pe-button pe-button--text',
+    content: 'pe-button__content',
+    label: 'pe-button__label',
+    raised: 'pe-button--raised',
+    wash: 'pe-button__wash',
+    selected: 'pe-button--selected',
+    disabled: 'pe-button--disabled',
+    borders: 'pe-button--borders',
+    inactive: 'pe-button--inactive',
+};
+
+const MAX_Z = 5;
+
+const startType = window.PointerEvent ? 'pointerdown' : (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) ? 'touchstart' : 'mousedown';
+const endType = window.PointerEvent ? 'pointerup' : (('ontouchend' in window) || window.DocumentTouch && document instanceof DocumentTouch) ? 'touchend' : 'mouseup';
+
+let tapStart,
     tapEnd;
 
 const initTapEvents = (el, ctrl, opts) => {
-    const isTouch = p.isTouch();
-    startType = isTouch ? 'click' : 'mousedown';
-    endType = 'mouseup';
     // disable z animation on touch
-    const animateOnTap = opts.animateOnTap && !isTouch;
+    const animateOnTap = opts.animateOnTap && !p.isTouch;
 
     const tapHandler = function tapHandler(evt) {
-        if (opts.onTap) {
-            opts.onTap(evt);
-        }
         if (!animateOnTap) {
             return;
         }
@@ -28,7 +38,7 @@ const initTapEvents = (el, ctrl, opts) => {
         if (baseZ === 5) {
             return;
         }
-        const MAX_Z = 5;
+
         const increase = opts.increase || 1;
         let z = ctrl.z();
         if (evt === 'down') {
@@ -61,48 +71,50 @@ const clearTapEvents = function(el) {
 };
 
 const createView = (ctrl, opts = {}) => {
-    let tag, label;
-    opts.ripple = opts.ripple || {};
-    opts.shadow = opts.shadow || {};
-    opts.animateOnTap = (opts.animateOnTap !== undefined) ? opts.animateOnTap : true;
-
-    tag = opts.tag || 'a';
     const noink = opts.ink !== undefined && !opts.ink;
-    const disabled = !!opts.disabled;
-
-    if (disabled) {
-        tag += '[disabled]';
-    }
-    if (noink) {
-        tag += '.noink';
-    }
-    if (opts.raised) {
-        tag += '.raised';
-    }
-    const props0 = {
-        'class': [opts.parentClass || 'button', opts.selected ? 'selected' : null, opts.disabled ? 'disabled' : null, opts.class].join(' '),
-        id: opts.id || ''
-    };
+    const disabled = opts.disabled;
+    const inactive = opts.inactive;
+    const tag = opts.tag || 'a';
 
     // handle multiple configs:
     // - passed as param in the url Object
     // - passed as opts.config
-    // - the default buton config
+    // - the default button config
     const buttonConfig = (el, isInited, context) => {
         if (isInited) {
             return;
         }
-        initTapEvents(el, ctrl, opts);
-        context.onunload = function() {
-            clearTapEvents(el);
-        };
+        if (!disabled && !inactive) {
+            initTapEvents(el, ctrl, Object.assign(
+                {},
+                opts,
+                {animateOnTap: (opts.animateOnTap !== undefined) ? opts.animateOnTap : true}
+            ));
+            context.onunload = () => {
+                clearTapEvents(el);
+            };
+        }
     };
     const optsConfig = opts.config || (() => {});
     const urlConfig = (opts.url && opts.url.config) ? opts.url.config : (() => {});
 
-    const props = Object.assign({},
-        props0,
+    const props = Object.assign(
+        {},
+        {
+            class: [
+                (opts.parentClass || CSS_CLASSES.block),
+                (opts.selected ? CSS_CLASSES.selected : null),
+                (disabled ? CSS_CLASSES.disabled : null),
+                (inactive ? CSS_CLASSES.inactive : null),
+                (opts.borders ? CSS_CLASSES.borders : null),
+                (opts.raised ? CSS_CLASSES.raised : null),
+                opts.class
+            ].join(' '),
+            id: opts.id || ''
+        },
         opts.url ? opts.url : null,
+        opts.formaction ? {formaction: opts.formaction} : null,
+        opts.type ? {type: opts.type} : null,
         opts.events ? opts.events : null, {
             config: (...args) => [
                 buttonConfig(...args),
@@ -111,29 +123,27 @@ const createView = (ctrl, opts = {}) => {
             ]
         }
     );
-    label = null;
-    if (opts.content) {
-        label = opts.content;
-    } else if (opts.label) {
-        if (typeof opts.label === 'object') {
-            label = opts.label;
-        } else {
-            label = m('.label', opts.label);
-        }
-    }
+
+    const label = opts.content
+        ? opts.content
+        : (opts.label)
+            ? (typeof opts.label === 'object')
+                ? opts.label
+                : m('div', {class: CSS_CLASSES.label}, opts.label)
+            : null;
+
     const content = m('div', {
-        'class': 'content'
+        'class': CSS_CLASSES.content
     }, [
-        label,
-        disabled || noink ? null : m.component(ripple, opts.ripple),
-        disabled || opts.wash !== undefined && !opts.wash ? null : m('.wash.fit'),
         opts.raised && !disabled ? m.component(shadow, {
             z: ctrl.z(),
             animated: true
-        }) : null
+        }) : null,
+        (inactive || disabled || noink) ? null : m.component(ripple, opts.ripple || {}),
+        (inactive || disabled || (opts.wash !== undefined && !opts.wash)) ? null : m('div', {class: CSS_CLASSES.wash}),
+        label
     ]);
-
-    return m(tag, props, p.insertContent(content, opts));
+    return m(tag, props, [opts.before, content, opts.after]);
 };
 
 const component = {

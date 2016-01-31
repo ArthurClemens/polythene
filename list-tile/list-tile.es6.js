@@ -1,65 +1,86 @@
 import 'polythene/common/object.assign';
-import p from 'polythene/polythene/polythene';
 import m from 'mithril';
 import icon from 'polythene/icon/icon';
 import ripple from 'polythene/ripple/ripple';
-import 'polythene-theme/list-tile/list-tile';
+import 'polythene/list-tile/theme/theme';
+
+const CSS_CLASSES = {
+    block: 'pe-list-tile',
+    primary: 'pe-list-tile__primary',
+    secondary: 'pe-list-tile__secondary',
+    content: 'pe-list-tile__content',
+    contentFront: 'pe-list-tile__content--front',
+    title: 'pe-list-tile__title',
+    subtitle: 'pe-list-tile__subtitle',
+    highSubtitle: 'pe-list-tile__subtitle--high',
+    selected: 'pe-list-tile--selected',
+    disabled: 'pe-list-tile--disabled',
+    sticky: 'pe-list-tile--sticky',
+    hasSubtitle: 'pe-list-tile--subtitle',
+    hasHighSubtitle: 'pe-list-tile--high-subtitle',
+    hasFront: 'pe-list-tile--front',
+    isCompact: 'pe-list-tile--compact'
+};
 
 const parsePrimaryContent = (opts) => {
-    let tag,
-        iconComp;
+    const tag = (opts.tag)
+        ? opts.tag
+        : (opts.url)
+            ? 'a'
+            : 'div';
 
-    if (opts.tag) {
-        tag = opts.tag;
-    } else {
-        if (opts.url) {
-            tag = 'a.flex';
-        } else {
-            tag = 'div.flex';
-        }
-    }
+    const frontComp = (opts.front)
+        ? m('div',
+            {
+                class: CSS_CLASSES.content + ' ' + CSS_CLASSES.contentFront
+            }, opts.front)
+        : (opts.indent)
+            ? m('div',
+                {
+                    class: CSS_CLASSES.content + ' ' + CSS_CLASSES.contentFront
+                })
+            : null;
 
-    iconComp = null;
-    if (opts.icon) {
-        iconComp = m('.list-tile-content-icon', m.component(icon, opts.icon));
-    } else if (opts.indent) {
-        iconComp = m('.list-tile-content-icon');
-    }
-
-    return m(tag, Object.assign({
-        class: 'list-tile-primary'
-    }, opts.url, opts.events), m('.layout.horizontal.center', [
-        iconComp,
-        m('.flex', {
-            class: 'list-tile-content'
+    return m(tag, Object.assign(
+        {
+            class: CSS_CLASSES.primary
+        },
+        opts.url,
+        opts.events
+    ), [
+        frontComp,
+        m('div', {
+            class: CSS_CLASSES.content
         }, [
-            m('.list-tile-title', [
-                opts.title,
-                opts.subtitle ? m('.list-tile-subtitle', opts.subtitle) : null,
-                opts.info ? m('.list-tile-subtitle.list-tile-info', opts.info) : null,
-                opts.highSubtitle ? m('.list-tile-subtitle.list-tile-double-subtitle', opts.highSubtitle) : null
-            ])
+            opts.content ? opts.content : null,
+            opts.title ? m('div', {class: CSS_CLASSES.title}, opts.title) : null,
+            opts.subtitle ? m('div', {class: CSS_CLASSES.subtitle}, opts.subtitle) : null,
+            opts.highSubtitle ? m('div', {class: CSS_CLASSES.subtitle + ' ' + CSS_CLASSES.highSubtitle}, opts.highSubtitle) : null
         ])
-    ]));
+    ]);
 };
 
 const parseSecondaryContent = (opts) => {
     const secondaryOpts = opts.secondary || {};
-    const defaultTag = opts.highSubtitle ? '.vertical.layout.start' : '.horizontal.layout.center';
     let tag;
     if (secondaryOpts.tag) {
         tag = secondaryOpts.tag;
     } else {
         if (secondaryOpts.url) {
-            tag = 'a' + defaultTag;
+            tag = 'a';
         } else {
-            tag = 'div' + defaultTag;
+            tag = 'div';
         }
     }
-    return m('.list-tile-secondary',
-        m(tag, Object.assign({
-            class: 'list-tile-content'
-        }, secondaryOpts.url, secondaryOpts.events), [
+    return m(tag, Object.assign(
+        {
+            class: CSS_CLASSES.secondary
+        },
+        secondaryOpts.url, secondaryOpts.events
+    ),
+        m('div', {
+            class: CSS_CLASSES.content
+        }, [
             secondaryOpts.icon ? m.component(icon, secondaryOpts.icon) : null,
             secondaryOpts.content ? secondaryOpts.content : null
         ])
@@ -67,20 +88,26 @@ const parseSecondaryContent = (opts) => {
 };
 
 const createView = (ctrl, opts = {}) => {
-    const tag = opts.tag || 'div.horizontal.layout.center';
+    const tag = opts.tag || 'div';
 
-    let heightClass;
-    if (opts.subtitle) {
-        heightClass = 'list-tile-two-line';
-    } else if (opts.highSubtitle) {
-        heightClass = 'list-tile-three-line';
-    } else {
-        heightClass = 'list-tile-single-line';
-    }
+    const heightClass = (opts.subtitle)
+        ? CSS_CLASSES.hasSubtitle
+        : (opts.highSubtitle)
+            ? CSS_CLASSES.hasHighSubtitle
+            : (opts.front || opts.indent)
+                ? CSS_CLASSES.hasFront
+                : null;
 
-    const iconClass = (opts.icon || opts.indent) ? 'list-tile-has-icon' : null;
     const props = {
-        class: ['list-tile', (opts.selected ? 'selected' : null), (opts.disabled ? 'disabled' : null), (opts.sticky ? 'sticky' : null) ,heightClass, iconClass, opts.class].join(' '),
+        class: [
+            CSS_CLASSES.block,
+            (opts.selected ? CSS_CLASSES.selected : null),
+            (opts.disabled ? CSS_CLASSES.disabled : null),
+            (opts.sticky ? CSS_CLASSES.sticky : null),
+            (opts.compact ? CSS_CLASSES.isCompact : null),
+            heightClass,
+            opts.class
+        ].join(' '),
         id: opts.id || '',
         config: opts.config
     };
@@ -89,8 +116,7 @@ const createView = (ctrl, opts = {}) => {
         parsePrimaryContent(opts),
         opts.secondary ? parseSecondaryContent(opts) : null
     ];
-
-    return m(tag, props, p.insertContent(content, opts));
+    return m(tag, props, [opts.before, content, opts.after]);
 };
 
 const component = {

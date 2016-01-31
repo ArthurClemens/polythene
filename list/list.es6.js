@@ -1,28 +1,45 @@
 import 'polythene/common/object.assign';
-import p from 'polythene/polythene/polythene';
 import m from 'mithril';
 import listTile from 'polythene/list-tile/list-tile';
-import 'polythene-theme/list/list';
+import 'polythene/list/theme/theme';
+
+const CSS_CLASSES = {
+    block: 'pe-list',
+    header: 'pe-list__header',
+    hoverable: 'pe-list--hoverable',
+    selectable: 'pe-list--selectable',
+    borders: 'pe-list--borders',
+    indentedBorders: 'pe-list--borders-indented',
+    hasHeader: 'pe-list--header',
+    isCompact: 'pe-list--compact'
+};
 
 const createView = (ctrl, opts = {}) => {
     const tag = opts.tag || 'div';
-    // create class for mode 'bordered' and 'bordered-indent'
-    const listModeClass = opts.mode ? opts.mode : null;
     const props = {
-        class: ['list', listModeClass, (opts.hoverable ? 'hoverable' : null), (opts.selectable ? 'selectable' : null), (opts.header ? 'has-subheader' : null), opts.class].join(' '),
+        class: [
+            CSS_CLASSES.block,
+            (opts.borders ? CSS_CLASSES.borders : null),
+            (opts.indentedBorders ? CSS_CLASSES.indentedBorders : null),
+            (opts.hoverable ? CSS_CLASSES.hoverable : null),
+            (opts.selectable ? CSS_CLASSES.selectable : null),
+            (opts.header ? CSS_CLASSES.hasHeader : null),
+            (opts.compact ? CSS_CLASSES.isCompact : null),
+            opts.class
+        ].join(' '),
         id: opts.id || '',
         config: opts.config
     };
     let headerOpts;
     if (opts.header) {
         headerOpts = Object.assign({}, opts.header);
-        headerOpts.class = ['subheader', (headerOpts.class || null)].join(' ');
+        headerOpts.class = [CSS_CLASSES.header, (headerOpts.class || null)].join(' ');
     }
     const content = [
         headerOpts ? m.component(listTile, headerOpts) : null,
         opts.tiles ? opts.tiles : null
     ];
-    return m(tag, props, p.insertContent(content, opts));
+    return m(tag, props, [opts.before, content, opts.after]);
 };
 
 const component = {

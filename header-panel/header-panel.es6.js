@@ -2,7 +2,36 @@ import 'polythene/common/object.assign';
 import p from 'polythene/polythene/polythene';
 import m from 'mithril';
 import toolbar from 'polythene/toolbar/toolbar';
-import 'polythene-theme/header-panel/header-panel';
+import 'polythene/header-panel/theme/theme';
+
+const CSS_CLASSES = {
+    panel: 'pe-header-panel',
+    header: 'pe-header',
+    dropShadow: 'pe-header-panel__drop-shadow',
+    outerContainer: 'pe-header-panel__outer-container',
+    headerContainer: 'pe-header-panel__header-container',
+    backgroundContainer: 'pe-header-panel__background-container',
+    condensedBackground: 'pe-header-panel__condensed-background',
+    headerBackground: 'pe-header-panel__header-background',
+    mediaDimmer: 'pe-header-panel__media-dimmer',
+    mainContainer: 'pe-header-panel__main-container',
+
+    headerAnimated: 'pe-header--animated',
+    fixed: 'pe-header-panel--fixed',
+    cascaded: 'pe-header-panel--cascaded',
+    modeCover: 'pe-header-panel--cover',
+    modeScroll: 'pe-header-panel--scroll',
+    modeSeamed: 'pe-header-panel--seamed',
+    modeStandard: 'pe-header-panel--standard',
+    modeTall: 'pe-header-panel--tall',
+    modeWaterfallTall: 'pe-header-panel--waterfall-tall',
+    modeWaterfall: 'pe-header-panel--waterfall',
+
+    // lookups:
+    toolbar: 'pe-toolbar',
+    toolbarTopbar: 'pe-toolbar__bar--top',
+    headerTall: 'pe-header--tall'
+};
 
 const DEFAULT_SHADOW_HEIGTH = 6;
 const DEFAULT_HEADER_HEIGHT = 192;
@@ -10,6 +39,7 @@ const DEFAULT_CONDENSED_HEADER_HEIGHT = DEFAULT_HEADER_HEIGHT / 3;
 const SCROLL_WATCH_TIMER = 150;
 
 let scroller; // keep track of scrolling elements on the page
+const scrollPositions = {};
 
 const modeConfigs = {
     shadowAfterScroll: {
@@ -34,6 +64,21 @@ const modeConfigs = {
     }
 };
 
+const modeClasses = {
+    'cover': CSS_CLASSES.modeCover,
+    'scroll': CSS_CLASSES.modeScroll,
+    'seamed': CSS_CLASSES.modeSeamed,
+    'standard': CSS_CLASSES.modeStandard,
+    'tall': CSS_CLASSES.modeTall,
+    'waterfall-tall': CSS_CLASSES.modeWaterfallTall,
+    'waterfall': CSS_CLASSES.modeWaterfall
+};
+
+const classForMode = (mode = 'standard') => {
+    return modeClasses[mode];
+};
+
+
 const setTransform = (document.documentElement.style.transform !== undefined) ? ((style, string) => {
     style.transform = string;
 }) : ((style, string) => {
@@ -48,12 +93,21 @@ const translateY = (style, y) => {
 const createHeaderComponent = (opts = {}) => {
     const tall = opts.tall || false;
     const tallClass = opts.tallClass || '';
-    if (opts.toolbar) {
-        opts.toolbar.class = [(opts.toolbar.class || null), tall ? tallClass : null].join(' ');
-        return m.component(toolbar, opts.toolbar);
+    let toolbarOpts = opts.toolbar;
+    if (toolbarOpts) {
+        toolbarOpts.class = [(toolbarOpts.class || null), tall ? tallClass : null].join(' ');
+        if (!toolbarOpts.topBar) {
+            toolbarOpts.topBar = m('div');
+        }
+        return m.component(toolbar, toolbarOpts);
     } else if (opts.content) {
-        return m(['.header', opts.animated ? ' .animate' : ''].join(' '), {
-            class: [(opts.class || null), tall ? tallClass : null].join(' ')
+        return m('div', {
+            class: [
+                CSS_CLASSES.header,
+                (opts.class || null),
+                (tall ? tallClass : null),
+                (opts.animated ? CSS_CLASSES.headerAnimated : '')
+            ].join(' ')
         }, opts.content);
     } else {
         return m('div', opts);
@@ -68,15 +122,19 @@ const createViewHeader = (ctrl, opts = {}) => {
         ctrl.headerContainerElem = headerContainer;
     };
     const header = opts.header ? createHeaderComponent(Object.assign({}, opts.header, ctrl.headerConfig)) : null;
-    return m('.headerContainer', {
+    return m('div', {
+        class: CSS_CLASSES.headerContainer,
         config: initHeaderContainer
     }, [
-        m('.bg-container', [
-            m('.condensedHeaderBg'),
-            m('.headerBg'),
-            m('.image-dimmer')
+        m('div', {
+            class: CSS_CLASSES.backgroundContainer
+        }, [
+            m('div', {class: CSS_CLASSES.condensedBackground}),
+            m('div', {class: CSS_CLASSES.headerBackground}),
+            m('div', {class: CSS_CLASSES.mediaDimmer})
         ]),
-        header, (ctrl.mode === 'seamed' || ctrl.shadow === false) ? null : m('.dropShadow')
+        header,
+        (ctrl.mode === 'seamed' || ctrl.shadow === false) ? null : m('div', {class: CSS_CLASSES.dropShadow})
     ]);
 };
 
@@ -90,11 +148,13 @@ const createViewContent = (ctrl, scrollConfig, opts = {}) => {
         }
     };
     return [
-        m('.mainContainer.flex', {
+        m('div', {
+            class: CSS_CLASSES.mainContainer,
             config: initMainContainer,
             onscroll: (e) => {
                 scrollConfig.main(e);
                 p.emitEvent('scroll', e);
+                ctrl.storeScrollPosition(e.target.scrollTop);
             }
         },
         opts.content ? opts.content : null)
@@ -119,17 +179,17 @@ const createView = (ctrl, opts = {}) => {
     scrollConfig[scrollerType] = handleScroll;
 
     const initOuterContainer = (outerContainer, inited) => {
-        const headerElem = outerContainer.querySelector('.header') || outerContainer.querySelector('.toolbar');
+        const headerElem = outerContainer.querySelector('.' + CSS_CLASSES.header) || outerContainer.querySelector('.' + CSS_CLASSES.toolbar);
         if (!headerElem) {
             return;
         }
         if (inited && ctrl.headerElem) {
             return;
         }
-        const headerContainer = outerContainer.querySelector('.headerContainer');
-        const topBarElem = headerContainer.querySelector('.topBar');
-        const headerBg = headerContainer.querySelector('.headerBg');
-        const condensedHeaderBg = headerContainer.querySelector('.condensedHeaderBg');
+        const headerContainer = outerContainer.querySelector('.' + CSS_CLASSES.headerContainer);
+        const topBarElem = headerContainer.querySelector('.' + CSS_CLASSES.toolbarTopbar);
+        const headerBg = headerContainer.querySelector('.' + CSS_CLASSES.headerBackground);
+        const condensedHeaderBg = headerContainer.querySelector('.' + CSS_CLASSES.condensedBackground);
 
         ctrl.outerContainerElem = outerContainer;
         ctrl.headerElem = headerElem;
@@ -143,15 +203,17 @@ const createView = (ctrl, opts = {}) => {
         if (scrollConfig.outer) {
             ctrl.scrollerElem = outerContainer;
         }
+
+        ctrl.restoreScrollPosition();
+
         handleScroll();
     };
 
     const props = Object.assign({}, {
-        mode: ctrl.mode,
         class: [
-            'header-panel',
-            opts.animated ? 'animated' : null,
-            ctrl.fixed ? 'fixed' : null,
+            CSS_CLASSES.panel,
+            ctrl.fixed ? CSS_CLASSES.fixed : null,
+            classForMode(ctrl.mode),
             opts.class
         ].join(' '),
         id: opts.id || '',
@@ -163,7 +225,8 @@ const createView = (ctrl, opts = {}) => {
         }
     });
 
-    const content = m('.outerContainer.vertical.layout', {
+    const content = m('div', {
+        class: CSS_CLASSES.outerContainer,
         config: initOuterContainer,
         onscroll: (e) => {
             scrollConfig.outer(e);
@@ -175,7 +238,7 @@ const createView = (ctrl, opts = {}) => {
             subtree: 'retain'
         } : createViewContent(ctrl, scrollConfig, opts)
     ]);
-    return m(tag, props, p.insertContent(content, opts));
+    return m(tag, props, [opts.before, content, opts.after]);
 };
 
 const component = {
@@ -196,9 +259,8 @@ const component = {
             mode = opts.header.mode;
         }
         mode = mode || 'standard';
-        const isTouch = p.isTouch();
         const tall = modeConfigs.tallMode[mode] || false;
-        const tallClass = opts.tallClass || 'tall';
+        const tallClass = opts.tallClass || CSS_CLASSES.headerTall;
         const animated = opts.animated || false;
         const fixed = opts.fixed || false;
         const condenses = opts.condenses || false;
@@ -221,22 +283,16 @@ const component = {
                 //
             },
             fixed: () => {
-                let sTop,
-                    isScrolled;
-                sTop = ctrl.scrollerElem.scrollTop;
-                isScrolled = (sTop !== 0);
+                const sTop = ctrl.scrollerElem.scrollTop;
+                const isScrolled = (sTop > 0);
                 ctrl.showShadow(isScrolled);
                 scrolled = isScrolled;
             },
             animated: () => {
-                let sTop,
-                    isScrolled,
-                    headerElem;
-
-                sTop = ctrl.scrollerElem.scrollTop;
-                isScrolled = (sTop !== 0);
+                const sTop = ctrl.scrollerElem.scrollTop;
+                const isScrolled = (sTop > 0);
                 if (isScrolled !== scrolled) {
-                    headerElem = ctrl.headerElem;
+                    let headerElem = ctrl.headerElem;
                     if (headerElem && tall) {
                         headerElem.classList[isScrolled ? 'remove' : 'add'](tallClass);
                     }
@@ -260,9 +316,9 @@ const component = {
                         sy = Math.max(sy, headerMargin);
                     }
                 }
-                if (sy >= 0) {
+                if (sTop > 0) {
                     ctrl.transformHeader(sy);
-                } else if (isTouch) {
+                } else if (p.isTouch) {
                     ctrl.enlargeImage(sy);
                 }
                 if (!modeConfigs.noShadow[opts.mode]) {
@@ -310,7 +366,7 @@ const component = {
                     headerMargin = headerHeight - condensedHeaderHeight;
                 }
                 if (!fixed) {
-                    mainContainer = ctrl.outerContainerElem.querySelector('.mainContainer');
+                    mainContainer = ctrl.outerContainerElem.querySelector('.' + CSS_CLASSES.mainContainer);
                     mainContainer.style.paddingTop = h + 'px';
                 }
                 if (noReveal) {
@@ -414,12 +470,26 @@ const component = {
                 if (modeConfigs.alwaysShadow[mode]) {
                     cascaded = true;
                 }
-                ctrl.outerContainerElem.classList[cascaded ? 'add' : 'remove']('cascaded');
+                ctrl.outerContainerElem.classList[cascaded ? 'add' : 'remove'](CSS_CLASSES.cascaded);
+            },
+
+            storeScrollPosition: (scrollTop) => {
+                if (opts.restoreScrollPositionId) {
+                    scrollPositions[opts.restoreScrollPositionId] = scrollTop;
+                }
+            },
+
+            restoreScrollPosition: () => {
+                if (opts.restoreScrollPositionId) {
+                    const restore = () => (ctrl.scrollerElem.scrollTop = scrollPositions[opts.restoreScrollPositionId]);
+                    restore();
+                    setTimeout(restore, 0);
+                }
             }
         };
     },
 
-    view: (ctrl, opts = {}) => {
+    view: (ctrl, opts) => {
         if (scroller && scroller !== ctrl) {
             // if we are scrolling,
             // don't render other header-panels

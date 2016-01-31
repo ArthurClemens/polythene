@@ -1,46 +1,62 @@
 import m from 'mithril';
 import p from 'polythene/polythene/polythene';
 import whichTransitionEvent from 'polythene/common/transition-event';
-import 'polythene-theme/ripple/ripple';
+import 'polythene/ripple/theme/theme';
 
 const transitionEvent = whichTransitionEvent();
 const DEFAULT_START_OPACITY = 0.2;
 const OPACITY_DECAY_VELOCITY = 0.35;
 
-let tapStart,
-    tapEnd,
-    tapListeners;
-
-tapListeners = [];
-
-const initTapEvents = (el, ctrl, opts = {}) => {
-    const startType = p.isTouch() ? 'click' : 'mousedown';
-    const endType = 'mouseup';
-
-    tapStart = function(e) {
-        ctrl.start(e, ctrl, opts);
-    };
-    tapEnd = function(e) {
-        ctrl.stop(e, ctrl, opts);
-    };
-
-    el.addEventListener(startType, tapStart, false);
-    el.addEventListener(endType, tapEnd, false);
-
-    tapListeners = [{
-        type: startType,
-        listener: tapStart
-    }, {
-        type: endType,
-        listener: tapEnd
-    }];
+const CSS_CLASSES = {
+    ripple: 'pe-ripple',
+    waves: 'pe-ripple__waves',
+    mask: 'pe-ripple__mask',
+    constrained: 'pe-ripple--constrained',
+    animated: 'pe-ripple__waves--animated'
 };
 
-const clearTapEvents = (el) => {
-    tapListeners.map(function(o) {
-        el.removeEventListener(o.type, o.listener, false);
-    });
-    tapListeners = [];
+const makeRipple = (e, ctrl, opts = {}) => {
+    const el = ctrl.ripple();
+    const wavesEl = ctrl.waves();
+    const w = el.offsetWidth;
+    const h = el.offsetHeight;
+    const waveRadius = Math.sqrt(w * w + h * h);
+    const rect = el.getBoundingClientRect();
+    const x = (p.isTouch && e.touches) ? e.touches[0].pageX : e.clientX;
+    const y = (p.isTouch && e.touches) ? e.touches[0].pageY : e.clientY;
+    const mx = (opts.center) ? (rect.left + rect.width / 2) : x;
+    const my = (opts.center) ? (rect.top + rect.height / 2) : y;
+    const rx = mx - rect.left - waveRadius / 2;
+    const ry = my - rect.top - waveRadius / 2;
+    const initialOpacity = (opts.initialOpacity !== undefined) ? opts.initialOpacity : DEFAULT_START_OPACITY;
+    const opacityDecayVelocity = (opts.opacityDecayVelocity !== undefined) ? opts.opacityDecayVelocity : OPACITY_DECAY_VELOCITY;
+    const duration = 1 / opacityDecayVelocity * initialOpacity;
+    const color = window.getComputedStyle(el).color;
+    const onEnd = function(evt) {
+        wavesEl.classList.remove(CSS_CLASSES.animated);
+        wavesEl.removeEventListener(transitionEvent, onEnd, false);
+        if (opts.end) {
+            opts.end(evt);
+        }
+    };
+
+    wavesEl.classList.remove(CSS_CLASSES.animated);
+    const style = wavesEl.style;
+    style.width = style.height = waveRadius + 'px';
+    style.top = ry + 'px';
+    style.left = rx + 'px';
+    style['animation-duration'] =
+        style['-webkit-animation-duration'] =
+        style['-moz-animation-duration'] =
+        style['-o-animation-duration'] = duration + 's';
+    style.backgroundColor = color;
+    style.opacity = initialOpacity;
+    wavesEl.addEventListener(transitionEvent, onEnd, false);
+
+    if (opts.start) {
+        opts.start(e);
+    }
+    wavesEl.classList.add(CSS_CLASSES.animated);
 };
 
 const createView = (ctrl, opts = {}) => {
@@ -52,9 +68,14 @@ const createView = (ctrl, opts = {}) => {
             return;
         }
         ctrl.ripple(ripple);
-        initTapEvents(ripple.parentElement, ctrl, opts);
-        context.onunload = function() {
-            clearTapEvents(ripple);
+        const parent = ripple.parentElement;
+        const onClick = (e) => {
+            makeRipple(e, ctrl, opts);
+        };
+        const endType = p.isTouch ? 'click' : 'mouseup';
+        parent.addEventListener(endType, onClick, false);
+        context.onunload = () => {
+            parent.removeEventListener(endType, onClick, false);
         };
     };
     const initWaves = (waves, inited) => {
@@ -62,15 +83,23 @@ const createView = (ctrl, opts = {}) => {
             return;
         }
         ctrl.waves(waves);
+
     };
-    const tag = opts.tag || 'div.fit';
+    const tag = opts.tag || 'div';
     const props = {
-        class: ['ripple', (opts.constrained !== false ? 'constrained' : null), opts.class].join(' '),
+        class: [
+            CSS_CLASSES.ripple,
+            (opts.constrained !== false ? CSS_CLASSES.constrained : null),
+            opts.class
+        ].join(' '),
         id: opts.id || '',
         config: initRipple
     };
-    const content = m('.ripple-mask',
-        m('.ripple-waves', {
+    const content = m('div', {
+        class: CSS_CLASSES.mask
+    }, m('div',
+        {
+            class: CSS_CLASSES.waves,
             config: initWaves
         })
     );
@@ -82,52 +111,7 @@ const component = {
         return {
             ripple: m.prop(),
             waves: m.prop(),
-            delegate: m.prop(),
-
-            start: (e, ctrl, opts = {}) => {
-                const el = ctrl.ripple();
-                const wavesEl = ctrl.waves();
-                const w = el.offsetWidth;
-                const h = el.offsetHeight;
-                const waveRadius = Math.sqrt(w * w + h * h);
-                const rect = el.getBoundingClientRect();
-                const mx = (opts.center) ? (rect.left + rect.width / 2) : e.clientX;
-                const my = (opts.center) ? (rect.top + rect.height / 2) : e.clientY;
-                const rx = mx - rect.left - waveRadius / 2;
-                const ry = my - rect.top - waveRadius / 2;
-                const initialOpacity = (opts.initialOpacity !== undefined) ? opts.initialOpacity : DEFAULT_START_OPACITY;
-                const opacityDecayVelocity = (opts.opacityDecayVelocity !== undefined) ? opts.opacityDecayVelocity : OPACITY_DECAY_VELOCITY;
-                const duration = 1 / opacityDecayVelocity * initialOpacity;
-                const color = window.getComputedStyle(el).color;
-                const onEnd = function(evt) {
-                    wavesEl.classList.remove('animated');
-                    wavesEl.removeEventListener(transitionEvent, onEnd, false);
-                    if (opts.end) {
-                        opts.end(evt);
-                    }
-                };
-
-                wavesEl.classList.remove('animated');
-                wavesEl.style.width = wavesEl.style.height = waveRadius + 'px';
-                wavesEl.style.top = ry + 'px';
-                wavesEl.style.left = rx + 'px';
-                wavesEl.style['animation-duration'] =
-                    wavesEl.style['-webkit-animation-duration'] =
-                    wavesEl.style['-moz-animation-duration'] =
-                    wavesEl.style['-o-animation-duration'] = duration + 's';
-                wavesEl.style.backgroundColor = color;
-                wavesEl.style.opacity = initialOpacity;
-                wavesEl.addEventListener(transitionEvent, onEnd, false);
-
-                if (opts.start) {
-                    opts.start(e);
-                }
-                wavesEl.classList.add('animated');
-            },
-
-            stop: () => {
-                //
-            }
+            delegate: m.prop()
         };
     },
     view: (ctrl, opts = {}) => {

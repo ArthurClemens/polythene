@@ -12,6 +12,7 @@ Buttons have a ripple element by default. This page documents how to add a rippl
 Use parameter `after` to append the ripple to the content:
 
 ~~~javascript
+import m from 'mithril';
 import ripple from 'polythene/ripple/ripple';
 import listTile from 'polythene/list-tile/list-tile';
 
@@ -34,33 +35,44 @@ const myListTile = m.component(listTile, {
 ~~~
 
 
-## Variations
+## Options
+
+### Common component options
+
+| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
+| **tag** | optional | String | 'div' | HTML element tag |
+| **class** | optional | String |  | Extra CSS class appended to 'pe-ripple' |
+| **id** | optional | String | | HTML element id |
+
+### Ripple specific options
+
+| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
+| **start** | optional | Function | | Callback function just before the ripple starts; see Callback functions |
+| **end** | optional | Function | | Callback function when the ripple has ended; see Callback functions |
+
+### Ripple appearance options
+
+| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
+| **constrained** | optional | Boolean | true | Set to `false` to make the ripple shape no longer bound to the clicked element |
+| **center** | optional | Boolean | false | Set to `true` to start the ripple from the center |
+| **initialOpacity** | optional | Number | 0.2 | Opacity at the start of the ripple |
+| **opacityDecayVelocity** | optional | Number | 0.4 | Velocity of decrease of opacity |
+
+
+## Styling
 
 The ripple color can be set in CSS:
 
 ~~~css
-.colored-ripple {
+.pe-ripple {
 	color: green;
 }
 ~~~
 
 By default the inherited color from the parent element is used.
-
-
-## Options
-
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
-| ------------- | -------------- | -------- | ----------- | --------------- |
-| **tag** | optional | String | 'div' | HTML element tag |
-| **class** | optional | String |  | Extra CSS class appended to 'ripple' |
-| **id** | optional | String | | HTML element id |
-| **constrained** | optional | Boolean | true | Set to `false` to make the ripple shape no longer bound to the clicked element |
-| **center** | optional | Boolean | false | Set to `true` to start the ripple from the center |
-| **class** | optional | String |  | Extra CSS class appended to 'ripple' |
-| **initialOpacity** | optional | Number | 0.2 | Opacity at the start of the ripple |
-| **opacityDecayVelocity** | optional | Number | 0.4 | Velocity of decrease of opacity |
-| **start** | optional | Function | | Callback function just before the ripple starts; see Callback functions |
-| **end** | optional | Function | | Callback function when the ripple has ended; see Callback functions |
 
 
 ## Callback functions
@@ -74,14 +86,3 @@ By default the inherited color from the parent element is used.
 
 	where:
 	    Event :: AnimationEvent
-
-
-## Default generated HTML
-
-~~~html
-<div class="fit ripple constrained">
-    <div class="ripple-mask">
-        <div class="ripple-waves" style=""></div>
-    </div>
-</div>
-~~~

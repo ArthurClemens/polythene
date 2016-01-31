@@ -10,6 +10,7 @@ Other than Polymer, the shadow component does not wrap content. Instead the shad
 ## Usage
 
 ~~~javascript
+import m from 'mithril';
 import shadow from 'polythene/shadow/shadow';
 
 const myShadow = m.component(shadow, {
@@ -17,16 +18,16 @@ const myShadow = m.component(shadow, {
 });
 ~~~
 
-Add the shadow to a Mithril template:
+Add the shadow to a Mithril element:
 
 ~~~javascript
-const myCard = m('.card', [
+const myCard = m('.pe-card', [
     m('div.self-center', 'Card!'),
     myShadow
 ]);
 ~~~
 
-To animated the shadow use `animated`:
+To animated the shadow on change, use `animated`:
 
 ~~~javascript
 const myShadow = m.component(shadow, {
@@ -37,20 +38,17 @@ const myShadow = m.component(shadow, {
 
 ## Options
 
+### Common component options
+
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **tag** | optional | String | 'div' | HTML element tag |
-| **class** | optional | String |  | Extra CSS class appended to 'shadow' |
+| **class** | optional | String |  | Extra CSS class appended to 'pe-shadow' |
 | **id** | optional | String | | HTML element id |
+
+### Shadow appearance options
+
+| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
 | **z** | optional | Number 0-5 | 0 | Depth of the shadow |
 | **animated** | optional | Boolean | false | Set to true to animate the shadow when setting a new z value. |
-
-
-## Default generated HTML
-
-~~~html
-<div class="fit shadow">
-    <div class="fit shadow-bottom shadow-bottom-z-1"></div>
-    <div class="fit shadow-top shadow-top-z-1"></div>
-</div>
-~~~

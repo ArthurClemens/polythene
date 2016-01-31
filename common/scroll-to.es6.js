@@ -1,31 +1,18 @@
 /*
+Animated scroll to a position.
 Derived from https://github.com/madebysource/animated-scrollto
 Adapted to Mithril and rewritten to es6.
 */
 
 import m from 'mithril';
-
-const requestAnimFrame = (() => {
-    return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || (callback => {
-        window.setTimeout(callback, 1000 / 60);
-    });
-}).call();
-
-const easeInOutQuad = (t, b, c, d) => {
-    t /= d / 2;
-    if (t < 1) {
-        return c / 2 * t * t + b;
-    }
-    t--;
-    return -c / 2 * (t * (t - 2) - 1) + b;
-};
+import easing from 'polythene/common/easing';
 
 /*
 opts:
     element: HTML Element
     to: position
-    duration: milliseconds
-    which: either 'scrollTop' (default) or 'scrollLeft'
+    duration: seconds
+    direction: 'vertical' or 'horizontal'
 
 
 Function is thennable:
@@ -33,8 +20,8 @@ Function is thennable:
     scrollTo({
         element: scroller,
         to: left,
-        duration: 500,
-        which: 'scrollLeft'
+        duration: .5,
+        direction: 'horizontal'
     }).then(() => {
         console.log('scroll done')
     });
@@ -42,14 +29,13 @@ Function is thennable:
 */
 const scrollTo = (opts) => {
     const element = opts.element;
-    const which = opts.which;
+    const which = (opts.direction === 'horizontal') ? 'scrollLeft' : 'scrollTop';
     const to = opts.to;
-    const duration = opts.duration;
+    const duration = opts.duration * 1000;
     const start = element[which];
     const change = to - start;
     const animationStart = new Date().getTime();
     let animating = true;
-    let lastpos = null;
     let deferred = m.deferred();
     const animateScroll = function() {
         if (!animating) {
@@ -57,19 +43,10 @@ const scrollTo = (opts) => {
         }
         requestAnimFrame(animateScroll);
         const now = new Date().getTime();
-        const val = Math.floor(easeInOutQuad(now - animationStart, start, change, duration));
-        if (lastpos) {
-            if (lastpos === element[which]) {
-                lastpos = val;
-                element[which] = val;
-            } else {
-                animating = false;
-            }
-        } else {
-            lastpos = val;
-            element[which] = val;
-        }
-        if (now > animationStart + duration) {
+        const percentage = ((now - animationStart) / duration);
+        const val = start + change * easing.easeInOutCubic(percentage);
+        element[which] = val;
+        if (percentage >= 1) {
             element[which] = to;
             animating = false;
             deferred.resolve();
@@ -78,5 +55,11 @@ const scrollTo = (opts) => {
     requestAnimFrame(animateScroll);
     return deferred.promise;
 };
+
+const requestAnimFrame = (() => {
+    return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || (callback => {
+        window.setTimeout(callback, 1000 / 60);
+    });
+})();
 
 export default scrollTo;

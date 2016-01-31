@@ -4,10 +4,26 @@ import m from 'mithril';
 import dialog from 'polythene/dialog/dialog';
 import transition from 'polythene/common/transition';
 import shadow from 'polythene/shadow/shadow';
-import 'polythene-theme/dialog/dialog';
+import 'polythene/dialog/theme/theme';
+
+const CSS_CLASSES = {
+    block: 'pe-dialog',
+    visible: 'pe-dialog--visible',
+    body: 'pe-dialog__body',
+    fullscreen: 'pe-dialog--fullscreen',
+    content: 'pe-dialog__content',
+    header: 'pe-dialog__header',
+    footer: 'pe-dialog__footer',
+    footerHigh: 'pe-dialog__footer--high',
+    title: 'pe-dialog__title',
+    actions: 'pe-dialog__actions',
+    hasBackdrop: 'pe-dialog--backdrop',
+    hasTopOverflow: 'pe-dialog--overflow-top',
+    hasBottomOverflow: 'pe-dialog--overflow-bottom',
+    menuContent: 'pe-menu__content'
+};
 
 const SCROLL_WATCH_TIMER = 150;
-const SHOW_CLASS = 'visible';
 
 // test for flexbox 2 specs
 // in practice, IE10 needs a different treatment
@@ -30,9 +46,9 @@ const updateFooterState = (ctrl) => {
         const height = footerEl.getBoundingClientRect().height;
         const minHeight = parseInt(style.minHeight, 10);
         if (height > minHeight) {
-            footerEl.classList.add('high');
+            footerEl.classList.add(CSS_CLASSES.footerHigh);
         } else {
-            footerEl.classList.remove('high');
+            footerEl.classList.remove(CSS_CLASSES.footerHigh);
         }
     }
 };
@@ -42,7 +58,7 @@ const show = (ctrl, opts) => {
     ctrl.isTransitioning = true;
     return transition.show(Object.assign({}, opts, {
         el: ctrl.el,
-        showClass: SHOW_CLASS
+        showClass: CSS_CLASSES.visible
     })).then(() => {
         ctrl.isTransitioning = false;
         ctrl.visible = true;
@@ -57,7 +73,7 @@ const hide = (ctrl, opts) => {
     ctrl.isTransitioning = true;
     return transition.hide(Object.assign({}, opts, {
         el: ctrl.el,
-        showClass: SHOW_CLASS
+        showClass: CSS_CLASSES.visible
     })).then(() => {
         dialog.remove(id);
         ctrl.isTransitioning = false;
@@ -65,7 +81,7 @@ const hide = (ctrl, opts) => {
         if (opts.didHide) {
             opts.didHide(id);
         }
-        m.redraw(); // removes remainder of drawn component
+        setTimeout(m.redraw, 0); // removes remainder of drawn component
     });
 };
 
@@ -83,7 +99,7 @@ const createViewContent = (ctrl, opts) => {
     const bodyOpts = opts.body || opts.menu;
 
     return m('div', {
-        class: 'dialog-body self-stretch',
+        class: CSS_CLASSES.body,
         style: style,
         config: (el, inited) => {
             if (inited) {
@@ -108,8 +124,15 @@ const createView = (ctrl, opts = {}) => {
     const updateContentOnScroll = opts.updateContentOnScroll || false;
     const ignoreContent = !updateContentOnScroll && ctrl.isScrolling;
     const tag = opts.tag || 'form';
+
+    const update = () => {
+        updateScrollState(ctrl);
+        updateFooterState(ctrl);
+        m.redraw();
+    };
+
     const props = Object.assign({}, {
-        class: ['dialog layout center-center', (opts.fullscreen ? 'fullscreen' : null), (opts.backdrop ? 'hasBackdrop' : null), (ctrl.topOverflow ? 'topOverflow' : null), (ctrl.bottomOverflow ? 'bottomOverflow' : null), ctrl.visible ? SHOW_CLASS : null, opts.class].join(' '),
+        class: [CSS_CLASSES.block, (opts.fullscreen ? CSS_CLASSES.fullscreen : null), (opts.backdrop ? CSS_CLASSES.hasBackdrop : null), (ctrl.topOverflow ? CSS_CLASSES.hasTopOverflow : null), (ctrl.bottomOverflow ? CSS_CLASSES.hasBottomOverflow : null), ctrl.visible ? CSS_CLASSES.visible : null, opts.class].join(' '),
         id: opts.id || '',
         config: (el, inited, context, vdom) => {
             if (inited) {
@@ -124,17 +147,12 @@ const createView = (ctrl, opts = {}) => {
                 p.removeListener('resize', update);
                 p.removeListener('keydown', handleEscape);
             };
-            const update = () => {
-                updateScrollState(ctrl);
-                updateFooterState(ctrl);
-                m.redraw();
-            };
+
             const handleEscape = (e) => {
                 if (opts.fullscreen || opts.backdrop) return;
                 if (e.which === 27) {
                     cleanup();
                     hide(ctrl, Object.assign({}, opts, {hideDelay: 0}));
-                    //m.redraw(); // make it happen
                 }
             };
 
@@ -153,13 +171,12 @@ const createView = (ctrl, opts = {}) => {
                 updateScrollState(ctrl);
                 updateFooterState(ctrl);
                 if (ctrl.topOverflow || ctrl.bottomOverflow) {
-                    setTimeout(() => (m.redraw()), 0);
+                    setTimeout(m.redraw, 0);
                 }
             });
         },
         // click backdrop: close dialog
         onclick: (e) => {
-            e.stopPropagation();
             if (e.target !== ctrl.el) {
                 return;
             }
@@ -178,21 +195,23 @@ const createView = (ctrl, opts = {}) => {
     } : createViewContent(ctrl, opts)) : null;
 
     const content = m('div', {
-        class: ['dialog-content', 'layout', 'vertical', (opts.menu ? 'menu-content' : null)].join(' ')
+        class: [CSS_CLASSES.content, (opts.menu ? CSS_CLASSES.menuContent : null)].join(' ')
     }, [
         opts.fullscreen ? null : m.component(shadow, {
             z: ctrl.z,
             animated: true
         }),
-        opts.fullscreen ? null : opts.title ? m('.dialog-header', {
+        opts.fullscreen ? null : opts.title ? m('div', {
+            class: CSS_CLASSES.header,
             config: (el) => {
                 ctrl.headerHeight = el.scrollHeight;
             }
         }, [
-            m('.title', opts.title)
+            m('div', {class: CSS_CLASSES.title}, opts.title)
         ]) : null,
         body,
-        opts.fullscreen ? null : opts.footer ? m('.dialog-footer', {
+        opts.fullscreen ? null : opts.footer ? m('div', {
+            class: CSS_CLASSES.footer,
             config: (el, inited) => {
                 ctrl.footerHeight = el.scrollHeight;
                 if (inited) {
@@ -202,10 +221,10 @@ const createView = (ctrl, opts = {}) => {
             }
         }, [
             m('.flex'),
-            m('.actions.layout.horizontal.end-justified.wrap', opts.footer)
+            m('div', {class: CSS_CLASSES.actions}, opts.footer)
         ]) : null
     ]);
-    return m(tag, props, p.insertContent(content, opts));
+    return m(tag, props, [opts.before, content, opts.after]);
 };
 
 const component = {

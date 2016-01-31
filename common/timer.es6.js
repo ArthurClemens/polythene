@@ -1,3 +1,4 @@
+// Simple start/stop/pause/resume timer
 
 const Timer = function (callback, delay) {
     let timerId, start, remaining = delay;

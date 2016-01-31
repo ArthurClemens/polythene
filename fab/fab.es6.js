@@ -1,9 +1,14 @@
 import m from 'mithril';
 import iconBtn from 'polythene/icon-button/icon-button';
-import 'polythene-theme/fab/fab';
+import 'polythene/fab/theme/theme';
+
+const CSS_CLASSES = {
+    block: 'pe-button--fab',
+    mini: 'pe-button--fab-mini'
+};
 
 const createView = (ctrl, opts = {}) => {
-    opts.parentClass = ['fab', (opts.mini ? 'mini' : null)].join(' ');
+    opts.parentClass = [CSS_CLASSES.block, (opts.mini ? CSS_CLASSES.mini : null)].join(' ');
     opts.raised = true;
     opts.ripple = {
         center: true,

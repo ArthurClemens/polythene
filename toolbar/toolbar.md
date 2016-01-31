@@ -8,6 +8,7 @@ Displays a horizontal bar containing a label and action items. One toolbar can h
 ## Usage
 
 ~~~javascript
+import m from 'mithril';
 import toolbar from 'polythene/toolbar/toolbar';
 
 const myToolbar = m.component(toolbar, {
@@ -49,8 +50,8 @@ To show 3 bars:
 const myToolbar = m.component(toolbar, {
 	mode: 'tall',
 	topBar: toolbarRow,
-	middleBar: m.trust('<div flex class="middle indent">label aligns to the middle</div>'),
-	bottomBar: m.trust('<div class="bottom indent" style="color: #666; font-size: 18px;">some stuffs align to the bottom</div>')
+	middleBar: ...,
+	bottomBar: ...)
 });
 ~~~
 
@@ -64,7 +65,7 @@ Toolbar wraps 3 optional sub components:
 Alternatively:
 * `content` can be passed as substitute for the bars
 
-Each bar contains the class 'toolbar-tools', plus the name of the bar type (f.i. 'topBar').
+Each bar contains the class 'toolbar__bar', plus the name of the bar type (f.i. 'toolbar__top-bar').
 
 A toolbar can have different heights, set with param `mode`:
 
@@ -77,102 +78,46 @@ These heights are predefined by the toolbar CSS.
 
 ## Options
 
+### Common component options
+
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **tag** | optional | String | 'div' | HTML element tag |
-| **class** | optional | String |  | Extra CSS class appended to 'toolbar animate' (animate is used to transition the height) |
+| **class** | optional | String |  | Extra CSS class appended to 'pe-toolbar' |
 | **id** | optional | String | | HTML element id |
-| **mode** | optional | String | 'standard' | CSS height class added to class; mode 'tall' is the same as using class 'tall' |
-| **content** | either a bar or content must be passed | Mithril template | | Top bar content; use this if you only show 1 bar |
-| **topBar** | either a bar or content must be passed | Mithril template | | Top bar content |
-| **middleBar** | either a bar or content must be passed | Mithril template | | Middle bar content |
-| **bottomBar** | either a bar or content must be passed | Mithril template | | Bottom bar content |
-| **before** | optional | Mithril template or String | | Extra content before main content |
-| **after** | optional | Mithril template or String | | Extra content after main content |
+| **events** | optional | Object | | Options object containing one or more standard events such as `onclick` |
+| **before** | optional | Mithril element | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
+| **after** | optional | Mithril element | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
 
+### Toolbar specific options
 
-## Default generated HTML
+| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
+| **content** | either a bar or content must be passed | Mithril element | | Top bar content; use this if you only show 1 bar |
+| **topBar** | either a bar or content must be passed | Mithril element | | Top bar content |
+| **middleBar** | either a bar or content must be passed | Mithril element | | Middle bar content |
+| **bottomBar** | either a bar or content must be passed | Mithril element | | Bottom bar content |
 
-When using a label and 3 icon buttons:
+### Toolbar appearance options
 
-~~~html
-<div class="fit shadow">
-    <div class="fit shadow-bottom shadow-bottom-z-1"></div>
-    <div class="fit shadow-top shadow-top-z-1"></div>
-</div>
-<div class="toolbar animate standard">
-    <div class="center horizontal layout toolbar-tools topBar">
-        <a class="icon-button">
-            <div class="content">
-                <div class="label">
-                    <div class="icon icon-normal">
-                        <i class="fit svg">
-                            <svg>...</svg>
-                        </i>
-                    </div>
-                </div>
-                <div class="fit ripple constrained">
-                    <div class="ripple-mask">
-                        <div class="ripple-waves"></div>
-                    </div>
-                </div>
-            </div>
-        </a>
-        <span class="flex">Toolbar title</span>
-        <a class="icon-button">
-            <div class="content">
-                <div class="label">
-                    <div class="icon icon-normal">
-                        <i class="fit svg">
-                            <svg>...</svg>
-                        </i>
-                    </div>
-                </div>
-                <div class="fit ripple constrained">
-                    <div class="ripple-mask">
-                        <div class="ripple-waves"></div>
-                    </div>
-                </div>
-            </div>
-        </a>
-        <a class="icon-button">
-            <div class="content">
-                <div class="label">
-                    <div class="icon icon-normal">
-                        <i class="fit svg">
-                            <svg>...</svg>
-                        </i>
-                    </div>
-                </div>
-                <div class="fit ripple constrained">
-                    <div class="ripple-mask">
-                        <div class="ripple-waves"></div>
-                    </div>
-                </div>
-            </div>
-        </a>
-        <a class="icon-button">
-            <div class="content">
-                <div class="label">
-                    <div class="icon icon-normal">
-                        <i class="fit svg">
-                            <svg>...</svg>
-                        </i>
-                    </div>
-                </div>
-                <div class="fit ripple constrained">
-                    <div class="ripple-mask">
-                        <div class="ripple-waves"></div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
-</div>
+| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
+| **mode** | optional | String | 'standard' | CSS height class added to class; mode 'tall' is the same as using class 'pe-header--tall' |
+
+## Styling
+
+To indent a title, use CSS class 'toolbar__title--indent':
+
+~~~javascript
+const myToolbar = m.component(toolbar, {
+	mode: 'tall',
+	topBar: toolbarRow,
+	middleBar: m.trust('<div flex class="middle toolbar__title--indent">label aligns to the middle</div>'),
+	bottomBar: m.trust('<div class="bottom toolbar__title--indent" style="color: #666; font-size: 18px;">some stuffs align to the bottom</div>')
+});
 ~~~
 
+## Future
 
-## TODO
-
-* Classes: justify, middleJustify, bottomJustify
+* Classes: justify, middle-justify, bottom-justify
 * Toolbar adapts to mobile/narrow layout when there is a core-narrow class set on itself or any of its ancestors

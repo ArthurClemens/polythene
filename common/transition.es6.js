@@ -5,10 +5,10 @@ Generic show/hide transition module
 import m from 'mithril';
 
 // defaults
-const SHOW_DURATION = 200; // default dialog timing
-const HIDE_DURATION = 180; // default dialog timing
-const SHOW_DELAY = 10; // prevent flickering with Safari
-const HIDE_DELAY = 50; // prevent flickering with Safari
+const SHOW_DURATION = .220; // default dialog timing
+const HIDE_DURATION = .200; // default dialog timing
+const SHOW_DELAY = 0;
+const HIDE_DELAY = 0;
 const TRANSITION = 'both';
 
 // See: transition
@@ -84,10 +84,9 @@ opts:
 const transition = (opts, state) => {
     const deferred = m.deferred();
     const el = opts.el;
-    const transitionDuration = getDuration(opts, state);
-    const delay = getDelay(opts, state);
+    const transitionDuration = getDuration(opts, state) * 1000;
+    const delay = getDelay(opts, state) * 1000;
     const style = el.style;
-
     const beforeTransition = () => {
         if (opts.beforeShow && state === 'show') {
             style.transitionDuration = '0ms';
@@ -116,14 +115,21 @@ const transition = (opts, state) => {
         }
     };
     beforeTransition();
-    // Use setTimeout to apply changing transitionDuration settings
-    setTimeout(() => {
+    if (transitionDuration === 0) {
         applyTransition();
         setTimeout(() => {
             applyAfterTransition();
             deferred.resolve();
         }, transitionDuration + delay);
-    }, 0); // prevent flickering
+    } else {
+        setTimeout(() => {
+            applyTransition();
+            setTimeout(() => {
+                applyAfterTransition();
+                deferred.resolve();
+            }, transitionDuration + delay);
+        }, 0);
+    }
     return deferred.promise;
 };
 

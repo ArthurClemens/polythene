@@ -1,0 +1,236 @@
+import mixin from 'polythene/common/mixin';
+import flex from 'polythene/layout/theme/flex';
+import common from 'polythene/config/config';
+
+const createStyles = (config) => {
+    return [{
+        '.pe-card': {
+            display: 'block',
+            position: 'relative',
+            'border-radius': config.border_radius + 'px',
+
+            ' .pe-card__media': {
+                position: 'relative',
+                overflow: 'hidden',
+                'border-top-left-radius': 'inherit',
+                'border-top-right-radius': 'inherit',
+
+                '&.pe-card__media--landscape': {
+                    'padding-bottom': 100 / 16 * 9 + '%'
+                },
+                '&.pe-card__media--square': {
+                    'padding-bottom': '100%'
+                },
+                '&:last-child': {
+                    '&, img': {
+                        'border-bottom-left-radius': config.border_radius + 'px',
+                        'border-bottom-right-radius': config.border_radius + 'px'
+                    }
+                },
+                ' img': [
+                    mixin.fit(),
+                    {
+                        display: 'none',
+                        width: '100%',
+
+                        '&.pe-card__media--crop-x': {
+                            width: '100%',
+                            height: 'auto',
+                            display: 'block'
+                        },
+                        '&.pe-card__media--crop-y': {
+                            height: '100%',
+                            width: 'auto',
+                            display: 'block'
+                        }
+                    }
+                ],
+                ' .pe-card__header + &': {
+                    'border-top-left-radius': 0,
+                    'border-top-right-radius': 0
+                },
+            },
+
+            ' .pe-card__primary__media': {
+                margin: '16px 16px 0 16px',
+
+                ' .pe-card__media--small': {
+                    width: config.image_size_small + 'px'
+                },
+                ' .pe-card__media--regular': {
+                    width: config.image_size_regular + 'px'
+                },
+                ' .pe-card__media--medium': {
+                    width: config.image_size_medium + 'px'
+                },
+                ' .pe-card__media--large': {
+                    width: config.image_size_large + 'px',
+                    'margin-bottom': '16px'
+                },
+                ' .pe-card__media': {
+                    '&, img': {
+                        'border-radius': 0
+                    }
+                },
+
+                ' .shadow + &': {
+                    // first child
+                    '&, img': {
+                        'border-top-left-radius': config.border_radius + 'px',
+                        'border-top-right-radius': config.border_radius + 'px'
+                    }
+                },
+            },
+
+            ' .pe-card__overlay': mixin.fit(),
+
+            ' .pe-card__media__dimmer': [
+                mixin.fit(),
+                {
+                    'z-index': 1
+                }
+            ],
+
+            ' .pe-card__overlay__content': {
+                position: 'absolute',
+                bottom: 0,
+                top: 'auto',
+                right: 0,
+                left: 0,
+                'z-index': 2
+            },
+
+            ' .pe-card__header': {
+                height: config.one_line_height_with_icon + 'px'
+            },
+            ' .pe-card__header-title': {
+                padding: config.one_line_padding_v + 'px 0',
+                'font-size': '14px',
+                'font-weight': common.font_weight_normal,
+                'line-height': '20px',
+                'margin-top': '3px'
+            },
+            ' .pe-card__header-subtitle': {
+                'font-weight': common.font_weight_normal
+            },
+            ' .pe-card__header__front': {
+                position: 'relative',
+                width: config.icon_element_width + 'px',
+                height: config.one_line_height_with_icon + 'px',
+                padding: config.one_line_padding_v + 'px 0',
+
+                ' .pe-icon': [
+                    mixin.verticalCenter('absolute'), {
+                        position: 'absolute',
+                        left: config.padding_h + 'px'
+                    }
+                ]
+            },
+
+            ' .pe-card__primary': {
+                position: 'relative',
+
+                '&.pe-card__primary--media:not(:last-child)': {
+                    'padding-bottom': '16px'
+                },
+                '&.pe-card__primary--media + .pe-card__actions': {
+                    'margin-top': '-16px'
+                },
+                '& + .pe-card__text': {
+                    'margin-top': '-16px'
+                },
+                '&.pe-card__primary--tight': {
+                    ' .pe-card__title': {
+                        'padding-bottom': (config.tight_title_padding_bottom - config.subtitle_line_height_padding_bottom) + 'px'
+                    }
+                }
+            },
+            ' .pe-card__title': [
+                flex.flex(),
+                {
+                    padding: [config.title_padding_v, config.title_padding_h, (config.title_padding_v - config.subtitle_line_height_padding_bottom), config.title_padding_h].map((v) => (v + 'px')).join(' '),
+                    'font-size': '24px',
+                    'line-height': '29px'
+                }
+            ],
+            ' .pe-card__subtitle': {
+                'font-size': '14px',
+                'line-height': '24px'
+            },
+
+            ' .pe-card__actions': {
+                'min-height': 36 + 2 * 8 + 'px',
+                padding: config.actions_padding_v + 'px' + ' ' + config.padding_actions_h + 'px',
+
+                '&.pe-card__actions--tight': {
+                    'min-height': 0
+                },
+                '&.horizontal:not(.justified)': {
+                    ' :first-child': {
+                        'margin-left': 0
+                    },
+                    ' .pe-button': {
+                        'min-width': 0
+                    },
+                    ' .pe-button--icon': {
+                        'margin-right': '8px'
+                    }
+                },
+                '&.vertical': {
+                    // vertical flex layout
+                    'padding-top': config.actions_vertical_padding_v + 'px',
+                    'padding-bottom': config.actions_vertical_padding_v + 'px',
+
+                    // nested
+                    ' .pe-card__actions': {
+                        'margin-left': -config.padding_actions_h + 'px',
+                        'margin-right': -config.padding_actions_h + 'px',
+                        'min-height': 0,
+
+                        '&:first-child': {
+                            'margin-top': -config.actions_vertical_padding_v + 'px'
+                        },
+                        '&:last-child': {
+                            'margin-bottom': -config.actions_vertical_padding_v + 'px'
+                        }
+                    },
+
+                    ' .pe-button': {
+                        height: '36px',
+                        padding: 0,
+                        'margin-top': config.actions_button_margin_v + 'px',
+                        'margin-bottom': config.actions_button_margin_v + 'px'
+                    }
+                }
+            },
+
+            ' .pe-card__text': {
+                'padding-top': config.text_padding_v - config.text_line_height_padding_top + 'px',
+                'padding-right': config.text_padding_h + 'px',
+                'padding-left': config.text_padding_h + 'px',
+                'padding-bottom': config.tight_text_padding_bottom - config.text_line_height_padding_bottom + 'px',
+                'font-size': '14px',
+                'line-height': '24px',
+
+                '&:last-child': {
+                    'padding-bottom': config.text_padding_bottom - config.text_line_height_padding_bottom + 'px'
+                },
+                '&.pe-card__text--tight, &.pe-card__text--tight:last-child': {
+                    'padding-bottom': config.tight_text_padding_bottom - config.text_line_height_padding_bottom + 'px'
+                },
+                ' .pe-card__actions + &': {
+                    'margin-top': '8px'
+                }
+            },
+
+            ' .pe-card__text, .pe-card__primary': {
+                '& + .pe-card__actions:not(:last-child)': {
+                    'margin-top': -(config.offset_small_padding_v + 1) + 'px',
+                    'margin-bottom': -(config.offset_small_padding_v - 1) + 'px'
+                }
+            }
+        }
+    }];
+};
+
+export default (config) => (mixin.createStyles(config, createStyles));

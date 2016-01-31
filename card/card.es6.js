@@ -1,47 +1,89 @@
 import 'polythene/common/object.assign';
-import p from 'polythene/polythene/polythene';
 import m from 'mithril';
 import shadow from 'polythene/shadow/shadow';
 import icon from 'polythene/icon/icon';
-import 'polythene-theme/card/card';
+import 'polythene/card/theme/theme';
+
+const CSS_CLASSES = {
+    block: 'pe-card',
+    overlay: 'pe-card__overlay',
+    overlaySheet: 'pe-card__overlay--sheet',
+    overlayContent: 'pe-card__overlay__content',
+    mediaDimmer: 'pe-card__media__dimmer',
+    mediaCropX: 'pe-card__media--crop-x',
+    mediaCropY: 'pe-card__media--crop-y',
+    media: 'pe-card__media',
+    header: 'pe-card__header',
+    headerTitle: 'pe-card__header-title',
+    headerSubtitle: 'pe-card__header-subtitle',
+    title: 'pe-card__title',
+    subtitle: 'pe-card__subtitle',
+    titleFront: 'pe-card__header__front',
+    text: 'pe-card__text',
+    primary: 'pe-card__primary',
+    primaryMedia: 'pe-card__primary__media',
+    actions: 'pe-card__actions',
+    actionsBordered: 'pe-card__actions--borders',
+    mediaRatioSquare: 'pe-card__media--square',
+    mediaRatioLandscape: 'pe-card__media--landscape',
+    primaryHasMedia: 'pe-card__primary--media',
+    mediaSmall: 'pe-card__media--small',
+    mediaRegular: 'pe-card__media--regular',
+    mediaMedium: 'pe-card__media--medium',
+    mediaLarge: 'pe-card__media--large'
+};
 
 const imageRatios = {
     landscape: 16 / 9,
     square: 1
 };
 
-let contentMap;
-
 const createOverlay = (opts = {}) => {
     const tag = opts.tag || 'div';
-    const className = ['overlay-content', opts.class].join(' ');
     const content = opts.content.map(function(o) {
         const key = Object.keys(o)[0];
         return contentMap[key](o);
     });
-    return m('.overlay', [
+    return m('div', {
+        class: [
+            CSS_CLASSES.overlay,
+            opts.sheet ? CSS_CLASSES.overlaySheet : null,
+        ].join(' ')
+    }, [
         m(tag, {
-            class: className
+            class: [CSS_CLASSES.overlayContent, opts.class].join(' ')
         }, content),
-        m('.image-dimmer')
+        m('div', {
+            class: CSS_CLASSES.mediaDimmer
+        })
     ]);
 };
 
 const createText = o => {
     const opts = o.text || {};
-    const className = ['text', opts.class].join(' ');
     const tag = 'div' || opts.tag;
-
     return m(tag, {
-        class: className
-    }, m.trust(opts.content));
+        class: [CSS_CLASSES.text, opts.class].join(' ')
+    }, opts.content);
+};
+
+// media type to class
+
+const mediaTypeClasses = {
+    small: CSS_CLASSES.mediaSmall,
+    regular: CSS_CLASSES.mediaRegular,
+    medium: CSS_CLASSES.mediaMedium,
+    large: CSS_CLASSES.mediaLarge
+};
+
+const mediaClassForType = (mode = 'regular') => {
+    return mediaTypeClasses[mode];
 };
 
 const createMedia = o => {
     const opts = o.media || {};
     const ratio = opts.ratio || 'landscape';
     const origin = opts.origin || 'center';
-    const className = ['media', opts.type || null, ratio, opts.class].join(' ');
     const tag = 'div' || opts.tag;
 
     let initImage = function(el, inited) {
@@ -54,8 +96,9 @@ const createMedia = o => {
                 const w = this.naturalWidth;
                 const h = this.naturalHeight;
                 const naturalRatio = w / h;
-                // crop-x: crop over x axis; crop-y: crop over y axis
-                const cropClass = (naturalRatio < imageRatios[ratio]) ? 'crop-x' : 'crop-y';
+                // crop-x: crop over x axis
+                // crop-y: crop over y axis
+                const cropClass = (naturalRatio < imageRatios[ratio]) ? CSS_CLASSES.mediaCropX : CSS_CLASSES.mediaCropY;
                 img.className = cropClass;
 
                 if (origin !== 'start') {
@@ -65,25 +108,30 @@ const createMedia = o => {
                         // orient on y axis
                         const imageHeight = clientWidth / naturalRatio;
                         const diff = clientHeight - imageHeight;
-                        const offset = (origin === 'center') ? diff / 2 : diff;
+                        const offset = Math.ceil((origin === 'center') ? diff / 2 : diff);
                         this.style.marginTop = offset + 'px';
                     } else {
                         // orient on x axis
                         const imageWidth = clientHeight * naturalRatio;
                         const diff = clientWidth - imageWidth;
-                        const offset = (origin === 'center') ? diff / 2 : diff;
+                        const offset = Math.ceil((origin === 'center') ? diff / 2 : diff);
                         this.style.marginLeft = offset + 'px';
                     }
                 }
             };
         }
     };
+
     return m(tag, {
-        class: className,
+        class: [
+            CSS_CLASSES.media,
+            mediaClassForType(opts.type),
+            (ratio === 'landscape' ? CSS_CLASSES.mediaRatioLandscape : CSS_CLASSES.mediaRatioSquare),
+        ].join(' '),
         config: initImage
     }, [
         opts.content,
-        opts.overlay ? createOverlay(opts.overlay) : m('.image-dimmer')
+        opts.overlay ? createOverlay(opts.overlay) : m('div', {class: CSS_CLASSES.mediaDimmer})
     ]);
 };
 
@@ -91,14 +139,16 @@ const createHeader = o => {
     const opts = o.header || {};
     const tag = opts.tag || 'a.layout.horizontal.center';
     const props = Object.assign({
-        class: ['header', opts.class].join(' '),
+        class: [CSS_CLASSES.header, opts.class].join(' '),
         config: opts.config
     }, (opts.url ? opts.url : null), (opts.events ? opts.events : null));
     return m(tag, props, [
-        opts.icon ? m('.content-icon', m.component(icon, opts.icon)) : null,
-        m('.title.flex', [
-            opts.title ? m.trust(opts.title) : null,
-            opts.subtitle ? m('.subtitle', m.trust(opts.subtitle)) : null
+        opts.icon ? m('div', {class: CSS_CLASSES.titleFront}, m.component(icon, opts.icon)) : null,
+        m('div', {
+            class: CSS_CLASSES.headerTitle
+        }, [
+            opts.title ? opts.title : null,
+            opts.subtitle ? m('div', {class: CSS_CLASSES.headerSubtitle}, opts.subtitle) : null
         ])
     ]);
 };
@@ -106,30 +156,28 @@ const createHeader = o => {
 const createActions = o => {
     const opts = o.actions || {};
     const tag = opts.tag || '.layout.horizontal.center';
-    const className = ['actions', opts.class].join(' ');
     return m(tag, {
-        class: className
+        class: [CSS_CLASSES.actions, opts.class].join(' ')
     }, opts.content);
 };
 
 const createPrimary = o => {
-    let className, content, key, partOpts, hasMedia;
+    let content, key, partOpts;
     const opts = o.primary || {};
     const tag = '.layout.horizontal' || opts.tag;
-    className = ['primary', opts.media ? 'has-media' : null, opts.class].join(' ');
-    hasMedia = false;
+    let primaryHasMedia = false;
 
     const lookup = {
         title: function(pops) {
-            return pops.attrs ? pops : m('.title.flex', [
-                pops.title ? m.trust(pops.title) : null,
-                pops.subtitle ? m('.subtitle', m.trust(pops.subtitle)) : null
+            return pops.attrs ? pops : m('div', {class: CSS_CLASSES.title}, [
+                pops.title ? pops.title : null,
+                pops.subtitle ? m('div', {class: CSS_CLASSES.subtitle}, pops.subtitle) : null
             ]);
         },
         media: function(pops) {
-            hasMedia = true;
+            primaryHasMedia = true;
             return m('div', {
-                class: ['primary-media', pops.type].join(' ')
+                class: CSS_CLASSES.primaryMedia
             }, createMedia({
                 media: pops
             }));
@@ -159,41 +207,54 @@ const createPrimary = o => {
                 subtitle: opts.subtitle
             }) : null,
             opts.media ? lookup.media(opts.media) : null,
-            opts.actions ? lookup.actions(opts.actions) : null
+            opts.actions ? lookup.actions(opts.actions) : null,
+            opts.content ? opts.content : null
         ];
     }
-    if (hasMedia) {
-        className += ' has-media';
-    }
     return m(tag, {
-        class: className
+        class: [
+            CSS_CLASSES.primary,
+            (primaryHasMedia ? CSS_CLASSES.primaryHasMedia : null)
+        ].join(' ')
     }, content);
 };
 
-const createView = (ctrl, opts = {}) => {
-    const tag = opts.tag || opts.url ? 'a' : 'div';
-    const props = Object.assign({
-        class: ['card', opts.class].join(' '),
-        id: opts.id || '',
-        config: opts.config
-    }, (opts.url ? opts.url : null), (opts.events ? opts.events : null));
-    let content = opts.content.map(function(o) {
-        const key = Object.keys(o)[0];
-        return contentMap[key](o);
-    });
-    content.unshift(m.component(shadow, {
-        z: ctrl.z(),
-        animated: true
-    }));
-    return m(tag, props, p.insertContent(content, opts));
-};
-
-contentMap = {
+const contentMap = {
     text: createText,
     media: createMedia,
     header: createHeader,
     primary: createPrimary,
     actions: createActions
+};
+
+const createView = (ctrl, opts = {}) => {
+    const tag = opts.tag || opts.url ? 'a' : 'div';
+    const props = Object.assign({
+        class: [CSS_CLASSES.block, opts.class].join(' '),
+        id: opts.id || '',
+        config: opts.config
+    }, (opts.url ? opts.url : null), (opts.events ? opts.events : null));
+
+    let content;
+    if (Array.isArray(opts.content)) {
+        content = opts.content.map(function(o) {
+            const key = Object.keys(o)[0];
+            return contentMap[key](o);
+        });
+        content.unshift(m.component(shadow, {
+            z: ctrl.z(),
+            animated: true
+        }));
+    } else {
+        content = [
+            m.component(shadow, {
+                z: ctrl.z(),
+                animated: true
+            }),
+            opts.content
+        ];
+    }
+    return m(tag, props, [opts.before, content, opts.after]);
 };
 
 const component = {

@@ -43,9 +43,7 @@ const multiple = (mOpts) => {
         if (mOpts.queue) {
             items.shift();
             // add time to remove the previous instance before drawing the next one
-            setTimeout(() => {
-                next();
-            }, 0);
+            setTimeout(next, 0);
         } else {
             removeItem(instanceId);
         }
@@ -61,12 +59,16 @@ const multiple = (mOpts) => {
 
     const didShow = (instanceId) => {
         const item = findItem(instanceId);
-        item.showDeferred.resolve();
+        if (item) {
+            item.showDeferred.resolve();
+        }
     };
 
     const didHide = (instanceId) => {
         const item = findItem(instanceId);
-        item.hideDeferred.resolve();
+        if (item) {
+            item.hideDeferred.resolve();
+        }
         if (mOpts.queue) {
             remove(instanceId);
         }
