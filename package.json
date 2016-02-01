@@ -3,10 +3,15 @@
   "version": "0.2.0",
   "description": "Modular implementation of Material Design for Mithril.",
   "license": "MIT",
-  "keywords": ["Material Design", "Mithril"],
+  "keywords": [
+    "Material Design",
+    "Mithril"
+  ],
   "main": "",
   "directories": {},
-  "dependencies": {},
+  "dependencies": {
+    "j2c": "^0.11.0"
+  },
   "devDependencies": {
     "transpile-watch": "0.0.2",
     "uglify-js": "^2.6.1"
