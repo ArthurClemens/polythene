@@ -65,10 +65,6 @@ jspm install github:ArthurClemens/Polythene
 
 ## Developing
 
-Install babel globally:
-
-* `npm install babel -g`
-
 Transpile everything once:
 
 * `npm run transpile`

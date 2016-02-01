@@ -1,1 +1,1 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:true});exports["default"]={start_scale:.1,end_scale:2,start_opacity:.2,end_opacity:0};module.exports=exports["default"];
+"use strict";Object.defineProperty(exports,"__esModule",{value:true});exports.default={start_scale:.1,end_scale:2,start_opacity:.2,end_opacity:0};
