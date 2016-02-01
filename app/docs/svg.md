@@ -16,7 +16,7 @@ For other usages, there are several methods to embed SVG on the page.
 
 #### About msvg
 
-SVG embedded in a Mithril template works best because the JavaScript can be inlined, which saves a server call for each icon.
+SVG embedded in a Mithril element works best because the JavaScript can be inlined, which saves a server call for each icon.
 
 A "Mithril-ified" SVG icon ("msvg") is basically:
 
@@ -31,6 +31,7 @@ A large collection of msvg icons is available at [mmsvg](https://github.com/Arth
 Assuming that 'stars.js' is a msvg file:
 
 ~~~javascript
+import m from 'mithril';
 import svg from 'polythene/svg/svg';
 import iconStars from 'mmsvg/google/msvg/action/stars';
 
@@ -99,23 +100,21 @@ const mySvg = m.component(svg, {
 
 ## Options
 
+### Common component options
+
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **tag** | optional | String | 'div' | HTML element tag |
-| **class** | optional | String |  | CSS class appended to 'svg' |
+| **class** | optional | String |  | Extra CSS class appended to 'pe-svg' |
 | **id** | optional | String | | HTML element id |
+| **events** | optional | Object | | Options object containing one or more standard events such as `onclick` |
+| **before** | optional | Mithril element | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
+| **after** | optional | Mithril element | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
+
+### SVG specific options
+
+| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
 | **src** | either src or content must be passed | String |  | SVG URL |
-| **content** | either src or iconSet+name must be passed | String |  | SVG XML |
+| **content** | either src or content must be passed | String |  | SVG XML |
 | **preload** | optional | Array of strings | | List of src locations to preload |
-| **before** | optional | Mithril template or String | | Extra content before main content |
-| **after** | optional | Mithril template or String | | Extra content after main content |
-
-
-
-## Default generated HTML
-
-~~~html
-<div class="svg">
-	<svg>...</svg>
-</div>
-~~~

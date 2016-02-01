@@ -13,17 +13,17 @@ Polythene components inherit all of the flexibility of Mithril components.
 
 
 
-## Material Design, or custom design
+## Material Design / custom design
 
-Polythene modules closely follow the [Material Design specification](http://www.google.com/design/spec/material-design/introduction.html), more so than related projects like [Polymer](http://polymer-project.org) and [Angular Material](https://material.angularjs.org/).
+Polythene components closely follow the [Material Design specification](http://www.google.com/design/spec/material-design/introduction.html), more so than related projects like [Polymer](http://polymer-project.org), [Angular Material](https://material.angularjs.org/) or even [Material Design Lite](http://getmdl.io).
 
-But styling is set up in a flexible way. It is actually quite easy to create a theme or change the style entirely. See [Theming](#theme).
+But styling is set up in a flexible way. It is actually quite easy to create a theme or change the style entirely. More on this in [Theming](#theme).
 
 
 
 ## Composition
 
-Basically, everything is a Mithril component: from an icon to a page wide header plus contents. Components can be combined and nested.
+Polythene components are Mithril components: from an icon to a page wide header plus contents. Components can be combined and nested.
 
 The icon component is a small example how components can be combined. It is a wrapper around an image or SVG (itself a component too):
 
@@ -94,7 +94,7 @@ And the toolbar incorporates the row:
 ~~~javascript
 import toolbar from 'polythene/toolbar/toolbar';
 m.component(toolbar, {
-    class: 'dark-theme',
+    class: 'pe-dark-theme',
     content: toolbarRow
 });
 ~~~
@@ -102,47 +102,3 @@ m.component(toolbar, {
 ## Requirements
 
 See the [main project page](https://github.com/ArthurClemens/Polythene).
-
-
-## Project progress
-
-### Done
-
-* Header panel
-* Toolbar
-* Tabs
-* List
-* Dialog
-* Menu, Simple menu
-* Card
-* Button
-* Icon button
-* Icon
-* SVG
-* Ripple
-* Shadow
-* Floating Action Button
-* List tile
-* Notification and Snackbar
-* Slider
-* Subheader (part of List)
-* Divider (part of List)
-* Theming
-
-### To do
-
-1. Checkbox
-1. Toggle button
-1. Grid list
-1. List: Control
-1. Form: Text field
-1. Form: Selection control
-1. Data table
-1. Bottom sheet
-1. Chip
-1. Picker
-1. Progress & activity
-1. Tooltip
-1. Search
-1. Side menu
-1. Reorder list

@@ -2,10 +2,10 @@
 
 <a class="btn-demo" href="http://arthurclemens.github.io/Polythene-examples/index.html#/layout">Demo</a>
 
-Flexbox styles. Included in the default Polythene theme.
+Flexbox styles.
 
 ## Usage
 
 ~~~javascript
-import 'polythene-theme/layout/layout';
+import 'polythene/layout/theme/theme';
 ~~~

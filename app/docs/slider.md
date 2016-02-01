@@ -4,9 +4,23 @@
 
 Select a value from a continuous or discrete range of values by moving the slider thumb. Optimized for mobile.
 
+With both usability and theming in mind, no range input element is created (other than for instance [Material Design Lite](http://www.getmdl.io)). The range input has limited styling options, for instance it is not possible to create a large enough click area for the slider thumb (without making the thumb itself enormous). Using a different image for the thumb is out of the question. So this component uses divs.
+
+Supported features:
+
+* focus (on TAB; ESCAPE to remove focus)
+* keyboard control (arrow keys, shift arrow keys for 10x)
+* touch support
+* optionally disable click/tap on track
+* custom thumb element
+* step size, adjustable to any value including 0
+* tick marks
+
+
 ## Usage
 
 ~~~javascript
+import m from 'mithril';
 import slider from 'polythene/slider/slider';
 
 const mySlider = m.component(slider);
@@ -15,19 +29,51 @@ const mySlider = m.component(slider);
 Creates a slider with a range of 0 to 100.
 
 ~~~javascript
-import slider from 'polythene/slider/slider';
-
 const mySlider = m.component(slider, {
     min: 0,
     max: 50,
-    step: 10,
-    pin: true,
-    value: 10
+    value: 10,
+    step: 10
 });
 ~~~
 
 Creates a slider with a range of 0 to 50 and a step size of 10 (step count of 6 including min and max), and sets the slider to value 10.
 
+To add tick marks and pins:
+
+~~~javascript
+const mySlider = m.component(slider, {
+    min: 0,
+    max: 50,
+    value: 10,
+    step: 10,
+    ticks: true,
+    pin: true
+});
+~~~
+
+### Icons
+
+To place an icon next to the slider, use the option `before`:
+
+~~~javascript
+import icon from 'polythene/icon/icon';
+import iconVolume from 'mmsvg/google/msvg/av/volume-up';
+
+m('.volume', [
+    m('.header', 'Media volume'),
+    m.component(slider, {
+        class: 'layout horizontal',
+        min: 0,
+        max: 10,
+        value: 4,
+        step: 0,
+        before: m.component(icon, {
+            msvg: iconVolume
+        })
+    })
+]);
+~~~
 
 
 ### Getting the slider value
@@ -54,20 +100,58 @@ myModule.view = (ctrl) => {
 };
 ~~~
 
+### Setting the slider value
+
+To update the slider value from the outside, for instance from a controller value, use option `value` as function:
+
+~~~javascript
+const module = {};
+module.controller = () => {
+    return {
+        volume: 0
+    };
+};
+module.view = (ctrl) => {
+    return m.component(textfield, {
+        min: 0,
+        max: 10,
+        value: () => (ctrl.volume)
+    })
+};
+~~~
+
 ## Options
+
+### Common component options
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **tag** | optional | String | 'div' | HTML element tag |
-| **class** | optional | String |  | Extra CSS class appended to 'slider' |
+| **class** | optional | String |  | Extra CSS class appended to 'pe-slider' |
 | **id** | optional | String | | HTML element id |
-| **min** | required | Number | 0 | Minimum slider value |
-| **max** | required | Number | 100 | Maximum slider value |
-| **value** | optional | Number | 0 | Starting value |
-| **step** | optional | Number | 1 | Step size |
+| **events** | optional | Object | | Options object containing one or more standard events such as `onclick` |
+| **before** | optional | Mithril element | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
+| **after** | optional | Mithril element | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
+
+### Slider specific options
+
+| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
+| **min** | optional | Number | 0 | Minimum slider value |
+| **max** | optional | Number | 100 | Maximum slider value |
+| **step** | optional | Number | 1 | Step size; set to 0 for a continuous (smooth) slider |
+| **value** | optional | Number or Function | 0 | Slider value; use as function to set the value from outside |
+| **ticks** | optional | Boolean |  | Show a tick for each step; limited to 100 |
 | **pin** | optional | Boolean |  | Use with `step`; on click shows a pin shape with the current value |
-| **getValue** | optional | Function | | Callback function to receive the slider value |
+| **interactiveTrack** | optional | Boolean | true | Set to `false` to prevent clicking on the track |
+| **getValue** | optional | Function | | Callback function to receive the slider value  |
 | **disabled** | optional | Boolean |  | Set to true to make the slider read only |
+
+### Slider appearance options
+
+| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
+| **thumb** | optional | Mithril element | | Adds a Mithril element to the slider control |
 
 
 ### Styling
@@ -77,46 +161,28 @@ Setting the main color is done by specifying the `color` value.
 CSS:
 
 ~~~css
-.slider: {
+.pe-slider: {
     color: red
 }
 ~~~
 
-### Focus ring
+Setting a custom thumb icon:
 
-Note: the focus ring does not work on touch devices or on Mac OS X Safari.
+~~~javascript
+import icon from 'polythene/icon/icon';
+import bullseyeIcon from 'app/assets/bullseye';
 
-The focus ring color is default set to a transparent black (or white with dark theme). This is not according to MD specification, but "skipping" this allows for the easy color setting above.
-
-To set the focus ring to a (transparent) color, specify the `box-shadow` property:
-
-~~~css
-.slider-control:focus:not(.is-min):not(:active):not(.pin)::-webkit-slider-thumb {
-    box-shadow: 0 0 0 10px rgba(255, 0, 0, 0.08);
-}
-.slider-control:focus:not(.is-min):not(:active):not(.pin)::-moz-range-thumb {
-    box-shadow: 0 0 0 10px rgba(255, 0, 0, 0.08);
-}
-.slider-control:focus:not(.is-min):not(:active):not(.pin)::-ms-thumb {
-    box-shadow: 0 0 0 10px rgba(255, 0, 0, 0.08);
-}
+m.component(slider, {
+    thumb: m.component(icon, {
+        msvg: bullseyeIcon
+    })
+})
 ~~~
 
-or with `j2c`:
-
-~~~js
-const focusRing = {
-    'box-shadow': '0 0 0 10px rgba(255, 0, 0, 0.08)'
-}
-'.slider-control:focus:not(.is-min):not(:active):not(.pin)': {
-    '&::-webkit-slider-thumb': focusRing,
-    '&::-moz-range-thumb': focusRing,
-    '&::-ms-thumb': focusRing
-}
-~~~
 
 
 ## Future
 
 * Support non-linear scales
 * Support right-to-left language
+* Vertical slider

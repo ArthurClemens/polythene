@@ -10,10 +10,29 @@ This implementation closely follows the [design specification](http://www.google
 ## Usage
 
 ~~~javascript
+import m from 'mithril';
 import card from 'polythene/card/card';
 ~~~
 
-The card can contain various elements. The `content` parameter accepts an array of element options. Element `primary` contains the title and subtitle:
+The card can contain various elements. The `content` parameter accepts any Mithril element:
+
+~~~javascript
+import list from 'polythene/list/list';
+const myCard = m.component(card, {
+	content: m.component(list, {...})
+});
+~~~
+
+To generated Material Design elements, pass an array of element options, where each item is an object with on of the keys:
+
+* primary
+* text
+* media
+* header
+* actions
+
+
+Element `primary` contains the sub-options `title` and `subtitle`:
 
 ~~~javascript
 const myCard = m.component(card, {
@@ -46,7 +65,7 @@ const myCard = m.component(card, {
 	        subtitle: 'date',
 	        icon: {
 	            type: 'large',
-	            class: 'avatar',
+	            class: 'pe-icon--avatar',
 	            src: 'app/list-tile/avatars/1.png'
 	        }
 	    }
@@ -109,7 +128,8 @@ content: [{
             src: 'app/images/1.jpg'
         }),
         overlay: {
-            class: 'dark-theme',
+            sheet: true,
+            class: 'pe-dark-theme',
             content: [{
                 primary: {
                     title: 'Primary title',
@@ -132,15 +152,15 @@ content: [{
 }]
 ~~~
 
-CSS class 'dark-theme' is used as a quick way to get white text on a dark background.
+CSS class 'pe-dark-theme' is used as a quick way to get white text on a dark background.
 
-An additional HTML element to control the image is 'image-dimmer'. To create a fuzzy dark border all around use an inset box shadow:
+An additional HTML element to control the image is 'card__media__dimmer'. To create a fuzzy dark border all around use an inset box shadow:
 
 ~~~css
-.image-dimmer {
+.pe-card__media__dimmer {
 	box-shadow: inset 0px 0px 40px rgba(0,0,0,.6);
 }
-.overlay-content {
+.pe-card__overlay__content {
 	/* something else */
 }
 ~~~
@@ -168,6 +188,27 @@ For further control over the `primary` content, you can pass an array to `primar
 
 ## Options
 
+### Common component options
+
+| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
+| **tag** | optional | String | 'a' | HTML element tag |
+| **class** | optional | String |  | Extra CSS class appended to 'pe-card' |
+| **id** | optional | String | | HTML element id |
+| **events** | optional | Object | | Options object containing one or more standard events such as `onclick` |
+| **before** | optional | Mithril element | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
+| **after** | optional | Mithril element | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
+
+### Card specific options
+
+### Options for card
+
+| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
+| **url** | optional | Object with `href`, optionally `config` | | URL for the entire card |
+| **content** | required | Mithril element or Array |  | Any Mithril content, or a list of option objects for distinct areas - see below |
+| **z** | optional | Number 0-5 | 1 | Depth of the shadow |
+
 Next to the card itself, each content parts has a set of options:
 
 * primary
@@ -176,26 +217,12 @@ Next to the card itself, each content parts has a set of options:
 * header
 * actions
 
-
-### Options for card
-
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
-| ------------- | -------------- | -------- | ----------- | --------------- |
-| **tag** | optional | String | 'a' | HTML tag |
-| **class** | optional | String |  | Extra CSS class appended to 'card' |
-| **id** | optional | String | | HTML element id |
-| **url** | optional | Object with `href`, optionally `config` | | URL for the entire card |
-| **events** | optional | Object | | Card events; options object containing one or more events like `onclick` |
-| **content** | required | Array |  | List of option objects for distinct areas - see below |
-| **z** | optional | Number 0-5 | 1 | Depth of the shadow |
-
-
 ### Options for primary
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **tag** | optional | String | '[layout][horizontal]' | HTML element tag |
-| **class** | optional | String |  | Extra CSS class appended to 'primary'; if `media` is passed, class 'has-media' is automatically added too; use class `tight` to reduce bottom padding |
+| **class** | optional | String |  | Extra CSS class appended to 'pe-card__primary'; if `media` is passed, class 'card__primary--media' is automatically added too; use class `pe-card__primary--tight` to reduce bottom padding |
 | **title** | optional | String |  | Title text |
 | **subtitle** | optional | String |  | Subtitle text |
 | **media** | optional | Options object, equal to media part below |  | Media that is shown in this part |
@@ -207,8 +234,8 @@ Next to the card itself, each content parts has a set of options:
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **tag** | optional | String | 'div' | HTML tag |
-| **class** | optional | String |  | Extra CSS class appended to 'text'; use class `tight` to reduce bottom padding |
-| **content** | required | Mithril template or String |  | Text contents |
+| **class** | optional | String |  | Extra CSS class appended to 'pe-card__text'; use class `pe-card__text--tight` to reduce bottom padding |
+| **content** | required | Mithril element |  | Text contents |
 
 
 ### Options for header
@@ -216,7 +243,7 @@ Next to the card itself, each content parts has a set of options:
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **tag** | optional | String | 'a[layout][horizontal][center]' | HTML tag |
-| **class** | optional | String |  | Extra CSS class appended to 'header' |
+| **class** | optional | String |  | Extra CSS class appended to 'pe-card__header' |
 | **url** | optional | Object | | URL for the entire card; options object containing `href` and `config` |
 | **events** | optional | Object | | Card events; options object containing one or more events like `onclick` |
 | **title** | required | String | | The title content |
@@ -229,12 +256,13 @@ Next to the card itself, each content parts has a set of options:
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **tag** | optional | String | 'a' or div' | HTML tag |
-| **class** | optional | String |  | Extra CSS class appended to 'media' |
-| **content** | required | Mithril template |  | The image |
+| **class** | optional | String |  | Extra CSS class appended to 'pe-card__media' |
+| **content** | required | Mithril element |  | The image |
 | **ratio** | optional | String: 'landscape' or 'square' | 'landscape' | Image ratio; 'landscape' translates to `16:9` ratio |
 | **type** | optional | String: 'small', 'medium', 'large', 'extra-large' | | For primary media only; defines the image size |
 | **origin** | optional | String: 'start', 'center', 'end | 'center' | From which side cropping should be done |
 | **overlay** | optional | Options object, equal to card options | | Content to place on the overlay |
+| **sheet** | optional | Boolean | | Set to `true` to show the overlay as a partly covering sheet |
 
 
 ### Options for actions
@@ -242,65 +270,5 @@ Next to the card itself, each content parts has a set of options:
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **tag** | optional | String | '[layout][horizontal][center]' | HTML tag |
-| **class** | optional | String |  | Extra CSS class appended to 'actions'; add class `bordered` to add a top border |
-| **content** | required | Mithril template or String |  | Action contents, for instance a list of buttons |
-
-
-## Default generated HTML
-
-For a card with title only:
-
-~~~html
-<div class="card">
-    <div class="fit shadow ">
-        <div class="fit animated shadow-bottom shadow-bottom-z-1"></div>
-        <div class="fit animated shadow-top shadow-top-z-1"></div>
-    </div>
-    <div class="layout horizontal primary">
-        <div class="title flex">Primary title
-            <div class="subtitle">Subtitle</div>
-        </div>
-    </div>
-</div>
-~~~
-
-For a card with header, image, title and actions:
-
-~~~html
-<div class="card demo-card">
-    <div class="fit shadow ">
-        <div class="fit animated shadow-bottom shadow-bottom-z-1"></div>
-        <div class="fit animated shadow-top shadow-top-z-1"></div>
-    </div>
-    <a class="layout horizontal center header">
-        <div class="content-icon">
-            <div class="icon icon-large avatar">
-                <i class="fit">
-                    <img src="..." />
-                </i>
-            </div>
-        </div>
-        <div class="title flex">Title
-            <div class="subtitle">Subhead</div>
-        </div>
-    </a>
-    <div class="media landscape">
-        <img src="..." class="crop-x" style="" />
-        <div class="image-dimmer"></div>
-    </div>
-    <div class="text ">Text</div>
-    <div class="layout horizontal center actions bordered">
-        <a class="button">
-            <div class="content">
-                <div class="label">Action 1</div>
-                <div class="fit ripple constrained ">
-                    <div class="ripple-mask">
-                        <div class="ripple-waves"></div>
-                    </div>
-                </div>
-                <div class="wash fit"></div>
-            </div>
-        </a>
-    </div>
-</div>
-~~~
+| **class** | optional | String |  | Extra CSS class appended to 'pe-card__actions'; add class `pe-card__actions--borders` to add a top border; use class `card__actions--tight` to reduce the height  |
+| **content** | required | Mithril element |  | Action contents, for instance a list of buttons |

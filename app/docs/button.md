@@ -7,18 +7,19 @@ See also: [Icon Button](#icon-button) and [Floating Action Button](#fab)
 
 ## Usage
 
-```javascript
+~~~javascript
+import m from 'mithril';
 import btn from 'polythene/button/button';
 
 const myBtn = m.component(btn, {
     label: 'Button',
     raised: true
 });
-```
+~~~
 
 Add a URL:
 
-```javascript
+~~~javascript
 const myBtn = m.component(btn, {
     label: 'Button',
     raised: true,
@@ -26,11 +27,11 @@ const myBtn = m.component(btn, {
         href: 'index.html'
     }
 });
-```
+~~~
 
 Add an onclick event:
 
-```javascript
+~~~javascript
 const myBtn = m.component(btn, {
     label: 'Button',
     raised: true,
@@ -38,71 +39,62 @@ const myBtn = m.component(btn, {
         onclick: () => console.log('click')
     }
 });
-```
+~~~
 
 ## Variations
 
-- Buttons can be flat or raised. Using `raised` without specifying `z` gives the button a default shadow.
-- The hover effect can be hidden with `wash: false`.
-- The ripple effect on click can be hidden with `ink: false`.
-- No icon in button, as this is not part of the Material Design guidelines; use [icon Button](#icon-button) instead
+* Buttons can be flat or raised. Using `raised` without specifying `z` gives the button a default shadow.
+* The hover effect can be hidden with `wash: false`.
+* The ripple effect on click can be hidden with `ink: false`.
+* No icon in button, as this is not part of the Material Design guidelines; use [icon Button](#icon-button) instead
 
 
 ## Mobile and tap delay
 
-To remove the tap delay on mobile it is advisable to use a library like [Fastclick](https://github.com/ftlabs/fastclick). But because Fastclick has an unresolved issue with tap events while scrolling on iOS, it is better to use the convenience wrapper provided in the default theme. This temporarily removes the Fastclick event an element is scrolled.
+To remove the tap delay on mobile it is advisable to use a library like [Fastclick](https://github.com/ftlabs/fastclick). But because Fastclick has an unresolved issue with tap events while scrolling on iOS, it is better to use the convenience wrapper provided in 'polythene/common/no-tap-delay'. This temporarily removes the Fastclick event when an element is scrolled.
 
 ~~~javascript
-import noTapDelay from 'polythene-theme/common/no-tap-delay';
+import 'polythene/common/no-tap-delay';
 ~~~
 
 
 ## Options
 
+### Common component options
+
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **tag** | optional | String | 'a' (if `url` is passed) or 'div' | HTML element tag |
-| **class** | optional | String | | Extra CSS class appended to 'button' |
+| **tag** | optional | String | 'a' | HTML element tag; may also be 'button' |
+| **class** | optional | String |  | Extra CSS class appended to 'pe-button' |
 | **id** | optional | String | | HTML element id |
+| **events** | optional | Object | | Options object containing one or more standard events such as `onclick` |
+| **before** | optional | Mithril element | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
+| **after** | optional | Mithril element | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
+
+### Button specific options
+
+| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
 | **label** | required | String | | The button label |
 | **url** | optional | Object with `href`, optionally `config` | | Button URL or click handler |
-| **events** | optional | Object | | Button events; options object containing one or more events like `onclick` |
+| **borders** | optional | Boolean | false | Set to `true` to add a border |
+| **disabled** | optional | Boolean | false | Disables the button |
+| **selected** | optional | Boolean | false | Set to true to show the button as selected |
+| **formaction** | optional | String | | "The URI of a program that processes the information submitted by the button. If specified, it overrides the action attribute of the button's form owner." [source:MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-formaction) |
+| **animateOnTap** | optional | Boolean  | true | Set to false to remove z-animation and subsequent redraw |
+| **inactive** | optional | Boolean | | Set to `true` to disable button events and ripple/wash effects |
+
+### Button appearance options
+
+| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
 | **wash** | optional | Boolean | true | Set to false to hide the effect on hover |
 | **ink** | optional | Boolean | true | Set to false to disable the ripple effect on click/tap |
 | **ripple** | optional (valid if `ink` is `true`) | Options object | | Pass [ripple](#ripple) options to define ripple behavior |
 | **raised** | optional | Boolean | false | Shows a shadow; on button press the shadow depth is increased by 1 |
 | **z** | optional | Number 0-5 | 1 | The shadow depth for a raised button; raised buttons have a default z of 1 |
-| **disabled** | optional | Boolean | false | Disables the button |
-| **selected** | optional | Boolean | false | Set to true to show the button as selected |
 
-### Developer options
 
-**Parameter**    | **Mandatory** | **Type** | **Default** | **Description**
----------------- | ------------- | -------- | ----------- | --------------------------------------------------------
-**animateOnTap** | optional      | Boolean  | true        | Set to false to remove z-animation and subsequent redraw
-**onTap**        | optional      | Function |             | Callback function on button tap "down" and "up""
+## Future
 
-## Default generated HTML
-
-```html
-<a class="raised button">
-    <div class="content layout vertical">
-        <span class="flex"></span>
-        <span>Normal</span>
-        <span class="flex"></span>
-        <div class="fit ripple constrained">
-            <div class="ripple-mask">
-                <div class="ripple-waves" style=""></div>
-            </div>
-        </div>
-        <div class="wash fit"></div>
-        <div class="fit shadow">
-            <div class="fit animated shadow-bottom shadow-bottom-z-1"></div>
-            <div class="fit animated shadow-top shadow-top-z-1"></div>
-        </div>
-    </div>
-</a>
-```
-
-## TODO
-- Option to wait for ripple to finish before url/event is followed
+* Option to wait for ripple to finish before url/event is followed

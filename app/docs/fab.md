@@ -8,6 +8,7 @@ A circular main button with a [shadow](#shadow) and [ripple](#ripple) effect.
 ## Usage
 
 ~~~javascript
+import m from 'mithril';
 import fab from 'polythene/fab/fab';
 
 const myFab = m.component(fab, {
@@ -21,54 +22,43 @@ const myFab = m.component(fab, {
 
 ## Options
 
+### Common component options
+
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **tag** | optional | String | 'div' | HTML element tag |
-| **class** | optional | String |  | Extra CSS class appended to 'fab' |
+| **class** | optional | String |  | Extra CSS class appended to 'pe-button--fab' |
 | **id** | optional | String | | HTML element id |
-| **icon** | required | Object |  | [icon](#icon) options object |
+| **events** | optional | Object | | Options object containing one or more standard events such as `onclick` |
+| **before** | optional | Mithril element | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
+| **after** | optional | Mithril element | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
+
+### FAB specific options
+
+| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
+| **icon** | either `icon` or `content` | Object |  | [icon](#icon) options object |
+| **content**| either `icon` or `content` | Mithril element |  | Alternative content |
+
+### FAB appearance options
+
+| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
 | **z** | optional | Number 0-5 | 1 | Depth of the shadow |
-| **small** | optional | Boolean | false | Set to true to display a small button (class name `fab mini`) |
-| **before** | optional | Mithril template or String | | Extra content before main content |
-| **after** | optional | Mithril template or String | | Extra content after main content |
+| **small** | optional | Boolean | false | Set to true to display a small button (class name `fab--mini`) |
 
 
-## Inheritance
+## Inheritance/composition
 
-FAB inherits from [icon button](#icon-button) (which inherits from [button](#button), with these adjustments:
+FAB is composed with [icon button](#icon-button) (which is composed with [button](#button), with these adjustments:
 
 * Button options `raised` is set to true
-* The ripple eminates from the center of the button
+* The ripple emanates from the center of the button
 * The ripple has a 2/3 decay speed
 
 
-## Default generated HTML
 
-~~~html
-<a class="raised fab">
-    <div class="content">
-        <div class="label">
-            <div class="icon icon-normal">
-                <i class="fit svg">
-                    <svg>...</svg>
-                </i>
-            </div>
-        </div>
-        <div class="fit ripple constrained">
-            <div class="ripple-mask">
-                <div class="ripple-waves" style=""></div>
-            </div>
-        </div>
-        <div class="wash fit"></div>
-        <div class="fit shadow ">
-            <div class="fit animated shadow-bottom shadow-bottom-z-2"></div>
-            <div class="fit animated shadow-top shadow-top-z-2"></div>
-        </div>
-    </div>
-</a>
-~~~
-
-## TODO
+## Future
 
 * "The floating action button animates onto the screen as an expanding piece of material, by default. The icon within it may be animated."
 * "The floating action button can transform into a toolbar upon press or scroll. The toolbar can contain related actions, text and search fields, or any other items that would be useful at hand."

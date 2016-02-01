@@ -17,9 +17,10 @@ A number of ingredients must play together:
 * A container that holds both menu and button (or list)
 * Because the menu is positioned `absolute`, the container must have style `position: relative`
 
-Because we are using state, this can be best created with a custom component where the controller holds the "menu open" value.
+Because we are using state, this can be best created with a custom component where we can store the "menu open" value in the controller.
 
 ~~~javascript
+import m from 'mithril';
 import menu from 'polythene/menu/menu';
 import list from 'polythene/list/list';
 import listTile from 'polythene/list-tile/list-tile';
@@ -40,7 +41,7 @@ simpleContainer.view = (ctrl) => {
         m.component(menu, {
             target: 'simple_btn', // to align with the link
             offset: 0, // horizontally align with link
-            show: ctrl.open, // should the menu be open or closed
+            show: ctrl.open, // should the menu be open or closed?
             didHide: () => (ctrl.open = false), // called after closing
             content: m.component(list, {
                 tiles: [
@@ -67,6 +68,10 @@ In CSS:
 }
 ~~~
 
+### Hiding
+
+A menu is closed by tapping outside of the menu, or by pressing ESCAPE.
+
 
 ### Positioning
 
@@ -80,17 +85,17 @@ To override this behavior, pass `reposition: false`.
 
 Transition properties are set in CSS, the duration is passed as component option.
 
-A displayed menu contains the class `visible`.
+A displayed menu contains the class `pe-menu--visible`.
 
 CSS:
 
 ~~~css
-.menu {
+.pe-menu {
     transition-timing-function: ease-out;
     transition-property: opacity;
     opacity: 0;
 }
-.menu.visible {
+.pe-menu--visible {
     opacity: 1;
 }
 ~~~
@@ -161,35 +166,51 @@ const createTile = (title, selected, disabled) => {
 
 ### Options
 
+### Common component options
+
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **tag** | optional | String | 'div' | HTML element tag |
-| **class** | optional | String |  | Extra CSS class appended to 'menu' |
+| **class** | optional | String |  | Extra CSS class appended to 'pe-menu' |
 | **id** | optional | String | | HTML element id |
+| **events** | optional | Object | | Options object containing one or more standard events such as `onclick` |
+| **before** | optional | Mithril element | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
+| **after** | optional | Mithril element | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
+
+### Menu specific options
+
+| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
 | **visible** | required | Boolean | false | Set to true to show the menu |
 | **content** | required | One or more Mithril elements | | Expects a [list](#list), or an array of lists |
 | **target** | optional | String |  | HTML element id to position to |
+| **reposition** | optional | Boolean | true | Set to `false` to not position the menu to the menu item ([list tile](#list-tile)) that has class "selected" |
+| **show** | optional | Boolean | | Set to true to show the menu |
+
+### Menu appearance options
+
+| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
 | **offset** | optional | Number | 16 | Horizontal offset  |
 | **origin** | optional | String: 'top-left', 'top-right', 'bottom-left', 'bottom-right' | 'top-left' (if `target` is specified) | Positioned menu corner |
-| **reposition** | optional | Boolean | true | Set to `false` to not position the menu to the menu item ([list tile](#list-tile)) that has class "selected" |
 | **size** | optional | Number: 1, 1.5, 2, 3, 4, 5, 6, 7; or 'auto' | | Multiplication factor of width unit (56px); with 'auto' the menu takes the width of the widest element |
 | **permanent** | optional | Boolean |  | Set to true to always show the menu (mostly used for demonstration purposes) |
-
 
 ### Transition options
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **transition** | optional | String: 'both', 'show', 'hide', 'none' | 'both' | Sets when a transition is used |
-| **showDuration** | optional | Number | 150 | The show transition duration in milliseconds |
-| **hideDuration** | optional | Number | 150 | The hide transition duration in milliseconds |
+| **showDuration** | optional | Number | .150 | The show transition duration in seconds |
+| **hideDuration** | optional | Number | .150 | The hide transition duration in seconds |
 | **showDelay** | optional | Number | 0 | The show delay duration in milliseconds |
 | **hideDelay** | optional | Number | 0 | The hide delay duration in milliseconds; no delay is used when the menu is dismissed, for instance by tapping outside of the menu |
+| **didShow** | optional | Function |  | Callback function that is called when the show transition is done; receives param `id` |
+| **didHide** | optional | Function |  | Callback function that is called when the hide transition is done; receives param `id` |
 
 
-
-## Future ideas
+## Future
 
 * Take browser window into account to make sure that menu is always in view
-* Scrolling high menu content
+* Scrolling high menu content, style scrollbar
 * Cascading menus
