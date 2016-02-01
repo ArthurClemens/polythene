@@ -481,9 +481,12 @@ const component = {
 
             restoreScrollPosition: () => {
                 if (opts.restoreScrollPositionId) {
-                    const restore = () => (ctrl.scrollerElem.scrollTop = scrollPositions[opts.restoreScrollPositionId]);
-                    restore();
-                    setTimeout(restore, 0);
+                    const scrollTop = scrollPositions[opts.restoreScrollPositionId];
+                    if (scrollTop !== undefined) {
+                        const restore = () => (ctrl.scrollerElem.scrollTop = scrollTop);
+                        restore();
+                        setTimeout(restore, 0);
+                    }
                 }
             }
         };
