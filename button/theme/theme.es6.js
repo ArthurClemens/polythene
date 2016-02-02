@@ -1,9 +1,10 @@
 import defaultConfig from 'polythene/button/theme/config';
-import {button as appConfigFn} from 'polythene/config/custom';
+import customConfig from 'polythene/config/custom';
+const customConfigFn = customConfig.button;
 import layout from 'polythene/button/theme/layout';
 import color from 'polythene/button/theme/color';
 
-const config = appConfigFn ? appConfigFn(defaultConfig) : defaultConfig;
+const config = customConfigFn ? customConfigFn(defaultConfig) : defaultConfig;
 
 import styler from 'polythene/common/styler';
 styler.add('pe-button-text', layout(config), color(config));

@@ -1,9 +1,10 @@
 import defaultConfig from 'polythene/notification/theme/snackbar/config';
-import {snackbar as appConfigFn} from 'polythene/config/custom';
+import customConfig from 'polythene/config/custom';
+const customConfigFn = customConfig.snackbar;
 import layout from 'polythene/notification/theme/snackbar/layout';
 import color from 'polythene/notification/theme/snackbar/color';
 
-const config = appConfigFn ? appConfigFn(defaultConfig) : defaultConfig;
+const config = customConfigFn ? customConfigFn(defaultConfig) : defaultConfig;
 
 import styler from 'polythene/common/styler';
 styler.add('pe-notification-snackbar', layout(config), color(config));

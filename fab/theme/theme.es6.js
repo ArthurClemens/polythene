@@ -1,9 +1,10 @@
 import defaultConfig from 'polythene/fab/theme/config';
-import {fab as appConfigFn} from 'polythene/config/custom';
+import customConfig from 'polythene/config/custom';
+const customConfigFn = customConfig.fab;
 import layout from 'polythene/fab/theme/layout';
 import color from 'polythene/fab/theme/color';
 
-const config = appConfigFn ? appConfigFn(defaultConfig) : defaultConfig;
+const config = customConfigFn ? customConfigFn(defaultConfig) : defaultConfig;
 
 import styler from 'polythene/common/styler';
 styler.add('pe-fab', layout(config), color(config));

@@ -1,9 +1,10 @@
 import defaultConfig from 'polythene/radio-button/theme/config';
-import {checkbox as appConfigFn} from 'polythene/config/custom';
+import customConfig from 'polythene/config/custom';
+const customConfigFn = customConfig['radio-button'];
 import layout from 'polythene/radio-button/theme/layout';
 import color from 'polythene/radio-button/theme/color';
 
-const config = appConfigFn ? appConfigFn(defaultConfig) : defaultConfig;
+const config = customConfigFn ? customConfigFn(defaultConfig) : defaultConfig;
 
 import styler from 'polythene/common/styler';
 styler.add('pe-radio-button', layout(config), color(config));
