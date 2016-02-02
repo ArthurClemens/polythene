@@ -65,20 +65,12 @@ jspm install github:ArthurClemens/Polythene
 
 ## Using Polythene with es5
 
-If you are not using es6 yet, you need a helper function to require transpiled components:
+When using Browserify, use `require` to get components:
 
 ~~~javascript
-var _interopRequire = function (obj) {
-    return obj && (obj['default'] || obj);
-};
-~~~
-
-Usage:
-
-~~~
 var m = require('mithril');
-_interopRequire(require('polythene/theme/theme'));
-var btn = _interopRequire(require('polythene/button/button'));
+require('polythene/theme/theme');
+var btn = require('polythene/button/button');
 ~~~
 
 

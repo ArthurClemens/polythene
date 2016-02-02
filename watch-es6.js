@@ -15,7 +15,7 @@ watch ({
     },
     transform: function(inPath, outPath) {
         return [
-            'babel', '--presets es2015', inPath, '>', outPath,
+            'babel', '--presets es2015', '--plugins babel-plugin-add-module-exports', inPath, '>', outPath,
             '&&',
             'uglifyjs', '-o', outPath, outPath
         ].join(' ');
