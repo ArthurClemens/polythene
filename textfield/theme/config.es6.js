@@ -4,24 +4,24 @@ const rgba = common.rgba;
 
 // const height = 36;
 const line_height_input = 20;
-const input_padding_v = 6;
+const input_padding_v = 7;
 
 export default {
     width: 300, // or use integer
-    vertical_spacing_top: 7, // 8 minus natural label height padding (1)
+    vertical_spacing_top: 6, // 8 minus natural label height padding (1)
     vertical_spacing_bottom: 7, // 8 minus natural label height padding (1)
     input_focus_border_width: 2,
     input_focus_border_animation_duration: common.animation_duration,
 
     floating_label_vertical_spacing_top: 30, // 16 + 8 + 8 minus natural label height padding (2)
     floating_label_vertical_spacing_bottom: 7, // 8 minus natural label height padding (1)
-    floating_label_top: 13,
+    floating_label_top: 14,
     floating_label_animation_duration: '.12s',
 
     input_padding_h: 0,
     input_padding_v,
     input_border_width: 1,
-    margin_top_error_message: 5,
+    margin_top_error_message: 6,
     font_size_input: 16,
     font_size_error: 12,
     font_size_floating_label: 12,

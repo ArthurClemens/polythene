@@ -156,9 +156,11 @@ const createStyles = (config) => {
                     }
                 },
 
-                ' .pe-textfield__error, .pe-textfield__help, .pe-textfield__counter': {
+                ' .pe-textfield__error, .pe-textfield__error-placeholder, .pe-textfield__help, .pe-textfield__counter': {
                     'margin-top': config.margin_top_error_message + 'px',
-                    'font-size': config.font_size_error + 'px'
+                    'font-size': config.font_size_error + 'px',
+                    'line-height': common.line_height,
+                    'min-height': config.font_size_error * common.line_height + 'px'
                 },
 
                 ' .pe-textfield__counter': {

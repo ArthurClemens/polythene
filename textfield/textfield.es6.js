@@ -11,6 +11,7 @@ const CSS_CLASSES = {
     help: 'pe-textfield__help',
     focusHelp: 'pe-textfield__help-focus',
     error: 'pe-textfield__error',
+    errorPlaceholder: 'pe-textfield__error-placeholder',
     stateFocused: 'pe-textfield--focused',
     stateDisabled: 'pe-textfield--disabled',
     stateInvalid: 'pe-textfield--invalid',
@@ -115,6 +116,7 @@ const createView = (ctrl, opts = {}) => {
     const type = (!opts.type || opts.type === 'submit' || opts.type === 'search') ? 'text' : opts.type;
     const inputTag = opts.multiline ? 'textarea' : 'input';
     const showError = isInvalid && ctrl.error;
+    const validates = opts.validate || opts.min || opts.max || opts.minlength || opts.required;
 
     if (opts.focus && !ctrl.focus()) {
         ctrl.focus(true);
@@ -264,7 +266,11 @@ const createView = (ctrl, opts = {}) => {
         (opts.help && !showError) ? m('div', {
             class: [CSS_CLASSES.help, opts.focusHelp ? CSS_CLASSES.focusHelp : ''].join(' ')
         }, opts.help) : null,
-        showError ? m('div', {class: CSS_CLASSES.error}, ctrl.error) : null
+        showError
+            ? m('div', {class: CSS_CLASSES.error}, ctrl.error)
+            : (validates && !opts.help)
+                ? m('div', {class: CSS_CLASSES.errorPlaceholder})
+                : null
     ];
     return m(tag, props, [opts.before, content, opts.after]);
 };
