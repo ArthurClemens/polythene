@@ -25,11 +25,6 @@ const CSS_CLASSES = {
 
 const SCROLL_WATCH_TIMER = 150;
 
-// test for flexbox 2 specs
-// in practice, IE10 needs a different treatment
-const d = document.documentElement.style;
-const alignSelfSupported = ('alignSelf' in d) || ('WebkitAlignSelf' in d);
-
 const updateScrollState = (ctrl) => {
     const scroller = ctrl.scrollEl;
     if (!scroller) {
@@ -88,14 +83,6 @@ const hide = (ctrl, opts) => {
 const createViewContent = (ctrl, opts) => {
     // if flex "self-stretch" is not supported, calculate the maximum height
     let style = {};
-    if (ctrl.el && !alignSelfSupported) {
-        const styles = window.getComputedStyle(ctrl.el);
-        const partsHeights = (ctrl.headerHeight || 0) + (ctrl.footerHeight || 0);
-        const dialogPadding = parseFloat(styles.paddingTop) + parseFloat(styles.paddingBottom);
-        style = {
-            'max-height': 'calc(100vh - ' + dialogPadding + 'px - ' + partsHeights + 'px)'
-        };
-    }
     const bodyOpts = opts.body || opts.menu;
 
     return m('div', {
@@ -132,7 +119,15 @@ const createView = (ctrl, opts = {}) => {
     };
 
     const props = Object.assign({}, {
-        class: [CSS_CLASSES.block, (opts.fullscreen ? CSS_CLASSES.fullscreen : null), (opts.backdrop ? CSS_CLASSES.hasBackdrop : null), (ctrl.topOverflow ? CSS_CLASSES.hasTopOverflow : null), (ctrl.bottomOverflow ? CSS_CLASSES.hasBottomOverflow : null), ctrl.visible ? CSS_CLASSES.visible : null, opts.class].join(' '),
+        class: [
+            CSS_CLASSES.block,
+            (opts.fullscreen ? CSS_CLASSES.fullscreen : null),
+            (opts.backdrop ? CSS_CLASSES.hasBackdrop : null),
+            (ctrl.topOverflow ? CSS_CLASSES.hasTopOverflow : null),
+            (ctrl.bottomOverflow ? CSS_CLASSES.hasBottomOverflow : null),
+            ctrl.visible ? CSS_CLASSES.visible : null,
+            opts.class
+        ].join(' '),
         id: opts.id || '',
         config: (el, inited, context, vdom) => {
             if (inited) {

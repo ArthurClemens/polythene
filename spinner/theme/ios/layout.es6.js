@@ -47,9 +47,7 @@ const createStyles = (config) => {
                     'border-radius': '50px'
                 },
 
-                '@keyframes iosSpinnerFade': kfFade(),
-                '@-moz-keyframes iosSpinnerFade': kfFade(),
-                '@-o-keyframes iosSpinnerFade': kfFade()
+                '@keyframes iosSpinnerFade': kfFade()
             }
         ]
     }];

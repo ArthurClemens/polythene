@@ -56,9 +56,7 @@ const createStyles = (config) => {
             }
         ],
 
-        '@keyframes ripple': kfRipple(config),
-        '@-moz-keyframes ripple': kfRipple(config),
-        '@-o-keyframes ripple': kfRipple(config)
+        '@keyframes ripple': kfRipple(config)
     }];
 };
 

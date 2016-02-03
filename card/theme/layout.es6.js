@@ -14,6 +14,7 @@ const createStyles = (config) => {
                 overflow: 'hidden',
                 'border-top-left-radius': 'inherit',
                 'border-top-right-radius': 'inherit',
+                'z-index': 1, // makes rounded corners on absolute imgages work
 
                 '&.pe-card__media--landscape': {
                     'padding-bottom': 100 / 16 * 9 + '%'
@@ -44,11 +45,12 @@ const createStyles = (config) => {
                             display: 'block'
                         }
                     }
-                ],
-                ' .pe-card__header + &': {
-                    'border-top-left-radius': 0,
-                    'border-top-right-radius': 0
-                },
+                ]
+            },
+
+            ' .pe-card__header + .pe-card__media': {
+                'border-top-left-radius': 0,
+                'border-top-right-radius': 0
             },
 
             ' .pe-card__primary__media': {

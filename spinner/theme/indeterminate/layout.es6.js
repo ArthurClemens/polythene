@@ -47,12 +47,7 @@ const createStyles = (config) => {
             },
 
             '@keyframes indeterminateSpinnerRotate': kfRotate(),
-            '@-moz-keyframes indeterminateSpinnerRotate': kfRotate(),
-            '@-o-keyframes indeterminateSpinnerRotate': kfRotate(),
-
-            '@keyframes indeterminateSpinnerDash': kfIndeterminateDash(),
-            '@-moz-keyframes indeterminateSpinnerDash': kfIndeterminateDash(),
-            '@-o-keyframes indeterminateSpinnerDash': kfIndeterminateDash()
+            '@keyframes indeterminateSpinnerDash': kfIndeterminateDash()
         }
     }];
 };

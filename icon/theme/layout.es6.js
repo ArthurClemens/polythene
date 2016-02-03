@@ -16,6 +16,7 @@ const createStyles = (config) => {
             position: 'relative',
 
             '&.pe-icon--avatar img': {
+                border: 'none',
                 'border-radius': '50%',
                 width: '100%',
                 height: '100%'

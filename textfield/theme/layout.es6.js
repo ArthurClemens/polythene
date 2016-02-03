@@ -83,7 +83,8 @@ const createStyles = (config) => {
                     'line-height': config.line_height_input + 'px',
                     'pointer-events': 'none',
                     'white-space': 'nowrap',
-                    'text-align': 'left'
+                    'text-align': 'left',
+                    cursor: 'text'
                 },
                 '&.pe-textfield--dirty .pe-textfield__label': {
                     visibility: 'hidden'
@@ -146,6 +147,9 @@ const createStyles = (config) => {
                     ' .pe-textfield__input': {
                         'border-bottom': 'none'
                     },
+                    ' .pe-textfield__label': {
+                        cursor: 'auto'
+                    },
                     ' .pe-textfield__input-area:after': {
                         opacity: 1,
                         height: '1px',
@@ -156,9 +160,11 @@ const createStyles = (config) => {
                     }
                 },
 
-                ' .pe-textfield__error, .pe-textfield__help, .pe-textfield__counter': {
+                ' .pe-textfield__error, .pe-textfield__error-placeholder, .pe-textfield__help, .pe-textfield__counter': {
                     'margin-top': config.margin_top_error_message + 'px',
-                    'font-size': config.font_size_error + 'px'
+                    'font-size': config.font_size_error + 'px',
+                    'line-height': common.line_height,
+                    'min-height': config.font_size_error * common.line_height + 'px'
                 },
 
                 ' .pe-textfield__counter': {
@@ -176,6 +182,12 @@ const createStyles = (config) => {
                     opacity: 1
                 },
 
+
+                '&.pe-textfield--hide-clear': {
+                    ' .pe-textfield__input::-ms-clear': {
+                        display: 'none'
+                    }
+                },
                 '&.pe-textfield--hide-spinner': {
                     ' input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button': {
                         '-webkit-appearance': 'none',

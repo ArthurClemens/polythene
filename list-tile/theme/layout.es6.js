@@ -18,6 +18,7 @@ const createStyles = (config) => {
             flex.layout,
             {
                 position: 'relative',
+                overflow: 'hidden',
 
                 '&.pe-list-tile--sticky': mixin.sticky(),
 
@@ -25,9 +26,10 @@ const createStyles = (config) => {
                     flex.layout,
                     flex.layoutHorizontal,
                     {
-                        '&a': {
+                        ' a&': {
                             'text-decoration': 'none',
-                            color: 'inherit'
+                            color: 'inherit',
+                            border: 'none'
                         }
                     }
                 ],
@@ -35,7 +37,12 @@ const createStyles = (config) => {
                 ' .pe-list-tile__primary': [
                     flex.flex(),
                     {
-                        position: 'relative'
+                        position: 'relative',
+
+                        ' .pe-list-tile__content:not(.pe-list-tile__content--front)': [
+                            flex.flex(),
+                            paddingV(config.padding, config.padding + 1)
+                        ]
                     }
                 ],
 
@@ -55,11 +62,6 @@ const createStyles = (config) => {
                             {
                                 width: config.front_item_width + 'px'
                             }
-                        ],
-
-                        '&:not(.pe-list-tile__content--front)': [
-                            flex.flex(),
-                            paddingV(config.padding, config.padding + 1)
                         ],
 
                         ' small': {

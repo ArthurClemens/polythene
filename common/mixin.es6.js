@@ -49,14 +49,13 @@ const ellipsis = (lines, lineHeight) => {
     }
     return Object.assign(
         {
-            overflow: 'hidden'
-        },
-        (lines === undefined) ? {
+            overflow: 'hidden',
             'white-space': 'nowrap',
-            'text-overflow': 'ellipsis'
-        } : null,
+            'text-overflow': 'ellipsis',
+            'text-rendering': 'auto' // Samsung Android
+        },
         (lines !== undefined) ? {
-            'white-space': 'normal',
+            'white-space': 'initial',
             '-webkit-line-clamp': lines,
             '-webkit-box-orient': 'vertical',
             display: '-webkit-box',

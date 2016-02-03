@@ -87,13 +87,13 @@ const transition = (opts, state) => {
     const transitionDuration = getDuration(opts, state) * 1000;
     const delay = getDelay(opts, state) * 1000;
     const style = el.style;
-    const beforeTransition = () => {
-        if (opts.beforeShow && state === 'show') {
+    const beforeTransition = (opts.beforeShow && state === 'show')
+        ? () => {
             style.transitionDuration = '0ms';
             style.transitionDelay = '0ms';
             opts.beforeShow();
         }
-    };
+        : null;
     const applyTransition = () => {
         style.transitionDuration = transitionDuration + 'ms';
         style.transitionDelay = delay + 'ms';
@@ -114,22 +114,34 @@ const transition = (opts, state) => {
             opts.afterHide();
         }
     };
-    beforeTransition();
-    if (transitionDuration === 0) {
+
+    const doTransition = () => {
         applyTransition();
         setTimeout(() => {
             applyAfterTransition();
             deferred.resolve();
         }, transitionDuration + delay);
-    } else {
-        setTimeout(() => {
-            applyTransition();
+    };
+
+    const maybeDelayTransition = () => {
+        if (transitionDuration === 0) {
+            doTransition();
+        } else {
             setTimeout(() => {
-                applyAfterTransition();
-                deferred.resolve();
-            }, transitionDuration + delay);
+                doTransition();
+            }, 0);
+        }
+    };
+
+    if (beforeTransition) {
+        beforeTransition();
+        setTimeout(() => {
+            maybeDelayTransition();
         }, 0);
+    } else {
+        maybeDelayTransition();
     }
+
     return deferred.promise;
 };
 

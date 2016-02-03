@@ -2,6 +2,8 @@ import 'polythene/common/object.assign';
 import m from 'mithril';
 import 'polythene/textfield/theme/theme';
 
+const startEventType = window.PointerEvent ? 'pointerdown' : (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) ? 'touchstart' : 'mousedown';
+
 const CSS_CLASSES = {
     block: 'pe-textfield',
     inputArea: 'pe-textfield__input-area',
@@ -11,6 +13,7 @@ const CSS_CLASSES = {
     help: 'pe-textfield__help',
     focusHelp: 'pe-textfield__help-focus',
     error: 'pe-textfield__error',
+    errorPlaceholder: 'pe-textfield__error-placeholder',
     stateFocused: 'pe-textfield--focused',
     stateDisabled: 'pe-textfield--disabled',
     stateInvalid: 'pe-textfield--invalid',
@@ -22,6 +25,7 @@ const CSS_CLASSES = {
     hasFullWidth: 'pe-textfield--full-width',
     hasCounter: 'pe-textfield--counter',
     hideSpinner: 'pe-textfield--hide-spinner',
+    hideClear: 'pe-textfield--hide-clear',
     hideValidation: 'pe-textfield--hide-validation'
 };
 
@@ -115,6 +119,7 @@ const createView = (ctrl, opts = {}) => {
     const type = (!opts.type || opts.type === 'submit' || opts.type === 'search') ? 'text' : opts.type;
     const inputTag = opts.multiline ? 'textarea' : 'input';
     const showError = isInvalid && ctrl.error;
+    const validates = opts.validate || opts.min || opts.max || opts.minlength || opts.required;
 
     if (opts.focus && !ctrl.focus()) {
         ctrl.focus(true);
@@ -155,7 +160,8 @@ const createView = (ctrl, opts = {}) => {
             (opts.required ? CSS_CLASSES.isRequired : ''),
             (opts.fullWidth ? CSS_CLASSES.hasFullWidth : ''),
             (opts.counter ? CSS_CLASSES.hasCounter : ''),
-            (opts.hideSpinner ? CSS_CLASSES.hideSpinner : ''),
+            (opts.hideSpinner !== false ? CSS_CLASSES.hideSpinner : ''),
+            (opts.hideClear !== false ? CSS_CLASSES.hideClear : ''),
             (opts.hideValidation ? CSS_CLASSES.hideValidation : ''),
             (opts.hideRequiredMark ? CSS_CLASSES.hideRequiredChar : ''),
             opts.class
@@ -177,6 +183,18 @@ const createView = (ctrl, opts = {}) => {
         m('div', {
             class: CSS_CLASSES.inputArea
         }, [
+            opts.label ? m('label', {
+                class: CSS_CLASSES.label,
+                // In IE10 the label catches click events on the field
+                // the function causes the input to get focus
+                ['on' + startEventType]: () => {
+                    if (!opts.disabled) {
+                        setTimeout(() => {
+                            ctrl.inputEl().focus();
+                        }, 0);
+                    }
+                }
+            }, opts.label) : null,
             m(inputTag, Object.assign(
                 {},
                 {
@@ -229,7 +247,7 @@ const createView = (ctrl, opts = {}) => {
                             }, 1);
                         }
                     },
-                    invalid: (e) => (e.preventDefault()),
+                    oninvalid: (e) => (e.preventDefault()),
                     config: (el, inited, context) => {
                         if (inited) {
                             return;
@@ -257,14 +275,17 @@ const createView = (ctrl, opts = {}) => {
                 (opts.required !== undefined) ? {required: opts.required} : null,
                 (opts.tabindex !== undefined) ? {tabindex: opts.tabindex} : null,
                 (opts.rows !== undefined) ? {rows: opts.rows} : null
-            )),
-            opts.label ? m('label', {class: CSS_CLASSES.label}, opts.label) : null
+            ))
         ]),
         opts.counter ? m('div', {class: CSS_CLASSES.counter}, ctrl.value.length + ' / ' + opts.counter) : null,
         (opts.help && !showError) ? m('div', {
             class: [CSS_CLASSES.help, opts.focusHelp ? CSS_CLASSES.focusHelp : ''].join(' ')
         }, opts.help) : null,
-        showError ? m('div', {class: CSS_CLASSES.error}, ctrl.error) : null
+        showError
+            ? m('div', {class: CSS_CLASSES.error}, ctrl.error)
+            : (validates && !opts.help)
+                ? m('div', {class: CSS_CLASSES.errorPlaceholder})
+                : null
     ];
     return m(tag, props, [opts.before, content, opts.after]);
 };
@@ -303,9 +324,9 @@ const component = {
             // write
             hasFocus = state;
             if (hasFocus) {
-                document.body.addEventListener('mousedown', onMouseDown);
+                document.body.addEventListener(startEventType, onMouseDown);
             } else {
-                document.body.removeEventListener('mousedown', onMouseDown);
+                document.body.removeEventListener(startEventType, onMouseDown);
             }
         };
 

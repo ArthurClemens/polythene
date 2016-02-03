@@ -167,6 +167,9 @@ const createSlider = (ctrl, opts = {}, hasTicks, interactiveTrack) => {
         startDrag(ctrl, opts, e);
     };
 
+    const flexValueCss = fraction + ' 1 0%';
+    const flexRestCss = (1 - fraction) + ' 1 0%';
+
     return [
         m('div', Object.assign({}, {
             class: CSS_CLASSES.track,
@@ -188,8 +191,9 @@ const createSlider = (ctrl, opts = {}, hasTicks, interactiveTrack) => {
                 {
                     class: CSS_CLASSES.trackPart + ' ' + CSS_CLASSES.trackPartValue,
                     style: {
-                        flex: fraction + ' 1 0%',
-                        webkitFlex: fraction + ' 1 0%'
+                        flex: flexValueCss,
+                        '-ms-flex': flexValueCss,
+                        webkitFlex: flexValueCss
                     }
                 },
                 m('div', {class: CSS_CLASSES.trackBar},
@@ -249,8 +253,9 @@ const createSlider = (ctrl, opts = {}, hasTicks, interactiveTrack) => {
                 {
                     class: CSS_CLASSES.trackPart + ' ' + CSS_CLASSES.trackPartRest,
                     style: {
-                        flex: 1 - fraction + ' 1 0%',
-                        webkitFlex: 1 - fraction + ' 1 0%'
+                        flex: flexRestCss,
+                        '-ms-flex': flexRestCss,
+                        webkitFlex: flexRestCss
                     }
                 },
                 m('div', {class: CSS_CLASSES.trackBar},

@@ -17,9 +17,7 @@ const keyframes = (config, tint) => {
     });
 
     return {
-        '@keyframes indeterminateSpinnerColor': keyframesColor(),
-        '@-moz-keyframes indeterminateSpinnerColor': keyframesColor(),
-        '@-o-keyframes indeterminateSpinnerColor': keyframesColor()
+        '@keyframes indeterminateSpinnerColor': keyframesColor()
     };
 };
 
@@ -30,7 +28,8 @@ const style = (config, tint, scope = '') => {
             color: config['color_' + tint + '_single'],
 
             ' circle': {
-                fill: 'transparent'
+                fill: 'transparent',
+                stroke: config['color_' + tint + '_1']
             },
 
             '&.pe-spinner--single-color circle': {

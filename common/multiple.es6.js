@@ -25,9 +25,10 @@ const multiple = (mOpts) => {
     };
 
     const findItem = (id) => {
-        for (let item of items) {
-            if (item.instanceId === id) {
-                return item;
+        // traditional for loop for IE10
+        for (let i = 0; i < items.length; i++) {
+            if (items[i].instanceId === id) {
+                return items[i];
             }
         }
     };

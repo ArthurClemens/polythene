@@ -51,6 +51,10 @@ const createStyles = (config) => {
                     }
                 },
 
+                ' .pe-dialog__header, pe-dialog__body, pe-dialog__header': {
+                    'z-index': 1
+                },
+
                 ' .pe-dialog__content': [
                     flex.layout,
                     flex.layoutVertical,
@@ -61,8 +65,8 @@ const createStyles = (config) => {
                         'max-width': 7 * common.grid_unit_menu + 'px',
                         'border-radius': config.border_radius + 'px',
 
-                        ' > .shadow': {
-                            'z-index': -1
+                        ' > .pe-shadow': {
+                            'z-index': -1 // For IE10 to get click events on content
                         },
 
                         '&.pe-menu__content': {
@@ -113,7 +117,7 @@ const createStyles = (config) => {
                         'border-style': 'solid none',
                         'border-color': 'transparent',
                         // initially set max-height; will be overridden by dialog core with actual heights
-                        'max-height': 'calc(100vh - ' + padding + 'px - ' + (config.header_height + config.footer_height) + 'px)'
+                        'max-height': 'calc(100vh - ' + (2 * padding) + 'px - ' + (config.header_height + config.footer_height) + 'px)'
                     }
                 ],
                 ' .pe-dialog__header + .pe-dialog__body': {

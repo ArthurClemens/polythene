@@ -49,6 +49,7 @@ const createStyles = (config) => {
                 '&.pe-tabs--scrollable': {
                     // hide scrollbar (this approach is required for Firefox)
                     'max-height': config.tab_height + 'px',
+                    '-ms-overflow-style': 'none',
 
                     ' .pe-tabs__scroll-button': {
                         // default hide, show with html.pe-no-touch
