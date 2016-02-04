@@ -119,6 +119,8 @@ export default {
 
 ### Custom styles as configuration
 
+NOTE: Only when you are using es6 and have a symlinked folder of Polythene
+
 Instead of creating this theme code for all custom components, we can write the style configurations in one file. The default path of this file is `polythene/config/custom`, but that is a placeholder for your actual custom configuration file (more on that further down).
 
 The file may look like this:
@@ -196,6 +198,8 @@ map: {
 
 
 ## Change global theme variables
+
+NOTE: Only when you are using es6 and have a symlinked folder of Polythene
 
 Global theme variables are stored in `polythene/config/config` (which reads `polythene/config/default`). This file defines common sizes, breakpoints, primary color, and so on.
 

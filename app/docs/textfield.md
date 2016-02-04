@@ -269,6 +269,8 @@ These options have effect on the overall component (label, input, help, error).
 | **getState** | | | | See: Functions |
 | **help** | optional | String | | Help text below the field |
 | **hideValidation** | optional | Boolean |  | Set to true to hide invalid state indicators |
+| **hideSpinner** | optional | Boolean | true | Set to false to show the default browser step indicator on number inputs |
+| **hideClear** | optional | Boolean | true | Set to false to show the default browser clear button |
 | **label** | optional | String | | Text label; unless `floatingLabel` is `true`, the label is functionally equal to a placeholder |
 | **validate** | | | | See: Functions |
 | **validateAtStart** | optional | Boolean | | Set to `true` to validate the field before any user action |
