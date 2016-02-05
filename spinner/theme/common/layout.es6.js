@@ -6,6 +6,16 @@ const sizes = (size) => ({
     height: size + 'px'
 });
 
+const sizesRaised = (size) => {
+    const padding = size / 4;
+    const paddedSize = size + padding * 2;
+    return {
+        width: paddedSize + 'px',
+        height: paddedSize + 'px',
+        padding: padding + 'px'
+    };
+};
+
 const createStyles = (config) => {
     return [{
         '.pe-spinner': [
@@ -23,7 +33,7 @@ const createStyles = (config) => {
                 },
 
                 '&.pe-spinner--small': sizes(config.size_small),
-                '&.pe-spinner--regular': sizes(config.size),
+                '&.pe-spinner--regular': sizes(config.size_regular),
                 '&.pe-spinner--medium': sizes(config.size_medium),
                 '&.pe-spinner--large': sizes(config.size_large),
                 '&.pe-spinner--fab': sizes(config.size_fab),
@@ -31,7 +41,12 @@ const createStyles = (config) => {
                 '&.pe-spinner--raised': {
                     position: 'relative',
                     'border-radius': '50%',
-                    padding: config.floating_padding + 'px'
+
+                    '&.pe-spinner--small': sizesRaised(config.size_small),
+                    '&.pe-spinner--regular': sizesRaised(config.size_regular),
+                    '&.pe-spinner--medium': sizesRaised(config.size_medium),
+                    '&.pe-spinner--large': sizesRaised(config.size_large),
+                    '&.pe-spinner--fab': sizesRaised(config.size_fab)
                 }
             }
         ]

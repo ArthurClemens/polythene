@@ -11,13 +11,12 @@ Available themed spinners:
 * Material Design determinate spinner at `polythene/spinner/determinate-spinner`
 * iOS indeterminate spinner at `polythene/spinner/ios-spinner`
 
-
 ## Usage
 
 ~~~javascript
-import indeterminateSpinner from 'polythene/spinner/indeterminate-spinner';
+import spinner from 'polythene/spinner/indeterminate-spinner';
 
-m.component(indeterminateSpinner, {
+m.component(spinner, {
     singleColor: true,
     type: 'small'
 })
@@ -77,14 +76,6 @@ m.component(spinner, {
 | **show** | optional | Boolean | | Set to true to show the menu |
 | **hide** | optional | Boolean | | Set to true to hide the menu |
 
-### Deterministic spinner options
-
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
-| ------------- | -------------- | -------- | ----------- | --------------- |
-| **percentage** | optional | Number (0..1) or Function | | Percentage in progress |
-| **getPercentage** | optional | Function({Number: 0..1}) | | Callback function to receive the percentage in progress |
-| **animated** | optional | Boolean | false | Set to `true` to animate the progress between subsequent steps |
-
 ### Spinner appearance options
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
@@ -99,6 +90,14 @@ m.component(spinner, {
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **singleColor** | optional | Boolean | | Set to true to use only one color (by default the primary color) |
+
+### Determinate spinner options
+
+| **percentage** | optional | Number (0..1) or Function | | (Determinate spinner) Sets the progress percentage value |
+| **animated** | optional | Boolean | false | (Determinate spinner) Set to `true` to animate the progress between subsequent steps |
+| **updateDuration** | optional | Number (seconds) | 0.8 | The duration of the step progress update |
+
+
 
 ### Show/hide transition options
 

@@ -1,23 +1,29 @@
-import mixin from 'polythene/common/mixin';
 import common from 'polythene/config/config';
+import mixin from 'polythene/common/mixin';
 
-const createStyles = (config) => {
+const createStyles = () => {
     return [{
-        '.pe-spinner--determinate': {
-            ' circle': [
+        '.pe-spinner-determinate': {
+            position: 'relative',
+
+            ' .pe-spinner-determinate__animation': [
+                mixin.vendorize({
+                    'animation-duration': '1.5s'
+                }, common.prefixes_animation),
                 {
-                    'stroke-width': config.circle_stroke_width + 'px',
-                    'stroke-dasharray': (3.14 * config.size)
+                    position: 'absolute',
+                    width: '100%',
+                    height: '100%'
                 }
             ],
 
-            '&.pe-spinner--animated': {
-                ' .pe-spinner__animation': mixin.vendorize({
-                    'transition-duration': config.animation_update_duration + 's'
-                }, common.prefixes_transition),
-                ' circle': mixin.vendorize({
-                    'transition': 'stroke-dashoffset ' + config.animation_update_duration + 's'
-                }, common.prefixes_transition)
+            ' .pe-spinner-determinate__circle': {
+                position: 'absolute',
+                'box-sizing': 'border-box',
+                width: '100%',
+                height: '100%',
+                'border-style': 'solid',
+                'border-radius': '50%'
             }
         }
     }];

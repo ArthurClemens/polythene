@@ -1,39 +1,40 @@
+/*
+Derived from https://github.com/PolymerElements/paper-spinner
+
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+*/
+
 import mixin from 'polythene/common/mixin';
-
-const keyframes = (config, tint) => {
-    const keyframesColor = () => ({
-        ' 0%, 20%, 100%': {
-            stroke: config['color_' + tint + '_1']
-        },
-        ' 30%, 45%': {
-            stroke: config['color_' + tint + '_2']
-        },
-        ' 50%, 70%': {
-            stroke: config['color_' + tint + '_3']
-        },
-        ' 75%, 95%': {
-            stroke: config['color_' + tint + '_4']
-        }
-    });
-
-    return {
-        '@keyframes indeterminateSpinnerColor': keyframesColor()
-    };
-};
 
 const style = (config, tint, scope = '') => {
     return [{
-        [scope + '.pe-spinner--indeterminate']: {
+        [scope + '.pe-spinner-indeterminate']: {
 
             color: config['color_' + tint + '_single'],
 
-            ' circle': {
-                fill: 'transparent',
-                stroke: config['color_' + tint + '_1']
+            ' .pe-spinner-indeterminate__layer': {
+                'border-color': 'currentcolor'
             },
 
-            '&.pe-spinner--single-color circle': {
-                stroke: 'currentcolor'
+            '&:not(.pe-spinner--single-color)': {
+                ' .pe-spinner-indeterminate__layer--1': {
+                    'border-color': config['color_' + tint + '_1']
+                },
+                ' .pe-spinner-indeterminate__layer--2': {
+                    'border-color': config['color_' + tint + '_2']
+                },
+                ' .pe-spinner-indeterminate__layer--3': {
+                    'border-color': config['color_' + tint + '_3']
+                },
+                ' .pe-spinner-indeterminate__layer--4': {
+                    'border-color': config['color_' + tint + '_4']
+                }
             }
         }
     }];
@@ -41,9 +42,6 @@ const style = (config, tint, scope = '') => {
 
 const createStyles = (config) => {
     return [
-        keyframes(config, 'light'),
-        keyframes(config, 'dark'),
-
         style(config, 'light'),
         {
             '.pe-dark-theme': [

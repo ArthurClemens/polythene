@@ -5,12 +5,8 @@ const style = (config, tint, scope = '') => {
         [scope + '.pe-spinner--determinate']: {
             color: config['color_' + tint],
 
-            ' circle': {
-                fill: 'transparent'
-            },
-
-            '&.pe-spinner--single-color circle': {
-                stroke: 'currentcolor'
+            ' .pe-spinner-determinate__circle': {
+                'border-width': 'currentcolor'
             }
         }
     }];

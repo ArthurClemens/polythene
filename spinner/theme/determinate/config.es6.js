@@ -1,10 +1,14 @@
+import 'polythene/common/object.assign';
 import common from 'polythene/config/config';
+import defaultConfig from 'polythene/spinner/theme/common/config';
 
-export default {
-    size: 40,
-    circle_stroke_width: 4,
-    animation_update_duration: .5, // seconds
+export default Object.assign({}, defaultConfig, {
+    border_width_small: defaultConfig.size_small / defaultConfig.size_regular * 3,
+    border_width_regular: 3,
+    border_width_medium: defaultConfig.size_medium / defaultConfig.size_regular * 3,
+    border_width_large: defaultConfig.size_large / defaultConfig.size_regular * 3,
+    border_width_fab: defaultConfig.size_fab / defaultConfig.size_regular * 3,
 
     color_light: common.rgba(common.color_primary),
     color_dark: common.rgba(common.color_primary)
-};
+});
