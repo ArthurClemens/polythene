@@ -93,6 +93,8 @@ m.component(spinner, {
 
 ### Determinate spinner options
 
+| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
 | **percentage** | optional | Number (0..1) or Function | | (Determinate spinner) Sets the progress percentage value |
 | **animated** | optional | Boolean | false | (Determinate spinner) Set to `true` to animate the progress between subsequent steps |
 | **updateDuration** | optional | Number (seconds) | 0.8 | The duration of the step progress update |
