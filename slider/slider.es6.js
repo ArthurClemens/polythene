@@ -168,7 +168,8 @@ const createSlider = (ctrl, opts = {}, hasTicks, interactiveTrack) => {
     };
 
     const flexValueCss = fraction + ' 1 0%';
-    const flexRestCss = (1 - fraction) + ' 1 0%';
+    const flexRestValue = (1 - fraction);
+    const flexRestCss = flexRestValue + ' 1 0%';
 
     return [
         m('div', Object.assign({}, {
@@ -255,7 +256,8 @@ const createSlider = (ctrl, opts = {}, hasTicks, interactiveTrack) => {
                     style: {
                         flex: flexRestCss,
                         '-ms-flex': flexRestCss,
-                        webkitFlex: flexRestCss
+                        webkitFlex: flexRestCss,
+                        'max-width': (flexRestValue * 100) + '%' // for IE Edge
                     }
                 },
                 m('div', {class: CSS_CLASSES.trackBar},
