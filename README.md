@@ -43,6 +43,29 @@ Source files are written in es6 and transpiled to es5. The building blocks are a
 Polythene works both in es6 and es5 applications.
 
 
+### Basic example
+
+A simple es6 module that shows a button:
+
+~~~javascript
+import m from 'mithril';
+import button from 'polythene/button/button';
+import 'polythene/theme/theme';
+
+const app = {};
+app.view = function() {
+    return m('div', [
+        m.component(button, {
+            label: 'Button',
+            raised: true
+        })
+    ]);
+};
+
+m.mount(document.body, app);
+~~~
+
+
 ## Installation
 
 You will need:
