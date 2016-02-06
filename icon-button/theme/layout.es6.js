@@ -19,6 +19,12 @@ const createStyles = (config) => {
             ' .pe-button__label': {
                 'line-height': 1,
                 padding: config.padding + 'px'
+            },
+
+            '&.pe-button--compact': {
+                ' .pe-button__label': {
+                    padding: config.padding_compact + 'px'
+                }
             }
         }
     }];
