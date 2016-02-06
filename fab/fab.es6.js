@@ -10,18 +10,21 @@ const CSS_CLASSES = {
 
 const createView = (ctrl, opts = {}) => {
     return m.component(iconBtn, Object.assign({}, opts, {
-        parentClass = [CSS_CLASSES.block, (opts.mini ? CSS_CLASSES.mini : null)].join(' '),
-        raised = true,
-        ripple = {
+        parentClass: [
+            CSS_CLASSES.block,
+            (opts.mini ? CSS_CLASSES.mini : null)
+        ].join(' '),
+        raised: true,
+        ripple: {
             center: true,
             opacityDecayVelocity: 0.24
         },
-        shadow = {
+        shadow: {
             increase: 5
         },
-        ink = true,
-        wash = true,
-        animateOnTap = true
+        ink: true,
+        wash: true,
+        animateOnTap: true
     }));
 };
 

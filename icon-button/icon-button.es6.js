@@ -15,7 +15,7 @@ const createView = (ctrl, opts = {}) => {
     const content = opts.icon
         ? m.component(icon, opts.icon)
         : opts.content
-            ? content = opts.content
+            ? opts.content
             : null;
     return m.component(button, Object.assign({}, opts, {
         content: m('div', {
