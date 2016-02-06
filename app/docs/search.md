@@ -253,6 +253,30 @@ module.view = (ctrl) => {
 | **buttons** | optional | Object | | The Object needs to have (optional) attributes `none`, `focus`, `focus_dirty` and `dirty`, each with (optional) attributes `before` and `after`; pass a Mithril element (or Array) to each |
 
 
+## Configuration
+
+To set a different height, it is easiest to create a "subclass" from search; more information in [Theme](#theme).
+
+For instance:
+
+~~~javascript
+import 'polythene/common/object.assign';
+
+export default {
+    search: (config) => {
+        const topbarSearchCfg = Object.assign({}, config, {
+            fullwidth_height: 50
+        });
+        return [
+            {'.my-search--topbar': topbarSearchCfg}
+        ];
+    }
+};
+~~~
+
+Note that default icon buttons are 48px high, so use smaller icons when the top bar needs to be even smaller. An icon button with icon of type 'small' is 40px high.
+
+
 ## Inheritance/composition
 
 The search field is composed with [text field](#textfield) with focus border removed.
