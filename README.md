@@ -52,14 +52,15 @@ import m from 'mithril';
 import button from 'polythene/button/button';
 import 'polythene/theme/theme';
 
-const app = {};
-app.view = function() {
-    return m('div', [
-        m.component(button, {
-            label: 'Button',
-            raised: true
-        })
-    ]);
+const app = {
+    view: () => {
+        return m('div', [
+            m.component(button, {
+                label: 'Button',
+                raised: true
+            })
+        ]);
+    }
 };
 
 m.mount(document.body, app);
