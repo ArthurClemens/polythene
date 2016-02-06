@@ -93,16 +93,16 @@ import color from 'polythene/button/theme/color';
 import styler from 'polythene/common/styler';
 
 const reconfig = (cfg) => {
-    return [
-        {'.my-button--primary': Object.assign({}, cfg,
+    return [{
+        '.my-button--primary': Object.assign({}, cfg,
             {
                 border_radius: 0,
                 text_transform: 'none',
                 color_light_flat_normal_background: '#673ab7',
                 color_light_flat_normal_text: '#fff'
             }
-        )}
-    ];
+        )
+    }];
 };
 
 const newConfig = reconfig(defaultConfig);
