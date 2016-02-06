@@ -1,31 +1,57 @@
-var fs = require('fs');
-var browserify = require('browserify');
-var sh = require('shelljs');
+const fs = require('fs');
+const browserify = require('browserify');
+const sh = require('shelljs');
 
-var folders = ['base-button', 'button', 'card', 'checkbox', 'common', 'config', 'dialog', 'element', 'fab', 'font-roboto', 'header-panel', 'icon', 'icon-button', 'layout', 'list', 'list-tile', 'menu', 'notification', 'polythene', 'radio-button', 'ripple', 'search', 'selection-control', 'shadow', 'slider', 'spinner', 'svg', 'switch', 'tabs', 'textfield', 'theme', 'toolbar'];
+const folders = ['base-button', 'button', 'card', 'checkbox', 'common', 'config', 'dialog', 'element', 'fab', 'font-roboto', 'header-panel', 'icon', 'icon-button', 'layout', 'list', 'list-tile', 'menu', 'notification', 'polythene', 'radio-button', 'ripple', 'search', 'selection-control', 'shadow', 'slider', 'spinner', 'svg', 'switch', 'tabs', 'textfield', 'theme', 'toolbar'];
 
-function prepare() {
+const noRequires = {
+    'common': 1,
+    'font-roboto': 1,
+    'layout': 1
+};
+
+const filterNoRequires = (folder) => (!noRequires[folder]);
+
+const formatRequire = (path) => (`require('${path}');`);
+
+const requires = (formatFn) => {
+    formatFn = formatFn || ((str) => (str));
+    return [formatFn('mithril')].concat(folders.filter(filterNoRequires).map((folder) => {
+        return formatFn(`polythene/${folder}/${folder}`);
+    }));
+};
+
+const writeRequires = (callback) => {
+    console.log('standalone writeRequires');
+    fs.writeFile('standalone-src.js', requires(formatRequire).join('\r'), 'utf8', () => (console.log('standalone writeRequires done'), callback()));
+};
+
+const prepare = () => {
+    console.log('standalone prepare');
     sh.mkdir('-p', 'tmp');
-    folders.map(function(folder) {
+    folders.map((folder) => {
         sh.mv(folder, 'tmp/' + folder);
     });
     sh.mv('tmp', 'polythene');
-}
+    console.log('standalone prepare done');
+};
 
-function teardown() {
+const teardown = () => {
+    console.log('standalone teardown');
     sh.mv('polythene', 'tmp');
-    folders.map(function(folder) {
-        sh.mv('tmp/' + folder, '../');
-    });
-    // sh.rm('-rf', 'tmp');
-}
+    sh.mv('tmp/*', '.');
+    sh.rm('-rf', 'tmp');
+    sh.rm('-rf', 'standalone-src.js');
+    console.log('standalone teardown done');
+};
 
-function build() {
-    var bundle = function(entries, outfile) {
+const build = () => {
+    console.log('standalone build');
+    const createBundle = (entries, outfile) => {
         browserify({
             entries: entries,
             paths: ['.', 'node_modules'],
-            require: ['mithril', 'polythene/base-button/base-button', 'polythene/button/button', 'polythene/card/card', 'polythene/checkbox/checkbox', 'polythene/dialog/dialog', 'polythene/element/element', 'polythene/fab/fab', 'polythene/header-panel/header-panel', 'polythene/icon/icon', 'polythene/icon-button/icon-button', 'polythene/list/list', 'polythene/list-tile/list-tile', 'polythene/menu/menu', 'polythene/notification/notification', 'polythene/polythene/polythene', 'polythene/radio-button/radio-button', 'polythene/ripple/ripple', 'polythene/search/search', 'polythene/selection-control/selection-control', 'polythene/shadow/shadow', 'polythene/slider/slider', 'polythene/spinner/spinner', 'polythene/svg/svg', 'polythene/switch/switch', 'polythene/tabs/tabs', 'polythene/textfield/textfield', 'polythene/theme/theme', 'polythene/toolbar/toolbar']
+            require: requires()
         })
         .transform({
             global: true
@@ -34,16 +60,16 @@ function build() {
         .on('error', function(err) {
             console.log('Error : ' + err.message);
         })
-        .pipe(fs.createWriteStream(outfile))
-        .on('success', function() {
-            teardown();
-        });
+        .pipe(fs.createWriteStream(outfile).on('finish', teardown))
+        ;
     };
 
-    bundle([
-        'scripts/standalone-src.js'
+    createBundle([
+        'standalone-src.js'
     ], 'polythene-standalone.js');
-}
+};
 
-prepare();
-// build();
+writeRequires(() => {
+    prepare();
+    build();
+});
