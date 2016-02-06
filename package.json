@@ -1,6 +1,6 @@
 {
   "name": "polythene",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Modular implementation of Material Design for Mithril.",
   "license": "MIT",
   "keywords": [
@@ -16,14 +16,16 @@
     "babel-cli": "^6.4.5",
     "babel-plugin-add-module-exports": "^0.1.2",
     "babel-preset-es2015": "^6.3.13",
+    "babelify": "^7.2.0",
+    "browserify": "^11.2.0",
+    "mithril": "^0.2.0",
     "transpile-watch": "0.0.2",
-    "uglify-js": "^2.6.1"
+    "uglifyify": "^3.0.1"
   },
   "scripts": {
-    "watch-es6": "node watch-es6.js watch . node_modules",
-    "watch": "npm run watch-es6",
-    "transpile-js": "node watch-es6.js once . node_modules",
-    "transpile": "npm run transpile-js"
+    "watch": "node scripts/transpile.js watch polythene",
+    "transpile": "node scripts/transpile.js once polythene",
+    "build": "node scripts/standalone.js"
   },
   "repository": {
     "type": "git",
@@ -41,38 +43,6 @@
   },
   "homepage": "https://github.com/ArthurClemens/Polythene",
   "files": [
-    "base-button",
-    "button",
-    "card",
-    "checkbox",
-    "common",
-    "config",
-    "dialog",
-    "element",
-    "fab",
-    "font-roboto",
-    "header-panel",
-    "icon",
-    "icon-button",
-    "layout",
-    "list",
-    "list-tile",
-    "menu",
-    "notification",
-    "polythene",
-    "radio-button",
-    "ripple",
-    "search",
-    "selection-control",
-    "shadow",
-    "slider",
-    "spinner",
-    "svg",
-    "switch",
-    "tabs",
-    "textfield",
-    "theme",
-    "toolbar",
-    "watch-es6.js"
+    "polythene"
   ]
 }

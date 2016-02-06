@@ -65,6 +65,14 @@ app.view = function() {
 m.mount(document.body, app);
 ~~~
 
+### Standalone version
+
+A standalone script is included for use on JSBin / JSFiddle. Include this script:
+
+~~~html
+https://cdn.rawgit.com/ArthurClemens/Polythene/master/polythene/polythene-standalone.js
+~~~
+
 
 ## Installation
 
