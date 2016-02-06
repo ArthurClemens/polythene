@@ -1,6 +1,6 @@
 {
   "name": "polythene",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "description": "Modular implementation of Material Design for Mithril.",
   "license": "MIT",
   "keywords": [
@@ -42,39 +42,5 @@
   "bugs": {
     "url": "https://github.com/ArthurClemens/Polythene/issues"
   },
-  "homepage": "https://github.com/ArthurClemens/Polythene",
-  "files": [
-    "button",
-    "card",
-    "checkbox",
-    "common",
-    "config",
-    "dialog",
-    "element",
-    "fab",
-    "font-roboto",
-    "header-panel",
-    "icon",
-    "icon-button",
-    "layout",
-    "list",
-    "list-tile",
-    "menu",
-    "notification",
-    "polythene",
-    "radio-button",
-    "ripple",
-    "search",
-    "selection-control",
-    "shadow",
-    "slider",
-    "spinner",
-    "svg",
-    "switch",
-    "tabs",
-    "textfield",
-    "theme",
-    "toolbar",
-    "polythene-standalone.js"
-  ]
+  "homepage": "https://github.com/ArthurClemens/Polythene"
 }
