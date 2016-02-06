@@ -70,7 +70,7 @@ m.mount(document.body, app);
 A standalone script is included for use on JSBin / JSFiddle. Include this script:
 
 ~~~html
-https://cdn.rawgit.com/ArthurClemens/Polythene/master/polythene/polythene-standalone.js
+https://rawgit.com/ArthurClemens/Polythene/master/polythene-standalone.js
 ~~~
 
 
