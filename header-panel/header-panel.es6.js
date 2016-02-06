@@ -253,9 +253,9 @@ const component = {
 
         if (opts.mode) {
             mode = opts.mode;
-        } else if (opts.header.toolbar) {
+        } else if (opts.header && opts.header.toolbar) {
             mode = opts.header.toolbar.mode;
-        } else if (opts.header.content) {
+        } else if (opts.header && opts.header.content) {
             mode = opts.header.mode;
         }
         mode = mode || 'standard';
