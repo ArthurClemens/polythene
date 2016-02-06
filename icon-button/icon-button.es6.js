@@ -1,3 +1,4 @@
+import 'polythene/common/object.assign';
 import m from 'mithril';
 import icon from 'polythene/icon/icon';
 import button from 'polythene/button/button';
@@ -11,21 +12,23 @@ const CSS_CLASSES = {
 };
 
 const createView = (ctrl, opts = {}) => {
-    let content;
-    if (opts.icon) {
-        content = m.component(icon, opts.icon);
-    } else if (opts.content) {
-        content = opts.content;
-    }
-    opts.content = m('div', {class: CSS_CLASSES.label}, content);
-    opts.parentClass = [
-        opts.parentClass || CSS_CLASSES.block,
-        opts.compact ? CSS_CLASSES.compact : null
-    ].join(' ');
-    // default do not show hover effect
-    opts.wash = (opts.wash !== undefined) ? opts.wash : false;
-    opts.animateOnTap = (opts.animateOnTap !== undefined) ? opts.animateOnTap : false;
-    return m.component(button, opts);
+    const content = opts.icon
+        ? m.component(icon, opts.icon)
+        : opts.content
+            ? content = opts.content
+            : null;
+    return m.component(button, Object.assign({}, opts, {
+        content: m('div', {
+            class: CSS_CLASSES.label
+        }, content),
+        parentClass: [
+            opts.parentClass || CSS_CLASSES.block,
+            opts.compact ? CSS_CLASSES.compact : null
+        ].join(' '),
+        // default do not show hover effect
+        wash: (opts.wash !== undefined) ? opts.wash : false,
+        animateOnTap: (opts.animateOnTap !== undefined) ? opts.animateOnTap : false
+    }));
 };
 
 const component = {
