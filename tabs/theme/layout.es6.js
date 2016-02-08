@@ -157,9 +157,6 @@ const createStyles = (config) => {
                             height: config.tab_height + 'px',
                             'line-height': common.line_height + 'em',
 
-                            ' .layout': {
-                                height: 'inherit'
-                            },
                             ' .pe-button__label, .pe-icon': {
                                 'max-width': config.label_max_width + 'px', // or .pe-tabs width minus 56dp
                                 'line-height': config.tab_label_line_height + 'px',
@@ -200,6 +197,16 @@ const createStyles = (config) => {
                         }
                     }
                 ],
+
+                ' .pe-tabs__tab-content': [
+                    flex.layout,
+                    flex.layoutVertical,
+                    {
+                        height: 'inherit'
+                    }
+                ],
+
+                ' .pe-tabs__tab-filler': flex.flex(),
 
                 '&.pe-tabs--autofit .pe-tabs__tab': [
                     flex.flex(),

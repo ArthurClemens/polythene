@@ -17,6 +17,8 @@ const CSS_CLASSES = {
     tabRow: 'pe-tabs__row',
     tabRowIndent: 'pe-tabs__row--indent',
     tab: 'pe-tabs__tab',
+    tabContent: 'pe-tabs__tab-content',
+    tabFiller: 'pe-tabs__tab-filler',
     tabHasIcon: 'pe-tabs__tab---icon',
     indicator: 'pe-tabs__indicator',
     scrollable: 'pe-tabs--scrollable',
@@ -42,7 +44,7 @@ const getNewIndex = (index, tabs) => {
     };
 };
 
-const handleScrollButtonClick = (ctrl, e, direction) => {
+const handleScrollButtonClick = (ctrl, opts, e, direction) => {
     e.stopPropagation();
     e.preventDefault();
     const tabs = ctrl.tabs;
@@ -50,7 +52,7 @@ const handleScrollButtonClick = (ctrl, e, direction) => {
     const newIndex = getNewIndex(currentTabIndex, tabs)[direction];
     scrollToTab(ctrl, newIndex, tabs, ctrl.scrollerEl);
     if (newIndex !== currentTabIndex) {
-        setSelectedTab(newIndex, true, ctrl);
+        setSelectedTab(ctrl, opts, newIndex, true);
         m.redraw();
     }
 };
@@ -81,16 +83,16 @@ const createScrollButton = (ctrl, position, opts) => {
         },
         events: {
             onclick: (position === POSITION_LEFT) ? (e) => {
-                handleScrollButtonClick(ctrl, e, 'left');
+                handleScrollButtonClick(ctrl, opts, e, 'left');
             } : (e) => {
-                handleScrollButtonClick(ctrl, e, 'right');
+                handleScrollButtonClick(ctrl, opts, e, 'right');
             }
         }
     });
 };
 
 const alignToTitle = (ctrl) => {
-    const firstTab = ctrl.tabs[0];
+    const firstTab = ctrl.tabs[0].el;
     const firstInnerLabel = firstTab.querySelector('.' + CSS_CLASSES.label + ' span');
     const firstOuterLabelWidth = firstTab.getBoundingClientRect().width;
     const firstInnerLabelWidth = firstInnerLabel.getBoundingClientRect().width;
@@ -106,8 +108,8 @@ const createRightButtonOffset = (ctrl) => {
 };
 
 const scrollToTab = (ctrl, tabIndex, tabs, scroller) => {
-    const left = tabs.slice(0, tabIndex).reduce((width, el) => {
-        return width + el.getBoundingClientRect().width;
+    const left = tabs.slice(0, tabIndex).reduce((width, tabData) => {
+        return width + tabData.el.getBoundingClientRect().width;
     }, 0);
 
     const scrollerLeft = scroller['scrollLeft'];
@@ -158,43 +160,59 @@ const animateIndicator = (selectedTabEl, animate, ctrl) => {
         style['-o-transform'] = transformCmd;
 };
 
-const setSelectedTab = (index, animate, ctrl) => {
+const setSelectedTab = (ctrl, opts, index, animate) => {
     ctrl.selectedTabIndex = index;
-    const selectedTabEl = ctrl.tabs[index];
+    if (!ctrl.tabs.length) return;
+    const selectedTabEl = ctrl.tabs[index].el;
     if (selectedTabEl && ctrl.tabIndicatorEl && ctrl.tabsEl) {
         animateIndicator(selectedTabEl, animate, ctrl);
     }
     if (ctrl.managesScroll) {
         updateScrollButtons(ctrl);
     }
+    if (opts.getState) {
+        opts.getState({
+            index: index,
+            data: ctrl.tabs[index].data,
+            el: selectedTabEl
+        });
+    }
 };
 
-const createTab = (index, tabButtonOpts, tabsOpts, ctrl) => {
-    // create a button
-    const tabButtonOptions = Object.assign({}, {
-        content: m('.layout.vertical', [
-            m('.flex'),
-            tabButtonOpts.icon ? m.component(icon, tabButtonOpts.icon) : null,
-            tabButtonOpts.label ? m('div', {class: CSS_CLASSES.label}, m('span', tabButtonOpts.label)) : null,
-            m('.flex')
+const createTab = (ctrl, opts, index, buttonOpts) => {
+    // Let internal onclick function co-exist with passed button option
+    const clickFn = () => (setSelectedTab(ctrl, opts, index, opts.noIndicatorSlide ? false : true));
+    buttonOpts.events = buttonOpts.events || {};
+    buttonOpts.events.onclick = buttonOpts.events.onclick || (() => {});
+    const tabButtonOptions = Object.assign({}, buttonOpts, {
+        content: m('div', {
+            class: CSS_CLASSES.tabContent
+        }, [
+            m('div', {class: CSS_CLASSES.tabFiller}),
+            buttonOpts.icon ? m.component(icon, buttonOpts.icon) : null,
+            buttonOpts.label ? m('div', {class: CSS_CLASSES.label}, m('span', buttonOpts.label)) : null,
+            m('div', {class: CSS_CLASSES.tabFiller}),
         ]),
         class: [
             CSS_CLASSES.tab,
-            (tabButtonOpts.icon && tabButtonOpts.label ? CSS_CLASSES.tabHasIcon : null),
-            tabButtonOpts.class
+            (buttonOpts.icon && buttonOpts.label ? CSS_CLASSES.tabHasIcon : null),
+            buttonOpts.class
         ].join(' '),
         wash: false,
         ripple: true,
-        events: {
-            onclick: () => (setSelectedTab(index, tabsOpts.noIndicatorSlide ? false : true, ctrl))
-        },
+        events: Object.assign({}, buttonOpts.events, {
+            onclick: (e) => {
+                clickFn();
+                buttonOpts.events.onclick(e);
+            }
+        }),
         config: (el, inited) => {
             if (inited) {
                 return;
             }
-            ctrl.tabs.push(el);
+            ctrl.tabs.push({data: buttonOpts, el});
         }
-    }, tabButtonOpts, tabsOpts.tabOpts || {});
+    });
     return m.component(button, tabButtonOptions);
 };
 
@@ -213,7 +231,7 @@ const createView = (ctrl, opts = {}) => {
 
     // keep selected tab up to date
     if (opts.selectedTab !== undefined && opts.buttons[0].url) {
-        setSelectedTab(opts.selectedTab, true, ctrl);
+        setSelectedTab(ctrl, opts, opts.selectedTab, true);
     }
 
     const props = {
@@ -236,9 +254,9 @@ const createView = (ctrl, opts = {}) => {
             ctrl.tabsEl = el;
 
             if (opts.largestWidth) {
-                const widths = ctrl.tabs.map(tab => tab.getBoundingClientRect().width);
+                const widths = ctrl.tabs.map(tabData => tabData.el.getBoundingClientRect().width);
                 const largest = widths.sort(sortNumbers).reverse()[0];
-                ctrl.tabs.forEach(tab => tab.style.width = largest + 'px');
+                ctrl.tabs.forEach(tabData => tabData.el.style.width = largest + 'px');
             }
 
             // align first scrollable tab to title
@@ -252,7 +270,7 @@ const createView = (ctrl, opts = {}) => {
             }
 
             const onResize = () => {
-                setSelectedTab(ctrl.selectedTabIndex, false, ctrl);
+                setSelectedTab(ctrl, opts, ctrl.selectedTabIndex, false);
                 m.redraw();
             };
             p.addListener('resize', onResize);
@@ -261,15 +279,15 @@ const createView = (ctrl, opts = {}) => {
                 p.removeListener('resize', onResize);
             };
 
-            setSelectedTab(opts.selectedTab || 0, false, ctrl);
+            setSelectedTab(ctrl, opts, opts.selectedTab || 0, false);
         }
     };
     const tabRow = opts.buttons.map((buttonOpts, index) => {
         buttonOpts = Object.assign(buttonOpts, {
             selected: index === ctrl.selectedTabIndex,
             animateOnTap: (opts.animateOnTap !== undefined) ? opts.animateOnTap : false
-        });
-        return createTab(index, buttonOpts, opts, ctrl);
+        }, opts.tabsOpts || {});
+        return createTab(ctrl, opts, index, buttonOpts);
     }).concat([
         // offset for right scroll button
         opts.scrollable ? m('div', {class: CSS_CLASSES.scrollButtonOffset}) : null
@@ -323,7 +341,7 @@ const component = {
         return {
             tabsEl: null,
             scrollerEl: null,
-            tabs: [],
+            tabs: [], // {data, el}
             tabIndicatorEl: null,
             selectedTabIndex: 0,
             managesScroll: false,

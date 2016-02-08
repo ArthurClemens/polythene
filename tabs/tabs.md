@@ -114,6 +114,18 @@ const myTabs = m.component(tabs, {
 The toolbar must have the class `pe-toolbar--tabs`. This will fit the tab row in a row (class `pe-toolbar__bar`), and give the scroll buttons background color the same color as the toolbar background.
 
 
+### Getting the tabs state
+
+To read the currently selected tab, for instance to write the selected tab to a controller variable, use `getState`:
+
+~~~javascript
+m.component(tabs, {
+    buttons: tabButtons,
+    getState: (state) => (ctrl.selectedTabIndex = state.index)
+})
+~~~
+
+The `state` object contains properties `index`, `data` (everything that was passed to the tab button), and `el` (the tab button HTML Element).
 
 ### Styling
 
@@ -179,6 +191,8 @@ m.component(tabs, {
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **buttons** | required | Array of options Objects |  | Tab buttons |
 | **tabsOpts** | optional | Options Object | | Tab button options that will be applied to all tabs, see "Tab button options"  below |
+| **getState**  | optional | Function(state {Object}) | | Callback function that accepts the tabs state (Object with properties `index` {Boolean}, `id` {String}, `el` {HTMLElement}) |
+
 
 ### Tabs appearance options
 
