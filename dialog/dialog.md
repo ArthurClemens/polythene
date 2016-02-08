@@ -4,9 +4,9 @@
 
 Displays a dialog. Stacked dialogs are possible.
 
-## Basic example
-
-<script async type="text/javascript" src="https://jsfiddle.net/ArthurClemens/1wmhfwbs/embed/js,result/"></script>
+<script async type="text/javascript" src="https://jsfiddle.net/ArthurClemens/1wmhfwbs/embed/js,result/">
+<h2>Basic example</h2>
+</script>
 
 ## Usage
 
