@@ -23,7 +23,6 @@ const createStyles = (config) => {
                 '&.pe-list-tile--sticky': mixin.sticky(),
 
                 ' .pe-list-tile__primary, .pe-list-tile__secondary': [
-                    flex.layout,
                     flex.layoutHorizontal,
                     {
                         ' a&': {
@@ -52,7 +51,6 @@ const createStyles = (config) => {
                 },
 
                 ' .pe-list-tile__content': [
-                    flex.layout,
                     flex.layoutVertical,
                     flex.selfCenter,
                     paddingH(config.side_padding),
@@ -115,7 +113,6 @@ const createStyles = (config) => {
 
                 '&.pe-list-tile--high-subtitle': {
                     ' .pe-list-tile--high-subtitle .pe-list-tile__secondary': [
-                        flex.layout,
                         flex.layoutHorizontal,
                         flex.layoutStart
                     ],

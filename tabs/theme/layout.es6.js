@@ -121,7 +121,6 @@ const createStyles = (config) => {
                 },
 
                 ' .pe-tabs__row': [
-                    flex.layout,
                     flex.layoutHorizontal,
                     mixin.vendorize({
                         'user-select': 'none'
@@ -199,7 +198,6 @@ const createStyles = (config) => {
                 ],
 
                 ' .pe-tabs__tab-content': [
-                    flex.layout,
                     flex.layoutVertical,
                     {
                         height: 'inherit'

@@ -34,7 +34,6 @@ const createStyles = (config, className, type) => {
             padding: 0,
 
             ' .pe-control__label': [
-                flex.layout,
                 flex.layoutHorizontal,
                 flex.layoutCenter,
                 {

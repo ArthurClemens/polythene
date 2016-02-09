@@ -13,7 +13,6 @@ const createStyles = (config) => {
 
             ' .pe-header-panel__outer-container': [
                 mixin.fit(),
-                flex.layout,
                 flex.layoutVertical
             ],
             ' .pe-header': mixin.ellipsis(),

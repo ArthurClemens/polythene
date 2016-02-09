@@ -18,8 +18,6 @@ const createStyles = (config) => {
 
     return [{
         '.pe-slider': [
-            // flex.layout,
-            // flex.layoutVertical,
             mixin.vendorize({
                 'user-select': 'none'
             }, common.prefixes_user_select),
@@ -33,7 +31,6 @@ const createStyles = (config) => {
                 },
 
                 ' .pe-slider__track': [
-                    flex.layout,
                     flex.layoutHorizontal,
                     mixin.defaultAnimation('transform', config.animation_duration),
                     mixin.vendorize({
@@ -123,10 +120,7 @@ const createStyles = (config) => {
                     }
                 ],
 
-                ' .pe-slider__track-value, .pe-slider__track-rest': [
-                    flex.layout,
-                    flex.layoutHorizontal
-                ],
+                ' .pe-slider__track-value, .pe-slider__track-rest': flex.layoutHorizontal,
 
                 ' .pe-slider__track-bar': [
                     flex.flex(),
@@ -149,7 +143,6 @@ const createStyles = (config) => {
                 },
 
                 ' .pe-slider__ticks': [
-                    flex.layout,
                     flex.layoutJustified,
                     mixin.vendorize({
                         'user-select': 'none'

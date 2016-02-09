@@ -49,7 +49,6 @@ const createStyles = (config) => {
                 }, common.prefixes_transform),
 
                 ' .pe-toolbar__bar': [
-                    flex.layout,
                     flex.layoutCenter,
                     flex.layoutHorizontal,
                     {

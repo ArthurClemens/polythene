@@ -6,7 +6,6 @@ const createStyles = (config) => {
     const padding = config.padding;
     return [{
         '.pe-dialog': [
-            flex.layout,
             flex.layoutCenterCenter,
             // transition-duration set in js
             mixin.vendorize({
@@ -56,7 +55,6 @@ const createStyles = (config) => {
                 },
 
                 ' .pe-dialog__content': [
-                    flex.layout,
                     flex.layoutVertical,
                     {
                         position: 'relative',
@@ -136,7 +134,6 @@ const createStyles = (config) => {
                 },
 
                 ' .pe-dialog__actions': [
-                    flex.layout,
                     flex.layoutHorizontal,
                     flex.layoutEndJustified,
                     flex.layoutWrap,

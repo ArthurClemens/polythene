@@ -9,7 +9,6 @@ const createStyles = (config) => {
             'z-index': common.z_notification
         },
         '.pe-notification': [
-            flex.layout,
             flex.layoutCenter,
             {
                 position: 'relative',
@@ -35,37 +34,23 @@ const createStyles = (config) => {
                 },
 
                 '&.pe-notification--horizontal': {
-                    ' .pe-notification__content': [
-                        flex.layout,
-                        flex.layoutHorizontal
-                    ],
-                    ' .pe-notification__title': [
-                        flex.flex()
-                    ],
+                    ' .pe-notification__content': flex.layoutHorizontal,
+                    ' .pe-notification__title': flex.flex(),
                     ' .pe-notification__title--multi-line': {
                         'padding-top': config.title_multi_padding_v + 'px',
                         'padding-bottom': config.title_multi_padding_v + 'px'
                     },
-                    ' .pe-notification__action': [
-                        flex.layout,
-                        flex.layoutCenter
-                    ]
+                    ' .pe-notification__action': flex.layoutCenter
                 },
                 '&.pe-notification--vertical': {
-                    ' .pe-notification__content': [
-                        flex.layout,
-                        flex.layoutVertical
-                    ],
+                    ' .pe-notification__content': flex.layoutVertical,
                     ' .pe-notification__title': {
                         'padding-bottom': '4px'
                     },
                     ' .pe-notification__title--multi-line': {
                         'padding-top': config.title_multi_padding_v + 'px'
                     },
-                    ' .pe-notification__action': [
-                        flex.layout,
-                        flex.layoutEndJustified
-                    ]
+                    ' .pe-notification__action': flex.layoutEndJustified
                 }
             }
         ]

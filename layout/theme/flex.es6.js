@@ -12,104 +12,149 @@ const layout = [
         'display': 'flex'
     }];
 
-const layoutInline = [{
-    'display': '-ms-inline-flexbox'
-}, {
-    'display': '-webkit-inline-flex'
-}, {
-    'display': 'inline-flex'
-}];
+const layoutInline = [
+    layout,
+    {
+        'display': '-ms-inline-flexbox'
+    }, {
+        'display': '-webkit-inline-flex'
+    }, {
+        'display': 'inline-flex'
+    }
+];
 
-const layoutHorizontal = {
-    '-ms-flex-direction': 'row',
-    '-webkit-flex-direction': 'row',
-    'flex-direction': 'row'
-};
+const layoutHorizontal = [
+    layout,
+    {
+        '-ms-flex-direction': 'row',
+        '-webkit-flex-direction': 'row',
+        'flex-direction': 'row'
+    }
+];
 
-const layoutHorizontalReverse = {
-    '-ms-flex-direction': 'row-reverse',
-    '-webkit-flex-direction': 'row-reverse',
-    'flex-direction': 'row-reverse'
-};
+const layoutHorizontalReverse = [
+    layout,
+    {
+        '-ms-flex-direction': 'row-reverse',
+        '-webkit-flex-direction': 'row-reverse',
+        'flex-direction': 'row-reverse'
+    }
+];
 
-const layoutVertical = {
-    '-ms-flex-direction': 'column',
-    '-webkit-flex-direction': 'column',
-    'flex-direction': 'column'
-};
+const layoutVertical = [
+    layout,
+    {
+        '-ms-flex-direction': 'column',
+        '-webkit-flex-direction': 'column',
+        'flex-direction': 'column'
+    }
+];
 
-const layoutVerticalReverse = {
-    '-ms-flex-direction': 'column-reverse',
-    '-webkit-flex-direction': 'column-reverse',
-    'flex-direction': 'column-reverse'
-};
+const layoutVerticalReverse = [
+    layout,
+    {
+        '-ms-flex-direction': 'column-reverse',
+        '-webkit-flex-direction': 'column-reverse',
+        'flex-direction': 'column-reverse'
+    }
+];
 
-const layoutWrap = {
-    '-ms-flex-wrap': 'wrap',
-    '-webkit-flex-wrap': 'wrap',
-    'flex-wrap': 'wrap'
-};
+const layoutWrap = [
+    layout,
+    {
+        '-ms-flex-wrap': 'wrap',
+        '-webkit-flex-wrap': 'wrap',
+        'flex-wrap': 'wrap'
+    }
+];
 
-const layoutWrapReverse = {
-    '-ms-flex-wrap': 'wrap-reverse',
-    '-webkit-flex-wrap': 'wrap-reverse',
-    'flex-wrap': 'wrap-reverse'
-};
+const layoutWrapReverse = [
+    layout,
+    {
+        '-ms-flex-wrap': 'wrap-reverse',
+        '-webkit-flex-wrap': 'wrap-reverse',
+        'flex-wrap': 'wrap-reverse'
+    }
+];
 
-const layoutStart = {
-    '-ms-flex-align': 'start',
-    '-webkit-align-items': 'flex-start',
-    'align-items': 'flex-start'
-};
+const layoutStart = [
+    layout,
+    {
+        '-ms-flex-align': 'start',
+        '-webkit-align-items': 'flex-start',
+        'align-items': 'flex-start'
+    }
+];
 
-const layoutCenter = {
-    '-ms-flex-align': 'center',
-    '-webkit-align-items': 'center',
-    'align-items': 'center'
-};
+const layoutCenter = [
+    layout,
+    {
+        '-ms-flex-align': 'center',
+        '-webkit-align-items': 'center',
+        'align-items': 'center'
+    }
+];
 
-const layoutEnd = {
-    '-ms-flex-align': 'end',
-    '-webkit-align-items': 'flex-end',
-    'align-items': 'flex-end'
-};
+const layoutEnd = [
+    layout,
+    {
+        '-ms-flex-align': 'end',
+        '-webkit-align-items': 'flex-end',
+        'align-items': 'flex-end'
+    }
+];
 
-const layoutJustified = {
-    '-ms-flex-line-pack': 'stretch', // IE10
-    '-ms-flex-pack': 'justify',
-    '-webkit-justify-content': 'space-between',
-    'justify-content': 'space-between'
-};
+const layoutJustified = [
+    layout,
+    {
+        '-ms-flex-line-pack': 'stretch', // IE10
+        '-ms-flex-pack': 'justify',
+        '-webkit-justify-content': 'space-between',
+        'justify-content': 'space-between'
+    }
+];
 
-const layoutStartJustified = {
-    '-ms-flex-align': 'start', // IE10
-    '-ms-flex-pack': 'start',
-    '-webkit-justify-content': 'flex-start',
-    'justify-content': 'flex-start'
-};
+const layoutStartJustified = [
+    layout,
+    {
+        '-ms-flex-align': 'start', // IE10
+        '-ms-flex-pack': 'start',
+        '-webkit-justify-content': 'flex-start',
+        'justify-content': 'flex-start'
+    }
+];
 
-const layoutCenterJustified = {
-    '-ms-flex-pack': 'center',
-    '-webkit-justify-content': 'center',
-    'justify-content': 'center'
-};
+const layoutCenterJustified = [
+    layout,
+    {
+        '-ms-flex-pack': 'center',
+        '-webkit-justify-content': 'center',
+        'justify-content': 'center'
+    }
+];
 
-const layoutEndJustified = {
-    '-ms-flex-pack': 'end',
-    '-webkit-justify-content': 'flex-end',
-    'justify-content': 'flex-end'
-};
+const layoutEndJustified = [
+    layout,
+    {
+        '-ms-flex-pack': 'end',
+        '-webkit-justify-content': 'flex-end',
+        'justify-content': 'flex-end'
+    }
+];
 
 const layoutCenterCenter = [
     layoutCenterJustified,
     layoutCenter
 ];
 
-const layoutAroundJustified = {
-    '-ms-flex-pack': 'distribute',
-    '-webkit-justify-content': 'space-around',
-    'justify-content': 'space-around'
-};
+const layoutAroundJustified = [
+    layout,
+    {
+        '-ms-flex-pack': 'distribute',
+        '-webkit-justify-content': 'space-around',
+        'justify-content': 'space-around'
+    }
+];
 
 const flex = (num = 1) => (
     [{

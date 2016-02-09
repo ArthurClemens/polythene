@@ -47,10 +47,7 @@ const createStyles = (config) => {
                     bottom: 0
                 },
 
-                ' .pe-search__content': [
-                    flex.layout,
-                    flex.layoutHorizontal
-                ],
+                ' .pe-search__content': flex.layoutHorizontal,
 
                 ' .pe-search__content > *': flex.layoutVertical,
 
