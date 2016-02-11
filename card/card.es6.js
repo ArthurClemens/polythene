@@ -2,6 +2,7 @@ import 'polythene/common/object.assign';
 import m from 'mithril';
 import shadow from 'polythene/shadow/shadow';
 import icon from 'polythene/icon/icon';
+import listTile from 'polythene/list-tile/list-tile';
 import 'polythene/card/theme/theme';
 
 const CSS_CLASSES = {
@@ -15,10 +16,8 @@ const CSS_CLASSES = {
     media: 'pe-card__media',
     header: 'pe-card__header',
     headerTitle: 'pe-card__header-title',
-    headerSubtitle: 'pe-card__header-subtitle',
     title: 'pe-card__title',
     subtitle: 'pe-card__subtitle',
-    titleFront: 'pe-card__header__front',
     text: 'pe-card__text',
     primary: 'pe-card__primary',
     primaryMedia: 'pe-card__primary__media',
@@ -136,21 +135,13 @@ const createMedia = o => {
 };
 
 const createHeader = o => {
+
     const opts = o.header || {};
-    const tag = opts.tag || 'a.layout.horizontal.center';
-    const props = Object.assign({
-        class: [CSS_CLASSES.header, opts.class].join(' '),
-        config: opts.config
-    }, (opts.url ? opts.url : null), (opts.events ? opts.events : null));
-    return m(tag, props, [
-        opts.icon ? m('div', {class: CSS_CLASSES.titleFront}, m.component(icon, opts.icon)) : null,
-        m('div', {
-            class: CSS_CLASSES.headerTitle
-        }, [
-            opts.title ? opts.title : null,
-            opts.subtitle ? m('div', {class: CSS_CLASSES.headerSubtitle}, opts.subtitle) : null
-        ])
-    ]);
+    return m.component(listTile, Object.assign({}, opts, {
+        class: [CSS_CLASSES.header, opts.class].join(' ')
+    }, opts.icon ? {
+        front: m.component(icon, opts.icon),
+    } : null));
 };
 
 const createActions = o => {

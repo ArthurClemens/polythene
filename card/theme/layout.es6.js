@@ -103,30 +103,17 @@ const createStyles = (config) => {
             },
 
             ' .pe-card__header': {
-                height: config.one_line_height_with_icon + 'px'
-            },
-            ' .pe-card__header-title': {
-                padding: config.one_line_padding_v + 'px 0',
-                'font-size': '14px',
-                'font-weight': common.font_weight_normal,
-                'line-height': '20px',
-                'margin-top': '3px'
-            },
-            ' .pe-card__header-subtitle': {
-                'font-weight': common.font_weight_normal
-            },
-            ' .pe-card__header__front': {
-                position: 'relative',
-                width: config.icon_element_width + 'px',
                 height: config.one_line_height_with_icon + 'px',
-                padding: config.one_line_padding_v + 'px 0',
 
-                ' .pe-icon': [
-                    mixin.verticalCenter('absolute'), {
-                        position: 'absolute',
-                        left: config.padding_h + 'px'
-                    }
-                ]
+                ' .pe-list-tile__title': {
+                    'font-size': '14px',
+                    'font-weight': common.font_weight_normal,
+                    'line-height': '20px',
+                    'margin-top': '2px'
+                },
+                ' .pe-list-tile__subtitle': {
+                    'margin-top': '-1px'
+                }
             },
 
             ' .pe-card__primary': {

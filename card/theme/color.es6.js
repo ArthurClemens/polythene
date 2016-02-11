@@ -11,10 +11,10 @@ const style = (config, tint, scope = '') => {
 const content = (config, tint, scope = '') => {
     return [{
         [scope]: {
-            ' .pe-card__title, .pe-card__header-title': {
+            ' .pe-card__title, .pe-list-tile__title': {
                 'color': config['color_' + tint + '_title_text']
             },
-            ' .pe-card__subtitle, .pe-card__header-subtitle': {
+            ' .pe-card__subtitle, .pe-list-tile__subtitle': {
                 'color': config['color_' + tint + '_subtitle_text']
             },
             ' .pe-card__text': {
