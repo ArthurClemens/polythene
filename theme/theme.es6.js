@@ -1,8 +1,5 @@
 import styler from 'polythene/common/styler';
 
-// Flexbox styles
-import 'polythene/layout/theme/theme';
-
 // Roboto font
 import 'polythene/font-roboto/theme';
 
