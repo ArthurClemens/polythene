@@ -1,17 +1,19 @@
+// Mixins for j2c
+
 import common from 'polythene/config/config';
 import 'polythene/common/object.assign';
 
-const vendorize = (what, vendors) => {
-    const vendorsSel = vendors.map((v) => ('_' + v + '$')).join('');
+// Creates j2c vendor key string from vendor list
+// mixin.vendorize({'user-select': 'none'}, common.prefixes_user_select)
+const vendorize = (what, prefixes) => {
+    const vendorsSel = prefixes.map((v) => ('_' + v + '$')).join('');
     return {
         [vendorsSel]: what
     };
 };
 
-const boxSizing = (type = 'border-box') => ({
-    'box-sizing': type
-});
-
+// Centers an item absolutely within relative parent
+// mixin.fit()
 const fit = (offset = 0) => {
     const offsetPx = offset + 'px';
     return {
@@ -23,6 +25,8 @@ const fit = (offset = 0) => {
     };
 };
 
+// Optional font smoothing
+// mixin.fontSmoothing()
 const fontSmoothing = (smoothing = true) => {
     if (smoothing) {
         return {
@@ -37,6 +41,9 @@ const fontSmoothing = (smoothing = true) => {
     }
 };
 
+// Breaks off a line with ...
+// unless lines is 'none'
+// mixin.ellipsis(2, 16),
 const ellipsis = (lines, lineHeight) => {
     if (lines === 'none') {
         return {
@@ -64,6 +71,8 @@ const ellipsis = (lines, lineHeight) => {
     );
 };
 
+// Clears float
+// mixin.clearfix()
 const clearfix = () => ({
     '&:after': {
         content: '""',
@@ -72,30 +81,35 @@ const clearfix = () => ({
     }
 });
 
+
+// Creates a very thin line
 // disabled, does not work in Chrome
-//const hairline = (which) => ({
-// #{$which}-width: 1px;
-// @media screen and (min-resolution: 2dppx) {
-//     #{$which}-width: 0.5px;
-// }
-//});
+// mixin.hairline()
 const hairline = () => ({});
 
-const verticalCenter = (position = 'relative') => ([
-    vendorize({
-        transform: 'translateY(-50%)'
-    }, common.prefixes_transform), {
-        position: position,
-        top: '50%'
-    }
-]);
+// const hairline = (which) => ({
+//     [`${which}-width`]: '1px',
+//
+//     ' html.pe-hairlines &': {
+//         [`${which}-width`]: '0.5px'
+//     }
+// });
 
-const verticalCenterParent = () => ([
-    vendorize({
-        'transform-style': 'preserve-3d'
-    }, common.prefixes_transform)
-]);
+// Test if browser handles 0.5px borders
+// and add class pe-hairlines if so
+// if (window.devicePixelRatio && devicePixelRatio >= 2) {
+//     const el = document.createElement('div');
+//     el.style.border = '.5px solid transparent';
+//     document.body.appendChild(el);
+//     if (el.offsetHeight === 1) {
+//         document.querySelector('html').classList.add('pe-hairlines');
+//     }
+//     document.body.removeChild(el);
+// }
 
+// Creates sticky headers in a scrollable list
+// Does not work in Chrome: http://caniuse.com/#feat=css-sticky
+// mixin.sticky()
 const sticky = () => ([
     {position: '-webkit-sticky'},
     {position: '-moz-sticky'},
@@ -108,7 +122,8 @@ const sticky = () => ([
     }
 ]);
 
-// theme utility function to generate style objects with scopes
+// Polythene utility function to generate style objects with scopes
+// Used in theme files
 const createStyles = (common, fn) => {
     if (Array.isArray(common)) {
         return common.map((o) => {
@@ -121,6 +136,8 @@ const createStyles = (common, fn) => {
     }
 };
 
+// Creats an amimation with presets
+// mixin.defaultAnimation('opacity', config.animation_duration)
 const defaultAnimation = (properties = 'all', duration = common.animation_duration, curve = common.animation_curve_default) => {
     return [
         vendorize({
@@ -138,17 +155,63 @@ const defaultAnimation = (properties = 'all', duration = common.animation_durati
     ];
 };
 
+// Scales an item dynamically between 2 screen sizes
+// mixin.fluidScale('font-size', 'px', 50, 100);
+// => 50px at 320 and below; scaling between sizes 50px and 100px in between the breakpoints; 100px at 1920 and above
+const fluidScale = (property, unit, minValue, maxValue, minBreakpoint = 320, maxBreakpoint = 1920, orientation = 'horizontal') => (fluidScales([property], unit, [[minBreakpoint, minValue], [maxBreakpoint, maxValue]], orientation));
+
+// Scales an item dynamically between multiple screen sizes
+// mixin.fluidScales(['padding-left', 'padding-right'], 'px', [[375, 40], [320, 35], [480, 55]])
+// => 35px padding-left and padding-right at 320 and below; scaling between sizes 35px and 40px in between the breakpoints 320 and 375; scaling between sizes 40px and 55px in between the breakpoints 375 and 480; 55px at 480 and above
+const fluidScales = (property, unit, sizes, orientation) => {
+    const sorted = sizes.sort();
+    const minBreakpoints = sorted.map((data) => (data[0]));
+    const maxBreakpoints = sorted.map((data) => (data[0]));
+    maxBreakpoints.shift();
+    maxBreakpoints.push(minBreakpoints[minBreakpoints.length - 1]);
+    const minValues = sorted.map((data) => (data[1]));
+    const maxValues = sorted.map((data) => (data[1]));
+    maxValues.shift();
+    maxValues.push(minValues[minValues.length - 1]);
+    return sorted.map((data, index) => (fluidRule(
+        property,
+        unit,
+        orientation,
+        minBreakpoints[index],
+        maxBreakpoints[index],
+        minValues[index],
+        maxValues[index],
+        index === 0,
+        index === sorted.length - 1
+    )));
+};
+
+const fluidRule = (property, unit, orientation = 'horizontal', minBreakpoint, maxBreakpoint, minValue, maxValue, isFirst, isLast) => {
+    const orientationUnit = (orientation === 'vertical') ? 'vh' : 'vw';
+    const orientationRule = (orientation === 'vertical') ? 'height' : 'width';
+    const rule = isLast
+        ? [`@media (min-${orientationRule}: ${minBreakpoint}px)`]
+        : [`@media (min-${orientationRule}: ${minBreakpoint}px) and (max-${orientationRule}: ${maxBreakpoint}px)`];
+    const multiplier = `((${maxValue} - ${minValue}) / (${maxBreakpoint} - ${minBreakpoint}) * 100${orientationUnit})`;
+    const adder = `(((${minValue} * ${maxBreakpoint}) - (${maxValue} * ${minBreakpoint})) / (${maxBreakpoint} - ${minBreakpoint})) * 1${unit}`;
+    const formula = `calc(${multiplier} + ${adder})`;
+    const properties = Array.isArray(property) ? property : [property];
+    return [
+        isFirst ? properties.map((p) => ({[p]: `${minValue}${unit}`})) : null,
+        {[rule]: properties.map((p) => ({[p]: isLast ? `${maxValue}${unit}` : formula}))}
+    ];
+};
+
 export default {
-    boxSizing,
     clearfix,
     createStyles,
     defaultAnimation,
+    ellipsis,
     fit,
     fontSmoothing,
+    fluidScale,
+    fluidScales,
     hairline,
-    ellipsis,
     sticky,
-    vendorize,
-    verticalCenter,
-    verticalCenterParent
+    vendorize
 };
