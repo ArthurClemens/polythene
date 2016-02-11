@@ -28,11 +28,11 @@ window.addEventListener('resize', e => (emitEvent('resize', e)));
 window.addEventListener('scroll', e => (emitEvent('scroll', e)));
 window.addEventListener('keydown', e => (emitEvent('keydown', e)));
 
-const polythene = {
+document.querySelector('html').classList.add(isTouch ? 'pe-touch' : 'pe-no-touch');
+
+export default {
     isTouch,
     addListener,
     removeListener,
     emitEvent
 };
-
-export default polythene;

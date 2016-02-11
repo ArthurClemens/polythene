@@ -1,8 +1,8 @@
-import p from 'polythene/polythene/polythene';
 import styler from 'polythene/common/styler';
 
 // Flexbox styles
 import 'polythene/layout/theme/theme';
+
 // Roboto font
 import 'polythene/font-roboto/theme';
 
@@ -41,4 +41,3 @@ const general = [{
 }];
 
 styler.add('pe-theme', roboto, typography, general);
-document.querySelector('html').classList.add(p.isTouch ? 'pe-touch' : 'pe-no-touch');
