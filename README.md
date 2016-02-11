@@ -109,7 +109,7 @@ var btn = require('polythene/button/button');
 
 ## Developing
 
-The included transpile script calls Babel with param `--presets es2015`.
+The included transpile script calls Babel with params `--presets es2015` and `--plugins babel-plugin-add-module-exports`.
 
 Transpile everything once:
 
