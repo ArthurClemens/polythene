@@ -136,9 +136,9 @@ const createStyles = (common, fn) => {
     }
 };
 
-// Creats an amimation with presets
-// mixin.defaultAnimation('opacity', config.animation_duration)
-const defaultAnimation = (properties = 'all', duration = common.animation_duration, curve = common.animation_curve_default) => {
+// Creats a transition with presets
+// mixin.defaultTransition('opacity', config.animation_duration)
+const defaultTransition = (properties = 'all', duration = common.animation_duration, curve = common.animation_curve_default) => {
     return [
         vendorize({
             'transition-delay': 0
@@ -205,7 +205,7 @@ const fluidRule = (property, unit, orientation = 'horizontal', minBreakpoint, ma
 export default {
     clearfix,
     createStyles,
-    defaultAnimation,
+    defaultTransition,
     ellipsis,
     fit,
     fontSmoothing,

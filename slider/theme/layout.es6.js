@@ -32,7 +32,7 @@ const createStyles = (config) => {
 
                 ' .pe-slider__track': [
                     flex.layoutHorizontal,
-                    mixin.defaultAnimation('transform', config.animation_duration),
+                    mixin.defaultTransition('transform', config.animation_duration),
                     mixin.vendorize({
                         'user-select': 'none'
                     }, common.prefixes_user_select),
@@ -48,7 +48,7 @@ const createStyles = (config) => {
 
                 ' .pe-slider__control': [
                     flex.selfCenter,
-                    mixin.defaultAnimation('transform, background', config.animation_duration),
+                    mixin.defaultTransition('transform, background', config.animation_duration),
                     mixin.vendorize({
                         'user-select': 'none'
                     }, common.prefixes_user_select), {
@@ -62,7 +62,7 @@ const createStyles = (config) => {
 
                         // touch area
                         '&:before': [
-                            mixin.defaultAnimation('background-color', config.animation_duration),
+                            mixin.defaultTransition('background-color', config.animation_duration),
                             {
                                 content: '""',
                                 position: 'absolute',
@@ -76,7 +76,7 @@ const createStyles = (config) => {
 
                         // border
                         '&:after': [
-                            mixin.defaultAnimation('border', config.animation_duration),
+                            mixin.defaultTransition('border', config.animation_duration),
                             positionBorder(thumbSize, config.thumb_border_width),
                             {
                                 content: '""',
@@ -89,7 +89,7 @@ const createStyles = (config) => {
                 ],
 
                 ' .pe-slider__thumb': [
-                    mixin.defaultAnimation('opacity', config.animation_duration),
+                    mixin.defaultTransition('opacity', config.animation_duration),
                     mixin.fit(),
                     {
                         '&, .pe-icon': {
@@ -131,7 +131,7 @@ const createStyles = (config) => {
                 ],
                 ' .pe-slider__track-bar-value': [
                     flex.flex(),
-                    mixin.defaultAnimation('transform, background-color', config.animation_duration), {
+                    mixin.defaultTransition('transform, background-color', config.animation_duration), {
                         height: config.bar_height + 'px'
                     }
                 ],
@@ -169,7 +169,7 @@ const createStyles = (config) => {
                     mixin.vendorize({
                         'transform-origin': 'bottom'
                     }, common.prefixes_transform),
-                    mixin.defaultAnimation('transform', '.11s'), {
+                    mixin.defaultTransition('transform', '.11s'), {
                         position: 'absolute',
                         'z-index': 1,
                         width: config.pin_width + 'px',

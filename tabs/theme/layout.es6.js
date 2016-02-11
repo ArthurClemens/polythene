@@ -164,7 +164,7 @@ const createStyles = (config) => {
                                 'white-space': 'normal'
                             },
                             ' .pe-button__label': [
-                                mixin.defaultAnimation('opacity', config.animation_duration),
+                                mixin.defaultTransition('opacity', config.animation_duration),
                                 {
                                     margin: config.tab_label_vertical_offset + 'px 0 0 0',
                                     padding: 0,

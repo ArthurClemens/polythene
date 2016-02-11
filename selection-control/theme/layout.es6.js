@@ -74,7 +74,7 @@ const createStyles = (config, className, type) => {
             },
 
             ' .pe-control__button': [
-                mixin.defaultAnimation('opacity', config.animation_duration),
+                mixin.defaultTransition('opacity', config.animation_duration),
                 {
                     position: 'absolute',
                     left: -((config.button_size - config.icon_size)/2) + 'px',

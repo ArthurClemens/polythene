@@ -4,7 +4,7 @@ import selectionControlStyle from 'polythene/selection-control/theme/layout';
 
 const transition = (config, properties, duration = config.animation_duration) => {
     return [
-        mixin.defaultAnimation(properties, duration, 'ease-out')
+        mixin.defaultTransition(properties, duration, 'ease-out')
     ];
 };
 

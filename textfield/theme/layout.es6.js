@@ -21,7 +21,7 @@ const createStyles = (config) => {
                     'padding-top': config.vertical_spacing_top + 'px',
 
                     '&:after': [
-                        mixin.defaultAnimation('opacity', config.input_focus_border_animation_duration),
+                        mixin.defaultTransition('opacity', config.input_focus_border_animation_duration),
                         {
                             position: 'absolute',
                             content: '""',
@@ -104,7 +104,7 @@ const createStyles = (config) => {
                     },
 
                     ' .pe-textfield__label': [
-                        mixin.defaultAnimation('all', config.floating_label_animation_duration), {
+                        mixin.defaultTransition('all', config.floating_label_animation_duration), {
                             top: (config.floating_label_vertical_spacing_top + config.input_padding_v) + 'px'
                         }
                     ],
@@ -174,7 +174,7 @@ const createStyles = (config) => {
                 },
 
                 ' .pe-textfield__help-focus': [
-                    mixin.defaultAnimation('opacity'), {
+                    mixin.defaultTransition('opacity'), {
                         opacity: 0
                     }
                 ],

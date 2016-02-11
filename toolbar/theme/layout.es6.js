@@ -17,7 +17,7 @@ const createStyles = (config) => {
                 'line-height': config.line_height + 'em',
                 'background-color': '#CFD8DC', // just a default color, will normally be overridden
 
-                '&.pe-header--animated': mixin.defaultAnimation('height', config.transition_duration, 'ease-in'),
+                '&.pe-header--animated': mixin.defaultTransition('height', config.transition_duration, 'ease-in'),
 
                 '&.pe-header--medium-tall': {
                     height: config.height_medium_tall + 'px'
