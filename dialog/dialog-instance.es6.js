@@ -215,7 +215,6 @@ const createView = (ctrl, opts = {}) => {
                 ctrl.footerEl = el;
             }
         }, [
-            m('.flex'),
             m('div', {class: CSS_CLASSES.actions}, opts.footer)
         ]) : null
     ]);
