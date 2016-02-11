@@ -9,7 +9,7 @@ const createStyles = (config) => {
 
     return [{
         '.pe-search': [
-            flex.flex(1),
+            flex.flex(),
             {
                 position: 'relative', // necessary when a shadow is added
 
