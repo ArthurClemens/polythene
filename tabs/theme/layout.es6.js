@@ -131,6 +131,8 @@ const createStyles = (config) => {
                     }
                 ],
 
+                ' .pe-tabs__row--centered': flex.layoutCenterJustified,
+
                 ' .pe-tabs__scroll-button--offset': [
                     flex.flex(),
                     flex.flexIndex('none')
@@ -190,7 +192,7 @@ const createStyles = (config) => {
                                 }
                             }, {
                                 ' .pe-icon': {
-                                    'margin-bottom': '8px'
+                                    'margin-bottom': config.tab_icon_label_icon_spacing + 'px'
                                 }
                             }]
                         }
@@ -198,13 +200,12 @@ const createStyles = (config) => {
                 ],
 
                 ' .pe-tabs__tab-content': [
+                    flex.layoutCenterCenter,
                     flex.layoutVertical,
                     {
                         height: 'inherit'
                     }
                 ],
-
-                ' .pe-tabs__tab-filler': flex.flex(),
 
                 '&.pe-tabs--autofit .pe-tabs__tab': [
                     flex.flex(),

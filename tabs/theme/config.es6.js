@@ -13,7 +13,8 @@ export default {
     tab_height: 48,
     menu_tab_height: 44,
     menu_tab_icon_label_height: 44,
-    tab_icon_label_height: 64,
+    tab_icon_label_height: 72,
+    tab_icon_label_icon_spacing: 7,
     indicator_slide_speed: 600, // px per second
     indicator_slide_min_duration: .250,
     tabs_scroll_speed: 600, // px per second

@@ -15,10 +15,10 @@ const CSS_CLASSES = {
     scrollButtonRight: 'pe-tabs__scroll-button--end',
     scrollButtonOffset: 'pe-tabs__scroll-button--offset',
     tabRow: 'pe-tabs__row',
+    tabRowCentered: 'pe-tabs__row--centered',
     tabRowIndent: 'pe-tabs__row--indent',
     tab: 'pe-tabs__tab',
     tabContent: 'pe-tabs__tab-content',
-    tabFiller: 'pe-tabs__tab-filler',
     tabHasIcon: 'pe-tabs__tab---icon',
     indicator: 'pe-tabs__indicator',
     scrollable: 'pe-tabs--scrollable',
@@ -188,10 +188,8 @@ const createTab = (ctrl, opts, index, buttonOpts) => {
         content: m('div', {
             class: CSS_CLASSES.tabContent
         }, [
-            m('div', {class: CSS_CLASSES.tabFiller}),
             buttonOpts.icon ? m.component(icon, buttonOpts.icon) : null,
             buttonOpts.label ? m('div', {class: CSS_CLASSES.label}, m('span', buttonOpts.label)) : null,
-            m('div', {class: CSS_CLASSES.tabFiller}),
         ]),
         class: [
             CSS_CLASSES.tab,
@@ -314,6 +312,7 @@ const createView = (ctrl, opts = {}) => {
         m('div', {
             class: [
                 CSS_CLASSES.tabRow,
+                (opts.centered ? CSS_CLASSES.tabRowCentered : null),
                 (opts.scrollable ? CSS_CLASSES.tabRowIndent : null)
             ].join(' '),
             config: (el, inited) => {
@@ -326,9 +325,7 @@ const createView = (ctrl, opts = {}) => {
                 updateScrollButtons(ctrl);
             }
         }, [
-            opts.centered ? m('.flex') : null,
             tabRow,
-            opts.centered ? m('.flex') : null,
             tabIndicator
         ]),
         opts.scrollable ? scrollButtonRight : null
