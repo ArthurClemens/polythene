@@ -41,4 +41,4 @@ const general = [{
 }];
 
 styler.add('pe-theme', roboto, typography, general);
-document.querySelector('html').classList.add(p.isTouch ? 'touch' : 'pe-no-touch');
+document.querySelector('html').classList.add(p.isTouch ? 'pe-touch' : 'pe-no-touch');
