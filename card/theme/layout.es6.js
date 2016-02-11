@@ -116,24 +116,27 @@ const createStyles = (config) => {
                 }
             },
 
-            ' .pe-card__primary': {
-                position: 'relative',
+            ' .pe-card__primary': [
+                flex.layoutHorizontal,
+                {
+                    position: 'relative',
 
-                '&.pe-card__primary--media:not(:last-child)': {
-                    'padding-bottom': '16px'
-                },
-                '&.pe-card__primary--media + .pe-card__actions': {
-                    'margin-top': '-16px'
-                },
-                '& + .pe-card__text': {
-                    'margin-top': '-16px'
-                },
-                '&.pe-card__primary--tight': {
-                    ' .pe-card__title': {
-                        'padding-bottom': (config.tight_title_padding_bottom - config.subtitle_line_height_padding_bottom) + 'px'
+                    '&.pe-card__primary--media:not(:last-child)': {
+                        'padding-bottom': '16px'
+                    },
+                    '&.pe-card__primary--media + .pe-card__actions': {
+                        'margin-top': '-16px'
+                    },
+                    '& + .pe-card__text': {
+                        'margin-top': '-16px'
+                    },
+                    '&.pe-card__primary--tight': {
+                        ' .pe-card__title': {
+                            'padding-bottom': (config.tight_title_padding_bottom - config.subtitle_line_height_padding_bottom) + 'px'
+                        }
                     }
                 }
-            },
+            ],
             ' .pe-card__title': [
                 flex.flex(),
                 {
@@ -147,51 +150,67 @@ const createStyles = (config) => {
                 'line-height': '24px'
             },
 
-            ' .pe-card__actions': {
-                'min-height': 36 + 2 * 8 + 'px',
-                padding: config.actions_padding_v + 'px' + ' ' + config.padding_actions_h + 'px',
+            ' .pe-card__actions': [
+                {
+                    'min-height': 36 + 2 * 8 + 'px',
+                    padding: config.actions_padding_v + 'px' + ' ' + config.padding_actions_h + 'px',
 
-                '&.pe-card__actions--tight': {
-                    'min-height': 0
-                },
-                '&.horizontal:not(.justified)': {
-                    ' :first-child': {
-                        'margin-left': 0
+                    '&.pe-card__actions--tight': {
+                        'min-height': 0
                     },
-                    ' .pe-button': {
-                        'min-width': 0
-                    },
-                    ' .pe-button--icon': {
-                        'margin-right': '8px'
-                    }
-                },
-                '&.vertical': {
-                    // vertical flex layout
-                    'padding-top': config.actions_vertical_padding_v + 'px',
-                    'padding-bottom': config.actions_vertical_padding_v + 'px',
-
-                    // nested
-                    ' .pe-card__actions': {
-                        'margin-left': -config.padding_actions_h + 'px',
-                        'margin-right': -config.padding_actions_h + 'px',
-                        'min-height': 0,
-
-                        '&:first-child': {
-                            'margin-top': -config.actions_vertical_padding_v + 'px'
-                        },
-                        '&:last-child': {
-                            'margin-bottom': -config.actions_vertical_padding_v + 'px'
+                    '&.pe-card__actions--horizontal:not(.pe-card__actions--justified)': [
+                        flex.layoutHorizontal,
+                        flex.layoutCenter,
+                        {
+                            ' :first-child': {
+                                'margin-left': 0
+                            },
+                            ' .pe-button': {
+                                'min-width': 0
+                            },
+                            ' .pe-button--icon': {
+                                'margin-right': '8px'
+                            }
                         }
-                    },
+                    ],
 
-                    ' .pe-button': {
-                        height: '36px',
-                        padding: 0,
-                        'margin-top': config.actions_button_margin_v + 'px',
-                        'margin-bottom': config.actions_button_margin_v + 'px'
-                    }
+                    '&.pe-card__actions--justified': [
+                        flex.layoutJustified
+                    ],
+
+                    '&.pe-card__actions--vertical': [
+                        flex.layoutVertical,
+                        {
+                            // vertical flex layout
+                            'padding-top': config.actions_vertical_padding_v + 'px',
+                            'padding-bottom': config.actions_vertical_padding_v + 'px',
+
+                            // nested
+                            ' .pe-card__actions': [
+                                {
+                                    'margin-left': -config.padding_actions_h + 'px',
+                                    'margin-right': -config.padding_actions_h + 'px',
+                                    'min-height': 0,
+
+                                    '&:first-child': {
+                                        'margin-top': -config.actions_vertical_padding_v + 'px'
+                                    },
+                                    '&:last-child': {
+                                        'margin-bottom': -config.actions_vertical_padding_v + 'px'
+                                    }
+                                }
+                            ],
+
+                            ' .pe-button': {
+                                height: '36px',
+                                padding: 0,
+                                'margin-top': config.actions_button_margin_v + 'px',
+                                'margin-bottom': config.actions_button_margin_v + 'px'
+                            }
+                        }
+                    ]
                 }
-            },
+            ],
 
             ' .pe-card__text': {
                 'padding-top': config.text_padding_v - config.text_line_height_padding_top + 'px',

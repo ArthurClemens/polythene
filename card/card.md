@@ -221,7 +221,7 @@ Next to the card itself, each content parts has a set of options:
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **tag** | optional | String | '[layout][horizontal]' | HTML element tag |
+| **tag** | optional | String | 'div' | HTML element tag |
 | **class** | optional | String |  | Extra CSS class appended to 'pe-card__primary'; if `media` is passed, class 'card__primary--media' is automatically added too; use class `pe-card__primary--tight` to reduce bottom padding |
 | **title** | optional | String |  | Title text |
 | **subtitle** | optional | String |  | Subtitle text |
@@ -242,7 +242,7 @@ Next to the card itself, each content parts has a set of options:
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **tag** | optional | String | 'a[layout][horizontal][center]' | HTML tag |
+| **tag** | optional | String | 'a' | HTML tag |
 | **class** | optional | String |  | Extra CSS class appended to 'pe-card__header' |
 | **url** | optional | Object | | URL for the entire card; options object containing `href` and `config` |
 | **events** | optional | Object | | Card events; options object containing one or more events like `onclick` |
@@ -269,6 +269,7 @@ Next to the card itself, each content parts has a set of options:
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **tag** | optional | String | '[layout][horizontal][center]' | HTML tag |
+| **tag** | optional | String | 'div' | HTML tag |
+| **layout** | optional | String: 'horizontal', 'vertical' or 'justified' | 'horizontal' | Set to 'vertical' for a vertical list of actions; use 'justified' for a horizontally evenly spread of icons |
 | **class** | optional | String |  | Extra CSS class appended to 'pe-card__actions'; add class `pe-card__actions--borders` to add a top border; use class `card__actions--tight` to reduce the height  |
 | **content** | required | Mithril element |  | Action contents, for instance a list of buttons |

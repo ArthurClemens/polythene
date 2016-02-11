@@ -22,6 +22,9 @@ const CSS_CLASSES = {
     primary: 'pe-card__primary',
     primaryMedia: 'pe-card__primary__media',
     actions: 'pe-card__actions',
+    actionsHorizontal: 'pe-card__actions--horizontal',
+    actionsVertical: 'pe-card__actions--vertical',
+    actionsJustified: 'pe-card__actions--justified',
     actionsBordered: 'pe-card__actions--borders',
     mediaRatioSquare: 'pe-card__media--square',
     mediaRatioLandscape: 'pe-card__media--landscape',
@@ -60,7 +63,7 @@ const createOverlay = (opts = {}) => {
 
 const createText = o => {
     const opts = o.text || {};
-    const tag = 'div' || opts.tag;
+    const tag = opts.tag || 'div';
     return m(tag, {
         class: [CSS_CLASSES.text, opts.class].join(' ')
     }, opts.content);
@@ -83,7 +86,7 @@ const createMedia = o => {
     const opts = o.media || {};
     const ratio = opts.ratio || 'landscape';
     const origin = opts.origin || 'center';
-    const tag = 'div' || opts.tag;
+    const tag = opts.tag || 'div';
 
     let initImage = function(el, inited) {
         if (inited) {
@@ -144,18 +147,25 @@ const createHeader = o => {
     } : null));
 };
 
+const actionLayoutClasses = {
+    horizontal: CSS_CLASSES.actionsHorizontal,
+    vertical: CSS_CLASSES.actionsVertical,
+    justified: CSS_CLASSES.actionsJustified
+};
+const actionClassForLayout = (layout = 'horizontal') => (actionLayoutClasses[layout]);
+
 const createActions = o => {
     const opts = o.actions || {};
-    const tag = opts.tag || '.layout.horizontal.center';
+    const tag = opts.tag || 'div';
     return m(tag, {
-        class: [CSS_CLASSES.actions, opts.class].join(' ')
+        class: [CSS_CLASSES.actions, actionClassForLayout(opts.layout), opts.class].join(' ')
     }, opts.content);
 };
 
 const createPrimary = o => {
     let content, key, partOpts;
     const opts = o.primary || {};
-    const tag = '.layout.horizontal' || opts.tag;
+    const tag = opts.tag || 'div';
     let primaryHasMedia = false;
 
     const lookup = {
