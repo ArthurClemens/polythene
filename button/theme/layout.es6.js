@@ -5,7 +5,7 @@ const createStyles = (config) => {
         '.pe-button--text': {
             display: 'inline-block',
             'min-width': config.min_width + 'px',
-            margin: '0 ' + config.margin_v + 'px',
+            margin: '0 ' + config.margin_h + 'px',
             padding: config.outer_padding_v + 'px 0',
             background: 'transparent',
             border: 'none',

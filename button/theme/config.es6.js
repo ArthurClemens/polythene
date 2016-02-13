@@ -6,7 +6,7 @@ const touch_height = common.unit_touch_height;
 const height = 36;
 
 export default {
-    margin_v: common.grid_unit,
+    margin_h: common.grid_unit,
     border_radius: common.unit_item_border_radius,
     font_size: 14,
     font_weight: 500,

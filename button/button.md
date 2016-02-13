@@ -75,7 +75,8 @@ import 'polythene/common/no-tap-delay';
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **label** | required | String | | The button label |
+| **label** | `label` or `content` is required | String | | The button label |
+| **content** | `label` or `content` is required | Mithril element | | Alternative content |
 | **url** | optional | Object with `href`, optionally `config` | | Button URL or click handler |
 | **borders** | optional | Boolean | false | Set to `true` to add a border |
 | **disabled** | optional | Boolean | false | Disables the button |
