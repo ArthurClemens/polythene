@@ -10,6 +10,7 @@
   "main": "",
   "directories": {},
   "dependencies": {
+    "fastclick": "^1.0.6",
     "j2c": "^0.11.0"
   },
   "devDependencies": {
