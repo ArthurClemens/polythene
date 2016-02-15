@@ -212,7 +212,9 @@ const createView = (ctrl, opts = {}) => {
                         // and no redraw is triggered
                         // at the next redraw ctrl.focus() will be read and the focus class be set
                         // in the props.class statement
-                        ctrl.el.classList.add(CSS_CLASSES.stateFocused);
+                        if (ctrl.el) {
+                            ctrl.el.classList.add(CSS_CLASSES.stateFocused);
+                        }
                         notifyState(ctrl, opts);
                     },
                     // onblur defined in config
