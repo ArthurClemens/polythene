@@ -48,15 +48,14 @@ app.view = (ctrl, opts) => {
 We are using `#notifications` as a container for future notification messages. When no notification is shown, its only contents is a placeholder span.
 
 
-
-This notification component is then called using:
+The notification component is called using:
 
 ~~~javascript
 notification.show(options);
 notification.hide();
 ~~~
 
-For all functions - see below.
+Function calls are described below.
 
 Any time `show` is called to show a message, this message will be queued. Subsequent messages will wait until the displayed message is hidden.
 
@@ -284,6 +283,8 @@ When a notification is show, the placeholder span is replaced with HTML (the exa
     </div>
 </div>
 ~~~
+
+To prevent the overlay from interactive with the items below, add style `pointer-events: none`.
 
 An example of a custom notification style in j2c format:
 
