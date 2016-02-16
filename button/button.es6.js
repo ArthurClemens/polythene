@@ -24,56 +24,73 @@ const startType = window.PointerEvent ? 'pointerdown' : (('ontouchstart' in wind
 const endType = window.PointerEvent ? 'pointerup' : (('ontouchend' in window) || window.DocumentTouch && document instanceof DocumentTouch) ? 'touchend' : 'mouseup';
 
 let tapStart,
-    tapEnd;
+    tapEnd,
+    tapEndAll,
+    downButtons = [];
+
+const animateZ = (ctrl, opts, name) => {
+    const baseZ = ctrl.baseZ();
+    const increase = opts.increase || 1;
+    let z = ctrl.z();
+    if (name === 'down' && baseZ !== 5) {
+        z = z + increase;
+        z = Math.min(z, MAX_Z);
+    } else if (name === 'up') {
+        z = z - increase;
+        z = Math.max(z, baseZ);
+    }
+    if (z !== ctrl.z()) {
+        ctrl.z(z);
+        m.redraw(); // make animation visible
+    }
+};
+
+const inactivate = (ctrl, opts) => {
+    ctrl.inactive = true;
+    m.redraw();
+    setTimeout(() => {
+        ctrl.inactive = false;
+        m.redraw();
+    }, opts.inactivate * 1000);
+};
 
 const initTapEvents = (el, ctrl, opts) => {
-    // disable z animation on touch
-    const animateOnTap = opts.animateOnTap && !p.isTouch;
-
-    const tapHandler = function tapHandler(evt) {
-        if (!animateOnTap) {
-            return;
+    const tapHandler = (ctrl, opts, name) => {
+        if (name === 'down') {
+            downButtons.push({ctrl, opts});
+        } else if (name === 'up') {
+            if (opts.inactivate && !opts.inactive) {
+                inactivate(ctrl, opts);
+            }
         }
-        const baseZ = ctrl.baseZ();
-        if (baseZ === 5) {
-            return;
-        }
-
-        const increase = opts.increase || 1;
-        let z = ctrl.z();
-        if (evt === 'down') {
-            z = z + increase;
-            z = Math.min(z, MAX_Z);
-        } else if (evt === 'up') {
-            z = z - increase;
-            z = Math.max(z, baseZ);
-        }
-        if (z !== ctrl.z()) {
-            ctrl.z(z);
-            m.redraw();
+        // no z animation on touch
+        if (opts.animateOnTap && !p.isTouch) {
+            animateZ(ctrl, opts, name);
         }
     };
-    tapStart = function() {
-        tapHandler('down');
-    };
-    tapEnd = function() {
-        tapHandler('up');
+    tapStart = () => (tapHandler(ctrl, opts, 'down'));
+    tapEnd = () => (tapHandler(ctrl, opts, 'up'));
+    tapEndAll = () => {
+        downButtons.map((btn) => {
+            tapHandler(btn.ctrl, btn.opts, 'up');
+        });
+        downButtons = [];
     };
     el.addEventListener(startType, tapStart);
     el.addEventListener(endType, tapEnd);
-    document.body.addEventListener(endType, tapEnd);
+    window.addEventListener(endType, tapEndAll);
 };
 
 const clearTapEvents = function(el) {
     el.removeEventListener(startType, tapStart);
     el.removeEventListener(endType, tapEnd);
-    document.body.removeEventListener(endType, tapEnd);
+    window.removeEventListener(endType, tapEndAll);
 };
 
 const createView = (ctrl, opts = {}) => {
     const noink = opts.ink !== undefined && !opts.ink;
     const disabled = opts.disabled;
-    const inactive = opts.inactive;
+    const inactive = ctrl.inactive;
     const tag = opts.tag || 'a';
 
     // handle multiple configs:
@@ -139,8 +156,8 @@ const createView = (ctrl, opts = {}) => {
             z: ctrl.z(),
             animated: true
         }) : null,
-        (inactive || disabled || noink) ? null : m.component(ripple, opts.ripple || {}),
-        (inactive || disabled || (opts.wash !== undefined && !opts.wash)) ? null : m('div', {class: CSS_CLASSES.wash}),
+        (disabled || noink) ? null : m.component(ripple, opts.ripple || {}),
+        (disabled || (opts.wash !== undefined && !opts.wash)) ? null : m('div', {class: CSS_CLASSES.wash}),
         label
     ]);
     return m(tag, props, [opts.before, content, opts.after]);
@@ -152,7 +169,8 @@ const component = {
 
         return {
             baseZ: m.prop(z),
-            z: m.prop(z)
+            z: m.prop(z),
+            inactive: opts.inactive || false
         };
     },
     view: (ctrl, opts = {}) => {

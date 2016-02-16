@@ -26,7 +26,6 @@ const style = [{
             ' .pe-button__label': [
                 mixin.fontSmoothing(), {
                     position: 'relative',
-                    'z-index': 1, // to make it float above .pe-button__wash and .pe-ripple
                     display: 'block',
                     'border-radius': 'inherit',
                     'pointer-events': 'none'
