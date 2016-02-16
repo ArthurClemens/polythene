@@ -40,19 +40,22 @@ app.view = (ctrl, opts) => {
     return [
         // app content
         // optional dialog
-        m.component(notification)
+        m('#notifications', m.component(notification))
     ];
 };
 ~~~
 
-This notification component is then called using:
+We are using `#notifications` as a container for future notification messages. When no notification is shown, its only contents is a placeholder span.
+
+
+The notification component is called using:
 
 ~~~javascript
 notification.show(options);
 notification.hide();
 ~~~
 
-For all functions - see below.
+Function calls are described below.
 
 Any time `show` is called to show a message, this message will be queued. Subsequent messages will wait until the displayed message is hidden.
 
@@ -64,12 +67,12 @@ import notification from 'polythene/notification/notification';
 
 notification.show({
     title: 'This is the message',
-    container: 'bottom_container'
+    containerSelector: '#notifications'
 });
 
 notification.show({
     title: 'This is a second message',
-    container: 'bottom_container'
+    containerSelector: '#notifications'
 });
 ~~~
 
@@ -86,7 +89,7 @@ notification.show({
             }
         }
     }),
-    container: 'bottom_container'
+    containerSelector: '#notifications'
 })
 ~~~
 
@@ -135,7 +138,7 @@ notification.show({
             }
         }
     }),
-    container: 'bottom_container'
+    containerSelector: '#notifications'
 })
 ~~~
 
@@ -250,7 +253,7 @@ Two optional callbacks are used after the transition: `didShow` and `didHide` (s
 | **timeout** | optional | Number (seconds) | 3 | How long the notification should be displayed before it hides automatically; use `0` to not hide automatically |
 | **dismissSelector** | optional | String | | Not used yet; will implement "Disappear after user interaction elsewhere" |
 
-### Notification appearence options
+### Notification appearance options
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
@@ -265,6 +268,37 @@ Two optional callbacks are used after the transition: `didShow` and `didHide` (s
 | **hideDuration** | optional | Number | .150 | The hide transition duration in seconds |
 | **showDelay** | optional | Number | 0 | The show delay duration in milliseconds |
 | **hideDelay** | optional | Number | 0 | The hide delay duration in milliseconds |
+
+
+## Styling
+
+When a notification is show, the placeholder span is replaced with HTML (the exact content depends on the message passed):
+
+~~~html
+<div class="pe-notification__holder">
+    <div class="pe-notification">
+        <div class="pe-notification__content">
+            <div class="pe-notification__title">...</div>
+        </div>
+    </div>
+</div>
+~~~
+
+An example of a custom notification style in j2c format:
+
+~~~javascript
+' .pe-notification__holder': {
+    'pointer-events': 'none'
+},
+' .pe-notification': {
+    background: 'rgba(34, 34, 34, 0.4)'
+},
+' .pe-notification__title': {
+    'font-weight': 'bold',
+    'font-size': '23px',
+    'text-align': 'center'
+}
+~~~
 
 
 ## Inheritance/composition
