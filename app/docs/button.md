@@ -84,6 +84,7 @@ import 'polythene/common/no-tap-delay';
 | **formaction** | optional | String | | "The URI of a program that processes the information submitted by the button. If specified, it overrides the action attribute of the button's form owner." [source:MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-formaction) |
 | **animateOnTap** | optional | Boolean  | true | Set to false to remove z-animation and subsequent redraw |
 | **inactive** | optional | Boolean | | Set to `true` to disable button events and ripple/wash effects |
+| **inactivate** | optional | Number | | The number of seconds after tap/click when the button is inactive; useful to prevent double clicks |
 
 ### Button appearance options
 

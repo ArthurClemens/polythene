@@ -284,6 +284,8 @@ When a notification is show, the placeholder span is replaced with HTML (the exa
 </div>
 ~~~
 
+To prevent the overlay from interactive with the items below, add style `pointer-events: none`.
+
 An example of a custom notification style in j2c format:
 
 ~~~javascript
