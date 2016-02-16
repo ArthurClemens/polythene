@@ -4,19 +4,23 @@ import flex from 'polythene/layout/theme/flex';
 
 const createStyles = (config) => {
     return [{
-        '.pe-notification__holder': {
-            position: 'relative',
-            'z-index': common.z_notification
-        },
+        '.pe-notification__holder': [
+            mixin.fit(),
+            flex.layoutCenterCenter,
+            {
+                'z-index': common.z_notification
+            }
+        ],
         '.pe-notification': [
             flex.layoutCenter,
             {
                 position: 'relative',
                 width: config.width + 'px',
+                'min-height': config.minHeight + 'px',
                 padding: '0 ' + config.side_padding + 'px',
                 margin: '0 auto',
                 'border-radius': config.border_radius + 'px',
-                
+
                 ' .pe-notification__content': {
                     width: '100%'
                 },
