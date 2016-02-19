@@ -11,6 +11,7 @@ Lists are also the base component of [menus](#menu).
 ~~~javascript
 import m from 'mithril';
 import list from 'polythene/list/list';
+import listTile from 'polythene/list-tile/list-tile';
 
 const myList = m.component(list, {
 	header: {
@@ -19,7 +20,7 @@ const myList = m.component(list, {
 	tiles: [
 	    m.component(listTile, {
 	        title: 'Ali Connors',
-	        info: 'Brunch this weekend?',
+	        subtitle: 'Brunch this weekend?',
 	        icon: {
 	            type: 'large',
 	            src: 'app/list-tile/avatars/1.png'
