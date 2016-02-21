@@ -16,7 +16,7 @@ Supported features:
 * step size, adjustable to any value including 0
 * tick marks
 
-<script async type="text/javascript" src="https://jsfiddle.net/ArthurClemens/afjea168/1/">
+<script async type="text/javascript" src="https://jsfiddle.net/ArthurClemens/n8z0hhj6/">
 <h2>Basic example</h2>
 </script>
 
