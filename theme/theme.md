@@ -119,8 +119,6 @@ export default {
 
 ### Custom styles as configuration
 
-NOTE: Only when you are using es6 and have a symlinked folder of Polythene
-
 Instead of creating this theme code for all custom components, we can write the style configurations in one file. The default path of this file is `polythene/config/custom`, but that is a placeholder for your actual custom configuration file (more on that further down).
 
 The file may look like this:
@@ -157,18 +155,22 @@ Your custom configuration file may be located in `app/config/custom`. Now you ne
 
 #### Use with Browserify
 
-Use the `aliasify` plugin to change the default config path to your custom file:
+Use the [pathmodify](https://www.npmjs.com/package/pathmodify) plugin to change the default config path to your custom file:
+
+~~~javascript
+browserify().plugin(pathmodify, {
+    mods: [
+        pathmodify.mod.id('polythene/config/custom', 'app/config/custom')
+    ]
+})
+~~~
+
+Embedded in a build script:
 
 ~~~javascript
 // build script
 // ...
-var aliasify = require('aliasify');
-
-var aliasifyConfig = {
-    aliases: {
-        'polythene/config/custom': 'app/config/custom'
-    }
-};
+var pathmodify = require('pathmodify');
 
 function bundle(entries, outfile) {
     browserify({
@@ -176,8 +178,12 @@ function bundle(entries, outfile) {
         extensions: ['.es6.js'],
         paths: ['.', 'node_modules']
     })
+    .plugin(pathmodify, {
+        mods: [
+            pathmodify.mod.id('polythene/config/custom', 'app/config/custom')
+        ]
+    })
     .transform(babelify)
-    .transform(aliasify, aliasifyConfig)
     ...
 };
 ~~~
@@ -198,8 +204,6 @@ map: {
 
 
 ## Change global theme variables
-
-NOTE: Only when you are using es6 and have a symlinked folder of Polythene
 
 Global theme variables are stored in `polythene/config/config` (which reads `polythene/config/default`). This file defines common sizes, breakpoints, primary color, and so on.
 
@@ -225,18 +229,22 @@ export default Object.assign({}, config, {
 
 #### Use with Browserify
 
-Use the `aliasify` plugin to change the default config path to your custom file:
+Use the [pathmodify](https://www.npmjs.com/package/pathmodify) plugin to change the default config path to your custom file:
+
+~~~javascript
+browserify().plugin(pathmodify, {
+    mods: [
+        pathmodify.mod.id('polythene/config/config', 'app/config/config')
+    ]
+})
+~~~
+
+Embedded in a build script:
 
 ~~~javascript
 // build script
 // ...
-var aliasify = require('aliasify');
-
-var aliasifyConfig = {
-    aliases: {
-        'polythene/config/config': 'app/config/config'
-    }
-};
+var pathmodify = require('pathmodify');
 
 function bundle(entries, outfile) {
     browserify({
@@ -244,8 +252,12 @@ function bundle(entries, outfile) {
         extensions: ['.es6.js'],
         paths: ['.', 'node_modules']
     })
+    .plugin(pathmodify, {
+        mods: [
+            pathmodify.mod.id('polythene/config/config', 'app/config/config')
+        ]
+    })
     .transform(babelify)
-    .transform(aliasify, aliasifyConfig)
     ...
 };
 ~~~
