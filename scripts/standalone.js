@@ -6,6 +6,8 @@ const folders = ['base-button', 'button', 'card', 'checkbox', 'common', 'config'
 
 const commonUtils = ['easing', 'mixin', 'multiple', 'no-tap-delay', 'object.assign', 'scroll-to', 'styler', 'timer', 'transition-event', 'transition', 'validation-helper', 'webfontloader'];
 
+const includes = ['layout/theme/flex'];
+
 const noRequires = {
     'common': 1,
     'font-roboto': 1,
@@ -24,7 +26,10 @@ const requires = (formatFn) => {
     const utils = [formatFn('fastclick')].concat(commonUtils.map((util) => {
         return formatFn(`polythene/common/${util}`);
     }));
-    return components.concat(utils);
+    const extra = includes.map((include) => {
+        return formatFn(`polythene/${include}`);
+    });
+    return components.concat(utils).concat(extra);
 };
 
 const writeRequires = (callback) => {
