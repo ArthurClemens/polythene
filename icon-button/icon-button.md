@@ -23,7 +23,8 @@ const myIconBtn = m.component(iconBtn, {
 To use SVG instead of an image, pass an `msvg` object:
 
 ~~~javascript
-import gIconStars from 'mmsvg/google/action/stars';
+import gIconStars from 'mmsvg/google/msvg/action/stars';
+import iconBtn from 'polythene/icon-button/icon-button';
 
 const myIconBtn = m.component(iconBtn, {
 	icon: {
@@ -48,7 +49,7 @@ Finally, instead of an `icon` options object, you can pass an icon component as 
 
 ~~~javascript
 import icon from 'polythene/icon/icon';
-import gIconStars from 'mmsvg/google/action/stars';
+import gIconStars from 'mmsvg/google/msvg/action/stars';
 
 const myIcon = m.component(icon, {
     msvg: gIconStars
