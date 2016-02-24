@@ -10,11 +10,11 @@ const createStyles = (config) => {
                 'line-height': common.line_height,
                 display: 'inline-block',
                 'box-sizing': 'border-box',
-                'max-width': '100%',
                 margin: 0,
                 overflow: 'visible', // Firefox needs this
                 'padding-bottom': config.vertical_spacing_bottom + 'px',
-                width: common.isInteger(config.width) ? (config.width + 'px') : '100%',
+                width: '100%',
+                'max-width': '100%',
 
                 ' .pe-textfield__input-area': {
                     position: 'relative',
@@ -74,7 +74,6 @@ const createStyles = (config) => {
                 ' .pe-textfield__label': {
                     position: 'absolute',
                     display: 'block',
-                    width: '100%',
                     top: (config.vertical_spacing_top + config.input_padding_v) + 'px',
                     bottom: 0,
                     left: config.input_padding_h + 'px',

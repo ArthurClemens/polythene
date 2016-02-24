@@ -2,12 +2,10 @@ import common from 'polythene/config/config';
 
 const rgba = common.rgba;
 
-// const height = 36;
 const line_height_input = 20;
 const input_padding_v = 7;
 
 export default {
-    width: 300, // or use integer
     vertical_spacing_top: 6, // 8 minus natural label height padding (1)
     vertical_spacing_bottom: 7, // 8 minus natural label height padding (1)
     input_focus_border_width: 2,
