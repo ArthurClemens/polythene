@@ -62,7 +62,6 @@ const ellipsis = (lines, lineHeight) => {
             'text-rendering': 'auto' // Samsung Android
         },
         (lines !== undefined) ? {
-            'white-space': 'initial',
             '-webkit-line-clamp': lines,
             '-webkit-box-orient': 'vertical',
             display: '-webkit-box',
