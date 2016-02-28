@@ -123,8 +123,8 @@ const createView = (ctrl, opts = {}) => {
             CSS_CLASSES.block,
             (opts.fullscreen ? CSS_CLASSES.fullscreen : null),
             (opts.backdrop ? CSS_CLASSES.hasBackdrop : null),
-            (ctrl.topOverflow ? CSS_CLASSES.hasTopOverflow : null),
-            (ctrl.bottomOverflow ? CSS_CLASSES.hasBottomOverflow : null),
+            (ctrl.topOverflow || opts.borders ? CSS_CLASSES.hasTopOverflow : null),
+            (ctrl.bottomOverflow || opts.borders ? CSS_CLASSES.hasBottomOverflow : null),
             ctrl.visible ? CSS_CLASSES.visible : null,
             opts.class
         ].join(' '),
