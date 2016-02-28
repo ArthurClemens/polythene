@@ -127,9 +127,12 @@ Other supported validation checks:
 
 #### When to validate
 
-By default the component will validate only when a user action has been done (either the events "oninput" or "onblur"). This to make sure that required fields don't scream INVALID at page load.
+By default the component will validate only when a user action has been done (triggered by "onblur"). This to make sure that required fields don't scream INVALID at page load.
 
-To validate immediately, use option `validateAtStart`.
+Variations:
+
+* To validate immediately, use option `validateAtStart`
+* To validate on key press before "onblur", use option `validateOnInput`
 
 
 ### Custom validation
@@ -274,6 +277,7 @@ These options have effect on the overall component (label, input, help, error).
 | **label** | optional | String | | Text label; unless `floatingLabel` is `true`, the label is functionally equal to a placeholder |
 | **validate** | | | | See: Functions |
 | **validateAtStart** | optional | Boolean | | Set to `true` to validate the field before any user action |
+| **validateOnInput** | optional | Boolean | | Set to `true` to validate the field at the first keypress |
 
 ### Input options
 

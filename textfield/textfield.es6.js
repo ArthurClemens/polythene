@@ -76,7 +76,6 @@ const checkValidity = (ctrl, opts) => {
 
     // default
     const status = getValidStatus(ctrl, opts);
-
     const previousInvalid = ctrl.isInvalid;
     if (status.invalid !== previousInvalid) {
         ctrl.isInvalid = status.invalid;
@@ -223,6 +222,9 @@ const createView = (ctrl, opts = {}) => {
                         // may be overwritten by opts.events
                         ctrl.value = e.target.value;
                         // Don't set ctrl.touched to true to prevent error messages popping up while typing
+                        if (opts.validateOnInput) {
+                            ctrl.touched = true;
+                        }
                         updateState(ctrl, opts);
                         notifyState(ctrl, opts);
                         if (opts.oninput) {
