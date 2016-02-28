@@ -305,7 +305,7 @@ These options are also passed to the component, but have effect on the generated
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **value** | optional | String or Function | | Input element value; use as function to update the value from outside |
-| **getState**  | optional | Function(state {Object}) | | Callback function that accepts the field state (Object with properties `focus` {Boolean}, `dirty` {Boolean}, `value` {String}, `el` {HTMLElement}) |
+| **getState**  | optional | Function(state {Object}) | | Callback function that accepts the field state (Object with properties `focus` {Boolean}, `dirty` {Boolean}, `value` {String}, `el` {HTMLElement}, `invalid` {Boolean}, `error` {String}) |
 | **validate** | optional | Function(value) | | Use for custom validation; the validate function accepts the current field value; it should return an object with attributes `valid` (Boolean) and `error` (message string) |
 
 
