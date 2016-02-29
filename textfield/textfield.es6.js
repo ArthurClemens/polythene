@@ -327,6 +327,9 @@ const component = {
             }
             // write
             hasFocus = state;
+            if (opts.dontBlurOnMouseDown) {
+                return;
+            }
             if (hasFocus) {
                 document.body.addEventListener(startEventType, onMouseDown);
             } else {
