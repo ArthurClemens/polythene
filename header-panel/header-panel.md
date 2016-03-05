@@ -4,6 +4,9 @@
 
 Displays a content panel with header with various scrolling behaviors. Use this for a page with a header bar (like the current page), or a title/menu bar.
 
+<script async type="text/javascript" src="https://jsfiddle.net/ArthurClemens/n73anbva/embed/js,css,result/">
+<h2>Example with condensing header</h2>
+</script>
 
 ## Comparison with Polymer
 
