@@ -6,7 +6,7 @@ const folders = ['base-button', 'button', 'card', 'checkbox', 'common', 'config'
 
 const commonUtils = ['easing', 'mixin', 'multiple', 'no-tap-delay', 'object.assign', 'scroll-to', 'styler', 'timer', 'transition-event', 'transition', 'validation-helper', 'webfontloader'];
 
-const includes = ['layout/theme/flex'];
+const includes = ['layout/theme/flex', 'layout/theme/theme'];
 
 const noRequires = {
     'common': 1,
