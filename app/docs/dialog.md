@@ -247,7 +247,8 @@ dialog.show(myConfirmationDialogOptions, 'confirmation'); // the id makes this d
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **z** | optional | Number 0-5 | 3 | Depth of the shadow |
-| **backdrop** | optional | Boolean | false | Set to true show a backdrop background color |
+| **backdrop** | optional | Boolean | false | Set to `true` to show a backdrop background color |
+| **borders** | optional | Boolean | false | Set to `true` to show header and footer borders; by default borders are only shown with overflow content |
 
 ### Transition options
 
