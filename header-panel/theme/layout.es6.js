@@ -43,7 +43,8 @@ const createStyles = (config) => {
                         top: 'auto',
                         left: 0,
                         right: 0,
-                        height: config.box_shadow_height + 'px'
+                        height: config.box_shadow_height + 'px',
+                        'z-index': 1
                     }
                 ]
             },
@@ -67,9 +68,7 @@ const createStyles = (config) => {
                 ' .pe-toolbar__top-bar': {
                     'z-index': 1
                 },
-                ' .pe-toolbar__bottom-bar': {
-                    // 'z-index': 0
-                }
+                ' .pe-toolbar__bottom-bar': {}
             },
             '&:not(.pe-header-panel--fixed):not(.pe-header-panel--scroll) > .pe-header-panel__outer-container > .pe-header-panel__header-container': {
                 'z-index': common.z_header_container
