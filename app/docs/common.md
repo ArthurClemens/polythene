@@ -3,6 +3,7 @@
 The "common" directory contains a couple of number of reusable scripts:
 
 * `easing`: Easing functions
+* `events`: Pub/Sub 
 * `mixin`: CSS mixin functions; see below
 * `multiple`: Helper module to manage multiple items of the same component type
 * `object.assign`: Polyfill
