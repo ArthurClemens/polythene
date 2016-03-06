@@ -1,5 +1,6 @@
 import FastClick from 'fastclick';
 import p from 'polythene/polythene/polythene';
+import events from 'polythene/common/events';
 
 const layer = document.body;
 const throttle = 150;
@@ -31,7 +32,7 @@ const handleScroll = () => {
 
 const init = () => {
     if (p.isTouch) {
-        p.addListener('scroll', handleScroll);
+        events.subscribe('scroll', handleScroll);
         add();
     }
 };

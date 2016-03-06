@@ -1,5 +1,6 @@
 import 'polythene/common/object.assign';
 import p from 'polythene/polythene/polythene';
+import events from 'polythene/common/events';
 import m from 'mithril';
 import toolbar from 'polythene/toolbar/toolbar';
 import 'polythene/header-panel/theme/theme';
@@ -153,7 +154,7 @@ const createViewContent = (ctrl, scrollConfig, opts = {}) => {
             config: initMainContainer,
             onscroll: (e) => {
                 scrollConfig.main(e);
-                p.emitEvent('scroll', e);
+                events.emit('scroll', e);
                 ctrl.storeScrollPosition(e.target.scrollTop);
             }
         },
@@ -230,7 +231,7 @@ const createView = (ctrl, opts = {}) => {
         config: initOuterContainer,
         onscroll: (e) => {
             scrollConfig.outer(e);
-            p.emitEvent('scroll', e);
+            events.emit('scroll', e);
         }
     }, [
         header,

@@ -1,4 +1,4 @@
-import p from 'polythene/polythene/polythene';
+import events from 'polythene/common/events';
 import m from 'mithril';
 import shadow from 'polythene/shadow/shadow';
 import transition from 'polythene/common/transition';
@@ -162,16 +162,16 @@ const createView = (ctrl, opts = {}) => {
             };
 
             if (!opts.permanent) {
-                p.addListener('resize', update);
-                p.addListener('keydown', handleEscape);
+                events.subscribe('resize', update);
+                events.subscribe('keydown', handleEscape);
                 setTimeout(() => {
                     activateDismissTap();
                     show(ctrl, opts);
                 }, 0);
             }
             context.onunload = () => {
-                p.removeListener('resize', update);
-                p.removeListener('keydown', handleEscape);
+                events.unsubscribe('resize', update);
+                events.unsubscribe('keydown', handleEscape);
                 if (!opts.permanent) {
                     deActivateDismissTap();
                 }

@@ -1,5 +1,6 @@
 import 'polythene/common/object.assign';
 import p from 'polythene/polythene/polythene';
+import events from 'polythene/common/events';
 import m from 'mithril';
 import button from 'polythene/button/button';
 import icon from 'polythene/icon/icon';
@@ -271,10 +272,10 @@ const createView = (ctrl, opts = {}) => {
                 setSelectedTab(ctrl, opts, ctrl.selectedTabIndex, false);
                 m.redraw();
             };
-            p.addListener('resize', onResize);
+            events.subscribe('resize', onResize);
 
             context.onunload = () => {
-                p.removeListener('resize', onResize);
+                events.unsubscribe('resize', onResize);
             };
 
             setSelectedTab(ctrl, opts, opts.selectedTab || 0, false);

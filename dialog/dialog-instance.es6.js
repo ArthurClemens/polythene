@@ -1,5 +1,5 @@
 import 'polythene/common/object.assign';
-import p from 'polythene/polythene/polythene';
+import events from 'polythene/common/events';
 import m from 'mithril';
 import dialog from 'polythene/dialog/dialog';
 import transition from 'polythene/common/transition';
@@ -141,8 +141,8 @@ const createView = (ctrl, opts = {}) => {
             ctrl.el = el;
 
             const cleanup = () => {
-                p.removeListener('resize', update);
-                p.removeListener('keydown', handleEscape);
+                events.unsubscribe('resize', update);
+                events.unsubscribe('keydown', handleEscape);
             };
 
             const handleEscape = (e) => {
@@ -154,8 +154,8 @@ const createView = (ctrl, opts = {}) => {
             };
 
             // resize: update scroll state ('overflow' borders)
-            p.addListener('resize', update);
-            p.addListener('keydown', handleEscape);
+            events.subscribe('resize', update);
+            events.subscribe('keydown', handleEscape);
 
             context.onunload = () => {
                 cleanup();
