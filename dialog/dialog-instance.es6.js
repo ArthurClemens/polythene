@@ -57,6 +57,7 @@ const show = (ctrl, opts) => {
     })).then(() => {
         ctrl.isTransitioning = false;
         ctrl.visible = true;
+        dialog.setVisibleState(true, id);
         if (opts.didShow) {
             opts.didShow(id);
         }
@@ -73,6 +74,7 @@ const hide = (ctrl, opts) => {
         dialog.remove(id);
         ctrl.isTransitioning = false;
         ctrl.visible = false;
+        dialog.setVisibleState(false, id);
         if (opts.didHide) {
             opts.didHide(id);
         }
@@ -162,13 +164,15 @@ const createView = (ctrl, opts = {}) => {
             updateScrollState(ctrl);
             updateFooterState(ctrl);
 
-            show(ctrl, opts).then(() => {
-                updateScrollState(ctrl);
-                updateFooterState(ctrl);
-                if (ctrl.topOverflow || ctrl.bottomOverflow) {
-                    setTimeout(m.redraw, 0);
-                }
-            });
+            if (!ctrl.visible) {
+                show(ctrl, opts).then(() => {
+                    updateScrollState(ctrl);
+                    updateFooterState(ctrl);
+                    if (ctrl.topOverflow || ctrl.bottomOverflow) {
+                        setTimeout(m.redraw, 0);
+                    }
+                });
+            }
         },
         // click backdrop: close dialog
         onclick: (e) => {
@@ -238,7 +242,7 @@ const component = {
             headerHeight: 0,
             footerHeight: 0,
             el: null,
-            visible: false,
+            visible: instanceData.visible || false,
             isTransitioning: false
         };
     },
