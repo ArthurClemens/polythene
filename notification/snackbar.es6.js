@@ -7,10 +7,10 @@ import 'polythene/notification/theme/snackbar/theme';
 export default multiple({
     instance,
     class: 'pe-notification pe-notification--snackbar',
-    defaultId: 'default_notification',
-    tag: 'div.pe-notification__holder',
-    noneTag: 'span.pe-notification__placeholder',
-    bodyShowClass: 'pe-notification--open',
+    defaultId: 'default_snackbar',
+    tag: 'div.pe-snackbar__holder',
+    noneTag: 'span.pe-snackbar__placeholder',
+    bodyShowClass: 'pe-snackbar--open',
     queue: true,
     transitions
 });

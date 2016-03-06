@@ -5,7 +5,7 @@ import 'polythene/notification/theme/notification/theme';
 
 export default multiple({
     instance,
-    class: 'pe-notification',
+    class: 'pe-notification pe-notification--notification',
     defaultId: 'default_notification',
     tag: 'div.pe-notification__holder',
     noneTag: 'span.pe-notification__placeholder',

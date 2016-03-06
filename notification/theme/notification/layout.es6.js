@@ -15,8 +15,7 @@ const createStyles = (config) => {
             flex.layoutCenter,
             {
                 position: 'relative',
-                width: config.width + 'px',
-                'min-height': config.minHeight + 'px',
+                
                 padding: '0 ' + config.side_padding + 'px',
                 margin: '0 auto',
                 'border-radius': config.border_radius + 'px',
@@ -57,7 +56,11 @@ const createStyles = (config) => {
                     ' .pe-notification__action': flex.layoutEndJustified
                 }
             }
-        ]
+        ],
+        '.pe-notification--notification': {
+            width: config.width + 'px',
+            'min-height': config.minHeight + 'px'
+        }
     }];
 };
 

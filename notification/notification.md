@@ -237,7 +237,7 @@ Two optional callbacks are used after the transition: `didShow` and `didHide` (s
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **tag** | optional | String | 'div.layout.center' | HTML element tag |
-| **class** | optional | String |  | Extra CSS class appended to 'pe-notification' |
+| **class** | optional | String |  | Extra CSS class appended to 'pe-notification pe-notification--notification' (or 'pe-notification pe-notification--snackbar') |
 | **id** | optional | String | | HTML element id |
 | **events** | optional | Object | | Options object containing one or more standard events such as `onclick` |
 | **before** | optional | Mithril element | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |

@@ -20,12 +20,8 @@ const tabletStyle = (config) => {
 
 const createStyles = (config) => {
     return [{
-        '.pe-notification--snackbar': {
-            width: 'auto',
-
-            ['@media (min-width: ' + common.breakpoint_small_handset_landscape + 'px)']: {
-                '.pe-notification--snackbar': tabletStyle(config)
-            }
+        ['@media (min-width: ' + common.breakpoint_small_handset_landscape + 'px)']: {
+            '.pe-notification--snackbar': tabletStyle(config)
         }
     }];
 };

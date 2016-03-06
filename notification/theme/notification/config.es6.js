@@ -4,7 +4,7 @@ const buttonPaddingH = 8; // padding, inner text space
 
 export default {
     width: 274,
-    minHeight: 100,
+    minHeight: 80,
     border_radius: common.unit_block_border_radius,
     title_padding_h: buttonPaddingH,
     title_single_padding_v: 14,
