@@ -35,8 +35,8 @@ module.controller = () => {
     };
 };
 module.view = (ctrl) => {
-    return m.component(checkbox, {
-        label: 'Checkbox',
+    return m.component(radioButton, {
+        label: 'Label',
         checked: ctrl.checked,
         getState: (state) => (ctrl.value = state.value)
     });
