@@ -129,13 +129,13 @@ const startDrag = (ctrl, opts, e) => {
         ctrl.isDragging = false;
         ctrl.isActive = false;
         deFocus(ctrl);
-        document.body.removeEventListener(eventMoveType, drag);
-        document.body.removeEventListener(eventEndType, endDrag);
+        window.removeEventListener(eventMoveType, drag);
+        window.removeEventListener(eventEndType, endDrag);
         m.redraw();
     };
 
-    document.body.addEventListener(eventMoveType, drag);
-    document.body.addEventListener(eventEndType, endDrag);
+    window.addEventListener(eventMoveType, drag);
+    window.addEventListener(eventEndType, endDrag);
 
     readRangeData(ctrl);
 
