@@ -105,7 +105,7 @@ const createView = (ctrl, opts = {}) => {
             initTapEvents(el, ctrl, Object.assign(
                 {},
                 opts,
-                {animateOnTap: (opts.animateOnTap !== undefined) ? opts.animateOnTap : true}
+                {animateOnTap: (opts.animateOnTap !== false) ? true : false}
             ));
             context.onunload = () => {
                 clearTapEvents(el);

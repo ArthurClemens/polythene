@@ -229,7 +229,7 @@ const createView = (ctrl, opts = {}) => {
     const autofit = (opts.scrollable || opts.centered) ? false : (opts.autofit ? true : false);
 
     // keep selected tab up to date
-    if (opts.selectedTab !== undefined && opts.buttons[0].url) {
+    if (opts.selectedTab !== undefined) {
         setSelectedTab(ctrl, opts, opts.selectedTab, true);
     }
 
@@ -284,7 +284,7 @@ const createView = (ctrl, opts = {}) => {
     const tabRow = opts.buttons.map((buttonOpts, index) => {
         buttonOpts = Object.assign(buttonOpts, {
             selected: index === ctrl.selectedTabIndex,
-            animateOnTap: (opts.animateOnTap !== undefined) ? opts.animateOnTap : false
+            animateOnTap: (opts.animateOnTap !== false) ? true : false
         }, opts.tabsOpts || {});
         return createTab(ctrl, opts, index, buttonOpts);
     }).concat([
