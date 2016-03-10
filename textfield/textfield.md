@@ -124,6 +124,7 @@ Other supported validation checks:
 * `maxlength`
 * `min`
 * `max`
+* `pattern`
 
 #### When to validate
 
@@ -281,7 +282,7 @@ These options have effect on the overall component (label, input, help, error).
 
 ### Input options
 
-These options are also passed to the component, but have effect on the generated HTML input field.
+These options also have effect on the generated HTML input field.
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
@@ -294,6 +295,7 @@ These options are also passed to the component, but have effect on the generated
 | **minlength** | optional | Integer | | Minimum number of characters (for type: text, email, search, password, tel, or url) |
 | **multiline** | optional | Boolean | | Set to `true` to create a textarea instead of an text input field |
 | **name** | optional | String | | Input element name |
+| **pattern** | optional | String | | Validation regex pattern for fields of `type` text, search, url, tel, email, password | 
 | **required** | optional | Boolean | false  | Set to `true` to use HTML5 field validation to test for a non-empty value; adds a "required mark" (asterisk character) to the label |
 | **hideRequiredMark** | optional | Boolean | false  | Set to `true` to hide the "required mark" character |
 | **rows** | optional (only when `multiline` is `true`) | Number | | The number of rows for the textarea |
@@ -302,6 +304,7 @@ These options are also passed to the component, but have effect on the generated
 | **value** | | | | See: Functions |
 
 ### Functions
+
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **value** | optional | String or Function | | Input element value; use as function to update the value from outside |

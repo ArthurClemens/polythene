@@ -80,7 +80,7 @@ const checkValidity = (ctrl, opts) => {
     if (status.invalid !== previousInvalid) {
         ctrl.isInvalid = status.invalid;
         ctrl.error = status.message;
-        m.redraw();
+        setTimeout(m.redraw, 0);
     }
 };
 
@@ -118,7 +118,7 @@ const createView = (ctrl, opts = {}) => {
     const type = (!opts.type || opts.type === 'submit' || opts.type === 'search') ? 'text' : opts.type;
     const inputTag = opts.multiline ? 'textarea' : 'input';
     const showError = isInvalid && ctrl.error;
-    const validates = opts.validate || opts.min || opts.max || opts.minlength || opts.required;
+    const validates = opts.validate || opts.min || opts.max || opts.minlength || opts.required || opts.pattern;
 
     if (opts.focus && !ctrl.focus()) {
         ctrl.focus(true);
@@ -174,6 +174,7 @@ const createView = (ctrl, opts = {}) => {
                 opts.config(el, inited, context, vdom);
             }
             ctrl.el = el;
+            updateState(ctrl, opts);
         }
     };
 
@@ -271,6 +272,7 @@ const createView = (ctrl, opts = {}) => {
                     disabled: opts.disabled
                 },
                 opts.events ? opts.events : null, // NOTE: may overwrite oninput
+                (opts.pattern !== undefined) ? {pattern: opts.pattern} : null,
                 (opts.maxlength !== undefined) ? {maxlength: opts.maxlength} : null,
                 (opts.minlength !== undefined) ? {minlength: opts.minlength} : null,
                 (opts.max !== undefined) ? {max: opts.max} : null,
