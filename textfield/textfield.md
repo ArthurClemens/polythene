@@ -14,6 +14,10 @@ Features:
 * front-end validation
 * character counter
 
+<script async type="text/javascript" src="https://jsfiddle.net/ArthurClemens/dwtss31v/embed/js,result/">
+<h2>Validation examples</h2>
+</script>
+
 
 ## Usage
 
