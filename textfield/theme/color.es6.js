@@ -28,13 +28,22 @@ const style = (config, tint, scope = '') => {
                 color: config['color_' + tint + '_label_text']
             },
 
-            '&.pe-textfield--disabled': {
-                ' .pe-textfield__input, .pe-textfield__label': {
-                    color: config['color_' + tint + '_disabled_label_text']
-                },
+            '&.pe-textfield--disabled, &.pe-textfield--readonly': {
                 ' .pe-textfield__input-area:after': {
                     'background-color': 'transparent',
                     'background-image': 'linear-gradient(to right, ' + config['color_' + tint + '_disabled_label_text'] + ' 20%, rgba(255, 255, 255, 0) 0%)',
+                }
+            },
+
+            '&.pe-textfield--disabled': {
+                ' .pe-textfield__input, .pe-textfield__label': {
+                    color: config['color_' + tint + '_disabled_label_text']
+                }
+            },
+
+            '&.pe-textfield--readonly': {
+                ' .pe-textfield__input, .pe-textfield__label': {
+                    color: config['color_' + tint + '_readonly_label_text']
                 }
             },
 

@@ -141,13 +141,12 @@ const createStyles = (config) => {
                     }
                 },
 
-                '&.pe-textfield--disabled': {
-                    // Spaced dotted border
-                    ' .pe-textfield__input': {
-                        'border-bottom': 'none'
-                    },
+                '&.pe-textfield--disabled, &.pe-textfield--readonly': {
                     ' .pe-textfield__label': {
                         cursor: 'auto'
+                    },
+                    ' .pe-textfield__input': {
+                        'border-bottom': 'none'
                     },
                     ' .pe-textfield__input-area:after': {
                         opacity: 1,

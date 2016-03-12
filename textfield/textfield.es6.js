@@ -16,6 +16,7 @@ const CSS_CLASSES = {
     errorPlaceholder: 'pe-textfield__error-placeholder',
     stateFocused: 'pe-textfield--focused',
     stateDisabled: 'pe-textfield--disabled',
+    stateReadonly: 'pe-textfield--readonly',
     stateInvalid: 'pe-textfield--invalid',
     stateDirty: 'pe-textfield--dirty',
     hasFloatingLabel: 'pe-textfield--floating-label',
@@ -121,8 +122,9 @@ const createView = (ctrl, opts = {}) => {
     const inputTag = opts.multiline ? 'textarea' : 'input';
     const showError = isInvalid && ctrl.error;
     const validates = opts.validate || opts.min || opts.max || opts.minlength || opts.required || opts.pattern;
+    const inactive = opts.disabled || opts.readonly;
 
-    if (opts.focus && !ctrl.focus()) {
+    if (opts.focus && !ctrl.focus() && !inactive) {
         ctrl.focus(true);
         if (ctrl.inputEl()) {
             ctrl.inputEl().focus();
@@ -130,7 +132,7 @@ const createView = (ctrl, opts = {}) => {
     }
 
     // Only update from outside if the field is not being edited
-    if (typeof opts.value === 'function' && ctrl.inputEl() && !ctrl.focus()) {
+    if (typeof opts.value === 'function' && ctrl.inputEl() && !ctrl.focus() && !inactive) {
         const value = opts.value();
         ctrl.value = value;
         ctrl.touched = true;
@@ -156,6 +158,7 @@ const createView = (ctrl, opts = {}) => {
             (ctrl.focus() ? CSS_CLASSES.stateFocused : ''),
             (opts.floatingLabel ? CSS_CLASSES.hasFloatingLabel : ''),
             (opts.disabled ? CSS_CLASSES.stateDisabled : ''),
+            (opts.readonly ? CSS_CLASSES.stateReadonly : ''),
             (ctrl.isDirty ? CSS_CLASSES.stateDirty : ''),
             (opts.dense ? CSS_CLASSES.isDense : ''),
             (opts.required ? CSS_CLASSES.isRequired : ''),
@@ -176,7 +179,9 @@ const createView = (ctrl, opts = {}) => {
                 opts.config(el, inited, context, vdom);
             }
             ctrl.el = el;
-            updateState(ctrl, opts);
+            if (!inactive) {
+                updateState(ctrl, opts);
+            }
         }
     };
 
@@ -189,8 +194,9 @@ const createView = (ctrl, opts = {}) => {
                 class: CSS_CLASSES.label,
                 // In IE10 the label catches click events on the field
                 // the function causes the input to get focus
+
                 ['on' + startEventType]: () => {
-                    if (!opts.disabled) {
+                    if (!inactive) {
                         setTimeout(() => {
                             ctrl.inputEl().focus();
                         }, 0);
@@ -203,12 +209,18 @@ const createView = (ctrl, opts = {}) => {
                     class: CSS_CLASSES.input,
                     type,
                     onclick: () => {
+                        if (inactive) {
+                            return;
+                        }
                         // in case the browser does not give the field focus,
                         // for instance when the user tapped to the current field off screen
                         ctrl.focus(true);
                         notifyState(ctrl, opts);
                     },
                     onfocus: () => {
+                        if (inactive) {
+                            return;
+                        }
                         ctrl.focus(true);
                         // set CSS class manually in case field gets focus but is off screen
                         // and no redraw is triggered
@@ -262,18 +274,21 @@ const createView = (ctrl, opts = {}) => {
                         ctrl.inputEl(el);
                         el.value = ctrl.value;
                         notifyState(ctrl, opts);
-                        // use event delegation for the blur event
-                        // so that click events bubble up
-                        // http://www.quirksmode.org/blog/archives/2008/04/delegating_the.html
-                        el.addEventListener('blur', onBlur, true);
-                        context.onunload = function() {
-                            el.removeEventListener('blur', onBlur, true);
-                        };
+                        if (!inactive) {
+                            // use event delegation for the blur event
+                            // so that click events bubble up
+                            // http://www.quirksmode.org/blog/archives/2008/04/delegating_the.html
+                            el.addEventListener('blur', onBlur, true);
+                            context.onunload = function() {
+                                el.removeEventListener('blur', onBlur, true);
+                            };
+                        }
                     },
                     name: opts.name || '',
                     disabled: opts.disabled
                 },
                 opts.events ? opts.events : null, // NOTE: may overwrite oninput
+                (opts.readonly !== undefined) ? {readonly: true} : null,
                 (opts.pattern !== undefined) ? {pattern: opts.pattern} : null,
                 (opts.maxlength !== undefined) ? {maxlength: opts.maxlength} : null,
                 (opts.minlength !== undefined) ? {minlength: opts.minlength} : null,
