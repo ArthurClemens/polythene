@@ -266,7 +266,6 @@ const createView = (ctrl, opts = {}) => {
                             }, 1);
                         }
                     },
-                    oninvalid: (e) => (e.preventDefault()),
                     config: (el, inited, context) => {
                         if (inited) {
                             return;
