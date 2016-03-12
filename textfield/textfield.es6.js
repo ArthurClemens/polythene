@@ -29,6 +29,8 @@ const CSS_CLASSES = {
     hideValidation: 'pe-textfield--hide-validation'
 };
 
+const KEYBOARD_TIMEOUT = 200;
+
 const validateCustom = (ctrl, opts) => {
     const state = opts.validate(ctrl.value);
     return {
@@ -317,9 +319,11 @@ const component = {
         }
 
         const onMouseDown = (e) => {
-            if (e.target !== inputEl()) {
-                inputEl().blur(e);
-            }
+            setTimeout(() => {
+                if (e.target !== inputEl()) {
+                    inputEl().blur(e);
+                }
+            }, KEYBOARD_TIMEOUT);
         };
 
         const focus = (state) => {
