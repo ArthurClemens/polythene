@@ -60,14 +60,15 @@ const getValidStatus = (ctrl, opts) => {
         message: undefined
     };
 
-    if (opts.validate) {
-        status = validateCustom(ctrl, opts);
-    }
+    
     if (!status.invalid && opts.counter) {
         status = validateCounter(ctrl, opts);
     }
     if (!status.invalid && ctrl.inputEl() && ctrl.inputEl().checkValidity) {
         status = validateHTML(ctrl, opts);
+    }
+    if (!status.invalid && opts.validate) {
+        status = validateCustom(ctrl, opts);
     }
     return status;
 };
@@ -77,13 +78,24 @@ const checkValidity = (ctrl, opts) => {
         return;
     }
 
+    // validateResetOnClear: reset validation when field is cleared
+    if (ctrl.isInvalid && ctrl.value.length === 0 && opts.validateResetOnClear) {
+        ctrl.touched = false;
+        ctrl.isInvalid = false;
+        ctrl.error = undefined;
+    }
+
     // default
     const status = getValidStatus(ctrl, opts);
     const previousInvalid = ctrl.isInvalid;
+    ctrl.error = status.message;
+    ctrl.isInvalid = status.invalid;
     if (status.invalid !== previousInvalid) {
-        ctrl.isInvalid = status.invalid;
-        ctrl.error = status.message;
         setTimeout(m.redraw, 0);
+    }
+
+    if (!status.invalid) {
+        ctrl.error = undefined;
     }
 };
 

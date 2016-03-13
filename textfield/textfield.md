@@ -138,6 +138,7 @@ Variations:
 
 * To validate immediately, use option `validateAtStart`
 * To validate on key press before "onblur", use option `validateOnInput`
+* To reset all error messages when the field is cleared, use option `validateResetOnClear`
 
 
 ### Custom validation
@@ -283,6 +284,7 @@ These options have effect on the overall component (label, input, help, error).
 | **validate** | | | | See: Functions |
 | **validateAtStart** | optional | Boolean | | Set to `true` to validate the field before any user action |
 | **validateOnInput** | optional | Boolean | | Set to `true` to validate the field at the first keypress |
+| **validateResetOnClear** | optional | Boolean | | Set to `true` to re-initiate validation state when the field is cleared |
 
 ### Input options
 
