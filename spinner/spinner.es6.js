@@ -133,6 +133,13 @@ const createView = (ctrl, opts = {}) => {
     return m(tag, props, [opts.before, content, opts.after]);
 };
 
+const delay = (opts, mode) => {
+    const value = opts[mode];
+    return ((value !== true) && !isNaN(value))
+        ? parseFloat(value, 10) * 1000
+        : false;
+};
+
 const component = {
     controller: (opts = {}) => {
         return {
@@ -146,11 +153,21 @@ const component = {
     view: (ctrl, opts = {}) => {
         if (!ctrl.visible) {
             if ((opts.hide !== undefined && !opts.hide) || opts.show) {
-                ctrl.visible = true;
+                const showDelay = delay(opts, 'show');
+                if (showDelay) {
+                    setTimeout(() => (ctrl.visible = true, m.redraw()), showDelay);
+                } else {
+                    ctrl.visible = true;
+                }
             }
         } else {
             if ((opts.show !== undefined && !opts.show) || opts.hide) {
-                ctrl.hide = true;
+                const hideDelay = delay(opts, 'hide');
+                if (hideDelay) {
+                    setTimeout(() => (ctrl.hide = true, m.redraw()), hideDelay);
+                } else {
+                    ctrl.hide = true;
+                }
             }
         }
         if (ctrl.visible) {
