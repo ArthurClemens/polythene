@@ -26,6 +26,7 @@ const style = [{
             ' .pe-button__label': [
                 mixin.fontSmoothing(), {
                     position: 'relative',
+                    'z-index': 1, // stick above wash that has position absolute
                     display: 'block',
                     'border-radius': 'inherit',
                     'pointer-events': 'none'
