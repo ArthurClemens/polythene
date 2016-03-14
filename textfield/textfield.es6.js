@@ -60,7 +60,17 @@ const getValidStatus = (ctrl, opts) => {
         message: undefined
     };
 
-    
+    if (!ctrl.touched && !opts.validateAtStart) {
+        return status;
+    }
+
+    // validateResetOnClear: reset validation when field is cleared
+    if (ctrl.touched && ctrl.isInvalid && ctrl.value.length === 0 && opts.validateResetOnClear) {
+        ctrl.touched = false;
+        ctrl.isInvalid = false;
+        ctrl.error = undefined;
+    }
+
     if (!status.invalid && opts.counter) {
         status = validateCounter(ctrl, opts);
     }
@@ -74,17 +84,6 @@ const getValidStatus = (ctrl, opts) => {
 };
 
 const checkValidity = (ctrl, opts) => {
-    if (!ctrl.touched && !opts.validateAtStart) {
-        return;
-    }
-
-    // validateResetOnClear: reset validation when field is cleared
-    if (ctrl.isInvalid && ctrl.value.length === 0 && opts.validateResetOnClear) {
-        ctrl.touched = false;
-        ctrl.isInvalid = false;
-        ctrl.error = undefined;
-    }
-
     // default
     const status = getValidStatus(ctrl, opts);
     const previousInvalid = ctrl.isInvalid;
