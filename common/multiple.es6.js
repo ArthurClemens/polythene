@@ -58,13 +58,6 @@ const multiple = (mOpts) => {
         }
     };
 
-    const setVisibleState = (state, instanceId) => {
-        const item = findItem(instanceId);
-        if (item) {
-            item.visible = state;
-        }
-    };
-
     const didShow = (instanceId) => {
         const item = findItem(instanceId);
         if (item) {
@@ -142,11 +135,6 @@ const multiple = (mOpts) => {
 
         unpause: (instanceId = mOpts.defaultId) => {
             setPauseState(false, instanceId);
-        },
-
-        // Used when dialog must stay visible on route changes
-        setVisibleState: (state, instanceId = mOpts.defaultId) => {
-            setVisibleState(state, instanceId);
         },
 
         view: () => {
