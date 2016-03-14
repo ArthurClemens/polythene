@@ -84,6 +84,10 @@ opts:
 const transition = (opts, state) => {
     const deferred = m.deferred();
     const el = opts.el;
+    if (!el) {
+        deferred.resolve();
+        return deferred.promise;
+    }
     const transitionDuration = getDuration(opts, state) * 1000;
     const delay = getDelay(opts, state) * 1000;
     const style = el.style;
