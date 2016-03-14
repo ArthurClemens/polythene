@@ -138,7 +138,8 @@ const createView = (ctrl, opts = {}) => {
                 optsConfig(...args),
                 urlConfig(...args)
             ]
-        }
+        },
+        disabled ? {disabled: true} : null
     );
 
     const label = opts.content
