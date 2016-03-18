@@ -343,14 +343,6 @@ const component = {
             touched = true;
         }
 
-        const onMouseDown = (e) => {
-            setTimeout(() => {
-                if (e.target !== inputEl()) {
-                    inputEl().blur(e);
-                }
-            }, KEYBOARD_TIMEOUT);
-        };
-
         const focus = (state) => {
             // read
             if (state === undefined) {
@@ -358,11 +350,6 @@ const component = {
             }
             // write
             hasFocus = state;
-            if (hasFocus) {
-                document.body.addEventListener(startEventType, onMouseDown);
-            } else {
-                document.body.removeEventListener(startEventType, onMouseDown);
-            }
         };
 
         return {
