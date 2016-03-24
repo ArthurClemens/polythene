@@ -30,8 +30,6 @@ const CSS_CLASSES = {
     hideValidation: 'pe-textfield--hide-validation'
 };
 
-const KEYBOARD_TIMEOUT = 200;
-
 const validateCustom = (ctrl, opts) => {
     const state = opts.validate(ctrl.value);
     return {
