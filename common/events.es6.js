@@ -22,6 +22,7 @@ const subscribe = (eventName, listener, delay) => {
     listeners[eventName].push(delay ? throttle(listener, delay) : listener);
 };
 
+
 const unsubscribe = (eventName, listener) => {
     if (!listeners[eventName]) {
         return;
@@ -32,6 +33,7 @@ const unsubscribe = (eventName, listener) => {
     }
 };
 
+
 const emit = (eventName, event) => {
     if (!listeners[eventName]) {
         return;
@@ -40,6 +42,11 @@ const emit = (eventName, event) => {
         listener(event);
     });
 };
+
+
+window.addEventListener('resize', e => (emit('resize', e)));
+window.addEventListener('scroll', e => (emit('scroll', e)));
+window.addEventListener('keydown', e => (emit('keydown', e)));
 
 export default {
     throttle,
