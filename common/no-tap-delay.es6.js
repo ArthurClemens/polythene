@@ -3,7 +3,8 @@ import p from 'polythene/polythene/polythene';
 import events from 'polythene/common/events';
 
 const layer = document.body;
-const throttle = 150;
+const throttleDelay = 150;
+const reInitDelay = throttleDelay + 50;
 let fastClick;
 let timeoutId;
 let enabled;
@@ -27,12 +28,12 @@ const handleScroll = () => {
     if (timeoutId) {
         window.clearTimeout(timeoutId);
     }
-    timeoutId = window.setTimeout(add, throttle);
+    timeoutId = window.setTimeout(add, reInitDelay);
 };
 
 const init = () => {
     if (p.isTouch) {
-        events.subscribe('scroll', handleScroll);
+        events.subscribe('scroll', handleScroll, throttleDelay);
         add();
     }
 };
