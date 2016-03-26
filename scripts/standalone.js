@@ -6,7 +6,7 @@ const folders = ['base-button', 'button', 'card', 'checkbox', 'common', 'config'
 
 const commonUtils = ['easing', 'mixin', 'multiple', 'no-tap-delay', 'object.assign', 'scroll-to', 'styler', 'timer', 'transition-event', 'transition', 'validation-helper', 'webfontloader'];
 
-const includes = ['layout/theme/flex', 'layout/theme/theme'];
+const includes = ['layout/theme/flex', 'layout/theme/theme', 'notification/snackbar', 'notification/notification', 'spinner/ios-spinner', 'spinner/indeterminate-spinner', 'spinner/determinate-spinner'];
 
 const noRequires = {
     'common': 1,
