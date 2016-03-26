@@ -3,6 +3,8 @@
 // argv[3]: which dir to watch
 // argv[4]: which dir to ignore
 
+const path = require('path');
+
 const watch = require('transpile-watch');
 watch({
     persistent: !(process.argv[2] === 'once'),
@@ -11,7 +13,7 @@ watch({
     extension: '.es6',
     createOutPath: (inPath) => (inPath.replace(/.es6$/, '.js')),
     transform: (inPath, outPath) => {
-        const dir = inPath.replace(/\w+\.es6$/, '');
+        const dir = path.dirname(inPath) + '/';
         const backPath = createBackPath(dir);
         const re = new RegExp(dir);
         const inFile = inPath.replace(re, '');
@@ -19,9 +21,9 @@ watch({
         const sourceMapFile = `${outFile}.map`;
         const command = [
             `cd ${dir}`,
-            `${backPath}node_modules/.bin/babel --presets es2015 --plugins add-module-exports ${inFile} --out-file ${outFile} --source-maps true`,
-            `${backPath}node_modules/.bin/uglifyjs --compress --output ${outFile} --source-map ${sourceMapFile} --in-source-map ${sourceMapFile}`,
-            `node_modules/.bin/mithril-objectify ${outPath} ${outPath}`
+            `${backPath}node_modules/babel-cli/bin/babel.js --presets es2015 --plugins add-module-exports ${inFile} --out-file ${outFile} --source-maps true`,
+            `${backPath}node_modules/uglify-js/bin/uglifyjs --compress --output ${outFile} --source-map ${sourceMapFile} --in-source-map ${sourceMapFile}`,
+            `${backPath}node_modules/mithril-objectify/bin/cli.js ${outFile} ${outFile}`
         ].join(' && ');
         return command;
     }
