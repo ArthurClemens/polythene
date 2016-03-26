@@ -1,0 +1,1 @@
+{"version":3,"sources":["polythene.es6"],"names":["isTouch","window","navigator","MaxTouchPoints","msMaxTouchPoints","document","querySelector","classList","add"],"mappings":"mEAAA,IAAMA,SAAW,gBAAmBC,SAAYC,UAAUC,eAAiB,GAAOD,UAAUE,iBAAmB,CAE/GC,UAASC,cAAc,QAAQC,UAAUC,IAAIR,QAAU,WAAa,mCAGhEA,QAAAA","file":"polythene.js"}

@@ -1,0 +1,1 @@
+{"version":3,"sources":["snackbar.es6"],"names":["_multiple2","instance","_notificationInstance2","class","defaultId","tag","noneTag","bodyShowClass","queue","transitions","_transitions2"],"mappings":"8oBAMe,EAAAA,WAAAA,aACXC,SAAAC,uBAAAA,WACAC,QAAO,4CACPC,UAAW,mBACXC,IAAK,0BACLC,QAAS,gCACTC,cAAe,oBACfC,OAAO,EACPC,YAAAC,cAAAA","file":"snackbar.js"}
