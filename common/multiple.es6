@@ -121,8 +121,10 @@ const multiple = (mOpts) => {
             } else {
                 item = findItem(instanceId);
             }
-            item.hide = true;
-            return item.hideDeferred.promise;
+            if (item) {
+                item.hide = true;
+                return item.hideDeferred.promise;
+            }
         },
 
         remove: (instanceId = mOpts.defaultId) => {
