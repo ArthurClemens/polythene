@@ -22,6 +22,7 @@
     "browserify": "^11.2.0",
     "mithril": "^0.2.0",
     "mithril-objectify": "^1.2.4",
+    "shelljs": "^0.6.0",
     "transpile-watch": "0.0.2",
     "uglify-js": "^2.6.2",
     "uglifyify": "^3.0.1"
