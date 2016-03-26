@@ -138,6 +138,7 @@ Variations:
 
 * To validate immediately, use option `validateAtStart`
 * To validate on key press before "onblur", use option `validateOnInput`
+* To reset all error messages when the field is cleared, use option `validateResetOnClear`
 
 
 ### Custom validation
@@ -283,6 +284,7 @@ These options have effect on the overall component (label, input, help, error).
 | **validate** | | | | See: Functions |
 | **validateAtStart** | optional | Boolean | | Set to `true` to validate the field before any user action |
 | **validateOnInput** | optional | Boolean | | Set to `true` to validate the field at the first keypress |
+| **validateResetOnClear** | optional | Boolean | | Set to `true` to re-initiate validation state when the field is cleared |
 
 ### Input options
 
@@ -291,6 +293,7 @@ These options also have effect on the generated HTML input field.
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **autofocus** | optional | Boolean | | Set to `true` to give the input field autofocus |
+| **disabled** | optional | Boolean | | Creates a disabled input field |
 | **events** | optional | Object | | Input events; options object containing one or more events; predefined events are `onfocus`, `onblur`, `oninput`, `onfocus`, `onclick`, `onkeydown`; events with the same name that are specified in the `events` option will overwrite the predefined functions  |
 | **focus** | optional | Boolean | | Set to `true` to give focus to the field; WARNING: make sure that the value is also reset to `false` (using a variable) or the field will always have focus |
 | **max** | optional | Number | | Maximum value (for type: number) |
@@ -302,6 +305,7 @@ These options also have effect on the generated HTML input field.
 | **pattern** | optional | String | | Validation regex pattern for fields of `type` text, search, url, tel, email, password | 
 | **required** | optional | Boolean | false  | Set to `true` to use HTML5 field validation to test for a non-empty value; adds a "required mark" (asterisk character) to the label |
 | **hideRequiredMark** | optional | Boolean | false  | Set to `true` to hide the "required mark" character |
+| **readonly** | optional | Boolean | | Creates a readonly input field |
 | **rows** | optional (only when `multiline` is `true`) | Number | | The number of rows for the textarea |
 | **tabindex** | optional | Integer | | Tab index |
 | **type** | optional | String: 'text', 'password', 'email', 'number', ... | 'text' | Type of input element |

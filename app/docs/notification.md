@@ -4,7 +4,9 @@
 
 Shows a temporary message. Messages can be queued.
 
----
+<script async type="text/javascript" src="https://jsfiddle.net/ArthurClemens/hkeehgLh/embed/js,css,result/">
+<h2>Snackbar example</h2>
+</script>
 
 The information on this page refers to the `notification` component, but can also be used for the `snackbar` component - both components use the same code base, and only differ in appearance (style and transitions).
 

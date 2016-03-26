@@ -30,6 +30,7 @@ Creates a small indeterminate spinner with a single color.
 By default the spinner is hidden, unless:
 
 * option `show` is true
+* option `show` has a value in delay seconds, the spinner will show after the delay
 * option `hide` is false
 * options `permanent` is true (for testing and demos)
 
@@ -73,8 +74,8 @@ m.component(spinner, {
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **permanent** | optional | Boolean | | Set to `true` to always show the spinner (mostly used for demonstration purposes) |
-| **show** | optional | Boolean | | Set to true to show the menu |
-| **hide** | optional | Boolean | | Set to true to hide the menu |
+| **show** | optional | Boolean or Number in seconds | | Set to true to show the menu; set to a seconds value to make the spinner appear after a delay |
+| **hide** | optional | Boolean or Number in seconds | | Set to true to hide the menu; set to a seconds value to make the spinner hide after a delay |
 
 ### Spinner appearance options
 
