@@ -160,7 +160,8 @@ const multiple = (mOpts) => {
             }
             return m(mOpts.tag, toShowItems.map((itemData) => {
                 return m.component(mOpts.instance, Object.assign({}, itemData, {
-                    transitions: mOpts.transitions
+                    transitions: mOpts.transitions,
+                    key: itemData.key || itemData.instanceId
                 }));
             }));
         }

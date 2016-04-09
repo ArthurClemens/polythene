@@ -230,7 +230,6 @@ const component = {
         // instanceData contains {id, opts}
         const opts = instanceData.opts || {};
         let z = (opts.z !== undefined) ? opts.z : 3; // shadow depth
-        // instanceData contains {id, opts}
         return Object.assign({}, instanceData, {
             instanceId: instanceData.instanceId,
             z: z,
