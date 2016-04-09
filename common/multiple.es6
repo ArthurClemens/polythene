@@ -58,31 +58,38 @@ const multiple = (mOpts) => {
         }
     };
 
-    const didShow = (instanceId) => {
-        const item = findItem(instanceId);
-        if (item) {
-            item.showDeferred.resolve();
-        }
-    };
-
-    const didHide = (instanceId) => {
-        const item = findItem(instanceId);
-        if (item) {
-            item.hideDeferred.resolve();
-        }
-        if (mOpts.queue) {
-            remove(instanceId);
-        }
-
-    };
-
     const makeItem = (opts, instanceId) => {
+        let resolveShow;
+        const didShow = () => {
+            if (opts.didShow) {
+                opts.didShow(instanceId);
+            }
+            return resolveShow(instanceId);
+        };
+        const showPromise = new Promise(function(resolve) {
+            resolveShow = resolve;
+        });
+
+        let resolveHide;
+        const didHide = () => {
+            if (opts.didHide) {
+                opts.didHide(instanceId);
+            }
+            if (mOpts.queue) {
+                remove(instanceId);
+            }
+            return resolveHide(instanceId);
+        };
+        const hidePromise = new Promise(function(resolve) {
+            resolveHide = resolve;
+        });
+
         return Object.assign({}, mOpts, {
             instanceId,
             opts,
             show: mOpts.queue ? false : true,
-            showDeferred: m.deferred(),
-            hideDeferred: m.deferred(),
+            showPromise,
+            hidePromise,
             didShow,
             didHide
         });
@@ -109,7 +116,7 @@ const multiple = (mOpts) => {
                     items.push(item);
                 }
             }
-            return item.showDeferred.promise;
+            return item.showPromise;
         },
 
         hide: (instanceId = mOpts.defaultId) => {
@@ -123,8 +130,9 @@ const multiple = (mOpts) => {
             }
             if (item) {
                 item.hide = true;
-                return item.hideDeferred.promise;
+                return item.hidePromise;
             }
+            return Promise.resolve(instanceId);
         },
 
         remove: (instanceId = mOpts.defaultId) => {

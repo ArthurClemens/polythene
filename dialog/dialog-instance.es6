@@ -57,9 +57,10 @@ const show = (ctrl, opts) => {
     })).then(() => {
         ctrl.isTransitioning = false;
         ctrl.visible = true;
-        // dialog.setVisibleState(true, id);
-        if (opts.didShow) {
-            opts.didShow(id);
+        if (ctrl.didShow) {
+            // notify multiple
+            ctrl.didShow(id);
+            // this will call opts.didShow
         }
     });
 };
@@ -74,9 +75,10 @@ const hide = (ctrl, opts) => {
         dialog.remove(id);
         ctrl.isTransitioning = false;
         ctrl.visible = false;
-        // dialog.setVisibleState(false, id);
-        if (opts.didHide) {
-            opts.didHide(id);
+        if (ctrl.didHide) {
+            // notify multiple
+            ctrl.didHide(id);
+            // this will call opts.didHide
         }
         setTimeout(m.redraw, 0); // removes remainder of drawn component
     });
@@ -228,7 +230,8 @@ const component = {
         // instanceData contains {id, opts}
         const opts = instanceData.opts || {};
         let z = (opts.z !== undefined) ? opts.z : 3; // shadow depth
-        return {
+        // instanceData contains {id, opts}
+        return Object.assign({}, instanceData, {
             instanceId: instanceData.instanceId,
             z: z,
             scrollEl: null,
@@ -242,7 +245,7 @@ const component = {
             el: null,
             visible: false,
             isTransitioning: false
-        };
+        });
     },
     view: (ctrl, instanceData) => {
         // instanceData contains {id, opts}

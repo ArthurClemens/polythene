@@ -167,6 +167,10 @@ Functions that return a promise:
 notification.show(options);
 ~~~
 
+~~~javascript
+notification.show(options).then(() => (console.log('notification shown')));
+~~~
+
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **options** | required | Options object or Function that returns an options object | | See options table below |
@@ -177,6 +181,10 @@ Hides the current message.
 
 ~~~javascript
 notification.hide();
+~~~
+
+~~~javascript
+notification.hide().then(() => (console.log('notification hidden')));
 ~~~
 
 #### pause

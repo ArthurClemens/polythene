@@ -105,11 +105,18 @@ The dialog can be closed programmatically with `dialog.hide()`.
 
 ### Function calls
 
+Functions `show` and `hide` return a Promise.
+
 #### show
 
 ~~~javascript
 dialog.show(options, id);
 ~~~
+
+~~~javascript
+dialog.show(options, id).then((id) => (console.log('dialog shown', id)));
+~~~
+
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
@@ -135,6 +142,10 @@ dialog.show(logonDialog, void 0, {
 
 ~~~javascript
 dialog.hide(id);
+~~~
+
+~~~javascript
+dialog.hide(id).then((id) => (console.log('dialog hidden', id)));
 ~~~
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |

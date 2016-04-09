@@ -36,6 +36,7 @@ const stopTimer = (ctrl) => {
 
 const show = (ctrl, opts) => {
     stopTimer(ctrl);
+    const id = ctrl.instanceId;
     ctrl.isTransitioning = true;
     return transition.show(Object.assign(
         {},
@@ -45,12 +46,10 @@ const show = (ctrl, opts) => {
         ctrl.isTransitioning = false;
         if (ctrl.didShow) {
             // notify multiple
-            ctrl.didShow(ctrl.instanceId);
+            ctrl.didShow(id);
+            // this will call opts.didShow
         }
-        if (opts.didShow) {
-            // notify other listener
-            opts.didShow(opts.id);
-        }
+
         // set timer to hide in a few seconds
         const timeout = opts.timeout;
         if (timeout === 0) {
@@ -66,6 +65,7 @@ const show = (ctrl, opts) => {
 
 const hide = (ctrl, opts) => {
     stopTimer(ctrl);
+    const id = ctrl.instanceId;
     ctrl.isTransitioning = true;
     return transition.hide(Object.assign(
         {},
@@ -76,11 +76,8 @@ const hide = (ctrl, opts) => {
         ctrl.isTransitioning = false;
         if (ctrl.didHide) {
             // notify multiple
-            ctrl.didHide(ctrl.instanceId);
-        }
-        if (opts.didHide) {
-            // notify other listener
-            opts.didHide(opts.id);
+            ctrl.didHide(id);
+            // this will call opts.didHide
         }
         m.redraw(); // removes remainder of drawn component
     });
