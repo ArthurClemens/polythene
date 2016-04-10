@@ -68,7 +68,11 @@ const multiple = (mOpts) => {
         }
     };
 
-    const makeItem = (opts, instanceId) => {
+    const makeItem = (itemOpts, instanceId) => {
+        const opts = (typeof itemOpts === 'function')
+            ? itemOpts()
+            : itemOpts;
+
         let resolveShow;
         const didShow = () => {
             if (opts.didShow) {
