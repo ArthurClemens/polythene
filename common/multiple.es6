@@ -15,12 +15,22 @@ mOpts:
 const multiple = (mOpts) => {
     const items = [];
 
+    const itemIndex = (id) => {
+        const item = findItem(id);
+        return items.indexOf(item);
+    };
+
     const removeItem = (id) => {
-        let item = findItem(id);
-        // Find and remove item from an array
-        const index = items.indexOf(item);
+        const index = itemIndex(id);
         if (index !== -1) {
             items.splice(index, 1);
+        }
+    };
+
+    const replaceItem = (id, newItem) => {
+        const index = itemIndex(id);
+        if (index !== -1) {
+            items[index] = newItem;
         }
     };
 
@@ -110,10 +120,12 @@ const multiple = (mOpts) => {
                     next();
                 }
             } else {
-                item = findItem(instanceId);
-                if (!item) {
-                    item = makeItem(opts, instanceId);
+                const storedItem = findItem(instanceId);
+                item = makeItem(opts, instanceId);
+                if (!storedItem) {
                     items.push(item);
+                } else {
+                    replaceItem(instanceId, item);
                 }
             }
             return item.showPromise;

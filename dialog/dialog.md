@@ -118,17 +118,28 @@ dialog.show(options, id).then((id) => (console.log('dialog shown', id)));
 ~~~
 
 
+Calling `show` a second time with the same id will redraw the dialog with new options:
+
+~~~javascript
+dialog.show({
+    title: 'Log in'
+}, 'login');
+
+// sometime later:
+
+dialog.show({
+    title: 'Log in again'
+}, 'login');
+~~~
+
+
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **options** | required | Options object or Function that returns an options object | | See options table below |
 | **id** | optional | String or undefined | 'default_dialog' | To distinguish dialogs when using multiple dialogs at the same time |
 
 
-~~~
-http://site.com/#/logon
-~~~
-
-In some cases you need the dialog to be there without a fade in - for instance when a dialog is shown at a route. To only use the transition on hide:
+Sometimes you may need a dialog to be appear without a fade in - for instance when a dialog is shown at a route. To only use the transition on hide:
 
 ~~~javascript
 import logonDialog from './dialogs/logon'; // logonDialog is an options object
