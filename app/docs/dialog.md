@@ -105,11 +105,33 @@ The dialog can be closed programmatically with `dialog.hide()`.
 
 ### Function calls
 
+Functions `show` and `hide` return a Promise.
+
 #### show
 
 ~~~javascript
 dialog.show(options, id);
 ~~~
+
+~~~javascript
+dialog.show(options, id).then((id) => (console.log('dialog shown', id)));
+~~~
+
+
+Calling `show` a second time with the same id will redraw the dialog with new options:
+
+~~~javascript
+dialog.show({
+    title: 'Log in'
+}, 'login');
+
+// sometime later:
+
+dialog.show({
+    title: 'Log in again'
+}, 'login');
+~~~
+
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
@@ -117,11 +139,7 @@ dialog.show(options, id);
 | **id** | optional | String or undefined | 'default_dialog' | To distinguish dialogs when using multiple dialogs at the same time |
 
 
-~~~
-http://site.com/#/logon
-~~~
-
-In some cases you need the dialog to be there without a fade in - for instance when a dialog is shown at a route. To only use the transition on hide:
+Sometimes you may need a dialog to be appear without a fade in - for instance when a dialog is shown at a route. To only use the transition on hide:
 
 ~~~javascript
 import logonDialog from './dialogs/logon'; // logonDialog is an options object
@@ -135,6 +153,10 @@ dialog.show(logonDialog, void 0, {
 
 ~~~javascript
 dialog.hide(id);
+~~~
+
+~~~javascript
+dialog.hide(id).then((id) => (console.log('dialog hidden', id)));
 ~~~
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
