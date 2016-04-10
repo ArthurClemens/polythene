@@ -109,7 +109,7 @@ const hairline = () => ({});
 // Creates sticky headers in a scrollable list
 // Does not work in Chrome: http://caniuse.com/#feat=css-sticky
 // mixin.sticky()
-const sticky = () => ([
+const sticky = (zIndex = 1) => ([
     {position: '-webkit-sticky'},
     {position: '-moz-sticky'},
     {position: '-o-sticky'},
@@ -117,7 +117,7 @@ const sticky = () => ([
     {position: 'sticky'},
     {
         top: 0,
-        'z-index': 1
+        'z-index': zIndex
     }
 ]);
 

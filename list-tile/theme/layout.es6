@@ -20,7 +20,9 @@ const createStyles = (config) => {
                 position: 'relative',
                 overflow: 'hidden',
 
-                '&.pe-list-tile--sticky': mixin.sticky(),
+                '&.pe-list-tile--sticky': [
+                    mixin.sticky(2)
+                ],
 
                 ' .pe-list-tile__primary, .pe-list-tile__secondary': [
                     flex.layoutHorizontal,
@@ -37,6 +39,7 @@ const createStyles = (config) => {
                     flex.flex(),
                     {
                         position: 'relative',
+                        'z-index': 1, // in case a ripple is used (positioned absolute)
 
                         ' .pe-list-tile__content:not(.pe-list-tile__content--front)': [
                             flex.flex(),
@@ -47,7 +50,9 @@ const createStyles = (config) => {
 
                 ' .pe-list-tile__secondary': {
                     'text-align': 'right',
-                    'font-size': config.font_size_title + 'px'
+                    'font-size': config.font_size_title + 'px',
+                    position: 'relative',
+                    'z-index': 1, // in case a ripple is used (positioned absolute)
                 },
 
                 ' .pe-list-tile__content': [
