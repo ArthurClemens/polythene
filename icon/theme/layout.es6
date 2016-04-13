@@ -14,6 +14,8 @@ const createStyles = (config) => {
             'background-repeat': 'no-repeat',
             fill: 'currentcolor',
             position: 'relative',
+            'font-size': 0,
+            'line-height': 0,
 
             '&.pe-icon--avatar img': {
                 border: 'none',
