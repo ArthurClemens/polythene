@@ -49,7 +49,6 @@ const ellipsis = (lines, lineHeight) => {
         return {
             'text-overflow': 'initial',
             overflow: 'initial',
-            'white-space': 'initial',
             display: 'block',
             height: 'auto'
         };
@@ -57,7 +56,6 @@ const ellipsis = (lines, lineHeight) => {
     return Object.assign(
         {
             overflow: 'hidden',
-            'white-space': 'nowrap',
             'text-overflow': 'ellipsis',
             'text-rendering': 'auto' // Samsung Android
         },
@@ -65,7 +63,7 @@ const ellipsis = (lines, lineHeight) => {
             '-webkit-line-clamp': lines,
             '-webkit-box-orient': 'vertical',
             display: '-webkit-box',
-            height: (lines * lineHeight) + 'px'
+            'max-height': (lines * lineHeight) + 'px'
         } : null
     );
 };
