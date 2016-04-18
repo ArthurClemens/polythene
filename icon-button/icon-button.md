@@ -122,7 +122,7 @@ const myIconBtn = m.component(iconBtn, {
 | **ink** | optional | Boolean | true | Set to false to disable the ripple effect on click/tap |
 | **raised** | optional | Boolean | false | Shows a shadow; on button press the shadow depth is increased by 1 |
 | **z** | optional | Number 0-5 | 1 | The shadow depth for a raised button; raised buttons have a default z of 1 |
-| **compact | optional | Boolean | | Set to `true` to use less padding |
+| **compact** | optional | Boolean | | Set to `true` to use less padding |
 | **active** | optional | Boolean | | Set to true to show the active state (with border and background) |
 
 
