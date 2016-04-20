@@ -43,8 +43,9 @@ const fontSmoothing = (smoothing = true) => {
 
 // Breaks off a line with ...
 // unless lines is 'none'
-// mixin.ellipsis(2, 16),
-const ellipsis = (lines, lineHeight) => {
+// mixin.ellipsis(1, 16) // max 1 line, 16px high
+// mixin.ellipsis(2, 1.3, 'em') // max 2 lines, 2.6em high
+const ellipsis = (lines, lineHeight, unit = 'px') => {
     if (lines === 'none') {
         return {
             'text-overflow': 'initial',
@@ -62,8 +63,10 @@ const ellipsis = (lines, lineHeight) => {
         (lines !== undefined) ? {
             '-webkit-line-clamp': lines,
             '-webkit-box-orient': 'vertical',
-            display: '-webkit-box',
-            'max-height': (lines * lineHeight) + 'px'
+            display: '-webkit-box'
+        } : null,
+        (lineHeight !== undefined) ? {
+            'max-height': (lines * lineHeight) + unit
         } : null
     );
 };

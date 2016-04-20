@@ -4,6 +4,8 @@ import flex from 'polythene/layout/theme/flex';
 
 const createStyles = (config) => {
     const padding = config.padding;
+    const lineHeightTitle = 24;
+
     return [{
         '.pe-dialog': [
             flex.layoutCenterCenter,
@@ -78,9 +80,8 @@ const createStyles = (config) => {
 
                 ' .pe-dialog__title': {
                     'font-size': common.font_size_title + 'px',
-                    'line-height': '24px',
+                    'line-height': lineHeightTitle + 'px',
                     'font-weight': common.font_weight_medium,
-                    display: 'block',
 
                     '& + div': {
                         'margin-top': '16px'
@@ -92,8 +93,8 @@ const createStyles = (config) => {
                     'min-height': config.header_height + 'px',
 
                     ' .pe-dialog__title': [
-                        mixin.ellipsis(), {
-                            'display': 'block',
+                        mixin.ellipsis(1, lineHeightTitle),
+                        {
                             width: '100%'
                         }
                     ]

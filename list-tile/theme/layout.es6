@@ -78,7 +78,7 @@ const createStyles = (config) => {
                 },
 
                 ' .pe-list-tile__title': [
-                    mixin.ellipsis(1, config.single_line_height),
+                    mixin.ellipsis(1),
                     {
                         'font-size': config.font_size_title + 'px',
                         'font-weight': common.font_weight_normal,

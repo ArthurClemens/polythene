@@ -68,21 +68,21 @@ const createStyles = (config) => {
                         ' .pe-button--icon + span, .pe-button--icon + .pe-title': {
                             'margin-left': config.indent - config.margin_side - common.grid_unit_icon_button + 'px'
                         }
-                    }, {
-                        '> span:first-child, .pe-toolbar__title--indent': [
-                            mixin.ellipsis(), {
-                                'margin-left': config.indent + 'px'
-                            }
-                        ]
                     },
                     {
                         '> span, > .pe-title': [
-                            mixin.ellipsis(),
+                            mixin.ellipsis(1, common.line_height, 'em'),
                             mixin.vendorize({
                                 'transform-origin': 'left 50%'
                             }, common.prefixes_transform), {
-                                display: 'block',
-                                'line-height': common.line_height + 'em'
+                                'line-height': common.line_height + 'em',
+                                'word-break': 'break-all'
+                            }
+                        ]
+                    }, {
+                        '> span:first-child, .pe-toolbar__title--indent': [
+                            mixin.ellipsis(1, common.line_height, 'em'), {
+                                'margin-left': config.indent + 'px'
                             }
                         ]
                     }, {
@@ -101,7 +101,7 @@ const createStyles = (config) => {
                                 }
                             }
                         ],
-                        ' .pe-header': mixin.ellipsis(),
+                        ' .pe-header': mixin.ellipsis(1, common.line_height, 'em'),
 
                         '&.pe-toolbar__bar--middle': {
                             position: 'absolute',
