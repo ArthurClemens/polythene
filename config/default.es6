@@ -131,8 +131,9 @@ export default {
     env_desktop: window.innerWidth >= 1024,
 
     // z-index
-    z_menu: 99,
-    z_header_container: 999,
-    z_notification: 9998,
-    z_dialog: 9999
+    z_menu: 1000,
+    z_header_container: 2000,
+    z_fixed_header_container: 3000,
+    z_notification: 4000,
+    z_dialog: 5000
 };

@@ -15,7 +15,6 @@ const createStyles = (config) => {
                 mixin.fit(),
                 flex.layoutVertical
             ],
-            ' .pe-header': mixin.ellipsis(),
             ' .pe-header-panel__main-container': [
                 flex.flex(),
                 {
@@ -70,8 +69,11 @@ const createStyles = (config) => {
                 },
                 ' .pe-toolbar__bottom-bar': {}
             },
-            '&:not(.pe-header-panel--fixed):not(.pe-header-panel--scroll) > .pe-header-panel__outer-container > .pe-header-panel__header-container': {
+            ':not(.pe-header-panel--fit):not(.pe-header-panel--fixed):not(.pe-header-panel--scroll) > .pe-header-panel__outer-container > .pe-header-panel__header-container': {
                 'z-index': common.z_header_container
+            },
+            '.pe-header-panel--fit > .pe-header-panel__outer-container > .pe-header-panel__header-container': {
+                'z-index': common.z_fixed_header_container
             },
             ' .pe-header-panel__condensed-background': {
                 opacity: 0
