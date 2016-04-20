@@ -182,36 +182,43 @@ const setSelectedTab = (ctrl, opts, index, animate) => {
 
 const createTab = (ctrl, opts, index, buttonOpts) => {
     // Let internal onclick function co-exist with passed button option
-    const clickFn = () => (setSelectedTab(ctrl, opts, index, opts.noIndicatorSlide ? false : true));
     buttonOpts.events = buttonOpts.events || {};
     buttonOpts.events.onclick = buttonOpts.events.onclick || (() => {});
-    const tabButtonOptions = Object.assign({}, buttonOpts, {
-        content: m('div', {
-            class: CSS_CLASSES.tabContent
-        }, [
-            buttonOpts.icon ? m.component(icon, buttonOpts.icon) : null,
-            buttonOpts.label ? m('div', {class: CSS_CLASSES.label}, m('span', buttonOpts.label)) : null,
-        ]),
-        class: [
-            CSS_CLASSES.tab,
-            (buttonOpts.icon && buttonOpts.label ? CSS_CLASSES.tabHasIcon : null),
-            buttonOpts.class
-        ].join(' '),
-        wash: false,
-        ripple: true,
-        events: Object.assign({}, buttonOpts.events, {
-            onclick: (e) => {
-                clickFn();
-                buttonOpts.events.onclick(e);
+    const tabButtonOptions = Object.assign(
+        {},
+        buttonOpts,
+        {
+            content: m('div', {
+                class: CSS_CLASSES.tabContent
+            }, [
+                buttonOpts.icon ? m.component(icon, buttonOpts.icon) : null,
+                buttonOpts.label ? m('div', {class: CSS_CLASSES.label}, m('span', buttonOpts.label)) : null,
+            ]),
+            class: [
+                CSS_CLASSES.tab,
+                (buttonOpts.icon && buttonOpts.label ? CSS_CLASSES.tabHasIcon : null),
+                buttonOpts.class
+            ].join(' '),
+            wash: false,
+            ripple: true,
+            events: Object.assign(
+                {},
+                buttonOpts.events,
+                {
+                    onclick: (e) => {
+                        setSelectedTab(ctrl, opts, index, opts.noIndicatorSlide ? false : true);
+                        buttonOpts.events.onclick(e);
+                    }
+                }
+            ),
+            config: (el, inited) => {
+                if (inited) {
+                    return;
+                }
+                ctrl.tabs.push({data: buttonOpts, el});
             }
-        }),
-        config: (el, inited) => {
-            if (inited) {
-                return;
-            }
-            ctrl.tabs.push({data: buttonOpts, el});
         }
-    });
+    );
     return m.component(button, tabButtonOptions);
 };
 
@@ -229,7 +236,7 @@ const createView = (ctrl, opts = {}) => {
     const autofit = (opts.scrollable || opts.centered) ? false : (opts.autofit ? true : false);
 
     // keep selected tab up to date
-    if (opts.selectedTab !== undefined) {
+    if (opts.selectedTab !== undefined && opts.buttons[0].url) {
         setSelectedTab(ctrl, opts, opts.selectedTab, true);
     }
 
@@ -282,11 +289,16 @@ const createView = (ctrl, opts = {}) => {
         }
     };
     const tabRow = opts.buttons.map((buttonOpts, index) => {
-        buttonOpts = Object.assign(buttonOpts, {
-            selected: index === ctrl.selectedTabIndex,
-            animateOnTap: (opts.animateOnTap !== false) ? true : false
-        }, opts.tabsOpts || {});
-        return createTab(ctrl, opts, index, buttonOpts);
+        const buttonOptsCombined = Object.assign(
+            {},
+            buttonOpts,
+            {
+                selected: index === ctrl.selectedTabIndex,
+                animateOnTap: (opts.animateOnTap !== false) ? true : false
+            },
+            opts.tabsOpts || {}
+        );
+        return createTab(ctrl, opts, index, buttonOptsCombined);
     }).concat([
         // offset for right scroll button
         opts.scrollable ? m('div', {class: CSS_CLASSES.scrollButtonOffset}) : null
