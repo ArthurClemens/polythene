@@ -14,10 +14,14 @@ const roboto = [{
 import typography from 'polythene/theme/typography';
 
 const general = [{
-    '*': [
-        {
-            'box-sizing': 'border-box'
-        },
+    // apply a natural box layout model to all elements, but allow elements to change
+    ' html': {
+        'box-sizing': 'border-box'
+    },
+    ' *, *:before, *:after': {
+        'box-sizing': 'inherit'
+    },
+    ' *': [
         // remove tap highlight in mobile Safari
         {
             '-webkit-tap-highlight-color': 'rgba(0,0,0,0)'
@@ -32,7 +36,7 @@ const general = [{
     },
 
     // Mobile Safari: override default fading of disabled elements
-    'input:disabled': {
+    ' input:disabled': {
         opacity: 1
     }
 }];
