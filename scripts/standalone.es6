@@ -59,21 +59,26 @@ const teardown = () => {
 const build = () => {
     console.log('standalone build');
     const createBundle = (entries, outfile) => {
-        browserify({
-            entries: entries,
-            paths: ['.', 'node_modules'],
-            require: requires(),
-            external: ['mithril']
-        })
-        .transform({
-            global: true
-        }, 'uglifyify')
-        .bundle()
-        .on('error', function(err) {
-            console.log('Error : ' + err.message);
-        })
-        .pipe(fs.createWriteStream(outfile).on('finish', teardown))
-        ;
+        try {
+            browserify({
+                entries: entries,
+                paths: ['.', 'node_modules'],
+                require: requires()
+            })
+            .external('mithril')
+            .transform({
+                global: true
+            }, 'uglifyify')
+            .bundle()
+            .on('error', function(err) {
+                console.log('Error : ' + err.message);
+            })
+            .pipe(fs.createWriteStream(outfile).on('finish', teardown))
+            ;
+        }
+        catch (e) {
+            teardown();
+        }
     };
 
     createBundle([
