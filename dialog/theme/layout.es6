@@ -93,7 +93,7 @@ const createStyles = (config) => {
                     'min-height': config.header_height + 'px',
 
                     ' .pe-dialog__title': [
-                        mixin.ellipsis(1, lineHeightTitle),
+                        mixin.ellipsis(1),
                         {
                             width: '100%'
                         }
