@@ -203,8 +203,6 @@ const createView = (ctrl, opts = {}) => {
         }
 
         ctrl.restoreScrollPosition();
-
-        handleScroll(); // called without event
     };
 
     const props = Object.assign({}, {
@@ -404,7 +402,11 @@ const component = {
                     ctrl.showShadow(true);
                 }
 
-                handleScrollFn();
+                if (!ctrl.scrollInited && opts.initialPositionFixed) {
+                    //
+                } else {
+                    handleScrollFn();
+                }
                 ctrl.scrollInited = true;
 
                 if (e && opts.scroll) {
