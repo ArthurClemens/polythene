@@ -296,10 +296,20 @@ const component = {
             },
             dynamicHeader: () => {
                 let sy,
-                    cascaded = false;
-                const sTop = (!ctrl.scrollInited && opts.initialScrollPosition)
-                    ? opts.initialScrollPosition
-                    : ctrl.scrollerElem.scrollTop;
+                    cascaded = false,
+                    sTop;
+
+                if (!ctrl.scrollInited && opts.initialScrollPosition) {
+                    sTop = opts.initialScrollPosition;
+                } else {
+                    sTop = ctrl.scrollerElem.scrollTop;
+                }
+ 
+                if (!ctrl.scrollInited && opts.initialPositionFixed) {
+                    prevScrollTop = sTop;
+                    y = 0;
+                    return;
+                }
 
                 if (sTop < headerMargin) {
                     sy = sTop;
@@ -402,11 +412,7 @@ const component = {
                     ctrl.showShadow(true);
                 }
 
-                if (!ctrl.scrollInited && opts.initialPositionFixed) {
-                    //
-                } else {
-                    handleScrollFn();
-                }
+                handleScrollFn();
                 ctrl.scrollInited = true;
 
                 if (e && opts.scroll) {
