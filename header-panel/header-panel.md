@@ -91,6 +91,7 @@ The header-panel will not display if its parent does not have a height.
 | **scroll** | optional | Function | | Callback function when the header panel scrolls; see Callback functions |
 | **transform** | optional | Function | | Callback function when the header panel is transforming; see Callback functions |
 | **restoreScrollPositionId** | optional | String | | Pass an identifier when this scroll view on load should scroll to the previous scroll position |
+| **initialScrollPosition** | optional | Number | | Pass a scrollTop number to set the scroll contents when it first loads |
 
 ### Header panel appearance options
 

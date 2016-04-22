@@ -79,7 +79,6 @@ const classForMode = (mode = 'standard') => {
     return modeClasses[mode];
 };
 
-
 const setTransform = (document.documentElement.style.transform !== undefined) ? ((style, string) => {
     style.transform = string;
 }) : ((style, string) => {
@@ -94,7 +93,7 @@ const translateY = (style, y) => {
 const createHeaderComponent = (opts = {}) => {
     const tall = opts.tall || false;
     const tallClass = opts.tallClass || '';
-    let toolbarOpts = opts.toolbar;
+    const toolbarOpts = opts.toolbar;
     if (toolbarOpts) {
         toolbarOpts.class = [(toolbarOpts.class || null), tall ? tallClass : null].join(' ');
         if (!toolbarOpts.topBar) {
@@ -163,8 +162,6 @@ const createViewContent = (ctrl, scrollConfig, opts = {}) => {
 };
 
 const createView = (ctrl, opts = {}) => {
-    let scrollConfig;
-
     opts.header = opts.header || {};
     opts.configs = opts.configs || [];
     ctrl.init(ctrl);
@@ -176,7 +173,7 @@ const createView = (ctrl, opts = {}) => {
     const header = createViewHeader(ctrl, opts);
     const tag = opts.tag || 'div';
 
-    scrollConfig = {};
+    const scrollConfig = {};
     scrollConfig[scrollerType] = handleScroll;
 
     const initOuterContainer = (outerContainer, inited) => {
@@ -207,7 +204,7 @@ const createView = (ctrl, opts = {}) => {
 
         ctrl.restoreScrollPosition();
 
-        handleScroll();
+        handleScroll(); // called without event
     };
 
     const props = Object.assign({}, {
@@ -243,7 +240,7 @@ const createView = (ctrl, opts = {}) => {
 };
 
 const component = {
-    controller: function(opts = {}) {
+    controller: (opts = {}) => {
         let ctrl,
             mode,
             y,
@@ -284,16 +281,14 @@ const component = {
                 //
             },
             fixed: () => {
-                const sTop = ctrl.scrollerElem.scrollTop;
-                const isScrolled = (sTop > 0);
+                const isScrolled = (ctrl.scrollerElem.scrollTop > 0);
                 ctrl.showShadow(isScrolled);
                 scrolled = isScrolled;
             },
             animated: () => {
-                const sTop = ctrl.scrollerElem.scrollTop;
-                const isScrolled = (sTop > 0);
+                const isScrolled = (ctrl.scrollerElem.scrollTop > 0);
                 if (isScrolled !== scrolled) {
-                    let headerElem = ctrl.headerElem;
+                    const headerElem = ctrl.headerElem;
                     if (headerElem && tall) {
                         headerElem.classList[isScrolled ? 'remove' : 'add'](tallClass);
                     }
@@ -304,15 +299,20 @@ const component = {
             dynamicHeader: () => {
                 let sy,
                     cascaded = false;
-                const sTop = ctrl.scrollerElem.scrollTop;
+                const sTop = (!ctrl.scrollInited && opts.initialScrollPosition)
+                    ? opts.initialScrollPosition
+                    : ctrl.scrollerElem.scrollTop;
 
                 if (sTop < headerMargin) {
                     sy = sTop;
                 } else {
-                    sy = Math.min(keepCondensedHeader ? headerMargin : headerHeight,
-                        Math.max(0, ((noReveal || keepCondensedHeader) ? sTop : y + sTop - prevScrollTop))
+                    sy = Math.min(keepCondensedHeader
+                            ? headerMargin
+                            : headerHeight,
+                        Math.max(0, ((noReveal || keepCondensedHeader)
+                            ? sTop
+                            : y + sTop - prevScrollTop))
                     );
-
                     if (condenses && prevScrollTop >= sTop && sTop > headerMargin) {
                         sy = Math.max(sy, headerMargin);
                     }
@@ -328,11 +328,21 @@ const component = {
                     }
                     ctrl.showShadow(cascaded);
                 }
-
                 y = sy;
                 prevScrollTop = Math.max(sTop, 0);
             }
         };
+
+        let handleScrollFn;
+        if (animated) {
+            handleScrollFn = handleScrollFns.animated;
+        } else if (mode === 'standard') {
+            handleScrollFn = handleScrollFns.standard;
+        } else if (fixed) {
+            handleScrollFn = handleScrollFns.fixed;
+        } else {
+            handleScrollFn = handleScrollFns.dynamicHeader;
+        }
 
         return {
             headerPanelElem: undefined,
@@ -348,6 +358,7 @@ const component = {
             shadow: (opts.shadow !== undefined && !opts.shadow) ? false : true,
             scrollWatchId: 0,
             isScrolling: false,
+            scrollInited: false,
             headerConfig: {
                 tall: tall,
                 tallClass: tallClass,
@@ -359,15 +370,13 @@ const component = {
                 ctrl = controller;
             },
 
-            setHeight: h => {
-                let mainContainer;
-
+            setHeight: (h) => {
                 if (opts.headerHeight === undefined) {
                     headerHeight = h + shadowHeight;
                     headerMargin = headerHeight - condensedHeaderHeight;
                 }
                 if (!fixed) {
-                    mainContainer = ctrl.outerContainerElem.querySelector('.' + CSS_CLASSES.mainContainer);
+                    const mainContainer = ctrl.outerContainerElem.querySelector('.' + CSS_CLASSES.mainContainer);
                     mainContainer.style.paddingTop = h + 'px';
                 }
                 if (noReveal) {
@@ -376,8 +385,6 @@ const component = {
             },
 
             handleScroll: (e) => {
-                let fn;
-
                 if (e) {
                     // this is a real scroll event
                     // instead of a programmatic call
@@ -396,27 +403,16 @@ const component = {
                 if (modeConfigs.alwaysShadow[mode]) {
                     ctrl.showShadow(true);
                 }
-                if (animated) {
-                    fn = handleScrollFns.animated;
-                    fn.bind(this).call();
-                }
-                if (mode === 'standard') {
-                    fn = handleScrollFns.standard;
-                } else if (fixed) {
-                    fn = handleScrollFns.fixed;
-                } else {
-                    fn = handleScrollFns.dynamicHeader;
-                }
-                fn.bind(this).call();
+
+                handleScrollFn();
+                ctrl.scrollInited = true;
+
                 if (e && opts.scroll) {
                     opts.scroll(e);
                 }
             },
 
             condenseHeader: (hy) => {
-                let hbg,
-                    chbg;
-
                 const reset = (hy === null);
 
                 // adjust top bar in core-header so the top bar stays at the top
@@ -427,7 +423,7 @@ const component = {
                 }
 
                 // transition header bg
-                hbg = ctrl.headerBg.style;
+                const hbg = ctrl.headerBg.style;
                 if (hbg) {
                     if (!noDissolve) {
                         hbg.opacity = reset ? '' : (headerMargin - hy) / headerMargin;
@@ -438,7 +434,7 @@ const component = {
 
                     // transition condensed header bg
                     if (!noDissolve) {
-                        chbg = ctrl.condensedHeaderBg.style;
+                        const chbg = ctrl.condensedHeaderBg.style;
                         chbg.opacity = reset ? '' : hy / headerMargin;
                         // adjust condensed header bg so it stays at the center
                         translateY(chbg, reset ? null : hy * backgroundScrollSpeed);
