@@ -58,10 +58,6 @@ const getValidStatus = (ctrl, opts) => {
         message: undefined
     };
 
-    if (!ctrl.touched && !opts.validateAtStart) {
-        return status;
-    }
-
     // validateResetOnClear: reset validation when field is cleared
     if (ctrl.touched && ctrl.isInvalid && ctrl.value.length === 0 && opts.validateResetOnClear) {
         ctrl.touched = false;
@@ -83,7 +79,12 @@ const getValidStatus = (ctrl, opts) => {
 
 const checkValidity = (ctrl, opts) => {
     // default
-    const status = getValidStatus(ctrl, opts);
+    const status = (!ctrl.touched && !opts.validateAtStart)
+        ? {
+            invalid: false,
+            message: undefined
+        }
+        : getValidStatus(ctrl, opts);
     const previousInvalid = ctrl.isInvalid;
     ctrl.error = status.message;
     ctrl.isInvalid = status.invalid;
