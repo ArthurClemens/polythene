@@ -203,6 +203,8 @@ const createView = (ctrl, opts = {}) => {
         }
 
         ctrl.restoreScrollPosition();
+
+        handleScroll(); // called without event
     };
 
     const props = Object.assign({}, {
