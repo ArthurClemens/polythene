@@ -91,6 +91,7 @@ The header-panel will not display if its parent does not have a height.
 | **scroll** | optional | Function | | Callback function when the header panel scrolls; see Callback functions |
 | **transform** | optional | Function | | Callback function when the header panel is transforming; see Callback functions |
 | **restoreScrollPositionId** | optional | String | | Pass an identifier when this scroll view on load should scroll to the previous scroll position |
+| **initialScrollPosition** | optional | Number | | Pass a scrollTop number to set the scroll contents when it first loads; see also `initialPositionFixed` below |
 
 ### Header panel appearance options
 
@@ -104,6 +105,7 @@ The header-panel will not display if its parent does not have a height.
 | **scrollAwayTopbar** | optional | Boolean | false | Set to `true` to scroll away the top part ([toolbar's topBar](#toolbar)) of the header to be scrolled away |
 | **noReveal** | optional | Boolean | false | Set to `true` to not let the header slide back in when scrolling back up |
 | **fixed** | optional | Boolean | false | Set to `true` to keep the header fixed to the top |
+| **initialPositionFixed** | optional | Boolean | | To prevent the header from being invisible (scrolled away) when using `initialScrollPosition` |
 | **keepCondensedHeader** | optional | Boolean | false | Set to `true` to not move away the condensed header |
 | **noDissolve** | optional | Boolean | false | Set to `true` to keep the background the same opacity when scrolling |
 | **backgroundScrollSpeed** | optional | Number | 0.5 | The speed of the background when scrolling; this value is multiplied with the scroll distance; use 0 to keep the background in place |
