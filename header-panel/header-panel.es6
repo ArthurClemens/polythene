@@ -203,8 +203,6 @@ const createView = (ctrl, opts = {}) => {
         }
 
         ctrl.restoreScrollPosition();
-
-        handleScroll(); // called without event
     };
 
     const props = Object.assign({}, {
@@ -405,8 +403,6 @@ const component = {
                         ctrl.isScrolling = false;
                         scroller = undefined;
                     }, SCROLL_WATCH_TIMER);
-                } else {
-                    setTimeout(m.redraw, 0);
                 }
 
                 if (mode === 'scroll') {
