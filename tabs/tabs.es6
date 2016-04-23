@@ -236,7 +236,7 @@ const createView = (ctrl, opts = {}) => {
     const autofit = (opts.scrollable || opts.centered) ? false : (opts.autofit ? true : false);
 
     // keep selected tab up to date
-    if (opts.selectedTab !== undefined && opts.buttons[0].url) {
+    if (opts.selectedTab !== undefined && ctrl.selectedTabIndex === undefined) {
         setSelectedTab(ctrl, opts, opts.selectedTab, true);
     }
 
@@ -353,7 +353,7 @@ const component = {
             scrollerEl: null,
             tabs: [], // {data, el}
             tabIndicatorEl: null,
-            selectedTabIndex: 0,
+            selectedTabIndex: undefined,
             managesScroll: false,
             scrollButtonStates: {
                 left: false,
