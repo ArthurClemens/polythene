@@ -45,9 +45,9 @@ const createStyles = (config) => {
 
                         ' .pe-dialog__body': {
                             padding: 0,
-                            height: '100vh',
-                            border: 'none',
-                            'max-height': 'calc(100vh)'
+                            height: '100%',
+                            'max-height': 'calc(100%)',
+                            border: 'none'
                         }
                     }
                 },
