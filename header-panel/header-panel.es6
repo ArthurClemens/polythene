@@ -405,6 +405,8 @@ const component = {
                         ctrl.isScrolling = false;
                         scroller = undefined;
                     }, SCROLL_WATCH_TIMER);
+                } else {
+                    setTimeout(m.redraw, 0);
                 }
 
                 if (mode === 'scroll') {
