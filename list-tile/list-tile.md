@@ -153,7 +153,7 @@ A list tile can optionally have secondary content, displayed to the right. Secon
 | **indent** | optional | Boolean | | Set to `true` to indent the content |
 | **selected** | optional | Boolean | false | Set to `true` to show a selected state; adds class 'selected' |
 | **disabled** | optional | Boolean | false | Set to `true` to deactivate the url and hover state (in case of [list](#list) with setting `hoverable`) and show a disabled state; adds class 'disabled' |
-| **ink** | optiona; | Boolean | false | Set to `true` to show a ripple effect when the tile is tapped |
+| **ink** | optional | Boolean | false | Set to `true` to show a ripple effect when the tile is tapped |
 | **ripple** | optional (valid if `ink` is `true`) | Options object | | Pass [ripple](#ripple) options to define ripple behavior |
 
 
