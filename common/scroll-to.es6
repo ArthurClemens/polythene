@@ -4,7 +4,6 @@ Derived from https://github.com/madebysource/animated-scrollto
 Adapted to Mithril and rewritten to es6.
 */
 
-import m from 'mithril';
 import easing from 'polythene/common/easing';
 
 /*
@@ -15,7 +14,7 @@ opts:
     direction: 'vertical' or 'horizontal'
 
 
-Function is thennable:
+Function returns a Promise:
 
     scrollTo({
         element: scroller,
@@ -36,24 +35,24 @@ const scrollTo = (opts) => {
     const change = to - start;
     const animationStart = new Date().getTime();
     let animating = true;
-    let deferred = m.deferred();
-    const animateScroll = function() {
-        if (!animating) {
-            return;
-        }
+    return new Promise(function(resolve) {
+        const animateScroll = function() {
+            if (!animating) {
+                return;
+            }
+            requestAnimFrame(animateScroll);
+            const now = new Date().getTime();
+            const percentage = ((now - animationStart) / duration);
+            const val = start + change * easing.easeInOutCubic(percentage);
+            element[which] = val;
+            if (percentage >= 1) {
+                element[which] = to;
+                animating = false;
+                resolve();
+            }
+        };
         requestAnimFrame(animateScroll);
-        const now = new Date().getTime();
-        const percentage = ((now - animationStart) / duration);
-        const val = start + change * easing.easeInOutCubic(percentage);
-        element[which] = val;
-        if (percentage >= 1) {
-            element[which] = to;
-            animating = false;
-            deferred.resolve();
-        }
-    };
-    requestAnimFrame(animateScroll);
-    return deferred.promise;
+    });
 };
 
 const requestAnimFrame = (() => {
