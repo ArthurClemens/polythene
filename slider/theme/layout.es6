@@ -5,7 +5,9 @@ import flex from 'polythene/layout/theme/flex';
 const positionBorder = (thumbSize, borderWidth) => ({
     'border-width': borderWidth + 'px',
     width: (thumbSize - 2 * borderWidth) + 'px',
-    height: (thumbSize - 2 * borderWidth) + 'px'
+    height: (thumbSize - 2 * borderWidth) + 'px',
+    left: '2px',
+    top: '2px'
 });
 
 const createStyles = (config) => {
