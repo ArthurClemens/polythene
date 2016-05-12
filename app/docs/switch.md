@@ -82,7 +82,7 @@ module.view = (ctrl) => {
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **size** | optional | String | 'regular' | Equivalent to [icon's type](#icon) option | Either 'small' (16px), 'regular' (24px), 'medium' (32px), 'large' (40px) |
+| **size** | optional | String | 'regular' | Equivalent to [icon's type](#icon) option; either 'small' (16px), 'regular' (24px), 'medium' (32px), 'large' (40px) |
 | **wash** | optional | Boolean | true on touch devices | Set to false to always hide the wash (radial feedback); a hidden wash is still drawn to create a large tap target  |
 | **raised** | optional | Boolean | true | Shows a shadow below the thumb; when the switch is on, the depth is increased by 1 |
 | **zOff** | optional | Number 0-5 | 1 | The shadow depth for the thumb in off state |
