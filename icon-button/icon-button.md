@@ -60,7 +60,7 @@ const myIconBtn = m.component(iconBtn, {
 });
 ~~~
 
-## Variations
+### Variations
 
 The icon color is set with the CSS (text) `color` attribute of the parent element. For example:
 
@@ -91,6 +91,11 @@ const myIconBtn = m.component(iconBtn, {
 	ink: false
 });
 ~~~
+
+### Sizes
+
+Pass `type` to the `icon` parameter, or use CSS.
+
 
 ## Options
 

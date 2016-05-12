@@ -74,7 +74,7 @@ module.view = (ctrl) => {
 | **iconOn** | optional | Options object for [icon](#icon) | | Assigns a different icon for the on state |
 | **iconOff** | optional | Options object for [icon](#icon) | | Assigns a different icon for the off state |
 | **iconButton** | optional | Options object for the icon button | | Add attributes like `wash` and `ink` |
-| **size** | optional | String | 'regular' | Equivalent to [icon's type](#icon) option | Either 'small' (16px), 'regular' (24px), 'medium' (32px), 'large' (40px) |
+| **size** | optional | String | 'regular' | Equivalent to [icon's type](#icon) option; either 'small' (16px), 'regular' (24px), 'medium' (32px), 'large' (40px) |
 
 
 ## Styling
