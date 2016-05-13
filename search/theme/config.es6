@@ -1,4 +1,3 @@
-import 'polythene/common/object.assign';
 import common from 'polythene/config/config';
 
 const rgba = common.rgba;

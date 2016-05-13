@@ -1,4 +1,3 @@
-import 'polythene/common/object.assign';
 import common from 'polythene/config/config';
 import buttonConfig from 'polythene/button/theme/config';
 import iconButtonConfig from 'polythene/icon-button/theme/config';

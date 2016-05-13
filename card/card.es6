@@ -230,7 +230,7 @@ const contentMap = {
 
 const createView = (ctrl, opts = {}) => {
     const tag = opts.tag || opts.url ? 'a' : 'div';
-    const props = Object.assign({
+    const props = Object.assign({}, {
         class: [CSS_CLASSES.block, opts.class].join(' '),
         id: opts.id || '',
         config: opts.config

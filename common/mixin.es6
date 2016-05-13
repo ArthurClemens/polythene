@@ -55,6 +55,7 @@ const ellipsis = (lines, lineHeight, unit = 'px') => {
         };
     }
     return Object.assign(
+        {},
         {
             overflow: 'hidden',
             'text-overflow': 'ellipsis',

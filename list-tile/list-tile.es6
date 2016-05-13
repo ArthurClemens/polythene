@@ -42,6 +42,7 @@ const parsePrimaryContent = (opts) => {
             : null;
 
     return m(tag, Object.assign(
+        {},
         {
             class: CSS_CLASSES.primary
         },
@@ -73,6 +74,7 @@ const parseSecondaryContent = (opts) => {
         }
     }
     return m(tag, Object.assign(
+        {},
         {
             class: CSS_CLASSES.secondary
         },
