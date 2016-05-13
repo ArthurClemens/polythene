@@ -249,7 +249,7 @@ const createSlider = (ctrl, opts = {}, hasTicks, interactiveTrack) => {
                 hasTicks ? {
                     step: stepCount
                 } : null
-            ), opts.thumb ? m('div', {class: CSS_CLASSES.thumb}, opts.thumb) : null),
+            ), opts.icon ? m('div', {class: CSS_CLASSES.thumb}, opts.icon) : null),
             m('div',
                 {
                     class: CSS_CLASSES.trackPart + ' ' + CSS_CLASSES.trackPartRest,

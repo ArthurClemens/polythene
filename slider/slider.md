@@ -176,7 +176,7 @@ import icon from 'polythene/icon/icon';
 import bullseyeIcon from 'app/assets/bullseye';
 
 m.component(slider, {
-    thumb: m.component(icon, {
+    icon: m.component(icon, {
         msvg: bullseyeIcon
     })
 })
