@@ -95,7 +95,10 @@ const createHeaderComponent = (opts = {}) => {
     const tallClass = opts.tallClass || '';
     const toolbarOpts = opts.toolbar;
     if (toolbarOpts) {
-        toolbarOpts.class = [(toolbarOpts.class || null), tall ? tallClass : null].join(' ');
+        toolbarOpts.class = [
+            (toolbarOpts.class || null),
+            tall ? tallClass : null
+        ].join(' ');
         if (!toolbarOpts.topBar) {
             toolbarOpts.topBar = m('div');
         }
