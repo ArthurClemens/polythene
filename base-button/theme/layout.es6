@@ -33,15 +33,26 @@ const style = [{
                 }
             ],
 
-            ' .pe-button__wash': [
-                mixin.vendorize({'transition': 'background-color ' + common.animation_duration + ' ' + common.animation_curve_default}, common.prefixes_transition),
+            ' .pe-button__wash, .pe-button__focus': [
+                mixin.defaultTransition('background-color'),
                 mixin.fit(),
                 {
-                    'z-index': 1,
                     'border-radius': 'inherit',
                     'pointer-events': 'none'
                 }
-            ]
+            ],
+
+            ' .pe-button__focus': {
+                opacity: 0
+            },
+
+            '&.pe-button--focus .pe-button__focus': {
+                opacity: 1
+            },
+
+            ' .pe-button__wash': {
+                'z-index': 1
+            }
         }
     ]
 }];

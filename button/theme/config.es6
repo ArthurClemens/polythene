@@ -20,6 +20,7 @@ export default {
     color_light_flat_normal_background: 'transparent',
     color_light_flat_normal_text: rgba(common.color_light_foreground, common.blend_light_text_primary),
     color_light_flat_hover_background: rgba(common.color_light_foreground, common.blend_light_background_hover),
+    color_light_flat_focus_background: rgba(common.color_light_foreground, common.blend_light_background_hover),
     color_light_flat_active_background: rgba(common.color_light_foreground, common.blend_light_background_active),
     color_light_flat_disabled_background: 'transparent',
     color_light_flat_disabled_text: rgba(common.color_light_foreground, common.blend_light_text_disabled),
@@ -33,6 +34,7 @@ export default {
     color_light_raised_normal_background: '#E0E0E0',
     color_light_raised_normal_text: rgba(common.color_light_foreground, common.blend_light_text_primary),
     color_light_raised_hover_background: 'transparent',
+    color_light_raised_focus_background: rgba(common.color_light_foreground, common.blend_light_background_hover),
     color_light_raised_active_background: rgba(common.color_light_foreground, common.blend_light_background_hover), // same as hover
     color_light_raised_disabled_background: rgba(common.color_light_foreground, common.blend_light_background_disabled),
     color_light_raised_disabled_text: rgba(common.color_light_foreground, common.blend_light_text_disabled),
@@ -40,6 +42,7 @@ export default {
     color_dark_flat_normal_background: 'transparent',
     color_dark_flat_normal_text: rgba(common.color_dark_foreground, common.blend_dark_text_primary),
     color_dark_flat_hover_background: rgba(common.color_dark_foreground, common.blend_dark_background_hover),
+    color_dark_flat_focus_background: rgba(common.color_dark_foreground, common.blend_dark_background_hover),
     color_dark_flat_active_background: rgba(common.color_dark_foreground, common.blend_dark_background_active),
     color_dark_flat_disabled_background: 'transparent',
     color_dark_flat_disabled_text: rgba(common.color_dark_foreground, common.blend_dark_text_disabled),
@@ -53,6 +56,7 @@ export default {
     color_dark_raised_normal_background: rgba(common.color_primary),
     color_dark_raised_normal_text: rgba(common.color_dark_foreground, common.blend_dark_text_primary),
     color_dark_raised_hover_background: common.color_primary_active,
+    color_dark_raised_focus_background: common.color_primary_active,
     color_dark_raised_active_background: common.color_primary_dark,
     color_dark_raised_disabled_background: rgba(common.color_dark_foreground, common.blend_dark_background_disabled),
     color_dark_raised_disabled_text: rgba(common.color_dark_foreground, common.blend_dark_text_disabled)

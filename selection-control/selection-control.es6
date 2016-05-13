@@ -60,6 +60,7 @@ const createView = (ctrl, opts = {}) => {
             name,
             value: ctrl.value(),
             type: opts.type, // set by checkbox / radio-button
+            tabindex: -1, // set in selectionView
             checked,
             config: (el, inited) => {
                 if (inited) return;
@@ -68,7 +69,8 @@ const createView = (ctrl, opts = {}) => {
         }),
         m('label', Object.assign(
             {
-                class: CSS_CLASSES.label
+                class: CSS_CLASSES.label,
+                tabindex: -1, // set in selectionView
             },
             (!opts.disabled) ? {
                 onclick: () => {

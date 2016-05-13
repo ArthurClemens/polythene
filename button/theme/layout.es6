@@ -26,8 +26,7 @@ const createStyles = (config) => {
             },
 
             '&.pe-button--borders': {
-                ' .pe-button__wash': mixin.fit(-1),
-                ' .pe-ripple': mixin.fit(-1),
+                ' .pe-button__wash, pe-button__focus, .pe-ripple': mixin.fit(-1),
 
                 ' .pe-button__content': {
                     'border-style': 'solid',

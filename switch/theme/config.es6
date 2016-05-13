@@ -3,11 +3,15 @@ import selectionControlConfig from 'polythene/selection-control/theme/config'; /
 import common from 'polythene/config/config';
 
 const rgba = common.rgba;
+const hit_area_padding = (common.grid_unit_icon_button - common.unit_icon_size) / 2; // 12
 
 const config = Object.assign({}, selectionControlConfig, {
     track_height: 14,
     track_length: 36,
     thumb_size: 20,
+    padding: 1 * common.grid_unit_component,
+    hit_area_padding,
+
     animation_duration: '.18s',
 
     color_light_thumb_on: rgba(common.color_primary),
@@ -21,10 +25,10 @@ const config = Object.assign({}, selectionControlConfig, {
     color_light_track_disabled: rgba(common.color_light_foreground, common.blend_light_background_disabled),
     color_light_track_disabled_opacity: 1,
 
-    color_light_wash_on: 'currentcolor',
-    color_light_wash_on_opacity: .11,
-    color_light_wash_off: rgba(common.color_light_foreground),
-    color_light_wash_off_opacity: .07,
+    color_light_focus_on: rgba(common.color_primary),
+    color_light_focus_on_opacity: .11,
+    color_light_focus_off: rgba(common.color_light_foreground),
+    color_light_focus_off_opacity: .07,
 
     color_dark_thumb_on: rgba(common.color_primary), // or '#80cbc4'
     color_dark_thumb_off: '#bdbdbd',
@@ -37,10 +41,10 @@ const config = Object.assign({}, selectionControlConfig, {
     color_dark_track_disabled: '#717171',
     color_dark_track_disabled_opacity: .3,
 
-    color_dark_wash_on: 'currentcolor',
-    color_dark_wash_on_opacity: .14,
-    color_dark_wash_off: rgba(common.color_dark_foreground),
-    color_dark_wash_off_opacity: .09
+    color_dark_focus_on: rgba(common.color_primary), // or '#80cbc4'
+    color_dark_focus_on_opacity: .14,
+    color_dark_focus_off: rgba(common.color_dark_foreground),
+    color_dark_focus_off_opacity: .09
 });
 
 export default config;

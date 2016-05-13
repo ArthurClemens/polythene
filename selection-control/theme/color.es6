@@ -18,8 +18,12 @@ const style = (config, tint, scope = '') => {
                     },
 
                     '&.pe-control__button--off': {
-                        color: config['color_' + tint + '_off_text']
+                        color: config['color_' + tint + '_off_icon']
                     }
+                },
+                ':focus:before': {
+                    'background-color': 'currentcolor',
+                    opacity: config['color_' + tint + '_thumb_on_focus_opacity']
                 }
             },
 

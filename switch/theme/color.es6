@@ -6,12 +6,24 @@ const style = (config, tint, scope = '') => {
         selectionControlStyle(config, tint, scope),
         {
             [scope + '.pe-control--switch']: {
-                ' .pe-control--switch__knob': {
-                    'background-color': 'currentcolor'
-                },
 
-                ' .pe-control--switch__hitarea--transparent': {
-                    opacity: 0
+                '&.pe-control--off': {
+                    ' .pe-control--switch__track': {
+                        opacity: config['color_' + tint + '_track_off_opacity'],
+                        'background-color': config['color_' + tint + '_track_off']
+                    },
+                    ' .pe-control--switch__thumb': {
+                        color: config['color_' + tint + '_thumb_off']
+                    },
+                    ' .pe-control--switch__knob': {
+                        'background-color': 'currentcolor'
+                    },
+                    ' .pe-button--focus': {
+                        ' .pe-button__focus': {
+                            opacity: config['color_' + tint + '_focus_off_opacity'],
+                            'background-color': config['color_' + tint + '_focus_off']
+                        }
+                    }
                 },
 
                 '&.pe-control--on': {
@@ -22,29 +34,14 @@ const style = (config, tint, scope = '') => {
                     ' .pe-control--switch__thumb': {
                         color: config['color_' + tint + '_thumb_on']
                     },
-
-                    ' .pe-control--switch__thumb:active, .pe-control--switch__track:active': {
-                        ' .pe-button__wash:not(.pe-control--switch__knob-hitarea)': {
-                            opacity: config['color_' + tint + '_wash_on_opacity'],
-                            'background-color': config['color_' + tint + '_wash_on']
-                        }
-                    }
-                },
-
-                ' .pe-control--switch__thumb:active, .pe-control--switch__track:active': {
-                    ' .pe-control--switch__hitarea:not(.pe-control--switch__hitarea--transparent)': {
-                        opacity: config['color_' + tint + '_wash_off_opacity'],
-                        'background-color': config['color_' + tint + '_wash_off']
-                    }
-                },
-                
-                '&.pe-control--off': {
-                    ' .pe-control--switch__track': {
-                        opacity: config['color_' + tint + '_track_off_opacity'],
-                        'background-color': config['color_' + tint + '_track_off']
+                    ' .pe-control--switch__knob': {
+                        'background-color': 'currentcolor'
                     },
-                    ' .pe-control--switch__thumb': {
-                        color: config['color_' + tint + '_thumb_off']
+                    ' .pe-button--focus': {
+                        ' .pe-button__focus': {
+                            opacity: config['color_' + tint + '_focus_on_opacity'],
+                            'background-color': config['color_' + tint + '_focus_on']   
+                        }
                     }
                 },
 
@@ -53,9 +50,9 @@ const style = (config, tint, scope = '') => {
                         opacity: config['color_' + tint + '_track_disabled_opacity'],
                         'background-color': config['color_' + tint + '_track_disabled']
                     },
-                    ' .pe-control--switch__thumb .pe-control--switch__knob': {
-                        'background-color': config['color_' + tint + '_thumb_disabled']
-                    }
+                    ' .pe-control--switch__thumb': {
+                        color: config['color_' + tint + '_thumb_disabled']
+                    },
                 }
             }
         }

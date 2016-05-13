@@ -10,8 +10,12 @@ const style = (config, tint, type, scope = '') => {
                 opacity: config['color_' + tint + '_wash_opacity']
             },
 
-            '&:active, &.pe-button--selected': {
-                ' .pe-button__wash': {
+            ' .pe-button__focus': {
+                opacity: config['color_' + tint + '_focus_opacity']
+            },
+
+            '&.pe-button--focus, &.pe-button--selected': {
+                ' .pe-button__focus': {
                     'background-color': 'currentcolor'
                 }
             },
@@ -42,7 +46,6 @@ const noTouch = (config, tint, type, scope = '') => {
             }
             : {
                 ' .pe-button__wash': {
-                    // for proper color we need a color mix function
                     'background-color': config['color_' + tint + '_' + type + '_normal_text']
                 }
             }

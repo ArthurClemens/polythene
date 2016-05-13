@@ -29,14 +29,16 @@ const style = (config, tint, type, scope = '') => {
                     'background-color': config['color_' + tint + '_' + type + '_active_background'],
                     'border-color': activeBorder
                 },
-                ' .pe-button__wash': {
-                    'background-color': config['color_' + tint + '_' + type + '_hover_background']
+                ' .pe-button__focus': {
+                    opacity: 1,
+                    'background-color': config['color_' + tint + '_' + type + '_focus_background']
                 }
             },
 
-            '&:active': {
-                ' .pe-button__wash': {
-                    'background-color': config['color_' + tint + '_' + type + '_hover_background']
+            '&.pe-button--focus': {
+                ' .pe-button__focus': {
+                    opacity: 1,
+                    'background-color': config['color_' + tint + '_' + type + '_focus_background']
                 }
             }
         }

@@ -5,15 +5,17 @@ import common from 'polythene/config/config';
 import mixin from 'polythene/common/mixin';
 import flex from 'polythene/layout/theme/flex';
 
-const getSize = (height, iconSize = common.unit_icon_size) => ({
-    ' .pe-control__label': {
-        height: height + 'px'
-    },
-    ' .pe-control__box': {
-        width: iconSize + 'px',
-        height: iconSize + 'px'
-    }
-});
+const getSize = (height, iconSize = common.unit_icon_size) => {
+    return {
+        ' .pe-control__label': {
+            height: height + 'px'
+        },
+        ' .pe-control__box': {
+            width: iconSize + 'px',
+            height: iconSize + 'px'
+        }
+    };
+};
 
 const activeButton = () => ({
     opacity: 1,
@@ -42,7 +44,11 @@ const createStyles = (config, className, type) => {
                     'font-size': config.label_font_size + 'px',
                     'line-height': config.label_height + 'px',
                     margin: 0,
-                    color: 'inherit'
+                    color: 'inherit',
+
+                    ':focus': {
+                        outline: 0
+                    },
                 }
             ],
 
@@ -70,7 +76,11 @@ const createStyles = (config, className, type) => {
                 'box-sizing': 'border-box',
                 width: config.label_height + 'px',
                 height: config.label_height + 'px',
-                color: 'inherit'
+                color: 'inherit',
+
+                ':focus': {
+                    outline: 0,
+                }
             },
 
             ' .pe-control__button': [

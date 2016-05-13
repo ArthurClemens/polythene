@@ -12,10 +12,12 @@ const CSS_CLASSES = {
     label: 'pe-button__label',
     raised: 'pe-button--raised',
     wash: 'pe-button__wash',
+    focus: 'pe-button__focus',
     selected: 'pe-button--selected',
     disabled: 'pe-button--disabled',
     borders: 'pe-button--borders',
     inactive: 'pe-button--inactive',
+    focusState: 'pe-button--focus',
 };
 
 const MAX_Z = 5;
@@ -101,6 +103,7 @@ const createView = (ctrl, opts = {}) => {
         if (isInited) {
             return;
         }
+        ctrl.el = el;
         if (!disabled && !inactive) {
             initTapEvents(el, ctrl, Object.assign(
                 {},
@@ -125,9 +128,28 @@ const createView = (ctrl, opts = {}) => {
                 (inactive ? CSS_CLASSES.inactive : null),
                 (opts.borders ? CSS_CLASSES.borders : null),
                 (opts.raised ? CSS_CLASSES.raised : null),
+                (ctrl.focus ? CSS_CLASSES.focusState : null),
                 opts.class
             ].join(' '),
-            id: opts.id || ''
+            id: opts.id || '',
+            // handle focus events
+            onfocus: () => ctrl.focus = !ctrl.mouseover,
+            onblur: () => ctrl.focus = false,
+            // don't show focus on click (detected by not being in mouse over state)
+            onmouseover: () => ctrl.mouseover = true,
+            onmouseout: () => ctrl.mouseover = false,
+            // if focus, dispatch click event on ENTER
+            onkeydown: (e) => {
+                if (e.which === 13 && ctrl.focus && ctrl.el) {
+                    // ENTER
+                    const event = new MouseEvent('click', {
+                        view: window,
+                        bubbles: true,
+                        cancelable: true
+                    });
+                    ctrl.el.dispatchEvent(event);
+                }
+            }
         },
         opts.url ? opts.url : null,
         opts.formaction ? {formaction: opts.formaction} : null,
@@ -139,7 +161,14 @@ const createView = (ctrl, opts = {}) => {
                 urlConfig(...args)
             ]
         },
-        disabled ? {disabled: true} : null
+        disabled
+            ? {
+                disabled: true,
+                tabindex: -1
+            }
+            : {
+                tabindex: opts.tabindex || 0
+            }
     );
 
     const label = opts.content
@@ -150,6 +179,9 @@ const createView = (ctrl, opts = {}) => {
                 : m('div', {class: CSS_CLASSES.label}, opts.label)
             : null;
 
+    const noWash = disabled || (opts.wash !== undefined && !opts.wash);
+    const wash = !noWash;
+
     const content = m('div', {
         'class': CSS_CLASSES.content
     }, [
@@ -158,7 +190,8 @@ const createView = (ctrl, opts = {}) => {
             animated: true
         }) : null,
         (disabled || noink) ? null : m.component(ripple, opts.ripple || {}),
-        (disabled || (opts.wash !== undefined && !opts.wash)) ? null : m('div', {class: CSS_CLASSES.wash}),
+        wash ? m('div', {class: CSS_CLASSES.wash}) : null,
+        disabled ? null : m('div', {class: CSS_CLASSES.focus}),
         label
     ]);
     return m(tag, props, [opts.before, content, opts.after]);
@@ -169,9 +202,12 @@ const component = {
         let z = (opts.z !== undefined) ? opts.z : 1;
 
         return {
+            el: undefined,
             baseZ: m.prop(z),
             z: m.prop(z),
-            inactive: opts.inactive || false
+            inactive: opts.inactive || false,
+            focus: false,
+            mouseover: false
         };
     },
     view: (ctrl, opts = {}) => {
