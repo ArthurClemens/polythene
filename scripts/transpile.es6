@@ -11,6 +11,7 @@ watch({
     what: process.argv[3],
     ignore: (process.argv[4] && process.argv[4] !== 'null') ? process.argv[4] : null,
     extension: '.es6',
+    events: ['ready', 'change'],
     createOutPath: (inPath) => (inPath.replace(/.es6$/, '.js')),
     transform: (inPath, outPath) => {
         const dir = path.dirname(inPath) + '/';
