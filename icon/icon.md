@@ -70,9 +70,9 @@ const myIcon = m.component(icon, {
 });
 ~~~
 
-## Variations
+### Variations
 
-* The size is set with the `type` parameter or with CSS (in conjuction with `class`).
+* The size is set with the `type` parameter, or with CSS (in conjuction with `class`).
 * The color is set with the CSS `color` attribute of the parent element.
 
 
@@ -95,7 +95,7 @@ const myIcon = m.component(icon, {
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **class** | optional | String |  | Use convenience class `pe-icon--avatar` to make square images round |
 | **msvg** | either `src` or `svg` or `msvg` must be passed | Mithril element |  | Mithril-ified SVG icon |
-| **type** | optional | String | 'regular' | Either 'small' (16px), 'regular' (24px), 'medium' (32px), 'large' (40px). Adds CSS class 'icon--small', 'etcetera |
+| **type** | optional | String | 'regular' | Sets the size: either 'small' (16px), 'regular' (24px), 'medium' (32px), 'large' (40px). Adds CSS class 'icon--small', 'etcetera |
 
 ### Options for icons with params src or svg
 
