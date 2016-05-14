@@ -63,20 +63,22 @@ const createView = (ctrl, opts = {}) => {
     if (opts.disabled) {
         return m('');
     }
-    const initRipple = (ripple, inited, context) => {
+    const initRipple = (el, inited, context) => {
         if (inited) {
             return;
         }
-        ctrl.ripple(ripple);
-        const parent = ripple.parentElement;
-        const onClick = (e) => {
-            makeRipple(e, ctrl, opts);
-        };
-        const endType = p.isTouch ? 'click' : 'mouseup';
-        parent.addEventListener(endType, onClick, false);
-        context.onunload = () => {
-            parent.removeEventListener(endType, onClick, false);
-        };
+        ctrl.ripple(el);
+        const parent = el.parentElement;
+        if (!opts.inactive) {
+            const onClick = (e) => {
+                makeRipple(e, ctrl, opts);
+            };
+            const endType = p.isTouch ? 'click' : 'mouseup';
+            parent.addEventListener(endType, onClick, false);
+            context.onunload = () => {
+                parent.removeEventListener(endType, onClick, false);
+            };
+        }
     };
     const initWaves = (waves, inited) => {
         if (inited) {

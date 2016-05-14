@@ -5,7 +5,9 @@ import common from 'polythene/config/config';
 import mixin from 'polythene/common/mixin';
 import flex from 'polythene/layout/theme/flex';
 
-const getSize = (height, iconSize = common.unit_icon_size) => {
+const getSize = (config, height, iconSize = common.unit_icon_size) => {
+    const labelSize = iconSize + 2 * config.label_padding;
+    const iconOffset = (labelSize - iconSize) / 2;
     return {
         ' .pe-control__label': {
             height: height + 'px'
@@ -13,6 +15,14 @@ const getSize = (height, iconSize = common.unit_icon_size) => {
         ' .pe-control__box': {
             width: iconSize + 'px',
             height: iconSize + 'px'
+        },
+        ' .pe-button__label': {
+            width: labelSize + 'px',
+            height: labelSize + 'px',
+
+            ' .pe-icon': [
+                mixin.fit(iconOffset)
+            ]
         }
     };
 };
@@ -52,6 +62,12 @@ const createStyles = (config, className, type) => {
                 }
             ],
 
+            '&.pe-control--inactive': {
+                ' .pe-control__label': {
+                    cursor: 'default'
+                }
+            },
+
             [' input[type=' + type + '].pe-control__input']: [
                 mixin.vendorize({
                     'appearance': 'none'
@@ -89,9 +105,9 @@ const createStyles = (config, className, type) => {
                     position: 'absolute',
                     left: -((config.button_size - config.icon_size)/2) + 'px',
                     top: -((config.button_size - config.icon_size)/2) + 'px',
-                    'z-index': 1,
-                    opacity: 0,
-                    'pointer-events': 'auto'
+                    'z-index': 1
+                    // opacity: 0,
+                    // 'pointer-events': 'auto'
                 }
             ],
 
@@ -119,10 +135,16 @@ const createStyles = (config, className, type) => {
                 }
             },
 
-            '&.pe-control--small': getSize(common.unit_icon_size_small, common.unit_icon_size_small),
-            '&.pe-control--regular': getSize(config.label_height, common.unit_icon_size),
-            '&.pe-control--medium': getSize(common.unit_icon_size_medium, common.unit_icon_size_medium),
-            '&.pe-control--large': getSize(common.unit_icon_size_large, common.unit_icon_size_large)
+            ' .pe-button__label': {
+                ' .pe-icon': {
+                    position: 'absolute'
+                }
+            },
+
+            '&.pe-control--small': getSize(config, common.unit_icon_size_small, common.unit_icon_size_small),
+            '&.pe-control--regular': getSize(config, config.label_height, common.unit_icon_size),
+            '&.pe-control--medium': getSize(config, common.unit_icon_size_medium, common.unit_icon_size_medium),
+            '&.pe-control--large': getSize(config, common.unit_icon_size_large, common.unit_icon_size_large)
         }
     }];
 };

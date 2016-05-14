@@ -13,17 +13,35 @@ const style = (config, tint, scope = '') => {
             },
             ' .pe-control__box': {
                 ' .pe-control__button': {
-                    '&, .pe-icon': {
+                    color: 'currentcolor',
+
+                    ' .pe-control__button--on': {
                         color: 'currentcolor'
                     },
 
-                    '&.pe-control__button--off': {
+                    ' .pe-control__button--off': {
                         color: config['color_' + tint + '_off_icon']
                     }
+                }
+            },
+            '&.pe-control--off': {
+                ' .pe-button--focus .pe-button__focus': {
+                    opacity: config['color_' + tint + '_focus_off_opacity'],
+                    'background-color': config['color_' + tint + '_focus_off']
                 },
-                ':focus:before': {
-                    'background-color': 'currentcolor',
-                    opacity: config['color_' + tint + '_thumb_on_focus_opacity']
+                // reverse the ripple color so that it corresponds to the resulting state
+                ' .pe-ripple': {
+                    color: config['color_' + tint + '_focus_on']
+                }
+            },
+            '&.pe-control--on': {
+                ' .pe-button--focus .pe-button__focus': {
+                    opacity: config['color_' + tint + '_focus_on_opacity'],
+                    'background-color': config['color_' + tint + '_focus_on']
+                },
+                // reverse the ripple color so that it corresponds to the resulting state
+                ' .pe-ripple': {
+                    color: config['color_' + tint + '_focus_off']
                 }
             },
 
@@ -31,8 +49,8 @@ const style = (config, tint, scope = '') => {
                 ' .pe-control__label span': {
                     color: config['color_' + tint + '_disabled_text']
                 },
-                ' .pe-control__box .pe-control__button': {
-                    '&, &.pe-control__button--off': {
+                ' .pe-control__box': {
+                    ' .pe-control__button--on, .pe-control__button--off': {
                         color: config['color_' + tint + '_disabled_text']
                     }
                 }

@@ -27,6 +27,7 @@ const createView = (ctrl, opts = {}) => {
         ].join(' '),
         // default do not show hover effect
         wash: (opts.wash !== undefined) ? opts.wash : false,
+        ripple: opts.ripple || null,
         animateOnTap: (opts.animateOnTap !== undefined) ? opts.animateOnTap : false
     }));
 };

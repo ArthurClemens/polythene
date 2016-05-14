@@ -61,7 +61,7 @@ const initTapEvents = (el, ctrl, opts) => {
         if (name === 'down') {
             downButtons.push({ctrl, opts});
         } else if (name === 'up') {
-            if (opts.inactivate && !opts.inactive) {
+            if (opts.inactivate && !ctrl.inactive) {
                 inactivate(ctrl, opts);
             }
         }
@@ -90,10 +90,17 @@ const clearTapEvents = function(el) {
 };
 
 const createView = (ctrl, opts = {}) => {
-    const noink = opts.ink !== undefined && !opts.ink;
+    const noink = (opts.ink !== undefined && opts.ink === false);
     const disabled = opts.disabled;
-    const inactive = ctrl.inactive;
     const tag = opts.tag || 'a';
+    ctrl.inactive = (opts.inactive !== undefined)
+        ? (opts.inactive === false)
+            ? false
+            : true
+        : ctrl.inactive;
+    const tabIndex = (disabled || ctrl.inactive)
+        ? -1
+        : opts.tabindex || 0;
 
     // handle multiple configs:
     // - passed as param in the url Object
@@ -104,7 +111,7 @@ const createView = (ctrl, opts = {}) => {
             return;
         }
         ctrl.el = el;
-        if (!disabled && !inactive) {
+        if (!disabled && !ctrl.inactive) {
             initTapEvents(el, ctrl, Object.assign(
                 {},
                 opts,
@@ -125,13 +132,14 @@ const createView = (ctrl, opts = {}) => {
                 (opts.parentClass || CSS_CLASSES.block),
                 (opts.selected ? CSS_CLASSES.selected : null),
                 (disabled ? CSS_CLASSES.disabled : null),
-                (inactive ? CSS_CLASSES.inactive : null),
+                (ctrl.inactive ? CSS_CLASSES.inactive : null),
                 (opts.borders ? CSS_CLASSES.borders : null),
                 (opts.raised ? CSS_CLASSES.raised : null),
                 (ctrl.focus ? CSS_CLASSES.focusState : null),
                 opts.class
             ].join(' '),
             id: opts.id || '',
+            tabindex: tabIndex,
             // handle focus events
             onfocus: () => ctrl.focus = !ctrl.mouseover,
             onblur: () => ctrl.focus = false,
@@ -163,12 +171,9 @@ const createView = (ctrl, opts = {}) => {
         },
         disabled
             ? {
-                disabled: true,
-                tabindex: -1
+                disabled: true
             }
-            : {
-                tabindex: opts.tabindex || 0
-            }
+            : null
     );
 
     const label = opts.content
@@ -181,16 +186,25 @@ const createView = (ctrl, opts = {}) => {
 
     const noWash = disabled || (opts.wash !== undefined && !opts.wash);
     const wash = !noWash;
-
+    const rippleOpts = Object.assign(
+        {},
+        opts.ripple,
+        {inactive: noink}
+    );
     const content = m('div', {
         'class': CSS_CLASSES.content
     }, [
-        opts.raised && !disabled ? m.component(shadow, {
-            z: ctrl.z(),
-            animated: true
-        }) : null,
-        (disabled || noink) ? null : m.component(ripple, opts.ripple || {}),
+        (opts.raised && !disabled)
+            ? m.component(shadow, {
+                z: ctrl.z(),
+                animated: true
+            })
+            : null,
+        // ripple
+        disabled ? null : m.component(ripple, rippleOpts),
+        // hover
         wash ? m('div', {class: CSS_CLASSES.wash}) : null,
+        // focus
         disabled ? null : m('div', {class: CSS_CLASSES.focus}),
         label
     ]);
@@ -205,7 +219,7 @@ const component = {
             el: undefined,
             baseZ: m.prop(z),
             z: m.prop(z),
-            inactive: opts.inactive || false,
+            inactive: undefined,
             focus: false,
             mouseover: false
         };

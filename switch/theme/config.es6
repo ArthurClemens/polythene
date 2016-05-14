@@ -25,10 +25,7 @@ const config = Object.assign({}, selectionControlConfig, {
     color_light_track_disabled: rgba(common.color_light_foreground, common.blend_light_background_disabled),
     color_light_track_disabled_opacity: 1,
 
-    color_light_focus_on: rgba(common.color_primary),
-    color_light_focus_on_opacity: .11,
-    color_light_focus_off: rgba(common.color_light_foreground),
-    color_light_focus_off_opacity: .07,
+    // color_light_focus_on and so on taken from selectionControlConfig
 
     color_dark_thumb_on: rgba(common.color_primary), // or '#80cbc4'
     color_dark_thumb_off: '#bdbdbd',
@@ -39,12 +36,9 @@ const config = Object.assign({}, selectionControlConfig, {
     color_dark_track_off: '#717171',
     color_dark_track_off_opacity: .55,
     color_dark_track_disabled: '#717171',
-    color_dark_track_disabled_opacity: .3,
+    color_dark_track_disabled_opacity: .3
 
-    color_dark_focus_on: rgba(common.color_primary), // or '#80cbc4'
-    color_dark_focus_on_opacity: .14,
-    color_dark_focus_off: rgba(common.color_dark_foreground),
-    color_dark_focus_off_opacity: .09
+    // color_dark_focus_on and so on taken from selectionControlConfig
 });
 
 export default config;

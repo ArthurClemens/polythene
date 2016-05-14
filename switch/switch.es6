@@ -1,4 +1,3 @@
-import 'polythene/common/object.assign';
 import m from 'mithril';
 import selectionControl from 'polythene/selection-control/selection-control';
 import shadow from 'polythene/shadow/shadow';
@@ -49,10 +48,13 @@ const selectionView = (checked, opts) => {
     ];
 };
 
+const selectable = () => (true);
+
 const createView = (ctrl, opts = {}) => {
     opts.defaultClass = CSS_CLASSES.block;
     opts.type = 'checkbox';
     opts.selectionView = selectionView;
+    opts.selectable = selectable;
     return m.component(selectionControl, opts);
 };
 

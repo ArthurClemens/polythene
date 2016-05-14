@@ -1,5 +1,7 @@
 // Helper function for checkbox and radio button
+import 'polythene/common/object.assign';
 import m from 'mithril';
+import icon from 'polythene/icon/icon';
 import iconButton from 'polythene/icon-button/icon-button';
 
 const CSS_CLASSES = {
@@ -12,35 +14,58 @@ const CSS_CLASSES = {
 const createIcon = (onOffType, opts) => {
     // if opts.iconOn/Off is passed, use that icon options object and ignore size
     // otherwise create a new object
-    return opts[onOffType] || Object.assign({
-        msvg: opts.theme[onOffType]
-    }, opts.icon, opts.size ? {
-        type: opts.size
-    } : null);
-};
-
-const createIconButton = (value, type, opts) => {
-    const icon = createIcon(type === 'on' ? 'iconOn' : 'iconOff', opts);
-    const classNameOn = (type === 'on') ? CSS_CLASSES.buttonOn : CSS_CLASSES.buttonOff;
-    const classNameOff = (type !== 'on') ? CSS_CLASSES.buttonOff : CSS_CLASSES.buttonOn;
-    return m.component(iconButton, Object.assign({}, {
-        tag: 'div',
-        class: [
-            CSS_CLASSES.button,
-            (value ? classNameOn : classNameOff)
-        ].join(' '),
-        icon: icon,
-        disabled: opts.disabled
-    }, opts.iconButton));
+    return Object.assign(
+        {},
+        opts[onOffType]
+            ? opts[onOffType]
+            : {
+                msvg: opts.theme[onOffType]
+            },
+        {
+            class: opts.class
+        },
+        opts.icon,
+        opts.size
+            ? {
+                type: opts.size
+            }
+            : null
+    );
 };
 
 const createSelection = (checked, opts) => {
+    const selectable = opts.selectable(checked);
     return m('div', {
         class: CSS_CLASSES.box
-    }, [
-        createIconButton(checked, 'on', opts),
-        createIconButton(checked, 'off', opts)
-    ]);
+    }, m.component(iconButton, Object.assign(
+        {},
+        {
+            tag: 'div',
+            class: CSS_CLASSES.button,
+            content: [
+                m.component(icon, createIcon('iconOn', Object.assign(
+                    {},
+                    {
+                        class: CSS_CLASSES.buttonOn
+                    },
+                    opts
+                ))),
+                m.component(icon, createIcon('iconOff', Object.assign(
+                    {},
+                    {
+                        class: CSS_CLASSES.buttonOff
+                    },
+                    opts
+                )))
+            ],
+            ripple: {
+                center: true
+            },
+            disabled: opts.disabled,
+            inactive: !selectable
+        },
+        opts.iconButton
+    )));
 };
 
 export default createSelection;

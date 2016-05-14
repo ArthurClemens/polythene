@@ -10,6 +10,7 @@ const CSS_CLASSES = {
     on: 'pe-control--on',
     off: 'pe-control--off',
     disabled: 'pe-control--disabled',
+    inactive: 'pe-control--inactive',
     small: 'pe-control--small',
     regular: 'pe-control--regular',
     medium: 'pe-control--medium',
@@ -33,6 +34,8 @@ const createView = (ctrl, opts = {}) => {
     }
 
     const checked = ctrl.checked();
+    const selectable = opts.selectable(checked);
+    const inactive = opts.disabled || !selectable;
     const tag = opts.tag || 'div';
     const name = opts.name || '';
     const props = {
@@ -41,6 +44,7 @@ const createView = (ctrl, opts = {}) => {
             opts.defaultClass,
             (checked ? CSS_CLASSES.on : CSS_CLASSES.off),
             (opts.disabled ? CSS_CLASSES.disabled: null),
+            (inactive ? CSS_CLASSES.inactive: null),
             classForType(opts.size),
             opts.class
         ].join(' '),
@@ -60,7 +64,7 @@ const createView = (ctrl, opts = {}) => {
             name,
             value: ctrl.value(),
             type: opts.type, // set by checkbox / radio-button
-            tabindex: -1, // set in selectionView
+            tabindex: -1, // set in selectionView / icon-button
             checked,
             config: (el, inited) => {
                 if (inited) return;
@@ -68,18 +72,16 @@ const createView = (ctrl, opts = {}) => {
             }
         }),
         m('label', Object.assign(
+            {},
             {
                 class: CSS_CLASSES.label,
                 tabindex: -1, // set in selectionView
             },
-            (!opts.disabled) ? {
-                onclick: () => {
-                    if (opts.type === 'radio' && checked) {
-                        return;
-                    }
-                    ctrl.toggle();
+            inactive
+                ? null
+                : {
+                    onclick: () => (ctrl.toggle())
                 }
-            } : null
         ), [
             opts.selectionView ? opts.selectionView(checked, opts) : null,
             opts.label ? m('span', opts.label) : null
@@ -128,9 +130,7 @@ const component = {
             }
         };
 
-        const toggle = () => {
-            setChecked(!inputEl.checked);
-        };
+        const toggle = () => (setChecked(!inputEl.checked));
 
         return {
             setInputEl,

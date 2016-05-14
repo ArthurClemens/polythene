@@ -46,8 +46,10 @@ const style = [{
                 opacity: 0
             },
 
-            '&.pe-button--focus .pe-button__focus': {
-                opacity: 1
+            '&.pe-button--focus': {
+                ' .pe-button__focus': {
+                    opacity: 1
+                }
             },
 
             ' .pe-button__wash': {

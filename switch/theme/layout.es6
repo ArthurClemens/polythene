@@ -18,10 +18,11 @@ const customSize = (config, size) => {
     const trackMin = scaledTrackHeight / 2;
     const trackMax = scaledTrackWidth - scaledTrackHeight / 2;
     const thumbPadding = 12;
+    const thumbMargin = (size - scaledThumbSize) / 2;
     const thumbOuterSize = thumbSize + 2 * thumbPadding;
     const thumbOffsetMin = trackMin - thumbOuterSize / 2;
     const thumbOffsetMax = trackMax - thumbOuterSize / 2;
-    const thumbOffsetY = trackTop + thumbOffsetMin;
+    const thumbOffsetY = trackTop + thumbOffsetMin - thumbMargin;
 
     return {
         ' .pe-control__label': {
@@ -49,10 +50,18 @@ const customSize = (config, size) => {
             width: scaledThumbSize + 'px',
             height: scaledThumbSize + 'px',
             'border-radius': '50%',
+            margin: thumbMargin + 'px'
+        },
 
-            ' .pe-icon': {
-                width: '100%',
-                height: '100%'
+        ' .pe-button__label': {
+            ' .pe-control--switch__knob': {
+                ' .pe-icon': [
+                    mixin.fit(),
+                    {
+                        width: '100%',
+                        height: '100%'
+                    }
+                ]
             }
         },
 

@@ -10,12 +10,9 @@ const style = (config, tint, type, scope = '') => {
                 opacity: config['color_' + tint + '_wash_opacity']
             },
 
-            ' .pe-button__focus': {
-                opacity: config['color_' + tint + '_focus_opacity']
-            },
-
             '&.pe-button--focus, &.pe-button--selected': {
                 ' .pe-button__focus': {
+                    opacity: config['color_' + tint + '_focus_opacity'],
                     'background-color': 'currentcolor'
                 }
             },
