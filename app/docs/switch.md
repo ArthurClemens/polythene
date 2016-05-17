@@ -94,7 +94,10 @@ module.view = (ctrl) => {
 Change the colors of track and thumb in CSS:
 
 ~~~css
-.pe-control--switch__track {
+.pe-control--off .pe-control--switch__track {
+    background-color: #aaa;
+}
+.pe-control--on .pe-control--switch__track {
     background-color: #fd8b83;
 }
 .pe-control--off .pe-control--switch__thumb {
@@ -104,6 +107,45 @@ Change the colors of track and thumb in CSS:
     color: #fc4482;
 }
 ~~~
+
+To include the focus ring in the color scheme you need to address the thumb (which is an icon button component) when it is in focus state, and set the color of the focus element:
+
+~~~css
+.pe-control--on .pe-button--focus .pe-button__focus {
+    background-color: #fc4482;
+}
+~~~
+
+Setting a custom thumb icon:
+
+~~~javascript
+import icon from 'polythene/icon/icon';
+import bullseyeIcon from 'app/assets/bullseye';
+
+m.component(slider, {
+    icon: m.component(icon, {
+        msvg: bullseyeIcon
+    })
+})
+~~~
+
+and the corresponding CSS:
+
+~~~css
+.pe-control--off .pe-control--switch__thumb {
+    color: #fff
+}
+.pe-control--on .pe-control--switch__thumb {
+    color: #fff
+}
+.pe-control--off .pe-control--switch__thumb .pe-icon {
+    color: gray;
+}
+.pe-control--on .pe-control--switch__thumb .pe-icon {
+    color: red;
+}
+~~~
+
 
 
 ## Inheritance/composition
