@@ -45,7 +45,7 @@ const myFab = m.component(fab, {
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **z** | optional | Number 0-5 | 1 | Depth of the shadow |
-| **small** | optional | Boolean | false | Set to true to display a small button (class name `fab--mini`) |
+| **mini** | optional | Boolean | false | Set to true to display a small button (class name `fab--mini`) |
 
 
 ## Inheritance/composition
