@@ -27,6 +27,9 @@ const createStyles = (config) => {
             ' .pe-header-panel__header-container': {
                 position: 'relative',
 
+                ' .pe-toolbar': {
+                    'z-index': 2
+                },
                 ' .pe-header-panel__drop-shadow': [
                     mixin.vendorize({
                         transition: 'opacity 0.25s'

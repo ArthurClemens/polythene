@@ -87,7 +87,7 @@ const createStyles = (config) => {
                         ]
                     }, {
                         width: '100%',
-                        position: 'relative',
+                        position: 'absolute',
                         height: config.height_normal + 'px',
                         'pointer-events': 'none',
 
@@ -103,17 +103,22 @@ const createStyles = (config) => {
                         ],
                         ' .pe-header': mixin.ellipsis(1, common.line_height, 'em'),
 
+                        '&.pe-toolbar__bar--top': {
+                            'z-index': 3
+                        },
                         '&.pe-toolbar__bar--middle': {
                             position: 'absolute',
                             top: 0,
                             right: 0,
-                            left: 0
+                            left: 0,
+                            'z-index': 2
                         },
                         '&.pe-toolbar__bar--bottom': {
                             position: 'absolute',
                             right: 0,
                             bottom: 0,
-                            left: 0
+                            left: 0,
+                            'z-index': 1
                         }
                     }
                 ]
