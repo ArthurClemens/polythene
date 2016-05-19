@@ -60,7 +60,9 @@ const createStyles = (config) => {
         {
             '.pe-dark-theme': [
                 // inside dark theme
-                style(config, 'dark', 'flat', ' ')
+                style(config, 'dark', 'flat', ' '),
+                // has dark theme
+                style(config, 'dark', 'flat', '&')
             ]
         },
         {
