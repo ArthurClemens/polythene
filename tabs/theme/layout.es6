@@ -41,7 +41,7 @@ const createStyles = (config) => {
                                 'font-size': '10px',
                                 'line-height': '12px',
                                 'text-transform': 'none'
-                            },
+                            }
                         }
                     }
                 },
@@ -144,6 +144,7 @@ const createStyles = (config) => {
                     mixin.vendorize({
                         'user-select': 'none'
                     }, common.prefixes_user_select),
+                    mixin.defaultTransition('color'),
                     {
                         margin: 0,
                         'border-radius': 0,
@@ -176,6 +177,9 @@ const createStyles = (config) => {
                             ' .pe-icon': {
                                 'margin-left': 'auto',
                                 'margin-right': 'auto'
+                            },
+                            ' .pe-button__focus': {
+                                display: 'none'
                             }
                         },
                         '&.pe-button--selected': {
