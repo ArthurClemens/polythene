@@ -51,7 +51,7 @@ const handleScrollButtonClick = (ctrl, opts, e, direction) => {
     const tabs = ctrl.tabs;
     const currentTabIndex = ctrl.selectedTabIndex;
     const newIndex = getNewIndex(currentTabIndex, tabs)[direction];
-    scrollToTab(ctrl, newIndex, tabs, ctrl.scrollerEl);
+    scrollToTab(ctrl, newIndex);
     if (newIndex !== currentTabIndex) {
         setSelectedTab(ctrl, opts, newIndex, true);
         m.redraw();
@@ -108,23 +108,33 @@ const createRightButtonOffset = (ctrl) => {
     scrollButtonOffsetEl.style.width = scrollButtonRightWidth + 'px';
 };
 
-const scrollToTab = (ctrl, tabIndex, tabs, scroller) => {
-    const left = tabs.slice(0, tabIndex).reduce((width, tabData) => {
-        return width + tabData.el.getBoundingClientRect().width;
+const scrollToTab = (ctrl, tabIndex) => {
+    const tabs = ctrl.tabs;
+    const scroller = ctrl.scrollerEl;
+    // scroll to position of selected tab
+    const tabLeft = tabs.slice(0, tabIndex).reduce((totalWidth, tabData) => {
+        return totalWidth + tabData.el.getBoundingClientRect().width;
     }, 0);
-
-    const scrollerLeft = scroller['scrollLeft'];
-    const duration = Math.abs(scrollerLeft - left) / config.tabs_scroll_speed;
-    const delaySeconds = config.tabs_scroll_delay || 0;
-
-    setTimeout(() => {
-        scrollTo({
-            element: scroller,
-            to: left,
-            duration: Math.max(config.tabs_scroll_min_duration, duration),
-            direction: 'horizontal'
-        });
-    }, delaySeconds * 1000);
+    // tabs at the far right will not fully move to the left
+    // because the scrollable row will stick to the right 
+    // to get the max scroll left, we subtract the visible viewport from the scroll width
+    const scrollerWidth = scroller.getBoundingClientRect().width; // frame width
+    const scrollingWidth = scroller.scrollWidth;
+    const maxScroll = scrollingWidth - scrollerWidth;
+    const left = Math.min(tabLeft, maxScroll);
+    const currentLeft = scroller.scrollLeft;
+    if (currentLeft !== left) {
+        const duration = Math.abs(currentLeft - left) / config.tabs_scroll_speed;
+        const delaySeconds = config.tabs_scroll_delay || 0;
+        setTimeout(() => {
+            scrollTo({
+                element: scroller,
+                to: left,
+                duration: Math.max(config.tabs_scroll_min_duration, duration),
+                direction: 'horizontal'
+            });
+        }, delaySeconds * 1000);
+    }
 };
 
 const updateScrollButtons = (ctrl) => {
@@ -170,6 +180,7 @@ const setSelectedTab = (ctrl, opts, index, animate) => {
     }
     if (ctrl.managesScroll) {
         updateScrollButtons(ctrl);
+        scrollToTab(ctrl, index);
     }
     if (opts.getState) {
         opts.getState({
