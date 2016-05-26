@@ -236,9 +236,10 @@ const createView = (ctrl, opts = {}) => {
     const autofit = (opts.scrollable || opts.centered) ? false : (opts.autofit ? true : false);
 
     // keep selected tab up to date
-    if (opts.selectedTab !== undefined && ctrl.selectedTabIndex === undefined) {
+    if (opts.selectedTab !== undefined && ctrl.previousOptsSelectedTab !== opts.selectedTab) {
         setSelectedTab(ctrl, opts, opts.selectedTab, true);
     }
+    ctrl.previousOptsSelectedTab = opts.selectedTab;
 
     const props = {
         class: [
@@ -285,7 +286,7 @@ const createView = (ctrl, opts = {}) => {
                 events.unsubscribe('resize', onResize);
             };
 
-            setSelectedTab(ctrl, opts, opts.selectedTab || 0, false);
+            setSelectedTab(ctrl, opts, ctrl.selectedTabIndex, false);
         }
     };
     const tabRow = opts.buttons.map((buttonOpts, index) => {
@@ -353,7 +354,8 @@ const component = {
             scrollerEl: null,
             tabs: [], // {data, el}
             tabIndicatorEl: null,
-            selectedTabIndex: undefined,
+            selectedTabIndex: 0,
+            previousOptsSelectedTab: undefined,
             managesScroll: false,
             scrollButtonStates: {
                 left: false,
