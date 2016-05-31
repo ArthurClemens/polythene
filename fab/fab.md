@@ -39,6 +39,7 @@ const myFab = m.component(fab, {
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **icon** | either `icon` or `content` | Object |  | [icon](#icon) options object |
 | **content**| either `icon` or `content` | Mithril element |  | Alternative content |
+| **tabindex** | optional | Integer | | Tab index |
 
 ### FAB appearance options
 
