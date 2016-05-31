@@ -81,6 +81,7 @@ import 'polythene/common/no-tap-delay';
 | **borders** | optional | Boolean | false | Set to `true` to add a border |
 | **disabled** | optional | Boolean | false | Disables the button |
 | **selected** | optional | Boolean | false | Set to true to show the button as selected |
+| **tabindex** | optional | Integer | | Tab index |
 | **formaction** | optional | String | | "The URI of a program that processes the information submitted by the button. If specified, it overrides the action attribute of the button's form owner." [source:MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-formaction) |
 | **animateOnTap** | optional | Boolean  | true | Set to false to remove z-animation and subsequent redraw |
 | **inactive** | optional | Boolean | | Set to `true` to disable button events and ripple/wash effects |

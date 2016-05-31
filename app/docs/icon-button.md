@@ -118,6 +118,7 @@ Pass `type` to the `icon` parameter, or use CSS.
 | **content** | either icon or content must be passed | Mithril element | | Alternative content if no icon object is used |
 | **url** | optional | Object with `href`, optionally `config` | | Button URL data |
 | **inactive** | optional | Boolean | | Set to `true` to disable events |
+| **tabindex** | optional | Integer | | Tab index |
 
 ### Icon button appearance options
 

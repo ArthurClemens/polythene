@@ -67,6 +67,7 @@ module.view = (ctrl) => {
 | **getState**  | optional | Function(state {Object}) | | Callback function that accepts the field state (Object with properties `checked` {Boolean}, `value` {String}, `el` {HTMLElement}) |
 | **value** | optional | String | '1' | Input element value |
 | **disabled** | optional | Boolean |  | Set to true to disable the radio button |
+| **tabindex** | optional | Integer | | Tab index |
 
 ### Radio button appearance options
 

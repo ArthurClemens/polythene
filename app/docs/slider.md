@@ -149,6 +149,7 @@ module.view = (ctrl) => {
 | **interactiveTrack** | optional | Boolean | true | Set to `false` to prevent clicking on the track |
 | **getValue** | optional | Function | | Callback function to receive the slider value  |
 | **disabled** | optional | Boolean |  | Set to true to make the slider read only |
+| **tabindex** | optional | Integer | | Tab index |
 
 ### Slider appearance options
 
