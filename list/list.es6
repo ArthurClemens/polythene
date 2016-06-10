@@ -6,12 +6,12 @@ import 'polythene/list/theme/theme';
 const CSS_CLASSES = {
     block: 'pe-list',
     header: 'pe-list__header',
-    hoverable: 'pe-list--hoverable',
-    selectable: 'pe-list--selectable',
     borders: 'pe-list--borders',
     indentedBorders: 'pe-list--borders-indented',
     hasHeader: 'pe-list--header',
-    isCompact: 'pe-list--compact'
+    isCompact: 'pe-list--compact',
+    isHoverable: 'pe-list--hoverable',
+    isSelectable: 'pe-list--selectable'
 };
 
 const createView = (ctrl, opts = {}) => {
@@ -21,8 +21,8 @@ const createView = (ctrl, opts = {}) => {
             CSS_CLASSES.block,
             (opts.borders ? CSS_CLASSES.borders : null),
             (opts.indentedBorders ? CSS_CLASSES.indentedBorders : null),
-            (opts.hoverable ? CSS_CLASSES.hoverable : null),
-            (opts.selectable ? CSS_CLASSES.selectable : null),
+            (opts.hoverable ? CSS_CLASSES.isHoverable : null),
+            (opts.selectable ? CSS_CLASSES.isSelectable : null),
             (opts.header ? CSS_CLASSES.hasHeader : null),
             (opts.compact ? CSS_CLASSES.isCompact : null),
             opts.class
