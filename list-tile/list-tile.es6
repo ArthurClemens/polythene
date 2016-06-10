@@ -19,7 +19,9 @@ const CSS_CLASSES = {
     hasSubtitle: 'pe-list-tile--subtitle',
     hasHighSubtitle: 'pe-list-tile--high-subtitle',
     hasFront: 'pe-list-tile--front',
-    isCompact: 'pe-list-tile--compact'
+    isCompact: 'pe-list-tile--compact',
+    isHoverable: 'pe-list-tile--hoverable',
+    isSelectable: 'pe-list-tile--selectable'
 };
 
 const parsePrimaryContent = (opts) => {
@@ -107,6 +109,8 @@ const createView = (ctrl, opts = {}) => {
             (opts.disabled ? CSS_CLASSES.disabled : null),
             (opts.sticky ? CSS_CLASSES.sticky : null),
             (opts.compact ? CSS_CLASSES.isCompact : null),
+            (opts.hoverable ? CSS_CLASSES.isHoverable : null),
+            (opts.selectable ? CSS_CLASSES.isSelectable : null),
             heightClass,
             opts.class
         ].join(' '),

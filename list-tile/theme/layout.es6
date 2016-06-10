@@ -188,7 +188,10 @@ const createStyles = (config) => {
 
                 // Non-touch
 
-                'html.pe-no-touch .pe-list--hoverable &, html.pe-no-touch .pe-list--selectable &': {
+                'html.pe-no-touch .pe-list--hoverable &, \
+                html.pe-no-touch .pe-list--selectable &, \
+                html.pe-no-touch &.pe-list-tile--hoverable, \
+                html.pe-no-touch &.pe-list-tile--selectable': {
                     '&:not(.pe-list__header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected):hover': {
                         cursor: 'pointer'
                     }

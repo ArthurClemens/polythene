@@ -155,6 +155,8 @@ A list tile can optionally have secondary content, displayed to the right. Secon
 | **disabled** | optional | Boolean | false | Set to `true` to deactivate the url and hover state (in case of [list](#list) with setting `hoverable`) and show a disabled state; adds class 'disabled' |
 | **ink** | optional | Boolean | false | Set to `true` to show a ripple effect when the tile is tapped |
 | **ripple** | optional (valid if `ink` is `true`) | Options object | | Pass [ripple](#ripple) options to define ripple behavior |
+| **hoverable** | optional | Boolean | false | Set to true to show a hover effect (non-touch devices) |
+| **selectable** | optional | Boolean | false | Set to true to show a mouse pointer (non-touch devices) |
 
 
 ## Styling
