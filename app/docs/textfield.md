@@ -259,7 +259,7 @@ module.view = (ctrl) => {
 | **tag** | optional | String | 'div' | HTML element tag |
 | **class** | optional | String |  | Extra CSS class appended to 'pe-textfield' |
 | **id** | optional | String | | HTML element id |
-| **events** | optional | Object | | Options object containing one or more standard events such as `onclick`, applied to the input element |
+| **events** | optional | Object | | Options object containing one or more standard events such as `onclick`, applied to the input element; see "Input options" below |
 | **before** | optional | Mithril element | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **after** | optional | Mithril element | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
 
@@ -294,7 +294,8 @@ These options also have effect on the generated HTML input field.
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **autofocus** | optional | Boolean | | Set to `true` to give the input field autofocus |
 | **disabled** | optional | Boolean | | Creates a disabled input field |
-| **events** | optional | Object | | Input events; options object containing one or more events; predefined events are `onfocus`, `onblur`, `oninput`, `onfocus`, `onclick`, `onkeydown`; events with the same name that are specified in the `events` option will overwrite the predefined functions  |
+| **events** | optional | Object | | Input events; options object containing one or more events; predefined events are `onfocus`, `onblur`, `oninput`, `onfocus`, `onclick`, `onkeydown`; events with the same name that are specified in the `events` option will overwrite the predefined functions; use `ignoreEvents` to ignore specific events  |
+| **ignoreEvents** | optional | Array | | List of input event names to ignore, for instance `['onblur']` |
 | **focus** | optional | Boolean | | Set to `true` to give focus to the field; WARNING: make sure that the value is also reset to `false` (using a variable) or the field will always have focus |
 | **max** | optional | Number | | Maximum value (for type: number) |
 | **maxlength** | optional | Integer | | Maximum number of characters (for type: text, email, search, password, tel, or url) |
