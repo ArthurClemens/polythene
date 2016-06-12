@@ -122,6 +122,8 @@ const notifyState = (ctrl, opts) => {
     }
 };
 
+const ignoreEvent = (opts, name) => (opts.ignoreEvents && opts.ignoreEvents.indexOf(name) !== -1);
+
 const createView = (ctrl, opts = {}) => {
     // Early state update to prevent a flash (which would happen if the update is done in config)
     updateState(ctrl, opts);
@@ -218,64 +220,90 @@ const createView = (ctrl, opts = {}) => {
                 {
                     class: CSS_CLASSES.input,
                     type,
-                    onclick: () => {
-                        if (inactive) {
-                            return;
+                    name: opts.name || '',
+                    disabled: opts.disabled
+                },
+
+                (!ignoreEvent(opts, 'onclick'))
+                    ? {
+                        onclick: () => {
+                            if (inactive) {
+                                return;
+                            }
+                            // in case the browser does not give the field focus,
+                            // for instance when the user tapped to the current field off screen
+                            ctrl.focus(true);
+                            notifyState(ctrl, opts);
                         }
-                        // in case the browser does not give the field focus,
-                        // for instance when the user tapped to the current field off screen
-                        ctrl.focus(true);
-                        notifyState(ctrl, opts);
-                    },
-                    onfocus: () => {
-                        if (inactive) {
-                            return;
+                    }
+                    : null,
+
+                (!ignoreEvent(opts, 'onfocus'))
+                    ? {
+                        onfocus: () => {
+                            if (inactive) {
+                                return;
+                            }
+                            ctrl.focus(true);
+                            // set CSS class manually in case field gets focus but is off screen
+                            // and no redraw is triggered
+                            // at the next redraw ctrl.focus() will be read and the focus class be set
+                            // in the props.class statement
+                            if (ctrl.el) {
+                                ctrl.el.classList.add(CSS_CLASSES.stateFocused);
+                            }
+                            notifyState(ctrl, opts);
                         }
-                        ctrl.focus(true);
-                        // set CSS class manually in case field gets focus but is off screen
-                        // and no redraw is triggered
-                        // at the next redraw ctrl.focus() will be read and the focus class be set
-                        // in the props.class statement
-                        if (ctrl.el) {
-                            ctrl.el.classList.add(CSS_CLASSES.stateFocused);
-                        }
-                        notifyState(ctrl, opts);
-                    },
-                    // onblur defined in config
-                    oninput: (e) => {
-                        // default input event
-                        // may be overwritten by opts.events
-                        ctrl.value = e.target.value;
-                        // Don't set ctrl.touched to true to prevent error messages popping up while typing
-                        if (opts.validateOnInput) {
-                            ctrl.touched = true;
-                        }
-                        updateState(ctrl, opts);
-                        notifyState(ctrl, opts);
-                        if (opts.oninput) {
-                            opts.oninput(ctrl.value, e);
-                        }
-                    },
-                    onkeydown: (e) => {
-                        if (e.which === 13) {
-                            // ENTER
-                            ctrl.touched = true;
+                    }
+                    : null,
+                    
+                // onblur defined in config
+
+                (!ignoreEvent(opts, 'oninput'))
+                    ? {
+                        oninput: (e) => {
+                            // default input event
+                            // may be overwritten by opts.events
+                            ctrl.value = e.target.value;
+                            // Don't set ctrl.touched to true to prevent error messages popping up while typing
+                            if (opts.validateOnInput) {
+                                ctrl.touched = true;
+                            }
                             updateState(ctrl, opts);
                             notifyState(ctrl, opts);
-                        } else if (e.which === 27) {
-                            // ESCAPE
-                            ctrl.inputEl().blur(e);
-                        } else if (e.which === 9) {
-                            // TAB
-                            // Update after the blur event when TAB is used to leave the field and no other field will get focus.
-                            // Safari only needs 1 tick, but Chrome needs more than 150ms to create a distinctive new redraw event.
-                            // But we also may have buttons that change place (search field), a large timeout works better in general.
-                            setTimeout(() => {
-                                m.redraw();
-                                setTimeout(m.redraw, 250);
-                            }, 1);
+                            if (opts.oninput) {
+                                opts.oninput(ctrl.value, e);
+                            }
                         }
-                    },
+                    }
+                    : null,
+
+                (!ignoreEvent(opts, 'onkeydown'))
+                    ? {
+                        onkeydown: (e) => {
+                            if (e.which === 13) {
+                                // ENTER
+                                ctrl.touched = true;
+                                updateState(ctrl, opts);
+                                notifyState(ctrl, opts);
+                            } else if (e.which === 27) {
+                                // ESCAPE
+                                ctrl.inputEl().blur(e);
+                            } else if (e.which === 9) {
+                                // TAB
+                                // Update after the blur event when TAB is used to leave the field and no other field will get focus.
+                                // Safari only needs 1 tick, but Chrome needs more than 150ms to create a distinctive new redraw event.
+                                // But we also may have buttons that change place (search field), a large timeout works better in general.
+                                setTimeout(() => {
+                                    m.redraw();
+                                    setTimeout(m.redraw, 250);
+                                }, 1);
+                            }
+                        }
+                    }
+                    : null,
+
+                {
                     config: (el, inited, context) => {
                         if (inited) {
                             return;
@@ -284,17 +312,17 @@ const createView = (ctrl, opts = {}) => {
                         el.value = ctrl.value;
                         notifyState(ctrl, opts);
                         if (!inactive) {
-                            // use event delegation for the blur event
-                            // so that click events bubble up
-                            // http://www.quirksmode.org/blog/archives/2008/04/delegating_the.html
-                            el.addEventListener('blur', onBlur, true);
-                            context.onunload = function() {
-                                el.removeEventListener('blur', onBlur, true);
-                            };
+                            if (!ignoreEvent(opts, 'onblur')) {
+                                // use event delegation for the blur event
+                                // so that click events bubble up
+                                // http://www.quirksmode.org/blog/archives/2008/04/delegating_the.html
+                                el.addEventListener('blur', onBlur, true);
+                                context.onunload = function() {
+                                    el.removeEventListener('blur', onBlur, true);
+                                };
+                            }
                         }
-                    },
-                    name: opts.name || '',
-                    disabled: opts.disabled
+                    }
                 },
                 opts.events ? opts.events : null, // NOTE: may overwrite oninput
                 (opts.readonly !== undefined) ? {readonly: true} : null,
