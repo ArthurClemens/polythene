@@ -9,20 +9,19 @@ const transition = (config, properties, duration = config.animation_duration) =>
 };
 
 const customSize = (config, size) => {
-    const factor = size/common.unit_icon_size;
+    const factor = size / common.unit_icon_size;
     const thumbSize = Math.floor(0.5 * config.thumb_size * factor) * 2; // round to even
     const scaledTrackHeight = Math.floor(0.5 * config.track_height * factor) * 2; // round to even
     const scaledTrackWidth = Math.floor(0.5 * config.track_length * factor) * 2;
     const scaledThumbSize = Math.floor(0.5 * config.thumb_size * factor) * 2;
     const trackTop = ((config.label_height * factor - scaledTrackHeight) / 2);
-    const trackMin = scaledTrackHeight / 2;
-    const trackMax = scaledTrackWidth - scaledTrackHeight / 2;
-    const thumbPadding = 12;
+    const thumbPadding = config.icon_button_padding;
     const thumbMargin = (size - scaledThumbSize) / 2;
-    const thumbOuterSize = thumbSize + 2 * thumbPadding;
-    const thumbOffsetMin = trackMin - thumbOuterSize / 2;
-    const thumbOffsetMax = trackMax - thumbOuterSize / 2;
-    const thumbOffsetY = trackTop + thumbOffsetMin - thumbMargin;
+    const thumbOuterSize = size + 2 * thumbPadding;
+    const thumbOffsetMin = -(thumbOuterSize / 2) + (thumbSize / 2);
+    const thumbOffsetMax = thumbOffsetMin + scaledTrackWidth - thumbSize;
+    const thumbOffsetY = thumbOffsetMin + thumbMargin;
+    const trackVisualOffset = 0.3; // prevent sub pixel of track to shine through knob border
 
     return {
         ' .pe-control__label': {
@@ -34,8 +33,9 @@ const customSize = (config, size) => {
             }
         },
         ' .pe-control--switch__track': {
+            left: trackVisualOffset + 'px', 
             height: scaledTrackHeight + 'px',
-            width: scaledTrackWidth + 'px',
+            width: (scaledTrackWidth - 2 * trackVisualOffset) + 'px',
             top: trackTop + 'px',
             'border-radius': scaledTrackHeight + 'px'
         },

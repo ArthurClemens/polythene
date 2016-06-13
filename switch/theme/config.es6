@@ -1,5 +1,6 @@
 import 'polythene/common/object.assign';
 import selectionControlConfig from 'polythene/selection-control/theme/config'; // Note the generic config
+import iconButtonConfig from 'polythene/icon-button/theme/config';
 import common from 'polythene/config/config';
 
 const rgba = common.rgba;
@@ -10,6 +11,7 @@ const config = Object.assign({}, selectionControlConfig, {
     track_length: 36,
     thumb_size: 20,
     padding: 1 * common.grid_unit_component,
+    icon_button_padding: iconButtonConfig.padding,
     hit_area_padding,
 
     animation_duration: '.18s',
