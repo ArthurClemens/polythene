@@ -116,6 +116,7 @@ const createView = (ctrl, opts = {}) => {
         ].join(' '),
         id: opts.id || '',
         config: opts.config
+        // events and url are attached to primary content to not interfere with controls
     };
     const content = [
         (opts.ink && !opts.disabled) ? m.component(ripple, opts.ripple) : null,
