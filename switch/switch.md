@@ -73,7 +73,7 @@ module.view = (ctrl) => {
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **name** | optional | String | | Input element name |
 | **label** | optional | String | | Text label |
-| **checked** | optional | Boolean | false | Sets the checked state |
+| **checked** | optional | Boolean or Function | false | Checked state; use as function to set the value from outside |
 | **getState**  | optional | Function(state {Object}) | | Callback function that accepts the field state (Object with properties `checked` {Boolean}, `value` {String}, `el` {HTMLElement}) |
 | **value** | optional | String | '1' | Input element value |
 | **disabled** | optional | Boolean |  | Set to true to disable the switch |
