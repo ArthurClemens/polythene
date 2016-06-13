@@ -1,3 +1,4 @@
+// This script is called using https://github.com/ArthurClemens/transpile_watch
 
 const path = require('path');
 var findup = require('findup-sync');
