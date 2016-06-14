@@ -32,32 +32,35 @@ const createView = (ctrl, opts = {}) => {
     if (typeof opts.checked === 'function') {
         ctrl.setChecked(opts.checked());
     }
-
     const checked = ctrl.checked();
     const selectable = opts.selectable(checked);
     const inactive = opts.disabled || !selectable;
     const tag = opts.tag || 'div';
     const name = opts.name || '';
-    const props = {
-        class: [
-            CSS_CLASSES.block,
-            opts.defaultClass,
-            (checked ? CSS_CLASSES.on : CSS_CLASSES.off),
-            (opts.disabled ? CSS_CLASSES.disabled: null),
-            (inactive ? CSS_CLASSES.inactive: null),
-            classForType(opts.size),
-            opts.class
-        ].join(' '),
-        id: opts.id || '',
-        config: (el, inited, context, vdom) => {
-            if (inited) {
-                return;
+    const props = Object.assign(
+        {},
+        {
+            class: [
+                CSS_CLASSES.block,
+                opts.defaultClass,
+                (checked ? CSS_CLASSES.on : CSS_CLASSES.off),
+                (opts.disabled ? CSS_CLASSES.disabled: null),
+                (inactive ? CSS_CLASSES.inactive: null),
+                classForType(opts.size),
+                opts.class
+            ].join(' '),
+            id: opts.id || '',
+            config: (el, inited, context, vdom) => {
+                if (inited) {
+                    return;
+                }
+                if (opts.config) {
+                    opts.config(el, inited, context, vdom);
+                }
             }
-            if (opts.config) {
-                opts.config(el, inited, context, vdom);
-            }
-        }
-    };
+        },
+        opts.events ? opts.events : null
+    );
     const content = [
         m('input', {
             class: CSS_CLASSES.input,
