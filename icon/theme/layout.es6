@@ -43,8 +43,10 @@ const createStyles = (config) => {
                         fill: 'currentcolor',
                         color: 'inherit',
 
-                        ' path:not([fill=none])': {
-                            fill: 'currentcolor'
+                        ' path, rect, polygon': {
+                            '&:not([fill=none])': {
+                                fill: 'currentcolor'
+                            }
                         }
                     }
                 }
