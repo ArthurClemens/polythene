@@ -1,7 +1,7 @@
-import Multiple from 'polythene/common/multiple';
+import multiple from 'polythene/common/multiple';
 import instance from 'polythene/dialog/dialog-instance';
 
-export default Multiple({
+export default multiple({
     instance,
     defaultId: 'default_dialog',
     tag: '.pe-dialog__holder',

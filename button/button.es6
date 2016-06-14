@@ -162,7 +162,8 @@ const createView = (ctrl, opts = {}) => {
         opts.url ? opts.url : null,
         opts.formaction ? {formaction: opts.formaction} : null,
         opts.type ? {type: opts.type} : null,
-        opts.events ? opts.events : null, {
+        opts.events ? opts.events : null,
+        {
             config: (...args) => [
                 buttonConfig(...args),
                 optsConfig(...args),
