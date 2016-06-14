@@ -1,7 +1,6 @@
 import multiple from 'polythene/common/multiple';
 import instance from 'polythene/notification/notification-instance';
 import transitions from 'polythene/notification/theme/snackbar/transitions';
-import 'polythene/notification/theme/notification/theme';
 import 'polythene/notification/theme/snackbar/theme';
 
 export default multiple({
