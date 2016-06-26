@@ -83,6 +83,7 @@ const preloadNext = (ctrl, opts) => {
 
 const component = {
     controller: (opts = {}) => {
+        m.redraw.strategy('none');
         return {
             path: m.prop(''),
             svg: m.prop(''),

@@ -56,6 +56,9 @@ const createView = (ctrl, opts = {}) => {
 };
 
 const component = {
+    controller: () => {
+        m.redraw.strategy('none');
+    },
     view: (ctrl, opts = {}) => {
         return createView(ctrl, opts);
     }
