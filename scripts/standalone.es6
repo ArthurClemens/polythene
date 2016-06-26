@@ -65,7 +65,7 @@ const build = () => {
                 paths: ['.', 'node_modules'],
                 require: requires()
             })
-            // .external('mithril')
+            .external('mithril')
             .transform({
                 global: true
             }, 'uglifyify')
