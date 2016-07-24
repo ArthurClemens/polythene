@@ -129,6 +129,7 @@ const createMedia = o => {
             CSS_CLASSES.media,
             mediaClassForType(opts.type),
             (ratio === 'landscape' ? CSS_CLASSES.mediaRatioLandscape : CSS_CLASSES.mediaRatioSquare),
+            opts.class
         ].join(' '),
         config: initImage
     }, [
@@ -138,7 +139,6 @@ const createMedia = o => {
 };
 
 const createHeader = o => {
-
     const opts = o.header || {};
     return m.component(listTile, Object.assign({}, opts, {
         class: [CSS_CLASSES.header, opts.class].join(' ')
