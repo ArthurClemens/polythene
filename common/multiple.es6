@@ -69,12 +69,11 @@ const multiple = (mOpts) => {
     };
 
     const makeItem = (itemOpts, instanceId) => {
-        const opts = (typeof itemOpts === 'function')
-            ? itemOpts()
-            : itemOpts;
-
         let resolveShow;
         const didShow = () => {
+            const opts = (typeof itemOpts === 'function')
+                ? itemOpts()
+                : itemOpts;
             if (opts.didShow) {
                 opts.didShow(instanceId);
             }
@@ -86,6 +85,9 @@ const multiple = (mOpts) => {
 
         let resolveHide;
         const didHide = () => {
+            const opts = (typeof itemOpts === 'function')
+                ? itemOpts()
+                : itemOpts;
             if (opts.didHide) {
                 opts.didHide(instanceId);
             }
@@ -100,7 +102,7 @@ const multiple = (mOpts) => {
 
         return Object.assign({}, mOpts, {
             instanceId,
-            opts,
+            opts: itemOpts,
             show: mOpts.queue ? false : true,
             showPromise,
             hidePromise,

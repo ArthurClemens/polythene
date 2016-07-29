@@ -242,7 +242,7 @@ const component = {
             headerHeight: 0,
             footerHeight: 0,
             el: null,
-            visible: false,
+            visible: instanceData.show ? true : false,
             isTransitioning: false
         });
     },
