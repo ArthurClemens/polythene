@@ -1,28 +1,23 @@
-[
-  "button",
-  "card",
-  "checkbox",
-  "dialog",
-  "fab",
-  "icon",
-  "icon-button",
-  "list",
-  "list-title",
-  "menu",
-  "radio-button",
-  "ripple",
-  "search",
-  "shadow",
-  "slider",
-  "spinner",
-  "svg",
-  "switch",
-  "tabs",
-  "textfield",
-  "theme",
-  "toolbar"
-].forEach(
-  function(component){
-    module.exports[component] = require('./' + component+'/' +component);
-  }
-);
+module.exports = {
+  button: require('./button/button'),
+  card: require('./card/card'),
+  checkbox: require('./checkbox/checkbox'),
+  dialog: require('./dialog/dialog'),
+  theme: require('./theme/theme'),
+  fab: require('./fab/fab'),
+  icon: require('./icon/icon'),
+  "icon-button": require('./icon-button/icon-button'),
+  list: require('./list/list'),
+  "list-title": require('./list-tile/list-tile'),
+  menu: require('./menu/menu'),
+  "radio-button": require('./radio-button/radio-button'),
+  ripple: require('./ripple/ripple'),
+  search: require('./search/search'),
+  shadow: require('./shadow/shadow'),
+  slider: require('./slider/slider'),
+  spinner: require('./spinner/spinner'),
+  svg: require('./svg/svg'),
+  switch: require('./switch/switch'),
+  tabs: require('./tabs/tabs'),
+  textfield: require('./textfield/textfield')
+}
