@@ -1,0 +1,28 @@
+[
+  "button",
+  "card",
+  "checkbox",
+  "dialog",
+  "fab",
+  "icon",
+  "icon-button",
+  "list",
+  "list-title",
+  "menu",
+  "radio-button",
+  "ripple",
+  "search",
+  "shadow",
+  "slider",
+  "spinner",
+  "svg",
+  "switch",
+  "tabs",
+  "textfield",
+  "theme",
+  "toolbar"
+].forEach(
+  function(component){
+    module.exports[component] = require('./' + component+'/' +component);
+  }
+);

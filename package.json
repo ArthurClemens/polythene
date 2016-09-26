@@ -7,7 +7,7 @@
     "Material Design",
     "Mithril"
   ],
-  "main": "",
+  "main": "index.js",
   "directories": {},
   "dependencies": {
     "fastclick": "^1.0.6",
