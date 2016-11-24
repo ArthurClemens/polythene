@@ -16,7 +16,7 @@ const createStyles = (config) => {
     const barOffset = (thumbSize / 2);
     const scaledBorderWidth = Math.max(1, config.thumb_border_width / config.active_thumb_scale);
     const thumbTouchSize = config.thumb_touch_size;
-    const stepsOffset = config.side_spacing + barOffset - 1;
+    const stepsOffset = barOffset - 1;
 
     return [{
         '.pe-slider': [
@@ -26,7 +26,6 @@ const createStyles = (config) => {
             {
                 height: config.height + 'px',
                 'margin-top': ((config.height - config.track_height) / 2) + 'px ',
-                position: 'relative',
 
                 ' > .pe-icon': {
                     height: config.height + 'px'
@@ -34,11 +33,13 @@ const createStyles = (config) => {
 
                 ' .pe-slider__track': [
                     flex.layoutHorizontal,
+                    flex.flexGrow(1),
                     mixin.defaultTransition('transform', config.animation_duration),
                     mixin.vendorize({
                         'user-select': 'none'
                     }, common.prefixes_user_select),
                     {
+                        position: 'relative',
                         height: config.track_height + 'px',
                         margin: '0 ' + config.side_spacing + 'px',
                         outline: 0

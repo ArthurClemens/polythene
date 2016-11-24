@@ -1,5 +1,5 @@
 
-export default (opts) => {
+export default (opts = {}) => {
     const elProp = opts.element || 'el';
     const invalidProp = opts.invalid || 'invalid';
 

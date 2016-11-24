@@ -192,6 +192,11 @@ const flexIndex = (index) => ({
     'flex': index
 });
 
+const flexGrow = (value) => ({
+    '-webkit-flex-grow': value,
+    'flex-grow': value
+});
+
 const selfStart = {
     '-ms-flex-item-align': 'start', // IE10
     '-ms-align-self': 'flex-start',
@@ -225,6 +230,7 @@ export default {
     flexAuto,
     flexAutoVertical,
     flexIndex,
+    flexGrow,
     layout,
     layoutAroundJustified,
     layoutCenter,

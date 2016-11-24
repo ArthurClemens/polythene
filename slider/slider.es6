@@ -263,17 +263,17 @@ const createSlider = (ctrl, opts = {}, hasTicks, interactiveTrack) => {
                 m('div', {class: CSS_CLASSES.trackBar},
                     m('div', {class: CSS_CLASSES.trackBarValue})
                 )
-            )
-        ]),
-        (hasTicks && !opts.disabled) ? m('div', {class: CSS_CLASSES.ticks}, generateTickMarks(ctrl.min, ctrl.max, stepCount)) : null,
-        (hasTicks && opts.pin && !opts.disabled) ? m('div', {
-            class: CSS_CLASSES.pin,
-            value: Math.round(ctrl.value()),
-            config: (el, inited) => {
-                if (inited) return;
-                ctrl.pinEl = el;
-            }
-        }) : null
+            ),
+            (hasTicks && !opts.disabled) ? m('div', {class: CSS_CLASSES.ticks}, generateTickMarks(ctrl.min, ctrl.max, stepCount)) : null,
+            (hasTicks && opts.pin && !opts.disabled) ? m('div', {
+                class: CSS_CLASSES.pin,
+                value: Math.round(ctrl.value()),
+                config: (el, inited) => {
+                    if (inited) return;
+                    ctrl.pinEl = el;
+                }
+            }) : null
+        ])
     ];
 };
 
