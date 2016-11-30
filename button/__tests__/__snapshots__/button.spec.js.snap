@@ -1,0 +1,141 @@
+exports[`Button component should render button appearance params (off) 1`] = `
+"<a class=\"pe-button pe-button--text       \" id=\"\" tabindex=\"0\">
+  <div class=\"pe-button__content\">
+    <div class=\"pe-ripple pe-ripple--constrained \" id=\"\">
+      <div class=\"pe-ripple__mask\">
+        <div class=\"pe-ripple__waves\">
+        </div>
+      </div>
+    </div>
+    <div class=\"pe-button__focus\">
+    </div>
+  </div>
+</a>"
+`;
+
+exports[`Button component should render button appearance params (on) 1`] = `
+"<a class=\"pe-button pe-button--text     pe-button--raised  \" id=\"\" tabindex=\"0\">
+  <div class=\"pe-button__content\">
+    <div class=\"pe-shadow pe-shadow--animated \" id=\"\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-1\">
+      </div>
+      <div class=\"pe-shadow__top pe-shadow--z-1\">
+      </div>
+    </div>
+    <div class=\"pe-ripple pe-ripple--constrained \" id=\"\">
+      <div class=\"pe-ripple__mask\">
+        <div class=\"pe-ripple__waves\">
+        </div>
+      </div>
+    </div>
+    <div class=\"pe-button__wash\">
+    </div>
+    <div class=\"pe-button__focus\">
+    </div>
+  </div>
+</a>"
+`;
+
+exports[`Button component should render main params 1`] = `
+"<button class=\"pe-button pe-button--text pe-button--selected pe-button--disabled pe-button--inactive pe-button--borders   site--button\" id=\"\" tabindex=\"-1\" formaction=\"/submit\" disabled>
+  <div class=\"pe-button__content\">
+    <div class=\"pe-button__label\">
+      Send
+    </div>
+  </div>
+</button>"
+`;
+
+exports[`Button component should render param content 1`] = `
+"<a class=\"pe-button pe-button--text       \" id=\"\" tabindex=\"0\">
+  <div class=\"pe-button__content\">
+    <div class=\"pe-ripple pe-ripple--constrained \" id=\"\">
+      <div class=\"pe-ripple__mask\">
+        <div class=\"pe-ripple__waves\">
+        </div>
+      </div>
+    </div>
+    <div class=\"pe-button__wash\">
+    </div>
+    <div class=\"pe-button__focus\">
+    </div>
+    <div>
+      Send
+    </div>
+  </div>
+</a>"
+`;
+
+exports[`Button component should render param tabindex 1`] = `
+"<a class=\"pe-button pe-button--text       \" id=\"\" tabindex=\"1\">
+  <div class=\"pe-button__content\">
+    <div class=\"pe-ripple pe-ripple--constrained \" id=\"\">
+      <div class=\"pe-ripple__mask\">
+        <div class=\"pe-ripple__waves\">
+        </div>
+      </div>
+    </div>
+    <div class=\"pe-button__wash\">
+    </div>
+    <div class=\"pe-button__focus\">
+    </div>
+  </div>
+</a>"
+`;
+
+exports[`Button component should render param url 1`] = `
+"<a class=\"pe-button pe-button--text       \" id=\"\" tabindex=\"0\" href=\"/\">
+  <div class=\"pe-button__content\">
+    <div class=\"pe-ripple pe-ripple--constrained \" id=\"\">
+      <div class=\"pe-ripple__mask\">
+        <div class=\"pe-ripple__waves\">
+        </div>
+      </div>
+    </div>
+    <div class=\"pe-button__wash\">
+    </div>
+    <div class=\"pe-button__focus\">
+    </div>
+  </div>
+</a>"
+`;
+
+exports[`Button component should render params before and after 1`] = `
+"<a class=\"pe-button pe-button--text       \" id=\"\" tabindex=\"0\">
+  <div>
+    BEFORE
+  </div>
+  <div class=\"pe-button__content\">
+    <div class=\"pe-ripple pe-ripple--constrained \" id=\"\">
+      <div class=\"pe-ripple__mask\">
+        <div class=\"pe-ripple__waves\">
+        </div>
+      </div>
+    </div>
+    <div class=\"pe-button__wash\">
+    </div>
+    <div class=\"pe-button__focus\">
+    </div>
+  </div>
+  <div>
+    AFTER
+  </div>
+</a>"
+`;
+
+exports[`Button component should render without params 1`] = `
+"<a class=\"pe-button pe-button--text       \" id=\"\" tabindex=\"0\">
+  <div class=\"pe-button__content\">
+    <div class=\"pe-ripple pe-ripple--constrained \" id=\"\">
+      <div class=\"pe-ripple__mask\">
+        <div class=\"pe-ripple__waves\">
+        </div>
+      </div>
+    </div>
+    <div class=\"pe-button__wash\">
+    </div>
+    <div class=\"pe-button__focus\">
+    </div>
+  </div>
+</a>"
+`;
