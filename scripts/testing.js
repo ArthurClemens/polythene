@@ -1,0 +1,2 @@
+"use strict";function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{"default":obj}}Object.defineProperty(exports,"__esModule",{value:!0}),exports.matchSnapshot=void 0;var _mithrilNodeRender=require("mithril-node-render"),_mithrilNodeRender2=_interopRequireDefault(_mithrilNodeRender),_htmldom=require("htmldom"),_htmldom2=_interopRequireDefault(_htmldom),matchSnapshot=exports.matchSnapshot=function(cmp){var html=new _htmldom2["default"]((0,_mithrilNodeRender2["default"])(cmp)).beautify();expect(html).toMatchSnapshot()};
+//# sourceMappingURL=testing.js.map

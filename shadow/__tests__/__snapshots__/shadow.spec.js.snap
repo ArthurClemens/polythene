@@ -1,0 +1,26 @@
+exports[`Shadow component should render appearance params 1`] = `
+"<div class=\"pe-shadow pe-shadow--animated \" id=\"\">
+  <div class=\"pe-shadow__bottom pe-shadow--z-5\">
+  </div>
+  <div class=\"pe-shadow__top pe-shadow--z-5\">
+  </div>
+</div>"
+`;
+
+exports[`Shadow component should render common component params 1`] = `
+"<span class=\"pe-shadow  site--ripple\" id=\"ID\">
+  <div class=\"pe-shadow__bottom pe-shadow--z-1\">
+  </div>
+  <div class=\"pe-shadow__top pe-shadow--z-1\">
+  </div>
+</span>"
+`;
+
+exports[`Shadow component should render with no params 1`] = `
+"<div class=\"pe-shadow  \" id=\"\">
+  <div class=\"pe-shadow__bottom pe-shadow--z-1\">
+  </div>
+  <div class=\"pe-shadow__top pe-shadow--z-1\">
+  </div>
+</div>"
+`;

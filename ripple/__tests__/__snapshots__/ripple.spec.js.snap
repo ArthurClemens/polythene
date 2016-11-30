@@ -1,0 +1,35 @@
+exports[`Ripple component should render appearance params 1`] = `
+"<div class=\"pe-ripple  \" id=\"\">
+  <div class=\"pe-ripple__mask\">
+    <div class=\"pe-ripple__waves\">
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`Ripple component should render common component params 1`] = `
+"<blockquote class=\"pe-ripple pe-ripple--constrained site--ripple\" id=\"ID\">
+  <div class=\"pe-ripple__mask\">
+    <div class=\"pe-ripple__waves\">
+    </div>
+  </div>
+</blockquote>"
+`;
+
+exports[`Ripple component should render params before and after 1`] = `
+"<div class=\"pe-ripple pe-ripple--constrained \" id=\"\">
+  <div class=\"pe-ripple__mask\">
+    <div class=\"pe-ripple__waves\">
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`Ripple component should render with no params 1`] = `
+"<div class=\"pe-ripple pe-ripple--constrained \" id=\"\">
+  <div class=\"pe-ripple__mask\">
+    <div class=\"pe-ripple__waves\">
+    </div>
+  </div>
+</div>"
+`;

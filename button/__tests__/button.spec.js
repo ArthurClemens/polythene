@@ -1,15 +1,9 @@
 import m from 'mithril';
-import render from 'mithril-node-render';
+import {matchSnapshot} from '../../scripts/testing';
 import button from 'polythene/button/button';
-import HtmlDom from 'htmldom';
-
-const matchSnapshot = (cmp) => {
-    const html = new HtmlDom(render(cmp)).beautify();
-    expect(html).toMatchSnapshot();
-};
 
 describe('Button component', () => {
-    it('should render without params', () => {
+    it('should render with no params', () => {
         const cmp = m(button);
         matchSnapshot(cmp);
     });
@@ -20,10 +14,16 @@ describe('Button component', () => {
         });
         matchSnapshot(cmp);
     });
+    it('should render common component params', () => {
+        const cmp = m(button, {
+            id: 'ID',
+            tag: 'button',
+            class: 'site--button'
+        });
+        matchSnapshot(cmp);
+    });
     it('should render main params', () => {
         const cmp = m(button, {
-            tag: 'button',
-            class: 'site--button',
             label: 'Send',
             borders: true,
             disabled: true,
