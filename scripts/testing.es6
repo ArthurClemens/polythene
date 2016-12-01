@@ -1,8 +1,7 @@
-
 import render from 'mithril-node-render';
-import HtmlDom from 'htmldom';
+const beautify = require('js-beautify').html;
 
 export const matchSnapshot = (cmp) => {
-    const html = new HtmlDom(render(cmp)).beautify();
+    const html = beautify(render(cmp));
     expect(html).toMatchSnapshot();
 };

@@ -18,7 +18,7 @@ describe('Ripple component', () => {
         const cmp = m(ripple, {
             id: 'ID',
             tag: 'blockquote',
-            class: 'site--ripple'
+            class: 'my-ripple'
         });
         matchSnapshot(cmp);
     });

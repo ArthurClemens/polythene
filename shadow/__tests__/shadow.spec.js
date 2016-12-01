@@ -14,11 +14,17 @@ describe('Shadow component', () => {
     //     });
     //     matchSnapshot(cmp);
     // });
+    it('should render param content', () => {
+        const cmp = m(shadow, {
+            content: m('div', 'CONTENT')
+        });
+        matchSnapshot(cmp);
+    });
     it('should render common component params', () => {
         const cmp = m(shadow, {
             id: 'ID',
             tag: 'span',
-            class: 'site--ripple'
+            class: 'my-shadow'
         });
         matchSnapshot(cmp);
     });
