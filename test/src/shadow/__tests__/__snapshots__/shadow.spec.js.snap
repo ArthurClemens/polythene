@@ -1,0 +1,34 @@
+exports[`Shadow component appearance params 1`] = `
+"<div id=\"\" class=\"pe-shadow pe-shadow--animated\">
+  <div class=\"pe-shadow__bottom pe-shadow--z-5\"></div>
+  <div class=\"pe-shadow__top pe-shadow--z-5\"></div>
+</div>
+"
+`;
+
+exports[`Shadow component common component params 1`] = `
+"<div id=\"\" class=\"pe-shadow\">
+  <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+  <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+</div>
+"
+`;
+
+exports[`Shadow component no params 1`] = `
+"<div id=\"\" class=\"pe-shadow\">
+  <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+  <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+</div>
+"
+`;
+
+exports[`Shadow component param content 1`] = `
+"<div id=\"\" class=\"pe-shadow\">
+  <div>
+    CONTENT
+  </div>
+  <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+  <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+</div>
+"
+`;

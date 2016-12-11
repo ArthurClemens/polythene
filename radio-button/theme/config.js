@@ -1,2 +1,0 @@
-"use strict";function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{"default":obj}}Object.defineProperty(exports,"__esModule",{value:!0});var _config=require("polythene/selection-control/theme/config"),_config2=_interopRequireDefault(_config);exports["default"]=_config2["default"],module.exports=exports["default"];
-//# sourceMappingURL=config.js.map

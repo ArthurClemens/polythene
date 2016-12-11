@@ -1,1 +1,0 @@
-{"version":3,"sources":["dialog.es6"],"names":["_multiple","require","_dialogInstance","_multiple2","instance","_dialogInstance2","defaultId","tag","noneTag","bodyShowClass"],"mappings":"uJAAA,IAAAA,WAAAC,QAAA,0EACAC,gBAAAD,QAAA,iHAEe,EAAAE,WAAAA,aACXC,SAAAC,iBAAAA,WACAC,UAAW,iBACXC,IAAK,qBACLC,QAAS,8BACTC,cAAe","file":"dialog.js"}

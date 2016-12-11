@@ -1,1 +1,0 @@
-{"version":3,"sources":["config.es6"],"names":["require","_config","animation_duration","color_light","_config2","rgba","color_light_foreground","color_dark","color_dark_foreground"],"mappings":"wJAAAA,QAAA,iCACA,IAAAC,SAAAD,QAAA,wFAGIE,mBAAoB,EAEpBC,YAAaC,SAAAA,WAAOC,KAAKD,SAAAA,WAAOE,wBAChCC,WAAYH,SAAAA,WAAOC,KAAKD,SAAAA,WAAOI","file":"config.js"}
