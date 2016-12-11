@@ -7,7 +7,7 @@
     "type": "git",
     "url": "https://github.com/ArthurClemens/Polythene.git"
   },
-  "main": "",
+  "main": "dist/index.js",
   "directories": {},
   "files": [
     "dist",

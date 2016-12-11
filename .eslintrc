@@ -21,7 +21,7 @@
                 "vars": "all",
                 "args": "after-used"
             }
-        ]
+        ],
     },
     "globals": {
         "require": true
@@ -32,5 +32,9 @@
     },
     "ecmaFeatures": {
         "modules": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module"
     }
 }
