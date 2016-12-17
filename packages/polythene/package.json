@@ -1,0 +1,14 @@
+{
+  "name": "polythene",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+  	"polythene-button": "1.0.0"
+  },
+  "scripts": {
+    "test": ""
+  },
+  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
+  "license": "MIT"
+}

@@ -1,40 +1,34 @@
 {
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "sourceType": "module",
+        "ecmaVersion": 6,
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true
+        }
+    },
     "rules": {
         "indent": [
-            2,
-            4
-        ],
-        "quotes": [
-            2,
-            "single"
+            "error",
+            2
         ],
         "linebreak-style": [
-            2,
+            "error",
             "unix"
         ],
+        "quotes": [
+            "error",
+            "double"
+        ],
         "semi": [
-            2,
+            "error",
             "always"
         ],
-        "no-unused-vars": [
-            2, {
-                "vars": "all",
-                "args": "after-used"
-            }
-        ],
-    },
-    "globals": {
-        "require": true
-    },
-    "env": {
-        "es6": true,
-        "browser": true
-    },
-    "ecmaFeatures": {
-        "modules": true
-    },
-    "parserOptions": {
-        "ecmaVersion": 6,
-        "sourceType": "module"
+        "no-console": 1
     }
 }
