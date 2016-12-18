@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "build/button.js",
-  "module": "index",
+  "module": "build/button.mjs",
   "jsnext:main": "build/button.mjs",
   "scripts": {
     "build": "rm -rf build && mkdir build && rollup -c ../../scripts/rollup.umd.js && rollup -c ../../scripts/rollup.es.js",
@@ -15,7 +15,5 @@
     "polythene-shadow": "1"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
-  "license": "MIT",
-  "devDependencies": {
-  }
+  "license": "MIT"
 }

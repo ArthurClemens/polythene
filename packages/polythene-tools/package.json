@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "build/tools.js",
-  "module": "index",
+  "module": "build/tools.mjs",
   "jsnext:main": "build/tools.mjs",
   "scripts": {
     "build": "rm -rf build && mkdir build && rollup -c ../../scripts/rollup.umd.js && rollup -c ../../scripts/rollup.es.js",
@@ -13,7 +13,5 @@
     "mithril": "github:lhorie/mithril.js#rewrite"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
-  "license": "MIT",
-  "devDependencies": {
-  }
+  "license": "MIT"
 }

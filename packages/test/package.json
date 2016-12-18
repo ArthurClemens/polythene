@@ -4,20 +4,16 @@
   "version": "1.0.0",
   "description": "",
   "main": "build/test.js",
-  "module": "index",
-  "jsnext:main": "index",
   "scripts": {
     "build": "rm -rf build && mkdir build && rollup -c ./scripts/rollup.test.js",
     "test": ""
   },
-  "devDependencies": {
+  "dependencies": {
+    "j2c": "^0.11.2",
+    "mithril": "github:lhorie/mithril.js#rewrite",
     "polythene-button": "1",
     "polythene-css": "1",
     "polythene-shadow": "1",
     "polythene-theme": "1"
-  },
-  "dependencies": {
-    "j2c": "^0.11.2",
-    "mithril": "github:lhorie/mithril.js#rewrite"
   }
 }

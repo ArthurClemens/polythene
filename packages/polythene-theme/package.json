@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "build/theme.js",
-  "module": "index",
+  "module": "build/theme.mjs",
   "jsnext:main": "build/theme.mjs",
   "scripts": {
     "build": "rm -rf build && mkdir build && rollup -c ../../scripts/rollup.umd.js && rollup -c ../../scripts/rollup.es.js",
@@ -15,7 +15,5 @@
     "polythene-tools": "1"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
-  "license": "MIT",
-  "devDependencies": {
-  }
+  "license": "MIT"
 }

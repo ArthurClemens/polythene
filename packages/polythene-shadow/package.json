@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "build/shadow.js",
-  "module": "index",
+  "module": "build/shadow.mjs",
   "jsnext:main": "build/shadow.mjs",
   "scripts": {
     "build": "rm -rf build && mkdir build && rollup -c ../../scripts/rollup.umd.js && rollup -c ../../scripts/rollup.es.js",
@@ -14,7 +14,5 @@
     "polythene-css": "1"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
-  "license": "MIT",
-  "devDependencies": {
-  }
+  "license": "MIT"
 }
