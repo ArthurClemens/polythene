@@ -5,7 +5,7 @@
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
-    "babel-core": "^6.20.0",
+    "babel-core": "^6.21.0",
     "babel-eslint": "^7.1.1",
     "babel-plugin-transform-object-assign": "^6.8.0",
     "babel-plugin-transform-object-rest-spread": "^6.20.2",
@@ -18,18 +18,17 @@
     "eslint-config-airbnb-base": "^11.0.0",
     "eslint-plugin-import": "^2.2.0",
     "fs-promise": "^1.0.0",
-    "jest": "^18.0.0",
-    "jest-cli": "^18.0.0",
     "lerna": "2.0.0-beta.31",
-    "rollup": "^0.37.0",
+    "mithril-jest": "^0.1.4",
+    "rollup": "^0.38.0",
     "rollup-plugin-babel": "^2.7.1",
-    "rollup-plugin-commonjs": "^6.0.0",
+    "rollup-plugin-commonjs": "^6.0.1",
     "rollup-plugin-eslint": "^3.0.0",
+    "rollup-plugin-livereload": "^0.4.0",
     "rollup-plugin-node-resolve": "^2.0.0",
-    "rollup-plugin-uglify": "^1.0.1"
-  },
-  "dependencies": {
-    "j2c": "^0.11.2",
-    "mithril": "github:lhorie/mithril.js#rewrite"
+    "rollup-plugin-serve": "^0.1.0",
+    "rollup-plugin-uglify": "^1.0.1",
+    "rollup-watch": "^2.5.0",
+    "tidy-html5": "^0.1.1"
   }
 }

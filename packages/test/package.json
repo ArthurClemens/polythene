@@ -1,16 +1,19 @@
 {
   "name": "test",
-  "amdName": "test",
   "version": "1.0.0",
   "description": "",
-  "main": "build/test.js",
+  "main": "build/js/test.js",
+  "module": "build/js/test.mjs",
+  "jsnext:main": "build/js/test.mjs",
   "scripts": {
-    "build": "rm -rf build && mkdir build && rollup -c ./scripts/rollup.test.js",
-    "test": ""
+    "clean": "rm -rf build/js && mkdir build/js",
+    "build": "DEPS=false MODULE_NAME=test ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js",
+    "watch": "DEPS=false PORT=8080 WATCH_DIR=./build/ ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.watch.js --watch",
+    "test": "../../node_modules/jest/bin/jest.js tests/**",
+    "test:watch": "../../node_modules/jest/bin/jest.js tests/** --watch"
   },
   "dependencies": {
-    "j2c": "^0.11.2",
-    "mithril": "github:lhorie/mithril.js#rewrite",
+    "mithril": "1.0.0-rc.6 || 1.0.x",
     "polythene-button": "1",
     "polythene-css": "1",
     "polythene-shadow": "1",

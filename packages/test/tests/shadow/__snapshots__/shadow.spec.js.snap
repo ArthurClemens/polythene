@@ -1,0 +1,58 @@
+exports[`test Common component options 1`] = `
+"<div id=\"\" class=\"pe-shadow\">
+  <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+  <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+</div>
+"
+`;
+
+exports[`test Interactive option: animated 1`] = `
+"<div id=\"\" class=\"pe-shadow pe-shadow--animated\">
+  <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+  <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+</div>
+"
+`;
+
+exports[`test No options 1`] = `
+"<div id=\"\" class=\"pe-shadow\">
+  <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+  <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+</div>
+"
+`;
+
+exports[`test Option: content 1`] = `
+"<div id=\"\" class=\"pe-shadow\">
+  <div>
+    CONTENT
+  </div>
+  <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+  <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+</div>
+"
+`;
+
+exports[`test Option: element 1`] = `
+"<blockquote id=\"\" class=\"pe-shadow\">
+  <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+  <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+</blockquote>
+"
+`;
+
+exports[`test Option: z (0) 1`] = `
+"<div id=\"\" class=\"pe-shadow\">
+  <div class=\"pe-shadow__bottom pe-shadow--z-0\"></div>
+  <div class=\"pe-shadow__top pe-shadow--z-0\"></div>
+</div>
+"
+`;
+
+exports[`test Option: z (5) 1`] = `
+"<div id=\"\" class=\"pe-shadow\">
+  <div class=\"pe-shadow__bottom pe-shadow--z-5\"></div>
+  <div class=\"pe-shadow__top pe-shadow--z-5\"></div>
+</div>
+"
+`;

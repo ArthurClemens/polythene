@@ -14,15 +14,14 @@ external.forEach(ext => {
     globals["mithril"] = "m";
     break;
   default:
-    globals[ext] = ext.replace(/-/g, "_");
+    globals[ext] = ext;
   }
 });
 
-export const config = {
+export const createConfig = ({ includeDepencies }) => ({
   entry: "index.js",
-  format: "umd",
+  external: includeDepencies ? null : external,
   moduleName: "polythene",
-  external,
   globals,
   plugins: [
 
@@ -30,7 +29,7 @@ export const config = {
     resolve({
       jsnext: true,
       main: true,
-      skip: external
+      skip: includeDepencies ? [] : external
     }),
 
     // Convert CommonJS modules to ES6, so they can be included in a Rollup bundle
@@ -44,4 +43,5 @@ export const config = {
 
     babel()
   ]
-};
+});
+

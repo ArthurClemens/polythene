@@ -1,0 +1,223 @@
+exports[`test Custom button 1`] = `
+"<a tabindex=\"0\" class=
+\"pe-button pe-button--text pe-button--borders my-custom-button\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Custom button
+  </div>
+</div></a>
+"
+`;
+
+exports[`test Interactive option: animateOnTap (false) 1`] = `
+"<a tabindex=\"0\" class=\"pe-button pe-button--text\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Button
+  </div>
+</div></a>
+"
+`;
+
+exports[`test Interactive option: inactivate (5) 1`] = `
+"<a tabindex=\"0\" class=\"pe-button pe-button--text\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Button
+  </div>
+</div></a>
+"
+`;
+
+exports[`test Interactive option: inactive (false) 1`] = `
+"<a tabindex=\"0\" class=\"pe-button pe-button--text\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Button
+  </div>
+</div></a>
+"
+`;
+
+exports[`test Interactive option: inactive (true) 1`] = `
+"<a tabindex=\"-1\" class=
+\"pe-button pe-button--text pe-button--inactive\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Button
+  </div>
+</div></a>
+"
+`;
+
+exports[`test No options 1`] = `
+"<a tabindex=\"0\" class=\"pe-button pe-button--text\"></a>
+"
+`;
+
+exports[`test Option: after 1`] = `
+"<a tabindex=\"0\" class=\"pe-button pe-button--text\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Button
+  </div>
+</div><span>After</span></a>
+"
+`;
+
+exports[`test Option: before 1`] = `
+"<a tabindex=\"0\" class=
+\"pe-button pe-button--text\"><span>Before</span>
+<div class=\"pe-button__content\">
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Button
+  </div>
+</div></a>
+"
+`;
+
+exports[`test Option: borders 1`] = `
+"<a tabindex=\"0\" class=
+\"pe-button pe-button--text pe-button--borders\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Button
+  </div>
+</div></a>
+"
+`;
+
+exports[`test Option: disabled 1`] = `
+"<a tabindex=\"-1\" disabled class=
+\"pe-button pe-button--text pe-button--disabled\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-button__label\">
+    Button
+  </div>
+</div></a>
+"
+`;
+
+exports[`test Option: element (button) 1`] = `
+"<button tabindex=\"0\" class=\"pe-button pe-button--text\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Button
+  </div>
+</div></button>
+"
+`;
+
+exports[`test Option: formaction 1`] = `
+"<a formaction=\"http://polythene.js.org\" tabindex=\"0\" class=
+\"pe-button pe-button--text\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Button
+  </div>
+</div></a>
+"
+`;
+
+exports[`test Option: href (with option oncreate) 1`] = `
+"<a href=\"#!/shadow\" tabindex=\"0\" class=\"pe-button pe-button--text\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Go to Shadow
+  </div>
+</div></a>
+"
+`;
+
+exports[`test Option: href (without option oncreate) 1`] = `
+"<a href=\"/shadow\" tabindex=\"0\" class=\"pe-button pe-button--text\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Go to Shadow
+  </div>
+</div></a>
+"
+`;
+
+exports[`test Option: label 1`] = `
+"<a tabindex=\"0\" class=\"pe-button pe-button--text\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Button
+  </div>
+</div></a>
+"
+`;
+
+exports[`test Option: raised (with option z: 5) 1`] = `
+"<a tabindex=\"0\" class=
+\"pe-button pe-button--text pe-button--raised\">
+<div class=\"pe-button__content\">
+  <div id=\"\" class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-5\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-5\"></div>
+  </div>
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Button
+  </div>
+</div></a>
+"
+`;
+
+exports[`test Option: raised 1`] = `
+"<a tabindex=\"0\" class=
+\"pe-button pe-button--text pe-button--raised\">
+<div class=\"pe-button__content\">
+  <div id=\"\" class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Button
+  </div>
+</div></a>
+"
+`;
+
+exports[`test Option: selected 1`] = `
+"<a tabindex=\"0\" class=
+\"pe-button pe-button--text pe-button--selected\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Button
+  </div>
+</div></a>
+"
+`;

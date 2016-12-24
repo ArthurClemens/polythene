@@ -1,1 +1,1 @@
-export {default as shadow} from "./src/shadow";
+export { shadow } from "./src/shadow";

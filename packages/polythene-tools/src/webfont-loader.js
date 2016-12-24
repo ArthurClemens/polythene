@@ -11,7 +11,7 @@ if (!window.WebFontConfig) {
   })();
 }
 
-const webfontLoader = {
+export const webfontLoader = {
   add: (vendor, family, key) => {
     const vendorCfg = window.WebFontConfig[vendor] || {};
     vendorCfg.families = vendorCfg.families || [];
@@ -23,4 +23,3 @@ const webfontLoader = {
   }
 };
 
-export default webfontLoader;

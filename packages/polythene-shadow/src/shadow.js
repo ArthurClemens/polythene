@@ -9,10 +9,10 @@ const CSS_CLASSES = {
   depth_n: "pe-shadow--z-"
 };
 
-const createView = (vnode) => {
+const view = (vnode) => {
   const attrs = vnode.attrs || {};
   const depthClass = `${CSS_CLASSES.depth_n}${Math.min(5, attrs.z !== undefined ? attrs.z : 1)}`;
-  const tag = attrs.tag || "div";
+  const element = attrs.element || "div";
   const props = {
     class: [
       CSS_CLASSES.component,
@@ -31,11 +31,9 @@ const createView = (vnode) => {
       class: [CSS_CLASSES.topShadow, depthClass].join(" ")
     })
   ];
-  return m(tag, props, content);
+  return m(element, props, content);
 };
 
-const component = {
-  view: createView
+export const shadow = {
+  view
 };
-
-export default component;

@@ -6,12 +6,12 @@
   "module": "build/css.mjs",
   "jsnext:main": "build/css.mjs",
   "scripts": {
-    "build": "rm -rf build && mkdir build && rollup -c ../../scripts/rollup.umd.js && rollup -c ../../scripts/rollup.es.js",
-    "test": "jest test/*"
+    "clean": "rm -rf build && mkdir build",
+    "build": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js"
   },
   "dependencies": {
     "j2c": "^0.11.2",
-    "mithril": "github:lhorie/mithril.js#rewrite"
+    "mithril": "1.0.0-rc.6 || 1.0.x"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

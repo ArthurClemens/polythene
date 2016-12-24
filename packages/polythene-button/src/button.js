@@ -1,10 +1,9 @@
 import m from "mithril";
 import "./theme/index";
 
-// import p from "polythene/polythene/polythene";
 // import ripple from "polythene/ripple/ripple";
+// import { isTouch, touchStartEvent, touchEndEvent } from "polythene-tools";
 import { shadow } from "polythene-shadow";
-// import "polythene/base-button/base-button";
 
 const CSS_CLASSES = {
   block: "pe-button pe-button--text",
@@ -20,10 +19,26 @@ const CSS_CLASSES = {
   focusState: "pe-button--focus",
 };
 
-// const MAX_Z = 5;
+const supportedElementProps = {
+  // Mithril
+  key: 1,
+  oninit: 1,
+  oncreate: 1,
+  onupdate: 1,
+  onbeforeremove: 1,
+  onremove: 1,
+  onbeforeupdate: 1,
+  style: 1,
+  // Polythene
+  id: 1,
+  href: 1,
+  events: 1,
+  // Button
+  formaction: 1,
+  type: 1
+};
 
-// const startType = window.PointerEvent ? "pointerdown" : (("ontouchstart" in window) || window.DocumentTouch && document instanceof DocumentTouch) ? "touchstart" : "mousedown";
-// const endType = window.PointerEvent ? "pointerup" : (("ontouchend" in window) || window.DocumentTouch && document instanceof DocumentTouch) ? "touchend" : "mouseup";
+// const MAX_Z = 5;
 
 // let tapStart,
 //   tapEnd,
@@ -69,9 +84,9 @@ const CSS_CLASSES = {
 //       }
 //     }
 //     // no z animation on touch
-//     // if (state.animateOnTap && !p.isTouch) {
-//     //   animateZ(ctrl, opts, name);
-//     // }
+//     if (state.animateOnTap && !isTouch) {
+//       animateZ(ctrl, opts, name);
+//     }
 //   };
 //   tapStart = () => (tapHandler(ctrl, opts, "down"));
 //   tapEnd = () => (tapHandler(ctrl, opts, "up"));
@@ -81,29 +96,37 @@ const CSS_CLASSES = {
 //     });
 //     downButtons = [];
 //   };
-//   el.addEventListener(startType, tapStart);
-//   el.addEventListener(endType, tapEnd);
-//   window.addEventListener(endType, tapEndAll);
+//   el.addEventListener(touchStartEvent, tapStart);
+//   el.addEventListener(touchEndEvent, tapEnd);
+//   window.addEventListener(touchEndEvent, tapEndAll);
 // };
 
 // const clearTapEvents = function(el) {
-//   el.removeEventListener(startType, tapStart);
-//   el.removeEventListener(endType, tapEnd);
-//   window.removeEventListener(endType, tapEndAll);
+//   el.removeEventListener(touchStartEvent, tapStart);
+//   el.removeEventListener(touchEndEvent, tapEnd);
+//   window.removeEventListener(touchEndEvent, tapEndAll);
 // };
 
-const createView = (vnode) => {
-  const state = vnode.state;
-  // const noink = (state.ink !== undefined && state.ink === false);
-  const disabled = state.disabled;
-  const tag = state.tag || "a";
-  const inactive = !!state.inactive;
+const filterElementProps = (attrs) => {
+  const o = {};
+  Object.keys(attrs).forEach(key => {
+    if (supportedElementProps[key]) {
+      o[key] = attrs[key];
+    }
+  });
+  return o;
+};
 
-  // state.inactive = (state.inactive !== undefined)
-  //     ? (state.inactive === false)
-  //         ? false
-  //         : true
-  //     : state.inactive;
+const view = (vnode) => {
+  const state = vnode.state || {};
+  const attrs = vnode.attrs || {};
+
+  // const noink = (attrs.ink !== undefined && attrs.ink === false);
+  const disabled = attrs.disabled;
+  const element = attrs.element || "a";
+  const tabIndex = disabled || state.inactive
+    ? -1
+    : attrs.tabindex || 0;
 
   // // handle multiple configs:
   // // - passed as param in the url Object
@@ -114,7 +137,7 @@ const createView = (vnode) => {
   //         return;
   //     }
   //     state.el = el;
-  //     if (!disabled && !inactive) {
+  //     if (!disabled && !state.inactive) {
   //         initTapEvents(el, ctrl, Object.assign(
   //             {},
   //             state,
@@ -130,19 +153,20 @@ const createView = (vnode) => {
   // const urlConfig = (state.url && state.url.config) ? state.url.config : (() => {});
 
   const props = Object.assign(
-    {}, {
+    {}, 
+    filterElementProps(attrs),
+    {
       class: [
-        (state.parentClass || CSS_CLASSES.block),
-        (state.selected ? CSS_CLASSES.selected : null),
+        (attrs.parentClass || CSS_CLASSES.block),
+        (attrs.selected ? CSS_CLASSES.selected : null),
         (disabled ? CSS_CLASSES.disabled : null),
-        (inactive ? CSS_CLASSES.inactive : null),
-        (state.borders ? CSS_CLASSES.borders : null),
-        (state.raised ? CSS_CLASSES.raised : null),
+        (state.inactive ? CSS_CLASSES.inactive : null),
+        (attrs.borders ? CSS_CLASSES.borders : null),
+        (attrs.raised ? CSS_CLASSES.raised : null),
         (state.focus ? CSS_CLASSES.focusState : null),
-        state.class
+        attrs.class
       ].join(" "),
-      id: state.id || "",
-      tabindex: (disabled || inactive) ? -1 : state.tabindex || 0,
+      tabIndex,
       // handle focus events
       onfocus: () => state.focus = !state.mouseover,
       onblur: () => state.focus = false,
@@ -162,83 +186,64 @@ const createView = (vnode) => {
         }
       }
     },
-    state.url ? state.url : null,
-    state.formaction ? {
-      formaction: state.formaction
-    } : null,
-    state.type ? {
-      type: state.type
-    } : null,
-    state.events ? state.events : null, {
+    // attrs.events ? attrs.events : null, {
       // config: (...args) => [
       //   // buttonConfig(...args),
       //   stateConfig(...args),
       //   urlConfig(...args)
       // ]
-    },
-    disabled ? {
-      disabled: true
-    } :
-    null
+    // },
+    disabled ? {disabled: true} : null
   );
 
-  const label = state.content ?
-    state.content :
-    (state.label) ?
-    (typeof state.label === "object") ?
-    state.label :
-    m("div", {
-      class: CSS_CLASSES.label
-    }, state.label) :
-    null;
+  const label = attrs.content
+    ? attrs.content
+    : attrs.label
+      ? typeof attrs.label === "object"
+        ? attrs.label
+        : m("div", {class: CSS_CLASSES.label}, attrs.label)
+      : null;
 
-  const noWash = disabled || (state.wash !== undefined && !state.wash);
+  const noWash = disabled || (attrs.wash !== undefined && !attrs.wash);
   const wash = !noWash;
   // const rippleOpts = {
-  //   ripple: state.ripple,
+  //   ripple: attrs.ripple,
   //   inactive: noink
   // };
-  const content = m("div", {
-    "class": CSS_CLASSES.content
-  }, [
-    (state.raised && !disabled)
-      ? m(shadow, {
-        z: state.z,
-        animated: true
-      })
-      : null,
-    // ripple
-    // disabled ? null : m(ripple, rippleOpts),
-    // hover
-    wash ? m("div", {
-      class: CSS_CLASSES.wash
-    }) : null,
-    // focus
-    disabled ? null : m("div", {
-      class: CSS_CLASSES.focus
-    }),
-    label
-  ]);
-  return m(tag, props, [state.before, content, state.after]);
+  const content = label
+    ? m("div", {
+      "class": CSS_CLASSES.content
+    }, [
+      attrs.raised && !disabled
+        ? m(shadow, {
+          z: state.z,
+          animated: true
+        })
+        : null,
+      // ripple
+      // disabled ? null : m(ripple, rippleOpts),
+      // hover
+      wash ? m("div", {class: CSS_CLASSES.wash}) : null,
+      // focus
+      disabled ? null : m("div", {class: CSS_CLASSES.focus}),
+      label
+    ])
+    : null;
+  return m(element, props, [attrs.before, content, attrs.after]);
 };
 
-const component = {
+export const button = {
   oninit: (vnode) => {
     const z = (vnode.attrs.z !== undefined) ? vnode.attrs.z : 1;
     vnode.state = {
-      ...vnode.attrs,
       el: undefined,
       baseZ: z,
       z: z,
-      inactive: false,
+      inactive: !!vnode.attrs.inactive,
       focus: false,
       mouseover: false
     };
   },
-  view: (vnode) => {
-    return createView(vnode);
-  }
+  view
 };
-
-export default component;
 

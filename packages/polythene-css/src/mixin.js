@@ -1,6 +1,6 @@
 // Mixins for j2c
 
-import config from "./default-config.js";
+import config from "./config.js";
 
 // Creates j2c vendor key string from vendor list
 // mixin.vendorize({"user-select": "none"}, config.prefixes_user_select)
