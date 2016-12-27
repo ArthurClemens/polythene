@@ -1,0 +1,12 @@
+exports[`test Config: button (class .my-button--primary) 1`] = `
+"<a tabindex=\"0\" class=
+\"pe-button pe-button--text my-button--primary\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Button
+  </div>
+</div></a>
+"
+`;

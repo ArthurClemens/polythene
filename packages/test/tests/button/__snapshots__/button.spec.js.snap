@@ -11,45 +11,10 @@ exports[`test Custom button 1`] = `
 "
 `;
 
-exports[`test Interactive option: animateOnTap (false) 1`] = `
-"<a tabindex=\"0\" class=\"pe-button pe-button--text\">
-<div class=\"pe-button__content\">
-  <div class=\"pe-button__wash\"></div>
-  <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button__label\">
-    Button
-  </div>
-</div></a>
-"
-`;
-
-exports[`test Interactive option: inactivate (5) 1`] = `
-"<a tabindex=\"0\" class=\"pe-button pe-button--text\">
-<div class=\"pe-button__content\">
-  <div class=\"pe-button__wash\"></div>
-  <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button__label\">
-    Button
-  </div>
-</div></a>
-"
-`;
-
-exports[`test Interactive option: inactive (false) 1`] = `
-"<a tabindex=\"0\" class=\"pe-button pe-button--text\">
-<div class=\"pe-button__content\">
-  <div class=\"pe-button__wash\"></div>
-  <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button__label\">
-    Button
-  </div>
-</div></a>
-"
-`;
-
-exports[`test Interactive option: inactive (true) 1`] = `
-"<a tabindex=\"-1\" class=
-\"pe-button pe-button--text pe-button--inactive\">
+exports[`test Key down (after having focus) results in click 1`] = `
+"<div>
+  onclick called: 0
+</div><a tabindex=\"0\" class=\"pe-button pe-button--text\">
 <div class=\"pe-button__content\">
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
@@ -77,6 +42,23 @@ exports[`test Option: after 1`] = `
 "
 `;
 
+exports[`test Option: animateOnTap (false) 1`] = `
+"<a tabindex=\"0\" class=
+\"pe-button pe-button--text pe-button--raised\">
+<div class=\"pe-button__content\">
+  <div id=\"\" class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    No animate
+  </div>
+</div></a>
+"
+`;
+
 exports[`test Option: before 1`] = `
 "<a tabindex=\"0\" class=
 \"pe-button pe-button--text\"><span>Before</span>
@@ -92,12 +74,12 @@ exports[`test Option: before 1`] = `
 
 exports[`test Option: borders 1`] = `
 "<a tabindex=\"0\" class=
-\"pe-button pe-button--text pe-button--borders\">
+\"pe-button pe-button--text pe-button--borders bordered-button\">
 <div class=\"pe-button__content\">
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
-    Button
+    Borders
   </div>
 </div></a>
 "
@@ -108,7 +90,7 @@ exports[`test Option: disabled 1`] = `
 \"pe-button pe-button--text pe-button--disabled\">
 <div class=\"pe-button__content\">
   <div class=\"pe-button__label\">
-    Button
+    Disabled
   </div>
 </div></a>
 "
@@ -120,9 +102,23 @@ exports[`test Option: element (button) 1`] = `
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
-    Button
+    button element
   </div>
 </div></button>
+"
+`;
+
+exports[`test Option: events (click) 1`] = `
+"<div>
+  onclick called: 0
+</div><a tabindex=\"0\" class=\"pe-button pe-button--text\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Button
+  </div>
+</div></a>
 "
 `;
 
@@ -133,7 +129,7 @@ exports[`test Option: formaction 1`] = `
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
-    Button
+    Form action
   </div>
 </div></a>
 "
@@ -145,7 +141,7 @@ exports[`test Option: href (with option oncreate) 1`] = `
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
-    Go to Shadow
+    Go to /#/shadow
   </div>
 </div></a>
 "
@@ -157,7 +153,44 @@ exports[`test Option: href (without option oncreate) 1`] = `
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
-    Go to Shadow
+    Go to /shadow
+  </div>
+</div></a>
+"
+`;
+
+exports[`test Option: inactivate (2) 1`] = `
+"<a tabindex=\"0\" class=\"pe-button pe-button--text\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Inactivated for 2s
+  </div>
+</div></a>
+"
+`;
+
+exports[`test Option: inactive (false) 1`] = `
+"<a tabindex=\"0\" class=\"pe-button pe-button--text\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Not inactive
+  </div>
+</div></a>
+"
+`;
+
+exports[`test Option: inactive (true) 1`] = `
+"<a tabindex=\"-1\" class=
+\"pe-button pe-button--text pe-button--inactive\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Inactive
   </div>
 </div></a>
 "
@@ -169,7 +202,7 @@ exports[`test Option: label 1`] = `
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
-    Button
+    Label
   </div>
 </div></a>
 "
@@ -186,7 +219,7 @@ exports[`test Option: raised (with option z: 5) 1`] = `
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
-    Button
+    Raised to 5
   </div>
 </div></a>
 "
@@ -203,7 +236,7 @@ exports[`test Option: raised 1`] = `
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
-    Button
+    Raised
   </div>
 </div></a>
 "
@@ -212,6 +245,31 @@ exports[`test Option: raised 1`] = `
 exports[`test Option: selected 1`] = `
 "<a tabindex=\"0\" class=
 \"pe-button pe-button--text pe-button--selected\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Selected
+  </div>
+</div></a>
+"
+`;
+
+exports[`test Option: wash (false) 1`] = `
+"<a tabindex=\"0\" class=\"pe-button pe-button--text\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    No wash
+  </div>
+</div></a>
+"
+`;
+
+exports[`test onbeforeupdate 1`] = `
+"<div>
+  Updated: 0
+</div><a tabindex=\"0\" class=\"pe-button pe-button--text\">
 <div class=\"pe-button__content\">
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>

@@ -2,7 +2,7 @@ import m from "mithril";
 import "./theme/index";
 
 // import ripple from "polythene/ripple/ripple";
-// import { isTouch, touchStartEvent, touchEndEvent } from "polythene-tools";
+import { isTouch, touchStartEvent, touchEndEvent, subscribe } from "polythene-core";
 import { shadow } from "polythene-shadow";
 
 const CSS_CLASSES = {
@@ -32,82 +32,77 @@ const supportedElementProps = {
   // Polythene
   id: 1,
   href: 1,
-  events: 1,
   // Button
   formaction: 1,
   type: 1
 };
 
-// const MAX_Z = 5;
+const MAX_Z = 5;
 
-// let tapStart,
-//   tapEnd,
-//   tapEndAll,
-//   downButtons = [];
+let tapStart,
+  tapEndAll,
+  downButtons = [];
 
-// const animateZ = (state, name) => {
-//   const baseZ = state.baseZ;
-//   const increase = state.increase || 1;
-//   let z = state.z;
-//   if (name === "down" && baseZ !== 5) {
-//     z = z + increase;
-//     z = Math.min(z, MAX_Z);
-//   } else if (name === "up") {
-//     z = z - increase;
-//     z = Math.max(z, baseZ);
-//   }
-//   if (z !== state.z) {
-//     state.z = z;
-//     m.redraw(); // make animation visible
-//   }
-// };
+subscribe(touchEndEvent, () => tapEndAll());
 
-// const inactivate = (state) => {
-//   state.inactive = true;
-//   m.redraw();
-//   setTimeout(() => {
-//     state.inactive = false;
-//     m.redraw();
-//   }, state.inactivate * 1000);
-// };
+const animateZ = (state, attrs, name) => {
+  const zBase = state.zBase;
+  const increase = attrs.increase || 1;
+  let z = state.z;
+  if (name === "down" && zBase !== 5) {
+    z = Math.min(z + increase, MAX_Z);
+  } else if (name === "up") {
+    z = Math.max(z - increase, zBase);
+  }
+  if (z !== state.z) {
+    state.z = z;
+    m.redraw(); // show shadow animation
+  }
+};
 
-// const initTapEvents = (el, state) => {
-//   const tapHandler = (state, name) => {
-//     if (name === "down") {
-//       downButtons.push({
-//         ctrl,
-//         opts
-//       });
-//     } else if (name === "up") {
-//       if (state.inactivate && !state.inactive) {
-//         inactivate(ctrl, opts);
-//       }
-//     }
-//     // no z animation on touch
-//     if (state.animateOnTap && !isTouch) {
-//       animateZ(ctrl, opts, name);
-//     }
-//   };
-//   tapStart = () => (tapHandler(ctrl, opts, "down"));
-//   tapEnd = () => (tapHandler(ctrl, opts, "up"));
-//   tapEndAll = () => {
-//     downButtons.map((btn) => {
-//       tapHandler(btn.ctrl, btn.opts, "up");
-//     });
-//     downButtons = [];
-//   };
-//   el.addEventListener(touchStartEvent, tapStart);
-//   el.addEventListener(touchEndEvent, tapEnd);
-//   window.addEventListener(touchEndEvent, tapEndAll);
-// };
+const inactivate = (state, attrs) => {
+  state.inactive = true;
+  m.redraw();
+  setTimeout(() => {
+    state.inactive = false;
+    m.redraw();
+  }, attrs.inactivate * 1000);
+};
 
-// const clearTapEvents = function(el) {
-//   el.removeEventListener(touchStartEvent, tapStart);
-//   el.removeEventListener(touchEndEvent, tapEnd);
-//   window.removeEventListener(touchEndEvent, tapEndAll);
-// };
+const initTapEvents = (el, state, attrs) => {
+  const tapHandler = (state, attrs, name) => {
+    if (name === "down") {
+      downButtons.push({
+        state,
+        attrs
+      });
+    } else
+    if (name === "up") {
+      if (attrs.inactivate && !state.inactive) {
+        inactivate(state, attrs);
+      }
+    }
+    // no z animation on touch
+    const animateOnTap = attrs.animateOnTap !== false ? true : false;
+    if (animateOnTap && !isTouch) {
+      animateZ(state, attrs, name);
+    }
+  };
+  tapStart = () => (tapHandler(state, attrs, "down"));
+  tapEndAll = () => {
+    downButtons.map((btn) => {
+      tapHandler(btn.state, btn.attrs, "up");
+    });
+    downButtons = [];
+  };
+  el.addEventListener(touchStartEvent, tapStart);
+};
 
-const filterElementProps = (attrs) => {
+const clearTapEvents = (el) => {
+  el.removeEventListener(touchStartEvent, tapStart);
+};
+
+const filteredElementAttrs = (attrs) => {
   const o = {};
   Object.keys(attrs).forEach(key => {
     if (supportedElementProps[key]) {
@@ -127,34 +122,11 @@ const view = (vnode) => {
   const tabIndex = disabled || state.inactive
     ? -1
     : attrs.tabindex || 0;
-
-  // // handle multiple configs:
-  // // - passed as param in the url Object
-  // // - passed as state.config
-  // // - the default button config
-  // const buttonConfig = (el, isInited, context) => {
-  //     if (isInited) {
-  //         return;
-  //     }
-  //     state.el = el;
-  //     if (!disabled && !state.inactive) {
-  //         initTapEvents(el, ctrl, Object.assign(
-  //             {},
-  //             state,
-  //             {animateOnTap: (state.animateOnTap !== false) ? true : false}
-  //         ));
-  //         context.onunload = () => {
-  //             clearTapEvents(el);
-  //         };
-  //     }
-  // };
-
-  // const stateConfig = state.config || (() => {});
-  // const urlConfig = (state.url && state.url.config) ? state.url.config : (() => {});
+  const onClickHandler = attrs.events && attrs.events.onclick;
 
   const props = Object.assign(
     {}, 
-    filterElementProps(attrs),
+    filteredElementAttrs(attrs),
     {
       class: [
         (attrs.parentClass || CSS_CLASSES.block),
@@ -175,24 +147,15 @@ const view = (vnode) => {
       onmouseout: () => state.mouseover = false,
       // if focus, dispatch click event on ENTER
       onkeydown: (e) => {
-        if (e.which === 13 && state.focus && state.el) {
-          // ENTER
-          const event = new MouseEvent("click", {
-            view: window,
-            bubbles: true,
-            cancelable: true
-          });
-          state.el.dispatchEvent(event);
+        if (e.which === 13 && state.focus) {
+          state.focus = false;
+          if (onClickHandler) {
+            onClickHandler(e);
+          }
         }
       }
     },
-    // attrs.events ? attrs.events : null, {
-      // config: (...args) => [
-      //   // buttonConfig(...args),
-      //   stateConfig(...args),
-      //   urlConfig(...args)
-      // ]
-    // },
+    attrs.events ? {...attrs.events} : null,
     disabled ? {disabled: true} : null
   );
 
@@ -205,25 +168,20 @@ const view = (vnode) => {
       : null;
 
   const noWash = disabled || (attrs.wash !== undefined && !attrs.wash);
-  const wash = !noWash;
+
   // const rippleOpts = {
   //   ripple: attrs.ripple,
   //   inactive: noink
   // };
   const content = label
-    ? m("div", {
-      "class": CSS_CLASSES.content
-    }, [
+    ? m("div", {class: CSS_CLASSES.content}, [
       attrs.raised && !disabled
-        ? m(shadow, {
-          z: state.z,
-          animated: true
-        })
+        ? m(shadow, {z: state.z, animated: true})
         : null,
       // ripple
       // disabled ? null : m(ripple, rippleOpts),
       // hover
-      wash ? m("div", {class: CSS_CLASSES.wash}) : null,
+      noWash ? null : m("div", {class: CSS_CLASSES.wash}),
       // focus
       disabled ? null : m("div", {class: CSS_CLASSES.focus}),
       label
@@ -236,13 +194,24 @@ export const button = {
   oninit: (vnode) => {
     const z = (vnode.attrs.z !== undefined) ? vnode.attrs.z : 1;
     vnode.state = {
-      el: undefined,
-      baseZ: z,
+      zBase: z,
+      tapEventsInited: false,
       z: z,
       inactive: !!vnode.attrs.inactive,
       focus: false,
       mouseover: false
     };
+  },
+  oncreate: (vnode) => {
+    if (!vnode.attrs.disabled && !vnode.state.inactive && !vnode.state.tapEventsInited) {
+      initTapEvents(vnode.dom, vnode.state, vnode.attrs);
+      vnode.state.tapEventsInited = true;
+    }
+  },
+  onremove: (vnode) => {
+    if (vnode.state.tapEventsInited) {
+      clearTapEvents(vnode.dom);
+    }
   },
   view
 };

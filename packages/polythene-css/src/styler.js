@@ -1,12 +1,9 @@
 import j2c from "j2c";
 
-const remove = (id) => {
-  if (id) {
-    const old = document.getElementById(id);
-    if (old) {
-      old.parentNode.removeChild(old);
-    }
-  }
+const styleComponent = (name, key, componentsConfig, componentConfig, ...configFns) => {
+  const customConfigFn = componentsConfig[key];
+  const config = customConfigFn ? customConfigFn(componentConfig) : componentConfig;
+  add(name, configFns.map(c => c(config)));
 };
 
 /*
@@ -17,6 +14,15 @@ const add = (id, ...styles) => {
   addToDocument({
     id
   }, ...styles);
+};
+
+const remove = (id) => {
+  if (id) {
+    const old = document.getElementById(id);
+    if (old) {
+      old.parentNode.removeChild(old);
+    }
+  }
 };
 
 /*
@@ -51,5 +57,6 @@ const addToDocument = (opts, ...styles) => {
 export default {
   add,
   addToDocument,
-  remove
+  remove,
+  styleComponent
 };

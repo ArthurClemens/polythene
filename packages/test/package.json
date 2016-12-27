@@ -7,16 +7,21 @@
   "jsnext:main": "build/js/test.mjs",
   "scripts": {
     "clean": "rm -rf build/js && mkdir build/js",
-    "build": "DEPS=false MODULE_NAME=test ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js",
-    "watch": "DEPS=false PORT=8080 WATCH_DIR=./build/ ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.watch.js --watch",
+    "rollup-build": "DEPS=false MODULE_NAME=test ../../node_modules/rollup/bin/rollup -c ./scripts/rollup.umd-with-alias.js && ../../node_modules/rollup/bin/rollup -c ./scripts/rollup.es-with-alias.js",
+    "build": "npm run rollup-build",
+    "rollup-watch": "DEPS=false PORT=8080 WATCH_DIR=./build/ ../../node_modules/rollup/bin/rollup -c ./scripts/rollup.watch-with-alias.js --watch",
+    "watch": "npm run rollup-watch",
     "test": "../../node_modules/jest/bin/jest.js tests/**",
     "test:watch": "../../node_modules/jest/bin/jest.js tests/** --watch"
   },
   "dependencies": {
-    "mithril": "1.0.0-rc.6 || 1.0.x",
+    "mithril": "1.0.0-rc.6",
     "polythene-button": "1",
     "polythene-css": "1",
     "polythene-shadow": "1",
     "polythene-theme": "1"
+  },
+  "devDependencies": {
+    "rollup-plugin-pathmodify": "^1.0.1"
   }
 }

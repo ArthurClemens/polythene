@@ -50,7 +50,7 @@ const noTouch = (config, tint, type, scope = "") => {
   const hoverBorder = config["color_" + tint + "_" + type + "_normal_border"] || normalBorder;
   return [{
     [scope + ".pe-button:hover"]: {
-      "&:not(.pe-button--selected) .pe-button__wash": {
+      "&:not(.pe-button--selected):not(.pe-button--inactive) .pe-button__wash": {
         "background-color": config["color_" + tint + "_" + type + "_hover_background"],
         "border-color": hoverBorder
       }

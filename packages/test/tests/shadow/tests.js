@@ -1,48 +1,57 @@
 import m from "mithril";
 import { shadow } from "polythene-shadow";
 
+const component = shadow;
+
 export const tests = [
   {
     name: "No options",
-    content: m(shadow)
+    component,
+    attrs: null
   },
   {
     name: "Option: element",
-    content: m(shadow, {
+    component,
+    attrs: {
       element: "blockquote"
-    })
+    }
   },
   {
     name: "Option: content",
-    content: m(shadow, {
+    component,
+    attrs: {
       content: m("div", "CONTENT")
-    })
+    }
   },
   {
     name: "Common component options",
-    content: m(shadow, {
+    component,
+    attrs: {
       id: "ID",
       tag: "span",
       class: "my-shadow"
-    })
+    }
   },
   {
     name: "Interactive option: animated",
-    content: m(shadow, {
+    component,
+    attrs: {
       animated: true
-    })
+    }
   },
   {
     name: "Option: z (0)",
-    content: m(shadow, {
+    component,
+    attrs: {
       z: 0
-    })
+    }
   },
   {
     name: "Option: z (5)",
-    content: m(shadow, {
+    component,
+    attrs: {
       z: 5
-    })
+    }
   }
 ];
 

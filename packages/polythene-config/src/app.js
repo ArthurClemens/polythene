@@ -1,15 +1,14 @@
+import {defaults} from "polythene-css";
+export default defaults;
+
 // Conduit for global theme variables
 // In your app paths setup, change the current path to your custom config file; see the theme README.
 
-
-import defaults from "./defaults";
-export default defaults;
-
 // Example customization in custom config file:
 //
-// import config from "polythene/config/default";
+// import {defaults} from "polythene-css";
 //
-// export default Object.assign({}, config, {
+// export default Object.assign({}, defaults, {
 //     // this site"s base colors
 //     color_primary: "255, 152, 0", // orange 500
 //     color_primary_active: "251, 140, 0", // orange 600
@@ -17,3 +16,5 @@ export default defaults;
 //     color_primary_faded: "255, 183, 77", // orange 300
 //     color_primary_foreground: "255, 255, 255"
 // });
+
+

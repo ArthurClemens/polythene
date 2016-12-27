@@ -1,11 +1,12 @@
-import { cfg, mixin } from "polythene-css";
+import { mixin } from "polythene-css";
+import { appConfig } from "polythene-config";
 
 const createStyles = (config) => {
   return [{
     ".pe-button": [
       mixin.vendorize({
         "user-select": "none"
-      }, cfg.prefixes_user_select), {
+      }, appConfig.prefixes_user_select), {
         outline: "none",
         padding: 0,
         "text-decoration": "none",
@@ -25,7 +26,6 @@ const createStyles = (config) => {
         " .pe-button__label": [
           mixin.fontSmoothing(), {
             position: "relative",
-            "z-index": 1, // stick above wash that has position absolute
             display: "block",
             "border-radius": "inherit",
             "pointer-events": "none"
@@ -51,7 +51,7 @@ const createStyles = (config) => {
         },
 
         " .pe-button__wash": {
-          "z-index": 1
+          "z-index": 0
         }
       }
     ],

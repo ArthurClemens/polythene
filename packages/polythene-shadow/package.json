@@ -7,10 +7,12 @@
   "jsnext:main": "build/shadow.mjs",
   "scripts": {
     "clean": "rm -rf build && mkdir build",
-    "build": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js"
+    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
+    "build": "npm run rollup"
   },
   "dependencies": {
-    "mithril": "1.0.0-rc.6 || 1.0.x",
+    "mithril": "1.0.0-rc.6",
+    "polythene-config": "1",
     "polythene-css": "1"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",

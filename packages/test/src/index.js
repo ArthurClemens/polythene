@@ -1,25 +1,30 @@
 import m from "mithril";
+import "polythene-theme";
 import { tidy } from "../scripts/render";
 import { rules as css } from "./styles";
 import { tests as shadowTests } from "../tests/shadow/tests";
 import { tests as buttonTests } from "../tests/button/tests";
+import { tests as configTests } from "../tests/config/tests";
 
 const testsPage = (title, tests) => ({
-  view: () => ([
-    m(css.headerRow, m(css.link, {
-      href: "/",
-      oncreate: m.route.link
-    }, "All components")),
-    m(css.titleRow, m(css.pageTitle, title)),
-    tests.map(test => {
-      const raw = tidy(test.content);
-      return m(css.resultRow, [
+  view: () => [
+    m(css.headerRow, [
+      m(css.link, {
+        href: "/",
+        oncreate: m.route.link
+      }, "Components"),
+      m(css.separator, "/"),
+      m("span", title)
+    ]),
+    m(css.tests, tests.map(test => {
+      const raw = tidy(m(test.component, test.attrs));
+      return m([css.resultRow, test.interactive ? css.interactive : null].join(""), [
         m(css.resultTitle, test.name),
-        m(css.result, m(css.content, test.content)),
+        m(css.result, m(css.content, m(test.component, test.attrs))),
         m(css.rawResult, raw)
       ]);
-    })
-  ])
+    }))
+  ]
 });
 
 const pages = [
@@ -32,6 +37,11 @@ const pages = [
     path: "/shadow",
     name: "Shadow",
     tests: shadowTests
+  },
+  {
+    path: "/config",
+    name: "Custom config",
+    tests: configTests
   }
 ];
 

@@ -1,17 +1,7 @@
 // Theme variables
 // How to change these variables for your app - see the README.
 
-const hex = (hex) => {
-  const bigint = parseInt(hex.substring(1), 16);
-  const r = (bigint >> 16) & 255;
-  const g = (bigint >> 8) & 255;
-  const b = bigint & 255;
-  return r + "," + g + "," + b;
-};
-
-const rgba = (colorStr, opacity = 1) => ("rgba(" + colorStr + "," + opacity + ")");
-
-const isInteger = (nVal) => (typeof nVal === "number" && isFinite(nVal) && nVal > -9007199254740992 && nVal < 9007199254740992 && Math.floor(nVal) === nVal);
+import {rgba, hex} from "./fns";
 
 //const isTablet = window.innerWidth >= 600;
 const isDesktop = window.innerWidth >= 1024;
@@ -27,7 +17,6 @@ export default {
   // util functions
   rgba,
   hex,
-  isInteger,
 
   grid_unit,
   grid_unit_component,

@@ -2,128 +2,216 @@ import m from "mithril";
 import { button } from "polythene-button";
 import { customButton } from "./custom-button";
 
+const component = button;
+
 export const tests = [
   {
     name: "No options",
-    content: m(button)
+    component,
+    attrs: null
   },
   {
     name: "Option: label",
-    content: m(button, {
-      label: "Button"
-    })
+    component,
+    attrs: {
+      label: "Label"
+    }
   },
   {
     name: "Option: element (button)",
-    content: m(button, {
-      label: "Button",
+    component,
+    attrs: {
+      label: "button element",
       element: "button"
-    })
+    }
   },
   {
     name: "Option: raised",
-    content: m(button, {
-      label: "Button",
+    component,
+    attrs: {
+      label: "Raised",
       raised: true
-    })
+    }
   },
   {
     name: "Option: raised (with option z: 5)",
-    content: m(button, {
-      label: "Button",
+    component,
+    attrs: {
+      label: "Raised to 5",
       raised: true,
       z: 5
-    })
-  },
-  {
-    name: "Option: href (with option oncreate)",
-    content: m(button, {
-      label: "Go to Shadow",
-      href: "/shadow",
-      oncreate: m.route.link
-    })
-  },
-  {
-    name: "Option: href (without option oncreate)",
-    content: m(button, {
-      label: "Go to Shadow",
-      href: "/shadow"
-    })
+    }
   },
   {
     name: "Option: borders",
-    content: m(button, {
-      label: "Button",
+    component,
+    attrs: {
+      label: "Borders",
+      class: "bordered-button",
       borders: true
-    })
+    }
+  },
+  {
+    name: "Option: wash (false)",
+    component,
+    attrs: {
+      label: "No wash",
+      wash: false
+    }
   },
   {
     name: "Option: disabled",
-    content: m(button, {
-      label: "Button",
+    component,
+    attrs: {
+      label: "Disabled",
       disabled: true
-    })
+    }
   },
   {
     name: "Option: selected",
-    content: m(button, {
-      label: "Button",
+    component,
+    attrs: {
+      label: "Selected",
       selected: true
-    })
+    }
   },
   {
     name: "Option: formaction",
-    content: m(button, {
-      label: "Button",
+    component,
+    attrs: {
+      label: "Form action",
       formaction: "http://polythene.js.org"
-    })
-  },
-  {
-    name: "Interactive option: inactive (false)",
-    content: m(button, {
-      label: "Button",
-      inactive: false
-    })
-  },
-  {
-    name: "Interactive option: inactive (true)",
-    content: m(button, {
-      label: "Button",
-      inactive: true
-    })
-  },
-  {
-    name: "Interactive option: inactivate (5)",
-    content: m(button, {
-      label: "Button",
-      inactivate: 5
-    })
-  },
-  {
-    name: "Interactive option: animateOnTap (false)",
-    content: m(button, {
-      label: "Button",
-      animateOnTap: false
-    })
+    }
   },
   {
     name: "Custom button",
-    content: m(customButton, {
+    component: customButton,
+    attrs: {
       label: "Custom button"
-    })
+    }
   },
   {
     name: "Option: before",
-    content: m(button, {
+    component,
+    attrs: {
       label: "Button",
       before: m("span", "Before")
-    })
+    }
   },
   {
     name: "Option: after",
-    content: m(button, {
+    component,
+    attrs: {
       label: "Button",
       after: m("span", "After")
-    })
+    }
   },
+  {
+    name: "Option: href (with option oncreate)",
+    interactive: true,
+    component,
+    attrs: {
+      label: "Go to /#/shadow",
+      href: "/shadow",
+      oncreate: m.route.link
+    }
+  },
+  {
+    name: "Option: href (without option oncreate)",
+    interactive: true,
+    component,
+    attrs: {
+      label: "Go to /shadow",
+      href: "/shadow"
+    }
+  },
+  {
+    name: "onbeforeupdate",
+    interactive: true,
+    component: {
+      oninit: (vnode) => {
+        vnode.state.updated = 0;
+      },
+      view: (vnode) => [
+        m("div", `Updated: ${vnode.state.updated}`),
+        m(button, {
+          label: "Button",
+          onbeforeupdate: () => vnode.state.updated++
+        })
+      ]
+    }
+  },
+  {
+    name: "Option: events (click)",
+    interactive: true,
+    component: {
+      oninit: (vnode) => {
+        vnode.state.clicked = 0;
+      },
+      view: (vnode) => [
+        m("div", `onclick called: ${vnode.state.clicked}`),
+        m(button, {
+          label: "Button",
+          events: {
+            onclick: () => vnode.state.clicked++
+          }
+        })
+      ]
+    }
+  },
+  {
+    name: "Key down (after having focus) results in click",
+    interactive: true,
+    component: {
+      oninit: (vnode) => {
+        vnode.state.clickCount = 0;
+      },
+      view: (vnode) => [
+        m("div", `onclick called: ${vnode.state.clickCount}`),
+        m(button, {
+          label: "Button",
+          events: {
+            onclick: () => vnode.state.clickCount++
+          }
+        })
+      ]
+    }
+  },
+  {
+    name: "Option: inactive (false)",
+    interactive: true,
+    component,
+    attrs: {
+      label: "Not inactive",
+      inactive: false
+    }
+  },
+  {
+    name: "Option: inactive (true)",
+    interactive: true,
+    component,
+    attrs: {
+      label: "Inactive",
+      inactive: true
+    }
+  },
+  {
+    name: "Option: inactivate (2)",
+    interactive: true,
+    component,
+    attrs: {
+      label: "Inactivated for 2s",
+      inactivate: 2
+    }
+  },
+  {
+    name: "Option: animateOnTap (false)",
+    interactive: true,
+    component,
+    attrs: {
+      label: "No animate",
+      raised: true,
+      animateOnTap: false
+    }
+  }
 ];

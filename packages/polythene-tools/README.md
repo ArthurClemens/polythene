@@ -1,4 +1,3 @@
 # Tools
 
-* isTouch
 * webfontLoader

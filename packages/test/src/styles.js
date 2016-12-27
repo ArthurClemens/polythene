@@ -10,8 +10,10 @@ const resultHeight = ".minh8";
 export const rules = {
   page: ".pa4.lh-title-m.med-gray",
   pageTitle: "h1.ma0.normal.f3.pv3",
-  headerRow: `${bottomBorder}${blockPadding}`,
-  titleRow: `${bottomBorder}${blockPadding}`,
+  headerRow: `${bottomBorder}${blockPadding}.fixed.bg-white.w-100.z-1`,
+  interactive: ".bg-lightest-blue.b--gray",
+  separator: "span.ph2.light-silver",
+  tests: ".pt5",
   link: "a.link.underline-hover.blue",
   list: "ul.list.pa0",
   listItem: "li.mv1",

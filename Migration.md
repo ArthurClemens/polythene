@@ -10,7 +10,7 @@ Module imports have changed.
 import btn from "polythene/button/button";
 ```
 
-### v1.0
+### v1.x
 
 ```javascript
 import { button } from "polythene-button";
@@ -27,7 +27,7 @@ In Mithril 1.x `m.component(myComponent)` has been changed to `m(myComponent)`.
 const myBtn = m.component(button, {});
 ```
 
-### v1.0
+### v1.x
 
 ```javascript
 const myBtn = m(button, {});
@@ -47,7 +47,7 @@ const myBtn = m.component(button, {
 });
 ```
 
-#### v1.0
+#### v1.x
 
 ```javascript
 const myBtn = m(button, {
@@ -70,7 +70,7 @@ const myBtn = m.component(button, {
 });
 ```
 
-#### v1.0
+#### v1.x
 
 ```javascript
 const myBtn = m(button, {
@@ -88,3 +88,20 @@ v0.2             |  v1.0
 ---------------- | ----------------
 `polythene/common` | `polythene-css`
 `font-roboto`      | `polythene-theme/font-roboto`
+
+
+## Component specific changes
+
+### button
+
+`onclick` is called when a button has focus and the ENTER key is pressed.
+
+#### v0.2
+
+The onclick is called on the DOM element.
+
+#### v1.x
+
+The `events.onclick` function is called.
+
+

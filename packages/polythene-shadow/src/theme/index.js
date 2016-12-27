@@ -1,8 +1,7 @@
-import { styler, customConfig } from "polythene-css";
+import { styler } from "polythene-css";
+import { componentsConfig } from "polythene-config";
 import componentConfig from "./config";
 import layout from "./layout";
 // Does not contain any color styles
 
-const customConfigFn = customConfig.shadow;
-const config = customConfigFn ? customConfigFn(componentConfig) : componentConfig;
-styler.add("pe-shadow", layout(config));
+styler.styleComponent("pe-shadow", "shadow", componentsConfig, componentConfig, layout);

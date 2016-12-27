@@ -25,9 +25,7 @@ Add a URL:
 const myBtn = m(button, {
     label: "Button",
     raised: true,
-    url: {
-        href: "index.html"
-    }
+    href: "index.html"
 });
 ~~~
 
@@ -86,7 +84,7 @@ import "polythene/common/no-tap-delay";
 | **selected** | optional | Boolean | false | Set to true to show the button as selected |
 | **tabindex** | optional | Integer | | Tab index |
 | **formaction** | optional | String | | "The URI of a program that processes the information submitted by the button. If specified, it overrides the action attribute of the button"s form owner." [source:MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-formaction) |
-| **animateOnTap** | optional | Boolean  | true | Set to false to remove z-animation and subsequent redraw |
+| **animateOnTap** | optional | Boolean | true | Set to false to remove z-animation and subsequent redraw |
 | **inactive** | optional | Boolean | | Set to `true` to disable button events and ripple/wash effects |
 | **inactivate** | optional | Number | | The number of seconds after tap/click when the button is inactive; useful to prevent double clicks |
 
@@ -99,6 +97,7 @@ import "polythene/common/no-tap-delay";
 | **ripple** | optional (valid if `ink` is `true`) | Options object | | Pass [ripple](#ripple) options to define ripple behavior |
 | **raised** | optional | Boolean | false | Shows a shadow; on button press the shadow depth is increased by 1 |
 | **z** | optional | Number 0-5 | 1 | The shadow depth for a raised button; raised buttons have a default z of 1 |
+| **increase** | optional | Number | 1 | The z-index increment/decrement on tap; note that the maximum z value is 5 |
 
 
 ## Future

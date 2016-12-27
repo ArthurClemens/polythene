@@ -1,9 +1,7 @@
-import { styler, customConfig } from "polythene-css";
+import { styler } from "polythene-css";
+import { componentsConfig } from "polythene-config";
 import componentConfig from "./config";
 import layout from "./layout";
 import color from "./color";
 
-const customConfigFn = customConfig.button;
-const config = customConfigFn ? customConfigFn(componentConfig) : componentConfig;
-
-styler.add("pe-button-text", layout(config), color(config));
+styler.styleComponent("pe-button-text", "button", componentsConfig, componentConfig, layout, color);

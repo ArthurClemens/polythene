@@ -1,9 +1,9 @@
 // Mixins for j2c
 
-import config from "./config.js";
+import defaults from "./defaults";
 
 // Creates j2c vendor key string from vendor list
-// mixin.vendorize({"user-select": "none"}, config.prefixes_user_select)
+// mixin.vendorize({"user-select": "none"}, defaults.prefixes_user_select)
 const vendorize = (what, prefixes) => {
   const vendorsSel = prefixes.map((v) => ("_" + v + "$")).join("");
   return {
@@ -141,21 +141,21 @@ const createStyles = (common, fn) => {
 };
 
 // Creats a transition with presets
-// mixin.defaultTransition("opacity", config.animation_duration)
-const defaultTransition = (properties = "all", duration = config.animation_duration, curve = config.animation_curve_default) => {
+// mixin.defaultTransition("opacity", defaults.animation_duration)
+const defaultTransition = (properties = "all", duration = defaults.animation_duration, curve = defaults.animation_curve_default) => {
   return [
     vendorize({
       "transition-delay": 0
-    }, config.prefixes_transition),
+    }, defaults.prefixes_transition),
     vendorize({
       "transition-duration": duration
-    }, config.prefixes_transition),
+    }, defaults.prefixes_transition),
     vendorize({
       "transition-timing-function": curve
-    }, config.prefixes_transition),
+    }, defaults.prefixes_transition),
     vendorize({
       "transition-property": properties
-    }, config.prefixes_transition),
+    }, defaults.prefixes_transition),
   ];
 };
 

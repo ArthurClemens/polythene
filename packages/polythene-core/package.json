@@ -1,21 +1,17 @@
 {
-  "name": "polythene-button",
+  "name": "polythene-core",
   "version": "1.0.0",
   "description": "",
-  "main": "build/button.js",
-  "module": "build/button.mjs",
-  "jsnext:main": "build/button.mjs",
+  "main": "build/core.js",
+  "module": "build/core.mjs",
+  "jsnext:main": "build/core.mjs",
   "scripts": {
     "clean": "rm -rf build && mkdir build",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
     "build": "npm run rollup"
   },
   "dependencies": {
-    "mithril": "1.0.0-rc.6",
-    "polythene-config": "1",
-    "polythene-core": "1",
-    "polythene-css": "1",
-    "polythene-shadow": "1"
+    "mithril": "1.0.0-rc.6"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"
