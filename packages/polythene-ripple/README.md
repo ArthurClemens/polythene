@@ -90,6 +90,19 @@ By default the inherited `color` from the parent element is used. It can be chan
 }
 ~~~
 
+## CSS classes
+
+| **Element** |  **Class name** |
+| ----------- | --------------- |
+| component   | `pe-ripple` |
+| waves       | `pe-ripple__waves` |
+| mask        | `pe-ripple__mask` |
+
+| **State**       |  **Class name** |
+| --------------- | --------------- |
+| constrained     | `pe-ripple--constrained` |
+| waves animating | `pe-ripple__waves--animating` |
+
 
 
 ## Callback functions

@@ -10,7 +10,7 @@ const CSS_CLASSES = {
   waves: "pe-ripple__waves",
   mask: "pe-ripple__mask",
   constrained: "pe-ripple--constrained",
-  animated: "pe-ripple__waves--animated"
+  wavesAnimating: "pe-ripple__waves--animating"
 };
 
 let destroyRipple;
@@ -51,7 +51,7 @@ const makeRipple = (e, state, attrs) => {
   state.animating = true;
   const onEnd = (evt) => {
     state.animating = false;
-    wavesEl.classList.remove(CSS_CLASSES.animated);
+    wavesEl.classList.remove(CSS_CLASSES.wavesAnimating);
     wavesEl.removeEventListener(ANIMATION_END_EVENT, onEnd, false);
     if (attrs.end) {
       attrs.end(evt);
@@ -61,7 +61,7 @@ const makeRipple = (e, state, attrs) => {
   if (attrs.start) {
     attrs.start(e);
   }
-  wavesEl.classList.add(CSS_CLASSES.animated);
+  wavesEl.classList.add(CSS_CLASSES.wavesAnimating);
 };
 
 const initRipple = (vnode) => {

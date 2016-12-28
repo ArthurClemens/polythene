@@ -15,7 +15,7 @@ const CSS_CLASSES = {
   disabled: "pe-button--disabled",
   borders: "pe-button--borders",
   inactive: "pe-button--inactive",
-  focusState: "pe-button--focus",
+  focusState: "pe-button--focus"
 };
 
 const EL_ATTRS = [

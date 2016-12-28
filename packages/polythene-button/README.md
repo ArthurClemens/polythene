@@ -100,6 +100,27 @@ import "polythene/common/no-tap-delay";
 | **increase** | optional | Number | 1 | The z-index increment/decrement on tap; note that the maximum z value is 5 |
 
 
+## CSS classes
+
+| **Element** |  **Class name** |
+| ----------- | --------------- |
+| component   | `pe-button pe-button--text` |
+| content     | `pe-button__content` |
+| label       | `pe-button__label` |
+| wash        | `pe-button__wash` |
+| focus       | `pe-button__focus` |
+
+| **State**   |  **Class name** |
+| ----------- | --------------- |
+| raised      | `pe-button--raised` |
+| selected    | `pe-button--selected` |
+| disabled    | `pe-button--disabled` |
+| borders     | `pe-button--borders` |
+| inactive    | `pe-button--inactive` |
+| focus       | `pe-button--focus` |
+
+
+
 ## Future
 
 * Option to wait for ripple to finish before url/event is followed
