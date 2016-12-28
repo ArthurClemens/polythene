@@ -7,7 +7,9 @@ if (!window.WebFontConfig) {
     wf.type = "text/javascript";
     wf.async = "true";
     const s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(wf, s);
+    if (s) {
+      s.parentNode.insertBefore(wf, s);
+    }
   })();
 }
 
