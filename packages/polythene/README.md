@@ -5,10 +5,12 @@ npm install --save polythene
 ```
 
 ```javascript
-import * as polythene from 'polythene';
+import * as polythene from "polythene";
 const button = polythene.button;
 ```
+
 or
+
 ```javascript
-import { button } from 'polythene';
+import { button } from "polythene";
 ```

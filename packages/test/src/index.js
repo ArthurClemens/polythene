@@ -3,6 +3,7 @@ import "polythene-fastclick";
 import "polythene-theme";
 import { tidy } from "../scripts/render";
 import { rules as css } from "./styles";
+import { tests as polytheneTests } from "../tests/polythene/tests";
 import { tests as buttonTests } from "../tests/button/tests";
 import { tests as configTests } from "../tests/config/tests";
 import { tests as rippleTests } from "../tests/ripple/tests";
@@ -30,6 +31,11 @@ const testsPage = (name, tests) => ({
 });
 
 const pages = [
+  {
+    path: "/polythene",
+    name: "Polythene",
+    tests: polytheneTests
+  },
   {
     path: "/button",
     name: "Button",
