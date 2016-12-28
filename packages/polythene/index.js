@@ -17,9 +17,11 @@ export {
 
 export * from "polythene-fastclick";
 
+export { ripple } from "polythene-ripple";
+
 export { shadow } from "polythene-shadow";
 
-export { ripple } from "polythene-ripple";
+export { svg } from "polythene-svg";
 
 export * from "polythene-theme";
 

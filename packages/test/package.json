@@ -22,9 +22,11 @@
     "polythene-fastclick": "1",
     "polythene-ripple": "1",
     "polythene-shadow": "1",
+    "polythene-svg": "1",
     "polythene-theme": "1"
   },
   "devDependencies": {
+    "mmsvg": "^1.3.0",
     "rollup-plugin-pathmodify": "^1.0.1"
   }
 }

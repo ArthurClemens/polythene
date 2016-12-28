@@ -8,6 +8,7 @@ import { tests as buttonTests } from "../tests/button/tests";
 import { tests as configTests } from "../tests/config/tests";
 import { tests as rippleTests } from "../tests/ripple/tests";
 import { tests as shadowTests } from "../tests/shadow/tests";
+import { tests as svgTests } from "../tests/svg/tests";
 
 const testsPage = (name, tests) => ({
   view: () => [
@@ -55,6 +56,11 @@ const pages = [
     path: "/shadow",
     name: "Shadow",
     tests: shadowTests
+  },
+  {
+    path: "/svg",
+    name: "SVG",
+    tests: svgTests
   }
 ];
 

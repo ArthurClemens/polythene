@@ -104,4 +104,11 @@ The onclick is called on the DOM element.
 
 The `events.onclick` function is called.
 
+### svg
+
+Removed dynamic loading and preloading, as these are not a frequent use cases. Without it the code is much simpler.
+
+
+
+
 
