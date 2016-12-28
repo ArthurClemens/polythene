@@ -11,6 +11,20 @@ export const tests = [
     attrs: null
   },
   {
+    name: "Option: id",
+    component,
+    attrs: {
+      id: "id-x"
+    }
+  },
+  {
+    name: "Option: class",
+    component,
+    attrs: {
+      class: "class-x"
+    }
+  },
+  {
     name: "Option: label",
     component,
     attrs: {
@@ -57,6 +71,14 @@ export const tests = [
     attrs: {
       label: "No wash",
       wash: false
+    }
+  },
+  {
+    name: "Option: ink (false)",
+    component,
+    attrs: {
+      label: "No ink",
+      ink: false
     }
   },
   {
@@ -134,7 +156,7 @@ export const tests = [
       },
       view: (vnode) => [
         m("div", `Updated: ${vnode.state.updated}`),
-        m(button, {
+        m(component, {
           label: "Button",
           onbeforeupdate: () => vnode.state.updated++
         })
@@ -150,7 +172,7 @@ export const tests = [
       },
       view: (vnode) => [
         m("div", `onclick called: ${vnode.state.clicked}`),
-        m(button, {
+        m(component, {
           label: "Button",
           events: {
             onclick: () => vnode.state.clicked++
@@ -168,7 +190,7 @@ export const tests = [
       },
       view: (vnode) => [
         m("div", `onclick called: ${vnode.state.clickCount}`),
-        m(button, {
+        m(component, {
           label: "Button",
           events: {
             onclick: () => vnode.state.clickCount++

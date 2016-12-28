@@ -1,12 +1,14 @@
 import m from "mithril";
+import "polythene-fastclick";
 import "polythene-theme";
 import { tidy } from "../scripts/render";
 import { rules as css } from "./styles";
-import { tests as shadowTests } from "../tests/shadow/tests";
 import { tests as buttonTests } from "../tests/button/tests";
 import { tests as configTests } from "../tests/config/tests";
+import { tests as rippleTests } from "../tests/ripple/tests";
+import { tests as shadowTests } from "../tests/shadow/tests";
 
-const testsPage = (title, tests) => ({
+const testsPage = (name, tests) => ({
   view: () => [
     m(css.headerRow, [
       m(css.link, {
@@ -14,9 +16,9 @@ const testsPage = (title, tests) => ({
         oncreate: m.route.link
       }, "Components"),
       m(css.separator, "/"),
-      m("span", title)
+      m("span", name)
     ]),
-    m(css.tests, tests.map(test => {
+    m(css.tests, {class: `test-${name.toLowerCase()}`}, tests.map(test => {
       const raw = tidy(m(test.component, test.attrs));
       return m([css.resultRow, test.interactive ? css.interactive : null].join(""), [
         m(css.resultTitle, test.name),
@@ -34,14 +36,19 @@ const pages = [
     tests: buttonTests
   },
   {
-    path: "/shadow",
-    name: "Shadow",
-    tests: shadowTests
-  },
-  {
     path: "/config",
     name: "Custom config",
     tests: configTests
+  },
+  {
+    path: "/ripple",
+    name: "Ripple",
+    tests: rippleTests
+  },
+  {
+    path: "/shadow",
+    name: "Shadow",
+    tests: shadowTests
   }
 ];
 

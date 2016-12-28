@@ -1,3 +1,6 @@
 # Core
 
-* isTouch
+* Touch
+* Events
+* Animation event
+* Attrs

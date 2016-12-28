@@ -1,22 +1,19 @@
 {
-  "name": "polythene-button",
+  "name": "polythene-fastclick",
   "version": "1.0.0",
   "description": "",
-  "main": "build/button.js",
-  "module": "build/button.mjs",
-  "jsnext:main": "build/button.mjs",
+  "main": "build/fastclick.js",
+  "module": "build/fastclick.mjs",
+  "jsnext:main": "build/fastclick.mjs",
   "scripts": {
     "clean": "rm -rf build && mkdir build",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
     "build": "npm run rollup"
   },
   "dependencies": {
+    "fastclick": "^1.0.6",
     "mithril": "1.0.0-rc.6",
-    "polythene-config": "1",
-    "polythene-core": "1",
-    "polythene-css": "1",
-    "polythene-ripple": "1",
-    "polythene-shadow": "1"
+    "polythene-core": "1"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

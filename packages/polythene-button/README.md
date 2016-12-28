@@ -13,7 +13,7 @@ See also: [Icon Button](#icon-button) and [Floating Action Button](#fab)
 import m from "mithril";
 import { button } from "polythene-button";
 
-const myBtn = m(button, {
+const myButton = m(button, {
     label: "Button",
     raised: true
 });
@@ -22,7 +22,7 @@ const myBtn = m(button, {
 Add a URL:
 
 ~~~javascript
-const myBtn = m(button, {
+const myButton = m(button, {
     label: "Button",
     raised: true,
     href: "index.html"
@@ -32,7 +32,7 @@ const myBtn = m(button, {
 Add an onclick event:
 
 ~~~javascript
-const myBtn = m(btn, {
+const myButton = m(button, {
     label: "Button",
     raised: true,
     events: {
@@ -43,10 +43,10 @@ const myBtn = m(btn, {
 
 ## Variations
 
-* Buttons can be flat or raised. Using `raised` without specifying `z` gives the button a default shadow.
+* Buttons can be flat or raised. Using `raised` gives the button a default shadow; specifying `z` varies the shadow depth.
 * The hover effect can be hidden with `wash: false`.
 * The ripple effect on click can be hidden with `ink: false`.
-* No icon in button, as this is not part of the Material Design guidelines; use [icon Button](#icon-button) instead
+* Button contains no icon as this is not part of the Material Design guidelines; use [icon Button](#icon-button) instead
 
 
 <!--
@@ -77,9 +77,9 @@ import "polythene/common/no-tap-delay";
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **label** | `label` or `content` is required | String | | The button label |
-| **content** | `label` or `content` is required | Mithril element | | Alternative content |
-| **url** | optional | Object with `href`, optionally `config` | | Button URL or click handler |
-| **borders** | optional | Boolean | false | Set to `true` to add a border; set border color to class `pe-button__content` to see the border |
+| **content** | `label` or `content` is required | Mithril element | | Alternative content, instead of a label |
+| **href** | optional | String | | URL location; for in-app linking also pass `oncreate : m.route.link` |
+| **borders** | optional | Boolean | false | Set to `true` to add a border; by default the border has no color - set border color to class `pe-button__content` to see the border |
 | **disabled** | optional | Boolean | false | Disables the button |
 | **selected** | optional | Boolean | false | Set to true to show the button as selected |
 | **tabindex** | optional | Integer | | Tab index |

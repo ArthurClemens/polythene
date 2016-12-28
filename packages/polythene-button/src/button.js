@@ -1,12 +1,11 @@
 import m from "mithril";
 import "./theme/index";
-
-// import ripple from "polythene/ripple/ripple";
-import { isTouch, touchStartEvent, touchEndEvent, subscribe } from "polythene-core";
 import { shadow } from "polythene-shadow";
+import { ripple } from "polythene-ripple";
+import { isTouch, touchStartEvent, touchEndEvent, subscribe, filterSupportedAttributes } from "polythene-core";
 
 const CSS_CLASSES = {
-  block: "pe-button pe-button--text",
+  component: "pe-button pe-button--text",
   content: "pe-button__content",
   label: "pe-button__label",
   raised: "pe-button--raised",
@@ -19,28 +18,15 @@ const CSS_CLASSES = {
   focusState: "pe-button--focus",
 };
 
-const supportedElementProps = {
-  // Mithril
-  key: 1,
-  oninit: 1,
-  oncreate: 1,
-  onupdate: 1,
-  onbeforeremove: 1,
-  onremove: 1,
-  onbeforeupdate: 1,
-  style: 1,
-  // Polythene
-  id: 1,
-  href: 1,
-  // Button
-  formaction: 1,
-  type: 1
-};
+const EL_ATTRS = [
+  "formaction",
+  "type"
+];
 
 const MAX_Z = 5;
 
 let tapStart,
-  tapEndAll,
+  tapEndAll = () => {},
   downButtons = [];
 
 subscribe(touchEndEvent, () => tapEndAll());
@@ -88,7 +74,7 @@ const initTapEvents = (el, state, attrs) => {
       animateZ(state, attrs, name);
     }
   };
-  tapStart = () => (tapHandler(state, attrs, "down"));
+  tapStart = () => tapHandler(state, attrs, "down");
   tapEndAll = () => {
     downButtons.map((btn) => {
       tapHandler(btn.state, btn.attrs, "up");
@@ -102,34 +88,22 @@ const clearTapEvents = (el) => {
   el.removeEventListener(touchStartEvent, tapStart);
 };
 
-const filteredElementAttrs = (attrs) => {
-  const o = {};
-  Object.keys(attrs).forEach(key => {
-    if (supportedElementProps[key]) {
-      o[key] = attrs[key];
-    }
-  });
-  return o;
-};
-
 const view = (vnode) => {
   const state = vnode.state || {};
   const attrs = vnode.attrs || {};
-
-  // const noink = (attrs.ink !== undefined && attrs.ink === false);
+  const noink = (attrs.ink !== undefined && attrs.ink === false);
   const disabled = attrs.disabled;
   const element = attrs.element || "a";
   const tabIndex = disabled || state.inactive
     ? -1
     : attrs.tabindex || 0;
   const onClickHandler = attrs.events && attrs.events.onclick;
-
   const props = Object.assign(
     {}, 
-    filteredElementAttrs(attrs),
+    filterSupportedAttributes(attrs, EL_ATTRS),
     {
       class: [
-        (attrs.parentClass || CSS_CLASSES.block),
+        (attrs.parentClass || CSS_CLASSES.component),
         (attrs.selected ? CSS_CLASSES.selected : null),
         (disabled ? CSS_CLASSES.disabled : null),
         (state.inactive ? CSS_CLASSES.inactive : null),
@@ -158,7 +132,6 @@ const view = (vnode) => {
     attrs.events ? {...attrs.events} : null,
     disabled ? {disabled: true} : null
   );
-
   const label = attrs.content
     ? attrs.content
     : attrs.label
@@ -166,20 +139,16 @@ const view = (vnode) => {
         ? attrs.label
         : m("div", {class: CSS_CLASSES.label}, attrs.label)
       : null;
-
   const noWash = disabled || (attrs.wash !== undefined && !attrs.wash);
-
-  // const rippleOpts = {
-  //   ripple: attrs.ripple,
-  //   inactive: noink
-  // };
   const content = label
     ? m("div", {class: CSS_CLASSES.content}, [
       attrs.raised && !disabled
         ? m(shadow, {z: state.z, animated: true})
         : null,
       // ripple
-      // disabled ? null : m(ripple, rippleOpts),
+      disabled || noink
+        ? null
+        : m(ripple, attrs.ripple),
       // hover
       noWash ? null : m("div", {class: CSS_CLASSES.wash}),
       // focus
@@ -194,9 +163,10 @@ export const button = {
   oninit: (vnode) => {
     const z = (vnode.attrs.z !== undefined) ? vnode.attrs.z : 1;
     vnode.state = {
+      el: undefined,
       zBase: z,
-      tapEventsInited: false,
       z: z,
+      tapEventsInited: false,
       inactive: !!vnode.attrs.inactive,
       focus: false,
       mouseover: false
@@ -204,6 +174,7 @@ export const button = {
   },
   oncreate: (vnode) => {
     if (!vnode.attrs.disabled && !vnode.state.inactive && !vnode.state.tapEventsInited) {
+      vnode.state.el = vnode.dom;
       initTapEvents(vnode.dom, vnode.state, vnode.attrs);
       vnode.state.tapEventsInited = true;
     }

@@ -1,4 +1,5 @@
 import m from "mithril";
+import { filterSupportedAttributes } from "polythene-core";
 import "./theme/index";
 
 const CSS_CLASSES = {
@@ -10,18 +11,20 @@ const CSS_CLASSES = {
 };
 
 const view = (vnode) => {
-  const attrs = vnode.attrs || {};
+  const attrs = vnode.attrs;
   const depthClass = `${CSS_CLASSES.depth_n}${Math.min(5, attrs.z !== undefined ? attrs.z : 1)}`;
   const element = attrs.element || "div";
-  const props = {
-    class: [
-      CSS_CLASSES.component,
-      attrs.animated && CSS_CLASSES.animated,
-      attrs.class
-    ].join(" "),
-    id: attrs.id || "",
-    config: attrs.config
-  };
+  const props = Object.assign(
+    {},
+    filterSupportedAttributes(attrs),
+    {
+      class: [
+        CSS_CLASSES.component,
+        attrs.animated && CSS_CLASSES.animated,
+        attrs.class
+      ].join(" ")
+    }
+  );
   const content = [
     attrs.content && attrs.content,
     m("div", {
@@ -31,7 +34,7 @@ const view = (vnode) => {
       class: [CSS_CLASSES.topShadow, depthClass].join(" ")
     })
   ];
-  return m(element, props, content);
+  return m(element, props, [attrs.before, content, attrs.after]);
 };
 
 export const shadow = {

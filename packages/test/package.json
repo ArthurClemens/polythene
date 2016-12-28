@@ -18,6 +18,8 @@
     "mithril": "1.0.0-rc.6",
     "polythene-button": "1",
     "polythene-css": "1",
+    "polythene-fastclick": "1",
+    "polythene-ripple": "1",
     "polythene-shadow": "1",
     "polythene-theme": "1"
   },
