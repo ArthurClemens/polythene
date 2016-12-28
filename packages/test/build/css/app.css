@@ -1,0 +1,24 @@
+.flex-one {
+    flex: 1 0;
+}
+.minh4 {
+  min-height: 4rem;
+}
+.minh6 {
+  min-height: 6rem;
+}
+.minh8 {
+  min-height: 8rem;
+}
+.prewrap {
+  white-space: pre-wrap;
+}
+.height-100px {
+  height: 100px;
+}
+.pe-button.bordered-button .pe-button__content {
+  border-color: #ddd;
+}
+.test-ripple .pe-ripple {
+  background-color: #eee;
+}

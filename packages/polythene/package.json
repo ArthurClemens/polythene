@@ -7,7 +7,7 @@
   "jsnext:main": "build/polythene.mjs",
   "scripts": {
     "clean": "rm -rf build && mkdir build",
-    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
+    "rollup": "DEPS=true ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
     "build": "npm run rollup"
   },
   "dependencies": {

@@ -1,0 +1,2 @@
+!function(e,o){"object"==typeof exports&&"undefined"!=typeof module?o(exports,require("polythene-css")):"function"==typeof define&&define.amd?define(["exports","polythene-css"],o):o(e.polythene=e.polythene||{},e["polythene-css"])}(this,function(e,o){"use strict";var t={};e.appConfig=o.defaults,e.componentsConfig=t,Object.defineProperty(e,"__esModule",{value:!0})});
+//# sourceMappingURL=config.js.map
