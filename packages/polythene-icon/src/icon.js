@@ -21,22 +21,6 @@ const typeClasses = {
 
 const classForType = (mode = "regular") => typeClasses[mode];
 
-const layoutContent = attrs => {
-  if (attrs.content || attrs.svg || attrs.msvg || attrs.src) {
-    return attrs.content
-      ? attrs.content
-      : attrs.svg
-        ? m(svg, {...attrs.svg})
-        : attrs.msvg
-          ? m(svg, {content: attrs.msvg})
-          : attrs.src
-            ? m("img", {src: attrs.src})
-            : null;
-  } else {
-    return null;
-  }
-};
-
 const view = vnode => {
   const attrs = vnode.attrs;
   const element = attrs.element || "div";
@@ -53,7 +37,15 @@ const view = vnode => {
     },
     attrs.events ? attrs.events : null
   );
-  const content = layoutContent(attrs);
+  const content = attrs.content
+    ? attrs.content
+    : attrs.svg
+      ? m(svg, {...attrs.svg})
+      : attrs.msvg
+        ? m(svg, {content: attrs.msvg})
+        : attrs.src
+          ? m("img", {src: attrs.src})
+          : null;
   return m(element, props, [attrs.before, content, attrs.after]);
 };
 

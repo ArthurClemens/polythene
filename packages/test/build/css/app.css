@@ -23,3 +23,6 @@
 .test-ripple .pe-ripple {
   background-color: #eee;
 }
+.test-icon-button .pe-button--icon__content {
+  background-color: #eee;
+}

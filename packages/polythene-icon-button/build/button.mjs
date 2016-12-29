@@ -375,8 +375,8 @@ var clearTapEvents = function clearTapEvents(el) {
 };
 
 var view = function view(vnode) {
-  var state = vnode.state;
-  var attrs = vnode.attrs;
+  var state = vnode.state || {};
+  var attrs = vnode.attrs || {};
   var noink = attrs.ink !== undefined && attrs.ink === false;
   var disabled = attrs.disabled;
   var element = attrs.element || "a";
@@ -449,4 +449,4 @@ var button = {
   view: view
 };
 
-export { button, componentConfig as buttonConfig };
+export { button };

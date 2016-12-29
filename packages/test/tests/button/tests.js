@@ -40,6 +40,13 @@ export const tests = [
     }
   },
   {
+    name: "Option: content",
+    component,
+    attrs: {
+      content: m("div", "Content")
+    }
+  },
+  {
     name: "Option: raised",
     component,
     attrs: {

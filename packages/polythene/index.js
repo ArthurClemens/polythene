@@ -19,6 +19,8 @@ export * from "polythene-fastclick";
 
 export { icon } from "polythene-icon";
 
+export { iconButton } from "polythene-icon-button";
+
 export { ripple } from "polythene-ripple";
 
 export { shadow } from "polythene-shadow";

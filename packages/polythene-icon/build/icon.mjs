@@ -105,21 +105,13 @@ var classForType = function classForType() {
   return typeClasses[mode];
 };
 
-var layoutContent = function layoutContent(attrs) {
-  if (attrs.content || attrs.svg || attrs.msvg || attrs.src) {
-    return attrs.content ? attrs.content : attrs.svg ? m(svg, _extends({}, attrs.svg)) : attrs.msvg ? m(svg, { content: attrs.msvg }) : attrs.src ? m("img", { src: attrs.src }) : null;
-  } else {
-    return null;
-  }
-};
-
 var view = function view(vnode) {
   var attrs = vnode.attrs;
   var element = attrs.element || "div";
   var props = _extends({}, filterSupportedAttributes(attrs), {
     class: [CSS_CLASSES.icon, classForType(attrs.type), attrs.avatar ? CSS_CLASSES.avatar : null, attrs.class].join(" ")
   }, attrs.events ? attrs.events : null);
-  var content = layoutContent(attrs);
+  var content = attrs.content ? attrs.content : attrs.svg ? m(svg, _extends({}, attrs.svg)) : attrs.msvg ? m(svg, { content: attrs.msvg }) : attrs.src ? m("img", { src: attrs.src }) : null;
   return m(element, props, [attrs.before, content, attrs.after]);
 };
 
@@ -127,4 +119,4 @@ var icon = {
   view: view
 };
 
-export { icon };
+export { icon, componentConfig as iconConfig };

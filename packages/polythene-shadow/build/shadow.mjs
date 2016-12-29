@@ -118,4 +118,4 @@ var shadow = {
   view: view
 };
 
-export { shadow };
+export { shadow, componentConfig as shadowConfig };

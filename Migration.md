@@ -92,7 +92,7 @@ v0.2             |  v1.0
 
 ## Component specific changes
 
-### button
+### Button
 
 `onclick` is called when a button has focus and the ENTER key is pressed.
 
@@ -104,7 +104,13 @@ The onclick is called on the DOM element.
 
 The `events.onclick` function is called.
 
-### svg
+
+### Icon Button
+
+CSS class `pe-button__label` has been replaced with `pe-button--icon__content`.
+
+
+### SVG
 
 Removed dynamic loading and preloading, as these are not a frequent use cases. Without it the code is much simpler.
 

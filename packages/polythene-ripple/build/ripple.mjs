@@ -190,4 +190,4 @@ var ripple = {
   view: view
 };
 
-export { ripple };
+export { ripple, componentConfig as rippleConfig };

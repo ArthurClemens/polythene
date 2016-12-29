@@ -89,8 +89,8 @@ const clearTapEvents = el => {
 };
 
 const view = vnode => {
-  const state = vnode.state || {};
-  const attrs = vnode.attrs || {};
+  const state = vnode.state;
+  const attrs = vnode.attrs;
   const noink = (attrs.ink !== undefined && attrs.ink === false);
   const disabled = attrs.disabled;
   const element = attrs.element || "a";

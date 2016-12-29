@@ -120,6 +120,23 @@ exports[`test Option: class 1`] = `
 "
 `;
 
+exports[`test Option: content 1`] = `
+"<a tabindex=\"0\" class=\"pe-button pe-button--text\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-ripple pe-ripple--constrained\">
+    <div class=\"pe-ripple__mask\">
+      <div class=\"pe-ripple__waves\"></div>
+    </div>
+  </div>
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div>
+    Content
+  </div>
+</div></a>
+"
+`;
+
 exports[`test Option: disabled 1`] = `
 "<a tabindex=\"-1\" disabled class=
 \"pe-button pe-button--text pe-button--disabled\">

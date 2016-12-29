@@ -71,6 +71,7 @@ import "polythene/common/no-tap-delay";
 | **events** | optional | Object | | Options object containing one or more standard events such as `onclick` |
 | **before** | optional | Mithril element | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **after** | optional | Mithril element | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
+| **tabindex** | optional | Integer | | Tab index |
 
 ### Button specific options
 
@@ -82,7 +83,6 @@ import "polythene/common/no-tap-delay";
 | **borders** | optional | Boolean | false | Set to `true` to add a border; by default the border has no color - set border color to class `pe-button__content` to see the border |
 | **disabled** | optional | Boolean | false | Disables the button |
 | **selected** | optional | Boolean | false | Set to true to show the button as selected |
-| **tabindex** | optional | Integer | | Tab index |
 | **formaction** | optional | String | | "The URI of a program that processes the information submitted by the button. If specified, it overrides the action attribute of the button"s form owner." [source:MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-formaction) |
 | **animateOnTap** | optional | Boolean | true | Set to false to remove z-animation and subsequent redraw |
 | **inactive** | optional | Boolean | | Set to `true` to disable button events and ripple/wash effects |

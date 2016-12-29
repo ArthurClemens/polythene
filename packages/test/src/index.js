@@ -7,6 +7,7 @@ import { tests as polytheneTests } from "../tests/polythene/tests";
 import { tests as buttonTests } from "../tests/button/tests";
 import { tests as configTests } from "../tests/config/tests";
 import { tests as iconTests } from "../tests/icon/tests";
+import { tests as iconButtonTests } from "../tests/icon-button/tests";
 import { tests as rippleTests } from "../tests/ripple/tests";
 import { tests as shadowTests } from "../tests/shadow/tests";
 import { tests as svgTests } from "../tests/svg/tests";
@@ -21,7 +22,7 @@ const testsPage = (name, tests) => ({
       m(css.separator, "/"),
       m("span", name)
     ]),
-    m(css.tests, {class: `test-${name.toLowerCase()}`}, tests.map(test => {
+    m(css.tests, {class: `test-${name.replace(/ /g, "-").toLowerCase()}`}, tests.map(test => {
       const raw = tidy(m(test.component, test.attrs));
       return m([css.resultRow, test.interactive ? css.interactive : null].join(""), [
         m(css.resultTitle, test.name),
@@ -52,6 +53,11 @@ const pages = [
     path: "/icon",
     name: "Icon",
     tests: iconTests
+  },
+  {
+    path: "/icon-button",
+    name: "Icon Button",
+    tests: iconButtonTests
   },
   {
     path: "/ripple",

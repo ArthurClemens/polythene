@@ -1,11 +1,12 @@
 import m from 'mithril';
 import 'polythene-fastclick';
 import 'polythene-theme';
-import { button, icon, ripple, shadow, svg, webfontLoader } from 'polythene';
+import { button, icon, iconButton, ripple, shadow, svg, webfontLoader } from 'polythene';
 import * as polythene from 'polythene';
 import { button as button$1 } from 'polythene-button';
 import { styler } from 'polythene-css';
 import { icon as icon$1 } from 'polythene-icon';
+import { iconButton as iconButton$1 } from 'polythene-icon-button';
 import { ripple as ripple$1 } from 'polythene-ripple';
 import { shadow as shadow$1 } from 'polythene-shadow';
 import { svg as svg$1 } from 'polythene-svg';
@@ -72,6 +73,16 @@ var tests = [{
   attrs: {
     svg: {
       content: m.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z\"/></svg>")
+    }
+  }
+}, {
+  name: "Icon Button",
+  component: iconButton,
+  attrs: {
+    icon: {
+      svg: {
+        content: m.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z\"/></svg>")
+      }
     }
   }
 }, {
@@ -165,6 +176,12 @@ var tests$1 = [{
   attrs: {
     label: "button element",
     element: "button"
+  }
+}, {
+  name: "Option: content",
+  component: component,
+  attrs: {
+    content: m("div", "Content")
   }
 }, {
   name: "Option: raised",
@@ -411,6 +428,15 @@ var tests$3 = [{
     src: "img/ic_arrow_back_black_18dp.png"
   }
 }, {
+  name: "Colored",
+  component: component$2,
+  attrs: {
+    msvg: stars,
+    style: {
+      color: "red"
+    }
+  }
+}, {
   name: "Option: type (small)",
   component: component$2,
   attrs: {
@@ -462,7 +488,7 @@ var tests$3 = [{
   }
 }];
 
-var component$3 = ripple$1;
+var component$3 = iconButton$1;
 
 var tests$4 = [{
   name: "No options",
@@ -481,96 +507,90 @@ var tests$4 = [{
     class: "class-x"
   }
 }, {
-  name: "Option: disabled",
-  interactive: true,
+  name: "Option: icon",
   component: component$3,
   attrs: {
-    disabled: true
-  }
-}, {
-  name: "Option: constrained (true)",
-  interactive: true,
-  component: component$3,
-  attrs: {
-    constrained: true
-  }
-}, {
-  name: "Option: constrained (false)",
-  interactive: true,
-  component: component$3,
-  attrs: {
-    constrained: false
-  }
-}, {
-  name: "Option: center",
-  interactive: true,
-  component: component$3,
-  attrs: {
-    center: true
-  }
-}, {
-  name: "Option: initial opacity (0.5)",
-  interactive: true,
-  component: component$3,
-  attrs: {
-    initialOpacity: 0.5
-  }
-}, {
-  name: "Option: initial opacityDecayVelocity (0.1)",
-  interactive: true,
-  component: component$3,
-  attrs: {
-    opacityDecayVelocity: 0.1
-  }
-}, {
-  name: "Appended to an element",
-  interactive: true,
-  component: {
-    view: function view() {
-      return m("div", {
-        style: {
-          position: "relative",
-          width: "100px",
-          height: "100px"
-        }
-      }, m(component$3));
+    icon: {
+      msvg: stars
     }
   }
 }, {
-  name: "Option: start (after click)",
-  interactive: true,
-  component: {
-    oninit: function oninit(vnode) {
-      vnode.state.started = 0;
+  name: "Colored",
+  component: component$3,
+  attrs: {
+    icon: {
+      msvg: stars
     },
-    view: function view(vnode) {
-      return [m(component$3, {
-        before: m("div", "start called: " + vnode.state.started),
-        start: function start() {
-          return vnode.state.started++, m.redraw();
-        }
-      })];
+    style: {
+      color: "red"
     }
   }
 }, {
-  name: "Option: end (after click)",
-  interactive: true,
-  component: {
-    oninit: function oninit(vnode) {
-      vnode.state.ended = 0;
+  name: "Option: compact",
+  component: component$3,
+  attrs: {
+    icon: {
+      msvg: stars
     },
-    view: function view(vnode) {
-      return [m(component$3, {
-        before: m("div", "end called: " + vnode.state.ended),
-        end: function end() {
-          return vnode.state.ended++, m.redraw();
-        }
-      })];
+    compact: true
+  }
+}, {
+  name: "Option: type (small)",
+  component: component$3,
+  attrs: {
+    icon: {
+      msvg: stars,
+      type: "small"
     }
+  }
+}, {
+  name: "Option: type (regular)",
+  component: component$3,
+  attrs: {
+    icon: {
+      msvg: stars,
+      type: "regular"
+    }
+  }
+}, {
+  name: "Option: type (medium)",
+  component: component$3,
+  attrs: {
+    icon: {
+      msvg: stars,
+      type: "medium"
+    }
+  }
+}, {
+  name: "Option: type (large)",
+  component: component$3,
+  attrs: {
+    icon: {
+      msvg: stars,
+      type: "large"
+    }
+  }
+}, {
+  name: "Option: before",
+  component: component$3,
+  attrs: {
+    icon: {
+      msvg: stars
+    },
+    before: m("div", { style: { "font-size": "16px", "line-height": "1rem" } }, "Before")
+  }
+}, {
+  name: "Option: after",
+  component: component$3,
+  attrs: {
+    icon: {
+      msvg: stars
+    },
+    after: m("div", { style: { "font-size": "16px", "line-height": "1rem" } }, "After")
   }
 }];
 
-var component$4 = shadow$1;
+var component$4 = ripple$1;
 
 var tests$5 = [{
   name: "No options",
@@ -589,86 +609,96 @@ var tests$5 = [{
     class: "class-x"
   }
 }, {
-  name: "Option: element",
+  name: "Option: disabled",
+  interactive: true,
   component: component$4,
   attrs: {
-    element: "blockquote"
+    disabled: true
   }
 }, {
-  name: "Option: content",
+  name: "Option: constrained (true)",
+  interactive: true,
   component: component$4,
   attrs: {
-    content: m("div", "CONTENT")
+    constrained: true
   }
 }, {
-  name: "Add to a Mithril element",
+  name: "Option: constrained (false)",
+  interactive: true,
+  component: component$4,
+  attrs: {
+    constrained: false
+  }
+}, {
+  name: "Option: center",
+  interactive: true,
+  component: component$4,
+  attrs: {
+    center: true
+  }
+}, {
+  name: "Option: initial opacity (0.5)",
+  interactive: true,
+  component: component$4,
+  attrs: {
+    initialOpacity: 0.5
+  }
+}, {
+  name: "Option: initial opacityDecayVelocity (0.1)",
+  interactive: true,
+  component: component$4,
+  attrs: {
+    opacityDecayVelocity: 0.1
+  }
+}, {
+  name: "Appended to an element",
+  interactive: true,
   component: {
     view: function view() {
-      return [m("div", "Some element"), m(component$4)];
+      return m("div", {
+        style: {
+          position: "relative",
+          width: "100px",
+          height: "100px"
+        }
+      }, m(component$4));
     }
   }
 }, {
-  name: "Interactive option: animated",
+  name: "Option: start (after click)",
   interactive: true,
   component: {
     oninit: function oninit(vnode) {
-      vnode.state.z = 1;
-    },
-    oncreate: function oncreate(vnode) {
-      vnode.dom.addEventListener("click", function () {
-        var newZ = (vnode.state.z + 1) % 6;
-        vnode.state.z = newZ;
-        m.redraw();
-      });
+      vnode.state.started = 0;
     },
     view: function view(vnode) {
-      return [m(rules.content, "Click me"), m(component$4, {
-        animated: true,
-        z: vnode.state.z
+      return [m(component$4, {
+        before: m("div", "start called: " + vnode.state.started),
+        start: function start() {
+          return vnode.state.started++, m.redraw();
+        }
       })];
     }
   }
 }, {
-  name: "Option: z (0)",
-  component: component$4,
-  attrs: {
-    z: 0
-  }
-}, {
-  name: "Option: z (1)",
-  component: component$4,
-  attrs: {
-    z: 1
-  }
-}, {
-  name: "Option: z (2)",
-  component: component$4,
-  attrs: {
-    z: 2
-  }
-}, {
-  name: "Option: z (3)",
-  component: component$4,
-  attrs: {
-    z: 3
-  }
-}, {
-  name: "Option: z (4)",
-  component: component$4,
-  attrs: {
-    z: 4
-  }
-}, {
-  name: "Option: z (5)",
-  component: component$4,
-  attrs: {
-    z: 5
+  name: "Option: end (after click)",
+  interactive: true,
+  component: {
+    oninit: function oninit(vnode) {
+      vnode.state.ended = 0;
+    },
+    view: function view(vnode) {
+      return [m(component$4, {
+        before: m("div", "end called: " + vnode.state.ended),
+        end: function end() {
+          return vnode.state.ended++, m.redraw();
+        }
+      })];
+    }
   }
 }];
 
-var component$5 = svg$1;
-var svgString$1 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z\"/></svg>";
-var trustedSvg$1 = m.trust(svgString$1);
+var component$5 = shadow$1;
 
 var tests$6 = [{
   name: "No options",
@@ -690,31 +720,129 @@ var tests$6 = [{
   name: "Option: element",
   component: component$5,
   attrs: {
+    element: "blockquote"
+  }
+}, {
+  name: "Option: content",
+  component: component$5,
+  attrs: {
+    content: m("div", "CONTENT")
+  }
+}, {
+  name: "Add to a Mithril element",
+  component: {
+    view: function view() {
+      return [m("div", "Some element"), m(component$5)];
+    }
+  }
+}, {
+  name: "Interactive option: animated",
+  interactive: true,
+  component: {
+    oninit: function oninit(vnode) {
+      vnode.state.z = 1;
+    },
+    oncreate: function oncreate(vnode) {
+      vnode.dom.addEventListener("click", function () {
+        var newZ = (vnode.state.z + 1) % 6;
+        vnode.state.z = newZ;
+        m.redraw();
+      });
+    },
+    view: function view(vnode) {
+      return [m(rules.content, "Click me"), m(component$5, {
+        animated: true,
+        z: vnode.state.z
+      })];
+    }
+  }
+}, {
+  name: "Option: z (0)",
+  component: component$5,
+  attrs: {
+    z: 0
+  }
+}, {
+  name: "Option: z (1)",
+  component: component$5,
+  attrs: {
+    z: 1
+  }
+}, {
+  name: "Option: z (2)",
+  component: component$5,
+  attrs: {
+    z: 2
+  }
+}, {
+  name: "Option: z (3)",
+  component: component$5,
+  attrs: {
+    z: 3
+  }
+}, {
+  name: "Option: z (4)",
+  component: component$5,
+  attrs: {
+    z: 4
+  }
+}, {
+  name: "Option: z (5)",
+  component: component$5,
+  attrs: {
+    z: 5
+  }
+}];
+
+var component$6 = svg$1;
+var svgString$1 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z\"/></svg>";
+var trustedSvg$1 = m.trust(svgString$1);
+
+var tests$7 = [{
+  name: "No options",
+  component: component$6,
+  attrs: null
+}, {
+  name: "Option: id",
+  component: component$6,
+  attrs: {
+    id: "id-x"
+  }
+}, {
+  name: "Option: class",
+  component: component$6,
+  attrs: {
+    class: "class-x"
+  }
+}, {
+  name: "Option: element",
+  component: component$6,
+  attrs: {
     element: "div",
     content: m.trust("<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"></svg>")
   }
 }, {
   name: "Option: content (trusted svg)",
-  component: component$5,
+  component: component$6,
   attrs: {
     content: trustedSvg$1
   }
 }, {
   name: "Option: content (mmsvg)",
-  component: component$5,
+  component: component$6,
   attrs: {
     content: stars
   }
 }, {
   name: "Option: before",
-  component: component$5,
+  component: component$6,
   attrs: {
     content: stars,
     before: m("span", "Before")
   }
 }, {
   name: "Option: after",
-  component: component$5,
+  component: component$6,
   attrs: {
     content: stars,
     after: m("span", "After")
@@ -727,7 +855,7 @@ var testsPage = function testsPage(name, tests$$1) {
       return [m(rules.headerRow, [m(rules.link, {
         href: "/",
         oncreate: m.route.link
-      }, "Components"), m(rules.separator, "/"), m("span", name)]), m(rules.tests, { class: "test-" + name.toLowerCase() }, tests$$1.map(function (test) {
+      }, "Components"), m(rules.separator, "/"), m("span", name)]), m(rules.tests, { class: "test-" + name.replace(/ /g, "-").toLowerCase() }, tests$$1.map(function (test) {
         var raw = tidy(m(test.component, test.attrs));
         return m([rules.resultRow, test.interactive ? rules.interactive : null].join(""), [m(rules.resultTitle, test.name), m(rules.result, m(rules.content, m(test.component, test.attrs))), m(rules.rawResult, raw)]);
       }))];
@@ -752,17 +880,21 @@ var pages = [{
   name: "Icon",
   tests: tests$3
 }, {
+  path: "/icon-button",
+  name: "Icon Button",
+  tests: tests$4
+}, {
   path: "/ripple",
   name: "Ripple",
-  tests: tests$4
+  tests: tests$5
 }, {
   path: "/shadow",
   name: "Shadow",
-  tests: tests$5
+  tests: tests$6
 }, {
   path: "/svg",
   name: "SVG",
-  tests: tests$6
+  tests: tests$7
 }];
 
 var index = {
