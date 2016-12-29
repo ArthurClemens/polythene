@@ -1,0 +1,75 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'show',
+1 verbose cli   'rollup-watch',
+1 verbose cli   'version' ]
+2 info using npm@3.10.8
+3 info using node@v6.9.1
+4 silly mapToRegistry name rollup-watch
+5 silly mapToRegistry using default registry
+6 silly mapToRegistry registry https://registry.npmjs.org/
+7 silly mapToRegistry data Result {
+7 silly mapToRegistry   raw: 'rollup-watch',
+7 silly mapToRegistry   scope: null,
+7 silly mapToRegistry   escapedName: 'rollup-watch',
+7 silly mapToRegistry   name: 'rollup-watch',
+7 silly mapToRegistry   rawSpec: '',
+7 silly mapToRegistry   spec: 'latest',
+7 silly mapToRegistry   type: 'tag' }
+8 silly mapToRegistry uri https://registry.npmjs.org/rollup-watch
+9 verbose request uri https://registry.npmjs.org/rollup-watch
+10 verbose request no auth needed
+11 info attempt registry request try #1 at 10:29:28 AM
+12 verbose request using bearer token for auth
+13 verbose request id 051a8fd92e6ad22f
+14 verbose etag W/"578428e9-31cd"
+15 verbose lastModified Mon, 11 Jul 2016 23:16:57 GMT
+16 http request GET https://registry.npmjs.org/rollup-watch
+17 http 304 https://registry.npmjs.org/rollup-watch
+18 verbose headers { server: 'nginx/1.10.1',
+18 verbose headers   'last-modified': 'Mon, 11 Jul 2016 23:16:57 GMT',
+18 verbose headers   etag: '"578428e9-31cd"',
+18 verbose headers   'cache-control': 'max-age=300',
+18 verbose headers   'accept-ranges': 'bytes',
+18 verbose headers   date: 'Thu, 29 Dec 2016 09:29:27 GMT',
+18 verbose headers   via: '1.1 varnish',
+18 verbose headers   connection: 'keep-alive',
+18 verbose headers   'x-served-by': 'cache-hhn1529-HHN',
+18 verbose headers   'x-cache': 'MISS',
+18 verbose headers   'x-cache-hits': '0',
+18 verbose headers   'x-timer': 'S1483003767.513756,VS0,VE1',
+18 verbose headers   vary: 'Accept-Encoding' }
+19 silly get cb [ 304,
+19 silly get   { server: 'nginx/1.10.1',
+19 silly get     'last-modified': 'Mon, 11 Jul 2016 23:16:57 GMT',
+19 silly get     etag: '"578428e9-31cd"',
+19 silly get     'cache-control': 'max-age=300',
+19 silly get     'accept-ranges': 'bytes',
+19 silly get     date: 'Thu, 29 Dec 2016 09:29:27 GMT',
+19 silly get     via: '1.1 varnish',
+19 silly get     connection: 'keep-alive',
+19 silly get     'x-served-by': 'cache-hhn1529-HHN',
+19 silly get     'x-cache': 'MISS',
+19 silly get     'x-cache-hits': '0',
+19 silly get     'x-timer': 'S1483003767.513756,VS0,VE1',
+19 silly get     vary: 'Accept-Encoding' } ]
+20 verbose etag https://registry.npmjs.org/rollup-watch from cache
+21 verbose get saving rollup-watch to /Users/arthur/.npm/registry.npmjs.org/rollup-watch/.cache.json
+22 verbose correctMkdir /Users/arthur/.npm correctMkdir not in flight; initializing
+23 verbose exit [ 0, true ]
+24 verbose stack Error: write EPIPE
+24 verbose stack     at exports._errnoException (util.js:1026:11)
+24 verbose stack     at WriteWrap.afterWrite (net.js:799:14)
+25 verbose cwd /Users/arthur/code/Github Projects/Polythene/polythene/rewrite/packages/test
+26 error Darwin 16.1.0
+27 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "show" "rollup-watch" "version"
+28 error node v6.9.1
+29 error npm  v3.10.8
+30 error code EPIPE
+31 error errno EPIPE
+32 error syscall write
+33 error write EPIPE
+34 error If you need help, you may report this error at:
+34 error     <https://github.com/npm/npm/issues>
+35 verbose exit [ 1, true ]

@@ -49,7 +49,7 @@ const makeRipple = (e, state, attrs) => {
   style.opacity = initialOpacity;
 
   state.animating = true;
-  const onEnd = (evt) => {
+  const onEnd = evt => {
     state.animating = false;
     wavesEl.classList.remove(CSS_CLASSES.wavesAnimating);
     wavesEl.removeEventListener(ANIMATION_END_EVENT, onEnd, false);
@@ -64,7 +64,7 @@ const makeRipple = (e, state, attrs) => {
   wavesEl.classList.add(CSS_CLASSES.wavesAnimating);
 };
 
-const initRipple = (vnode) => {
+const initRipple = vnode => {
   const state = vnode.state;
   const attrs = vnode.attrs;
   if (!vnode.dom) {
@@ -81,7 +81,7 @@ const initRipple = (vnode) => {
   };
 };
 
-const view = (vnode) => {
+const view = vnode => {
   const attrs = vnode.attrs;
   if (attrs.disabled) {
     return null;
@@ -107,7 +107,7 @@ const view = (vnode) => {
 };
 
 export const ripple = {
-  oninit: (vnode) => {
+  oninit: vnode => {
     vnode.state = {
       animating: false,
       ripple: undefined,

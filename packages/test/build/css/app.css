@@ -12,6 +12,7 @@
 }
 .prewrap {
   white-space: pre-wrap;
+  word-break: break-all;
 }
 .height-100px {
   height: 100px;

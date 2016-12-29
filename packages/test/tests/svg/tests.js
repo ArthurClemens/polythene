@@ -27,6 +27,14 @@ export const tests = [
     }
   },
   {
+    name: "Option: element",
+    component,
+    attrs: {
+      element: "div",
+      content: m.trust("<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"></svg>")
+    }
+  },
+  {
     name: "Option: content (trusted svg)",
     component,
     attrs: {

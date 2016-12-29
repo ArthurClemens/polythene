@@ -10,7 +10,7 @@ const CSS_CLASSES = {
   depth_n: "pe-shadow--z-"
 };
 
-const view = (vnode) => {
+const view = vnode => {
   const attrs = vnode.attrs;
   const depthClass = `${CSS_CLASSES.depth_n}${Math.min(5, attrs.z !== undefined ? attrs.z : 1)}`;
   const element = attrs.element || "div";

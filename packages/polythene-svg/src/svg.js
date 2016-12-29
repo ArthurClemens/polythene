@@ -5,7 +5,7 @@ const CSS_CLASSES = {
   component: "pe-svg"
 };
 
-const view = (vnode) => {
+const view = vnode => {
   const attrs = vnode.attrs;
   const element = attrs.element || "div";
   const props = Object.assign(

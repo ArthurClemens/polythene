@@ -84,11 +84,11 @@ const initTapEvents = (el, state, attrs) => {
   el.addEventListener(touchStartEvent, tapStart);
 };
 
-const clearTapEvents = (el) => {
+const clearTapEvents = el => {
   el.removeEventListener(touchStartEvent, tapStart);
 };
 
-const view = (vnode) => {
+const view = vnode => {
   const state = vnode.state || {};
   const attrs = vnode.attrs || {};
   const noink = (attrs.ink !== undefined && attrs.ink === false);
@@ -160,7 +160,7 @@ const view = (vnode) => {
 };
 
 export const button = {
-  oninit: (vnode) => {
+  oninit: vnode => {
     const z = (vnode.attrs.z !== undefined) ? vnode.attrs.z : 1;
     vnode.state = {
       el: undefined,
@@ -172,14 +172,14 @@ export const button = {
       mouseover: false
     };
   },
-  oncreate: (vnode) => {
+  oncreate: vnode => {
     if (!vnode.attrs.disabled && !vnode.state.inactive && !vnode.state.tapEventsInited) {
       vnode.state.el = vnode.dom;
       initTapEvents(vnode.dom, vnode.state, vnode.attrs);
       vnode.state.tapEventsInited = true;
     }
   },
-  onremove: (vnode) => {
+  onremove: vnode => {
     if (vnode.state.tapEventsInited) {
       clearTapEvents(vnode.dom);
     }

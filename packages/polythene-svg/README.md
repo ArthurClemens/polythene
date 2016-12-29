@@ -33,6 +33,13 @@ const mySvg = m(svg, {
 
 A large collection of ready to use mSVG icons is available at [mmsvg](https://github.com/ArthurClemens/mmsvg).
 
+You can create your own mSVG icons using this template:
+
+~~~javascript
+var m = require("mithril");
+module.exports = m.trust("paste svg contents here");
+~~~
+
 
 ### 2. Using SVG XML
 

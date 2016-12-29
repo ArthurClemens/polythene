@@ -1,4 +1,4 @@
-export const hex = (hex) => {
+export const hex = hex => {
   const bigint = parseInt(hex.substring(1), 16);
   const r = (bigint >> 16) & 255;
   const g = (bigint >> 8) & 255;
