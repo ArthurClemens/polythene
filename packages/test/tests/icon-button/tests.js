@@ -56,6 +56,17 @@ export const tests = [
     }
   },
   {
+    name: "Option: raised and animateOnTap",
+    component,
+    attrs: {
+      icon: {
+        msvg: iconStars
+      },
+      raised: true,
+      animateOnTap: true
+    }
+  },
+  {
     name: "Option: type (small)",
     component,
     attrs: {

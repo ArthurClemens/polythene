@@ -23,6 +23,10 @@
 .test-ripple .pe-ripple {
   background-color: #eee;
 }
+
 .test-icon-button .pe-button--icon__content {
+  background-color: #fff;
+}
+.test-icon-button .result {
   background-color: #eee;
 }

@@ -5,8 +5,8 @@ import "./theme/index";
 
 const CSS_CLASSES = {
   component: "pe-button pe-button--icon",
-  content: "pe-button--icon__content",
-  compact: "pe-button--compact"
+  content:   "pe-button--icon__content",
+  compact:   "pe-button--compact"
 };
 
 const view = vnode => {
@@ -18,7 +18,6 @@ const view = vnode => {
       : null;
   return m(button, Object.assign(
     {},
-    {...attrs},
     {
       content: m("div", {class: CSS_CLASSES.content}, content),
       parentClass: [
@@ -27,9 +26,9 @@ const view = vnode => {
       ].join(" "),
       // default do not show hover effect
       wash: (attrs.wash !== undefined) ? attrs.wash : false,
-      ripple: attrs.ripple || null,
       animateOnTap: (attrs.animateOnTap !== undefined) ? attrs.animateOnTap : false
-    }
+    },
+    attrs
   ));
 };
 

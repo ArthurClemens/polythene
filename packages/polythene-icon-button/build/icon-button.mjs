@@ -154,14 +154,13 @@ var CSS_CLASSES = {
 var view = function view(vnode) {
   var attrs = vnode.attrs;
   var content = attrs.icon ? m(icon, attrs.icon) : attrs.content ? attrs.content : null;
-  return m(button, _extends({}, _extends({}, attrs), {
+  return m(button, _extends({}, {
     content: m("div", { class: CSS_CLASSES.content }, content),
     parentClass: [attrs.parentClass || CSS_CLASSES.component, attrs.compact ? CSS_CLASSES.compact : null].join(" "),
     // default do not show hover effect
     wash: attrs.wash !== undefined ? attrs.wash : false,
-    ripple: attrs.ripple || null,
     animateOnTap: attrs.animateOnTap !== undefined ? attrs.animateOnTap : false
-  }));
+  }, attrs));
 };
 
 var iconButton = {
