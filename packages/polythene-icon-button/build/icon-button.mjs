@@ -82,7 +82,7 @@ var layout = (function (config) {
 var style = function style(config, tint, type) {
   var scope = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
 
-  return [defineProperty({}, scope + ".pe-button.pe-button--icon", {
+  return [defineProperty({}, scope + ".pe-button.pe-button--icon, a.pe-button.pe-button--icon", {
     color: config["color_" + tint + "_" + type + "_normal_text"],
     background: "none",
 

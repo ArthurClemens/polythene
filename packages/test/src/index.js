@@ -6,6 +6,7 @@ import { rules as css } from "./styles";
 import { tests as polytheneTests } from "../tests/polythene/tests";
 import { tests as buttonTests } from "../tests/button/tests";
 import { tests as configTests } from "../tests/config/tests";
+import { tests as fabTests } from "../tests/fab/tests";
 import { tests as iconTests } from "../tests/icon/tests";
 import { tests as iconButtonTests } from "../tests/icon-button/tests";
 import { tests as rippleTests } from "../tests/ripple/tests";
@@ -48,6 +49,11 @@ const pages = [
     path: "/config",
     name: "Custom config",
     tests: configTests
+  },
+  {
+    path: "/fab",
+    name: "FAB",
+    tests: fabTests
   },
   {
     path: "/icon",

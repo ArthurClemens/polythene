@@ -22,7 +22,7 @@ const view = vnode => {
       content: m("div", {class: CSS_CLASSES.content}, content),
       parentClass: [
         attrs.parentClass || CSS_CLASSES.component,
-        attrs.compact ? CSS_CLASSES.compact : null
+        attrs.compact ? CSS_CLASSES.compact : null,
       ].join(" "),
       // defaults
       wash: false,

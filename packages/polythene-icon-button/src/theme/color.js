@@ -2,7 +2,7 @@ import { mixin } from "polythene-css";
 
 const style = (config, tint, type, scope = "") => {
   return [{
-    [scope + ".pe-button.pe-button--icon"]: {
+    [scope + ".pe-button.pe-button--icon, a.pe-button.pe-button--icon"]: {
       color: config["color_" + tint + "_" + type + "_normal_text"],
       background: "none",
 
