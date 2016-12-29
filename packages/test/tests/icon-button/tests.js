@@ -57,6 +57,7 @@ export const tests = [
   },
   {
     name: "Option: raised and animateOnTap",
+    interactive: true,
     component,
     attrs: {
       icon: {
@@ -64,6 +65,18 @@ export const tests = [
       },
       raised: true,
       animateOnTap: true
+    }
+  },
+  {
+    name: "Option: href",
+    interactive: true,
+    component,
+    attrs: {
+      icon: {
+        msvg: iconStars
+      },
+      href: "/shadow",
+      oncreate: m.route.link
     }
   },
   {

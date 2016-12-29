@@ -24,9 +24,9 @@ const view = vnode => {
         attrs.parentClass || CSS_CLASSES.component,
         attrs.compact ? CSS_CLASSES.compact : null
       ].join(" "),
-      // default do not show hover effect
-      wash: (attrs.wash !== undefined) ? attrs.wash : false,
-      animateOnTap: (attrs.animateOnTap !== undefined) ? attrs.animateOnTap : false
+      // defaults
+      wash: false,
+      animateOnTap: false
     },
     attrs
   ));
