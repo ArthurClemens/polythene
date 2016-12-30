@@ -407,7 +407,7 @@ var tests$3 = [{
     }
   }
 }, {
-  name: "Colored",
+  name: "Colored icon",
   component: component$2,
   attrs: {
     icon: {
@@ -415,6 +415,17 @@ var tests$3 = [{
     },
     style: {
       color: "yellow"
+    }
+  }
+}, {
+  name: "Colored background",
+  component: component$2,
+  attrs: {
+    icon: {
+      msvg: alarmAdd
+    },
+    style: {
+      "background-color": "red"
     }
   }
 }, {

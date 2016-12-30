@@ -1,4 +1,4 @@
-/* globals __dirname */
+/* globals process */
 
 /*
 UMD with custom config
@@ -11,7 +11,7 @@ umdConfig.plugins.unshift(
     aliases: [
       {
         id: "polythene-config",
-        resolveTo: __dirname + "/../tests/config/config.js"
+        resolveTo: process.cwd() + "/tests/config/config.js"
       }
     ]
   })

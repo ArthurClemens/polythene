@@ -7,12 +7,9 @@
   "jsnext:main": "build/js/test.mjs",
   "scripts": {
     "clean": "rm -rf build/js && mkdir build/js",
-    "rollup-build": "DEPS=false MODULE_NAME=test ../../node_modules/rollup/bin/rollup -c ./scripts/rollup.umd-with-alias.js && ../../node_modules/rollup/bin/rollup -c ./scripts/rollup.es-with-alias.js",
     "build": "npm run rollup-build",
-    "rollup-watch": "DEPS=false PORT=8080 WATCH_DIR=./build/ ../../node_modules/rollup/bin/rollup -c ./scripts/rollup.watch-with-alias.js --watch",
-    "watch": "npm run rollup-watch",
-    "test": "../../node_modules/jest/bin/jest.js tests/**",
-    "test:watch": "../../node_modules/jest/bin/jest.js tests/** --watch"
+    "dev": "wright build/index.html --serve build --js 'DEPS=true rollup -c ./scripts/rollup.umd-with-alias.js;js/test.js;src'",
+    "rollup-build": "DEPS=false MODULE_NAME=test rollup -c ./scripts/rollup.umd-with-alias.js && rollup -c ./scripts/rollup.es-with-alias.js"
   },
   "dependencies": {
     "mithril": "1.0.0-rc.6",
@@ -30,6 +27,8 @@
   },
   "devDependencies": {
     "mmsvg": "^1.3.0",
-    "rollup-plugin-pathmodify": "^1.0.1"
+    "rollup": "^0.39.0",
+    "rollup-plugin-pathmodify": "^1.0.1",
+    "wright": "github:porsager/wright"
   }
 }

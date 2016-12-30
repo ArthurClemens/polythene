@@ -29,6 +29,8 @@
     "rollup-plugin-serve": "^0.1.0",
     "rollup-plugin-uglify": "^1.0.1",
     "rollup-watch": "^2.5.0",
-    "tidy-html5": "^0.1.1"
+    "tidy-html5": "^0.1.1",
+    "wright": "github:porsager/wright",
+    "wrollup": "^0.1.21"
   }
 }
