@@ -2,11 +2,11 @@
   "name": "polythene-shadow",
   "version": "1.0.0",
   "description": "",
-  "main": "build/shadow.js",
-  "module": "build/shadow.mjs",
-  "jsnext:main": "build/shadow.mjs",
+  "main": "dist/shadow.js",
+  "module": "dist/shadow.mjs",
+  "jsnext:main": "dist/shadow.mjs",
   "scripts": {
-    "clean": "rm -rf build && mkdir build",
+    "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
     "build": "npm run rollup"
   },

@@ -2,11 +2,11 @@
   "name": "polythene-button",
   "version": "1.0.0",
   "description": "",
-  "main": "build/button.js",
-  "module": "build/button.mjs",
-  "jsnext:main": "build/button.mjs",
+  "main": "dist/button.js",
+  "module": "dist/button.mjs",
+  "jsnext:main": "dist/button.mjs",
   "scripts": {
-    "clean": "rm -rf build && mkdir build",
+    "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
     "build": "npm run rollup"
   },

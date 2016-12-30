@@ -2,11 +2,11 @@
   "name": "polythene-svg",
   "version": "1.0.0",
   "description": "",
-  "main": "build/svg.js",
-  "module": "build/svg.mjs",
-  "jsnext:main": "build/svg.mjs",
+  "main": "dist/svg.js",
+  "module": "dist/svg.mjs",
+  "jsnext:main": "dist/svg.mjs",
   "scripts": {
-    "clean": "rm -rf build && mkdir build",
+    "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
     "build": "npm run rollup"
   },

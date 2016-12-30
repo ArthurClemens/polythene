@@ -2,11 +2,11 @@
   "name": "polythene-fab",
   "version": "1.0.0",
   "description": "",
-  "main": "build/fab.js",
-  "module": "build/fab.mjs",
-  "jsnext:main": "build/fab.mjs",
+  "main": "dist/fab.js",
+  "module": "dist/fab.mjs",
+  "jsnext:main": "dist/fab.mjs",
   "scripts": {
-    "clean": "rm -rf build && mkdir build",
+    "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
     "build": "npm run rollup"
   },

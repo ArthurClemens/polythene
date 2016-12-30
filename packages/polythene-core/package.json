@@ -2,11 +2,11 @@
   "name": "polythene-core",
   "version": "1.0.0",
   "description": "",
-  "main": "build/core.js",
-  "module": "build/core.mjs",
-  "jsnext:main": "build/core.mjs",
+  "main": "dist/core.js",
+  "module": "dist/core.mjs",
+  "jsnext:main": "dist/core.mjs",
   "scripts": {
-    "clean": "rm -rf build && mkdir build",
+    "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
     "build": "npm run rollup"
   },

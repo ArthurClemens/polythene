@@ -2,11 +2,11 @@
   "name": "polythene-tools",
   "version": "1.0.0",
   "description": "",
-  "main": "build/tools.js",
-  "module": "build/tools.mjs",
-  "jsnext:main": "build/tools.mjs",
+  "main": "dist/tools.js",
+  "module": "dist/tools.mjs",
+  "jsnext:main": "dist/tools.mjs",
   "scripts": {
-    "clean": "rm -rf build && mkdir build",
+    "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
     "build": "npm run rollup"
   },

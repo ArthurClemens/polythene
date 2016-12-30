@@ -2,11 +2,11 @@
   "name": "polythene-ripple",
   "version": "1.0.0",
   "description": "",
-  "main": "build/ripple.js",
-  "module": "build/ripple.mjs",
-  "jsnext:main": "build/ripple.mjs",
+  "main": "dist/ripple.js",
+  "module": "dist/ripple.mjs",
+  "jsnext:main": "dist/ripple.mjs",
   "scripts": {
-    "clean": "rm -rf build && mkdir build",
+    "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
     "build": "npm run rollup"
   },

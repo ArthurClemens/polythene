@@ -2,11 +2,11 @@
   "name": "polythene-icon-button",
   "version": "1.0.0",
   "description": "",
-  "main": "build/icon-button.js",
-  "module": "build/icon-button.mjs",
-  "jsnext:main": "build/icon-button.mjs",
+  "main": "dist/icon-button.js",
+  "module": "dist/icon-button.mjs",
+  "jsnext:main": "dist/icon-button.mjs",
   "scripts": {
-    "clean": "rm -rf build && mkdir build",
+    "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
     "build": "npm run rollup"
   },

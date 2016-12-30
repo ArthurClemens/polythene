@@ -2,11 +2,11 @@
   "name": "polythene-theme",
   "version": "1.0.0",
   "description": "",
-  "main": "build/theme.js",
-  "module": "build/theme.mjs",
-  "jsnext:main": "build/theme.mjs",
+  "main": "dist/theme.js",
+  "module": "dist/theme.mjs",
+  "jsnext:main": "dist/theme.mjs",
   "scripts": {
-    "clean": "rm -rf build && mkdir build",
+    "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
     "build": "npm run rollup"
   },

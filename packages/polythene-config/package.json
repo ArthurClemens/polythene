@@ -2,11 +2,11 @@
   "name": "polythene-config",
   "version": "1.0.0",
   "description": "",
-  "main": "build/config.js",
-  "module": "build/config.mjs",
-  "jsnext:main": "build/config.mjs",
+  "main": "dist/config.js",
+  "module": "dist/config.mjs",
+  "jsnext:main": "dist/config.mjs",
   "scripts": {
-    "clean": "rm -rf build && mkdir build",
+    "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
     "build": "npm run rollup"
   },
