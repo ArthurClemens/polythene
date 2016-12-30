@@ -1,12 +1,12 @@
 /* globals __dirname */
 
 /*
-UMD with custom config
+Watch with custom config
 */
-import umdConfig from "../../../scripts/rollup.umd.js";
+import watchConfig from "../../../scripts/rollup.watch.js";
 import pathmodify from "rollup-plugin-pathmodify";
 
-umdConfig.plugins.unshift(
+watchConfig.plugins.unshift(
   pathmodify({
     aliases: [
       {
@@ -17,5 +17,5 @@ umdConfig.plugins.unshift(
   })
 );
 
-export default umdConfig;
+export default watchConfig;
 
