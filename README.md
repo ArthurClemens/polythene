@@ -15,5 +15,14 @@ Includes Jest snapshots and a viewer to verify the output.
 
 * `cd packages/test`
 * `npm install`
+
+Build files:
+
 * `npm run build` - builds files in `dist`
 * `npm run dev` - WIP
+
+Update snapshots:
+
+* `npm run test`
+* `npm run test:watch`
+
