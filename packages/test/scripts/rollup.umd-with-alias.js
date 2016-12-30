@@ -17,5 +17,8 @@ umdConfig.plugins.unshift(
   })
 );
 
+delete umdConfig.dest;
+delete umdConfig.sourceMap;
+
 export default umdConfig;
 
