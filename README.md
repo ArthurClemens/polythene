@@ -6,6 +6,7 @@
 Polythene is now a monorepo. Components are located inside the "packages" directory.
 
 * `npm install`
+* `lerna bootstrap` - symlinks all component packages
 * `lerna run build` - builds all components (in each dist directory)
 * `lerna run clean` - removes all dist directories
 
