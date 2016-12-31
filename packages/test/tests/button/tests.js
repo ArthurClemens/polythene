@@ -1,6 +1,5 @@
 import m from "mithril";
 import { button } from "polythene-button";
-import { customButton } from "./custom-button";
 
 const component = button;
 
@@ -110,13 +109,6 @@ export const tests = [
     attrs: {
       label: "Form action",
       formaction: "http://polythene.js.org"
-    }
-  },
-  {
-    name: "Custom button",
-    component: customButton,
-    attrs: {
-      label: "Custom button"
     }
   },
   {

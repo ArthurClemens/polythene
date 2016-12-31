@@ -1,4 +1,78 @@
-exports[`test Element should be red 1`] = `
+exports[`test Buttons should have different background colors 1`] = `
+"<a tabindex=\"0\" class=\"pe-button pe-button--text send-button\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-ripple pe-ripple--constrained\">
+    <div class=\"pe-ripple__mask\">
+      <div class=\"pe-ripple__waves\"></div>
+    </div>
+  </div>
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Send
+  </div>
+</div></a><a tabindex=\"0\" class=
+\"pe-button pe-button--text info-button\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-ripple pe-ripple--constrained\">
+    <div class=\"pe-ripple__mask\">
+      <div class=\"pe-ripple__waves\"></div>
+    </div>
+  </div>
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Info
+  </div>
+</div></a><a tabindex=\"0\" class=
+\"pe-button pe-button--text send-button-x\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-ripple pe-ripple--constrained\">
+    <div class=\"pe-ripple__mask\">
+      <div class=\"pe-ripple__waves\"></div>
+    </div>
+  </div>
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Send
+  </div>
+</div></a><a tabindex=\"0\" class=
+\"pe-button pe-button--text info-button-x\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-ripple pe-ripple--constrained\">
+    <div class=\"pe-ripple__mask\">
+      <div class=\"pe-ripple__waves\"></div>
+    </div>
+  </div>
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Info
+  </div>
+</div></a>
+"
+`;
+
+exports[`test Custom button 1`] = `
+"<a tabindex=\"0\" class=
+\"pe-button pe-button--text pe-button--borders secondary-button\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-ripple pe-ripple--constrained\">
+    <div class=\"pe-ripple__mask\">
+      <div class=\"pe-ripple__waves\"></div>
+    </div>
+  </div>
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Secondary button
+  </div>
+</div></a>
+"
+`;
+
+exports[`test Element should have a red background 1`] = `
 "<div style=\"width: 100px; height: 100px;\" class=\"my-component\">
 </div>
 "
