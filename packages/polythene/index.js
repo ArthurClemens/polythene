@@ -27,7 +27,7 @@ export { shadow } from "polythene-shadow";
 
 export { svg } from "polythene-svg";
 
-export * from "polythene-theme";
+export * from "polythene-material-design";
 
 export { webfontLoader } from "polythene-tools";
 

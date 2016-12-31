@@ -2,7 +2,8 @@ import { defaultVariables } from "polythene-core";
 
 export const vars = {
   ...defaultVariables
-  // more...
+  // set new base color
+  , color_primary: "255, 152, 0" // orange 500
 };
 
 export const componentsConfig = {

@@ -8,7 +8,7 @@ import { iconButton } from 'polythene-icon-button';
 import { ripple } from 'polythene-ripple';
 import { shadow } from 'polythene-shadow';
 import { svg } from 'polythene-svg';
-import 'polythene-theme';
+import 'polythene-material-design';
 import { webfontLoader } from 'polythene-tools';
 
 

@@ -1,6 +1,6 @@
 import m from 'mithril';
 import 'polythene-fastclick';
-import 'polythene-theme';
+import 'polythene-material-design';
 import { button, icon, iconButton, ripple, shadow, svg, webfontLoader } from 'polythene';
 import * as polythene from 'polythene';
 import { button as button$1 } from 'polythene-button';

@@ -1,10 +1,10 @@
 {
-  "name": "polythene-theme",
+  "name": "polythene-material-design",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/theme.js",
-  "module": "dist/theme.mjs",
-  "jsnext:main": "dist/theme.mjs",
+  "main": "dist/material-design.js",
+  "module": "dist/material-design.mjs",
+  "jsnext:main": "dist/material-design.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",

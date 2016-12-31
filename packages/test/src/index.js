@@ -1,6 +1,6 @@
 import m from "mithril";
 import "polythene-fastclick";
-import "polythene-theme";
+import "polythene-material-design";
 import { tidy } from "../scripts/render";
 import { rules as css } from "./styles";
 import { tests as polytheneTests } from "../tests/polythene/tests";
