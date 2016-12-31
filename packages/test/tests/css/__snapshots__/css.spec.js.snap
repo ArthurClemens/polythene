@@ -1,0 +1,5 @@
+exports[`test Element should be red 1`] = `
+"<div style=\"width: 100px; height: 100px;\" class=\"my-component\">
+</div>
+"
+`;

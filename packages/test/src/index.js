@@ -11,6 +11,8 @@ import { tests as iconButtonTests } from "../tests/icon-button/tests";
 import { tests as rippleTests } from "../tests/ripple/tests";
 import { tests as shadowTests } from "../tests/shadow/tests";
 import { tests as svgTests } from "../tests/svg/tests";
+
+import { tests as cssTests } from "../tests/css/tests";
 import { tests as themeTests } from "../tests/theme/tests";
 
 const testsPage = (name, tests) => ({
@@ -79,6 +81,11 @@ const pages = [
     path: "/theme",
     name: "Custom theme",
     tests: themeTests
+  },
+  {
+    path: "/css",
+    name: "CSS styling",
+    tests: cssTests
   }
 ];
 
