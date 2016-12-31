@@ -1,18 +1,20 @@
 # Theme
 
+Create a theme by writing a new theme module that exports variables `vars` and `componentStyles`.
+
 
 ```javascript
-import { vars as defaultVars } from "polythene-config";
-export const appConfig = Object.assign({}, 
-  defaultVars,
-  {
-    //...
-  }
-);
+import { defaultVariables } from "polythene-core";
 
-export const componentsConfig = {
-  button: (config) => {
-    const primaryButtonCfg = Object.assign({}, config, {
+export const vars = {
+  ...defaultVariables
+  // set new base color
+  , color_primary: "255, 152, 0" // orange 500
+};
+
+export const componentStyles = {
+  button: (vars) => {
+    const themeVars = Object.assign({}, vars, {
       border_radius: 0,
       text_transform: "none",
       color_light_flat_normal_background: "#673ab7",
@@ -21,10 +23,10 @@ export const componentsConfig = {
     return [
       {
         // default Polythene button (keep this)
-        "": config
+        "": vars
       }, 
       {
-        ".my-button--primary": primaryButtonCfg
+        ".my-button--primary": themeVars
       }
     ];
   }

@@ -1,8 +1,8 @@
 import m from 'mithril';
 import { icon } from 'polythene-icon';
-import { button, buttonConfig } from 'polythene-button';
+import { button, buttonVars } from 'polythene-button';
 import { mixin, styler } from 'polythene-css';
-import { componentsConfig, vars } from 'polythene-theme';
+import { styles, vars } from 'polythene-theme';
 
 var defineProperty = function (obj, key, value) {
   if (key in obj) {
@@ -36,7 +36,7 @@ var _extends = Object.assign || function (target) {
 var padding = (vars.grid_unit_icon_button - vars.unit_icon_size) / 2; // 12
 var padding_compact = (vars.grid_unit_icon_button - vars.unit_icon_size) / 3; // 8
 
-var componentConfig = _extends({}, buttonConfig, {
+var vars$1 = _extends({}, buttonVars, {
   padding: padding,
   padding_compact: padding_compact,
 
@@ -143,7 +143,7 @@ var color = (function (config) {
   return mixin.createStyles(config, createStyles$1);
 });
 
-styler.styleComponent("pe-icon-button", "icon-button", componentsConfig, componentConfig, layout, color);
+styler.styleComponent("pe-icon-button", "icon-button", styles, vars$1, layout, color);
 
 var CSS_CLASSES = {
   component: "pe-button pe-button--icon",
@@ -167,4 +167,4 @@ var iconButton = {
   view: view
 };
 
-export { iconButton, componentConfig as iconButtonConfig };
+export { iconButton, vars$1 as iconButtonVars };

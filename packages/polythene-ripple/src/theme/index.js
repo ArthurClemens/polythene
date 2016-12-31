@@ -1,6 +1,6 @@
 import { styler } from "polythene-css";
-import { componentsConfig } from "polythene-theme";
-import componentConfig from "./config";
+import { styles } from "polythene-theme";
+import vars from "./vars";
 import layout from "./layout";
 
-styler.styleComponent("pe-ripple", "ripple", componentsConfig, componentConfig, layout);
+styler.styleComponent("pe-ripple", "ripple", styles, vars, layout);

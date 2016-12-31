@@ -29,7 +29,5 @@ export { svg } from "polythene-svg";
 
 export * from "polythene-material-design";
 
-export { vars, componentsConfig } from "polythene-theme";
-
 export { webfontLoader } from "polythene-tools";
 

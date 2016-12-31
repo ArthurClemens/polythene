@@ -9,9 +9,8 @@ import { ripple } from 'polythene-ripple';
 import { shadow } from 'polythene-shadow';
 import { svg } from 'polythene-svg';
 import 'polythene-material-design';
-import { componentsConfig, vars } from 'polythene-theme';
 import { webfontLoader } from 'polythene-tools';
 
 
 
-export { button, defaultVariables, isTouch, touchStartEvent, touchEndEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, filterSupportedAttributes, mixin, styler, fab, icon, iconButton, ripple, shadow, svg, vars, componentsConfig, webfontLoader };
+export { button, defaultVariables, isTouch, touchStartEvent, touchEndEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, filterSupportedAttributes, mixin, styler, fab, icon, iconButton, ripple, shadow, svg, webfontLoader };

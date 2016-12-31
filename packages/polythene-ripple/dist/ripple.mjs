@@ -1,9 +1,9 @@
 import m from 'mithril';
 import { animationEndEvent, filterSupportedAttributes, isTouch, touchEndEvent } from 'polythene-core';
 import { mixin, styler } from 'polythene-css';
-import { componentsConfig, vars } from 'polythene-theme';
+import { styles, vars } from 'polythene-theme';
 
-var componentConfig = {
+var vars$1 = {
   start_scale: 0.1,
   end_scale: 2,
   start_opacity: 0.2,
@@ -66,7 +66,7 @@ var layout = (function (config) {
   return mixin.createStyles(config, createStyles);
 });
 
-styler.styleComponent("pe-ripple", "ripple", componentsConfig, componentConfig, layout);
+styler.styleComponent("pe-ripple", "ripple", styles, vars$1, layout);
 
 var _extends = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
@@ -189,4 +189,4 @@ var ripple = {
   view: view
 };
 
-export { ripple, componentConfig as rippleConfig };
+export { ripple, vars$1 as rippleVars };

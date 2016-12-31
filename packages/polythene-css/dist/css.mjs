@@ -206,15 +206,15 @@ var mixin = {
   vendorize: vendorize
 };
 
-var styleComponent = function styleComponent(name, key, componentsConfig, componentConfig) {
-  for (var _len = arguments.length, configFns = Array(_len > 4 ? _len - 4 : 0), _key = 4; _key < _len; _key++) {
-    configFns[_key - 4] = arguments[_key];
+var styleComponent = function styleComponent(name, key, styles, vars$$1) {
+  for (var _len = arguments.length, styleFns = Array(_len > 4 ? _len - 4 : 0), _key = 4; _key < _len; _key++) {
+    styleFns[_key - 4] = arguments[_key];
   }
 
-  var customConfigFn = componentsConfig[key];
-  var config = customConfigFn ? customConfigFn(componentConfig) : componentConfig;
-  add(name, configFns.map(function (c) {
-    return c(config);
+  var styleVarFn = styles[key];
+  var styleVars = styleVarFn ? styleVarFn(vars$$1) : vars$$1;
+  add(name, styleFns.map(function (f) {
+    return f(styleVars);
   }));
 };
 

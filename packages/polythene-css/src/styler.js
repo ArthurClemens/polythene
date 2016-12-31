@@ -1,9 +1,9 @@
 import j2c from "j2c";
 
-const styleComponent = (name, key, componentsConfig, componentConfig, ...configFns) => {
-  const customConfigFn = componentsConfig[key];
-  const config = customConfigFn ? customConfigFn(componentConfig) : componentConfig;
-  add(name, configFns.map(c => c(config)));
+const styleComponent = (name, key, styles, vars, ...styleFns) => {
+  const styleVarFn = styles[key];
+  const styleVars = styleVarFn ? styleVarFn(vars) : vars;
+  add(name, styleFns.map(f => f(styleVars)));
 };
 
 /*

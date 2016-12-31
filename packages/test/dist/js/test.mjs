@@ -1,11 +1,11 @@
 import m from 'mithril';
 import 'polythene-fastclick';
 import 'polythene-material-design';
-import { button, icon, iconButton, ripple, shadow, svg, webfontLoader } from 'polythene';
+import { button, fab, icon, iconButton, ripple, shadow, svg, webfontLoader } from 'polythene';
 import * as polythene from 'polythene';
 import { button as button$1 } from 'polythene-button';
 import { styler } from 'polythene-css';
-import { fab } from 'polythene-fab';
+import { fab as fab$1 } from 'polythene-fab';
 import { icon as icon$1 } from 'polythene-icon';
 import { iconButton as iconButton$1 } from 'polythene-icon-button';
 import { ripple as ripple$1 } from 'polythene-ripple';
@@ -67,6 +67,16 @@ var tests = [{
   component: button,
   attrs: {
     label: "Button"
+  }
+}, {
+  name: "FAB",
+  component: fab,
+  attrs: {
+    icon: {
+      svg: {
+        content: m.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z\"/></svg>")
+      }
+    }
   }
 }, {
   name: "Icon",
@@ -369,7 +379,7 @@ var tests$1 = [{
 var m$1 = m;
 var alarmAdd = m$1.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3V9z"/></svg>');
 
-var component$1 = fab;
+var component$1 = fab$1;
 
 var tests$2 = [{
   name: "No options",
@@ -963,14 +973,20 @@ var tests$7 = [{
   }
 }];
 
-var component$7 = button$1;
-
 var tests$8 = [{
   name: "Theme: button (class .my-button--primary)",
-  component: component$7,
+  button: button$1,
   attrs: {
     label: "Button",
     class: "my-button--primary"
+  }
+}, {
+  name: "Theme: FAB (global color)",
+  fab: fab$1,
+  attrs: {
+    icon: {
+      msvg: alarmAdd
+    }
   }
 }];
 

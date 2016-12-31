@@ -1,11 +1,11 @@
 import m from 'mithril';
 import { iconButton } from 'polythene-icon-button';
 import { mixin, styler } from 'polythene-css';
-import { componentsConfig, vars } from 'polythene-theme';
+import { styles, vars } from 'polythene-theme';
 
 var rgba = vars.rgba;
 
-var componentConfig = {
+var vars$1 = {
   size_regular: 7 * vars.grid_unit_component,
   size_mini: 5 * vars.grid_unit_component,
   padding_regular: 2 * vars.grid_unit_component,
@@ -118,7 +118,7 @@ var color = (function (config) {
   return mixin.createStyles(config, createStyles$1);
 });
 
-styler.styleComponent("pe-fab", "fab", componentsConfig, componentConfig, layout, color);
+styler.styleComponent("pe-fab", "fab", styles, vars$1, layout, color);
 
 var CSS_CLASSES = {
   component: "pe-button--fab",
@@ -148,4 +148,4 @@ var fab = {
   view: view
 };
 
-export { fab, componentConfig as fabConfig };
+export { fab, vars$1 as fabVars };

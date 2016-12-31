@@ -1,9 +1,9 @@
 import m from 'mithril';
 import { filterSupportedAttributes } from 'polythene-core';
 import { mixin, styler } from 'polythene-css';
-import { componentsConfig, vars } from 'polythene-theme';
+import { styles, vars } from 'polythene-theme';
 
-var componentConfig = {
+var vars$1 = {
   transition: "box-shadow 0.18s ease-out",
 
   "shadow-top-z-1": "none",
@@ -89,7 +89,7 @@ var layout = (function (config) {
 
 // Does not contain any color styles
 
-styler.styleComponent("pe-shadow", "shadow", componentsConfig, componentConfig, layout);
+styler.styleComponent("pe-shadow", "shadow", styles, vars$1, layout);
 
 var CSS_CLASSES = {
   component: "pe-shadow",
@@ -118,4 +118,4 @@ var shadow = {
   view: view
 };
 
-export { shadow, componentConfig as shadowConfig };
+export { shadow, vars$1 as shadowVars };

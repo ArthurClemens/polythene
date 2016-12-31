@@ -6,9 +6,9 @@ export const vars = {
   , color_primary: "255, 152, 0" // orange 500
 };
 
-export const componentsConfig = {
-  button: (config) => {
-    const primaryButtonCfg = Object.assign({}, config, {
+export const styles = {
+  button: (vars) => {
+    const primaryButtonVars = Object.assign({}, vars, {
       border_radius: 0,
       text_transform: "none",
       color_light_flat_normal_background: "#673ab7",
@@ -17,10 +17,10 @@ export const componentsConfig = {
     return [
       {
         // default Polythene button (keep this)
-        "": config
+        "": vars
       }, 
       {
-        ".my-button--primary": primaryButtonCfg
+        ".my-button--primary": primaryButtonVars
       }
     ];
   }

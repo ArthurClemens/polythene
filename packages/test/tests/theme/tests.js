@@ -1,14 +1,23 @@
 import { button } from "polythene-button";
-
-const component = button;
+import { fab } from "polythene-fab";
+import iconAlarm from "mmsvg/google/msvg/action/alarm-add";
 
 export const tests = [
   {
-    name: "Theme: button (class .my-button--primary)",
-    component,
+    name: "Theme: button (should be purple)",
+    component: button,
     attrs: {
       label: "Button",
       class: "my-button--primary"
     }
-  }
+  },
+  {
+    name: "Theme: FAB (should be orange)",
+    component: fab,
+    attrs: {
+      icon: {
+        msvg: iconAlarm
+      }
+    }
+  },
 ];

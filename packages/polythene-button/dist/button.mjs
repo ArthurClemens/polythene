@@ -1,6 +1,6 @@
 import m from 'mithril';
 import { mixin, styler } from 'polythene-css';
-import { componentsConfig, vars } from 'polythene-theme';
+import { styles, vars } from 'polythene-theme';
 import { shadow } from 'polythene-shadow';
 import { ripple } from 'polythene-ripple';
 import { filterSupportedAttributes, isTouch, subscribe, touchEndEvent, touchStartEvent } from 'polythene-core';
@@ -10,7 +10,7 @@ var rgba = vars.rgba;
 var touch_height = vars.unit_touch_height;
 var height = 36;
 
-var componentConfig = {
+var vars$1 = {
   margin_h: vars.grid_unit,
   border_radius: vars.unit_item_border_radius,
   font_size: 14,
@@ -288,7 +288,7 @@ var color = (function (config) {
   return mixin.createStyles(config, createStyles$1);
 });
 
-styler.styleComponent("pe-button-text", "button", componentsConfig, componentConfig, layout, color);
+styler.styleComponent("pe-button-text", "button", styles, vars$1, layout, color);
 
 var CSS_CLASSES = {
   component: "pe-button pe-button--text",
@@ -449,4 +449,4 @@ var button = {
   view: view
 };
 
-export { button, componentConfig as buttonConfig };
+export { button, vars$1 as buttonVars };

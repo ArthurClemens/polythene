@@ -1,2 +1,2 @@
 export { vars } from "./src/app";
-export {default as componentsConfig} from "./src/components";
+export {default as styles} from "./src/styles";

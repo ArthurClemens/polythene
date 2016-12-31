@@ -2,9 +2,9 @@ import m from 'mithril';
 import { filterSupportedAttributes } from 'polythene-core';
 import { svg } from 'polythene-svg';
 import { mixin, styler } from 'polythene-css';
-import { componentsConfig, vars } from 'polythene-theme';
+import { styles, vars } from 'polythene-theme';
 
-var componentConfig = {
+var vars$1 = {
   size_small: vars.unit_icon_size_small,
   size_regular: vars.unit_icon_size,
   size_medium: vars.unit_icon_size_medium,
@@ -68,7 +68,7 @@ var layout = (function (config) {
 
 // Does not contain color styles
 
-styler.styleComponent("pe-icon", "icon", componentsConfig, componentConfig, layout);
+styler.styleComponent("pe-icon", "icon", styles, vars$1, layout);
 
 var _extends = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
@@ -119,4 +119,4 @@ var icon = {
   view: view
 };
 
-export { icon, componentConfig as iconConfig };
+export { icon, vars$1 as iconVars };

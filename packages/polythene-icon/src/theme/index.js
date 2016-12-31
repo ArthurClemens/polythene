@@ -1,7 +1,7 @@
 import { styler } from "polythene-css";
-import { componentsConfig } from "polythene-theme";
-import componentConfig from "./config";
+import { styles } from "polythene-theme";
+import vars from "./vars";
 import layout from "./layout";
 // Does not contain color styles
 
-styler.styleComponent("pe-icon", "icon", componentsConfig, componentConfig, layout);
+styler.styleComponent("pe-icon", "icon", styles, vars, layout);

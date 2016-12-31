@@ -1,12 +1,12 @@
 import { vars } from "polythene-theme";
-import { buttonConfig } from "polythene-button";
+import { buttonVars } from "polythene-button";
 
 const padding = (vars.grid_unit_icon_button - vars.unit_icon_size) / 2; // 12
 const padding_compact = (vars.grid_unit_icon_button - vars.unit_icon_size) / 3; // 8
 
 export default Object.assign(
   {},
-  buttonConfig,
+  buttonVars,
   {
     padding,
     padding_compact,

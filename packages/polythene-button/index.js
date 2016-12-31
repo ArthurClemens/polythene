@@ -1,2 +1,2 @@
 export { button } from "./src/button";
-export { default as buttonConfig } from "./src/theme/config";
+export { default as buttonVars } from "./src/theme/vars";

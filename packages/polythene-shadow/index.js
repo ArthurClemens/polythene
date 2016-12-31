@@ -1,2 +1,2 @@
 export { shadow } from "./src/shadow";
-export { default as shadowConfig } from "./src/theme/config";
+export { default as shadowVars } from "./src/theme/vars";

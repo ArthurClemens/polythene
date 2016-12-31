@@ -4,10 +4,10 @@
 // Example:
 
 // export default {
-//   button: (config) => {
+//   button: (vars) => {
 //     const mainColor = "#e4521b";
 //     const textColor = "#fff";
-//     const configTestCfg = Object.assign({}, config, {
+//     const themeVars = Object.assign({}, vars, {
 //       border_radius: 0,
 //       color_light_raised_normal_background: mainColor,
 //       color_light_raised_normal_text: textColor,
@@ -15,10 +15,10 @@
 //       color_dark_raised_normal_text: textColor
 //     });
 //     return [{
-//         "": config
+//         "": vars
 //       }, // all pages
 //       {
-//         ".module-custom-theme": configTestCfg
+//         ".module-custom-theme": themeVars
 //       } // only this page
 //     ];
 //   }
