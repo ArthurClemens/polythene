@@ -43,6 +43,7 @@ Some modules have been renamed or moved.
 v0.2               |  v1.0
 ------------------ | ----------------
 `polythene/common` | `polythene-css`
+`polythene/config` | `polythene-theme`
 `polythene/theme`  | `polythene-material-design`
 `font-roboto`      | `polythene-theme/font-roboto`
 

@@ -1,10 +1,10 @@
 {
-  "name": "polythene-config",
+  "name": "polythene-theme",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/config.js",
-  "module": "dist/config.mjs",
-  "jsnext:main": "dist/config.mjs",
+  "main": "dist/theme.js",
+  "module": "dist/theme.mjs",
+  "jsnext:main": "dist/theme.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",

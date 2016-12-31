@@ -1,7 +1,7 @@
 import m from 'mithril';
 import { animationEndEvent, filterSupportedAttributes, isTouch, touchEndEvent } from 'polythene-core';
 import { mixin, styler } from 'polythene-css';
-import { componentsConfig, vars } from 'polythene-config';
+import { componentsConfig, vars } from 'polythene-theme';
 
 var componentConfig = {
   start_scale: 0.1,

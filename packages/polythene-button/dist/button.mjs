@@ -1,6 +1,6 @@
 import m from 'mithril';
 import { mixin, styler } from 'polythene-css';
-import { componentsConfig, vars } from 'polythene-config';
+import { componentsConfig, vars } from 'polythene-theme';
 import { shadow } from 'polythene-shadow';
 import { ripple } from 'polythene-ripple';
 import { filterSupportedAttributes, isTouch, subscribe, touchEndEvent, touchStartEvent } from 'polythene-core';

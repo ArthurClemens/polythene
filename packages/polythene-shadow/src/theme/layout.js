@@ -1,5 +1,5 @@
 import { mixin } from "polythene-css";
-import { vars } from "polythene-config";
+import { vars } from "polythene-theme";
 
 const shadowDirective = (dir) => {
   return mixin.vendorize({

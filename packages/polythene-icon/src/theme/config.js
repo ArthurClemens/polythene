@@ -1,4 +1,4 @@
-import { vars } from "polythene-config";
+import { vars } from "polythene-theme";
 
 export default {
   size_small: vars.unit_icon_size_small,

@@ -13,7 +13,7 @@
   "dependencies": {
     "j2c": "^0.11.2",
     "mithril": "1.0.0-rc.6",
-    "polythene-config": "1"
+    "polythene-theme": "1"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

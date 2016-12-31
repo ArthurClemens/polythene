@@ -1,7 +1,7 @@
 import m from 'mithril';
 import { filterSupportedAttributes } from 'polythene-core';
 import { mixin, styler } from 'polythene-css';
-import { componentsConfig, vars } from 'polythene-config';
+import { componentsConfig, vars } from 'polythene-theme';
 
 var componentConfig = {
   transition: "box-shadow 0.18s ease-out",

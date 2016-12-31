@@ -1,7 +1,7 @@
 import m from 'mithril';
 import { iconButton } from 'polythene-icon-button';
 import { mixin, styler } from 'polythene-css';
-import { componentsConfig, vars } from 'polythene-config';
+import { componentsConfig, vars } from 'polythene-theme';
 
 var rgba = vars.rgba;
 

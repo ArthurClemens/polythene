@@ -2,7 +2,7 @@ import m from 'mithril';
 import { filterSupportedAttributes } from 'polythene-core';
 import { svg } from 'polythene-svg';
 import { mixin, styler } from 'polythene-css';
-import { componentsConfig, vars } from 'polythene-config';
+import { componentsConfig, vars } from 'polythene-theme';
 
 var componentConfig = {
   size_small: vars.unit_icon_size_small,

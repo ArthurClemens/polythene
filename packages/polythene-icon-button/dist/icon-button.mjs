@@ -2,7 +2,7 @@ import m from 'mithril';
 import { icon } from 'polythene-icon';
 import { button, buttonConfig } from 'polythene-button';
 import { mixin, styler } from 'polythene-css';
-import { componentsConfig, vars } from 'polythene-config';
+import { componentsConfig, vars } from 'polythene-theme';
 
 var defineProperty = function (obj, key, value) {
   if (key in obj) {

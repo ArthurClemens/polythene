@@ -1,7 +1,5 @@
 export { button } from "polythene-button";
 
-export { vars, componentsConfig } from "polythene-config";
-
 export {
   defaultVariables,
   isTouch, touchStartEvent, touchEndEvent,
@@ -14,6 +12,8 @@ export {
   mixin,
   styler
 } from "polythene-css";
+
+export { fab } from "polythene-fab";
 
 export * from "polythene-fastclick";
 
@@ -28,6 +28,8 @@ export { shadow } from "polythene-shadow";
 export { svg } from "polythene-svg";
 
 export * from "polythene-material-design";
+
+export { vars, componentsConfig } from "polythene-theme";
 
 export { webfontLoader } from "polythene-tools";
 

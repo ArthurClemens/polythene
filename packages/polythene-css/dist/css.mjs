@@ -1,4 +1,4 @@
-import { vars } from 'polythene-config';
+import { vars } from 'polythene-theme';
 import j2c from 'j2c';
 
 var defineProperty = function (obj, key, value) {

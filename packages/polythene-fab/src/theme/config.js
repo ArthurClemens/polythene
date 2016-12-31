@@ -1,4 +1,4 @@
-import { vars } from "polythene-config";
+import { vars } from "polythene-theme";
 
 const rgba = vars.rgba;
 

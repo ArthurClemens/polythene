@@ -1,4 +1,4 @@
-import { vars } from "polythene-config";
+import { vars } from "polythene-theme";
 import { buttonConfig } from "polythene-button";
 
 const padding = (vars.grid_unit_icon_button - vars.unit_icon_size) / 2; // 12

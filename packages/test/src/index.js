@@ -5,13 +5,13 @@ import { tidy } from "../scripts/render";
 import { rules as css } from "./styles";
 import { tests as polytheneTests } from "../tests/polythene/tests";
 import { tests as buttonTests } from "../tests/button/tests";
-import { tests as configTests } from "../tests/config/tests";
 import { tests as fabTests } from "../tests/fab/tests";
 import { tests as iconTests } from "../tests/component_icon/tests";
 import { tests as iconButtonTests } from "../tests/icon-button/tests";
 import { tests as rippleTests } from "../tests/ripple/tests";
 import { tests as shadowTests } from "../tests/shadow/tests";
 import { tests as svgTests } from "../tests/svg/tests";
+import { tests as themeTests } from "../tests/theme/tests";
 
 const testsPage = (name, tests) => ({
   view: () => [
@@ -46,11 +46,6 @@ const pages = [
     tests: buttonTests
   },
   {
-    path: "/config",
-    name: "Custom config",
-    tests: configTests
-  },
-  {
     path: "/fab",
     name: "FAB",
     tests: fabTests
@@ -79,6 +74,11 @@ const pages = [
     path: "/svg",
     name: "SVG",
     tests: svgTests
+  },
+  {
+    path: "/theme",
+    name: "Custom theme",
+    tests: themeTests
   }
 ];
 

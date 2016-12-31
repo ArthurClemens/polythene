@@ -1,6 +1,6 @@
 // Mixins for j2c
 
-import { vars } from "polythene-config";
+import { vars } from "polythene-theme";
 
 // Creates j2c vendor key string from vendor list
 // mixin.vendorize({"user-select": "none"}, vars.prefixes_user_select)

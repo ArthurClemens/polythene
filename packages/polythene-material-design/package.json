@@ -12,8 +12,8 @@
   },
   "dependencies": {
     "mithril": "1.0.0-rc.6",
-    "polythene-config": "1",
     "polythene-css": "1",
+    "polythene-theme": "1",
     "polythene-tools": "1"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",

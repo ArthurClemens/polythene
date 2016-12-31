@@ -27,8 +27,8 @@ function roll() {
     plugins: [
       pathmodify({
         aliases: [{
-          id: "polythene-config",
-          resolveTo: process.cwd() + "/tests/config/config.js"
+          id: "polythene-theme",
+          resolveTo: process.cwd() + "/tests/theme/theme.js"
         }]
       }),
       resolve({

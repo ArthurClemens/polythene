@@ -1,5 +1,5 @@
 import { styler } from "polythene-css";
-import { componentsConfig } from "polythene-config";
+import { componentsConfig } from "polythene-theme";
 import componentConfig from "./config";
 import layout from "./layout";
 

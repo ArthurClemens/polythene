@@ -1,5 +1,5 @@
 import { mixin } from "polythene-css";
-import { vars } from "polythene-config";
+import { vars } from "polythene-theme";
 
 const iconSizesPx = (size = vars.unit_icon_size) => ({
   width: size + "px",

@@ -1,5 +1,5 @@
 import { styler } from 'polythene-css';
-import { vars } from 'polythene-config';
+import { vars } from 'polythene-theme';
 import { webfontLoader } from 'polythene-tools';
 
 var fontSize = 14;

@@ -19,7 +19,6 @@
     "mithril": "1.0.0-rc.6",
     "polythene": "1",
     "polythene-button": "1",
-    "polythene-config": "1",
     "polythene-core": "1",
     "polythene-css": "1",
     "polythene-fab": "1",
@@ -29,7 +28,8 @@
     "polythene-material-design": "1",
     "polythene-ripple": "1",
     "polythene-shadow": "1",
-    "polythene-svg": "1"
+    "polythene-svg": "1",
+    "polythene-theme": "1"
   },
   "devDependencies": {
     "mmsvg": "^1.3.0"
