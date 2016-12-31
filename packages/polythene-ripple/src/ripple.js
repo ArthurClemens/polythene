@@ -47,7 +47,6 @@ const makeRipple = (e, state, attrs) => {
     style["-o-animation-duration"] = duration + "s";
   style.backgroundColor = color;
   style.opacity = initialOpacity;
-
   state.animating = true;
   const onEnd = evt => {
     state.animating = false;
