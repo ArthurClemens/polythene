@@ -2,9 +2,9 @@
 
 
 ```javascript
-import {defaults} from "polythene-css";
+import { vars as defaultVars } from "polythene-config";
 export const appConfig = Object.assign({}, 
-  defaults,
+  defaultVars,
   {
     //...
   }

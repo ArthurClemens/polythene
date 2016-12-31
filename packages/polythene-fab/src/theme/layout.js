@@ -1,12 +1,12 @@
 import { mixin } from "polythene-css";
-import { appConfig } from "polythene-config";
+import { vars } from "polythene-config";
 
 const createStyles = (config) => {
   return [{
     ".pe-button--fab": [
       mixin.vendorize({
         "user-select": "none"
-      }, appConfig.prefixes_user_select), {
+      }, vars.prefixes_user_select), {
         display: "inline-block",
         position: "relative",
         outline: "none",
@@ -20,7 +20,7 @@ const createStyles = (config) => {
         "&.pe-button--fab-mini": {
           width: config.size_mini + "px",
           height: config.size_mini + "px",
-          padding: ((config.size_mini - appConfig.unit_icon_size) / 2) + "px"
+          padding: ((config.size_mini - vars.unit_icon_size) / 2) + "px"
         },
 
         " .pe-button__content": {
@@ -34,8 +34,8 @@ const createStyles = (config) => {
 
         " .pe-button__wash": [
           mixin.vendorize({
-            transition: "background-color " + appConfig.animation_duration + " ease-in-out"
-          }, appConfig.prefixes_transition), {
+            transition: "background-color " + vars.animation_duration + " ease-in-out"
+          }, vars.prefixes_transition), {
             "border-radius": "inherit",
             "pointer-events": "none",
             "background-color": "transparent"

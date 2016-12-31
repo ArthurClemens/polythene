@@ -1,8 +1,9 @@
 export { button } from "polythene-button";
 
-export { appConfig, componentsConfig } from "polythene-config";
+export { vars, componentsConfig } from "polythene-config";
 
 export {
+  defaultVariables,
   isTouch, touchStartEvent, touchEndEvent,
   throttle, subscribe, unsubscribe, emit,
   animationEndEvent,
@@ -11,8 +12,7 @@ export {
 
 export {
   mixin,
-  styler,
-  defaults
+  styler
 } from "polythene-css";
 
 export * from "polythene-fastclick";

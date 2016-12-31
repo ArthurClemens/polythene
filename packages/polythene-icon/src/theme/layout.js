@@ -1,7 +1,7 @@
 import { mixin } from "polythene-css";
-import { appConfig } from "polythene-config";
+import { vars } from "polythene-config";
 
-const iconSizesPx = (size = appConfig.unit_icon_size) => ({
+const iconSizesPx = (size = vars.unit_icon_size) => ({
   width: size + "px",
   height: size + "px"
 });

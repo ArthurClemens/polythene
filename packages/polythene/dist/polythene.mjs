@@ -1,7 +1,7 @@
 import { button } from 'polythene-button';
-import { appConfig, componentsConfig } from 'polythene-config';
-import { animationEndEvent, emit, filterSupportedAttributes, isTouch, subscribe, throttle, touchEndEvent, touchStartEvent, unsubscribe } from 'polythene-core';
-import { defaults, mixin, styler } from 'polythene-css';
+import { componentsConfig, vars } from 'polythene-config';
+import { animationEndEvent, defaultVariables, emit, filterSupportedAttributes, isTouch, subscribe, throttle, touchEndEvent, touchStartEvent, unsubscribe } from 'polythene-core';
+import { mixin, styler } from 'polythene-css';
 import 'polythene-fastclick';
 import { icon } from 'polythene-icon';
 import { iconButton } from 'polythene-icon-button';
@@ -13,4 +13,4 @@ import { webfontLoader } from 'polythene-tools';
 
 
 
-export { button, appConfig, componentsConfig, isTouch, touchStartEvent, touchEndEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, filterSupportedAttributes, mixin, styler, defaults, icon, iconButton, ripple, shadow, svg, webfontLoader };
+export { button, vars, componentsConfig, defaultVariables, isTouch, touchStartEvent, touchEndEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, filterSupportedAttributes, mixin, styler, icon, iconButton, ripple, shadow, svg, webfontLoader };

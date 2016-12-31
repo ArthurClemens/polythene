@@ -1,10 +1,10 @@
 import { mixin } from "polythene-css";
-import { appConfig } from "polythene-config";
+import { vars } from "polythene-config";
 
 const shadowDirective = (dir) => {
   return mixin.vendorize({
     "box-shadow": dir
-  }, appConfig.prefixes_box_shadow);
+  }, vars.prefixes_box_shadow);
 };
 
 const createStyles = (config) => {
@@ -23,7 +23,7 @@ const createStyles = (config) => {
         "&.pe-shadow--animated": {
           " .pe-shadow__bottom, .pe-shadow__top": mixin.vendorize({
             "transition": config.transition
-          }, appConfig.prefixes_transition)
+          }, vars.prefixes_transition)
         }
       },
 

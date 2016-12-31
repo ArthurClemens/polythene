@@ -1,27 +1,27 @@
 import m from 'mithril';
 import { iconButton } from 'polythene-icon-button';
 import { mixin, styler } from 'polythene-css';
-import { appConfig, componentsConfig } from 'polythene-config';
+import { componentsConfig, vars } from 'polythene-config';
 
-var rgba = appConfig.rgba;
+var rgba = vars.rgba;
 
 var componentConfig = {
-  size_regular: 7 * appConfig.grid_unit_component,
-  size_mini: 5 * appConfig.grid_unit_component,
-  padding_regular: 2 * appConfig.grid_unit_component,
+  size_regular: 7 * vars.grid_unit_component,
+  size_mini: 5 * vars.grid_unit_component,
+  padding_regular: 2 * vars.grid_unit_component,
 
-  color_light_background: rgba(appConfig.color_primary),
-  color_light_text: rgba(appConfig.color_primary_foreground),
+  color_light_background: rgba(vars.color_primary),
+  color_light_text: rgba(vars.color_primary_foreground),
 
-  color_dark_background: rgba(appConfig.color_primary),
-  color_dark_text: rgba(appConfig.color_primary_foreground)
+  color_dark_background: rgba(vars.color_primary),
+  color_dark_text: rgba(vars.color_primary_foreground)
 };
 
 var createStyles = function createStyles(config) {
   return [{
     ".pe-button--fab": [mixin.vendorize({
       "user-select": "none"
-    }, appConfig.prefixes_user_select), {
+    }, vars.prefixes_user_select), {
       display: "inline-block",
       position: "relative",
       outline: "none",
@@ -35,7 +35,7 @@ var createStyles = function createStyles(config) {
       "&.pe-button--fab-mini": {
         width: config.size_mini + "px",
         height: config.size_mini + "px",
-        padding: (config.size_mini - appConfig.unit_icon_size) / 2 + "px"
+        padding: (config.size_mini - vars.unit_icon_size) / 2 + "px"
       },
 
       " .pe-button__content": {
@@ -48,8 +48,8 @@ var createStyles = function createStyles(config) {
       },
 
       " .pe-button__wash": [mixin.vendorize({
-        transition: "background-color " + appConfig.animation_duration + " ease-in-out"
-      }, appConfig.prefixes_transition), {
+        transition: "background-color " + vars.animation_duration + " ease-in-out"
+      }, vars.prefixes_transition), {
         "border-radius": "inherit",
         "pointer-events": "none",
         "background-color": "transparent"

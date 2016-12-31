@@ -2,7 +2,7 @@ import m from 'mithril';
 import { icon } from 'polythene-icon';
 import { button, buttonConfig } from 'polythene-button';
 import { mixin, styler } from 'polythene-css';
-import { appConfig, componentsConfig } from 'polythene-config';
+import { componentsConfig, vars } from 'polythene-config';
 
 var defineProperty = function (obj, key, value) {
   if (key in obj) {
@@ -33,20 +33,20 @@ var _extends = Object.assign || function (target) {
   return target;
 };
 
-var padding = (appConfig.grid_unit_icon_button - appConfig.unit_icon_size) / 2; // 12
-var padding_compact = (appConfig.grid_unit_icon_button - appConfig.unit_icon_size) / 3; // 8
+var padding = (vars.grid_unit_icon_button - vars.unit_icon_size) / 2; // 12
+var padding_compact = (vars.grid_unit_icon_button - vars.unit_icon_size) / 3; // 8
 
 var componentConfig = _extends({}, buttonConfig, {
   padding: padding,
   padding_compact: padding_compact,
 
-  color_light_wash_opacity: appConfig.blend_light_background_hover_medium,
-  color_light_focus_opacity: appConfig.blend_light_background_hover_medium,
-  color_light_flat_normal_text: appConfig.rgba(appConfig.color_light_foreground, appConfig.blend_light_text_secondary),
+  color_light_wash_opacity: vars.blend_light_background_hover_medium,
+  color_light_focus_opacity: vars.blend_light_background_hover_medium,
+  color_light_flat_normal_text: vars.rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
 
-  color_dark_wash_opacity: appConfig.blend_dark_background_hover_medium,
-  color_dark_focus_opacity: appConfig.blend_dark_background_hover_medium,
-  color_dark_flat_normal_text: appConfig.rgba(appConfig.color_dark_foreground, appConfig.blend_dark_text_secondary)
+  color_dark_wash_opacity: vars.blend_dark_background_hover_medium,
+  color_dark_focus_opacity: vars.blend_dark_background_hover_medium,
+  color_dark_flat_normal_text: vars.rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary)
 });
 
 var createStyles = function createStyles(config) {

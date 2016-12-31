@@ -1,7 +1,7 @@
 import m from 'mithril';
 import { animationEndEvent, filterSupportedAttributes, isTouch, touchEndEvent } from 'polythene-core';
 import { mixin, styler } from 'polythene-css';
-import { appConfig, componentsConfig } from 'polythene-config';
+import { componentsConfig, vars } from 'polythene-config';
 
 var componentConfig = {
   start_scale: 0.1,
@@ -35,17 +35,17 @@ var createStyles = function createStyles(config) {
       },
       " .pe-ripple__mask": [mixin.fit(), mixin.vendorize({
         "transform": "translate3d(0,0,0)"
-      }, appConfig.prefixes_transform)],
+      }, vars.prefixes_transform)],
 
       " .pe-ripple__waves": [mixin.vendorize({
         "transform": "scale(" + config.start_scale + ")"
-      }, appConfig.prefixes_transform), mixin.vendorize({
-        "animation": "ripple " + appConfig.animation_curve_default
-      }, appConfig.prefixes_animation),
+      }, vars.prefixes_transform), mixin.vendorize({
+        "animation": "ripple " + vars.animation_curve_default
+      }, vars.prefixes_animation),
       // default durations; finally set in js
       mixin.vendorize({
-        "animation-duration": appConfig.animation_duration
-      }, appConfig.prefixes_animation), {
+        "animation-duration": vars.animation_duration
+      }, vars.prefixes_animation), {
         outline: "1px solid transparent", // for IE10
         position: "absolute",
         "border-radius": "50%",
@@ -53,7 +53,7 @@ var createStyles = function createStyles(config) {
         "pointer-events": "none",
         display: "none"
       }],
-      " .pe-ripple__waves--animated": {
+      " .pe-ripple__waves--animating": {
         display: "block"
       }
     }],
@@ -124,7 +124,6 @@ var makeRipple = function makeRipple(e, state, attrs) {
   style["animation-duration"] = style["-webkit-animation-duration"] = style["-moz-animation-duration"] = style["-o-animation-duration"] = duration + "s";
   style.backgroundColor = color;
   style.opacity = initialOpacity;
-
   state.animating = true;
   var onEnd = function onEnd(evt) {
     state.animating = false;

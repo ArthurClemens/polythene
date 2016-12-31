@@ -1,9 +1,9 @@
 // Mixins for j2c
 
-import defaults from "./defaults";
+import { vars } from "polythene-config";
 
 // Creates j2c vendor key string from vendor list
-// mixin.vendorize({"user-select": "none"}, defaults.prefixes_user_select)
+// mixin.vendorize({"user-select": "none"}, vars.prefixes_user_select)
 const vendorize = (what, prefixes) => {
   const vendorsSel = prefixes.map((v) => ("_" + v + "$")).join("");
   return {
@@ -141,21 +141,21 @@ const createStyles = (common, fn) => {
 };
 
 // Creats a transition with presets
-// mixin.defaultTransition("opacity", defaults.animation_duration)
-const defaultTransition = (properties = "all", duration = defaults.animation_duration, curve = defaults.animation_curve_default) => {
+// mixin.defaultTransition("opacity", vars.animation_duration)
+const defaultTransition = (properties = "all", duration = vars.animation_duration, curve = vars.animation_curve_default) => {
   return [
     vendorize({
       "transition-delay": 0
-    }, defaults.prefixes_transition),
+    }, vars.prefixes_transition),
     vendorize({
       "transition-duration": duration
-    }, defaults.prefixes_transition),
+    }, vars.prefixes_transition),
     vendorize({
       "transition-timing-function": curve
-    }, defaults.prefixes_transition),
+    }, vars.prefixes_transition),
     vendorize({
       "transition-property": properties
-    }, defaults.prefixes_transition),
+    }, vars.prefixes_transition),
   ];
 };
 

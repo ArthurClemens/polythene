@@ -1,10 +1,9 @@
-import {defaults} from "polythene-css";
-export const appConfig = Object.assign({}, 
-  defaults,
-  {
-    //...
-  }
-);
+import { defaultVariables } from "polythene-core";
+
+export const vars = {
+  ...defaultVariables
+  // more...
+};
 
 export const componentsConfig = {
   button: (config) => {
@@ -25,4 +24,3 @@ export const componentsConfig = {
     ];
   }
 };
-

@@ -1,5 +1,5 @@
 import { mixin } from "polythene-css";
-import { appConfig } from "polythene-config";
+import { vars } from "polythene-config";
 
 const kfRipple = (config) => ({
   " 100%": {
@@ -27,20 +27,20 @@ const createStyles = (config) => {
           mixin.fit(),
           mixin.vendorize({
             "transform": "translate3d(0,0,0)"
-          }, appConfig.prefixes_transform)
+          }, vars.prefixes_transform)
         ],
 
         " .pe-ripple__waves": [
           mixin.vendorize({
             "transform": "scale(" + config.start_scale + ")"
-          }, appConfig.prefixes_transform),
+          }, vars.prefixes_transform),
           mixin.vendorize({
-            "animation": "ripple " + appConfig.animation_curve_default
-          }, appConfig.prefixes_animation),
+            "animation": "ripple " + vars.animation_curve_default
+          }, vars.prefixes_animation),
           // default durations; finally set in js
           mixin.vendorize({
-            "animation-duration": appConfig.animation_duration
-          }, appConfig.prefixes_animation), {
+            "animation-duration": vars.animation_duration
+          }, vars.prefixes_animation), {
             outline: "1px solid transparent", // for IE10
             position: "absolute",
             "border-radius": "50%",
@@ -49,7 +49,7 @@ const createStyles = (config) => {
             display: "none"
           }
         ],
-        " .pe-ripple__waves--animated": {
+        " .pe-ripple__waves--animating": {
           display: "block"
         }
       }

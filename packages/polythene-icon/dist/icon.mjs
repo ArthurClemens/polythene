@@ -2,17 +2,17 @@ import m from 'mithril';
 import { filterSupportedAttributes } from 'polythene-core';
 import { svg } from 'polythene-svg';
 import { mixin, styler } from 'polythene-css';
-import { appConfig, componentsConfig } from 'polythene-config';
+import { componentsConfig, vars } from 'polythene-config';
 
 var componentConfig = {
-  size_small: appConfig.unit_icon_size_small,
-  size_regular: appConfig.unit_icon_size,
-  size_medium: appConfig.unit_icon_size_medium,
-  size_large: appConfig.unit_icon_size_large
+  size_small: vars.unit_icon_size_small,
+  size_regular: vars.unit_icon_size,
+  size_medium: vars.unit_icon_size_medium,
+  size_large: vars.unit_icon_size_large
 };
 
 var iconSizesPx = function iconSizesPx() {
-  var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : appConfig.unit_icon_size;
+  var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : vars.unit_icon_size;
   return {
     width: size + "px",
     height: size + "px"

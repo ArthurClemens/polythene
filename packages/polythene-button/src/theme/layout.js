@@ -1,12 +1,12 @@
 import { mixin } from "polythene-css";
-import { appConfig } from "polythene-config";
+import { vars } from "polythene-config";
 
 const createStyles = (config) => {
   return [{
     ".pe-button": [
       mixin.vendorize({
         "user-select": "none"
-      }, appConfig.prefixes_user_select), {
+      }, vars.prefixes_user_select), {
         outline: "none",
         padding: 0,
         "text-decoration": "none",

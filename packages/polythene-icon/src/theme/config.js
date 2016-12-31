@@ -1,8 +1,8 @@
-import { appConfig } from "polythene-config";
+import { vars } from "polythene-config";
 
 export default {
-  size_small: appConfig.unit_icon_size_small,
-  size_regular: appConfig.unit_icon_size,
-  size_medium: appConfig.unit_icon_size_medium,
-  size_large: appConfig.unit_icon_size_large    
+  size_small: vars.unit_icon_size_small,
+  size_regular: vars.unit_icon_size,
+  size_medium: vars.unit_icon_size_medium,
+  size_large: vars.unit_icon_size_large    
 };

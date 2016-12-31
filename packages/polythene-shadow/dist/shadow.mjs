@@ -1,7 +1,7 @@
 import m from 'mithril';
 import { filterSupportedAttributes } from 'polythene-core';
 import { mixin, styler } from 'polythene-css';
-import { appConfig, componentsConfig } from 'polythene-config';
+import { componentsConfig, vars } from 'polythene-config';
 
 var componentConfig = {
   transition: "box-shadow 0.18s ease-out",
@@ -57,7 +57,7 @@ var _extends = Object.assign || function (target) {
 var shadowDirective = function shadowDirective(dir) {
   return mixin.vendorize({
     "box-shadow": dir
-  }, appConfig.prefixes_box_shadow);
+  }, vars.prefixes_box_shadow);
 };
 
 var createStyles = function createStyles(config) {
@@ -73,7 +73,7 @@ var createStyles = function createStyles(config) {
       "&.pe-shadow--animated": {
         " .pe-shadow__bottom, .pe-shadow__top": mixin.vendorize({
           "transition": config.transition
-        }, appConfig.prefixes_transition)
+        }, vars.prefixes_transition)
       }
     }, [1, 2, 3, 4, 5].map(function (index) {
       var _ref;

@@ -1,5 +1,5 @@
 import { styler } from 'polythene-css';
-import { appConfig } from 'polythene-config';
+import { vars } from 'polythene-config';
 import { webfontLoader } from 'polythene-tools';
 
 var fontSize = 14;
@@ -11,23 +11,23 @@ var styles = [{
   }
 }, {
   " h1 small, h2 small, h3 small, h4 small, h5 small, h6 small": {
-    "font-weight": appConfig.font_weight_normal,
-    "line-height": appConfig.line_height,
+    "font-weight": vars.font_weight_normal,
+    "line-height": vars.line_height,
     "letter-spacing": "-0.02em",
     "font-size": "0.6em"
   }
 }, {
   " h1": {
     "font-size": "56px",
-    "font-weight": appConfig.font_weight_normal,
-    "line-height": appConfig.line_height,
+    "font-weight": vars.font_weight_normal,
+    "line-height": vars.line_height,
     "margin-top": "24px",
     "margin-bottom": "24px"
   }
 }, {
   " h2": {
     "font-size": "45px",
-    "font-weight": appConfig.font_weight_normal,
+    "font-weight": vars.font_weight_normal,
     "line-height": "48px",
     "margin-top": "24px",
     "margin-bottom": "24px"
@@ -35,7 +35,7 @@ var styles = [{
 }, {
   " h3": {
     "font-size": "34px",
-    "font-weight": appConfig.font_weight_normal,
+    "font-weight": vars.font_weight_normal,
     "line-height": "40px",
     "margin-top": "24px",
     "margin-bottom": "24px"
@@ -43,7 +43,7 @@ var styles = [{
 }, {
   " h4": {
     "font-size": "24px",
-    "font-weight": appConfig.font_weight_normal,
+    "font-weight": vars.font_weight_normal,
     "line-height": "32px",
     "-moz-osx-font-smoothing": "grayscale",
     "margin-top": "24px",
@@ -52,7 +52,7 @@ var styles = [{
 }, {
   " h5": {
     "font-size": "20px",
-    "font-weight": appConfig.font_weight_medium,
+    "font-weight": vars.font_weight_medium,
     "line-height": "1",
     "letter-spacing": "-0.02em",
     "margin-top": "24px",
@@ -61,7 +61,7 @@ var styles = [{
 }, {
   " h6": {
     "font-size": "16px",
-    "font-weight": appConfig.font_weight_normal,
+    "font-weight": vars.font_weight_normal,
     "line-height": "24px",
     "letter-spacing": "0.04em",
     "margin-top": "24px",
@@ -71,11 +71,11 @@ var styles = [{
   " html, body": {
     "font-size": fontSize + "px",
     "line-height": "20px",
-    "font-weight": appConfig.font_weight_normal
+    "font-weight": vars.font_weight_normal
   },
   " p": {
     "font-size": fontSize + "px",
-    "font-weight": appConfig.font_weight_normal,
+    "font-weight": vars.font_weight_normal,
     "line-height": "24px",
     "letter-spacing": "0",
     "margin-bottom": "16px"
@@ -83,21 +83,21 @@ var styles = [{
   " blockquote": {
     "position": "relative",
     "font-size": "24px",
-    "font-weight": appConfig.font_weight_normal,
+    "font-weight": vars.font_weight_normal,
     "font-style": "italic",
-    "line-height": appConfig.line_height,
+    "line-height": vars.line_height,
     "letter-spacing": "0.08em",
     "margin-top": "24px",
     "margin-bottom": "16px"
   },
   " ul, ol": {
     "font-size": fontSize + "px",
-    "font-weight": appConfig.font_weight_normal,
+    "font-weight": vars.font_weight_normal,
     "line-height": "24px",
     "letter-spacing": 0
   },
   "b, strong": {
-    "font-weight": appConfig.font_weight_medium
+    "font-weight": vars.font_weight_medium
   }
 }];
 
