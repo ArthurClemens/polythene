@@ -43,10 +43,10 @@ Use an options object to define specific behavior:
 
 ~~~javascript
 const myListTile = m(listTile, {
-    title: "Title",
-    after: m(ripple, {
-      constrained: false,
-      class: "colored-ripple"
+  title: "Title",
+  after: m(ripple, {
+    constrained: false,
+    class: "colored-ripple"
   })
 });
 ~~~

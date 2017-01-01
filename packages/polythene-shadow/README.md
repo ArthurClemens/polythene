@@ -18,8 +18,8 @@ Add the shadow to a Mithril element:
 
 ~~~javascript
 const myCard = m(".pe-card", [
-    m("div.self-center", "Card!"),
-    myShadow
+  m("div.self-center", "Card!"),
+  myShadow
 ]);
 ~~~
 

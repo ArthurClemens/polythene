@@ -14,9 +14,9 @@ import m from "mithril";
 import { iconButton } from "polythene-icon-button";
 
 const myIconButton = m(iconButton, {
-    icon: {
-        src: "img/arrow.png"
-    }
+  icon: {
+    src: "img/arrow.png"
+  }
 });
 ~~~
 
@@ -27,9 +27,9 @@ import gIconStars from "mmsvg/google/msvg/action/stars";
 import { iconButton } from "polythene-icon-button";
 
 const myIconButton = m(iconButton, {
-    icon: {
-        msvg: gIconStars
-    }
+  icon: {
+    msvg: gIconStars
+  }
 });
 ~~~
 
@@ -37,11 +37,11 @@ or pass a [svg](#svg) option object:
 
 ~~~javascript
 const myIconButton = m(iconButton, {
-    icon: {
-        svg: {
-            content: m.trust(svgString)
-        }
+  icon: {
+    svg: {
+      content: m.trust(svgString)
     }
+  }
 });
 ~~~
 
@@ -52,11 +52,11 @@ import { icon } from "polythene-icon";
 import gIconStars from "mmsvg/google/msvg/action/stars";
 
 const myIcon = m(icon, {
-    msvg: gIconStars
+  msvg: gIconStars
 });
 
 const myIconButton = m(iconButton, {
-    content: myIcon
+  content: myIcon
 });
 ~~~
 
@@ -67,14 +67,14 @@ The icon color is set with the CSS (text) `color` attribute of the parent elemen
 ~~~css
 /* CSS */
 .pe-button--icon {
-    color: red;
+  color: red;
 }
 ~~~
 
 ~~~javascript
 // JS
 const myIconButton = m(iconButton, {
-    class: "colored"
+  class: "colored"
 });
 ~~~
 
@@ -82,11 +82,11 @@ Disable hover and ripple effects:
 
 ~~~javascript
 const myIconButton = m(iconButton, {
-    icon: {
-        msvg: gIconStars
-    },
-    wash: false,
-    ink: false
+  icon: {
+    msvg: gIconStars
+  },
+  wash: false,
+  ink: false
 });
 ~~~
 
@@ -94,10 +94,10 @@ Compact (less padding):
 
 ~~~javascript
 const myIconButton = m(iconButton, {
-    icon: {
-        msvg: gIconStars
-    },
-    compact: true
+  icon: {
+    msvg: gIconStars
+  },
+  compact: true
 });
 ~~~
 

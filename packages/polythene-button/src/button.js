@@ -1,8 +1,8 @@
 import m from "mithril";
-import "./theme/index";
 import { shadow } from "polythene-shadow";
 import { ripple } from "polythene-ripple";
 import { isTouch, touchStartEvent, touchEndEvent, subscribe, filterSupportedAttributes } from "polythene-core";
+import "./theme/index";
 
 const CSS_CLASSES = {
   component: "pe-button pe-button--text",

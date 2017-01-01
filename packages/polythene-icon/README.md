@@ -41,7 +41,7 @@ To use SVG instead of an image, pass an [svg](#svg) option object:
 ~~~javascript
 const myIcon = m(icon, {
   svg: {
-      src: "img/arrow.svg"
+    src: "img/arrow.svg"
   }
 });
 ~~~

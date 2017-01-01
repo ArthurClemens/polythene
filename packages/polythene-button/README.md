@@ -14,8 +14,8 @@ import m from "mithril";
 import { button } from "polythene-button";
 
 const myButton = m(button, {
-    label: "Button",
-    raised: true
+  label: "Button",
+  raised: true
 });
 ~~~
 
@@ -23,9 +23,10 @@ Add a URL:
 
 ~~~javascript
 const myButton = m(button, {
-    label: "Button",
-    raised: true,
-    href: "index.html"
+  label: "Button",
+  raised: true,
+  href: "/index",
+  oncreate: m.route.link
 });
 ~~~
 
@@ -33,11 +34,11 @@ Add an onclick event:
 
 ~~~javascript
 const myButton = m(button, {
-    label: "Button",
-    raised: true,
-    events: {
-        onclick: () => console.log("click")
-    }
+  label: "Button",
+  raised: true,
+  events: {
+    onclick: () => console.log("click")
+  }
 });
 ~~~
 
