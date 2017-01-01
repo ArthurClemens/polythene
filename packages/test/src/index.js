@@ -8,6 +8,7 @@ import { tests as buttonTests } from "../tests/button/tests";
 import { tests as fabTests } from "../tests/fab/tests";
 import { tests as iconTests } from "../tests/component_icon/tests";
 import { tests as iconButtonTests } from "../tests/icon-button/tests";
+import { tests as listTileTests } from "../tests/list-tile/tests";
 import { tests as rippleTests } from "../tests/ripple/tests";
 import { tests as shadowTests } from "../tests/shadow/tests";
 import { tests as svgTests } from "../tests/svg/tests";
@@ -27,10 +28,10 @@ const testsPage = (name, tests) => ({
       m("span", name)
     ]),
     m(css.tests, {class: `test-${name.replace(/ /g, "-").toLowerCase()}`}, tests.map(test => {
-      const raw = tidy(m(test.component, test.attrs));
+      const raw = tidy(m(test.component, test.attrs, test.children));
       return m([css.resultRow, test.interactive ? css.interactive : null].join(""), [
         m(css.resultTitle, test.name),
-        m(css.result, m(css.content, m(test.component, test.attrs))),
+        m(css.result, m(css.content, m(test.component, test.attrs, test.children))),
         m(css.rawResult, raw)
       ]);
     }))
@@ -64,6 +65,11 @@ const pages = [
     tests: iconButtonTests
   },
   {
+    path: "/list-tile",
+    name: "List tile",
+    tests: listTileTests
+  },
+  {
     path: "/ripple",
     name: "Ripple",
     tests: rippleTests
@@ -85,12 +91,12 @@ const pages = [
   },
   {
     path: "/css",
-    name: "CSS styling",
+    name: "CSS tools",
     tests: cssTests
   },
   {
     path: "/css-classes",
-    name: "CSS classes styling",
+    name: "CSS classes",
     tests: cssClassesTests
   }
 ];

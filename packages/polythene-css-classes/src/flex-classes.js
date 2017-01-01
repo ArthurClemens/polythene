@@ -1,4 +1,4 @@
-import flex from "./flex";
+import { flex } from "polythene-css";
 
 const styles = [{
   ".layout, .layout.horizontal": flex.layout,

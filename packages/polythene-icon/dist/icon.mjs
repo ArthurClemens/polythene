@@ -62,8 +62,8 @@ var createStyles = function createStyles(componentVars) {
   }];
 };
 
-var layout = (function (config) {
-  return mixin.createStyles(config, createStyles);
+var layout = (function (componentVars) {
+  return mixin.createStyles(componentVars, createStyles);
 });
 
 // Does not contain color styles

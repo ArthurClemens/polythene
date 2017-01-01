@@ -1,13 +1,13 @@
 import { mixin } from "polythene-css";
 import { vars } from "polythene-theme";
 
-const shadowDirective = (dir) => {
+const shadowDirective = dir => {
   return mixin.vendorize({
     "box-shadow": dir
   }, vars.prefixes_box_shadow);
 };
 
-const createStyles = (componentVars) => {
+const createStyles = componentVars => {
   return [{
     ".pe-shadow": [
       mixin.fit(), {
@@ -35,4 +35,4 @@ const createStyles = (componentVars) => {
   }];
 };
 
-export default (componentVars) => (mixin.createStyles(componentVars, createStyles));
+export default componentVars => mixin.createStyles(componentVars, createStyles);

@@ -1,3 +1,6 @@
+.app {
+  padding-bottom: 40px;
+}
 .flex-one {
     flex: 1 0;
 }
@@ -20,13 +23,9 @@
 .pe-button.bordered-button .pe-button__content {
   border-color: #ddd;
 }
-.test-ripple .pe-ripple {
-  background-color: #eee;
-}
-
-.test-icon-button .pe-button--icon__content {
+.test-ripple .result .pe-ripple {
   background-color: #fff;
 }
-.test-icon-button .result {
-  background-color: #eee;
+.test-list-tile .result .pe-list-tile {
+  background-color: #fff;
 }

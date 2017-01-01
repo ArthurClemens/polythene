@@ -28,7 +28,7 @@ export const tests = [
     name: "Option: element",
     component,
     attrs: {
-      element: "blockquote"
+      element: "dl"
     }
   },
   {

@@ -74,7 +74,7 @@ const myBtn = m(button, {
 
 ### Option "url"
 
-The "url" object has been replaced with Mithril's "href" and "oncreate" options.
+The "url" object no longer uses a `config` attribute; use `oncreate: m.route.link` to create a route link.
 
 #### v0.2
 
@@ -91,8 +91,10 @@ const myBtn = m.component(button, {
 
 ```javascript
 const myBtn = m(button, {
-  href: "/page",
-  oncreate: m.route.link
+  url: {
+    href: "/page",
+    oncreate: m.route.link
+  }
 });
 ```
 

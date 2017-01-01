@@ -73,6 +73,7 @@ export const tests = [
   },
   {
     name: "Option: wash (false)",
+    interactive: true,
     component,
     attrs: {
       label: "No wash",
@@ -81,6 +82,7 @@ export const tests = [
   },
   {
     name: "Option: ink (false)",
+    interactive: true,
     component,
     attrs: {
       label: "No ink",
@@ -89,6 +91,7 @@ export const tests = [
   },
   {
     name: "Option: disabled",
+    interactive: true,
     component,
     attrs: {
       label: "Disabled",
@@ -128,22 +131,26 @@ export const tests = [
     }
   },
   {
-    name: "Option: href (with option oncreate)",
+    name: "Option: url (with oncreate)",
     interactive: true,
     component,
     attrs: {
       label: "Go to /#/shadow",
-      href: "/shadow",
-      oncreate: m.route.link
+      url: {
+        href: "/shadow",
+        oncreate: m.route.link
+      }
     }
   },
   {
-    name: "Option: href (without option oncreate)",
+    name: "Option: url (without oncreate)",
     interactive: true,
     component,
     attrs: {
       label: "Go to /shadow",
-      href: "/shadow"
+      url: {
+        href: "/shadow"
+      }
     }
   },
   {

@@ -6,7 +6,7 @@ const iconSizesPx = (size = vars.unit_icon_size) => ({
   height: size + "px"
 });
 
-const createStyles = (componentVars) => {
+const createStyles = componentVars => {
   return [{
     ".pe-icon": {
       display: "inline-block",
@@ -49,5 +49,5 @@ const createStyles = (componentVars) => {
   }];
 };
 
-export default (config) => (mixin.createStyles(config, createStyles));
+export default componentVars => mixin.createStyles(componentVars, createStyles);
 

@@ -23,6 +23,8 @@ export { icon } from "polythene-icon";
 
 export { iconButton } from "polythene-icon-button";
 
+export { listTile } from "polythene-list-tile";
+
 export { ripple } from "polythene-ripple";
 
 export { shadow } from "polythene-shadow";

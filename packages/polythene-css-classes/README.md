@@ -18,23 +18,6 @@ Use in Mithril elements:
 m(".layout.vertical", ...)
 ~~~
 
-### Mixins
-
-To import flexbox mixins:
-
-~~~javascript
-import { flex } from "polythene/css-classes";
-~~~
-
-Use the mixins in j2c styles:
-
-~~~javascript
-const styles = [{
-  ".horizontal-blocks": [
-    flex.layoutHorizontal
-  ]
-}];
-~~~
 
 ## Class list
 

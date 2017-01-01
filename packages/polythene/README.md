@@ -1,5 +1,8 @@
 # Polythene
 
+This package includes all Polythene components. 
+
+
 ```bash
 npm install --save polythene
 ```

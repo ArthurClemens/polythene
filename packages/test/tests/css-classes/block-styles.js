@@ -1,5 +1,5 @@
 import m from "mithril";
-import { flex } from "polythene-css-classes";
+import { flex } from "polythene-css";
 const blockSize = 40;
 
 export const styles = [{

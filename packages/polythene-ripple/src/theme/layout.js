@@ -1,14 +1,14 @@
 import { mixin } from "polythene-css";
 import { vars } from "polythene-theme";
 
-const kfRipple = (componentVars) => ({
+const kfRipple = componentVars => ({
   " 100%": {
     transform: "scale(" + componentVars.end_scale + ")",
     "opacity": componentVars.end_opacity
   }
 });
 
-const createStyles = (componentVars) => {
+const createStyles = componentVars => {
   return [{
     ".pe-ripple": [
       mixin.fit(), {
@@ -59,5 +59,5 @@ const createStyles = (componentVars) => {
   }];
 };
 
-export default (componentVars) => (mixin.createStyles(componentVars, createStyles));
+export default componentVars => mixin.createStyles(componentVars, createStyles);
 

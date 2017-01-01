@@ -130,6 +130,7 @@ const view = vnode => {
       }
     },
     attrs.events ? {...attrs.events} : null,
+    attrs.url ? {...attrs.url} : null,
     disabled ? {disabled: true} : null
   );
   const label = attrs.content

@@ -11,7 +11,7 @@ export const rules = {
   page: ".pa4.lh-title-m.med-gray",
   pageTitle: "h1.ma0.normal.f3.pv3",
   headerRow: `${bottomBorder}${blockPadding}.fixed.bg-white.w-100.z-1`,
-  interactive: ".bg-lightest-blue.b--gray",
+  interactive: ".bg-washed-blue.b--gray",
   separator: "span.ph2.light-silver",
   tests: ".pt5",
   link: "a.link.underline-hover.blue",
@@ -19,7 +19,7 @@ export const rules = {
   listItem: "li.mv1",
   resultRow: `.flex.flex-row-ns.flex-column${bottomBorder}${resultHeight}`,
   resultTitle: ".flex.flex-one.ma3",
-  result: ".result.flex.flex-one.relative.ma3.minh4",
+  result: ".result.flex.flex-one.relative.ma3.minh4.bg-black-05.pa3",
   content: "div.relative.w-100.height-100px",
   rawResult: ".prewrap.flex.flex-one.relative.f6.ma3.b--light-gray.light-silver.minh6"
 };

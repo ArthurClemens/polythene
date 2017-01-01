@@ -6,6 +6,9 @@ import { styles as blockStyles, blocks } from "../css-classes/block-styles";
 polythene.webfontLoader.add("google", "Raleway:600:latin");
 polythene.styler.add("polythene-css-classes", blockStyles);
 
+import { icon } from "polythene-icon";
+import iconRocket from "mmsvg/templarian/msvg/rocket";
+
 export const tests = [
   {
     name: "Button",
@@ -45,6 +48,31 @@ export const tests = [
       }
     }
   },
+
+  {
+    name: "List Tile",
+    component: polythene.listTile,
+    attrs: {
+      title: "Ancillary Justice",
+      highSubtitle: "The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before.",
+      front: m(icon, {
+        src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
+        avatar: true,
+        type: "large"
+      }),
+      secondary: {
+        icon: {
+          msvg: iconRocket,
+          type: "medium"
+        },
+        url: {
+          href: "/",
+          oncreate: m.route.link
+        }
+      }
+    }
+  },
+
   {
     name: "Ripple",
     component: polythene.ripple,

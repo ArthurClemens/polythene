@@ -25,8 +25,10 @@ Add a URL:
 const myButton = m(button, {
   label: "Button",
   raised: true,
-  href: "/index",
-  oncreate: m.route.link
+  url: {
+    href: "/index",
+    oncreate: m.route.link
+  }
 });
 ~~~
 
@@ -80,7 +82,7 @@ import "polythene/common/no-tap-delay";
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **label** | `label` or `content` is required | String | | The button label |
 | **content** | `label` or `content` is required | Mithril element | | Alternative content, instead of a label |
-| **href** | optional | String | | URL location; for in-app linking also pass `oncreate : m.route.link` |
+| **url** | optional | Object with `href`, optionally `oncreate` | | URL location; for in-app route linking set `oncreate : m.route.link` |
 | **borders** | optional | Boolean | false | Set to `true` to add a border; by default the border has no color - set border color to class `pe-button__content` to see the border |
 | **disabled** | optional | Boolean | false | Disables the button |
 | **selected** | optional | Boolean | false | Set to true to show the button as selected |

@@ -1,0 +1,23 @@
+{
+  "name": "polythene-list-tile",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/list-tile.js",
+  "module": "dist/list-tile.mjs",
+  "jsnext:main": "dist/list-tile.mjs",
+  "scripts": {
+    "clean": "rm -rf dist && mkdir dist",
+    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
+    "build": "npm run rollup"
+  },
+  "dependencies": {
+    "mithril": "1.0.0-rc.6",
+    "polythene-core": "1",
+    "polythene-css": "1",
+    "polythene-icon": "1",
+    "polythene-ripple": "1",
+    "polythene-theme": "1"
+  },
+  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
+  "license": "MIT"
+}

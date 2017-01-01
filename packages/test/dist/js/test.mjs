@@ -3,15 +3,16 @@ import 'polythene-fastclick';
 import 'polythene-material-design';
 import { button, fab, icon, iconButton, ripple, shadow, styler, svg, webfontLoader } from 'polythene';
 import * as polythene from 'polythene';
-import { flex } from 'polythene-css-classes';
+import { flex, styler as styler$1 } from 'polythene-css';
 import { button as button$1 } from 'polythene-button';
 import { fab as fab$1 } from 'polythene-fab';
 import { icon as icon$1 } from 'polythene-icon';
 import { iconButton as iconButton$1 } from 'polythene-icon-button';
+import { listTile } from 'polythene-list-tile';
 import { ripple as ripple$1 } from 'polythene-ripple';
 import { shadow as shadow$1 } from 'polythene-shadow';
 import { svg as svg$1 } from 'polythene-svg';
-import { styler as styler$1 } from 'polythene-css';
+import 'polythene-css-classes';
 
 /* globals tidy_html5 */
 var defaultHtmlTidyOptions = {
@@ -48,7 +49,7 @@ var rules = {
   page: ".pa4.lh-title-m.med-gray",
   pageTitle: "h1.ma0.normal.f3.pv3",
   headerRow: "" + bottomBorder + blockPadding + ".fixed.bg-white.w-100.z-1",
-  interactive: ".bg-lightest-blue.b--gray",
+  interactive: ".bg-washed-blue.b--gray",
   separator: "span.ph2.light-silver",
   tests: ".pt5",
   link: "a.link.underline-hover.blue",
@@ -56,7 +57,7 @@ var rules = {
   listItem: "li.mv1",
   resultRow: ".flex.flex-row-ns.flex-column" + bottomBorder + resultHeight,
   resultTitle: ".flex.flex-one.ma3",
-  result: ".result.flex.flex-one.relative.ma3.minh4",
+  result: ".result.flex.flex-one.relative.ma3.minh4.bg-black-05.pa3",
   content: "div.relative.w-100.height-100px",
   rawResult: ".prewrap.flex.flex-one.relative.f6.ma3.b--light-gray.light-silver.minh6"
 };
@@ -285,21 +286,25 @@ var tests$1 = [{
     after: m("span", "After")
   }
 }, {
-  name: "Option: href (with option oncreate)",
+  name: "Option: url (with oncreate)",
   interactive: true,
   component: component,
   attrs: {
     label: "Go to /#/shadow",
-    href: "/shadow",
-    oncreate: m.route.link
+    url: {
+      href: "/shadow",
+      oncreate: m.route.link
+    }
   }
 }, {
-  name: "Option: href (without option oncreate)",
+  name: "Option: url (without oncreate)",
   interactive: true,
   component: component,
   attrs: {
     label: "Go to /shadow",
-    href: "/shadow"
+    url: {
+      href: "/shadow"
+    }
   }
 }, {
   name: "onbeforeupdate",
@@ -460,15 +465,17 @@ var tests$2 = [{
     animateOnTap: false
   }
 }, {
-  name: "Option: href",
+  name: "Option: url",
   interactive: true,
   component: component$1,
   attrs: {
     icon: {
       msvg: alarmAdd
     },
-    href: "/shadow",
-    oncreate: m.route.link
+    url: {
+      href: "/shadow",
+      oncreate: m.route.link
+    }
   }
 }, {
   name: "Option: before",
@@ -660,15 +667,17 @@ var tests$4 = [{
     animateOnTap: true
   }
 }, {
-  name: "Option: href",
+  name: "Option: url",
   interactive: true,
   component: component$3,
   attrs: {
     icon: {
       msvg: stars
     },
-    href: "/shadow",
-    oncreate: m.route.link
+    url: {
+      href: "/shadow",
+      oncreate: m.route.link
+    }
   }
 }, {
   name: "Option: type (small)",
@@ -726,9 +735,230 @@ var tests$4 = [{
   }
 }];
 
-var component$4 = ripple$1;
+var m$3 = m;
+var rocket = m$3.trust('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve"><path fill="#000000" fill-opacity="1" stroke-linejoin="round" d="M 2.80761,14.1213L 5.63604,11.2929L 8.17304,10.7855C 11.39,6.40972 17.5532,4.22183 19.7782,4.22183C 19.7782,6.44683 17.5903,12.61 13.2145,15.827L 12.7071,18.364L 9.87868,21.1924L 9.17157,17.6569C 7.75736,17.6569 7.75736,17.6569 7.05025,16.9497C 6.34315,16.2426 6.34315,16.2426 6.34315,14.8284L 2.80761,14.1213 Z M 5.63604,16.9497L 7.05025,18.364L 4.38603,21.0282L 2.97181,21.0282L 2.97181,19.614L 5.63604,16.9497 Z M 4.22182,15.5355L 5.45926,15.7123L 3.01472,18.1569L 3.01472,16.7426L 4.22182,15.5355 Z M 8.28769,18.5407L 8.46447,19.7782L 7.25735,20.9853L 5.84314,20.9853L 8.28769,18.5407 Z M 13,9.5C 12.1716,9.5 11.5,10.1716 11.5,11C 11.5,11.8284 12.1716,12.5 13,12.5C 13.8284,12.5 14.5,11.8284 14.5,11C 14.5,10.1716 13.8284,9.5 13,9.5 Z "/></svg>');
 
 var tests$5 = [{
+  name: "No options",
+  component: listTile,
+  attrs: null
+}, {
+  name: "Option: id",
+  component: listTile,
+  attrs: {
+    id: "id-x"
+  }
+}, {
+  name: "Option: class",
+  component: listTile,
+  attrs: {
+    class: "class-x"
+  }
+}, {
+  name: "Option: title",
+  component: listTile,
+  attrs: {
+    title: "Ancillary Justice"
+  }
+}, {
+  name: "Option: content",
+  component: listTile,
+  attrs: {
+    title: "Ancillary Justice",
+    content: rocket
+  }
+}, {
+  name: "Option: subtitle",
+  component: listTile,
+  attrs: {
+    title: "Ancillary Justice",
+    subtitle: "The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before."
+  }
+}, {
+  name: "Option: highSubtitle",
+  component: listTile,
+  attrs: {
+    title: "Ancillary Justice",
+    highSubtitle: "The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before."
+  }
+}, {
+  name: "Option: highSubtitle and compact",
+  component: listTile,
+  attrs: {
+    title: "Ancillary Justice",
+    highSubtitle: "The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before.",
+    compact: true
+  }
+}, {
+  name: "Option: href",
+  interactive: true,
+  component: listTile,
+  attrs: {
+    title: "Ancillary Justice",
+    url: {
+      href: "/",
+      oncreate: m.route.link
+    }
+  }
+}, {
+  name: "Option: front (avatar)",
+  component: listTile,
+  attrs: {
+    title: "Ancillary Justice",
+    front: m(icon$1, {
+      src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
+      avatar: true,
+      type: "large"
+    })
+  }
+}, {
+  name: "Option: front (icon)",
+  component: listTile,
+  attrs: {
+    title: "Ancillary Justice",
+    front: m(icon$1, {
+      msvg: rocket,
+      type: "medium"
+    })
+  }
+},
+
+// Appearance options
+
+{
+  name: "Option: indent",
+  component: listTile,
+  attrs: {
+    title: "Ancillary Justice",
+    indent: true
+  }
+}, {
+  name: "Option: selected",
+  component: listTile,
+  attrs: {
+    title: "Ancillary Justice",
+    selected: true
+  }
+}, {
+  name: "Option: disabled url",
+  interactive: true,
+  component: listTile,
+  attrs: {
+    title: "Ancillary Justice",
+    url: {
+      href: "/",
+      oncreate: m.route.link
+    },
+    disabled: true
+  }
+}, {
+  name: "Option: ink",
+  interactive: true,
+  component: listTile,
+  attrs: {
+    title: "Ancillary Justice",
+    ink: true
+  }
+}, {
+  name: "Option: ink with ripple options",
+  interactive: true,
+  component: listTile,
+  attrs: {
+    title: "Ancillary Justice",
+    ink: true,
+    ripple: {
+      opacityDecayVelocity: 0.1
+    }
+  }
+}, {
+  name: "Option: hoverable",
+  interactive: true,
+  component: listTile,
+  attrs: {
+    title: "Ancillary Justice",
+    hoverable: true
+  }
+}, {
+  name: "Option: selectable",
+  interactive: true,
+  component: listTile,
+  attrs: {
+    title: "Ancillary Justice",
+    selectable: true
+  }
+},
+
+// Secondary content options
+
+{
+  name: "Option: secondary (element)",
+  component: listTile,
+  attrs: {
+    title: "Ancillary Justice",
+    secondary: {
+      element: "dl"
+    }
+  }
+}, {
+  name: "Option: secondary (icon)",
+  component: listTile,
+  attrs: {
+    title: "Ancillary Justice",
+    secondary: {
+      icon: {
+        msvg: rocket,
+        type: "medium"
+      }
+    }
+  }
+}, {
+  name: "Option: secondary (url)",
+  interactive: true,
+  component: listTile,
+  attrs: {
+    title: "Ancillary Justice",
+    secondary: {
+      icon: {
+        msvg: rocket,
+        type: "medium"
+      },
+      url: {
+        href: "/",
+        oncreate: m.route.link
+      }
+    }
+  }
+}, {
+  name: "Option: secondary (content)",
+  component: listTile,
+  attrs: {
+    title: "Ancillary Justice",
+    secondary: {
+      content: rocket
+    }
+  }
+},
+
+// Other
+{
+  name: "Option: before",
+  component: listTile,
+  attrs: {
+    title: "Ancillary Justice",
+    before: m("div", "Before")
+  }
+}, {
+  name: "Option: after",
+  component: listTile,
+  attrs: {
+    title: "Ancillary Justice",
+    after: m("div", "After")
+  }
+}];
+
+var component$4 = ripple$1;
+
+var tests$6 = [{
   name: "No options",
   component: component$4,
   attrs: null
@@ -836,7 +1066,7 @@ var tests$5 = [{
 
 var component$5 = shadow$1;
 
-var tests$6 = [{
+var tests$7 = [{
   name: "No options",
   component: component$5,
   attrs: null
@@ -856,7 +1086,7 @@ var tests$6 = [{
   name: "Option: element",
   component: component$5,
   attrs: {
-    element: "blockquote"
+    element: "dl"
   }
 }, {
   name: "Option: content",
@@ -934,7 +1164,7 @@ var component$6 = svg$1;
 var svgString$1 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z\"/></svg>";
 var trustedSvg$1 = m.trust(svgString$1);
 
-var tests$7 = [{
+var tests$8 = [{
   name: "No options",
   component: component$6,
   attrs: null
@@ -1057,7 +1287,7 @@ var mixinButtonStyles = [{
 
 styler$1.add("app-buttons-x", mixinButtonStyles);
 
-var tests$8 = [{
+var tests$9 = [{
   name: "Element should have a red background",
   component: {
     view: function view() {
@@ -1100,7 +1330,7 @@ var tests$8 = [{
 
 styler$1.add("css-classes", styles);
 
-var tests$9 = [{
+var tests$10 = [{
   name: "Should be aligned horizontally",
   component: {
     view: function view() {
@@ -1144,7 +1374,7 @@ var tests$9 = [{
   }
 }];
 
-var tests$10 = [{
+var tests$11 = [{
   name: "Theme: button (should be purple)",
   component: button$1,
   attrs: {
@@ -1191,8 +1421,8 @@ var testsPage = function testsPage(name, tests$$1) {
         href: "/",
         oncreate: m.route.link
       }, "Components"), m(rules.separator, "/"), m("span", name)]), m(rules.tests, { class: "test-" + name.replace(/ /g, "-").toLowerCase() }, tests$$1.map(function (test) {
-        var raw = tidy(m(test.component, test.attrs));
-        return m([rules.resultRow, test.interactive ? rules.interactive : null].join(""), [m(rules.resultTitle, test.name), m(rules.result, m(rules.content, m(test.component, test.attrs))), m(rules.rawResult, raw)]);
+        var raw = tidy(m(test.component, test.attrs, test.children));
+        return m([rules.resultRow, test.interactive ? rules.interactive : null].join(""), [m(rules.resultTitle, test.name), m(rules.result, m(rules.content, m(test.component, test.attrs, test.children))), m(rules.rawResult, raw)]);
       }))];
     }
   };
@@ -1219,29 +1449,33 @@ var pages = [{
   name: "Icon Button",
   tests: tests$4
 }, {
+  path: "/list-tile",
+  name: "List tile",
+  tests: tests$5
+}, {
   path: "/ripple",
   name: "Ripple",
-  tests: tests$5
+  tests: tests$6
 }, {
   path: "/shadow",
   name: "Shadow",
-  tests: tests$6
+  tests: tests$7
 }, {
   path: "/svg",
   name: "SVG",
-  tests: tests$7
+  tests: tests$8
 }, {
   path: "/theme",
   name: "Custom theme",
-  tests: tests$10
+  tests: tests$11
 }, {
   path: "/css",
   name: "CSS styling",
-  tests: tests$8
+  tests: tests$9
 }, {
   path: "/css-classes",
   name: "CSS classes styling",
-  tests: tests$9
+  tests: tests$10
 }];
 
 var index = {

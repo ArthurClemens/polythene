@@ -68,15 +68,17 @@ export const tests = [
     }
   },
   {
-    name: "Option: href",
+    name: "Option: url",
     interactive: true,
     component,
     attrs: {
       icon: {
         msvg: iconStars
       },
-      href: "/shadow",
-      oncreate: m.route.link
+      url: {
+        href: "/shadow",
+        oncreate: m.route.link
+      }
     }
   },
   {

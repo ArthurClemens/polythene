@@ -1,6 +1,6 @@
 import { mixin } from "polythene-css";
 
-const createStyles = (componentVars) => {
+const createStyles = componentVars => {
   return [{
     ".pe-button--icon": {
       // don"t set button size to facilitate different icon sizes
@@ -26,4 +26,4 @@ const createStyles = (componentVars) => {
   }];
 };
 
-export default (componentVars) => (mixin.createStyles(componentVars, createStyles));
+export default componentVars => mixin.createStyles(componentVars, createStyles);

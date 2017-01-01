@@ -6,6 +6,7 @@ import { fab } from 'polythene-fab';
 import 'polythene-fastclick';
 import { icon } from 'polythene-icon';
 import { iconButton } from 'polythene-icon-button';
+import { listTile } from 'polythene-list-tile';
 import { ripple } from 'polythene-ripple';
 import { shadow } from 'polythene-shadow';
 import { svg } from 'polythene-svg';
@@ -14,4 +15,4 @@ import { webfontLoader } from 'polythene-tools';
 
 
 
-export { button, defaultVariables, isTouch, touchStartEvent, touchEndEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, filterSupportedAttributes, mixin, styler, fab, icon, iconButton, ripple, shadow, svg, webfontLoader };
+export { button, defaultVariables, isTouch, touchStartEvent, touchEndEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, filterSupportedAttributes, mixin, styler, fab, icon, iconButton, listTile, ripple, shadow, svg, webfontLoader };

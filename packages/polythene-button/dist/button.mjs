@@ -1,9 +1,9 @@
 import m from 'mithril';
-import { mixin, styler } from 'polythene-css';
-import { styles, vars } from 'polythene-theme';
 import { shadow } from 'polythene-shadow';
 import { ripple } from 'polythene-ripple';
 import { filterSupportedAttributes, isTouch, subscribe, touchEndEvent, touchStartEvent } from 'polythene-core';
+import { mixin, styler } from 'polythene-css';
+import { styles, vars } from 'polythene-theme';
 
 var rgba = vars.rgba;
 
@@ -408,7 +408,7 @@ var view = function view(vnode) {
         }
       }
     }
-  }, attrs.events ? _extends({}, attrs.events) : null, disabled ? { disabled: true } : null);
+  }, attrs.events ? _extends({}, attrs.events) : null, attrs.url ? _extends({}, attrs.url) : null, disabled ? { disabled: true } : null);
   var label = attrs.content ? attrs.content : attrs.label ? _typeof(attrs.label) === "object" ? attrs.label : m("div", { class: CSS_CLASSES.label }, attrs.label) : null;
   var noWash = disabled || attrs.wash !== undefined && !attrs.wash;
   var content = label ? m("div", { class: CSS_CLASSES.content }, [attrs.raised && !disabled ? m(shadow, { z: state.z, animated: true }) : null,
