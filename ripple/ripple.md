@@ -51,6 +51,7 @@ const myListTile = m.component(listTile, {
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **start** | optional | Function | | Callback function just before the ripple starts; see Callback functions |
 | **end** | optional | Function | | Callback function when the ripple has ended; see Callback functions |
+| **disabled** | optional | Boolean | false | Set to `true` to disable ripples |
 
 ### Ripple appearance options
 
