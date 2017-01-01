@@ -6,7 +6,7 @@ const iconSizesPx = (size = vars.unit_icon_size) => ({
   height: size + "px"
 });
 
-const createStyles = (cVars) => {
+const createStyles = (componentVars) => {
   return [{
     ".pe-icon": {
       display: "inline-block",
@@ -41,10 +41,10 @@ const createStyles = (cVars) => {
         }
       },
 
-      "&.pe-icon--small": iconSizesPx(cVars.size_small),
-      "&.pe-icon--regular": iconSizesPx(cVars.size_regular),
-      "&.pe-icon--medium": iconSizesPx(cVars.size_medium),
-      "&.pe-icon--large": iconSizesPx(cVars.size_large)
+      "&.pe-icon--small": iconSizesPx(componentVars.size_small),
+      "&.pe-icon--regular": iconSizesPx(componentVars.size_regular),
+      "&.pe-icon--medium": iconSizesPx(componentVars.size_medium),
+      "&.pe-icon--large": iconSizesPx(componentVars.size_large)
     }
   }];
 };

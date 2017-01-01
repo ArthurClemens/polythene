@@ -4,13 +4,14 @@ import 'polythene-material-design';
 import { button, fab, icon, iconButton, ripple, shadow, svg, webfontLoader } from 'polythene';
 import * as polythene from 'polythene';
 import { button as button$1 } from 'polythene-button';
-import { styler } from 'polythene-css';
 import { fab as fab$1 } from 'polythene-fab';
 import { icon as icon$1 } from 'polythene-icon';
 import { iconButton as iconButton$1 } from 'polythene-icon-button';
 import { ripple as ripple$1 } from 'polythene-ripple';
 import { shadow as shadow$1 } from 'polythene-shadow';
 import { svg as svg$1 } from 'polythene-svg';
+import { styler } from 'polythene-css';
+import 'polythene-css-classes';
 
 /* globals tidy_html5 */
 var defaultHtmlTidyOptions = {
@@ -125,38 +126,6 @@ var tests = [{
   attrs: {}
 }];
 
-var _extends = Object.assign || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];
-
-    for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }
-
-  return target;
-};
-
-var styles = [{
-  ".pe-button.my-custom-button .pe-button__content": {
-    background: "#fff",
-    "border-color": "#ddd"
-  }
-}];
-styler.add("custom-button", styles);
-
-var customButton = {
-  view: function view(vnode) {
-    return m(button$1, _extends({}, vnode.attrs, {
-      class: (vnode.attrs.class || "") + " my-custom-button",
-      borders: true,
-      raised: false
-    }));
-  }
-};
-
 var component = button$1;
 
 var tests$1 = [{
@@ -251,12 +220,6 @@ var tests$1 = [{
   attrs: {
     label: "Form action",
     formaction: "http://polythene.js.org"
-  }
-}, {
-  name: "Custom button",
-  component: customButton,
-  attrs: {
-    label: "Custom button"
   }
 }, {
   name: "Option: before",
@@ -973,19 +936,198 @@ var tests$7 = [{
   }
 }];
 
+var _extends = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];
+
+    for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }
+
+  return target;
+};
+
+var styles = [{
+  ".pe-button.secondary-button .pe-button__content": {
+    "background-color": "#fff",
+    "border-color": "#ddd"
+  }
+}];
+styler.add("secondary-button", styles);
+
+var secondaryButton = {
+  view: function view(vnode) {
+    return m(button$1, _extends({
+      class: "secondary-button",
+      borders: true,
+      raised: false
+    }, vnode.attrs));
+  }
+};
+
+var myStyle = [{
+  ".my-component": {
+    "background-color": "#FF1744"
+  }
+}];
+
+styler.add("my-component", myStyle);
+
+var buttonStyles = [{
+  ".send-button .pe-button__content": {
+    "background-color": "#FF1744",
+    color: "white"
+  },
+  ".info-button .pe-button__content": {
+    "background-color": "#2196f3",
+    color: "white"
+  }
+}];
+
+styler.add("app-buttons", buttonStyles);
+
+var colors = {
+  send: "#FF1744",
+  info: "#2196f3"
+};
+var makeButton = function makeButton(name) {
+  return {
+    " .pe-button__content": {
+      "background-color": colors[name],
+      color: "white"
+    }
+  };
+};
+var mixinButtonStyles = [{
+  ".send-button-x": makeButton("send"),
+  ".info-button-x": makeButton("info")
+}];
+
+styler.add("app-buttons-x", mixinButtonStyles);
+
 var tests$8 = [{
-  name: "Theme: button (class .my-button--primary)",
-  button: button$1,
+  name: "Element should have a red background",
+  component: {
+    view: function view() {
+      return m("div", {
+        class: "my-component",
+        style: {
+          width: "100px",
+          height: "100px"
+        }
+      });
+    }
+  },
+  attrs: null
+}, {
+  name: "Buttons should have different background colors",
+  component: {
+    view: function view() {
+      return [m(button$1, {
+        label: "Send",
+        class: "send-button"
+      }), m(button$1, {
+        label: "Info",
+        class: "info-button"
+      }), m(button$1, {
+        label: "Send",
+        class: "send-button-x"
+      }), m(button$1, {
+        label: "Info",
+        class: "info-button-x"
+      })];
+    }
+  }
+}, {
+  name: "Custom button",
+  component: secondaryButton,
+  attrs: {
+    label: "Secondary button"
+  }
+}];
+
+var blockSize = 40;
+var blockSizePx = blockSize + "px";
+
+var styles$1 = [{
+  ".test-css-classes": {
+    " .block": {
+      "min-width": blockSizePx,
+      height: blockSizePx,
+      color: "#fff",
+      "text-align": "center",
+      "line-height": blockSizePx,
+
+      "&:nth-child(1)": {
+        background: "#311B92"
+      },
+      "&:nth-child(2)": {
+        background: "#4527A0"
+      },
+      "&:nth-child(3)": {
+        background: "#512DA8"
+      },
+      "&:nth-child(4)": {
+        background: "#5E35B1"
+      }
+    }
+  }
+}];
+
+styler.add("app-buttons", styles$1);
+
+var blocks = [1, 2, 3, 4].map(function (num) {
+  return m(".block", num);
+});
+
+var tests$9 = [{
+  name: "Should be stacked vertically",
+  component: {
+    view: function view() {
+      return m(".screen.layout.vertical", blocks);
+    }
+  }
+}];
+
+var tests$10 = [{
+  name: "Theme: button (should be purple)",
+  component: button$1,
   attrs: {
     label: "Button",
     class: "my-button--primary"
   }
 }, {
-  name: "Theme: FAB (global color)",
-  fab: fab$1,
+  name: "Theme: FAB (should be orange)",
+  component: fab$1,
   attrs: {
     icon: {
       msvg: alarmAdd
+    }
+  }
+}, {
+  name: "Theme: Icon (should have larger sizes)",
+  component: {
+    view: function view() {
+      return [m(icon$1, {
+        class: "my-icon",
+        msvg: alarmAdd,
+        type: "small"
+      }), m(icon$1, {
+        class: "my-icon",
+        msvg: alarmAdd,
+        type: "regular"
+      }), m(icon$1, {
+        class: "my-icon",
+        msvg: alarmAdd,
+        type: "medium"
+      }), m(icon$1, {
+        class: "my-icon",
+        msvg: alarmAdd,
+        type: "large"
+      })];
     }
   }
 }];
@@ -1039,7 +1181,15 @@ var pages = [{
 }, {
   path: "/theme",
   name: "Custom theme",
+  tests: tests$10
+}, {
+  path: "/css",
+  name: "CSS styling",
   tests: tests$8
+}, {
+  path: "/css-classes",
+  name: "CSS classes styling",
+  tests: tests$9
 }];
 
 var index = {

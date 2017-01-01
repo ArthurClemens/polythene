@@ -13,6 +13,7 @@ import { tests as shadowTests } from "../tests/shadow/tests";
 import { tests as svgTests } from "../tests/svg/tests";
 
 import { tests as cssTests } from "../tests/css/tests";
+import { tests as cssClassesTests } from "../tests/css-classes/tests";
 import { tests as themeTests } from "../tests/theme/tests";
 
 const testsPage = (name, tests) => ({
@@ -86,6 +87,11 @@ const pages = [
     path: "/css",
     name: "CSS styling",
     tests: cssTests
+  },
+  {
+    path: "/css-classes",
+    name: "CSS classes styling",
+    tests: cssClassesTests
   }
 ];
 

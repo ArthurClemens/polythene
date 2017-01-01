@@ -15,6 +15,42 @@ exports[`test Button 1`] = `
 "
 `;
 
+exports[`test CSS Classes: blocks should be aligned vertically 1`] = `
+"<div class=\"vertical-blocks\">
+  <div class=\"block\">
+    1
+  </div>
+  <div class=\"block\">
+    2
+  </div>
+  <div class=\"block\">
+    3
+  </div>
+  <div class=\"block\">
+    4
+  </div>
+</div>
+"
+`;
+
+exports[`test CSS Classes: blocks should be justified horizontally 1`] = `
+"<div class=\"layout justified\">
+  <div class=\"block\">
+    1
+  </div>
+  <div class=\"block\">
+    2
+  </div>
+  <div class=\"block\">
+    3
+  </div>
+  <div class=\"block\">
+    4
+  </div>
+</div>
+"
+`;
+
 exports[`test FAB 1`] = `
 "<a tabindex=\"0\" class=\"pe-button--fab pe-button--raised\">
 <div class=\"pe-button__content\">

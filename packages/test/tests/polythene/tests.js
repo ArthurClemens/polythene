@@ -1,7 +1,10 @@
 import m from "mithril";
 import * as polythene from "polythene";
 
+import { styles as blockStyles, blocks } from "../css-classes/block-styles";
+
 polythene.webfontLoader.add("google", "Raleway:600:latin");
+polythene.styler.add("polythene-css-classes", blockStyles);
 
 export const tests = [
   {
@@ -70,5 +73,21 @@ export const tests = [
       }, "Test in Raleway font")
     },
     attrs: {}
-  }
+  },
+  {
+    name: "CSS Classes: blocks should be aligned vertically",
+    component: {
+      view: () => m(".vertical-blocks",
+        blocks
+      )
+    }
+  },
+  {
+    name: "CSS Classes: blocks should be justified horizontally",
+    component: {
+      view: () => m(".layout.justified",
+        blocks
+      )
+    }
+  },
 ];

@@ -19,7 +19,7 @@ var iconSizesPx = function iconSizesPx() {
   };
 };
 
-var createStyles = function createStyles(config) {
+var createStyles = function createStyles(componentVars) {
   return [{
     ".pe-icon": {
       display: "inline-block",
@@ -54,10 +54,10 @@ var createStyles = function createStyles(config) {
         }
       },
 
-      "&.pe-icon--small": iconSizesPx(config.size_small),
-      "&.pe-icon--regular": iconSizesPx(config.size_regular),
-      "&.pe-icon--medium": iconSizesPx(config.size_medium),
-      "&.pe-icon--large": iconSizesPx(config.size_large)
+      "&.pe-icon--small": iconSizesPx(componentVars.size_small),
+      "&.pe-icon--regular": iconSizesPx(componentVars.size_regular),
+      "&.pe-icon--medium": iconSizesPx(componentVars.size_medium),
+      "&.pe-icon--large": iconSizesPx(componentVars.size_large)
     }
   }];
 };

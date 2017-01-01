@@ -40,12 +40,13 @@ const myBtn = m(button, {});
 
 Some modules have been renamed or moved.
 
-v0.2               |  v1.0
------------------- | ----------------
-`polythene/common` | `polythene-css`
-`polythene/config` | `polythene-theme`
-`polythene/theme`  | `polythene-material-design`
-`font-roboto`      | `polythene-theme/font-roboto`
+v0.2                            |  v1.0
+------------------------------- | ----------------
+`polythene/common`              | `polythene-css`
+`polythene/config`              | `polythene-theme`
+`polythene/theme`               | `polythene-material-design`
+`polythene/layout/theme/theme`  | `polythene-css-classes`
+`font-roboto`                   | `polythene-theme/font-roboto`
 
 
 
@@ -124,5 +125,8 @@ Removed dynamic loading and preloading, as these are not a frequent use cases. W
 
 
 
+## Theme
+
+Because component styles are not exposed in v.1.x, it is not possible to create a variable configuration in a deriving component. Use the custom theme file instead.
 
 

@@ -13,6 +13,8 @@ export {
   styler
 } from "polythene-css";
 
+export * from "polythene-css-classes";
+
 export { fab } from "polythene-fab";
 
 export * from "polythene-fastclick";

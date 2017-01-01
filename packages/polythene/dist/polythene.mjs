@@ -1,6 +1,7 @@
 import { button } from 'polythene-button';
 import { animationEndEvent, defaultVariables, emit, filterSupportedAttributes, isTouch, subscribe, throttle, touchEndEvent, touchStartEvent, unsubscribe } from 'polythene-core';
 import { mixin, styler } from 'polythene-css';
+import 'polythene-css-classes';
 import { fab } from 'polythene-fab';
 import 'polythene-fastclick';
 import { icon } from 'polythene-icon';
