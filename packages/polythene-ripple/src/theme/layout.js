@@ -1,14 +1,14 @@
 import { mixin } from "polythene-css";
 import { vars } from "polythene-theme";
 
-const kfRipple = (config) => ({
+const kfRipple = (componentVars) => ({
   " 100%": {
-    transform: "scale(" + config.end_scale + ")",
-    "opacity": config.end_opacity
+    transform: "scale(" + componentVars.end_scale + ")",
+    "opacity": componentVars.end_opacity
   }
 });
 
-const createStyles = (config) => {
+const createStyles = (componentVars) => {
   return [{
     ".pe-ripple": [
       mixin.fit(), {
@@ -32,7 +32,7 @@ const createStyles = (config) => {
 
         " .pe-ripple__waves": [
           mixin.vendorize({
-            "transform": "scale(" + config.start_scale + ")"
+            "transform": "scale(" + componentVars.start_scale + ")"
           }, vars.prefixes_transform),
           mixin.vendorize({
             "animation": "ripple " + vars.animation_curve_default
@@ -44,7 +44,7 @@ const createStyles = (config) => {
             outline: "1px solid transparent", // for IE10
             position: "absolute",
             "border-radius": "50%",
-            opacity: config.start_opacity,
+            opacity: componentVars.start_opacity,
             "pointer-events": "none",
             display: "none"
           }
@@ -55,9 +55,9 @@ const createStyles = (config) => {
       }
     ],
 
-    "@keyframes ripple": kfRipple(config)
+    "@keyframes ripple": kfRipple(componentVars)
   }];
 };
 
-export default (config) => (mixin.createStyles(config, createStyles));
+export default (componentVars) => (mixin.createStyles(componentVars, createStyles));
 

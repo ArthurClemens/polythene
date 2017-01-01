@@ -1,6 +1,6 @@
 import { mixin } from "polythene-css";
 
-const createStyles = (config) => {
+const createStyles = (componentVars) => {
   return [{
     ".pe-button--icon": {
       // don"t set button size to facilitate different icon sizes
@@ -14,16 +14,16 @@ const createStyles = (config) => {
 
       " .pe-button--icon__content": {
         "line-height": 1,
-        padding: config.padding + "px"
+        padding: componentVars.padding + "px"
       },
 
       "&.pe-button--compact": {
         " .pe-button--icon__content": {
-          padding: config.padding_compact + "px"
+          padding: componentVars.padding_compact + "px"
         }
       }
     }
   }];
 };
 
-export default (config) => (mixin.createStyles(config, createStyles));
+export default (componentVars) => (mixin.createStyles(componentVars, createStyles));

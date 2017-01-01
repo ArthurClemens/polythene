@@ -1,7 +1,7 @@
 import { mixin } from "polythene-css";
 import { vars } from "polythene-theme";
 
-const createStyles = (config) => {
+const createStyles = (componentVars) => {
   return [{
     ".pe-button--fab": [
       mixin.vendorize({
@@ -11,16 +11,16 @@ const createStyles = (config) => {
         position: "relative",
         outline: "none",
         cursor: "pointer",
-        width: config.size_regular + "px",
-        height: config.size_regular + "px",
-        padding: config.padding_regular + "px",
+        width: componentVars.size_regular + "px",
+        height: componentVars.size_regular + "px",
+        padding: componentVars.padding_regular + "px",
         "border-radius": "50%",
         border: "none",
 
         "&.pe-button--fab-mini": {
-          width: config.size_mini + "px",
-          height: config.size_mini + "px",
-          padding: ((config.size_mini - vars.unit_icon_size) / 2) + "px"
+          width: componentVars.size_mini + "px",
+          height: componentVars.size_mini + "px",
+          padding: ((componentVars.size_mini - vars.unit_icon_size) / 2) + "px"
         },
 
         " .pe-button__content": {
@@ -46,4 +46,4 @@ const createStyles = (config) => {
   }];
 };
 
-export default (config) => (mixin.createStyles(config, createStyles));
+export default (componentVars) => (mixin.createStyles(componentVars, createStyles));

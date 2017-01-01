@@ -17,7 +17,7 @@ var vars$1 = {
   color_dark_text: rgba(vars.color_primary_foreground)
 };
 
-var createStyles = function createStyles(config) {
+var createStyles = function createStyles(componentVars) {
   return [{
     ".pe-button--fab": [mixin.vendorize({
       "user-select": "none"
@@ -26,16 +26,16 @@ var createStyles = function createStyles(config) {
       position: "relative",
       outline: "none",
       cursor: "pointer",
-      width: config.size_regular + "px",
-      height: config.size_regular + "px",
-      padding: config.padding_regular + "px",
+      width: componentVars.size_regular + "px",
+      height: componentVars.size_regular + "px",
+      padding: componentVars.padding_regular + "px",
       "border-radius": "50%",
       border: "none",
 
       "&.pe-button--fab-mini": {
-        width: config.size_mini + "px",
-        height: config.size_mini + "px",
-        padding: (config.size_mini - vars.unit_icon_size) / 2 + "px"
+        width: componentVars.size_mini + "px",
+        height: componentVars.size_mini + "px",
+        padding: (componentVars.size_mini - vars.unit_icon_size) / 2 + "px"
       },
 
       " .pe-button__content": {
@@ -58,8 +58,8 @@ var createStyles = function createStyles(config) {
   }];
 };
 
-var layout = (function (config) {
-  return mixin.createStyles(config, createStyles);
+var layout = (function (componentVars) {
+  return mixin.createStyles(componentVars, createStyles);
 });
 
 var defineProperty = function (obj, key, value) {

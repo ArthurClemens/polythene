@@ -60,7 +60,7 @@ var shadowDirective = function shadowDirective(dir) {
   }, vars.prefixes_box_shadow);
 };
 
-var createStyles = function createStyles(config) {
+var createStyles = function createStyles(componentVars) {
   return [{
     ".pe-shadow": [mixin.fit(), {
       "border-radius": "inherit",
@@ -72,19 +72,19 @@ var createStyles = function createStyles(config) {
 
       "&.pe-shadow--animated": {
         " .pe-shadow__bottom, .pe-shadow__top": mixin.vendorize({
-          "transition": config.transition
+          "transition": componentVars.transition
         }, vars.prefixes_transition)
       }
     }, [1, 2, 3, 4, 5].map(function (index) {
       var _ref;
 
-      return _ref = {}, defineProperty(_ref, " .pe-shadow__top.pe-shadow--z-" + index, shadowDirective(config["shadow-top-z-" + index])), defineProperty(_ref, " .pe-shadow__bottom.pe-shadow--z-" + index, shadowDirective(config["shadow-bottom-z-" + index])), _ref;
+      return _ref = {}, defineProperty(_ref, " .pe-shadow__top.pe-shadow--z-" + index, shadowDirective(componentVars["shadow-top-z-" + index])), defineProperty(_ref, " .pe-shadow__bottom.pe-shadow--z-" + index, shadowDirective(componentVars["shadow-bottom-z-" + index])), _ref;
     })]
   }];
 };
 
-var layout = (function (config) {
-  return mixin.createStyles(config, createStyles);
+var layout = (function (componentVars) {
+  return mixin.createStyles(componentVars, createStyles);
 });
 
 // Does not contain any color styles

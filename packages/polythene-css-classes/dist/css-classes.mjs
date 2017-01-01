@@ -222,10 +222,8 @@ var styles = [{
   ".layout.wrap": flex$2.layoutWrap,
   ".layout.wrap.reverse": flex$2.layoutWrapReverse,
   ".flex": flex$2.flex(1),
-  ".span.flex": {
-    "display": "block" // for IE 10
-  },
-  ".vertical.layout > .flex.auto-vertical": flex$2.flexAutoVertical,
+  ".span.flex": { "display": "block" }, // for IE 10
+  ".flex.auto-vertical": flex$2.flexAutoVertical,
   ".flex.auto": flex$2.flexAuto,
   ".flex.none": flex$2.flexIndex("none"),
   ".flex.one": flex$2.flexIndex(1),
@@ -265,6 +263,10 @@ var styles$1 = [{
     display: "block"
   },
 
+  ".pe-inline-block": {
+    display: "inline-block"
+  },
+
   // ie support for hidden
   ".pe-hidden": {
     display: "none !important"
@@ -272,6 +274,10 @@ var styles$1 = [{
 
   ".pe-relative": {
     position: "relative"
+  },
+
+  ".pe-absolute": {
+    position: "absolute"
   },
 
   ".pe-fit": {

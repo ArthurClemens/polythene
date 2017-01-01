@@ -67,7 +67,7 @@ var vars$1 = {
   color_dark_raised_disabled_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled)
 };
 
-var createStyles = function createStyles(config) {
+var createStyles = function createStyles(componentVars) {
   return [{
     ".pe-button": [mixin.vendorize({
       "user-select": "none"
@@ -116,25 +116,25 @@ var createStyles = function createStyles(config) {
     }],
     ".pe-button--text": {
       display: "inline-block",
-      "min-width": config.min_width + "px",
-      margin: "0 " + config.margin_h + "px",
-      padding: config.outer_padding_v + "px 0",
+      "min-width": componentVars.min_width + "px",
+      margin: "0 " + componentVars.margin_h + "px",
+      padding: componentVars.outer_padding_v + "px 0",
       background: "transparent",
       border: "none",
 
       " .pe-button__content": {
         position: "relative",
         "border-width": 0,
-        padding: "0 " + config.padding_h + "px",
-        "border-radius": config.border_radius + "px"
+        padding: "0 " + componentVars.padding_h + "px",
+        "border-radius": componentVars.border_radius + "px"
       },
 
       " .pe-button__label": {
-        padding: config.padding_v + "px 0",
-        "font-size": config.font_size + "px",
-        "line-height": config.font_size + "px",
-        "font-weight": config.font_weight,
-        "text-transform": config.text_transform,
+        padding: componentVars.padding_v + "px 0",
+        "font-size": componentVars.font_size + "px",
+        "line-height": componentVars.font_size + "px",
+        "font-weight": componentVars.font_weight,
+        "text-transform": componentVars.text_transform,
         "white-space": "pre"
       },
 
@@ -146,15 +146,15 @@ var createStyles = function createStyles(config) {
           "border-width": "1px"
         },
         " .pe-button__label": {
-          padding: config.padding_v - 1 + "px 0"
+          padding: componentVars.padding_v - 1 + "px 0"
         }
       }
     }
   }];
 };
 
-var layout = (function (config) {
-  return mixin.createStyles(config, createStyles);
+var layout = (function (componentVars) {
+  return mixin.createStyles(componentVars, createStyles);
 });
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {

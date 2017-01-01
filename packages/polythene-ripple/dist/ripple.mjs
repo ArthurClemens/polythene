@@ -10,16 +10,16 @@ var vars$1 = {
   end_opacity: 0
 };
 
-var kfRipple = function kfRipple(config) {
+var kfRipple = function kfRipple(componentVars) {
   return {
     " 100%": {
-      transform: "scale(" + config.end_scale + ")",
-      "opacity": config.end_opacity
+      transform: "scale(" + componentVars.end_scale + ")",
+      "opacity": componentVars.end_opacity
     }
   };
 };
 
-var createStyles = function createStyles(config) {
+var createStyles = function createStyles(componentVars) {
   return [{
     ".pe-ripple": [mixin.fit(), {
       color: "inherit",
@@ -38,7 +38,7 @@ var createStyles = function createStyles(config) {
       }, vars.prefixes_transform)],
 
       " .pe-ripple__waves": [mixin.vendorize({
-        "transform": "scale(" + config.start_scale + ")"
+        "transform": "scale(" + componentVars.start_scale + ")"
       }, vars.prefixes_transform), mixin.vendorize({
         "animation": "ripple " + vars.animation_curve_default
       }, vars.prefixes_animation),
@@ -49,7 +49,7 @@ var createStyles = function createStyles(config) {
         outline: "1px solid transparent", // for IE10
         position: "absolute",
         "border-radius": "50%",
-        opacity: config.start_opacity,
+        opacity: componentVars.start_opacity,
         "pointer-events": "none",
         display: "none"
       }],
@@ -58,12 +58,12 @@ var createStyles = function createStyles(config) {
       }
     }],
 
-    "@keyframes ripple": kfRipple(config)
+    "@keyframes ripple": kfRipple(componentVars)
   }];
 };
 
-var layout = (function (config) {
-  return mixin.createStyles(config, createStyles);
+var layout = (function (componentVars) {
+  return mixin.createStyles(componentVars, createStyles);
 });
 
 styler.styleComponent("pe-ripple", "ripple", styles, vars$1, layout);

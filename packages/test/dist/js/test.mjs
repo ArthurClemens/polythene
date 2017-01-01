@@ -1,8 +1,9 @@
 import m from 'mithril';
 import 'polythene-fastclick';
 import 'polythene-material-design';
-import { button, fab, icon, iconButton, ripple, shadow, svg, webfontLoader } from 'polythene';
+import { button, fab, icon, iconButton, ripple, shadow, styler, svg, webfontLoader } from 'polythene';
 import * as polythene from 'polythene';
+import { flex } from 'polythene-css-classes';
 import { button as button$1 } from 'polythene-button';
 import { fab as fab$1 } from 'polythene-fab';
 import { icon as icon$1 } from 'polythene-icon';
@@ -10,8 +11,7 @@ import { iconButton as iconButton$1 } from 'polythene-icon-button';
 import { ripple as ripple$1 } from 'polythene-ripple';
 import { shadow as shadow$1 } from 'polythene-shadow';
 import { svg as svg$1 } from 'polythene-svg';
-import { styler } from 'polythene-css';
-import 'polythene-css-classes';
+import { styler as styler$1 } from 'polythene-css';
 
 /* globals tidy_html5 */
 var defaultHtmlTidyOptions = {
@@ -61,7 +61,42 @@ var rules = {
   rawResult: ".prewrap.flex.flex-one.relative.f6.ma3.b--light-gray.light-silver.minh6"
 };
 
+var blockSize = 40;
+
+var styles = [{
+  " .block": {
+    "min-width": blockSize + "px",
+    "min-height": blockSize + "px",
+    color: "#fff",
+    "text-align": "center",
+    "line-height": blockSize + "px",
+
+    "&:nth-child(1)": {
+      background: "#311B92"
+    },
+    "&:nth-child(2)": {
+      background: "#4527A0"
+    },
+    "&:nth-child(3)": {
+      background: "#512DA8"
+    },
+    "&:nth-child(4)": {
+      background: "#5E35B1"
+    },
+    "&.fixed-height": {
+      height: "90px",
+      position: "relative"
+    }
+  },
+  " .vertical-blocks": [flex.layoutVertical]
+}];
+
+var blocks = [1, 2, 3, 4].map(function (num) {
+  return m(".block", num);
+});
+
 webfontLoader.add("google", "Raleway:600:latin");
+styler.add("polythene-css-classes", styles);
 
 var tests = [{
   name: "Button",
@@ -124,6 +159,20 @@ var tests = [{
     }
   },
   attrs: {}
+}, {
+  name: "CSS Classes: blocks should be aligned vertically",
+  component: {
+    view: function view() {
+      return m(".vertical-blocks", blocks);
+    }
+  }
+}, {
+  name: "CSS Classes: blocks should be justified horizontally",
+  component: {
+    view: function view() {
+      return m(".layout.justified", blocks);
+    }
+  }
 }];
 
 var component = button$1;
@@ -950,13 +999,13 @@ var _extends = Object.assign || function (target) {
   return target;
 };
 
-var styles = [{
+var styles$1 = [{
   ".pe-button.secondary-button .pe-button__content": {
     "background-color": "#fff",
     "border-color": "#ddd"
   }
 }];
-styler.add("secondary-button", styles);
+styler$1.add("secondary-button", styles$1);
 
 var secondaryButton = {
   view: function view(vnode) {
@@ -974,7 +1023,7 @@ var myStyle = [{
   }
 }];
 
-styler.add("my-component", myStyle);
+styler$1.add("my-component", myStyle);
 
 var buttonStyles = [{
   ".send-button .pe-button__content": {
@@ -987,7 +1036,7 @@ var buttonStyles = [{
   }
 }];
 
-styler.add("app-buttons", buttonStyles);
+styler$1.add("app-buttons", buttonStyles);
 
 var colors = {
   send: "#FF1744",
@@ -1006,7 +1055,7 @@ var mixinButtonStyles = [{
   ".info-button-x": makeButton("info")
 }];
 
-styler.add("app-buttons-x", mixinButtonStyles);
+styler$1.add("app-buttons-x", mixinButtonStyles);
 
 var tests$8 = [{
   name: "Element should have a red background",
@@ -1049,45 +1098,48 @@ var tests$8 = [{
   }
 }];
 
-var blockSize = 40;
-var blockSizePx = blockSize + "px";
-
-var styles$1 = [{
-  ".test-css-classes": {
-    " .block": {
-      "min-width": blockSizePx,
-      height: blockSizePx,
-      color: "#fff",
-      "text-align": "center",
-      "line-height": blockSizePx,
-
-      "&:nth-child(1)": {
-        background: "#311B92"
-      },
-      "&:nth-child(2)": {
-        background: "#4527A0"
-      },
-      "&:nth-child(3)": {
-        background: "#512DA8"
-      },
-      "&:nth-child(4)": {
-        background: "#5E35B1"
-      }
-    }
-  }
-}];
-
-styler.add("app-buttons", styles$1);
-
-var blocks = [1, 2, 3, 4].map(function (num) {
-  return m(".block", num);
-});
+styler$1.add("css-classes", styles);
 
 var tests$9 = [{
-  name: "Should be stacked vertically",
+  name: "Should be aligned horizontally",
   component: {
     view: function view() {
-      return m(".screen.layout.vertical", blocks);
+      return m(".layout", blocks);
+    }
+  }
+}, {
+  name: "Should be aligned vertically",
+  component: {
+    view: function view() {
+      return m(".vertical-blocks", blocks);
+    }
+  }
+}, {
+  name: "Should be stacked vertically and inline",
+  component: {
+    view: function view() {
+      return m(".layout.vertical.inline", blocks);
+    }
+  }
+}, {
+  name: "Should be reversed",
+  component: {
+    view: function view() {
+      return m(".layout.horizontal.reverse", blocks);
+    }
+  }
+}, {
+  name: "Should be justified horizontally",
+  component: {
+    view: function view() {
+      return m(".layout.justified", blocks);
+    }
+  }
+}, {
+  name: "Should fill the space",
+  component: {
+    view: function view() {
+      return m(".fixed-height", m(".block.pe-fit"));
     }
   }
 }];

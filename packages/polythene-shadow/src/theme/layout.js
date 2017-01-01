@@ -7,7 +7,7 @@ const shadowDirective = (dir) => {
   }, vars.prefixes_box_shadow);
 };
 
-const createStyles = (config) => {
+const createStyles = (componentVars) => {
   return [{
     ".pe-shadow": [
       mixin.fit(), {
@@ -22,17 +22,17 @@ const createStyles = (config) => {
 
         "&.pe-shadow--animated": {
           " .pe-shadow__bottom, .pe-shadow__top": mixin.vendorize({
-            "transition": config.transition
+            "transition": componentVars.transition
           }, vars.prefixes_transition)
         }
       },
 
       [1, 2, 3, 4, 5].map(index => ({
-        [" .pe-shadow__top.pe-shadow--z-" + index]: shadowDirective(config["shadow-top-z-" + index]),
-        [" .pe-shadow__bottom.pe-shadow--z-" + index]: shadowDirective(config["shadow-bottom-z-" + index])
+        [" .pe-shadow__top.pe-shadow--z-" + index]: shadowDirective(componentVars["shadow-top-z-" + index]),
+        [" .pe-shadow__bottom.pe-shadow--z-" + index]: shadowDirective(componentVars["shadow-bottom-z-" + index])
       }))
     ]
   }];
 };
 
-export default (config) => (mixin.createStyles(config, createStyles));
+export default (componentVars) => (mixin.createStyles(componentVars, createStyles));

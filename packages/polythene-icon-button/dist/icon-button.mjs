@@ -49,7 +49,7 @@ var vars$1 = _extends({}, buttonVars, {
   color_dark_flat_normal_text: vars.rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary)
 });
 
-var createStyles = function createStyles(config) {
+var createStyles = function createStyles(componentVars) {
   return [{
     ".pe-button--icon": {
       // don"t set button size to facilitate different icon sizes
@@ -63,20 +63,20 @@ var createStyles = function createStyles(config) {
 
       " .pe-button--icon__content": {
         "line-height": 1,
-        padding: config.padding + "px"
+        padding: componentVars.padding + "px"
       },
 
       "&.pe-button--compact": {
         " .pe-button--icon__content": {
-          padding: config.padding_compact + "px"
+          padding: componentVars.padding_compact + "px"
         }
       }
     }
   }];
 };
 
-var layout = (function (config) {
-  return mixin.createStyles(config, createStyles);
+var layout = (function (componentVars) {
+  return mixin.createStyles(componentVars, createStyles);
 });
 
 var style = function style(config, tint, type) {
