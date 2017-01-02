@@ -29,3 +29,16 @@
 .test-list-tile .result .pe-list-tile {
   background-color: #fff;
 }
+.test-polythene .pe-button .pe-button__content,
+.test-icon-button .pe-button .pe-button__content {
+  background-color: #fff;
+}
+
+.test-polythene .pe-list-tile,
+.test-polythene .pe-ripple,
+.test-polythene .pe-shadow {
+  background-color: #fff;
+}
+.test-polythene .pe-button--fab {
+  color: #333;
+}

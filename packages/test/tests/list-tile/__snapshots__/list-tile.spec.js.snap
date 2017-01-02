@@ -1,0 +1,457 @@
+exports[`test No options 1`] = `
+"<div class=\"pe-list-tile\">
+  <div class=\"pe-list-tile__primary\">
+    <div class=\"pe-list-tile__content\"></div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: after 1`] = `
+"<div class=\"pe-list-tile\">
+  <div class=\"pe-list-tile__primary\">
+    <div class=\"pe-list-tile__content\">
+      <div class=\"pe-list-tile__title\">
+        Ancillary Justice
+      </div>
+    </div>
+  </div>
+  <div>
+    After
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: before 1`] = `
+"<div class=\"pe-list-tile\">
+  <div>
+    Before
+  </div>
+  <div class=\"pe-list-tile__primary\">
+    <div class=\"pe-list-tile__content\">
+      <div class=\"pe-list-tile__title\">
+        Ancillary Justice
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: class 1`] = `
+"<div class=\"pe-list-tile class-x\">
+  <div class=\"pe-list-tile__primary\">
+    <div class=\"pe-list-tile__content\"></div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: content 1`] = `
+"<div class=\"pe-list-tile\">
+  <div class=\"pe-list-tile__primary\">
+    <div class=\"pe-list-tile__content\">
+      <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+      \"http://www.w3.org/1999/xlink\" version=\"1.1\" baseprofile=
+      \"full\" width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+      enable-background=\"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+        <path fill=\"#000000\" fill-opacity=\"1\" stroke-linejoin=
+        \"round\" d=
+        \"M 2.80761,14.1213L 5.63604,11.2929L 8.17304,10.7855C 11.39,6.40972 17.5532,4.22183 19.7782,4.22183C 19.7782,6.44683 17.5903,12.61 13.2145,15.827L 12.7071,18.364L 9.87868,21.1924L 9.17157,17.6569C 7.75736,17.6569 7.75736,17.6569 7.05025,16.9497C 6.34315,16.2426 6.34315,16.2426 6.34315,14.8284L 2.80761,14.1213 Z M 5.63604,16.9497L 7.05025,18.364L 4.38603,21.0282L 2.97181,21.0282L 2.97181,19.614L 5.63604,16.9497 Z M 4.22182,15.5355L 5.45926,15.7123L 3.01472,18.1569L 3.01472,16.7426L 4.22182,15.5355 Z M 8.28769,18.5407L 8.46447,19.7782L 7.25735,20.9853L 5.84314,20.9853L 8.28769,18.5407 Z M 13,9.5C 12.1716,9.5 11.5,10.1716 11.5,11C 11.5,11.8284 12.1716,12.5 13,12.5C 13.8284,12.5 14.5,11.8284 14.5,11C 14.5,10.1716 13.8284,9.5 13,9.5 Z\">
+        </path>
+      </svg>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: disabled url 1`] = `
+"<div class=\"pe-list-tile pe-list-tile--disabled\">
+  <a href=\"#!/\" class=\"pe-list-tile__primary\">
+  <div class=\"pe-list-tile__content\">
+    <div class=\"pe-list-tile__title\">
+      Ancillary Justice
+    </div>
+  </div></a>
+</div>
+"
+`;
+
+exports[`test Option: front (avatar) 1`] = `
+"<div class=\"pe-list-tile pe-list-tile--front\">
+  <div class=\"pe-list-tile__primary\">
+    <div class=
+    \"pe-list-tile__content pe-list-tile__content--front\">
+      <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
+        <img src=
+        \"http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png\">
+      </div>
+    </div>
+    <div class=\"pe-list-tile__content\">
+      <div class=\"pe-list-tile__title\">
+        Ancillary Justice
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: front (icon) 1`] = `
+"<div class=\"pe-list-tile pe-list-tile--front\">
+  <div class=\"pe-list-tile__primary\">
+    <div class=
+    \"pe-list-tile__content pe-list-tile__content--front\">
+      <div class=\"pe-icon pe-icon--medium\">
+        <div class=\"pe-svg\">
+          <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+          \"http://www.w3.org/1999/xlink\" version=\"1.1\" baseprofile=
+          \"full\" width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+          enable-background=\"new 0 0 24.00 24.00\" xml:space=
+          \"preserve\">
+            <path fill=\"#000000\" fill-opacity=\"1\" stroke-linejoin=
+            \"round\" d=
+            \"M 2.80761,14.1213L 5.63604,11.2929L 8.17304,10.7855C 11.39,6.40972 17.5532,4.22183 19.7782,4.22183C 19.7782,6.44683 17.5903,12.61 13.2145,15.827L 12.7071,18.364L 9.87868,21.1924L 9.17157,17.6569C 7.75736,17.6569 7.75736,17.6569 7.05025,16.9497C 6.34315,16.2426 6.34315,16.2426 6.34315,14.8284L 2.80761,14.1213 Z M 5.63604,16.9497L 7.05025,18.364L 4.38603,21.0282L 2.97181,21.0282L 2.97181,19.614L 5.63604,16.9497 Z M 4.22182,15.5355L 5.45926,15.7123L 3.01472,18.1569L 3.01472,16.7426L 4.22182,15.5355 Z M 8.28769,18.5407L 8.46447,19.7782L 7.25735,20.9853L 5.84314,20.9853L 8.28769,18.5407 Z M 13,9.5C 12.1716,9.5 11.5,10.1716 11.5,11C 11.5,11.8284 12.1716,12.5 13,12.5C 13.8284,12.5 14.5,11.8284 14.5,11C 14.5,10.1716 13.8284,9.5 13,9.5 Z\">
+            </path>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class=\"pe-list-tile__content\">
+      <div class=\"pe-list-tile__title\">
+        Ancillary Justice
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: highSubtitle 1`] = `
+"<div class=\"pe-list-tile pe-list-tile--high-subtitle\">
+  <div class=\"pe-list-tile__primary\">
+    <div class=\"pe-list-tile__content\">
+      <div class=\"pe-list-tile__title\">
+        Ancillary Justice
+      </div>
+      <div class=
+      \"pe-list-tile__subtitle pe-list-tile__subtitle--high\">
+        The body lay naked and facedown, a deathly gray, spatters
+        of blood staining the snow around it. It was minus fifteen
+        degrees Celsius and a storm had passed just hours before.
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: highSubtitle and compact 1`] = `
+"<div class=
+\"pe-list-tile pe-list-tile--compact pe-list-tile--high-subtitle\">
+  <div class=\"pe-list-tile__primary\">
+    <div class=\"pe-list-tile__content\">
+      <div class=\"pe-list-tile__title\">
+        Ancillary Justice
+      </div>
+      <div class=
+      \"pe-list-tile__subtitle pe-list-tile__subtitle--high\">
+        The body lay naked and facedown, a deathly gray, spatters
+        of blood staining the snow around it. It was minus fifteen
+        degrees Celsius and a storm had passed just hours before.
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: highSubtitle and front 1`] = `
+"<div class=\"pe-list-tile pe-list-tile--high-subtitle\">
+  <div class=\"pe-list-tile__primary\">
+    <div class=
+    \"pe-list-tile__content pe-list-tile__content--front\">
+      <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
+        <img src=
+        \"http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png\" />
+      </div>
+    </div>
+    <div class=\"pe-list-tile__content\">
+      <div class=\"pe-list-tile__title\">
+        Ancillary Justice
+      </div>
+      <div class=
+      \"pe-list-tile__subtitle pe-list-tile__subtitle--high\">
+        The body lay naked and facedown, a deathly gray, spatters
+        of blood staining the snow around it. It was minus fifteen
+        degrees Celsius and a storm had passed just hours before.
+      </div>
+    </div>
+  </div><a href=\"#!/\" class=\"pe-list-tile__secondary\">
+  <div class=\"pe-list-tile__content\">
+    <div class=\"pe-icon pe-icon--medium\">
+      <div class=\"pe-svg\">
+        <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+        \"http://www.w3.org/1999/xlink\" version=\"1.1\" baseprofile=
+        \"full\" width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+        enable-background=\"new 0 0 24.00 24.00\" xml:space=
+        \"preserve\">
+          <path fill=\"#000000\" fill-opacity=\"1\" stroke-linejoin=
+          \"round\" d=
+          \"M 2.80761,14.1213L 5.63604,11.2929L 8.17304,10.7855C 11.39,6.40972 17.5532,4.22183 19.7782,4.22183C 19.7782,6.44683 17.5903,12.61 13.2145,15.827L 12.7071,18.364L 9.87868,21.1924L 9.17157,17.6569C 7.75736,17.6569 7.75736,17.6569 7.05025,16.9497C 6.34315,16.2426 6.34315,16.2426 6.34315,14.8284L 2.80761,14.1213 Z M 5.63604,16.9497L 7.05025,18.364L 4.38603,21.0282L 2.97181,21.0282L 2.97181,19.614L 5.63604,16.9497 Z M 4.22182,15.5355L 5.45926,15.7123L 3.01472,18.1569L 3.01472,16.7426L 4.22182,15.5355 Z M 8.28769,18.5407L 8.46447,19.7782L 7.25735,20.9853L 5.84314,20.9853L 8.28769,18.5407 Z M 13,9.5C 12.1716,9.5 11.5,10.1716 11.5,11C 11.5,11.8284 12.1716,12.5 13,12.5C 13.8284,12.5 14.5,11.8284 14.5,11C 14.5,10.1716 13.8284,9.5 13,9.5 Z\">
+          </path>
+        </svg>
+      </div>
+    </div>
+  </div></a>
+</div>
+"
+`;
+
+exports[`test Option: hoverable 1`] = `
+"<div class=\"pe-list-tile pe-list-tile--hoverable\">
+  <div class=\"pe-list-tile__primary\">
+    <div class=\"pe-list-tile__content\">
+      <div class=\"pe-list-tile__title\">
+        Ancillary Justice
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: href 1`] = `
+"<div class=\"pe-list-tile\">
+  <a href=\"#!/\" class=\"pe-list-tile__primary\">
+  <div class=\"pe-list-tile__content\">
+    <div class=\"pe-list-tile__title\">
+      Ancillary Justice
+    </div>
+  </div></a>
+</div>
+"
+`;
+
+exports[`test Option: id 1`] = `
+"<div id=\"id-x\" class=\"pe-list-tile\">
+  <div class=\"pe-list-tile__primary\">
+    <div class=\"pe-list-tile__content\"></div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: indent 1`] = `
+"<div class=\"pe-list-tile pe-list-tile--front\">
+  <div class=\"pe-list-tile__primary\">
+    <div class=
+    \"pe-list-tile__content pe-list-tile__content--front\"></div>
+    <div class=\"pe-list-tile__content\">
+      <div class=\"pe-list-tile__title\">
+        Ancillary Justice
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: ink 1`] = `
+"<div class=\"pe-list-tile\">
+  <div class=\"pe-ripple pe-ripple--constrained\">
+    <div class=\"pe-ripple__mask\">
+      <div class=\"pe-ripple__waves\"></div>
+    </div>
+  </div>
+  <div class=\"pe-list-tile__primary\">
+    <div class=\"pe-list-tile__content\">
+      <div class=\"pe-list-tile__title\">
+        Ancillary Justice
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: ink with ripple options 1`] = `
+"<div class=\"pe-list-tile\">
+  <div class=\"pe-ripple pe-ripple--constrained\">
+    <div class=\"pe-ripple__mask\">
+      <div class=\"pe-ripple__waves\"></div>
+    </div>
+  </div>
+  <div class=\"pe-list-tile__primary\">
+    <div class=\"pe-list-tile__content\">
+      <div class=\"pe-list-tile__title\">
+        Ancillary Justice
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: secondary (content) 1`] = `
+"<div class=\"pe-list-tile\">
+  <div class=\"pe-list-tile__primary\">
+    <div class=\"pe-list-tile__content\">
+      <div class=\"pe-list-tile__title\">
+        Ancillary Justice
+      </div>
+    </div>
+  </div>
+  <div class=\"pe-list-tile__secondary\">
+    <div class=\"pe-list-tile__content\">
+      <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+      \"http://www.w3.org/1999/xlink\" version=\"1.1\" baseprofile=
+      \"full\" width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+      enable-background=\"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+        <path fill=\"#000000\" fill-opacity=\"1\" stroke-linejoin=
+        \"round\" d=
+        \"M 2.80761,14.1213L 5.63604,11.2929L 8.17304,10.7855C 11.39,6.40972 17.5532,4.22183 19.7782,4.22183C 19.7782,6.44683 17.5903,12.61 13.2145,15.827L 12.7071,18.364L 9.87868,21.1924L 9.17157,17.6569C 7.75736,17.6569 7.75736,17.6569 7.05025,16.9497C 6.34315,16.2426 6.34315,16.2426 6.34315,14.8284L 2.80761,14.1213 Z M 5.63604,16.9497L 7.05025,18.364L 4.38603,21.0282L 2.97181,21.0282L 2.97181,19.614L 5.63604,16.9497 Z M 4.22182,15.5355L 5.45926,15.7123L 3.01472,18.1569L 3.01472,16.7426L 4.22182,15.5355 Z M 8.28769,18.5407L 8.46447,19.7782L 7.25735,20.9853L 5.84314,20.9853L 8.28769,18.5407 Z M 13,9.5C 12.1716,9.5 11.5,10.1716 11.5,11C 11.5,11.8284 12.1716,12.5 13,12.5C 13.8284,12.5 14.5,11.8284 14.5,11C 14.5,10.1716 13.8284,9.5 13,9.5 Z\">
+        </path>
+      </svg>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: secondary (element) 1`] = `
+"<div class=\"pe-list-tile\">
+  <div class=\"pe-list-tile__primary\">
+    <div class=\"pe-list-tile__content\">
+      <div class=\"pe-list-tile__title\">
+        Ancillary Justice
+      </div>
+    </div>
+  </div>
+  <dl class=\"pe-list-tile__secondary\">
+    <dd>
+      <div class=\"pe-list-tile__content\"></div>
+    </dd>
+  </dl>
+</div>
+"
+`;
+
+exports[`test Option: secondary (icon) 1`] = `
+"<div class=\"pe-list-tile\">
+  <div class=\"pe-list-tile__primary\">
+    <div class=\"pe-list-tile__content\">
+      <div class=\"pe-list-tile__title\">
+        Ancillary Justice
+      </div>
+    </div>
+  </div>
+  <div class=\"pe-list-tile__secondary\">
+    <div class=\"pe-list-tile__content\">
+      <div class=\"pe-icon pe-icon--medium\">
+        <div class=\"pe-svg\">
+          <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+          \"http://www.w3.org/1999/xlink\" version=\"1.1\" baseprofile=
+          \"full\" width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+          enable-background=\"new 0 0 24.00 24.00\" xml:space=
+          \"preserve\">
+            <path fill=\"#000000\" fill-opacity=\"1\" stroke-linejoin=
+            \"round\" d=
+            \"M 2.80761,14.1213L 5.63604,11.2929L 8.17304,10.7855C 11.39,6.40972 17.5532,4.22183 19.7782,4.22183C 19.7782,6.44683 17.5903,12.61 13.2145,15.827L 12.7071,18.364L 9.87868,21.1924L 9.17157,17.6569C 7.75736,17.6569 7.75736,17.6569 7.05025,16.9497C 6.34315,16.2426 6.34315,16.2426 6.34315,14.8284L 2.80761,14.1213 Z M 5.63604,16.9497L 7.05025,18.364L 4.38603,21.0282L 2.97181,21.0282L 2.97181,19.614L 5.63604,16.9497 Z M 4.22182,15.5355L 5.45926,15.7123L 3.01472,18.1569L 3.01472,16.7426L 4.22182,15.5355 Z M 8.28769,18.5407L 8.46447,19.7782L 7.25735,20.9853L 5.84314,20.9853L 8.28769,18.5407 Z M 13,9.5C 12.1716,9.5 11.5,10.1716 11.5,11C 11.5,11.8284 12.1716,12.5 13,12.5C 13.8284,12.5 14.5,11.8284 14.5,11C 14.5,10.1716 13.8284,9.5 13,9.5 Z\">
+            </path>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: secondary (url) 1`] = `
+"<div class=\"pe-list-tile\">
+  <div class=\"pe-list-tile__primary\">
+    <div class=\"pe-list-tile__content\">
+      <div class=\"pe-list-tile__title\">
+        Ancillary Justice
+      </div>
+    </div>
+  </div><a href=\"#!/\" class=\"pe-list-tile__secondary\">
+  <div class=\"pe-list-tile__content\">
+    <div class=\"pe-icon pe-icon--medium\">
+      <div class=\"pe-svg\">
+        <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+        \"http://www.w3.org/1999/xlink\" version=\"1.1\" baseprofile=
+        \"full\" width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+        enable-background=\"new 0 0 24.00 24.00\" xml:space=
+        \"preserve\">
+          <path fill=\"#000000\" fill-opacity=\"1\" stroke-linejoin=
+          \"round\" d=
+          \"M 2.80761,14.1213L 5.63604,11.2929L 8.17304,10.7855C 11.39,6.40972 17.5532,4.22183 19.7782,4.22183C 19.7782,6.44683 17.5903,12.61 13.2145,15.827L 12.7071,18.364L 9.87868,21.1924L 9.17157,17.6569C 7.75736,17.6569 7.75736,17.6569 7.05025,16.9497C 6.34315,16.2426 6.34315,16.2426 6.34315,14.8284L 2.80761,14.1213 Z M 5.63604,16.9497L 7.05025,18.364L 4.38603,21.0282L 2.97181,21.0282L 2.97181,19.614L 5.63604,16.9497 Z M 4.22182,15.5355L 5.45926,15.7123L 3.01472,18.1569L 3.01472,16.7426L 4.22182,15.5355 Z M 8.28769,18.5407L 8.46447,19.7782L 7.25735,20.9853L 5.84314,20.9853L 8.28769,18.5407 Z M 13,9.5C 12.1716,9.5 11.5,10.1716 11.5,11C 11.5,11.8284 12.1716,12.5 13,12.5C 13.8284,12.5 14.5,11.8284 14.5,11C 14.5,10.1716 13.8284,9.5 13,9.5 Z\">
+          </path>
+        </svg>
+      </div>
+    </div>
+  </div></a>
+</div>
+"
+`;
+
+exports[`test Option: selectable 1`] = `
+"<div class=\"pe-list-tile pe-list-tile--selectable\">
+  <div class=\"pe-list-tile__primary\">
+    <div class=\"pe-list-tile__content\">
+      <div class=\"pe-list-tile__title\">
+        Ancillary Justice
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: selected 1`] = `
+"<div class=\"pe-list-tile pe-list-tile--selected\">
+  <div class=\"pe-list-tile__primary\">
+    <div class=\"pe-list-tile__content\">
+      <div class=\"pe-list-tile__title\">
+        Ancillary Justice
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: subtitle 1`] = `
+"<div class=\"pe-list-tile pe-list-tile--subtitle\">
+  <div class=\"pe-list-tile__primary\">
+    <div class=\"pe-list-tile__content\">
+      <div class=\"pe-list-tile__title\">
+        Ancillary Justice
+      </div>
+      <div class=\"pe-list-tile__subtitle\">
+        The body lay naked and facedown, a deathly gray, spatters
+        of blood staining the snow around it. It was minus fifteen
+        degrees Celsius and a storm had passed just hours before.
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: title 1`] = `
+"<div class=\"pe-list-tile\">
+  <div class=\"pe-list-tile__primary\">
+    <div class=\"pe-list-tile__content\">
+      <div class=\"pe-list-tile__title\">
+        Ancillary Justice
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;

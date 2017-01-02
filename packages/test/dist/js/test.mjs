@@ -1,14 +1,14 @@
 import m from 'mithril';
 import 'polythene-fastclick';
 import 'polythene-material-design';
-import { button, fab, icon, iconButton, ripple, shadow, styler, svg, webfontLoader } from 'polythene';
+import { button, fab, icon, iconButton, listTile, ripple, shadow, styler, svg, webfontLoader } from 'polythene';
 import * as polythene from 'polythene';
 import { flex, styler as styler$1 } from 'polythene-css';
+import { icon as icon$1 } from 'polythene-icon';
 import { button as button$1 } from 'polythene-button';
 import { fab as fab$1 } from 'polythene-fab';
-import { icon as icon$1 } from 'polythene-icon';
 import { iconButton as iconButton$1 } from 'polythene-icon-button';
-import { listTile } from 'polythene-list-tile';
+import { listTile as listTile$1 } from 'polythene-list-tile';
 import { ripple as ripple$1 } from 'polythene-ripple';
 import { shadow as shadow$1 } from 'polythene-shadow';
 import { svg as svg$1 } from 'polythene-svg';
@@ -96,6 +96,9 @@ var blocks = [1, 2, 3, 4].map(function (num) {
   return m(".block", num);
 });
 
+var m$1 = m;
+var rocket = m$1.trust('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve"><path fill="#000000" fill-opacity="1" stroke-linejoin="round" d="M 2.80761,14.1213L 5.63604,11.2929L 8.17304,10.7855C 11.39,6.40972 17.5532,4.22183 19.7782,4.22183C 19.7782,6.44683 17.5903,12.61 13.2145,15.827L 12.7071,18.364L 9.87868,21.1924L 9.17157,17.6569C 7.75736,17.6569 7.75736,17.6569 7.05025,16.9497C 6.34315,16.2426 6.34315,16.2426 6.34315,14.8284L 2.80761,14.1213 Z M 5.63604,16.9497L 7.05025,18.364L 4.38603,21.0282L 2.97181,21.0282L 2.97181,19.614L 5.63604,16.9497 Z M 4.22182,15.5355L 5.45926,15.7123L 3.01472,18.1569L 3.01472,16.7426L 4.22182,15.5355 Z M 8.28769,18.5407L 8.46447,19.7782L 7.25735,20.9853L 5.84314,20.9853L 8.28769,18.5407 Z M 13,9.5C 12.1716,9.5 11.5,10.1716 11.5,11C 11.5,11.8284 12.1716,12.5 13,12.5C 13.8284,12.5 14.5,11.8284 14.5,11C 14.5,10.1716 13.8284,9.5 13,9.5 Z "/></svg>');
+
 webfontLoader.add("google", "Raleway:600:latin");
 styler.add("polythene-css-classes", styles);
 
@@ -130,6 +133,28 @@ var tests = [{
     icon: {
       svg: {
         content: m.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z\"/></svg>")
+      }
+    }
+  }
+}, {
+  name: "List Tile",
+  component: listTile,
+  attrs: {
+    title: "Ancillary Justice",
+    highSubtitle: "The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before.",
+    front: m(icon$1, {
+      src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
+      avatar: true,
+      type: "large"
+    }),
+    secondary: {
+      icon: {
+        msvg: rocket,
+        type: "medium"
+      },
+      url: {
+        href: "/",
+        oncreate: m.route.link
       }
     }
   }
@@ -238,6 +263,7 @@ var tests$1 = [{
   }
 }, {
   name: "Option: wash (false)",
+  interactive: true,
   component: component,
   attrs: {
     label: "No wash",
@@ -245,17 +271,27 @@ var tests$1 = [{
   }
 }, {
   name: "Option: ink (false)",
+  interactive: true,
   component: component,
   attrs: {
     label: "No ink",
     ink: false
   }
 }, {
-  name: "Option: disabled",
+  name: "Option: disabled (true)",
+  interactive: true,
   component: component,
   attrs: {
     label: "Disabled",
     disabled: true
+  }
+}, {
+  name: "Option: disabled (false)",
+  interactive: true,
+  component: component,
+  attrs: {
+    label: "Not disabled",
+    disabled: false
   }
 }, {
   name: "Option: selected",
@@ -393,8 +429,8 @@ var tests$1 = [{
   }
 }];
 
-var m$1 = m;
-var alarmAdd = m$1.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3V9z"/></svg>');
+var m$2 = m;
+var alarmAdd = m$2.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3V9z"/></svg>');
 
 var component$1 = fab$1;
 
@@ -497,8 +533,8 @@ var tests$2 = [{
   }
 }];
 
-var m$2 = m;
-var stars = m$2.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>');
+var m$3 = m;
+var stars = m$3.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>');
 
 var component$2 = icon$1;
 var svgString = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z\"/></svg>";
@@ -735,55 +771,52 @@ var tests$4 = [{
   }
 }];
 
-var m$3 = m;
-var rocket = m$3.trust('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve"><path fill="#000000" fill-opacity="1" stroke-linejoin="round" d="M 2.80761,14.1213L 5.63604,11.2929L 8.17304,10.7855C 11.39,6.40972 17.5532,4.22183 19.7782,4.22183C 19.7782,6.44683 17.5903,12.61 13.2145,15.827L 12.7071,18.364L 9.87868,21.1924L 9.17157,17.6569C 7.75736,17.6569 7.75736,17.6569 7.05025,16.9497C 6.34315,16.2426 6.34315,16.2426 6.34315,14.8284L 2.80761,14.1213 Z M 5.63604,16.9497L 7.05025,18.364L 4.38603,21.0282L 2.97181,21.0282L 2.97181,19.614L 5.63604,16.9497 Z M 4.22182,15.5355L 5.45926,15.7123L 3.01472,18.1569L 3.01472,16.7426L 4.22182,15.5355 Z M 8.28769,18.5407L 8.46447,19.7782L 7.25735,20.9853L 5.84314,20.9853L 8.28769,18.5407 Z M 13,9.5C 12.1716,9.5 11.5,10.1716 11.5,11C 11.5,11.8284 12.1716,12.5 13,12.5C 13.8284,12.5 14.5,11.8284 14.5,11C 14.5,10.1716 13.8284,9.5 13,9.5 Z "/></svg>');
-
 var tests$5 = [{
   name: "No options",
-  component: listTile,
+  component: listTile$1,
   attrs: null
 }, {
   name: "Option: id",
-  component: listTile,
+  component: listTile$1,
   attrs: {
     id: "id-x"
   }
 }, {
   name: "Option: class",
-  component: listTile,
+  component: listTile$1,
   attrs: {
     class: "class-x"
   }
 }, {
   name: "Option: title",
-  component: listTile,
+  component: listTile$1,
   attrs: {
     title: "Ancillary Justice"
   }
 }, {
   name: "Option: content",
-  component: listTile,
+  component: listTile$1,
   attrs: {
     title: "Ancillary Justice",
     content: rocket
   }
 }, {
   name: "Option: subtitle",
-  component: listTile,
+  component: listTile$1,
   attrs: {
     title: "Ancillary Justice",
     subtitle: "The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before."
   }
 }, {
   name: "Option: highSubtitle",
-  component: listTile,
+  component: listTile$1,
   attrs: {
     title: "Ancillary Justice",
     highSubtitle: "The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before."
   }
 }, {
   name: "Option: highSubtitle and compact",
-  component: listTile,
+  component: listTile$1,
   attrs: {
     title: "Ancillary Justice",
     highSubtitle: "The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before.",
@@ -792,7 +825,7 @@ var tests$5 = [{
 }, {
   name: "Option: href",
   interactive: true,
-  component: listTile,
+  component: listTile$1,
   attrs: {
     title: "Ancillary Justice",
     url: {
@@ -802,7 +835,7 @@ var tests$5 = [{
   }
 }, {
   name: "Option: front (avatar)",
-  component: listTile,
+  component: listTile$1,
   attrs: {
     title: "Ancillary Justice",
     front: m(icon$1, {
@@ -813,7 +846,7 @@ var tests$5 = [{
   }
 }, {
   name: "Option: front (icon)",
-  component: listTile,
+  component: listTile$1,
   attrs: {
     title: "Ancillary Justice",
     front: m(icon$1, {
@@ -823,18 +856,44 @@ var tests$5 = [{
   }
 },
 
+// Combined 
+
+{
+  name: "Option: highSubtitle and front",
+  component: listTile$1,
+  attrs: {
+    title: "Ancillary Justice",
+    highSubtitle: "The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before.",
+    front: m(icon$1, {
+      src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
+      avatar: true,
+      type: "large"
+    }),
+    secondary: {
+      icon: {
+        msvg: rocket,
+        type: "medium"
+      },
+      url: {
+        href: "/",
+        oncreate: m.route.link
+      }
+    }
+  }
+},
+
 // Appearance options
 
 {
   name: "Option: indent",
-  component: listTile,
+  component: listTile$1,
   attrs: {
     title: "Ancillary Justice",
     indent: true
   }
 }, {
   name: "Option: selected",
-  component: listTile,
+  component: listTile$1,
   attrs: {
     title: "Ancillary Justice",
     selected: true
@@ -842,7 +901,7 @@ var tests$5 = [{
 }, {
   name: "Option: disabled url",
   interactive: true,
-  component: listTile,
+  component: listTile$1,
   attrs: {
     title: "Ancillary Justice",
     url: {
@@ -854,7 +913,7 @@ var tests$5 = [{
 }, {
   name: "Option: ink",
   interactive: true,
-  component: listTile,
+  component: listTile$1,
   attrs: {
     title: "Ancillary Justice",
     ink: true
@@ -862,7 +921,7 @@ var tests$5 = [{
 }, {
   name: "Option: ink with ripple options",
   interactive: true,
-  component: listTile,
+  component: listTile$1,
   attrs: {
     title: "Ancillary Justice",
     ink: true,
@@ -873,7 +932,7 @@ var tests$5 = [{
 }, {
   name: "Option: hoverable",
   interactive: true,
-  component: listTile,
+  component: listTile$1,
   attrs: {
     title: "Ancillary Justice",
     hoverable: true
@@ -881,7 +940,7 @@ var tests$5 = [{
 }, {
   name: "Option: selectable",
   interactive: true,
-  component: listTile,
+  component: listTile$1,
   attrs: {
     title: "Ancillary Justice",
     selectable: true
@@ -892,7 +951,7 @@ var tests$5 = [{
 
 {
   name: "Option: secondary (element)",
-  component: listTile,
+  component: listTile$1,
   attrs: {
     title: "Ancillary Justice",
     secondary: {
@@ -901,7 +960,7 @@ var tests$5 = [{
   }
 }, {
   name: "Option: secondary (icon)",
-  component: listTile,
+  component: listTile$1,
   attrs: {
     title: "Ancillary Justice",
     secondary: {
@@ -914,7 +973,7 @@ var tests$5 = [{
 }, {
   name: "Option: secondary (url)",
   interactive: true,
-  component: listTile,
+  component: listTile$1,
   attrs: {
     title: "Ancillary Justice",
     secondary: {
@@ -930,7 +989,7 @@ var tests$5 = [{
   }
 }, {
   name: "Option: secondary (content)",
-  component: listTile,
+  component: listTile$1,
   attrs: {
     title: "Ancillary Justice",
     secondary: {
@@ -942,14 +1001,14 @@ var tests$5 = [{
 // Other
 {
   name: "Option: before",
-  component: listTile,
+  component: listTile$1,
   attrs: {
     title: "Ancillary Justice",
     before: m("div", "Before")
   }
 }, {
   name: "Option: after",
-  component: listTile,
+  component: listTile$1,
   attrs: {
     title: "Ancillary Justice",
     after: m("div", "After")
@@ -1470,11 +1529,11 @@ var pages = [{
   tests: tests$11
 }, {
   path: "/css",
-  name: "CSS styling",
+  name: "CSS tools",
   tests: tests$9
 }, {
   path: "/css-classes",
-  name: "CSS classes styling",
+  name: "CSS classes",
   tests: tests$10
 }];
 

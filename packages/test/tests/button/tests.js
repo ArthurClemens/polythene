@@ -90,12 +90,21 @@ export const tests = [
     }
   },
   {
-    name: "Option: disabled",
+    name: "Option: disabled (true)",
     interactive: true,
     component,
     attrs: {
       label: "Disabled",
       disabled: true
+    }
+  },
+  {
+    name: "Option: disabled (false)",
+    interactive: true,
+    component,
+    attrs: {
+      label: "Not disabled",
+      disabled: false
     }
   },
   {

@@ -1,8 +1,6 @@
 import m from "mithril";
-import { iconButton } from "polythene-icon-button";
-import iconStars from "mmsvg/google/msvg/action/stars";
-
-const component = iconButton;
+import { iconButton as component } from "polythene-icon-button";
+import iconFavorite from "mmsvg/google/msvg/action/favorite-border";
 
 export const tests = [
   {
@@ -29,7 +27,7 @@ export const tests = [
     component,
     attrs: {
       icon: {
-        msvg: iconStars
+        msvg: iconFavorite
       }
     }
   },
@@ -38,7 +36,7 @@ export const tests = [
     component,
     attrs: {
       icon: {
-        msvg: iconStars
+        msvg: iconFavorite
       },
       style: {
         color: "red"
@@ -50,7 +48,7 @@ export const tests = [
     component,
     attrs: {
       icon: {
-        msvg: iconStars
+        msvg: iconFavorite
       },
       compact: true
     }
@@ -61,7 +59,7 @@ export const tests = [
     component,
     attrs: {
       icon: {
-        msvg: iconStars
+        msvg: iconFavorite
       },
       raised: true,
       animateOnTap: true
@@ -73,7 +71,7 @@ export const tests = [
     component,
     attrs: {
       icon: {
-        msvg: iconStars
+        msvg: iconFavorite
       },
       url: {
         href: "/shadow",
@@ -86,7 +84,7 @@ export const tests = [
     component,
     attrs: {
       icon: {
-        msvg: iconStars,
+        msvg: iconFavorite,
         type: "small"
       }
     }
@@ -96,7 +94,7 @@ export const tests = [
     component,
     attrs: {
       icon: {
-        msvg: iconStars,
+        msvg: iconFavorite,
         type: "regular"
       }
     }
@@ -106,7 +104,7 @@ export const tests = [
     component,
     attrs: {
       icon: {
-        msvg: iconStars,
+        msvg: iconFavorite,
         type: "medium"
       }
     }
@@ -116,7 +114,7 @@ export const tests = [
     component,
     attrs: {
       icon: {
-        msvg: iconStars,
+        msvg: iconFavorite,
         type: "large"
       }
     }
@@ -126,7 +124,7 @@ export const tests = [
     component,
     attrs: {
       icon: {
-        msvg: iconStars
+        msvg: iconFavorite
       },
       before: m("div", {style: {"font-size": "16px", "line-height": "1rem"}}, "Before")
     }
@@ -136,7 +134,7 @@ export const tests = [
     component,
     attrs: {
       icon: {
-        msvg: iconStars
+        msvg: iconFavorite
       },
       after: m("div", {style: {"font-size": "16px", "line-height": "1rem"}}, "After")
     }

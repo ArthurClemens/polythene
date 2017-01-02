@@ -14,7 +14,8 @@ export const tests = [
     name: "Button",
     component: polythene.button,
     attrs: {
-      label: "Button"
+      label: "Button",
+      raised: true
     }
   },
   {
