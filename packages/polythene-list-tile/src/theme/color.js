@@ -8,7 +8,9 @@ const style = (componentVars, tint, scope = "") => {
       },
 
       "&.pe-list__header": {
-        "background-color": "inherit",
+        " .pe-list-tile__primary, pe-list-tile__secondary": {
+          "background-color": "inherit"
+        },
 
         " .pe-list-tile__title": {
           color: componentVars["color_" + tint + "_list_header"]
@@ -25,7 +27,9 @@ const style = (componentVars, tint, scope = "") => {
         }
       },
       "&.pe-list-tile--selected": {
-        "background-color": componentVars["color_" + tint + "_background_selected"]
+        " .pe-list-tile__primary, pe-list-tile__secondary": {
+          "background-color": componentVars["color_" + tint + "_background_selected"]
+        }
       }
     }
   }];
@@ -35,7 +39,9 @@ const noTouch = (componentVars, tint, scope = "") => {
   return [{
     [scope + ".pe-list-tile"]: {
       "&:not(.pe-list__header):not(.pe-list-tile--disabled):hover": {
-        "background-color": componentVars["color_" + tint + "_background_hover"]
+        " .pe-list-tile__primary, pe-list-tile__secondary": {
+          "background-color": componentVars["color_" + tint + "_background_hover"]
+        }
       }
     }
   }];
@@ -46,7 +52,8 @@ const createStyles = componentVars => {
   return [
     style(componentVars, "light"), {
       "html.pe-no-touch": [
-        noTouch(componentVars, "light", " .pe-list-tile--hoverable")
+        noTouch(componentVars, "light", " .pe-list-tile--hoverable"),
+        noTouch(componentVars, "light", " .pe-list--hoverable ")
       ]
     }, {
       ".pe-dark-theme": [
@@ -55,8 +62,14 @@ const createStyles = componentVars => {
         // has dark theme
         style(componentVars, "dark", "&")
       ]
-    }, {
-      "html.pe-no-touch .pe-dark-theme": noTouch(componentVars, "dark", " .pe-list-tile--hoverable")
+    },
+    {
+      "html.pe-no-touch .pe-dark-theme": [
+        noTouch(componentVars, "dark", " .pe-list-tile--hoverable"),
+        noTouch(componentVars, "dark", ".pe-list--hoverable "),
+        noTouch(componentVars, "dark", " .pe-list--hoverable ")
+      ],
+      "html.pe-no-touch .pe-list--hoverable .pe-dark-theme": noTouch(componentVars, "dark", " ")
     }
   ];
 };

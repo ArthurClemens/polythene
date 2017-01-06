@@ -91,12 +91,12 @@ var _extends = Object.assign || function (target) {
   return target;
 };
 
-var style = function style(config, tint) {
+var style = function style(componentVars, tint) {
   var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
 
   return [defineProperty({}, scope + ".pe-button--fab, a.pe-button--fab", {
-    "background-color": config["color_" + tint + "_background"],
-    color: config["color_" + tint + "_text"],
+    "background-color": componentVars["color_" + tint + "_background"],
+    color: componentVars["color_" + tint + "_text"],
 
     " .pe-button__content": {
       "background-color": "transparent"
@@ -104,18 +104,18 @@ var style = function style(config, tint) {
   })];
 };
 
-var createStyles$1 = function createStyles(config) {
-  return [style(config, "light"), {
+var createStyles$1 = function createStyles(componentVars) {
+  return [style(componentVars, "light"), {
     ".pe-dark-theme": [
     // inside dark theme
-    style(config, "dark", " "),
+    style(componentVars, "dark", " "),
     // has dark theme
-    style(config, "dark", "&")]
+    style(componentVars, "dark", "&")]
   }];
 };
 
-var color = (function (config) {
-  return mixin.createStyles(config, createStyles$1);
+var color = (function (componentVars) {
+  return mixin.createStyles(componentVars, createStyles$1);
 });
 
 styler.styleComponent("pe-fab", "fab", styles, vars$1, layout, color);

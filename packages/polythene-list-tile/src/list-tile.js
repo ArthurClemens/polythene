@@ -30,15 +30,11 @@ const primaryContent = (attrs, children) => {
     : attrs.url
       ? "a"
       : "div";
-
+  const contentFrontClass = CSS_CLASSES.content + " " + CSS_CLASSES.contentFront;
   const frontComp = attrs.front
-    ? m("div", {
-      class: CSS_CLASSES.content + " " + CSS_CLASSES.contentFront
-    }, attrs.front)
+    ? m("div", {class: contentFrontClass}, attrs.front)
     : attrs.indent
-      ? m("div", {
-        class: CSS_CLASSES.content + " " + CSS_CLASSES.contentFront
-      })
+      ? m("div", {class: contentFrontClass})
       : null;
 
   return m(element, {

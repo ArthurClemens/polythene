@@ -1,8 +1,7 @@
 import m from "mithril";
+import webfont from "webfontloader";
 import * as polythene from "polythene";
 import { styles as blockStyles, blocks } from "../css-classes/block-styles";
-import webfont from "webfontloader";
-import { icon } from "polythene-icon";
 import iconRocket from "mmsvg/templarian/msvg/rocket";
 
 polythene.styler.add("polythene-css-classes", blockStyles);
@@ -60,12 +59,43 @@ export const tests = [
   },
 
   {
+    name: "List",
+    component: polythene.list,
+    attrs: {
+      header: {
+        title: "Friends"
+      },
+      borders: true,
+      tiles: [
+        m(polythene.listTile, {
+          title: "Jennifer Barker",
+          subtitle: "Starting post doc",
+          front: m(polythene.icon, {
+            src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
+            avatar: true,
+            type: "large"
+          })
+        }),
+        m(polythene.listTile, {
+          title: "Ali Connors",
+          subtitle: "Brunch this weekend?",
+          front: m(polythene.icon, {
+            src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png",
+            avatar: true,
+            type: "large"
+          })
+        })
+      ]
+    }
+  },
+
+  {
     name: "List Tile",
     component: polythene.listTile,
     attrs: {
       title: "Ancillary Justice",
       highSubtitle: "The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before.",
-      front: m(icon, {
+      front: m(polythene.icon, {
         src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
         avatar: true,
         type: "large"

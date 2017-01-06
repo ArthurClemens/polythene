@@ -31,17 +31,16 @@ export const tests = [
     name: "Interactive option: animated",
     interactive: true,
     component: {
-      oninit: (vnode) => {
-        vnode.state.z = 1;
-      },
-      oncreate: (vnode) => {
+      oninit: vnode =>
+        vnode.state.z = 1,
+      oncreate: vnode => {
         vnode.dom.addEventListener("click", () => {
           const newZ = (vnode.state.z + 1) % 6;
           vnode.state.z = newZ;
           m.redraw();
         });
       },
-      view: (vnode) => [
+      view: vnode => [
         m(css.content, "Click me"),
         m(component, {
           animated: true,

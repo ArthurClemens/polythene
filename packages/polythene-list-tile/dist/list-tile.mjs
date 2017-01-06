@@ -206,9 +206,9 @@ var createStyles = function createStyles(componentVars) {
       // Non-touch
 
       "html.pe-no-touch .pe-list--hoverable &, \
-                html.pe-no-touch .pe-list--selectable &, \
-                html.pe-no-touch &.pe-list-tile--hoverable, \
-                html.pe-no-touch &.pe-list-tile--selectable": {
+        html.pe-no-touch .pe-list--selectable &, \
+        html.pe-no-touch &.pe-list-tile--hoverable, \
+        html.pe-no-touch &.pe-list-tile--selectable": {
         "&:not(.pe-list__header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected):hover": {
           cursor: "pointer"
         }
@@ -250,63 +250,70 @@ var _extends = Object.assign || function (target) {
   return target;
 };
 
-var style = function style(config, tint) {
+var style = function style(componentVars, tint) {
   var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
 
   return [defineProperty({}, scope + ".pe-list-tile", {
     " .pe-list-tile__title": {
-      color: config["color_" + tint + "_title"]
+      color: componentVars["color_" + tint + "_title"]
     },
 
     "&.pe-list__header": {
-      "background-color": "inherit",
+      " .pe-list-tile__primary, pe-list-tile__secondary": {
+        "background-color": "inherit"
+      },
 
       " .pe-list-tile__title": {
-        color: config["color_" + tint + "_list_header"]
+        color: componentVars["color_" + tint + "_list_header"]
       }
     },
 
     " .pe-list-tile__content, .pe-list-tile__subtitle": {
-      color: config["color_" + tint + "_subtitle"]
+      color: componentVars["color_" + tint + "_subtitle"]
     },
 
     "&.pe-list-tile--disabled": {
       "&, .pe-list-tile__title, .pe-list-tile__content, .pe-list-tile__subtitle": {
-        color: config["color_" + tint + "_text_disabled"]
+        color: componentVars["color_" + tint + "_text_disabled"]
       }
     },
     "&.pe-list-tile--selected": {
-      "background-color": config["color_" + tint + "_background_selected"]
+      " .pe-list-tile__primary, pe-list-tile__secondary": {
+        "background-color": componentVars["color_" + tint + "_background_selected"]
+      }
     }
   })];
 };
 
-var noTouch = function noTouch(config, tint) {
+var noTouch = function noTouch(componentVars, tint) {
   var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
 
   return [defineProperty({}, scope + ".pe-list-tile", {
     "&:not(.pe-list__header):not(.pe-list-tile--disabled):hover": {
-      "background-color": config["color_" + tint + "_background_hover"]
+      " .pe-list-tile__primary, pe-list-tile__secondary": {
+        "background-color": componentVars["color_" + tint + "_background_hover"]
+      }
     }
   })];
 };
 
-var createStyles$1 = function createStyles(config) {
-  return [style(config, "light"), {
-    "html.pe-no-touch": [noTouch(config, "light", " .pe-list-tile--hoverable")]
+var createStyles$1 = function createStyles(componentVars) {
+  return [style(componentVars, "light"), {
+    "html.pe-no-touch": [noTouch(componentVars, "light", " .pe-list-tile--hoverable"), noTouch(componentVars, "light", " .pe-list--hoverable ")]
   }, {
     ".pe-dark-theme": [
     // inside dark theme
-    style(config, "dark", " "),
+    style(componentVars, "dark", " "),
     // has dark theme
-    style(config, "dark", "&")]
+    style(componentVars, "dark", "&")]
   }, {
-    "html.pe-no-touch .pe-dark-theme": noTouch(config, "dark", " .pe-list-tile--hoverable")
+    "html.pe-no-touch .pe-dark-theme": [noTouch(componentVars, "dark", " .pe-list-tile--hoverable"), noTouch(componentVars, "dark", ".pe-list--hoverable "), noTouch(componentVars, "dark", " .pe-list--hoverable ")],
+    "html.pe-no-touch .pe-list--hoverable .pe-dark-theme": noTouch(componentVars, "dark", " ")
   }];
 };
 
-var color = (function (config) {
-  return mixin.createStyles(config, createStyles$1);
+var color = (function (componentVars) {
+  return mixin.createStyles(componentVars, createStyles$1);
 });
 
 styler.styleComponent("pe-list-tile", "list-tile", styles, vars$1, layout, color);
@@ -333,12 +340,8 @@ var CSS_CLASSES = {
 
 var primaryContent = function primaryContent(attrs, children) {
   var element = attrs.element ? attrs.element : attrs.url ? "a" : "div";
-
-  var frontComp = attrs.front ? m("div", {
-    class: CSS_CLASSES.content + " " + CSS_CLASSES.contentFront
-  }, attrs.front) : attrs.indent ? m("div", {
-    class: CSS_CLASSES.content + " " + CSS_CLASSES.contentFront
-  }) : null;
+  var contentFrontClass = CSS_CLASSES.content + " " + CSS_CLASSES.contentFront;
+  var frontComp = attrs.front ? m("div", { class: contentFrontClass }, attrs.front) : attrs.indent ? m("div", { class: contentFrontClass }) : null;
 
   return m(element, _extends({}, filterSupportedAttributes(attrs), attrs.url, {
     class: CSS_CLASSES.primary

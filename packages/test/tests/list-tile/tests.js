@@ -110,6 +110,29 @@ export const tests = [
       }
     }
   },
+  {
+    name: "Option: highSubtitle and front -- dark theme",
+    component,
+    attrs: {
+      class: "pe-dark-theme",
+      title: "Ancillary Justice",
+      highSubtitle: "The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before.",
+      front: m(icon, {
+        src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
+        avatar: true,
+        type: "large"
+      }),
+      secondary: {
+        icon: {
+          msvg: iconStars
+        },
+        url: {
+          href: "/",
+          oncreate: m.route.link
+        }
+      }
+    }
+  },
 
   // Appearance options
 

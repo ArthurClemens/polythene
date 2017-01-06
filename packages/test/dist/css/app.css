@@ -8,6 +8,30 @@ body {
 .app {
   padding-bottom: 40px;
 }
+.pe-dark-theme {
+  background-color: #263238;
+}
+.generated-html {
+  font-size: .85rem;
+  line-height: 1.3rem;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+}
+.generated-html .html {
+  max-height: calc(3 * 1.3rem);
+  overflow-y: hidden;
+}
+.generated-html.open .html {
+  max-height: none;
+}
+.generated-html.closed .html {
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: pointer;
+}
+.generated-html.open .ellipsis {
+  display: none;
+}
 .flex-one {
     flex: 1 0;
 }
@@ -38,12 +62,14 @@ body {
   border-color: #ddd;
 }
 .tests-polythene .test-ripple .component-result,
-.tests-ripple .result .component-result {
+.tests-ripple .result .pe-ripple {
   background-color: #fff;
 }
 
+.tests-polythene .test-list .pe-list-tile,
+.tests-list .result .pe-list:not(.pe-dark-theme) .pe-list-tile,
 .tests-polythene .test-list-tile .pe-list-tile,
-.tests-list-tile .result .pe-list-tile {
+.tests-list-tile .result .pe-list-tile:not(.pe-dark-theme) {
   background-color: #fff;
 }
 

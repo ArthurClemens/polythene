@@ -129,10 +129,9 @@ export const tests = [
     name: "onbeforeupdate",
     interactive: true,
     component: {
-      oninit: (vnode) => {
-        vnode.state.updated = 0;
-      },
-      view: (vnode) => [
+      oninit: vnode =>
+        vnode.state.updated = 0,
+      view: vnode => [
         m("div", `Updated: ${vnode.state.updated}`),
         m(component, {
           label: "Button",
@@ -145,10 +144,9 @@ export const tests = [
     name: "Option: events (onclick)",
     interactive: true,
     component: {
-      oninit: (vnode) => {
-        vnode.state.clicked = 0;
-      },
-      view: (vnode) => [
+      oninit: vnode =>
+        vnode.state.clicked = 0,
+      view: vnode => [
         m("div", `onclick called: ${vnode.state.clicked}`),
         m(component, {
           label: "Button",
@@ -163,10 +161,9 @@ export const tests = [
     name: "Key down (after having focus) results in click",
     interactive: true,
     component: {
-      oninit: (vnode) => {
-        vnode.state.clickCount = 0;
-      },
-      view: (vnode) => [
+      oninit: vnode =>
+        vnode.state.clickCount = 0,
+      view: vnode => [
         m("div", `onclick called: ${vnode.state.clickCount}`),
         m(component, {
           label: "Button",

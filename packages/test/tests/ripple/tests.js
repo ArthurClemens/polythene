@@ -73,10 +73,9 @@ export const tests = [
     name: "Option: start (after click)",
     interactive: true,
     component: {
-      oninit: (vnode) => {
-        vnode.state.started = 0;
-      },
-      view: (vnode) => [
+      oninit: vnode =>
+        vnode.state.started = 0,
+      view: vnode => [
         m(component, {
           before: m("div", `start called: ${vnode.state.started}`),
           start: () => (vnode.state.started++, m.redraw())
@@ -88,10 +87,9 @@ export const tests = [
     name: "Option: end (after click)",
     interactive: true,
     component: {
-      oninit: (vnode) => {
-        vnode.state.ended = 0;
-      },
-      view: (vnode) => [
+      oninit: vnode =>
+        vnode.state.ended = 0,
+      view: vnode => [
         m(component, {
           before: m("div", `end called: ${vnode.state.ended}`),
           end: () => (vnode.state.ended++, m.redraw())

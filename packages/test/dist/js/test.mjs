@@ -1,15 +1,16 @@
 import m from 'mithril';
 import 'polythene-fastclick';
 import 'polythene-material-design';
-import { button, fab, icon, iconButton, listTile, ripple, shadow, styler, svg } from 'polythene';
+import webfont from 'webfontloader';
+import { button, fab, icon, iconButton, list, listTile, ripple, shadow, styler, svg } from 'polythene';
 import * as polythene from 'polythene';
 import { flex, styler as styler$1 } from 'polythene-css';
-import webfont from 'webfontloader';
-import { icon as icon$1 } from 'polythene-icon';
 import { button as button$1 } from 'polythene-button';
 import { fab as fab$1 } from 'polythene-fab';
+import { icon as icon$1 } from 'polythene-icon';
 import { svg as svg$1 } from 'polythene-svg';
 import { iconButton as iconButton$1 } from 'polythene-icon-button';
+import { list as list$1 } from 'polythene-list';
 import { listTile as listTile$1 } from 'polythene-list-tile';
 import { ripple as ripple$1 } from 'polythene-ripple';
 import { shadow as shadow$1 } from 'polythene-shadow';
@@ -60,8 +61,8 @@ var rules = {
   resultRow: ".result-row.flex.flex-row-ns.flex-column" + bottomBorder + resultHeight,
   resultTitle: ".flex.flex-one.ma3",
   result: ".result.flex.flex-one.relative.ma3.minh4",
-  content: ".component-result.relative.w-100.height-100px",
-  rawResult: ".prewrap.flex.flex-one.relative.f6.ma3.light-silver.minh6"
+  content: ".component-result.relative.w-100",
+  rawResult: ".generated-html.prewrap.flex.flex-one.relative.ma3.light-silver"
 };
 
 var blockSize = 40;
@@ -103,9 +104,14 @@ var rocket = m$1.trust('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="htt
 
 styler.add("polythene-css-classes", styles);
 
+// Testing the web font loader that we use to load Roboto
 webfont.load({
   google: {
     families: ["PT Sans:400"]
+  },
+  typekit: {
+    id: "patua-one",
+    api: "//use.edgefonts.net"
   }
 });
 
@@ -145,12 +151,38 @@ var tests = [{
     }
   }
 }, {
+  name: "List",
+  component: list,
+  attrs: {
+    header: {
+      title: "Friends"
+    },
+    borders: true,
+    tiles: [m(listTile, {
+      title: "Jennifer Barker",
+      subtitle: "Starting post doc",
+      front: m(icon, {
+        src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
+        avatar: true,
+        type: "large"
+      })
+    }), m(listTile, {
+      title: "Ali Connors",
+      subtitle: "Brunch this weekend?",
+      front: m(icon, {
+        src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png",
+        avatar: true,
+        type: "large"
+      })
+    })]
+  }
+}, {
   name: "List Tile",
   component: listTile,
   attrs: {
     title: "Ancillary Justice",
     highSubtitle: "The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before.",
-    front: m(icon$1, {
+    front: m(icon, {
       src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
       avatar: true,
       type: "large"
@@ -181,16 +213,18 @@ var tests = [{
     content: m.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z\"/></svg>")
   }
 }, {
-  name: "Web font loader (PT Sans)",
+  name: "Web font loader (Google Fonts: PT Sans)",
   component: {
     view: function view() {
-      return m("p", {
-        style: {
-          "font-family": "PT Sans",
-          "font-size": "25px",
-          "font-weight": 400
-        }
-      }, "The sky was cloudless and of a deep dark blue.");
+      return m("p.pt-sans", {}, "The sky was cloudless and of a deep dark blue.");
+    }
+  },
+  attrs: {}
+}, {
+  name: "Web font loader (Adobe Edge Web Fonts: Patua One)",
+  component: {
+    view: function view() {
+      return m("p.patua-one", {}, "The sky was cloudless and of a deep dark blue.");
     }
   },
   attrs: {}
@@ -324,7 +358,7 @@ var tests$1 = [{
   interactive: true,
   component: {
     oninit: function oninit(vnode) {
-      vnode.state.updated = 0;
+      return vnode.state.updated = 0;
     },
     view: function view(vnode) {
       return [m("div", "Updated: " + vnode.state.updated), m(component, {
@@ -340,7 +374,7 @@ var tests$1 = [{
   interactive: true,
   component: {
     oninit: function oninit(vnode) {
-      vnode.state.clicked = 0;
+      return vnode.state.clicked = 0;
     },
     view: function view(vnode) {
       return [m("div", "onclick called: " + vnode.state.clicked), m(component, {
@@ -358,7 +392,7 @@ var tests$1 = [{
   interactive: true,
   component: {
     oninit: function oninit(vnode) {
-      vnode.state.clickCount = 0;
+      return vnode.state.clickCount = 0;
     },
     view: function view(vnode) {
       return [m("div", "onclick called: " + vnode.state.clickCount), m(component, {
@@ -847,6 +881,216 @@ var tests$4 = [{
 }];
 
 var tests$5 = [{
+  name: "Option: header",
+  component: list$1,
+  attrs: {
+    header: {
+      title: "My header"
+    }
+  }
+}, {
+  name: "Option: tiles",
+  component: list$1,
+  attrs: {
+    borders: true,
+    tiles: [m(listTile$1, {
+      title: "Jennifer Barker",
+      subtitle: "Starting post doc"
+    }), m(listTile$1, {
+      title: "Ali Connors",
+      subtitle: "Brunch this weekend?"
+    })]
+  }
+}, {
+  name: "Child nodes",
+  component: list$1,
+  attrs: {
+    borders: true
+  },
+  children: [m(listTile$1, {
+    title: "Jennifer Barker",
+    subtitle: "Starting post doc"
+  }), m(listTile$1, {
+    title: "Ali Connors",
+    subtitle: "Brunch this weekend?"
+  })]
+}, {
+  name: "Options: tiles, indent, indentedBorders",
+  component: list$1,
+  attrs: {
+    indent: true,
+    indentedBorders: true,
+    tiles: [m(listTile$1, {
+      title: "Jennifer Barker",
+      subtitle: "Starting post doc"
+    }), m(listTile$1, {
+      title: "Ali Connors",
+      subtitle: "Brunch this weekend?"
+    })]
+  }
+}, {
+  name: "Options: header, tiles with urls",
+  interactive: true,
+  component: list$1,
+  attrs: {
+    header: {
+      title: "Friends"
+    },
+    borders: true,
+    tiles: [m(listTile$1, {
+      title: "Jennifer Barker",
+      subtitle: "Starting post doc",
+      front: m(icon$1, {
+        src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
+        avatar: true,
+        type: "large"
+      }),
+      url: {
+        href: "/",
+        oncreate: m.route.link
+      }
+    }), m(listTile$1, {
+      title: "Ali Connors",
+      subtitle: "Brunch this weekend?",
+      front: m(icon$1, {
+        src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png",
+        avatar: true,
+        type: "large"
+      }),
+      url: {
+        href: "/",
+        oncreate: m.route.link
+      }
+    })]
+  }
+}, {
+  name: "Option: hoverable",
+  interactive: true,
+  component: list$1,
+  attrs: {
+    hoverable: true,
+    borders: true,
+    header: {
+      title: "Friends"
+    },
+    tiles: [m(listTile$1, {
+      title: "Jennifer Barker",
+      subtitle: "Starting post doc"
+    }), m(listTile$1, {
+      title: "Ali Connors",
+      subtitle: "Brunch this weekend?"
+    })]
+  }
+}, {
+  name: "Option: hoverable -- dark theme",
+  interactive: true,
+  component: list$1,
+  attrs: {
+    class: "pe-dark-theme",
+    hoverable: true,
+    borders: true,
+    header: {
+      title: "Friends"
+    },
+    tiles: [m(listTile$1, {
+      title: "Jennifer Barker",
+      subtitle: "Starting post doc"
+    }), m(listTile$1, {
+      title: "Ali Connors",
+      subtitle: "Brunch this weekend?"
+    })]
+  }
+}, {
+  name: "Option: selectable",
+  interactive: true,
+  component: list$1,
+  attrs: {
+    selectable: true,
+    borders: true,
+    header: {
+      title: "Friends"
+    },
+    tiles: [m(listTile$1, {
+      title: "Jennifer Barker",
+      subtitle: "Starting post doc"
+    }), m(listTile$1, {
+      title: "Ali Connors",
+      subtitle: "Brunch this weekend?"
+    })]
+  }
+}, {
+  name: "Option: compact",
+  component: list$1,
+  attrs: {
+    compact: true,
+    borders: true,
+    header: {
+      title: "Friends"
+    },
+    tiles: [m(listTile$1, {
+      title: "Jennifer Barker",
+      subtitle: "Starting post doc",
+      front: m(icon$1, {
+        src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
+        avatar: true,
+        type: "large"
+      })
+    }), m(listTile$1, {
+      title: "Ali Connors",
+      subtitle: "Brunch this weekend?",
+      front: m(icon$1, {
+        src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png",
+        avatar: true,
+        type: "large"
+      })
+    })]
+  }
+},
+
+// Common
+{
+  name: "No options",
+  component: list$1,
+  attrs: null
+}, {
+  name: "Option: id",
+  component: list$1,
+  attrs: {
+    id: "id-x"
+  }
+}, {
+  name: "Option: class",
+  component: list$1,
+  attrs: {
+    class: "class-x"
+  }
+}, {
+  name: "Option: element",
+  component: list$1,
+  attrs: {
+    element: "blockquote"
+  }
+}, {
+  name: "Option: before",
+  component: list$1,
+  attrs: {
+    header: {
+      title: "My header"
+    },
+    before: m("div", "Before")
+  }
+}, {
+  name: "Option: after",
+  component: list$1,
+  attrs: {
+    header: {
+      title: "My header"
+    },
+    after: m("div", "After")
+  }
+}];
+
+var tests$6 = [{
   name: "Option: title",
   component: listTile$1,
   attrs: {
@@ -863,7 +1107,7 @@ var tests$5 = [{
   name: "Child node",
   component: listTile$1,
   attrs: null,
-  children: m("div", "Ancillary Justice")
+  children: m(icon$1, { msvg: stars })
 }, {
   name: "Option: subtitle",
   component: listTile$1,
@@ -926,6 +1170,28 @@ var tests$5 = [{
   name: "Option: highSubtitle and front",
   component: listTile$1,
   attrs: {
+    title: "Ancillary Justice",
+    highSubtitle: "The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before.",
+    front: m(icon$1, {
+      src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
+      avatar: true,
+      type: "large"
+    }),
+    secondary: {
+      icon: {
+        msvg: stars
+      },
+      url: {
+        href: "/",
+        oncreate: m.route.link
+      }
+    }
+  }
+}, {
+  name: "Option: highSubtitle and front -- dark theme",
+  component: listTile$1,
+  attrs: {
+    class: "pe-dark-theme",
     title: "Ancillary Justice",
     highSubtitle: "The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before.",
     front: m(icon$1, {
@@ -1102,7 +1368,7 @@ var tests$5 = [{
 
 var component$1 = ripple$1;
 
-var tests$6 = [{
+var tests$7 = [{
   name: "Option: constrained (true)",
   interactive: true,
   component: component$1,
@@ -1163,7 +1429,7 @@ var tests$6 = [{
   interactive: true,
   component: {
     oninit: function oninit(vnode) {
-      vnode.state.started = 0;
+      return vnode.state.started = 0;
     },
     view: function view(vnode) {
       return [m(component$1, {
@@ -1179,7 +1445,7 @@ var tests$6 = [{
   interactive: true,
   component: {
     oninit: function oninit(vnode) {
-      vnode.state.ended = 0;
+      return vnode.state.ended = 0;
     },
     view: function view(vnode) {
       return [m(component$1, {
@@ -1219,7 +1485,7 @@ var tests$6 = [{
 
 var component$2 = shadow$1;
 
-var tests$7 = [{
+var tests$8 = [{
   name: "Option: content",
   component: component$2,
   attrs: {
@@ -1242,7 +1508,7 @@ var tests$7 = [{
   interactive: true,
   component: {
     oninit: function oninit(vnode) {
-      vnode.state.z = 1;
+      return vnode.state.z = 1;
     },
     oncreate: function oncreate(vnode) {
       vnode.dom.addEventListener("click", function () {
@@ -1337,7 +1603,7 @@ var component$3 = svg$1;
 var svgString = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z\"/></svg>";
 var trustedSvg$1 = m.trust(svgString);
 
-var tests$8 = [{
+var tests$9 = [{
   name: "Child node (trusted svg)",
   component: component$3,
   attrs: null,
@@ -1473,7 +1739,7 @@ var mixinButtonStyles = [{
 
 styler$1.add("app-buttons-x", mixinButtonStyles);
 
-var tests$9 = [{
+var tests$10 = [{
   name: "Element should have a red background",
   component: {
     view: function view() {
@@ -1516,7 +1782,7 @@ var tests$9 = [{
 
 styler$1.add("css-classes", styles);
 
-var tests$10 = [{
+var tests$11 = [{
   name: "Should be aligned horizontally",
   component: {
     view: function view() {
@@ -1560,7 +1826,7 @@ var tests$10 = [{
   }
 }];
 
-var tests$11 = [{
+var tests$12 = [{
   name: "Theme: button (should be purple)",
   component: button$1,
   attrs: {
@@ -1600,6 +1866,25 @@ var tests$11 = [{
   }
 }];
 
+var generatedHtml = {
+  oninit: function oninit(vnode) {
+    return vnode.state.open = false;
+  },
+  oncreate: function oncreate(vnode) {
+    vnode.dom.addEventListener("click", function () {
+      vnode.state.open = !vnode.state.open;
+      m.redraw();
+    });
+  },
+  view: function view(vnode) {
+    var test = vnode.attrs.test;
+    var raw = tidy(m(test.component, test.attrs, test.children));
+    return m(rules.rawResult, {
+      class: vnode.state.open ? "open" : "closed"
+    }, [m(".html", {}, raw), m(".ellipsis", "...")]);
+  }
+};
+
 var testsPage = function testsPage(name, tests$$1) {
   return {
     view: function view() {
@@ -1607,12 +1892,14 @@ var testsPage = function testsPage(name, tests$$1) {
         href: "/",
         oncreate: m.route.link
       }, "Components"), m(rules.separator, "/"), m("span", name)]), m([rules.tests, rules.results].join(" "), {
-        class: "tests-" + name.replace(/ /g, "-").toLowerCase()
+        class: "tests-" + name.replace(/[\:\-\[\]]/g, "").replace(/ /g, "-").toLowerCase()
       }, tests$$1.map(function (test) {
-        var raw = tidy(m(test.component, test.attrs, test.children));
+
+        var resultId = "test-" + test.name.replace(/[\:\-\[\]]/g, "").replace(/ /g, "-").toLowerCase();
         return m([rules.resultRow, test.interactive ? rules.interactive : null].join(""), {
-          class: "test-" + test.name.replace(/ /g, "-").toLowerCase()
-        }, [m(rules.resultTitle, test.name), m(rules.result, m(rules.content, m(test.component, test.attrs, test.children))), m(rules.rawResult, raw)]);
+          key: resultId,
+          class: resultId
+        }, [m(rules.resultTitle, test.name), m(rules.result, m(rules.content, m(test.component, test.attrs, test.children))), m(generatedHtml, { test: test })]);
       }))];
     }
   };
@@ -1639,33 +1926,37 @@ var pages = [{
   name: "Icon Button",
   tests: tests$4
 }, {
+  path: "/list",
+  name: "List",
+  tests: tests$5
+}, {
   path: "/list-tile",
   name: "List tile",
-  tests: tests$5
+  tests: tests$6
 }, {
   path: "/ripple",
   name: "Ripple",
-  tests: tests$6
+  tests: tests$7
 }, {
   path: "/shadow",
   name: "Shadow",
-  tests: tests$7
+  tests: tests$8
 }, {
   path: "/svg",
   name: "SVG",
-  tests: tests$8
+  tests: tests$9
 }, {
   path: "/theme",
   name: "Custom theme",
-  tests: tests$11
+  tests: tests$12
 }, {
   path: "/css",
   name: "CSS tools",
-  tests: tests$9
+  tests: tests$10
 }, {
   path: "/css-classes",
   name: "CSS classes",
-  tests: tests$10
+  tests: tests$11
 }];
 
 var index = {

@@ -8,6 +8,7 @@ import { tests as buttonTests } from "../tests/button/tests";
 import { tests as fabTests } from "../tests/fab/tests";
 import { tests as iconTests } from "../tests/icon/tests";
 import { tests as iconButtonTests } from "../tests/icon-button/tests";
+import { tests as listTests } from "../tests/list/tests";
 import { tests as listTileTests } from "../tests/list-tile/tests";
 import { tests as rippleTests } from "../tests/ripple/tests";
 import { tests as shadowTests } from "../tests/shadow/tests";
@@ -16,6 +17,27 @@ import { tests as svgTests } from "../tests/svg/tests";
 import { tests as cssTests } from "../tests/css/tests";
 import { tests as cssClassesTests } from "../tests/css-classes/tests";
 import { tests as themeTests } from "../tests/theme/tests";
+
+const generatedHtml = {
+  oninit: vnode =>
+    vnode.state.open = false,
+  oncreate: vnode => {
+    vnode.dom.addEventListener("click", () => {
+      vnode.state.open = !vnode.state.open;
+      m.redraw();
+    });
+  },
+  view: vnode => {
+    const test = vnode.attrs.test;
+    const raw = tidy(m(test.component, test.attrs, test.children));
+    return m(css.rawResult, {
+      class: vnode.state.open ? "open" : "closed"
+    }, [
+      m(".html", {}, raw),
+      m(".ellipsis", "...")
+    ]);
+  }
+};
 
 const testsPage = (name, tests) => ({
   view: () => [
@@ -28,15 +50,17 @@ const testsPage = (name, tests) => ({
       m("span", name)
     ]),
     m([css.tests, css.results].join(" "), {
-      class: `tests-${name.replace(/ /g, "-").toLowerCase()}`
+      class: `tests-${name.replace(/[\:\-\[\]]/g, "").replace(/ /g, "-").toLowerCase()}`
     }, tests.map(test => {
-      const raw = tidy(m(test.component, test.attrs, test.children));
+      
+      const resultId = `test-${(test.name).replace(/[\:\-\[\]]/g, "").replace(/ /g, "-").toLowerCase()}`;
       return m([css.resultRow, test.interactive ? css.interactive : null].join(""), {
-        class: `test-${test.name.replace(/ /g, "-").toLowerCase()}`
+        key: resultId,
+        class: resultId
       }, [
         m(css.resultTitle, test.name),
         m(css.result, m(css.content, m(test.component, test.attrs, test.children))),
-        m(css.rawResult, raw)
+        m(generatedHtml, {test})
       ]);
     }))
   ]
@@ -67,6 +91,11 @@ const pages = [
     path: "/icon-button",
     name: "Icon Button",
     tests: iconButtonTests
+  },
+  {
+    path: "/list",
+    name: "List",
+    tests: listTests
   },
   {
     path: "/list-tile",

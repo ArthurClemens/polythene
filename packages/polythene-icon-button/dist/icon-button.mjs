@@ -79,30 +79,30 @@ var layout = (function (componentVars) {
   return mixin.createStyles(componentVars, createStyles);
 });
 
-var style = function style(config, tint, type) {
+var style = function style(componentVars, tint, type) {
   var scope = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
 
   return [defineProperty({}, scope + ".pe-button.pe-button--icon, a.pe-button.pe-button--icon", {
-    color: config["color_" + tint + "_" + type + "_normal_text"],
+    color: componentVars["color_" + tint + "_" + type + "_normal_text"],
     background: "none",
 
     " .pe-button__wash": {
-      opacity: config["color_" + tint + "_wash_opacity"]
+      opacity: componentVars["color_" + tint + "_wash_opacity"]
     },
 
     "&.pe-button--focus, &.pe-button--selected": {
       " .pe-button__focus": {
-        opacity: config["color_" + tint + "_focus_opacity"],
+        opacity: componentVars["color_" + tint + "_focus_opacity"],
         "background-color": "currentcolor"
       }
     },
 
     "&.pe-button--disabled": {
-      color: config["color_" + tint + "_" + type + "_disabled_text"]
+      color: componentVars["color_" + tint + "_" + type + "_disabled_text"]
     },
 
     "&.pe-button--raised": {
-      "background-color": config["color_" + tint + "_background"],
+      "background-color": componentVars["color_" + tint + "_background"],
 
       " .pe-button__content": {
         background: "transparent"
@@ -111,7 +111,7 @@ var style = function style(config, tint, type) {
   })];
 };
 
-var noTouch = function noTouch(config, tint, type) {
+var noTouch = function noTouch(componentVars, tint, type) {
   var scope = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
 
   return [defineProperty({}, scope + ".pe-button.pe-button--icon:hover", tint === "light" ? {
@@ -120,27 +120,27 @@ var noTouch = function noTouch(config, tint, type) {
     }
   } : {
     " .pe-button__wash": {
-      "background-color": config["color_" + tint + "_" + type + "_normal_text"]
+      "background-color": componentVars["color_" + tint + "_" + type + "_normal_text"]
     }
   })];
 };
 
-var createStyles$1 = function createStyles(config) {
-  return [style(config, "light", "flat"), {
-    "html.pe-no-touch": [noTouch(config, "light", "flat", " ")]
+var createStyles$1 = function createStyles(componentVars) {
+  return [style(componentVars, "light", "flat"), {
+    "html.pe-no-touch": [noTouch(componentVars, "light", "flat", " ")]
   }, {
     ".pe-dark-theme": [
     // inside dark theme
-    style(config, "dark", "flat", " "),
+    style(componentVars, "dark", "flat", " "),
     // has dark theme
-    style(config, "dark", "flat", "&")]
+    style(componentVars, "dark", "flat", "&")]
   }, {
-    "html.pe-no-touch .pe-dark-theme": [noTouch(config, "dark", "flat", " ")]
+    "html.pe-no-touch .pe-dark-theme": [noTouch(componentVars, "dark", "flat", " ")]
   }];
 };
 
-var color = (function (config) {
-  return mixin.createStyles(config, createStyles$1);
+var color = (function (componentVars) {
+  return mixin.createStyles(componentVars, createStyles$1);
 });
 
 styler.styleComponent("pe-icon-button", "icon-button", styles, vars$1, layout, color);
