@@ -1,9 +1,9 @@
 import m from 'mithril';
-import { flex, mixin, styler } from 'polythene-css';
-import { styles, vars } from 'polythene-theme';
 import { icon } from 'polythene-icon';
 import { ripple } from 'polythene-ripple';
 import { filterSupportedAttributes } from 'polythene-core';
+import { flex, mixin, styler } from 'polythene-css';
+import { styles, vars } from 'polythene-theme';
 
 var rgba = vars.rgba;
 
@@ -331,7 +331,7 @@ var CSS_CLASSES = {
   isSelectable: "pe-list-tile--selectable"
 };
 
-var primaryContent = function primaryContent(attrs) {
+var primaryContent = function primaryContent(attrs, children) {
   var element = attrs.element ? attrs.element : attrs.url ? "a" : "div";
 
   var frontComp = attrs.front ? m("div", {
@@ -344,7 +344,7 @@ var primaryContent = function primaryContent(attrs) {
     class: CSS_CLASSES.primary
   }), [frontComp, m("div", {
     class: CSS_CLASSES.content
-  }, [attrs.content ? attrs.content : null, attrs.title && !attrs.content ? m("div", {
+  }, [attrs.content ? attrs.content : children && children[0] ? children : null, attrs.title && !attrs.content ? m("div", {
     class: CSS_CLASSES.title
   }, attrs.title) : null, attrs.subtitle ? m("div", {
     class: CSS_CLASSES.subtitle
@@ -378,7 +378,7 @@ var view = function view(vnode) {
   delete primaryAttrs.id;
   delete primaryAttrs.class;
 
-  var content = [attrs.ink && !attrs.disabled ? m(ripple, attrs.ripple) : null, primaryContent(primaryAttrs), attrs.secondary ? secondaryContent(attrs.secondary) : null];
+  var content = [attrs.ink && !attrs.disabled ? m(ripple, attrs.ripple) : null, primaryContent(primaryAttrs, vnode.children), attrs.secondary ? secondaryContent(attrs.secondary) : null];
   return m(element, props, [attrs.before, content, attrs.after]);
 };
 

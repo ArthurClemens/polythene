@@ -1,29 +1,16 @@
 import m from "mithril";
-import { icon } from "polythene-icon";
+import { icon as component } from "polythene-icon";
+import { svg } from "polythene-svg";
 import iconStars from "mmsvg/google/msvg/action/stars";
 
-const component = icon;
-const svgString = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z\"/></svg>";
-const trustedSvg = m.trust(svgString);
+const trustedSvg = m.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>");
 
 export const tests = [
   {
-    name: "No options",
-    component,
-    attrs: null
-  },
-  {
-    name: "Option: id",
+    name: "Option: content",
     component,
     attrs: {
-      id: "id-x"
-    }
-  },
-  {
-    name: "Option: class",
-    component,
-    attrs: {
-      class: "class-x"
+      content: iconStars
     }
   },
   {
@@ -45,6 +32,12 @@ export const tests = [
     }
   },
   {
+    name: "Child node (svg children mmsvg)",
+    component,
+    attrs: null,
+    children: m(svg, [iconStars])
+  },
+  {
     name: "Option: msvg",
     component,
     attrs: {
@@ -52,10 +45,17 @@ export const tests = [
     }
   },
   {
-    name: "Option: src",
+    name: "Option: src (image file)",
     component,
     attrs: {
-      src: "img/ic_arrow_back_black_18dp.png"
+      src: "img/arrow-back.png"
+    }
+  },
+  {
+    name: "Option: src (svg file)",
+    component,
+    attrs: {
+      src: "img/arrow-back.svg"
     }
   },
   {
@@ -107,6 +107,34 @@ export const tests = [
       src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
       avatar: true,
       type: "large"
+    }
+  },
+
+  // Common
+  {
+    name: "No options",
+    component,
+    attrs: null
+  },
+  {
+    name: "Option: id",
+    component,
+    attrs: {
+      id: "id-x"
+    }
+  },
+  {
+    name: "Option: class",
+    component,
+    attrs: {
+      class: "class-x"
+    }
+  },
+  {
+    name: "Option: element",
+    component,
+    attrs: {
+      element: "a"
     }
   },
   {

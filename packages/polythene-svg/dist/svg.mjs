@@ -15,7 +15,7 @@ var _extends = Object.assign || function (target) {
   return target;
 };
 
-var CSS_CLASSES = {
+var classes = {
   component: "pe-svg"
 };
 
@@ -23,9 +23,9 @@ var view = function view(vnode) {
   var attrs = vnode.attrs;
   var element = attrs.element || "div";
   var props = _extends({}, filterSupportedAttributes(attrs), {
-    class: [CSS_CLASSES.component, attrs.class].join(" ")
+    class: [classes.component, attrs.class].join(" ")
   });
-  var content = attrs.content;
+  var content = attrs.content ? attrs.content : vnode.children && vnode.children[0] ? vnode.children : null;
   return m(element, props, [attrs.before, content, attrs.after]);
 };
 

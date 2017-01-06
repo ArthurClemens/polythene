@@ -153,7 +153,7 @@ var CSS_CLASSES = {
 
 var view = function view(vnode) {
   var attrs = vnode.attrs;
-  var content = attrs.icon ? m(icon, attrs.icon) : attrs.content ? attrs.content : null;
+  var content = attrs.content ? attrs.content : vnode.children && vnode.children[0] ? vnode.children : attrs.icon ? m(icon, attrs.icon) : null;
   return m(button, _extends({}, {
     content: m("div", { class: CSS_CLASSES.content }, content),
     parentClass: [attrs.parentClass || CSS_CLASSES.component, attrs.compact ? CSS_CLASSES.compact : null].join(" "),

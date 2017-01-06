@@ -39,13 +39,15 @@ const view = vnode => {
   );
   const content = attrs.content
     ? attrs.content
-    : attrs.svg
-      ? m(svg, {...attrs.svg})
-      : attrs.msvg
-        ? m(svg, {content: attrs.msvg})
-        : attrs.src
-          ? m("img", {src: attrs.src})
-          : null;
+    : vnode.children && vnode.children[0]
+      ? vnode.children
+      : attrs.svg
+        ? m(svg, {...attrs.svg})
+        : attrs.msvg
+          ? m(svg, attrs.msvg)
+          : attrs.src
+            ? m("img", {src: attrs.src})
+            : null;
   return m(element, props, [attrs.before, content, attrs.after]);
 };
 

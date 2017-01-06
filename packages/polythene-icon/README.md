@@ -47,7 +47,7 @@ const myIcon = m(icon, {
 ~~~
 
 
-### Using PNG files
+### Using image files
 
 ~~~javascript
 import { icon } from "polythene-icon";
@@ -60,7 +60,7 @@ const myIcon = m(icon, {
 
 ### Variations
 
-* The size is set with the `type` parameter, or with CSS (in conjuction with `class`).
+* The size is set with option `type` (and of course with CSS, in conjuction with `class`).
 * The color is set with the CSS `color` attribute of the parent element.
 
 
@@ -70,22 +70,29 @@ const myIcon = m(icon, {
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **element** | optional | String | "div" | HTML element tag |
-| **class** | optional | String |  | Extra CSS class appended to "pe-icon" |
-| **id** | optional | String | | HTML element id |
-| **events** | optional | Object | | Options object containing one or more standard events such as `onclick` |
-| **before** | optional | Mithril element | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
-| **after** | optional | Mithril element | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
+| **element**   | optional | String | "div" | HTML element tag |
+| **class**     | optional | String |       | Extra CSS class appended to `pe-icon` |
+| **id**        | optional | String |       | HTML element id |
+| **content**   | optional | Mithril element |  | Any content; replaces `vnode.children` and ignores `svg` and `msvg`  |
+| **before**    | optional | Mithril element | | Extra content before main content; this content is placed left of subsequent elements with a lower stacking depth |
+| **after**     | optional | Mithril element | | Extra content after main content; this content is placed right of preceding elements with a higher stacking depth |
 
 ### Icon options
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **msvg** | either `src` or `svg` or `msvg` must be passed | Mithril element |  | Mithril-ified SVG icon |
-| **src** | either `src` or `svg` or `msvg` must be passed | String |  | Icon URL (for `img` only) |
-| **svg** | either `src` or `svg` or `msvg` must be passed | Object |  | [svg](#svg) options object |
-| **type** | optional | String | "regular" | Sets the size: either "small" (16px), "regular" (24px), "medium" (32px), "large" (40px). Adds CSS class `pe-icon--small`, etcetera |
-| **avatar** | optional | Boolean | | Set to `true` to add class `pe-icon--avatar` which creates a round image |
+| **msvg**      | either `src` or `svg` or `msvg` must be passed | Mithril element |  | Mithril-ified SVG icon |
+| **svg**       | either `src` or `svg` or `msvg` must be passed | Object |  | [svg](#svg) options object |
+| **src**       | either `src` or `svg` or `msvg` must be passed | String |  | Icon URL (for `img` only) |
+| **type**      | optional | String | "regular" | Sets the size: either "small" (16px), "regular" (24px), "medium" (32px), "large" (40px). Adds CSS class `pe-icon--small`, etcetera |
+| **avatar**    | optional | Boolean | | Set to `true` to add class `pe-icon--avatar` which creates a round image |
+
+
+### Composition
+
+Icon is composed from:
+
+* [SVG](#svg) (when using option `svg` or `msvg`)
 
 
 

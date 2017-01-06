@@ -1,5 +1,10 @@
 # Polythene rewrite
 
+## Migrating from 0.2 to 1.x
+
+See [Migration](Migration.md)
+
+
 
 ## Development
 
@@ -20,7 +25,7 @@ Includes Jest snapshots and a viewer to verify the output.
 Build files:
 
 * `npm run build` - builds files in `dist`
-* `npm run dev` - WIP
+* `npm run dev` - uses [Wright](https://github.com/porsager/Wright) to start a Chrome live development server
 
 Update snapshots:
 

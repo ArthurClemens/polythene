@@ -1,7 +1,7 @@
 import m from "mithril";
 import { icon } from "polythene-icon";
 import { button } from "polythene-button";
-import "./theme/index";
+import "./theme";
 
 const CSS_CLASSES = {
   component: "pe-button pe-button--icon",
@@ -11,11 +11,13 @@ const CSS_CLASSES = {
 
 const view = vnode => {
   const attrs = vnode.attrs;
-  const content = attrs.icon
-    ? m(icon, attrs.icon)
-    : attrs.content
-      ? attrs.content
-      : null;
+  const content = attrs.content
+    ? attrs.content
+    : vnode.children && vnode.children[0]
+      ? vnode.children
+      : attrs.icon
+        ? m(icon, attrs.icon)
+        : null;
   return m(button, Object.assign(
     {},
     {

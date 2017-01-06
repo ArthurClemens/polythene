@@ -106,12 +106,13 @@ var view = function view(vnode) {
   var props = _extends({}, filterSupportedAttributes(attrs), {
     class: [CSS_CLASSES.component, attrs.animated && CSS_CLASSES.animated, attrs.class].join(" ")
   });
-  var content = [attrs.content && attrs.content, m("div", {
+  var content = attrs.content ? attrs.content : vnode.children && vnode.children[0] ? vnode.children : null;
+  var shadowContent = [content, m("div", {
     class: [CSS_CLASSES.bottomShadow, depthClass].join(" ")
   }), m("div", {
     class: [CSS_CLASSES.topShadow, depthClass].join(" ")
   })];
-  return m(element, props, [attrs.before, content, attrs.after]);
+  return m(element, props, [attrs.before, shadowContent, attrs.after]);
 };
 
 var shadow = {

@@ -9,8 +9,17 @@ exports[`test Add to a Mithril element 1`] = `
 "
 `;
 
+exports[`test Child node 1`] = `
+"<div class=\"pe-shadow\">
+  Child
+  <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+  <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+</div>
+"
+`;
+
 exports[`test Interactive option: animated 1`] = `
-"<div class=\"relative w-100 height-100px\">
+"<div class=\"component-result relative w-100 height-100px\">
   Click me
 </div>
 <div class=\"pe-shadow pe-shadow--animated\">
@@ -28,6 +37,23 @@ exports[`test No options 1`] = `
 "
 `;
 
+exports[`test Option: after 1`] = `
+"<div class=\"pe-shadow\">
+  <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+  <div class=\"pe-shadow__top pe-shadow--z-1\"></div>After
+</div>
+"
+`;
+
+exports[`test Option: before 1`] = `
+"<div class=\"pe-shadow\">
+  Before
+  <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+  <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+</div>
+"
+`;
+
 exports[`test Option: class 1`] = `
 "<div class=\"pe-shadow class-x\">
   <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -38,9 +64,7 @@ exports[`test Option: class 1`] = `
 
 exports[`test Option: content 1`] = `
 "<div class=\"pe-shadow\">
-  <div>
-    CONTENT
-  </div>
+  Content
   <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
   <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
 </div>

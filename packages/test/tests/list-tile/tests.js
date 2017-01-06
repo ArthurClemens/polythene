@@ -1,28 +1,9 @@
 import m from "mithril";
 import { listTile as component } from "polythene-list-tile";
 import { icon } from "polythene-icon";
-import iconRocket from "mmsvg/templarian/msvg/rocket";
+import iconStars from "mmsvg/google/msvg/action/stars";
 
 export const tests = [
-  {
-    name: "No options",
-    component,
-    attrs: null
-  },
-  {
-    name: "Option: id",
-    component,
-    attrs: {
-      id: "id-x"
-    }
-  },
-  {
-    name: "Option: class",
-    component,
-    attrs: {
-      class: "class-x"
-    }
-  },
   {
     name: "Option: title",
     component,
@@ -35,8 +16,14 @@ export const tests = [
     component,
     attrs: {
       title: "Ancillary Justice",
-      content: iconRocket
+      content: m(icon, {msvg: iconStars})
     }
+  },
+  {
+    name: "Child node",
+    component,
+    attrs: null,
+    children: m(icon, {msvg: iconStars})
   },
   {
     name: "Option: subtitle",
@@ -93,7 +80,7 @@ export const tests = [
     attrs: {
       title: "Ancillary Justice",
       front: m(icon, {
-        msvg: iconRocket,
+        msvg: iconStars,
         type: "medium"
       })
     }
@@ -114,8 +101,7 @@ export const tests = [
       }),
       secondary: {
         icon: {
-          msvg: iconRocket,
-          type: "medium"
+          msvg: iconStars
         },
         url: {
           href: "/",
@@ -215,7 +201,7 @@ export const tests = [
       title: "Ancillary Justice",
       secondary: {
         icon: {
-          msvg: iconRocket,
+          msvg: iconStars,
           type: "medium"
         }
       }
@@ -229,7 +215,7 @@ export const tests = [
       title: "Ancillary Justice",
       secondary: {
         icon: {
-          msvg: iconRocket,
+          msvg: iconStars,
           type: "medium"
         },
         url: {
@@ -245,12 +231,38 @@ export const tests = [
     attrs: {
       title: "Ancillary Justice",
       secondary: {
-        content: iconRocket
+        content: m(icon, {msvg: iconStars})
       }
     }
   },
 
-  // Other
+  // Common
+  {
+    name: "No options",
+    component,
+    attrs: null
+  },
+  {
+    name: "Option: id",
+    component,
+    attrs: {
+      id: "id-x"
+    }
+  },
+  {
+    name: "Option: class",
+    component,
+    attrs: {
+      class: "class-x"
+    }
+  },
+  {
+    name: "Option: element",
+    component,
+    attrs: {
+      element: "blockquote"
+    }
+  },
   {
     name: "Option: before",
     component,

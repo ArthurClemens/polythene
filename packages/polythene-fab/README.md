@@ -26,28 +26,29 @@ const myFab = m(fab, {
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element** | optional | String | "div" | HTML element tag |
-| **class** | optional | String |  | Extra CSS class appended to "pe-button--fab" |
+| **class** | optional | String |  | Extra CSS class appended to `pe-button--fab` |
 | **id** | optional | String | | HTML element id |
-| **events** | optional | Object | | Options object containing one or more standard events such as `onclick` |
+| **content**| either `icon` or `content` | Mithril element |  | Alternative content |
 | **before** | optional | Mithril element | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **after** | optional | Mithril element | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
 | **tabindex** | optional | Integer | | Tab index |
+| **events** | optional | Object | | Options object containing one or more standard events such as `onclick` |
 
 ### FAB specific options
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **icon** | either `icon` or `content` | Object |  | [icon](#icon) options object |
-| **content**| either `icon` or `content` | Mithril element |  | Alternative content |
+| **icon** | use `icon` or `content` | Object |  | [icon](#icon) options object |
 | **mini** | optional | Boolean | false | Set to true to display a small button (class name `pe-button--fab-mini`) |
 
 
-### Button and icon options
+### Composition
 
-Because FAB is composed from [button](#button) and [icon](#icon) (using the `icon` option), see further:
+FAB is composed from:
 
-* [Button options](#button)
-* [Icon options](#icon)
+* [Icon Button](#icon-button)
+  * [Button](#button)
+* [Icon](#icon) (when using option `icon`)
 
 Differences to button behaviour:
 

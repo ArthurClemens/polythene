@@ -1,6 +1,6 @@
 import m from "mithril";
 import { isTouch, touchEndEvent, animationEndEvent, filterSupportedAttributes } from "polythene-core";
-import "./theme/index";
+import "./theme";
 
 const ANIMATION_END_EVENT = animationEndEvent();
 const DEFAULT_START_OPACITY = 0.2;

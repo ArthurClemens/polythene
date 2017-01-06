@@ -33,5 +33,3 @@ export { svg } from "polythene-svg";
 
 export * from "polythene-material-design";
 
-export { webfontLoader } from "polythene-tools";
-

@@ -1,29 +1,10 @@
 import m from "mithril";
-import { fab } from "polythene-fab";
+import { fab as component} from "polythene-fab";
+import { icon } from "polythene-icon";
+
 import iconAlarm from "mmsvg/google/msvg/action/alarm-add";
 
-const component = fab;
-
 export const tests = [
-  {
-    name: "No options",
-    component,
-    attrs: null
-  },
-  {
-    name: "Option: id",
-    component,
-    attrs: {
-      id: "id-x"
-    }
-  },
-  {
-    name: "Option: class",
-    component,
-    attrs: {
-      class: "class-x"
-    }
-  },
   {
     name: "Option: icon",
     component,
@@ -31,6 +12,13 @@ export const tests = [
       icon: {
         msvg: iconAlarm
       }
+    }
+  },
+  {
+    name: "Option: content",
+    component,
+    attrs: {
+      content: m(icon, {msvg: iconAlarm})
     }
   },
   {
@@ -91,6 +79,34 @@ export const tests = [
         href: "/shadow",
         oncreate: m.route.link
       }
+    }
+  },
+
+  // Common
+  {
+    name: "No options",
+    component,
+    attrs: null
+  },
+  {
+    name: "Option: id",
+    component,
+    attrs: {
+      id: "id-x"
+    }
+  },
+  {
+    name: "Option: class",
+    component,
+    attrs: {
+      class: "class-x"
+    }
+  },
+  {
+    name: "Option: element",
+    component,
+    attrs: {
+      element: "div"
     }
   },
   {

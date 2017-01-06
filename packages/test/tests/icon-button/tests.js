@@ -1,26 +1,14 @@
 import m from "mithril";
 import { iconButton as component } from "polythene-icon-button";
+import { icon } from "polythene-icon";
 import iconFavorite from "mmsvg/google/msvg/action/favorite-border";
 
 export const tests = [
   {
-    name: "No options",
+    name: "Child node (icon component)",
     component,
-    attrs: null
-  },
-  {
-    name: "Option: id",
-    component,
-    attrs: {
-      id: "id-x"
-    }
-  },
-  {
-    name: "Option: class",
-    component,
-    attrs: {
-      class: "class-x"
-    }
+    attrs: null,
+    children: m(icon, {msvg: iconFavorite})
   },
   {
     name: "Option: icon",
@@ -117,6 +105,41 @@ export const tests = [
         msvg: iconFavorite,
         type: "large"
       }
+    }
+  },
+
+  // Common
+  {
+    name: "No options",
+    component,
+    attrs: null
+  },
+  {
+    name: "Option: id",
+    component,
+    attrs: {
+      id: "id-x"
+    }
+  },
+  {
+    name: "Option: class",
+    component,
+    attrs: {
+      class: "class-x"
+    }
+  },
+  {
+    name: "Option: element",
+    component,
+    attrs: {
+      element: "div"
+    }
+  },
+  {
+    name: "Option: tabindex",
+    component,
+    attrs: {
+      tabindex: 3
     }
   },
   {

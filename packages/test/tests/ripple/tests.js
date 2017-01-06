@@ -5,33 +5,6 @@ const component = ripple;
 
 export const tests = [
   {
-    name: "No options",
-    component,
-    attrs: null
-  },
-  {
-    name: "Option: id",
-    component,
-    attrs: {
-      id: "id-x"
-    }
-  },
-  {
-    name: "Option: class",
-    component,
-    attrs: {
-      class: "class-x"
-    }
-  },
-  {
-    name: "Option: disabled",
-    interactive: true,
-    component,
-    attrs: {
-      disabled: true
-    }
-  },
-  {
     name: "Option: constrained (true)",
     interactive: true,
     component,
@@ -69,6 +42,14 @@ export const tests = [
     component,
     attrs: {
       opacityDecayVelocity: 0.1
+    }
+  },
+  {
+    name: "Option: disabled",
+    interactive: true,
+    component,
+    attrs: {
+      disabled: true
     }
   },
   {
@@ -116,6 +97,34 @@ export const tests = [
           end: () => (vnode.state.ended++, m.redraw())
         })
       ]
+    }
+  },
+
+  // Common
+  {
+    name: "No options",
+    component,
+    attrs: null
+  },
+  {
+    name: "Option: id",
+    component,
+    attrs: {
+      id: "id-x"
+    }
+  },
+  {
+    name: "Option: class",
+    component,
+    attrs: {
+      class: "class-x"
+    }
+  },
+  {
+    name: "Option: element",
+    component,
+    attrs: {
+      element: "a"
     }
   }
 ];

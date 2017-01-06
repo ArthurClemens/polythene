@@ -6,7 +6,7 @@ import { rules as css } from "./styles";
 import { tests as polytheneTests } from "../tests/polythene/tests";
 import { tests as buttonTests } from "../tests/button/tests";
 import { tests as fabTests } from "../tests/fab/tests";
-import { tests as iconTests } from "../tests/component_icon/tests";
+import { tests as iconTests } from "../tests/icon/tests";
 import { tests as iconButtonTests } from "../tests/icon-button/tests";
 import { tests as listTileTests } from "../tests/list-tile/tests";
 import { tests as rippleTests } from "../tests/ripple/tests";
@@ -27,9 +27,13 @@ const testsPage = (name, tests) => ({
       m(css.separator, "/"),
       m("span", name)
     ]),
-    m(css.tests, {class: `test-${name.replace(/ /g, "-").toLowerCase()}`}, tests.map(test => {
+    m([css.tests, css.results].join(" "), {
+      class: `tests-${name.replace(/ /g, "-").toLowerCase()}`
+    }, tests.map(test => {
       const raw = tidy(m(test.component, test.attrs, test.children));
-      return m([css.resultRow, test.interactive ? css.interactive : null].join(""), [
+      return m([css.resultRow, test.interactive ? css.interactive : null].join(""), {
+        class: `test-${test.name.replace(/ /g, "-").toLowerCase()}`
+      }, [
         m(css.resultTitle, test.name),
         m(css.result, m(css.content, m(test.component, test.attrs, test.children))),
         m(css.rawResult, raw)

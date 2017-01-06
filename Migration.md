@@ -1,8 +1,8 @@
-# Migrating from v0.2 to v1.0
+# Migrating from Polythene 0.2 to 1.0
 
 ## Module imports
 
-Module imports have changed. 
+Polythene is now a monorepo with an npm package for each component. The module imports have changed to named imports:
 
 ### v0.2
 
@@ -11,8 +11,6 @@ import btn from "polythene/button/button";
 ```
 
 ### v1.x
-
-Modules now have named imports.
 
 ```javascript
 import { button } from "polythene-button";
@@ -40,21 +38,22 @@ const myBtn = m(button, {});
 
 Some modules have been renamed or moved.
 
-v0.2                            |  v1.0
-------------------------------- | ----------------
-`polythene/common`              | `polythene-css`
-`polythene/config`              | `polythene-theme`
-`polythene/theme`               | `polythene-material-design`
-`polythene/layout/theme/theme`  | `polythene-css-classes`
-`font-roboto`                   | `polythene-theme/font-roboto`
+v0.2                             |  v1.0
+-------------------------------- | ----------------
+`polythene/common/mixin`         | `polythene-css` - `mixin`
+`polythene/common/webfontloader` | removed; `polythene-material-design` uses the more capable [typekit/webfontloader](https://github.com/typekit/webfontloader)
+`polythene/config`               | `polythene-theme`
+`polythene/theme`                | `polythene-material-design`
+`polythene/layout/theme/theme`   | `polythene-css-classes`
+`font-roboto`                    | no longer exposed as separate component, but used in `polythene-material-design`
 
 
 
 ## Component options
 
-### Option "tag"
+### Option `tag`
 
-In Mithril 1.x, the param "tag" is reserved and cannot be used for a component. In Polythene "tag" has been replaced with "element".
+In Mithril 1.x, the attribute `tag` is reserved and cannot be used for components. In Polythene 1.x `tag` has been replaced with `element`.
 
 #### v0.2
 
@@ -72,9 +71,9 @@ const myBtn = m(button, {
 });
 ```
 
-### Option "url"
+### Option `url`
 
-The "url" object no longer uses a `config` attribute; use `oncreate: m.route.link` to create a route link.
+In Mithril 1.x, attribute `config` has been removed in favor of livecycle methods. To create a route link in Polythene, use `oncreate: m.route.link`.
 
 #### v0.2
 
@@ -97,6 +96,34 @@ const myBtn = m(button, {
   }
 });
 ```
+
+### Options for setting child content
+
+Content can now also be set using child nodes, and creates the same result when using option `content`.
+
+#### v0.2
+
+```javascript
+import listTile from 'polythene/list-tile/list-tile';
+
+const myListTile = m(listTile, {
+  content: "My content"
+});
+```
+
+#### v1.x
+
+```javascript
+import { listTile } from "polythene-list-tile";
+
+const myListTile1 = m(listTile, {
+  content: "My content"
+});
+
+const myListTile2 = m(listTile, {}, "My content");
+```
+
+
 
 
 
@@ -123,12 +150,6 @@ CSS class `pe-button__label` has been replaced with `pe-button--icon__content`.
 
 ### SVG
 
-Removed dynamic loading and preloading, as these are not a frequent use cases. Without it the code is much simpler.
-
-
-
-## Theme
-
-Because component styles are not exposed in v.1.x, it is not possible to create a variable configuration in a deriving component. Use the custom theme file instead.
-
+Dynamic loading and preloading have been removed, as these are not frequent use cases.
+ 
 

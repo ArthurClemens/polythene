@@ -1,3 +1,10 @@
+body {
+  background-color: rgb(236, 239, 241);
+}
+.results blockquote {
+  padding: 0;
+  margin: 0;
+}
 .app {
   padding-bottom: 40px;
 }
@@ -20,25 +27,34 @@
 .height-100px {
   height: 100px;
 }
+.interactive {
+  background-color: #d3eaf9;
+}
+.header-row,
+.result-row {
+  border-color: #ddd;
+}
 .pe-button.bordered-button .pe-button__content {
   border-color: #ddd;
 }
-.test-ripple .result .pe-ripple {
-  background-color: #fff;
-}
-.test-list-tile .result .pe-list-tile {
-  background-color: #fff;
-}
-.test-polythene .pe-button .pe-button__content,
-.test-icon-button .pe-button .pe-button__content {
+.tests-polythene .test-ripple .component-result,
+.tests-ripple .result .component-result {
   background-color: #fff;
 }
 
-.test-polythene .pe-list-tile,
-.test-polythene .pe-ripple,
-.test-polythene .pe-shadow {
+.tests-polythene .test-list-tile .pe-list-tile,
+.tests-list-tile .result .pe-list-tile {
   background-color: #fff;
 }
-.test-polythene .pe-button--fab {
-  color: #333;
+
+.pt-sans {
+  font-family: "PT Sans";
+  font-size: 25px;
+  font-weight: 400;
 }
+.patua-one {
+  font-family: "patua-one";
+  font-size: 25px;
+  font-weight: 400;
+}
+

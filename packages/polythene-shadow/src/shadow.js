@@ -1,6 +1,6 @@
 import m from "mithril";
 import { filterSupportedAttributes } from "polythene-core";
-import "./theme/index";
+import "./theme";
 
 const CSS_CLASSES = {
   component: "pe-shadow",
@@ -25,8 +25,13 @@ const view = vnode => {
       ].join(" ")
     }
   );
-  const content = [
-    attrs.content && attrs.content,
+  const content = attrs.content
+    ? attrs.content
+    : vnode.children && vnode.children[0]
+      ? vnode.children
+      : null;
+  const shadowContent = [
+    content,
     m("div", {
       class: [CSS_CLASSES.bottomShadow, depthClass].join(" ")
     }),
@@ -34,7 +39,7 @@ const view = vnode => {
       class: [CSS_CLASSES.topShadow, depthClass].join(" ")
     })
   ];
-  return m(element, props, [attrs.before, content, attrs.after]);
+  return m(element, props, [attrs.before, shadowContent, attrs.after]);
 };
 
 export const shadow = {

@@ -1,13 +1,22 @@
 import m from "mithril";
 import * as polythene from "polythene";
-
 import { styles as blockStyles, blocks } from "../css-classes/block-styles";
-
-polythene.webfontLoader.add("google", "Raleway:600:latin");
-polythene.styler.add("polythene-css-classes", blockStyles);
-
+import webfont from "webfontloader";
 import { icon } from "polythene-icon";
 import iconRocket from "mmsvg/templarian/msvg/rocket";
+
+polythene.styler.add("polythene-css-classes", blockStyles);
+
+// Testing the web font loader that we use to load Roboto
+webfont.load({
+  google: {
+    families: ["PT Sans:400"]
+  },
+  typekit: {
+    id: "patua-one",
+    api: "//use.edgefonts.net"
+  }
+});
 
 export const tests = [
   {
@@ -92,14 +101,18 @@ export const tests = [
     }
   },
   {
-    name: "Web font loader",
+    name: "Web font loader (Google Fonts: PT Sans)",
     component: {
-      view: () => m("p", {
-        style: {
-          "font-family": "Raleway",
-          "font-weight": 600
-        }
-      }, "Test in Raleway font")
+      view: () => m("p.pt-sans", {
+      }, "The sky was cloudless and of a deep dark blue.")
+    },
+    attrs: {}
+  },
+  {
+    name: "Web font loader (Adobe Edge Web Fonts: Patua One)",
+    component: {
+      view: () => m("p.patua-one", {
+      }, "The sky was cloudless and of a deep dark blue.")
     },
     attrs: {}
   },

@@ -1,3 +1,23 @@
+exports[`test Child node 1`] = `
+"<div class=\"pe-list-tile\">
+  <div class=\"pe-list-tile__primary\">
+    <div class=\"pe-list-tile__content\">
+      <div class=\"pe-icon pe-icon--regular\">
+        <div class=\"pe-svg\">
+          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+          height=\"24\" viewbox=\"0 0 24 24\">
+            <path d=
+            \"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\">
+            </path>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
 exports[`test No options 1`] = `
 "<div class=\"pe-list-tile\">
   <div class=\"pe-list-tile__primary\">
@@ -52,15 +72,16 @@ exports[`test Option: content 1`] = `
 "<div class=\"pe-list-tile\">
   <div class=\"pe-list-tile__primary\">
     <div class=\"pe-list-tile__content\">
-      <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-      \"http://www.w3.org/1999/xlink\" version=\"1.1\" baseprofile=
-      \"full\" width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
-      enable-background=\"new 0 0 24.00 24.00\" xml:space=\"preserve\">
-        <path fill=\"#000000\" fill-opacity=\"1\" stroke-linejoin=
-        \"round\" d=
-        \"M 2.80761,14.1213L 5.63604,11.2929L 8.17304,10.7855C 11.39,6.40972 17.5532,4.22183 19.7782,4.22183C 19.7782,6.44683 17.5903,12.61 13.2145,15.827L 12.7071,18.364L 9.87868,21.1924L 9.17157,17.6569C 7.75736,17.6569 7.75736,17.6569 7.05025,16.9497C 6.34315,16.2426 6.34315,16.2426 6.34315,14.8284L 2.80761,14.1213 Z M 5.63604,16.9497L 7.05025,18.364L 4.38603,21.0282L 2.97181,21.0282L 2.97181,19.614L 5.63604,16.9497 Z M 4.22182,15.5355L 5.45926,15.7123L 3.01472,18.1569L 3.01472,16.7426L 4.22182,15.5355 Z M 8.28769,18.5407L 8.46447,19.7782L 7.25735,20.9853L 5.84314,20.9853L 8.28769,18.5407 Z M 13,9.5C 12.1716,9.5 11.5,10.1716 11.5,11C 11.5,11.8284 12.1716,12.5 13,12.5C 13.8284,12.5 14.5,11.8284 14.5,11C 14.5,10.1716 13.8284,9.5 13,9.5 Z\">
-        </path>
-      </svg>
+      <div class=\"pe-icon pe-icon--regular\">
+        <div class=\"pe-svg\">
+          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+          height=\"24\" viewbox=\"0 0 24 24\">
+            <path d=
+            \"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\">
+            </path>
+          </svg>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -76,6 +97,15 @@ exports[`test Option: disabled url 1`] = `
     </div>
   </div></a>
 </div>
+"
+`;
+
+exports[`test Option: element 1`] = `
+"<blockquote class=\"pe-list-tile\">
+  <blockquote class=\"pe-list-tile__primary\">
+    <div class=\"pe-list-tile__content\"></div>
+  </blockquote>
+</blockquote>
 "
 `;
 
@@ -106,14 +136,10 @@ exports[`test Option: front (icon) 1`] = `
     \"pe-list-tile__content pe-list-tile__content--front\">
       <div class=\"pe-icon pe-icon--medium\">
         <div class=\"pe-svg\">
-          <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-          \"http://www.w3.org/1999/xlink\" version=\"1.1\" baseprofile=
-          \"full\" width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
-          enable-background=\"new 0 0 24.00 24.00\" xml:space=
-          \"preserve\">
-            <path fill=\"#000000\" fill-opacity=\"1\" stroke-linejoin=
-            \"round\" d=
-            \"M 2.80761,14.1213L 5.63604,11.2929L 8.17304,10.7855C 11.39,6.40972 17.5532,4.22183 19.7782,4.22183C 19.7782,6.44683 17.5903,12.61 13.2145,15.827L 12.7071,18.364L 9.87868,21.1924L 9.17157,17.6569C 7.75736,17.6569 7.75736,17.6569 7.05025,16.9497C 6.34315,16.2426 6.34315,16.2426 6.34315,14.8284L 2.80761,14.1213 Z M 5.63604,16.9497L 7.05025,18.364L 4.38603,21.0282L 2.97181,21.0282L 2.97181,19.614L 5.63604,16.9497 Z M 4.22182,15.5355L 5.45926,15.7123L 3.01472,18.1569L 3.01472,16.7426L 4.22182,15.5355 Z M 8.28769,18.5407L 8.46447,19.7782L 7.25735,20.9853L 5.84314,20.9853L 8.28769,18.5407 Z M 13,9.5C 12.1716,9.5 11.5,10.1716 11.5,11C 11.5,11.8284 12.1716,12.5 13,12.5C 13.8284,12.5 14.5,11.8284 14.5,11C 14.5,10.1716 13.8284,9.5 13,9.5 Z\">
+          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+          height=\"24\" viewbox=\"0 0 24 24\">
+            <path d=
+            \"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\">
             </path>
           </svg>
         </div>
@@ -175,7 +201,7 @@ exports[`test Option: highSubtitle and front 1`] = `
     \"pe-list-tile__content pe-list-tile__content--front\">
       <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
         <img src=
-        \"http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png\" />
+        \"http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png\">
       </div>
     </div>
     <div class=\"pe-list-tile__content\">
@@ -191,16 +217,12 @@ exports[`test Option: highSubtitle and front 1`] = `
     </div>
   </div><a href=\"#!/\" class=\"pe-list-tile__secondary\">
   <div class=\"pe-list-tile__content\">
-    <div class=\"pe-icon pe-icon--medium\">
+    <div class=\"pe-icon pe-icon--regular\">
       <div class=\"pe-svg\">
-        <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-        \"http://www.w3.org/1999/xlink\" version=\"1.1\" baseprofile=
-        \"full\" width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
-        enable-background=\"new 0 0 24.00 24.00\" xml:space=
-        \"preserve\">
-          <path fill=\"#000000\" fill-opacity=\"1\" stroke-linejoin=
-          \"round\" d=
-          \"M 2.80761,14.1213L 5.63604,11.2929L 8.17304,10.7855C 11.39,6.40972 17.5532,4.22183 19.7782,4.22183C 19.7782,6.44683 17.5903,12.61 13.2145,15.827L 12.7071,18.364L 9.87868,21.1924L 9.17157,17.6569C 7.75736,17.6569 7.75736,17.6569 7.05025,16.9497C 6.34315,16.2426 6.34315,16.2426 6.34315,14.8284L 2.80761,14.1213 Z M 5.63604,16.9497L 7.05025,18.364L 4.38603,21.0282L 2.97181,21.0282L 2.97181,19.614L 5.63604,16.9497 Z M 4.22182,15.5355L 5.45926,15.7123L 3.01472,18.1569L 3.01472,16.7426L 4.22182,15.5355 Z M 8.28769,18.5407L 8.46447,19.7782L 7.25735,20.9853L 5.84314,20.9853L 8.28769,18.5407 Z M 13,9.5C 12.1716,9.5 11.5,10.1716 11.5,11C 11.5,11.8284 12.1716,12.5 13,12.5C 13.8284,12.5 14.5,11.8284 14.5,11C 14.5,10.1716 13.8284,9.5 13,9.5 Z\">
+        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=
+        \"24\" viewbox=\"0 0 24 24\">
+          <path d=
+          \"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\">
           </path>
         </svg>
       </div>
@@ -306,15 +328,16 @@ exports[`test Option: secondary (content) 1`] = `
   </div>
   <div class=\"pe-list-tile__secondary\">
     <div class=\"pe-list-tile__content\">
-      <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-      \"http://www.w3.org/1999/xlink\" version=\"1.1\" baseprofile=
-      \"full\" width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
-      enable-background=\"new 0 0 24.00 24.00\" xml:space=\"preserve\">
-        <path fill=\"#000000\" fill-opacity=\"1\" stroke-linejoin=
-        \"round\" d=
-        \"M 2.80761,14.1213L 5.63604,11.2929L 8.17304,10.7855C 11.39,6.40972 17.5532,4.22183 19.7782,4.22183C 19.7782,6.44683 17.5903,12.61 13.2145,15.827L 12.7071,18.364L 9.87868,21.1924L 9.17157,17.6569C 7.75736,17.6569 7.75736,17.6569 7.05025,16.9497C 6.34315,16.2426 6.34315,16.2426 6.34315,14.8284L 2.80761,14.1213 Z M 5.63604,16.9497L 7.05025,18.364L 4.38603,21.0282L 2.97181,21.0282L 2.97181,19.614L 5.63604,16.9497 Z M 4.22182,15.5355L 5.45926,15.7123L 3.01472,18.1569L 3.01472,16.7426L 4.22182,15.5355 Z M 8.28769,18.5407L 8.46447,19.7782L 7.25735,20.9853L 5.84314,20.9853L 8.28769,18.5407 Z M 13,9.5C 12.1716,9.5 11.5,10.1716 11.5,11C 11.5,11.8284 12.1716,12.5 13,12.5C 13.8284,12.5 14.5,11.8284 14.5,11C 14.5,10.1716 13.8284,9.5 13,9.5 Z\">
-        </path>
-      </svg>
+      <div class=\"pe-icon pe-icon--regular\">
+        <div class=\"pe-svg\">
+          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+          height=\"24\" viewbox=\"0 0 24 24\">
+            <path d=
+            \"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\">
+            </path>
+          </svg>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -352,14 +375,10 @@ exports[`test Option: secondary (icon) 1`] = `
     <div class=\"pe-list-tile__content\">
       <div class=\"pe-icon pe-icon--medium\">
         <div class=\"pe-svg\">
-          <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-          \"http://www.w3.org/1999/xlink\" version=\"1.1\" baseprofile=
-          \"full\" width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
-          enable-background=\"new 0 0 24.00 24.00\" xml:space=
-          \"preserve\">
-            <path fill=\"#000000\" fill-opacity=\"1\" stroke-linejoin=
-            \"round\" d=
-            \"M 2.80761,14.1213L 5.63604,11.2929L 8.17304,10.7855C 11.39,6.40972 17.5532,4.22183 19.7782,4.22183C 19.7782,6.44683 17.5903,12.61 13.2145,15.827L 12.7071,18.364L 9.87868,21.1924L 9.17157,17.6569C 7.75736,17.6569 7.75736,17.6569 7.05025,16.9497C 6.34315,16.2426 6.34315,16.2426 6.34315,14.8284L 2.80761,14.1213 Z M 5.63604,16.9497L 7.05025,18.364L 4.38603,21.0282L 2.97181,21.0282L 2.97181,19.614L 5.63604,16.9497 Z M 4.22182,15.5355L 5.45926,15.7123L 3.01472,18.1569L 3.01472,16.7426L 4.22182,15.5355 Z M 8.28769,18.5407L 8.46447,19.7782L 7.25735,20.9853L 5.84314,20.9853L 8.28769,18.5407 Z M 13,9.5C 12.1716,9.5 11.5,10.1716 11.5,11C 11.5,11.8284 12.1716,12.5 13,12.5C 13.8284,12.5 14.5,11.8284 14.5,11C 14.5,10.1716 13.8284,9.5 13,9.5 Z\">
+          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+          height=\"24\" viewbox=\"0 0 24 24\">
+            <path d=
+            \"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\">
             </path>
           </svg>
         </div>
@@ -382,14 +401,10 @@ exports[`test Option: secondary (url) 1`] = `
   <div class=\"pe-list-tile__content\">
     <div class=\"pe-icon pe-icon--medium\">
       <div class=\"pe-svg\">
-        <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-        \"http://www.w3.org/1999/xlink\" version=\"1.1\" baseprofile=
-        \"full\" width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
-        enable-background=\"new 0 0 24.00 24.00\" xml:space=
-        \"preserve\">
-          <path fill=\"#000000\" fill-opacity=\"1\" stroke-linejoin=
-          \"round\" d=
-          \"M 2.80761,14.1213L 5.63604,11.2929L 8.17304,10.7855C 11.39,6.40972 17.5532,4.22183 19.7782,4.22183C 19.7782,6.44683 17.5903,12.61 13.2145,15.827L 12.7071,18.364L 9.87868,21.1924L 9.17157,17.6569C 7.75736,17.6569 7.75736,17.6569 7.05025,16.9497C 6.34315,16.2426 6.34315,16.2426 6.34315,14.8284L 2.80761,14.1213 Z M 5.63604,16.9497L 7.05025,18.364L 4.38603,21.0282L 2.97181,21.0282L 2.97181,19.614L 5.63604,16.9497 Z M 4.22182,15.5355L 5.45926,15.7123L 3.01472,18.1569L 3.01472,16.7426L 4.22182,15.5355 Z M 8.28769,18.5407L 8.46447,19.7782L 7.25735,20.9853L 5.84314,20.9853L 8.28769,18.5407 Z M 13,9.5C 12.1716,9.5 11.5,10.1716 11.5,11C 11.5,11.8284 12.1716,12.5 13,12.5C 13.8284,12.5 14.5,11.8284 14.5,11C 14.5,10.1716 13.8284,9.5 13,9.5 Z\">
+        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=
+        \"24\" viewbox=\"0 0 24 24\">
+          <path d=
+          \"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\">
           </path>
         </svg>
       </div>

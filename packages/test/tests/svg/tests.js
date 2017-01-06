@@ -8,6 +8,34 @@ const trustedSvg = m.trust(svgString);
 
 export const tests = [
   {
+    name: "Child node (trusted svg)",
+    component,
+    attrs: null,
+    children: [trustedSvg]
+  },
+  {
+    name: "Option: content (trusted svg)",
+    component,
+    attrs: {
+      content: trustedSvg
+    },
+  },
+  {
+    name: "Child node (mmsvg)",
+    component,
+    attrs: null,
+    children: [iconStars]
+  },
+  {
+    name: "Option: content (mmsvg)",
+    component,
+    attrs: {
+      content: iconStars
+    },
+  },
+
+  // Common
+  {
     name: "No options",
     component,
     attrs: null
@@ -30,22 +58,8 @@ export const tests = [
     name: "Option: element",
     component,
     attrs: {
-      element: "div",
+      element: "a",
       content: m.trust("<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"></svg>")
-    }
-  },
-  {
-    name: "Option: content (trusted svg)",
-    component,
-    attrs: {
-      content: trustedSvg
-    }
-  },
-  {
-    name: "Option: content (mmsvg)",
-    component,
-    attrs: {
-      content: iconStars
     }
   },
   {

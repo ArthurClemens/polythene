@@ -2,7 +2,7 @@ import m from "mithril";
 import { shadow } from "polythene-shadow";
 import { ripple } from "polythene-ripple";
 import { isTouch, touchStartEvent, touchEndEvent, subscribe, filterSupportedAttributes } from "polythene-core";
-import "./theme/index";
+import "./theme";
 
 const CSS_CLASSES = {
   component: "pe-button pe-button--text",
@@ -139,7 +139,9 @@ const view = vnode => {
       ? typeof attrs.label === "object"
         ? attrs.label
         : m("div", {class: CSS_CLASSES.label}, attrs.label)
-      : null;
+      : vnode.children && vnode.children[0]
+        ? vnode.children
+        : null;
   const noWash = disabled || (attrs.wash !== undefined && !attrs.wash);
   const content = label
     ? m("div", {class: CSS_CLASSES.content}, [

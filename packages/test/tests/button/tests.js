@@ -5,37 +5,10 @@ const component = button;
 
 export const tests = [
   {
-    name: "No options",
-    component,
-    attrs: null
-  },
-  {
-    name: "Option: id",
-    component,
-    attrs: {
-      id: "id-x"
-    }
-  },
-  {
-    name: "Option: class",
-    component,
-    attrs: {
-      class: "class-x"
-    }
-  },
-  {
     name: "Option: label",
     component,
     attrs: {
       label: "Label"
-    }
-  },
-  {
-    name: "Option: element (button)",
-    component,
-    attrs: {
-      label: "button element",
-      element: "button"
     }
   },
   {
@@ -44,6 +17,12 @@ export const tests = [
     attrs: {
       content: m("div", "Content")
     }
+  },
+  {
+    name: "Child node",
+    component,
+    attrs: {},
+    children: ["Child"]
   },
   {
     name: "Option: raised",
@@ -124,22 +103,6 @@ export const tests = [
     }
   },
   {
-    name: "Option: before",
-    component,
-    attrs: {
-      label: "Button",
-      before: m("span", "Before")
-    }
-  },
-  {
-    name: "Option: after",
-    component,
-    attrs: {
-      label: "Button",
-      after: m("span", "After")
-    }
-  },
-  {
     name: "Option: url (with oncreate)",
     interactive: true,
     component,
@@ -179,7 +142,7 @@ export const tests = [
     }
   },
   {
-    name: "Option: events (click)",
+    name: "Option: events (onclick)",
     interactive: true,
     component: {
       oninit: (vnode) => {
@@ -250,5 +213,50 @@ export const tests = [
       raised: true,
       animateOnTap: false
     }
-  }
+  },
+
+  // Common
+  {
+    name: "No options",
+    component,
+    attrs: null
+  },
+  {
+    name: "Option: id",
+    component,
+    attrs: {
+      id: "id-x"
+    }
+  },
+  {
+    name: "Option: class",
+    component,
+    attrs: {
+      class: "class-x"
+    }
+  },
+  {
+    name: "Option: element (button)",
+    component,
+    attrs: {
+      label: "button element",
+      element: "button"
+    }
+  },
+  {
+    name: "Option: before",
+    component,
+    attrs: {
+      label: "Button",
+      before: m("span", "Before")
+    }
+  },
+  {
+    name: "Option: after",
+    component,
+    attrs: {
+      label: "Button",
+      after: m("span", "After")
+    }
+  },
 ];

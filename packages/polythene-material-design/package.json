@@ -14,7 +14,8 @@
     "mithril": "1.0.0-rc.6",
     "polythene-css": "1",
     "polythene-theme": "1",
-    "polythene-tools": "1"
+    "polythene-tools": "1",
+    "webfontloader": "^1.6.27"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

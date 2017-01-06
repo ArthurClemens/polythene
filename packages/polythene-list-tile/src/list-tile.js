@@ -1,9 +1,8 @@
 import m from "mithril";
-import "./theme/index";
 import { icon } from "polythene-icon";
 import { ripple } from "polythene-ripple";
 import { filterSupportedAttributes } from "polythene-core";
-import "./theme/index";
+import "./theme";
 
 const CSS_CLASSES = {
   component:       "pe-list-tile",
@@ -25,7 +24,7 @@ const CSS_CLASSES = {
   isSelectable:    "pe-list-tile--selectable"
 };
 
-const primaryContent = attrs => {
+const primaryContent = (attrs, children) => {
   const element = attrs.element
     ? attrs.element
     : attrs.url
@@ -53,7 +52,9 @@ const primaryContent = attrs => {
     }, [
       attrs.content
         ? attrs.content
-        : null,
+        : children && children[0]
+          ? children
+          : null,
       attrs.title && !attrs.content
         ? m("div", {
           class: CSS_CLASSES.title
@@ -129,7 +130,7 @@ const view = vnode => {
     attrs.ink && !attrs.disabled
       ? m(ripple, attrs.ripple)
       : null,
-    primaryContent(primaryAttrs),
+    primaryContent(primaryAttrs, vnode.children),
     attrs.secondary
       ? secondaryContent(attrs.secondary)
       : null

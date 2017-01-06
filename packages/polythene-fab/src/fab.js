@@ -1,6 +1,6 @@
 import m from "mithril";
 import { iconButton } from "polythene-icon-button";
-import "./theme/index";
+import "./theme";
 
 const CSS_CLASSES = {
   component: "pe-button--fab",
@@ -29,7 +29,7 @@ const view = vnode => {
       wash: true,
       animateOnTap: true
     },
-    {...attrs}
+    attrs
   ));
 };
 

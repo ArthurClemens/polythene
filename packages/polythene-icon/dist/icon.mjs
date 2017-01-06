@@ -111,7 +111,7 @@ var view = function view(vnode) {
   var props = _extends({}, filterSupportedAttributes(attrs), {
     class: [CSS_CLASSES.icon, classForType(attrs.type), attrs.avatar ? CSS_CLASSES.avatar : null, attrs.class].join(" ")
   }, attrs.events ? attrs.events : null);
-  var content = attrs.content ? attrs.content : attrs.svg ? m(svg, _extends({}, attrs.svg)) : attrs.msvg ? m(svg, { content: attrs.msvg }) : attrs.src ? m("img", { src: attrs.src }) : null;
+  var content = attrs.content ? attrs.content : vnode.children && vnode.children[0] ? vnode.children : attrs.svg ? m(svg, _extends({}, attrs.svg)) : attrs.msvg ? m(svg, attrs.msvg) : attrs.src ? m("img", { src: attrs.src }) : null;
   return m(element, props, [attrs.before, content, attrs.after]);
 };
 

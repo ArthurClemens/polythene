@@ -55,9 +55,15 @@ const myIcon = m(icon, {
   msvg: gIconStars
 });
 
-const myIconButton = m(iconButton, {
+const myIconBtn = m.component(iconBtn, {
   content: myIcon
 });
+~~~
+
+or 
+
+~~~javascript
+const myIconButton = m(iconButton, {}, myIcon);
 ~~~
 
 ### Variations
@@ -114,28 +120,29 @@ Pass `type` to the `icon` parameter, or use CSS.
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **element** | optional | String | "div" | HTML element tag |
-| **class** | optional | String |  | Extra CSS class appended to "pe-button--icon" |
-| **id** | optional | String | | HTML element id |
-| **events** | optional | Object | | Options object containing one or more standard events such as `onclick` |
-| **before** | optional | Mithril element | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
-| **after** | optional | Mithril element | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
-| **tabindex** | optional | Integer | | Tab index |
+| **element**   | optional | String | "div" | HTML element tag |
+| **class**     | optional | String |  | Extra CSS class appended to "pe-button--icon" |
+| **id**        | optional | String | | HTML element id |
+| **content**   | optional | Mithril element |  | Any content; replaces `vnode.children` |
+| **before**    | optional | Mithril element | | Extra content before main content; this content is placed left of subsequent elements with a lower stacking depth |
+| **after**     | optional | Mithril element | | Extra content after main content; this content is placed right of preceding elements with a higher stacking depth |
+| **events**    | optional | Object | | Options object containing one or more standard events such as `onclick` |
+| **tabindex**  | optional | Integer | | Tab index |
 
 ### Icon button specific options
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **icon** | either icon or content must be passed | Object |  | [icon](#icon) options object; also used to show an round "avatar" portrait image |
-| **content** | either icon or content must be passed | Mithril element | | Alternative content if no icon object is used |
-| **compact** | optional | Boolean | | Set to `true` to use less padding |
+| **icon**      | either icon or child nodes must be passed | Object |  | [icon](#icon) options object; also used to show an round "avatar" portrait image |
+| **compact**   | optional | Boolean | | Set to `true` to use less padding |
 
-### Button and icon options
 
-Because icon button is composed from [button](#button) and [icon](#icon) (using the `icon` option), see further:
+### Composition
 
-* [Button options](#button)
-* [Icon options](#icon)
+Icon Button is composed from:
+
+* [Button](#button)
+* [Icon](#icon) (when using option `icon`)
 
 
 ## CSS classes

@@ -141,7 +141,7 @@ var view = function view(vnode) {
     ink: true,
     wash: true,
     animateOnTap: true
-  }, _extends({}, attrs)));
+  }, attrs));
 };
 
 var fab = {

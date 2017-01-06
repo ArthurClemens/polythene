@@ -37,6 +37,10 @@ const myListTile = m(listTile, {
 To show an icon:
 
 ~~~javascript
+import m from "mithril";
+import { listTile } from "polythene-list-tile";
+import { icon } from "polythene-icon";
+
 const myListTile = m(listTile, {
   title: "My title",
   front: m(icon, {
@@ -50,6 +54,9 @@ const myListTile = m(listTile, {
 Or use an SVG as icon:
 
 ~~~javascript
+import m from "mithril";
+import { listTile } from "polythene-list-tile";
+import { icon } from "polythene-icon";
 import iconStarOutline from "mmsvg/templarian/msvg/star-outline";
 
 const myListTile = m(listTile, {
@@ -105,18 +112,14 @@ const myListTile = m(listTile, {
 
 ## Variations
 
-A list tile can have 1 to 3 lines:
-
-* `title`: titel on a single line
-* `subtitle`: subtitle on a single line
-* `highSubtitle`: subtitle runs over 2 lines
-* Use class `list-tile--compact` to reduce the vertical padding.
-
-A list tile can optionally have an icon.
-
-Text and icon are taken together as primary content. Primary content can optionally have a link.
-
-A list tile can optionally have secondary content, displayed to the right. Secondary content can contain any content, and conditionally have a link.
+* A list tile can have 1 to 3 lines:
+  * `title`: titel on a single line
+  * `subtitle`: subtitle on a single line
+  * `highSubtitle`: subtitle runs over 2 lines
+  * Use class `list-tile--compact` to reduce the vertical padding.
+* A list tile can optionally have an icon.
+* Text and icon are taken together as primary content. Primary content can optionally have a link.
+* A list tile can optionally have secondary content, displayed to the right. Secondary content can contain any content, and conditionally have a link.
 
 
 ## Options
@@ -132,19 +135,12 @@ A list tile can optionally have secondary content, displayed to the right. Secon
 | **before** | optional | Mithril element | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **after** | optional | Mithril element | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
 
-### List tile specific options
+### List tile content options
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **content** | optional | Mithril element or component | | Any content |
-| **title** | optional | String | | The text content |
-| **subtitle** | optional | String | | Secondary text content (1 line high) |
-| **highSubtitle** | optional | String | | Secondary text content (2 lines high) |
-| **front** | optional | Mithril element or component |  | Content to show at the left of the primary content |
-| **url** | optional | Object with `href`, optionally `oncreate` | | URL location; for in-app route linking set `oncreate : m.route.link` |
-| **sticky** | optional | Boolean | | Make list tile sticky when scrolling; this is normally set in the [list](#list) component as `header.sticky`; [does not work in Chrome or IE/Edge](http://caniuse.com/#feat=css-sticky); adds class "sticky" |
-| **compact** | optional | Boolean | | Set to `true` to reduce vertical padding |
-| **secondary** | optional | Object | | Options for secondary content, see below |
+| **content**   | -              | -        |             | See below |
+| **secondary** | optional       | Object   |             | Options for secondary content, see below |
 
 ### List tile appearance options
 
@@ -157,6 +153,19 @@ A list tile can optionally have secondary content, displayed to the right. Secon
 | **ripple** | optional (valid if `ink` is `true`) | Options object | | Pass [ripple](#ripple) options to define ripple behavior |
 | **hoverable** | optional | Boolean | false | Set to true to show a hover effect (non-touch devices) |
 | **selectable** | optional | Boolean | false | Set to true to show a mouse pointer (non-touch devices) |
+| **sticky** | optional | Boolean | | Make list tile sticky when scrolling; this is normally set in the [list](#list) component as `header.sticky`; [does not work in Chrome or IE/Edge](http://caniuse.com/#feat=css-sticky); adds class "sticky" |
+| **compact** | optional | Boolean | | Set to `true` to reduce vertical padding |
+
+### List tile primary content options
+
+| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
+| **content** | optional | Mithril element | | Any primary content; replaces `vnode.children` and ignores `title`, `subTitle` and `highSubtitle` |
+| **title** | optional | String | | The text content |
+| **subtitle** | optional | String | | Secondary text content (1 line high) |
+| **highSubtitle** | optional | String | | Secondary text content (2 lines high) |
+| **front** | optional | Mithril element or component |  | Content to show at the left of the primary content |
+| **url** | optional | Object with `href`, optionally `oncreate` | | URL location; for in-app route linking set `oncreate : m.route.link` |
 
 ### List tile secondary content options
 
@@ -164,8 +173,16 @@ A list tile can optionally have secondary content, displayed to the right. Secon
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **secondary.element** | optional | String | See "Layout of secondary content" below | HTML element for secondary content |
 | **secondary.icon** | optional | Object |  | [icon](#icon) options object for icon in secondary content; will be placed above secondary.content |
-| **secondary.url** | optional | Object | | URL for secondary content; options object containing `href` and `config` |
+| **secondary.url** | optional | Object with `href`, optionally `oncreate` | | URL for secondary content; for in-app route linking set `oncreate : m.route.link` |
 | **secondary.content** | optional | Mithril element | | Secondary content |
+
+
+### Composition
+
+List Tile is composed from:
+
+* [Ripple](#ripple) (when option `ink` is used)
+* [Icon](#icon) (when option `secondary.icon` is used)
 
 
 ## CSS classes
