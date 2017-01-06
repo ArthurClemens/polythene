@@ -3,6 +3,34 @@ import { list as component } from "polythene-list";
 import { listTile } from "polythene-list-tile";
 import { icon } from "polythene-icon";
 
+const listTileJennifer = m(listTile, {
+  title: "Jennifer Barker",
+  subtitle: "Starting post doc",
+  front: m(icon, {
+    src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
+    avatar: true,
+    type: "large"
+  }),
+  url: {
+    href: "/",
+    oncreate: m.route.link
+  }
+});
+
+const listTileAli = m(listTile, {
+  title: "Ali Connors",
+  subtitle: "Brunch this weekend?",
+  front: m(icon, {
+    src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png",
+    avatar: true,
+    type: "large"
+  }),
+  url: {
+    href: "/",
+    oncreate: m.route.link
+  }
+});
+
 export const tests = [
   {
     name: "Option: header",
@@ -10,7 +38,7 @@ export const tests = [
     attrs: {
       header: {
         title: "My header"
-      },
+      }
     }
   },
   {
@@ -51,16 +79,21 @@ export const tests = [
     name: "Options: tiles, indent, indentedBorders",
     component,
     attrs: {
-      indent: true,
       indentedBorders: true,
+      header: {
+        title: "Friends",
+        indent: true
+      },
       tiles: [
         m(listTile, {
           title: "Jennifer Barker",
           subtitle: "Starting post doc",
+          indent: true
         }),
         m(listTile, {
           title: "Ali Connors",
-          subtitle: "Brunch this weekend?"
+          subtitle: "Brunch this weekend?",
+          indent: true
         })
       ]
     }
@@ -68,38 +101,27 @@ export const tests = [
   {
     name: "Options: header, tiles with urls",
     interactive: true,
-    component,
-    attrs: {
-      header: {
-        title: "Friends"
-      },
-      borders: true,
-      tiles: [
-        m(listTile, {
-          title: "Jennifer Barker",
-          subtitle: "Starting post doc",
-          front: m(icon, {
-            src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
-            avatar: true,
-            type: "large"
-          }),
-          url: {
-            href: "/",
-            oncreate: m.route.link
-          }
+    component: {
+      view: () => [
+        m(component, {
+          header: {
+            title: "Friends"
+          },
+          borders: true,
+          tiles: [
+            listTileJennifer,
+            listTileAli
+          ]
         }),
-        m(listTile, {
-          title: "Ali Connors",
-          subtitle: "Brunch this weekend?",
-          front: m(icon, {
-            src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png",
-            avatar: true,
-            type: "large"
-          }),
-          url: {
-            href: "/",
-            oncreate: m.route.link
-          }
+        m(component, {
+          header: {
+            title: "Friends"
+          },
+          borders: true,
+          tiles: [
+            listTileJennifer,
+            listTileAli
+          ]
         })
       ]
     }
@@ -109,29 +131,6 @@ export const tests = [
     interactive: true,
     component,
     attrs: {
-      hoverable: true,
-      borders: true,
-      header: {
-        title: "Friends"
-      },
-      tiles: [
-        m(listTile, {
-          title: "Jennifer Barker",
-          subtitle: "Starting post doc",
-        }),
-        m(listTile, {
-          title: "Ali Connors",
-          subtitle: "Brunch this weekend?"
-        })
-      ]
-    }
-  },
-  {
-    name: "Option: hoverable -- dark theme",
-    interactive: true,
-    component,
-    attrs: {
-      class: "pe-dark-theme",
       hoverable: true,
       borders: true,
       header: {
@@ -181,15 +180,7 @@ export const tests = [
         title: "Friends"
       },
       tiles: [
-        m(listTile, {
-          title: "Jennifer Barker",
-          subtitle: "Starting post doc",
-          front: m(icon, {
-            src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
-            avatar: true,
-            type: "large"
-          })
-        }),
+        listTileJennifer,
         m(listTile, {
           title: "Ali Connors",
           subtitle: "Brunch this weekend?",
@@ -198,6 +189,53 @@ export const tests = [
             avatar: true,
             type: "large"
           })
+        })
+      ]
+    }
+  },
+
+  {
+    name: "Options: header.sticky",
+    interactive: true,
+    component: {
+      view: () => m(".scrollable-list", [0,1,2,3,4].map(() => {
+        return m(component, {
+          header: {
+            title: "Subheader",
+            sticky: true
+          },
+          tiles: [
+            listTileJennifer,
+            listTileAli,
+            listTileJennifer,
+            listTileAli
+          ]
+        });
+      }))
+    }
+  },
+
+  // Dark theme
+
+  {
+    name: "Option: hoverable -- dark theme",
+    interactive: true,
+    component,
+    attrs: {
+      class: "pe-dark-theme",
+      hoverable: true,
+      borders: true,
+      header: {
+        title: "Friends"
+      },
+      tiles: [
+        m(listTile, {
+          title: "Jennifer Barker",
+          subtitle: "Starting post doc",
+        }),
+        m(listTile, {
+          title: "Ali Connors",
+          subtitle: "Brunch this weekend?"
         })
       ]
     }

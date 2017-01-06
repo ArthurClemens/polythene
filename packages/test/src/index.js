@@ -40,6 +40,8 @@ const generatedHtml = {
 };
 
 const testsPage = (name, tests) => ({
+  oncreate: () => 
+    document.title = name,
   view: () => [
     m(css.headerRow, [
       m(css.link, {
@@ -52,7 +54,6 @@ const testsPage = (name, tests) => ({
     m([css.tests, css.results].join(" "), {
       class: `tests-${name.replace(/[\:\-\[\]]/g, "").replace(/ /g, "-").toLowerCase()}`
     }, tests.map(test => {
-      
       const resultId = `test-${(test.name).replace(/[\:\-\[\]]/g, "").replace(/ /g, "-").toLowerCase()}`;
       return m([css.resultRow, test.interactive ? css.interactive : null].join(""), {
         key: resultId,
@@ -135,6 +136,8 @@ const pages = [
 ];
 
 const index = {
+  oncreate: () => 
+    document.title = "Polythene components",
   view: () =>
     m(css.page, [
       m(css.pageTitle, "Polythene components"),

@@ -1,6 +1,9 @@
 body {
   background-color: rgb(236, 239, 241);
 }
+.results {
+  margin: 0 auto;
+}
 .results blockquote {
   padding: 0;
   margin: 0;
@@ -66,8 +69,8 @@ body {
   background-color: #fff;
 }
 
-.tests-polythene .test-list .pe-list-tile,
-.tests-list .result .pe-list:not(.pe-dark-theme) .pe-list-tile,
+.tests-polythene .test-list .pe-list,
+.tests-list .result .pe-list:not(.pe-dark-theme),
 .tests-polythene .test-list-tile .pe-list-tile,
 .tests-list-tile .result .pe-list-tile:not(.pe-dark-theme) {
   background-color: #fff;
@@ -76,6 +79,22 @@ body {
 .tests-polythene .test-icon-button .pe-button__content,
 .tests-icon-button .result .pe-button__content {
   background-color: #fff;
+}
+
+.scrollable-list {
+  max-height: 15rem;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  /* prevent that the scrollbar gets obscured by the sticky headers (!) */
+  position: relative;
+  z-index: 1;
+}
+.scrollable-list .pe-list-tile.pe-list-header {
+  top: 0;
+}
+.pe-list-tile--sticky {
+  background: #fff;
+  /*z-index: 1;*/
 }
 
 .pt-sans {
@@ -87,5 +106,21 @@ body {
   font-family: "patua-one";
   font-size: 25px;
   font-weight: 400;
+}
+
+@media (min-width: 640px) {
+  .results {
+    width: 640px;
+  }
+}
+@media (min-width: 960px) {
+  .results {
+    width: 960px;
+  }
+}
+@media (min-width: 1024px) {
+  .results {
+    width: 1024px;
+  }
 }
 

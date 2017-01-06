@@ -83,6 +83,23 @@ const myList = m(list, {
 });
 ~~~
 
+### Sticky headers
+
+To create alternating sticky headers, the list header gets CSS property `position: sticky`. However this property [does not yet work in Chrome and not at all in Edge](http://caniuse.com/#feat=css-sticky), so its use is quite limited.
+
+If you do choose to use it, add some styles to the container that holds the lists:
+
+~~~css
+.scrollable-list {
+  max-height: 15rem; /* some height */
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  /* prevent that the scrollbar gets obscured by the sticky headers (!) */
+  position: relative;
+  z-index: 1;
+}
+~~~
+
 
 ## Options
 
@@ -102,7 +119,7 @@ const myList = m(list, {
 
 | **Parameter**     |  **Mandatory** | **Type** | **Default** | **Description** |
 | ----------------- | -------------- | -------- | ----------- | --------------- |
-| **header**        | optional | Object | | Options object for a [list tile](#list-tile); attributes `title` and `sticky` |
+| **header**        | optional | Object | | Options object for a [list tile](#list-tile); any list tile option can be used ,and in addition the options `title` and `sticky` |
 | **header.title**  | optional | String | | Title text label |
 | **header.sticky** | optional | Boolean | | Make header sticky when scrolling; [does not work in Chrome](http://caniuse.com/#feat=css-sticky) |
 | **tiles**         | use `tiles` or `content` | Array of type Mithril element | | List of [list tiles](#list-tile) |
