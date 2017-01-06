@@ -1,10 +1,10 @@
 import { mixin } from "polythene-css";
 
-const style = (config, tint, scope = "") => {
+const style = (componentVars, tint, scope = "") => {
   return [{
     [scope + ".pe-button--fab, a.pe-button--fab"]: {
-      "background-color": config["color_" + tint + "_background"],
-      color: config["color_" + tint + "_text"],
+      "background-color": componentVars["color_" + tint + "_background"],
+      color: componentVars["color_" + tint + "_text"],
 
       " .pe-button__content": {
         "background-color": "transparent"
@@ -13,17 +13,17 @@ const style = (config, tint, scope = "") => {
   }];
 };
 
-const createStyles = (config) => {
+const createStyles = componentVars => {
   return [
-    style(config, "light"), {
+    style(componentVars, "light"), {
       ".pe-dark-theme": [
         // inside dark theme
-        style(config, "dark", " "),
+        style(componentVars, "dark", " "),
         // has dark theme
-        style(config, "dark", "&")
+        style(componentVars, "dark", "&")
       ]
     }
   ];
 };
 
-export default (config) => (mixin.createStyles(config, createStyles));
+export default componentVars => mixin.createStyles(componentVars, createStyles);

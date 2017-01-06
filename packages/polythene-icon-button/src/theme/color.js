@@ -1,28 +1,28 @@
 import { mixin } from "polythene-css";
 
-const style = (config, tint, type, scope = "") => {
+const style = (componentVars, tint, type, scope = "") => {
   return [{
     [scope + ".pe-button.pe-button--icon, a.pe-button.pe-button--icon"]: {
-      color: config["color_" + tint + "_" + type + "_normal_text"],
+      color: componentVars["color_" + tint + "_" + type + "_normal_text"],
       background: "none",
 
       " .pe-button__wash": {
-        opacity: config["color_" + tint + "_wash_opacity"]
+        opacity: componentVars["color_" + tint + "_wash_opacity"]
       },
 
       "&.pe-button--focus, &.pe-button--selected": {
         " .pe-button__focus": {
-          opacity: config["color_" + tint + "_focus_opacity"],
+          opacity: componentVars["color_" + tint + "_focus_opacity"],
           "background-color": "currentcolor"
         }
       },
 
       "&.pe-button--disabled": {
-        color: config["color_" + tint + "_" + type + "_disabled_text"]
+        color: componentVars["color_" + tint + "_" + type + "_disabled_text"]
       },
 
       "&.pe-button--raised": {
-        "background-color": config["color_" + tint + "_background"],
+        "background-color": componentVars["color_" + tint + "_background"],
 
         " .pe-button__content": {
           background: "transparent"
@@ -32,7 +32,7 @@ const style = (config, tint, type, scope = "") => {
   }];
 };
 
-const noTouch = (config, tint, type, scope = "") => {
+const noTouch = (componentVars, tint, type, scope = "") => {
   return [{
     [scope + ".pe-button.pe-button--icon:hover"]:
       (tint === "light") ?
@@ -43,31 +43,32 @@ const noTouch = (config, tint, type, scope = "") => {
       } :
       {
         " .pe-button__wash": {
-          "background-color": config["color_" + tint + "_" + type + "_normal_text"]
+          "background-color": componentVars["color_" + tint + "_" + type + "_normal_text"]
         }
       }
   }];
 };
 
-const createStyles = (config) => {
+const createStyles = componentVars => {
   return [
-    style(config, "light", "flat"), {
+    style(componentVars, "light", "flat"), {
       "html.pe-no-touch": [
-        noTouch(config, "light", "flat", " ")
+        noTouch(componentVars, "light", "flat", " ")
       ]
     }, {
       ".pe-dark-theme": [
         // inside dark theme
-        style(config, "dark", "flat", " "),
+        style(componentVars, "dark", "flat", " "),
         // has dark theme
-        style(config, "dark", "flat", "&")
+        style(componentVars, "dark", "flat", "&")
       ]
     }, {
       "html.pe-no-touch .pe-dark-theme": [
-        noTouch(config, "dark", "flat", " ")
+        noTouch(componentVars, "dark", "flat", " ")
       ]
     }
   ];
 };
 
-export default (config) => (mixin.createStyles(config, createStyles));
+export default componentVars => mixin.createStyles(componentVars, createStyles);
+

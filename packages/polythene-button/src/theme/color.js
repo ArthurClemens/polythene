@@ -1,89 +1,89 @@
 import { mixin } from "polythene-css";
 
-const style = (config, tint, type, scope = "") => {
-  const normalBorder = config["color_" + tint + "_" + type + "_normal_border"] || "transparent";
-  const activeBorder = config["color_" + tint + "_" + type + "_active_border"] || normalBorder;
-  const disabledBorder = config["color_" + tint + "_" + type + "_disabled_border"] || normalBorder;
+const style = (componentVars, tint, type, scope = "") => {
+  const normalBorder = componentVars["color_" + tint + "_" + type + "_normal_border"] || "transparent";
+  const activeBorder = componentVars["color_" + tint + "_" + type + "_active_border"] || normalBorder;
+  const disabledBorder = componentVars["color_" + tint + "_" + type + "_disabled_border"] || normalBorder;
   return [{
     [scope + ".pe-button"]: {
       "&, &:link, &:visited": {
-        color: config["color_" + tint + "_" + type + "_normal_text"]
+        color: componentVars["color_" + tint + "_" + type + "_normal_text"]
       },
 
       " .pe-button__content": {
-        "background-color": config["color_" + tint + "_" + type + "_normal_background"],
+        "background-color": componentVars["color_" + tint + "_" + type + "_normal_background"],
         "border-color": normalBorder
       },
 
       "&.pe-button--disabled": {
-        color: config["color_" + tint + "_" + type + "_disabled_text"],
+        color: componentVars["color_" + tint + "_" + type + "_disabled_text"],
 
         " .pe-button__content": {
-          "background-color": config["color_" + tint + "_" + type + "_disabled_background"],
+          "background-color": componentVars["color_" + tint + "_" + type + "_disabled_background"],
           "border-color": disabledBorder
         }
       },
 
       "&.pe-button--selected": {
         " .pe-button__content": {
-          "background-color": config["color_" + tint + "_" + type + "_active_background"],
+          "background-color": componentVars["color_" + tint + "_" + type + "_active_background"],
           "border-color": activeBorder
         },
         " .pe-button__focus": {
           opacity: 1,
-          "background-color": config["color_" + tint + "_" + type + "_focus_background"]
+          "background-color": componentVars["color_" + tint + "_" + type + "_focus_background"]
         }
       },
 
       "&.pe-button--focus": {
         " .pe-button__focus": {
           opacity: 1,
-          "background-color": config["color_" + tint + "_" + type + "_focus_background"]
+          "background-color": componentVars["color_" + tint + "_" + type + "_focus_background"]
         }
       }
     }
   }];
 };
 
-const noTouch = (config, tint, type, scope = "") => {
-  const normalBorder = config["color_" + tint + "_" + type + "_normal_border"];
-  const hoverBorder = config["color_" + tint + "_" + type + "_normal_border"] || normalBorder;
+const noTouch = (componentVars, tint, type, scope = "") => {
+  const normalBorder = componentVars["color_" + tint + "_" + type + "_normal_border"];
+  const hoverBorder = componentVars["color_" + tint + "_" + type + "_normal_border"] || normalBorder;
   return [{
     [scope + ".pe-button:hover"]: {
       "&:not(.pe-button--selected):not(.pe-button--inactive) .pe-button__wash": {
-        "background-color": config["color_" + tint + "_" + type + "_hover_background"],
+        "background-color": componentVars["color_" + tint + "_" + type + "_hover_background"],
         "border-color": hoverBorder
       }
     }
   }];
 };
 
-const createStyles = (config) => {
+const createStyles = componentVars => {
   return [
-    style(config, "light", "flat"),
-    style(config, "light", "raised", ".pe-button--raised"), {
+    style(componentVars, "light", "flat"),
+    style(componentVars, "light", "raised", ".pe-button--raised"), {
       "html.pe-no-touch": [
-        noTouch(config, "light", "flat", " "),
-        noTouch(config, "light", "raised", " .pe-button--raised")
+        noTouch(componentVars, "light", "flat", " "),
+        noTouch(componentVars, "light", "raised", " .pe-button--raised")
       ]
     }, {
       ".pe-dark-theme": [
         // inside dark theme
-        style(config, "dark", "flat", " "),
+        style(componentVars, "dark", "flat", " "),
         // has dark theme
-        style(config, "dark", "flat", "&"),
+        style(componentVars, "dark", "flat", "&"),
         //
-        style(config, "dark", "raised", " .pe-button--raised")
+        style(componentVars, "dark", "raised", " .pe-button--raised")
       ]
     }, {
       "html.pe-no-touch .pe-dark-theme": [
-        noTouch(config, "dark", "flat", " "),
-        noTouch(config, "dark", "flat", "&"),
-        noTouch(config, "dark", "raised", " .pe-button--raised")
+        noTouch(componentVars, "dark", "flat", " "),
+        noTouch(componentVars, "dark", "flat", "&"),
+        noTouch(componentVars, "dark", "raised", " .pe-button--raised")
       ]
     }
   ];
 };
 
-export default (config) => (mixin.createStyles(config, createStyles));
+export default componentVars => mixin.createStyles(componentVars, createStyles);
 

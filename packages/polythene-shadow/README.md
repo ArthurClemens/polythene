@@ -55,13 +55,13 @@ const myShadow = m.component(shadow, {
 
 ## CSS classes
 
-| **Element** |  **Class name** |
+| **Element** |  **Class** |
 | ----------- | --------------- |
 | component   | `pe-shadow` |
 | top shadow   | `pe-shadow__top` |
 | bottom shadow   | `pe-shadow__bottom` |
 
-| **State**     |  **Class name** |
+| **State**     |  **Class** |
 | ------------- | --------------- |
 | animated      | `pe-shadow--animated` |
 | depth 0 (min) | `pe-shadow--z-0` |

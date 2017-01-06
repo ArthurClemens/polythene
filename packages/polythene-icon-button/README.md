@@ -147,13 +147,13 @@ Icon Button is composed from:
 
 ## CSS classes
 
-| **Element** |  **Class name** |
+| **Element** |  **Class** |
 | ----------- | --------------- |
 | component   | `pe-button pe-button--icon` |
 | content     | `pe-button--icon__content` |
 
 
-| **State**   |  **Class name** |
+| **State**   |  **Class** |
 | ----------- | --------------- |
 | compact      | `pe-button--compact` |
 

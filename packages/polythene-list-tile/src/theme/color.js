@@ -1,64 +1,64 @@
 import { mixin } from "polythene-css";
 
-const style = (config, tint, scope = "") => {
+const style = (componentVars, tint, scope = "") => {
   return [{
     [scope + ".pe-list-tile"]: {
       " .pe-list-tile__title": {
-        color: config["color_" + tint + "_title"]
+        color: componentVars["color_" + tint + "_title"]
       },
 
       "&.pe-list__header": {
         "background-color": "inherit",
 
         " .pe-list-tile__title": {
-          color: config["color_" + tint + "_list_header"]
+          color: componentVars["color_" + tint + "_list_header"]
         }
       },
 
       " .pe-list-tile__content, .pe-list-tile__subtitle": {
-        color: config["color_" + tint + "_subtitle"]
+        color: componentVars["color_" + tint + "_subtitle"]
       },
 
       "&.pe-list-tile--disabled": {
         "&, .pe-list-tile__title, .pe-list-tile__content, .pe-list-tile__subtitle": {
-          color: config["color_" + tint + "_text_disabled"]
+          color: componentVars["color_" + tint + "_text_disabled"]
         }
       },
       "&.pe-list-tile--selected": {
-        "background-color": config["color_" + tint + "_background_selected"]
+        "background-color": componentVars["color_" + tint + "_background_selected"]
       }
     }
   }];
 };
 
-const noTouch = (config, tint, scope = "") => {
+const noTouch = (componentVars, tint, scope = "") => {
   return [{
     [scope + ".pe-list-tile"]: {
       "&:not(.pe-list__header):not(.pe-list-tile--disabled):hover": {
-        "background-color": config["color_" + tint + "_background_hover"]
+        "background-color": componentVars["color_" + tint + "_background_hover"]
       }
     }
   }];
 };
 
 
-const createStyles = (config) => {
+const createStyles = componentVars => {
   return [
-    style(config, "light"), {
+    style(componentVars, "light"), {
       "html.pe-no-touch": [
-        noTouch(config, "light", " .pe-list-tile--hoverable")
+        noTouch(componentVars, "light", " .pe-list-tile--hoverable")
       ]
     }, {
       ".pe-dark-theme": [
         // inside dark theme
-        style(config, "dark", " "),
+        style(componentVars, "dark", " "),
         // has dark theme
-        style(config, "dark", "&")
+        style(componentVars, "dark", "&")
       ]
     }, {
-      "html.pe-no-touch .pe-dark-theme": noTouch(config, "dark", " .pe-list-tile--hoverable")
+      "html.pe-no-touch .pe-dark-theme": noTouch(componentVars, "dark", " .pe-list-tile--hoverable")
     }
   ];
 };
 
-export default (config) => (mixin.createStyles(config, createStyles));
+export default componentVars => mixin.createStyles(componentVars, createStyles);

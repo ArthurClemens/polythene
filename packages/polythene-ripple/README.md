@@ -92,13 +92,13 @@ By default the inherited `color` from the parent element is used. It can be chan
 
 ## CSS classes
 
-| **Element** |  **Class name** |
+| **Element** |  **Class** |
 | ----------- | --------------- |
 | component   | `pe-ripple` |
 | waves       | `pe-ripple__waves` |
 | mask        | `pe-ripple__mask` |
 
-| **State**       |  **Class name** |
+| **State**       |  **Class** |
 | --------------- | --------------- |
 | constrained     | `pe-ripple--constrained` |
 | waves animating | `pe-ripple__waves--animating` |

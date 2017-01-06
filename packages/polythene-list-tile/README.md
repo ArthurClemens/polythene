@@ -187,7 +187,7 @@ List Tile is composed from:
 
 ## CSS classes
 
-| **Element**      |  **Class name** |
+| **Element**      |  **Class** |
 | ---------------- | --------------- |
 | component        | `pe-list-tile` |
 | primary          | `pe-list-tile__primary` |
@@ -198,7 +198,7 @@ List Tile is composed from:
 | subtitle         | `pe-list-tile__subtitle` |
 | highSubtitle     | `pe-list-tile__subtitle--high` |
 
-| **State**        |  **Class name** |
+| **State**        |  **Class** |
 | ---------------- | --------------- |
 | selected         | `pe-list-tile--selected` |
 | disabled         | `pe-list-tile--disabled` |

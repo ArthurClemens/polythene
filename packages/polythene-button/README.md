@@ -114,7 +114,7 @@ Button is composed from:
 
 ## CSS classes
 
-| **Element** |  **Class name** |
+| **Element** |  **Class** |
 | ----------- | --------------- |
 | component   | `pe-button pe-button--text` |
 | content     | `pe-button__content` |
@@ -122,7 +122,7 @@ Button is composed from:
 | wash        | `pe-button__wash` |
 | focus       | `pe-button__focus` |
 
-| **State**   |  **Class name** |
+| **State**   |  **Class** |
 | ----------- | --------------- |
 | raised      | `pe-button--raised` |
 | selected    | `pe-button--selected` |

@@ -68,12 +68,12 @@ Default colors:
 
 ## CSS classes
 
-| **Element** |  **Class name** |
+| **Element** |  **Class** |
 | ----------- | --------------- |
 | component   | `pe-button--fab` |
 
 
-| **State**   |  **Class name** |
+| **State**   |  **Class** |
 | ----------- | --------------- |
 | mini        | `pe-button--fab-mini` |
 

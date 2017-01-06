@@ -1,7 +1,6 @@
 import { vars } from "polythene-theme";
 
 const rgba = vars.rgba;
-
 const touch_height = vars.unit_touch_height;
 const height = 36;
 

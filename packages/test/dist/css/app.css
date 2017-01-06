@@ -47,6 +47,11 @@ body {
   background-color: #fff;
 }
 
+.tests-polythene .test-icon-button .pe-button__content,
+.tests-icon-button .result .pe-button__content {
+  background-color: #fff;
+}
+
 .pt-sans {
   font-family: "PT Sans";
   font-size: 25px;

@@ -92,7 +92,7 @@ const myIcon = m(icon, {
 
 ## CSS classes
 
-| **Element** |  **Class name** |
+| **Element** |  **Class** |
 | ----------- | --------------- |
 | component   | `pe-svg` |
 

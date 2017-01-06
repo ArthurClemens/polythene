@@ -98,11 +98,11 @@ Icon is composed from:
 
 ## CSS classes
 
-| **Element** |  **Class name** |
+| **Element** |  **Class** |
 | ----------- | --------------- |
 | component   | `pe-icon` |
 
-| **State**   |  **Class name** |
+| **State**   |  **Class** |
 | ----------- | --------------- |
 | avatar   | `pe-icon--avatar` |
 | small   | `pe-icon--small` |
