@@ -40,7 +40,7 @@ const command = [
     `cd ${escDir}`,
     `${nodeModulesDir}/babel-cli/bin/babel.js --presets es2015 --plugins add-module-exports ${inFile} --out-file ${outFile} --source-maps true`,
     `${nodeModulesDir}/uglify-js/bin/uglifyjs --compress --output ${outFile} --source-map ${sourceMapFile} --in-source-map ${sourceMapFile}`,
-    `${nodeModulesDir}/mithril-objectify/bin/cli.js ${outFile} ${outFile}`
+    // `${nodeModulesDir}/mithril-objectify/bin/cli.js ${outFile} ${outFile}`
 ].join(' && ');
 
 execute(command);

@@ -46,8 +46,9 @@ const createStyles = (config) => {
     return [
         style(config, 'light'),
         {
-            'html.pe-no-touch .pe-list--hoverable': [
-                noTouch(config, 'light', ' ')
+            'html.pe-no-touch': [
+                noTouch(config, 'light', ' .pe-list--hoverable'),
+                noTouch(config, 'light', ' .pe-list--hoverable ')
             ]
         },
         {
@@ -59,7 +60,11 @@ const createStyles = (config) => {
             ]
         },
         {
-            'html.pe-no-touch .pe-dark-theme .pe-list--hoverable': noTouch(config, 'dark', ' '),
+            'html.pe-no-touch .pe-dark-theme': [
+                noTouch(config, 'dark', ' .pe-list-tile--hoverable'),
+                noTouch(config, 'dark', '.pe-list--hoverable '),
+                noTouch(config, 'dark', ' .pe-list--hoverable ')
+            ],
             'html.pe-no-touch .pe-list--hoverable .pe-dark-theme': noTouch(config, 'dark')
         }
     ];

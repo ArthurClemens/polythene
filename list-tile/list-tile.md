@@ -116,7 +116,7 @@ A list tile can optionally have secondary content, displayed to the right. Secon
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **tag** | optional | String | 'div.horizontal.layout.center' | HTML element tag |
+| **tag** | optional | String | 'div' | HTML element tag |
 | **class** | optional | String |  | Extra CSS class appended to 'pe-list-tile' |
 | **id** | optional | String | | HTML element id |
 | **events** | optional | Object | | Options object containing one or more standard events such as `onclick` |
