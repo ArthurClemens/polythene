@@ -24,8 +24,8 @@ export default {
   color_light_flat_disabled_background: "transparent",
   color_light_flat_disabled_text: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
 
-  // border colors  may be set in theme; disabled by default
-  // color_light_flat_normal_border: "transparent",
+  // border colors may be set in theme; disabled by default
+  // color_light_flat_normal_border: "transparent", // only specify this variable to get all 4 states
   // color_light_flat_hover_border: "transparent",
   // color_light_flat_active_border: "transparent",
   // color_light_flat_disabled_border: "transparent",
@@ -46,8 +46,8 @@ export default {
   color_dark_flat_disabled_background: "transparent",
   color_dark_flat_disabled_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
 
-  // border colors  may be set in theme; disabled by default
-  // color_dark_flat_normal_border: "transparent",
+  // border colors may be set in theme; disabled by default
+  // color_dark_flat_normal_border: "transparent", // only specify this variable to get all 4 states
   // color_dark_flat_hover_border: "transparent",
   // color_dark_flat_active_border: "transparent",
   // color_dark_flat_disabled_border: "transparent",

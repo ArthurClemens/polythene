@@ -29,8 +29,8 @@ var vars$1 = {
   color_light_flat_disabled_background: "transparent",
   color_light_flat_disabled_text: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
 
-  // border colors  may be set in theme; disabled by default
-  // color_light_flat_normal_border: "transparent",
+  // border colors may be set in theme; disabled by default
+  // color_light_flat_normal_border: "transparent", // only specify this variable to get all 4 states
   // color_light_flat_hover_border: "transparent",
   // color_light_flat_active_border: "transparent",
   // color_light_flat_disabled_border: "transparent",
@@ -51,8 +51,8 @@ var vars$1 = {
   color_dark_flat_disabled_background: "transparent",
   color_dark_flat_disabled_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
 
-  // border colors  may be set in theme; disabled by default
-  // color_dark_flat_normal_border: "transparent",
+  // border colors may be set in theme; disabled by default
+  // color_dark_flat_normal_border: "transparent", // only specify this variable to get all 4 states
   // color_dark_flat_hover_border: "transparent",
   // color_dark_flat_active_border: "transparent",
   // color_dark_flat_disabled_border: "transparent",
@@ -287,9 +287,23 @@ var color = (function (componentVars) {
   return mixin.createStyles(componentVars, createStyles$1);
 });
 
-styler.styleComponent("pe-button-text", "button", styles, vars$1, layout, color);
+var key = "button";
+var className = "pe-button-text";
 
-var CSS_CLASSES = {
+var styleComponent = function styleComponent(className, styles$$1) {
+  return styler.styleComponent(className, styles$$1, key, vars$1, layout, color);
+};
+
+var customTheme = function customTheme(className, vars$$1) {
+  return (
+    // Inject additional styles as use className as key
+    styleComponent(className, styler.addComponentStyle(className, styles, key, vars$$1))
+  );
+};
+
+styleComponent(className, styles);
+
+var classes = {
   component: "pe-button pe-button--text",
   content: "pe-button__content",
   label: "pe-button__label",
@@ -382,7 +396,7 @@ var view = function view(vnode) {
   var tabIndex = disabled || state.inactive ? -1 : attrs.tabindex || 0;
   var onClickHandler = attrs.events && attrs.events.onclick;
   var props = _extends({}, filterSupportedAttributes(attrs, EL_ATTRS), {
-    class: [attrs.parentClass || CSS_CLASSES.component, attrs.selected ? CSS_CLASSES.selected : null, disabled ? CSS_CLASSES.disabled : null, state.inactive ? CSS_CLASSES.inactive : null, attrs.borders ? CSS_CLASSES.borders : null, attrs.raised ? CSS_CLASSES.raised : null, state.focus ? CSS_CLASSES.focusState : null, attrs.class].join(" "),
+    class: [attrs.parentClass || classes.component, attrs.selected ? classes.selected : null, disabled ? classes.disabled : null, state.inactive ? classes.inactive : null, attrs.borders ? classes.borders : null, attrs.raised ? classes.raised : null, state.focus ? classes.focusState : null, attrs.class].join(" "),
     tabIndex: tabIndex,
     // handle focus events
     onfocus: function onfocus() {
@@ -408,19 +422,20 @@ var view = function view(vnode) {
       }
     }
   }, attrs.events ? _extends({}, attrs.events) : null, attrs.url ? _extends({}, attrs.url) : null, disabled ? { disabled: true } : null);
-  var label = attrs.content ? attrs.content : attrs.label ? _typeof(attrs.label) === "object" ? attrs.label : m("div", { class: CSS_CLASSES.label }, attrs.label) : vnode.children && vnode.children[0] ? vnode.children : null;
+  var label = attrs.content ? attrs.content : attrs.label ? _typeof(attrs.label) === "object" ? attrs.label : m("div", { class: classes.label }, attrs.label) : vnode.children && vnode.children[0] ? vnode.children : null;
   var noWash = disabled || attrs.wash !== undefined && !attrs.wash;
-  var content = label ? m("div", { class: CSS_CLASSES.content }, [attrs.raised && !disabled ? m(shadow, { z: state.z, animated: true }) : null,
+  var content = label ? m("div", { class: classes.content }, [attrs.raised && !disabled ? m(shadow, { z: state.z, animated: true }) : null,
   // ripple
   disabled || noink ? null : m(ripple, attrs.ripple),
   // hover
-  noWash ? null : m("div", { class: CSS_CLASSES.wash }),
+  noWash ? null : m("div", { class: classes.wash }),
   // focus
-  disabled ? null : m("div", { class: CSS_CLASSES.focus }), label]) : null;
+  disabled ? null : m("div", { class: classes.focus }), label]) : null;
   return m(element, props, [attrs.before, content, attrs.after]);
 };
 
 var button = {
+  theme: customTheme, // accepts (className, vars)
   oninit: function oninit(vnode) {
     var z = vnode.attrs.z !== undefined ? vnode.attrs.z : 1;
     vnode.state = {

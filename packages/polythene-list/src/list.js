@@ -1,9 +1,9 @@
 import m from "mithril";
 import { listTile } from "polythene-list-tile";
 import { filterSupportedAttributes } from "polythene-core";
-import "./theme";
+import { customTheme } from "./theme";
 
-const CSS_CLASSES = {
+const classes = {
   component: "pe-list",
   header: "pe-list__header",
   borders: "pe-list--borders",
@@ -22,13 +22,13 @@ const view = vnode => {
     filterSupportedAttributes(attrs),
     {
       class: [
-        CSS_CLASSES.component,
-        (attrs.borders ? CSS_CLASSES.borders : null),
-        (attrs.indentedBorders ? CSS_CLASSES.indentedBorders : null),
-        (attrs.hoverable ? CSS_CLASSES.isHoverable : null),
-        (attrs.selectable ? CSS_CLASSES.isSelectable : null),
-        (attrs.header ? CSS_CLASSES.hasHeader : null),
-        (attrs.compact ? CSS_CLASSES.isCompact : null),
+        classes.component,
+        (attrs.borders ? classes.borders : null),
+        (attrs.indentedBorders ? classes.indentedBorders : null),
+        (attrs.hoverable ? classes.isHoverable : null),
+        (attrs.selectable ? classes.isSelectable : null),
+        (attrs.header ? classes.hasHeader : null),
+        (attrs.compact ? classes.isCompact : null),
         attrs.class
       ].join(" "),
     }
@@ -37,7 +37,7 @@ const view = vnode => {
   if (attrs.header) {
     headerOpts = Object.assign({}, attrs.header);
     headerOpts.class = [
-      CSS_CLASSES.header,
+      classes.header,
       headerOpts.class || null
     ].join(" ");
   }
@@ -55,5 +55,6 @@ const view = vnode => {
 };
 
 export const list = {
+  theme: customTheme, // accepts (className, vars)
   view
 };

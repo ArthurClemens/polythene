@@ -139,7 +139,7 @@ If you do choose to use it, add some styles to the container that holds the list
 
 List is composed from:
 
-* [List Tile](#list-tile) (when using option `tiles` or `header`)
+* [List Tile](#list-tile)
 
 
 ## CSS classes

@@ -1,9 +1,9 @@
 import m from "mithril";
 import { icon } from "polythene-icon";
 import { button } from "polythene-button";
-import "./theme";
+import { customTheme } from "./theme";
 
-const CSS_CLASSES = {
+const classes = {
   component: "pe-button pe-button--icon",
   content:   "pe-button--icon__content",
   compact:   "pe-button--compact"
@@ -21,10 +21,10 @@ const view = vnode => {
   return m(button, Object.assign(
     {},
     {
-      content: m("div", {class: CSS_CLASSES.content}, content),
+      content: m("div", {class: classes.content}, content),
       parentClass: [
-        attrs.parentClass || CSS_CLASSES.component,
-        attrs.compact ? CSS_CLASSES.compact : null,
+        attrs.parentClass || classes.component,
+        attrs.compact ? classes.compact : null,
       ].join(" "),
       // defaults
       wash: false,
@@ -35,5 +35,6 @@ const view = vnode => {
 };
 
 export const iconButton = {
+  theme: customTheme, // accepts (className, vars)
   view
 };

@@ -4,4 +4,16 @@ import vars from "./vars";
 import layout from "./layout";
 import color from "./color";
 
-styler.styleComponent("pe-button-text", "button", styles, vars, layout, color);
+const key = "button";
+const className = "pe-button-text";
+
+const styleComponent = (className, styles) =>
+  styler.styleComponent(className, styles, key, vars, layout, color);
+
+export const customTheme = (className, vars) =>
+  // Inject additional styles as use className as key
+  styleComponent(className, styler.addComponentStyle(
+    className, styles, key, vars
+  ));
+
+styleComponent(className, styles);

@@ -2,9 +2,9 @@ import m from "mithril";
 import { icon } from "polythene-icon";
 import { ripple } from "polythene-ripple";
 import { filterSupportedAttributes } from "polythene-core";
-import "./theme";
+import { customTheme } from "./theme";
 
-const CSS_CLASSES = {
+const classes = {
   component:       "pe-list-tile",
   primary:         "pe-list-tile__primary",
   secondary:       "pe-list-tile__secondary",
@@ -30,7 +30,7 @@ const primaryContent = (attrs, children) => {
     : attrs.url
       ? "a"
       : "div";
-  const contentFrontClass = CSS_CLASSES.content + " " + CSS_CLASSES.contentFront;
+  const contentFrontClass = classes.content + " " + classes.contentFront;
   const frontComp = attrs.front
     ? m("div", {class: contentFrontClass}, attrs.front)
     : attrs.indent
@@ -40,11 +40,11 @@ const primaryContent = (attrs, children) => {
   return m(element, {
     ...filterSupportedAttributes(attrs),
     ...attrs.url,
-    class: CSS_CLASSES.primary
+    class: classes.primary
   }, [
     frontComp,
     m("div", {
-      class: CSS_CLASSES.content
+      class: classes.content
     }, [
       attrs.content
         ? attrs.content
@@ -53,17 +53,17 @@ const primaryContent = (attrs, children) => {
           : null,
       attrs.title && !attrs.content
         ? m("div", {
-          class: CSS_CLASSES.title
+          class: classes.title
         }, attrs.title)
         : null,
       attrs.subtitle
         ? m("div", {
-          class: CSS_CLASSES.subtitle
+          class: classes.subtitle
         }, attrs.subtitle)
         : null,
       attrs.highSubtitle
         ? m("div", {
-          class: CSS_CLASSES.subtitle + " " + CSS_CLASSES.highSubtitle
+          class: classes.subtitle + " " + classes.highSubtitle
         }, attrs.highSubtitle)
         : null
     ])
@@ -80,10 +80,10 @@ const secondaryContent = (secondaryAttrs = {}) => {
     {
       ...filterSupportedAttributes(secondaryAttrs),
       ...secondaryAttrs.url,
-      class: CSS_CLASSES.secondary
+      class: classes.secondary
     },
     m("div", {
-      class: CSS_CLASSES.content
+      class: classes.content
     }, [
       secondaryAttrs.icon ? m(icon, secondaryAttrs.icon) : null,
       secondaryAttrs.content ? secondaryAttrs.content : null
@@ -95,23 +95,23 @@ const view = vnode => {
   const attrs = vnode.attrs;
   const element = attrs.element || "div";
   const heightClass = attrs.subtitle
-    ? CSS_CLASSES.hasSubtitle
+    ? classes.hasSubtitle
     : attrs.highSubtitle
-      ? CSS_CLASSES.hasHighSubtitle
+      ? classes.hasHighSubtitle
       : attrs.front || attrs.indent
-        ? CSS_CLASSES.hasFront
+        ? classes.hasFront
         : null;
 
   const props = {
     ...filterSupportedAttributes(attrs),
     class: [
-      CSS_CLASSES.component,
-      attrs.selected   ? CSS_CLASSES.selected     : null,
-      attrs.disabled   ? CSS_CLASSES.disabled     : null,
-      attrs.sticky     ? CSS_CLASSES.sticky       : null,
-      attrs.compact    ? CSS_CLASSES.isCompact    : null,
-      attrs.hoverable  ? CSS_CLASSES.isHoverable  : null,
-      attrs.selectable ? CSS_CLASSES.isSelectable : null,
+      classes.component,
+      attrs.selected   ? classes.selected     : null,
+      attrs.disabled   ? classes.disabled     : null,
+      attrs.sticky     ? classes.sticky       : null,
+      attrs.compact    ? classes.isCompact    : null,
+      attrs.hoverable  ? classes.isHoverable  : null,
+      attrs.selectable ? classes.isSelectable : null,
       heightClass,
       attrs.class
     ].join(" ")
@@ -135,6 +135,7 @@ const view = vnode => {
 };
 
 export const listTile = {
+  theme: customTheme, // accepts (className, vars)
   view
 };
 

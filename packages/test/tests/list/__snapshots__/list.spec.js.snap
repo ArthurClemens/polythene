@@ -87,23 +87,22 @@ exports[`test Option: compact 1`] = `
     </div>
   </div>
   <div class=\"pe-list-tile pe-list-tile--subtitle\">
-    <div class=\"pe-list-tile__primary\">
-      <div class=
-      \"pe-list-tile__content pe-list-tile__content--front\">
-        <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
-          <img src=
-          \"http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png\">
-        </div>
-      </div>
-      <div class=\"pe-list-tile__content\">
-        <div class=\"pe-list-tile__title\">
-          Jennifer Barker
-        </div>
-        <div class=\"pe-list-tile__subtitle\">
-          Starting post doc
-        </div>
+    <a href=\"#!/\" class=\"pe-list-tile__primary\">
+    <div class=
+    \"pe-list-tile__content pe-list-tile__content--front\">
+      <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
+        <img src=
+        \"http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png\">
       </div>
     </div>
+    <div class=\"pe-list-tile__content\">
+      <div class=\"pe-list-tile__title\">
+        Jennifer Barker
+      </div>
+      <div class=\"pe-list-tile__subtitle\">
+        Starting post doc
+      </div>
+    </div></a>
   </div>
   <div class=\"pe-list-tile pe-list-tile--subtitle\">
     <div class=\"pe-list-tile__primary\">
@@ -351,13 +350,494 @@ exports[`test Options: header, tiles with urls 1`] = `
     </div></a>
   </div>
 </div>
+<div class=\"pe-list pe-list--borders pe-list--header\">
+  <div class=\"pe-list-tile pe-list__header\">
+    <div class=\"pe-list-tile__primary\">
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Friends
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\"pe-list-tile pe-list-tile--subtitle\">
+    <a href=\"#!/\" class=\"pe-list-tile__primary\">
+    <div class=
+    \"pe-list-tile__content pe-list-tile__content--front\">
+      <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
+        <img src=
+        \"http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png\">
+      </div>
+    </div>
+    <div class=\"pe-list-tile__content\">
+      <div class=\"pe-list-tile__title\">
+        Jennifer Barker
+      </div>
+      <div class=\"pe-list-tile__subtitle\">
+        Starting post doc
+      </div>
+    </div></a>
+  </div>
+  <div class=\"pe-list-tile pe-list-tile--subtitle\">
+    <a href=\"#!/\" class=\"pe-list-tile__primary\">
+    <div class=
+    \"pe-list-tile__content pe-list-tile__content--front\">
+      <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
+        <img src=
+        \"http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png\">
+      </div>
+    </div>
+    <div class=\"pe-list-tile__content\">
+      <div class=\"pe-list-tile__title\">
+        Ali Connors
+      </div>
+      <div class=\"pe-list-tile__subtitle\">
+        Brunch this weekend?
+      </div>
+    </div></a>
+  </div>
+</div>
+"
+`;
+
+exports[`test Options: header.sticky 1`] = `
+"<div class=\"scrollable-list\">
+  <div class=\"pe-list pe-list--header\">
+    <div class=\"pe-list-tile pe-list-tile--sticky pe-list__header\">
+      <div class=\"pe-list-tile__primary\">
+        <div class=\"pe-list-tile__content\">
+          <div class=\"pe-list-tile__title\">
+            Subheader
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class=\"pe-list-tile pe-list-tile--subtitle\">
+      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <div class=
+      \"pe-list-tile__content pe-list-tile__content--front\">
+        <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
+          <img src=
+          \"http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png\">
+        </div>
+      </div>
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Jennifer Barker
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Starting post doc
+        </div>
+      </div></a>
+    </div>
+    <div class=\"pe-list-tile pe-list-tile--subtitle\">
+      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <div class=
+      \"pe-list-tile__content pe-list-tile__content--front\">
+        <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
+          <img src=
+          \"http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png\">
+        </div>
+      </div>
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Ali Connors
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Brunch this weekend?
+        </div>
+      </div></a>
+    </div>
+    <div class=\"pe-list-tile pe-list-tile--subtitle\">
+      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <div class=
+      \"pe-list-tile__content pe-list-tile__content--front\">
+        <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
+          <img src=
+          \"http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png\">
+        </div>
+      </div>
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Jennifer Barker
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Starting post doc
+        </div>
+      </div></a>
+    </div>
+    <div class=\"pe-list-tile pe-list-tile--subtitle\">
+      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <div class=
+      \"pe-list-tile__content pe-list-tile__content--front\">
+        <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
+          <img src=
+          \"http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png\">
+        </div>
+      </div>
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Ali Connors
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Brunch this weekend?
+        </div>
+      </div></a>
+    </div>
+  </div>
+  <div class=\"pe-list pe-list--header\">
+    <div class=\"pe-list-tile pe-list-tile--sticky pe-list__header\">
+      <div class=\"pe-list-tile__primary\">
+        <div class=\"pe-list-tile__content\">
+          <div class=\"pe-list-tile__title\">
+            Subheader
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class=\"pe-list-tile pe-list-tile--subtitle\">
+      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <div class=
+      \"pe-list-tile__content pe-list-tile__content--front\">
+        <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
+          <img src=
+          \"http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png\">
+        </div>
+      </div>
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Jennifer Barker
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Starting post doc
+        </div>
+      </div></a>
+    </div>
+    <div class=\"pe-list-tile pe-list-tile--subtitle\">
+      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <div class=
+      \"pe-list-tile__content pe-list-tile__content--front\">
+        <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
+          <img src=
+          \"http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png\">
+        </div>
+      </div>
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Ali Connors
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Brunch this weekend?
+        </div>
+      </div></a>
+    </div>
+    <div class=\"pe-list-tile pe-list-tile--subtitle\">
+      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <div class=
+      \"pe-list-tile__content pe-list-tile__content--front\">
+        <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
+          <img src=
+          \"http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png\">
+        </div>
+      </div>
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Jennifer Barker
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Starting post doc
+        </div>
+      </div></a>
+    </div>
+    <div class=\"pe-list-tile pe-list-tile--subtitle\">
+      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <div class=
+      \"pe-list-tile__content pe-list-tile__content--front\">
+        <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
+          <img src=
+          \"http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png\">
+        </div>
+      </div>
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Ali Connors
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Brunch this weekend?
+        </div>
+      </div></a>
+    </div>
+  </div>
+  <div class=\"pe-list pe-list--header\">
+    <div class=\"pe-list-tile pe-list-tile--sticky pe-list__header\">
+      <div class=\"pe-list-tile__primary\">
+        <div class=\"pe-list-tile__content\">
+          <div class=\"pe-list-tile__title\">
+            Subheader
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class=\"pe-list-tile pe-list-tile--subtitle\">
+      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <div class=
+      \"pe-list-tile__content pe-list-tile__content--front\">
+        <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
+          <img src=
+          \"http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png\">
+        </div>
+      </div>
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Jennifer Barker
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Starting post doc
+        </div>
+      </div></a>
+    </div>
+    <div class=\"pe-list-tile pe-list-tile--subtitle\">
+      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <div class=
+      \"pe-list-tile__content pe-list-tile__content--front\">
+        <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
+          <img src=
+          \"http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png\">
+        </div>
+      </div>
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Ali Connors
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Brunch this weekend?
+        </div>
+      </div></a>
+    </div>
+    <div class=\"pe-list-tile pe-list-tile--subtitle\">
+      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <div class=
+      \"pe-list-tile__content pe-list-tile__content--front\">
+        <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
+          <img src=
+          \"http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png\">
+        </div>
+      </div>
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Jennifer Barker
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Starting post doc
+        </div>
+      </div></a>
+    </div>
+    <div class=\"pe-list-tile pe-list-tile--subtitle\">
+      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <div class=
+      \"pe-list-tile__content pe-list-tile__content--front\">
+        <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
+          <img src=
+          \"http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png\">
+        </div>
+      </div>
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Ali Connors
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Brunch this weekend?
+        </div>
+      </div></a>
+    </div>
+  </div>
+  <div class=\"pe-list pe-list--header\">
+    <div class=\"pe-list-tile pe-list-tile--sticky pe-list__header\">
+      <div class=\"pe-list-tile__primary\">
+        <div class=\"pe-list-tile__content\">
+          <div class=\"pe-list-tile__title\">
+            Subheader
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class=\"pe-list-tile pe-list-tile--subtitle\">
+      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <div class=
+      \"pe-list-tile__content pe-list-tile__content--front\">
+        <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
+          <img src=
+          \"http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png\">
+        </div>
+      </div>
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Jennifer Barker
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Starting post doc
+        </div>
+      </div></a>
+    </div>
+    <div class=\"pe-list-tile pe-list-tile--subtitle\">
+      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <div class=
+      \"pe-list-tile__content pe-list-tile__content--front\">
+        <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
+          <img src=
+          \"http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png\">
+        </div>
+      </div>
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Ali Connors
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Brunch this weekend?
+        </div>
+      </div></a>
+    </div>
+    <div class=\"pe-list-tile pe-list-tile--subtitle\">
+      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <div class=
+      \"pe-list-tile__content pe-list-tile__content--front\">
+        <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
+          <img src=
+          \"http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png\">
+        </div>
+      </div>
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Jennifer Barker
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Starting post doc
+        </div>
+      </div></a>
+    </div>
+    <div class=\"pe-list-tile pe-list-tile--subtitle\">
+      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <div class=
+      \"pe-list-tile__content pe-list-tile__content--front\">
+        <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
+          <img src=
+          \"http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png\">
+        </div>
+      </div>
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Ali Connors
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Brunch this weekend?
+        </div>
+      </div></a>
+    </div>
+  </div>
+  <div class=\"pe-list pe-list--header\">
+    <div class=\"pe-list-tile pe-list-tile--sticky pe-list__header\">
+      <div class=\"pe-list-tile__primary\">
+        <div class=\"pe-list-tile__content\">
+          <div class=\"pe-list-tile__title\">
+            Subheader
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class=\"pe-list-tile pe-list-tile--subtitle\">
+      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <div class=
+      \"pe-list-tile__content pe-list-tile__content--front\">
+        <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
+          <img src=
+          \"http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png\">
+        </div>
+      </div>
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Jennifer Barker
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Starting post doc
+        </div>
+      </div></a>
+    </div>
+    <div class=\"pe-list-tile pe-list-tile--subtitle\">
+      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <div class=
+      \"pe-list-tile__content pe-list-tile__content--front\">
+        <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
+          <img src=
+          \"http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png\">
+        </div>
+      </div>
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Ali Connors
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Brunch this weekend?
+        </div>
+      </div></a>
+    </div>
+    <div class=\"pe-list-tile pe-list-tile--subtitle\">
+      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <div class=
+      \"pe-list-tile__content pe-list-tile__content--front\">
+        <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
+          <img src=
+          \"http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png\">
+        </div>
+      </div>
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Jennifer Barker
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Starting post doc
+        </div>
+      </div></a>
+    </div>
+    <div class=\"pe-list-tile pe-list-tile--subtitle\">
+      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <div class=
+      \"pe-list-tile__content pe-list-tile__content--front\">
+        <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
+          <img src=
+          \"http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png\">
+        </div>
+      </div>
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Ali Connors
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Brunch this weekend?
+        </div>
+      </div></a>
+    </div>
+  </div>
+</div>
 "
 `;
 
 exports[`test Options: tiles, indent, indentedBorders 1`] = `
-"<div class=\"pe-list pe-list--borders-indented\">
+"<div class=\"pe-list pe-list--borders-indented pe-list--header\">
+  <div class=\"pe-list-tile pe-list-tile--front pe-list__header\">
+    <div class=\"pe-list-tile__primary\">
+      <div class=
+      \"pe-list-tile__content pe-list-tile__content--front\"></div>
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Friends
+        </div>
+      </div>
+    </div>
+  </div>
   <div class=\"pe-list-tile pe-list-tile--subtitle\">
     <div class=\"pe-list-tile__primary\">
+      <div class=
+      \"pe-list-tile__content pe-list-tile__content--front\"></div>
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
           Jennifer Barker
@@ -370,6 +850,8 @@ exports[`test Options: tiles, indent, indentedBorders 1`] = `
   </div>
   <div class=\"pe-list-tile pe-list-tile--subtitle\">
     <div class=\"pe-list-tile__primary\">
+      <div class=
+      \"pe-list-tile__content pe-list-tile__content--front\"></div>
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
           Ali Connors

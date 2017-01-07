@@ -99,7 +99,6 @@ var style = function style(componentVars, tint) {
   var _ref;
 
   var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
-
   return [(_ref = {}, defineProperty(_ref, scope + ".pe-list", {
     "&.pe-list--borders": {
       " .pe-list-tile:not(.pe-list__header)": {
@@ -135,9 +134,23 @@ var color = (function (componentVars) {
   return mixin.createStyles(componentVars, createStyles$1);
 });
 
-styler.styleComponent("pe-list", "list", styles, vars$1, layout, color);
+var key = "list";
+var className = "pe-list";
 
-var CSS_CLASSES = {
+var styleComponent = function styleComponent(className, styles$$1) {
+  return styler.styleComponent(className, styles$$1, key, vars$1, layout, color);
+};
+
+var customTheme = function customTheme(className, vars$$1) {
+  return (
+    // Inject additional styles as use className as key
+    styleComponent(className, styler.addComponentStyle(className, styles, key, vars$$1))
+  );
+};
+
+styleComponent(className, styles);
+
+var classes = {
   component: "pe-list",
   header: "pe-list__header",
   borders: "pe-list--borders",
@@ -152,18 +165,19 @@ var view = function view(vnode) {
   var attrs = vnode.attrs;
   var element = attrs.element || "div";
   var props = _extends({}, filterSupportedAttributes(attrs), {
-    class: [CSS_CLASSES.component, attrs.borders ? CSS_CLASSES.borders : null, attrs.indentedBorders ? CSS_CLASSES.indentedBorders : null, attrs.hoverable ? CSS_CLASSES.isHoverable : null, attrs.selectable ? CSS_CLASSES.isSelectable : null, attrs.header ? CSS_CLASSES.hasHeader : null, attrs.compact ? CSS_CLASSES.isCompact : null, attrs.class].join(" ")
+    class: [classes.component, attrs.borders ? classes.borders : null, attrs.indentedBorders ? classes.indentedBorders : null, attrs.hoverable ? classes.isHoverable : null, attrs.selectable ? classes.isSelectable : null, attrs.header ? classes.hasHeader : null, attrs.compact ? classes.isCompact : null, attrs.class].join(" ")
   });
   var headerOpts = void 0;
   if (attrs.header) {
     headerOpts = _extends({}, attrs.header);
-    headerOpts.class = [CSS_CLASSES.header, headerOpts.class || null].join(" ");
+    headerOpts.class = [classes.header, headerOpts.class || null].join(" ");
   }
   var content = [headerOpts ? m(listTile, headerOpts) : null, attrs.tiles ? attrs.tiles : attrs.content ? attrs.content : vnode.children && vnode.children[0] ? vnode.children : null];
   return m(element, props, [attrs.before, content, attrs.after]);
 };
 
 var list = {
+  theme: customTheme, // accepts (className, vars)
   view: view
 };
 

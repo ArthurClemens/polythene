@@ -1,4 +1,4 @@
-exports[`test Colored background 1`] = `
+exports[`test Colored background (style attribute) 1`] = `
 "<a style=\"background-color: red;\" tabindex=\"0\" class=
 \"pe-button--fab pe-button--raised\">
 <div class=\"pe-button__content\">

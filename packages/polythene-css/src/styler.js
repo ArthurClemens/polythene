@@ -1,10 +1,34 @@
 import j2c from "j2c";
 
-const styleComponent = (name, key, styles, vars, ...styleFns) => {
+/*
+ * Adds styles to head for a component.
+ * id: (String) identifier, used as HTMLElement id for the attached <style></style> element
+ * styles: [Array} list of lists style objects
+ * key: (String) component key in styles object
+ * vars: (Object) component configuration variables
+ * styleFns: one or more style functions that return j2c style objects, for instance color, layout, ...
+*/
+const styleComponent = (id, styles, key, vars, ...styleFns) => {
   const styleVarFn = styles[key];
   const styleVars = styleVarFn ? styleVarFn(vars) : vars;
-  add(name, styleFns.map(f => f(styleVars)));
+  add(id, styleFns.map(f => f(styleVars)));
 };
+
+/*
+ * Create an additional style to head for a component. Does not overwrite existing keys.
+ * className: (String) CSS class name
+ * styles: [Array} list of lists style objects
+ * key: (String) component key in styles object
+ * extraVars: (Object) component configuration variables
+*/
+const addComponentStyle = (className, styles, key, extraVars) =>
+  Object.assign(
+    {},
+    styles,
+    {[key]: vars => [
+      { [`.${className}`]: Object.assign({}, vars, extraVars) }
+    ]}
+  );
 
 /*
  * id: identifier, used as HTMLElement id for the attached <style></style> element
@@ -16,7 +40,10 @@ const add = (id, ...styles) => {
   }, ...styles);
 };
 
-const remove = (id) => {
+/*
+ * Removes a style from head.
+ */
+const remove = id => {
   if (id) {
     const old = document.getElementById(id);
     if (old) {
@@ -29,7 +56,7 @@ const remove = (id) => {
  * opts: options object
  * id: identifier, used as HTMLElement id for the attached <style></style> element
  * document: document reference; default window.document
- * styles: list of lists style Objects
+ * styles: list of lists style objects
  */
 const addToDocument = (opts, ...styles) => {
   const id = opts.id;
@@ -58,5 +85,6 @@ export default {
   add,
   addToDocument,
   remove,
-  styleComponent
+  styleComponent,
+  addComponentStyle
 };

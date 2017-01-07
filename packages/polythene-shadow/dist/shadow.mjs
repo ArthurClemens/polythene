@@ -89,9 +89,23 @@ var layout = (function (componentVars) {
 
 // Does not contain any color styles
 
-styler.styleComponent("pe-shadow", "shadow", styles, vars$1, layout);
+var key = "shadow";
+var className = "pe-shadow";
 
-var CSS_CLASSES = {
+var styleComponent = function styleComponent(className, styles$$1) {
+  return styler.styleComponent(className, styles$$1, key, vars$1, layout);
+};
+
+var customTheme = function customTheme(className, vars$$1) {
+  return (
+    // Inject additional styles as use className as key
+    styleComponent(className, styler.addComponentStyle(className, styles, key, vars$$1))
+  );
+};
+
+styleComponent(className, styles);
+
+var classes = {
   component: "pe-shadow",
   topShadow: "pe-shadow__top",
   bottomShadow: "pe-shadow__bottom",
@@ -101,21 +115,22 @@ var CSS_CLASSES = {
 
 var view = function view(vnode) {
   var attrs = vnode.attrs;
-  var depthClass = "" + CSS_CLASSES.depth_n + Math.min(5, attrs.z !== undefined ? attrs.z : 1);
+  var depthClass = "" + classes.depth_n + Math.min(5, attrs.z !== undefined ? attrs.z : 1);
   var element = attrs.element || "div";
   var props = _extends({}, filterSupportedAttributes(attrs), {
-    class: [CSS_CLASSES.component, attrs.animated && CSS_CLASSES.animated, attrs.class].join(" ")
+    class: [classes.component, attrs.animated && classes.animated, attrs.class].join(" ")
   });
   var content = attrs.content ? attrs.content : vnode.children && vnode.children[0] ? vnode.children : null;
   var shadowContent = [content, m("div", {
-    class: [CSS_CLASSES.bottomShadow, depthClass].join(" ")
+    class: [classes.bottomShadow, depthClass].join(" ")
   }), m("div", {
-    class: [CSS_CLASSES.topShadow, depthClass].join(" ")
+    class: [classes.topShadow, depthClass].join(" ")
   })];
   return m(element, props, [attrs.before, shadowContent, attrs.after]);
 };
 
 var shadow = {
+  theme: customTheme, // accepts (className, vars)
   view: view
 };
 

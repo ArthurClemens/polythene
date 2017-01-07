@@ -15,6 +15,8 @@ var _extends = Object.assign || function (target) {
   return target;
 };
 
+// No theme
+
 var classes = {
   component: "pe-svg"
 };

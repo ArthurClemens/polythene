@@ -1,11 +1,11 @@
 import m from "mithril";
 import { isTouch, touchEndEvent, animationEndEvent, filterSupportedAttributes } from "polythene-core";
-import "./theme";
+import { customTheme } from "./theme";
 
 const ANIMATION_END_EVENT = animationEndEvent();
 const DEFAULT_START_OPACITY = 0.2;
 const OPACITY_DECAY_VELOCITY = 0.35;
-const CSS_CLASSES = {
+const classes = {
   component: "pe-ripple",
   waves: "pe-ripple__waves",
   mask: "pe-ripple__mask",
@@ -50,7 +50,7 @@ const makeRipple = (e, state, attrs) => {
   state.animating = true;
   const onEnd = evt => {
     state.animating = false;
-    wavesEl.classList.remove(CSS_CLASSES.wavesAnimating);
+    wavesEl.classList.remove(classes.wavesAnimating);
     wavesEl.removeEventListener(ANIMATION_END_EVENT, onEnd, false);
     if (attrs.end) {
       attrs.end(evt);
@@ -60,7 +60,7 @@ const makeRipple = (e, state, attrs) => {
   if (attrs.start) {
     attrs.start(e);
   }
-  wavesEl.classList.add(CSS_CLASSES.wavesAnimating);
+  wavesEl.classList.add(classes.wavesAnimating);
 };
 
 const initRipple = vnode => {
@@ -70,7 +70,7 @@ const initRipple = vnode => {
     return;
   }
   state.ripple = vnode.dom;
-  state.waves = vnode.dom.querySelector(`.${CSS_CLASSES.waves}`);
+  state.waves = vnode.dom.querySelector(`.${classes.waves}`);
   
   const tap = e => makeRipple(e, state, attrs);
   const triggerEl = vnode.dom.parentElement;
@@ -91,21 +91,22 @@ const view = vnode => {
     filterSupportedAttributes(attrs),
     {
       class: [
-        CSS_CLASSES.component,
-        (attrs.constrained !== false ? CSS_CLASSES.constrained : null),
+        classes.component,
+        (attrs.constrained !== false ? classes.constrained : null),
         attrs.class
       ].join(" ")
     }
   );
   const content = m("div", {
-    class: CSS_CLASSES.mask
+    class: classes.mask
   }, m("div", {
-    class: CSS_CLASSES.waves
+    class: classes.waves
   }));
   return m(element, props, [attrs.before, content, attrs.after]);
 };
 
 export const ripple = {
+  theme: customTheme, // accepts (className, vars)
   oninit: vnode => {
     vnode.state = {
       animating: false,

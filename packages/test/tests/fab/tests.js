@@ -34,7 +34,7 @@ export const tests = [
     }
   },
   {
-    name: "Colored background",
+    name: "Colored background (style attribute)",
     component,
     attrs: {
       icon: {

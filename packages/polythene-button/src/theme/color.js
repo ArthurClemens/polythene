@@ -58,32 +58,30 @@ const noTouch = (componentVars, tint, type, scope = "") => {
   }];
 };
 
-const createStyles = componentVars => {
-  return [
-    style(componentVars, "light", "flat"),
-    style(componentVars, "light", "raised", ".pe-button--raised"), {
-      "html.pe-no-touch": [
-        noTouch(componentVars, "light", "flat", " "),
-        noTouch(componentVars, "light", "raised", " .pe-button--raised")
-      ]
-    }, {
-      ".pe-dark-theme": [
-        // inside dark theme
-        style(componentVars, "dark", "flat", " "),
-        // has dark theme
-        style(componentVars, "dark", "flat", "&"),
-        //
-        style(componentVars, "dark", "raised", " .pe-button--raised")
-      ]
-    }, {
-      "html.pe-no-touch .pe-dark-theme": [
-        noTouch(componentVars, "dark", "flat", " "),
-        noTouch(componentVars, "dark", "flat", "&"),
-        noTouch(componentVars, "dark", "raised", " .pe-button--raised")
-      ]
-    }
-  ];
-};
+const createStyles = componentVars => [
+  style(componentVars, "light", "flat"),
+  style(componentVars, "light", "raised", ".pe-button--raised"), {
+    "html.pe-no-touch": [
+      noTouch(componentVars, "light", "flat", " "),
+      noTouch(componentVars, "light", "raised", " .pe-button--raised")
+    ]
+  }, {
+    ".pe-dark-theme": [
+      // inside dark theme
+      style(componentVars, "dark", "flat", " "),
+      // has dark theme
+      style(componentVars, "dark", "flat", "&"),
+      //
+      style(componentVars, "dark", "raised", " .pe-button--raised")
+    ]
+  }, {
+    "html.pe-no-touch .pe-dark-theme": [
+      noTouch(componentVars, "dark", "flat", " "),
+      noTouch(componentVars, "dark", "flat", "&"),
+      noTouch(componentVars, "dark", "raised", " .pe-button--raised")
+    ]
+  }
+];
 
 export default componentVars => mixin.createStyles(componentVars, createStyles);
 

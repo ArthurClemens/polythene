@@ -58,7 +58,7 @@ var rules = {
   list: "ul.list.pa0",
   listItem: "li.mv1",
   results: ".results",
-  resultRow: ".result-row.flex.flex-row-ns.flex-column" + bottomBorder + resultHeight,
+  resultRow: ".result-row.flex-ns.flex-row-ns.flex-column" + bottomBorder + resultHeight,
   resultTitle: ".flex.flex-one.ma3",
   result: ".result.flex.flex-one.relative.ma3.minh4",
   content: ".component-result.relative.w-100",
@@ -102,6 +102,8 @@ var blocks = [1, 2, 3, 4].map(function (num) {
 var m$1 = m;
 var rocket = m$1.trust('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve"><path fill="#000000" fill-opacity="1" stroke-linejoin="round" d="M 2.80761,14.1213L 5.63604,11.2929L 8.17304,10.7855C 11.39,6.40972 17.5532,4.22183 19.7782,4.22183C 19.7782,6.44683 17.5903,12.61 13.2145,15.827L 12.7071,18.364L 9.87868,21.1924L 9.17157,17.6569C 7.75736,17.6569 7.75736,17.6569 7.05025,16.9497C 6.34315,16.2426 6.34315,16.2426 6.34315,14.8284L 2.80761,14.1213 Z M 5.63604,16.9497L 7.05025,18.364L 4.38603,21.0282L 2.97181,21.0282L 2.97181,19.614L 5.63604,16.9497 Z M 4.22182,15.5355L 5.45926,15.7123L 3.01472,18.1569L 3.01472,16.7426L 4.22182,15.5355 Z M 8.28769,18.5407L 8.46447,19.7782L 7.25735,20.9853L 5.84314,20.9853L 8.28769,18.5407 Z M 13,9.5C 12.1716,9.5 11.5,10.1716 11.5,11C 11.5,11.8284 12.1716,12.5 13,12.5C 13.8284,12.5 14.5,11.8284 14.5,11C 14.5,10.1716 13.8284,9.5 13,9.5 Z "/></svg>');
 
+var SVG = m.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z\"/></svg>");
+
 styler.add("polythene-css-classes", styles);
 
 // Testing the web font loader that we use to load Roboto
@@ -123,12 +125,30 @@ var tests = [{
     raised: true
   }
 }, {
+  name: "Button (theme: blue)",
+  component: button,
+  attrs: {
+    class: "blue-button", // theme + class name set in theme tests
+    label: "Button"
+  }
+}, {
   name: "FAB",
   component: fab,
   attrs: {
     icon: {
       svg: {
-        content: m.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z\"/></svg>")
+        content: SVG
+      }
+    }
+  }
+}, {
+  name: "FAB (theme: red)",
+  component: fab,
+  attrs: {
+    class: "red-fab", // theme + class name set in theme tests
+    icon: {
+      svg: {
+        content: SVG
       }
     }
   }
@@ -137,7 +157,7 @@ var tests = [{
   component: icon,
   attrs: {
     svg: {
-      content: m.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z\"/></svg>")
+      content: SVG
     }
   }
 }, {
@@ -146,7 +166,7 @@ var tests = [{
   attrs: {
     icon: {
       svg: {
-        content: m.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z\"/></svg>")
+        content: SVG
       }
     }
   }
@@ -210,7 +230,7 @@ var tests = [{
   name: "SVG",
   component: svg,
   attrs: {
-    content: m.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z\"/></svg>")
+    content: SVG
   }
 }, {
   name: "Web font loader (Google Fonts: PT Sans)",
@@ -509,7 +529,7 @@ var tests$2 = [{
     }
   }
 }, {
-  name: "Colored background",
+  name: "Colored background (style attribute)",
   component: fab$1,
   attrs: {
     icon: {
@@ -880,6 +900,34 @@ var tests$4 = [{
   }
 }];
 
+var listTileJennifer = m(listTile$1, {
+  title: "Jennifer Barker",
+  subtitle: "Starting post doc",
+  front: m(icon$1, {
+    src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
+    avatar: true,
+    type: "large"
+  }),
+  url: {
+    href: "/",
+    oncreate: m.route.link
+  }
+});
+
+var listTileAli = m(listTile$1, {
+  title: "Ali Connors",
+  subtitle: "Brunch this weekend?",
+  front: m(icon$1, {
+    src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png",
+    avatar: true,
+    type: "large"
+  }),
+  url: {
+    href: "/",
+    oncreate: m.route.link
+  }
+});
+
 var tests$5 = [{
   name: "Option: header",
   component: list$1,
@@ -918,75 +966,46 @@ var tests$5 = [{
   name: "Options: tiles, indent, indentedBorders",
   component: list$1,
   attrs: {
-    indent: true,
     indentedBorders: true,
+    header: {
+      title: "Friends",
+      indent: true
+    },
     tiles: [m(listTile$1, {
       title: "Jennifer Barker",
-      subtitle: "Starting post doc"
+      subtitle: "Starting post doc",
+      indent: true
     }), m(listTile$1, {
       title: "Ali Connors",
-      subtitle: "Brunch this weekend?"
+      subtitle: "Brunch this weekend?",
+      indent: true
     })]
   }
 }, {
   name: "Options: header, tiles with urls",
   interactive: true,
-  component: list$1,
-  attrs: {
-    header: {
-      title: "Friends"
-    },
-    borders: true,
-    tiles: [m(listTile$1, {
-      title: "Jennifer Barker",
-      subtitle: "Starting post doc",
-      front: m(icon$1, {
-        src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
-        avatar: true,
-        type: "large"
-      }),
-      url: {
-        href: "/",
-        oncreate: m.route.link
-      }
-    }), m(listTile$1, {
-      title: "Ali Connors",
-      subtitle: "Brunch this weekend?",
-      front: m(icon$1, {
-        src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png",
-        avatar: true,
-        type: "large"
-      }),
-      url: {
-        href: "/",
-        oncreate: m.route.link
-      }
-    })]
+  component: {
+    view: function view() {
+      return [m(list$1, {
+        header: {
+          title: "Friends"
+        },
+        borders: true,
+        tiles: [listTileJennifer, listTileAli]
+      }), m(list$1, {
+        header: {
+          title: "Friends"
+        },
+        borders: true,
+        tiles: [listTileJennifer, listTileAli]
+      })];
+    }
   }
 }, {
   name: "Option: hoverable",
   interactive: true,
   component: list$1,
   attrs: {
-    hoverable: true,
-    borders: true,
-    header: {
-      title: "Friends"
-    },
-    tiles: [m(listTile$1, {
-      title: "Jennifer Barker",
-      subtitle: "Starting post doc"
-    }), m(listTile$1, {
-      title: "Ali Connors",
-      subtitle: "Brunch this weekend?"
-    })]
-  }
-}, {
-  name: "Option: hoverable -- dark theme",
-  interactive: true,
-  component: list$1,
-  attrs: {
-    class: "pe-dark-theme",
     hoverable: true,
     borders: true,
     header: {
@@ -1027,15 +1046,7 @@ var tests$5 = [{
     header: {
       title: "Friends"
     },
-    tiles: [m(listTile$1, {
-      title: "Jennifer Barker",
-      subtitle: "Starting post doc",
-      front: m(icon$1, {
-        src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
-        avatar: true,
-        type: "large"
-      })
-    }), m(listTile$1, {
+    tiles: [listTileJennifer, m(listTile$1, {
       title: "Ali Connors",
       subtitle: "Brunch this weekend?",
       front: m(icon$1, {
@@ -1043,6 +1054,45 @@ var tests$5 = [{
         avatar: true,
         type: "large"
       })
+    })]
+  }
+}, {
+  name: "Options: header.sticky",
+  interactive: true,
+  component: {
+    view: function view() {
+      return m(".scrollable-list", [0, 1, 2, 3, 4].map(function () {
+        return m(list$1, {
+          header: {
+            title: "Subheader",
+            sticky: true
+          },
+          tiles: [listTileJennifer, listTileAli, listTileJennifer, listTileAli]
+        });
+      }));
+    }
+  }
+},
+
+// Dark theme
+
+{
+  name: "Option: hoverable -- dark theme",
+  interactive: true,
+  component: list$1,
+  attrs: {
+    class: "pe-dark-theme",
+    hoverable: true,
+    borders: true,
+    header: {
+      title: "Friends"
+    },
+    tiles: [m(listTile$1, {
+      title: "Jennifer Barker",
+      subtitle: "Starting post doc"
+    }), m(listTile$1, {
+      title: "Ali Connors",
+      subtitle: "Brunch this weekend?"
     })]
   }
 },
@@ -1187,28 +1237,6 @@ var tests$6 = [{
       }
     }
   }
-}, {
-  name: "Option: highSubtitle and front -- dark theme",
-  component: listTile$1,
-  attrs: {
-    class: "pe-dark-theme",
-    title: "Ancillary Justice",
-    highSubtitle: "The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before.",
-    front: m(icon$1, {
-      src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
-      avatar: true,
-      type: "large"
-    }),
-    secondary: {
-      icon: {
-        msvg: stars
-      },
-      url: {
-        href: "/",
-        oncreate: m.route.link
-      }
-    }
-  }
 },
 
 // Appearance options
@@ -1324,6 +1352,40 @@ var tests$6 = [{
     secondary: {
       content: m(icon$1, { msvg: stars })
     }
+  }
+},
+
+// Dark theme
+
+{
+  name: "Option: highSubtitle and front -- dark theme",
+  component: listTile$1,
+  attrs: {
+    class: "pe-dark-theme",
+    title: "Ancillary Justice",
+    highSubtitle: "The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before.",
+    front: m(icon$1, {
+      src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
+      avatar: true,
+      type: "large"
+    }),
+    secondary: {
+      icon: {
+        msvg: stars
+      },
+      url: {
+        href: "/",
+        oncreate: m.route.link
+      }
+    }
+  }
+}, {
+  name: "Option: disabled url -- dark theme",
+  component: listTile$1,
+  attrs: {
+    class: "pe-dark-theme",
+    title: "Ancillary Justice",
+    disabled: true
   }
 },
 
@@ -1826,15 +1888,103 @@ var tests$11 = [{
   }
 }];
 
+/*
+Testing 3 theming methods:
+1. Style variables
+2. Deriving components
+3. Theme file
+*/
+
+// [1]
+
+button$1.theme("blue-button", {
+  color_light_flat_normal_background: "#2196F3",
+  color_light_flat_normal_text: "#fff"
+});
+
+button$1.theme("red-button", {
+  color_light_flat_normal_background: "#ff0000",
+  color_light_flat_normal_text: "#fff"
+});
+
+icon$1.theme("red-icon", {
+  color: "red"
+});
+
+fab$1.theme("red-fab", {
+  color_light_background: "#ff0000",
+  color_light_text: "#fff"
+});
+
+iconButton$1.theme("large-icon-button", {
+  padding: 50,
+  color_background: "#fff"
+});
+
+list$1.theme("blue-list", {
+  color_light_border: "#2196F3"
+});
+
+listTile$1.theme("red-list-tile", {
+  color_light_title: "red"
+});
+
+// [2]
+
+var secondaryButton$1 = {
+  theme: button$1.theme,
+  view: function view(vnode) {
+    return m(button$1, _extends({
+      class: "secondary-button",
+      borders: true
+    }, vnode.attrs));
+  }
+};
+secondaryButton$1.theme("secondary-button", {
+  color_light_flat_normal_border: "#ddd",
+  color_light_flat_normal_background: "#fff"
+});
+
+// [3]
+// Set in theme file ./theme.js:
+// classes: my-button--primary and my-icon
+
+
 var tests$12 = [{
-  name: "Theme: button (should be purple)",
+  name: "Theme with style variables: button (should be blue)",
   component: button$1,
   attrs: {
-    label: "Button",
+    class: "blue-button",
+    label: "Blue button"
+  }
+}, {
+  name: "Theme with style variables: button (should be red)",
+  component: button$1,
+  attrs: {
+    class: "red-button",
+    label: "Red button"
+  }
+}, {
+  name: "Theme with deriving component: button (should be bordered with white background)",
+  component: secondaryButton$1,
+  attrs: {
+    label: "Bordered button"
+  }
+}, {
+  name: "No theme: normal button",
+  component: button$1,
+  attrs: {
+    label: "Unaffected button"
+  }
+}, {
+  name: "Theme with theme file: button (should be purple)",
+  component: button$1,
+  attrs: {
+    label: "Purple button",
     class: "my-button--primary"
   }
 }, {
-  name: "Theme: FAB (should be orange)",
+  name: "Theme with theme file (global primary color): FAB (should be orange)",
   component: fab$1,
   attrs: {
     icon: {
@@ -1842,7 +1992,23 @@ var tests$12 = [{
     }
   }
 }, {
-  name: "Theme: Icon (should have larger sizes)",
+  name: "Theme with style variables: FAB (should be red)",
+  component: fab$1,
+  attrs: {
+    class: "red-fab",
+    icon: {
+      msvg: alarmAdd
+    }
+  }
+}, {
+  name: "Theme with style variables: icon (should be red)",
+  component: icon$1,
+  attrs: {
+    class: "red-icon",
+    msvg: alarmAdd
+  }
+}, {
+  name: "Theme with theme file: icon (should have larger sizes)",
   component: {
     view: function view() {
       return [m(icon$1, {
@@ -1864,29 +2030,73 @@ var tests$12 = [{
       })];
     }
   }
+}, {
+  name: "Theme with style variables: icon button (should have large padding)",
+  component: iconButton$1,
+  attrs: {
+    class: "large-icon-button",
+    icon: {
+      msvg: alarmAdd
+    }
+  }
+}, {
+  name: "Theme with style variables: list (should have blue borders)",
+  component: list$1,
+  attrs: {
+    class: "blue-list",
+    borders: true,
+    tiles: [m(listTile$1, {
+      title: "Jennifer Barker",
+      subtitle: "Starting post doc"
+    }), m(listTile$1, {
+      title: "Ali Connors",
+      subtitle: "Brunch this weekend?"
+    }), m(listTile$1, {
+      title: "Mike Eden",
+      subtitle: "Watch a game"
+    })]
+  }
+}, {
+  name: "Theme with style variables: list tile (should have red titles)",
+  component: list$1,
+  attrs: {
+    tiles: [m(listTile$1, {
+      class: "red-list-tile",
+      title: "Jennifer Barker",
+      subtitle: "Starting post doc"
+    }), m(listTile$1, {
+      class: "red-list-tile",
+      title: "Ali Connors",
+      subtitle: "Brunch this weekend?"
+    }), m(listTile$1, {
+      class: "red-list-tile",
+      title: "Mike Eden",
+      subtitle: "Watch a game"
+    })]
+  }
 }];
 
 var generatedHtml = {
   oninit: function oninit(vnode) {
-    return vnode.state.open = false;
-  },
-  oncreate: function oncreate(vnode) {
-    vnode.dom.addEventListener("click", function () {
-      vnode.state.open = !vnode.state.open;
-      m.redraw();
-    });
+    return vnode.state.open = false, vnode.state.toggle = function () {
+      return vnode.state.open = !vnode.state.open;
+    };
   },
   view: function view(vnode) {
     var test = vnode.attrs.test;
     var raw = tidy(m(test.component, test.attrs, test.children));
     return m(rules.rawResult, {
-      class: vnode.state.open ? "open" : "closed"
+      class: vnode.state.open ? "open" : "closed",
+      onclick: vnode.state.toggle
     }, [m(".html", {}, raw), m(".ellipsis", "...")]);
   }
 };
 
 var testsPage = function testsPage(name, tests$$1) {
   return {
+    oncreate: function oncreate() {
+      return document.title = name;
+    },
     view: function view() {
       return [m(rules.headerRow, [m(rules.link, {
         href: "/",
@@ -1894,7 +2104,6 @@ var testsPage = function testsPage(name, tests$$1) {
       }, "Components"), m(rules.separator, "/"), m("span", name)]), m([rules.tests, rules.results].join(" "), {
         class: "tests-" + name.replace(/[\:\-\[\]]/g, "").replace(/ /g, "-").toLowerCase()
       }, tests$$1.map(function (test) {
-
         var resultId = "test-" + test.name.replace(/[\:\-\[\]]/g, "").replace(/ /g, "-").toLowerCase();
         return m([rules.resultRow, test.interactive ? rules.interactive : null].join(""), {
           key: resultId,
@@ -1960,6 +2169,9 @@ var pages = [{
 }];
 
 var index = {
+  oncreate: function oncreate() {
+    return document.title = "Polythene components";
+  },
   view: function view() {
     return m(rules.page, [m(rules.pageTitle, "Polythene components"), m(rules.list, pages.map(function (link) {
       return m(rules.listItem, m(rules.link, {

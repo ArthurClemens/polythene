@@ -18,7 +18,7 @@ export const rules = {
   list: "ul.list.pa0",
   listItem: "li.mv1",
   results: ".results",
-  resultRow: `.result-row.flex.flex-row-ns.flex-column${bottomBorder}${resultHeight}`,
+  resultRow: `.result-row.flex-ns.flex-row-ns.flex-column${bottomBorder}${resultHeight}`,
   resultTitle: ".flex.flex-one.ma3",
   result: ".result.flex.flex-one.relative.ma3.minh4",
   content: ".component-result.relative.w-100",

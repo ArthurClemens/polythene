@@ -28,10 +28,11 @@ export const styles = {
   },
   icon: vars => {
     const customIconVars = {
-      size_small: icon_unit_component,
+      ...vars,
+      size_small:   1 * icon_unit_component,
       size_regular: 2 * icon_unit_component,
-      size_medium: 3 * icon_unit_component,
-      size_large: 4 * icon_unit_component
+      size_medium:  3 * icon_unit_component,
+      size_large:   4 * icon_unit_component
     };
     return [
       {

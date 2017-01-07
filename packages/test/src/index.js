@@ -19,19 +19,16 @@ import { tests as cssClassesTests } from "../tests/css-classes/tests";
 import { tests as themeTests } from "../tests/theme/tests";
 
 const generatedHtml = {
-  oninit: vnode =>
+  oninit: vnode => (
     vnode.state.open = false,
-  oncreate: vnode => {
-    vnode.dom.addEventListener("click", () => {
-      vnode.state.open = !vnode.state.open;
-      m.redraw();
-    });
-  },
+    vnode.state.toggle = () => vnode.state.open = !vnode.state.open
+  ),
   view: vnode => {
     const test = vnode.attrs.test;
     const raw = tidy(m(test.component, test.attrs, test.children));
     return m(css.rawResult, {
-      class: vnode.state.open ? "open" : "closed"
+      class: vnode.state.open ? "open" : "closed",
+      onclick: vnode.state.toggle,
     }, [
       m(".html", {}, raw),
       m(".ellipsis", "...")

@@ -1,8 +1,8 @@
 import m from "mithril";
 import { iconButton } from "polythene-icon-button";
-import "./theme";
+import { customTheme } from "./theme";
 
-const CSS_CLASSES = {
+const classes = {
   component: "pe-button--fab",
   mini:      "pe-button--fab-mini"
 };
@@ -13,8 +13,8 @@ const view = vnode => {
     {},
     {
       parentClass: [
-        CSS_CLASSES.component,
-        attrs.mini ? CSS_CLASSES.mini : null
+        classes.component,
+        attrs.mini ? classes.mini : null
       ].join(" "),
       // defaults
       raised: true,
@@ -34,5 +34,6 @@ const view = vnode => {
 };
 
 export const fab = {
+  theme: customTheme, // accepts (className, vars)
   view
 };

@@ -8,7 +8,8 @@ var vars$1 = {
   size_small: vars.unit_icon_size_small,
   size_regular: vars.unit_icon_size,
   size_medium: vars.unit_icon_size_medium,
-  size_large: vars.unit_icon_size_large
+  size_large: vars.unit_icon_size_large,
+  color: "currentcolor"
 };
 
 var iconSizesPx = function iconSizesPx() {
@@ -25,7 +26,6 @@ var createStyles = function createStyles(componentVars) {
       display: "inline-block",
       "vertical-align": "middle",
       "background-repeat": "no-repeat",
-      fill: "currentcolor",
       position: "relative",
       "font-size": 0,
       "line-height": 0,
@@ -43,15 +43,7 @@ var createStyles = function createStyles(componentVars) {
 
       " svg": {
         width: "100%",
-        height: "100%",
-        fill: "currentcolor",
-        color: "inherit",
-
-        " path, rect, polygon": {
-          "&:not([fill=none])": {
-            fill: "currentcolor"
-          }
-        }
+        height: "100%"
       },
 
       "&.pe-icon--small": iconSizesPx(componentVars.size_small),
@@ -66,9 +58,20 @@ var layout = (function (componentVars) {
   return mixin.createStyles(componentVars, createStyles);
 });
 
-// Does not contain color styles
+var defineProperty = function (obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
 
-styler.styleComponent("pe-icon", "icon", styles, vars$1, layout);
+  return obj;
+};
 
 var _extends = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
@@ -84,7 +87,49 @@ var _extends = Object.assign || function (target) {
   return target;
 };
 
-var CSS_CLASSES = {
+var style = function style(componentVars) {
+  var scope = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+  return [defineProperty({}, scope + ".pe-icon", {
+    fill: componentVars.color,
+
+    " svg": {
+      fill: componentVars.color,
+      color: "inherit",
+
+      " path, rect, circle, polygon": {
+        "&:not([fill=none])": {
+          fill: componentVars.color
+        }
+      }
+    }
+  })];
+};
+
+var createStyles$1 = function createStyles(componentVars) {
+  return [style(componentVars)];
+};
+
+var color = (function (componentVars) {
+  return mixin.createStyles(componentVars, createStyles$1);
+});
+
+var key = "icon";
+var className = "pe-icon";
+
+var styleComponent = function styleComponent(className, styles$$1) {
+  return styler.styleComponent(className, styles$$1, key, vars$1, layout, color);
+};
+
+var customTheme = function customTheme(className, vars$$1) {
+  return (
+    // Inject additional styles as use className as key
+    styleComponent(className, styler.addComponentStyle(className, styles, key, vars$$1))
+  );
+};
+
+styleComponent(className, styles);
+
+var classes = {
   icon: "pe-icon",
   avatar: "pe-icon--avatar",
   small: "pe-icon--small",
@@ -94,10 +139,10 @@ var CSS_CLASSES = {
 };
 
 var typeClasses = {
-  small: CSS_CLASSES.small,
-  regular: CSS_CLASSES.regular,
-  medium: CSS_CLASSES.medium,
-  large: CSS_CLASSES.large
+  small: classes.small,
+  regular: classes.regular,
+  medium: classes.medium,
+  large: classes.large
 };
 
 var classForType = function classForType() {
@@ -109,13 +154,14 @@ var view = function view(vnode) {
   var attrs = vnode.attrs;
   var element = attrs.element || "div";
   var props = _extends({}, filterSupportedAttributes(attrs), {
-    class: [CSS_CLASSES.icon, classForType(attrs.type), attrs.avatar ? CSS_CLASSES.avatar : null, attrs.class].join(" ")
+    class: [classes.icon, classForType(attrs.type), attrs.avatar ? classes.avatar : null, attrs.class].join(" ")
   }, attrs.events ? attrs.events : null);
   var content = attrs.content ? attrs.content : vnode.children && vnode.children[0] ? vnode.children : attrs.svg ? m(svg, _extends({}, attrs.svg)) : attrs.msvg ? m(svg, attrs.msvg) : attrs.src ? m("img", { src: attrs.src }) : null;
   return m(element, props, [attrs.before, content, attrs.after]);
 };
 
 var icon = {
+  theme: customTheme, // accepts (className, vars)
   view: view
 };
 

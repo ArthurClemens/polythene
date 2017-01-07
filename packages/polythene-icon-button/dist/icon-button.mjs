@@ -40,6 +40,11 @@ var vars$1 = _extends({}, buttonVars, {
   padding: padding,
   padding_compact: padding_compact,
 
+  color_background: "none", // only specify this variable to get all 2 states
+  // theme specific background colors may be set in theme; disabled by default
+  // color_light_background: "none",
+  // color_dark_background: "none",
+
   color_light_wash_opacity: vars.blend_light_background_hover_medium,
   color_light_focus_opacity: vars.blend_light_background_hover_medium,
   color_light_flat_normal_text: vars.rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
@@ -81,10 +86,9 @@ var layout = (function (componentVars) {
 
 var style = function style(componentVars, tint, type) {
   var scope = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
-
   return [defineProperty({}, scope + ".pe-button.pe-button--icon, a.pe-button.pe-button--icon", {
     color: componentVars["color_" + tint + "_" + type + "_normal_text"],
-    background: "none",
+    "background-color": componentVars["color_" + tint + "_background"] || componentVars["color_background"],
 
     " .pe-button__wash": {
       opacity: componentVars["color_" + tint + "_wash_opacity"]
@@ -113,7 +117,6 @@ var style = function style(componentVars, tint, type) {
 
 var noTouch = function noTouch(componentVars, tint, type) {
   var scope = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
-
   return [defineProperty({}, scope + ".pe-button.pe-button--icon:hover", tint === "light" ? {
     " .pe-button__wash": {
       "background-color": "currentcolor"
@@ -143,9 +146,23 @@ var color = (function (componentVars) {
   return mixin.createStyles(componentVars, createStyles$1);
 });
 
-styler.styleComponent("pe-icon-button", "icon-button", styles, vars$1, layout, color);
+var key = "icon-button";
+var className = "pe-icon-button";
 
-var CSS_CLASSES = {
+var styleComponent = function styleComponent(className, styles$$1) {
+  return styler.styleComponent(className, styles$$1, key, vars$1, layout, color);
+};
+
+var customTheme = function customTheme(className, vars$$1) {
+  return (
+    // Inject additional styles as use className as key
+    styleComponent(className, styler.addComponentStyle(className, styles, key, vars$$1))
+  );
+};
+
+styleComponent(className, styles);
+
+var classes = {
   component: "pe-button pe-button--icon",
   content: "pe-button--icon__content",
   compact: "pe-button--compact"
@@ -155,8 +172,8 @@ var view = function view(vnode) {
   var attrs = vnode.attrs;
   var content = attrs.content ? attrs.content : vnode.children && vnode.children[0] ? vnode.children : attrs.icon ? m(icon, attrs.icon) : null;
   return m(button, _extends({}, {
-    content: m("div", { class: CSS_CLASSES.content }, content),
-    parentClass: [attrs.parentClass || CSS_CLASSES.component, attrs.compact ? CSS_CLASSES.compact : null].join(" "),
+    content: m("div", { class: classes.content }, content),
+    parentClass: [attrs.parentClass || classes.component, attrs.compact ? classes.compact : null].join(" "),
     // defaults
     wash: false,
     animateOnTap: false
@@ -164,6 +181,7 @@ var view = function view(vnode) {
 };
 
 var iconButton = {
+  theme: customTheme, // accepts (className, vars)
   view: view
 };
 

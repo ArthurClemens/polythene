@@ -206,9 +206,9 @@ var createStyles = function createStyles(componentVars) {
       // Non-touch
 
       "html.pe-no-touch .pe-list--hoverable &, \
-        html.pe-no-touch .pe-list--selectable &, \
-        html.pe-no-touch &.pe-list-tile--hoverable, \
-        html.pe-no-touch &.pe-list-tile--selectable": {
+      html.pe-no-touch .pe-list--selectable &, \
+      html.pe-no-touch &.pe-list-tile--hoverable, \
+      html.pe-no-touch &.pe-list-tile--selectable": {
         "&:not(.pe-list__header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected):hover": {
           cursor: "pointer"
         }
@@ -252,7 +252,6 @@ var _extends = Object.assign || function (target) {
 
 var style = function style(componentVars, tint) {
   var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
-
   return [defineProperty({}, scope + ".pe-list-tile", {
     " .pe-list-tile__title": {
       color: componentVars["color_" + tint + "_title"]
@@ -287,7 +286,6 @@ var style = function style(componentVars, tint) {
 
 var noTouch = function noTouch(componentVars, tint) {
   var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
-
   return [defineProperty({}, scope + ".pe-list-tile", {
     "&:not(.pe-list__header):not(.pe-list-tile--disabled):hover": {
       " .pe-list-tile__primary, pe-list-tile__secondary": {
@@ -316,9 +314,23 @@ var color = (function (componentVars) {
   return mixin.createStyles(componentVars, createStyles$1);
 });
 
-styler.styleComponent("pe-list-tile", "list-tile", styles, vars$1, layout, color);
+var key = "list-tile";
+var className = "pe-list-tile";
 
-var CSS_CLASSES = {
+var styleComponent = function styleComponent(className, styles$$1) {
+  return styler.styleComponent(className, styles$$1, key, vars$1, layout, color);
+};
+
+var customTheme = function customTheme(className, vars$$1) {
+  return (
+    // Inject additional styles as use className as key
+    styleComponent(className, styler.addComponentStyle(className, styles, key, vars$$1))
+  );
+};
+
+styleComponent(className, styles);
+
+var classes = {
   component: "pe-list-tile",
   primary: "pe-list-tile__primary",
   secondary: "pe-list-tile__secondary",
@@ -340,19 +352,19 @@ var CSS_CLASSES = {
 
 var primaryContent = function primaryContent(attrs, children) {
   var element = attrs.element ? attrs.element : attrs.url ? "a" : "div";
-  var contentFrontClass = CSS_CLASSES.content + " " + CSS_CLASSES.contentFront;
+  var contentFrontClass = classes.content + " " + classes.contentFront;
   var frontComp = attrs.front ? m("div", { class: contentFrontClass }, attrs.front) : attrs.indent ? m("div", { class: contentFrontClass }) : null;
 
   return m(element, _extends({}, filterSupportedAttributes(attrs), attrs.url, {
-    class: CSS_CLASSES.primary
+    class: classes.primary
   }), [frontComp, m("div", {
-    class: CSS_CLASSES.content
+    class: classes.content
   }, [attrs.content ? attrs.content : children && children[0] ? children : null, attrs.title && !attrs.content ? m("div", {
-    class: CSS_CLASSES.title
+    class: classes.title
   }, attrs.title) : null, attrs.subtitle ? m("div", {
-    class: CSS_CLASSES.subtitle
+    class: classes.subtitle
   }, attrs.subtitle) : null, attrs.highSubtitle ? m("div", {
-    class: CSS_CLASSES.subtitle + " " + CSS_CLASSES.highSubtitle
+    class: classes.subtitle + " " + classes.highSubtitle
   }, attrs.highSubtitle) : null])]);
 };
 
@@ -361,19 +373,19 @@ var secondaryContent = function secondaryContent() {
 
   var element = secondaryAttrs.element ? secondaryAttrs.element : secondaryAttrs.url ? "a" : "div";
   return m(element, _extends({}, filterSupportedAttributes(secondaryAttrs), secondaryAttrs.url, {
-    class: CSS_CLASSES.secondary
+    class: classes.secondary
   }), m("div", {
-    class: CSS_CLASSES.content
+    class: classes.content
   }, [secondaryAttrs.icon ? m(icon, secondaryAttrs.icon) : null, secondaryAttrs.content ? secondaryAttrs.content : null]));
 };
 
 var view = function view(vnode) {
   var attrs = vnode.attrs;
   var element = attrs.element || "div";
-  var heightClass = attrs.subtitle ? CSS_CLASSES.hasSubtitle : attrs.highSubtitle ? CSS_CLASSES.hasHighSubtitle : attrs.front || attrs.indent ? CSS_CLASSES.hasFront : null;
+  var heightClass = attrs.subtitle ? classes.hasSubtitle : attrs.highSubtitle ? classes.hasHighSubtitle : attrs.front || attrs.indent ? classes.hasFront : null;
 
   var props = _extends({}, filterSupportedAttributes(attrs), {
-    class: [CSS_CLASSES.component, attrs.selected ? CSS_CLASSES.selected : null, attrs.disabled ? CSS_CLASSES.disabled : null, attrs.sticky ? CSS_CLASSES.sticky : null, attrs.compact ? CSS_CLASSES.isCompact : null, attrs.hoverable ? CSS_CLASSES.isHoverable : null, attrs.selectable ? CSS_CLASSES.isSelectable : null, heightClass, attrs.class].join(" ")
+    class: [classes.component, attrs.selected ? classes.selected : null, attrs.disabled ? classes.disabled : null, attrs.sticky ? classes.sticky : null, attrs.compact ? classes.isCompact : null, attrs.hoverable ? classes.isHoverable : null, attrs.selectable ? classes.isSelectable : null, heightClass, attrs.class].join(" ")
     // events and url are attached to primary content to not interfere with controls
   });
 
@@ -386,6 +398,7 @@ var view = function view(vnode) {
 };
 
 var listTile = {
+  theme: customTheme, // accepts (className, vars)
   view: view
 };
 

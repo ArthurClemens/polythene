@@ -66,7 +66,23 @@ var layout = (function (componentVars) {
   return mixin.createStyles(componentVars, createStyles);
 });
 
-styler.styleComponent("pe-ripple", "ripple", styles, vars$1, layout);
+// Does not contain any color styles
+
+var key = "ripple";
+var className = "pe-ripple";
+
+var styleComponent = function styleComponent(className, styles$$1) {
+  return styler.styleComponent(className, styles$$1, key, vars$1, layout);
+};
+
+var customTheme = function customTheme(className, vars$$1) {
+  return (
+    // Inject additional styles as use className as key
+    styleComponent(className, styler.addComponentStyle(className, styles, key, vars$$1))
+  );
+};
+
+styleComponent(className, styles);
 
 var _extends = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
@@ -85,7 +101,7 @@ var _extends = Object.assign || function (target) {
 var ANIMATION_END_EVENT = animationEndEvent();
 var DEFAULT_START_OPACITY = 0.2;
 var OPACITY_DECAY_VELOCITY = 0.35;
-var CSS_CLASSES = {
+var classes = {
   component: "pe-ripple",
   waves: "pe-ripple__waves",
   mask: "pe-ripple__mask",
@@ -127,7 +143,7 @@ var makeRipple = function makeRipple(e, state, attrs) {
   state.animating = true;
   var onEnd = function onEnd(evt) {
     state.animating = false;
-    wavesEl.classList.remove(CSS_CLASSES.wavesAnimating);
+    wavesEl.classList.remove(classes.wavesAnimating);
     wavesEl.removeEventListener(ANIMATION_END_EVENT, onEnd, false);
     if (attrs.end) {
       attrs.end(evt);
@@ -137,7 +153,7 @@ var makeRipple = function makeRipple(e, state, attrs) {
   if (attrs.start) {
     attrs.start(e);
   }
-  wavesEl.classList.add(CSS_CLASSES.wavesAnimating);
+  wavesEl.classList.add(classes.wavesAnimating);
 };
 
 var initRipple = function initRipple(vnode) {
@@ -147,7 +163,7 @@ var initRipple = function initRipple(vnode) {
     return;
   }
   state.ripple = vnode.dom;
-  state.waves = vnode.dom.querySelector("." + CSS_CLASSES.waves);
+  state.waves = vnode.dom.querySelector("." + classes.waves);
 
   var tap = function tap(e) {
     return makeRipple(e, state, attrs);
@@ -166,17 +182,18 @@ var view = function view(vnode) {
   }
   var element = attrs.element || "div";
   var props = _extends({}, filterSupportedAttributes(attrs), {
-    class: [CSS_CLASSES.component, attrs.constrained !== false ? CSS_CLASSES.constrained : null, attrs.class].join(" ")
+    class: [classes.component, attrs.constrained !== false ? classes.constrained : null, attrs.class].join(" ")
   });
   var content = m("div", {
-    class: CSS_CLASSES.mask
+    class: classes.mask
   }, m("div", {
-    class: CSS_CLASSES.waves
+    class: classes.waves
   }));
   return m(element, props, [attrs.before, content, attrs.after]);
 };
 
 var ripple = {
+  theme: customTheme, // accepts (className, vars)
   oninit: function oninit(vnode) {
     vnode.state = {
       animating: false,

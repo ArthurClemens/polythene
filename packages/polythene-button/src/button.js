@@ -2,9 +2,9 @@ import m from "mithril";
 import { shadow } from "polythene-shadow";
 import { ripple } from "polythene-ripple";
 import { isTouch, touchStartEvent, touchEndEvent, subscribe, filterSupportedAttributes } from "polythene-core";
-import "./theme";
+import { customTheme } from "./theme";
 
-const CSS_CLASSES = {
+const classes = {
   component: "pe-button pe-button--text",
   content: "pe-button__content",
   label: "pe-button__label",
@@ -103,13 +103,13 @@ const view = vnode => {
     filterSupportedAttributes(attrs, EL_ATTRS),
     {
       class: [
-        (attrs.parentClass || CSS_CLASSES.component),
-        (attrs.selected ? CSS_CLASSES.selected : null),
-        (disabled ? CSS_CLASSES.disabled : null),
-        (state.inactive ? CSS_CLASSES.inactive : null),
-        (attrs.borders ? CSS_CLASSES.borders : null),
-        (attrs.raised ? CSS_CLASSES.raised : null),
-        (state.focus ? CSS_CLASSES.focusState : null),
+        (attrs.parentClass || classes.component),
+        (attrs.selected ? classes.selected : null),
+        (disabled ? classes.disabled : null),
+        (state.inactive ? classes.inactive : null),
+        (attrs.borders ? classes.borders : null),
+        (attrs.raised ? classes.raised : null),
+        (state.focus ? classes.focusState : null),
         attrs.class
       ].join(" "),
       tabIndex,
@@ -138,13 +138,13 @@ const view = vnode => {
     : attrs.label
       ? typeof attrs.label === "object"
         ? attrs.label
-        : m("div", {class: CSS_CLASSES.label}, attrs.label)
+        : m("div", {class: classes.label}, attrs.label)
       : vnode.children && vnode.children[0]
         ? vnode.children
         : null;
   const noWash = disabled || (attrs.wash !== undefined && !attrs.wash);
   const content = label
-    ? m("div", {class: CSS_CLASSES.content}, [
+    ? m("div", {class: classes.content}, [
       attrs.raised && !disabled
         ? m(shadow, {z: state.z, animated: true})
         : null,
@@ -153,9 +153,9 @@ const view = vnode => {
         ? null
         : m(ripple, attrs.ripple),
       // hover
-      noWash ? null : m("div", {class: CSS_CLASSES.wash}),
+      noWash ? null : m("div", {class: classes.wash}),
       // focus
-      disabled ? null : m("div", {class: CSS_CLASSES.focus}),
+      disabled ? null : m("div", {class: classes.focus}),
       label
     ])
     : null;
@@ -163,6 +163,7 @@ const view = vnode => {
 };
 
 export const button = {
+  theme: customTheme, // accepts (className, vars)
   oninit: vnode => {
     const z = (vnode.attrs.z !== undefined) ? vnode.attrs.z : 1;
     vnode.state = {
@@ -189,4 +190,3 @@ export const button = {
   },
   view
 };
-

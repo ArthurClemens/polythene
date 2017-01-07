@@ -1,9 +1,9 @@
 import m from "mithril";
 import { filterSupportedAttributes } from "polythene-core";
 import { svg } from "polythene-svg";
-import "./theme";
+import { customTheme } from "./theme";
 
-const CSS_CLASSES = {
+const classes = {
   icon: "pe-icon",
   avatar: "pe-icon--avatar",
   small: "pe-icon--small",
@@ -13,10 +13,10 @@ const CSS_CLASSES = {
 };
 
 const typeClasses = {
-  small: CSS_CLASSES.small,
-  regular: CSS_CLASSES.regular,
-  medium: CSS_CLASSES.medium,
-  large: CSS_CLASSES.large
+  small: classes.small,
+  regular: classes.regular,
+  medium: classes.medium,
+  large: classes.large
 };
 
 const classForType = (mode = "regular") => typeClasses[mode];
@@ -29,9 +29,9 @@ const view = vnode => {
     filterSupportedAttributes(attrs),
     {
       class: [
-        CSS_CLASSES.icon,
+        classes.icon,
         classForType(attrs.type),
-        attrs.avatar ? CSS_CLASSES.avatar : null,
+        attrs.avatar ? classes.avatar : null,
         attrs.class
       ].join(" "),
     },
@@ -52,6 +52,7 @@ const view = vnode => {
 };
 
 export const icon = {
+  theme: customTheme, // accepts (className, vars)
   view
 };
 

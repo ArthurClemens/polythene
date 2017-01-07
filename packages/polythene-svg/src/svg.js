@@ -1,5 +1,6 @@
 import m from "mithril";
 import { filterSupportedAttributes } from "polythene-core";
+// No theme
 
 const classes = {
   component: "pe-svg"

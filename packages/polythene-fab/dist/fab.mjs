@@ -93,7 +93,6 @@ var _extends = Object.assign || function (target) {
 
 var style = function style(componentVars, tint) {
   var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
-
   return [defineProperty({}, scope + ".pe-button--fab, a.pe-button--fab", {
     "background-color": componentVars["color_" + tint + "_background"],
     color: componentVars["color_" + tint + "_text"],
@@ -118,9 +117,23 @@ var color = (function (componentVars) {
   return mixin.createStyles(componentVars, createStyles$1);
 });
 
-styler.styleComponent("pe-fab", "fab", styles, vars$1, layout, color);
+var key = "fab";
+var className = "pe-fab";
 
-var CSS_CLASSES = {
+var styleComponent = function styleComponent(className, styles$$1) {
+  return styler.styleComponent(className, styles$$1, key, vars$1, layout, color);
+};
+
+var customTheme = function customTheme(className, vars$$1) {
+  return (
+    // Inject additional styles as use className as key
+    styleComponent(className, styler.addComponentStyle(className, styles, key, vars$$1))
+  );
+};
+
+styleComponent(className, styles);
+
+var classes = {
   component: "pe-button--fab",
   mini: "pe-button--fab-mini"
 };
@@ -128,7 +141,7 @@ var CSS_CLASSES = {
 var view = function view(vnode) {
   var attrs = vnode.attrs;
   return m(iconButton, _extends({}, {
-    parentClass: [CSS_CLASSES.component, attrs.mini ? CSS_CLASSES.mini : null].join(" "),
+    parentClass: [classes.component, attrs.mini ? classes.mini : null].join(" "),
     // defaults
     raised: true,
     ripple: {
@@ -145,6 +158,7 @@ var view = function view(vnode) {
 };
 
 var fab = {
+  theme: customTheme, // accepts (className, vars)
   view: view
 };
 

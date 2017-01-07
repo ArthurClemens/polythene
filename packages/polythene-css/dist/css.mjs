@@ -418,15 +418,36 @@ var mixinFlex = {
   selfStretch: selfStretch
 };
 
-var styleComponent = function styleComponent(name, key, styles, vars$$1) {
+/*
+ * Adds styles to head for a component.
+ * id: (String) identifier, used as HTMLElement id for the attached <style></style> element
+ * styles: [Array} list of lists style objects
+ * key: (String) component key in styles object
+ * vars: (Object) component configuration variables
+ * styleFns: one or more style functions that return j2c style objects, for instance color, layout, ...
+*/
+var styleComponent = function styleComponent(id, styles, key, vars$$1) {
   for (var _len = arguments.length, styleFns = Array(_len > 4 ? _len - 4 : 0), _key = 4; _key < _len; _key++) {
     styleFns[_key - 4] = arguments[_key];
   }
 
   var styleVarFn = styles[key];
   var styleVars = styleVarFn ? styleVarFn(vars$$1) : vars$$1;
-  add(name, styleFns.map(function (f) {
+  add(id, styleFns.map(function (f) {
     return f(styleVars);
+  }));
+};
+
+/*
+ * Create an additional style to head for a component. Does not overwrite existing keys.
+ * className: (String) CSS class name
+ * styles: [Array} list of lists style objects
+ * key: (String) component key in styles object
+ * extraVars: (Object) component configuration variables
+*/
+var addComponentStyle = function addComponentStyle(className, styles, key, extraVars) {
+  return _extends({}, styles, defineProperty({}, key, function (vars$$1) {
+    return [defineProperty({}, "." + className, _extends({}, vars$$1, extraVars))];
   }));
 };
 
@@ -444,6 +465,9 @@ var add = function add(id) {
   }].concat(styles));
 };
 
+/*
+ * Removes a style from head.
+ */
 var remove = function remove(id) {
   if (id) {
     var old = document.getElementById(id);
@@ -457,7 +481,7 @@ var remove = function remove(id) {
  * opts: options object
  * id: identifier, used as HTMLElement id for the attached <style></style> element
  * document: document reference; default window.document
- * styles: list of lists style Objects
+ * styles: list of lists style objects
  */
 var addToDocument = function addToDocument(opts) {
   for (var _len3 = arguments.length, styles = Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
@@ -490,7 +514,8 @@ var styler = {
   add: add,
   addToDocument: addToDocument,
   remove: remove,
-  styleComponent: styleComponent
+  styleComponent: styleComponent,
+  addComponentStyle: addComponentStyle
 };
 
 export { mixin, mixinFlex as flex, styler };

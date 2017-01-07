@@ -4,6 +4,8 @@ import * as polythene from "polythene";
 import { styles as blockStyles, blocks } from "../css-classes/block-styles";
 import iconRocket from "mmsvg/templarian/msvg/rocket";
 
+const SVG = m.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z\"/></svg>");
+
 polythene.styler.add("polythene-css-classes", blockStyles);
 
 // Testing the web font loader that we use to load Roboto
@@ -27,12 +29,32 @@ export const tests = [
     }
   },
   {
+    name: "Button (theme: blue)",
+    component: polythene.button,
+    attrs: {
+      class: "blue-button", // theme + class name set in theme tests
+      label: "Button"
+    }
+  },
+  {
     name: "FAB",
     component: polythene.fab,
     attrs: {
       icon: {
         svg: {
-          content: m.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z\"/></svg>")
+          content: SVG
+        }
+      }
+    }
+  },
+  {
+    name: "FAB (theme: red)",
+    component: polythene.fab,
+    attrs: {
+      class: "red-fab", // theme + class name set in theme tests
+      icon: {
+        svg: {
+          content: SVG
         }
       }
     }
@@ -42,7 +64,7 @@ export const tests = [
     component: polythene.icon,
     attrs: {
       svg: {
-        content: m.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z\"/></svg>")
+        content: SVG
       }
     }
   },
@@ -52,7 +74,7 @@ export const tests = [
     attrs: {
       icon: {
         svg: {
-          content: m.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z\"/></svg>")
+          content: SVG
         }
       }
     }
@@ -127,7 +149,7 @@ export const tests = [
     name: "SVG",
     component: polythene.svg,
     attrs: {
-      content: m.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z\"/></svg>")
+      content: SVG
     }
   },
   {

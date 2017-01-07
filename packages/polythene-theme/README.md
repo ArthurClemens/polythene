@@ -4,26 +4,176 @@ Polythene is an implementation of Google"s Material Design, but it can also be u
 
 This page describes a number of ways to create customizations.
 
+TL;DR: The simplest way to create a custom blue button:
+
+~~~javascript
+import { button } from "polythene-button";
+
+button.theme("blue-button", {
+  color_light_flat_normal_background: "#2196F3",
+  color_light_flat_normal_text: "#fff"
+});
+
+m(button, {
+  label: "Blue Button",
+  class: "blue-button"
+});
+~~~ 
 
 
 ## Customization options
 
 There are multiple ways to customize, and they be be used side by side:
 
+1. **Style variables** - create styles by passing configuration variables
+1. **Deriving components** - build on top of existing components: to set new defaults or styling
 1. **Custom CSS** - to enhance existing styles
-1. **Deriving components** - to set new defaults or styling
-1. **Style variables** - to pass configuration variables for one or more components or the entire app
+1. **Theme file** - define styles for multiple components at once, or for the entire app
+
+
+
+
+## Style variables
+
+Polythene components are styled with variables - comparable to variables in Sass or Less.
+
+Each component - at least the ones that are styled - contains a `vars` module that specifies measurements and colors. For example, for Icon:
+
+~~~javascript
+// polythene-icon/src/theme/vars.js
+import { vars } from "polythene-theme";
+
+export default {
+  size_small:   vars.unit_icon_size_small,
+  size_regular: vars.unit_icon_size,
+  size_medium:  vars.unit_icon_size_medium,
+  size_large:   vars.unit_icon_size_large,
+  color:        "currentcolor" 
+};
+~~~
+
+The variables like `unit_icon_size_small` that are imported from `polythene-theme` are (one import further) specified in `polythene-core/src/variables.js`.
+
+
+### Styling components with variables 
+
+The style of a component can be set using this pattern:
+
+~~~javascript
+component.theme(className, vars)
+~~~
+
+Where `vars` is a subset of the component's theme variables. For example, to create large icons for the component with class "app-icon", we write:
+
+~~~javascript
+// app.js
+import { icon } from "polythene-icon";
+
+const unitSize = 20;
+icon.theme("app-icon", {
+  size_small:   1 * unitSize,
+  size_regular: 2 * unitSize,
+  size_medium:  3 * unitSize,
+  size_large:   4 * unitSize
+});
+
+// Show the large icon
+m(icon, {
+  class: "app-icon",
+  type: "large"
+});
+~~~
+
+Likewise, to create a blue button, write:
+
+~~~javascript
+// app.js
+import { button } from "polythene-button";
+
+button.theme("blue-button", {
+  color_light_flat_normal_background: "#2196F3",
+  color_light_flat_normal_text: "#fff"
+  // note that we only need to list the properties that differ
+});
+
+// Show the blue button
+m(button, {
+  label: "Blue Button",
+  class: "blue-button"
+});
+~~~ 
+
+
+
+
+## Deriving components
+
+A deriving component - also Higher Order Component - is a wrapper that takes a component and returns a new component. The new component contains custom settings or behaviour.
+
+Let's say we want to create a flat, bordered secondary button:
+
+~~~javascript
+// secondary-button.js
+import m from "mithril";
+import { button } from "polythene-button";
+
+export const secondaryButton = {
+  view: vnode => m(button, {
+    class: "secondary-button",
+    borders: true,
+    ...vnode.attrs // pass on other options
+  })
+};
+~~~
+
+To set the style using variables, use the original component's `theme` function:
+
+~~~javascript
+button.theme("secondary-button", {
+  color_light_flat_normal_border: "#ddd",
+  color_light_flat_normal_background: "#fff"
+});
+~~~
+
+Or make the new component's `theme` function point to the original:
+
+~~~javascript
+export const secondaryButton = {
+  view: vnode => m(button, {
+    class: "secondary-button",
+    borders: true,
+    ...vnode.attrs
+  }),
+  theme: button.theme
+};
+
+secondaryButton.theme("secondary-button", {
+  color_light_flat_normal_border: "#ddd",
+  color_light_flat_normal_background: "#fff"
+});
+~~~
+
+Then use the new component:
+
+~~~javascript
+// app.js
+import { secondaryButton } from "./secondary-button";
+
+m(secondaryButton, {
+  label: "Help"
+});
+~~~
+
 
 
 ## Custom CSS
 
-Use this method to quickly enhance existing styles.
+Writing CSS gives you more options for styling, but requires some knowledge about the component's generated HTML structure. Component class names are documented in each README.
 
-### 1. Using CSS
+
+### 1. Using CSS styles
 
 You can load extra styles as a CSS file and attach that to the head, or use your bundler / module loader's preferred method.
-
-Component classes are documented in each README.
 
 All components have a `class` attribute. For example:
 
@@ -65,7 +215,7 @@ Polythene uses [j2c](http://j2c.py.gy) to write styles directly to the head of t
 }]
 ~~~
 
-`polythene-css` contains `styler` that takes the list of style objects to create CSS.
+`polythene-css` contains `styler` that takes the list of style objects to create the CSS.
 
 For example:
 
@@ -90,7 +240,7 @@ styler.add("app-buttons", buttonStyles);
 
 The first property passed to styler is the style element id.
 
-Note that using Javascript for styling makes it trivial to create your own mixins:
+Note that using Javascript for styling makes it very simple to create your own mixins:
 
 ~~~javascript
 const colors = {
@@ -115,33 +265,17 @@ styler.add("app-buttons", buttonStyles);
 ~~~
 
 
+### Writing CSS for deriving components
 
-## Deriving components
+Also deriving components can be styled with CSS.
 
-A deriving component - also Higher Order Component - is a wrapper that takes a component and returns a new component. The new component contains custom settings or behaviour.
-
-Let's say we want to create a flat, bordered secondary button:
-
-~~~javascript
-const secondaryButton = {
-  view: vnode => m(button, {
-    class: "secondary-button",
-    borders: true,
-    raised: false,
-    ...vnode.attrs
-  })
-};
-~~~
-
-To make this reusable, export this from a new component module and add the styles.
-
-Because the class list becomes:
+We only need to take care of the CSS specificity level; using the same "secondary-button" example, the generated component class list becomes:
 
 ~~~html
 class="pe-button pe-button--text pe-button--borders secondary-button"
 ~~~
 
-we need to include base class `pe-button` in the new style.
+So simply writing `.secondary-button {...}` won't work - we need to include base class `pe-button` in the new style to get the proper specificity level.
 
 ~~~javascript
 // secondary-button.js
@@ -161,7 +295,6 @@ export const secondaryButton = {
   view: vnode => m(button, {
     class: "secondary-button",
     borders: true,
-    raised: false,
     ...vnode.attrs
   })
 };
@@ -176,34 +309,21 @@ m(secondaryButton, {
 
 
 
-## Style variables
-
-Polythene components are styled with variables - comparable to variables in Sass or Less.
-
-Each component - at least the ones that are styled - contains a `vars` module that specifies measurements and colors. For example, Icon's `vars.js`:
-
-~~~javascript
-import { vars } from "polythene-theme";
-
-export default {
-  size_small:   vars.unit_icon_size_small,
-  size_regular: vars.unit_icon_size,
-  size_medium:  vars.unit_icon_size_medium,
-  size_large:   vars.unit_icon_size_large    
-};
-~~~
-
-The default values are specified in `polythene-core` and can be overridden in a custom theme module. That's what we will do next.
 
 
-### Custom theme file
 
-A theme module exports `vars` and `styles`:
 
-* `vars`: overrides the default values defined in `polythene-core`
-* `styles`: an object with a function for each component, that takes the component's variables and returns a list of styles
+## Custom theme file
 
-You can implement either one or both.
+Use this method to set global theme variables, such as the primary action color. Or to use the mechanism described at "Style variables" for multiple components at once.
+
+
+A theme file manages:
+
+1. Overrides of the global app variables
+1. Overrides of (multiple) component styles, in a similar way as described at "Style variables" above
+
+A theme module can implement either one or both.
 
 The skeleton module is:
 
@@ -215,30 +335,41 @@ export const vars = defaultVariables;
 export const styles = {};
 ~~~
 
-Let's say we wanted to:
-* change the app's unit size from 8px to 20px
-* set the app's primary color to orange
-* create larger icons
+
+### Setting the global primary color
+
+The variables module `polythene-core/src/variables.js` contains `color_primary`. We change it with:
 
 ~~~javascript
 // custom-theme.js
 import { defaultVariables } from "polythene-core";
 
-const grid_unit_component = 20;
-
 export const vars = {
-  ...defaultVariables,
-  grid_unit_component, // new base unit
-  color_primary: "255, 152, 0" // orange 500
+  ...defaultVariables
+  , color_primary: "255, 152, 0" // new base color: orange 500
 };
+export const styles = {}; // Keep component styles unchanged other than the primary color
+~~~
+
+
+### Setting the component style
+
+~~~javascript
+// custom-theme.js
+import { defaultVariables } from "polythene-core";
+
+export const vars = defaultVariables; // Keep global variables as-is
+
+const icon_unit_component = 20;
 
 export const styles = {
   icon: vars => {
     const newVars = {
-      size_small: grid_unit_component,
-      size_regular: 2 * grid_unit_component,
-      size_medium: 3 * grid_unit_component,
-      size_large: 4 * grid_unit_component
+      ...vars, // keep other variables
+      size_small:   1 * icon_unit_component,
+      size_regular: 2 * icon_unit_component,
+      size_medium:  3 * icon_unit_component,
+      size_large:   4 * icon_unit_component
     };
     return [
       { "": vars }, // default Polythene icon (keep this)
@@ -248,11 +379,10 @@ export const styles = {
 };
 ~~~
 
-Several notes to return values:
+Each component function takes a variable object and returns a list of style objects, where the key is the class name.
 
-* `""` - this is the default (unscoped) value; leave this out to remove Polythene's style altogether
-* `".my-icon"` - the styles will be applied to this class
-* Add custom scoping, for example: `".home .my-icon"`
+* "" is the default (unscoped) value; leave this out to remove Polythene's style altogether.
+* You can also add custom scoping, for example: `".home .my-icon"`
 
 
 
@@ -276,7 +406,7 @@ Use the [rollup-plugin-pathmodify](https://www.npmjs.com/package/rollup-plugin-p
     pathmodify({
       aliases: [{
         id: "polythene-theme",
-        resolveTo: process.cwd() + "/custom-theme.js"
+        resolveTo: __dirname + "/custom-theme.js"
       }]
     }),
   ]
@@ -307,5 +437,6 @@ map: {
   ...
 }
 ~~~
+
 
 

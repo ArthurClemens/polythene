@@ -88,6 +88,19 @@ exports[`test Option: content 1`] = `
 "
 `;
 
+exports[`test Option: disabled url -- dark theme 1`] = `
+"<div class=\"pe-list-tile pe-list-tile--disabled pe-dark-theme\">
+  <div class=\"pe-list-tile__primary\">
+    <div class=\"pe-list-tile__content\">
+      <div class=\"pe-list-tile__title\">
+        Ancillary Justice
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
 exports[`test Option: disabled url 1`] = `
 "<div class=\"pe-list-tile pe-list-tile--disabled\">
   <a href=\"#!/\" class=\"pe-list-tile__primary\">

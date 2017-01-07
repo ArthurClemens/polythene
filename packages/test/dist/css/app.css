@@ -36,7 +36,7 @@ body {
   display: none;
 }
 .flex-one {
-    flex: 1 0;
+  flex: 1 0;
 }
 .minh4 {
   min-height: 4rem;
@@ -55,7 +55,7 @@ body {
   height: 100px;
 }
 .interactive {
-  background-color: #d3eaf9;
+  background-color: #B3E5FC;
 }
 .header-row,
 .result-row {

@@ -4,4 +4,16 @@ import vars from "./vars";
 import layout from "./layout";
 // Does not contain any color styles
 
-styler.styleComponent("pe-shadow", "shadow", styles, vars, layout);
+const key = "shadow";
+const className = "pe-shadow";
+
+const styleComponent = (className, styles) =>
+  styler.styleComponent(className, styles, key, vars, layout);
+
+export const customTheme = (className, vars) =>
+  // Inject additional styles as use className as key
+  styleComponent(className, styler.addComponentStyle(
+    className, styles, key, vars
+  ));
+
+styleComponent(className, styles);
