@@ -171,8 +171,6 @@ var classes = {
 var view = function view(vnode) {
   var attrs = vnode.attrs;
   var children = vnode.children.length && vnode.children || attrs.children;
-  console.log("icon-button attrs.children", attrs.children);
-  console.log("icon-button children", children && children[0] ? children : null);
   var content = attrs.content ? attrs.content : children && children[0] ? children : attrs.icon ? m(icon, attrs.icon) : null;
   return m(button, _extends({}, {
     content: m("div", { class: classes.content }, content),

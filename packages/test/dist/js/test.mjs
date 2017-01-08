@@ -267,6 +267,11 @@ var tests = [{
 var component = button$1;
 
 var tests$1 = [{
+  name: "Child node",
+  component: component,
+  attrs: {},
+  children: ["Child"]
+}, {
   name: "Option: label",
   component: component,
   attrs: {
@@ -278,11 +283,6 @@ var tests$1 = [{
   attrs: {
     content: m("div", "Content")
   }
-}, {
-  name: "Child node",
-  component: component,
-  attrs: {},
-  children: ["Child"]
 }, {
   name: "Option: raised",
   component: component,
@@ -504,6 +504,11 @@ var m$2 = m;
 var alarmAdd = m$2.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3V9z"/></svg>');
 
 var tests$2 = [{
+  name: "Child node",
+  component: fab$1,
+  attrs: null,
+  children: m(icon$1, { msvg: alarmAdd })
+}, {
   name: "Option: icon",
   component: fab$1,
   attrs: {
@@ -511,11 +516,6 @@ var tests$2 = [{
       msvg: alarmAdd
     }
   }
-}, {
-  name: "Child node",
-  component: fab$1,
-  attrs: null,
-  children: m(icon$1, { msvg: alarmAdd })
 }, {
   name: "Option: content",
   component: fab$1,
@@ -628,6 +628,11 @@ var stars = m$3.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height
 var trustedSvg = m.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>");
 
 var tests$3 = [{
+  name: "Child node (svg children mmsvg)",
+  component: icon$1,
+  attrs: null,
+  children: m(svg$1, [stars])
+}, {
   name: "Option: content",
   component: icon$1,
   attrs: {
@@ -649,11 +654,6 @@ var tests$3 = [{
       content: stars
     }
   }
-}, {
-  name: "Child node (svg children mmsvg)",
-  component: icon$1,
-  attrs: null,
-  children: m(svg$1, [stars])
 }, {
   name: "Option: msvg",
   component: icon$1,
@@ -934,6 +934,19 @@ var listTileAli = m(listTile$1, {
 });
 
 var tests$5 = [{
+  name: "Child nodes",
+  component: list$1,
+  attrs: {
+    borders: true
+  },
+  children: [m(listTile$1, {
+    title: "Jennifer Barker",
+    subtitle: "Starting post doc"
+  }), m(listTile$1, {
+    title: "Ali Connors",
+    subtitle: "Brunch this weekend?"
+  })]
+}, {
   name: "Option: header",
   component: list$1,
   attrs: {
@@ -954,19 +967,6 @@ var tests$5 = [{
       subtitle: "Brunch this weekend?"
     })]
   }
-}, {
-  name: "Child nodes",
-  component: list$1,
-  attrs: {
-    borders: true
-  },
-  children: [m(listTile$1, {
-    title: "Jennifer Barker",
-    subtitle: "Starting post doc"
-  }), m(listTile$1, {
-    title: "Ali Connors",
-    subtitle: "Brunch this weekend?"
-  })]
 }, {
   name: "Options: tiles, indent, indentedBorders",
   component: list$1,
@@ -1146,6 +1146,11 @@ var tests$5 = [{
 }];
 
 var tests$6 = [{
+  name: "Child node",
+  component: listTile$1,
+  attrs: null,
+  children: m(icon$1, { msvg: stars })
+}, {
   name: "Option: title",
   component: listTile$1,
   attrs: {
@@ -1158,11 +1163,6 @@ var tests$6 = [{
     title: "Ancillary Justice",
     content: m(icon$1, { msvg: stars })
   }
-}, {
-  name: "Child node",
-  component: listTile$1,
-  attrs: null,
-  children: m(icon$1, { msvg: stars })
 }, {
   name: "Option: subtitle",
   component: listTile$1,
@@ -1553,16 +1553,16 @@ var tests$7 = [{
 var component$2 = shadow$1;
 
 var tests$8 = [{
+  name: "Child node",
+  component: component$2,
+  attrs: {},
+  children: ["Child"]
+}, {
   name: "Option: content",
   component: component$2,
   attrs: {
     content: "Content"
   }
-}, {
-  name: "Child node",
-  component: component$2,
-  attrs: {},
-  children: ["Child"]
 }, {
   name: "Add to a Mithril element",
   component: {
@@ -1676,16 +1676,16 @@ var tests$9 = [{
   attrs: null,
   children: [trustedSvg$1]
 }, {
+  name: "Child node (mmsvg)",
+  component: component$3,
+  attrs: null,
+  children: [stars]
+}, {
   name: "Option: content (trusted svg)",
   component: component$3,
   attrs: {
     content: trustedSvg$1
   }
-}, {
-  name: "Child node (mmsvg)",
-  component: component$3,
-  attrs: null,
-  children: [stars]
 }, {
   name: "Option: content (mmsvg)",
   component: component$3,

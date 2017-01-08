@@ -141,7 +141,6 @@ var classes = {
 var view = function view(vnode) {
   var attrs = vnode.attrs;
   var children = vnode.children.length && vnode.children || attrs.children;
-  console.log("fab children", children && children[0] ? children : null);
   return m(iconButton, _extends({}, {
     parentClass: [classes.component, attrs.mini ? classes.mini : null].join(" "),
     // defaults

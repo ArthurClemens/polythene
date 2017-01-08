@@ -12,8 +12,6 @@ const classes = {
 const view = vnode => {
   const attrs = vnode.attrs;
   const children = vnode.children.length && vnode.children || attrs.children;
-  console.log("icon-button attrs.children", attrs.children);
-  console.log("icon-button children", children && children[0] ? children : null);
   const content = attrs.content
     ? attrs.content
     : children && children[0]

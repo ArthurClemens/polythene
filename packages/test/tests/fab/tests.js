@@ -35,7 +35,7 @@ export const tests = [
         msvg: iconAlarm
       },
       style: {
-        color: "yellow"
+        color: "#333"
       }
     }
   },
