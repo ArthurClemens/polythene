@@ -7,7 +7,7 @@ Polythene is now a monorepo with an npm package for each component. The module i
 ### v0.2
 
 ```javascript
-import btn from "polythene/button/button";
+import button from "polythene/button/button";
 ```
 
 ### v1.x
@@ -36,7 +36,7 @@ const myBtn = m(button, {});
 
 ## Package restructuring
 
-Some modules have been renamed or moved.
+### Renamed or moved components or code
 
 v0.2                             |  v1.0
 -------------------------------- | ----------------
@@ -49,7 +49,15 @@ v0.2                             |  v1.0
 
 
 
-## Component options
+### New components
+
+| v1.0
+| -------------------------------- |
+| `polythene-raised-button`        |
+
+
+
+## General component options
 
 ### Option `tag`
 
@@ -70,6 +78,8 @@ const myBtn = m(button, {
   element: "button"
 });
 ```
+
+
 
 ### Option `url`
 
@@ -96,6 +106,8 @@ const myBtn = m(button, {
   }
 });
 ```
+
+
 
 ### Options for setting child content
 
@@ -126,8 +138,6 @@ const myListTile2 = m(listTile, {}, "My content");
 
 
 
-
-
 ## Component specific changes
 
 ### Button
@@ -143,13 +153,88 @@ When a button has focus and the ENTER key is pressed, `onclick` is called.
 The `onclick` function of the `events` option (if any) is called.
 
 
+
+### Button "raised" has become Raised Button
+
+The raised button state has moved to its own component.
+
+#### v0.2
+
+```javascript
+import button from "polythene/button/button";
+
+const myButton = m(button, {
+  label: "Label",
+  raised: true
+});
+```
+
+#### v1.x
+
+```javascript
+import { raisedButton } from "polythene-raised-button";
+
+const myButton = m(raisedButton, {
+  label: "Label"
+});
+```
+
+
+
+### FAB
+
+FAB is now composed from `polythene-raised-button`.
+
+
+
 ### Icon Button
 
 CSS class `pe-button__label` has been replaced with `pe-button--icon__content`.
+
+(Undocumented) option `raised` no longer works; use FAB instead, or add a shadow component.
+
 
 
 ### SVG
 
 Dynamic loading and preloading have been removed, as these are not frequent use cases.
- 
+
+
+
+## Theming
+
+An extra, simpler way to theme components has been introduced. See polythene-theme's README for details.
+
+Example:
+
+~~~javascript
+import { button } from "polythene-button";
+
+button.theme("blue-button", {
+  color_light_normal_background: "blue",
+  color_light_normal_text: "white"
+});
+
+m(button, {
+  label: "Blue Button",
+  class: "blue-button"
+});
+~~~ 
+
+
+
+### Variables
+
+Some of the component style variables (named "config" in v0.2) have been renamed. 
+
+For instance:
+
+|  v0.2                                |  v1.0                    |
+| ------------------------------------ | ------------------------ |
+| `color_light_flat_normal_background` | `color_light_background` |
+
+* Button: variable parts "flat" and "raised" are removed, as well as "normal"
+* Icon Button: variable part "normal" is removed
+
+
 

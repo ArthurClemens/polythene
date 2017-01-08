@@ -11,10 +11,10 @@ export const styles = {
   button: vars => {
     const primaryButtonVars = {
       ...vars,
-      border_radius: 0,
-      text_transform: "none",
-      color_light_flat_normal_background: "#673ab7",
-      color_light_flat_normal_text: "#fff"
+      border_radius:          0,
+      text_transform:         "none",
+      color_light_background: "#673ab7",
+      color_light_text:       "#fff"
     };
     return [
       {

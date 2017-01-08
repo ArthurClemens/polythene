@@ -1,18 +1,12 @@
 import m from "mithril";
-import { button as component } from "polythene-button";
+import { raisedButton as component } from "polythene-raised-button";
 
-component.theme("test-button-themed-button", {
+component.theme("themed-button", {
   color_light_background: "#2196F3",
   color_light_text: "#fff"
 });
 
 export const tests = [
-  {
-    name: "Child node",
-    component,
-    attrs: {},
-    children: ["Child"]
-  },
   {
     name: "Option: label",
     component,
@@ -28,12 +22,25 @@ export const tests = [
     }
   },
   {
-    name: "Option: borders",
+    name: "Child node",
+    component,
+    attrs: {},
+    children: ["Child"]
+  },
+  {
+    name: "Option: raised (with option z: 2)",
     component,
     attrs: {
-      label: "Borders",
-      class: "bordered-button",
-      borders: true
+      label: "Raised to 2",
+      z: 2
+    }
+  },
+  {
+    name: "Option: raised (with option z: 5)",
+    component,
+    attrs: {
+      label: "Raised to 5",
+      z: 5
     }
   },
   {
@@ -41,7 +48,16 @@ export const tests = [
     component,
     attrs: {
       label: "Themed button",
-      class: "test-button-themed-button"
+      class: "themed-button"
+    }
+  },
+  {
+    name: "Themed button (with option disabled)",
+    component,
+    attrs: {
+      label: "Disabled themed button",
+      class: "themed-button",
+      disabled: true
     }
   },
   {
@@ -89,14 +105,6 @@ export const tests = [
     }
   },
   {
-    name: "Option: formaction",
-    component,
-    attrs: {
-      label: "Form action",
-      formaction: "http://polythene.js.org"
-    }
-  },
-  {
     name: "Option: url (with oncreate)",
     interactive: true,
     component,
@@ -106,32 +114,6 @@ export const tests = [
         href: "/shadow",
         oncreate: m.route.link
       }
-    }
-  },
-  {
-    name: "Option: url (without oncreate)",
-    interactive: true,
-    component,
-    attrs: {
-      label: "Go to /shadow",
-      url: {
-        href: "/shadow"
-      }
-    }
-  },
-  {
-    name: "onbeforeupdate",
-    interactive: true,
-    component: {
-      oninit: vnode =>
-        vnode.state.updated = 0,
-      view: vnode => [
-        m("div", `Updated: ${vnode.state.updated}`),
-        m(component, {
-          label: "Button",
-          onbeforeupdate: () => vnode.state.updated++
-        })
-      ]
     }
   },
   {
@@ -146,23 +128,6 @@ export const tests = [
           label: "Button",
           events: {
             onclick: () => vnode.state.clicked++
-          }
-        })
-      ]
-    }
-  },
-  {
-    name: "Key down (after having focus) results in click",
-    interactive: true,
-    component: {
-      oninit: vnode =>
-        vnode.state.clickCount = 0,
-      view: vnode => [
-        m("div", `onclick called: ${vnode.state.clickCount}`),
-        m(component, {
-          label: "Button",
-          events: {
-            onclick: () => vnode.state.clickCount++
           }
         })
       ]
@@ -187,12 +152,12 @@ export const tests = [
     }
   },
   {
-    name: "Option: inactivate (2)",
+    name: "Option: animateOnTap (false)",
     interactive: true,
     component,
     attrs: {
-      label: "Inactivated for 2s",
-      inactivate: 2
+      label: "No animate",
+      animateOnTap: false
     }
   },
 

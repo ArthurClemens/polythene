@@ -24,8 +24,7 @@ export const tests = [
     name: "Button",
     component: polythene.button,
     attrs: {
-      label: "Button",
-      raised: true
+      label: "Button"
     }
   },
   {
@@ -34,6 +33,21 @@ export const tests = [
     attrs: {
       class: "blue-button", // theme + class name set in theme tests
       label: "Button"
+    }
+  },
+  {
+    name: "Raised button",
+    component: polythene.raisedButton,
+    attrs: {
+      label: "Raised button"
+    }
+  },
+  {
+    name: "Raised button (theme: blue)",
+    component: polythene.raisedButton,
+    attrs: {
+      class: "blue-button", // theme + class name set in theme tests
+      label: "Raised button"
     }
   },
   {

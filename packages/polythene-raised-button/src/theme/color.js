@@ -59,18 +59,18 @@ const noTouch = (componentVars, tint, type, scope = "") => {
 };
 
 const createStyles = componentVars => [
-  style(componentVars, "light"),
+  style(componentVars, "light", ".pe-button--raised"),
   {
+    "html.pe-no-touch": [
+      noTouch(componentVars, "light", " .pe-button--raised")
+    ]
+  }, {
     ".pe-dark-theme": [
-      // inside dark theme
-      style(componentVars, "dark", " "),
-      // has dark theme
-      style(componentVars, "dark", "&")
+      style(componentVars, "dark", " .pe-button--raised")
     ]
   }, {
     "html.pe-no-touch .pe-dark-theme": [
-      noTouch(componentVars, "dark", " "),
-      noTouch(componentVars, "dark", "&")
+      noTouch(componentVars, "dark", " .pe-button--raised")
     ]
   }
 ];

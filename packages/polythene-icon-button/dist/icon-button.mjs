@@ -43,15 +43,15 @@ var vars$1 = _extends({}, buttonVars, {
   color_background: "none", // only specify this variable to get all 2 states
   // theme specific background colors may be set in theme; disabled by default
   // color_light_background: "none",
-  // color_dark_background: "none",
+  // color_dark_background:  "none",
 
   color_light_wash_opacity: vars.blend_light_background_hover_medium,
   color_light_focus_opacity: vars.blend_light_background_hover_medium,
-  color_light_flat_normal_text: vars.rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
+  color_light_text: vars.rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
 
   color_dark_wash_opacity: vars.blend_dark_background_hover_medium,
   color_dark_focus_opacity: vars.blend_dark_background_hover_medium,
-  color_dark_flat_normal_text: vars.rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary)
+  color_dark_text: vars.rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary)
 });
 
 var createStyles = function createStyles(componentVars) {
@@ -84,10 +84,10 @@ var layout = (function (componentVars) {
   return mixin.createStyles(componentVars, createStyles);
 });
 
-var style = function style(componentVars, tint, type) {
-  var scope = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
+var style = function style(componentVars, tint) {
+  var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
   return [defineProperty({}, scope + ".pe-button.pe-button--icon, a.pe-button.pe-button--icon", {
-    color: componentVars["color_" + tint + "_" + type + "_normal_text"],
+    color: componentVars["color_" + tint + "_text"],
     "background-color": componentVars["color_" + tint + "_background"] || componentVars["color_background"],
 
     " .pe-button__wash": {
@@ -102,43 +102,35 @@ var style = function style(componentVars, tint, type) {
     },
 
     "&.pe-button--disabled": {
-      color: componentVars["color_" + tint + "_" + type + "_disabled_text"]
-    },
-
-    "&.pe-button--raised": {
-      "background-color": componentVars["color_" + tint + "_background"],
-
-      " .pe-button__content": {
-        background: "transparent"
-      }
+      color: componentVars["color_" + tint + "_disabled_text"]
     }
   })];
 };
 
-var noTouch = function noTouch(componentVars, tint, type) {
-  var scope = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
+var noTouch = function noTouch(componentVars, tint) {
+  var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
   return [defineProperty({}, scope + ".pe-button.pe-button--icon:hover", tint === "light" ? {
     " .pe-button__wash": {
       "background-color": "currentcolor"
     }
   } : {
     " .pe-button__wash": {
-      "background-color": componentVars["color_" + tint + "_" + type + "_normal_text"]
+      "background-color": componentVars["color_" + tint + "_text"]
     }
   })];
 };
 
 var createStyles$1 = function createStyles(componentVars) {
-  return [style(componentVars, "light", "flat"), {
-    "html.pe-no-touch": [noTouch(componentVars, "light", "flat", " ")]
+  return [style(componentVars, "light"), {
+    "html.pe-no-touch": [noTouch(componentVars, "light", " ")]
   }, {
     ".pe-dark-theme": [
     // inside dark theme
-    style(componentVars, "dark", "flat", " "),
+    style(componentVars, "dark", " "),
     // has dark theme
-    style(componentVars, "dark", "flat", "&")]
+    style(componentVars, "dark", "&")]
   }, {
-    "html.pe-no-touch .pe-dark-theme": [noTouch(componentVars, "dark", "flat", " ")]
+    "html.pe-no-touch .pe-dark-theme": [noTouch(componentVars, "dark", " ")]
   }];
 };
 

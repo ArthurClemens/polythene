@@ -42,15 +42,16 @@ export const tests = [
     }
   },
   {
-    name: "Option: raised and animateOnTap",
+    name: "Option: ripple (center)",
     interactive: true,
     component,
     attrs: {
       icon: {
         msvg: iconFavorite
       },
-      raised: true,
-      animateOnTap: true
+      ripple: {
+        center: true
+      }
     }
   },
   {

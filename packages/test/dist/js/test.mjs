@@ -2,9 +2,9 @@ import m from 'mithril';
 import 'polythene-fastclick';
 import 'polythene-material-design';
 import webfont from 'webfontloader';
-import { button, fab, icon, iconButton, list, listTile, ripple, shadow, styler, svg } from 'polythene';
+import { button, fab, icon, iconButton, list, listTile, raisedButton, ripple, shadow, styler, svg } from 'polythene';
 import * as polythene from 'polythene';
-import { flex, styler as styler$1 } from 'polythene-css';
+import { flex, mixin, styler as styler$1 } from 'polythene-css';
 import { button as button$1 } from 'polythene-button';
 import { fab as fab$1 } from 'polythene-fab';
 import { icon as icon$1 } from 'polythene-icon';
@@ -12,8 +12,10 @@ import { svg as svg$1 } from 'polythene-svg';
 import { iconButton as iconButton$1 } from 'polythene-icon-button';
 import { list as list$1 } from 'polythene-list';
 import { listTile as listTile$1 } from 'polythene-list-tile';
-import { ripple as ripple$1 } from 'polythene-ripple';
 import { shadow as shadow$1 } from 'polythene-shadow';
+import { isTouch, subscribe, touchEndEvent, touchStartEvent } from 'polythene-core';
+import { styles, vars } from 'polythene-theme';
+import { ripple as ripple$1 } from 'polythene-ripple';
 import 'polythene-css-classes';
 
 /* globals tidy_html5 */
@@ -67,7 +69,7 @@ var rules = {
 
 var blockSize = 40;
 
-var styles = [{
+var styles$1 = [{
   " .block": {
     "min-width": blockSize + "px",
     "min-height": blockSize + "px",
@@ -104,7 +106,7 @@ var rocket = m$1.trust('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="htt
 
 var SVG = m.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z\"/></svg>");
 
-styler.add("polythene-css-classes", styles);
+styler.add("polythene-css-classes", styles$1);
 
 // Testing the web font loader that we use to load Roboto
 webfont.load({
@@ -121,8 +123,7 @@ var tests = [{
   name: "Button",
   component: button,
   attrs: {
-    label: "Button",
-    raised: true
+    label: "Button"
   }
 }, {
   name: "Button (theme: blue)",
@@ -130,6 +131,19 @@ var tests = [{
   attrs: {
     class: "blue-button", // theme + class name set in theme tests
     label: "Button"
+  }
+}, {
+  name: "Raised button",
+  component: raisedButton,
+  attrs: {
+    label: "Raised button"
+  }
+}, {
+  name: "Raised button (theme: blue)",
+  component: raisedButton,
+  attrs: {
+    class: "blue-button", // theme + class name set in theme tests
+    label: "Raised button"
   }
 }, {
   name: "FAB",
@@ -264,52 +278,47 @@ var tests = [{
   }
 }];
 
-var component = button$1;
+button$1.theme("themed-button", {
+  color_light_background: "#2196F3",
+  color_light_text: "#fff"
+});
 
 var tests$1 = [{
   name: "Child node",
-  component: component,
+  component: button$1,
   attrs: {},
   children: ["Child"]
 }, {
   name: "Option: label",
-  component: component,
+  component: button$1,
   attrs: {
     label: "Label"
   }
 }, {
   name: "Option: content",
-  component: component,
+  component: button$1,
   attrs: {
     content: m("div", "Content")
   }
 }, {
-  name: "Option: raised",
-  component: component,
-  attrs: {
-    label: "Raised",
-    raised: true
-  }
-}, {
-  name: "Option: raised (with option z: 5)",
-  component: component,
-  attrs: {
-    label: "Raised to 5",
-    raised: true,
-    z: 5
-  }
-}, {
   name: "Option: borders",
-  component: component,
+  component: button$1,
   attrs: {
     label: "Borders",
     class: "bordered-button",
     borders: true
   }
 }, {
+  name: "Themed button",
+  component: button$1,
+  attrs: {
+    label: "Themed button",
+    class: "themed-button"
+  }
+}, {
   name: "Option: wash (false)",
   interactive: true,
-  component: component,
+  component: button$1,
   attrs: {
     label: "No wash",
     wash: false
@@ -317,7 +326,7 @@ var tests$1 = [{
 }, {
   name: "Option: ink (false)",
   interactive: true,
-  component: component,
+  component: button$1,
   attrs: {
     label: "No ink",
     ink: false
@@ -325,7 +334,7 @@ var tests$1 = [{
 }, {
   name: "Option: disabled (true)",
   interactive: true,
-  component: component,
+  component: button$1,
   attrs: {
     label: "Disabled",
     disabled: true
@@ -333,21 +342,21 @@ var tests$1 = [{
 }, {
   name: "Option: disabled (false)",
   interactive: true,
-  component: component,
+  component: button$1,
   attrs: {
     label: "Not disabled",
     disabled: false
   }
 }, {
   name: "Option: selected",
-  component: component,
+  component: button$1,
   attrs: {
     label: "Selected",
     selected: true
   }
 }, {
   name: "Option: formaction",
-  component: component,
+  component: button$1,
   attrs: {
     label: "Form action",
     formaction: "http://polythene.js.org"
@@ -355,7 +364,7 @@ var tests$1 = [{
 }, {
   name: "Option: url (with oncreate)",
   interactive: true,
-  component: component,
+  component: button$1,
   attrs: {
     label: "Go to /#/shadow",
     url: {
@@ -366,7 +375,7 @@ var tests$1 = [{
 }, {
   name: "Option: url (without oncreate)",
   interactive: true,
-  component: component,
+  component: button$1,
   attrs: {
     label: "Go to /shadow",
     url: {
@@ -381,7 +390,7 @@ var tests$1 = [{
       return vnode.state.updated = 0;
     },
     view: function view(vnode) {
-      return [m("div", "Updated: " + vnode.state.updated), m(component, {
+      return [m("div", "Updated: " + vnode.state.updated), m(button$1, {
         label: "Button",
         onbeforeupdate: function onbeforeupdate() {
           return vnode.state.updated++;
@@ -397,7 +406,7 @@ var tests$1 = [{
       return vnode.state.clicked = 0;
     },
     view: function view(vnode) {
-      return [m("div", "onclick called: " + vnode.state.clicked), m(component, {
+      return [m("div", "onclick called: " + vnode.state.clicked), m(button$1, {
         label: "Button",
         events: {
           onclick: function onclick() {
@@ -415,7 +424,7 @@ var tests$1 = [{
       return vnode.state.clickCount = 0;
     },
     view: function view(vnode) {
-      return [m("div", "onclick called: " + vnode.state.clickCount), m(component, {
+      return [m("div", "onclick called: " + vnode.state.clickCount), m(button$1, {
         label: "Button",
         events: {
           onclick: function onclick() {
@@ -428,7 +437,7 @@ var tests$1 = [{
 }, {
   name: "Option: inactive (false)",
   interactive: true,
-  component: component,
+  component: button$1,
   attrs: {
     label: "Not inactive",
     inactive: false
@@ -436,7 +445,7 @@ var tests$1 = [{
 }, {
   name: "Option: inactive (true)",
   interactive: true,
-  component: component,
+  component: button$1,
   attrs: {
     label: "Inactive",
     inactive: true
@@ -444,56 +453,47 @@ var tests$1 = [{
 }, {
   name: "Option: inactivate (2)",
   interactive: true,
-  component: component,
+  component: button$1,
   attrs: {
     label: "Inactivated for 2s",
     inactivate: 2
-  }
-}, {
-  name: "Option: animateOnTap (false)",
-  interactive: true,
-  component: component,
-  attrs: {
-    label: "No animate",
-    raised: true,
-    animateOnTap: false
   }
 },
 
 // Common
 {
   name: "No options",
-  component: component,
+  component: button$1,
   attrs: null
 }, {
   name: "Option: id",
-  component: component,
+  component: button$1,
   attrs: {
     id: "id-x"
   }
 }, {
   name: "Option: class",
-  component: component,
+  component: button$1,
   attrs: {
     class: "class-x"
   }
 }, {
   name: "Option: element (button)",
-  component: component,
+  component: button$1,
   attrs: {
     label: "button element",
     element: "button"
   }
 }, {
   name: "Option: before",
-  component: component,
+  component: button$1,
   attrs: {
     label: "Button",
     before: m("span", "Before")
   }
 }, {
   name: "Option: after",
-  component: component,
+  component: button$1,
   attrs: {
     label: "Button",
     after: m("span", "After")
@@ -530,7 +530,7 @@ var tests$2 = [{
       msvg: alarmAdd
     },
     style: {
-      color: "yellow"
+      color: "#333"
     }
   }
 }, {
@@ -795,15 +795,16 @@ var tests$4 = [{
     compact: true
   }
 }, {
-  name: "Option: raised and animateOnTap",
+  name: "Option: ripple (center)",
   interactive: true,
   component: iconButton$1,
   attrs: {
     icon: {
       msvg: favoriteBorder
     },
-    raised: true,
-    animateOnTap: true
+    ripple: {
+      center: true
+    }
   }
 }, {
   name: "Option: url",
@@ -1433,47 +1434,480 @@ var tests$6 = [{
   }
 }];
 
-var component$1 = ripple$1;
+var rgba = vars.rgba;
+
+var vars$1 = {
+  color_light_background: "#E0E0E0",
+  color_light_text: rgba(vars.color_light_foreground, vars.blend_light_text_primary),
+  color_light_hover_background: "transparent",
+  color_light_focus_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
+  color_light_active_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover), // same as hover
+  color_light_disabled_background: rgba(vars.color_light_foreground, vars.blend_light_background_disabled),
+  color_light_disabled_text: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
+
+  color_dark_background: rgba(vars.color_primary),
+  color_dark_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
+  color_dark_hover_background: vars.color_primary_active,
+  color_dark_focus_background: vars.color_primary_active,
+  color_dark_active_background: vars.color_primary_dark,
+  color_dark_disabled_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_disabled),
+  color_dark_disabled_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled)
+};
+
+var defineProperty = function defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+};
+
+var _extends = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];
+
+    for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }
+
+  return target;
+};
+
+var style = function style(componentVars, tint) {
+  var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
+
+  var normalBorder = componentVars["color_" + tint + "_border"] || "transparent";
+  var activeBorder = componentVars["color_" + tint + "_active_border"] || normalBorder;
+  var disabledBorder = componentVars["color_" + tint + "_disabled_border"] || normalBorder;
+  return [defineProperty({}, scope + ".pe-button", {
+    "&, &:link, &:visited": {
+      color: componentVars["color_" + tint + "_text"]
+    },
+
+    " .pe-button__content": {
+      "background-color": componentVars["color_" + tint + "_background"],
+      "border-color": normalBorder
+    },
+
+    "&.pe-button--disabled": {
+      color: componentVars["color_" + tint + "_disabled_text"],
+
+      " .pe-button__content": {
+        "background-color": componentVars["color_" + tint + "_disabled_background"],
+        "border-color": disabledBorder
+      }
+    },
+
+    "&.pe-button--selected": {
+      " .pe-button__content": {
+        "background-color": componentVars["color_" + tint + "_active_background"],
+        "border-color": activeBorder
+      },
+      " .pe-button__focus": {
+        opacity: 1,
+        "background-color": componentVars["color_" + tint + "_focus_background"]
+      }
+    },
+
+    "&.pe-button--focus": {
+      " .pe-button__focus": {
+        opacity: 1,
+        "background-color": componentVars["color_" + tint + "_focus_background"]
+      }
+    }
+  })];
+};
+
+var noTouch = function noTouch(componentVars, tint, type) {
+  var scope = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
+
+  var normalBorder = componentVars["color_" + tint + "_border"];
+  var hoverBorder = componentVars["color_" + tint + "_border"] || normalBorder;
+  return [defineProperty({}, scope + ".pe-button:hover", {
+    "&:not(.pe-button--selected):not(.pe-button--inactive) .pe-button__wash": {
+      "background-color": componentVars["color_" + tint + "_hover_background"],
+      "border-color": hoverBorder
+    }
+  })];
+};
+
+var createStyles = function createStyles(componentVars) {
+  return [style(componentVars, "light", ".pe-button--raised"), {
+    "html.pe-no-touch": [noTouch(componentVars, "light", " .pe-button--raised")]
+  }, {
+    ".pe-dark-theme": [style(componentVars, "dark", " .pe-button--raised")]
+  }, {
+    "html.pe-no-touch .pe-dark-theme": [noTouch(componentVars, "dark", " .pe-button--raised")]
+  }];
+};
+
+var color = function color(componentVars) {
+  return mixin.createStyles(componentVars, createStyles);
+};
+
+// No layout
+var key = "raised-button";
+var className = "pe-button--raised";
+
+var styleComponent = function styleComponent(className, styles$$1) {
+  return styler$1.styleComponent(className, styles$$1, key, vars$1, color);
+};
+
+var customTheme = function customTheme(className, vars$$1) {
+  return (
+    // Inject additional styles as use className as key
+    styleComponent(className, styler$1.addComponentStyle(className, styles, key, vars$$1))
+  );
+};
+
+styleComponent(className, styles);
+
+var classes = {
+  component: "pe-button pe-button--text pe-button--raised"
+};
+
+var MAX_Z = 5;
+
+var tapStart = void 0;
+var tapEndAll = function tapEndAll() {};
+var downButtons = [];
+
+subscribe(touchEndEvent, function () {
+  return tapEndAll();
+});
+
+var animateZ = function animateZ(state, attrs, name) {
+  var zBase = state.zBase;
+  var increase = attrs.increase || 1;
+  var z = state.z;
+  if (name === "down" && zBase !== 5) {
+    z = Math.min(z + increase, MAX_Z);
+  } else if (name === "up") {
+    z = Math.max(z - increase, zBase);
+  }
+  if (z !== state.z) {
+    state.z = z;
+    m.redraw(); // show shadow animation
+  }
+};
+
+var inactivate = function inactivate(state, attrs) {
+  state.inactive = true;
+  m.redraw();
+  setTimeout(function () {
+    state.inactive = false;
+    m.redraw();
+  }, attrs.inactivate * 1000);
+};
+
+var initTapEvents = function initTapEvents(el, state, attrs) {
+  var tapHandler = function tapHandler(state, attrs, name) {
+    if (name === "down") {
+      downButtons.push({
+        state: state,
+        attrs: attrs
+      });
+    } else if (name === "up") {
+      if (attrs.inactivate && !state.inactive) {
+        inactivate(state, attrs);
+      }
+    }
+    // no z animation on touch
+    var animateOnTap = attrs.animateOnTap !== false ? true : false;
+    if (animateOnTap && !isTouch) {
+      animateZ(state, attrs, name);
+    }
+  };
+  tapStart = function tapStart() {
+    return tapHandler(state, attrs, "down");
+  };
+  tapEndAll = function tapEndAll() {
+    downButtons.map(function (btn) {
+      tapHandler(btn.state, btn.attrs, "up");
+    });
+    downButtons = [];
+  };
+  el.addEventListener(touchStartEvent, tapStart);
+};
+
+var clearTapEvents = function clearTapEvents(el) {
+  el.removeEventListener(touchStartEvent, tapStart);
+};
+
+var view = function view(vnode) {
+  var attrs = vnode.attrs;
+  var state = vnode.state;
+  var children = vnode.children.length && vnode.children || attrs.children;
+  return m(button$1, _extends({}, {
+    parentClass: [attrs.parentClass || classes.component].join(" "),
+    animateOnTap: false,
+    shadowComponent: m(shadow$1, { z: state.z, animated: true }),
+    children: children
+  }, attrs));
+};
+
+var raisedButton$1 = {
+  theme: customTheme, // accepts (className, vars)
+  oninit: function oninit(vnode) {
+    var z = vnode.attrs.z !== undefined ? vnode.attrs.z : 1;
+    vnode.state = {
+      el: undefined,
+      zBase: z,
+      z: z,
+      tapEventsInited: false
+    };
+  },
+  oncreate: function oncreate(vnode) {
+    if (!vnode.attrs.disabled && !vnode.state.inactive && !vnode.state.tapEventsInited) {
+      vnode.state.el = vnode.dom;
+      initTapEvents(vnode.dom, vnode.state, vnode.attrs);
+      vnode.state.tapEventsInited = true;
+    }
+  },
+  onremove: function onremove(vnode) {
+    if (vnode.state.tapEventsInited) {
+      clearTapEvents(vnode.dom);
+    }
+  },
+  view: view
+};
+
+raisedButton$1.theme("themed-button", {
+  color_light_background: "#2196F3",
+  color_light_text: "#fff"
+});
 
 var tests$7 = [{
+  name: "Option: label",
+  component: raisedButton$1,
+  attrs: {
+    label: "Label"
+  }
+}, {
+  name: "Option: content",
+  component: raisedButton$1,
+  attrs: {
+    content: m("div", "Content")
+  }
+}, {
+  name: "Child node",
+  component: raisedButton$1,
+  attrs: {},
+  children: ["Child"]
+}, {
+  name: "Option: raised (with option z: 2)",
+  component: raisedButton$1,
+  attrs: {
+    label: "Raised to 2",
+    z: 2
+  }
+}, {
+  name: "Option: raised (with option z: 5)",
+  component: raisedButton$1,
+  attrs: {
+    label: "Raised to 5",
+    z: 5
+  }
+}, {
+  name: "Themed button",
+  component: raisedButton$1,
+  attrs: {
+    label: "Themed button",
+    class: "themed-button"
+  }
+}, {
+  name: "Themed button (with option disabled)",
+  component: raisedButton$1,
+  attrs: {
+    label: "Disabled themed button",
+    class: "themed-button",
+    disabled: true
+  }
+}, {
+  name: "Option: wash (false)",
+  interactive: true,
+  component: raisedButton$1,
+  attrs: {
+    label: "No wash",
+    wash: false
+  }
+}, {
+  name: "Option: ink (false)",
+  interactive: true,
+  component: raisedButton$1,
+  attrs: {
+    label: "No ink",
+    ink: false
+  }
+}, {
+  name: "Option: disabled (true)",
+  interactive: true,
+  component: raisedButton$1,
+  attrs: {
+    label: "Disabled",
+    disabled: true
+  }
+}, {
+  name: "Option: disabled (false)",
+  interactive: true,
+  component: raisedButton$1,
+  attrs: {
+    label: "Not disabled",
+    disabled: false
+  }
+}, {
+  name: "Option: selected",
+  component: raisedButton$1,
+  attrs: {
+    label: "Selected",
+    selected: true
+  }
+}, {
+  name: "Option: url (with oncreate)",
+  interactive: true,
+  component: raisedButton$1,
+  attrs: {
+    label: "Go to /#/shadow",
+    url: {
+      href: "/shadow",
+      oncreate: m.route.link
+    }
+  }
+}, {
+  name: "Option: events (onclick)",
+  interactive: true,
+  component: {
+    oninit: function oninit(vnode) {
+      return vnode.state.clicked = 0;
+    },
+    view: function view(vnode) {
+      return [m("div", "onclick called: " + vnode.state.clicked), m(raisedButton$1, {
+        label: "Button",
+        events: {
+          onclick: function onclick() {
+            return vnode.state.clicked++;
+          }
+        }
+      })];
+    }
+  }
+}, {
+  name: "Option: inactive (false)",
+  interactive: true,
+  component: raisedButton$1,
+  attrs: {
+    label: "Not inactive",
+    inactive: false
+  }
+}, {
+  name: "Option: inactive (true)",
+  interactive: true,
+  component: raisedButton$1,
+  attrs: {
+    label: "Inactive",
+    inactive: true
+  }
+}, {
+  name: "Option: animateOnTap (false)",
+  interactive: true,
+  component: raisedButton$1,
+  attrs: {
+    label: "No animate",
+    animateOnTap: false
+  }
+},
+
+// Common
+{
+  name: "No options",
+  component: raisedButton$1,
+  attrs: null
+}, {
+  name: "Option: id",
+  component: raisedButton$1,
+  attrs: {
+    id: "id-x"
+  }
+}, {
+  name: "Option: class",
+  component: raisedButton$1,
+  attrs: {
+    class: "class-x"
+  }
+}, {
+  name: "Option: element (button)",
+  component: raisedButton$1,
+  attrs: {
+    label: "button element",
+    element: "button"
+  }
+}, {
+  name: "Option: before",
+  component: raisedButton$1,
+  attrs: {
+    label: "Button",
+    before: m("span", "Before")
+  }
+}, {
+  name: "Option: after",
+  component: raisedButton$1,
+  attrs: {
+    label: "Button",
+    after: m("span", "After")
+  }
+}];
+
+var component = ripple$1;
+
+var tests$8 = [{
   name: "Option: constrained (true)",
   interactive: true,
-  component: component$1,
+  component: component,
   attrs: {
     constrained: true
   }
 }, {
   name: "Option: constrained (false)",
   interactive: true,
-  component: component$1,
+  component: component,
   attrs: {
     constrained: false
   }
 }, {
   name: "Option: center",
   interactive: true,
-  component: component$1,
+  component: component,
   attrs: {
     center: true
   }
 }, {
   name: "Option: initial opacity (0.5)",
   interactive: true,
-  component: component$1,
+  component: component,
   attrs: {
     initialOpacity: 0.5
   }
 }, {
   name: "Option: initial opacityDecayVelocity (0.1)",
   interactive: true,
-  component: component$1,
+  component: component,
   attrs: {
     opacityDecayVelocity: 0.1
   }
 }, {
   name: "Option: disabled",
   interactive: true,
-  component: component$1,
+  component: component,
   attrs: {
     disabled: true
   }
@@ -1488,7 +1922,7 @@ var tests$7 = [{
           width: "100px",
           height: "100px"
         }
-      }, m(component$1));
+      }, m(component));
     }
   }
 }, {
@@ -1499,7 +1933,7 @@ var tests$7 = [{
       return vnode.state.started = 0;
     },
     view: function view(vnode) {
-      return [m(component$1, {
+      return [m(component, {
         before: m("div", "start called: " + vnode.state.started),
         start: function start() {
           return vnode.state.started++, m.redraw();
@@ -1515,7 +1949,7 @@ var tests$7 = [{
       return vnode.state.ended = 0;
     },
     view: function view(vnode) {
-      return [m(component$1, {
+      return [m(component, {
         before: m("div", "end called: " + vnode.state.ended),
         end: function end() {
           return vnode.state.ended++, m.redraw();
@@ -1528,38 +1962,38 @@ var tests$7 = [{
 // Common
 {
   name: "No options",
-  component: component$1,
+  component: component,
   attrs: null
 }, {
   name: "Option: id",
-  component: component$1,
+  component: component,
   attrs: {
     id: "id-x"
   }
 }, {
   name: "Option: class",
-  component: component$1,
+  component: component,
   attrs: {
     class: "class-x"
   }
 }, {
   name: "Option: element",
-  component: component$1,
+  component: component,
   attrs: {
     element: "a"
   }
 }];
 
-var component$2 = shadow$1;
+var component$1 = shadow$1;
 
-var tests$8 = [{
+var tests$9 = [{
   name: "Child node",
-  component: component$2,
+  component: component$1,
   attrs: {},
   children: ["Child"]
 }, {
   name: "Option: content",
-  component: component$2,
+  component: component$1,
   attrs: {
     content: "Content"
   }
@@ -1567,7 +2001,7 @@ var tests$8 = [{
   name: "Add to a Mithril element",
   component: {
     view: function view() {
-      return [m("div", "Some element"), m(component$2)];
+      return [m("div", "Some element"), m(component$1)];
     }
   }
 }, {
@@ -1585,7 +2019,7 @@ var tests$8 = [{
       });
     },
     view: function view(vnode) {
-      return [m(rules.content, "Click me"), m(component$2, {
+      return [m(rules.content, "Click me"), m(component$1, {
         animated: true,
         z: vnode.state.z
       })];
@@ -1593,37 +2027,37 @@ var tests$8 = [{
   }
 }, {
   name: "Option: z (0)",
-  component: component$2,
+  component: component$1,
   attrs: {
     z: 0
   }
 }, {
   name: "Option: z (1)",
-  component: component$2,
+  component: component$1,
   attrs: {
     z: 1
   }
 }, {
   name: "Option: z (2)",
-  component: component$2,
+  component: component$1,
   attrs: {
     z: 2
   }
 }, {
   name: "Option: z (3)",
-  component: component$2,
+  component: component$1,
   attrs: {
     z: 3
   }
 }, {
   name: "Option: z (4)",
-  component: component$2,
+  component: component$1,
   attrs: {
     z: 4
   }
 }, {
   name: "Option: z (5)",
-  component: component$2,
+  component: component$1,
   attrs: {
     z: 5
   }
@@ -1632,63 +2066,63 @@ var tests$8 = [{
 // Common
 {
   name: "No options",
-  component: component$2,
+  component: component$1,
   attrs: null
 }, {
   name: "Option: id",
-  component: component$2,
+  component: component$1,
   attrs: {
     id: "id-x"
   }
 }, {
   name: "Option: class",
-  component: component$2,
+  component: component$1,
   attrs: {
     class: "class-x"
   }
 }, {
   name: "Option: element",
-  component: component$2,
+  component: component$1,
   attrs: {
     element: "dl"
   }
 }, {
   name: "Option: before",
-  component: component$2,
+  component: component$1,
   attrs: {
     before: "Before"
   }
 }, {
   name: "Option: after",
-  component: component$2,
+  component: component$1,
   attrs: {
     after: "After"
   }
 }];
 
-var component$3 = svg$1;
+var component$2 = svg$1;
 var svgString = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z\"/></svg>";
 var trustedSvg$1 = m.trust(svgString);
 
-var tests$9 = [{
+var tests$10 = [{
   name: "Child node (trusted svg)",
-  component: component$3,
+  component: component$2,
   attrs: null,
   children: [trustedSvg$1]
 }, {
   name: "Child node (mmsvg)",
-  component: component$3,
+  component: component$2,
   attrs: null,
   children: [stars]
 }, {
   name: "Option: content (trusted svg)",
-  component: component$3,
+  component: component$2,
   attrs: {
     content: trustedSvg$1
   }
 }, {
   name: "Option: content (mmsvg)",
-  component: component$3,
+  component: component$2,
   attrs: {
     content: stars
   }
@@ -1697,44 +2131,44 @@ var tests$9 = [{
 // Common
 {
   name: "No options",
-  component: component$3,
+  component: component$2,
   attrs: null
 }, {
   name: "Option: id",
-  component: component$3,
+  component: component$2,
   attrs: {
     id: "id-x"
   }
 }, {
   name: "Option: class",
-  component: component$3,
+  component: component$2,
   attrs: {
     class: "class-x"
   }
 }, {
   name: "Option: element",
-  component: component$3,
+  component: component$2,
   attrs: {
     element: "a",
     content: m.trust("<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"></svg>")
   }
 }, {
   name: "Option: before",
-  component: component$3,
+  component: component$2,
   attrs: {
     content: stars,
     before: m("span", "Before")
   }
 }, {
   name: "Option: after",
-  component: component$3,
+  component: component$2,
   attrs: {
     content: stars,
     after: m("span", "After")
   }
 }];
 
-var _extends = Object.assign || function (target) {
+var _extends$1 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];
 
@@ -1748,17 +2182,17 @@ var _extends = Object.assign || function (target) {
   return target;
 };
 
-var styles$1 = [{
+var styles$2 = [{
   ".pe-button.secondary-button .pe-button__content": {
     "background-color": "#fff",
     "border-color": "#ddd"
   }
 }];
-styler$1.add("secondary-button", styles$1);
+styler$1.add("secondary-button", styles$2);
 
 var secondaryButton = {
   view: function view(vnode) {
-    return m(button$1, _extends({
+    return m(button$1, _extends$1({
       class: "secondary-button",
       borders: true,
       raised: false
@@ -1806,7 +2240,7 @@ var mixinButtonStyles = [{
 
 styler$1.add("app-buttons-x", mixinButtonStyles);
 
-var tests$10 = [{
+var tests$11 = [{
   name: "Element should have a red background",
   component: {
     view: function view() {
@@ -1847,9 +2281,9 @@ var tests$10 = [{
   }
 }];
 
-styler$1.add("css-classes", styles);
+styler$1.add("css-classes", styles$1);
 
-var tests$11 = [{
+var tests$12 = [{
   name: "Should be aligned horizontally",
   component: {
     view: function view() {
@@ -1903,13 +2337,13 @@ Testing 3 theming methods:
 // [1]
 
 button$1.theme("blue-button", {
-  color_light_flat_normal_background: "#2196F3",
-  color_light_flat_normal_text: "#fff"
+  color_light_background: "#2196F3",
+  color_light_text: "#fff"
 });
 
 button$1.theme("red-button", {
-  color_light_flat_normal_background: "#ff0000",
-  color_light_flat_normal_text: "#fff"
+  color_light_background: "#ff0000",
+  color_light_text: "#fff"
 });
 
 icon$1.theme("red-icon", {
@@ -1939,15 +2373,15 @@ listTile$1.theme("red-list-tile", {
 var secondaryButton$1 = {
   theme: button$1.theme,
   view: function view(vnode) {
-    return m(button$1, _extends({
+    return m(button$1, _extends$1({
       class: "secondary-button",
       borders: true
     }, vnode.attrs));
   }
 };
 secondaryButton$1.theme("secondary-button", {
-  color_light_flat_normal_border: "#ddd",
-  color_light_flat_normal_background: "#fff"
+  color_light_border: "#ddd",
+  color_light_background: "#fff"
 });
 
 // [3]
@@ -1955,7 +2389,7 @@ secondaryButton$1.theme("secondary-button", {
 // classes: my-button--primary and my-icon
 
 
-var tests$12 = [{
+var tests$13 = [{
   name: "Theme with style variables: button (should be blue)",
   component: button$1,
   attrs: {
@@ -2091,7 +2525,7 @@ var generatedHtml = {
     var test = vnode.attrs.test;
     var raw = tidy(m(test.component, test.attrs, test.children));
     return m(rules.rawResult, {
-      class: vnode.state.open ? "open" : "closed",
+      class: [vnode.state.open ? "open" : "closed", test.class || null].join(" "),
       onclick: vnode.state.toggle
     }, [m(".html", {}, raw), m(".ellipsis", "...")]);
   }
@@ -2128,6 +2562,10 @@ var pages = [{
   name: "Button",
   tests: tests$1
 }, {
+  path: "/raised-button",
+  name: "Raised button",
+  tests: tests$7
+}, {
   path: "/fab",
   name: "FAB",
   tests: tests$2
@@ -2150,27 +2588,27 @@ var pages = [{
 }, {
   path: "/ripple",
   name: "Ripple",
-  tests: tests$7
+  tests: tests$8
 }, {
   path: "/shadow",
   name: "Shadow",
-  tests: tests$8
+  tests: tests$9
 }, {
   path: "/svg",
   name: "SVG",
-  tests: tests$9
+  tests: tests$10
 }, {
   path: "/theme",
   name: "Custom theme",
-  tests: tests$12
+  tests: tests$13
 }, {
   path: "/css",
   name: "CSS tools",
-  tests: tests$10
+  tests: tests$11
 }, {
   path: "/css-classes",
   name: "CSS classes",
-  tests: tests$11
+  tests: tests$12
 }];
 
 var index = {

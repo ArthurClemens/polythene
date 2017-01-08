@@ -46,7 +46,7 @@ const myFab = m(fab, {
 
 FAB is composed from:
 
-* [Icon Button](#icon-button)
+* [Raised Button](#raised-button)
   * [Button](#button)
 * [Icon](#icon) (when using option `icon`)
 
@@ -71,7 +71,7 @@ Default colors:
 | **Element** |  **Class** |
 | ----------- | --------------- |
 | component   | `pe-button--fab` |
-
+| content     | `pe-button--fab__content` |
 
 | **State**   |  **Class** |
 | ----------- | --------------- |

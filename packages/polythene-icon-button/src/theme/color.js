@@ -1,8 +1,8 @@
 import { mixin } from "polythene-css";
 
-const style = (componentVars, tint, type, scope = "") => [{
+const style = (componentVars, tint, scope = "") => [{
   [scope + ".pe-button.pe-button--icon, a.pe-button.pe-button--icon"]: {
-    color: componentVars["color_" + tint + "_" + type + "_normal_text"],
+    color: componentVars["color_" + tint + "_text"],
     "background-color": componentVars["color_" + tint + "_background"] || componentVars["color_background"],
 
     " .pe-button__wash": {
@@ -17,20 +17,12 @@ const style = (componentVars, tint, type, scope = "") => [{
     },
 
     "&.pe-button--disabled": {
-      color: componentVars["color_" + tint + "_" + type + "_disabled_text"]
-    },
-
-    "&.pe-button--raised": {
-      "background-color": componentVars["color_" + tint + "_background"],
-
-      " .pe-button__content": {
-        background: "transparent"
-      }
+      color: componentVars["color_" + tint + "_disabled_text"]
     }
   }
 }];
 
-const noTouch = (componentVars, tint, type, scope = "") => [{
+const noTouch = (componentVars, tint, scope = "") => [{
   [scope + ".pe-button.pe-button--icon:hover"]:
     (tint === "light") ?
     {
@@ -40,26 +32,26 @@ const noTouch = (componentVars, tint, type, scope = "") => [{
     } :
     {
       " .pe-button__wash": {
-        "background-color": componentVars["color_" + tint + "_" + type + "_normal_text"]
+        "background-color": componentVars["color_" + tint + "_text"]
       }
     }
 }];
 
 const createStyles = componentVars => [
-  style(componentVars, "light", "flat"), {
+  style(componentVars, "light"), {
     "html.pe-no-touch": [
-      noTouch(componentVars, "light", "flat", " ")
+      noTouch(componentVars, "light", " ")
     ]
   }, {
     ".pe-dark-theme": [
       // inside dark theme
-      style(componentVars, "dark", "flat", " "),
+      style(componentVars, "dark", " "),
       // has dark theme
-      style(componentVars, "dark", "flat", "&")
+      style(componentVars, "dark", "&")
     ]
   }, {
     "html.pe-no-touch .pe-dark-theme": [
-      noTouch(componentVars, "dark", "flat", " ")
+      noTouch(componentVars, "dark", " ")
     ]
   }
 ];

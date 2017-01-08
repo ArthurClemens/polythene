@@ -1,7 +1,6 @@
 import m from 'mithril';
-import { shadow } from 'polythene-shadow';
 import { ripple } from 'polythene-ripple';
-import { filterSupportedAttributes, isTouch, subscribe, touchEndEvent, touchStartEvent } from 'polythene-core';
+import { filterSupportedAttributes } from 'polythene-core';
 import { mixin, styler } from 'polythene-css';
 import { styles, vars } from 'polythene-theme';
 
@@ -21,49 +20,28 @@ var vars$1 = {
   text_transform: "uppercase",
   border_width: 0, // no border in MD, but used to correctly set the height when a theme does set a border
 
-  color_light_flat_normal_background: "transparent",
-  color_light_flat_normal_text: rgba(vars.color_light_foreground, vars.blend_light_text_primary),
-  color_light_flat_hover_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
-  color_light_flat_focus_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
-  color_light_flat_active_background: rgba(vars.color_light_foreground, vars.blend_light_background_active),
-  color_light_flat_disabled_background: "transparent",
-  color_light_flat_disabled_text: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
+  color_light_background: "transparent",
+  color_light_text: rgba(vars.color_light_foreground, vars.blend_light_text_primary),
+  color_light_hover_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
+  color_light_focus_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
+  color_light_active_background: rgba(vars.color_light_foreground, vars.blend_light_background_active),
+  color_light_disabled_background: "transparent",
+  color_light_disabled_text: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
 
   // border colors may be set in theme; disabled by default
-  // color_light_flat_normal_border: "transparent", // only specify this variable to get all 4 states
-  // color_light_flat_hover_border: "transparent",
-  // color_light_flat_active_border: "transparent",
-  // color_light_flat_disabled_border: "transparent",
+  // color_light_border:              "transparent", // only specify this variable to get all 4 states
+  // color_light_hover_border:        "transparent",
+  // color_light_active_border:       "transparent",
+  // color_light_disabled_border:     "transparent",
 
-  color_light_raised_normal_background: "#E0E0E0",
-  color_light_raised_normal_text: rgba(vars.color_light_foreground, vars.blend_light_text_primary),
-  color_light_raised_hover_background: "transparent",
-  color_light_raised_focus_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
-  color_light_raised_active_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover), // same as hover
-  color_light_raised_disabled_background: rgba(vars.color_light_foreground, vars.blend_light_background_disabled),
-  color_light_raised_disabled_text: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
+  color_dark_background: "transparent",
+  color_dark_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
+  color_dark_hover_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover),
+  color_dark_focus_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover),
+  color_dark_active_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_active),
+  color_dark_disabled_background: "transparent",
+  color_dark_disabled_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled)
 
-  color_dark_flat_normal_background: "transparent",
-  color_dark_flat_normal_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
-  color_dark_flat_hover_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover),
-  color_dark_flat_focus_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover),
-  color_dark_flat_active_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_active),
-  color_dark_flat_disabled_background: "transparent",
-  color_dark_flat_disabled_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
-
-  // border colors may be set in theme; disabled by default
-  // color_dark_flat_normal_border: "transparent", // only specify this variable to get all 4 states
-  // color_dark_flat_hover_border: "transparent",
-  // color_dark_flat_active_border: "transparent",
-  // color_dark_flat_disabled_border: "transparent",
-
-  color_dark_raised_normal_background: rgba(vars.color_primary),
-  color_dark_raised_normal_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
-  color_dark_raised_hover_background: vars.color_primary_active,
-  color_dark_raised_focus_background: vars.color_primary_active,
-  color_dark_raised_active_background: vars.color_primary_dark,
-  color_dark_raised_disabled_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_disabled),
-  color_dark_raised_disabled_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled)
 };
 
 var createStyles = function createStyles(componentVars) {
@@ -209,46 +187,46 @@ var _extends = Object.assign || function (target) {
   return target;
 };
 
-var style = function style(componentVars, tint, type) {
-  var scope = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
+var style = function style(componentVars, tint) {
+  var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
 
-  var normalBorder = componentVars["color_" + tint + "_" + type + "_normal_border"] || "transparent";
-  var activeBorder = componentVars["color_" + tint + "_" + type + "_active_border"] || normalBorder;
-  var disabledBorder = componentVars["color_" + tint + "_" + type + "_disabled_border"] || normalBorder;
+  var normalBorder = componentVars["color_" + tint + "_border"] || "transparent";
+  var activeBorder = componentVars["color_" + tint + "_active_border"] || normalBorder;
+  var disabledBorder = componentVars["color_" + tint + "_disabled_border"] || normalBorder;
   return [defineProperty({}, scope + ".pe-button", {
     "&, &:link, &:visited": {
-      color: componentVars["color_" + tint + "_" + type + "_normal_text"]
+      color: componentVars["color_" + tint + "_text"]
     },
 
     " .pe-button__content": {
-      "background-color": componentVars["color_" + tint + "_" + type + "_normal_background"],
+      "background-color": componentVars["color_" + tint + "_background"],
       "border-color": normalBorder
     },
 
     "&.pe-button--disabled": {
-      color: componentVars["color_" + tint + "_" + type + "_disabled_text"],
+      color: componentVars["color_" + tint + "_disabled_text"],
 
       " .pe-button__content": {
-        "background-color": componentVars["color_" + tint + "_" + type + "_disabled_background"],
+        "background-color": componentVars["color_" + tint + "_disabled_background"],
         "border-color": disabledBorder
       }
     },
 
     "&.pe-button--selected": {
       " .pe-button__content": {
-        "background-color": componentVars["color_" + tint + "_" + type + "_active_background"],
+        "background-color": componentVars["color_" + tint + "_active_background"],
         "border-color": activeBorder
       },
       " .pe-button__focus": {
         opacity: 1,
-        "background-color": componentVars["color_" + tint + "_" + type + "_focus_background"]
+        "background-color": componentVars["color_" + tint + "_focus_background"]
       }
     },
 
     "&.pe-button--focus": {
       " .pe-button__focus": {
         opacity: 1,
-        "background-color": componentVars["color_" + tint + "_" + type + "_focus_background"]
+        "background-color": componentVars["color_" + tint + "_focus_background"]
       }
     }
   })];
@@ -257,29 +235,25 @@ var style = function style(componentVars, tint, type) {
 var noTouch = function noTouch(componentVars, tint, type) {
   var scope = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
 
-  var normalBorder = componentVars["color_" + tint + "_" + type + "_normal_border"];
-  var hoverBorder = componentVars["color_" + tint + "_" + type + "_normal_border"] || normalBorder;
+  var normalBorder = componentVars["color_" + tint + "_border"];
+  var hoverBorder = componentVars["color_" + tint + "_border"] || normalBorder;
   return [defineProperty({}, scope + ".pe-button:hover", {
     "&:not(.pe-button--selected):not(.pe-button--inactive) .pe-button__wash": {
-      "background-color": componentVars["color_" + tint + "_" + type + "_hover_background"],
+      "background-color": componentVars["color_" + tint + "_hover_background"],
       "border-color": hoverBorder
     }
   })];
 };
 
 var createStyles$1 = function createStyles(componentVars) {
-  return [style(componentVars, "light", "flat"), style(componentVars, "light", "raised", ".pe-button--raised"), {
-    "html.pe-no-touch": [noTouch(componentVars, "light", "flat", " "), noTouch(componentVars, "light", "raised", " .pe-button--raised")]
-  }, {
+  return [style(componentVars, "light"), {
     ".pe-dark-theme": [
     // inside dark theme
-    style(componentVars, "dark", "flat", " "),
+    style(componentVars, "dark", " "),
     // has dark theme
-    style(componentVars, "dark", "flat", "&"),
-    //
-    style(componentVars, "dark", "raised", " .pe-button--raised")]
+    style(componentVars, "dark", "&")]
   }, {
-    "html.pe-no-touch .pe-dark-theme": [noTouch(componentVars, "dark", "flat", " "), noTouch(componentVars, "dark", "flat", "&"), noTouch(componentVars, "dark", "raised", " .pe-button--raised")]
+    "html.pe-no-touch .pe-dark-theme": [noTouch(componentVars, "dark", " "), noTouch(componentVars, "dark", "&")]
   }];
 };
 
@@ -288,7 +262,7 @@ var color = (function (componentVars) {
 });
 
 var key = "button";
-var className = "pe-button-text";
+var className = "pe-button";
 
 var styleComponent = function styleComponent(className, styles$$1) {
   return styler.styleComponent(className, styles$$1, key, vars$1, layout, color);
@@ -307,7 +281,6 @@ var classes = {
   component: "pe-button pe-button--text",
   content: "pe-button__content",
   label: "pe-button__label",
-  raised: "pe-button--raised",
   wash: "pe-button__wash",
   focus: "pe-button__focus",
   selected: "pe-button--selected",
@@ -319,74 +292,6 @@ var classes = {
 
 var EL_ATTRS = ["formaction", "type"];
 
-var MAX_Z = 5;
-
-var tapStart = void 0;
-var tapEndAll = function tapEndAll() {};
-var downButtons = [];
-
-subscribe(touchEndEvent, function () {
-  return tapEndAll();
-});
-
-var animateZ = function animateZ(state, attrs, name) {
-  var zBase = state.zBase;
-  var increase = attrs.increase || 1;
-  var z = state.z;
-  if (name === "down" && zBase !== 5) {
-    z = Math.min(z + increase, MAX_Z);
-  } else if (name === "up") {
-    z = Math.max(z - increase, zBase);
-  }
-  if (z !== state.z) {
-    state.z = z;
-    m.redraw(); // show shadow animation
-  }
-};
-
-var inactivate = function inactivate(state, attrs) {
-  state.inactive = true;
-  m.redraw();
-  setTimeout(function () {
-    state.inactive = false;
-    m.redraw();
-  }, attrs.inactivate * 1000);
-};
-
-var initTapEvents = function initTapEvents(el, state, attrs) {
-  var tapHandler = function tapHandler(state, attrs, name) {
-    if (name === "down") {
-      downButtons.push({
-        state: state,
-        attrs: attrs
-      });
-    } else if (name === "up") {
-      if (attrs.inactivate && !state.inactive) {
-        inactivate(state, attrs);
-      }
-    }
-    // no z animation on touch
-    var animateOnTap = attrs.animateOnTap !== false ? true : false;
-    if (animateOnTap && !isTouch) {
-      animateZ(state, attrs, name);
-    }
-  };
-  tapStart = function tapStart() {
-    return tapHandler(state, attrs, "down");
-  };
-  tapEndAll = function tapEndAll() {
-    downButtons.map(function (btn) {
-      tapHandler(btn.state, btn.attrs, "up");
-    });
-    downButtons = [];
-  };
-  el.addEventListener(touchStartEvent, tapStart);
-};
-
-var clearTapEvents = function clearTapEvents(el) {
-  el.removeEventListener(touchStartEvent, tapStart);
-};
-
 var view = function view(vnode) {
   var state = vnode.state;
   var attrs = vnode.attrs;
@@ -396,7 +301,7 @@ var view = function view(vnode) {
   var tabIndex = disabled || state.inactive ? -1 : attrs.tabindex || 0;
   var onClickHandler = attrs.events && attrs.events.onclick;
   var props = _extends({}, filterSupportedAttributes(attrs, EL_ATTRS), {
-    class: [attrs.parentClass || classes.component, attrs.selected ? classes.selected : null, disabled ? classes.disabled : null, state.inactive ? classes.inactive : null, attrs.borders ? classes.borders : null, attrs.raised ? classes.raised : null, state.focus ? classes.focusState : null, attrs.class].join(" "),
+    class: [attrs.parentClass || classes.component, attrs.selected ? classes.selected : null, disabled ? classes.disabled : null, state.inactive ? classes.inactive : null, attrs.borders ? classes.borders : null, state.focus ? classes.focusState : null, attrs.class].join(" "),
     tabIndex: tabIndex,
     // handle focus events
     onfocus: function onfocus() {
@@ -425,7 +330,7 @@ var view = function view(vnode) {
   var children = vnode.children.length && vnode.children || attrs.children;
   var label = attrs.content ? attrs.content : attrs.label ? _typeof(attrs.label) === "object" ? attrs.label : m("div", { class: classes.label }, attrs.label) : children && children[0] ? children : null;
   var noWash = disabled || attrs.wash !== undefined && !attrs.wash;
-  var content = label ? m("div", { class: classes.content }, [attrs.raised && !disabled ? m(shadow, { z: state.z, animated: true }) : null,
+  var content = label ? m("div", { class: classes.content }, [!disabled && attrs.shadowComponent ? attrs.shadowComponent : null,
   // ripple
   disabled || noink ? null : m(ripple, attrs.ripple),
   // hover
@@ -438,28 +343,12 @@ var view = function view(vnode) {
 var button = {
   theme: customTheme, // accepts (className, vars)
   oninit: function oninit(vnode) {
-    var z = vnode.attrs.z !== undefined ? vnode.attrs.z : 1;
     vnode.state = {
       el: undefined,
-      zBase: z,
-      z: z,
-      tapEventsInited: false,
       inactive: !!vnode.attrs.inactive,
       focus: false,
       mouseover: false
     };
-  },
-  oncreate: function oncreate(vnode) {
-    if (!vnode.attrs.disabled && !vnode.state.inactive && !vnode.state.tapEventsInited) {
-      vnode.state.el = vnode.dom;
-      initTapEvents(vnode.dom, vnode.state, vnode.attrs);
-      vnode.state.tapEventsInited = true;
-    }
-  },
-  onremove: function onremove(vnode) {
-    if (vnode.state.tapEventsInited) {
-      clearTapEvents(vnode.dom);
-    }
   },
   view: view
 };

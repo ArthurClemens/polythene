@@ -10,6 +10,7 @@ import { tests as iconTests } from "../tests/icon/tests";
 import { tests as iconButtonTests } from "../tests/icon-button/tests";
 import { tests as listTests } from "../tests/list/tests";
 import { tests as listTileTests } from "../tests/list-tile/tests";
+import { tests as raisedButtonTests } from "../tests/raised-button/tests";
 import { tests as rippleTests } from "../tests/ripple/tests";
 import { tests as shadowTests } from "../tests/shadow/tests";
 import { tests as svgTests } from "../tests/svg/tests";
@@ -27,7 +28,7 @@ const generatedHtml = {
     const test = vnode.attrs.test;
     const raw = tidy(m(test.component, test.attrs, test.children));
     return m(css.rawResult, {
-      class: vnode.state.open ? "open" : "closed",
+      class: [vnode.state.open ? "open" : "closed", test.class || null].join(" "),
       onclick: vnode.state.toggle,
     }, [
       m(".html", {}, raw),
@@ -74,6 +75,11 @@ const pages = [
     path: "/button",
     name: "Button",
     tests: buttonTests
+  },
+  {
+    path: "/raised-button",
+    name: "Raised button",
+    tests: raisedButtonTests
   },
   {
     path: "/fab",

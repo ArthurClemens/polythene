@@ -1,24 +1,33 @@
 import m from "mithril";
-import { iconButton } from "polythene-icon-button";
+import { raisedButton } from "polythene-raised-button";
+import { icon } from "polythene-icon";
 import { customTheme } from "./theme";
 
 const classes = {
   component: "pe-button--fab",
+  content:   "pe-button--fab__content",
   mini:      "pe-button--fab-mini"
 };
 
 const view = vnode => {
   const attrs = vnode.attrs;
   const children = vnode.children.length && vnode.children || attrs.children;
-  return m(iconButton, Object.assign(
+  const content = attrs.content
+    ? attrs.content
+    : children && children[0]
+      ? children
+      : attrs.icon
+        ? m(icon, attrs.icon)
+        : null;
+  return m(raisedButton, Object.assign(
     {},
     {
+      content: m("div", {class: classes.content}, content),
       parentClass: [
         classes.component,
         attrs.mini ? classes.mini : null
       ].join(" "),
       // defaults
-      raised: true,
       ripple: {
         center: true,
         opacityDecayVelocity: 0.24

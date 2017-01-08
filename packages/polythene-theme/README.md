@@ -10,8 +10,8 @@ TL;DR: The simplest way to create a custom blue button:
 import { button } from "polythene-button";
 
 button.theme("blue-button", {
-  color_light_flat_normal_background: "#2196F3",
-  color_light_flat_normal_text: "#fff"
+  color_light_background: "blue",
+  color_light_text: "white"
 });
 
 m(button, {
@@ -91,8 +91,8 @@ Likewise, to create a blue button, write:
 import { button } from "polythene-button";
 
 button.theme("blue-button", {
-  color_light_flat_normal_background: "#2196F3",
-  color_light_flat_normal_text: "#fff"
+  color_light_background: "#2196F3",
+  color_light_text: "#fff"
   // note that we only need to list the properties that differ
 });
 
@@ -130,8 +130,8 @@ To set the style using variables, use the original component's `theme` function:
 
 ~~~javascript
 button.theme("secondary-button", {
-  color_light_flat_normal_border: "#ddd",
-  color_light_flat_normal_background: "#fff"
+  color_light_border: "#ddd",
+  color_light_background: "#fff"
 });
 ~~~
 
@@ -148,8 +148,8 @@ export const secondaryButton = {
 };
 
 secondaryButton.theme("secondary-button", {
-  color_light_flat_normal_border: "#ddd",
-  color_light_flat_normal_background: "#fff"
+  color_light_border: "#ddd",
+  color_light_background: "#fff"
 });
 ~~~
 

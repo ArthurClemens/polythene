@@ -17,13 +17,13 @@ import iconAlarm from "mmsvg/google/msvg/action/alarm-add";
 // [1]
 
 button.theme("blue-button", {
-  color_light_flat_normal_background: "#2196F3",
-  color_light_flat_normal_text: "#fff"
+  color_light_background: "#2196F3",
+  color_light_text: "#fff"
 });
 
 button.theme("red-button", {
-  color_light_flat_normal_background: "#ff0000",
-  color_light_flat_normal_text: "#fff"
+  color_light_background: "#ff0000",
+  color_light_text: "#fff"
 });
 
 icon.theme("red-icon", {
@@ -59,8 +59,8 @@ const secondaryButton = {
   })
 };
 secondaryButton.theme("secondary-button", {
-  color_light_flat_normal_border: "#ddd",
-  color_light_flat_normal_background: "#fff"
+  color_light_border: "#ddd",
+  color_light_background: "#fff"
 });
 
 // [3]

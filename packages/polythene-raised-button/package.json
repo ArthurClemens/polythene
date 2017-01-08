@@ -1,10 +1,10 @@
 {
-  "name": "polythene-fab",
+  "name": "polythene-raised-button",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/fab.js",
-  "module": "dist/fab.mjs",
-  "jsnext:main": "dist/fab.mjs",
+  "main": "dist/raised-button.js",
+  "module": "dist/raised-button.mjs",
+  "jsnext:main": "dist/raised-button.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
@@ -12,10 +12,11 @@
   },
   "dependencies": {
     "mithril": "1.0.0-rc.6",
+    "polythene-button": "1",
     "polythene-core": "1",
     "polythene-css": "1",
-    "polythene-icon": "1",
-    "polythene-raised-button": "1",
+    "polythene-ripple": "1",
+    "polythene-shadow": "1",
     "polythene-theme": "1"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",

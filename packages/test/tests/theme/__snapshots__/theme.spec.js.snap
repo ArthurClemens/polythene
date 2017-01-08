@@ -34,7 +34,7 @@ exports[`test Theme with deriving component: button (should be bordered with whi
 `;
 
 exports[`test Theme with style variables: FAB (should be red) 1`] = `
-"<a tabindex=\"0\" class=\"pe-button--fab pe-button--raised red-fab\">
+"<a tabindex=\"0\" class=\"pe-button--fab red-fab\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -47,7 +47,7 @@ exports[`test Theme with style variables: FAB (should be red) 1`] = `
   </div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button--icon__content\">
+  <div class=\"pe-button--fab__content\">
     <div class=\"pe-icon pe-icon--regular\">
       <div class=\"pe-svg\">
         <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=
@@ -222,7 +222,7 @@ exports[`test Theme with style variables: list tile (should have red titles) 1`]
 `;
 
 exports[`test Theme with theme file (global primary color): FAB (should be orange) 1`] = `
-"<a tabindex=\"0\" class=\"pe-button--fab pe-button--raised\">
+"<a tabindex=\"0\" class=\"pe-button--fab\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -235,7 +235,7 @@ exports[`test Theme with theme file (global primary color): FAB (should be orang
   </div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button--icon__content\">
+  <div class=\"pe-button--fab__content\">
     <div class=\"pe-icon pe-icon--regular\">
       <div class=\"pe-svg\">
         <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=

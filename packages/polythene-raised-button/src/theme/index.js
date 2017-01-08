@@ -1,14 +1,14 @@
 import { styler } from "polythene-css";
 import { styles } from "polythene-theme";
 import vars from "./vars";
-import layout from "./layout";
+// No layout
 import color from "./color";
 
-const key = "button";
-const className = "pe-button";
+const key = "raised-button";
+const className = "pe-button--raised";
 
 const styleComponent = (className, styles) =>
-  styler.styleComponent(className, styles, key, vars, layout, color);
+  styler.styleComponent(className, styles, key, vars, color);
 
 export const customTheme = (className, vars) =>
   // Inject additional styles as use className as key

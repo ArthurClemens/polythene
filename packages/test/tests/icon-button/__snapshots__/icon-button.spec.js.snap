@@ -213,14 +213,9 @@ exports[`test Option: id 1`] = `
 "
 `;
 
-exports[`test Option: raised and animateOnTap 1`] = `
-"<a tabindex=\"0\" class=
-\"pe-button pe-button--icon pe-button--raised\">
+exports[`test Option: ripple (center) 1`] = `
+"<a tabindex=\"0\" class=\"pe-button pe-button--icon\">
 <div class=\"pe-button__content\">
-  <div class=\"pe-shadow pe-shadow--animated\">
-    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
-  </div>
   <div class=\"pe-ripple pe-ripple--constrained\">
     <div class=\"pe-ripple__mask\">
       <div class=\"pe-ripple__waves\"></div>

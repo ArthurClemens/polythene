@@ -16,13 +16,8 @@ exports[`test Button (theme: blue) 1`] = `
 `;
 
 exports[`test Button 1`] = `
-"<a tabindex=\"0\" class=
-\"pe-button pe-button--text pe-button--raised\">
+"<a tabindex=\"0\" class=\"pe-button pe-button--text\">
 <div class=\"pe-button__content\">
-  <div class=\"pe-shadow pe-shadow--animated\">
-    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
-  </div>
   <div class=\"pe-ripple pe-ripple--constrained\">
     <div class=\"pe-ripple__mask\">
       <div class=\"pe-ripple__waves\"></div>
@@ -74,7 +69,7 @@ exports[`test CSS Classes: blocks should be justified horizontally 1`] = `
 `;
 
 exports[`test FAB (theme: red) 1`] = `
-"<a tabindex=\"0\" class=\"pe-button--fab pe-button--raised red-fab\">
+"<a tabindex=\"0\" class=\"pe-button--fab red-fab\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -87,7 +82,7 @@ exports[`test FAB (theme: red) 1`] = `
   </div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button--icon__content\">
+  <div class=\"pe-button--fab__content\">
     <div class=\"pe-icon pe-icon--regular\">
       <div class=\"pe-svg\">
         <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=
@@ -104,7 +99,7 @@ exports[`test FAB (theme: red) 1`] = `
 `;
 
 exports[`test FAB 1`] = `
-"<a tabindex=\"0\" class=\"pe-button--fab pe-button--raised\">
+"<a tabindex=\"0\" class=\"pe-button--fab\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -117,7 +112,7 @@ exports[`test FAB 1`] = `
   </div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button--icon__content\">
+  <div class=\"pe-button--fab__content\">
     <div class=\"pe-icon pe-icon--regular\">
       <div class=\"pe-svg\">
         <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=
@@ -264,6 +259,50 @@ exports[`test List Tile 1`] = `
     </div>
   </div></a>
 </div>
+"
+`;
+
+exports[`test Raised button (theme: blue) 1`] = `
+"<a tabindex=\"0\" class=
+\"pe-button pe-button--text pe-button--raised blue-button\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-ripple pe-ripple--constrained\">
+    <div class=\"pe-ripple__mask\">
+      <div class=\"pe-ripple__waves\"></div>
+    </div>
+  </div>
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Raised button
+  </div>
+</div></a>
+"
+`;
+
+exports[`test Raised button 1`] = `
+"<a tabindex=\"0\" class=
+\"pe-button pe-button--text pe-button--raised\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-ripple pe-ripple--constrained\">
+    <div class=\"pe-ripple__mask\">
+      <div class=\"pe-ripple__waves\"></div>
+    </div>
+  </div>
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Raised button
+  </div>
+</div></a>
 "
 `;
 
