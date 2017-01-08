@@ -121,12 +121,12 @@ const view = vnode => {
   const primaryAttrs = {...attrs};
   delete primaryAttrs.id;
   delete primaryAttrs.class;
-  
+  const children = vnode.children.length && vnode.children || attrs.children;
   const content = [
     attrs.ink && !attrs.disabled
       ? m(ripple, attrs.ripple)
       : null,
-    primaryContent(primaryAttrs, vnode.children),
+    primaryContent(primaryAttrs, children),
     attrs.secondary
       ? secondaryContent(attrs.secondary)
       : null

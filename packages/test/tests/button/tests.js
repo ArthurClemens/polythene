@@ -5,6 +5,12 @@ const component = button;
 
 export const tests = [
   {
+    name: "Child node",
+    component,
+    attrs: {},
+    children: ["Child"]
+  },
+  {
     name: "Option: label",
     component,
     attrs: {
@@ -17,12 +23,6 @@ export const tests = [
     attrs: {
       content: m("div", "Content")
     }
-  },
-  {
-    name: "Child node",
-    component,
-    attrs: {},
-    children: ["Child"]
   },
   {
     name: "Option: raised",

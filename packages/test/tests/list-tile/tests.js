@@ -5,6 +5,12 @@ import iconStars from "mmsvg/google/msvg/action/stars";
 
 export const tests = [
   {
+    name: "Child node",
+    component,
+    attrs: null,
+    children: m(icon, {msvg: iconStars})
+  },
+  {
     name: "Option: title",
     component,
     attrs: {
@@ -18,12 +24,6 @@ export const tests = [
       title: "Ancillary Justice",
       content: m(icon, {msvg: iconStars})
     }
-  },
-  {
-    name: "Child node",
-    component,
-    attrs: null,
-    children: m(icon, {msvg: iconStars})
   },
   {
     name: "Option: subtitle",

@@ -6,6 +6,12 @@ import iconAlarm from "mmsvg/google/msvg/action/alarm-add";
 
 export const tests = [
   {
+    name: "Child node",
+    component,
+    attrs: null,
+    children: m(icon, {msvg: iconAlarm})
+  },
+  {
     name: "Option: icon",
     component,
     attrs: {

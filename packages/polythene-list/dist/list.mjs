@@ -172,7 +172,8 @@ var view = function view(vnode) {
     headerOpts = _extends({}, attrs.header);
     headerOpts.class = [classes.header, headerOpts.class || null].join(" ");
   }
-  var content = [headerOpts ? m(listTile, headerOpts) : null, attrs.tiles ? attrs.tiles : attrs.content ? attrs.content : vnode.children && vnode.children[0] ? vnode.children : null];
+  var children = vnode.children.length && vnode.children || attrs.children;
+  var content = [headerOpts ? m(listTile, headerOpts) : null, attrs.tiles ? attrs.tiles : attrs.content ? attrs.content : children && children[0] ? children : null];
   return m(element, props, [attrs.before, content, attrs.after]);
 };
 

@@ -120,7 +120,8 @@ var view = function view(vnode) {
   var props = _extends({}, filterSupportedAttributes(attrs), {
     class: [classes.component, attrs.animated && classes.animated, attrs.class].join(" ")
   });
-  var content = attrs.content ? attrs.content : vnode.children && vnode.children[0] ? vnode.children : null;
+  var children = vnode.children.length && vnode.children || attrs.children;
+  var content = attrs.content ? attrs.content : children && children[0] ? children : null;
   var shadowContent = [content, m("div", {
     class: [classes.bottomShadow, depthClass].join(" ")
   }), m("div", {

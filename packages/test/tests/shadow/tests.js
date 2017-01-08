@@ -6,17 +6,17 @@ const component = shadow;
 
 export const tests = [
   {
+    name: "Child node",
+    component,
+    attrs: {},
+    children: ["Child"]
+  },
+  {
     name: "Option: content",
     component,
     attrs: {
       content: "Content"
     }
-  },
-  {
-    name: "Child node",
-    component,
-    attrs: {},
-    children: ["Child"]
   },
   {
     name: "Add to a Mithril element",

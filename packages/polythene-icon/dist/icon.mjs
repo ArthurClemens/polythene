@@ -156,7 +156,8 @@ var view = function view(vnode) {
   var props = _extends({}, filterSupportedAttributes(attrs), {
     class: [classes.icon, classForType(attrs.type), attrs.avatar ? classes.avatar : null, attrs.class].join(" ")
   }, attrs.events ? attrs.events : null);
-  var content = attrs.content ? attrs.content : vnode.children && vnode.children[0] ? vnode.children : attrs.svg ? m(svg, _extends({}, attrs.svg)) : attrs.msvg ? m(svg, attrs.msvg) : attrs.src ? m("img", { src: attrs.src }) : null;
+  var children = vnode.children.length && vnode.children || attrs.children;
+  var content = attrs.content ? attrs.content : children && children[0] ? children : attrs.svg ? m(svg, _extends({}, attrs.svg)) : attrs.msvg ? m(svg, attrs.msvg) : attrs.src ? m("img", { src: attrs.src }) : null;
   return m(element, props, [attrs.before, content, attrs.after]);
 };
 

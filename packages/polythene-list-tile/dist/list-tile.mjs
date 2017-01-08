@@ -392,8 +392,8 @@ var view = function view(vnode) {
   var primaryAttrs = _extends({}, attrs);
   delete primaryAttrs.id;
   delete primaryAttrs.class;
-
-  var content = [attrs.ink && !attrs.disabled ? m(ripple, attrs.ripple) : null, primaryContent(primaryAttrs, vnode.children), attrs.secondary ? secondaryContent(attrs.secondary) : null];
+  var children = vnode.children.length && vnode.children || attrs.children;
+  var content = [attrs.ink && !attrs.disabled ? m(ripple, attrs.ripple) : null, primaryContent(primaryAttrs, children), attrs.secondary ? secondaryContent(attrs.secondary) : null];
   return m(element, props, [attrs.before, content, attrs.after]);
 };
 

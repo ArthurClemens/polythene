@@ -7,6 +7,12 @@ const trustedSvg = m.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24
 
 export const tests = [
   {
+    name: "Child node (svg children mmsvg)",
+    component,
+    attrs: null,
+    children: m(svg, [iconStars])
+  },
+  {
     name: "Option: content",
     component,
     attrs: {
@@ -30,12 +36,6 @@ export const tests = [
         content: iconStars
       }
     }
-  },
-  {
-    name: "Child node (svg children mmsvg)",
-    component,
-    attrs: null,
-    children: m(svg, [iconStars])
   },
   {
     name: "Option: msvg",

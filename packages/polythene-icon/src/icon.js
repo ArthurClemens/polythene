@@ -37,10 +37,11 @@ const view = vnode => {
     },
     attrs.events ? attrs.events : null
   );
+  const children = vnode.children.length && vnode.children || attrs.children;
   const content = attrs.content
     ? attrs.content
-    : vnode.children && vnode.children[0]
-      ? vnode.children
+    : children && children[0]
+      ? children
       : attrs.svg
         ? m(svg, {...attrs.svg})
         : attrs.msvg

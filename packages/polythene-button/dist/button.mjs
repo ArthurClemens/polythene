@@ -422,7 +422,8 @@ var view = function view(vnode) {
       }
     }
   }, attrs.events ? _extends({}, attrs.events) : null, attrs.url ? _extends({}, attrs.url) : null, disabled ? { disabled: true } : null);
-  var label = attrs.content ? attrs.content : attrs.label ? _typeof(attrs.label) === "object" ? attrs.label : m("div", { class: classes.label }, attrs.label) : vnode.children && vnode.children[0] ? vnode.children : null;
+  var children = vnode.children.length && vnode.children || attrs.children;
+  var label = attrs.content ? attrs.content : attrs.label ? _typeof(attrs.label) === "object" ? attrs.label : m("div", { class: classes.label }, attrs.label) : children && children[0] ? children : null;
   var noWash = disabled || attrs.wash !== undefined && !attrs.wash;
   var content = label ? m("div", { class: classes.content }, [attrs.raised && !disabled ? m(shadow, { z: state.z, animated: true }) : null,
   // ripple

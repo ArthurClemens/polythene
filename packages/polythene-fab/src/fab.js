@@ -9,6 +9,7 @@ const classes = {
 
 const view = vnode => {
   const attrs = vnode.attrs;
+  const children = vnode.children.length && vnode.children || attrs.children;
   return m(iconButton, Object.assign(
     {},
     {
@@ -27,7 +28,8 @@ const view = vnode => {
       },
       ink: true,
       wash: true,
-      animateOnTap: true
+      animateOnTap: true,
+      children
     },
     attrs
   ));

@@ -512,6 +512,11 @@ var tests$2 = [{
     }
   }
 }, {
+  name: "Child node",
+  component: fab$1,
+  attrs: null,
+  children: m(icon$1, { msvg: alarmAdd })
+}, {
   name: "Option: content",
   component: fab$1,
   attrs: {

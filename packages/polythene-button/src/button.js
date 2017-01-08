@@ -133,14 +133,15 @@ const view = vnode => {
     attrs.url ? {...attrs.url} : null,
     disabled ? {disabled: true} : null
   );
+  const children = vnode.children.length && vnode.children || attrs.children;
   const label = attrs.content
     ? attrs.content
     : attrs.label
       ? typeof attrs.label === "object"
         ? attrs.label
         : m("div", {class: classes.label}, attrs.label)
-      : vnode.children && vnode.children[0]
-        ? vnode.children
+      : children && children[0]
+        ? children
         : null;
   const noWash = disabled || (attrs.wash !== undefined && !attrs.wash);
   const content = label

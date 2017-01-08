@@ -33,6 +33,23 @@ const listTileAli = m(listTile, {
 
 export const tests = [
   {
+    name: "Child nodes",
+    component,
+    attrs: {
+      borders: true
+    },
+    children: [
+      m(listTile, {
+        title: "Jennifer Barker",
+        subtitle: "Starting post doc"
+      }),
+      m(listTile, {
+        title: "Ali Connors",
+        subtitle: "Brunch this weekend?"
+      })
+    ]
+  },
+  {
     name: "Option: header",
     component,
     attrs: {
@@ -57,23 +74,6 @@ export const tests = [
         })
       ]
     }
-  },
-  {
-    name: "Child nodes",
-    component,
-    attrs: {
-      borders: true
-    },
-    children: [
-      m(listTile, {
-        title: "Jennifer Barker",
-        subtitle: "Starting post doc"
-      }),
-      m(listTile, {
-        title: "Ali Connors",
-        subtitle: "Brunch this weekend?"
-      })
-    ]
   },
   {
     name: "Options: tiles, indent, indentedBorders",

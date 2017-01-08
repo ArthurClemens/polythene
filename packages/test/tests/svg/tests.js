@@ -14,17 +14,17 @@ export const tests = [
     children: [trustedSvg]
   },
   {
+    name: "Child node (mmsvg)",
+    component,
+    attrs: null,
+    children: [iconStars]
+  },
+  {
     name: "Option: content (trusted svg)",
     component,
     attrs: {
       content: trustedSvg
     },
-  },
-  {
-    name: "Child node (mmsvg)",
-    component,
-    attrs: null,
-    children: [iconStars]
   },
   {
     name: "Option: content (mmsvg)",
