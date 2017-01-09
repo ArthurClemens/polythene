@@ -3,6 +3,10 @@ import { list as component } from "polythene-list";
 import { listTile } from "polythene-list-tile";
 import { icon } from "polythene-icon";
 
+component.theme(".tests-lists-themed-list", {
+  color_light_border: "#2196F3"
+});
+
 const listTileJennifer = m(listTile, {
   title: "Jennifer Barker",
   subtitle: "Starting post doc",
@@ -215,32 +219,6 @@ export const tests = [
     }
   },
 
-  // Dark theme
-
-  {
-    name: "Option: hoverable -- dark theme",
-    interactive: true,
-    component,
-    attrs: {
-      class: "pe-dark-theme",
-      hoverable: true,
-      borders: true,
-      header: {
-        title: "Friends"
-      },
-      tiles: [
-        m(listTile, {
-          title: "Jennifer Barker",
-          subtitle: "Starting post doc",
-        }),
-        m(listTile, {
-          title: "Ali Connors",
-          subtitle: "Brunch this weekend?"
-        })
-      ]
-    }
-  },
-
   // Common
   {
     name: "No options",
@@ -286,6 +264,32 @@ export const tests = [
         title: "My header"
       },
       after: m("div", "After")
+    }
+  },
+
+  // Dark theme
+
+  {
+    name: "Option: hoverable -- dark theme",
+    interactive: true,
+    class: "pe-dark-theme",
+    component,
+    attrs: {
+      hoverable: true,
+      borders: true,
+      header: {
+        title: "Friends"
+      },
+      tiles: [
+        m(listTile, {
+          title: "Jennifer Barker",
+          subtitle: "Starting post doc",
+        }),
+        m(listTile, {
+          title: "Ali Connors",
+          subtitle: "Brunch this weekend?"
+        })
+      ]
     }
   },
 ];

@@ -62,165 +62,6 @@ var vars$1 = {
   color_dark_background_selected: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover)
 };
 
-var paddingH = function paddingH(h) {
-  return {
-    "padding-left": h + "px",
-    "padding-right": h + "px"
-  };
-};
-
-var paddingV = function paddingV(top, bottom) {
-  return {
-    "padding-top": top + "px",
-    "padding-bottom": (bottom || top) + "px"
-  };
-};
-
-var createStyles = function createStyles(componentVars) {
-  return [{
-    ".pe-list-tile": [flex.layout, {
-      position: "relative",
-      overflow: "hidden",
-
-      "&.pe-list-tile--sticky": [mixin.sticky(2)],
-
-      " .pe-list-tile__primary, .pe-list-tile__secondary": [flex.layoutHorizontal, {
-        "text-decoration": "none",
-        color: "inherit",
-        border: "none"
-      }],
-
-      " .pe-list-tile__primary": [flex.flex(), {
-        position: "relative",
-
-        " .pe-list-tile__content:not(.pe-list-tile__content--front)": [flex.flex(), paddingV(componentVars.padding, componentVars.padding + 1)]
-      }],
-
-      " .pe-list-tile__secondary": {
-        "text-align": "right",
-        "font-size": componentVars.font_size_title + "px",
-        position: "relative"
-      },
-
-      " .pe-list-tile__content": [flex.layoutVertical, flex.selfCenter, paddingH(componentVars.side_padding), {
-        "&.pe-list-tile__content--front": [paddingV(componentVars.padding - 5), {
-          width: componentVars.front_item_width + "px"
-        }],
-
-        " small": {
-          "font-size": componentVars.font_size_small + "px"
-        }
-      }],
-
-      " .pe-list-tile__content--front + .pe-list-tile__content": {
-        "padding-left": 0
-      },
-
-      " .pe-list-tile__title": [mixin.ellipsis(1), {
-        "font-size": componentVars.font_size_title + "px",
-        "font-weight": vars.font_weight_normal,
-        "line-height": componentVars.single_line_height + "px"
-      }],
-
-      " .pe-list-tile__subtitle": [mixin.ellipsis(componentVars.subtitle_line_count, componentVars.line_height_subtitle), {
-        "font-size": componentVars.font_size_subtitle + "px",
-        "line-height": componentVars.line_height_subtitle + "px",
-
-        "&.pe-list-tile__subtitle--high": [mixin.ellipsis(componentVars.high_subtitle_line_count, componentVars.line_height_subtitle), {
-          "white-space": "normal"
-        }]
-      }],
-
-      "&.pe-list-tile--selected, &.pe-list-tile--disabled": {
-        " a": {
-          "pointer-events": "none"
-        }
-      },
-
-      "&.pe-list-tile--subtitle": {
-        " .pe-list-tile__content": [paddingV(componentVars.has_subtitle_padding, componentVars.has_subtitle_padding + 1), {
-          " .pe-list-tile__title": {
-            padding: 0
-          }
-        }]
-      },
-
-      "&.pe-list-tile--high-subtitle": {
-        " .pe-list-tile--high-subtitle .pe-list-tile__secondary": [flex.layoutHorizontal, flex.layoutStart],
-        " .pe-list-tile__content": [flex.selfStart, paddingV(componentVars.has_high_subtitle_padding, componentVars.has_high_subtitle_padding + 1), {
-          " .pe-list-tile__title": {
-            padding: 0
-          }
-        }]
-      },
-
-      // List header
-      "&.pe-list__header": {
-        height: componentVars.single_height + "px",
-
-        " .pe-list-tile__content": {
-          "padding-top": 0,
-          "padding-bottom": 0
-        },
-        " .pe-list-tile__title": [mixin.ellipsis(1, componentVars.single_height), {
-          "font-size": componentVars.font_size_list_header + "px",
-          "font-weight": vars.font_weight_medium,
-          "line-height": componentVars.single_height + "px",
-          padding: 0
-        }]
-      },
-
-      // Compact list
-
-      " .pe-list--compact &, &.pe-list-tile--compact": {
-        "&:not(.pe-list__header)": {
-          " .pe-list-tile__content": paddingV(componentVars.compact_padding, componentVars.compact_padding + 1)
-        }
-      },
-
-      // Firefox only
-      "@supports (-moz-appearance:none) and (display:contents)": {
-        " .pe-list-tile__primary, .pe-list-tile__content": {
-          overflow: "hidden"
-        }
-      },
-
-      // Menu
-
-      ".pe-dialog .pe-menu__content &": {
-        " .pe-list-tile__title": mixin.ellipsis("none")
-      },
-
-      ".pe-menu__content &": {
-        "&:not(.pe-list-tile--disabled)": {
-          cursor: "default",
-
-          "&, .pe-list-tile__primary, .pe-list-tile__secondary": {
-            " .pe-list-tile__title, .pe-list-tile__subtitle": [mixin.vendorize({
-              "user-select": "none"
-            }, vars.prefixes_user_select)]
-          }
-        }
-      },
-
-      // Non-touch
-
-      "html.pe-no-touch .pe-list--hoverable &, \
-      html.pe-no-touch .pe-list--selectable &, \
-      html.pe-no-touch &.pe-list-tile--hoverable, \
-      html.pe-no-touch &.pe-list-tile--selectable": {
-        "&:not(.pe-list__header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected):hover": {
-          cursor: "pointer"
-        }
-      }
-    }]
-  }];
-};
-
-var layout = (function (componentVars) {
-  return mixin.createStyles(componentVars, createStyles);
-});
-
 var defineProperty = function (obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, {
@@ -250,9 +91,168 @@ var _extends = Object.assign || function (target) {
   return target;
 };
 
-var style = function style(componentVars, tint) {
-  var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
-  return [defineProperty({}, scope + ".pe-list-tile", {
+var paddingH = function paddingH(h) {
+  return {
+    "padding-left": h + "px",
+    "padding-right": h + "px"
+  };
+};
+
+var paddingV = function paddingV(top, bottom) {
+  return {
+    "padding-top": top + "px",
+    "padding-bottom": (bottom || top) + "px"
+  };
+};
+
+var createStyles = function createStyles(componentVars) {
+  var className = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+
+  var selector = className + ".pe-list-tile";
+  return [defineProperty({}, selector, [flex.layout, {
+    position: "relative",
+    overflow: "hidden",
+
+    "&.pe-list-tile--sticky": [mixin.sticky(2)],
+
+    " .pe-list-tile__primary, .pe-list-tile__secondary": [flex.layoutHorizontal, {
+      "text-decoration": "none",
+      color: "inherit",
+      border: "none"
+    }],
+
+    " .pe-list-tile__primary": [flex.flex(), {
+      position: "relative",
+
+      " .pe-list-tile__content:not(.pe-list-tile__content--front)": [flex.flex(), paddingV(componentVars.padding, componentVars.padding + 1)]
+    }],
+
+    " .pe-list-tile__secondary": {
+      "text-align": "right",
+      "font-size": componentVars.font_size_title + "px",
+      position: "relative"
+    },
+
+    " .pe-list-tile__content": [flex.layoutVertical, flex.selfCenter, paddingH(componentVars.side_padding), {
+      "&.pe-list-tile__content--front": [paddingV(componentVars.padding - 5), {
+        width: componentVars.front_item_width + "px"
+      }],
+
+      " small": {
+        "font-size": componentVars.font_size_small + "px"
+      }
+    }],
+
+    " .pe-list-tile__content--front + .pe-list-tile__content": {
+      "padding-left": 0
+    },
+
+    " .pe-list-tile__title": [mixin.ellipsis(1), {
+      "font-size": componentVars.font_size_title + "px",
+      "font-weight": vars.font_weight_normal,
+      "line-height": componentVars.single_line_height + "px"
+    }],
+
+    " .pe-list-tile__subtitle": [mixin.ellipsis(componentVars.subtitle_line_count, componentVars.line_height_subtitle), {
+      "font-size": componentVars.font_size_subtitle + "px",
+      "line-height": componentVars.line_height_subtitle + "px",
+
+      "&.pe-list-tile__subtitle--high": [mixin.ellipsis(componentVars.high_subtitle_line_count, componentVars.line_height_subtitle), {
+        "white-space": "normal"
+      }]
+    }],
+
+    "&.pe-list-tile--selected, &.pe-list-tile--disabled": {
+      " a": {
+        "pointer-events": "none"
+      }
+    },
+
+    "&.pe-list-tile--subtitle": {
+      " .pe-list-tile__content": [paddingV(componentVars.has_subtitle_padding, componentVars.has_subtitle_padding + 1), {
+        " .pe-list-tile__title": {
+          padding: 0
+        }
+      }]
+    },
+
+    "&.pe-list-tile--high-subtitle": {
+      " .pe-list-tile--high-subtitle .pe-list-tile__secondary": [flex.layoutHorizontal, flex.layoutStart],
+      " .pe-list-tile__content": [flex.selfStart, paddingV(componentVars.has_high_subtitle_padding, componentVars.has_high_subtitle_padding + 1), {
+        " .pe-list-tile__title": {
+          padding: 0
+        }
+      }]
+    },
+
+    // List header
+    "&.pe-list__header": {
+      height: componentVars.single_height + "px",
+
+      " .pe-list-tile__content": {
+        "padding-top": 0,
+        "padding-bottom": 0
+      },
+      " .pe-list-tile__title": [mixin.ellipsis(1, componentVars.single_height), {
+        "font-size": componentVars.font_size_list_header + "px",
+        "font-weight": vars.font_weight_medium,
+        "line-height": componentVars.single_height + "px",
+        padding: 0
+      }]
+    },
+
+    // Compact list
+
+    " .pe-list--compact &, &.pe-list-tile--compact": {
+      "&:not(.pe-list__header)": {
+        " .pe-list-tile__content": paddingV(componentVars.compact_padding, componentVars.compact_padding + 1)
+      }
+    },
+
+    // Firefox only
+    "@supports (-moz-appearance:none) and (display:contents)": {
+      " .pe-list-tile__primary, .pe-list-tile__content": {
+        overflow: "hidden"
+      }
+    },
+
+    // Menu
+
+    ".pe-dialog .pe-menu__content &": {
+      " .pe-list-tile__title": mixin.ellipsis("none")
+    },
+
+    ".pe-menu__content &": {
+      "&:not(.pe-list-tile--disabled)": {
+        cursor: "default",
+
+        "&, .pe-list-tile__primary, .pe-list-tile__secondary": {
+          " .pe-list-tile__title, .pe-list-tile__subtitle": [mixin.vendorize({
+            "user-select": "none"
+          }, vars.prefixes_user_select)]
+        }
+      }
+    },
+
+    // Non-touch
+
+    "html.pe-no-touch .pe-list--hoverable &, \
+        html.pe-no-touch .pe-list--selectable &, \
+        html.pe-no-touch &.pe-list-tile--hoverable, \
+        html.pe-no-touch &.pe-list-tile--selectable": {
+      "&:not(.pe-list__header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected):hover": {
+        cursor: "pointer"
+      }
+    }
+  }])];
+};
+
+var layout = (function (componentVars) {
+  return styler.createStyles(componentVars, createStyles);
+});
+
+var style = function style(componentVars, scope, selector, tint) {
+  return [defineProperty({}, scope + selector, {
     " .pe-list-tile__title": {
       color: componentVars["color_" + tint + "_title"]
     },
@@ -284,10 +284,9 @@ var style = function style(componentVars, tint) {
   })];
 };
 
-var noTouch = function noTouch(componentVars, tint) {
-  var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
-  return [defineProperty({}, scope + ".pe-list-tile", {
-    "&:not(.pe-list__header):not(.pe-list-tile--disabled):hover": {
+var noTouchStyle = function noTouchStyle(componentVars, scope, selector, tint) {
+  return [defineProperty({}, scope + selector + ":hover", {
+    "&:not(.pe-list__header):not(.pe-list-tile--disabled)": {
       " .pe-list-tile__primary, pe-list-tile__secondary": {
         "background-color": componentVars["color_" + tint + "_background_hover"]
       }
@@ -296,22 +295,15 @@ var noTouch = function noTouch(componentVars, tint) {
 };
 
 var createStyles$1 = function createStyles(componentVars) {
-  return [style(componentVars, "light"), {
-    "html.pe-no-touch": [noTouch(componentVars, "light", " .pe-list-tile--hoverable"), noTouch(componentVars, "light", " .pe-list--hoverable ")]
-  }, {
-    ".pe-dark-theme": [
-    // inside dark theme
-    style(componentVars, "dark", " "),
-    // has dark theme
-    style(componentVars, "dark", "&")]
-  }, {
-    "html.pe-no-touch .pe-dark-theme": [noTouch(componentVars, "dark", " .pe-list-tile--hoverable"), noTouch(componentVars, "dark", ".pe-list--hoverable "), noTouch(componentVars, "dark", " .pe-list--hoverable ")],
-    "html.pe-no-touch .pe-list--hoverable .pe-dark-theme": noTouch(componentVars, "dark", " ")
-  }];
+  var className = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+
+  var selector = className + ".pe-list-tile";
+  return [style(componentVars, "", selector, "light"), style(componentVars, ".pe-dark-theme ", selector, "dark"), // inside dark theme
+  noTouchStyle(componentVars, "html.pe-no-touch .pe-list-tile--hoverable", selector, "light"), noTouchStyle(componentVars, "html.pe-no-touch .pe-dark-theme .pe-list-tile--hoverable", selector, "dark"), noTouchStyle(componentVars, "html.pe-no-touch .pe-list--hoverable ", selector, "light"), noTouchStyle(componentVars, "html.pe-no-touch .pe-dark-theme .pe-list--hoverable ", selector, "dark")];
 };
 
 var color = (function (componentVars) {
-  return mixin.createStyles(componentVars, createStyles$1);
+  return styler.createStyles(componentVars, createStyles$1);
 });
 
 var key = "list-tile";
@@ -323,7 +315,7 @@ var styleComponent = function styleComponent(className, styles$$1) {
 
 var customTheme = function customTheme(className, vars$$1) {
   return (
-    // Inject additional styles as use className as key
+    // Inject additional styles as use the className as key
     styleComponent(className, styler.addComponentStyle(className, styles, key, vars$$1))
   );
 };

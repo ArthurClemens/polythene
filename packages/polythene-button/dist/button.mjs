@@ -44,96 +44,6 @@ var vars$1 = {
 
 };
 
-var createStyles = function createStyles(componentVars) {
-  return [{
-    ".pe-button": [mixin.vendorize({
-      "user-select": "none"
-    }, vars.prefixes_user_select), {
-      outline: "none",
-      padding: 0,
-      "text-decoration": "none",
-      "text-align": "center",
-      cursor: "pointer",
-
-      "&.pe-button--selected, &.pe-button--disabled, &.pe-button--inactive": {
-        cursor: "default",
-        "pointer-events": "none"
-      },
-
-      " .pe-button__content": {
-        position: "relative",
-        "border-radius": "inherit"
-      },
-
-      " .pe-button__label": [mixin.fontSmoothing(), {
-        position: "relative",
-        display: "block",
-        "border-radius": "inherit",
-        "pointer-events": "none"
-      }],
-
-      " .pe-button__wash, .pe-button__focus": [mixin.defaultTransition("background-color"), mixin.fit(), {
-        "border-radius": "inherit",
-        "pointer-events": "none"
-      }],
-
-      " .pe-button__focus": {
-        opacity: 0
-      },
-
-      "&.pe-button--focus": {
-        " .pe-button__focus": {
-          opacity: 1
-        }
-      },
-
-      " .pe-button__wash": {
-        "z-index": 0
-      }
-    }],
-    ".pe-button--text": {
-      display: "inline-block",
-      "min-width": componentVars.min_width + "px",
-      margin: "0 " + componentVars.margin_h + "px",
-      padding: componentVars.outer_padding_v + "px 0",
-      background: "transparent",
-      border: "none",
-
-      " .pe-button__content": {
-        position: "relative",
-        "border-width": 0,
-        padding: "0 " + componentVars.padding_h + "px",
-        "border-radius": componentVars.border_radius + "px"
-      },
-
-      " .pe-button__label": {
-        padding: componentVars.padding_v + "px 0",
-        "font-size": componentVars.font_size + "px",
-        "line-height": componentVars.font_size + "px",
-        "font-weight": componentVars.font_weight,
-        "text-transform": componentVars.text_transform,
-        "white-space": "pre"
-      },
-
-      "&.pe-button--borders": {
-        " .pe-button__wash, pe-button__focus, .pe-ripple": mixin.fit(-1),
-
-        " .pe-button__content": {
-          "border-style": "solid",
-          "border-width": "1px"
-        },
-        " .pe-button__label": {
-          padding: componentVars.padding_v - 1 + "px 0"
-        }
-      }
-    }
-  }];
-};
-
-var layout = (function (componentVars) {
-  return mixin.createStyles(componentVars, createStyles);
-});
-
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
   return typeof obj;
 } : function (obj) {
@@ -187,13 +97,103 @@ var _extends = Object.assign || function (target) {
   return target;
 };
 
-var style = function style(componentVars, tint) {
-  var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
+var createStyles = function createStyles(componentVars) {
+  var _ref;
 
+  var className = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+
+  var selector = className + ".pe-button";
+  return [(_ref = {}, defineProperty(_ref, selector, [mixin.vendorize({
+    "user-select": "none"
+  }, vars.prefixes_user_select), {
+    outline: "none",
+    padding: 0,
+    "text-decoration": "none",
+    "text-align": "center",
+    cursor: "pointer",
+
+    "&.pe-button--selected, &.pe-button--disabled, &.pe-button--inactive": {
+      cursor: "default",
+      "pointer-events": "none"
+    },
+
+    " .pe-button__content": {
+      position: "relative",
+      "border-radius": "inherit"
+    },
+
+    " .pe-button__label": [mixin.fontSmoothing(), {
+      position: "relative",
+      display: "block",
+      "border-radius": "inherit",
+      "pointer-events": "none"
+    }],
+
+    " .pe-button__wash, .pe-button__focus": [mixin.defaultTransition("background-color"), mixin.fit(), {
+      "border-radius": "inherit",
+      "pointer-events": "none"
+    }],
+
+    " .pe-button__focus": {
+      opacity: 0
+    },
+
+    "&.pe-button--focus": {
+      " .pe-button__focus": {
+        opacity: 1
+      }
+    },
+
+    " .pe-button__wash": {
+      "z-index": 0
+    }
+  }]), defineProperty(_ref, ".pe-button--text", {
+    display: "inline-block",
+    "min-width": componentVars.min_width + "px",
+    margin: "0 " + componentVars.margin_h + "px",
+    padding: componentVars.outer_padding_v + "px 0",
+    background: "transparent",
+    border: "none",
+
+    " .pe-button__content": {
+      position: "relative",
+      "border-width": 0,
+      padding: "0 " + componentVars.padding_h + "px",
+      "border-radius": componentVars.border_radius + "px"
+    },
+
+    " .pe-button__label": {
+      padding: componentVars.padding_v + "px 0",
+      "font-size": componentVars.font_size + "px",
+      "line-height": componentVars.font_size + "px",
+      "font-weight": componentVars.font_weight,
+      "text-transform": componentVars.text_transform,
+      "white-space": "pre"
+    },
+
+    "&.pe-button--borders": {
+      " .pe-button__wash, pe-button__focus, .pe-ripple": mixin.fit(-1),
+
+      " .pe-button__content": {
+        "border-style": "solid",
+        "border-width": "1px"
+      },
+      " .pe-button__label": {
+        padding: componentVars.padding_v - 1 + "px 0"
+      }
+    }
+  }), _ref)];
+};
+
+var layout = (function (componentVars) {
+  return styler.createStyles(componentVars, createStyles);
+});
+
+var style = function style(componentVars, scope, selector, tint) {
   var normalBorder = componentVars["color_" + tint + "_border"] || "transparent";
   var activeBorder = componentVars["color_" + tint + "_active_border"] || normalBorder;
   var disabledBorder = componentVars["color_" + tint + "_disabled_border"] || normalBorder;
-  return [defineProperty({}, scope + ".pe-button", {
+  return [defineProperty({}, scope + selector, {
     "&, &:link, &:visited": {
       color: componentVars["color_" + tint + "_text"]
     },
@@ -232,12 +232,10 @@ var style = function style(componentVars, tint) {
   })];
 };
 
-var noTouch = function noTouch(componentVars, tint, type) {
-  var scope = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
-
-  var normalBorder = componentVars["color_" + tint + "_border"];
+var noTouchStyle = function noTouchStyle(componentVars, scope, selector, tint) {
+  var normalBorder = componentVars["color_" + tint + "_border"] || "transparent";
   var hoverBorder = componentVars["color_" + tint + "_border"] || normalBorder;
-  return [defineProperty({}, scope + ".pe-button:hover", {
+  return [defineProperty({}, scope + selector + ":hover", {
     "&:not(.pe-button--selected):not(.pe-button--inactive) .pe-button__wash": {
       "background-color": componentVars["color_" + tint + "_hover_background"],
       "border-color": hoverBorder
@@ -246,19 +244,15 @@ var noTouch = function noTouch(componentVars, tint, type) {
 };
 
 var createStyles$1 = function createStyles(componentVars) {
-  return [style(componentVars, "light"), {
-    ".pe-dark-theme": [
-    // inside dark theme
-    style(componentVars, "dark", " "),
-    // has dark theme
-    style(componentVars, "dark", "&")]
-  }, {
-    "html.pe-no-touch .pe-dark-theme": [noTouch(componentVars, "dark", " "), noTouch(componentVars, "dark", "&")]
-  }];
+  var className = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+
+  var selector = className + ".pe-button";
+  return [style(componentVars, "", selector, "light"), style(componentVars, ".pe-dark-theme ", selector, "dark"), // inside dark theme
+  noTouchStyle(componentVars, "html.pe-no-touch ", selector, "light"), noTouchStyle(componentVars, "html.pe-no-touch .pe-dark-theme ", selector, "dark")];
 };
 
 var color = (function (componentVars) {
-  return mixin.createStyles(componentVars, createStyles$1);
+  return styler.createStyles(componentVars, createStyles$1);
 });
 
 var key = "button";
@@ -270,7 +264,7 @@ var styleComponent = function styleComponent(className, styles$$1) {
 
 var customTheme = function customTheme(className, vars$$1) {
   return (
-    // Inject additional styles as use className as key
+    // Inject additional styles as use the className as key
     styleComponent(className, styler.addComponentStyle(className, styles, key, vars$$1))
   );
 };

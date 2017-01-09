@@ -37,7 +37,9 @@ const view = vnode => {
       },
       ink: true,
       wash: true,
-      animateOnTap: true,
+      animateOnTap: attrs.animateOnTap !== undefined
+        ? attrs.animateOnTap
+        : true,
       children
     },
     attrs

@@ -59,6 +59,15 @@ exports[`test Option: disabled 1`] = `
 "
 `;
 
+exports[`test Option: duration (3.0) 1`] = `
+"<div class=\"pe-ripple pe-ripple--constrained\">
+  <div class=\"pe-ripple__mask\">
+    <div class=\"pe-ripple__waves\"></div>
+  </div>
+</div>
+"
+`;
+
 exports[`test Option: element 1`] = `
 "<a class=\"pe-ripple pe-ripple--constrained\">
 <div class=\"pe-ripple__mask\">
@@ -79,8 +88,8 @@ exports[`test Option: end (after click) 1`] = `
 "
 `;
 
-exports[`test Option: id 1`] = `
-"<div id=\"id-x\" class=\"pe-ripple pe-ripple--constrained\">
+exports[`test Option: end opacity (0.1) 1`] = `
+"<div class=\"pe-ripple pe-ripple--constrained\">
   <div class=\"pe-ripple__mask\">
     <div class=\"pe-ripple__waves\"></div>
   </div>
@@ -88,8 +97,8 @@ exports[`test Option: id 1`] = `
 "
 `;
 
-exports[`test Option: initial opacity (0.5) 1`] = `
-"<div class=\"pe-ripple pe-ripple--constrained\">
+exports[`test Option: id 1`] = `
+"<div id=\"id-x\" class=\"pe-ripple pe-ripple--constrained\">
   <div class=\"pe-ripple__mask\">
     <div class=\"pe-ripple__waves\"></div>
   </div>
@@ -111,6 +120,45 @@ exports[`test Option: start (after click) 1`] = `
   <div>
     start called: 0
   </div>
+  <div class=\"pe-ripple__mask\">
+    <div class=\"pe-ripple__waves\"></div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: start opacity (0.5) 1`] = `
+"<div class=\"pe-ripple pe-ripple--constrained\">
+  <div class=\"pe-ripple__mask\">
+    <div class=\"pe-ripple__waves\"></div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: style (blue) 1`] = `
+"<div style=\"color: rgb(33, 150, 243);\" class=
+\"pe-ripple pe-ripple--constrained\">
+  <div class=\"pe-ripple__mask\">
+    <div class=\"pe-ripple__waves\"></div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: style (white) -- dark theme 1`] = `
+"<div style=\"color: rgb(255, 255, 255);\" class=
+\"pe-ripple pe-ripple--constrained\">
+  <div class=\"pe-ripple__mask\">
+    <div class=\"pe-ripple__waves\"></div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Themed (should be red and permanent) 1`] = `
+"<div class=
+\"pe-ripple pe-ripple--constrained tests-ripple-themed-ripple\">
   <div class=\"pe-ripple__mask\">
     <div class=\"pe-ripple__waves\"></div>
   </div>

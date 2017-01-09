@@ -48,7 +48,8 @@ export default {
   size_regular: vars.unit_icon_size,
   size_medium:  vars.unit_icon_size_medium,
   size_large:   vars.unit_icon_size_large,
-  color:        "currentcolor" 
+  color_light:  "currentcolor",
+  color_dark:   "currentcolor"
 };
 ~~~
 
@@ -57,13 +58,15 @@ The variables like `unit_icon_size_small` that are imported from `polythene-them
 
 ### Styling components with variables 
 
-The style of a component can be set using this pattern:
+A component can be given an extra style using this pattern:
 
 ~~~javascript
 component.theme(className, vars)
 ~~~
 
-Where `vars` is a subset of the component's theme variables. For example, to create large icons for the component with class "app-icon", we write:
+Use a sufficiently unique class name to not clash with other components. `vars` is a subset of the component's theme variables. 
+
+For example, to create large icons for the component with class "app-icon", we write:
 
 ~~~javascript
 // app.js

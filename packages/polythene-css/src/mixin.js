@@ -124,22 +124,6 @@ const sticky = (zIndex = 1) => ([{
   "z-index": zIndex
 }]);
 
-// Polythene utility function to generate style objects with scopes
-// Used in theme files
-const createStyles = (common, fn) => {
-  if (Array.isArray(common)) {
-    return common.map((o) => {
-      for (let scope in o) {
-        return {
-          [scope]: fn(o[scope])
-        };
-      }
-    });
-  } else {
-    return fn(common);
-  }
-};
-
 // Creats a transition with presets
 // mixin.defaultTransition("opacity", vars.animation_duration)
 const defaultTransition = (properties = "all", duration = vars.animation_duration, curve = vars.animation_curve_default) => {
@@ -161,7 +145,6 @@ const defaultTransition = (properties = "all", duration = vars.animation_duratio
 
 export default {
   clearfix,
-  createStyles,
   defaultTransition,
   ellipsis,
   fit,

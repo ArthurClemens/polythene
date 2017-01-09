@@ -18,8 +18,19 @@ exports[`test Child node 1`] = `
 "
 `;
 
+exports[`test Interactive option: animated -- dark theme 1`] = `
+"<div class=\"component-result flex relative w-100\">
+  Click me
+</div>
+<div class=\"pe-shadow pe-shadow--animated\">
+  <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+  <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+</div>
+"
+`;
+
 exports[`test Interactive option: animated 1`] = `
-"<div class=\"component-result relative w-100\">
+"<div class=\"component-result flex relative w-100\">
   Click me
 </div>
 <div class=\"pe-shadow pe-shadow--animated\">

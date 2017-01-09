@@ -1,7 +1,7 @@
 import m from 'mithril';
 import { filterSupportedAttributes } from 'polythene-core';
 import { svg } from 'polythene-svg';
-import { mixin, styler } from 'polythene-css';
+import { styler } from 'polythene-css';
 import { styles, vars } from 'polythene-theme';
 
 var vars$1 = {
@@ -9,54 +9,9 @@ var vars$1 = {
   size_regular: vars.unit_icon_size,
   size_medium: vars.unit_icon_size_medium,
   size_large: vars.unit_icon_size_large,
-  color: "currentcolor"
+  color_light: "currentcolor",
+  color_dark: "currentcolor"
 };
-
-var iconSizesPx = function iconSizesPx() {
-  var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : vars.unit_icon_size;
-  return {
-    width: size + "px",
-    height: size + "px"
-  };
-};
-
-var createStyles = function createStyles(componentVars) {
-  return [{
-    ".pe-icon": {
-      display: "inline-block",
-      "vertical-align": "middle",
-      "background-repeat": "no-repeat",
-      position: "relative",
-      "font-size": 0,
-      "line-height": 0,
-
-      "&.pe-icon--avatar img": {
-        border: "none",
-        "border-radius": "50%",
-        width: "100%",
-        height: "100%"
-      },
-
-      " img": {
-        height: "100%"
-      },
-
-      " svg": {
-        width: "100%",
-        height: "100%"
-      },
-
-      "&.pe-icon--small": iconSizesPx(componentVars.size_small),
-      "&.pe-icon--regular": iconSizesPx(componentVars.size_regular),
-      "&.pe-icon--medium": iconSizesPx(componentVars.size_medium),
-      "&.pe-icon--large": iconSizesPx(componentVars.size_large)
-    }
-  }];
-};
-
-var layout = (function (componentVars) {
-  return mixin.createStyles(componentVars, createStyles);
-});
 
 var defineProperty = function (obj, key, value) {
   if (key in obj) {
@@ -87,18 +42,65 @@ var _extends = Object.assign || function (target) {
   return target;
 };
 
-var style = function style(componentVars) {
-  var scope = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
-  return [defineProperty({}, scope + ".pe-icon", {
-    fill: componentVars.color,
+var iconSizesPx = function iconSizesPx() {
+  var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : vars.unit_icon_size;
+  return {
+    width: size + "px",
+    height: size + "px"
+  };
+};
+
+var createStyles = function createStyles(componentVars) {
+  var className = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+
+  var selector = className + ".pe-icon";
+  return [defineProperty({}, selector, {
+    display: "inline-block",
+    "vertical-align": "middle",
+    "background-repeat": "no-repeat",
+    position: "relative",
+    "font-size": 0,
+    "line-height": 0,
+
+    "&.pe-icon--avatar img": {
+      border: "none",
+      "border-radius": "50%",
+      width: "100%",
+      height: "100%"
+    },
+
+    " img": {
+      height: "100%"
+    },
 
     " svg": {
-      fill: componentVars.color,
+      width: "100%",
+      height: "100%"
+    },
+
+    "&.pe-icon--small": iconSizesPx(componentVars.size_small),
+    "&.pe-icon--regular": iconSizesPx(componentVars.size_regular),
+    "&.pe-icon--medium": iconSizesPx(componentVars.size_medium),
+    "&.pe-icon--large": iconSizesPx(componentVars.size_large)
+  })];
+};
+
+var layout = (function (componentVars) {
+  return styler.createStyles(componentVars, createStyles);
+});
+
+var style = function style(componentVars, scope, selector, tint) {
+  var color = componentVars["color_" + tint] || "currentcolor";
+  return [defineProperty({}, scope + selector, {
+    fill: color,
+
+    " svg": {
+      fill: color,
       color: "inherit",
 
       " path, rect, circle, polygon": {
         "&:not([fill=none])": {
-          fill: componentVars.color
+          fill: color
         }
       }
     }
@@ -106,11 +108,14 @@ var style = function style(componentVars) {
 };
 
 var createStyles$1 = function createStyles(componentVars) {
-  return [style(componentVars)];
+  var className = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+
+  var selector = className + ".pe-icon";
+  return [style(componentVars, "", selector, "light"), style(componentVars, ".pe-dark-theme ", selector, "dark")];
 };
 
 var color = (function (componentVars) {
-  return mixin.createStyles(componentVars, createStyles$1);
+  return styler.createStyles(componentVars, createStyles$1);
 });
 
 var key = "icon";
@@ -122,7 +127,7 @@ var styleComponent = function styleComponent(className, styles$$1) {
 
 var customTheme = function customTheme(className, vars$$1) {
   return (
-    // Inject additional styles as use className as key
+    // Inject additional styles as use the className as key
     styleComponent(className, styler.addComponentStyle(className, styles, key, vars$$1))
   );
 };

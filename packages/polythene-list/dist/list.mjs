@@ -16,56 +16,6 @@ var vars$1 = {
   color_dark_border: rgba(vars.color_dark_foreground, vars.blend_dark_border_light)
 };
 
-var borderStyle = function borderStyle(componentVars) {
-  return mixin.hairline("border-bottom"), {
-    "border-style": "none none solid none",
-    "border-width": componentVars.border_width_bordered + "px"
-  };
-};
-
-var createStyles = function createStyles(componentVars) {
-  return [{
-    ".pe-list": {
-      padding: componentVars.padding + "px 0",
-
-      "&.pe-list--header": {
-        "padding-top": 0
-      },
-
-      "&.pe-list--compact": {
-        padding: componentVars.padding_compact + "px 0"
-      },
-
-      "& + &": [mixin.hairline("border-top"), {
-        "border-style": "solid none none none",
-        "border-width": componentVars.border_width_stacked + "px"
-      }],
-
-      "&.pe-list--borders": {
-        " .pe-list-tile:not(.pe-list__header)": {
-          "&:not(:last-child)": {
-            "&": borderStyle(componentVars)
-          }
-        }
-      },
-
-      "&.pe-list--borders-indented": {
-        "border-top": "none",
-
-        " .pe-list-tile:not(.pe-list__header)": {
-          "&:not(:last-child)": {
-            " .pe-list-tile__content:not(.pe-list-tile__content--front)": borderStyle(componentVars)
-          }
-        }
-      }
-    }
-  }];
-};
-
-var layout = (function (componentVars) {
-  return mixin.createStyles(componentVars, createStyles);
-});
-
 var defineProperty = function (obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, {
@@ -95,11 +45,61 @@ var _extends = Object.assign || function (target) {
   return target;
 };
 
-var style = function style(componentVars, tint) {
+var borderStyle = function borderStyle(componentVars) {
+  return mixin.hairline("border-bottom"), {
+    "border-style": "none none solid none",
+    "border-width": componentVars.border_width_bordered + "px"
+  };
+};
+
+var createStyles = function createStyles(componentVars) {
+  var className = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+
+  var selector = className + ".pe-list";
+  return [defineProperty({}, selector, {
+    padding: componentVars.padding + "px 0",
+
+    "&.pe-list--header": {
+      "padding-top": 0
+    },
+
+    "&.pe-list--compact": {
+      padding: componentVars.padding_compact + "px 0"
+    },
+
+    "& + &": [mixin.hairline("border-top"), {
+      "border-style": "solid none none none",
+      "border-width": componentVars.border_width_stacked + "px"
+    }],
+
+    "&.pe-list--borders": {
+      " .pe-list-tile:not(.pe-list__header)": {
+        "&:not(:last-child)": {
+          "&": borderStyle(componentVars)
+        }
+      }
+    },
+
+    "&.pe-list--borders-indented": {
+      "border-top": "none",
+
+      " .pe-list-tile:not(.pe-list__header)": {
+        "&:not(:last-child)": {
+          " .pe-list-tile__content:not(.pe-list-tile__content--front)": borderStyle(componentVars)
+        }
+      }
+    }
+  })];
+};
+
+var layout = (function (componentVars) {
+  return styler.createStyles(componentVars, createStyles);
+});
+
+var style = function style(componentVars, scope, selector, tint) {
   var _ref;
 
-  var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
-  return [(_ref = {}, defineProperty(_ref, scope + ".pe-list", {
+  return [(_ref = {}, defineProperty(_ref, scope + selector, {
     "&.pe-list--borders": {
       " .pe-list-tile:not(.pe-list__header)": {
         "&:not(:last-child)": {
@@ -121,17 +121,14 @@ var style = function style(componentVars, tint) {
 };
 
 var createStyles$1 = function createStyles(componentVars) {
-  return [style(componentVars, "light"), {
-    ".pe-dark-theme": [
-    // inside dark theme
-    style(componentVars, "dark", " "),
-    // has dark theme
-    style(componentVars, "dark", "&")]
-  }];
+  var className = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+
+  var selector = className + ".pe-list";
+  return [style(componentVars, "", selector, "light"), style(componentVars, ".pe-dark-theme ", selector, "dark")];
 };
 
 var color = (function (componentVars) {
-  return mixin.createStyles(componentVars, createStyles$1);
+  return styler.createStyles(componentVars, createStyles$1);
 });
 
 var key = "list";
@@ -143,7 +140,7 @@ var styleComponent = function styleComponent(className, styles$$1) {
 
 var customTheme = function customTheme(className, vars$$1) {
   return (
-    // Inject additional styles as use className as key
+    // Inject additional styles as use the className as key
     styleComponent(className, styler.addComponentStyle(className, styles, key, vars$$1))
   );
 };

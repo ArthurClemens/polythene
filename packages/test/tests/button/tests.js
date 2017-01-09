@@ -1,9 +1,17 @@
 import m from "mithril";
 import { button as component } from "polythene-button";
 
-component.theme("test-button-themed-button", {
+component.theme(".tests-button-themed-button", {
   color_light_background: "#2196F3",
+  color_dark_background: "#2196F3",
   color_light_text: "#fff"
+});
+
+component.theme(".tests-button-bordered-button", {
+  color_light_text: "#673ab7",
+  color_light_border: "#673ab7",
+  color_dark_text: "yellow",
+  color_dark_border: "yellow"
 });
 
 export const tests = [
@@ -28,11 +36,11 @@ export const tests = [
     }
   },
   {
-    name: "Option: borders",
+    name: "Themed button: (option: borders)",
     component,
     attrs: {
       label: "Borders",
-      class: "bordered-button",
+      class: "tests-button-bordered-button",
       borders: true
     }
   },
@@ -41,7 +49,15 @@ export const tests = [
     component,
     attrs: {
       label: "Themed button",
-      class: "test-button-themed-button"
+      class: "tests-button-themed-button"
+    }
+  },
+  {
+    name: "Themed button (theme file)",
+    component,
+    attrs: {
+      label: "Theme primary button",
+      class: "my-button--primary"
     }
   },
   {
@@ -238,6 +254,45 @@ export const tests = [
     attrs: {
       label: "Button",
       after: m("span", "After")
+    }
+  },
+
+  // Dark theme
+  
+  {
+    name: "Option: label -- dark theme",
+    class: "pe-dark-theme",
+    component,
+    attrs: {
+      label: "Label"
+    }
+  },
+  {
+    name: "Themed button -- dark theme",
+    class: "pe-dark-theme",
+    component,
+    attrs: {
+      label: "Themed button",
+      class: "tests-button-themed-button"
+    }
+  },
+  {
+    name: "Themed button: (option: borders) -- dark theme",
+    class: "pe-dark-theme",
+    component,
+    attrs: {
+      label: "Borders dark theme",
+      class: "tests-button-bordered-button",
+      borders: true
+    }
+  },
+  {
+    name: "Themed button (theme file) -- dark theme",
+    class: "pe-dark-theme",
+    component,
+    attrs: {
+      label: "Dark theme primary button",
+      class: "my-button--primary"
     }
   },
 ];

@@ -1,11 +1,11 @@
-import { mixin } from "polythene-css";
+import { styler } from "polythene-css";
 
-const style = (componentVars, tint, scope = "") => {
-  const normalBorder = componentVars["color_" + tint + "_border"] || "transparent";
-  const activeBorder = componentVars["color_" + tint + "_active_border"] || normalBorder;
+const style = (componentVars, scope, selector, tint) => {
+  const normalBorder   = componentVars["color_" + tint + "_border"]          || "transparent";
+  const activeBorder   = componentVars["color_" + tint + "_active_border"]   || normalBorder;
   const disabledBorder = componentVars["color_" + tint + "_disabled_border"] || normalBorder;
   return [{
-    [scope + ".pe-button"]: {
+    [scope + selector]: {
       "&, &:link, &:visited": {
         color: componentVars["color_" + tint + "_text"]
       },
@@ -45,11 +45,11 @@ const style = (componentVars, tint, scope = "") => {
   }];
 };
 
-const noTouch = (componentVars, tint, type, scope = "") => {
-  const normalBorder = componentVars["color_" + tint + "_border"];
-  const hoverBorder = componentVars["color_" + tint + "_border"] || normalBorder;
+const noTouchStyle = (componentVars, scope, selector, tint) => {
+  const normalBorder = componentVars["color_" + tint + "_border"] || "transparent";
+  const hoverBorder  = componentVars["color_" + tint + "_border"] || normalBorder;
   return [{
-    [scope + ".pe-button:hover"]: {
+    [scope + selector + ":hover"]: {
       "&:not(.pe-button--selected):not(.pe-button--inactive) .pe-button__wash": {
         "background-color": componentVars["color_" + tint + "_hover_background"],
         "border-color": hoverBorder
@@ -58,22 +58,15 @@ const noTouch = (componentVars, tint, type, scope = "") => {
   }];
 };
 
-const createStyles = componentVars => [
-  style(componentVars, "light"),
-  {
-    ".pe-dark-theme": [
-      // inside dark theme
-      style(componentVars, "dark", " "),
-      // has dark theme
-      style(componentVars, "dark", "&")
-    ]
-  }, {
-    "html.pe-no-touch .pe-dark-theme": [
-      noTouch(componentVars, "dark", " "),
-      noTouch(componentVars, "dark", "&")
-    ]
-  }
-];
+const createStyles = (componentVars, className = "") => {
+  const selector = `${className}.pe-button`;
+  return [
+    style(componentVars,        "",                                 selector, "light"),
+    style(componentVars,        ".pe-dark-theme ",                  selector, "dark" ), // inside dark theme
+    noTouchStyle(componentVars, "html.pe-no-touch ",                selector, "light"),
+    noTouchStyle(componentVars, "html.pe-no-touch .pe-dark-theme ", selector, "dark" ), // inside dark theme
+  ];
+};
 
-export default componentVars => mixin.createStyles(componentVars, createStyles);
+export default componentVars => styler.createStyles(componentVars, createStyles);
 

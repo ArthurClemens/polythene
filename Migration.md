@@ -138,6 +138,8 @@ const myListTile2 = m(listTile, {}, "My content");
 
 
 
+
+
 ## Component specific changes
 
 ### Button
@@ -192,6 +194,12 @@ FAB is now composed from `polythene-raised-button`.
 CSS class `pe-button__label` has been replaced with `pe-button--icon__content`.
 
 (Undocumented) option `raised` no longer works; use FAB instead, or add a shadow component.
+
+
+
+### Ripple
+
+Option `initialOpacity` has been renamed to `startOpacity`. Ripple includes more options to configure the ripple animation.
 
 
 

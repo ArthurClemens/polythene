@@ -1,20 +1,16 @@
 import { styler } from "polythene-css";
 
 const style = (componentVars, scope, selector, tint) => {
+  const color = componentVars["color_" + tint] || componentVars["color"] || "inherit";
   return [{
     [scope + selector]: {
-      "background-color": componentVars["color_" + tint + "_background"],
-      color: componentVars["color_" + tint + "_text"],
-
-      " .pe-button__content": {
-        "background-color": "transparent"
-      }
+      color
     }
   }];
 };
 
 const createStyles = (componentVars, className = "") => {
-  const selector = `${className}.pe-button--fab`;
+  const selector = `${className}.pe-ripple`;
   return [
     style(componentVars, "",                selector, "light"),
     style(componentVars, ".pe-dark-theme ", selector, "dark" ) // inside dark theme

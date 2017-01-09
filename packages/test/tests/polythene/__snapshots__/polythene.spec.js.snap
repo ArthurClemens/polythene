@@ -1,5 +1,6 @@
-exports[`test Button (theme: blue) 1`] = `
-"<a tabindex=\"0\" class=\"pe-button pe-button--text blue-button\">
+exports[`test Button (theme: red) 1`] = `
+"<a tabindex=\"0\" class=
+\"pe-button pe-button--text tests-polythene-themed-button\">
 <div class=\"pe-button__content\">
   <div class=\"pe-ripple pe-ripple--constrained\">
     <div class=\"pe-ripple__mask\">
@@ -69,7 +70,7 @@ exports[`test CSS Classes: blocks should be justified horizontally 1`] = `
 `;
 
 exports[`test FAB (theme: red) 1`] = `
-"<a tabindex=\"0\" class=\"pe-button--fab red-fab\">
+"<a tabindex=\"0\" class=\"pe-button--fab tests-polythene-themed-fab\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -262,9 +263,9 @@ exports[`test List Tile 1`] = `
 "
 `;
 
-exports[`test Raised button (theme: blue) 1`] = `
+exports[`test Raised button (theme: red) 1`] = `
 "<a tabindex=\"0\" class=
-\"pe-button pe-button--text pe-button--raised blue-button\">
+\"pe-button pe-button--text pe-button--raised tests-polythene-themed-button\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>

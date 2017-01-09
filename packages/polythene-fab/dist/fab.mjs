@@ -18,51 +18,6 @@ var vars$1 = {
   color_dark_text: rgba(vars.color_primary_foreground)
 };
 
-var createStyles = function createStyles(componentVars) {
-  return [{
-    ".pe-button--fab": [mixin.vendorize({
-      "user-select": "none"
-    }, vars.prefixes_user_select), {
-      display: "inline-block",
-      position: "relative",
-      outline: "none",
-      cursor: "pointer",
-      width: componentVars.size_regular + "px",
-      height: componentVars.size_regular + "px",
-      padding: componentVars.padding_regular + "px",
-      "border-radius": "50%",
-      border: "none",
-
-      "&.pe-button--fab-mini": {
-        width: componentVars.size_mini + "px",
-        height: componentVars.size_mini + "px",
-        padding: (componentVars.size_mini - vars.unit_icon_size) / 2 + "px"
-      },
-
-      " .pe-button__content": {
-        padding: 0,
-        "border-radius": "inherit"
-      },
-
-      " .pe-ripple": {
-        "border-radius": "inherit"
-      },
-
-      " .pe-button__wash": [mixin.vendorize({
-        transition: "background-color " + vars.animation_duration + " ease-in-out"
-      }, vars.prefixes_transition), {
-        "border-radius": "inherit",
-        "pointer-events": "none",
-        "background-color": "transparent"
-      }]
-    }]
-  }];
-};
-
-var layout = (function (componentVars) {
-  return mixin.createStyles(componentVars, createStyles);
-});
-
 var defineProperty = function (obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, {
@@ -92,9 +47,54 @@ var _extends = Object.assign || function (target) {
   return target;
 };
 
-var style = function style(componentVars, tint) {
-  var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
-  return [defineProperty({}, scope + ".pe-button--fab, a.pe-button--fab", {
+var createStyles = function createStyles(componentVars) {
+  var className = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+
+  var selector = className + ".pe-button--fab";
+  return [defineProperty({}, selector, [mixin.vendorize({
+    "user-select": "none"
+  }, vars.prefixes_user_select), {
+    display: "inline-block",
+    position: "relative",
+    outline: "none",
+    cursor: "pointer",
+    width: componentVars.size_regular + "px",
+    height: componentVars.size_regular + "px",
+    padding: componentVars.padding_regular + "px",
+    "border-radius": "50%",
+    border: "none",
+
+    "&.pe-button--fab-mini": {
+      width: componentVars.size_mini + "px",
+      height: componentVars.size_mini + "px",
+      padding: (componentVars.size_mini - vars.unit_icon_size) / 2 + "px"
+    },
+
+    " .pe-button__content": {
+      padding: 0,
+      "border-radius": "inherit"
+    },
+
+    " .pe-ripple": {
+      "border-radius": "inherit"
+    },
+
+    " .pe-button__wash": [mixin.vendorize({
+      transition: "background-color " + vars.animation_duration + " ease-in-out"
+    }, vars.prefixes_transition), {
+      "border-radius": "inherit",
+      "pointer-events": "none",
+      "background-color": "transparent"
+    }]
+  }])];
+};
+
+var layout = (function (componentVars) {
+  return styler.createStyles(componentVars, createStyles);
+});
+
+var style = function style(componentVars, scope, selector, tint) {
+  return [defineProperty({}, scope + selector, {
     "background-color": componentVars["color_" + tint + "_background"],
     color: componentVars["color_" + tint + "_text"],
 
@@ -105,17 +105,15 @@ var style = function style(componentVars, tint) {
 };
 
 var createStyles$1 = function createStyles(componentVars) {
-  return [style(componentVars, "light"), {
-    ".pe-dark-theme": [
-    // inside dark theme
-    style(componentVars, "dark", " "),
-    // has dark theme
-    style(componentVars, "dark", "&")]
-  }];
+  var className = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+
+  var selector = className + ".pe-button--fab";
+  return [style(componentVars, "", selector, "light"), style(componentVars, ".pe-dark-theme ", selector, "dark") // inside dark theme
+  ];
 };
 
 var color = (function (componentVars) {
-  return mixin.createStyles(componentVars, createStyles$1);
+  return styler.createStyles(componentVars, createStyles$1);
 });
 
 var key = "fab";
@@ -127,7 +125,7 @@ var styleComponent = function styleComponent(className, styles$$1) {
 
 var customTheme = function customTheme(className, vars$$1) {
   return (
-    // Inject additional styles as use className as key
+    // Inject additional styles as use the className as key
     styleComponent(className, styler.addComponentStyle(className, styles, key, vars$$1))
   );
 };
@@ -157,7 +155,7 @@ var view = function view(vnode) {
     },
     ink: true,
     wash: true,
-    animateOnTap: true,
+    animateOnTap: attrs.animateOnTap !== undefined ? attrs.animateOnTap : true,
     children: children
   }, attrs));
 };

@@ -19,6 +19,17 @@ webfont.load({
   }
 });
 
+polythene.button.theme(".tests-polythene-themed-button", {
+  color_light_background: "#FF1744",
+  color_light_text: "#fff"
+});
+
+polythene.fab.theme(".tests-polythene-themed-fab", {
+  color_light_background: "#FF1744",
+  color_light_text: "#fff"
+});
+
+
 export const tests = [
   {
     name: "Button",
@@ -28,10 +39,10 @@ export const tests = [
     }
   },
   {
-    name: "Button (theme: blue)",
+    name: "Button (theme: red)",
     component: polythene.button,
     attrs: {
-      class: "blue-button", // theme + class name set in theme tests
+      class: "tests-polythene-themed-button",
       label: "Button"
     }
   },
@@ -43,10 +54,10 @@ export const tests = [
     }
   },
   {
-    name: "Raised button (theme: blue)",
+    name: "Raised button (theme: red)",
     component: polythene.raisedButton,
     attrs: {
-      class: "blue-button", // theme + class name set in theme tests
+      class: "tests-polythene-themed-button",
       label: "Raised button"
     }
   },
@@ -65,7 +76,7 @@ export const tests = [
     name: "FAB (theme: red)",
     component: polythene.fab,
     attrs: {
-      class: "red-fab", // theme + class name set in theme tests
+      class: "tests-polythene-themed-fab",
       icon: {
         svg: {
           content: SVG

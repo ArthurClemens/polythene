@@ -28,7 +28,7 @@ const generatedHtml = {
     const test = vnode.attrs.test;
     const raw = tidy(m(test.component, test.attrs, test.children));
     return m(css.rawResult, {
-      class: [vnode.state.open ? "open" : "closed", test.class || null].join(" "),
+      class: vnode.state.open ? "open" : "closed",
       onclick: vnode.state.toggle,
     }, [
       m(".html", {}, raw),
@@ -55,9 +55,11 @@ const testsPage = (name, tests) => ({
       const resultId = `test-${(test.name).replace(/[\:\-\[\]]/g, "").replace(/ /g, "-").toLowerCase()}`;
       return m([css.resultRow, test.interactive ? css.interactive : null].join(""), {
         key: resultId,
-        class: resultId
+        class: [resultId, test.class || null].join(" "),
       }, [
-        m(css.resultTitle, test.name),
+        m(css.resultTitle, {
+          class: "result-title"
+        }, test.name),
         m(css.result, m(css.content, m(test.component, test.attrs, test.children))),
         m(generatedHtml, {test})
       ]);

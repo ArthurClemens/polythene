@@ -162,20 +162,6 @@ var sticky = function sticky() {
   }];
 };
 
-// Polythene utility function to generate style objects with scopes
-// Used in theme files
-var createStyles = function createStyles(common, fn) {
-  if (Array.isArray(common)) {
-    return common.map(function (o) {
-      for (var scope in o) {
-        return defineProperty({}, scope, fn(o[scope]));
-      }
-    });
-  } else {
-    return fn(common);
-  }
-};
-
 // Creats a transition with presets
 // mixin.defaultTransition("opacity", vars.animation_duration)
 var defaultTransition = function defaultTransition() {
@@ -196,7 +182,6 @@ var defaultTransition = function defaultTransition() {
 
 var mixin = {
   clearfix: clearfix,
-  createStyles: createStyles,
   defaultTransition: defaultTransition,
   ellipsis: ellipsis,
   fit: fit,
@@ -440,15 +425,33 @@ var styleComponent = function styleComponent(id, styles, key, vars$$1) {
 
 /*
  * Create an additional style to head for a component. Does not overwrite existing keys.
- * className: (String) CSS class name
+ * selector: (String) CSS selector
  * styles: [Array} list of lists style objects
  * key: (String) component key in styles object
  * extraVars: (Object) component configuration variables
 */
-var addComponentStyle = function addComponentStyle(className, styles, key, extraVars) {
+var addComponentStyle = function addComponentStyle(selector, styles, key, extraVars) {
   return _extends({}, styles, defineProperty({}, key, function (vars$$1) {
-    return [defineProperty({}, "." + className, _extends({}, vars$$1, extraVars))];
+    return [defineProperty({}, selector, _extends({}, vars$$1, extraVars))];
   }));
+};
+
+/*
+ * Generate style objects with scopes.
+ */
+var createStyles = function createStyles(componentVars, fn) {
+  if (Array.isArray(componentVars)) {
+    // Styles set in custom theme
+    return componentVars.map(function (o) {
+      // Currently only a single class is supported
+      for (var selector in o) {
+        return fn(o[selector], selector);
+      }
+    });
+  } else {
+    // No theme set
+    return fn(componentVars);
+  }
 };
 
 /*
@@ -488,7 +491,7 @@ var addToDocument = function addToDocument(opts) {
     styles[_key3 - 1] = arguments[_key3];
   }
 
-  var id = opts.id;
+  var id = opts.id.replace(/[^a-z0-9]/g, "_");
   var documentRef = opts.document || window.document;
   remove(id);
   var styleEl = documentRef.createElement("style");
@@ -513,6 +516,7 @@ var addToDocument = function addToDocument(opts) {
 var styler = {
   add: add,
   addToDocument: addToDocument,
+  createStyles: createStyles,
   remove: remove,
   styleComponent: styleComponent,
   addComponentStyle: addComponentStyle

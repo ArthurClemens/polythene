@@ -149,8 +149,8 @@ exports[`test Option: header 1`] = `
 
 exports[`test Option: hoverable -- dark theme 1`] = `
 "<div class=
-\"pe-list pe-list--borders pe-list--hoverable pe-list--header pe-dark-theme\">
-<div class=\"pe-list-tile pe-list__header\">
+\"pe-list pe-list--borders pe-list--hoverable pe-list--header\">
+  <div class=\"pe-list-tile pe-list__header\">
     <div class=\"pe-list-tile__primary\">
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">

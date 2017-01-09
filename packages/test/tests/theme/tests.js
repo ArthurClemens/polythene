@@ -16,35 +16,35 @@ import iconAlarm from "mmsvg/google/msvg/action/alarm-add";
 
 // [1]
 
-button.theme("blue-button", {
+button.theme(".tests-custom-theme-blue-button", {
   color_light_background: "#2196F3",
   color_light_text: "#fff"
 });
 
-button.theme("red-button", {
+button.theme(".tests-custom-theme-red-button", {
   color_light_background: "#ff0000",
   color_light_text: "#fff"
 });
 
-icon.theme("red-icon", {
-  color: "red"
+icon.theme(".tests-custom-theme-red-icon", {
+  color_light: "red"
 });
 
-fab.theme("red-fab", {
+fab.theme(".tests-custom-theme-red-fab", {
   color_light_background: "#ff0000",
   color_light_text: "#fff"
 });
 
-iconButton.theme("large-icon-button", {
+iconButton.theme(".tests-custom-theme-large-icon-button", {
   padding: 50,
   color_background: "#fff"
 });
 
-list.theme("blue-list", {
+list.theme(".tests-custom-theme-blue-list", {
   color_light_border: "#2196F3"
 });
 
-listTile.theme("red-list-tile", {
+listTile.theme(".tests-custom-theme-red-list-tile", {
   color_light_title: "red"
 });
 
@@ -53,12 +53,12 @@ listTile.theme("red-list-tile", {
 const secondaryButton = {
   theme: button.theme,
   view: vnode => m(button, {
-    class: "secondary-button",
+    class: "tests-custom-theme-secondary-button",
     borders: true,
     ...vnode.attrs
   })
 };
-secondaryButton.theme("secondary-button", {
+secondaryButton.theme(".tests-custom-theme-secondary-button", {
   color_light_border: "#ddd",
   color_light_background: "#fff"
 });
@@ -73,7 +73,7 @@ export const tests = [
     name: "Theme with style variables: button (should be blue)",
     component: button,
     attrs: {
-      class: "blue-button",
+      class: "tests-custom-theme-blue-button",
       label: "Blue button"
     }
   },
@@ -81,7 +81,7 @@ export const tests = [
     name: "Theme with style variables: button (should be red)",
     component: button,
     attrs: {
-      class: "red-button",
+      class: "tests-custom-theme-red-button",
       label: "Red button"
     }
   },
@@ -100,10 +100,10 @@ export const tests = [
     }
   },
   {
-    name: "Theme with theme file: button (should be purple)",
+    name: "Theme with theme file: button (text should be purple)",
     component: button,
     attrs: {
-      label: "Purple button",
+      label: "Primary button",
       class: "my-button--primary"
     }
   },
@@ -120,7 +120,7 @@ export const tests = [
     name: "Theme with style variables: FAB (should be red)",
     component: fab,
     attrs: {
-      class: "red-fab",
+      class: "tests-custom-theme-red-fab",
       icon: {
         msvg: iconAlarm
       }
@@ -130,7 +130,7 @@ export const tests = [
     name: "Theme with style variables: icon (should be red)",
     component: icon,
     attrs: {
-      class: "red-icon",
+      class: "tests-custom-theme-red-icon",
       msvg: iconAlarm
     }
   },
@@ -165,7 +165,7 @@ export const tests = [
     name: "Theme with style variables: icon button (should have large padding)",
     component: iconButton,
     attrs: {
-      class: "large-icon-button",
+      class: "tests-custom-theme-large-icon-button",
       icon: {
         msvg: iconAlarm
       }
@@ -175,7 +175,7 @@ export const tests = [
     name: "Theme with style variables: list (should have blue borders)",
     component: list,
     attrs: {
-      class: "blue-list",
+      class: "tests-custom-theme-blue-list",
       borders: true,
       tiles: [
         m(listTile, {
@@ -199,17 +199,17 @@ export const tests = [
     attrs: {
       tiles: [
         m(listTile, {
-          class: "red-list-tile",
+          class: "tests-custom-theme-red-list-tile",
           title: "Jennifer Barker",
           subtitle: "Starting post doc"
         }),
         m(listTile, {
-          class: "red-list-tile",
+          class: "tests-custom-theme-red-list-tile",
           title: "Ali Connors",
           subtitle: "Brunch this weekend?"
         }),
         m(listTile, {
-          class: "red-list-tile",
+          class: "tests-custom-theme-red-list-tile",
           title: "Mike Eden",
           subtitle: "Watch a game"
         })

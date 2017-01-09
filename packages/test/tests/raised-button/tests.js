@@ -1,8 +1,8 @@
 import m from "mithril";
 import { raisedButton as component } from "polythene-raised-button";
 
-component.theme("themed-button", {
-  color_light_background: "#2196F3",
+component.theme(".tests-raised-button-themed-button", {
+  color_light_background: "#FF1744",
   color_light_text: "#fff"
 });
 
@@ -44,11 +44,11 @@ export const tests = [
     }
   },
   {
-    name: "Themed button",
+    name: "Themed button (should be red)",
     component,
     attrs: {
       label: "Themed button",
-      class: "themed-button"
+      class: "tests-raised-button-themed-button"
     }
   },
   {
@@ -56,7 +56,7 @@ export const tests = [
     component,
     attrs: {
       label: "Disabled themed button",
-      class: "themed-button",
+      class: "tests-raised-button-themed-button",
       disabled: true
     }
   },
@@ -94,6 +94,15 @@ export const tests = [
     attrs: {
       label: "Not disabled",
       disabled: false
+    }
+  },
+  {
+    name: "Option: animateOnTap (false)",
+    interactive: true,
+    component,
+    attrs: {
+      label: "Don't animate shadow",
+      animateOnTap: false
     }
   },
   {
@@ -151,15 +160,6 @@ export const tests = [
       inactive: true
     }
   },
-  {
-    name: "Option: animateOnTap (false)",
-    interactive: true,
-    component,
-    attrs: {
-      label: "No animate",
-      animateOnTap: false
-    }
-  },
 
   // Common
   {
@@ -203,6 +203,27 @@ export const tests = [
     attrs: {
       label: "Button",
       after: m("span", "After")
+    }
+  },
+
+  // Dark theme
+
+  {
+    name: "Option: label -- dark theme (should be app's primary color)",
+    component,
+    class: "pe-dark-theme",
+    attrs: {
+      label: "Label"
+    }
+  },
+
+  {
+    name: "Option: disabled -- dark theme",
+    component,
+    class: "pe-dark-theme",
+    attrs: {
+      label: "Label",
+      disabled: true
     }
   },
 ];

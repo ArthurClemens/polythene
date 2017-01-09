@@ -17,7 +17,7 @@ exports[`test No theme: normal button 1`] = `
 
 exports[`test Theme with deriving component: button (should be bordered with white background) 1`] = `
 "<a tabindex=\"0\" class=
-\"pe-button pe-button--text pe-button--borders secondary-button\">
+\"pe-button pe-button--text pe-button--borders tests-custom-theme-secondary-button\">
 <div class=\"pe-button__content\">
   <div class=\"pe-ripple pe-ripple--constrained\">
     <div class=\"pe-ripple__mask\">
@@ -34,7 +34,7 @@ exports[`test Theme with deriving component: button (should be bordered with whi
 `;
 
 exports[`test Theme with style variables: FAB (should be red) 1`] = `
-"<a tabindex=\"0\" class=\"pe-button--fab red-fab\">
+"<a tabindex=\"0\" class=\"pe-button--fab tests-custom-theme-red-fab\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -64,7 +64,8 @@ exports[`test Theme with style variables: FAB (should be red) 1`] = `
 `;
 
 exports[`test Theme with style variables: button (should be blue) 1`] = `
-"<a tabindex=\"0\" class=\"pe-button pe-button--text blue-button\">
+"<a tabindex=\"0\" class=
+\"pe-button pe-button--text tests-custom-theme-blue-button\">
 <div class=\"pe-button__content\">
   <div class=\"pe-ripple pe-ripple--constrained\">
     <div class=\"pe-ripple__mask\">
@@ -81,7 +82,8 @@ exports[`test Theme with style variables: button (should be blue) 1`] = `
 `;
 
 exports[`test Theme with style variables: button (should be red) 1`] = `
-"<a tabindex=\"0\" class=\"pe-button pe-button--text red-button\">
+"<a tabindex=\"0\" class=
+\"pe-button pe-button--text tests-custom-theme-red-button\">
 <div class=\"pe-button__content\">
   <div class=\"pe-ripple pe-ripple--constrained\">
     <div class=\"pe-ripple__mask\">
@@ -98,7 +100,7 @@ exports[`test Theme with style variables: button (should be red) 1`] = `
 `;
 
 exports[`test Theme with style variables: icon (should be red) 1`] = `
-"<div class=\"pe-icon pe-icon--regular red-icon\">
+"<div class=\"pe-icon pe-icon--regular tests-custom-theme-red-icon\">
   <div class=\"pe-svg\">
     <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\"
     viewbox=\"0 0 24 24\">
@@ -113,7 +115,7 @@ exports[`test Theme with style variables: icon (should be red) 1`] = `
 
 exports[`test Theme with style variables: icon button (should have large padding) 1`] = `
 "<a tabindex=\"0\" class=
-\"pe-button pe-button--icon large-icon-button\">
+\"pe-button pe-button--icon tests-custom-theme-large-icon-button\">
 <div class=\"pe-button__content\">
   <div class=\"pe-ripple pe-ripple--constrained\">
     <div class=\"pe-ripple__mask\">
@@ -138,7 +140,7 @@ exports[`test Theme with style variables: icon button (should have large padding
 `;
 
 exports[`test Theme with style variables: list (should have blue borders) 1`] = `
-"<div class=\"pe-list pe-list--borders blue-list\">
+"<div class=\"pe-list pe-list--borders tests-custom-theme-blue-list\">
   <div class=\"pe-list-tile pe-list-tile--subtitle\">
     <div class=\"pe-list-tile__primary\">
       <div class=\"pe-list-tile__content\">
@@ -181,8 +183,9 @@ exports[`test Theme with style variables: list (should have blue borders) 1`] = 
 
 exports[`test Theme with style variables: list tile (should have red titles) 1`] = `
 "<div class=\"pe-list\">
-  <div class=\"pe-list-tile pe-list-tile--subtitle red-list-tile\">
-    <div class=\"pe-list-tile__primary\">
+  <div class=
+  \"pe-list-tile pe-list-tile--subtitle tests-custom-theme-red-list-tile\">
+  <div class=\"pe-list-tile__primary\">
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
           Jennifer Barker
@@ -193,8 +196,9 @@ exports[`test Theme with style variables: list tile (should have red titles) 1`]
       </div>
     </div>
   </div>
-  <div class=\"pe-list-tile pe-list-tile--subtitle red-list-tile\">
-    <div class=\"pe-list-tile__primary\">
+  <div class=
+  \"pe-list-tile pe-list-tile--subtitle tests-custom-theme-red-list-tile\">
+  <div class=\"pe-list-tile__primary\">
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
           Ali Connors
@@ -205,8 +209,9 @@ exports[`test Theme with style variables: list tile (should have red titles) 1`]
       </div>
     </div>
   </div>
-  <div class=\"pe-list-tile pe-list-tile--subtitle red-list-tile\">
-    <div class=\"pe-list-tile__primary\">
+  <div class=
+  \"pe-list-tile pe-list-tile--subtitle tests-custom-theme-red-list-tile\">
+  <div class=\"pe-list-tile__primary\">
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
           Mike Eden
@@ -251,7 +256,7 @@ exports[`test Theme with theme file (global primary color): FAB (should be orang
 "
 `;
 
-exports[`test Theme with theme file: button (should be purple) 1`] = `
+exports[`test Theme with theme file: button (text should be purple) 1`] = `
 "<a tabindex=\"0\" class=
 \"pe-button pe-button--text my-button--primary\">
 <div class=\"pe-button__content\">
@@ -263,7 +268,7 @@ exports[`test Theme with theme file: button (should be purple) 1`] = `
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
-    Purple button
+    Primary button
   </div>
 </div></a>
 "

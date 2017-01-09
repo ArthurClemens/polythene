@@ -12,7 +12,8 @@ body {
   padding-bottom: 40px;
 }
 .pe-dark-theme {
-  background-color: #263238;
+  background-color: #303030;
+  color: #777;
 }
 .generated-html {
   font-size: .85rem;
@@ -54,7 +55,7 @@ body {
 .height-100px {
   height: 100px;
 }
-.interactive {
+.interactive:not(.pe-dark-theme) {
   background-color: #B3E5FC;
 }
 .header-row,
@@ -69,16 +70,28 @@ body {
   background-color: #fff;
 }
 
+.tests-ripple .pe-dark-theme .pe-ripple,
+.tests-polythene .pe-dark-theme .pe-ripple {
+  background-color: #444;
+}
+
 .tests-polythene .test-list .pe-list,
-.tests-list .result .pe-list:not(.pe-dark-theme),
+.tests-list .pe-list,
 .tests-polythene .test-list-tile .pe-list-tile,
-.tests-list-tile .result .pe-list-tile:not(.pe-dark-theme) {
+.tests-list-tile .pe-list-tile {
   background-color: #fff;
 }
 
-.tests-polythene .test-icon-button .pe-button__content,
-.tests-icon-button .result .pe-button__content {
-  background-color: #fff;
+.tests-list .pe-dark-theme .result .pe-list,
+.tests-list-tile .pe-dark-theme .result .pe-list-tile {
+  background-color: #444;
+}
+
+.pe-dark-theme .result-title {
+  color: #aaa;
+}
+.pe-dark-theme.result-row {
+  border-color: #666;
 }
 
 .scrollable-list {

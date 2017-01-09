@@ -16,19 +16,37 @@ const styleComponent = (id, styles, key, vars, ...styleFns) => {
 
 /*
  * Create an additional style to head for a component. Does not overwrite existing keys.
- * className: (String) CSS class name
+ * selector: (String) CSS selector
  * styles: [Array} list of lists style objects
  * key: (String) component key in styles object
  * extraVars: (Object) component configuration variables
 */
-const addComponentStyle = (className, styles, key, extraVars) =>
+const addComponentStyle = (selector, styles, key, extraVars) =>
   Object.assign(
     {},
     styles,
     {[key]: vars => [
-      { [`.${className}`]: Object.assign({}, vars, extraVars) }
+      {[selector]: Object.assign({}, vars, extraVars)}
     ]}
   );
+
+/*
+ * Generate style objects with scopes.
+ */
+const createStyles = (componentVars, fn) => {
+  if (Array.isArray(componentVars)) {
+    // Styles set in custom theme
+    return componentVars.map((o) => {
+      // Currently only a single class is supported
+      for (let selector in o) {
+        return fn(o[selector], selector);
+      }
+    });
+  } else {
+    // No theme set
+    return fn(componentVars);
+  }
+};
 
 /*
  * id: identifier, used as HTMLElement id for the attached <style></style> element
@@ -59,7 +77,7 @@ const remove = id => {
  * styles: list of lists style objects
  */
 const addToDocument = (opts, ...styles) => {
-  const id = opts.id;
+  const id = opts.id.replace(/[^a-z0-9]/g, "_");
   const documentRef = opts.document || window.document;
   remove(id);
   const styleEl = documentRef.createElement("style");
@@ -84,6 +102,7 @@ const addToDocument = (opts, ...styles) => {
 export default {
   add,
   addToDocument,
+  createStyles,
   remove,
   styleComponent,
   addComponentStyle

@@ -11,7 +11,7 @@ const styleComponent = (className, styles) =>
   styler.styleComponent(className, styles, key, vars, layout);
 
 export const customTheme = (className, vars) =>
-  // Inject additional styles as use className as key
+  // Inject additional styles as use the className as key
   styleComponent(className, styler.addComponentStyle(
     className, styles, key, vars
   ));

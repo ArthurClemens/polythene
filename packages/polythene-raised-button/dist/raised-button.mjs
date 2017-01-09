@@ -2,7 +2,7 @@ import m from 'mithril';
 import { button } from 'polythene-button';
 import { shadow } from 'polythene-shadow';
 import { isTouch, subscribe, touchEndEvent, touchStartEvent } from 'polythene-core';
-import { mixin, styler } from 'polythene-css';
+import { styler } from 'polythene-css';
 import { styles, vars } from 'polythene-theme';
 
 var rgba = vars.rgba;
@@ -54,13 +54,11 @@ var _extends = Object.assign || function (target) {
   return target;
 };
 
-var style = function style(componentVars, tint) {
-  var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
-
+var style = function style(componentVars, scope, selector, tint) {
   var normalBorder = componentVars["color_" + tint + "_border"] || "transparent";
   var activeBorder = componentVars["color_" + tint + "_active_border"] || normalBorder;
   var disabledBorder = componentVars["color_" + tint + "_disabled_border"] || normalBorder;
-  return [defineProperty({}, scope + ".pe-button", {
+  return [defineProperty({}, scope + selector, {
     "&, &:link, &:visited": {
       color: componentVars["color_" + tint + "_text"]
     },
@@ -99,12 +97,10 @@ var style = function style(componentVars, tint) {
   })];
 };
 
-var noTouch = function noTouch(componentVars, tint, type) {
-  var scope = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
-
+var noTouchStyle = function noTouchStyle(componentVars, scope, selector, tint) {
   var normalBorder = componentVars["color_" + tint + "_border"];
   var hoverBorder = componentVars["color_" + tint + "_border"] || normalBorder;
-  return [defineProperty({}, scope + ".pe-button:hover", {
+  return [defineProperty({}, scope + selector + ":hover", {
     "&:not(.pe-button--selected):not(.pe-button--inactive) .pe-button__wash": {
       "background-color": componentVars["color_" + tint + "_hover_background"],
       "border-color": hoverBorder
@@ -113,17 +109,15 @@ var noTouch = function noTouch(componentVars, tint, type) {
 };
 
 var createStyles = function createStyles(componentVars) {
-  return [style(componentVars, "light", ".pe-button--raised"), {
-    "html.pe-no-touch": [noTouch(componentVars, "light", " .pe-button--raised")]
-  }, {
-    ".pe-dark-theme": [style(componentVars, "dark", " .pe-button--raised")]
-  }, {
-    "html.pe-no-touch .pe-dark-theme": [noTouch(componentVars, "dark", " .pe-button--raised")]
-  }];
+  var className = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+
+  var selector = className + ".pe-button--raised";
+  return [style(componentVars, "", selector, "light"), style(componentVars, ".pe-dark-theme ", selector, "dark"), // inside dark theme
+  noTouchStyle(componentVars, "html.pe-no-touch ", selector, "light"), noTouchStyle(componentVars, "html.pe-no-touch .pe-dark-theme ", selector, "dark")];
 };
 
 var color = (function (componentVars) {
-  return mixin.createStyles(componentVars, createStyles);
+  return styler.createStyles(componentVars, createStyles);
 });
 
 // No layout
@@ -136,7 +130,7 @@ var styleComponent = function styleComponent(className, styles$$1) {
 
 var customTheme = function customTheme(className, vars$$1) {
   return (
-    // Inject additional styles as use className as key
+    // Inject additional styles as use the className as key
     styleComponent(className, styler.addComponentStyle(className, styles, key, vars$$1))
   );
 };

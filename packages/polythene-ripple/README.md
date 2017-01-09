@@ -74,10 +74,17 @@ const myListTile = m(listTile, {
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **constrained** | optional | Boolean | true | Set to `false` to make the ripple shape no longer bound to the target element |
-| **center** | optional | Boolean | false | Set to `true` to start the ripple from the center |
-| **initialOpacity** | optional | Number | 0.2 | Opacity at the start of the ripple |
-| **opacityDecayVelocity** | optional | Number | 0.4 | Velocity of decrease of opacity |
+| **constrained**             | optional | Boolean | true | Set to `false` to make the ripple shape no longer bound to the target element |   
+| **center**                  | optional | Boolean | false | Set to `true` to start the ripple from the center |
+| **duration**                | optional | Number | `1 / opacityDecayVelocity * 0.2` | The animation duration in seconds |
+| **startOpacity**            | optional | Number | 0.2 | Opacity at the start of the ripple animation |
+| **endOpacity**              | optional | Number | 0.0 | Opacity at the end of the ripple animation |
+| **startScale**              | optional | Number | 0.1 | Scale at the start of the ripple animation |
+| **endScale**                | optional | Number | 2.0 | Scale at the end of the ripple animation |
+| **animationTimingFunction** | optional | String | "ease-out" | Animation function: "ease-in-out" or "cubic-bezier(0.1, 0.7, 1.0, 0.1)" |
+| **opacityDecayVelocity**    | optional | Number | 0.4 | Velocity of decrease of opacity |
+| **persistent**              | optional | Boolean | false | Set to `true` to keep the ripple at the end of the animation |
+
 
 
 ## Styling

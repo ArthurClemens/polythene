@@ -4,7 +4,7 @@ import 'polythene-material-design';
 import webfont from 'webfontloader';
 import { button, fab, icon, iconButton, list, listTile, raisedButton, ripple, shadow, styler, svg } from 'polythene';
 import * as polythene from 'polythene';
-import { flex, mixin, styler as styler$1 } from 'polythene-css';
+import { flex, styler as styler$1 } from 'polythene-css';
 import { button as button$1 } from 'polythene-button';
 import { fab as fab$1 } from 'polythene-fab';
 import { icon as icon$1 } from 'polythene-icon';
@@ -63,7 +63,7 @@ var rules = {
   resultRow: ".result-row.flex-ns.flex-row-ns.flex-column" + bottomBorder + resultHeight,
   resultTitle: ".flex.flex-one.ma3",
   result: ".result.flex.flex-one.relative.ma3.minh4",
-  content: ".component-result.relative.w-100",
+  content: ".component-result.flex.relative.w-100",
   rawResult: ".generated-html.prewrap.flex.flex-one.relative.ma3.light-silver"
 };
 
@@ -119,6 +119,16 @@ webfont.load({
   }
 });
 
+button.theme(".tests-polythene-themed-button", {
+  color_light_background: "#FF1744",
+  color_light_text: "#fff"
+});
+
+fab.theme(".tests-polythene-themed-fab", {
+  color_light_background: "#FF1744",
+  color_light_text: "#fff"
+});
+
 var tests = [{
   name: "Button",
   component: button,
@@ -126,10 +136,10 @@ var tests = [{
     label: "Button"
   }
 }, {
-  name: "Button (theme: blue)",
+  name: "Button (theme: red)",
   component: button,
   attrs: {
-    class: "blue-button", // theme + class name set in theme tests
+    class: "tests-polythene-themed-button",
     label: "Button"
   }
 }, {
@@ -139,10 +149,10 @@ var tests = [{
     label: "Raised button"
   }
 }, {
-  name: "Raised button (theme: blue)",
+  name: "Raised button (theme: red)",
   component: raisedButton,
   attrs: {
-    class: "blue-button", // theme + class name set in theme tests
+    class: "tests-polythene-themed-button",
     label: "Raised button"
   }
 }, {
@@ -159,7 +169,7 @@ var tests = [{
   name: "FAB (theme: red)",
   component: fab,
   attrs: {
-    class: "red-fab", // theme + class name set in theme tests
+    class: "tests-polythene-themed-fab",
     icon: {
       svg: {
         content: SVG
@@ -278,9 +288,17 @@ var tests = [{
   }
 }];
 
-button$1.theme("themed-button", {
+button$1.theme(".tests-button-themed-button", {
   color_light_background: "#2196F3",
+  color_dark_background: "#2196F3",
   color_light_text: "#fff"
+});
+
+button$1.theme(".tests-button-bordered-button", {
+  color_light_text: "#673ab7",
+  color_light_border: "#673ab7",
+  color_dark_text: "yellow",
+  color_dark_border: "yellow"
 });
 
 var tests$1 = [{
@@ -301,11 +319,11 @@ var tests$1 = [{
     content: m("div", "Content")
   }
 }, {
-  name: "Option: borders",
+  name: "Themed button: (option: borders)",
   component: button$1,
   attrs: {
     label: "Borders",
-    class: "bordered-button",
+    class: "tests-button-bordered-button",
     borders: true
   }
 }, {
@@ -313,7 +331,14 @@ var tests$1 = [{
   component: button$1,
   attrs: {
     label: "Themed button",
-    class: "themed-button"
+    class: "tests-button-themed-button"
+  }
+}, {
+  name: "Themed button (theme file)",
+  component: button$1,
+  attrs: {
+    label: "Theme primary button",
+    class: "my-button--primary"
   }
 }, {
   name: "Option: wash (false)",
@@ -498,6 +523,42 @@ var tests$1 = [{
     label: "Button",
     after: m("span", "After")
   }
+},
+
+// Dark theme
+
+{
+  name: "Option: label -- dark theme",
+  class: "pe-dark-theme",
+  component: button$1,
+  attrs: {
+    label: "Label"
+  }
+}, {
+  name: "Themed button -- dark theme",
+  class: "pe-dark-theme",
+  component: button$1,
+  attrs: {
+    label: "Themed button",
+    class: "tests-button-themed-button"
+  }
+}, {
+  name: "Themed button: (option: borders) -- dark theme",
+  class: "pe-dark-theme",
+  component: button$1,
+  attrs: {
+    label: "Borders dark theme",
+    class: "tests-button-bordered-button",
+    borders: true
+  }
+}, {
+  name: "Themed button (theme file) -- dark theme",
+  class: "pe-dark-theme",
+  component: button$1,
+  attrs: {
+    label: "Dark theme primary button",
+    class: "my-button--primary"
+  }
 }];
 
 var m$2 = m;
@@ -534,7 +595,7 @@ var tests$2 = [{
     }
   }
 }, {
-  name: "Colored background (style attribute)",
+  name: "Option: style (should be red)",
   component: fab$1,
   attrs: {
     icon: {
@@ -554,14 +615,31 @@ var tests$2 = [{
     mini: true
   }
 }, {
-  name: "Option: raised and animateOnTap (both false)",
+  name: "Option: z (0)",
+  component: fab$1,
+  attrs: {
+    icon: {
+      msvg: alarmAdd
+    },
+    z: 0
+  }
+}, {
+  name: "Option: z (5)",
+  component: fab$1,
+  attrs: {
+    icon: {
+      msvg: alarmAdd
+    },
+    z: 5
+  }
+}, {
+  name: "Option: animateOnTap (false)",
   interactive: true,
   component: fab$1,
   attrs: {
     icon: {
       msvg: alarmAdd
     },
-    raised: false,
     animateOnTap: false
   }
 }, {
@@ -620,12 +698,30 @@ var tests$2 = [{
     },
     after: m("div", { style: { "font-size": "16px", "line-height": "1rem" } }, "After")
   }
+},
+
+// Dark theme
+
+{
+  name: "Option: icon -- dark theme",
+  component: fab$1,
+  class: "pe-dark-theme",
+  attrs: {
+    icon: {
+      msvg: alarmAdd
+    }
+  }
 }];
 
 var m$3 = m;
 var stars = m$3.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>');
 
 var trustedSvg = m.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>");
+
+icon$1.theme(".tests-icon-themed-icon", {
+  size_regular: 50,
+  color_light: "purple"
+});
 
 var tests$3 = [{
   name: "Child node (svg children mmsvg)",
@@ -673,13 +769,20 @@ var tests$3 = [{
     src: "img/arrow-back.svg"
   }
 }, {
-  name: "Colored",
+  name: "Option: style (should be red)",
   component: icon$1,
   attrs: {
     msvg: stars,
     style: {
       color: "red"
     }
+  }
+}, {
+  name: "Themed (should be larger and purple)",
+  component: icon$1,
+  attrs: {
+    msvg: stars,
+    class: "tests-icon-themed-icon"
   }
 }, {
   name: "Option: type (small)",
@@ -756,10 +859,30 @@ var tests$3 = [{
     msvg: stars,
     after: m("div", { style: { "font-size": "16px", "line-height": "1rem" } }, "After")
   }
+},
+
+// Dark theme
+
+{
+  name: "Child node (svg children mmsvg) -- dark theme (color set with style option)",
+  component: icon$1,
+  class: "pe-dark-theme",
+  attrs: {
+    style: {
+      color: "#fff"
+    }
+  },
+  children: m(svg$1, [stars])
 }];
 
 var m$4 = m;
 var favoriteBorder = m$4.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z"/></svg>');
+
+iconButton$1.theme(".tests-icon-button-themed-icon-button", {
+  padding: 32,
+  color_background: "purple",
+  color_light_text: "white"
+});
 
 var tests$4 = [{
   name: "Child node (icon component)",
@@ -775,7 +898,16 @@ var tests$4 = [{
     }
   }
 }, {
-  name: "Colored",
+  name: "Option: compact",
+  component: iconButton$1,
+  attrs: {
+    icon: {
+      msvg: favoriteBorder
+    },
+    compact: true
+  }
+}, {
+  name: "Option: style (should be red)",
   component: iconButton$1,
   attrs: {
     icon: {
@@ -786,13 +918,13 @@ var tests$4 = [{
     }
   }
 }, {
-  name: "Option: compact",
+  name: "Themed (should be purple and have large padding)",
   component: iconButton$1,
   attrs: {
     icon: {
       msvg: favoriteBorder
     },
-    compact: true
+    class: "tests-icon-button-themed-icon-button"
   }
 }, {
   name: "Option: ripple (center)",
@@ -904,7 +1036,21 @@ var tests$4 = [{
     },
     after: m("div", { style: { "font-size": "16px", "line-height": "1rem" } }, "After")
   }
+},
+
+// Dark theme
+
+{
+  name: "Child node (icon component) -- dark theme",
+  component: iconButton$1,
+  class: "pe-dark-theme",
+  attrs: null,
+  children: m(icon$1, { msvg: favoriteBorder })
 }];
+
+list$1.theme(".tests-lists-themed-list", {
+  color_light_border: "#2196F3"
+});
 
 var listTileJennifer = m(listTile$1, {
   title: "Jennifer Barker",
@@ -1080,29 +1226,6 @@ var tests$5 = [{
   }
 },
 
-// Dark theme
-
-{
-  name: "Option: hoverable -- dark theme",
-  interactive: true,
-  component: list$1,
-  attrs: {
-    class: "pe-dark-theme",
-    hoverable: true,
-    borders: true,
-    header: {
-      title: "Friends"
-    },
-    tiles: [m(listTile$1, {
-      title: "Jennifer Barker",
-      subtitle: "Starting post doc"
-    }), m(listTile$1, {
-      title: "Ali Connors",
-      subtitle: "Brunch this weekend?"
-    })]
-  }
-},
-
 // Common
 {
   name: "No options",
@@ -1144,7 +1267,34 @@ var tests$5 = [{
     },
     after: m("div", "After")
   }
+},
+
+// Dark theme
+
+{
+  name: "Option: hoverable -- dark theme",
+  interactive: true,
+  class: "pe-dark-theme",
+  component: list$1,
+  attrs: {
+    hoverable: true,
+    borders: true,
+    header: {
+      title: "Friends"
+    },
+    tiles: [m(listTile$1, {
+      title: "Jennifer Barker",
+      subtitle: "Starting post doc"
+    }), m(listTile$1, {
+      title: "Ali Connors",
+      subtitle: "Brunch this weekend?"
+    })]
+  }
 }];
+
+listTile$1.theme(".tests-list-tile-red-list-tile", {
+  color_light_title: "red"
+});
 
 var tests$6 = [{
   name: "Child node",
@@ -1217,6 +1367,17 @@ var tests$6 = [{
       msvg: stars,
       type: "medium"
     })
+  }
+}, {
+  name: "Themed (should be red)",
+  component: listTile$1,
+  attrs: {
+    title: "Ancillary Justice",
+    front: m(icon$1, {
+      msvg: stars,
+      type: "medium"
+    }),
+    class: "tests-list-tile-red-list-tile"
   }
 },
 
@@ -1361,40 +1522,6 @@ var tests$6 = [{
   }
 },
 
-// Dark theme
-
-{
-  name: "Option: highSubtitle and front -- dark theme",
-  component: listTile$1,
-  attrs: {
-    class: "pe-dark-theme",
-    title: "Ancillary Justice",
-    highSubtitle: "The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before.",
-    front: m(icon$1, {
-      src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
-      avatar: true,
-      type: "large"
-    }),
-    secondary: {
-      icon: {
-        msvg: stars
-      },
-      url: {
-        href: "/",
-        oncreate: m.route.link
-      }
-    }
-  }
-}, {
-  name: "Option: disabled url -- dark theme",
-  component: listTile$1,
-  attrs: {
-    class: "pe-dark-theme",
-    title: "Ancillary Justice",
-    disabled: true
-  }
-},
-
 // Common
 {
   name: "No options",
@@ -1431,6 +1558,40 @@ var tests$6 = [{
   attrs: {
     title: "Ancillary Justice",
     after: m("div", "After")
+  }
+},
+
+// Dark theme
+
+{
+  name: "Option: highSubtitle and front -- dark theme",
+  component: listTile$1,
+  class: "pe-dark-theme",
+  attrs: {
+    title: "Ancillary Justice",
+    highSubtitle: "The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before.",
+    front: m(icon$1, {
+      src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
+      avatar: true,
+      type: "large"
+    }),
+    secondary: {
+      icon: {
+        msvg: stars
+      },
+      url: {
+        href: "/",
+        oncreate: m.route.link
+      }
+    }
+  }
+}, {
+  name: "Option: disabled url -- dark theme",
+  component: listTile$1,
+  class: "pe-dark-theme",
+  attrs: {
+    title: "Ancillary Justice",
+    disabled: true
   }
 }];
 
@@ -1483,13 +1644,11 @@ var _extends = Object.assign || function (target) {
   return target;
 };
 
-var style = function style(componentVars, tint) {
-  var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
-
+var style = function style(componentVars, scope, selector, tint) {
   var normalBorder = componentVars["color_" + tint + "_border"] || "transparent";
   var activeBorder = componentVars["color_" + tint + "_active_border"] || normalBorder;
   var disabledBorder = componentVars["color_" + tint + "_disabled_border"] || normalBorder;
-  return [defineProperty({}, scope + ".pe-button", {
+  return [defineProperty({}, scope + selector, {
     "&, &:link, &:visited": {
       color: componentVars["color_" + tint + "_text"]
     },
@@ -1528,12 +1687,10 @@ var style = function style(componentVars, tint) {
   })];
 };
 
-var noTouch = function noTouch(componentVars, tint, type) {
-  var scope = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
-
+var noTouchStyle = function noTouchStyle(componentVars, scope, selector, tint) {
   var normalBorder = componentVars["color_" + tint + "_border"];
   var hoverBorder = componentVars["color_" + tint + "_border"] || normalBorder;
-  return [defineProperty({}, scope + ".pe-button:hover", {
+  return [defineProperty({}, scope + selector + ":hover", {
     "&:not(.pe-button--selected):not(.pe-button--inactive) .pe-button__wash": {
       "background-color": componentVars["color_" + tint + "_hover_background"],
       "border-color": hoverBorder
@@ -1542,17 +1699,15 @@ var noTouch = function noTouch(componentVars, tint, type) {
 };
 
 var createStyles = function createStyles(componentVars) {
-  return [style(componentVars, "light", ".pe-button--raised"), {
-    "html.pe-no-touch": [noTouch(componentVars, "light", " .pe-button--raised")]
-  }, {
-    ".pe-dark-theme": [style(componentVars, "dark", " .pe-button--raised")]
-  }, {
-    "html.pe-no-touch .pe-dark-theme": [noTouch(componentVars, "dark", " .pe-button--raised")]
-  }];
+  var className = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+
+  var selector = className + ".pe-button--raised";
+  return [style(componentVars, "", selector, "light"), style(componentVars, ".pe-dark-theme ", selector, "dark"), // inside dark theme
+  noTouchStyle(componentVars, "html.pe-no-touch ", selector, "light"), noTouchStyle(componentVars, "html.pe-no-touch .pe-dark-theme ", selector, "dark")];
 };
 
 var color = function color(componentVars) {
-  return mixin.createStyles(componentVars, createStyles);
+  return styler$1.createStyles(componentVars, createStyles);
 };
 
 // No layout
@@ -1565,7 +1720,7 @@ var styleComponent = function styleComponent(className, styles$$1) {
 
 var customTheme = function customTheme(className, vars$$1) {
   return (
-    // Inject additional styles as use className as key
+    // Inject additional styles as use the className as key
     styleComponent(className, styler$1.addComponentStyle(className, styles, key, vars$$1))
   );
 };
@@ -1682,8 +1837,8 @@ var raisedButton$1 = {
   view: view
 };
 
-raisedButton$1.theme("themed-button", {
-  color_light_background: "#2196F3",
+raisedButton$1.theme(".tests-raised-button-themed-button", {
+  color_light_background: "#FF1744",
   color_light_text: "#fff"
 });
 
@@ -1719,18 +1874,18 @@ var tests$7 = [{
     z: 5
   }
 }, {
-  name: "Themed button",
+  name: "Themed button (should be red)",
   component: raisedButton$1,
   attrs: {
     label: "Themed button",
-    class: "themed-button"
+    class: "tests-raised-button-themed-button"
   }
 }, {
   name: "Themed button (with option disabled)",
   component: raisedButton$1,
   attrs: {
     label: "Disabled themed button",
-    class: "themed-button",
+    class: "tests-raised-button-themed-button",
     disabled: true
   }
 }, {
@@ -1764,6 +1919,14 @@ var tests$7 = [{
   attrs: {
     label: "Not disabled",
     disabled: false
+  }
+}, {
+  name: "Option: animateOnTap (false)",
+  interactive: true,
+  component: raisedButton$1,
+  attrs: {
+    label: "Don't animate shadow",
+    animateOnTap: false
   }
 }, {
   name: "Option: selected",
@@ -1817,14 +1980,6 @@ var tests$7 = [{
     label: "Inactive",
     inactive: true
   }
-}, {
-  name: "Option: animateOnTap (false)",
-  interactive: true,
-  component: raisedButton$1,
-  attrs: {
-    label: "No animate",
-    animateOnTap: false
-  }
 },
 
 // Common
@@ -1865,51 +2020,105 @@ var tests$7 = [{
     label: "Button",
     after: m("span", "After")
   }
+},
+
+// Dark theme
+
+{
+  name: "Option: label -- dark theme (should be app's primary color)",
+  component: raisedButton$1,
+  class: "pe-dark-theme",
+  attrs: {
+    label: "Label"
+  }
+}, {
+  name: "Option: disabled -- dark theme",
+  component: raisedButton$1,
+  class: "pe-dark-theme",
+  attrs: {
+    label: "Label",
+    disabled: true
+  }
 }];
 
-var component = ripple$1;
+ripple$1.theme(".tests-ripple-themed-ripple", {
+  color_light: "#F44336"
+});
 
 var tests$8 = [{
   name: "Option: constrained (true)",
   interactive: true,
-  component: component,
+  component: ripple$1,
   attrs: {
     constrained: true
   }
 }, {
   name: "Option: constrained (false)",
   interactive: true,
-  component: component,
+  component: ripple$1,
   attrs: {
     constrained: false
   }
 }, {
   name: "Option: center",
   interactive: true,
-  component: component,
+  component: ripple$1,
   attrs: {
     center: true
   }
 }, {
-  name: "Option: initial opacity (0.5)",
+  name: "Option: start opacity (0.5)",
   interactive: true,
-  component: component,
+  component: ripple$1,
   attrs: {
-    initialOpacity: 0.5
+    startOpacity: 0.5
+  }
+}, {
+  name: "Option: end opacity (0.1)",
+  interactive: true,
+  component: ripple$1,
+  attrs: {
+    endOpacity: 0.1
+  }
+}, {
+  name: "Option: duration (3.0)",
+  interactive: true,
+  component: ripple$1,
+  attrs: {
+    duration: 3.0
   }
 }, {
   name: "Option: initial opacityDecayVelocity (0.1)",
   interactive: true,
-  component: component,
+  component: ripple$1,
   attrs: {
     opacityDecayVelocity: 0.1
   }
 }, {
   name: "Option: disabled",
   interactive: true,
-  component: component,
+  component: ripple$1,
   attrs: {
     disabled: true
+  }
+}, {
+  name: "Option: style (blue)",
+  interactive: true,
+  component: ripple$1,
+  attrs: {
+    startOpacity: 0.7,
+    style: {
+      color: "#2196F3"
+    }
+  }
+}, {
+  name: "Themed (should be red and permanent)",
+  interactive: true,
+  component: ripple$1,
+  attrs: {
+    class: "tests-ripple-themed-ripple",
+    endOpacity: 1.0,
+    persistent: true
   }
 }, {
   name: "Appended to an element",
@@ -1922,7 +2131,7 @@ var tests$8 = [{
           width: "100px",
           height: "100px"
         }
-      }, m(component));
+      }, m(ripple$1));
     }
   }
 }, {
@@ -1933,7 +2142,7 @@ var tests$8 = [{
       return vnode.state.started = 0;
     },
     view: function view(vnode) {
-      return [m(component, {
+      return [m(ripple$1, {
         before: m("div", "start called: " + vnode.state.started),
         start: function start() {
           return vnode.state.started++, m.redraw();
@@ -1949,7 +2158,7 @@ var tests$8 = [{
       return vnode.state.ended = 0;
     },
     view: function view(vnode) {
-      return [m(component, {
+      return [m(ripple$1, {
         before: m("div", "end called: " + vnode.state.ended),
         end: function end() {
           return vnode.state.ended++, m.redraw();
@@ -1962,38 +2171,70 @@ var tests$8 = [{
 // Common
 {
   name: "No options",
-  component: component,
+  component: ripple$1,
   attrs: null
 }, {
   name: "Option: id",
-  component: component,
+  component: ripple$1,
   attrs: {
     id: "id-x"
   }
 }, {
   name: "Option: class",
-  component: component,
+  component: ripple$1,
   attrs: {
     class: "class-x"
   }
 }, {
   name: "Option: element",
-  component: component,
+  component: ripple$1,
   attrs: {
     element: "a"
   }
+},
+
+// Dark theme
+
+{
+  name: "Option: style (white) -- dark theme",
+  interactive: true,
+  class: "pe-dark-theme",
+  component: ripple$1,
+  attrs: {
+    constrained: true,
+    style: {
+      color: "#fff"
+    }
+  }
 }];
 
-var component$1 = shadow$1;
+var interactiveTest = {
+  oninit: function oninit(vnode) {
+    return vnode.state.z = 1;
+  },
+  oncreate: function oncreate(vnode) {
+    vnode.dom.addEventListener("click", function () {
+      var newZ = (vnode.state.z + 1) % 6;
+      vnode.state.z = newZ;
+      m.redraw();
+    });
+  },
+  view: function view(vnode) {
+    return [m(rules.content, "Click me"), m(shadow$1, {
+      animated: true,
+      z: vnode.state.z
+    })];
+  }
+};
 
 var tests$9 = [{
   name: "Child node",
-  component: component$1,
+  component: shadow$1,
   attrs: {},
   children: ["Child"]
 }, {
   name: "Option: content",
-  component: component$1,
+  component: shadow$1,
   attrs: {
     content: "Content"
   }
@@ -2001,63 +2242,46 @@ var tests$9 = [{
   name: "Add to a Mithril element",
   component: {
     view: function view() {
-      return [m("div", "Some element"), m(component$1)];
+      return [m("div", "Some element"), m(shadow$1)];
     }
   }
 }, {
   name: "Interactive option: animated",
   interactive: true,
-  component: {
-    oninit: function oninit(vnode) {
-      return vnode.state.z = 1;
-    },
-    oncreate: function oncreate(vnode) {
-      vnode.dom.addEventListener("click", function () {
-        var newZ = (vnode.state.z + 1) % 6;
-        vnode.state.z = newZ;
-        m.redraw();
-      });
-    },
-    view: function view(vnode) {
-      return [m(rules.content, "Click me"), m(component$1, {
-        animated: true,
-        z: vnode.state.z
-      })];
-    }
-  }
+  component: interactiveTest
 }, {
   name: "Option: z (0)",
-  component: component$1,
+  component: shadow$1,
   attrs: {
     z: 0
   }
 }, {
   name: "Option: z (1)",
-  component: component$1,
+  component: shadow$1,
   attrs: {
     z: 1
   }
 }, {
   name: "Option: z (2)",
-  component: component$1,
+  component: shadow$1,
   attrs: {
     z: 2
   }
 }, {
   name: "Option: z (3)",
-  component: component$1,
+  component: shadow$1,
   attrs: {
     z: 3
   }
 }, {
   name: "Option: z (4)",
-  component: component$1,
+  component: shadow$1,
   attrs: {
     z: 4
   }
 }, {
   name: "Option: z (5)",
-  component: component$1,
+  component: shadow$1,
   attrs: {
     z: 5
   }
@@ -2066,63 +2290,71 @@ var tests$9 = [{
 // Common
 {
   name: "No options",
-  component: component$1,
+  component: shadow$1,
   attrs: null
 }, {
   name: "Option: id",
-  component: component$1,
+  component: shadow$1,
   attrs: {
     id: "id-x"
   }
 }, {
   name: "Option: class",
-  component: component$1,
+  component: shadow$1,
   attrs: {
     class: "class-x"
   }
 }, {
   name: "Option: element",
-  component: component$1,
+  component: shadow$1,
   attrs: {
     element: "dl"
   }
 }, {
   name: "Option: before",
-  component: component$1,
+  component: shadow$1,
   attrs: {
     before: "Before"
   }
 }, {
   name: "Option: after",
-  component: component$1,
+  component: shadow$1,
   attrs: {
     after: "After"
   }
+},
+
+// Dark theme
+
+{
+  name: "Interactive option: animated -- dark theme",
+  interactive: true,
+  class: "pe-dark-theme",
+  component: interactiveTest
 }];
 
-var component$2 = svg$1;
 var svgString = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z\"/></svg>";
 var trustedSvg$1 = m.trust(svgString);
 
 var tests$10 = [{
   name: "Child node (trusted svg)",
-  component: component$2,
+  component: svg$1,
   attrs: null,
   children: [trustedSvg$1]
 }, {
   name: "Child node (mmsvg)",
-  component: component$2,
+  component: svg$1,
   attrs: null,
   children: [stars]
 }, {
   name: "Option: content (trusted svg)",
-  component: component$2,
+  component: svg$1,
   attrs: {
     content: trustedSvg$1
   }
 }, {
   name: "Option: content (mmsvg)",
-  component: component$2,
+  component: svg$1,
   attrs: {
     content: stars
   }
@@ -2131,37 +2363,37 @@ var tests$10 = [{
 // Common
 {
   name: "No options",
-  component: component$2,
+  component: svg$1,
   attrs: null
 }, {
   name: "Option: id",
-  component: component$2,
+  component: svg$1,
   attrs: {
     id: "id-x"
   }
 }, {
   name: "Option: class",
-  component: component$2,
+  component: svg$1,
   attrs: {
     class: "class-x"
   }
 }, {
   name: "Option: element",
-  component: component$2,
+  component: svg$1,
   attrs: {
     element: "a",
     content: m.trust("<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"></svg>")
   }
 }, {
   name: "Option: before",
-  component: component$2,
+  component: svg$1,
   attrs: {
     content: stars,
     before: m("span", "Before")
   }
 }, {
   name: "Option: after",
-  component: component$2,
+  component: svg$1,
   attrs: {
     content: stars,
     after: m("span", "After")
@@ -2336,35 +2568,35 @@ Testing 3 theming methods:
 
 // [1]
 
-button$1.theme("blue-button", {
+button$1.theme(".tests-custom-theme-blue-button", {
   color_light_background: "#2196F3",
   color_light_text: "#fff"
 });
 
-button$1.theme("red-button", {
+button$1.theme(".tests-custom-theme-red-button", {
   color_light_background: "#ff0000",
   color_light_text: "#fff"
 });
 
-icon$1.theme("red-icon", {
-  color: "red"
+icon$1.theme(".tests-custom-theme-red-icon", {
+  color_light: "red"
 });
 
-fab$1.theme("red-fab", {
+fab$1.theme(".tests-custom-theme-red-fab", {
   color_light_background: "#ff0000",
   color_light_text: "#fff"
 });
 
-iconButton$1.theme("large-icon-button", {
+iconButton$1.theme(".tests-custom-theme-large-icon-button", {
   padding: 50,
   color_background: "#fff"
 });
 
-list$1.theme("blue-list", {
+list$1.theme(".tests-custom-theme-blue-list", {
   color_light_border: "#2196F3"
 });
 
-listTile$1.theme("red-list-tile", {
+listTile$1.theme(".tests-custom-theme-red-list-tile", {
   color_light_title: "red"
 });
 
@@ -2374,12 +2606,12 @@ var secondaryButton$1 = {
   theme: button$1.theme,
   view: function view(vnode) {
     return m(button$1, _extends$1({
-      class: "secondary-button",
+      class: "tests-custom-theme-secondary-button",
       borders: true
     }, vnode.attrs));
   }
 };
-secondaryButton$1.theme("secondary-button", {
+secondaryButton$1.theme(".tests-custom-theme-secondary-button", {
   color_light_border: "#ddd",
   color_light_background: "#fff"
 });
@@ -2393,14 +2625,14 @@ var tests$13 = [{
   name: "Theme with style variables: button (should be blue)",
   component: button$1,
   attrs: {
-    class: "blue-button",
+    class: "tests-custom-theme-blue-button",
     label: "Blue button"
   }
 }, {
   name: "Theme with style variables: button (should be red)",
   component: button$1,
   attrs: {
-    class: "red-button",
+    class: "tests-custom-theme-red-button",
     label: "Red button"
   }
 }, {
@@ -2416,10 +2648,10 @@ var tests$13 = [{
     label: "Unaffected button"
   }
 }, {
-  name: "Theme with theme file: button (should be purple)",
+  name: "Theme with theme file: button (text should be purple)",
   component: button$1,
   attrs: {
-    label: "Purple button",
+    label: "Primary button",
     class: "my-button--primary"
   }
 }, {
@@ -2434,7 +2666,7 @@ var tests$13 = [{
   name: "Theme with style variables: FAB (should be red)",
   component: fab$1,
   attrs: {
-    class: "red-fab",
+    class: "tests-custom-theme-red-fab",
     icon: {
       msvg: alarmAdd
     }
@@ -2443,7 +2675,7 @@ var tests$13 = [{
   name: "Theme with style variables: icon (should be red)",
   component: icon$1,
   attrs: {
-    class: "red-icon",
+    class: "tests-custom-theme-red-icon",
     msvg: alarmAdd
   }
 }, {
@@ -2473,7 +2705,7 @@ var tests$13 = [{
   name: "Theme with style variables: icon button (should have large padding)",
   component: iconButton$1,
   attrs: {
-    class: "large-icon-button",
+    class: "tests-custom-theme-large-icon-button",
     icon: {
       msvg: alarmAdd
     }
@@ -2482,7 +2714,7 @@ var tests$13 = [{
   name: "Theme with style variables: list (should have blue borders)",
   component: list$1,
   attrs: {
-    class: "blue-list",
+    class: "tests-custom-theme-blue-list",
     borders: true,
     tiles: [m(listTile$1, {
       title: "Jennifer Barker",
@@ -2500,15 +2732,15 @@ var tests$13 = [{
   component: list$1,
   attrs: {
     tiles: [m(listTile$1, {
-      class: "red-list-tile",
+      class: "tests-custom-theme-red-list-tile",
       title: "Jennifer Barker",
       subtitle: "Starting post doc"
     }), m(listTile$1, {
-      class: "red-list-tile",
+      class: "tests-custom-theme-red-list-tile",
       title: "Ali Connors",
       subtitle: "Brunch this weekend?"
     }), m(listTile$1, {
-      class: "red-list-tile",
+      class: "tests-custom-theme-red-list-tile",
       title: "Mike Eden",
       subtitle: "Watch a game"
     })]
@@ -2525,7 +2757,7 @@ var generatedHtml = {
     var test = vnode.attrs.test;
     var raw = tidy(m(test.component, test.attrs, test.children));
     return m(rules.rawResult, {
-      class: [vnode.state.open ? "open" : "closed", test.class || null].join(" "),
+      class: vnode.state.open ? "open" : "closed",
       onclick: vnode.state.toggle
     }, [m(".html", {}, raw), m(".ellipsis", "...")]);
   }
@@ -2546,8 +2778,10 @@ var testsPage = function testsPage(name, tests$$1) {
         var resultId = "test-" + test.name.replace(/[\:\-\[\]]/g, "").replace(/ /g, "-").toLowerCase();
         return m([rules.resultRow, test.interactive ? rules.interactive : null].join(""), {
           key: resultId,
-          class: resultId
-        }, [m(rules.resultTitle, test.name), m(rules.result, m(rules.content, m(test.component, test.attrs, test.children))), m(generatedHtml, { test: test })]);
+          class: [resultId, test.class || null].join(" ")
+        }, [m(rules.resultTitle, {
+          class: "result-title"
+        }, test.name), m(rules.result, m(rules.content, m(test.component, test.attrs, test.children))), m(generatedHtml, { test: test })]);
       }))];
     }
   };

@@ -1,4 +1,5 @@
 import { defaultVariables } from "polythene-core";
+const rgba = defaultVariables.rgba;
 
 const icon_unit_component = 20;
 
@@ -11,10 +12,11 @@ export const styles = {
   button: vars => {
     const primaryButtonVars = {
       ...vars,
-      border_radius:          0,
       text_transform:         "none",
-      color_light_background: "#673ab7",
-      color_light_text:       "#fff"
+      color_light_text:       "#673ab7",
+      color_dark_text:        "#fff",
+      color_light_background: rgba("103, 58, 183", .2),
+      color_dark_background:  rgba("103, 58, 183", .6)
     };
     return [
       {

@@ -40,7 +40,7 @@ export const tests = [
     }
   },
   {
-    name: "Colored background (style attribute)",
+    name: "Option: style (should be red)",
     component,
     attrs: {
       icon: {
@@ -62,14 +62,33 @@ export const tests = [
     }
   },
   {
-    name: "Option: raised and animateOnTap (both false)",
+    name: "Option: z (0)",
+    component,
+    attrs: {
+      icon: {
+        msvg: iconAlarm
+      },
+      z: 0
+    }
+  },
+  {
+    name: "Option: z (5)",
+    component,
+    attrs: {
+      icon: {
+        msvg: iconAlarm
+      },
+      z: 5
+    }
+  },
+  {
+    name: "Option: animateOnTap (false)",
     interactive: true,
     component,
     attrs: {
       icon: {
         msvg: iconAlarm
       },
-      raised: false,
       animateOnTap: false
     }
   },
@@ -134,5 +153,18 @@ export const tests = [
       },
       after: m("div", {style: {"font-size": "16px", "line-height": "1rem"}}, "After")
     }
-  }
+  },
+
+  // Dark theme
+
+  {
+    name: "Option: icon -- dark theme",
+    component,
+    class: "pe-dark-theme",
+    attrs: {
+      icon: {
+        msvg: iconAlarm
+      }
+    }
+  },
 ];

@@ -1,7 +1,9 @@
 import m from "mithril";
-import { ripple } from "polythene-ripple";
+import { ripple as component } from "polythene-ripple";
 
-const component = ripple;
+component.theme(".tests-ripple-themed-ripple", {
+  color_light:   "#F44336"
+});
 
 export const tests = [
   {
@@ -29,11 +31,27 @@ export const tests = [
     }
   },
   {
-    name: "Option: initial opacity (0.5)",
+    name: "Option: start opacity (0.5)",
     interactive: true,
     component,
     attrs: {
-      initialOpacity: 0.5
+      startOpacity: 0.5
+    }
+  },
+  {
+    name: "Option: end opacity (0.1)",
+    interactive: true,
+    component,
+    attrs: {
+      endOpacity: 0.1
+    }
+  },
+  {
+    name: "Option: duration (3.0)",
+    interactive: true,
+    component,
+    attrs: {
+      duration: 3.0
     }
   },
   {
@@ -50,6 +68,27 @@ export const tests = [
     component,
     attrs: {
       disabled: true
+    }
+  },
+  {
+    name: "Option: style (blue)",
+    interactive: true,
+    component,
+    attrs: {
+      startOpacity: 0.7,
+      style: {
+        color: "#2196F3"
+      }
+    }
+  },
+  {
+    name: "Themed (should be red and permanent)",
+    interactive: true,
+    component,
+    attrs: {
+      class: "tests-ripple-themed-ripple",
+      endOpacity: 1.0,
+      persistent: true
     }
   },
   {
@@ -124,6 +163,21 @@ export const tests = [
     attrs: {
       element: "a"
     }
-  }
+  },
+
+  // Dark theme
+
+  {
+    name: "Option: style (white) -- dark theme",
+    interactive: true,
+    class: "pe-dark-theme",
+    component,
+    attrs: {
+      constrained: true,
+      style: {
+        color: "#fff"
+      }
+    }
+  },
 ];
 

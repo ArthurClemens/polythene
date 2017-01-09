@@ -3,6 +3,12 @@ import { iconButton as component } from "polythene-icon-button";
 import { icon } from "polythene-icon";
 import iconFavorite from "mmsvg/google/msvg/action/favorite-border";
 
+component.theme(".tests-icon-button-themed-icon-button", {
+  padding: 32,
+  color_background: "purple",
+  color_light_text: "white"
+});
+
 export const tests = [
   {
     name: "Child node (icon component)",
@@ -20,7 +26,17 @@ export const tests = [
     }
   },
   {
-    name: "Colored",
+    name: "Option: compact",
+    component,
+    attrs: {
+      icon: {
+        msvg: iconFavorite
+      },
+      compact: true
+    }
+  },
+  {
+    name: "Option: style (should be red)",
     component,
     attrs: {
       icon: {
@@ -32,13 +48,13 @@ export const tests = [
     }
   },
   {
-    name: "Option: compact",
+    name: "Themed (should be purple and have large padding)",
     component,
     attrs: {
       icon: {
         msvg: iconFavorite
       },
-      compact: true
+      class: "tests-icon-button-themed-icon-button"
     }
   },
   {
@@ -162,5 +178,16 @@ export const tests = [
       },
       after: m("div", {style: {"font-size": "16px", "line-height": "1rem"}}, "After")
     }
-  }
+  },
+
+  // Dark theme
+
+  {
+    name: "Child node (icon component) -- dark theme",
+    component,
+    class: "pe-dark-theme",
+    attrs: null,
+    children: m(icon, {msvg: iconFavorite})
+  },
+
 ];

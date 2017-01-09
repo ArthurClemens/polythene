@@ -3,6 +3,10 @@ import { listTile as component } from "polythene-list-tile";
 import { icon } from "polythene-icon";
 import iconStars from "mmsvg/google/msvg/action/stars";
 
+component.theme(".tests-list-tile-red-list-tile", {
+  color_light_title: "red"
+});
+
 export const tests = [
   {
     name: "Child node",
@@ -83,6 +87,18 @@ export const tests = [
         msvg: iconStars,
         type: "medium"
       })
+    }
+  },
+  {
+    name: "Themed (should be red)",
+    component,
+    attrs: {
+      title: "Ancillary Justice",
+      front: m(icon, {
+        msvg: iconStars,
+        type: "medium"
+      }),
+      class: "tests-list-tile-red-list-tile"
     }
   },
 
@@ -236,42 +252,6 @@ export const tests = [
     }
   },
 
-  // Dark theme
-
-  {
-    name: "Option: highSubtitle and front -- dark theme",
-    component,
-    attrs: {
-      class: "pe-dark-theme",
-      title: "Ancillary Justice",
-      highSubtitle: "The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before.",
-      front: m(icon, {
-        src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
-        avatar: true,
-        type: "large"
-      }),
-      secondary: {
-        icon: {
-          msvg: iconStars
-        },
-        url: {
-          href: "/",
-          oncreate: m.route.link
-        }
-      }
-    }
-  },
-
-  {
-    name: "Option: disabled url -- dark theme",
-    component,
-    attrs: {
-      class: "pe-dark-theme",
-      title: "Ancillary Justice",
-      disabled: true
-    }
-  },
-
   // Common
   {
     name: "No options",
@@ -313,6 +293,42 @@ export const tests = [
     attrs: {
       title: "Ancillary Justice",
       after: m("div", "After")
+    }
+  },
+
+  // Dark theme
+
+  {
+    name: "Option: highSubtitle and front -- dark theme",
+    component,
+    class: "pe-dark-theme",
+    attrs: {
+      title: "Ancillary Justice",
+      highSubtitle: "The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before.",
+      front: m(icon, {
+        src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
+        avatar: true,
+        type: "large"
+      }),
+      secondary: {
+        icon: {
+          msvg: iconStars
+        },
+        url: {
+          href: "/",
+          oncreate: m.route.link
+        }
+      }
+    }
+  },
+
+  {
+    name: "Option: disabled url -- dark theme",
+    component,
+    class: "pe-dark-theme",
+    attrs: {
+      title: "Ancillary Justice",
+      disabled: true
     }
   },
 ];

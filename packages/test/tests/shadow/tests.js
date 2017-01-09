@@ -1,8 +1,25 @@
 import m from "mithril";
-import { shadow } from "polythene-shadow";
+import { shadow as component } from "polythene-shadow";
 import { rules as css } from "../../src/styles";
 
-const component = shadow;
+const interactiveTest = {
+  oninit: vnode =>
+    vnode.state.z = 1,
+  oncreate: vnode => {
+    vnode.dom.addEventListener("click", () => {
+      const newZ = (vnode.state.z + 1) % 6;
+      vnode.state.z = newZ;
+      m.redraw();
+    });
+  },
+  view: vnode => [
+    m(css.content, "Click me"),
+    m(component, {
+      animated: true,
+      z: vnode.state.z,
+    })
+  ]
+};
 
 export const tests = [
   {
@@ -30,24 +47,7 @@ export const tests = [
   {
     name: "Interactive option: animated",
     interactive: true,
-    component: {
-      oninit: vnode =>
-        vnode.state.z = 1,
-      oncreate: vnode => {
-        vnode.dom.addEventListener("click", () => {
-          const newZ = (vnode.state.z + 1) % 6;
-          vnode.state.z = newZ;
-          m.redraw();
-        });
-      },
-      view: vnode => [
-        m(css.content, "Click me"),
-        m(component, {
-          animated: true,
-          z: vnode.state.z,
-        })
-      ]
-    }
+    component: interactiveTest
   },
   {
     name: "Option: z (0)",
@@ -132,6 +132,15 @@ export const tests = [
     attrs: {
       after: "After"
     }
+  },
+
+  // Dark theme
+
+  {
+    name: "Interactive option: animated -- dark theme",
+    interactive: true,
+    class: "pe-dark-theme",
+    component: interactiveTest
   },
 
 ];

@@ -61,30 +61,31 @@ var shadowDirective = function shadowDirective(dir) {
 };
 
 var createStyles = function createStyles(componentVars) {
-  return [{
-    ".pe-shadow": [mixin.fit(), {
-      "border-radius": "inherit",
-      "pointer-events": "none",
+  var className = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
 
-      " .pe-shadow__bottom, .pe-shadow__top": [mixin.fit(), {
-        "border-radius": "inherit"
-      }],
+  var selector = className + ".pe-shadow";
+  return [defineProperty({}, selector, [mixin.fit(), {
+    "border-radius": "inherit",
+    "pointer-events": "none",
 
-      "&.pe-shadow--animated": {
-        " .pe-shadow__bottom, .pe-shadow__top": mixin.vendorize({
-          "transition": componentVars.transition
-        }, vars.prefixes_transition)
-      }
-    }, [1, 2, 3, 4, 5].map(function (index) {
-      var _ref;
+    " .pe-shadow__bottom, .pe-shadow__top": [mixin.fit(), {
+      "border-radius": "inherit"
+    }],
 
-      return _ref = {}, defineProperty(_ref, " .pe-shadow__top.pe-shadow--z-" + index, shadowDirective(componentVars["shadow-top-z-" + index])), defineProperty(_ref, " .pe-shadow__bottom.pe-shadow--z-" + index, shadowDirective(componentVars["shadow-bottom-z-" + index])), _ref;
-    })]
-  }];
+    "&.pe-shadow--animated": {
+      " .pe-shadow__bottom, .pe-shadow__top": mixin.vendorize({
+        "transition": componentVars.transition
+      }, vars.prefixes_transition)
+    }
+  }, [1, 2, 3, 4, 5].map(function (index) {
+    var _ref;
+
+    return _ref = {}, defineProperty(_ref, " .pe-shadow__top.pe-shadow--z-" + index, shadowDirective(componentVars["shadow-top-z-" + index])), defineProperty(_ref, " .pe-shadow__bottom.pe-shadow--z-" + index, shadowDirective(componentVars["shadow-bottom-z-" + index])), _ref;
+  })])];
 };
 
 var layout = (function (componentVars) {
-  return mixin.createStyles(componentVars, createStyles);
+  return styler.createStyles(componentVars, createStyles);
 });
 
 // Does not contain any color styles
@@ -98,7 +99,7 @@ var styleComponent = function styleComponent(className, styles$$1) {
 
 var customTheme = function customTheme(className, vars$$1) {
   return (
-    // Inject additional styles as use className as key
+    // Inject additional styles as use the className as key
     styleComponent(className, styler.addComponentStyle(className, styles, key, vars$$1))
   );
 };

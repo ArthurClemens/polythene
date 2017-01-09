@@ -21,6 +21,6 @@ export const rules = {
   resultRow: `.result-row.flex-ns.flex-row-ns.flex-column${bottomBorder}${resultHeight}`,
   resultTitle: ".flex.flex-one.ma3",
   result: ".result.flex.flex-one.relative.ma3.minh4",
-  content: ".component-result.relative.w-100",
+  content: ".component-result.flex.relative.w-100",
   rawResult: ".generated-html.prewrap.flex.flex-one.relative.ma3.light-silver"
 };

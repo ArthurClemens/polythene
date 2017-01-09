@@ -4,85 +4,25 @@ import { mixin, styler } from 'polythene-css';
 import { styles, vars } from 'polythene-theme';
 
 var vars$1 = {
-  start_scale: 0.1,
-  end_scale: 2,
-  start_opacity: 0.2,
-  end_opacity: 0
+  color: "inherit" // only specify this variable to get both states
+  // color_light:   "inherit",
+  // color_dark:    "inherit"
 };
 
-var kfRipple = function kfRipple(componentVars) {
-  return {
-    " 100%": {
-      transform: "scale(" + componentVars.end_scale + ")",
-      "opacity": componentVars.end_opacity
-    }
-  };
+var defineProperty = function (obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
 };
-
-var createStyles = function createStyles(componentVars) {
-  return [{
-    ".pe-ripple": [mixin.fit(), {
-      color: "inherit",
-      "border-radius": "inherit",
-
-      "&.pe-ripple--constrained": {
-        "border-radius": "inherit",
-
-        " .pe-ripple__mask": {
-          overflow: "hidden",
-          "border-radius": "inherit"
-        }
-      },
-      " .pe-ripple__mask": [mixin.fit(), mixin.vendorize({
-        "transform": "translate3d(0,0,0)"
-      }, vars.prefixes_transform)],
-
-      " .pe-ripple__waves": [mixin.vendorize({
-        "transform": "scale(" + componentVars.start_scale + ")"
-      }, vars.prefixes_transform), mixin.vendorize({
-        "animation": "ripple " + vars.animation_curve_default
-      }, vars.prefixes_animation),
-      // default durations; finally set in js
-      mixin.vendorize({
-        "animation-duration": vars.animation_duration
-      }, vars.prefixes_animation), {
-        outline: "1px solid transparent", // for IE10
-        position: "absolute",
-        "border-radius": "50%",
-        opacity: componentVars.start_opacity,
-        "pointer-events": "none",
-        display: "none"
-      }],
-      " .pe-ripple__waves--animating": {
-        display: "block"
-      }
-    }],
-
-    "@keyframes ripple": kfRipple(componentVars)
-  }];
-};
-
-var layout = (function (componentVars) {
-  return mixin.createStyles(componentVars, createStyles);
-});
-
-// Does not contain any color styles
-
-var key = "ripple";
-var className = "pe-ripple";
-
-var styleComponent = function styleComponent(className, styles$$1) {
-  return styler.styleComponent(className, styles$$1, key, vars$1, layout);
-};
-
-var customTheme = function customTheme(className, vars$$1) {
-  return (
-    // Inject additional styles as use className as key
-    styleComponent(className, styler.addComponentStyle(className, styles, key, vars$$1))
-  );
-};
-
-styleComponent(className, styles);
 
 var _extends = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
@@ -98,53 +38,136 @@ var _extends = Object.assign || function (target) {
   return target;
 };
 
-var ANIMATION_END_EVENT = animationEndEvent();
-var DEFAULT_START_OPACITY = 0.2;
-var OPACITY_DECAY_VELOCITY = 0.35;
-var classes = {
-  component: "pe-ripple",
-  waves: "pe-ripple__waves",
-  mask: "pe-ripple__mask",
-  constrained: "pe-ripple--constrained",
-  wavesAnimating: "pe-ripple__waves--animating"
+var createStyles = function createStyles(componentVars) {
+  var className = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+
+  var selector = className + ".pe-ripple";
+  return [defineProperty({}, selector, [mixin.fit(), {
+    color: "inherit",
+    "border-radius": "inherit",
+
+    "&.pe-ripple--constrained": {
+      "border-radius": "inherit",
+
+      " .pe-ripple__mask": {
+        overflow: "hidden",
+        "border-radius": "inherit"
+      }
+    },
+    " .pe-ripple__mask": [mixin.fit(), mixin.vendorize({
+      "transform": "translate3d(0,0,0)"
+    }, vars.prefixes_transform)],
+
+    " .pe-ripple__waves": {
+      outline: "1px solid transparent", // for IE10
+      position: "absolute",
+      "border-radius": "50%",
+      "pointer-events": "none",
+      display: "none"
+    },
+    " .pe-ripple__waves--animating": {
+      display: "block"
+    }
+  }])];
 };
 
-var destroyRipple = void 0;
+var layout = (function (componentVars) {
+  return styler.createStyles(componentVars, createStyles);
+});
 
-var makeRipple = function makeRipple(e, state, attrs) {
-  if (state.animating) {
-    return;
-  }
-  var el = state.ripple;
+var style = function style(componentVars, scope, selector, tint) {
+  var color = componentVars["color_" + tint] || componentVars["color"] || "inherit";
+  return [defineProperty({}, scope + selector, {
+    color: color
+  })];
+};
+
+var createStyles$1 = function createStyles(componentVars) {
+  var className = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+
+  var selector = className + ".pe-ripple";
+  return [style(componentVars, "", selector, "light"), style(componentVars, ".pe-dark-theme ", selector, "dark") // inside dark theme
+  ];
+};
+
+var color = (function (componentVars) {
+  return styler.createStyles(componentVars, createStyles$1);
+});
+
+var key = "ripple";
+var className = "pe-ripple";
+
+var styleComponent = function styleComponent(className, styles$$1) {
+  return styler.styleComponent(className, styles$$1, key, vars$1, layout, color);
+};
+
+var customTheme = function customTheme(className, vars$$1) {
+  return (
+    // Inject additional styles as use the className as key
+    styleComponent(className, styler.addComponentStyle(className, styles, key, vars$$1))
+  );
+};
+
+styleComponent(className, styles);
+
+var ANIMATION_END_EVENT = animationEndEvent();
+var DEFAULT_START_OPACITY = 0.2;
+var DEFAULT_END_OPACITY = 0.0;
+var DEFAULT_START_SCALE = 0.1;
+var DEFAULT_END_SCALE = 2.0;
+var OPACITY_DECAY_VELOCITY = 0.35;
+
+var animation = (function (e, el, wavesEl, attrs, classes, endCallback) {
   var rect = el.getBoundingClientRect();
   var x = isTouch && e.touches ? e.touches[0].pageX : e.clientX;
   var y = isTouch && e.touches ? e.touches[0].pageY : e.clientY;
   var w = el.offsetWidth;
   var h = el.offsetHeight;
   var waveRadius = Math.sqrt(w * w + h * h);
-
   var mx = attrs.center ? rect.left + rect.width / 2 : x;
   var my = attrs.center ? rect.top + rect.height / 2 : y;
   var rx = mx - rect.left - waveRadius / 2;
   var ry = my - rect.top - waveRadius / 2;
-  var initialOpacity = attrs.initialOpacity !== undefined ? attrs.initialOpacity : DEFAULT_START_OPACITY;
+  var startOpacity = attrs.startOpacity !== undefined ? attrs.startOpacity : DEFAULT_START_OPACITY;
   var opacityDecayVelocity = attrs.opacityDecayVelocity !== undefined ? attrs.opacityDecayVelocity : OPACITY_DECAY_VELOCITY;
-  var duration = 1 / opacityDecayVelocity * initialOpacity;
+  var endOpacity = attrs.endOpacity || DEFAULT_END_OPACITY;
+  var startScale = attrs.startScale || DEFAULT_START_SCALE;
+  var endScale = attrs.endScale || DEFAULT_END_SCALE;
+  var duration = attrs.duration ? attrs.duration : 1 / opacityDecayVelocity * 0.2;
   var color = window.getComputedStyle(el).color;
-
-  var wavesEl = state.waves;
+  var animationId = "ripple_animation_" + new Date().getTime();
   var style = wavesEl.style;
   style.width = style.height = waveRadius + "px";
   style.top = ry + "px";
   style.left = rx + "px";
   style["animation-duration"] = style["-webkit-animation-duration"] = style["-moz-animation-duration"] = style["-o-animation-duration"] = duration + "s";
   style.backgroundColor = color;
-  style.opacity = initialOpacity;
-  state.animating = true;
+  style.opacity = startOpacity;
+  style.animationName = animationId;
+  style.animationTimingFunction = attrs.animationTimingFunction || vars.animation_curve_default;
+
+  var keyframeStyle = [defineProperty({}, "@keyframes " + animationId, {
+    " 0%": {
+      transform: "scale(" + startScale + ")",
+      "opacity": startOpacity
+    },
+    " 100%": {
+      transform: "scale(" + endScale + ")",
+      "opacity": endOpacity
+    }
+  })];
+  styler.add(animationId, keyframeStyle);
+
   var onEnd = function onEnd(evt) {
-    state.animating = false;
-    wavesEl.classList.remove(classes.wavesAnimating);
+    if (attrs.persistent) {
+      style.opacity = endOpacity;
+      style.transform = "scale(" + endScale + ")";
+    } else {
+      endCallback();
+      wavesEl.classList.remove(classes.wavesAnimating);
+    }
     wavesEl.removeEventListener(ANIMATION_END_EVENT, onEnd, false);
+    styler.remove(animationId);
     if (attrs.end) {
       attrs.end(evt);
     }
@@ -154,7 +177,17 @@ var makeRipple = function makeRipple(e, state, attrs) {
     attrs.start(e);
   }
   wavesEl.classList.add(classes.wavesAnimating);
+});
+
+var classes = {
+  component: "pe-ripple",
+  waves: "pe-ripple__waves",
+  mask: "pe-ripple__mask",
+  constrained: "pe-ripple--constrained",
+  wavesAnimating: "pe-ripple__waves--animating"
 };
+
+var destroyRipple = void 0;
 
 var initRipple = function initRipple(vnode) {
   var state = vnode.state;
@@ -166,7 +199,13 @@ var initRipple = function initRipple(vnode) {
   state.waves = vnode.dom.querySelector("." + classes.waves);
 
   var tap = function tap(e) {
-    return makeRipple(e, state, attrs);
+    if (state.animating) {
+      return;
+    }
+    animation(e, state.ripple, state.waves, attrs, classes, function () {
+      return state.animating = false;
+    });
+    state.animating = true;
   };
   var triggerEl = vnode.dom.parentElement;
   triggerEl.addEventListener(touchEndEvent, tap, false);
