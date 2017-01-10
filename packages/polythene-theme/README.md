@@ -9,7 +9,7 @@ TL;DR: The simplest way to create a custom blue button:
 ~~~javascript
 import { button } from "polythene-button";
 
-button.theme("blue-button", {
+button.theme(".blue-button", {
   color_light_background: "blue",
   color_light_text: "white"
 });
@@ -61,7 +61,7 @@ The variables like `unit_icon_size_small` that are imported from `polythene-them
 A component can be given an extra style using this pattern:
 
 ~~~javascript
-component.theme(className, vars)
+component.theme(selector, vars)
 ~~~
 
 Use a sufficiently unique class name to not clash with other components. `vars` is a subset of the component's theme variables. 
@@ -73,7 +73,7 @@ For example, to create large icons for the component with class "app-icon", we w
 import { icon } from "polythene-icon";
 
 const unitSize = 20;
-icon.theme("app-icon", {
+icon.theme(".app-icon", {
   size_small:   1 * unitSize,
   size_regular: 2 * unitSize,
   size_medium:  3 * unitSize,
@@ -93,7 +93,7 @@ Likewise, to create a blue button, write:
 // app.js
 import { button } from "polythene-button";
 
-button.theme("blue-button", {
+button.theme(".blue-button", {
   color_light_background: "#2196F3",
   color_light_text: "#fff"
   // note that we only need to list the properties that differ
@@ -132,7 +132,7 @@ export const secondaryButton = {
 To set the style using variables, use the original component's `theme` function:
 
 ~~~javascript
-button.theme("secondary-button", {
+button.theme(".secondary-button", {
   color_light_border: "#ddd",
   color_light_background: "#fff"
 });
@@ -150,7 +150,7 @@ export const secondaryButton = {
   theme: button.theme
 };
 
-secondaryButton.theme("secondary-button", {
+secondaryButton.theme(".secondary-button", {
   color_light_border: "#ddd",
   color_light_background: "#fff"
 });

@@ -1,1 +1,1 @@
-{"version":3,"file":null,"sources":["../src/styles.js"],"sourcesContent":["// Find the complete info in the README!\n\nexport default {};\n"],"names":[],"mappings":"yQAEA"}
+{"version":3,"file":null,"sources":["../src/index.js"],"sourcesContent":["// Find the complete info in the README!\n\nexport { defaultVariables as vars } from \"polythene-core\";\n\nexport const styles = {};\n"],"names":["styles"],"mappings":"yQAEA,IAEaA"}
