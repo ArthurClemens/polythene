@@ -211,11 +211,33 @@ Dynamic loading and preloading have been removed, as these are not frequent use 
 
 ## Theming
 
-An extra, simpler way to theme components has been introduced. See polythene-theme's README for details.
+A simpler way to theme components replaces the method of writing multiple style configurations in one file.
 
-Example:
+### Styling of components
+
+#### v0.2
 
 ~~~javascript
+// app/config/custom.js
+
+export default {
+    button: (config) => {
+        const primaryButtonCfg = Object.assign({}, config, {
+            color_light_normal_background: 'blue',
+            color_light_normal_text: 'white'
+        });
+        return [
+            {'': config}, // default Polythene button
+            {'.blue-button': primaryButtonCfg}
+        ];
+    }
+};
+~~~
+
+#### v1.x
+
+~~~javascript
+// any script
 import { button } from "polythene-button";
 
 button.theme("blue-button", {
@@ -224,11 +246,41 @@ button.theme("blue-button", {
 });
 
 m(button, {
-  label: "Blue Button",
-  class: "blue-button"
+  class: "blue-button",
+  label: "Blue Button"
 });
 ~~~ 
 
+See polythene-theme's README for more details.
+
+
+### Setting global app styles
+
+#### v0.2
+
+~~~javascript
+// app/config/config.js
+import config from 'polythene/config/default';
+
+export default Object.assign({}, config, {
+    // this site's base colors
+    color_primary: '255, 152, 0' // orange 500
+});
+~~~
+
+#### v1.x
+
+~~~javascript
+// custom-theme.js
+import { defaultVariables } from "polythene-core";
+
+export const vars = {
+  ...defaultVariables
+  , color_primary: "255, 152, 0" // orange 500
+};
+~~~
+
+See polythene-theme's README for more details.
 
 
 ### Variables

@@ -2,9 +2,9 @@
   "name": "polythene-svg",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/svg.js",
-  "module": "dist/svg.mjs",
-  "jsnext:main": "dist/svg.mjs",
+  "main": "dist/polythene-svg.js",
+  "module": "dist/polythene-svg.mjs",
+  "jsnext:main": "dist/polythene-svg.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",

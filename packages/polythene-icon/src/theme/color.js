@@ -1,6 +1,5 @@
-import { styler } from "polythene-css";
 
-const style = (componentVars, scope, selector, tint) => {
+const style = (scope, selector, componentVars, tint) => {
   const color = componentVars["color_" + tint] || "currentcolor";
   return [{
     [scope + selector]: {
@@ -20,13 +19,7 @@ const style = (componentVars, scope, selector, tint) => {
   }];
 };
 
-const createStyles = (componentVars, className = "") => {
-  const selector = `${className}.pe-icon`;
-  return [
-    style(componentVars, "",                selector, "light"),
-    style(componentVars, ".pe-dark-theme ", selector, "dark" ), // inside dark theme
-  ];
-};
-
-export default componentVars => styler.createStyles(componentVars, createStyles);
-
+export default (selector, componentVars) => [
+  style("",                selector, componentVars, "light"),
+  style(".pe-dark-theme ", selector, componentVars, "dark" ), // inside dark theme
+];

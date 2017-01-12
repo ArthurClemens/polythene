@@ -6,7 +6,7 @@ import iconFavorite from "mmsvg/google/msvg/action/favorite-border";
 component.theme(".tests-icon-button-themed-icon-button", {
   padding: 32,
   color_background: "purple",
-  color_light_text: "white"
+  color_light: "white"
 });
 
 export const tests = [

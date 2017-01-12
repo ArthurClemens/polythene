@@ -135,7 +135,7 @@ const view = vnode => {
 };
 
 export const listTile = {
-  theme: customTheme, // accepts (className, vars)
+  theme: customTheme, // accepts (selector, vars)
   view
 };
 

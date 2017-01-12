@@ -92,7 +92,7 @@ const view = vnode => {
 };
 
 export const raisedButton = {
-  theme: customTheme, // accepts (className, vars)
+  theme: customTheme, // accepts (selector, vars)
   oninit: vnode => {
     const z = (vnode.attrs.z !== undefined) ? vnode.attrs.z : 1;
     vnode.state = {

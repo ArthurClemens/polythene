@@ -1,11 +1,9 @@
-import { styler } from "polythene-css";
 
-const style = (componentVars, scope, selector, tint) => {
+const style = (scope, selector, componentVars, tint) => {
   return [{
     [scope + selector]: {
-      color: componentVars["color_" + tint + "_text"],
+      color: componentVars["color_" + tint],
       "background-color": componentVars["color_" + tint + "_background"] || componentVars["color_background"],
-
       " .pe-button__wash": {
         opacity: componentVars["color_" + tint + "_wash_opacity"]
       },
@@ -24,7 +22,7 @@ const style = (componentVars, scope, selector, tint) => {
   }];
 };
 
-const noTouchStyle = (componentVars, scope, selector, tint) => {
+const noTouchStyle = (scope, selector, componentVars, tint) => {
   const backgroundColor = tint === "light"
     ? "currentcolor"
     : componentVars["color_" + tint];
@@ -37,16 +35,9 @@ const noTouchStyle = (componentVars, scope, selector, tint) => {
   }];
 };
 
-
-const createStyles = (componentVars, className = "") => {
-  const selector = `${className}.pe-button--icon`;
-  return [
-    style(componentVars,        "",                                 selector, "light"),
-    style(componentVars,        ".pe-dark-theme ",                  selector, "dark" ), // inside dark theme
-    noTouchStyle(componentVars, "html.pe-no-touch ",                selector, "light"),
-    noTouchStyle(componentVars, "html.pe-no-touch .pe-dark-theme ", selector, "dark" ), // inside dark theme
-  ];
-};
-
-export default componentVars => styler.createStyles(componentVars, createStyles);
-
+export default (selector, componentVars) => [
+  style(       "",                                 selector, componentVars, "light"),
+  style(       ".pe-dark-theme ",                  selector, componentVars, "dark" ), // inside dark theme
+  noTouchStyle("html.pe-no-touch ",                selector, componentVars, "light"),
+  noTouchStyle("html.pe-no-touch .pe-dark-theme ", selector, componentVars, "dark" ), // inside dark theme
+];

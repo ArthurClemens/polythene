@@ -346,42 +346,6 @@ exports[`test Option: wash (false) 1`] = `
 "
 `;
 
-exports[`test Themed button (theme file) -- dark theme 1`] = `
-"<a tabindex=\"0\" class=
-\"pe-button pe-button--text my-button--primary\">
-<div class=\"pe-button__content\">
-  <div class=\"pe-ripple pe-ripple--constrained\">
-    <div class=\"pe-ripple__mask\">
-      <div class=\"pe-ripple__waves\"></div>
-    </div>
-  </div>
-  <div class=\"pe-button__wash\"></div>
-  <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button__label\">
-    Dark theme primary button
-  </div>
-</div></a>
-"
-`;
-
-exports[`test Themed button (theme file) 1`] = `
-"<a tabindex=\"0\" class=
-\"pe-button pe-button--text my-button--primary\">
-<div class=\"pe-button__content\">
-  <div class=\"pe-ripple pe-ripple--constrained\">
-    <div class=\"pe-ripple__mask\">
-      <div class=\"pe-ripple__waves\"></div>
-    </div>
-  </div>
-  <div class=\"pe-button__wash\"></div>
-  <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button__label\">
-    Theme primary button
-  </div>
-</div></a>
-"
-`;
-
 exports[`test Themed button -- dark theme 1`] = `
 "<a tabindex=\"0\" class=
 \"pe-button pe-button--text tests-button-themed-button\">
@@ -413,6 +377,24 @@ exports[`test Themed button 1`] = `
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
     Themed button
+  </div>
+</div></a>
+"
+`;
+
+exports[`test Themed button blue on dark -- dark theme 1`] = `
+"<a tabindex=\"0\" class=
+\"pe-button pe-button--text blue-on-dark-button\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-ripple pe-ripple--constrained\">
+    <div class=\"pe-ripple__mask\">
+      <div class=\"pe-ripple__waves\"></div>
+    </div>
+  </div>
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Blue on dark button
   </div>
 </div></a>
 "

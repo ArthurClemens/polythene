@@ -2,9 +2,9 @@
   "name": "polythene-icon",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/icon.js",
-  "module": "dist/icon.mjs",
-  "jsnext:main": "dist/icon.mjs",
+  "main": "dist/polythene-icon.js",
+  "module": "dist/polythene-icon.mjs",
+  "jsnext:main": "dist/polythene-icon.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",

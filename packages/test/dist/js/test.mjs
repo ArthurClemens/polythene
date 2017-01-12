@@ -12,10 +12,9 @@ import { svg as svg$1 } from 'polythene-svg';
 import { iconButton as iconButton$1 } from 'polythene-icon-button';
 import { list as list$1 } from 'polythene-list';
 import { listTile as listTile$1 } from 'polythene-list-tile';
-import { shadow as shadow$1 } from 'polythene-shadow';
-import { isTouch, subscribe, touchEndEvent, touchStartEvent } from 'polythene-core';
-import { styles, vars } from 'polythene-theme';
+import { raisedButton as raisedButton$1 } from 'polythene-raised-button';
 import { ripple as ripple$1 } from 'polythene-ripple';
+import { shadow as shadow$1 } from 'polythene-shadow';
 import 'polythene-css-classes';
 
 /* globals tidy_html5 */
@@ -63,13 +62,13 @@ var rules = {
   resultRow: ".result-row.flex-ns.flex-row-ns.flex-column" + bottomBorder + resultHeight,
   resultTitle: ".flex.flex-one.ma3",
   result: ".result.flex.flex-one.relative.ma3.minh4",
-  content: ".component-result.flex.relative.w-100",
+  content: ".component-result.relative.w-100",
   rawResult: ".generated-html.prewrap.flex.flex-one.relative.ma3.light-silver"
 };
 
 var blockSize = 40;
 
-var styles$1 = [{
+var styles = [{
   " .block": {
     "min-width": blockSize + "px",
     "min-height": blockSize + "px",
@@ -106,7 +105,7 @@ var rocket = m$1.trust('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="htt
 
 var SVG = m.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z\"/></svg>");
 
-styler.add("polythene-css-classes", styles$1);
+styler.add("polythene-css-classes", styles);
 
 // Testing the web font loader that we use to load Roboto
 webfont.load({
@@ -126,7 +125,7 @@ button.theme(".tests-polythene-themed-button", {
 
 fab.theme(".tests-polythene-themed-fab", {
   color_light_background: "#FF1744",
-  color_light_text: "#fff"
+  color_light: "#fff"
 });
 
 var tests = [{
@@ -294,6 +293,10 @@ button$1.theme(".tests-button-themed-button", {
   color_light_text: "#fff"
 });
 
+button$1.theme(".blue-on-dark-button", {
+  color_dark_text: "#1976D2"
+});
+
 button$1.theme(".tests-button-bordered-button", {
   color_light_text: "#673ab7",
   color_light_border: "#673ab7",
@@ -332,13 +335,6 @@ var tests$1 = [{
   attrs: {
     label: "Themed button",
     class: "tests-button-themed-button"
-  }
-}, {
-  name: "Themed button (theme file)",
-  component: button$1,
-  attrs: {
-    label: "Theme primary button",
-    class: "my-button--primary"
   }
 }, {
   name: "Option: wash (false)",
@@ -543,6 +539,14 @@ var tests$1 = [{
     class: "tests-button-themed-button"
   }
 }, {
+  name: "Themed button blue on dark -- dark theme",
+  class: "pe-dark-theme",
+  component: button$1,
+  attrs: {
+    label: "Blue on dark button",
+    class: "blue-on-dark-button"
+  }
+}, {
   name: "Themed button: (option: borders) -- dark theme",
   class: "pe-dark-theme",
   component: button$1,
@@ -550,14 +554,6 @@ var tests$1 = [{
     label: "Borders dark theme",
     class: "tests-button-bordered-button",
     borders: true
-  }
-}, {
-  name: "Themed button (theme file) -- dark theme",
-  class: "pe-dark-theme",
-  component: button$1,
-  attrs: {
-    label: "Dark theme primary button",
-    class: "my-button--primary"
   }
 }];
 
@@ -881,7 +877,7 @@ var favoriteBorder = m$4.trust('<svg xmlns="http://www.w3.org/2000/svg" width="2
 iconButton$1.theme(".tests-icon-button-themed-icon-button", {
   padding: 32,
   color_background: "purple",
-  color_light_text: "white"
+  color_light: "white"
 });
 
 var tests$4 = [{
@@ -1595,248 +1591,6 @@ var tests$6 = [{
   }
 }];
 
-var rgba = vars.rgba;
-
-var vars$1 = {
-  color_light_background: "#E0E0E0",
-  color_light_text: rgba(vars.color_light_foreground, vars.blend_light_text_primary),
-  color_light_hover_background: "transparent",
-  color_light_focus_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
-  color_light_active_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover), // same as hover
-  color_light_disabled_background: rgba(vars.color_light_foreground, vars.blend_light_background_disabled),
-  color_light_disabled_text: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
-
-  color_dark_background: rgba(vars.color_primary),
-  color_dark_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
-  color_dark_hover_background: vars.color_primary_active,
-  color_dark_focus_background: vars.color_primary_active,
-  color_dark_active_background: vars.color_primary_dark,
-  color_dark_disabled_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_disabled),
-  color_dark_disabled_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled)
-};
-
-var defineProperty = function defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-};
-
-var _extends = Object.assign || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];
-
-    for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }
-
-  return target;
-};
-
-var style = function style(componentVars, scope, selector, tint) {
-  var normalBorder = componentVars["color_" + tint + "_border"] || "transparent";
-  var activeBorder = componentVars["color_" + tint + "_active_border"] || normalBorder;
-  var disabledBorder = componentVars["color_" + tint + "_disabled_border"] || normalBorder;
-  return [defineProperty({}, scope + selector, {
-    "&, &:link, &:visited": {
-      color: componentVars["color_" + tint + "_text"]
-    },
-
-    " .pe-button__content": {
-      "background-color": componentVars["color_" + tint + "_background"],
-      "border-color": normalBorder
-    },
-
-    "&.pe-button--disabled": {
-      color: componentVars["color_" + tint + "_disabled_text"],
-
-      " .pe-button__content": {
-        "background-color": componentVars["color_" + tint + "_disabled_background"],
-        "border-color": disabledBorder
-      }
-    },
-
-    "&.pe-button--selected": {
-      " .pe-button__content": {
-        "background-color": componentVars["color_" + tint + "_active_background"],
-        "border-color": activeBorder
-      },
-      " .pe-button__focus": {
-        opacity: 1,
-        "background-color": componentVars["color_" + tint + "_focus_background"]
-      }
-    },
-
-    "&.pe-button--focus": {
-      " .pe-button__focus": {
-        opacity: 1,
-        "background-color": componentVars["color_" + tint + "_focus_background"]
-      }
-    }
-  })];
-};
-
-var noTouchStyle = function noTouchStyle(componentVars, scope, selector, tint) {
-  var normalBorder = componentVars["color_" + tint + "_border"];
-  var hoverBorder = componentVars["color_" + tint + "_border"] || normalBorder;
-  return [defineProperty({}, scope + selector + ":hover", {
-    "&:not(.pe-button--selected):not(.pe-button--inactive) .pe-button__wash": {
-      "background-color": componentVars["color_" + tint + "_hover_background"],
-      "border-color": hoverBorder
-    }
-  })];
-};
-
-var createStyles = function createStyles(componentVars) {
-  var className = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
-
-  var selector = className + ".pe-button--raised";
-  return [style(componentVars, "", selector, "light"), style(componentVars, ".pe-dark-theme ", selector, "dark"), // inside dark theme
-  noTouchStyle(componentVars, "html.pe-no-touch ", selector, "light"), noTouchStyle(componentVars, "html.pe-no-touch .pe-dark-theme ", selector, "dark")];
-};
-
-var color = function color(componentVars) {
-  return styler$1.createStyles(componentVars, createStyles);
-};
-
-// No layout
-var key = "raised-button";
-var className = "pe-button--raised";
-
-var styleComponent = function styleComponent(className, styles$$1) {
-  return styler$1.styleComponent(className, styles$$1, key, vars$1, color);
-};
-
-var customTheme = function customTheme(className, vars$$1) {
-  return (
-    // Inject additional styles as use the className as key
-    styleComponent(className, styler$1.addComponentStyle(className, styles, key, vars$$1))
-  );
-};
-
-styleComponent(className, styles);
-
-var classes = {
-  component: "pe-button pe-button--text pe-button--raised"
-};
-
-var MAX_Z = 5;
-
-var tapStart = void 0;
-var tapEndAll = function tapEndAll() {};
-var downButtons = [];
-
-subscribe(touchEndEvent, function () {
-  return tapEndAll();
-});
-
-var animateZ = function animateZ(state, attrs, name) {
-  var zBase = state.zBase;
-  var increase = attrs.increase || 1;
-  var z = state.z;
-  if (name === "down" && zBase !== 5) {
-    z = Math.min(z + increase, MAX_Z);
-  } else if (name === "up") {
-    z = Math.max(z - increase, zBase);
-  }
-  if (z !== state.z) {
-    state.z = z;
-    m.redraw(); // show shadow animation
-  }
-};
-
-var inactivate = function inactivate(state, attrs) {
-  state.inactive = true;
-  m.redraw();
-  setTimeout(function () {
-    state.inactive = false;
-    m.redraw();
-  }, attrs.inactivate * 1000);
-};
-
-var initTapEvents = function initTapEvents(el, state, attrs) {
-  var tapHandler = function tapHandler(state, attrs, name) {
-    if (name === "down") {
-      downButtons.push({
-        state: state,
-        attrs: attrs
-      });
-    } else if (name === "up") {
-      if (attrs.inactivate && !state.inactive) {
-        inactivate(state, attrs);
-      }
-    }
-    // no z animation on touch
-    var animateOnTap = attrs.animateOnTap !== false ? true : false;
-    if (animateOnTap && !isTouch) {
-      animateZ(state, attrs, name);
-    }
-  };
-  tapStart = function tapStart() {
-    return tapHandler(state, attrs, "down");
-  };
-  tapEndAll = function tapEndAll() {
-    downButtons.map(function (btn) {
-      tapHandler(btn.state, btn.attrs, "up");
-    });
-    downButtons = [];
-  };
-  el.addEventListener(touchStartEvent, tapStart);
-};
-
-var clearTapEvents = function clearTapEvents(el) {
-  el.removeEventListener(touchStartEvent, tapStart);
-};
-
-var view = function view(vnode) {
-  var attrs = vnode.attrs;
-  var state = vnode.state;
-  var children = vnode.children.length && vnode.children || attrs.children;
-  return m(button$1, _extends({}, {
-    parentClass: [attrs.parentClass || classes.component].join(" "),
-    animateOnTap: false,
-    shadowComponent: m(shadow$1, { z: state.z, animated: true }),
-    children: children
-  }, attrs));
-};
-
-var raisedButton$1 = {
-  theme: customTheme, // accepts (className, vars)
-  oninit: function oninit(vnode) {
-    var z = vnode.attrs.z !== undefined ? vnode.attrs.z : 1;
-    vnode.state = {
-      el: undefined,
-      zBase: z,
-      z: z,
-      tapEventsInited: false
-    };
-  },
-  oncreate: function oncreate(vnode) {
-    if (!vnode.attrs.disabled && !vnode.state.inactive && !vnode.state.tapEventsInited) {
-      vnode.state.el = vnode.dom;
-      initTapEvents(vnode.dom, vnode.state, vnode.attrs);
-      vnode.state.tapEventsInited = true;
-    }
-  },
-  onremove: function onremove(vnode) {
-    if (vnode.state.tapEventsInited) {
-      clearTapEvents(vnode.dom);
-    }
-  },
-  view: view
-};
-
 raisedButton$1.theme(".tests-raised-button-themed-button", {
   color_light_background: "#FF1744",
   color_light_text: "#fff"
@@ -2212,15 +1966,13 @@ var interactiveTest = {
   oninit: function oninit(vnode) {
     return vnode.state.z = 1;
   },
-  oncreate: function oncreate(vnode) {
-    vnode.dom.addEventListener("click", function () {
-      var newZ = (vnode.state.z + 1) % 6;
-      vnode.state.z = newZ;
-      m.redraw();
-    });
-  },
   view: function view(vnode) {
-    return [m(rules.content, "Click me"), m(shadow$1, {
+    return [m(".absolute.absolute--fill", {
+      onclick: function onclick() {
+        var newZ = (vnode.state.z + 1) % 6;
+        vnode.state.z = newZ;
+      }
+    }, "Click me"), m(shadow$1, {
       animated: true,
       z: vnode.state.z
     })];
@@ -2400,7 +2152,7 @@ var tests$10 = [{
   }
 }];
 
-var _extends$1 = Object.assign || function (target) {
+var _extends = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];
 
@@ -2414,17 +2166,17 @@ var _extends$1 = Object.assign || function (target) {
   return target;
 };
 
-var styles$2 = [{
+var styles$1 = [{
   ".pe-button.secondary-button .pe-button__content": {
     "background-color": "#fff",
     "border-color": "#ddd"
   }
 }];
-styler$1.add("secondary-button", styles$2);
+styler$1.add("secondary-button", styles$1);
 
 var secondaryButton = {
   view: function view(vnode) {
-    return m(button$1, _extends$1({
+    return m(button$1, _extends({
       class: "secondary-button",
       borders: true,
       raised: false
@@ -2441,11 +2193,11 @@ var myStyle = [{
 styler$1.add("my-component", myStyle);
 
 var buttonStyles = [{
-  ".send-button .pe-button__content": {
+  ".pe-button.send-button .pe-button__content": {
     "background-color": "#FF1744",
     color: "white"
   },
-  ".info-button .pe-button__content": {
+  ".pe-button.info-button .pe-button__content": {
     "background-color": "#2196f3",
     color: "white"
   }
@@ -2466,8 +2218,8 @@ var makeButton = function makeButton(name) {
   };
 };
 var mixinButtonStyles = [{
-  ".send-button-x": makeButton("send"),
-  ".info-button-x": makeButton("info")
+  ".pe-button.send-button-x": makeButton("send"),
+  ".pe-button.info-button-x": makeButton("info")
 }];
 
 styler$1.add("app-buttons-x", mixinButtonStyles);
@@ -2513,7 +2265,7 @@ var tests$11 = [{
   }
 }];
 
-styler$1.add("css-classes", styles$1);
+styler$1.add("css-classes", styles);
 
 var tests$12 = [{
   name: "Should be aligned horizontally",
@@ -2560,10 +2312,9 @@ var tests$12 = [{
 }];
 
 /*
-Testing 3 theming methods:
+Testing 2 theming methods:
 1. Style variables
 2. Deriving components
-3. Theme file
 */
 
 // [1]
@@ -2584,7 +2335,7 @@ icon$1.theme(".tests-custom-theme-red-icon", {
 
 fab$1.theme(".tests-custom-theme-red-fab", {
   color_light_background: "#ff0000",
-  color_light_text: "#fff"
+  color_light: "#fff"
 });
 
 iconButton$1.theme(".tests-custom-theme-large-icon-button", {
@@ -2605,7 +2356,7 @@ listTile$1.theme(".tests-custom-theme-red-list-tile", {
 var secondaryButton$1 = {
   theme: button$1.theme,
   view: function view(vnode) {
-    return m(button$1, _extends$1({
+    return m(button$1, _extends({
       class: "tests-custom-theme-secondary-button",
       borders: true
     }, vnode.attrs));
@@ -2615,11 +2366,6 @@ secondaryButton$1.theme(".tests-custom-theme-secondary-button", {
   color_light_border: "#ddd",
   color_light_background: "#fff"
 });
-
-// [3]
-// Set in theme file ./theme.js:
-// classes: my-button--primary and my-icon
-
 
 var tests$13 = [{
   name: "Theme with style variables: button (should be blue)",
@@ -2648,13 +2394,6 @@ var tests$13 = [{
     label: "Unaffected button"
   }
 }, {
-  name: "Theme with theme file: button (text should be purple)",
-  component: button$1,
-  attrs: {
-    label: "Primary button",
-    class: "my-button--primary"
-  }
-}, {
   name: "Theme with theme file (global primary color): FAB (should be orange)",
   component: fab$1,
   attrs: {
@@ -2677,29 +2416,6 @@ var tests$13 = [{
   attrs: {
     class: "tests-custom-theme-red-icon",
     msvg: alarmAdd
-  }
-}, {
-  name: "Theme with theme file: icon (should have larger sizes)",
-  component: {
-    view: function view() {
-      return [m(icon$1, {
-        class: "my-icon",
-        msvg: alarmAdd,
-        type: "small"
-      }), m(icon$1, {
-        class: "my-icon",
-        msvg: alarmAdd,
-        type: "regular"
-      }), m(icon$1, {
-        class: "my-icon",
-        msvg: alarmAdd,
-        type: "medium"
-      }), m(icon$1, {
-        class: "my-icon",
-        msvg: alarmAdd,
-        type: "large"
-      })];
-    }
   }
 }, {
   name: "Theme with style variables: icon button (should have large padding)",

@@ -56,6 +56,6 @@ const view = vnode => {
 };
 
 export const list = {
-  theme: customTheme, // accepts (className, vars)
+  theme: customTheme, // accepts (selector, vars)
   view
 };

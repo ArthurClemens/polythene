@@ -10,14 +10,11 @@ export {
 
 export {
   mixin,
+  flex,
   styler
 } from "polythene-css";
 
-export * from "polythene-css-classes";
-
 export { fab } from "polythene-fab";
-
-export * from "polythene-fastclick";
 
 export { icon } from "polythene-icon";
 
@@ -34,6 +31,12 @@ export { ripple } from "polythene-ripple";
 export { shadow } from "polythene-shadow";
 
 export { svg } from "polythene-svg";
+
+export { vars } from "polythene-theme";
+
+export * from "polythene-fastclick";
+
+export * from "polythene-css-classes";
 
 export * from "polythene-material-design";
 

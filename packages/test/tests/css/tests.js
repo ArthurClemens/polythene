@@ -13,11 +13,11 @@ styler.add("my-component", myStyle);
 
 const buttonStyles = [
   {
-    ".send-button .pe-button__content": {
+    ".pe-button.send-button .pe-button__content": {
       "background-color": "#FF1744",
       color: "white"
     },
-    ".info-button .pe-button__content": {
+    ".pe-button.info-button .pe-button__content": {
       "background-color": "#2196f3",
       color: "white"
     }
@@ -38,8 +38,8 @@ const makeButton = name => ({
 });
 const mixinButtonStyles = [
   {
-    ".send-button-x": makeButton("send"),
-    ".info-button-x": makeButton("info")
+    ".pe-button.send-button-x": makeButton("send"),
+    ".pe-button.info-button-x": makeButton("info")
   }
 ];
 

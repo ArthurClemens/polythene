@@ -1,1 +1,1 @@
-import "./src/fastclick";
+import "./src";

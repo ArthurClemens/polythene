@@ -44,6 +44,6 @@ const view = vnode => {
 };
 
 export const shadow = {
-  theme: customTheme, // accepts (className, vars)
+  theme: customTheme, // accepts (selector, vars)
   view
 };

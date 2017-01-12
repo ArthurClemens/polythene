@@ -36,6 +36,6 @@ const view = vnode => {
 };
 
 export const iconButton = {
-  theme: customTheme, // accepts (className, vars)
+  theme: customTheme, // accepts (selector, vars)
   view
 };

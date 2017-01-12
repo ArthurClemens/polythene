@@ -1,6 +1,5 @@
-import { styler } from "polythene-css";
 
-const style = (componentVars, scope, selector, tint) => {
+const style = (scope, selector, componentVars, tint) => {
   const normalBorder   = componentVars["color_" + tint + "_border"]          || "transparent";
   const activeBorder   = componentVars["color_" + tint + "_active_border"]   || normalBorder;
   const disabledBorder = componentVars["color_" + tint + "_disabled_border"] || normalBorder;
@@ -45,7 +44,7 @@ const style = (componentVars, scope, selector, tint) => {
   }];
 };
 
-const noTouchStyle = (componentVars, scope, selector, tint) => {
+const noTouchStyle = (scope, selector, componentVars, tint) => {
   const normalBorder = componentVars["color_" + tint + "_border"];
   const hoverBorder = componentVars["color_" + tint + "_border"] || normalBorder;
   return [{
@@ -58,15 +57,9 @@ const noTouchStyle = (componentVars, scope, selector, tint) => {
   }];
 };
 
-const createStyles = (componentVars, className = "") => {
-  const selector = `${className}.pe-button--raised`;
-  return [
-    style(componentVars,        "",                                 selector, "light"),
-    style(componentVars,        ".pe-dark-theme ",                  selector, "dark" ), // inside dark theme
-    noTouchStyle(componentVars, "html.pe-no-touch ",                selector, "light"),
-    noTouchStyle(componentVars, "html.pe-no-touch .pe-dark-theme ", selector, "dark" ), // inside dark theme
-  ];
-};
-
-export default componentVars => styler.createStyles(componentVars, createStyles);
-
+export default (selector, componentVars) => [
+  style(       "",                                 selector, componentVars, "light"),
+  style(       ".pe-dark-theme ",                  selector, componentVars, "dark" ), // inside dark theme
+  noTouchStyle("html.pe-no-touch ",                selector, componentVars, "light"),
+  noTouchStyle("html.pe-no-touch .pe-dark-theme ", selector, componentVars, "dark" ), // inside dark theme
+];

@@ -7,6 +7,10 @@ component.theme(".tests-button-themed-button", {
   color_light_text: "#fff"
 });
 
+component.theme(".blue-on-dark-button", {
+  color_dark_text: "#1976D2"
+});
+
 component.theme(".tests-button-bordered-button", {
   color_light_text: "#673ab7",
   color_light_border: "#673ab7",
@@ -50,14 +54,6 @@ export const tests = [
     attrs: {
       label: "Themed button",
       class: "tests-button-themed-button"
-    }
-  },
-  {
-    name: "Themed button (theme file)",
-    component,
-    attrs: {
-      label: "Theme primary button",
-      class: "my-button--primary"
     }
   },
   {
@@ -277,6 +273,15 @@ export const tests = [
     }
   },
   {
+    name: "Themed button blue on dark -- dark theme",
+    class: "pe-dark-theme",
+    component,
+    attrs: {
+      label: "Blue on dark button",
+      class: "blue-on-dark-button"
+    }
+  },
+  {
     name: "Themed button: (option: borders) -- dark theme",
     class: "pe-dark-theme",
     component,
@@ -285,14 +290,5 @@ export const tests = [
       class: "tests-button-bordered-button",
       borders: true
     }
-  },
-  {
-    name: "Themed button (theme file) -- dark theme",
-    class: "pe-dark-theme",
-    component,
-    attrs: {
-      label: "Dark theme primary button",
-      class: "my-button--primary"
-    }
-  },
+  }
 ];

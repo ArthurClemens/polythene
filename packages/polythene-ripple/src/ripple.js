@@ -19,17 +19,19 @@ const initRipple = vnode => {
   if (!vnode.dom) {
     return;
   }
-  state.ripple = vnode.dom;
-  state.waves = vnode.dom.querySelector(`.${classes.waves}`);
+  const rippleEl = vnode.dom;
+  const wavesEl = vnode.dom.querySelector(`.${classes.waves}`);
   
   const tap = e => {
     if (state.animating) {
       return;
     }
-    animation(e, state.ripple, state.waves, attrs, classes, () => state.animating = false);
+    animation(e, rippleEl, wavesEl, attrs, classes, () => state.animating = false);
     state.animating = true;
   };
-  const triggerEl = vnode.dom.parentElement;
+  const triggerEl = attrs.getTarget
+    ? attrs.getTarget()
+    : vnode.dom.parentElement;
   triggerEl.addEventListener(touchEndEvent, tap, false);
   destroyRipple = () => {
     triggerEl.removeEventListener(touchEndEvent, tap, false);
@@ -62,12 +64,10 @@ const view = vnode => {
 };
 
 export const ripple = {
-  theme: customTheme, // accepts (className, vars)
+  theme: customTheme, // accepts (selector, vars)
   oninit: vnode => {
     vnode.state = {
-      animating: false,
-      ripple: undefined,
-      waves: undefined
+      animating: false
     };
   },
   oncreate: initRipple,

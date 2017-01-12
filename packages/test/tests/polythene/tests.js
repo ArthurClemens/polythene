@@ -26,7 +26,7 @@ polythene.button.theme(".tests-polythene-themed-button", {
 
 polythene.fab.theme(".tests-polythene-themed-fab", {
   color_light_background: "#FF1744",
-  color_light_text: "#fff"
+  color_light: "#fff"
 });
 
 

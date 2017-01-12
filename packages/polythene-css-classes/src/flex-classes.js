@@ -1,6 +1,6 @@
 import { flex } from "polythene-css";
 
-const styles = [{
+export default [{
   ".layout, .layout.horizontal": flex.layout,
   ".layout.horizontal.inline, .layout.vertical.inline": flex.layoutInline,
   ".layout.horizontal": flex.layoutHorizontal,
@@ -46,4 +46,3 @@ const styles = [{
   ".self-stretch": flex.selfStretch
 }];
 
-export default styles;

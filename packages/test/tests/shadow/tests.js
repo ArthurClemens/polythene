@@ -1,19 +1,16 @@
 import m from "mithril";
 import { shadow as component } from "polythene-shadow";
-import { rules as css } from "../../src/styles";
 
 const interactiveTest = {
   oninit: vnode =>
     vnode.state.z = 1,
-  oncreate: vnode => {
-    vnode.dom.addEventListener("click", () => {
-      const newZ = (vnode.state.z + 1) % 6;
-      vnode.state.z = newZ;
-      m.redraw();
-    });
-  },
   view: vnode => [
-    m(css.content, "Click me"),
+    m(".absolute.absolute--fill", {
+      onclick: () => {
+        const newZ = (vnode.state.z + 1) % 6;
+        vnode.state.z = newZ;
+      }
+    }, "Click me"),
     m(component, {
       animated: true,
       z: vnode.state.z,

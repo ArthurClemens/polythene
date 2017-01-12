@@ -27,7 +27,7 @@ const view = vnode => {
   const noink = (attrs.ink !== undefined && attrs.ink === false);
   const disabled = attrs.disabled;
   const element = attrs.element || "a";
-  const tabIndex = disabled || state.inactive
+  const tabIndex = disabled || attrs.inactive
     ? -1
     : attrs.tabindex || 0;
   const onClickHandler = attrs.events && attrs.events.onclick;
@@ -39,7 +39,7 @@ const view = vnode => {
         (attrs.parentClass || classes.component),
         (attrs.selected ? classes.selected : null),
         (disabled ? classes.disabled : null),
-        (state.inactive ? classes.inactive : null),
+        (attrs.inactive ? classes.inactive : null),
         (attrs.borders ? classes.borders : null),
         (state.focus ? classes.focusState : null),
         attrs.class
@@ -84,7 +84,10 @@ const view = vnode => {
       // ripple
       disabled || noink
         ? null
-        : m(ripple, attrs.ripple),
+        : m(ripple, {
+          ...attrs.ripple,
+          getTarget: () => vnode.dom
+        }),
       // hover
       noWash ? null : m("div", {class: classes.wash}),
       // focus
@@ -96,11 +99,9 @@ const view = vnode => {
 };
 
 export const button = {
-  theme: customTheme, // accepts (className, vars)
+  theme: customTheme, // accepts (selector, vars)
   oninit: vnode => {
     vnode.state = {
-      el: undefined,
-      inactive: !!vnode.attrs.inactive,
       focus: false,
       mouseover: false
     };

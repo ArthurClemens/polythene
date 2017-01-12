@@ -1,4 +1,4 @@
-const styles = [{
+export default [{
   ".pe-block": {
     display: "block"
   },
@@ -33,5 +33,3 @@ const styles = [{
     height: "100vh"
   }
 }];
-
-export default styles;

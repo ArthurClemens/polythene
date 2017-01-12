@@ -14,11 +14,11 @@
     "babel-preset-es2015-rollup": "^3.0.0",
     "babel-register": "^6.18.0",
     "del": "^2.2.2",
-    "eslint": "^3.12.2",
-    "eslint-config-airbnb-base": "^11.0.0",
+    "eslint": "^3.13.1",
+    "eslint-config-airbnb-base": "^11.0.1",
     "eslint-plugin-import": "^2.2.0",
     "fs-promise": "^1.0.0",
-    "lerna": "2.0.0-beta.31",
+    "lerna": "2.0.0-beta.32",
     "mithril-jest": "^0.1.6",
     "rollup": "^0.39.2",
     "rollup-plugin-babel": "^2.7.1",
@@ -30,7 +30,7 @@
     "rollup-plugin-pathmodify": "^1.0.1",
     "rollup-plugin-serve": "^0.1.0",
     "rollup-plugin-uglify": "^1.0.1",
-    "rollup-watch": "^3.1.0",
+    "rollup-watch": "^3.2.2",
     "wright": "github:porsager/wright",
     "wrollup": "^0.1.21"
   }

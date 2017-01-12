@@ -1,1 +1,1 @@
-export { vars, styles } from "./src";
+export { vars } from "./src";

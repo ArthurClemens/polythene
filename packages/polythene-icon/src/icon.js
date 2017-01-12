@@ -53,7 +53,7 @@ const view = vnode => {
 };
 
 export const icon = {
-  theme: customTheme, // accepts (className, vars)
+  theme: customTheme, // accepts (selector, vars)
   view
 };
 

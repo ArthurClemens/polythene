@@ -1,8 +1,7 @@
 /*
-Testing 3 theming methods:
+Testing 2 theming methods:
 1. Style variables
 2. Deriving components
-3. Theme file
 */
 
 import m from "mithril";
@@ -32,7 +31,7 @@ icon.theme(".tests-custom-theme-red-icon", {
 
 fab.theme(".tests-custom-theme-red-fab", {
   color_light_background: "#ff0000",
-  color_light_text: "#fff"
+  color_light: "#fff"
 });
 
 iconButton.theme(".tests-custom-theme-large-icon-button", {
@@ -62,11 +61,6 @@ secondaryButton.theme(".tests-custom-theme-secondary-button", {
   color_light_border: "#ddd",
   color_light_background: "#fff"
 });
-
-// [3]
-// Set in theme file ./theme.js:
-// classes: my-button--primary and my-icon
-
 
 export const tests = [
   {
@@ -100,14 +94,6 @@ export const tests = [
     }
   },
   {
-    name: "Theme with theme file: button (text should be purple)",
-    component: button,
-    attrs: {
-      label: "Primary button",
-      class: "my-button--primary"
-    }
-  },
-  {
     name: "Theme with theme file (global primary color): FAB (should be orange)",
     component: fab,
     attrs: {
@@ -132,33 +118,6 @@ export const tests = [
     attrs: {
       class: "tests-custom-theme-red-icon",
       msvg: iconAlarm
-    }
-  },
-  {
-    name: "Theme with theme file: icon (should have larger sizes)",
-    component: {
-      view: () => [
-        m(icon, {
-          class: "my-icon",
-          msvg: iconAlarm,
-          type: "small"
-        }),
-        m(icon, {
-          class: "my-icon",
-          msvg: iconAlarm,
-          type: "regular"
-        }),
-        m(icon, {
-          class: "my-icon",
-          msvg: iconAlarm,
-          type: "medium"
-        }),
-        m(icon, {
-          class: "my-icon",
-          msvg: iconAlarm,
-          type: "large"
-        })
-      ]
     }
   },
   {

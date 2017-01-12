@@ -2,9 +2,9 @@
   "name": "polythene-list-tile",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/list-tile.js",
-  "module": "dist/list-tile.mjs",
-  "jsnext:main": "dist/list-tile.mjs",
+  "main": "dist/polythene-list-tile.js",
+  "module": "dist/polythene-list-tile.mjs",
+  "jsnext:main": "dist/polythene-list-tile.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",

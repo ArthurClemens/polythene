@@ -15,8 +15,8 @@ button.theme(".blue-button", {
 });
 
 m(button, {
-  label: "Blue Button",
-  class: "blue-button"
+  class: "blue-button",
+  label: "Blue Button"
 });
 ~~~ 
 
@@ -28,16 +28,16 @@ There are multiple ways to customize, and they be be used side by side:
 1. **Style variables** - create styles by passing configuration variables
 1. **Deriving components** - build on top of existing components: to set new defaults or styling
 1. **Custom CSS** - to enhance existing styles
-1. **Theme file** - define styles for multiple components at once, or for the entire app
+1. **Theme file** - set global app variables
 
 
 
 
-## Style variables
+## 1. Variables
 
-Polythene components are styled with variables - comparable to variables in Sass or Less.
+Polythene components - at least the ones that are styled - are styled with variables. Each component contains a `vars` module that specifies measurements and colors.
 
-Each component - at least the ones that are styled - contains a `vars` module that specifies measurements and colors. For example, for Icon:
+For example, for Icon:
 
 ~~~javascript
 // polythene-icon/src/theme/vars.js
@@ -53,18 +53,31 @@ export default {
 };
 ~~~
 
-The variables like `unit_icon_size_small` that are imported from `polythene-theme` are (one import further) specified in `polythene-core/src/variables.js`.
+Variables like `unit_icon_size_small` are imported from `polythene-theme`, which imports them from `polythene-core/src/variables.js`. To override these base variables, see "Theme file" on this page.
+
+### Light and dark colors
+
+* `light` indicates the default color, when the component is displayed on a light background
+* `dark` indicates the color when the component is displayed on a dark background
+
+A special Polythene class is `pe-dark-theme` - components that have a parent with this class will use the "dark" color settings.
+
+The background color of `pe-dark-theme` needs to be defined in your app.
+
 
 
 ### Styling components with variables 
 
-A component can be given an extra style using this pattern:
+Component variables are passed on to "layout" and "colors", modules that take variables and return a style object. The style object is converted to a style sheet by [j2c](http://j2c.py.gy).
+
+To create additional styles for a component, use this pattern:
 
 ~~~javascript
 component.theme(selector, vars)
 ~~~
 
-Use a sufficiently unique class name to not clash with other components. `vars` is a subset of the component's theme variables. 
+* `selector`: CSS selector, but using a class selector is the most convenient because you can use the components `className` option
+* `vars`: the component's theme variables, or a subset thereof
 
 For example, to create large icons for the component with class "app-icon", we write:
 
@@ -78,38 +91,39 @@ icon.theme(".app-icon", {
   size_regular: 2 * unitSize,
   size_medium:  3 * unitSize,
   size_large:   4 * unitSize
+  // note that we only need to list the properties that differ
 });
 
 // Show the large icon
 m(icon, {
   class: "app-icon",
-  type: "large"
+  type: "large" // results in 4 * unitSize
 });
 ~~~
 
-Likewise, to create a blue button, write:
+To create a blue button on a dark background:
 
 ~~~javascript
 // app.js
 import { button } from "polythene-button";
 
-button.theme(".blue-button", {
-  color_light_background: "#2196F3",
-  color_light_text: "#fff"
-  // note that we only need to list the properties that differ
+button.theme(".blue-on-dark-button", {
+  color_dark_text: "#1976D2"
 });
 
-// Show the blue button
-m(button, {
-  label: "Blue Button",
-  class: "blue-button"
-});
+// Show the blue button on a dark background
+m(".pe-dark-theme", 
+  m(button, {
+    class: "blue-on-dark-button",
+    label: "Blue Button"
+  })
+);
 ~~~ 
 
 
 
 
-## Deriving components
+## 2. Deriving components
 
 A deriving component - also Higher Order Component - is a wrapper that takes a component and returns a new component. The new component contains custom settings or behaviour.
 
@@ -164,14 +178,17 @@ import { secondaryButton } from "./secondary-button";
 
 m(secondaryButton, {
   label: "Help"
+  // class is already set by secondaryButton component
 });
 ~~~
 
 
 
-## Custom CSS
+## 3. Custom CSS
 
-Writing CSS gives you more options for styling, but requires some knowledge about the component's generated HTML structure. Component class names are documented in each README.
+Writing CSS gives you more options for styling, but requires some knowledge about the component's generated HTML structure.
+
+Component class names are documented in each README. The structure of the generated HTML can be viewed in the test package, found in `polythene/packages/test`.
 
 
 ### 1. Using CSS styles
@@ -182,8 +199,8 @@ All components have a `class` attribute. For example:
 
 ~~~javascript
 m(button, {
-  label: "Send",
-  class: "send-button"
+  class: "send-button",
+  label: "Send"
 })
 ~~~
 
@@ -218,7 +235,7 @@ Polythene uses [j2c](http://j2c.py.gy) to write styles directly to the head of t
 }]
 ~~~
 
-`polythene-css` contains `styler` that takes the list of style objects to create the CSS.
+Package `polythene-css` contains `styler` that takes the list of style objects to create the CSS.
 
 For example:
 
@@ -316,28 +333,9 @@ m(secondaryButton, {
 
 
 
-## Custom theme file
+## 4. Custom theme file
 
-Use this method to set global theme variables, such as the primary action color. Or to use the mechanism described at "Style variables" for multiple components at once.
-
-
-A theme file manages:
-
-1. Overrides of the global app variables
-1. Overrides of (multiple) component styles, in a similar way as described at "Style variables" above
-
-A theme module can implement either one or both.
-
-The skeleton module is:
-
-~~~javascript
-// custom-theme.js
-import { defaultVariables } from "polythene-core";
-
-export const vars = defaultVariables;
-export const styles = {};
-~~~
-
+Use this method to set global theme variables, such as the primary action color. 
 
 ### Setting the global primary color
 
@@ -351,55 +349,20 @@ export const vars = {
   ...defaultVariables
   , color_primary: "255, 152, 0" // new base color: orange 500
 };
-export const styles = {}; // Keep component styles unchanged other than the primary color
 ~~~
-
-
-### Setting the component style
-
-~~~javascript
-// custom-theme.js
-import { defaultVariables } from "polythene-core";
-
-export const vars = defaultVariables; // Keep global variables as-is
-
-const icon_unit_component = 20;
-
-export const styles = {
-  icon: vars => {
-    const newVars = {
-      ...vars, // keep other variables
-      size_small:   1 * icon_unit_component,
-      size_regular: 2 * icon_unit_component,
-      size_medium:  3 * icon_unit_component,
-      size_large:   4 * icon_unit_component
-    };
-    return [
-      { "": vars }, // default Polythene icon (keep this)
-      { ".my-icon": newVars }
-    ];
-  }
-};
-~~~
-
-Each component function takes a variable object and returns a list of style objects, where the key is the class name.
-
-* "" is the default (unscoped) value; leave this out to remove Polythene's style altogether.
-* You can also add custom scoping, for example: `".home .my-icon"`
-
 
 
 ### Pointing the app to the theme file
 
 The final step is to let the application read our custom theme file. For this, the path to `polythene-theme` needs to be set to a new file location.
 
-Each bundler has a different method - it is generally called map or alias.
+Each bundler has a different method to to this - it is generally called map or alias.
 
 
 
 #### Use with Rollup
 
-Use the [rollup-plugin-pathmodify](https://www.npmjs.com/package/rollup-plugin-pathmodify) plugin
+Use the [rollup-plugin-pathmodify](https://www.npmjs.com/package/rollup-plugin-pathmodify) plugin:
 
 ~~~javascript
 // rollup.config.js
@@ -409,7 +372,7 @@ Use the [rollup-plugin-pathmodify](https://www.npmjs.com/package/rollup-plugin-p
     pathmodify({
       aliases: [{
         id: "polythene-theme",
-        resolveTo: __dirname + "/custom-theme.js"
+        resolveTo: process.cwd() + "/app/custom-theme.js"
       }]
     }),
   ]

@@ -2,9 +2,9 @@
   "name": "polythene-material-design",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/material-design.js",
-  "module": "dist/material-design.mjs",
-  "jsnext:main": "dist/material-design.mjs",
+  "main": "dist/polythene-material-design.js",
+  "module": "dist/polythene-material-design.mjs",
+  "jsnext:main": "dist/polythene-material-design.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",

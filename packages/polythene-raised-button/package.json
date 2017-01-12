@@ -2,9 +2,9 @@
   "name": "polythene-raised-button",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/raised-button.js",
-  "module": "dist/raised-button.mjs",
-  "jsnext:main": "dist/raised-button.mjs",
+  "main": "dist/polythene-raised-button.js",
+  "module": "dist/polythene-raised-button.mjs",
+  "jsnext:main": "dist/polythene-raised-button.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",

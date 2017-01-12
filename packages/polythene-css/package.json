@@ -2,9 +2,9 @@
   "name": "polythene-css",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/css.js",
-  "module": "dist/css.mjs",
-  "jsnext:main": "dist/css.mjs",
+  "main": "dist/polythene-css.js",
+  "module": "dist/polythene-css.mjs",
+  "jsnext:main": "dist/polythene-css.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
