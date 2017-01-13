@@ -1,9 +1,9 @@
-# Polythene rewrite
+# Polythene v1.0
 
-## Migrating from 0.2 to 1.x
+## Guides 
 
-See [Migration](Migration.md)
-
+* [Migrating from 0.2 to 1.x](Migration.md)
+* [Theming](packages/polythene-theme/README.md)
 
 
 ## Development

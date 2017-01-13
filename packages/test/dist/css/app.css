@@ -131,9 +131,9 @@ body {
     width: 960px;
   }
 }
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
   .results {
-    width: 1024px;
+    width: 1200px;
   }
 }
 

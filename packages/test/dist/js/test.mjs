@@ -15,6 +15,7 @@ import { listTile as listTile$1 } from 'polythene-list-tile';
 import { raisedButton as raisedButton$1 } from 'polythene-raised-button';
 import { ripple as ripple$1 } from 'polythene-ripple';
 import { shadow as shadow$1 } from 'polythene-shadow';
+import { classes, toolbar } from 'polythene-toolbar';
 import 'polythene-css-classes';
 
 /* globals tidy_html5 */
@@ -2152,6 +2153,90 @@ var tests$10 = [{
   }
 }];
 
+var m$5 = m;
+var menu = m$5.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>');
+
+var m$6 = m;
+var refresh = m$6.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>');
+
+var m$7 = m;
+var add = m$7.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>');
+
+toolbar.theme(".tests-toolbar-themed-toolbar", {
+  color_dark_background: "#00c853"
+});
+
+var btn = function btn(msvg) {
+  return m(iconButton$1, {
+    icon: { msvg: msvg }
+  });
+};
+
+var toolbarRow = [btn(menu), m("div", { class: classes.title }, "Toolbar with a very very very long title"), btn(refresh), btn(add)];
+
+var toolbarTitleAsSpan = [btn(menu), m("span", "Toolbar with a very very very long title"), btn(add)];
+
+var toolbarTitleAtStart = [m("div", { class: classes.title }, "Title"), btn(add)];
+
+var toolbarRowIndentedTitle = [btn(menu), m("div", { class: classes.indentedTitle }, "Indented title"), btn(add)];
+
+var tests$11 = [{
+  name: "Child node",
+  component: toolbar,
+  attrs: null,
+  children: toolbarRow
+}, {
+  name: "Option: content",
+  component: toolbar,
+  attrs: {
+    content: toolbarRow
+  }
+}, {
+  name: "Option: compact",
+  component: toolbar,
+  attrs: {
+    compact: true,
+    content: toolbarRow
+  }
+}, {
+  name: "Title as span",
+  component: toolbar,
+  attrs: {
+    content: toolbarTitleAsSpan
+  }
+}, {
+  name: "Title at start",
+  component: toolbar,
+  attrs: {
+    content: toolbarTitleAtStart
+  }
+}, {
+  name: "Indented title",
+  component: toolbar,
+  attrs: {
+    content: toolbarRowIndentedTitle
+  }
+},
+
+// Dark theme
+
+{
+  name: "Option: content -- dark theme",
+  class: "pe-dark-theme",
+  component: toolbar,
+  attrs: {
+    content: toolbarRow
+  }
+}, {
+  name: "Themed",
+  class: "pe-dark-theme",
+  component: toolbar,
+  attrs: {
+    class: "tests-toolbar-themed-toolbar",
+    content: toolbarRow
+  }
+}];
+
 var _extends = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];
@@ -2224,7 +2309,7 @@ var mixinButtonStyles = [{
 
 styler$1.add("app-buttons-x", mixinButtonStyles);
 
-var tests$11 = [{
+var tests$12 = [{
   name: "Element should have a red background",
   component: {
     view: function view() {
@@ -2267,7 +2352,7 @@ var tests$11 = [{
 
 styler$1.add("css-classes", styles);
 
-var tests$12 = [{
+var tests$13 = [{
   name: "Should be aligned horizontally",
   component: {
     view: function view() {
@@ -2367,7 +2452,7 @@ secondaryButton$1.theme(".tests-custom-theme-secondary-button", {
   color_light_background: "#fff"
 });
 
-var tests$13 = [{
+var tests$14 = [{
   name: "Theme with style variables: button (should be blue)",
   component: button$1,
   attrs: {
@@ -2548,17 +2633,21 @@ var pages = [{
   name: "SVG",
   tests: tests$10
 }, {
+  path: "/toolbar",
+  name: "Toolbar",
+  tests: tests$11
+}, {
   path: "/theme",
   name: "Custom theme",
-  tests: tests$13
+  tests: tests$14
 }, {
   path: "/css",
   name: "CSS tools",
-  tests: tests$11
+  tests: tests$12
 }, {
   path: "/css-classes",
   name: "CSS classes",
-  tests: tests$12
+  tests: tests$13
 }];
 
 var index = {

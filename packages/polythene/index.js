@@ -34,6 +34,8 @@ export { svg } from "polythene-svg";
 
 export { vars } from "polythene-theme";
 
+export { toolbar } from "polythene-toolbar";
+
 export * from "polythene-fastclick";
 
 export * from "polythene-css-classes";

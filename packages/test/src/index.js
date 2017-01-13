@@ -14,6 +14,7 @@ import { tests as raisedButtonTests } from "../tests/raised-button/tests";
 import { tests as rippleTests } from "../tests/ripple/tests";
 import { tests as shadowTests } from "../tests/shadow/tests";
 import { tests as svgTests } from "../tests/svg/tests";
+import { tests as toolbarTests } from "../tests/toolbar/tests";
 
 import { tests as cssTests } from "../tests/css/tests";
 import { tests as cssClassesTests } from "../tests/css-classes/tests";
@@ -122,6 +123,11 @@ const pages = [
     path: "/svg",
     name: "SVG",
     tests: svgTests
+  },
+  {
+    path: "/toolbar",
+    name: "Toolbar",
+    tests: toolbarTests
   },
   {
     path: "/theme",

@@ -298,3 +298,7 @@ For instance:
 
 
 
+### Toolbar
+
+Toolbar now only displays 1 row of items. Display of multiple bars (top, middle, bottom) has been moved to Header Panel.
+
