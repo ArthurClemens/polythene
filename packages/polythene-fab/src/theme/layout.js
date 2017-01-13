@@ -13,7 +13,7 @@ export default (selector, componentVars) => [{
       width: componentVars.size_regular + "px",
       height: componentVars.size_regular + "px",
       padding: componentVars.padding_regular + "px",
-      "border-radius": "50%",
+      borderRadius: "50%",
       border: "none",
 
       "&.pe-button--fab-mini": {
@@ -24,20 +24,20 @@ export default (selector, componentVars) => [{
 
       " .pe-button__content": {
         padding: 0,
-        "border-radius": "inherit"
+        borderRadius: "inherit"
       },
 
       " .pe-ripple": {
-        "border-radius": "inherit"
+        borderRadius: "inherit"
       },
 
       " .pe-button__wash": [
         mixin.vendorize({
           transition: "background-color " + vars.animation_duration + " ease-in-out"
         }, vars.prefixes_transition), {
-          "border-radius": "inherit",
-          "pointer-events": "none",
-          "background-color": "transparent"
+          borderRadius: "inherit",
+          pointerEvents: "none",
+          backgroundColor: "transparent"
         }
       ]
     }

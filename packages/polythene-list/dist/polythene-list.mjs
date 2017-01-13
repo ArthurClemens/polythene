@@ -47,8 +47,8 @@ var _extends = Object.assign || function (target) {
 
 var borderStyle = function borderStyle(componentVars) {
   return mixin.hairline("border-bottom"), {
-    "border-style": "none none solid none",
-    "border-width": componentVars.border_width_bordered + "px"
+    borderStyle: "none none solid none",
+    borderWidth: componentVars.border_width_bordered + "px"
   };
 };
 
@@ -57,7 +57,7 @@ var layout = (function (selector, componentVars) {
     padding: componentVars.padding + "px 0",
 
     "&.pe-list--header": {
-      "padding-top": 0
+      paddingTop: 0
     },
 
     "&.pe-list--compact": {
@@ -65,8 +65,8 @@ var layout = (function (selector, componentVars) {
     },
 
     "& + &": [mixin.hairline("border-top"), {
-      "border-style": "solid none none none",
-      "border-width": componentVars.border_width_stacked + "px"
+      borderStyle: "solid none none none",
+      borderWidth: componentVars.border_width_stacked + "px"
     }],
 
     "&.pe-list--borders": {
@@ -77,8 +77,8 @@ var layout = (function (selector, componentVars) {
       }
     },
 
-    "&.pe-list--borders-indented": {
-      "border-top": "none",
+    "&.pe-list--indented-borders": {
+      borderTop: "none",
 
       " .pe-list-tile:not(.pe-list__header)": {
         "&:not(:last-child)": {
@@ -96,20 +96,20 @@ var style = function style(scope, selector, componentVars, tint) {
     "&.pe-list--borders": {
       " .pe-list-tile:not(.pe-list__header)": {
         "&:not(:last-child)": {
-          "border-color": componentVars["color_" + tint + "_border"]
+          borderColor: componentVars["color_" + tint + "_border"]
         }
       }
     },
 
-    "&.pe-list--borders-indented": {
+    "&.pe-list--indented-borders": {
       " .pe-list-tile:not(.pe-list__header)": {
         " .pe-list-tile__content:not(.pe-list-tile__content--front)": {
-          "border-color": componentVars["color_" + tint + "_border"]
+          borderColor: componentVars["color_" + tint + "_border"]
         }
       }
     }
   }), defineProperty(_ref, " .pe-list + .pe-list", {
-    "border-color": componentVars["color_" + tint + "_border"]
+    borderColor: componentVars["color_" + tint + "_border"]
   }), _ref)];
 };
 
@@ -130,18 +130,18 @@ var classes = {
   component: "pe-list",
   header: "pe-list__header",
   borders: "pe-list--borders",
-  indentedBorders: "pe-list--borders-indented",
+  indentedBorders: "pe-list--indented-borders",
   hasHeader: "pe-list--header",
-  isCompact: "pe-list--compact",
-  isHoverable: "pe-list--hoverable",
-  isSelectable: "pe-list--selectable"
+  compact: "pe-list--compact",
+  hoverable: "pe-list--hoverable",
+  selectable: "pe-list--selectable"
 };
 
 var view = function view(vnode) {
   var attrs = vnode.attrs;
   var element = attrs.element || "div";
   var props = _extends({}, filterSupportedAttributes(attrs), {
-    class: [classes.component, attrs.borders ? classes.borders : null, attrs.indentedBorders ? classes.indentedBorders : null, attrs.hoverable ? classes.isHoverable : null, attrs.selectable ? classes.isSelectable : null, attrs.header ? classes.hasHeader : null, attrs.compact ? classes.isCompact : null, attrs.class].join(" ")
+    class: [classes.component, attrs.borders ? classes.borders : null, attrs.indentedBorders ? classes.indentedBorders : null, attrs.hoverable ? classes.hoverable : null, attrs.selectable ? classes.selectable : null, attrs.header ? classes.hasHeader : null, attrs.compact ? classes.compact : null, attrs.class].join(" ")
   });
   var headerOpts = void 0;
   if (attrs.header) {
@@ -158,4 +158,4 @@ var list = {
   view: view
 };
 
-export { list, vars$1 as listVars };
+export { list, classes, vars$1 as vars };

@@ -1,2 +1,2 @@
-export { ripple } from "./src/ripple";
-export { default as rippleVars } from "./src/theme/vars";
+export { ripple, classes } from "./src/ripple";
+export { default as vars } from "./src/theme/vars";

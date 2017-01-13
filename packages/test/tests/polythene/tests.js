@@ -23,6 +23,10 @@ polythene.button.theme(".tests-polythene-themed-button", {
   color_light_background: "#FF1744",
   color_light_text: "#fff"
 });
+polythene.raisedButton.theme(".tests-polythene-themed-raised-button", {
+  color_light_background: "#FF1744",
+  color_light_text: "#fff"
+});
 
 polythene.fab.theme(".tests-polythene-themed-fab", {
   color_light_background: "#FF1744",
@@ -57,7 +61,7 @@ export const tests = [
     name: "Raised button (theme: red)",
     component: polythene.raisedButton,
     attrs: {
-      class: "tests-polythene-themed-button",
+      class: "tests-polythene-themed-raised-button",
       label: "Raised button"
     }
   },

@@ -5,12 +5,12 @@
 Displays an icon (image or [SVG](#svg)).
 
 
+
 ## Usage
 
 ### mSVG (recommended)
 
 mSVG is an SVG string wrapped around `m.trust()` and stored as a Javascript file. This way the SVG can be imported just like any other module, without having to resort to bundler plugins.
-
 
 Use option `msvg`:
 
@@ -58,10 +58,12 @@ const myIcon = m(icon, {
 ~~~
 
 
-### Variations
+
+## Variations
 
 * The size is set with option `type` (and of course with CSS, in conjuction with `class`).
 * The color is set with the CSS `color` attribute of the parent element.
+
 
 
 ## Options
@@ -88,7 +90,8 @@ const myIcon = m(icon, {
 | **avatar**    | optional | Boolean | | Set to `true` to add class `pe-icon--avatar` which creates a round image |
 
 
-### Composition
+
+## Composition
 
 Icon is composed from:
 
@@ -98,15 +101,15 @@ Icon is composed from:
 
 ## CSS classes
 
-| **Element** |  **Class** |
-| ----------- | --------------- |
-| component   | `pe-icon` |
+| **Element** | **Key**     |  **Class** |
+| ----------- | ----------- | --------------- |
+| Component   | component   | `pe-icon` |
 
-| **State**   |  **Class** |
-| ----------- | --------------- |
-| avatar   | `pe-icon--avatar` |
-| small   | `pe-icon--small` |
-| regular   | `pe-icon--regular` |
-| medium   | `pe-icon--medium` |
-| large   | `pe-icon--large` |
+| **State**         | **Key**     |  **Class** |
+| ----------------- | ----------- | --------------- |
+| Small             | small       | `pe-icon--small` |
+| Regular           | regular     | `pe-icon--regular` |
+| Medium            | medium      | `pe-icon--medium` |
+| Large             | large       | `pe-icon--large` |
+| Avatar round icon | avatar      | `pe-icon--avatar` |
 

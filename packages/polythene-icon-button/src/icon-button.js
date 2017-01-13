@@ -3,7 +3,7 @@ import { icon } from "polythene-icon";
 import { button } from "polythene-button";
 import { customTheme } from "./theme";
 
-const classes = {
+export const classes = {
   component: "pe-button pe-button--icon",
   content:   "pe-button--icon__content",
   compact:   "pe-button--compact"

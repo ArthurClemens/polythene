@@ -53,15 +53,15 @@ var iconSizesPx = function iconSizesPx() {
 var layout = (function (selector, componentVars) {
   return [defineProperty({}, selector, {
     display: "inline-block",
-    "vertical-align": "middle",
-    "background-repeat": "no-repeat",
+    verticalAlign: "middle",
+    backgroundRepeat: "no-repeat",
     position: "relative",
-    "font-size": 0,
-    "line-height": 0,
+    fontSize: 0,
+    lineHeight: 0,
 
     "&.pe-icon--avatar img": {
       border: "none",
-      "border-radius": "50%",
+      borderRadius: "50%",
       width: "100%",
       height: "100%"
     },
@@ -150,4 +150,4 @@ var icon = {
   view: view
 };
 
-export { icon, vars$1 as iconVars };
+export { icon, classes, vars$1 as vars };

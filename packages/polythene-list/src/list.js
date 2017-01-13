@@ -3,15 +3,15 @@ import { listTile } from "polythene-list-tile";
 import { filterSupportedAttributes } from "polythene-core";
 import { customTheme } from "./theme";
 
-const classes = {
-  component: "pe-list",
-  header: "pe-list__header",
-  borders: "pe-list--borders",
-  indentedBorders: "pe-list--borders-indented",
-  hasHeader: "pe-list--header",
-  isCompact: "pe-list--compact",
-  isHoverable: "pe-list--hoverable",
-  isSelectable: "pe-list--selectable"
+export const classes = {
+  component:       "pe-list",
+  header:          "pe-list__header",
+  borders:         "pe-list--borders",
+  indentedBorders: "pe-list--indented-borders",
+  hasHeader:       "pe-list--header",
+  compact:         "pe-list--compact",
+  hoverable:       "pe-list--hoverable",
+  selectable:      "pe-list--selectable"
 };
 
 const view = vnode => {
@@ -25,10 +25,10 @@ const view = vnode => {
         classes.component,
         (attrs.borders ? classes.borders : null),
         (attrs.indentedBorders ? classes.indentedBorders : null),
-        (attrs.hoverable ? classes.isHoverable : null),
-        (attrs.selectable ? classes.isSelectable : null),
+        (attrs.hoverable ? classes.hoverable : null),
+        (attrs.selectable ? classes.selectable : null),
         (attrs.header ? classes.hasHeader : null),
-        (attrs.compact ? classes.isCompact : null),
+        (attrs.compact ? classes.compact : null),
         attrs.class
       ].join(" "),
     }

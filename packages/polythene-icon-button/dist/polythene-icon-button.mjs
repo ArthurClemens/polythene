@@ -85,7 +85,7 @@ var layout = (function (selector, componentVars) {
 var style = function style(scope, selector, componentVars, tint) {
   return [defineProperty({}, scope + selector, {
     color: componentVars["color_" + tint],
-    "background-color": componentVars["color_" + tint + "_background"] || componentVars["color_background"],
+    backgroundColor: componentVars["color_" + tint + "_background"] || componentVars["color_background"],
     " .pe-button__wash": {
       opacity: componentVars["color_" + tint + "_wash_opacity"]
     },
@@ -93,7 +93,7 @@ var style = function style(scope, selector, componentVars, tint) {
     "&.pe-button--focus, &.pe-button--selected": {
       " .pe-button__focus": {
         opacity: componentVars["color_" + tint + "_focus_opacity"],
-        "background-color": "currentcolor"
+        backgroundColor: "currentcolor"
       }
     },
 
@@ -107,7 +107,7 @@ var noTouchStyle = function noTouchStyle(scope, selector, componentVars, tint) {
   var backgroundColor = tint === "light" ? "currentcolor" : componentVars["color_" + tint];
   return [defineProperty({}, scope + selector + ":hover", {
     " .pe-button__wash": {
-      "background-color": backgroundColor
+      backgroundColor: backgroundColor
     }
   })];
 };
@@ -150,4 +150,4 @@ var iconButton = {
   view: view
 };
 
-export { iconButton, vars$1 as iconButtonVars };
+export { iconButton, classes, vars$1 as vars };

@@ -6,7 +6,7 @@ const style = (scope, selector, componentVars, tint) => [{
 
     "&.pe-list__header": {
       " .pe-list-tile__primary, pe-list-tile__secondary": {
-        "background-color": "inherit"
+        backgroundColor: "inherit"
       },
 
       " .pe-list-tile__title": {
@@ -25,7 +25,7 @@ const style = (scope, selector, componentVars, tint) => [{
     },
     "&.pe-list-tile--selected": {
       " .pe-list-tile__primary, pe-list-tile__secondary": {
-        "background-color": componentVars["color_" + tint + "_background_selected"]
+        backgroundColor: componentVars["color_" + tint + "_background_selected"]
       }
     }
   }
@@ -35,7 +35,7 @@ const noTouchStyle = (scope, selector, componentVars, tint) => [{
   [scope + selector + ":hover"]: {
     "&:not(.pe-list__header):not(.pe-list-tile--disabled)": {
       " .pe-list-tile__primary, pe-list-tile__secondary": {
-        "background-color": componentVars["color_" + tint + "_background_hover"]
+        backgroundColor: componentVars["color_" + tint + "_background_hover"]
       }
     }
   }

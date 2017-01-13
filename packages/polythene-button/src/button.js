@@ -3,17 +3,17 @@ import { ripple } from "polythene-ripple";
 import { filterSupportedAttributes } from "polythene-core";
 import { customTheme } from "./theme";
 
-const classes = {
-  component: "pe-button pe-button--text",
-  content: "pe-button__content",
-  label: "pe-button__label",
-  wash: "pe-button__wash",
-  focus: "pe-button__focus",
-  selected: "pe-button--selected",
-  disabled: "pe-button--disabled",
-  borders: "pe-button--borders",
-  inactive: "pe-button--inactive",
-  focusState: "pe-button--focus"
+export const classes = {
+  component:  "pe-button pe-button--text",
+  content:    "pe-button__content",
+  label:      "pe-button__label",
+  wash:       "pe-button__wash",
+  focus:      "pe-button__focus",
+  selected:   "pe-button--selected",
+  disabled:   "pe-button--disabled",
+  borders:    "pe-button--borders",
+  inactive:   "pe-button--inactive",
+  focused:    "pe-button--focus"
 };
 
 const EL_ATTRS = [
@@ -41,7 +41,7 @@ const view = vnode => {
         (disabled ? classes.disabled : null),
         (attrs.inactive ? classes.inactive : null),
         (attrs.borders ? classes.borders : null),
-        (state.focus ? classes.focusState : null),
+        (state.focus ? classes.focused : null),
         attrs.class
       ].join(" "),
       tabIndex,
@@ -78,7 +78,7 @@ const view = vnode => {
   const noWash = disabled || (attrs.wash !== undefined && !attrs.wash);
   const content = label
     ? m("div", {class: classes.content}, [
-      !disabled && attrs.shadowComponent
+      !disabled && attrs.shadowComponent // "protected" option, used by raised-button
         ? attrs.shadowComponent
         : null,
       // ripple

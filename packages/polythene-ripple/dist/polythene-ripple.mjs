@@ -41,14 +41,14 @@ var _extends = Object.assign || function (target) {
 var layout = (function (selector) {
   return [defineProperty({}, selector, [mixin.fit(), {
     color: "inherit",
-    "border-radius": "inherit",
+    borderRadius: "inherit",
 
     "&.pe-ripple--constrained": {
-      "border-radius": "inherit",
+      borderRadius: "inherit",
 
       " .pe-ripple__mask": {
         overflow: "hidden",
-        "border-radius": "inherit"
+        borderRadius: "inherit"
       }
     },
     " .pe-ripple__mask": [mixin.fit(), mixin.vendorize({
@@ -58,8 +58,8 @@ var layout = (function (selector) {
     " .pe-ripple__waves": {
       outline: "1px solid transparent", // for IE10
       position: "absolute",
-      "border-radius": "50%",
-      "pointer-events": "none",
+      borderRadius: "50%",
+      pointerEvents: "none",
       display: "none"
     },
     " .pe-ripple__waves--animating": {
@@ -69,9 +69,8 @@ var layout = (function (selector) {
 });
 
 var style = function style(scope, selector, componentVars, tint) {
-  var color = componentVars["color_" + tint] || componentVars["color"] || "inherit";
   return [defineProperty({}, scope + selector, {
-    color: color
+    color: componentVars["color_" + tint] || componentVars["color"] || "inherit"
   })];
 };
 
@@ -222,4 +221,4 @@ var ripple = {
   view: view
 };
 
-export { ripple, vars$1 as rippleVars };
+export { ripple, classes, vars$1 as vars };

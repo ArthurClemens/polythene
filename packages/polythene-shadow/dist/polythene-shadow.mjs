@@ -62,11 +62,11 @@ var shadowDirective = function shadowDirective(dir) {
 
 var layout = (function (selector, componentVars) {
   return [defineProperty({}, selector, [mixin.fit(), {
-    "border-radius": "inherit",
-    "pointer-events": "none",
+    borderRadius: "inherit",
+    pointerEvents: "none",
 
     " .pe-shadow__bottom, .pe-shadow__top": [mixin.fit(), {
-      "border-radius": "inherit"
+      borderRadius: "inherit"
     }],
 
     "&.pe-shadow--animated": {
@@ -120,4 +120,4 @@ var shadow = {
   view: view
 };
 
-export { shadow, vars$1 as shadowVars };
+export { shadow, classes, vars$1 as vars };

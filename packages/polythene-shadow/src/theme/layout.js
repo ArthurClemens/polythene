@@ -10,12 +10,12 @@ const shadowDirective = dir => (
 export default (selector, componentVars) => [{
   [selector]: [
     mixin.fit(), {
-      "border-radius": "inherit",
-      "pointer-events": "none",
+      borderRadius: "inherit",
+      pointerEvents: "none",
 
       " .pe-shadow__bottom, .pe-shadow__top": [
         mixin.fit(), {
-          "border-radius": "inherit"
+          borderRadius: "inherit"
         }
       ],
 

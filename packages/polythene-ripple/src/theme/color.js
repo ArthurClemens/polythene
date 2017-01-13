@@ -1,12 +1,9 @@
 
-const style = (scope, selector, componentVars, tint) => {
-  const color = componentVars["color_" + tint] || componentVars["color"] || "inherit";
-  return [{
-    [scope + selector]: {
-      color
-    }
-  }];
-};
+const style = (scope, selector, componentVars, tint) => [{
+  [scope + selector]: {
+    color: componentVars["color_" + tint] || componentVars["color"] || "inherit"
+  }
+}];
 
 export default (selector, componentVars) => [
   style("",                selector, componentVars, "light"),

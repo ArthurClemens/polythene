@@ -5,6 +5,7 @@
 Adds a configurable shadow to an element.
 
 
+
 ## Usage
 
 ~~~javascript
@@ -32,6 +33,8 @@ const myShadow = m.component(shadow, {
 });
 ~~~
 
+
+
 ## Options
 
 ### Common component options
@@ -53,18 +56,22 @@ const myShadow = m.component(shadow, {
 | **animated** | optional | Boolean | false | Set to true to animate the shadow when setting a new z value. |
 
 
+
 ## CSS classes
 
-| **Element** |  **Class** |
-| ----------- | --------------- |
-| component   | `pe-shadow` |
-| top shadow   | `pe-shadow__top` |
-| bottom shadow   | `pe-shadow__bottom` |
+| **Element**     | **Key**         | **Class**       |
+| --------------- | --------------- | --------------- |
+| Component       | component       | `pe-shadow` |
+| Top shadow      | topShadow       | `pe-shadow__top` |
+| Bottom shadow   | bottomShadow    | `pe-shadow__bottom` |
 
-| **State**     |  **Class** |
-| ------------- | --------------- |
-| animated      | `pe-shadow--animated` |
-| depth 0 (min) | `pe-shadow--z-0` |
-| depth 5 (max) | `pe-shadow--z-5` |
-
+| **State**       | **Key**         | **Class**       |
+| --------------- | --------------- | --------------- |
+| Animated        | animated        | `pe-shadow--animated` |
+| Depth 0 (min)   | depth_0         | `pe-shadow--z-0` |
+| Depth 1         | depth_1         | `pe-shadow--z-1` |
+| Depth 2         | depth_2         | `pe-shadow--z-2` |
+| Depth 3         | depth_3         | `pe-shadow--z-3` |
+| Depth 4         | depth_4         | `pe-shadow--z-4` |
+| Depth 5 (max)   | depth_5         | `pe-shadow--z-5` |
 

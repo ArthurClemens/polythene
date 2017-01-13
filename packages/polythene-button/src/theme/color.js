@@ -9,34 +9,34 @@ const style = (scope, selector, componentVars, tint) => {
       },
 
       " .pe-button__content": {
-        "background-color": componentVars["color_" + tint + "_background"],
-        "border-color": normalBorder
+        backgroundColor: componentVars["color_" + tint + "_background"],
+        borderColor: normalBorder
       },
 
       "&.pe-button--disabled": {
         color: componentVars["color_" + tint + "_disabled_text"],
 
         " .pe-button__content": {
-          "background-color": componentVars["color_" + tint + "_disabled_background"],
-          "border-color": disabledBorder
+          backgroundColor: componentVars["color_" + tint + "_disabled_background"],
+          borderColor: disabledBorder
         }
       },
 
       "&.pe-button--selected": {
         " .pe-button__content": {
-          "background-color": componentVars["color_" + tint + "_active_background"],
-          "border-color": activeBorder
+          backgroundColor: componentVars["color_" + tint + "_active_background"],
+          borderColor: activeBorder
         },
         " .pe-button__focus": {
           opacity: 1,
-          "background-color": componentVars["color_" + tint + "_focus_background"]
+          backgroundColor: componentVars["color_" + tint + "_focus_background"]
         }
       },
 
       "&.pe-button--focus": {
         " .pe-button__focus": {
           opacity: 1,
-          "background-color": componentVars["color_" + tint + "_focus_background"]
+          backgroundColor: componentVars["color_" + tint + "_focus_background"]
         }
       }
     }
@@ -49,8 +49,8 @@ const noTouchStyle = (scope, selector, componentVars, tint) => {
   return [{
     [scope + selector + ":hover"]: {
       "&:not(.pe-button--selected):not(.pe-button--inactive) .pe-button__wash": {
-        "background-color": componentVars["color_" + tint + "_hover_background"],
-        "border-color": hoverBorder
+        backgroundColor: componentVars["color_" + tint + "_hover_background"],
+        borderColor: hoverBorder
       }
     }
   }];

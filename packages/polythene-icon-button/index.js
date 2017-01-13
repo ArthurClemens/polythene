@@ -1,2 +1,2 @@
-export { iconButton } from "./src/icon-button";
-export { default as iconButtonVars } from "./src/theme/vars";
+export { iconButton, classes } from "./src/icon-button";
+export { default as vars } from "./src/theme/vars";

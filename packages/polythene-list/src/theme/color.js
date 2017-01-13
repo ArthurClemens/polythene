@@ -3,21 +3,21 @@ const style = (scope, selector, componentVars, tint) => [{
     "&.pe-list--borders": {
       " .pe-list-tile:not(.pe-list__header)": {
         "&:not(:last-child)": {
-          "border-color": componentVars["color_" + tint + "_border"]
+          borderColor: componentVars["color_" + tint + "_border"]
         }
       }
     },
 
-    "&.pe-list--borders-indented": {
+    "&.pe-list--indented-borders": {
       " .pe-list-tile:not(.pe-list__header)": {
         " .pe-list-tile__content:not(.pe-list-tile__content--front)": {
-          "border-color": componentVars["color_" + tint + "_border"]
+          borderColor: componentVars["color_" + tint + "_border"]
         }
       }
     }
   },
   " .pe-list + .pe-list": {
-    "border-color": componentVars["color_" + tint + "_border"]
+    borderColor: componentVars["color_" + tint + "_border"]
   }
 }];
 

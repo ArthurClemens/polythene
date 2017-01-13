@@ -3,7 +3,7 @@ const style = (scope, selector, componentVars, tint) => {
   return [{
     [scope + selector]: {
       color: componentVars["color_" + tint],
-      "background-color": componentVars["color_" + tint + "_background"] || componentVars["color_background"],
+      backgroundColor: componentVars["color_" + tint + "_background"] || componentVars["color_background"],
       " .pe-button__wash": {
         opacity: componentVars["color_" + tint + "_wash_opacity"]
       },
@@ -11,7 +11,7 @@ const style = (scope, selector, componentVars, tint) => {
       "&.pe-button--focus, &.pe-button--selected": {
         " .pe-button__focus": {
           opacity: componentVars["color_" + tint + "_focus_opacity"],
-          "background-color": "currentcolor"
+          backgroundColor: "currentcolor"
         }
       },
 
@@ -29,7 +29,7 @@ const noTouchStyle = (scope, selector, componentVars, tint) => {
   return [{
     [scope + selector + ":hover"]: {
       " .pe-button__wash": {
-        "background-color": backgroundColor
+        backgroundColor: backgroundColor
       }
     }
   }];

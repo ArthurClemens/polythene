@@ -1,2 +1,2 @@
-export { listTile } from "./src/list-tile";
-export { default as listTileVars } from "./src/theme/vars";
+export { listTile, classes } from "./src/list-tile";
+export { default as vars } from "./src/theme/vars";

@@ -3,9 +3,11 @@
 <a class="btn-demo" href="http://arthurclemens.github.io/Polythene-examples/index.html#/button">Demo</a>
 -->
 
-Displays a text button with a [shadow](#shadow) and [ripple](#ripple) effect.
+Displays a text button with a [ripple](#ripple) effect.
 
-See also: [Icon Button](#icon-button) and [Floating Action Button](#fab)
+See also: [Raised Button](#raised-button), [Icon Button](#icon-button) and [Floating Action Button](#fab)
+
+
 
 ## Usage
 
@@ -14,8 +16,7 @@ import m from "mithril";
 import { button } from "polythene-button";
 
 const myButton = m(button, {
-  label: "Button",
-  raised: true
+  label: "Button"
 });
 ~~~
 
@@ -24,7 +25,6 @@ Add a URL:
 ~~~javascript
 const myButton = m(button, {
   label: "Button",
-  raised: true,
   url: {
     href: "/index",
     oncreate: m.route.link
@@ -37,16 +37,16 @@ Add an onclick event:
 ~~~javascript
 const myButton = m(button, {
   label: "Button",
-  raised: true,
   events: {
     onclick: () => console.log("click")
   }
 });
 ~~~
 
+
+
 ## Variations
 
-* Buttons can be flat or raised. Using `raised` gives the button a default shadow; specifying `z` varies the shadow depth.
 * The hover effect can be hidden with `wash: false`.
 * The ripple effect on click can be hidden with `ink: false`.
 * Button contains no icon as this is not part of the Material Design guidelines; use [icon Button](#icon-button) instead
@@ -60,6 +60,7 @@ To remove the tap delay on mobile devices it is advisable to use a library like 
 ~~~javascript
 import "polythene-fastclick";
 ~~~
+
 
 
 ## Options
@@ -97,39 +98,36 @@ import "polythene-fastclick";
 | **wash** | optional | Boolean | true | Set to false to hide the effect on hover |
 | **ink** | optional | Boolean | true | Set to false to disable the ripple effect on click/tap |
 | **ripple** | optional (valid if `ink` is `true`) | Options object | | Pass [ripple](#ripple) options to define ripple behavior |
-| **raised** | optional | Boolean | false | Shows a shadow; on button press the shadow depth is increased by 1 |
-| **z** | optional | Number 0-5 | 1 | The shadow depth for a raised button; raised buttons have a default z of 1 |
 | **increase** | optional | Number | 1 | The z-index increment/decrement on tap; note that the maximum z value is 5 |
 | **borders** | optional | Boolean | false | Set to `true` to add a border; by default the border has no color - set border color to class `pe-button__content` to see the border |
+
 
 
 ### Composition
 
 Button is composed from:
 
-* [Shadow](#shadow) (when using option `raised`)
 * [Ripple](#ripple) (when option `ink` is not `false`)
 
 
 
 ## CSS classes
 
-| **Element** |  **Class** |
-| ----------- | --------------- |
-| component   | `pe-button pe-button--text` |
-| content     | `pe-button__content` |
-| label       | `pe-button__label` |
-| wash        | `pe-button__wash` |
-| focus       | `pe-button__focus` |
+| **Element**    | **Key**     |  **Class** |
+| -------------- | ----------- | --------------- |
+| Component      | component   | `pe-button pe-button--text` |
+| Content        | content     | `pe-button__content` |
+| Label          | label       | `pe-button__label` |
+| Wash element   | wash        | `pe-button__wash` |
+| Focus element  | focus       | `pe-button__focus` |
 
-| **State**   |  **Class** |
-| ----------- | --------------- |
-| raised      | `pe-button--raised` |
-| selected    | `pe-button--selected` |
-| disabled    | `pe-button--disabled` |
-| borders     | `pe-button--borders` |
-| inactive    | `pe-button--inactive` |
-| focus       | `pe-button--focus` |
+| **State**      | **Key**     |  **Class** |
+| -------------- | ----------- | --------------- |
+| Selected       | selected    | `pe-button--selected` |
+| Disabled       | disabled    | `pe-button--disabled` |
+| Has borders    | borders     | `pe-button--borders` |
+| Inactive       | inactive    | `pe-button--inactive` |
+| Focus          | focused     | `pe-button--focus` |
 
 
 

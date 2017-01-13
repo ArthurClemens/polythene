@@ -8,15 +8,15 @@ const iconSizesPx = (size = vars.unit_icon_size) => ({
 export default (selector, componentVars) => [{
   [selector]: {
     display: "inline-block",
-    "vertical-align": "middle",
-    "background-repeat": "no-repeat",
+    verticalAlign: "middle",
+    backgroundRepeat: "no-repeat",
     position: "relative",
-    "font-size": 0,
-    "line-height": 0,
+    fontSize: 0,
+    lineHeight: 0,
 
     "&.pe-icon--avatar img": {
       border: "none",
-      "border-radius": "50%",
+      borderRadius: "50%",
       width: "100%",
       height: "100%"
     },

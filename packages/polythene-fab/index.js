@@ -1,2 +1,2 @@
-export { fab } from "./src/fab";
-export { default as fabVars } from "./src/theme/vars";
+export { fab, classes } from "./src/fab";
+export { default as vars } from "./src/theme/vars";

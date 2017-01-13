@@ -3,7 +3,7 @@ import { touchEndEvent, filterSupportedAttributes } from "polythene-core";
 import { customTheme } from "./theme";
 import animation from "./theme/animation";
 
-const classes = {
+export const classes = {
   component:      "pe-ripple",
   waves:          "pe-ripple__waves",
   mask:           "pe-ripple__mask",

@@ -7,6 +7,7 @@ Adds a touch ripple effect to an element.
 Buttons contain a ripple element by default. This page documents how to add a ripple to other components.
 
 
+
 ## Usage
 
 Append a ripple to any HTML element (as long as it has `position: relative` and a size):
@@ -50,6 +51,7 @@ const myListTile = m(listTile, {
   })
 });
 ~~~
+
 
 
 ## Options
@@ -98,18 +100,20 @@ By default the inherited `color` from the parent element is used. It can be chan
 }
 ~~~
 
+
+
 ## CSS classes
 
-| **Element** |  **Class** |
-| ----------- | --------------- |
-| component   | `pe-ripple` |
-| waves       | `pe-ripple__waves` |
-| mask        | `pe-ripple__mask` |
+| **Element**           | **Key**         |  **Class** |
+| --------------------- | --------------- | --------------- |
+| Component             | component       | `pe-ripple` |
+| Waves element         | waves           | `pe-ripple__waves` |
+| mask                  | mask            | `pe-ripple__mask` |
 
-| **State**       |  **Class** |
-| --------------- | --------------- |
-| constrained     | `pe-ripple--constrained` |
-| waves animating | `pe-ripple__waves--animating` |
+| **State**             | **Key**         |  **Class** |
+| --------------------- | --------------- | --------------- |
+| Constrained           | constrained     | `pe-ripple--constrained` |
+| Animating waves state | wavesAnimating  | `pe-ripple__waves--animating` |
 
 
 

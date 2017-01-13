@@ -1,1 +1,1 @@
-export { svg } from "./src/svg";
+export { svg, classes } from "./src/svg";

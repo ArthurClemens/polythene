@@ -29,7 +29,7 @@ export default (selector, componentVars) => [{
       " .pe-button--icon + span, .pe-button--icon + .pe-toolbar__title": {
         marginLeft: componentVars.indent - componentVars.padding_side - vars.grid_unit_icon_button + "px"
       },
-      " .pe-toolbar__title": [
+      " > span, .pe-toolbar__title": [
         flex.flex(1),
         mixin.ellipsis(1, vars.line_height, "em"),
         mixin.vendorize({

@@ -154,7 +154,7 @@ var layout = (function (selector, componentVars) {
       "font-size": componentVars.font_size_subtitle + "px",
       "line-height": componentVars.line_height_subtitle + "px",
 
-      "&.pe-list-tile__subtitle--high": [mixin.ellipsis(componentVars.high_subtitle_line_count, componentVars.line_height_subtitle), {
+      "&.pe-list-tile__high-subtitle": [mixin.ellipsis(componentVars.high_subtitle_line_count, componentVars.line_height_subtitle), {
         "white-space": "normal"
       }]
     }],
@@ -252,7 +252,7 @@ var style = function style(scope, selector, componentVars, tint) {
 
     "&.pe-list__header": {
       " .pe-list-tile__primary, pe-list-tile__secondary": {
-        "background-color": "inherit"
+        backgroundColor: "inherit"
       },
 
       " .pe-list-tile__title": {
@@ -271,7 +271,7 @@ var style = function style(scope, selector, componentVars, tint) {
     },
     "&.pe-list-tile--selected": {
       " .pe-list-tile__primary, pe-list-tile__secondary": {
-        "background-color": componentVars["color_" + tint + "_background_selected"]
+        backgroundColor: componentVars["color_" + tint + "_background_selected"]
       }
     }
   })];
@@ -281,7 +281,7 @@ var noTouchStyle = function noTouchStyle(scope, selector, componentVars, tint) {
   return [defineProperty({}, scope + selector + ":hover", {
     "&:not(.pe-list__header):not(.pe-list-tile--disabled)": {
       " .pe-list-tile__primary, pe-list-tile__secondary": {
-        "background-color": componentVars["color_" + tint + "_background_hover"]
+        backgroundColor: componentVars["color_" + tint + "_background_hover"]
       }
     }
   })];
@@ -309,16 +309,16 @@ var classes = {
   contentFront: "pe-list-tile__content--front",
   title: "pe-list-tile__title",
   subtitle: "pe-list-tile__subtitle",
-  highSubtitle: "pe-list-tile__subtitle--high",
+  highSubtitle: "pe-list-tile__high-subtitle",
   selected: "pe-list-tile--selected",
   disabled: "pe-list-tile--disabled",
   sticky: "pe-list-tile--sticky",
   hasSubtitle: "pe-list-tile--subtitle",
   hasHighSubtitle: "pe-list-tile--high-subtitle",
   hasFront: "pe-list-tile--front",
-  isCompact: "pe-list-tile--compact",
-  isHoverable: "pe-list-tile--hoverable",
-  isSelectable: "pe-list-tile--selectable"
+  compact: "pe-list-tile--compact",
+  hoverable: "pe-list-tile--hoverable",
+  selectable: "pe-list-tile--selectable"
 };
 
 var primaryContent = function primaryContent(attrs, children) {
@@ -356,7 +356,7 @@ var view = function view(vnode) {
   var heightClass = attrs.subtitle ? classes.hasSubtitle : attrs.highSubtitle ? classes.hasHighSubtitle : attrs.front || attrs.indent ? classes.hasFront : null;
 
   var props = _extends({}, filterSupportedAttributes(attrs), {
-    class: [classes.component, attrs.selected ? classes.selected : null, attrs.disabled ? classes.disabled : null, attrs.sticky ? classes.sticky : null, attrs.compact ? classes.isCompact : null, attrs.hoverable ? classes.isHoverable : null, attrs.selectable ? classes.isSelectable : null, heightClass, attrs.class].join(" ")
+    class: [classes.component, attrs.selected ? classes.selected : null, attrs.disabled ? classes.disabled : null, attrs.sticky ? classes.sticky : null, attrs.compact ? classes.compact : null, attrs.hoverable ? classes.hoverable : null, attrs.selectable ? classes.selectable : null, heightClass, attrs.class].join(" ")
     // events and url are attached to primary content to not interfere with controls
   });
 
@@ -373,4 +373,4 @@ var listTile = {
   view: view
 };
 
-export { listTile, vars$1 as listTileVars };
+export { listTile, classes, vars$1 as vars };

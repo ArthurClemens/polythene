@@ -1,2 +1,2 @@
-export { list } from "./src/list";
-export { default as listVars } from "./src/theme/vars";
+export { list, classes } from "./src/list";
+export { default as vars } from "./src/theme/vars";

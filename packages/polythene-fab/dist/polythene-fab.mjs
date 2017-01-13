@@ -58,7 +58,7 @@ var layout = (function (selector, componentVars) {
     width: componentVars.size_regular + "px",
     height: componentVars.size_regular + "px",
     padding: componentVars.padding_regular + "px",
-    "border-radius": "50%",
+    borderRadius: "50%",
     border: "none",
 
     "&.pe-button--fab-mini": {
@@ -69,30 +69,30 @@ var layout = (function (selector, componentVars) {
 
     " .pe-button__content": {
       padding: 0,
-      "border-radius": "inherit"
+      borderRadius: "inherit"
     },
 
     " .pe-ripple": {
-      "border-radius": "inherit"
+      borderRadius: "inherit"
     },
 
     " .pe-button__wash": [mixin.vendorize({
       transition: "background-color " + vars.animation_duration + " ease-in-out"
     }, vars.prefixes_transition), {
-      "border-radius": "inherit",
-      "pointer-events": "none",
-      "background-color": "transparent"
+      borderRadius: "inherit",
+      pointerEvents: "none",
+      backgroundColor: "transparent"
     }]
   }])];
 });
 
 var style = function style(scope, selector, componentVars, tint) {
   return [defineProperty({}, scope + selector, {
-    "background-color": componentVars["color_" + tint + "_background"],
+    backgroundColor: componentVars["color_" + tint + "_background"],
     color: componentVars["color_" + tint],
 
     " .pe-button__content": {
-      "background-color": "transparent"
+      backgroundColor: "transparent"
     }
   })];
 };
@@ -144,4 +144,4 @@ var fab = {
   view: view
 };
 
-export { fab, vars$1 as fabVars };
+export { fab, classes, vars$1 as vars };

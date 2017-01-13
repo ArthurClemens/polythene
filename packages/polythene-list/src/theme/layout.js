@@ -1,8 +1,8 @@
 import { mixin } from "polythene-css";
 
 const borderStyle = componentVars => (mixin.hairline("border-bottom"), {
-  "border-style": "none none solid none",
-  "border-width": componentVars.border_width_bordered + "px"
+  borderStyle: "none none solid none",
+  borderWidth: componentVars.border_width_bordered + "px"
 });
 
 export default (selector, componentVars) => [{
@@ -10,7 +10,7 @@ export default (selector, componentVars) => [{
     padding: componentVars.padding + "px 0",
 
     "&.pe-list--header": {
-      "padding-top": 0
+      paddingTop: 0
     },
 
     "&.pe-list--compact": {
@@ -19,8 +19,8 @@ export default (selector, componentVars) => [{
 
     "& + &": [
       mixin.hairline("border-top"), {
-        "border-style": "solid none none none",
-        "border-width": componentVars.border_width_stacked + "px"
+        borderStyle: "solid none none none",
+        borderWidth: componentVars.border_width_stacked + "px"
       }
     ],
 
@@ -32,8 +32,8 @@ export default (selector, componentVars) => [{
       }
     },
 
-    "&.pe-list--borders-indented": {
-      "border-top": "none",
+    "&.pe-list--indented-borders": {
+      borderTop: "none",
 
       " .pe-list-tile:not(.pe-list__header)": {
         "&:not(:last-child)": {

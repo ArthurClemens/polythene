@@ -80,7 +80,7 @@ export default (selector, componentVars) => [{
           "font-size": componentVars.font_size_subtitle + "px",
           "line-height": componentVars.line_height_subtitle + "px",
 
-          "&.pe-list-tile__subtitle--high": [
+          "&.pe-list-tile__high-subtitle": [
             mixin.ellipsis(componentVars.high_subtitle_line_count, componentVars.line_height_subtitle), {
               "white-space": "normal"
             }

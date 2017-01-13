@@ -2,7 +2,7 @@ import m from "mithril";
 import { filterSupportedAttributes } from "polythene-core";
 import { customTheme } from "./theme";
 
-const classes = {
+export const classes = {
   component: "pe-shadow",
   topShadow: "pe-shadow__top",
   bottomShadow: "pe-shadow__bottom",

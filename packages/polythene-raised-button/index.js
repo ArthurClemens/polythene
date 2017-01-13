@@ -1,2 +1,2 @@
-export { raisedButton } from "./src/raised-button";
-export { default as raisedButtonVars } from "./src/theme/vars";
+export { raisedButton, classes } from "./src/raised-button";
+export { default as vars } from "./src/theme/vars";

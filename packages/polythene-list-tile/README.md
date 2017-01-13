@@ -5,6 +5,7 @@
 Displays a list element as part of a [list](#list).
 
 
+
 ## Usage
 
 ~~~javascript
@@ -110,6 +111,8 @@ const myListTile = m(listTile, {
 });
 ~~~
 
+
+
 ## Variations
 
 * A list tile can have 1 to 3 lines:
@@ -120,6 +123,7 @@ const myListTile = m(listTile, {
 * A list tile can optionally have an icon.
 * Text and icon are taken together as primary content. Primary content can optionally have a link.
 * A list tile can optionally have secondary content, displayed to the right. Secondary content can contain any content, and conditionally have a link.
+
 
 
 ## Options
@@ -177,7 +181,8 @@ const myListTile = m(listTile, {
 | **secondary.content** | optional | Mithril element | | Secondary content |
 
 
-### Composition
+
+## Composition
 
 List Tile is composed from:
 
@@ -185,28 +190,29 @@ List Tile is composed from:
 * [Icon](#icon) (when option `secondary.icon` is used)
 
 
+
 ## CSS classes
 
-| **Element**      |  **Class** |
-| ---------------- | --------------- |
-| component        | `pe-list-tile` |
-| primary          | `pe-list-tile__primary` |
-| secondary        | `pe-list-tile__secondary` |
-| content          | `pe-list-tile__content` |
-| contentFront     | `pe-list-tile__content--front` |
-| title            | `pe-list-tile__title` |
-| subtitle         | `pe-list-tile__subtitle` |
-| highSubtitle     | `pe-list-tile__subtitle--high` |
+| **Element**        | **Key**          |  **Class** |
+| ------------------ | ---------------- | --------------- |
+| Component          | component        | `pe-list-tile` |
+| Primary element    | primary          | `pe-list-tile__primary` |
+| Secondary element  | secondary        | `pe-list-tile__secondary` |
+| Content            | content          | `pe-list-tile__content` |
+| Front content      | contentFront     | `pe-list-tile__content--front` |
+| Title              | title            | `pe-list-tile__title` |
+| Subtitle           | subtitle         | `pe-list-tile__subtitle` |
+| High subtitle      | highSubtitle     | `pe-list-tile__high-subtitle` |
 
-| **State**        |  **Class** |
-| ---------------- | --------------- |
-| selected         | `pe-list-tile--selected` |
-| disabled         | `pe-list-tile--disabled` |
-| sticky           | `pe-list-tile--sticky` |
-| hasSubtitle      | `pe-list-tile--subtitle` |
-| hasHighSubtitle  | `pe-list-tile--high-subtitle` |
-| hasFront         | `pe-list-tile--front` |
-| isCompact        | `pe-list-tile--compact` |
-| isHoverable      | `pe-list-tile--hoverable` |
-| isSelectable     | `pe-list-tile--selectable` |
+| **State**          | **Key**          |  **Class** |
+| ------------------ | ---------------- | --------------- |
+| Selected           | selected         | `pe-list-tile--selected` |
+| Disabled           | disabled         | `pe-list-tile--disabled` |
+| Sticky             | sticky           | `pe-list-tile--sticky` |
+| Has subtitle       | hasSubtitle      | `pe-list-tile--subtitle` |
+| Has high subtitle  | hasHighSubtitle  | `pe-list-tile--high-subtitle` |
+| Has front content  | hasFront         | `pe-list-tile--front` |
+| Compact            | compact          | `pe-list-tile--compact` |
+| Hoverable          | hoverable        | `pe-list-tile--hoverable` |
+| Selectable         | selectable       | `pe-list-tile--selectable` |
 

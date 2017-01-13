@@ -36,4 +36,4 @@ var svg = {
   view: view
 };
 
-export { svg };
+export { svg, classes };

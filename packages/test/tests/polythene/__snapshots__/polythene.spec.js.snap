@@ -236,7 +236,7 @@ exports[`test List Tile 1`] = `
         Ancillary Justice
       </div>
       <div class=
-      \"pe-list-tile__subtitle pe-list-tile__subtitle--high\">
+      \"pe-list-tile__subtitle pe-list-tile__high-subtitle\">
         The body lay naked and facedown, a deathly gray, spatters
         of blood staining the snow around it. It was minus fifteen
         degrees Celsius and a storm had passed just hours before.
@@ -265,7 +265,7 @@ exports[`test List Tile 1`] = `
 
 exports[`test Raised button (theme: red) 1`] = `
 "<a tabindex=\"0\" class=
-\"pe-button pe-button--text pe-button--raised tests-polythene-themed-button\">
+\"pe-button pe-button--text pe-button--raised tests-polythene-themed-raised-button\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>

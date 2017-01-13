@@ -5,6 +5,7 @@
 Displays a horizontal bar containing a label and action items. 
 
 
+
 ## Usage
 
 ~~~javascript
@@ -22,7 +23,6 @@ or:
 ~~~
 [icon, title, icon, icon]
 ~~~
-
 
 To show a toolbar with a label and 3 icon buttons:
 
@@ -46,6 +46,7 @@ const myToolbar = m(toolbar, {}, [
   btn(gIconAdd)
 ]);
 ~~~
+
 
 
 ## Variations
@@ -79,7 +80,6 @@ This positions the title as if it would be next to an icon.
 | **before** | optional | Mithril element | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **after** | optional | Mithril element | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
 | **events** | optional | Object | | Options object containing one or more standard events such as `onclick` |
-
 
 ### Toolbar appearance options
 

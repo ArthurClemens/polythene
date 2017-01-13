@@ -822,7 +822,7 @@ exports[`test Options: header.sticky 1`] = `
 `;
 
 exports[`test Options: tiles, indent, indentedBorders 1`] = `
-"<div class=\"pe-list pe-list--borders-indented pe-list--header\">
+"<div class=\"pe-list pe-list--indented-borders pe-list--header\">
   <div class=\"pe-list-tile pe-list-tile--front pe-list__header\">
     <div class=\"pe-list-tile__primary\">
       <div class=

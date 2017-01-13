@@ -6,6 +6,8 @@ Displays a list of [list tiles](#list-tile), with an optional header. Lists can 
 
 Lists are also the base component of [menus](#menu).
 
+
+
 ## Usage
 
 ~~~javascript
@@ -58,6 +60,7 @@ const myList = m(list, {
 ~~~
 
 
+
 ## Variations
 
 > If there is a floating action button left-aligned with the avatar/icon in a list,
@@ -101,6 +104,7 @@ If you do choose to use it, add some styles to the container that holds the list
 ~~~
 
 
+
 ## Options
 
 ### Common component options
@@ -135,26 +139,28 @@ If you do choose to use it, add some styles to the container that holds the list
 | **compact**       | optional | Boolean | | Set to `true` to reduce vertical padding of list tiles |
 
 
-### Composition
+
+## Composition
 
 List is composed from:
 
 * [List Tile](#list-tile)
 
 
+
 ## CSS classes
 
-| **Element**      |  **Class** |
-| ---------------- | --------------- |
-| component        | `pe-list` |
-| header           | `pe-list__header` |
+| **Element**      | **Key**          |  **Class** |
+| ---------------- | ---------------- | --------------- |
+| Component        | component        | `pe-list` |
+| Header           | header           | `pe-list__header` |
 
-| **State**            |  **Class** |
-| -------------------- | --------------- |
-| has borders          | `pe-list--borders` |
-| has indented borders | `pe-list--borders-indented` |
-| has header           | `pe-list--header` |
-| compact              | `pe-list--compact` |
-| hoverable            | `pe-list--hoverable` |
-| selectable           | `pe-list--selectable` |
+| **State**            | **State**            |  **Class** |
+| -------------------- | -------------------- | --------------- |
+| Has borders          | borders              | `pe-list--borders` |
+| Has indented borders | indentedBorders      | `pe-list--indented-borders` |
+| Has header           | hasHeader            | `pe-list--header` |
+| Compact              | compact              | `pe-list--compact` |
+| Hoverable            | hoverable            | `pe-list--hoverable` |
+| Selectable           | selectable           | `pe-list--selectable` |
 

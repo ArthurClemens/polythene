@@ -7,8 +7,8 @@ Simple wrapper for SVG XML.
 This is a low-level and simple stupid module for handling SVGs. If you want to use SVG for icons, the best method is to use [icon](#icon) directly.
 
 
-## Usage
 
+## Usage
 
 ### 1. Using mSVG
 
@@ -17,7 +17,6 @@ mSVG is an SVG string wrapped around `m.trust()` and stored as a Javascript file
 ~~~javascript
 import iconStars from "mmsvg/google/msvg/action/stars";
 ~~~
-
 
 Usage with the SVG component:
 
@@ -58,7 +57,6 @@ const mySvg = m(svg, {
 ~~~
 
 
-
 ## Usage with icon
 
 SVG options can be passed to [icon](#icon):
@@ -76,6 +74,7 @@ const myIcon = m(icon, {
 ~~~
 
 
+
 ## Options
 
 ### Common component options
@@ -90,9 +89,10 @@ const myIcon = m(icon, {
 | **after**     | optional | Mithril element | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
 
 
+
 ## CSS classes
 
-| **Element** |  **Class** |
-| ----------- | --------------- |
-| component   | `pe-svg` |
+| **Element** | **Key**     | **Class**  |
+| ----------- | ----------- | ---------- |
+| Component   | component   | `pe-svg`   |
 

@@ -4,7 +4,7 @@ import { ripple } from "polythene-ripple";
 import { filterSupportedAttributes } from "polythene-core";
 import { customTheme } from "./theme";
 
-const classes = {
+export const classes = {
   component:       "pe-list-tile",
   primary:         "pe-list-tile__primary",
   secondary:       "pe-list-tile__secondary",
@@ -12,16 +12,16 @@ const classes = {
   contentFront:    "pe-list-tile__content--front",
   title:           "pe-list-tile__title",
   subtitle:        "pe-list-tile__subtitle",
-  highSubtitle:    "pe-list-tile__subtitle--high",
+  highSubtitle:    "pe-list-tile__high-subtitle",
   selected:        "pe-list-tile--selected",
   disabled:        "pe-list-tile--disabled",
   sticky:          "pe-list-tile--sticky",
   hasSubtitle:     "pe-list-tile--subtitle",
   hasHighSubtitle: "pe-list-tile--high-subtitle",
   hasFront:        "pe-list-tile--front",
-  isCompact:       "pe-list-tile--compact",
-  isHoverable:     "pe-list-tile--hoverable",
-  isSelectable:    "pe-list-tile--selectable"
+  compact:         "pe-list-tile--compact",
+  hoverable:       "pe-list-tile--hoverable",
+  selectable:      "pe-list-tile--selectable"
 };
 
 const primaryContent = (attrs, children) => {
@@ -109,9 +109,9 @@ const view = vnode => {
       attrs.selected   ? classes.selected     : null,
       attrs.disabled   ? classes.disabled     : null,
       attrs.sticky     ? classes.sticky       : null,
-      attrs.compact    ? classes.isCompact    : null,
-      attrs.hoverable  ? classes.isHoverable  : null,
-      attrs.selectable ? classes.isSelectable : null,
+      attrs.compact    ? classes.compact    : null,
+      attrs.hoverable  ? classes.hoverable  : null,
+      attrs.selectable ? classes.selectable : null,
       heightClass,
       attrs.class
     ].join(" ")

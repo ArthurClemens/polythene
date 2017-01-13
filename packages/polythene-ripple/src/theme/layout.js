@@ -5,14 +5,14 @@ export default selector => [{
   [selector]: [
     mixin.fit(), {
       color: "inherit",
-      "border-radius": "inherit",
+      borderRadius: "inherit",
 
       "&.pe-ripple--constrained": {
-        "border-radius": "inherit",
+        borderRadius: "inherit",
 
         " .pe-ripple__mask": {
           overflow: "hidden",
-          "border-radius": "inherit"
+          borderRadius: "inherit"
         }
       },
       " .pe-ripple__mask": [
@@ -25,8 +25,8 @@ export default selector => [{
       " .pe-ripple__waves": {
         outline: "1px solid transparent", // for IE10
         position: "absolute",
-        "border-radius": "50%",
-        "pointer-events": "none",
+        borderRadius: "50%",
+        pointerEvents: "none",
         display: "none"
       },
       " .pe-ripple__waves--animating": {

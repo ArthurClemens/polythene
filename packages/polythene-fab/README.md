@@ -5,6 +5,7 @@
 A circular main button with a [shadow](#shadow) and [ripple](#ripple) effect.
 
 
+
 ## Usage
 
 ~~~javascript
@@ -18,6 +19,8 @@ const myFab = m(fab, {
   }
 });
 ~~~
+
+
 
 ## Options
 
@@ -42,7 +45,8 @@ const myFab = m(fab, {
 | **mini** | optional | Boolean | false | Set to true to display a small button (class name `pe-button--fab-mini`) |
 
 
-### Composition
+
+## Composition
 
 FAB is composed from:
 
@@ -57,6 +61,7 @@ Differences to button behaviour:
 * The ripple has a 2/3 decay speed
 
 
+
 ## Styling
 
 Default colors:
@@ -68,14 +73,14 @@ Default colors:
 
 ## CSS classes
 
-| **Element** |  **Class** |
-| ----------- | --------------- |
-| component   | `pe-button--fab` |
-| content     | `pe-button--fab__content` |
+| **Element** | **Key**     | **Class** |
+| ----------- | ----------- | --------------- |
+| Component   | component   | `pe-button--fab` |
+| Content     | content     | `pe-button--fab__content` |
 
-| **State**   |  **Class** |
-| ----------- | --------------- |
-| mini        | `pe-button--fab-mini` |
+| **State**   | **Key**     |  **Class** |
+| ----------- | ----------- | --------------- |
+| Mini FAB    | mini        | `pe-button--fab-mini` |
 
 
 

@@ -176,7 +176,7 @@ exports[`test Option: highSubtitle 1`] = `
         Ancillary Justice
       </div>
       <div class=
-      \"pe-list-tile__subtitle pe-list-tile__subtitle--high\">
+      \"pe-list-tile__subtitle pe-list-tile__high-subtitle\">
         The body lay naked and facedown, a deathly gray, spatters
         of blood staining the snow around it. It was minus fifteen
         degrees Celsius and a storm had passed just hours before.
@@ -196,7 +196,7 @@ exports[`test Option: highSubtitle and compact 1`] = `
         Ancillary Justice
       </div>
       <div class=
-      \"pe-list-tile__subtitle pe-list-tile__subtitle--high\">
+      \"pe-list-tile__subtitle pe-list-tile__high-subtitle\">
         The body lay naked and facedown, a deathly gray, spatters
         of blood staining the snow around it. It was minus fifteen
         degrees Celsius and a storm had passed just hours before.
@@ -222,7 +222,7 @@ exports[`test Option: highSubtitle and front -- dark theme 1`] = `
         Ancillary Justice
       </div>
       <div class=
-      \"pe-list-tile__subtitle pe-list-tile__subtitle--high\">
+      \"pe-list-tile__subtitle pe-list-tile__high-subtitle\">
         The body lay naked and facedown, a deathly gray, spatters
         of blood staining the snow around it. It was minus fifteen
         degrees Celsius and a storm had passed just hours before.
@@ -260,7 +260,7 @@ exports[`test Option: highSubtitle and front 1`] = `
         Ancillary Justice
       </div>
       <div class=
-      \"pe-list-tile__subtitle pe-list-tile__subtitle--high\">
+      \"pe-list-tile__subtitle pe-list-tile__high-subtitle\">
         The body lay naked and facedown, a deathly gray, spatters
         of blood staining the snow around it. It was minus fifteen
         degrees Celsius and a storm had passed just hours before.

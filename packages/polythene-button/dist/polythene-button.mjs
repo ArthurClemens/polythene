@@ -148,7 +148,7 @@ var baseLayout = (function (selector) {
 var layout = (function (selector, componentVars) {
   return [defineProperty({}, selector, {
     display: "inline-block",
-    "min-width": componentVars.min_width + "px",
+    minWidth: componentVars.min_width + "px",
     margin: "0 " + componentVars.margin_h + "px",
     padding: componentVars.outer_padding_v + "px 0",
     background: "transparent",
@@ -156,26 +156,26 @@ var layout = (function (selector, componentVars) {
 
     " .pe-button__content": {
       position: "relative",
-      "border-width": 0,
+      borderWidth: 0,
       padding: "0 " + componentVars.padding_h + "px",
-      "border-radius": componentVars.border_radius + "px"
+      borderRadius: componentVars.border_radius + "px"
     },
 
     " .pe-button__label": {
       padding: componentVars.padding_v + "px 0",
-      "font-size": componentVars.font_size + "px",
-      "line-height": componentVars.font_size + "px",
-      "font-weight": componentVars.font_weight,
-      "text-transform": componentVars.text_transform,
-      "white-space": "pre"
+      fontSize: componentVars.font_size + "px",
+      lineHeight: componentVars.font_size + "px",
+      fontWeight: componentVars.font_weight,
+      textTransform: componentVars.text_transform,
+      whiteSpace: "pre"
     },
 
     "&.pe-button--borders": {
       " .pe-button__wash, pe-button__focus, .pe-ripple": mixin.fit(-1),
 
       " .pe-button__content": {
-        "border-style": "solid",
-        "border-width": "1px"
+        borderStyle: "solid",
+        borderWidth: "1px"
       },
       " .pe-button__label": {
         padding: componentVars.padding_v - 1 + "px 0"
@@ -194,34 +194,34 @@ var style = function style(scope, selector, componentVars, tint) {
     },
 
     " .pe-button__content": {
-      "background-color": componentVars["color_" + tint + "_background"],
-      "border-color": normalBorder
+      backgroundColor: componentVars["color_" + tint + "_background"],
+      borderColor: normalBorder
     },
 
     "&.pe-button--disabled": {
       color: componentVars["color_" + tint + "_disabled_text"],
 
       " .pe-button__content": {
-        "background-color": componentVars["color_" + tint + "_disabled_background"],
-        "border-color": disabledBorder
+        backgroundColor: componentVars["color_" + tint + "_disabled_background"],
+        borderColor: disabledBorder
       }
     },
 
     "&.pe-button--selected": {
       " .pe-button__content": {
-        "background-color": componentVars["color_" + tint + "_active_background"],
-        "border-color": activeBorder
+        backgroundColor: componentVars["color_" + tint + "_active_background"],
+        borderColor: activeBorder
       },
       " .pe-button__focus": {
         opacity: 1,
-        "background-color": componentVars["color_" + tint + "_focus_background"]
+        backgroundColor: componentVars["color_" + tint + "_focus_background"]
       }
     },
 
     "&.pe-button--focus": {
       " .pe-button__focus": {
         opacity: 1,
-        "background-color": componentVars["color_" + tint + "_focus_background"]
+        backgroundColor: componentVars["color_" + tint + "_focus_background"]
       }
     }
   })];
@@ -232,8 +232,8 @@ var noTouchStyle = function noTouchStyle(scope, selector, componentVars, tint) {
   var hoverBorder = componentVars["color_" + tint + "_border"] || normalBorder;
   return [defineProperty({}, scope + selector + ":hover", {
     "&:not(.pe-button--selected):not(.pe-button--inactive) .pe-button__wash": {
-      "background-color": componentVars["color_" + tint + "_hover_background"],
-      "border-color": hoverBorder
+      backgroundColor: componentVars["color_" + tint + "_hover_background"],
+      borderColor: hoverBorder
     }
   })];
 };
@@ -264,7 +264,7 @@ var classes = {
   disabled: "pe-button--disabled",
   borders: "pe-button--borders",
   inactive: "pe-button--inactive",
-  focusState: "pe-button--focus"
+  focused: "pe-button--focus"
 };
 
 var EL_ATTRS = ["formaction", "type"];
@@ -278,7 +278,7 @@ var view = function view(vnode) {
   var tabIndex = disabled || attrs.inactive ? -1 : attrs.tabindex || 0;
   var onClickHandler = attrs.events && attrs.events.onclick;
   var props = _extends({}, filterSupportedAttributes(attrs, EL_ATTRS), {
-    class: [attrs.parentClass || classes.component, attrs.selected ? classes.selected : null, disabled ? classes.disabled : null, attrs.inactive ? classes.inactive : null, attrs.borders ? classes.borders : null, state.focus ? classes.focusState : null, attrs.class].join(" "),
+    class: [attrs.parentClass || classes.component, attrs.selected ? classes.selected : null, disabled ? classes.disabled : null, attrs.inactive ? classes.inactive : null, attrs.borders ? classes.borders : null, state.focus ? classes.focused : null, attrs.class].join(" "),
     tabIndex: tabIndex,
     // handle focus events
     onfocus: function onfocus() {
@@ -307,7 +307,8 @@ var view = function view(vnode) {
   var children = vnode.children.length && vnode.children || attrs.children;
   var label = attrs.content ? attrs.content : attrs.label ? _typeof(attrs.label) === "object" ? attrs.label : m("div", { class: classes.label }, attrs.label) : children && children[0] ? children : null;
   var noWash = disabled || attrs.wash !== undefined && !attrs.wash;
-  var content = label ? m("div", { class: classes.content }, [!disabled && attrs.shadowComponent ? attrs.shadowComponent : null,
+  var content = label ? m("div", { class: classes.content }, [!disabled && attrs.shadowComponent // "protected" option, used by raised-button
+  ? attrs.shadowComponent : null,
   // ripple
   disabled || noink ? null : m(ripple, _extends({}, attrs.ripple, {
     getTarget: function getTarget() {
@@ -332,4 +333,4 @@ var button = {
   view: view
 };
 
-export { button, vars$1 as buttonVars };
+export { button, classes, vars$1 as vars };

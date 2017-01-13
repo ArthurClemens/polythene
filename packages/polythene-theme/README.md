@@ -21,6 +21,7 @@ m(button, {
 ~~~ 
 
 
+
 ## Customization options
 
 There are multiple ways to customize, and they be be used side by side:
@@ -29,7 +30,6 @@ There are multiple ways to customize, and they be be used side by side:
 1. **Deriving components** - build on top of existing components: to set new defaults or styling
 1. **Custom CSS** - to enhance existing styles
 1. **Theme file** - set global app variables
-
 
 
 
@@ -63,7 +63,6 @@ Variables like `unit_icon_size_small` are imported from `polythene-theme`, which
 A special Polythene class is `pe-dark-theme` - components that have a parent with this class will use the "dark" color settings.
 
 The background color of `pe-dark-theme` needs to be defined in your app.
-
 
 
 ### Styling components with variables 
@@ -119,7 +118,6 @@ m(".pe-dark-theme",
   })
 );
 ~~~ 
-
 
 
 
@@ -329,10 +327,6 @@ m(secondaryButton, {
 
 
 
-
-
-
-
 ## 4. Custom theme file
 
 Use this method to set global theme variables, such as the primary action color. 
@@ -357,8 +351,6 @@ export const vars = {
 The final step is to let the application read our custom theme file. For this, the path to `polythene-theme` needs to be set to a new file location.
 
 Each bundler has a different method to to this - it is generally called map or alias.
-
-
 
 #### Use with Rollup
 
@@ -391,7 +383,6 @@ browserify().plugin(pathmodify, {
 })
 ~~~
 
-
 #### Use with SystemJS / jspm
 
 In `config.js`, change the path in the map variables:
@@ -403,6 +394,4 @@ map: {
   ...
 }
 ~~~
-
-
 

@@ -5,6 +5,7 @@
 Displays an [icon](#icon) as a button. Also called toggle button.
 
 
+
 ## Usage
 
 Icon Button takes an icon options object:
@@ -23,8 +24,8 @@ const myIconButton = m(iconButton, {
 To use SVG instead of an image, pass an `msvg` object:
 
 ~~~javascript
-import gIconStars from "mmsvg/google/msvg/action/stars";
 import { iconButton } from "polythene-icon-button";
+import gIconStars from "mmsvg/google/msvg/action/stars";
 
 const myIconButton = m(iconButton, {
   icon: {
@@ -66,7 +67,9 @@ or
 const myIconButton = m(iconButton, {}, myIcon);
 ~~~
 
-### Variations
+
+
+## Variations
 
 The icon color is set with the CSS (text) `color` attribute of the parent element. For example:
 
@@ -108,10 +111,10 @@ const myIconButton = m(iconButton, {
 ~~~
 
 
-
 ### Sizes
 
 Pass `type` to the `icon` parameter, or use CSS.
+
 
 
 ## Options
@@ -137,7 +140,8 @@ Pass `type` to the `icon` parameter, or use CSS.
 | **compact**   | optional | Boolean | | Set to `true` to use less padding |
 
 
-### Composition
+
+## Composition
 
 Icon Button is composed from:
 
@@ -145,16 +149,16 @@ Icon Button is composed from:
 * [Icon](#icon) (when using option `icon`)
 
 
+
 ## CSS classes
 
-| **Element** |  **Class** |
-| ----------- | --------------- |
-| component   | `pe-button pe-button--icon` |
-| content     | `pe-button--icon__content` |
+| **Element** | **Key**     |  **Class** |
+| ----------- | ----------- | --------------- |
+| Component   | component   | `pe-button pe-button--icon` |
+| Content     | content     | `pe-button--icon__content` |
 
-
-| **State**   |  **Class** |
-| ----------- | --------------- |
-| compact      | `pe-button--compact` |
+| **State**   | **Key**     |  **Class** |
+| ----------- | ----------- | --------------- |
+| Compact     | compact     | `pe-button--compact` |
 
 

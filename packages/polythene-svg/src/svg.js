@@ -2,7 +2,7 @@ import m from "mithril";
 import { filterSupportedAttributes } from "polythene-core";
 // No theme
 
-const classes = {
+export const classes = {
   component: "pe-svg"
 };
 

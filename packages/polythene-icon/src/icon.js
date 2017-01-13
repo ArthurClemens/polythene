@@ -3,7 +3,7 @@ import { filterSupportedAttributes } from "polythene-core";
 import { svg } from "polythene-svg";
 import { customTheme } from "./theme";
 
-const classes = {
+export const classes = {
   icon: "pe-icon",
   avatar: "pe-icon--avatar",
   small: "pe-icon--small",

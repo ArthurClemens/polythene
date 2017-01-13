@@ -3,7 +3,7 @@ import { raisedButton } from "polythene-raised-button";
 import { icon } from "polythene-icon";
 import { customTheme } from "./theme";
 
-const classes = {
+export const classes = {
   component: "pe-button--fab",
   content:   "pe-button--fab__content",
   mini:      "pe-button--fab-mini"
