@@ -10,12 +10,13 @@ import { raisedButton } from 'polythene-raised-button';
 import { ripple } from 'polythene-ripple';
 import { shadow } from 'polythene-shadow';
 import { svg } from 'polythene-svg';
-import { vars } from 'polythene-theme';
+import { tabs } from 'polythene-tabs';
 import { toolbar } from 'polythene-toolbar';
+import { vars } from 'polythene-theme';
 import 'polythene-fastclick';
 import 'polythene-css-classes';
 import 'polythene-material-design';
 
 
 
-export { button, defaultVariables, isTouch, touchStartEvent, touchEndEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, filterSupportedAttributes, mixin, flex, styler, fab, icon, iconButton, list, listTile, raisedButton, ripple, shadow, svg, vars, toolbar };
+export { button, defaultVariables, isTouch, touchStartEvent, touchEndEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, filterSupportedAttributes, mixin, flex, styler, fab, icon, iconButton, list, listTile, raisedButton, ripple, shadow, svg, tabs, toolbar, vars };

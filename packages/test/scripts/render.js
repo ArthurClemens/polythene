@@ -1,5 +1,4 @@
 /* globals tidy_html5 */
-import m from "mithril";
 
 const defaultHtmlTidyOptions = {
   "show-body-only": true,
@@ -13,9 +12,6 @@ const defaultHtmlTidyOptions = {
   "new-inline-tags": ["path", "polyline", "line", "polygon"]
 };
 
-export const tidy = (vnodes, htmltidyOptions = defaultHtmlTidyOptions) => {
-  const htmlElement = document.createElement("div");
-  m.render(htmlElement, vnodes);
-  const html = htmlElement.innerHTML;
+export const tidy = (html, htmltidyOptions = defaultHtmlTidyOptions) => {
   return tidy_html5(html, htmltidyOptions);
 };

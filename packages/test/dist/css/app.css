@@ -15,11 +15,12 @@ body {
   background-color: #303030;
   color: #777;
 }
+.small-result .component-result {
+  max-width: 360px;
+}
 .generated-html {
   font-size: .85rem;
   line-height: 1.3rem;
-  flex-direction: column;
-  -webkit-flex-direction: column;
 }
 .generated-html .html {
   max-height: calc(3 * 1.3rem);
@@ -78,12 +79,14 @@ body {
 .tests-polythene .test-list .pe-list,
 .tests-list .pe-list,
 .tests-polythene .test-list-tile .pe-list-tile,
-.tests-list-tile .pe-list-tile {
+.tests-list-tile .pe-list-tile,
+.tests-tabs .pe-tabs {
   background-color: #fff;
 }
 
 .tests-list .pe-dark-theme .result .pe-list,
-.tests-list-tile .pe-dark-theme .result .pe-list-tile {
+.tests-list-tile .pe-dark-theme .result .pe-list-tile,
+.tests-tabs .pe-dark-theme .result .pe-tabs {
   background-color: #444;
 }
 

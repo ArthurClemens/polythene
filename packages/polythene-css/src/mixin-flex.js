@@ -1,15 +1,17 @@
-const layout = [{
-  "display": "-webkit-box"
-}, {
-  "display": "-moz-box"
-}, {
-  "display": "-ms-flexbox",
-  "-ms-flex-preferred-size": "initial" // IE10
-}, {
-  "display": "-webkit-flex"
-}, {
-  "display": "flex"
-}];
+const layout = [
+  {
+    "display": "-webkit-box"
+  }, {
+    "display": "-moz-box"
+  }, {
+    "display": "-ms-flexbox",
+    "-ms-flex-preferred-size": "initial" // IE10
+  }, {
+    "display": "-webkit-flex"
+  }, {
+    "display": "flex"
+  }
+];
 
 const layoutInline = [
   layout, {

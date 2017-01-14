@@ -18,9 +18,11 @@ export const rules = {
   list: "ul.list.pa0",
   listItem: "li.mv1",
   results: ".results",
-  resultRow: `.result-row.flex-ns.flex-row-ns.flex-column${bottomBorder}${resultHeight}`,
-  resultTitle: ".flex.flex-one.ma3",
-  result: ".result.flex.flex-one.relative.ma3.minh4",
-  content: ".component-result.relative.w-100",
-  rawResult: ".generated-html.prewrap.flex.flex-one.relative.ma3.light-silver"
+  resultRow: `.result-row.flex-column${bottomBorder}${resultHeight}.pv2`,
+  resultTitle: ".flex.flex-row-ns.f5.ma3",
+  resultData: ".result.flex.flex-column.flex-row-l.mv3",
+  resultDataRendered: ".flex-none.flex-l.flex-one.ma3.minh4",
+  content: ".component-result.w-100",
+  resultDataRaw: ".flex-none.flex-l.flex-one.ma3",
+  resultDataRawHtml: ".generated-html.prewrap.relative.light-silver.h-100"
 };

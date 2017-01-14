@@ -14,6 +14,7 @@ import { tests as raisedButtonTests } from "../tests/raised-button/tests";
 import { tests as rippleTests } from "../tests/ripple/tests";
 import { tests as shadowTests } from "../tests/shadow/tests";
 import { tests as svgTests } from "../tests/svg/tests";
+import { tests as tabsTests } from "../tests/tabs/tests";
 import { tests as toolbarTests } from "../tests/toolbar/tests";
 
 import { tests as cssTests } from "../tests/css/tests";
@@ -26,13 +27,11 @@ const generatedHtml = {
     vnode.state.toggle = () => vnode.state.open = !vnode.state.open
   ),
   view: vnode => {
-    const test = vnode.attrs.test;
-    const raw = tidy(m(test.component, test.attrs, test.children));
-    return m(css.rawResult, {
+    return m(css.resultDataRawHtml, {
       class: vnode.state.open ? "open" : "closed",
       onclick: vnode.state.toggle,
     }, [
-      m(".html", {}, raw),
+      m(".html", {id: vnode.attrs.id}, "blo"),
       m(".ellipsis", "...")
     ]);
   }
@@ -53,7 +52,7 @@ const testsPage = (name, tests) => ({
     m([css.tests, css.results].join(" "), {
       class: `tests-${name.replace(/[\:\-\[\]]/g, "").replace(/ /g, "-").toLowerCase()}`
     }, tests.map(test => {
-      const resultId = `test-${(test.name).replace(/[\:\-\[\]]/g, "").replace(/ /g, "-").toLowerCase()}`;
+      const resultId = `test-${(test.name).replace(/[\:\-\[\]\(\)]/g, "").replace(/ /g, "-").toLowerCase()}`;
       return m([css.resultRow, test.interactive ? css.interactive : null].join(""), {
         key: resultId,
         class: [resultId, test.class || null].join(" "),
@@ -61,8 +60,18 @@ const testsPage = (name, tests) => ({
         m(css.resultTitle, {
           class: "result-title"
         }, test.name),
-        m(css.result, m(css.content, m(test.component, test.attrs, test.children))),
-        m(generatedHtml, {test})
+        m(css.resultData, [
+          m(css.resultDataRendered,
+            m(css.content, {
+              oncreate: vnode => {
+                document.querySelector(`#raw-${resultId}`).textContent = tidy(vnode.dom.innerHTML);
+              }
+            }, m(test.component, test.attrs, test.children))
+          ),
+          m(css.resultDataRaw, 
+            m(generatedHtml, {id: `raw-${resultId}`})
+          )
+        ])
       ]);
     }))
   ]
@@ -123,6 +132,11 @@ const pages = [
     path: "/svg",
     name: "SVG",
     tests: svgTests
+  },
+  {
+    path: "/tabs",
+    name: "Tabs",
+    tests: tabsTests
   },
   {
     path: "/toolbar",

@@ -33,11 +33,12 @@
     "polythene-ripple": "1",
     "polythene-shadow": "1",
     "polythene-svg": "1",
+    "polythene-tabs": "1",
     "polythene-theme": "1",
     "polythene-toolbar": "1",
     "webfontloader": "^1.6.27"
   },
   "devDependencies": {
-    "mmsvg": "^1.3.0"
+    "mmsvg": "^1.4.0"
   }
 }

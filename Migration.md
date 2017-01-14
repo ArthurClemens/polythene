@@ -209,6 +209,12 @@ Dynamic loading and preloading have been removed, as these are not frequent use 
 
 
 
+### Tabs
+
+Option `buttons` has been deprecated in favor of `content` / child nodes.
+
+
+
 ## Theming
 
 A simpler way to theme components replaces the method of writing multiple style configurations in one file.

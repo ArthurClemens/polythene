@@ -15,30 +15,11 @@ import { listTile as listTile$1 } from 'polythene-list-tile';
 import { raisedButton as raisedButton$1 } from 'polythene-raised-button';
 import { ripple as ripple$1 } from 'polythene-ripple';
 import { shadow as shadow$1 } from 'polythene-shadow';
+import { tabs } from 'polythene-tabs';
 import { classes, toolbar } from 'polythene-toolbar';
 import 'polythene-css-classes';
 
 /* globals tidy_html5 */
-var defaultHtmlTidyOptions = {
-  "show-body-only": true,
-  "indent-spaces": 4,
-  "drop-empty-elements": false,
-  "doctype": "omit",
-  "indent": true,
-  "quiet": true, // Hides "About this fork of Tidy ..."
-  "show-warnings": false, // Hides "line 1 column 1 - Warning: missing <!DOCTYPE> declaration ...""
-  "new-blocklevel-tags": ["svg", "defs"],
-  "new-inline-tags": ["path", "polyline", "line", "polygon"]
-};
-
-var tidy = function tidy(vnodes) {
-  var htmltidyOptions = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : defaultHtmlTidyOptions;
-
-  var htmlElement = document.createElement("div");
-  m.render(htmlElement, vnodes);
-  var html = htmlElement.innerHTML;
-  return tidy_html5(html, htmltidyOptions);
-};
 
 /*
 Theme style definitions using Tachyon.
@@ -2157,6 +2138,145 @@ var tests$10 = [{
   }
 }];
 
+// import m from "mithril";
+// import iconHeart from 'mmsvg/templarian/msvg/heart';
+// import iconBell from 'mmsvg/templarian/msvg/bell';
+// import iconCog from 'mmsvg/templarian/msvg/cog';
+// import iconMenu from 'mmsvg/google/msvg/navigation/menu';
+// import iconSearch from 'mmsvg/google/msvg/action/search';
+// import iconMore from 'mmsvg/google/msvg/navigation/more-vert';
+
+// import arrowBack from 'mmsvg/google/msvg/navigation/arrow-back';
+// import arrowForward from 'mmsvg/google/msvg/navigation/arrow-forward';
+
+tabs.theme(".fixedWidthTabs", {
+  tab_max_width: 100,
+  tablet_tab_min_width: 100,
+  tab_min_width: "none"
+});
+
+var threeButtons = [{
+  label: "New"
+}, {
+  label: "My Favorites"
+}, {
+  label: "Saved"
+}];
+
+// const iconButtons = [{
+//   icon: {
+//     msvg: iconHeart
+//   }
+// }, {
+//   icon: {
+//     msvg: iconBell
+//   }
+// }, {
+//   icon: {
+//     msvg: iconCog
+//   }
+// }];
+
+// const iconTextButtons = [{
+//   icon: {
+//     msvg: iconHeart
+//   },
+//   label: "Favs"
+// }, {
+//   icon: {
+//     msvg: iconBell
+//   },
+//   label: "Notifs"
+// }, {
+//   icon: {
+//     msvg: iconCog
+//   },
+//   label: "Custom"
+// }];
+
+// const longLabels = [{
+//   label: "New"
+// }, {
+//   label: "A very long label that does not fit"
+// }, {
+//   label: "Saved"
+// }];
+
+// const longList = [{
+//   label: "Web"
+// }, {
+//   label: "Shopping"
+// }, {
+//   label: "Videos"
+// }, {
+//   label: "Images"
+// }, {
+//   label: "Books"
+// }, {
+//   label: "More"
+// }];
+
+var tests$11 = [{
+  name: "Child node",
+  component: tabs,
+  attrs: null,
+  children: "Child"
+}, {
+  name: "Option: buttons (text buttons)",
+  component: tabs,
+  attrs: {
+    buttons: threeButtons
+  }
+}, {
+  name: "Option: autofit (true)",
+  component: tabs,
+  attrs: {
+    buttons: threeButtons,
+    autofit: true
+  }
+}, {
+  name: "Option: centered (no autofit)",
+  component: tabs,
+  attrs: {
+    buttons: threeButtons,
+    centered: true
+  }
+}, {
+  name: "Option: largestWidth (no autofit)",
+  component: tabs,
+  attrs: {
+    buttons: threeButtons,
+    largestWidth: true
+  }
+}, {
+  name: "Theme (tab_max_width) and option centered",
+  component: tabs,
+  attrs: {
+    buttons: threeButtons,
+    class: "fixedWidthTabs",
+    centered: true
+  }
+}, {
+  name: "Option: selectedTab (1)",
+  component: tabs,
+  attrs: {
+    buttons: threeButtons,
+    autofit: true,
+    selectedTab: 1
+  }
+},
+
+// Dark theme
+
+{
+  name: "Option: buttons (text buttons) -- dark theme",
+  class: "pe-dark-theme",
+  component: tabs,
+  attrs: {
+    buttons: threeButtons
+  }
+}];
+
 var m$5 = m;
 var menu = m$5.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>');
 
@@ -2184,7 +2304,7 @@ var toolbarTitleAtStart = [m("div", { class: classes.title }, "Title"), btn(add)
 
 var toolbarRowIndentedTitle = [btn(menu), m("div", { class: classes.indentedTitle }, "Indented title"), btn(add)];
 
-var tests$11 = [{
+var tests$12 = [{
   name: "Child node",
   component: toolbar,
   attrs: null,
@@ -2313,7 +2433,7 @@ var mixinButtonStyles = [{
 
 styler$1.add("app-buttons-x", mixinButtonStyles);
 
-var tests$12 = [{
+var tests$13 = [{
   name: "Element should have a red background",
   component: {
     view: function view() {
@@ -2356,7 +2476,7 @@ var tests$12 = [{
 
 styler$1.add("css-classes", styles);
 
-var tests$13 = [{
+var tests$14 = [{
   name: "Should be aligned horizontally",
   component: {
     view: function view() {
@@ -2456,7 +2576,7 @@ secondaryButton$1.theme(".tests-custom-theme-secondary-button", {
   color_light_background: "#fff"
 });
 
-var tests$14 = [{
+var tests$15 = [{
   name: "Theme with style variables: button (should be blue)",
   component: button$1,
   attrs: {
@@ -2552,22 +2672,6 @@ var tests$14 = [{
   }
 }];
 
-var generatedHtml = {
-  oninit: function oninit(vnode) {
-    return vnode.state.open = false, vnode.state.toggle = function () {
-      return vnode.state.open = !vnode.state.open;
-    };
-  },
-  view: function view(vnode) {
-    var test = vnode.attrs.test;
-    var raw = tidy(m(test.component, test.attrs, test.children));
-    return m(rules.rawResult, {
-      class: vnode.state.open ? "open" : "closed",
-      onclick: vnode.state.toggle
-    }, [m(".html", {}, raw), m(".ellipsis", "...")]);
-  }
-};
-
 var testsPage = function testsPage(name, tests$$1) {
   return {
     oncreate: function oncreate() {
@@ -2586,7 +2690,7 @@ var testsPage = function testsPage(name, tests$$1) {
           class: [resultId, test.class || null].join(" ")
         }, [m(rules.resultTitle, {
           class: "result-title"
-        }, test.name), m(rules.result, m(rules.content, m(test.component, test.attrs, test.children))), m(generatedHtml, { test: test })]);
+        }, test.name), m(rules.result, m(rules.content, m(test.component, test.attrs, test.children)))]);
       }))];
     }
   };
@@ -2637,21 +2741,25 @@ var pages = [{
   name: "SVG",
   tests: tests$10
 }, {
+  path: "/tabs",
+  name: "Tabs",
+  tests: tests$11
+}, {
   path: "/toolbar",
   name: "Toolbar",
-  tests: tests$11
+  tests: tests$12
 }, {
   path: "/theme",
   name: "Custom theme",
-  tests: tests$14
+  tests: tests$15
 }, {
   path: "/css",
   name: "CSS tools",
-  tests: tests$12
+  tests: tests$13
 }, {
   path: "/css-classes",
   name: "CSS classes",
-  tests: tests$13
+  tests: tests$14
 }];
 
 var index = {

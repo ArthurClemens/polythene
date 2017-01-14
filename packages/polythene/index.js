@@ -32,9 +32,11 @@ export { shadow } from "polythene-shadow";
 
 export { svg } from "polythene-svg";
 
-export { vars } from "polythene-theme";
+export { tabs } from "polythene-tabs";
 
 export { toolbar } from "polythene-toolbar";
+
+export { vars } from "polythene-theme";
 
 export * from "polythene-fastclick";
 
