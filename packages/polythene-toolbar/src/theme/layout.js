@@ -6,7 +6,6 @@ export default (selector, componentVars) => [{
     flex.layout,
     flex.layoutHorizontal,
     flex.layoutCenter,
-    flex.layoutJustified,
     {
       height: componentVars.height + "px",
       fontSize: componentVars.font_size + "px",
@@ -29,7 +28,8 @@ export default (selector, componentVars) => [{
       " .pe-button--icon + span, .pe-button--icon + .pe-toolbar__title": {
         marginLeft: componentVars.indent - componentVars.padding_side - vars.grid_unit_icon_button + "px"
       },
-      " > span, .pe-toolbar__title": [
+      " > span, .pe-toolbar__title, .pe-toolbar__title--indent": [
+        flex.layout,
         flex.flex(1),
         mixin.ellipsis(1, vars.line_height, "em"),
         mixin.vendorize({

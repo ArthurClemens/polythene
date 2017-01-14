@@ -59,7 +59,7 @@ var _extends = Object.assign || function (target) {
 };
 
 var layout = (function (selector, componentVars) {
-  return [defineProperty({}, selector, [flex.layout, flex.layoutHorizontal, flex.layoutCenter, flex.layoutJustified, {
+  return [defineProperty({}, selector, [flex.layout, flex.layoutHorizontal, flex.layoutCenter, {
     height: componentVars.height + "px",
     fontSize: componentVars.font_size + "px",
     lineHeight: componentVars.line_height + "em",
@@ -81,7 +81,7 @@ var layout = (function (selector, componentVars) {
     " .pe-button--icon + span, .pe-button--icon + .pe-toolbar__title": {
       marginLeft: componentVars.indent - componentVars.padding_side - vars.grid_unit_icon_button + "px"
     },
-    " > span, .pe-toolbar__title": [flex.flex(1), mixin.ellipsis(1, vars.line_height, "em"), mixin.vendorize({
+    " > span, .pe-toolbar__title, .pe-toolbar__title--indent": [flex.layout, flex.flex(1), mixin.ellipsis(1, vars.line_height, "em"), mixin.vendorize({
       "transform-origin": "left 50%"
     }, vars.prefixes_transform), {
       lineHeight: vars.line_height + "em",
