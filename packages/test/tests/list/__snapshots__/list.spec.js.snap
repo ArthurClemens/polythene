@@ -1,7 +1,7 @@
 exports[`test Child nodes 1`] = `
 "<div class=\"pe-list pe-list--borders\">
   <div class=\"pe-list-tile pe-list-tile--subtitle\">
-    <div class=\"pe-list-tile__primary\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
           Jennifer Barker
@@ -13,7 +13,7 @@ exports[`test Child nodes 1`] = `
     </div>
   </div>
   <div class=\"pe-list-tile pe-list-tile--subtitle\">
-    <div class=\"pe-list-tile__primary\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
           Ali Connors
@@ -36,7 +36,7 @@ exports[`test No options 1`] = `
 exports[`test Option: after 1`] = `
 "<div class=\"pe-list pe-list--header\">
   <div class=\"pe-list-tile pe-list__header\">
-    <div class=\"pe-list-tile__primary\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
           My header
@@ -57,7 +57,7 @@ exports[`test Option: before 1`] = `
     Before
   </div>
   <div class=\"pe-list-tile pe-list__header\">
-    <div class=\"pe-list-tile__primary\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
           My header
@@ -78,7 +78,7 @@ exports[`test Option: compact 1`] = `
 "<div class=
 \"pe-list pe-list--borders pe-list--header pe-list--compact\">
   <div class=\"pe-list-tile pe-list__header\">
-    <div class=\"pe-list-tile__primary\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
           Friends
@@ -87,7 +87,7 @@ exports[`test Option: compact 1`] = `
     </div>
   </div>
   <div class=\"pe-list-tile pe-list-tile--subtitle\">
-    <a href=\"#!/\" class=\"pe-list-tile__primary\">
+    <a href=\"#!/\" style=\"\" class=\"pe-list-tile__primary\">
     <div class=
     \"pe-list-tile__content pe-list-tile__content--front\">
       <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
@@ -105,7 +105,7 @@ exports[`test Option: compact 1`] = `
     </div></a>
   </div>
   <div class=\"pe-list-tile pe-list-tile--subtitle\">
-    <div class=\"pe-list-tile__primary\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
       <div class=
       \"pe-list-tile__content pe-list-tile__content--front\">
         <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
@@ -135,7 +135,7 @@ exports[`test Option: element 1`] = `
 exports[`test Option: header 1`] = `
 "<div class=\"pe-list pe-list--header\">
   <div class=\"pe-list-tile pe-list__header\">
-    <div class=\"pe-list-tile__primary\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
           My header
@@ -151,7 +151,7 @@ exports[`test Option: hoverable -- dark theme 1`] = `
 "<div class=
 \"pe-list pe-list--borders pe-list--hoverable pe-list--header\">
   <div class=\"pe-list-tile pe-list__header\">
-    <div class=\"pe-list-tile__primary\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
           Friends
@@ -160,7 +160,7 @@ exports[`test Option: hoverable -- dark theme 1`] = `
     </div>
   </div>
   <div class=\"pe-list-tile pe-list-tile--subtitle\">
-    <div class=\"pe-list-tile__primary\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
           Jennifer Barker
@@ -172,7 +172,7 @@ exports[`test Option: hoverable -- dark theme 1`] = `
     </div>
   </div>
   <div class=\"pe-list-tile pe-list-tile--subtitle\">
-    <div class=\"pe-list-tile__primary\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
           Ali Connors
@@ -191,7 +191,7 @@ exports[`test Option: hoverable 1`] = `
 "<div class=
 \"pe-list pe-list--borders pe-list--hoverable pe-list--header\">
   <div class=\"pe-list-tile pe-list__header\">
-    <div class=\"pe-list-tile__primary\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
           Friends
@@ -200,7 +200,7 @@ exports[`test Option: hoverable 1`] = `
     </div>
   </div>
   <div class=\"pe-list-tile pe-list-tile--subtitle\">
-    <div class=\"pe-list-tile__primary\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
           Jennifer Barker
@@ -212,7 +212,7 @@ exports[`test Option: hoverable 1`] = `
     </div>
   </div>
   <div class=\"pe-list-tile pe-list-tile--subtitle\">
-    <div class=\"pe-list-tile__primary\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
           Ali Connors
@@ -236,7 +236,7 @@ exports[`test Option: selectable 1`] = `
 "<div class=
 \"pe-list pe-list--borders pe-list--selectable pe-list--header\">
   <div class=\"pe-list-tile pe-list__header\">
-    <div class=\"pe-list-tile__primary\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
           Friends
@@ -245,7 +245,7 @@ exports[`test Option: selectable 1`] = `
     </div>
   </div>
   <div class=\"pe-list-tile pe-list-tile--subtitle\">
-    <div class=\"pe-list-tile__primary\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
           Jennifer Barker
@@ -257,7 +257,7 @@ exports[`test Option: selectable 1`] = `
     </div>
   </div>
   <div class=\"pe-list-tile pe-list-tile--subtitle\">
-    <div class=\"pe-list-tile__primary\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
           Ali Connors
@@ -272,10 +272,59 @@ exports[`test Option: selectable 1`] = `
 "
 `;
 
+exports[`test Option: style (colors) 1`] = `
+"<div style=
+\"background-color: rgb(239, 108, 0); color: rgb(255, 255, 255);\"
+class=\"pe-list pe-list--header\">
+  <div style=\"color: rgba(255, 255, 255, 0.8);\" class=
+  \"pe-list-tile pe-list__header\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
+      <div style=\"color: rgba(255, 255, 255, 0.8);\" class=
+      \"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Friends
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style=\"color: rgb(255, 255, 255);\" class=\"pe-list-tile\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
+      <div style=\"color: rgb(255, 255, 255);\" class=
+      \"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          One
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style=\"color: rgb(255, 255, 255);\" class=\"pe-list-tile\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
+      <div style=\"color: rgb(255, 255, 255);\" class=
+      \"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Two
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style=\"color: rgb(255, 255, 255);\" class=\"pe-list-tile\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
+      <div style=\"color: rgb(255, 255, 255);\" class=
+      \"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Three
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
 exports[`test Option: tiles 1`] = `
 "<div class=\"pe-list pe-list--borders\">
   <div class=\"pe-list-tile pe-list-tile--subtitle\">
-    <div class=\"pe-list-tile__primary\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
           Jennifer Barker
@@ -287,7 +336,7 @@ exports[`test Option: tiles 1`] = `
     </div>
   </div>
   <div class=\"pe-list-tile pe-list-tile--subtitle\">
-    <div class=\"pe-list-tile__primary\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
           Ali Connors
@@ -305,7 +354,7 @@ exports[`test Option: tiles 1`] = `
 exports[`test Options: header, tiles with urls 1`] = `
 "<div class=\"pe-list pe-list--borders pe-list--header\">
   <div class=\"pe-list-tile pe-list__header\">
-    <div class=\"pe-list-tile__primary\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
           Friends
@@ -314,7 +363,7 @@ exports[`test Options: header, tiles with urls 1`] = `
     </div>
   </div>
   <div class=\"pe-list-tile pe-list-tile--subtitle\">
-    <a href=\"#!/\" class=\"pe-list-tile__primary\">
+    <a href=\"#!/\" style=\"\" class=\"pe-list-tile__primary\">
     <div class=
     \"pe-list-tile__content pe-list-tile__content--front\">
       <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
@@ -332,7 +381,7 @@ exports[`test Options: header, tiles with urls 1`] = `
     </div></a>
   </div>
   <div class=\"pe-list-tile pe-list-tile--subtitle\">
-    <a href=\"#!/\" class=\"pe-list-tile__primary\">
+    <a href=\"#!/\" style=\"\" class=\"pe-list-tile__primary\">
     <div class=
     \"pe-list-tile__content pe-list-tile__content--front\">
       <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
@@ -352,7 +401,7 @@ exports[`test Options: header, tiles with urls 1`] = `
 </div>
 <div class=\"pe-list pe-list--borders pe-list--header\">
   <div class=\"pe-list-tile pe-list__header\">
-    <div class=\"pe-list-tile__primary\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
           Friends
@@ -361,7 +410,7 @@ exports[`test Options: header, tiles with urls 1`] = `
     </div>
   </div>
   <div class=\"pe-list-tile pe-list-tile--subtitle\">
-    <a href=\"#!/\" class=\"pe-list-tile__primary\">
+    <a href=\"#!/\" style=\"\" class=\"pe-list-tile__primary\">
     <div class=
     \"pe-list-tile__content pe-list-tile__content--front\">
       <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
@@ -379,7 +428,7 @@ exports[`test Options: header, tiles with urls 1`] = `
     </div></a>
   </div>
   <div class=\"pe-list-tile pe-list-tile--subtitle\">
-    <a href=\"#!/\" class=\"pe-list-tile__primary\">
+    <a href=\"#!/\" style=\"\" class=\"pe-list-tile__primary\">
     <div class=
     \"pe-list-tile__content pe-list-tile__content--front\">
       <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
@@ -404,7 +453,7 @@ exports[`test Options: header.sticky 1`] = `
 "<div class=\"scrollable-list\">
   <div class=\"pe-list pe-list--header\">
     <div class=\"pe-list-tile pe-list-tile--sticky pe-list__header\">
-      <div class=\"pe-list-tile__primary\">
+      <div style=\"\" class=\"pe-list-tile__primary\">
         <div class=\"pe-list-tile__content\">
           <div class=\"pe-list-tile__title\">
             Subheader
@@ -413,7 +462,7 @@ exports[`test Options: header.sticky 1`] = `
       </div>
     </div>
     <div class=\"pe-list-tile pe-list-tile--subtitle\">
-      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <a href=\"#!/\" style=\"\" class=\"pe-list-tile__primary\">
       <div class=
       \"pe-list-tile__content pe-list-tile__content--front\">
         <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
@@ -431,7 +480,7 @@ exports[`test Options: header.sticky 1`] = `
       </div></a>
     </div>
     <div class=\"pe-list-tile pe-list-tile--subtitle\">
-      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <a href=\"#!/\" style=\"\" class=\"pe-list-tile__primary\">
       <div class=
       \"pe-list-tile__content pe-list-tile__content--front\">
         <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
@@ -449,7 +498,7 @@ exports[`test Options: header.sticky 1`] = `
       </div></a>
     </div>
     <div class=\"pe-list-tile pe-list-tile--subtitle\">
-      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <a href=\"#!/\" style=\"\" class=\"pe-list-tile__primary\">
       <div class=
       \"pe-list-tile__content pe-list-tile__content--front\">
         <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
@@ -467,7 +516,7 @@ exports[`test Options: header.sticky 1`] = `
       </div></a>
     </div>
     <div class=\"pe-list-tile pe-list-tile--subtitle\">
-      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <a href=\"#!/\" style=\"\" class=\"pe-list-tile__primary\">
       <div class=
       \"pe-list-tile__content pe-list-tile__content--front\">
         <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
@@ -487,7 +536,7 @@ exports[`test Options: header.sticky 1`] = `
   </div>
   <div class=\"pe-list pe-list--header\">
     <div class=\"pe-list-tile pe-list-tile--sticky pe-list__header\">
-      <div class=\"pe-list-tile__primary\">
+      <div style=\"\" class=\"pe-list-tile__primary\">
         <div class=\"pe-list-tile__content\">
           <div class=\"pe-list-tile__title\">
             Subheader
@@ -496,7 +545,7 @@ exports[`test Options: header.sticky 1`] = `
       </div>
     </div>
     <div class=\"pe-list-tile pe-list-tile--subtitle\">
-      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <a href=\"#!/\" style=\"\" class=\"pe-list-tile__primary\">
       <div class=
       \"pe-list-tile__content pe-list-tile__content--front\">
         <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
@@ -514,7 +563,7 @@ exports[`test Options: header.sticky 1`] = `
       </div></a>
     </div>
     <div class=\"pe-list-tile pe-list-tile--subtitle\">
-      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <a href=\"#!/\" style=\"\" class=\"pe-list-tile__primary\">
       <div class=
       \"pe-list-tile__content pe-list-tile__content--front\">
         <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
@@ -532,7 +581,7 @@ exports[`test Options: header.sticky 1`] = `
       </div></a>
     </div>
     <div class=\"pe-list-tile pe-list-tile--subtitle\">
-      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <a href=\"#!/\" style=\"\" class=\"pe-list-tile__primary\">
       <div class=
       \"pe-list-tile__content pe-list-tile__content--front\">
         <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
@@ -550,7 +599,7 @@ exports[`test Options: header.sticky 1`] = `
       </div></a>
     </div>
     <div class=\"pe-list-tile pe-list-tile--subtitle\">
-      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <a href=\"#!/\" style=\"\" class=\"pe-list-tile__primary\">
       <div class=
       \"pe-list-tile__content pe-list-tile__content--front\">
         <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
@@ -570,7 +619,7 @@ exports[`test Options: header.sticky 1`] = `
   </div>
   <div class=\"pe-list pe-list--header\">
     <div class=\"pe-list-tile pe-list-tile--sticky pe-list__header\">
-      <div class=\"pe-list-tile__primary\">
+      <div style=\"\" class=\"pe-list-tile__primary\">
         <div class=\"pe-list-tile__content\">
           <div class=\"pe-list-tile__title\">
             Subheader
@@ -579,7 +628,7 @@ exports[`test Options: header.sticky 1`] = `
       </div>
     </div>
     <div class=\"pe-list-tile pe-list-tile--subtitle\">
-      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <a href=\"#!/\" style=\"\" class=\"pe-list-tile__primary\">
       <div class=
       \"pe-list-tile__content pe-list-tile__content--front\">
         <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
@@ -597,7 +646,7 @@ exports[`test Options: header.sticky 1`] = `
       </div></a>
     </div>
     <div class=\"pe-list-tile pe-list-tile--subtitle\">
-      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <a href=\"#!/\" style=\"\" class=\"pe-list-tile__primary\">
       <div class=
       \"pe-list-tile__content pe-list-tile__content--front\">
         <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
@@ -615,7 +664,7 @@ exports[`test Options: header.sticky 1`] = `
       </div></a>
     </div>
     <div class=\"pe-list-tile pe-list-tile--subtitle\">
-      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <a href=\"#!/\" style=\"\" class=\"pe-list-tile__primary\">
       <div class=
       \"pe-list-tile__content pe-list-tile__content--front\">
         <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
@@ -633,7 +682,7 @@ exports[`test Options: header.sticky 1`] = `
       </div></a>
     </div>
     <div class=\"pe-list-tile pe-list-tile--subtitle\">
-      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <a href=\"#!/\" style=\"\" class=\"pe-list-tile__primary\">
       <div class=
       \"pe-list-tile__content pe-list-tile__content--front\">
         <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
@@ -653,7 +702,7 @@ exports[`test Options: header.sticky 1`] = `
   </div>
   <div class=\"pe-list pe-list--header\">
     <div class=\"pe-list-tile pe-list-tile--sticky pe-list__header\">
-      <div class=\"pe-list-tile__primary\">
+      <div style=\"\" class=\"pe-list-tile__primary\">
         <div class=\"pe-list-tile__content\">
           <div class=\"pe-list-tile__title\">
             Subheader
@@ -662,7 +711,7 @@ exports[`test Options: header.sticky 1`] = `
       </div>
     </div>
     <div class=\"pe-list-tile pe-list-tile--subtitle\">
-      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <a href=\"#!/\" style=\"\" class=\"pe-list-tile__primary\">
       <div class=
       \"pe-list-tile__content pe-list-tile__content--front\">
         <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
@@ -680,7 +729,7 @@ exports[`test Options: header.sticky 1`] = `
       </div></a>
     </div>
     <div class=\"pe-list-tile pe-list-tile--subtitle\">
-      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <a href=\"#!/\" style=\"\" class=\"pe-list-tile__primary\">
       <div class=
       \"pe-list-tile__content pe-list-tile__content--front\">
         <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
@@ -698,7 +747,7 @@ exports[`test Options: header.sticky 1`] = `
       </div></a>
     </div>
     <div class=\"pe-list-tile pe-list-tile--subtitle\">
-      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <a href=\"#!/\" style=\"\" class=\"pe-list-tile__primary\">
       <div class=
       \"pe-list-tile__content pe-list-tile__content--front\">
         <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
@@ -716,7 +765,7 @@ exports[`test Options: header.sticky 1`] = `
       </div></a>
     </div>
     <div class=\"pe-list-tile pe-list-tile--subtitle\">
-      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <a href=\"#!/\" style=\"\" class=\"pe-list-tile__primary\">
       <div class=
       \"pe-list-tile__content pe-list-tile__content--front\">
         <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
@@ -736,7 +785,7 @@ exports[`test Options: header.sticky 1`] = `
   </div>
   <div class=\"pe-list pe-list--header\">
     <div class=\"pe-list-tile pe-list-tile--sticky pe-list__header\">
-      <div class=\"pe-list-tile__primary\">
+      <div style=\"\" class=\"pe-list-tile__primary\">
         <div class=\"pe-list-tile__content\">
           <div class=\"pe-list-tile__title\">
             Subheader
@@ -745,7 +794,7 @@ exports[`test Options: header.sticky 1`] = `
       </div>
     </div>
     <div class=\"pe-list-tile pe-list-tile--subtitle\">
-      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <a href=\"#!/\" style=\"\" class=\"pe-list-tile__primary\">
       <div class=
       \"pe-list-tile__content pe-list-tile__content--front\">
         <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
@@ -763,7 +812,7 @@ exports[`test Options: header.sticky 1`] = `
       </div></a>
     </div>
     <div class=\"pe-list-tile pe-list-tile--subtitle\">
-      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <a href=\"#!/\" style=\"\" class=\"pe-list-tile__primary\">
       <div class=
       \"pe-list-tile__content pe-list-tile__content--front\">
         <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
@@ -781,7 +830,7 @@ exports[`test Options: header.sticky 1`] = `
       </div></a>
     </div>
     <div class=\"pe-list-tile pe-list-tile--subtitle\">
-      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <a href=\"#!/\" style=\"\" class=\"pe-list-tile__primary\">
       <div class=
       \"pe-list-tile__content pe-list-tile__content--front\">
         <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
@@ -799,7 +848,7 @@ exports[`test Options: header.sticky 1`] = `
       </div></a>
     </div>
     <div class=\"pe-list-tile pe-list-tile--subtitle\">
-      <a href=\"#!/\" class=\"pe-list-tile__primary\">
+      <a href=\"#!/\" style=\"\" class=\"pe-list-tile__primary\">
       <div class=
       \"pe-list-tile__content pe-list-tile__content--front\">
         <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
@@ -824,7 +873,7 @@ exports[`test Options: header.sticky 1`] = `
 exports[`test Options: tiles, indent, indentedBorders 1`] = `
 "<div class=\"pe-list pe-list--indented-borders pe-list--header\">
   <div class=\"pe-list-tile pe-list-tile--front pe-list__header\">
-    <div class=\"pe-list-tile__primary\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
       <div class=
       \"pe-list-tile__content pe-list-tile__content--front\"></div>
       <div class=\"pe-list-tile__content\">
@@ -835,7 +884,7 @@ exports[`test Options: tiles, indent, indentedBorders 1`] = `
     </div>
   </div>
   <div class=\"pe-list-tile pe-list-tile--subtitle\">
-    <div class=\"pe-list-tile__primary\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
       <div class=
       \"pe-list-tile__content pe-list-tile__content--front\"></div>
       <div class=\"pe-list-tile__content\">
@@ -849,9 +898,73 @@ exports[`test Options: tiles, indent, indentedBorders 1`] = `
     </div>
   </div>
   <div class=\"pe-list-tile pe-list-tile--subtitle\">
-    <div class=\"pe-list-tile__primary\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
       <div class=
       \"pe-list-tile__content pe-list-tile__content--front\"></div>
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Ali Connors
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Brunch this weekend?
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Themed list (colors and padding) -- dark theme 1`] = `
+"<div class=\"pe-list pe-list--borders tests-lists-themed-list\">
+  <div class=
+  \"pe-list-tile pe-list-tile--subtitle tests-lists-themed-list-tile\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Jennifer Barker
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Starting post doc
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=
+  \"pe-list-tile pe-list-tile--subtitle tests-lists-themed-list-tile\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Ali Connors
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Brunch this weekend?
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Themed list (colors and padding) 1`] = `
+"<div class=\"pe-list pe-list--borders tests-lists-themed-list\">
+  <div class=
+  \"pe-list-tile pe-list-tile--subtitle tests-lists-themed-list-tile\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Jennifer Barker
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Starting post doc
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=
+  \"pe-list-tile pe-list-tile--subtitle tests-lists-themed-list-tile\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
           Ali Connors

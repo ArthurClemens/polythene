@@ -21,7 +21,6 @@ var rgba = vars.rgba;
 // three-line: 88
 // three-line, dense: 76
 
-
 var single_height = 48;
 var padding = 8;
 var single_with_icon_height = 56;
@@ -50,6 +49,8 @@ var vars$1 = {
   color_light_info: rgba(vars.color_light_foreground, vars.blend_light_text_tertiary),
   color_light_text_disabled: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
   color_light_list_header: rgba(vars.color_light_foreground, vars.blend_light_text_tertiary),
+  color_light_secondary: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
+  color_light_background: "inherit",
   color_light_background_hover: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
   color_light_background_selected: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
 
@@ -58,6 +59,8 @@ var vars$1 = {
   color_dark_info: rgba(vars.color_dark_foreground, vars.blend_dark_text_tertiary),
   color_dark_text_disabled: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
   color_dark_list_header: rgba(vars.color_dark_foreground, vars.blend_dark_text_tertiary),
+  color_dark_secondary: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
+  color_dark_background: "inherit",
   color_dark_background_hover: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover),
   color_dark_background_selected: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover)
 };
@@ -246,30 +249,31 @@ var layout = (function (selector, componentVars) {
 
 var style = function style(scope, selector, componentVars, tint) {
   return [defineProperty({}, scope + selector, {
-    " .pe-list-tile__title": {
-      color: componentVars["color_" + tint + "_title"]
-    },
+    color: componentVars["color_" + tint + "_title"],
+    backgroundColor: componentVars["color_" + tint + "_background"],
 
-    "&.pe-list__header": {
+    ".pe-list__header": {
+      color: componentVars["color_" + tint + "_list_header"],
+
       " .pe-list-tile__primary, pe-list-tile__secondary": {
         backgroundColor: "inherit"
-      },
-
-      " .pe-list-tile__title": {
-        color: componentVars["color_" + tint + "_list_header"]
       }
     },
 
-    " .pe-list-tile__content, .pe-list-tile__subtitle": {
+    " .pe-list-tile__subtitle": {
       color: componentVars["color_" + tint + "_subtitle"]
     },
 
-    "&.pe-list-tile--disabled": {
+    " .pe-list-tile__secondary": {
+      color: componentVars["color_" + tint + "_secondary"]
+    },
+
+    ".pe-list-tile--disabled": {
       "&, .pe-list-tile__title, .pe-list-tile__content, .pe-list-tile__subtitle": {
         color: componentVars["color_" + tint + "_text_disabled"]
       }
     },
-    "&.pe-list-tile--selected": {
+    ".pe-list-tile--selected": {
       " .pe-list-tile__primary, pe-list-tile__secondary": {
         backgroundColor: componentVars["color_" + tint + "_background_selected"]
       }
@@ -327,9 +331,11 @@ var primaryContent = function primaryContent(attrs, children) {
   var frontComp = attrs.front ? m("div", { class: contentFrontClass }, attrs.front) : attrs.indent ? m("div", { class: contentFrontClass }) : null;
 
   return m(element, _extends({}, filterSupportedAttributes(attrs), attrs.url, {
-    class: classes.primary
+    class: classes.primary,
+    style: null
   }), [frontComp, m("div", {
-    class: classes.content
+    class: classes.content,
+    style: attrs.style
   }, [attrs.content ? attrs.content : children && children[0] ? children : null, attrs.title && !attrs.content ? m("div", {
     class: classes.title
   }, attrs.title) : null, attrs.subtitle ? m("div", {

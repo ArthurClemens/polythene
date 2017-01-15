@@ -10,21 +10,23 @@ export default (selector, componentVars) => [{
       position: "relative",
       outline: "none",
       cursor: "pointer",
-      width: componentVars.size_regular + "px",
-      height: componentVars.size_regular + "px",
-      padding: componentVars.padding_regular + "px",
-      borderRadius: "50%",
+      padding: 0,
       border: "none",
 
-      "&.pe-button--fab-mini": {
-        width: componentVars.size_mini + "px",
-        height: componentVars.size_mini + "px",
-        padding: ((componentVars.size_mini - vars.unit_icon_size) / 2) + "px"
+      " .pe-button__content": {
+        position: "relative",
+        width: componentVars.size_regular + "px",
+        height: componentVars.size_regular + "px",
+        borderRadius: "50%",
+        padding: componentVars.padding_regular + "px",
       },
 
-      " .pe-button__content": {
-        padding: 0,
-        borderRadius: "inherit"
+      "&.pe-button--fab-mini": {
+        " .pe-button__content": {
+          width: componentVars.size_mini + "px",
+          height: componentVars.size_mini + "px",
+          padding: ((componentVars.size_mini - vars.unit_icon_size) / 2) + "px"
+        }
       },
 
       " .pe-ripple": {

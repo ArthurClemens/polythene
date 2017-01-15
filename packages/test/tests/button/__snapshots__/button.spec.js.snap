@@ -296,6 +296,25 @@ exports[`test Option: selected 1`] = `
 "
 `;
 
+exports[`test Option: style (colors) 1`] = `
+"<a tabindex=\"0\" class=\"pe-button pe-button--text\">
+<div style=
+\"background-color: rgb(239, 108, 0); color: rgb(255, 255, 255);\"
+class=\"pe-button__content\">
+  <div class=\"pe-ripple pe-ripple--constrained\">
+    <div class=\"pe-ripple__mask\">
+      <div class=\"pe-ripple__waves\"></div>
+    </div>
+  </div>
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Styled
+  </div>
+</div></a>
+"
+`;
+
 exports[`test Option: url (with oncreate) 1`] = `
 "<a tabindex=\"0\" href=\"#!/shadow\" class=\"pe-button pe-button--text\">
 <div class=\"pe-button__content\">
@@ -346,7 +365,7 @@ exports[`test Option: wash (false) 1`] = `
 "
 `;
 
-exports[`test Themed button -- dark theme 1`] = `
+exports[`test Themed button (colors) 1`] = `
 "<a tabindex=\"0\" class=
 \"pe-button pe-button--text tests-button-themed-button\">
 <div class=\"pe-button__content\">
@@ -364,7 +383,7 @@ exports[`test Themed button -- dark theme 1`] = `
 "
 `;
 
-exports[`test Themed button 1`] = `
+exports[`test Themed button -- dark theme 1`] = `
 "<a tabindex=\"0\" class=
 \"pe-button pe-button--text tests-button-themed-button\">
 <div class=\"pe-button__content\">

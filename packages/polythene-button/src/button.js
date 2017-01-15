@@ -61,9 +61,10 @@ const view = vnode => {
         }
       }
     },
-    attrs.events ? {...attrs.events} : null,
-    attrs.url ? {...attrs.url} : null,
-    disabled ? {disabled: true} : null
+    attrs.style ? { style: {}} : null,
+    attrs.events ? attrs.events : null,
+    attrs.url ? attrs.url : null,
+    disabled ? { disabled: true } : null
   );
   const children = vnode.children.length && vnode.children || attrs.children;
   const label = attrs.content
@@ -77,7 +78,10 @@ const view = vnode => {
         : null;
   const noWash = disabled || (attrs.wash !== undefined && !attrs.wash);
   const content = label
-    ? m("div", {class: classes.content}, [
+    ? m("div", {
+      class: classes.content,
+      style: attrs.style || {}
+    }, [
       !disabled && attrs.shadowComponent // "protected" option, used by raised-button
         ? attrs.shadowComponent
         : null,

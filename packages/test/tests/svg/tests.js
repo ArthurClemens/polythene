@@ -32,6 +32,16 @@ export const tests = [
       content: iconStars
     },
   },
+  {
+    name: "Option: style (color)",
+    component,
+    attrs: {
+      content: iconStars,
+      style: {
+        color: "#EF6C00"
+      }
+    }
+  },
 
   // Common
   {

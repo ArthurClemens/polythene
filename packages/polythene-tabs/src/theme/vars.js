@@ -32,18 +32,18 @@ export default {
   label_opacity:                  .7,
 
   tab_label_line_height,
-  tab_label_vertical_offset:       tab_label_line_height - fontSize,
-  tab_label_transition_property:   "opacity, color, backgroundColor",
-
-  color_light:                     "inherit",
-  color_light_selected:            rgba(vars.color_primary),
-  color_light_selected_background: "transparent",
-  color_light_tab_indicator:       rgba(vars.color_primary),
-  color_light_icon:                iconButtonVars.color_light,
-
-  color_dark:                      "inherit",
-  color_dark_selected:             rgba(vars.color_primary),
-  color_dark_selected_background:  "transparent",
-  color_dark_tab_indicator:        rgba(vars.color_primary),
-  color_dark_icon:                 iconButtonVars.color_dark
+  tab_label_vertical_offset:        tab_label_line_height - fontSize,
+  tab_label_transition_property:    "opacity, color, backgroundColor",
+ 
+  color_light:                      "inherit",
+  color_light_selected:             rgba(vars.color_primary),
+  color_light_selected_background:  "transparent",
+  color_light_tab_indicator:        rgba(vars.color_primary),
+  color_light_icon:                 iconButtonVars.color_light,
+ 
+  color_dark:                       "inherit",
+  color_dark_selected:              rgba(vars.color_primary),
+  color_dark_selected_background:   "transparent",
+  color_dark_tab_indicator:         rgba(vars.color_primary),
+  color_dark_icon:                  iconButtonVars.color_dark
 };

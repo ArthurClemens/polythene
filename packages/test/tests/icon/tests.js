@@ -64,17 +64,17 @@ export const tests = [
     }
   },
   {
-    name: "Option: style (should be red)",
+    name: "Option: style",
     component,
     attrs: {
       msvg: iconStars,
       style: {
-        color: "red"
+        color: "#EF6C00"
       }
     }
   },
   {
-    name: "Themed (should be larger and purple)",
+    name: "Themed (color and size)",
     component,
     attrs: {
       msvg: iconStars,

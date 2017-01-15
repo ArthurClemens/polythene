@@ -71,7 +71,7 @@ export const tests = [
     }
   },
   {
-    name: "Option: style (blue)",
+    name: "Option: style (color)",
     interactive: true,
     component,
     attrs: {

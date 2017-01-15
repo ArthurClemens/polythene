@@ -12,7 +12,7 @@ export default {
   title_padding,
   indent:                    vars.unit_indent,
   transition_duration:       vars.animation_duration,
-  font_size:                 vars.font_size_title,
+  font_size:                 18,
   line_height:               vars.line_height,
 
   height:                    height_desktop,

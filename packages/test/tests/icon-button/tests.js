@@ -36,19 +36,20 @@ export const tests = [
     }
   },
   {
-    name: "Option: style (should be red)",
+    name: "Option: style (colors)",
     component,
     attrs: {
       icon: {
         msvg: iconFavorite
       },
       style: {
-        color: "red"
+        color: "#FFCCBC",
+        backgroundColor: "#4E342E"
       }
     }
   },
   {
-    name: "Themed (should be purple and have large padding)",
+    name: "Themed (colors and padding)",
     component,
     attrs: {
       icon: {

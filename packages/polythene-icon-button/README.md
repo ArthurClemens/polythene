@@ -125,6 +125,7 @@ Pass `type` to the `icon` parameter, or use CSS.
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional | String | "div" | HTML element tag |
 | **class**     | optional | String |  | Extra CSS class appended to "pe-button--icon" |
+| **style**     | optional | Object |       | For setting simple style attributes |
 | **id**        | optional | String | | HTML element id |
 | **content**   | optional | Mithril element |  | Any content; replaces `vnode.children` |
 | **before**    | optional | Mithril element | | Extra content before main content; this content is placed left of subsequent elements with a lower stacking depth |

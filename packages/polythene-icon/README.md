@@ -74,6 +74,7 @@ const myIcon = m(icon, {
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional | String | "div" | HTML element tag |
 | **class**     | optional | String |       | Extra CSS class appended to `pe-icon` |
+| **style**     | optional | Object |       | For setting simple style attributes |
 | **id**        | optional | String |       | HTML element id |
 | **content**   | optional | Mithril element |  | Any content; replaces `vnode.children` and ignores `svg` and `msvg`  |
 | **before**    | optional | Mithril element | | Extra content before main content; this content is placed left of subsequent elements with a lower stacking depth |

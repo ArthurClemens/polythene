@@ -1,6 +1,6 @@
 exports[`test Child node 1`] = `
 "<div class=\"pe-list-tile\">
-  <div class=\"pe-list-tile__primary\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
     <div class=\"pe-list-tile__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
@@ -20,7 +20,7 @@ exports[`test Child node 1`] = `
 
 exports[`test No options 1`] = `
 "<div class=\"pe-list-tile\">
-  <div class=\"pe-list-tile__primary\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
     <div class=\"pe-list-tile__content\"></div>
   </div>
 </div>
@@ -29,7 +29,7 @@ exports[`test No options 1`] = `
 
 exports[`test Option: after 1`] = `
 "<div class=\"pe-list-tile\">
-  <div class=\"pe-list-tile__primary\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
     <div class=\"pe-list-tile__content\">
       <div class=\"pe-list-tile__title\">
         Ancillary Justice
@@ -48,7 +48,7 @@ exports[`test Option: before 1`] = `
   <div>
     Before
   </div>
-  <div class=\"pe-list-tile__primary\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
     <div class=\"pe-list-tile__content\">
       <div class=\"pe-list-tile__title\">
         Ancillary Justice
@@ -61,7 +61,7 @@ exports[`test Option: before 1`] = `
 
 exports[`test Option: class 1`] = `
 "<div class=\"pe-list-tile class-x\">
-  <div class=\"pe-list-tile__primary\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
     <div class=\"pe-list-tile__content\"></div>
   </div>
 </div>
@@ -70,7 +70,7 @@ exports[`test Option: class 1`] = `
 
 exports[`test Option: content 1`] = `
 "<div class=\"pe-list-tile\">
-  <div class=\"pe-list-tile__primary\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
     <div class=\"pe-list-tile__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
@@ -90,7 +90,7 @@ exports[`test Option: content 1`] = `
 
 exports[`test Option: disabled url -- dark theme 1`] = `
 "<div class=\"pe-list-tile pe-list-tile--disabled\">
-  <div class=\"pe-list-tile__primary\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
     <div class=\"pe-list-tile__content\">
       <div class=\"pe-list-tile__title\">
         Ancillary Justice
@@ -103,7 +103,7 @@ exports[`test Option: disabled url -- dark theme 1`] = `
 
 exports[`test Option: disabled url 1`] = `
 "<div class=\"pe-list-tile pe-list-tile--disabled\">
-  <a href=\"#!/\" class=\"pe-list-tile__primary\">
+  <a href=\"#!/\" style=\"\" class=\"pe-list-tile__primary\">
   <div class=\"pe-list-tile__content\">
     <div class=\"pe-list-tile__title\">
       Ancillary Justice
@@ -115,7 +115,7 @@ exports[`test Option: disabled url 1`] = `
 
 exports[`test Option: element 1`] = `
 "<blockquote class=\"pe-list-tile\">
-  <blockquote class=\"pe-list-tile__primary\">
+  <blockquote style=\"\" class=\"pe-list-tile__primary\">
     <div class=\"pe-list-tile__content\"></div>
   </blockquote>
 </blockquote>
@@ -124,7 +124,7 @@ exports[`test Option: element 1`] = `
 
 exports[`test Option: front (avatar) 1`] = `
 "<div class=\"pe-list-tile pe-list-tile--front\">
-  <div class=\"pe-list-tile__primary\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
     <div class=
     \"pe-list-tile__content pe-list-tile__content--front\">
       <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
@@ -144,7 +144,7 @@ exports[`test Option: front (avatar) 1`] = `
 
 exports[`test Option: front (icon) 1`] = `
 "<div class=\"pe-list-tile pe-list-tile--front\">
-  <div class=\"pe-list-tile__primary\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
     <div class=
     \"pe-list-tile__content pe-list-tile__content--front\">
       <div class=\"pe-icon pe-icon--medium\">
@@ -170,7 +170,7 @@ exports[`test Option: front (icon) 1`] = `
 
 exports[`test Option: highSubtitle 1`] = `
 "<div class=\"pe-list-tile pe-list-tile--high-subtitle\">
-  <div class=\"pe-list-tile__primary\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
     <div class=\"pe-list-tile__content\">
       <div class=\"pe-list-tile__title\">
         Ancillary Justice
@@ -190,7 +190,7 @@ exports[`test Option: highSubtitle 1`] = `
 exports[`test Option: highSubtitle and compact 1`] = `
 "<div class=
 \"pe-list-tile pe-list-tile--compact pe-list-tile--high-subtitle\">
-  <div class=\"pe-list-tile__primary\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
     <div class=\"pe-list-tile__content\">
       <div class=\"pe-list-tile__title\">
         Ancillary Justice
@@ -209,7 +209,7 @@ exports[`test Option: highSubtitle and compact 1`] = `
 
 exports[`test Option: highSubtitle and front -- dark theme 1`] = `
 "<div class=\"pe-list-tile pe-list-tile--high-subtitle\">
-  <div class=\"pe-list-tile__primary\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
     <div class=
     \"pe-list-tile__content pe-list-tile__content--front\">
       <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
@@ -247,7 +247,7 @@ exports[`test Option: highSubtitle and front -- dark theme 1`] = `
 
 exports[`test Option: highSubtitle and front 1`] = `
 "<div class=\"pe-list-tile pe-list-tile--high-subtitle\">
-  <div class=\"pe-list-tile__primary\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
     <div class=
     \"pe-list-tile__content pe-list-tile__content--front\">
       <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
@@ -285,7 +285,7 @@ exports[`test Option: highSubtitle and front 1`] = `
 
 exports[`test Option: hoverable 1`] = `
 "<div class=\"pe-list-tile pe-list-tile--hoverable\">
-  <div class=\"pe-list-tile__primary\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
     <div class=\"pe-list-tile__content\">
       <div class=\"pe-list-tile__title\">
         Ancillary Justice
@@ -298,7 +298,7 @@ exports[`test Option: hoverable 1`] = `
 
 exports[`test Option: href 1`] = `
 "<div class=\"pe-list-tile\">
-  <a href=\"#!/\" class=\"pe-list-tile__primary\">
+  <a href=\"#!/\" style=\"\" class=\"pe-list-tile__primary\">
   <div class=\"pe-list-tile__content\">
     <div class=\"pe-list-tile__title\">
       Ancillary Justice
@@ -310,7 +310,7 @@ exports[`test Option: href 1`] = `
 
 exports[`test Option: id 1`] = `
 "<div id=\"id-x\" class=\"pe-list-tile\">
-  <div class=\"pe-list-tile__primary\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
     <div class=\"pe-list-tile__content\"></div>
   </div>
 </div>
@@ -319,7 +319,7 @@ exports[`test Option: id 1`] = `
 
 exports[`test Option: indent 1`] = `
 "<div class=\"pe-list-tile pe-list-tile--front\">
-  <div class=\"pe-list-tile__primary\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
     <div class=
     \"pe-list-tile__content pe-list-tile__content--front\"></div>
     <div class=\"pe-list-tile__content\">
@@ -339,7 +339,7 @@ exports[`test Option: ink 1`] = `
       <div class=\"pe-ripple__waves\"></div>
     </div>
   </div>
-  <div class=\"pe-list-tile__primary\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
     <div class=\"pe-list-tile__content\">
       <div class=\"pe-list-tile__title\">
         Ancillary Justice
@@ -357,7 +357,7 @@ exports[`test Option: ink with ripple options 1`] = `
       <div class=\"pe-ripple__waves\"></div>
     </div>
   </div>
-  <div class=\"pe-list-tile__primary\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
     <div class=\"pe-list-tile__content\">
       <div class=\"pe-list-tile__title\">
         Ancillary Justice
@@ -370,7 +370,7 @@ exports[`test Option: ink with ripple options 1`] = `
 
 exports[`test Option: secondary (content) 1`] = `
 "<div class=\"pe-list-tile\">
-  <div class=\"pe-list-tile__primary\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
     <div class=\"pe-list-tile__content\">
       <div class=\"pe-list-tile__title\">
         Ancillary Justice
@@ -397,7 +397,7 @@ exports[`test Option: secondary (content) 1`] = `
 
 exports[`test Option: secondary (element) 1`] = `
 "<div class=\"pe-list-tile\">
-  <div class=\"pe-list-tile__primary\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
     <div class=\"pe-list-tile__content\">
       <div class=\"pe-list-tile__title\">
         Ancillary Justice
@@ -415,7 +415,7 @@ exports[`test Option: secondary (element) 1`] = `
 
 exports[`test Option: secondary (icon) 1`] = `
 "<div class=\"pe-list-tile\">
-  <div class=\"pe-list-tile__primary\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
     <div class=\"pe-list-tile__content\">
       <div class=\"pe-list-tile__title\">
         Ancillary Justice
@@ -442,7 +442,7 @@ exports[`test Option: secondary (icon) 1`] = `
 
 exports[`test Option: secondary (url) 1`] = `
 "<div class=\"pe-list-tile\">
-  <div class=\"pe-list-tile__primary\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
     <div class=\"pe-list-tile__content\">
       <div class=\"pe-list-tile__title\">
         Ancillary Justice
@@ -467,7 +467,7 @@ exports[`test Option: secondary (url) 1`] = `
 
 exports[`test Option: selectable 1`] = `
 "<div class=\"pe-list-tile pe-list-tile--selectable\">
-  <div class=\"pe-list-tile__primary\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
     <div class=\"pe-list-tile__content\">
       <div class=\"pe-list-tile__title\">
         Ancillary Justice
@@ -480,7 +480,7 @@ exports[`test Option: selectable 1`] = `
 
 exports[`test Option: selected 1`] = `
 "<div class=\"pe-list-tile pe-list-tile--selected\">
-  <div class=\"pe-list-tile__primary\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
     <div class=\"pe-list-tile__content\">
       <div class=\"pe-list-tile__title\">
         Ancillary Justice
@@ -493,7 +493,7 @@ exports[`test Option: selected 1`] = `
 
 exports[`test Option: subtitle 1`] = `
 "<div class=\"pe-list-tile pe-list-tile--subtitle\">
-  <div class=\"pe-list-tile__primary\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
     <div class=\"pe-list-tile__content\">
       <div class=\"pe-list-tile__title\">
         Ancillary Justice
@@ -511,7 +511,7 @@ exports[`test Option: subtitle 1`] = `
 
 exports[`test Option: title 1`] = `
 "<div class=\"pe-list-tile\">
-  <div class=\"pe-list-tile__primary\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
     <div class=\"pe-list-tile__content\">
       <div class=\"pe-list-tile__title\">
         Ancillary Justice
@@ -522,10 +522,37 @@ exports[`test Option: title 1`] = `
 "
 `;
 
-exports[`test Themed (should be red) 1`] = `
+exports[`test Themed (color and font size) -- dark theme 1`] = `
 "<div class=
-\"pe-list-tile pe-list-tile--front tests-list-tile-red-list-tile\">
-  <div class=\"pe-list-tile__primary\">
+\"pe-list-tile pe-list-tile--front tests-list-tile-themed-list-tile\">
+<div style=\"\" class=\"pe-list-tile__primary\">
+    <div class=
+    \"pe-list-tile__content pe-list-tile__content--front\">
+      <div class=\"pe-icon pe-icon--medium\">
+        <div class=\"pe-svg\">
+          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+          height=\"24\" viewbox=\"0 0 24 24\">
+            <path d=
+            \"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\">
+            </path>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class=\"pe-list-tile__content\">
+      <div class=\"pe-list-tile__title\">
+        Ancillary Justice
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Themed (color and font size) 1`] = `
+"<div class=
+\"pe-list-tile pe-list-tile--front tests-list-tile-themed-list-tile\">
+<div style=\"\" class=\"pe-list-tile__primary\">
     <div class=
     \"pe-list-tile__content pe-list-tile__content--front\">
       <div class=\"pe-icon pe-icon--medium\">

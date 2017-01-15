@@ -171,7 +171,7 @@ exports[`test Icon Button 1`] = `
 exports[`test List 1`] = `
 "<div class=\"pe-list pe-list--borders pe-list--header\">
   <div class=\"pe-list-tile pe-list__header\">
-    <div class=\"pe-list-tile__primary\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
           Friends
@@ -180,7 +180,7 @@ exports[`test List 1`] = `
     </div>
   </div>
   <div class=\"pe-list-tile pe-list-tile--subtitle\">
-    <div class=\"pe-list-tile__primary\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
       <div class=
       \"pe-list-tile__content pe-list-tile__content--front\">
         <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
@@ -199,7 +199,7 @@ exports[`test List 1`] = `
     </div>
   </div>
   <div class=\"pe-list-tile pe-list-tile--subtitle\">
-    <div class=\"pe-list-tile__primary\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
       <div class=
       \"pe-list-tile__content pe-list-tile__content--front\">
         <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
@@ -223,7 +223,7 @@ exports[`test List 1`] = `
 
 exports[`test List Tile 1`] = `
 "<div class=\"pe-list-tile pe-list-tile--high-subtitle\">
-  <div class=\"pe-list-tile__primary\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
     <div class=
     \"pe-list-tile__content pe-list-tile__content--front\">
       <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
@@ -332,6 +332,103 @@ exports[`test Shadow 1`] = `
 "<div class=\"pe-shadow\">
   <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
   <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+</div>
+"
+`;
+
+exports[`test Tabs 1`] = `
+"<div id=\"\" class=\"pe-tabs pe-tabs--start pe-tabs--autofit\">
+  <div class=\"pe-tabs__row\">
+    <a tabindex=\"0\" class=
+    \"pe-button pe-button--text pe-button--selected pe-tabs__tab\">
+    <div class=\"pe-button__content\">
+      <div class=\"pe-ripple pe-ripple--constrained\">
+        <div class=\"pe-ripple__mask\">
+          <div class=\"pe-ripple__waves\"></div>
+        </div>
+      </div>
+      <div class=\"pe-button__focus\"></div>
+      <div class=\"pe-tabs__tab-content\">
+        <div class=\"pe-button__label\">
+          <span>New</span>
+        </div>
+      </div>
+    </div></a><a tabindex=\"0\" class=
+    \"pe-button pe-button--text pe-tabs__tab\">
+    <div class=\"pe-button__content\">
+      <div class=\"pe-ripple pe-ripple--constrained\">
+        <div class=\"pe-ripple__mask\">
+          <div class=\"pe-ripple__waves\"></div>
+        </div>
+      </div>
+      <div class=\"pe-button__focus\"></div>
+      <div class=\"pe-tabs__tab-content\">
+        <div class=\"pe-button__label\">
+          <span>My Favorites</span>
+        </div>
+      </div>
+    </div></a><a tabindex=\"0\" class=
+    \"pe-button pe-button--text pe-tabs__tab\">
+    <div class=\"pe-button__content\">
+      <div class=\"pe-ripple pe-ripple--constrained\">
+        <div class=\"pe-ripple__mask\">
+          <div class=\"pe-ripple__waves\"></div>
+        </div>
+      </div>
+      <div class=\"pe-button__focus\"></div>
+      <div class=\"pe-tabs__tab-content\">
+        <div class=\"pe-button__label\">
+          <span>Saved</span>
+        </div>
+      </div>
+    </div></a>
+    <div class=\"pe-tabs__indicator\" style=\"width: 0px;\"></div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Toolbar 1`] = `
+"<div class=\"pe-toolbar\">
+  <a tabindex=\"0\" class=\"pe-button pe-button--icon\">
+  <div class=\"pe-button__content\">
+    <div class=\"pe-ripple pe-ripple--constrained\">
+      <div class=\"pe-ripple__mask\">
+        <div class=\"pe-ripple__waves\"></div>
+      </div>
+    </div>
+    <div class=\"pe-button__focus\"></div>
+    <div class=\"pe-button--icon__content\">
+      <div class=\"pe-icon pe-icon--regular\">
+        <div class=\"pe-svg\">
+          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+          height=\"24\" viewbox=\"0 0 24 24\">
+            <path d=
+            \"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div></a><span>Title</span><a tabindex=\"0\" class=
+  \"pe-button pe-button--icon\">
+  <div class=\"pe-button__content\">
+    <div class=\"pe-ripple pe-ripple--constrained\">
+      <div class=\"pe-ripple__mask\">
+        <div class=\"pe-ripple__waves\"></div>
+      </div>
+    </div>
+    <div class=\"pe-button__focus\"></div>
+    <div class=\"pe-button--icon__content\">
+      <div class=\"pe-icon pe-icon--regular\">
+        <div class=\"pe-svg\">
+          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+          height=\"24\" viewbox=\"0 0 24 24\">
+            <path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div></a>
 </div>
 "
 `;

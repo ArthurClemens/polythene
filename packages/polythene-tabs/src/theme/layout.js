@@ -72,7 +72,6 @@ export default (selector, componentVars) => [{
           zIndex: 3,
 
           " .pe-button__content": {
-            borderRadius: 0,
             backgroundColor: "inherit"
           },
           " .pe-button__label": [
@@ -152,10 +151,11 @@ export default (selector, componentVars) => [{
           minWidth: !isNaN(componentVars.tab_min_width) ? componentVars.tab_min_width + "px" : componentVars.tab_min_width, // for smaller screens, see also media query below
           maxWidth: !isNaN(componentVars.tab_max_width) ? componentVars.tab_max_width + "px" : componentVars.tab_max_width,
 
-          " .pe-button__content": {
+          ".pe-button--text .pe-button__content": {
             padding: "0 " + componentVars.tab_content_padding_v + "px",
             height: componentVars.tab_height + "px",
             lineHeight: vars.line_height + "em",
+            borderRadius: 0,
 
             " .pe-button__label, .pe-icon": {
               maxWidth: componentVars.label_max_width + "px", // or .pe-tabs width minus 56dp
@@ -215,7 +215,7 @@ export default (selector, componentVars) => [{
       "&.pe-tabs--autofit .pe-tabs__tab": [
         flex.flex(),
         {
-          minWidth: "none",
+          minWidth: "initial",
           maxWidth: "none"
         }
       ],

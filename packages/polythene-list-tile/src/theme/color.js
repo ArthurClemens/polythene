@@ -1,29 +1,30 @@
 const style = (scope, selector, componentVars, tint) => [{
   [scope + selector]: {
-    " .pe-list-tile__title": {
-      color: componentVars["color_" + tint + "_title"]
-    },
+    color:           componentVars["color_" + tint + "_title"],
+    backgroundColor: componentVars["color_" + tint + "_background"],
 
-    "&.pe-list__header": {
+    ".pe-list__header": {
+      color: componentVars["color_" + tint + "_list_header"],
+
       " .pe-list-tile__primary, pe-list-tile__secondary": {
         backgroundColor: "inherit"
-      },
-
-      " .pe-list-tile__title": {
-        color: componentVars["color_" + tint + "_list_header"]
       }
     },
 
-    " .pe-list-tile__content, .pe-list-tile__subtitle": {
+    " .pe-list-tile__subtitle": {
       color: componentVars["color_" + tint + "_subtitle"]
     },
 
-    "&.pe-list-tile--disabled": {
+    " .pe-list-tile__secondary": {
+      color: componentVars["color_" + tint + "_secondary"]
+    },
+
+    ".pe-list-tile--disabled": {
       "&, .pe-list-tile__title, .pe-list-tile__content, .pe-list-tile__subtitle": {
         color: componentVars["color_" + tint + "_text_disabled"]
       }
     },
-    "&.pe-list-tile--selected": {
+    ".pe-list-tile--selected": {
       " .pe-list-tile__primary, pe-list-tile__secondary": {
         backgroundColor: componentVars["color_" + tint + "_background_selected"]
       }

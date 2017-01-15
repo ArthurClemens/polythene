@@ -142,7 +142,7 @@ exports[`test Theme with style variables: icon button (should have large padding
 exports[`test Theme with style variables: list (should have blue borders) 1`] = `
 "<div class=\"pe-list pe-list--borders tests-custom-theme-blue-list\">
   <div class=\"pe-list-tile pe-list-tile--subtitle\">
-    <div class=\"pe-list-tile__primary\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
           Jennifer Barker
@@ -154,7 +154,7 @@ exports[`test Theme with style variables: list (should have blue borders) 1`] = 
     </div>
   </div>
   <div class=\"pe-list-tile pe-list-tile--subtitle\">
-    <div class=\"pe-list-tile__primary\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
           Ali Connors
@@ -166,7 +166,7 @@ exports[`test Theme with style variables: list (should have blue borders) 1`] = 
     </div>
   </div>
   <div class=\"pe-list-tile pe-list-tile--subtitle\">
-    <div class=\"pe-list-tile__primary\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
           Mike Eden
@@ -185,7 +185,7 @@ exports[`test Theme with style variables: list tile (should have red titles) 1`]
 "<div class=\"pe-list\">
   <div class=
   \"pe-list-tile pe-list-tile--subtitle tests-custom-theme-red-list-tile\">
-  <div class=\"pe-list-tile__primary\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
           Jennifer Barker
@@ -198,7 +198,7 @@ exports[`test Theme with style variables: list tile (should have red titles) 1`]
   </div>
   <div class=
   \"pe-list-tile pe-list-tile--subtitle tests-custom-theme-red-list-tile\">
-  <div class=\"pe-list-tile__primary\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
           Ali Connors
@@ -211,7 +211,7 @@ exports[`test Theme with style variables: list tile (should have red titles) 1`]
   </div>
   <div class=
   \"pe-list-tile pe-list-tile--subtitle tests-custom-theme-red-list-tile\">
-  <div class=\"pe-list-tile__primary\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
           Mike Eden

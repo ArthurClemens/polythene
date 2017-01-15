@@ -113,6 +113,7 @@ If you do choose to use it, add some styles to the container that holds the list
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element** | optional | String | "div" | HTML element tag |
 | **class** | optional | String |  | Extra CSS class appended to `pe-list` |
+| **style**     | optional | Object |       | For setting simple style attributes |
 | **id** | optional | String | | HTML element id |
 | **content** | use `tiles` or `content` | Mithril element | | Alternative content; replaces `vnode.children` and ignores `tiles` |
 | **before** | optional | Mithril element | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |

@@ -49,11 +49,22 @@ export const tests = [
     }
   },
   {
-    name: "Themed button",
+    name: "Themed button (colors)",
     component,
     attrs: {
       label: "Themed button",
       class: "tests-button-themed-button"
+    }
+  },
+  {
+    name: "Option: style (colors)",
+    component,
+    attrs: {
+      label: "Styled",
+      style: {
+        backgroundColor: "#EF6C00",
+        color: "#fff"
+      }
     }
   },
   {

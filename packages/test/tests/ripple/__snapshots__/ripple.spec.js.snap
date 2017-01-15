@@ -136,7 +136,7 @@ exports[`test Option: start opacity (0.5) 1`] = `
 "
 `;
 
-exports[`test Option: style (blue) 1`] = `
+exports[`test Option: style (color) 1`] = `
 "<div style=\"color: rgb(33, 150, 243);\" class=
 \"pe-ripple pe-ripple--constrained\">
   <div class=\"pe-ripple__mask\">

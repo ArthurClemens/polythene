@@ -1,5 +1,26 @@
 import m from 'mithril';
 import { filterSupportedAttributes } from 'polythene-core';
+import { styler } from 'polythene-css';
+
+var vars = {
+  color_light: "currentcolor",
+  color_dark: "currentcolor"
+};
+
+var defineProperty = function (obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+};
 
 var _extends = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
@@ -15,7 +36,36 @@ var _extends = Object.assign || function (target) {
   return target;
 };
 
-// No theme
+var style = function style(scope, selector, componentVars, tint) {
+  var color = componentVars["color_" + tint] || "currentcolor";
+  return [defineProperty({}, scope + selector, {
+    fill: color,
+
+    " svg": {
+      fill: color,
+      color: "inherit",
+
+      " path, rect, circle, polygon": {
+        "&:not([fill=none])": {
+          fill: color
+        }
+      }
+    }
+  })];
+};
+
+var color = (function (selector, componentVars) {
+  return [style("", selector, componentVars, "light"), style(".pe-dark-theme ", selector, componentVars, "dark")];
+});
+
+var fns = [color];
+var selector = ".pe-svg";
+
+var customTheme = function customTheme(customSelector, customVars) {
+  return styler.generateStyles([customSelector, selector], _extends({}, vars, customVars), fns);
+};
+
+styler.generateStyles([selector], vars, fns);
 
 var classes = {
   component: "pe-svg"
@@ -33,7 +83,8 @@ var view = function view(vnode) {
 };
 
 var svg = {
+  theme: customTheme, // accepts (selector, vars)
   view: view
 };
 
-export { svg, classes };
+export { svg, classes, vars };

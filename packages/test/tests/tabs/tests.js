@@ -193,6 +193,22 @@ export const tests = [
     }
   },
   {
+    name: "Option: tabsOpts (style - colors)",
+    component,
+    attrs: {
+      buttons: threeButtons,
+      autofit: true,
+      tabsOpts: {
+        style: {
+          backgroundColor: "#EF6C00",
+          color: "#fff"
+        }
+      }
+    }
+  },
+
+
+  {
     name: "Tabs with icons",
     class: "small-result",
     component,

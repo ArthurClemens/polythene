@@ -4,7 +4,7 @@ Polythene is an implementation of Google"s Material Design, but it can also be u
 
 This page describes a number of ways to create customizations.
 
-TL;DR: The simplest way to create a custom blue button:
+TL;DR: The preferred way to create a custom blue button:
 
 ~~~javascript
 import { button } from "polythene-button";
@@ -220,7 +220,7 @@ Note: to change a style of the component's base class, you must add the base cla
 ~~~
 
 
-### 2. Using Javascript to CSS
+### 2. Using Javascript-to-CSS
 
 Polythene uses [j2c](http://j2c.py.gy) to write styles directly to the head of the page. A Polythene j2c style object looks like this:
 

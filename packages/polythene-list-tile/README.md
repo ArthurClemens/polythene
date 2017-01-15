@@ -134,6 +134,7 @@ const myListTile = m(listTile, {
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element** | optional | String | "div" | HTML element tag |
 | **class** | optional | String |  | Extra CSS class appended to "pe-list-tile" |
+| **style**     | optional | Object |       | For setting simple style attributes |
 | **id** | optional | String | | HTML element id |
 | **events** | optional | Object | | Options object containing one or more standard events such as `onclick` |
 | **before** | optional | Mithril element | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |

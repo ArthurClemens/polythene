@@ -1,11 +1,9 @@
 
 const style = (scope, selector, componentVars, tint) => [{
   [scope + selector]: {
-    backgroundColor: componentVars["color_" + tint + "_background"],
-    color: componentVars["color_" + tint],
-
     " .pe-button__content": {
-      backgroundColor: "transparent"
+      backgroundColor: componentVars["color_" + tint + "_background"],
+      color:           componentVars["color_" + tint]
     }
   }
 }];

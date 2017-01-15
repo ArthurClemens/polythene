@@ -303,11 +303,14 @@ var view = function view(vnode) {
         }
       }
     }
-  }, attrs.events ? _extends({}, attrs.events) : null, attrs.url ? _extends({}, attrs.url) : null, disabled ? { disabled: true } : null);
+  }, attrs.style ? { style: {} } : null, attrs.events ? attrs.events : null, attrs.url ? attrs.url : null, disabled ? { disabled: true } : null);
   var children = vnode.children.length && vnode.children || attrs.children;
   var label = attrs.content ? attrs.content : attrs.label ? _typeof(attrs.label) === "object" ? attrs.label : m("div", { class: classes.label }, attrs.label) : children && children[0] ? children : null;
   var noWash = disabled || attrs.wash !== undefined && !attrs.wash;
-  var content = label ? m("div", { class: classes.content }, [!disabled && attrs.shadowComponent // "protected" option, used by raised-button
+  var content = label ? m("div", {
+    class: classes.content,
+    style: attrs.style || {}
+  }, [!disabled && attrs.shadowComponent // "protected" option, used by raised-button
   ? attrs.shadowComponent : null,
   // ripple
   disabled || noink ? null : m(ripple, _extends({}, attrs.ripple, {

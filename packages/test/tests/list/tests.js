@@ -4,7 +4,19 @@ import { listTile } from "polythene-list-tile";
 import { icon } from "polythene-icon";
 
 component.theme(".tests-lists-themed-list", {
-  color_light_border: "#2196F3"
+  color_light_background: "#F57C00",
+  color_light_border:     "#F57C00",
+  color_dark_background:  "#5D4037",
+  color_dark_border:      "#5D4037",
+  padding: 32
+});
+listTile.theme(".tests-lists-themed-list-tile", {
+  color_light_title:      "#fff",
+  color_light_subtitle:   "rgba(255,255,255,.8)",
+  color_light_background: "#EF6C00",
+  color_dark_title:       "#D7CCC8",
+  color_dark_subtitle:    "#BCAAA4",
+  color_dark_background:  "#4E342E"
 });
 
 const listTileJennifer = m(listTile, {
@@ -197,7 +209,6 @@ export const tests = [
       ]
     }
   },
-
   {
     name: "Options: header.sticky",
     interactive: true,
@@ -216,6 +227,42 @@ export const tests = [
           ]
         });
       }))
+    }
+  },
+  {
+    name: "Themed list (colors and padding)",
+    component,
+    attrs: {
+      borders: true,
+      class: "tests-lists-themed-list"
+    },
+    children: [
+      m(listTile, {
+        title: "Jennifer Barker",
+        subtitle: "Starting post doc",
+        class: "tests-lists-themed-list-tile"
+      }),
+      m(listTile, {
+        title: "Ali Connors",
+        subtitle: "Brunch this weekend?",
+        class: "tests-lists-themed-list-tile"
+      })
+    ]
+  },
+  {
+    name: "Option: style (colors)",
+    component,
+    attrs: {
+      header: { style: { color: "rgba(255,255,255,.8)"}, title: "Friends" },
+      tiles: [
+        m(listTile, { style: { color: "#fff" }, title: "One" }),
+        m(listTile, { style: { color: "#fff" }, title: "Two" }),
+        m(listTile, { style: { color: "#fff" }, title: "Three" })
+      ],
+      style: {
+        backgroundColor: "#EF6C00",
+        color: "#fff"
+      }
     }
   },
 
@@ -291,5 +338,26 @@ export const tests = [
         })
       ]
     }
+  },
+  {
+    name: "Themed list (colors and padding) -- dark theme",
+    component,
+    class: "pe-dark-theme",
+    attrs: {
+      borders: true,
+      class: "tests-lists-themed-list"
+    },
+    children: [
+      m(listTile, {
+        title: "Jennifer Barker",
+        subtitle: "Starting post doc",
+        class: "tests-lists-themed-list-tile"
+      }),
+      m(listTile, {
+        title: "Ali Connors",
+        subtitle: "Brunch this weekend?",
+        class: "tests-lists-themed-list-tile"
+      })
+    ]
   },
 ];

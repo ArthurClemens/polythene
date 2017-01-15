@@ -61,6 +61,17 @@ export const tests = [
     }
   },
   {
+    name: "Option: style (colors)",
+    component,
+    attrs: {
+      label: "Styled",
+      style: {
+        backgroundColor: "#EF6C00",
+        color: "#fff"
+      }
+    }
+  },
+  {
     name: "Option: wash (false)",
     interactive: true,
     component,

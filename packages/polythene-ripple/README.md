@@ -62,6 +62,7 @@ const myListTile = m(listTile, {
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element** | optional | String | "div" | HTML element tag |
 | **class** | optional | String |  | Extra CSS class appended to `pe-ripple` |
+| **style**     | optional | Object |       | For setting simple style attributes |
 | **id** | optional | String | | HTML element id |
 
 ### Ripple specific options

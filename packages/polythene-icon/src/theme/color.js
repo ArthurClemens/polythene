@@ -1,23 +1,9 @@
 
-const style = (scope, selector, componentVars, tint) => {
-  const color = componentVars["color_" + tint] || "currentcolor";
-  return [{
-    [scope + selector]: {
-      fill: color,
-
-      " svg": {
-        fill: color,
-        color: "inherit",
-
-        " path, rect, circle, polygon": {
-          "&:not([fill=none])": {
-            fill: color
-          }
-        }
-      }
-    }
-  }];
-};
+const style = (scope, selector, componentVars, tint) => [{
+  [scope + selector]: {
+    color: componentVars["color_" + tint] || "currentcolor"
+  }
+}];
 
 export default (selector, componentVars) => [
   style("",                selector, componentVars, "light"),

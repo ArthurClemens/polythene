@@ -1,6 +1,6 @@
 import m from "mithril";
 import { filterSupportedAttributes } from "polythene-core";
-// No theme
+import { customTheme } from "./theme";
 
 export const classes = {
   component: "pe-svg"
@@ -26,6 +26,7 @@ const view = vnode => {
 };
 
 export const svg = {
+  theme: customTheme, // accepts (selector, vars)
   view
 };
 

@@ -3,8 +3,12 @@ import { listTile as component } from "polythene-list-tile";
 import { icon } from "polythene-icon";
 import iconStars from "mmsvg/google/msvg/action/stars";
 
-component.theme(".tests-list-tile-red-list-tile", {
-  color_light_title: "red"
+component.theme(".tests-list-tile-themed-list-tile", {
+  color_light_title:      "#424242",
+  color_light_background: "#FFECB3",
+  color_dark_title:       "#FFECB3",
+  color_dark_background:  "#5D4037",
+  font_size_title:        21
 });
 
 export const tests = [
@@ -90,7 +94,7 @@ export const tests = [
     }
   },
   {
-    name: "Themed (should be red)",
+    name: "Themed (color and font size)",
     component,
     attrs: {
       title: "Ancillary Justice",
@@ -98,7 +102,7 @@ export const tests = [
         msvg: iconStars,
         type: "medium"
       }),
-      class: "tests-list-tile-red-list-tile"
+      class: "tests-list-tile-themed-list-tile"
     }
   },
 
@@ -321,7 +325,6 @@ export const tests = [
       }
     }
   },
-
   {
     name: "Option: disabled url -- dark theme",
     component,
@@ -329,6 +332,19 @@ export const tests = [
     attrs: {
       title: "Ancillary Justice",
       disabled: true
+    }
+  },
+  {
+    name: "Themed (color and font size) -- dark theme",
+    component,
+    class: "pe-dark-theme",
+    attrs: {
+      title: "Ancillary Justice",
+      front: m(icon, {
+        msvg: iconStars,
+        type: "medium"
+      }),
+      class: "tests-list-tile-themed-list-tile"
     }
   },
 ];

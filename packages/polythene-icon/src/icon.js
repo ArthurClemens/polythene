@@ -4,12 +4,12 @@ import { svg } from "polythene-svg";
 import { customTheme } from "./theme";
 
 export const classes = {
-  icon: "pe-icon",
-  avatar: "pe-icon--avatar",
-  small: "pe-icon--small",
+  icon:    "pe-icon",
+  avatar:  "pe-icon--avatar",
+  small:   "pe-icon--small",
   regular: "pe-icon--regular",
-  medium: "pe-icon--medium",
-  large: "pe-icon--large"
+  medium:  "pe-icon--medium",
+  large:   "pe-icon--large"
 };
 
 const typeClasses = {

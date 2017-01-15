@@ -83,20 +83,8 @@ var layout = (function (selector, componentVars) {
 });
 
 var style = function style(scope, selector, componentVars, tint) {
-  var color = componentVars["color_" + tint] || "currentcolor";
   return [defineProperty({}, scope + selector, {
-    fill: color,
-
-    " svg": {
-      fill: color,
-      color: "inherit",
-
-      " path, rect, circle, polygon": {
-        "&:not([fill=none])": {
-          fill: color
-        }
-      }
-    }
+    color: componentVars["color_" + tint] || "currentcolor"
   })];
 };
 

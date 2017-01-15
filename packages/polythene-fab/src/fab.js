@@ -22,7 +22,9 @@ const view = vnode => {
   return m(raisedButton, Object.assign(
     {},
     {
-      content: m("div", {class: classes.content}, content),
+      content: m("div", {
+        class: classes.content
+      }, content),
       parentClass: [
         classes.component,
         attrs.mini ? classes.mini : null

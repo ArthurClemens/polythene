@@ -15,7 +15,7 @@ var vars$1 = {
   title_padding: title_padding,
   indent: vars.unit_indent,
   transition_duration: vars.animation_duration,
-  font_size: vars.font_size_title,
+  font_size: 18,
   line_height: vars.line_height,
 
   height: height_desktop,
@@ -85,14 +85,16 @@ var layout = (function (selector, componentVars) {
       "transform-origin": "left 50%"
     }, vars.prefixes_transform), {
       lineHeight: vars.line_height + "em",
-      wordBreak: "break-all",
+      wordBreak: "break-all"
+    }],
+    " .pe-toolbar__title": {
       " &:first-child": {
         paddingLeft: componentVars.title_padding + "px"
       }
-    }],
-    "> span:first-child, .pe-toolbar__title--indent": [mixin.ellipsis(1, vars.line_height, "em"), {
+    },
+    " .pe-toolbar__title--indent": {
       marginLeft: componentVars.indent + "px"
-    }],
+    },
     " .pe-fit": [mixin.fit(), {
       margin: 0
     }]

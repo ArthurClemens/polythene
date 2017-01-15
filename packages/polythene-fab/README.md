@@ -14,8 +14,56 @@ import { fab } from "polythene-fab";
 import gIconStars from "mmsvg/google/msvg/action/stars";
 
 const myFab = m(fab, {
-  icon: {
-    msvg: gIconStars
+  icon: { msvg: gIconStars }
+});
+~~~
+
+
+
+## Appearance
+
+FAB's default colors are:
+
+* Background: the app's primary color; change this by setting the `background-color` style
+* Icon color: white; change this by setting the `color` style
+
+
+
+### Styling
+
+Below are examples how to change the FAB appearance, either with a theme or with CSS.
+
+You can find more information about theming in [Theme](#theme).
+
+#### Themed component
+
+~~~javascript
+component.theme(".themed-fab", {
+  color_light_background: "#2196F3",
+  color_dark_background:  "#0097A7",
+  color_light:            "#fff",
+  color_dark:             "#B2EBF2"
+});
+
+m(fab, {
+  class: "themed-fab",
+  icon: { msvg: gIconStars }
+});
+~~~
+
+#### CSS
+
+Change CSS using the CSS Classes at the bottom of this page.
+
+#### Colors
+
+Colors can be set using `style`.
+
+~~~javascript
+m(fab, {
+  style: {
+    backgroundColor: "#EF6C00",
+    color: "#fff"
   }
 });
 ~~~
@@ -28,9 +76,10 @@ const myFab = m(fab, {
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **element** | optional | String | "div" | HTML element tag |
-| **class** | optional | String |  | Extra CSS class appended to `pe-button--fab` |
-| **id** | optional | String | | HTML element id |
+| **element**   | optional | String | "div" | HTML element tag |
+| **class**     | optional | String |       | Extra CSS class appended to `pe-button--fab` |
+| **style**     | optional | Object |       | For setting simple style attributes |
+| **id**        | optional | String |       | HTML element id |
 | **content**| either `icon` or `content` | Mithril element |  | Alternative content |
 | **before** | optional | Mithril element | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **after** | optional | Mithril element | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
@@ -59,15 +108,6 @@ Differences to button behaviour:
 * Button options `raised` is default set to `true`
 * The ripple emanates from the center of the button
 * The ripple has a 2/3 decay speed
-
-
-
-## Styling
-
-Default colors:
-
-* Background: app's primary color; change this by setting the `background-color` style
-* Icon color: white; change this by setting the `color` style
 
 
 

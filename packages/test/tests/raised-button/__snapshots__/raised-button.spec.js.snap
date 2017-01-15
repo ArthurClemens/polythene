@@ -384,6 +384,30 @@ exports[`test Option: selected 1`] = `
 "
 `;
 
+exports[`test Option: style (colors) 1`] = `
+"<a tabindex=\"0\" class=
+\"pe-button pe-button--text pe-button--raised\">
+<div style=
+\"background-color: rgb(239, 108, 0); color: rgb(255, 255, 255);\"
+class=\"pe-button__content\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-ripple pe-ripple--constrained\">
+    <div class=\"pe-ripple__mask\">
+      <div class=\"pe-ripple__waves\"></div>
+    </div>
+  </div>
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Styled
+  </div>
+</div></a>
+"
+`;
+
 exports[`test Option: url (with oncreate) 1`] = `
 "<a tabindex=\"0\" href=\"#!/shadow\" class=
 \"pe-button pe-button--text pe-button--raised\">

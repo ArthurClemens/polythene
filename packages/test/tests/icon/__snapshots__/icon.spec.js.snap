@@ -157,8 +157,9 @@ exports[`test Option: src (svg file) 1`] = `
 "
 `;
 
-exports[`test Option: style (should be red) 1`] = `
-"<div style=\"color: red;\" class=\"pe-icon pe-icon--regular\">
+exports[`test Option: style 1`] = `
+"<div style=\"color: rgb(239, 108, 0);\" class=
+\"pe-icon pe-icon--regular\">
   <div class=\"pe-svg\">
     <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\"
     viewbox=\"0 0 24 24\">
@@ -227,7 +228,7 @@ exports[`test Option: type (small) 1`] = `
 "
 `;
 
-exports[`test Themed (should be larger and purple) 1`] = `
+exports[`test Themed (color and size) 1`] = `
 "<div class=\"pe-icon pe-icon--regular tests-icon-themed-icon\">
   <div class=\"pe-svg\">
     <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\"

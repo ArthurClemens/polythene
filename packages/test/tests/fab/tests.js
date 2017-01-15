@@ -4,6 +4,13 @@ import { icon } from "polythene-icon";
 
 import iconAlarm from "mmsvg/google/msvg/action/alarm-add";
 
+component.theme(".tests-fab-themed-fab", {
+  color_light_background: "#2196F3",
+  color_dark_background:  "#0097A7",
+  color_light:            "#fff",
+  color_dark:             "#B2EBF2"
+});
+
 export const tests = [
   {
     name: "Child node",
@@ -40,14 +47,25 @@ export const tests = [
     }
   },
   {
-    name: "Option: style (should be red)",
+    name: "Themed FAB (colors)",
+    component,
+    attrs: {
+      icon: {
+        msvg: iconAlarm
+      },
+      class: "tests-fab-themed-fab"
+    }
+  },
+  {
+    name: "Option: style (colors)",
     component,
     attrs: {
       icon: {
         msvg: iconAlarm
       },
       style: {
-        "background-color": "red"
+        color: "#FFCCBC",
+        backgroundColor: "#4E342E"
       }
     }
   },
@@ -141,7 +159,10 @@ export const tests = [
       icon: {
         msvg: iconAlarm
       },
-      before: m("div", {style: {"font-size": "16px", "line-height": "1rem"}}, "Before")
+      before: m("div", {style: {
+        fontSize: "16px",
+        lineHeight: "1rem"
+      }}, "Before")
     }
   },
   {
@@ -151,7 +172,10 @@ export const tests = [
       icon: {
         msvg: iconAlarm
       },
-      after: m("div", {style: {"font-size": "16px", "line-height": "1rem"}}, "After")
+      after: m("div", {style: {
+        fontSize: "16px",
+        lineHeight: "1rem"
+      }}, "After")
     }
   },
 
@@ -165,6 +189,17 @@ export const tests = [
       icon: {
         msvg: iconAlarm
       }
+    }
+  },
+  {
+    name: "Themed FAB -- dark theme",
+    component,
+    class: "pe-dark-theme",
+    attrs: {
+      icon: {
+        msvg: iconAlarm
+      },
+      class: "tests-fab-themed-fab"
     }
   },
 ];

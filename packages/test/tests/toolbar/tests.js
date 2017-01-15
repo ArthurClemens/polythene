@@ -1,6 +1,7 @@
 import m from "mithril";
 import { toolbar as component, classes as toolbarClasses } from "polythene-toolbar";
 import { iconButton } from "polythene-icon-button";
+import { shadow } from "polythene-shadow";
 import gIconMenu from "mmsvg/google/msvg/navigation/menu";
 import gIconRefresh from "mmsvg/google/msvg/navigation/refresh";
 import gIconAdd from "mmsvg/google/msvg/content/add";
@@ -15,7 +16,7 @@ const btn = msvg => m(iconButton, {
 
 const toolbarRow = [
   btn(gIconMenu),
-  m("div", {class: toolbarClasses.title}, "Toolbar with a very very very long title"),
+  m("div", {class: toolbarClasses.title}, "Toolbar with a very very very very very very very very very long title"),
   btn(gIconRefresh),
   btn(gIconAdd)
 ];
@@ -32,7 +33,6 @@ const toolbarTitleAtStart = [
 ];
 
 const toolbarRowIndentedTitle = [
-  btn(gIconMenu),
   m("div", {class: toolbarClasses.indentedTitle}, "Indented title"),
   btn(gIconAdd)
 ];
@@ -67,6 +67,13 @@ export const tests = [
     }
   },
   {
+    name: "Indented title",
+    component,
+    attrs: {
+      content: toolbarRowIndentedTitle
+    }
+  },
+  {
     name: "Title at start",
     component,
     attrs: {
@@ -74,10 +81,30 @@ export const tests = [
     }
   },
   {
-    name: "Indented title",
+    name: "Option: shadow",
+    class: "small-result",
+    component: {
+      view: () => m("div", {
+        style: {
+          position: "relative"
+        }
+      }, [
+        m(component, toolbarRow),
+        m(shadow)
+      ])
+    }
+  },
+  {
+    name: "Option: style (colors and height)",
+    class: "small-result",
     component,
     attrs: {
-      content: toolbarRowIndentedTitle
+      content: toolbarRow,
+      style: {
+        backgroundColor: "#EF6C00",
+        color: "#fff",
+        height: "72px"
+      }
     }
   },
 

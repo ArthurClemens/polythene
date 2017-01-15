@@ -114,12 +114,14 @@ The `state` object contains:
 * `el`: the tab button HTML Element
 
 
+
+## Appearance
+
 ### Styling
 
-Set the selected button color and corresponding indicator either with a theme or CSS.
+Below are examples how to button appearance, either with a theme or with CSS.
 
-
-#### Custom theme
+#### Themed component
 
 ~~~javascript
 component.theme(".tabs-custom_color", {
@@ -130,7 +132,7 @@ component.theme(".tabs-custom_color", {
 
 m(tabs, {
   class: "tabs-custom_color"
-}, tabButtons)
+}, tabButtons);
 ~~~
 
 #### CSS
@@ -147,7 +149,20 @@ m(tabs, {
 }
 ~~~
 
+#### Colors
 
+Colors can be passed using `style`. The tab button styles can be passed using `tabsOpts.style`:
+
+~~~javascript
+m(tabs, {
+  tabsOpts: {
+    style: {
+      backgroundColor: "#EF6C00",
+      color: "#fff"
+    }
+  }
+});
+~~~
 
 
 ### Tab widths
@@ -192,6 +207,7 @@ m(tabs, {
 ~~~
 
 
+
 ## Options
 
 ### Common component options
@@ -200,6 +216,7 @@ m(tabs, {
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional       | String | "div" | HTML element tag |
 | **class**     | optional       | String |  | Extra CSS class appended to "pe-tabs" |
+| **style**     | optional | Object |       | For setting simple style attributes |
 | **id**        | optional       | String | | HTML element id |
 | **content**   | use `vnode.children` or `content` | Array of option objects | | Button row content; replaces `vnode.children` |
 | **before**    | optional | Mithril element | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |

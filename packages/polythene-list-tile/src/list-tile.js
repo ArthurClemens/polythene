@@ -40,11 +40,13 @@ const primaryContent = (attrs, children) => {
   return m(element, {
     ...filterSupportedAttributes(attrs),
     ...attrs.url,
-    class: classes.primary
+    class: classes.primary,
+    style: null
   }, [
     frontComp,
     m("div", {
-      class: classes.content
+      class: classes.content,
+      style: attrs.style
     }, [
       attrs.content
         ? attrs.content

@@ -3,6 +3,7 @@ body {
 }
 .results {
   margin: 0 auto;
+  padding-top: 80px;
 }
 .results blockquote {
   padding: 0;
@@ -67,7 +68,13 @@ body {
   border-color: #ddd;
 }
 .tests-polythene .test-ripple .component-result,
-.tests-ripple .result .pe-ripple {
+.tests-ripple .component-result,
+.tests-polythene .test-shadow .component-result,
+.tests-shadow .component-result {
+  height: 80px;
+}
+.tests-polythene .test-ripple .component-result,
+.tests-ripple .component-result {
   background-color: #fff;
 }
 
@@ -76,16 +83,17 @@ body {
   background-color: #444;
 }
 
-.tests-polythene .test-list .pe-list,
-.tests-list .pe-list,
+.tests-polythene .test-list .pe-list:not(.tests-lists-themed-list),
+.tests-list .pe-list:not(.tests-lists-themed-list),
 .tests-polythene .test-list-tile .pe-list-tile,
 .tests-list-tile .pe-list-tile,
-.tests-tabs .pe-tabs {
+.tests-tabs .pe-tabs,
+.tests-polythene .pe-tabs {
   background-color: #fff;
 }
 
-.tests-list .pe-dark-theme .result .pe-list,
-.tests-list-tile .pe-dark-theme .result .pe-list-tile,
+.tests-list .pe-dark-theme .result .pe-list:not(.tests-lists-themed-list),
+.tests-list-tile .pe-dark-theme .result .pe-list-tile:not(.tests-list-tile-themed-list-tile),
 .tests-tabs .pe-dark-theme .result .pe-tabs {
   background-color: #444;
 }

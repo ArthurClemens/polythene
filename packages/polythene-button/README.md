@@ -63,15 +63,60 @@ import "polythene-fastclick";
 
 
 
+## Appearance
+
+### Styling
+
+Below are examples how to change the button appearance, either with a theme or with CSS.
+
+You can find more information about theming in [Theme](#theme).
+
+#### Themed component
+
+~~~javascript
+component.theme(".bordered-button", {
+  color_light_text:   "#673ab7",
+  color_light_border: "#673ab7",
+  color_dark_text:    "yellow",
+  color_dark_border:  "yellow"
+});
+
+m(button, {
+  label: "Borders",
+  class: "bordered-button",
+  borders: true
+});
+~~~
+
+#### CSS
+
+Change CSS using the CSS Classes at the bottom of this page.
+
+#### Colors
+
+Colors can be set using `style`.
+
+~~~javascript
+m(button, {
+  style: {
+    backgroundColor: "#EF6C00",
+    color: "#fff"
+  }
+});
+~~~
+
+
+
 ## Options
 
 ### Common component options
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **element** | optional | String | "a" | HTML element tag; may also be "button" |
-| **class** | optional | String |  | Extra CSS class appended to `pe-button` |
-| **id** | optional | String | | HTML element id |
+| **element**   | optional       | String   | "a" | HTML element tag; may also be "button" |
+| **class**     | optional       | String   |  | Extra CSS class appended to `pe-button` |
+| **style**     | optional       | Object   |       | For setting simple style attributes |
+| **id**        | optional       | String   |      | HTML element id |
 | **content** | use `label` or `content` | Mithril element | | Alternative content; replaces `vnode.children` and ignores `label` |
 | **before** | optional | Mithril element | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **after** | optional | Mithril element | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |

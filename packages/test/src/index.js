@@ -2,6 +2,10 @@ import m from "mithril";
 import "polythene-fastclick";
 import "polythene-material-design";
 import { tidy } from "../scripts/render";
+import { toolbar } from "polythene-toolbar";
+import { iconButton } from "polythene-icon-button";
+// import iconApps from "mmsvg/google/msvg/navigation/apps";
+import iconBack from "mmsvg/google/msvg/navigation/arrow-back";
 import { rules as css } from "./styles";
 import { tests as polytheneTests } from "../tests/polythene/tests";
 import { tests as buttonTests } from "../tests/button/tests";
@@ -31,7 +35,7 @@ const generatedHtml = {
       class: vnode.state.open ? "open" : "closed",
       onclick: vnode.state.toggle,
     }, [
-      m(".html", {id: vnode.attrs.id}, "blo"),
+      m(".html", {id: vnode.attrs.id}, ""),
       m(".ellipsis", "...")
     ]);
   }
@@ -41,21 +45,31 @@ const testsPage = (name, tests) => ({
   oncreate: () => 
     document.title = name,
   view: () => [
-    m(css.headerRow, [
-      m(css.link, {
-        href: "/",
-        oncreate: m.route.link
-      }, "Components"),
-      m(css.separator, "/"),
+    m(css.headerRow, m(toolbar, {
+      style: {
+        backgroundColor: "rgba(255,255,255,.93)"
+      }
+    }, [
+      m(iconButton, {
+        icon: { msvg: iconBack },
+        url: {
+          href: "/",
+          oncreate: m.route.link
+        },
+        style: {
+          color: "#0091EA"
+        }
+      }),
       m("span", name)
-    ]),
-    m([css.tests, css.results].join(" "), {
+    ])),
+    m([css.results].join(" "), {
       class: `tests-${name.replace(/[\:\-\[\]]/g, "").replace(/ /g, "-").toLowerCase()}`
-    }, tests.map(test => {
-      const resultId = `test-${(test.name).replace(/[\:\-\[\]\(\)]/g, "").replace(/ /g, "-").toLowerCase()}`;
+    }, tests.map((test, index) => {
+      const testName = `test-${(test.name).replace(/[\:\-\[\]\(\)]/g, "").replace(/ /g, "-").toLowerCase()}`;
+      const uid = "id-" + index;
       return m([css.resultRow, test.interactive ? css.interactive : null].join(""), {
-        key: resultId,
-        class: [resultId, test.class || null].join(" "),
+        key: testName,
+        class: [testName, test.class || null].join(" "),
       }, [
         m(css.resultTitle, {
           class: "result-title"
@@ -64,12 +78,12 @@ const testsPage = (name, tests) => ({
           m(css.resultDataRendered,
             m(css.content, {
               oncreate: vnode => {
-                document.querySelector(`#raw-${resultId}`).textContent = tidy(vnode.dom.innerHTML);
+                document.querySelector(`#${uid}`).textContent = tidy(vnode.dom.innerHTML);
               }
             }, m(test.component, test.attrs, test.children))
           ),
           m(css.resultDataRaw, 
-            m(generatedHtml, {id: `raw-${resultId}`})
+            m(generatedHtml, {id: uid})
           )
         ])
       ]);

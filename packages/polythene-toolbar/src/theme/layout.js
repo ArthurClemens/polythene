@@ -37,18 +37,17 @@ export default (selector, componentVars) => [{
         }, vars.prefixes_transform),
         {
           lineHeight: vars.line_height + "em",
-          wordBreak: "break-all",
-          " &:first-child": {
-            paddingLeft: componentVars.title_padding + "px"
-          }
+          wordBreak: "break-all"
         }
       ],
-      "> span:first-child, .pe-toolbar__title--indent": [
-        mixin.ellipsis(1, vars.line_height, "em"),
-        {
-          marginLeft: componentVars.indent + "px"
+      " .pe-toolbar__title": {
+        " &:first-child": {
+          paddingLeft: componentVars.title_padding + "px"
         }
-      ],
+      },
+      " .pe-toolbar__title--indent": {
+        marginLeft: componentVars.indent + "px"
+      },
       " .pe-fit": [
         mixin.fit(), {
           margin: 0

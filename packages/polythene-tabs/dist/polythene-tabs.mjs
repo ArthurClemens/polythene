@@ -15,7 +15,7 @@ var vars$3 = {
   tab_min_width: 72,
   tab_max_width: "none",
   tab_height: 48,
-  tablet_tab_min_width: 160,
+  tab_min_width_tablet: 160,
   label_max_width: 264,
   menu_tab_height: 44,
   menu_tab_icon_label_height: 44,
@@ -149,7 +149,6 @@ var layout = (function (selector, componentVars) {
         zIndex: 3,
 
         " .pe-button__content": {
-          borderRadius: 0,
           backgroundColor: "inherit"
         },
         " .pe-button__label": [mixin.vendorize({
@@ -164,7 +163,7 @@ var layout = (function (selector, componentVars) {
           opacity: componentVars.scroll_button_opacity
         }]
       },
-      "&.pe-tabs--start .pe-tabs__scroll-button--start": {
+      "&.pe-tabs--start .pe-tabs__scroll-button-start": {
         pointerEvents: "none",
         cursor: "default",
 
@@ -172,7 +171,7 @@ var layout = (function (selector, componentVars) {
           opacity: 0
         }
       },
-      "&.pe-tabs--end .pe-tabs__scroll-button--end": {
+      "&.pe-tabs--end .pe-tabs__scroll-button-end": {
         pointerEvents: "none",
         cursor: "default",
 
@@ -181,10 +180,10 @@ var layout = (function (selector, componentVars) {
         }
       },
 
-      " .pe-tabs__scroll-button--start": {
+      " .pe-tabs__scroll-button-start": {
         left: 0
       },
-      " .pe-tabs__scroll-button--end": {
+      " .pe-tabs__scroll-button-end": {
         right: 0
       }
     },
@@ -198,7 +197,7 @@ var layout = (function (selector, componentVars) {
 
     " .pe-tabs__row--centered": flex.layoutCenterJustified,
 
-    " .pe-tabs__scroll-button--offset": [flex.flex(), flex.flexIndex("none")],
+    " .pe-tabs__scroll-button-offset": [flex.flex(), flex.flexIndex("none")],
 
     " .pe-tabs__tab": [flex.flex(), flex.flexIndex("none"), mixin.vendorize({
       userSelect: "none"
@@ -211,10 +210,11 @@ var layout = (function (selector, componentVars) {
       minWidth: !isNaN(componentVars.tab_min_width) ? componentVars.tab_min_width + "px" : componentVars.tab_min_width, // for smaller screens, see also media query below
       maxWidth: !isNaN(componentVars.tab_max_width) ? componentVars.tab_max_width + "px" : componentVars.tab_max_width,
 
-      " .pe-button__content": {
+      ".pe-button--text .pe-button__content": {
         padding: "0 " + componentVars.tab_content_padding_v + "px",
         height: componentVars.tab_height + "px",
         lineHeight: vars$2.line_height + "em",
+        borderRadius: 0,
 
         " .pe-button__label, .pe-icon": {
           maxWidth: componentVars.label_max_width + "px", // or .pe-tabs width minus 56dp
@@ -261,11 +261,11 @@ var layout = (function (selector, componentVars) {
     }],
 
     "&.pe-tabs--autofit .pe-tabs__tab": [flex.flex(), {
-      minWidth: "none",
+      minWidth: "initial",
       maxWidth: "none"
     }],
 
-    "&.pe-tabs__active-selected": {
+    "&.pe-tabs__active-selectable": {
       " .pe-tabs__tab.pe-button--selected": {
         cursor: "pointer",
         pointerEvents: "initial"
@@ -304,7 +304,7 @@ var layout = (function (selector, componentVars) {
 
   }, "@media (min-width: " + vars$2.breakpoint_small_tablet_portrait + "px)", {
     "&:not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit) .pe-tabs__tab": {
-      minWidth: componentVars.tablet_tab_min_width + "px"
+      minWidth: componentVars.tab_min_width_tablet + "px"
     }
   })])];
 });
@@ -358,9 +358,9 @@ styler.generateStyles([selector], vars$3, fns);
 var classes = {
   component: "pe-tabs",
   scrollButton: "pe-tabs__scroll-button",
-  scrollButtonLeft: "pe-tabs__scroll-button--start",
-  scrollButtonRight: "pe-tabs__scroll-button--end",
-  scrollButtonOffset: "pe-tabs__scroll-button--offset",
+  scrollButtonAtStart: "pe-tabs__scroll-button-start",
+  scrollButtonAtEnd: "pe-tabs__scroll-button-end",
+  scrollButtonOffset: "pe-tabs__scroll-button-offset",
   tabRow: "pe-tabs__row",
   tabRowCentered: "pe-tabs__row--centered",
   tabRowIndent: "pe-tabs__row--indent",
@@ -372,9 +372,10 @@ var classes = {
   isAutofit: "pe-tabs--autofit",
   isAtStart: "pe-tabs--start",
   isAtEnd: "pe-tabs--end",
+  smallTabs: "pe-tabs--small",
   isMenu: "pe-tabs--menu",
-  activeSelected: "pe-tabs__active-selected",
-  // reference:
+  activeSelectable: "pe-tabs__active-selectable",
+  // reference:  
   label: "pe-button__label"
 };
 
@@ -407,19 +408,19 @@ var createScrollButton = function createScrollButton(state, position, attrs) {
   var scrollIconBackward = attrs.scrollIconBackward || arrowBackward;
 
   return m(iconButton, {
-    class: [classes.scrollButton, position === POSITION_LEFT ? classes.scrollButtonLeft : classes.scrollButtonRight].join(" "),
+    class: [classes.scrollButton, position === POSITION_LEFT ? classes.scrollButtonAtStart : classes.scrollButtonAtEnd].join(" "),
     icon: position === POSITION_LEFT ? scrollIconBackward : scrollIconForward,
     ripple: {
       center: true
     },
     oncreate: function oncreate(vnode) {
-      if (state.scrollButtonLeftEl && state.scrollButtonRightEl) {
+      if (state.scrollButtonAtStartEl && state.scrollButtonAtEndEl) {
         return;
       }
       if (position === POSITION_LEFT) {
-        state.scrollButtonLeftEl = vnode.dom;
+        state.scrollButtonAtStartEl = vnode.dom;
       } else {
-        state.scrollButtonRightEl = vnode.dom;
+        state.scrollButtonAtEndEl = vnode.dom;
       }
     },
     events: {
@@ -443,9 +444,9 @@ var alignToTitle = function alignToTitle(state) {
 
 var createRightButtonOffset = function createRightButtonOffset(state) {
   // add padding to right so that last item is not hidden behind scroll button
-  var scrollButtonRightWidth = state.scrollButtonRightEl.getBoundingClientRect().width;
+  var scrollButtonAtEndWidth = state.scrollButtonAtEndEl.getBoundingClientRect().width;
   var scrollButtonOffsetEl = state.tabsEl.querySelector("." + classes.scrollButtonOffset);
-  scrollButtonOffsetEl.style.width = scrollButtonRightWidth + "px";
+  scrollButtonOffsetEl.style.width = scrollButtonAtEndWidth + "px";
 };
 
 var scrollToTab = function scrollToTab() {
@@ -578,7 +579,7 @@ var view = function view(vnode) {
   };
 
   var props = {
-    class: [classes.component, attrs.scrollable ? classes.scrollable : null, state.selectedTabIndex === 0 ? classes.isAtStart : null, state.selectedTabIndex === state.tabs.length - 1 ? classes.isAtEnd : null, attrs.activeSelected ? classes.activeSelected : null, autofit ? classes.isAutofit : null, attrs.menu ? classes.isMenu : null, attrs.class].join(" "),
+    class: [classes.component, attrs.scrollable ? classes.scrollable : null, state.selectedTabIndex === 0 ? classes.isAtStart : null, state.selectedTabIndex === state.tabs.length - 1 ? classes.isAtEnd : null, attrs.activeSelected ? classes.activeSelectable : null, autofit ? classes.isAutofit : null, attrs.small ? classes.smallTabs : null, attrs.menu ? classes.isMenu : null, attrs.class].join(" "),
     id: attrs.id || "",
     oncreate: function oncreate(vnode) {
       state.tabsEl = vnode.dom;
@@ -628,11 +629,11 @@ var view = function view(vnode) {
     class: classes.scrollButtonOffset
   }) : null]);
 
-  var scrollButtonLeft = void 0,
-      scrollButtonRight = void 0;
+  var scrollButtonAtStart = void 0,
+      scrollButtonAtEnd = void 0;
   if (attrs.scrollable) {
-    scrollButtonLeft = createScrollButton(state, POSITION_LEFT, attrs);
-    scrollButtonRight = createScrollButton(state, POSITION_RIGHT, attrs);
+    scrollButtonAtStart = createScrollButton(state, POSITION_LEFT, attrs);
+    scrollButtonAtEnd = createScrollButton(state, POSITION_RIGHT, attrs);
   }
 
   var tabIndicator = attrs.hideIndicator ? null : m("div", {
@@ -642,7 +643,7 @@ var view = function view(vnode) {
     }
   });
 
-  var content = [attrs.scrollable ? scrollButtonLeft : null, m("div", {
+  var content = [attrs.scrollable ? scrollButtonAtStart : null, m("div", {
     class: [classes.tabRow, attrs.centered ? classes.tabRowCentered : null, attrs.scrollable ? classes.tabRowIndent : null].join(" "),
     oncreate: function oncreate(vnode) {
       return state.scrollerEl = vnode.dom;
@@ -650,7 +651,7 @@ var view = function view(vnode) {
     onscroll: function onscroll() {
       updateScrollButtons(state);
     }
-  }, [tabRow, tabIndicator]), attrs.scrollable ? scrollButtonRight : null];
+  }, [tabRow, tabIndicator]), attrs.scrollable ? scrollButtonAtEnd : null];
   return m(element, props, [attrs.before, content, attrs.after]);
 };
 

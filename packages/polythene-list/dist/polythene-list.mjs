@@ -7,13 +7,16 @@ import { vars } from 'polythene-theme';
 var rgba = vars.rgba;
 
 var vars$1 = {
-  padding: vars.grid_unit_component,
+  padding: vars.grid_unit_component, // vertical padding
   padding_compact: vars.grid_unit_component / 2,
   border_width_stacked: 1,
   border_width_bordered: 1,
 
   color_light_border: rgba(vars.color_light_foreground, vars.blend_light_border_light),
-  color_dark_border: rgba(vars.color_dark_foreground, vars.blend_dark_border_light)
+  color_dark_border: rgba(vars.color_dark_foreground, vars.blend_dark_border_light),
+
+  color_light_background: "inherit",
+  color_dark_background: "inherit"
 };
 
 var defineProperty = function (obj, key, value) {
@@ -93,6 +96,8 @@ var style = function style(scope, selector, componentVars, tint) {
   var _ref;
 
   return [(_ref = {}, defineProperty(_ref, scope + selector, {
+    backgroundColor: componentVars["color_" + tint + "_background"],
+
     "&.pe-list--borders": {
       " .pe-list-tile:not(.pe-list__header)": {
         "&:not(:last-child)": {

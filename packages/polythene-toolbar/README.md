@@ -65,7 +65,26 @@ m("div", {class: toolbarClasses.indentedTitle}, "Indented title"),
 
 This positions the title as if it would be next to an icon.
 
+### Shadow
 
+~~~javascript
+import { toolbar } from "polythene-toolbar";
+import { shadow } from "polythene-shadow";
+
+const toolbarRow = [
+  // buttons and title
+];
+
+m("div", {
+    style: {
+      position: "relative"
+    }
+  }, [
+    m(toolbar, toolbarRow),
+    m(shadow)
+  ])
+});
+~~~
 
 ## Options
 
@@ -75,6 +94,7 @@ This positions the title as if it would be next to an icon.
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element** | optional | String | "div" | HTML element tag |
 | **class** | optional | String |  | Extra CSS class appended to `pe-toolbar` |
+| **style**     | optional | Object |       | For setting simple style attributes |
 | **id** | optional | String | | HTML element id |
 | **content** | either a bar or `content` must be passed | Mithril elements | | Alternative content; replaces `vnode.children` |
 | **before** | optional | Mithril element | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |

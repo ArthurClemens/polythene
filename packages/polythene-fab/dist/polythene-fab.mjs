@@ -55,21 +55,23 @@ var layout = (function (selector, componentVars) {
     position: "relative",
     outline: "none",
     cursor: "pointer",
-    width: componentVars.size_regular + "px",
-    height: componentVars.size_regular + "px",
-    padding: componentVars.padding_regular + "px",
-    borderRadius: "50%",
+    padding: 0,
     border: "none",
 
-    "&.pe-button--fab-mini": {
-      width: componentVars.size_mini + "px",
-      height: componentVars.size_mini + "px",
-      padding: (componentVars.size_mini - vars.unit_icon_size) / 2 + "px"
+    " .pe-button__content": {
+      position: "relative",
+      width: componentVars.size_regular + "px",
+      height: componentVars.size_regular + "px",
+      borderRadius: "50%",
+      padding: componentVars.padding_regular + "px"
     },
 
-    " .pe-button__content": {
-      padding: 0,
-      borderRadius: "inherit"
+    "&.pe-button--fab-mini": {
+      " .pe-button__content": {
+        width: componentVars.size_mini + "px",
+        height: componentVars.size_mini + "px",
+        padding: (componentVars.size_mini - vars.unit_icon_size) / 2 + "px"
+      }
     },
 
     " .pe-ripple": {
@@ -88,11 +90,9 @@ var layout = (function (selector, componentVars) {
 
 var style = function style(scope, selector, componentVars, tint) {
   return [defineProperty({}, scope + selector, {
-    backgroundColor: componentVars["color_" + tint + "_background"],
-    color: componentVars["color_" + tint],
-
     " .pe-button__content": {
-      backgroundColor: "transparent"
+      backgroundColor: componentVars["color_" + tint + "_background"],
+      color: componentVars["color_" + tint]
     }
   })];
 };
@@ -122,7 +122,9 @@ var view = function view(vnode) {
   var children = vnode.children.length && vnode.children || attrs.children;
   var content = attrs.content ? attrs.content : children && children[0] ? children : attrs.icon ? m(icon, attrs.icon) : null;
   return m(raisedButton, _extends({}, {
-    content: m("div", { class: classes.content }, content),
+    content: m("div", {
+      class: classes.content
+    }, content),
     parentClass: [classes.component, attrs.mini ? classes.mini : null].join(" "),
     // defaults
     ripple: {
