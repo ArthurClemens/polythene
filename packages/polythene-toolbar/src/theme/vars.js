@@ -2,8 +2,8 @@ import { vars } from "polythene-theme";
 
 const rgba = vars.rgba;
 
-const title_padding =           vars.grid_unit_component * 2;
 const padding_side =            vars.grid_unit_component * 2 - 12; // 16 - 12 = 4
+const title_padding =           vars.grid_unit_component * 9 - vars.grid_unit_component * 6 - padding_side; // 72 - 48 - 4
 const height_mobile_portrait =  vars.grid_unit_component * 7; // 56
 const height_desktop =          vars.grid_unit_component * 8; // 64
 

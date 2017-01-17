@@ -10,6 +10,7 @@ export default (selector, componentVars) => [{
       height: componentVars.height + "px",
       fontSize: componentVars.font_size + "px",
       lineHeight: componentVars.line_height + "em",
+      padding: "0 " + componentVars.padding_side + "px",
 
       "&.pe-toolbar--compact": {
         height: componentVars.height_compact + "px"
@@ -18,15 +19,6 @@ export default (selector, componentVars) => [{
       "> *:not(.disabled)": {
         // make elements (e.g. buttons) respond to mouse/touch events
         pointerEvents: "auto"
-      },
-      "> :first-child": {
-        marginLeft: componentVars.padding_side + "px"
-      },
-      "> :last-child": {
-        marginRight: componentVars.padding_side + "px"
-      },
-      " .pe-button--icon + span, .pe-button--icon + .pe-toolbar__title": {
-        marginLeft: componentVars.indent - componentVars.padding_side - vars.grid_unit_icon_button + "px"
       },
       " > span, .pe-toolbar__title, .pe-toolbar__title--indent": [
         flex.layout,
@@ -40,13 +32,11 @@ export default (selector, componentVars) => [{
           wordBreak: "break-all"
         }
       ],
-      " .pe-toolbar__title": {
-        " &:first-child": {
-          paddingLeft: componentVars.title_padding + "px"
-        }
+      " > span, .pe-toolbar__title": {
+        marginLeft: componentVars.title_padding + "px"
       },
       " .pe-toolbar__title--indent": {
-        marginLeft: componentVars.indent + "px"
+        marginLeft: (componentVars.indent - componentVars.padding_side) + "px"
       },
       " .pe-fit": [
         mixin.fit(), {
