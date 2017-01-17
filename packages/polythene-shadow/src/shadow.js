@@ -25,12 +25,9 @@ const view = vnode => {
       ].join(" ")
     }
   );
-  const children = vnode.children.length && vnode.children || attrs.children;
   const content = attrs.content
     ? attrs.content
-    : children && children[0]
-      ? children
-      : null;
+    : attrs.children || vnode.children;
   const shadowContent = [
     content,
     m("div", {

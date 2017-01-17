@@ -615,9 +615,11 @@ var view = function view(vnode) {
       unsubscribe("resize", onResize);
     }
   };
-  var children = vnode.children.length && vnode.children || attrs.children;
-  var buttons = attrs.content ? attrs.content : attrs.buttons ? attrs.buttons : children && children[0] ? children : [];
-  var tabRow = buttons.map(function (buttonOpts, index) {
+  var buttons = attrs.content ? attrs.content : attrs.buttons ? attrs.buttons : attrs.children || vnode.children;
+  var tabRow = buttons.map(function () {
+    var buttonOpts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var index = arguments[1];
+
     var buttonOptsCombined = _extends({}, buttonOpts, {
       selected: index === state.selectedTabIndex,
       animateOnTap: attrs.animateOnTap !== false ? true : false

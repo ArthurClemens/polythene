@@ -77,8 +77,7 @@ var view = function view(vnode) {
   var props = _extends({}, filterSupportedAttributes(attrs), {
     class: [classes.component, attrs.class].join(" ")
   });
-  var children = vnode.children.length && vnode.children || attrs.children;
-  var content = attrs.content ? attrs.content : children && children[0] ? children : null;
+  var content = attrs.content ? attrs.content : attrs.children || vnode.children;
   return m(element, props, [attrs.before, content, attrs.after]);
 };
 

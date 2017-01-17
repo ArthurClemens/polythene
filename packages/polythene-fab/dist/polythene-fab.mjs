@@ -119,8 +119,7 @@ var classes = {
 
 var view = function view(vnode) {
   var attrs = vnode.attrs;
-  var children = vnode.children.length && vnode.children || attrs.children;
-  var content = attrs.content ? attrs.content : children && children[0] ? children : attrs.icon ? m(icon, attrs.icon) : null;
+  var content = attrs.content ? attrs.content : attrs.icon ? m(icon, attrs.icon) : attrs.children || vnode.children;
   return m(raisedButton, _extends({}, {
     content: m("div", {
       class: classes.content
@@ -136,8 +135,7 @@ var view = function view(vnode) {
     },
     ink: true,
     wash: true,
-    animateOnTap: attrs.animateOnTap !== undefined ? attrs.animateOnTap : true,
-    children: children
+    animateOnTap: attrs.animateOnTap !== undefined ? attrs.animateOnTap : true
   }, attrs));
 };
 

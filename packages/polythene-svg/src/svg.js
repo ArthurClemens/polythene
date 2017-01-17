@@ -16,12 +16,9 @@ const view = vnode => {
       class: [classes.component, attrs.class].join(" "),
     }
   );
-  const children = vnode.children.length && vnode.children || attrs.children;
   const content = attrs.content
     ? attrs.content
-    : children && children[0]
-      ? children
-      : null;
+    : attrs.children || vnode.children;
   return m(element, props, [attrs.before, content, attrs.after]);
 };
 

@@ -336,7 +336,7 @@ var primaryContent = function primaryContent(attrs, children) {
   }), [frontComp, m("div", {
     class: classes.content,
     style: attrs.style
-  }, [attrs.content ? attrs.content : children && children[0] ? children : null, attrs.title && !attrs.content ? m("div", {
+  }, [attrs.content ? attrs.content : children, attrs.title && !attrs.content ? m("div", {
     class: classes.title
   }, attrs.title) : null, attrs.subtitle ? m("div", {
     class: classes.subtitle
@@ -369,8 +369,7 @@ var view = function view(vnode) {
   var primaryAttrs = _extends({}, attrs);
   delete primaryAttrs.id;
   delete primaryAttrs.class;
-  var children = vnode.children.length && vnode.children || attrs.children;
-  var content = [attrs.ink && !attrs.disabled ? m(ripple, attrs.ripple) : null, primaryContent(primaryAttrs, children), attrs.secondary ? secondaryContent(attrs.secondary) : null];
+  var content = [attrs.ink && !attrs.disabled ? m(ripple, attrs.ripple) : null, primaryContent(primaryAttrs, attrs.children || vnode.children), attrs.secondary ? secondaryContent(attrs.secondary) : null];
   return m(element, props, [attrs.before, content, attrs.after]);
 };
 

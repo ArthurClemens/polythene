@@ -50,9 +50,7 @@ const primaryContent = (attrs, children) => {
     }, [
       attrs.content
         ? attrs.content
-        : children && children[0]
-          ? children
-          : null,
+        : children,
       attrs.title && !attrs.content
         ? m("div", {
           class: classes.title
@@ -123,12 +121,11 @@ const view = vnode => {
   const primaryAttrs = {...attrs};
   delete primaryAttrs.id;
   delete primaryAttrs.class;
-  const children = vnode.children.length && vnode.children || attrs.children;
   const content = [
     attrs.ink && !attrs.disabled
       ? m(ripple, attrs.ripple)
       : null,
-    primaryContent(primaryAttrs, children),
+    primaryContent(primaryAttrs, attrs.children || vnode.children),
     attrs.secondary
       ? secondaryContent(attrs.secondary)
       : null

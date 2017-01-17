@@ -66,7 +66,7 @@ const view = vnode => {
     attrs.url ? attrs.url : null,
     disabled ? { disabled: true } : null
   );
-  const children = vnode.children.length && vnode.children || attrs.children;
+  const children = attrs.children || vnode.children;
   const label = attrs.content
     ? attrs.content
     : attrs.label

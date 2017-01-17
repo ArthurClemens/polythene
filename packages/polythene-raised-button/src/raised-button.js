@@ -76,7 +76,7 @@ const clearTapEvents = el => {
 const view = vnode => {
   const attrs = vnode.attrs;
   const state = vnode.state;
-  const children = vnode.children.length && vnode.children || attrs.children;
+  const children = (attrs.children || vnode.children || []).filter(c  => c !== void 0);
   return m(button, Object.assign(
     {},
     {
@@ -85,7 +85,7 @@ const view = vnode => {
       ].join(" "),
       animateOnTap: false,
       shadowComponent: m(shadow, {z: state.z, animated: true}),
-      children
+      children: children
     },
     attrs
   ));

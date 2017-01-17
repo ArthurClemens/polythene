@@ -5,8 +5,8 @@ import { vars } from 'polythene-theme';
 
 var rgba = vars.rgba;
 
-var title_padding = vars.grid_unit_component * 2;
 var padding_side = vars.grid_unit_component * 2 - 12; // 16 - 12 = 4
+var title_padding = vars.grid_unit_component * 9 - vars.grid_unit_component * 6 - padding_side; // 72 - 48 - 4
 var height_mobile_portrait = vars.grid_unit_component * 7; // 56
 var height_desktop = vars.grid_unit_component * 8; // 64
 
@@ -63,6 +63,7 @@ var layout = (function (selector, componentVars) {
     height: componentVars.height + "px",
     fontSize: componentVars.font_size + "px",
     lineHeight: componentVars.line_height + "em",
+    padding: "0 " + componentVars.padding_side + "px",
 
     "&.pe-toolbar--compact": {
       height: componentVars.height_compact + "px"
@@ -72,28 +73,17 @@ var layout = (function (selector, componentVars) {
       // make elements (e.g. buttons) respond to mouse/touch events
       pointerEvents: "auto"
     },
-    "> :first-child": {
-      marginLeft: componentVars.padding_side + "px"
-    },
-    "> :last-child": {
-      marginRight: componentVars.padding_side + "px"
-    },
-    " .pe-button--icon + span, .pe-button--icon + .pe-toolbar__title": {
-      marginLeft: componentVars.indent - componentVars.padding_side - vars.grid_unit_icon_button + "px"
-    },
     " > span, .pe-toolbar__title, .pe-toolbar__title--indent": [flex.layout, flex.flex(1), mixin.ellipsis(1, vars.line_height, "em"), mixin.vendorize({
       "transform-origin": "left 50%"
     }, vars.prefixes_transform), {
       lineHeight: vars.line_height + "em",
       wordBreak: "break-all"
     }],
-    " .pe-toolbar__title": {
-      " &:first-child": {
-        paddingLeft: componentVars.title_padding + "px"
-      }
+    " > span, .pe-toolbar__title": {
+      marginLeft: componentVars.title_padding + "px"
     },
     " .pe-toolbar__title--indent": {
-      marginLeft: componentVars.indent + "px"
+      marginLeft: componentVars.indent - componentVars.padding_side + "px"
     },
     " .pe-fit": [mixin.fit(), {
       margin: 0
@@ -135,8 +125,7 @@ var view = function view(vnode) {
   var props = _extends({}, filterSupportedAttributes(attrs), {
     class: [classes.component, attrs.compact ? classes.compact : null, attrs.class].join(" ")
   }, attrs.events ? attrs.events : null);
-  var children = vnode.children.length && vnode.children || attrs.children;
-  var content = children && children[0] ? children : attrs.content ? attrs.content : null;
+  var content = attrs.content ? attrs.content : attrs.children || vnode.children;
   return m(element, props, [attrs.before, content, attrs.after]);
 };
 

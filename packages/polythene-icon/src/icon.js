@@ -37,18 +37,15 @@ const view = vnode => {
     },
     attrs.events ? attrs.events : null
   );
-  const children = vnode.children.length && vnode.children || attrs.children;
   const content = attrs.content
     ? attrs.content
-    : children && children[0]
-      ? children
-      : attrs.svg
-        ? m(svg, {...attrs.svg})
-        : attrs.msvg
-          ? m(svg, attrs.msvg)
-          : attrs.src
-            ? m("img", {src: attrs.src})
-            : null;
+    : attrs.svg
+      ? m(svg, {...attrs.svg})
+      : attrs.msvg
+        ? m(svg, attrs.msvg)
+        : attrs.src
+          ? m("img", {src: attrs.src})
+          : attrs.children || vnode.children;
   return m(element, props, [attrs.before, content, attrs.after]);
 };
 

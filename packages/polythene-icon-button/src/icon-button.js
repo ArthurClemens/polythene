@@ -11,14 +11,11 @@ export const classes = {
 
 const view = vnode => {
   const attrs = vnode.attrs;
-  const children = vnode.children.length && vnode.children || attrs.children;
   const content = attrs.content
     ? attrs.content
-    : children && children[0]
-      ? children
-      : attrs.icon
-        ? m(icon, attrs.icon)
-        : null;
+    : attrs.icon
+      ? m(icon, attrs.icon)
+      : attrs.children || vnode.children;
   return m(button, Object.assign(
     {},
     {

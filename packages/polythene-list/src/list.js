@@ -41,16 +41,13 @@ const view = vnode => {
       headerOpts.class || null
     ].join(" ");
   }
-  const children = vnode.children.length && vnode.children || attrs.children;
   const content = [
     headerOpts ? m(listTile, headerOpts) : null,
     attrs.tiles
       ? attrs.tiles
       : attrs.content
         ? attrs.content
-        : children && children[0]
-          ? children
-          : null
+        : attrs.children || vnode.children
   ];
   return m(element, props, [attrs.before, content, attrs.after]);
 };

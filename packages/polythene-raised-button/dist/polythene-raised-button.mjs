@@ -197,7 +197,9 @@ var clearTapEvents = function clearTapEvents(el) {
 var view = function view(vnode) {
   var attrs = vnode.attrs;
   var state = vnode.state;
-  var children = vnode.children.length && vnode.children || attrs.children;
+  var children = (attrs.children || vnode.children || []).filter(function (c) {
+    return c !== void 0;
+  });
   return m(button, _extends({}, {
     parentClass: [attrs.parentClass || classes.component].join(" "),
     animateOnTap: false,

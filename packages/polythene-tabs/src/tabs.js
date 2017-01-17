@@ -307,15 +307,12 @@ const view = vnode => {
       unsubscribe("resize", onResize);
     }
   };
-  const children = vnode.children.length && vnode.children || attrs.children;
   const buttons = attrs.content
     ? attrs.content
     : attrs.buttons
       ? attrs.buttons
-      : children && children[0]
-        ? children
-        : [];
-  const tabRow = buttons.map((buttonOpts, index) => {
+      : attrs.children || vnode.children;
+  const tabRow = buttons.map((buttonOpts = {}, index) => {
     const buttonOptsCombined = Object.assign(
       {},
       buttonOpts,

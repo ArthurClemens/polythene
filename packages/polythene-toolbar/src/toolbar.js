@@ -24,12 +24,9 @@ const view = vnode => {
     },
     attrs.events ? attrs.events : null
   );
-  const children = vnode.children.length && vnode.children || attrs.children;
-  const content = children && children[0]
-    ? children
-    : attrs.content
-      ? attrs.content
-      : null;
+  const content = attrs.content
+    ? attrs.content
+    : attrs.children || vnode.children;
   return m(element, props, [attrs.before, content, attrs.after]);
 };
 
