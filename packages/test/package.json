@@ -11,7 +11,8 @@
     "dev": "INDEX=dist/index.html node scripts/wright",
     "watch": "npm run rollup-watch",
     "test": "../../node_modules/jest/bin/jest.js tests/**",
-    "rollup-build": "DEPS=false MODULE_NAME=test ../../node_modules/rollup/bin/rollup -c ./scripts/rollup.umd-with-alias.js && ../../node_modules/rollup/bin/rollup -c ./scripts/rollup.es-with-alias.js",
+    "rollup-build": "DEPS=false MODULE_NAME=test ../../node_modules/rollup/bin/rollup -c ./scripts/rollup.umd-with-alias.js && npm run rollup-build-polythene-combined",
+    "rollup-build-polythene-combined": "DEPS=false MODULE_NAME=test ../../node_modules/rollup/bin/rollup -c ./scripts/rollup.umd-with-alias-polythene-combined.js",
     "rollup-watch": "DEPS=true PORT=8080 WATCH_DIR=./dist/ ../../node_modules/rollup/bin/rollup -c ./scripts/rollup.watch-with-alias.js --watch",
     "test:watch": "watchman watch-del-all && ../../node_modules/jest/bin/jest.js tests/** --watch"
   },

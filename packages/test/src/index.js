@@ -1,13 +1,8 @@
 import m from "mithril";
 import "polythene-fastclick";
 import "polythene-material-design";
-import { tidy } from "../scripts/render";
-import { toolbar } from "polythene-toolbar";
-import { iconButton } from "polythene-icon-button";
-// import iconApps from "mmsvg/google/msvg/navigation/apps";
-import iconBack from "mmsvg/google/msvg/navigation/arrow-back";
 import { rules as css } from "./styles";
-import { tests as polytheneTests } from "../tests/polythene/tests";
+import testPage from "./page";
 import { tests as buttonTests } from "../tests/button/tests";
 import { tests as fabTests } from "../tests/fab/tests";
 import { tests as iconTests } from "../tests/icon/tests";
@@ -20,83 +15,11 @@ import { tests as shadowTests } from "../tests/shadow/tests";
 import { tests as svgTests } from "../tests/svg/tests";
 import { tests as tabsTests } from "../tests/tabs/tests";
 import { tests as toolbarTests } from "../tests/toolbar/tests";
-
 import { tests as cssTests } from "../tests/css/tests";
 import { tests as cssClassesTests } from "../tests/css-classes/tests";
 import { tests as themeTests } from "../tests/theme/tests";
 
-const generatedHtml = {
-  oninit: vnode => (
-    vnode.state.open = false,
-    vnode.state.toggle = () => vnode.state.open = !vnode.state.open
-  ),
-  view: vnode => {
-    return m(css.resultDataRawHtml, {
-      class: vnode.state.open ? "open" : "closed",
-      onclick: vnode.state.toggle,
-    }, [
-      m(".html", {id: vnode.attrs.id}, ""),
-      m(".ellipsis", "...")
-    ]);
-  }
-};
-
-const testsPage = (name, tests) => ({
-  oncreate: () => 
-    document.title = name,
-  view: () => [
-    m(css.headerRow, m(toolbar, {
-      style: {
-        backgroundColor: "rgba(255,255,255,.93)"
-      }
-    }, [
-      m(iconButton, {
-        icon: { msvg: iconBack },
-        url: {
-          href: "/",
-          oncreate: m.route.link
-        },
-        style: {
-          color: "#0091EA"
-        }
-      }),
-      m("span", name)
-    ])),
-    m([css.results].join(" "), {
-      class: `tests-${name.replace(/[\:\-\[\]]/g, "").replace(/ /g, "-").toLowerCase()}`
-    }, tests.map((test, index) => {
-      const testName = `test-${(test.name).replace(/[\:\-\[\]\(\)]/g, "").replace(/ /g, "-").toLowerCase()}`;
-      const uid = "id-" + index;
-      return m([css.resultRow, test.interactive ? css.interactive : null].join(""), {
-        key: testName,
-        class: [testName, test.class || null].join(" "),
-      }, [
-        m(css.resultTitle, {
-          class: "result-title"
-        }, test.name),
-        m(css.resultData, [
-          m(css.resultDataRendered,
-            m(css.content, {
-              oncreate: vnode => {
-                document.querySelector(`#${uid}`).textContent = tidy(vnode.dom.innerHTML);
-              }
-            }, m(test.component, test.attrs, test.children))
-          ),
-          m(css.resultDataRaw, 
-            m(generatedHtml, {id: uid})
-          )
-        ])
-      ]);
-    }))
-  ]
-});
-
 const pages = [
-  {
-    path: "/polythene",
-    name: "Polythene",
-    tests: polytheneTests
-  },
   {
     path: "/button",
     name: "Button",
@@ -194,6 +117,6 @@ const mountNode = document.querySelector("#app");
 const routes = {
   "/": index
 };
-pages.forEach(page => routes[page.path] = testsPage(page.name, page.tests));
+pages.forEach(page => routes[page.path] = testPage(page.name, page.tests, "/"));
 m.route(mountNode, "/", routes);
 
