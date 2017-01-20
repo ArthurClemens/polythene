@@ -32,8 +32,12 @@ const CSS_CLASSES = {
 let focusElement;
 
 // const eventStartType = window.PointerEvent ? 'pointerdown' : (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) ? 'touchstart' : 'mousedown';
-const eventMoveType = window.PointerEvent ? 'pointermove' : (('ontouchmove' in window) || window.DocumentTouch && document instanceof DocumentTouch) ? 'touchmove' : 'mousemove';
-const eventEndType = window.PointerEvent ? 'pointerup' : (('ontouchend' in window) || window.DocumentTouch && document instanceof DocumentTouch) ? 'touchend' : 'mouseup';
+let eventMoveType = 'mousemove';
+let eventEndType = 'mouseup';
+if(typeof window !== "undefined"){
+	eventMoveType = window.PointerEvent ? 'pointermove' : (('ontouchmove' in window) || window.DocumentTouch && document instanceof DocumentTouch) ? 'touchmove' : 'mousemove';
+	eventEndType = window.PointerEvent ? 'pointerup' : (('ontouchend' in window) || window.DocumentTouch && document instanceof DocumentTouch) ? 'touchend' : 'mouseup';
+}
 
 const deFocus = (ctrl) => {
     if (focusElement) {
@@ -113,6 +117,9 @@ const handlePosEvent = (ctrl, e) => {
 };
 
 const startDrag = (ctrl, opts, e) => {
+	if(typeof window === "undefined") {
+		return;
+	}
     if (ctrl.isDragging) return;
     e.preventDefault();
     ctrl.isDragging = true;

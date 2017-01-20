@@ -24,6 +24,9 @@ const DEFAULT_OFFSET_H = 16;
 const MIN_SIZE = 1.5;
 
 const positionMenu = (ctrl, opts) => {
+	if(typeof document === "undefined") {
+		return;
+	}
     if (!opts.target) {
         return;
     }
@@ -117,6 +120,9 @@ const widthClass = (size) => {
 };
 
 const createView = (ctrl, opts = {}) => {
+	if(typeof document === "undefined") {
+		return;
+	}
     const listenEl = document.body;
     const activateDismissTap = () => {
         listenEl.addEventListener('click', handleDismissTap);

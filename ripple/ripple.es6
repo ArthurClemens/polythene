@@ -16,6 +16,9 @@ const CSS_CLASSES = {
 };
 
 const makeRipple = (e, ctrl, opts = {}) => {
+	if(typeof window === "undefined"){
+		return;
+	}
     const el = ctrl.ripple();
     const wavesEl = ctrl.waves();
     const w = el.offsetWidth;

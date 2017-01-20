@@ -79,11 +79,17 @@ const classForMode = (mode = 'standard') => {
     return modeClasses[mode];
 };
 
-const setTransform = (document.documentElement.style.transform !== undefined) ? ((style, string) => {
+let setTransform = (style, string) => {
     style.transform = string;
-}) : ((style, string) => {
-    style.webkitTransform = string;
-});
+};
+
+if(typeof document !== "undefined") {
+	setTransform = (document.documentElement.style.transform !== undefined) ? ((style, string) => {
+	    style.transform = string;
+	}) : ((style, string) => {
+	    style.webkitTransform = string;
+	});
+}
 
 const translateY = (style, y) => {
     const t = (y === null) ? '' : 'translate3d(0, ' + y + 'px, 0)';
@@ -307,7 +313,7 @@ const component = {
                 } else {
                     sTop = ctrl.scrollerElem.scrollTop;
                 }
- 
+
                 if (!ctrl.scrollInited && opts.initialPositionFixed) {
                     prevScrollTop = sTop;
                     y = 0;

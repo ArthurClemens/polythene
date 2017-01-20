@@ -96,7 +96,7 @@ const createView = (ctrl, opts = {}) => {
             ctrl.el = el;
 
             // container element is used for transitioning the notification
-            ctrl.containerEl = document.querySelector(opts.containerSelector || '.pe-notification__holder');
+            ctrl.containerEl = typeof document !== "undefined"? document.querySelector(opts.containerSelector || '.pe-notification__holder'): null;
             show(ctrl, opts);
         },
         onclick: (e) => {
@@ -104,6 +104,9 @@ const createView = (ctrl, opts = {}) => {
         }
     };
     const titleConfig = (el, inited) => {
+		if(typeof window === "undefined"){
+			return;
+		}
         if (inited) return;
         const height = el.getBoundingClientRect().height;
         const lineHeight = parseInt(window.getComputedStyle(el).lineHeight, 10);

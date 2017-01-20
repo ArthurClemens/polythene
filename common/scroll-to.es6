@@ -56,6 +56,9 @@ const scrollTo = (opts) => {
 };
 
 const requestAnimFrame = (() => {
+	if(typeof window === "undefined") {
+		return;
+	}
     return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || (callback => {
         window.setTimeout(callback, 1000 / 60);
     });

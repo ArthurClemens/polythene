@@ -1,5 +1,5 @@
 
-if (!window.WebFontConfig) {
+if (typeof window !== "undefined" && !window.WebFontConfig) {
     window.WebFontConfig = {};
     (function() {
         let wf = document.createElement('script');
@@ -14,6 +14,9 @@ if (!window.WebFontConfig) {
 
 const webfontLoader = {
     add: (vendor, family, key) => {
+		if(typeof window === "undefined") {
+			return;
+		}
         const vendorCfg = window.WebFontConfig[vendor] || {};
         vendorCfg.families = vendorCfg.families || [];
         vendorCfg.families.push(family);

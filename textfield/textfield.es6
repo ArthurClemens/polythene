@@ -2,7 +2,10 @@ import 'polythene/common/object.assign';
 import m from 'mithril';
 import 'polythene/textfield/theme/theme';
 
-const startEventType = window.PointerEvent ? 'pointerdown' : (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) ? 'touchstart' : 'mousedown';
+let startEventType = 'mousedown';
+if(typeof window !== "undefined") {
+	startEventType = window.PointerEvent ? 'pointerdown' : (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) ? 'touchstart' : 'mousedown';
+}
 
 const CSS_CLASSES = {
     block: 'pe-textfield',
@@ -256,7 +259,7 @@ const createView = (ctrl, opts = {}) => {
                         }
                     }
                     : null,
-                    
+
                 // onblur defined in config
 
                 (!ignoreEvent(opts, 'oninput'))

@@ -2,7 +2,10 @@ import FastClick from 'fastclick';
 import p from 'polythene/polythene/polythene';
 import events from 'polythene/common/events';
 
-const layer = document.body;
+let layer = {body:{}};
+if(typeof document !== "undefined") {
+	layer = document.body;
+}
 const throttleDelay = 150;
 const reInitDelay = throttleDelay + 50;
 let fastClick;

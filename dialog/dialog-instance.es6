@@ -35,6 +35,9 @@ const updateScrollState = (ctrl) => {
 };
 
 const updateFooterState = (ctrl) => {
+	if(typeof window === "undefined") {
+		return;
+	}
     const footerEl = ctrl.footerEl;
     if (footerEl) {
         const style = window.getComputedStyle(footerEl);
