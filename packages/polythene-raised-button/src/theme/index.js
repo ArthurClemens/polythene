@@ -3,7 +3,7 @@ import vars from "./vars";
 import color from "./color";
 
 const fns = [color];
-const selector = ".pe-button.pe-button--text.pe-button--raised";
+const selector = ".pe-button.pe-text-button.pe-raised-button";
 
 export const customTheme = (customSelector, customVars) => 
   styler.generateStyles([customSelector, selector], {...vars, ...customVars}, fns);

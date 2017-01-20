@@ -69,13 +69,13 @@ var layout = (function (selector, componentVars) {
     "border-radius": "50%",
     border: "none",
 
-    " .pe-button--icon__content": {
+    " .pe-icon-button__content": {
       "line-height": 1,
       padding: componentVars.padding + "px"
     },
 
-    "&.pe-button--compact": {
-      " .pe-button--icon__content": {
+    "&.pe-icon-button--compact": {
+      " .pe-icon-button__content": {
         padding: componentVars.padding_compact + "px"
       }
     }
@@ -118,7 +118,7 @@ var color = (function (selector, componentVars) {
 });
 
 var fns = [layout, color];
-var selector = ".pe-button.pe-button--icon";
+var selector = ".pe-button.pe-icon-button";
 
 var customTheme = function customTheme(customSelector, customVars) {
   return styler.generateStyles([customSelector, selector], _extends({}, vars$1, customVars), fns);
@@ -127,9 +127,9 @@ var customTheme = function customTheme(customSelector, customVars) {
 styler.generateStyles([selector], vars$1, fns);
 
 var classes = {
-  component: "pe-button pe-button--icon",
-  content: "pe-button--icon__content",
-  compact: "pe-button--compact"
+  component: "pe-button pe-icon-button",
+  content: "pe-icon-button__content",
+  compact: "pe-icon-button--compact"
 };
 
 var view = function view(vnode) {

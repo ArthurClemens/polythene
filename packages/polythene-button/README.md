@@ -113,15 +113,15 @@ m(button, {
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **element**   | optional       | String   | "a" | HTML element tag; may also be "button" |
-| **class**     | optional       | String   |  | Extra CSS class appended to `pe-button` |
-| **style**     | optional       | Object   |       | For setting simple style attributes |
-| **id**        | optional       | String   |      | HTML element id |
-| **content** | use `label` or `content` | Mithril element | | Alternative content; replaces `vnode.children` and ignores `label` |
-| **before** | optional | Mithril element | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
-| **after** | optional | Mithril element | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
-| **events** | optional | Object | | Options object containing one or more standard events such as `onclick` |
-| **tabindex** | optional | Integer | 0 | Tab index |
+| **element**   | optional       | String   | "a"         | HTML element tag; may also be "button" |
+| **class**     | optional       | String   |             | Extra CSS class appended to `pe-text-button` |
+| **style**     | optional       | Object   |             | For setting simple style attributes |
+| **id**        | optional       | String   |             | HTML element id |
+| **content**   | use `label` or `content` | Mithril element | | Alternative content; replaces `vnode.children` and ignores `label` |
+| **before**    | optional       | Mithril element | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
+| **after**     | optional       | Mithril element | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
+| **events**    | optional       | Object | | Options object containing one or more standard events such as `onclick` |
+| **tabindex**  | optional       | Integer | 0 | Tab index |
 
 ### Button specific options
 
@@ -160,7 +160,7 @@ Button is composed from:
 
 | **Element**    | **Key**     |  **Class** |
 | -------------- | ----------- | --------------- |
-| Component      | component   | `pe-button pe-button--text` |
+| Component      | component   | `pe-button pe-text-button` |
 | Content        | content     | `pe-button__content` |
 | Label          | label       | `pe-button__label` |
 | Wash element   | wash        | `pe-button__wash` |

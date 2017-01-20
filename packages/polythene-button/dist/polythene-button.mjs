@@ -245,7 +245,7 @@ var color = (function (selector, componentVars) {
 
 var fns = [layout, color];
 var baseSelector = ".pe-button";
-var selector = ".pe-button.pe-button--text";
+var selector = ".pe-button.pe-text-button";
 
 var customTheme = function customTheme(customSelector, customVars) {
   return styler.generateStyles([customSelector, selector], _extends({}, vars$1, customVars), fns);
@@ -255,7 +255,7 @@ styler.generateStyles([baseSelector], vars$1, [baseLayout]);
 styler.generateStyles([selector], vars$1, fns);
 
 var classes = {
-  component: "pe-button pe-button--text",
+  component: "pe-button pe-text-button",
   content: "pe-button__content",
   label: "pe-button__label",
   wash: "pe-button__wash",
@@ -303,7 +303,7 @@ var view = function view(vnode) {
         }
       }
     }
-  }, attrs.style ? { style: {} } : null, attrs.events ? attrs.events : null, attrs.url ? attrs.url : null, disabled ? { disabled: true } : null);
+  }, attrs.style ? { style: {} } : null, attrs.events, attrs.url, disabled ? { disabled: true } : null);
   var children = attrs.children || vnode.children;
   var label = attrs.content ? attrs.content : attrs.label ? _typeof(attrs.label) === "object" ? attrs.label : m("div", { class: classes.label }, attrs.label) : children && children[0] ? children : null;
   var noWash = disabled || attrs.wash !== undefined && !attrs.wash;

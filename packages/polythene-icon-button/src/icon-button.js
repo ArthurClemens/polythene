@@ -4,9 +4,9 @@ import { button } from "polythene-button";
 import { customTheme } from "./theme";
 
 export const classes = {
-  component: "pe-button pe-button--icon",
-  content:   "pe-button--icon__content",
-  compact:   "pe-button--compact"
+  component: "pe-button pe-icon-button",
+  content:   "pe-icon-button__content",
+  compact:   "pe-icon-button--compact"
 };
 
 const view = vnode => {

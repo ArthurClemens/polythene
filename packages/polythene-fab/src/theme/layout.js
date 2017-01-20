@@ -21,7 +21,7 @@ export default (selector, componentVars) => [{
         padding: componentVars.padding_regular + "px",
       },
 
-      "&.pe-button--fab-mini": {
+      ".pe-fab--mini": {
         " .pe-button__content": {
           width: componentVars.size_mini + "px",
           height: componentVars.size_mini + "px",

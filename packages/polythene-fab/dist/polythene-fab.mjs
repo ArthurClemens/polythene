@@ -66,7 +66,7 @@ var layout = (function (selector, componentVars) {
       padding: componentVars.padding_regular + "px"
     },
 
-    "&.pe-button--fab-mini": {
+    ".pe-fab--mini": {
       " .pe-button__content": {
         width: componentVars.size_mini + "px",
         height: componentVars.size_mini + "px",
@@ -103,7 +103,7 @@ var color = (function (selector, componentVars) {
 });
 
 var fns = [layout, color];
-var selector = ".pe-button--fab";
+var selector = ".pe-fab";
 
 var customTheme = function customTheme(customSelector, customVars) {
   return styler.generateStyles([customSelector, selector], _extends({}, vars$1, customVars), fns);
@@ -112,9 +112,9 @@ var customTheme = function customTheme(customSelector, customVars) {
 styler.generateStyles([selector], vars$1, fns);
 
 var classes = {
-  component: "pe-button--fab",
-  content: "pe-button--fab__content",
-  mini: "pe-button--fab-mini"
+  component: "pe-fab",
+  content: "pe-fab__content",
+  mini: "pe-fab--mini"
 };
 
 var view = function view(vnode) {

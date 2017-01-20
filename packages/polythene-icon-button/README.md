@@ -75,7 +75,7 @@ The icon color is set with the CSS (text) `color` attribute of the parent elemen
 
 ~~~css
 /* CSS */
-.pe-button--icon {
+.pe-button-icon {
   color: red;
 }
 ~~~
@@ -124,7 +124,7 @@ Pass `type` to the `icon` parameter, or use CSS.
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional | String | "div" | HTML element tag |
-| **class**     | optional | String |  | Extra CSS class appended to "pe-button--icon" |
+| **class**     | optional | String |  | Extra CSS class appended to "pe-icon-button" |
 | **style**     | optional | Object |       | For setting simple style attributes |
 | **id**        | optional | String | | HTML element id |
 | **content**   | optional | Mithril element |  | Any content; replaces `vnode.children` |
@@ -155,11 +155,11 @@ Icon Button is composed from:
 
 | **Element** | **Key**     |  **Class** |
 | ----------- | ----------- | --------------- |
-| Component   | component   | `pe-button pe-button--icon` |
-| Content     | content     | `pe-button--icon__content` |
+| Component   | component   | `pe-button pe-icon-button` |
+| Content     | content     | `pe-icon-button__content` |
 
 | **State**   | **Key**     |  **Class** |
 | ----------- | ----------- | --------------- |
-| Compact     | compact     | `pe-button--compact` |
+| Compact     | compact     | `pe-icon-button--compact` |
 
 

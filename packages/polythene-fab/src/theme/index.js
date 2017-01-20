@@ -4,7 +4,7 @@ import layout from "./layout";
 import color from "./color";
 
 const fns = [layout, color];
-const selector = ".pe-button--fab";
+const selector = ".pe-fab";
 
 export const customTheme = (customSelector, customVars) => 
   styler.generateStyles([customSelector, selector], {...vars, ...customVars}, fns);

@@ -4,7 +4,7 @@ import { filterSupportedAttributes } from "polythene-core";
 import { customTheme } from "./theme";
 
 export const classes = {
-  component:  "pe-button pe-button--text",
+  component:  "pe-button pe-text-button",
   content:    "pe-button__content",
   label:      "pe-button__label",
   wash:       "pe-button__wash",
@@ -62,8 +62,8 @@ const view = vnode => {
       }
     },
     attrs.style ? { style: {}} : null,
-    attrs.events ? attrs.events : null,
-    attrs.url ? attrs.url : null,
+    attrs.events,
+    attrs.url,
     disabled ? { disabled: true } : null
   );
   const children = attrs.children || vnode.children;

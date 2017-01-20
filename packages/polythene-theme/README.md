@@ -290,7 +290,7 @@ Also deriving components can be styled with CSS.
 We only need to take care of the CSS specificity level; using the same "secondary-button" example, the generated component class list becomes:
 
 ~~~html
-class="pe-button pe-button--text pe-button--borders secondary-button"
+class="pe-button pe-text-button pe-button--borders secondary-button"
 ~~~
 
 So simply writing `.secondary-button {...}` won't work - we need to include base class `pe-button` in the new style to get the proper specificity level.

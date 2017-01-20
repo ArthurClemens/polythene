@@ -5,7 +5,7 @@ import { isTouch, touchStartEvent, touchEndEvent, subscribe } from "polythene-co
 import { customTheme } from "./theme";
 
 export const classes = {
-  component: "pe-button pe-button--text pe-button--raised"
+  component: "pe-button pe-text-button pe-raised-button"
 };
 
 const MAX_Z = 5;

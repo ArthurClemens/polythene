@@ -114,7 +114,7 @@ var color = (function (selector, componentVars) {
 });
 
 var fns = [color];
-var selector = ".pe-button.pe-button--text.pe-button--raised";
+var selector = ".pe-button.pe-text-button.pe-raised-button";
 
 var customTheme = function customTheme(customSelector, customVars) {
   return styler.generateStyles([customSelector, selector], _extends({}, vars$1, customVars), fns);
@@ -123,7 +123,7 @@ var customTheme = function customTheme(customSelector, customVars) {
 styler.generateStyles([selector], vars$1, fns);
 
 var classes = {
-  component: "pe-button pe-button--text pe-button--raised"
+  component: "pe-button pe-text-button pe-raised-button"
 };
 
 var MAX_Z = 5;

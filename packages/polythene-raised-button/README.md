@@ -47,6 +47,6 @@ Button is composed from:
 
 | **Element**    | **Key**     |  **Class** |
 | -------------- | ----------- | --------------- |
-| Component      | component   | `pe-button pe-button--text pe-button--raised` |
+| Component      | component   | `pe-button pe-text-button pe-raised-button` |
 
 

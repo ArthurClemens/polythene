@@ -77,7 +77,7 @@ m(fab, {
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional | String | "div" | HTML element tag |
-| **class**     | optional | String |       | Extra CSS class appended to `pe-button--fab` |
+| **class**     | optional | String |       | Extra CSS class appended to `pe-fab` |
 | **style**     | optional | Object |       | For setting simple style attributes |
 | **id**        | optional | String |       | HTML element id |
 | **content**| either `icon` or `content` | Mithril element |  | Alternative content |
@@ -91,7 +91,7 @@ m(fab, {
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **icon** | use `icon` or `content` | Object |  | [icon](#icon) options object |
-| **mini** | optional | Boolean | false | Set to true to display a small button (class name `pe-button--fab-mini`) |
+| **mini** | optional | Boolean | false | Set to true to display a small button (class name `pe-fab--mini`) |
 
 
 
@@ -115,12 +115,12 @@ Differences to button behaviour:
 
 | **Element** | **Key**     | **Class** |
 | ----------- | ----------- | --------------- |
-| Component   | component   | `pe-button--fab` |
-| Content     | content     | `pe-button--fab__content` |
+| Component   | component   | `pe-fab` |
+| Content     | content     | `pe-fab__content` |
 
 | **State**   | **Key**     |  **Class** |
 | ----------- | ----------- | --------------- |
-| Mini FAB    | mini        | `pe-button--fab-mini` |
+| Mini FAB    | mini        | `pe-fab--mini` |
 
 
 

@@ -10,13 +10,13 @@ export default (selector, componentVars) => [{
     "border-radius": "50%",
     border: "none",
 
-    " .pe-button--icon__content": {
+    " .pe-icon-button__content": {
       "line-height": 1,
       padding: componentVars.padding + "px"
     },
 
-    "&.pe-button--compact": {
-      " .pe-button--icon__content": {
+    "&.pe-icon-button--compact": {
+      " .pe-icon-button__content": {
         padding: componentVars.padding_compact + "px"
       }
     }

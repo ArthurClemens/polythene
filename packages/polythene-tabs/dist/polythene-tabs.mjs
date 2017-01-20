@@ -210,7 +210,7 @@ var layout = (function (selector, componentVars) {
       minWidth: !isNaN(componentVars.tab_min_width) ? componentVars.tab_min_width + "px" : componentVars.tab_min_width, // for smaller screens, see also media query below
       maxWidth: !isNaN(componentVars.tab_max_width) ? componentVars.tab_max_width + "px" : componentVars.tab_max_width,
 
-      ".pe-button--text .pe-button__content": {
+      ".pe-text-button .pe-button__content": {
         padding: "0 " + componentVars.tab_content_padding_v + "px",
         height: componentVars.tab_height + "px",
         lineHeight: vars$2.line_height + "em",
