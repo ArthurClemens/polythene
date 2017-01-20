@@ -266,54 +266,6 @@ export const tests = [
     }
   },
 
-  // Common
-  {
-    name: "No options",
-    component,
-    attrs: null
-  },
-  {
-    name: "Option: id",
-    component,
-    attrs: {
-      id: "id-x"
-    }
-  },
-  {
-    name: "Option: class",
-    component,
-    attrs: {
-      class: "class-x"
-    }
-  },
-  {
-    name: "Option: element",
-    component,
-    attrs: {
-      element: "blockquote"
-    }
-  },
-  {
-    name: "Option: before",
-    component,
-    attrs: {
-      header: {
-        title: "My header"
-      },
-      before: m("div", "Before")
-    }
-  },
-  {
-    name: "Option: after",
-    component,
-    attrs: {
-      header: {
-        title: "My header"
-      },
-      after: m("div", "After")
-    }
-  },
-
   // Dark theme
 
   {

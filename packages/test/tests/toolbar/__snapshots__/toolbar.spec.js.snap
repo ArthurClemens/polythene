@@ -1,6 +1,6 @@
 exports[`test Child node 1`] = `
 "<div class=\"pe-toolbar\">
-  <a tabindex=\"0\" class=\"pe-button pe-button--icon\">
+  <a tabindex=\"0\" class=\"pe-button pe-icon-button\">
   <div class=\"pe-button__content\">
     <div class=\"pe-ripple pe-ripple--constrained\">
       <div class=\"pe-ripple__mask\">
@@ -8,7 +8,7 @@ exports[`test Child node 1`] = `
       </div>
     </div>
     <div class=\"pe-button__focus\"></div>
-    <div class=\"pe-button--icon__content\">
+    <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
           <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
@@ -23,7 +23,7 @@ exports[`test Child node 1`] = `
   <div class=\"pe-toolbar__title\">
     Toolbar with a very very very very very very very very very
     long title
-  </div><a tabindex=\"0\" class=\"pe-button pe-button--icon\">
+  </div><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
   <div class=\"pe-button__content\">
     <div class=\"pe-ripple pe-ripple--constrained\">
       <div class=\"pe-ripple__mask\">
@@ -31,7 +31,7 @@ exports[`test Child node 1`] = `
       </div>
     </div>
     <div class=\"pe-button__focus\"></div>
-    <div class=\"pe-button--icon__content\">
+    <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
           <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
@@ -43,7 +43,7 @@ exports[`test Child node 1`] = `
         </div>
       </div>
     </div>
-  </div></a><a tabindex=\"0\" class=\"pe-button pe-button--icon\">
+  </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
   <div class=\"pe-button__content\">
     <div class=\"pe-ripple pe-ripple--constrained\">
       <div class=\"pe-ripple__mask\">
@@ -51,7 +51,7 @@ exports[`test Child node 1`] = `
       </div>
     </div>
     <div class=\"pe-button__focus\"></div>
-    <div class=\"pe-button--icon__content\">
+    <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
           <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
@@ -70,7 +70,7 @@ exports[`test Indented title 1`] = `
 "<div class=\"pe-toolbar\">
   <div class=\"pe-toolbar__title--indent\">
     Indented title
-  </div><a tabindex=\"0\" class=\"pe-button pe-button--icon\">
+  </div><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
   <div class=\"pe-button__content\">
     <div class=\"pe-ripple pe-ripple--constrained\">
       <div class=\"pe-ripple__mask\">
@@ -78,7 +78,7 @@ exports[`test Indented title 1`] = `
       </div>
     </div>
     <div class=\"pe-button__focus\"></div>
-    <div class=\"pe-button--icon__content\">
+    <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
           <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
@@ -95,7 +95,7 @@ exports[`test Indented title 1`] = `
 
 exports[`test Option: compact 1`] = `
 "<div class=\"pe-toolbar pe-toolbar--compact\">
-  <a tabindex=\"0\" class=\"pe-button pe-button--icon\">
+  <a tabindex=\"0\" class=\"pe-button pe-icon-button\">
   <div class=\"pe-button__content\">
     <div class=\"pe-ripple pe-ripple--constrained\">
       <div class=\"pe-ripple__mask\">
@@ -103,7 +103,7 @@ exports[`test Option: compact 1`] = `
       </div>
     </div>
     <div class=\"pe-button__focus\"></div>
-    <div class=\"pe-button--icon__content\">
+    <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
           <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
@@ -118,7 +118,7 @@ exports[`test Option: compact 1`] = `
   <div class=\"pe-toolbar__title\">
     Toolbar with a very very very very very very very very very
     long title
-  </div><a tabindex=\"0\" class=\"pe-button pe-button--icon\">
+  </div><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
   <div class=\"pe-button__content\">
     <div class=\"pe-ripple pe-ripple--constrained\">
       <div class=\"pe-ripple__mask\">
@@ -126,7 +126,7 @@ exports[`test Option: compact 1`] = `
       </div>
     </div>
     <div class=\"pe-button__focus\"></div>
-    <div class=\"pe-button--icon__content\">
+    <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
           <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
@@ -138,7 +138,7 @@ exports[`test Option: compact 1`] = `
         </div>
       </div>
     </div>
-  </div></a><a tabindex=\"0\" class=\"pe-button pe-button--icon\">
+  </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
   <div class=\"pe-button__content\">
     <div class=\"pe-ripple pe-ripple--constrained\">
       <div class=\"pe-ripple__mask\">
@@ -146,7 +146,7 @@ exports[`test Option: compact 1`] = `
       </div>
     </div>
     <div class=\"pe-button__focus\"></div>
-    <div class=\"pe-button--icon__content\">
+    <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
           <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
@@ -163,7 +163,7 @@ exports[`test Option: compact 1`] = `
 
 exports[`test Option: content -- dark theme 1`] = `
 "<div class=\"pe-toolbar\">
-  <a tabindex=\"0\" class=\"pe-button pe-button--icon\">
+  <a tabindex=\"0\" class=\"pe-button pe-icon-button\">
   <div class=\"pe-button__content\">
     <div class=\"pe-ripple pe-ripple--constrained\">
       <div class=\"pe-ripple__mask\">
@@ -171,7 +171,7 @@ exports[`test Option: content -- dark theme 1`] = `
       </div>
     </div>
     <div class=\"pe-button__focus\"></div>
-    <div class=\"pe-button--icon__content\">
+    <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
           <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
@@ -186,7 +186,7 @@ exports[`test Option: content -- dark theme 1`] = `
   <div class=\"pe-toolbar__title\">
     Toolbar with a very very very very very very very very very
     long title
-  </div><a tabindex=\"0\" class=\"pe-button pe-button--icon\">
+  </div><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
   <div class=\"pe-button__content\">
     <div class=\"pe-ripple pe-ripple--constrained\">
       <div class=\"pe-ripple__mask\">
@@ -194,7 +194,7 @@ exports[`test Option: content -- dark theme 1`] = `
       </div>
     </div>
     <div class=\"pe-button__focus\"></div>
-    <div class=\"pe-button--icon__content\">
+    <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
           <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
@@ -206,7 +206,7 @@ exports[`test Option: content -- dark theme 1`] = `
         </div>
       </div>
     </div>
-  </div></a><a tabindex=\"0\" class=\"pe-button pe-button--icon\">
+  </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
   <div class=\"pe-button__content\">
     <div class=\"pe-ripple pe-ripple--constrained\">
       <div class=\"pe-ripple__mask\">
@@ -214,7 +214,7 @@ exports[`test Option: content -- dark theme 1`] = `
       </div>
     </div>
     <div class=\"pe-button__focus\"></div>
-    <div class=\"pe-button--icon__content\">
+    <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
           <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
@@ -231,7 +231,7 @@ exports[`test Option: content -- dark theme 1`] = `
 
 exports[`test Option: content 1`] = `
 "<div class=\"pe-toolbar\">
-  <a tabindex=\"0\" class=\"pe-button pe-button--icon\">
+  <a tabindex=\"0\" class=\"pe-button pe-icon-button\">
   <div class=\"pe-button__content\">
     <div class=\"pe-ripple pe-ripple--constrained\">
       <div class=\"pe-ripple__mask\">
@@ -239,7 +239,7 @@ exports[`test Option: content 1`] = `
       </div>
     </div>
     <div class=\"pe-button__focus\"></div>
-    <div class=\"pe-button--icon__content\">
+    <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
           <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
@@ -254,7 +254,7 @@ exports[`test Option: content 1`] = `
   <div class=\"pe-toolbar__title\">
     Toolbar with a very very very very very very very very very
     long title
-  </div><a tabindex=\"0\" class=\"pe-button pe-button--icon\">
+  </div><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
   <div class=\"pe-button__content\">
     <div class=\"pe-ripple pe-ripple--constrained\">
       <div class=\"pe-ripple__mask\">
@@ -262,7 +262,7 @@ exports[`test Option: content 1`] = `
       </div>
     </div>
     <div class=\"pe-button__focus\"></div>
-    <div class=\"pe-button--icon__content\">
+    <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
           <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
@@ -274,7 +274,7 @@ exports[`test Option: content 1`] = `
         </div>
       </div>
     </div>
-  </div></a><a tabindex=\"0\" class=\"pe-button pe-button--icon\">
+  </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
   <div class=\"pe-button__content\">
     <div class=\"pe-ripple pe-ripple--constrained\">
       <div class=\"pe-ripple__mask\">
@@ -282,7 +282,7 @@ exports[`test Option: content 1`] = `
       </div>
     </div>
     <div class=\"pe-button__focus\"></div>
-    <div class=\"pe-button--icon__content\">
+    <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
           <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
@@ -300,7 +300,7 @@ exports[`test Option: content 1`] = `
 exports[`test Option: shadow 1`] = `
 "<div style=\"position: relative;\">
   <div class=\"pe-toolbar\">
-    <a tabindex=\"0\" class=\"pe-button pe-button--icon\">
+    <a tabindex=\"0\" class=\"pe-button pe-icon-button\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -308,7 +308,7 @@ exports[`test Option: shadow 1`] = `
         </div>
       </div>
       <div class=\"pe-button__focus\"></div>
-      <div class=\"pe-button--icon__content\">
+      <div class=\"pe-icon-button__content\">
         <div class=\"pe-icon pe-icon--regular\">
           <div class=\"pe-svg\">
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
@@ -323,7 +323,7 @@ exports[`test Option: shadow 1`] = `
     <div class=\"pe-toolbar__title\">
       Toolbar with a very very very very very very very very very
       long title
-    </div><a tabindex=\"0\" class=\"pe-button pe-button--icon\">
+    </div><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -331,7 +331,7 @@ exports[`test Option: shadow 1`] = `
         </div>
       </div>
       <div class=\"pe-button__focus\"></div>
-      <div class=\"pe-button--icon__content\">
+      <div class=\"pe-icon-button__content\">
         <div class=\"pe-icon pe-icon--regular\">
           <div class=\"pe-svg\">
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
@@ -343,7 +343,7 @@ exports[`test Option: shadow 1`] = `
           </div>
         </div>
       </div>
-    </div></a><a tabindex=\"0\" class=\"pe-button pe-button--icon\">
+    </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -351,7 +351,7 @@ exports[`test Option: shadow 1`] = `
         </div>
       </div>
       <div class=\"pe-button__focus\"></div>
-      <div class=\"pe-button--icon__content\">
+      <div class=\"pe-icon-button__content\">
         <div class=\"pe-icon pe-icon--regular\">
           <div class=\"pe-svg\">
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
@@ -375,7 +375,7 @@ exports[`test Option: style (colors and height) 1`] = `
 "<div style=
 \"background-color: rgb(239, 108, 0); color: rgb(255, 255, 255); height: 72px;\"
 class=\"pe-toolbar\">
-  <a tabindex=\"0\" class=\"pe-button pe-button--icon\">
+  <a tabindex=\"0\" class=\"pe-button pe-icon-button\">
   <div class=\"pe-button__content\">
     <div class=\"pe-ripple pe-ripple--constrained\">
       <div class=\"pe-ripple__mask\">
@@ -383,7 +383,7 @@ class=\"pe-toolbar\">
       </div>
     </div>
     <div class=\"pe-button__focus\"></div>
-    <div class=\"pe-button--icon__content\">
+    <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
           <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
@@ -398,7 +398,7 @@ class=\"pe-toolbar\">
   <div class=\"pe-toolbar__title\">
     Toolbar with a very very very very very very very very very
     long title
-  </div><a tabindex=\"0\" class=\"pe-button pe-button--icon\">
+  </div><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
   <div class=\"pe-button__content\">
     <div class=\"pe-ripple pe-ripple--constrained\">
       <div class=\"pe-ripple__mask\">
@@ -406,7 +406,7 @@ class=\"pe-toolbar\">
       </div>
     </div>
     <div class=\"pe-button__focus\"></div>
-    <div class=\"pe-button--icon__content\">
+    <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
           <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
@@ -418,7 +418,7 @@ class=\"pe-toolbar\">
         </div>
       </div>
     </div>
-  </div></a><a tabindex=\"0\" class=\"pe-button pe-button--icon\">
+  </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
   <div class=\"pe-button__content\">
     <div class=\"pe-ripple pe-ripple--constrained\">
       <div class=\"pe-ripple__mask\">
@@ -426,7 +426,7 @@ class=\"pe-toolbar\">
       </div>
     </div>
     <div class=\"pe-button__focus\"></div>
-    <div class=\"pe-button--icon__content\">
+    <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
           <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
@@ -443,7 +443,7 @@ class=\"pe-toolbar\">
 
 exports[`test Themed 1`] = `
 "<div class=\"pe-toolbar tests-toolbar-themed-toolbar\">
-  <a tabindex=\"0\" class=\"pe-button pe-button--icon\">
+  <a tabindex=\"0\" class=\"pe-button pe-icon-button\">
   <div class=\"pe-button__content\">
     <div class=\"pe-ripple pe-ripple--constrained\">
       <div class=\"pe-ripple__mask\">
@@ -451,7 +451,7 @@ exports[`test Themed 1`] = `
       </div>
     </div>
     <div class=\"pe-button__focus\"></div>
-    <div class=\"pe-button--icon__content\">
+    <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
           <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
@@ -466,7 +466,7 @@ exports[`test Themed 1`] = `
   <div class=\"pe-toolbar__title\">
     Toolbar with a very very very very very very very very very
     long title
-  </div><a tabindex=\"0\" class=\"pe-button pe-button--icon\">
+  </div><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
   <div class=\"pe-button__content\">
     <div class=\"pe-ripple pe-ripple--constrained\">
       <div class=\"pe-ripple__mask\">
@@ -474,7 +474,7 @@ exports[`test Themed 1`] = `
       </div>
     </div>
     <div class=\"pe-button__focus\"></div>
-    <div class=\"pe-button--icon__content\">
+    <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
           <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
@@ -486,7 +486,7 @@ exports[`test Themed 1`] = `
         </div>
       </div>
     </div>
-  </div></a><a tabindex=\"0\" class=\"pe-button pe-button--icon\">
+  </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
   <div class=\"pe-button__content\">
     <div class=\"pe-ripple pe-ripple--constrained\">
       <div class=\"pe-ripple__mask\">
@@ -494,7 +494,7 @@ exports[`test Themed 1`] = `
       </div>
     </div>
     <div class=\"pe-button__focus\"></div>
-    <div class=\"pe-button--icon__content\">
+    <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
           <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
@@ -511,7 +511,7 @@ exports[`test Themed 1`] = `
 
 exports[`test Title as span 1`] = `
 "<div class=\"pe-toolbar\">
-  <a tabindex=\"0\" class=\"pe-button pe-button--icon\">
+  <a tabindex=\"0\" class=\"pe-button pe-icon-button\">
   <div class=\"pe-button__content\">
     <div class=\"pe-ripple pe-ripple--constrained\">
       <div class=\"pe-ripple__mask\">
@@ -519,7 +519,7 @@ exports[`test Title as span 1`] = `
       </div>
     </div>
     <div class=\"pe-button__focus\"></div>
-    <div class=\"pe-button--icon__content\">
+    <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
           <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
@@ -531,7 +531,7 @@ exports[`test Title as span 1`] = `
       </div>
     </div>
   </div></a><span>Toolbar with a very very very long
-  title</span><a tabindex=\"0\" class=\"pe-button pe-button--icon\">
+  title</span><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
   <div class=\"pe-button__content\">
     <div class=\"pe-ripple pe-ripple--constrained\">
       <div class=\"pe-ripple__mask\">
@@ -539,7 +539,7 @@ exports[`test Title as span 1`] = `
       </div>
     </div>
     <div class=\"pe-button__focus\"></div>
-    <div class=\"pe-button--icon__content\">
+    <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
           <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
@@ -558,7 +558,7 @@ exports[`test Title at start 1`] = `
 "<div class=\"pe-toolbar\">
   <div class=\"pe-toolbar__title\">
     Title
-  </div><a tabindex=\"0\" class=\"pe-button pe-button--icon\">
+  </div><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
   <div class=\"pe-button__content\">
     <div class=\"pe-ripple pe-ripple--constrained\">
       <div class=\"pe-ripple__mask\">
@@ -566,7 +566,7 @@ exports[`test Title at start 1`] = `
       </div>
     </div>
     <div class=\"pe-button__focus\"></div>
-    <div class=\"pe-button--icon__content\">
+    <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
           <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"

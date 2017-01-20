@@ -41,51 +41,6 @@ export const tests = [
         color: "#EF6C00"
       }
     }
-  },
-
-  // Common
-  {
-    name: "No options",
-    component,
-    attrs: null
-  },
-  {
-    name: "Option: id",
-    component,
-    attrs: {
-      id: "id-x"
-    }
-  },
-  {
-    name: "Option: class",
-    component,
-    attrs: {
-      class: "class-x"
-    }
-  },
-  {
-    name: "Option: element",
-    component,
-    attrs: {
-      element: "a",
-      content: m.trust("<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"></svg>")
-    }
-  },
-  {
-    name: "Option: before",
-    component,
-    attrs: {
-      content: iconStars,
-      before: m("span", "Before")
-    }
-  },
-  {
-    name: "Option: after",
-    component,
-    attrs: {
-      content: iconStars,
-      after: m("span", "After")
-    }
   }
 ];
 

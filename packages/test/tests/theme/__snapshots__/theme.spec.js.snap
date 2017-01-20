@@ -1,5 +1,5 @@
 exports[`test No theme: normal button 1`] = `
-"<a tabindex=\"0\" class=\"pe-button pe-button--text\">
+"<a tabindex=\"0\" class=\"pe-button pe-text-button\">
 <div class=\"pe-button__content\">
   <div class=\"pe-ripple pe-ripple--constrained\">
     <div class=\"pe-ripple__mask\">
@@ -17,7 +17,7 @@ exports[`test No theme: normal button 1`] = `
 
 exports[`test Theme with deriving component: button (should be bordered with white background) 1`] = `
 "<a tabindex=\"0\" class=
-\"pe-button pe-button--text pe-button--borders tests-custom-theme-secondary-button\">
+\"pe-button pe-text-button pe-button--borders tests-custom-theme-secondary-button\">
 <div class=\"pe-button__content\">
   <div class=\"pe-ripple pe-ripple--constrained\">
     <div class=\"pe-ripple__mask\">
@@ -34,7 +34,7 @@ exports[`test Theme with deriving component: button (should be bordered with whi
 `;
 
 exports[`test Theme with style variables: FAB (should be red) 1`] = `
-"<a tabindex=\"0\" class=\"pe-button--fab tests-custom-theme-red-fab\">
+"<a tabindex=\"0\" class=\"pe-fab tests-custom-theme-red-fab\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -47,7 +47,7 @@ exports[`test Theme with style variables: FAB (should be red) 1`] = `
   </div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button--fab__content\">
+  <div class=\"pe-fab__content\">
     <div class=\"pe-icon pe-icon--regular\">
       <div class=\"pe-svg\">
         <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=
@@ -65,7 +65,7 @@ exports[`test Theme with style variables: FAB (should be red) 1`] = `
 
 exports[`test Theme with style variables: button (should be blue) 1`] = `
 "<a tabindex=\"0\" class=
-\"pe-button pe-button--text tests-custom-theme-blue-button\">
+\"pe-button pe-text-button tests-custom-theme-blue-button\">
 <div class=\"pe-button__content\">
   <div class=\"pe-ripple pe-ripple--constrained\">
     <div class=\"pe-ripple__mask\">
@@ -83,7 +83,7 @@ exports[`test Theme with style variables: button (should be blue) 1`] = `
 
 exports[`test Theme with style variables: button (should be red) 1`] = `
 "<a tabindex=\"0\" class=
-\"pe-button pe-button--text tests-custom-theme-red-button\">
+\"pe-button pe-text-button tests-custom-theme-red-button\">
 <div class=\"pe-button__content\">
   <div class=\"pe-ripple pe-ripple--constrained\">
     <div class=\"pe-ripple__mask\">
@@ -115,7 +115,7 @@ exports[`test Theme with style variables: icon (should be red) 1`] = `
 
 exports[`test Theme with style variables: icon button (should have large padding) 1`] = `
 "<a tabindex=\"0\" class=
-\"pe-button pe-button--icon tests-custom-theme-large-icon-button\">
+\"pe-button pe-icon-button tests-custom-theme-large-icon-button\">
 <div class=\"pe-button__content\">
   <div class=\"pe-ripple pe-ripple--constrained\">
     <div class=\"pe-ripple__mask\">
@@ -123,7 +123,7 @@ exports[`test Theme with style variables: icon button (should have large padding
     </div>
   </div>
   <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button--icon__content\">
+  <div class=\"pe-icon-button__content\">
     <div class=\"pe-icon pe-icon--regular\">
       <div class=\"pe-svg\">
         <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=
@@ -227,7 +227,7 @@ exports[`test Theme with style variables: list tile (should have red titles) 1`]
 `;
 
 exports[`test Theme with theme file (global primary color): FAB (should be orange) 1`] = `
-"<a tabindex=\"0\" class=\"pe-button--fab\">
+"<a tabindex=\"0\" class=\"pe-fab\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -240,7 +240,7 @@ exports[`test Theme with theme file (global primary color): FAB (should be orang
   </div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button--fab__content\">
+  <div class=\"pe-fab__content\">
     <div class=\"pe-icon pe-icon--regular\">
       <div class=\"pe-svg\">
         <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=

@@ -123,50 +123,6 @@ export const tests = [
     }
   },
 
-  // Common
-  {
-    name: "No options",
-    component,
-    attrs: null
-  },
-  {
-    name: "Option: id",
-    component,
-    attrs: {
-      id: "id-x"
-    }
-  },
-  {
-    name: "Option: class",
-    component,
-    attrs: {
-      class: "class-x"
-    }
-  },
-  {
-    name: "Option: element",
-    component,
-    attrs: {
-      element: "a"
-    }
-  },
-  {
-    name: "Option: before",
-    component,
-    attrs: {
-      msvg: iconStars,
-      before: m("div", {style: {"font-size": "16px", "line-height": "1rem"}}, "Before")
-    }
-  },
-  {
-    name: "Option: after",
-    component,
-    attrs: {
-      msvg: iconStars,
-      after: m("div", {style: {"font-size": "16px", "line-height": "1rem"}}, "After")
-    }
-  },
-
   // Dark theme
 
   {

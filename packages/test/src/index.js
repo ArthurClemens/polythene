@@ -4,6 +4,7 @@ import "polythene-material-design";
 import { rules as css } from "./styles";
 import testPage from "./page";
 import { tests as buttonTests } from "../tests/button/tests";
+import { tests as checkboxTests } from "../tests/checkbox/tests";
 import { tests as fabTests } from "../tests/fab/tests";
 import { tests as iconTests } from "../tests/icon/tests";
 import { tests as iconButtonTests } from "../tests/icon-button/tests";
@@ -29,6 +30,11 @@ const pages = [
     path: "/raised-button",
     name: "Raised button",
     tests: raisedButtonTests
+  },
+  {
+    path: "/checkbox",
+    name: "Checkbox",
+    tests: checkboxTests
   },
   {
     path: "/fab",

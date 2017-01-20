@@ -1,6 +1,5 @@
 exports[`test Child node 1`] = `
-"<a tabindex=\"0\" class=
-\"pe-button pe-button--text pe-button--raised\">
+"<a tabindex=\"0\" class=\"pe-button pe-text-button pe-raised-button\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -17,37 +16,8 @@ exports[`test Child node 1`] = `
 "
 `;
 
-exports[`test No options 1`] = `
-"<a tabindex=\"0\" class=
-\"pe-button pe-button--text pe-button--raised\"></a>
-"
-`;
-
-exports[`test Option: after 1`] = `
-"<a tabindex=\"0\" class=
-\"pe-button pe-button--text pe-button--raised\">
-<div class=\"pe-button__content\">
-  <div class=\"pe-shadow pe-shadow--animated\">
-    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
-  </div>
-  <div class=\"pe-ripple pe-ripple--constrained\">
-    <div class=\"pe-ripple__mask\">
-      <div class=\"pe-ripple__waves\"></div>
-    </div>
-  </div>
-  <div class=\"pe-button__wash\"></div>
-  <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button__label\">
-    Button
-  </div>
-</div><span>After</span></a>
-"
-`;
-
 exports[`test Option: animateOnTap (false) 1`] = `
-"<a tabindex=\"0\" class=
-\"pe-button pe-button--text pe-button--raised\">
+"<a tabindex=\"0\" class=\"pe-button pe-text-button pe-raised-button\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -67,37 +37,8 @@ exports[`test Option: animateOnTap (false) 1`] = `
 "
 `;
 
-exports[`test Option: before 1`] = `
-"<a tabindex=\"0\" class=
-\"pe-button pe-button--text pe-button--raised\"><span>Before</span>
-<div class=\"pe-button__content\">
-  <div class=\"pe-shadow pe-shadow--animated\">
-    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
-  </div>
-  <div class=\"pe-ripple pe-ripple--constrained\">
-    <div class=\"pe-ripple__mask\">
-      <div class=\"pe-ripple__waves\"></div>
-    </div>
-  </div>
-  <div class=\"pe-button__wash\"></div>
-  <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button__label\">
-    Button
-  </div>
-</div></a>
-"
-`;
-
-exports[`test Option: class 1`] = `
-"<a tabindex=\"0\" class=
-\"pe-button pe-button--text pe-button--raised class-x\"></a>
-"
-`;
-
 exports[`test Option: content 1`] = `
-"<a tabindex=\"0\" class=
-\"pe-button pe-button--text pe-button--raised\">
+"<a tabindex=\"0\" class=\"pe-button pe-text-button pe-raised-button\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -118,8 +59,7 @@ exports[`test Option: content 1`] = `
 `;
 
 exports[`test Option: disabled (false) 1`] = `
-"<a tabindex=\"0\" class=
-\"pe-button pe-button--text pe-button--raised\">
+"<a tabindex=\"0\" class=\"pe-button pe-text-button pe-raised-button\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -141,7 +81,7 @@ exports[`test Option: disabled (false) 1`] = `
 
 exports[`test Option: disabled (true) 1`] = `
 "<a tabindex=\"-1\" disabled class=
-\"pe-button pe-button--text pe-button--raised pe-button--disabled\">
+\"pe-button pe-text-button pe-raised-button pe-button--disabled\">
 <div class=\"pe-button__content\">
   <div class=\"pe-button__label\">
     Disabled
@@ -152,7 +92,7 @@ exports[`test Option: disabled (true) 1`] = `
 
 exports[`test Option: disabled -- dark theme 1`] = `
 "<a tabindex=\"-1\" disabled class=
-\"pe-button pe-button--text pe-button--raised pe-button--disabled\">
+\"pe-button pe-text-button pe-raised-button pe-button--disabled\">
 <div class=\"pe-button__content\">
   <div class=\"pe-button__label\">
     Label
@@ -161,33 +101,11 @@ exports[`test Option: disabled -- dark theme 1`] = `
 "
 `;
 
-exports[`test Option: element (button) 1`] = `
-"<button tabindex=\"0\" class=
-\"pe-button pe-button--text pe-button--raised\">
-<div class=\"pe-button__content\">
-  <div class=\"pe-shadow pe-shadow--animated\">
-    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
-  </div>
-  <div class=\"pe-ripple pe-ripple--constrained\">
-    <div class=\"pe-ripple__mask\">
-      <div class=\"pe-ripple__waves\"></div>
-    </div>
-  </div>
-  <div class=\"pe-button__wash\"></div>
-  <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button__label\">
-    button element
-  </div>
-</div></button>
-"
-`;
-
 exports[`test Option: events (onclick) 1`] = `
 "<div>
   onclick called: 0
 </div><a tabindex=\"0\" class=
-\"pe-button pe-button--text pe-button--raised\">
+\"pe-button pe-text-button pe-raised-button\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -207,15 +125,8 @@ exports[`test Option: events (onclick) 1`] = `
 "
 `;
 
-exports[`test Option: id 1`] = `
-"<a id=\"id-x\" tabindex=\"0\" class=
-\"pe-button pe-button--text pe-button--raised\"></a>
-"
-`;
-
 exports[`test Option: inactive (false) 1`] = `
-"<a tabindex=\"0\" class=
-\"pe-button pe-button--text pe-button--raised\">
+"<a tabindex=\"0\" class=\"pe-button pe-text-button pe-raised-button\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -237,7 +148,7 @@ exports[`test Option: inactive (false) 1`] = `
 
 exports[`test Option: inactive (true) 1`] = `
 "<a tabindex=\"-1\" class=
-\"pe-button pe-button--text pe-button--raised pe-button--inactive\">
+\"pe-button pe-text-button pe-raised-button pe-button--inactive\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -258,8 +169,7 @@ exports[`test Option: inactive (true) 1`] = `
 `;
 
 exports[`test Option: ink (false) 1`] = `
-"<a tabindex=\"0\" class=
-\"pe-button pe-button--text pe-button--raised\">
+"<a tabindex=\"0\" class=\"pe-button pe-text-button pe-raised-button\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -275,8 +185,7 @@ exports[`test Option: ink (false) 1`] = `
 `;
 
 exports[`test Option: label -- dark theme (should be app's primary color) 1`] = `
-"<a tabindex=\"0\" class=
-\"pe-button pe-button--text pe-button--raised\">
+"<a tabindex=\"0\" class=\"pe-button pe-text-button pe-raised-button\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -297,8 +206,7 @@ exports[`test Option: label -- dark theme (should be app's primary color) 1`] = 
 `;
 
 exports[`test Option: label 1`] = `
-"<a tabindex=\"0\" class=
-\"pe-button pe-button--text pe-button--raised\">
+"<a tabindex=\"0\" class=\"pe-button pe-text-button pe-raised-button\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -319,8 +227,7 @@ exports[`test Option: label 1`] = `
 `;
 
 exports[`test Option: raised (with option z: 2) 1`] = `
-"<a tabindex=\"0\" class=
-\"pe-button pe-button--text pe-button--raised\">
+"<a tabindex=\"0\" class=\"pe-button pe-text-button pe-raised-button\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-2\"></div>
@@ -341,8 +248,7 @@ exports[`test Option: raised (with option z: 2) 1`] = `
 `;
 
 exports[`test Option: raised (with option z: 5) 1`] = `
-"<a tabindex=\"0\" class=
-\"pe-button pe-button--text pe-button--raised\">
+"<a tabindex=\"0\" class=\"pe-button pe-text-button pe-raised-button\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-5\"></div>
@@ -364,7 +270,7 @@ exports[`test Option: raised (with option z: 5) 1`] = `
 
 exports[`test Option: selected 1`] = `
 "<a tabindex=\"0\" class=
-\"pe-button pe-button--text pe-button--raised pe-button--selected\">
+\"pe-button pe-text-button pe-raised-button pe-button--selected\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -385,8 +291,7 @@ exports[`test Option: selected 1`] = `
 `;
 
 exports[`test Option: style (colors) 1`] = `
-"<a tabindex=\"0\" class=
-\"pe-button pe-button--text pe-button--raised\">
+"<a tabindex=\"0\" class=\"pe-button pe-text-button pe-raised-button\">
 <div style=
 \"background-color: rgb(239, 108, 0); color: rgb(255, 255, 255);\"
 class=\"pe-button__content\">
@@ -410,7 +315,7 @@ class=\"pe-button__content\">
 
 exports[`test Option: url (with oncreate) 1`] = `
 "<a tabindex=\"0\" href=\"#!/shadow\" class=
-\"pe-button pe-button--text pe-button--raised\">
+\"pe-button pe-text-button pe-raised-button\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -431,8 +336,7 @@ exports[`test Option: url (with oncreate) 1`] = `
 `;
 
 exports[`test Option: wash (false) 1`] = `
-"<a tabindex=\"0\" class=
-\"pe-button pe-button--text pe-button--raised\">
+"<a tabindex=\"0\" class=\"pe-button pe-text-button pe-raised-button\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -453,7 +357,7 @@ exports[`test Option: wash (false) 1`] = `
 
 exports[`test Themed button (should be red) 1`] = `
 "<a tabindex=\"0\" class=
-\"pe-button pe-button--text pe-button--raised tests-raised-button-themed-button\">
+\"pe-button pe-text-button pe-raised-button tests-raised-button-themed-button\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -475,7 +379,7 @@ exports[`test Themed button (should be red) 1`] = `
 
 exports[`test Themed button (with option disabled) 1`] = `
 "<a tabindex=\"-1\" disabled class=
-\"pe-button pe-button--text pe-button--raised pe-button--disabled tests-raised-button-themed-button\">
+\"pe-button pe-text-button pe-raised-button pe-button--disabled tests-raised-button-themed-button\">
 <div class=\"pe-button__content\">
   <div class=\"pe-button__label\">
     Disabled themed button

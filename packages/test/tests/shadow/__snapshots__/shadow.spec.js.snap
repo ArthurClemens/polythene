@@ -40,60 +40,9 @@ exports[`test Interactive option: animated 1`] = `
 "
 `;
 
-exports[`test No options 1`] = `
-"<div class=\"pe-shadow\">
-  <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-  <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
-</div>
-"
-`;
-
-exports[`test Option: after 1`] = `
-"<div class=\"pe-shadow\">
-  <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-  <div class=\"pe-shadow__top pe-shadow--z-1\"></div>After
-</div>
-"
-`;
-
-exports[`test Option: before 1`] = `
-"<div class=\"pe-shadow\">
-  Before
-  <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-  <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
-</div>
-"
-`;
-
-exports[`test Option: class 1`] = `
-"<div class=\"pe-shadow class-x\">
-  <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-  <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
-</div>
-"
-`;
-
 exports[`test Option: content 1`] = `
 "<div class=\"pe-shadow\">
   Content
-  <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-  <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
-</div>
-"
-`;
-
-exports[`test Option: element 1`] = `
-"<dl class=\"pe-shadow\">
-  <dd>
-    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
-  </dd>
-</dl>
-"
-`;
-
-exports[`test Option: id 1`] = `
-"<div id=\"id-x\" class=\"pe-shadow\">
   <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
   <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
 </div>

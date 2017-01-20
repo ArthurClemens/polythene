@@ -89,48 +89,6 @@ export const tests = [
     }
   },
 
-  // Common
-  {
-    name: "No options",
-    component,
-    attrs: null
-  },
-  {
-    name: "Option: id",
-    component,
-    attrs: {
-      id: "id-x"
-    }
-  },
-  {
-    name: "Option: class",
-    component,
-    attrs: {
-      class: "class-x"
-    }
-  },
-  {
-    name: "Option: element",
-    component,
-    attrs: {
-      element: "dl"
-    }
-  },
-  {
-    name: "Option: before",
-    component,
-    attrs: {
-      before: "Before"
-    }
-  },
-  {
-    name: "Option: after",
-    component,
-    attrs: {
-      after: "After"
-    }
-  },
-
   // Dark theme
 
   {

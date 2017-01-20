@@ -172,51 +172,6 @@ export const tests = [
     }
   },
 
-  // Common
-  {
-    name: "No options",
-    component,
-    attrs: null
-  },
-  {
-    name: "Option: id",
-    component,
-    attrs: {
-      id: "id-x"
-    }
-  },
-  {
-    name: "Option: class",
-    component,
-    attrs: {
-      class: "class-x"
-    }
-  },
-  {
-    name: "Option: element (button)",
-    component,
-    attrs: {
-      label: "button element",
-      element: "button"
-    }
-  },
-  {
-    name: "Option: before",
-    component,
-    attrs: {
-      label: "Button",
-      before: m("span", "Before")
-    }
-  },
-  {
-    name: "Option: after",
-    component,
-    attrs: {
-      label: "Button",
-      after: m("span", "After")
-    }
-  },
-
   // Dark theme
 
   {

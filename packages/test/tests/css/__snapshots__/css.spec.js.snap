@@ -1,5 +1,5 @@
 exports[`test Buttons should have different background colors 1`] = `
-"<a tabindex=\"0\" class=\"pe-button pe-button--text send-button\">
+"<a tabindex=\"0\" class=\"pe-button pe-text-button send-button\">
 <div class=\"pe-button__content\">
   <div class=\"pe-ripple pe-ripple--constrained\">
     <div class=\"pe-ripple__mask\">
@@ -12,7 +12,7 @@ exports[`test Buttons should have different background colors 1`] = `
     Send
   </div>
 </div></a><a tabindex=\"0\" class=
-\"pe-button pe-button--text info-button\">
+\"pe-button pe-text-button info-button\">
 <div class=\"pe-button__content\">
   <div class=\"pe-ripple pe-ripple--constrained\">
     <div class=\"pe-ripple__mask\">
@@ -25,7 +25,7 @@ exports[`test Buttons should have different background colors 1`] = `
     Info
   </div>
 </div></a><a tabindex=\"0\" class=
-\"pe-button pe-button--text send-button-x\">
+\"pe-button pe-text-button send-button-x\">
 <div class=\"pe-button__content\">
   <div class=\"pe-ripple pe-ripple--constrained\">
     <div class=\"pe-ripple__mask\">
@@ -38,7 +38,7 @@ exports[`test Buttons should have different background colors 1`] = `
     Send
   </div>
 </div></a><a tabindex=\"0\" class=
-\"pe-button pe-button--text info-button-x\">
+\"pe-button pe-text-button info-button-x\">
 <div class=\"pe-button__content\">
   <div class=\"pe-ripple pe-ripple--constrained\">
     <div class=\"pe-ripple__mask\">
@@ -56,7 +56,7 @@ exports[`test Buttons should have different background colors 1`] = `
 
 exports[`test Custom button 1`] = `
 "<a tabindex=\"0\" class=
-\"pe-button pe-button--text pe-button--borders secondary-button\">
+\"pe-button pe-text-button pe-button--borders secondary-button\">
 <div class=\"pe-button__content\">
   <div class=\"pe-ripple pe-ripple--constrained\">
     <div class=\"pe-ripple__mask\">

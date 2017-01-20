@@ -28,52 +28,6 @@ exports[`test Child nodes 1`] = `
 "
 `;
 
-exports[`test No options 1`] = `
-"<div class=\"pe-list\"></div>
-"
-`;
-
-exports[`test Option: after 1`] = `
-"<div class=\"pe-list pe-list--header\">
-  <div class=\"pe-list-tile pe-list__header\">
-    <div style=\"\" class=\"pe-list-tile__primary\">
-      <div class=\"pe-list-tile__content\">
-        <div class=\"pe-list-tile__title\">
-          My header
-        </div>
-      </div>
-    </div>
-  </div>
-  <div>
-    After
-  </div>
-</div>
-"
-`;
-
-exports[`test Option: before 1`] = `
-"<div class=\"pe-list pe-list--header\">
-  <div>
-    Before
-  </div>
-  <div class=\"pe-list-tile pe-list__header\">
-    <div style=\"\" class=\"pe-list-tile__primary\">
-      <div class=\"pe-list-tile__content\">
-        <div class=\"pe-list-tile__title\">
-          My header
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-"
-`;
-
-exports[`test Option: class 1`] = `
-"<div class=\"pe-list class-x\"></div>
-"
-`;
-
 exports[`test Option: compact 1`] = `
 "<div class=
 \"pe-list pe-list--borders pe-list--header pe-list--compact\">
@@ -124,11 +78,6 @@ exports[`test Option: compact 1`] = `
     </div>
   </div>
 </div>
-"
-`;
-
-exports[`test Option: element 1`] = `
-"<blockquote class=\"pe-list\"></blockquote>
 "
 `;
 
@@ -224,11 +173,6 @@ exports[`test Option: hoverable 1`] = `
     </div>
   </div>
 </div>
-"
-`;
-
-exports[`test Option: id 1`] = `
-"<div id=\"id-x\" class=\"pe-list\"></div>
 "
 `;
 

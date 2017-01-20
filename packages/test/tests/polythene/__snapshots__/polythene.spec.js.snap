@@ -1,6 +1,6 @@
 exports[`test Button (theme: red) 1`] = `
 "<a tabindex=\"0\" class=
-\"pe-button pe-button--text tests-polythene-themed-button\">
+\"pe-button pe-text-button tests-polythene-themed-button\">
 <div class=\"pe-button__content\">
   <div class=\"pe-ripple pe-ripple--constrained\">
     <div class=\"pe-ripple__mask\">
@@ -17,7 +17,7 @@ exports[`test Button (theme: red) 1`] = `
 `;
 
 exports[`test Button 1`] = `
-"<a tabindex=\"0\" class=\"pe-button pe-button--text\">
+"<a tabindex=\"0\" class=\"pe-button pe-text-button\">
 <div class=\"pe-button__content\">
   <div class=\"pe-ripple pe-ripple--constrained\">
     <div class=\"pe-ripple__mask\">
@@ -70,7 +70,7 @@ exports[`test CSS Classes: blocks should be justified horizontally 1`] = `
 `;
 
 exports[`test FAB (theme: red) 1`] = `
-"<a tabindex=\"0\" class=\"pe-button--fab tests-polythene-themed-fab\">
+"<a tabindex=\"0\" class=\"pe-fab tests-polythene-themed-fab\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -83,7 +83,7 @@ exports[`test FAB (theme: red) 1`] = `
   </div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button--fab__content\">
+  <div class=\"pe-fab__content\">
     <div class=\"pe-icon pe-icon--regular\">
       <div class=\"pe-svg\">
         <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=
@@ -100,7 +100,7 @@ exports[`test FAB (theme: red) 1`] = `
 `;
 
 exports[`test FAB 1`] = `
-"<a tabindex=\"0\" class=\"pe-button--fab\">
+"<a tabindex=\"0\" class=\"pe-fab\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -113,7 +113,7 @@ exports[`test FAB 1`] = `
   </div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button--fab__content\">
+  <div class=\"pe-fab__content\">
     <div class=\"pe-icon pe-icon--regular\">
       <div class=\"pe-svg\">
         <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=
@@ -144,7 +144,7 @@ exports[`test Icon 1`] = `
 `;
 
 exports[`test Icon Button 1`] = `
-"<a tabindex=\"0\" class=\"pe-button pe-button--icon\">
+"<a tabindex=\"0\" class=\"pe-button pe-icon-button\">
 <div class=\"pe-button__content\">
   <div class=\"pe-ripple pe-ripple--constrained\">
     <div class=\"pe-ripple__mask\">
@@ -152,7 +152,7 @@ exports[`test Icon Button 1`] = `
     </div>
   </div>
   <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button--icon__content\">
+  <div class=\"pe-icon-button__content\">
     <div class=\"pe-icon pe-icon--regular\">
       <div class=\"pe-svg\">
         <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=
@@ -265,7 +265,7 @@ exports[`test List Tile 1`] = `
 
 exports[`test Raised button (theme: red) 1`] = `
 "<a tabindex=\"0\" class=
-\"pe-button pe-button--text pe-button--raised tests-polythene-themed-raised-button\">
+\"pe-button pe-text-button pe-raised-button tests-polythene-themed-raised-button\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -286,8 +286,7 @@ exports[`test Raised button (theme: red) 1`] = `
 `;
 
 exports[`test Raised button 1`] = `
-"<a tabindex=\"0\" class=
-\"pe-button pe-button--text pe-button--raised\">
+"<a tabindex=\"0\" class=\"pe-button pe-text-button pe-raised-button\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -340,7 +339,7 @@ exports[`test Tabs 1`] = `
 "<div id=\"\" class=\"pe-tabs pe-tabs--start pe-tabs--autofit\">
   <div class=\"pe-tabs__row\">
     <a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-button--selected pe-tabs__tab\">
+    \"pe-button pe-text-button pe-button--selected pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -354,7 +353,7 @@ exports[`test Tabs 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -368,7 +367,7 @@ exports[`test Tabs 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -390,7 +389,7 @@ exports[`test Tabs 1`] = `
 
 exports[`test Toolbar 1`] = `
 "<div class=\"pe-toolbar\">
-  <a tabindex=\"0\" class=\"pe-button pe-button--icon\">
+  <a tabindex=\"0\" class=\"pe-button pe-icon-button\">
   <div class=\"pe-button__content\">
     <div class=\"pe-ripple pe-ripple--constrained\">
       <div class=\"pe-ripple__mask\">
@@ -398,7 +397,7 @@ exports[`test Toolbar 1`] = `
       </div>
     </div>
     <div class=\"pe-button__focus\"></div>
-    <div class=\"pe-button--icon__content\">
+    <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
           <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
@@ -410,7 +409,7 @@ exports[`test Toolbar 1`] = `
       </div>
     </div>
   </div></a><span>Title</span><a tabindex=\"0\" class=
-  \"pe-button pe-button--icon\">
+  \"pe-button pe-icon-button\">
   <div class=\"pe-button__content\">
     <div class=\"pe-ripple pe-ripple--constrained\">
       <div class=\"pe-ripple__mask\">
@@ -418,7 +417,7 @@ exports[`test Toolbar 1`] = `
       </div>
     </div>
     <div class=\"pe-button__focus\"></div>
-    <div class=\"pe-button--icon__content\">
+    <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
           <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"

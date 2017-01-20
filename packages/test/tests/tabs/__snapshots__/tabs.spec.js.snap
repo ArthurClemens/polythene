@@ -2,7 +2,7 @@ exports[`test Child node 1`] = `
 "<div id=\"\" class=\"pe-tabs pe-tabs--start\">
   <div class=\"pe-tabs__row\">
     <a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-button--selected pe-tabs__tab\">
+    \"pe-button pe-text-button pe-button--selected pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -16,7 +16,7 @@ exports[`test Child node 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -30,7 +30,7 @@ exports[`test Child node 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -55,7 +55,7 @@ exports[`test Long labels: wrap to second line 1`] = `
 \"pe-tabs pe-tabs--start pe-tabs--autofit tests-tabs-fixed-width\">
   <div class=\"pe-tabs__row\">
     <a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-button--selected pe-tabs__tab\">
+    \"pe-button pe-text-button pe-button--selected pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -69,7 +69,7 @@ exports[`test Long labels: wrap to second line 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -83,7 +83,7 @@ exports[`test Long labels: wrap to second line 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -107,7 +107,7 @@ exports[`test Option: autofit (true) 1`] = `
 "<div id=\"\" class=\"pe-tabs pe-tabs--start pe-tabs--autofit\">
   <div class=\"pe-tabs__row\">
     <a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-button--selected pe-tabs__tab\">
+    \"pe-button pe-text-button pe-button--selected pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -121,7 +121,7 @@ exports[`test Option: autofit (true) 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -135,7 +135,7 @@ exports[`test Option: autofit (true) 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -159,7 +159,7 @@ exports[`test Option: buttons (text buttons) -- dark theme 1`] = `
 "<div id=\"\" class=\"pe-tabs pe-tabs--start\">
   <div class=\"pe-tabs__row\">
     <a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-button--selected pe-tabs__tab\">
+    \"pe-button pe-text-button pe-button--selected pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -173,7 +173,7 @@ exports[`test Option: buttons (text buttons) -- dark theme 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -187,7 +187,7 @@ exports[`test Option: buttons (text buttons) -- dark theme 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -211,7 +211,7 @@ exports[`test Option: buttons (text buttons) 1`] = `
 "<div id=\"\" class=\"pe-tabs pe-tabs--start\">
   <div class=\"pe-tabs__row\">
     <a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-button--selected pe-tabs__tab\">
+    \"pe-button pe-text-button pe-button--selected pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -225,7 +225,7 @@ exports[`test Option: buttons (text buttons) 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -239,7 +239,7 @@ exports[`test Option: buttons (text buttons) 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -263,7 +263,7 @@ exports[`test Option: centered (no autofit) 1`] = `
 "<div id=\"\" class=\"pe-tabs pe-tabs--start\">
   <div class=\"pe-tabs__row pe-tabs__row--centered\">
     <a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-button--selected pe-tabs__tab\">
+    \"pe-button pe-text-button pe-button--selected pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -277,7 +277,7 @@ exports[`test Option: centered (no autofit) 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -291,7 +291,7 @@ exports[`test Option: centered (no autofit) 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -315,7 +315,7 @@ exports[`test Option: content 1`] = `
 "<div id=\"\" class=\"pe-tabs pe-tabs--start\">
   <div class=\"pe-tabs__row\">
     <a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-button--selected pe-tabs__tab\">
+    \"pe-button pe-text-button pe-button--selected pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -329,7 +329,7 @@ exports[`test Option: content 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -343,7 +343,7 @@ exports[`test Option: content 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -374,7 +374,7 @@ exports[`test Option: getState 1`] = `
 <div id=\"\" class=\"pe-tabs pe-tabs--start pe-tabs--autofit\">
   <div class=\"pe-tabs__row\">
     <a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-button--selected pe-tabs__tab\">
+    \"pe-button pe-text-button pe-button--selected pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -388,7 +388,7 @@ exports[`test Option: getState 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -402,7 +402,7 @@ exports[`test Option: getState 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -426,7 +426,7 @@ exports[`test Option: hideIndicator 1`] = `
 "<div id=\"\" class=\"pe-tabs pe-tabs--start pe-tabs--autofit\">
   <div class=\"pe-tabs__row\">
     <a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-button--selected pe-tabs__tab\">
+    \"pe-button pe-text-button pe-button--selected pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -440,7 +440,7 @@ exports[`test Option: hideIndicator 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -454,7 +454,7 @@ exports[`test Option: hideIndicator 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -477,7 +477,7 @@ exports[`test Option: largestWidth (no autofit) 1`] = `
 "<div id=\"\" class=\"pe-tabs pe-tabs--start\">
   <div class=\"pe-tabs__row\">
     <a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-button--selected pe-tabs__tab\">
+    \"pe-button pe-text-button pe-button--selected pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -491,7 +491,7 @@ exports[`test Option: largestWidth (no autofit) 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -505,7 +505,7 @@ exports[`test Option: largestWidth (no autofit) 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -529,7 +529,7 @@ exports[`test Option: noIndicatorSlide 1`] = `
 "<div id=\"\" class=\"pe-tabs pe-tabs--start pe-tabs--autofit\">
   <div class=\"pe-tabs__row\">
     <a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-button--selected pe-tabs__tab\">
+    \"pe-button pe-text-button pe-button--selected pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -543,7 +543,7 @@ exports[`test Option: noIndicatorSlide 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -557,7 +557,7 @@ exports[`test Option: noIndicatorSlide 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -580,7 +580,7 @@ exports[`test Option: noIndicatorSlide 1`] = `
 exports[`test Option: selectedTab (1) 1`] = `
 "<div id=\"\" class=\"pe-tabs pe-tabs--autofit\">
   <div class=\"pe-tabs__row\">
-    <a tabindex=\"0\" class=\"pe-button pe-button--text pe-tabs__tab\">
+    <a tabindex=\"0\" class=\"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -594,7 +594,7 @@ exports[`test Option: selectedTab (1) 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-button--selected pe-tabs__tab\">
+    \"pe-button pe-text-button pe-button--selected pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -608,7 +608,7 @@ exports[`test Option: selectedTab (1) 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -632,7 +632,7 @@ exports[`test Option: tabsOpts (ink: false) 1`] = `
 "<div id=\"\" class=\"pe-tabs pe-tabs--start pe-tabs--autofit\">
   <div class=\"pe-tabs__row\">
     <a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-button--selected pe-tabs__tab\">
+    \"pe-button pe-text-button pe-button--selected pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-button__focus\"></div>
       <div class=\"pe-tabs__tab-content\">
@@ -641,7 +641,7 @@ exports[`test Option: tabsOpts (ink: false) 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-button__focus\"></div>
       <div class=\"pe-tabs__tab-content\">
@@ -650,7 +650,7 @@ exports[`test Option: tabsOpts (ink: false) 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-button__focus\"></div>
       <div class=\"pe-tabs__tab-content\">
@@ -669,7 +669,7 @@ exports[`test Option: tabsOpts (style - colors) 1`] = `
 "<div id=\"\" class=\"pe-tabs pe-tabs--start pe-tabs--autofit\">
   <div class=\"pe-tabs__row\">
     <a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-button--selected pe-tabs__tab\">
+    \"pe-button pe-text-button pe-button--selected pe-tabs__tab\">
     <div style=
     \"background-color: rgb(239, 108, 0); color: rgb(255, 255, 255);\"
     class=\"pe-button__content\">
@@ -685,7 +685,7 @@ exports[`test Option: tabsOpts (style - colors) 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div style=
     \"background-color: rgb(239, 108, 0); color: rgb(255, 255, 255);\"
     class=\"pe-button__content\">
@@ -701,7 +701,7 @@ exports[`test Option: tabsOpts (style - colors) 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div style=
     \"background-color: rgb(239, 108, 0); color: rgb(255, 255, 255);\"
     class=\"pe-button__content\">
@@ -727,7 +727,7 @@ exports[`test Tabs with icons -- dark theme 1`] = `
 "<div id=\"\" class=\"pe-tabs pe-tabs--start pe-tabs--autofit\">
   <div class=\"pe-tabs__row\">
     <a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-button--selected pe-tabs__tab\">
+    \"pe-button pe-text-button pe-button--selected pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -752,7 +752,7 @@ exports[`test Tabs with icons -- dark theme 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -777,7 +777,7 @@ exports[`test Tabs with icons -- dark theme 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -812,7 +812,7 @@ exports[`test Tabs with icons 1`] = `
 "<div id=\"\" class=\"pe-tabs pe-tabs--start pe-tabs--autofit\">
   <div class=\"pe-tabs__row\">
     <a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-button--selected pe-tabs__tab\">
+    \"pe-button pe-text-button pe-button--selected pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -837,7 +837,7 @@ exports[`test Tabs with icons 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -862,7 +862,7 @@ exports[`test Tabs with icons 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -897,7 +897,7 @@ exports[`test Tabs with icons and text 1`] = `
 "<div id=\"\" class=\"pe-tabs pe-tabs--start pe-tabs--autofit\">
   <div class=\"pe-tabs__row\">
     <a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-button--selected pe-tabs__tab pe-tabs__tab---icon\">
+    \"pe-button pe-text-button pe-button--selected pe-tabs__tab pe-tabs__tab---icon\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -925,7 +925,7 @@ exports[`test Tabs with icons and text 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab pe-tabs__tab---icon\">
+    \"pe-button pe-text-button pe-tabs__tab pe-tabs__tab---icon\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -953,7 +953,7 @@ exports[`test Tabs with icons and text 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab pe-tabs__tab---icon\">
+    \"pe-button pe-text-button pe-tabs__tab pe-tabs__tab---icon\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -992,7 +992,7 @@ exports[`test Theme: custom colors -- dark theme 1`] = `
 \"pe-tabs pe-tabs--start pe-tabs--autofit tests-tabs-custom_color\">
   <div class=\"pe-tabs__row\">
     <a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-button--selected pe-tabs__tab\">
+    \"pe-button pe-text-button pe-button--selected pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -1006,7 +1006,7 @@ exports[`test Theme: custom colors -- dark theme 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -1020,7 +1020,7 @@ exports[`test Theme: custom colors -- dark theme 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -1045,7 +1045,7 @@ exports[`test Theme: custom colors 1`] = `
 \"pe-tabs pe-tabs--start pe-tabs--autofit tests-tabs-custom_color\">
   <div class=\"pe-tabs__row\">
     <a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-button--selected pe-tabs__tab\">
+    \"pe-button pe-text-button pe-button--selected pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -1059,7 +1059,7 @@ exports[`test Theme: custom colors 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -1073,7 +1073,7 @@ exports[`test Theme: custom colors 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -1097,7 +1097,7 @@ exports[`test Theme: small fixed width 1`] = `
 "<div id=\"\" class=\"pe-tabs pe-tabs--start tests-tabs-fixed-width\">
   <div class=\"pe-tabs__row pe-tabs__row--centered\">
     <a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-button--selected pe-tabs__tab\">
+    \"pe-button pe-text-button pe-button--selected pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -1111,7 +1111,7 @@ exports[`test Theme: small fixed width 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -1125,7 +1125,7 @@ exports[`test Theme: small fixed width 1`] = `
         </div>
       </div>
     </div></a><a tabindex=\"0\" class=
-    \"pe-button pe-button--text pe-tabs__tab\">
+    \"pe-button pe-text-button pe-tabs__tab\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">

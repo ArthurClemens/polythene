@@ -18,56 +18,6 @@ exports[`test Child node 1`] = `
 "
 `;
 
-exports[`test No options 1`] = `
-"<div class=\"pe-list-tile\">
-  <div style=\"\" class=\"pe-list-tile__primary\">
-    <div class=\"pe-list-tile__content\"></div>
-  </div>
-</div>
-"
-`;
-
-exports[`test Option: after 1`] = `
-"<div class=\"pe-list-tile\">
-  <div style=\"\" class=\"pe-list-tile__primary\">
-    <div class=\"pe-list-tile__content\">
-      <div class=\"pe-list-tile__title\">
-        Ancillary Justice
-      </div>
-    </div>
-  </div>
-  <div>
-    After
-  </div>
-</div>
-"
-`;
-
-exports[`test Option: before 1`] = `
-"<div class=\"pe-list-tile\">
-  <div>
-    Before
-  </div>
-  <div style=\"\" class=\"pe-list-tile__primary\">
-    <div class=\"pe-list-tile__content\">
-      <div class=\"pe-list-tile__title\">
-        Ancillary Justice
-      </div>
-    </div>
-  </div>
-</div>
-"
-`;
-
-exports[`test Option: class 1`] = `
-"<div class=\"pe-list-tile class-x\">
-  <div style=\"\" class=\"pe-list-tile__primary\">
-    <div class=\"pe-list-tile__content\"></div>
-  </div>
-</div>
-"
-`;
-
 exports[`test Option: content 1`] = `
 "<div class=\"pe-list-tile\">
   <div style=\"\" class=\"pe-list-tile__primary\">
@@ -110,15 +60,6 @@ exports[`test Option: disabled url 1`] = `
     </div>
   </div></a>
 </div>
-"
-`;
-
-exports[`test Option: element 1`] = `
-"<blockquote class=\"pe-list-tile\">
-  <blockquote style=\"\" class=\"pe-list-tile__primary\">
-    <div class=\"pe-list-tile__content\"></div>
-  </blockquote>
-</blockquote>
 "
 `;
 
@@ -304,15 +245,6 @@ exports[`test Option: href 1`] = `
       Ancillary Justice
     </div>
   </div></a>
-</div>
-"
-`;
-
-exports[`test Option: id 1`] = `
-"<div id=\"id-x\" class=\"pe-list-tile\">
-  <div style=\"\" class=\"pe-list-tile__primary\">
-    <div class=\"pe-list-tile__content\"></div>
-  </div>
 </div>
 "
 `;

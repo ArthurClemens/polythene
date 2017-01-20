@@ -1,5 +1,5 @@
 exports[`test Child node 1`] = `
-"<a tabindex=\"0\" class=\"pe-button--fab\">
+"<a tabindex=\"0\" class=\"pe-fab\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -12,7 +12,7 @@ exports[`test Child node 1`] = `
   </div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button--fab__content\">
+  <div class=\"pe-fab__content\">
     <div class=\"pe-icon pe-icon--regular\">
       <div class=\"pe-svg\">
         <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=
@@ -29,7 +29,7 @@ exports[`test Child node 1`] = `
 `;
 
 exports[`test Colored icon 1`] = `
-"<a tabindex=\"0\" class=\"pe-button--fab\">
+"<a tabindex=\"0\" class=\"pe-fab\">
 <div style=\"color: rgb(51, 51, 51);\" class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -42,7 +42,7 @@ exports[`test Colored icon 1`] = `
   </div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button--fab__content\">
+  <div class=\"pe-fab__content\">
     <div class=\"pe-icon pe-icon--regular\">
       <div class=\"pe-svg\">
         <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=
@@ -54,64 +54,12 @@ exports[`test Colored icon 1`] = `
       </div>
     </div>
   </div>
-</div></a>
-"
-`;
-
-exports[`test No options 1`] = `
-"<a tabindex=\"0\" class=\"pe-button--fab\">
-<div class=\"pe-button__content\">
-  <div class=\"pe-shadow pe-shadow--animated\">
-    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
-  </div>
-  <div class=\"pe-ripple pe-ripple--constrained\">
-    <div class=\"pe-ripple__mask\">
-      <div class=\"pe-ripple__waves\"></div>
-    </div>
-  </div>
-  <div class=\"pe-button__wash\"></div>
-  <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button--fab__content\"></div>
-</div></a>
-"
-`;
-
-exports[`test Option: after 1`] = `
-"<a tabindex=\"0\" class=\"pe-button--fab\">
-<div class=\"pe-button__content\">
-  <div class=\"pe-shadow pe-shadow--animated\">
-    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
-  </div>
-  <div class=\"pe-ripple pe-ripple--constrained\">
-    <div class=\"pe-ripple__mask\">
-      <div class=\"pe-ripple__waves\"></div>
-    </div>
-  </div>
-  <div class=\"pe-button__wash\"></div>
-  <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button--fab__content\">
-    <div class=\"pe-icon pe-icon--regular\">
-      <div class=\"pe-svg\">
-        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=
-        \"24\" viewbox=\"0 0 24 24\">
-          <path d=
-          \"M7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3V9z\">
-          </path>
-        </svg>
-      </div>
-    </div>
-  </div>
-</div>
-<div style=\"font-size: 16px; line-height: 1rem;\">
-  After
 </div></a>
 "
 `;
 
 exports[`test Option: animateOnTap (false) 1`] = `
-"<a tabindex=\"0\" class=\"pe-button--fab\">
+"<a tabindex=\"0\" class=\"pe-fab\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -124,7 +72,7 @@ exports[`test Option: animateOnTap (false) 1`] = `
   </div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button--fab__content\">
+  <div class=\"pe-fab__content\">
     <div class=\"pe-icon pe-icon--regular\">
       <div class=\"pe-svg\">
         <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=
@@ -136,64 +84,12 @@ exports[`test Option: animateOnTap (false) 1`] = `
       </div>
     </div>
   </div>
-</div></a>
-"
-`;
-
-exports[`test Option: before 1`] = `
-"<a tabindex=\"0\" class=\"pe-button--fab\">
-<div style=\"font-size: 16px; line-height: 1rem;\">
-  Before
-</div>
-<div class=\"pe-button__content\">
-  <div class=\"pe-shadow pe-shadow--animated\">
-    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
-  </div>
-  <div class=\"pe-ripple pe-ripple--constrained\">
-    <div class=\"pe-ripple__mask\">
-      <div class=\"pe-ripple__waves\"></div>
-    </div>
-  </div>
-  <div class=\"pe-button__wash\"></div>
-  <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button--fab__content\">
-    <div class=\"pe-icon pe-icon--regular\">
-      <div class=\"pe-svg\">
-        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=
-        \"24\" viewbox=\"0 0 24 24\">
-          <path d=
-          \"M7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3V9z\">
-          </path>
-        </svg>
-      </div>
-    </div>
-  </div>
-</div></a>
-"
-`;
-
-exports[`test Option: class 1`] = `
-"<a tabindex=\"0\" class=\"pe-button--fab class-x\">
-<div class=\"pe-button__content\">
-  <div class=\"pe-shadow pe-shadow--animated\">
-    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
-  </div>
-  <div class=\"pe-ripple pe-ripple--constrained\">
-    <div class=\"pe-ripple__mask\">
-      <div class=\"pe-ripple__waves\"></div>
-    </div>
-  </div>
-  <div class=\"pe-button__wash\"></div>
-  <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button--fab__content\"></div>
 </div></a>
 "
 `;
 
 exports[`test Option: content 1`] = `
-"<a tabindex=\"0\" class=\"pe-button--fab\">
+"<a tabindex=\"0\" class=\"pe-fab\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -220,28 +116,8 @@ exports[`test Option: content 1`] = `
 "
 `;
 
-exports[`test Option: element 1`] = `
-"<div tabindex=\"0\" class=\"pe-button--fab\">
-  <div class=\"pe-button__content\">
-    <div class=\"pe-shadow pe-shadow--animated\">
-      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
-    </div>
-    <div class=\"pe-ripple pe-ripple--constrained\">
-      <div class=\"pe-ripple__mask\">
-        <div class=\"pe-ripple__waves\"></div>
-      </div>
-    </div>
-    <div class=\"pe-button__wash\"></div>
-    <div class=\"pe-button__focus\"></div>
-    <div class=\"pe-button--fab__content\"></div>
-  </div>
-</div>
-"
-`;
-
 exports[`test Option: icon -- dark theme 1`] = `
-"<a tabindex=\"0\" class=\"pe-button--fab\">
+"<a tabindex=\"0\" class=\"pe-fab\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -254,7 +130,7 @@ exports[`test Option: icon -- dark theme 1`] = `
   </div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button--fab__content\">
+  <div class=\"pe-fab__content\">
     <div class=\"pe-icon pe-icon--regular\">
       <div class=\"pe-svg\">
         <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=
@@ -271,7 +147,7 @@ exports[`test Option: icon -- dark theme 1`] = `
 `;
 
 exports[`test Option: icon 1`] = `
-"<a tabindex=\"0\" class=\"pe-button--fab\">
+"<a tabindex=\"0\" class=\"pe-fab\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -284,7 +160,7 @@ exports[`test Option: icon 1`] = `
   </div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button--fab__content\">
+  <div class=\"pe-fab__content\">
     <div class=\"pe-icon pe-icon--regular\">
       <div class=\"pe-svg\">
         <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=
@@ -300,27 +176,8 @@ exports[`test Option: icon 1`] = `
 "
 `;
 
-exports[`test Option: id 1`] = `
-"<a id=\"id-x\" tabindex=\"0\" class=\"pe-button--fab\">
-<div class=\"pe-button__content\">
-  <div class=\"pe-shadow pe-shadow--animated\">
-    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
-  </div>
-  <div class=\"pe-ripple pe-ripple--constrained\">
-    <div class=\"pe-ripple__mask\">
-      <div class=\"pe-ripple__waves\"></div>
-    </div>
-  </div>
-  <div class=\"pe-button__wash\"></div>
-  <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button--fab__content\"></div>
-</div></a>
-"
-`;
-
 exports[`test Option: mini 1`] = `
-"<a tabindex=\"0\" class=\"pe-button--fab pe-button--fab-mini\">
+"<a tabindex=\"0\" class=\"pe-fab pe-fab--mini\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -333,7 +190,7 @@ exports[`test Option: mini 1`] = `
   </div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button--fab__content\">
+  <div class=\"pe-fab__content\">
     <div class=\"pe-icon pe-icon--regular\">
       <div class=\"pe-svg\">
         <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=
@@ -350,7 +207,7 @@ exports[`test Option: mini 1`] = `
 `;
 
 exports[`test Option: style (colors) 1`] = `
-"<a tabindex=\"0\" class=\"pe-button--fab\">
+"<a tabindex=\"0\" class=\"pe-fab\">
 <div style=
 \"color: rgb(255, 204, 188); background-color: rgb(78, 52, 46);\"
 class=\"pe-button__content\">
@@ -365,7 +222,7 @@ class=\"pe-button__content\">
   </div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button--fab__content\">
+  <div class=\"pe-fab__content\">
     <div class=\"pe-icon pe-icon--regular\">
       <div class=\"pe-svg\">
         <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=
@@ -382,7 +239,7 @@ class=\"pe-button__content\">
 `;
 
 exports[`test Option: url 1`] = `
-"<a tabindex=\"0\" href=\"#!/shadow\" class=\"pe-button--fab\">
+"<a tabindex=\"0\" href=\"#!/shadow\" class=\"pe-fab\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -395,7 +252,7 @@ exports[`test Option: url 1`] = `
   </div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button--fab__content\">
+  <div class=\"pe-fab__content\">
     <div class=\"pe-icon pe-icon--regular\">
       <div class=\"pe-svg\">
         <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=
@@ -412,7 +269,7 @@ exports[`test Option: url 1`] = `
 `;
 
 exports[`test Option: z (0) 1`] = `
-"<a tabindex=\"0\" class=\"pe-button--fab\">
+"<a tabindex=\"0\" class=\"pe-fab\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-0\"></div>
@@ -425,7 +282,7 @@ exports[`test Option: z (0) 1`] = `
   </div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button--fab__content\">
+  <div class=\"pe-fab__content\">
     <div class=\"pe-icon pe-icon--regular\">
       <div class=\"pe-svg\">
         <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=
@@ -442,7 +299,7 @@ exports[`test Option: z (0) 1`] = `
 `;
 
 exports[`test Option: z (5) 1`] = `
-"<a tabindex=\"0\" class=\"pe-button--fab\">
+"<a tabindex=\"0\" class=\"pe-fab\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-5\"></div>
@@ -455,7 +312,7 @@ exports[`test Option: z (5) 1`] = `
   </div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button--fab__content\">
+  <div class=\"pe-fab__content\">
     <div class=\"pe-icon pe-icon--regular\">
       <div class=\"pe-svg\">
         <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=
@@ -472,7 +329,7 @@ exports[`test Option: z (5) 1`] = `
 `;
 
 exports[`test Themed FAB (colors) 1`] = `
-"<a tabindex=\"0\" class=\"pe-button--fab tests-fab-themed-fab\">
+"<a tabindex=\"0\" class=\"pe-fab tests-fab-themed-fab\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -485,7 +342,7 @@ exports[`test Themed FAB (colors) 1`] = `
   </div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button--fab__content\">
+  <div class=\"pe-fab__content\">
     <div class=\"pe-icon pe-icon--regular\">
       <div class=\"pe-svg\">
         <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=
@@ -502,7 +359,7 @@ exports[`test Themed FAB (colors) 1`] = `
 `;
 
 exports[`test Themed FAB -- dark theme 1`] = `
-"<a tabindex=\"0\" class=\"pe-button--fab tests-fab-themed-fab\">
+"<a tabindex=\"0\" class=\"pe-fab tests-fab-themed-fab\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -515,7 +372,7 @@ exports[`test Themed FAB -- dark theme 1`] = `
   </div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button--fab__content\">
+  <div class=\"pe-fab__content\">
     <div class=\"pe-icon pe-icon--regular\">
       <div class=\"pe-svg\">
         <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=

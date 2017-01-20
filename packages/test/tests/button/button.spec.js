@@ -39,6 +39,11 @@ describe("Button component", () => {
     expect(html).toContain("<button ");
     expect(html).toContain("</button>");
   });
+  it("option tabindex", () => {
+    const cmp = m(component, {tabindex: 3});
+    const html = tidy(cmp);
+    expect(html).toContain("tabindex=\"3\"");
+  });
   it("option before", () => {
     const cmp = m(component, {before: m("span", "Before")});
     const html = tidy(cmp);
