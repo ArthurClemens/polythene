@@ -24,6 +24,9 @@ const add = (id, ...styles) => {
 * styles: list of lists style Objects
 */
 const addToDocument = (opts, ...styles) => {
+	if(typeof window === "undefined"){
+		return;
+	}
     const id = opts.id;
     const documentRef = opts.document || window.document;
     remove(id);

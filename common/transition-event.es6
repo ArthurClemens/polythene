@@ -1,5 +1,8 @@
 
 export default () => {
+	if(typeof window === "undefined"){
+		return;
+	}
     const el = document.createElement('fakeelement');
     const animations = {
         'animation': 'animationend',

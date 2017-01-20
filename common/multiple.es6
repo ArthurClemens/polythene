@@ -170,11 +170,15 @@ const multiple = (mOpts) => {
                 return item.show;
             });
             if (!toShowItems.length) {
-                document.body.classList.remove(mOpts.bodyShowClass);
+				if(typeof document !== "undefined") {
+	                document.body.classList.remove(mOpts.bodyShowClass);
+				}
                 // placeholder because we cannot return null
                 return m(mOpts.noneTag);
             } else {
-                document.body.classList.add(mOpts.bodyShowClass);
+				if(typeof document !== "undefined") {
+                	document.body.classList.add(mOpts.bodyShowClass);
+				}
             }
             return m(mOpts.tag, toShowItems.map((itemData) => {
                 return m.component(mOpts.instance, Object.assign({}, itemData, {

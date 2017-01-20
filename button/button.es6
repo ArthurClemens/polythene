@@ -22,8 +22,13 @@ const CSS_CLASSES = {
 
 const MAX_Z = 5;
 
-const startType = window.PointerEvent ? 'pointerdown' : (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) ? 'touchstart' : 'mousedown';
-const endType = window.PointerEvent ? 'pointerup' : (('ontouchend' in window) || window.DocumentTouch && document instanceof DocumentTouch) ? 'touchend' : 'mouseup';
+let startType = 'mousedown';
+let endType = 'mouseup';
+
+if(typeof window !== "undefined") {
+	startType = window.PointerEvent ? 'pointerdown' : (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) ? 'touchstart' : 'mousedown';
+	endType = window.PointerEvent ? 'pointerup' : (('ontouchend' in window) || window.DocumentTouch && document instanceof DocumentTouch) ? 'touchend' : 'mouseup';
+}
 
 let tapStart,
     tapEnd,
@@ -57,6 +62,9 @@ const inactivate = (ctrl, opts) => {
 };
 
 const initTapEvents = (el, ctrl, opts) => {
+	if(typeof window === "undefined") {
+		return;
+	}
     const tapHandler = (ctrl, opts, name) => {
         if (name === 'down') {
             downButtons.push({ctrl, opts});
@@ -84,6 +92,9 @@ const initTapEvents = (el, ctrl, opts) => {
 };
 
 const clearTapEvents = function(el) {
+	if(typeof window === "undefined") {
+		return;
+	}
     el.removeEventListener(startType, tapStart);
     el.removeEventListener(endType, tapEnd);
     window.removeEventListener(endType, tapEndAll);
@@ -151,7 +162,7 @@ const createView = (ctrl, opts = {}) => {
                 if (e.which === 13 && ctrl.focus && ctrl.el) {
                     // ENTER
                     const event = new MouseEvent('click', {
-                        view: window,
+                        view: typeof window !== "undefined"? window: {},
                         bubbles: true,
                         cancelable: true
                     });
