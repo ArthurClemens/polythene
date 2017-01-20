@@ -42,6 +42,7 @@ var layout = (function (selector) {
   return [defineProperty({}, selector, [mixin.fit(), {
     color: "inherit",
     borderRadius: "inherit",
+    pointerEvents: "none",
 
     "&.pe-ripple--constrained": {
       borderRadius: "inherit",

@@ -6,7 +6,8 @@ export default selector => [{
     mixin.fit(), {
       color: "inherit",
       borderRadius: "inherit",
-
+      pointerEvents: "none",
+      
       "&.pe-ripple--constrained": {
         borderRadius: "inherit",
 
