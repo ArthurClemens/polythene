@@ -20,23 +20,10 @@ component.theme(".tests-button-bordered-button", {
 
 export const tests = [
   {
-    name: "Child node",
-    component,
-    attrs: {},
-    children: ["Child"]
-  },
-  {
     name: "Option: label",
     component,
     attrs: {
       label: "Label"
-    }
-  },
-  {
-    name: "Option: content",
-    component,
-    attrs: {
-      content: m("div", "Content")
     }
   },
   {
@@ -216,51 +203,6 @@ export const tests = [
     attrs: {
       label: "Inactivated for 2s",
       inactivate: 2
-    }
-  },
-
-  // Common
-  {
-    name: "No options",
-    component,
-    attrs: null
-  },
-  {
-    name: "Option: id",
-    component,
-    attrs: {
-      id: "id-x"
-    }
-  },
-  {
-    name: "Option: class",
-    component,
-    attrs: {
-      class: "class-x"
-    }
-  },
-  {
-    name: "Option: element (button)",
-    component,
-    attrs: {
-      label: "button element",
-      element: "button"
-    }
-  },
-  {
-    name: "Option: before",
-    component,
-    attrs: {
-      label: "Button",
-      before: m("span", "Before")
-    }
-  },
-  {
-    name: "Option: after",
-    component,
-    attrs: {
-      label: "Button",
-      after: m("span", "After")
     }
   },
 
