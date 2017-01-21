@@ -2,7 +2,7 @@
 
 <a class="btn-demo" href="http://arthurclemens.github.io/Polythene-examples/index.html#/list-tile">Demo</a>
 
-Displays a list element as part of a [list](#list).
+Displays a list element as part of a [list](../polythene-list).
 
 
 
@@ -153,12 +153,12 @@ const myListTile = m(listTile, {
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **indent** | optional | Boolean | | Set to `true` to indent the content |
 | **selected** | optional | Boolean | false | Set to `true` to show a selected state; adds class "selected" |
-| **disabled** | optional | Boolean | false | Set to `true` to deactivate the url and hover state (in case of [list](#list) with setting `hoverable`) and show a disabled state; adds class "disabled" |
+| **disabled** | optional | Boolean | false | Set to `true` to deactivate the url and hover state (in case of [list](../polythene-list) with setting `hoverable`) and show a disabled state; adds class "disabled" |
 | **ink** | optional | Boolean | false | Set to `true` to show a ripple effect when the tile is tapped |
-| **ripple** | optional (valid if `ink` is `true`) | Options object | | Pass [ripple](#ripple) options to define ripple behavior |
+| **ripple** | optional (valid if `ink` is `true`) | Options object | | Pass [ripple](../polythene-ripple) options to define ripple behavior |
 | **hoverable** | optional | Boolean | false | Set to true to show a hover effect (non-touch devices) |
 | **selectable** | optional | Boolean | false | Set to true to show a mouse pointer (non-touch devices) |
-| **sticky** | optional | Boolean | | Make list tile sticky when scrolling; this is normally set in the [list](#list) component as `header.sticky`; [does not work in Chrome or IE/Edge](http://caniuse.com/#feat=css-sticky); adds class "sticky" |
+| **sticky** | optional | Boolean | | Make list tile sticky when scrolling; this is normally set in the [list](../polythene-list) component as `header.sticky`; [does not work in Chrome or IE/Edge](http://caniuse.com/#feat=css-sticky); adds class "sticky" |
 | **compact** | optional | Boolean | | Set to `true` to reduce vertical padding |
 
 ### List tile primary content options
@@ -177,7 +177,7 @@ const myListTile = m(listTile, {
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **secondary.element** | optional | String | See "Layout of secondary content" below | HTML element for secondary content |
-| **secondary.icon** | optional | Object |  | [icon](#icon) options object for icon in secondary content; will be placed above secondary.content |
+| **secondary.icon** | optional | Object |  | [icon](../polythene-icon) options object for icon in secondary content; will be placed above secondary.content |
 | **secondary.url** | optional | Object with `href`, optionally `oncreate` | | URL for secondary content; for in-app route linking set `oncreate : m.route.link` |
 | **secondary.content** | optional | Mithril element | | Secondary content |
 
@@ -187,8 +187,8 @@ const myListTile = m(listTile, {
 
 List Tile is composed from:
 
-* [Ripple](#ripple) (when option `ink` is used)
-* [Icon](#icon) (when option `secondary.icon` is used)
+* [Ripple](../polythene-ripple) (when option `ink` is used)
+* [Icon](../polythene-icon) (when option `secondary.icon` is used)
 
 
 

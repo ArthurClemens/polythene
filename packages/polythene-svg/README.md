@@ -4,7 +4,7 @@
 
 Simple wrapper for SVG XML.
 
-This is a low-level and simple stupid module for handling SVGs. If you want to use SVG for icons, the best method is to use [icon](#icon) directly.
+This is a low-level and simple stupid module for handling SVGs. If you want to use SVG for icons, the best method is to use [icon](../polythene-icon) directly.
 
 
 
@@ -59,7 +59,7 @@ const mySvg = m(svg, {
 
 ## Usage with icon
 
-SVG options can be passed to [icon](#icon):
+SVG options can be passed to [icon](../polythene-icon):
 
 ~~~javascript
 import { icon } from "polythene-icon";

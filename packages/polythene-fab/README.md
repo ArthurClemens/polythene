@@ -2,7 +2,7 @@
 
 <a class="btn-demo" href="http://arthurclemens.github.io/Polythene-examples/index.html#/fab">Demo</a>
 
-A circular main button with a [shadow](#shadow) and [ripple](#ripple) effect.
+A circular main button with a [shadow](../polythene-shadow) and [ripple](../polythene-ripple) effect.
 
 
 
@@ -33,7 +33,7 @@ FAB's default colors are:
 
 Below are examples how to change the FAB appearance, either with a theme or with CSS.
 
-You can find more information about theming in [Theme](#theme).
+You can find more information about theming in [Theme](../polythene-theme).
 
 #### Themed component
 
@@ -90,7 +90,7 @@ m(fab, {
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **icon** | use `icon` or `content` | Object |  | [icon](#icon) options object |
+| **icon** | use `icon` or `content` | Object |  | [icon](../polythene-icon) options object |
 | **mini** | optional | Boolean | false | Set to true to display a small button (class name `pe-fab--mini`) |
 
 
@@ -99,9 +99,9 @@ m(fab, {
 
 FAB is composed from:
 
-* [Raised Button](#raised-button)
-  * [Button](#button)
-* [Icon](#icon) (when using option `icon`)
+* [Raised Button](../polythene-raised-button)
+  * [Button](../polythene-button)
+* [Icon](../polythene-icon) (when using option `icon`)
 
 Differences to button behaviour:
 

@@ -1,8 +1,8 @@
 # Raised Button
 
-Displays a text button with a [shadow](#shadow) effect.
+Displays a text button with a [shadow](../polythene-shadow) effect.
 
-See also: [(flat) Button](#button), [Icon Button](#icon-button) and [Floating Action Button](#fab)
+See also: [(flat) Button](../polythene-button), [Icon Button](../polythene-icon-button) and [Floating Action Button](../polythene-fab)
 
 
 
@@ -21,7 +21,7 @@ const myButton = m(raisedButton, {
 
 ## Options
 
-All options for [Button](#button) also apply to Raised button, with additionally:
+All options for [Button](../polythene-button) also apply to Raised button, with additionally:
 
 ### Raised button options
 
@@ -37,9 +37,9 @@ All options for [Button](#button) also apply to Raised button, with additionally
 
 Button is composed from:
 
-* [Button](#button)
-  * [Ripple](#ripple) (when option `ink` is not `false`)
-* [Shadow](#shadow) 
+* [Button](../polythene-button)
+  * [Ripple](../polythene-ripple) (when option `ink` is not `false`)
+* [Shadow](../polythene-shadow) 
 
 
 

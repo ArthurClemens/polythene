@@ -55,7 +55,7 @@ const myTabs = m(tabs, {
 }, tabButtons)
 ~~~
 
-Each tab is converted to a [Button](#button). The button options can be set with `tabsOpts`.
+Each tab is converted to a [Button](../polythene-button). The button options can be set with `tabsOpts`.
 
 For example to disable the ripple (ink) effect:
 
@@ -239,8 +239,8 @@ m(tabs, {
 | **autofit** | optional | Boolean | false | Set to true to let the buttons fill the button row |
 | **scrollable** | optional | Boolean | false | Set to true to make the button row scrollable; this automatically sets `autofit` to `false`; on no-touch devices 2 scroll buttons will be added to navigate tabs |
 | **activeSelected** | optional | Boolean | | Set to `true` to enabled clicks/taps on the selected tab button |
-| **scrollIconBackward** | optional | [Icon](#icon) options object | | Overrides default arrow icon |
-| **scrollIconForward** | optional | [Icon](#icon) options object | | Overrides default arrow icon |
+| **scrollIconBackward** | optional | [Icon](../polythene-icon) options object | | Overrides default arrow icon |
+| **scrollIconForward** | optional | [Icon](../polythene-icon) options object | | Overrides default arrow icon |
 | **centered** | optional | Boolean | false | Set to true to center the button row; this automatically sets `autofit` to `false` |
 | **largestWidth** | optional | Boolean | false | Set to true to make all tabs the width of the largest tab |
 | **selectedTab** | optional | Number | 0 | The Array index of the selected tab |
@@ -249,7 +249,7 @@ m(tabs, {
 
 ### Tab button options
 
-Tab buttons use the same parameters as [button](#button), except for `wash` (disabled), `raised` and `z` (makes visually no difference).
+Tab buttons use the same parameters as [button](../polythene-button), except for `wash` (disabled), `raised` and `z` (makes visually no difference).
 
 These options can be grouped into `tabsOpts` and applied to all tabs.
 
@@ -270,9 +270,9 @@ These options can be grouped into `tabsOpts` and applied to all tabs.
 
 Tabs is composed from:
 
-* [Button](#button)
-* [Icon](#icon) (when `icon` is passed instead of `label`)
-* [Icon Button](#icon-button) (for scroll buttons)
+* [Button](../polythene-button)
+* [Icon](../polythene-icon) (when `icon` is passed instead of `label`)
+* [Icon Button](../polythene-icon-button) (for scroll buttons)
 
 
 

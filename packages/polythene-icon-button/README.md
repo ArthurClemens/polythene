@@ -2,7 +2,7 @@
 
 <a class="btn-demo" href="http://arthurclemens.github.io/Polythene-examples/index.html#/icon-button">Demo</a>
 
-Displays an [icon](#icon) as a button. Also called toggle button.
+Displays an [icon](../polythene-icon) as a button. Also called toggle button.
 
 
 
@@ -34,7 +34,7 @@ const myIconButton = m(iconButton, {
 });
 ~~~
 
-or pass a [svg](#svg) option object:
+or pass a [svg](../polythene-svg) option object:
 
 ~~~javascript
 const myIconButton = m(iconButton, {
@@ -137,7 +137,7 @@ Pass `type` to the `icon` parameter, or use CSS.
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **icon**      | either icon or child nodes must be passed | Object |  | [icon](#icon) options object; also used to show an round "avatar" portrait image |
+| **icon**      | either icon or child nodes must be passed | Object |  | [icon](../polythene-icon) options object; also used to show an round "avatar" portrait image |
 | **compact**   | optional | Boolean | | Set to `true` to use less padding |
 
 
@@ -146,8 +146,8 @@ Pass `type` to the `icon` parameter, or use CSS.
 
 Icon Button is composed from:
 
-* [Button](#button)
-* [Icon](#icon) (when using option `icon`)
+* [Button](../polythene-button)
+* [Icon](../polythene-icon) (when using option `icon`)
 
 
 

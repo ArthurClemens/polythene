@@ -2,7 +2,7 @@
 
 <a class="btn-demo" href="http://arthurclemens.github.io/Polythene-examples/index.html#/icon">Demo</a>
 
-Displays an icon (image or [SVG](#svg)).
+Displays an icon (image or [SVG](../polythene-svg)).
 
 
 
@@ -36,7 +36,7 @@ module.exports = m.trust("paste svg contents here");
 
 ### Using SVG files
 
-To use SVG instead of an image, pass an [svg](#svg) option object:
+To use SVG instead of an image, pass an [svg](../polythene-svg) option object:
 
 ~~~javascript
 const myIcon = m(icon, {
@@ -85,7 +85,7 @@ const myIcon = m(icon, {
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **msvg**      | either `src` or `svg` or `msvg` must be passed | Mithril element |  | Mithril-ified SVG icon |
-| **svg**       | either `src` or `svg` or `msvg` must be passed | Object |  | [svg](#svg) options object |
+| **svg**       | either `src` or `svg` or `msvg` must be passed | Object |  | [svg](../polythene-svg) options object |
 | **src**       | either `src` or `svg` or `msvg` must be passed | String |  | Icon URL (for `img` only) |
 | **type**      | optional | String | "regular" | Sets the size: either "small" (16px), "regular" (24px), "medium" (32px), "large" (40px). Adds CSS class `pe-icon--small`, etcetera |
 | **avatar**    | optional | Boolean | | Set to `true` to add class `pe-icon--avatar` which creates a round image |
@@ -96,7 +96,7 @@ const myIcon = m(icon, {
 
 Icon is composed from:
 
-* [SVG](#svg) (when using option `svg` or `msvg`)
+* [SVG](../polythene-svg) (when using option `svg` or `msvg`)
 
 
 

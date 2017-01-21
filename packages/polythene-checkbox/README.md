@@ -65,7 +65,7 @@ m(checkbox, {
 
 Below are examples how to change the checkbox appearance, either with a theme or with CSS.
 
-You can find more information about theming in [Theme](#theme).
+You can find more information about theming in [Theme](../polythene-theme).
 
 #### Themed component
 
@@ -102,7 +102,7 @@ m(button, {
 
 ### Icons
 
-To use alternative icons, use options `iconOn` and `iconOff` (see also "msvg" at [icon](#icon)):
+To use alternative icons, use options `iconOn` and `iconOff` (see also "msvg" at [icon](../polythene-icon)):
 
 ~~~javascript
 import iconStar from "mmsvg/google/msvg/toggle/star";
@@ -144,10 +144,10 @@ m(checkbox, {
 
 | **Parameter**  |  **Mandatory** | **Type** | **Default** | **Description** |
 | -------------- | -------------- | -------- | ----------- | --------------- |
-| **iconOn**     | optional | Options object for [icon](#icon) | | Assigns a different icon for the on state |
-| **iconOff**    | optional | Options object for [icon](#icon) | | Assigns a different icon for the off state |
+| **iconOn**     | optional | Options object for [icon](../polythene-icon) | | Assigns a different icon for the on state |
+| **iconOff**    | optional | Options object for [icon](../polythene-icon) | | Assigns a different icon for the off state |
 | **iconButton** | optional | Options object for the icon button | | Add attributes like `wash` and `ink` |
-| **size**       | optional | String | "regular" | Equivalent to [icon"s type](#icon) option; either "small" (16px), "regular" (24px), "medium" (32px), "large" (40px) |
+| **size**       | optional | String | "regular" | Equivalent to [icon's type](../polythene-icon) option; either "small" (16px), "regular" (24px), "medium" (32px), "large" (40px) |
 
 ### Dynamic values
 
@@ -162,15 +162,15 @@ m(checkbox, {
 
 Checkbox is composed from:
 
-* [Selection control](#selection-control)
-  * [Icon button](#icon-button)
-  * [Icon](#icon)
+* [Selection control](../polythene-selection-control)
+  * [Icon button](../polythene-icon-button)
+  * [Icon](../polythene-icon)
 
 
 
 ## CSS classes
 
-See also: [Selection control classes](#selection-control) 
+See also: [Selection control classes](../polythene-selection-control) 
 
 ### Control
 

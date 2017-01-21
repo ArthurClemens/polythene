@@ -2,9 +2,9 @@
 
 <a class="btn-demo" href="http://arthurclemens.github.io/Polythene-examples/index.html#/list">Demo</a>
 
-Displays a list of [list tiles](#list-tile), with an optional header. Lists can be stacked.
+Displays a list of [list tiles](../polythene-list-tile), with an optional header. Lists can be stacked.
 
-Lists are also the base component of [menus](#menu).
+Lists are also the base component of [menus](../polythene-menu).
 
 
 
@@ -28,7 +28,7 @@ const myList = m(list, {
 
 The header will be also rendered using a list tile.
 
-See [list tile](#list-tile) for layout variations, for example to add links, icons and images. For example:
+See [list tile](../polythene-list-tile) for layout variations, for example to add links, icons and images. For example:
 
 ~~~javascript
 import m from "mithril";
@@ -67,7 +67,7 @@ const myList = m(list, {
 > align the subheader with the text content.
 > [source](http://www.google.com/design/spec/components/subheaders.html#subheaders-list-subheaders)
 
-In this situation we want to indent the list-header, and if we show borders, indent them too. We do so by adding the parameter `indent` to the header [list tiles](#list-tile), and set `indentedBorders` to true. For example:
+In this situation we want to indent the list-header, and if we show borders, indent them too. We do so by adding the parameter `indent` to the header [list tiles](../polythene-list-tile), and set `indentedBorders` to true. For example:
 
 ~~~javascript
 import m from "mithril";
@@ -124,10 +124,10 @@ If you do choose to use it, add some styles to the container that holds the list
 
 | **Parameter**     |  **Mandatory** | **Type** | **Default** | **Description** |
 | ----------------- | -------------- | -------- | ----------- | --------------- |
-| **header**        | optional | Object | | Options object for a [list tile](#list-tile); any list tile option can be used ,and in addition the options `title` and `sticky` |
+| **header**        | optional | Object | | Options object for a [list tile](../polythene-list-tile); any list tile option can be used ,and in addition the options `title` and `sticky` |
 | **header.title**  | optional | String | | Title text label |
 | **header.sticky** | optional | Boolean | | Make header sticky when scrolling; [does not work in Chrome](http://caniuse.com/#feat=css-sticky) |
-| **tiles**         | use `tiles` or `content` | Array of type Mithril element | | List of [list tiles](#list-tile) |
+| **tiles**         | use `tiles` or `content` | Array of type Mithril element | | List of [list tiles](../polythene-list-tile) |
 
 ### List appearance options
 
@@ -145,7 +145,7 @@ If you do choose to use it, add some styles to the container that holds the list
 
 List is composed from:
 
-* [List Tile](#list-tile)
+* [List Tile](../polythene-list-tile)
 
 
 

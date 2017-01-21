@@ -2,9 +2,9 @@
 
 Base functionality for:
 
-* [Checkbox](#checkbox)
-* [Radio button](#radio-button)
-* [Switch](#switch)
+* [Checkbox](../polythene-checkbox)
+* [Radio button](../polythene-radio-button)
+* [Switch](../polythene-switch)
 
 
 

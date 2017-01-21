@@ -3,9 +3,9 @@
 <a class="btn-demo" href="http://arthurclemens.github.io/Polythene-examples/index.html#/button">Demo</a>
 -->
 
-Displays a text button with a [ripple](#ripple) effect.
+Displays a text button with a [ripple](../polythene-ripple) effect.
 
-See also: [Raised Button](#raised-button), [Icon Button](#icon-button) and [Floating Action Button](#fab)
+See also: [Raised Button](../polythene-raised-button), [Icon Button](../polythene-icon-button) and [Floating Action Button](../polythene-fab)
 
 
 
@@ -49,7 +49,7 @@ const myButton = m(button, {
 
 * The hover effect can be hidden with `wash: false`.
 * The ripple effect on click can be hidden with `ink: false`.
-* Button contains no icon as this is not part of the Material Design guidelines; use [icon Button](#icon-button) instead
+* Button contains no icon as this is not part of the Material Design guidelines; use [icon Button](../polythene-icon-button) instead
 
 
 
@@ -69,7 +69,7 @@ import "polythene-fastclick";
 
 Below are examples how to change the button appearance, either with a theme or with CSS.
 
-You can find more information about theming in [Theme](#theme).
+You can find more information about theming in [Theme](../polythene-theme).
 
 #### Themed component
 
@@ -142,7 +142,7 @@ m(button, {
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **wash** | optional | Boolean | true | Set to false to hide the effect on hover |
 | **ink** | optional | Boolean | true | Set to false to disable the ripple effect on click/tap |
-| **ripple** | optional (valid if `ink` is `true`) | Options object | | Pass [ripple](#ripple) options to define ripple behavior |
+| **ripple** | optional (valid if `ink` is `true`) | Options object | | Pass [ripple](../polythene-ripple) options to define ripple behavior |
 | **increase** | optional | Number | 1 | The z-index increment/decrement on tap; note that the maximum z value is 5 |
 | **borders** | optional | Boolean | false | Set to `true` to add a border; by default the border has no color - set border color to class `pe-button__content` to see the border |
 
@@ -152,7 +152,7 @@ m(button, {
 
 Button is composed from:
 
-* [Ripple](#ripple) (when option `ink` is not `false`)
+* [Ripple](../polythene-ripple) (when option `ink` is not `false`)
 
 
 
@@ -179,3 +179,4 @@ Button is composed from:
 ## Future
 
 * Option to wait for ripple to finish before url/event is followed
+
