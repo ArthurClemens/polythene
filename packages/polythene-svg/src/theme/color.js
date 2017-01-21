@@ -3,10 +3,9 @@ const style = (scope, selector, componentVars, tint) => {
   const color = componentVars["color_" + tint] || "currentcolor";
   return [{
     [scope + selector]: {
-      fill: color,
+      color: "inherit",
 
       " svg": {
-        fill: color,
         color: "inherit",
 
         " path, rect, circle, polygon": {

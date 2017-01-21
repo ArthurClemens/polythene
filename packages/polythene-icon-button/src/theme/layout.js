@@ -15,7 +15,7 @@ export default (selector, componentVars) => [{
       padding: componentVars.padding + "px"
     },
 
-    "&.pe-icon-button--compact": {
+    ".pe-icon-button--compact": {
       " .pe-icon-button__content": {
         padding: componentVars.padding_compact + "px"
       }

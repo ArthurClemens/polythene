@@ -17,7 +17,7 @@ export default (selector, componentVars) => [{
       position: "relative",
       overflow: "hidden",
 
-      "&.pe-list-tile--sticky": [
+      ".pe-list-tile--sticky": [
         mixin.sticky(2)
       ],
 
@@ -51,7 +51,7 @@ export default (selector, componentVars) => [{
         flex.layoutVertical,
         flex.selfCenter,
         paddingH(componentVars.side_padding), {
-          "&.pe-list-tile__content--front": [
+          ".pe-list-tile__content--front": [
             paddingV(componentVars.padding - 5), {
               width: componentVars.front_item_width + "px"
             }
@@ -80,7 +80,7 @@ export default (selector, componentVars) => [{
           "font-size": componentVars.font_size_subtitle + "px",
           "line-height": componentVars.line_height_subtitle + "px",
 
-          "&.pe-list-tile__high-subtitle": [
+          ".pe-list-tile__high-subtitle": [
             mixin.ellipsis(componentVars.high_subtitle_line_count, componentVars.line_height_subtitle), {
               "white-space": "normal"
             }
@@ -88,13 +88,13 @@ export default (selector, componentVars) => [{
         }
       ],
 
-      "&.pe-list-tile--selected, &.pe-list-tile--disabled": {
+      ".pe-list-tile--selected, &.pe-list-tile--disabled": {
         " a": {
           "pointer-events": "none"
         }
       },
 
-      "&.pe-list-tile--subtitle": {
+      ".pe-list-tile--subtitle": {
         " .pe-list-tile__content": [
           paddingV(componentVars.has_subtitle_padding, componentVars.has_subtitle_padding + 1), {
             " .pe-list-tile__title": {
@@ -104,7 +104,7 @@ export default (selector, componentVars) => [{
         ]
       },
 
-      "&.pe-list-tile--high-subtitle": {
+      ".pe-list-tile--high-subtitle": {
         " .pe-list-tile--high-subtitle .pe-list-tile__secondary": [
           flex.layoutHorizontal,
           flex.layoutStart
@@ -120,7 +120,7 @@ export default (selector, componentVars) => [{
       },
 
       // List header
-      "&.pe-list__header": {
+      ".pe-list__header": {
         height: componentVars.single_height + "px",
 
         " .pe-list-tile__content": {
@@ -140,7 +140,7 @@ export default (selector, componentVars) => [{
       // Compact list
 
       " .pe-list--compact &, &.pe-list-tile--compact": {
-        "&:not(.pe-list__header)": {
+        ":not(.pe-list__header)": {
           " .pe-list-tile__content": paddingV(componentVars.compact_padding, componentVars.compact_padding + 1)
         }
       },
@@ -159,7 +159,7 @@ export default (selector, componentVars) => [{
       },
 
       ".pe-menu__content &": {
-        "&:not(.pe-list-tile--disabled)": {
+        ":not(.pe-list-tile--disabled)": {
           cursor: "default",
 
           "&, .pe-list-tile__primary, .pe-list-tile__secondary": {
@@ -178,7 +178,7 @@ export default (selector, componentVars) => [{
       html.pe-no-touch .pe-list--selectable &, \
       html.pe-no-touch &.pe-list-tile--hoverable, \
       html.pe-no-touch &.pe-list-tile--selectable": {
-        "&:not(.pe-list__header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected):hover": {
+        ":not(.pe-list__header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected):hover": {
           cursor: "pointer"
         }
       }

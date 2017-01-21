@@ -39,10 +39,9 @@ var _extends = Object.assign || function (target) {
 var style = function style(scope, selector, componentVars, tint) {
   var color = componentVars["color_" + tint] || "currentcolor";
   return [defineProperty({}, scope + selector, {
-    fill: color,
+    color: "inherit",
 
     " svg": {
-      fill: color,
       color: "inherit",
 
       " path, rect, circle, polygon": {

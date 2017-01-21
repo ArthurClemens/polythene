@@ -1,5 +1,7 @@
 export { button } from "polythene-button";
 
+export { checkbox } from "polythene-checkbox";
+
 export {
   defaultVariables,
   isTouch, touchStartEvent, touchEndEvent,

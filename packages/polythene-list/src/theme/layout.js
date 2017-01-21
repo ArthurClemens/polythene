@@ -9,11 +9,11 @@ export default (selector, componentVars) => [{
   [selector]: {
     padding: componentVars.padding + "px 0",
 
-    "&.pe-list--header": {
+    ".pe-list--header": {
       paddingTop: 0
     },
 
-    "&.pe-list--compact": {
+    ".pe-list--compact": {
       padding: componentVars.padding_compact + "px 0",
     },
 
@@ -24,19 +24,19 @@ export default (selector, componentVars) => [{
       }
     ],
 
-    "&.pe-list--borders": {
+    ".pe-list--borders": {
       " .pe-list-tile:not(.pe-list__header)": {
-        "&:not(:last-child)": {
+        ":not(:last-child)": {
           "&": borderStyle(componentVars)
         }
       }
     },
 
-    "&.pe-list--indented-borders": {
+    ".pe-list--indented-borders": {
       borderTop: "none",
 
       " .pe-list-tile:not(.pe-list__header)": {
-        "&:not(:last-child)": {
+        ":not(:last-child)": {
           " .pe-list-tile__content:not(.pe-list-tile__content--front)": borderStyle(componentVars)
         }
       }

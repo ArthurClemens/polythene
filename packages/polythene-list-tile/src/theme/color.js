@@ -34,7 +34,7 @@ const style = (scope, selector, componentVars, tint) => [{
 
 const noTouchStyle = (scope, selector, componentVars, tint) => [{
   [scope + selector + ":hover"]: {
-    "&:not(.pe-list__header):not(.pe-list-tile--disabled)": {
+    ":not(.pe-list__header):not(.pe-list-tile--disabled)": {
       " .pe-list-tile__primary, pe-list-tile__secondary": {
         backgroundColor: componentVars["color_" + tint + "_background_hover"]
       }

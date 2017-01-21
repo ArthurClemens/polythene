@@ -1,4 +1,5 @@
 import { button } from 'polythene-button';
+import { checkbox } from 'polythene-checkbox';
 import { animationEndEvent, defaultVariables, emit, filterSupportedAttributes, isTouch, subscribe, throttle, touchEndEvent, touchStartEvent, unsubscribe } from 'polythene-core';
 import { flex, mixin, styler } from 'polythene-css';
 import { fab } from 'polythene-fab';
@@ -16,7 +17,7 @@ import { vars } from 'polythene-theme';
 
 
 
-export { button, defaultVariables, isTouch, touchStartEvent, touchEndEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, filterSupportedAttributes, mixin, flex, styler, fab, icon, iconButton, list, listTile, raisedButton, ripple, shadow, svg, tabs, toolbar, vars };
+export { button, checkbox, defaultVariables, isTouch, touchStartEvent, touchEndEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, filterSupportedAttributes, mixin, flex, styler, fab, icon, iconButton, list, listTile, raisedButton, ripple, shadow, svg, tabs, toolbar, vars };
 
 export * from 'polythene-fastclick';
 export * from 'polythene-css-classes';

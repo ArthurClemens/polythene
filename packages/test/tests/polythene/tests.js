@@ -68,6 +68,13 @@ export const tests = [
     }
   },
   {
+    name: "Checkbox",
+    component: polythene.checkbox,
+    attrs: {
+      label: "Label"
+    }
+  },
+  {
     name: "FAB",
     component: polythene.fab,
     attrs: {

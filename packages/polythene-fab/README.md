@@ -38,7 +38,7 @@ You can find more information about theming in [Theme](#theme).
 #### Themed component
 
 ~~~javascript
-component.theme(".themed-fab", {
+fab.theme(".themed-fab", {
   color_light_background: "#2196F3",
   color_dark_background:  "#0097A7",
   color_light:            "#fff",

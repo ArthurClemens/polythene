@@ -14,7 +14,7 @@ const style = (scope, selector, componentVars, tint) => {
         borderColor: normalBorder
       },
 
-      "&.pe-button--disabled": {
+      ".pe-button--disabled": {
         color: componentVars["color_" + tint + "_disabled_text"],
 
         " .pe-button__content": {
@@ -23,7 +23,7 @@ const style = (scope, selector, componentVars, tint) => {
         }
       },
 
-      "&.pe-button--selected": {
+      ".pe-button--selected": {
         " .pe-button__content": {
           backgroundColor: componentVars["color_" + tint + "_active_background"],
           borderColor: activeBorder
@@ -34,7 +34,7 @@ const style = (scope, selector, componentVars, tint) => {
         }
       },
 
-      "&.pe-button--focus": {
+      ".pe-button--focus": {
         " .pe-button__focus": {
           opacity: 1,
           backgroundColor: componentVars["color_" + tint + "_focus_background"]
@@ -49,7 +49,7 @@ const noTouchStyle = (scope, selector, componentVars, tint) => {
   const hoverBorder = componentVars["color_" + tint + "_border"] || normalBorder;
   return [{
     [scope + selector + ":hover"]: {
-      "&:not(.pe-button--selected):not(.pe-button--inactive) .pe-button__wash": {
+      ":not(.pe-button--selected):not(.pe-button--inactive) .pe-button__wash": {
         backgroundColor: componentVars["color_" + tint + "_hover_background"],
         borderColor: hoverBorder
       }

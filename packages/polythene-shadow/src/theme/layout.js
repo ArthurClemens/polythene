@@ -19,7 +19,7 @@ export default (selector, componentVars) => [{
         }
       ],
 
-      "&.pe-shadow--animated": {
+      ".pe-shadow--animated": {
         " .pe-shadow__bottom, .pe-shadow__top": mixin.vendorize({
           "transition": componentVars.transition
         }, vars.prefixes_transition)

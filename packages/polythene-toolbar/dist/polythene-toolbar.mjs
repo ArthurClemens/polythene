@@ -65,7 +65,7 @@ var layout = (function (selector, componentVars) {
     lineHeight: componentVars.line_height + "em",
     padding: "0 " + componentVars.padding_side + "px",
 
-    "&.pe-toolbar--compact": {
+    ".pe-toolbar--compact": {
       height: componentVars.height_compact + "px"
     },
 

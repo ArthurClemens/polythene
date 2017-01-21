@@ -74,7 +74,7 @@ You can find more information about theming in [Theme](#theme).
 #### Themed component
 
 ~~~javascript
-component.theme(".bordered-button", {
+button.theme(".bordered-button", {
   color_light_text:   "#673ab7",
   color_light_border: "#673ab7",
   color_dark_text:    "yellow",

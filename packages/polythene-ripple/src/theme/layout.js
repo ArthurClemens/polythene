@@ -8,7 +8,7 @@ export default selector => [{
       borderRadius: "inherit",
       pointerEvents: "none",
       
-      "&.pe-ripple--constrained": {
+      ".pe-ripple--constrained": {
         borderRadius: "inherit",
 
         " .pe-ripple__mask": {

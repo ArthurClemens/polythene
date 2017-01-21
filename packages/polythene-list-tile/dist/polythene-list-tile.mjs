@@ -113,7 +113,7 @@ var layout = (function (selector, componentVars) {
     position: "relative",
     overflow: "hidden",
 
-    "&.pe-list-tile--sticky": [mixin.sticky(2)],
+    ".pe-list-tile--sticky": [mixin.sticky(2)],
 
     " .pe-list-tile__primary, .pe-list-tile__secondary": [flex.layoutHorizontal, {
       "text-decoration": "none",
@@ -134,7 +134,7 @@ var layout = (function (selector, componentVars) {
     },
 
     " .pe-list-tile__content": [flex.layoutVertical, flex.selfCenter, paddingH(componentVars.side_padding), {
-      "&.pe-list-tile__content--front": [paddingV(componentVars.padding - 5), {
+      ".pe-list-tile__content--front": [paddingV(componentVars.padding - 5), {
         width: componentVars.front_item_width + "px"
       }],
 
@@ -157,18 +157,18 @@ var layout = (function (selector, componentVars) {
       "font-size": componentVars.font_size_subtitle + "px",
       "line-height": componentVars.line_height_subtitle + "px",
 
-      "&.pe-list-tile__high-subtitle": [mixin.ellipsis(componentVars.high_subtitle_line_count, componentVars.line_height_subtitle), {
+      ".pe-list-tile__high-subtitle": [mixin.ellipsis(componentVars.high_subtitle_line_count, componentVars.line_height_subtitle), {
         "white-space": "normal"
       }]
     }],
 
-    "&.pe-list-tile--selected, &.pe-list-tile--disabled": {
+    ".pe-list-tile--selected, &.pe-list-tile--disabled": {
       " a": {
         "pointer-events": "none"
       }
     },
 
-    "&.pe-list-tile--subtitle": {
+    ".pe-list-tile--subtitle": {
       " .pe-list-tile__content": [paddingV(componentVars.has_subtitle_padding, componentVars.has_subtitle_padding + 1), {
         " .pe-list-tile__title": {
           padding: 0
@@ -176,7 +176,7 @@ var layout = (function (selector, componentVars) {
       }]
     },
 
-    "&.pe-list-tile--high-subtitle": {
+    ".pe-list-tile--high-subtitle": {
       " .pe-list-tile--high-subtitle .pe-list-tile__secondary": [flex.layoutHorizontal, flex.layoutStart],
       " .pe-list-tile__content": [flex.selfStart, paddingV(componentVars.has_high_subtitle_padding, componentVars.has_high_subtitle_padding + 1), {
         " .pe-list-tile__title": {
@@ -186,7 +186,7 @@ var layout = (function (selector, componentVars) {
     },
 
     // List header
-    "&.pe-list__header": {
+    ".pe-list__header": {
       height: componentVars.single_height + "px",
 
       " .pe-list-tile__content": {
@@ -204,7 +204,7 @@ var layout = (function (selector, componentVars) {
     // Compact list
 
     " .pe-list--compact &, &.pe-list-tile--compact": {
-      "&:not(.pe-list__header)": {
+      ":not(.pe-list__header)": {
         " .pe-list-tile__content": paddingV(componentVars.compact_padding, componentVars.compact_padding + 1)
       }
     },
@@ -223,7 +223,7 @@ var layout = (function (selector, componentVars) {
     },
 
     ".pe-menu__content &": {
-      "&:not(.pe-list-tile--disabled)": {
+      ":not(.pe-list-tile--disabled)": {
         cursor: "default",
 
         "&, .pe-list-tile__primary, .pe-list-tile__secondary": {
@@ -240,7 +240,7 @@ var layout = (function (selector, componentVars) {
       html.pe-no-touch .pe-list--selectable &, \
       html.pe-no-touch &.pe-list-tile--hoverable, \
       html.pe-no-touch &.pe-list-tile--selectable": {
-      "&:not(.pe-list__header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected):hover": {
+      ":not(.pe-list__header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected):hover": {
         cursor: "pointer"
       }
     }
@@ -283,7 +283,7 @@ var style = function style(scope, selector, componentVars, tint) {
 
 var noTouchStyle = function noTouchStyle(scope, selector, componentVars, tint) {
   return [defineProperty({}, scope + selector + ":hover", {
-    "&:not(.pe-list__header):not(.pe-list-tile--disabled)": {
+    ":not(.pe-list__header):not(.pe-list-tile--disabled)": {
       " .pe-list-tile__primary, pe-list-tile__secondary": {
         backgroundColor: componentVars["color_" + tint + "_background_hover"]
       }

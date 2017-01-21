@@ -8,14 +8,14 @@ const style = (scope, selector, componentVars, tint) => {
         opacity: componentVars["color_" + tint + "_wash_opacity"]
       },
 
-      "&.pe-button--focus, &.pe-button--selected": {
+      ".pe-button--focus, &.pe-button--selected": {
         " .pe-button__focus": {
           opacity: componentVars["color_" + tint + "_focus_opacity"],
           backgroundColor: "currentcolor"
         }
       },
 
-      "&.pe-button--disabled": {
+      ".pe-button--disabled": {
         color: componentVars["color_" + tint + "_disabled"]
       }
     }

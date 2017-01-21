@@ -59,11 +59,11 @@ var layout = (function (selector, componentVars) {
   return [defineProperty({}, selector, {
     padding: componentVars.padding + "px 0",
 
-    "&.pe-list--header": {
+    ".pe-list--header": {
       paddingTop: 0
     },
 
-    "&.pe-list--compact": {
+    ".pe-list--compact": {
       padding: componentVars.padding_compact + "px 0"
     },
 
@@ -72,19 +72,19 @@ var layout = (function (selector, componentVars) {
       borderWidth: componentVars.border_width_stacked + "px"
     }],
 
-    "&.pe-list--borders": {
+    ".pe-list--borders": {
       " .pe-list-tile:not(.pe-list__header)": {
-        "&:not(:last-child)": {
+        ":not(:last-child)": {
           "&": borderStyle(componentVars)
         }
       }
     },
 
-    "&.pe-list--indented-borders": {
+    ".pe-list--indented-borders": {
       borderTop: "none",
 
       " .pe-list-tile:not(.pe-list__header)": {
-        "&:not(:last-child)": {
+        ":not(:last-child)": {
           " .pe-list-tile__content:not(.pe-list-tile__content--front)": borderStyle(componentVars)
         }
       }
@@ -98,15 +98,15 @@ var style = function style(scope, selector, componentVars, tint) {
   return [(_ref = {}, defineProperty(_ref, scope + selector, {
     backgroundColor: componentVars["color_" + tint + "_background"],
 
-    "&.pe-list--borders": {
+    ".pe-list--borders": {
       " .pe-list-tile:not(.pe-list__header)": {
-        "&:not(:last-child)": {
+        ":not(:last-child)": {
           borderColor: componentVars["color_" + tint + "_border"]
         }
       }
     },
 
-    "&.pe-list--indented-borders": {
+    ".pe-list--indented-borders": {
       " .pe-list-tile:not(.pe-list__header)": {
         " .pe-list-tile__content:not(.pe-list-tile__content--front)": {
           borderColor: componentVars["color_" + tint + "_border"]

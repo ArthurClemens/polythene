@@ -93,7 +93,7 @@ var layout = (function (selector, componentVars) {
       "display": "none"
     },
 
-    "&.pe-tabs--menu": {
+    ".pe-tabs--menu": {
       // reset sizes to fit within a small space
       " .pe-tabs__tab": {
         height: componentVars.menu_tab_height + "px"
@@ -121,7 +121,7 @@ var layout = (function (selector, componentVars) {
       }
     },
 
-    "&.pe-tabs--scrollable": {
+    ".pe-tabs--scrollable": {
       // hide scrollbar (this approach is required for Firefox)
       "max-height": componentVars.tab_height + "px",
       "-ms-overflow-style": "none",
@@ -137,7 +137,7 @@ var layout = (function (selector, componentVars) {
     },
 
     " .pe-no-touch &": {
-      "&.pe-tabs--scrollable": {
+      ".pe-tabs--scrollable": {
         backgroundColor: "inherit"
       },
 
@@ -163,7 +163,7 @@ var layout = (function (selector, componentVars) {
           opacity: componentVars.scroll_button_opacity
         }]
       },
-      "&.pe-tabs--start .pe-tabs__scroll-button-start": {
+      ".pe-tabs--start .pe-tabs__scroll-button-start": {
         pointerEvents: "none",
         cursor: "default",
 
@@ -171,7 +171,7 @@ var layout = (function (selector, componentVars) {
           opacity: 0
         }
       },
-      "&.pe-tabs--end .pe-tabs__scroll-button-end": {
+      ".pe-tabs--end .pe-tabs__scroll-button-end": {
         pointerEvents: "none",
         cursor: "default",
 
@@ -236,12 +236,12 @@ var layout = (function (selector, componentVars) {
           display: "none"
         }
       },
-      "&.pe-button--selected": {
+      ".pe-button--selected": {
         " .pe-button__content .pe-button__label": {
           opacity: 1
         }
       },
-      "&.pe-tabs__tab---icon": {
+      ".pe-tabs__tab---icon": {
         "&, .pe-button__content": [{
           height: componentVars.tab_icon_label_height + "px"
         }, {
@@ -260,12 +260,12 @@ var layout = (function (selector, componentVars) {
       height: "inherit"
     }],
 
-    "&.pe-tabs--autofit .pe-tabs__tab": [flex.flex(), {
+    ".pe-tabs--autofit .pe-tabs__tab": [flex.flex(), {
       minWidth: "initial",
       maxWidth: "none"
     }],
 
-    "&.pe-tabs__active-selectable": {
+    ".pe-tabs__active-selectable": {
       " .pe-tabs__tab.pe-button--selected": {
         cursor: "pointer",
         pointerEvents: "initial"
@@ -303,7 +303,7 @@ var layout = (function (selector, componentVars) {
     }]
 
   }, "@media (min-width: " + vars$2.breakpoint_small_tablet_portrait + "px)", {
-    "&:not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit) .pe-tabs__tab": {
+    ":not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit) .pe-tabs__tab": {
       minWidth: componentVars.tab_min_width_tablet + "px"
     }
   })])];

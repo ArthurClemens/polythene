@@ -58,7 +58,7 @@ body {
   height: 100px;
 }
 .interactive:not(.pe-dark-theme) {
-  background-color: #B3E5FC;
+  background-color: #E1F5FE;
 }
 .header-row,
 .result-row {
