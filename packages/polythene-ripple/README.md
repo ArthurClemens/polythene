@@ -1,7 +1,5 @@
 # Ripple
 
-<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-examples/index.html#/ripple">Demo</a>
-
 Adds a touch ripple effect to an element.
 
 Buttons contain a ripple element by default. This page documents how to add a ripple to other components.

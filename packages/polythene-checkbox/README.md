@@ -1,7 +1,5 @@
 # Checkbox
 
-<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-examples/index.html#/checkbox">Demo</a>
-
 Form control to select multiple options from a set. Generates a styled checkbox input element.
 
 
@@ -12,7 +10,7 @@ To create an unselected checkbox with `name` and `value` attributes:
 
 ~~~javascript
 import m from "mithril";
-import checkbox from "polythene-checkbox";
+import { checkbox } from "polythene-checkbox";
 
 m(checkbox, {
   name: "organisation",

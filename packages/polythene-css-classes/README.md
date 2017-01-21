@@ -1,7 +1,5 @@
 # CSS Classes
 
-<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-examples/index.html#/layout">Demo</a>
-
 Provides common and flexbox classes.
 
 ## Usage

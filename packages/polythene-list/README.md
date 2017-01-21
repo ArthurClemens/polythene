@@ -1,7 +1,5 @@
 # List
 
-<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-examples/index.html#/list">Demo</a>
-
 Displays a list of [list tiles](../polythene-list-tile), with an optional header. Lists can be stacked.
 
 Lists are also the base component of [menus](../polythene-menu).

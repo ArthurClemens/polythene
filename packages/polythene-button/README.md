@@ -1,7 +1,4 @@
 # Button
-<!--
-<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-examples/index.html#/button">Demo</a>
--->
 
 Displays a text button with a [ripple](../polythene-ripple) effect.
 

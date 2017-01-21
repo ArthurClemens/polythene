@@ -1,7 +1,5 @@
 # Icon
 
-<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-examples/index.html#/icon">Demo</a>
-
 Displays an icon (image or [SVG](../polythene-svg)).
 
 

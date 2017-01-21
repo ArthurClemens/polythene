@@ -1,7 +1,5 @@
 # Toolbar
 
-<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-examples/index.html#/toolbar">Demo</a>
-
 Displays a horizontal bar containing a label and action items. 
 
 

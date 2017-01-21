@@ -1,7 +1,5 @@
 # Floating Action Button
 
-<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-examples/index.html#/fab">Demo</a>
-
 A circular main button with a [shadow](../polythene-shadow) and [ripple](../polythene-ripple) effect.
 
 

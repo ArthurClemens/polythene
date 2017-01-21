@@ -1,7 +1,5 @@
 # SVG
 
-<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-examples/index.html#/svg">Demo</a>
-
 Simple wrapper for SVG XML.
 
 This is a low-level and simple stupid module for handling SVGs. If you want to use SVG for icons, the best method is to use [icon](../polythene-icon) directly.

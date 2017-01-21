@@ -1,7 +1,5 @@
 # Icon Button
 
-<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-examples/index.html#/icon-button">Demo</a>
-
 Displays an [icon](../polythene-icon) as a button. Also called toggle button.
 
 

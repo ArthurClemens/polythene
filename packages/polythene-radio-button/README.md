@@ -1,7 +1,5 @@
 # Radio button
 
-<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-examples/index.html#/radio-button">Demo</a>
-
 Form control to select a single option from a set. Generates a styled radio button input element.
 
 
@@ -12,7 +10,7 @@ To create an radio button group:
 
 ~~~javascript
 import m from "mithril";
-import radioButton from "polythene-radio-button";
+import { radioButton } from "polythene-radio-button";
 
 const radioGroup = {
   view: () => [

@@ -1,7 +1,5 @@
 # Shadow
 
-<a class="btn-demo" href="http://arthurclemens.github.io/Polythene-examples/index.html#/shadow">Demo</a>
-
 Adds a configurable shadow to an element.
 
 
