@@ -48,7 +48,8 @@ export const controlView = (checked, attrs) =>
         )))
       ],
       ripple: { center: true },
-      disabled: attrs.disabled
+      disabled: attrs.disabled,
+      events: attrs.events
     },
     attrs.selectable !== undefined
       ? {inactive: !attrs.selectable(checked)}

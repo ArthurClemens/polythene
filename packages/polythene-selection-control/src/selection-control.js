@@ -64,20 +64,25 @@ const view = vnode => {
       checked,
       oncreate: vnode => state.setInputEl(vnode.dom)
     }),
-    m("label", Object.assign(
-      {}, 
-      {
-        class: classes.formLabel,
-        tabindex: -1, // set in controlView
-      },
-      inactive
-        ? null
-        : {
-          onclick: state.toggle
-        }
-    ), [
-      attrs.controlView ? attrs.controlView(checked, attrs) : null,
-      attrs.label ? m(`.${classes.label}`, attrs.label) : null
+    m("label", {
+      class: classes.formLabel
+    }, [
+      attrs.controlView
+        ? attrs.controlView(checked, {
+          ...attrs,
+          events: {
+            onclick: state.toggle
+          }
+        })
+        : null,
+      attrs.label
+        ? m(`.${classes.label}`,
+          inactive
+            ? null
+            : {
+              onclick: state.toggle
+            }, attrs.label)
+        : null
     ])
   ];
   return m(element, props, [attrs.before, content, attrs.after]);

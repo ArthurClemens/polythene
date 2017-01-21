@@ -85,11 +85,15 @@ var view = function view(vnode) {
     oncreate: function oncreate(vnode) {
       return state.setInputEl(vnode.dom);
     }
-  }), m("label", _extends({}, {
-    class: classes.formLabel,
-    tabindex: -1 }, inactive ? null : {
+  }), m("label", {
+    class: classes.formLabel
+  }, [attrs.controlView ? attrs.controlView(checked, _extends({}, attrs, {
+    events: {
+      onclick: state.toggle
+    }
+  })) : null, attrs.label ? m("." + classes.label, inactive ? null : {
     onclick: state.toggle
-  }), [attrs.controlView ? attrs.controlView(checked, attrs) : null, attrs.label ? m("." + classes.label, attrs.label) : null])];
+  }, attrs.label) : null])];
   return m(element, props, [attrs.before, content, attrs.after]);
 };
 
@@ -177,7 +181,8 @@ var controlView = function controlView(checked, attrs) {
     class: classes$1.button,
     content: [m(icon, createIcon("iconOn", _extends({}, attrs, { class: classes$1.on }))), m(icon, createIcon("iconOff", _extends({}, attrs, { class: classes$1.off })))],
     ripple: { center: true },
-    disabled: attrs.disabled
+    disabled: attrs.disabled,
+    events: attrs.events
   }, attrs.selectable !== undefined ? { inactive: !attrs.selectable(checked) } : null, attrs.iconButton)));
 };
 
