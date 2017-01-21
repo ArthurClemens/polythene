@@ -12,6 +12,16 @@ component.theme(".tests-checkbox-themed-checkbox", {
   color_dark_label: "#2196F3"
 });
 
+const sizeNames = ["small", "regular", "medium", "large"];
+
+const sizes = (sizes, attrs) => sizes.map(size =>
+  m(component, {
+    ...attrs,
+    label: size,
+    size
+  })
+);
+
 export const tests = [
   {
     name: "Option: label",
@@ -36,32 +46,18 @@ export const tests = [
     }
   },
   {
-    name: "Option: sizes",
+    name: "Option: size",
     component: {
       view: () => m("div", {
         style: {
           display: "flex",
           alignItems: "center"
         }
-      }, [
-        m(component, {
-          size: "small",
-          label: "Label"
-        }),
-        m(component, {
-          size: "regular",
-          label: "Label"
-        }),
-        m(component, {
-          size: "medium",
-          label: "Label"
-        }),
-        m(component, {
-          size: "large",
-          label: "Label"
-        })
-      ])
-    }
+      },
+      sizes(sizeNames, {
+        label: "Label"
+      })
+    )}
   },
   {
     name: "Themed checkbox (colors)",
@@ -75,7 +71,7 @@ export const tests = [
     name: "Option: style (colors)",
     component,
     attrs: {
-      label: "Styled",
+      label: "Label",
       style: {
         color: "#EF6C00"
       }
@@ -89,49 +85,17 @@ export const tests = [
           display: "flex",
           alignItems: "center"
         }
-      }, [
-        m(component, {
-          size: "small",
-          label: "Label",
-          iconOn: {
-            msvg: iconStar
-          },
-          iconOff: {
-            msvg: iconStarOutline
-          }
-        }),
-        m(component, {
-          size: "regular",
-          label: "Label",
-          iconOn: {
-            msvg: iconStar
-          },
-          iconOff: {
-            msvg: iconStarOutline
-          }
-        }),
-        m(component, {
-          size: "medium",
-          label: "Label",
-          iconOn: {
-            msvg: iconStar
-          },
-          iconOff: {
-            msvg: iconStarOutline
-          }
-        }),
-        m(component, {
-          size: "large",
-          label: "Label",
-          iconOn: {
-            msvg: iconStar
-          },
-          iconOff: {
-            msvg: iconStarOutline
-          }
-        })
-      ])
-    }
+      }, 
+      sizes(sizeNames, {
+        label: "Label",
+        iconOn: {
+          msvg: iconStar
+        },
+        iconOff: {
+          msvg: iconStarOutline
+        }
+      })
+    )}
   },
   {
     name: "Option: disabled",

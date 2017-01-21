@@ -7,6 +7,7 @@ import { icon } from 'polythene-icon';
 import { iconButton } from 'polythene-icon-button';
 import { list } from 'polythene-list';
 import { listTile } from 'polythene-list-tile';
+import { radioButton } from 'polythene-radio-button';
 import { raisedButton } from 'polythene-raised-button';
 import { ripple } from 'polythene-ripple';
 import { shadow } from 'polythene-shadow';
@@ -17,7 +18,7 @@ import { vars } from 'polythene-theme';
 
 
 
-export { button, checkbox, defaultVariables, isTouch, touchStartEvent, touchEndEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, filterSupportedAttributes, mixin, flex, styler, fab, icon, iconButton, list, listTile, raisedButton, ripple, shadow, svg, tabs, toolbar, vars };
+export { button, checkbox, defaultVariables, isTouch, touchStartEvent, touchEndEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, filterSupportedAttributes, mixin, flex, styler, fab, icon, iconButton, list, listTile, radioButton, raisedButton, ripple, shadow, svg, tabs, toolbar, vars };
 
 export * from 'polythene-fastclick';
 export * from 'polythene-css-classes';

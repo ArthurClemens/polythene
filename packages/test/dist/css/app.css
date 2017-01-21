@@ -1,15 +1,14 @@
 /* Overrides */
 
 .ma3 {
-  margin: 20px;
+  margin: 16px;
 }
 .mv3 {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 16px;
+  margin-bottom: 16px;
 }
 
-
-body {
+html {
   background-color: rgb(236, 239, 241);
 }
 .results {
@@ -130,6 +129,13 @@ body {
 .pe-list-tile--sticky {
   background: #fff;
   /*z-index: 1;*/
+}
+
+.pe-control.pe-checkbox-control + .pe-control.pe-checkbox-control {
+  margin-left: 40px;
+}
+.pe-control.pe-radio-control + .pe-control.pe-radio-control {
+  margin-left: 40px;
 }
 
 .pt-sans {

@@ -11,7 +11,7 @@
     "build": "npm run rollup"
   },
   "dependencies": {
-    "mithril": "1.0.0-rc.6"
+    "mithril": "1.0.0-rc.8"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

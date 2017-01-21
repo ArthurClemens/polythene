@@ -94,7 +94,7 @@ Change CSS using the CSS Classes at the bottom of this page.
 The icon color can be set using `style`.
 
 ~~~javascript
-m(button, {
+m(checkbox, {
   style: { color: "#2196F3" }
 });
 ~~~

@@ -3,13 +3,14 @@ import { vars } from "polythene-theme";
 const rgba = vars.rgba;
 
 const activeColor = vars.color_primary; // or override in CSS by setting 'color' property on '.pe-checkbox' / '.pe-radio-button'
-const label_padding = (vars.grid_unit_icon_button - vars.unit_icon_size) / 2; // 12
+const label_padding_before = vars.grid_unit * 4; // 16
+const label_padding_after = 0;
 
 export default {
   label_font_size:                     2 * vars.grid_unit_component, // 16
   label_height:                        3 * vars.grid_unit_component, // 24
-  padding:                             Math.floor(1.7 * vars.grid_unit_component),
-  label_padding,                 
+  label_padding_before,
+  label_padding_after,                
   button_size:                         6 * vars.grid_unit_component,
   icon_size:                           3 * vars.grid_unit_component,
   animation_duration:                  vars.animation_duration,

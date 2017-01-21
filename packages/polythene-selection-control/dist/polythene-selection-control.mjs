@@ -189,13 +189,14 @@ var controlView = function controlView(checked, attrs) {
 var rgba = vars.rgba;
 
 var activeColor = vars.color_primary; // or override in CSS by setting 'color' property on '.pe-checkbox' / '.pe-radio-button'
-var label_padding = (vars.grid_unit_icon_button - vars.unit_icon_size) / 2; // 12
+var label_padding_before = vars.grid_unit * 4; // 16
+var label_padding_after = 0;
 
 var vars$1 = {
   label_font_size: 2 * vars.grid_unit_component, // 16
   label_height: 3 * vars.grid_unit_component, // 24
-  padding: Math.floor(1.7 * vars.grid_unit_component),
-  label_padding: label_padding,
+  label_padding_before: label_padding_before,
+  label_padding_after: label_padding_after,
   button_size: 6 * vars.grid_unit_component,
   icon_size: 3 * vars.grid_unit_component,
   animation_duration: vars.animation_duration,
@@ -291,7 +292,7 @@ var color = (function (selector, componentVars) {
 var getSize = function getSize(componentVars, height) {
   var iconSize = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : vars.unit_icon_size;
 
-  var labelSize = iconSize + 2 * componentVars.label_padding;
+  var labelSize = iconSize + componentVars.label_height;
   var iconOffset = (labelSize - iconSize) / 2;
   return {
     " .pe-control__form-label": {
@@ -391,9 +392,8 @@ var layout = (function (selector, componentVars, type) {
     " .pe-control__button--on": activeButton(),
     " .pe-control__button--off": inactiveButton()
   }), defineProperty(_selector, " .pe-control__label", {
-    marginBottom: "-1px", // make text vertically center to box
-    paddingLeft: componentVars.padding + "px",
-    paddingRight: componentVars.padding + "px"
+    paddingLeft: componentVars.label_padding_before + "px",
+    paddingRight: componentVars.label_padding_after + "px"
   }), defineProperty(_selector, ".pe-control--disabled", {
     " .pe-control__form-label": {
       cursor: "auto"

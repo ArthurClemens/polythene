@@ -10,6 +10,7 @@ import { tests as iconTests } from "../tests/icon/tests";
 import { tests as iconButtonTests } from "../tests/icon-button/tests";
 import { tests as listTests } from "../tests/list/tests";
 import { tests as listTileTests } from "../tests/list-tile/tests";
+import { tests as radioButtonTests } from "../tests/radio-button/tests";
 import { tests as raisedButtonTests } from "../tests/raised-button/tests";
 import { tests as rippleTests } from "../tests/ripple/tests";
 import { tests as shadowTests } from "../tests/shadow/tests";
@@ -60,6 +61,11 @@ const pages = [
     path: "/list-tile",
     name: "List tile",
     tests: listTileTests
+  },
+  {
+    path: "/radio-button",
+    name: "Radio button",
+    tests: radioButtonTests
   },
   {
     path: "/ripple",

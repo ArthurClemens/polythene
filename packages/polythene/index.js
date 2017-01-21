@@ -26,6 +26,8 @@ export { list } from "polythene-list";
 
 export { listTile } from "polythene-list-tile";
 
+export { radioButton } from "polythene-radio-button";
+
 export { raisedButton } from "polythene-raised-button";
 
 export { ripple } from "polythene-ripple";

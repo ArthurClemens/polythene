@@ -133,7 +133,7 @@ export const selectionControl = {
       }
     };
 
-    const toggle = () => (setChecked(!inputEl.checked));
+    const toggle = () => setChecked(!inputEl.checked);
 
     vnode.state = {
       setInputEl,

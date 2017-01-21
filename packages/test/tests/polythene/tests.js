@@ -2,7 +2,7 @@ import m from "mithril";
 import webfont from "webfontloader";
 import * as polythene from "polythene";
 import { styles as blockStyles, blocks } from "../css-classes/block-styles";
-import iconRocket from "mmsvg/templarian/msvg/rocket";
+import iconStarOutline from "mmsvg/google/msvg/toggle/star-border";
 import gIconMenu from "mmsvg/google/msvg/navigation/menu";
 import gIconAdd from "mmsvg/google/msvg/content/add";
 
@@ -162,7 +162,7 @@ export const tests = [
       }),
       secondary: {
         icon: {
-          msvg: iconRocket,
+          msvg: iconStarOutline,
           type: "medium"
         },
         url: {
@@ -172,7 +172,21 @@ export const tests = [
       }
     }
   },
-
+  {
+    name: "Radio button",
+    component: {
+      view: () => {
+        const options = {
+          label: "Label",
+          name: "radio"
+        };
+        return m("div", [
+          m(polythene.radioButton, options),
+          m(polythene.radioButton, options)
+        ]);
+      }
+    }
+  },
   {
     name: "Ripple",
     component: polythene.ripple,

@@ -4,7 +4,7 @@ import { mixin, flex } from "polythene-css";
 import { vars } from "polythene-theme";
 
 const getSize = (componentVars, height, iconSize = vars.unit_icon_size) => {
-  const labelSize = iconSize + 2 * componentVars.label_padding;
+  const labelSize = iconSize + componentVars.label_height;
   const iconOffset = (labelSize - iconSize) / 2;
   return {
     " .pe-control__form-label": {
@@ -117,9 +117,8 @@ export default (selector, componentVars, type) => [{
     },
 
     " .pe-control__label": {
-      marginBottom: "-1px", // make text vertically center to box
-      paddingLeft: componentVars.padding + "px",
-      paddingRight: componentVars.padding + "px"
+      paddingLeft: componentVars.label_padding_before + "px",
+      paddingRight: componentVars.label_padding_after + "px"
     },
 
     ".pe-control--disabled": {

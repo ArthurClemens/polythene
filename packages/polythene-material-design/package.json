@@ -11,7 +11,7 @@
     "build": "npm run rollup"
   },
   "dependencies": {
-    "mithril": "1.0.0-rc.6",
+    "mithril": "1.0.0-rc.8",
     "polythene-css": "1",
     "polythene-theme": "1",
     "polythene-tools": "1",

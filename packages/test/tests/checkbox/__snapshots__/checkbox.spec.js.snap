@@ -2,43 +2,34 @@ exports[`test Option: checked -- dark theme 1`] = `
 "<div class=
 \"pe-control pe-checkbox-control pe-control--on pe-control--regular\">
 <input name=\"\" type=\"checkbox\" tabindex=\"-1\" class=
-\"pe-control__input\"><label tabindex=\"-1\" class=
-\"pe-control__form-label\"></label>
+\"pe-control__input\"><label class=\"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
-    <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+    <label class=\"pe-control__form-label\"></label>
     <div tabindex=\"0\" class=
     \"pe-button pe-icon-button pe-control__button\">
-      <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+      <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
-        <label tabindex=\"-1\" class=
-        \"pe-control__form-label\"></label>
+        <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-ripple pe-ripple--constrained\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-ripple__mask\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-ripple__waves\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"></label>
+              <label class=\"pe-control__form-label\"></label>
             </div>
           </div>
         </div>
         <div class=\"pe-button__focus\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
         </div>
         <div class=
         \"pe-icon pe-icon--regular pe-control__button--on\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
             height=\"24\" viewbox=\"0 0 24 24\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"><path d=
+              <label class=\"pe-control__form-label\"><path d=
               \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
               </path></label>
             </svg>
@@ -46,15 +37,12 @@ exports[`test Option: checked -- dark theme 1`] = `
         </div>
         <div class=
         \"pe-icon pe-icon--regular pe-control__button--off\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
             height=\"24\" viewbox=\"0 0 24 24\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"><path d=
+              <label class=\"pe-control__form-label\"><path d=
               \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
               </path></label>
             </svg>
@@ -71,43 +59,34 @@ exports[`test Option: checked 1`] = `
 "<div class=
 \"pe-control pe-checkbox-control pe-control--on pe-control--regular\">
 <input name=\"\" type=\"checkbox\" tabindex=\"-1\" class=
-\"pe-control__input\"><label tabindex=\"-1\" class=
-\"pe-control__form-label\"></label>
+\"pe-control__input\"><label class=\"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
-    <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+    <label class=\"pe-control__form-label\"></label>
     <div tabindex=\"0\" class=
     \"pe-button pe-icon-button pe-control__button\">
-      <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+      <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
-        <label tabindex=\"-1\" class=
-        \"pe-control__form-label\"></label>
+        <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-ripple pe-ripple--constrained\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-ripple__mask\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-ripple__waves\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"></label>
+              <label class=\"pe-control__form-label\"></label>
             </div>
           </div>
         </div>
         <div class=\"pe-button__focus\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
         </div>
         <div class=
         \"pe-icon pe-icon--regular pe-control__button--on\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
             height=\"24\" viewbox=\"0 0 24 24\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"><path d=
+              <label class=\"pe-control__form-label\"><path d=
               \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
               </path></label>
             </svg>
@@ -115,15 +94,12 @@ exports[`test Option: checked 1`] = `
         </div>
         <div class=
         \"pe-icon pe-icon--regular pe-control__button--off\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
             height=\"24\" viewbox=\"0 0 24 24\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"><path d=
+              <label class=\"pe-control__form-label\"><path d=
               \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
               </path></label>
             </svg>
@@ -140,27 +116,22 @@ exports[`test Option: disabled -- dark theme 1`] = `
 "<div class=
 \"pe-control pe-checkbox-control pe-control--off pe-control--disabled pe-control--inactive pe-control--regular\">
 <input name=\"\" type=\"checkbox\" tabindex=\"-1\" class=
-\"pe-control__input\"><label tabindex=\"-1\" class=
-\"pe-control__form-label\"></label>
+\"pe-control__input\"><label class=\"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
-    <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+    <label class=\"pe-control__form-label\"></label>
     <div tabindex=\"-1\" disabled class=
     \"pe-button pe-icon-button pe-button--disabled pe-control__button\">
-    <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+    <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
-        <label tabindex=\"-1\" class=
-        \"pe-control__form-label\"></label>
+        <label class=\"pe-control__form-label\"></label>
         <div class=
         \"pe-icon pe-icon--regular pe-control__button--on\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
             height=\"24\" viewbox=\"0 0 24 24\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"><path d=
+              <label class=\"pe-control__form-label\"><path d=
               \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
               </path></label>
             </svg>
@@ -168,15 +139,12 @@ exports[`test Option: disabled -- dark theme 1`] = `
         </div>
         <div class=
         \"pe-icon pe-icon--regular pe-control__button--off\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
             height=\"24\" viewbox=\"0 0 24 24\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"><path d=
+              <label class=\"pe-control__form-label\"><path d=
               \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
               </path></label>
             </svg>
@@ -186,33 +154,28 @@ exports[`test Option: disabled -- dark theme 1`] = `
     </div>
   </div>
   <div class=\"pe-control__label\">
-    <label tabindex=\"-1\" class=\"pe-control__form-label\">Off</label>
+    <label class=\"pe-control__form-label\">Off</label>
   </div>
 </div>
 <div class=
 \"pe-control pe-checkbox-control pe-control--on pe-control--disabled pe-control--inactive pe-control--regular\">
 <input name=\"\" type=\"checkbox\" tabindex=\"-1\" class=
-\"pe-control__input\"><label tabindex=\"-1\" class=
-\"pe-control__form-label\"></label>
+\"pe-control__input\"><label class=\"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
-    <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+    <label class=\"pe-control__form-label\"></label>
     <div tabindex=\"-1\" disabled class=
     \"pe-button pe-icon-button pe-button--disabled pe-control__button\">
-    <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+    <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
-        <label tabindex=\"-1\" class=
-        \"pe-control__form-label\"></label>
+        <label class=\"pe-control__form-label\"></label>
         <div class=
         \"pe-icon pe-icon--regular pe-control__button--on\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
             height=\"24\" viewbox=\"0 0 24 24\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"><path d=
+              <label class=\"pe-control__form-label\"><path d=
               \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
               </path></label>
             </svg>
@@ -220,15 +183,12 @@ exports[`test Option: disabled -- dark theme 1`] = `
         </div>
         <div class=
         \"pe-icon pe-icon--regular pe-control__button--off\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
             height=\"24\" viewbox=\"0 0 24 24\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"><path d=
+              <label class=\"pe-control__form-label\"><path d=
               \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
               </path></label>
             </svg>
@@ -238,7 +198,7 @@ exports[`test Option: disabled -- dark theme 1`] = `
     </div>
   </div>
   <div class=\"pe-control__label\">
-    <label tabindex=\"-1\" class=\"pe-control__form-label\">On</label>
+    <label class=\"pe-control__form-label\">On</label>
   </div>
 </div>
 "
@@ -248,27 +208,22 @@ exports[`test Option: disabled 1`] = `
 "<div class=
 \"pe-control pe-checkbox-control pe-control--off pe-control--disabled pe-control--inactive pe-control--regular\">
 <input name=\"\" type=\"checkbox\" tabindex=\"-1\" class=
-\"pe-control__input\"><label tabindex=\"-1\" class=
-\"pe-control__form-label\"></label>
+\"pe-control__input\"><label class=\"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
-    <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+    <label class=\"pe-control__form-label\"></label>
     <div tabindex=\"-1\" disabled class=
     \"pe-button pe-icon-button pe-button--disabled pe-control__button\">
-    <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+    <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
-        <label tabindex=\"-1\" class=
-        \"pe-control__form-label\"></label>
+        <label class=\"pe-control__form-label\"></label>
         <div class=
         \"pe-icon pe-icon--regular pe-control__button--on\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
             height=\"24\" viewbox=\"0 0 24 24\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"><path d=
+              <label class=\"pe-control__form-label\"><path d=
               \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
               </path></label>
             </svg>
@@ -276,15 +231,12 @@ exports[`test Option: disabled 1`] = `
         </div>
         <div class=
         \"pe-icon pe-icon--regular pe-control__button--off\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
             height=\"24\" viewbox=\"0 0 24 24\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"><path d=
+              <label class=\"pe-control__form-label\"><path d=
               \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
               </path></label>
             </svg>
@@ -294,33 +246,28 @@ exports[`test Option: disabled 1`] = `
     </div>
   </div>
   <div class=\"pe-control__label\">
-    <label tabindex=\"-1\" class=\"pe-control__form-label\">Off</label>
+    <label class=\"pe-control__form-label\">Off</label>
   </div>
 </div>
 <div class=
 \"pe-control pe-checkbox-control pe-control--on pe-control--disabled pe-control--inactive pe-control--regular\">
 <input name=\"\" type=\"checkbox\" tabindex=\"-1\" class=
-\"pe-control__input\"><label tabindex=\"-1\" class=
-\"pe-control__form-label\"></label>
+\"pe-control__input\"><label class=\"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
-    <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+    <label class=\"pe-control__form-label\"></label>
     <div tabindex=\"-1\" disabled class=
     \"pe-button pe-icon-button pe-button--disabled pe-control__button\">
-    <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+    <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
-        <label tabindex=\"-1\" class=
-        \"pe-control__form-label\"></label>
+        <label class=\"pe-control__form-label\"></label>
         <div class=
         \"pe-icon pe-icon--regular pe-control__button--on\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
             height=\"24\" viewbox=\"0 0 24 24\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"><path d=
+              <label class=\"pe-control__form-label\"><path d=
               \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
               </path></label>
             </svg>
@@ -328,15 +275,12 @@ exports[`test Option: disabled 1`] = `
         </div>
         <div class=
         \"pe-icon pe-icon--regular pe-control__button--off\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
             height=\"24\" viewbox=\"0 0 24 24\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"><path d=
+              <label class=\"pe-control__form-label\"><path d=
               \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
               </path></label>
             </svg>
@@ -346,7 +290,7 @@ exports[`test Option: disabled 1`] = `
     </div>
   </div>
   <div class=\"pe-control__label\">
-    <label tabindex=\"-1\" class=\"pe-control__form-label\">On</label>
+    <label class=\"pe-control__form-label\">On</label>
   </div>
 </div>
 "
@@ -359,43 +303,34 @@ exports[`test Option: events 1`] = `
 <div class=
 \"pe-control pe-checkbox-control pe-control--off pe-control--regular\">
 <input name=\"\" type=\"checkbox\" tabindex=\"-1\" class=
-\"pe-control__input\"><label tabindex=\"-1\" class=
-\"pe-control__form-label\"></label>
+\"pe-control__input\"><label class=\"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
-    <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+    <label class=\"pe-control__form-label\"></label>
     <div tabindex=\"0\" class=
     \"pe-button pe-icon-button pe-control__button\">
-      <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+      <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
-        <label tabindex=\"-1\" class=
-        \"pe-control__form-label\"></label>
+        <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-ripple pe-ripple--constrained\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-ripple__mask\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-ripple__waves\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"></label>
+              <label class=\"pe-control__form-label\"></label>
             </div>
           </div>
         </div>
         <div class=\"pe-button__focus\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
         </div>
         <div class=
         \"pe-icon pe-icon--regular pe-control__button--on\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
             height=\"24\" viewbox=\"0 0 24 24\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"><path d=
+              <label class=\"pe-control__form-label\"><path d=
               \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
               </path></label>
             </svg>
@@ -403,15 +338,12 @@ exports[`test Option: events 1`] = `
         </div>
         <div class=
         \"pe-icon pe-icon--regular pe-control__button--off\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
             height=\"24\" viewbox=\"0 0 24 24\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"><path d=
+              <label class=\"pe-control__form-label\"><path d=
               \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
               </path></label>
             </svg>
@@ -431,43 +363,34 @@ exports[`test Option: getState 1`] = `
 <div class=
 \"pe-control pe-checkbox-control pe-control--off pe-control--regular\">
 <input name=\"\" type=\"checkbox\" tabindex=\"-1\" class=
-\"pe-control__input\"><label tabindex=\"-1\" class=
-\"pe-control__form-label\"></label>
+\"pe-control__input\"><label class=\"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
-    <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+    <label class=\"pe-control__form-label\"></label>
     <div tabindex=\"0\" class=
     \"pe-button pe-icon-button pe-control__button\">
-      <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+      <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
-        <label tabindex=\"-1\" class=
-        \"pe-control__form-label\"></label>
+        <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-ripple pe-ripple--constrained\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-ripple__mask\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-ripple__waves\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"></label>
+              <label class=\"pe-control__form-label\"></label>
             </div>
           </div>
         </div>
         <div class=\"pe-button__focus\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
         </div>
         <div class=
         \"pe-icon pe-icon--regular pe-control__button--on\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
             height=\"24\" viewbox=\"0 0 24 24\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"><path d=
+              <label class=\"pe-control__form-label\"><path d=
               \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
               </path></label>
             </svg>
@@ -475,15 +398,12 @@ exports[`test Option: getState 1`] = `
         </div>
         <div class=
         \"pe-icon pe-icon--regular pe-control__button--off\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
             height=\"24\" viewbox=\"0 0 24 24\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"><path d=
+              <label class=\"pe-control__form-label\"><path d=
               \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
               </path></label>
             </svg>
@@ -500,35 +420,28 @@ exports[`test Option: iconButton (custom hover behaviour) 1`] = `
 "<div class=
 \"pe-control pe-checkbox-control pe-control--off pe-control--regular\">
 <input name=\"\" type=\"checkbox\" tabindex=\"-1\" class=
-\"pe-control__input\"><label tabindex=\"-1\" class=
-\"pe-control__form-label\"></label>
+\"pe-control__input\"><label class=\"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
-    <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+    <label class=\"pe-control__form-label\"></label>
     <div tabindex=\"0\" class=
     \"pe-button pe-icon-button pe-control__button\">
-      <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+      <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
-        <label tabindex=\"-1\" class=
-        \"pe-control__form-label\"></label>
+        <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-button__wash\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
         </div>
         <div class=\"pe-button__focus\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
         </div>
         <div class=
         \"pe-icon pe-icon--regular pe-control__button--on\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
             height=\"24\" viewbox=\"0 0 24 24\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"><path d=
+              <label class=\"pe-control__form-label\"><path d=
               \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
               </path></label>
             </svg>
@@ -536,15 +449,12 @@ exports[`test Option: iconButton (custom hover behaviour) 1`] = `
         </div>
         <div class=
         \"pe-icon pe-icon--regular pe-control__button--off\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
             height=\"24\" viewbox=\"0 0 24 24\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"><path d=
+              <label class=\"pe-control__form-label\"><path d=
               \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
               </path></label>
             </svg>
@@ -562,44 +472,35 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
   <div class=
   \"pe-control pe-checkbox-control pe-control--off pe-control--small\">
   <input name=\"\" type=\"checkbox\" tabindex=\"-1\" class=
-  \"pe-control__input\"><label tabindex=\"-1\" class=
+  \"pe-control__input\"><label class=
   \"pe-control__form-label\"></label>
     <div class=\"pe-control__box\">
-      <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+      <label class=\"pe-control__form-label\"></label>
       <div tabindex=\"0\" class=
       \"pe-button pe-icon-button pe-control__button\">
-        <label tabindex=\"-1\" class=
-        \"pe-control__form-label\"></label>
+        <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-button__content\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-ripple pe-ripple--constrained\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-ripple__mask\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"></label>
+              <label class=\"pe-control__form-label\"></label>
               <div class=\"pe-ripple__waves\">
-                <label tabindex=\"-1\" class=
-                \"pe-control__form-label\"></label>
+                <label class=\"pe-control__form-label\"></label>
               </div>
             </div>
           </div>
           <div class=\"pe-button__focus\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
           </div>
           <div class=
           \"pe-icon pe-icon--small pe-control__button--on\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"></label>
+              <label class=\"pe-control__form-label\"></label>
               <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
               height=\"24\" viewbox=\"0 0 24 24\">
-                <label tabindex=\"-1\" class=
-                \"pe-control__form-label\"><path d=
+                <label class=\"pe-control__form-label\"><path d=
                 \"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\">
                 </path></label>
               </svg>
@@ -607,15 +508,12 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
           </div>
           <div class=
           \"pe-icon pe-icon--small pe-control__button--off\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"></label>
+              <label class=\"pe-control__form-label\"></label>
               <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
               height=\"24\" viewbox=\"0 0 24 24\">
-                <label tabindex=\"-1\" class=
-                \"pe-control__form-label\"><path d=
+                <label class=\"pe-control__form-label\"><path d=
                 \"M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z\">
                 </path></label>
               </svg>
@@ -625,51 +523,41 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
       </div>
     </div>
     <div class=\"pe-control__label\">
-      <label tabindex=\"-1\" class=
-      \"pe-control__form-label\">Label</label>
+      <label class=\"pe-control__form-label\">small</label>
     </div>
   </div>
   <div class=
   \"pe-control pe-checkbox-control pe-control--off pe-control--regular\">
   <input name=\"\" type=\"checkbox\" tabindex=\"-1\" class=
-  \"pe-control__input\"><label tabindex=\"-1\" class=
+  \"pe-control__input\"><label class=
   \"pe-control__form-label\"></label>
     <div class=\"pe-control__box\">
-      <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+      <label class=\"pe-control__form-label\"></label>
       <div tabindex=\"0\" class=
       \"pe-button pe-icon-button pe-control__button\">
-        <label tabindex=\"-1\" class=
-        \"pe-control__form-label\"></label>
+        <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-button__content\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-ripple pe-ripple--constrained\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-ripple__mask\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"></label>
+              <label class=\"pe-control__form-label\"></label>
               <div class=\"pe-ripple__waves\">
-                <label tabindex=\"-1\" class=
-                \"pe-control__form-label\"></label>
+                <label class=\"pe-control__form-label\"></label>
               </div>
             </div>
           </div>
           <div class=\"pe-button__focus\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
           </div>
           <div class=
           \"pe-icon pe-icon--regular pe-control__button--on\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"></label>
+              <label class=\"pe-control__form-label\"></label>
               <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
               height=\"24\" viewbox=\"0 0 24 24\">
-                <label tabindex=\"-1\" class=
-                \"pe-control__form-label\"><path d=
+                <label class=\"pe-control__form-label\"><path d=
                 \"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\">
                 </path></label>
               </svg>
@@ -677,15 +565,12 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
           </div>
           <div class=
           \"pe-icon pe-icon--regular pe-control__button--off\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"></label>
+              <label class=\"pe-control__form-label\"></label>
               <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
               height=\"24\" viewbox=\"0 0 24 24\">
-                <label tabindex=\"-1\" class=
-                \"pe-control__form-label\"><path d=
+                <label class=\"pe-control__form-label\"><path d=
                 \"M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z\">
                 </path></label>
               </svg>
@@ -695,51 +580,41 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
       </div>
     </div>
     <div class=\"pe-control__label\">
-      <label tabindex=\"-1\" class=
-      \"pe-control__form-label\">Label</label>
+      <label class=\"pe-control__form-label\">regular</label>
     </div>
   </div>
   <div class=
   \"pe-control pe-checkbox-control pe-control--off pe-control--medium\">
   <input name=\"\" type=\"checkbox\" tabindex=\"-1\" class=
-  \"pe-control__input\"><label tabindex=\"-1\" class=
+  \"pe-control__input\"><label class=
   \"pe-control__form-label\"></label>
     <div class=\"pe-control__box\">
-      <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+      <label class=\"pe-control__form-label\"></label>
       <div tabindex=\"0\" class=
       \"pe-button pe-icon-button pe-control__button\">
-        <label tabindex=\"-1\" class=
-        \"pe-control__form-label\"></label>
+        <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-button__content\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-ripple pe-ripple--constrained\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-ripple__mask\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"></label>
+              <label class=\"pe-control__form-label\"></label>
               <div class=\"pe-ripple__waves\">
-                <label tabindex=\"-1\" class=
-                \"pe-control__form-label\"></label>
+                <label class=\"pe-control__form-label\"></label>
               </div>
             </div>
           </div>
           <div class=\"pe-button__focus\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
           </div>
           <div class=
           \"pe-icon pe-icon--medium pe-control__button--on\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"></label>
+              <label class=\"pe-control__form-label\"></label>
               <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
               height=\"24\" viewbox=\"0 0 24 24\">
-                <label tabindex=\"-1\" class=
-                \"pe-control__form-label\"><path d=
+                <label class=\"pe-control__form-label\"><path d=
                 \"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\">
                 </path></label>
               </svg>
@@ -747,15 +622,12 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
           </div>
           <div class=
           \"pe-icon pe-icon--medium pe-control__button--off\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"></label>
+              <label class=\"pe-control__form-label\"></label>
               <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
               height=\"24\" viewbox=\"0 0 24 24\">
-                <label tabindex=\"-1\" class=
-                \"pe-control__form-label\"><path d=
+                <label class=\"pe-control__form-label\"><path d=
                 \"M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z\">
                 </path></label>
               </svg>
@@ -765,51 +637,41 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
       </div>
     </div>
     <div class=\"pe-control__label\">
-      <label tabindex=\"-1\" class=
-      \"pe-control__form-label\">Label</label>
+      <label class=\"pe-control__form-label\">medium</label>
     </div>
   </div>
   <div class=
   \"pe-control pe-checkbox-control pe-control--off pe-control--large\">
   <input name=\"\" type=\"checkbox\" tabindex=\"-1\" class=
-  \"pe-control__input\"><label tabindex=\"-1\" class=
+  \"pe-control__input\"><label class=
   \"pe-control__form-label\"></label>
     <div class=\"pe-control__box\">
-      <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+      <label class=\"pe-control__form-label\"></label>
       <div tabindex=\"0\" class=
       \"pe-button pe-icon-button pe-control__button\">
-        <label tabindex=\"-1\" class=
-        \"pe-control__form-label\"></label>
+        <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-button__content\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-ripple pe-ripple--constrained\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-ripple__mask\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"></label>
+              <label class=\"pe-control__form-label\"></label>
               <div class=\"pe-ripple__waves\">
-                <label tabindex=\"-1\" class=
-                \"pe-control__form-label\"></label>
+                <label class=\"pe-control__form-label\"></label>
               </div>
             </div>
           </div>
           <div class=\"pe-button__focus\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
           </div>
           <div class=
           \"pe-icon pe-icon--large pe-control__button--on\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"></label>
+              <label class=\"pe-control__form-label\"></label>
               <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
               height=\"24\" viewbox=\"0 0 24 24\">
-                <label tabindex=\"-1\" class=
-                \"pe-control__form-label\"><path d=
+                <label class=\"pe-control__form-label\"><path d=
                 \"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\">
                 </path></label>
               </svg>
@@ -817,15 +679,12 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
           </div>
           <div class=
           \"pe-icon pe-icon--large pe-control__button--off\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"></label>
+              <label class=\"pe-control__form-label\"></label>
               <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
               height=\"24\" viewbox=\"0 0 24 24\">
-                <label tabindex=\"-1\" class=
-                \"pe-control__form-label\"><path d=
+                <label class=\"pe-control__form-label\"><path d=
                 \"M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z\">
                 </path></label>
               </svg>
@@ -835,8 +694,7 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
       </div>
     </div>
     <div class=\"pe-control__label\">
-      <label tabindex=\"-1\" class=
-      \"pe-control__form-label\">Label</label>
+      <label class=\"pe-control__form-label\">large</label>
     </div>
   </div>
 </div>
@@ -847,43 +705,34 @@ exports[`test Option: label 1`] = `
 "<div class=
 \"pe-control pe-checkbox-control pe-control--off pe-control--regular\">
 <input name=\"\" type=\"checkbox\" tabindex=\"-1\" class=
-\"pe-control__input\"><label tabindex=\"-1\" class=
-\"pe-control__form-label\"></label>
+\"pe-control__input\"><label class=\"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
-    <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+    <label class=\"pe-control__form-label\"></label>
     <div tabindex=\"0\" class=
     \"pe-button pe-icon-button pe-control__button\">
-      <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+      <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
-        <label tabindex=\"-1\" class=
-        \"pe-control__form-label\"></label>
+        <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-ripple pe-ripple--constrained\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-ripple__mask\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-ripple__waves\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"></label>
+              <label class=\"pe-control__form-label\"></label>
             </div>
           </div>
         </div>
         <div class=\"pe-button__focus\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
         </div>
         <div class=
         \"pe-icon pe-icon--regular pe-control__button--on\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
             height=\"24\" viewbox=\"0 0 24 24\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"><path d=
+              <label class=\"pe-control__form-label\"><path d=
               \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
               </path></label>
             </svg>
@@ -891,15 +740,12 @@ exports[`test Option: label 1`] = `
         </div>
         <div class=
         \"pe-icon pe-icon--regular pe-control__button--off\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
             height=\"24\" viewbox=\"0 0 24 24\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"><path d=
+              <label class=\"pe-control__form-label\"><path d=
               \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
               </path></label>
             </svg>
@@ -909,8 +755,7 @@ exports[`test Option: label 1`] = `
     </div>
   </div>
   <div class=\"pe-control__label\">
-    <label tabindex=\"-1\" class=
-    \"pe-control__form-label\">Label</label>
+    <label class=\"pe-control__form-label\">Label</label>
   </div>
 </div>
 "
@@ -920,43 +765,34 @@ exports[`test Option: selectable (false) 1`] = `
 "<div class=
 \"pe-control pe-checkbox-control pe-control--off pe-control--inactive pe-control--regular\">
 <input name=\"\" type=\"checkbox\" tabindex=\"-1\" class=
-\"pe-control__input\"><label tabindex=\"-1\" class=
-\"pe-control__form-label\"></label>
+\"pe-control__input\"><label class=\"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
-    <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+    <label class=\"pe-control__form-label\"></label>
     <div tabindex=\"-1\" class=
     \"pe-button pe-icon-button pe-button--inactive pe-control__button\">
-    <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+    <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
-        <label tabindex=\"-1\" class=
-        \"pe-control__form-label\"></label>
+        <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-ripple pe-ripple--constrained\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-ripple__mask\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-ripple__waves\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"></label>
+              <label class=\"pe-control__form-label\"></label>
             </div>
           </div>
         </div>
         <div class=\"pe-button__focus\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
         </div>
         <div class=
         \"pe-icon pe-icon--regular pe-control__button--on\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
             height=\"24\" viewbox=\"0 0 24 24\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"><path d=
+              <label class=\"pe-control__form-label\"><path d=
               \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
               </path></label>
             </svg>
@@ -964,15 +800,12 @@ exports[`test Option: selectable (false) 1`] = `
         </div>
         <div class=
         \"pe-icon pe-icon--regular pe-control__button--off\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
             height=\"24\" viewbox=\"0 0 24 24\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"><path d=
+              <label class=\"pe-control__form-label\"><path d=
               \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
               </path></label>
             </svg>
@@ -982,50 +815,40 @@ exports[`test Option: selectable (false) 1`] = `
     </div>
   </div>
   <div class=\"pe-control__label\">
-    <label tabindex=\"-1\" class=
-    \"pe-control__form-label\">Never</label>
+    <label class=\"pe-control__form-label\">Never</label>
   </div>
 </div>
 <div class=
 \"pe-control pe-checkbox-control pe-control--off pe-control--regular\">
 <input name=\"\" type=\"checkbox\" tabindex=\"-1\" class=
-\"pe-control__input\"><label tabindex=\"-1\" class=
-\"pe-control__form-label\"></label>
+\"pe-control__input\"><label class=\"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
-    <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+    <label class=\"pe-control__form-label\"></label>
     <div tabindex=\"0\" class=
     \"pe-button pe-icon-button pe-control__button\">
-      <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+      <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
-        <label tabindex=\"-1\" class=
-        \"pe-control__form-label\"></label>
+        <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-ripple pe-ripple--constrained\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-ripple__mask\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-ripple__waves\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"></label>
+              <label class=\"pe-control__form-label\"></label>
             </div>
           </div>
         </div>
         <div class=\"pe-button__focus\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
         </div>
         <div class=
         \"pe-icon pe-icon--regular pe-control__button--on\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
             height=\"24\" viewbox=\"0 0 24 24\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"><path d=
+              <label class=\"pe-control__form-label\"><path d=
               \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
               </path></label>
             </svg>
@@ -1033,15 +856,12 @@ exports[`test Option: selectable (false) 1`] = `
         </div>
         <div class=
         \"pe-icon pe-icon--regular pe-control__button--off\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
             height=\"24\" viewbox=\"0 0 24 24\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"><path d=
+              <label class=\"pe-control__form-label\"><path d=
               \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
               </path></label>
             </svg>
@@ -1051,56 +871,47 @@ exports[`test Option: selectable (false) 1`] = `
     </div>
   </div>
   <div class=\"pe-control__label\">
-    <label tabindex=\"-1\" class=\"pe-control__form-label\">Only when
+    <label class=\"pe-control__form-label\">Only when
     unchecked</label>
   </div>
 </div>
 "
 `;
 
-exports[`test Option: sizes 1`] = `
+exports[`test Option: size 1`] = `
 "<div style=\"display: flex;\">
   <div class=
   \"pe-control pe-checkbox-control pe-control--off pe-control--small\">
   <input name=\"\" type=\"checkbox\" tabindex=\"-1\" class=
-  \"pe-control__input\"><label tabindex=\"-1\" class=
+  \"pe-control__input\"><label class=
   \"pe-control__form-label\"></label>
     <div class=\"pe-control__box\">
-      <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+      <label class=\"pe-control__form-label\"></label>
       <div tabindex=\"0\" class=
       \"pe-button pe-icon-button pe-control__button\">
-        <label tabindex=\"-1\" class=
-        \"pe-control__form-label\"></label>
+        <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-button__content\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-ripple pe-ripple--constrained\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-ripple__mask\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"></label>
+              <label class=\"pe-control__form-label\"></label>
               <div class=\"pe-ripple__waves\">
-                <label tabindex=\"-1\" class=
-                \"pe-control__form-label\"></label>
+                <label class=\"pe-control__form-label\"></label>
               </div>
             </div>
           </div>
           <div class=\"pe-button__focus\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
           </div>
           <div class=
           \"pe-icon pe-icon--small pe-control__button--on\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"></label>
+              <label class=\"pe-control__form-label\"></label>
               <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
               height=\"24\" viewbox=\"0 0 24 24\">
-                <label tabindex=\"-1\" class=
-                \"pe-control__form-label\"><path d=
+                <label class=\"pe-control__form-label\"><path d=
                 \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
                 </path></label>
               </svg>
@@ -1108,15 +919,12 @@ exports[`test Option: sizes 1`] = `
           </div>
           <div class=
           \"pe-icon pe-icon--small pe-control__button--off\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"></label>
+              <label class=\"pe-control__form-label\"></label>
               <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
               height=\"24\" viewbox=\"0 0 24 24\">
-                <label tabindex=\"-1\" class=
-                \"pe-control__form-label\"><path d=
+                <label class=\"pe-control__form-label\"><path d=
                 \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
                 </path></label>
               </svg>
@@ -1126,51 +934,41 @@ exports[`test Option: sizes 1`] = `
       </div>
     </div>
     <div class=\"pe-control__label\">
-      <label tabindex=\"-1\" class=
-      \"pe-control__form-label\">Label</label>
+      <label class=\"pe-control__form-label\">small</label>
     </div>
   </div>
   <div class=
   \"pe-control pe-checkbox-control pe-control--off pe-control--regular\">
   <input name=\"\" type=\"checkbox\" tabindex=\"-1\" class=
-  \"pe-control__input\"><label tabindex=\"-1\" class=
+  \"pe-control__input\"><label class=
   \"pe-control__form-label\"></label>
     <div class=\"pe-control__box\">
-      <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+      <label class=\"pe-control__form-label\"></label>
       <div tabindex=\"0\" class=
       \"pe-button pe-icon-button pe-control__button\">
-        <label tabindex=\"-1\" class=
-        \"pe-control__form-label\"></label>
+        <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-button__content\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-ripple pe-ripple--constrained\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-ripple__mask\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"></label>
+              <label class=\"pe-control__form-label\"></label>
               <div class=\"pe-ripple__waves\">
-                <label tabindex=\"-1\" class=
-                \"pe-control__form-label\"></label>
+                <label class=\"pe-control__form-label\"></label>
               </div>
             </div>
           </div>
           <div class=\"pe-button__focus\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
           </div>
           <div class=
           \"pe-icon pe-icon--regular pe-control__button--on\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"></label>
+              <label class=\"pe-control__form-label\"></label>
               <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
               height=\"24\" viewbox=\"0 0 24 24\">
-                <label tabindex=\"-1\" class=
-                \"pe-control__form-label\"><path d=
+                <label class=\"pe-control__form-label\"><path d=
                 \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
                 </path></label>
               </svg>
@@ -1178,15 +976,12 @@ exports[`test Option: sizes 1`] = `
           </div>
           <div class=
           \"pe-icon pe-icon--regular pe-control__button--off\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"></label>
+              <label class=\"pe-control__form-label\"></label>
               <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
               height=\"24\" viewbox=\"0 0 24 24\">
-                <label tabindex=\"-1\" class=
-                \"pe-control__form-label\"><path d=
+                <label class=\"pe-control__form-label\"><path d=
                 \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
                 </path></label>
               </svg>
@@ -1196,51 +991,41 @@ exports[`test Option: sizes 1`] = `
       </div>
     </div>
     <div class=\"pe-control__label\">
-      <label tabindex=\"-1\" class=
-      \"pe-control__form-label\">Label</label>
+      <label class=\"pe-control__form-label\">regular</label>
     </div>
   </div>
   <div class=
   \"pe-control pe-checkbox-control pe-control--off pe-control--medium\">
   <input name=\"\" type=\"checkbox\" tabindex=\"-1\" class=
-  \"pe-control__input\"><label tabindex=\"-1\" class=
+  \"pe-control__input\"><label class=
   \"pe-control__form-label\"></label>
     <div class=\"pe-control__box\">
-      <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+      <label class=\"pe-control__form-label\"></label>
       <div tabindex=\"0\" class=
       \"pe-button pe-icon-button pe-control__button\">
-        <label tabindex=\"-1\" class=
-        \"pe-control__form-label\"></label>
+        <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-button__content\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-ripple pe-ripple--constrained\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-ripple__mask\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"></label>
+              <label class=\"pe-control__form-label\"></label>
               <div class=\"pe-ripple__waves\">
-                <label tabindex=\"-1\" class=
-                \"pe-control__form-label\"></label>
+                <label class=\"pe-control__form-label\"></label>
               </div>
             </div>
           </div>
           <div class=\"pe-button__focus\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
           </div>
           <div class=
           \"pe-icon pe-icon--medium pe-control__button--on\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"></label>
+              <label class=\"pe-control__form-label\"></label>
               <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
               height=\"24\" viewbox=\"0 0 24 24\">
-                <label tabindex=\"-1\" class=
-                \"pe-control__form-label\"><path d=
+                <label class=\"pe-control__form-label\"><path d=
                 \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
                 </path></label>
               </svg>
@@ -1248,15 +1033,12 @@ exports[`test Option: sizes 1`] = `
           </div>
           <div class=
           \"pe-icon pe-icon--medium pe-control__button--off\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"></label>
+              <label class=\"pe-control__form-label\"></label>
               <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
               height=\"24\" viewbox=\"0 0 24 24\">
-                <label tabindex=\"-1\" class=
-                \"pe-control__form-label\"><path d=
+                <label class=\"pe-control__form-label\"><path d=
                 \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
                 </path></label>
               </svg>
@@ -1266,51 +1048,41 @@ exports[`test Option: sizes 1`] = `
       </div>
     </div>
     <div class=\"pe-control__label\">
-      <label tabindex=\"-1\" class=
-      \"pe-control__form-label\">Label</label>
+      <label class=\"pe-control__form-label\">medium</label>
     </div>
   </div>
   <div class=
   \"pe-control pe-checkbox-control pe-control--off pe-control--large\">
   <input name=\"\" type=\"checkbox\" tabindex=\"-1\" class=
-  \"pe-control__input\"><label tabindex=\"-1\" class=
+  \"pe-control__input\"><label class=
   \"pe-control__form-label\"></label>
     <div class=\"pe-control__box\">
-      <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+      <label class=\"pe-control__form-label\"></label>
       <div tabindex=\"0\" class=
       \"pe-button pe-icon-button pe-control__button\">
-        <label tabindex=\"-1\" class=
-        \"pe-control__form-label\"></label>
+        <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-button__content\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-ripple pe-ripple--constrained\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-ripple__mask\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"></label>
+              <label class=\"pe-control__form-label\"></label>
               <div class=\"pe-ripple__waves\">
-                <label tabindex=\"-1\" class=
-                \"pe-control__form-label\"></label>
+                <label class=\"pe-control__form-label\"></label>
               </div>
             </div>
           </div>
           <div class=\"pe-button__focus\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
           </div>
           <div class=
           \"pe-icon pe-icon--large pe-control__button--on\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"></label>
+              <label class=\"pe-control__form-label\"></label>
               <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
               height=\"24\" viewbox=\"0 0 24 24\">
-                <label tabindex=\"-1\" class=
-                \"pe-control__form-label\"><path d=
+                <label class=\"pe-control__form-label\"><path d=
                 \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
                 </path></label>
               </svg>
@@ -1318,15 +1090,12 @@ exports[`test Option: sizes 1`] = `
           </div>
           <div class=
           \"pe-icon pe-icon--large pe-control__button--off\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"></label>
+              <label class=\"pe-control__form-label\"></label>
               <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
               height=\"24\" viewbox=\"0 0 24 24\">
-                <label tabindex=\"-1\" class=
-                \"pe-control__form-label\"><path d=
+                <label class=\"pe-control__form-label\"><path d=
                 \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
                 </path></label>
               </svg>
@@ -1336,8 +1105,7 @@ exports[`test Option: sizes 1`] = `
       </div>
     </div>
     <div class=\"pe-control__label\">
-      <label tabindex=\"-1\" class=
-      \"pe-control__form-label\">Label</label>
+      <label class=\"pe-control__form-label\">large</label>
     </div>
   </div>
 </div>
@@ -1348,43 +1116,34 @@ exports[`test Option: style (colors) 1`] = `
 "<div style=\"color: rgb(239, 108, 0);\" class=
 \"pe-control pe-checkbox-control pe-control--off pe-control--regular\">
 <input name=\"\" type=\"checkbox\" tabindex=\"-1\" class=
-\"pe-control__input\"><label tabindex=\"-1\" class=
-\"pe-control__form-label\"></label>
+\"pe-control__input\"><label class=\"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
-    <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+    <label class=\"pe-control__form-label\"></label>
     <div tabindex=\"0\" class=
     \"pe-button pe-icon-button pe-control__button\">
-      <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+      <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
-        <label tabindex=\"-1\" class=
-        \"pe-control__form-label\"></label>
+        <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-ripple pe-ripple--constrained\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-ripple__mask\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-ripple__waves\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"></label>
+              <label class=\"pe-control__form-label\"></label>
             </div>
           </div>
         </div>
         <div class=\"pe-button__focus\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
         </div>
         <div class=
         \"pe-icon pe-icon--regular pe-control__button--on\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
             height=\"24\" viewbox=\"0 0 24 24\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"><path d=
+              <label class=\"pe-control__form-label\"><path d=
               \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
               </path></label>
             </svg>
@@ -1392,15 +1151,12 @@ exports[`test Option: style (colors) 1`] = `
         </div>
         <div class=
         \"pe-icon pe-icon--regular pe-control__button--off\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
             height=\"24\" viewbox=\"0 0 24 24\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"><path d=
+              <label class=\"pe-control__form-label\"><path d=
               \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
               </path></label>
             </svg>
@@ -1410,8 +1166,7 @@ exports[`test Option: style (colors) 1`] = `
     </div>
   </div>
   <div class=\"pe-control__label\">
-    <label tabindex=\"-1\" class=
-    \"pe-control__form-label\">Styled</label>
+    <label class=\"pe-control__form-label\">Label</label>
   </div>
 </div>
 "
@@ -1421,43 +1176,34 @@ exports[`test Option: value 1`] = `
 "<div class=
 \"pe-control pe-checkbox-control pe-control--off pe-control--regular\">
 <input name=\"worth\" type=\"checkbox\" tabindex=\"-1\" class=
-\"pe-control__input\"><label tabindex=\"-1\" class=
-\"pe-control__form-label\"></label>
+\"pe-control__input\"><label class=\"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
-    <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+    <label class=\"pe-control__form-label\"></label>
     <div tabindex=\"0\" class=
     \"pe-button pe-icon-button pe-control__button\">
-      <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+      <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
-        <label tabindex=\"-1\" class=
-        \"pe-control__form-label\"></label>
+        <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-ripple pe-ripple--constrained\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-ripple__mask\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-ripple__waves\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"></label>
+              <label class=\"pe-control__form-label\"></label>
             </div>
           </div>
         </div>
         <div class=\"pe-button__focus\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
         </div>
         <div class=
         \"pe-icon pe-icon--regular pe-control__button--on\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
             height=\"24\" viewbox=\"0 0 24 24\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"><path d=
+              <label class=\"pe-control__form-label\"><path d=
               \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
               </path></label>
             </svg>
@@ -1465,15 +1211,12 @@ exports[`test Option: value 1`] = `
         </div>
         <div class=
         \"pe-icon pe-icon--regular pe-control__button--off\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
             height=\"24\" viewbox=\"0 0 24 24\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"><path d=
+              <label class=\"pe-control__form-label\"><path d=
               \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
               </path></label>
             </svg>
@@ -1490,43 +1233,34 @@ exports[`test Setting the value from outside 1`] = `
 "<div class=
 \"pe-control pe-checkbox-control pe-control--off pe-control--regular\">
 <input name=\"\" type=\"checkbox\" tabindex=\"-1\" class=
-\"pe-control__input\"><label tabindex=\"-1\" class=
-\"pe-control__form-label\"></label>
+\"pe-control__input\"><label class=\"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
-    <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+    <label class=\"pe-control__form-label\"></label>
     <div tabindex=\"0\" class=
     \"pe-button pe-icon-button pe-control__button\">
-      <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+      <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
-        <label tabindex=\"-1\" class=
-        \"pe-control__form-label\"></label>
+        <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-ripple pe-ripple--constrained\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-ripple__mask\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-ripple__waves\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"></label>
+              <label class=\"pe-control__form-label\"></label>
             </div>
           </div>
         </div>
         <div class=\"pe-button__focus\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
         </div>
         <div class=
         \"pe-icon pe-icon--regular pe-control__button--on\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
             height=\"24\" viewbox=\"0 0 24 24\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"><path d=
+              <label class=\"pe-control__form-label\"><path d=
               \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
               </path></label>
             </svg>
@@ -1534,15 +1268,12 @@ exports[`test Setting the value from outside 1`] = `
         </div>
         <div class=
         \"pe-icon pe-icon--regular pe-control__button--off\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
             height=\"24\" viewbox=\"0 0 24 24\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"><path d=
+              <label class=\"pe-control__form-label\"><path d=
               \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
               </path></label>
             </svg>
@@ -1552,34 +1283,28 @@ exports[`test Setting the value from outside 1`] = `
     </div>
   </div>
   <div class=\"pe-control__label\">
-    <label tabindex=\"-1\" class=
-    \"pe-control__form-label\">Initiator</label>
+    <label class=\"pe-control__form-label\">Initiator</label>
   </div>
 </div>
 <div class=
 \"pe-control pe-checkbox-control pe-control--off pe-control--disabled pe-control--inactive pe-control--regular\">
 <input name=\"\" type=\"checkbox\" tabindex=\"-1\" class=
-\"pe-control__input\"><label tabindex=\"-1\" class=
-\"pe-control__form-label\"></label>
+\"pe-control__input\"><label class=\"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
-    <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+    <label class=\"pe-control__form-label\"></label>
     <div tabindex=\"-1\" disabled class=
     \"pe-button pe-icon-button pe-button--disabled pe-control__button\">
-    <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+    <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
-        <label tabindex=\"-1\" class=
-        \"pe-control__form-label\"></label>
+        <label class=\"pe-control__form-label\"></label>
         <div class=
         \"pe-icon pe-icon--regular pe-control__button--on\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
             height=\"24\" viewbox=\"0 0 24 24\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"><path d=
+              <label class=\"pe-control__form-label\"><path d=
               \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
               </path></label>
             </svg>
@@ -1587,15 +1312,12 @@ exports[`test Setting the value from outside 1`] = `
         </div>
         <div class=
         \"pe-icon pe-icon--regular pe-control__button--off\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
             height=\"24\" viewbox=\"0 0 24 24\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"><path d=
+              <label class=\"pe-control__form-label\"><path d=
               \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
               </path></label>
             </svg>
@@ -1605,8 +1327,7 @@ exports[`test Setting the value from outside 1`] = `
     </div>
   </div>
   <div class=\"pe-control__label\">
-    <label tabindex=\"-1\" class=
-    \"pe-control__form-label\">Result</label>
+    <label class=\"pe-control__form-label\">Result</label>
   </div>
 </div>
 "
@@ -1616,43 +1337,34 @@ exports[`test Themed checkbox (colors) -- dark theme 1`] = `
 "<div class=
 \"pe-control pe-checkbox-control pe-control--off pe-control--regular tests-checkbox-themed-checkbox\">
 <input name=\"\" type=\"checkbox\" tabindex=\"-1\" class=
-\"pe-control__input\"><label tabindex=\"-1\" class=
-\"pe-control__form-label\"></label>
+\"pe-control__input\"><label class=\"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
-    <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+    <label class=\"pe-control__form-label\"></label>
     <div tabindex=\"0\" class=
     \"pe-button pe-icon-button pe-control__button\">
-      <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+      <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
-        <label tabindex=\"-1\" class=
-        \"pe-control__form-label\"></label>
+        <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-ripple pe-ripple--constrained\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-ripple__mask\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-ripple__waves\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"></label>
+              <label class=\"pe-control__form-label\"></label>
             </div>
           </div>
         </div>
         <div class=\"pe-button__focus\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
         </div>
         <div class=
         \"pe-icon pe-icon--regular pe-control__button--on\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
             height=\"24\" viewbox=\"0 0 24 24\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"><path d=
+              <label class=\"pe-control__form-label\"><path d=
               \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
               </path></label>
             </svg>
@@ -1660,15 +1372,12 @@ exports[`test Themed checkbox (colors) -- dark theme 1`] = `
         </div>
         <div class=
         \"pe-icon pe-icon--regular pe-control__button--off\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
             height=\"24\" viewbox=\"0 0 24 24\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"><path d=
+              <label class=\"pe-control__form-label\"><path d=
               \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
               </path></label>
             </svg>
@@ -1678,8 +1387,7 @@ exports[`test Themed checkbox (colors) -- dark theme 1`] = `
     </div>
   </div>
   <div class=\"pe-control__label\">
-    <label tabindex=\"-1\" class=
-    \"pe-control__form-label\">Label</label>
+    <label class=\"pe-control__form-label\">Label</label>
   </div>
 </div>
 "
@@ -1689,43 +1397,34 @@ exports[`test Themed checkbox (colors) 1`] = `
 "<div class=
 \"pe-control pe-checkbox-control pe-control--off pe-control--regular tests-checkbox-themed-checkbox\">
 <input name=\"\" type=\"checkbox\" tabindex=\"-1\" class=
-\"pe-control__input\"><label tabindex=\"-1\" class=
-\"pe-control__form-label\"></label>
+\"pe-control__input\"><label class=\"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
-    <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+    <label class=\"pe-control__form-label\"></label>
     <div tabindex=\"0\" class=
     \"pe-button pe-icon-button pe-control__button\">
-      <label tabindex=\"-1\" class=\"pe-control__form-label\"></label>
+      <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
-        <label tabindex=\"-1\" class=
-        \"pe-control__form-label\"></label>
+        <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-ripple pe-ripple--constrained\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-ripple__mask\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-ripple__waves\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"></label>
+              <label class=\"pe-control__form-label\"></label>
             </div>
           </div>
         </div>
         <div class=\"pe-button__focus\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
         </div>
         <div class=
         \"pe-icon pe-icon--regular pe-control__button--on\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
             height=\"24\" viewbox=\"0 0 24 24\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"><path d=
+              <label class=\"pe-control__form-label\"><path d=
               \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
               </path></label>
             </svg>
@@ -1733,15 +1432,12 @@ exports[`test Themed checkbox (colors) 1`] = `
         </div>
         <div class=
         \"pe-icon pe-icon--regular pe-control__button--off\">
-          <label tabindex=\"-1\" class=
-          \"pe-control__form-label\"></label>
+          <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
-            <label tabindex=\"-1\" class=
-            \"pe-control__form-label\"></label>
+            <label class=\"pe-control__form-label\"></label>
             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
             height=\"24\" viewbox=\"0 0 24 24\">
-              <label tabindex=\"-1\" class=
-              \"pe-control__form-label\"><path d=
+              <label class=\"pe-control__form-label\"><path d=
               \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
               </path></label>
             </svg>
@@ -1751,8 +1447,7 @@ exports[`test Themed checkbox (colors) 1`] = `
     </div>
   </div>
   <div class=\"pe-control__label\">
-    <label tabindex=\"-1\" class=
-    \"pe-control__form-label\">Label</label>
+    <label class=\"pe-control__form-label\">Label</label>
   </div>
 </div>
 "

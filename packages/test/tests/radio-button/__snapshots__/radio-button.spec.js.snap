@@ -1,0 +1,2735 @@
+exports[`test Option: checked -- dark theme 1`] = `
+"<div class=
+\"pe-control pe-radio-control pe-control--off pe-control--regular\">
+  <input name=\"name-82338}\" type=\"radio\" tabindex=\"-1\" class=
+  \"pe-control__input\"><label class=
+  \"pe-control__form-label\"></label>
+  <div class=\"pe-control__box\">
+    <label class=\"pe-control__form-label\"></label>
+    <div tabindex=\"0\" class=
+    \"pe-button pe-icon-button pe-control__button\">
+      <label class=\"pe-control__form-label\"></label>
+      <div class=\"pe-button__content\">
+        <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple__mask\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple__waves\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--on\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--off\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\"pe-control__label\">
+    <label class=\"pe-control__form-label\">Label</label>
+  </div>
+</div>
+<div class=
+\"pe-control pe-radio-control pe-control--on pe-control--inactive pe-control--regular\">
+<input name=\"name-82338}\" type=\"radio\" tabindex=\"-1\" class=
+\"pe-control__input\"><label class=\"pe-control__form-label\"></label>
+  <div class=\"pe-control__box\">
+    <label class=\"pe-control__form-label\"></label>
+    <div tabindex=\"-1\" class=
+    \"pe-button pe-icon-button pe-button--inactive pe-control__button\">
+    <label class=\"pe-control__form-label\"></label>
+      <div class=\"pe-button__content\">
+        <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple__mask\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple__waves\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--on\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--off\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\"pe-control__label\">
+    <label class=\"pe-control__form-label\">Label</label>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: checked 1`] = `
+"<div class=
+\"pe-control pe-radio-control pe-control--off pe-control--regular\">
+  <input name=\"name-66400}\" type=\"radio\" tabindex=\"-1\" class=
+  \"pe-control__input\"><label class=
+  \"pe-control__form-label\"></label>
+  <div class=\"pe-control__box\">
+    <label class=\"pe-control__form-label\"></label>
+    <div tabindex=\"0\" class=
+    \"pe-button pe-icon-button pe-control__button\">
+      <label class=\"pe-control__form-label\"></label>
+      <div class=\"pe-button__content\">
+        <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple__mask\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple__waves\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--on\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--off\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\"pe-control__label\">
+    <label class=\"pe-control__form-label\">Label</label>
+  </div>
+</div>
+<div class=
+\"pe-control pe-radio-control pe-control--on pe-control--inactive pe-control--regular\">
+<input name=\"name-66400}\" type=\"radio\" tabindex=\"-1\" class=
+\"pe-control__input\"><label class=\"pe-control__form-label\"></label>
+  <div class=\"pe-control__box\">
+    <label class=\"pe-control__form-label\"></label>
+    <div tabindex=\"-1\" class=
+    \"pe-button pe-icon-button pe-button--inactive pe-control__button\">
+    <label class=\"pe-control__form-label\"></label>
+      <div class=\"pe-button__content\">
+        <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple__mask\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple__waves\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--on\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--off\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\"pe-control__label\">
+    <label class=\"pe-control__form-label\">Label</label>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: disabled -- dark theme 1`] = `
+"<div class=
+\"pe-control pe-radio-control pe-control--off pe-control--disabled pe-control--inactive pe-control--regular\">
+<input name=\"name-7385}\" type=\"radio\" tabindex=\"-1\" class=
+\"pe-control__input\"><label class=\"pe-control__form-label\"></label>
+  <div class=\"pe-control__box\">
+    <label class=\"pe-control__form-label\"></label>
+    <div tabindex=\"-1\" disabled class=
+    \"pe-button pe-icon-button pe-button--disabled pe-control__button\">
+    <label class=\"pe-control__form-label\"></label>
+      <div class=\"pe-button__content\">
+        <label class=\"pe-control__form-label\"></label>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--on\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--off\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\"pe-control__label\">
+    <label class=\"pe-control__form-label\">Off</label>
+  </div>
+</div>
+<div class=
+\"pe-control pe-radio-control pe-control--on pe-control--disabled pe-control--inactive pe-control--regular\">
+<input name=\"name-7385}\" type=\"radio\" tabindex=\"-1\" class=
+\"pe-control__input\"><label class=\"pe-control__form-label\"></label>
+  <div class=\"pe-control__box\">
+    <label class=\"pe-control__form-label\"></label>
+    <div tabindex=\"-1\" disabled class=
+    \"pe-button pe-icon-button pe-button--disabled pe-button--inactive pe-control__button\">
+    <label class=\"pe-control__form-label\"></label>
+      <div class=\"pe-button__content\">
+        <label class=\"pe-control__form-label\"></label>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--on\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--off\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\"pe-control__label\">
+    <label class=\"pe-control__form-label\">On</label>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: disabled 1`] = `
+"<div class=
+\"pe-control pe-radio-control pe-control--off pe-control--disabled pe-control--inactive pe-control--regular\">
+<input name=\"name-36886}\" type=\"radio\" tabindex=\"-1\" class=
+\"pe-control__input\"><label class=\"pe-control__form-label\"></label>
+  <div class=\"pe-control__box\">
+    <label class=\"pe-control__form-label\"></label>
+    <div tabindex=\"-1\" disabled class=
+    \"pe-button pe-icon-button pe-button--disabled pe-control__button\">
+    <label class=\"pe-control__form-label\"></label>
+      <div class=\"pe-button__content\">
+        <label class=\"pe-control__form-label\"></label>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--on\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--off\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\"pe-control__label\">
+    <label class=\"pe-control__form-label\">Off</label>
+  </div>
+</div>
+<div class=
+\"pe-control pe-radio-control pe-control--on pe-control--disabled pe-control--inactive pe-control--regular\">
+<input name=\"name-36886}\" type=\"radio\" tabindex=\"-1\" class=
+\"pe-control__input\"><label class=\"pe-control__form-label\"></label>
+  <div class=\"pe-control__box\">
+    <label class=\"pe-control__form-label\"></label>
+    <div tabindex=\"-1\" disabled class=
+    \"pe-button pe-icon-button pe-button--disabled pe-button--inactive pe-control__button\">
+    <label class=\"pe-control__form-label\"></label>
+      <div class=\"pe-button__content\">
+        <label class=\"pe-control__form-label\"></label>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--on\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--off\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\"pe-control__label\">
+    <label class=\"pe-control__form-label\">On</label>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: events 1`] = `
+"<div>
+  Value: undefined
+</div>
+<div class=
+\"pe-control pe-radio-control pe-control--off pe-control--regular\">
+  <input name=\"events\" type=\"radio\" tabindex=\"-1\" class=
+  \"pe-control__input\"><label class=
+  \"pe-control__form-label\"></label>
+  <div class=\"pe-control__box\">
+    <label class=\"pe-control__form-label\"></label>
+    <div tabindex=\"0\" class=
+    \"pe-button pe-icon-button pe-control__button\">
+      <label class=\"pe-control__form-label\"></label>
+      <div class=\"pe-button__content\">
+        <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple__mask\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple__waves\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--on\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--off\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class=
+\"pe-control pe-radio-control pe-control--off pe-control--regular\">
+  <input name=\"events\" type=\"radio\" tabindex=\"-1\" class=
+  \"pe-control__input\"><label class=
+  \"pe-control__form-label\"></label>
+  <div class=\"pe-control__box\">
+    <label class=\"pe-control__form-label\"></label>
+    <div tabindex=\"0\" class=
+    \"pe-button pe-icon-button pe-control__button\">
+      <label class=\"pe-control__form-label\"></label>
+      <div class=\"pe-button__content\">
+        <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple__mask\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple__waves\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--on\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--off\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: getState 1`] = `
+"<div>
+  Value: undefined
+</div>
+<div class=
+\"pe-control pe-radio-control pe-control--off pe-control--regular\">
+  <input name=\"getState\" type=\"radio\" tabindex=\"-1\" class=
+  \"pe-control__input\"><label class=
+  \"pe-control__form-label\"></label>
+  <div class=\"pe-control__box\">
+    <label class=\"pe-control__form-label\"></label>
+    <div tabindex=\"0\" class=
+    \"pe-button pe-icon-button pe-control__button\">
+      <label class=\"pe-control__form-label\"></label>
+      <div class=\"pe-button__content\">
+        <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple__mask\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple__waves\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--on\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--off\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\"pe-control__label\">
+    <label class=\"pe-control__form-label\">First</label>
+  </div>
+</div>
+<div class=
+\"pe-control pe-radio-control pe-control--off pe-control--regular\">
+  <input name=\"getState\" type=\"radio\" tabindex=\"-1\" class=
+  \"pe-control__input\"><label class=
+  \"pe-control__form-label\"></label>
+  <div class=\"pe-control__box\">
+    <label class=\"pe-control__form-label\"></label>
+    <div tabindex=\"0\" class=
+    \"pe-button pe-icon-button pe-control__button\">
+      <label class=\"pe-control__form-label\"></label>
+      <div class=\"pe-button__content\">
+        <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple__mask\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple__waves\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--on\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--off\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\"pe-control__label\">
+    <label class=\"pe-control__form-label\">Second</label>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: iconButton (custom hover behaviour) 1`] = `
+"<div class=
+\"pe-control pe-radio-control pe-control--off pe-control--regular\">
+  <input name=\"name-3578}\" type=\"radio\" tabindex=\"-1\" class=
+  \"pe-control__input\"><label class=
+  \"pe-control__form-label\"></label>
+  <div class=\"pe-control__box\">
+    <label class=\"pe-control__form-label\"></label>
+    <div tabindex=\"0\" class=
+    \"pe-button pe-icon-button pe-control__button\">
+      <label class=\"pe-control__form-label\"></label>
+      <div class=\"pe-button__content\">
+        <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-button__wash\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
+        <div class=\"pe-button__focus\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--on\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--off\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\"pe-control__label\">
+    <label class=\"pe-control__form-label\">Hover me</label>
+  </div>
+</div>
+<div class=
+\"pe-control pe-radio-control pe-control--off pe-control--regular\">
+  <input name=\"name-3578}\" type=\"radio\" tabindex=\"-1\" class=
+  \"pe-control__input\"><label class=
+  \"pe-control__form-label\"></label>
+  <div class=\"pe-control__box\">
+    <label class=\"pe-control__form-label\"></label>
+    <div tabindex=\"0\" class=
+    \"pe-button pe-icon-button pe-control__button\">
+      <label class=\"pe-control__form-label\"></label>
+      <div class=\"pe-button__content\">
+        <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-button__wash\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
+        <div class=\"pe-button__focus\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--on\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--off\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\"pe-control__label\">
+    <label class=\"pe-control__form-label\">Hover me</label>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
+"<div>
+  <div>
+    <div class=
+    \"pe-control pe-radio-control pe-control--off pe-control--small\">
+    <input name=\"small\" type=\"radio\" tabindex=\"-1\" class=
+    \"pe-control__input\"><label class=
+    \"pe-control__form-label\"></label>
+      <div class=\"pe-control__box\">
+        <label class=\"pe-control__form-label\"></label>
+        <div tabindex=\"0\" class=
+        \"pe-button pe-icon-button pe-control__button\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-button__content\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple pe-ripple--constrained\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-ripple__mask\">
+                <label class=\"pe-control__form-label\"></label>
+                <div class=\"pe-ripple__waves\">
+                  <label class=\"pe-control__form-label\"></label>
+                </div>
+              </div>
+            </div>
+            <div class=\"pe-button__focus\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+            <div class=
+            \"pe-icon pe-icon--small pe-control__button--on\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-svg\">
+                <label class=\"pe-control__form-label\"></label>
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <label class=\"pe-control__form-label\"><path d=
+                  \"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\">
+                  </path></label>
+                </svg>
+              </div>
+            </div>
+            <div class=
+            \"pe-icon pe-icon--small pe-control__button--off\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-svg\">
+                <label class=\"pe-control__form-label\"></label>
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <label class=\"pe-control__form-label\"><path d=
+                  \"M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z\">
+                  </path></label>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-control__label\">
+        <label class=\"pe-control__form-label\">Label</label>
+      </div>
+    </div>
+    <div class=
+    \"pe-control pe-radio-control pe-control--off pe-control--small\">
+    <input name=\"small\" type=\"radio\" tabindex=\"-1\" class=
+    \"pe-control__input\"><label class=
+    \"pe-control__form-label\"></label>
+      <div class=\"pe-control__box\">
+        <label class=\"pe-control__form-label\"></label>
+        <div tabindex=\"0\" class=
+        \"pe-button pe-icon-button pe-control__button\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-button__content\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple pe-ripple--constrained\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-ripple__mask\">
+                <label class=\"pe-control__form-label\"></label>
+                <div class=\"pe-ripple__waves\">
+                  <label class=\"pe-control__form-label\"></label>
+                </div>
+              </div>
+            </div>
+            <div class=\"pe-button__focus\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+            <div class=
+            \"pe-icon pe-icon--small pe-control__button--on\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-svg\">
+                <label class=\"pe-control__form-label\"></label>
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <label class=\"pe-control__form-label\"><path d=
+                  \"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\">
+                  </path></label>
+                </svg>
+              </div>
+            </div>
+            <div class=
+            \"pe-icon pe-icon--small pe-control__button--off\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-svg\">
+                <label class=\"pe-control__form-label\"></label>
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <label class=\"pe-control__form-label\"><path d=
+                  \"M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z\">
+                  </path></label>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-control__label\">
+        <label class=\"pe-control__form-label\">Label</label>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class=
+    \"pe-control pe-radio-control pe-control--off pe-control--regular\">
+    <input name=\"regular\" type=\"radio\" tabindex=\"-1\" class=
+    \"pe-control__input\"><label class=
+    \"pe-control__form-label\"></label>
+      <div class=\"pe-control__box\">
+        <label class=\"pe-control__form-label\"></label>
+        <div tabindex=\"0\" class=
+        \"pe-button pe-icon-button pe-control__button\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-button__content\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple pe-ripple--constrained\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-ripple__mask\">
+                <label class=\"pe-control__form-label\"></label>
+                <div class=\"pe-ripple__waves\">
+                  <label class=\"pe-control__form-label\"></label>
+                </div>
+              </div>
+            </div>
+            <div class=\"pe-button__focus\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+            <div class=
+            \"pe-icon pe-icon--regular pe-control__button--on\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-svg\">
+                <label class=\"pe-control__form-label\"></label>
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <label class=\"pe-control__form-label\"><path d=
+                  \"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\">
+                  </path></label>
+                </svg>
+              </div>
+            </div>
+            <div class=
+            \"pe-icon pe-icon--regular pe-control__button--off\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-svg\">
+                <label class=\"pe-control__form-label\"></label>
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <label class=\"pe-control__form-label\"><path d=
+                  \"M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z\">
+                  </path></label>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-control__label\">
+        <label class=\"pe-control__form-label\">Label</label>
+      </div>
+    </div>
+    <div class=
+    \"pe-control pe-radio-control pe-control--off pe-control--regular\">
+    <input name=\"regular\" type=\"radio\" tabindex=\"-1\" class=
+    \"pe-control__input\"><label class=
+    \"pe-control__form-label\"></label>
+      <div class=\"pe-control__box\">
+        <label class=\"pe-control__form-label\"></label>
+        <div tabindex=\"0\" class=
+        \"pe-button pe-icon-button pe-control__button\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-button__content\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple pe-ripple--constrained\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-ripple__mask\">
+                <label class=\"pe-control__form-label\"></label>
+                <div class=\"pe-ripple__waves\">
+                  <label class=\"pe-control__form-label\"></label>
+                </div>
+              </div>
+            </div>
+            <div class=\"pe-button__focus\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+            <div class=
+            \"pe-icon pe-icon--regular pe-control__button--on\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-svg\">
+                <label class=\"pe-control__form-label\"></label>
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <label class=\"pe-control__form-label\"><path d=
+                  \"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\">
+                  </path></label>
+                </svg>
+              </div>
+            </div>
+            <div class=
+            \"pe-icon pe-icon--regular pe-control__button--off\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-svg\">
+                <label class=\"pe-control__form-label\"></label>
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <label class=\"pe-control__form-label\"><path d=
+                  \"M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z\">
+                  </path></label>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-control__label\">
+        <label class=\"pe-control__form-label\">Label</label>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class=
+    \"pe-control pe-radio-control pe-control--off pe-control--medium\">
+    <input name=\"medium\" type=\"radio\" tabindex=\"-1\" class=
+    \"pe-control__input\"><label class=
+    \"pe-control__form-label\"></label>
+      <div class=\"pe-control__box\">
+        <label class=\"pe-control__form-label\"></label>
+        <div tabindex=\"0\" class=
+        \"pe-button pe-icon-button pe-control__button\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-button__content\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple pe-ripple--constrained\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-ripple__mask\">
+                <label class=\"pe-control__form-label\"></label>
+                <div class=\"pe-ripple__waves\">
+                  <label class=\"pe-control__form-label\"></label>
+                </div>
+              </div>
+            </div>
+            <div class=\"pe-button__focus\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+            <div class=
+            \"pe-icon pe-icon--medium pe-control__button--on\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-svg\">
+                <label class=\"pe-control__form-label\"></label>
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <label class=\"pe-control__form-label\"><path d=
+                  \"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\">
+                  </path></label>
+                </svg>
+              </div>
+            </div>
+            <div class=
+            \"pe-icon pe-icon--medium pe-control__button--off\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-svg\">
+                <label class=\"pe-control__form-label\"></label>
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <label class=\"pe-control__form-label\"><path d=
+                  \"M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z\">
+                  </path></label>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-control__label\">
+        <label class=\"pe-control__form-label\">Label</label>
+      </div>
+    </div>
+    <div class=
+    \"pe-control pe-radio-control pe-control--off pe-control--medium\">
+    <input name=\"medium\" type=\"radio\" tabindex=\"-1\" class=
+    \"pe-control__input\"><label class=
+    \"pe-control__form-label\"></label>
+      <div class=\"pe-control__box\">
+        <label class=\"pe-control__form-label\"></label>
+        <div tabindex=\"0\" class=
+        \"pe-button pe-icon-button pe-control__button\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-button__content\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple pe-ripple--constrained\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-ripple__mask\">
+                <label class=\"pe-control__form-label\"></label>
+                <div class=\"pe-ripple__waves\">
+                  <label class=\"pe-control__form-label\"></label>
+                </div>
+              </div>
+            </div>
+            <div class=\"pe-button__focus\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+            <div class=
+            \"pe-icon pe-icon--medium pe-control__button--on\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-svg\">
+                <label class=\"pe-control__form-label\"></label>
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <label class=\"pe-control__form-label\"><path d=
+                  \"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\">
+                  </path></label>
+                </svg>
+              </div>
+            </div>
+            <div class=
+            \"pe-icon pe-icon--medium pe-control__button--off\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-svg\">
+                <label class=\"pe-control__form-label\"></label>
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <label class=\"pe-control__form-label\"><path d=
+                  \"M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z\">
+                  </path></label>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-control__label\">
+        <label class=\"pe-control__form-label\">Label</label>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class=
+    \"pe-control pe-radio-control pe-control--off pe-control--large\">
+    <input name=\"large\" type=\"radio\" tabindex=\"-1\" class=
+    \"pe-control__input\"><label class=
+    \"pe-control__form-label\"></label>
+      <div class=\"pe-control__box\">
+        <label class=\"pe-control__form-label\"></label>
+        <div tabindex=\"0\" class=
+        \"pe-button pe-icon-button pe-control__button\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-button__content\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple pe-ripple--constrained\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-ripple__mask\">
+                <label class=\"pe-control__form-label\"></label>
+                <div class=\"pe-ripple__waves\">
+                  <label class=\"pe-control__form-label\"></label>
+                </div>
+              </div>
+            </div>
+            <div class=\"pe-button__focus\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+            <div class=
+            \"pe-icon pe-icon--large pe-control__button--on\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-svg\">
+                <label class=\"pe-control__form-label\"></label>
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <label class=\"pe-control__form-label\"><path d=
+                  \"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\">
+                  </path></label>
+                </svg>
+              </div>
+            </div>
+            <div class=
+            \"pe-icon pe-icon--large pe-control__button--off\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-svg\">
+                <label class=\"pe-control__form-label\"></label>
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <label class=\"pe-control__form-label\"><path d=
+                  \"M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z\">
+                  </path></label>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-control__label\">
+        <label class=\"pe-control__form-label\">Label</label>
+      </div>
+    </div>
+    <div class=
+    \"pe-control pe-radio-control pe-control--off pe-control--large\">
+    <input name=\"large\" type=\"radio\" tabindex=\"-1\" class=
+    \"pe-control__input\"><label class=
+    \"pe-control__form-label\"></label>
+      <div class=\"pe-control__box\">
+        <label class=\"pe-control__form-label\"></label>
+        <div tabindex=\"0\" class=
+        \"pe-button pe-icon-button pe-control__button\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-button__content\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple pe-ripple--constrained\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-ripple__mask\">
+                <label class=\"pe-control__form-label\"></label>
+                <div class=\"pe-ripple__waves\">
+                  <label class=\"pe-control__form-label\"></label>
+                </div>
+              </div>
+            </div>
+            <div class=\"pe-button__focus\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+            <div class=
+            \"pe-icon pe-icon--large pe-control__button--on\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-svg\">
+                <label class=\"pe-control__form-label\"></label>
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <label class=\"pe-control__form-label\"><path d=
+                  \"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\">
+                  </path></label>
+                </svg>
+              </div>
+            </div>
+            <div class=
+            \"pe-icon pe-icon--large pe-control__button--off\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-svg\">
+                <label class=\"pe-control__form-label\"></label>
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <label class=\"pe-control__form-label\"><path d=
+                  \"M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z\">
+                  </path></label>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-control__label\">
+        <label class=\"pe-control__form-label\">Label</label>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: label 1`] = `
+"<div class=
+\"pe-control pe-radio-control pe-control--off pe-control--regular\">
+  <input name=\"name-3902}\" type=\"radio\" tabindex=\"-1\" class=
+  \"pe-control__input\"><label class=
+  \"pe-control__form-label\"></label>
+  <div class=\"pe-control__box\">
+    <label class=\"pe-control__form-label\"></label>
+    <div tabindex=\"0\" class=
+    \"pe-button pe-icon-button pe-control__button\">
+      <label class=\"pe-control__form-label\"></label>
+      <div class=\"pe-button__content\">
+        <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple__mask\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple__waves\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--on\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--off\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\"pe-control__label\">
+    <label class=\"pe-control__form-label\">Label</label>
+  </div>
+</div>
+<div class=
+\"pe-control pe-radio-control pe-control--off pe-control--regular\">
+  <input name=\"name-3902}\" type=\"radio\" tabindex=\"-1\" class=
+  \"pe-control__input\"><label class=
+  \"pe-control__form-label\"></label>
+  <div class=\"pe-control__box\">
+    <label class=\"pe-control__form-label\"></label>
+    <div tabindex=\"0\" class=
+    \"pe-button pe-icon-button pe-control__button\">
+      <label class=\"pe-control__form-label\"></label>
+      <div class=\"pe-button__content\">
+        <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple__mask\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple__waves\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--on\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--off\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\"pe-control__label\">
+    <label class=\"pe-control__form-label\">Label</label>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: selectable (true) 1`] = `
+"<div class=
+\"pe-control pe-radio-control pe-control--off pe-control--regular\">
+  <input name=\"name-26680}\" type=\"radio\" tabindex=\"-1\" class=
+  \"pe-control__input\"><label class=
+  \"pe-control__form-label\"></label>
+  <div class=\"pe-control__box\">
+    <label class=\"pe-control__form-label\"></label>
+    <div tabindex=\"0\" class=
+    \"pe-button pe-icon-button pe-control__button\">
+      <label class=\"pe-control__form-label\"></label>
+      <div class=\"pe-button__content\">
+        <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple__mask\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple__waves\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--on\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--off\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\"pe-control__label\">
+    <label class=\"pe-control__form-label\">Always</label>
+  </div>
+</div>
+<div class=
+\"pe-control pe-radio-control pe-control--off pe-control--regular\">
+  <input name=\"name-26680}\" type=\"radio\" tabindex=\"-1\" class=
+  \"pe-control__input\"><label class=
+  \"pe-control__form-label\"></label>
+  <div class=\"pe-control__box\">
+    <label class=\"pe-control__form-label\"></label>
+    <div tabindex=\"0\" class=
+    \"pe-button pe-icon-button pe-control__button\">
+      <label class=\"pe-control__form-label\"></label>
+      <div class=\"pe-button__content\">
+        <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple__mask\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple__waves\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--on\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--off\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\"pe-control__label\">
+    <label class=\"pe-control__form-label\">Always</label>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: size 1`] = `
+"<div>
+  <div>
+    <div class=
+    \"pe-control pe-radio-control pe-control--off pe-control--small\">
+    <input name=\"small\" type=\"radio\" tabindex=\"-1\" class=
+    \"pe-control__input\"><label class=
+    \"pe-control__form-label\"></label>
+      <div class=\"pe-control__box\">
+        <label class=\"pe-control__form-label\"></label>
+        <div tabindex=\"0\" class=
+        \"pe-button pe-icon-button pe-control__button\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-button__content\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple pe-ripple--constrained\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-ripple__mask\">
+                <label class=\"pe-control__form-label\"></label>
+                <div class=\"pe-ripple__waves\">
+                  <label class=\"pe-control__form-label\"></label>
+                </div>
+              </div>
+            </div>
+            <div class=\"pe-button__focus\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+            <div class=
+            \"pe-icon pe-icon--small pe-control__button--on\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-svg\">
+                <label class=\"pe-control__form-label\"></label>
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <label class=\"pe-control__form-label\"><path d=
+                  \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+                  </path></label>
+                </svg>
+              </div>
+            </div>
+            <div class=
+            \"pe-icon pe-icon--small pe-control__button--off\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-svg\">
+                <label class=\"pe-control__form-label\"></label>
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <label class=\"pe-control__form-label\"><path d=
+                  \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+                  </path></label>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-control__label\">
+        <label class=\"pe-control__form-label\">Label</label>
+      </div>
+    </div>
+    <div class=
+    \"pe-control pe-radio-control pe-control--off pe-control--small\">
+    <input name=\"small\" type=\"radio\" tabindex=\"-1\" class=
+    \"pe-control__input\"><label class=
+    \"pe-control__form-label\"></label>
+      <div class=\"pe-control__box\">
+        <label class=\"pe-control__form-label\"></label>
+        <div tabindex=\"0\" class=
+        \"pe-button pe-icon-button pe-control__button\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-button__content\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple pe-ripple--constrained\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-ripple__mask\">
+                <label class=\"pe-control__form-label\"></label>
+                <div class=\"pe-ripple__waves\">
+                  <label class=\"pe-control__form-label\"></label>
+                </div>
+              </div>
+            </div>
+            <div class=\"pe-button__focus\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+            <div class=
+            \"pe-icon pe-icon--small pe-control__button--on\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-svg\">
+                <label class=\"pe-control__form-label\"></label>
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <label class=\"pe-control__form-label\"><path d=
+                  \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+                  </path></label>
+                </svg>
+              </div>
+            </div>
+            <div class=
+            \"pe-icon pe-icon--small pe-control__button--off\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-svg\">
+                <label class=\"pe-control__form-label\"></label>
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <label class=\"pe-control__form-label\"><path d=
+                  \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+                  </path></label>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-control__label\">
+        <label class=\"pe-control__form-label\">Label</label>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class=
+    \"pe-control pe-radio-control pe-control--off pe-control--regular\">
+    <input name=\"regular\" type=\"radio\" tabindex=\"-1\" class=
+    \"pe-control__input\"><label class=
+    \"pe-control__form-label\"></label>
+      <div class=\"pe-control__box\">
+        <label class=\"pe-control__form-label\"></label>
+        <div tabindex=\"0\" class=
+        \"pe-button pe-icon-button pe-control__button\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-button__content\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple pe-ripple--constrained\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-ripple__mask\">
+                <label class=\"pe-control__form-label\"></label>
+                <div class=\"pe-ripple__waves\">
+                  <label class=\"pe-control__form-label\"></label>
+                </div>
+              </div>
+            </div>
+            <div class=\"pe-button__focus\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+            <div class=
+            \"pe-icon pe-icon--regular pe-control__button--on\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-svg\">
+                <label class=\"pe-control__form-label\"></label>
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <label class=\"pe-control__form-label\"><path d=
+                  \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+                  </path></label>
+                </svg>
+              </div>
+            </div>
+            <div class=
+            \"pe-icon pe-icon--regular pe-control__button--off\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-svg\">
+                <label class=\"pe-control__form-label\"></label>
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <label class=\"pe-control__form-label\"><path d=
+                  \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+                  </path></label>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-control__label\">
+        <label class=\"pe-control__form-label\">Label</label>
+      </div>
+    </div>
+    <div class=
+    \"pe-control pe-radio-control pe-control--off pe-control--regular\">
+    <input name=\"regular\" type=\"radio\" tabindex=\"-1\" class=
+    \"pe-control__input\"><label class=
+    \"pe-control__form-label\"></label>
+      <div class=\"pe-control__box\">
+        <label class=\"pe-control__form-label\"></label>
+        <div tabindex=\"0\" class=
+        \"pe-button pe-icon-button pe-control__button\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-button__content\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple pe-ripple--constrained\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-ripple__mask\">
+                <label class=\"pe-control__form-label\"></label>
+                <div class=\"pe-ripple__waves\">
+                  <label class=\"pe-control__form-label\"></label>
+                </div>
+              </div>
+            </div>
+            <div class=\"pe-button__focus\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+            <div class=
+            \"pe-icon pe-icon--regular pe-control__button--on\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-svg\">
+                <label class=\"pe-control__form-label\"></label>
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <label class=\"pe-control__form-label\"><path d=
+                  \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+                  </path></label>
+                </svg>
+              </div>
+            </div>
+            <div class=
+            \"pe-icon pe-icon--regular pe-control__button--off\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-svg\">
+                <label class=\"pe-control__form-label\"></label>
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <label class=\"pe-control__form-label\"><path d=
+                  \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+                  </path></label>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-control__label\">
+        <label class=\"pe-control__form-label\">Label</label>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class=
+    \"pe-control pe-radio-control pe-control--off pe-control--medium\">
+    <input name=\"medium\" type=\"radio\" tabindex=\"-1\" class=
+    \"pe-control__input\"><label class=
+    \"pe-control__form-label\"></label>
+      <div class=\"pe-control__box\">
+        <label class=\"pe-control__form-label\"></label>
+        <div tabindex=\"0\" class=
+        \"pe-button pe-icon-button pe-control__button\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-button__content\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple pe-ripple--constrained\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-ripple__mask\">
+                <label class=\"pe-control__form-label\"></label>
+                <div class=\"pe-ripple__waves\">
+                  <label class=\"pe-control__form-label\"></label>
+                </div>
+              </div>
+            </div>
+            <div class=\"pe-button__focus\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+            <div class=
+            \"pe-icon pe-icon--medium pe-control__button--on\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-svg\">
+                <label class=\"pe-control__form-label\"></label>
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <label class=\"pe-control__form-label\"><path d=
+                  \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+                  </path></label>
+                </svg>
+              </div>
+            </div>
+            <div class=
+            \"pe-icon pe-icon--medium pe-control__button--off\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-svg\">
+                <label class=\"pe-control__form-label\"></label>
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <label class=\"pe-control__form-label\"><path d=
+                  \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+                  </path></label>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-control__label\">
+        <label class=\"pe-control__form-label\">Label</label>
+      </div>
+    </div>
+    <div class=
+    \"pe-control pe-radio-control pe-control--off pe-control--medium\">
+    <input name=\"medium\" type=\"radio\" tabindex=\"-1\" class=
+    \"pe-control__input\"><label class=
+    \"pe-control__form-label\"></label>
+      <div class=\"pe-control__box\">
+        <label class=\"pe-control__form-label\"></label>
+        <div tabindex=\"0\" class=
+        \"pe-button pe-icon-button pe-control__button\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-button__content\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple pe-ripple--constrained\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-ripple__mask\">
+                <label class=\"pe-control__form-label\"></label>
+                <div class=\"pe-ripple__waves\">
+                  <label class=\"pe-control__form-label\"></label>
+                </div>
+              </div>
+            </div>
+            <div class=\"pe-button__focus\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+            <div class=
+            \"pe-icon pe-icon--medium pe-control__button--on\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-svg\">
+                <label class=\"pe-control__form-label\"></label>
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <label class=\"pe-control__form-label\"><path d=
+                  \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+                  </path></label>
+                </svg>
+              </div>
+            </div>
+            <div class=
+            \"pe-icon pe-icon--medium pe-control__button--off\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-svg\">
+                <label class=\"pe-control__form-label\"></label>
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <label class=\"pe-control__form-label\"><path d=
+                  \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+                  </path></label>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-control__label\">
+        <label class=\"pe-control__form-label\">Label</label>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class=
+    \"pe-control pe-radio-control pe-control--off pe-control--large\">
+    <input name=\"large\" type=\"radio\" tabindex=\"-1\" class=
+    \"pe-control__input\"><label class=
+    \"pe-control__form-label\"></label>
+      <div class=\"pe-control__box\">
+        <label class=\"pe-control__form-label\"></label>
+        <div tabindex=\"0\" class=
+        \"pe-button pe-icon-button pe-control__button\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-button__content\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple pe-ripple--constrained\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-ripple__mask\">
+                <label class=\"pe-control__form-label\"></label>
+                <div class=\"pe-ripple__waves\">
+                  <label class=\"pe-control__form-label\"></label>
+                </div>
+              </div>
+            </div>
+            <div class=\"pe-button__focus\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+            <div class=
+            \"pe-icon pe-icon--large pe-control__button--on\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-svg\">
+                <label class=\"pe-control__form-label\"></label>
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <label class=\"pe-control__form-label\"><path d=
+                  \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+                  </path></label>
+                </svg>
+              </div>
+            </div>
+            <div class=
+            \"pe-icon pe-icon--large pe-control__button--off\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-svg\">
+                <label class=\"pe-control__form-label\"></label>
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <label class=\"pe-control__form-label\"><path d=
+                  \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+                  </path></label>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-control__label\">
+        <label class=\"pe-control__form-label\">Label</label>
+      </div>
+    </div>
+    <div class=
+    \"pe-control pe-radio-control pe-control--off pe-control--large\">
+    <input name=\"large\" type=\"radio\" tabindex=\"-1\" class=
+    \"pe-control__input\"><label class=
+    \"pe-control__form-label\"></label>
+      <div class=\"pe-control__box\">
+        <label class=\"pe-control__form-label\"></label>
+        <div tabindex=\"0\" class=
+        \"pe-button pe-icon-button pe-control__button\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-button__content\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple pe-ripple--constrained\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-ripple__mask\">
+                <label class=\"pe-control__form-label\"></label>
+                <div class=\"pe-ripple__waves\">
+                  <label class=\"pe-control__form-label\"></label>
+                </div>
+              </div>
+            </div>
+            <div class=\"pe-button__focus\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+            <div class=
+            \"pe-icon pe-icon--large pe-control__button--on\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-svg\">
+                <label class=\"pe-control__form-label\"></label>
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <label class=\"pe-control__form-label\"><path d=
+                  \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+                  </path></label>
+                </svg>
+              </div>
+            </div>
+            <div class=
+            \"pe-icon pe-icon--large pe-control__button--off\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-svg\">
+                <label class=\"pe-control__form-label\"></label>
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <label class=\"pe-control__form-label\"><path d=
+                  \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+                  </path></label>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-control__label\">
+        <label class=\"pe-control__form-label\">Label</label>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: style (colors) 1`] = `
+"<div style=\"color: rgb(239, 108, 0);\" class=
+\"pe-control pe-radio-control pe-control--off pe-control--regular\">
+  <input name=\"name-32983}\" type=\"radio\" tabindex=\"-1\" class=
+  \"pe-control__input\"><label class=
+  \"pe-control__form-label\"></label>
+  <div class=\"pe-control__box\">
+    <label class=\"pe-control__form-label\"></label>
+    <div tabindex=\"0\" class=
+    \"pe-button pe-icon-button pe-control__button\">
+      <label class=\"pe-control__form-label\"></label>
+      <div class=\"pe-button__content\">
+        <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple__mask\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple__waves\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--on\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--off\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\"pe-control__label\">
+    <label class=\"pe-control__form-label\">Label</label>
+  </div>
+</div>
+<div style=\"color: rgb(239, 108, 0);\" class=
+\"pe-control pe-radio-control pe-control--on pe-control--inactive pe-control--regular\">
+<input name=\"name-32983}\" type=\"radio\" tabindex=\"-1\" class=
+\"pe-control__input\"><label class=\"pe-control__form-label\"></label>
+  <div class=\"pe-control__box\">
+    <label class=\"pe-control__form-label\"></label>
+    <div tabindex=\"-1\" class=
+    \"pe-button pe-icon-button pe-button--inactive pe-control__button\">
+    <label class=\"pe-control__form-label\"></label>
+      <div class=\"pe-button__content\">
+        <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple__mask\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple__waves\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--on\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--off\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\"pe-control__label\">
+    <label class=\"pe-control__form-label\">Label</label>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: value 1`] = `
+"<div class=
+\"pe-control pe-radio-control pe-control--off pe-control--regular\">
+  <input name=\"worth\" type=\"radio\" tabindex=\"-1\" class=
+  \"pe-control__input\"><label class=
+  \"pe-control__form-label\"></label>
+  <div class=\"pe-control__box\">
+    <label class=\"pe-control__form-label\"></label>
+    <div tabindex=\"0\" class=
+    \"pe-button pe-icon-button pe-control__button\">
+      <label class=\"pe-control__form-label\"></label>
+      <div class=\"pe-button__content\">
+        <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple__mask\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple__waves\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--on\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--off\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\"pe-control__label\">
+    <label class=\"pe-control__form-label\">Label</label>
+  </div>
+</div>
+<div class=
+\"pe-control pe-radio-control pe-control--off pe-control--regular\">
+  <input name=\"worth\" type=\"radio\" tabindex=\"-1\" class=
+  \"pe-control__input\"><label class=
+  \"pe-control__form-label\"></label>
+  <div class=\"pe-control__box\">
+    <label class=\"pe-control__form-label\"></label>
+    <div tabindex=\"0\" class=
+    \"pe-button pe-icon-button pe-control__button\">
+      <label class=\"pe-control__form-label\"></label>
+      <div class=\"pe-button__content\">
+        <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple__mask\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple__waves\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--on\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--off\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\"pe-control__label\">
+    <label class=\"pe-control__form-label\">Label</label>
+  </div>
+</div>
+"
+`;
+
+exports[`test Select with TAB and ENTER 1`] = `
+"<div>
+  On desktop, TAB can be used to give focus, ENTER to select.
+</div>
+<div class=
+\"pe-control pe-radio-control pe-control--off pe-control--regular\">
+  <input name=\"enter\" type=\"radio\" tabindex=\"-1\" class=
+  \"pe-control__input\"><label class=
+  \"pe-control__form-label\"></label>
+  <div class=\"pe-control__box\">
+    <label class=\"pe-control__form-label\"></label>
+    <div tabindex=\"0\" class=
+    \"pe-button pe-icon-button pe-control__button\">
+      <label class=\"pe-control__form-label\"></label>
+      <div class=\"pe-button__content\">
+        <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple__mask\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple__waves\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--on\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--off\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\"pe-control__label\">
+    <label class=\"pe-control__form-label\">Label</label>
+  </div>
+</div>
+<div class=
+\"pe-control pe-radio-control pe-control--off pe-control--regular\">
+  <input name=\"enter\" type=\"radio\" tabindex=\"-1\" class=
+  \"pe-control__input\"><label class=
+  \"pe-control__form-label\"></label>
+  <div class=\"pe-control__box\">
+    <label class=\"pe-control__form-label\"></label>
+    <div tabindex=\"0\" class=
+    \"pe-button pe-icon-button pe-control__button\">
+      <label class=\"pe-control__form-label\"></label>
+      <div class=\"pe-button__content\">
+        <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple__mask\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple__waves\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--on\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--off\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\"pe-control__label\">
+    <label class=\"pe-control__form-label\">Label</label>
+  </div>
+</div>
+"
+`;
+
+exports[`test Setting the value from outside 1`] = `
+"<div>
+  <div class=
+  \"pe-control pe-radio-control pe-control--off pe-control--regular\">
+  <input name=\"initiator\" type=\"radio\" tabindex=\"-1\" class=
+  \"pe-control__input\"><label class=
+  \"pe-control__form-label\"></label>
+    <div class=\"pe-control__box\">
+      <label class=\"pe-control__form-label\"></label>
+      <div tabindex=\"0\" class=
+      \"pe-button pe-icon-button pe-control__button\">
+        <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-button__content\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple pe-ripple--constrained\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple__mask\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-ripple__waves\">
+                <label class=\"pe-control__form-label\"></label>
+              </div>
+            </div>
+          </div>
+          <div class=\"pe-button__focus\">
+            <label class=\"pe-control__form-label\"></label>
+          </div>
+          <div class=
+          \"pe-icon pe-icon--regular pe-control__button--on\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-svg\">
+              <label class=\"pe-control__form-label\"></label>
+              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+              height=\"24\" viewbox=\"0 0 24 24\">
+                <label class=\"pe-control__form-label\"><path d=
+                \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+                </path></label>
+              </svg>
+            </div>
+          </div>
+          <div class=
+          \"pe-icon pe-icon--regular pe-control__button--off\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-svg\">
+              <label class=\"pe-control__form-label\"></label>
+              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+              height=\"24\" viewbox=\"0 0 24 24\">
+                <label class=\"pe-control__form-label\"><path d=
+                \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+                </path></label>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class=\"pe-control__label\">
+      <label class=\"pe-control__form-label\">Initiator 1</label>
+    </div>
+  </div>
+  <div class=
+  \"pe-control pe-radio-control pe-control--off pe-control--regular\">
+  <input name=\"initiator\" type=\"radio\" tabindex=\"-1\" class=
+  \"pe-control__input\"><label class=
+  \"pe-control__form-label\"></label>
+    <div class=\"pe-control__box\">
+      <label class=\"pe-control__form-label\"></label>
+      <div tabindex=\"0\" class=
+      \"pe-button pe-icon-button pe-control__button\">
+        <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-button__content\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple pe-ripple--constrained\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple__mask\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-ripple__waves\">
+                <label class=\"pe-control__form-label\"></label>
+              </div>
+            </div>
+          </div>
+          <div class=\"pe-button__focus\">
+            <label class=\"pe-control__form-label\"></label>
+          </div>
+          <div class=
+          \"pe-icon pe-icon--regular pe-control__button--on\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-svg\">
+              <label class=\"pe-control__form-label\"></label>
+              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+              height=\"24\" viewbox=\"0 0 24 24\">
+                <label class=\"pe-control__form-label\"><path d=
+                \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+                </path></label>
+              </svg>
+            </div>
+          </div>
+          <div class=
+          \"pe-icon pe-icon--regular pe-control__button--off\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-svg\">
+              <label class=\"pe-control__form-label\"></label>
+              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+              height=\"24\" viewbox=\"0 0 24 24\">
+                <label class=\"pe-control__form-label\"><path d=
+                \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+                </path></label>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class=\"pe-control__label\">
+      <label class=\"pe-control__form-label\">Initiator 2</label>
+    </div>
+  </div>
+</div>
+<div>
+  <div class=
+  \"pe-control pe-radio-control pe-control--off pe-control--disabled pe-control--inactive pe-control--regular\">
+  <input name=\"receiver\" type=\"radio\" tabindex=\"-1\" class=
+  \"pe-control__input\"><label class=
+  \"pe-control__form-label\"></label>
+    <div class=\"pe-control__box\">
+      <label class=\"pe-control__form-label\"></label>
+      <div tabindex=\"-1\" disabled class=
+      \"pe-button pe-icon-button pe-button--disabled pe-control__button\">
+      <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-button__content\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=
+          \"pe-icon pe-icon--regular pe-control__button--on\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-svg\">
+              <label class=\"pe-control__form-label\"></label>
+              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+              height=\"24\" viewbox=\"0 0 24 24\">
+                <label class=\"pe-control__form-label\"><path d=
+                \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+                </path></label>
+              </svg>
+            </div>
+          </div>
+          <div class=
+          \"pe-icon pe-icon--regular pe-control__button--off\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-svg\">
+              <label class=\"pe-control__form-label\"></label>
+              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+              height=\"24\" viewbox=\"0 0 24 24\">
+                <label class=\"pe-control__form-label\"><path d=
+                \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+                </path></label>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class=\"pe-control__label\">
+      <label class=\"pe-control__form-label\">Receiver 1</label>
+    </div>
+  </div>
+  <div class=
+  \"pe-control pe-radio-control pe-control--off pe-control--disabled pe-control--inactive pe-control--regular\">
+  <input name=\"receiver\" type=\"radio\" tabindex=\"-1\" class=
+  \"pe-control__input\"><label class=
+  \"pe-control__form-label\"></label>
+    <div class=\"pe-control__box\">
+      <label class=\"pe-control__form-label\"></label>
+      <div tabindex=\"-1\" disabled class=
+      \"pe-button pe-icon-button pe-button--disabled pe-control__button\">
+      <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-button__content\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=
+          \"pe-icon pe-icon--regular pe-control__button--on\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-svg\">
+              <label class=\"pe-control__form-label\"></label>
+              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+              height=\"24\" viewbox=\"0 0 24 24\">
+                <label class=\"pe-control__form-label\"><path d=
+                \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+                </path></label>
+              </svg>
+            </div>
+          </div>
+          <div class=
+          \"pe-icon pe-icon--regular pe-control__button--off\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-svg\">
+              <label class=\"pe-control__form-label\"></label>
+              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+              height=\"24\" viewbox=\"0 0 24 24\">
+                <label class=\"pe-control__form-label\"><path d=
+                \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+                </path></label>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class=\"pe-control__label\">
+      <label class=\"pe-control__form-label\">Receiver 2</label>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Themed radio button (colors) -- dark theme 1`] = `
+"<div class=
+\"pe-control pe-radio-control pe-control--off pe-control--regular tests-radio-button-themed-radio\">
+<input name=\"name-55808}\" type=\"radio\" tabindex=\"-1\" class=
+\"pe-control__input\"><label class=\"pe-control__form-label\"></label>
+  <div class=\"pe-control__box\">
+    <label class=\"pe-control__form-label\"></label>
+    <div tabindex=\"0\" class=
+    \"pe-button pe-icon-button pe-control__button\">
+      <label class=\"pe-control__form-label\"></label>
+      <div class=\"pe-button__content\">
+        <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple__mask\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple__waves\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--on\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--off\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\"pe-control__label\">
+    <label class=\"pe-control__form-label\">Label</label>
+  </div>
+</div>
+<div class=
+\"pe-control pe-radio-control pe-control--on pe-control--inactive pe-control--regular tests-radio-button-themed-radio\">
+<input name=\"name-55808}\" type=\"radio\" tabindex=\"-1\" class=
+\"pe-control__input\"><label class=\"pe-control__form-label\"></label>
+  <div class=\"pe-control__box\">
+    <label class=\"pe-control__form-label\"></label>
+    <div tabindex=\"-1\" class=
+    \"pe-button pe-icon-button pe-button--inactive pe-control__button\">
+    <label class=\"pe-control__form-label\"></label>
+      <div class=\"pe-button__content\">
+        <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple__mask\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple__waves\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--on\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--off\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\"pe-control__label\">
+    <label class=\"pe-control__form-label\">Label</label>
+  </div>
+</div>
+"
+`;
+
+exports[`test Themed radio button (colors) 1`] = `
+"<div class=
+\"pe-control pe-radio-control pe-control--off pe-control--regular tests-radio-button-themed-radio\">
+<input name=\"name-18136}\" type=\"radio\" tabindex=\"-1\" class=
+\"pe-control__input\"><label class=\"pe-control__form-label\"></label>
+  <div class=\"pe-control__box\">
+    <label class=\"pe-control__form-label\"></label>
+    <div tabindex=\"0\" class=
+    \"pe-button pe-icon-button pe-control__button\">
+      <label class=\"pe-control__form-label\"></label>
+      <div class=\"pe-button__content\">
+        <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple__mask\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple__waves\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--on\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--off\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\"pe-control__label\">
+    <label class=\"pe-control__form-label\">Label</label>
+  </div>
+</div>
+<div class=
+\"pe-control pe-radio-control pe-control--on pe-control--inactive pe-control--regular tests-radio-button-themed-radio\">
+<input name=\"name-18136}\" type=\"radio\" tabindex=\"-1\" class=
+\"pe-control__input\"><label class=\"pe-control__form-label\"></label>
+  <div class=\"pe-control__box\">
+    <label class=\"pe-control__form-label\"></label>
+    <div tabindex=\"-1\" class=
+    \"pe-button pe-icon-button pe-button--inactive pe-control__button\">
+    <label class=\"pe-control__form-label\"></label>
+      <div class=\"pe-button__content\">
+        <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple__mask\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple__waves\">
+              <label class=\"pe-control__form-label\"></label>
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--on\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--off\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\"pe-control__label\">
+    <label class=\"pe-control__form-label\">Label</label>
+  </div>
+</div>
+"
+`;

@@ -15,7 +15,7 @@ describe("Checkbox component", () => {
       wrap: false,
       indent: false
     });
-    expect(html).toContain("<label tabindex=\"-1\" class=\"pe-control__form-label\">");
+    expect(html).toContain("<label class=\"pe-control__form-label\">");
   });
   it("option name", () => {
     const cmp = m(component, {name: "name-x"});
