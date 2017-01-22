@@ -84,9 +84,8 @@ var _extends = Object.assign || function (target) {
 var layout = (function (selector, componentVars) {
   return [defineProperty({}, selector, [mixin.vendorize({
     userSelect: "none"
-  }, vars$2.prefixes_user_select), mixin.vendorize({
-    transform: "translate3d(0,0,0)"
-  }, vars$2.prefixes_transform), defineProperty({
+  }, vars$2.prefixes_user_select), defineProperty({
+    transform: "translate3d(0,0,0)",
     "-webkit-overflow-scrolling": "touch",
 
     "& ::-webkit-scrollbar": {
@@ -151,17 +150,13 @@ var layout = (function (selector, componentVars) {
         " .pe-button__content": {
           backgroundColor: "inherit"
         },
-        " .pe-button__label": [mixin.vendorize({
-          transitionProperty: componentVars.tab_label_transition_property
-        }, vars$2.prefixes_transition), mixin.vendorize({
-          transitionDuration: componentVars.scroll_button_fade_duration + "s"
-        }, vars$2.prefixes_transition), mixin.vendorize({
-          transitionTimingFunction: "ease-out"
-        }, vars$2.prefixes_transition), mixin.vendorize({
-          transitionDelay: componentVars.scroll_button_fade_delay + "s"
-        }, vars$2.prefixes_transition), {
+        " .pe-button__label": {
+          transitionProperty: componentVars.tab_label_transition_property,
+          transitionDuration: componentVars.scroll_button_fade_duration + "s",
+          transitionTimingFunction: "ease-out",
+          transitionDelay: componentVars.scroll_button_fade_delay + "s",
           opacity: componentVars.scroll_button_opacity
-        }]
+        }
       },
       ".pe-tabs--start .pe-tabs__scroll-button-start": {
         pointerEvents: "none",
@@ -189,7 +184,7 @@ var layout = (function (selector, componentVars) {
     },
 
     " .pe-tabs__row": [flex.layoutHorizontal, mixin.vendorize({
-      "user-select": "none"
+      userSelect: "none"
     }, vars$2.prefixes_user_select), {
       position: "relative",
       whiteSpace: "nowrap"
@@ -272,15 +267,11 @@ var layout = (function (selector, componentVars) {
       }
     },
 
-    " .pe-tabs__indicator": [mixin.vendorize({
-      "transform": "translate3d(0,0,0)"
-    }, vars$2.prefixes_transform), mixin.vendorize({
-      "transform-origin": "left 50%"
-    }, vars$2.prefixes_transform), mixin.vendorize({
-      "transition-property": "all"
-    }, vars$2.prefixes_transition), mixin.vendorize({
-      "transition-timing-function": "ease-out"
-    }, vars$2.prefixes_transition), {
+    " .pe-tabs__indicator": {
+      transform: "translate3d(0,0,0)",
+      transformOrigin: "left 50%",
+      transitionProperty: "all",
+      transitionTimingFunction: "ease-out",
       position: "absolute",
       height: componentVars.tab_indicator_height + "px",
       bottom: 0,
@@ -288,7 +279,7 @@ var layout = (function (selector, componentVars) {
       zIndex: 3,
       width: "100%" // and transformed with js
       // background-color defined in implementation/theme css
-    }],
+    },
 
     " .pe-toolbar--tabs .pe-toolbar__bar &": [mixin.fit(), {
       width: "auto",

@@ -1,11 +1,8 @@
 import { mixin } from "polythene-css";
-import { vars } from "polythene-theme";
 
-const shadowDirective = dir => (
-  mixin.vendorize({
-    "box-shadow": dir
-  }, vars.prefixes_box_shadow)
-);
+const shadowDirective = dir => ({
+  boxShadow: dir
+});
 
 export default (selector, componentVars) => [{
   [selector]: [
@@ -20,9 +17,9 @@ export default (selector, componentVars) => [{
       ],
 
       ".pe-shadow--animated": {
-        " .pe-shadow__bottom, .pe-shadow__top": mixin.vendorize({
-          "transition": componentVars.transition
-        }, vars.prefixes_transition)
+        " .pe-shadow__bottom, .pe-shadow__top": {
+          transition: componentVars.transition
+        }
       }
     },
 

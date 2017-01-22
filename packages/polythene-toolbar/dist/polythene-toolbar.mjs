@@ -73,9 +73,8 @@ var layout = (function (selector, componentVars) {
       // make elements (e.g. buttons) respond to mouse/touch events
       pointerEvents: "auto"
     },
-    " > span, .pe-toolbar__title, .pe-toolbar__title--indent": [flex.layout, flex.flex(1), mixin.ellipsis(1, vars.line_height, "em"), mixin.vendorize({
-      "transform-origin": "left 50%"
-    }, vars.prefixes_transform), {
+    " > span, .pe-toolbar__title, .pe-toolbar__title--indent": [flex.layout, flex.flex(1), mixin.ellipsis(1, vars.line_height, "em"), {
+      transformOrigin: "left 50%",
       lineHeight: vars.line_height + "em",
       wordBreak: "break-all"
     }],

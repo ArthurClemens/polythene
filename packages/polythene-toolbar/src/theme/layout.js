@@ -24,10 +24,8 @@ export default (selector, componentVars) => [{
         flex.layout,
         flex.flex(1),
         mixin.ellipsis(1, vars.line_height, "em"),
-        mixin.vendorize({
-          "transform-origin": "left 50%"
-        }, vars.prefixes_transform),
         {
+          transformOrigin: "left 50%",
           lineHeight: vars.line_height + "em",
           wordBreak: "break-all"
         }

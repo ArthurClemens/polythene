@@ -4,38 +4,44 @@ import { vars } from "polythene-theme";
 export default (selector) => [{
   [selector]: [
     mixin.vendorize({
-      "user-select": "none"
+      userSelect: "none"
     }, vars.prefixes_user_select), {
       outline: "none",
       padding: 0,
-      "text-decoration": "none",
-      "text-align": "center",
+      textDecoration: "none",
+      textAlign: "center",
       cursor: "pointer",
 
-      "&.pe-button--selected, &.pe-button--disabled, &.pe-button--inactive": {
+      ".pe-button--selected, &.pe-button--disabled, &.pe-button--inactive": {
         cursor: "default",
-        "pointer-events": "none"
+        pointerEvents: "none"
+      },
+
+      ".pe-button--focus": {
+        " .pe-button__focus": {
+          opacity: 1
+        }
       },
 
       " .pe-button__content": {
         position: "relative",
-        "border-radius": "inherit"
+        borderRadius: "inherit"
       },
 
       " .pe-button__label": [
         mixin.fontSmoothing(), {
           position: "relative",
           display: "block",
-          "border-radius": "inherit",
-          "pointer-events": "none"
+          borderRadius: "inherit",
+          pointerEvents: "none"
         }
       ],
 
       " .pe-button__wash, .pe-button__focus": [
         mixin.defaultTransition("background-color"),
         mixin.fit(), {
-          "border-radius": "inherit",
-          "pointer-events": "none"
+          borderRadius: "inherit",
+          pointerEvents: "none"
         }
       ],
 
@@ -43,14 +49,8 @@ export default (selector) => [{
         opacity: 0
       },
 
-      "&.pe-button--focus": {
-        " .pe-button__focus": {
-          opacity: 1
-        }
-      },
-
       " .pe-button__wash": {
-        "z-index": 0
+        zIndex: 0
       }
     }
   ]

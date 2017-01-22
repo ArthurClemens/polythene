@@ -49,7 +49,7 @@ var _extends = Object.assign || function (target) {
 
 var layout = (function (selector, componentVars) {
   return [defineProperty({}, selector, [mixin.vendorize({
-    "user-select": "none"
+    userSelect: "none"
   }, vars.prefixes_user_select), {
     display: "inline-block",
     position: "relative",

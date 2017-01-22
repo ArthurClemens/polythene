@@ -4,7 +4,7 @@ import webfont from 'webfontloader';
 
 var fontSize = 14;
 
-var styles = [{
+var typography = [{
   " h1, h2, h3, h4, h5, h6, p": {
     margin: 0,
     padding: 0
@@ -140,4 +140,4 @@ var roboto = [{
   }
 }];
 
-styler.add("pe-theme", reset, styles, roboto);
+styler.add("pe-theme", reset, typography, roboto);

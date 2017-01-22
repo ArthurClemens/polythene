@@ -11,7 +11,8 @@
     "build": "npm run rollup"
   },
   "dependencies": {
-    "j2c": "^0.11.2",
+    "j2c": "^1.0.0-4",
+    "j2c-plugin-prefix-browser": "^1.0.6",
     "mithril": "1.0.0-rc.8",
     "polythene-theme": "1"
   },

@@ -1,5 +1,6 @@
 import { vars } from 'polythene-theme';
-import j2c from 'j2c';
+import { prefixPlugin } from 'j2c-plugin-prefix-browser';
+import J2c from 'j2c';
 
 var defineProperty = function (obj, key, value) {
   if (key in obj) {
@@ -83,7 +84,7 @@ var ellipsis = function ellipsis(lines, lineHeight) {
 
   if (lines === "none") {
     return {
-      "text-overflow": "initial",
+      textOverflow: "initial",
       overflow: "initial",
       display: "block",
       height: "auto"
@@ -146,20 +147,11 @@ var hairline = function hairline() {
 // mixin.sticky()
 var sticky = function sticky() {
   var zIndex = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-  return [{
-    position: "-webkit-sticky"
-  }, {
-    position: "-moz-sticky"
-  }, {
-    position: "-o-sticky"
-  }, {
-    position: "-ms-sticky"
-  }, {
-    position: "sticky"
-  }, {
+  return {
+    position: "sticky",
     top: 0,
-    "z-index": zIndex
-  }];
+    zIndex: zIndex
+  };
 };
 
 // Creats a transition with presets
@@ -168,16 +160,12 @@ var defaultTransition = function defaultTransition() {
   var properties = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "all";
   var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : vars.animation_duration;
   var curve = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : vars.animation_curve_default;
-
-  return [vendorize({
-    "transition-delay": 0
-  }, vars.prefixes_transition), vendorize({
-    "transition-duration": duration
-  }, vars.prefixes_transition), vendorize({
-    "transition-timing-function": curve
-  }, vars.prefixes_transition), vendorize({
-    "transition-property": properties
-  }, vars.prefixes_transition)];
+  return {
+    transitionDelay: 0,
+    transitionDuration: duration,
+    transitionTimingFunction: curve,
+    transitionProperty: properties
+  };
 };
 
 var mixin = {
@@ -403,6 +391,7 @@ var mixinFlex = {
   selfStretch: selfStretch
 };
 
+var j2c = new J2c(prefixPlugin);
 var ID_REGEX = /[^a-z0-9\-]/g;
 
 /*

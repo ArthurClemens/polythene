@@ -12,7 +12,7 @@ See also: [(flat) Button](../polythene-button), [Icon Button](../polythene-icon-
 import m from "mithril";
 import { raisedButton } from "polythene-raised-button";
 
-const myButton = m(raisedButton, {
+m(raisedButton, {
   label: "Button"
 });
 ~~~
@@ -35,7 +35,7 @@ All options for [Button](../polythene-button) also apply to Raised button, with 
 
 ## Composition
 
-Button is composed from:
+Raised button is composed from:
 
 * [Button](../polythene-button)
   * [Ripple](../polythene-ripple) (when option `ink` is not `false`)

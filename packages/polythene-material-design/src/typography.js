@@ -2,7 +2,7 @@ import { vars } from "polythene-theme";
 
 const fontSize = 14;
 
-const styles = [{
+export default [{
   " h1, h2, h3, h4, h5, h6, p": {
     margin: 0,
     padding: 0
@@ -98,5 +98,3 @@ const styles = [{
     "font-weight": vars.font_weight_medium
   }
 }];
-
-export default styles;

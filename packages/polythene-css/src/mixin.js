@@ -47,7 +47,7 @@ const fontSmoothing = (smoothing = true) => {
 const ellipsis = (lines, lineHeight, unit = "px") => {
   if (lines === "none") {
     return {
-      "text-overflow": "initial",
+      textOverflow: "initial",
       overflow: "initial",
       display: "block",
       height: "auto"
@@ -109,39 +109,20 @@ const hairline = () => ({});
 // Creates sticky headers in a scrollable list
 // Does not work in Chrome: http://caniuse.com/#feat=css-sticky
 // mixin.sticky()
-const sticky = (zIndex = 1) => ([{
-  position: "-webkit-sticky"
-}, {
-  position: "-moz-sticky"
-}, {
-  position: "-o-sticky"
-}, {
-  position: "-ms-sticky"
-}, {
-  position: "sticky"
-}, {
+const sticky = (zIndex = 1) => ({
+  position: "sticky",
   top: 0,
-  "z-index": zIndex
-}]);
+  zIndex: zIndex
+});
 
 // Creats a transition with presets
 // mixin.defaultTransition("opacity", vars.animation_duration)
-const defaultTransition = (properties = "all", duration = vars.animation_duration, curve = vars.animation_curve_default) => {
-  return [
-    vendorize({
-      "transition-delay": 0
-    }, vars.prefixes_transition),
-    vendorize({
-      "transition-duration": duration
-    }, vars.prefixes_transition),
-    vendorize({
-      "transition-timing-function": curve
-    }, vars.prefixes_transition),
-    vendorize({
-      "transition-property": properties
-    }, vars.prefixes_transition),
-  ];
-};
+const defaultTransition = (properties = "all", duration = vars.animation_duration, curve = vars.animation_curve_default) => ({
+  transitionDelay: 0,
+  transitionDuration: duration,
+  transitionTimingFunction: curve,
+  transitionProperty: properties
+});
 
 export default {
   clearfix,

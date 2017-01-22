@@ -55,9 +55,9 @@ var _extends = Object.assign || function (target) {
 };
 
 var shadowDirective = function shadowDirective(dir) {
-  return mixin.vendorize({
-    "box-shadow": dir
-  }, vars.prefixes_box_shadow);
+  return {
+    boxShadow: dir
+  };
 };
 
 var layout = (function (selector, componentVars) {
@@ -70,9 +70,9 @@ var layout = (function (selector, componentVars) {
     }],
 
     ".pe-shadow--animated": {
-      " .pe-shadow__bottom, .pe-shadow__top": mixin.vendorize({
-        "transition": componentVars.transition
-      }, vars.prefixes_transition)
+      " .pe-shadow__bottom, .pe-shadow__top": {
+        transition: componentVars.transition
+      }
     }
   }, [1, 2, 3, 4, 5].map(function (index) {
     var _ref;

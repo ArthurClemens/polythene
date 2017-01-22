@@ -4,7 +4,7 @@ import { vars } from "polythene-theme";
 export default (selector, componentVars) => [{
   [selector]: [
     mixin.vendorize({
-      "user-select": "none"
+      userSelect: "none"
     }, vars.prefixes_user_select), {
       display: "inline-block",
       position: "relative",

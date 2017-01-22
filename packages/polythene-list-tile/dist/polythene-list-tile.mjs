@@ -228,7 +228,7 @@ var layout = (function (selector, componentVars) {
 
         "&, .pe-list-tile__primary, .pe-list-tile__secondary": {
           " .pe-list-tile__title, .pe-list-tile__subtitle": [mixin.vendorize({
-            "user-select": "none"
+            userSelect: "none"
           }, vars.prefixes_user_select)]
         }
       }

@@ -1,5 +1,4 @@
 import { mixin } from "polythene-css";
-import { vars } from "polythene-theme";
 
 export default selector => [{
   [selector]: [
@@ -18,9 +17,9 @@ export default selector => [{
       },
       " .pe-ripple__mask": [
         mixin.fit(),
-        mixin.vendorize({
-          "transform": "translate3d(0,0,0)"
-        }, vars.prefixes_transform)
+        {
+          transform: "translate3d(0,0,0)"
+        }
       ],
 
       " .pe-ripple__waves": {

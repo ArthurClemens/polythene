@@ -6,10 +6,8 @@ export default (selector, componentVars) => [{
     mixin.vendorize({
       userSelect: "none"
     }, vars.prefixes_user_select),
-    mixin.vendorize({
-      transform: "translate3d(0,0,0)"
-    }, vars.prefixes_transform),
     {
+      transform: "translate3d(0,0,0)",
       "-webkit-overflow-scrolling": "touch",
 
       "& ::-webkit-scrollbar": {
@@ -74,23 +72,13 @@ export default (selector, componentVars) => [{
           " .pe-button__content": {
             backgroundColor: "inherit"
           },
-          " .pe-button__label": [
-            mixin.vendorize({
-              transitionProperty: componentVars.tab_label_transition_property
-            }, vars.prefixes_transition),
-            mixin.vendorize({
-              transitionDuration: componentVars.scroll_button_fade_duration + "s"
-            }, vars.prefixes_transition),
-            mixin.vendorize({
-              transitionTimingFunction: "ease-out"
-            }, vars.prefixes_transition),
-            mixin.vendorize({
-              transitionDelay: componentVars.scroll_button_fade_delay + "s"
-            }, vars.prefixes_transition),
-            {
-              opacity: componentVars.scroll_button_opacity
-            }
-          ]
+          " .pe-button__label": {
+            transitionProperty: componentVars.tab_label_transition_property,
+            transitionDuration: componentVars.scroll_button_fade_duration + "s",
+            transitionTimingFunction: "ease-out",
+            transitionDelay: componentVars.scroll_button_fade_delay + "s",
+            opacity: componentVars.scroll_button_opacity
+          }
         },
         ".pe-tabs--start .pe-tabs__scroll-button-start": {
           pointerEvents: "none",
@@ -120,7 +108,7 @@ export default (selector, componentVars) => [{
       " .pe-tabs__row": [
         flex.layoutHorizontal,
         mixin.vendorize({
-          "user-select": "none"
+          userSelect: "none"
         }, vars.prefixes_user_select),
         {
           position: "relative",
@@ -227,29 +215,19 @@ export default (selector, componentVars) => [{
         }
       },
 
-      " .pe-tabs__indicator": [
-        mixin.vendorize({
-          "transform": "translate3d(0,0,0)"
-        }, vars.prefixes_transform),
-        mixin.vendorize({
-          "transform-origin": "left 50%"
-        }, vars.prefixes_transform),
-        mixin.vendorize({
-          "transition-property": "all"
-        }, vars.prefixes_transition),
-        mixin.vendorize({
-          "transition-timing-function": "ease-out"
-        }, vars.prefixes_transition),
-        {
-          position: "absolute",
-          height: componentVars.tab_indicator_height + "px",
-          bottom: 0,
-          left: 0,
-          zIndex: 3,
-          width: "100%" // and transformed with js
-            // background-color defined in implementation/theme css
-        }
-      ],
+      " .pe-tabs__indicator": {
+        transform: "translate3d(0,0,0)",
+        transformOrigin: "left 50%",
+        transitionProperty: "all",
+        transitionTimingFunction: "ease-out",
+        position: "absolute",
+        height: componentVars.tab_indicator_height + "px",
+        bottom: 0,
+        left: 0,
+        zIndex: 3,
+        width: "100%" // and transformed with js
+          // background-color defined in implementation/theme css
+      },
 
       " .pe-toolbar--tabs .pe-toolbar__bar &": [
         mixin.fit(),

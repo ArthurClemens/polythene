@@ -52,9 +52,9 @@ var layout = (function (selector) {
         borderRadius: "inherit"
       }
     },
-    " .pe-ripple__mask": [mixin.fit(), mixin.vendorize({
-      "transform": "translate3d(0,0,0)"
-    }, vars.prefixes_transform)],
+    " .pe-ripple__mask": [mixin.fit(), {
+      transform: "translate3d(0,0,0)"
+    }],
 
     " .pe-ripple__waves": {
       outline: "1px solid transparent", // for IE10

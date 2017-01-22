@@ -83,8 +83,8 @@ html {
 .tests-shadow .component-result {
   height: 80px;
 }
-.tests-polythene .test-ripple .component-result,
-.tests-ripple .component-result {
+.tests-polythene .test-ripple .component-result .pe-ripple,
+.tests-ripple .component-result .pe-ripple {
   background-color: #fff;
 }
 

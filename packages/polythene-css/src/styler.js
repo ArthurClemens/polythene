@@ -1,5 +1,7 @@
-import j2c from "j2c";
+import { prefixPlugin } from "j2c-plugin-prefix-browser";
+import { default as J2c } from "j2c";
 
+const j2c = new J2c(prefixPlugin);
 const ID_REGEX = /[^a-z0-9\-]/g;
 
 /*
