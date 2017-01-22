@@ -4,7 +4,6 @@
   "description": "",
   "main": "dist/polythene-checkbox.js",
   "module": "dist/polythene-checkbox.mjs",
-  "jsnext:main": "dist/polythene-checkbox.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",

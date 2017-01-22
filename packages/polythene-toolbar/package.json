@@ -4,7 +4,6 @@
   "description": "",
   "main": "dist/polythene-toolbar.js",
   "module": "dist/polythene-toolbar.mjs",
-  "jsnext:main": "dist/polythene-toolbar.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",

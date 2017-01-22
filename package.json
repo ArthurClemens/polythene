@@ -1,7 +1,6 @@
 {
   "scripts": {
-    "lint": "eslint . --cache",
-    "build": "babel-node scripts/build"
+    "lint": "eslint . --cache"
   },
   "devDependencies": {
     "babel-cli": "^6.22.2",

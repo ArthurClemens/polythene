@@ -4,7 +4,6 @@
   "description": "",
   "main": "dist/js/test.js",
   "module": "dist/js/test.mjs",
-  "jsnext:main": "dist/js/test.mjs",
   "scripts": {
     "clean": "rm -rf dist/js && mkdir dist/js",
     "build": "npm run rollup-build",

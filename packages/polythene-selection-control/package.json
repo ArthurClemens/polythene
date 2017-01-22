@@ -4,7 +4,6 @@
   "description": "",
   "main": "dist/polythene-selection-control.js",
   "module": "dist/polythene-selection-control.mjs",
-  "jsnext:main": "dist/polythene-selection-control.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",

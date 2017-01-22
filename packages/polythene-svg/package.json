@@ -4,7 +4,6 @@
   "description": "",
   "main": "dist/polythene-svg.js",
   "module": "dist/polythene-svg.mjs",
-  "jsnext:main": "dist/polythene-svg.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",

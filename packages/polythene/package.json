@@ -4,7 +4,6 @@
   "description": "",
   "main": "dist/polythene.js",
   "module": "dist/polythene.mjs",
-  "jsnext:main": "dist/polythene.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
     "rollup": "DEPS=true ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
