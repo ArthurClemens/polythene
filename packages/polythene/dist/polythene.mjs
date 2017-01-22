@@ -12,13 +12,14 @@ import { raisedButton } from 'polythene-raised-button';
 import { ripple } from 'polythene-ripple';
 import { shadow } from 'polythene-shadow';
 import { svg } from 'polythene-svg';
+import { switchButton } from 'polythene-switch-button';
 import { tabs } from 'polythene-tabs';
 import { toolbar } from 'polythene-toolbar';
 import { vars } from 'polythene-theme';
 
 
 
-export { button, checkbox, defaultVariables, isTouch, touchStartEvent, touchEndEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, filterSupportedAttributes, mixin, flex, styler, fab, icon, iconButton, list, listTile, radioButton, raisedButton, ripple, shadow, svg, tabs, toolbar, vars };
+export { button, checkbox, defaultVariables, isTouch, touchStartEvent, touchEndEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, filterSupportedAttributes, mixin, flex, styler, fab, icon, iconButton, list, listTile, radioButton, raisedButton, ripple, shadow, svg, switchButton, tabs, toolbar, vars };
 
 export * from 'polythene-fastclick';
 export * from 'polythene-css-classes';

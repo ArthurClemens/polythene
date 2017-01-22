@@ -2,20 +2,16 @@ import { vars } from "polythene-theme";
 
 const rgba = vars.rgba;
 
-const activeColor = vars.color_primary; // or override in CSS by setting 'color' property on '.pe-checkbox' / '.pe-radio-button'
-const label_padding_before = vars.grid_unit * 4; // 16
-const label_padding_after = 0;
-
 export default {
   label_font_size:                     2 * vars.grid_unit_component, // 16
   label_height:                        3 * vars.grid_unit_component, // 24
-  label_padding_before,
-  label_padding_after,                
+  label_padding_before:                vars.grid_unit * 4, // 16
+  label_padding_after:                 0,
   button_size:                         6 * vars.grid_unit_component,
   icon_size:                           3 * vars.grid_unit_component,
   animation_duration:                  vars.animation_duration,
 
-  color_light_on:                      vars.rgba(activeColor),
+  color_light_on:                      vars.rgba(vars.color_primary),
   color_light_off:                     rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
   color_light_label:                   rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
   color_light_disabled:                rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
@@ -31,7 +27,7 @@ export default {
   color_light_focus_off:                rgba(vars.color_light_foreground),
   color_light_focus_off_opacity:       .07,
 
-  color_dark_on:                       vars.rgba(activeColor),
+  color_dark_on:                       vars.rgba(vars.color_primary),
   color_dark_off:                      rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
   color_dark_label:                    rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
   color_dark_disabled:                 rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),

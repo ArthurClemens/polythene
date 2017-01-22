@@ -11,7 +11,7 @@ const view = vnode => {
     ...vnode.attrs,
     theme,
     controlView,
-    selectable: vnode.attrs.selectable || (() => true),
+    selectable: vnode.attrs.selectable || (() => true), // default: always selectable, regardless the checked state
     defaultClass: classes.component,
     type: "checkbox"
   });

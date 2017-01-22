@@ -3,7 +3,7 @@
 import { mixin, flex } from "polythene-css";
 import { vars } from "polythene-theme";
 
-const getSize = (componentVars, height, iconSize = vars.unit_icon_size) => {
+const makeSize = (componentVars, height, iconSize = vars.unit_icon_size) => {
   const labelSize = iconSize + componentVars.label_height;
   const iconOffset = (labelSize - iconSize) / 2;
   return {
@@ -42,6 +42,24 @@ export default (selector, componentVars, type) => [{
     margin: 0,
     padding: 0,
 
+    [" input[type=" + type + "].pe-control__input"]: [
+      mixin.vendorize({
+        appearance: "none"
+      }, vars.prefixes_appearance), {
+        lineHeight: componentVars.label_height + "px",
+        // Hide input element
+        position: "absolute",
+        zIndex: "-1",
+        width: 0,
+        height: 0,
+        margin: 0,
+        padding: 0,
+        opacity: 0,
+        border: "none",
+        pointerEvents: "none"
+      }
+    ],
+
     " .pe-control__form-label": [
       flex.layoutHorizontal,
       flex.layoutCenter, {
@@ -64,24 +82,6 @@ export default (selector, componentVars, type) => [{
       }
     },
 
-    [" input[type=" + type + "].pe-control__input"]: [
-      mixin.vendorize({
-        appearance: "none"
-      }, vars.prefixes_appearance), {
-        lineHeight: componentVars.label_height + "px",
-        // Hide input element
-        position: "absolute",
-        zIndex: "-1",
-        width: 0,
-        height: 0,
-        margin: 0,
-        padding: 0,
-        opacity: 0,
-        border: "none",
-        pointerEvents: "none"
-      }
-    ],
-
     " .pe-control__box": {
       position: "relative",
       display: "inline-block",
@@ -101,8 +101,6 @@ export default (selector, componentVars, type) => [{
         left: -((componentVars.button_size - componentVars.icon_size) / 2) + "px",
         top: -((componentVars.button_size - componentVars.icon_size) / 2) + "px",
         zIndex: 1
-          // opacity: 0,
-          // "pointer-events": "auto"
       }
     ],
 
@@ -136,9 +134,9 @@ export default (selector, componentVars, type) => [{
       }
     },
 
-    ".pe-control--small": getSize(componentVars, vars.unit_icon_size_small, vars.unit_icon_size_small),
-    ".pe-control--regular": getSize(componentVars, componentVars.label_height, vars.unit_icon_size),
-    ".pe-control--medium": getSize(componentVars, vars.unit_icon_size_medium, vars.unit_icon_size_medium),
-    ".pe-control--large": getSize(componentVars, vars.unit_icon_size_large, vars.unit_icon_size_large)
+    ".pe-control--small":   makeSize(componentVars, vars.unit_icon_size_small, vars.unit_icon_size_small),
+    ".pe-control--regular": makeSize(componentVars, componentVars.label_height, vars.unit_icon_size),
+    ".pe-control--medium":  makeSize(componentVars, vars.unit_icon_size_medium, vars.unit_icon_size_medium),
+    ".pe-control--large":   makeSize(componentVars, vars.unit_icon_size_large, vars.unit_icon_size_large)
   }
 }];

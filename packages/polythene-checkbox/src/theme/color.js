@@ -1,4 +1,4 @@
 import { color } from "polythene-selection-control";
 
-export default color;
+export default (selector, componentVars) => color(selector, componentVars);
 

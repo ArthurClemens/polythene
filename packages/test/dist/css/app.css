@@ -137,6 +137,9 @@ html {
 .pe-control.pe-radio-control + .pe-control.pe-radio-control {
   margin-left: 40px;
 }
+.pe-control.pe-switch-control + .pe-control.pe-switch-control {
+  margin-left: 40px;
+}
 
 .pt-sans {
   font-family: "PT Sans";

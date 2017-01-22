@@ -88,9 +88,7 @@ var view = function view(vnode) {
   }), m("label", {
     class: classes.formLabel
   }, [attrs.controlView ? attrs.controlView(checked, _extends({}, attrs, {
-    events: {
-      onclick: state.toggle
-    }
+    events: { onclick: state.toggle }
   })) : null, attrs.label ? m("." + classes.label, inactive ? null : {
     onclick: state.toggle
   }, attrs.label) : null])];
@@ -157,12 +155,11 @@ var selectionControl = {
   view: view
 };
 
-// Helper function for checkbox and radio button
 var classes$1 = {
   box: "pe-control__box",
   button: "pe-control__button",
-  on: "pe-control__button--on",
-  off: "pe-control__button--off"
+  buttonOn: "pe-control__button--on",
+  buttonOff: "pe-control__button--off"
 };
 
 var createIcon = function createIcon(onOffType, attrs) {
@@ -179,7 +176,7 @@ var controlView = function controlView(checked, attrs) {
   }, m(iconButton, _extends({}, {
     element: "div",
     class: classes$1.button,
-    content: [m(icon, createIcon("iconOn", _extends({}, attrs, { class: classes$1.on }))), m(icon, createIcon("iconOff", _extends({}, attrs, { class: classes$1.off })))],
+    content: [m(icon, createIcon("iconOn", _extends({}, attrs, { class: classes$1.buttonOn }))), m(icon, createIcon("iconOff", _extends({}, attrs, { class: classes$1.buttonOff })))],
     ripple: { center: true },
     disabled: attrs.disabled,
     events: attrs.events
@@ -188,20 +185,16 @@ var controlView = function controlView(checked, attrs) {
 
 var rgba = vars.rgba;
 
-var activeColor = vars.color_primary; // or override in CSS by setting 'color' property on '.pe-checkbox' / '.pe-radio-button'
-var label_padding_before = vars.grid_unit * 4; // 16
-var label_padding_after = 0;
-
 var vars$1 = {
   label_font_size: 2 * vars.grid_unit_component, // 16
   label_height: 3 * vars.grid_unit_component, // 24
-  label_padding_before: label_padding_before,
-  label_padding_after: label_padding_after,
+  label_padding_before: vars.grid_unit * 4, // 16
+  label_padding_after: 0,
   button_size: 6 * vars.grid_unit_component,
   icon_size: 3 * vars.grid_unit_component,
   animation_duration: vars.animation_duration,
 
-  color_light_on: vars.rgba(activeColor),
+  color_light_on: vars.rgba(vars.color_primary),
   color_light_off: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
   color_light_label: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
   color_light_disabled: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
@@ -217,7 +210,7 @@ var vars$1 = {
   color_light_focus_off: rgba(vars.color_light_foreground),
   color_light_focus_off_opacity: .07,
 
-  color_dark_on: vars.rgba(activeColor),
+  color_dark_on: vars.rgba(vars.color_primary),
   color_dark_off: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
   color_dark_label: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
   color_dark_disabled: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
@@ -289,7 +282,7 @@ var color = (function (selector, componentVars) {
 
 // Returns a style function to be used by checkbox and radio-button
 
-var getSize = function getSize(componentVars, height) {
+var makeSize = function makeSize(componentVars, height) {
   var iconSize = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : vars.unit_icon_size;
 
   var labelSize = iconSize + componentVars.label_height;
@@ -332,26 +325,7 @@ var layout = (function (selector, componentVars, type) {
     display: "inline-block",
     boxSizing: "border-box",
     margin: 0,
-    padding: 0,
-
-    " .pe-control__form-label": [flex.layoutHorizontal, flex.layoutCenter, {
-      position: "relative",
-      cursor: "pointer",
-      fontSize: componentVars.label_font_size + "px",
-      lineHeight: componentVars.label_height + "px",
-      margin: 0,
-      color: "inherit",
-
-      ":focus": {
-        outline: 0
-      }
-    }],
-
-    ".pe-control--inactive": {
-      " .pe-control__form-label": {
-        cursor: "default"
-      }
-    }
+    padding: 0
 
   }, defineProperty(_selector, " input[type=" + type + "].pe-control__input", [mixin.vendorize({
     appearance: "none"
@@ -367,7 +341,22 @@ var layout = (function (selector, componentVars, type) {
     opacity: 0,
     border: "none",
     pointerEvents: "none"
-  }]), defineProperty(_selector, " .pe-control__box", {
+  }]), defineProperty(_selector, " .pe-control__form-label", [flex.layoutHorizontal, flex.layoutCenter, {
+    position: "relative",
+    cursor: "pointer",
+    fontSize: componentVars.label_font_size + "px",
+    lineHeight: componentVars.label_height + "px",
+    margin: 0,
+    color: "inherit",
+
+    ":focus": {
+      outline: 0
+    }
+  }]), defineProperty(_selector, ".pe-control--inactive", {
+    " .pe-control__form-label": {
+      cursor: "default"
+    }
+  }), defineProperty(_selector, " .pe-control__box", {
     position: "relative",
     display: "inline-block",
     boxSizing: "border-box",
@@ -383,8 +372,6 @@ var layout = (function (selector, componentVars, type) {
     left: -((componentVars.button_size - componentVars.icon_size) / 2) + "px",
     top: -((componentVars.button_size - componentVars.icon_size) / 2) + "px",
     zIndex: 1
-    // opacity: 0,
-    // "pointer-events": "auto"
   }]), defineProperty(_selector, ".pe-control--off", {
     " .pe-control__button--on": inactiveButton(),
     " .pe-control__button--off": activeButton()
@@ -405,7 +392,7 @@ var layout = (function (selector, componentVars, type) {
     " .pe-icon": {
       position: "absolute"
     }
-  }), defineProperty(_selector, ".pe-control--small", getSize(componentVars, vars.unit_icon_size_small, vars.unit_icon_size_small)), defineProperty(_selector, ".pe-control--regular", getSize(componentVars, componentVars.label_height, vars.unit_icon_size)), defineProperty(_selector, ".pe-control--medium", getSize(componentVars, vars.unit_icon_size_medium, vars.unit_icon_size_medium)), defineProperty(_selector, ".pe-control--large", getSize(componentVars, vars.unit_icon_size_large, vars.unit_icon_size_large)), _selector))];
+  }), defineProperty(_selector, ".pe-control--small", makeSize(componentVars, vars.unit_icon_size_small, vars.unit_icon_size_small)), defineProperty(_selector, ".pe-control--regular", makeSize(componentVars, componentVars.label_height, vars.unit_icon_size)), defineProperty(_selector, ".pe-control--medium", makeSize(componentVars, vars.unit_icon_size_medium, vars.unit_icon_size_medium)), defineProperty(_selector, ".pe-control--large", makeSize(componentVars, vars.unit_icon_size_large, vars.unit_icon_size_large)), _selector))];
 });
 
-export { selectionControl, classes, controlView, vars$1 as vars, color, layout };
+export { selectionControl, classes, controlView, classes$1 as controlViewClasses, vars$1 as vars, color, layout };

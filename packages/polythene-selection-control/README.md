@@ -40,6 +40,6 @@ Base functionality for:
 
 | **State**   | **Key**     |  **Class** |
 | ----------- | ----------- | --------------- |
-| Off         | off         | `pe-control__button--off` |
-| On          | on          | `pe-control__button--on` |
+| Off         | buttonOff   | `pe-control__button--off` |
+| On          | buttonOn    | `pe-control__button--on` |
 

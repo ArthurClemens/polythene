@@ -4,6 +4,7 @@ import iconStarOutline from "mmsvg/google/msvg/toggle/star-border";
 import iconStar from "mmsvg/google/msvg/toggle/star";
 
 component.theme(".tests-checkbox-themed-checkbox", {
+  label_font_size: 28,
   color_light_on: "#2196F3",
   color_light_off: "#2196F3",
   color_dark_on: "#2196F3",
@@ -60,7 +61,7 @@ export const tests = [
     )}
   },
   {
-    name: "Themed checkbox (colors)",
+    name: "Themed checkbox (color and font size)",
     component,
     attrs: {
       label: "Label",
@@ -234,7 +235,6 @@ export const tests = [
         })
       ]
     }
-  },
-
+  }
 
 ];

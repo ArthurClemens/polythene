@@ -1,5 +1,7 @@
+import { vars } from "polythene-theme";
+
 export default {
-  transition:          "box-shadow 0.18s ease-out",
+  transition:          `box-shadow ${vars.animation_duration} ease-out`,
 
   "shadow-top-z-1":    "none",
   "shadow-bottom-z-1": "0 1px 4px 0 rgba(0, 0, 0, 0.37)",

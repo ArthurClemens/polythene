@@ -36,6 +36,8 @@ export { shadow } from "polythene-shadow";
 
 export { svg } from "polythene-svg";
 
+export { switchButton } from "polythene-switch-button";
+
 export { tabs } from "polythene-tabs";
 
 export { toolbar } from "polythene-toolbar";

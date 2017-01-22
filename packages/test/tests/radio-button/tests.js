@@ -4,6 +4,7 @@ import iconStarOutline from "mmsvg/google/msvg/toggle/star-border";
 import iconStar from "mmsvg/google/msvg/toggle/star";
 
 component.theme(".tests-radio-button-themed-radio", {
+  label_font_size: 28,
   color_light_on: "#2196F3",
   color_light_off: "#2196F3",
   color_dark_on: "#2196F3",
@@ -92,7 +93,7 @@ export const tests = [
     }
   },
   {
-    name: "Themed radio button (colors)",
+    name: "Themed radio button (color and font size)",
     component: group(
       {
         label: "Label",

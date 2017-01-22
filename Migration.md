@@ -209,6 +209,16 @@ Dynamic loading and preloading have been removed, as these are not frequent use 
 
 
 
+### Switch
+
+`switch` has been renamed to `switchButton` in order to import it without surprises (`switch` is a reserved keyword):
+
+~~~javascript
+import { switchButton } from "polythene-switch-button";
+~~~
+
+
+
 ### Tabs
 
 Option `buttons` has been deprecated in favor of `content` / child nodes.

@@ -11,7 +11,7 @@ const view = vnode => {
     ...vnode.attrs,
     theme,
     controlView,
-    selectable: vnode.attrs.selectable || ((selected) => !selected),
+    selectable: vnode.attrs.selectable || ((selected) => !selected), // default: only selectable when not checked
     defaultClass: classes.component,
     type: "radio"
   });

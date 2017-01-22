@@ -70,9 +70,7 @@ const view = vnode => {
       attrs.controlView
         ? attrs.controlView(checked, {
           ...attrs,
-          events: {
-            onclick: state.toggle
-          }
+          events: { onclick: state.toggle }
         })
         : null,
       attrs.label

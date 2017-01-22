@@ -262,5 +262,5 @@ export const tests = [
         blocks
       )
     }
-  },
+  }
 ];
