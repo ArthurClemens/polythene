@@ -15,8 +15,10 @@ component.theme(".tests-radio-button-themed-radio", {
 
 const sizeNames = ["small", "regular", "medium", "large"];
 
+let idCounter = 0;
+
 const group = (attrs1, attrs2 = attrs1) => {
-  const name = attrs1.name || `name-${Math.round(Math.random() * 100000)}}`;
+  const name = attrs1.name || `name-${idCounter++}}`;
   return {
     view: () => [
       m(component, {

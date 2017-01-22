@@ -1333,7 +1333,7 @@ exports[`test Setting the value from outside 1`] = `
 "
 `;
 
-exports[`test Themed checkbox (colors) -- dark theme 1`] = `
+exports[`test Themed checkbox (color and font size) 1`] = `
 "<div class=
 \"pe-control pe-checkbox-control pe-control--off pe-control--regular tests-checkbox-themed-checkbox\">
 <input name=\"\" type=\"checkbox\" tabindex=\"-1\" class=
@@ -1393,7 +1393,7 @@ exports[`test Themed checkbox (colors) -- dark theme 1`] = `
 "
 `;
 
-exports[`test Themed checkbox (colors) 1`] = `
+exports[`test Themed checkbox (colors) -- dark theme 1`] = `
 "<div class=
 \"pe-control pe-checkbox-control pe-control--off pe-control--regular tests-checkbox-themed-checkbox\">
 <input name=\"\" type=\"checkbox\" tabindex=\"-1\" class=

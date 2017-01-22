@@ -1,15 +1,15 @@
 exports[`test Button (theme: red) 1`] = `
 "<a tabindex=\"0\" class=
-\"pe-button pe-text-button tests-polythene-themed-button\">
-<div class=\"pe-button__content\">
+\"pe-switch-control tests-polythene-themed-button\">
+<div>
   <div class=\"pe-ripple pe-ripple--constrained\">
     <div class=\"pe-ripple__mask\">
       <div class=\"pe-ripple__waves\"></div>
     </div>
   </div>
-  <div class=\"pe-button__wash\"></div>
-  <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button__label\">
+  <div></div>
+  <div></div>
+  <div>
     Button
   </div>
 </div></a>
@@ -17,16 +17,16 @@ exports[`test Button (theme: red) 1`] = `
 `;
 
 exports[`test Button 1`] = `
-"<a tabindex=\"0\" class=\"pe-button pe-text-button\">
-<div class=\"pe-button__content\">
+"<a tabindex=\"0\" class=\"pe-switch-control\">
+<div>
   <div class=\"pe-ripple pe-ripple--constrained\">
     <div class=\"pe-ripple__mask\">
       <div class=\"pe-ripple__waves\"></div>
     </div>
   </div>
-  <div class=\"pe-button__wash\"></div>
-  <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button__label\">
+  <div></div>
+  <div></div>
+  <div>
     Button
   </div>
 </div></a>

@@ -15,19 +15,6 @@ export const tests = [
     }
   },
   {
-    name: "Option: content",
-    component,
-    attrs: {
-      content: m("div", "Content")
-    }
-  },
-  {
-    name: "Child node",
-    component,
-    attrs: {},
-    children: ["Child"]
-  },
-  {
     name: "Option: raised (with option z: 2)",
     component,
     attrs: {
