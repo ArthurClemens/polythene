@@ -9,7 +9,7 @@ const includeDepencies = !!process.env.DEPS || false; // Use `false` if you are 
 
 const baseConfig = createConfig({ includeDepencies });
 const targetConfig = Object.assign({}, baseConfig, {
-  dest: pkg["jsnext:main"],
+  dest: pkg["module"],
   format: "es"
 });
 
