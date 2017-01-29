@@ -15,11 +15,12 @@ import { svg } from 'polythene-svg';
 import { switchButton } from 'polythene-switch-button';
 import { tabs } from 'polythene-tabs';
 import { toolbar } from 'polythene-toolbar';
+import { Timer, easing, scrollTo } from 'polythene-tools';
 import { vars } from 'polythene-theme';
 
 
 
-export { button, checkbox, defaultVariables, isTouch, touchStartEvent, touchEndEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, filterSupportedAttributes, mixin, flex, styler, fab, icon, iconButton, list, listTile, radioButton, raisedButton, ripple, shadow, svg, switchButton, tabs, toolbar, vars };
+export { button, checkbox, defaultVariables, isTouch, touchStartEvent, touchEndEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, filterSupportedAttributes, mixin, flex, styler, fab, icon, iconButton, list, listTile, radioButton, raisedButton, ripple, shadow, svg, switchButton, tabs, toolbar, easing, scrollTo, Timer, vars };
 
 export * from 'polythene-fastclick';
 export * from 'polythene-css-classes';

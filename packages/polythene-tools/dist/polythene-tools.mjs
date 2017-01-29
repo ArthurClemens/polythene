@@ -63,24 +63,6 @@ var easing = {
  Animated scroll to a position.
  Derived from https://github.com/madebysource/animated-scrollto
  Adapted to Mithril and rewritten to es6.
-
- @param element: (HTML Element) Scrolling element
- @param to: (px) position
- @param duration: (seconds) scroll animation duration
- @param direction: "vertical" or "horizontal"
-
- Usage:
-
- import { scrollTo } from "polythene-tools";
-
- scrollTo({
-   element: scrollingElement,
-   to: 0,
-   duration: .5,
-   direction: "horizontal"
- }).then(() => {
-   console.log("Done")
- });
 */
 
 var scrollTo = function scrollTo(opts) {
@@ -88,6 +70,7 @@ var scrollTo = function scrollTo(opts) {
   var which = opts.direction === "horizontal" ? "scrollLeft" : "scrollTop";
   var to = opts.to;
   var duration = opts.duration * 1000;
+  var easingFn = opts.easing || easing.easeInOutCubic;
   var start = element[which];
   var change = to - start;
   var animationStart = new Date().getTime();
@@ -100,7 +83,7 @@ var scrollTo = function scrollTo(opts) {
       requestAnimFrame(animateScroll);
       var now = new Date().getTime();
       var percentage = (now - animationStart) / duration;
-      var val = start + change * easing.easeInOutCubic(percentage);
+      var val = start + change * easingFn(percentage);
       element[which] = val;
       if (percentage >= 1) {
         element[which] = to;
@@ -117,21 +100,6 @@ var requestAnimFrame = function () {
     return window.setTimeout(callback, 1000 / 60);
   };
 }();
-
-/**
- Simple start/stop/pause/resume timer.
- 
- Usage:
-
- const timer = new Timer(() => {
-   hide();
- }, timeoutSeconds);
- // This start the timer
-
- timer.pause();
- timer.resume();
- timer.stop();
-*/
 
 var Timer = function Timer(callback, delaySeconds) {
   var timerId = void 0,
