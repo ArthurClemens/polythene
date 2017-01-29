@@ -5,7 +5,7 @@ import { secondaryButton } from "./secondary-button";
 
 const myStyle = [{
   ".my-component": {
-    "background-color": "#FF1744"
+    backgroundColor: "#FF1744"
   }
 }];
 
@@ -14,11 +14,11 @@ styler.add("my-component", myStyle);
 const buttonStyles = [
   {
     ".pe-button.send-button .pe-button__content": {
-      "background-color": "#FF1744",
+      backgroundColor: "#FF1744",
       color: "white"
     },
     ".pe-button.info-button .pe-button__content": {
-      "background-color": "#2196f3",
+      backgroundColor: "#2196f3",
       color: "white"
     }
   }
@@ -32,7 +32,7 @@ const colors = {
 };
 const makeButton = name => ({
   " .pe-button__content": {
-    "background-color": colors[name],
+    backgroundColor: colors[name],
     color: "white"
   }
 });

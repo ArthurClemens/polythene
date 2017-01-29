@@ -22,18 +22,18 @@ export default (selector, componentVars) => [{
         " .pe-tabs__tab---icon": {
           height: componentVars.menu_tab_icon_label_height + "px",
         },
-        " .pe-tabs__tab, .pe-tabs__tab.pe-tabs__tab---icon": {
+        " .pe-tabs__tab, .pe-tabs__tab.pe-tabs__tab---icon, .pe-tabs__tab.pe-text-button": {
           minWidth: 0,
           height: componentVars.menu_tab_icon_label_height + "px",
 
           " .pe-button__content": {
             padding: "0 " + componentVars.tab_menu_content_padding_v + "px",
-            height: componentVars.menu_tab_icon_label_height + "px",
+            height: componentVars.menu_tab_height + "px",
 
             " .pe-icon": {
               marginBottom: 0
             },
-            " .pe-button__label": {
+            " .pe-button__content": {
               fontSize: "10px",
               lineHeight: "12px",
               textTransform: "none"
@@ -67,12 +67,12 @@ export default (selector, componentVars) => [{
           display: "block",
           top: 0,
           backgroundColor: "inherit",
-          zIndex: 3,
+          zIndex: 1,
+          borderRadius: 0,
 
           " .pe-button__content": {
-            backgroundColor: "inherit"
-          },
-          " .pe-button__label": {
+            borderRadius: 0,
+            backgroundColor: "inherit",
             transitionProperty: componentVars.tab_label_transition_property,
             transitionDuration: componentVars.scroll_button_fade_duration + "s",
             transitionTimingFunction: "ease-out",
@@ -84,7 +84,7 @@ export default (selector, componentVars) => [{
           pointerEvents: "none",
           cursor: "default",
 
-          " .pe-button__label": {
+          " .pe-button__content": {
             opacity: 0
           }
         },
@@ -92,7 +92,7 @@ export default (selector, componentVars) => [{
           pointerEvents: "none",
           cursor: "default",
 
-          " .pe-button__label": {
+          " .pe-button__content": {
             opacity: 0
           }
         },
@@ -112,11 +112,17 @@ export default (selector, componentVars) => [{
         }, vars.prefixes_user_select),
         {
           position: "relative",
-          whiteSpace: "nowrap"
+          whiteSpace: "nowrap",
+
+          ".pe-tabs__row--indent": {
+            margin: 0,
+            paddingLeft: componentVars.tabs_indent + "px",
+            overflow: "auto"
+          },
+
+          ".pe-tabs__row--centered": flex.layoutCenterJustified,
         }
       ],
-
-      " .pe-tabs__row--centered": flex.layoutCenterJustified,
 
       " .pe-tabs__scroll-button-offset": [
         flex.flex(),
@@ -169,7 +175,7 @@ export default (selector, componentVars) => [{
             }
           },
           ".pe-button--selected": {
-            " .pe-button__content .pe-button__label": {
+            " .pe-button__content .pe-button__content": {
               opacity: 1
             }
           },
@@ -179,7 +185,7 @@ export default (selector, componentVars) => [{
                 height: componentVars.tab_icon_label_height + "px"
               },
               {
-                " .pe-button__label, .pe-icon": {
+                " .pe-button__content, .pe-icon": {
                   margin: "0 auto"
                 }
               },
@@ -224,7 +230,6 @@ export default (selector, componentVars) => [{
         height: componentVars.tab_indicator_height + "px",
         bottom: 0,
         left: 0,
-        zIndex: 3,
         width: "100%" // and transformed with js
           // background-color defined in implementation/theme css
       },
@@ -234,21 +239,15 @@ export default (selector, componentVars) => [{
         {
           width: "auto",
           margin: 0,
-          top: "auto",
-
-          " .pe-tabs__row.pe-tabs__row--indent": {
-            margin: 0,
-            paddingLeft: vars.unit_indent + "px",
-            overflow: "auto"
-          }
+          top: "auto"
         }
-      ],
+      ]
 
-      ["@media (min-width: " + vars.breakpoint_small_tablet_portrait + "px)"]: {
-        ":not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit) .pe-tabs__tab": {
-          minWidth: componentVars.tab_min_width_tablet + "px"
-        }
-      }
+      // ["@media (min-width: " + vars.breakpoint_small_tablet_portrait + "px)"]: {
+      //   ":not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit) .pe-tabs__tab": {
+      //     minWidth: componentVars.tab_min_width_tablet + "px"
+      //   }
+      // }
     }
   ]
 }];

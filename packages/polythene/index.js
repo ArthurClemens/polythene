@@ -42,6 +42,8 @@ export { tabs } from "polythene-tabs";
 
 export { toolbar } from "polythene-toolbar";
 
+export { easing, scrollTo, Timer } from "polythene-tools";
+
 export { vars } from "polythene-theme";
 
 export * from "polythene-fastclick";

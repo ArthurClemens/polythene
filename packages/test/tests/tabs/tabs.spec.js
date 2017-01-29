@@ -15,12 +15,16 @@ describe("Tabs component", () => {
       wrap: false,
       indent: false
     });
-    expect(html).toContain("<div id=\"\" class=\"pe-tabs  pe-tabs--start      \"><div class=\"pe-tabs__row  \"><div class=\"pe-tabs__indicator\"></div></div></div>");
+    expect(html).toContain("<div class=\"pe-tabs  pe-tabs--start      \"><div class=\"pe-tabs__row  \"><div class=\"pe-tabs__indicator\"></div></div></div>");
   });
   it("child", () => {
-    const cmp = m(component, {}, m("span", "Child"));
+    const cmp = m(component, {}, [
+      { label: "New" },
+      { label: "My Favorites" },
+      { label: "Saved" }
+    ]);
     const html = tidy(cmp);
-    expect(html).toContain("<span>Child</span>");
+    expect(html).toContain("My Favorites");
   });
   it("option id", () => {
     const cmp = m(component, {id: "id-x"});

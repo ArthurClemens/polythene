@@ -4,8 +4,8 @@ import { styler } from "polythene-css";
 
 const styles = [{
   ".pe-button.secondary-button .pe-button__content": {
-    "background-color": "#fff",
-    "border-color": "#ddd"
+    backgroundColor: "#fff",
+    borderColor: "#ddd"
   }
 }];
 styler.add("secondary-button", styles);

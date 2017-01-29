@@ -5,7 +5,7 @@ Displays a tab row.
 
 ## Usage
 
-A tab button is an option object with attributes:
+A tab row is created with an Array of tab buttons, each of which is an option object with either attributes:
 
 * label
 * icon
@@ -36,7 +36,9 @@ const iconTextButtons = [
 ];
 ~~~
 
-Create a tab button row by passing the option object as a child node (or with option `content`):
+The tab button option object will be passed to the [Button](../polythene-button) component, so you can use the button options too.
+
+Pass the button Array to the tab component as a child node, or with option `content`:
 
 ~~~javascript
 import m from "mithril";
@@ -53,9 +55,7 @@ const myTabs = m(tabs, {
 }, tabButtons)
 ~~~
 
-Each tab is converted to a [Button](../polythene-button). The button options can be set with `tabsOpts`.
-
-For example to disable the ripple (ink) effect:
+To set all button options at once, use `tabsOpts`. For example to disable the ripple (ink) effect on all buttons:
 
 ~~~javascript
 const myTabs = m(tabs, {
@@ -69,11 +69,30 @@ const myTabs = m(tabs, {
 
 To display more tabs than fit in the viewport, set `scrollable` to true. On no-touch devices 2 scroll buttons will be added to navigate the tabs.
 
+To create the frame where the buttons are displayed behind (sliding doors), the frame container must have CSS attributes:
+
+* A width or maximum width: f.i. `max-width: 400px`
+* Overflow on hidden on the x axis: `overflow-x: hidden`
+* A height; this should be at least the tab button height (48px): `height: 48px` 
+
+The container's `background-color` will automatically set the scroll button colors. The `color` will automatically set the scroll button icon color.
+
 ~~~javascript
 const myTabs = m(tabs, {
   scrollable: true
-}, tabButtons)
+}, tabButtons);
+
+m("div", {
+  style: {
+    maxWidth: "400px",
+    color: "#fff",
+    backgroundColor: "#444",
+    overflowX: "hidden",
+    height: "48px"
+  }
+}, myTabs)
 ~~~
+
 
 Optionally create custom arrow icons:
 
@@ -88,11 +107,6 @@ const myTabs = m(tabs, {
   scrollIconForward: { msvg: arrowForward }
 }, tabButtons)
 ~~~
-
-
-#### Scrollable tabs inside a toolbar
-
-The toolbar must have the class `pe-toolbar--tabs`. This will fit the tab row in a row (class `pe-toolbar__bar`), and give the scroll buttons background color the same color as the toolbar background.
 
 
 ### Getting the tabs state

@@ -4,17 +4,17 @@ import { tabs as component} from "polythene-tabs";
 import iconHeart from "mmsvg/templarian/msvg/heart";
 import iconBell from "mmsvg/templarian/msvg/bell";
 import iconSettings from "mmsvg/templarian/msvg/settings";
+
 // import iconMenu from "mmsvg/google/msvg/navigation/menu";
 // import iconSearch from "mmsvg/google/msvg/action/search";
 // import iconMore from "mmsvg/google/msvg/navigation/more-vert";
 
-// import arrowBack from "mmsvg/google/msvg/navigation/arrow-back";
-// import arrowForward from "mmsvg/google/msvg/navigation/arrow-forward";
+import arrowBack from "mmsvg/google/msvg/navigation/arrow-back";
+import arrowForward from "mmsvg/google/msvg/navigation/arrow-forward";
 
 component.theme(".tests-tabs-fixed-width", {
-  tab_max_width: 120,
-  tablet_tab_min_width: 120,
-  tab_min_width: "none"
+  tab_max_width: 110,
+  tab_min_width: 110
 });
 
 component.theme(".tests-tabs-custom_color", {
@@ -36,6 +36,15 @@ const longLabels = [
   { label: "New" },
   { label: "A very long label that does not fit" },
   { label: "Saved" }
+];
+
+const longList = [
+  { label: "Web" },
+  { label: "Shopping" },
+  { label: "Videos" },
+  { label: "Images" },
+  { label: "Books" },
+  { label: "More" }
 ];
 
 const iconButtons = [
@@ -64,20 +73,6 @@ const iconTextButtons = [
     label: "Custom"
   }
 ];
-
-// const longList = [{
-//   label: "Web"
-// }, {
-//   label: "Shopping"
-// }, {
-//   label: "Videos"
-// }, {
-//   label: "Images"
-// }, {
-//   label: "Books"
-// }, {
-//   label: "More"
-// }];
 
 export const tests = [
   {
@@ -161,6 +156,80 @@ export const tests = [
     }
   },
   {
+    name: "Option: scrollable",
+    component: {
+      view: () => 
+        m("div", {
+          style: {
+            maxWidth: "400px",
+            color: "#fff",
+            backgroundColor: "#444",
+            overflowX: "hidden",
+            height: "48px"
+          }
+        }, m(component, {
+          buttons: longList,
+          scrollable: true
+        }))
+    }
+  },
+  {
+    name: "Option: scrollable with custom icons",
+    component: {
+      view: () => 
+        m("div", {
+          style: {
+            maxWidth: "400px",
+            color: "#fff",
+            backgroundColor: "#444",
+            overflowX: "hidden",
+            height: "48px"
+          }
+        }, m(component, {
+          buttons: longList,
+          scrollable: true,
+          scrollIconBackward: { msvg: arrowBack },
+          scrollIconForward: { msvg: arrowForward }
+        }))
+    }
+  },
+  {
+    name: "Option: menu",
+    component: {
+      view: () => 
+        m("div", {
+          style: {
+            maxWidth: "320px",
+            color: "#444",
+            backgroundColor: "#fff",
+            height: "400px",
+            display: "flex",
+            flexDirection: "column"
+          }
+        }, [
+          m("div", {
+            style: {
+              padding: "20px",
+              display: "flex",
+              overflowX: "hidden",
+              overflowY: "scroll",
+              flexDirection: "column"
+            }
+          }, [1,2,3,4,5].map(() => m("p", "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."))
+          ),
+          m(component, {
+            buttons: threeButtons,
+            menu: true,
+            autofit: true,
+            hideIndicator: true,
+            style: {
+              borderTop: "1px solid #eee"
+            }
+          })
+        ])
+    }
+  },
+  {
     name: "Option: hideIndicator",
     interactive: true,
     component,
@@ -193,6 +262,16 @@ export const tests = [
     }
   },
   {
+    name: "Option: activeSelected",
+    interactive: true,
+    component,
+    attrs: {
+      buttons: threeButtons,
+      autofit: true,
+      activeSelected: true
+    }
+  },
+  {
     name: "Option: tabsOpts (style - colors)",
     component,
     attrs: {
@@ -206,8 +285,6 @@ export const tests = [
       }
     }
   },
-
-
   {
     name: "Tabs with icons",
     class: "small-result",
@@ -242,8 +319,7 @@ export const tests = [
           }
         }, [
           m("li", `${vnode.state.index}`),
-          m("li", `${JSON.stringify(vnode.state.data)}`),
-          m("li", vnode.state.el ? `${JSON.stringify(vnode.state.el.innerHTML)}` : "")
+          m("li", `${JSON.stringify(vnode.state.data)}`)
         ]),
         m(component, {
           buttons: threeButtons,
@@ -282,6 +358,24 @@ export const tests = [
     attrs: {
       buttons: iconButtons,
       autofit: true
+    }
+  },
+  {
+    name: "Option: scrollable -- dark theme",
+    class: "pe-dark-theme",
+    component: {
+      view: () => 
+        m("div", {
+          style: {
+            maxWidth: "400px",
+            overflowX: "hidden",
+            height: "48px",
+            color: "#fff"
+          }
+        }, m(component, {
+          buttons: longList,
+          scrollable: true
+        }))
     }
   },
 ];

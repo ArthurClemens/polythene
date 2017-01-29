@@ -14,7 +14,10 @@ const style = (scope, selector, componentVars, tint) => [{
       color: componentVars["color_" + tint + "_icon"]
     },
     " .pe-tabs__indicator": {
-      "background-color": componentVars["color_" + tint + "_tab_indicator"]
+      backgroundColor: componentVars["color_" + tint + "_tab_indicator"]
+    },
+    " .pe-tabs__scroll-button": {
+      color: "inherit"
     }
   }
 }];
