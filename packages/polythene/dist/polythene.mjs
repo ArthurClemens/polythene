@@ -15,7 +15,7 @@ import { svg } from 'polythene-svg';
 import { switchButton } from 'polythene-switch-button';
 import { tabs } from 'polythene-tabs';
 import { toolbar } from 'polythene-toolbar';
-import { Timer, easing, scrollTo } from 'polythene-tools';
+import { Timer, easing, scrollTo } from 'polythene-utilities';
 import { vars } from 'polythene-theme';
 
 

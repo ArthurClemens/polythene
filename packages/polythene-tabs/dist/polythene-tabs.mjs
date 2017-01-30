@@ -1,6 +1,6 @@
 import m from 'mithril';
 import { filterSupportedAttributes, isTouch, subscribe, unsubscribe } from 'polythene-core';
-import { scrollTo } from 'polythene-tools';
+import { scrollTo } from 'polythene-utilities';
 import { flex, mixin, styler } from 'polythene-css';
 import { vars } from 'polythene-theme';
 import { button, vars as vars$1 } from 'polythene-button';
