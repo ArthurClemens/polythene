@@ -1,9 +1,10 @@
 import FastClick from 'fastclick';
 import p from 'polythene/polythene/polythene';
 import events from 'polythene/common/events';
+import isomorphic from 'polythene/common/isomorphic';
 
 let layer = {body:{}};
-if(typeof document !== "undefined") {
+if(isomorphic.isClient()) {
 	layer = document.body;
 }
 const throttleDelay = 150;

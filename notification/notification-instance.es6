@@ -2,6 +2,7 @@ import 'polythene/common/object.assign';
 import m from 'mithril';
 import Timer from 'polythene/common/timer';
 import transition from 'polythene/common/transition';
+import isomorphic from 'polythene/common/isomorphic';
 
 const CSS_CLASSES = {
     content: 'pe-notification__content',
@@ -96,7 +97,7 @@ const createView = (ctrl, opts = {}) => {
             ctrl.el = el;
 
             // container element is used for transitioning the notification
-            ctrl.containerEl = typeof document !== "undefined"? document.querySelector(opts.containerSelector || '.pe-notification__holder'): null;
+            ctrl.containerEl = isomorphic.isClient()? document.querySelector(opts.containerSelector || '.pe-notification__holder'): null;
             show(ctrl, opts);
         },
         onclick: (e) => {
@@ -104,7 +105,7 @@ const createView = (ctrl, opts = {}) => {
         }
     };
     const titleConfig = (el, inited) => {
-		if(typeof window === "undefined"){
+		if(isomorphic.isServer()){
 			return;
 		}
         if (inited) return;

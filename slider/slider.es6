@@ -3,6 +3,7 @@ import p from 'polythene/polythene/polythene';
 import m from 'mithril';
 import 'polythene/slider/theme/theme';
 import themeConfig from 'polythene/slider/theme/config';
+import isomorphic from 'polythene/common/isomorphic';
 
 const CSS_CLASSES = {
     block: 'pe-slider',
@@ -34,7 +35,7 @@ let focusElement;
 // const eventStartType = window.PointerEvent ? 'pointerdown' : (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) ? 'touchstart' : 'mousedown';
 let eventMoveType = 'mousemove';
 let eventEndType = 'mouseup';
-if(typeof window !== "undefined"){
+if(isomorphic.isClient()){
 	eventMoveType = window.PointerEvent ? 'pointermove' : (('ontouchmove' in window) || window.DocumentTouch && document instanceof DocumentTouch) ? 'touchmove' : 'mousemove';
 	eventEndType = window.PointerEvent ? 'pointerup' : (('ontouchend' in window) || window.DocumentTouch && document instanceof DocumentTouch) ? 'touchend' : 'mouseup';
 }
@@ -117,7 +118,7 @@ const handlePosEvent = (ctrl, e) => {
 };
 
 const startDrag = (ctrl, opts, e) => {
-	if(typeof window === "undefined") {
+	if(isomorphic.isServer()) {
 		return;
 	}
     if (ctrl.isDragging) return;

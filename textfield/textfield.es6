@@ -1,9 +1,10 @@
 import 'polythene/common/object.assign';
 import m from 'mithril';
 import 'polythene/textfield/theme/theme';
+import isomorphic from 'polythene/common/isomorphic';
 
 let startEventType = 'mousedown';
-if(typeof window !== "undefined") {
+if(isomorphic.isClient()) {
 	startEventType = window.PointerEvent ? 'pointerdown' : (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) ? 'touchstart' : 'mousedown';
 }
 

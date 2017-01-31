@@ -1,6 +1,7 @@
+import isomorphic from 'polythene/common/isomorphic';
 
 export default () => {
-	if(typeof window === "undefined"){
+	if(isomorphic.isServer()){
 		return;
 	}
     const el = document.createElement('fakeelement');

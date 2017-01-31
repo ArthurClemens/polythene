@@ -1,0 +1,2 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0});var isoUtil={isClient:function(){return"undefined"!=typeof window},isServer:function(){return!isoUtil.isClient()}};exports.default=isoUtil,module.exports=exports.default;
+//# sourceMappingURL=isomorphic.js.map

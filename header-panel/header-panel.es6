@@ -3,6 +3,7 @@ import p from 'polythene/polythene/polythene';
 import events from 'polythene/common/events';
 import m from 'mithril';
 import toolbar from 'polythene/toolbar/toolbar';
+import isomorphic from 'polythene/common/isomorphic';
 import 'polythene/header-panel/theme/theme';
 
 const CSS_CLASSES = {
@@ -83,7 +84,7 @@ let setTransform = (style, string) => {
     style.transform = string;
 };
 
-if(typeof document !== "undefined") {
+if(isomorphic.isClient()) {
 	setTransform = (document.documentElement.style.transform !== undefined) ? ((style, string) => {
 	    style.transform = string;
 	}) : ((style, string) => {

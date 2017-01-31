@@ -3,6 +3,7 @@ import p from 'polythene/polythene/polythene';
 import m from 'mithril';
 import ripple from 'polythene/ripple/ripple';
 import shadow from 'polythene/shadow/shadow';
+import isomorphic from 'polythene/common/isomorphic';
 import 'polythene/base-button/base-button';
 import 'polythene/button/theme/theme';
 
@@ -25,7 +26,7 @@ const MAX_Z = 5;
 let startType = 'mousedown';
 let endType = 'mouseup';
 
-if(typeof window !== "undefined") {
+if(isomorphic.isClient()) {
 	startType = window.PointerEvent ? 'pointerdown' : (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) ? 'touchstart' : 'mousedown';
 	endType = window.PointerEvent ? 'pointerup' : (('ontouchend' in window) || window.DocumentTouch && document instanceof DocumentTouch) ? 'touchend' : 'mouseup';
 }
@@ -62,7 +63,7 @@ const inactivate = (ctrl, opts) => {
 };
 
 const initTapEvents = (el, ctrl, opts) => {
-	if(typeof window === "undefined") {
+	if(isomorphic.isServer()) {
 		return;
 	}
     const tapHandler = (ctrl, opts, name) => {
@@ -92,7 +93,7 @@ const initTapEvents = (el, ctrl, opts) => {
 };
 
 const clearTapEvents = function(el) {
-	if(typeof window === "undefined") {
+	if(isomorphic.isServer()) {
 		return;
 	}
     el.removeEventListener(startType, tapStart);
@@ -162,7 +163,7 @@ const createView = (ctrl, opts = {}) => {
                 if (e.which === 13 && ctrl.focus && ctrl.el) {
                     // ENTER
                     const event = new MouseEvent('click', {
-                        view: typeof window !== "undefined"? window: {},
+                        view: isomorphic.isClient()? window: {},
                         bubbles: true,
                         cancelable: true
                     });

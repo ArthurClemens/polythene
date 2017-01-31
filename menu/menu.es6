@@ -2,6 +2,7 @@ import events from 'polythene/common/events';
 import m from 'mithril';
 import shadow from 'polythene/shadow/shadow';
 import transition from 'polythene/common/transition';
+import isomorphic from 'polythene/common/isomorphic';
 import 'polythene/menu/theme/theme';
 
 const CSS_CLASSES = {
@@ -24,7 +25,7 @@ const DEFAULT_OFFSET_H = 16;
 const MIN_SIZE = 1.5;
 
 const positionMenu = (ctrl, opts) => {
-	if(typeof document === "undefined") {
+	if(isomorphic.isServer()) {
 		return;
 	}
     if (!opts.target) {
@@ -120,7 +121,7 @@ const widthClass = (size) => {
 };
 
 const createView = (ctrl, opts = {}) => {
-	if(typeof document === "undefined") {
+	if(isomorphic.isServer()) {
 		return;
 	}
     const listenEl = document.body;

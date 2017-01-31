@@ -3,6 +3,7 @@ Helper module to manage multiple items of the same component type.
 */
 import m from 'mithril';
 import 'polythene/common/object.assign';
+import isomorphic from 'polythene/common/isomorphic';
 
 /*
 mOpts:
@@ -170,13 +171,13 @@ const multiple = (mOpts) => {
                 return item.show;
             });
             if (!toShowItems.length) {
-				if(typeof document !== "undefined") {
+				if(isomorphic.isClient()) {
 	                document.body.classList.remove(mOpts.bodyShowClass);
 				}
                 // placeholder because we cannot return null
                 return m(mOpts.noneTag);
             } else {
-				if(typeof document !== "undefined") {
+				if(isomorphic.isClient()) {
                 	document.body.classList.add(mOpts.bodyShowClass);
 				}
             }

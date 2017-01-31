@@ -4,6 +4,7 @@ import m from 'mithril';
 import dialog from 'polythene/dialog/dialog';
 import transition from 'polythene/common/transition';
 import shadow from 'polythene/shadow/shadow';
+import isomorphic from 'polythene/common/isomorphic';
 import 'polythene/dialog/theme/theme';
 
 const CSS_CLASSES = {
@@ -35,7 +36,7 @@ const updateScrollState = (ctrl) => {
 };
 
 const updateFooterState = (ctrl) => {
-	if(typeof window === "undefined") {
+	if(isomorphic.isServer()) {
 		return;
 	}
     const footerEl = ctrl.footerEl;
