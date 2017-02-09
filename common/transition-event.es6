@@ -2,7 +2,7 @@ import isomorphic from 'polythene/common/isomorphic';
 
 export default () => {
 	if(isomorphic.isServer()){
-		return;
+		return 'animationend';
 	}
     const el = document.createElement('fakeelement');
     const animations = {
