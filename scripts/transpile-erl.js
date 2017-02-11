@@ -38,9 +38,8 @@ const nodeModulesDir = nodeModulesDir0.replace(/ /g, '\\\ ');
 const escDir = dir.replace(/ /g, '\\\ ');
 const command = [
     `cd ${escDir}`,
-    `${nodeModulesDir}/babel-cli/bin/babel.js --presets es2015 --plugins add-module-exports ${inFile} --out-file ${outFile} --source-maps true`,
-    `${nodeModulesDir}/uglify-js/bin/uglifyjs --compress --output ${outFile} --source-map ${sourceMapFile} --in-source-map ${sourceMapFile}`,
-    // `${nodeModulesDir}/mithril-objectify/bin/cli.js ${outFile} ${outFile}`
+    `${nodeModulesDir}/babel-cli/bin/babel.js --presets es2015 --plugins add-module-exports,mithril-objectify ${inFile} --out-file ${outFile} --source-maps true`,
+    `${nodeModulesDir}/uglify-js/bin/uglifyjs --compress --output ${outFile} --source-map ${sourceMapFile} --in-source-map ${sourceMapFile}`
 ].join(' && ');
 
 execute(command);
