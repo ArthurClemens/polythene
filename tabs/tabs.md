@@ -191,7 +191,7 @@ m.component(tabs, {
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **buttons** | required | Array of options Objects |  | Tab buttons |
 | **tabsOpts** | optional | Options Object | | Tab button options that will be applied to all tabs, see "Tab button options"  below |
-| **getState**  | optional | Function(state {Object}) | | Callback function that accepts the tabs state (Object with properties `index` {Boolean}, `id` {String}, `el` {HTMLElement}) |
+| **getState**  | optional | Function(state {Object}) | | Callback function that accepts the tabs state (Object with properties `index` {Boolean}, `data` {Object}, `el` {HTMLElement}) |
 
 
 ### Tabs appearance options
