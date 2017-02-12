@@ -11,7 +11,7 @@
   "directories": {},
   "dependencies": {
     "fastclick": "^1.0.6",
-    "j2c": "^1.0.0-4"
+    "j2c": "^0.11.2"
   },
   "devDependencies": {
     "babel-cli": "^6.22.2",
