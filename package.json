@@ -15,9 +15,9 @@
   },
   "devDependencies": {
     "babel-cli": "^6.22.2",
-    "babel-jest": "^17.0.2",
+    "babel-jest": "^18.0.0",
     "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-plugin-uglify": "^1.0.2",
+    "babel-preset-babili": "0.0.11",
     "babel-preset-es2015": "^6.22.0",
     "babelify": "^7.3.0",
     "browserify": "^14.0.0",
@@ -34,7 +34,7 @@
   },
   "scripts": {
     "watch": "node scripts/transpile.es6 watch . node_modules",
-    "transpile": "node scripts/transpile.es6 once . node_modules",
+    "transpile": "node scripts/transpile.es6",
     "build": "node scripts/standalone.es6",
     "test": "jest"
   },
