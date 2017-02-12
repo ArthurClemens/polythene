@@ -1,1 +1,1 @@
-{"version":3,"sources":["config.es6"],"names":["start_scale","end_scale","start_opacity","end_opacity"],"mappings":"wFAEIA,YAAa,GACbC,UAAW,EACXC,cAAe,GACfC,YAAa","file":"config.js"}
+{"version":3,"sources":["config.es6"],"names":["start_scale","end_scale","start_opacity","end_opacity"],"mappings":"oFACe,CACXA,YAAa,GADF,CAEXC,UAAW,CAFA,CAGXC,cAAe,GAHJ,CAIXC,YAAa,CAJF,C","file":"config.js","sourcesContent":["\nexport default {\n    start_scale: 0.1,\n    end_scale: 2,\n    start_opacity: 0.2,\n    end_opacity: 0\n};\n"]}
