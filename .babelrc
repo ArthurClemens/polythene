@@ -1,4 +1,3 @@
 {
-  "presets": ["es2015", "babili"],
-  "plugins": ["add-module-exports", "mithril-objectify"]
+  "presets": ["es2015"]
 }

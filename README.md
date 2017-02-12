@@ -10,7 +10,6 @@ Modular implementation of Material Design for [Mithril](http://lhorie.github.io/
 * [Project setup example](https://github.com/ArthurClemens/Polythene-setup)
 
 
-
 ## Release 0.2.0
 
 This release contains a major refactoring of all components, including:
@@ -30,13 +29,10 @@ Added components:
 * Switch
 * Text field
 
-
-
 ## Background
 
 * [Polythene background](https://github.com/ArthurClemens/Polythene/blob/master/polythene/polythene.md)
 * [Theming](https://github.com/ArthurClemens/Polythene/blob/master/theme/theme.md)
-
 
 
 ## Setup
@@ -46,7 +42,6 @@ Polythene uses Node tools to build. It runs in the browser.
 Source files are written in es6 and transpiled to es5. The building blocks are async es6 modules and loaded when needed, but using SystemJS / jspm / Browserify it is also possible to create bundles where all required modules are combined.
 
 Polythene works both in es6 and es5 applications.
-
 
 
 ### Basic example
@@ -81,7 +76,6 @@ https://rawgit.com/ArthurClemens/Polythene/master/polythene-standalone.js
 ~~~
 
 
-
 ## Installation
 
 You will need:
@@ -103,7 +97,6 @@ jspm install github:ArthurClemens/Polythene
 ~~~
 
 
-
 ## Using Polythene with es5
 
 When using Browserify, use `require` to get components:
@@ -115,23 +108,22 @@ var btn = require('polythene/button/button');
 ~~~
 
 
-
 ## Developing
 
-Transpile everything:
+The included transpile script calls Babel with params `--presets es2015` and `--plugins babel-plugin-add-module-exports`.
 
-* `npm run transpile .`
+Transpile everything once:
 
-Transpile the dialog component:
+* `npm run transpile`
 
-* `npm run transpile dialog`
+Watch changes while developing:
 
+* `npm run watch`
 
 
 ## Browser support
 
 The default theme uses flexbox, so this works in IE10 and other browsers. For IE9 you will need to adapt the theme.
-
 
 
 ## Project progress
@@ -167,7 +159,6 @@ The default theme uses flexbox, so this works in IE10 and other browsers. For IE
 * Validation
 
 
-
 ### To do
 
 1. Collapse
@@ -182,7 +173,6 @@ The default theme uses flexbox, so this works in IE10 and other browsers. For IE
 1. Picker
 1. Chip
 1. Reorder list
-
 
 
 ## License

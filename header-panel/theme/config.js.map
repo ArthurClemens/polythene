@@ -1,1 +1,1 @@
-{"version":3,"sources":["config.es6"],"names":["box_shadow","box_shadow_height"],"mappings":"oFACe,CACXA,WAAY,2CADD,CAEXC,kBAAmB,CAFR,C","file":"config.js","sourcesContent":["\nexport default {\n    box_shadow: 'inset 0px 5px 6px -3px rgba(0, 0, 0, 0.4)',\n    box_shadow_height: 6\n};\n"]}
+{"version":3,"sources":["config.es6"],"names":["box_shadow","box_shadow_height"],"mappings":"wFAEIA,WAAY,4CACZC,kBAAmB","file":"config.js"}
