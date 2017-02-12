@@ -129,6 +129,7 @@ const createView = (ctrl, opts = {}) => {
             (opts.backdrop ? CSS_CLASSES.hasBackdrop : null),
             (ctrl.topOverflow || opts.borders ? CSS_CLASSES.hasTopOverflow : null),
             (ctrl.bottomOverflow || opts.borders ? CSS_CLASSES.hasBottomOverflow : null),
+            ctrl.visible ? CSS_CLASSES.visible : null,
             opts.class
         ].join(' '),
         id: opts.id || '',
@@ -241,7 +242,7 @@ const component = {
             headerHeight: 0,
             footerHeight: 0,
             el: null,
-            visible: instanceData.show ? true : false,
+            visible: false,
             isTransitioning: false
         });
     },

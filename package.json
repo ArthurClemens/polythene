@@ -1,6 +1,6 @@
 {
   "name": "polythene",
-  "version": "0.2.34",
+  "version": "0.2.35",
   "description": "Modular implementation of Material Design for Mithril.",
   "license": "MIT",
   "keywords": [
@@ -33,9 +33,8 @@
     "uglifyify": "^3.0.4"
   },
   "scripts": {
-    "watch": "node scripts/transpile.es6 watch . node_modules",
-    "transpile": "node scripts/transpile.es6",
-    "build": "node scripts/standalone.es6",
+    "transpile": "node scripts/transpile.js",
+    "build": "node scripts/standalone.js",
     "test": "jest"
   },
   "repository": {
