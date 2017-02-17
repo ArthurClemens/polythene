@@ -9,6 +9,12 @@
   ],
   "main": "index.js",
   "directories": {},
+  "scripts": {
+    "transpile": "node scripts/transpile.js",
+    "build": "node scripts/standalone.js",
+    "test": "jest ./*/*/*.spec.js",
+    "test:watch": "jest ./*/*/*.spec.js --watch"
+  },
   "dependencies": {
     "fastclick": "^1.0.6",
     "j2c": "^0.11.2"
@@ -22,7 +28,7 @@
     "babelify": "^7.3.0",
     "browserify": "^14.0.0",
     "findup-sync": "^0.4.3",
-    "jest": "^17.0.3",
+    "jest": "^18.1.0",
     "js-beautify": "^1.6.9",
     "mithril": "^0.2.5",
     "mithril-node-render": "^0.5.2",
@@ -31,11 +37,6 @@
     "transpile-watch": "0.1.1",
     "uglify-js": "^2.7.5",
     "uglifyify": "^3.0.4"
-  },
-  "scripts": {
-    "transpile": "node scripts/transpile.js",
-    "build": "node scripts/standalone.js",
-    "test": "jest"
   },
   "repository": {
     "type": "git",
