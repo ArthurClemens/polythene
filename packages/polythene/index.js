@@ -7,6 +7,8 @@ export {
   isTouch, touchStartEvent, touchEndEvent,
   throttle, subscribe, unsubscribe, emit,
   animationEndEvent,
+  multiple,
+  show, hide,
   filterSupportedAttributes
 } from "polythene-core";
 
@@ -15,6 +17,8 @@ export {
   flex,
   styler
 } from "polythene-css";
+
+export { dialog } from "polythene-dialog";
 
 export { fab } from "polythene-fab";
 

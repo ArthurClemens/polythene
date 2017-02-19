@@ -567,7 +567,7 @@ var view = function view(vnode) {
   var props = _extends({}, filterSupportedAttributes(attrs), {
     class: [classes.component, attrs.scrollable ? classes.scrollable : null, state.selectedTabIndex === 0 ? classes.isAtStart : null, state.selectedTabIndex === state.tabs.length - 1 ? classes.isAtEnd : null, attrs.activeSelected ? classes.activeSelectable : null, autofit ? classes.isAutofit : null, attrs.small ? classes.smallTabs : null, attrs.menu ? classes.isMenu : null, attrs.class].join(" "),
     oninit: function oninit() {
-      subscribe("resize", onResize);
+      return subscribe("resize", onResize);
     },
     oncreate: function oncreate(vnode) {
       state.tabsEl = vnode.dom;
@@ -681,7 +681,7 @@ var tabs = {
     var registerScrollButton = function registerScrollButton(position, dom) {
       return vnode.state.scrollButtons[position] = dom;
     };
-    vnode.state = {
+    vnode.state = _extends(vnode.state, {
       tabsEl: undefined,
       scrollerEl: undefined,
       tabs: [], // {data, el}
@@ -700,7 +700,7 @@ var tabs = {
       },
       registerTabButton: registerTabButton,
       registerScrollButton: registerScrollButton
-    };
+    });
   }
 };
 

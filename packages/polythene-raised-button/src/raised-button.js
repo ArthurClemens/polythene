@@ -95,12 +95,14 @@ export const raisedButton = {
   theme: customTheme, // accepts (selector, vars)
   oninit: vnode => {
     const z = (vnode.attrs.z !== undefined) ? vnode.attrs.z : 1;
-    vnode.state = {
-      el: undefined,
-      zBase: z,
-      z: z,
-      tapEventsInited: false
-    };
+    vnode.state = Object.assign(vnode.state,
+      {
+        el: undefined,
+        zBase: z,
+        z: z,
+        tapEventsInited: false
+      }
+    );
   },
   oncreate: vnode => {
     if (!vnode.attrs.disabled && !vnode.state.inactive && !vnode.state.tapEventsInited) {

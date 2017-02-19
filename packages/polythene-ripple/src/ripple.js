@@ -65,11 +65,7 @@ const view = vnode => {
 
 export const ripple = {
   theme: customTheme, // accepts (selector, vars)
-  oninit: vnode => {
-    vnode.state = {
-      animating: false
-    };
-  },
+  oninit: vnode => vnode.state.animating = false,
   oncreate: initRipple,
   onremove: destroyRipple,
   view

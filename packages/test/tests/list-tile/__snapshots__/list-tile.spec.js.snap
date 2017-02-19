@@ -63,6 +63,19 @@ exports[`test Option: disabled url 1`] = `
 "
 `;
 
+exports[`test Option: events 1`] = `
+"<div class=\"pe-list-tile\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
+    <div class=\"pe-list-tile__content\">
+      <div class=\"pe-list-tile__title\">
+        Click me
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
 exports[`test Option: front (avatar) 1`] = `
 "<div class=\"pe-list-tile pe-list-tile--front\">
   <div style=\"\" class=\"pe-list-tile__primary\">

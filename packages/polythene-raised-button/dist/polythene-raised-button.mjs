@@ -212,12 +212,12 @@ var raisedButton = {
   theme: customTheme, // accepts (selector, vars)
   oninit: function oninit(vnode) {
     var z = vnode.attrs.z !== undefined ? vnode.attrs.z : 1;
-    vnode.state = {
+    vnode.state = _extends(vnode.state, {
       el: undefined,
       zBase: z,
       z: z,
       tapEventsInited: false
-    };
+    });
   },
   oncreate: function oncreate(vnode) {
     if (!vnode.attrs.disabled && !vnode.state.inactive && !vnode.state.tapEventsInited) {

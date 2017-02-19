@@ -6,7 +6,7 @@
   "module": "dist/polythene.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
-    "rollup": "DEPS=true ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
+    "rollup": "DEPS=1 ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
     "build": "npm run rollup"
   },
   "dependencies": {
@@ -16,6 +16,7 @@
     "polythene-core": "1",
     "polythene-css": "1",
     "polythene-css-classes": "1",
+    "polythene-dialog": "1",
     "polythene-fab": "1",
     "polythene-fastclick": "1",
     "polythene-icon": "1",

@@ -1,7 +1,8 @@
 import { button } from 'polythene-button';
 import { checkbox } from 'polythene-checkbox';
-import { animationEndEvent, defaultVariables, emit, filterSupportedAttributes, isTouch, subscribe, throttle, touchEndEvent, touchStartEvent, unsubscribe } from 'polythene-core';
+import { animationEndEvent, defaultVariables, emit, filterSupportedAttributes, hide, isTouch, multiple, show, subscribe, throttle, touchEndEvent, touchStartEvent, unsubscribe } from 'polythene-core';
 import { flex, mixin, styler } from 'polythene-css';
+import { dialog } from 'polythene-dialog';
 import { fab } from 'polythene-fab';
 import { icon } from 'polythene-icon';
 import { iconButton } from 'polythene-icon-button';
@@ -20,7 +21,7 @@ import { vars } from 'polythene-theme';
 
 
 
-export { button, checkbox, defaultVariables, isTouch, touchStartEvent, touchEndEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, filterSupportedAttributes, mixin, flex, styler, fab, icon, iconButton, list, listTile, radioButton, raisedButton, ripple, shadow, svg, switchButton, tabs, toolbar, easing, scrollTo, Timer, vars };
+export { button, checkbox, defaultVariables, isTouch, touchStartEvent, touchEndEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, multiple, show, hide, filterSupportedAttributes, mixin, flex, styler, dialog, fab, icon, iconButton, list, listTile, radioButton, raisedButton, ripple, shadow, svg, switchButton, tabs, toolbar, easing, scrollTo, Timer, vars };
 
 export * from 'polythene-fastclick';
 export * from 'polythene-css-classes';

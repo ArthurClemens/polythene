@@ -59,6 +59,17 @@ export const tests = [
     }
   },
   {
+    name: "Option: events",
+    interactive: true,
+    component,
+    attrs: {
+      title: "Click me",
+      events: {
+        onclick: () => alert("clicked")
+      }
+    }
+  },
+  {
     name: "Option: href",
     interactive: true,
     component,

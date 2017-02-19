@@ -140,7 +140,7 @@ var selectionControl = {
       return setChecked(!inputEl.checked);
     };
 
-    vnode.state = {
+    vnode.state = _extends(vnode.state, {
       setInputEl: setInputEl,
       setChecked: setChecked,
       checked: function checked() {
@@ -150,7 +150,7 @@ var selectionControl = {
       value: function value() {
         return _value;
       }
-    };
+    });
   },
   view: view
 };

@@ -1,3 +1,5 @@
+import m from 'mithril';
+
 // Theme variables
 // How to change these variables for your app - see the README.
 
@@ -243,6 +245,331 @@ var _extends = Object.assign || function (target) {
   return target;
 };
 
+/*
+Helper module to manage multiple items of the same component type.
+*/
+/*
+mOpts:
+- instance
+- defaultId
+- element
+- placeholder
+- bodyShowClass
+*/
+var multiple = function multiple(mOpts) {
+
+  var items = [];
+
+  var itemIndex = function itemIndex(id) {
+    var item = findItem(id);
+    return items.indexOf(item);
+  };
+
+  var removeItem = function removeItem(id) {
+    var index = itemIndex(id);
+    if (index !== -1) {
+      items.splice(index, 1);
+    }
+  };
+
+  var replaceItem = function replaceItem(id, newItem) {
+    var index = itemIndex(id);
+    if (index !== -1) {
+      items[index] = newItem;
+    }
+  };
+
+  var findItem = function findItem(id) {
+    // traditional for loop for IE10
+    for (var i = 0; i < items.length; i++) {
+      if (items[i].instanceId === id) {
+        return items[i];
+      }
+    }
+  };
+
+  var next = function next() {
+    if (items.length) {
+      items[0].show = true;
+      m.redraw();
+    }
+  };
+
+  var _remove = function _remove(instanceId) {
+    if (mOpts.queue) {
+      items.shift();
+      // add time to remove the previous instance before drawing the next one
+      setTimeout(next, 0);
+    } else {
+      removeItem(instanceId);
+    }
+  };
+
+  var setPauseState = function setPauseState(pause, instanceId) {
+    var item = findItem(instanceId);
+    if (item) {
+      item.pause = pause;
+      item.unpause = !pause;
+    }
+  };
+
+  var makeItem = function makeItem(itemOpts, instanceId) {
+    var resolveShow = void 0;
+    var didShow = function didShow() {
+      var opts = typeof itemOpts === "function" ? itemOpts() : itemOpts;
+      if (opts.didShow) {
+        opts.didShow(instanceId);
+      }
+      return resolveShow(instanceId);
+    };
+    var showPromise = new Promise(function (resolve) {
+      return resolveShow = resolve;
+    });
+
+    var resolveHide = void 0;
+    var didHide = function didHide() {
+      var opts = typeof itemOpts === "function" ? itemOpts() : itemOpts;
+      if (opts.didHide) {
+        opts.didHide(instanceId);
+      }
+      if (mOpts.queue) {
+        _remove(instanceId);
+      }
+      return resolveHide(instanceId);
+    };
+
+    var hidePromise = new Promise(function (resolve) {
+      return resolveHide = resolve;
+    });
+
+    return _extends({}, mOpts, {
+      instanceId: instanceId,
+      opts: itemOpts,
+      show: mOpts.queue ? false : true,
+      showPromise: showPromise,
+      hidePromise: hidePromise,
+      didShow: didShow,
+      didHide: didHide
+    });
+  };
+
+  return {
+
+    count: function count() {
+      return items.length;
+    },
+
+    clear: function clear() {
+      return items.length = 0;
+    },
+
+    show: function show(opts) {
+      var instanceId = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : mOpts.defaultId;
+
+      var item = void 0;
+      if (mOpts.queue) {
+        item = makeItem(opts, instanceId);
+        items.push(item);
+        if (items.length === 1) {
+          next();
+        }
+      } else {
+        var storedItem = findItem(instanceId);
+        item = makeItem(opts, instanceId);
+        if (!storedItem) {
+          items.push(item);
+        } else {
+          replaceItem(instanceId, item);
+        }
+      }
+      return item.showPromise;
+    },
+
+    hide: function hide() {
+      var instanceId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : mOpts.defaultId;
+
+      var item = void 0;
+      if (mOpts.queue) {
+        if (items.length) {
+          item = items[0];
+        }
+      } else {
+        item = findItem(instanceId);
+      }
+      if (item) {
+        item.hide = true;
+        return item.hidePromise;
+      }
+      return Promise.resolve(instanceId);
+    },
+
+    remove: function remove() {
+      var instanceId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : mOpts.defaultId;
+      return _remove(instanceId);
+    },
+
+    pause: function pause() {
+      var instanceId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : mOpts.defaultId;
+      return setPauseState(true, instanceId);
+    },
+
+    unpause: function unpause() {
+      var instanceId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : mOpts.defaultId;
+      return setPauseState(false, instanceId);
+    },
+
+    view: function view() {
+      var candidates = items.filter(function (item) {
+        return item.show;
+      });
+      document.body.classList[candidates.length ? "add" : "remove"](mOpts.bodyShowClass);
+      return !candidates.length ? m(mOpts.placeholder) // placeholder because we cannot return null
+      : m(mOpts.element, candidates.map(function (itemData) {
+        return m(mOpts.instance, _extends({}, itemData, {
+          transitions: mOpts.transitions,
+          key: itemData.key || itemData.instanceId
+        }));
+      }));
+    }
+  };
+};
+
+/*
+Generic show/hide transition module
+*/
+
+// defaults
+var SHOW_DURATION = .220; // default dialog timing
+var HIDE_DURATION = .200; // default dialog timing
+var SHOW_DELAY = 0;
+var HIDE_DELAY = 0;
+var TRANSITION = "both";
+
+// See: transition
+var show = function show(opts) {
+  return transition(opts, "show");
+};
+
+var hide = function hide(opts) {
+  return transition(opts, "hide");
+};
+
+var getTiming = function getTiming(opts, state, showAttr, hideAttr, defaultShowTiming, defaultHideTiming) {
+  var transition = opts.transition || TRANSITION;
+  if (transition === "none") {
+    return 0;
+  } else if (transition === "show" && state === "hide") {
+    return 0;
+  } else if (transition === "hide" && state === "show") {
+    return 0;
+  } else {
+    // both
+    return state === "show" ? opts[showAttr] !== undefined ? opts[showAttr] : defaultShowTiming : opts[hideAttr] !== undefined ? opts[hideAttr] : defaultHideTiming;
+  }
+};
+
+/*
+opts:
+- transition
+- showDuration
+- hideDuration
+
+- state (show, hide)
+*/
+var getDuration = function getDuration(opts, state) {
+  return getTiming(opts, state, "showDuration", "hideDuration", SHOW_DURATION, HIDE_DURATION);
+};
+
+/*
+opts:
+- transition (show, hide, both)
+- showDelay
+- hideDelay
+
+- state (show, hide)
+*/
+var getDelay = function getDelay(opts, state) {
+  return getTiming(opts, state, "showDelay", "hideDelay", SHOW_DELAY, HIDE_DELAY);
+};
+
+/*
+opts:
+- el
+- duration
+- delay
+- showClass
+- beforeShow
+- show
+- hide
+- afterHide
+- showDelay
+- hideDelay
+
+- state (show, hide)
+*/
+var transition = function transition(opts, state) {
+  var el = opts.el;
+  if (!el) {
+    return Promise.resolve();
+  } else {
+    return new Promise(function (resolve) {
+      var transitionDuration = getDuration(opts, state) * 1000;
+      var delay = getDelay(opts, state) * 1000;
+      var style = el.style;
+
+      var beforeTransition = opts.beforeShow && state === "show" ? function () {
+        style.transitionDuration = "0ms";
+        style.transitionDelay = "0ms";
+        opts.beforeShow();
+      } : null;
+
+      var applyTransition = function applyTransition() {
+        style.transitionDuration = transitionDuration + "ms";
+        style.transitionDelay = delay + "ms";
+        if (opts.showClass) {
+          el.classList[state === "show" ? "add" : "remove"](opts.showClass);
+        }
+        if (opts.show && typeof opts.show === "function" && state === "show") {
+          opts.show();
+        }
+        if (opts.hide && typeof opts.hide === "function" && state === "hide") {
+          opts.hide();
+        }
+      };
+
+      var applyAfterTransition = function applyAfterTransition() {
+        if (opts.afterHide && state === "hide") {
+          style.transitionDuration = "0ms";
+          style.transitionDelay = "0ms";
+          opts.afterHide();
+        }
+      };
+
+      var doTransition = function doTransition() {
+        applyTransition();
+        setTimeout(function () {
+          return applyAfterTransition(), resolve();
+        }, transitionDuration + delay);
+      };
+
+      var maybeDelayTransition = function maybeDelayTransition() {
+        if (transitionDuration === 0) {
+          doTransition();
+        } else {
+          setTimeout(doTransition, 0);
+        }
+      };
+
+      if (beforeTransition) {
+        beforeTransition();
+        setTimeout(maybeDelayTransition, 0);
+      } else {
+        maybeDelayTransition();
+      }
+    });
+  }
+};
+
 var r = function r(acc, p) {
   return acc[p] = 1, acc;
 };
@@ -269,4 +596,4 @@ var filterSupportedAttributes = function filterSupportedAttributes(attrs) {
   }, {});
 };
 
-export { variables as defaultVariables, isTouch, touchStartEvent, touchEndEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, filterSupportedAttributes };
+export { variables as defaultVariables, isTouch, touchStartEvent, touchEndEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, multiple, show, hide, filterSupportedAttributes };

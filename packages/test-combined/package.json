@@ -1,0 +1,23 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/js/test.js",
+  "module": "dist/js/test.mjs",
+  "scripts": {
+    "clean": "rm -rf dist/js && mkdir dist/js",
+    "build": "npm run rollup-build",
+    "webpack-build": "../../node_modules/.bin/webpack --config ./scripts/webpack.config.js",
+    "test": "../../node_modules/jest/bin/jest.js tests/**",
+    "test:watch": "watchman watch-del-all && ../../node_modules/jest/bin/jest.js tests/** --watch"
+  },
+  "dependencies": {
+    "mithril": "1.0.1",
+    "mmsvg": "^1.4.0",
+    "polythene": "1",
+    "webfontloader": "^1.6.27"
+  },
+  "devDependencies": {
+    "mmsvg": "^1.4.0"
+  }
+}

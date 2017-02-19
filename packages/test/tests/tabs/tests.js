@@ -308,7 +308,7 @@ export const tests = [
     interactive: true,
     component: {
       oninit: vnode =>
-        vnode.state = {},
+        vnode.state.tab = {},
       view: vnode => [
         m("ul", {
           style: {
@@ -318,13 +318,13 @@ export const tests = [
             overflow: "hidden"
           }
         }, [
-          m("li", `${vnode.state.index}`),
-          m("li", `${JSON.stringify(vnode.state.data)}`)
+          m("li", `${vnode.state.tab.index}`),
+          m("li", `${JSON.stringify(vnode.state.tab.data)}`)
         ]),
         m(component, {
           buttons: threeButtons,
           autofit: true,
-          getState: s => vnode.state = s
+          getState: s => vnode.state.tab = s
         })
       ]
     }

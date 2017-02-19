@@ -213,9 +213,7 @@ var view = function view(vnode) {
 var ripple = {
   theme: customTheme, // accepts (selector, vars)
   oninit: function oninit(vnode) {
-    vnode.state = {
-      animating: false
-    };
+    return vnode.state.animating = false;
   },
   oncreate: initRipple,
   onremove: destroyRipple,

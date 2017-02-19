@@ -329,11 +329,11 @@ var primaryContent = function primaryContent(attrs, children) {
   var element = attrs.element ? attrs.element : attrs.url ? "a" : "div";
   var contentFrontClass = classes.content + " " + classes.contentFront;
   var frontComp = attrs.front ? m("div", { class: contentFrontClass }, attrs.front) : attrs.indent ? m("div", { class: contentFrontClass }) : null;
-
-  return m(element, _extends({}, filterSupportedAttributes(attrs), attrs.url, {
+  var props = _extends({}, filterSupportedAttributes(attrs), attrs.url, attrs.events, {
     class: classes.primary,
     style: null
-  }), [frontComp, m("div", {
+  });
+  return m(element, props, [frontComp, m("div", {
     class: classes.content,
     style: attrs.style
   }, [attrs.content ? attrs.content : children, attrs.title && !attrs.content ? m("div", {

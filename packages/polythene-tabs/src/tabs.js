@@ -199,9 +199,7 @@ const view = vnode => {
         attrs.menu ? classes.isMenu : null,
         attrs.class
       ].join(" "),
-      oninit: () => {
-        subscribe("resize", onResize);
-      },
+      oninit: () => subscribe("resize", onResize),
       oncreate: vnode => {
         state.tabsEl = vnode.dom;
         // A promise can't resolve during the oncreate loop
@@ -321,7 +319,7 @@ export const tabs = {
   oninit: vnode => {
     const registerTabButton = (index, data) => vnode.state.tabs[index] = data;
     const registerScrollButton = (position, dom) => vnode.state.scrollButtons[position] = dom;
-    vnode.state = {
+    vnode.state = Object.assign(vnode.state, {
       tabsEl:                  undefined,
       scrollerEl:              undefined,
       tabs:                    [], // {data, el}
@@ -340,6 +338,6 @@ export const tabs = {
       },
       registerTabButton,
       registerScrollButton
-    };
+    });
   }
 };

@@ -105,10 +105,8 @@ const view = vnode => {
 export const button = {
   theme: customTheme, // accepts (selector, vars)
   oninit: vnode => {
-    vnode.state = {
-      focus: false,
-      mouseover: false
-    };
+    vnode.state.focus = false;
+    vnode.state.mouseover = false;
   },
   view
 };

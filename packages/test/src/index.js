@@ -5,6 +5,7 @@ import { rules as css } from "./styles";
 import testPage from "./page";
 import { tests as buttonTests } from "../tests/button/tests";
 import { tests as checkboxTests } from "../tests/checkbox/tests";
+import { tests as dialogTests } from "../tests/dialog/tests";
 import { tests as fabTests } from "../tests/fab/tests";
 import { tests as iconTests } from "../tests/icon/tests";
 import { tests as iconButtonTests } from "../tests/icon-button/tests";
@@ -37,6 +38,11 @@ const pages = [
     path: "/checkbox",
     name: "Checkbox",
     tests: checkboxTests
+  },
+  {
+    path: "/dialog",
+    name: "Dialog",
+    tests: dialogTests
   },
   {
     path: "/fab",
@@ -118,7 +124,7 @@ const pages = [
 const index = {
   oncreate: () => 
     document.title = "Polythene components",
-  view: () =>
+  view: () => [
     m(css.page, [
       m(css.pageTitle, "Polythene components"),
       m(css.list, pages.map(link => (
@@ -128,6 +134,7 @@ const index = {
         }, link.name))
       )))
     ])
+  ]
 };
 
 m.route.prefix("#");

@@ -5,7 +5,7 @@ https://github.com/rollup/rollup/wiki/jsnext:main
 */
 import { pkg, createConfig } from "./rollup.base.js";
 
-const includeDepencies = !!process.env.DEPS || false; // Use `false` if you are creating a library, or if you are including external script in html
+const includeDepencies = !!parseInt(process.env.DEPS, 10) || false; // Use `false` if you are creating a library, or if you are including external script in html
 
 const baseConfig = createConfig({ includeDepencies });
 const targetConfig = Object.assign({}, baseConfig, {
