@@ -102,6 +102,7 @@ export const tests = [
   {
     name: "Option: animateOnTap (false)",
     interactive: true,
+    exclude: true,
     component,
     attrs: {
       icon: {

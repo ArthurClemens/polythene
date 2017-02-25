@@ -17,6 +17,7 @@ export const tests = [
   {
     name: "Option: constrained (false)",
     interactive: true,
+    exclude: true,
     component,
     attrs: {
       constrained: false
@@ -25,6 +26,7 @@ export const tests = [
   {
     name: "Option: center",
     interactive: true,
+    exclude: true,
     component,
     attrs: {
       center: true
@@ -33,6 +35,7 @@ export const tests = [
   {
     name: "Option: start opacity (0.5)",
     interactive: true,
+    exclude: true,
     component,
     attrs: {
       startOpacity: 0.5
@@ -41,6 +44,7 @@ export const tests = [
   {
     name: "Option: end opacity (0.1)",
     interactive: true,
+    exclude: true,
     component,
     attrs: {
       endOpacity: 0.1
@@ -49,6 +53,7 @@ export const tests = [
   {
     name: "Option: duration (3.0)",
     interactive: true,
+    exclude: true,
     component,
     attrs: {
       duration: 3.0
@@ -57,6 +62,7 @@ export const tests = [
   {
     name: "Option: initial opacityDecayVelocity (0.1)",
     interactive: true,
+    exclude: true,
     component,
     attrs: {
       opacityDecayVelocity: 0.1
@@ -65,6 +71,7 @@ export const tests = [
   {
     name: "Option: disabled",
     interactive: true,
+    exclude: true,
     component,
     attrs: {
       disabled: true
@@ -73,6 +80,7 @@ export const tests = [
   {
     name: "Option: style (color)",
     interactive: true,
+    exclude: true,
     component,
     attrs: {
       startOpacity: 0.7,
@@ -84,6 +92,7 @@ export const tests = [
   {
     name: "Themed (should be red and permanent)",
     interactive: true,
+    exclude: true,
     component,
     attrs: {
       class: "tests-ripple-themed-ripple",
@@ -94,6 +103,7 @@ export const tests = [
   {
     name: "Appended to an element",
     interactive: true,
+    exclude: true,
     component: {
       view: () =>
         m("div",
@@ -111,6 +121,7 @@ export const tests = [
   {
     name: "Option: start (after click)",
     interactive: true,
+    exclude: true,
     component: {
       oninit: vnode =>
         vnode.state.started = 0,
@@ -125,6 +136,7 @@ export const tests = [
   {
     name: "Option: end (after click)",
     interactive: true,
+    exclude: true,
     component: {
       oninit: vnode =>
         vnode.state.ended = 0,
@@ -142,6 +154,7 @@ export const tests = [
   {
     name: "Option: style (white) -- dark theme",
     interactive: true,
+    exclude: true,
     class: "pe-dark-theme",
     component,
     attrs: {

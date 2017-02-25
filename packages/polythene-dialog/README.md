@@ -192,7 +192,7 @@ const dialogOptions = {
 
 ### Fullscreen dialogs
 
-A fullscreen dialog uses [Header Panel](#header-panel) to implement its own header (it ignores `title` and `footer`). Pass a header panel component in the body:
+A fullscreen dialog uses [Header Panel](../polythene-header-panel) to implement its own header (it ignores `title` and `footer`). Pass a header panel component in the body:
 
 ~~~javascript
 const fullscreenDialogOptions = {
@@ -246,10 +246,10 @@ dialog.show(myConfirmationDialogOptions, "confirmation"); // the id makes this d
 | **formOptions** | optional | Options Object | | Form attribute options such as `type` or `enctype` |
 | **title** | optional | String |  | Header title; if omitted, no header will be shown |
 | **body** | optional | Mithril element |  | Body content; if omitted, no body will be shown |
-| **menu** | optional | [Menu](#menu) options object |  | Pass a menu to use the dialog as enhanced (higher) menu |
+| **menu** | optional | [Menu](../polythene-menu) options object |  | Pass a menu to use the dialog as enhanced (higher) menu |
 | **footer** | optional | Mithril element |  | Footer actions, usually an array of buttons |
 | **modal** | optional | Boolean | false | Set to true to create a modal dialog; tapping the backdrop or pressing ESCAPE will not close the dialog |
-| **fullscreen** | optional | Boolean | false | Set to true to make the dialog fullscreen; tapping the backdrop or pressing ESCAPE will not close the dialog; should be done for mobile screens only; `title` and `footer` will be ignored; pass a [header panel](#header-panel) to `body` |
+| **fullscreen** | optional | Boolean | false | Set to true to make the dialog fullscreen; tapping the backdrop or pressing ESCAPE will not close the dialog; should be done for mobile screens only; `title` and `footer` will be ignored; pass a [header panel](../polythene-header-panel) to `body` |
 | **updateContentOnScroll** | Boolean | false | Set to true to "unfreeze" dialog contents during scrolling; for performance this is set to false by default; content *will* be updated when scrolling |
 
 

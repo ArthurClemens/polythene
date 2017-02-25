@@ -73,7 +73,8 @@ const toolbarRow = [
   // buttons and title
 ];
 
-m("div", {
+m("div",
+  {
     style: {
       position: "relative"
     }

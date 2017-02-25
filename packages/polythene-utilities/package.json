@@ -1,6 +1,6 @@
 {
   "name": "polythene-utilities",
-  "version": "1.0.0",
+  "version": "1.0.0-rc.1",
   "description": "",
   "main": "dist/polythene-utilities.js",
   "module": "dist/polythene-utilities.mjs",
@@ -10,7 +10,7 @@
     "build": "npm run rollup"
   },
   "dependencies": {
-    "mithril": "1.0.0-rc.8"
+    "mithril": "1.0.1"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

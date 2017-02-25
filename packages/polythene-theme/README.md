@@ -1,6 +1,6 @@
 # Theme
 
-Polythene is an implementation of Google"s Material Design, but it can also be used with different styling.
+Polythene is an implementation of Google's Material Design, but it can also be used with different styling.
 
 This page describes a number of ways to create customizations.
 
@@ -351,6 +351,20 @@ export const vars = {
 The final step is to let the application read our custom theme file. For this, the path to `polythene-theme` needs to be set to a new file location.
 
 Each bundler has a different method to to this - it is generally called map or alias.
+
+#### Use with Webpack
+
+~~~javascript
+// webpack.config.js
+// ...
+{
+  resolve: {
+    alias: {
+      "polythene-theme": path.resolve(__dirname, "app/custom-theme.js") // when config is in the project root
+    }
+  }
+}
+~~~
 
 #### Use with Rollup
 

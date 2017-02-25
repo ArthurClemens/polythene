@@ -13,34 +13,7 @@ var vars$1 = {
   color_dark: "currentcolor"
 };
 
-var defineProperty = function (obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-};
-
-var _extends = Object.assign || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];
-
-    for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }
-
-  return target;
-};
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var iconSizesPx = function iconSizesPx() {
   var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : vars.unit_icon_size;
@@ -51,7 +24,7 @@ var iconSizesPx = function iconSizesPx() {
 };
 
 var layout = (function (selector, componentVars) {
-  return [defineProperty({}, selector, {
+  return [_defineProperty({}, selector, {
     display: "inline-block",
     verticalAlign: "middle",
     backgroundRepeat: "no-repeat",
@@ -82,8 +55,10 @@ var layout = (function (selector, componentVars) {
   })];
 });
 
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var style = function style(scope, selector, componentVars, tint) {
-  return [defineProperty({}, scope + selector, {
+  return [_defineProperty$1({}, scope + selector, {
     color: componentVars["color_" + tint] || "currentcolor"
   })];
 };
@@ -92,14 +67,18 @@ var color = (function (selector, componentVars) {
   return [style("", selector, componentVars, "light"), style(".pe-dark-theme ", selector, componentVars, "dark")];
 });
 
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var fns = [layout, color];
 var selector = ".pe-icon";
 
 var customTheme = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends({}, vars$1, customVars), fns);
+  return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
 };
 
 styler.generateStyles([selector], vars$1, fns);
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var classes = {
   icon: "pe-icon",

@@ -23,6 +23,7 @@ export const tests = [
   {
     name: "Option: body",
     interactive: true,
+    exclude: true,
     component: {
       view: () => btn({
         body: "Hello"
@@ -32,6 +33,7 @@ export const tests = [
   {
     name: "Promise shown",
     interactive: true,
+    exclude: true,
     component: {
       view: () => promiseShownBtn({
         body: "Hello"
@@ -41,6 +43,7 @@ export const tests = [
   {
     name: "Option: didShow",
     interactive: true,
+    exclude: true,
     component: {
       view: () => btn({
         body: "Hello",
@@ -51,6 +54,7 @@ export const tests = [
   {
     name: "Option: didHide",
     interactive: true,
+    exclude: true,
     component: {
       view: () => btn({
         body: "Hello",
@@ -61,6 +65,7 @@ export const tests = [
   {
     name: "Option: showDelay, hideDelay, showDuration, hideDuration",
     interactive: true,
+    exclude: true,
     component: {
       view: () => btn({
         body: "Hello",
@@ -74,6 +79,7 @@ export const tests = [
   {
     name: "Option: transition (show)",
     interactive: true,
+    exclude: true,
     component: {
       view: () => btn({
         body: "Hello",
@@ -86,6 +92,7 @@ export const tests = [
   {
     name: "Option: transition (hide)",
     interactive: true,
+    exclude: true,
     component: {
       view: () => btn({
         body: "Hello",
@@ -98,6 +105,7 @@ export const tests = [
   {
     name: "Option: no transition",
     interactive: true,
+    exclude: true,
     component: {
       view: () => btn({
         body: m.trust(shortText),
@@ -108,6 +116,7 @@ export const tests = [
   {
     name: "Option: z (0)",
     interactive: true,
+    exclude: true,
     component: {
       view: () => btn({
         body: m.trust(shortText),
@@ -118,6 +127,7 @@ export const tests = [
   {
     name: "Option: z (5)",
     interactive: true,
+    exclude: true,
     component: {
       view: () => btn({
         body: m.trust(shortText),
@@ -128,6 +138,7 @@ export const tests = [
   {
     name: "Option: title and body (long text)",
     interactive: true,
+    exclude: true,
     component: {
       view: () => btn({
         title: "Long dialog with a very long title that surely won't fit here",
@@ -138,6 +149,7 @@ export const tests = [
   {
     name: "Option: modal with backdrop",
     interactive: true,
+    exclude: true,
     component: {
       view: () => btn(Object.assign({}, commonDialogProps, {
         title: "Long dialog with a very long title that surely won't fit here",
@@ -150,6 +162,7 @@ export const tests = [
   {
     name: "Option: fullscreen",
     interactive: true,
+    exclude: true,
     component: {
       view: () => btn(fullscreenOpts)
     }
@@ -157,6 +170,7 @@ export const tests = [
   {
     name: "Fullwidth buttons",
     interactive: true,
+    exclude: true,
     component: {
       view: () => btn(fullWidthOpts)
     }
@@ -164,6 +178,7 @@ export const tests = [
   {
     name: "Option: menu",
     interactive: true,
+    exclude: true,
     component: {
       view: () => btn(menuOpts)
     }
@@ -171,6 +186,7 @@ export const tests = [
   {
     name: "Conditional button states",
     interactive: true,
+    exclude: true,
     component: {
       view: () => btn(formOpts)
     }
@@ -178,6 +194,7 @@ export const tests = [
   {
     name: "Settings dialog",
     interactive: true,
+    exclude: true,
     component: {
       view: () => btn(settingsOpts)
     }
@@ -185,6 +202,7 @@ export const tests = [
   {
     name: "Replace dialog",
     interactive: true,
+    exclude: true,
     component: {
       view: () => btn(replaceOpts)
     }
@@ -194,6 +212,7 @@ export const tests = [
   {
     name: "Option: modal with backdrop (dark theme)",
     interactive: true,
+    exclude: true,
     component: {
       view: () => btn(Object.assign({}, commonDialogProps, {
         title: "Long dialog with a very long title that surely won't fit here",

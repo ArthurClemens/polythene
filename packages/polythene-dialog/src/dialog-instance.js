@@ -166,7 +166,9 @@ const createView = (state, opts) => {
           return;
         }
         if (!state.isTransitioning) {
-          hideDialog(state, opts);
+          hideDialog(state, Object.assign({}, opts, {
+            hideDelay: 0
+          }));
         }
       }
     },

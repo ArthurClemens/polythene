@@ -40,8 +40,8 @@ const myBtn = m(button, {});
 
 v0.2                             |  v1.0
 -------------------------------- | ----------------
-`polythene/common/mixin`         | `polythene-css` - `mixin`
-`polythene/common/webfontloader` | removed; `polythene-material-design` uses the more capable [typekit/webfontloader](https://github.com/typekit/webfontloader)
+`polythene/common/mixin`         | `mixin` from `polythene-css`
+`polythene/common/webfontloader` | `loadFont` from `polythene-utilities`
 `polythene/config`               | `polythene-theme`
 `polythene/theme`                | `polythene-material-design`
 `polythene/layout/theme/theme`   | `polythene-css-classes`

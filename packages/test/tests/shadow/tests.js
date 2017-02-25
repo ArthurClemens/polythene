@@ -44,6 +44,7 @@ export const tests = [
   {
     name: "Interactive option: animated",
     interactive: true,
+    exclude: true,
     component: interactiveTest
   },
   {

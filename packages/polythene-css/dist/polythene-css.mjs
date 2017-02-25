@@ -2,34 +2,9 @@ import { vars } from 'polythene-theme';
 import { prefixPlugin } from 'j2c-plugin-prefix-browser';
 import J2c from 'j2c';
 
-var defineProperty = function (obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-  return obj;
-};
-
-var _extends = Object.assign || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];
-
-    for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }
-
-  return target;
-};
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 // Mixins for j2c
 
@@ -39,7 +14,7 @@ var vendorize = function vendorize(what, prefixes) {
   var vendorsSel = prefixes.map(function (v) {
     return "_" + v + "$";
   }).join("");
-  return defineProperty({}, vendorsSel, what);
+  return _defineProperty({}, vendorsSel, what);
 };
 
 // Centers an item absolutely within relative parent
@@ -414,7 +389,7 @@ var add = function add(id) {
 var remove = function remove(id) {
   if (id) {
     var old = document.getElementById(id);
-    if (old) {
+    if (old && old.parentNode) {
       old.parentNode.removeChild(old);
     }
   }

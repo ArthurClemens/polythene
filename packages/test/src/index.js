@@ -3,6 +3,9 @@ import "polythene-fastclick";
 import "polythene-material-design";
 import { rules as css } from "./styles";
 import testPage from "./page";
+import { list } from "polythene-list";
+import { listTile } from "polythene-list-tile";
+import { toolbar } from "polythene-toolbar";
 import { tests as buttonTests } from "../tests/button/tests";
 import { tests as checkboxTests } from "../tests/checkbox/tests";
 import { tests as dialogTests } from "../tests/dialog/tests";
@@ -11,6 +14,7 @@ import { tests as iconTests } from "../tests/icon/tests";
 import { tests as iconButtonTests } from "../tests/icon-button/tests";
 import { tests as listTests } from "../tests/list/tests";
 import { tests as listTileTests } from "../tests/list-tile/tests";
+import { tests as menuTests } from "../tests/menu/tests";
 import { tests as radioButtonTests } from "../tests/radio-button/tests";
 import { tests as raisedButtonTests } from "../tests/raised-button/tests";
 import { tests as rippleTests } from "../tests/ripple/tests";
@@ -70,6 +74,11 @@ const pages = [
     tests: listTileTests
   },
   {
+    path: "/menu",
+    name: "Menu",
+    tests: menuTests
+  },
+  {
     path: "/radio-button",
     name: "Radio button",
     tests: radioButtonTests
@@ -124,17 +133,30 @@ const pages = [
 const index = {
   oncreate: () => 
     document.title = "Polythene components",
-  view: () => [
-    m(css.page, [
-      m(css.pageTitle, "Polythene components"),
-      m(css.list, pages.map(link => (
-        m(css.listItem, m(css.link, {
-          href: link.path,
-          oncreate: m.route.link
-        }, link.name))
+  view: () =>
+    [
+      m(css.headerRow, m(toolbar,
+        {
+          style: {
+            backgroundColor: "rgba(255,255,255,.93)"
+          }
+        },
+        m("span", "Polythene components")
+      )),
+      m(list, {
+        style: {
+          padding: "88px 8px 24px 8px"
+        }
+      }, pages.map(link => (
+        m(listTile, {
+          title: link.name,
+          url: {
+            href: link.path,
+            oncreate: m.route.link
+          }
+        })
       )))
-    ])
-  ]
+    ]
 };
 
 m.route.prefix("#");

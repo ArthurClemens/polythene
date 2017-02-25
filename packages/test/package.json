@@ -1,26 +1,22 @@
 {
   "name": "test",
-  "version": "1.0.0",
+  "version": "1.0.0-rc.1",
   "description": "",
   "main": "dist/js/test.js",
   "module": "dist/js/test.mjs",
   "scripts": {
-    "clean": "rm -rf dist/js && mkdir dist/js",
-    "build": "npm run rollup-build",
-    "dev": "INDEX=dist/index.html node scripts/wright",
-    "watch": "npm run rollup-watch",
+    "dev": "npm-run-all --parallel dev:watch dev:serve",
+    "dev:serve": "webpack-dev-server --config scripts/webpack.config.dev.js",
+    "dev:watch": "webpack --watch --config scripts/webpack.config.dev.js",
+    "build": "webpack -p --config scripts/webpack.config.js",
+    "serve": "http-server -p 8080 dist/",
     "test": "../../node_modules/jest/bin/jest.js tests/**",
-    "webpack-build": "../../node_modules/.bin/webpack --config ./scripts/webpack.config.js",
-    "rollup-build": "DEPS=1 MODULE_NAME=test ../../node_modules/rollup/bin/rollup -c ./scripts/rollup.umd-with-alias.js",
-    "rollup-watch": "DEPS=1 PORT=8080 WATCH_DIR=./dist/ ../../node_modules/rollup/bin/rollup -c ./scripts/rollup.watch-with-alias.js --watch",
-    "test:watch": "watchman watch-del-all && ../../node_modules/jest/bin/jest.js tests/** --watch"
+    "test:watch": "npm run test -- --watch"
   },
   "dependencies": {
     "fastclick": "^1.0.6",
-    "j2c": "^1.0.0-4",
-    "j2c-plugin-prefix-browser": "^1.0.6",
     "mithril": "1.0.1",
-    "polythene": "1",
+    "mmsvg": "^1.4.0",
     "polythene-button": "1",
     "polythene-checkbox": "1",
     "polythene-core": "1",
@@ -34,6 +30,7 @@
     "polythene-list": "1",
     "polythene-list-tile": "1",
     "polythene-material-design": "1",
+    "polythene-menu": "1",
     "polythene-radio-button": "1",
     "polythene-raised-button": "1",
     "polythene-ripple": "1",
@@ -42,10 +39,12 @@
     "polythene-switch-button": "1",
     "polythene-tabs": "1",
     "polythene-theme": "1",
-    "polythene-toolbar": "1",
-    "webfontloader": "^1.6.27"
+    "polythene-toolbar": "1"
   },
   "devDependencies": {
-    "mmsvg": "^1.4.0"
+    "http-server": "^0.9.0",
+    "npm-run-all": "^4.0.2",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.1"
   }
 }

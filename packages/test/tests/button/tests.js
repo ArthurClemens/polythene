@@ -132,6 +132,7 @@ export const tests = [
   {
     name: "onbeforeupdate",
     interactive: true,
+    exclude: true,
     component: {
       oninit: vnode =>
         vnode.state.updated = 0,
@@ -147,6 +148,7 @@ export const tests = [
   {
     name: "Option: events (onclick)",
     interactive: true,
+    exclude: true,
     component: {
       oninit: vnode =>
         vnode.state.clicked = 0,
@@ -164,6 +166,7 @@ export const tests = [
   {
     name: "Key down (after having focus) results in click",
     interactive: true,
+    exclude: true,
     component: {
       oninit: vnode =>
         vnode.state.clickCount = 0,

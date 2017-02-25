@@ -1,6 +1,6 @@
 import { styler } from 'polythene-css';
 import { vars } from 'polythene-theme';
-import webfont from 'webfontloader';
+import { loadFont } from 'polythene-utilities';
 
 var fontSize = 14;
 
@@ -128,7 +128,7 @@ var reset = [{
   }
 }];
 
-webfont.load({
+loadFont({
   google: {
     families: ["Roboto:400,500,700,400italic:latin"]
   }

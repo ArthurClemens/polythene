@@ -25,40 +25,13 @@ var vars$1 = {
   color_dark_disabled_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled)
 };
 
-var defineProperty = function (obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-};
-
-var _extends = Object.assign || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];
-
-    for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }
-
-  return target;
-};
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var style = function style(scope, selector, componentVars, tint) {
   var normalBorder = componentVars["color_" + tint + "_border"] || "transparent";
   var activeBorder = componentVars["color_" + tint + "_active_border"] || normalBorder;
   var disabledBorder = componentVars["color_" + tint + "_disabled_border"] || normalBorder;
-  return [defineProperty({}, scope + selector, {
+  return [_defineProperty({}, scope + selector, {
     "&, &:link, &:visited": {
       color: componentVars["color_" + tint + "_text"]
     },
@@ -100,7 +73,7 @@ var style = function style(scope, selector, componentVars, tint) {
 var noTouchStyle = function noTouchStyle(scope, selector, componentVars, tint) {
   var normalBorder = componentVars["color_" + tint + "_border"];
   var hoverBorder = componentVars["color_" + tint + "_border"] || normalBorder;
-  return [defineProperty({}, scope + selector + ":hover", {
+  return [_defineProperty({}, scope + selector + ":hover", {
     ":not(.pe-button--selected):not(.pe-button--inactive) .pe-button__wash": {
       backgroundColor: componentVars["color_" + tint + "_hover_background"],
       borderColor: hoverBorder
@@ -113,14 +86,18 @@ var color = (function (selector, componentVars) {
   noTouchStyle("html.pe-no-touch ", selector, componentVars, "light"), noTouchStyle("html.pe-no-touch .pe-dark-theme ", selector, componentVars, "dark")];
 });
 
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var fns = [color];
 var selector = ".pe-button.pe-text-button.pe-raised-button";
 
 var customTheme = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends({}, vars$1, customVars), fns);
+  return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
 };
 
 styler.generateStyles([selector], vars$1, fns);
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var classes = {
   component: "pe-button pe-text-button pe-raised-button"

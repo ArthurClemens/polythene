@@ -129,13 +129,13 @@ If you do choose to use it, add some styles to the container that holds the list
 
 ### List appearance options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
-| ------------- | -------------- | -------- | ----------- | --------------- |
-| **borders** | optional | Boolean | | Set to `true` to add borders to list tiles |
-| **indentedBorders** | optional | Boolean | | Set to `true` to indent the list tile borders; note that list tiles must have option `indent` as well |
-| **hoverable** | optional | Boolean | false | Set to true to show a hover effect on list tiles (non-touch devices) |
-| **selectable** | optional | Boolean | false | Set to true to show a mouse pointer on list tiles (non-touch devices) |
-| **compact**       | optional | Boolean | | Set to `true` to reduce vertical padding of list tiles |
+| **Parameter**       |  **Mandatory** | **Type** | **Default** | **Description** |
+| ------------------- | -------------- | -------- | ----------- | --------------- |
+| **borders**         | optional | Boolean | | Set to `true` to add borders to list tiles |
+| **indentedBorders** | optional | Boolean | | Set to `true` to indent the list tile borders; note that list tiles must have option `indent` as well       |
+| **hoverable**       | optional | Boolean | false | Set to true to show a hover effect on list tiles (non-touch devices) |
+| **selectable**      | optional | Boolean | false | Set to true to show a mouse pointer on list tiles (non-touch devices) |
+| **compact**         | optional | Boolean | | Set to `true` to reduce vertical padding of list tiles |
 
 
 

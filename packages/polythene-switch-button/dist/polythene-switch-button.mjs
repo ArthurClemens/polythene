@@ -5,34 +5,7 @@ import { iconButton, vars as vars$1 } from 'polythene-icon-button';
 import { mixin, styler } from 'polythene-css';
 import { vars as vars$2 } from 'polythene-theme';
 
-var defineProperty = function (obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-};
-
-var _extends = Object.assign || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];
-
-    for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }
-
-  return target;
-};
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var classes$1 = {
   track: "pe-switch-control__track",
@@ -47,7 +20,7 @@ var controlView = function controlView(checked, attrs) {
   var raised = attrs.disabled ? false : attrs.raised !== undefined ? attrs.raised : true;
   return [m("div", {
     class: classes$1.track
-  }), m(iconButton, _extends({}, {
+  }), m(iconButton, _extends$1({}, {
     class: classes$1.thumb,
     content: [m("div", {
       class: classes$1.knob
@@ -62,10 +35,12 @@ var controlView = function controlView(checked, attrs) {
   }, attrs.selectable !== undefined ? { inactive: !attrs.selectable(checked) } : null, attrs.iconButton))];
 };
 
+var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var rgba = vars$2.rgba;
 var hit_area_padding = (vars$2.grid_unit_icon_button - vars$2.unit_icon_size) / 2; // 12
 
-var vars$3 = _extends({}, vars, {
+var vars$3 = _extends$3({}, vars, {
   track_height: 14,
   track_length: 36,
   thumb_size: 20,
@@ -104,6 +79,8 @@ var vars$3 = _extends({}, vars, {
   color_dark_track_disabled_opacity: .3
 
 });
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var transition = function transition(componentVars, properties) {
   var duration = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : componentVars.animation_duration;
@@ -164,7 +141,7 @@ var customSize = function customSize(componentVars, size) {
 };
 
 var layout$1 = (function (selector, componentVars) {
-  return layout(selector, componentVars, "checkbox").concat([defineProperty({}, selector, {
+  return layout(selector, componentVars, "checkbox").concat([_defineProperty({}, selector, {
     " .pe-switch-control__track": [transition(componentVars, "background, opacity"), {
       position: "absolute",
       left: 0
@@ -199,8 +176,10 @@ var layout$1 = (function (selector, componentVars) {
   })]);
 });
 
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var style = function style(scope, selector, componentVars, tint) {
-  return [defineProperty({}, scope + selector, {
+  return [_defineProperty$1({}, scope + selector, {
     ".pe-control--off": {
       " .pe-switch-control__track": {
         opacity: componentVars["color_" + tint + "_track_off_opacity"],
@@ -262,14 +241,18 @@ var color$1 = (function (selector, componentVars) {
   ]);
 });
 
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var fns = [layout$1, color$1];
 var selector = ".pe-control.pe-switch-control";
 
 var customTheme = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends({}, vars$3, customVars), fns);
+  return styler.generateStyles([customSelector, selector], _extends$2({}, vars$3, customVars), fns);
 };
 
 styler.generateStyles([selector], vars$3, fns);
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var classes$$1 = {
   component: "pe-switch-control"

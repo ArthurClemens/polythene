@@ -3,6 +3,7 @@
 * `easing`: Easing functions
 * `scrollTo`: Animated scroll to a position
 * `Timer`: Simple start/stop/pause/resume timer
+* `loadFont`: Wrapper around webfontloader to load web fonts asynchronously
 
 
 
@@ -87,3 +88,18 @@ timer.resume();
 timer.stop();
 ~~~
 
+
+
+### loadFont
+
+Wrapper around [webfontloader](https://github.com/typekit/webfontloader) to load web fonts asynchronously.
+
+This is a simple script; no callback functionality is implemented.
+
+Usage:
+
+~~~javascript
+import { loadFont } from "polythene-utilities";
+loadFont("google", "Roboto:400,500,700,400italic:latin");
+loadFont("google", "Raleway:400,500,600:latin");
+~~~

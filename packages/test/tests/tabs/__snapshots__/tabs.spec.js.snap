@@ -661,7 +661,7 @@ exports[`test Option: menu 1`] = `
         <div class=\"pe-button__focus\"></div>
         <div class=\"pe-tabs__tab-content\">
           <div class=\"pe-button__label\">
-            <span>My Favorites</span>
+            <span>Favs</span>
           </div>
         </div>
       </div></a><a tabindex=\"0\" class=

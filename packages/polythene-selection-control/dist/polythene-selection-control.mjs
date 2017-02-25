@@ -5,34 +5,7 @@ import { iconButton } from 'polythene-icon-button';
 import { vars } from 'polythene-theme';
 import { flex, mixin } from 'polythene-css';
 
-var defineProperty = function (obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-};
-
-var _extends = Object.assign || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];
-
-    for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }
-
-  return target;
-};
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var classes = {
   component: "pe-control",
@@ -155,6 +128,8 @@ var selectionControl = {
   view: view
 };
 
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var classes$1 = {
   box: "pe-control__box",
   button: "pe-control__button",
@@ -166,17 +141,17 @@ var createIcon = function createIcon(onOffType, attrs) {
   return (
     // if attrs.iconOn/Off is passed, use that icon options object and ignore size
     // otherwise create a new object
-    _extends({}, attrs[onOffType] ? attrs[onOffType] : { msvg: attrs.theme[onOffType] }, { class: attrs.class }, attrs.icon, attrs.size ? { type: attrs.size } : null)
+    _extends$1({}, attrs[onOffType] ? attrs[onOffType] : { msvg: attrs.theme[onOffType] }, { class: attrs.class }, attrs.icon, attrs.size ? { type: attrs.size } : null)
   );
 };
 
 var controlView = function controlView(checked, attrs) {
   return m("div", {
     class: classes$1.box
-  }, m(iconButton, _extends({}, {
+  }, m(iconButton, _extends$1({}, {
     element: "div",
     class: classes$1.button,
-    content: [m(icon, createIcon("iconOn", _extends({}, attrs, { class: classes$1.buttonOn }))), m(icon, createIcon("iconOff", _extends({}, attrs, { class: classes$1.buttonOff })))],
+    content: [m(icon, createIcon("iconOn", _extends$1({}, attrs, { class: classes$1.buttonOn }))), m(icon, createIcon("iconOff", _extends$1({}, attrs, { class: classes$1.buttonOff })))],
     ripple: { center: true },
     disabled: attrs.disabled,
     events: attrs.events
@@ -227,10 +202,12 @@ var vars$1 = {
   color_dark_focus_off_opacity: .09
 };
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 // Returns a style function to be used by checkbox and radio-button
 
 var style = function style(scope, selector, componentVars, tint) {
-  return [defineProperty({}, scope + selector, {
+  return [_defineProperty({}, scope + selector, {
     color: componentVars["color_" + tint + "_on"], // override by specifying "color"
 
     " .pe-control__label": {
@@ -280,6 +257,8 @@ var color = (function (selector, componentVars) {
   ];
 });
 
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 // Returns a style function to be used by checkbox and radio-button
 
 var makeSize = function makeSize(componentVars, height) {
@@ -321,13 +300,13 @@ var inactiveButton = function inactiveButton() {
 var layout = (function (selector, componentVars, type) {
   var _selector;
 
-  return [defineProperty({}, selector, (_selector = {
+  return [_defineProperty$1({}, selector, (_selector = {
     display: "inline-block",
     boxSizing: "border-box",
     margin: 0,
     padding: 0
 
-  }, defineProperty(_selector, " input[type=" + type + "].pe-control__input", [mixin.vendorize({
+  }, _defineProperty$1(_selector, " input[type=" + type + "].pe-control__input", [mixin.vendorize({
     appearance: "none"
   }, vars.prefixes_appearance), {
     lineHeight: componentVars.label_height + "px",
@@ -341,7 +320,7 @@ var layout = (function (selector, componentVars, type) {
     opacity: 0,
     border: "none",
     pointerEvents: "none"
-  }]), defineProperty(_selector, " .pe-control__form-label", [flex.layoutHorizontal, flex.layoutCenter, {
+  }]), _defineProperty$1(_selector, " .pe-control__form-label", [flex.layoutHorizontal, flex.layoutCenter, {
     position: "relative",
     cursor: "pointer",
     fontSize: componentVars.label_font_size + "px",
@@ -352,11 +331,11 @@ var layout = (function (selector, componentVars, type) {
     ":focus": {
       outline: 0
     }
-  }]), defineProperty(_selector, ".pe-control--inactive", {
+  }]), _defineProperty$1(_selector, ".pe-control--inactive", {
     " .pe-control__form-label": {
       cursor: "default"
     }
-  }), defineProperty(_selector, " .pe-control__box", {
+  }), _defineProperty$1(_selector, " .pe-control__box", {
     position: "relative",
     display: "inline-block",
     boxSizing: "border-box",
@@ -367,32 +346,32 @@ var layout = (function (selector, componentVars, type) {
     ":focus": {
       outline: 0
     }
-  }), defineProperty(_selector, " .pe-button.pe-control__button", [mixin.defaultTransition("opacity", componentVars.animation_duration), {
+  }), _defineProperty$1(_selector, " .pe-button.pe-control__button", [mixin.defaultTransition("opacity", componentVars.animation_duration), {
     position: "absolute",
     left: -((componentVars.button_size - componentVars.icon_size) / 2) + "px",
     top: -((componentVars.button_size - componentVars.icon_size) / 2) + "px",
     zIndex: 1
-  }]), defineProperty(_selector, ".pe-control--off", {
+  }]), _defineProperty$1(_selector, ".pe-control--off", {
     " .pe-control__button--on": inactiveButton(),
     " .pe-control__button--off": activeButton()
-  }), defineProperty(_selector, ".pe-control--on", {
+  }), _defineProperty$1(_selector, ".pe-control--on", {
     " .pe-control__button--on": activeButton(),
     " .pe-control__button--off": inactiveButton()
-  }), defineProperty(_selector, " .pe-control__label", {
+  }), _defineProperty$1(_selector, " .pe-control__label", {
     paddingLeft: componentVars.label_padding_before + "px",
     paddingRight: componentVars.label_padding_after + "px"
-  }), defineProperty(_selector, ".pe-control--disabled", {
+  }), _defineProperty$1(_selector, ".pe-control--disabled", {
     " .pe-control__form-label": {
       cursor: "auto"
     },
     " .pe-control__button": {
       pointerEvents: "none"
     }
-  }), defineProperty(_selector, " .pe-button__content", {
+  }), _defineProperty$1(_selector, " .pe-button__content", {
     " .pe-icon": {
       position: "absolute"
     }
-  }), defineProperty(_selector, ".pe-control--small", makeSize(componentVars, vars.unit_icon_size_small, vars.unit_icon_size_small)), defineProperty(_selector, ".pe-control--regular", makeSize(componentVars, componentVars.label_height, vars.unit_icon_size)), defineProperty(_selector, ".pe-control--medium", makeSize(componentVars, vars.unit_icon_size_medium, vars.unit_icon_size_medium)), defineProperty(_selector, ".pe-control--large", makeSize(componentVars, vars.unit_icon_size_large, vars.unit_icon_size_large)), _selector))];
+  }), _defineProperty$1(_selector, ".pe-control--small", makeSize(componentVars, vars.unit_icon_size_small, vars.unit_icon_size_small)), _defineProperty$1(_selector, ".pe-control--regular", makeSize(componentVars, componentVars.label_height, vars.unit_icon_size)), _defineProperty$1(_selector, ".pe-control--medium", makeSize(componentVars, vars.unit_icon_size_medium, vars.unit_icon_size_medium)), _defineProperty$1(_selector, ".pe-control--large", makeSize(componentVars, vars.unit_icon_size_large, vars.unit_icon_size_large)), _selector))];
 });
 
 export { selectionControl, classes, controlView, classes$1 as controlViewClasses, vars$1 as vars, color, layout };

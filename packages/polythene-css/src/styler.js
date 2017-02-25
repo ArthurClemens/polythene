@@ -20,7 +20,7 @@ const add = (id, ...styles) => {
 const remove = id => {
   if (id) {
     const old = document.getElementById(id);
-    if (old) {
+    if (old && old.parentNode) {
       old.parentNode.removeChild(old);
     }
   }

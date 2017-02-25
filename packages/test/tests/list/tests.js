@@ -212,6 +212,7 @@ export const tests = [
   {
     name: "Options: header.sticky",
     interactive: true,
+    exclude: true,
     component: {
       view: () => m(".scrollable-list", [0,1,2,3,4].map(() => {
         return m(component, {

@@ -1,23 +1,28 @@
 {
   "name": "test",
-  "version": "1.0.0",
+  "version": "1.0.0-rc.1",
   "description": "",
   "main": "dist/js/test.js",
   "module": "dist/js/test.mjs",
   "scripts": {
-    "clean": "rm -rf dist/js && mkdir dist/js",
-    "build": "npm run rollup-build",
-    "webpack-build": "../../node_modules/.bin/webpack --config ./scripts/webpack.config.js",
+    "dev": "npm-run-all --parallel dev:watch dev:serve",
+    "dev:serve": "webpack-dev-server --config scripts/webpack.config.dev.js",
+    "dev:watch": "webpack --watch --config scripts/webpack.config.dev.js",
+    "build": "webpack -p --config scripts/webpack.config.js",
+    "serve": "http-server -p 8080 dist/",
     "test": "../../node_modules/jest/bin/jest.js tests/**",
-    "test:watch": "watchman watch-del-all && ../../node_modules/jest/bin/jest.js tests/** --watch"
+    "test:watch": "npm run test -- --watch"
   },
   "dependencies": {
+    "fastclick": "^1.0.6",
     "mithril": "1.0.1",
     "mmsvg": "^1.4.0",
-    "polythene": "1",
-    "webfontloader": "^1.6.27"
+    "polythene": "1"
   },
   "devDependencies": {
-    "mmsvg": "^1.4.0"
+    "http-server": "^0.9.0",
+    "npm-run-all": "^4.0.2",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.1"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "polythene-selection-control",
-  "version": "1.0.0",
+  "version": "1.0.0-rc.1",
   "description": "",
   "main": "dist/polythene-selection-control.js",
   "module": "dist/polythene-selection-control.mjs",
@@ -10,7 +10,7 @@
     "build": "npm run rollup"
   },
   "dependencies": {
-    "mithril": "1.0.0-rc.8",
+    "mithril": "1.0.1",
     "polythene-core": "1",
     "polythene-css": "1",
     "polythene-icon": "1",

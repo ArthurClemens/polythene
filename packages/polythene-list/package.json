@@ -1,6 +1,6 @@
 {
   "name": "polythene-list",
-  "version": "1.0.0",
+  "version": "1.0.0-rc.1",
   "description": "",
   "main": "dist/polythene-list.js",
   "module": "dist/polythene-list.mjs",
@@ -10,7 +10,7 @@
     "build": "npm run rollup"
   },
   "dependencies": {
-    "mithril": "1.0.0-rc.8",
+    "mithril": "1.0.1",
     "polythene-core": "1",
     "polythene-css": "1",
     "polythene-list-tile": "1",

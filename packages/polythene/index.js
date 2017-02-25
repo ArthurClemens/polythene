@@ -30,6 +30,8 @@ export { list } from "polythene-list";
 
 export { listTile } from "polythene-list-tile";
 
+export { menu } from "polythene-menu";
+
 export { radioButton } from "polythene-radio-button";
 
 export { raisedButton } from "polythene-raised-button";
@@ -46,7 +48,7 @@ export { tabs } from "polythene-tabs";
 
 export { toolbar } from "polythene-toolbar";
 
-export { easing, scrollTo, Timer } from "polythene-utilities";
+export { easing, scrollTo, Timer, loadFont } from "polythene-utilities";
 
 export { vars } from "polythene-theme";
 

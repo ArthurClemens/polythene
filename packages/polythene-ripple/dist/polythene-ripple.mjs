@@ -9,37 +9,10 @@ var vars$1 = {
   // color_dark:    "inherit"
 };
 
-var defineProperty = function (obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-};
-
-var _extends = Object.assign || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];
-
-    for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }
-
-  return target;
-};
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var layout = (function (selector) {
-  return [defineProperty({}, selector, [mixin.fit(), {
+  return [_defineProperty({}, selector, [mixin.fit(), {
     color: "inherit",
     borderRadius: "inherit",
     pointerEvents: "none",
@@ -69,8 +42,10 @@ var layout = (function (selector) {
   }])];
 });
 
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var style = function style(scope, selector, componentVars, tint) {
-  return [defineProperty({}, scope + selector, {
+  return [_defineProperty$1({}, scope + selector, {
     color: componentVars["color_" + tint] || componentVars["color"] || "inherit"
   })];
 };
@@ -80,14 +55,18 @@ var color = (function (selector, componentVars) {
   ];
 });
 
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var fns = [layout, color];
 var selector = ".pe-ripple";
 
 var customTheme = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends({}, vars$1, customVars), fns);
+  return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
 };
 
 styler.generateStyles([selector], vars$1, fns);
+
+function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var ANIMATION_END_EVENT = animationEndEvent();
 var DEFAULT_START_OPACITY = 0.2;
@@ -125,7 +104,7 @@ var animation = (function (e, el, wavesEl, attrs, classes, endCallback) {
   style.animationName = animationId;
   style.animationTimingFunction = attrs.animationTimingFunction || vars.animation_curve_default;
 
-  var keyframeStyle = [defineProperty({}, "@keyframes " + animationId, {
+  var keyframeStyle = [_defineProperty$2({}, "@keyframes " + animationId, {
     " 0%": {
       transform: "scale(" + startScale + ")",
       "opacity": startOpacity
@@ -157,6 +136,8 @@ var animation = (function (e, el, wavesEl, attrs, classes, endCallback) {
   }
   wavesEl.classList.add(classes.wavesAnimating);
 });
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var classes = {
   component: "pe-ripple",

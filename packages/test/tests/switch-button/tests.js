@@ -147,6 +147,7 @@ export const tests = [
   {
     name: "Option: getState",
     interactive: true,
+    exclude: true,
     component: {
       oninit: vnode =>
         vnode.state.checked = false,
@@ -165,6 +166,7 @@ export const tests = [
   {
     name: "Setting the value from outside",
     interactive: true,
+    exclude: true,
     component: {
       oninit: vnode =>
         vnode.state.checked = false,
@@ -184,6 +186,7 @@ export const tests = [
   {
     name: "Option: events",
     interactive: true,
+    exclude: true,
     component: {
       oninit: vnode =>
         vnode.state.checked = false,

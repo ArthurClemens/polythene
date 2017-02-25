@@ -4,7 +4,7 @@ import { tidy } from "mithril-jest";
 
 export const runSnapshots = tests => (
   tests.forEach(test =>
-    it(test.name, () => {
+    !test.exclude && it(test.name, () => {
       const html = tidy(m(test.component, test.attrs, test.children));
       expect(html).toMatchSnapshot();
     })

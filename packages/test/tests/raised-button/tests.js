@@ -126,6 +126,7 @@ export const tests = [
   {
     name: "Option: events (onclick)",
     interactive: true,
+    exclude: true,
     component: {
       oninit: vnode =>
         vnode.state.clicked = 0,

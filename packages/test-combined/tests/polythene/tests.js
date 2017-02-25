@@ -1,18 +1,18 @@
 import m from "mithril";
-import webfont from "webfontloader";
 import * as polythene from "polythene";
-import { styles as blockStyles, blocks } from "../css-classes/block-styles";
+import { styles as blockStyles, blocks } from "../../../test/tests/css-classes/block-styles";
 import iconStarOutline from "mmsvg/google/msvg/toggle/star-border";
 import gIconMenu from "mmsvg/google/msvg/navigation/menu";
 import gIconAdd from "mmsvg/google/msvg/content/add";
-import { commonDialogProps, longText} from "../dialog/shared";
+import { commonDialogProps, longText} from "./dialog";
+import menuItems from "./menu";
 
 const SVG = m.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z\"/></svg>");
 
 polythene.styler.add("polythene-css-classes", blockStyles);
 
 // Testing the web font loader that we use to load Roboto
-webfont.load({
+polythene.loadFont({
   google: {
     families: ["PT Sans:400"]
   },
@@ -79,11 +79,13 @@ export const tests = [
     name: "Checkbox",
     component: polythene.checkbox,
     attrs: {
-      label: "Label"
+      label: "Label",
+      checked: true
     }
   },
   {
     name: "Dialog",
+    exclude: true,
     component: {
       view: () => m(polythene.raisedButton, {
         label: "Open dialog",
@@ -98,9 +100,7 @@ export const tests = [
     component: polythene.fab,
     attrs: {
       icon: {
-        svg: {
-          content: SVG
-        }
+        svg: { content: SVG }
       }
     }
   },
@@ -110,9 +110,7 @@ export const tests = [
     attrs: {
       class: "tests-polythene-themed-fab",
       icon: {
-        svg: {
-          content: SVG
-        }
+        svg: { content: SVG }
       }
     }
   },
@@ -120,19 +118,18 @@ export const tests = [
     name: "Icon",
     component: polythene.icon,
     attrs: {
-      svg: {
-        content: SVG
-      }
+      svg: { content: SVG }
     }
   },
   {
     name: "Icon Button",
     component: polythene.iconButton,
     attrs: {
+      style: {
+        backgroundColor: "#fff"
+      },
       icon: {
-        svg: {
-          content: SVG
-        }
+        svg: { content: SVG }
       }
     }
   },
@@ -192,6 +189,10 @@ export const tests = [
     }
   },
   {
+    name: "Menu",
+    component: menuItems
+  },
+  {
     name: "Radio button",
     component: {
       view: () => {
@@ -201,7 +202,7 @@ export const tests = [
         };
         return m("div", [
           m(polythene.radioButton, options),
-          m(polythene.radioButton, options)
+          m(polythene.radioButton, Object.assign({}, options, {checked: true}))
         ]);
       }
     }

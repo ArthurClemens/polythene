@@ -1,7 +1,7 @@
 /* Overrides */
 
 .ma3 {
-  margin: 16px;
+  margin: 16px 24px;
 }
 .mv3 {
   margin-top: 16px;
@@ -77,28 +77,21 @@ html {
 .pe-button.bordered-button .pe-button__content {
   border-color: #ddd;
 }
-.tests-polythene .test-ripple .component-result,
 .tests-ripple .component-result,
-.tests-polythene .test-shadow .component-result,
 .tests-shadow .component-result {
   height: 80px;
 }
-.tests-polythene .test-ripple .component-result .pe-ripple,
 .tests-ripple .component-result .pe-ripple {
   background-color: #fff;
 }
 
-.tests-ripple .pe-dark-theme .pe-ripple,
-.tests-polythene .pe-dark-theme .pe-ripple {
+.tests-ripple .pe-dark-theme .pe-ripple {
   background-color: #444;
 }
 
-.tests-polythene .test-list .pe-list:not(.tests-lists-themed-list),
 .tests-list .pe-list:not(.tests-lists-themed-list),
-.tests-polythene .test-list-tile .pe-list-tile,
 .tests-list-tile .pe-list-tile,
-.tests-tabs .pe-tabs,
-.tests-polythene .pe-tabs {
+.tests-tabs .pe-tabs {
   background-color: #fff;
 }
 

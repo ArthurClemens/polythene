@@ -54,37 +54,10 @@ var vars$3 = {
   color_dark_icon: vars$2.color_dark
 };
 
-var defineProperty = function (obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-};
-
-var _extends = Object.assign || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];
-
-    for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }
-
-  return target;
-};
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var layout = (function (selector, componentVars) {
-  return [defineProperty({}, selector, [mixin.vendorize({
+  return [_defineProperty({}, selector, [mixin.vendorize({
     userSelect: "none"
   }, vars.prefixes_user_select), {
     transform: "translate3d(0,0,0)",
@@ -302,8 +275,10 @@ var layout = (function (selector, componentVars) {
   }])];
 });
 
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var style = function style(scope, selector, componentVars, tint) {
-  return [defineProperty({}, scope + selector, {
+  return [_defineProperty$1({}, scope + selector, {
     color: componentVars["color_" + tint],
 
     " .pe-tabs__tab.pe-button--selected": {
@@ -334,6 +309,8 @@ var iconArrowBackward = m.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width
 
 var iconArrowForward = m.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\"/></svg>");
 
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var arrowBackward = {
   msvg: iconArrowBackward
 };
@@ -345,22 +322,24 @@ var fns = [layout, color];
 var selector = ".pe-tabs";
 
 var customTheme = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends({}, vars$3, customVars), fns);
+  return styler.generateStyles([customSelector, selector], _extends$1({}, vars$3, customVars), fns);
 };
 
 styler.generateStyles([selector], vars$3, fns);
+
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var view$1 = function view(vnode) {
   var attrs = vnode.attrs;
   // Let internal onclick function co-exist with passed button option
   attrs.events = attrs.events || {};
   attrs.events.onclick = attrs.events.onclick || function () {};
-  var tabButtonOptions = _extends({}, attrs, {
+  var tabButtonOptions = _extends$2({}, attrs, {
     content: m("div", { class: classes.tabContent }, [attrs.icon ? m(icon, attrs.icon) : null, attrs.label ? m("div", { class: classes.label }, m("span", attrs.label)) : null]),
     class: [classes.tab, attrs.icon && attrs.label ? classes.tabHasIcon : null, attrs.class].join(" "),
     wash: false,
     ripple: true,
-    events: _extends({}, attrs.events, {
+    events: _extends$2({}, attrs.events, {
       onclick: function onclick(e) {
         attrs.onSelect();
         attrs.events.onclick(e);
@@ -397,6 +376,8 @@ var view$2 = function view(vnode) {
 var scrollButton = {
   view: view$2
 };
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var classes = {
   component: "pe-tabs",
@@ -483,18 +464,16 @@ var scrollToTab = function scrollToTab(state, tabIndex) {
   var left = Math.min(tabLeft, maxScroll);
   var currentLeft = scroller.scrollLeft;
   if (currentLeft !== left) {
-    (function () {
-      var duration = Math.abs(currentLeft - left) / vars$3.tabs_scroll_speed;
-      var delaySeconds = vars$3.tabs_scroll_delay || 0;
-      setTimeout(function () {
-        scrollTo({
-          element: scroller,
-          to: left,
-          duration: Math.max(vars$3.tabs_scroll_min_duration, duration),
-          direction: "horizontal"
-        });
-      }, delaySeconds * 1000);
-    })();
+    var duration = Math.abs(currentLeft - left) / vars$3.tabs_scroll_speed;
+    var delaySeconds = vars$3.tabs_scroll_delay || 0;
+    setTimeout(function () {
+      scrollTo({
+        element: scroller,
+        to: left,
+        duration: Math.max(vars$3.tabs_scroll_min_duration, duration),
+        direction: "horizontal"
+      });
+    }, delaySeconds * 1000);
   }
 };
 
@@ -575,15 +554,13 @@ var view = function view(vnode) {
       // The Mithril draw loop is synchronous - there is no delay between one this oncreate and the tab button's oncreate
       whenCreateDone().then(function () {
         if (attrs.largestWidth) {
-          (function () {
-            var widths = state.tabs.map(function (tabData) {
-              return tabData.el.getBoundingClientRect().width;
-            });
-            var largest = widths.sort(sortByLargestWidth)[0];
-            state.tabs.forEach(function (tabData) {
-              return tabData.el.style.width = largest + "px";
-            });
-          })();
+          var widths = state.tabs.map(function (tabData) {
+            return tabData.el.getBoundingClientRect().width;
+          });
+          var largest = widths.sort(sortByLargestWidth)[0];
+          state.tabs.forEach(function (tabData) {
+            return tabData.el.style.width = largest + "px";
+          });
         }
         // Align first scrollable tab to title
         if (attrs.scrollable) {

@@ -1,0 +1,224 @@
+import m from "mithril";
+import { shadow } from "polythene-shadow";
+import { filterSupportedAttributes, subscribe, unsubscribe, show, hide } from "polythene-core";
+import { customTheme } from "./theme";
+
+const classes = {
+  component:   "pe-menu",
+  content:     "pe-menu__content",
+  placeholder: "pe-menu__placeholder",
+  target:      "pe-menu__target",
+  visible:     "pe-menu--visible",
+  permanent:   "pe-menu--permanent",
+  width_n:     "pe-menu--width-",
+  width_auto:  "pe-menu--width-auto",
+
+  // lookup
+  listTile:         "pe-list-tile",
+  selectedListTile: "pe-list-tile--selected"
+};
+
+const SHADOW_Z         = 1;
+const OFFSET_V         = -8;
+const DEFAULT_OFFSET_H = 16;
+const MIN_SIZE         = 1.5;
+
+const positionMenu = (state, opts) => {
+  if (!opts.target) {
+    return;
+  }
+  const targetEl = document.querySelector("#" + opts.target);
+  if (!targetEl) {
+    return;
+  }
+  const offsetH = (opts.offset !== undefined) ? opts.offset : DEFAULT_OFFSET_H;
+  const menuEl = state.el;
+  if (!menuEl) {
+    return;
+  }
+  const contentEl = state.el.querySelector("." + classes.content);
+  const origin = opts.origin || "top-left";
+  const reposition = opts.reposition === false ? false : true;
+  let positionOffset = 0;
+  if (reposition) {
+    const firstItem = contentEl.querySelectorAll("." + classes.listTile)[0];
+    const selectedItem = contentEl.querySelector("." + classes.selectedListTile);
+    if (firstItem && selectedItem) {
+      // calculate v position: menu should shift upward relative to the first item
+      const firstItemRect = firstItem.getBoundingClientRect();
+      const selectedItemRect = selectedItem.getBoundingClientRect();
+      positionOffset = selectedItemRect.top - firstItemRect.top;
+    }
+    // align to middle of target
+    const alignEl = selectedItem || firstItem;
+    const alignRect = alignEl.getBoundingClientRect();
+    const targetRect = targetEl.getBoundingClientRect();
+    const heightDiff = alignRect.height - targetRect.height;
+    positionOffset += heightDiff / 2;
+  }
+  const targetRect = targetEl.getBoundingClientRect();
+  if (menuEl.parentNode) {
+    const parentRect = menuEl.parentNode.getBoundingClientRect();
+    const alignLeft =   () => menuEl.style.left = targetRect.left - parentRect.left + offsetH + "px";
+    const alignRight =  () => menuEl.style.right = targetRect.right - parentRect.right + offsetH + "px";
+    const alignTop =    () => menuEl.style.top = targetRect.top - parentRect.top - positionOffset + OFFSET_V + "px";
+    const alignBottom = () => menuEl.style.bottom = targetRect.bottom - parentRect.bottom - positionOffset + "px";
+    const alignFn = {
+      "top-left":       () => alignTop() && alignLeft(),
+      "top-right":      () => alignTop() && alignRight(),
+      "bottom-left":    () => alignBottom() && alignLeft(),
+      "bottom-right":   () => alignBottom() && alignRight()
+    };
+    alignFn[origin].call();
+  }
+};
+
+const showMenu = (state, opts) => {
+  state.isTransitioning = true;
+  return show(Object.assign({},
+    opts, {
+      el: state.el,
+      showClass: classes.visible
+    }
+  )).then(() => {
+    state.isTransitioning = false;
+    state.visible = true;
+    if (opts.didShow) {
+      opts.didShow(opts.id);
+    }
+  });
+};
+
+const hideMenu = (state, opts) => {
+  state.isTransitioning = true;
+  return hide(Object.assign({},
+    opts, {
+      el: state.el,
+      showClass: classes.visible
+    }
+  )).then(() => {
+    state.isTransitioning = false;
+    state.visible = false;
+    if (opts.didHide) {
+      opts.didHide(opts.id);
+    }
+    m.redraw(); // removes remainder of drawn component
+  });
+};
+
+const unifySize = (size) => {
+  return (size < MIN_SIZE) ? MIN_SIZE : size;
+};
+
+const widthClass = (size) => {
+  const sizeStr = size.toString().replace(".", "-");
+  return classes.width_n + sizeStr;
+};
+
+const createView = (state, opts) => {
+  const listenEl = document.body;
+
+  const activateDismissTap = () => {
+    listenEl.addEventListener("click", handleDismissTap);
+  };
+
+  const deActivateDismissTap = () => {
+    listenEl.removeEventListener("click", handleDismissTap);
+  };
+
+  const handleDismissTap = (e) => {
+    if (e.target === state.el) {
+      return;
+    }
+    deActivateDismissTap();
+    if (e.defaultPrevented) {
+      // clicked on .pe-menu__content
+      hideMenu(state, opts);
+    } else {
+      hideMenu(state, Object.assign({}, opts, {
+        hideDelay: 0
+      }));
+    }
+  };
+
+  const update = () => {
+    positionMenu(state, opts);
+    m.redraw();
+  };
+
+  const handleEscape = e => {
+    if (e.which === 27) {
+      hideMenu(state, Object.assign({}, opts, {
+        hideDelay: 0
+      }));
+    }
+  };
+
+  const element = opts.element || "div";
+  const props = Object.assign({}, 
+    filterSupportedAttributes(opts),
+    {
+      class: [
+        classes.component,
+        opts.permanent ? classes.permanent : null,
+        opts.target ? classes.target : "layout center-center",
+        opts.size ? widthClass(unifySize(opts.size)) : null,
+        opts.class
+      ].join(" "),
+      oncreate: ({dom}) => {
+        state.el = dom;
+        if (!opts.permanent) {
+          subscribe("resize", update);
+          subscribe("keydown", handleEscape);
+          setTimeout(() => {
+            activateDismissTap();
+            showMenu(state, opts);
+          }, 0);
+        }
+        positionMenu(state, opts);
+      },
+      onremove: () => {
+        unsubscribe("resize", update);
+        unsubscribe("keydown", handleEscape);
+        if (!opts.permanent) {
+          deActivateDismissTap();
+        }
+      }
+    }
+  );
+  const content = m("div", {
+    class: classes.content,
+    onclick: e => e.preventDefault()
+  }, [
+    m(shadow, {
+      z: state.z,
+      animated: true
+    }),
+    opts.content ? opts.content : null
+  ]);
+  return m(element, props, [opts.before, content, opts.after]);
+};
+
+export const menu = {
+  theme: customTheme, // accepts (selector, vars)
+  oninit: vnode => {
+    const attrs = vnode.attrs;
+    vnode.state = Object.assign(vnode.state, {
+      z: attrs.z !== undefined ? attrs.z : SHADOW_Z,
+      el: null,
+      isTransitioning: false,
+      visible: attrs.permanent || false
+    });
+  },
+  view: ({state, attrs}) => {
+    if (attrs.show) {
+      state.visible = true;
+    }
+    return state.visible
+      ? createView(state, attrs)
+      : m("span", {
+        class: classes.placeholder
+      });
+  }
+};
+

@@ -32,6 +32,12 @@ const threeButtons = [
   { label: "Saved" }
 ];
 
+const menuButtons = [
+  { label: "New" },
+  { label: "Favs" },
+  { label: "Saved" }
+];
+
 const longLabels = [
   { label: "New" },
   { label: "A very long label that does not fit" },
@@ -218,7 +224,7 @@ export const tests = [
           }, [1,2,3,4,5].map(() => m("p", "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."))
           ),
           m(component, {
-            buttons: threeButtons,
+            buttons: menuButtons,
             menu: true,
             autofit: true,
             hideIndicator: true,
@@ -306,6 +312,7 @@ export const tests = [
   {
     name: "Option: getState",
     interactive: true,
+    exclude: true,
     component: {
       oninit: vnode =>
         vnode.state.tab = {},

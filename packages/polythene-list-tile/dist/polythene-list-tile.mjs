@@ -65,34 +65,7 @@ var vars$1 = {
   color_dark_background_selected: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover)
 };
 
-var defineProperty = function (obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-};
-
-var _extends = Object.assign || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];
-
-    for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }
-
-  return target;
-};
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var paddingH = function paddingH(h) {
   return {
@@ -109,7 +82,7 @@ var paddingV = function paddingV(top, bottom) {
 };
 
 var layout = (function (selector, componentVars) {
-  return [defineProperty({}, selector, [flex.layout, {
+  return [_defineProperty({}, selector, [flex.layout, {
     position: "relative",
     overflow: "hidden",
 
@@ -247,8 +220,10 @@ var layout = (function (selector, componentVars) {
   }])];
 });
 
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var style = function style(scope, selector, componentVars, tint) {
-  return [defineProperty({}, scope + selector, {
+  return [_defineProperty$1({}, scope + selector, {
     color: componentVars["color_" + tint + "_title"],
     backgroundColor: componentVars["color_" + tint + "_background"],
 
@@ -282,9 +257,9 @@ var style = function style(scope, selector, componentVars, tint) {
 };
 
 var noTouchStyle = function noTouchStyle(scope, selector, componentVars, tint) {
-  return [defineProperty({}, scope + selector + ":hover", {
+  return [_defineProperty$1({}, scope + selector + ":hover", {
     ":not(.pe-list__header):not(.pe-list-tile--disabled)": {
-      " .pe-list-tile__primary, pe-list-tile__secondary": {
+      " .pe-list-tile__primary, .pe-list-tile__secondary": {
         backgroundColor: componentVars["color_" + tint + "_background_hover"]
       }
     }
@@ -296,14 +271,18 @@ var color = (function (selector, componentVars) {
   noTouchStyle("html.pe-no-touch .pe-list-tile--hoverable", selector, componentVars, "light"), noTouchStyle("html.pe-no-touch .pe-dark-theme .pe-list-tile--hoverable", selector, componentVars, "dark"), noTouchStyle("html.pe-no-touch .pe-list--hoverable ", selector, componentVars, "light"), noTouchStyle("html.pe-no-touch .pe-dark-theme .pe-list--hoverable ", selector, componentVars, "dark")];
 });
 
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var fns = [layout, color];
 var selector = ".pe-list-tile";
 
 var customTheme = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends({}, vars$1, customVars), fns);
+  return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
 };
 
 styler.generateStyles([selector], vars$1, fns);
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var classes = {
   component: "pe-list-tile",

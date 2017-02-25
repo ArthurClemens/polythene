@@ -71,7 +71,7 @@ exports[`test CSS Classes: blocks should be justified horizontally 1`] = `
 
 exports[`test Checkbox 1`] = `
 "<div class=
-\"pe-control pe-checkbox-control pe-control--off pe-control--regular\">
+\"pe-control pe-checkbox-control pe-control--on pe-control--regular\">
 <input name=\"\" type=\"checkbox\" tabindex=\"-1\" class=
 \"pe-control__input\"><label class=\"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
@@ -126,27 +126,6 @@ exports[`test Checkbox 1`] = `
     <label class=\"pe-control__form-label\">Label</label>
   </div>
 </div>
-"
-`;
-
-exports[`test Dialog 1`] = `
-"<a tabindex=\"0\" class=\"pe-button pe-text-button pe-raised-button\">
-<div class=\"pe-button__content\">
-  <div class=\"pe-shadow pe-shadow--animated\">
-    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
-  </div>
-  <div class=\"pe-ripple pe-ripple--constrained\">
-    <div class=\"pe-ripple__mask\">
-      <div class=\"pe-ripple__waves\"></div>
-    </div>
-  </div>
-  <div class=\"pe-button__wash\"></div>
-  <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button__label\">
-    Open dialog
-  </div>
-</div></a>
 "
 `;
 
@@ -226,7 +205,8 @@ exports[`test Icon 1`] = `
 
 exports[`test Icon Button 1`] = `
 "<a tabindex=\"0\" class=\"pe-button pe-icon-button\">
-<div class=\"pe-button__content\">
+<div style=\"background-color: rgb(255, 255, 255);\" class=
+\"pe-button__content\">
   <div class=\"pe-ripple pe-ripple--constrained\">
     <div class=\"pe-ripple__mask\">
       <div class=\"pe-ripple__waves\"></div>
@@ -340,6 +320,133 @@ exports[`test List Tile 1`] = `
 "
 `;
 
+exports[`test Menu 1`] = `
+"<div class=
+\"pe-menu pe-menu--permanent layout center-center pe-menu--width-5\">
+  <div class=\"pe-menu__content\">
+    <div class=\"pe-shadow pe-shadow--animated\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+    </div>
+    <div class=\"pe-list pe-list--hoverable pe-list--compact\">
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Bold
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-list-tile__secondary\">
+          <div class=\"pe-list-tile__content\">
+            ⌘B
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Italic
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-list-tile__secondary\">
+          <div class=\"pe-list-tile__content\">
+            ⌘I
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Underline
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-list-tile__secondary\">
+          <div class=\"pe-list-tile__content\">
+            ⌘U
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Strikethrough
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-list-tile__secondary\">
+          <div class=\"pe-list-tile__content\">
+            Alt+Shift+5
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Superscript
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-list-tile__secondary\">
+          <div class=\"pe-list-tile__content\">
+            ⌘.
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Subscript
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-list-tile__secondary\">
+          <div class=\"pe-list-tile__content\">
+            ⌘,
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class=\"pe-list pe-list--hoverable pe-list--compact\">
+      <div class=\"pe-list-tile pe-list-tile--disabled\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Clear formatting
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-list-tile__secondary\">
+          <div class=\"pe-list-tile__content\">
+            ⌘/
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Custom spacing
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-list-tile__secondary\">
+          <div class=\"pe-list-tile__content\"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
 exports[`test Radio button 1`] = `
 "<div>
   <div class=
@@ -400,15 +507,15 @@ exports[`test Radio button 1`] = `
     </div>
   </div>
   <div class=
-  \"pe-control pe-radio-control pe-control--off pe-control--regular\">
+  \"pe-control pe-radio-control pe-control--on pe-control--inactive pe-control--regular\">
   <input name=\"radio\" type=\"radio\" tabindex=\"-1\" class=
   \"pe-control__input\"><label class=
   \"pe-control__form-label\"></label>
     <div class=\"pe-control__box\">
       <label class=\"pe-control__form-label\"></label>
-      <div tabindex=\"0\" class=
-      \"pe-button pe-icon-button pe-control__button\">
-        <label class=\"pe-control__form-label\"></label>
+      <div tabindex=\"-1\" class=
+      \"pe-button pe-icon-button pe-button--inactive pe-control__button\">
+      <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-button__content\">
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-ripple pe-ripple--constrained\">

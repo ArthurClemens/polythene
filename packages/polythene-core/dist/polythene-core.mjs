@@ -133,7 +133,7 @@ var variables = {
   env_desktop: window.innerWidth >= 1024,
 
   // z-index
-  z_menu: 1000,
+  z_menu: 1,
   z_header_container: 2000,
   z_fixed_header_container: 3000,
   z_notification: 4000,
@@ -231,19 +231,7 @@ var animationEndEvent = function animationEndEvent() {
   }
 };
 
-var _extends = Object.assign || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];
-
-    for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }
-
-  return target;
-};
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 /*
 Helper module to manage multiple items of the same component type.
@@ -570,6 +558,8 @@ var transition = function transition(opts, state) {
   }
 };
 
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var r = function r(acc, p) {
   return acc[p] = 1, acc;
 };
@@ -590,7 +580,7 @@ var defaultAttrs = [
 var filterSupportedAttributes = function filterSupportedAttributes(attrs) {
   var componentAttrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
 
-  var supported = _extends({}, defaultAttrs, componentAttrs.reduce(r, {}));
+  var supported = _extends$1({}, defaultAttrs, componentAttrs.reduce(r, {}));
   return Object.keys(attrs).reduce(function (acc, key) {
     return supported[key] ? acc[key] = attrs[key] : null, acc;
   }, {});

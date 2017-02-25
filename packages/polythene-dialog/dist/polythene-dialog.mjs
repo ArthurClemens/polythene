@@ -26,41 +26,14 @@ var vars$1 = {
   color_dark_backdrop_background: "rgba(0, 0, 0, .5)"
 };
 
-var defineProperty = function (obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-};
-
-var _extends = Object.assign || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];
-
-    for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }
-
-  return target;
-};
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var lineHeightTitle = 24;
 
 var layout = (function (selector, componentVars) {
   var _ref;
 
-  return [(_ref = {}, defineProperty(_ref, selector, [flex.layoutCenterCenter, {
+  return [(_ref = {}, _defineProperty(_ref, selector, [flex.layoutCenterCenter, {
     transitionTimingFunction: "ease-out",
     transitionProperty: "opacity",
     // transition-duration set in js
@@ -185,7 +158,7 @@ var layout = (function (selector, componentVars) {
         padding: 0
       }
     }]
-  }]), defineProperty(_ref, " body.pe-dialog--open", {
+  }]), _defineProperty(_ref, " body.pe-dialog--open", {
     overflow: "hidden",
     left: 0,
     "-webkit-overflow-scrolling": "touch",
@@ -194,8 +167,10 @@ var layout = (function (selector, componentVars) {
   }), _ref)];
 });
 
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var style = function style(scope, selector, componentVars, tint) {
-  return [defineProperty({}, scope + selector, {
+  return [_defineProperty$1({}, scope + selector, {
     "&.pe-dialog--backdrop": {
       "background-color": componentVars["color_" + tint + "_backdrop_background"]
     },
@@ -222,14 +197,18 @@ var color = (function (selector, componentVars) {
   style(".pe-dark-theme ", selector, componentVars, "dark")];
 });
 
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var fns = [layout, color];
 var selector = ".pe-dialog";
 
 var customTheme = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends({}, vars$1, customVars), fns);
+  return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
 };
 
 styler.generateStyles([selector], vars$1, fns);
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var classes = {
   component: "pe-dialog",
@@ -387,7 +366,9 @@ var createView = function createView(state, opts) {
         return;
       }
       if (!state.isTransitioning) {
-        hideDialog(state, opts);
+        hideDialog(state, _extends({}, opts, {
+          hideDelay: 0
+        }));
       }
     }
   }, opts.formOptions ? opts.formOptions : null);

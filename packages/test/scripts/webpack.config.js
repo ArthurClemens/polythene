@@ -1,49 +1,49 @@
 /* global __dirname */
-
 const path = require("path");
-const webpack = require("../../../node_modules/webpack");
-const BabiliPlugin = require("../../../node_modules/babili-webpack-plugin");
+// const webpack = require("webpack");
 
 module.exports = {
+
+  context: path.resolve(__dirname, "../src"), 
+
   entry: {
-    main: path.resolve(__dirname, "../index.js"),
+    index: "../index.js",
     // vendor: ["mithril"]
   },
-  target: "web",
+
+  resolve: {
+    alias: {
+      "polythene-theme": path.resolve(__dirname, "../tests/theme/theme.js")
+    }
+  },
+
+  externals: {
+    mithril: "m"
+  },
+
   output: {
-    path: path.join(__dirname, "../dist/js"),
+    path: path.resolve(__dirname, "../dist/js"),
     filename: "[name].js"
   },
-  externals: {
-    "mithril": "m"
+
+  module: {
+    rules: [
+      {
+        test: /\.js$/, // Check for all js files
+        exclude: /node_modules/,
+        use: [{
+          loader: "babel-loader"
+        }]
+      }
+    ]
   },
-  devtool: "source-map",
+
   plugins: [
-    new BabiliPlugin(),
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
     // new webpack.optimize.CommonsChunkPlugin({
     //   name: "vendor"
-    // })
+    // }),
   ],
-  module: {
-    noParse: [/mithril/],
-    loaders: [
-      {
-        test: /\.js$/,
-        exclude: /(node_modules)/,
-        loader: "babel-loader",
-        options: {
-          // cacheDirectory: true,
-          presets: ["es2015"],
-          plugins: [
-            "transform-runtime",
-            // "external-helpers",
-            "transform-object-rest-spread",
-            "transform-object-assign"
-          ]
-        }
-      }
-    ],
-  }
+
+  devtool: "source-map"
+
 };

@@ -1,6 +1,6 @@
-import webfont from "webfontloader";
+import { loadFont } from "polythene-utilities";
 
-webfont.load({
+loadFont({
   google: {
     families: ["Roboto:400,500,700,400italic:latin"]
   }

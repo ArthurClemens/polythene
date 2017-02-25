@@ -1,6 +1,6 @@
 {
   "name": "polythene-tabs",
-  "version": "1.0.0",
+  "version": "1.0.0-rc.1",
   "description": "",
   "main": "dist/polythene-tabs.js",
   "module": "dist/polythene-tabs.mjs",
@@ -10,7 +10,7 @@
     "build": "npm run rollup"
   },
   "dependencies": {
-    "mithril": "1.0.0-rc.8",
+    "mithril": "1.0.1",
     "polythene-button": "1",
     "polythene-core": "1",
     "polythene-css": "1",

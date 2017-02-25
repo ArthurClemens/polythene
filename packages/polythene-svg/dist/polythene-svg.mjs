@@ -7,38 +7,11 @@ var vars = {
   color_dark: "currentcolor"
 };
 
-var defineProperty = function (obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-};
-
-var _extends = Object.assign || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];
-
-    for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }
-
-  return target;
-};
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var style = function style(scope, selector, componentVars, tint) {
   var color = componentVars["color_" + tint] || "currentcolor";
-  return [defineProperty({}, scope + selector, {
+  return [_defineProperty({}, scope + selector, {
     color: "inherit",
 
     " svg": {
@@ -57,14 +30,18 @@ var color = (function (selector, componentVars) {
   return [style("", selector, componentVars, "light"), style(".pe-dark-theme ", selector, componentVars, "dark")];
 });
 
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var fns = [color];
 var selector = ".pe-svg";
 
 var customTheme = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends({}, vars, customVars), fns);
+  return styler.generateStyles([customSelector, selector], _extends$1({}, vars, customVars), fns);
 };
 
 styler.generateStyles([selector], vars, fns);
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var classes = {
   component: "pe-svg"

@@ -19,34 +19,7 @@ var vars$1 = {
   color_dark_background: "inherit"
 };
 
-var defineProperty = function (obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-};
-
-var _extends = Object.assign || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];
-
-    for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }
-
-  return target;
-};
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var borderStyle = function borderStyle(componentVars) {
   return mixin.hairline("border-bottom"), {
@@ -56,7 +29,7 @@ var borderStyle = function borderStyle(componentVars) {
 };
 
 var layout = (function (selector, componentVars) {
-  return [defineProperty({}, selector, {
+  return [_defineProperty({}, selector, {
     padding: componentVars.padding + "px 0",
 
     ".pe-list--header": {
@@ -92,10 +65,12 @@ var layout = (function (selector, componentVars) {
   })];
 });
 
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var style = function style(scope, selector, componentVars, tint) {
   var _ref;
 
-  return [(_ref = {}, defineProperty(_ref, scope + selector, {
+  return [(_ref = {}, _defineProperty$1(_ref, scope + selector, {
     backgroundColor: componentVars["color_" + tint + "_background"],
 
     ".pe-list--borders": {
@@ -113,7 +88,7 @@ var style = function style(scope, selector, componentVars, tint) {
         }
       }
     }
-  }), defineProperty(_ref, " .pe-list + .pe-list", {
+  }), _defineProperty$1(_ref, " .pe-list + .pe-list", {
     borderColor: componentVars["color_" + tint + "_border"]
   }), _ref)];
 };
@@ -122,14 +97,18 @@ var color = (function (selector, componentVars) {
   return [style("", selector, componentVars, "light"), style(".pe-dark-theme ", selector, componentVars, "dark")];
 });
 
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var fns = [layout, color];
 var selector = ".pe-list";
 
 var customTheme = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends({}, vars$1, customVars), fns);
+  return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
 };
 
 styler.generateStyles([selector], vars$1, fns);
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var classes = {
   component: "pe-list",

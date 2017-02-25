@@ -1,0 +1,599 @@
+exports[`test Menu items 1`] = `
+"<div class=
+\"pe-menu pe-menu--permanent layout center-center pe-menu--width-5\">
+  <div class=\"pe-menu__content\">
+    <div class=\"pe-shadow pe-shadow--animated\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+    </div>
+    <div class=\"pe-list pe-list--hoverable pe-list--compact\">
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Bold
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-list-tile__secondary\">
+          <div class=\"pe-list-tile__content\">
+            ⌘B
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Italic
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-list-tile__secondary\">
+          <div class=\"pe-list-tile__content\">
+            ⌘I
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Underline
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-list-tile__secondary\">
+          <div class=\"pe-list-tile__content\">
+            ⌘U
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Strikethrough
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-list-tile__secondary\">
+          <div class=\"pe-list-tile__content\">
+            Alt+Shift+5
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Superscript
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-list-tile__secondary\">
+          <div class=\"pe-list-tile__content\">
+            ⌘.
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Subscript
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-list-tile__secondary\">
+          <div class=\"pe-list-tile__content\">
+            ⌘,
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class=\"pe-list pe-list--hoverable pe-list--compact\">
+      <div class=\"pe-list-tile pe-list-tile--disabled\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Clear formatting
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-list-tile__secondary\">
+          <div class=\"pe-list-tile__content\">
+            ⌘/
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Custom spacing
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-list-tile__secondary\">
+          <div class=\"pe-list-tile__content\"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: size 1`] = `
+"<div class=
+\"pe-menu pe-menu--permanent layout center-center pe-menu--width-1-5\">
+<div class=\"pe-menu__content\">
+    <div class=\"pe-shadow pe-shadow--animated\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+    </div>
+    <div class=\"pe-list pe-list--header pe-list--compact\">
+      <div class=\"pe-list-tile pe-list__header\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              1.5
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Yes
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              No
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Maybe
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class=
+\"pe-menu pe-menu--permanent layout center-center pe-menu--width-2\">
+  <div class=\"pe-menu__content\">
+    <div class=\"pe-shadow pe-shadow--animated\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+    </div>
+    <div class=\"pe-list pe-list--header pe-list--compact\">
+      <div class=\"pe-list-tile pe-list__header\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              2
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Copy
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Paste
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Undo
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class=
+\"pe-menu pe-menu--permanent layout center-center pe-menu--width-3\">
+  <div class=\"pe-menu__content\">
+    <div class=\"pe-shadow pe-shadow--animated\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+    </div>
+    <div class=\"pe-list pe-list--header pe-list--compact\">
+      <div class=\"pe-list-tile pe-list__header\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              3
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Home
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Back
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Recently viewed
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class=
+\"pe-menu pe-menu--permanent layout center-center pe-menu--width-4\">
+  <div class=\"pe-menu__content\">
+    <div class=\"pe-shadow pe-shadow--animated\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+    </div>
+    <div class=\"pe-list pe-list--header pe-list--compact\">
+      <div class=\"pe-list-tile pe-list__header\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              4
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Paragraph styles
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Line spacing
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Numbered list
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class=
+\"pe-menu pe-menu--permanent layout center-center pe-menu--width-5\">
+  <div class=\"pe-menu__content\">
+    <div class=\"pe-shadow pe-shadow--animated\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+    </div>
+    <div class=\"pe-list pe-list--header pe-list--compact\">
+      <div class=\"pe-list-tile pe-list__header\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              5
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Add space before paragraph
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Add space after paragraph
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Custom spacing
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class=
+\"pe-menu pe-menu--permanent layout center-center pe-menu--width-6\">
+  <div class=\"pe-menu__content\">
+    <div class=\"pe-shadow pe-shadow--animated\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+    </div>
+    <div class=\"pe-list pe-list--header pe-list--compact\">
+      <div class=\"pe-list-tile pe-list__header\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              6
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              The Mind Is Its Own Beautiful Prisoner
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              If I Should Sleep With A Lady Called Death
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              It May Not Always Be So; And I Say
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class=
+\"pe-menu pe-menu--permanent layout center-center pe-menu--width-7\">
+  <div class=\"pe-menu__content\">
+    <div class=\"pe-shadow pe-shadow--animated\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+    </div>
+    <div class=\"pe-list pe-list--header pe-list--compact\">
+      <div class=\"pe-list-tile pe-list__header\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              7
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Any bar, any cross, any impediment will be
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              medicinable to me: I am sick in displeasure to him
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              and whatsoever comes athwart his affection ranges
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              evenly with mine. How canst thou cross this marriage?
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class=
+\"pe-menu pe-menu--permanent layout center-center pe-menu--width-auto\">
+<div class=\"pe-menu__content\">
+    <div class=\"pe-shadow pe-shadow--animated\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+    </div>
+    <div class=\"pe-list pe-list--header pe-list--compact\">
+      <div class=\"pe-list-tile pe-list__header\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              auto
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Paragraph styles
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Line spacing
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Numbered list
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Simple menu - permanent -- dark theme 1`] = `
+"<div class=\"pe-menu pe-menu--permanent layout center-center\">
+  <div class=\"pe-menu__content\">
+    <div class=\"pe-shadow pe-shadow--animated\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+    </div>
+    <div class=\"pe-list\">
+      <div class=\"pe-list-tile\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Yes
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              No
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Simple menu - permanent 1`] = `
+"<div class=\"pe-menu pe-menu--permanent layout center-center\">
+  <div class=\"pe-menu__content\">
+    <div class=\"pe-shadow pe-shadow--animated\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+    </div>
+    <div class=\"pe-list\">
+      <div class=\"pe-list-tile\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Yes
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              No
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;

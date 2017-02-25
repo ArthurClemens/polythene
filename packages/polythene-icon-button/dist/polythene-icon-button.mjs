@@ -29,37 +29,10 @@ var vars$1 = {
 
 };
 
-var defineProperty = function (obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-};
-
-var _extends = Object.assign || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];
-
-    for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }
-
-  return target;
-};
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var layout = (function (selector, componentVars) {
-  return [defineProperty({}, selector, {
+  return [_defineProperty({}, selector, {
     // don"t set button size to facilitate different icon sizes
     display: "inline-block",
     "vertical-align": "middle",
@@ -82,8 +55,10 @@ var layout = (function (selector, componentVars) {
   })];
 });
 
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var style = function style(scope, selector, componentVars, tint) {
-  return [defineProperty({}, scope + selector, {
+  return [_defineProperty$1({}, scope + selector, {
     color: componentVars["color_" + tint],
     backgroundColor: componentVars["color_" + tint + "_background"] || componentVars["color_background"],
     " .pe-button__wash": {
@@ -105,7 +80,7 @@ var style = function style(scope, selector, componentVars, tint) {
 
 var noTouchStyle = function noTouchStyle(scope, selector, componentVars, tint) {
   var backgroundColor = tint === "light" ? "currentcolor" : componentVars["color_" + tint];
-  return [defineProperty({}, scope + selector + ":hover", {
+  return [_defineProperty$1({}, scope + selector + ":hover", {
     " .pe-button__wash": {
       backgroundColor: backgroundColor
     }
@@ -117,14 +92,18 @@ var color = (function (selector, componentVars) {
   noTouchStyle("html.pe-no-touch ", selector, componentVars, "light"), noTouchStyle("html.pe-no-touch .pe-dark-theme ", selector, componentVars, "dark")];
 });
 
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var fns = [layout, color];
 var selector = ".pe-button.pe-icon-button";
 
 var customTheme = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends({}, vars$1, customVars), fns);
+  return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
 };
 
 styler.generateStyles([selector], vars$1, fns);
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var classes = {
   component: "pe-button pe-icon-button",
