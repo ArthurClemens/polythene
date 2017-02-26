@@ -9,6 +9,10 @@
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
     "build": "npm run rollup"
   },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "dependencies": {
     "mithril": "1.0.1",
     "polythene-css": "1.0.0-rc.1"

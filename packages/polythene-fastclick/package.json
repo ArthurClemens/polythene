@@ -9,6 +9,10 @@
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
     "build": "npm run rollup"
   },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "dependencies": {
     "fastclick": "^1.0.6",
     "mithril": "1.0.1",
