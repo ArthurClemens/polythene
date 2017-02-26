@@ -137,12 +137,6 @@ Webfont.load({
 var roboto = [{
   "html, body, button, input, select, textarea": {
     fontFamily: "Roboto, Helvetica, Arial, sans-serif"
-  },
-  "body": {
-    opacity: 0
-  },
-  "html.wf-active body": {
-    opacity: 1
   }
 }];
 

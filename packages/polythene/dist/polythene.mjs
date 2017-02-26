@@ -17,12 +17,12 @@ import { svg } from 'polythene-svg';
 import { switchButton } from 'polythene-switch-button';
 import { tabs } from 'polythene-tabs';
 import { toolbar } from 'polythene-toolbar';
-import { Timer, easing, loadFont, scrollTo } from 'polythene-utilities';
+import { Timer, easing, scrollTo } from 'polythene-utilities';
 import { vars } from 'polythene-theme';
 
 
 
-export { button, checkbox, defaultVariables, isTouch, touchStartEvent, touchEndEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, multiple, show, hide, filterSupportedAttributes, mixin, flex, styler, dialog, fab, icon, iconButton, list, listTile, menu, radioButton, raisedButton, ripple, shadow, svg, switchButton, tabs, toolbar, easing, scrollTo, Timer, loadFont, vars };
+export { button, checkbox, defaultVariables, isTouch, touchStartEvent, touchEndEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, multiple, show, hide, filterSupportedAttributes, mixin, flex, styler, dialog, fab, icon, iconButton, list, listTile, menu, radioButton, raisedButton, ripple, shadow, svg, switchButton, tabs, toolbar, easing, scrollTo, Timer, vars };
 
 export * from 'polythene-fastclick';
 export * from 'polythene-css-classes';
