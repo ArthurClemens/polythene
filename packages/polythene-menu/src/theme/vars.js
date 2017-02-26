@@ -10,4 +10,5 @@ export default {
 
   color_light_background: rgba(vars.color_light_background),
   color_dark_background:  rgba(vars.color_dark_background)
+  // text colors are set by content, usually list tiles
 };

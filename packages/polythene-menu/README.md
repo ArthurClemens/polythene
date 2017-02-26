@@ -9,11 +9,10 @@ Menus float on top of other things, so they are visually similar to [dialogs](..
 
 A number of ingredients must play together:
 
-* A menu component
-* A menu state (open or closed)
-* A button (or link or clickable list item) to set the menu state; and to act as menu's target for positioning
-* A container that holds both menu and button (or list)
-* Because the menu is positioned `absolute`, the container must have style `position: relative`
+1. A menu component
+2. A menu state (open or closed)
+3. A button (or link or clickable list item) to set the menu state; and to act as menu's target for positioning
+4. A container that holds both menu and button (or list); because the menu is positioned `absolute`, the container must have style `position: relative`
 
 Because we are using state, this can be best created with a custom component where we can store the "menu open" state.
 
@@ -36,26 +35,25 @@ const content = m(list, [
 ]);
 
 const simpleMenu = {
-  isOpen: false,
+  isOpen: false, // 2.
   id: "simple-menu",
   view: vnode => 
-    m("div", {
-      style: { position: "relative" }
+    m("div", { 
+      style: { position: "relative" } // 4.
     }, [
-      m(raisedButton,
+      m(raisedButton, // 3.
         {
           label: "Open menu",
           id: vnode.state.id,
           events: {
-            onclick: () => vnode.state.isOpen = true
+            onclick: () => vnode.state.isOpen = true // 2.
           }
         }
       ),
-      m(menu, {
-        offset: -4, // align with button
+      m(menu, { // 1.
         target: vnode.state.id,
         show: vnode.state.isOpen,
-        didHide: () => vnode.state.isOpen = false,
+        didHide: () => vnode.state.isOpen = false, // 2.
         content
       })
     ])
@@ -70,7 +68,7 @@ A menu is closed by tapping outside of the menu, or by pressing ESCAPE.
 
 ### Positioning
 
-To position a menu to another element, pass parameters `target` and `origin`.
+To position a menu to another element, pass parameters `target` (set to the id of the element) and `origin`.
 
 To position the menu vertically to a selected menu item, the menu item must have the class "selected".
 To override this behavior, pass `reposition: false`.
@@ -254,7 +252,7 @@ const page = {
 | **class**     | optional       | String   |             | Extra CSS class appended to `pe-menu` |
 | **style**     | optional       | Object   |             | For setting simple style attributes |
 | **id**        | optional       | String   |             | HTML element id |
-| **content** | required | One or more Mithril elements | | Expects a [list](../polythene-list), or an array of lists |
+| **content**   | use `content` or `vnode.children` | One or more Mithril elements | | Expects a [list](../polythene-list), or an array of lists; replaces `vnode.children` |
 | **before**    | optional       | Mithril element | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **after**     | optional       | Mithril element | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
 | **events**    | optional       | Object | | Options object containing one or more standard events such as `onclick` |

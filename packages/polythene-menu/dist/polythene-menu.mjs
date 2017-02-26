@@ -119,22 +119,22 @@ var OFFSET_V = -8;
 var DEFAULT_OFFSET_H = 16;
 var MIN_SIZE = 1.5;
 
-var positionMenu = function positionMenu(state, opts) {
-  if (!opts.target) {
+var positionMenu = function positionMenu(state, attrs) {
+  if (!attrs.target) {
     return;
   }
-  var targetEl = document.querySelector("#" + opts.target);
+  var targetEl = document.querySelector("#" + attrs.target);
   if (!targetEl) {
     return;
   }
-  var offsetH = opts.offset !== undefined ? opts.offset : DEFAULT_OFFSET_H;
+  var offsetH = attrs.offset !== undefined ? attrs.offset : DEFAULT_OFFSET_H;
   var menuEl = state.el;
   if (!menuEl) {
     return;
   }
   var contentEl = state.el.querySelector("." + classes.content);
-  var origin = opts.origin || "top-left";
-  var reposition = opts.reposition === false ? false : true;
+  var origin = attrs.origin || "top-left";
+  var reposition = attrs.reposition === false ? false : true;
   var positionOffset = 0;
   if (reposition) {
     var firstItem = contentEl.querySelectorAll("." + classes.listTile)[0];
@@ -185,30 +185,30 @@ var positionMenu = function positionMenu(state, opts) {
   }
 };
 
-var showMenu = function showMenu(state, opts) {
+var showMenu = function showMenu(state, attrs) {
   state.isTransitioning = true;
-  return show(_extends({}, opts, {
+  return show(_extends({}, attrs, {
     el: state.el,
     showClass: classes.visible
   })).then(function () {
     state.isTransitioning = false;
     state.visible = true;
-    if (opts.didShow) {
-      opts.didShow(opts.id);
+    if (attrs.didShow) {
+      attrs.didShow(attrs.id);
     }
   });
 };
 
-var hideMenu = function hideMenu(state, opts) {
+var hideMenu = function hideMenu(state, attrs) {
   state.isTransitioning = true;
-  return hide(_extends({}, opts, {
+  return hide(_extends({}, attrs, {
     el: state.el,
     showClass: classes.visible
   })).then(function () {
     state.isTransitioning = false;
     state.visible = false;
-    if (opts.didHide) {
-      opts.didHide(opts.id);
+    if (attrs.didHide) {
+      attrs.didHide(attrs.id);
     }
     m.redraw(); // removes remainder of drawn component
   });
@@ -219,11 +219,12 @@ var unifySize = function unifySize(size) {
 };
 
 var widthClass = function widthClass(size) {
-  var sizeStr = size.toString().replace(".", "-");
-  return classes.width_n + sizeStr;
+  return classes.width_n + size.toString().replace(".", "-");
 };
 
-var createView = function createView(state, opts) {
+var createView = function createView(vnode) {
+  var attrs = vnode.attrs;
+  var state = vnode.state;
   var listenEl = document.body;
 
   var activateDismissTap = function activateDismissTap() {
@@ -241,48 +242,48 @@ var createView = function createView(state, opts) {
     deActivateDismissTap();
     if (e.defaultPrevented) {
       // clicked on .pe-menu__content
-      hideMenu(state, opts);
+      hideMenu(state, attrs);
     } else {
-      hideMenu(state, _extends({}, opts, {
+      hideMenu(state, _extends({}, attrs, {
         hideDelay: 0
       }));
     }
   };
 
   var update = function update() {
-    positionMenu(state, opts);
+    positionMenu(state, attrs);
     m.redraw();
   };
 
   var handleEscape = function handleEscape(e) {
     if (e.which === 27) {
-      hideMenu(state, _extends({}, opts, {
+      hideMenu(state, _extends({}, attrs, {
         hideDelay: 0
       }));
     }
   };
 
-  var element = opts.element || "div";
-  var props = _extends({}, filterSupportedAttributes(opts), {
-    class: [classes.component, opts.permanent ? classes.permanent : null, opts.target ? classes.target : "layout center-center", opts.size ? widthClass(unifySize(opts.size)) : null, opts.class].join(" "),
+  var element = attrs.element || "div";
+  var props = _extends({}, filterSupportedAttributes(attrs), {
+    class: [classes.component, attrs.permanent ? classes.permanent : null, attrs.target ? classes.target : null, attrs.size ? widthClass(unifySize(attrs.size)) : null, attrs.class].join(" "),
     oncreate: function oncreate(_ref) {
       var dom = _ref.dom;
 
       state.el = dom;
-      if (!opts.permanent) {
+      if (!attrs.permanent) {
         subscribe("resize", update);
         subscribe("keydown", handleEscape);
         setTimeout(function () {
           activateDismissTap();
-          showMenu(state, opts);
+          showMenu(state, attrs);
         }, 0);
       }
-      positionMenu(state, opts);
+      positionMenu(state, attrs);
     },
     onremove: function onremove() {
       unsubscribe("resize", update);
       unsubscribe("keydown", handleEscape);
-      if (!opts.permanent) {
+      if (!attrs.permanent) {
         deActivateDismissTap();
       }
     }
@@ -292,11 +293,11 @@ var createView = function createView(state, opts) {
     onclick: function onclick(e) {
       return e.preventDefault();
     }
-  }, [m(shadow, {
+  }, [state.z > 0 && m(shadow, {
     z: state.z,
     animated: true
-  }), opts.content ? opts.content : null]);
-  return m(element, props, [opts.before, content, opts.after]);
+  }), attrs.content ? attrs.content : vnode.children]);
+  return m(element, props, [attrs.before, content, attrs.after]);
 };
 
 var menu = {
@@ -310,14 +311,11 @@ var menu = {
       visible: attrs.permanent || false
     });
   },
-  view: function view(_ref2) {
-    var state = _ref2.state,
-        attrs = _ref2.attrs;
-
-    if (attrs.show) {
-      state.visible = true;
+  view: function view(vnode) {
+    if (vnode.attrs.show) {
+      vnode.state.visible = true;
     }
-    return state.visible ? createView(state, attrs) : m("span", {
+    return vnode.state.visible ? createView(vnode) : m("span", {
       class: classes.placeholder
     });
   }
