@@ -23,8 +23,10 @@ const generatedHtml = {
 };
 
 export default (name, tests, previous) => ({
-  oncreate: () => 
+  oncreate: () => ( 
     document.title = name,
+    scrollTo(0, 0)
+  ),
   view: () => [
     m(css.headerRow, m(toolbar, {
       style: {
