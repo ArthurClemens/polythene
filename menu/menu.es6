@@ -138,7 +138,13 @@ const createView = (ctrl, opts = {}) => {
     };
     const tag = opts.tag || 'div';
     const props = {
-        class: [CSS_CLASSES.block, (opts.permanent ? CSS_CLASSES.permanent : null), (opts.target ? CSS_CLASSES.target : 'layout center-center'), (opts.size ? widthClass(unifySize(opts.size)) : null), opts.class].join(' '),
+        class: [
+            CSS_CLASSES.block,
+            opts.permanent ? CSS_CLASSES.permanent : null,
+            opts.target ? CSS_CLASSES.target : 'layout center-center',
+            opts.size ? widthClass(unifySize(opts.size)) : null,
+            opts.class
+        ].join(' '),
 
         id: opts.id || '',
         config: (el, inited, context, vdom) => {
