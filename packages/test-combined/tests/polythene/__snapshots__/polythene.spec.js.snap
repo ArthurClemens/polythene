@@ -321,8 +321,7 @@ exports[`test List Tile 1`] = `
 `;
 
 exports[`test Menu 1`] = `
-"<div class=
-\"pe-menu pe-menu--permanent layout center-center pe-menu--width-5\">
+"<div class=\"pe-menu pe-menu--permanent pe-menu--width-5\">
   <div class=\"pe-menu__content\">
     <div class=\"pe-shadow pe-shadow--animated\">
       <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>

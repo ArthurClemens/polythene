@@ -40,12 +40,12 @@ const myBtn = m(button, {});
 
 v0.2                             |  v1.0
 -------------------------------- | ----------------
+`font-roboto`                    | no longer exposed as separate component, but used in `polythene-material-design`
 `polythene/common/mixin`         | `mixin` from `polythene-css`
-`polythene/common/webfontloader` | `loadFont` from `polythene-utilities`
+`polythene/common/webfontloader` | removed; use [webfontloader](https://github.com/typekit/webfontloader)
 `polythene/config`               | `polythene-theme`
 `polythene/theme`                | `polythene-material-design`
 `polythene/layout/theme/theme`   | `polythene-css-classes`
-`font-roboto`                    | no longer exposed as separate component, but used in `polythene-material-design`
 
 
 

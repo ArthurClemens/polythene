@@ -1,6 +1,6 @@
-import { loadFont } from "polythene-utilities";
+import Webfont from "webfontloader";
 
-loadFont({
+Webfont.load({
   google: {
     families: ["Roboto:400,500,700,400italic:latin"]
   }
@@ -8,6 +8,6 @@ loadFont({
 
 export default [{
   "html, body, button, input, select, textarea": {
-    "font-family": "Roboto, Helvetica, Arial, sans-serif"
+    fontFamily: "Roboto, Helvetica, Arial, sans-serif"
   }
 }];

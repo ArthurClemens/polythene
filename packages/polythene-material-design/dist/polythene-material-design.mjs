@@ -1,6 +1,6 @@
 import { styler } from 'polythene-css';
 import { vars } from 'polythene-theme';
-import { loadFont } from 'polythene-utilities';
+import Webfont from 'webfontloader';
 
 var fontSize = 14;
 
@@ -128,7 +128,7 @@ var reset = [{
   }
 }];
 
-loadFont({
+Webfont.load({
   google: {
     families: ["Roboto:400,500,700,400italic:latin"]
   }
@@ -136,7 +136,13 @@ loadFont({
 
 var roboto = [{
   "html, body, button, input, select, textarea": {
-    "font-family": "Roboto, Helvetica, Arial, sans-serif"
+    fontFamily: "Roboto, Helvetica, Arial, sans-serif"
+  },
+  "body": {
+    opacity: 0
+  },
+  "html.wf-active body": {
+    opacity: 1
   }
 }];
 

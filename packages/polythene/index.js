@@ -48,7 +48,7 @@ export { tabs } from "polythene-tabs";
 
 export { toolbar } from "polythene-toolbar";
 
-export { easing, scrollTo, Timer, loadFont } from "polythene-utilities";
+export { easing, scrollTo, Timer } from "polythene-utilities";
 
 export { vars } from "polythene-theme";
 

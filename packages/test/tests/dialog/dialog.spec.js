@@ -1,3 +1,4 @@
+/* global describe, it, expect */
 // import m from "mithril";
 // import { tidy, defaultHtmlTidyOptions } from "mithril-jest";
 import { tests } from "./tests.js";
