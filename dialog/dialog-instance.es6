@@ -148,7 +148,7 @@ const createView = (ctrl, opts = {}) => {
             };
 
             const handleEscape = (e) => {
-                if (opts.fullscreen || opts.backdrop) return;
+                if (opts.fullscreen || opts.modal) return;
                 if (e.which === 27) {
                     cleanup();
                     hide(ctrl, Object.assign({}, opts, {hideDelay: 0}));
