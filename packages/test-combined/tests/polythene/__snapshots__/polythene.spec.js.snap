@@ -734,17 +734,3 @@ exports[`test Toolbar 1`] = `
 </div>
 "
 `;
-
-exports[`test Web font loader (Adobe Edge Web Fonts: Patua One) 1`] = `
-"<p class=\"patua-one\">
-  The sky was cloudless and of a deep dark blue.
-</p>
-"
-`;
-
-exports[`test Web font loader (Google Fonts: PT Sans) 1`] = `
-"<p class=\"pt-sans\">
-  The sky was cloudless and of a deep dark blue.
-</p>
-"
-`;

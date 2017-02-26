@@ -11,17 +11,6 @@ const SVG = m.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" heig
 
 polythene.styler.add("polythene-css-classes", blockStyles);
 
-// Testing the web font loader that we use to load Roboto
-polythene.loadFont({
-  google: {
-    families: ["PT Sans:400"]
-  },
-  typekit: {
-    id: "patua-one",
-    api: "//use.edgefonts.net"
-  }
-});
-
 polythene.button.theme(".tests-polythene-themed-button", {
   color_light_background: "#FF1744",
   color_light_text: "#fff"
@@ -250,22 +239,6 @@ export const tests = [
         })
       ]
     }
-  },
-  {
-    name: "Web font loader (Google Fonts: PT Sans)",
-    component: {
-      view: () => m("p.pt-sans", {
-      }, "The sky was cloudless and of a deep dark blue.")
-    },
-    attrs: {}
-  },
-  {
-    name: "Web font loader (Adobe Edge Web Fonts: Patua One)",
-    component: {
-      view: () => m("p.patua-one", {
-      }, "The sky was cloudless and of a deep dark blue.")
-    },
-    attrs: {}
   },
   {
     name: "CSS Classes: blocks should be aligned vertically",
