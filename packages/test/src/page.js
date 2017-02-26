@@ -59,11 +59,13 @@ export default (name, tests, previous) => ({
           m(css.resultDataRendered,
             m(css.content, {
               oncreate: vnode => {
-                document.querySelector(`#${uid}`).textContent = tidy(vnode.dom.innerHTML);
+                if (!test.exclude) {
+                  document.querySelector(`#${uid}`).textContent = tidy(vnode.dom.innerHTML);
+                }
               }
             }, m(test.component, test.attrs, test.children))
           ),
-          m(css.resultDataRaw, 
+          !test.exclude && m(css.resultDataRaw, 
             m(generatedHtml, {id: uid})
           )
         ])

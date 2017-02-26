@@ -1,7 +1,7 @@
 import m from "mithril";
 import "polythene-fastclick";
 import "polythene-material-design";
-import testPage from "./page";
+import testPage from "../../test/src/page";
 import { tests } from "../tests/polythene/tests";
 
 m.route.prefix("#");

@@ -29,17 +29,6 @@ exports[`test Interactive option: animated -- dark theme 1`] = `
 "
 `;
 
-exports[`test Interactive option: animated 1`] = `
-"<div class=\"absolute absolute--fill\">
-  Click me
-</div>
-<div class=\"pe-shadow pe-shadow--animated\">
-  <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-  <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
-</div>
-"
-`;
-
 exports[`test Option: content 1`] = `
 "<div class=\"pe-shadow\">
   Content

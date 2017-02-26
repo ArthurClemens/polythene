@@ -62,30 +62,6 @@ exports[`test Option: disabled -- dark theme 1`] = `
 "
 `;
 
-exports[`test Option: events (onclick) 1`] = `
-"<div>
-  onclick called: 0
-</div><a tabindex=\"0\" class=
-\"pe-button pe-text-button pe-raised-button\">
-<div class=\"pe-button__content\">
-  <div class=\"pe-shadow pe-shadow--animated\">
-    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
-  </div>
-  <div class=\"pe-ripple pe-ripple--constrained\">
-    <div class=\"pe-ripple__mask\">
-      <div class=\"pe-ripple__waves\"></div>
-    </div>
-  </div>
-  <div class=\"pe-button__wash\"></div>
-  <div class=\"pe-button__focus\"></div>
-  <div class=\"pe-button__label\">
-    Button
-  </div>
-</div></a>
-"
-`;
-
 exports[`test Option: inactive (false) 1`] = `
 "<a tabindex=\"0\" class=\"pe-button pe-text-button pe-raised-button\">
 <div class=\"pe-button__content\">

@@ -1,6 +1,6 @@
 {
   "name": "polythene-button",
-  "version": "1.0.2",
+  "version": "1.0.0-rc.1",
   "description": "",
   "main": "dist/polythene-button.js",
   "module": "dist/polythene-button.mjs",
@@ -11,11 +11,11 @@
   },
   "dependencies": {
     "mithril": "1.0.1",
-    "polythene-core": "1",
-    "polythene-css": "1",
-    "polythene-ripple": "1",
-    "polythene-shadow": "1",
-    "polythene-theme": "1"
+    "polythene-core": "1.0.0-rc.1",
+    "polythene-css": "1.0.0-rc.1",
+    "polythene-ripple": "1.0.0-rc.1",
+    "polythene-shadow": "1.0.0-rc.1",
+    "polythene-theme": "1.0.0-rc.1"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

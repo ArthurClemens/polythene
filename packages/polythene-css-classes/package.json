@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "mithril": "1.0.1",
-    "polythene-css": "1"
+    "polythene-css": "1.0.0-rc.1"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

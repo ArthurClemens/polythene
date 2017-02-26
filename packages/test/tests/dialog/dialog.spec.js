@@ -6,7 +6,11 @@ import { runSnapshots } from "../../scripts/snapshots";
 
 runSnapshots(tests);
 
-// describe("Dialog component", () => {
+describe("Dialog component", () => {
+  it("dummy", () => {
+    expect("1").toContain("1");
+  });
+
 //   it("no options", () => {
 //     const cmp = m(component);
 //     const html = tidy(cmp, {
@@ -43,4 +47,4 @@ runSnapshots(tests);
 //     const html = tidy(cmp);
 //     expect(html).toContain("<span>After</span>");
 //   });
-// });
+});
