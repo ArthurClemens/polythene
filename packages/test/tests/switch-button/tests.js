@@ -1,15 +1,15 @@
 import m from "mithril";
-import { switchButton as component } from "polythene-switch-button";
-import { icon } from "polythene-icon";
+import switchButton from "polythene-switch-button";
+import icon from "polythene-icon";
 import bullseyeIcon from "mmsvg/templarian/msvg/bullseye";
 
-component.theme(".tests-switch-themed-switch", {
+switchButton.theme(".tests-switch-themed-switch", {
   label_font_size: 28,
   color_light_thumb_on: "#2196F3",
   color_dark_thumb_on: "#2196F3"
 });
 
-component.theme(".tests-switch-themed-icon", {
+switchButton.theme(".tests-switch-themed-icon", {
   color_light_thumb_off: "#fff",
   color_light_thumb_on: "#fff",
   color_light_icon_on: "#EF6C00",
@@ -27,7 +27,7 @@ const sizes = (sizes, attrs) => sizes.map(size =>
     style: {
       marginBottom: "1rem"
     }
-  }, m(component, {
+  }, m(switchButton, {
     ...attrs,
     label: size,
     size
@@ -37,26 +37,26 @@ const sizes = (sizes, attrs) => sizes.map(size =>
 export const tests = [
   {
     name: "No options",
-    component,
+    component: switchButton,
     attrs: null
   },
   {
     name: "Option: label",
-    component,
+    component: switchButton,
     attrs: {
       label: "Label"
     }
   },
   {
     name: "Option: checked",
-    component,
+    component: switchButton,
     attrs: {
       checked: true
     }
   },
   {
     name: "Option: value",
-    component,
+    component: switchButton,
     attrs: {
       name: "worth",
       value: "notable"
@@ -72,7 +72,7 @@ export const tests = [
   },
   {
     name: "Themed checkbox (color and font size)",
-    component,
+    component: switchButton,
     attrs: {
       label: "Label",
       class: "tests-switch-themed-switch"
@@ -80,7 +80,7 @@ export const tests = [
   },
   {
     name: "Option: style (colors)",
-    component,
+    component: switchButton,
     attrs: {
       label: "Label",
       style: {
@@ -105,11 +105,11 @@ export const tests = [
     interactive: true,
     component: {
       view: () => [
-        m(component, {
+        m(switchButton, {
           disabled: true,
           label: "Off"
         }),
-        m(component, {
+        m(switchButton, {
           disabled: true,
           checked: true,
           label: "On"
@@ -122,11 +122,11 @@ export const tests = [
     interactive: true,
     component: {
       view: () => [
-        m(component, {
+        m(switchButton, {
           selectable: () => false,
           label: "Never"
         }),
-        m(component, {
+        m(switchButton, {
           selectable: checked => !checked,
           label: "Only when unchecked"
         })
@@ -136,7 +136,7 @@ export const tests = [
   {
     name: "Option: iconButton (custom hover behaviour)",
     interactive: true,
-    component,
+    component: switchButton,
     attrs: {
       iconButton: {
         wash: true,
@@ -157,7 +157,7 @@ export const tests = [
             marginBottom: "1rem"
           }
         },`Checked: ${vnode.state.checked}`),
-        m(component, {
+        m(switchButton, {
           getState: state => vnode.state.checked = state.checked
         })
       ]
@@ -171,11 +171,11 @@ export const tests = [
       oninit: vnode =>
         vnode.state.checked = false,
       view: vnode => [
-        m(component, {
+        m(switchButton, {
           label: "Initiator",
           getState: state => vnode.state.checked = state.checked
         }),
-        m(component, {
+        m(switchButton, {
           label: "Result",
           disabled: true,
           checked: () => vnode.state.checked
@@ -196,7 +196,7 @@ export const tests = [
             marginBottom: "1rem"
           }
         },`Checked: ${vnode.state.checked}`),
-        m(component, {
+        m(switchButton, {
           events: {
             onclick: () => vnode.state.checked = !vnode.state.checked
           }
@@ -210,7 +210,7 @@ export const tests = [
   {
     name: "Option: checked -- dark theme",
     class: "pe-dark-theme",
-    component,
+    component: switchButton,
     attrs: {
       checked: true
     }
@@ -218,7 +218,7 @@ export const tests = [
   {
     name: "Themed checkbox (colors) -- dark theme",
     class: "pe-dark-theme",
-    component,
+    component: switchButton,
     attrs: {
       label: "Label",
       class: "tests-switch-themed-switch"
@@ -229,11 +229,11 @@ export const tests = [
     class: "pe-dark-theme",
     component: {
       view: () => [
-        m(component, {
+        m(switchButton, {
           disabled: true,
           label: "Off"
         }),
-        m(component, {
+        m(switchButton, {
           disabled: true,
           checked: true,
           label: "On"

@@ -1,6 +1,6 @@
 import m from "mithril";
 import { filterSupportedAttributes } from "polythene-core";
-import { svg } from "polythene-svg";
+import svg from "polythene-svg";
 import { customTheme } from "./theme";
 
 export const classes = {
@@ -49,7 +49,7 @@ const view = vnode => {
   return m(element, props, [attrs.before, content, attrs.after]);
 };
 
-export const icon = {
+export default {
   theme: customTheme, // accepts (selector, vars)
   view
 };

@@ -1,6 +1,6 @@
 import m from "mithril";
-import { icon } from "polythene-icon";
-import { iconButton } from "polythene-icon-button";
+import icon from "polythene-icon";
+import iconButton from "polythene-icon-button";
 
 export const classes = {
   box:       "pe-control__box",

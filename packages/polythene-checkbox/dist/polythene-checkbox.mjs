@@ -53,4 +53,4 @@ var checkbox = {
   view: view
 };
 
-export { checkbox, classes, vars };
+export { classes, vars };export default checkbox;

@@ -1,5 +1,5 @@
 import m from "mithril";
-import { shadow as component } from "polythene-shadow";
+import shadow from "polythene-shadow";
 
 const interactiveTest = {
   oninit: vnode =>
@@ -11,7 +11,7 @@ const interactiveTest = {
         vnode.state.z = newZ;
       }
     }, "Click me"),
-    m(component, {
+    m(shadow, {
       animated: true,
       z: vnode.state.z,
     })
@@ -21,13 +21,13 @@ const interactiveTest = {
 export const tests = [
   {
     name: "Child node",
-    component,
+    component: shadow,
     attrs: {},
     children: ["Child"]
   },
   {
     name: "Option: content",
-    component,
+    component: shadow,
     attrs: {
       content: "Content"
     }
@@ -37,7 +37,7 @@ export const tests = [
     component: {
       view: () => [
         m("div", "Some element"),
-        m(component)
+        m(shadow)
       ]
     },
   },
@@ -49,42 +49,42 @@ export const tests = [
   },
   {
     name: "Option: z (0)",
-    component,
+    component: shadow,
     attrs: {
       z: 0
     }
   },
   {
     name: "Option: z (1)",
-    component,
+    component: shadow,
     attrs: {
       z: 1
     }
   },
   {
     name: "Option: z (2)",
-    component,
+    component: shadow,
     attrs: {
       z: 2
     }
   },
   {
     name: "Option: z (3)",
-    component,
+    component: shadow,
     attrs: {
       z: 3
     }
   },
   {
     name: "Option: z (4)",
-    component,
+    component: shadow,
     attrs: {
       z: 4
     }
   },
   {
     name: "Option: z (5)",
-    component,
+    component: shadow,
     attrs: {
       z: 5
     }
@@ -97,7 +97,7 @@ export const tests = [
     interactive: true,
     class: "pe-dark-theme",
     component: interactiveTest
-  },
+  }
 
 ];
 

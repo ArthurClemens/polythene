@@ -3,13 +3,13 @@ import m from "mithril";
 import { tidy, defaultHtmlTidyOptions } from "mithril-jest";
 import { tests } from "./tests.js";
 import { runSnapshots } from "../../scripts/snapshots";
-import { listTile as component } from "polythene-list-tile";
+import listTile from "polythene-list-tile";
 
 runSnapshots(tests);
 
 describe("List tile component", () => {
   it("no options", () => {
-    const cmp = m(component);
+    const cmp = m(listTile);
     const html = tidy(cmp, {
       ...defaultHtmlTidyOptions,
       wrap: false,
@@ -18,38 +18,38 @@ describe("List tile component", () => {
     expect(html).toContain("<div class=\"pe-list-tile        \">");
   });
   it("child", () => {
-    const cmp = m(component, {}, m("span", "Child"));
+    const cmp = m(listTile, {}, m("span", "Child"));
     const html = tidy(cmp);
     expect(html).toContain("<span>Child</span>");
   });
   it("option id", () => {
-    const cmp = m(component, {id: "id-x"});
+    const cmp = m(listTile, {id: "id-x"});
     const html = tidy(cmp);
     expect(html).toContain("id=\"id-x\"");
   });
   it("option class", () => {
-    const cmp = m(component, {class: "class-x"});
+    const cmp = m(listTile, {class: "class-x"});
     const html = tidy(cmp);
     expect(html).toContain("class-x\">");
   });
   it("option element", () => {
-    const cmp = m(component, {element: "span"});
+    const cmp = m(listTile, {element: "span"});
     const html = tidy(cmp);
     expect(html).toContain("<span ");
     expect(html).toContain("</span>");
   });
   it("option tabindex", () => {
-    const cmp = m(component, {tabindex: 3});
+    const cmp = m(listTile, {tabindex: 3});
     const html = tidy(cmp);
     expect(html).toContain("tabindex=\"3\"");
   });
   it("option before", () => {
-    const cmp = m(component, {before: m("span", "Before")});
+    const cmp = m(listTile, {before: m("span", "Before")});
     const html = tidy(cmp);
     expect(html).toContain("<span>Before</span>");
   });
   it("option after", () => {
-    const cmp = m(component, {after: m("span", "After")});
+    const cmp = m(listTile, {after: m("span", "After")});
     const html = tidy(cmp);
     expect(html).toContain("<span>After</span>");
   });

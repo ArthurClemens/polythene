@@ -5,12 +5,12 @@ Testing 2 theming methods:
 */
 
 import m from "mithril";
-import { button } from "polythene-button";
-import { fab } from "polythene-fab";
-import { icon } from "polythene-icon";
-import { iconButton } from "polythene-icon-button";
-import { list } from "polythene-list";
-import { listTile } from "polythene-list-tile";
+import button from "polythene-button";
+import fab from "polythene-fab";
+import icon from "polythene-icon";
+import iconButton from "polythene-icon-button";
+import list from "polythene-list";
+import listTile from "polythene-list-tile";
 import iconAlarm from "mmsvg/google/msvg/action/alarm-add";
 
 // [1]

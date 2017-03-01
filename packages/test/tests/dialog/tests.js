@@ -1,6 +1,6 @@
 import m from "mithril";
-import { dialog as component} from "polythene-dialog";
-import { raisedButton } from "polythene-raised-button";
+import dialog from "polythene-dialog";
+import raisedButton from "polythene-raised-button";
 import { shortText, longText, commonDialogProps } from "./shared";
 import fullscreenOpts from "./fullscreen";
 import menuOpts from "./menu";
@@ -11,12 +11,12 @@ import settingsOpts from "./settings";
 
 const btn = (dialogAttrs, label = "Open") => m(raisedButton, {
   label,
-  events: { onclick: () => component.show(dialogAttrs) }
+  events: { onclick: () => dialog.show(dialogAttrs) }
 });
 
 const promiseShownBtn = (dialogAttrs, label = "Open") => m(raisedButton, {
   label,
-  events: { onclick: () => component.show(dialogAttrs).then((id) => alert("dialog shown: " + id)) }
+  events: { onclick: () => dialog.show(dialogAttrs).then((id) => alert("dialog shown: " + id)) }
 });
 
 export const tests = [

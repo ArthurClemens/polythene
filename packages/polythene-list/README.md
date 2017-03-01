@@ -10,8 +10,8 @@ Lists are also the base component of [menus](../polythene-menu).
 
 ~~~javascript
 import m from "mithril";
-import { list } from "polythene-list";
-import { listTile } from "polythene-list-tile";
+import list from "polythene-list";
+import listTile from "polythene-list-tile";
 
 const myList = m(list, {
   header: {
@@ -30,9 +30,9 @@ See [list tile](../polythene-list-tile) for layout variations, for example to ad
 
 ~~~javascript
 import m from "mithril";
-import { list } from "polythene-list";
-import { listTile } from "polythene-list-tile";
-import { icon } from "polythene-icon";
+import list from "polythene-list";
+import listTile from "polythene-list-tile";
+import icon from "polythene-icon";
 
 const myList = m(list, {
   header: {
@@ -69,8 +69,8 @@ In this situation we want to indent the list-header, and if we show borders, ind
 
 ~~~javascript
 import m from "mithril";
-import { list } from "polythene-list";
-import { listTile } from "polythene-list-tile";
+import list from "polythene-list";
+import listTile from "polythene-list-tile";
 
 const myList = m(list, {
   indentedBorders: true,

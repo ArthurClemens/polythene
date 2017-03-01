@@ -1,10 +1,10 @@
 import m from "mithril";
-import { fab as component} from "polythene-fab";
-import { icon } from "polythene-icon";
+import fab from "polythene-fab";
+import icon from "polythene-icon";
 
 import iconAlarm from "mmsvg/google/msvg/action/alarm-add";
 
-component.theme(".tests-fab-themed-fab", {
+fab.theme(".tests-fab-themed-fab", {
   color_light_background: "#2196F3",
   color_dark_background:  "#0097A7",
   color_light:            "#fff",
@@ -14,13 +14,13 @@ component.theme(".tests-fab-themed-fab", {
 export const tests = [
   {
     name: "Child node",
-    component,
+    component: fab,
     attrs: null,
     children: m(icon, {msvg: iconAlarm})
   },
   {
     name: "Option: icon",
-    component,
+    component: fab,
     attrs: {
       icon: {
         msvg: iconAlarm
@@ -29,14 +29,14 @@ export const tests = [
   },
   {
     name: "Option: content",
-    component,
+    component: fab,
     attrs: {
       content: m(icon, {msvg: iconAlarm})
     }
   },
   {
     name: "Colored icon",
-    component,
+    component: fab,
     attrs: {
       icon: {
         msvg: iconAlarm
@@ -48,7 +48,7 @@ export const tests = [
   },
   {
     name: "Themed FAB (colors)",
-    component,
+    component: fab,
     attrs: {
       icon: {
         msvg: iconAlarm
@@ -58,7 +58,7 @@ export const tests = [
   },
   {
     name: "Option: style (colors)",
-    component,
+    component: fab,
     attrs: {
       icon: {
         msvg: iconAlarm
@@ -71,7 +71,7 @@ export const tests = [
   },
   {
     name: "Option: mini",
-    component,
+    component: fab,
     attrs: {
       icon: {
         msvg: iconAlarm
@@ -81,7 +81,7 @@ export const tests = [
   },
   {
     name: "Option: z (0)",
-    component,
+    component: fab,
     attrs: {
       icon: {
         msvg: iconAlarm
@@ -91,7 +91,7 @@ export const tests = [
   },
   {
     name: "Option: z (5)",
-    component,
+    component: fab,
     attrs: {
       icon: {
         msvg: iconAlarm
@@ -103,7 +103,7 @@ export const tests = [
     name: "Option: animateOnTap (false)",
     interactive: true,
     exclude: true,
-    component,
+    component: fab,
     attrs: {
       icon: {
         msvg: iconAlarm
@@ -114,7 +114,7 @@ export const tests = [
   {
     name: "Option: url",
     interactive: true,
-    component,
+    component: fab,
     attrs: {
       icon: {
         msvg: iconAlarm
@@ -130,7 +130,7 @@ export const tests = [
 
   {
     name: "Option: icon -- dark theme",
-    component,
+    component: fab,
     class: "pe-dark-theme",
     attrs: {
       icon: {
@@ -140,7 +140,7 @@ export const tests = [
   },
   {
     name: "Themed FAB -- dark theme",
-    component,
+    component: fab,
     class: "pe-dark-theme",
     attrs: {
       icon: {

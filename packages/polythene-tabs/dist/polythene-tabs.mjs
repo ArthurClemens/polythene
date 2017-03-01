@@ -3,9 +3,9 @@ import { filterSupportedAttributes, isTouch, subscribe, unsubscribe } from 'poly
 import { scrollTo } from 'polythene-utilities';
 import { flex, mixin, styler } from 'polythene-css';
 import { vars } from 'polythene-theme';
-import { button, vars as vars$1 } from 'polythene-button';
-import { iconButton, vars as vars$2 } from 'polythene-icon-button';
-import { icon } from 'polythene-icon';
+import button, { vars as vars$1 } from 'polythene-button';
+import iconButton, { vars as vars$2 } from 'polythene-icon-button';
+import icon from 'polythene-icon';
 
 var rgba = vars.rgba;
 
@@ -681,4 +681,4 @@ var tabs = {
   }
 };
 
-export { tabs, classes, vars$3 as vars };
+export { classes, vars$3 as vars };export default tabs;

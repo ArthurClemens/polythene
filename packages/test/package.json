@@ -11,7 +11,7 @@
     "build": "webpack -p --config scripts/webpack.config.js",
     "serve": "http-server -p 8080 dist/",
     "test": "../../node_modules/jest/bin/jest.js tests/**",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch --no-watchman"
   },
   "dependencies": {
     "fastclick": "^1.0.6",

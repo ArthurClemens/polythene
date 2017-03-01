@@ -1,6 +1,6 @@
 import m from 'mithril';
-import { icon } from 'polythene-icon';
-import { button } from 'polythene-button';
+import icon from 'polythene-icon';
+import button from 'polythene-button';
 import { styler } from 'polythene-css';
 import { vars } from 'polythene-theme';
 
@@ -128,4 +128,4 @@ var iconButton = {
   view: view
 };
 
-export { iconButton, classes, vars$1 as vars };
+export { classes, vars$1 as vars };export default iconButton;

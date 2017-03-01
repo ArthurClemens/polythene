@@ -1,6 +1,6 @@
 import m from "mithril";
-import { raisedButton } from "polythene-raised-button";
-import { icon } from "polythene-icon";
+import raisedButton from "polythene-raised-button";
+import icon from "polythene-icon";
 import { customTheme } from "./theme";
 
 export const classes = {
@@ -31,9 +31,7 @@ const view = vnode => {
         center: true,
         opacityDecayVelocity: 0.24
       },
-      shadow: {
-        increase: 5
-      },
+      shadow: { increase: 5 },
       ink: true,
       wash: true,
       animateOnTap: attrs.animateOnTap !== undefined
@@ -44,7 +42,7 @@ const view = vnode => {
   ));
 };
 
-export const fab = {
+export default {
   theme: customTheme, // accepts (selector, vars)
   view
 };

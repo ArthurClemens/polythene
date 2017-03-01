@@ -25,8 +25,8 @@ or:
 To show a toolbar with a label and 3 icon buttons:
 
 ~~~javascript
-import { toolbar } from "polythene-toolbar";
-import { iconButton } from "polythene-icon-button";
+import toolbar from "polythene-toolbar";
+import iconButton from "polythene-icon-button";
 import gIconMenu from "mmsvg/google/msvg/navigation/menu";
 import gIconRefresh from "mmsvg/google/msvg/navigation/refresh";
 import gIconAdd from "mmsvg/google/msvg/content/add";
@@ -66,8 +66,8 @@ This positions the title as if it would be next to an icon.
 ### Shadow
 
 ~~~javascript
-import { toolbar } from "polythene-toolbar";
-import { shadow } from "polythene-shadow";
+import toolbar from "polythene-toolbar";
+import shadow from "polythene-shadow";
 
 const toolbarRow = [
   // buttons and title

@@ -10,7 +10,7 @@ To create an unselected checkbox with `name` and `value` attributes:
 
 ~~~javascript
 import m from "mithril";
-import { checkbox } from "polythene-checkbox";
+import checkbox from "polythene-checkbox";
 
 m(checkbox, {
   name: "organisation",

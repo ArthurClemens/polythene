@@ -1,7 +1,7 @@
 import { multiple } from "polythene-core";
 import instance from "./dialog-instance";
 
-export const dialog = multiple({
+export default multiple({
   instance,
   defaultId:     "default_dialog",
   element:       ".pe-dialog__holder",

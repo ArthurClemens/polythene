@@ -1,5 +1,5 @@
 import m from "mithril";
-import { button } from "polythene-button";
+import button from "polythene-button";
 import { styler } from "polythene-css";
 
 const styles = [{
@@ -10,7 +10,7 @@ const styles = [{
 }];
 styler.add("secondary-button", styles);
 
-export const secondaryButton = {
+export default {
   view: vnode => m(button, {
     class: "secondary-button",
     borders: true,

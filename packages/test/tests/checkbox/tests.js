@@ -1,9 +1,9 @@
 import m from "mithril";
-import { checkbox as component } from "polythene-checkbox";
+import checkbox from "polythene-checkbox";
 import iconStarOutline from "mmsvg/google/msvg/toggle/star-border";
 import iconStar from "mmsvg/google/msvg/toggle/star";
 
-component.theme(".tests-checkbox-themed-checkbox", {
+checkbox.theme(".tests-checkbox-themed-checkbox", {
   label_font_size: 28,
   color_light_on: "#2196F3",
   color_light_off: "#2196F3",
@@ -16,7 +16,7 @@ component.theme(".tests-checkbox-themed-checkbox", {
 const sizeNames = ["small", "regular", "medium", "large"];
 
 const sizes = (sizes, attrs) => sizes.map(size =>
-  m(component, {
+  m(checkbox, {
     ...attrs,
     label: size,
     size
@@ -26,21 +26,21 @@ const sizes = (sizes, attrs) => sizes.map(size =>
 export const tests = [
   {
     name: "Option: label",
-    component,
+    component: checkbox,
     attrs: {
       label: "Label"
     }
   },
   {
     name: "Option: checked",
-    component,
+    component: checkbox,
     attrs: {
       checked: true
     }
   },
   {
     name: "Option: value",
-    component,
+    component: checkbox,
     attrs: {
       name: "worth",
       value: "notable"
@@ -62,7 +62,7 @@ export const tests = [
   },
   {
     name: "Themed checkbox (color and font size)",
-    component,
+    component: checkbox,
     attrs: {
       label: "Label",
       class: "tests-checkbox-themed-checkbox"
@@ -70,7 +70,7 @@ export const tests = [
   },
   {
     name: "Option: style (colors)",
-    component,
+    component: checkbox,
     attrs: {
       label: "Label",
       style: {
@@ -103,11 +103,11 @@ export const tests = [
     interactive: true,
     component: {
       view: () => [
-        m(component, {
+        m(checkbox, {
           disabled: true,
           label: "Off"
         }),
-        m(component, {
+        m(checkbox, {
           disabled: true,
           checked: true,
           label: "On"
@@ -120,11 +120,11 @@ export const tests = [
     interactive: true,
     component: {
       view: () => [
-        m(component, {
+        m(checkbox, {
           selectable: () => false,
           label: "Never"
         }),
-        m(component, {
+        m(checkbox, {
           selectable: checked => !checked,
           label: "Only when unchecked"
         })
@@ -134,7 +134,7 @@ export const tests = [
   {
     name: "Option: iconButton (custom hover behaviour)",
     interactive: true,
-    component,
+    component: checkbox,
     attrs: {
       iconButton: {
         wash: true,
@@ -155,7 +155,7 @@ export const tests = [
             marginBottom: "1rem"
           }
         },`Checked: ${vnode.state.checked}`),
-        m(component, {
+        m(checkbox, {
           getState: state => vnode.state.checked = state.checked
         })
       ]
@@ -169,11 +169,11 @@ export const tests = [
       oninit: vnode =>
         vnode.state.checked = false,
       view: vnode => [
-        m(component, {
+        m(checkbox, {
           label: "Initiator",
           getState: state => vnode.state.checked = state.checked
         }),
-        m(component, {
+        m(checkbox, {
           label: "Result",
           disabled: true,
           checked: () => vnode.state.checked
@@ -194,7 +194,7 @@ export const tests = [
             marginBottom: "1rem"
           }
         },`Checked: ${vnode.state.checked}`),
-        m(component, {
+        m(checkbox, {
           events: {
             onclick: () => vnode.state.checked = !vnode.state.checked
           }
@@ -208,7 +208,7 @@ export const tests = [
   {
     name: "Option: checked -- dark theme",
     class: "pe-dark-theme",
-    component,
+    component: checkbox,
     attrs: {
       checked: true
     }
@@ -216,7 +216,7 @@ export const tests = [
   {
     name: "Themed checkbox (colors) -- dark theme",
     class: "pe-dark-theme",
-    component,
+    component: checkbox,
     attrs: {
       label: "Label",
       class: "tests-checkbox-themed-checkbox"
@@ -227,11 +227,11 @@ export const tests = [
     class: "pe-dark-theme",
     component: {
       view: () => [
-        m(component, {
+        m(checkbox, {
           disabled: true,
           label: "Off"
         }),
-        m(component, {
+        m(checkbox, {
           disabled: true,
           checked: true,
           label: "On"

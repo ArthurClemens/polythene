@@ -1,7 +1,7 @@
 import m from "mithril";
 import { filterSupportedAttributes, subscribe, unsubscribe, show, hide } from "polythene-core";
-import { dialog } from "./dialog";
-import { shadow } from "polythene-shadow";
+import dialog from "./dialog";
+import shadow from "polythene-shadow";
 import { customTheme } from "./theme";
 
 export const classes = {

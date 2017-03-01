@@ -1,9 +1,9 @@
 import m from "mithril";
 import { rules as css } from "./styles";
 import { tidy } from "../scripts/render";
-import { toolbar } from "polythene-toolbar";
-import { iconButton } from "polythene-icon-button";
-import { dialog } from "polythene-dialog";
+import toolbar from "polythene-toolbar";
+import iconButton from "polythene-icon-button";
+import dialog from "polythene-dialog";
 import iconBack from "mmsvg/google/msvg/navigation/arrow-back";
 
 const generatedHtml = {

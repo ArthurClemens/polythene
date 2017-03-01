@@ -14,7 +14,7 @@ Use option `msvg`:
 
 ~~~javascript
 import m from "mithril";
-import { icon } from "polythene-icon";
+import icon from "polythene-icon";
 import gIconStars from "mmsvg/google/action/stars";
 
 const myIcon = m(icon, {
@@ -48,7 +48,7 @@ const myIcon = m(icon, {
 ### Using image files
 
 ~~~javascript
-import { icon } from "polythene-icon";
+import icon from "polythene-icon";
 
 const myIcon = m(icon, {
   src: "img/arrow.png"

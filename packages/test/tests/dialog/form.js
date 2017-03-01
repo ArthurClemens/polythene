@@ -1,6 +1,6 @@
 import m from "mithril";
-import { dialog } from "polythene-dialog";
-import { button } from "polythene-button";
+import dialog from "polythene-dialog";
+import button from "polythene-button";
 import { commonDialogProps } from "./shared";
 
 let hasValue = false;

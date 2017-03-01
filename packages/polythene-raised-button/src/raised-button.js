@@ -1,6 +1,6 @@
 import m from "mithril";
-import { button } from "polythene-button";
-import { shadow } from "polythene-shadow";
+import button from "polythene-button";
+import shadow from "polythene-shadow";
 import { isTouch, touchStartEvent, touchEndEvent, subscribe } from "polythene-core";
 import { customTheme } from "./theme";
 
@@ -91,7 +91,7 @@ const view = vnode => {
   ));
 };
 
-export const raisedButton = {
+export default {
   theme: customTheme, // accepts (selector, vars)
   oninit: vnode => {
     const z = (vnode.attrs.z !== undefined) ? vnode.attrs.z : 1;

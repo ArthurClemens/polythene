@@ -2,7 +2,7 @@
 
 ## Module imports
 
-Polythene is now a monorepo with an npm package for each component. The module imports have changed to named imports:
+Polythene is now a monorepo with an npm package for each component. The module imports no longer contain a path:
 
 ### v0.2
 
@@ -13,7 +13,7 @@ import button from "polythene/button/button";
 ### v1.x
 
 ```javascript
-import { button } from "polythene-button";
+import button from "polythene-button";
 ```
 
 
@@ -126,7 +126,7 @@ const myListTile = m(listTile, {
 #### v1.x
 
 ```javascript
-import { listTile } from "polythene-list-tile";
+import listTile from "polythene-list-tile";
 
 const myListTile1 = m(listTile, {
   content: "My content"
@@ -174,7 +174,7 @@ const myButton = m(button, {
 #### v1.x
 
 ```javascript
-import { raisedButton } from "polythene-raised-button";
+import raisedButton from "polythene-raised-button";
 
 const myButton = m(raisedButton, {
   label: "Label"
@@ -214,7 +214,7 @@ Dynamic loading and preloading have been removed, as these are not frequent use 
 `switch` has been renamed to `switchButton` in order to import it without surprises (`switch` is a reserved keyword):
 
 ~~~javascript
-import { switchButton } from "polythene-switch-button";
+import switchButton from "polythene-switch-button";
 ~~~
 
 
@@ -254,7 +254,7 @@ export default {
 
 ~~~javascript
 // any script
-import { button } from "polythene-button";
+import button from "polythene-button";
 
 button.theme("blue-button", {
   color_light_normal_background: "blue",

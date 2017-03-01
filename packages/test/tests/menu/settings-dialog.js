@@ -1,8 +1,8 @@
 import m from "mithril";
-import { dialog } from "polythene-dialog";
-import { raisedButton } from "polythene-raised-button";
-import { list } from "polythene-list";
-import { listTile } from "polythene-list-tile";
+import dialog from "polythene-dialog";
+import raisedButton from "polythene-raised-button";
+import list from "polythene-list";
+import listTile from "polythene-list-tile";
 
 const tile = (title, selected, disabled) =>
   m(listTile, {

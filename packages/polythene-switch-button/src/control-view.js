@@ -1,6 +1,6 @@
 import m from "mithril";
-import { shadow } from "polythene-shadow";
-import { iconButton } from "polythene-icon-button";
+import shadow from "polythene-shadow";
+import iconButton from "polythene-icon-button";
 
 export const classes = {
   track:  "pe-switch-control__track",

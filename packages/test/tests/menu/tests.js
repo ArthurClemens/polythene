@@ -1,7 +1,7 @@
 import m from "mithril";
-import { menu } from "polythene-menu";
-import { list } from "polythene-list";
-import { listTile } from "polythene-list-tile";
+import menu from "polythene-menu";
+import list from "polythene-list";
+import listTile from "polythene-list-tile";
 import simpleMenuComponent, { simpleMenuContent } from "./simple";
 import sizesMenu from "./sizes";
 import menuItems from "./menu-items";

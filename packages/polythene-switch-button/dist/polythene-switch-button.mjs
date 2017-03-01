@@ -1,7 +1,7 @@
 import m from 'mithril';
 import { color, layout, selectionControl, vars } from 'polythene-selection-control';
-import { shadow } from 'polythene-shadow';
-import { iconButton, vars as vars$1 } from 'polythene-icon-button';
+import shadow from 'polythene-shadow';
+import iconButton, { vars as vars$1 } from 'polythene-icon-button';
 import { mixin, styler } from 'polythene-css';
 import { vars as vars$2 } from 'polythene-theme';
 
@@ -274,4 +274,4 @@ var switchButton = {
   view: view
 };
 
-export { switchButton, classes$$1 as classes, controlView, classes$1 as controlViewClasses, vars$3 as vars };
+export { classes$$1 as classes, controlView, classes$1 as controlViewClasses, vars$3 as vars };export default switchButton;

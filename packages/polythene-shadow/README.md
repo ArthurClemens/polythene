@@ -8,7 +8,7 @@ Adds a configurable shadow to an element.
 
 ~~~javascript
 import m from "mithril";
-import { shadow } from "polythene-shadow";
+import shadow from "polythene-shadow";
 
 const myShadow = m.component(shadow);
 ~~~

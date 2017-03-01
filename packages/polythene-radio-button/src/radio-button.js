@@ -17,7 +17,7 @@ const view = vnode => {
   });
 };
 
-export const radioButton = {
+export default {
   theme: customTheme, // accepts (selector, vars)
   view
 };

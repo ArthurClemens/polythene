@@ -1,6 +1,6 @@
 import m from "mithril";
-import { icon } from "polythene-icon";
-import { button } from "polythene-button";
+import icon from "polythene-icon";
+import button from "polythene-button";
 import { customTheme } from "./theme";
 
 export const classes = {
@@ -32,7 +32,7 @@ const view = vnode => {
   ));
 };
 
-export const iconButton = {
+export default {
   theme: customTheme, // accepts (selector, vars)
   view
 };

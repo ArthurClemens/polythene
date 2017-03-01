@@ -1,6 +1,6 @@
 import m from "mithril";
-import { button } from "polythene-button";
-import { icon } from "polythene-icon";
+import button from "polythene-button";
+import icon from "polythene-icon";
 import { classes } from "./tabs";
 
 const view = vnode => {
@@ -44,6 +44,6 @@ const view = vnode => {
   return m(button, tabButtonOptions);
 };
 
-export const tab = {
+export default {
   view
 };

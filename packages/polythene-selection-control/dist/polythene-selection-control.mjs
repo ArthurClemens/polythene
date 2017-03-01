@@ -1,7 +1,7 @@
 import m from 'mithril';
 import { filterSupportedAttributes } from 'polythene-core';
-import { icon } from 'polythene-icon';
-import { iconButton } from 'polythene-icon-button';
+import icon from 'polythene-icon';
+import iconButton from 'polythene-icon-button';
 import { vars } from 'polythene-theme';
 import { flex, mixin } from 'polythene-css';
 

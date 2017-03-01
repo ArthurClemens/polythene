@@ -1,17 +1,17 @@
 import m from "mithril";
-import { button as component } from "polythene-button";
+import button from "polythene-button";
 
-component.theme(".tests-button-themed-button", {
+button.theme(".tests-button-themed-button", {
   color_light_background: "#2196F3",
   color_dark_background: "#2196F3",
   color_light_text: "#fff"
 });
 
-component.theme(".blue-on-dark-button", {
+button.theme(".blue-on-dark-button", {
   color_dark_text: "#1976D2"
 });
 
-component.theme(".tests-button-bordered-button", {
+button.theme(".tests-button-bordered-button", {
   color_light_text: "#673ab7",
   color_light_border: "#673ab7",
   color_dark_text: "yellow",
@@ -21,14 +21,14 @@ component.theme(".tests-button-bordered-button", {
 export const tests = [
   {
     name: "Option: label",
-    component,
+    component: button,
     attrs: {
       label: "Label"
     }
   },
   {
     name: "Themed button: (option: borders)",
-    component,
+    component: button,
     attrs: {
       label: "Borders",
       class: "tests-button-bordered-button",
@@ -37,7 +37,7 @@ export const tests = [
   },
   {
     name: "Themed button (colors)",
-    component,
+    component: button,
     attrs: {
       label: "Themed button",
       class: "tests-button-themed-button"
@@ -45,7 +45,7 @@ export const tests = [
   },
   {
     name: "Option: style (colors)",
-    component,
+    component: button,
     attrs: {
       label: "Styled",
       style: {
@@ -57,7 +57,7 @@ export const tests = [
   {
     name: "Option: wash (false)",
     interactive: true,
-    component,
+    component: button,
     attrs: {
       label: "No wash",
       wash: false
@@ -66,7 +66,7 @@ export const tests = [
   {
     name: "Option: ink (false)",
     interactive: true,
-    component,
+    component: button,
     attrs: {
       label: "No ink",
       ink: false
@@ -75,7 +75,7 @@ export const tests = [
   {
     name: "Option: disabled (true)",
     interactive: true,
-    component,
+    component: button,
     attrs: {
       label: "Disabled",
       disabled: true
@@ -84,7 +84,7 @@ export const tests = [
   {
     name: "Option: disabled (false)",
     interactive: true,
-    component,
+    component: button,
     attrs: {
       label: "Not disabled",
       disabled: false
@@ -92,7 +92,7 @@ export const tests = [
   },
   {
     name: "Option: selected",
-    component,
+    component: button,
     attrs: {
       label: "Selected",
       selected: true
@@ -100,7 +100,7 @@ export const tests = [
   },
   {
     name: "Option: formaction",
-    component,
+    component: button,
     attrs: {
       label: "Form action",
       formaction: "http://polythene.js.org"
@@ -109,7 +109,7 @@ export const tests = [
   {
     name: "Option: url (with oncreate)",
     interactive: true,
-    component,
+    component: button,
     attrs: {
       label: "Go to /#/shadow",
       url: {
@@ -121,7 +121,7 @@ export const tests = [
   {
     name: "Option: url (without oncreate)",
     interactive: true,
-    component,
+    component: button,
     attrs: {
       label: "Go to /shadow",
       url: {
@@ -138,7 +138,7 @@ export const tests = [
         vnode.state.updated = 0,
       view: vnode => [
         m("div", `Updated: ${vnode.state.updated}`),
-        m(component, {
+        m(button, {
           label: "Button",
           onbeforeupdate: () => vnode.state.updated++
         })
@@ -154,7 +154,7 @@ export const tests = [
         vnode.state.clicked = 0,
       view: vnode => [
         m("div", `onclick called: ${vnode.state.clicked}`),
-        m(component, {
+        m(button, {
           label: "Button",
           events: {
             onclick: () => vnode.state.clicked++
@@ -172,7 +172,7 @@ export const tests = [
         vnode.state.clickCount = 0,
       view: vnode => [
         m("div", `onclick called: ${vnode.state.clickCount}`),
-        m(component, {
+        m(button, {
           label: "Button",
           events: {
             onclick: () => vnode.state.clickCount++
@@ -184,7 +184,7 @@ export const tests = [
   {
     name: "Option: inactive (false)",
     interactive: true,
-    component,
+    component: button,
     attrs: {
       label: "Not inactive",
       inactive: false
@@ -193,7 +193,7 @@ export const tests = [
   {
     name: "Option: inactive (true)",
     interactive: true,
-    component,
+    component: button,
     attrs: {
       label: "Inactive",
       inactive: true
@@ -202,7 +202,7 @@ export const tests = [
   {
     name: "Option: inactivate (2)",
     interactive: true,
-    component,
+    component: button,
     attrs: {
       label: "Inactivated for 2s",
       inactivate: 2
@@ -214,7 +214,7 @@ export const tests = [
   {
     name: "Option: label -- dark theme",
     class: "pe-dark-theme",
-    component,
+    component: button,
     attrs: {
       label: "Label"
     }
@@ -222,7 +222,7 @@ export const tests = [
   {
     name: "Themed button -- dark theme",
     class: "pe-dark-theme",
-    component,
+    component: button,
     attrs: {
       label: "Themed button",
       class: "tests-button-themed-button"
@@ -231,7 +231,7 @@ export const tests = [
   {
     name: "Themed button blue on dark -- dark theme",
     class: "pe-dark-theme",
-    component,
+    component: button,
     attrs: {
       label: "Blue on dark button",
       class: "blue-on-dark-button"
@@ -240,7 +240,7 @@ export const tests = [
   {
     name: "Themed button: (option: borders) -- dark theme",
     class: "pe-dark-theme",
-    component,
+    component: button,
     attrs: {
       label: "Borders dark theme",
       class: "tests-button-bordered-button",

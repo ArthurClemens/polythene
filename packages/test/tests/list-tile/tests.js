@@ -1,9 +1,9 @@
 import m from "mithril";
-import { listTile as component } from "polythene-list-tile";
-import { icon } from "polythene-icon";
+import listTile from "polythene-list-tile";
+import icon from "polythene-icon";
 import iconStars from "mmsvg/google/msvg/action/stars";
 
-component.theme(".tests-list-tile-themed-list-tile", {
+listTile.theme(".tests-list-tile-themed-list-tile", {
   color_light_title:      "#424242",
   color_light_background: "#FFECB3",
   color_dark_title:       "#FFECB3",
@@ -14,20 +14,20 @@ component.theme(".tests-list-tile-themed-list-tile", {
 export const tests = [
   {
     name: "Child node",
-    component,
+    component: listTile,
     attrs: null,
     children: m(icon, {msvg: iconStars})
   },
   {
     name: "Option: title",
-    component,
+    component: listTile,
     attrs: {
       title: "Ancillary Justice"
     }
   },
   {
     name: "Option: content",
-    component,
+    component: listTile,
     attrs: {
       title: "Ancillary Justice",
       content: m(icon, {msvg: iconStars})
@@ -35,7 +35,7 @@ export const tests = [
   },
   {
     name: "Option: subtitle",
-    component,
+    component: listTile,
     attrs: {
       title: "Ancillary Justice",
       subtitle: "The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before."
@@ -43,7 +43,7 @@ export const tests = [
   },
   {
     name: "Option: highSubtitle",
-    component,
+    component: listTile,
     attrs: {
       title: "Ancillary Justice",
       highSubtitle: "The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before."
@@ -51,7 +51,7 @@ export const tests = [
   },
   {
     name: "Option: highSubtitle and compact",
-    component,
+    component: listTile,
     attrs: {
       title: "Ancillary Justice",
       highSubtitle: "The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before.",
@@ -61,7 +61,7 @@ export const tests = [
   {
     name: "Option: events",
     interactive: true,
-    component,
+    component: listTile,
     attrs: {
       title: "Click me",
       events: {
@@ -72,7 +72,7 @@ export const tests = [
   {
     name: "Option: href",
     interactive: true,
-    component,
+    component: listTile,
     attrs: {
       title: "Ancillary Justice",
       url: {
@@ -83,7 +83,7 @@ export const tests = [
   },
   {
     name: "Option: front (avatar)",
-    component,
+    component: listTile,
     attrs: {
       title: "Ancillary Justice",
       front: m(icon, {
@@ -95,7 +95,7 @@ export const tests = [
   },
   {
     name: "Option: front (icon)",
-    component,
+    component: listTile,
     attrs: {
       title: "Ancillary Justice",
       front: m(icon, {
@@ -106,7 +106,7 @@ export const tests = [
   },
   {
     name: "Themed (color and font size)",
-    component,
+    component: listTile,
     attrs: {
       title: "Ancillary Justice",
       front: m(icon, {
@@ -121,7 +121,7 @@ export const tests = [
   
   {
     name: "Option: highSubtitle and front",
-    component,
+    component: listTile,
     attrs: {
       title: "Ancillary Justice",
       highSubtitle: "The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before.",
@@ -146,7 +146,7 @@ export const tests = [
 
   {
     name: "Option: indent",
-    component,
+    component: listTile,
     attrs: {
       title: "Ancillary Justice",
       indent: true
@@ -154,7 +154,7 @@ export const tests = [
   },
   {
     name: "Option: selected",
-    component,
+    component: listTile,
     attrs: {
       title: "Ancillary Justice",
       selected: true
@@ -163,7 +163,7 @@ export const tests = [
   {
     name: "Option: disabled url",
     interactive: true,
-    component,
+    component: listTile,
     attrs: {
       title: "Ancillary Justice",
       url: {
@@ -176,7 +176,7 @@ export const tests = [
   {
     name: "Option: ink",
     interactive: true,
-    component,
+    component: listTile,
     attrs: {
       title: "Ancillary Justice",
       ink: true
@@ -185,7 +185,7 @@ export const tests = [
   {
     name: "Option: ink with ripple options",
     interactive: true,
-    component,
+    component: listTile,
     attrs: {
       title: "Ancillary Justice",
       ink: true,
@@ -197,7 +197,7 @@ export const tests = [
   {
     name: "Option: hoverable",
     interactive: true,
-    component,
+    component: listTile,
     attrs: {
       title: "Ancillary Justice",
       hoverable: true
@@ -206,7 +206,7 @@ export const tests = [
   {
     name: "Option: selectable",
     interactive: true,
-    component,
+    component: listTile,
     attrs: {
       title: "Ancillary Justice",
       selectable: true
@@ -217,7 +217,7 @@ export const tests = [
 
   {
     name: "Option: secondary (element)",
-    component,
+    component: listTile,
     attrs: {
       title: "Ancillary Justice",
       secondary: {
@@ -227,7 +227,7 @@ export const tests = [
   },
   {
     name: "Option: secondary (icon)",
-    component,
+    component: listTile,
     attrs: {
       title: "Ancillary Justice",
       secondary: {
@@ -241,7 +241,7 @@ export const tests = [
   {
     name: "Option: secondary (url)",
     interactive: true,
-    component,
+    component: listTile,
     attrs: {
       title: "Ancillary Justice",
       secondary: {
@@ -258,7 +258,7 @@ export const tests = [
   },
   {
     name: "Option: secondary (content)",
-    component,
+    component: listTile,
     attrs: {
       title: "Ancillary Justice",
       secondary: {
@@ -271,7 +271,7 @@ export const tests = [
 
   {
     name: "Option: highSubtitle and front -- dark theme",
-    component,
+    component: listTile,
     class: "pe-dark-theme",
     attrs: {
       title: "Ancillary Justice",
@@ -294,7 +294,7 @@ export const tests = [
   },
   {
     name: "Option: disabled url -- dark theme",
-    component,
+    component: listTile,
     class: "pe-dark-theme",
     attrs: {
       title: "Ancillary Justice",
@@ -303,7 +303,7 @@ export const tests = [
   },
   {
     name: "Themed (color and font size) -- dark theme",
-    component,
+    component: listTile,
     class: "pe-dark-theme",
     attrs: {
       title: "Ancillary Justice",

@@ -3,8 +3,8 @@ import { filterSupportedAttributes } from "polythene-core";
 import { isTouch, subscribe, unsubscribe } from "polythene-core";
 import { scrollTo } from "polythene-utilities";
 import { customTheme } from "./theme";
-import { tab } from "./tab";
-import { scrollButton } from "./scroll-button";
+import tab from "./tab";
+import scrollButton from "./scroll-button";
 import vars from "./theme/vars";
 
 export const classes = {
@@ -313,7 +313,7 @@ const view = vnode => {
   return m(element, props, [attrs.before, content, attrs.after]);
 };
 
-export const tabs = {
+export default {
   theme: customTheme, // accepts (selector, vars)
   view,
   oninit: vnode => {

@@ -63,7 +63,7 @@ const view = vnode => {
   return m(element, props, [attrs.before, content, attrs.after]);
 };
 
-export const ripple = {
+export default {
   theme: customTheme, // accepts (selector, vars)
   oninit: vnode => vnode.state.animating = false,
   oncreate: initRipple,

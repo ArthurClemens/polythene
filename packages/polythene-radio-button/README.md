@@ -10,7 +10,7 @@ To create an radio button group:
 
 ~~~javascript
 import m from "mithril";
-import { radioButton } from "polythene-radio-button";
+import radioButton from "polythene-radio-button";
 
 const radioGroup = {
   view: () => [

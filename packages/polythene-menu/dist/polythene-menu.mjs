@@ -1,5 +1,5 @@
 import m from 'mithril';
-import { shadow } from 'polythene-shadow';
+import shadow from 'polythene-shadow';
 import { filterSupportedAttributes, hide, show, subscribe, unsubscribe } from 'polythene-core';
 import { styler } from 'polythene-css';
 import { vars } from 'polythene-theme';
@@ -322,4 +322,4 @@ var menu = {
   }
 };
 
-export { menu, vars$1 as vars };
+export { classes, vars$1 as vars };export default menu;

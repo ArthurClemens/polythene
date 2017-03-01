@@ -10,7 +10,7 @@ See also: [Raised Button](../polythene-raised-button), [Icon Button](../polythen
 
 ~~~javascript
 import m from "mithril";
-import { button } from "polythene-button";
+import button from "polythene-button";
 
 const myButton = m(button, {
   label: "Button"

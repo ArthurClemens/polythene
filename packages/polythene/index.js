@@ -1,6 +1,6 @@
-export { button } from "polythene-button";
+export { default as button } from "polythene-button";
 
-export { checkbox } from "polythene-checkbox";
+export { default as checkbox } from "polythene-checkbox";
 
 export {
   defaultVariables,
@@ -18,35 +18,35 @@ export {
   styler
 } from "polythene-css";
 
-export { dialog } from "polythene-dialog";
+export { default as dialog } from "polythene-dialog";
 
-export { fab } from "polythene-fab";
+export { default as fab } from "polythene-fab";
 
-export { icon } from "polythene-icon";
+export { default as icon } from "polythene-icon";
 
-export { iconButton } from "polythene-icon-button";
+export { default as iconButton } from "polythene-icon-button";
 
-export { list } from "polythene-list";
+export { default as list } from "polythene-list";
 
-export { listTile } from "polythene-list-tile";
+export { default as listTile } from "polythene-list-tile";
 
-export { menu } from "polythene-menu";
+export { default as menu } from "polythene-menu";
 
-export { radioButton } from "polythene-radio-button";
+export { default as radioButton } from "polythene-radio-button";
 
-export { raisedButton } from "polythene-raised-button";
+export { default as raisedButton } from "polythene-raised-button";
 
-export { ripple } from "polythene-ripple";
+export { default as ripple } from "polythene-ripple";
 
-export { shadow } from "polythene-shadow";
+export { default as shadow } from "polythene-shadow";
 
-export { svg } from "polythene-svg";
+export { default as svg } from "polythene-svg";
 
-export { switchButton } from "polythene-switch-button";
+export { default as switchButton } from "polythene-switch-button";
 
-export { tabs } from "polythene-tabs";
+export { default as tabs } from "polythene-tabs";
 
-export { toolbar } from "polythene-toolbar";
+export { default as toolbar } from "polythene-toolbar";
 
 export { easing, scrollTo, Timer } from "polythene-utilities";
 

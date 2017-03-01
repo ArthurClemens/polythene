@@ -22,7 +22,7 @@ const view = vnode => {
   return m(element, props, [attrs.before, content, attrs.after]);
 };
 
-export const svg = {
+export default {
   theme: customTheme, // accepts (selector, vars)
   view
 };

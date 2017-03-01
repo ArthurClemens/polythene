@@ -1,9 +1,9 @@
 import m from "mithril";
-import { list as component } from "polythene-list";
-import { listTile } from "polythene-list-tile";
-import { icon } from "polythene-icon";
+import list from "polythene-list";
+import listTile from "polythene-list-tile";
+import icon from "polythene-icon";
 
-component.theme(".tests-lists-themed-list", {
+list.theme(".tests-lists-themed-list", {
   color_light_background: "#F57C00",
   color_light_border:     "#F57C00",
   color_dark_background:  "#5D4037",
@@ -50,7 +50,7 @@ const listTileAli = m(listTile, {
 export const tests = [
   {
     name: "Child nodes",
-    component,
+    component: list,
     attrs: {
       borders: true
     },
@@ -67,7 +67,7 @@ export const tests = [
   },
   {
     name: "Option: header",
-    component,
+    component: list,
     attrs: {
       header: {
         title: "My header"
@@ -76,7 +76,7 @@ export const tests = [
   },
   {
     name: "Option: tiles",
-    component,
+    component: list,
     attrs: {
       borders: true,
       tiles: [
@@ -93,7 +93,7 @@ export const tests = [
   },
   {
     name: "Options: tiles, indent, indentedBorders",
-    component,
+    component: list,
     attrs: {
       indentedBorders: true,
       header: {
@@ -119,7 +119,7 @@ export const tests = [
     interactive: true,
     component: {
       view: () => [
-        m(component, {
+        m(list, {
           header: {
             title: "Friends"
           },
@@ -129,7 +129,7 @@ export const tests = [
             listTileAli
           ]
         }),
-        m(component, {
+        m(list, {
           header: {
             title: "Friends"
           },
@@ -145,7 +145,7 @@ export const tests = [
   {
     name: "Option: hoverable",
     interactive: true,
-    component,
+    component: list,
     attrs: {
       hoverable: true,
       borders: true,
@@ -167,7 +167,7 @@ export const tests = [
   {
     name: "Option: selectable",
     interactive: true,
-    component,
+    component: list,
     attrs: {
       selectable: true,
       borders: true,
@@ -188,7 +188,7 @@ export const tests = [
   },
   {
     name: "Option: compact",
-    component,
+    component: list,
     attrs: {
       compact: true,
       borders: true,
@@ -215,7 +215,7 @@ export const tests = [
     exclude: true,
     component: {
       view: () => m(".scrollable-list", [0,1,2,3,4].map(() => {
-        return m(component, {
+        return m(list, {
           header: {
             title: "Subheader",
             sticky: true
@@ -232,7 +232,7 @@ export const tests = [
   },
   {
     name: "Themed list (colors and padding)",
-    component,
+    component: list,
     attrs: {
       borders: true,
       class: "tests-lists-themed-list"
@@ -252,7 +252,7 @@ export const tests = [
   },
   {
     name: "Option: style (colors)",
-    component,
+    component: list,
     attrs: {
       header: { style: { color: "rgba(255,255,255,.8)"}, title: "Friends" },
       tiles: [
@@ -273,7 +273,7 @@ export const tests = [
     name: "Option: hoverable -- dark theme",
     interactive: true,
     class: "pe-dark-theme",
-    component,
+    component: list,
     attrs: {
       hoverable: true,
       borders: true,
@@ -294,7 +294,7 @@ export const tests = [
   },
   {
     name: "Themed list (colors and padding) -- dark theme",
-    component,
+    component: list,
     class: "pe-dark-theme",
     attrs: {
       borders: true,

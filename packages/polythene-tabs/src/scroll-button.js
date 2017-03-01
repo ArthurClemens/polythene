@@ -1,5 +1,5 @@
 import m from "mithril";
-import { iconButton } from "polythene-icon-button";
+import iconButton from "polythene-icon-button";
 import { arrowForward, arrowBackward } from "./theme";
 import { classes } from "./tabs";
 
@@ -20,6 +20,6 @@ const view = vnode => {
   });
 };
 
-export const scrollButton = {
+export default {
   view
 };

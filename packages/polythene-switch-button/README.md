@@ -10,7 +10,7 @@ To create an unselected switch with `name` and `value` attributes:
 
 ~~~javascript
 import m from "mithril";
-import { switchButton } from "polythene-switch-button";
+import switchButton from "polythene-switch-button";
 
 m(switchButton, {
   name: "organisation",

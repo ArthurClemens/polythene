@@ -1,8 +1,8 @@
 import m from "mithril";
-import { menu } from "polythene-menu";
-import { raisedButton } from "polythene-raised-button";
-import { list } from "polythene-list";
-import { listTile } from "polythene-list-tile";
+import menu from "polythene-menu";
+import raisedButton from "polythene-raised-button";
+import list from "polythene-list";
+import listTile from "polythene-list-tile";
 
 export const simpleMenuContent = m(list, [
   m(listTile, {

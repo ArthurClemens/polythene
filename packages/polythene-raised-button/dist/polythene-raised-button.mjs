@@ -1,6 +1,6 @@
 import m from 'mithril';
-import { button } from 'polythene-button';
-import { shadow } from 'polythene-shadow';
+import button from 'polythene-button';
+import shadow from 'polythene-shadow';
 import { isTouch, subscribe, touchEndEvent, touchStartEvent } from 'polythene-core';
 import { styler } from 'polythene-css';
 import { vars } from 'polythene-theme';
@@ -211,4 +211,4 @@ var raisedButton = {
   view: view
 };
 
-export { raisedButton, classes, vars$1 as vars };
+export { classes, vars$1 as vars };export default raisedButton;

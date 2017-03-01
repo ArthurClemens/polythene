@@ -1,6 +1,6 @@
 import m from "mithril";
-import { icon } from "polythene-icon";
-import { ripple } from "polythene-ripple";
+import icon from "polythene-icon";
+import ripple from "polythene-ripple";
 import { filterSupportedAttributes } from "polythene-core";
 import { customTheme } from "./theme";
 
@@ -134,7 +134,7 @@ const view = vnode => {
   return m(element, props, [attrs.before, content, attrs.after]);
 };
 
-export const listTile = {
+export default {
   theme: customTheme, // accepts (selector, vars)
   view
 };

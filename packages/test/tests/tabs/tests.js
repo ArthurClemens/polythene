@@ -1,5 +1,5 @@
 import m from "mithril";
-import { tabs as component} from "polythene-tabs";
+import tabs from "polythene-tabs";
 
 import iconHeart from "mmsvg/templarian/msvg/heart";
 import iconBell from "mmsvg/templarian/msvg/bell";
@@ -12,12 +12,12 @@ import iconSettings from "mmsvg/templarian/msvg/settings";
 import arrowBack from "mmsvg/google/msvg/navigation/arrow-back";
 import arrowForward from "mmsvg/google/msvg/navigation/arrow-forward";
 
-component.theme(".tests-tabs-fixed-width", {
+tabs.theme(".tests-tabs-fixed-width", {
   tab_max_width: 110,
   tab_min_width: 110
 });
 
-component.theme(".tests-tabs-custom_color", {
+tabs.theme(".tests-tabs-custom_color", {
   color_light: "#00BCD4",
   color_light_selected: "#F44336",
   color_light_tab_indicator: "#F44336",
@@ -83,27 +83,27 @@ const iconTextButtons = [
 export const tests = [
   {
     name: "Child node",
-    component,
+    component: tabs,
     attrs: null,
     children: threeButtons
   },
   {
     name: "Option: content",
-    component,
+    component: tabs,
     attrs: {
       content: threeButtons
     }
   },
   {
     name: "Option: buttons (text buttons)",
-    component,
+    component: tabs,
     attrs: {
       buttons: threeButtons
     }
   },
   {
     name: "Option: autofit (true)",
-    component,
+    component: tabs,
     attrs: {
       buttons: threeButtons,
       autofit: true
@@ -111,7 +111,7 @@ export const tests = [
   },
   {
     name: "Option: centered (no autofit)",
-    component,
+    component: tabs,
     attrs: {
       buttons: threeButtons,
       centered: true
@@ -119,7 +119,7 @@ export const tests = [
   },
   {
     name: "Option: largestWidth (no autofit)",
-    component,
+    component: tabs,
     attrs: {
       buttons: threeButtons,
       largestWidth: true
@@ -127,7 +127,7 @@ export const tests = [
   },
   {
     name: "Theme: small fixed width",
-    component,
+    component: tabs,
     attrs: {
       buttons: threeButtons,
       class: "tests-tabs-fixed-width",
@@ -136,7 +136,7 @@ export const tests = [
   },
   {
     name: "Option: selectedTab (1)",
-    component,
+    component: tabs,
     attrs: {
       buttons: threeButtons,
       autofit: true,
@@ -145,7 +145,7 @@ export const tests = [
   },
   {
     name: "Theme: custom colors",
-    component,
+    component: tabs,
     attrs: {
       buttons: threeButtons,
       autofit: true,
@@ -154,7 +154,7 @@ export const tests = [
   },
   {
     name: "Long labels: wrap to second line",
-    component,
+    component: tabs,
     attrs: {
       buttons: longLabels,
       autofit: true,
@@ -173,7 +173,7 @@ export const tests = [
             overflowX: "hidden",
             height: "48px"
           }
-        }, m(component, {
+        }, m(tabs, {
           buttons: longList,
           scrollable: true
         }))
@@ -191,7 +191,7 @@ export const tests = [
             overflowX: "hidden",
             height: "48px"
           }
-        }, m(component, {
+        }, m(tabs, {
           buttons: longList,
           scrollable: true,
           scrollIconBackward: { msvg: arrowBack },
@@ -223,7 +223,7 @@ export const tests = [
             }
           }, [1,2,3,4,5].map(() => m("p", "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."))
           ),
-          m(component, {
+          m(tabs, {
             buttons: menuButtons,
             menu: true,
             autofit: true,
@@ -238,7 +238,7 @@ export const tests = [
   {
     name: "Option: hideIndicator",
     interactive: true,
-    component,
+    component: tabs,
     attrs: {
       buttons: threeButtons,
       autofit: true,
@@ -248,7 +248,7 @@ export const tests = [
   {
     name: "Option: noIndicatorSlide",
     interactive: true,
-    component,
+    component: tabs,
     attrs: {
       buttons: threeButtons,
       autofit: true,
@@ -258,7 +258,7 @@ export const tests = [
   {
     name: "Option: tabsOpts (ink: false)",
     interactive: true,
-    component,
+    component: tabs,
     attrs: {
       buttons: threeButtons,
       autofit: true,
@@ -270,7 +270,7 @@ export const tests = [
   {
     name: "Option: activeSelected",
     interactive: true,
-    component,
+    component: tabs,
     attrs: {
       buttons: threeButtons,
       autofit: true,
@@ -279,7 +279,7 @@ export const tests = [
   },
   {
     name: "Option: tabsOpts (style - colors)",
-    component,
+    component: tabs,
     attrs: {
       buttons: threeButtons,
       autofit: true,
@@ -294,7 +294,7 @@ export const tests = [
   {
     name: "Tabs with icons",
     class: "small-result",
-    component,
+    component: tabs,
     attrs: {
       buttons: iconButtons,
       autofit: true
@@ -303,7 +303,7 @@ export const tests = [
   {
     name: "Tabs with icons and text",
     class: "small-result",
-    component,
+    component: tabs,
     attrs: {
       buttons: iconTextButtons,
       autofit: true
@@ -328,7 +328,7 @@ export const tests = [
           m("li", `${vnode.state.tab.index}`),
           m("li", `${JSON.stringify(vnode.state.tab.data)}`)
         ]),
-        m(component, {
+        m(tabs, {
           buttons: threeButtons,
           autofit: true,
           getState: s => vnode.state.tab = s
@@ -342,7 +342,7 @@ export const tests = [
   {
     name: "Option: buttons (text buttons) -- dark theme",
     class: "pe-dark-theme",
-    component,
+    component: tabs,
     attrs: {
       buttons: threeButtons
     }
@@ -351,7 +351,7 @@ export const tests = [
   {
     name: "Theme: custom colors -- dark theme",
     class: "pe-dark-theme",
-    component,
+    component: tabs,
     attrs: {
       buttons: threeButtons,
       autofit: true,
@@ -361,7 +361,7 @@ export const tests = [
   {
     name: "Tabs with icons -- dark theme",
     class: "small-result pe-dark-theme",
-    component,
+    component: tabs,
     attrs: {
       buttons: iconButtons,
       autofit: true
@@ -379,7 +379,7 @@ export const tests = [
             height: "48px",
             color: "#fff"
           }
-        }, m(component, {
+        }, m(tabs, {
           buttons: longList,
           scrollable: true
         }))

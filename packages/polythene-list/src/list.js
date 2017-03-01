@@ -1,5 +1,5 @@
 import m from "mithril";
-import { listTile } from "polythene-list-tile";
+import listTile from "polythene-list-tile";
 import { filterSupportedAttributes } from "polythene-core";
 import { customTheme } from "./theme";
 
@@ -52,7 +52,7 @@ const view = vnode => {
   return m(element, props, [attrs.before, content, attrs.after]);
 };
 
-export const list = {
+export default {
   theme: customTheme, // accepts (selector, vars)
   view
 };

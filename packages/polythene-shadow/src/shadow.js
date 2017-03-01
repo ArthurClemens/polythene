@@ -3,11 +3,11 @@ import { filterSupportedAttributes } from "polythene-core";
 import { customTheme } from "./theme";
 
 export const classes = {
-  component: "pe-shadow",
-  topShadow: "pe-shadow__top",
+  component:    "pe-shadow",
+  topShadow:    "pe-shadow__top",
   bottomShadow: "pe-shadow__bottom",
-  animated: "pe-shadow--animated",
-  depth_n: "pe-shadow--z-"
+  animated:     "pe-shadow--animated",
+  depth_n:      "pe-shadow--z-"
 };
 
 const view = vnode => {
@@ -40,7 +40,7 @@ const view = vnode => {
   return m(element, props, [attrs.before, shadowContent, attrs.after]);
 };
 
-export const shadow = {
+export default {
   theme: customTheme, // accepts (selector, vars)
   view
 };

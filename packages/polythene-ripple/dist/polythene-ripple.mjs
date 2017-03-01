@@ -201,4 +201,4 @@ var ripple = {
   view: view
 };
 
-export { ripple, classes, vars$1 as vars };
+export { classes, vars$1 as vars };export default ripple;

@@ -62,4 +62,4 @@ var svg = {
   view: view
 };
 
-export { svg, classes, vars };
+export { classes, vars };export default svg;

@@ -18,10 +18,10 @@ Because we are using state, this can be best created with a custom component whe
 
 ~~~javascript
 import m from "mithril";
-import { menu } from "polythene-menu";
-import { list } from "polythene-list";
-import { listTile } from "polythene-list-tile";
-import { raisedButton } from "polythene-raised-button";
+import menu from "polythene-menu";
+import list from "polythene-list";
+import listTile from "polythene-list-tile";
+import raisedButton from "polythene-raised-button";
 
 const content = m(list, [
   m(listTile, {
@@ -123,10 +123,10 @@ A dialog can be used as menu by passing param `menu` to the dialog component. Th
 
 ~~~javascript
 import m from "mithril";
-import { dialog } from "polythene-dialog";
-import { raisedButton } from "polythene-raised-button";
-import { list } from "polythene-list";
-import { listTile } from "polythene-list-tile";
+import dialog from "polythene-dialog";
+import raisedButton from "polythene-raised-button";
+import list from "polythene-list";
+import listTile from "polythene-list-tile";
 
 const tile = (title, selected, disabled) =>
   m(listTile, {
@@ -176,9 +176,9 @@ Similar to the simple menu, we keep track of the "open" state; we're adding the 
 
 ~~~javascript
 import m from "mithril";
-import { menu } from "polythene-menu";
-import { list } from "polythene-list";
-import { listTile } from "polythene-list-tile";
+import menu from "polythene-menu";
+import list from "polythene-list";
+import listTile from "polythene-list-tile";
 
 const menuOptions = [
   "Show all notification content",

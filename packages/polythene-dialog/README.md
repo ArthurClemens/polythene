@@ -12,7 +12,7 @@ Because a dialog should float on top of everything else, outside of the context 
 
 ~~~javascript
 import m from "mithril";
-import { dialog } from "polythene-dialog";
+import dialog from "polythene-dialog";
 
 const app = {
   view: () => [
@@ -57,8 +57,8 @@ Using a function ensures that the options are read afresh with the new state.
 
 ~~~javascript
 import m from "mithril";
-import { dialog } from "polythene-dialog";
-import { button } from "polythene-button";
+import dialog from "polythene-dialog";
+import button from "polythene-button";
 
 const footerButtons = [
   m(button, {

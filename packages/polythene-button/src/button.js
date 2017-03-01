@@ -1,5 +1,5 @@
 import m from "mithril";
-import { ripple } from "polythene-ripple";
+import ripple from "polythene-ripple";
 import { filterSupportedAttributes } from "polythene-core";
 import { customTheme } from "./theme";
 
@@ -102,7 +102,7 @@ const view = vnode => {
   return m(element, props, [attrs.before, content, attrs.after]);
 };
 
-export const button = {
+export default {
   theme: customTheme, // accepts (selector, vars)
   oninit: vnode => {
     vnode.state.focus = false;

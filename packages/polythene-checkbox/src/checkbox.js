@@ -17,7 +17,7 @@ const view = vnode => {
   });
 };
 
-export const checkbox = {
+export default {
   theme: customTheme, // accepts (selector, vars)
   view
 };

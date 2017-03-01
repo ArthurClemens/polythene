@@ -1,8 +1,8 @@
 
 import m from "mithril";
-import { list } from "polythene-list";
-import { dialog } from "polythene-dialog";
-import { listTile } from "polythene-list-tile";
+import list from "polythene-list";
+import dialog from "polythene-dialog";
+import listTile from "polythene-list-tile";
 import { commonDialogProps } from "./shared";
 
 const createListTile = (title) => {

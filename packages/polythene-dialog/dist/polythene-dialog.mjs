@@ -1,6 +1,6 @@
 import { filterSupportedAttributes, hide, multiple, show, subscribe, unsubscribe } from 'polythene-core';
 import m from 'mithril';
-import { shadow } from 'polythene-shadow';
+import shadow from 'polythene-shadow';
 import { flex, mixin, styler } from 'polythene-css';
 import { vars } from 'polythene-theme';
 
@@ -452,4 +452,4 @@ var dialog = multiple({
   bodyShowClass: "pe-dialog--open"
 });
 
-export { dialog, vars$1 as vars };
+export { classes, vars$1 as vars };export default dialog;

@@ -1,12 +1,12 @@
 import m from "mithril";
-import { toolbar as component, classes as toolbarClasses } from "polythene-toolbar";
-import { iconButton } from "polythene-icon-button";
-import { shadow } from "polythene-shadow";
+import toolbar, { classes as toolbarClasses } from "polythene-toolbar";
+import iconButton from "polythene-icon-button";
+import shadow from "polythene-shadow";
 import gIconMenu from "mmsvg/google/msvg/navigation/menu";
 import gIconRefresh from "mmsvg/google/msvg/navigation/refresh";
 import gIconAdd from "mmsvg/google/msvg/content/add";
 
-component.theme(".tests-toolbar-themed-toolbar", {
+toolbar.theme(".tests-toolbar-themed-toolbar", {
   color_dark_background: "#00c853"
 });
 
@@ -40,20 +40,20 @@ const toolbarRowIndentedTitle = [
 export const tests = [
   {
     name: "Child node",
-    component,
+    component: toolbar,
     attrs: null,
     children: toolbarRow
   },
   {
     name: "Option: content",
-    component,
+    component: toolbar,
     attrs: {
       content: toolbarRow
     }
   },
   {
     name: "Option: compact",
-    component,
+    component: toolbar,
     attrs: {
       compact: true,
       content: toolbarRow
@@ -61,21 +61,21 @@ export const tests = [
   },
   {
     name: "Title as span",
-    component,
+    component: toolbar,
     attrs: {
       content: toolbarTitleAsSpan
     }
   },
   {
     name: "Indented title",
-    component,
+    component: toolbar,
     attrs: {
       content: toolbarRowIndentedTitle
     }
   },
   {
     name: "Title at start",
-    component,
+    component: toolbar,
     attrs: {
       content: toolbarTitleAtStart
     }
@@ -89,7 +89,7 @@ export const tests = [
           position: "relative"
         }
       }, [
-        m(component, toolbarRow),
+        m(toolbar, toolbarRow),
         m(shadow)
       ])
     }
@@ -97,7 +97,7 @@ export const tests = [
   {
     name: "Option: style (colors and height)",
     class: "small-result",
-    component,
+    component: toolbar,
     attrs: {
       content: toolbarRow,
       style: {
@@ -113,7 +113,7 @@ export const tests = [
   {
     name: "Option: content -- dark theme",
     class: "pe-dark-theme",
-    component,
+    component: toolbar,
     attrs: {
       content: toolbarRow
     }
@@ -121,7 +121,7 @@ export const tests = [
   {
     name: "Themed",
     class: "pe-dark-theme",
-    component,
+    component: toolbar,
     attrs: {
       class: "tests-toolbar-themed-toolbar",
       content: toolbarRow

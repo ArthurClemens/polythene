@@ -1,6 +1,6 @@
 import m from 'mithril';
-import { raisedButton } from 'polythene-raised-button';
-import { icon } from 'polythene-icon';
+import raisedButton from 'polythene-raised-button';
+import icon from 'polythene-icon';
 import { mixin, styler } from 'polythene-css';
 import { vars } from 'polythene-theme';
 
@@ -109,9 +109,7 @@ var view = function view(vnode) {
       center: true,
       opacityDecayVelocity: 0.24
     },
-    shadow: {
-      increase: 5
-    },
+    shadow: { increase: 5 },
     ink: true,
     wash: true,
     animateOnTap: attrs.animateOnTap !== undefined ? attrs.animateOnTap : true
@@ -123,4 +121,4 @@ var fab = {
   view: view
 };
 
-export { fab, classes, vars$1 as vars };
+export { classes, vars$1 as vars };export default fab;

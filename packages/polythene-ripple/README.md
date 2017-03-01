@@ -29,8 +29,8 @@ Use parameter `after` to append the ripple to a Polythene content:
 
 ~~~javascript
 import m from "mithril";
-import { ripple } from "polythene-ripple";
-import { listTile } from "polythene-list-tile";
+import ripple from "polythene-ripple";
+import listTile from "polythene-list-tile";
 
 const myListTile = m(listTile, {
     title: "Title",

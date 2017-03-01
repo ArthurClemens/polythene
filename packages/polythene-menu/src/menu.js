@@ -1,9 +1,9 @@
 import m from "mithril";
-import { shadow } from "polythene-shadow";
+import shadow from "polythene-shadow";
 import { filterSupportedAttributes, subscribe, unsubscribe, show, hide } from "polythene-core";
 import { customTheme } from "./theme";
 
-const classes = {
+export const classes = {
   component:   "pe-menu",
   content:     "pe-menu__content",
   placeholder: "pe-menu__placeholder",
@@ -201,7 +201,7 @@ const createView = vnode => {
   return m(element, props, [attrs.before, content, attrs.after]);
 };
 
-export const menu = {
+export default {
   theme: customTheme, // accepts (selector, vars)
   oninit: vnode => {
     const attrs = vnode.attrs;

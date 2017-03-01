@@ -1,7 +1,7 @@
 import m from "mithril";
-import { button } from "polythene-button";
+import button from "polythene-button";
 import { styler } from "polythene-css";
-import { secondaryButton } from "./secondary-button";
+import secondaryButton from "./secondary-button";
 
 const myStyle = [{
   ".my-component": {

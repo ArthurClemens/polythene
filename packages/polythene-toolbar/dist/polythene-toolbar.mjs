@@ -112,4 +112,4 @@ var toolbar = {
   view: view
 };
 
-export { toolbar, classes, vars$1 as vars };
+export { classes, vars$1 as vars };export default toolbar;

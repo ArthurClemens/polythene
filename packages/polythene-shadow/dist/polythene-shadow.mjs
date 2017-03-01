@@ -96,4 +96,4 @@ var shadow = {
   view: view
 };
 
-export { shadow, classes, vars$1 as vars };
+export { classes, vars$1 as vars };export default shadow;

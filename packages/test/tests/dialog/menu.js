@@ -1,8 +1,8 @@
 import m from "mithril";
-import { dialog } from "polythene-dialog";
-import { icon } from "polythene-icon";
-import { list } from "polythene-list";
-import { listTile } from "polythene-list-tile";
+import dialog from "polythene-dialog";
+import icon from "polythene-icon";
+import list from "polythene-list";
+import listTile from "polythene-list-tile";
 import { commonDialogProps } from "./shared";
 
 import iconAccount from "mmsvg/google/msvg/action/account-circle";

@@ -1,9 +1,9 @@
 import m from "mithril";
-import { iconButton as component } from "polythene-icon-button";
-import { icon } from "polythene-icon";
+import iconButton from "polythene-icon-button";
+import icon from "polythene-icon";
 import iconFavorite from "mmsvg/google/msvg/action/favorite-border";
 
-component.theme(".tests-icon-button-themed-icon-button", {
+iconButton.theme(".tests-icon-button-themed-icon-button", {
   padding: 32,
   color_background: "purple",
   color_light: "white"
@@ -12,13 +12,13 @@ component.theme(".tests-icon-button-themed-icon-button", {
 export const tests = [
   {
     name: "Child node (icon component)",
-    component,
+    component: iconButton,
     attrs: null,
     children: m(icon, {msvg: iconFavorite})
   },
   {
     name: "Option: icon",
-    component,
+    component: iconButton,
     attrs: {
       icon: {
         msvg: iconFavorite
@@ -27,7 +27,7 @@ export const tests = [
   },
   {
     name: "Option: compact",
-    component,
+    component: iconButton,
     attrs: {
       icon: {
         msvg: iconFavorite
@@ -37,7 +37,7 @@ export const tests = [
   },
   {
     name: "Option: style (colors)",
-    component,
+    component: iconButton,
     attrs: {
       icon: {
         msvg: iconFavorite
@@ -50,7 +50,7 @@ export const tests = [
   },
   {
     name: "Themed (colors and padding)",
-    component,
+    component: iconButton,
     attrs: {
       icon: {
         msvg: iconFavorite
@@ -61,7 +61,7 @@ export const tests = [
   {
     name: "Option: ripple (center)",
     interactive: true,
-    component,
+    component: iconButton,
     attrs: {
       icon: {
         msvg: iconFavorite
@@ -74,7 +74,7 @@ export const tests = [
   {
     name: "Option: url",
     interactive: true,
-    component,
+    component: iconButton,
     attrs: {
       icon: {
         msvg: iconFavorite
@@ -87,7 +87,7 @@ export const tests = [
   },
   {
     name: "Option: type (small)",
-    component,
+    component: iconButton,
     attrs: {
       icon: {
         msvg: iconFavorite,
@@ -97,7 +97,7 @@ export const tests = [
   },
   {
     name: "Option: type (regular)",
-    component,
+    component: iconButton,
     attrs: {
       icon: {
         msvg: iconFavorite,
@@ -107,7 +107,7 @@ export const tests = [
   },
   {
     name: "Option: type (medium)",
-    component,
+    component: iconButton,
     attrs: {
       icon: {
         msvg: iconFavorite,
@@ -117,7 +117,7 @@ export const tests = [
   },
   {
     name: "Option: type (large)",
-    component,
+    component: iconButton,
     attrs: {
       icon: {
         msvg: iconFavorite,
@@ -130,7 +130,7 @@ export const tests = [
 
   {
     name: "Child node (icon component) -- dark theme",
-    component,
+    component: iconButton,
     class: "pe-dark-theme",
     attrs: null,
     children: m(icon, {msvg: iconFavorite})

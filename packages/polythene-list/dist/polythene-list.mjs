@@ -1,5 +1,5 @@
 import m from 'mithril';
-import { listTile } from 'polythene-list-tile';
+import listTile from 'polythene-list-tile';
 import { filterSupportedAttributes } from 'polythene-core';
 import { mixin, styler } from 'polythene-css';
 import { vars } from 'polythene-theme';
@@ -141,4 +141,4 @@ var list = {
   view: view
 };
 
-export { list, classes, vars$1 as vars };
+export { classes, vars$1 as vars };export default list;

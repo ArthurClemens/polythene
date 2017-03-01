@@ -10,7 +10,7 @@ Icon Button takes an icon options object:
 
 ~~~javascript
 import m from "mithril";
-import { iconButton } from "polythene-icon-button";
+import iconButton from "polythene-icon-button";
 
 const myIconButton = m(iconButton, {
   icon: {
@@ -22,7 +22,7 @@ const myIconButton = m(iconButton, {
 To use SVG instead of an image, pass an `msvg` object:
 
 ~~~javascript
-import { iconButton } from "polythene-icon-button";
+import iconButton from "polythene-icon-button";
 import gIconStars from "mmsvg/google/msvg/action/stars";
 
 const myIconButton = m(iconButton, {
@@ -47,7 +47,7 @@ const myIconButton = m(iconButton, {
 Finally, instead of an `icon` options object, you can pass an icon component as `content`:
 
 ~~~javascript
-import { icon } from "polythene-icon";
+import icon from "polythene-icon";
 import gIconStars from "mmsvg/google/msvg/action/stars";
 
 const myIcon = m(icon, {

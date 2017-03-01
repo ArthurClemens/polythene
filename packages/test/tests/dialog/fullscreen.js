@@ -1,8 +1,8 @@
 import m from "mithril";
-import { button } from "polythene-button";
-import { toolbar } from "polythene-toolbar";
-import { iconButton } from "polythene-icon-button";
-import { dialog } from "polythene-dialog";
+import button from "polythene-button";
+import toolbar from "polythene-toolbar";
+import iconButton from "polythene-icon-button";
+import dialog from "polythene-dialog";
 import iconClose from "mmsvg/google/msvg/navigation/close";
 import { shortText, longText, commonDialogProps } from "./shared";
 

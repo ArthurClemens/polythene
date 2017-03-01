@@ -1,9 +1,9 @@
 import m from "mithril";
-import { radioButton as component } from "polythene-radio-button";
+import radioButton from "polythene-radio-button";
 import iconStarOutline from "mmsvg/google/msvg/toggle/star-border";
 import iconStar from "mmsvg/google/msvg/toggle/star";
 
-component.theme(".tests-radio-button-themed-radio", {
+radioButton.theme(".tests-radio-button-themed-radio", {
   label_font_size: 28,
   color_light_on: "#2196F3",
   color_light_off: "#2196F3",
@@ -21,11 +21,11 @@ const group = (attrs1, attrs2 = attrs1) => {
   const name = attrs1.name || `name-${idCounter++}}`;
   return {
     view: () => [
-      m(component, {
+      m(radioButton, {
         ...attrs1,
         name
       }),
-      m(component, {
+      m(radioButton, {
         ...attrs2,
         name
       })
@@ -35,11 +35,11 @@ const group = (attrs1, attrs2 = attrs1) => {
 
 const radioGroup = {
   view: () => [
-    m(component, {
+    m(radioButton, {
       name: "setting",
       label: "Label"
     }),
-    m(component, {
+    m(radioButton, {
       name: "setting",
       label: "Label",
       checked: true
@@ -88,8 +88,8 @@ export const tests = [
             marginBottom: "1rem"
           }
         }, [
-          m(component, options),
-          m(component, options)
+          m(radioButton, options),
+          m(radioButton, options)
         ]);
       }))
     }
@@ -146,8 +146,8 @@ export const tests = [
             marginBottom: "1rem"
           }
         }, [
-          m(component, options),
-          m(component, options)
+          m(radioButton, options),
+          m(radioButton, options)
         ]);
       }))
     }
@@ -171,8 +171,8 @@ export const tests = [
               marginBottom: "1rem"
             }
           }, "On desktop, TAB can be used to give focus, ENTER to select."),
-          m(component, options),
-          m(component, options)
+          m(radioButton, options),
+          m(radioButton, options)
         ];
       }
     },
@@ -235,8 +235,8 @@ export const tests = [
               marginBottom: "1rem"
             }
           }, `Value: ${vnode.state.radio.value}`),
-          m(component, options("First", "first")),
-          m(component, options("Second", "second"))
+          m(radioButton, options("First", "first")),
+          m(radioButton, options("Second", "second"))
         ];
       }
     },
@@ -255,13 +255,13 @@ export const tests = [
               marginBottom: "1rem"
             }
           }, [
-            m(component, {
+            m(radioButton, {
               label: "Initiator 1",
               name: "initiator",
               value: "first",
               getState: state => vnode.state.value = state.value
             }),
-            m(component, {
+            m(radioButton, {
               label: "Initiator 2",
               name: "initiator",
               value: "second",
@@ -273,14 +273,14 @@ export const tests = [
               marginBottom: "1rem"
             }
           }, [
-            m(component, {
+            m(radioButton, {
               label: "Receiver 1",
               name: "receiver",
               value: "first",
               disabled: true,
               checked: () => vnode.state.value === "first"
             }),
-            m(component, {
+            m(radioButton, {
               label: "Receiver 2",
               name: "receiver",
               value: "second",
@@ -314,8 +314,8 @@ export const tests = [
               marginBottom: "1rem"
             }
           }, `Value: ${vnode.state.value}`),
-          m(component, options("First", "first")),
-          m(component, options("Second", "second"))
+          m(radioButton, options("First", "first")),
+          m(radioButton, options("Second", "second"))
         ];
       }
     },
@@ -366,25 +366,6 @@ export const tests = [
         checked: true
       }
     )
-  },
-
-  // {
-  //   name: "Option: disabled -- dark theme",
-  //   class: "pe-dark-theme",
-  //   component: {
-  //     view: () => [
-  //       m(component, {
-  //         disabled: true,
-  //         label: "Off"
-  //       }),
-  //       m(component, {
-  //         disabled: true,
-  //         checked: true,
-  //         label: "On"
-  //       })
-  //     ]
-  //   }
-  // },
-
+  }
 
 ];

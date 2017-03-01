@@ -8,7 +8,7 @@ Displays a list element as part of a [list](../polythene-list).
 
 ~~~javascript
 import m from "mithril";
-import { listTile } from "polythene-list-tile";
+import listTile from "polythene-list-tile";
 
 const myListTile = m(listTile, {
   title: "My title"
@@ -37,8 +37,8 @@ To show an icon:
 
 ~~~javascript
 import m from "mithril";
-import { listTile } from "polythene-list-tile";
-import { icon } from "polythene-icon";
+import listTile from "polythene-list-tile";
+import icon from "polythene-icon";
 
 const myListTile = m(listTile, {
   title: "My title",
@@ -54,8 +54,8 @@ Or use an SVG as icon:
 
 ~~~javascript
 import m from "mithril";
-import { listTile } from "polythene-list-tile";
-import { icon } from "polythene-icon";
+import listTile from "polythene-list-tile";
+import icon from "polythene-icon";
 import iconStarOutline from "mmsvg/templarian/msvg/star-outline";
 
 const myListTile = m(listTile, {
@@ -86,7 +86,7 @@ const myListTile = m(listTile, {
 To show secondary content at the right, including a link:
 
 ~~~javascript
-import { icon } from "polythene-icon";
+import icon from "polythene-icon";
 import iconStarOutline from "mmsvg/templarian/msvg/star-outline";
 
 const myListTile = m(listTile, {

@@ -1,11 +1,11 @@
 import m from "mithril";
-import { icon as component } from "polythene-icon";
-import { svg } from "polythene-svg";
+import icon from "polythene-icon";
+import svg from "polythene-svg";
 import iconStars from "mmsvg/google/msvg/action/stars";
 
 const trustedSvg = m.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>");
 
-component.theme(".tests-icon-themed-icon", {
+icon.theme(".tests-icon-themed-icon", {
   size_regular: 50,
   color_light: "purple"
 });
@@ -13,20 +13,20 @@ component.theme(".tests-icon-themed-icon", {
 export const tests = [
   {
     name: "Child node (svg children mmsvg)",
-    component,
+    component: icon,
     attrs: null,
     children: m(svg, [iconStars])
   },
   {
     name: "Option: content",
-    component,
+    component: icon,
     attrs: {
       content: iconStars
     }
   },
   {
     name: "Option: content (svg trusted content)",
-    component,
+    component: icon,
     attrs: {
       svg: {
         content: trustedSvg
@@ -35,7 +35,7 @@ export const tests = [
   },
   {
     name: "Option: content (svg content mmsvg)",
-    component,
+    component: icon,
     attrs: {
       svg: {
         content: iconStars
@@ -44,28 +44,28 @@ export const tests = [
   },
   {
     name: "Option: msvg",
-    component,
+    component: icon,
     attrs: {
       msvg: iconStars
     }
   },
   {
     name: "Option: src (image file)",
-    component,
+    component: icon,
     attrs: {
       src: "img/arrow-back.png"
     }
   },
   {
     name: "Option: src (svg file)",
-    component,
+    component: icon,
     attrs: {
       src: "img/arrow-back.svg"
     }
   },
   {
     name: "Option: style",
-    component,
+    component: icon,
     attrs: {
       msvg: iconStars,
       style: {
@@ -75,7 +75,7 @@ export const tests = [
   },
   {
     name: "Themed (color and size)",
-    component,
+    component: icon,
     attrs: {
       msvg: iconStars,
       class: "tests-icon-themed-icon"
@@ -83,7 +83,7 @@ export const tests = [
   },
   {
     name: "Option: type (small)",
-    component,
+    component: icon,
     attrs: {
       msvg: iconStars,
       type: "small"
@@ -91,7 +91,7 @@ export const tests = [
   },
   {
     name: "Option: type (regular)",
-    component,
+    component: icon,
     attrs: {
       msvg: iconStars,
       type: "regular"
@@ -99,7 +99,7 @@ export const tests = [
   },
   {
     name: "Option: type (medium)",
-    component,
+    component: icon,
     attrs: {
       msvg: iconStars,
       type: "medium"
@@ -107,7 +107,7 @@ export const tests = [
   },
   {
     name: "Option: type (large)",
-    component,
+    component: icon,
     attrs: {
       msvg: iconStars,
       type: "large"
@@ -115,7 +115,7 @@ export const tests = [
   },
   {
     name: "Option: avatar (type large)",
-    component,
+    component: icon,
     attrs: {
       src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
       avatar: true,
@@ -127,7 +127,7 @@ export const tests = [
 
   {
     name: "Child node (svg children mmsvg) -- dark theme (color set with style option)",
-    component,
+    component: icon,
     class: "pe-dark-theme",
     attrs: {
       style: {

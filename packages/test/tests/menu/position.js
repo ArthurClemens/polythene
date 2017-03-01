@@ -1,9 +1,9 @@
 import m from "mithril";
-import { menu } from "polythene-menu";
-import { list } from "polythene-list";
-import { listTile } from "polythene-list-tile";
-import { shadow } from "polythene-shadow";
-import { iconButton } from "polythene-icon-button";
+import menu from "polythene-menu";
+import list from "polythene-list";
+import listTile from "polythene-list-tile";
+import shadow from "polythene-shadow";
+import iconButton from "polythene-icon-button";
 import iconMoreVert from "mmsvg/google/msvg/navigation/more-vert";
 import { styler } from "polythene-css";
 

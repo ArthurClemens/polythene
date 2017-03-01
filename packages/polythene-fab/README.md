@@ -8,7 +8,7 @@ A circular main button with a [shadow](../polythene-shadow) and [ripple](../poly
 
 ~~~javascript
 import m from "mithril";
-import { fab } from "polythene-fab";
+import fab from "polythene-fab";
 import gIconStars from "mmsvg/google/msvg/action/stars";
 
 const myFab = m(fab, {

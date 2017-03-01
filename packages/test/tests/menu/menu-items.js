@@ -1,7 +1,7 @@
 import m from "mithril";
-import { menu } from "polythene-menu";
-import { list } from "polythene-list";
-import { listTile } from "polythene-list-tile";
+import menu from "polythene-menu";
+import list from "polythene-list";
+import listTile from "polythene-list-tile";
 
 const tile = (left, right, disabled) =>
   m(listTile, {

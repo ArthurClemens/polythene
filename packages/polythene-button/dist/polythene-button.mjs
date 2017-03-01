@@ -1,5 +1,5 @@
 import m from 'mithril';
-import { ripple } from 'polythene-ripple';
+import ripple from 'polythene-ripple';
 import { filterSupportedAttributes } from 'polythene-core';
 import { mixin, styler } from 'polythene-css';
 import { vars } from 'polythene-theme';
@@ -293,4 +293,4 @@ var button = {
   view: view
 };
 
-export { button, classes, vars$1 as vars };
+export { classes, vars$1 as vars };export default button;

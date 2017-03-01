@@ -53,4 +53,4 @@ var radioButton = {
   view: view
 };
 
-export { radioButton, classes, vars };
+export { classes, vars };export default radioButton;
