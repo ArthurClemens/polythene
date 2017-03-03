@@ -33,6 +33,15 @@ const dialogProps = Object.assign({}, commonDialogProps, {
   class: "pe-dark-theme"
 });
 
+const block = (test, opts = {}) => m("div", {
+  style: Object.assign(
+    {},
+    opts.dark ? null : { background: "#fff" },
+    opts.fullWidth
+      ? null
+      : { padding: "10px 15px" }
+  )}, test);
+
 export const tests = [
   {
     name: "Button",
@@ -223,6 +232,19 @@ export const tests = [
         { label: "My Favorites" },
         { label: "Saved" }
       ]
+    }
+  },
+  {
+    name: "Textfield",
+    component: {
+      view: () => block([
+        m(polythene.textfield, {
+          label: "Your name",
+          floatingLabel: true,
+          help: "Enter the name as written on the credit card",
+          required: true
+        })
+      ])
     }
   },
   {

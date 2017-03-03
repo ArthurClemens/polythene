@@ -586,4 +586,15 @@ var filterSupportedAttributes = function filterSupportedAttributes(attrs) {
   }, {});
 };
 
-export { variables as defaultVariables, isTouch, touchStartEvent, touchEndEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, multiple, show, hide, filterSupportedAttributes };
+var prop = function prop(x) {
+  var p = x;
+  return function (args) {
+    if (args === undefined) {
+      return p;
+    } else {
+      p = args;
+    }
+  };
+};
+
+export { variables as defaultVariables, isTouch, touchStartEvent, touchEndEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, multiple, show, hide, filterSupportedAttributes, prop };

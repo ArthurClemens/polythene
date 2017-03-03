@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 86);
+/******/ 	return __webpack_require__(__webpack_require__.s = 88);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -78,9 +78,9 @@ module.exports = m;
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_theme__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_j2c_plugin_prefix_browser__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_j2c_plugin_prefix_browser__ = __webpack_require__(65);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_j2c_plugin_prefix_browser___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_j2c_plugin_prefix_browser__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_j2c__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_j2c__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_j2c___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_j2c__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return mixin; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return mixinFlex; });
@@ -573,6 +573,7 @@ var vars = _extends({}, __WEBPACK_IMPORTED_MODULE_0_polythene_core__["g" /* defa
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return show; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return hide; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return filterSupportedAttributes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return prop; });
 
 
 // Theme variables
@@ -1159,6 +1160,17 @@ var filterSupportedAttributes = function filterSupportedAttributes(attrs) {
   return Object.keys(attrs).reduce(function (acc, key) {
     return supported[key] ? acc[key] = attrs[key] : null, acc;
   }, {});
+};
+
+var prop = function prop(x) {
+  var p = x;
+  return function (args) {
+    if (args === undefined) {
+      return p;
+    } else {
+      p = args;
+    }
+  };
 };
 
 
@@ -4531,8 +4543,8 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" hei
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mithril__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mithril___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_mithril__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_fastclick__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_material_design__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_fastclick__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_material_design__ = __webpack_require__(69);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__styles__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__page__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_polythene_list__ = __webpack_require__(7);
@@ -4554,10 +4566,12 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" hei
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__tests_svg_tests__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__tests_switch_button_tests__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__tests_tabs_tests__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__tests_toolbar_tests__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__tests_css_tests__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__tests_css_classes_tests__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__tests_theme_tests__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__tests_textfield_tests__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__tests_toolbar_tests__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__tests_css_tests__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__tests_css_classes_tests__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__tests_theme_tests__ = __webpack_require__(61);
+
 
 
 
@@ -4652,21 +4666,25 @@ var pages = [{
   name: "Tabs",
   tests: __WEBPACK_IMPORTED_MODULE_23__tests_tabs_tests__["a" /* tests */]
 }, {
+  path: "/textfield",
+  name: "Textfield",
+  tests: __WEBPACK_IMPORTED_MODULE_24__tests_textfield_tests__["a" /* tests */]
+}, {
   path: "/toolbar",
   name: "Toolbar",
-  tests: __WEBPACK_IMPORTED_MODULE_24__tests_toolbar_tests__["a" /* tests */]
+  tests: __WEBPACK_IMPORTED_MODULE_25__tests_toolbar_tests__["a" /* tests */]
 }, {
   path: "/theme",
   name: "Custom theme",
-  tests: __WEBPACK_IMPORTED_MODULE_27__tests_theme_tests__["a" /* tests */]
+  tests: __WEBPACK_IMPORTED_MODULE_28__tests_theme_tests__["a" /* tests */]
 }, {
   path: "/css",
   name: "CSS tools",
-  tests: __WEBPACK_IMPORTED_MODULE_25__tests_css_tests__["a" /* tests */]
+  tests: __WEBPACK_IMPORTED_MODULE_26__tests_css_tests__["a" /* tests */]
 }, {
   path: "/css-classes",
   name: "CSS classes",
-  tests: __WEBPACK_IMPORTED_MODULE_26__tests_css_classes_tests__["a" /* tests */]
+  tests: __WEBPACK_IMPORTED_MODULE_27__tests_css_classes_tests__["a" /* tests */]
 }];
 
 var index = {
@@ -5058,7 +5076,7 @@ var tests = [{
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mithril__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mithril___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_mithril__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_checkbox__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_checkbox__ = __webpack_require__(63);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_mmsvg_google_msvg_toggle_star_border__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_mmsvg_google_msvg_toggle_star_border___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_mmsvg_google_msvg_toggle_star_border__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_mmsvg_google_msvg_toggle_star__ = __webpack_require__(24);
@@ -5356,7 +5374,7 @@ var blocks = [1, 2, 3, 4].map(function (num) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mithril__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mithril___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_mithril__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_css_classes__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_css_classes__ = __webpack_require__(64);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_css__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__block_styles__ = __webpack_require__(30);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return tests; });
@@ -5615,7 +5633,7 @@ var hasValue = false;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_toolbar__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_icon_button__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_polythene_dialog__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_mmsvg_google_msvg_navigation_close__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_mmsvg_google_msvg_navigation_close__ = __webpack_require__(80);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_mmsvg_google_msvg_navigation_close___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_mmsvg_google_msvg_navigation_close__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__shared__ = __webpack_require__(10);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -5744,7 +5762,7 @@ var buttons = [__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTE
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_list__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_polythene_list_tile__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_mmsvg_google_msvg_action_account_circle__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_mmsvg_google_msvg_action_account_circle__ = __webpack_require__(76);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_mmsvg_google_msvg_action_account_circle___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_mmsvg_google_msvg_action_account_circle__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -6307,7 +6325,7 @@ var tests = [{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mithril___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_mithril__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_icon_button__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_icon__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_mmsvg_google_msvg_action_favorite_border__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_mmsvg_google_msvg_action_favorite_border__ = __webpack_require__(77);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_mmsvg_google_msvg_action_favorite_border___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_mmsvg_google_msvg_action_favorite_border__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return tests; });
 
@@ -7210,7 +7228,7 @@ var tile = function tile(left, right, disabled) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_list_tile__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_polythene_shadow__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_polythene_icon_button__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_mmsvg_google_msvg_navigation_more_vert__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_mmsvg_google_msvg_navigation_more_vert__ = __webpack_require__(82);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_mmsvg_google_msvg_navigation_more_vert___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_mmsvg_google_msvg_navigation_more_vert__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_polythene_css__ = __webpack_require__(1);
 
@@ -7659,7 +7677,7 @@ var tests = [{
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mithril__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mithril___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_mithril__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_radio_button__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_radio_button__ = __webpack_require__(71);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_mmsvg_google_msvg_toggle_star_border__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_mmsvg_google_msvg_toggle_star_border___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_mmsvg_google_msvg_toggle_star_border__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_mmsvg_google_msvg_toggle_star__ = __webpack_require__(24);
@@ -8493,9 +8511,9 @@ var tests = [{
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mithril__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mithril___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_mithril__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_switch_button__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_switch_button__ = __webpack_require__(72);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_icon__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_mmsvg_templarian_msvg_bullseye__ = __webpack_require__(83);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_mmsvg_templarian_msvg_bullseye__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_mmsvg_templarian_msvg_bullseye___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_mmsvg_templarian_msvg_bullseye__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return tests; });
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -8747,16 +8765,16 @@ var tests = [{
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mithril__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mithril___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_mithril__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_tabs__ = __webpack_require__(72);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_mmsvg_templarian_msvg_heart__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_tabs__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_mmsvg_templarian_msvg_heart__ = __webpack_require__(86);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_mmsvg_templarian_msvg_heart___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_mmsvg_templarian_msvg_heart__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_mmsvg_templarian_msvg_bell__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_mmsvg_templarian_msvg_bell__ = __webpack_require__(84);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_mmsvg_templarian_msvg_bell___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_mmsvg_templarian_msvg_bell__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_mmsvg_templarian_msvg_settings__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_mmsvg_templarian_msvg_settings__ = __webpack_require__(87);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_mmsvg_templarian_msvg_settings___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_mmsvg_templarian_msvg_settings__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_mmsvg_google_msvg_navigation_arrow_back__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_mmsvg_google_msvg_navigation_arrow_back___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_mmsvg_google_msvg_navigation_arrow_back__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_mmsvg_google_msvg_navigation_arrow_forward__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_mmsvg_google_msvg_navigation_arrow_forward__ = __webpack_require__(79);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_mmsvg_google_msvg_navigation_arrow_forward___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_mmsvg_google_msvg_navigation_arrow_forward__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return tests; });
 
@@ -9103,6 +9121,526 @@ var tests = [{
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mithril__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mithril___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_mithril__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_textfield__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_raised_button__ = __webpack_require__(13);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return tests; });
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+
+
+
+
+__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */].theme(".tests-textfield-themed-textfield", {
+  color: "#F44336"
+});
+
+var ipsum = "Lorem ipsum dolor sit amet, idque signiferumque at usu, eum recusabo aliquando id. Deleniti percipitur concludaturque eu eos. Vix elitr feugait ne. Mel agam integre eu, has minim aliquid salutandi eu. Est nusquam abhorreant ne. Ei wisi dicant eam, vix tota reque persequeris an. Quo in theophrastus reprehendunt, ius te graecis epicuri volutpat.";
+
+var shortIpsum = "Lorem ipsum dolor sit amet,";
+
+var block = function block(test) {
+  var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  return __WEBPACK_IMPORTED_MODULE_0_mithril___default()("div", {
+    style: _extends({}, opts.dark ? null : { background: "#fff" }, opts.fullWidth ? null : { padding: "10px 15px" }) }, test);
+};
+
+var tests = [{
+  name: "Option: value",
+  component: {
+    view: function view() {
+      return block([__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        value: "Text A"
+      }), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        value: "Text B"
+      })]);
+    }
+  }
+}, {
+  name: "Option: autofocus",
+  component: {
+    view: function view() {
+      return block([__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        autofocus: true
+      })]);
+    }
+  }
+}, {
+  name: "Option: type (password, number, email)",
+  component: {
+    view: function view() {
+      return block([__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        type: "password",
+        value: "123456"
+      }), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        type: "number",
+        value: "123456"
+      }), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        type: "email",
+        value: "a@b.com"
+      })]);
+    }
+  }
+}, {
+  name: "Option: label",
+  component: {
+    view: function view() {
+      return block([__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        label: "Your Name"
+      })]);
+    }
+  }
+}, {
+  name: "Option: floatingLabel",
+  interactive: true,
+  component: {
+    view: function view() {
+      return block([__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        label: "Your name",
+        floatingLabel: true
+      }), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        label: "Your email",
+        floatingLabel: true
+      }), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        label: "Your address",
+        floatingLabel: true
+      })]);
+    }
+  }
+}, {
+  name: "Option: floatingLabel, dense",
+  component: {
+    view: function view() {
+      return block([__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        label: "Your name",
+        floatingLabel: true,
+        dense: true
+      }), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        label: "Your email",
+        floatingLabel: true,
+        dense: true
+      }), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        label: "Your address",
+        floatingLabel: true,
+        dense: true
+      })]);
+    }
+  }
+}, {
+  name: "Option: help",
+  component: {
+    view: function view() {
+      return block([__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        label: "Your Name",
+        help: "Enter the name as written on the credit card"
+      })]);
+    }
+  }
+}, {
+  name: "Option: focusHelp",
+  component: {
+    view: function view() {
+      return block([__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        label: "Your Name",
+        help: "Enter the name as written on the credit card",
+        focusHelp: true
+      })]);
+    }
+  }
+}, {
+  name: "Option: fullWidth",
+  component: {
+    view: function view() {
+      return block([__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        label: "Your name",
+        fullWidth: true
+      }), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        label: "Your email",
+        fullWidth: true
+      }), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        label: "Your address",
+        fullWidth: true
+      })], { fullWidth: true });
+    }
+  }
+}, {
+  name: "Option: multiline",
+  component: {
+    view: function view() {
+      return block([__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        label: "Label in multi-line input",
+        multiline: true,
+        rows: 2
+      }), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        label: "Floating label in multi-line input",
+        floatingLabel: true,
+        multiline: true,
+        rows: 2
+      }), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        value: "4 rows: " + ipsum,
+        multiline: true,
+        rows: 4
+      })]);
+    }
+  }
+}, {
+  name: "Option: required",
+  interactive: true,
+  component: {
+    view: function view() {
+      return block([__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        label: "Your name",
+        help: "Enter the name as written on the credit card",
+        required: true
+      })]);
+    }
+  }
+}, {
+  name: "Option: required, hideValidation",
+  interactive: true,
+  component: {
+    view: function view() {
+      return block([__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        label: "Your name",
+        help: "Enter the name as written on the credit card",
+        required: true,
+        hideValidation: true
+      })]);
+    }
+  }
+}, {
+  name: "Option: required, floatingLabel",
+  interactive: true,
+  component: {
+    view: function view() {
+      return block([__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        label: "Your name",
+        floatingLabel: true,
+        help: "Enter the name as written on the credit card",
+        required: true
+      })]);
+    }
+  }
+}, {
+  name: "Option: required, floatingLabel, requiredIndicator (string)",
+  interactive: true,
+  component: {
+    view: function view() {
+      return block([__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        label: "Your name",
+        floatingLabel: true,
+        help: "Enter the name as written on the credit card",
+        required: true,
+        requiredIndicator: "(required)"
+      })]);
+    }
+  }
+}, {
+  name: "Option: required, floatingLabel, requiredIndicator (element)",
+  interactive: true,
+  component: {
+    view: function view() {
+      return block([__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        label: "Your name",
+        floatingLabel: true,
+        help: "Enter the name as written on the credit card",
+        required: true,
+        requiredIndicator: __WEBPACK_IMPORTED_MODULE_0_mithril___default()("small", { style: { color: "#333" } }, "this field is required")
+      })]);
+    }
+  }
+}, {
+  name: "Option: optionalIndicator (string)",
+  interactive: true,
+  component: {
+    view: function view() {
+      return block([__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        label: "Your name",
+        floatingLabel: true,
+        optionalIndicator: "(optional)"
+      })]);
+    }
+  }
+}, {
+  name: "Option: optionalIndicator (element)",
+  interactive: true,
+  component: {
+    view: function view() {
+      return block([__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        label: "Your name",
+        floatingLabel: true,
+        optionalIndicator: __WEBPACK_IMPORTED_MODULE_0_mithril___default()("small", { style: { color: "#333" } }, "this field is optional")
+      })]);
+    }
+  }
+}, {
+  name: "Option: required, floatingLabel, empty requiredIndicator",
+  interactive: true,
+  component: {
+    view: function view() {
+      return block([__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        label: "Floating label in multi-line input",
+        floatingLabel: true,
+        help: "This required field does not show a *",
+        error: "Please enter your name",
+        focusHelp: true,
+        required: true,
+        requiredIndicator: ""
+      })]);
+    }
+  }
+}, {
+  name: "Option: maxLength",
+  interactive: true,
+  component: {
+    view: function view() {
+      return block([__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        value: "123",
+        maxlength: 3,
+        error: "Enter max 3 characters"
+      })]);
+    }
+  }
+}, {
+  name: "Option: min, max",
+  interactive: true,
+  component: {
+    view: function view() {
+      return block([__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        type: "number",
+        min: 3,
+        max: 8,
+        value: 10,
+        error: "Enter a value between 3 and 8"
+      })]);
+    }
+  }
+}, {
+  name: "Option: type email, required",
+  interactive: true,
+  component: {
+    view: function view() {
+      return block([__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        label: "Email",
+        type: "email",
+        value: "a@",
+        required: true,
+        error: "Enter a valid email address"
+      })]);
+    }
+  }
+}, {
+  name: "Option: pattern, validateAtStart",
+  interactive: true,
+  component: {
+    view: function view() {
+      return block([__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        label: "Number",
+        type: "text",
+        value: "abc",
+        pattern: "[0-9]+",
+        validateAtStart: true
+      })]);
+    }
+  }
+}, {
+  name: "Custom validation",
+  interactive: true,
+  component: {
+    view: function view() {
+      return block([__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        value: "abC",
+        validate: function validate(value) {
+          return value !== value.toLowerCase() ? {
+            valid: false,
+            error: "Only use lowercase characters."
+          } : null;
+        },
+        validateAtStart: true
+      })]);
+    }
+  }
+}, {
+  name: "Option: counter",
+  interactive: true,
+  component: {
+    view: function view() {
+      return block([__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        label: "Description",
+        floatingLabel: true,
+        value: shortIpsum,
+        counter: 30,
+        error: "You have exceeded the maximum number of characters."
+      })]);
+    }
+  }
+}, {
+  name: "Option: counter, maxlength",
+  interactive: true,
+  component: {
+    view: function view() {
+      return block([__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        label: "Description",
+        floatingLabel: true,
+        value: shortIpsum,
+        counter: 30,
+        maxlength: 30
+      })]);
+    }
+  }
+}, {
+  name: "Give focus",
+  interactive: true,
+  component: {
+    view: function view(vnode) {
+      return block([__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        label: "Your name",
+        focus: vnode.state.hasFocus,
+        getState: function getState(focusState) {
+          return vnode.state.hasFocus = focusState.focus;
+        }
+      }), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_2_polythene_raised_button__["a" /* default */], {
+        label: "Give focus",
+        raised: true,
+        events: {
+          onclick: function onclick() {
+            return vnode.state.hasFocus = true;
+          }
+        }
+      })]);
+    }
+  }
+}, {
+  name: "Set value from outside",
+  interactive: true,
+  component: {
+    value: "00000",
+    view: function view(vnode) {
+      return block([__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        value: function value() {
+          return vnode.state.value;
+        },
+        getState: function getState(state) {
+          return vnode.state.value = state.value;
+        }
+      }), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_2_polythene_raised_button__["a" /* default */], {
+        label: "Randomize",
+        raised: true,
+        events: {
+          onclick: function onclick() {
+            return vnode.state.value = Math.floor(Math.random() * 100000);
+          }
+        }
+      })]);
+    }
+  }
+}, {
+  name: "Option: disabled (label)",
+  component: {
+    view: function view() {
+      return block([__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        label: "Your name",
+        disabled: true
+      })]);
+    }
+  }
+}, {
+  name: "Option: disabled (input)",
+  component: {
+    view: function view() {
+      return block([__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        value: "John",
+        disabled: true
+      })]);
+    }
+  }
+}, {
+  name: "Option: readonly",
+  component: {
+    view: function view() {
+      return block([__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        value: "John",
+        readonly: true
+      })]);
+    }
+  }
+},
+
+/* Dark theme */
+
+{
+  name: "Option: label -- dark theme",
+  class: "pe-dark-theme",
+  component: {
+    view: function view() {
+      return block([__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        label: "Your Name"
+      })], { dark: true });
+    }
+  }
+}, {
+  name: "Option: floatingLabel -- dark theme",
+  interactive: true,
+  class: "pe-dark-theme",
+  component: {
+    view: function view() {
+      return block([__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        label: "Your name",
+        floatingLabel: true
+      }), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        label: "Your email",
+        floatingLabel: true
+      }), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        label: "Your address",
+        floatingLabel: true
+      })], { dark: true });
+    }
+  }
+}, {
+  name: "Option: type email, required -- dark theme",
+  interactive: true,
+  class: "pe-dark-theme",
+  component: {
+    view: function view() {
+      return block([__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        label: "Email",
+        type: "email",
+        value: "a@",
+        required: true,
+        error: "Enter a valid email address"
+      })], { dark: true });
+    }
+  }
+}, {
+  name: "Option: disabled (input) -- dark theme",
+  class: "pe-dark-theme",
+  component: {
+    view: function view() {
+      return block([__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        value: "John",
+        disabled: true
+      })], { dark: true });
+    }
+  }
+}, {
+  name: "Option: readonly -- dark theme",
+  class: "pe-dark-theme",
+  component: {
+    view: function view() {
+      return block([__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        value: "John",
+        readonly: true
+      })], { dark: true });
+    }
+  }
+}];
+
+/***/ }),
+/* 61 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mithril__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mithril___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_mithril__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_button__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_fab__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_icon__ = __webpack_require__(5);
@@ -9276,7 +9814,7 @@ var tests = [{
 }];
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9285,11 +9823,11 @@ var tests = [{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_toolbar__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_icon_button__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_shadow__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_mmsvg_google_msvg_navigation_menu__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_mmsvg_google_msvg_navigation_menu__ = __webpack_require__(81);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_mmsvg_google_msvg_navigation_menu___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_mmsvg_google_msvg_navigation_menu__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_mmsvg_google_msvg_navigation_refresh__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_mmsvg_google_msvg_navigation_refresh__ = __webpack_require__(83);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_mmsvg_google_msvg_navigation_refresh___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_mmsvg_google_msvg_navigation_refresh__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_mmsvg_google_msvg_content_add__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_mmsvg_google_msvg_content_add__ = __webpack_require__(78);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_mmsvg_google_msvg_content_add___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_mmsvg_google_msvg_content_add__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return tests; });
 
@@ -9400,7 +9938,7 @@ var tests = [{
 }];
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9469,7 +10007,7 @@ var checkbox = {
 
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9562,7 +10100,7 @@ __WEBPACK_IMPORTED_MODULE_0_polythene_css__["c" /* styler */].add("pe-layout", f
 
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10193,7 +10731,7 @@ exports.prefixPlugin = prefixPlugin;
 
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10856,11 +11394,11 @@ module.exports = j2c;
 
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_fastclick__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_fastclick__ = __webpack_require__(68);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_fastclick___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_fastclick__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core__ = __webpack_require__(3);
 
@@ -10903,7 +11441,7 @@ if (__WEBPACK_IMPORTED_MODULE_1_polythene_core__["i" /* isTouch */]) {
 
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;;(function () {
@@ -11751,13 +12289,13 @@ var __WEBPACK_AMD_DEFINE_RESULT__;;(function () {
 
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_css__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_theme__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_webfontloader__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_webfontloader__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_webfontloader___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_webfontloader__);
 
 
@@ -11905,7 +12443,7 @@ __WEBPACK_IMPORTED_MODULE_0_polythene_css__["c" /* styler */].add("pe-theme", re
 
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;/* Web Font Loader v1.6.27 - (c) Adobe Systems, Google. License: Apache 2.0 */(function(){function aa(a,b,c){return a.call.apply(a.bind,arguments)}function ba(a,b,c){if(!a)throw Error();if(2<arguments.length){var d=Array.prototype.slice.call(arguments,2);return function(){var c=Array.prototype.slice.call(arguments);Array.prototype.unshift.apply(c,d);return a.apply(b,c)}}return function(){return a.apply(b,arguments)}}function p(a,b,c){p=Function.prototype.bind&&-1!=Function.prototype.bind.toString().indexOf("native code")?aa:ba;return p.apply(null,arguments)}var q=Date.now||function(){return+new Date};function ca(a,b){this.a=a;this.m=b||a;this.c=this.m.document}var da=!!window.FontFace;function t(a,b,c,d){b=a.c.createElement(b);if(c)for(var e in c)c.hasOwnProperty(e)&&("style"==e?b.style.cssText=c[e]:b.setAttribute(e,c[e]));d&&b.appendChild(a.c.createTextNode(d));return b}function u(a,b,c){a=a.c.getElementsByTagName(b)[0];a||(a=document.documentElement);a.insertBefore(c,a.lastChild)}function v(a){a.parentNode&&a.parentNode.removeChild(a)}
@@ -11930,7 +12468,7 @@ g,0<d.length&&(d=Ba[d[0]])&&(a.c[e]=d))}a.c[e]||(d=Ba[e])&&(a.c[e]=d);for(d=0;d<
 
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11999,7 +12537,7 @@ var radioButton = {
 
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12294,14 +12832,14 @@ var switchButton = {
 
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mithril__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mithril___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_mithril__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_utilities__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_utilities__ = __webpack_require__(75);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_css__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_polythene_theme__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_polythene_button__ = __webpack_require__(6);
@@ -12996,7 +13534,771 @@ var tabs = {
 
 
 /***/ }),
-/* 73 */
+/* 74 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mithril__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mithril___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_mithril__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_css__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_theme__ = __webpack_require__(2);
+/* unused harmony export classes */
+/* unused harmony export vars */
+
+
+
+
+
+var rgba = __WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].rgba;
+var line_height_input = 20;
+var input_padding_v = 7;
+
+var vars$1 = {
+  vertical_spacing_top: 6, // 8 minus natural label height padding (1)
+  vertical_spacing_bottom: 7, // 8 minus natural label height padding (1)
+  input_focus_border_width: 2,
+  input_focus_border_animation_duration: __WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].animation_duration,
+
+  floating_label_vertical_spacing_top: 30, // 16 + 8 + 8 minus natural label height padding (2)
+  floating_label_vertical_spacing_bottom: 7, // 8 minus natural label height padding (1)
+  floating_label_top: 14,
+  floating_label_animation_duration: ".12s",
+
+  input_padding_h: 0,
+  input_padding_v: input_padding_v,
+  input_border_width: 1,
+  margin_top_error_message: 6,
+  font_size_input: 16,
+  font_size_error: 12,
+  font_size_floating_label: 12,
+
+  line_height_input: line_height_input,
+
+  dense_floating_label_vertical_spacing_top: 23, // 12 + 8 + 4 minus natural label height padding (1)
+  dense_floating_label_vertical_spacing_bottom: 4, // 8 minus natural label height padding (1)
+  dense_floating_label_top: 10,
+  dense_font_size_input: 13,
+  dense_font_size_floating_label: 13,
+
+  full_width_input_padding_h: 20,
+  full_width_input_padding_v: 18, // 20 minus natural label height padding (2)
+
+  dense_full_width_input_padding_h: 16,
+  dense_full_width_input_padding_v: 15, // 16 minus natural label height padding (1)
+  dense_full_width_font_size_input: 13,
+
+  color_light_input_text: rgba(__WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].blend_light_text_primary),
+  color_light_input_background: rgba(__WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].color_light_background), // only used to "remove" autofill color
+  color_light_highlight_text: rgba(__WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].color_primary, __WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].blend_light_text_primary),
+  color_light_input_bottom_border: rgba(__WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].blend_light_border_light),
+  color_light_input_error_text: rgba("221, 44, 0"),
+  color_light_input_error_border: rgba("221, 44, 0"),
+  color_light_input_placeholder: rgba(__WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].blend_light_text_tertiary),
+  color_light_label_text: rgba(__WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].blend_light_text_tertiary),
+  color_light_disabled_label_text: rgba(__WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].blend_light_text_disabled),
+  color_light_readonly_label_text: rgba(__WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].blend_light_text_tertiary),
+  color_light_help_text: rgba(__WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].blend_light_text_tertiary),
+  color_light_required_symbol: rgba("221, 44, 0"),
+  color_light_focus_border: rgba(__WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].color_primary),
+  color_light_counter_ok_border: rgba(__WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].color_primary),
+
+  color_dark_input_text: rgba(__WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].blend_dark_text_primary),
+  color_dark_input_background: rgba(__WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].color_dark_background), // only used to "remove" autofill color
+  color_dark_highlight_text: rgba(__WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].color_primary, __WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].blend_dark_text_primary),
+  color_dark_input_bottom_border: rgba(__WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].blend_dark_border_light),
+  color_dark_input_error_text: rgba("222, 50, 38"),
+  color_dark_input_error_border: rgba("222, 50, 38"),
+  color_dark_input_placeholder: rgba(__WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].blend_dark_text_tertiary),
+  color_dark_label_text: rgba(__WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].blend_dark_text_tertiary),
+  color_dark_disabled_label_text: rgba(__WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].blend_dark_text_disabled),
+  color_dark_readonly_label_text: rgba(__WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].blend_dark_text_tertiary),
+  color_dark_help_text: rgba(__WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].blend_dark_text_tertiary),
+  color_dark_required_symbol: rgba("221, 44, 0"),
+  color_dark_focus_border: rgba(__WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].color_primary),
+  color_dark_counter_ok_border: rgba(__WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].color_primary)
+};
+
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var layout = (function (selector, componentVars) {
+  return [_defineProperty$1({}, selector, [__WEBPACK_IMPORTED_MODULE_2_polythene_css__["b" /* mixin */].clearfix(), {
+    position: "relative",
+    lineHeight: __WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].line_height,
+    display: "inline-block",
+    boxSizing: "border-box",
+    margin: 0,
+    overflow: "visible", // Firefox needs this
+    paddingBottom: componentVars.vertical_spacing_bottom + "px",
+    width: "100%",
+    maxWidth: "100%",
+
+    " .pe-textfield__input-area": {
+      position: "relative",
+      paddingTop: componentVars.vertical_spacing_top + "px",
+
+      "&:after": [__WEBPACK_IMPORTED_MODULE_2_polythene_css__["b" /* mixin */].defaultTransition("opacity", componentVars.input_focus_border_animation_duration), {
+        position: "absolute",
+        content: "\"\"",
+        bottom: 0,
+        left: 0,
+        height: componentVars.input_focus_border_width + "px",
+        width: "100%",
+        opacity: 0
+      }]
+    },
+    ".pe-textfield--focused .pe-textfield__input-area:after": {
+      opacity: 1
+    },
+
+    " .pe-textfield__input": {
+      display: "block",
+      fontSize: componentVars.font_size_input + "px",
+      lineHeight: componentVars.line_height_input + "px",
+      width: "100%",
+      background: "none",
+      textAlign: "left",
+      color: "inherit",
+      borderWidth: componentVars.input_border_width + "px",
+      borderStyle: "none none solid none",
+      borderRadius: 0,
+      margin: 0,
+      padding: componentVars.input_padding_v + "px " + componentVars.input_padding_h + "px",
+
+      // disable glow on textfield--invalid fields
+      "&:textfield--invalid": {
+        boxShadow: "none"
+      },
+      ":invalid": {
+        boxShadow: "none"
+      }
+    },
+    " textarea.pe-textfield__input": {
+      margin: componentVars.input_padding_v + "px " + componentVars.input_padding_h + "px",
+      padding: 0,
+      display: "block"
+    },
+
+    // focus border
+    " textfield__input:focus, &.pe-textfield--focused .pe-textfield__input": {
+      "border-width": componentVars.input_border_width + "px",
+      outline: "none"
+    },
+
+    " .pe-textfield__label": {
+      position: "absolute",
+      display: "block",
+      top: componentVars.vertical_spacing_top + componentVars.input_padding_v + "px",
+      bottom: 0,
+      left: componentVars.input_padding_h + "px",
+      right: componentVars.input_padding_h + "px",
+      fontSize: componentVars.font_size_input + "px",
+      lineHeight: componentVars.line_height_input + "px",
+      pointerEvents: "none",
+      whiteSpace: "nowrap",
+      textAlign: "left",
+      cursor: "text"
+    },
+    ".pe-textfield--dirty .pe-textfield__label": {
+      visibility: "hidden"
+    },
+
+    "&:not(.pe-textfield--no-char)": {
+      " .pe-textfield__required-indicator, .pe-textfield__optional-indicator": {
+        padding: "0 0 0 .25em"
+      }
+    },
+
+    ".pe-textfield--floating-label": {
+      paddingBottom: componentVars.floating_label_vertical_spacing_bottom + "px",
+
+      " .pe-textfield__input-area": {
+        paddingTop: componentVars.floating_label_vertical_spacing_top + "px"
+      },
+
+      " .pe-textfield__label": [__WEBPACK_IMPORTED_MODULE_2_polythene_css__["b" /* mixin */].defaultTransition("all", componentVars.floating_label_animation_duration), {
+        top: componentVars.floating_label_vertical_spacing_top + componentVars.input_padding_v + "px"
+      }],
+
+      ".pe-textfield--focused, &.pe-textfield--dirty": {
+        " .pe-textfield__label": {
+          fontSize: componentVars.font_size_floating_label + "px",
+          top: componentVars.floating_label_top + "px",
+          visibility: "visible"
+        }
+      },
+
+      ".pe-textfield--dense": {
+        fontSize: componentVars.dense_font_size_input + "px",
+        paddingBottom: componentVars.dense_floating_label_vertical_spacing_bottom + "px",
+
+        " .pe-textfield__input-area": {
+          paddingTop: componentVars.dense_floating_label_vertical_spacing_top + "px"
+        },
+
+        " .pe-textfield__input": {
+          fontSize: componentVars.dense_font_size_input + "px"
+        },
+        " .pe-textfield__label": {
+          fontSize: componentVars.dense_font_size_input + "px",
+          top: componentVars.dense_floating_label_vertical_spacing_top + componentVars.input_padding_v + "px"
+        },
+
+        ".pe-textfield--focused, &.pe-textfield--dirty": {
+          " .pe-textfield__label": {
+            fontSize: componentVars.dense_font_size_floating_label + "px",
+            top: componentVars.dense_floating_label_top + "px"
+          }
+        }
+      }
+    },
+
+    ".pe-textfield--disabled, &.pe-textfield--readonly": {
+      " .pe-textfield__label": {
+        cursor: "auto"
+      },
+      " .pe-textfield__input": {
+        "border-bottom": "none"
+      },
+      " .pe-textfield__input-area:after": {
+        opacity: 1,
+        height: "1px",
+        bottom: "-1px",
+        backgroundPosition: "top",
+        backgroundSize: "4px 1px",
+        backgroundRepeat: "repeat-x"
+      }
+    },
+
+    " .pe-textfield__error, .pe-textfield__error-placeholder, .pe-textfield__help, .pe-textfield__counter": {
+      marginTop: componentVars.margin_top_error_message + "px",
+      fontSize: componentVars.font_size_error + "px",
+      lineHeight: __WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].line_height,
+      minHeight: componentVars.font_size_error * __WEBPACK_IMPORTED_MODULE_3_polythene_theme__["a" /* vars */].line_height + "px"
+    },
+
+    " .pe-textfield__counter": {
+      textAlign: "right",
+      float: "right",
+      padding: "0 0 0 16px"
+    },
+
+    " .pe-textfield__help-focus": [__WEBPACK_IMPORTED_MODULE_2_polythene_css__["b" /* mixin */].defaultTransition("opacity"), {
+      opacity: 0
+    }],
+    ".pe-textfield--focused .pe-textfield__help-focus, &.pe-textfield--dirty .pe-textfield__help-focus": {
+      opacity: 1
+    },
+
+    ".pe-textfield--hide-clear": {
+      " .pe-textfield__input::-ms-clear": {
+        display: "none"
+      }
+    },
+    ".pe-textfield--hide-spinner": {
+      " input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button": {
+        "-webkit-appearance": "none",
+        margin: 0
+      },
+      " input[type=number]": {
+        "-moz-appearance": "textfield"
+      }
+    }
+  }, {
+    ".pe-textfield--full-width": {
+      width: "100%",
+      padding: 0,
+
+      " .pe-textfield__input-area": {
+        padding: 0
+      },
+
+      " .pe-textfield__input": {
+        padding: componentVars.full_width_input_padding_v + "px " + componentVars.full_width_input_padding_h + "px"
+      },
+
+      " .pe-textfield__error, .pe-textfield__help, .pe-textfield__counter": {
+        paddingLeft: componentVars.full_width_input_padding_h + "px",
+        paddingRight: componentVars.full_width_input_padding_h + "px"
+      },
+
+      " .pe-textfield__label": {
+        top: componentVars.full_width_input_padding_v + "px",
+        left: componentVars.full_width_input_padding_h + "px",
+        right: componentVars.full_width_input_padding_h + "px"
+      },
+
+      ".pe-textfield--dense": {
+        " .pe-textfield__input": {
+          fontSize: componentVars.dense_full_width_font_size_input + "px",
+          padding: componentVars.dense_full_width_input_padding_v + "px " + componentVars.dense_full_width_input_padding_h + "px"
+        },
+        " .pe-textfield__label": {
+          fontSize: componentVars.dense_full_width_font_size_input + "px",
+          top: componentVars.dense_full_width_input_padding_v + "px",
+          left: componentVars.dense_full_width_input_padding_h + "px",
+          right: componentVars.dense_full_width_input_padding_h + "px"
+        }
+      }
+    }
+  }])];
+});
+
+function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var style = function style(scope, selector, componentVars, tint) {
+  return [_defineProperty$2({}, scope + selector, {
+    // border color
+    color: componentVars["color_" + tint + "_focus_border"], // override by specifying "color"
+
+    " .pe-textfield__input-area": {
+      color: "inherit",
+
+      "&:after": {
+        backgroundColor: "currentcolor"
+      }
+    },
+    "&.pe-textfield--counter ": {
+      " .pe-textfield__input-area:after": {
+        backgroundColor: componentVars["color_" + tint + "_counter_ok_border"]
+      }
+    },
+
+    " .pe-textfield__input": {
+      color: componentVars["color_" + tint + "_input_text"],
+      borderColor: componentVars["color_" + tint + "_input_bottom_border"]
+    },
+
+    " .pe-textfield__label": {
+      color: componentVars["color_" + tint + "_label_text"]
+    },
+
+    "&.pe-textfield--disabled, &.pe-textfield--readonly": {
+      " .pe-textfield__input-area:after": {
+        backgroundColor: "transparent",
+        backgroundImage: "linear-gradient(to right, " + componentVars["color_" + tint + "_disabled_label_text"] + " 20%, rgba(255, 255, 255, 0) 0%)"
+      }
+    },
+
+    "&.pe-textfield--disabled": {
+      " .pe-textfield__input, .pe-textfield__label": {
+        color: componentVars["color_" + tint + "_disabled_label_text"]
+      }
+    },
+
+    "&.pe-textfield--readonly": {
+      " .pe-textfield__input, .pe-textfield__label": {
+        color: componentVars["color_" + tint + "_readonly_label_text"]
+      }
+    },
+
+    "&.pe-textfield--focused": {
+      // note: not when textfield--dirty and not textfield--focused
+      "&.pe-textfield--floating-label .pe-textfield__label": {
+        color: componentVars["color_" + tint + "_highlight_text"]
+      },
+
+      "&.pe-textfield--required.pe-textfield--floating-label": {
+        " .pe-textfield__required-indicator": {
+          color: componentVars["color_" + tint + "_required_symbol"]
+        }
+      }
+    },
+
+    " .pe-textfield__help, .pe-textfield__counter": {
+      color: componentVars["color_" + tint + "_help_text"]
+    },
+
+    "&.pe-textfield--invalid:not(.pe-textfield--hide-validation)": {
+      " .pe-textfield__input": {
+        borderColor: componentVars["color_" + tint + "_input_error_border"],
+        boxShadow: "none"
+      },
+      " .pe-textfield__label": {
+        color: componentVars["color_" + tint + "_input_error_text"]
+      },
+      " .pe-textfield__error, .pe-textfield__counter, .pe-textfield__help": {
+        color: componentVars["color_" + tint + "_input_error_text"]
+      },
+      "&.pe-textfield--required .pe-textfield__label": {
+        color: componentVars["color_" + tint + "_input_error_text"]
+      },
+      "&, &.pe-textfield--counter": {
+        " .pe-textfield__input-area:after": {
+          backgroundColor: componentVars["color_" + tint + "_input_error_border"]
+        }
+      }
+    },
+
+    " .pe-textfield__input:-webkit-autofill": {
+      "-webkit-box-shadow": "0 0 0px 1000px " + componentVars["color_" + tint + "_input_background"] + " inset",
+      color: componentVars["color_" + tint + "_input_text"] + " !important"
+    }
+  })];
+};
+
+var color = (function (selector, componentVars) {
+  return [style("", selector, componentVars, "light"), style(".pe-dark-theme ", selector, componentVars, "dark")];
+});
+
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var fns = [layout, color];
+var selector = ".pe-textfield";
+
+var customTheme = function customTheme(customSelector, customVars) {
+  return __WEBPACK_IMPORTED_MODULE_2_polythene_css__["c" /* styler */].generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
+};
+
+__WEBPACK_IMPORTED_MODULE_2_polythene_css__["c" /* styler */].generateStyles([selector], vars$1, fns);
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var classes = {
+  component: "pe-textfield",
+  inputArea: "pe-textfield__input-area",
+  input: "pe-textfield__input",
+  label: "pe-textfield__label",
+  counter: "pe-textfield__counter",
+  help: "pe-textfield__help",
+  focusHelp: "pe-textfield__help-focus",
+  error: "pe-textfield__error",
+  errorPlaceholder: "pe-textfield__error-placeholder",
+  requiredIndicator: "pe-textfield__required-indicator",
+  optionalIndicator: "pe-textfield__optional-indicator",
+  stateFocused: "pe-textfield--focused",
+  stateDisabled: "pe-textfield--disabled",
+  stateReadonly: "pe-textfield--readonly",
+  stateInvalid: "pe-textfield--invalid",
+  stateDirty: "pe-textfield--dirty",
+  hasFloatingLabel: "pe-textfield--floating-label",
+  isDense: "pe-textfield--dense",
+  isRequired: "pe-textfield--required",
+  hasFullWidth: "pe-textfield--full-width",
+  hasCounter: "pe-textfield--counter",
+  hideSpinner: "pe-textfield--hide-spinner",
+  hideClear: "pe-textfield--hide-clear",
+  hideValidation: "pe-textfield--hide-validation"
+};
+
+var validateCustom = function validateCustom(state, attrs) {
+  var validState = attrs.validate(state.value);
+  return {
+    invalid: validState && !validState.valid,
+    message: validState && validState.error
+  };
+};
+
+var validateCounter = function validateCounter(state, attrs) {
+  return {
+    invalid: state.value.length > attrs.counter,
+    message: attrs.error
+  };
+};
+
+var validateHTML = function validateHTML(state, attrs) {
+  return {
+    invalid: !state.inputEl().checkValidity(),
+    message: attrs.error
+  };
+};
+
+var getValidStatus = function getValidStatus(state, attrs) {
+  var status = {
+    invalid: false,
+    message: undefined
+  };
+
+  // validateResetOnClear: reset validation when field is cleared
+  if (state.touched && state.isInvalid && state.value.length === 0 && attrs.validateResetOnClear) {
+    state.touched = false;
+    state.isInvalid = false;
+    state.error = undefined;
+  }
+
+  if (!status.invalid && attrs.counter) {
+    status = validateCounter(state, attrs);
+  }
+  if (!status.invalid && state.inputEl() && state.inputEl().checkValidity) {
+    status = validateHTML(state, attrs);
+  }
+  if (!status.invalid && attrs.validate) {
+    status = validateCustom(state, attrs);
+  }
+  return status;
+};
+
+var checkValidity = function checkValidity(state, attrs) {
+  // default
+  var status = !state.touched && !attrs.validateAtStart ? {
+    invalid: false,
+    message: undefined
+  } : getValidStatus(state, attrs);
+  var previousInvalid = state.isInvalid;
+  state.error = status.message;
+  state.isInvalid = status.invalid;
+  if (status.invalid !== previousInvalid) {
+    setTimeout(__WEBPACK_IMPORTED_MODULE_0_mithril___default.a.redraw, 0);
+  }
+  if (!status.invalid) {
+    state.error = undefined;
+  }
+};
+
+// dirty = contains text
+var checkDirty = function checkDirty(state) {
+  return state.isDirty = state.value.toString().length > 0;
+};
+
+var updateState = function updateState(state, attrs) {
+  return checkValidity(state, attrs), checkDirty(state);
+};
+
+var notifyState = function notifyState(state, attrs) {
+  if (attrs.getState) {
+    // get status directly without updating controller
+    var status = getValidStatus(state, attrs);
+    attrs.getState({
+      focus: state.focus(),
+      dirty: state.isDirty,
+      value: state.value,
+      el: state.inputEl(),
+      invalid: status.invalid,
+      error: status.error
+    });
+  }
+};
+
+var ignoreEvent = function ignoreEvent(attrs, name) {
+  return attrs.ignoreEvents && attrs.ignoreEvents.indexOf(name) !== -1;
+};
+
+var view = function view(_ref) {
+  var state = _ref.state,
+      attrs = _ref.attrs;
+
+  // Early state update to prevent a flash (which would happen if the update is done in oncreate)
+  updateState(state, attrs);
+
+  var inputEl = state.inputEl();
+  var isInvalid = state.isInvalid;
+  var element = attrs.element || "div";
+  var type = !attrs.type || attrs.type === "submit" || attrs.type === "search" ? "text" : attrs.type;
+  var inputTag = attrs.multiline ? "textarea" : "input";
+  var showError = isInvalid && state.error;
+  var validates = attrs.validate || attrs.min || attrs.max || attrs.minlength || attrs.required || attrs.pattern;
+  var inactive = attrs.disabled || attrs.readonly;
+
+  if (attrs.focus && !state.focus() && !inactive) {
+    state.focus(true);
+    if (inputEl) {
+      inputEl.focus();
+    }
+  }
+
+  // Only update from outside if the field is not being edited
+  if (typeof attrs.value === "function" && inputEl && !state.focus() && !inactive) {
+    var value = attrs.value();
+    state.value = value;
+    state.touched = true;
+    updateState(state, attrs);
+    notifyState(state, attrs);
+    inputEl.value = value;
+  }
+
+  var onBlur = function onBlur(e) {
+    state.focus(false);
+    state.touched = true;
+    state.value = e.target.value;
+    updateState(state, attrs);
+    notifyState(state, attrs);
+    // same principle as onfocus
+    state.el.classList.remove(classes.stateFocused);
+  };
+
+  var props = _extends({}, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_polythene_core__["d" /* filterSupportedAttributes */])(attrs), {
+    class: [classes.component, isInvalid ? classes.stateInvalid : "", state.focus() ? classes.stateFocused : "", attrs.floatingLabel ? classes.hasFloatingLabel : "", attrs.disabled ? classes.stateDisabled : "", attrs.readonly ? classes.stateReadonly : "", state.isDirty ? classes.stateDirty : "", attrs.dense ? classes.isDense : "", attrs.required ? classes.isRequired : "", attrs.fullWidth ? classes.hasFullWidth : "", attrs.counter ? classes.hasCounter : "", attrs.hideSpinner !== false ? classes.hideSpinner : "", attrs.hideClear !== false ? classes.hideClear : "", attrs.hideValidation ? classes.hideValidation : "", attrs.class].join(" "),
+    oncreate: function oncreate(_ref2) {
+      var dom = _ref2.dom;
+
+      // if (attrs.config) {
+      //   attrs.config(el, inited, context, vdom);
+      // }
+      state.el = dom;
+      if (!inactive) {
+        updateState(state, attrs);
+      }
+    }
+  });
+
+  var requiredIndicator = attrs.required && attrs.requiredIndicator !== "" ? __WEBPACK_IMPORTED_MODULE_0_mithril___default()("span", { class: classes.requiredIndicator }, attrs.requiredIndicator || "*") : null;
+  var optionalIndicator = !attrs.required && attrs.optionalIndicator ? __WEBPACK_IMPORTED_MODULE_0_mithril___default()("span", { class: classes.optionalIndicator }, attrs.optionalIndicator) : null;
+  var label = attrs.label ? [attrs.label, requiredIndicator, optionalIndicator] : null;
+
+  var content = [__WEBPACK_IMPORTED_MODULE_0_mithril___default()("div", {
+    class: classes.inputArea
+  }, [label ? __WEBPACK_IMPORTED_MODULE_0_mithril___default()("label", _defineProperty({
+    class: classes.label
+  }, "on" + __WEBPACK_IMPORTED_MODULE_1_polythene_core__["k" /* touchStartEvent */], function () {
+    if (!inactive) {
+      setTimeout(function () {
+        state.inputEl().focus();
+      }, 0);
+    }
+  }), label) : null, __WEBPACK_IMPORTED_MODULE_0_mithril___default()(inputTag, _extends({}, {
+    class: classes.input,
+    type: type,
+    name: attrs.name || "",
+    disabled: attrs.disabled
+  }, !ignoreEvent(attrs, "onclick") ? {
+    onclick: function onclick() {
+      if (inactive) {
+        return;
+      }
+      // in case the browser does not give the field focus,
+      // for instance when the user tapped to the current field off screen
+      state.focus(true);
+      notifyState(state, attrs);
+    }
+  } : null, !ignoreEvent(attrs, "onfocus") ? {
+    onfocus: function onfocus() {
+      if (inactive) {
+        return;
+      }
+      state.focus(true);
+      // set CSS class manually in case field gets focus but is off screen
+      // and no redraw is triggered
+      // at the next redraw state.focus() will be read and the focus class be set
+      // in the props.class statement
+      if (state.el) {
+        state.el.classList.add(classes.stateFocused);
+      }
+      notifyState(state, attrs);
+    }
+  } : null,
+
+  // onblur defined in config
+
+  !ignoreEvent(attrs, "oninput") ? {
+    oninput: function oninput(e) {
+      // default input event
+      // may be overwritten by attrs.events
+      state.value = e.target.value;
+      // Don"t set state.touched to true to prevent error messages popping up while typing
+      if (attrs.validateOnInput) {
+        state.touched = true;
+      }
+      updateState(state, attrs);
+      notifyState(state, attrs);
+      if (attrs.oninput) {
+        attrs.oninput(state.value, e);
+      }
+    }
+  } : null, !ignoreEvent(attrs, "onkeydown") ? {
+    onkeydown: function onkeydown(e) {
+      if (e.which === 13) {
+        // ENTER
+        state.touched = true;
+        updateState(state, attrs);
+        notifyState(state, attrs);
+      } else if (e.which === 27) {
+        // ESCAPE
+        state.inputEl().blur(e);
+      } else if (e.which === 9) {
+        // TAB
+        // Update after the blur event when TAB is used to leave the field and no other field will get focus.
+        // Safari only needs 1 tick, but Chrome needs more than 150ms to create a distinctive new redraw event.
+        // But we also may have buttons that change place (search field), a large timeout works better in general.
+        setTimeout(function () {
+          __WEBPACK_IMPORTED_MODULE_0_mithril___default.a.redraw();
+          setTimeout(__WEBPACK_IMPORTED_MODULE_0_mithril___default.a.redraw, 250);
+        }, 1);
+      }
+    }
+  } : null, {
+    oncreate: function oncreate(_ref3) {
+      var dom = _ref3.dom;
+
+      state.inputEl(dom);
+      state.inputEl().value = state.value;
+      notifyState(state, attrs);
+      if (!inactive && !ignoreEvent(attrs, "onblur")) {
+        // use event delegation for the blur event
+        // so that click events bubble up
+        // http://www.quirksmode.org/blog/archives/2008/04/delegating_the.html
+        state.inputEl().addEventListener("blur", onBlur, true);
+      }
+    },
+    onremove: function onremove() {
+      if (!inactive && !ignoreEvent(attrs, "onblur")) {
+        state.inputEl().removeEventListener("blur", onBlur, true);
+      }
+    }
+  }, attrs.events ? attrs.events : null, // NOTE: may overwrite oninput
+  attrs.readonly !== undefined ? { readonly: true } : null, attrs.pattern !== undefined ? { pattern: attrs.pattern } : null, attrs.maxlength !== undefined ? { maxlength: attrs.maxlength } : null, attrs.minlength !== undefined ? { minlength: attrs.minlength } : null, attrs.max !== undefined ? { max: attrs.max } : null, attrs.min !== undefined ? { min: attrs.min } : null, attrs.autofocus !== undefined ? { autofocus: attrs.autofocus } : null, attrs.required !== undefined ? { required: attrs.required } : null, attrs.tabindex !== undefined ? { tabindex: attrs.tabindex } : null, attrs.rows !== undefined ? { rows: attrs.rows } : null))]), attrs.counter ? __WEBPACK_IMPORTED_MODULE_0_mithril___default()("div", { class: classes.counter }, state.value.length + " / " + attrs.counter) : null, attrs.help && !showError ? __WEBPACK_IMPORTED_MODULE_0_mithril___default()("div", {
+    class: [classes.help, attrs.focusHelp ? classes.focusHelp : ""].join(" ")
+  }, attrs.help) : null, showError ? __WEBPACK_IMPORTED_MODULE_0_mithril___default()("div", { class: classes.error }, state.error) : validates && !attrs.help ? __WEBPACK_IMPORTED_MODULE_0_mithril___default()("div", { class: classes.errorPlaceholder }) : null];
+  return __WEBPACK_IMPORTED_MODULE_0_mithril___default()(element, props, [attrs.before, content, attrs.after]);
+};
+
+var textfield = {
+  theme: customTheme, // accepts (selector, vars)
+  oninit: function oninit(vnode) {
+    var attrs = vnode.attrs;
+    var value = void 0,
+        isInvalid = false,
+        touched = false,
+        // true when any change is made
+    error = attrs.error || "",
+        el = void 0,
+        inputEl = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_polythene_core__["l" /* prop */])(),
+        hasFocus = attrs.focus || false;
+
+    if (typeof attrs.value === "function") {
+      var v = attrs.value();
+      value = v !== undefined ? v : "";
+    } else {
+      value = attrs.value !== undefined ? attrs.value : "";
+    }
+    if (value !== "") {
+      touched = true;
+    }
+
+    var focus = function focus(focusState) {
+      // read
+      if (focusState === undefined) {
+        return hasFocus;
+      }
+      // write
+      hasFocus = focusState;
+      if (focusState && inputEl()) {
+        // Draw in next tick, to prevent getting an immediate onBlur
+        setTimeout(function () {
+          return inputEl().focus();
+        }, 0);
+      }
+    };
+
+    vnode.state = _extends(vnode.state, {
+      value: value,
+      error: error,
+      el: el,
+      inputEl: inputEl,
+      focus: focus,
+      isInvalid: isInvalid,
+      touched: touched
+    });
+  },
+  view: view
+};
+
+/* harmony default export */ __webpack_exports__["a"] = textfield;
+
+
+/***/ }),
+/* 75 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13133,7 +14435,7 @@ var Timer = function Timer(callback, delaySeconds) {
 
 
 /***/ }),
-/* 74 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
@@ -13141,7 +14443,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" hei
 
 
 /***/ }),
-/* 75 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
@@ -13149,7 +14451,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" hei
 
 
 /***/ }),
-/* 76 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
@@ -13157,7 +14459,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" hei
 
 
 /***/ }),
-/* 77 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
@@ -13165,7 +14467,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" hei
 
 
 /***/ }),
-/* 78 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
@@ -13173,7 +14475,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" hei
 
 
 /***/ }),
-/* 79 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
@@ -13181,7 +14483,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" hei
 
 
 /***/ }),
-/* 80 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
@@ -13189,7 +14491,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" hei
 
 
 /***/ }),
-/* 81 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
@@ -13197,7 +14499,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" hei
 
 
 /***/ }),
-/* 82 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
@@ -13205,7 +14507,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="h
 
 
 /***/ }),
-/* 83 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
@@ -13213,7 +14515,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="h
 
 
 /***/ }),
-/* 84 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
@@ -13221,7 +14523,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="h
 
 
 /***/ }),
-/* 85 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
@@ -13229,7 +14531,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="h
 
 
 /***/ }),
-/* 86 */
+/* 88 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

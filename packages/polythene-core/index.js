@@ -5,3 +5,4 @@ export { animationEndEvent } from "./src/animation-event";
 export { multiple } from "./src/multiple";
 export { show, hide } from "./src/transition";
 export { filterSupportedAttributes } from "./src/attrs";
+export { prop } from "./src/prop";

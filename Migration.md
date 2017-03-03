@@ -24,13 +24,13 @@ In Mithril 1.x `m.component(myComponent)` has been changed to `m(myComponent)`.
 ### v0.2
 
 ```javascript
-const myBtn = m.component(button, {});
+m.component(button, {});
 ```
 
 ### v1.x
 
 ```javascript
-const myBtn = m(button, {});
+m(button, {});
 ```
 
 
@@ -66,7 +66,7 @@ In Mithril 1.x, the attribute `tag` is reserved and cannot be used for component
 #### v0.2
 
 ```javascript
-const myBtn = m.component(button, {
+m.component(button, {
   tag: "button"
 });
 ```
@@ -74,7 +74,7 @@ const myBtn = m.component(button, {
 #### v1.x
 
 ```javascript
-const myBtn = m(button, {
+m(button, {
   element: "button"
 });
 ```
@@ -88,7 +88,7 @@ In Mithril 1.x, attribute `config` has been removed in favor of livecycle method
 #### v0.2
 
 ```javascript
-const myBtn = m.component(button, {
+m.component(button, {
   url: {
     href: "/page",
     config: m.route
@@ -99,7 +99,7 @@ const myBtn = m.component(button, {
 #### v1.x
 
 ```javascript
-const myBtn = m(button, {
+m(button, {
   url: {
     href: "/page",
     oncreate: m.route.link
@@ -118,7 +118,7 @@ Content can now also be set using child nodes, and creates the same result when 
 ```javascript
 import listTile from 'polythene/list-tile/list-tile';
 
-const myListTile = m(listTile, {
+m(listTile, {
   content: "My content"
 });
 ```
@@ -128,11 +128,11 @@ const myListTile = m(listTile, {
 ```javascript
 import listTile from "polythene-list-tile";
 
-const myListTile1 = m(listTile, {
+ m(listTile, {
   content: "My content"
 });
 
-const myListTile2 = m(listTile, {}, "My content");
+m(listTile, {}, "My content");
 ```
 
 
@@ -165,7 +165,7 @@ The raised button state has moved to its own component.
 ```javascript
 import button from "polythene/button/button";
 
-const myButton = m(button, {
+m(button, {
   label: "Label",
   raised: true
 });
@@ -176,7 +176,7 @@ const myButton = m(button, {
 ```javascript
 import raisedButton from "polythene-raised-button";
 
-const myButton = m(raisedButton, {
+m(raisedButton, {
   label: "Label"
 });
 ```
@@ -205,7 +205,7 @@ Option `initialOpacity` has been renamed to `startOpacity`. Ripple includes more
 
 ### SVG
 
-Dynamic loading and preloading have been removed, as these are not frequent use cases.
+Dynamic loading and preloading have been removed, as these are infrequent use cases.
 
 
 
@@ -225,6 +225,50 @@ Option `buttons` has been deprecated in favor of `content` / child nodes.
 
 
 
+### Textfield
+
+Option `hideRequiredMark` has been replaced with `requiredIndicator: ""`. You can now set the "required" indicator by passing a string or Mithril element. There is also a new option "optionalIndicator".
+
+#### v0.2
+
+```javascript
+import textfield from "polythene/textfield/textfield";
+
+m(textfield, {
+  // ...
+  required: true,
+  hideRequiredMark: true
+});
+```
+
+#### v1.x
+
+```javascript
+import textfield from "polythene-textfield";
+
+m(textfield, {
+  // ...
+  required: true,
+  requiredIndicator: ""
+});
+```
+
+but also:
+
+```javascript
+m(textfield, {
+  // ...
+  required: true,
+  requiredIndicator: "(required)"
+});
+
+m(textfield, {
+  // ...
+  optionalIndicator: "(optional)"
+});
+```
+
+
 ## Theming
 
 A simpler way to theme components replaces the method of writing multiple style configurations in one file.
@@ -237,16 +281,16 @@ A simpler way to theme components replaces the method of writing multiple style 
 // app/config/custom.js
 
 export default {
-    button: (config) => {
-        const primaryButtonCfg = Object.assign({}, config, {
-            color_light_normal_background: 'blue',
-            color_light_normal_text: 'white'
-        });
-        return [
-            {'': config}, // default Polythene button
-            {'.blue-button': primaryButtonCfg}
-        ];
-    }
+  button: (config) => {
+    const primaryButtonCfg = Object.assign({}, config, {
+      color_light_normal_background: 'blue',
+      color_light_normal_text: 'white'
+    });
+    return [
+      { '': config }, // default Polythene button
+      { '.blue-button': primaryButtonCfg }
+    ];
+  }
 };
 ~~~
 
@@ -279,8 +323,8 @@ See polythene-theme's README for more details.
 import config from 'polythene/config/default';
 
 export default Object.assign({}, config, {
-    // this site's base colors
-    color_primary: '255, 152, 0' // orange 500
+  // this site's base colors
+  color_primary: '255, 152, 0' // orange 500
 });
 ~~~
 

@@ -36,13 +36,16 @@ const primaryContent = (attrs, children) => {
     : attrs.indent
       ? m("div", {class: contentFrontClass})
       : null;
-  const props = {
-    ...filterSupportedAttributes(attrs),
-    ...attrs.url,
-    ...attrs.events,
-    class: classes.primary,
-    style: null
-  };
+  const props = Object.assign(
+    {},
+    filterSupportedAttributes(attrs),
+    attrs.url,
+    attrs.events,
+    {
+      class: classes.primary,
+      style: null
+    }
+  );
   return m(element, props, [
     frontComp,
     m("div", {

@@ -9,7 +9,8 @@ export {
   animationEndEvent,
   multiple,
   show, hide,
-  filterSupportedAttributes
+  filterSupportedAttributes,
+  prop
 } from "polythene-core";
 
 export {
@@ -45,6 +46,8 @@ export { default as svg } from "polythene-svg";
 export { default as switchButton } from "polythene-switch-button";
 
 export { default as tabs } from "polythene-tabs";
+
+export { default as textfield } from "polythene-textfield";
 
 export { default as toolbar } from "polythene-toolbar";
 

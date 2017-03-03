@@ -690,6 +690,23 @@ exports[`test Tabs 1`] = `
 "
 `;
 
+exports[`test Textfield 1`] = `
+"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
+  <div class=
+  \"pe-textfield pe-textfield--floating-label pe-textfield--required pe-textfield--hide-spinner pe-textfield--hide-clear\">
+  <div class=\"pe-textfield__input-area\">
+      <label class=\"pe-textfield__label\">Your name<span class=
+      \"pe-textfield__required-indicator\">*</span></label><input type=\"text\"
+      name=\"\" required=\"\" class=\"pe-textfield__input\">
+    </div>
+    <div class=\"pe-textfield__help\">
+      Enter the name as written on the credit card
+    </div>
+  </div>
+</div>
+"
+`;
+
 exports[`test Toolbar 1`] = `
 "<div class=\"pe-toolbar\">
   <a tabindex=\"0\" class=\"pe-button pe-icon-button\">

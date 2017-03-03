@@ -22,6 +22,7 @@ import { tests as shadowTests } from "../tests/shadow/tests";
 import { tests as svgTests } from "../tests/svg/tests";
 import { tests as switchButtonTests } from "../tests/switch-button/tests";
 import { tests as tabsTests } from "../tests/tabs/tests";
+import { tests as textfieldTests } from "../tests/textfield/tests";
 import { tests as toolbarTests } from "../tests/toolbar/tests";
 import { tests as cssTests } from "../tests/css/tests";
 import { tests as cssClassesTests } from "../tests/css-classes/tests";
@@ -107,6 +108,11 @@ const pages = [
     path: "/tabs",
     name: "Tabs",
     tests: tabsTests
+  },
+  {
+    path: "/textfield",
+    name: "Textfield",
+    tests: textfieldTests
   },
   {
     path: "/toolbar",
