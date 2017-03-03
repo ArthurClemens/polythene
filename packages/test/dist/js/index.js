@@ -9131,7 +9131,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 __WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */].theme(".tests-textfield-themed-textfield", {
-  color: "#F44336"
+  color_light_input_text: "#0D47A1",
+  color_light_input_background: "#BBDEFB",
+  color_light_focus_border: "#0D47A1",
+  input_padding_h: 16
 });
 
 var ipsum = "Lorem ipsum dolor sit amet, idque signiferumque at usu, eum recusabo aliquando id. Deleniti percipitur concludaturque eu eos. Vix elitr feugait ne. Mel agam integre eu, has minim aliquid salutandi eu. Est nusquam abhorreant ne. Ei wisi dicant eam, vix tota reque persequeris an. Quo in theophrastus reprehendunt, ius te graecis epicuri volutpat.";
@@ -9560,6 +9563,16 @@ var tests = [{
       return block([__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
         value: "John",
         readonly: true
+      })]);
+    }
+  }
+}, {
+  name: "Themed",
+  component: {
+    view: function view() {
+      return block([__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_textfield__["a" /* default */], {
+        label: "Your name",
+        class: "tests-textfield-themed-textfield"
       })]);
     }
   }
@@ -13853,6 +13866,7 @@ var style = function style(scope, selector, componentVars, tint) {
 
     " .pe-textfield__input-area": {
       color: "inherit",
+      backgroundColor: componentVars["color_" + tint + "_input_background"],
 
       "&:after": {
         backgroundColor: "currentcolor"
@@ -14100,7 +14114,7 @@ var view = function view(_ref) {
 
   // Only update from outside if the field is not being edited
   if (typeof attrs.value === "function" && inputEl && !state.focus() && !inactive) {
-    var value = attrs.value();
+    var value = attrs.value().toString();
     state.value = value;
     state.touched = true;
     updateState(state, attrs);
@@ -14123,9 +14137,6 @@ var view = function view(_ref) {
     oncreate: function oncreate(_ref2) {
       var dom = _ref2.dom;
 
-      // if (attrs.config) {
-      //   attrs.config(el, inited, context, vdom);
-      // }
       state.el = dom;
       if (!inactive) {
         updateState(state, attrs);
@@ -14179,7 +14190,7 @@ var view = function view(_ref) {
     }
   } : null,
 
-  // onblur defined in config
+  // onblur defined in oncreate
 
   !ignoreEvent(attrs, "oninput") ? {
     oninput: function oninput(e) {

@@ -306,6 +306,7 @@ var style = function style(scope, selector, componentVars, tint) {
 
     " .pe-textfield__input-area": {
       color: "inherit",
+      backgroundColor: componentVars["color_" + tint + "_input_background"],
 
       "&:after": {
         backgroundColor: "currentcolor"
@@ -553,7 +554,7 @@ var view = function view(_ref) {
 
   // Only update from outside if the field is not being edited
   if (typeof attrs.value === "function" && inputEl && !state.focus() && !inactive) {
-    var value = attrs.value();
+    var value = attrs.value().toString();
     state.value = value;
     state.touched = true;
     updateState(state, attrs);
@@ -576,9 +577,6 @@ var view = function view(_ref) {
     oncreate: function oncreate(_ref2) {
       var dom = _ref2.dom;
 
-      // if (attrs.config) {
-      //   attrs.config(el, inited, context, vdom);
-      // }
       state.el = dom;
       if (!inactive) {
         updateState(state, attrs);
@@ -632,7 +630,7 @@ var view = function view(_ref) {
     }
   } : null,
 
-  // onblur defined in config
+  // onblur defined in oncreate
 
   !ignoreEvent(attrs, "oninput") ? {
     oninput: function oninput(e) {

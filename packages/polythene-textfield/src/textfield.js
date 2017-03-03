@@ -181,9 +181,6 @@ const view = ({state, attrs}) => {
         attrs.class
       ].join(" "),
       oncreate: ({dom}) => {
-        // if (attrs.config) {
-        //   attrs.config(el, inited, context, vdom);
-        // }
         state.el = dom;
         if (!inactive) {
           updateState(state, attrs);
@@ -261,7 +258,7 @@ const view = ({state, attrs}) => {
           }
           : null,
             
-        // onblur defined in config
+        // onblur defined in oncreate
 
         !ignoreEvent(attrs, "oninput")
             ? {

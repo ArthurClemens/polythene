@@ -36,12 +36,12 @@ const view = vnode => {
     filterSupportedAttributes(attrs, EL_ATTRS),
     {
       class: [
-        (attrs.parentClass || classes.component),
-        (attrs.selected ? classes.selected : null),
-        (disabled ? classes.disabled : null),
-        (attrs.inactive ? classes.inactive : null),
-        (attrs.borders ? classes.borders : null),
-        (state.focus ? classes.focused : null),
+        attrs.parentClass || classes.component,
+        attrs.selected ? classes.selected : null,
+        disabled ? classes.disabled : null,
+        attrs.inactive ? classes.inactive : null,
+        attrs.borders ? classes.borders : null,
+        state.focus ? classes.focused : null,
         attrs.class
       ].join(" "),
       tabIndex,

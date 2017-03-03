@@ -5,6 +5,7 @@ const style = (scope, selector, componentVars, tint) => [{
 
     " .pe-textfield__input-area": {
       color: "inherit",
+      backgroundColor: componentVars["color_" + tint + "_input_background"],
 
       "&:after": {
         backgroundColor: "currentcolor"

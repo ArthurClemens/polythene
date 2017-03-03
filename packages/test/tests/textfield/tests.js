@@ -3,7 +3,10 @@ import textfield from "polythene-textfield";
 import button from "polythene-raised-button";
 
 textfield.theme(".tests-textfield-themed-textfield", {
-  color: "#F44336"
+  color_light_input_text: "#0D47A1",
+  color_light_input_background: "#BBDEFB",
+  color_light_focus_border: "#0D47A1",
+  input_padding_h: 16
 });
 
 const ipsum = "Lorem ipsum dolor sit amet, idque signiferumque at usu, eum recusabo aliquando id. Deleniti percipitur concludaturque eu eos. Vix elitr feugait ne. Mel agam integre eu, has minim aliquid salutandi eu. Est nusquam abhorreant ne. Ei wisi dicant eam, vix tota reque persequeris an. Quo in theophrastus reprehendunt, ius te graecis epicuri volutpat.";
@@ -469,6 +472,17 @@ export const tests = [
         m(textfield, {
           value: "John",
           readonly: true
+        })
+      ])
+    }
+  },
+  {
+    name: "Themed",
+    component: {
+      view: () => block([
+        m(textfield, {
+          label: "Your name",
+          class: "tests-textfield-themed-textfield"
         })
       ])
     }
