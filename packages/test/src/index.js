@@ -18,6 +18,7 @@ import { tests as menuTests } from "../tests/menu/tests";
 import { tests as radioButtonTests } from "../tests/radio-button/tests";
 import { tests as raisedButtonTests } from "../tests/raised-button/tests";
 import { tests as rippleTests } from "../tests/ripple/tests";
+import { tests as searchTests } from "../tests/search/tests";
 import { tests as shadowTests } from "../tests/shadow/tests";
 import { tests as svgTests } from "../tests/svg/tests";
 import { tests as switchButtonTests } from "../tests/switch-button/tests";
@@ -88,6 +89,11 @@ const pages = [
     path: "/ripple",
     name: "Ripple",
     tests: rippleTests
+  },
+  {
+    path: "/search",
+    name: "Search",
+    tests: searchTests
   },
   {
     path: "/shadow",

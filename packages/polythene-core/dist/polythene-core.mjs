@@ -586,6 +586,9 @@ var filterSupportedAttributes = function filterSupportedAttributes(attrs) {
   }, {});
 };
 
+/*
+The most simple prop function to emulate m.prop from Mithril 0.2.
+*/
 var prop = function prop(x) {
   var p = x;
   return function (args) {

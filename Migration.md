@@ -203,6 +203,34 @@ Option `initialOpacity` has been renamed to `startOpacity`. Ripple includes more
 
 
 
+### Search
+
+Option `type: "fullWidth"` has been replaced with `fullWidth: true`.
+
+#### v0.2
+
+```javascript
+import search from "polythene/search/search";
+
+m(search, {
+  // ...
+  type: "fullWidth"
+});
+```
+
+#### v1.x
+
+```javascript
+import search from "polythene-search";
+
+m(search, {
+  // ...
+  fullWidth: true
+});
+```
+
+
+
 ### SVG
 
 Dynamic loading and preloading have been removed, as these are infrequent use cases.

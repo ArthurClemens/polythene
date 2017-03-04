@@ -149,16 +149,6 @@ const view = ({state, attrs}) => {
     inputEl.value = value;
   }
 
-  const onBlur = e => {
-    state.focus(false);
-    state.touched = true;
-    state.value = e.target.value;
-    updateState(state, attrs);
-    notifyState(state, attrs);
-    // same principle as onfocus
-    state.el.classList.remove(classes.stateFocused);
-  };
-
   const props = Object.assign(
     {},
     filterSupportedAttributes(attrs),
@@ -259,10 +249,23 @@ const view = ({state, attrs}) => {
           : null,
             
         // onblur defined in oncreate
+        !ignoreEvent(attrs, "onblur")
+            ? {
+              onblur: e => {
+                state.focus(false);
+                state.touched = true;
+                state.value = e.target.value;
+                updateState(state, attrs);
+                notifyState(state, attrs);
+                // same principle as onfocus
+                state.el.classList.remove(classes.stateFocused);
+              }
+            }
+            : null,
 
         !ignoreEvent(attrs, "oninput")
             ? {
-              oninput: (e) => {
+              oninput: e => {
                 // default input event
                 // may be overwritten by attrs.events
                 state.value = e.target.value;
@@ -281,7 +284,7 @@ const view = ({state, attrs}) => {
 
         !ignoreEvent(attrs, "onkeydown")
             ? {
-              onkeydown: (e) => {
+              onkeydown: e => {
                 if (e.which === 13) {
                   // ENTER
                   state.touched = true;
@@ -308,17 +311,6 @@ const view = ({state, attrs}) => {
             state.inputEl(dom);
             state.inputEl().value = state.value;
             notifyState(state, attrs);
-            if (!inactive && !ignoreEvent(attrs, "onblur")) {
-              // use event delegation for the blur event
-              // so that click events bubble up
-              // http://www.quirksmode.org/blog/archives/2008/04/delegating_the.html
-              state.inputEl().addEventListener("blur", onBlur, true);
-            }
-          },
-          onremove: () => {
-            if (!inactive && !ignoreEvent(attrs, "onblur")) {
-              state.inputEl().removeEventListener("blur", onBlur, true);
-            }
           }
         },
         attrs.events ? attrs.events : null, // NOTE: may overwrite oninput
@@ -379,8 +371,9 @@ export default {
       // write
       hasFocus = focusState;
       if (focusState && inputEl()) {
-        // Draw in next tick, to prevent getting an immediate onBlur
-        setTimeout(() => inputEl().focus(), 0);
+        // Draw in next tick, to prevent getting an immediate onblur
+        // Explicit setting of focus needed for most browsers other than Safari
+        setTimeout(() => inputEl() && inputEl().focus && inputEl().focus(), 0);
       }
     };
 

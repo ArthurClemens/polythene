@@ -39,6 +39,8 @@ export { default as raisedButton } from "polythene-raised-button";
 
 export { default as ripple } from "polythene-ripple";
 
+export { default as search } from "polythene-search";
+
 export { default as shadow } from "polythene-shadow";
 
 export { default as svg } from "polythene-svg";

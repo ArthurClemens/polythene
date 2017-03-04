@@ -141,7 +141,7 @@ Option `validate` is a function that accepts the current field value and is call
 
 ~~~javascript
 const field = m(textfield, {
-  validate: (value) => {
+  validate: value => {
     if (value !== value.toLowerCase()) {
       return {
         valid: false,

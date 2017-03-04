@@ -47,9 +47,8 @@ var vars$1 = {
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var baseLayout = (function (selector) {
-  return [_defineProperty({}, selector, [mixin.vendorize({
-    userSelect: "none"
-  }, vars.prefixes_user_select), {
+  return [_defineProperty({}, selector, {
+    userSelect: "none",
     outline: "none",
     padding: 0,
     textDecoration: "none",
@@ -91,7 +90,7 @@ var baseLayout = (function (selector) {
     " .pe-button__wash": {
       zIndex: 0
     }
-  }])];
+  })];
 });
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -246,7 +245,7 @@ var view = function view(vnode) {
     onblur: function onblur() {
       return state.focus = false;
     },
-    // don"t show focus on click (detected by not being in mouse over state)
+    // don't show focus on click (detected by not being in mouse over state)
     onmouseover: function onmouseover() {
       return state.mouseover = true;
     },

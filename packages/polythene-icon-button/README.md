@@ -97,6 +97,17 @@ const myIconButton = m(iconButton, {
 });
 ~~~
 
+Alternatively, use `inactive`:
+
+~~~javascript
+const myIconButton = m(iconButton, {
+  icon: {
+    msvg: gIconStars
+  },
+  inactive: true
+});
+~~~
+
 Compact (less padding):
 
 ~~~javascript
@@ -137,6 +148,7 @@ Pass `type` to the `icon` parameter, or use CSS.
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **icon**      | either icon or child nodes must be passed | Object |  | [icon](../polythene-icon) options object; also used to show an round "avatar" portrait image |
 | **compact**   | optional | Boolean | | Set to `true` to use less padding |
+| **inactive** | optional | Boolean | | Set to `true` to disable button events and ripple/wash effects |
 
 
 

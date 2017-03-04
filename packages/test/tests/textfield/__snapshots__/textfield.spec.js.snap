@@ -645,3 +645,17 @@ exports[`test Set value from outside 1`] = `
 </div>
 "
 `;
+
+exports[`test Themed 1`] = `
+"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
+  <div class=
+  \"pe-textfield pe-textfield--hide-spinner pe-textfield--hide-clear tests-textfield-themed-textfield\">
+  <div class=\"pe-textfield__input-area\">
+      <label class=\"pe-textfield__label\">Your
+      name</label><input type=\"text\" name=\"\" class=
+      \"pe-textfield__input\">
+    </div>
+  </div>
+</div>
+"
+`;

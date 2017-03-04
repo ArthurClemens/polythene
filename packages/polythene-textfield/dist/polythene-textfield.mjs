@@ -562,16 +562,6 @@ var view = function view(_ref) {
     inputEl.value = value;
   }
 
-  var onBlur = function onBlur(e) {
-    state.focus(false);
-    state.touched = true;
-    state.value = e.target.value;
-    updateState(state, attrs);
-    notifyState(state, attrs);
-    // same principle as onfocus
-    state.el.classList.remove(classes.stateFocused);
-  };
-
   var props = _extends({}, filterSupportedAttributes(attrs), {
     class: [classes.component, isInvalid ? classes.stateInvalid : "", state.focus() ? classes.stateFocused : "", attrs.floatingLabel ? classes.hasFloatingLabel : "", attrs.disabled ? classes.stateDisabled : "", attrs.readonly ? classes.stateReadonly : "", state.isDirty ? classes.stateDirty : "", attrs.dense ? classes.isDense : "", attrs.required ? classes.isRequired : "", attrs.fullWidth ? classes.hasFullWidth : "", attrs.counter ? classes.hasCounter : "", attrs.hideSpinner !== false ? classes.hideSpinner : "", attrs.hideClear !== false ? classes.hideClear : "", attrs.hideValidation ? classes.hideValidation : "", attrs.class].join(" "),
     oncreate: function oncreate(_ref2) {
@@ -631,8 +621,17 @@ var view = function view(_ref) {
   } : null,
 
   // onblur defined in oncreate
-
-  !ignoreEvent(attrs, "oninput") ? {
+  !ignoreEvent(attrs, "onblur") ? {
+    onblur: function onblur(e) {
+      state.focus(false);
+      state.touched = true;
+      state.value = e.target.value;
+      updateState(state, attrs);
+      notifyState(state, attrs);
+      // same principle as onfocus
+      state.el.classList.remove(classes.stateFocused);
+    }
+  } : null, !ignoreEvent(attrs, "oninput") ? {
     oninput: function oninput(e) {
       // default input event
       // may be overwritten by attrs.events
@@ -675,17 +674,6 @@ var view = function view(_ref) {
       state.inputEl(dom);
       state.inputEl().value = state.value;
       notifyState(state, attrs);
-      if (!inactive && !ignoreEvent(attrs, "onblur")) {
-        // use event delegation for the blur event
-        // so that click events bubble up
-        // http://www.quirksmode.org/blog/archives/2008/04/delegating_the.html
-        state.inputEl().addEventListener("blur", onBlur, true);
-      }
-    },
-    onremove: function onremove() {
-      if (!inactive && !ignoreEvent(attrs, "onblur")) {
-        state.inputEl().removeEventListener("blur", onBlur, true);
-      }
     }
   }, attrs.events ? attrs.events : null, // NOTE: may overwrite oninput
   attrs.readonly !== undefined ? { readonly: true } : null, attrs.pattern !== undefined ? { pattern: attrs.pattern } : null, attrs.maxlength !== undefined ? { maxlength: attrs.maxlength } : null, attrs.minlength !== undefined ? { minlength: attrs.minlength } : null, attrs.max !== undefined ? { max: attrs.max } : null, attrs.min !== undefined ? { min: attrs.min } : null, attrs.autofocus !== undefined ? { autofocus: attrs.autofocus } : null, attrs.required !== undefined ? { required: attrs.required } : null, attrs.tabindex !== undefined ? { tabindex: attrs.tabindex } : null, attrs.rows !== undefined ? { rows: attrs.rows } : null))]), attrs.counter ? m("div", { class: classes.counter }, state.value.length + " / " + attrs.counter) : null, attrs.help && !showError ? m("div", {
@@ -725,9 +713,10 @@ var textfield = {
       // write
       hasFocus = focusState;
       if (focusState && inputEl()) {
-        // Draw in next tick, to prevent getting an immediate onBlur
+        // Draw in next tick, to prevent getting an immediate onblur
+        // Explicit setting of focus needed for most browsers other than Safari
         setTimeout(function () {
-          return inputEl().focus();
+          return inputEl() && inputEl().focus && inputEl().focus();
         }, 0);
       }
     };

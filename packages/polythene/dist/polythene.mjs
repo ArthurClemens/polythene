@@ -12,6 +12,7 @@ import polytheneMenu from 'polythene-menu';
 import polytheneRadioButton from 'polythene-radio-button';
 import polytheneRaisedButton from 'polythene-raised-button';
 import polytheneRipple from 'polythene-ripple';
+import polytheneSearch from 'polythene-search';
 import polytheneShadow from 'polythene-shadow';
 import polytheneSvg from 'polythene-svg';
 import polytheneSwitchButton from 'polythene-switch-button';
@@ -23,7 +24,7 @@ import { vars } from 'polythene-theme';
 
 
 
-export { polytheneButton as button, polytheneCheckbox as checkbox, defaultVariables, isTouch, touchStartEvent, touchEndEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, multiple, show, hide, filterSupportedAttributes, prop, mixin, flex, styler, polytheneDialog as dialog, polytheneFab as fab, polytheneIcon as icon, polytheneIconButton as iconButton, polytheneList as list, polytheneListTile as listTile, polytheneMenu as menu, polytheneRadioButton as radioButton, polytheneRaisedButton as raisedButton, polytheneRipple as ripple, polytheneShadow as shadow, polytheneSvg as svg, polytheneSwitchButton as switchButton, polytheneTabs as tabs, polytheneTextfield as textfield, polytheneToolbar as toolbar, easing, scrollTo, Timer, vars };
+export { polytheneButton as button, polytheneCheckbox as checkbox, defaultVariables, isTouch, touchStartEvent, touchEndEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, multiple, show, hide, filterSupportedAttributes, prop, mixin, flex, styler, polytheneDialog as dialog, polytheneFab as fab, polytheneIcon as icon, polytheneIconButton as iconButton, polytheneList as list, polytheneListTile as listTile, polytheneMenu as menu, polytheneRadioButton as radioButton, polytheneRaisedButton as raisedButton, polytheneRipple as ripple, polytheneSearch as search, polytheneShadow as shadow, polytheneSvg as svg, polytheneSwitchButton as switchButton, polytheneTabs as tabs, polytheneTextfield as textfield, polytheneToolbar as toolbar, easing, scrollTo, Timer, vars };
 
 export * from 'polythene-fastclick';
 export * from 'polythene-css-classes';

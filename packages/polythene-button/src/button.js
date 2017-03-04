@@ -48,7 +48,7 @@ const view = vnode => {
       // handle focus events
       onfocus: () => state.focus = !state.mouseover,
       onblur: () => state.focus = false,
-      // don"t show focus on click (detected by not being in mouse over state)
+      // don't show focus on click (detected by not being in mouse over state)
       onmouseover: () => state.mouseover = true,
       onmouseout: () => state.mouseover = false,
       // if focus, dispatch click event on ENTER
