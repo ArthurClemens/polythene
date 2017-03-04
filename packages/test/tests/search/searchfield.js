@@ -55,7 +55,7 @@ export default {
         textfield: {
           label: "Search",
           value: () => vnode.state.fieldState ? vnode.state.fieldState.value : "",
-          getState: fieldState => (vnode.state.fieldState = fieldState, console.log("fieldState", fieldState))
+          getState: fieldState => vnode.state.fieldState = fieldState
         },
         buttons: {
           none: {
