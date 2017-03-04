@@ -10,7 +10,7 @@ export const classes = {
   searchFullWidth: "pe-search--full-width"
 };
 
-const mapButtonState = (state = {}) =>
+const getNameOfState = state =>
   state.focus && state.dirty
     ? "focus_dirty"
     : state.focus
@@ -33,8 +33,10 @@ const view = ({state, attrs}) => {
     },
     attrs.events
   );
-  const searchState = mapButtonState(state.searchState);
+  const searchState = getNameOfState(state.searchState);
+  // console.log("searchState", searchState);
   const buttons = (attrs.buttons || {})[searchState] || {};
+  // console.log("buttons", buttons);
   const textfieldAttrs = attrs.textfield || {};
   const content = m("div", {
     class: classes.content
@@ -60,7 +62,7 @@ const view = ({state, attrs}) => {
 export default {
   theme: customTheme, // accepts (selector, vars)
   oninit: vnode => {
-    vnode.state.searchState = undefined;
+    vnode.state.searchState = {};
   },
   view
 };

@@ -10,6 +10,7 @@ const font_size_input = 20;
 const inset_height = 48;
 const inset_input_indent = 16;
 const inset_input_right_padding = 0;
+const inset_side_padding = 0;
 const inset_border_radius = vars.unit_block_border_radius;
 
 const full_width_side_margin = 0;
@@ -24,6 +25,7 @@ export default {
 
   inset_height,
   inset_input_indent,
+  inset_side_padding,
   inset_input_right_padding,
   inset_border_radius,
 

@@ -14,6 +14,7 @@ var font_size_input = 20;
 var inset_height = 48;
 var inset_input_indent = 16;
 var inset_input_right_padding = 0;
+var inset_side_padding = 0;
 var inset_border_radius = vars.unit_block_border_radius;
 
 var full_width_side_margin = 0;
@@ -28,6 +29,7 @@ var vars$1 = {
 
   inset_height: inset_height,
   inset_input_indent: inset_input_indent,
+  inset_side_padding: inset_side_padding,
   inset_input_right_padding: inset_input_right_padding,
   inset_border_radius: inset_border_radius,
 
@@ -157,8 +159,7 @@ var classes = {
   searchFullWidth: "pe-search--full-width"
 };
 
-var mapButtonState = function mapButtonState() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+var getNameOfState = function getNameOfState(state) {
   return state.focus && state.dirty ? "focus_dirty" : state.focus ? "focus" : state.dirty ? "dirty" : "none";
 };
 
@@ -170,8 +171,10 @@ var view = function view(_ref) {
   var props = _extends({}, filterSupportedAttributes(attrs), {
     class: [classes.component, attrs.fullWidth ? classes.searchFullWidth : classes.searchInset, attrs.class].join(" ")
   }, attrs.events);
-  var searchState = mapButtonState(state.searchState);
+  var searchState = getNameOfState(state.searchState);
+  // console.log("searchState", searchState);
   var buttons = (attrs.buttons || {})[searchState] || {};
+  // console.log("buttons", buttons);
   var textfieldAttrs = attrs.textfield || {};
   var content = m("div", {
     class: classes.content
@@ -189,7 +192,7 @@ var view = function view(_ref) {
 var search = {
   theme: customTheme, // accepts (selector, vars)
   oninit: function oninit(vnode) {
-    vnode.state.searchState = undefined;
+    vnode.state.searchState = {};
   },
   view: view
 };
