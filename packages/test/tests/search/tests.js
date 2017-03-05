@@ -1,100 +1,29 @@
 import m from "mithril";
 import search from "polythene-search";
-import iconButton from "polythene-icon-button";
-import shadow from "polythene-shadow";
+import searchfield from "./searchfield";
 
-import iconSearch from "mmsvg/google/msvg/action/search";
-import iconBack from "mmsvg/google/msvg/navigation/arrow-back";
-import iconClear from "mmsvg/google/msvg/content/clear";
-import iconMic from "mmsvg/google/msvg/av/mic";
-
-const searchButton = m(iconButton, {
-  icon: { msvg: iconSearch },
-  inactive: true
+search.theme(".tests-search-themed-search", {
+  color_light_input_text: "#0D47A1",
+  color_light_background: "#BBDEFB",
+  color_dark_input_text: "#eee",
+  color_dark_background: "#333"
 });
-
-const backButton = vnode => (
-  m(iconButton, {
-    icon: { msvg: iconBack },
-    ink: false,
-    events: {
-      onclick: () => (
-        vnode.state.fieldState.value = "",
-        m.redraw()
-      )
-    }
-  })
-);
-
-const clearButton = vnode => (
-  m(iconButton, {
-    icon: { msvg: iconClear },
-    ink: false,
-    events: {
-      onclick: () => (
-        vnode.state.fieldState.value = "",
-        vnode.state.fieldState.el.focus(),
-        m.redraw()
-      )
-    }
-  })
-);
-
-const micButton = m(iconButton, {
-  icon: { msvg: iconMic },
-  inactive: true
-});
-
-const searchfield = {
-  fieldState: undefined,
-  view: vnode =>
-    m(search, Object.assign(
-      {},
-      {
-        textfield: {
-          label: "Search",
-          value: () => vnode.state.fieldState ? vnode.state.fieldState.value : "",
-          getState: fieldState => vnode.state.fieldState = fieldState
-        },
-        buttons: {
-          none: {
-            before: searchButton,
-            after: micButton
-          },
-          focus: {
-            before: searchButton,
-            after: micButton
-          },
-          focus_dirty: {
-            before: backButton(vnode),
-            after: clearButton(vnode)
-          },
-          dirty: {
-            before: backButton(vnode),
-            after: clearButton(vnode)
-          }
-        },
-        before: m(shadow)
-      },
-      vnode.attrs
-    ))
-};
 
 const block = {
-  view: vnode => 
+  view: ({attrs}) => 
     m("form", {
       style: Object.assign(
         {},
         {
-          minHeight: "150px",
-          overflow: "hidden"
+          minHeight: "130px",
+          overflow: "hidden" // hides top and side shadow with full width search field
         },
-        vnode.attrs.dark ? null : { background: "#e4e4e4" },
-        vnode.attrs.fullWidth
+        attrs.dark ? { backgroundColor: "transparent" } : { backgroundColor: "#e4e4e4" },
+        attrs.fullWidth
           ? null
           : { padding: "8px" }
       )},
-      m(searchfield, vnode.attrs)
+      m(searchfield, attrs)
     )
 };
 
@@ -111,5 +40,33 @@ export const tests = [
       view: () => m(block, {fullWidth: true})
     }
   },
+  {
+    name: "Colored field",
+    component: {
+      view: () => m(block, {
+        style: {
+          background: "#BBDEFB"
+        }
+      })
+    }
+  },
+  {
+    name: "Theme",
+    component: {
+      view: () => m(block, {
+        class: "tests-search-themed-search"
+      })
+    }
+  },
+  {
+    name: "Theme -- dark theme",
+    class: "pe-dark-theme",
+    component: {
+      view: () => m(block, {
+        class: "tests-search-themed-search",
+        dark: true
+      })
+    }
+  }
   
 ];

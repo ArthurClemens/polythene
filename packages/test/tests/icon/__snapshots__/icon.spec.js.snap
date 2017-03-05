@@ -75,6 +75,8 @@ exports[`test Option: content 1`] = `
 "
 `;
 
+exports[`test Option: msvg (Zondicons) 1`] = `"<div class=\"pe-icon pe-icon--regular  \"><div class=\"pe-svg \"><svg width=\"20px\" height=\"20px\" viewBox=\"0 0 20 20\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"><title>wrench</title><desc>Created with Sketch.</desc><defs></defs><g id=\"Page-1\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\"><g id=\"wrench\" fill=\"#000000\"><path d=\"M9.42239525,7.09396812 C10.2387498,5.25806681 9.89409813,3.03105216 8.38844025,1.52539428 C6.93864576,0.0755997864 4.82002948,-0.297742297 3.02577331,0.40536803 L6.97422669,4.35382141 L4.14579956,7.18224853 L0.197346187,3.23379515 C-0.50576414,5.02805132 -0.132422056,7.1466676 1.31737244,8.59646209 C2.70997507,9.98906472 4.71967257,10.3884681 6.46624524,9.79467236 L16.5961941,19.9246212 L19.4246212,17.0961941 L9.42239525,7.09396812 Z\" id=\"Combined-Shape\"></path></g></g></svg></div></div>"`;
+
 exports[`test Option: msvg 1`] = `
 "<div class=\"pe-icon pe-icon--regular\">
   <div class=\"pe-svg\">

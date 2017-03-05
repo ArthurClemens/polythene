@@ -40,9 +40,11 @@ var vars$1 = {
   full_width_border_radius: full_width_border_radius,
 
   color_light_label_text: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
+  color_light_input_text: rgba(vars.color_light_foreground, vars.blend_light_text_primary),
   color_light_background: rgba(vars.color_light_background),
 
   color_dark_label_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
+  color_dark_input_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
   color_dark_background: rgba(vars.color_dark_background)
 };
 
@@ -130,8 +132,16 @@ var style = function style(scope, selector, componentVars, tint) {
   return [_defineProperty$1({}, scope + selector, {
     backgroundColor: componentVars["color_" + tint + "_background"],
 
-    " .pe-textfield__label": {
-      color: componentVars["color_" + tint + "_label_text"]
+    " .pe-textfield": {
+      " .pe-textfield__label": {
+        color: componentVars["color_" + tint + "_label_text"]
+      },
+      " .pe-textfield__input": {
+        color: componentVars["color_" + tint + "_input_text"]
+      },
+      " .pe-textfield__input-area": {
+        backgroundColor: "transparent"
+      }
     }
   })];
 };
@@ -173,9 +183,7 @@ var view = function view(_ref) {
     class: [classes.component, attrs.fullWidth ? classes.searchFullWidth : classes.searchInset, attrs.class].join(" ")
   }, attrs.events);
   var searchState = getNameOfState(state.searchState);
-  // console.log("searchState", searchState);
   var buttons = (attrs.buttons || {})[searchState] || {};
-  // console.log("buttons", buttons);
   var textfieldAttrs = attrs.textfield || {};
   var content = m("div", {
     class: classes.content

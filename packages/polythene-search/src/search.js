@@ -34,9 +34,7 @@ const view = ({state, attrs}) => {
     attrs.events
   );
   const searchState = getNameOfState(state.searchState);
-  // console.log("searchState", searchState);
   const buttons = (attrs.buttons || {})[searchState] || {};
-  // console.log("buttons", buttons);
   const textfieldAttrs = attrs.textfield || {};
   const content = m("div", {
     class: classes.content

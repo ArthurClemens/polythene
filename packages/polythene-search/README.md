@@ -19,7 +19,7 @@ const mySearch = m(search, {
 This creates a search field without any icons, with label "Search", and is little more than a [text field](../polythene-textfield). To embellish the search field with icon buttons - see below.
 
 
-### Display type
+### Search box type
 
 The search box can be "inset" or "full width".
 
@@ -37,11 +37,11 @@ const mySearch = m(search, {
 ~~~
 
 
-### Icons
+### Icons and buttons
 
-The search component does not include any icons by itself - that is the responsibility of your application.
+The search component does not include any icons by itself - providing those is the responsibility of your application. 
 
-To choose which icons to add, we first need to look at the possible states:
+To choose which icons to show, we first need to look at the possible states:
 
 * `none` - no interaction, no input
 * `focus` - input element has focus, no input
@@ -50,82 +50,37 @@ To choose which icons to add, we first need to look at the possible states:
 
 Secondly, buttons may be placed `before` of `after` the input field.
 
-The states are set in the `buttons` option. For instance to show a search button at state "none":
+The states are set in the `buttons` option:
 
 ~~~javascript
-none: {
-  before: searchButton
-}
-~~~
-
-or
-
-~~~javascript
-none: {
-  before: () => createSearchButton(vnode)
-}
-~~~
-
-Used in our search component:
-
-~~~javascript
-import iconButton from "polythene-icon-button";
-
-import iconSearch from "mmsvg/google/msvg/action/search";
-import iconBack from "mmsvg/google/msvg/navigation/arrow-back";
-import iconClear from "mmsvg/google/msvg/content/clear";
-
-const searchButton = m(iconButton, {
-  icon: { msvg: iconSearch }
-});
-const backButton = m(iconButton, {
-  icon: { msvg: iconBack }
-});
-const clearButton = m(iconButton, {
-  icon: { msvg: iconClear }
-});
-
-const mySearch = m(search, {
-  textfield: {
-    label: "Search"
+buttons: {
+  none: {
+    before: m(searchButton)
   },
-  buttons: {
-    none: {
-      before: searchButton
-    },
-    focus: {
-      before: searchButton,
-      after: clearButton
-    },
-    focus_dirty: {
-      before: backButton,
-      after: clearButton
-    },
-    dirty: {
-      before: backButton
-    }
+  focus: {
+    before: m(searchButton),
+    after: m(clearButton)
+  },
+  focus_dirty: {
+    before: m(backButton),
+    after: m(clearButton)
+  },
+  dirty: {
+    before: m(backButton)
   }
-});
+}
 ~~~
 
-Next we will add logic to those buttons.
+Not all button state need to be defined.
+
 
 
 ### Logic: storing and clearing the value
 
-To add logic to the search field, we will wrap the search field in a component to store its state:
-
-~~~javascript
-const component = {
-  fieldState: undefined,
-  view: () => {} // see below
-};
-~~~
-
-We will store the query in our component state, and set the text field input "from the outside". For this we will use the [text field callback functions](../polythene-textfield) `value` and `getState`:
+To add logic to the search field, we will wrap the search field in a component. We will store the textfield state in our component state, and set the text field input value programmatically. For this we will use the [text field callback functions](../polythene-textfield) `value` and `getState`:
 
 * `value()` - sets the text field input
-* `getState(state)` - receives updates on changes and events, and we will store the state's value property
+* `getState(state)` - receives updates on changes and events
 
 <!--
 the return value of textfield's `getState` is a object:
@@ -142,60 +97,24 @@ the return value of textfield's `getState` is a object:
 ~~~
 -->
 
+Textfield attributes are passed with option `textfield`:
+
 ~~~javascript
-const component = {
-  fieldState: undefined,
-  view: vnode => 
-    m(search, {
-      textfield: {
-        label: "Search",
-        value: () => vnode.state.fieldState ? vnode.state.fieldState.value : "",
-        getState: fieldState => vnode.state.fieldState = fieldState
-      },
-      buttons: {
-        //...
-      }
-    })
-};
+textfield: {
+  label: "Search",
+  value: () => state.fieldState ? state.fieldState.value : "",
+  getState: fieldState => state.fieldState = fieldState
+}
 ~~~
 
-To clear the field we:
+To clear the field:
 
 * pass the state by wrapping the component in a function call 
 * add an `onclick` event to the clear button and to return the focus to the input field
 
-~~~javascript
-const clearButton = vnode => (
-  m(iconButton, {
-    icon: { msvg: iconClear },
-    events: {
-      onclick: () => (
-        vnode.state.fieldState.value = "",
-        vnode.state.fieldState.el.focus()
-      )
-    }
-  })
-);
-~~~
-
 The back button clears the field and removes the focus, setting the search field to the initial state. Remove the ripple (`ink: false`) to prevent a ripple after the click (it would seem like the returned search button received the click).
 
-~~~javascript
-const backButton = vnode => (
-  m(iconButton, {
-    icon: { msvg: iconBack },
-    ink: false,
-    events: {
-      onclick: () => (
-        vnode.state.fieldState.value = "",
-        m.redraw()
-      )
-    }
-  })
-);
-~~~
-
-Finally, let's also add a microphone icon and a shadow around the box. The full code:
+Complete example:
 
 ~~~javascript
 import m from "mithril";
@@ -208,67 +127,81 @@ import iconBack from "mmsvg/google/msvg/navigation/arrow-back";
 import iconClear from "mmsvg/google/msvg/content/clear";
 import iconMic from "mmsvg/google/msvg/av/mic";
 
-const searchButton = m(iconButton, {
-  icon: { msvg: iconSearch }
-});
-const backButton = vnode => (
-  m(iconButton, {
-    icon: { msvg: iconBack },
-    ink: false,
-    events: {
-      onclick: () => (
-        vnode.state.fieldState.value = "",
-        m.redraw()
-      )
-    }
-  })
-);
-const clearButton = vnode => (
-  m(iconButton, {
-    icon: { msvg: iconClear },
-    ink: false,
-    events: {
-      onclick: () => (
-        vnode.state.fieldState.value = "",
-        vnode.state.fieldState.el.focus(),
-        m.redraw()
-      )
-    }
-  })
-);
-const micButton = m(iconButton, {
-  icon: { msvg: iconMic }
-});
+const searchButton = {
+  view: () => 
+    m(iconButton, {
+      icon: { msvg: iconSearch },
+      inactive: true
+    })
+};
 
-const component = {
-  fieldState: undefined,
-  view: vnode => 
+const backButton = {
+  view: ({attrs}) =>
+    m(iconButton, {
+      icon: { msvg: iconBack },
+      ink: false,
+      events: { onclick: attrs.leave }
+    })
+};
+
+const clearButton = {
+  view: ({attrs}) =>
+    m(iconButton, {
+      icon: { msvg: iconClear },
+      ink: false,
+      events: { onclick: attrs.clear }
+    })
+};
+
+const micButton = {
+  view: () =>
+    m(iconButton, {
+      icon: { msvg: iconMic },
+      inactive: true
+    })
+};
+
+const mySearchComponent = {
+  oninit: ({state}) => {
+    state.fieldState = {};
+    state.clear = () => {
+      state.fieldState.value = "";
+      state.fieldState.el.focus();
+      m.redraw();
+    };
+    state.leave = () => {
+      state.fieldState.value = "";
+      m.redraw();
+    };
+  },
+  view: ({state, attrs}) =>
     m(search, {
       textfield: {
         label: "Search",
-        value: () => vnode.state.fieldState ? vnode.state.fieldState.value : "",
-        getState: fieldState => vnode.state.fieldState = fieldState
+        value: () => state.fieldState ? state.fieldState.value : "",
+        getState: fieldState => state.fieldState = fieldState
       },
       buttons: {
         none: {
-          before: searchButton,
-          after: micButton
+          before: m(searchButton),
+          after: m(micButton)
         },
         focus: {
-          before: searchButton,
-          after: micButton
+          before: m(searchButton),
+          after: m(micButton)
         },
         focus_dirty: {
-          before: backButton(vnode),
-          after: clearButton(vnode)
+          before: m(backButton, {leave: state.leave}),
+          after: m(clearButton, {clear: state.clear})
         },
         dirty: {
-          before: backButton(vnode),
-          after: clearButton(vnode)
+          before: m(backButton, {leave: state.leave}),
+          after: m(clearButton, {clear: state.clear})
         }
       },
       before: m(shadow)
-    })
+    }
+  )
 };
 ~~~
 

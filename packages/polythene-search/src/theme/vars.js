@@ -36,8 +36,10 @@ export default {
   full_width_border_radius,
 
   color_light_label_text: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
+  color_light_input_text: rgba(vars.color_light_foreground, vars.blend_light_text_primary),
   color_light_background: rgba(vars.color_light_background),
 
   color_dark_label_text:  rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
+  color_dark_input_text:  rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
   color_dark_background:  rgba(vars.color_dark_background)
 };

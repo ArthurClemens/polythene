@@ -7225,13 +7225,17 @@ var tests = [{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_svg__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_mmsvg_google_msvg_action_stars__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_mmsvg_google_msvg_action_stars___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_mmsvg_google_msvg_action_stars__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_mmsvg_zondicons_msvg_wrench__ = __webpack_require__(96);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_mmsvg_zondicons_msvg_wrench___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_mmsvg_zondicons_msvg_wrench__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return tests; });
 
 
 
 
-
 var trustedSvg = __WEBPACK_IMPORTED_MODULE_0_mithril___default.a.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>");
+
+
+
 
 __WEBPACK_IMPORTED_MODULE_1_polythene_icon__["a" /* default */].theme(".tests-icon-themed-icon", {
   size_regular: 50,
@@ -7253,23 +7257,25 @@ var tests = [{
   name: "Option: content (svg trusted content)",
   component: __WEBPACK_IMPORTED_MODULE_1_polythene_icon__["a" /* default */],
   attrs: {
-    svg: {
-      content: trustedSvg
-    }
+    svg: { content: trustedSvg }
   }
 }, {
   name: "Option: content (svg content mmsvg)",
   component: __WEBPACK_IMPORTED_MODULE_1_polythene_icon__["a" /* default */],
   attrs: {
-    svg: {
-      content: __WEBPACK_IMPORTED_MODULE_3_mmsvg_google_msvg_action_stars___default.a
-    }
+    svg: { content: __WEBPACK_IMPORTED_MODULE_3_mmsvg_google_msvg_action_stars___default.a }
   }
 }, {
   name: "Option: msvg",
   component: __WEBPACK_IMPORTED_MODULE_1_polythene_icon__["a" /* default */],
   attrs: {
     msvg: __WEBPACK_IMPORTED_MODULE_3_mmsvg_google_msvg_action_stars___default.a
+  }
+}, {
+  name: "Option: msvg (Zondicons)",
+  component: __WEBPACK_IMPORTED_MODULE_1_polythene_icon__["a" /* default */],
+  attrs: {
+    msvg: __WEBPACK_IMPORTED_MODULE_4_mmsvg_zondicons_msvg_wrench___default.a
   }
 }, {
   name: "Option: src (image file)",
@@ -9114,8 +9120,7 @@ var tests = [{
 }];
 
 /***/ }),
-/* 57 */,
-/* 58 */
+/* 57 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9132,7 +9137,6 @@ var tests = [{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_mmsvg_google_msvg_content_clear___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_mmsvg_google_msvg_content_clear__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_mmsvg_google_msvg_av_mic__ = __webpack_require__(82);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_mmsvg_google_msvg_av_mic___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_mmsvg_google_msvg_av_mic__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return tests; });
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 
@@ -9145,83 +9149,128 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 
-var searchButton = __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_2_polythene_icon_button__["a" /* default */], {
-  icon: { msvg: __WEBPACK_IMPORTED_MODULE_4_mmsvg_google_msvg_action_search___default.a },
-  inactive: true
-});
-
-var backButton = function backButton(vnode) {
-  return __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_2_polythene_icon_button__["a" /* default */], {
-    icon: { msvg: __WEBPACK_IMPORTED_MODULE_5_mmsvg_google_msvg_navigation_arrow_back___default.a },
-    ink: false,
-    events: {
-      onclick: function onclick() {
-        return vnode.state.fieldState.value = "", __WEBPACK_IMPORTED_MODULE_0_mithril___default.a.redraw();
-      }
-    }
-  });
+var searchButton = {
+  view: function view() {
+    return __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_2_polythene_icon_button__["a" /* default */], {
+      icon: { msvg: __WEBPACK_IMPORTED_MODULE_4_mmsvg_google_msvg_action_search___default.a },
+      inactive: true
+    });
+  }
 };
 
-var clearButton = function clearButton(vnode) {
-  return __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_2_polythene_icon_button__["a" /* default */], {
-    icon: { msvg: __WEBPACK_IMPORTED_MODULE_6_mmsvg_google_msvg_content_clear___default.a },
-    ink: false,
-    events: {
-      onclick: function onclick() {
-        return vnode.state.fieldState.value = "", vnode.state.fieldState.el.focus(), __WEBPACK_IMPORTED_MODULE_0_mithril___default.a.redraw();
-      }
-    }
-  });
+var backButton = {
+  view: function view(_ref) {
+    var attrs = _ref.attrs;
+    return __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_2_polythene_icon_button__["a" /* default */], {
+      icon: { msvg: __WEBPACK_IMPORTED_MODULE_5_mmsvg_google_msvg_navigation_arrow_back___default.a },
+      ink: false,
+      events: { onclick: attrs.leave }
+    });
+  }
 };
 
-var micButton = __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_2_polythene_icon_button__["a" /* default */], {
-  icon: { msvg: __WEBPACK_IMPORTED_MODULE_7_mmsvg_google_msvg_av_mic___default.a },
-  inactive: true
-});
+var clearButton = {
+  view: function view(_ref2) {
+    var attrs = _ref2.attrs;
+    return __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_2_polythene_icon_button__["a" /* default */], {
+      icon: { msvg: __WEBPACK_IMPORTED_MODULE_6_mmsvg_google_msvg_content_clear___default.a },
+      ink: false,
+      events: { onclick: attrs.clear }
+    });
+  }
+};
 
-var searchfield = {
-  fieldState: undefined,
-  view: function view(vnode) {
+var micButton = {
+  view: function view() {
+    return __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_2_polythene_icon_button__["a" /* default */], {
+      icon: { msvg: __WEBPACK_IMPORTED_MODULE_7_mmsvg_google_msvg_av_mic___default.a },
+      inactive: true
+    });
+  }
+};
+
+/* harmony default export */ __webpack_exports__["a"] = {
+  oninit: function oninit(_ref3) {
+    var state = _ref3.state;
+
+    state.fieldState = {};
+    state.clear = function () {
+      state.fieldState.value = "";
+      state.fieldState.el.focus();
+      __WEBPACK_IMPORTED_MODULE_0_mithril___default.a.redraw();
+    };
+    state.leave = function () {
+      state.fieldState.value = "";
+      __WEBPACK_IMPORTED_MODULE_0_mithril___default.a.redraw();
+    };
+  },
+  view: function view(_ref4) {
+    var state = _ref4.state,
+        attrs = _ref4.attrs;
     return __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_search__["a" /* default */], _extends({}, {
       textfield: {
         label: "Search",
         value: function value() {
-          return vnode.state.fieldState ? vnode.state.fieldState.value : "";
+          return state.fieldState ? state.fieldState.value : "";
         },
         getState: function getState(fieldState) {
-          return vnode.state.fieldState = fieldState;
+          return state.fieldState = fieldState;
         }
       },
       buttons: {
         none: {
-          before: searchButton,
-          after: micButton
+          before: __WEBPACK_IMPORTED_MODULE_0_mithril___default()(searchButton),
+          after: __WEBPACK_IMPORTED_MODULE_0_mithril___default()(micButton)
         },
         focus: {
-          before: searchButton,
-          after: micButton
+          before: __WEBPACK_IMPORTED_MODULE_0_mithril___default()(searchButton),
+          after: __WEBPACK_IMPORTED_MODULE_0_mithril___default()(micButton)
         },
         focus_dirty: {
-          before: backButton(vnode),
-          after: clearButton(vnode)
+          before: __WEBPACK_IMPORTED_MODULE_0_mithril___default()(backButton, { leave: state.leave }),
+          after: __WEBPACK_IMPORTED_MODULE_0_mithril___default()(clearButton, { clear: state.clear })
         },
         dirty: {
-          before: backButton(vnode),
-          after: clearButton(vnode)
+          before: __WEBPACK_IMPORTED_MODULE_0_mithril___default()(backButton, { leave: state.leave }),
+          after: __WEBPACK_IMPORTED_MODULE_0_mithril___default()(clearButton, { clear: state.clear })
         }
       },
       before: __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_3_polythene_shadow__["a" /* default */])
-    }, vnode.attrs));
+    }, attrs));
   }
 };
 
+/***/ }),
+/* 58 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mithril__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mithril___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_mithril__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_search__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__searchfield__ = __webpack_require__(57);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return tests; });
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+
+
+
+
+__WEBPACK_IMPORTED_MODULE_1_polythene_search__["a" /* default */].theme(".tests-search-themed-search", {
+  color_light_input_text: "#0D47A1",
+  color_light_background: "#BBDEFB",
+  color_dark_input_text: "#eee",
+  color_dark_background: "#333"
+});
+
 var block = {
-  view: function view(vnode) {
+  view: function view(_ref) {
+    var attrs = _ref.attrs;
     return __WEBPACK_IMPORTED_MODULE_0_mithril___default()("form", {
       style: _extends({}, {
-        minHeight: "150px",
-        overflow: "hidden"
-      }, vnode.attrs.dark ? null : { background: "#e4e4e4" }, vnode.attrs.fullWidth ? null : { padding: "8px" }) }, __WEBPACK_IMPORTED_MODULE_0_mithril___default()(searchfield, vnode.attrs));
+        minHeight: "130px",
+        overflow: "hidden" // hides top and side shadow with full width search field
+      }, attrs.dark ? { backgroundColor: "transparent" } : { backgroundColor: "#e4e4e4" }, attrs.fullWidth ? null : { padding: "8px" }) }, __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_2__searchfield__["a" /* default */], attrs));
   }
 };
 
@@ -9237,6 +9286,37 @@ var tests = [{
   component: {
     view: function view() {
       return __WEBPACK_IMPORTED_MODULE_0_mithril___default()(block, { fullWidth: true });
+    }
+  }
+}, {
+  name: "Colored field",
+  component: {
+    view: function view() {
+      return __WEBPACK_IMPORTED_MODULE_0_mithril___default()(block, {
+        style: {
+          background: "#BBDEFB"
+        }
+      });
+    }
+  }
+}, {
+  name: "Theme",
+  component: {
+    view: function view() {
+      return __WEBPACK_IMPORTED_MODULE_0_mithril___default()(block, {
+        class: "tests-search-themed-search"
+      });
+    }
+  }
+}, {
+  name: "Theme -- dark theme",
+  class: "pe-dark-theme",
+  component: {
+    view: function view() {
+      return __WEBPACK_IMPORTED_MODULE_0_mithril___default()(block, {
+        class: "tests-search-themed-search",
+        dark: true
+      });
     }
   }
 }];
@@ -13491,9 +13571,11 @@ var vars$1 = {
   full_width_border_radius: full_width_border_radius,
 
   color_light_label_text: rgba(__WEBPACK_IMPORTED_MODULE_4_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_4_polythene_theme__["a" /* vars */].blend_light_text_disabled),
+  color_light_input_text: rgba(__WEBPACK_IMPORTED_MODULE_4_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_4_polythene_theme__["a" /* vars */].blend_light_text_primary),
   color_light_background: rgba(__WEBPACK_IMPORTED_MODULE_4_polythene_theme__["a" /* vars */].color_light_background),
 
   color_dark_label_text: rgba(__WEBPACK_IMPORTED_MODULE_4_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_4_polythene_theme__["a" /* vars */].blend_dark_text_disabled),
+  color_dark_input_text: rgba(__WEBPACK_IMPORTED_MODULE_4_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_4_polythene_theme__["a" /* vars */].blend_dark_text_primary),
   color_dark_background: rgba(__WEBPACK_IMPORTED_MODULE_4_polythene_theme__["a" /* vars */].color_dark_background)
 };
 
@@ -13581,8 +13663,16 @@ var style = function style(scope, selector, componentVars, tint) {
   return [_defineProperty$1({}, scope + selector, {
     backgroundColor: componentVars["color_" + tint + "_background"],
 
-    " .pe-textfield__label": {
-      color: componentVars["color_" + tint + "_label_text"]
+    " .pe-textfield": {
+      " .pe-textfield__label": {
+        color: componentVars["color_" + tint + "_label_text"]
+      },
+      " .pe-textfield__input": {
+        color: componentVars["color_" + tint + "_input_text"]
+      },
+      " .pe-textfield__input-area": {
+        backgroundColor: "transparent"
+      }
     }
   })];
 };
@@ -13624,9 +13714,7 @@ var view = function view(_ref) {
     class: [classes.component, attrs.fullWidth ? classes.searchFullWidth : classes.searchInset, attrs.class].join(" ")
   }, attrs.events);
   var searchState = getNameOfState(state.searchState);
-  // console.log("searchState", searchState);
   var buttons = (attrs.buttons || {})[searchState] || {};
-  // console.log("buttons", buttons);
   var textfieldAttrs = attrs.textfield || {};
   var content = __WEBPACK_IMPORTED_MODULE_0_mithril___default()("div", {
     class: classes.content
@@ -14913,6 +15001,15 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="h
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_index__ = __webpack_require__(26);
+
+
+/***/ }),
+/* 95 */,
+/* 96 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var m = __webpack_require__(0);
+module.exports = m.trust('<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>wrench</title><desc>Created with Sketch.</desc><defs></defs><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="wrench" fill="#000000"><path d="M9.42239525,7.09396812 C10.2387498,5.25806681 9.89409813,3.03105216 8.38844025,1.52539428 C6.93864576,0.0755997864 4.82002948,-0.297742297 3.02577331,0.40536803 L6.97422669,4.35382141 L4.14579956,7.18224853 L0.197346187,3.23379515 C-0.50576414,5.02805132 -0.132422056,7.1466676 1.31737244,8.59646209 C2.70997507,9.98906472 4.71967257,10.3884681 6.46624524,9.79467236 L16.5961941,19.9246212 L19.4246212,17.0961941 L9.42239525,7.09396812 Z" id="Combined-Shape"></path></g></g></svg>');
 
 
 /***/ })

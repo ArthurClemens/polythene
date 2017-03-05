@@ -630,6 +630,69 @@ exports[`test SVG 1`] = `
 "
 `;
 
+exports[`test Search 1`] = `
+"<div class=\"pe-search pe-search--inset\">
+  <div class=\"pe-shadow\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-search__content\">
+    <a tabindex=\"-1\" class=
+    \"pe-button pe-icon-button pe-button--inactive\">
+    <div class=\"pe-button__content\">
+      <div class=\"pe-ripple pe-ripple--constrained\">
+        <div class=\"pe-ripple__mask\">
+          <div class=\"pe-ripple__waves\"></div>
+        </div>
+      </div>
+      <div class=\"pe-button__focus\"></div>
+      <div class=\"pe-icon-button__content\">
+        <div class=\"pe-icon pe-icon--regular\">
+          <div class=\"pe-svg\">
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <path d=
+              \"M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z\">
+              </path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div></a>
+    <div class=
+    \"pe-textfield pe-textfield--hide-spinner pe-textfield--hide-clear\">
+    <div class=\"pe-textfield__input-area\">
+        <label class=
+        \"pe-textfield__label\">Search</label><input type=\"text\"
+        name=\"\" class=\"pe-textfield__input\">
+      </div>
+    </div><a tabindex=\"-1\" class=
+    \"pe-button pe-icon-button pe-button--inactive\">
+    <div class=\"pe-button__content\">
+      <div class=\"pe-ripple pe-ripple--constrained\">
+        <div class=\"pe-ripple__mask\">
+          <div class=\"pe-ripple__waves\"></div>
+        </div>
+      </div>
+      <div class=\"pe-button__focus\"></div>
+      <div class=\"pe-icon-button__content\">
+        <div class=\"pe-icon pe-icon--regular\">
+          <div class=\"pe-svg\">
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <path d=
+              \"M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z\">
+              </path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div></a>
+  </div>
+</div>
+"
+`;
+
 exports[`test Shadow 1`] = `
 "<div class=\"pe-shadow\">
   <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>

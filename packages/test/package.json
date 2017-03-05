@@ -16,7 +16,7 @@
   "dependencies": {
     "fastclick": "^1.0.6",
     "mithril": "1.0.1",
-    "mmsvg": "^1.4.0",
+    "mmsvg": "^1.5.3",
     "polythene-button": "1.0.0-rc.1",
     "polythene-checkbox": "1.0.0-rc.1",
     "polythene-core": "1.0.0-rc.1",

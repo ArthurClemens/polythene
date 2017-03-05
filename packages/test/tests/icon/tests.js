@@ -1,9 +1,11 @@
 import m from "mithril";
 import icon from "polythene-icon";
 import svg from "polythene-svg";
-import iconStars from "mmsvg/google/msvg/action/stars";
 
 const trustedSvg = m.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>");
+
+import iconStars from "mmsvg/google/msvg/action/stars";
+import wrenchSvg from "mmsvg/zondicons/msvg/wrench";
 
 icon.theme(".tests-icon-themed-icon", {
   size_regular: 50,
@@ -28,18 +30,14 @@ export const tests = [
     name: "Option: content (svg trusted content)",
     component: icon,
     attrs: {
-      svg: {
-        content: trustedSvg
-      }
+      svg: { content: trustedSvg }
     }
   },
   {
     name: "Option: content (svg content mmsvg)",
     component: icon,
     attrs: {
-      svg: {
-        content: iconStars
-      }
+      svg: { content: iconStars }
     }
   },
   {
@@ -47,6 +45,13 @@ export const tests = [
     component: icon,
     attrs: {
       msvg: iconStars
+    }
+  },
+  {
+    name: "Option: msvg (Zondicons)",
+    component: icon,
+    attrs: {
+      msvg: wrenchSvg
     }
   },
   {
