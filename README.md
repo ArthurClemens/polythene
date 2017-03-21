@@ -10,8 +10,10 @@
 
 Polythene is now a monorepo. Components are located inside the "packages" directory.
 
-* `npm install`
-* `lerna bootstrap` - symlinks all component packages
+* `yarn install`
+
+This will call `lerna init` and `lerna bootstrap`.
+
 * `lerna run build` - builds all components (in each dist directory)
 * `lerna run clean` - removes all dist directories
 
@@ -24,18 +26,18 @@ Packages are built with [Rollup](http://rollupjs.org), both as `es` module and a
 Includes Jest snapshots and a viewer to verify the output.
 
 * `cd packages/test`
-* `npm install`
+* `yarn install`
 
 * Run in browser:
 
-* `npm run dev` - uses Webpack's dev server
+* `yarn run dev` - uses Webpack's dev server
 
 Build files:
 
-* `npm run build` - builds files in `dist`
+* `yarn run build` - builds files in `dist`
 
 Update snapshots:
 
-* `npm run test`
-* `npm run test:watch`
+* `yarn run test`
+* `yarn run test:watch`
 

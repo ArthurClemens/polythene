@@ -6,10 +6,9 @@
   "module": "dist/js/test.mjs",
   "scripts": {
     "dev": "npm-run-all --parallel dev:watch dev:serve",
-    "dev:serve": "webpack-dev-server --config scripts/webpack.config.dev.js",
+    "dev:serve": "webpack-dev-server --config scripts/webpack.config.dev.js --port 3000",
     "dev:watch": "webpack --watch --config scripts/webpack.config.dev.js",
     "build": "webpack -p --config scripts/webpack.config.js",
-    "serve": "http-server -p 8080 dist/",
     "test": "../../node_modules/jest/bin/jest.js tests/**",
     "test:watch": "npm run test -- --watch --no-watchman"
   },
