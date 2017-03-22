@@ -1,6 +1,6 @@
 const style = (scope, selector, componentVars, tint) => [{
   [scope + selector]: {
-    backgroundColor: componentVars["color_" + tint + "_background"],
+    backgroundColor: componentVars["color_" + tint + "_background"] || "initial",
 
     ".pe-list--borders": {
       " .pe-list-tile:not(.pe-list__header)": {

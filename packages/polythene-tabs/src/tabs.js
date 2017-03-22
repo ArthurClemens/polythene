@@ -249,8 +249,12 @@ const view = vnode => {
       {
         // Internal options, should never be overridden
         index,
+        key: `tab-${index}`,
         register: state.registerTabButton,
-        onSelect: () => setSelectedTab(state, attrs, index, attrs.noIndicatorSlide ? false : true)
+        onSelect: () => (
+          setSelectedTab(state, attrs, index, attrs.noIndicatorSlide ? false : true),
+          setTimeout(m.redraw)
+        )
       }
     );
     return m(tab, buttonOptsCombined);
@@ -320,14 +324,14 @@ export default {
     const registerTabButton = (index, data) => vnode.state.tabs[index] = data;
     const registerScrollButton = (position, dom) => vnode.state.scrollButtons[position] = dom;
     vnode.state = Object.assign(vnode.state, {
-      tabsEl:                  undefined,
-      scrollerEl:              undefined,
-      tabs:                    [], // {data, el}
-      tabRow:                  undefined,
-      tabIndicatorEl:          undefined,
-      selectedTabIndex:        vnode.attrs.selectedTab || 0,
+      tabsEl:              undefined,
+      scrollerEl:          undefined,
+      tabs:                [], // {data, el}
+      tabRow:              undefined,
+      tabIndicatorEl:      undefined,
+      selectedTabIndex:    vnode.attrs.selectedTab || 0,
       previousSelectedTab: undefined,
-      managesScroll:           false,
+      managesScroll:       false,
       scrollButtonStates: {
         start: false,
         end: false

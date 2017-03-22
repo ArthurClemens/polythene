@@ -50,9 +50,10 @@ var vars$1 = {
   color_light_text_disabled: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
   color_light_list_header: rgba(vars.color_light_foreground, vars.blend_light_text_tertiary),
   color_light_secondary: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
-  color_light_background: "inherit",
   color_light_background_hover: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
   color_light_background_selected: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
+  // background color may be set in theme; disabled by default
+  // color_light_background:          "inherit",
 
   color_dark_title: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
   color_dark_subtitle: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
@@ -60,7 +61,6 @@ var vars$1 = {
   color_dark_text_disabled: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
   color_dark_list_header: rgba(vars.color_dark_foreground, vars.blend_dark_text_tertiary),
   color_dark_secondary: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
-  color_dark_background: "inherit",
   color_dark_background_hover: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover),
   color_dark_background_selected: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover)
 };
@@ -225,7 +225,7 @@ function _defineProperty$1(obj, key, value) { if (key in obj) { Object.definePro
 var style = function style(scope, selector, componentVars, tint) {
   return [_defineProperty$1({}, scope + selector, {
     color: componentVars["color_" + tint + "_title"],
-    backgroundColor: componentVars["color_" + tint + "_background"],
+    backgroundColor: componentVars["color_" + tint + "_background"] || "initial",
 
     ".pe-list__header": {
       color: componentVars["color_" + tint + "_list_header"],

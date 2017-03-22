@@ -23,6 +23,7 @@ const view = vnode => {
         attrs.icon && attrs.label ? classes.tabHasIcon : null,
         attrs.class
       ].join(" "),
+      selected: attrs.selected,
       wash: false,
       ripple: true,
       events: Object.assign(

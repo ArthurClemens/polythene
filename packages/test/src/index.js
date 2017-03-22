@@ -7,6 +7,7 @@ import list from "polythene-list";
 import listTile from "polythene-list-tile";
 import toolbar from "polythene-toolbar";
 import { tests as buttonTests } from "../tests/button/tests";
+import { tests as cardTests } from "../tests/card/tests";
 import { tests as checkboxTests } from "../tests/checkbox/tests";
 import { tests as dialogTests } from "../tests/dialog/tests";
 import { tests as fabTests } from "../tests/fab/tests";
@@ -39,6 +40,11 @@ const pages = [
     path: "/raised-button",
     name: "Raised button",
     tests: raisedButtonTests
+  },
+  {
+    path: "/card",
+    name: "Card",
+    tests: cardTests
   },
   {
     path: "/checkbox",

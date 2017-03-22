@@ -11,7 +11,8 @@ export default {
   color_light_border:     rgba(vars.color_light_foreground, vars.blend_light_border_light),
   color_dark_border:      rgba(vars.color_dark_foreground,  vars.blend_dark_border_light),
 
-  color_light_background: "inherit",
-  color_dark_background:  "inherit"
+  // background color may be set in theme; disabled by default
+  // color_light_background: "inherit",
+  // color_dark_background:  "inherit"
 };
 

@@ -1,7 +1,7 @@
 const style = (scope, selector, componentVars, tint) => [{
   [scope + selector]: {
     color:           componentVars["color_" + tint + "_title"],
-    backgroundColor: componentVars["color_" + tint + "_background"],
+    backgroundColor: componentVars["color_" + tint + "_background"] || "initial",
 
     ".pe-list__header": {
       color: componentVars["color_" + tint + "_list_header"],

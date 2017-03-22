@@ -1,5 +1,7 @@
 export { default as button } from "polythene-button";
 
+export { default as card } from "polythene-card";
+
 export { default as checkbox } from "polythene-checkbox";
 
 export {

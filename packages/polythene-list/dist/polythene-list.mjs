@@ -13,10 +13,8 @@ var vars$1 = {
   border_width_bordered: 1,
 
   color_light_border: rgba(vars.color_light_foreground, vars.blend_light_border_light),
-  color_dark_border: rgba(vars.color_dark_foreground, vars.blend_dark_border_light),
+  color_dark_border: rgba(vars.color_dark_foreground, vars.blend_dark_border_light)
 
-  color_light_background: "inherit",
-  color_dark_background: "inherit"
 };
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -71,7 +69,7 @@ var style = function style(scope, selector, componentVars, tint) {
   var _ref;
 
   return [(_ref = {}, _defineProperty$1(_ref, scope + selector, {
-    backgroundColor: componentVars["color_" + tint + "_background"],
+    backgroundColor: componentVars["color_" + tint + "_background"] || "initial",
 
     ".pe-list--borders": {
       " .pe-list-tile:not(.pe-list__header)": {

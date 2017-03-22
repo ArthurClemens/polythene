@@ -63,7 +63,7 @@ const myList = m(list, {
 
 > If there is a floating action button left-aligned with the avatar/icon in a list,
 > align the subheader with the text content.
-> [source](http://www.google.com/design/spec/components/subheaders.html#subheaders-list-subheaders)
+> [source](https://material.io/guidelines/components/subheaders.html#subheaders-list-subheaders)
 
 In this situation we want to indent the list-header, and if we show borders, indent them too. We do so by adding the parameter `indent` to the header [list tiles](../polythene-list-tile), and set `indentedBorders` to true. For example:
 
@@ -86,7 +86,7 @@ const myList = m(list, {
 
 ### Sticky headers
 
-To create alternating sticky headers, the list header gets CSS property `position: sticky`. However this property [does not yet work in Chrome and not at all in Edge](http://caniuse.com/#feat=css-sticky), so its use is quite limited.
+To create alternating sticky headers, the list header gets CSS property `position: sticky`. However this property [does not work in Edge](http://caniuse.com/#feat=css-sticky), so its use is quite limited.
 
 If you do choose to use it, add some styles to the container that holds the lists:
 
@@ -124,7 +124,7 @@ If you do choose to use it, add some styles to the container that holds the list
 | ----------------- | -------------- | -------- | ----------- | --------------- |
 | **header**        | optional | Object | | Options object for a [list tile](../polythene-list-tile); any list tile option can be used ,and in addition the options `title` and `sticky` |
 | **header.title**  | optional | String | | Title text label |
-| **header.sticky** | optional | Boolean | | Make header sticky when scrolling; [does not work in Chrome](http://caniuse.com/#feat=css-sticky) |
+| **header.sticky** | optional | Boolean | | Make header sticky when scrolling; [does not work in Edge](http://caniuse.com/#feat=css-sticky) |
 | **tiles**         | use `tiles` or `content` | Array of type Mithril element | | List of [list tiles](../polythene-list-tile) |
 
 ### List appearance options

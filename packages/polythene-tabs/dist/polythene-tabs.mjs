@@ -337,6 +337,7 @@ var view$1 = function view(vnode) {
   var tabButtonOptions = _extends$2({}, attrs, {
     content: m("div", { class: classes.tabContent }, [attrs.icon ? m(icon, attrs.icon) : null, attrs.label ? m("div", { class: classes.label }, m("span", attrs.label)) : null]),
     class: [classes.tab, attrs.icon && attrs.label ? classes.tabHasIcon : null, attrs.class].join(" "),
+    selected: attrs.selected,
     wash: false,
     ripple: true,
     events: _extends$2({}, attrs.events, {
@@ -596,9 +597,10 @@ var view = function view(vnode) {
     }, attrs.tabsOpts || {}, {
       // Internal options, should never be overridden
       index: index,
+      key: "tab-" + index,
       register: state.registerTabButton,
       onSelect: function onSelect() {
-        return setSelectedTab(state, attrs, index, attrs.noIndicatorSlide ? false : true);
+        return setSelectedTab(state, attrs, index, attrs.noIndicatorSlide ? false : true), setTimeout(m.redraw);
       }
     });
     return m(tab, buttonOptsCombined);
