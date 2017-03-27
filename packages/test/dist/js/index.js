@@ -6909,6 +6909,12 @@ var tabsContent = {
   }
 };
 
+__WEBPACK_IMPORTED_MODULE_1_polythene_card__["a" /* default */].theme(".tests-card-colored-content", {
+  color_light_main_background: "#0097a7",
+  color_light_title_text: "#fff",
+  color_light_subtitle_text: "#fff"
+});
+
 var tests = [{
   name: "Any content (list)",
   component: __WEBPACK_IMPORTED_MODULE_1_polythene_card__["a" /* default */],
@@ -6940,6 +6946,18 @@ var tests = [{
   name: "Text only",
   component: __WEBPACK_IMPORTED_MODULE_1_polythene_card__["a" /* default */],
   attrs: {
+    content: [{
+      primary: {
+        title: "Primary title",
+        subtitle: "Subtitle"
+      }
+    }]
+  }
+}, {
+  name: "Themed (color)",
+  component: __WEBPACK_IMPORTED_MODULE_1_polythene_card__["a" /* default */],
+  attrs: {
+    class: "tests-card-colored-content",
     content: [{
       primary: {
         title: "Primary title",
@@ -13167,10 +13185,10 @@ var baseStyle = function baseStyle(scope, selector, componentVars, tint) {
 
 var contentStyle = function contentStyle(scope, selector, componentVars, tint) {
   return [_defineProperty$1({}, scope, {
-    " .pe-card__title, .pe-list-tile__title": {
+    " .pe-card__title": {
       color: componentVars["color_" + tint + "_title_text"]
     },
-    " .pe-card__subtitle, .pe-list-tile__subtitle": {
+    " .pe-card__subtitle": {
       color: componentVars["color_" + tint + "_subtitle_text"]
     },
     " .pe-card__text": {

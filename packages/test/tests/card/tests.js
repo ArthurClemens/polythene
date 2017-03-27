@@ -143,6 +143,12 @@ const tabsContent = {
     })
 };
 
+card.theme(".tests-card-colored-content", {
+  color_light_main_background: "#0097a7",
+  color_light_title_text: "#fff",
+  color_light_subtitle_text: "#fff"
+});
+
 export const tests = [
   {
     name: "Any content (list)",
@@ -180,6 +186,19 @@ export const tests = [
     name: "Text only",
     component: card,
     attrs: {
+      content: [{
+        primary: {
+          title: "Primary title",
+          subtitle: "Subtitle"
+        }
+      }]
+    }
+  },
+  {
+    name: "Themed (color)",
+    component: card,
+    attrs: {
+      class: "tests-card-colored-content",
       content: [{
         primary: {
           title: "Primary title",
