@@ -298,10 +298,10 @@ var baseStyle = function baseStyle(scope, selector, componentVars, tint) {
 
 var contentStyle = function contentStyle(scope, selector, componentVars, tint) {
   return [_defineProperty$1({}, scope, {
-    " .pe-card__title, .pe-list-tile__title": {
+    " .pe-card__title": {
       color: componentVars["color_" + tint + "_title_text"]
     },
-    " .pe-card__subtitle, .pe-list-tile__subtitle": {
+    " .pe-card__subtitle": {
       color: componentVars["color_" + tint + "_subtitle_text"]
     },
     " .pe-card__text": {
