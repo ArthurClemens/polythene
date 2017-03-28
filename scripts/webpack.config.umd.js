@@ -4,8 +4,9 @@ const BabiliPlugin = require("babili-webpack-plugin");
 const config = require("./webpack.config.base.js");
 
 const pkg = JSON.parse(fs.readFileSync("./package.json"));
+const env = process.env; // eslint-disable-line no-undef
 
-config.output.filename = path.basename(pkg.main);
+config.output.filename = env.DEST || path.basename(pkg.main);
 config.output.libraryTarget = "umd";
 
 config.module = {
@@ -14,15 +15,7 @@ config.module = {
       test: /\.js$/, // Check for all js files
       exclude: /node_modules/,
       use: [{
-        loader: "babel-loader",
-        query: {
-          babelrc: false,
-          presets: ["es2015"],
-          "plugins": [
-            "transform-object-rest-spread",
-            "transform-object-assign"
-          ]
-        }
+        loader: "babel-loader"
       }]
     }
   ]

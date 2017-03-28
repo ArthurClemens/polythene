@@ -15,7 +15,7 @@ describe("Card component", () => {
       wrap: false,
       indent: false
     });
-    expect(html).toContain("QQQ");
+    expect(html).toContain("<div class=\"pe-card \"><div class=\"pe-shadow pe-shadow--animated \"><div class=\"pe-shadow__bottom pe-shadow--z-1\"></div><div class=\"pe-shadow__top pe-shadow--z-1\"></div></div><div class=\"pe-card__content\"></div></div>");
   });
   it("option id", () => {
     const cmp = m(card, {id: "id-x"});
@@ -28,10 +28,10 @@ describe("Card component", () => {
     expect(html).toContain("class-x\">");
   });
   it("option element", () => {
-    const cmp = m(card, {element: "span"});
+    const cmp = m(card, {element: "a"});
     const html = tidy(cmp);
-    expect(html).toContain("<span ");
-    expect(html).toContain("</span>");
+    expect(html).toContain("<a ");
+    expect(html).toContain("</a>");
   });
   it("option tabindex", () => {
     const cmp = m(card, {tabindex: 3});

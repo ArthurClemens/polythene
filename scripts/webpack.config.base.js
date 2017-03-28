@@ -26,12 +26,18 @@ module.exports = {
   
   context,
   
+  module: {
+    noParse: [
+      /mithril/
+    ]
+  },
+
   entry,
 
   output: {
     path: path.resolve(context, "./dist")
   },
-
+  
   externals,
 
   plugins: []

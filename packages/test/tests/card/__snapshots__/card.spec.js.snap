@@ -1,0 +1,2936 @@
+exports[`test 1:1 media with square image, anchor origin: default 1`] = `
+"<div class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=
+    \"pe-card__media pe-card__media--regular pe-card__media--square\">
+    <img src=
+    \"http://arthurclemens.github.io/assets/polythene/examples/1.jpg\" />
+      <div class=\"pe-card__media__dimmer\"></div>
+    </div>
+    <div class=\"pe-card__actions pe-card__actions--horizontal\">
+      <div class=\"flex\"></div><a tabindex=\"0\" class=
+      \"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 11.9994,21.3497L 10.5504,20.0327C 5.4014,15.3607 1.99939,12.2736 1.99939,8.49762C 1.99939,5.41364 4.41537,2.99762 7.49939,2.99762C 9.24039,2.99762 10.9084,3.80566 11.9994,5.08362C 13.0904,3.80566 14.7584,2.99762 16.4994,2.99762C 19.5834,2.99762 21.9994,5.41364 21.9994,8.49762C 21.9994,12.2736 18.5974,15.3607 13.4484,20.0327L 11.9994,21.3497 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#050708\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 16.9994,2.99805L 6.9994,2.99805C 5.8954,2.99805 5.0104,3.89404 5.0104,4.99805L 4.9994,20.998L 11.9994,17.998L 18.9994,20.998L 18.9994,4.99805C 18.9994,3.89404 18.1044,2.99805 16.9994,2.99805 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 20.9994,10.9981L 13.9994,3.99807L 13.9994,7.99807C 6.9994,8.99807 3.9994,13.9981 2.9994,18.9981C 5.4994,15.4981 8.9994,13.8981 13.9994,13.8981L 13.9994,17.9981L 20.9994,10.9981 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test 16:9 media with landscape image, anchor origin: default 1`] = `
+"<div class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=
+    \"pe-card__media pe-card__media--regular pe-card__media--landscape\">
+    <img src=
+    \"http://arthurclemens.github.io/assets/polythene/examples/1.jpg\" />
+      <div class=\"pe-card__media__dimmer\"></div>
+    </div>
+    <div class=\"pe-card__actions pe-card__actions--horizontal\">
+      <div class=\"flex\"></div><a tabindex=\"0\" class=
+      \"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 11.9994,21.3497L 10.5504,20.0327C 5.4014,15.3607 1.99939,12.2736 1.99939,8.49762C 1.99939,5.41364 4.41537,2.99762 7.49939,2.99762C 9.24039,2.99762 10.9084,3.80566 11.9994,5.08362C 13.0904,3.80566 14.7584,2.99762 16.4994,2.99762C 19.5834,2.99762 21.9994,5.41364 21.9994,8.49762C 21.9994,12.2736 18.5974,15.3607 13.4484,20.0327L 11.9994,21.3497 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#050708\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 16.9994,2.99805L 6.9994,2.99805C 5.8954,2.99805 5.0104,3.89404 5.0104,4.99805L 4.9994,20.998L 11.9994,17.998L 18.9994,20.998L 18.9994,4.99805C 18.9994,3.89404 18.1044,2.99805 16.9994,2.99805 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 20.9994,10.9981L 13.9994,3.99807L 13.9994,7.99807C 6.9994,8.99807 3.9994,13.9981 2.9994,18.9981C 5.4994,15.4981 8.9994,13.8981 13.9994,13.8981L 13.9994,17.9981L 20.9994,10.9981 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test 16:9 media with landscape image, anchor origin: end 1`] = `
+"<div class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=
+    \"pe-card__media pe-card__media--regular pe-card__media--landscape\">
+    <img src=
+    \"http://arthurclemens.github.io/assets/polythene/examples/1.jpg\" />
+      <div class=\"pe-card__media__dimmer\"></div>
+    </div>
+    <div class=\"pe-card__actions pe-card__actions--horizontal\">
+      <div class=\"flex\"></div><a tabindex=\"0\" class=
+      \"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 11.9994,21.3497L 10.5504,20.0327C 5.4014,15.3607 1.99939,12.2736 1.99939,8.49762C 1.99939,5.41364 4.41537,2.99762 7.49939,2.99762C 9.24039,2.99762 10.9084,3.80566 11.9994,5.08362C 13.0904,3.80566 14.7584,2.99762 16.4994,2.99762C 19.5834,2.99762 21.9994,5.41364 21.9994,8.49762C 21.9994,12.2736 18.5974,15.3607 13.4484,20.0327L 11.9994,21.3497 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#050708\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 16.9994,2.99805L 6.9994,2.99805C 5.8954,2.99805 5.0104,3.89404 5.0104,4.99805L 4.9994,20.998L 11.9994,17.998L 18.9994,20.998L 18.9994,4.99805C 18.9994,3.89404 18.1044,2.99805 16.9994,2.99805 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 20.9994,10.9981L 13.9994,3.99807L 13.9994,7.99807C 6.9994,8.99807 3.9994,13.9981 2.9994,18.9981C 5.4994,15.4981 8.9994,13.8981 13.9994,13.8981L 13.9994,17.9981L 20.9994,10.9981 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test 16:9 media with landscape image, anchor origin: start 1`] = `
+"<div class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=
+    \"pe-card__media pe-card__media--regular pe-card__media--landscape\">
+    <img src=
+    \"http://arthurclemens.github.io/assets/polythene/examples/1.jpg\" />
+      <div class=\"pe-card__media__dimmer\"></div>
+    </div>
+    <div class=\"pe-card__actions pe-card__actions--horizontal\">
+      <div class=\"flex\"></div><a tabindex=\"0\" class=
+      \"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 11.9994,21.3497L 10.5504,20.0327C 5.4014,15.3607 1.99939,12.2736 1.99939,8.49762C 1.99939,5.41364 4.41537,2.99762 7.49939,2.99762C 9.24039,2.99762 10.9084,3.80566 11.9994,5.08362C 13.0904,3.80566 14.7584,2.99762 16.4994,2.99762C 19.5834,2.99762 21.9994,5.41364 21.9994,8.49762C 21.9994,12.2736 18.5974,15.3607 13.4484,20.0327L 11.9994,21.3497 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#050708\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 16.9994,2.99805L 6.9994,2.99805C 5.8954,2.99805 5.0104,3.89404 5.0104,4.99805L 4.9994,20.998L 11.9994,17.998L 18.9994,20.998L 18.9994,4.99805C 18.9994,3.89404 18.1044,2.99805 16.9994,2.99805 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 20.9994,10.9981L 13.9994,3.99807L 13.9994,7.99807C 6.9994,8.99807 3.9994,13.9981 2.9994,18.9981C 5.4994,15.4981 8.9994,13.8981 13.9994,13.8981L 13.9994,17.9981L 20.9994,10.9981 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test 16:9 media with portrait image, anchor origin: default 1`] = `
+"<div class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=
+    \"pe-card__media pe-card__media--regular pe-card__media--landscape\">
+    <img src=
+    \"http://arthurclemens.github.io/assets/polythene/examples/2.jpg\" />
+      <div class=\"pe-card__media__dimmer\"></div>
+    </div>
+    <div class=\"pe-card__actions pe-card__actions--horizontal\">
+      <div class=\"flex\"></div><a tabindex=\"0\" class=
+      \"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 11.9994,21.3497L 10.5504,20.0327C 5.4014,15.3607 1.99939,12.2736 1.99939,8.49762C 1.99939,5.41364 4.41537,2.99762 7.49939,2.99762C 9.24039,2.99762 10.9084,3.80566 11.9994,5.08362C 13.0904,3.80566 14.7584,2.99762 16.4994,2.99762C 19.5834,2.99762 21.9994,5.41364 21.9994,8.49762C 21.9994,12.2736 18.5974,15.3607 13.4484,20.0327L 11.9994,21.3497 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#050708\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 16.9994,2.99805L 6.9994,2.99805C 5.8954,2.99805 5.0104,3.89404 5.0104,4.99805L 4.9994,20.998L 11.9994,17.998L 18.9994,20.998L 18.9994,4.99805C 18.9994,3.89404 18.1044,2.99805 16.9994,2.99805 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 20.9994,10.9981L 13.9994,3.99807L 13.9994,7.99807C 6.9994,8.99807 3.9994,13.9981 2.9994,18.9981C 5.4994,15.4981 8.9994,13.8981 13.9994,13.8981L 13.9994,17.9981L 20.9994,10.9981 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test 16:9 media with portrait image, anchor origin: end 1`] = `
+"<div class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=
+    \"pe-card__media pe-card__media--regular pe-card__media--landscape\">
+    <img src=
+    \"http://arthurclemens.github.io/assets/polythene/examples/2.jpg\" />
+      <div class=\"pe-card__media__dimmer\"></div>
+    </div>
+    <div class=\"pe-card__actions pe-card__actions--horizontal\">
+      <div class=\"flex\"></div><a tabindex=\"0\" class=
+      \"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 11.9994,21.3497L 10.5504,20.0327C 5.4014,15.3607 1.99939,12.2736 1.99939,8.49762C 1.99939,5.41364 4.41537,2.99762 7.49939,2.99762C 9.24039,2.99762 10.9084,3.80566 11.9994,5.08362C 13.0904,3.80566 14.7584,2.99762 16.4994,2.99762C 19.5834,2.99762 21.9994,5.41364 21.9994,8.49762C 21.9994,12.2736 18.5974,15.3607 13.4484,20.0327L 11.9994,21.3497 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#050708\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 16.9994,2.99805L 6.9994,2.99805C 5.8954,2.99805 5.0104,3.89404 5.0104,4.99805L 4.9994,20.998L 11.9994,17.998L 18.9994,20.998L 18.9994,4.99805C 18.9994,3.89404 18.1044,2.99805 16.9994,2.99805 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 20.9994,10.9981L 13.9994,3.99807L 13.9994,7.99807C 6.9994,8.99807 3.9994,13.9981 2.9994,18.9981C 5.4994,15.4981 8.9994,13.8981 13.9994,13.8981L 13.9994,17.9981L 20.9994,10.9981 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test 16:9 media with portrait image, anchor origin: start 1`] = `
+"<div class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=
+    \"pe-card__media pe-card__media--regular pe-card__media--landscape\">
+    <img src=
+    \"http://arthurclemens.github.io/assets/polythene/examples/2.jpg\" />
+      <div class=\"pe-card__media__dimmer\"></div>
+    </div>
+    <div class=\"pe-card__actions pe-card__actions--horizontal\">
+      <div class=\"flex\"></div><a tabindex=\"0\" class=
+      \"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 11.9994,21.3497L 10.5504,20.0327C 5.4014,15.3607 1.99939,12.2736 1.99939,8.49762C 1.99939,5.41364 4.41537,2.99762 7.49939,2.99762C 9.24039,2.99762 10.9084,3.80566 11.9994,5.08362C 13.0904,3.80566 14.7584,2.99762 16.4994,2.99762C 19.5834,2.99762 21.9994,5.41364 21.9994,8.49762C 21.9994,12.2736 18.5974,15.3607 13.4484,20.0327L 11.9994,21.3497 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#050708\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 16.9994,2.99805L 6.9994,2.99805C 5.8954,2.99805 5.0104,3.89404 5.0104,4.99805L 4.9994,20.998L 11.9994,17.998L 18.9994,20.998L 18.9994,4.99805C 18.9994,3.89404 18.1044,2.99805 16.9994,2.99805 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 20.9994,10.9981L 13.9994,3.99807L 13.9994,7.99807C 6.9994,8.99807 3.9994,13.9981 2.9994,18.9981C 5.4994,15.4981 8.9994,13.8981 13.9994,13.8981L 13.9994,17.9981L 20.9994,10.9981 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test 16:9 media with square image, anchor origin: default 1`] = `
+"<div class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=
+    \"pe-card__media pe-card__media--regular pe-card__media--landscape\">
+    <img src=
+    \"http://arthurclemens.github.io/assets/polythene/examples/circle.png\" />
+      <div class=\"pe-card__media__dimmer\"></div>
+    </div>
+    <div class=\"pe-card__actions pe-card__actions--horizontal\">
+      <div class=\"flex\"></div><a tabindex=\"0\" class=
+      \"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 11.9994,21.3497L 10.5504,20.0327C 5.4014,15.3607 1.99939,12.2736 1.99939,8.49762C 1.99939,5.41364 4.41537,2.99762 7.49939,2.99762C 9.24039,2.99762 10.9084,3.80566 11.9994,5.08362C 13.0904,3.80566 14.7584,2.99762 16.4994,2.99762C 19.5834,2.99762 21.9994,5.41364 21.9994,8.49762C 21.9994,12.2736 18.5974,15.3607 13.4484,20.0327L 11.9994,21.3497 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#050708\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 16.9994,2.99805L 6.9994,2.99805C 5.8954,2.99805 5.0104,3.89404 5.0104,4.99805L 4.9994,20.998L 11.9994,17.998L 18.9994,20.998L 18.9994,4.99805C 18.9994,3.89404 18.1044,2.99805 16.9994,2.99805 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 20.9994,10.9981L 13.9994,3.99807L 13.9994,7.99807C 6.9994,8.99807 3.9994,13.9981 2.9994,18.9981C 5.4994,15.4981 8.9994,13.8981 13.9994,13.8981L 13.9994,17.9981L 20.9994,10.9981 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test 16:9 media with square image, anchor origin: end 1`] = `
+"<div class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=
+    \"pe-card__media pe-card__media--regular pe-card__media--landscape\">
+    <img src=
+    \"http://arthurclemens.github.io/assets/polythene/examples/circle.png\" />
+      <div class=\"pe-card__media__dimmer\"></div>
+    </div>
+    <div class=\"pe-card__actions pe-card__actions--horizontal\">
+      <div class=\"flex\"></div><a tabindex=\"0\" class=
+      \"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 11.9994,21.3497L 10.5504,20.0327C 5.4014,15.3607 1.99939,12.2736 1.99939,8.49762C 1.99939,5.41364 4.41537,2.99762 7.49939,2.99762C 9.24039,2.99762 10.9084,3.80566 11.9994,5.08362C 13.0904,3.80566 14.7584,2.99762 16.4994,2.99762C 19.5834,2.99762 21.9994,5.41364 21.9994,8.49762C 21.9994,12.2736 18.5974,15.3607 13.4484,20.0327L 11.9994,21.3497 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#050708\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 16.9994,2.99805L 6.9994,2.99805C 5.8954,2.99805 5.0104,3.89404 5.0104,4.99805L 4.9994,20.998L 11.9994,17.998L 18.9994,20.998L 18.9994,4.99805C 18.9994,3.89404 18.1044,2.99805 16.9994,2.99805 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 20.9994,10.9981L 13.9994,3.99807L 13.9994,7.99807C 6.9994,8.99807 3.9994,13.9981 2.9994,18.9981C 5.4994,15.4981 8.9994,13.8981 13.9994,13.8981L 13.9994,17.9981L 20.9994,10.9981 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test 16:9 media with square image, anchor origin: end 2`] = `
+"<div class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=
+    \"pe-card__media pe-card__media--regular pe-card__media--square\">
+    <img src=
+    \"http://arthurclemens.github.io/assets/polythene/examples/1.jpg\" />
+      <div class=\"pe-card__media__dimmer\"></div>
+    </div>
+    <div class=\"pe-card__actions pe-card__actions--horizontal\">
+      <div class=\"flex\"></div><a tabindex=\"0\" class=
+      \"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 11.9994,21.3497L 10.5504,20.0327C 5.4014,15.3607 1.99939,12.2736 1.99939,8.49762C 1.99939,5.41364 4.41537,2.99762 7.49939,2.99762C 9.24039,2.99762 10.9084,3.80566 11.9994,5.08362C 13.0904,3.80566 14.7584,2.99762 16.4994,2.99762C 19.5834,2.99762 21.9994,5.41364 21.9994,8.49762C 21.9994,12.2736 18.5974,15.3607 13.4484,20.0327L 11.9994,21.3497 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#050708\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 16.9994,2.99805L 6.9994,2.99805C 5.8954,2.99805 5.0104,3.89404 5.0104,4.99805L 4.9994,20.998L 11.9994,17.998L 18.9994,20.998L 18.9994,4.99805C 18.9994,3.89404 18.1044,2.99805 16.9994,2.99805 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 20.9994,10.9981L 13.9994,3.99807L 13.9994,7.99807C 6.9994,8.99807 3.9994,13.9981 2.9994,18.9981C 5.4994,15.4981 8.9994,13.8981 13.9994,13.8981L 13.9994,17.9981L 20.9994,10.9981 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test 16:9 media with square image, anchor origin: start 1`] = `
+"<div class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=
+    \"pe-card__media pe-card__media--regular pe-card__media--landscape\">
+    <img src=
+    \"http://arthurclemens.github.io/assets/polythene/examples/circle.png\" />
+      <div class=\"pe-card__media__dimmer\"></div>
+    </div>
+    <div class=\"pe-card__actions pe-card__actions--horizontal\">
+      <div class=\"flex\"></div><a tabindex=\"0\" class=
+      \"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 11.9994,21.3497L 10.5504,20.0327C 5.4014,15.3607 1.99939,12.2736 1.99939,8.49762C 1.99939,5.41364 4.41537,2.99762 7.49939,2.99762C 9.24039,2.99762 10.9084,3.80566 11.9994,5.08362C 13.0904,3.80566 14.7584,2.99762 16.4994,2.99762C 19.5834,2.99762 21.9994,5.41364 21.9994,8.49762C 21.9994,12.2736 18.5974,15.3607 13.4484,20.0327L 11.9994,21.3497 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#050708\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 16.9994,2.99805L 6.9994,2.99805C 5.8954,2.99805 5.0104,3.89404 5.0104,4.99805L 4.9994,20.998L 11.9994,17.998L 18.9994,20.998L 18.9994,4.99805C 18.9994,3.89404 18.1044,2.99805 16.9994,2.99805 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 20.9994,10.9981L 13.9994,3.99807L 13.9994,7.99807C 6.9994,8.99807 3.9994,13.9981 2.9994,18.9981C 5.4994,15.4981 8.9994,13.8981 13.9994,13.8981L 13.9994,17.9981L 20.9994,10.9981 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test 16:9 media with square image, anchor origin: start 2`] = `
+"<div class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=
+    \"pe-card__media pe-card__media--regular pe-card__media--square\">
+    <img src=
+    \"http://arthurclemens.github.io/assets/polythene/examples/1.jpg\" />
+      <div class=\"pe-card__media__dimmer\"></div>
+    </div>
+    <div class=\"pe-card__actions pe-card__actions--horizontal\">
+      <div class=\"flex\"></div><a tabindex=\"0\" class=
+      \"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 11.9994,21.3497L 10.5504,20.0327C 5.4014,15.3607 1.99939,12.2736 1.99939,8.49762C 1.99939,5.41364 4.41537,2.99762 7.49939,2.99762C 9.24039,2.99762 10.9084,3.80566 11.9994,5.08362C 13.0904,3.80566 14.7584,2.99762 16.4994,2.99762C 19.5834,2.99762 21.9994,5.41364 21.9994,8.49762C 21.9994,12.2736 18.5974,15.3607 13.4484,20.0327L 11.9994,21.3497 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#050708\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 16.9994,2.99805L 6.9994,2.99805C 5.8954,2.99805 5.0104,3.89404 5.0104,4.99805L 4.9994,20.998L 11.9994,17.998L 18.9994,20.998L 18.9994,4.99805C 18.9994,3.89404 18.1044,2.99805 16.9994,2.99805 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 20.9994,10.9981L 13.9994,3.99807L 13.9994,7.99807C 6.9994,8.99807 3.9994,13.9981 2.9994,18.9981C 5.4994,15.4981 8.9994,13.8981 13.9994,13.8981L 13.9994,17.9981L 20.9994,10.9981 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Any content (list) 1`] = `
+"<div class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=\"pe-list pe-list--hoverable\">
+      <div class=\"pe-list-tile pe-list-tile--subtitle\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Title line Lorem ipsum dolor sit amet, consectetur
+              adipisicing elit, sed do eiusmod tempor incididunt ut
+              labore et dolore magna aliqua. Ut enim ad minim
+              veniam, quis nostrud exercitation ullamco
+            </div>
+            <div class=\"pe-list-tile__subtitle\">
+              Secondary text Lorem ipsum dolor sit amet,
+              consectetur adipisicing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua. Ut enim
+              ad minim veniam, quis nostrud exercitation ullamco
+              laboris nisi ut aliquip ex ea commodo consequat. Duis
+              aute irure dolor in reprehenderit in voluptate velit
+              esse cillum dolore eu fugiat nulla pariatur.
+              Excepteur sint occaecat cupidatat non proident, sunt
+              in culpa qui officia deserunt mollit anim id est
+              laborum.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile pe-list-tile--subtitle\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Title line Lorem ipsum dolor sit amet, consectetur
+              adipisicing elit, sed do eiusmod tempor incididunt ut
+              labore et dolore magna aliqua. Ut enim ad minim
+              veniam, quis nostrud exercitation ullamco
+            </div>
+            <div class=\"pe-list-tile__subtitle\">
+              Secondary text Lorem ipsum dolor sit amet,
+              consectetur adipisicing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua. Ut enim
+              ad minim veniam, quis nostrud exercitation ullamco
+              laboris nisi ut aliquip ex ea commodo consequat. Duis
+              aute irure dolor in reprehenderit in voluptate velit
+              esse cillum dolore eu fugiat nulla pariatur.
+              Excepteur sint occaecat cupidatat non proident, sunt
+              in culpa qui officia deserunt mollit anim id est
+              laborum.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile pe-list-tile--subtitle\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Title line Lorem ipsum dolor sit amet, consectetur
+              adipisicing elit, sed do eiusmod tempor incididunt ut
+              labore et dolore magna aliqua. Ut enim ad minim
+              veniam, quis nostrud exercitation ullamco
+            </div>
+            <div class=\"pe-list-tile__subtitle\">
+              Secondary text Lorem ipsum dolor sit amet,
+              consectetur adipisicing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua. Ut enim
+              ad minim veniam, quis nostrud exercitation ullamco
+              laboris nisi ut aliquip ex ea commodo consequat. Duis
+              aute irure dolor in reprehenderit in voluptate velit
+              esse cillum dolore eu fugiat nulla pariatur.
+              Excepteur sint occaecat cupidatat non proident, sunt
+              in culpa qui officia deserunt mollit anim id est
+              laborum.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Any content (tabs) 1`] = `
+"<div class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=\"pe-tabs pe-tabs--start pe-tabs--autofit\">
+      <div class=\"pe-tabs__row\">
+        <a tabindex=\"0\" class=
+        \"pe-button pe-text-button pe-button--selected pe-tabs__tab\">
+        <div class=\"pe-button__content\">
+          <div class=\"pe-ripple pe-ripple--constrained\">
+            <div class=\"pe-ripple__mask\">
+              <div class=\"pe-ripple__waves\"></div>
+            </div>
+          </div>
+          <div class=\"pe-button__focus\"></div>
+          <div class=\"pe-tabs__tab-content\">
+            <div class=\"pe-button__label\">
+              <span>New</span>
+            </div>
+          </div>
+        </div></a><a tabindex=\"0\" class=
+        \"pe-button pe-text-button pe-tabs__tab\">
+        <div class=\"pe-button__content\">
+          <div class=\"pe-ripple pe-ripple--constrained\">
+            <div class=\"pe-ripple__mask\">
+              <div class=\"pe-ripple__waves\"></div>
+            </div>
+          </div>
+          <div class=\"pe-button__focus\"></div>
+          <div class=\"pe-tabs__tab-content\">
+            <div class=\"pe-button__label\">
+              <span>My Favorites</span>
+            </div>
+          </div>
+        </div></a><a tabindex=\"0\" class=
+        \"pe-button pe-text-button pe-tabs__tab\">
+        <div class=\"pe-button__content\">
+          <div class=\"pe-ripple pe-ripple--constrained\">
+            <div class=\"pe-ripple__mask\">
+              <div class=\"pe-ripple__waves\"></div>
+            </div>
+          </div>
+          <div class=\"pe-button__focus\"></div>
+          <div class=\"pe-tabs__tab-content\">
+            <div class=\"pe-button__label\">
+              <span>Saved</span>
+            </div>
+          </div>
+        </div></a>
+        <div class=\"pe-tabs__indicator\"></div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Bottom action row, bordered 1`] = `
+"<div class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=
+    \"pe-list-tile pe-list-tile--subtitle pe-card__header\">
+      <div style=\"\" class=\"pe-list-tile__primary\">
+        <div class=
+        \"pe-list-tile__content pe-list-tile__content--front\">
+          <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
+            <img src=
+            \"http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png\">
+          </div>
+        </div>
+        <div class=\"pe-list-tile__content\">
+          <div class=\"pe-list-tile__title\">
+            Title
+          </div>
+          <div class=\"pe-list-tile__subtitle\">
+            Subhead
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class=
+    \"pe-card__media pe-card__media--regular pe-card__media--landscape\">
+    <img src=
+    \"http://arthurclemens.github.io/assets/polythene/examples/grey.jpg\">
+      <div class=\"pe-card__media__dimmer\"></div>
+    </div>
+    <div class=\"pe-card__text\">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+      do eiusmod tempor incididunt ut labore et dolore magna
+      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+      ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+      aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint
+      occaecat.
+    </div>
+    <div class=
+    \"pe-card__actions pe-card__actions--horizontal pe-card__actions--borders\">
+    <a tabindex=\"0\" class=\"pe-button pe-text-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__wash\"></div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-button__label\">
+          Action 1
+        </div>
+      </div></a><a tabindex=\"0\" class=\"pe-button pe-text-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__wash\"></div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-button__label\">
+          Action 2
+        </div>
+      </div></a>
+      <div class=\"flex\"></div><a tabindex=\"0\" class=
+      \"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--medium\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+              height=\"24\" viewbox=\"0 0 24 24\">
+                <path d=
+                \"M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z\"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Bottom action row, vertical 1`] = `
+"<div class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=
+    \"pe-list-tile pe-list-tile--subtitle pe-card__header\">
+      <div style=\"\" class=\"pe-list-tile__primary\">
+        <div class=
+        \"pe-list-tile__content pe-list-tile__content--front\">
+          <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
+            <img src=
+            \"http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png\">
+          </div>
+        </div>
+        <div class=\"pe-list-tile__content\">
+          <div class=\"pe-list-tile__title\">
+            Title
+          </div>
+          <div class=\"pe-list-tile__subtitle\">
+            Subhead
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class=
+    \"pe-card__media pe-card__media--regular pe-card__media--landscape\">
+    <img src=
+    \"http://arthurclemens.github.io/assets/polythene/examples/grey.jpg\">
+      <div class=\"pe-card__media__dimmer\"></div>
+    </div>
+    <div class=\"pe-card__text\">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+      do eiusmod tempor incididunt ut labore et dolore magna
+      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+      ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+      aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint
+      occaecat.
+    </div>
+    <div class=
+    \"pe-card__actions pe-card__actions--vertical pe-card__actions--borders pe-card__actions--tight\">
+    <div class=\"pe-list pe-list--borders\">
+        <div class=\"pe-list-tile pe-list-tile--hoverable\">
+          <div style=\"\" class=\"pe-list-tile__primary\">
+            <div class=\"pe-list-tile__content\">
+              Action 1
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-list-tile pe-list-tile--hoverable\">
+          <div style=\"\" class=\"pe-list-tile__primary\">
+            <div class=\"pe-list-tile__content\">
+              Action 2
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-list-tile pe-list-tile--hoverable\">
+          <div style=\"\" class=\"pe-list-tile__primary\">
+            <div class=\"pe-list-tile__content\">
+              Action 3
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Card URL 1`] = `
+"<a href=\"http://en.wikipedia.org/wiki/Road_to_Nowhere\" class=
+\"pe-card\">
+<div class=\"pe-shadow pe-shadow--animated\">
+  <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+  <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+</div>
+<div class=\"pe-card__content\">
+  <div class=\"pe-list-tile pe-list-tile--subtitle pe-card__header\">
+    <a href=\"http://www.imdb.com/name/nm0260632/\" style=\"\" class=
+    \"pe-list-tile__primary\">
+    <div class=
+    \"pe-list-tile__content pe-list-tile__content--front\">
+      <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
+        <img src=
+        \"http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png\">
+      </div>
+    </div>
+    <div class=\"pe-list-tile__content\">
+      <div class=\"pe-list-tile__title\">
+        Title
+      </div>
+      <div class=\"pe-list-tile__subtitle\">
+        Subhead
+      </div>
+    </div></a>
+  </div>
+  <div class=
+  \"pe-card__media pe-card__media--regular pe-card__media--landscape\">
+  <img src=
+  \"http://arthurclemens.github.io/assets/polythene/examples/1.jpg\">
+    <div class=\"pe-card__media__dimmer\"></div>
+  </div>
+  <div class=\"pe-card__primary\">
+    <div class=\"pe-card__title\">
+      Primary title
+      <div class=\"pe-card__subtitle\">
+        Subtitle
+      </div>
+    </div>
+  </div>
+  <div class=\"pe-card__actions pe-card__actions--horizontal\">
+    <a tabindex=\"0\" class=\"pe-button pe-text-button\">
+    <div class=\"pe-button__content\">
+      <div class=\"pe-ripple pe-ripple--constrained\">
+        <div class=\"pe-ripple__mask\">
+          <div class=\"pe-ripple__waves\"></div>
+        </div>
+      </div>
+      <div class=\"pe-button__wash\"></div>
+      <div class=\"pe-button__focus\"></div>
+      <div class=\"pe-button__label\">
+        Action 1
+      </div>
+    </div></a><a tabindex=\"0\" class=\"pe-button pe-text-button\">
+    <div class=\"pe-button__content\">
+      <div class=\"pe-ripple pe-ripple--constrained\">
+        <div class=\"pe-ripple__mask\">
+          <div class=\"pe-ripple__waves\"></div>
+        </div>
+      </div>
+      <div class=\"pe-button__wash\"></div>
+      <div class=\"pe-button__focus\"></div>
+      <div class=\"pe-button__label\">
+        Action 2
+      </div>
+    </div></a>
+  </div>
+</div></a>
+"
+`;
+
+exports[`test Card events 1`] = `
+"<div class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=
+    \"pe-list-tile pe-list-tile--subtitle pe-card__header\">
+      <div style=\"\" class=\"pe-list-tile__primary\">
+        <div class=
+        \"pe-list-tile__content pe-list-tile__content--front\">
+          <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
+            <img src=
+            \"http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png\">
+          </div>
+        </div>
+        <div class=\"pe-list-tile__content\">
+          <div class=\"pe-list-tile__title\">
+            Title
+          </div>
+          <div class=\"pe-list-tile__subtitle\">
+            Subhead
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class=
+    \"pe-card__media pe-card__media--regular pe-card__media--landscape\">
+    <img src=
+    \"http://arthurclemens.github.io/assets/polythene/examples/1.jpg\">
+      <div class=\"pe-card__media__dimmer\"></div>
+    </div>
+    <div class=\"pe-card__primary\">
+      <div class=\"pe-card__title\">
+        Primary title
+        <div class=\"pe-card__subtitle\">
+          Subtitle
+        </div>
+      </div>
+    </div>
+    <div class=\"pe-card__actions pe-card__actions--horizontal\">
+      <a tabindex=\"0\" class=\"pe-button pe-text-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__wash\"></div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-button__label\">
+          Action 1
+        </div>
+      </div></a><a tabindex=\"0\" class=\"pe-button pe-text-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__wash\"></div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-button__label\">
+          Action 2
+        </div>
+      </div></a>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Custom card blue 1`] = `
+"<div style=\"max-width: 360px; background-color: rgb(34, 117, 134);\"
+class=\"pe-card pe-dark-theme\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=\"pe-card__primary pe-card__primary--media\">
+      <div class=\"pe-card__title\">
+        Supermodel
+        <div class=\"pe-card__subtitle\">
+          Foster the People
+        </div>
+      </div>
+      <div class=\"pe-card__primary-media\">
+        <div class=
+        \"pe-card__media pe-card__media--medium pe-card__media--square\">
+        <img src=
+        \"http://upload.wikimedia.org/wikipedia/en/f/f9/Foster_the_People_-_Supermodel.jpg\">
+          <div class=\"pe-card__media__dimmer\"></div>
+        </div>
+      </div>
+    </div>
+    <div class=\"pe-card__actions pe-card__actions--horizontal\">
+      <a tabindex=\"0\" class=\"pe-button pe-text-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__wash\"></div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-button__label\">
+          Listen now
+        </div>
+      </div></a>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Custom card purple 1`] = `
+"<div style=\"max-width: 360px; background-color: rgb(135, 30, 106);\"
+class=\"pe-card pe-dark-theme\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=\"pe-card__primary\">
+      <div class=\"pe-card__title\">
+        Bucket List
+      </div>
+    </div>
+    <div class=\"pe-card__text\">
+      <ul>
+        <li>Skydiving
+        </li>
+        <li>Alaska
+        </li>
+        <li>Kite surfing
+        </li>
+      </ul>
+    </div>
+    <div class=\"pe-card__actions pe-card__actions--horizontal\">
+      <a tabindex=\"0\" class=\"pe-button pe-text-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__wash\"></div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-button__label\">
+          Edit
+        </div>
+      </div></a>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Custom card sand 1`] = `
+"<div style=\"max-width: 360px; background-color: rgb(184, 158, 88);\"
+class=\"pe-card pe-dark-theme\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=\"pe-card__primary pe-card__primary--media\">
+      <div class=\"pe-card__title\">
+        Get Ready
+        <div class=\"pe-card__subtitle\">
+          2 Unlimited
+        </div>
+      </div>
+      <div class=\"pe-card__primary-media\">
+        <div class=
+        \"pe-card__media pe-card__media--medium pe-card__media--square\">
+        <img src=
+        \"http://www.the2unlimited.com/pochettes/GET%20READY%2001.JPG\">
+          <div class=\"pe-card__media__dimmer\"></div>
+        </div>
+      </div>
+    </div>
+    <div class=\"pe-card__actions pe-card__actions--horizontal\">
+      <a tabindex=\"0\" class=\"pe-button pe-text-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__wash\"></div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-button__label\">
+          Listen now
+        </div>
+      </div></a>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Custom card white 1`] = `
+"<div style=\"max-width: 360px;\" class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=\"pe-card__primary pe-card__primary--media\">
+      <div class=\"pe-card__title\">
+        <div class=\"pe-card__subtitle\">
+          Travel
+        </div><span>Road Trip</span>
+      </div>
+      <div class=\"pe-card__primary-media\">
+        <div class=
+        \"pe-card__media pe-card__media--small pe-card__media--square\">
+        <img src=
+        \"http://arthurclemens.github.io/assets/polythene/examples/1.jpg\">
+          <div class=\"pe-card__media__dimmer\"></div>
+        </div>
+      </div>
+    </div>
+    <div class=\"pe-card__text\">
+      A road trip is a long distance journey on the road.
+      Typically, road trips are long distances traveled by
+      automobile.
+    </div>
+    <div class=\"pe-card__actions pe-card__actions--horizontal\">
+      <a tabindex=\"0\" class=\"pe-button pe-text-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__wash\"></div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-button__label\">
+          Action 1
+        </div>
+      </div></a><a tabindex=\"0\" class=\"pe-button pe-text-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__wash\"></div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-button__label\">
+          Action 2
+        </div>
+      </div></a>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Depth 0, tight text 1`] = `
+"<div style=\"max-width: 170px;\" class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-0\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-0\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=\"pe-card__text pe-card__text--tight\">
+      Flat
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Depth 2, tight text 1`] = `
+"<div style=\"max-width: 170px;\" class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-2\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-2\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=\"pe-card__text pe-card__text--tight\">
+      Raised
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Depth normal, tight text 1`] = `
+"<div style=\"max-width: 170px;\" class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=\"pe-card__text pe-card__text--tight\">
+      Normal
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Header with icon 1`] = `
+"<div class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=
+    \"pe-list-tile pe-list-tile--subtitle pe-card__header\">
+      <div style=\"\" class=\"pe-list-tile__primary\">
+        <div class=
+        \"pe-list-tile__content pe-list-tile__content--front\">
+          <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
+            <img src=
+            \"http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png\">
+          </div>
+        </div>
+        <div class=\"pe-list-tile__content\">
+          <div class=\"pe-list-tile__title\">
+            Title
+          </div>
+          <div class=\"pe-list-tile__subtitle\">
+            Subhead
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class=
+    \"pe-card__media pe-card__media--regular pe-card__media--landscape\">
+    <img src=
+    \"http://arthurclemens.github.io/assets/polythene/examples/grey.jpg\">
+      <div class=\"pe-card__media__dimmer\"></div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Overlay with sheet 1`] = `
+"<div class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=
+    \"pe-card__media pe-card__media--regular pe-card__media--square\">
+    <img src=
+    \"http://arthurclemens.github.io/assets/polythene/examples/1.jpg\">
+      <div class=\"pe-card__overlay pe-card__overlay--sheet\">
+        <div class=\"pe-card__overlay__content pe-dark-theme\">
+          <div class=\"pe-card__primary\">
+            <div class=\"pe-card__title\">
+              Primary title
+              <div class=\"pe-card__subtitle\">
+                Subtitle
+              </div>
+            </div>
+          </div>
+          <div class=
+          \"pe-card__actions pe-card__actions--horizontal\">
+            <a tabindex=\"0\" class=\"pe-button pe-text-button\">
+            <div class=\"pe-button__content\">
+              <div class=\"pe-ripple pe-ripple--constrained\">
+                <div class=\"pe-ripple__mask\">
+                  <div class=\"pe-ripple__waves\"></div>
+                </div>
+              </div>
+              <div class=\"pe-button__wash\"></div>
+              <div class=\"pe-button__focus\"></div>
+              <div class=\"pe-button__label\">
+                Action 1
+              </div>
+            </div></a><a tabindex=\"0\" class=
+            \"pe-button pe-text-button\">
+            <div class=\"pe-button__content\">
+              <div class=\"pe-ripple pe-ripple--constrained\">
+                <div class=\"pe-ripple__mask\">
+                  <div class=\"pe-ripple__waves\"></div>
+                </div>
+              </div>
+              <div class=\"pe-button__wash\"></div>
+              <div class=\"pe-button__focus\"></div>
+              <div class=\"pe-button__label\">
+                Action 2
+              </div>
+            </div></a>
+          </div>
+        </div>
+        <div class=\"pe-card__media__dimmer\"></div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Overlay without sheet 1`] = `
+"<div class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=
+    \"pe-card__media pe-card__media--regular pe-card__media--square\">
+    <img src=
+    \"http://arthurclemens.github.io/assets/polythene/examples/1.jpg\" />
+      <div class=\"pe-card__overlay\">
+        <div class=\"pe-card__overlay__content pe-dark-theme\">
+          <div class=\"pe-card__primary\">
+            <div class=\"pe-card__title\">
+              Title
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-card__media__dimmer\"></div>
+      </div>
+    </div>
+    <div class=
+    \"pe-card__actions pe-card__actions--justified pe-card__actions--tight\">
+    <a tabindex=\"0\" class=\"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 11.9994,21.3497L 10.5504,20.0327C 5.4014,15.3607 1.99939,12.2736 1.99939,8.49762C 1.99939,5.41364 4.41537,2.99762 7.49939,2.99762C 9.24039,2.99762 10.9084,3.80566 11.9994,5.08362C 13.0904,3.80566 14.7584,2.99762 16.4994,2.99762C 19.5834,2.99762 21.9994,5.41364 21.9994,8.49762C 21.9994,12.2736 18.5974,15.3607 13.4484,20.0327L 11.9994,21.3497 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#050708\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 16.9994,2.99805L 6.9994,2.99805C 5.8954,2.99805 5.0104,3.89404 5.0104,4.99805L 4.9994,20.998L 11.9994,17.998L 18.9994,20.998L 18.9994,4.99805C 18.9994,3.89404 18.1044,2.99805 16.9994,2.99805 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 20.9994,10.9981L 13.9994,3.99807L 13.9994,7.99807C 6.9994,8.99807 3.9994,13.9981 2.9994,18.9981C 5.4994,15.4981 8.9994,13.8981 13.9994,13.8981L 13.9994,17.9981L 20.9994,10.9981 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Primary text with action row and text 1`] = `
+"<div class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=
+    \"pe-card__media pe-card__media--regular pe-card__media--landscape\">
+    <img src=
+    \"http://arthurclemens.github.io/assets/polythene/examples/grey.jpg\">
+      <div class=\"pe-card__media__dimmer\"></div>
+    </div>
+    <div class=\"pe-card__primary\">
+      <div class=\"pe-card__title\">
+        Primary title
+        <div class=\"pe-card__subtitle\">
+          Subtitle
+        </div>
+      </div>
+    </div>
+    <div class=\"pe-card__actions pe-card__actions--horizontal\">
+      <a tabindex=\"0\" class=\"pe-button pe-text-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__wash\"></div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-button__label\">
+          Action 1
+        </div>
+      </div></a><a tabindex=\"0\" class=\"pe-button pe-text-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__wash\"></div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-button__label\">
+          Action 2
+        </div>
+      </div></a>
+      <div class=\"flex\"></div><a tabindex=\"0\" class=
+      \"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--medium\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+              height=\"24\" viewbox=\"0 0 24 24\">
+                <path d=
+                \"M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z\"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a>
+    </div>
+    <div class=\"pe-card__text\">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+      do eiusmod tempor incididunt ut labore et dolore magna
+      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+      ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+      aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint
+      occaecat.
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Primary text with supporting text 1`] = `
+"<div class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=
+    \"pe-card__media pe-card__media--regular pe-card__media--landscape\">
+    <img src=
+    \"http://arthurclemens.github.io/assets/polythene/examples/grey.jpg\">
+      <div class=\"pe-card__media__dimmer\"></div>
+    </div>
+    <div class=\"pe-card__primary\">
+      <div class=\"pe-card__title\">
+        Primary title
+        <div class=\"pe-card__subtitle\">
+          Subtitle quis nostrud exercitation ullamco laboris nisi
+          ut aliquip ex ea commodo consequat
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Separate elements - actions 1`] = `
+"<div style=\"max-width: 400px;\" class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=\"pe-card__actions pe-card__actions--horizontal\">
+      <a tabindex=\"0\" class=\"pe-button pe-text-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__wash\"></div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-button__label\">
+          Action 1
+        </div>
+      </div></a><a tabindex=\"0\" class=\"pe-button pe-text-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__wash\"></div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-button__label\">
+          Action 2
+        </div>
+      </div></a>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Separate elements - header with avatar 1`] = `
+"<div style=\"max-width: 400px;\" class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=
+    \"pe-list-tile pe-list-tile--subtitle pe-card__header\">
+      <div style=\"\" class=\"pe-list-tile__primary\">
+        <div class=
+        \"pe-list-tile__content pe-list-tile__content--front\">
+          <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
+            <img src=
+            \"http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png\">
+          </div>
+        </div>
+        <div class=\"pe-list-tile__content\">
+          <div class=\"pe-list-tile__title\">
+            Title
+          </div>
+          <div class=\"pe-list-tile__subtitle\">
+            Subhead
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Separate elements - icon button actions 1`] = `
+"<div style=\"max-width: 400px;\" class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=\"pe-card__actions pe-card__actions--horizontal\">
+      <div class=\"flex\"></div><a tabindex=\"0\" class=
+      \"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 11.9994,21.3497L 10.5504,20.0327C 5.4014,15.3607 1.99939,12.2736 1.99939,8.49762C 1.99939,5.41364 4.41537,2.99762 7.49939,2.99762C 9.24039,2.99762 10.9084,3.80566 11.9994,5.08362C 13.0904,3.80566 14.7584,2.99762 16.4994,2.99762C 19.5834,2.99762 21.9994,5.41364 21.9994,8.49762C 21.9994,12.2736 18.5974,15.3607 13.4484,20.0327L 11.9994,21.3497 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#050708\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 16.9994,2.99805L 6.9994,2.99805C 5.8954,2.99805 5.0104,3.89404 5.0104,4.99805L 4.9994,20.998L 11.9994,17.998L 18.9994,20.998L 18.9994,4.99805C 18.9994,3.89404 18.1044,2.99805 16.9994,2.99805 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--regular\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
+              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
+              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
+              \"0 0 24.00 24.00\" enable-background=
+              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
+                \"0.2\" stroke-linejoin=\"round\" d=
+                \"M 20.9994,10.9981L 13.9994,3.99807L 13.9994,7.99807C 6.9994,8.99807 3.9994,13.9981 2.9994,18.9981C 5.4994,15.4981 8.9994,13.8981 13.9994,13.8981L 13.9994,17.9981L 20.9994,10.9981 Z\">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Separate elements - media 1`] = `
+"<div style=\"max-width: 400px;\" class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=
+    \"pe-card__media pe-card__media--regular pe-card__media--landscape\">
+    <img src=
+    \"http://arthurclemens.github.io/assets/polythene/examples/3.jpg\">
+      <div class=\"pe-card__media__dimmer\"></div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Separate elements - normal primary title 1`] = `
+"<div style=\"max-width: 400px;\" class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=\"pe-card__primary\">
+      <div class=\"pe-card__title\">
+        Primary title
+        <div class=\"pe-card__subtitle\">
+          Normal - (visual) 24px bottom padding
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Separate elements - text 1`] = `
+"<div style=\"max-width: 400px;\" class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=\"pe-card__text\">
+      <strong>Normal - (visual) 24px bottom padding</strong> Lorem
+      ipsum dolor sit amet, consectetur adipisicing elit, sed do
+      eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      Ut enim ad minim veniam, quis nostrud exercitation ullamco
+      laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+      irure dolor in reprehenderit in voluptate velit esse cillum
+      dolore eu fugiat nulla pariatur. Excepteur sint occaecat.
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Separate elements - tight primary title 1`] = `
+"<div style=\"max-width: 400px;\" class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=\"pe-card__primary pe-card__primary--tight\">
+      <div class=\"pe-card__title\">
+        Primary title
+        <div class=\"pe-card__subtitle\">
+          Normal - (visual) 16px bottom padding
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Separate elements - tight text 1`] = `
+"<div style=\"max-width: 400px;\" class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=\"pe-card__text pe-card__text--tight\">
+      <strong>Tight - (visual) 16px bottom padding</strong> Lorem
+      ipsum dolor sit amet, consectetur adipisicing elit, sed do
+      eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      Ut enim ad minim veniam, quis nostrud exercitation ullamco
+      laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+      irure dolor in reprehenderit in voluptate velit esse cillum
+      dolore eu fugiat nulla pariatur. Excepteur sint occaecat.
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Separate elements - vertical actions 1`] = `
+"<div style=\"max-width: 400px;\" class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=
+    \"pe-card__actions pe-card__actions--vertical pe-card__actions--tight\">
+    <div class=\"pe-list pe-list--borders\">
+        <div class=\"pe-list-tile pe-list-tile--hoverable\">
+          <div style=\"\" class=\"pe-list-tile__primary\">
+            <div class=\"pe-list-tile__content\">
+              Action 1
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-list-tile pe-list-tile--hoverable\">
+          <div style=\"\" class=\"pe-list-tile__primary\">
+            <div class=\"pe-list-tile__content\">
+              Action 2
+            </div>
+          </div>
+        </div>
+        <div class=\"pe-list-tile pe-list-tile--hoverable\">
+          <div style=\"\" class=\"pe-list-tile__primary\">
+            <div class=\"pe-list-tile__content\">
+              Action 3
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Text only 1`] = `
+"<div class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=\"pe-card__primary\">
+      <div class=\"pe-card__title\">
+        Primary title
+        <div class=\"pe-card__subtitle\">
+          Subtitle
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Texts -- dark theme 1`] = `
+"<div class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=
+    \"pe-list-tile pe-list-tile--subtitle pe-card__header\">
+      <div style=\"\" class=\"pe-list-tile__primary\">
+        <div class=
+        \"pe-list-tile__content pe-list-tile__content--front\">
+          <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
+            <img src=
+            \"http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png\">
+          </div>
+        </div>
+        <div class=\"pe-list-tile__content\">
+          <div class=\"pe-list-tile__title\">
+            Title
+          </div>
+          <div class=\"pe-list-tile__subtitle\">
+            Subhead
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class=
+    \"pe-card__media pe-card__media--regular pe-card__media--landscape\">
+    <img src=
+    \"http://arthurclemens.github.io/assets/polythene/examples/1.jpg\">
+      <div class=\"pe-card__media__dimmer\"></div>
+    </div>
+    <div class=\"pe-card__primary\">
+      <div class=\"pe-card__title\">
+        Primary title quis nostrud exercitation ullamco laboris
+        nisi ut aliquip ex ea commodo consequat
+        <div class=\"pe-card__subtitle\">
+          Subtitle quis nostrud exercitation ullamco laboris nisi
+          ut aliquip ex ea commodo consequat
+        </div>
+      </div>
+    </div>
+    <div class=\"pe-card__text\">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+      do eiusmod tempor incididunt ut labore et dolore magna
+      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+      ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+      aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint
+      occaecat.
+    </div>
+    <div class=
+    \"pe-card__actions pe-card__actions--horizontal pe-card__actions--borders\">
+    <a tabindex=\"0\" class=\"pe-button pe-text-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__wash\"></div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-button__label\">
+          Action 1
+        </div>
+      </div></a><a tabindex=\"0\" class=\"pe-button pe-text-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__wash\"></div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-button__label\">
+          Action 2
+        </div>
+      </div></a>
+      <div class=\"flex\"></div><a tabindex=\"0\" class=
+      \"pe-button pe-icon-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-icon-button__content\">
+          <div class=\"pe-icon pe-icon--medium\">
+            <div class=\"pe-svg\">
+              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+              height=\"24\" viewbox=\"0 0 24 24\">
+                <path d=
+                \"M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z\"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></a>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Themed (color) 1`] = `
+"<div class=\"pe-card tests-card-colored-content\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=\"pe-card__primary\">
+      <div class=\"pe-card__title\">
+        Primary title
+        <div class=\"pe-card__subtitle\">
+          Subtitle
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Title image, medium 1`] = `
+"<div style=\"max-width: 400px;\" class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=\"pe-card__primary pe-card__primary--media\">
+      <div class=\"pe-card__title\">
+        Title image medium
+        <div class=\"pe-card__subtitle\">
+          Subtitle
+        </div>
+      </div>
+      <div class=\"pe-card__primary-media\">
+        <div class=
+        \"pe-card__media pe-card__media--medium pe-card__media--square\">
+        <img src=
+        \"http://arthurclemens.github.io/assets/polythene/examples/1.jpg\">
+          <div class=\"pe-card__media__dimmer\"></div>
+        </div>
+      </div>
+    </div>
+    <div class=\"pe-card__actions pe-card__actions--horizontal\">
+      <a tabindex=\"0\" class=\"pe-button pe-text-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__wash\"></div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-button__label\">
+          Action 1
+        </div>
+      </div></a><a tabindex=\"0\" class=\"pe-button pe-text-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__wash\"></div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-button__label\">
+          Action 2
+        </div>
+      </div></a>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Title image, regular 1`] = `
+"<div style=\"max-width: 400px;\" class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=\"pe-card__primary pe-card__primary--media\">
+      <div class=\"pe-card__title\">
+        Title image regular
+        <div class=\"pe-card__subtitle\">
+          Subtitle
+        </div>
+      </div>
+      <div class=\"pe-card__primary-media\">
+        <div class=
+        \"pe-card__media pe-card__media--regular pe-card__media--square\">
+        <img src=
+        \"http://arthurclemens.github.io/assets/polythene/examples/1.jpg\">
+          <div class=\"pe-card__media__dimmer\"></div>
+        </div>
+      </div>
+    </div>
+    <div class=\"pe-card__actions pe-card__actions--horizontal\">
+      <a tabindex=\"0\" class=\"pe-button pe-text-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__wash\"></div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-button__label\">
+          Action 1
+        </div>
+      </div></a><a tabindex=\"0\" class=\"pe-button pe-text-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__wash\"></div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-button__label\">
+          Action 2
+        </div>
+      </div></a>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Title image, small 1`] = `
+"<div style=\"max-width: 400px;\" class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=\"pe-card__primary pe-card__primary--media\">
+      <div class=\"pe-card__title\">
+        Title image small
+        <div class=\"pe-card__subtitle\">
+          Subtitle
+        </div>
+      </div>
+      <div class=\"pe-card__primary-media\">
+        <div class=
+        \"pe-card__media pe-card__media--small pe-card__media--square\">
+        <img src=
+        \"http://arthurclemens.github.io/assets/polythene/examples/1.jpg\">
+          <div class=\"pe-card__media__dimmer\"></div>
+        </div>
+      </div>
+    </div>
+    <div class=\"pe-card__actions pe-card__actions--horizontal\">
+      <a tabindex=\"0\" class=\"pe-button pe-text-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__wash\"></div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-button__label\">
+          Action 1
+        </div>
+      </div></a><a tabindex=\"0\" class=\"pe-button pe-text-button\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__wash\"></div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-button__label\">
+          Action 2
+        </div>
+      </div></a>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Title image, type large, landscape 1`] = `
+"<div style=\"max-width: 360px;\" class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=\"pe-card__primary pe-card__primary--media\">
+      <div class=\"pe-card__primary-media\">
+        <div class=
+        \"pe-card__media pe-card__media--large pe-card__media--landscape\">
+        <img src=
+        \"http://arthurclemens.github.io/assets/polythene/examples/1.jpg\" />
+          <div class=\"pe-card__media__dimmer\"></div>
+        </div>
+      </div>
+      <div class=\"flex\"></div>
+      <div class=\"pe-card__actions pe-card__actions--vertical\">
+        <a tabindex=\"0\" class=\"pe-button pe-icon-button\">
+        <div class=\"pe-button__content\">
+          <div class=\"pe-ripple pe-ripple--constrained\">
+            <div class=\"pe-ripple__mask\">
+              <div class=\"pe-ripple__waves\"></div>
+            </div>
+          </div>
+          <div class=\"pe-button__focus\"></div>
+          <div class=\"pe-icon-button__content\">
+            <div class=\"pe-icon pe-icon--regular\">
+              <div class=\"pe-svg\">
+                <svg xmlns=\"http://www.w3.org/2000/svg\"
+                xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=
+                \"1.1\" baseprofile=\"full\" width=\"24\" height=\"24\"
+                viewbox=\"0 0 24.00 24.00\" enable-background=
+                \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                  <path fill=\"#000000\" fill-opacity=\"1\"
+                  stroke-width=\"0.2\" stroke-linejoin=\"round\" d=
+                  \"M 11.9994,21.3497L 10.5504,20.0327C 5.4014,15.3607 1.99939,12.2736 1.99939,8.49762C 1.99939,5.41364 4.41537,2.99762 7.49939,2.99762C 9.24039,2.99762 10.9084,3.80566 11.9994,5.08362C 13.0904,3.80566 14.7584,2.99762 16.4994,2.99762C 19.5834,2.99762 21.9994,5.41364 21.9994,8.49762C 21.9994,12.2736 18.5974,15.3607 13.4484,20.0327L 11.9994,21.3497 Z\">
+                  </path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
+        <div class=\"pe-button__content\">
+          <div class=\"pe-ripple pe-ripple--constrained\">
+            <div class=\"pe-ripple__mask\">
+              <div class=\"pe-ripple__waves\"></div>
+            </div>
+          </div>
+          <div class=\"pe-button__focus\"></div>
+          <div class=\"pe-icon-button__content\">
+            <div class=\"pe-icon pe-icon--regular\">
+              <div class=\"pe-svg\">
+                <svg xmlns=\"http://www.w3.org/2000/svg\"
+                xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=
+                \"1.1\" baseprofile=\"full\" width=\"24\" height=\"24\"
+                viewbox=\"0 0 24.00 24.00\" enable-background=
+                \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                  <path fill=\"#050708\" fill-opacity=\"1\"
+                  stroke-width=\"0.2\" stroke-linejoin=\"round\" d=
+                  \"M 16.9994,2.99805L 6.9994,2.99805C 5.8954,2.99805 5.0104,3.89404 5.0104,4.99805L 4.9994,20.998L 11.9994,17.998L 18.9994,20.998L 18.9994,4.99805C 18.9994,3.89404 18.1044,2.99805 16.9994,2.99805 Z\">
+                  </path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
+        <div class=\"pe-button__content\">
+          <div class=\"pe-ripple pe-ripple--constrained\">
+            <div class=\"pe-ripple__mask\">
+              <div class=\"pe-ripple__waves\"></div>
+            </div>
+          </div>
+          <div class=\"pe-button__focus\"></div>
+          <div class=\"pe-icon-button__content\">
+            <div class=\"pe-icon pe-icon--regular\">
+              <div class=\"pe-svg\">
+                <svg xmlns=\"http://www.w3.org/2000/svg\"
+                xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=
+                \"1.1\" baseprofile=\"full\" width=\"24\" height=\"24\"
+                viewbox=\"0 0 24.00 24.00\" enable-background=
+                \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                  <path fill=\"#000000\" fill-opacity=\"1\"
+                  stroke-width=\"0.2\" stroke-linejoin=\"round\" d=
+                  \"M 20.9994,10.9981L 13.9994,3.99807L 13.9994,7.99807C 6.9994,8.99807 3.9994,13.9981 2.9994,18.9981C 5.4994,15.4981 8.9994,13.8981 13.9994,13.8981L 13.9994,17.9981L 20.9994,10.9981 Z\">
+                  </path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div></a>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Title image, type large, square 1`] = `
+"<div style=\"max-width: 360px;\" class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=\"pe-card__primary pe-card__primary--media\">
+      <div class=\"pe-card__primary-media\">
+        <div class=
+        \"pe-card__media pe-card__media--large pe-card__media--square\">
+        <img src=
+        \"http://arthurclemens.github.io/assets/polythene/examples/1.jpg\" />
+          <div class=\"pe-card__media__dimmer\"></div>
+        </div>
+      </div>
+      <div class=\"flex\"></div>
+      <div class=\"pe-card__actions pe-card__actions--vertical\">
+        <a tabindex=\"0\" class=\"pe-button pe-icon-button\">
+        <div class=\"pe-button__content\">
+          <div class=\"pe-ripple pe-ripple--constrained\">
+            <div class=\"pe-ripple__mask\">
+              <div class=\"pe-ripple__waves\"></div>
+            </div>
+          </div>
+          <div class=\"pe-button__focus\"></div>
+          <div class=\"pe-icon-button__content\">
+            <div class=\"pe-icon pe-icon--regular\">
+              <div class=\"pe-svg\">
+                <svg xmlns=\"http://www.w3.org/2000/svg\"
+                xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=
+                \"1.1\" baseprofile=\"full\" width=\"24\" height=\"24\"
+                viewbox=\"0 0 24.00 24.00\" enable-background=
+                \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                  <path fill=\"#000000\" fill-opacity=\"1\"
+                  stroke-width=\"0.2\" stroke-linejoin=\"round\" d=
+                  \"M 11.9994,21.3497L 10.5504,20.0327C 5.4014,15.3607 1.99939,12.2736 1.99939,8.49762C 1.99939,5.41364 4.41537,2.99762 7.49939,2.99762C 9.24039,2.99762 10.9084,3.80566 11.9994,5.08362C 13.0904,3.80566 14.7584,2.99762 16.4994,2.99762C 19.5834,2.99762 21.9994,5.41364 21.9994,8.49762C 21.9994,12.2736 18.5974,15.3607 13.4484,20.0327L 11.9994,21.3497 Z\">
+                  </path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
+        <div class=\"pe-button__content\">
+          <div class=\"pe-ripple pe-ripple--constrained\">
+            <div class=\"pe-ripple__mask\">
+              <div class=\"pe-ripple__waves\"></div>
+            </div>
+          </div>
+          <div class=\"pe-button__focus\"></div>
+          <div class=\"pe-icon-button__content\">
+            <div class=\"pe-icon pe-icon--regular\">
+              <div class=\"pe-svg\">
+                <svg xmlns=\"http://www.w3.org/2000/svg\"
+                xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=
+                \"1.1\" baseprofile=\"full\" width=\"24\" height=\"24\"
+                viewbox=\"0 0 24.00 24.00\" enable-background=
+                \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                  <path fill=\"#050708\" fill-opacity=\"1\"
+                  stroke-width=\"0.2\" stroke-linejoin=\"round\" d=
+                  \"M 16.9994,2.99805L 6.9994,2.99805C 5.8954,2.99805 5.0104,3.89404 5.0104,4.99805L 4.9994,20.998L 11.9994,17.998L 18.9994,20.998L 18.9994,4.99805C 18.9994,3.89404 18.1044,2.99805 16.9994,2.99805 Z\">
+                  </path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div></a><a tabindex=\"0\" class=\"pe-button pe-icon-button\">
+        <div class=\"pe-button__content\">
+          <div class=\"pe-ripple pe-ripple--constrained\">
+            <div class=\"pe-ripple__mask\">
+              <div class=\"pe-ripple__waves\"></div>
+            </div>
+          </div>
+          <div class=\"pe-button__focus\"></div>
+          <div class=\"pe-icon-button__content\">
+            <div class=\"pe-icon pe-icon--regular\">
+              <div class=\"pe-svg\">
+                <svg xmlns=\"http://www.w3.org/2000/svg\"
+                xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=
+                \"1.1\" baseprofile=\"full\" width=\"24\" height=\"24\"
+                viewbox=\"0 0 24.00 24.00\" enable-background=
+                \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+                  <path fill=\"#000000\" fill-opacity=\"1\"
+                  stroke-width=\"0.2\" stroke-linejoin=\"round\" d=
+                  \"M 20.9994,10.9981L 13.9994,3.99807L 13.9994,7.99807C 6.9994,8.99807 3.9994,13.9981 2.9994,18.9981C 5.4994,15.4981 8.9994,13.8981 13.9994,13.8981L 13.9994,17.9981L 20.9994,10.9981 Z\">
+                  </path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div></a>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
