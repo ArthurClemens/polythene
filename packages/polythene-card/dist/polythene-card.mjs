@@ -297,7 +297,7 @@ var baseStyle = function baseStyle(scope, selector, componentVars, tint) {
 };
 
 var contentStyle = function contentStyle(scope, selector, componentVars, tint) {
-  return [_defineProperty$1({}, scope, {
+  return [_defineProperty$1({}, scope + selector, {
     " .pe-card__title": {
       color: componentVars["color_" + tint + "_title_text"]
     },
