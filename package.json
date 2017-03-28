@@ -7,7 +7,7 @@
   "devDependencies": {
     "babel-cli": "^6.24.0",
     "babel-core": "^6.24.0",
-    "babel-eslint": "^7.2.0",
+    "babel-eslint": "^7.2.1",
     "babel-loader": "^6.4.1",
     "babel-plugin-transform-object-assign": "^6.22.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
@@ -18,9 +18,9 @@
     "babili-webpack-plugin": "0.0.11",
     "del": "^2.2.2",
     "eslint": "^3.18.0",
-    "eslint-config-airbnb-base": "^11.1.1",
+    "eslint-config-airbnb-base": "^11.1.2",
     "eslint-plugin-import": "^2.2.0",
-    "fs-promise": "^2.0.0",
+    "fs-promise": "^2.0.2",
     "lerna": "2.0.0-beta.38",
     "mithril-jest": "^0.1.7",
     "rollup": "^0.41.6",
@@ -32,6 +32,6 @@
     "rollup-plugin-pathmodify": "^1.0.1",
     "rollup-plugin-serve": "^0.1.0",
     "rollup-plugin-uglify": "^1.0.1",
-    "webpack": "^2.2.1"
+    "webpack": "^2.3.2"
   }
 }
