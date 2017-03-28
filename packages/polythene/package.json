@@ -6,15 +6,17 @@
   "module": "dist/polythene.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
-    "rollup": "DEPS=1 ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
-    "build": "npm run rollup"
+    "rollup:umd": "DEPS=1 ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js",
+    "rollup:es": "DEPS=1 ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
+    "build": "npm run rollup:umd && npm run rollup:es",
+    "build:webpack": "DEST=polythene.mjs ../../node_modules/webpack/bin/webpack.js -p --config ../../scripts/webpack.config.es.js && DEST=polythene.js ../../node_modules/webpack/bin/webpack.js -p --config ../../scripts/webpack.config.umd.js"
   },
   "files": [
     "dist",
     "README.md"
   ],
   "dependencies": {
-    "mithril": "1.0.1",
+    "mithril": "1.1.0",
     "polythene-button": "1.0.0-rc.1",
     "polythene-card": "1.0.0-rc.1",
     "polythene-checkbox": "1.0.0-rc.1",

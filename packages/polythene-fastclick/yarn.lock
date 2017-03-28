@@ -6,6 +6,6 @@ fastclick@^1.0.6:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/fastclick/-/fastclick-1.0.6.tgz#161625b27b1a5806405936bda9a2c1926d06be6a"
 
-mithril@1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/mithril/-/mithril-1.0.1.tgz#056b35b24e3f7e323a264b7a25b756c57d69008a"
+mithril@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/mithril/-/mithril-1.1.0.tgz#1dbf9cc7843dd9701b7901d5abc4e219b15cf5de"

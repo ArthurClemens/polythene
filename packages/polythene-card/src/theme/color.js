@@ -7,7 +7,7 @@ const baseStyle = (scope, selector, componentVars, tint) => [{
 }];
 
 const contentStyle = (scope, selector, componentVars, tint) => [{
-  [scope]: {
+  [scope + selector]: {
     " .pe-card__title": {
       color: componentVars["color_" + tint + "_title_text"]
     },
