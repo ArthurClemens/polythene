@@ -156,7 +156,6 @@ const createStyles = (config) => {
             overflow: 'hidden',
             left: 0,
             '-webkit-overflow-scrolling': 'touch',
-            position: 'fixed',
             top: 0,
             width: '100%'
         }
