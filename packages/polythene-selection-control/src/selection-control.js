@@ -68,10 +68,11 @@ const view = vnode => {
       class: classes.formLabel
     }, [
       attrs.controlView
-        ? attrs.controlView(checked, {
-          ...attrs,
-          events: { onclick: state.toggle }
-        })
+        ? attrs.controlView(checked, Object.assign(
+          {}, 
+          attrs,
+          { events: { onclick: state.toggle } }
+        ))
         : null,
       attrs.label
         ? m(`.${classes.label}`,

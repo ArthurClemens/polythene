@@ -1,4 +1,3 @@
-export { default as button } from "polythene-button";
 
 export { default as card } from "polythene-card";
 
@@ -58,6 +57,8 @@ export { default as toolbar } from "polythene-toolbar";
 export { easing, scrollTo, Timer } from "polythene-utilities";
 
 export { vars } from "polythene-theme";
+
+export { default as button } from "polythene-button";
 
 export * from "polythene-fastclick";
 

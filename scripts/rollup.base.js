@@ -28,14 +28,11 @@ export const createConfig = ({ includeDepencies }) => ({
     // Resolve libs in node_modules
     resolve({
       jsnext: true,
-      main: true,
-      skip: includeDepencies ? [] : external
+      main: true
     }),
 
     // Convert CommonJS modules to ES6, so they can be included in a Rollup bundle
-    commonjs({
-      include: "node_modules/**"
-    }),
+    commonjs({}),
 
     eslint({
       cache: true
@@ -44,4 +41,3 @@ export const createConfig = ({ includeDepencies }) => ({
     babel()
   ]
 });
-

@@ -60,9 +60,7 @@ var view = function view(vnode) {
     }
   }), m("label", {
     class: classes.formLabel
-  }, [attrs.controlView ? attrs.controlView(checked, _extends({}, attrs, {
-    events: { onclick: state.toggle }
-  })) : null, attrs.label ? m("." + classes.label, inactive ? null : {
+  }, [attrs.controlView ? attrs.controlView(checked, _extends({}, attrs, { events: { onclick: state.toggle } })) : null, attrs.label ? m("." + classes.label, inactive ? null : {
     onclick: state.toggle
   }, attrs.label) : null])];
   return m(element, props, [attrs.before, content, attrs.after]);

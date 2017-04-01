@@ -6,7 +6,7 @@
   "module": "dist/polythene.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
-    "build": "npm run rollup:es && npm run webpack:umd",
+    "build": "npm run rollup:es && npm run rollup:umd",
     "rollup:umd": "DEPS=1 ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js",
     "rollup:es": "DEPS=1 ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
     "webpack:es": "DEST=polythene.mjs ../../node_modules/webpack/bin/webpack.js -p --config ../../scripts/webpack.config.es.js",

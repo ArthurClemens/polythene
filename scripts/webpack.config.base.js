@@ -13,8 +13,8 @@ dependencies.forEach(dep => {
   switch (dep) {
   case "mithril":
     externals["mithril"] = {
-      umd: "mithril",
-      root: "m"
+      umd: "m",
+      root: "mithril"
     };
     break;
   default:

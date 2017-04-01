@@ -1,7 +1,7 @@
 import m from "mithril";
 import * as polythene from "polythene";
-import { rules as css } from "./styles";
-import { tidy } from "../scripts/render";
+import { rules as css } from "../../test/src/styles";
+import { tidy } from "../../test/scripts/render";
 import iconBack from "mmsvg/google/msvg/navigation/arrow-back";
 
 const generatedHtml = {

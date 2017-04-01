@@ -229,6 +229,13 @@ export const tests = [
     }
   },
   {
+    name: "Switch",
+    component: polythene.switchButton,
+    attrs: {
+      label: "Label"
+    }
+  },
+  {
     name: "Tabs",
     component: polythene.tabs,
     attrs: {
