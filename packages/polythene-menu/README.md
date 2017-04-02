@@ -290,7 +290,7 @@ const page = {
 
 
 
-### Composition
+## Composition
 
 Menu is usually composed from:
 

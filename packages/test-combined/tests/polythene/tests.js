@@ -222,6 +222,18 @@ export const tests = [
     attrs: {}
   },
   {
+    name: "Slider",
+    component: polythene.slider,
+    attrs: {
+      min: 0,
+      max: 100,
+      step: 10,
+      value: 2,
+      pin: true,
+      ticks: true
+    }
+  },
+  {
     name: "SVG",
     component: polythene.svg,
     attrs: {

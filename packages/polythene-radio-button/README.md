@@ -176,7 +176,7 @@ m(radioGroup);
 
 
 
-### Composition
+## Composition
 
 Radio button is composed from:
 

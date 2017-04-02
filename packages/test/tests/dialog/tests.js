@@ -30,52 +30,7 @@ export const tests = [
       })
     }
   },
-  {
-    name: "Promise shown",
-    interactive: true,
-    exclude: true,
-    component: {
-      view: () => promiseShownBtn({
-        body: "Hello"
-      })
-    }
-  },
-  {
-    name: "Option: didShow",
-    interactive: true,
-    exclude: true,
-    component: {
-      view: () => btn({
-        body: "Hello",
-        didShow: id => alert("dialog shown: " + id)
-      })
-    }
-  },
-  {
-    name: "Option: didHide",
-    interactive: true,
-    exclude: true,
-    component: {
-      view: () => btn({
-        body: "Hello",
-        didHide: id => alert("dialog hidden: " + id)
-      })
-    }
-  },
-  {
-    name: "Option: showDelay, hideDelay, showDuration, hideDuration",
-    interactive: true,
-    exclude: true,
-    component: {
-      view: () => btn({
-        body: "Hello",
-        showDelay: .4,
-        hideDelay: .4,
-        showDuration: 1.0,
-        hideDuration: 1.0
-      })
-    }
-  },
+  
   {
     name: "Option: transition (show)",
     interactive: true,
@@ -205,6 +160,53 @@ export const tests = [
     exclude: true,
     component: {
       view: () => btn(replaceOpts)
+    }
+  },
+
+  {
+    name: "Promise shown",
+    interactive: true,
+    exclude: true,
+    component: {
+      view: () => promiseShownBtn({
+        body: "Hello"
+      })
+    }
+  },
+  {
+    name: "Option: didShow",
+    interactive: true,
+    exclude: true,
+    component: {
+      view: () => btn({
+        body: "Hello",
+        didShow: id => alert("dialog shown: " + id)
+      })
+    }
+  },
+  {
+    name: "Option: didHide",
+    interactive: true,
+    exclude: true,
+    component: {
+      view: () => btn({
+        body: "Hello",
+        didHide: id => alert("dialog hidden: " + id)
+      })
+    }
+  },
+  {
+    name: "Option: showDelay, hideDelay, showDuration, hideDuration",
+    interactive: true,
+    exclude: true,
+    component: {
+      view: () => btn({
+        body: "Hello",
+        showDelay: .4,
+        hideDelay: .4,
+        showDuration: 1.0,
+        hideDuration: 1.0
+      })
     }
   },
 

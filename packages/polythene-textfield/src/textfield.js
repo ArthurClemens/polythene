@@ -211,10 +211,11 @@ const view = ({state, attrs}) => {
         {
           class: classes.input,
           type,
-          name: attrs.name || "",
           disabled: attrs.disabled
         },
-
+        attrs.name 
+          ? { name: attrs.name }
+          : null,
         !ignoreEvent(attrs, "onclick")
           ? {
             onclick: () => {
@@ -314,28 +315,28 @@ const view = ({state, attrs}) => {
           }
         },
         attrs.events ? attrs.events : null, // NOTE: may overwrite oninput
-        attrs.readonly !== undefined ?  {readonly: true} : null,
-        attrs.pattern !== undefined ?   {pattern: attrs.pattern} : null,
-        attrs.maxlength !== undefined ? {maxlength: attrs.maxlength} : null,
-        attrs.minlength !== undefined ? {minlength: attrs.minlength} : null,
-        attrs.max !== undefined ?       {max: attrs.max} : null,
-        attrs.min !== undefined ?       {min: attrs.min} : null,
-        attrs.autofocus !== undefined ? {autofocus: attrs.autofocus} : null,
-        attrs.required !== undefined ?  {required: attrs.required} : null,
-        attrs.tabindex !== undefined ?  {tabindex: attrs.tabindex} : null,
-        attrs.rows !== undefined ?      {rows: attrs.rows} : null
+        attrs.readonly !== undefined ?  { readonly: true } : null,
+        attrs.pattern !== undefined ?   { pattern: attrs.pattern } : null,
+        attrs.maxlength !== undefined ? { maxlength: attrs.maxlength } : null,
+        attrs.minlength !== undefined ? { minlength: attrs.minlength } : null,
+        attrs.max !== undefined ?       { max: attrs.max } : null,
+        attrs.min !== undefined ?       { min: attrs.min } : null,
+        attrs.autofocus !== undefined ? { autofocus: attrs.autofocus } : null,
+        attrs.required !== undefined ?  { required: attrs.required } : null,
+        attrs.tabindex !== undefined ?  { tabindex: attrs.tabindex } : null,
+        attrs.rows !== undefined ?      { rows: attrs.rows } : null
       ))
     ]),
-    attrs.counter ? m("div", {class: classes.counter}, state.value.length + " / " + attrs.counter) : null,
+    attrs.counter ? m("div", { class: classes.counter }, state.value.length + " / " + attrs.counter) : null,
     attrs.help && !showError
       ? m("div", {
         class: [classes.help, attrs.focusHelp ? classes.focusHelp : ""].join(" ")
       }, attrs.help)
       : null,
     showError
-      ? m("div", {class: classes.error}, state.error)
+      ? m("div", { class: classes.error }, state.error)
       : (validates && !attrs.help)
-        ? m("div", {class: classes.errorPlaceholder})
+        ? m("div", { class: classes.errorPlaceholder })
         : null
   ];
   return m(element, props, [attrs.before, content, attrs.after]);
@@ -355,9 +356,9 @@ export default {
 
     if (typeof attrs.value === "function") {
       const v = attrs.value();
-      value = (v !== undefined) ? v : "";
+      value = v !== undefined ? v : "";
     } else {
-      value = (attrs.value !== undefined) ? attrs.value : "";
+      value = attrs.value !== undefined ? attrs.value : "";
     }
     if (value !== "") {
       touched = true;

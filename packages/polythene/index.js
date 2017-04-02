@@ -5,7 +5,7 @@ export { default as checkbox } from "polythene-checkbox";
 
 export {
   defaultVariables,
-  isTouch, touchStartEvent, touchEndEvent,
+  isTouch, touchStartEvent, touchEndEvent, moveEvent, endEvent,
   throttle, subscribe, unsubscribe, emit,
   animationEndEvent,
   multiple,
@@ -44,6 +44,8 @@ export { default as search } from "polythene-search";
 
 export { default as shadow } from "polythene-shadow";
 
+export { default as slider } from "polythene-slider";
+
 export { default as svg } from "polythene-svg";
 
 export { default as switchButton } from "polythene-switch-button";
@@ -58,6 +60,7 @@ export { easing, scrollTo, Timer } from "polythene-utilities";
 
 export { vars } from "polythene-theme";
 
+/* Button is placed here to prevent overwriting by switchButton - possibly a RollUp bug? */
 export { default as button } from "polythene-button";
 
 export * from "polythene-fastclick";

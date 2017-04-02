@@ -146,6 +146,10 @@ var touchStartEvent = isTouch ? "click" : "mousedown";
 
 var touchEndEvent = isTouch ? "click" : "mouseup";
 
+var moveEvent = window.PointerEvent ? "pointermove" : "ontouchmove" in window || window.DocumentTouch && document instanceof window.DocumentTouch ? "touchmove" : "mousemove";
+
+var endEvent = window.PointerEvent ? "pointerup" : "ontouchend" in window || window.DocumentTouch && document instanceof window.DocumentTouch ? "touchend" : "mouseup";
+
 document.querySelector("html").classList.add(isTouch ? "pe-touch" : "pe-no-touch");
 
 var listeners = {};
@@ -600,4 +604,4 @@ var prop = function prop(x) {
   };
 };
 
-export { variables as defaultVariables, isTouch, touchStartEvent, touchEndEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, multiple, show, hide, filterSupportedAttributes, prop };
+export { variables as defaultVariables, isTouch, touchStartEvent, touchEndEvent, moveEvent, endEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, multiple, show, hide, filterSupportedAttributes, prop };

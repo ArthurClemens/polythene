@@ -156,7 +156,7 @@ m(checkbox, {
 
 
 
-### Composition
+## Composition
 
 Checkbox is composed from:
 

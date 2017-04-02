@@ -172,13 +172,13 @@ const flexAutoVertical = {
   "flex-basis": "auto"
 };
 
-const flexIndex = (index) => ({
+const flexIndex = index => ({
   "-ms-flex": index,
   "-webkit-flex": index,
   "flex": index
 });
 
-const flexGrow = (value) => ({
+const flexGrow = value => ({
   "-webkit-flex-grow": value,
   "flex-grow": value
 });

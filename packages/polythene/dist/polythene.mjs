@@ -146,6 +146,10 @@ var touchStartEvent = isTouch ? "click" : "mousedown";
 
 var touchEndEvent = isTouch ? "click" : "mouseup";
 
+var moveEvent = window.PointerEvent ? "pointermove" : "ontouchmove" in window || window.DocumentTouch && document instanceof window.DocumentTouch ? "touchmove" : "mousemove";
+
+var endEvent = window.PointerEvent ? "pointerup" : "ontouchend" in window || window.DocumentTouch && document instanceof window.DocumentTouch ? "touchend" : "mouseup";
+
 document.querySelector("html").classList.add(isTouch ? "pe-touch" : "pe-no-touch");
 
 var listeners = {};
@@ -6246,7 +6250,7 @@ var vars$1$14 = {
   dense_full_width_font_size_input: 13,
 
   color_light_input_text: rgba$12(variables.color_light_foreground, variables.blend_light_text_primary),
-  color_light_input_background: rgba$12(variables.color_light_background), // only used to "remove" autofill color
+  color_light_input_background: "transparent", // only used to "remove" autofill color
   color_light_highlight_text: rgba$12(variables.color_primary, variables.blend_light_text_primary),
   color_light_input_bottom_border: rgba$12(variables.color_light_foreground, variables.blend_light_border_light),
   color_light_input_error_text: rgba$12("221, 44, 0"),
@@ -6261,7 +6265,7 @@ var vars$1$14 = {
   color_light_counter_ok_border: rgba$12(variables.color_primary),
 
   color_dark_input_text: rgba$12(variables.color_dark_foreground, variables.blend_dark_text_primary),
-  color_dark_input_background: rgba$12(variables.color_dark_background), // only used to "remove" autofill color
+  color_dark_input_background: "transparent", // only used to "remove" autofill color
   color_dark_highlight_text: rgba$12(variables.color_primary, variables.blend_dark_text_primary),
   color_dark_input_bottom_border: rgba$12(variables.color_dark_foreground, variables.blend_dark_border_light),
   color_dark_input_error_text: rgba$12("222, 50, 38"),
@@ -6829,9 +6833,8 @@ var view$15 = function view(_ref) {
   }), label) : null, m$1(inputTag, _extends$19({}, {
     class: classes$17.input,
     type: type,
-    name: attrs.name || "",
     disabled: attrs.disabled
-  }, !ignoreEvent(attrs, "onclick") ? {
+  }, attrs.name ? { name: attrs.name } : null, !ignoreEvent(attrs, "onclick") ? {
     onclick: function onclick() {
       if (inactive) {
         return;
@@ -7203,7 +7206,754 @@ var search = {
   view: view$14
 };
 
+var rgba$13 = variables.rgba;
+
+var lightForeground = variables.color_light_foreground;
+var darkForeground = variables.color_dark_foreground;
+var activeColor = variables.color_primary; // or override in CSS by setting 'color' property on '.pe-slider'
+var thumb_size = 12;
+var thumb_touch_size = Math.max(40, thumb_size);
+var thumb_border_width = 2;
+var active_thumb_scale = 3 / 2;
+var disabled_thumb_scale = 2 / 3;
+var active_pin_thumb_scale = 2 / 6;
+var largestThumbSize = active_thumb_scale * thumb_size;
+var largestElement = Math.max(thumb_touch_size, largestThumbSize);
+var height$1 = Math.max(52, largestThumbSize);
+var side_spacing = Math.max(10, largestElement / 2 - thumb_size / 2);
+var horizontal_layout_side_spacing = side_spacing + 4; // optimization for horizontal layout
+
+var vars$1$15 = {
+  height: height$1,
+  side_spacing: side_spacing,
+  horizontal_layout_side_spacing: horizontal_layout_side_spacing,
+  thumb_size: thumb_size,
+  thumb_touch_size: thumb_touch_size,
+  track_height: height$1,
+  bar_height: 2,
+  thumb_border_width: thumb_border_width,
+  active_thumb_scale: active_thumb_scale,
+  animation_duration: variables.animation_duration,
+  disabled_thumb_scale: disabled_thumb_scale,
+  active_pin_thumb_scale: active_pin_thumb_scale,
+
+  step_width: 2,
+  pin_height: 32,
+  pin_width: 26,
+  pin_font_size: 10,
+
+  color_light_track_active: rgba$13(lightForeground, .38),
+  color_light_track_inactive: rgba$13(lightForeground, .26),
+  color_light_track_value: rgba$13(activeColor),
+  // background color may be set in theme; disabled by default
+  // color_light_thumb_background:        undefined,
+  color_light_thumb_off: rgba$13(lightForeground, .26),
+  color_light_thumb_off_focus: rgba$13(lightForeground),
+  color_light_thumb_off_focus_opacity: .08,
+  color_light_thumb_on: rgba$13(activeColor),
+  color_light_thumb_on_focus_opacity: .11,
+  color_light_thumb_inactive: rgba$13(lightForeground, .26),
+  color_light_tick: rgba$13(lightForeground, 1),
+  color_light_icon: variables.rgba(variables.color_light_foreground, variables.blend_light_text_secondary),
+  color_light_disabled_icon: variables.rgba(variables.color_light_foreground, variables.blend_light_text_disabled),
+  color_light_label: variables.rgba(variables.color_light_foreground, variables.blend_light_text_secondary),
+  color_light_disabled_label: variables.rgba(variables.color_light_foreground, variables.blend_light_text_disabled),
+
+  color_dark_track_active: rgba$13(darkForeground, .3),
+  color_dark_track_inactive: rgba$13(darkForeground, .2),
+  color_dark_track_value: rgba$13(activeColor),
+  // background color may be set in theme; disabled by default
+  // color_dark_thumb_background:         undefined,
+  color_dark_thumb_off: rgba$13(darkForeground, .2),
+  color_dark_thumb_off_focus: rgba$13(darkForeground),
+  color_dark_thumb_off_focus_opacity: .08,
+  color_dark_thumb_on: rgba$13(activeColor),
+  color_dark_thumb_on_focus_opacity: .11,
+  color_dark_thumb_inactive: rgba$13(darkForeground, .2),
+  color_dark_tick: rgba$13(darkForeground, 1),
+  color_dark_icon: variables.rgba(variables.color_dark_foreground, variables.blend_dark_text_secondary),
+  color_dark_disabled_icon: variables.rgba(variables.color_dark_foreground, variables.blend_dark_text_disabled),
+  color_dark_label: variables.rgba(variables.color_dark_foreground, variables.blend_dark_text_secondary),
+  color_dark_disabled_label: variables.rgba(variables.color_dark_foreground, variables.blend_dark_text_disabled)
+};
+
+function _defineProperty$17(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
+  } else {
+    obj[key] = value;
+  }return obj;
+}
+
+var positionBorder = function positionBorder(thumbSize, borderWidth) {
+  return {
+    borderWidth: borderWidth + "px",
+    width: thumbSize - 2 * borderWidth + "px",
+    height: thumbSize - 2 * borderWidth + "px",
+    left: "2px",
+    top: "2px"
+  };
+};
+
+var layout$15 = function layout(selector, componentVars) {
+  var thumbSize = Math.max(componentVars.thumb_size, 2 * componentVars.thumb_border_width);
+  var scaledThumbDiff = (componentVars.active_thumb_scale - 1) * thumbSize / 2;
+  var barOffset = thumbSize / 2;
+  var scaledBorderWidth = Math.max(1, componentVars.thumb_border_width / componentVars.active_thumb_scale);
+  var thumbTouchSize = componentVars.thumb_touch_size;
+  var stepsOffset = barOffset - 1;
+
+  return [_defineProperty$17({}, selector, [mixinFlex.layoutHorizontal, mixinFlex.flexGrow(1), {
+    userSelect: "none",
+    height: componentVars.height + "px",
+    marginTop: (componentVars.height - componentVars.track_height) / 2 + "px ",
+
+    " > .pe-icon": [mixinFlex.layoutCenter, {
+      height: componentVars.height + "px"
+    }],
+
+    " .pe-slider__track": [mixinFlex.layoutHorizontal, mixinFlex.flexGrow(1), mixin.defaultTransition("transform", componentVars.animation_duration), {
+      userSelect: "none",
+      position: "relative",
+      height: componentVars.track_height + "px",
+      margin: "0 " + componentVars.side_spacing + "px",
+      outline: 0
+    }],
+    " div + .pe-slider__track": {
+      margin: "0 " + componentVars.horizontal_layout_side_spacing + "px"
+    },
+
+    " .pe-slider__control": [mixinFlex.selfCenter, mixin.defaultTransition("transform, background", componentVars.animation_duration), {
+      userSelect: "none",
+      width: thumbSize + "px",
+      height: thumbSize + "px",
+      lineHeight: 0,
+      borderRadius: "50%",
+      outline: 0,
+      zIndex: 1,
+      position: "relative",
+
+      // touch area
+      "&:before": [mixin.defaultTransition("background-color", componentVars.animation_duration), {
+        content: "\"\"",
+        position: "absolute",
+        borderRadius: "50%",
+        left: -thumbTouchSize / 2 + thumbSize / 2 + "px",
+        top: -thumbTouchSize / 2 + thumbSize / 2 + "px",
+        width: thumbTouchSize + "px",
+        height: thumbTouchSize + "px"
+      }],
+
+      // border
+      "&:after": [mixin.defaultTransition("border", componentVars.animation_duration), positionBorder(thumbSize, componentVars.thumb_border_width), {
+        content: "\"\"",
+        position: "absolute",
+        borderRadius: "50%",
+        borderStyle: "solid"
+      }]
+    }],
+
+    " .pe-slider__thumb": [mixin.defaultTransition("opacity", componentVars.animation_duration), mixin.fit(), {
+      "&, .pe-icon": {
+        width: "inherit",
+        height: "inherit"
+      }
+    }],
+
+    " .pe-slider__label": {
+      height: componentVars.height + "px",
+      lineHeight: componentVars.height + "px",
+      minWidth: variables.unit_icon_size + "px",
+      textAlign: "center",
+      fontSize: "16px",
+      fontWeight: variables.font_weight_medium
+    },
+
+    " .pe-slider__track-part": [mixinFlex.flex(), {
+      userSelect: "none",
+      height: componentVars.bar_height + "px",
+      margin: (componentVars.track_height - componentVars.bar_height) / 2 + "px 0",
+      overflow: "hidden" // Firefox otherwise uses 6x at 0%
+    }],
+
+    " .pe-slider__track-value, .pe-slider__track-rest": mixinFlex.layoutHorizontal,
+
+    " .pe-slider__track-bar": [mixinFlex.flex(), {
+      position: "relative",
+      overflow: "hidden"
+    }],
+    " .pe-slider__track-bar-value": [mixinFlex.flex(), mixin.defaultTransition("transform, background-color", componentVars.animation_duration), {
+      height: componentVars.bar_height + "px"
+    }],
+    " .pe-slider__track-value .pe-slider__track-bar": {
+      marginLeft: barOffset + "px"
+    },
+    " .pe-slider__track-rest .pe-slider__track-bar": {
+      marginRight: barOffset + "px"
+    },
+
+    " .pe-slider__ticks": [mixinFlex.layoutJustified, {
+      userSelect: "none",
+      position: "absolute",
+      width: "calc(100% - " + 2 * stepsOffset + "px)",
+      height: componentVars.bar_height + "px",
+      left: 0,
+      top: componentVars.height / 2 - 1 + "px",
+      margin: "0 " + stepsOffset + "px",
+      pointerEvents: "none"
+    }],
+
+    " .pe-slider__ticks-tick": {
+      width: componentVars.step_width + "px",
+      height: componentVars.bar_height + "px"
+    },
+
+    " .pe-slider__pin": [mixin.vendorize({
+      transform: "translateZ(0) scale(0) translate(0, 0)"
+    }, variables.prefixes_transform), mixin.vendorize({
+      transformOrigin: "bottom"
+    }, variables.prefixes_transform), mixin.defaultTransition("transform", ".11s"), {
+      position: "absolute",
+      zIndex: 1,
+      width: componentVars.pin_width + "px",
+      height: 0,
+      left: 0, // set in js
+      top: 0,
+      margin: "0 " + stepsOffset + "px 0 " + (stepsOffset - componentVars.pin_width / 2 + 1) + "px",
+      pointerEvents: "none",
+
+      "&::before": [mixin.vendorize({
+        transform: "rotate(-45deg)"
+      }, variables.prefixes_transform), {
+        content: "\"\"",
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: componentVars.pin_width + "px",
+        height: componentVars.pin_width + "px",
+        borderRadius: "50% 50% 50% 0",
+        backgroundColor: "inherit"
+      }],
+      "&::after": {
+        content: "attr(value)",
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: componentVars.pin_width + "px",
+        height: componentVars.pin_height + "px",
+        textAlign: "center",
+        color: "#fff",
+        fontSize: componentVars.pin_font_size + "px",
+        lineHeight: componentVars.pin_width + "px"
+      }
+    }],
+
+    "&.pe-slider--active:not(.pe-slider--ticks)": {
+      " .pe-slider__control": [mixin.vendorize({
+        transform: "scale(" + componentVars.active_thumb_scale + ")"
+      }, variables.prefixes_transform), {
+        borderWidth: scaledBorderWidth + "px"
+      }],
+      // left side
+      " .pe-slider__track-value .pe-slider__track-bar-value": [mixin.vendorize({
+        transform: "translateX(" + -scaledThumbDiff + "px)"
+      }, variables.prefixes_transform)],
+      // right side
+      " .pe-slider__track-rest .pe-slider__track-bar-value": [mixin.vendorize({
+        transform: "translateX(" + scaledThumbDiff + "px)"
+      }, variables.prefixes_transform)]
+    },
+
+    "&.pe-slider--pin.pe-slider--active, &.pe-slider--pin.pe-slider--focus": {
+      " .pe-slider__pin": [mixin.vendorize({
+        transform: "translateZ(0) scale(1) translate(0, -24px)"
+      }, variables.prefixes_transform)],
+      " .pe-slider__control": [mixin.vendorize({
+        transform: "scale(" + componentVars.active_pin_thumb_scale + ")"
+      }, variables.prefixes_transform)]
+    },
+
+    "&:not(.pe-slider--disabled)": {
+      " .pe-slider__control": {
+        cursor: "pointer"
+      },
+      "&.pe-slider--track": {
+        " .pe-slider__track": {
+          cursor: "pointer"
+        }
+      }
+    },
+
+    "&.pe-slider--disabled": {
+      " .pe-slider__control": [mixin.vendorize({
+        transform: "scale(" + componentVars.disabled_thumb_scale + ")"
+      }, variables.prefixes_transform), {
+        borderWidth: 0
+      }],
+      "&.pe-slider--min": {
+        " .pe-slider__control:after": [positionBorder(thumbSize, 1 / componentVars.disabled_thumb_scale * componentVars.thumb_border_width)]
+      }
+    }
+  }])];
+};
+
+function _defineProperty$1$14(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
+  } else {
+    obj[key] = value;
+  }return obj;
+}
+
+var style$14 = function style(scope, selector, componentVars, tint) {
+  return [_defineProperty$1$14({}, scope + selector, {
+    color: componentVars["color_" + tint + "_thumb_on"], // override by specifying "color"
+
+    " .pe-slider__control": {
+      "&:after": {
+        borderColor: "transparent"
+      }
+    },
+    " .pe-slider__track-bar-value": {
+      background: componentVars["color_" + tint + "_track_inactive"]
+    },
+
+    " .pe-slider__ticks-tick": {
+      background: componentVars["color_" + tint + "_tick"]
+    },
+
+    " .pe-slider__pin": {
+      backgroundColor: "currentcolor"
+    },
+
+    " > .pe-icon": {
+      color: componentVars["color_" + tint + "_disabled_icon"]
+    },
+
+    " .pe-slider__label": {
+      color: componentVars["color_" + tint + "_disabled_label"]
+    },
+
+    // states
+
+    "&.pe-slider--active": {
+      " .pe-slider__track-bar-value": {
+        background: componentVars["color_" + tint + "_track_active"]
+      }
+    },
+
+    ".pe-slider--disabled": {
+      " .pe-slider__control": {
+        background: componentVars["color_" + tint + "_thumb_inactive"]
+      }
+    },
+
+    "&:not(.pe-slider--disabled)": {
+      " .pe-slider__control": {
+        backgroundColor: componentVars["color_" + tint + "_thumb_background"] || "currentcolor",
+
+        "&:before": {
+          opacity: componentVars["color_" + tint + "_thumb_off_focus_opacity"]
+        }
+      },
+      " .pe-slider__track-value .pe-slider__track-bar-value": {
+        background: "currentcolor"
+      },
+      "&.pe-slider--focus.pe-slider--min:not(.pe-slider--pin) .pe-slider__control:before,\
+      &.pe-slider--min:not(.pe-slider--pin) .pe-slider__control:focus:before": {
+        backgroundColor: componentVars["color_" + tint + "_thumb_off_focus"]
+      },
+      "&.pe-slider--focus:not(.pe-slider--min):not(.pe-slider--pin) .pe-slider__control:before,\
+      &:not(.pe-slider--min):not(.pe-slider--pin) .pe-slider__control:focus:before": {
+        backgroundColor: "currentcolor",
+        opacity: componentVars["color_" + tint + "_thumb_on_focus_opacity"]
+      },
+      " > .pe-icon": {
+        color: componentVars["color_" + tint + "_icon"]
+      },
+      " .pe-slider__label": {
+        color: componentVars["color_" + tint + "_label"]
+      }
+    },
+
+    "&.pe-slider--min:not(.pe-slider--disabled)": {
+      " .pe-slider__control": {
+        backgroundColor: "transparent"
+      },
+      " .pe-slider__thumb": {
+        opacity: 0
+      },
+      " .pe-slider__control:after": {
+        borderColor: componentVars["color_" + tint + "_track_inactive"]
+      },
+      "&.pe-slider--active .pe-slider__control:after": {
+        borderColor: componentVars["color_" + tint + "_track_active"]
+      },
+      "&.pe-slider--ticks": {
+        " .pe-slider__control": {
+          backgroundColor: componentVars["color_" + tint + "_tick"]
+        },
+        " .pe-slider__control:after": {
+          borderColor: "transparent"
+        }
+      },
+      " .pe-slider__pin": {
+        backgroundColor: componentVars["color_" + tint + "_track_inactive"]
+      }
+    }
+  })];
+};
+
+var color$15 = function color(selector, componentVars) {
+  return [style$14("", selector, componentVars, "light"), style$14(".pe-dark-theme ", selector, componentVars, "dark")];
+};
+
 var _extends$1$20 = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }return target;
+};
+
+var fns$17 = [layout$15, color$15];
+var selector$17 = ".pe-slider";
+
+var customTheme$17 = function customTheme(customSelector, customVars) {
+  return styler.generateStyles([customSelector, selector$17], _extends$1$20({}, vars$1$15, customVars), fns$17);
+};
+
+styler.generateStyles([selector$17], vars$1$15, fns$17);
+
+var _extends$20 = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }return target;
+};
+
+var classes$18 = {
+  component: "pe-slider",
+  thumb: "pe-slider__thumb",
+  label: "pe-slider__label",
+  track: "pe-slider__track",
+  trackPart: "pe-slider__track-part",
+  trackPartValue: "pe-slider__track-value",
+  trackPartRest: "pe-slider__track-rest",
+  trackBar: "pe-slider__track-bar",
+  trackBarValue: "pe-slider__track-bar-value",
+
+  control: "pe-slider__control",
+  ticks: "pe-slider__ticks",
+  tick: "pe-slider__ticks-tick",
+  pin: "pe-slider__pin",
+
+  isDisabled: "pe-slider--disabled",
+  isActive: "pe-slider--active",
+  hasTrack: "pe-slider--track",
+  hasPin: "pe-slider--pin",
+  hasFocus: "pe-slider--focus",
+  isAtMin: "pe-slider--min",
+  hasTicks: "pe-slider--ticks"
+};
+
+var focusElement = void 0;
+
+var deFocus = function deFocus(state) {
+  if (focusElement) {
+    focusElement.blur();
+  }
+  focusElement = undefined;
+  state.hasFocus = false;
+};
+
+var focus = function focus(state, el) {
+  deFocus(state);
+  focusElement = el;
+  state.hasFocus = true;
+};
+
+var positionFromEvent = function positionFromEvent(e, isVertical) {
+  return isTouch ? isVertical ? e.touches[0].pageY : e.touches[0].pageX : isVertical ? e.pageY : e.pageX;
+};
+
+var updatePinPosition = function updatePinPosition(state) {
+  if (state.controlEl && state.pinEl) {
+    var left = state.fraction() * state.rangeWidth;
+    state.pinEl.style.left = left + "px";
+  }
+};
+
+var updateValue = function updateValue(state, value) {
+  state.setValue(value);
+  updatePinPosition(state);
+};
+
+var generateTickMarks = function generateTickMarks(min, max, stepSize) {
+  var steps = Math.round((max - min) / stepSize);
+  var items = [];
+  var s = steps + 1;
+  while (s > 0) {
+    items.push(m$1("div", { class: classes$18.tick }));
+    s--;
+  }
+  return items;
+};
+
+var readRangeData = function readRangeData(state) {
+  if (state.controlEl) {
+    // range is from the far left to the far right minus the thumb width (max x is at the left side of the thumb)
+    state.controlWidth = vars$1$15.thumb_size;
+    state.rangeWidth = state.trackEl.getBoundingClientRect().width - state.controlWidth;
+    var styles = window.getComputedStyle(state.trackEl);
+    state.rangeOffset = parseFloat(styles.marginLeft);
+  }
+};
+
+var calculateClickOffset = function calculateClickOffset(state) {
+  var controlOffset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+
+  state.clickOffset = state.trackEl.getBoundingClientRect().left - (state.rangeOffset - state.controlWidth / 2) + controlOffset;
+};
+
+var initControlEvent = function initControlEvent(state, e) {
+  var controlPos = state.controlEl.getBoundingClientRect().left;
+  var eventPos = positionFromEvent(e);
+  var controlOffset = eventPos - controlPos - state.controlWidth / 2;
+  calculateClickOffset(state, controlOffset);
+};
+
+var initTrackEvent = function initTrackEvent(state) {
+  return calculateClickOffset(state, 0);
+};
+
+var handlePosEvent = function handlePosEvent(state, e) {
+  var pos = positionFromEvent(e) - state.clickOffset;
+  var value = state.min + (pos - state.rangeOffset) / state.rangeWidth * (state.max - state.min);
+  updateValue(state, value);
+  m$1.redraw();
+};
+
+var startDrag = function startDrag(state, attrs, e) {
+  if (state.isDragging) return;
+  e.preventDefault();
+  state.isDragging = true;
+  state.isActive = true;
+  deFocus(state);
+
+  var drag = function drag(e) {
+    if (!state.isDragging) return;
+    handlePosEvent(state, e);
+  };
+
+  var endDrag = function endDrag() {
+    if (!state.isDragging) return;
+    state.isDragging = false;
+    state.isActive = false;
+    deFocus(state);
+    window.removeEventListener(moveEvent, drag);
+    window.removeEventListener(endEvent, endDrag);
+    m$1.redraw();
+  };
+
+  window.addEventListener(moveEvent, drag);
+  window.addEventListener(endEvent, endDrag);
+
+  readRangeData(state);
+
+  if (attrs.pin) {
+    updatePinPosition(state);
+  }
+};
+
+var startTrack = function startTrack(state, attrs, e) {
+  e.preventDefault();
+  if (state.isDragging) {
+    return;
+  }
+  readRangeData(state);
+  initTrackEvent(state);
+  handlePosEvent(state, e);
+  startDrag(state, attrs, e);
+};
+
+var createSlider = function createSlider(state, attrs, hasTicks, interactiveTrack) {
+  var fraction = state.fraction();
+  var stepCount = Math.max(10, parseInt(attrs.step, 10) || 1); // not more than 100 steps on the screen
+
+  var onStartTrack = function onStartTrack(e) {
+    return startTrack(state, attrs, e);
+  };
+
+  var onInitDrag = function onInitDrag(e) {
+    readRangeData(state);
+    initControlEvent(state, e);
+    startDrag(state, attrs, e);
+  };
+
+  var flexValueCss = fraction + " 1 0%";
+  var flexRestValue = 1 - fraction;
+  var flexRestCss = flexRestValue + " 1 0%";
+
+  return [m$1("div", _extends$20({}, {
+    class: classes$18.track,
+    oncreate: function oncreate(_ref) {
+      var dom = _ref.dom;
+
+      state.trackEl = dom;
+      if (attrs.pin) {
+        setTimeout(function () {
+          updatePinPosition(state);
+        }, 0);
+      }
+    }
+  }, interactiveTrack && !attrs.disabled && !isTouch ? { onmousedown: onStartTrack } : null, interactiveTrack && !attrs.disabled && isTouch ? { ontouchstart: onStartTrack } : null), [m$1("div", {
+    class: classes$18.trackPart + " " + classes$18.trackPartValue,
+    style: {
+      flex: flexValueCss,
+      "-ms-flex": flexValueCss,
+      webkitFlex: flexValueCss
+    }
+  }, m$1("div", { class: classes$18.trackBar }, m$1("div", { class: classes$18.trackBarValue }))), m$1("div", _extends$20({}, {
+    class: classes$18.control,
+    oncreate: function oncreate(_ref2) {
+      var dom = _ref2.dom;
+
+      state.controlEl = dom;
+    }
+  }, attrs.disabled ? { disabled: true } : {
+    tabindex: attrs.tabindex || 0,
+    onfocus: function onfocus() {
+      return focus(state, state.controlEl);
+    },
+    onblur: function onblur() {
+      return deFocus(state);
+    },
+    onkeydown: function onkeydown(e) {
+      if (e.which === 27) {
+        // ESCAPE
+        state.controlEl.blur(e);
+      } else if (e.which === 37) {
+        // LEFT
+        state.decrease(e.shiftKey);
+      } else if (e.which === 38) {
+        // UP
+        state.increase(e.shiftKey);
+      } else if (e.which === 39) {
+        // RIGHT
+        state.increase(e.shiftKey);
+      } else if (e.which === 40) {
+        // DOWN
+        state.decrease(e.shiftKey);
+      }
+      readRangeData(state);
+      updatePinPosition(state);
+    }
+  }, !attrs.disabled && !isTouch ? { onmousedown: onInitDrag } : null, !attrs.disabled && isTouch ? { ontouchstart: onInitDrag } : null, attrs.events ? attrs.events : null, hasTicks ? { step: stepCount } : null), attrs.icon ? m$1("div", { class: classes$18.thumb }, attrs.icon) : null), m$1("div", {
+    class: classes$18.trackPart + " " + classes$18.trackPartRest,
+    style: {
+      flex: flexRestCss,
+      "-ms-flex": flexRestCss,
+      webkitFlex: flexRestCss,
+      maxWidth: flexRestValue * 100 + "%" // for IE Edge
+    }
+  }, m$1("div", { class: classes$18.trackBar }, m$1("div", { class: classes$18.trackBarValue }))), hasTicks && !attrs.disabled ? m$1("div", { class: classes$18.ticks }, generateTickMarks(state.min, state.max, stepCount)) : null, hasTicks && attrs.pin && !attrs.disabled ? m$1("div", {
+    class: classes$18.pin,
+    value: Math.round(state.value()),
+    oncreate: function oncreate(_ref3) {
+      var dom = _ref3.dom;
+      return state.pinEl = dom;
+    }
+  }) : null])];
+};
+
+var view$16 = function view(_ref4) {
+  var attrs = _ref4.attrs,
+      state = _ref4.state;
+
+  if (typeof attrs.value === "function") {
+    state.setValue(attrs.value());
+  }
+  var element = attrs.element || "div";
+  var hasTicks = attrs.ticks !== undefined && attrs.ticks !== false;
+  var interactiveTrack = attrs.interactiveTrack !== undefined ? attrs.interactiveTrack : true;
+  var props = _extends$20({}, filterSupportedAttributes(attrs), {
+    class: [classes$18.component, attrs.disabled ? classes$18.isDisabled : null, attrs.pin ? classes$18.hasPin : null, interactiveTrack ? classes$18.hasTrack : null, state.isActive ? classes$18.isActive : null, state.hasFocus ? classes$18.hasFocus : null, state.fraction() === 0 ? classes$18.isAtMin : null, hasTicks ? classes$18.hasTicks : null, attrs.class].join(" ")
+  });
+  var content = createSlider(state, attrs, hasTicks, interactiveTrack);
+  return m$1(element, props, [attrs.before, content, attrs.after]);
+};
+
+var oninit = function oninit(vnode) {
+  var attrs = vnode.attrs;
+  var min = attrs.min !== undefined ? attrs.min : 0;
+  var max = attrs.max !== undefined ? attrs.max : 100;
+  var step = attrs.step !== undefined ? attrs.step : 1;
+  var defaultValue = 0;
+  var _fraction = min;
+  var _value = defaultValue;
+
+  if (typeof attrs.value === "function") {
+    var v = attrs.value();
+    _value = v !== undefined ? v : defaultValue;
+  } else {
+    _value = attrs.value !== undefined ? attrs.value : defaultValue;
+  }
+
+  var setValue = function setValue(v) {
+    if (v < min) v = min;
+    if (v > max) v = max;
+    _value = step ? Math.round(v / step) * step : v;
+    _fraction = (_value - min) / (max - min);
+    if (attrs.getValue) {
+      attrs.getValue(_value);
+    }
+  };
+
+  setValue(_value);
+
+  vnode.state = _extends$20(vnode.state, {
+    min: min,
+    max: max,
+    trackEl: null,
+    controlEl: null,
+    pinEl: null,
+    setValue: setValue,
+    value: function value() {
+      return _value;
+    },
+    fraction: function fraction() {
+      return _fraction;
+    },
+    increase: function increase(multiply) {
+      return setValue(_value + (multiply ? 10 : 1) * (step || 1));
+    },
+    decrease: function decrease(multiply) {
+      return setValue(_value - (multiply ? 10 : 1) * (step || 1));
+    },
+    isActive: false,
+    hasFocus: false,
+    isDragging: false,
+    // coordinates
+    controlWidth: 0,
+    rangeWidth: 0,
+    rangeOffset: 0,
+    clickOffset: 0
+  });
+};
+
+var slider = {
+  theme: customTheme$17, // accepts (selector, vars)
+  oninit: oninit,
+  view: view$16
+};
+
+var _extends$1$21 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -7226,7 +7976,7 @@ var controlView$1 = function controlView$$1(checked, attrs) {
   var raised = attrs.disabled ? false : attrs.raised !== undefined ? attrs.raised : true;
   return [m$1("div", {
     class: classes$1$2.track
-  }), m$1(iconButton, _extends$1$20({}, {
+  }), m$1(iconButton, _extends$1$21({}, {
     class: classes$1$2.thumb,
     content: [m$1("div", {
       class: classes$1$2.knob
@@ -7251,7 +8001,7 @@ var _extends$3$1 = Object.assign || function (target) {
   }return target;
 };
 
-var rgba$13 = variables.rgba;
+var rgba$14 = variables.rgba;
 var hit_area_padding = (variables.grid_unit_icon_button - variables.unit_icon_size) / 2; // 12
 
 var vars$3 = _extends$3$1({}, vars$1$5, {
@@ -7264,15 +8014,15 @@ var vars$3 = _extends$3$1({}, vars$1$5, {
 
   animation_duration: variables.animation_duration,
 
-  color_light_thumb_on: rgba$13(variables.color_primary),
+  color_light_thumb_on: rgba$14(variables.color_primary),
   color_light_thumb_off: "#f1f1f1",
   color_light_thumb_disabled: "#bdbdbd",
 
-  color_light_track_on: rgba$13(variables.color_primary_faded),
+  color_light_track_on: rgba$14(variables.color_primary_faded),
   color_light_track_on_opacity: .55,
-  color_light_track_off: rgba$13(variables.color_light_foreground, variables.blend_light_text_regular),
+  color_light_track_off: rgba$14(variables.color_light_foreground, variables.blend_light_text_regular),
   color_light_track_off_opacity: .55,
-  color_light_track_disabled: rgba$13(variables.color_light_foreground, variables.blend_light_background_disabled),
+  color_light_track_disabled: rgba$14(variables.color_light_foreground, variables.blend_light_background_disabled),
   color_light_track_disabled_opacity: 1,
 
   // icon color may be set in theme; default "currentcolor"
@@ -7281,11 +8031,11 @@ var vars$3 = _extends$3$1({}, vars$1$5, {
 
   // color_light_focus_on and so on taken from selectionControlVars
 
-  color_dark_thumb_on: rgba$13(variables.color_primary), // or "#80cbc4"
+  color_dark_thumb_on: rgba$14(variables.color_primary), // or "#80cbc4"
   color_dark_thumb_off: "#bdbdbd",
   color_dark_thumb_disabled: "#555",
 
-  color_dark_track_on: rgba$13(variables.color_primary_faded, variables.blend_dark_text_tertiary), // or "#5a7f7c"
+  color_dark_track_on: rgba$14(variables.color_primary_faded, variables.blend_dark_text_tertiary), // or "#5a7f7c"
   color_dark_track_on_opacity: 9,
   color_dark_track_off: "#717171",
   color_dark_track_off_opacity: .55,
@@ -7294,7 +8044,7 @@ var vars$3 = _extends$3$1({}, vars$1$5, {
 
 });
 
-function _defineProperty$17(obj, key, value) {
+function _defineProperty$18(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -7361,7 +8111,7 @@ var customSize = function customSize(componentVars, size) {
 };
 
 var layout$1$3 = function layout$1(selector, componentVars) {
-  return layout$6(selector, componentVars, "checkbox").concat([_defineProperty$17({}, selector, {
+  return layout$6(selector, componentVars, "checkbox").concat([_defineProperty$18({}, selector, {
     " .pe-switch-control__track": [transition$1(componentVars, "background, opacity"), {
       position: "absolute",
       left: 0
@@ -7396,7 +8146,7 @@ var layout$1$3 = function layout$1(selector, componentVars) {
   })]);
 };
 
-function _defineProperty$1$14(obj, key, value) {
+function _defineProperty$1$15(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -7404,8 +8154,8 @@ function _defineProperty$1$14(obj, key, value) {
   }return obj;
 }
 
-var style$14 = function style(scope, selector, componentVars, tint) {
-  return [_defineProperty$1$14({}, scope + selector, {
+var style$15 = function style(scope, selector, componentVars, tint) {
+  return [_defineProperty$1$15({}, scope + selector, {
     ".pe-control--off": {
       " .pe-switch-control__track": {
         opacity: componentVars["color_" + tint + "_track_off_opacity"],
@@ -7463,7 +8213,7 @@ var style$14 = function style(scope, selector, componentVars, tint) {
 };
 
 var color$1$3 = function color$1(selector, componentVars) {
-  return [color$5(selector, componentVars)].concat([style$14("", selector, componentVars, "light"), style$14(".pe-dark-theme ", selector, componentVars, "dark") // inside dark theme
+  return [color$5(selector, componentVars)].concat([style$15("", selector, componentVars, "light"), style$15(".pe-dark-theme ", selector, componentVars, "dark") // inside dark theme
   ]);
 };
 
@@ -7477,16 +8227,16 @@ var _extends$2$1 = Object.assign || function (target) {
   }return target;
 };
 
-var fns$17 = [layout$1$3, color$1$3];
-var selector$17 = ".pe-control.pe-switch-control";
+var fns$18 = [layout$1$3, color$1$3];
+var selector$18 = ".pe-control.pe-switch-control";
 
-var customTheme$17 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$17], _extends$2$1({}, vars$3, customVars), fns$17);
+var customTheme$18 = function customTheme(customSelector, customVars) {
+  return styler.generateStyles([customSelector, selector$18], _extends$2$1({}, vars$3, customVars), fns$18);
 };
 
-styler.generateStyles([selector$17], vars$3, fns$17);
+styler.generateStyles([selector$18], vars$3, fns$18);
 
-var _extends$20 = Object.assign || function (target) {
+var _extends$21 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -7500,8 +8250,8 @@ var classes$$1 = {
   component: "pe-switch-control"
 };
 
-var view$16 = function view(vnode) {
-  return m$1(selectionControl, _extends$20({}, vnode.attrs, {
+var view$17 = function view(vnode) {
+  return m$1(selectionControl, _extends$21({}, vnode.attrs, {
     controlView: controlView$1,
     selectable: vnode.attrs.selectable || function () {
       return true;
@@ -7512,8 +8262,8 @@ var view$16 = function view(vnode) {
 };
 
 var switchButton = {
-  theme: customTheme$17, // accepts (selector, vars)
-  view: view$16
+  theme: customTheme$18, // accepts (selector, vars)
+  view: view$17
 };
 
 /*
@@ -7642,7 +8392,7 @@ var Timer = function Timer(callback, delaySeconds) {
   this.resume();
 };
 
-var rgba$14 = variables.rgba;
+var rgba$15 = variables.rgba;
 
 var fontSize = vars$1$7.font_size;
 var tab_label_line_height = 1.1 * fontSize;
@@ -7677,19 +8427,19 @@ var vars$3$1 = {
   tab_label_transition_property: "opacity, color, backgroundColor",
 
   color_light: "inherit",
-  color_light_selected: rgba$14(variables.color_primary),
+  color_light_selected: rgba$15(variables.color_primary),
   color_light_selected_background: "transparent",
-  color_light_tab_indicator: rgba$14(variables.color_primary),
+  color_light_tab_indicator: rgba$15(variables.color_primary),
   color_light_icon: vars$1$6.color_light,
 
   color_dark: "inherit",
-  color_dark_selected: rgba$14(variables.color_primary),
+  color_dark_selected: rgba$15(variables.color_primary),
   color_dark_selected_background: "transparent",
-  color_dark_tab_indicator: rgba$14(variables.color_primary),
+  color_dark_tab_indicator: rgba$15(variables.color_primary),
   color_dark_icon: vars$1$6.color_dark
 };
 
-function _defineProperty$18(obj, key, value) {
+function _defineProperty$19(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -7697,8 +8447,8 @@ function _defineProperty$18(obj, key, value) {
   }return obj;
 }
 
-var layout$15 = function layout(selector, componentVars) {
-  return [_defineProperty$18({}, selector, [mixin.vendorize({
+var layout$16 = function layout(selector, componentVars) {
+  return [_defineProperty$19({}, selector, [mixin.vendorize({
     userSelect: "none"
   }, variables.prefixes_user_select), {
     transform: "translate3d(0,0,0)",
@@ -7916,7 +8666,7 @@ var layout$15 = function layout(selector, componentVars) {
   }])];
 };
 
-function _defineProperty$1$15(obj, key, value) {
+function _defineProperty$1$16(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -7924,8 +8674,8 @@ function _defineProperty$1$15(obj, key, value) {
   }return obj;
 }
 
-var style$15 = function style(scope, selector, componentVars, tint) {
-  return [_defineProperty$1$15({}, scope + selector, {
+var style$16 = function style(scope, selector, componentVars, tint) {
+  return [_defineProperty$1$16({}, scope + selector, {
     color: componentVars["color_" + tint],
 
     " .pe-tabs__tab.pe-button--selected": {
@@ -7947,8 +8697,8 @@ var style$15 = function style(scope, selector, componentVars, tint) {
   })];
 };
 
-var color$15 = function color(selector, componentVars) {
-  return [style$15("", selector, componentVars, "light"), style$15(".pe-dark-theme ", selector, componentVars, "dark") // inside dark theme
+var color$16 = function color(selector, componentVars) {
+  return [style$16("", selector, componentVars, "light"), style$16(".pe-dark-theme ", selector, componentVars, "dark") // inside dark theme
   ];
 };
 
@@ -7956,7 +8706,7 @@ var iconArrowBackward = m$1.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" wid
 
 var iconArrowForward = m$1.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\"/></svg>");
 
-var _extends$1$21 = Object.assign || function (target) {
+var _extends$1$22 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -7973,14 +8723,14 @@ var arrowForward = {
   msvg: iconArrowForward
 };
 
-var fns$18 = [layout$15, color$15];
-var selector$18 = ".pe-tabs";
+var fns$19 = [layout$16, color$16];
+var selector$19 = ".pe-tabs";
 
-var customTheme$18 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$18], _extends$1$21({}, vars$3$1, customVars), fns$18);
+var customTheme$19 = function customTheme(customSelector, customVars) {
+  return styler.generateStyles([customSelector, selector$19], _extends$1$22({}, vars$3$1, customVars), fns$19);
 };
 
-styler.generateStyles([selector$18], vars$3$1, fns$18);
+styler.generateStyles([selector$19], vars$3$1, fns$19);
 
 var _extends$2$2 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
@@ -7998,8 +8748,8 @@ var view$1$1 = function view(vnode) {
   attrs.events = attrs.events || {};
   attrs.events.onclick = attrs.events.onclick || function () {};
   var tabButtonOptions = _extends$2$2({}, attrs, {
-    content: m$1("div", { class: classes$18.tabContent }, [attrs.icon ? m$1(icon, attrs.icon) : null, attrs.label ? m$1("div", { class: classes$18.label }, m$1("span", attrs.label)) : null]),
-    class: [classes$18.tab, attrs.icon && attrs.label ? classes$18.tabHasIcon : null, attrs.class].join(" "),
+    content: m$1("div", { class: classes$19.tabContent }, [attrs.icon ? m$1(icon, attrs.icon) : null, attrs.label ? m$1("div", { class: classes$19.label }, m$1("span", attrs.label)) : null]),
+    class: [classes$19.tab, attrs.icon && attrs.label ? classes$19.tabHasIcon : null, attrs.class].join(" "),
     selected: attrs.selected,
     wash: false,
     ripple: true,
@@ -8027,7 +8777,7 @@ var view$2$1 = function view(vnode) {
   var attrs = vnode.attrs;
   var icon$$1 = attrs.position === "start" ? attrs.icon || arrowBackward : attrs.icon || arrowForward;
   return m$1(iconButton, {
-    class: [classes$18.scrollButton, attrs.class].join(" "),
+    class: [classes$19.scrollButton, attrs.class].join(" "),
     icon: icon$$1,
     ripple: { center: true },
     events: attrs.events,
@@ -8041,7 +8791,7 @@ var scrollButton = {
   view: view$2$1
 };
 
-var _extends$21 = Object.assign || function (target) {
+var _extends$22 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -8051,7 +8801,7 @@ var _extends$21 = Object.assign || function (target) {
   }return target;
 };
 
-var classes$18 = {
+var classes$19 = {
   component: "pe-tabs",
   scrollButton: "pe-tabs__scroll-button",
   scrollButtonAtStart: "pe-tabs__scroll-button-start",
@@ -8106,7 +8856,7 @@ Moves the first tab to the left so that the text label is as position 0.
 */
 var alignToTitle = function alignToTitle(state) {
   var firstTab = state.tabs[0].el;
-  var firstInnerLabel = firstTab.querySelector("." + classes$18.label + " span");
+  var firstInnerLabel = firstTab.querySelector("." + classes$19.label + " span");
   var firstOuterLabelWidth = firstTab.getBoundingClientRect().width;
   var firstInnerLabelWidth = firstInnerLabel.getBoundingClientRect().width;
   var firstTabOffset = (firstOuterLabelWidth - firstInnerLabelWidth) / 2;
@@ -8116,7 +8866,7 @@ var alignToTitle = function alignToTitle(state) {
 var createRightButtonOffset = function createRightButtonOffset(state) {
   // add padding to right so that last item is not hidden behind scroll button
   var scrollButtonAtEndWidth = state.scrollButtons["end"].getBoundingClientRect().width;
-  var scrollButtonOffsetEl = state.tabsEl.querySelector("." + classes$18.scrollButtonOffset);
+  var scrollButtonOffsetEl = state.tabsEl.querySelector("." + classes$19.scrollButtonOffset);
   scrollButtonOffsetEl.style.width = scrollButtonAtEndWidth + "px";
 };
 
@@ -8199,7 +8949,7 @@ var sortByLargestWidth = function sortByLargestWidth(a, b) {
   return a < b ? 1 : a > b ? -1 : 0;
 };
 
-var view$17 = function view(vnode) {
+var view$18 = function view(vnode) {
   var attrs = vnode.attrs;
   var state = vnode.state;
   var element = attrs.element || "div";
@@ -8215,8 +8965,8 @@ var view$17 = function view(vnode) {
     return setSelectedTab(state, attrs, state.selectedTabIndex, false), m$1.redraw();
   };
 
-  var props = _extends$21({}, filterSupportedAttributes(attrs), {
-    class: [classes$18.component, attrs.scrollable ? classes$18.scrollable : null, state.selectedTabIndex === 0 ? classes$18.isAtStart : null, state.selectedTabIndex === state.tabs.length - 1 ? classes$18.isAtEnd : null, attrs.activeSelected ? classes$18.activeSelectable : null, autofit ? classes$18.isAutofit : null, attrs.small ? classes$18.smallTabs : null, attrs.menu ? classes$18.isMenu : null, attrs.class].join(" "),
+  var props = _extends$22({}, filterSupportedAttributes(attrs), {
+    class: [classes$19.component, attrs.scrollable ? classes$19.scrollable : null, state.selectedTabIndex === 0 ? classes$19.isAtStart : null, state.selectedTabIndex === state.tabs.length - 1 ? classes$19.isAtEnd : null, attrs.activeSelected ? classes$19.activeSelectable : null, autofit ? classes$19.isAutofit : null, attrs.small ? classes$19.smallTabs : null, attrs.menu ? classes$19.isMenu : null, attrs.class].join(" "),
     oninit: function oninit() {
       return subscribe("resize", onResize);
     },
@@ -8261,7 +9011,7 @@ var view$17 = function view(vnode) {
     var buttonOpts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
     var index = arguments[1];
 
-    var buttonOptsCombined = _extends$21({}, buttonOpts, {
+    var buttonOptsCombined = _extends$22({}, buttonOpts, {
       // These options can be overridden by tabsOpts
       selected: index === state.selectedTabIndex,
       animateOnTap: attrs.animateOnTap !== false ? true : false
@@ -8279,23 +9029,23 @@ var view$17 = function view(vnode) {
 
   var tabRow = attrs.scrollable ? tabRowButtons.concat([
   // offset for right scroll button
-  m$1("div", { class: classes$18.scrollButtonOffset })]) : tabRowButtons;
+  m$1("div", { class: classes$19.scrollButtonOffset })]) : tabRowButtons;
 
   var scrollButtonAtStart = void 0,
       scrollButtonAtEnd = void 0;
   if (attrs.scrollable) {
-    scrollButtonAtStart = m$1(scrollButton, _extends$21({}, {
+    scrollButtonAtStart = m$1(scrollButton, _extends$22({}, {
       icon: attrs.scrollIconBackward,
-      class: classes$18.scrollButtonAtStart,
+      class: classes$19.scrollButtonAtStart,
       position: "start",
       register: state.registerScrollButton,
       events: { onclick: function onclick(e) {
           return handleScrollButtonClick(state, attrs, e, "backward");
         } }
     }));
-    scrollButtonAtEnd = m$1(scrollButton, _extends$21({}, {
+    scrollButtonAtEnd = m$1(scrollButton, _extends$22({}, {
       icon: attrs.scrollIconForward,
-      class: classes$18.scrollButtonAtEnd,
+      class: classes$19.scrollButtonAtEnd,
       position: "end",
       register: state.registerScrollButton,
       events: { onclick: function onclick(e) {
@@ -8305,14 +9055,14 @@ var view$17 = function view(vnode) {
   }
 
   var tabIndicator = attrs.hideIndicator ? null : m$1("div", {
-    class: classes$18.indicator,
+    class: classes$19.indicator,
     oncreate: function oncreate(vnode) {
       return state.tabIndicatorEl = vnode.dom;
     }
   });
 
   var content = [attrs.scrollable ? scrollButtonAtStart : null, m$1("div", {
-    class: [classes$18.tabRow, attrs.centered ? classes$18.tabRowCentered : null, attrs.scrollable ? classes$18.tabRowIndent : null].join(" "),
+    class: [classes$19.tabRow, attrs.centered ? classes$19.tabRowCentered : null, attrs.scrollable ? classes$19.tabRowIndent : null].join(" "),
     oncreate: function oncreate(vnode) {
       return state.scrollerEl = vnode.dom;
     }
@@ -8322,8 +9072,8 @@ var view$17 = function view(vnode) {
 };
 
 var tabs = {
-  theme: customTheme$18, // accepts (selector, vars)
-  view: view$17,
+  theme: customTheme$19, // accepts (selector, vars)
+  view: view$18,
   oninit: function oninit(vnode) {
     var registerTabButton = function registerTabButton(index, data) {
       return vnode.state.tabs[index] = data;
@@ -8331,7 +9081,7 @@ var tabs = {
     var registerScrollButton = function registerScrollButton(position, dom) {
       return vnode.state.scrollButtons[position] = dom;
     };
-    vnode.state = _extends$21(vnode.state, {
+    vnode.state = _extends$22(vnode.state, {
       tabsEl: undefined,
       scrollerEl: undefined,
       tabs: [], // {data, el}
@@ -8354,14 +9104,14 @@ var tabs = {
   }
 };
 
-var rgba$15 = variables.rgba;
+var rgba$16 = variables.rgba;
 
 var padding_side = variables.grid_unit_component * 2 - 12; // 16 - 12 = 4
 var title_padding = variables.grid_unit_component * 9 - variables.grid_unit_component * 6 - padding_side; // 72 - 48 - 4
 var height_mobile_portrait = variables.grid_unit_component * 7; // 56
 var height_desktop = variables.grid_unit_component * 8; // 64
 
-var vars$1$15 = {
+var vars$1$16 = {
   padding_side: padding_side,
   title_padding: title_padding,
   indent: variables.unit_indent,
@@ -8372,15 +9122,15 @@ var vars$1$15 = {
   height: height_desktop,
   height_compact: height_mobile_portrait,
 
-  color_light_text: rgba$15(variables.color_light_foreground, variables.blend_light_text_primary),
-  color_dark_text: rgba$15(variables.color_dark_foreground, variables.blend_dark_text_primary),
+  color_light_text: rgba$16(variables.color_light_foreground, variables.blend_light_text_primary),
+  color_dark_text: rgba$16(variables.color_dark_foreground, variables.blend_dark_text_primary),
 
   // default gray background, expected to be overridden
   color_light_background: "#CFD8DC", // blue-gray-100
   color_dark_background: "#37474F" // blue-gray-800
 };
 
-function _defineProperty$19(obj, key, value) {
+function _defineProperty$20(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -8388,8 +9138,8 @@ function _defineProperty$19(obj, key, value) {
   }return obj;
 }
 
-var layout$16 = function layout(selector, componentVars) {
-  return [_defineProperty$19({}, selector, [mixinFlex.layout, mixinFlex.layoutHorizontal, mixinFlex.layoutCenter, {
+var layout$17 = function layout(selector, componentVars) {
+  return [_defineProperty$20({}, selector, [mixinFlex.layout, mixinFlex.layoutHorizontal, mixinFlex.layoutCenter, {
     height: componentVars.height + "px",
     fontSize: componentVars.font_size + "px",
     lineHeight: componentVars.line_height + "em",
@@ -8420,7 +9170,7 @@ var layout$16 = function layout(selector, componentVars) {
   }])];
 };
 
-function _defineProperty$1$16(obj, key, value) {
+function _defineProperty$1$17(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -8428,19 +9178,19 @@ function _defineProperty$1$16(obj, key, value) {
   }return obj;
 }
 
-var style$16 = function style(scope, selector, componentVars, tint) {
-  return [_defineProperty$1$16({}, scope + selector, {
+var style$17 = function style(scope, selector, componentVars, tint) {
+  return [_defineProperty$1$17({}, scope + selector, {
     color: componentVars["color_" + tint + "_text"],
     backgroundColor: componentVars["color_" + tint + "_background"]
   })];
 };
 
-var color$16 = function color(selector, componentVars) {
-  return [style$16("", selector, componentVars, "light"), style$16(".pe-dark-theme ", selector, componentVars, "dark") // inside dark theme
+var color$17 = function color(selector, componentVars) {
+  return [style$17("", selector, componentVars, "light"), style$17(".pe-dark-theme ", selector, componentVars, "dark") // inside dark theme
   ];
 };
 
-var _extends$1$22 = Object.assign || function (target) {
+var _extends$1$23 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -8450,16 +9200,16 @@ var _extends$1$22 = Object.assign || function (target) {
   }return target;
 };
 
-var fns$19 = [layout$16, color$16];
-var selector$19 = ".pe-toolbar";
+var fns$20 = [layout$17, color$17];
+var selector$20 = ".pe-toolbar";
 
-var customTheme$19 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$19], _extends$1$22({}, vars$1$15, customVars), fns$19);
+var customTheme$20 = function customTheme(customSelector, customVars) {
+  return styler.generateStyles([customSelector, selector$20], _extends$1$23({}, vars$1$16, customVars), fns$20);
 };
 
-styler.generateStyles([selector$19], vars$1$15, fns$19);
+styler.generateStyles([selector$20], vars$1$16, fns$20);
 
-var _extends$22 = Object.assign || function (target) {
+var _extends$23 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -8469,26 +9219,26 @@ var _extends$22 = Object.assign || function (target) {
   }return target;
 };
 
-var classes$19 = {
+var classes$20 = {
   component: "pe-toolbar",
   compact: "pe-toolbar--compact",
   title: "pe-toolbar__title",
   indentedTitle: "pe-toolbar__title--indent"
 };
 
-var view$18 = function view(vnode) {
+var view$19 = function view(vnode) {
   var attrs = vnode.attrs;
   var element = attrs.element || "div";
-  var props = _extends$22({}, filterSupportedAttributes(attrs), {
-    class: [classes$19.component, attrs.compact ? classes$19.compact : null, attrs.class].join(" ")
+  var props = _extends$23({}, filterSupportedAttributes(attrs), {
+    class: [classes$20.component, attrs.compact ? classes$20.compact : null, attrs.class].join(" ")
   }, attrs.events ? attrs.events : null);
   var content = attrs.content ? attrs.content : attrs.children || vnode.children;
   return m$1(element, props, [attrs.before, content, attrs.after]);
 };
 
 var toolbar = {
-  theme: customTheme$19, // accepts (selector, vars)
-  view: view$18
+  theme: customTheme$20, // accepts (selector, vars)
+  view: view$19
 };
 
 function createCommonjsModule(fn, module) {
@@ -9938,4 +10688,4 @@ var roboto = [{
 
 styler.add("pe-theme", reset, typography, roboto);
 
-export { card, checkbox, variables as defaultVariables, isTouch, touchStartEvent, touchEndEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, multiple, show, hide, filterSupportedAttributes, prop, mixin, mixinFlex as flex, styler, dialog, fab, icon, iconButton, list, listTile, menu, radioButton, raisedButton, ripple, search, shadow, svg, switchButton, tabs, textfield, toolbar, easing, scrollTo, Timer, variables as vars, button };
+export { card, checkbox, variables as defaultVariables, isTouch, touchStartEvent, touchEndEvent, moveEvent, endEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, multiple, show, hide, filterSupportedAttributes, prop, mixin, mixinFlex as flex, styler, dialog, fab, icon, iconButton, list, listTile, menu, radioButton, raisedButton, ripple, search, shadow, slider, svg, switchButton, tabs, textfield, toolbar, easing, scrollTo, Timer, variables as vars, button };

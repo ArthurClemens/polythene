@@ -1,4 +1,4 @@
-import { touchEndEvent } from "./touch";
+import { touchEndEvent } from "./pointer";
 
 const listeners = {};
 

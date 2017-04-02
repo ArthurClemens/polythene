@@ -21,6 +21,7 @@ import { tests as raisedButtonTests } from "../tests/raised-button/tests";
 import { tests as rippleTests } from "../tests/ripple/tests";
 import { tests as searchTests } from "../tests/search/tests";
 import { tests as shadowTests } from "../tests/shadow/tests";
+import { tests as sliderTests } from "../tests/slider/tests";
 import { tests as svgTests } from "../tests/svg/tests";
 import { tests as switchButtonTests } from "../tests/switch-button/tests";
 import { tests as tabsTests } from "../tests/tabs/tests";
@@ -105,6 +106,11 @@ const pages = [
     path: "/shadow",
     name: "Shadow",
     tests: shadowTests
+  },
+  {
+    path: "/slider",
+    name: "Slider",
+    tests: sliderTests
   },
   {
     path: "/svg",

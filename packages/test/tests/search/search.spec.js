@@ -15,7 +15,7 @@ describe("Search component", () => {
       wrap: false,
       indent: false
     });
-    expect(html).toContain("<div class=\"pe-search pe-search--inset \"><div class=\"pe-search__content\"><div class=\"pe-textfield           pe-textfield--hide-spinner pe-textfield--hide-clear  \"><div class=\"pe-textfield__input-area\"><input type=\"text\" name=\"\" class=\"pe-textfield__input\"></div></div></div></div>");
+    expect(html).toContain("<div class=\"pe-search pe-search--inset \"><div class=\"pe-search__content\"><div class=\"pe-textfield           pe-textfield--hide-spinner pe-textfield--hide-clear  \"><div class=\"pe-textfield__input-area\"><input type=\"text\" class=\"pe-textfield__input\"></div></div></div></div>");
   });
   it("option id", () => {
     const cmp = m(search, {id: "id-x"});

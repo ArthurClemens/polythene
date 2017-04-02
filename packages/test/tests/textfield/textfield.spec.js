@@ -15,7 +15,7 @@ describe("Textfield component", () => {
       wrap: false,
       indent: false
     });
-    expect(html).toContain("<div class=\"pe-textfield           pe-textfield--hide-spinner pe-textfield--hide-clear  \"><div class=\"pe-textfield__input-area\"><input type=\"text\" name=\"\" class=\"pe-textfield__input\"></div></div>");
+    expect(html).toContain("<div class=\"pe-textfield           pe-textfield--hide-spinner pe-textfield--hide-clear  \"><div class=\"pe-textfield__input-area\"><input type=\"text\" class=\"pe-textfield__input\"></div></div>");
   });
   it("option id", () => {
     const cmp = m(textfield, {id: "id-x"});

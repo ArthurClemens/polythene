@@ -156,7 +156,7 @@ m(switchButton, {
 
 
 
-### Composition
+## Composition
 
 Switch is composed from:
 

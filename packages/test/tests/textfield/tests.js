@@ -297,7 +297,7 @@ export const tests = [
     }
   },
   {
-    name: "Option: maxLength",
+    name: "Option: maxlength",
     interactive: true,
     component: {
       view: () => block([

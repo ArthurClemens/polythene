@@ -1,15 +1,15 @@
 exports[`test Button (theme: red) 1`] = `
 "<a tabindex=\"0\" class=
-\"pe-switch-control tests-polythene-themed-button\">
-<div>
+\"pe-button pe-text-button tests-polythene-themed-button\">
+<div class=\"pe-button__content\">
   <div class=\"pe-ripple pe-ripple--constrained\">
     <div class=\"pe-ripple__mask\">
       <div class=\"pe-ripple__waves\"></div>
     </div>
   </div>
-  <div></div>
-  <div></div>
-  <div>
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
     Button
   </div>
 </div></a>
@@ -17,16 +17,16 @@ exports[`test Button (theme: red) 1`] = `
 `;
 
 exports[`test Button 1`] = `
-"<a tabindex=\"0\" class=\"pe-switch-control\">
-<div>
+"<a tabindex=\"0\" class=\"pe-button pe-text-button\">
+<div class=\"pe-button__content\">
   <div class=\"pe-ripple pe-ripple--constrained\">
     <div class=\"pe-ripple__mask\">
       <div class=\"pe-ripple__waves\"></div>
     </div>
   </div>
-  <div></div>
-  <div></div>
-  <div>
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
     Button
   </div>
 </div></a>
@@ -697,6 +697,76 @@ exports[`test Shadow 1`] = `
 "<div class=\"pe-shadow\">
   <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
   <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+</div>
+"
+`;
+
+exports[`test Slider 1`] = `
+"<div class=
+\"pe-slider pe-slider--pin pe-slider--track pe-slider--min pe-slider--ticks\">
+<div class=\"pe-slider__track\">
+    <div class=\"pe-slider__track-part pe-slider__track-value\">
+      <div class=\"pe-slider__track-bar\">
+        <div class=\"pe-slider__track-bar-value\"></div>
+      </div>
+    </div>
+    <div tabindex=\"0\" step=\"10\" class=\"pe-slider__control\"></div>
+    <div style=\"max-width: 100%;\" class=
+    \"pe-slider__track-part pe-slider__track-rest\">
+      <div class=\"pe-slider__track-bar\">
+        <div class=\"pe-slider__track-bar-value\"></div>
+      </div>
+    </div>
+    <div class=\"pe-slider__ticks\">
+      <div class=\"pe-slider__ticks-tick\"></div>
+      <div class=\"pe-slider__ticks-tick\"></div>
+      <div class=\"pe-slider__ticks-tick\"></div>
+      <div class=\"pe-slider__ticks-tick\"></div>
+      <div class=\"pe-slider__ticks-tick\"></div>
+      <div class=\"pe-slider__ticks-tick\"></div>
+      <div class=\"pe-slider__ticks-tick\"></div>
+      <div class=\"pe-slider__ticks-tick\"></div>
+      <div class=\"pe-slider__ticks-tick\"></div>
+      <div class=\"pe-slider__ticks-tick\"></div>
+      <div class=\"pe-slider__ticks-tick\"></div>
+    </div>
+    <div value=\"0\" class=\"pe-slider__pin\"></div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Switch 1`] = `
+"<div class=
+\"pe-control pe-switch-control pe-control--off pe-control--regular\">
+  <input name=\"\" type=\"checkbox\" tabindex=\"-1\" class=
+  \"pe-control__input\"><label class=
+  \"pe-control__form-label\"></label>
+  <div class=\"pe-switch-control__track\">
+    <label class=\"pe-control__form-label\"></label>
+  </div><label class=\"pe-control__form-label\"><a tabindex=\"0\"
+  class=\"pe-button pe-icon-button pe-switch-control__thumb\">
+  <div class=\"pe-button__content\">
+    <label class=\"pe-control__form-label\"></label>
+    <div class=\"pe-button__focus\">
+      <label class=\"pe-control__form-label\"></label>
+    </div>
+    <div class=\"pe-switch-control__knob\">
+      <label class=\"pe-control__form-label\"></label>
+      <div class=\"pe-shadow pe-shadow--animated\">
+        <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-shadow__bottom pe-shadow--z-1\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
+        <div class=\"pe-shadow__top pe-shadow--z-1\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
+      </div>
+    </div>
+  </div></a></label>
+  <div class=\"pe-control__label\">
+    <label class=\"pe-control__form-label\">Label</label>
+  </div>
 </div>
 "
 `;

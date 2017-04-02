@@ -42,7 +42,7 @@ var vars$1 = {
   dense_full_width_font_size_input: 13,
 
   color_light_input_text: rgba(vars.color_light_foreground, vars.blend_light_text_primary),
-  color_light_input_background: rgba(vars.color_light_background), // only used to "remove" autofill color
+  color_light_input_background: "transparent", // only used to "remove" autofill color
   color_light_highlight_text: rgba(vars.color_primary, vars.blend_light_text_primary),
   color_light_input_bottom_border: rgba(vars.color_light_foreground, vars.blend_light_border_light),
   color_light_input_error_text: rgba("221, 44, 0"),
@@ -57,7 +57,7 @@ var vars$1 = {
   color_light_counter_ok_border: rgba(vars.color_primary),
 
   color_dark_input_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
-  color_dark_input_background: rgba(vars.color_dark_background), // only used to "remove" autofill color
+  color_dark_input_background: "transparent", // only used to "remove" autofill color
   color_dark_highlight_text: rgba(vars.color_primary, vars.blend_dark_text_primary),
   color_dark_input_bottom_border: rgba(vars.color_dark_foreground, vars.blend_dark_border_light),
   color_dark_input_error_text: rgba("222, 50, 38"),
@@ -591,9 +591,8 @@ var view = function view(_ref) {
   }), label) : null, m(inputTag, _extends({}, {
     class: classes.input,
     type: type,
-    name: attrs.name || "",
     disabled: attrs.disabled
-  }, !ignoreEvent(attrs, "onclick") ? {
+  }, attrs.name ? { name: attrs.name } : null, !ignoreEvent(attrs, "onclick") ? {
     onclick: function onclick() {
       if (inactive) {
         return;

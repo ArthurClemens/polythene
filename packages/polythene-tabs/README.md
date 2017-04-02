@@ -278,7 +278,7 @@ These options can be grouped into `tabsOpts` and applied to all tabs.
 
 
 
-### Composition
+## Composition
 
 Tabs is composed from:
 

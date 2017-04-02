@@ -35,7 +35,7 @@ exports[`test Colored field 1`] = `
       <div class=\"pe-textfield__input-area\">
           <label class=
           \"pe-textfield__label\">Search</label><input type=\"text\"
-          name=\"\" class=\"pe-textfield__input\">
+          class=\"pe-textfield__input\">
         </div>
       </div><a tabindex=\"-1\" class=
       \"pe-button pe-icon-button pe-button--inactive\">
@@ -101,7 +101,7 @@ exports[`test Option: textfield, buttons 1`] = `
       <div class=\"pe-textfield__input-area\">
           <label class=
           \"pe-textfield__label\">Search</label><input type=\"text\"
-          name=\"\" class=\"pe-textfield__input\">
+          class=\"pe-textfield__input\">
         </div>
       </div><a tabindex=\"-1\" class=
       \"pe-button pe-icon-button pe-button--inactive\">
@@ -167,7 +167,7 @@ exports[`test Option: textfield, buttons, fullWidth 1`] = `
       <div class=\"pe-textfield__input-area\">
           <label class=
           \"pe-textfield__label\">Search</label><input type=\"text\"
-          name=\"\" class=\"pe-textfield__input\">
+          class=\"pe-textfield__input\">
         </div>
       </div><a tabindex=\"-1\" class=
       \"pe-button pe-icon-button pe-button--inactive\">
@@ -233,7 +233,7 @@ exports[`test Theme -- dark theme 1`] = `
       <div class=\"pe-textfield__input-area\">
           <label class=
           \"pe-textfield__label\">Search</label><input type=\"text\"
-          name=\"\" class=\"pe-textfield__input\">
+          class=\"pe-textfield__input\">
         </div>
       </div><a tabindex=\"-1\" class=
       \"pe-button pe-icon-button pe-button--inactive\">
@@ -299,7 +299,7 @@ exports[`test Theme 1`] = `
       <div class=\"pe-textfield__input-area\">
           <label class=
           \"pe-textfield__label\">Search</label><input type=\"text\"
-          name=\"\" class=\"pe-textfield__input\">
+          class=\"pe-textfield__input\">
         </div>
       </div><a tabindex=\"-1\" class=
       \"pe-button pe-icon-button pe-button--inactive\">
