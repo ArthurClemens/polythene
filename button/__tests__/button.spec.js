@@ -1,75 +1,51 @@
+/* global describe, it, expect */
 import m from 'mithril';
-import {matchSnapshot} from '../../scripts/testing';
-import button from 'polythene/button/button';
+import { tests } from './tests.js';
+import { tidy, runSnapshots } from '../../scripts/snapshots';
+import component from 'polythene/button/button';
+
+runSnapshots(tests);
 
 describe('Button component', () => {
-    it('should render with no params', () => {
-        const cmp = m(button);
-        matchSnapshot(cmp);
-    });
-    it('should render params before and after', () => {
-        const cmp = m(button, {
-            before: m('div', 'BEFORE'),
-            after: m('div', 'AFTER')
-        });
-        matchSnapshot(cmp);
-    });
-    it('should render common component params', () => {
-        const cmp = m(button, {
-            id: 'ID',
-            tag: 'button',
-            class: 'site--button'
-        });
-        matchSnapshot(cmp);
-    });
-    it('should render main params', () => {
-        const cmp = m(button, {
-            label: 'Send',
-            borders: true,
-            disabled: true,
-            selected: true,
-            formaction: '/submit',
-            animateOnTap: true,
-            inactive: true
-        });
-        matchSnapshot(cmp);
-    });
-    it('should render button appearance params (on)', () => {
-        const cmp = m(button, {
-            wash: true,
-            ink: true,
-            ripple: true,
-            raised: true,
-            z: 1
-        });
-        matchSnapshot(cmp);
-    });
-    it('should render button appearance params (off)', () => {
-        const cmp = m(button, {
-            wash: false,
-            ink: false,
-            ripple: false,
-            raised: false
-        });
-        matchSnapshot(cmp);
-    });
-    it('should render param tabindex', () => {
-        const cmp = m(button, {
-            tabindex: 1
-        });
-        matchSnapshot(cmp);
-    });
-    it('should render param url', () => {
-        const cmp = m(button, {
-            url: {href: '/'}
-        });
-        matchSnapshot(cmp);
-    });
-    it('should render param content', () => {
-        const cmp = m(button, {
-            content: m('div', 'Send')
-        });
-        matchSnapshot(cmp);
-    });
-
+  it('no options', () => {
+    const cmp = m(component);
+    const html = tidy(cmp);
+    expect(html).toContain('<a class="pe-button pe-button--text');
+  });
+  it('option content', () => {
+    const cmp = m(component, {content: m('span', 'Content')});
+    const html = tidy(cmp);
+    expect(html).toContain('<span>Content</span>');
+  });
+  it('option id', () => {
+    const cmp = m(component, {id: 'id-x'});
+    const html = tidy(cmp);
+    expect(html).toContain('id="id-x"');
+  });
+  it('option class', () => {
+    const cmp = m(component, {class: 'class-x'});
+    const html = tidy(cmp);
+    expect(html).toContain('class-x');
+  });
+  it('option tag', () => {
+    const cmp = m(component, {tag: 'button'});
+    const html = tidy(cmp);
+    expect(html).toContain('<button ');
+    expect(html).toContain('</button>');
+  });
+  it('option tabindex', () => {
+    const cmp = m(component, {tabindex: 3});
+    const html = tidy(cmp);
+    expect(html).toContain('tabindex="3"');
+  });
+  it('option before', () => {
+    const cmp = m(component, {before: m('span', 'Before')});
+    const html = tidy(cmp);
+    expect(html).toContain('<span>Before</span>');
+  });
+  it('option after', () => {
+    const cmp = m(component, {after: m('span', 'After')});
+    const html = tidy(cmp);
+    expect(html).toContain('<span>After</span>');
+  });
 });

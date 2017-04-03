@@ -29,7 +29,7 @@ const CSS_CLASSES = {
     isMenu: 'pe-tabs--menu',
     isSmall: 'pe-tabs--small',
     activeSelected: 'pe-tabs__active-selected',
-    // lookup:
+    // reference:
     label: 'pe-button__label',
 };
 

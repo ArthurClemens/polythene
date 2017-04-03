@@ -1,2 +1,2 @@
-"use strict";function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj}}var _webfontloader=require("polythene/common/webfontloader"),_webfontloader2=_interopRequireDefault(_webfontloader);_webfontloader2.default.add("google","Roboto:400,500,700,400italic:latin");
+'use strict';var _webfontloader=require('polythene/common/webfontloader'),_webfontloader2=_interopRequireDefault(_webfontloader);function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}_webfontloader2.default.add('google','Roboto:400,500,700,400italic:latin');
 //# sourceMappingURL=theme.js.map
