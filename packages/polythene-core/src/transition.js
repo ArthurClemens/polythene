@@ -5,15 +5,15 @@ Generic show/hide transition module
 // defaults
 const SHOW_DURATION = .220; // default dialog timing
 const HIDE_DURATION = .200; // default dialog timing
-const SHOW_DELAY = 0;
-const HIDE_DELAY = 0;
-const TRANSITION = "both";
+const SHOW_DELAY =    0;
+const HIDE_DELAY =    0;
+const TRANSITION =    "both";
 
 // See: transition
-export const show = (opts) =>
+export const show = opts =>
   transition(opts, "show");
 
-export const hide = (opts) =>
+export const hide = opts =>
   transition(opts, "hide");
 
 const getTiming = (opts, state, showAttr, hideAttr, defaultShowTiming, defaultHideTiming) => {
@@ -83,11 +83,22 @@ const transition = (opts, state) => {
       const delay = getDelay(opts, state) * 1000;
       const style = el.style;
 
+      const resetTransition = () => {
+        style.transitionDuration = "0ms";
+        style.transitionDelay = "0ms";
+      };
+
       const beforeTransition = opts.beforeShow && state === "show"
         ? () => {
-          style.transitionDuration = "0ms";
-          style.transitionDelay = "0ms";
+          resetTransition();
           opts.beforeShow();
+        }
+        : null;
+
+      const afterTransition = opts.afterHide && state === "hide"
+        ? () => {
+          resetTransition();
+          opts.afterHide();
         }
         : null;
 
@@ -105,20 +116,14 @@ const transition = (opts, state) => {
         }
       };
 
-      const applyAfterTransition = () => {
-        if (opts.afterHide && state === "hide") {
-          style.transitionDuration = "0ms";
-          style.transitionDelay = "0ms";
-          opts.afterHide();
-        }
-      };
-
       const doTransition = () => {
         applyTransition();
-        setTimeout(() => (
-          applyAfterTransition(),
-          resolve()
-        ), transitionDuration + delay);
+        setTimeout(() => {
+          if (afterTransition) {
+            afterTransition();
+          }
+          resolve();
+        }, transitionDuration + delay);
       };
 
       const maybeDelayTransition = () => {

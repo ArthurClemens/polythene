@@ -19,6 +19,12 @@ const promiseShownBtn = (dialogAttrs, label = "Open") => m(raisedButton, {
   events: { onclick: () => dialog.show(dialogAttrs).then((id) => alert("dialog shown: " + id)) }
 });
 
+dialog.theme(".dialog-tests-blue-dialog", {
+  color_light_content_background: "#2196F3",
+  color_light_body_text: "#fff",
+  border_radius: 5
+});
+
 export const tests = [
   {
     name: "Option: body",
@@ -30,41 +36,48 @@ export const tests = [
       })
     }
   },
-  
   {
-    name: "Option: transition (show)",
+    name: "Option: body as function",
+    interactive: true,
+    exclude: true,
+    component: {
+      view: () => btn(() => ({
+        body: "Hello"
+      }))
+    }
+  },
+  {
+    name: "Option: content",
+    interactive: true,
+    exclude: true,
+    component: {
+      view: () => btn({
+        content: m("div", "Hello")
+      })
+    }
+  },
+  {
+    name: "Themed (color and border radius)",
+    interactive: true,
+    exclude: true,
+    component: {
+      view: () => btn({
+        content: m("div", "Hello"),
+        class: "dialog-tests-blue-dialog"
+      })
+    }
+  },
+  {
+    name: "Option: style",
     interactive: true,
     exclude: true,
     component: {
       view: () => btn({
         body: "Hello",
-        showDuration: 1.0,
-        hideDuration: 1.0,
-        transition: "show"
-      })
-    }
-  },
-  {
-    name: "Option: transition (hide)",
-    interactive: true,
-    exclude: true,
-    component: {
-      view: () => btn({
-        body: "Hello",
-        showDuration: 1.0,
-        hideDuration: 1.0,
-        transition: "hide"
-      })
-    }
-  },
-  {
-    name: "Option: no transition",
-    interactive: true,
-    exclude: true,
-    component: {
-      view: () => btn({
-        body: m.trust(shortText),
-        transition: "none"
+        style: {
+          background: "#fff59d",
+          padding: "1.5rem"
+        }
       })
     }
   },
@@ -115,7 +128,7 @@ export const tests = [
     }
   },
   {
-    name: "Option: fullscreen",
+    name: "Option: fullscreen (and show second dialog on top)",
     interactive: true,
     exclude: true,
     component: {
@@ -196,6 +209,29 @@ export const tests = [
     }
   },
   {
+    name: "Option: transitions",
+    interactive: true,
+    exclude: true,
+    component: {
+      view: () => btn({
+        body: "Hello",
+        transitions: {
+          show: (el) => ({
+            el,
+            showDuration: .5,
+            beforeShow:   () => (el.style.opacity = 0, el.style.transform = "translate3d(0, 20px, 0)"),
+            show:         () => (el.style.opacity = 1, el.style.transform = "translate3d(0, 0px,  0)")
+          }),
+          hide: (el) => ({
+            el,
+            hideDuration: .5,
+            hide:         () => el.style.opacity = 0,
+          })
+        }
+      })
+    }
+  },
+  {
     name: "Option: showDelay, hideDelay, showDuration, hideDuration",
     interactive: true,
     exclude: true,
@@ -206,6 +242,43 @@ export const tests = [
         hideDelay: .4,
         showDuration: 1.0,
         hideDuration: 1.0
+      })
+    }
+  },
+  {
+    name: "Option: transition (show)",
+    interactive: true,
+    exclude: true,
+    component: {
+      view: () => btn({
+        body: "Hello",
+        showDuration: 1.0,
+        hideDuration: 1.0,
+        transition: "show"
+      })
+    }
+  },
+  {
+    name: "Option: transition (hide)",
+    interactive: true,
+    exclude: true,
+    component: {
+      view: () => btn({
+        body: "Hello",
+        showDuration: 1.0,
+        hideDuration: 1.0,
+        transition: "hide"
+      })
+    }
+  },
+  {
+    name: "Option: no transition",
+    interactive: true,
+    exclude: true,
+    component: {
+      view: () => btn({
+        body: m.trust(shortText),
+        transition: "none"
       })
     }
   },

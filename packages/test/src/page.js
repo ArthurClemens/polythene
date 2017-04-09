@@ -4,6 +4,7 @@ import { tidy } from "../scripts/render";
 import toolbar from "polythene-toolbar";
 import iconButton from "polythene-icon-button";
 import dialog from "polythene-dialog";
+import notification from "polythene-notification";
 import iconBack from "mmsvg/google/msvg/navigation/arrow-back";
 
 const generatedHtml = {
@@ -73,6 +74,7 @@ export default (name, tests, previous) => ({
         ])
       ]);
     })),
-    m(dialog)
+    m(dialog),
+    m(notification)
   ]
 });

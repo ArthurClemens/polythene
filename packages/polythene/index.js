@@ -34,6 +34,8 @@ export { default as listTile } from "polythene-list-tile";
 
 export { default as menu } from "polythene-menu";
 
+export { default as notification } from "polythene-notification";
+
 export { default as radioButton } from "polythene-radio-button";
 
 export { default as raisedButton } from "polythene-raised-button";

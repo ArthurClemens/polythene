@@ -17,6 +17,7 @@ const widthStyle = (componentVars, size) => {
     }
   };
 };
+
 export default (selector, componentVars) => [{
   [selector]: [
     componentVars.sizes.map((size) =>

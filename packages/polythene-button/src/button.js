@@ -16,11 +16,6 @@ export const classes = {
   focused:    "pe-button--focus"
 };
 
-const EL_ATTRS = [
-  "formaction",
-  "type"
-];
-
 const view = vnode => {
   const state = vnode.state;
   const attrs = vnode.attrs;
@@ -33,7 +28,7 @@ const view = vnode => {
   const onClickHandler = attrs.events && attrs.events.onclick;
   const props = Object.assign(
     {}, 
-    filterSupportedAttributes(attrs, EL_ATTRS),
+    filterSupportedAttributes(attrs, { add: ["formaction", "type"] }),
     {
       class: [
         attrs.parentClass || classes.component,

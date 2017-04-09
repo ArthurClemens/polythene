@@ -202,9 +202,7 @@ const createSlider = (state, attrs, hasTicks, interactiveTrack) => {
         {},
         {
           class: classes.control,
-          oncreate: ({ dom }) => {
-            state.controlEl = dom;
-          }
+          oncreate: ({ dom }) => state.controlEl = dom
         },
         attrs.disabled
           ? { disabled: true }

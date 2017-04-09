@@ -69,6 +69,7 @@ export default (name, tests, previous) => ({
         ])
       ]);
     })),
-    m(polythene.dialog)
+    m(polythene.dialog),
+    m(polythene.notification)
   ]
 });

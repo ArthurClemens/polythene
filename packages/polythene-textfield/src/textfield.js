@@ -93,9 +93,8 @@ const checkValidity = (state, attrs) => {
 };
 
 // dirty = contains text
-const checkDirty = (state) => (
-  state.isDirty = (state.value.toString().length > 0)
-);
+const checkDirty = state =>
+  state.isDirty = state.value.toString().length > 0;
 
 const updateState = (state, attrs) => (
   checkValidity(state, attrs),
@@ -170,7 +169,7 @@ const view = ({state, attrs}) => {
         attrs.hideValidation ? classes.hideValidation : "",
         attrs.class
       ].join(" "),
-      oncreate: ({dom}) => {
+      oncreate: ({ dom }) => {
         state.el = dom;
         if (!inactive) {
           updateState(state, attrs);
@@ -308,7 +307,7 @@ const view = ({state, attrs}) => {
             }
             : null,
         {
-          oncreate: ({dom}) => {
+          oncreate: ({ dom }) => {
             state.inputEl(dom);
             state.inputEl().value = state.value;
             notifyState(state, attrs);

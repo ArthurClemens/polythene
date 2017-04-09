@@ -165,7 +165,7 @@ const createView = vnode => {
         attrs.size ? widthClass(unifySize(attrs.size)) : null,
         attrs.class
       ].join(" "),
-      oncreate: ({dom}) => {
+      oncreate: ({ dom }) => {
         state.el = dom;
         if (!attrs.permanent) {
           subscribe("resize", update);

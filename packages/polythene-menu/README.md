@@ -3,6 +3,7 @@
 A local popup menu with a list of choices. A menu contains one or more [lists](../polythene-list) with [list tiles](../polythene-list-tile) as menu elements.
 
 
+
 ## Usage
 
 Menus float on top of other things, so they are visually similar to [dialogs](../polythene-dialog). But the behavior of menus is entirely different - instead of being displayed globally, their context is close to the caller (a button or clickable list item). The local nature of menus can be seen when scrolling a page: any open menu will scroll along with the page.
@@ -100,8 +101,6 @@ Alternatively set transition properties in CSS:
   opacity: 1;
 }
 ~~~
-
-
 
 
 ### Callbacks
@@ -241,8 +240,7 @@ const page = {
 
 
 
-
-### Options
+## Options
 
 ### Common component options
 

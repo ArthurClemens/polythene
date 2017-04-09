@@ -192,6 +192,29 @@ export const tests = [
     component: menuItems
   },
   {
+    name: "Notification",
+    exclude: true,
+    component: {
+      view: () => [
+        m(polythene.raisedButton, {
+          label: "Show",
+          events: {
+            onclick: () => polythene.notification.show({
+              title: "This message tells some things using two lines"
+            })
+          }
+        }),
+        m(polythene.raisedButton, {
+          label: "Hide",
+          disabled: polythene.notification.count() === 0,
+          events: {
+            onclick: () => polythene.notification.hide()
+          }
+        })
+      ]
+    }
+  },
+  {
     name: "Radio button",
     component: {
       view: () => {

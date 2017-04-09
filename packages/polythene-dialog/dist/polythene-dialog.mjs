@@ -34,29 +34,21 @@ var layout = (function (selector, componentVars) {
   var _ref;
 
   return [(_ref = {}, _defineProperty(_ref, selector, [flex.layoutCenterCenter, {
-    transitionTimingFunction: "ease-out",
-    transitionProperty: "opacity",
-    // transition-duration set in js
     position: "fixed",
     top: 0,
     left: 0,
     right: 0,
     bottom: 0,
-    "z-index": vars.z_dialog,
+    zIndex: vars.z_dialog,
     height: "100%", // 100vh would make the dialog go beneath Mobile Safari toolbar
     padding: componentVars.padding + "px 40px",
-    opacity: 0,
 
-    "&.pe-dialog--visible": {
-      opacity: 1
-    },
-
-    "&.pe-dialog--fullscreen": {
+    ".pe-dialog--fullscreen": {
       padding: 0,
 
       " .pe-dialog__content": {
-        "border-radius": 0,
-        "max-width": "none",
+        borderRadius: 0,
+        maxWidth: "none",
         height: "100%",
         width: "100%",
 
@@ -67,42 +59,48 @@ var layout = (function (selector, componentVars) {
         " .pe-dialog__body": {
           padding: 0,
           height: "100%",
-          "max-height": "calc(100%)",
+          maxHeight: "calc(100%)",
           border: "none"
         }
       }
     },
 
     " .pe-dialog__header, pe-dialog__body, pe-dialog__header": {
-      "z-index": 1
+      zIndex: 1
     },
 
     " .pe-dialog__content": [flex.layoutVertical, {
       position: "relative",
-      "max-height": "100%",
-      "min-width": 56 * 5 + "px",
-      "max-width": 7 * vars.grid_unit_menu + "px",
-      "border-radius": componentVars.border_radius + "px",
+      maxHeight: "100%",
+      minWidth: 56 * 5 + "px",
+      maxWidth: 7 * vars.grid_unit_menu + "px",
+      borderRadius: componentVars.border_radius + "px",
 
       " > .pe-shadow": {
-        "z-index": -1 // For IE10 to get click events on content
+        zIndex: -1 // For IE10 to get click events on content
       },
 
-      "&.pe-menu__content": {
+      ".pe-menu__content": {
         " .pe-dialog__body": {
           padding: 0,
           border: "none"
         }
+      },
+      " p": {
+        margin: 0
+      },
+      " p + p": {
+        marginTop: "16px"
       }
     }],
 
     " .pe-dialog__title": {
-      "font-size": vars.font_size_title + "px",
-      "line-height": lineHeightTitle + "px",
-      "font-weight": vars.font_weight_medium,
+      fontSize: vars.font_size_title + "px",
+      lineHeight: lineHeightTitle + "px",
+      fontWeight: vars.font_weight_medium,
 
       "& + div": {
-        "margin-top": "16px"
+        marginTop: "16px"
       }
     },
 
@@ -110,7 +108,7 @@ var layout = (function (selector, componentVars) {
       padding: [componentVars.padding - 4, componentVars.padding, componentVars.header_bottom - 4, componentVars.padding].map(function (v) {
         return v + "px";
       }).join(" "),
-      "min-height": componentVars.header_height + "px",
+      minHeight: componentVars.header_height + "px",
 
       " .pe-dialog__title": [mixin.ellipsis(1), {
         width: "100%"
@@ -118,33 +116,31 @@ var layout = (function (selector, componentVars) {
     },
 
     " .pe-dialog__body": [flex.selfStretch, mixin.hairline("border-top"), {
-      "border-top-style": "solid"
+      borderTopStyle: "solid"
     }, mixin.hairline("border-top"), {
-      "border-bottom-style": "solid"
+      borderBottomStyle: "solid"
     }, {
-      padding: [componentVars.padding, componentVars.padding, componentVars.padding - 5, componentVars.padding].map(function (v) {
-        return v + "px";
-      }).join(" "),
-      "overflow-y": "auto",
+      padding: componentVars.padding + "px",
+      overflowY: "auto",
       "-webkit-overflow-scrolling": "touch",
-      "border-width": "1px",
-      "border-style": "solid none",
-      "border-color": "transparent",
+      borderWidth: "1px",
+      borderStyle: "solid none",
+      borderColor: "transparent",
       // initially set max-height; will be overridden by dialog core with actual heights
-      "max-height": "calc(100vh - " + 2 * componentVars.padding + "px - " + (componentVars.header_height + componentVars.footer_height) + "px)"
+      maxHeight: "calc(100vh - " + 2 * componentVars.padding + "px - " + (componentVars.header_height + componentVars.footer_height) + "px)"
     }],
     " .pe-dialog__header + .pe-dialog__body": {
-      "padding-top": 0
+      paddingTop: 0
     },
 
     " .pe-dialog__footer": {
       padding: "2px 8px",
-      "min-height": componentVars.footer_height + "px",
-      "font-size": 0, // remove inline block spacing
+      minHeight: componentVars.footer_height + "px",
+      fontSize: 0, // remove inline block spacing
 
-      "&.pe-dialog__footer--high": {
+      ".pe-dialog__footer--high": {
         // when buttons are stacked vertically
-        "padding-bottom": "8px"
+        paddingBottom: "8px"
       }
     },
 
@@ -153,8 +149,8 @@ var layout = (function (selector, componentVars) {
 
       " .pe-button": {
         height: "36px",
-        "margin-top": "6px",
-        "margin-bottom": "6px",
+        marginTop: "6px",
+        marginBottom: "6px",
         padding: 0
       }
     }]
@@ -172,22 +168,22 @@ function _defineProperty$1(obj, key, value) { if (key in obj) { Object.definePro
 var style = function style(scope, selector, componentVars, tint) {
   return [_defineProperty$1({}, scope + selector, {
     "&.pe-dialog--backdrop": {
-      "background-color": componentVars["color_" + tint + "_backdrop_background"]
+      backgroundColor: componentVars["color_" + tint + "_backdrop_background"]
     },
     " .pe-dialog__content": {
-      "background-color": componentVars["color_" + tint + "_content_background"]
+      backgroundColor: componentVars["color_" + tint + "_content_background"]
     },
     " .pe-dialog__header .pe-dialog__title": {
-      "color": componentVars["color_" + tint + "_title_text"]
+      color: componentVars["color_" + tint + "_title_text"]
     },
     " .pe-dialog__body": {
-      "color": componentVars["color_" + tint + "_body_text"]
+      color: componentVars["color_" + tint + "_body_text"]
     },
     "&.pe-dialog--overflow-top .pe-dialog__body": {
-      "border-top-color": componentVars["color_" + tint + "_body_border"]
+      borderTopColor: componentVars["color_" + tint + "_body_border"]
     },
     "&.pe-dialog--overflow-bottom .pe-dialog__body": {
-      "border-bottom-color": componentVars["color_" + tint + "_body_border"]
+      borderBottomColor: componentVars["color_" + tint + "_body_border"]
     }
   })];
 };
@@ -253,14 +249,12 @@ var updateFooterState = function updateFooterState(state) {
   }
 };
 
-var showDialog = function showDialog(state, opts) {
-  var id = state.id;
-  state.isTransitioning = true;
-  return show(_extends({}, opts, {
-    el: state.el,
-    showClass: classes.visible
-  })).then(function () {
-    state.isTransitioning = false;
+var showInstance = function showInstance(state, opts) {
+  var id = state.instanceId;
+  state.transitioning = true;
+  var transitions = opts.transitions || state.transitions;
+  return show(_extends({}, opts, transitions.show(state.el, opts))).then(function () {
+    state.transitioning = false;
     state.visible = true;
     if (state.didShow) {
       // notify multiple
@@ -270,15 +264,13 @@ var showDialog = function showDialog(state, opts) {
   });
 };
 
-var hideDialog = function hideDialog(state, opts) {
-  var id = state.id;
-  state.isTransitioning = true;
-  return hide(_extends({}, opts, {
-    el: state.el,
-    showClass: classes.visible
-  })).then(function () {
+var hideInstance = function hideInstance(state, opts) {
+  var id = state.instanceId;
+  state.transitioning = true;
+  var transitions = opts.transitions || state.transitions;
+  return hide(_extends({}, opts, transitions.hide(state.el, opts))).then(function () {
     dialog.remove(id);
-    state.isTransitioning = false;
+    state.transitioning = false;
     state.visible = false;
     if (state.didHide) {
       // notify multiple
@@ -291,7 +283,7 @@ var hideDialog = function hideDialog(state, opts) {
 
 var createViewContent = function createViewContent(state, opts) {
   // if flex "self-stretch" is not supported, calculate the maximum height
-  var bodyOpts = opts.body || opts.menu;
+  var bodyOpts = opts.content || opts.body || opts.menu;
   var updateContentOnScroll = opts.updateContentOnScroll || false;
   var ignoreContent = !updateContentOnScroll && state.isScrolling;
   return m("div", {
@@ -304,7 +296,6 @@ var createViewContent = function createViewContent(state, opts) {
     onscroll: function onscroll() {
       state.isScrolling = true;
       updateScrollState(state);
-
       clearTimeout(state.scrollWatchId);
       state.scrollWatchId = setTimeout(function () {
         state.isScrolling = false;
@@ -321,9 +312,9 @@ var createView = function createView(state, opts) {
   };
   var handleEscape = function handleEscape(e) {
     if (opts.fullscreen || opts.modal) return;
-    if (e.which === 27 && !state.isTransitioning) {
+    if (e.which === 27 && !state.transitioning) {
       cleanup();
-      hideDialog(state, _extends({}, opts, {
+      hideInstance(state, _extends({}, opts, {
         hideDelay: 0
       }));
     }
@@ -334,8 +325,8 @@ var createView = function createView(state, opts) {
   };
 
   var element = opts.element || "form";
-  var props = _extends({}, filterSupportedAttributes(opts), {
-    style: null, // set in content
+  var props = _extends({}, filterSupportedAttributes(opts, { remove: ["style"] }), // style set in content, and set by show/hide transition
+  {
     class: [classes.component, opts.fullscreen ? classes.fullscreen : null, opts.backdrop ? classes.hasBackdrop : null, state.topOverflow || opts.borders ? classes.hasTopOverflow : null, state.bottomOverflow || opts.borders ? classes.hasBottomOverflow : null, state.visible ? classes.visible : null, opts.class].join(" "),
     oncreate: function oncreate(_ref2) {
       var dom = _ref2.dom;
@@ -347,7 +338,7 @@ var createView = function createView(state, opts) {
 
       updateScrollState(state);
 
-      showDialog(state, opts).then(function () {
+      showInstance(state, opts).then(function () {
         updateScrollState(state);
         updateFooterState(state);
         if (state.topOverflow || state.bottomOverflow) {
@@ -365,8 +356,8 @@ var createView = function createView(state, opts) {
         // not allowed
         return;
       }
-      if (!state.isTransitioning) {
-        hideDialog(state, _extends({}, opts, {
+      if (!state.transitioning) {
+        hideInstance(state, _extends({}, opts, {
           hideDelay: 0
         }));
       }
@@ -416,7 +407,6 @@ var instance = {
     var opts = attrs.opts;
     var z = opts.z !== undefined ? opts.z : 3; // shadow depth
     vnode.state = _extends(vnode.state, attrs, {
-      id: attrs.instanceId,
       z: z,
       scrollEl: undefined,
       footerEl: undefined,
@@ -428,7 +418,7 @@ var instance = {
       footerHeight: 0,
       el: undefined,
       visible: false,
-      isTransitioning: false
+      transitioning: false
     });
   },
   view: function view(_ref6) {
@@ -437,15 +427,46 @@ var instance = {
 
     // attrs contains {id, opts}
     var opts = typeof attrs.opts === "function" ? attrs.opts() : attrs.opts;
-    if (attrs.hide && !state.isTransitioning) {
-      hideDialog(state, opts);
+    if (attrs.hide && !state.transitioning) {
+      hideInstance(state, opts);
     }
     return createView(state, opts);
   }
 };
 
+var show$1 = function show$$1(el, opts) {
+  return {
+    el: el,
+    showDuration: opts.showDuration || .220,
+    showDelay: opts.showDelay || 0,
+    beforeShow: function beforeShow() {
+      return el.style.opacity = 0;
+    },
+    show: function show$$1() {
+      return el.style.opacity = 1;
+    }
+  };
+};
+
+var hide$1 = function hide$$1(el, opts) {
+  return {
+    el: el,
+    hideDuration: opts.hideDuration || .220,
+    hideDelay: opts.hideDelay || 0,
+    hide: function hide$$1() {
+      return el.style.opacity = 0;
+    }
+  };
+};
+
+var transitions = {
+  show: show$1,
+  hide: hide$1
+};
+
 var dialog = multiple({
   instance: instance,
+  transitions: transitions,
   defaultId: "default_dialog",
   element: ".pe-dialog__holder",
   placeholder: "span.pe-dialog__placeholder",

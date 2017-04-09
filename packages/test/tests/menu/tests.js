@@ -12,7 +12,7 @@ import settingsComponent from "./settings";
 const themeColor = "#2196F3";
 menu.theme(".menu-tests-blue-menu", {
   color_light_background: themeColor,
-  border_radius: "5px"
+  border_radius: 5
 });
 listTile.theme(".menu-tests-blue-menu-list-tile", {
   color_light_title: "#fff",

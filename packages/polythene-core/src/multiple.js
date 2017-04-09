@@ -12,7 +12,7 @@ mOpts:
 - bodyShowClass
 */
 export const multiple = mOpts => {
-  
+
   const items = [];
 
   const itemIndex = id => {
@@ -34,13 +34,20 @@ export const multiple = mOpts => {
     }
   };
 
-  const findItem = (id) => {
+  const findItem = id => {
     // traditional for loop for IE10
     for (let i = 0; i < items.length; i++) {
       if (items[i].instanceId === id) {
         return items[i];
       }
     }
+  };
+
+  const isCancelled = id => {
+    const item = findItem(id);
+    return item !== undefined
+      ? item.cancelled
+      : true;
   };
 
   const next = () => {
@@ -50,7 +57,7 @@ export const multiple = mOpts => {
     }
   };
 
-  const remove = instanceId => {
+  const remove = (instanceId = mOpts.defaultId) => {
     if (mOpts.queue) {
       items.shift();
       // add time to remove the previous instance before drawing the next one
@@ -58,6 +65,15 @@ export const multiple = mOpts => {
     } else {
       removeItem(instanceId);
     }
+  };
+
+  const removeAll = () => {
+    // traditional for loop for IE10
+    for (let i = 0; i < items.length; i++) {
+      items[i].cancelled = true;
+    }
+    items.length = 0;
+    setTimeout(m.redraw);
   };
 
   const setPauseState = (pause, instanceId) => {
@@ -68,9 +84,12 @@ export const multiple = mOpts => {
     }
   };
 
-  const makeItem = (itemOpts, instanceId) => {
+  const makeItem = (itemOpts, instanceId, spawn) => {
     let resolveShow;
     const didShow = () => {
+      if (isCancelled(instanceId)) {
+        return;
+      }
       const opts = (typeof itemOpts === "function")
         ? itemOpts()
         : itemOpts;
@@ -85,6 +104,9 @@ export const multiple = mOpts => {
 
     let resolveHide;
     const didHide = () => {
+      if (isCancelled(instanceId)) {
+        return;
+      }
       const opts = (typeof itemOpts === "function")
         ? itemOpts()
         : itemOpts;
@@ -97,78 +119,70 @@ export const multiple = mOpts => {
       return resolveHide(instanceId);
     };
 
-    const hidePromise = new Promise(resolve =>
-      resolveHide = resolve
-    );
+    const hidePromise = new Promise(resolve => resolveHide = resolve);
 
-    return Object.assign({}, mOpts, {
-      instanceId,
-      opts: itemOpts,
-      show: mOpts.queue ? false : true,
-      showPromise,
-      hidePromise,
-      didShow,
-      didHide
-    });
+    return Object.assign(
+      {},
+      mOpts,
+      {
+        instanceId,
+        spawn,
+        opts: itemOpts,
+        show: mOpts.queue ? false : true,
+        cancelled: false,
+        showPromise,
+        hidePromise,
+        didShow,
+        didHide
+      }
+    );
   };
 
-  return {
-
-    count: () => items.length,
-
-    clear: () => items.length = 0,
-
-    show: (opts, instanceId = mOpts.defaultId) => {
-      let item;
-      if (mOpts.queue) {
-        item = makeItem(opts, instanceId);
+  const show = (opts = {}, spawnOpts = {}) => {
+    const instanceId = spawnOpts.id || mOpts.defaultId;
+    const spawn = spawnOpts.spawn || mOpts.defaultId;
+    let item;
+    if (mOpts.queue) {
+      item = makeItem(opts, instanceId, spawn);
+      items.push(item);
+      if (items.length === 1) {
+        next();
+      }
+    } else {
+      const storedItem = findItem(instanceId);
+      item = makeItem(opts, instanceId, spawn);
+      if (!storedItem) {
         items.push(item);
-        if (items.length === 1) {
-          next();
-        }
       } else {
-        const storedItem = findItem(instanceId);
-        item = makeItem(opts, instanceId);
-        if (!storedItem) {
-          items.push(item);
-        } else {
-          replaceItem(instanceId, item);
-        }
+        replaceItem(instanceId, item);
       }
-      return item.showPromise;
-    },
+    }
+    return item.showPromise;
+  };
 
-    hide: (instanceId = mOpts.defaultId) => {
-      let item;
-      if (mOpts.queue) {
-        if (items.length) {
-          item = items[0];
-        }
-      } else {
-        item = findItem(instanceId);
-      }
-      if (item) {
-        item.hide = true;
-        return item.hidePromise;
-      }
-      return Promise.resolve(instanceId);
-    },
+  const hide = (spawnOpts = {}) => {
+    const instanceId = spawnOpts.id || mOpts.defaultId;
+    const item = mOpts.queue && items.length
+      ? items[0]
+      : findItem(instanceId);
+    if (item) {
+      item.hide = true;
+      return item.hidePromise;
+    }
+    return Promise.resolve(instanceId);
+  };
 
-    remove: (instanceId = mOpts.defaultId) => 
-      remove(instanceId),
+  const clear = () => removeAll();
 
-    pause: (instanceId = mOpts.defaultId) =>
-      setPauseState(true, instanceId),
-
-    unpause: (instanceId = mOpts.defaultId) =>
-      setPauseState(false, instanceId),
-
-    view: () => {
-      const candidates = items.filter(item => item.show);
-      document.body.classList[candidates.length ? "add" : "remove"](mOpts.bodyShowClass);
-      return !candidates.length
-        ? m(mOpts.placeholder) // placeholder because we cannot return null
-        : m(mOpts.element, candidates.map(itemData =>
+  const view = ({ attrs }) => {
+    const spawn = attrs.spawn || mOpts.defaultId;
+    const candidates = items.filter(item => 
+      item.show && item.spawn === spawn
+    );
+    document.body.classList[candidates.length ? "add" : "remove"](mOpts.bodyShowClass);
+    return !candidates.length
+      ? m(mOpts.placeholder) // placeholder because we cannot return null
+      : m(mOpts.element, candidates.map(itemData =>
           m(mOpts.instance, Object.assign(
             {},
             itemData,
@@ -177,7 +191,19 @@ export const multiple = mOpts => {
               key: itemData.key || itemData.instanceId
             }
           ))
-        ));
-    }
+        )
+      );
+  };
+
+  return {
+    count: () => items.length,
+    clear,
+    show,
+    hide,
+    remove,
+    pause: (instanceId = mOpts.defaultId) => setPauseState(true, instanceId),
+    unpause: (instanceId = mOpts.defaultId) => setPauseState(false, instanceId),
+    view,
+    theme: mOpts.instance.theme
   };
 };

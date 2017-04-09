@@ -96,7 +96,7 @@ var baseLayout = (function (selector) {
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var layout = (function (selector, componentVars) {
-  return [_defineProperty$1({}, selector, {
+  return [_defineProperty$1({}, selector, [{
     display: "inline-block",
     minWidth: componentVars.min_width + "px",
     margin: "0 " + componentVars.margin_h + "px",
@@ -131,7 +131,7 @@ var layout = (function (selector, componentVars) {
         padding: componentVars.padding_v - 1 + "px 0"
       }
     }
-  })];
+  }])];
 });
 
 function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -225,8 +225,6 @@ var classes = {
   focused: "pe-button--focus"
 };
 
-var EL_ATTRS = ["formaction", "type"];
-
 var view = function view(vnode) {
   var state = vnode.state;
   var attrs = vnode.attrs;
@@ -235,7 +233,7 @@ var view = function view(vnode) {
   var element = attrs.element || "a";
   var tabIndex = disabled || attrs.inactive ? -1 : attrs.tabindex || 0;
   var onClickHandler = attrs.events && attrs.events.onclick;
-  var props = _extends({}, filterSupportedAttributes(attrs, EL_ATTRS), {
+  var props = _extends({}, filterSupportedAttributes(attrs, { add: ["formaction", "type"] }), {
     class: [attrs.parentClass || classes.component, attrs.selected ? classes.selected : null, disabled ? classes.disabled : null, attrs.inactive ? classes.inactive : null, attrs.borders ? classes.borders : null, state.focus ? classes.focused : null, attrs.class].join(" "),
     tabIndex: tabIndex,
     // handle focus events

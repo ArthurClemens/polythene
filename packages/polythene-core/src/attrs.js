@@ -22,13 +22,11 @@ const defaultAttrs = [
   // see also "Separately handled props" above
   "id",
   "tabindex"
-].reduce(r, {});
+];
 
-export const filterSupportedAttributes = (attrs, componentAttrs = []) => {
-  const supported = {
-    ...defaultAttrs,
-    ...componentAttrs.reduce(r, {})
-  };
+export const filterSupportedAttributes = (attrs, { add: addAttrs = [], remove: removeAttrs = []} = {} ) => {
+  const removeLookup = removeAttrs.reduce(r, {});
+  const supported = defaultAttrs.concat(addAttrs).filter(item => !removeLookup[item]).reduce(r, {});
   return Object.keys(attrs).reduce((acc, key) => (
     supported[key]
       ? acc[key] = attrs[key]

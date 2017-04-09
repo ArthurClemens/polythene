@@ -103,25 +103,32 @@ var requestAnimFrame = function () {
 
 var Timer = function Timer(callback, delaySeconds) {
   var timerId = void 0,
-      start = void 0,
+      startTime = void 0,
       remaining = delaySeconds * 1000;
 
-  this.stop = function () {
-    window.clearTimeout(timerId);
+  var stop = function stop() {
+    return window.clearTimeout(timerId);
   };
 
-  this.pause = function () {
+  var pause = function pause() {
     window.clearTimeout(timerId);
-    remaining -= new Date() - start;
+    remaining -= new Date() - startTime;
   };
 
-  this.resume = function () {
-    start = new Date();
+  var start = function start() {
+    startTime = new Date();
     window.clearTimeout(timerId);
     timerId = window.setTimeout(callback, remaining);
   };
 
-  this.resume();
+  start();
+
+  return {
+    start: start,
+    pause: pause,
+    resume: start,
+    stop: stop
+  };
 };
 
 export { easing, scrollTo, Timer };

@@ -94,7 +94,7 @@ const createMedia = o => {
   const ratio = attrs.ratio || "landscape";
   const origin = attrs.origin || "center";
   const element = attrs.element || "div";
-  const initImage = ({dom}) => {
+  const initImage = ({ dom }) => {
     let img = dom.querySelector("img");
     if (img) {
       img.onload = function() {

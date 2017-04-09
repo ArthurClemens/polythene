@@ -8,64 +8,56 @@ import { shortText, longText, commonDialogProps } from "./shared";
 
 const DIALOG_CONFIRM = "confirm-fullscreen";
 
-const fullscreenToolbarRow = title => {
-  return [
-    m(iconButton, {
-      icon: {
-        msvg: iconClose
-      },
-      events: {
-        onclick: () => {
-          dialog.show(confirmDialogOptsFn, DIALOG_CONFIRM);
-        }
-      }
+const fullscreenToolbarRow = title => [
+  m(iconButton, {
+    icon: {
+      msvg: iconClose
+    },
+    events: {
+      onclick: () => dialog.show(confirmDialogOptsFn, { id: DIALOG_CONFIRM })
+    }
+  }),
+  m("span.flex", title),
+  m(button, {
+    label: "Save",
+    events: {
+      onclick: () => dialog.hide()
+    }
+  })
+];
+
+const fullscreenPane = {
+  view: () => [
+    m(toolbar, {
+      content: fullscreenToolbarRow("New event")
     }),
-    m("span.flex", title),
-    m(button, {
-      label: "Save",
-      events: {
-        onclick: () => {
-          dialog.hide();
-        }
+    m("div", {
+      style: {
+        padding: "21px"
       }
-    })
-  ];
+    }, m.trust(longText))
+  ]
 };
 
-const fullscreenPanelBlock = {
-  view: () => {
-    return [
-      m(toolbar, {
-        content: fullscreenToolbarRow("New event")
-      }),
-      m("div", {
-        style: {
-          padding: "21px"
-        }
-      }, m.trust(longText))
-    ];
-  }
-};
-
-const confirmDialogOptsFn = () => {
-  return Object.assign({}, commonDialogProps, {
+const confirmDialogOptsFn = () =>
+  Object.assign({}, commonDialogProps, {
     class: "demo-dialog",
     footer: [
       m(button, {
         label: "Cancel",
         events: {
-          onclick: () => {
-            dialog.hide(DIALOG_CONFIRM);
-          }
+          onclick: () => dialog.hide({ id: DIALOG_CONFIRM })
         }
       }),
       m(button, {
         label: "Discard",
         events: {
-          onclick: () => {
-            dialog.hide(DIALOG_CONFIRM);
-            dialog.hide();
-          }
+          onclick: () => (
+            // hide confirm dialog
+            dialog.hide({ id: DIALOG_CONFIRM }),
+            // hide main dialog
+            dialog.hide()
+          )
         }
       })
     ],
@@ -73,11 +65,10 @@ const confirmDialogOptsFn = () => {
     modal: true,
     backdrop: true
   });
-};
 
 export default Object.assign({},
   commonDialogProps, {
-    body: m(fullscreenPanelBlock),
+    body: m(fullscreenPane),
     fullscreen: true
   }
 );

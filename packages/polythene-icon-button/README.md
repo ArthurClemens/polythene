@@ -54,7 +54,7 @@ const myIcon = m(icon, {
   msvg: gIconStars
 });
 
-const myIconBtn = m.component(iconBtn, {
+const myIconBtn = m(iconBtn, {
   content: myIcon
 });
 ~~~

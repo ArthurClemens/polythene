@@ -664,7 +664,7 @@ exports[`test Search 1`] = `
     <div class=\"pe-textfield__input-area\">
         <label class=
         \"pe-textfield__label\">Search</label><input type=\"text\"
-        name=\"\" class=\"pe-textfield__input\">
+        class=\"pe-textfield__input\">
       </div>
     </div><a tabindex=\"-1\" class=
     \"pe-button pe-icon-button pe-button--inactive\">
@@ -830,7 +830,7 @@ exports[`test Textfield 1`] = `
   <div class=\"pe-textfield__input-area\">
       <label class=\"pe-textfield__label\">Your name<span class=
       \"pe-textfield__required-indicator\">*</span></label><input type=\"text\"
-      name=\"\" required=\"\" class=\"pe-textfield__input\">
+      required=\"\" class=\"pe-textfield__input\">
     </div>
     <div class=\"pe-textfield__help\">
       Enter the name as written on the credit card

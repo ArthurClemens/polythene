@@ -47,14 +47,15 @@ const updateFooterState = state => {
   }
 };
 
-const showDialog = (state, opts) => {
-  const id = state.id;
-  state.isTransitioning = true;
-  return show(Object.assign({}, opts, {
-    el: state.el,
-    showClass: classes.visible
-  })).then(() => {
-    state.isTransitioning = false;
+const showInstance = (state, opts) => {
+  const id = state.instanceId;
+  state.transitioning = true;
+  const transitions = opts.transitions || state.transitions;
+  return show(Object.assign({},
+    opts,
+    transitions.show(state.el, opts)
+  )).then(() => {
+    state.transitioning = false;
     state.visible = true;
     if (state.didShow) {
       // notify multiple
@@ -64,15 +65,16 @@ const showDialog = (state, opts) => {
   });
 };
 
-const hideDialog = (state, opts) => {
-  const id = state.id;
-  state.isTransitioning = true;
-  return hide(Object.assign({}, opts, {
-    el: state.el,
-    showClass: classes.visible
-  })).then(() => {
+const hideInstance = (state, opts) => {
+  const id = state.instanceId;
+  state.transitioning = true;
+  const transitions = opts.transitions || state.transitions;
+  return hide(Object.assign({},
+    opts,
+    transitions.hide(state.el, opts)
+  )).then(() => {
     dialog.remove(id);
-    state.isTransitioning = false;
+    state.transitioning = false;
     state.visible = false;
     if (state.didHide) {
       // notify multiple
@@ -85,17 +87,16 @@ const hideDialog = (state, opts) => {
 
 const createViewContent = (state, opts) => {
   // if flex "self-stretch" is not supported, calculate the maximum height
-  const bodyOpts = opts.body || opts.menu;
+  const bodyOpts = opts.content || opts.body || opts.menu;
   const updateContentOnScroll = opts.updateContentOnScroll || false;
   const ignoreContent = !updateContentOnScroll && state.isScrolling;
   return m("div", {
     class: classes.body,
-    oncreate: ({dom}) => state.scrollEl = dom,
+    oncreate: ({ dom }) => state.scrollEl = dom,
     onbeforeupdate: !ignoreContent,
     onscroll: () => {
       state.isScrolling = true;
       updateScrollState(state);
-
       clearTimeout(state.scrollWatchId);
       state.scrollWatchId = setTimeout(() => {
         state.isScrolling = false;
@@ -112,9 +113,9 @@ const createView = (state, opts) => {
   };
   const handleEscape = e => {
     if (opts.fullscreen || opts.modal) return;
-    if (e.which === 27 && !state.isTransitioning) {
+    if (e.which === 27 && !state.transitioning) {
       cleanup();
-      hideDialog(state, Object.assign({}, opts, {
+      hideInstance(state, Object.assign({}, opts, {
         hideDelay: 0
       }));
     }
@@ -127,9 +128,8 @@ const createView = (state, opts) => {
   const element = opts.element || "form";
   const props = Object.assign(
     {},
-    filterSupportedAttributes(opts),
+    filterSupportedAttributes(opts, { remove: ["style"] }), // style set in content, and set by show/hide transition
     {
-      style: null, // set in content
       class: [
         classes.component,
         opts.fullscreen ? classes.fullscreen : null,
@@ -139,7 +139,7 @@ const createView = (state, opts) => {
         state.visible ? classes.visible : null,
         opts.class
       ].join(" "),
-      oncreate: ({dom}) => {
+      oncreate: ({ dom }) => {
         state.el = dom;
         // resize: update scroll state ("overflow" borders)
         subscribe("resize", update);
@@ -147,7 +147,7 @@ const createView = (state, opts) => {
 
         updateScrollState(state);
 
-        showDialog(state, opts).then(() => {
+        showInstance(state, opts).then(() => {
           updateScrollState(state);
           updateFooterState(state);
           if (state.topOverflow || state.bottomOverflow) {
@@ -165,8 +165,8 @@ const createView = (state, opts) => {
           // not allowed
           return;
         }
-        if (!state.isTransitioning) {
-          hideDialog(state, Object.assign({}, opts, {
+        if (!state.transitioning) {
+          hideInstance(state, Object.assign({}, opts, {
             hideDelay: 0
           }));
         }
@@ -197,7 +197,7 @@ const createView = (state, opts) => {
           ? m("div",
             {
               class: classes.header,
-              oncreate: ({dom}) => {
+              oncreate: ({ dom }) => {
                 state.headerHeight = dom.scrollHeight;
               }
             },
@@ -208,12 +208,12 @@ const createView = (state, opts) => {
       body,
       opts.fullscreen ? null : opts.footer ? m("div", {
         class: classes.footer,
-        oncreate: ({dom}) => {
+        oncreate: ({ dom }) => {
           state.footerHeight = dom.scrollHeight;
           state.footerEl = dom;
           updateFooterState(state);
         },
-        onupdate: ({dom}) => (
+        onupdate: ({ dom }) => (
           state.footerHeight = dom.scrollHeight,
           updateFooterState(state)
         )
@@ -238,29 +238,28 @@ export default {
       vnode.state,
       attrs,
       {
-        id: attrs.instanceId,
-        z,
-        scrollEl: undefined,
-        footerEl: undefined,
-        topOverflow: false,
+        z, 
+        scrollEl:       undefined,
+        footerEl:       undefined,
+        topOverflow:    false,
         bottomOverflow: false,
-        scrollWatchId: 0,
-        isScrolling: false,
-        headerHeight: 0,
-        footerHeight: 0,
-        el: undefined,
-        visible: false,
-        isTransitioning: false
+        scrollWatchId:  0,
+        isScrolling:    false,
+        headerHeight:   0,
+        footerHeight:   0,
+        el:             undefined,
+        visible:        false,
+        transitioning:  false
       }
     );
   },
-  view: ({state, attrs}) => {
+  view: ({ state, attrs }) => {
     // attrs contains {id, opts}
     const opts = (typeof attrs.opts === "function")
       ? attrs.opts()
       : attrs.opts;
-    if (attrs.hide && !state.isTransitioning) {
-      hideDialog(state, opts);
+    if (attrs.hide && !state.transitioning) {
+      hideInstance(state, opts);
     }
     return createView(state, opts);
   }

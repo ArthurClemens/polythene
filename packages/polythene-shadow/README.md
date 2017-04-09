@@ -10,7 +10,7 @@ Adds a configurable shadow to an element.
 import m from "mithril";
 import shadow from "polythene-shadow";
 
-const myShadow = m.component(shadow);
+const myShadow = m(shadow);
 ~~~
 
 Add the shadow to a Mithril element:
@@ -25,7 +25,7 @@ const myCard = m(".pe-card", [
 To animated the shadow on change, use `animated`:
 
 ~~~javascript
-const myShadow = m.component(shadow, {
+const myShadow = m(shadow, {
   z: vnode.state.z,
   animated: true
 });
