@@ -200,9 +200,9 @@ var layout = (function (selector, componentVars) {
         cursor: "default",
 
         "&, .pe-list-tile__primary, .pe-list-tile__secondary": {
-          " .pe-list-tile__title, .pe-list-tile__subtitle": [mixin.vendorize({
+          " .pe-list-tile__title, .pe-list-tile__subtitle": {
             userSelect: "none"
-          }, vars.prefixes_user_select)]
+          }
         }
       }
     },
@@ -275,9 +275,9 @@ var color = (function (selector, componentVars) {
   return [style([".pe-dark-theme", ".pe-dark-theme "], selector, componentVars, "dark"), // has/inside dark theme
   style(["", ".pe-light-theme", ".pe-light-theme "], selector, componentVars, "light"), // normal, has/inside light theme
 
-  noTouchStyle(["html.pe-no-touch .pe-dark-theme .pe-list-tile--hoverable", "html.pe-no-touch .pe-dark-theme .pe-list-tile--hoverable ", "html.pe-no-touch .pe-dark-theme.pe-list--hoverable ", "html.pe-no-touch .pe-dark-theme .pe-list--hoverable "], selector, componentVars, "dark"), // has/inside dark theme
+  noTouchStyle(["html.pe-no-touch .pe-dark-theme .pe-list-tile--hoverable", "html.pe-no-touch .pe-dark-theme .pe-list-tile--hoverable "], selector, componentVars, "dark"), // has/inside dark theme
 
-  noTouchStyle(["html.pe-no-touch .pe-list-tile--hoverable", "html.pe-no-touch .pe-list-tile--hoverable ", "html.pe-no-touch .pe-list--hoverable ", "html.pe-no-touch .pe-light-theme .pe-list-tile--hoverable", "html.pe-no-touch .pe-light-theme .pe-list-tile--hoverable ", "html.pe-no-touch .pe-light-theme.pe-list--hoverable ", "html.pe-no-touch .pe-light-theme .pe-list--hoverable "], selector, componentVars, "light")];
+  noTouchStyle(["html.pe-no-touch .pe-list-tile--hoverable", "html.pe-no-touch .pe-list-tile--hoverable ", "html.pe-no-touch .pe-light-theme .pe-list-tile--hoverable", "html.pe-no-touch .pe-light-theme .pe-list-tile--hoverable "], selector, componentVars, "light")];
 });
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };

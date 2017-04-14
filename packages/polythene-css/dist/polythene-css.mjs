@@ -4,18 +4,7 @@ import J2c from 'j2c';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 // Mixins for j2c
-
-// Creates j2c vendor key string from vendor list
-// mixin.vendorize({"user-select": "none"}, vars.prefixes_user_select)
-var vendorize = function vendorize(what, prefixes) {
-  var vendorsSel = prefixes.map(function (v) {
-    return "_" + v + "$";
-  }).join("");
-  return _defineProperty({}, vendorsSel, what);
-};
 
 // Centers an item absolutely within relative parent
 // mixin.fit()
@@ -150,8 +139,7 @@ var mixin = {
   fit: fit,
   fontSmoothing: fontSmoothing,
   hairline: hairline,
-  sticky: sticky,
-  vendorize: vendorize
+  sticky: sticky
 };
 
 var layout = [{

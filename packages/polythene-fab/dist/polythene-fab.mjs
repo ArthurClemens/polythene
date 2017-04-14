@@ -1,7 +1,7 @@
 import m from 'mithril';
 import raisedButton from 'polythene-raised-button';
 import icon from 'polythene-icon';
-import { mixin, styler } from 'polythene-css';
+import { styler } from 'polythene-css';
 import { vars } from 'polythene-theme';
 
 var rgba = vars.rgba;
@@ -21,9 +21,8 @@ var vars$1 = {
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var layout = (function (selector, componentVars) {
-  return [_defineProperty({}, selector, [mixin.vendorize({
-    userSelect: "none"
-  }, vars.prefixes_user_select), {
+  return [_defineProperty({}, selector, {
+    userSelect: "none",
     display: "inline-block",
     position: "relative",
     outline: "none",
@@ -51,14 +50,13 @@ var layout = (function (selector, componentVars) {
       borderRadius: "inherit"
     },
 
-    " .pe-button__wash": [mixin.vendorize({
-      transition: "background-color " + vars.animation_duration + " ease-in-out"
-    }, vars.prefixes_transition), {
+    " .pe-button__wash": {
+      transition: "background-color " + vars.animation_duration + " ease-in-out",
       borderRadius: "inherit",
       pointerEvents: "none",
       backgroundColor: "transparent"
-    }]
-  }])];
+    }
+  })];
 });
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }

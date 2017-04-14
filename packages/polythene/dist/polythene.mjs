@@ -107,16 +107,6 @@ var variables = {
   blend_dark_background_disabled: .12,
   blend_dark_overlay_background: .3,
 
-  // css vendor prefixes
-  prefixes_animation: ["o", "moz", "webkit"],
-  prefixes_appearance: ["o", "moz", "ms", "webkit"],
-  prefixes_background_size: ["o", "moz", "webkit"],
-  prefixes_box_shadow: ["moz", "webkit"],
-  prefixes_keyframes: ["o", "moz", "webkit"],
-  prefixes_transform: ["o", "moz", "ms", "webkit"],
-  prefixes_transition: ["o", "moz", "webkit"],
-  prefixes_user_select: ["moz", "ms", "webkit"],
-
   // breakpoints
   breakpoint_small_handset_portrait: 0,
   breakpoint_medium_handset_portrait: 360,
@@ -1850,24 +1840,7 @@ var _extends$4 = Object.assign || function (target) {
   }return target;
 };
 
-function _defineProperty$3(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
-  } else {
-    obj[key] = value;
-  }return obj;
-}
-
 // Mixins for j2c
-
-// Creates j2c vendor key string from vendor list
-// mixin.vendorize({"user-select": "none"}, vars.prefixes_user_select)
-var vendorize = function vendorize(what, prefixes) {
-  var vendorsSel = prefixes.map(function (v) {
-    return "_" + v + "$";
-  }).join("");
-  return _defineProperty$3({}, vendorsSel, what);
-};
 
 // Centers an item absolutely within relative parent
 // mixin.fit()
@@ -2002,8 +1975,7 @@ var mixin = {
   fit: fit,
   fontSmoothing: fontSmoothing,
   hairline: hairline,
-  sticky: sticky,
-  vendorize: vendorize
+  sticky: sticky
 };
 
 var layout$3 = [{
@@ -2564,7 +2536,7 @@ var vars$1$2 = {
   "shadow-down-z-2": "inset 0px 4px 6px -3px rgba(0, 0, 0, 0.25)"
 };
 
-function _defineProperty$4(obj, key, value) {
+function _defineProperty$3(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -2579,7 +2551,7 @@ var shadowDirective = function shadowDirective(dir) {
 };
 
 var layout$4 = function layout(selector, componentVars) {
-  return [_defineProperty$4({}, selector, [mixin.fit(), {
+  return [_defineProperty$3({}, selector, [mixin.fit(), {
     borderRadius: "inherit",
     pointerEvents: "none",
 
@@ -2595,7 +2567,7 @@ var layout$4 = function layout(selector, componentVars) {
   }, [1, 2, 3, 4, 5].map(function (index) {
     var _ref;
 
-    return _ref = {}, _defineProperty$4(_ref, " .pe-shadow__top.pe-shadow--z-" + index, shadowDirective(componentVars["shadow-top-z-" + index])), _defineProperty$4(_ref, " .pe-shadow__bottom.pe-shadow--z-" + index, shadowDirective(componentVars["shadow-bottom-z-" + index])), _ref;
+    return _ref = {}, _defineProperty$3(_ref, " .pe-shadow__top.pe-shadow--z-" + index, shadowDirective(componentVars["shadow-top-z-" + index])), _defineProperty$3(_ref, " .pe-shadow__bottom.pe-shadow--z-" + index, shadowDirective(componentVars["shadow-bottom-z-" + index])), _ref;
   })])];
 };
 
@@ -2663,7 +2635,7 @@ var vars$1$4 = {
   // color_dark:    "inherit"
 };
 
-function _defineProperty$6(obj, key, value) {
+function _defineProperty$5(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -2672,7 +2644,7 @@ function _defineProperty$6(obj, key, value) {
 }
 
 var layout$6 = function layout(selector) {
-  return [_defineProperty$6({}, selector, [mixin.fit(), {
+  return [_defineProperty$5({}, selector, [mixin.fit(), {
     color: "inherit",
     borderRadius: "inherit",
     pointerEvents: "none",
@@ -2951,7 +2923,7 @@ var vars$1$3 = {
   color_dark_background_selected: rgba$2(variables.color_dark_foreground, variables.blend_dark_background_hover)
 };
 
-function _defineProperty$5(obj, key, value) {
+function _defineProperty$4(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -2974,7 +2946,7 @@ var paddingV = function paddingV(top, bottom) {
 };
 
 var layout$5 = function layout(selector, componentVars) {
-  return [_defineProperty$5({}, selector, [mixinFlex.layout, {
+  return [_defineProperty$4({}, selector, [mixinFlex.layout, {
     position: "relative",
     overflow: "hidden",
 
@@ -3092,9 +3064,9 @@ var layout$5 = function layout(selector, componentVars) {
         cursor: "default",
 
         "&, .pe-list-tile__primary, .pe-list-tile__secondary": {
-          " .pe-list-tile__title, .pe-list-tile__subtitle": [mixin.vendorize({
+          " .pe-list-tile__title, .pe-list-tile__subtitle": {
             userSelect: "none"
-          }, variables.prefixes_user_select)]
+          }
         }
       }
     },
@@ -3173,9 +3145,9 @@ var color$3 = function color(selector, componentVars) {
   return [style$2([".pe-dark-theme", ".pe-dark-theme "], selector, componentVars, "dark"), // has/inside dark theme
   style$2(["", ".pe-light-theme", ".pe-light-theme "], selector, componentVars, "light"), // normal, has/inside light theme
 
-  noTouchStyle(["html.pe-no-touch .pe-dark-theme .pe-list-tile--hoverable", "html.pe-no-touch .pe-dark-theme .pe-list-tile--hoverable ", "html.pe-no-touch .pe-dark-theme.pe-list--hoverable ", "html.pe-no-touch .pe-dark-theme .pe-list--hoverable "], selector, componentVars, "dark"), // has/inside dark theme
+  noTouchStyle(["html.pe-no-touch .pe-dark-theme .pe-list-tile--hoverable", "html.pe-no-touch .pe-dark-theme .pe-list-tile--hoverable "], selector, componentVars, "dark"), // has/inside dark theme
 
-  noTouchStyle(["html.pe-no-touch .pe-list-tile--hoverable", "html.pe-no-touch .pe-list-tile--hoverable ", "html.pe-no-touch .pe-list--hoverable ", "html.pe-no-touch .pe-light-theme .pe-list-tile--hoverable", "html.pe-no-touch .pe-light-theme .pe-list-tile--hoverable ", "html.pe-no-touch .pe-light-theme.pe-list--hoverable ", "html.pe-no-touch .pe-light-theme .pe-list--hoverable "], selector, componentVars, "light")];
+  noTouchStyle(["html.pe-no-touch .pe-list-tile--hoverable", "html.pe-no-touch .pe-list-tile--hoverable ", "html.pe-no-touch .pe-light-theme .pe-list-tile--hoverable", "html.pe-no-touch .pe-light-theme .pe-list-tile--hoverable "], selector, componentVars, "light")];
 };
 
 var _extends$1$5 = Object.assign || function (target) {
@@ -3949,7 +3921,7 @@ var vars$1$7 = {
 
 };
 
-function _defineProperty$9(obj, key, value) {
+function _defineProperty$8(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -3958,7 +3930,7 @@ function _defineProperty$9(obj, key, value) {
 }
 
 var baseLayout = function baseLayout(selector) {
-  return [_defineProperty$9({}, selector, {
+  return [_defineProperty$8({}, selector, {
     userSelect: "none",
     outline: "none",
     padding: 0,
@@ -4264,7 +4236,7 @@ var vars$1$6 = {
 
 };
 
-function _defineProperty$8(obj, key, value) {
+function _defineProperty$7(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -4273,7 +4245,7 @@ function _defineProperty$8(obj, key, value) {
 }
 
 var layout$8 = function layout(selector, componentVars) {
-  return [_defineProperty$8({}, selector, {
+  return [_defineProperty$7({}, selector, {
     // don"t set button size to facilitate different icon sizes
     display: "inline-block",
     "vertical-align": "middle",
@@ -4608,7 +4580,7 @@ var vars$1$5 = {
   color_dark_focus_off_opacity: .09
 };
 
-function _defineProperty$7(obj, key, value) {
+function _defineProperty$6(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -4619,7 +4591,7 @@ function _defineProperty$7(obj, key, value) {
 // Returns a style function to be used by checkbox and radio-button
 
 var style$4 = function style(scopes, selector, componentVars, tint) {
-  return [_defineProperty$7({}, scopes.map(function (s) {
+  return [_defineProperty$6({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
     color: componentVars["color_" + tint + "_on"], // override by specifying "color"
@@ -4726,9 +4698,8 @@ var layout$7 = function layout(selector, componentVars, type) {
     margin: 0,
     padding: 0
 
-  }, _defineProperty$1$6(_selector, " input[type=" + type + "].pe-control__input", [mixin.vendorize({
-    appearance: "none"
-  }, variables.prefixes_appearance), {
+  }, _defineProperty$1$6(_selector, " input[type=" + type + "].pe-control__input", {
+    appearance: "none",
     lineHeight: componentVars.label_height + "px",
     // Hide input element
     position: "absolute",
@@ -4740,7 +4711,7 @@ var layout$7 = function layout(selector, componentVars, type) {
     opacity: 0,
     border: "none",
     pointerEvents: "none"
-  }]), _defineProperty$1$6(_selector, " .pe-control__form-label", [mixinFlex.layoutHorizontal, mixinFlex.layoutCenter, {
+  }), _defineProperty$1$6(_selector, " .pe-control__form-label", [mixinFlex.layoutHorizontal, mixinFlex.layoutCenter, {
     position: "relative",
     cursor: "pointer",
     fontSize: componentVars.label_font_size + "px",
@@ -4883,7 +4854,7 @@ var vars$1$8 = {
   color_dark_backdrop_background: "rgba(0, 0, 0, .5)"
 };
 
-function _defineProperty$10(obj, key, value) {
+function _defineProperty$9(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -4896,7 +4867,7 @@ var lineHeightTitle = 24;
 var layout$10 = function layout(selector, componentVars) {
   var _ref;
 
-  return [(_ref = {}, _defineProperty$10(_ref, selector, [mixinFlex.layoutCenterCenter, {
+  return [(_ref = {}, _defineProperty$9(_ref, selector, [mixinFlex.layoutCenterCenter, {
     position: "fixed",
     top: 0,
     left: 0,
@@ -5017,7 +4988,7 @@ var layout$10 = function layout(selector, componentVars) {
         padding: 0
       }
     }]
-  }]), _defineProperty$10(_ref, " body.pe-dialog--open", {
+  }]), _defineProperty$9(_ref, " body.pe-dialog--open", {
     overflow: "hidden",
     left: 0,
     "-webkit-overflow-scrolling": "touch",
@@ -5380,7 +5351,7 @@ var vars$1$10 = {
   color_dark_disabled_text: rgba$8(variables.color_dark_foreground, variables.blend_dark_text_disabled)
 };
 
-function _defineProperty$12(obj, key, value) {
+function _defineProperty$11(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -5392,7 +5363,7 @@ var style$9 = function style(scopes, selector, componentVars, tint) {
   var normalBorder = componentVars["color_" + tint + "_border"] || "transparent";
   var activeBorder = componentVars["color_" + tint + "_active_border"] || normalBorder;
   var disabledBorder = componentVars["color_" + tint + "_disabled_border"] || normalBorder;
-  return [_defineProperty$12({}, scopes.map(function (s) {
+  return [_defineProperty$11({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
     "&, &:link, &:visited": {
@@ -5436,7 +5407,7 @@ var style$9 = function style(scopes, selector, componentVars, tint) {
 var noTouchStyle$3 = function noTouchStyle(scope, selector, componentVars, tint) {
   var normalBorder = componentVars["color_" + tint + "_border"];
   var hoverBorder = componentVars["color_" + tint + "_border"] || normalBorder;
-  return [_defineProperty$12({}, scope + selector + ":hover", {
+  return [_defineProperty$11({}, scope + selector + ":hover", {
     ":not(.pe-button--selected):not(.pe-button--inactive) .pe-button__wash": {
       backgroundColor: componentVars["color_" + tint + "_hover_background"],
       borderColor: hoverBorder
@@ -5606,7 +5577,7 @@ var vars$1$9 = {
   color_dark_background: rgba$7(variables.color_primary)
 };
 
-function _defineProperty$11(obj, key, value) {
+function _defineProperty$10(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -5615,9 +5586,8 @@ function _defineProperty$11(obj, key, value) {
 }
 
 var layout$11 = function layout(selector, componentVars) {
-  return [_defineProperty$11({}, selector, [mixin.vendorize({
-    userSelect: "none"
-  }, variables.prefixes_user_select), {
+  return [_defineProperty$10({}, selector, {
+    userSelect: "none",
     display: "inline-block",
     position: "relative",
     outline: "none",
@@ -5645,14 +5615,13 @@ var layout$11 = function layout(selector, componentVars) {
       borderRadius: "inherit"
     },
 
-    " .pe-button__wash": [mixin.vendorize({
-      transition: "background-color " + variables.animation_duration + " ease-in-out"
-    }, variables.prefixes_transition), {
+    " .pe-button__wash": {
+      transition: "background-color " + variables.animation_duration + " ease-in-out",
       borderRadius: "inherit",
       pointerEvents: "none",
       backgroundColor: "transparent"
-    }]
-  }])];
+    }
+  })];
 };
 
 function _defineProperty$1$10(obj, key, value) {
@@ -5752,7 +5721,7 @@ var vars$1$11 = {
 
 };
 
-function _defineProperty$13(obj, key, value) {
+function _defineProperty$12(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -5768,7 +5737,7 @@ var borderStyle = function borderStyle(componentVars) {
 };
 
 var layout$12 = function layout(selector, componentVars) {
-  return [_defineProperty$13({}, selector, {
+  return [_defineProperty$12({}, selector, {
     padding: componentVars.padding + "px 0",
 
     ".pe-list--header": {
@@ -5917,7 +5886,7 @@ var vars$1$12 = {
   // text colors are set by content, usually list tiles
 };
 
-function _defineProperty$14(obj, key, value) {
+function _defineProperty$13(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -5936,16 +5905,16 @@ var widthClass$1 = function widthClass(size) {
 
 var widthStyle = function widthStyle(componentVars, size) {
   var s = unifySize$1(componentVars, size);
-  return _defineProperty$14({}, "&." + widthClass$1(s), {
+  return _defineProperty$13({}, "&." + widthClass$1(s), {
     width: componentVars.size_factor * s + "px",
     "max-width": "100%"
   });
 };
 
 var layout$13 = function layout(selector, componentVars) {
-  return [_defineProperty$14({}, selector, [componentVars.sizes.map(function (size) {
+  return [_defineProperty$13({}, selector, [componentVars.sizes.map(function (size) {
     return widthStyle(componentVars, size);
-  }), _defineProperty$14({
+  }), _defineProperty$13({
     transitionTimingFunction: "ease-out",
     transitionProperty: "opacity",
     zIndex: variables.z_menu,
@@ -6420,7 +6389,7 @@ var vars$1$13 = {
   color_dark_text: rgba$11(variables.color_dark_foreground, variables.blend_light_text_primary)
 };
 
-function _defineProperty$15(obj, key, value) {
+function _defineProperty$14(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -6429,7 +6398,7 @@ function _defineProperty$15(obj, key, value) {
 }
 
 var layout$14 = function layout(selector, componentVars) {
-  return [_defineProperty$15({}, selector, [mixinFlex.layoutCenter, {
+  return [_defineProperty$14({}, selector, [mixinFlex.layoutCenter, {
     width: componentVars.width + "px",
     minHeight: componentVars.min_height + "px",
     position: "relative",
@@ -7243,7 +7212,7 @@ var _extends$20 = Object.assign || function (target) {
   }return target;
 };
 
-function _defineProperty$17(obj, key, value) {
+function _defineProperty$16(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -7421,7 +7390,7 @@ var view$15 = function view(_ref) {
 
   var content = [m$1("div", {
     class: classes$18.inputArea
-  }, [label ? m$1("label", _defineProperty$17({
+  }, [label ? m$1("label", _defineProperty$16({
     class: classes$18.label
   }, "on" + touchStartEvent, function () {
     if (!inactive) {
@@ -7618,7 +7587,7 @@ var vars$1$14 = {
   color_dark_background: rgba$12(variables.color_dark_background)
 };
 
-function _defineProperty$16(obj, key, value) {
+function _defineProperty$15(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -7631,7 +7600,7 @@ var layout$15 = function layout(selector, componentVars) {
   var full_width_input_padding_v = (componentVars.full_width_height - componentVars.line_height_input) / 2;
   var full_width_input_indent = variables.unit_indent - componentVars.full_width_side_padding - variables.grid_unit_icon_button;
 
-  return [_defineProperty$16({}, selector, [mixinFlex.flex(), {
+  return [_defineProperty$15({}, selector, [mixinFlex.flex(), {
     position: "relative", // necessary when a shadow is added
 
     " .pe-textfield": [mixinFlex.flex(), {
@@ -7878,7 +7847,7 @@ var vars$1$16 = {
   color_dark_disabled_label: variables.rgba(variables.color_dark_foreground, variables.blend_dark_text_disabled)
 };
 
-function _defineProperty$18(obj, key, value) {
+function _defineProperty$17(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -7904,7 +7873,7 @@ var layout$17 = function layout(selector, componentVars) {
   var thumbTouchSize = componentVars.thumb_touch_size;
   var stepsOffset = barOffset - 1;
 
-  return [_defineProperty$18({}, selector, [mixinFlex.layoutHorizontal, mixinFlex.flexGrow(1), {
+  return [_defineProperty$17({}, selector, [mixinFlex.layoutHorizontal, mixinFlex.flexGrow(1), {
     userSelect: "none",
     height: componentVars.height + "px",
     marginTop: (componentVars.height - componentVars.track_height) / 2 + "px ",
@@ -8009,11 +7978,9 @@ var layout$17 = function layout(selector, componentVars) {
       height: componentVars.bar_height + "px"
     },
 
-    " .pe-slider__pin": [mixin.vendorize({
-      transform: "translateZ(0) scale(0) translate(0, 0)"
-    }, variables.prefixes_transform), mixin.vendorize({
-      transformOrigin: "bottom"
-    }, variables.prefixes_transform), mixin.defaultTransition("transform", ".11s"), {
+    " .pe-slider__pin": [mixin.defaultTransition("transform", ".11s"), {
+      transform: "translateZ(0) scale(0) translate(0, 0)",
+      transformOrigin: "bottom",
       position: "absolute",
       zIndex: 1,
       width: componentVars.pin_width + "px",
@@ -8023,9 +7990,8 @@ var layout$17 = function layout(selector, componentVars) {
       margin: "0 " + stepsOffset + "px 0 " + (stepsOffset - componentVars.pin_width / 2 + 1) + "px",
       pointerEvents: "none",
 
-      "&::before": [mixin.vendorize({
-        transform: "rotate(-45deg)"
-      }, variables.prefixes_transform), {
+      "&::before": {
+        transform: "rotate(-45deg)",
         content: "\"\"",
         position: "absolute",
         top: 0,
@@ -8034,7 +8000,7 @@ var layout$17 = function layout(selector, componentVars) {
         height: componentVars.pin_width + "px",
         borderRadius: "50% 50% 50% 0",
         backgroundColor: "inherit"
-      }],
+      },
       "&::after": {
         content: "attr(value)",
         position: "absolute",
@@ -8050,28 +8016,27 @@ var layout$17 = function layout(selector, componentVars) {
     }],
 
     "&.pe-slider--active:not(.pe-slider--ticks)": {
-      " .pe-slider__control": [mixin.vendorize({
-        transform: "scale(" + componentVars.active_thumb_scale + ")"
-      }, variables.prefixes_transform), {
+      " .pe-slider__control": {
+        transform: "scale(" + componentVars.active_thumb_scale + ")",
         borderWidth: scaledBorderWidth + "px"
-      }],
+      },
       // left side
-      " .pe-slider__track-value .pe-slider__track-bar-value": [mixin.vendorize({
+      " .pe-slider__track-value .pe-slider__track-bar-value": {
         transform: "translateX(" + -scaledThumbDiff + "px)"
-      }, variables.prefixes_transform)],
+      },
       // right side
-      " .pe-slider__track-rest .pe-slider__track-bar-value": [mixin.vendorize({
+      " .pe-slider__track-rest .pe-slider__track-bar-value": {
         transform: "translateX(" + scaledThumbDiff + "px)"
-      }, variables.prefixes_transform)]
+      }
     },
 
     "&.pe-slider--pin.pe-slider--active, &.pe-slider--pin.pe-slider--focus": {
-      " .pe-slider__pin": [mixin.vendorize({
+      " .pe-slider__pin": {
         transform: "translateZ(0) scale(1) translate(0, -24px)"
-      }, variables.prefixes_transform)],
-      " .pe-slider__control": [mixin.vendorize({
+      },
+      " .pe-slider__control": {
         transform: "scale(" + componentVars.active_pin_thumb_scale + ")"
-      }, variables.prefixes_transform)]
+      }
     },
 
     "&:not(.pe-slider--disabled)": {
@@ -8086,11 +8051,10 @@ var layout$17 = function layout(selector, componentVars) {
     },
 
     "&.pe-slider--disabled": {
-      " .pe-slider__control": [mixin.vendorize({
-        transform: "scale(" + componentVars.disabled_thumb_scale + ")"
-      }, variables.prefixes_transform), {
+      " .pe-slider__control": {
+        transform: "scale(" + componentVars.disabled_thumb_scale + ")",
         borderWidth: 0
-      }],
+      },
       "&.pe-slider--min": {
         " .pe-slider__control:after": [positionBorder(thumbSize, 1 / componentVars.disabled_thumb_scale * componentVars.thumb_border_width)]
       }
@@ -8594,7 +8558,7 @@ var vars$2 = _extends$3$1({}, vars$1$13, {
   color_dark_background: rgba$15(variables.color_dark_background)
 });
 
-function _defineProperty$19(obj, key, value) {
+function _defineProperty$18(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -8623,9 +8587,9 @@ var tabletStyle = function tabletStyle(componentVars) {
 var layout$18 = function layout(selector, componentVars) {
   var _ref2;
 
-  return [(_ref2 = {}, _defineProperty$19(_ref2, selector, {
+  return [(_ref2 = {}, _defineProperty$18(_ref2, selector, {
     minHeight: componentVars.min_height
-  }), _defineProperty$19(_ref2, "@media (min-width: " + variables.breakpoint_small_handset_landscape + "px)", _defineProperty$19({}, selector, tabletStyle(componentVars))), _ref2)];
+  }), _defineProperty$18(_ref2, "@media (min-width: " + variables.breakpoint_small_handset_landscape + "px)", _defineProperty$18({}, selector, tabletStyle(componentVars))), _ref2)];
 };
 
 function _defineProperty$1$17(obj, key, value) {
@@ -8850,7 +8814,7 @@ var vars$3 = _extends$3$2({}, vars$1$5, {
 
 });
 
-function _defineProperty$20(obj, key, value) {
+function _defineProperty$19(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -8917,7 +8881,7 @@ var customSize = function customSize(componentVars, size) {
 };
 
 var layout$1$3 = function layout$1(selector, componentVars) {
-  return layout$7(selector, componentVars, "checkbox").concat([_defineProperty$20({}, selector, {
+  return layout$7(selector, componentVars, "checkbox").concat([_defineProperty$19({}, selector, {
     " .pe-switch-control__track": [transition$1(componentVars, "background, opacity"), {
       position: "absolute",
       left: 0
@@ -8959,8 +8923,6 @@ function _defineProperty$1$18(obj, key, value) {
     obj[key] = value;
   }return obj;
 }
-
-// import { color as selectionControlColor } from "polythene-selection-control";
 
 var style$17 = function style(scopes, selector, componentVars, tint) {
   return [_defineProperty$1$18({}, scopes.map(function (s) {
@@ -9026,14 +8988,6 @@ var color$18 = function color$$1(selector, componentVars) {
   return [style$17([".pe-dark-theme", ".pe-dark-theme "], selector, componentVars, "dark"), // has/inside dark theme
   style$17(["", ".pe-light-theme", ".pe-light-theme "], selector, componentVars, "light")];
 };
-
-// export default (selector, componentVars) =>
-//   [selectionControlColor(selector, componentVars)].concat(
-//     [
-//       style("",                selector, componentVars, "light"),
-//       style(".pe-dark-theme ", selector, componentVars, "dark" ) // inside dark theme
-//     ]
-//   );
 
 var _extends$2$2 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
@@ -9131,7 +9085,7 @@ var vars$3$1 = {
   color_dark_icon: vars$1$6.color_dark
 };
 
-function _defineProperty$21(obj, key, value) {
+function _defineProperty$20(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -9140,9 +9094,8 @@ function _defineProperty$21(obj, key, value) {
 }
 
 var layout$19 = function layout(selector, componentVars) {
-  return [_defineProperty$21({}, selector, [mixin.vendorize({
-    userSelect: "none"
-  }, variables.prefixes_user_select), {
+  return [_defineProperty$20({}, selector, {
+    userSelect: "none",
     transform: "translate3d(0,0,0)",
     "-webkit-overflow-scrolling": "touch",
 
@@ -9241,9 +9194,8 @@ var layout$19 = function layout(selector, componentVars) {
       }
     },
 
-    " .pe-tabs__row": [mixinFlex.layoutHorizontal, mixin.vendorize({
-      userSelect: "none"
-    }, variables.prefixes_user_select), {
+    " .pe-tabs__row": [mixinFlex.layoutHorizontal, {
+      userSelect: "none",
       position: "relative",
       whiteSpace: "nowrap",
 
@@ -9258,9 +9210,8 @@ var layout$19 = function layout(selector, componentVars) {
 
     " .pe-tabs__scroll-button-offset": [mixinFlex.flex(), mixinFlex.flexIndex("none")],
 
-    " .pe-tabs__tab": [mixinFlex.flex(), mixinFlex.flexIndex("none"), mixin.vendorize({
-      userSelect: "none"
-    }, variables.prefixes_user_select), mixin.defaultTransition("color"), {
+    " .pe-tabs__tab": [mixinFlex.flex(), mixinFlex.flexIndex("none"), mixin.defaultTransition("color"), {
+      userSelect: "none",
       margin: 0,
       borderRadius: 0,
       height: componentVars.tab_height + "px",
@@ -9355,7 +9306,7 @@ var layout$19 = function layout(selector, componentVars) {
     //     minWidth: componentVars.tab_min_width_tablet + "px"
     //   }
     // }
-  }])];
+  })];
 };
 
 function _defineProperty$1$19(obj, key, value) {
@@ -9824,7 +9775,7 @@ var vars$1$17 = {
   color_dark_background: "#37474F" // blue-gray-800
 };
 
-function _defineProperty$22(obj, key, value) {
+function _defineProperty$21(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -9833,7 +9784,7 @@ function _defineProperty$22(obj, key, value) {
 }
 
 var layout$20 = function layout(selector, componentVars) {
-  return [_defineProperty$22({}, selector, [mixinFlex.layout, mixinFlex.layoutHorizontal, mixinFlex.layoutCenter, {
+  return [_defineProperty$21({}, selector, [mixinFlex.layout, mixinFlex.layoutHorizontal, mixinFlex.layoutCenter, {
     height: componentVars.height + "px",
     fontSize: componentVars.font_size + "px",
     lineHeight: componentVars.line_height + "em",

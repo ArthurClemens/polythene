@@ -102,16 +102,6 @@ export default {
   blend_dark_background_disabled: .12,
   blend_dark_overlay_background: .3,
 
-  // css vendor prefixes
-  prefixes_animation: ["o", "moz", "webkit"],
-  prefixes_appearance: ["o", "moz", "ms", "webkit"],
-  prefixes_background_size: ["o", "moz", "webkit"],
-  prefixes_box_shadow: ["moz", "webkit"],
-  prefixes_keyframes: ["o", "moz", "webkit"],
-  prefixes_transform: ["o", "moz", "ms", "webkit"],
-  prefixes_transition: ["o", "moz", "webkit"],
-  prefixes_user_select: ["moz", "ms", "webkit"],
-
   // breakpoints
   breakpoint_small_handset_portrait: 0,
   breakpoint_medium_handset_portrait: 360,

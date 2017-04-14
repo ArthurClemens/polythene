@@ -1,47 +1,40 @@
-import { mixin } from "polythene-css";
 import { vars } from "polythene-theme";
 
 export default (selector, componentVars) => [{
-  [selector]: [
-    mixin.vendorize({
-      userSelect: "none"
-    }, vars.prefixes_user_select), {
-      display: "inline-block",
+  [selector]: {
+    userSelect: "none",
+    display: "inline-block",
+    position: "relative",
+    outline: "none",
+    cursor: "pointer",
+    padding: 0,
+    border: "none",
+
+    " .pe-button__content": {
       position: "relative",
-      outline: "none",
-      cursor: "pointer",
-      padding: 0,
-      border: "none",
+      width: componentVars.size_regular + "px",
+      height: componentVars.size_regular + "px",
+      borderRadius: "50%",
+      padding: componentVars.padding_regular + "px",
+    },
 
+    ".pe-fab--mini": {
       " .pe-button__content": {
-        position: "relative",
-        width: componentVars.size_regular + "px",
-        height: componentVars.size_regular + "px",
-        borderRadius: "50%",
-        padding: componentVars.padding_regular + "px",
-      },
+        width: componentVars.size_mini + "px",
+        height: componentVars.size_mini + "px",
+        padding: ((componentVars.size_mini - vars.unit_icon_size) / 2) + "px"
+      }
+    },
 
-      ".pe-fab--mini": {
-        " .pe-button__content": {
-          width: componentVars.size_mini + "px",
-          height: componentVars.size_mini + "px",
-          padding: ((componentVars.size_mini - vars.unit_icon_size) / 2) + "px"
-        }
-      },
+    " .pe-ripple": {
+      borderRadius: "inherit"
+    },
 
-      " .pe-ripple": {
-        borderRadius: "inherit"
-      },
-
-      " .pe-button__wash": [
-        mixin.vendorize({
-          transition: "background-color " + vars.animation_duration + " ease-in-out"
-        }, vars.prefixes_transition), {
-          borderRadius: "inherit",
-          pointerEvents: "none",
-          backgroundColor: "transparent"
-        }
-      ]
+    " .pe-button__wash": {
+      transition: "background-color " + vars.animation_duration + " ease-in-out",
+      borderRadius: "inherit",
+      pointerEvents: "none",
+      backgroundColor: "transparent"
     }
-  ]
+  }
 }];

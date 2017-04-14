@@ -158,13 +158,10 @@ export default (selector, componentVars) => {
         },
 
         " .pe-slider__pin": [
-          mixin.vendorize({
-            transform: "translateZ(0) scale(0) translate(0, 0)"
-          }, vars.prefixes_transform),
-          mixin.vendorize({
-            transformOrigin: "bottom"
-          }, vars.prefixes_transform),
-          mixin.defaultTransition("transform", ".11s"), {
+          mixin.defaultTransition("transform", ".11s"),
+          {
+            transform: "translateZ(0) scale(0) translate(0, 0)",
+            transformOrigin: "bottom",
             position: "absolute",
             zIndex: 1,
             width: componentVars.pin_width + "px",
@@ -174,20 +171,17 @@ export default (selector, componentVars) => {
             margin: "0 " + stepsOffset + "px 0 " + (stepsOffset - componentVars.pin_width / 2 + 1) + "px",
             pointerEvents: "none",
 
-            "&::before": [
-              mixin.vendorize({
-                transform: "rotate(-45deg)"
-              }, vars.prefixes_transform), {
-                content: "\"\"",
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: componentVars.pin_width + "px",
-                height: componentVars.pin_width + "px",
-                borderRadius: "50% 50% 50% 0",
-                backgroundColor: "inherit"
-              }
-            ],
+            "&::before": {
+              transform: "rotate(-45deg)",
+              content: "\"\"",
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: componentVars.pin_width + "px",
+              height: componentVars.pin_width + "px",
+              borderRadius: "50% 50% 50% 0",
+              backgroundColor: "inherit"
+            },
             "&::after": {
               content: "attr(value)",
               position: "absolute",
@@ -204,38 +198,27 @@ export default (selector, componentVars) => {
         ],
 
         "&.pe-slider--active:not(.pe-slider--ticks)": {
-          " .pe-slider__control": [
-            mixin.vendorize({
-              transform: "scale(" + componentVars.active_thumb_scale + ")"
-            }, vars.prefixes_transform), {
-              borderWidth: scaledBorderWidth + "px"
-            }
-          ],
+          " .pe-slider__control": {
+            transform: "scale(" + componentVars.active_thumb_scale + ")",
+            borderWidth: scaledBorderWidth + "px"
+          },
           // left side
-          " .pe-slider__track-value .pe-slider__track-bar-value": [
-            mixin.vendorize({
-              transform: "translateX(" + (-scaledThumbDiff) + "px)"
-            }, vars.prefixes_transform)
-          ],
+          " .pe-slider__track-value .pe-slider__track-bar-value": {
+            transform: "translateX(" + (-scaledThumbDiff) + "px)"
+          },
           // right side
-          " .pe-slider__track-rest .pe-slider__track-bar-value": [
-            mixin.vendorize({
-              transform: "translateX(" + (scaledThumbDiff) + "px)"
-            }, vars.prefixes_transform)
-          ]
+          " .pe-slider__track-rest .pe-slider__track-bar-value": {
+            transform: "translateX(" + (scaledThumbDiff) + "px)"
+          }
         },
 
         "&.pe-slider--pin.pe-slider--active, &.pe-slider--pin.pe-slider--focus": {
-          " .pe-slider__pin": [
-            mixin.vendorize({
-              transform: "translateZ(0) scale(1) translate(0, -24px)"
-            }, vars.prefixes_transform)
-          ],
-          " .pe-slider__control": [
-            mixin.vendorize({
-              transform: "scale(" + componentVars.active_pin_thumb_scale + ")"
-            }, vars.prefixes_transform)
-          ]
+          " .pe-slider__pin": {
+            transform: "translateZ(0) scale(1) translate(0, -24px)"
+          },
+          " .pe-slider__control": {
+            transform: "scale(" + componentVars.active_pin_thumb_scale + ")"
+          }
         },
 
         "&:not(.pe-slider--disabled)": {
@@ -250,13 +233,10 @@ export default (selector, componentVars) => {
         },
 
         "&.pe-slider--disabled": {
-          " .pe-slider__control": [
-            mixin.vendorize({
-              transform: "scale(" + componentVars.disabled_thumb_scale + ")"
-            }, vars.prefixes_transform), {
-              borderWidth: 0
-            }
-          ],
+          " .pe-slider__control": {
+            transform: "scale(" + componentVars.disabled_thumb_scale + ")",
+            borderWidth: 0
+          },
           "&.pe-slider--min": {
             " .pe-slider__control:after": [
               positionBorder(thumbSize, 1 / componentVars.disabled_thumb_scale * componentVars.thumb_border_width)

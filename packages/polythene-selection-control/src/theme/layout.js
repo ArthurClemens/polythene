@@ -42,23 +42,20 @@ export default (selector, componentVars, type) => [{
     margin: 0,
     padding: 0,
 
-    [" input[type=" + type + "].pe-control__input"]: [
-      mixin.vendorize({
-        appearance: "none"
-      }, vars.prefixes_appearance), {
-        lineHeight: componentVars.label_height + "px",
-        // Hide input element
-        position: "absolute",
-        zIndex: "-1",
-        width: 0,
-        height: 0,
-        margin: 0,
-        padding: 0,
-        opacity: 0,
-        border: "none",
-        pointerEvents: "none"
-      }
-    ],
+    [" input[type=" + type + "].pe-control__input"]: {
+      appearance: "none",
+      lineHeight: componentVars.label_height + "px",
+      // Hide input element
+      position: "absolute",
+      zIndex: "-1",
+      width: 0,
+      height: 0,
+      margin: 0,
+      padding: 0,
+      opacity: 0,
+      border: "none",
+      pointerEvents: "none"
+    },
 
     " .pe-control__form-label": [
       flex.layoutHorizontal,

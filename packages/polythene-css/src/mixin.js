@@ -2,15 +2,6 @@
 
 import { vars } from "polythene-theme";
 
-// Creates j2c vendor key string from vendor list
-// mixin.vendorize({"user-select": "none"}, vars.prefixes_user_select)
-const vendorize = (what, prefixes) => {
-  const vendorsSel = prefixes.map((v) => ("_" + v + "$")).join("");
-  return {
-    [vendorsSel]: what
-  };
-};
-
 // Centers an item absolutely within relative parent
 // mixin.fit()
 const fit = (offset = 0) => {
@@ -132,6 +123,5 @@ export default {
   fontSmoothing,
   hairline,
   sticky,
-  vendorize
 };
 

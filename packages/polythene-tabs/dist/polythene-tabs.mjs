@@ -57,9 +57,8 @@ var vars$3 = {
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var layout = (function (selector, componentVars) {
-  return [_defineProperty({}, selector, [mixin.vendorize({
-    userSelect: "none"
-  }, vars.prefixes_user_select), {
+  return [_defineProperty({}, selector, {
+    userSelect: "none",
     transform: "translate3d(0,0,0)",
     "-webkit-overflow-scrolling": "touch",
 
@@ -158,9 +157,8 @@ var layout = (function (selector, componentVars) {
       }
     },
 
-    " .pe-tabs__row": [flex.layoutHorizontal, mixin.vendorize({
-      userSelect: "none"
-    }, vars.prefixes_user_select), {
+    " .pe-tabs__row": [flex.layoutHorizontal, {
+      userSelect: "none",
       position: "relative",
       whiteSpace: "nowrap",
 
@@ -175,9 +173,8 @@ var layout = (function (selector, componentVars) {
 
     " .pe-tabs__scroll-button-offset": [flex.flex(), flex.flexIndex("none")],
 
-    " .pe-tabs__tab": [flex.flex(), flex.flexIndex("none"), mixin.vendorize({
-      userSelect: "none"
-    }, vars.prefixes_user_select), mixin.defaultTransition("color"), {
+    " .pe-tabs__tab": [flex.flex(), flex.flexIndex("none"), mixin.defaultTransition("color"), {
+      userSelect: "none",
       margin: 0,
       borderRadius: 0,
       height: componentVars.tab_height + "px",
@@ -272,7 +269,7 @@ var layout = (function (selector, componentVars) {
     //     minWidth: componentVars.tab_min_width_tablet + "px"
     //   }
     // }
-  }])];
+  })];
 });
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }

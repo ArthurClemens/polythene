@@ -163,11 +163,9 @@ export default (selector, componentVars) => [{
           cursor: "default",
 
           "&, .pe-list-tile__primary, .pe-list-tile__secondary": {
-            " .pe-list-tile__title, .pe-list-tile__subtitle": [
-              mixin.vendorize({
-                userSelect: "none"
-              }, vars.prefixes_user_select)
-            ]
+            " .pe-list-tile__title, .pe-list-tile__subtitle": {
+              userSelect: "none"
+            }
           }
         }
       },
