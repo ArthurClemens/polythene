@@ -19,9 +19,51 @@ m(raisedButton, {
 
 
 
+## Appearance
+
+### Styling
+
+Below are examples how to change the raised button appearance, either with a theme or with CSS.
+
+You can find more information about theming in [Theme](../polythene-theme).
+
+#### Themed component
+
+~~~javascript
+raisedButton.theme(".themed-raised-button", {
+  color_light_background: "#FF1744",
+  color_light_text:       "#fff"
+});
+
+m(raisedButton, {
+  class: "themed-raised-button",
+  // ... other options
+});
+~~~
+
+#### CSS
+
+Change CSS using the CSS Classes at the bottom of this page.
+
+#### Colors
+
+Colors can be set using `style`.
+
+~~~javascript
+m(raisedButton, {
+  style: {
+    backgroundColor: "#EF6C00",
+    color: "#fff"
+  },
+  // ... other options
+});
+~~~
+
+
+
 ## Options
 
-All options for [Button](../polythene-button) also apply to Raised button, with additionally:
+All options for [Button](../polythene-button) also apply to Raised button, and additionally:
 
 ### Raised button options
 
@@ -48,5 +90,4 @@ Raised button is composed from:
 | **Element**    | **Key**     |  **Class** |
 | -------------- | ----------- | --------------- |
 | Component      | component   | `pe-button pe-text-button pe-raised-button` |
-
 

@@ -26,7 +26,6 @@ FAB's default colors are:
 * Icon color: white; change this by setting the `color` style
 
 
-
 ### Styling
 
 Below are examples how to change the FAB appearance, either with a theme or with CSS.
@@ -45,7 +44,7 @@ fab.theme(".themed-fab", {
 
 m(fab, {
   class: "themed-fab",
-  icon: { msvg: gIconStars }
+  // ... other options
 });
 ~~~
 
@@ -62,7 +61,8 @@ m(fab, {
   style: {
     backgroundColor: "#EF6C00",
     color: "#fff"
-  }
+  },
+  // ... other options
 });
 ~~~
 

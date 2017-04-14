@@ -116,6 +116,21 @@ export const tests = [
       class: "tests-list-tile-themed-list-tile"
     }
   },
+  {
+    name: "Option: style (colors)",
+    component: listTile,
+    attrs: {
+      title: "Ancillary Justice",
+      front: m(icon, {
+        msvg: iconStars,
+        type: "medium"
+      }),
+      style: {
+        color: "#fff",
+        backgroundColor: "#EF6C00"
+      }
+    }
+  },
 
   // Combined 
   

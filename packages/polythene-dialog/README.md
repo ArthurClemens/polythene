@@ -206,7 +206,7 @@ dialog.theme(".blue-dialog", {
 dialog.show({
   class: "blue-dialog",
   // ... other options
-})
+});
 ~~~
 
 #### CSS

@@ -47,7 +47,7 @@ const myToolbar = m(toolbar, {}, [
 
 
 
-## Variations
+## Appearance
 
 ### Title
 
@@ -75,15 +75,54 @@ const toolbarRow = [
 
 m("div",
   {
-    style: {
-      position: "relative"
-    }
-  }, [
+    style: { position: "relative" }
+  },
+  [
     m(toolbar, toolbarRow),
     m(shadow)
   ])
 });
 ~~~
+
+### Styling
+
+Below are examples how to change the toolbar appearance, either with a theme or with CSS.
+
+You can find more information about theming in [Theme](../polythene-theme).
+
+#### Themed component
+
+~~~javascript
+toolbar.theme(".themed-toolbar", {
+  color_dark_background: "#00c853"
+});
+
+m(svg, {
+  class: "themed-toolbar",
+  // ... other options
+});
+~~~
+
+#### CSS
+
+Change CSS using the CSS Classes at the bottom of this page.
+
+#### Colors
+
+Colors can be set using `style`.
+
+~~~javascript
+m(toolbar, {
+  style: {
+    backgroundColor: "#EF6C00",
+    color: "#fff",
+    height: "72px"
+  },
+  // ... other options
+});
+~~~
+
+
 
 ## Options
 
@@ -119,6 +158,4 @@ m("div",
 | ------------------ | ----------------- | --------------- |
 | Compact toolbar    | compact           | `pe-toolbar--compact` |
 | Indented title     | indentedTitle     | `pe-toolbar__title--indent` |
-
-
 

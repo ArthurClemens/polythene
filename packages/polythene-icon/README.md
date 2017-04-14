@@ -6,7 +6,14 @@ Displays an icon (image or [SVG](../polythene-svg)).
 
 ## Usage
 
-### mSVG (recommended)
+Several options are available to set the icon asset:
+
+* mSVG
+* SVG file
+* Image file
+
+
+### Using mSVG
 
 mSVG is an SVG string wrapped around `m.trust()` and stored as a Javascript file. This way the SVG can be imported just like any other module, without having to resort to bundler plugins.
 
@@ -57,10 +64,50 @@ const myIcon = m(icon, {
 
 
 
-## Variations
+## Appearance
+
+### Sizes
 
 * The size is set with option `type` (and of course with CSS, in conjuction with `class`).
-* The color is set with the CSS `color` attribute of the parent element.
+
+
+### Styling
+
+Below are examples how to change the icon appearance, either with a theme or with CSS.
+
+You can find more information about theming in [Theme](../polythene-theme).
+
+#### Themed component
+
+~~~javascript
+icon.theme(".themed-icon", {
+  size_regular: 50,
+  color_light:  "purple",
+  color_dark:   "orange"
+});
+
+m(icon, {
+  class: "themed-icon",
+  // ... other options
+});
+~~~
+
+#### CSS
+
+Change CSS using the CSS Classes at the bottom of this page.
+
+#### Colors
+
+Colors can be set using `style`.
+
+~~~javascript
+m(icon, {
+  style: {
+    color: "#EF6C00"
+  },
+  // ... other options
+});
+~~~
 
 
 

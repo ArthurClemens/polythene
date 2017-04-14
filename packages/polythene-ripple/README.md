@@ -33,8 +33,8 @@ import ripple from "polythene-ripple";
 import listTile from "polythene-list-tile";
 
 const myListTile = m(listTile, {
-    title: "Title",
-    after: m(ripple)
+  title: "Title",
+  after: m(ripple)
 });
 ~~~
 
@@ -48,6 +48,54 @@ const myListTile = m(listTile, {
     class: "colored-ripple"
   })
 });
+~~~
+
+
+
+## Appearance
+
+### Styling
+
+Below are examples how to change the ripple appearance, either with a theme or with CSS.
+
+You can find more information about theming in [Theme](../polythene-theme).
+
+#### Themed component
+
+~~~javascript
+ripple.theme(".themed-ripple", {
+  color_light:   "#F44336"
+});
+
+m(ripple, {
+  class: "themed-ripple",
+  // ... other options
+});
+~~~
+
+#### CSS
+
+Change CSS using the CSS Classes at the bottom of this page.
+
+#### Colors
+
+Colors can be set using `style`.
+
+~~~javascript
+m(ripple, {
+  style: {
+    color: "#2196F3"
+  },
+  // ... other options
+});
+~~~
+
+By default the inherited `color` from the parent element is used. It can be changed with CSS:
+
+~~~css
+.pe-ripple {
+  color: green;
+}
 ~~~
 
 
@@ -86,18 +134,6 @@ const myListTile = m(listTile, {
 | **opacityDecayVelocity**    | optional | Number | 0.4 | Velocity of decrease of opacity |
 | **persistent**              | optional | Boolean | false | Set to `true` to keep the ripple at the end of the animation |
 | **getTarget**               | optional | Function | | Function to set (on request) the ripple's target; by default the ripple's parent node element is used as target  |
-
-
-
-## Styling
-
-By default the inherited `color` from the parent element is used. It can be changed with CSS:
-
-~~~css
-.pe-ripple {
-  color: green;
-}
-~~~
 
 
 

@@ -103,6 +103,51 @@ If you do choose to use it, add some styles to the container that holds the list
 
 
 
+## Appearance
+
+### Styling
+
+Below are examples how to change the list appearance, either with a theme or with CSS.
+
+You can find more information about theming in [Theme](../polythene-theme).
+
+#### Themed component
+
+~~~javascript
+list.theme(".themed-list", {
+  color_light_background: "#F57C00",
+  color_light_border:     "#F57C00",
+  color_dark_background:  "#5D4037",
+  color_dark_border:      "#5D4037",
+  padding: 32
+});
+
+m(list, {
+  class: "themed-list",
+  // ... other options
+});
+~~~
+
+#### CSS
+
+Change CSS using the CSS Classes at the bottom of this page.
+
+#### Colors
+
+Colors can be set using `style`.
+
+~~~javascript
+m(list, {
+  style: {
+    backgroundColor: "#EF6C00",
+    color: "#fff"
+  },
+  // ... other options
+});
+~~~
+
+
+
 ## Options
 
 ### Common component options

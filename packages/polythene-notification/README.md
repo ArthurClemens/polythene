@@ -289,7 +289,7 @@ notification.theme(".blue-notification", {
 notification.show({
   class: "blue-notification",
   // ... other options
-})
+});
 ~~~
 
 #### CSS
@@ -309,6 +309,7 @@ notification.show({
   // ... other options
 });
 ~~~
+
 
 ### Transitions
 

@@ -67,23 +67,9 @@ const myIconButton = m(iconButton, {}, myIcon);
 
 
 
-## Variations
+## Appearance
 
-The icon color is set with the CSS (text) `color` attribute of the parent element. For example:
-
-~~~css
-/* CSS */
-.pe-button-icon {
-  color: red;
-}
-~~~
-
-~~~javascript
-// JS
-const myIconButton = m(iconButton, {
-  class: "colored"
-});
-~~~
+### Interactivity
 
 Disable hover and ripple effects:
 
@@ -108,6 +94,9 @@ const myIconButton = m(iconButton, {
 });
 ~~~
 
+
+### Size
+
 Compact (less padding):
 
 ~~~javascript
@@ -120,9 +109,61 @@ const myIconButton = m(iconButton, {
 ~~~
 
 
-### Sizes
+### Styling
 
-Pass `type` to the `icon` parameter, or use CSS.
+Below are examples how to change the icon button appearance, either with a theme or with CSS.
+
+You can find more information about theming in [Theme](../polythene-theme).
+
+#### Themed component
+
+~~~javascript
+iconButton.theme(".themed-icon-button", {
+  padding:                24,
+  color_light_background: "purple",
+  color_dark_background:  "orange",
+  color_light:            "white"
+});
+
+m(iconButton, {
+  class: "themed-icon-button",
+  // ... other options
+});
+~~~
+
+#### CSS
+
+Change CSS using the CSS Classes at the bottom of this page.
+
+#### Colors
+
+Colors can be set using `style`.
+
+~~~javascript
+m(icon, {
+  style: {
+    color: "#FFCCBC",
+    backgroundColor: "#4E342E"
+  },
+  // ... other options
+});
+~~~
+
+The icon color is set with the CSS (text) `color` attribute of the parent element. For example:
+
+~~~css
+/* CSS */
+.pe-button-icon {
+  color: red;
+}
+~~~
+
+~~~javascript
+// JS
+const myIconButton = m(iconButton, {
+  class: "colored"
+});
+~~~
 
 
 

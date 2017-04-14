@@ -111,7 +111,7 @@ const myListTile = m(listTile, {
 
 
 
-## Variations
+## Appearance
 
 * A list tile can have 1 to 3 lines:
   * `title`: titel on a single line
@@ -121,6 +121,48 @@ const myListTile = m(listTile, {
 * A list tile can optionally have an icon.
 * Text and icon are taken together as primary content. Primary content can optionally have a link.
 * A list tile can optionally have secondary content, displayed to the right. Secondary content can contain any content, and conditionally have a link.
+
+
+### Styling
+
+Below are examples how to change the list tile appearance, either with a theme or with CSS.
+
+You can find more information about theming in [Theme](../polythene-theme).
+
+#### Themed component
+
+~~~javascript
+listTile.theme(".themed-list-tile", {
+  color_light_title:      "#424242",
+  color_light_background: "#FFECB3",
+  color_dark_title:       "#FFECB3",
+  color_dark_background:  "#5D4037",
+  font_size_title:        21
+});
+
+m(listTile, {
+  class: "themed-list-tile",
+  // ... other options
+});
+~~~
+
+#### CSS
+
+Change CSS using the CSS Classes at the bottom of this page.
+
+#### Colors
+
+Colors can be set using `style`.
+
+~~~javascript
+m(listTile, {
+  style: {
+    color: "#fff",
+    backgroundColor: "#EF6C00"
+  },
+  // ... other options
+});
+~~~
 
 
 

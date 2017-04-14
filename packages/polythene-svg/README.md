@@ -72,6 +72,46 @@ const myIcon = m(icon, {
 ~~~
 
 
+## Appearance
+
+### Styling
+
+Below are examples how to change the SVG appearance, either with a theme or with CSS.
+
+You can find more information about theming in [Theme](../polythene-theme).
+
+#### Themed component
+
+~~~javascript
+svg.theme(".themed-svg", {
+  color_light: "#0D47A1",
+  color_dark: "orange"
+});
+
+m(svg, {
+  class: "themed-svg",
+  // ... other options
+});
+~~~
+
+#### CSS
+
+Change CSS using the CSS Classes at the bottom of this page.
+
+#### Colors
+
+Colors can be set using `style`.
+
+~~~javascript
+m(svg, {
+  style: {
+    color: "#EF6C00"
+  },
+  // ... other options
+});
+~~~
+
+
 
 ## Options
 
