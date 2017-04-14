@@ -98,7 +98,8 @@ html {
 
 .tests-list .pe-list:not(.tests-lists-themed-list),
 .tests-list-tile .pe-list-tile,
-.tests-tabs .pe-tabs {
+.tests-tabs .pe-tabs,
+.tests-tabs .pe-dark-theme .result .pe-light-theme .pe-tabs {
   background-color: #fff;
 }
 

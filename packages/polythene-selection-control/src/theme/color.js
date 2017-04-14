@@ -1,7 +1,7 @@
 // Returns a style function to be used by checkbox and radio-button
 
-const style = (scope, selector, componentVars, tint) => [{
-  [scope + selector]: {
+const style = (scopes, selector, componentVars, tint) => [{
+  [scopes.map(s => s + selector).join(",")]: {
     color: componentVars["color_" + tint + "_on"], // override by specifying "color"
 
     " .pe-control__label": {
@@ -47,7 +47,7 @@ const style = (scope, selector, componentVars, tint) => [{
 }];
 
 export default (selector, componentVars) => [
-  style("",                selector, componentVars, "light"),
-  style(".pe-dark-theme ", selector, componentVars, "dark" ) // inside dark theme
+  style([".pe-dark-theme", ".pe-dark-theme "], selector, componentVars, "dark"), // has/inside dark theme
+  style(["", ".pe-light-theme", ".pe-light-theme "], selector, componentVars, "light"), // normal, has/inside light theme
 ];
 

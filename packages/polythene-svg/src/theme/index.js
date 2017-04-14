@@ -1,8 +1,9 @@
 import { styler } from "polythene-css";
 import vars from "./vars";
+import layout from "./layout";
 import color from "./color";
 
-const fns = [color];
+const fns = [layout, color];
 const selector = ".pe-svg";
 
 export const customTheme = (customSelector, customVars) => 

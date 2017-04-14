@@ -1,10 +1,10 @@
 
-const style = (scope, selector, componentVars, tint) => {
+const style = (scopes, selector, componentVars, tint) => {
   const normalBorder   = componentVars["color_" + tint + "_border"]          || "transparent";
   const activeBorder   = componentVars["color_" + tint + "_active_border"]   || normalBorder;
   const disabledBorder = componentVars["color_" + tint + "_disabled_border"] || normalBorder;
   return [{
-    [scope + selector]: {
+    [scopes.map(s => s + selector).join(",")]: {
       "&, &:link, &:visited": {
         color: componentVars["color_" + tint + "_text"]
       },
@@ -58,8 +58,8 @@ const noTouchStyle = (scope, selector, componentVars, tint) => {
 };
 
 export default (selector, componentVars) => [
-  style(       "",                                 selector, componentVars, "light"),
-  style(       ".pe-dark-theme ",                  selector, componentVars, "dark" ), // inside dark theme
-  noTouchStyle("html.pe-no-touch ",                selector, componentVars, "light"),
-  noTouchStyle("html.pe-no-touch .pe-dark-theme ", selector, componentVars, "dark" ), // inside dark theme
+  style(       [".pe-dark-theme "],                  selector, componentVars, "dark"), // inside dark theme
+  style(       ["", ".pe-light-theme "],             selector, componentVars, "light"), // inside light theme
+  noTouchStyle(["html.pe-no-touch .pe-dark-theme "], selector, componentVars, "dark"), // inside dark theme
+  noTouchStyle(["html.pe-no-touch "],                selector, componentVars, "light"),
 ];

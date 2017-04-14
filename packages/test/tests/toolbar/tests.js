@@ -126,6 +126,15 @@ export const tests = [
       class: "tests-toolbar-themed-toolbar",
       content: toolbarRow
     }
-  }
+  },
+  {
+    name: "Dark theme + light theme",
+    class: "pe-dark-theme",
+    component: toolbar,
+    attrs: {
+      content: toolbarRow,
+      class: "pe-light-theme"
+    }
+  },
 
 ];

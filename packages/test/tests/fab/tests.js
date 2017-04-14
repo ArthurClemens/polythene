@@ -149,4 +149,25 @@ export const tests = [
       class: "tests-fab-themed-fab"
     }
   },
+  {
+    name: "Dark theme + light theme",
+    class: "pe-dark-theme",
+    component: {
+      view: () => m(".pe-light-theme", {
+        style: { background: "#fff", padding: "10px" }
+      }, [
+        m(fab, {
+          icon: {
+            msvg: iconAlarm
+          }
+        }),
+        m(fab, {
+          icon: {
+            msvg: iconAlarm
+          },
+          class: "tests-fab-themed-fab"
+        })
+      ])
+    }
+  }
 ];

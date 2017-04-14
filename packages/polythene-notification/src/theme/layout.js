@@ -1,5 +1,4 @@
 
-import { vars } from "polythene-theme";
 import { flex } from "polythene-css";
 
 export default (selector, componentVars) => [{
@@ -50,24 +49,6 @@ export default (selector, componentVars) => [{
         " .pe-notification__action": flex.layoutEndJustified
       }
     }
-  ],
-  ".pe-notification__holder": [
-    flex.layoutCenterCenter,
-    {
-      top: 0,
-      right: 0,
-      bottom: 0,
-      left: 0,
-      zIndex: vars.z_notification,
-      pointerEvents: "none",
-
-      ":not(.pe-notification--container)": {
-        position: "fixed",
-      },
-      ".pe-notification--container": {
-        position: "absolute",
-      }
-    }
-  ],
+  ]
 }];
 

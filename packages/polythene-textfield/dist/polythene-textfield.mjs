@@ -299,8 +299,10 @@ var layout = (function (selector, componentVars) {
 
 function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style = function style(scope, selector, componentVars, tint) {
-  return [_defineProperty$2({}, scope + selector, {
+var style = function style(scopes, selector, componentVars, tint) {
+  return [_defineProperty$2({}, scopes.map(function (s) {
+    return s + selector;
+  }).join(","), {
     // border color
     color: componentVars["color_" + tint + "_focus_border"], // override by specifying "color"
 
@@ -392,7 +394,8 @@ var style = function style(scope, selector, componentVars, tint) {
 };
 
 var color = (function (selector, componentVars) {
-  return [style("", selector, componentVars, "light"), style(".pe-dark-theme ", selector, componentVars, "dark")];
+  return [style([".pe-dark-theme", ".pe-dark-theme "], selector, componentVars, "dark"), // has/inside dark theme
+  style(["", ".pe-light-theme", ".pe-light-theme "], selector, componentVars, "light")];
 });
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -539,8 +542,8 @@ var view = function view(_ref) {
   var inputEl = state.inputEl();
   var isInvalid = state.isInvalid;
   var element = attrs.element || "div";
-  var type = !attrs.type || attrs.type === "submit" || attrs.type === "search" ? "text" : attrs.type;
-  var inputTag = attrs.multiline ? "textarea" : "input";
+  var inputType = attrs.multiline ? "textarea" : "input";
+  var type = attrs.multiline ? null : !attrs.type || attrs.type === "submit" || attrs.type === "search" ? "text" : attrs.type;
   var showError = isInvalid && state.error;
   var validates = attrs.validate || attrs.min || attrs.max || attrs.minlength || attrs.required || attrs.pattern;
   var inactive = attrs.disabled || attrs.readonly;
@@ -588,11 +591,10 @@ var view = function view(_ref) {
         state.inputEl().focus();
       }, 0);
     }
-  }), label) : null, m(inputTag, _extends({}, {
+  }), label) : null, m(inputType, _extends({}, {
     class: classes.input,
-    type: type,
     disabled: attrs.disabled
-  }, attrs.name ? { name: attrs.name } : null, !ignoreEvent(attrs, "onclick") ? {
+  }, type ? { type: type } : null, attrs.name ? { name: attrs.name } : null, !ignoreEvent(attrs, "onclick") ? {
     onclick: function onclick() {
       if (inactive) {
         return;

@@ -43,6 +43,11 @@ const block = (test, opts = {}) => m("div", {
       : { padding: "10px 15px" }
   )}, test);
 
+const pattern = (foreground, background) => ({
+  "background-image": `radial-gradient(circle at 100% 150%, ${foreground} 24%, ${background} 25%, ${background} 28%, ${foreground} 29%, ${foreground} 36%, ${background} 36%, ${background} 40%, transparent 40%, transparent), radial-gradient(circle at 0 150%, ${foreground} 24%, ${background} 25%, ${background} 28%, ${foreground} 29%, ${foreground} 36%, ${background} 36%, ${background} 40%, transparent 40%, transparent), radial-gradient(circle at 50%  100%, ${background} 10%, ${foreground} 11%, ${foreground} 23%, ${background} 24%, ${background} 30%, ${foreground} 31%, ${foreground} 43%, ${background} 44%, ${background} 50%, ${foreground} 51%, ${foreground} 63%, ${background} 64%, ${background} 71%, transparent 71%, transparent), radial-gradient(circle at 100% 50%, ${background} 5%, ${foreground} 6%, ${foreground} 15%, ${background} 16%, ${background} 20%, ${foreground} 21%, ${foreground} 30%, ${background} 31%, ${background} 35%, ${foreground} 36%, ${foreground} 45%, ${background} 46%, ${background} 49%, transparent 50%, transparent), radial-gradient(circle at 0 50%, ${background} 5%, ${foreground} 6%, ${foreground} 15%, ${background} 16%, ${background} 20%, ${foreground} 21%, ${foreground} 30%, ${background} 31%, ${background} 35%, ${foreground} 36%, ${foreground} 45%, ${background} 46%, ${background} 49%, transparent 50%, transparent)`,
+  "background-size": "100px 50px"
+});
+
 export const tests = [
   {
     name: "Button",
@@ -211,6 +216,41 @@ export const tests = [
             onclick: () => polythene.notification.hide()
           }
         })
+      ]
+    }
+  },
+  {
+    name: "Notification - Snackbar",
+    interactive: true,
+    exclude: true,
+    component: {
+      view: () => [
+        m(polythene.raisedButton, {
+          label: "Show",
+          events: {
+            onclick: () => polythene.snackbar.show({
+              title: "This message tells some things using two lines"
+            }, {spawn: "container-snackbar"})
+          }
+        }),
+        m(polythene.raisedButton, {
+          label: "Hide",
+          disabled: polythene.snackbar.count() === 0,
+          events: {
+            onclick: () => polythene.snackbar.hide()
+          }
+        }),
+        m("div",
+          {
+            style: Object.assign({}, pattern("#fff", "#eceff1"), {
+              height: "180px",
+              marginTop: "10px",
+              overflow: "hidden",
+              position: "relative"
+            })
+          },
+          m(polythene.snackbar, { spawn: "container-snackbar", position: "container" })
+        )
       ]
     }
   },

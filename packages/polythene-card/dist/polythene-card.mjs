@@ -290,14 +290,18 @@ var layout = (function (selector, componentVars) {
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var baseStyle = function baseStyle(scope, selector, componentVars, tint) {
-  return [_defineProperty$1({}, scope + selector, {
+var baseStyle = function baseStyle(scopes, selector, componentVars, tint) {
+  return [_defineProperty$1({}, scopes.map(function (s) {
+    return s + selector;
+  }).join(","), {
     backgroundColor: componentVars["color_" + tint + "_main_background"]
   })];
 };
 
-var contentStyle = function contentStyle(scope, selector, componentVars, tint) {
-  return [_defineProperty$1({}, scope + selector, {
+var contentStyle = function contentStyle(scopes, selector, componentVars, tint) {
+  return [_defineProperty$1({}, scopes.map(function (s) {
+    return s + selector;
+  }).join(","), {
     " .pe-card__title": {
       color: componentVars["color_" + tint + "_title_text"]
     },
@@ -313,8 +317,10 @@ var contentStyle = function contentStyle(scope, selector, componentVars, tint) {
   })];
 };
 
-var overlayStyle = function overlayStyle(scope, selector, componentVars, tint) {
-  return [_defineProperty$1({}, scope + ".pe-card__overlay--sheet", {
+var overlayStyle = function overlayStyle(scopes, selector, componentVars, tint) {
+  return [_defineProperty$1({}, scopes.map(function (s) {
+    return s + ".pe-card__overlay--sheet";
+  }).join(","), {
     " .pe-card__overlay__content": {
       backgroundColor: componentVars["color_" + tint + "_overlay_background"]
     }
@@ -322,12 +328,14 @@ var overlayStyle = function overlayStyle(scope, selector, componentVars, tint) {
 };
 
 var color = (function (selector, componentVars) {
-  return [baseStyle("", selector, componentVars, "light"), baseStyle(".pe-dark-theme ", selector, componentVars, "dark"), // inside dark theme
-  baseStyle(".pe-dark-theme", selector, componentVars, "dark"), // has dark th
-  contentStyle("", selector, componentVars, "light"), contentStyle(".pe-dark-theme ", selector, componentVars, "dark"), // inside dark theme
-  contentStyle(".pe-dark-theme", selector, componentVars, "dark"), // has dark th
-  overlayStyle("", selector, componentVars, "light"), overlayStyle(".pe-dark-theme ", selector, componentVars, "dark"), // inside dark theme
-  overlayStyle(".pe-dark-theme", selector, componentVars, "dark")];
+  return [baseStyle([".pe-dark-theme", ".pe-dark-theme "], selector, componentVars, "dark"), // has/inside dark theme
+  baseStyle(["", ".pe-light-theme", ".pe-light-theme "], selector, componentVars, "light"), // normal, has/inside light theme
+
+  contentStyle([".pe-dark-theme", ".pe-dark-theme "], selector, componentVars, "dark"), // has/inside dark theme
+  contentStyle(["", ".pe-light-theme", ".pe-light-theme "], selector, componentVars, "light"), // normal, has/inside light theme
+
+  overlayStyle([".pe-dark-theme", ".pe-dark-theme "], selector, componentVars, "dark"), // has/inside dark theme
+  overlayStyle(["", ".pe-light-theme", ".pe-light-theme "], selector, componentVars, "light")];
 });
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };

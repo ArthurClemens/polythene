@@ -238,6 +238,24 @@ export const tests = [
         })
       ]
     }
-  }
+  },
+  {
+    name: "Dark theme + light theme",
+    class: "pe-dark-theme",
+    component: {
+      view: () => 
+        m("div", {
+          style: {
+            background: "#fff",
+            padding: "10px"
+          },
+          class: "pe-light-theme"
+        },
+        m(checkbox, {
+          label: "On"
+        })
+      )
+    }
+  },
 
 ];

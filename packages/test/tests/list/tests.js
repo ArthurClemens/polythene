@@ -47,6 +47,20 @@ const listTileAli = m(listTile, {
   }
 });
 
+const listTileGrace = m(listTile, {
+  title: "Grace VanDam",
+  subtitle: "Binge watching...",
+  front: m(icon, {
+    src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-3.png",
+    avatar: true,
+    type: "large"
+  }),
+  url: {
+    href: "/",
+    oncreate: m.route.link
+  }
+});
+
 export const tests = [
   {
     name: "Child nodes",
@@ -62,17 +76,12 @@ export const tests = [
       m(listTile, {
         title: "Ali Connors",
         subtitle: "Brunch this weekend?"
+      }),
+      m(listTile, {
+        title: "Grace VanDam",
+        subtitle: "Binge watching..."
       })
     ]
-  },
-  {
-    name: "Option: header",
-    component: list,
-    attrs: {
-      header: {
-        title: "My header"
-      }
-    }
   },
   {
     name: "Option: tiles",
@@ -87,12 +96,16 @@ export const tests = [
         m(listTile, {
           title: "Ali Connors",
           subtitle: "Brunch this weekend?"
+        }),
+        m(listTile, {
+          title: "Grace VanDam",
+          subtitle: "Binge watching..."
         })
       ]
     }
   },
   {
-    name: "Options: tiles, indent, indentedBorders",
+    name: "Options: header, tiles, indent, indentedBorders",
     component: list,
     attrs: {
       indentedBorders: true,
@@ -110,6 +123,11 @@ export const tests = [
           title: "Ali Connors",
           subtitle: "Brunch this weekend?",
           indent: true
+        }),
+        m(listTile, {
+          title: "Grace VanDam",
+          subtitle: "Binge watching...",
+          indent: true
         })
       ]
     }
@@ -126,7 +144,8 @@ export const tests = [
           borders: true,
           tiles: [
             listTileJennifer,
-            listTileAli
+            listTileAli,
+            listTileGrace
           ]
         }),
         m(list, {
@@ -136,52 +155,9 @@ export const tests = [
           borders: true,
           tiles: [
             listTileJennifer,
-            listTileAli
+            listTileAli,
+            listTileGrace
           ]
-        })
-      ]
-    }
-  },
-  {
-    name: "Option: hoverable",
-    interactive: true,
-    component: list,
-    attrs: {
-      hoverable: true,
-      borders: true,
-      header: {
-        title: "Friends"
-      },
-      tiles: [
-        m(listTile, {
-          title: "Jennifer Barker",
-          subtitle: "Starting post doc",
-        }),
-        m(listTile, {
-          title: "Ali Connors",
-          subtitle: "Brunch this weekend?"
-        })
-      ]
-    }
-  },
-  {
-    name: "Option: selectable",
-    interactive: true,
-    component: list,
-    attrs: {
-      selectable: true,
-      borders: true,
-      header: {
-        title: "Friends"
-      },
-      tiles: [
-        m(listTile, {
-          title: "Jennifer Barker",
-          subtitle: "Starting post doc"
-        }),
-        m(listTile, {
-          title: "Ali Connors",
-          subtitle: "Brunch this weekend?"
         })
       ]
     }
@@ -197,15 +173,8 @@ export const tests = [
       },
       tiles: [
         listTileJennifer,
-        m(listTile, {
-          title: "Ali Connors",
-          subtitle: "Brunch this weekend?",
-          front: m(icon, {
-            src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png",
-            avatar: true,
-            type: "large"
-          })
-        })
+        listTileAli,
+        listTileGrace
       ]
     }
   },
@@ -223,8 +192,10 @@ export const tests = [
           tiles: [
             listTileJennifer,
             listTileAli,
+            listTileGrace,
             listTileJennifer,
-            listTileAli
+            listTileAli,
+            listTileGrace
           ]
         });
       }))
@@ -246,6 +217,11 @@ export const tests = [
       m(listTile, {
         title: "Ali Connors",
         subtitle: "Brunch this weekend?",
+        class: "tests-lists-themed-list-tile"
+      }),
+      m(listTile, {
+        title: "Grace VanDam",
+        subtitle: "Binge watching...",
         class: "tests-lists-themed-list-tile"
       })
     ]
@@ -270,12 +246,11 @@ export const tests = [
   // Dark theme
 
   {
-    name: "Option: hoverable -- dark theme",
+    name: "Option: class -- dark theme",
     interactive: true,
     class: "pe-dark-theme",
     component: list,
     attrs: {
-      hoverable: true,
       borders: true,
       header: {
         title: "Friends"
@@ -288,6 +263,10 @@ export const tests = [
         m(listTile, {
           title: "Ali Connors",
           subtitle: "Brunch this weekend?"
+        }),
+        m(listTile, {
+          title: "Grace VanDam",
+          subtitle: "Binge watching..."
         })
       ]
     }
@@ -310,7 +289,44 @@ export const tests = [
         title: "Ali Connors",
         subtitle: "Brunch this weekend?",
         class: "tests-lists-themed-list-tile"
+      }),
+      m(listTile, {
+        title: "Grace VanDam",
+        subtitle: "Binge watching...",
+        class: "tests-lists-themed-list-tile"
       })
     ]
+  },
+  {
+    name: "Dark theme + light theme",
+    interactive: true,
+    class: "pe-dark-theme",
+    component: list,
+    attrs: {
+      class: "pe-light-theme",
+      style: { background: "#fff" },
+      
+      borders: true,
+      header: {
+        title: "Friends"
+      },
+      tiles: [
+        m(listTile, {
+          title: "Jennifer Barker",
+          subtitle: "Starting post doc",
+          hoverable: true
+        }),
+        m(listTile, {
+          title: "Ali Connors",
+          subtitle: "Brunch this weekend?",
+          hoverable: true,
+        }),
+        m(listTile, {
+          title: "Grace VanDam",
+          subtitle: "Binge watching...",
+          hoverable: true,
+        })
+      ]
+    }
   },
 ];

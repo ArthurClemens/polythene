@@ -48,6 +48,8 @@ export { default as shadow } from "polythene-shadow";
 
 export { default as slider } from "polythene-slider";
 
+export { default as snackbar } from "polythene-snackbar";
+
 export { default as svg } from "polythene-svg";
 
 export { default as switchButton } from "polythene-switch-button";

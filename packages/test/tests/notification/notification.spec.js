@@ -7,7 +7,7 @@ import { runSnapshots } from "../../scripts/snapshots";
 
 runSnapshots(tests);
 
-describe("List component", () => {
+describe("Notification component", () => {
   // TODO: test notification instance
   it("dummy", () => {
     expect("1").toContain("1");

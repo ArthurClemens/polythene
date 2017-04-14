@@ -13,6 +13,19 @@ exports[`test Custom validation 1`] = `
 "
 `;
 
+exports[`test Dark theme + light theme 1`] = `
+"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
+  <div class=
+  \"pe-textfield pe-textfield--hide-spinner pe-textfield--hide-clear pe-light-theme\">
+  <div class=\"pe-textfield__input-area\">
+      <label class=\"pe-textfield__label\">Your
+      Name</label><input type=\"text\" class=\"pe-textfield__input\">
+    </div>
+  </div>
+</div>
+"
+`;
+
 exports[`test Give focus 1`] = `
 "<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
   <div class=
@@ -94,7 +107,7 @@ exports[`test Option: disabled (input) -- dark theme 1`] = `
   <div class=
   \"pe-textfield pe-textfield--disabled pe-textfield--dirty pe-textfield--hide-spinner pe-textfield--hide-clear\">
   <div class=\"pe-textfield__input-area\">
-      <input type=\"text\" disabled class=\"pe-textfield__input\">
+      <input disabled type=\"text\" class=\"pe-textfield__input\">
     </div>
   </div>
 </div>
@@ -106,7 +119,7 @@ exports[`test Option: disabled (input) 1`] = `
   <div class=
   \"pe-textfield pe-textfield--disabled pe-textfield--dirty pe-textfield--hide-spinner pe-textfield--hide-clear\">
   <div class=\"pe-textfield__input-area\">
-      <input type=\"text\" disabled class=\"pe-textfield__input\">
+      <input disabled type=\"text\" class=\"pe-textfield__input\">
     </div>
   </div>
 </div>
@@ -119,7 +132,7 @@ exports[`test Option: disabled (label) 1`] = `
   \"pe-textfield pe-textfield--disabled pe-textfield--hide-spinner pe-textfield--hide-clear\">
   <div class=\"pe-textfield__input-area\">
       <label class=\"pe-textfield__label\">Your
-      name</label><input type=\"text\" disabled class=
+      name</label><input disabled type=\"text\" class=
       \"pe-textfield__input\">
     </div>
   </div>

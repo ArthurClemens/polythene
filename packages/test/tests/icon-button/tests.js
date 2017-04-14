@@ -4,8 +4,9 @@ import icon from "polythene-icon";
 import iconFavorite from "mmsvg/google/msvg/action/favorite-border";
 
 iconButton.theme(".tests-icon-button-themed-icon-button", {
-  padding: 32,
-  color_background: "purple",
+  padding: 24,
+  color_light_background: "purple",
+  color_dark_background: "orange",
   color_light: "white"
 });
 
@@ -135,5 +136,37 @@ export const tests = [
     attrs: null,
     children: m(icon, {msvg: iconFavorite})
   },
+  {
+    name: "Themed (color and size) -- dark theme",
+    component: iconButton,
+    class: "pe-dark-theme",
+    attrs: {
+      icon: {
+        msvg: iconFavorite
+      },
+      class: "tests-icon-button-themed-icon-button"
+    }
+  },
+  {
+    name: "Dark theme + light theme",
+    class: "pe-dark-theme",
+    component: {
+      view: () => m(".pe-light-theme", {
+        style: { background: "#fff", padding: "10px" }
+      }, [
+        m(iconButton, {
+          icon: {
+            msvg: iconFavorite
+          },
+        }),
+        m(iconButton, {
+          icon: {
+            msvg: iconFavorite
+          },
+          class: "tests-icon-button-themed-icon-button"
+        })
+      ])
+    }
+  }
 
 ];

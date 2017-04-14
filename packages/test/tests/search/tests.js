@@ -58,12 +58,25 @@ export const tests = [
       })
     }
   },
+
+  // Dark theme
+
   {
     name: "Theme -- dark theme",
     class: "pe-dark-theme",
     component: {
       view: () => m(block, {
         class: "tests-search-themed-search",
+        dark: true
+      })
+    }
+  },
+  {
+    name: "Dark theme + light theme",
+    class: "pe-dark-theme",
+    component: {
+      view: () => m(block, {
+        class: "pe-light-theme",
         dark: true
       })
     }

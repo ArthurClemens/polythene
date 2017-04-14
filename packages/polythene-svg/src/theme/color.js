@@ -1,24 +1,21 @@
 
-const style = (scope, selector, componentVars, tint) => {
-  const color = componentVars["color_" + tint] || "currentcolor";
-  return [{
-    [scope + selector]: {
+const style = (scopes, selector, componentVars, tint) => [{
+  [scopes.map(s => s + selector).join(",")]: {
+    color: "inherit",
+
+    " svg": {
       color: "inherit",
 
-      " svg": {
-        color: "inherit",
-
-        " path, rect, circle, polygon": {
-          "&:not([fill=none])": {
-            fill: color
-          }
+      " path, rect, circle, polygon": {
+        "&:not([fill=none])": {
+          fill: componentVars["color_" + tint] || "currentcolor"
         }
       }
     }
-  }];
-};
+  }
+}];
 
 export default (selector, componentVars) => [
-  style("",                selector, componentVars, "light"),
-  style(".pe-dark-theme ", selector, componentVars, "dark" ), // inside dark theme
+  style([".pe-dark-theme", ".pe-dark-theme "], selector, componentVars, "dark"), // has/inside dark theme
+  style(["", ".pe-light-theme", ".pe-light-theme "], selector, componentVars, "light"), // normal, has/inside light theme
 ];

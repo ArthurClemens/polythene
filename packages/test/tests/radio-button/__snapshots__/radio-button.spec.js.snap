@@ -1,3 +1,124 @@
+exports[`test Dark theme + light theme 1`] = `
+"<div style=\"background: rgb(255, 255, 255); padding: 10px;\" class=
+\"pe-light-theme\">
+  <div class=
+  \"pe-control pe-radio-control pe-control--off pe-control--regular\">
+  <input name=\"setting\" type=\"radio\" tabindex=\"-1\" class=
+  \"pe-control__input\"><label class=
+  \"pe-control__form-label\"></label>
+    <div class=\"pe-control__box\">
+      <label class=\"pe-control__form-label\"></label>
+      <div tabindex=\"0\" class=
+      \"pe-button pe-icon-button pe-control__button\">
+        <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-button__content\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple pe-ripple--constrained\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple__mask\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-ripple__waves\">
+                <label class=\"pe-control__form-label\"></label>
+              </div>
+            </div>
+          </div>
+          <div class=\"pe-button__focus\">
+            <label class=\"pe-control__form-label\"></label>
+          </div>
+          <div class=
+          \"pe-icon pe-icon--regular pe-control__button--on\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-svg\">
+              <label class=\"pe-control__form-label\"></label>
+              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+              height=\"24\" viewbox=\"0 0 24 24\">
+                <label class=\"pe-control__form-label\"><path d=
+                \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+                </path></label>
+              </svg>
+            </div>
+          </div>
+          <div class=
+          \"pe-icon pe-icon--regular pe-control__button--off\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-svg\">
+              <label class=\"pe-control__form-label\"></label>
+              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+              height=\"24\" viewbox=\"0 0 24 24\">
+                <label class=\"pe-control__form-label\"><path d=
+                \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+                </path></label>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class=\"pe-control__label\">
+      <label class=\"pe-control__form-label\">Label</label>
+    </div>
+  </div>
+  <div class=
+  \"pe-control pe-radio-control pe-control--on pe-control--inactive pe-control--regular\">
+  <input name=\"setting\" type=\"radio\" tabindex=\"-1\" class=
+  \"pe-control__input\"><label class=
+  \"pe-control__form-label\"></label>
+    <div class=\"pe-control__box\">
+      <label class=\"pe-control__form-label\"></label>
+      <div tabindex=\"-1\" class=
+      \"pe-button pe-icon-button pe-button--inactive pe-control__button\">
+      <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-button__content\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple pe-ripple--constrained\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple__mask\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-ripple__waves\">
+                <label class=\"pe-control__form-label\"></label>
+              </div>
+            </div>
+          </div>
+          <div class=\"pe-button__focus\">
+            <label class=\"pe-control__form-label\"></label>
+          </div>
+          <div class=
+          \"pe-icon pe-icon--regular pe-control__button--on\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-svg\">
+              <label class=\"pe-control__form-label\"></label>
+              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+              height=\"24\" viewbox=\"0 0 24 24\">
+                <label class=\"pe-control__form-label\"><path d=
+                \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+                </path></label>
+              </svg>
+            </div>
+          </div>
+          <div class=
+          \"pe-icon pe-icon--regular pe-control__button--off\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-svg\">
+              <label class=\"pe-control__form-label\"></label>
+              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+              height=\"24\" viewbox=\"0 0 24 24\">
+                <label class=\"pe-control__form-label\"><path d=
+                \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
+                </path></label>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class=\"pe-control__label\">
+      <label class=\"pe-control__form-label\">Label</label>
+    </div>
+  </div>
+</div>
+"
+`;
+
 exports[`test Option: checked -- dark theme 1`] = `
 "<div class=
 \"pe-control pe-radio-control pe-control--off pe-control--regular\">

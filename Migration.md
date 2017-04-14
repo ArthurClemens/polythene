@@ -197,6 +197,12 @@ CSS class `pe-button__label` has been replaced with `pe-button--icon__content`.
 
 
 
+### List
+
+Options `hoverable` and `selectable` have been removed; use these options on the list items.
+
+
+
 ### Ripple
 
 Option `initialOpacity` has been renamed to `startOpacity`. Ripple includes more options to configure the ripple animation.

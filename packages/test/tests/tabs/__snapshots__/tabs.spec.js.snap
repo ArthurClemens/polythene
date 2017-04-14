@@ -50,6 +50,145 @@ exports[`test Child node 1`] = `
 "
 `;
 
+exports[`test Dark theme + light theme 1`] = `
+"<div style=\"background: rgb(255, 255, 255); padding: 10px;\" class=
+\"pe-light-theme\">
+  <div class=\"pe-tabs pe-tabs--scrollable pe-tabs--start\">
+    <a tabindex=\"0\" class=
+    \"pe-button pe-icon-button pe-tabs__scroll-button pe-tabs__scroll-button-start\">
+    <div class=\"pe-button__content\">
+      <div class=\"pe-ripple pe-ripple--constrained\">
+        <div class=\"pe-ripple__mask\">
+          <div class=\"pe-ripple__waves\"></div>
+        </div>
+      </div>
+      <div class=\"pe-button__focus\"></div>
+      <div class=\"pe-icon-button__content\">
+        <div class=\"pe-icon pe-icon--regular\">
+          <div class=\"pe-svg\">
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <path d=
+              \"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div></a>
+    <div class=\"pe-tabs__row pe-tabs__row--indent\">
+      <a tabindex=\"0\" class=
+      \"pe-button pe-text-button pe-button--selected pe-tabs__tab\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-tabs__tab-content\">
+          <div class=\"pe-button__label\">
+            <span>Web</span>
+          </div>
+        </div>
+      </div></a><a tabindex=\"0\" class=
+      \"pe-button pe-text-button pe-tabs__tab\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-tabs__tab-content\">
+          <div class=\"pe-button__label\">
+            <span>Shopping</span>
+          </div>
+        </div>
+      </div></a><a tabindex=\"0\" class=
+      \"pe-button pe-text-button pe-tabs__tab\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-tabs__tab-content\">
+          <div class=\"pe-button__label\">
+            <span>Videos</span>
+          </div>
+        </div>
+      </div></a><a tabindex=\"0\" class=
+      \"pe-button pe-text-button pe-tabs__tab\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-tabs__tab-content\">
+          <div class=\"pe-button__label\">
+            <span>Images</span>
+          </div>
+        </div>
+      </div></a><a tabindex=\"0\" class=
+      \"pe-button pe-text-button pe-tabs__tab\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-tabs__tab-content\">
+          <div class=\"pe-button__label\">
+            <span>Books</span>
+          </div>
+        </div>
+      </div></a><a tabindex=\"0\" class=
+      \"pe-button pe-text-button pe-tabs__tab\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-tabs__tab-content\">
+          <div class=\"pe-button__label\">
+            <span>More</span>
+          </div>
+        </div>
+      </div></a>
+      <div class=\"pe-tabs__scroll-button-offset\"></div>
+      <div class=\"pe-tabs__indicator\"></div>
+    </div><a tabindex=\"0\" class=
+    \"pe-button pe-icon-button pe-tabs__scroll-button pe-tabs__scroll-button-end\">
+    <div class=\"pe-button__content\">
+      <div class=\"pe-ripple pe-ripple--constrained\">
+        <div class=\"pe-ripple__mask\">
+          <div class=\"pe-ripple__waves\"></div>
+        </div>
+      </div>
+      <div class=\"pe-button__focus\"></div>
+      <div class=\"pe-icon-button__content\">
+        <div class=\"pe-icon pe-icon--regular\">
+          <div class=\"pe-svg\">
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+            height=\"24\" viewbox=\"0 0 24 24\">
+              <path d=
+              \"M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div></a>
+  </div>
+</div>
+"
+`;
+
 exports[`test Long labels: wrap to second line 1`] = `
 "<div class=
 \"pe-tabs pe-tabs--start pe-tabs--autofit tests-tabs-fixed-width\">

@@ -24,6 +24,124 @@ exports[`test Child nodes 1`] = `
       </div>
     </div>
   </div>
+  <div class=\"pe-list-tile pe-list-tile--subtitle\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Grace VanDam
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Binge watching...
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Dark theme + light theme 1`] = `
+"<div style=\"background: rgb(255, 255, 255);\" class=
+\"pe-list pe-list--borders pe-list--header pe-light-theme\">
+  <div class=\"pe-list-tile pe-list__header\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Friends
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=
+  \"pe-list-tile pe-list-tile--hoverable pe-list-tile--subtitle\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Jennifer Barker
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Starting post doc
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=
+  \"pe-list-tile pe-list-tile--hoverable pe-list-tile--subtitle\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Ali Connors
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Brunch this weekend?
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=
+  \"pe-list-tile pe-list-tile--hoverable pe-list-tile--subtitle\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Grace VanDam
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Binge watching...
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: class -- dark theme 1`] = `
+"<div class=\"pe-list pe-list--borders pe-list--header\">
+  <div class=\"pe-list-tile pe-list__header\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Friends
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\"pe-list-tile pe-list-tile--subtitle\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Jennifer Barker
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Starting post doc
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\"pe-list-tile pe-list-tile--subtitle\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Ali Connors
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Brunch this weekend?
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\"pe-list-tile pe-list-tile--subtitle\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Grace VanDam
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Binge watching...
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 "
 `;
@@ -59,158 +177,40 @@ exports[`test Option: compact 1`] = `
     </div></a>
   </div>
   <div class=\"pe-list-tile pe-list-tile--subtitle\">
-    <div style=\"\" class=\"pe-list-tile__primary\">
-      <div class=
-      \"pe-list-tile__content pe-list-tile__content--front\">
-        <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
-          <img src=
-          \"http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png\">
-        </div>
-      </div>
-      <div class=\"pe-list-tile__content\">
-        <div class=\"pe-list-tile__title\">
-          Ali Connors
-        </div>
-        <div class=\"pe-list-tile__subtitle\">
-          Brunch this weekend?
-        </div>
+    <a href=\"#!/\" style=\"\" class=\"pe-list-tile__primary\">
+    <div class=
+    \"pe-list-tile__content pe-list-tile__content--front\">
+      <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
+        <img src=
+        \"http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png\">
       </div>
     </div>
-  </div>
-</div>
-"
-`;
-
-exports[`test Option: header 1`] = `
-"<div class=\"pe-list pe-list--header\">
-  <div class=\"pe-list-tile pe-list__header\">
-    <div style=\"\" class=\"pe-list-tile__primary\">
-      <div class=\"pe-list-tile__content\">
-        <div class=\"pe-list-tile__title\">
-          My header
-        </div>
+    <div class=\"pe-list-tile__content\">
+      <div class=\"pe-list-tile__title\">
+        Ali Connors
       </div>
-    </div>
-  </div>
-</div>
-"
-`;
-
-exports[`test Option: hoverable -- dark theme 1`] = `
-"<div class=
-\"pe-list pe-list--borders pe-list--hoverable pe-list--header\">
-  <div class=\"pe-list-tile pe-list__header\">
-    <div style=\"\" class=\"pe-list-tile__primary\">
-      <div class=\"pe-list-tile__content\">
-        <div class=\"pe-list-tile__title\">
-          Friends
-        </div>
+      <div class=\"pe-list-tile__subtitle\">
+        Brunch this weekend?
       </div>
-    </div>
+    </div></a>
   </div>
   <div class=\"pe-list-tile pe-list-tile--subtitle\">
-    <div style=\"\" class=\"pe-list-tile__primary\">
-      <div class=\"pe-list-tile__content\">
-        <div class=\"pe-list-tile__title\">
-          Jennifer Barker
-        </div>
-        <div class=\"pe-list-tile__subtitle\">
-          Starting post doc
-        </div>
+    <a href=\"#!/\" style=\"\" class=\"pe-list-tile__primary\">
+    <div class=
+    \"pe-list-tile__content pe-list-tile__content--front\">
+      <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
+        <img src=
+        \"http://arthurclemens.github.io/assets/polythene/examples/avatar-3.png\">
       </div>
     </div>
-  </div>
-  <div class=\"pe-list-tile pe-list-tile--subtitle\">
-    <div style=\"\" class=\"pe-list-tile__primary\">
-      <div class=\"pe-list-tile__content\">
-        <div class=\"pe-list-tile__title\">
-          Ali Connors
-        </div>
-        <div class=\"pe-list-tile__subtitle\">
-          Brunch this weekend?
-        </div>
+    <div class=\"pe-list-tile__content\">
+      <div class=\"pe-list-tile__title\">
+        Grace VanDam
       </div>
-    </div>
-  </div>
-</div>
-"
-`;
-
-exports[`test Option: hoverable 1`] = `
-"<div class=
-\"pe-list pe-list--borders pe-list--hoverable pe-list--header\">
-  <div class=\"pe-list-tile pe-list__header\">
-    <div style=\"\" class=\"pe-list-tile__primary\">
-      <div class=\"pe-list-tile__content\">
-        <div class=\"pe-list-tile__title\">
-          Friends
-        </div>
+      <div class=\"pe-list-tile__subtitle\">
+        Binge watching...
       </div>
-    </div>
-  </div>
-  <div class=\"pe-list-tile pe-list-tile--subtitle\">
-    <div style=\"\" class=\"pe-list-tile__primary\">
-      <div class=\"pe-list-tile__content\">
-        <div class=\"pe-list-tile__title\">
-          Jennifer Barker
-        </div>
-        <div class=\"pe-list-tile__subtitle\">
-          Starting post doc
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class=\"pe-list-tile pe-list-tile--subtitle\">
-    <div style=\"\" class=\"pe-list-tile__primary\">
-      <div class=\"pe-list-tile__content\">
-        <div class=\"pe-list-tile__title\">
-          Ali Connors
-        </div>
-        <div class=\"pe-list-tile__subtitle\">
-          Brunch this weekend?
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-"
-`;
-
-exports[`test Option: selectable 1`] = `
-"<div class=
-\"pe-list pe-list--borders pe-list--selectable pe-list--header\">
-  <div class=\"pe-list-tile pe-list__header\">
-    <div style=\"\" class=\"pe-list-tile__primary\">
-      <div class=\"pe-list-tile__content\">
-        <div class=\"pe-list-tile__title\">
-          Friends
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class=\"pe-list-tile pe-list-tile--subtitle\">
-    <div style=\"\" class=\"pe-list-tile__primary\">
-      <div class=\"pe-list-tile__content\">
-        <div class=\"pe-list-tile__title\">
-          Jennifer Barker
-        </div>
-        <div class=\"pe-list-tile__subtitle\">
-          Starting post doc
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class=\"pe-list-tile pe-list-tile--subtitle\">
-    <div style=\"\" class=\"pe-list-tile__primary\">
-      <div class=\"pe-list-tile__content\">
-        <div class=\"pe-list-tile__title\">
-          Ali Connors
-        </div>
-        <div class=\"pe-list-tile__subtitle\">
-          Brunch this weekend?
-        </div>
-      </div>
-    </div>
+    </div></a>
   </div>
 </div>
 "
@@ -291,6 +291,18 @@ exports[`test Option: tiles 1`] = `
       </div>
     </div>
   </div>
+  <div class=\"pe-list-tile pe-list-tile--subtitle\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Grace VanDam
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Binge watching...
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 "
 `;
@@ -342,6 +354,24 @@ exports[`test Options: header, tiles with urls 1`] = `
       </div>
     </div></a>
   </div>
+  <div class=\"pe-list-tile pe-list-tile--subtitle\">
+    <a href=\"#!/\" style=\"\" class=\"pe-list-tile__primary\">
+    <div class=
+    \"pe-list-tile__content pe-list-tile__content--front\">
+      <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
+        <img src=
+        \"http://arthurclemens.github.io/assets/polythene/examples/avatar-3.png\">
+      </div>
+    </div>
+    <div class=\"pe-list-tile__content\">
+      <div class=\"pe-list-tile__title\">
+        Grace VanDam
+      </div>
+      <div class=\"pe-list-tile__subtitle\">
+        Binge watching...
+      </div>
+    </div></a>
+  </div>
 </div>
 <div class=\"pe-list pe-list--borders pe-list--header\">
   <div class=\"pe-list-tile pe-list__header\">
@@ -389,11 +419,29 @@ exports[`test Options: header, tiles with urls 1`] = `
       </div>
     </div></a>
   </div>
+  <div class=\"pe-list-tile pe-list-tile--subtitle\">
+    <a href=\"#!/\" style=\"\" class=\"pe-list-tile__primary\">
+    <div class=
+    \"pe-list-tile__content pe-list-tile__content--front\">
+      <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
+        <img src=
+        \"http://arthurclemens.github.io/assets/polythene/examples/avatar-3.png\">
+      </div>
+    </div>
+    <div class=\"pe-list-tile__content\">
+      <div class=\"pe-list-tile__title\">
+        Grace VanDam
+      </div>
+      <div class=\"pe-list-tile__subtitle\">
+        Binge watching...
+      </div>
+    </div></a>
+  </div>
 </div>
 "
 `;
 
-exports[`test Options: tiles, indent, indentedBorders 1`] = `
+exports[`test Options: header, tiles, indent, indentedBorders 1`] = `
 "<div class=\"pe-list pe-list--indented-borders pe-list--header\">
   <div class=\"pe-list-tile pe-list-tile--front pe-list__header\">
     <div style=\"\" class=\"pe-list-tile__primary\">
@@ -434,6 +482,20 @@ exports[`test Options: tiles, indent, indentedBorders 1`] = `
       </div>
     </div>
   </div>
+  <div class=\"pe-list-tile pe-list-tile--subtitle\">
+    <div style=\"\" class=\"pe-list-tile__primary\">
+      <div class=
+      \"pe-list-tile__content pe-list-tile__content--front\"></div>
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Grace VanDam
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Binge watching...
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 "
 `;
@@ -466,6 +528,19 @@ exports[`test Themed list (colors and padding) -- dark theme 1`] = `
       </div>
     </div>
   </div>
+  <div class=
+  \"pe-list-tile pe-list-tile--subtitle tests-lists-themed-list-tile\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Grace VanDam
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Binge watching...
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 "
 `;
@@ -494,6 +569,19 @@ exports[`test Themed list (colors and padding) 1`] = `
         </div>
         <div class=\"pe-list-tile__subtitle\">
           Brunch this weekend?
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=
+  \"pe-list-tile pe-list-tile--subtitle tests-lists-themed-list-tile\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Grace VanDam
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Binge watching...
         </div>
       </div>
     </div>

@@ -12,7 +12,7 @@ import settingsComponent from "./settings";
 const themeColor = "#2196F3";
 menu.theme(".menu-tests-blue-menu", {
   color_light_background: themeColor,
-  border_radius: 5
+  border_radius: 0
 });
 listTile.theme(".menu-tests-blue-menu-list-tile", {
   color_light_title: "#fff",
@@ -106,5 +106,16 @@ export const tests = [
     class: "pe-dark-theme",
     component: menuItems
   },
-  
+  {
+    name: "Dark theme + light theme",
+    class: "pe-dark-theme",
+    component: {
+      view: () =>
+        m(menu, {
+          class: "pe-light-theme",
+          content: simpleMenuContent,
+          permanent: true
+        })
+    }
+  }
 ];

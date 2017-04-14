@@ -1,5 +1,5 @@
-const style = (scope, selector, componentVars, tint) => [{
-  [scope + selector]: {
+const style = (scopes, selector, componentVars, tint) => [{
+  [scopes.map(s => s + selector).join(",")]: {
     // border color
     color: componentVars["color_" + tint + "_focus_border"], // override by specifying "color"
 
@@ -91,7 +91,7 @@ const style = (scope, selector, componentVars, tint) => [{
 }];
 
 export default (selector, componentVars) => [
-  style(       "",                                 selector, componentVars, "light"),
-  style(       ".pe-dark-theme ",                  selector, componentVars, "dark" ), // inside dark theme
+  style([".pe-dark-theme", ".pe-dark-theme "], selector, componentVars, "dark"), // has/inside dark theme
+  style(["", ".pe-light-theme", ".pe-light-theme "], selector, componentVars, "light"), // normal, has/inside light theme
 ];
 

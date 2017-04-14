@@ -277,8 +277,10 @@ var layout = (function (selector, componentVars) {
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style = function style(scope, selector, componentVars, tint) {
-  return [_defineProperty$1({}, scope + selector, {
+var style = function style(scopes, selector, componentVars, tint) {
+  return [_defineProperty$1({}, scopes.map(function (s) {
+    return s + selector;
+  }).join(","), {
     color: componentVars["color_" + tint],
 
     " .pe-tabs__tab.pe-button--selected": {
@@ -301,8 +303,8 @@ var style = function style(scope, selector, componentVars, tint) {
 };
 
 var color = (function (selector, componentVars) {
-  return [style("", selector, componentVars, "light"), style(".pe-dark-theme ", selector, componentVars, "dark") // inside dark theme
-  ];
+  return [style([".pe-dark-theme", ".pe-dark-theme "], selector, componentVars, "dark"), // has/inside dark theme
+  style(["", ".pe-light-theme", ".pe-light-theme "], selector, componentVars, "light")];
 });
 
 var iconArrowBackward = m.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\"/></svg>");

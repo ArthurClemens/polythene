@@ -9,9 +9,7 @@ export const classes = {
   borders:         "pe-list--borders",
   indentedBorders: "pe-list--indented-borders",
   hasHeader:       "pe-list--header",
-  compact:         "pe-list--compact",
-  hoverable:       "pe-list--hoverable",
-  selectable:      "pe-list--selectable"
+  compact:         "pe-list--compact"
 };
 
 const view = vnode => {
@@ -25,8 +23,6 @@ const view = vnode => {
         classes.component,
         (attrs.borders ? classes.borders : null),
         (attrs.indentedBorders ? classes.indentedBorders : null),
-        (attrs.hoverable ? classes.hoverable : null),
-        (attrs.selectable ? classes.selectable : null),
         (attrs.header ? classes.hasHeader : null),
         (attrs.compact ? classes.compact : null),
         attrs.class

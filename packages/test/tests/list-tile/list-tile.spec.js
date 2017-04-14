@@ -38,6 +38,11 @@ describe("List tile component", () => {
     expect(html).toContain("<span ");
     expect(html).toContain("</span>");
   });
+  it("option secondary element", () => {
+    const cmp = m(listTile, {secondary: { element: "dl"}});
+    const html = tidy(cmp);
+    expect(html).toContain("<dl class=\"pe-list-tile__secondary\">");
+  });
   it("option tabindex", () => {
     const cmp = m(listTile, {tabindex: 3});
     const html = tidy(cmp);

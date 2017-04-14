@@ -128,8 +128,10 @@ var layout = (function (selector, componentVars) {
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style = function style(scope, selector, componentVars, tint) {
-  return [_defineProperty$1({}, scope + selector, {
+var style = function style(scopes, selector, componentVars, tint) {
+  return [_defineProperty$1({}, scopes.map(function (s) {
+    return s + selector;
+  }).join(","), {
     backgroundColor: componentVars["color_" + tint + "_background"],
 
     " .pe-textfield": {
@@ -147,7 +149,8 @@ var style = function style(scope, selector, componentVars, tint) {
 };
 
 var color = (function (selector, componentVars) {
-  return [style("", selector, componentVars, "light"), style(".pe-dark-theme ", selector, componentVars, "dark")];
+  return [style([".pe-dark-theme", ".pe-dark-theme "], selector, componentVars, "dark"), // has/inside dark theme
+  style(["", ".pe-light-theme", ".pe-light-theme "], selector, componentVars, "light")];
 });
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };

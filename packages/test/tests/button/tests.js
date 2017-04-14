@@ -8,7 +8,7 @@ button.theme(".tests-button-themed-button", {
 });
 
 button.theme(".blue-on-dark-button", {
-  color_dark_text: "#1976D2"
+  color_dark_text: "#2196F3"
 });
 
 button.theme(".tests-button-bordered-button", {
@@ -245,6 +245,27 @@ export const tests = [
       label: "Borders dark theme",
       class: "tests-button-bordered-button",
       borders: true
+    }
+  },
+  {
+    name: "Dark theme + light theme",
+    class: "pe-dark-theme",
+    component: {
+      view: () => m(".pe-light-theme", {
+        style: { background: "#fff" }
+      }, [
+        m(button, {
+          label: "Normal"
+        }),
+        m(button, {
+          label: "Disabled",
+          disabled: true
+        }),
+        m(button, {
+          label: "Theme",
+          class: "tests-button-themed-button"
+        })
+      ])
     }
   }
 ];

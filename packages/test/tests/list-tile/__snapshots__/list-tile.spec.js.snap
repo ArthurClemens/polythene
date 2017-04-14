@@ -340,24 +340,6 @@ exports[`test Option: secondary (content) 1`] = `
 "
 `;
 
-exports[`test Option: secondary (element) 1`] = `
-"<div class=\"pe-list-tile\">
-  <div style=\"\" class=\"pe-list-tile__primary\">
-    <div class=\"pe-list-tile__content\">
-      <div class=\"pe-list-tile__title\">
-        Ancillary Justice
-      </div>
-    </div>
-  </div>
-  <dl class=\"pe-list-tile__secondary\">
-    <dd>
-      <div class=\"pe-list-tile__content\"></div>
-    </dd>
-  </dl>
-</div>
-"
-`;
-
 exports[`test Option: secondary (icon) 1`] = `
 "<div class=\"pe-list-tile\">
   <div style=\"\" class=\"pe-list-tile__primary\">

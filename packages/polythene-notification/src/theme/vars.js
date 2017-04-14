@@ -14,9 +14,9 @@ export default {
   font_size:              14,
   line_height:            20,
 
-  color_light_background: rgba(vars.color_light_background, .85),
+  color_light_background: rgba(vars.color_light_background),
   color_light_text:       rgba(vars.color_light_foreground, vars.blend_light_dark_primary),
 
-  color_dark_background:  rgba(vars.color_dark_background),
+  color_dark_background:  rgba(vars.color_dark_background, .85),
   color_dark_text:        rgba(vars.color_dark_foreground, vars.blend_light_text_primary)
 };

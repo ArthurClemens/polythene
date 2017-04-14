@@ -133,8 +133,6 @@ If you do choose to use it, add some styles to the container that holds the list
 | ------------------- | -------------- | -------- | ----------- | --------------- |
 | **borders**         | optional | Boolean | | Set to `true` to add borders to list tiles |
 | **indentedBorders** | optional | Boolean | | Set to `true` to indent the list tile borders; note that list tiles must have option `indent` as well       |
-| **hoverable**       | optional | Boolean | false | Set to true to show a hover effect on list tiles (non-touch devices) |
-| **selectable**      | optional | Boolean | false | Set to true to show a mouse pointer on list tiles (non-touch devices) |
 | **compact**         | optional | Boolean | | Set to `true` to reduce vertical padding of list tiles |
 
 
@@ -160,6 +158,5 @@ List is composed from:
 | Has indented borders | indentedBorders      | `pe-list--indented-borders` |
 | Has header           | hasHeader            | `pe-list--header` |
 | Compact              | compact              | `pe-list--compact` |
-| Hoverable            | hoverable            | `pe-list--hoverable` |
-| Selectable           | selectable           | `pe-list--selectable` |
+
 

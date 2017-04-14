@@ -11,7 +11,7 @@ import button from "polythene-button";
 
 button.theme(".blue-button", {
   color_light_background: "blue",
-  color_light_text: "white"
+  color_light_text:       "white"
 });
 
 m(button, {
@@ -63,6 +63,9 @@ Variables like `unit_icon_size_small` are imported from `polythene-theme`, which
 A special Polythene class is `pe-dark-theme` - components that have a parent with this class will use the "dark" color settings.
 
 The background color of `pe-dark-theme` needs to be defined in your app.
+
+Use class `pe-light-theme` to locally override dark colors.
+
 
 
 ### Styling components with variables 

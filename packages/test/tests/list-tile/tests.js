@@ -216,16 +216,6 @@ export const tests = [
   // Secondary content options
 
   {
-    name: "Option: secondary (element)",
-    component: listTile,
-    attrs: {
-      title: "Ancillary Justice",
-      secondary: {
-        element: "dl"
-      }
-    }
-  },
-  {
     name: "Option: secondary (icon)",
     component: listTile,
     attrs: {

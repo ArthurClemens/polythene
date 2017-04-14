@@ -1,3 +1,26 @@
+exports[`test Dark theme + light theme 1`] = `
+"<div style=\"background: rgb(255, 255, 255); padding: 10px;\" class=
+\"pe-light-theme\">
+  <div class=\"pe-slider pe-slider--track\">
+    <div class=\"pe-slider__track\">
+      <div class=\"pe-slider__track-part pe-slider__track-value\">
+        <div class=\"pe-slider__track-bar\">
+          <div class=\"pe-slider__track-bar-value\"></div>
+        </div>
+      </div>
+      <div tabindex=\"0\" class=\"pe-slider__control\"></div>
+      <div style=\"max-width: 50%;\" class=
+      \"pe-slider__track-part pe-slider__track-rest\">
+        <div class=\"pe-slider__track-bar\">
+          <div class=\"pe-slider__track-bar-value\"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
 exports[`test Negative range, step=0.1 1`] = `
 "<p>
   Value: 0

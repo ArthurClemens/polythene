@@ -164,5 +164,19 @@ export const tests = [
       }
     }
   },
+  {
+    name: "Dark theme + light theme",
+    interactive: true,
+    exclude: true,
+    class: "pe-dark-theme",
+    component: ripple,
+    attrs: {
+      constrained: true,
+      style: {
+        background: "#fff"
+      },
+      class: "pe-light-theme"
+    }
+  },
 ];
 

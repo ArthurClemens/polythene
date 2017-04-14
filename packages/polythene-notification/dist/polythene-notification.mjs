@@ -4,6 +4,19 @@ import { flex, styler } from 'polythene-css';
 import { vars } from 'polythene-theme';
 import { Timer } from 'polythene-utilities';
 
+var classes = {
+  component: "pe-notification",
+  holder: "pe-notification__holder",
+  placeholder: "pe-notification__placeholder",
+  content: "pe-notification__content",
+  title: "pe-notification__title",
+  multilineTitle: "pe-notification__title--multiline",
+  action: "pe-notification__action",
+  horizontal: "pe-notification--horizontal",
+  vertical: "pe-notification--vertical",
+  hasContainer: "pe-notification--container"
+};
+
 var rgba = vars.rgba;
 
 var buttonPaddingH = 8; // padding, inner text space
@@ -19,19 +32,17 @@ var vars$1 = {
   font_size: 14,
   line_height: 20,
 
-  color_light_background: rgba(vars.color_light_background, .85),
+  color_light_background: rgba(vars.color_light_background),
   color_light_text: rgba(vars.color_light_foreground, vars.blend_light_dark_primary),
 
-  color_dark_background: rgba(vars.color_dark_background),
+  color_dark_background: rgba(vars.color_dark_background, .85),
   color_dark_text: rgba(vars.color_dark_foreground, vars.blend_light_text_primary)
 };
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var layout = (function (selector, componentVars) {
-  var _ref;
-
-  return [(_ref = {}, _defineProperty(_ref, selector, [flex.layoutCenter, {
+  return [_defineProperty({}, selector, [flex.layoutCenter, {
     width: componentVars.width + "px",
     minHeight: componentVars.min_height + "px",
     position: "relative",
@@ -75,7 +86,29 @@ var layout = (function (selector, componentVars) {
       },
       " .pe-notification__action": flex.layoutEndJustified
     }
-  }]), _defineProperty(_ref, ".pe-notification__holder", [flex.layoutCenterCenter, {
+  }])];
+});
+
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var style = function style(scopes, selector, componentVars, tint) {
+  return [_defineProperty$1({}, scopes.map(function (s) {
+    return s + selector;
+  }).join(","), {
+    color: componentVars["color_" + tint + "_text"],
+    background: componentVars["color_" + tint + "_background"]
+  })];
+};
+
+var color = (function (selector, componentVars) {
+  return [style([".pe-dark-theme", ".pe-dark-theme "], selector, componentVars, "dark"), // has/inside dark theme
+  style(["", ".pe-light-theme", ".pe-light-theme "], selector, componentVars, "light")];
+});
+
+function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var holderLayout = (function (selector) {
+  return [_defineProperty$2({}, selector, [flex.layoutCenterCenter, {
     top: 0,
     right: 0,
     bottom: 0,
@@ -83,52 +116,31 @@ var layout = (function (selector, componentVars) {
     zIndex: vars.z_notification,
     pointerEvents: "none",
 
-    ":not(.pe-notification--container)": {
+    ".pe-multiple--screen": {
       position: "fixed"
     },
-    ".pe-notification--container": {
+    ".pe-multiple--container": {
       position: "absolute"
     }
-  }]), _ref)];
-});
-
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var style = function style(scope, selector, componentVars, tint) {
-  return [_defineProperty$1({}, scope + selector, {
-    color: componentVars["color_" + tint + "_text"],
-    background: componentVars["color_" + tint + "_background"]
-  })];
-};
-
-var color = (function (selector, componentVars) {
-  return [style("", selector, componentVars, "light"), style(".pe-dark-theme", selector, componentVars, "dark"), // has dark theme
-  style(".pe-dark-theme ", selector, componentVars, "dark")];
+  }])];
 });
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var fns = [layout, color];
-var selector = ".pe-notification";
+var selector = "." + classes.component;
+
+var holderFns = [holderLayout];
+var holderSelector = "." + classes.holder;
 
 var customTheme = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
+  return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns), styler.generateStyles([customSelector, holderSelector], _extends$1({}, vars$1, customVars), holderFns);
 };
 
 styler.generateStyles([selector], vars$1, fns);
+styler.generateStyles([holderSelector], vars$1, holderFns);
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var classes = {
-  holder: "pe-notification__holder",
-  content: "pe-notification__content",
-  title: "pe-notification__title",
-  multilineTitle: "pe-notification__title--multiline",
-  action: "pe-notification__action",
-  horizontal: "pe-notification--horizontal",
-  vertical: "pe-notification--vertical",
-  hasContainer: "pe-notification--container"
-};
 
 var DEFAULT_TIME_OUT = 3;
 
@@ -153,14 +165,17 @@ var stopTimer = function stopTimer(state) {
 };
 
 var prepareShow = function prepareShow(state, opts) {
-  state.containerEl = state.containerEl || document.querySelector(opts.containerSelector || "." + classes.holder);
+  console.log("prepareShow", state.element);
+  state.containerEl = state.containerEl || document.querySelector(opts.containerSelector || state.element);
+  console.log("state.containerEl", state.containerEl);
   if (opts.containerSelector) {
-    var holderEl = state.containerEl.querySelector("." + classes.holder);
+    var holderEl = state.containerEl.querySelector(state.element);
     holderEl.classList.add(classes.hasContainer);
   }
 };
 
 var showInstance = function showInstance(state, opts) {
+  console.log("showInstance", opts);
   prepareShow(state, opts);
   stopTimer(state);
   state.transitioning = true;
@@ -186,6 +201,7 @@ var showInstance = function showInstance(state, opts) {
 };
 
 var hideInstance = function hideInstance(state, opts) {
+  console.log("hideInstance", opts);
   stopTimer(state);
   var id = state.instanceId;
   state.transitioning = true;
@@ -204,9 +220,9 @@ var hideInstance = function hideInstance(state, opts) {
 
 var createView = function createView(state, opts) {
   var element = opts.element || "div";
-  var isDarkTheme = opts.theme !== "light";
+  var isDarkTheme = opts.theme === "light" ? false : true;
   var props = _extends({}, filterSupportedAttributes(opts), {
-    class: [state.class, opts.class, isDarkTheme ? "pe-dark-theme" : null, opts.containerSelector ? classes.hasContainer : null, opts.layout === "vertical" ? classes.vertical : classes.horizontal].join(" "),
+    class: [state.class, opts.class, isDarkTheme ? "pe-dark-theme" : null, opts.theme === "light" ? "pe-light-theme" : null, opts.containerSelector ? classes.hasContainer : null, opts.layout === "vertical" ? classes.vertical : classes.horizontal].join(" "),
     oncreate: function oncreate(_ref) {
       var dom = _ref.dom;
 
@@ -300,13 +316,13 @@ var transitions = {
 
 var notification = multiple({
   instance: instance,
-  class: "pe-notification",
-  defaultId: "default_notification",
-  element: ".pe-notification__holder",
-  placeholder: "span.pe-notification__placeholder",
-  bodyShowClass: "pe-notification--open",
+  transitions: transitions,
   queue: true,
-  transitions: transitions
+  defaultId: "default_notification",
+  class: classes.component,
+  element: "." + classes.holder,
+  placeholder: "span." + classes.placeholder,
+  bodyShowClass: classes.open
 });
 
-export { classes, vars$1 as vars };export default notification;
+export { instance, classes, vars$1 as vars };export default notification;

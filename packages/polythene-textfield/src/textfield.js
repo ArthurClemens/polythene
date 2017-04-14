@@ -125,8 +125,10 @@ const view = ({state, attrs}) => {
   const inputEl = state.inputEl();
   const isInvalid = state.isInvalid;
   const element = attrs.element || "div";
-  const type = (!attrs.type || attrs.type === "submit" || attrs.type === "search") ? "text" : attrs.type;
-  const inputTag = attrs.multiline ? "textarea" : "input";
+  const inputType = attrs.multiline ? "textarea" : "input";
+  const type = attrs.multiline
+    ? null
+    : (!attrs.type || attrs.type === "submit" || attrs.type === "search") ? "text" : attrs.type;
   const showError = isInvalid && state.error;
   const validates = attrs.validate || attrs.min || attrs.max || attrs.minlength || attrs.required || attrs.pattern;
   const inactive = attrs.disabled || attrs.readonly;
@@ -205,13 +207,13 @@ const view = ({state, attrs}) => {
           }
         }
       }, label) : null,
-      m(inputTag, Object.assign(
+      m(inputType, Object.assign(
         {},
         {
           class: classes.input,
-          type,
           disabled: attrs.disabled
         },
+        type ? { type } : null,
         attrs.name 
           ? { name: attrs.name }
           : null,

@@ -209,9 +209,7 @@ var layout = (function (selector, componentVars) {
 
     // Non-touch
 
-    "html.pe-no-touch .pe-list--hoverable &, \
-      html.pe-no-touch .pe-list--selectable &, \
-      html.pe-no-touch &.pe-list-tile--hoverable, \
+    "html.pe-no-touch &.pe-list-tile--hoverable, \
       html.pe-no-touch &.pe-list-tile--selectable": {
       ":not(.pe-list__header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected):hover": {
         cursor: "pointer"
@@ -222,8 +220,10 @@ var layout = (function (selector, componentVars) {
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style = function style(scope, selector, componentVars, tint) {
-  return [_defineProperty$1({}, scope + selector, {
+var style = function style(scopes, selector, componentVars, tint) {
+  return [_defineProperty$1({}, scopes.map(function (s) {
+    return s + selector;
+  }).join(","), {
     color: componentVars["color_" + tint + "_title"],
     backgroundColor: componentVars["color_" + tint + "_background"] || "initial",
 
@@ -252,12 +252,17 @@ var style = function style(scope, selector, componentVars, tint) {
       " .pe-list-tile__primary, pe-list-tile__secondary": {
         backgroundColor: componentVars["color_" + tint + "_background_selected"]
       }
+    },
+    "&.pe-list-tile--sticky": {
+      backgroundColor: componentVars["color_" + tint + "_background"] || "inherit"
     }
   })];
 };
 
-var noTouchStyle = function noTouchStyle(scope, selector, componentVars, tint) {
-  return [_defineProperty$1({}, scope + selector + ":hover", {
+var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, tint) {
+  return [_defineProperty$1({}, scopes.map(function (s) {
+    return s + selector + ":hover";
+  }).join(","), {
     ":not(.pe-list__header):not(.pe-list-tile--disabled)": {
       " .pe-list-tile__primary, .pe-list-tile__secondary": {
         backgroundColor: componentVars["color_" + tint + "_background_hover"]
@@ -267,8 +272,12 @@ var noTouchStyle = function noTouchStyle(scope, selector, componentVars, tint) {
 };
 
 var color = (function (selector, componentVars) {
-  return [style("", selector, componentVars, "light"), style(".pe-dark-theme ", selector, componentVars, "dark"), // inside dark theme
-  noTouchStyle("html.pe-no-touch .pe-list-tile--hoverable", selector, componentVars, "light"), noTouchStyle("html.pe-no-touch .pe-dark-theme .pe-list-tile--hoverable", selector, componentVars, "dark"), noTouchStyle("html.pe-no-touch .pe-list--hoverable ", selector, componentVars, "light"), noTouchStyle("html.pe-no-touch .pe-dark-theme .pe-list--hoverable ", selector, componentVars, "dark")];
+  return [style([".pe-dark-theme", ".pe-dark-theme "], selector, componentVars, "dark"), // has/inside dark theme
+  style(["", ".pe-light-theme", ".pe-light-theme "], selector, componentVars, "light"), // normal, has/inside light theme
+
+  noTouchStyle(["html.pe-no-touch .pe-dark-theme .pe-list-tile--hoverable", "html.pe-no-touch .pe-dark-theme .pe-list-tile--hoverable ", "html.pe-no-touch .pe-dark-theme.pe-list--hoverable ", "html.pe-no-touch .pe-dark-theme .pe-list--hoverable "], selector, componentVars, "dark"), // has/inside dark theme
+
+  noTouchStyle(["html.pe-no-touch .pe-list-tile--hoverable", "html.pe-no-touch .pe-list-tile--hoverable ", "html.pe-no-touch .pe-list--hoverable ", "html.pe-no-touch .pe-light-theme .pe-list-tile--hoverable", "html.pe-no-touch .pe-light-theme .pe-list-tile--hoverable ", "html.pe-no-touch .pe-light-theme.pe-list--hoverable ", "html.pe-no-touch .pe-light-theme .pe-list--hoverable "], selector, componentVars, "light")];
 });
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };

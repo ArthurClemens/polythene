@@ -327,7 +327,7 @@ exports[`test Menu 1`] = `
       <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
       <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
     </div>
-    <div class=\"pe-list pe-list--hoverable pe-list--compact\">
+    <div class=\"pe-list pe-list--compact\">
       <div class=\"pe-list-tile\">
         <div style=\"\" class=\"pe-list-tile__primary\">
           <div class=\"pe-list-tile__content\">
@@ -413,7 +413,7 @@ exports[`test Menu 1`] = `
         </div>
       </div>
     </div>
-    <div class=\"pe-list pe-list--hoverable pe-list--compact\">
+    <div class=\"pe-list pe-list--compact\">
       <div class=\"pe-list-tile pe-list-tile--disabled\">
         <div style=\"\" class=\"pe-list-tile__primary\">
           <div class=\"pe-list-tile__content\">

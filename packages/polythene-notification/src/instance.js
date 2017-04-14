@@ -2,17 +2,7 @@ import m from "mithril";
 import { show, hide, filterSupportedAttributes } from "polythene-core";
 import { customTheme } from "./theme";
 import { Timer } from "polythene-utilities";
-
-export const classes = {
-  holder:         "pe-notification__holder",
-  content:        "pe-notification__content",
-  title:          "pe-notification__title",
-  multilineTitle: "pe-notification__title--multiline",
-  action:         "pe-notification__action",
-  horizontal:     "pe-notification--horizontal",
-  vertical:       "pe-notification--vertical",
-  hasContainer:   "pe-notification--container",
-};
+import classes from "./classes";
 
 const DEFAULT_TIME_OUT = 3;
 
@@ -37,14 +27,17 @@ const stopTimer = state => {
 };
 
 const prepareShow = (state, opts) => {
-  state.containerEl = state.containerEl || document.querySelector(opts.containerSelector || `.${classes.holder}`);
+  console.log("prepareShow", state.element);
+  state.containerEl = state.containerEl || document.querySelector(opts.containerSelector || state.element);
+  console.log("state.containerEl", state.containerEl);
   if (opts.containerSelector) {
-    const holderEl = state.containerEl.querySelector(`.${classes.holder}`);
+    const holderEl = state.containerEl.querySelector(state.element);
     holderEl.classList.add(classes.hasContainer);
   }
 };
 
 const showInstance = (state, opts) => {
+  console.log("showInstance", opts);
   prepareShow(state, opts);
   stopTimer(state);
   state.transitioning = true;
@@ -75,6 +68,7 @@ const showInstance = (state, opts) => {
 };
 
 const hideInstance = (state, opts) => {
+  console.log("hideInstance", opts);
   stopTimer(state);
   const id = state.instanceId;
   state.transitioning = true;
@@ -96,7 +90,9 @@ const hideInstance = (state, opts) => {
 
 const createView = (state, opts) => {
   const element = opts.element || "div";
-  const isDarkTheme = opts.theme !== "light";
+  const isDarkTheme = opts.theme === "light"
+    ? false
+    : true;
   const props = Object.assign({},
     filterSupportedAttributes(opts),
     {
@@ -104,6 +100,7 @@ const createView = (state, opts) => {
         state.class,
         opts.class,
         isDarkTheme ? "pe-dark-theme" : null,
+        opts.theme === "light" ? "pe-light-theme" : null,
         opts.containerSelector ? classes.hasContainer : null,
         opts.layout === "vertical" ? classes.vertical : classes.horizontal,
       ].join(" "),

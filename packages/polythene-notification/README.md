@@ -57,7 +57,7 @@ Side notes:
 * The order of elements in the root view may differ - CSS attribute `z-index` is set higher than all other content.
 
 
-### Multiple notification spawners
+#### Multiple notification spawners
 
 Usually you'll use only one location for notifications - on top of all content and centered on screen - but it is possible to have notifications spawned from a different location.
 
@@ -72,6 +72,17 @@ Calls to show the message will then also need to pass that spawn:
 ~~~javascript
 notification.show(messageOptions, { spawn: "notifs" });
 ~~~
+
+#### Spawner position
+
+The notifications holder has by default CSS property `position: fixed`. This will float the messages on top of the content below. In order to show notifications inside a container, use option `position: "container"`:
+
+~~~javascript
+notification.show(messageOptions, { spawn: "notifs", position: "container" });
+~~~
+
+This will render the holder with `position: absolute`. The containing element needs to have `position: relative`.
+
 
 
 ### Showing and hiding messages
@@ -416,6 +427,7 @@ Note that the container has `position: relative`. The messages will have `positi
 | -------------- | -------------- | -------- | ----------- | --------------- |
 | **spawn**      | optional       | String   | "default_notification" | Notification spawner id |
 | **id**         | optional       | String   | "default_notification" | Notification instance id |
+| **position**   | optional       | String   | "screen" | Set to "container" to give the notification holder `position: absolute`, so it will be positioned relative to its container |
 
 
 
@@ -433,6 +445,7 @@ Notification is composed from:
 | -------------- | ----------- | --------------- |
 | Component      | component   | `pe-notification` |
 | Holder         | holder      | `pe-notification__holder` |
+| Placeholder    | placeholder | `pe-notification__placeholder` |
 | Content        | content     | `pe-notification__content` |
 | Title          | title       | `pe-notification__title` |
 | Action         | action      | `pe-notification__action` |
@@ -443,6 +456,7 @@ Notification is composed from:
 | Vertical layout       | vertical          | `pe-notification--vertical` |
 | Has multi line title  | multilineTitle    | `pe-notification__title--multiline` |
 | Has container         | hasContainer      | `pe-notification--container` |
+| Is open               | isOpen            | `pe-notification--open` |
 
 
 

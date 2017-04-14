@@ -1,3 +1,38 @@
+exports[`test Dark theme + light theme 1`] = `
+"<div style=\"background: rgb(255, 255, 255); padding: 10px;\" class=
+\"pe-light-theme\">
+  <div class=
+  \"pe-control pe-switch-control pe-control--off pe-control--regular\">
+  <input name=\"\" type=\"checkbox\" tabindex=\"-1\" class=
+  \"pe-control__input\"><label class=
+  \"pe-control__form-label\"></label>
+    <div class=\"pe-switch-control__track\">
+      <label class=\"pe-control__form-label\"></label>
+    </div><label class=\"pe-control__form-label\"><a tabindex=\"0\"
+    class=\"pe-button pe-icon-button pe-switch-control__thumb\">
+    <div class=\"pe-button__content\">
+      <label class=\"pe-control__form-label\"></label>
+      <div class=\"pe-button__focus\">
+        <label class=\"pe-control__form-label\"></label>
+      </div>
+      <div class=\"pe-switch-control__knob\">
+        <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-shadow pe-shadow--animated\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-shadow__bottom pe-shadow--z-1\">
+            <label class=\"pe-control__form-label\"></label>
+          </div>
+          <div class=\"pe-shadow__top pe-shadow--z-1\">
+            <label class=\"pe-control__form-label\"></label>
+          </div>
+        </div>
+      </div>
+    </div></a></label>
+  </div>
+</div>
+"
+`;
+
 exports[`test No options 1`] = `
 "<div class=
 \"pe-control pe-switch-control pe-control--off pe-control--regular\">

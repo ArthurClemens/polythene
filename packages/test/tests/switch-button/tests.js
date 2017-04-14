@@ -37,8 +37,7 @@ const sizes = (sizes, attrs) => sizes.map(size =>
 export const tests = [
   {
     name: "No options",
-    component: switchButton,
-    attrs: null
+    component: switchButton
   },
   {
     name: "Option: label",
@@ -240,6 +239,22 @@ export const tests = [
         })
       ]
     }
-  }
+  },
+  {
+    name: "Dark theme + light theme",
+    class: "pe-dark-theme",
+    component: {
+      view: () => 
+        m("div", {
+          style: {
+            background: "#fff",
+            padding: "10px"
+          },
+          class: "pe-light-theme"
+        },
+        m(switchButton)
+      )
+    }
+  },
 
 ];

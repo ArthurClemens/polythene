@@ -1,5 +1,5 @@
 import m from 'mithril';
-import { color, layout, selectionControl, vars } from 'polythene-selection-control';
+import { layout, selectionControl, vars } from 'polythene-selection-control';
 import shadow from 'polythene-shadow';
 import iconButton, { vars as vars$1 } from 'polythene-icon-button';
 import { mixin, styler } from 'polythene-css';
@@ -178,8 +178,12 @@ var layout$1 = (function (selector, componentVars) {
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style = function style(scope, selector, componentVars, tint) {
-  return [_defineProperty$1({}, scope + selector, {
+// import { color as selectionControlColor } from "polythene-selection-control";
+
+var style = function style(scopes, selector, componentVars, tint) {
+  return [_defineProperty$1({}, scopes.map(function (s) {
+    return s + selector;
+  }).join(","), {
     ".pe-control--off": {
       " .pe-switch-control__track": {
         opacity: componentVars["color_" + tint + "_track_off_opacity"],
@@ -236,14 +240,22 @@ var style = function style(scope, selector, componentVars, tint) {
   })];
 };
 
-var color$1 = (function (selector, componentVars) {
-  return [color(selector, componentVars)].concat([style("", selector, componentVars, "light"), style(".pe-dark-theme ", selector, componentVars, "dark") // inside dark theme
-  ]);
+var color = (function (selector, componentVars) {
+  return [style([".pe-dark-theme", ".pe-dark-theme "], selector, componentVars, "dark"), // has/inside dark theme
+  style(["", ".pe-light-theme", ".pe-light-theme "], selector, componentVars, "light")];
 });
+
+// export default (selector, componentVars) =>
+//   [selectionControlColor(selector, componentVars)].concat(
+//     [
+//       style("",                selector, componentVars, "light"),
+//       style(".pe-dark-theme ", selector, componentVars, "dark" ) // inside dark theme
+//     ]
+//   );
 
 var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var fns = [layout$1, color$1];
+var fns = [layout$1, color];
 var selector = ".pe-control.pe-switch-control";
 
 var customTheme = function customTheme(customSelector, customVars) {

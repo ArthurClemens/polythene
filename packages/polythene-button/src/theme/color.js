@@ -1,9 +1,9 @@
-const style = (scope, selector, componentVars, tint) => {
+const style = (scopes, selector, componentVars, tint) => {
   const normalBorder   = componentVars["color_" + tint + "_border"]          || "transparent";
   const activeBorder   = componentVars["color_" + tint + "_active_border"]   || normalBorder;
   const disabledBorder = componentVars["color_" + tint + "_disabled_border"] || normalBorder;
   return [{
-    [scope + selector]: {
+    [scopes.map(s => s + selector).join(",")]: {
       "&, &:link, &:visited": {
         color: componentVars["color_" + tint + "_text"]
       },
@@ -43,11 +43,11 @@ const style = (scope, selector, componentVars, tint) => {
   }];
 };
 
-const noTouchStyle = (scope, selector, componentVars, tint) => {
+const noTouchStyle = (scopes, selector, componentVars, tint) => {
   const normalBorder = componentVars["color_" + tint + "_border"] || "transparent";
   const hoverBorder  = componentVars["color_" + tint + "_border"] || normalBorder;
   return [{
-    [scope + selector + ":hover"]: {
+    [scopes.map(s => s + selector + ":hover").join(",")]: {
       ":not(.pe-button--selected):not(.pe-button--inactive) .pe-button__wash": {
         backgroundColor: componentVars["color_" + tint + "_hover_background"],
         borderColor: hoverBorder
@@ -57,9 +57,9 @@ const noTouchStyle = (scope, selector, componentVars, tint) => {
 };
 
 export default (selector, componentVars) => [
-  style(       "",                                 selector, componentVars, "light"),
-  style(       ".pe-dark-theme ",                  selector, componentVars, "dark" ), // inside dark theme
-  noTouchStyle("html.pe-no-touch ",                selector, componentVars, "light"),
-  noTouchStyle("html.pe-no-touch .pe-dark-theme ", selector, componentVars, "dark" ), // inside dark theme
+  style([".pe-dark-theme", ".pe-dark-theme "], selector, componentVars, "dark"), // has/inside dark theme
+  style(["", ".pe-light-theme", ".pe-light-theme "], selector, componentVars, "light"), // normal, has/inside light theme
+  noTouchStyle(["html.pe-no-touch .pe-dark-theme "], selector, componentVars, "dark"), // inside dark theme
+  noTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-theme "], selector, componentVars, "light"),
 ];
 

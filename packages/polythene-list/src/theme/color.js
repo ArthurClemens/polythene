@@ -1,5 +1,5 @@
-const style = (scope, selector, componentVars, tint) => [{
-  [scope + selector]: {
+const style = (scopes, selector, componentVars, tint) => [{
+  [scopes.map(s => s + selector).join(",")]: {
     backgroundColor: componentVars["color_" + tint + "_background"] || "initial",
 
     ".pe-list--borders": {
@@ -18,12 +18,19 @@ const style = (scope, selector, componentVars, tint) => [{
       }
     }
   },
-  " .pe-list + .pe-list": {
-    borderColor: componentVars["color_" + tint + "_border"]
+  [selector + " + .pe-list"]: {
+    borderTopColor: componentVars["color_" + tint + "_border"]
   }
 }];
 
 export default (selector, componentVars) => [
-  style("",                selector, componentVars, "light"),
-  style(".pe-dark-theme ", selector, componentVars, "dark" ), // inside dark theme
+  style([
+    ".pe-dark-theme",
+    ".pe-dark-theme "
+  ], selector, componentVars, "dark"), // has/inside dark theme
+  style([
+    "",
+    ".pe-light-theme",
+    ".pe-light-theme "
+  ], selector, componentVars, "light"), // normal, has/inside light theme
 ];

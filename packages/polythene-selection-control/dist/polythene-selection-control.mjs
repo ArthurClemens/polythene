@@ -204,8 +204,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 // Returns a style function to be used by checkbox and radio-button
 
-var style = function style(scope, selector, componentVars, tint) {
-  return [_defineProperty({}, scope + selector, {
+var style = function style(scopes, selector, componentVars, tint) {
+  return [_defineProperty({}, scopes.map(function (s) {
+    return s + selector;
+  }).join(","), {
     color: componentVars["color_" + tint + "_on"], // override by specifying "color"
 
     " .pe-control__label": {
@@ -251,8 +253,8 @@ var style = function style(scope, selector, componentVars, tint) {
 };
 
 var color = (function (selector, componentVars) {
-  return [style("", selector, componentVars, "light"), style(".pe-dark-theme ", selector, componentVars, "dark") // inside dark theme
-  ];
+  return [style([".pe-dark-theme", ".pe-dark-theme "], selector, componentVars, "dark"), // has/inside dark theme
+  style(["", ".pe-light-theme", ".pe-light-theme "], selector, componentVars, "light")];
 });
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }

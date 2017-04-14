@@ -65,10 +65,12 @@ var layout = (function (selector, componentVars) {
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style = function style(scope, selector, componentVars, tint) {
+var style = function style(scopes, selector, componentVars, tint) {
   var _ref;
 
-  return [(_ref = {}, _defineProperty$1(_ref, scope + selector, {
+  return [(_ref = {}, _defineProperty$1(_ref, scopes.map(function (s) {
+    return s + selector;
+  }).join(","), {
     backgroundColor: componentVars["color_" + tint + "_background"] || "initial",
 
     ".pe-list--borders": {
@@ -86,13 +88,14 @@ var style = function style(scope, selector, componentVars, tint) {
         }
       }
     }
-  }), _defineProperty$1(_ref, " .pe-list + .pe-list", {
-    borderColor: componentVars["color_" + tint + "_border"]
+  }), _defineProperty$1(_ref, selector + " + .pe-list", {
+    borderTopColor: componentVars["color_" + tint + "_border"]
   }), _ref)];
 };
 
 var color = (function (selector, componentVars) {
-  return [style("", selector, componentVars, "light"), style(".pe-dark-theme ", selector, componentVars, "dark")];
+  return [style([".pe-dark-theme", ".pe-dark-theme "], selector, componentVars, "dark"), // has/inside dark theme
+  style(["", ".pe-light-theme", ".pe-light-theme "], selector, componentVars, "light")];
 });
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -114,16 +117,14 @@ var classes = {
   borders: "pe-list--borders",
   indentedBorders: "pe-list--indented-borders",
   hasHeader: "pe-list--header",
-  compact: "pe-list--compact",
-  hoverable: "pe-list--hoverable",
-  selectable: "pe-list--selectable"
+  compact: "pe-list--compact"
 };
 
 var view = function view(vnode) {
   var attrs = vnode.attrs;
   var element = attrs.element || "div";
   var props = _extends({}, filterSupportedAttributes(attrs), {
-    class: [classes.component, attrs.borders ? classes.borders : null, attrs.indentedBorders ? classes.indentedBorders : null, attrs.hoverable ? classes.hoverable : null, attrs.selectable ? classes.selectable : null, attrs.header ? classes.hasHeader : null, attrs.compact ? classes.compact : null, attrs.class].join(" ")
+    class: [classes.component, attrs.borders ? classes.borders : null, attrs.indentedBorders ? classes.indentedBorders : null, attrs.header ? classes.hasHeader : null, attrs.compact ? classes.compact : null, attrs.class].join(" ")
   });
   var headerOpts = void 0;
   if (attrs.header) {

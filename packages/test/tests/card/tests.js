@@ -1175,6 +1175,52 @@ export const tests = [
         }
       ]
     }
+  },
+  {
+    name: "Dark theme + light theme",
+    class: "pe-dark-theme",
+    component: {
+      view: () => m("div", {
+        style: {
+          background: "#fff"
+        },
+        class: "pe-light-theme"
+      }, m(card, {
+        content: [
+          {
+            header: {
+              title: titleLineText,
+              subtitle: infoLineText,
+              icon: {
+                type: "large",
+                avatar: true,
+                src: avatarImageUrl("1.png")
+              }
+            }
+          }, {
+            media: {
+              content: m("img", {
+                src: landscapeImage
+              })
+            }
+          }, {
+            primary: {
+              title: "Primary title " + shortIpsum,
+              subtitle: "Subtitle " + shortIpsum
+            }
+          }, {
+            text: {
+              content: ipsum
+            }
+          }, {
+            actions: {
+              bordered: true,
+              content: twoButtonAndLessRow
+            }
+          }
+        ]
+      }))
+    }
   }
 
 ];

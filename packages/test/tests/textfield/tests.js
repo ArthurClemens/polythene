@@ -549,7 +549,8 @@ export const tests = [
         })
       ], {dark: true})
     }
-  },{
+  },
+  {
     name: "Option: readonly -- dark theme",
     class: "pe-dark-theme",
     component: {
@@ -560,6 +561,18 @@ export const tests = [
         })
       ], {dark: true})
     }
-  }
+  },
+  {
+    name: "Dark theme + light theme",
+    class: "pe-dark-theme",
+    component: {
+      view: () => block([
+        m(textfield, {
+          label: "Your Name",
+          class: "pe-light-theme"
+        })
+      ])
+    }
+  },
 ];
 

@@ -306,5 +306,20 @@ export const tests = [
       disabled: true
     }
   },
+  {
+    name: "Dark theme + light theme",
+    interactive: true,
+    class: "pe-dark-theme",
+    component: {
+      view: () =>
+        m("div", {
+          style: {
+            background: "#fff",
+            padding: "10px"
+          },
+          class: "pe-light-theme"
+        }, m(slider, {value: 50}))
+    }
+  },
 ];
 

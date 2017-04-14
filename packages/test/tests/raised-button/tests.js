@@ -180,4 +180,25 @@ export const tests = [
       disabled: true
     }
   },
+  {
+    name: "Option: label -- dark theme + light theme",
+    class: "pe-dark-theme",
+    component: {
+      view: () => m(".pe-light-theme", {
+        style: { background: "#fff" }
+      }, [
+        m(raisedButton, {
+          label: "Normal"
+        }),
+        m(raisedButton, {
+          label: "Disabled",
+          disabled: true
+        }),
+        m(raisedButton, {
+          label: "Theme",
+          class: "tests-raised-button-themed-button"
+        })
+      ])
+    }
+  }
 ];

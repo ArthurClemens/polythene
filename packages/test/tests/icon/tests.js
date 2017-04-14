@@ -9,7 +9,8 @@ import wrenchSvg from "mmsvg/zondicons/msvg/wrench";
 
 icon.theme(".tests-icon-themed-icon", {
   size_regular: 50,
-  color_light: "purple"
+  color_light: "purple",
+  color_dark: "orange"
 });
 
 export const tests = [
@@ -141,5 +142,31 @@ export const tests = [
     },
     children: m(svg, [iconStars])
   },
+  {
+    name: "Themed (color and size) -- dark theme",
+    component: icon,
+    class: "pe-dark-theme",
+    attrs: {
+      msvg: iconStars,
+      class: "tests-icon-themed-icon"
+    }
+  },
+  {
+    name: "Dark theme + light theme",
+    class: "pe-dark-theme",
+    component: {
+      view: () => m(".pe-light-theme", {
+        style: { background: "#fff" }
+      }, [
+        m(icon, {
+          msvg: iconStars
+        }),
+        m(icon, {
+          msvg: iconStars,
+          class: "tests-icon-themed-icon"
+        })
+      ])
+    }
+  }
 ];
 

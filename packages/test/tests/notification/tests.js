@@ -147,7 +147,7 @@ export const tests = [
     }
   },
   {
-    name: "Option: title (1 line), action, theme (\"light\")",
+    name: "Option: title (1 line), action -- light theme",
     interactive: true,
     exclude: true,
     component: {
@@ -223,7 +223,7 @@ export const tests = [
             containerSelector: "#notifs1"
           },
           {
-            spawn: "containerCmp1"
+            spawn: "container1"
           }
         ),
         m("#notifs1",
@@ -233,7 +233,7 @@ export const tests = [
               height: "180px",
             }
           },
-          m(notification, { spawn: "containerCmp1" })
+          m(notification, { spawn: "container1", position: "container" })
         ),
         buttonRow(
           {
@@ -241,7 +241,7 @@ export const tests = [
             containerSelector: "#notifs2",
           },
           {
-            spawn: "containerCmp2"
+            spawn: "container2"
           }
         ),
         m("#notifs2",
@@ -251,7 +251,7 @@ export const tests = [
               height: "180px",
             }
           },
-          m(notification, { spawn: "containerCmp2" })
+          m(notification, { spawn: "container2", position: "container" })
         )
       ]
     }

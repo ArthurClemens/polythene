@@ -136,11 +136,13 @@ var layout = (function (selector, componentVars) {
 
 function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style = function style(scope, selector, componentVars, tint) {
+var style = function style(scopes, selector, componentVars, tint) {
   var normalBorder = componentVars["color_" + tint + "_border"] || "transparent";
   var activeBorder = componentVars["color_" + tint + "_active_border"] || normalBorder;
   var disabledBorder = componentVars["color_" + tint + "_disabled_border"] || normalBorder;
-  return [_defineProperty$2({}, scope + selector, {
+  return [_defineProperty$2({}, scopes.map(function (s) {
+    return s + selector;
+  }).join(","), {
     "&, &:link, &:visited": {
       color: componentVars["color_" + tint + "_text"]
     },
@@ -179,10 +181,12 @@ var style = function style(scope, selector, componentVars, tint) {
   })];
 };
 
-var noTouchStyle = function noTouchStyle(scope, selector, componentVars, tint) {
+var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, tint) {
   var normalBorder = componentVars["color_" + tint + "_border"] || "transparent";
   var hoverBorder = componentVars["color_" + tint + "_border"] || normalBorder;
-  return [_defineProperty$2({}, scope + selector + ":hover", {
+  return [_defineProperty$2({}, scopes.map(function (s) {
+    return s + selector + ":hover";
+  }).join(","), {
     ":not(.pe-button--selected):not(.pe-button--inactive) .pe-button__wash": {
       backgroundColor: componentVars["color_" + tint + "_hover_background"],
       borderColor: hoverBorder
@@ -191,8 +195,10 @@ var noTouchStyle = function noTouchStyle(scope, selector, componentVars, tint) {
 };
 
 var color = (function (selector, componentVars) {
-  return [style("", selector, componentVars, "light"), style(".pe-dark-theme ", selector, componentVars, "dark"), // inside dark theme
-  noTouchStyle("html.pe-no-touch ", selector, componentVars, "light"), noTouchStyle("html.pe-no-touch .pe-dark-theme ", selector, componentVars, "dark")];
+  return [style([".pe-dark-theme", ".pe-dark-theme "], selector, componentVars, "dark"), // has/inside dark theme
+  style(["", ".pe-light-theme", ".pe-light-theme "], selector, componentVars, "light"), // normal, has/inside light theme
+  noTouchStyle(["html.pe-no-touch .pe-dark-theme "], selector, componentVars, "dark"), // inside dark theme
+  noTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-theme "], selector, componentVars, "light")];
 });
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
