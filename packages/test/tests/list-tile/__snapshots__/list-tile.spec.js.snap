@@ -418,6 +418,36 @@ exports[`test Option: selected 1`] = `
 "
 `;
 
+exports[`test Option: style (colors) 1`] = `
+"<div style=
+\"color: rgb(255, 255, 255); background-color: rgb(239, 108, 0);\"
+class=\"pe-list-tile pe-list-tile--front\">
+  <div style=\"\" class=\"pe-list-tile__primary\">
+    <div class=
+    \"pe-list-tile__content pe-list-tile__content--front\">
+      <div class=\"pe-icon pe-icon--medium\">
+        <div class=\"pe-svg\">
+          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+          height=\"24\" viewbox=\"0 0 24 24\">
+            <path d=
+            \"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\">
+            </path>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div style=
+    \"color: rgb(255, 255, 255); background-color: rgb(239, 108, 0);\"
+    class=\"pe-list-tile__content\">
+      <div class=\"pe-list-tile__title\">
+        Ancillary Justice
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
 exports[`test Option: subtitle 1`] = `
 "<div class=\"pe-list-tile pe-list-tile--subtitle\">
   <div style=\"\" class=\"pe-list-tile__primary\">
