@@ -613,7 +613,7 @@ export const tests = [
               src: landscapeImage
             }),
             overlay: {
-              class: "pe-dark-theme",
+              class: "pe-dark-tone",
               sheet: true,
               content: [
                 {
@@ -647,7 +647,7 @@ export const tests = [
               src: landscapeImage
             }),
             overlay: {
-              class: "pe-dark-theme",
+              class: "pe-dark-tone",
               content: [
                 {
                   primary: { title: "Title" }
@@ -871,7 +871,7 @@ export const tests = [
     component: card,
     attrs: {
       style: { maxWidth: "360px", backgroundColor: "#B89E58" },
-      class: "pe-dark-theme",
+      class: "pe-dark-tone",
       content: [
         {
           primary: {
@@ -904,7 +904,7 @@ export const tests = [
     component: card,
     attrs: {
       style: { maxWidth: "360px", backgroundColor: "#227586" },
-      class: "pe-dark-theme",
+      class: "pe-dark-tone",
       content: [
         {
           primary: {
@@ -937,7 +937,7 @@ export const tests = [
     component: card,
     attrs: {
       style: { maxWidth: "360px", backgroundColor: "#871E6A" },
-      class: "pe-dark-theme",
+      class: "pe-dark-tone",
       content: [
         {
           primary: {
@@ -1139,7 +1139,7 @@ export const tests = [
   {
     name: "Texts -- dark theme class",
     component: card,
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     attrs: {
       content: [
         {
@@ -1178,13 +1178,13 @@ export const tests = [
   },
   {
     name: "Dark theme class + light theme class",
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: {
       view: () => m("div", {
         style: {
           background: "#fff"
         },
-        class: "pe-light-theme"
+        class: "pe-light-tone"
       }, m(card, {
         content: [
           {

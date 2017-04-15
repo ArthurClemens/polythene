@@ -15,7 +15,7 @@ describe("List tile component", () => {
       wrap: false,
       indent: false
     });
-    expect(html).toContain("<div class=\"pe-list-tile        \">");
+    expect(html).toContain("<div class=\"pe-list-tile          \">");
   });
   it("child", () => {
     const cmp = m(listTile, {}, m("span", "Child"));

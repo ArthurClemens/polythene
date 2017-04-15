@@ -65,8 +65,8 @@ var style = function style(scopes, selector, componentVars, tint) {
 };
 
 var color = (function (selector, componentVars) {
-  return [style([".pe-dark-theme", ".pe-dark-theme "], selector, componentVars, "dark"), // has/inside dark theme
-  style(["", ".pe-light-theme", ".pe-light-theme "], selector, componentVars, "light")];
+  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 });
 
 function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }

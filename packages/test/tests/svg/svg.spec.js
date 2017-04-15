@@ -15,7 +15,7 @@ describe("SVG component", () => {
       wrap: false,
       indent: false
     });
-    expect(html).toContain("<div class=\"pe-svg \"></div>");
+    expect(html).toContain("<div class=\"pe-svg   \"></div>");
   });
   it("child", () => {
     const cmp = m(svg, {}, m("span", "Child"));

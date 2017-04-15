@@ -117,7 +117,7 @@ If the component - or a component's parent - has option `tone` set to "dark", th
 | **class** | optional | String |  | Extra CSS class appended to `pe-ripple` |
 | **style**     | optional | Object |       | For setting simple style attributes |
 | **id** | optional | String | | HTML element id |
-| **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-theme`); use "light" to locally inverse (sets class `pe-light-theme`) |
+| **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 ### Ripple specific options
 

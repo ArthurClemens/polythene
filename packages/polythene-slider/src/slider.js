@@ -299,8 +299,8 @@ const view = ({ attrs, state }) => {
         state.hasFocus ? classes.hasFocus : null,
         state.fraction() === 0 ? classes.isAtMin : null,
         hasTicks ? classes.hasTicks : null,
-        attrs.tone === "dark" ? "pe-dark-theme" : null,
-        attrs.tone === "light" ? "pe-light-theme" : null,
+        attrs.tone === "dark" ? "pe-dark-tone" : null,
+        attrs.tone === "light" ? "pe-light-tone" : null,
         attrs.class
       ].join(" ")
     }

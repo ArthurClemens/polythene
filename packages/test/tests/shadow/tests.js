@@ -95,7 +95,7 @@ export const tests = [
   {
     name: "Interactive option: animated -- dark theme class",
     interactive: true,
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: interactiveTest
   }
 

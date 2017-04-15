@@ -169,8 +169,8 @@ const view = ({state, attrs}) => {
         attrs.hideSpinner !== false ? classes.hideSpinner : "",
         attrs.hideClear !== false ? classes.hideClear : "",
         attrs.hideValidation ? classes.hideValidation : "",
-        attrs.tone === "dark" ? "pe-dark-theme" : null,
-        attrs.tone === "light" ? "pe-light-theme" : null,
+        attrs.tone === "dark" ? "pe-dark-tone" : null,
+        attrs.tone === "light" ? "pe-light-tone" : null,
         attrs.class
       ].join(" "),
       oncreate: ({ dom }) => {

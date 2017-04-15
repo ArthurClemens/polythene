@@ -325,7 +325,7 @@ export const tests = [
 
   {
     name: "Option: checked -- dark theme class",
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: group(
       {
         label: "Label"
@@ -338,7 +338,7 @@ export const tests = [
   },
   {
     name: "Themed radio button (colors) -- dark theme class",
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: group(
       {
         label: "Label",
@@ -353,7 +353,7 @@ export const tests = [
   },
   {
     name: "Option: disabled -- dark theme class",
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     interactive: true,
     component: group(
       {
@@ -369,7 +369,7 @@ export const tests = [
   },
   {
     name: "Dark theme class + light theme class",
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: {
       view: () => 
         m("div", {
@@ -377,7 +377,7 @@ export const tests = [
             background: "#fff",
             padding: "20px"
           },
-          class: "pe-light-theme"
+          class: "pe-light-tone"
         },
         m(radioGroup)
       )

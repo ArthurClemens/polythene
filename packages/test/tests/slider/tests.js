@@ -282,7 +282,7 @@ export const tests = [
   {
     name: "Option: value (50) -- dark theme class",
     interactive: true,
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: slider,
     attrs: {
       value: 50
@@ -290,13 +290,13 @@ export const tests = [
   },
   {
     name: "With icons -- dark theme class",
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     interactive: true,
     component: volumeSlider
   },
   {
     name: "Option: disabled -- dark theme class",
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     interactive: true,
     component: slider,
     attrs: {
@@ -309,7 +309,7 @@ export const tests = [
   {
     name: "Dark theme class + light theme class",
     interactive: true,
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: {
       view: () =>
         m("div", {
@@ -317,7 +317,7 @@ export const tests = [
             background: "#fff",
             padding: "10px"
           },
-          class: "pe-light-theme"
+          class: "pe-light-tone"
         }, m(slider, {value: 50}))
     }
   },

@@ -132,14 +132,14 @@ export const tests = [
   {
     name: "Child node (icon component) -- dark theme class",
     component: iconButton,
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     attrs: null,
     children: m(icon, {msvg: iconFavorite})
   },
   {
     name: "Themed (color and size) -- dark theme class",
     component: iconButton,
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     attrs: {
       icon: {
         msvg: iconFavorite
@@ -149,9 +149,9 @@ export const tests = [
   },
   {
     name: "Dark theme class + light theme class",
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: {
-      view: () => m(".pe-light-theme", {
+      view: () => m(".pe-light-tone", {
         style: { background: "#fff", padding: "10px" }
       }, [
         m(iconButton, {

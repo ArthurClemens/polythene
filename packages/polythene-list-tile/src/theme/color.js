@@ -46,18 +46,18 @@ const noTouchStyle = (scopes, selector, componentVars, tint) => [{
 }];
 
 export default (selector, componentVars) => [
-  style([".pe-dark-theme", ".pe-dark-theme "], selector, componentVars, "dark" ), // has/inside dark theme
-  style(["", ".pe-light-theme", ".pe-light-theme "], selector, componentVars, "light"), // normal, has/inside light theme
+  style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark" ), // has/inside dark theme
+  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light theme
 
   noTouchStyle([
-    "html.pe-no-touch .pe-dark-theme .pe-list-tile--hoverable",
-    "html.pe-no-touch .pe-dark-theme .pe-list-tile--hoverable "
+    "html.pe-no-touch .pe-dark-tone .pe-list-tile--hoverable",
+    "html.pe-no-touch .pe-dark-tone .pe-list-tile--hoverable "
   ], selector, componentVars, "dark" ), // has/inside dark theme
 
   noTouchStyle([
     "html.pe-no-touch .pe-list-tile--hoverable",
     "html.pe-no-touch .pe-list-tile--hoverable ",
-    "html.pe-no-touch .pe-light-theme .pe-list-tile--hoverable",
-    "html.pe-no-touch .pe-light-theme .pe-list-tile--hoverable "
+    "html.pe-no-touch .pe-light-tone .pe-list-tile--hoverable",
+    "html.pe-no-touch .pe-light-tone .pe-list-tile--hoverable "
   ], selector, componentVars, "light" ), // normal, has/inside light theme
 ];

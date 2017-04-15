@@ -31,12 +31,12 @@ const overlayStyle = (scopes, selector, componentVars, tint) => [{
 }];
 
 export default (selector, componentVars) => [
-  baseStyle([".pe-dark-theme", ".pe-dark-theme "], selector, componentVars, "dark" ), // has/inside dark theme
-  baseStyle(["", ".pe-light-theme", ".pe-light-theme "], selector, componentVars, "light"), // normal, has/inside light theme
+  baseStyle([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark" ), // has/inside dark theme
+  baseStyle(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light theme
 
-  contentStyle([".pe-dark-theme", ".pe-dark-theme "], selector, componentVars, "dark" ), // has/inside dark theme
-  contentStyle(["", ".pe-light-theme", ".pe-light-theme "], selector, componentVars, "light"), // normal, has/inside light theme
+  contentStyle([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark" ), // has/inside dark theme
+  contentStyle(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light theme
 
-  overlayStyle([".pe-dark-theme", ".pe-dark-theme "], selector, componentVars, "dark" ), // has/inside dark theme
-  overlayStyle(["", ".pe-light-theme", ".pe-light-theme "], selector, componentVars, "light"), // normal, has/inside light theme
+  overlayStyle([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark" ), // has/inside dark theme
+  overlayStyle(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light theme
 ];

@@ -18,7 +18,7 @@ exports[`test Child node 1`] = `
 "
 `;
 
-exports[`test Interactive option: animated -- dark theme 1`] = `
+exports[`test Interactive option: animated -- dark theme class 1`] = `
 "<div class=\"absolute absolute--fill\">
   Click me
 </div>

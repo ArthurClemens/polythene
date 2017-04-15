@@ -294,7 +294,7 @@ export const tests = [
         body: m.trust(longText),
         modal: true,
         backdrop: true,
-        class: "pe-dark-theme"
+        class: "pe-dark-tone"
       }))
     }
   },
@@ -308,7 +308,7 @@ export const tests = [
         body: m.trust(longText),
         modal: true,
         backdrop: true,
-        class: "pe-dark-theme pe-light-theme"
+        class: "pe-dark-tone pe-light-tone"
       }))
     }
   },
@@ -322,7 +322,7 @@ export const tests = [
         body: m.trust(longText),
         modal: true,
         backdrop: true,
-        class: "pe-dark-theme",
+        class: "pe-dark-tone",
         tone: "light"
       }))
     }

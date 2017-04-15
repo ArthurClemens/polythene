@@ -15,7 +15,7 @@ describe("Slider component", () => {
       wrap: false,
       indent: false
     });
-    expect(html).toContain("<div class=\"pe-slider   pe-slider--track   pe-slider--min  \"><div class=\"pe-slider__track\"><div class=\"pe-slider__track-part pe-slider__track-value\"><div class=\"pe-slider__track-bar\"><div class=\"pe-slider__track-bar-value\"></div></div></div><div tabindex=\"0\" class=\"pe-slider__control\"></div><div style=\"max-width: 100%;\" class=\"pe-slider__track-part pe-slider__track-rest\"><div class=\"pe-slider__track-bar\"><div class=\"pe-slider__track-bar-value\"></div></div></div></div></div>");
+    expect(html).toContain("<div class=\"pe-slider   pe-slider--track   pe-slider--min    \"><div class=\"pe-slider__track\"><div class=\"pe-slider__track-part pe-slider__track-value\"><div class=\"pe-slider__track-bar\"><div class=\"pe-slider__track-bar-value\"></div></div></div><div tabindex=\"0\" class=\"pe-slider__control\"></div><div style=\"max-width: 100%;\" class=\"pe-slider__track-part pe-slider__track-rest\"><div class=\"pe-slider__track-bar\"><div class=\"pe-slider__track-bar-value\"></div></div></div></div></div>");
   });
   it("option id", () => {
     const cmp = m(slider, {id: "id-x"});

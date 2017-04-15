@@ -101,8 +101,8 @@ var style = function style(scopes, selector, componentVars, tint) {
 };
 
 var color = (function (selector, componentVars) {
-  return [style([".pe-dark-theme", ".pe-dark-theme "], selector, componentVars, "dark"), // has/inside dark theme
-  style(["", ".pe-light-theme", ".pe-light-theme "], selector, componentVars, "light")];
+  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 });
 
 function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -217,8 +217,8 @@ var hideInstance = function hideInstance(state, opts) {
 var createView = function createView(state, opts) {
   var element = opts.element || "div";
   var props = _extends({}, filterSupportedAttributes(opts), {
-    class: [state.class, opts.tone === "light" ? null : "pe-dark-theme", // default dark theme
-    opts.tone === "light" ? "pe-light-theme" : null, opts.containerSelector ? classes.hasContainer : null, opts.layout === "vertical" ? classes.vertical : classes.horizontal, opts.tone === "dark" ? "pe-dark-theme" : null, opts.tone === "light" ? "pe-light-theme" : null, opts.class].join(" "),
+    class: [state.class, opts.tone === "light" ? null : "pe-dark-tone", // default dark theme
+    opts.tone === "light" ? "pe-light-tone" : null, opts.containerSelector ? classes.hasContainer : null, opts.layout === "vertical" ? classes.vertical : classes.horizontal, opts.tone === "dark" ? "pe-dark-tone" : null, opts.tone === "light" ? "pe-light-tone" : null, opts.class].join(" "),
     oncreate: function oncreate(_ref) {
       var dom = _ref.dom;
 

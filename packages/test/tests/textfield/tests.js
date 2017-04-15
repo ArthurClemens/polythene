@@ -505,7 +505,7 @@ export const tests = [
 
   {
     name: "Option: label -- dark theme class",
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: {
       view: () => block([
         m(textfield, {
@@ -517,7 +517,7 @@ export const tests = [
   {
     name: "Option: floatingLabel -- dark theme class",
     interactive: true,
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: {
       view: () => block([
         m(textfield, {
@@ -538,7 +538,7 @@ export const tests = [
   {
     name: "Option: type email, required -- dark theme class",
     interactive: true,
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: {
       view: () => block([
         m(textfield, {
@@ -553,7 +553,7 @@ export const tests = [
   },
   {
     name: "Option: disabled (input) -- dark theme class",
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: {
       view: () => block([
         m(textfield, {
@@ -565,7 +565,7 @@ export const tests = [
   },
   {
     name: "Option: readonly -- dark theme class",
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: {
       view: () => block([
         m(textfield, {
@@ -577,12 +577,12 @@ export const tests = [
   },
   {
     name: "Dark theme class + light theme class",
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: {
       view: () => block([
         m(textfield, {
           label: "Your Name",
-          class: "pe-light-theme"
+          class: "pe-light-tone"
         })
       ])
     }

@@ -1,5 +1,5 @@
-exports[`test Dark theme + light theme 1`] = `
-"<div class=\"pe-menu pe-menu--permanent pe-light-theme\">
+exports[`test Dark theme class + light theme class 1`] = `
+"<div class=\"pe-menu pe-menu--permanent pe-light-tone\">
   <div class=\"pe-menu__content\">
     <div class=\"pe-shadow pe-shadow--animated\">
       <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -40,7 +40,49 @@ exports[`test Dark theme + light theme 1`] = `
 "
 `;
 
-exports[`test Menu items -- dark theme 1`] = `
+exports[`test Dark theme class + light tone 1`] = `
+"<div class=\"pe-menu pe-menu--permanent pe-light-tone\">
+  <div class=\"pe-menu__content\">
+    <div class=\"pe-shadow pe-shadow--animated\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+    </div>
+    <div class=\"pe-list\">
+      <div class=\"pe-list-tile\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Yes
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-list-tile\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              No
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Menu items -- dark theme class 1`] = `
 "<div class=\"pe-menu pe-menu--permanent pe-menu--width-5\">
   <div class=\"pe-menu__content\">
     <div class=\"pe-shadow pe-shadow--animated\">
@@ -673,7 +715,61 @@ exports[`test Option: size 1`] = `
 "
 `;
 
-exports[`test Simple menu - permanent -- dark theme 1`] = `
+exports[`test Option: style 1`] = `
+"<div style=
+\"background-color: rgb(33, 150, 243); color: rgb(255, 255, 255);\"
+class=\"pe-menu pe-menu--permanent pe-dark-tone\">
+  <div style=
+  \"background-color: rgb(33, 150, 243); color: rgb(255, 255, 255);\"
+  class=\"pe-menu__content\">
+    <div class=\"pe-shadow pe-shadow--animated\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+    </div>
+    <div class=\"pe-list\">
+      <div style=
+      \"background-color: rgb(33, 150, 243); color: rgb(255, 255, 255);\"
+      class=\"pe-list-tile\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div style=
+          \"background-color: rgb(33, 150, 243); color: rgb(255, 255, 255);\"
+          class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Yes
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style=
+      \"background-color: rgb(33, 150, 243); color: rgb(255, 255, 255);\"
+      class=\"pe-list-tile\">
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple__mask\">
+            <div class=\"pe-ripple__waves\"></div>
+          </div>
+        </div>
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div style=
+          \"background-color: rgb(33, 150, 243); color: rgb(255, 255, 255);\"
+          class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              No
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Simple menu - permanent -- dark theme class 1`] = `
 "<div class=\"pe-menu pe-menu--permanent\">
   <div class=\"pe-menu__content\">
     <div class=\"pe-shadow pe-shadow--animated\">

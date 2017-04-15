@@ -126,7 +126,7 @@ export const tests = [
   // Dark theme
   {
     name: "Simple menu - permanent -- dark theme class",
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: {
       view: () =>
         m(menu, {
@@ -137,16 +137,16 @@ export const tests = [
   },
   {
     name: "Menu items -- dark theme class",
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: menuItems
   },
   {
     name: "Dark theme class + light theme class",
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: {
       view: () =>
         m(menu, {
-          class: "pe-light-theme",
+          class: "pe-light-tone",
           content: simpleMenuContent,
           permanent: true
         })

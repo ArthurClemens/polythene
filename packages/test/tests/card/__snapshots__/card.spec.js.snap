@@ -1588,7 +1588,7 @@ exports[`test Card events 1`] = `
 
 exports[`test Custom card blue 1`] = `
 "<div style=\"max-width: 360px; background-color: rgb(34, 117, 134);\"
-class=\"pe-card pe-dark-theme\">
+class=\"pe-card pe-dark-tone\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
     <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
@@ -1632,7 +1632,7 @@ class=\"pe-card pe-dark-theme\">
 
 exports[`test Custom card purple 1`] = `
 "<div style=\"max-width: 360px; background-color: rgb(135, 30, 106);\"
-class=\"pe-card pe-dark-theme\">
+class=\"pe-card pe-dark-tone\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
     <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
@@ -1675,7 +1675,7 @@ class=\"pe-card pe-dark-theme\">
 
 exports[`test Custom card sand 1`] = `
 "<div style=\"max-width: 360px; background-color: rgb(184, 158, 88);\"
-class=\"pe-card pe-dark-theme\">
+class=\"pe-card pe-dark-tone\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
     <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
@@ -1776,10 +1776,117 @@ exports[`test Custom card white 1`] = `
 "
 `;
 
-exports[`test Dark theme + light theme 1`] = `
-"<div style=\"background: rgb(255, 255, 255);\" class=
-\"pe-light-theme\">
+exports[`test Dark theme class + light theme class 1`] = `
+"<div style=\"background: rgb(255, 255, 255);\" class=\"pe-light-tone\">
   <div class=\"pe-card\">
+    <div class=\"pe-shadow pe-shadow--animated\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+    </div>
+    <div class=\"pe-card__content\">
+      <div class=
+      \"pe-list-tile pe-list-tile--subtitle pe-card__header\">
+        <div style=\"\" class=\"pe-list-tile__primary\">
+          <div class=
+          \"pe-list-tile__content pe-list-tile__content--front\">
+            <div class=\"pe-icon pe-icon--large pe-icon--avatar\">
+              <img src=
+              \"http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png\">
+            </div>
+          </div>
+          <div class=\"pe-list-tile__content\">
+            <div class=\"pe-list-tile__title\">
+              Title
+            </div>
+            <div class=\"pe-list-tile__subtitle\">
+              Subhead
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=
+      \"pe-card__media pe-card__media--regular pe-card__media--landscape\">
+      <img src=
+      \"http://arthurclemens.github.io/assets/polythene/examples/1.jpg\">
+        <div class=\"pe-card__media__dimmer\"></div>
+      </div>
+      <div class=\"pe-card__primary\">
+        <div class=\"pe-card__title\">
+          Primary title quis nostrud exercitation ullamco laboris
+          nisi ut aliquip ex ea commodo consequat
+          <div class=\"pe-card__subtitle\">
+            Subtitle quis nostrud exercitation ullamco laboris nisi
+            ut aliquip ex ea commodo consequat
+          </div>
+        </div>
+      </div>
+      <div class=\"pe-card__text\">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna
+        aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+        ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit
+        esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat.
+      </div>
+      <div class=
+      \"pe-card__actions pe-card__actions--horizontal pe-card__actions--borders\">
+      <a tabindex=\"0\" class=\"pe-button pe-text-button\">
+        <div class=\"pe-button__content\">
+          <div class=\"pe-ripple pe-ripple--constrained\">
+            <div class=\"pe-ripple__mask\">
+              <div class=\"pe-ripple__waves\"></div>
+            </div>
+          </div>
+          <div class=\"pe-button__wash\"></div>
+          <div class=\"pe-button__focus\"></div>
+          <div class=\"pe-button__label\">
+            Action 1
+          </div>
+        </div></a><a tabindex=\"0\" class=\"pe-button pe-text-button\">
+        <div class=\"pe-button__content\">
+          <div class=\"pe-ripple pe-ripple--constrained\">
+            <div class=\"pe-ripple__mask\">
+              <div class=\"pe-ripple__waves\"></div>
+            </div>
+          </div>
+          <div class=\"pe-button__wash\"></div>
+          <div class=\"pe-button__focus\"></div>
+          <div class=\"pe-button__label\">
+            Action 2
+          </div>
+        </div></a>
+        <div class=\"flex\"></div><a tabindex=\"0\" class=
+        \"pe-button pe-icon-button\">
+        <div class=\"pe-button__content\">
+          <div class=\"pe-ripple pe-ripple--constrained\">
+            <div class=\"pe-ripple__mask\">
+              <div class=\"pe-ripple__waves\"></div>
+            </div>
+          </div>
+          <div class=\"pe-button__focus\"></div>
+          <div class=\"pe-icon-button__content\">
+            <div class=\"pe-icon pe-icon--medium\">
+              <div class=\"pe-svg\">
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <path d=
+                  \"M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z\"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div></a>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Dark theme class + light tone 1`] = `
+"<div style=\"background: rgb(255, 255, 255);\">
+  <div class=\"pe-card pe-light-tone\">
     <div class=\"pe-shadow pe-shadow--animated\">
       <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
       <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
@@ -1980,7 +2087,7 @@ exports[`test Overlay with sheet 1`] = `
     <img src=
     \"http://arthurclemens.github.io/assets/polythene/examples/1.jpg\">
       <div class=\"pe-card__overlay pe-card__overlay--sheet\">
-        <div class=\"pe-card__overlay__content pe-dark-theme\">
+        <div class=\"pe-card__overlay__content pe-dark-tone\">
           <div class=\"pe-card__primary\">
             <div class=\"pe-card__title\">
               Primary title
@@ -2039,7 +2146,7 @@ exports[`test Overlay without sheet 1`] = `
     <img src=
     \"http://arthurclemens.github.io/assets/polythene/examples/1.jpg\" />
       <div class=\"pe-card__overlay\">
-        <div class=\"pe-card__overlay__content pe-dark-theme\">
+        <div class=\"pe-card__overlay__content pe-dark-tone\">
           <div class=\"pe-card__primary\">
             <div class=\"pe-card__title\">
               Title
@@ -2557,7 +2664,7 @@ exports[`test Text only 1`] = `
 "
 `;
 
-exports[`test Texts -- dark theme 1`] = `
+exports[`test Texts -- dark theme class 1`] = `
 "<div class=\"pe-card\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -2664,7 +2771,7 @@ exports[`test Texts -- dark theme 1`] = `
 `;
 
 exports[`test Themed (color) 1`] = `
-"<div class=\"pe-card tests-card-colored-content\">
+"<div class=\"pe-card tests-card-colored-card\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
     <div class=\"pe-shadow__top pe-shadow--z-1\"></div>

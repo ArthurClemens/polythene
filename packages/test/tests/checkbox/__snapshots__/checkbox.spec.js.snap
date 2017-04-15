@@ -1,6 +1,6 @@
-exports[`test Dark theme + light theme 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px;\" class=
-\"pe-light-theme\">
+exports[`test Dark theme class + light theme class 1`] = `
+"<div style=\"background: rgb(255, 255, 255); padding: 20px;\" class=
+\"pe-light-tone\">
   <div class=
   \"pe-control pe-checkbox-control pe-control--off pe-control--regular\">
   <input name=\"\" type=\"checkbox\" tabindex=\"-1\" class=
@@ -62,7 +62,70 @@ exports[`test Dark theme + light theme 1`] = `
 "
 `;
 
-exports[`test Option: checked -- dark theme 1`] = `
+exports[`test Dark theme class + light tone 1`] = `
+"<div style=\"background: rgb(255, 255, 255); padding: 20px;\">
+  <div class=
+  \"pe-control pe-checkbox-control pe-control--off pe-control--regular pe-light-tone\">
+  <input name=\"\" type=\"checkbox\" tabindex=\"-1\" class=
+  \"pe-control__input\"><label class=
+  \"pe-control__form-label\"></label>
+    <div class=\"pe-control__box\">
+      <label class=\"pe-control__form-label\"></label>
+      <div tabindex=\"0\" class=
+      \"pe-button pe-icon-button pe-control__button\">
+        <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-button__content\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple pe-ripple--constrained\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-ripple__mask\">
+              <label class=\"pe-control__form-label\"></label>
+              <div class=\"pe-ripple__waves\">
+                <label class=\"pe-control__form-label\"></label>
+              </div>
+            </div>
+          </div>
+          <div class=\"pe-button__focus\">
+            <label class=\"pe-control__form-label\"></label>
+          </div>
+          <div class=
+          \"pe-icon pe-icon--regular pe-control__button--on\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-svg\">
+              <label class=\"pe-control__form-label\"></label>
+              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+              height=\"24\" viewbox=\"0 0 24 24\">
+                <label class=\"pe-control__form-label\"><path d=
+                \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
+                </path></label>
+              </svg>
+            </div>
+          </div>
+          <div class=
+          \"pe-icon pe-icon--regular pe-control__button--off\">
+            <label class=\"pe-control__form-label\"></label>
+            <div class=\"pe-svg\">
+              <label class=\"pe-control__form-label\"></label>
+              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+              height=\"24\" viewbox=\"0 0 24 24\">
+                <label class=\"pe-control__form-label\"><path d=
+                \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
+                </path></label>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class=\"pe-control__label\">
+      <label class=\"pe-control__form-label\">On</label>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: checked -- dark theme class 1`] = `
 "<div class=
 \"pe-control pe-checkbox-control pe-control--on pe-control--regular\">
 <input name=\"\" type=\"checkbox\" tabindex=\"-1\" class=
@@ -176,7 +239,7 @@ exports[`test Option: checked 1`] = `
 "
 `;
 
-exports[`test Option: disabled -- dark theme 1`] = `
+exports[`test Option: disabled -- dark theme class 1`] = `
 "<div class=
 \"pe-control pe-checkbox-control pe-control--off pe-control--disabled pe-control--inactive pe-control--regular\">
 <input name=\"\" type=\"checkbox\" tabindex=\"-1\" class=
@@ -1233,7 +1296,7 @@ exports[`test Themed checkbox (color and font size) 1`] = `
 "
 `;
 
-exports[`test Themed checkbox (colors) -- dark theme 1`] = `
+exports[`test Themed checkbox (colors) -- dark theme class 1`] = `
 "<div class=
 \"pe-control pe-checkbox-control pe-control--off pe-control--regular tests-checkbox-themed-checkbox\">
 <input name=\"\" type=\"checkbox\" tabindex=\"-1\" class=

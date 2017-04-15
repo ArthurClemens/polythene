@@ -24,7 +24,7 @@ describe("Menu component", () => {
       wrap: false,
       indent: false
     });
-    expect(html).toContain("<div class=\"pe-menu pe-menu--permanent   \"><div class=\"pe-menu__content\"><div class=\"pe-shadow pe-shadow--animated \"><div class=\"pe-shadow__bottom pe-shadow--z-1\"></div><div class=\"pe-shadow__top pe-shadow--z-1\"></div></div></div></div>");
+    expect(html).toContain("<div class=\"pe-menu pe-menu--permanent     \"><div class=\"pe-menu__content\"><div class=\"pe-shadow pe-shadow--animated \"><div class=\"pe-shadow__bottom pe-shadow--z-1\"></div><div class=\"pe-shadow__top pe-shadow--z-1\"></div></div></div></div>");
   });
   it("child", () => {
     const cmp = m(menu, {permanent: true}, m("span", "Child"));
@@ -38,7 +38,7 @@ describe("Menu component", () => {
       wrap: false,
       indent: false
     });
-    expect(html).toContain("<div class=\"pe-menu pe-menu--permanent   \"><div class=\"pe-menu__content\"></div></div>");
+    expect(html).toContain("<div class=\"pe-menu pe-menu--permanent     \"><div class=\"pe-menu__content\"></div></div>");
   });
   it("option id", () => {
     const cmp = m(menu, {permanent: true, id: "id-x"});

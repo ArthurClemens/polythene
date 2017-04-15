@@ -131,7 +131,7 @@ export const tests = [
   {
     name: "Option: icon -- dark theme class",
     component: fab,
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     attrs: {
       icon: {
         msvg: iconAlarm
@@ -141,7 +141,7 @@ export const tests = [
   {
     name: "Themed FAB -- dark theme class",
     component: fab,
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     attrs: {
       icon: {
         msvg: iconAlarm
@@ -151,9 +151,9 @@ export const tests = [
   },
   {
     name: "Dark theme class + light theme class",
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: {
-      view: () => m(".pe-light-theme", {
+      view: () => m(".pe-light-tone", {
         style: { background: "#fff", padding: "10px" }
       }, [
         m(fab, {

@@ -25,12 +25,12 @@ const style = (scopes, selector, componentVars, tint) => [{
 
 export default (selector, componentVars) => [
   style([
-    ".pe-dark-theme",
-    ".pe-dark-theme "
+    ".pe-dark-tone",
+    ".pe-dark-tone "
   ], selector, componentVars, "dark"), // has/inside dark theme
   style([
     "",
-    ".pe-light-theme",
-    ".pe-light-theme "
+    ".pe-light-tone",
+    ".pe-light-tone "
   ], selector, componentVars, "light"), // normal, has/inside light theme
 ];

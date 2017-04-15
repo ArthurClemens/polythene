@@ -303,6 +303,13 @@ m(textfield, {
 ```
 
 
+
+## CSS
+
+Class `pe-dark-theme` has been renamed to `pe-dark-tone`. In v.1.0 new class `pe-light-tone` is introduced. Both classes can be set with option `tone`.
+
+
+
 ## Theming
 
 A simpler way to theme components replaces the method of writing multiple style configurations in one file.

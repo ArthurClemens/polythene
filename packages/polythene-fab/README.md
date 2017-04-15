@@ -90,7 +90,7 @@ If the component - or a component's parent - has option `tone` set to "dark", th
 | **after** | optional | Mithril element | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
 | **tabindex** | optional | Integer | | Tab index |
 | **events** | optional | Object | | Options object containing one or more standard events such as `onclick` |
-| **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-theme`); use "light" to locally inverse (sets class `pe-light-theme`) |
+| **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 ### FAB specific options
 

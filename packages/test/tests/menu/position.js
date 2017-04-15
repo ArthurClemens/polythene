@@ -20,7 +20,7 @@ const styles = [
         position: "relative",
         width: "100%",
       },
-      " .bar-row.pe-dark-theme": {
+      " .bar-row.pe-dark-tone": {
         background: "#3F51B5",
         padding: "4px 0"
       }
@@ -57,7 +57,7 @@ const positionContainer = {
             )
           })
         }),
-        m(".bar-row.pe-dark-theme.layout.horizontal", [
+        m(".bar-row.pe-dark-tone.layout.horizontal", [
           vnode.attrs.buttonPosition === "right" ? m(".flex") : null,
           m(iconButton, {
             id: vnode.attrs.id,

@@ -277,7 +277,7 @@ export const tests = [
   {
     name: "Option: highSubtitle and front -- dark theme class",
     component: listTile,
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     attrs: {
       title: "Ancillary Justice",
       highSubtitle: "The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before.",
@@ -300,7 +300,7 @@ export const tests = [
   {
     name: "Option: disabled url -- dark theme class",
     component: listTile,
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     attrs: {
       title: "Ancillary Justice",
       disabled: true
@@ -309,7 +309,7 @@ export const tests = [
   {
     name: "Themed (color and font size) -- dark theme class",
     component: listTile,
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     attrs: {
       title: "Ancillary Justice",
       front: m(icon, {
@@ -322,10 +322,10 @@ export const tests = [
   {
     name: "Dark theme class + light theme class",
     component: listTile,
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     attrs: {
       title: "Ancillary Justice",
-      class: "pe-light-theme",
+      class: "pe-light-tone",
       front: m(icon, {
         msvg: iconStars,
         type: "medium"

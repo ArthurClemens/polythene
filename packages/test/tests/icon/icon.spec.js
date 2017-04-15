@@ -15,7 +15,7 @@ describe("Icon component", () => {
       wrap: false,
       indent: false
     });
-    expect(html).toContain("<div class=\"pe-icon pe-icon--regular  \"></div>");
+    expect(html).toContain("<div class=\"pe-icon pe-icon--regular    \"></div>");
   });
   it("option id", () => {
     const cmp = m(icon, {id: "id-x"});

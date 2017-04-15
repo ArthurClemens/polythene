@@ -15,7 +15,7 @@ const styles = [{
       margin: "13px 0 11px 0"
     }
   },
-  " .pe-dark-theme.volume": {
+  " .pe-dark-tone.volume": {
     " .pe-header": {
       color: vars.rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary)
     }

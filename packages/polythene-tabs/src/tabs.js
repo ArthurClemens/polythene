@@ -197,8 +197,8 @@ const view = vnode => {
         autofit ? classes.isAutofit : null,
         attrs.small ? classes.smallTabs : null,
         attrs.menu ? classes.isMenu : null,
-        attrs.tone === "dark" ? "pe-dark-theme" : null,
-        attrs.tone === "light" ? "pe-light-theme" : null,
+        attrs.tone === "dark" ? "pe-dark-tone" : null,
+        attrs.tone === "light" ? "pe-light-tone" : null,
         attrs.class
       ].join(" "),
       oninit: () => subscribe("resize", onResize),

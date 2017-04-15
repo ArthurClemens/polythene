@@ -207,7 +207,7 @@ export const tests = [
 
   {
     name: "Option: checked -- dark theme class",
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: checkbox,
     attrs: {
       checked: true
@@ -215,7 +215,7 @@ export const tests = [
   },
   {
     name: "Themed checkbox (colors) -- dark theme class",
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: checkbox,
     attrs: {
       label: "Label",
@@ -224,7 +224,7 @@ export const tests = [
   },
   {
     name: "Option: disabled -- dark theme class",
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: {
       view: () => [
         m(checkbox, {
@@ -241,7 +241,7 @@ export const tests = [
   },
   {
     name: "Dark theme class + light theme class",
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: {
       view: () => 
         m("div", {
@@ -249,7 +249,7 @@ export const tests = [
             background: "#fff",
             padding: "20px"
           },
-          class: "pe-light-theme"
+          class: "pe-light-tone"
         },
         m(checkbox, {
           label: "On"

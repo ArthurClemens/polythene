@@ -15,7 +15,7 @@ describe("Raised button component", () => {
       wrap: false,
       indent: false
     });
-    expect(html).toContain("<a tabindex=\"0\" class=\"pe-button pe-text-button pe-raised-button      \"></a>");
+    expect(html).toContain("<a tabindex=\"0\" class=\"pe-button pe-text-button pe-raised-button        \"></a>");
   });
   it("child", () => {
     const cmp = m(raisedButton, {}, m("span", "Child"));

@@ -91,12 +91,12 @@ const createView = (state, opts) => {
     {
       class: [
         state.class,
-        opts.tone === "light" ? null : "pe-dark-theme", // default dark theme
-        opts.tone === "light" ? "pe-light-theme" : null,
+        opts.tone === "light" ? null : "pe-dark-tone", // default dark theme
+        opts.tone === "light" ? "pe-light-tone" : null,
         opts.containerSelector ? classes.hasContainer : null,
         opts.layout === "vertical" ? classes.vertical : classes.horizontal,
-        opts.tone === "dark" ? "pe-dark-theme" : null,
-        opts.tone === "light" ? "pe-light-theme" : null,
+        opts.tone === "dark" ? "pe-dark-tone" : null,
+        opts.tone === "light" ? "pe-light-tone" : null,
         opts.class
       ].join(" "),
       oncreate: ({ dom }) => {

@@ -15,7 +15,7 @@ describe("Tabs component", () => {
       wrap: false,
       indent: false
     });
-    expect(html).toContain("<div class=\"pe-toolbar  \"></div>");
+    expect(html).toContain("<div class=\"pe-toolbar    \"></div>");
   });
   it("child", () => {
     const cmp = m(toolbar, {}, m("span", "Child"));

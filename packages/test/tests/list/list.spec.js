@@ -15,7 +15,7 @@ describe("List component", () => {
       wrap: false,
       indent: false
     });
-    expect(html).toContain("<div class=\"pe-list     \"></div>");
+    expect(html).toContain("<div class=\"pe-list       \"></div>");
   });
   it("child", () => {
     const cmp = m(list, {}, m("span", "Child"));

@@ -131,7 +131,7 @@ If the component - or a component's parent - has option `tone` set to "dark", th
 | **content**   | optional | Mithril element |  | Any content; replaces `vnode.children` and ignores `svg` and `msvg`  |
 | **before**    | optional | Mithril element | | Extra content before main content; this content is placed left of subsequent elements with a lower stacking depth |
 | **after**     | optional | Mithril element | | Extra content after main content; this content is placed right of preceding elements with a higher stacking depth |
-| **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-theme`); use "light" to locally inverse (sets class `pe-light-theme`) |
+| **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 ### Icon options
 

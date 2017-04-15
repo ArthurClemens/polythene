@@ -137,8 +137,8 @@ const createView = (state, opts) => {
         state.topOverflow || opts.borders ? classes.hasTopOverflow : null,
         state.bottomOverflow || opts.borders ? classes.hasBottomOverflow : null,
         state.visible ? classes.visible : null,
-        opts.tone === "dark" ? "pe-dark-theme" : null,
-        opts.tone === "light" ? "pe-light-theme" : null,
+        opts.tone === "dark" ? "pe-dark-tone" : null,
+        opts.tone === "light" ? "pe-light-tone" : null,
         opts.class
       ].join(" "),
       oncreate: ({ dom }) => {

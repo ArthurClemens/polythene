@@ -15,7 +15,7 @@ describe("Ripple component", () => {
       wrap: false,
       indent: false
     });
-    expect(html).toContain("<div class=\"pe-ripple pe-ripple--constrained \"><div class=\"pe-ripple__mask\"><div class=\"pe-ripple__waves\"></div></div></div>");
+    expect(html).toContain("<div class=\"pe-ripple pe-ripple--constrained   \"><div class=\"pe-ripple__mask\"><div class=\"pe-ripple__waves\"></div></div></div>");
   });
   it("option id", () => {
     const cmp = m(ripple, {id: "id-x"});

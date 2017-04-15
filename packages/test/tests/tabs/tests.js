@@ -341,7 +341,7 @@ export const tests = [
 
   {
     name: "Option: buttons (text buttons) -- dark theme class",
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: tabs,
     attrs: {
       buttons: threeButtons
@@ -350,7 +350,7 @@ export const tests = [
 
   {
     name: "Theme: custom colors -- dark theme class",
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: tabs,
     attrs: {
       buttons: threeButtons,
@@ -360,7 +360,7 @@ export const tests = [
   },
   {
     name: "Tabs with icons -- dark theme class",
-    class: "small-result pe-dark-theme",
+    class: "small-result pe-dark-tone",
     component: tabs,
     attrs: {
       buttons: iconButtons,
@@ -369,7 +369,7 @@ export const tests = [
   },
   {
     name: "Option: scrollable -- dark theme class",
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: {
       view: () => 
         m("div", {
@@ -387,7 +387,7 @@ export const tests = [
   },
   {
     name: "Dark theme class + light theme class",
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: {
       view: () => 
         m("div", {
@@ -395,7 +395,7 @@ export const tests = [
             background: "#fff",
             padding: "20px"
           },
-          class: "pe-light-theme"
+          class: "pe-light-tone"
         }, m(tabs, {
           buttons: longList,
           scrollable: true

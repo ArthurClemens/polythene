@@ -31,7 +31,7 @@ const dialogProps = Object.assign({}, commonDialogProps, {
   body: m.trust(longText),
   modal: true,
   backdrop: true,
-  class: "pe-dark-theme"
+  class: "pe-dark-tone"
 });
 
 const block = (test, opts = {}) => m("div", {

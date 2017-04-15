@@ -145,7 +145,7 @@ export const tests = [
     name: "Snackbar in container -- dark theme class",
     interactive: true,
     exclude: true,
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: {
       view: () => [
         buttonRow(variations.map(v => Object.assign({}, v, { tone: "light" })), { spawn: "container2" }),
@@ -166,10 +166,10 @@ export const tests = [
     name: "Dark theme class + light theme class",
     interactive: true,
     exclude: true,
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: {
       view: () => [
-        buttonRow(variations.map(v => Object.assign({}, v, { class: "pe-light-theme" })), { spawn: "container3" }),
+        buttonRow(variations.map(v => Object.assign({}, v, { class: "pe-light-tone" })), { spawn: "container3" }),
         m("div",
           {
             style: Object.assign({}, pattern("#444", "#263238"), {
@@ -187,7 +187,7 @@ export const tests = [
     name: "Dark theme class + light tone",
     interactive: true,
     exclude: true,
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: {
       view: () => [
         buttonRow(variations.map(v => Object.assign({}, v, { tone: "dark" })), { spawn: "container4" }),

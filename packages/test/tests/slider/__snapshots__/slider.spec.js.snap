@@ -1,7 +1,29 @@
-exports[`test Dark theme + light theme 1`] = `
+exports[`test Dark theme class + light theme class 1`] = `
 "<div style=\"background: rgb(255, 255, 255); padding: 10px;\" class=
-\"pe-light-theme\">
+\"pe-light-tone\">
   <div class=\"pe-slider pe-slider--track\">
+    <div class=\"pe-slider__track\">
+      <div class=\"pe-slider__track-part pe-slider__track-value\">
+        <div class=\"pe-slider__track-bar\">
+          <div class=\"pe-slider__track-bar-value\"></div>
+        </div>
+      </div>
+      <div tabindex=\"0\" class=\"pe-slider__control\"></div>
+      <div style=\"max-width: 50%;\" class=
+      \"pe-slider__track-part pe-slider__track-rest\">
+        <div class=\"pe-slider__track-bar\">
+          <div class=\"pe-slider__track-bar-value\"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Dark theme class + light tone 1`] = `
+"<div style=\"background: rgb(255, 255, 255); padding: 10px;\">
+  <div class=\"pe-slider pe-slider--track pe-light-tone\">
     <div class=\"pe-slider__track\">
       <div class=\"pe-slider__track-part pe-slider__track-value\">
         <div class=\"pe-slider__track-bar\">
@@ -64,7 +86,7 @@ exports[`test No options (range 0-100, steps rounded to 1) 1`] = `
 "
 `;
 
-exports[`test Option: disabled -- dark theme 1`] = `
+exports[`test Option: disabled -- dark theme class 1`] = `
 "<div class=\"pe-slider pe-slider--disabled pe-slider--track\">
   <div class=\"pe-slider__track\">
     <div class=\"pe-slider__track-part pe-slider__track-value\">
@@ -332,7 +354,7 @@ exports[`test Option: ticks with pin 1`] = `
 "
 `;
 
-exports[`test Option: value (50) -- dark theme 1`] = `
+exports[`test Option: value (50) -- dark theme class 1`] = `
 "<div class=\"pe-slider pe-slider--track\">
   <div class=\"pe-slider__track\">
     <div class=\"pe-slider__track-part pe-slider__track-value\">
@@ -605,7 +627,7 @@ exports[`test With icon, pin and ticks 1`] = `
 "
 `;
 
-exports[`test With icons -- dark theme 1`] = `
+exports[`test With icons -- dark theme class 1`] = `
 "<div class=\"volume\">
   <div class=\"header\">
     Media volume

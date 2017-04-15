@@ -15,7 +15,7 @@ describe("Tabs component", () => {
       wrap: false,
       indent: false
     });
-    expect(html).toContain("<div class=\"pe-tabs  pe-tabs--start      \"><div class=\"pe-tabs__row  \"><div class=\"pe-tabs__indicator\"></div></div></div>");
+    expect(html).toContain("<div class=\"pe-tabs  pe-tabs--start        \"><div class=\"pe-tabs__row  \"><div class=\"pe-tabs__indicator\"></div></div></div>");
   });
   it("child", () => {
     const cmp = m(tabs, {}, [

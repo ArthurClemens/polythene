@@ -213,7 +213,7 @@ export const tests = [
   
   {
     name: "Option: label -- dark theme class",
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: button,
     attrs: {
       label: "Label"
@@ -230,7 +230,7 @@ export const tests = [
   },
   {
     name: "Themed button -- dark theme class",
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: button,
     attrs: {
       label: "Themed button",
@@ -239,7 +239,7 @@ export const tests = [
   },
   {
     name: "Themed button blue on dark -- dark theme class",
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: button,
     attrs: {
       label: "Blue on dark button",
@@ -248,7 +248,7 @@ export const tests = [
   },
   {
     name: "Themed button: (option: borders) -- dark theme class",
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: button,
     attrs: {
       label: "Borders dark theme",
@@ -258,9 +258,9 @@ export const tests = [
   },
   {
     name: "Dark theme class + light theme class",
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: {
-      view: () => m(".pe-light-theme", {
+      view: () => m(".pe-light-tone", {
         style: { background: "#fff" }
       }, [
         m(button, {

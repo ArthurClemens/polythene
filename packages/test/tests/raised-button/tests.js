@@ -165,7 +165,7 @@ export const tests = [
   {
     name: "Option: label -- dark theme class (should be app's primary color)",
     component: raisedButton,
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     attrs: {
       label: "Label"
     }
@@ -174,7 +174,7 @@ export const tests = [
   {
     name: "Option: disabled -- dark theme class",
     component: raisedButton,
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     attrs: {
       label: "Label",
       disabled: true
@@ -182,9 +182,9 @@ export const tests = [
   },
   {
     name: "Dark theme class + light theme class",
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: {
-      view: () => m(".pe-light-theme", {
+      view: () => m(".pe-light-tone", {
         style: { background: "#fff" }
       }, [
         m(raisedButton, {
@@ -203,7 +203,7 @@ export const tests = [
   },
   {
     name: "Dark theme class + light tone",
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: {
       view: () => m("div", {
         style: { background: "#fff" }

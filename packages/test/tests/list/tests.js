@@ -248,7 +248,7 @@ export const tests = [
   {
     name: "Option: class -- dark theme class",
     interactive: true,
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: list,
     attrs: {
       borders: true,
@@ -274,7 +274,7 @@ export const tests = [
   {
     name: "Themed list (colors and padding) -- dark theme class",
     component: list,
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     attrs: {
       borders: true,
       class: "tests-lists-themed-list"
@@ -300,10 +300,10 @@ export const tests = [
   {
     name: "Dark theme class + light theme class",
     interactive: true,
-    class: "pe-dark-theme",
+    class: "pe-dark-tone",
     component: list,
     attrs: {
-      class: "pe-light-theme",
+      class: "pe-light-tone",
       style: { background: "#fff" },
       borders: true,
       header: {

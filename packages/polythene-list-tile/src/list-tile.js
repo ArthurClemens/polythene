@@ -116,8 +116,8 @@ const view = vnode => {
       attrs.compact    ? classes.compact : null,
       attrs.hoverable  ? classes.hoverable : null,
       attrs.selectable ? classes.selectable : null,
-      attrs.tone === "dark" ? "pe-dark-theme" : null,
-      attrs.tone === "light" ? "pe-light-theme" : null,
+      attrs.tone === "dark" ? "pe-dark-tone" : null,
+      attrs.tone === "light" ? "pe-light-tone" : null,
       heightClass,
       attrs.class
     ].join(" ")
