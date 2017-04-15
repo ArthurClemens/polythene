@@ -1915,33 +1915,6 @@ var clearfix = function clearfix() {
   };
 };
 
-// Creates a very thin line
-// disabled, does not work in Chrome
-// mixin.hairline()
-var hairline = function hairline() {
-  return {};
-};
-
-// const hairline = (which) => ({
-//     [`${which}-width`]: "1px",
-//
-//     " html.pe-hairlines &": {
-//         [`${which}-width`]: "0.5px"
-//     }
-// });
-
-// Test if browser handles 0.5px borders
-// and add class pe-hairlines if so
-// if (window.devicePixelRatio && devicePixelRatio >= 2) {
-//     const el = document.createElement("div");
-//     el.style.border = ".5px solid transparent";
-//     document.body.appendChild(el);
-//     if (el.offsetHeight === 1) {
-//         document.querySelector("html").classList.add("pe-hairlines");
-//     }
-//     document.body.removeChild(el);
-// }
-
 // Creates sticky headers in a scrollable list
 // Does not work in Chrome: http://caniuse.com/#feat=css-sticky
 // mixin.sticky()
@@ -1974,7 +1947,6 @@ var mixin = {
   ellipsis: ellipsis,
   fit: fit,
   fontSmoothing: fontSmoothing,
-  hairline: hairline,
   sticky: sticky
 };
 
@@ -3569,9 +3541,9 @@ var contentStyle = function contentStyle(scopes, selector, componentVars, tint) 
     " .pe-card__text": {
       color: componentVars["color_" + tint + "_text"]
     },
-    " .pe-card__actions--borders": [mixin.hairline("border-top"), {
+    " .pe-card__actions--borders": {
       borderTop: "1px solid " + componentVars["color_" + tint + "_actions_border"]
-    }]
+    }
   })];
 };
 
@@ -4949,11 +4921,7 @@ var layout$10 = function layout(selector, componentVars) {
       }]
     },
 
-    " .pe-dialog__body": [mixinFlex.selfStretch, mixin.hairline("border-top"), {
-      borderTopStyle: "solid"
-    }, mixin.hairline("border-top"), {
-      borderBottomStyle: "solid"
-    }, {
+    " .pe-dialog__body": [mixinFlex.selfStretch, {
       padding: componentVars.padding + "px",
       overflowY: "auto",
       "-webkit-overflow-scrolling": "touch",
@@ -5730,7 +5698,7 @@ function _defineProperty$12(obj, key, value) {
 }
 
 var borderStyle = function borderStyle(componentVars) {
-  return mixin.hairline("border-bottom"), {
+  return {
     borderStyle: "none none solid none",
     borderWidth: componentVars.border_width_bordered + "px"
   };
@@ -5748,10 +5716,10 @@ var layout$12 = function layout(selector, componentVars) {
       padding: componentVars.padding_compact + "px 0"
     },
 
-    "& + &": [mixin.hairline("border-top"), {
+    "& + &": {
       borderStyle: "solid none none none",
       borderWidth: componentVars.border_width_stacked + "px"
-    }],
+    },
 
     ".pe-list--borders": {
       " .pe-list-tile:not(.pe-list__header)": {

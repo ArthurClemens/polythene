@@ -1,7 +1,7 @@
 import m from 'mithril';
 import listTile from 'polythene-list-tile';
 import { filterSupportedAttributes } from 'polythene-core';
-import { mixin, styler } from 'polythene-css';
+import { styler } from 'polythene-css';
 import { vars } from 'polythene-theme';
 
 var rgba = vars.rgba;
@@ -20,7 +20,7 @@ var vars$1 = {
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var borderStyle = function borderStyle(componentVars) {
-  return mixin.hairline("border-bottom"), {
+  return {
     borderStyle: "none none solid none",
     borderWidth: componentVars.border_width_bordered + "px"
   };
@@ -38,10 +38,10 @@ var layout = (function (selector, componentVars) {
       padding: componentVars.padding_compact + "px 0"
     },
 
-    "& + &": [mixin.hairline("border-top"), {
+    "& + &": {
       borderStyle: "solid none none none",
       borderWidth: componentVars.border_width_stacked + "px"
-    }],
+    },
 
     ".pe-list--borders": {
       " .pe-list-tile:not(.pe-list__header)": {

@@ -92,12 +92,7 @@ export default (selector, componentVars) => [{
 
       " .pe-dialog__body": [
         flex.selfStretch,
-        mixin.hairline("border-top"), {
-          borderTopStyle: "solid"
-        },
-        mixin.hairline("border-top"), {
-          borderBottomStyle: "solid"
-        }, {
+        {
           padding: componentVars.padding + "px",
           overflowY: "auto",
           "-webkit-overflow-scrolling": "touch",

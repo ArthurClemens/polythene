@@ -1,6 +1,5 @@
-import { mixin } from "polythene-css";
 
-const borderStyle = componentVars => (mixin.hairline("border-bottom"), {
+const borderStyle = componentVars => ({
   borderStyle: "none none solid none",
   borderWidth: componentVars.border_width_bordered + "px"
 });
@@ -17,12 +16,10 @@ export default (selector, componentVars) => [{
       padding: componentVars.padding_compact + "px 0",
     },
 
-    "& + &": [
-      mixin.hairline("border-top"), {
-        borderStyle: "solid none none none",
-        borderWidth: componentVars.border_width_stacked + "px"
-      }
-    ],
+    "& + &": {
+      borderStyle: "solid none none none",
+      borderWidth: componentVars.border_width_stacked + "px"
+    },
 
     ".pe-list--borders": {
       " .pe-list-tile:not(.pe-list__header)": {

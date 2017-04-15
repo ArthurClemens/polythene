@@ -115,11 +115,7 @@ var layout = (function (selector, componentVars) {
       }]
     },
 
-    " .pe-dialog__body": [flex.selfStretch, mixin.hairline("border-top"), {
-      borderTopStyle: "solid"
-    }, mixin.hairline("border-top"), {
-      borderBottomStyle: "solid"
-    }, {
+    " .pe-dialog__body": [flex.selfStretch, {
       padding: componentVars.padding + "px",
       overflowY: "auto",
       "-webkit-overflow-scrolling": "touch",

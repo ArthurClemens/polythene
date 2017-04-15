@@ -1,4 +1,3 @@
-import { mixin } from "polythene-css";
 
 const baseStyle = (scopes, selector, componentVars, tint) => [{
   [scopes.map(s => s + selector).join(",")]: {
@@ -17,12 +16,9 @@ const contentStyle = (scopes, selector, componentVars, tint) => [{
     " .pe-card__text": {
       color: componentVars["color_" + tint + "_text"]
     },
-    " .pe-card__actions--borders": [
-      mixin.hairline("border-top"),
-      {
-        borderTop: "1px solid " + componentVars["color_" + tint + "_actions_border"]
-      }
-    ]
+    " .pe-card__actions--borders": {
+      borderTop: "1px solid " + componentVars["color_" + tint + "_actions_border"]
+    }
   }
 }];
 

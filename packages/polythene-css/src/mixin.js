@@ -71,32 +71,6 @@ const clearfix = () => ({
   }
 });
 
-
-// Creates a very thin line
-// disabled, does not work in Chrome
-// mixin.hairline()
-const hairline = () => ({});
-
-// const hairline = (which) => ({
-//     [`${which}-width`]: "1px",
-//
-//     " html.pe-hairlines &": {
-//         [`${which}-width`]: "0.5px"
-//     }
-// });
-
-// Test if browser handles 0.5px borders
-// and add class pe-hairlines if so
-// if (window.devicePixelRatio && devicePixelRatio >= 2) {
-//     const el = document.createElement("div");
-//     el.style.border = ".5px solid transparent";
-//     document.body.appendChild(el);
-//     if (el.offsetHeight === 1) {
-//         document.querySelector("html").classList.add("pe-hairlines");
-//     }
-//     document.body.removeChild(el);
-// }
-
 // Creates sticky headers in a scrollable list
 // Does not work in Chrome: http://caniuse.com/#feat=css-sticky
 // mixin.sticky()
@@ -121,7 +95,6 @@ export default {
   ellipsis,
   fit,
   fontSmoothing,
-  hairline,
   sticky,
 };
 
