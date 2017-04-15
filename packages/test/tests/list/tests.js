@@ -246,7 +246,7 @@ export const tests = [
   // Dark theme
 
   {
-    name: "Option: class -- dark theme",
+    name: "Option: class -- dark theme class",
     interactive: true,
     class: "pe-dark-theme",
     component: list,
@@ -272,7 +272,7 @@ export const tests = [
     }
   },
   {
-    name: "Themed list (colors and padding) -- dark theme",
+    name: "Themed list (colors and padding) -- dark theme class",
     component: list,
     class: "pe-dark-theme",
     attrs: {
@@ -298,18 +298,48 @@ export const tests = [
     ]
   },
   {
-    name: "Dark theme + light theme",
+    name: "Dark theme class + light theme class",
     interactive: true,
     class: "pe-dark-theme",
     component: list,
     attrs: {
       class: "pe-light-theme",
       style: { background: "#fff" },
-      
       borders: true,
       header: {
         title: "Friends"
       },
+      tiles: [
+        m(listTile, {
+          title: "Jennifer Barker",
+          subtitle: "Starting post doc",
+          hoverable: true
+        }),
+        m(listTile, {
+          title: "Ali Connors",
+          subtitle: "Brunch this weekend?",
+          hoverable: true,
+        }),
+        m(listTile, {
+          title: "Grace VanDam",
+          subtitle: "Binge watching...",
+          hoverable: true,
+        })
+      ]
+    }
+  },
+  {
+    name: "Dark theme class + light tone",
+    interactive: true,
+    class: "test-dark-theme",
+    component: list,
+    attrs: {
+      style: { background: "#fff" },      
+      borders: true,
+      header: {
+        title: "Friends"
+      },
+      tone: "light",
       tiles: [
         m(listTile, {
           title: "Jennifer Barker",

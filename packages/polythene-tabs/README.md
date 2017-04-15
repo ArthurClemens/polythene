@@ -136,34 +136,25 @@ Below are examples how to button appearance, either with a theme or with CSS.
 #### Themed component
 
 ~~~javascript
-component.theme(".tabs-custom_color", {
+tabs.theme(".themed-tabs", {
   color_light:               "#00BCD4",
   color_light_selected:      "#F44336",
   color_light_tab_indicator: "#F44336"
 });
 
 m(tabs, {
-  class: "tabs-custom_color"
+  class: "themed-tabs",
+  // ... other options
 }, tabButtons);
 ~~~
 
 #### CSS
 
-~~~css
-.pe-tabs {
-  color: #00BCD4
-}
-.pe-tabs__tab.pe-button--selected {
-  color: #F44336;
-}
-.pe-tab__indicator {
-  background-color: #F44336;
-}
-~~~
+Change CSS using the CSS Classes at the bottom of this page.
 
-#### Colors
+#### Style
 
-Colors can be passed using `style`. The tab button styles can be passed using `tabsOpts.style`:
+Some style attributes can be set using option `style`. The tab button styles can be passed using `tabsOpts.style`:
 
 ~~~javascript
 m(tabs, {
@@ -175,6 +166,13 @@ m(tabs, {
   }
 });
 ~~~
+
+#### Dark or light tone
+
+If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 
+
+* Use `tone: "dark"` to render light on dark
+* Use `tone: "light"` to locally render normally when dark tone is set
 
 
 ### Tab widths
@@ -188,13 +186,14 @@ To make all tabs the width of the largest tab, use parameter `largestWidth`.
 To use a fixed width without `autofit`:
 
 ~~~javascript
-component.theme(".tabs-fixed-width", {
+tabs.theme(".tabs-fixed-width", {
   tab_min_width:        100,
   tab_min_width_tablet: 100
 });
 
 m(tabs, {
-  class: "tabs-fixed-width"
+  class: "tabs-fixed-width",
+  // ... other options
 }, tabButtons)
 ~~~
 
@@ -202,7 +201,7 @@ or
 
 ~~~css
 .pe-tabs:not(.pe-tabs--small) .pe-tabs__tab {
-    min-width: 100px;
+  min-width: 100px;
 }
 ~~~
 
@@ -233,6 +232,7 @@ m(tabs, {
 | **content**   | use `vnode.children` or `content` | Array of option objects | | Button row content; replaces `vnode.children` |
 | **before**    | optional | Mithril element | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **after**     | optional | Mithril element | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
+| **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-theme`); use "light" to locally inverse (sets class `pe-light-theme`) |
 
 ### Tabs options
 

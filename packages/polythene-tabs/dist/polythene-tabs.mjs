@@ -544,7 +544,7 @@ var view = function view(vnode) {
   };
 
   var props = _extends({}, filterSupportedAttributes(attrs), {
-    class: [classes.component, attrs.scrollable ? classes.scrollable : null, state.selectedTabIndex === 0 ? classes.isAtStart : null, state.selectedTabIndex === state.tabs.length - 1 ? classes.isAtEnd : null, attrs.activeSelected ? classes.activeSelectable : null, autofit ? classes.isAutofit : null, attrs.small ? classes.smallTabs : null, attrs.menu ? classes.isMenu : null, attrs.class].join(" "),
+    class: [classes.component, attrs.scrollable ? classes.scrollable : null, state.selectedTabIndex === 0 ? classes.isAtStart : null, state.selectedTabIndex === state.tabs.length - 1 ? classes.isAtEnd : null, attrs.activeSelected ? classes.activeSelectable : null, autofit ? classes.isAutofit : null, attrs.small ? classes.smallTabs : null, attrs.menu ? classes.isMenu : null, attrs.tone === "dark" ? "pe-dark-theme" : null, attrs.tone === "light" ? "pe-light-theme" : null, attrs.class].join(" "),
     oninit: function oninit() {
       return subscribe("resize", onResize);
     },

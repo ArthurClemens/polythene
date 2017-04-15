@@ -580,7 +580,7 @@ var view = function view(_ref2) {
 
   var element = attrs.element || attrs.url ? "a" : "div";
   var props = _extends({}, filterSupportedAttributes(attrs), {
-    class: [classes.component, attrs.class].join(" ")
+    class: [classes.component, attrs.tone === "dark" ? "pe-dark-theme" : null, attrs.tone === "light" ? "pe-light-theme" : null, attrs.class].join(" ")
   }, attrs.url ? attrs.url : null, attrs.events ? attrs.events : null);
 
   var contents = Array.isArray(attrs.content) ? attrs.content.map(function (attr) {

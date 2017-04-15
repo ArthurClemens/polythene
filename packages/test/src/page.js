@@ -48,9 +48,9 @@ export default (name, tests, previous) => ({
       m("span", name)
     ])),
     m([css.results].join(" "), {
-      class: `tests-${name.replace(/[\:\-\[\]]/g, "").replace(/ /g, "-").toLowerCase()}`
+      class: `tests-${name.replace(/[\:\-\+\(\)\[\]]/g, "").replace(/ /g, "-").toLowerCase()}`
     }, tests.map((test, index) => {
-      const testName = `test-${(test.name).replace(/[\:\-\[\]\(\)]/g, "").replace(/ /g, "-").toLowerCase()}`;
+      const testName = `test-${(test.name).replace(/[\:\-\+\[\]\(\)]/g, "").replace(/ /g, "-").toLowerCase()}`;
       const uid = "id-" + index;
       return m([css.resultRow, test.interactive ? css.interactive : null].join(""), {
         key: testName,

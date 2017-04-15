@@ -108,7 +108,7 @@ var view = function view(vnode) {
   var attrs = vnode.attrs;
   var element = attrs.element || "div";
   var props = _extends({}, filterSupportedAttributes(attrs), {
-    class: [classes.icon, classForType(attrs.type), attrs.avatar ? classes.avatar : null, attrs.class].join(" ")
+    class: [classes.icon, classForType(attrs.type), attrs.avatar ? classes.avatar : null, attrs.tone === "dark" ? "pe-dark-theme" : null, attrs.tone === "light" ? "pe-light-theme" : null, attrs.class].join(" ")
   }, attrs.events ? attrs.events : null);
   var content = attrs.content ? attrs.content : attrs.svg ? m(svg, _extends({}, attrs.svg)) : attrs.msvg ? m(svg, attrs.msvg) : attrs.src ? m("img", { src: attrs.src }) : attrs.children || vnode.children;
   return m(element, props, [attrs.before, content, attrs.after]);

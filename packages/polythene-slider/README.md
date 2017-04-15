@@ -139,7 +139,7 @@ You can find more information about theming in [Theme](../polythene-theme).
 #### Themed component
 
 ~~~javascript
-slider.theme(".slider-custom-color", {
+slider.theme(".themed-slider", {
   color_light_track_active:   "#82b1ff",
   color_light_track_inactive: "#c5cae9",
   color_light_track_value:    "#f50057",
@@ -147,20 +147,34 @@ slider.theme(".slider-custom-color", {
 });
 
 m(slider, {
-  class: "slider-custom-color"
+  class: "themed-slider",
+  // ... other options
 });
 ~~~
 
-
 #### CSS
 
-Setting the main color is done by specifying the `color` value.
+Change CSS using the CSS Classes at the bottom of this page.
 
-~~~css
-.pe-slider: {
-  color: red
-}
+#### Style
+
+Some style attributes can be set using option `style`. Setting the main color is done by specifying the `color` value:
+
+~~~javascript
+m(slider, {
+  style: {
+    color: "red"
+  },
+  // ... other options
+});
 ~~~
+
+#### Dark or light tone
+
+If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 
+
+* Use `tone: "dark"` to render light on dark
+* Use `tone: "light"` to locally render normally when dark tone is set
 
 
 #### Icon
@@ -193,6 +207,7 @@ m(slider, {
 | **after**     | optional       | Mithril element |      | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
 | **tabindex**  | optional       | Integer  | 0           | Tab index |
 | **events** | optional | Object | | Options object containing one or more standard events such as `onclick` |
+| **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-theme`); use "light" to locally inverse (sets class `pe-light-theme`) |
 
 ### Slider specific options
 

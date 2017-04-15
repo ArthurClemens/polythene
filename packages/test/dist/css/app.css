@@ -29,7 +29,8 @@ html {
 .app {
   padding-bottom: 40px;
 }
-.result-row.pe-dark-theme {
+.result-row.pe-dark-theme,
+.result-row.test-dark-theme {
   background-color: #303030;
   color: #777;
 }
@@ -74,7 +75,7 @@ html {
 .height-100px {
   height: 100px;
 }
-.interactive:not(.pe-dark-theme) {
+.interactive:not(.pe-dark-theme):not(.test-dark-theme) {
   background-color: #E1F5FE;
 }
 .header-row,
@@ -98,21 +99,26 @@ html {
 
 .tests-list .pe-list:not(.tests-lists-themed-list),
 .tests-list-tile .pe-list-tile,
+.tests-list .pe-dark-theme .result .pe-light-theme.pe-list,
+.tests-list-tile .result .pe-light-theme.pe-list-tile,
+.tests-list-tile .pe-dark-theme .result .pe-light-theme.pe-list-tile,
 .tests-tabs .pe-tabs,
 .tests-tabs .pe-dark-theme .result .pe-light-theme .pe-tabs {
   background-color: #fff;
 }
 
-.tests-list .pe-dark-theme .result .pe-list:not(.tests-lists-themed-list),
-.tests-list-tile .pe-dark-theme .result .pe-list-tile:not(.tests-list-tile-themed-list-tile),
+.tests-list .pe-dark-theme .result .pe-list:not(.tests-lists-themed-list):not(.pe-light-theme),
+.tests-list-tile .pe-dark-theme .result .pe-list-tile:not(.tests-list-tile-themed-list-tile):not(.pe-light-theme),
 .tests-tabs .pe-dark-theme .result .pe-tabs {
   background-color: #444;
 }
 
-.pe-dark-theme .result-title {
+.pe-dark-theme .result-title,
+.test-dark-theme .result-title {
   color: #aaa;
 }
-.pe-dark-theme.result-row {
+.pe-dark-theme.result-row,
+.test-dark-theme.result-row {
   border-color: #666;
 }
 

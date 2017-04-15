@@ -143,7 +143,7 @@ const tabsContent = {
     })
 };
 
-card.theme(".tests-card-colored-content", {
+card.theme(".tests-card-colored-card", {
   color_light_main_background: "#0097a7",
   color_light_title_text: "#fff",
   color_light_subtitle_text: "#fff"
@@ -198,7 +198,7 @@ export const tests = [
     name: "Themed (color)",
     component: card,
     attrs: {
-      class: "tests-card-colored-content",
+      class: "tests-card-colored-card",
       content: [{
         primary: {
           title: "Primary title",
@@ -1137,7 +1137,7 @@ export const tests = [
   // Dark theme
 
   {
-    name: "Texts -- dark theme",
+    name: "Texts -- dark theme class",
     component: card,
     class: "pe-dark-theme",
     attrs: {
@@ -1177,7 +1177,7 @@ export const tests = [
     }
   },
   {
-    name: "Dark theme + light theme",
+    name: "Dark theme class + light theme class",
     class: "pe-dark-theme",
     component: {
       view: () => m("div", {
@@ -1186,6 +1186,52 @@ export const tests = [
         },
         class: "pe-light-theme"
       }, m(card, {
+        content: [
+          {
+            header: {
+              title: titleLineText,
+              subtitle: infoLineText,
+              icon: {
+                type: "large",
+                avatar: true,
+                src: avatarImageUrl("1.png")
+              }
+            }
+          }, {
+            media: {
+              content: m("img", {
+                src: landscapeImage
+              })
+            }
+          }, {
+            primary: {
+              title: "Primary title " + shortIpsum,
+              subtitle: "Subtitle " + shortIpsum
+            }
+          }, {
+            text: {
+              content: ipsum
+            }
+          }, {
+            actions: {
+              bordered: true,
+              content: twoButtonAndLessRow
+            }
+          }
+        ]
+      }))
+    }
+  },
+  {
+    name: "Dark theme class + light tone",
+    class: "test-dark-theme",
+    component: {
+      view: () => m("div", {
+        style: {
+          background: "#fff"
+        },
+      }, m(card, {
+        tone: "light",
         content: [
           {
             header: {

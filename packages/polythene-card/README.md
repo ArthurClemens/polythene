@@ -200,8 +200,6 @@ content: [{
 }]
 ~~~
 
-CSS class "pe-dark-theme" is used as a quick way to get white text on a dark background.
-
 An additional HTML element to control the image is "card__media__dimmer". To create a fuzzy dark border all around use an inset box shadow:
 
 ~~~css
@@ -236,18 +234,68 @@ content: [{
 
 
 
+## Appearance
+
+### Styling
+
+Below are examples how to change the card appearance, either with a theme or with CSS.
+
+You can find more information about theming in [Theme](../polythene-theme).
+
+#### Themed component
+
+~~~javascript
+card.theme(".themed-card", {
+  color_light_main_background: "#0097a7",
+  color_light_title_text:      "#fff",
+  color_light_subtitle_text:   "#fff"
+});
+
+m(card, {
+  class: "themed-card",
+  // ... other options
+});
+~~~
+
+#### CSS
+
+Change CSS using the CSS Classes at the bottom of this page.
+
+#### Style
+
+Some style attributes can be set using option `style`. For example:
+
+~~~javascript
+m(button, {
+  style: {
+    maxWidth: "360px",
+    backgroundColor: "#B89E58"
+  }
+});
+~~~
+
+#### Dark or light tone
+
+If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 
+
+* Use `tone: "dark"` to render light on dark
+* Use `tone: "light"` to locally render normally when dark tone is set
+
+
+
 ## Options
 
 ### Common component options
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **element** | optional | String | "a" | HTML element tag |
-| **class** | optional | String |  | Extra CSS class appended to "pe-card" |
+| **element**   | optional | String | "a" | HTML element tag |
+| **class**     | optional | String |  | Extra CSS class appended to "pe-card" |
 | **id** | optional | String | | HTML element id |
-| **events** | optional | Object | | Options object containing one or more standard events such as `onclick` |
-| **before** | optional | Mithril element | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
-| **after** | optional | Mithril element | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
+| **events**    | optional | Object | | Options object containing one or more standard events such as `onclick` |
+| **before**    | optional | Mithril element | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
+| **after**     | optional | Mithril element | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
+| **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-theme`); use "light" to locally inverse (sets class `pe-light-theme`) |
 
 ### Card specific options
 

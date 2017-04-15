@@ -77,9 +77,17 @@ m(ripple, {
 
 Change CSS using the CSS Classes at the bottom of this page.
 
-#### Colors
+By default the inherited `color` from the parent element is used. It can be changed with CSS:
 
-Colors can be set using `style`.
+~~~css
+.pe-ripple {
+  color: green;
+}
+~~~
+
+#### Style
+
+Some style attributes can be set using option `style`. For example:
 
 ~~~javascript
 m(ripple, {
@@ -90,13 +98,12 @@ m(ripple, {
 });
 ~~~
 
-By default the inherited `color` from the parent element is used. It can be changed with CSS:
+#### Dark or light tone
 
-~~~css
-.pe-ripple {
-  color: green;
-}
-~~~
+If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 
+
+* Use `tone: "dark"` to render light on dark
+* Use `tone: "light"` to locally render normally when dark tone is set
 
 
 
@@ -110,6 +117,7 @@ By default the inherited `color` from the parent element is used. It can be chan
 | **class** | optional | String |  | Extra CSS class appended to `pe-ripple` |
 | **style**     | optional | Object |       | For setting simple style attributes |
 | **id** | optional | String | | HTML element id |
+| **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-theme`); use "light" to locally inverse (sets class `pe-light-theme`) |
 
 ### Ripple specific options
 

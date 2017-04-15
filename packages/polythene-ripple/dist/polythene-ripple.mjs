@@ -183,7 +183,7 @@ var view = function view(vnode) {
   }
   var element = attrs.element || "div";
   var props = _extends({}, filterSupportedAttributes(attrs), {
-    class: [classes.component, attrs.constrained !== false ? classes.constrained : null, attrs.class].join(" ")
+    class: [classes.component, attrs.constrained !== false ? classes.constrained : null, attrs.tone === "dark" ? "pe-dark-theme" : null, attrs.tone === "light" ? "pe-light-theme" : null, attrs.class].join(" ")
   });
   var content = m("div", {
     class: classes.mask

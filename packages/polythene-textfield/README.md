@@ -242,6 +242,54 @@ getState: state => vnode.state.value = state.value
 
 
 
+## Appearance
+
+### Styling
+
+Below are examples how to textfield appearance, either with a theme or with CSS.
+
+#### Themed component
+
+~~~javascript
+textfield.theme(".themed-textfield", {
+  color_light_input_text: "#0D47A1",
+  color_light_input_background: "#BBDEFB",
+  color_light_focus_border: "#0D47A1",
+  input_padding_h: 16
+});
+
+m(textfield, {
+  class: "themed-textfield",
+  // ... other options
+});
+~~~
+
+#### CSS
+
+Change CSS using the CSS Classes at the bottom of this page.
+
+#### Style
+
+Some style attributes can be set using option `style`. For example:
+
+~~~javascript
+m(textfield, {
+  style: {
+    background: "#2196F3"
+  },
+  // ... other options
+});
+~~~
+
+#### Dark or light tone
+
+If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 
+
+* Use `tone: "dark"` to render light on dark
+* Use `tone: "light"` to locally render normally when dark tone is set
+
+
+
 ## Options
 
 ### Common component options
@@ -255,7 +303,7 @@ getState: state => vnode.state.value = state.value
 | **after**     | optional       | Mithril element |      | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
 | **tabindex**  | optional       | Integer  | 0           | Tab index |
 | **events** | optional | Object | | Input events; options object containing one or more events; predefined events are `onfocus`, `onblur`, `oninput`, `onfocus`, `onclick`, `onkeydown`; events with the same name that are specified in the `events` option will overwrite the predefined functions; use `ignoreEvents` to ignore specific events  |
-
+| **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-theme`); use "light" to locally inverse (sets class `pe-light-theme`) |
 
 ### Text field options
 

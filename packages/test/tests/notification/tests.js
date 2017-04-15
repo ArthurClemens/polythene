@@ -147,13 +147,13 @@ export const tests = [
     }
   },
   {
-    name: "Option: title (1 line), action -- light theme",
+    name: "Option: title (1 line), action -- light tone",
     interactive: true,
     exclude: true,
     component: {
       view: () => buttonRow({
         title: "Archived",
-        theme: "light",
+        tone: "light",
         action: m(button, {
           label: "Undo",
           events: {

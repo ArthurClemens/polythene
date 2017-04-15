@@ -240,6 +240,73 @@ const page = {
 
 
 
+## Appearance
+
+### Styling
+
+Below are examples how to change the menu appearance, either with a theme or with CSS.
+
+You can find more information about theming in [Theme](../polythene-theme).
+
+#### Themed component
+
+~~~javascript
+menu.theme(".themed-menu", {
+  color_light_background: "#2196F3",
+  border_radius:          0
+});
+
+m(listTile, {
+  class: "themed-menu",
+  // ... other options
+});
+~~~
+
+#### CSS
+
+Change CSS using the CSS Classes at the bottom of this page.
+
+#### Style
+
+Some style attributes can be set using option `style`. Because a menu is created with a list, the style must also be passed to the list tiles:
+
+~~~javascript
+m(menu, {
+  style: {
+    backgroundColor: "#2196F3",
+    color: "#fff"
+  },
+  content: m(list, [
+    m(listTile, {
+      title: "Yes",
+      ink: true,
+      style: {
+        backgroundColor: "#2196F3",
+        color: "#fff"
+      }
+    }),
+    m(listTile, {
+      title: "No",
+      ink: true,
+      style: {
+        backgroundColor: "#2196F3",
+        color: "#fff"
+      }
+    })
+  ])
+  // ... other options
+});
+~~~
+
+#### Dark or light tone
+
+If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 
+
+* Use `tone: "dark"` to render light on dark
+* Use `tone: "light"` to locally render normally when dark tone is set
+
+
+
 ## Options
 
 ### Common component options
@@ -254,6 +321,7 @@ const page = {
 | **before**    | optional       | Mithril element | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **after**     | optional       | Mithril element | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
 | **events**    | optional       | Object | | Options object containing one or more standard events such as `onclick` |
+| **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-theme`); use "light" to locally inverse (sets class `pe-light-theme`) |
 
 ### Menu specific options
 

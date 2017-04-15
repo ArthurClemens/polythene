@@ -649,7 +649,7 @@ var view = function view(_ref4) {
   var hasTicks = attrs.ticks !== undefined && attrs.ticks !== false;
   var interactiveTrack = attrs.interactiveTrack !== undefined ? attrs.interactiveTrack : true;
   var props = _extends({}, filterSupportedAttributes(attrs), {
-    class: [classes.component, attrs.disabled ? classes.isDisabled : null, attrs.pin ? classes.hasPin : null, interactiveTrack ? classes.hasTrack : null, state.isActive ? classes.isActive : null, state.hasFocus ? classes.hasFocus : null, state.fraction() === 0 ? classes.isAtMin : null, hasTicks ? classes.hasTicks : null, attrs.class].join(" ")
+    class: [classes.component, attrs.disabled ? classes.isDisabled : null, attrs.pin ? classes.hasPin : null, interactiveTrack ? classes.hasTrack : null, state.isActive ? classes.isActive : null, state.hasFocus ? classes.hasFocus : null, state.fraction() === 0 ? classes.isAtMin : null, hasTicks ? classes.hasTicks : null, attrs.tone === "dark" ? "pe-dark-theme" : null, attrs.tone === "light" ? "pe-light-theme" : null, attrs.class].join(" ")
   });
   var content = createSlider(state, attrs, hasTicks, interactiveTrack);
   return m(element, props, [attrs.before, content, attrs.after]);

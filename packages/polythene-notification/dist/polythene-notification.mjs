@@ -165,9 +165,7 @@ var stopTimer = function stopTimer(state) {
 };
 
 var prepareShow = function prepareShow(state, opts) {
-  console.log("prepareShow", state.element);
   state.containerEl = state.containerEl || document.querySelector(opts.containerSelector || state.element);
-  console.log("state.containerEl", state.containerEl);
   if (opts.containerSelector) {
     var holderEl = state.containerEl.querySelector(state.element);
     holderEl.classList.add(classes.hasContainer);
@@ -175,7 +173,6 @@ var prepareShow = function prepareShow(state, opts) {
 };
 
 var showInstance = function showInstance(state, opts) {
-  console.log("showInstance", opts);
   prepareShow(state, opts);
   stopTimer(state);
   state.transitioning = true;
@@ -201,7 +198,6 @@ var showInstance = function showInstance(state, opts) {
 };
 
 var hideInstance = function hideInstance(state, opts) {
-  console.log("hideInstance", opts);
   stopTimer(state);
   var id = state.instanceId;
   state.transitioning = true;
@@ -220,9 +216,9 @@ var hideInstance = function hideInstance(state, opts) {
 
 var createView = function createView(state, opts) {
   var element = opts.element || "div";
-  var isDarkTheme = opts.theme === "light" ? false : true;
   var props = _extends({}, filterSupportedAttributes(opts), {
-    class: [state.class, opts.class, isDarkTheme ? "pe-dark-theme" : null, opts.theme === "light" ? "pe-light-theme" : null, opts.containerSelector ? classes.hasContainer : null, opts.layout === "vertical" ? classes.vertical : classes.horizontal].join(" "),
+    class: [state.class, opts.tone === "light" ? null : "pe-dark-theme", // default dark theme
+    opts.tone === "light" ? "pe-light-theme" : null, opts.containerSelector ? classes.hasContainer : null, opts.layout === "vertical" ? classes.vertical : classes.horizontal, opts.tone === "dark" ? "pe-dark-theme" : null, opts.tone === "light" ? "pe-light-theme" : null, opts.class].join(" "),
     oncreate: function oncreate(_ref) {
       var dom = _ref.dom;
 

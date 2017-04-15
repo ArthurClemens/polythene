@@ -163,7 +163,7 @@ export const tests = [
   // Dark theme
 
   {
-    name: "Option: label -- dark theme (should be app's primary color)",
+    name: "Option: label -- dark theme class (should be app's primary color)",
     component: raisedButton,
     class: "pe-dark-theme",
     attrs: {
@@ -172,7 +172,7 @@ export const tests = [
   },
 
   {
-    name: "Option: disabled -- dark theme",
+    name: "Option: disabled -- dark theme class",
     component: raisedButton,
     class: "pe-dark-theme",
     attrs: {
@@ -181,7 +181,7 @@ export const tests = [
     }
   },
   {
-    name: "Option: label -- dark theme + light theme",
+    name: "Dark theme class + light theme class",
     class: "pe-dark-theme",
     component: {
       view: () => m(".pe-light-theme", {
@@ -197,6 +197,30 @@ export const tests = [
         m(raisedButton, {
           label: "Theme",
           class: "tests-raised-button-themed-button"
+        })
+      ])
+    }
+  },
+  {
+    name: "Dark theme class + light tone",
+    class: "pe-dark-theme",
+    component: {
+      view: () => m("div", {
+        style: { background: "#fff" }
+      }, [
+        m(raisedButton, {
+          label: "Normal",
+          tone: "light"
+        }),
+        m(raisedButton, {
+          label: "Disabled",
+          disabled: true,
+          tone: "light"
+        }),
+        m(raisedButton, {
+          label: "Theme",
+          class: "tests-raised-button-themed-button",
+          tone: "light"
         })
       ])
     }

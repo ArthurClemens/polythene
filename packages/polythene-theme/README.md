@@ -60,11 +60,11 @@ Variables like `unit_icon_size_small` are imported from `polythene-theme`, which
 * `light` indicates the default color, when the component is displayed on a light background
 * `dark` indicates the color when the component is displayed on a dark background
 
-A special Polythene class is `pe-dark-theme` - components that have a parent with this class will use the "dark" color settings.
+A special Polythene class is `pe-dark-theme` - components that have a parent with this class will use the "dark" color settings. This class will be set when component option `tone: "dark"` is set.
 
-The background color of `pe-dark-theme` needs to be defined in your app.
+The specific background color of `pe-dark-theme` needs to be defined in your app.
 
-Use class `pe-light-theme` to locally override dark colors.
+Use class `pe-light-theme` to locally override dark colors. This is equivalent to the option `tone: "light"`.
 
 
 

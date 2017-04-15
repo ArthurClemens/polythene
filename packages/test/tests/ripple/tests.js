@@ -152,7 +152,7 @@ export const tests = [
   // Dark theme
 
   {
-    name: "Option: style (white) -- dark theme",
+    name: "Option: style (white) -- dark theme class",
     interactive: true,
     exclude: true,
     class: "pe-dark-theme",
@@ -165,7 +165,7 @@ export const tests = [
     }
   },
   {
-    name: "Dark theme + light theme",
+    name: "Dark theme class + light theme class",
     interactive: true,
     exclude: true,
     class: "pe-dark-theme",
@@ -176,6 +176,20 @@ export const tests = [
         background: "#fff"
       },
       class: "pe-light-theme"
+    }
+  },
+  {
+    name: "Dark theme class + light tone",
+    interactive: true,
+    exclude: true,
+    class: "test-dark-theme",
+    component: ripple,
+    attrs: {
+      constrained: true,
+      style: {
+        background: "#fff"
+      },
+      tone: "light"
     }
   },
 ];

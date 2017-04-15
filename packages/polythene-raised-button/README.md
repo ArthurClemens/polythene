@@ -45,9 +45,9 @@ m(raisedButton, {
 
 Change CSS using the CSS Classes at the bottom of this page.
 
-#### Colors
+#### Style
 
-Colors can be set using `style`.
+Some style attributes can be set using option `style`. For example:
 
 ~~~javascript
 m(raisedButton, {
@@ -58,6 +58,13 @@ m(raisedButton, {
   // ... other options
 });
 ~~~
+
+#### Dark or light tone
+
+If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 
+
+* Use `tone: "dark"` to render light on dark
+* Use `tone: "light"` to locally render normally when dark tone is set
 
 
 

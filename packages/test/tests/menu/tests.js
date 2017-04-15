@@ -32,6 +32,25 @@ const themedSimpleMenuContent = m(list, [
   })
 ]);
 
+const styledSimpleMenuContent = m(list, [
+  m(listTile, {
+    title: "Yes",
+    ink: true,
+    style: {
+      backgroundColor: themeColor,
+      color: "#fff"
+    }
+  }),
+  m(listTile, {
+    title: "No",
+    ink: true,
+    style: {
+      backgroundColor: themeColor,
+      color: "#fff"
+    }
+  })
+]);
+
 export const tests = [
   {
     name: "Simple menu - permanent",
@@ -51,6 +70,21 @@ export const tests = [
           content: themedSimpleMenuContent,
           permanent: true,
           class: "menu-tests-blue-menu"
+        })
+    }
+  },
+  {
+    name: "Option: style",
+    component: {
+      view: () =>
+        m(menu, {
+          content: styledSimpleMenuContent,
+          permanent: true,
+          tone: "dark",
+          style: {
+            backgroundColor: themeColor,
+            color: "#fff"
+          }
         })
     }
   },
@@ -91,7 +125,7 @@ export const tests = [
 
   // Dark theme
   {
-    name: "Simple menu - permanent -- dark theme",
+    name: "Simple menu - permanent -- dark theme class",
     class: "pe-dark-theme",
     component: {
       view: () =>
@@ -102,17 +136,29 @@ export const tests = [
     }
   },
   {
-    name: "Menu items -- dark theme",
+    name: "Menu items -- dark theme class",
     class: "pe-dark-theme",
     component: menuItems
   },
   {
-    name: "Dark theme + light theme",
+    name: "Dark theme class + light theme class",
     class: "pe-dark-theme",
     component: {
       view: () =>
         m(menu, {
           class: "pe-light-theme",
+          content: simpleMenuContent,
+          permanent: true
+        })
+    }
+  },
+  {
+    name: "Dark theme class + light tone",
+    class: "test-dark-theme",
+    component: {
+      view: () =>
+        m(menu, {
+          tone: "light",
           content: simpleMenuContent,
           permanent: true
         })

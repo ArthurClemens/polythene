@@ -110,12 +110,14 @@ const view = vnode => {
     ...filterSupportedAttributes(attrs),
     class: [
       classes.component,
-      attrs.selected   ? classes.selected     : null,
-      attrs.disabled   ? classes.disabled     : null,
-      attrs.sticky     ? classes.sticky       : null,
-      attrs.compact    ? classes.compact    : null,
-      attrs.hoverable  ? classes.hoverable  : null,
+      attrs.selected   ? classes.selected : null,
+      attrs.disabled   ? classes.disabled : null,
+      attrs.sticky     ? classes.sticky : null,
+      attrs.compact    ? classes.compact : null,
+      attrs.hoverable  ? classes.hoverable : null,
       attrs.selectable ? classes.selectable : null,
+      attrs.tone === "dark" ? "pe-dark-theme" : null,
+      attrs.tone === "light" ? "pe-light-theme" : null,
       heightClass,
       attrs.class
     ].join(" ")

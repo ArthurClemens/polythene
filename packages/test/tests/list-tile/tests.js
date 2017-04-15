@@ -275,7 +275,7 @@ export const tests = [
   // Dark theme
 
   {
-    name: "Option: highSubtitle and front -- dark theme",
+    name: "Option: highSubtitle and front -- dark theme class",
     component: listTile,
     class: "pe-dark-theme",
     attrs: {
@@ -298,7 +298,7 @@ export const tests = [
     }
   },
   {
-    name: "Option: disabled url -- dark theme",
+    name: "Option: disabled url -- dark theme class",
     component: listTile,
     class: "pe-dark-theme",
     attrs: {
@@ -307,7 +307,7 @@ export const tests = [
     }
   },
   {
-    name: "Themed (color and font size) -- dark theme",
+    name: "Themed (color and font size) -- dark theme class",
     component: listTile,
     class: "pe-dark-theme",
     attrs: {
@@ -319,4 +319,31 @@ export const tests = [
       class: "tests-list-tile-themed-list-tile"
     }
   },
+  {
+    name: "Dark theme class + light theme class",
+    component: listTile,
+    class: "pe-dark-theme",
+    attrs: {
+      title: "Ancillary Justice",
+      class: "pe-light-theme",
+      front: m(icon, {
+        msvg: iconStars,
+        type: "medium"
+      })
+    }
+  },
+  {
+    name: "Dark theme class + light tone",
+    component: listTile,
+    class: "test-dark-theme",
+    attrs: {
+      title: "Ancillary Justice",
+      tone: "light",
+      front: m(icon, {
+        msvg: iconStars,
+        type: "medium"
+      })
+    }
+  },
+
 ];

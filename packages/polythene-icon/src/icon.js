@@ -32,6 +32,8 @@ const view = vnode => {
         classes.icon,
         classForType(attrs.type),
         attrs.avatar ? classes.avatar : null,
+        attrs.tone === "dark" ? "pe-dark-theme" : null,
+        attrs.tone === "light" ? "pe-light-theme" : null,
         attrs.class
       ].join(" "),
     },

@@ -240,7 +240,7 @@ var view = function view(vnode) {
   var tabIndex = disabled || attrs.inactive ? -1 : attrs.tabindex || 0;
   var onClickHandler = attrs.events && attrs.events.onclick;
   var props = _extends({}, filterSupportedAttributes(attrs, { add: ["formaction", "type"] }), {
-    class: [attrs.parentClass || classes.component, attrs.selected ? classes.selected : null, disabled ? classes.disabled : null, attrs.inactive ? classes.inactive : null, attrs.borders ? classes.borders : null, state.focus ? classes.focused : null, attrs.class].join(" "),
+    class: [attrs.parentClass || classes.component, attrs.selected ? classes.selected : null, disabled ? classes.disabled : null, attrs.inactive ? classes.inactive : null, attrs.borders ? classes.borders : null, state.focus ? classes.focused : null, attrs.tone === "dark" ? "pe-dark-theme" : null, attrs.tone === "light" ? "pe-light-theme" : null, attrs.class].join(" "),
     tabIndex: tabIndex,
     // handle focus events
     onfocus: function onfocus() {

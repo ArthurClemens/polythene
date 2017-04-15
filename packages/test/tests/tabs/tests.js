@@ -340,7 +340,7 @@ export const tests = [
   // Dark theme
 
   {
-    name: "Option: buttons (text buttons) -- dark theme",
+    name: "Option: buttons (text buttons) -- dark theme class",
     class: "pe-dark-theme",
     component: tabs,
     attrs: {
@@ -349,7 +349,7 @@ export const tests = [
   },
 
   {
-    name: "Theme: custom colors -- dark theme",
+    name: "Theme: custom colors -- dark theme class",
     class: "pe-dark-theme",
     component: tabs,
     attrs: {
@@ -359,7 +359,7 @@ export const tests = [
     }
   },
   {
-    name: "Tabs with icons -- dark theme",
+    name: "Tabs with icons -- dark theme class",
     class: "small-result pe-dark-theme",
     component: tabs,
     attrs: {
@@ -368,7 +368,7 @@ export const tests = [
     }
   },
   {
-    name: "Option: scrollable -- dark theme",
+    name: "Option: scrollable -- dark theme class",
     class: "pe-dark-theme",
     component: {
       view: () => 
@@ -386,19 +386,36 @@ export const tests = [
     }
   },
   {
-    name: "Dark theme + light theme",
+    name: "Dark theme class + light theme class",
     class: "pe-dark-theme",
     component: {
       view: () => 
         m("div", {
           style: {
             background: "#fff",
-            padding: "10px"
+            padding: "20px"
           },
           class: "pe-light-theme"
         }, m(tabs, {
           buttons: longList,
           scrollable: true
+        }))
+    }
+  },
+  {
+    name: "Dark theme class + light tone",
+    class: "test-dark-theme",
+    component: {
+      view: () => 
+        m("div", {
+          style: {
+            background: "#fff",
+            padding: "20px"
+          }
+        }, m(tabs, {
+          buttons: longList,
+          scrollable: true,
+          tone: "light"
         }))
     }
   },

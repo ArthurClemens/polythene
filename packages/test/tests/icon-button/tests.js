@@ -130,14 +130,14 @@ export const tests = [
   // Dark theme
 
   {
-    name: "Child node (icon component) -- dark theme",
+    name: "Child node (icon component) -- dark theme class",
     component: iconButton,
     class: "pe-dark-theme",
     attrs: null,
     children: m(icon, {msvg: iconFavorite})
   },
   {
-    name: "Themed (color and size) -- dark theme",
+    name: "Themed (color and size) -- dark theme class",
     component: iconButton,
     class: "pe-dark-theme",
     attrs: {
@@ -148,7 +148,7 @@ export const tests = [
     }
   },
   {
-    name: "Dark theme + light theme",
+    name: "Dark theme class + light theme class",
     class: "pe-dark-theme",
     component: {
       view: () => m(".pe-light-theme", {
@@ -163,6 +163,29 @@ export const tests = [
           icon: {
             msvg: iconFavorite
           },
+          class: "tests-icon-button-themed-icon-button"
+        })
+      ])
+    }
+  },
+  {
+    name: "Dark theme class + light tone",
+    class: "test-dark-theme",
+    component: {
+      view: () => m("div", {
+        style: { background: "#fff", padding: "10px" }
+      }, [
+        m(iconButton, {
+          icon: {
+            msvg: iconFavorite
+          },
+          tone: "light"
+        }),
+        m(iconButton, {
+          icon: {
+            msvg: iconFavorite
+          },
+          tone: "light",
           class: "tests-icon-button-themed-icon-button"
         })
       ])

@@ -28,6 +28,8 @@ const view = ({state, attrs}) => {
       class: [
         classes.component,
         attrs.fullWidth ? classes.searchFullWidth : classes.searchInset,
+        attrs.tone === "dark" ? "pe-dark-theme" : null,
+        attrs.tone === "light" ? "pe-light-theme" : null,
         attrs.class
       ].join(" ")
     },

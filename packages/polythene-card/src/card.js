@@ -275,6 +275,8 @@ const view = ({attrs}) => {
     {
       class: [
         classes.component,
+        attrs.tone === "dark" ? "pe-dark-theme" : null,
+        attrs.tone === "light" ? "pe-light-theme" : null,
         attrs.class
       ].join(" ")
     },

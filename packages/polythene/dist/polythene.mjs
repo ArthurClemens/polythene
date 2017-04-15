@@ -2332,7 +2332,7 @@ var view$2 = function view(vnode) {
   var attrs = vnode.attrs;
   var element = attrs.element || "div";
   var props = _extends$3({}, filterSupportedAttributes(attrs), {
-    class: [classes$2.component, attrs.class].join(" ")
+    class: [classes$2.component, attrs.tone === "dark" ? "pe-dark-theme" : null, attrs.tone === "light" ? "pe-light-theme" : null, attrs.class].join(" ")
   });
   var content = attrs.content ? attrs.content : attrs.children || vnode.children;
   return m$1(element, props, [attrs.before, content, attrs.after]);
@@ -2475,7 +2475,7 @@ var view$1 = function view(vnode) {
   var attrs = vnode.attrs;
   var element = attrs.element || "div";
   var props = _extends$1$2({}, filterSupportedAttributes(attrs), {
-    class: [classes$1.icon, classForType(attrs.type), attrs.avatar ? classes$1.avatar : null, attrs.class].join(" ")
+    class: [classes$1.icon, classForType(attrs.type), attrs.avatar ? classes$1.avatar : null, attrs.tone === "dark" ? "pe-dark-theme" : null, attrs.tone === "light" ? "pe-light-theme" : null, attrs.class].join(" ")
   }, attrs.events ? attrs.events : null);
   var content = attrs.content ? attrs.content : attrs.svg ? m$1(svg, _extends$1$2({}, attrs.svg)) : attrs.msvg ? m$1(svg, attrs.msvg) : attrs.src ? m$1("img", { src: attrs.src }) : attrs.children || vnode.children;
   return m$1(element, props, [attrs.before, content, attrs.after]);
@@ -2815,7 +2815,7 @@ var view$5 = function view(vnode) {
   }
   var element = attrs.element || "div";
   var props = _extends$7({}, filterSupportedAttributes(attrs), {
-    class: [classes$5.component, attrs.constrained !== false ? classes$5.constrained : null, attrs.class].join(" ")
+    class: [classes$5.component, attrs.constrained !== false ? classes$5.constrained : null, attrs.tone === "dark" ? "pe-dark-theme" : null, attrs.tone === "light" ? "pe-light-theme" : null, attrs.class].join(" ")
   });
   var content = m$1("div", {
     class: classes$5.mask
@@ -3208,7 +3208,7 @@ var view$4 = function view(vnode) {
   var heightClass = attrs.subtitle ? classes$4.hasSubtitle : attrs.highSubtitle ? classes$4.hasHighSubtitle : attrs.front || attrs.indent ? classes$4.hasFront : null;
 
   var props = _extends$6({}, filterSupportedAttributes(attrs), {
-    class: [classes$4.component, attrs.selected ? classes$4.selected : null, attrs.disabled ? classes$4.disabled : null, attrs.sticky ? classes$4.sticky : null, attrs.compact ? classes$4.compact : null, attrs.hoverable ? classes$4.hoverable : null, attrs.selectable ? classes$4.selectable : null, heightClass, attrs.class].join(" ")
+    class: [classes$4.component, attrs.selected ? classes$4.selected : null, attrs.disabled ? classes$4.disabled : null, attrs.sticky ? classes$4.sticky : null, attrs.compact ? classes$4.compact : null, attrs.hoverable ? classes$4.hoverable : null, attrs.selectable ? classes$4.selectable : null, attrs.tone === "dark" ? "pe-dark-theme" : null, attrs.tone === "light" ? "pe-light-theme" : null, heightClass, attrs.class].join(" ")
     // events and url are attached to primary content to not interfere with controls
   });
 
@@ -3826,7 +3826,7 @@ var view = function view(_ref2) {
 
   var element = attrs.element || attrs.url ? "a" : "div";
   var props = _extends({}, filterSupportedAttributes(attrs), {
-    class: [classes$$1.component, attrs.class].join(" ")
+    class: [classes$$1.component, attrs.tone === "dark" ? "pe-dark-theme" : null, attrs.tone === "light" ? "pe-light-theme" : null, attrs.class].join(" ")
   }, attrs.url ? attrs.url : null, attrs.events ? attrs.events : null);
 
   var contents = Array.isArray(attrs.content) ? attrs.content.map(function (attr) {
@@ -4127,7 +4127,7 @@ var view$9 = function view(vnode) {
   var tabIndex = disabled || attrs.inactive ? -1 : attrs.tabindex || 0;
   var onClickHandler = attrs.events && attrs.events.onclick;
   var props = _extends$11({}, filterSupportedAttributes(attrs, { add: ["formaction", "type"] }), {
-    class: [attrs.parentClass || classes$9.component, attrs.selected ? classes$9.selected : null, disabled ? classes$9.disabled : null, attrs.inactive ? classes$9.inactive : null, attrs.borders ? classes$9.borders : null, state.focus ? classes$9.focused : null, attrs.class].join(" "),
+    class: [attrs.parentClass || classes$9.component, attrs.selected ? classes$9.selected : null, disabled ? classes$9.disabled : null, attrs.inactive ? classes$9.inactive : null, attrs.borders ? classes$9.borders : null, state.focus ? classes$9.focused : null, attrs.tone === "dark" ? "pe-dark-theme" : null, attrs.tone === "light" ? "pe-light-theme" : null, attrs.class].join(" "),
     tabIndex: tabIndex,
     // handle focus events
     onfocus: function onfocus() {
@@ -4390,7 +4390,7 @@ var view$7 = function view(vnode) {
   var element = attrs.element || "div";
   var name = attrs.name || "";
   var props = _extends$9({}, filterSupportedAttributes(attrs), {
-    class: [classes$7.component, attrs.defaultClass, checked ? classes$7.on : classes$7.off, attrs.disabled ? classes$7.disabled : null, inactive ? classes$7.inactive : null, classForType$1(attrs.size), attrs.class].join(" ")
+    class: [classes$7.component, attrs.defaultClass, checked ? classes$7.on : classes$7.off, attrs.disabled ? classes$7.disabled : null, inactive ? classes$7.inactive : null, classForType$1(attrs.size), attrs.tone === "dark" ? "pe-dark-theme" : null, attrs.tone === "light" ? "pe-light-theme" : null, attrs.class].join(" ")
   }, attrs.events ? attrs.events : null);
   var content = [m$1("input", {
     class: classes$7.input,
@@ -5153,7 +5153,7 @@ var createView = function createView(state, opts) {
   var element = opts.element || "form";
   var props = _extends$12({}, filterSupportedAttributes(opts, { remove: ["style"] }), // style set in content, and set by show/hide transition
   {
-    class: [classes$10.component, opts.fullscreen ? classes$10.fullscreen : null, opts.backdrop ? classes$10.hasBackdrop : null, state.topOverflow || opts.borders ? classes$10.hasTopOverflow : null, state.bottomOverflow || opts.borders ? classes$10.hasBottomOverflow : null, state.visible ? classes$10.visible : null, opts.class].join(" "),
+    class: [classes$10.component, opts.fullscreen ? classes$10.fullscreen : null, opts.backdrop ? classes$10.hasBackdrop : null, state.topOverflow || opts.borders ? classes$10.hasTopOverflow : null, state.bottomOverflow || opts.borders ? classes$10.hasBottomOverflow : null, state.visible ? classes$10.visible : null, opts.tone === "dark" ? "pe-dark-theme" : null, opts.tone === "light" ? "pe-light-theme" : null, opts.class].join(" "),
     oncreate: function oncreate(_ref2) {
       var dom = _ref2.dom;
 
@@ -5824,7 +5824,7 @@ var view$12 = function view(vnode) {
   var attrs = vnode.attrs;
   var element = attrs.element || "div";
   var props = _extends$15({}, filterSupportedAttributes(attrs), {
-    class: [classes$13.component, attrs.borders ? classes$13.borders : null, attrs.indentedBorders ? classes$13.indentedBorders : null, attrs.header ? classes$13.hasHeader : null, attrs.compact ? classes$13.compact : null, attrs.class].join(" ")
+    class: [classes$13.component, attrs.borders ? classes$13.borders : null, attrs.indentedBorders ? classes$13.indentedBorders : null, attrs.header ? classes$13.hasHeader : null, attrs.compact ? classes$13.compact : null, attrs.tone === "dark" ? "pe-dark-theme" : null, attrs.tone === "light" ? "pe-light-theme" : null, attrs.class].join(" ")
   });
   var headerOpts = void 0;
   if (attrs.header) {
@@ -6133,7 +6133,7 @@ var createView$1 = function createView(vnode) {
 
   var element = attrs.element || "div";
   var props = _extends$16({}, filterSupportedAttributes(attrs), {
-    class: [classes$14.component, attrs.permanent ? classes$14.permanent : null, attrs.target ? classes$14.target : null, attrs.size ? widthClass(unifySize(attrs.size)) : null, attrs.class].join(" "),
+    class: [classes$14.component, attrs.permanent ? classes$14.permanent : null, attrs.target ? classes$14.target : null, attrs.size ? widthClass(unifySize(attrs.size)) : null, attrs.tone === "dark" ? "pe-dark-theme" : null, attrs.tone === "light" ? "pe-light-theme" : null, attrs.class].join(" "),
     oncreate: function oncreate(_ref) {
       var dom = _ref.dom;
 
@@ -6160,7 +6160,8 @@ var createView$1 = function createView(vnode) {
     class: classes$14.content,
     onclick: function onclick(e) {
       return e.preventDefault();
-    }
+    },
+    style: attrs.style
   }, [state.z > 0 && m$1(shadow, {
     z: state.z,
     animated: true
@@ -6517,9 +6518,7 @@ var stopTimer = function stopTimer(state) {
 };
 
 var prepareShow = function prepareShow(state, opts) {
-  console.log("prepareShow", state.element);
   state.containerEl = state.containerEl || document.querySelector(opts.containerSelector || state.element);
-  console.log("state.containerEl", state.containerEl);
   if (opts.containerSelector) {
     var holderEl = state.containerEl.querySelector(state.element);
     holderEl.classList.add(classes$15.hasContainer);
@@ -6527,7 +6526,6 @@ var prepareShow = function prepareShow(state, opts) {
 };
 
 var showInstance$1 = function showInstance(state, opts) {
-  console.log("showInstance", opts);
   prepareShow(state, opts);
   stopTimer(state);
   state.transitioning = true;
@@ -6553,7 +6551,6 @@ var showInstance$1 = function showInstance(state, opts) {
 };
 
 var hideInstance$1 = function hideInstance(state, opts) {
-  console.log("hideInstance", opts);
   stopTimer(state);
   var id = state.instanceId;
   state.transitioning = true;
@@ -6572,9 +6569,9 @@ var hideInstance$1 = function hideInstance(state, opts) {
 
 var createView$2 = function createView(state, opts) {
   var element = opts.element || "div";
-  var isDarkTheme = opts.theme === "light" ? false : true;
   var props = _extends$17({}, filterSupportedAttributes(opts), {
-    class: [state.class, opts.class, isDarkTheme ? "pe-dark-theme" : null, opts.theme === "light" ? "pe-light-theme" : null, opts.containerSelector ? classes$15.hasContainer : null, opts.layout === "vertical" ? classes$15.vertical : classes$15.horizontal].join(" "),
+    class: [state.class, opts.theme === "light" ? null : "pe-dark-theme", // default dark theme
+    opts.theme === "light" ? "pe-light-theme" : null, opts.containerSelector ? classes$15.hasContainer : null, opts.layout === "vertical" ? classes$15.vertical : classes$15.horizontal, opts.tone === "dark" ? "pe-dark-theme" : null, opts.tone === "light" ? "pe-light-theme" : null, opts.class].join(" "),
     oncreate: function oncreate(_ref) {
       var dom = _ref.dom;
 
@@ -7341,7 +7338,7 @@ var view$15 = function view(_ref) {
   }
 
   var props = _extends$20({}, filterSupportedAttributes(attrs), {
-    class: [classes$18.component, isInvalid ? classes$18.stateInvalid : "", state.focus() ? classes$18.stateFocused : "", attrs.floatingLabel ? classes$18.hasFloatingLabel : "", attrs.disabled ? classes$18.stateDisabled : "", attrs.readonly ? classes$18.stateReadonly : "", state.isDirty ? classes$18.stateDirty : "", attrs.dense ? classes$18.isDense : "", attrs.required ? classes$18.isRequired : "", attrs.fullWidth ? classes$18.hasFullWidth : "", attrs.counter ? classes$18.hasCounter : "", attrs.hideSpinner !== false ? classes$18.hideSpinner : "", attrs.hideClear !== false ? classes$18.hideClear : "", attrs.hideValidation ? classes$18.hideValidation : "", attrs.class].join(" "),
+    class: [classes$18.component, isInvalid ? classes$18.stateInvalid : "", state.focus() ? classes$18.stateFocused : "", attrs.floatingLabel ? classes$18.hasFloatingLabel : "", attrs.disabled ? classes$18.stateDisabled : "", attrs.readonly ? classes$18.stateReadonly : "", state.isDirty ? classes$18.stateDirty : "", attrs.dense ? classes$18.isDense : "", attrs.required ? classes$18.isRequired : "", attrs.fullWidth ? classes$18.hasFullWidth : "", attrs.counter ? classes$18.hasCounter : "", attrs.hideSpinner !== false ? classes$18.hideSpinner : "", attrs.hideClear !== false ? classes$18.hideClear : "", attrs.hideValidation ? classes$18.hideValidation : "", attrs.tone === "dark" ? "pe-dark-theme" : null, attrs.tone === "light" ? "pe-light-theme" : null, attrs.class].join(" "),
     oncreate: function oncreate(_ref2) {
       var dom = _ref2.dom;
 
@@ -7718,7 +7715,7 @@ var view$14 = function view(_ref) {
 
   var element = attrs.element || "div";
   var props = _extends$19({}, filterSupportedAttributes(attrs), {
-    class: [classes$17.component, attrs.fullWidth ? classes$17.searchFullWidth : classes$17.searchInset, attrs.class].join(" ")
+    class: [classes$17.component, attrs.fullWidth ? classes$17.searchFullWidth : classes$17.searchInset, attrs.tone === "dark" ? "pe-dark-theme" : null, attrs.tone === "light" ? "pe-light-theme" : null, attrs.class].join(" ")
   }, attrs.events);
   var searchState = getNameOfState(state.searchState);
   var buttons = (attrs.buttons || {})[searchState] || {};
@@ -8418,7 +8415,7 @@ var view$16 = function view(_ref4) {
   var hasTicks = attrs.ticks !== undefined && attrs.ticks !== false;
   var interactiveTrack = attrs.interactiveTrack !== undefined ? attrs.interactiveTrack : true;
   var props = _extends$21({}, filterSupportedAttributes(attrs), {
-    class: [classes$19.component, attrs.disabled ? classes$19.isDisabled : null, attrs.pin ? classes$19.hasPin : null, interactiveTrack ? classes$19.hasTrack : null, state.isActive ? classes$19.isActive : null, state.hasFocus ? classes$19.hasFocus : null, state.fraction() === 0 ? classes$19.isAtMin : null, hasTicks ? classes$19.hasTicks : null, attrs.class].join(" ")
+    class: [classes$19.component, attrs.disabled ? classes$19.isDisabled : null, attrs.pin ? classes$19.hasPin : null, interactiveTrack ? classes$19.hasTrack : null, state.isActive ? classes$19.isActive : null, state.hasFocus ? classes$19.hasFocus : null, state.fraction() === 0 ? classes$19.isAtMin : null, hasTicks ? classes$19.hasTicks : null, attrs.tone === "dark" ? "pe-dark-theme" : null, attrs.tone === "light" ? "pe-light-theme" : null, attrs.class].join(" ")
   });
   var content = createSlider(state, attrs, hasTicks, interactiveTrack);
   return m$1(element, props, [attrs.before, content, attrs.after]);
@@ -9579,7 +9576,7 @@ var view$18 = function view(vnode) {
   };
 
   var props = _extends$24({}, filterSupportedAttributes(attrs), {
-    class: [classes$20.component, attrs.scrollable ? classes$20.scrollable : null, state.selectedTabIndex === 0 ? classes$20.isAtStart : null, state.selectedTabIndex === state.tabs.length - 1 ? classes$20.isAtEnd : null, attrs.activeSelected ? classes$20.activeSelectable : null, autofit ? classes$20.isAutofit : null, attrs.small ? classes$20.smallTabs : null, attrs.menu ? classes$20.isMenu : null, attrs.class].join(" "),
+    class: [classes$20.component, attrs.scrollable ? classes$20.scrollable : null, state.selectedTabIndex === 0 ? classes$20.isAtStart : null, state.selectedTabIndex === state.tabs.length - 1 ? classes$20.isAtEnd : null, attrs.activeSelected ? classes$20.activeSelectable : null, autofit ? classes$20.isAutofit : null, attrs.small ? classes$20.smallTabs : null, attrs.menu ? classes$20.isMenu : null, attrs.tone === "dark" ? "pe-dark-theme" : null, attrs.tone === "light" ? "pe-light-theme" : null, attrs.class].join(" "),
     oninit: function oninit() {
       return subscribe("resize", onResize);
     },
@@ -9845,7 +9842,7 @@ var view$19 = function view(vnode) {
   var attrs = vnode.attrs;
   var element = attrs.element || "div";
   var props = _extends$25({}, filterSupportedAttributes(attrs), {
-    class: [classes$21.component, attrs.compact ? classes$21.compact : null, attrs.class].join(" ")
+    class: [classes$21.component, attrs.compact ? classes$21.compact : null, attrs.tone === "dark" ? "pe-dark-theme" : null, attrs.tone === "light" ? "pe-light-theme" : null, attrs.class].join(" ")
   }, attrs.events ? attrs.events : null);
   var content = attrs.content ? attrs.content : attrs.children || vnode.children;
   return m$1(element, props, [attrs.before, content, attrs.after]);

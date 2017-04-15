@@ -49,6 +49,8 @@ const view = vnode => {
         attrs.disabled ? classes.disabled : null,
         inactive ? classes.inactive : null,
         classForType(attrs.size),
+        attrs.tone === "dark" ? "pe-dark-theme" : null,
+        attrs.tone === "light" ? "pe-light-theme" : null,
         attrs.class
       ].join(" ")
     },

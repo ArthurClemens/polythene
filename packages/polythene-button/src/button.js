@@ -37,6 +37,8 @@ const view = vnode => {
         attrs.inactive ? classes.inactive : null,
         attrs.borders ? classes.borders : null,
         state.focus ? classes.focused : null,
+        attrs.tone === "dark" ? "pe-dark-theme" : null,
+        attrs.tone === "light" ? "pe-light-theme" : null,
         attrs.class
       ].join(" "),
       tabIndex,

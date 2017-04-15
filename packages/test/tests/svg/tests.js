@@ -60,7 +60,7 @@ export const tests = [
   // Dark theme
 
   {
-    name: "Option: content (mmsvg)",
+    name: "Option: content (mmsvg) -- dark theme class",
     class: "pe-dark-theme",
     component: svg,
     attrs: {
@@ -68,7 +68,7 @@ export const tests = [
     },
   },
   {
-    name: "Themed (color)",
+    name: "Themed (color) -- dark theme class",
     component: svg,
     class: "pe-dark-theme",
     attrs: {
@@ -77,8 +77,7 @@ export const tests = [
     }
   },
   {
-    name: "Dark theme + light theme",
-    interactive: true,
+    name: "Dark theme class + light theme class",
     class: "pe-dark-theme",
     component: {
       view: () =>
@@ -89,6 +88,22 @@ export const tests = [
           },
           class: "pe-light-theme"
         }, m(svg, {content: iconStars}))
+    }
+  },
+  {
+    name: "Dark theme class + light tone",
+    class: "test-dark-theme",
+    component: {
+      view: () =>
+        m("div", {
+          style: {
+            background: "#fff",
+            padding: "10px"
+          },
+        }, m(svg, {
+          content: iconStars,
+          tone: "light"
+        }))
     }
   },
 ];

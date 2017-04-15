@@ -209,10 +209,10 @@ export const tests = [
     }
   },
 
-  // Dark theme
+  // Dark theme class
   
   {
-    name: "Option: label -- dark theme",
+    name: "Option: label -- dark theme class",
     class: "pe-dark-theme",
     component: button,
     attrs: {
@@ -220,7 +220,16 @@ export const tests = [
     }
   },
   {
-    name: "Themed button -- dark theme",
+    name: "Option: tone \"dark\" -- dark theme class",
+    class: "test-dark-theme",
+    component: button,
+    attrs: {
+      label: "Label",
+      tone: "dark"
+    }
+  },
+  {
+    name: "Themed button -- dark theme class",
     class: "pe-dark-theme",
     component: button,
     attrs: {
@@ -229,7 +238,7 @@ export const tests = [
     }
   },
   {
-    name: "Themed button blue on dark -- dark theme",
+    name: "Themed button blue on dark -- dark theme class",
     class: "pe-dark-theme",
     component: button,
     attrs: {
@@ -238,7 +247,7 @@ export const tests = [
     }
   },
   {
-    name: "Themed button: (option: borders) -- dark theme",
+    name: "Themed button: (option: borders) -- dark theme class",
     class: "pe-dark-theme",
     component: button,
     attrs: {
@@ -248,14 +257,14 @@ export const tests = [
     }
   },
   {
-    name: "Dark theme + light theme",
+    name: "Dark theme class + light theme class",
     class: "pe-dark-theme",
     component: {
       view: () => m(".pe-light-theme", {
         style: { background: "#fff" }
       }, [
         m(button, {
-          label: "Normal"
+          label: "Normal",
         }),
         m(button, {
           label: "Disabled",
@@ -264,6 +273,30 @@ export const tests = [
         m(button, {
           label: "Theme",
           class: "tests-button-themed-button"
+        })
+      ])
+    }
+  },
+  {
+    name: "Dark theme class + light tone",
+    class: "test-dark-theme",
+    component: {
+      view: () => m("div", {
+        style: { background: "#fff" }
+      }, [
+        m(button, {
+          label: "Normal",
+          tone: "light"
+        }),
+        m(button, {
+          label: "Disabled",
+          disabled: true,
+          tone: "light"
+        }),
+        m(button, {
+          label: "Theme",
+          class: "tests-button-themed-button",
+          tone: "light"
         })
       ])
     }

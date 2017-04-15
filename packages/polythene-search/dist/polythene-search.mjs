@@ -183,7 +183,7 @@ var view = function view(_ref) {
 
   var element = attrs.element || "div";
   var props = _extends({}, filterSupportedAttributes(attrs), {
-    class: [classes.component, attrs.fullWidth ? classes.searchFullWidth : classes.searchInset, attrs.class].join(" ")
+    class: [classes.component, attrs.fullWidth ? classes.searchFullWidth : classes.searchInset, attrs.tone === "dark" ? "pe-dark-theme" : null, attrs.tone === "light" ? "pe-light-theme" : null, attrs.class].join(" ")
   }, attrs.events);
   var searchState = getNameOfState(state.searchState);
   var buttons = (attrs.buttons || {})[searchState] || {};

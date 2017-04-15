@@ -487,11 +487,24 @@ export const tests = [
       ])
     }
   },
+  {
+    name: "Option: style",
+    component: {
+      view: () => block([
+        m(textfield, {
+          label: "Your name",
+          style: {
+            background: "#2196F3"
+          }
+        })
+      ])
+    }
+  },
 
   /* Dark theme */
 
   {
-    name: "Option: label -- dark theme",
+    name: "Option: label -- dark theme class",
     class: "pe-dark-theme",
     component: {
       view: () => block([
@@ -502,7 +515,7 @@ export const tests = [
     }
   },
   {
-    name: "Option: floatingLabel -- dark theme",
+    name: "Option: floatingLabel -- dark theme class",
     interactive: true,
     class: "pe-dark-theme",
     component: {
@@ -523,7 +536,7 @@ export const tests = [
     }
   },
   {
-    name: "Option: type email, required -- dark theme",
+    name: "Option: type email, required -- dark theme class",
     interactive: true,
     class: "pe-dark-theme",
     component: {
@@ -539,7 +552,7 @@ export const tests = [
     }
   },
   {
-    name: "Option: disabled (input) -- dark theme",
+    name: "Option: disabled (input) -- dark theme class",
     class: "pe-dark-theme",
     component: {
       view: () => block([
@@ -551,7 +564,7 @@ export const tests = [
     }
   },
   {
-    name: "Option: readonly -- dark theme",
+    name: "Option: readonly -- dark theme class",
     class: "pe-dark-theme",
     component: {
       view: () => block([
@@ -563,13 +576,25 @@ export const tests = [
     }
   },
   {
-    name: "Dark theme + light theme",
+    name: "Dark theme class + light theme class",
     class: "pe-dark-theme",
     component: {
       view: () => block([
         m(textfield, {
           label: "Your Name",
           class: "pe-light-theme"
+        })
+      ])
+    }
+  },
+  {
+    name: "Dark theme class + light tone",
+    class: "test-dark-theme",
+    component: {
+      view: () => block([
+        m(textfield, {
+          label: "Your Name",
+          tone: "light"
         })
       ])
     }

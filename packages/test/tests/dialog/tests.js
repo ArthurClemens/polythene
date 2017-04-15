@@ -285,7 +285,7 @@ export const tests = [
 
   // Dark theme
   {
-    name: "Option: modal with backdrop -- dark theme)",
+    name: "Option: modal with backdrop -- dark theme class",
     interactive: true,
     exclude: true,
     component: {
@@ -299,7 +299,7 @@ export const tests = [
     }
   },
   {
-    name: "Ddark theme + light theme",
+    name: "Dark theme class + light theme class",
     interactive: true,
     exclude: true,
     component: {
@@ -309,6 +309,21 @@ export const tests = [
         modal: true,
         backdrop: true,
         class: "pe-dark-theme pe-light-theme"
+      }))
+    }
+  },
+  {
+    name: "Dark theme class + light tone",
+    interactive: true,
+    exclude: true,
+    component: {
+      view: () => btn(Object.assign({}, commonDialogProps, {
+        title: "Long dialog with a very long title that surely won't fit here",
+        body: m.trust(longText),
+        modal: true,
+        backdrop: true,
+        class: "pe-dark-theme",
+        tone: "light"
       }))
     }
   }

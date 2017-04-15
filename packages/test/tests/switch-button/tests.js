@@ -215,7 +215,7 @@ export const tests = [
     }
   },
   {
-    name: "Themed checkbox (colors) -- dark theme",
+    name: "Themed checkbox (colors) -- dark theme class",
     class: "pe-dark-theme",
     component: switchButton,
     attrs: {
@@ -224,7 +224,7 @@ export const tests = [
     }
   },
   {
-    name: "Option: disabled -- dark theme",
+    name: "Option: disabled -- dark theme class",
     class: "pe-dark-theme",
     component: {
       view: () => [
@@ -241,18 +241,35 @@ export const tests = [
     }
   },
   {
-    name: "Dark theme + light theme",
+    name: "Dark theme class + light theme class",
     class: "pe-dark-theme",
     component: {
       view: () => 
         m("div", {
           style: {
             background: "#fff",
-            padding: "10px"
+            padding: "20px"
           },
           class: "pe-light-theme"
         },
         m(switchButton)
+      )
+    }
+  },
+  {
+    name: "Dark theme class + light tone",
+    class: "test-dark-theme",
+    component: {
+      view: () => 
+        m("div", {
+          style: {
+            background: "#fff",
+            padding: "20px"
+          },
+        },
+        m(switchButton, {
+          tone: "light"
+        })
       )
     }
   },

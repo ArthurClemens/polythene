@@ -44,11 +44,11 @@ const style = (scopes, selector, componentVars, tint) => {
   }];
 };
 
-const noTouchStyle = (scope, selector, componentVars, tint) => {
+const noTouchStyle = (scopes, selector, componentVars, tint) => {
   const normalBorder = componentVars["color_" + tint + "_border"];
   const hoverBorder = componentVars["color_" + tint + "_border"] || normalBorder;
   return [{
-    [scope + selector + ":hover"]: {
+    [scopes.map(s => s + selector + ":hover").join(",")]: {
       ":not(.pe-button--selected):not(.pe-button--inactive) .pe-button__wash": {
         backgroundColor: componentVars["color_" + tint + "_hover_background"],
         borderColor: hoverBorder
@@ -58,8 +58,8 @@ const noTouchStyle = (scope, selector, componentVars, tint) => {
 };
 
 export default (selector, componentVars) => [
-  style(       [".pe-dark-theme "],                  selector, componentVars, "dark"), // inside dark theme
-  style(       ["", ".pe-light-theme "],             selector, componentVars, "light"), // inside light theme
+  style([".pe-dark-theme", ".pe-dark-theme "], selector, componentVars, "dark"), // has/inside dark theme
+  style(["", ".pe-light-theme", ".pe-light-theme "], selector, componentVars, "light"), // normal, has/inside light theme
   noTouchStyle(["html.pe-no-touch .pe-dark-theme "], selector, componentVars, "dark"), // inside dark theme
-  noTouchStyle(["html.pe-no-touch "],                selector, componentVars, "light"),
+  noTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-theme "], selector, componentVars, "light"),
 ];

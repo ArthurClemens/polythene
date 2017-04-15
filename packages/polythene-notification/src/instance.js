@@ -27,9 +27,7 @@ const stopTimer = state => {
 };
 
 const prepareShow = (state, opts) => {
-  console.log("prepareShow", state.element);
   state.containerEl = state.containerEl || document.querySelector(opts.containerSelector || state.element);
-  console.log("state.containerEl", state.containerEl);
   if (opts.containerSelector) {
     const holderEl = state.containerEl.querySelector(state.element);
     holderEl.classList.add(classes.hasContainer);
@@ -37,7 +35,6 @@ const prepareShow = (state, opts) => {
 };
 
 const showInstance = (state, opts) => {
-  console.log("showInstance", opts);
   prepareShow(state, opts);
   stopTimer(state);
   state.transitioning = true;
@@ -68,7 +65,6 @@ const showInstance = (state, opts) => {
 };
 
 const hideInstance = (state, opts) => {
-  console.log("hideInstance", opts);
   stopTimer(state);
   const id = state.instanceId;
   state.transitioning = true;
@@ -90,19 +86,18 @@ const hideInstance = (state, opts) => {
 
 const createView = (state, opts) => {
   const element = opts.element || "div";
-  const isDarkTheme = opts.theme === "light"
-    ? false
-    : true;
   const props = Object.assign({},
     filterSupportedAttributes(opts),
     {
       class: [
         state.class,
-        opts.class,
-        isDarkTheme ? "pe-dark-theme" : null,
-        opts.theme === "light" ? "pe-light-theme" : null,
+        opts.tone === "light" ? null : "pe-dark-theme", // default dark theme
+        opts.tone === "light" ? "pe-light-theme" : null,
         opts.containerSelector ? classes.hasContainer : null,
         opts.layout === "vertical" ? classes.vertical : classes.horizontal,
+        opts.tone === "dark" ? "pe-dark-theme" : null,
+        opts.tone === "light" ? "pe-light-theme" : null,
+        opts.class
       ].join(" "),
       oncreate: ({ dom }) => {
         state.el = dom;

@@ -129,7 +129,7 @@ export const tests = [
   // Dark theme
 
   {
-    name: "Option: icon -- dark theme",
+    name: "Option: icon -- dark theme class",
     component: fab,
     class: "pe-dark-theme",
     attrs: {
@@ -139,7 +139,7 @@ export const tests = [
     }
   },
   {
-    name: "Themed FAB -- dark theme",
+    name: "Themed FAB -- dark theme class",
     component: fab,
     class: "pe-dark-theme",
     attrs: {
@@ -150,7 +150,7 @@ export const tests = [
     }
   },
   {
-    name: "Dark theme + light theme",
+    name: "Dark theme class + light theme class",
     class: "pe-dark-theme",
     component: {
       view: () => m(".pe-light-theme", {
@@ -166,6 +166,29 @@ export const tests = [
             msvg: iconAlarm
           },
           class: "tests-fab-themed-fab"
+        })
+      ])
+    }
+  },
+  {
+    name: "Dark theme class + light tone",
+    class: "test-dark-theme",
+    component: {
+      view: () => m("div", {
+        style: { background: "#fff", padding: "10px" }
+      }, [
+        m(fab, {
+          icon: {
+            msvg: iconAlarm
+          },
+          tint: "light"
+        }),
+        m(fab, {
+          icon: {
+            msvg: iconAlarm
+          },
+          class: "tests-fab-themed-fab",
+          tint: "light"
         })
       ])
     }

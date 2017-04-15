@@ -163,6 +163,8 @@ const createView = vnode => {
         attrs.permanent ? classes.permanent : null,
         attrs.target ? classes.target : null,
         attrs.size ? widthClass(unifySize(attrs.size)) : null,
+        attrs.tone === "dark" ? "pe-dark-theme" : null,
+        attrs.tone === "light" ? "pe-light-theme" : null,
         attrs.class
       ].join(" "),
       oncreate: ({ dom }) => {
@@ -188,7 +190,8 @@ const createView = vnode => {
   );
   const content = m("div", {
     class: classes.content,
-    onclick: e => e.preventDefault()
+    onclick: e => e.preventDefault(),
+    style: attrs.style
   }, [
     state.z > 0 && m(shadow, {
       z: state.z,

@@ -142,13 +142,13 @@ export const tests = [
     }
   },
   {
-    name: "Snackbar in container -- dark theme",
+    name: "Snackbar in container -- dark theme class",
     interactive: true,
     exclude: true,
     class: "pe-dark-theme",
     component: {
       view: () => [
-        buttonRow(variations.map(v => Object.assign({}, v, { theme: "light" })), { spawn: "container2" }),
+        buttonRow(variations.map(v => Object.assign({}, v, { tone: "light" })), { spawn: "container2" }),
         m("div",
           {
             style: Object.assign({}, pattern("#444", "#263238"), {
@@ -158,6 +158,48 @@ export const tests = [
             })
           },
           m(snackbar, { spawn: "container2", position: "container" })
+        )
+      ]
+    }
+  },
+  {
+    name: "Dark theme class + light theme class",
+    interactive: true,
+    exclude: true,
+    class: "pe-dark-theme",
+    component: {
+      view: () => [
+        buttonRow(variations.map(v => Object.assign({}, v, { class: "pe-light-theme" })), { spawn: "container3" }),
+        m("div",
+          {
+            style: Object.assign({}, pattern("#444", "#263238"), {
+              height: "180px",
+              overflow: "hidden",
+              position: "relative"
+            })
+          },
+          m(snackbar, { spawn: "container3", position: "container" })
+        )
+      ]
+    }
+  },
+  {
+    name: "Dark theme class + light tone",
+    interactive: true,
+    exclude: true,
+    class: "pe-dark-theme",
+    component: {
+      view: () => [
+        buttonRow(variations.map(v => Object.assign({}, v, { tone: "dark" })), { spawn: "container4" }),
+        m("div",
+          {
+            style: Object.assign({}, pattern("#fff", "#eceff1"), {
+              height: "180px",
+              overflow: "hidden",
+              position: "relative"
+            })
+          },
+          m(snackbar, { spawn: "container4", position: "container" })
         )
       ]
     }

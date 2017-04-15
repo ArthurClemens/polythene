@@ -269,7 +269,7 @@ var createView = function createView(vnode) {
 
   var element = attrs.element || "div";
   var props = _extends({}, filterSupportedAttributes(attrs), {
-    class: [classes.component, attrs.permanent ? classes.permanent : null, attrs.target ? classes.target : null, attrs.size ? widthClass(unifySize(attrs.size)) : null, attrs.class].join(" "),
+    class: [classes.component, attrs.permanent ? classes.permanent : null, attrs.target ? classes.target : null, attrs.size ? widthClass(unifySize(attrs.size)) : null, attrs.tone === "dark" ? "pe-dark-theme" : null, attrs.tone === "light" ? "pe-light-theme" : null, attrs.class].join(" "),
     oncreate: function oncreate(_ref) {
       var dom = _ref.dom;
 
@@ -296,7 +296,8 @@ var createView = function createView(vnode) {
     class: classes.content,
     onclick: function onclick(e) {
       return e.preventDefault();
-    }
+    },
+    style: attrs.style
   }, [state.z > 0 && m(shadow, {
     z: state.z,
     animated: true

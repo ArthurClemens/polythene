@@ -21,10 +21,12 @@ const view = vnode => {
     {
       class: [
         classes.component,
-        (attrs.borders ? classes.borders : null),
-        (attrs.indentedBorders ? classes.indentedBorders : null),
-        (attrs.header ? classes.hasHeader : null),
-        (attrs.compact ? classes.compact : null),
+        attrs.borders ? classes.borders : null,
+        attrs.indentedBorders ? classes.indentedBorders : null,
+        attrs.header ? classes.hasHeader : null,
+        attrs.compact ? classes.compact : null,
+        attrs.tone === "dark" ? "pe-dark-theme" : null,
+        attrs.tone === "light" ? "pe-light-theme" : null,
         attrs.class
       ].join(" "),
     }

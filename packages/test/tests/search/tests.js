@@ -62,7 +62,7 @@ export const tests = [
   // Dark theme
 
   {
-    name: "Theme -- dark theme",
+    name: "Theme -- dark theme class",
     class: "pe-dark-theme",
     component: {
       view: () => m(block, {
@@ -72,11 +72,21 @@ export const tests = [
     }
   },
   {
-    name: "Dark theme + light theme",
+    name: "Dark theme class + light theme class",
     class: "pe-dark-theme",
     component: {
       view: () => m(block, {
         class: "pe-light-theme",
+        dark: true
+      })
+    }
+  },
+  {
+    name: "Dark theme class + light tone",
+    class: "test-dark-theme",
+    component: {
+      view: () => m(block, {
+        tone: "light",
         dark: true
       })
     }

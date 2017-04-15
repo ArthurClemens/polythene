@@ -19,6 +19,8 @@ const view = vnode => {
       class: [
         classes.component,
         attrs.compact ? classes.compact : null,
+        attrs.tone === "dark" ? "pe-dark-theme" : null,
+        attrs.tone === "light" ? "pe-light-theme" : null,
         attrs.class
       ].join(" ")
     },

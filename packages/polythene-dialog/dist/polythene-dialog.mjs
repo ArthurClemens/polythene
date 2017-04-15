@@ -325,7 +325,7 @@ var createView = function createView(state, opts) {
   var element = opts.element || "form";
   var props = _extends({}, filterSupportedAttributes(opts, { remove: ["style"] }), // style set in content, and set by show/hide transition
   {
-    class: [classes.component, opts.fullscreen ? classes.fullscreen : null, opts.backdrop ? classes.hasBackdrop : null, state.topOverflow || opts.borders ? classes.hasTopOverflow : null, state.bottomOverflow || opts.borders ? classes.hasBottomOverflow : null, state.visible ? classes.visible : null, opts.class].join(" "),
+    class: [classes.component, opts.fullscreen ? classes.fullscreen : null, opts.backdrop ? classes.hasBackdrop : null, state.topOverflow || opts.borders ? classes.hasTopOverflow : null, state.bottomOverflow || opts.borders ? classes.hasBottomOverflow : null, state.visible ? classes.visible : null, opts.tone === "dark" ? "pe-dark-theme" : null, opts.tone === "light" ? "pe-light-theme" : null, opts.class].join(" "),
     oncreate: function oncreate(_ref2) {
       var dom = _ref2.dom;
 
