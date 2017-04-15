@@ -26,6 +26,7 @@ m(button, {
 
 There are multiple ways to customize, and they be be used side by side:
 
+1. **Dark / light**
 1. **Style variables** - create styles by passing configuration variables
 1. **Deriving components** - build on top of existing components: to set new defaults or styling
 1. **Custom CSS** - to enhance existing styles
@@ -33,7 +34,51 @@ There are multiple ways to customize, and they be be used side by side:
 
 
 
-## 1. Variables
+## 1. Dark / light
+
+Many examples on this page have variables such as `color_light` and `color_dark`. A component is rendered light or dark with option `tone`.
+
+* when not set, the component is rendered normally, assuming a light background
+* `dark`: the component is displayed inverse, with light details on a dark background; this sets CSS class `pe-dark-tone`
+* `light`: use this to locally override a dark tone so that the component is rendered normally; this sets CSS class `pe-light-tone`
+
+To render a button on a dark background:
+
+~~~javascript
+m(".pe-dark-tone",
+  m(button, {
+    label: "Button"
+  })
+);
+~~~
+
+or:
+
+~~~javascript
+m(".some-dark-background",
+  m(button, {
+    label: "Button",
+    tone: "dark"
+  })
+);
+~~~
+
+To render a normal button on a dark background:
+
+~~~javascript
+m(".pe-dark-tone",
+  m(button, {
+    label: "Button",
+    tone: "light"
+  })
+);
+~~~
+
+When you are never using a dark tone, you can omit the `color_dark` variables in your customizations.
+
+
+
+## 2. Variables
 
 Polythene components - at least the ones that are styled - are styled with variables. Each component contains a `vars` module that specifies measurements and colors.
 
@@ -53,19 +98,7 @@ export default {
 };
 ~~~
 
-Variables like `unit_icon_size_small` are imported from `polythene-theme`, which imports them from `polythene-core/src/variables.js`. To override these base variables, see "Theme file" on this page.
-
-### Light and dark colors
-
-* `light` indicates the default color, when the component is displayed on a light background
-* `dark` indicates the color when the component is displayed on a dark background
-
-A special Polythene class is `pe-dark-tone` - components that have a parent with this class will use the "dark" color settings. This class will be set when component option `tone: "dark"` is set.
-
-The specific background color of `pe-dark-tone` needs to be defined in your app.
-
-Use class `pe-light-tone` to locally override dark colors. This is equivalent to the option `tone: "light"`.
-
+"Global" variables such as `unit_icon_size_small` are imported from `polythene-theme`, which imports the base values from `polythene-core/src/variables.js`. To override these base variables, see "Theme file" on this page.
 
 
 ### Styling components with variables 
@@ -124,7 +157,7 @@ m(".pe-dark-tone",
 
 
 
-## 2. Deriving components
+## 3. Deriving components
 
 A deriving component - also Higher Order Component - is a wrapper that takes a component and returns a new component. The new component contains custom settings or behaviour.
 
@@ -185,7 +218,7 @@ m(secondaryButton, {
 
 
 
-## 3. Custom CSS
+## 4. Custom CSS
 
 Writing CSS gives you more options for styling, but requires some knowledge about the component's generated HTML structure.
 
@@ -330,7 +363,7 @@ m(secondaryButton, {
 
 
 
-## 4. Custom theme file
+## 5. Custom theme file
 
 Use this method to set global theme variables, such as the primary action color. 
 
