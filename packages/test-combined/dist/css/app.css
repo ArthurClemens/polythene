@@ -29,7 +29,7 @@ html {
 .app {
   padding-bottom: 40px;
 }
-.pe-dark-theme {
+.pe-dark-tone {
   background-color: #303030;
   color: #777;
 }
@@ -74,7 +74,7 @@ html {
 .height-100px {
   height: 100px;
 }
-.interactive:not(.pe-dark-theme) {
+.interactive:not(.pe-dark-tone) {
   background-color: #E1F5FE;
 }
 .header-row,
@@ -92,7 +92,7 @@ html {
   background-color: #fff;
 }
 
-.tests-polythene-combined .pe-dark-theme .pe-ripple {
+.tests-polythene-combined .pe-dark-tone .pe-ripple {
   background-color: #444;
 }
 
@@ -102,16 +102,16 @@ html {
   background-color: #fff;
 }
 
-.tests-list .pe-dark-theme .result .pe-list:not(.tests-lists-themed-list),
-.tests-list-tile .pe-dark-theme .result .pe-list-tile:not(.tests-list-tile-themed-list-tile),
-.tests-tabs .pe-dark-theme .result .pe-tabs {
+.tests-list .pe-dark-tone .result .pe-list:not(.tests-lists-themed-list),
+.tests-list-tile .pe-dark-tone .result .pe-list-tile:not(.tests-list-tile-themed-list-tile),
+.tests-tabs .pe-dark-tone .result .pe-tabs {
   background-color: #444;
 }
 
-.pe-dark-theme .result-title {
+.pe-dark-tone .result-title {
   color: #aaa;
 }
-.pe-dark-theme.result-row {
+.pe-dark-tone.result-row {
   border-color: #666;
 }
 

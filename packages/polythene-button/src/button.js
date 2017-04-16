@@ -16,13 +16,23 @@ export const classes = {
   focused:    "pe-button--focus"
 };
 
+const inactivate = (state, attrs) => {
+  state.inactive = true;
+  m.redraw();
+  setTimeout(() => {
+    state.inactive = false;
+    m.redraw();
+  }, attrs.inactivate * 1000);
+};
+
 const view = vnode => {
   const state = vnode.state;
   const attrs = vnode.attrs;
   const noink = (attrs.ink !== undefined && attrs.ink === false);
   const disabled = attrs.disabled;
   const element = attrs.element || "a";
-  const tabIndex = disabled || attrs.inactive
+  const inactive = attrs.inactive || state.inactive;
+  const tabIndex = disabled || inactive
     ? -1
     : attrs.tabindex || 0;
   const onClickHandler = attrs.events && attrs.events.onclick;
@@ -34,13 +44,15 @@ const view = vnode => {
         attrs.parentClass || classes.component,
         attrs.selected ? classes.selected : null,
         disabled ? classes.disabled : null,
-        attrs.inactive ? classes.inactive : null,
+        inactive ? classes.inactive : null,
         attrs.borders ? classes.borders : null,
         state.focus ? classes.focused : null,
         attrs.tone === "dark" ? "pe-dark-tone" : null,
         attrs.tone === "light" ? "pe-light-tone" : null,
         attrs.class
-      ].join(" "),
+      ].join(" ")
+    },
+    inactive ? null : {
       tabIndex,
       // handle focus events
       onfocus: () => state.focus = !state.mouseover,
@@ -49,14 +61,21 @@ const view = vnode => {
       onmouseover: () => state.mouseover = true,
       onmouseout: () => state.mouseover = false,
       // if focus, dispatch click event on ENTER
-      onkeydown: (e) => {
+      onkeydown: e => {
         if (e.which === 13 && state.focus) {
           state.focus = false;
           if (onClickHandler) {
             onClickHandler(e);
           }
         }
-      }
+      },
+      onclick: inactive || disabled
+        ? null
+        : () => {
+          if (attrs.inactivate) {
+            inactivate(state, attrs);
+          }
+        }
     },
     attrs.style ? { style: {}} : null,
     attrs.events,
@@ -104,6 +123,7 @@ export default {
   oninit: vnode => {
     vnode.state.focus = false;
     vnode.state.mouseover = false;
+    vnode.state.inactive = false;
   },
   view
 };

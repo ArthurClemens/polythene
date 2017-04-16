@@ -29,7 +29,7 @@ html {
 .app {
   padding-bottom: 40px;
 }
-.result-row.pe-dark-theme,
+.result-row.pe-dark-tone,
 .result-row.test-dark-theme {
   background-color: #303030;
   color: #777;
@@ -75,7 +75,7 @@ html {
 .height-100px {
   height: 100px;
 }
-.interactive:not(.pe-dark-theme):not(.test-dark-theme) {
+.interactive:not(.pe-dark-tone):not(.test-dark-theme) {
   background-color: #E1F5FE;
 }
 .header-row,
@@ -93,31 +93,31 @@ html {
   background-color: #fff;
 }
 
-.tests-ripple .pe-dark-theme .pe-ripple {
+.tests-ripple .pe-dark-tone .pe-ripple {
   background-color: #444;
 }
 
 .tests-list .pe-list:not(.tests-lists-themed-list),
 .tests-list-tile .pe-list-tile,
-.tests-list .pe-dark-theme .result .pe-light-theme.pe-list,
-.tests-list-tile .result .pe-light-theme.pe-list-tile,
-.tests-list-tile .pe-dark-theme .result .pe-light-theme.pe-list-tile,
+.tests-list .pe-dark-tone .result .pe-light-tone.pe-list,
+.tests-list-tile .result .pe-light-tone.pe-list-tile,
+.tests-list-tile .pe-dark-tone .result .pe-light-tone.pe-list-tile,
 .tests-tabs .pe-tabs,
-.tests-tabs .pe-dark-theme .result .pe-light-theme .pe-tabs {
+.tests-tabs .pe-dark-tone .result .pe-light-tone .pe-tabs {
   background-color: #fff;
 }
 
-.tests-list .pe-dark-theme .result .pe-list:not(.tests-lists-themed-list):not(.pe-light-theme),
-.tests-list-tile .pe-dark-theme .result .pe-list-tile:not(.tests-list-tile-themed-list-tile):not(.pe-light-theme),
-.tests-tabs .pe-dark-theme .result .pe-tabs {
+.tests-list .pe-dark-tone .result .pe-list:not(.tests-lists-themed-list):not(.pe-light-tone),
+.tests-list-tile .pe-dark-tone .result .pe-list-tile:not(.tests-list-tile-themed-list-tile):not(.pe-light-tone),
+.tests-tabs .pe-dark-tone .result .pe-tabs {
   background-color: #444;
 }
 
-.pe-dark-theme .result-title,
+.pe-dark-tone .result-title,
 .test-dark-theme .result-title {
   color: #aaa;
 }
-.pe-dark-theme.result-row,
+.pe-dark-tone.result-row,
 .test-dark-theme.result-row {
   border-color: #666;
 }

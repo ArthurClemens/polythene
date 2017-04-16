@@ -231,16 +231,27 @@ var classes = {
   focused: "pe-button--focus"
 };
 
+var inactivate = function inactivate(state, attrs) {
+  state.inactive = true;
+  m.redraw();
+  setTimeout(function () {
+    state.inactive = false;
+    m.redraw();
+  }, attrs.inactivate * 1000);
+};
+
 var view = function view(vnode) {
   var state = vnode.state;
   var attrs = vnode.attrs;
   var noink = attrs.ink !== undefined && attrs.ink === false;
   var disabled = attrs.disabled;
   var element = attrs.element || "a";
-  var tabIndex = disabled || attrs.inactive ? -1 : attrs.tabindex || 0;
+  var inactive = attrs.inactive || state.inactive;
+  var tabIndex = disabled || inactive ? -1 : attrs.tabindex || 0;
   var onClickHandler = attrs.events && attrs.events.onclick;
   var props = _extends({}, filterSupportedAttributes(attrs, { add: ["formaction", "type"] }), {
-    class: [attrs.parentClass || classes.component, attrs.selected ? classes.selected : null, disabled ? classes.disabled : null, attrs.inactive ? classes.inactive : null, attrs.borders ? classes.borders : null, state.focus ? classes.focused : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.class].join(" "),
+    class: [attrs.parentClass || classes.component, attrs.selected ? classes.selected : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, attrs.borders ? classes.borders : null, state.focus ? classes.focused : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.class].join(" ")
+  }, inactive ? null : {
     tabIndex: tabIndex,
     // handle focus events
     onfocus: function onfocus() {
@@ -263,6 +274,11 @@ var view = function view(vnode) {
         if (onClickHandler) {
           onClickHandler(e);
         }
+      }
+    },
+    onclick: inactive || disabled ? null : function () {
+      if (attrs.inactivate) {
+        inactivate(state, attrs);
       }
     }
   }, attrs.style ? { style: {} } : null, attrs.events, attrs.url, disabled ? { disabled: true } : null);
@@ -292,6 +308,7 @@ var button = {
   oninit: function oninit(vnode) {
     vnode.state.focus = false;
     vnode.state.mouseover = false;
+    vnode.state.inactive = false;
   },
   view: view
 };
