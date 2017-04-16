@@ -43,7 +43,7 @@ var view = function view(vnode) {
     selectable: vnode.attrs.selectable || function (selected) {
       return !selected;
     }, // default: only selectable when not checked
-    defaultClass: classes.component,
+    instanceClass: classes.component,
     type: "radio"
   }));
 };

@@ -12,7 +12,7 @@ const view = vnode => {
     theme,
     controlView,
     selectable: vnode.attrs.selectable || ((selected) => !selected), // default: only selectable when not checked
-    defaultClass: classes.component,
+    instanceClass: classes.component,
     type: "radio"
   });
 };

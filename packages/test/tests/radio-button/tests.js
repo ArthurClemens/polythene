@@ -4,57 +4,55 @@ import iconStarOutline from "mmsvg/google/msvg/toggle/star-border";
 import iconStar from "mmsvg/google/msvg/toggle/star";
 
 radioButton.theme(".tests-radio-button-themed-radio", {
-  label_font_size: 28,
-  color_light_on: "#2196F3",
-  color_light_off: "#2196F3",
-  color_dark_on: "#2196F3",
-  color_dark_off: "#2196F3",
+  label_font_size:   28,
+  color_light_on:    "#2196F3",
+  color_light_off:   "#2196F3",
+  color_dark_on:     "#2196F3",
+  color_dark_off:    "#2196F3",
   color_light_label: "#2196F3",
-  color_dark_label: "#2196F3"
+  color_dark_label:  "#2196F3"
 });
 
 const sizeNames = ["small", "regular", "medium", "large"];
 
-let idCounter = 0;
+const group = (name, attrs1, attrs2 = attrs1) => ({
+  view: () => [
+    m(radioButton, {
+      ...attrs1,
+      name
+    }),
+    m(radioButton, {
+      ...attrs2,
+      name
+    })
+  ]
+});
 
-const group = (attrs1, attrs2 = attrs1) => {
-  const name = attrs1.name || `name-${idCounter++}}`;
+const radioGroup = name => {
   return {
     view: () => [
       m(radioButton, {
-        ...attrs1,
+        label: "Label",
         name
       }),
       m(radioButton, {
-        ...attrs2,
+        label: "Label",
+        checked: true,
         name
       })
     ]
   };
 };
 
-const radioGroup = {
-  view: () => [
-    m(radioButton, {
-      name: "setting",
-      label: "Label"
-    }),
-    m(radioButton, {
-      name: "setting",
-      label: "Label",
-      checked: true
-    })
-  ]
-};
-
 export const tests = [
   {
     name: "Option: label",
-    component: radioGroup
+    component: radioGroup("option")
   },
   {
     name: "Option: checked",
     component: group(
+      "checked",
       {
         label: "Label"
       },
@@ -67,6 +65,7 @@ export const tests = [
   {
     name: "Option: value",
     component: group(
+      "value",
       {
         label: "Label",
         name: "worth",
@@ -97,6 +96,7 @@ export const tests = [
   {
     name: "Themed radio button (color and font size)",
     component: group(
+      "theme",
       {
         label: "Label",
         class: "tests-radio-button-themed-radio"
@@ -111,6 +111,7 @@ export const tests = [
   {
     name: "Option: style (colors)",
     component: group(
+      "style",
       {
         label: "Label",
         style: {
@@ -181,6 +182,7 @@ export const tests = [
     name: "Option: disabled",
     interactive: true,
     component: group(
+      "disabled",
       {
         label: "Off",
         disabled: true
@@ -196,6 +198,7 @@ export const tests = [
     name: "Option: selectable (true)",
     interactive: true,
     component: group(
+      "selectable",
       {
         label: "Always",
         selectable: () => true
@@ -206,6 +209,7 @@ export const tests = [
     name: "Option: iconButton (custom hover behaviour)",
     interactive: true,
     component: group(
+      "iconButton",
       {
         label: "Hover me",
         iconButton: {
@@ -321,12 +325,13 @@ export const tests = [
     },
   },
 
-  // // Dark theme
+  // Dark theme
 
   {
     name: "Option: checked -- dark theme class",
     class: "pe-dark-tone",
     component: group(
+      "checked-dark",
       {
         label: "Label"
       },
@@ -340,6 +345,7 @@ export const tests = [
     name: "Themed radio button (colors) -- dark theme class",
     class: "pe-dark-tone",
     component: group(
+      "theme-dark",
       {
         label: "Label",
         class: "tests-radio-button-themed-radio"
@@ -356,6 +362,7 @@ export const tests = [
     class: "pe-dark-tone",
     interactive: true,
     component: group(
+      "disabled-dark",
       {
         label: "Off",
         disabled: true
@@ -379,7 +386,15 @@ export const tests = [
           },
           class: "pe-light-tone"
         },
-        m(radioGroup)
+        m(radioButton, {
+          label: "Label",
+          name: "light-theme",
+        }),
+        m(radioButton, {
+          label: "Label",
+          checked: true,
+          name: "light-theme",
+        })
       )
     }
   },
@@ -394,20 +409,14 @@ export const tests = [
             padding: "20px"
           },
         },
-        m({
-          view: () => [
-            m(radioButton, {
-              name: "setting",
-              label: "Label",
-              tone: "light"
-            }),
-            m(radioButton, {
-              name: "setting",
-              label: "Label",
-              checked: true,
-              tone: "light"
-            })
-          ]
+        m(radioButton, {
+          label: "Label",
+          name: "light-tone",
+        }),
+        m(radioButton, {
+          label: "Label",
+          checked: true,
+          name: "light-tone",
         })
       )
     }

@@ -46,7 +46,7 @@ var view = function view(vnode) {
   var element = attrs.element || "div";
   var name = attrs.name || "";
   var props = _extends({}, filterSupportedAttributes(attrs), {
-    class: [classes.component, attrs.defaultClass, checked ? classes.on : classes.off, attrs.disabled ? classes.disabled : null, inactive ? classes.inactive : null, classForType(attrs.size), attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.class].join(" ")
+    class: [classes.component, attrs.instanceClass, checked ? classes.on : classes.off, attrs.disabled ? classes.disabled : null, inactive ? classes.inactive : null, classForType(attrs.size), attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.class].join(" ")
   }, attrs.events ? attrs.events : null);
   var content = [m("input", {
     class: classes.input,

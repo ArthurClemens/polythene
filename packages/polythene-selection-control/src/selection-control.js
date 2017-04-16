@@ -44,7 +44,7 @@ const view = vnode => {
     {
       class: [
         classes.component,
-        attrs.defaultClass,
+        attrs.instanceClass,
         checked ? classes.on : classes.off,
         attrs.disabled ? classes.disabled : null,
         inactive ? classes.inactive : null,

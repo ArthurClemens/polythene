@@ -289,7 +289,7 @@ var view = function view(vnode) {
     selectable: vnode.attrs.selectable || function () {
       return true;
     }, // default: always selectable, regardless the checked state
-    defaultClass: classes$$1.component,
+    instanceClass: classes$$1.component,
     type: "checkbox"
   }));
 };
