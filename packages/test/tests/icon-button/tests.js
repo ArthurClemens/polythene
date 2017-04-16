@@ -37,6 +37,16 @@ export const tests = [
     }
   },
   {
+    name: "Option: wash (true)",
+    component: iconButton,
+    attrs: {
+      icon: {
+        msvg: iconFavorite
+      },
+      wash: true
+    }
+  },
+  {
     name: "Option: style (colors)",
     component: iconButton,
     attrs: {
@@ -135,6 +145,17 @@ export const tests = [
     class: "pe-dark-tone",
     attrs: null,
     children: m(icon, {msvg: iconFavorite})
+  },
+  {
+    name: "Option: wash (true) -- dark theme class",
+    component: iconButton,
+    class: "pe-dark-tone",
+    attrs: {
+      icon: {
+        msvg: iconFavorite
+      },
+      wash: true
+    }
   },
   {
     name: "Themed (color and size) -- dark theme class",

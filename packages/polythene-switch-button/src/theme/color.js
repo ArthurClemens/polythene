@@ -57,8 +57,25 @@ const style = (scopes, selector, componentVars, tint) => [{
   }
 }];
 
+const noTouchStyle = (scopes, selector, componentVars, tint) => [{
+  [scopes.map(s => s + selector + ":hover").join(",")]: {
+    ".pe-control--on": {
+      " .pe-button__wash": {
+        backgroundColor: componentVars["color_" + tint + "_wash_on"]
+      }
+    },
+    ".pe-control--off": {
+      " .pe-button__wash": {
+        backgroundColor: componentVars["color_" + tint + "_wash_off"]
+      }
+    }
+  }
+}];
+
 export default (selector, componentVars) => [
   style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
   style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light theme
+  noTouchStyle(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, "dark"), // inside dark theme
+  noTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, "light"),
 ];
 

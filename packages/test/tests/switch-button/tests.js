@@ -70,7 +70,7 @@ export const tests = [
     )}
   },
   {
-    name: "Themed checkbox (color and font size)",
+    name: "Theme (color and font size)",
     component: switchButton,
     attrs: {
       label: "Label",
@@ -207,7 +207,7 @@ export const tests = [
   // Dark theme
 
   {
-    name: "Option: checked -- dark theme",
+    name: "Option: checked -- dark theme class",
     class: "pe-dark-tone",
     component: switchButton,
     attrs: {
@@ -215,7 +215,19 @@ export const tests = [
     }
   },
   {
-    name: "Themed checkbox (colors) -- dark theme class",
+    name: "Option: iconButton (custom hover behaviour) -- dark theme class",
+    interactive: true,
+    class: "pe-dark-tone",
+    component: switchButton,
+    attrs: {
+      iconButton: {
+        wash: true,
+        ink: false
+      }
+    }
+  },
+  {
+    name: "Theme (colors) -- dark theme class",
     class: "pe-dark-tone",
     component: switchButton,
     attrs: {

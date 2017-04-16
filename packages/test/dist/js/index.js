@@ -2690,6 +2690,8 @@ var dialog = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_polythene_core__[
 var rgba = __WEBPACK_IMPORTED_MODULE_4_polythene_theme__["a" /* vars */].rgba;
 var padding = (__WEBPACK_IMPORTED_MODULE_4_polythene_theme__["a" /* vars */].grid_unit_icon_button - __WEBPACK_IMPORTED_MODULE_4_polythene_theme__["a" /* vars */].unit_icon_size) / 2; // 12
 var padding_compact = (__WEBPACK_IMPORTED_MODULE_4_polythene_theme__["a" /* vars */].grid_unit_icon_button - __WEBPACK_IMPORTED_MODULE_4_polythene_theme__["a" /* vars */].unit_icon_size) / 3; // 8
+var color_light = __WEBPACK_IMPORTED_MODULE_4_polythene_theme__["a" /* vars */].rgba(__WEBPACK_IMPORTED_MODULE_4_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_4_polythene_theme__["a" /* vars */].blend_light_text_secondary);
+var color_dark = __WEBPACK_IMPORTED_MODULE_4_polythene_theme__["a" /* vars */].rgba(__WEBPACK_IMPORTED_MODULE_4_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_4_polythene_theme__["a" /* vars */].blend_dark_text_secondary);
 
 var vars$1 = {
   padding: padding,
@@ -2700,13 +2702,15 @@ var vars$1 = {
   // color_light_background:    "none",
   // color_dark_background:     "none",
 
-  color_light: __WEBPACK_IMPORTED_MODULE_4_polythene_theme__["a" /* vars */].rgba(__WEBPACK_IMPORTED_MODULE_4_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_4_polythene_theme__["a" /* vars */].blend_light_text_secondary),
+  color_light: color_light,
   color_light_disabled: rgba(__WEBPACK_IMPORTED_MODULE_4_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_4_polythene_theme__["a" /* vars */].blend_light_text_disabled),
+  color_light_wash: color_light,
   color_light_wash_opacity: __WEBPACK_IMPORTED_MODULE_4_polythene_theme__["a" /* vars */].blend_light_background_hover_medium,
   color_light_focus_opacity: __WEBPACK_IMPORTED_MODULE_4_polythene_theme__["a" /* vars */].blend_light_background_hover_medium,
 
-  color_dark: __WEBPACK_IMPORTED_MODULE_4_polythene_theme__["a" /* vars */].rgba(__WEBPACK_IMPORTED_MODULE_4_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_4_polythene_theme__["a" /* vars */].blend_dark_text_secondary),
+  color_dark: color_dark,
   color_dark_disabled: rgba(__WEBPACK_IMPORTED_MODULE_4_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_4_polythene_theme__["a" /* vars */].blend_dark_text_disabled),
+  color_dark_wash: color_dark,
   color_dark_wash_opacity: __WEBPACK_IMPORTED_MODULE_4_polythene_theme__["a" /* vars */].blend_dark_background_hover_medium,
   color_dark_focus_opacity: __WEBPACK_IMPORTED_MODULE_4_polythene_theme__["a" /* vars */].blend_dark_background_hover_medium
 
@@ -2764,12 +2768,11 @@ var style = function style(scopes, selector, componentVars, tint) {
 };
 
 var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, tint) {
-  var backgroundColor = tint === "light" ? "currentcolor" : componentVars["color_" + tint];
   return [_defineProperty$1({}, scopes.map(function (s) {
     return s + selector + ":hover";
   }).join(","), {
     " .pe-button__wash": {
-      backgroundColor: backgroundColor
+      backgroundColor: componentVars["color_" + tint + "_wash"]
     }
   })];
 };
@@ -10923,6 +10926,15 @@ var tests = [{
     compact: true
   }
 }, {
+  name: "Option: wash (true)",
+  component: __WEBPACK_IMPORTED_MODULE_1_polythene_icon_button__["a" /* default */],
+  attrs: {
+    icon: {
+      msvg: __WEBPACK_IMPORTED_MODULE_3_mmsvg_google_msvg_action_favorite_border___default.a
+    },
+    wash: true
+  }
+}, {
   name: "Option: style (colors)",
   component: __WEBPACK_IMPORTED_MODULE_1_polythene_icon_button__["a" /* default */],
   attrs: {
@@ -11014,6 +11026,16 @@ var tests = [{
   class: "pe-dark-tone",
   attrs: null,
   children: __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_2_polythene_icon__["a" /* default */], { msvg: __WEBPACK_IMPORTED_MODULE_3_mmsvg_google_msvg_action_favorite_border___default.a })
+}, {
+  name: "Option: wash (true) -- dark theme class",
+  component: __WEBPACK_IMPORTED_MODULE_1_polythene_icon_button__["a" /* default */],
+  class: "pe-dark-tone",
+  attrs: {
+    icon: {
+      msvg: __WEBPACK_IMPORTED_MODULE_3_mmsvg_google_msvg_action_favorite_border___default.a
+    },
+    wash: true
+  }
 }, {
   name: "Themed (color and size) -- dark theme class",
   component: __WEBPACK_IMPORTED_MODULE_1_polythene_icon_button__["a" /* default */],
@@ -14832,7 +14854,7 @@ var tests = [{
       }));
     } }
 }, {
-  name: "Themed checkbox (color and font size)",
+  name: "Theme (color and font size)",
   component: __WEBPACK_IMPORTED_MODULE_1_polythene_switch_button__["a" /* default */],
   attrs: {
     label: "Label",
@@ -14972,14 +14994,25 @@ var tests = [{
 // Dark theme
 
 {
-  name: "Option: checked -- dark theme",
+  name: "Option: checked -- dark theme class",
   class: "pe-dark-tone",
   component: __WEBPACK_IMPORTED_MODULE_1_polythene_switch_button__["a" /* default */],
   attrs: {
     checked: true
   }
 }, {
-  name: "Themed checkbox (colors) -- dark theme class",
+  name: "Option: iconButton (custom hover behaviour) -- dark theme class",
+  interactive: true,
+  class: "pe-dark-tone",
+  component: __WEBPACK_IMPORTED_MODULE_1_polythene_switch_button__["a" /* default */],
+  attrs: {
+    iconButton: {
+      wash: true,
+      ink: false
+    }
+  }
+}, {
+  name: "Theme (colors) -- dark theme class",
   class: "pe-dark-tone",
   component: __WEBPACK_IMPORTED_MODULE_1_polythene_switch_button__["a" /* default */],
   attrs: {
@@ -19603,6 +19636,8 @@ var vars$3 = _extends$3({}, __WEBPACK_IMPORTED_MODULE_1_polythene_selection_cont
   color_light_thumb_on: rgba(__WEBPACK_IMPORTED_MODULE_5_polythene_theme__["a" /* vars */].color_primary),
   color_light_thumb_off: "#f1f1f1",
   color_light_thumb_disabled: "#bdbdbd",
+  color_light_wash_on: rgba(__WEBPACK_IMPORTED_MODULE_5_polythene_theme__["a" /* vars */].color_primary),
+  color_light_wash_off: __WEBPACK_IMPORTED_MODULE_3_polythene_icon_button__["b" /* vars */].color_light_wash,
 
   color_light_track_on: rgba(__WEBPACK_IMPORTED_MODULE_5_polythene_theme__["a" /* vars */].color_primary_faded),
   color_light_track_on_opacity: .55,
@@ -19617,9 +19652,11 @@ var vars$3 = _extends$3({}, __WEBPACK_IMPORTED_MODULE_1_polythene_selection_cont
 
   // color_light_focus_on and so on taken from selectionControlVars
 
-  color_dark_thumb_on: rgba(__WEBPACK_IMPORTED_MODULE_5_polythene_theme__["a" /* vars */].color_primary), // or "#80cbc4"
+  color_dark_thumb_on: rgba(__WEBPACK_IMPORTED_MODULE_5_polythene_theme__["a" /* vars */].color_primary),
   color_dark_thumb_off: "#bdbdbd",
   color_dark_thumb_disabled: "#555",
+  color_dark_wash_on: rgba(__WEBPACK_IMPORTED_MODULE_5_polythene_theme__["a" /* vars */].color_primary),
+  color_dark_wash_off: __WEBPACK_IMPORTED_MODULE_3_polythene_icon_button__["b" /* vars */].color_dark_wash,
 
   color_dark_track_on: rgba(__WEBPACK_IMPORTED_MODULE_5_polythene_theme__["a" /* vars */].color_primary_faded, __WEBPACK_IMPORTED_MODULE_5_polythene_theme__["a" /* vars */].blend_dark_text_tertiary), // or "#5a7f7c"
   color_dark_track_on_opacity: 9,
@@ -19788,9 +19825,28 @@ var style = function style(scopes, selector, componentVars, tint) {
   })];
 };
 
+var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, tint) {
+  return [_defineProperty$1({}, scopes.map(function (s) {
+    return s + selector + ":hover";
+  }).join(","), {
+    ".pe-control--on": {
+      " .pe-button__wash": {
+        backgroundColor: componentVars["color_" + tint + "_wash_on"]
+      }
+    },
+    ".pe-control--off": {
+      " .pe-button__wash": {
+        backgroundColor: componentVars["color_" + tint + "_wash_off"]
+      }
+    }
+  })];
+};
+
 var color = (function (selector, componentVars) {
   return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light theme
+  noTouchStyle(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, "dark"), // inside dark theme
+  noTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, "light")];
 });
 
 var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };

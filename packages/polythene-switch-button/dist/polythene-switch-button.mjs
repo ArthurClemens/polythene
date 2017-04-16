@@ -53,6 +53,8 @@ var vars$3 = _extends$3({}, vars, {
   color_light_thumb_on: rgba(vars$2.color_primary),
   color_light_thumb_off: "#f1f1f1",
   color_light_thumb_disabled: "#bdbdbd",
+  color_light_wash_on: rgba(vars$2.color_primary),
+  color_light_wash_off: vars$1.color_light_wash,
 
   color_light_track_on: rgba(vars$2.color_primary_faded),
   color_light_track_on_opacity: .55,
@@ -67,9 +69,11 @@ var vars$3 = _extends$3({}, vars, {
 
   // color_light_focus_on and so on taken from selectionControlVars
 
-  color_dark_thumb_on: rgba(vars$2.color_primary), // or "#80cbc4"
+  color_dark_thumb_on: rgba(vars$2.color_primary),
   color_dark_thumb_off: "#bdbdbd",
   color_dark_thumb_disabled: "#555",
+  color_dark_wash_on: rgba(vars$2.color_primary),
+  color_dark_wash_off: vars$1.color_dark_wash,
 
   color_dark_track_on: rgba(vars$2.color_primary_faded, vars$2.blend_dark_text_tertiary), // or "#5a7f7c"
   color_dark_track_on_opacity: 9,
@@ -238,9 +242,28 @@ var style = function style(scopes, selector, componentVars, tint) {
   })];
 };
 
+var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, tint) {
+  return [_defineProperty$1({}, scopes.map(function (s) {
+    return s + selector + ":hover";
+  }).join(","), {
+    ".pe-control--on": {
+      " .pe-button__wash": {
+        backgroundColor: componentVars["color_" + tint + "_wash_on"]
+      }
+    },
+    ".pe-control--off": {
+      " .pe-button__wash": {
+        backgroundColor: componentVars["color_" + tint + "_wash_off"]
+      }
+    }
+  })];
+};
+
 var color = (function (selector, componentVars) {
   return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light theme
+  noTouchStyle(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, "dark"), // inside dark theme
+  noTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, "light")];
 });
 
 var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
