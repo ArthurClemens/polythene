@@ -321,4 +321,4 @@ var notification = multiple({
   bodyShowClass: classes.open
 });
 
-export { instance, classes, vars$1 as vars };export default notification;
+export { classes, instance, vars$1 as vars };export default notification;

@@ -2,6 +2,10 @@ import m from 'mithril';
 import { color, controlView, layout, selectionControl, vars } from 'polythene-selection-control';
 import { styler } from 'polythene-css';
 
+var classes = {
+  component: "pe-checkbox-control"
+};
+
 var layout$1 = (function (selector, componentVars) {
   return layout(selector, componentVars, "checkbox");
 });
@@ -17,7 +21,7 @@ var iconOn = m.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" hei
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var fns = [layout$1, color$1];
-var selector = ".pe-control.pe-checkbox-control";
+var selector = "." + classes.component;
 
 var customTheme = function customTheme(customSelector, customVars) {
   return styler.generateStyles([customSelector, selector], _extends$1({}, vars, customVars), fns);
@@ -31,10 +35,6 @@ var theme = {
 };
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var classes = {
-  component: "pe-checkbox-control"
-};
 
 var view = function view(vnode) {
   return m(selectionControl, _extends({}, vnode.attrs, {

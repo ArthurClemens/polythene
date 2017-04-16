@@ -4,6 +4,15 @@ import svg from 'polythene-svg';
 import { styler } from 'polythene-css';
 import { vars } from 'polythene-theme';
 
+var classes = {
+  component: "pe-icon",
+  avatar: "pe-icon--avatar",
+  small: "pe-icon--small",
+  regular: "pe-icon--regular",
+  medium: "pe-icon--medium",
+  large: "pe-icon--large"
+};
+
 var vars$1 = {
   size_small: vars.unit_icon_size_small,
   size_regular: vars.unit_icon_size,
@@ -73,7 +82,7 @@ var color = (function (selector, componentVars) {
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var fns = [layout, color];
-var selector = ".pe-icon";
+var selector = "." + classes.component;
 
 var customTheme = function customTheme(customSelector, customVars) {
   return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
@@ -82,15 +91,6 @@ var customTheme = function customTheme(customSelector, customVars) {
 styler.generateStyles([selector], vars$1, fns);
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var classes = {
-  icon: "pe-icon",
-  avatar: "pe-icon--avatar",
-  small: "pe-icon--small",
-  regular: "pe-icon--regular",
-  medium: "pe-icon--medium",
-  large: "pe-icon--large"
-};
 
 var typeClasses = {
   small: classes.small,
@@ -108,7 +108,7 @@ var view = function view(vnode) {
   var attrs = vnode.attrs;
   var element = attrs.element || "div";
   var props = _extends({}, filterSupportedAttributes(attrs), {
-    class: [classes.icon, classForType(attrs.type), attrs.avatar ? classes.avatar : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.class].join(" ")
+    class: [classes.component, classForType(attrs.type), attrs.avatar ? classes.avatar : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.class].join(" ")
   }, attrs.events ? attrs.events : null);
   var content = attrs.content ? attrs.content : attrs.svg ? m(svg, _extends({}, attrs.svg)) : attrs.msvg ? m(svg, attrs.msvg) : attrs.src ? m("img", { src: attrs.src }) : attrs.children || vnode.children;
   return m(element, props, [attrs.before, content, attrs.after]);

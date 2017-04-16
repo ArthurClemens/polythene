@@ -4,6 +4,22 @@ import { filterSupportedAttributes } from 'polythene-core';
 import { mixin, styler } from 'polythene-css';
 import { vars } from 'polythene-theme';
 
+var baseClass = "pe-button";
+
+var classes = {
+  base: baseClass,
+  component: baseClass + " pe-text-button",
+  content: "pe-button__content",
+  label: "pe-button__label",
+  wash: "pe-button__wash",
+  focus: "pe-button__focus",
+  selected: "pe-button--selected",
+  disabled: "pe-button--disabled",
+  borders: "pe-button--borders",
+  inactive: "pe-button--inactive",
+  focused: "pe-button--focus"
+};
+
 var rgba = vars.rgba;
 var touch_height = vars.unit_touch_height;
 var height = 36;
@@ -204,8 +220,8 @@ var color = (function (selector, componentVars) {
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var fns = [layout, color];
-var baseSelector = ".pe-button";
-var selector = ".pe-button.pe-text-button";
+var baseSelector = "." + classes.base;
+var selector = "." + classes.component.replace(/ /g, ".");
 
 var customTheme = function customTheme(customSelector, customVars) {
   return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
@@ -217,19 +233,6 @@ styler.generateStyles([selector], vars$1, fns);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var classes = {
-  component: "pe-button pe-text-button",
-  content: "pe-button__content",
-  label: "pe-button__label",
-  wash: "pe-button__wash",
-  focus: "pe-button__focus",
-  selected: "pe-button--selected",
-  disabled: "pe-button--disabled",
-  borders: "pe-button--borders",
-  inactive: "pe-button--inactive",
-  focused: "pe-button--focus"
-};
 
 var inactivate = function inactivate(state, attrs) {
   state.inactive = true;

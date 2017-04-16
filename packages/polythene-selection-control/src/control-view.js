@@ -1,13 +1,7 @@
 import m from "mithril";
 import icon from "polythene-icon";
 import iconButton from "polythene-icon-button";
-
-export const classes = {
-  box:       "pe-control__box",
-  button:    "pe-control__button",
-  buttonOn:  "pe-control__button--on",
-  buttonOff: "pe-control__button--off"
-};
+import classes from "./classes";
 
 const createIcon = (onOffType, attrs) => (
   // if attrs.iconOn/Off is passed, use that icon options object and ignore size

@@ -6,11 +6,11 @@ import { customTheme } from "./theme";
 import classes from "./classes";
 
 const typeClasses = {
-  small: classes.small,
+  small:   classes.small,
   regular: classes.regular,
-  medium: classes.medium,
-  large: classes.large,
-  fab: classes.fab
+  medium:  classes.medium,
+  large:   classes.large,
+  fab:     classes.fab
 };
 
 const classForType = (mode = "regular") => typeClasses[mode];

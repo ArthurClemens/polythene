@@ -3,6 +3,14 @@ import { animationEndEvent, filterSupportedAttributes, isTouch, touchEndEvent } 
 import { mixin, styler } from 'polythene-css';
 import { vars } from 'polythene-theme';
 
+var classes = {
+  component: "pe-ripple",
+  waves: "pe-ripple__waves",
+  mask: "pe-ripple__mask",
+  constrained: "pe-ripple--constrained",
+  wavesAnimating: "pe-ripple__waves--animating"
+};
+
 var vars$1 = {
   color: "inherit" // only specify this variable to get both states
   // color_light:   "inherit",
@@ -60,7 +68,7 @@ var color = (function (selector, componentVars) {
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var fns = [layout, color];
-var selector = ".pe-ripple";
+var selector = "." + classes.component;
 
 var customTheme = function customTheme(customSelector, customVars) {
   return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
@@ -140,14 +148,6 @@ var animation = (function (e, el, wavesEl, attrs, classes, endCallback) {
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var classes = {
-  component: "pe-ripple",
-  waves: "pe-ripple__waves",
-  mask: "pe-ripple__mask",
-  constrained: "pe-ripple--constrained",
-  wavesAnimating: "pe-ripple__waves--animating"
-};
 
 var destroyRipple = void 0;
 

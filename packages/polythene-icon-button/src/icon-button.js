@@ -2,12 +2,7 @@ import m from "mithril";
 import icon from "polythene-icon";
 import button from "polythene-button";
 import { customTheme } from "./theme";
-
-export const classes = {
-  component: "pe-button pe-icon-button",
-  content:   "pe-icon-button__content",
-  compact:   "pe-icon-button--compact"
-};
+import classes from "./classes";
 
 const view = vnode => {
   const attrs = vnode.attrs;

@@ -1,13 +1,7 @@
 import m from "mithril";
 import { filterSupportedAttributes } from "polythene-core";
 import { customTheme } from "./theme";
-
-export const classes = {
-  component:        "pe-toolbar",
-  compact:          "pe-toolbar--compact",
-  title:            "pe-toolbar__title",
-  indentedTitle:    "pe-toolbar__title--indent",
-};
+import classes from "./classes";
 
 const view = vnode => {
   const attrs = vnode.attrs;

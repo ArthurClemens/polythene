@@ -3,24 +3,7 @@ import { filterSupportedAttributes, subscribe, unsubscribe, show, hide } from "p
 import dialog from "./dialog";
 import shadow from "polythene-shadow";
 import { customTheme } from "./theme";
-
-export const classes = {
-  component:         "pe-dialog",
-  visible:           "pe-dialog--visible",
-  body:              "pe-dialog__body",
-  fullscreen:        "pe-dialog--fullscreen",
-  content:           "pe-dialog__content",
-  header:            "pe-dialog__header",
-  footer:            "pe-dialog__footer",
-  footerHigh:        "pe-dialog__footer--high",
-  title:             "pe-dialog__title",
-  actions:           "pe-dialog__actions",
-  hasBackdrop:       "pe-dialog--backdrop",
-  hasTopOverflow:    "pe-dialog--overflow-top",
-  hasBottomOverflow: "pe-dialog--overflow-bottom",
-  /* lookup: */
-  menuContent:       "pe-menu__content"
-};
+import classes from "./classes";
 
 const SCROLL_WATCH_TIMER = 150;
 

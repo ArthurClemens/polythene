@@ -2,10 +2,7 @@ import m from "mithril";
 import { selectionControl } from "polythene-selection-control";
 import { controlView } from "./control-view";
 import { customTheme } from "./theme";
-
-export const classes = {
-  component: "pe-switch-control"
-};
+import classes from "./classes";
 
 const view = vnode => {
   return m(selectionControl, {

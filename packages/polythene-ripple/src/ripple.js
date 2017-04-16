@@ -2,14 +2,7 @@ import m from "mithril";
 import { touchEndEvent, filterSupportedAttributes } from "polythene-core";
 import { customTheme } from "./theme";
 import animation from "./theme/animation";
-
-export const classes = {
-  component:      "pe-ripple",
-  waves:          "pe-ripple__waves",
-  mask:           "pe-ripple__mask",
-  constrained:    "pe-ripple--constrained",
-  wavesAnimating: "pe-ripple__waves--animating"
-};
+import classes from "./classes";
 
 let destroyRipple;
 

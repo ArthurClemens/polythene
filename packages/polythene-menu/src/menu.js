@@ -2,21 +2,7 @@ import m from "mithril";
 import shadow from "polythene-shadow";
 import { filterSupportedAttributes, subscribe, unsubscribe, show, hide } from "polythene-core";
 import { customTheme } from "./theme";
-
-export const classes = {
-  component:   "pe-menu",
-  content:     "pe-menu__content",
-  placeholder: "pe-menu__placeholder",
-  target:      "pe-menu__target",
-  visible:     "pe-menu--visible",
-  permanent:   "pe-menu--permanent",
-  width_n:     "pe-menu--width-",
-  width_auto:  "pe-menu--width-auto",
-
-  // lookup
-  listTile:         "pe-list-tile",
-  selectedListTile: "pe-list-tile--selected"
-};
+import classes from "./classes";
 
 const SHADOW_Z         = 1;
 const OFFSET_V         = -8;

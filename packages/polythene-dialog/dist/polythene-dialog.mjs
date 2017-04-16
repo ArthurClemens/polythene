@@ -2,7 +2,26 @@ import { filterSupportedAttributes, hide, multiple, show, subscribe, unsubscribe
 import m from 'mithril';
 import shadow from 'polythene-shadow';
 import { flex, mixin, styler } from 'polythene-css';
+import { classes } from 'polythene-menu';
 import { vars } from 'polythene-theme';
+
+var classes$1 = {
+  component: "pe-dialog",
+  visible: "pe-dialog--visible",
+  body: "pe-dialog__body",
+  fullscreen: "pe-dialog--fullscreen",
+  content: "pe-dialog__content",
+  header: "pe-dialog__header",
+  footer: "pe-dialog__footer",
+  footerHigh: "pe-dialog__footer--high",
+  title: "pe-dialog__title",
+  actions: "pe-dialog__actions",
+  hasBackdrop: "pe-dialog--backdrop",
+  hasTopOverflow: "pe-dialog--overflow-top",
+  hasBottomOverflow: "pe-dialog--overflow-bottom",
+
+  menuContent: classes.content
+};
 
 var rgba = vars.rgba;
 
@@ -194,7 +213,7 @@ var color = (function (selector, componentVars) {
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var fns = [layout, color];
-var selector = ".pe-dialog";
+var selector = "." + classes$1.component;
 
 var customTheme = function customTheme(customSelector, customVars) {
   return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
@@ -203,24 +222,6 @@ var customTheme = function customTheme(customSelector, customVars) {
 styler.generateStyles([selector], vars$1, fns);
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var classes = {
-  component: "pe-dialog",
-  visible: "pe-dialog--visible",
-  body: "pe-dialog__body",
-  fullscreen: "pe-dialog--fullscreen",
-  content: "pe-dialog__content",
-  header: "pe-dialog__header",
-  footer: "pe-dialog__footer",
-  footerHigh: "pe-dialog__footer--high",
-  title: "pe-dialog__title",
-  actions: "pe-dialog__actions",
-  hasBackdrop: "pe-dialog--backdrop",
-  hasTopOverflow: "pe-dialog--overflow-top",
-  hasBottomOverflow: "pe-dialog--overflow-bottom",
-  /* lookup: */
-  menuContent: "pe-menu__content"
-};
 
 var SCROLL_WATCH_TIMER = 150;
 
@@ -240,9 +241,9 @@ var updateFooterState = function updateFooterState(state) {
     var height = footerEl.getBoundingClientRect().height;
     var minHeight = parseInt(style.minHeight, 10);
     if (height > minHeight) {
-      footerEl.classList.add(classes.footerHigh);
+      footerEl.classList.add(classes$1.footerHigh);
     } else {
-      footerEl.classList.remove(classes.footerHigh);
+      footerEl.classList.remove(classes$1.footerHigh);
     }
   }
 };
@@ -285,7 +286,7 @@ var createViewContent = function createViewContent(state, opts) {
   var updateContentOnScroll = opts.updateContentOnScroll || false;
   var ignoreContent = !updateContentOnScroll && state.isScrolling;
   return m("div", {
-    class: classes.body,
+    class: classes$1.body,
     oncreate: function oncreate(_ref) {
       var dom = _ref.dom;
       return state.scrollEl = dom;
@@ -325,7 +326,7 @@ var createView = function createView(state, opts) {
   var element = opts.element || "form";
   var props = _extends({}, filterSupportedAttributes(opts, { remove: ["style"] }), // style set in content, and set by show/hide transition
   {
-    class: [classes.component, opts.fullscreen ? classes.fullscreen : null, opts.backdrop ? classes.hasBackdrop : null, state.topOverflow || opts.borders ? classes.hasTopOverflow : null, state.bottomOverflow || opts.borders ? classes.hasBottomOverflow : null, state.visible ? classes.visible : null, opts.tone === "dark" ? "pe-dark-tone" : null, opts.tone === "light" ? "pe-light-tone" : null, opts.class].join(" "),
+    class: [classes$1.component, opts.fullscreen ? classes$1.fullscreen : null, opts.backdrop ? classes$1.hasBackdrop : null, state.topOverflow || opts.borders ? classes$1.hasTopOverflow : null, state.bottomOverflow || opts.borders ? classes$1.hasBottomOverflow : null, state.visible ? classes$1.visible : null, opts.tone === "dark" ? "pe-dark-tone" : null, opts.tone === "light" ? "pe-light-tone" : null, opts.class].join(" "),
     oncreate: function oncreate(_ref2) {
       var dom = _ref2.dom;
 
@@ -364,22 +365,22 @@ var createView = function createView(state, opts) {
 
   var body = createViewContent(state, opts);
   var content = m("div", {
-    class: [classes.content, opts.menu ? classes.menuContent : null].join(" "),
+    class: [classes$1.content, opts.menu ? classes$1.menuContent : null].join(" "),
     style: opts.style
   }, [opts.fullscreen ? null : m(shadow, {
     z: state.z,
     animated: true
   }), opts.fullscreen ? null : opts.title ? m("div", {
-    class: classes.header,
+    class: classes$1.header,
     oncreate: function oncreate(_ref3) {
       var dom = _ref3.dom;
 
       state.headerHeight = dom.scrollHeight;
     }
   }, m("div", {
-    class: classes.title
+    class: classes$1.title
   }, opts.title)) : null, body, opts.fullscreen ? null : opts.footer ? m("div", {
-    class: classes.footer,
+    class: classes$1.footer,
     oncreate: function oncreate(_ref4) {
       var dom = _ref4.dom;
 
@@ -392,7 +393,7 @@ var createView = function createView(state, opts) {
       return state.footerHeight = dom.scrollHeight, updateFooterState(state);
     }
   }, [m("div", {
-    class: classes.actions
+    class: classes$1.actions
   }, opts.footer)]) : null]);
 
   return m(element, props, [opts.before, content, opts.after]);
@@ -471,4 +472,4 @@ var dialog = multiple({
   bodyShowClass: "pe-dialog--open"
 });
 
-export { classes, vars$1 as vars };export default dialog;
+export { classes$1 as classes, vars$1 as vars };export default dialog;

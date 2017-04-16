@@ -3,10 +3,7 @@ import button from "polythene-button";
 import shadow from "polythene-shadow";
 import { isTouch, touchStartEvent, touchEndEvent, subscribe } from "polythene-core";
 import { customTheme } from "./theme";
-
-export const classes = {
-  component: "pe-button pe-text-button pe-raised-button"
-};
+import classes from "./classes";
 
 const MAX_Z = 5;
 

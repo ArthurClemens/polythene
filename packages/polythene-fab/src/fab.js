@@ -2,12 +2,7 @@ import m from "mithril";
 import raisedButton from "polythene-raised-button";
 import icon from "polythene-icon";
 import { customTheme } from "./theme";
-
-export const classes = {
-  component: "pe-fab",
-  content:   "pe-fab__content",
-  mini:      "pe-fab--mini"
-};
+import classes from "./classes";
 
 const view = vnode => {
   const attrs = vnode.attrs;

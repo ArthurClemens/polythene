@@ -1,10 +1,7 @@
 import m from "mithril";
 import { selectionControl, controlView } from "polythene-selection-control";
 import { theme, customTheme } from "./theme";
-
-export const classes = {
-  component: "pe-radio-control"
-};
+import classes from "./classes";
 
 const view = vnode => {
   return m(selectionControl, {

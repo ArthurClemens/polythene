@@ -3,6 +3,33 @@ import { filterSupportedAttributes, prop, touchStartEvent } from 'polythene-core
 import { mixin, styler } from 'polythene-css';
 import { vars } from 'polythene-theme';
 
+var classes = {
+  component: "pe-textfield",
+  inputArea: "pe-textfield__input-area",
+  input: "pe-textfield__input",
+  label: "pe-textfield__label",
+  counter: "pe-textfield__counter",
+  help: "pe-textfield__help",
+  focusHelp: "pe-textfield__help-focus",
+  error: "pe-textfield__error",
+  errorPlaceholder: "pe-textfield__error-placeholder",
+  requiredIndicator: "pe-textfield__required-indicator",
+  optionalIndicator: "pe-textfield__optional-indicator",
+  stateFocused: "pe-textfield--focused",
+  stateDisabled: "pe-textfield--disabled",
+  stateReadonly: "pe-textfield--readonly",
+  stateInvalid: "pe-textfield--invalid",
+  stateDirty: "pe-textfield--dirty",
+  hasFloatingLabel: "pe-textfield--floating-label",
+  isDense: "pe-textfield--dense",
+  isRequired: "pe-textfield--required",
+  hasFullWidth: "pe-textfield--full-width",
+  hasCounter: "pe-textfield--counter",
+  hideSpinner: "pe-textfield--hide-spinner",
+  hideClear: "pe-textfield--hide-clear",
+  hideValidation: "pe-textfield--hide-validation"
+};
+
 var rgba = vars.rgba;
 var line_height_input = 20;
 var input_padding_v = 7;
@@ -401,7 +428,7 @@ var color = (function (selector, componentVars) {
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var fns = [layout, color];
-var selector = ".pe-textfield";
+var selector = "." + classes.component;
 
 var customTheme = function customTheme(customSelector, customVars) {
   return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
@@ -412,33 +439,6 @@ styler.generateStyles([selector], vars$1, fns);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var classes = {
-  component: "pe-textfield",
-  inputArea: "pe-textfield__input-area",
-  input: "pe-textfield__input",
-  label: "pe-textfield__label",
-  counter: "pe-textfield__counter",
-  help: "pe-textfield__help",
-  focusHelp: "pe-textfield__help-focus",
-  error: "pe-textfield__error",
-  errorPlaceholder: "pe-textfield__error-placeholder",
-  requiredIndicator: "pe-textfield__required-indicator",
-  optionalIndicator: "pe-textfield__optional-indicator",
-  stateFocused: "pe-textfield--focused",
-  stateDisabled: "pe-textfield--disabled",
-  stateReadonly: "pe-textfield--readonly",
-  stateInvalid: "pe-textfield--invalid",
-  stateDirty: "pe-textfield--dirty",
-  hasFloatingLabel: "pe-textfield--floating-label",
-  isDense: "pe-textfield--dense",
-  isRequired: "pe-textfield--required",
-  hasFullWidth: "pe-textfield--full-width",
-  hasCounter: "pe-textfield--counter",
-  hideSpinner: "pe-textfield--hide-spinner",
-  hideClear: "pe-textfield--hide-clear",
-  hideValidation: "pe-textfield--hide-validation"
-};
 
 var validateCustom = function validateCustom(state, attrs) {
   var validState = attrs.validate(state.value);

@@ -1,12 +1,7 @@
 import m from "mithril";
 import shadow from "polythene-shadow";
 import iconButton from "polythene-icon-button";
-
-export const classes = {
-  track:  "pe-switch-control__track",
-  thumb:  "pe-switch-control__thumb",
-  knob:   "pe-switch-control__knob"
-};
+import classes from "./classes";
 
 export const controlView = (checked, attrs) => {
   const zOff = attrs.zOff !== undefined ? attrs.zOff : 1;

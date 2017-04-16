@@ -3,6 +3,14 @@ import { filterSupportedAttributes } from 'polythene-core';
 import { mixin, styler } from 'polythene-css';
 import { vars } from 'polythene-theme';
 
+var classes = {
+  component: "pe-shadow",
+  topShadow: "pe-shadow__top",
+  bottomShadow: "pe-shadow__bottom",
+  animated: "pe-shadow--animated",
+  depth_n: "pe-shadow--z-"
+};
+
 var vars$1 = {
   transition: "box-shadow " + vars.animation_duration + " ease-out",
 
@@ -57,7 +65,7 @@ var layout = (function (selector, componentVars) {
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var fns = [layout];
-var selector = ".pe-shadow";
+var selector = "." + classes.component;
 
 var customTheme = function customTheme(customSelector, customVars) {
   return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
@@ -66,14 +74,6 @@ var customTheme = function customTheme(customSelector, customVars) {
 styler.generateStyles([selector], vars$1, fns);
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var classes = {
-  component: "pe-shadow",
-  topShadow: "pe-shadow__top",
-  bottomShadow: "pe-shadow__bottom",
-  animated: "pe-shadow--animated",
-  depth_n: "pe-shadow--z-"
-};
 
 var view = function view(vnode) {
   var attrs = vnode.attrs;

@@ -1,7 +1,7 @@
 import m from "mithril";
 import button from "polythene-button";
 import icon from "polythene-icon";
-import { classes } from "./tabs";
+import classes from "./classes";
 
 const view = vnode => {
   const attrs = vnode.attrs;

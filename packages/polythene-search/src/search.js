@@ -2,13 +2,7 @@ import m from "mithril";
 import textfield from "polythene-textfield";
 import { filterSupportedAttributes } from "polythene-core";
 import { customTheme } from "./theme";
-
-export const classes = {
-  component:       "pe-search",
-  content:         "pe-search__content",
-  searchInset:     "pe-search--inset",
-  searchFullWidth: "pe-search--full-width"
-};
+import classes from "./classes";
 
 const getNameOfState = state =>
   state.focus && state.dirty

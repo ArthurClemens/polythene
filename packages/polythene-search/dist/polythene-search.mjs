@@ -4,6 +4,13 @@ import { filterSupportedAttributes } from 'polythene-core';
 import { flex, styler } from 'polythene-css';
 import { vars } from 'polythene-theme';
 
+var classes = {
+  component: "pe-search",
+  content: "pe-search__content",
+  searchInset: "pe-search--inset",
+  searchFullWidth: "pe-search--full-width"
+};
+
 var rgba = vars.rgba;
 
 var insetSideMargin = 8;
@@ -156,7 +163,7 @@ var color = (function (selector, componentVars) {
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var fns = [layout, color];
-var selector = ".pe-search";
+var selector = "." + classes.component;
 
 var customTheme = function customTheme(customSelector, customVars) {
   return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
@@ -165,13 +172,6 @@ var customTheme = function customTheme(customSelector, customVars) {
 styler.generateStyles([selector], vars$1, fns);
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var classes = {
-  component: "pe-search",
-  content: "pe-search__content",
-  searchInset: "pe-search--inset",
-  searchFullWidth: "pe-search--full-width"
-};
 
 var getNameOfState = function getNameOfState(state) {
   return state.focus && state.dirty ? "focus_dirty" : state.focus ? "focus" : state.dirty ? "dirty" : "none";

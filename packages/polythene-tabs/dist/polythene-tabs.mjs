@@ -2,14 +2,38 @@ import m from 'mithril';
 import { filterSupportedAttributes, isTouch, subscribe, unsubscribe } from 'polythene-core';
 import { scrollTo } from 'polythene-utilities';
 import { flex, mixin, styler } from 'polythene-css';
-import { vars } from 'polythene-theme';
-import button, { vars as vars$1 } from 'polythene-button';
+import button, { classes, vars } from 'polythene-button';
+import { vars as vars$1 } from 'polythene-theme';
 import iconButton, { vars as vars$2 } from 'polythene-icon-button';
 import icon from 'polythene-icon';
 
-var rgba = vars.rgba;
+var classes$1 = {
+  component: "pe-tabs",
+  scrollButton: "pe-tabs__scroll-button",
+  scrollButtonAtStart: "pe-tabs__scroll-button-start",
+  scrollButtonAtEnd: "pe-tabs__scroll-button-end",
+  scrollButtonOffset: "pe-tabs__scroll-button-offset",
+  tabRow: "pe-tabs__row",
+  tabRowCentered: "pe-tabs__row--centered",
+  tabRowIndent: "pe-tabs__row--indent",
+  tab: "pe-tabs__tab",
+  tabContent: "pe-tabs__tab-content",
+  tabHasIcon: "pe-tabs__tab---icon",
+  indicator: "pe-tabs__indicator",
+  scrollable: "pe-tabs--scrollable",
+  isAutofit: "pe-tabs--autofit",
+  isAtStart: "pe-tabs--start",
+  isAtEnd: "pe-tabs--end",
+  smallTabs: "pe-tabs--small",
+  isMenu: "pe-tabs--menu",
+  activeSelectable: "pe-tabs__active-selectable",
 
-var fontSize = vars$1.font_size;
+  label: classes.label
+};
+
+var rgba = vars$1.rgba;
+
+var fontSize = vars.font_size;
 var tab_label_line_height = 1.1 * fontSize;
 
 var vars$3 = {
@@ -24,7 +48,7 @@ var vars$3 = {
   tab_icon_label_icon_spacing: 7,
   indicator_slide_speed: 600, // px per second
   indicator_slide_min_duration: .250,
-  tabs_indent: vars.unit_indent,
+  tabs_indent: vars$1.unit_indent,
   tabs_scroll_speed: 600, // px per second
   tabs_scroll_delay: .15,
   tabs_scroll_min_duration: .5,
@@ -42,15 +66,15 @@ var vars$3 = {
   tab_label_transition_property: "opacity, color, backgroundColor",
 
   color_light: "inherit",
-  color_light_selected: rgba(vars.color_primary),
+  color_light_selected: rgba(vars$1.color_primary),
   color_light_selected_background: "transparent",
-  color_light_tab_indicator: rgba(vars.color_primary),
+  color_light_tab_indicator: rgba(vars$1.color_primary),
   color_light_icon: vars$2.color_light,
 
   color_dark: "inherit",
-  color_dark_selected: rgba(vars.color_primary),
+  color_dark_selected: rgba(vars$1.color_primary),
   color_dark_selected_background: "transparent",
-  color_dark_tab_indicator: rgba(vars.color_primary),
+  color_dark_tab_indicator: rgba(vars$1.color_primary),
   color_dark_icon: vars$2.color_dark
 };
 
@@ -186,7 +210,7 @@ var layout = (function (selector, componentVars) {
       ".pe-text-button .pe-button__content": {
         padding: "0 " + componentVars.tab_content_padding_v + "px",
         height: componentVars.tab_height + "px",
-        lineHeight: vars.line_height + "em",
+        lineHeight: vars$1.line_height + "em",
         borderRadius: 0,
 
         " .pe-button__label, .pe-icon": {
@@ -318,7 +342,7 @@ var arrowForward = {
 };
 
 var fns = [layout, color];
-var selector = ".pe-tabs";
+var selector = "." + classes$1.component;
 
 var customTheme = function customTheme(customSelector, customVars) {
   return styler.generateStyles([customSelector, selector], _extends$1({}, vars$3, customVars), fns);
@@ -334,8 +358,8 @@ var view$1 = function view(vnode) {
   attrs.events = attrs.events || {};
   attrs.events.onclick = attrs.events.onclick || function () {};
   var tabButtonOptions = _extends$2({}, attrs, {
-    content: m("div", { class: classes.tabContent }, [attrs.icon ? m(icon, attrs.icon) : null, attrs.label ? m("div", { class: classes.label }, m("span", attrs.label)) : null]),
-    class: [classes.tab, attrs.icon && attrs.label ? classes.tabHasIcon : null, attrs.class].join(" "),
+    content: m("div", { class: classes$1.tabContent }, [attrs.icon ? m(icon, attrs.icon) : null, attrs.label ? m("div", { class: classes$1.label }, m("span", attrs.label)) : null]),
+    class: [classes$1.tab, attrs.icon && attrs.label ? classes$1.tabHasIcon : null, attrs.class].join(" "),
     selected: attrs.selected,
     wash: false,
     ripple: true,
@@ -363,7 +387,7 @@ var view$2 = function view(vnode) {
   var attrs = vnode.attrs;
   var icon$$1 = attrs.position === "start" ? attrs.icon || arrowBackward : attrs.icon || arrowForward;
   return m(iconButton, {
-    class: [classes.scrollButton, attrs.class].join(" "),
+    class: [classes$1.scrollButton, attrs.class].join(" "),
     icon: icon$$1,
     ripple: { center: true },
     events: attrs.events,
@@ -378,30 +402,6 @@ var scrollButton = {
 };
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var classes = {
-  component: "pe-tabs",
-  scrollButton: "pe-tabs__scroll-button",
-  scrollButtonAtStart: "pe-tabs__scroll-button-start",
-  scrollButtonAtEnd: "pe-tabs__scroll-button-end",
-  scrollButtonOffset: "pe-tabs__scroll-button-offset",
-  tabRow: "pe-tabs__row",
-  tabRowCentered: "pe-tabs__row--centered",
-  tabRowIndent: "pe-tabs__row--indent",
-  tab: "pe-tabs__tab",
-  tabContent: "pe-tabs__tab-content",
-  tabHasIcon: "pe-tabs__tab---icon",
-  indicator: "pe-tabs__indicator",
-  scrollable: "pe-tabs--scrollable",
-  isAutofit: "pe-tabs--autofit",
-  isAtStart: "pe-tabs--start",
-  isAtEnd: "pe-tabs--end",
-  smallTabs: "pe-tabs--small",
-  isMenu: "pe-tabs--menu",
-  activeSelectable: "pe-tabs__active-selectable",
-  // reference:  
-  label: "pe-button__label"
-};
 
 var whenCreateDone = function whenCreateDone() {
   return Promise.resolve();
@@ -434,7 +434,7 @@ Moves the first tab to the left so that the text label is as position 0.
 */
 var alignToTitle = function alignToTitle(state) {
   var firstTab = state.tabs[0].el;
-  var firstInnerLabel = firstTab.querySelector("." + classes.label + " span");
+  var firstInnerLabel = firstTab.querySelector("." + classes$1.label + " span");
   var firstOuterLabelWidth = firstTab.getBoundingClientRect().width;
   var firstInnerLabelWidth = firstInnerLabel.getBoundingClientRect().width;
   var firstTabOffset = (firstOuterLabelWidth - firstInnerLabelWidth) / 2;
@@ -444,7 +444,7 @@ var alignToTitle = function alignToTitle(state) {
 var createRightButtonOffset = function createRightButtonOffset(state) {
   // add padding to right so that last item is not hidden behind scroll button
   var scrollButtonAtEndWidth = state.scrollButtons["end"].getBoundingClientRect().width;
-  var scrollButtonOffsetEl = state.tabsEl.querySelector("." + classes.scrollButtonOffset);
+  var scrollButtonOffsetEl = state.tabsEl.querySelector("." + classes$1.scrollButtonOffset);
   scrollButtonOffsetEl.style.width = scrollButtonAtEndWidth + "px";
 };
 
@@ -544,7 +544,7 @@ var view = function view(vnode) {
   };
 
   var props = _extends({}, filterSupportedAttributes(attrs), {
-    class: [classes.component, attrs.scrollable ? classes.scrollable : null, state.selectedTabIndex === 0 ? classes.isAtStart : null, state.selectedTabIndex === state.tabs.length - 1 ? classes.isAtEnd : null, attrs.activeSelected ? classes.activeSelectable : null, autofit ? classes.isAutofit : null, attrs.small ? classes.smallTabs : null, attrs.menu ? classes.isMenu : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.class].join(" "),
+    class: [classes$1.component, attrs.scrollable ? classes$1.scrollable : null, state.selectedTabIndex === 0 ? classes$1.isAtStart : null, state.selectedTabIndex === state.tabs.length - 1 ? classes$1.isAtEnd : null, attrs.activeSelected ? classes$1.activeSelectable : null, autofit ? classes$1.isAutofit : null, attrs.small ? classes$1.smallTabs : null, attrs.menu ? classes$1.isMenu : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.class].join(" "),
     oninit: function oninit() {
       return subscribe("resize", onResize);
     },
@@ -607,14 +607,14 @@ var view = function view(vnode) {
 
   var tabRow = attrs.scrollable ? tabRowButtons.concat([
   // offset for right scroll button
-  m("div", { class: classes.scrollButtonOffset })]) : tabRowButtons;
+  m("div", { class: classes$1.scrollButtonOffset })]) : tabRowButtons;
 
   var scrollButtonAtStart = void 0,
       scrollButtonAtEnd = void 0;
   if (attrs.scrollable) {
     scrollButtonAtStart = m(scrollButton, _extends({}, {
       icon: attrs.scrollIconBackward,
-      class: classes.scrollButtonAtStart,
+      class: classes$1.scrollButtonAtStart,
       position: "start",
       register: state.registerScrollButton,
       events: { onclick: function onclick(e) {
@@ -623,7 +623,7 @@ var view = function view(vnode) {
     }));
     scrollButtonAtEnd = m(scrollButton, _extends({}, {
       icon: attrs.scrollIconForward,
-      class: classes.scrollButtonAtEnd,
+      class: classes$1.scrollButtonAtEnd,
       position: "end",
       register: state.registerScrollButton,
       events: { onclick: function onclick(e) {
@@ -633,14 +633,14 @@ var view = function view(vnode) {
   }
 
   var tabIndicator = attrs.hideIndicator ? null : m("div", {
-    class: classes.indicator,
+    class: classes$1.indicator,
     oncreate: function oncreate(vnode) {
       return state.tabIndicatorEl = vnode.dom;
     }
   });
 
   var content = [attrs.scrollable ? scrollButtonAtStart : null, m("div", {
-    class: [classes.tabRow, attrs.centered ? classes.tabRowCentered : null, attrs.scrollable ? classes.tabRowIndent : null].join(" "),
+    class: [classes$1.tabRow, attrs.centered ? classes$1.tabRowCentered : null, attrs.scrollable ? classes$1.tabRowIndent : null].join(" "),
     oncreate: function oncreate(vnode) {
       return state.scrollerEl = vnode.dom;
     }
@@ -682,4 +682,4 @@ var tabs = {
   }
 };
 
-export { classes, vars$3 as vars };export default tabs;
+export { classes$1 as classes, vars$3 as vars };export default tabs;

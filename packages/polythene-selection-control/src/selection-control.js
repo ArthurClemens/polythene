@@ -1,20 +1,6 @@
 import m from "mithril";
 import { filterSupportedAttributes } from "polythene-core";
-
-export const classes = {
-  component: "pe-control",
-  formLabel: "pe-control__form-label",
-  label:     "pe-control__label",
-  input:     "pe-control__input",
-  on:        "pe-control--on",
-  off:       "pe-control--off",
-  disabled:  "pe-control--disabled",
-  inactive:  "pe-control--inactive",
-  small:     "pe-control--small",
-  regular:   "pe-control--regular",
-  medium:    "pe-control--medium",
-  large:     "pe-control--large"
-};
+import classes from "./classes";
 
 const typeClasses = {
   small:   classes.small,

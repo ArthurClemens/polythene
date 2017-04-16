@@ -1,10 +1,7 @@
 import m from "mithril";
 import { filterSupportedAttributes } from "polythene-core";
 import { customTheme } from "./theme";
-
-export const classes = {
-  component: "pe-svg"
-};
+import classes from "./classes";
 
 const view = vnode => {
   const attrs = vnode.attrs;
@@ -31,4 +28,3 @@ export default {
   theme: customTheme, // accepts (selector, vars)
   view
 };
-

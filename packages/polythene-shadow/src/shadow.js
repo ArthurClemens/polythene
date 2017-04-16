@@ -1,14 +1,7 @@
 import m from "mithril";
 import { filterSupportedAttributes } from "polythene-core";
 import { customTheme } from "./theme";
-
-export const classes = {
-  component:    "pe-shadow",
-  topShadow:    "pe-shadow__top",
-  bottomShadow: "pe-shadow__bottom",
-  animated:     "pe-shadow--animated",
-  depth_n:      "pe-shadow--z-"
-};
+import classes from "./classes";
 
 const view = vnode => {
   const attrs = vnode.attrs;

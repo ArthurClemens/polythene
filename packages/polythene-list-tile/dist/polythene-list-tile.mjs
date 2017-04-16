@@ -5,6 +5,26 @@ import { filterSupportedAttributes } from 'polythene-core';
 import { flex, mixin, styler } from 'polythene-css';
 import { vars } from 'polythene-theme';
 
+var classes = {
+  component: "pe-list-tile",
+  primary: "pe-list-tile__primary",
+  secondary: "pe-list-tile__secondary",
+  content: "pe-list-tile__content",
+  contentFront: "pe-list-tile__content--front",
+  title: "pe-list-tile__title",
+  subtitle: "pe-list-tile__subtitle",
+  highSubtitle: "pe-list-tile__high-subtitle",
+  selected: "pe-list-tile--selected",
+  disabled: "pe-list-tile--disabled",
+  sticky: "pe-list-tile--sticky",
+  hasSubtitle: "pe-list-tile--subtitle",
+  hasHighSubtitle: "pe-list-tile--high-subtitle",
+  hasFront: "pe-list-tile--front",
+  compact: "pe-list-tile--compact",
+  hoverable: "pe-list-tile--hoverable",
+  selectable: "pe-list-tile--selectable"
+};
+
 var rgba = vars.rgba;
 
 // SPECS
@@ -283,7 +303,7 @@ var color = (function (selector, componentVars) {
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var fns = [layout, color];
-var selector = ".pe-list-tile";
+var selector = "." + classes.component;
 
 var customTheme = function customTheme(customSelector, customVars) {
   return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
@@ -292,26 +312,6 @@ var customTheme = function customTheme(customSelector, customVars) {
 styler.generateStyles([selector], vars$1, fns);
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var classes = {
-  component: "pe-list-tile",
-  primary: "pe-list-tile__primary",
-  secondary: "pe-list-tile__secondary",
-  content: "pe-list-tile__content",
-  contentFront: "pe-list-tile__content--front",
-  title: "pe-list-tile__title",
-  subtitle: "pe-list-tile__subtitle",
-  highSubtitle: "pe-list-tile__high-subtitle",
-  selected: "pe-list-tile--selected",
-  disabled: "pe-list-tile--disabled",
-  sticky: "pe-list-tile--sticky",
-  hasSubtitle: "pe-list-tile--subtitle",
-  hasHighSubtitle: "pe-list-tile--high-subtitle",
-  hasFront: "pe-list-tile--front",
-  compact: "pe-list-tile--compact",
-  hoverable: "pe-list-tile--hoverable",
-  selectable: "pe-list-tile--selectable"
-};
 
 var primaryContent = function primaryContent(attrs, children) {
   var element = attrs.element ? attrs.element : attrs.url ? "a" : "div";

@@ -6,6 +6,40 @@ import { filterSupportedAttributes } from 'polythene-core';
 import { flex, mixin, styler } from 'polythene-css';
 import { vars } from 'polythene-theme';
 
+var classes = {
+  component: "pe-card",
+  content: "pe-card__content",
+  overlay: "pe-card__overlay",
+  overlaySheet: "pe-card__overlay--sheet",
+  overlayContent: "pe-card__overlay__content",
+  mediaDimmer: "pe-card__media__dimmer",
+  mediaCropX: "pe-card__media--crop-x",
+  mediaCropY: "pe-card__media--crop-y",
+  media: "pe-card__media",
+  header: "pe-card__header",
+  headerTitle: "pe-card__header-title",
+  title: "pe-card__title",
+  subtitle: "pe-card__subtitle",
+  text: "pe-card__text",
+  textTight: "pe-card__text--tight",
+  primary: "pe-card__primary",
+  primaryMedia: "pe-card__primary-media",
+  primaryTight: "pe-card__primary--tight",
+  actions: "pe-card__actions",
+  actionsHorizontal: "pe-card__actions--horizontal",
+  actionsVertical: "pe-card__actions--vertical",
+  actionsJustified: "pe-card__actions--justified",
+  actionsBordered: "pe-card__actions--borders",
+  actionsTight: "pe-card__actions--tight",
+  mediaRatioSquare: "pe-card__media--square",
+  mediaRatioLandscape: "pe-card__media--landscape",
+  primaryHasMedia: "pe-card__primary--media",
+  mediaSmall: "pe-card__media--small",
+  mediaRegular: "pe-card__media--regular",
+  mediaMedium: "pe-card__media--medium",
+  mediaLarge: "pe-card__media--large"
+};
+
 var rgba = vars.rgba;
 
 var padding_v = 24;
@@ -341,7 +375,7 @@ var color = (function (selector, componentVars) {
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var fns = [layout, color];
-var selector = ".pe-card";
+var selector = "." + classes.component;
 
 var customTheme = function customTheme(customSelector, customVars) {
   return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
@@ -350,40 +384,6 @@ var customTheme = function customTheme(customSelector, customVars) {
 styler.generateStyles([selector], vars$1, fns);
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var classes = {
-  component: "pe-card",
-  content: "pe-card__content",
-  overlay: "pe-card__overlay",
-  overlaySheet: "pe-card__overlay--sheet",
-  overlayContent: "pe-card__overlay__content",
-  mediaDimmer: "pe-card__media__dimmer",
-  mediaCropX: "pe-card__media--crop-x",
-  mediaCropY: "pe-card__media--crop-y",
-  media: "pe-card__media",
-  header: "pe-card__header",
-  headerTitle: "pe-card__header-title",
-  title: "pe-card__title",
-  subtitle: "pe-card__subtitle",
-  text: "pe-card__text",
-  textTight: "pe-card__text--tight",
-  primary: "pe-card__primary",
-  primaryMedia: "pe-card__primary-media",
-  primaryTight: "pe-card__primary--tight",
-  actions: "pe-card__actions",
-  actionsHorizontal: "pe-card__actions--horizontal",
-  actionsVertical: "pe-card__actions--vertical",
-  actionsJustified: "pe-card__actions--justified",
-  actionsBordered: "pe-card__actions--borders",
-  actionsTight: "pe-card__actions--tight",
-  mediaRatioSquare: "pe-card__media--square",
-  mediaRatioLandscape: "pe-card__media--landscape",
-  primaryHasMedia: "pe-card__primary--media",
-  mediaSmall: "pe-card__media--small",
-  mediaRegular: "pe-card__media--regular",
-  mediaMedium: "pe-card__media--medium",
-  mediaLarge: "pe-card__media--large"
-};
 
 var imageRatios = {
   landscape: 16 / 9,

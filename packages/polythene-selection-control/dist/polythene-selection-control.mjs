@@ -5,8 +5,6 @@ import iconButton from 'polythene-icon-button';
 import { vars } from 'polythene-theme';
 import { flex, mixin } from 'polythene-css';
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var classes = {
   component: "pe-control",
   formLabel: "pe-control__form-label",
@@ -19,8 +17,15 @@ var classes = {
   small: "pe-control--small",
   regular: "pe-control--regular",
   medium: "pe-control--medium",
-  large: "pe-control--large"
+  large: "pe-control--large",
+
+  box: "pe-control__box",
+  button: "pe-control__button",
+  buttonOn: "pe-control__button--on",
+  buttonOff: "pe-control__button--off"
 };
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var typeClasses = {
   small: classes.small,
@@ -128,13 +133,6 @@ var selectionControl = {
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var classes$1 = {
-  box: "pe-control__box",
-  button: "pe-control__button",
-  buttonOn: "pe-control__button--on",
-  buttonOff: "pe-control__button--off"
-};
-
 var createIcon = function createIcon(onOffType, attrs) {
   return (
     // if attrs.iconOn/Off is passed, use that icon options object and ignore size
@@ -145,11 +143,11 @@ var createIcon = function createIcon(onOffType, attrs) {
 
 var controlView = function controlView(checked, attrs) {
   return m("div", {
-    class: classes$1.box
+    class: classes.box
   }, m(iconButton, _extends$1({}, {
     element: "div",
-    class: classes$1.button,
-    content: [m(icon, createIcon("iconOn", _extends$1({}, attrs, { class: classes$1.buttonOn }))), m(icon, createIcon("iconOff", _extends$1({}, attrs, { class: classes$1.buttonOff })))],
+    class: classes.button,
+    content: [m(icon, createIcon("iconOn", _extends$1({}, attrs, { class: classes.buttonOn }))), m(icon, createIcon("iconOff", _extends$1({}, attrs, { class: classes.buttonOff })))],
     ripple: { center: true },
     disabled: attrs.disabled,
     events: attrs.events
@@ -373,4 +371,4 @@ var layout = (function (selector, componentVars, type) {
   }), _defineProperty$1(_selector, ".pe-control--small", makeSize(componentVars, vars.unit_icon_size_small, vars.unit_icon_size_small)), _defineProperty$1(_selector, ".pe-control--regular", makeSize(componentVars, componentVars.label_height, vars.unit_icon_size)), _defineProperty$1(_selector, ".pe-control--medium", makeSize(componentVars, vars.unit_icon_size_medium, vars.unit_icon_size_medium)), _defineProperty$1(_selector, ".pe-control--large", makeSize(componentVars, vars.unit_icon_size_large, vars.unit_icon_size_large)), _selector))];
 });
 
-export { selectionControl, classes, controlView, classes$1 as controlViewClasses, vars$1 as vars, color, layout };
+export { selectionControl, classes, controlView, vars$1 as vars, color, layout };

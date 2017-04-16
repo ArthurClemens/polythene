@@ -3,6 +3,31 @@ import { endEvent, filterSupportedAttributes, isTouch, moveEvent } from 'polythe
 import { flex, mixin, styler } from 'polythene-css';
 import { vars } from 'polythene-theme';
 
+var classes = {
+  component: "pe-slider",
+  thumb: "pe-slider__thumb",
+  label: "pe-slider__label",
+  track: "pe-slider__track",
+  trackPart: "pe-slider__track-part",
+  trackPartValue: "pe-slider__track-value",
+  trackPartRest: "pe-slider__track-rest",
+  trackBar: "pe-slider__track-bar",
+  trackBarValue: "pe-slider__track-bar-value",
+
+  control: "pe-slider__control",
+  ticks: "pe-slider__ticks",
+  tick: "pe-slider__ticks-tick",
+  pin: "pe-slider__pin",
+
+  isDisabled: "pe-slider--disabled",
+  isActive: "pe-slider--active",
+  hasTrack: "pe-slider--track",
+  hasPin: "pe-slider--pin",
+  hasFocus: "pe-slider--focus",
+  isAtMin: "pe-slider--min",
+  hasTicks: "pe-slider--ticks"
+};
+
 var rgba = vars.rgba;
 
 var lightForeground = vars.color_light_foreground;
@@ -394,7 +419,7 @@ var color = (function (selector, componentVars) {
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var fns = [layout, color];
-var selector = ".pe-slider";
+var selector = "." + classes.component;
 
 var customTheme = function customTheme(customSelector, customVars) {
   return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
@@ -403,31 +428,6 @@ var customTheme = function customTheme(customSelector, customVars) {
 styler.generateStyles([selector], vars$1, fns);
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var classes = {
-  component: "pe-slider",
-  thumb: "pe-slider__thumb",
-  label: "pe-slider__label",
-  track: "pe-slider__track",
-  trackPart: "pe-slider__track-part",
-  trackPartValue: "pe-slider__track-value",
-  trackPartRest: "pe-slider__track-rest",
-  trackBar: "pe-slider__track-bar",
-  trackBarValue: "pe-slider__track-bar-value",
-
-  control: "pe-slider__control",
-  ticks: "pe-slider__ticks",
-  tick: "pe-slider__ticks-tick",
-  pin: "pe-slider__pin",
-
-  isDisabled: "pe-slider--disabled",
-  isActive: "pe-slider--active",
-  hasTrack: "pe-slider--track",
-  hasPin: "pe-slider--pin",
-  hasFocus: "pe-slider--focus",
-  isAtMin: "pe-slider--min",
-  hasTicks: "pe-slider--ticks"
-};
 
 var focusElement = void 0;
 

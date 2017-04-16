@@ -5,13 +5,14 @@ import iconButton, { vars as vars$1 } from 'polythene-icon-button';
 import { mixin, styler } from 'polythene-css';
 import { vars as vars$2 } from 'polythene-theme';
 
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var classes$1 = {
+var classes = {
+  component: "pe-switch-control",
   track: "pe-switch-control__track",
   thumb: "pe-switch-control__thumb",
   knob: "pe-switch-control__knob"
 };
+
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var controlView = function controlView(checked, attrs) {
   var zOff = attrs.zOff !== undefined ? attrs.zOff : 1;
@@ -19,11 +20,11 @@ var controlView = function controlView(checked, attrs) {
   var z = checked ? zOn : zOff;
   var raised = attrs.disabled ? false : attrs.raised !== undefined ? attrs.raised : true;
   return [m("div", {
-    class: classes$1.track
+    class: classes.track
   }), m(iconButton, _extends$1({}, {
-    class: classes$1.thumb,
+    class: classes.thumb,
     content: [m("div", {
-      class: classes$1.knob
+      class: classes.knob
     }, [attrs.icon ? attrs.icon : null, raised ? m(shadow, {
       z: z,
       animated: true
@@ -269,7 +270,7 @@ var color = (function (selector, componentVars) {
 var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var fns = [layout$1, color];
-var selector = ".pe-control.pe-switch-control";
+var selector = "." + classes.component;
 
 var customTheme = function customTheme(customSelector, customVars) {
   return styler.generateStyles([customSelector, selector], _extends$2({}, vars$3, customVars), fns);
@@ -279,17 +280,13 @@ styler.generateStyles([selector], vars$3, fns);
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var classes$$1 = {
-  component: "pe-switch-control"
-};
-
 var view = function view(vnode) {
   return m(selectionControl, _extends({}, vnode.attrs, {
     controlView: controlView,
     selectable: vnode.attrs.selectable || function () {
       return true;
     }, // default: always selectable, regardless the checked state
-    instanceClass: classes$$1.component,
+    instanceClass: classes.component,
     type: "checkbox"
   }));
 };
@@ -299,4 +296,4 @@ var switchButton = {
   view: view
 };
 
-export { classes$$1 as classes, controlView, classes$1 as controlViewClasses, vars$3 as vars };export default switchButton;
+export { classes, controlView, vars$3 as vars };export default switchButton;

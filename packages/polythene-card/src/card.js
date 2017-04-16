@@ -4,40 +4,7 @@ import shadow from "polythene-shadow";
 import listTile from "polythene-list-tile";
 import { filterSupportedAttributes } from "polythene-core";
 import { customTheme } from "./theme";
-
-export const classes = {
-  component:           "pe-card",
-  content:             "pe-card__content",
-  overlay:             "pe-card__overlay",
-  overlaySheet:        "pe-card__overlay--sheet",
-  overlayContent:      "pe-card__overlay__content",
-  mediaDimmer:         "pe-card__media__dimmer",
-  mediaCropX:          "pe-card__media--crop-x",
-  mediaCropY:          "pe-card__media--crop-y",
-  media:               "pe-card__media",
-  header:              "pe-card__header",
-  headerTitle:         "pe-card__header-title",
-  title:               "pe-card__title",
-  subtitle:            "pe-card__subtitle",
-  text:                "pe-card__text",
-  textTight:           "pe-card__text--tight",
-  primary:             "pe-card__primary",
-  primaryMedia:        "pe-card__primary-media",
-  primaryTight:        "pe-card__primary--tight",
-  actions:             "pe-card__actions",
-  actionsHorizontal:   "pe-card__actions--horizontal",
-  actionsVertical:     "pe-card__actions--vertical",
-  actionsJustified:    "pe-card__actions--justified",
-  actionsBordered:     "pe-card__actions--borders",
-  actionsTight:        "pe-card__actions--tight",
-  mediaRatioSquare:    "pe-card__media--square",
-  mediaRatioLandscape: "pe-card__media--landscape",
-  primaryHasMedia:     "pe-card__primary--media",
-  mediaSmall:          "pe-card__media--small",
-  mediaRegular:        "pe-card__media--regular",
-  mediaMedium:         "pe-card__media--medium",
-  mediaLarge:          "pe-card__media--large"
-};
+import classes from "./classes";
 
 const imageRatios = {
   landscape: 16 / 9,

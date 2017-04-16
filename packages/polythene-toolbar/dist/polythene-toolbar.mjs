@@ -3,6 +3,13 @@ import { filterSupportedAttributes } from 'polythene-core';
 import { flex, mixin, styler } from 'polythene-css';
 import { vars } from 'polythene-theme';
 
+var classes = {
+  component: "pe-toolbar",
+  compact: "pe-toolbar--compact",
+  title: "pe-toolbar__title",
+  indentedTitle: "pe-toolbar__title--indent"
+};
+
 var rgba = vars.rgba;
 
 var padding_side = vars.grid_unit_component * 2 - 12; // 16 - 12 = 4
@@ -82,7 +89,7 @@ var color = (function (selector, componentVars) {
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var fns = [layout, color];
-var selector = ".pe-toolbar";
+var selector = "." + classes.component;
 
 var customTheme = function customTheme(customSelector, customVars) {
   return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
@@ -91,13 +98,6 @@ var customTheme = function customTheme(customSelector, customVars) {
 styler.generateStyles([selector], vars$1, fns);
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var classes = {
-  component: "pe-toolbar",
-  compact: "pe-toolbar--compact",
-  title: "pe-toolbar__title",
-  indentedTitle: "pe-toolbar__title--indent"
-};
 
 var view = function view(vnode) {
   var attrs = vnode.attrs;

@@ -4,6 +4,12 @@ import button from 'polythene-button';
 import { styler } from 'polythene-css';
 import { vars } from 'polythene-theme';
 
+var classes = {
+  component: "pe-button pe-icon-button",
+  content: "pe-icon-button__content",
+  compact: "pe-icon-button--compact"
+};
+
 var rgba = vars.rgba;
 var padding = (vars.grid_unit_icon_button - vars.unit_icon_size) / 2; // 12
 var padding_compact = (vars.grid_unit_icon_button - vars.unit_icon_size) / 3; // 8
@@ -104,7 +110,7 @@ var color = (function (selector, componentVars) {
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var fns = [layout, color];
-var selector = ".pe-button.pe-icon-button";
+var selector = "." + classes.component.replace(/ /g, ".");
 
 var customTheme = function customTheme(customSelector, customVars) {
   return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
@@ -113,12 +119,6 @@ var customTheme = function customTheme(customSelector, customVars) {
 styler.generateStyles([selector], vars$1, fns);
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var classes = {
-  component: "pe-button pe-icon-button",
-  content: "pe-icon-button__content",
-  compact: "pe-icon-button--compact"
-};
 
 var view = function view(vnode) {
   var attrs = vnode.attrs;

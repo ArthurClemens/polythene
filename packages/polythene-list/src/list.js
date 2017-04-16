@@ -2,15 +2,7 @@ import m from "mithril";
 import listTile from "polythene-list-tile";
 import { filterSupportedAttributes } from "polythene-core";
 import { customTheme } from "./theme";
-
-export const classes = {
-  component:       "pe-list",
-  header:          "pe-list__header",
-  borders:         "pe-list--borders",
-  indentedBorders: "pe-list--indented-borders",
-  hasHeader:       "pe-list--header",
-  compact:         "pe-list--compact"
-};
+import classes from "./classes";
 
 const view = vnode => {
   const attrs = vnode.attrs;

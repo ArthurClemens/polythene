@@ -2,33 +2,7 @@ import m from "mithril";
 import { filterSupportedAttributes, prop } from "polythene-core";
 import { touchStartEvent } from "polythene-core";
 import { customTheme } from "./theme";
-
-export const classes = {
-  component:         "pe-textfield",
-  inputArea:         "pe-textfield__input-area",
-  input:             "pe-textfield__input",
-  label:             "pe-textfield__label",
-  counter:           "pe-textfield__counter",
-  help:              "pe-textfield__help",
-  focusHelp:         "pe-textfield__help-focus",
-  error:             "pe-textfield__error",
-  errorPlaceholder:  "pe-textfield__error-placeholder",
-  requiredIndicator: "pe-textfield__required-indicator",
-  optionalIndicator: "pe-textfield__optional-indicator",
-  stateFocused:      "pe-textfield--focused",
-  stateDisabled:     "pe-textfield--disabled",
-  stateReadonly:     "pe-textfield--readonly",
-  stateInvalid:      "pe-textfield--invalid",
-  stateDirty:        "pe-textfield--dirty",
-  hasFloatingLabel:  "pe-textfield--floating-label",
-  isDense:           "pe-textfield--dense",
-  isRequired:        "pe-textfield--required",
-  hasFullWidth:      "pe-textfield--full-width",
-  hasCounter:        "pe-textfield--counter",
-  hideSpinner:       "pe-textfield--hide-spinner",
-  hideClear:         "pe-textfield--hide-clear",
-  hideValidation:    "pe-textfield--hide-validation"
-};
+import classes from "./classes";
 
 const validateCustom = (state, attrs) => {
   const validState = attrs.validate(state.value);
