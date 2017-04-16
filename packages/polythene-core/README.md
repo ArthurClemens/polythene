@@ -3,15 +3,13 @@
 * animation-event
 * attrs
 * events
-* multiplex
+* multiple
 * pointer
 * prop
 * transition
 * variables
 
 ## Multiple
-
-> *Multiplex: A system involving simultaneous transmission of several messages along a single channel of communication.*
 
 Multiple is a Higher Order Component that renders multiple instances of a component, each one spawned from the same origin. A good example is [Notification](../polythene-notification) that creates one message after the other, each displayed in the center of the screen.
 

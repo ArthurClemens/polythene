@@ -2,6 +2,7 @@
 
 Displays a horizontal bar containing a label and action items. 
 
+See [Material Design Toolbars](https://material.io/guidelines/layout/structure.html#structure-toolbars) for examples of different usages.
 
 
 ## Usage

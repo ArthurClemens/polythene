@@ -6,15 +6,11 @@ const listeners = {};
 export const throttle = (func, s = 0.05, context = window) => {
   let wait = false;
   return (...args) => {
-    const later = () => {
-      func.apply(context, args);
-    };
+    const later = () => { func.apply(context, args); };
     if (!wait) {
       later();
       wait = true;
-      setTimeout(() => {
-        wait = false;
-      }, s);
+      setTimeout(() => { wait = false; }, s);
     }
   };
 };
@@ -43,8 +39,7 @@ export const emit = (eventName, event) => {
   });
 };
 
-window.addEventListener("resize", e => (emit("resize", e)));
-window.addEventListener("scroll", e => (emit("scroll", e)));
-window.addEventListener("keydown", e => (emit("keydown", e)));
-window.addEventListener(touchEndEvent, e => (emit(touchEndEvent, e)));
-
+window.addEventListener("resize",      e => emit("resize", e));
+window.addEventListener("scroll",      e => emit("scroll", e));
+window.addEventListener("keydown",     e => emit("keydown", e));
+window.addEventListener(touchEndEvent, e => emit(touchEndEvent, e));

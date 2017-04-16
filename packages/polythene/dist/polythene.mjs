@@ -4118,16 +4118,27 @@ var classes$9 = {
   focused: "pe-button--focus"
 };
 
+var inactivate = function inactivate(state, attrs) {
+  state.inactive = true;
+  m$1.redraw();
+  setTimeout(function () {
+    state.inactive = false;
+    m$1.redraw();
+  }, attrs.inactivate * 1000);
+};
+
 var view$9 = function view(vnode) {
   var state = vnode.state;
   var attrs = vnode.attrs;
   var noink = attrs.ink !== undefined && attrs.ink === false;
   var disabled = attrs.disabled;
   var element = attrs.element || "a";
-  var tabIndex = disabled || attrs.inactive ? -1 : attrs.tabindex || 0;
+  var inactive = attrs.inactive || state.inactive;
+  var tabIndex = disabled || inactive ? -1 : attrs.tabindex || 0;
   var onClickHandler = attrs.events && attrs.events.onclick;
   var props = _extends$11({}, filterSupportedAttributes(attrs, { add: ["formaction", "type"] }), {
-    class: [attrs.parentClass || classes$9.component, attrs.selected ? classes$9.selected : null, disabled ? classes$9.disabled : null, attrs.inactive ? classes$9.inactive : null, attrs.borders ? classes$9.borders : null, state.focus ? classes$9.focused : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.class].join(" "),
+    class: [attrs.parentClass || classes$9.component, attrs.selected ? classes$9.selected : null, disabled ? classes$9.disabled : null, inactive ? classes$9.inactive : null, attrs.borders ? classes$9.borders : null, state.focus ? classes$9.focused : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.class].join(" ")
+  }, inactive ? null : {
     tabIndex: tabIndex,
     // handle focus events
     onfocus: function onfocus() {
@@ -4150,6 +4161,11 @@ var view$9 = function view(vnode) {
         if (onClickHandler) {
           onClickHandler(e);
         }
+      }
+    },
+    onclick: inactive || disabled ? null : function () {
+      if (attrs.inactivate) {
+        inactivate(state, attrs);
       }
     }
   }, attrs.style ? { style: {} } : null, attrs.events, attrs.url, disabled ? { disabled: true } : null);
@@ -4179,6 +4195,7 @@ var button = {
   oninit: function oninit(vnode) {
     vnode.state.focus = false;
     vnode.state.mouseover = false;
+    vnode.state.inactive = false;
   },
   view: view$9
 };
@@ -4186,6 +4203,8 @@ var button = {
 var rgba$4 = variables.rgba;
 var padding$1 = (variables.grid_unit_icon_button - variables.unit_icon_size) / 2; // 12
 var padding_compact = (variables.grid_unit_icon_button - variables.unit_icon_size) / 3; // 8
+var color_light = variables.rgba(variables.color_light_foreground, variables.blend_light_text_secondary);
+var color_dark = variables.rgba(variables.color_dark_foreground, variables.blend_dark_text_secondary);
 
 var vars$1$6 = {
   padding: padding$1,
@@ -4196,13 +4215,15 @@ var vars$1$6 = {
   // color_light_background:    "none",
   // color_dark_background:     "none",
 
-  color_light: variables.rgba(variables.color_light_foreground, variables.blend_light_text_secondary),
+  color_light: color_light,
   color_light_disabled: rgba$4(variables.color_light_foreground, variables.blend_light_text_disabled),
+  color_light_wash: color_light,
   color_light_wash_opacity: variables.blend_light_background_hover_medium,
   color_light_focus_opacity: variables.blend_light_background_hover_medium,
 
-  color_dark: variables.rgba(variables.color_dark_foreground, variables.blend_dark_text_secondary),
+  color_dark: color_dark,
   color_dark_disabled: rgba$4(variables.color_dark_foreground, variables.blend_dark_text_disabled),
+  color_dark_wash: color_dark,
   color_dark_wash_opacity: variables.blend_dark_background_hover_medium,
   color_dark_focus_opacity: variables.blend_dark_background_hover_medium
 
@@ -4272,12 +4293,11 @@ var style$5 = function style(scopes, selector, componentVars, tint) {
 };
 
 var noTouchStyle$1 = function noTouchStyle(scopes, selector, componentVars, tint) {
-  var backgroundColor = tint === "light" ? "currentcolor" : componentVars["color_" + tint];
   return [_defineProperty$1$7({}, scopes.map(function (s) {
     return s + selector + ":hover";
   }).join(","), {
     " .pe-button__wash": {
-      backgroundColor: backgroundColor
+      backgroundColor: componentVars["color_" + tint + "_wash"]
     }
   })];
 };
@@ -5450,7 +5470,7 @@ var animateZ = function animateZ(state, attrs, name) {
   }
 };
 
-var inactivate = function inactivate(state, attrs) {
+var inactivate$1 = function inactivate(state, attrs) {
   state.inactive = true;
   m$1.redraw();
   setTimeout(function () {
@@ -5468,7 +5488,7 @@ var initTapEvents = function initTapEvents(el, state, attrs) {
       });
     } else if (name === "up") {
       if (attrs.inactivate && !state.inactive) {
-        inactivate(state, attrs);
+        inactivate$1(state, attrs);
       }
     }
     // no z animation on touch
@@ -6356,7 +6376,7 @@ var vars$1$13 = {
   color_light_background: rgba$11(variables.color_light_background),
   color_light_text: rgba$11(variables.color_light_foreground, variables.blend_light_dark_primary),
 
-  color_dark_background: rgba$11(variables.color_dark_background, .85),
+  color_dark_background: rgba$11(variables.color_dark_background),
   color_dark_text: rgba$11(variables.color_dark_foreground, variables.blend_light_text_primary)
 };
 
@@ -8754,6 +8774,8 @@ var vars$3 = _extends$3$2({}, vars$1$5, {
   color_light_thumb_on: rgba$16(variables.color_primary),
   color_light_thumb_off: "#f1f1f1",
   color_light_thumb_disabled: "#bdbdbd",
+  color_light_wash_on: rgba$16(variables.color_primary),
+  color_light_wash_off: vars$1$6.color_light_wash,
 
   color_light_track_on: rgba$16(variables.color_primary_faded),
   color_light_track_on_opacity: .55,
@@ -8768,9 +8790,11 @@ var vars$3 = _extends$3$2({}, vars$1$5, {
 
   // color_light_focus_on and so on taken from selectionControlVars
 
-  color_dark_thumb_on: rgba$16(variables.color_primary), // or "#80cbc4"
+  color_dark_thumb_on: rgba$16(variables.color_primary),
   color_dark_thumb_off: "#bdbdbd",
   color_dark_thumb_disabled: "#555",
+  color_dark_wash_on: rgba$16(variables.color_primary),
+  color_dark_wash_off: vars$1$6.color_dark_wash,
 
   color_dark_track_on: rgba$16(variables.color_primary_faded, variables.blend_dark_text_tertiary), // or "#5a7f7c"
   color_dark_track_on_opacity: 9,
@@ -8951,9 +8975,28 @@ var style$17 = function style(scopes, selector, componentVars, tint) {
   })];
 };
 
+var noTouchStyle$4 = function noTouchStyle(scopes, selector, componentVars, tint) {
+  return [_defineProperty$1$18({}, scopes.map(function (s) {
+    return s + selector + ":hover";
+  }).join(","), {
+    ".pe-control--on": {
+      " .pe-button__wash": {
+        backgroundColor: componentVars["color_" + tint + "_wash_on"]
+      }
+    },
+    ".pe-control--off": {
+      " .pe-button__wash": {
+        backgroundColor: componentVars["color_" + tint + "_wash_off"]
+      }
+    }
+  })];
+};
+
 var color$18 = function color$$1(selector, componentVars) {
   return [style$17([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  style$17(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+  style$17(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light theme
+  noTouchStyle$4(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, "dark"), // inside dark theme
+  noTouchStyle$4(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, "light")];
 };
 
 var _extends$2$2 = Object.assign || function (target) {
