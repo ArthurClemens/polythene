@@ -306,9 +306,11 @@ var view = function view(vnode) {
 var button = {
   theme: customTheme, // accepts (selector, vars)
   oninit: function oninit(vnode) {
-    vnode.state.focus = false;
-    vnode.state.mouseover = false;
-    vnode.state.inactive = false;
+    vnode.state = _extends(vnode.state, {
+      focus: false,
+      mouseover: false,
+      inactive: false
+    });
   },
   view: view
 };
