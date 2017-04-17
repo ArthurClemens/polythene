@@ -7,22 +7,29 @@ import { flex, mixin } from 'polythene-css';
 
 var classes = {
   component: "pe-control",
+
+  // elements
   formLabel: "pe-control__form-label",
-  label: "pe-control__label",
   input: "pe-control__input",
-  on: "pe-control--on",
-  off: "pe-control--off",
+  label: "pe-control__label",
+
+  // states
   disabled: "pe-control--disabled",
   inactive: "pe-control--inactive",
-  small: "pe-control--small",
-  regular: "pe-control--regular",
-  medium: "pe-control--medium",
   large: "pe-control--large",
+  medium: "pe-control--medium",
+  off: "pe-control--off",
+  on: "pe-control--on",
+  regular: "pe-control--regular",
+  small: "pe-control--small",
 
+  // control view elements
   box: "pe-control__box",
   button: "pe-control__button",
-  buttonOn: "pe-control__button--on",
-  buttonOff: "pe-control__button--off"
+
+  // control view states
+  buttonOff: "pe-control__button--off",
+  buttonOn: "pe-control__button--on"
 };
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };

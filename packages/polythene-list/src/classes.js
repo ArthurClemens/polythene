@@ -1,9 +1,13 @@
 
 export default {
   component:       "pe-list",
+
+  // elements
   header:          "pe-list__header",
+
+  // states
   borders:         "pe-list--borders",
-  indentedBorders: "pe-list--indented-borders",
+  compact:         "pe-list--compact",
   hasHeader:       "pe-list--header",
-  compact:         "pe-list--compact"
+  indentedBorders: "pe-list--indented-borders",
 };

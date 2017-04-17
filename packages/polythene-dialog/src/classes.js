@@ -2,18 +2,23 @@ import { classes as menu } from "polythene-menu";
 
 export default {
   component:         "pe-dialog",
-  visible:           "pe-dialog--visible",
-  body:              "pe-dialog__body",
-  fullscreen:        "pe-dialog--fullscreen",
-  content:           "pe-dialog__content",
-  header:            "pe-dialog__header",
-  footer:            "pe-dialog__footer",
-  footerHigh:        "pe-dialog__footer--high",
-  title:             "pe-dialog__title",
+
+  // elements
   actions:           "pe-dialog__actions",
+  body:              "pe-dialog__body",
+  content:           "pe-dialog__content",
+  footer:            "pe-dialog__footer",
+  header:            "pe-dialog__header",
+  title:             "pe-dialog__title",
+
+  // states
+  footerHigh:        "pe-dialog__footer--high",
+  fullscreen:        "pe-dialog--fullscreen",
   hasBackdrop:       "pe-dialog--backdrop",
-  hasTopOverflow:    "pe-dialog--overflow-top",
   hasBottomOverflow: "pe-dialog--overflow-bottom",
-  
-  menuContent:       menu.content
+  hasTopOverflow:    "pe-dialog--overflow-top",
+  visible:           "pe-dialog--visible",
+
+  // lookup
+  menuContent:       menu.content,
 };

@@ -9,25 +9,30 @@ import icon from 'polythene-icon';
 
 var classes$1 = {
   component: "pe-tabs",
+
+  // elements
+  indicator: "pe-tabs__indicator",
   scrollButton: "pe-tabs__scroll-button",
-  scrollButtonAtStart: "pe-tabs__scroll-button-start",
   scrollButtonAtEnd: "pe-tabs__scroll-button-end",
+  scrollButtonAtStart: "pe-tabs__scroll-button-start",
   scrollButtonOffset: "pe-tabs__scroll-button-offset",
-  tabRow: "pe-tabs__row",
-  tabRowCentered: "pe-tabs__row--centered",
-  tabRowIndent: "pe-tabs__row--indent",
   tab: "pe-tabs__tab",
   tabContent: "pe-tabs__tab-content",
-  tabHasIcon: "pe-tabs__tab---icon",
-  indicator: "pe-tabs__indicator",
-  scrollable: "pe-tabs--scrollable",
-  isAutofit: "pe-tabs--autofit",
-  isAtStart: "pe-tabs--start",
-  isAtEnd: "pe-tabs--end",
-  smallTabs: "pe-tabs--small",
-  isMenu: "pe-tabs--menu",
-  activeSelectable: "pe-tabs__active-selectable",
+  tabRow: "pe-tabs__row",
 
+  // states
+  activeSelectable: "pe-tabs__active--selectable",
+  isAtEnd: "pe-tabs--end",
+  isAtStart: "pe-tabs--start",
+  isAutofit: "pe-tabs--autofit",
+  isMenu: "pe-tabs--menu",
+  scrollable: "pe-tabs--scrollable",
+  smallTabs: "pe-tabs--small",
+  tabHasIcon: "pe-tabs__tab---icon",
+  tabRowCentered: "pe-tabs__row--centered",
+  tabRowIndent: "pe-tabs__row--indent",
+
+  // lookup
   label: classes.label
 };
 
@@ -262,7 +267,7 @@ var layout = (function (selector, componentVars) {
       maxWidth: "none"
     }],
 
-    ".pe-tabs__active-selectable": {
+    ".pe-tabs__active--selectable": {
       " .pe-tabs__tab.pe-button--selected": {
         cursor: "pointer",
         pointerEvents: "initial"

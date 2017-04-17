@@ -5,27 +5,29 @@ import { vars } from 'polythene-theme';
 
 var classes = {
   component: "pe-slider",
-  thumb: "pe-slider__thumb",
+
+  // elements
+  control: "pe-slider__control",
   label: "pe-slider__label",
+  pin: "pe-slider__pin",
+  thumb: "pe-slider__thumb",
+  tick: "pe-slider__ticks-tick",
+  ticks: "pe-slider__ticks",
   track: "pe-slider__track",
-  trackPart: "pe-slider__track-part",
-  trackPartValue: "pe-slider__track-value",
-  trackPartRest: "pe-slider__track-rest",
   trackBar: "pe-slider__track-bar",
   trackBarValue: "pe-slider__track-bar-value",
+  trackPart: "pe-slider__track-part",
+  trackPartRest: "pe-slider__track-rest",
+  trackPartValue: "pe-slider__track-value",
 
-  control: "pe-slider__control",
-  ticks: "pe-slider__ticks",
-  tick: "pe-slider__ticks-tick",
-  pin: "pe-slider__pin",
-
-  isDisabled: "pe-slider--disabled",
-  isActive: "pe-slider--active",
-  hasTrack: "pe-slider--track",
-  hasPin: "pe-slider--pin",
+  // states
   hasFocus: "pe-slider--focus",
+  hasPin: "pe-slider--pin",
+  hasTicks: "pe-slider--ticks",
+  hasTrack: "pe-slider--track",
+  isActive: "pe-slider--active",
   isAtMin: "pe-slider--min",
-  hasTicks: "pe-slider--ticks"
+  isDisabled: "pe-slider--disabled"
 };
 
 var rgba = vars.rgba;

@@ -5,29 +5,33 @@ import { vars } from 'polythene-theme';
 
 var classes = {
   component: "pe-textfield",
-  inputArea: "pe-textfield__input-area",
-  input: "pe-textfield__input",
-  label: "pe-textfield__label",
+
+  // elements
   counter: "pe-textfield__counter",
-  help: "pe-textfield__help",
-  focusHelp: "pe-textfield__help-focus",
   error: "pe-textfield__error",
   errorPlaceholder: "pe-textfield__error-placeholder",
-  requiredIndicator: "pe-textfield__required-indicator",
+  focusHelp: "pe-textfield__help-focus",
+  help: "pe-textfield__help",
+  input: "pe-textfield__input",
+  inputArea: "pe-textfield__input-area",
+  label: "pe-textfield__label",
   optionalIndicator: "pe-textfield__optional-indicator",
-  stateFocused: "pe-textfield--focused",
-  stateDisabled: "pe-textfield--disabled",
-  stateReadonly: "pe-textfield--readonly",
-  stateInvalid: "pe-textfield--invalid",
-  stateDirty: "pe-textfield--dirty",
+  requiredIndicator: "pe-textfield__required-indicator",
+
+  // states
+  hasCounter: "pe-textfield--counter",
   hasFloatingLabel: "pe-textfield--floating-label",
+  hasFullWidth: "pe-textfield--full-width",
+  hideClear: "pe-textfield--hide-clear",
+  hideSpinner: "pe-textfield--hide-spinner",
+  hideValidation: "pe-textfield--hide-validation",
   isDense: "pe-textfield--dense",
   isRequired: "pe-textfield--required",
-  hasFullWidth: "pe-textfield--full-width",
-  hasCounter: "pe-textfield--counter",
-  hideSpinner: "pe-textfield--hide-spinner",
-  hideClear: "pe-textfield--hide-clear",
-  hideValidation: "pe-textfield--hide-validation"
+  stateDirty: "pe-textfield--dirty",
+  stateDisabled: "pe-textfield--disabled",
+  stateFocused: "pe-textfield--focused",
+  stateInvalid: "pe-textfield--invalid",
+  stateReadonly: "pe-textfield--readonly"
 };
 
 var rgba = vars.rgba;

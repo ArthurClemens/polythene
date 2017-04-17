@@ -6,15 +6,19 @@ import { Timer } from 'polythene-utilities';
 
 var classes = {
   component: "pe-notification",
+
+  // elements
+  action: "pe-notification__action",
+  content: "pe-notification__content",
   holder: "pe-notification__holder",
   placeholder: "pe-notification__placeholder",
-  content: "pe-notification__content",
   title: "pe-notification__title",
-  multilineTitle: "pe-notification__title--multiline",
-  action: "pe-notification__action",
+
+  // states
+  hasContainer: "pe-notification--container",
   horizontal: "pe-notification--horizontal",
-  vertical: "pe-notification--vertical",
-  hasContainer: "pe-notification--container"
+  multilineTitle: "pe-notification__title--multiline",
+  vertical: "pe-notification--vertical"
 };
 
 var rgba = vars.rgba;

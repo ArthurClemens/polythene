@@ -57,19 +57,5 @@ const myShadow = m(shadow, {
 
 ## CSS classes
 
-| **Element**     | **Key**         | **Class**       |
-| --------------- | --------------- | --------------- |
-| Component       | component       | `pe-shadow` |
-| Top shadow      | topShadow       | `pe-shadow__top` |
-| Bottom shadow   | bottomShadow    | `pe-shadow__bottom` |
-
-| **State**       | **Key**         | **Class**       |
-| --------------- | --------------- | --------------- |
-| Animated        | animated        | `pe-shadow--animated` |
-| Depth 0 (min)   | depth_0         | `pe-shadow--z-0` |
-| Depth 1         | depth_1         | `pe-shadow--z-1` |
-| Depth 2         | depth_2         | `pe-shadow--z-2` |
-| Depth 3         | depth_3         | `pe-shadow--z-3` |
-| Depth 4         | depth_4         | `pe-shadow--z-4` |
-| Depth 5 (max)   | depth_5         | `pe-shadow--z-5` |
+See: `src/classes.js`
 

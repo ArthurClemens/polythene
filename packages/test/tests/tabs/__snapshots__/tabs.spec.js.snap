@@ -383,7 +383,7 @@ exports[`test Long labels: wrap to second line 1`] = `
 
 exports[`test Option: activeSelected 1`] = `
 "<div class=
-\"pe-tabs pe-tabs--start pe-tabs__active-selectable pe-tabs--autofit\">
+\"pe-tabs pe-tabs--start pe-tabs__active--selectable pe-tabs--autofit\">
 <div class=\"pe-tabs__row\">
     <a tabindex=\"0\" class=
     \"pe-button pe-text-button pe-button--selected pe-tabs__tab\">

@@ -175,13 +175,8 @@ Checkbox is composed from:
 
 ## CSS classes
 
+See: `src/classes.js`
+
 See also: [Selection control classes](../polythene-selection-control) 
-
-### Control
-
-| **Element** | **Key**     |  **Class** |
-| ----------- | ----------- | --------------- |
-| Component   | component   | `pe-checkbox-control` |
-
 
 

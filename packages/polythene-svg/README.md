@@ -139,7 +139,4 @@ If the component - or a component's parent - has option `tone` set to "dark", th
 
 ## CSS classes
 
-| **Element** | **Key**     | **Class**  |
-| ----------- | ----------- | ---------- |
-| Component   | component   | `pe-svg`   |
-
+See: `src/classes.js`

@@ -302,15 +302,7 @@ Search usually contains:
 
 ## CSS classes
 
-| **Element** | **Key**         | **Class** |
-| ----------- | --------------- | --------------- |
-| Component   | component       | `pe-search` |
-| Content     | content         | `pe-search__content` |
-
-| **State**   | **Key**         |  **Class** |
-| ----------- | --------------- | --------------- |
-| Inset       | searchInset     | `pe-search--inset` |
-| Full width  | searchFullWidth | `pe-search--full-width` |
+See: `src/classes.js`
 
 
 

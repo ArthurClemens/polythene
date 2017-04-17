@@ -207,7 +207,7 @@ export default (selector, componentVars) => [{
       }
     ],
 
-    ".pe-tabs__active-selectable": {
+    ".pe-tabs__active--selectable": {
       " .pe-tabs__tab.pe-button--selected": {
         cursor: "pointer",
         pointerEvents: "initial",

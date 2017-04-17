@@ -5,8 +5,12 @@ import { vars } from 'polythene-theme';
 
 var classes = {
   component: "pe-shadow",
-  topShadow: "pe-shadow__top",
+
+  // elements
   bottomShadow: "pe-shadow__bottom",
+  topShadow: "pe-shadow__top",
+
+  // states
   animated: "pe-shadow--animated",
   depth_n: "pe-shadow--z-"
 };

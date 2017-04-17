@@ -7,19 +7,24 @@ import { vars } from 'polythene-theme';
 
 var classes$1 = {
   component: "pe-dialog",
-  visible: "pe-dialog--visible",
-  body: "pe-dialog__body",
-  fullscreen: "pe-dialog--fullscreen",
-  content: "pe-dialog__content",
-  header: "pe-dialog__header",
-  footer: "pe-dialog__footer",
-  footerHigh: "pe-dialog__footer--high",
-  title: "pe-dialog__title",
-  actions: "pe-dialog__actions",
-  hasBackdrop: "pe-dialog--backdrop",
-  hasTopOverflow: "pe-dialog--overflow-top",
-  hasBottomOverflow: "pe-dialog--overflow-bottom",
 
+  // elements
+  actions: "pe-dialog__actions",
+  body: "pe-dialog__body",
+  content: "pe-dialog__content",
+  footer: "pe-dialog__footer",
+  header: "pe-dialog__header",
+  title: "pe-dialog__title",
+
+  // states
+  footerHigh: "pe-dialog__footer--high",
+  fullscreen: "pe-dialog--fullscreen",
+  hasBackdrop: "pe-dialog--backdrop",
+  hasBottomOverflow: "pe-dialog--overflow-bottom",
+  hasTopOverflow: "pe-dialog--overflow-top",
+  visible: "pe-dialog--visible",
+
+  // lookup
   menuContent: classes.content
 };
 

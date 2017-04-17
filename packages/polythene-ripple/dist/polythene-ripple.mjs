@@ -5,8 +5,12 @@ import { vars } from 'polythene-theme';
 
 var classes = {
   component: "pe-ripple",
-  waves: "pe-ripple__waves",
+
+  // elements
   mask: "pe-ripple__mask",
+  waves: "pe-ripple__waves",
+
+  // states
   constrained: "pe-ripple--constrained",
   wavesAnimating: "pe-ripple__waves--animating"
 };

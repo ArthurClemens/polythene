@@ -158,7 +158,7 @@ const kfLayer4FadeInOut = () => ({
 });
 
 const layerAnimation = (config, num) => ({
-  ["&.pe-md-spinner__layer--" + num]: {
+  ["&.pe-md-spinner__layer-" + num]: {
     animation: "mdSpinnerFillUnfillRotate " + 4 * config.arc_time + "s " + CURVE_INFINITE + ",  mdSpinnerLayer" + num + "FadeInOut " + 4 * config.arc_time + "s " + CURVE_INFINITE
   }
 });

@@ -233,30 +233,8 @@ m(slider, {
 
 ## CSS classes
 
-| **Element**      | **Key**        |  **Class** |
-| ---------------- | -------------- | --------------- |
-| Component        | component      | `pe-slider` |
-| Thumb            | thumb          | `pe-slider__thumb` |
-| Label            | label          | `pe-slider__label` |
-| Track            | track          | `pe-slider__track` |
-| Track part       | trackPart      | `pe-slider__track-part` |
-| Track value part | trackPartValue | `pe-slider__track-value` |
-| Track rest part  | trackPartRest  | `pe-slider__track-rest` |
-| Track bar        | trackBar       | `pe-slider__track-bar` |
-| Track bar value  | trackBarValue  | `pe-slider__track-bar-value` |
-| Control          | control        | `pe-slider__control` |
-| Ticks            | ticks          | `pe-slider__ticks` |
-| Pin              | pin            | `pe-slider__pin` |
+See: `src/classes.js`
 
-| **State**       | **Key**     |  **Class** |
-| --------------- | ----------- | --------------- |
-| Disabled        | isDisabled  | `pe-slider--disabled` |
-| Active          | isActive    | `pe-slider--active` |
-| Has track       | hasTrack    | `pe-slider--track` |
-| Has pin         | hasPin      | `pe-slider--pin` |
-| Has ticks       | hasTicks    | `pe-slider--ticks` |
-| Has focus       | hasFocus    | `pe-slider--focus` |
-| Is at min value | isAtMin     | `pe-slider--min` |
 
 
 

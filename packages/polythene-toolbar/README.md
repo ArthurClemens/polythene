@@ -158,13 +158,5 @@ m(toolbar, {
 
 ## CSS classes
 
-| **Element**        |  **Key**          | **Class**       |
-| ------------------ | ----------------- | --------------- |
-| Toolbar component  | component         | `pe-toolbar` |
-| Title              | title             | `pe-toolbar__title` |
-  
-| **Element**        |  **Key**          | **Class**       |
-| ------------------ | ----------------- | --------------- |
-| Compact toolbar    | compact           | `pe-toolbar--compact` |
-| Indented title     | indentedTitle     | `pe-toolbar__title--indent` |
+See: `src/classes.js`
 

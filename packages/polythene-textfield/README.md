@@ -365,34 +365,7 @@ These options also have effect on the generated HTML input field.
 
 ## CSS classes
 
-| **Element**        | **Key**           |  **Class** |
-| ------------------ | ----------------- | --------------- |
-| Component          | component         | `pe-textfield` |
-| Input area         | inputArea         | `pe-textfield__input-area` |
-| Input              | input             | `pe-textfield__input` |
-| Label              | label             | `pe-textfield__label` |
-| Counter            | counter           | `pe-textfield__counter` |
-| Help               | help              | `pe-textfield__help` |
-| Focus help         | focusHelp         | `pe-textfield__help-focus` |
-| Error              | error             | `pe-textfield__error` |
-| Error placeholder  | error             | `pe-textfield__error-placeholder` |
-| Required indicator | requiredIndicator | `pe-textfield__required-indicator` |
-| Optional indicator | optionalIndicator | `pe-textfield__optional-indicator` |
- 
-| **State**          | **Key**     |  **Class** |
-| ------------------ | ----------- | --------------- |  
-| Focused state      | stateFocused     | `pe-textfield--focused` |
-| Disabled state     | stateDisabled    | `pe-textfield--disabled` |
-| Read-only state    | stateReadonly    | `pe-textfield--readonly` |
-| Invalid state      | stateInvalid     | `pe-textfield--invalid` |
-| Dirty state        | stateDirty       | `pe-textfield--dirty` |
-| Has floating label | hasFloatingLabel | `pe-textfield--floating-label` |
-| Dense              | isDense          | `pe-textfield--dense` |
-| Required           | isRequired       | `pe-textfield--required` |
-| Has full width     | hasFullWidth     | `pe-textfield--full-width` |
-| Has counter        | hasCounter       | `pe-textfield--counter` |
-| Hide spinner       | hideSpinner      | `pe-textfield--hide-spinner` |
-| Hide clear         | hideClear        | `pe-textfield--hide-clear` |
-| Hide validation    | hideValidation   | `pe-textfield--hide-validation` |
+See: `src/classes.js`
+
 
 

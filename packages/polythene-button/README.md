@@ -162,21 +162,7 @@ Button is composed from:
 
 ## CSS classes
 
-| **Element**    | **Key**     |  **Class** |
-| -------------- | ----------- | --------------- |
-| Component      | component   | `pe-button pe-text-button` |
-| Content        | content     | `pe-button__content` |
-| Label          | label       | `pe-button__label` |
-| Wash element   | wash        | `pe-button__wash` |
-| Focus element  | focus       | `pe-button__focus` |
-
-| **State**      | **Key**     |  **Class** |
-| -------------- | ----------- | --------------- |
-| Selected       | selected    | `pe-button--selected` |
-| Disabled       | disabled    | `pe-button--disabled` |
-| Has borders    | borders     | `pe-button--borders` |
-| Inactive       | inactive    | `pe-button--inactive` |
-| Focus          | focused     | `pe-button--focus` |
+See: `src/classes.js`
 
 
 

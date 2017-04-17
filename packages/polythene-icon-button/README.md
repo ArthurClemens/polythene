@@ -212,13 +212,6 @@ Icon Button is composed from:
 
 ## CSS classes
 
-| **Element** | **Key**     |  **Class** |
-| ----------- | ----------- | --------------- |
-| Component   | component   | `pe-button pe-icon-button` |
-| Content     | content     | `pe-icon-button__content` |
-
-| **State**   | **Key**     |  **Class** |
-| ----------- | ----------- | --------------- |
-| Compact     | compact     | `pe-icon-button--compact` |
+See: `src/classes.js`
 
 

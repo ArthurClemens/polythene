@@ -738,7 +738,7 @@ exports[`test Spinner 1`] = `
 "<div class=
 \"pe-spinner pe-spinner--regular pe-spinner--permanent pe-md-spinner\">
 <div class=\"pe-md-spinner__animation\">
-    <div class=\"pe-md-spinner__layer pe-md-spinner__layer--1\">
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer-1\">
       <div class=
       \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
       <div class=\"pe-md-spinner__circle\"></div>
@@ -751,7 +751,7 @@ exports[`test Spinner 1`] = `
       <div class=\"pe-md-spinner__circle\"></div>
       </div>
     </div>
-    <div class=\"pe-md-spinner__layer pe-md-spinner__layer--2\">
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer-2\">
       <div class=
       \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
       <div class=\"pe-md-spinner__circle\"></div>
@@ -764,7 +764,7 @@ exports[`test Spinner 1`] = `
       <div class=\"pe-md-spinner__circle\"></div>
       </div>
     </div>
-    <div class=\"pe-md-spinner__layer pe-md-spinner__layer--3\">
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer-3\">
       <div class=
       \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
       <div class=\"pe-md-spinner__circle\"></div>
@@ -777,7 +777,7 @@ exports[`test Spinner 1`] = `
       <div class=\"pe-md-spinner__circle\"></div>
       </div>
     </div>
-    <div class=\"pe-md-spinner__layer pe-md-spinner__layer--4\">
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer-4\">
       <div class=
       \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
       <div class=\"pe-md-spinner__circle\"></div>

@@ -6,9 +6,13 @@ import { vars } from 'polythene-theme';
 
 var classes = {
   component: "pe-search",
+
+  // elements
   content: "pe-search__content",
-  searchInset: "pe-search--inset",
-  searchFullWidth: "pe-search--full-width"
+
+  // states
+  searchFullWidth: "pe-search--full-width",
+  searchInset: "pe-search--inset"
 };
 
 var rgba = vars.rgba;

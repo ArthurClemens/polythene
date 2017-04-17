@@ -119,15 +119,7 @@ Differences to button behaviour:
 
 ## CSS classes
 
-| **Element** | **Key**     | **Class** |
-| ----------- | ----------- | --------------- |
-| Component   | component   | `pe-fab` |
-| Content     | content     | `pe-fab__content` |
-
-| **State**   | **Key**     |  **Class** |
-| ----------- | ----------- | --------------- |
-| Mini FAB    | mini        | `pe-fab--mini` |
-
+See: `src/classes.js`
 
 
 

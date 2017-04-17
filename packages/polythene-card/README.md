@@ -389,40 +389,6 @@ Card is optionally composed from:
 
 ## CSS classes
 
-| **Element**     | **Key**         | **Class** |
-| --------------- | --------------- | --------------- |
-| Component       | component       | `pe-card` |
-| Content         | content         | `pe-card__content` |
-| Header          | header          | `pe-card__header` |
-| Header title    | headerTitle     | `pe-card__header-title` |
-| Title           | title           | `pe-card__title` |
-| Sub title       | subtitle        | `pe-card__subtitle` |
-| Text            | text            | `pe-card__text` |
-| Primary element | primary         | `pe-card__primary` |
-| Primary media   | primaryMedia    | `pe-card__primary-media` |
-| Actions         | actions         | `pe-card__actions` |
-| Overlay         | overlay         | `pe-card__overlay` |
-| Overlay content | overlayContent  | `pe-card__overlay__content` |
-| Media           | media           | `pe-card__media` |
-| Media dimmer    | mediaDimmer     | `pe-card__media__dimmer` |
-
-| **State**                 | **Key**             |  **Class** |
-| ------------------------- | ------------------- | --------------- |
-| Primary element has media | primaryHasMedia     | `pe-card__primary--media` |
-| Tight text                | textTight           | `pe-card__text--tight` |
-| Square ratio media        | mediaRatioSquare    | `pe-card__media--square` |
-| Landscape ratio media     | mediaRatioLandscape | `pe-card__media--landscape` |
-| Small media               | mediaSmall          | `pe-card__media--small` |
-| Regular media             | mediaRegular        | `pe-card__media--regular` |
-| Medium media              | mediaMedium         | `pe-card__media--medium` |
-| Large media               | mediaLarge          | `pe-card__media--large` |
-| Media cropped on x-axis   | mediaCropX          | `pe-card__media--crop-x` |
-| Media cropped on y-axis   | mediaCropY          | `pe-card__media--crop-y` |
-| Overlay with sheet        | overlaySheet        | `pe-card__overlay--sheet` |
-| Horizontal actions        | actionsHorizontal   | `pe-card__actions--horizontal` |
-| Vertical actions          | actionsVertical     | `pe-card__actions--vertical` |
-| Justified actions         | actionsJustified    | `pe-card__actions--justified` |
-| Bordered actions          | actionsBordered     | `pe-card__actions--borders` |
-| Tight actions             | actionsTight        | `pe-card__actions--tight` |
+See: `src/classes.js`
 
 

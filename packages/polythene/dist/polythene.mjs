@@ -1,5 +1,4 @@
 import m$1 from 'mithril';
-import polytheneMdSpinner from 'polythene-md-spinner';
 
 // Theme variables
 // How to change these variables for your app - see the README.
@@ -2346,11 +2345,13 @@ var svg = {
 
 var classes$1 = {
   component: "pe-icon",
+
+  // states
   avatar: "pe-icon--avatar",
-  small: "pe-icon--small",
-  regular: "pe-icon--regular",
+  large: "pe-icon--large",
   medium: "pe-icon--medium",
-  large: "pe-icon--large"
+  regular: "pe-icon--regular",
+  small: "pe-icon--small"
 };
 
 var vars$1$1 = {
@@ -2489,8 +2490,12 @@ var icon = {
 
 var classes$3 = {
   component: "pe-shadow",
-  topShadow: "pe-shadow__top",
+
+  // elements
   bottomShadow: "pe-shadow__bottom",
+  topShadow: "pe-shadow__top",
+
+  // states
   animated: "pe-shadow--animated",
   depth_n: "pe-shadow--z-"
 };
@@ -2604,8 +2609,12 @@ var shadow = {
 
 var classes$5 = {
   component: "pe-ripple",
-  waves: "pe-ripple__waves",
+
+  // elements
   mask: "pe-ripple__mask",
+  waves: "pe-ripple__waves",
+
+  // states
   constrained: "pe-ripple--constrained",
   wavesAnimating: "pe-ripple__waves--animating"
 };
@@ -2838,22 +2847,26 @@ var ripple = {
 
 var classes$4 = {
   component: "pe-list-tile",
+
+  // elements
+  content: "pe-list-tile__content",
+  highSubtitle: "pe-list-tile__high-subtitle",
   primary: "pe-list-tile__primary",
   secondary: "pe-list-tile__secondary",
-  content: "pe-list-tile__content",
-  contentFront: "pe-list-tile__content--front",
-  title: "pe-list-tile__title",
   subtitle: "pe-list-tile__subtitle",
-  highSubtitle: "pe-list-tile__high-subtitle",
-  selected: "pe-list-tile--selected",
-  disabled: "pe-list-tile--disabled",
-  sticky: "pe-list-tile--sticky",
-  hasSubtitle: "pe-list-tile--subtitle",
-  hasHighSubtitle: "pe-list-tile--high-subtitle",
-  hasFront: "pe-list-tile--front",
+  title: "pe-list-tile__title",
+
+  // states
   compact: "pe-list-tile--compact",
+  contentFront: "pe-list-tile__content--front",
+  disabled: "pe-list-tile--disabled",
+  hasFront: "pe-list-tile--front",
+  hasHighSubtitle: "pe-list-tile--high-subtitle",
+  hasSubtitle: "pe-list-tile--subtitle",
   hoverable: "pe-list-tile--hoverable",
-  selectable: "pe-list-tile--selectable"
+  selectable: "pe-list-tile--selectable",
+  selected: "pe-list-tile--selected",
+  sticky: "pe-list-tile--sticky"
 };
 
 var rgba$2 = variables.rgba;
@@ -3227,36 +3240,40 @@ var listTile = {
 
 var classes$$1 = {
   component: "pe-card",
+
+  // elements
+  actions: "pe-card__actions",
   content: "pe-card__content",
-  overlay: "pe-card__overlay",
-  overlaySheet: "pe-card__overlay--sheet",
-  overlayContent: "pe-card__overlay__content",
-  mediaDimmer: "pe-card__media__dimmer",
-  mediaCropX: "pe-card__media--crop-x",
-  mediaCropY: "pe-card__media--crop-y",
-  media: "pe-card__media",
   header: "pe-card__header",
   headerTitle: "pe-card__header-title",
-  title: "pe-card__title",
-  subtitle: "pe-card__subtitle",
-  text: "pe-card__text",
-  textTight: "pe-card__text--tight",
+  media: "pe-card__media",
+  mediaDimmer: "pe-card__media__dimmer",
+  overlay: "pe-card__overlay",
+  overlayContent: "pe-card__overlay__content",
   primary: "pe-card__primary",
   primaryMedia: "pe-card__primary-media",
-  primaryTight: "pe-card__primary--tight",
-  actions: "pe-card__actions",
-  actionsHorizontal: "pe-card__actions--horizontal",
-  actionsVertical: "pe-card__actions--vertical",
-  actionsJustified: "pe-card__actions--justified",
+  subtitle: "pe-card__subtitle",
+  text: "pe-card__text",
+  title: "pe-card__title",
+
+  // states
   actionsBordered: "pe-card__actions--borders",
+  actionsHorizontal: "pe-card__actions--horizontal",
+  actionsJustified: "pe-card__actions--justified",
   actionsTight: "pe-card__actions--tight",
-  mediaRatioSquare: "pe-card__media--square",
-  mediaRatioLandscape: "pe-card__media--landscape",
-  primaryHasMedia: "pe-card__primary--media",
-  mediaSmall: "pe-card__media--small",
-  mediaRegular: "pe-card__media--regular",
+  actionsVertical: "pe-card__actions--vertical",
+  mediaCropX: "pe-card__media--crop-x",
+  mediaCropY: "pe-card__media--crop-y",
+  mediaLarge: "pe-card__media--large",
   mediaMedium: "pe-card__media--medium",
-  mediaLarge: "pe-card__media--large"
+  mediaRatioLandscape: "pe-card__media--landscape",
+  mediaRatioSquare: "pe-card__media--square",
+  mediaRegular: "pe-card__media--regular",
+  mediaSmall: "pe-card__media--small",
+  overlaySheet: "pe-card__overlay--sheet",
+  primaryHasMedia: "pe-card__primary--media",
+  primaryTight: "pe-card__primary--tight",
+  textTight: "pe-card__text--tight"
 };
 
 var rgba = variables.rgba;
@@ -3859,15 +3876,19 @@ var baseClass = "pe-button";
 var classes$9 = {
   base: baseClass,
   component: baseClass + " pe-text-button",
+
+  // elements
   content: "pe-button__content",
+  focus: "pe-button__focus",
   label: "pe-button__label",
   wash: "pe-button__wash",
-  focus: "pe-button__focus",
-  selected: "pe-button--selected",
-  disabled: "pe-button--disabled",
+
+  // states
   borders: "pe-button--borders",
+  disabled: "pe-button--disabled",
+  focused: "pe-button--focus",
   inactive: "pe-button--inactive",
-  focused: "pe-button--focus"
+  selected: "pe-button--selected"
 };
 
 var rgba$5 = variables.rgba;
@@ -4208,7 +4229,11 @@ var button = {
 
 var classes$8 = {
   component: "pe-button pe-icon-button",
+
+  // elements
   content: "pe-icon-button__content",
+
+  // states
   compact: "pe-icon-button--compact"
 };
 
@@ -4369,22 +4394,29 @@ var iconButton = {
 
 var classes$7 = {
   component: "pe-control",
+
+  // elements
   formLabel: "pe-control__form-label",
-  label: "pe-control__label",
   input: "pe-control__input",
-  on: "pe-control--on",
-  off: "pe-control--off",
+  label: "pe-control__label",
+
+  // states
   disabled: "pe-control--disabled",
   inactive: "pe-control--inactive",
-  small: "pe-control--small",
-  regular: "pe-control--regular",
-  medium: "pe-control--medium",
   large: "pe-control--large",
+  medium: "pe-control--medium",
+  off: "pe-control--off",
+  on: "pe-control--on",
+  regular: "pe-control--regular",
+  small: "pe-control--small",
 
+  // control view elements
   box: "pe-control__box",
   button: "pe-control__button",
-  buttonOn: "pe-control__button--on",
-  buttonOff: "pe-control__button--off"
+
+  // control view states
+  buttonOff: "pe-control__button--off",
+  buttonOn: "pe-control__button--on"
 };
 
 var _extends$9 = Object.assign || function (target) {
@@ -4830,14 +4862,19 @@ var checkbox = {
 
 var classes$1$2 = {
   component: "pe-menu",
+
+  // elements
   content: "pe-menu__content",
   placeholder: "pe-menu__placeholder",
   target: "pe-menu__target",
-  visible: "pe-menu--visible",
-  permanent: "pe-menu--permanent",
-  width_n: "pe-menu--width-",
-  width_auto: "pe-menu--width-auto",
 
+  // states
+  permanent: "pe-menu--permanent",
+  visible: "pe-menu--visible",
+  width_auto: "pe-menu--width-auto",
+  width_n: "pe-menu--width-",
+
+  // lookup
   listTile: classes$4.component,
   selectedListTile: classes$4.selected
 };
@@ -5179,19 +5216,24 @@ var menu = {
 
 var classes$1$1 = {
   component: "pe-dialog",
-  visible: "pe-dialog--visible",
-  body: "pe-dialog__body",
-  fullscreen: "pe-dialog--fullscreen",
-  content: "pe-dialog__content",
-  header: "pe-dialog__header",
-  footer: "pe-dialog__footer",
-  footerHigh: "pe-dialog__footer--high",
-  title: "pe-dialog__title",
-  actions: "pe-dialog__actions",
-  hasBackdrop: "pe-dialog--backdrop",
-  hasTopOverflow: "pe-dialog--overflow-top",
-  hasBottomOverflow: "pe-dialog--overflow-bottom",
 
+  // elements
+  actions: "pe-dialog__actions",
+  body: "pe-dialog__body",
+  content: "pe-dialog__content",
+  footer: "pe-dialog__footer",
+  header: "pe-dialog__header",
+  title: "pe-dialog__title",
+
+  // states
+  footerHigh: "pe-dialog__footer--high",
+  fullscreen: "pe-dialog--fullscreen",
+  hasBackdrop: "pe-dialog--backdrop",
+  hasBottomOverflow: "pe-dialog--overflow-bottom",
+  hasTopOverflow: "pe-dialog--overflow-top",
+  visible: "pe-dialog--visible",
+
+  // lookup
   menuContent: classes$1$2.content
 };
 
@@ -5908,7 +5950,11 @@ var raisedButton = {
 
 var classes$10 = {
   component: "pe-fab",
+
+  // elements
   content: "pe-fab__content",
+
+  // states
   mini: "pe-fab--mini"
 };
 
@@ -6053,11 +6099,15 @@ var fab = {
 
 var classes$12 = {
   component: "pe-list",
+
+  // elements
   header: "pe-list__header",
+
+  // states
   borders: "pe-list--borders",
-  indentedBorders: "pe-list--indented-borders",
+  compact: "pe-list--compact",
   hasHeader: "pe-list--header",
-  compact: "pe-list--compact"
+  indentedBorders: "pe-list--indented-borders"
 };
 
 var rgba$10 = variables.rgba;
@@ -6215,6 +6265,747 @@ var list = {
   view: view$12
 };
 
+var classes$14 = {
+  component: "pe-spinner",
+
+  // elements
+  animation: "pe-spinner__animation",
+  placeholder: "pe-spinner__placeholder",
+
+  // states
+  animated: "pe-spinner--animated",
+  fab: "pe-spinner--fab",
+  large: "pe-spinner--large",
+  medium: "pe-spinner--medium",
+  permanent: "pe-spinner--permanent",
+  raised: "pe-spinner--raised",
+  regular: "pe-spinner--regular",
+  singleColor: "pe-spinner--single-color",
+  small: "pe-spinner--small",
+  visible: "pe-spinner--visible"
+};
+
+var rgba$12 = variables.rgba;
+
+var vars$1$13 = {
+  size_small: 3 * variables.grid_unit_component,
+  size_regular: 4 * variables.grid_unit_component,
+  size_medium: 5 * variables.grid_unit_component,
+  size_large: 6 * variables.grid_unit_component,
+  size_fab: 7 * variables.grid_unit_component,
+
+  color_light_raised_background: rgba$12(variables.color_light_background),
+  // also use light background with dark theme
+  color_dark_raised_background: rgba$12(variables.color_light_background)
+};
+
+function _defineProperty$15(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
+  } else {
+    obj[key] = value;
+  }return obj;
+}
+
+var sizes = function sizes(size) {
+  return {
+    width: size + "px",
+    height: size + "px"
+  };
+};
+
+var sizesRaised = function sizesRaised(size) {
+  var padding = size / 4;
+  var paddedSize = size + padding * 2;
+  return {
+    width: paddedSize + "px",
+    height: paddedSize + "px",
+    padding: padding + "px"
+  };
+};
+
+var layout$15 = function layout(selector, componentVars) {
+  return [_defineProperty$15({}, selector, {
+    transitionTimingFunction: "ease-out",
+    transitionProperty: "opacity",
+    opacity: 0,
+
+    ".pe-spinner--visible, &.pe-spinner--permanent": {
+      opacity: 1
+    },
+
+    ".pe-spinner--small": sizes(componentVars.size_small),
+    ".pe-spinner--regular": sizes(componentVars.size_regular),
+    ".pe-spinner--medium": sizes(componentVars.size_medium),
+    ".pe-spinner--large": sizes(componentVars.size_large),
+    ".pe-spinner--fab": sizes(componentVars.size_fab),
+
+    ".pe-spinner--raised": {
+      position: "relative",
+      borderRadius: "50%",
+
+      ".pe-spinner--small": sizesRaised(componentVars.size_small),
+      ".pe-spinner--regular": sizesRaised(componentVars.size_regular),
+      ".pe-spinner--medium": sizesRaised(componentVars.size_medium),
+      ".pe-spinner--large": sizesRaised(componentVars.size_large),
+      ".pe-spinner--fab": sizesRaised(componentVars.size_fab)
+    }
+  })];
+};
+
+function _defineProperty$1$14(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
+  } else {
+    obj[key] = value;
+  }return obj;
+}
+
+var style$13 = function style(scopes, selector, componentVars, tint) {
+  return [_defineProperty$1$14({}, scopes.map(function (s) {
+    return s + selector;
+  }).join(","), {
+    ".pe-spinner--raised": {
+      backgroundColor: componentVars["color_" + tint + "_raised_background"]
+    }
+  })];
+};
+
+var color$14 = function color(selector, componentVars) {
+  return [style$13([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$13(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+};
+
+var _extends$1$16 = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }return target;
+};
+
+var fns$15 = [layout$15, color$14];
+var selector$15 = "." + classes$14.component;
+
+var customTheme$15 = function customTheme(customSelector, customVars) {
+  return styler.generateStyles([customSelector, selector$15], _extends$1$16({}, vars$1$13, customVars), fns$15);
+};
+
+styler.generateStyles([selector$15], vars$1$13, fns$15);
+
+var _extends$18 = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }return target;
+};
+
+var typeClasses$2 = {
+  small: classes$14.small,
+  regular: classes$14.regular,
+  medium: classes$14.medium,
+  large: classes$14.large,
+  fab: classes$14.fab
+};
+
+var classForType$2 = function classForType() {
+  var mode = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "regular";
+  return typeClasses$2[mode];
+};
+
+var showSpinner = function showSpinner(state, attrs) {
+  if (state.isTransitioning) {
+    return;
+  }
+  state.isTransitioning = true;
+  return show(_extends$18({}, attrs, {
+    el: state.el,
+    showClass: classes$14.visible
+  })).then(function () {
+    state.isTransitioning = false;
+    state.visible = true;
+  });
+};
+
+var hideSpinner = function hideSpinner(state, attrs) {
+  if (state.isTransitioning) {
+    return;
+  }
+  state.isTransitioning = true;
+  return hide(_extends$18({}, attrs, {
+    el: state.el,
+    afterHide: function afterHide() {
+      return state.el.style.display = "none";
+    },
+    showClass: classes$14.visible
+  })).then(function () {
+    state.isTransitioning = false;
+    state.visible = false;
+    state.hide = false;
+    m$1.redraw(); // removes remainder of drawn component
+  });
+};
+
+var delay = function delay(attrs, mode) {
+  var value = attrs[mode];
+  return value !== true && !isNaN(value) ? parseFloat(value, 10) * 1000 : false;
+};
+
+var notifyState = function notifyState(state, attrs) {
+  if (attrs.percentage && attrs.getPercentage) {
+    var percentage = typeof attrs.percentage === "function" ? attrs.percentage() : attrs.percentage;
+    attrs.getPercentage(percentage, state, attrs);
+  }
+};
+
+var createView$2 = function createView(state, attrs) {
+  var element = attrs.element || "div";
+  var props = _extends$18({}, filterSupportedAttributes(attrs), {
+    class: [classes$14.component, classForType$2(attrs.type), attrs.singleColor ? classes$14.singleColor : null, attrs.raised ? classes$14.raised : null, attrs.animated ? classes$14.animated : null, attrs.permanent ? classes$14.permanent : null, attrs.class].join(" "),
+    oncreate: function oncreate(_ref) {
+      var dom = _ref.dom;
+
+      state.el = dom;
+      notifyState(state, attrs);
+      if (!attrs.permanent) {
+        setTimeout(function () {
+          return showSpinner(state, attrs);
+        }, 0);
+      }
+    }
+  }, attrs.events ? attrs.events : null);
+
+  notifyState(state, attrs);
+
+  if (state.hide) {
+    setTimeout(function () {
+      hideSpinner(state, attrs);
+    }, 0);
+  }
+
+  var content = [attrs.raised && attrs.content ? m$1(shadow, { z: attrs.z }) : null, attrs.content || m$1("div", { class: classes$14.animation }, "Specific spinner missing")];
+
+  return m$1(element, props, [attrs.before, content, attrs.after]);
+};
+
+var view$14 = function view(_ref2) {
+  var state = _ref2.state,
+      attrs = _ref2.attrs;
+
+  if (!state.visible) {
+    if (attrs.hide !== undefined && !attrs.hide || attrs.show) {
+      var showDelay = delay(attrs, "show");
+      if (showDelay) {
+        setTimeout(function () {
+          state.visible = true;
+          m$1.redraw();
+        }, showDelay);
+      } else {
+        state.visible = true;
+      }
+    }
+  } else {
+    if (attrs.show !== undefined && !attrs.show || attrs.hide) {
+      var hideDelay = delay(attrs, "hide");
+      if (hideDelay) {
+        setTimeout(function () {
+          state.hide = true;
+          m$1.redraw();
+        }, hideDelay);
+      } else {
+        state.hide = true;
+      }
+    }
+  }
+  return state.visible ? createView$2(state, attrs) : m$1("span", { class: classes$14.placeholder });
+};
+
+var spinner = {
+  theme: customTheme$15, // accepts (selector, vars)
+  oninit: function oninit(vnode) {
+    vnode.state = _extends$18(vnode.state, {
+      el: null,
+      isTransitioning: false,
+      visible: vnode.attrs.permanent || false,
+      hide: false,
+      percentage: 0
+    });
+  },
+  view: view$14
+};
+
+var classes$13 = {
+  component: "pe-md-spinner",
+
+  // elements
+  animation: "pe-md-spinner__animation",
+  circle: "pe-md-spinner__circle",
+  circleClipper: "pe-md-spinner__circle-clipper",
+  circleClipperLeft: "pe-md-spinner__circle-clipper-left",
+  circleClipperRight: "pe-md-spinner__circle-clipper-right",
+  gapPatch: "pe-md-spinner__gap-patch",
+  layer: "pe-md-spinner__layer",
+  layerN: "pe-md-spinner__layer-"
+};
+
+/*
+Derived from https://github.com/PolymerElements/paper-spinner
+
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+*/
+
+var rgba$11 = variables.rgba;
+
+var arc_size = 270; // degrees - amount of circle the arc takes up
+var arc_time = 1.333; // s - time it takes to expand and contract arc
+var arc_start_degrees = 360 / 5 * 3; // degrees - how much the start location of the arc should rotate each time, 216 gives us a 5 pointed star shape (it"s 360/5 * 3). For a 7 pointed star, we might do 360/7 * 3 = 154.286.
+var rotation_duration = 360 * arc_time / (arc_start_degrees + (360 - arc_size)); // 1.568s
+
+var blue400 = "#42a5f5";
+var red500 = "#f44336";
+var yellow600 = "#fdd835";
+var green500 = "#4caf50";
+
+var vars$2 = {
+  border_width_small: vars$1$13.size_small / vars$1$13.size_regular * 3,
+  border_width_regular: 3,
+  border_width_medium: vars$1$13.size_medium / vars$1$13.size_regular * 3,
+  border_width_large: vars$1$13.size_large / vars$1$13.size_regular * 3,
+  border_width_fab: vars$1$13.size_fab / vars$1$13.size_regular * 3,
+  rotation_duration: rotation_duration,
+  arc_size: arc_size,
+  arc_time: arc_time,
+  arc_start_degrees: arc_start_degrees,
+
+  color_light_single: rgba$11(variables.color_primary),
+  color_light_1: blue400,
+  color_light_2: red500,
+  color_light_3: yellow600,
+  color_light_4: green500,
+
+  color_dark_single: rgba$11(variables.color_primary),
+  color_dark_1: blue400,
+  color_dark_2: red500,
+  color_dark_3: yellow600,
+  color_dark_4: green500
+};
+
+function _defineProperty$14(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
+  } else {
+    obj[key] = value;
+  }return obj;
+}
+
+/*
+Derived from https://github.com/PolymerElements/paper-spinner
+
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+*/
+
+var OPACITY_MIN = 0;
+var OPACITY_MAX = .99;
+var CURVE_INFINITE = "cubic-bezier(0.4, 0.0, 0.2, 1) infinite both";
+
+var kfRotate = function kfRotate() {
+  return {
+    " to": {
+      transform: "rotate(360deg)"
+    }
+  };
+};
+
+var kfLeftSpin = function kfLeftSpin() {
+  return kfSpin(1);
+};
+var kfRightSpin = function kfRightSpin() {
+  return kfSpin(-1);
+};
+
+var kfSpin = function kfSpin(direction) {
+  return {
+    " from": {
+      "transform": "rotate(" + direction * 130 + "deg)"
+    },
+    " 50%": {
+      "transform": "rotate(" + direction * -5 + "deg)"
+    },
+    " to": {
+      "transform": "rotate(" + direction * 130 + "deg)"
+    }
+  };
+};
+
+var kfFadeOut = function kfFadeOut() {
+  return {
+    " from": {
+      opacity: OPACITY_MAX
+    },
+    " to": {
+      opacity: OPACITY_MIN
+    }
+  };
+};
+
+var kfFillUnfillRotate = function kfFillUnfillRotate(config) {
+  return {
+    " 12.5%": {
+      transform: "rotate(" + 0.5 * config.arc_size + "deg)"
+    },
+    " 25%": {
+      transform: "rotate(" + 1.0 * config.arc_size + "deg)"
+    },
+    " 37.5%": {
+      transform: "rotate(" + 1.5 * config.arc_size + "deg)"
+    },
+    " 50%": {
+      transform: "rotate(" + 2.0 * config.arc_size + "deg)"
+    },
+    " 62.5%": {
+      transform: "rotate(" + 2.5 * config.arc_size + "deg)"
+    },
+    " 75%": {
+      transform: "rotate(" + 3.0 * config.arc_size + "deg)"
+    },
+    " 87.5%": {
+      transform: "rotate(" + 3.5 * config.arc_size + "deg)"
+    },
+    " to": {
+      transform: "rotate(" + 4.0 * config.arc_size + "deg)"
+    }
+  };
+};
+
+/**
+ * HACK: Even though the intention is to have the current .pe-md-spinner__layer at
+ * `opacity: 1`, we set it to `opacity: 0.99` instead since this forces Chrome
+ * to do proper subpixel rendering for the elements being animated. This is
+ * especially visible in Chrome 39 on Ubuntu 14.04. See:
+ *
+ * - https://github.com/Polymer/paper-spinner/issues/9
+ * - https://code.google.com/p/chromium/issues/detail?id=436255
+ */
+var kfLayer1FadeInOut = function kfLayer1FadeInOut() {
+  return {
+    " from": {
+      opacity: OPACITY_MAX
+    },
+    " 25%": {
+      opacity: OPACITY_MAX
+    },
+    " 26%": {
+      opacity: OPACITY_MIN
+    },
+    " 89%": {
+      opacity: OPACITY_MIN
+    },
+    " 90%": {
+      opacity: OPACITY_MAX
+    },
+    " 100%": {
+      opacity: OPACITY_MAX
+    }
+  };
+};
+
+var kfLayer2FadeInOut = function kfLayer2FadeInOut() {
+  return {
+    " from": {
+      opacity: OPACITY_MIN
+    },
+    " 15%": {
+      opacity: OPACITY_MIN
+    },
+    " 25%": {
+      opacity: OPACITY_MAX
+    },
+    " 50%": {
+      opacity: OPACITY_MAX
+    },
+    " 51%": {
+      opacity: OPACITY_MIN
+    }
+  };
+};
+
+var kfLayer3FadeInOut = function kfLayer3FadeInOut() {
+  return {
+    " from": {
+      opacity: OPACITY_MIN
+    },
+    " 40%": {
+      opacity: OPACITY_MIN
+    },
+    " 50%": {
+      opacity: OPACITY_MAX
+    },
+    " 75%": {
+      opacity: OPACITY_MAX
+    },
+    " 76%": {
+      opacity: OPACITY_MIN
+    }
+  };
+};
+
+var kfLayer4FadeInOut = function kfLayer4FadeInOut() {
+  return {
+    " from": {
+      opacity: OPACITY_MIN
+    },
+    " 65%": {
+      opacity: OPACITY_MIN
+    },
+    " 75%": {
+      opacity: OPACITY_MAX
+    },
+    " 90%": {
+      opacity: OPACITY_MAX
+    },
+    " 100%": {
+      opacity: OPACITY_MIN
+    }
+  };
+};
+
+var layerAnimation = function layerAnimation(config, num) {
+  return _defineProperty$14({}, "&.pe-md-spinner__layer-" + num, {
+    animation: "mdSpinnerFillUnfillRotate " + 4 * config.arc_time + "s " + CURVE_INFINITE + ",  mdSpinnerLayer" + num + "FadeInOut " + 4 * config.arc_time + "s " + CURVE_INFINITE
+  });
+};
+
+var layout$14 = function layout(selector, componentVars) {
+  return [_defineProperty$14({}, selector, {
+    " .pe-md-spinner__animation": {
+      animation: "mdSpinnerRotate " + componentVars.rotation_duration + "s linear infinite",
+      position: "relative",
+      width: "100%",
+      height: "100%",
+
+      /* The spinner does not have any contents that would have to be
+      * flipped if the direction changes. Always use ltr so that the
+      * style works out correctly in both cases. */
+      direction: "ltr"
+    },
+
+    /**
+    * Patch the gap that appear between the two adjacent div.pe-md-spinner__circle-clipper while the
+    * spinner is rotating (appears on Chrome 38, Safari 7.1, and IE 11).
+    *
+    * Update: the gap no longer appears on Chrome when .pe-md-spinner__layer"s opacity is 0.99,
+    * but still does on Safari and IE.
+    */
+    " .pe-md-spinner__gap-patch": {
+      position: "absolute",
+      boxSizing: "border-box",
+      top: 0,
+      left: "45%",
+      width: "10%",
+      height: "100%",
+      overflow: "hidden",
+      borderColor: "inherit"
+    },
+
+    " .pe-md-spinner__gap-patch .pe-md-spinner__circle": {
+      width: "1000%",
+      left: "-450%"
+    },
+
+    " .pe-md-spinner__circle-clipper": {
+      display: "inline-block",
+      fontSize: 0,
+      lineHeight: 0,
+      position: "relative",
+      width: "50%",
+      height: "100%",
+      overflow: "hidden",
+      borderColor: "inherit"
+    },
+
+    " .pe-md-spinner__circle-clipper .pe-md-spinner__circle": {
+      width: "200%"
+    },
+
+    " .pe-md-spinner__circle": [mixin.fit(), {
+      animation: "none",
+      boxSizing: "border-box",
+      height: "100%",
+      borderStyle: "solid",
+      borderColor: "inherit",
+      borderRadius: "50%",
+      borderBottomColor: "transparent !important"
+    }],
+
+    "&": ["small", "regular", "medium", "large", "fab"].map(function (size) {
+      return _defineProperty$14({}, "&.pe-spinner--" + size, {
+        " .pe-md-spinner__circle": {
+          borderWidth: componentVars["border_width_" + size] + "px"
+        }
+      });
+    }),
+
+    " .pe-md-spinner__circle-clipper-left .pe-md-spinner__circle": {
+      transform: "rotate(129deg)",
+      animation: "mdSpinnerLeftSpin " + componentVars.arc_time + "s " + CURVE_INFINITE,
+      borderRightColor: "transparent !important"
+    },
+
+    " .pe-md-spinner__circle-clipper-right .pe-md-spinner__circle": {
+      transform: "rotate(-129deg)",
+      animation: "mdSpinnerRightSpin " + componentVars.arc_time + "s " + CURVE_INFINITE,
+      left: "-100%",
+      borderLeftColor: "transparent !important"
+    },
+
+    /**
+    * IMPORTANT NOTE ABOUT CSS ANIMATION PROPERTIES (keanulee):
+    *
+    * iOS Safari (tested on iOS 8.1) does not handle animation-delay very well - it doesn"t
+    * guarantee that the animation will start _exactly_ after that value. So we avoid using
+    * animation-delay and instead set custom keyframes for each color (as redundant as it
+    * seems).
+    *
+    * We write out each animation in full (instead of separating animation-name,
+    * animation-duration, etc.) because under the polyfill, Safari does not recognize those
+    * specific properties properly, treats them as -webkit-animation, and overrides the
+    * other animation rules. See https://github.com/Polymer/platform/issues/53.
+    */
+    " .pe-md-spinner__layer": [[1, 2, 3, 4].map(function (num) {
+      return layerAnimation(componentVars, num);
+    }), {
+      animation: "mdSpinnerFillUnfillRotate " + 4 * componentVars.arc_time + "s " + CURVE_INFINITE,
+      position: "absolute",
+      width: "100%",
+      height: "100%",
+      whiteSpace: "nowrap"
+    }],
+
+    "@keyframes mdSpinnerRotate": kfRotate(),
+    "@keyframes mdSpinnerRightSpin": kfRightSpin(),
+    "@keyframes mdSpinnerLeftSpin": kfLeftSpin(),
+    "@keyframes mdSpinnerFadeOut": kfFadeOut(),
+    "@keyframes mdSpinnerFillUnfillRotate": kfFillUnfillRotate(componentVars),
+    "@keyframes mdSpinnerLayer1FadeInOut": kfLayer1FadeInOut(),
+    "@keyframes mdSpinnerLayer2FadeInOut": kfLayer2FadeInOut(),
+    "@keyframes mdSpinnerLayer3FadeInOut": kfLayer3FadeInOut(),
+    "@keyframes mdSpinnerLayer4FadeInOut": kfLayer4FadeInOut()
+  })];
+};
+
+function _defineProperty$1$13(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
+  } else {
+    obj[key] = value;
+  }return obj;
+}
+
+/*
+Derived from https://github.com/PolymerElements/paper-spinner
+
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+*/
+
+var style$12 = function style(scopes, selector, componentVars, tint) {
+  return [_defineProperty$1$13({}, scopes.map(function (s) {
+    return s + selector;
+  }).join(","), {
+    color: componentVars["color_" + tint + "_single"],
+
+    " .pe-md-spinner__layer": {
+      borderColor: "currentcolor"
+    },
+
+    ":not(.pe-spinner--single-color)": {
+      " .pe-md-spinner__layer--1": {
+        borderColor: componentVars["color_" + tint + "_1"]
+      },
+      " .pe-md-spinner__layer--2": {
+        borderColor: componentVars["color_" + tint + "_2"]
+      },
+      " .pe-md-spinner__layer--3": {
+        borderColor: componentVars["color_" + tint + "_3"]
+      },
+      " .pe-md-spinner__layer--4": {
+        borderColor: componentVars["color_" + tint + "_4"]
+      }
+    }
+  })];
+};
+
+var color$13 = function color(selector, componentVars) {
+  return [style$12([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$12(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+};
+
+var _extends$17 = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }return target;
+};
+
+var fns$14 = [layout$14, color$13];
+var selector$14 = "." + classes$13.component;
+
+var customTheme$14 = function customTheme(customSelector, customVars) {
+  return styler.generateStyles([customSelector, selector$14], _extends$17({}, vars$2, customVars), fns$14);
+};
+
+styler.generateStyles([selector$14], vars$2, fns$14);
+
+var layer = function layer(num) {
+  return m$1("div", {
+    class: [classes$13.layer, classes$13.layerN + num].join(" ")
+  }, [m$1("div", {
+    class: [classes$13.circleClipper, classes$13.circleClipperLeft].join(" ")
+  }, m$1("div", { class: classes$13.circle })), m$1("div", { class: classes$13.gapPatch }, m$1("div", { class: classes$13.circle })), m$1("div", {
+    class: [classes$13.circleClipper, classes$13.circleClipperRight].join(" ")
+  }, m$1("div", { class: classes$13.circle }))]);
+};
+
+var view$13 = function view(_ref) {
+  var attrs = _ref.attrs;
+
+  attrs.content = m$1("div", { class: classes$13.animation }, [1, 2, 3, 4].map(function (num) {
+    return layer(num);
+  }));
+  attrs.class = [classes$13.component, attrs.class].join(" ");
+  return m$1(spinner, attrs);
+};
+
+var spinner$1 = {
+  theme: customTheme$14, // accepts (selector, vars)
+  view: view$13
+};
+
 /*
 https://gist.github.com/gre/1650294
 Easing Functions - inspired from http://gizma.com/easing/
@@ -6348,24 +7139,28 @@ var Timer = function Timer(callback, delaySeconds) {
   };
 };
 
-var classes$13 = {
+var classes$15 = {
   component: "pe-notification",
+
+  // elements
+  action: "pe-notification__action",
+  content: "pe-notification__content",
   holder: "pe-notification__holder",
   placeholder: "pe-notification__placeholder",
-  content: "pe-notification__content",
   title: "pe-notification__title",
-  multilineTitle: "pe-notification__title--multiline",
-  action: "pe-notification__action",
+
+  // states
+  hasContainer: "pe-notification--container",
   horizontal: "pe-notification--horizontal",
-  vertical: "pe-notification--vertical",
-  hasContainer: "pe-notification--container"
+  multilineTitle: "pe-notification__title--multiline",
+  vertical: "pe-notification--vertical"
 };
 
-var rgba$11 = variables.rgba;
+var rgba$13 = variables.rgba;
 
 var buttonPaddingH = 8; // padding, inner text space
 
-var vars$1$13 = {
+var vars$1$14 = {
   width: 274,
   min_height: 80,
   border_radius: variables.unit_block_border_radius,
@@ -6376,14 +7171,14 @@ var vars$1$13 = {
   font_size: 14,
   line_height: 20,
 
-  color_light_background: rgba$11(variables.color_light_background),
-  color_light_text: rgba$11(variables.color_light_foreground, variables.blend_light_dark_primary),
+  color_light_background: rgba$13(variables.color_light_background),
+  color_light_text: rgba$13(variables.color_light_foreground, variables.blend_light_dark_primary),
 
-  color_dark_background: rgba$11(variables.color_dark_background),
-  color_dark_text: rgba$11(variables.color_dark_foreground, variables.blend_light_text_primary)
+  color_dark_background: rgba$13(variables.color_dark_background),
+  color_dark_text: rgba$13(variables.color_dark_foreground, variables.blend_light_text_primary)
 };
 
-function _defineProperty$14(obj, key, value) {
+function _defineProperty$16(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -6391,8 +7186,8 @@ function _defineProperty$14(obj, key, value) {
   }return obj;
 }
 
-var layout$14 = function layout(selector, componentVars) {
-  return [_defineProperty$14({}, selector, [mixinFlex.layoutCenter, {
+var layout$16 = function layout(selector, componentVars) {
+  return [_defineProperty$16({}, selector, [mixinFlex.layoutCenter, {
     width: componentVars.width + "px",
     minHeight: componentVars.min_height + "px",
     position: "relative",
@@ -6439,7 +7234,7 @@ var layout$14 = function layout(selector, componentVars) {
   }])];
 };
 
-function _defineProperty$1$13(obj, key, value) {
+function _defineProperty$1$15(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -6447,8 +7242,8 @@ function _defineProperty$1$13(obj, key, value) {
   }return obj;
 }
 
-var style$12 = function style(scopes, selector, componentVars, tint) {
-  return [_defineProperty$1$13({}, scopes.map(function (s) {
+var style$14 = function style(scopes, selector, componentVars, tint) {
+  return [_defineProperty$1$15({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
     color: componentVars["color_" + tint + "_text"],
@@ -6456,9 +7251,9 @@ var style$12 = function style(scopes, selector, componentVars, tint) {
   })];
 };
 
-var color$13 = function color(selector, componentVars) {
-  return [style$12([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  style$12(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+var color$15 = function color(selector, componentVars) {
+  return [style$14([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$14(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 };
 
 function _defineProperty$2$3(obj, key, value) {
@@ -6487,7 +7282,7 @@ var holderLayout = function holderLayout(selector) {
   }])];
 };
 
-var _extends$1$16 = Object.assign || function (target) {
+var _extends$1$17 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -6497,20 +7292,20 @@ var _extends$1$16 = Object.assign || function (target) {
   }return target;
 };
 
-var fns$14 = [layout$14, color$13];
-var selector$14 = "." + classes$13.component;
+var fns$16 = [layout$16, color$15];
+var selector$16 = "." + classes$15.component;
 
 var holderFns = [holderLayout];
-var holderSelector = "." + classes$13.holder;
+var holderSelector = "." + classes$15.holder;
 
-var customTheme$14 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$14], _extends$1$16({}, vars$1$13, customVars), fns$14), styler.generateStyles([customSelector, holderSelector], _extends$1$16({}, vars$1$13, customVars), holderFns);
+var customTheme$16 = function customTheme(customSelector, customVars) {
+  return styler.generateStyles([customSelector, selector$16], _extends$1$17({}, vars$1$14, customVars), fns$16), styler.generateStyles([customSelector, holderSelector], _extends$1$17({}, vars$1$14, customVars), holderFns);
 };
 
-styler.generateStyles([selector$14], vars$1$13, fns$14);
-styler.generateStyles([holderSelector], vars$1$13, holderFns);
+styler.generateStyles([selector$16], vars$1$14, fns$16);
+styler.generateStyles([holderSelector], vars$1$14, holderFns);
 
-var _extends$17 = Object.assign || function (target) {
+var _extends$19 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -6546,7 +7341,7 @@ var prepareShow = function prepareShow(state, opts) {
   state.containerEl = state.containerEl || document.querySelector(opts.containerSelector || state.element);
   if (opts.containerSelector) {
     var holderEl = state.containerEl.querySelector(state.element);
-    holderEl.classList.add(classes$13.hasContainer);
+    holderEl.classList.add(classes$15.hasContainer);
   }
 };
 
@@ -6555,7 +7350,7 @@ var showInstance$1 = function showInstance(state, opts) {
   stopTimer(state);
   state.transitioning = true;
   var transitions = opts.transitions || state.transitions;
-  return show(_extends$17({}, opts, transitions.show(state.containerEl, opts))).then(function () {
+  return show(_extends$19({}, opts, transitions.show(state.containerEl, opts))).then(function () {
     state.transitioning = false;
     if (state.didShow) {
       // notify multiple
@@ -6580,7 +7375,7 @@ var hideInstance$1 = function hideInstance(state, opts) {
   var id = state.instanceId;
   state.transitioning = true;
   var transitions = opts.transitions || state.transitions;
-  return hide(_extends$17({}, opts, transitions.hide(state.containerEl, opts))).then(function () {
+  return hide(_extends$19({}, opts, transitions.hide(state.containerEl, opts))).then(function () {
     stopTimer(state);
     state.transitioning = false;
     if (state.didHide) {
@@ -6592,11 +7387,11 @@ var hideInstance$1 = function hideInstance(state, opts) {
   });
 };
 
-var createView$2 = function createView(state, opts) {
+var createView$3 = function createView(state, opts) {
   var element = opts.element || "div";
-  var props = _extends$17({}, filterSupportedAttributes(opts), {
+  var props = _extends$19({}, filterSupportedAttributes(opts), {
     class: [state.class, opts.tone === "light" ? null : "pe-dark-tone", // default dark theme
-    opts.tone === "light" ? "pe-light-tone" : null, opts.containerSelector ? classes$13.hasContainer : null, opts.layout === "vertical" ? classes$13.vertical : classes$13.horizontal, opts.tone === "dark" ? "pe-dark-tone" : null, opts.tone === "light" ? "pe-light-tone" : null, opts.class].join(" "),
+    opts.tone === "light" ? "pe-light-tone" : null, opts.containerSelector ? classes$15.hasContainer : null, opts.layout === "vertical" ? classes$15.vertical : classes$15.horizontal, opts.tone === "dark" ? "pe-dark-tone" : null, opts.tone === "light" ? "pe-light-tone" : null, opts.class].join(" "),
     oncreate: function oncreate(_ref) {
       var dom = _ref.dom;
 
@@ -6609,9 +7404,9 @@ var createView$2 = function createView(state, opts) {
   });
 
   var content = m$1("div", {
-    class: classes$13.content
+    class: classes$15.content
   }, opts.content || [opts.title ? m$1("div", {
-    class: classes$13.title,
+    class: classes$15.title,
     oncreate: function oncreate(_ref2) {
       var dom = _ref2.dom;
 
@@ -6620,18 +7415,18 @@ var createView$2 = function createView(state, opts) {
       var paddingTop = parseInt(window.getComputedStyle(dom).paddingTop, 10);
       var paddingBottom = parseInt(window.getComputedStyle(dom).paddingBottom, 10);
       if (height > lineHeight + paddingTop + paddingBottom) {
-        dom.classList.add(classes$13.multilineTitle);
+        dom.classList.add(classes$15.multilineTitle);
       }
     }
-  }, opts.title) : null, opts.action ? m$1("div", { class: classes$13.action }, [opts.action]) : null]);
+  }, opts.title) : null, opts.action ? m$1("div", { class: classes$15.action }, [opts.action]) : null]);
   return m$1(element, props, content);
 };
 
 var instance$1 = {
-  theme: customTheme$14, // accepts (selector, vars)
+  theme: customTheme$16, // accepts (selector, vars)
   oninit: function oninit(vnode) {
     var attrs = vnode.attrs;
-    vnode.state = _extends$17(vnode.state, attrs, {
+    vnode.state = _extends$19(vnode.state, attrs, {
       el: null,
       containerEl: null,
       dismissEl: null,
@@ -6654,7 +7449,7 @@ var instance$1 = {
     } else if (attrs.unpause && state.isPaused) {
       unpauseInstance(state, attrs);
     }
-    return createView$2(state, opts);
+    return createView$3(state, opts);
   }
 };
 
@@ -6693,13 +7488,13 @@ var notification = multiple({
   transitions: transitions$1,
   queue: true,
   defaultId: "default_notification",
-  class: classes$13.component,
-  element: "." + classes$13.holder,
-  placeholder: "span." + classes$13.placeholder,
-  bodyShowClass: classes$13.open
+  class: classes$15.component,
+  element: "." + classes$15.holder,
+  placeholder: "span." + classes$15.placeholder,
+  bodyShowClass: classes$15.open
 });
 
-var classes$14 = {
+var classes$16 = {
   component: "pe-radio-control"
 };
 
@@ -6715,7 +7510,7 @@ var iconOff$1 = m$1.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\
 
 var iconOn$1 = m$1.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\"/></svg>");
 
-var _extends$1$17 = Object.assign || function (target) {
+var _extends$1$18 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -6725,21 +7520,21 @@ var _extends$1$17 = Object.assign || function (target) {
   }return target;
 };
 
-var fns$15 = [layout$1$2, color$1$2];
-var selector$15 = "." + classes$14.component;
+var fns$17 = [layout$1$2, color$1$2];
+var selector$17 = "." + classes$16.component;
 
-var customTheme$15 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$15], _extends$1$17({}, vars$1$5, customVars), fns$15);
+var customTheme$17 = function customTheme(customSelector, customVars) {
+  return styler.generateStyles([customSelector, selector$17], _extends$1$18({}, vars$1$5, customVars), fns$17);
 };
 
-styler.generateStyles([selector$15], vars$1$5, fns$15);
+styler.generateStyles([selector$17], vars$1$5, fns$17);
 
 var theme$1 = {
   iconOff: iconOff$1,
   iconOn: iconOn$1
 };
 
-var _extends$18 = Object.assign || function (target) {
+var _extends$20 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -6749,55 +7544,59 @@ var _extends$18 = Object.assign || function (target) {
   }return target;
 };
 
-var view$13 = function view(vnode) {
-  return m$1(selectionControl, _extends$18({}, vnode.attrs, {
+var view$15 = function view(vnode) {
+  return m$1(selectionControl, _extends$20({}, vnode.attrs, {
     theme: theme$1,
     controlView: controlView,
     selectable: vnode.attrs.selectable || function (selected) {
       return !selected;
     }, // default: only selectable when not checked
-    instanceClass: classes$14.component,
+    instanceClass: classes$16.component,
     type: "radio"
   }));
 };
 
 var radioButton = {
-  theme: customTheme$15, // accepts (selector, vars)
-  view: view$13
+  theme: customTheme$17, // accepts (selector, vars)
+  view: view$15
 };
 
-var classes$16 = {
+var classes$18 = {
   component: "pe-textfield",
-  inputArea: "pe-textfield__input-area",
-  input: "pe-textfield__input",
-  label: "pe-textfield__label",
+
+  // elements
   counter: "pe-textfield__counter",
-  help: "pe-textfield__help",
-  focusHelp: "pe-textfield__help-focus",
   error: "pe-textfield__error",
   errorPlaceholder: "pe-textfield__error-placeholder",
-  requiredIndicator: "pe-textfield__required-indicator",
+  focusHelp: "pe-textfield__help-focus",
+  help: "pe-textfield__help",
+  input: "pe-textfield__input",
+  inputArea: "pe-textfield__input-area",
+  label: "pe-textfield__label",
   optionalIndicator: "pe-textfield__optional-indicator",
-  stateFocused: "pe-textfield--focused",
-  stateDisabled: "pe-textfield--disabled",
-  stateReadonly: "pe-textfield--readonly",
-  stateInvalid: "pe-textfield--invalid",
-  stateDirty: "pe-textfield--dirty",
+  requiredIndicator: "pe-textfield__required-indicator",
+
+  // states
+  hasCounter: "pe-textfield--counter",
   hasFloatingLabel: "pe-textfield--floating-label",
+  hasFullWidth: "pe-textfield--full-width",
+  hideClear: "pe-textfield--hide-clear",
+  hideSpinner: "pe-textfield--hide-spinner",
+  hideValidation: "pe-textfield--hide-validation",
   isDense: "pe-textfield--dense",
   isRequired: "pe-textfield--required",
-  hasFullWidth: "pe-textfield--full-width",
-  hasCounter: "pe-textfield--counter",
-  hideSpinner: "pe-textfield--hide-spinner",
-  hideClear: "pe-textfield--hide-clear",
-  hideValidation: "pe-textfield--hide-validation"
+  stateDirty: "pe-textfield--dirty",
+  stateDisabled: "pe-textfield--disabled",
+  stateFocused: "pe-textfield--focused",
+  stateInvalid: "pe-textfield--invalid",
+  stateReadonly: "pe-textfield--readonly"
 };
 
-var rgba$13 = variables.rgba;
+var rgba$15 = variables.rgba;
 var line_height_input$1 = 20;
 var input_padding_v = 7;
 
-var vars$1$15 = {
+var vars$1$16 = {
   vertical_spacing_top: 6, // 8 minus natural label height padding (1)
   vertical_spacing_bottom: 7, // 8 minus natural label height padding (1)
   input_focus_border_width: 2,
@@ -6831,38 +7630,38 @@ var vars$1$15 = {
   dense_full_width_input_padding_v: 15, // 16 minus natural label height padding (1)
   dense_full_width_font_size_input: 13,
 
-  color_light_input_text: rgba$13(variables.color_light_foreground, variables.blend_light_text_primary),
+  color_light_input_text: rgba$15(variables.color_light_foreground, variables.blend_light_text_primary),
   color_light_input_background: "transparent", // only used to "remove" autofill color
-  color_light_highlight_text: rgba$13(variables.color_primary, variables.blend_light_text_primary),
-  color_light_input_bottom_border: rgba$13(variables.color_light_foreground, variables.blend_light_border_light),
-  color_light_input_error_text: rgba$13("221, 44, 0"),
-  color_light_input_error_border: rgba$13("221, 44, 0"),
-  color_light_input_placeholder: rgba$13(variables.color_light_foreground, variables.blend_light_text_tertiary),
-  color_light_label_text: rgba$13(variables.color_light_foreground, variables.blend_light_text_tertiary),
-  color_light_disabled_label_text: rgba$13(variables.color_light_foreground, variables.blend_light_text_disabled),
-  color_light_readonly_label_text: rgba$13(variables.color_light_foreground, variables.blend_light_text_tertiary),
-  color_light_help_text: rgba$13(variables.color_light_foreground, variables.blend_light_text_tertiary),
-  color_light_required_symbol: rgba$13("221, 44, 0"),
-  color_light_focus_border: rgba$13(variables.color_primary),
-  color_light_counter_ok_border: rgba$13(variables.color_primary),
+  color_light_highlight_text: rgba$15(variables.color_primary, variables.blend_light_text_primary),
+  color_light_input_bottom_border: rgba$15(variables.color_light_foreground, variables.blend_light_border_light),
+  color_light_input_error_text: rgba$15("221, 44, 0"),
+  color_light_input_error_border: rgba$15("221, 44, 0"),
+  color_light_input_placeholder: rgba$15(variables.color_light_foreground, variables.blend_light_text_tertiary),
+  color_light_label_text: rgba$15(variables.color_light_foreground, variables.blend_light_text_tertiary),
+  color_light_disabled_label_text: rgba$15(variables.color_light_foreground, variables.blend_light_text_disabled),
+  color_light_readonly_label_text: rgba$15(variables.color_light_foreground, variables.blend_light_text_tertiary),
+  color_light_help_text: rgba$15(variables.color_light_foreground, variables.blend_light_text_tertiary),
+  color_light_required_symbol: rgba$15("221, 44, 0"),
+  color_light_focus_border: rgba$15(variables.color_primary),
+  color_light_counter_ok_border: rgba$15(variables.color_primary),
 
-  color_dark_input_text: rgba$13(variables.color_dark_foreground, variables.blend_dark_text_primary),
+  color_dark_input_text: rgba$15(variables.color_dark_foreground, variables.blend_dark_text_primary),
   color_dark_input_background: "transparent", // only used to "remove" autofill color
-  color_dark_highlight_text: rgba$13(variables.color_primary, variables.blend_dark_text_primary),
-  color_dark_input_bottom_border: rgba$13(variables.color_dark_foreground, variables.blend_dark_border_light),
-  color_dark_input_error_text: rgba$13("222, 50, 38"),
-  color_dark_input_error_border: rgba$13("222, 50, 38"),
-  color_dark_input_placeholder: rgba$13(variables.color_dark_foreground, variables.blend_dark_text_tertiary),
-  color_dark_label_text: rgba$13(variables.color_dark_foreground, variables.blend_dark_text_tertiary),
-  color_dark_disabled_label_text: rgba$13(variables.color_dark_foreground, variables.blend_dark_text_disabled),
-  color_dark_readonly_label_text: rgba$13(variables.color_dark_foreground, variables.blend_dark_text_tertiary),
-  color_dark_help_text: rgba$13(variables.color_dark_foreground, variables.blend_dark_text_tertiary),
-  color_dark_required_symbol: rgba$13("221, 44, 0"),
-  color_dark_focus_border: rgba$13(variables.color_primary),
-  color_dark_counter_ok_border: rgba$13(variables.color_primary)
+  color_dark_highlight_text: rgba$15(variables.color_primary, variables.blend_dark_text_primary),
+  color_dark_input_bottom_border: rgba$15(variables.color_dark_foreground, variables.blend_dark_border_light),
+  color_dark_input_error_text: rgba$15("222, 50, 38"),
+  color_dark_input_error_border: rgba$15("222, 50, 38"),
+  color_dark_input_placeholder: rgba$15(variables.color_dark_foreground, variables.blend_dark_text_tertiary),
+  color_dark_label_text: rgba$15(variables.color_dark_foreground, variables.blend_dark_text_tertiary),
+  color_dark_disabled_label_text: rgba$15(variables.color_dark_foreground, variables.blend_dark_text_disabled),
+  color_dark_readonly_label_text: rgba$15(variables.color_dark_foreground, variables.blend_dark_text_tertiary),
+  color_dark_help_text: rgba$15(variables.color_dark_foreground, variables.blend_dark_text_tertiary),
+  color_dark_required_symbol: rgba$15("221, 44, 0"),
+  color_dark_focus_border: rgba$15(variables.color_primary),
+  color_dark_counter_ok_border: rgba$15(variables.color_primary)
 };
 
-function _defineProperty$1$15(obj, key, value) {
+function _defineProperty$1$17(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -6870,8 +7669,8 @@ function _defineProperty$1$15(obj, key, value) {
   }return obj;
 }
 
-var layout$16 = function layout(selector, componentVars) {
-  return [_defineProperty$1$15({}, selector, [mixin.clearfix(), {
+var layout$18 = function layout(selector, componentVars) {
+  return [_defineProperty$1$17({}, selector, [mixin.clearfix(), {
     position: "relative",
     lineHeight: variables.line_height,
     display: "inline-block",
@@ -7101,7 +7900,7 @@ function _defineProperty$2$4(obj, key, value) {
   }return obj;
 }
 
-var style$14 = function style(scopes, selector, componentVars, tint) {
+var style$16 = function style(scopes, selector, componentVars, tint) {
   return [_defineProperty$2$4({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
@@ -7195,12 +7994,12 @@ var style$14 = function style(scopes, selector, componentVars, tint) {
   })];
 };
 
-var color$15 = function color(selector, componentVars) {
-  return [style$14([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  style$14(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+var color$17 = function color(selector, componentVars) {
+  return [style$16([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$16(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 };
 
-var _extends$1$19 = Object.assign || function (target) {
+var _extends$1$20 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -7210,16 +8009,16 @@ var _extends$1$19 = Object.assign || function (target) {
   }return target;
 };
 
-var fns$17 = [layout$16, color$15];
-var selector$17 = "." + classes$16.component;
+var fns$19 = [layout$18, color$17];
+var selector$19 = "." + classes$18.component;
 
-var customTheme$17 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$17], _extends$1$19({}, vars$1$15, customVars), fns$17);
+var customTheme$19 = function customTheme(customSelector, customVars) {
+  return styler.generateStyles([customSelector, selector$19], _extends$1$20({}, vars$1$16, customVars), fns$19);
 };
 
-styler.generateStyles([selector$17], vars$1$15, fns$17);
+styler.generateStyles([selector$19], vars$1$16, fns$19);
 
-var _extends$20 = Object.assign || function (target) {
+var _extends$22 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -7229,7 +8028,7 @@ var _extends$20 = Object.assign || function (target) {
   }return target;
 };
 
-function _defineProperty$16(obj, key, value) {
+function _defineProperty$18(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -7310,7 +8109,7 @@ var updateState = function updateState(state, attrs) {
   return checkValidity(state, attrs), checkDirty(state);
 };
 
-var notifyState = function notifyState(state, attrs) {
+var notifyState$1 = function notifyState(state, attrs) {
   if (attrs.getState) {
     // get status directly without updating controller
     var status = getValidStatus(state, attrs);
@@ -7329,7 +8128,7 @@ var ignoreEvent = function ignoreEvent(attrs, name) {
   return attrs.ignoreEvents && attrs.ignoreEvents.indexOf(name) !== -1;
 };
 
-var view$15 = function view(_ref) {
+var view$17 = function view(_ref) {
   var state = _ref.state,
       attrs = _ref.attrs;
 
@@ -7358,12 +8157,12 @@ var view$15 = function view(_ref) {
     state.value = value;
     state.touched = true;
     updateState(state, attrs);
-    notifyState(state, attrs);
+    notifyState$1(state, attrs);
     inputEl.value = value;
   }
 
-  var props = _extends$20({}, filterSupportedAttributes(attrs), {
-    class: [classes$16.component, isInvalid ? classes$16.stateInvalid : "", state.focus() ? classes$16.stateFocused : "", attrs.floatingLabel ? classes$16.hasFloatingLabel : "", attrs.disabled ? classes$16.stateDisabled : "", attrs.readonly ? classes$16.stateReadonly : "", state.isDirty ? classes$16.stateDirty : "", attrs.dense ? classes$16.isDense : "", attrs.required ? classes$16.isRequired : "", attrs.fullWidth ? classes$16.hasFullWidth : "", attrs.counter ? classes$16.hasCounter : "", attrs.hideSpinner !== false ? classes$16.hideSpinner : "", attrs.hideClear !== false ? classes$16.hideClear : "", attrs.hideValidation ? classes$16.hideValidation : "", attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.class].join(" "),
+  var props = _extends$22({}, filterSupportedAttributes(attrs), {
+    class: [classes$18.component, isInvalid ? classes$18.stateInvalid : "", state.focus() ? classes$18.stateFocused : "", attrs.floatingLabel ? classes$18.hasFloatingLabel : "", attrs.disabled ? classes$18.stateDisabled : "", attrs.readonly ? classes$18.stateReadonly : "", state.isDirty ? classes$18.stateDirty : "", attrs.dense ? classes$18.isDense : "", attrs.required ? classes$18.isRequired : "", attrs.fullWidth ? classes$18.hasFullWidth : "", attrs.counter ? classes$18.hasCounter : "", attrs.hideSpinner !== false ? classes$18.hideSpinner : "", attrs.hideClear !== false ? classes$18.hideClear : "", attrs.hideValidation ? classes$18.hideValidation : "", attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.class].join(" "),
     oncreate: function oncreate(_ref2) {
       var dom = _ref2.dom;
 
@@ -7374,22 +8173,22 @@ var view$15 = function view(_ref) {
     }
   });
 
-  var requiredIndicator = attrs.required && attrs.requiredIndicator !== "" ? m$1("span", { class: classes$16.requiredIndicator }, attrs.requiredIndicator || "*") : null;
-  var optionalIndicator = !attrs.required && attrs.optionalIndicator ? m$1("span", { class: classes$16.optionalIndicator }, attrs.optionalIndicator) : null;
+  var requiredIndicator = attrs.required && attrs.requiredIndicator !== "" ? m$1("span", { class: classes$18.requiredIndicator }, attrs.requiredIndicator || "*") : null;
+  var optionalIndicator = !attrs.required && attrs.optionalIndicator ? m$1("span", { class: classes$18.optionalIndicator }, attrs.optionalIndicator) : null;
   var label = attrs.label ? [attrs.label, requiredIndicator, optionalIndicator] : null;
 
   var content = [m$1("div", {
-    class: classes$16.inputArea
-  }, [label ? m$1("label", _defineProperty$16({
-    class: classes$16.label
+    class: classes$18.inputArea
+  }, [label ? m$1("label", _defineProperty$18({
+    class: classes$18.label
   }, "on" + touchStartEvent, function () {
     if (!inactive) {
       setTimeout(function () {
         state.inputEl().focus();
       }, 0);
     }
-  }), label) : null, m$1(inputType, _extends$20({}, {
-    class: classes$16.input,
+  }), label) : null, m$1(inputType, _extends$22({}, {
+    class: classes$18.input,
     disabled: attrs.disabled
   }, type ? { type: type } : null, attrs.name ? { name: attrs.name } : null, !ignoreEvent(attrs, "onclick") ? {
     onclick: function onclick() {
@@ -7399,7 +8198,7 @@ var view$15 = function view(_ref) {
       // in case the browser does not give the field focus,
       // for instance when the user tapped to the current field off screen
       state.focus(true);
-      notifyState(state, attrs);
+      notifyState$1(state, attrs);
     }
   } : null, !ignoreEvent(attrs, "onfocus") ? {
     onfocus: function onfocus() {
@@ -7412,9 +8211,9 @@ var view$15 = function view(_ref) {
       // at the next redraw state.focus() will be read and the focus class be set
       // in the props.class statement
       if (state.el) {
-        state.el.classList.add(classes$16.stateFocused);
+        state.el.classList.add(classes$18.stateFocused);
       }
-      notifyState(state, attrs);
+      notifyState$1(state, attrs);
     }
   } : null,
 
@@ -7425,9 +8224,9 @@ var view$15 = function view(_ref) {
       state.touched = true;
       state.value = e.target.value;
       updateState(state, attrs);
-      notifyState(state, attrs);
+      notifyState$1(state, attrs);
       // same principle as onfocus
-      state.el.classList.remove(classes$16.stateFocused);
+      state.el.classList.remove(classes$18.stateFocused);
     }
   } : null, !ignoreEvent(attrs, "oninput") ? {
     oninput: function oninput(e) {
@@ -7439,7 +8238,7 @@ var view$15 = function view(_ref) {
         state.touched = true;
       }
       updateState(state, attrs);
-      notifyState(state, attrs);
+      notifyState$1(state, attrs);
       if (attrs.oninput) {
         attrs.oninput(state.value, e);
       }
@@ -7450,7 +8249,7 @@ var view$15 = function view(_ref) {
         // ENTER
         state.touched = true;
         updateState(state, attrs);
-        notifyState(state, attrs);
+        notifyState$1(state, attrs);
       } else if (e.which === 27) {
         // ESCAPE
         state.inputEl().blur(e);
@@ -7471,17 +8270,17 @@ var view$15 = function view(_ref) {
 
       state.inputEl(dom);
       state.inputEl().value = state.value;
-      notifyState(state, attrs);
+      notifyState$1(state, attrs);
     }
   }, attrs.events ? attrs.events : null, // NOTE: may overwrite oninput
-  attrs.readonly !== undefined ? { readonly: true } : null, attrs.pattern !== undefined ? { pattern: attrs.pattern } : null, attrs.maxlength !== undefined ? { maxlength: attrs.maxlength } : null, attrs.minlength !== undefined ? { minlength: attrs.minlength } : null, attrs.max !== undefined ? { max: attrs.max } : null, attrs.min !== undefined ? { min: attrs.min } : null, attrs.autofocus !== undefined ? { autofocus: attrs.autofocus } : null, attrs.required !== undefined ? { required: attrs.required } : null, attrs.tabindex !== undefined ? { tabindex: attrs.tabindex } : null, attrs.rows !== undefined ? { rows: attrs.rows } : null))]), attrs.counter ? m$1("div", { class: classes$16.counter }, state.value.length + " / " + attrs.counter) : null, attrs.help && !showError ? m$1("div", {
-    class: [classes$16.help, attrs.focusHelp ? classes$16.focusHelp : ""].join(" ")
-  }, attrs.help) : null, showError ? m$1("div", { class: classes$16.error }, state.error) : validates && !attrs.help ? m$1("div", { class: classes$16.errorPlaceholder }) : null];
+  attrs.readonly !== undefined ? { readonly: true } : null, attrs.pattern !== undefined ? { pattern: attrs.pattern } : null, attrs.maxlength !== undefined ? { maxlength: attrs.maxlength } : null, attrs.minlength !== undefined ? { minlength: attrs.minlength } : null, attrs.max !== undefined ? { max: attrs.max } : null, attrs.min !== undefined ? { min: attrs.min } : null, attrs.autofocus !== undefined ? { autofocus: attrs.autofocus } : null, attrs.required !== undefined ? { required: attrs.required } : null, attrs.tabindex !== undefined ? { tabindex: attrs.tabindex } : null, attrs.rows !== undefined ? { rows: attrs.rows } : null))]), attrs.counter ? m$1("div", { class: classes$18.counter }, state.value.length + " / " + attrs.counter) : null, attrs.help && !showError ? m$1("div", {
+    class: [classes$18.help, attrs.focusHelp ? classes$18.focusHelp : ""].join(" ")
+  }, attrs.help) : null, showError ? m$1("div", { class: classes$18.error }, state.error) : validates && !attrs.help ? m$1("div", { class: classes$18.errorPlaceholder }) : null];
   return m$1(element, props, [attrs.before, content, attrs.after]);
 };
 
 var textfield = {
-  theme: customTheme$17, // accepts (selector, vars)
+  theme: customTheme$19, // accepts (selector, vars)
   oninit: function oninit(vnode) {
     var attrs = vnode.attrs;
     var value = void 0,
@@ -7520,7 +8319,7 @@ var textfield = {
       }
     };
 
-    vnode.state = _extends$20(vnode.state, {
+    vnode.state = _extends$22(vnode.state, {
       value: value,
       error: error,
       el: el,
@@ -7530,17 +8329,21 @@ var textfield = {
       touched: touched
     });
   },
-  view: view$15
+  view: view$17
 };
 
-var classes$15 = {
+var classes$17 = {
   component: "pe-search",
+
+  // elements
   content: "pe-search__content",
-  searchInset: "pe-search--inset",
-  searchFullWidth: "pe-search--full-width"
+
+  // states
+  searchFullWidth: "pe-search--full-width",
+  searchInset: "pe-search--inset"
 };
 
-var rgba$12 = variables.rgba;
+var rgba$14 = variables.rgba;
 
 var insetSideMargin = 8;
 
@@ -7559,7 +8362,7 @@ var full_width_side_padding = insetSideMargin;
 var full_width_input_right_padding = 0;
 var full_width_border_radius = 0;
 
-var vars$1$14 = {
+var vars$1$15 = {
   font_size_input: font_size_input,
   line_height_input: line_height_input,
 
@@ -7575,16 +8378,16 @@ var vars$1$14 = {
   full_width_input_right_padding: full_width_input_right_padding,
   full_width_border_radius: full_width_border_radius,
 
-  color_light_label_text: rgba$12(variables.color_light_foreground, variables.blend_light_text_disabled),
-  color_light_input_text: rgba$12(variables.color_light_foreground, variables.blend_light_text_primary),
-  color_light_background: rgba$12(variables.color_light_background),
+  color_light_label_text: rgba$14(variables.color_light_foreground, variables.blend_light_text_disabled),
+  color_light_input_text: rgba$14(variables.color_light_foreground, variables.blend_light_text_primary),
+  color_light_background: rgba$14(variables.color_light_background),
 
-  color_dark_label_text: rgba$12(variables.color_dark_foreground, variables.blend_dark_text_disabled),
-  color_dark_input_text: rgba$12(variables.color_dark_foreground, variables.blend_dark_text_primary),
-  color_dark_background: rgba$12(variables.color_dark_background)
+  color_dark_label_text: rgba$14(variables.color_dark_foreground, variables.blend_dark_text_disabled),
+  color_dark_input_text: rgba$14(variables.color_dark_foreground, variables.blend_dark_text_primary),
+  color_dark_background: rgba$14(variables.color_dark_background)
 };
 
-function _defineProperty$15(obj, key, value) {
+function _defineProperty$17(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -7592,12 +8395,12 @@ function _defineProperty$15(obj, key, value) {
   }return obj;
 }
 
-var layout$15 = function layout(selector, componentVars) {
+var layout$17 = function layout(selector, componentVars) {
   var inset_input_padding_v = (componentVars.inset_height - componentVars.line_height_input) / 2;
   var full_width_input_padding_v = (componentVars.full_width_height - componentVars.line_height_input) / 2;
   var full_width_input_indent = variables.unit_indent - componentVars.full_width_side_padding - variables.grid_unit_icon_button;
 
-  return [_defineProperty$15({}, selector, [mixinFlex.flex(), {
+  return [_defineProperty$17({}, selector, [mixinFlex.flex(), {
     position: "relative", // necessary when a shadow is added
 
     " .pe-textfield": [mixinFlex.flex(), {
@@ -7668,7 +8471,7 @@ var layout$15 = function layout(selector, componentVars) {
   }])];
 };
 
-function _defineProperty$1$14(obj, key, value) {
+function _defineProperty$1$16(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -7676,8 +8479,8 @@ function _defineProperty$1$14(obj, key, value) {
   }return obj;
 }
 
-var style$13 = function style(scopes, selector, componentVars, tint) {
-  return [_defineProperty$1$14({}, scopes.map(function (s) {
+var style$15 = function style(scopes, selector, componentVars, tint) {
+  return [_defineProperty$1$16({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
     backgroundColor: componentVars["color_" + tint + "_background"],
@@ -7696,12 +8499,12 @@ var style$13 = function style(scopes, selector, componentVars, tint) {
   })];
 };
 
-var color$14 = function color(selector, componentVars) {
-  return [style$13([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  style$13(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+var color$16 = function color(selector, componentVars) {
+  return [style$15([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$15(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 };
 
-var _extends$1$18 = Object.assign || function (target) {
+var _extends$1$19 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -7711,16 +8514,16 @@ var _extends$1$18 = Object.assign || function (target) {
   }return target;
 };
 
-var fns$16 = [layout$15, color$14];
-var selector$16 = "." + classes$15.component;
+var fns$18 = [layout$17, color$16];
+var selector$18 = "." + classes$17.component;
 
-var customTheme$16 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$16], _extends$1$18({}, vars$1$14, customVars), fns$16);
+var customTheme$18 = function customTheme(customSelector, customVars) {
+  return styler.generateStyles([customSelector, selector$18], _extends$1$19({}, vars$1$15, customVars), fns$18);
 };
 
-styler.generateStyles([selector$16], vars$1$14, fns$16);
+styler.generateStyles([selector$18], vars$1$15, fns$18);
 
-var _extends$19 = Object.assign || function (target) {
+var _extends$21 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -7734,22 +8537,22 @@ var getNameOfState = function getNameOfState(state) {
   return state.focus && state.dirty ? "focus_dirty" : state.focus ? "focus" : state.dirty ? "dirty" : "none";
 };
 
-var view$14 = function view(_ref) {
+var view$16 = function view(_ref) {
   var state = _ref.state,
       attrs = _ref.attrs;
 
   var element = attrs.element || "div";
-  var props = _extends$19({}, filterSupportedAttributes(attrs), {
-    class: [classes$15.component, attrs.fullWidth ? classes$15.searchFullWidth : classes$15.searchInset, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.class].join(" ")
+  var props = _extends$21({}, filterSupportedAttributes(attrs), {
+    class: [classes$17.component, attrs.fullWidth ? classes$17.searchFullWidth : classes$17.searchInset, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.class].join(" ")
   }, attrs.events);
   var searchState = getNameOfState(state.searchState);
   var buttons = (attrs.buttons || {})[searchState] || {};
   var textfieldAttrs = attrs.textfield || {};
   var content = m$1("div", {
-    class: classes$15.content
-  }, [buttons.before, m$1(textfield, _extends$19({}, textfieldAttrs, {
+    class: classes$17.content
+  }, [buttons.before, m$1(textfield, _extends$21({}, textfieldAttrs, {
     getState: function getState(newState) {
-      state.searchState = _extends$19({}, newState);
+      state.searchState = _extends$21({}, newState);
       if (textfieldAttrs.getState) {
         textfieldAttrs.getState(state.searchState);
       }
@@ -7759,39 +8562,41 @@ var view$14 = function view(_ref) {
 };
 
 var search = {
-  theme: customTheme$16, // accepts (selector, vars)
+  theme: customTheme$18, // accepts (selector, vars)
   oninit: function oninit(vnode) {
     vnode.state.searchState = {};
   },
-  view: view$14
+  view: view$16
 };
 
-var classes$17 = {
+var classes$19 = {
   component: "pe-slider",
-  thumb: "pe-slider__thumb",
+
+  // elements
+  control: "pe-slider__control",
   label: "pe-slider__label",
+  pin: "pe-slider__pin",
+  thumb: "pe-slider__thumb",
+  tick: "pe-slider__ticks-tick",
+  ticks: "pe-slider__ticks",
   track: "pe-slider__track",
-  trackPart: "pe-slider__track-part",
-  trackPartValue: "pe-slider__track-value",
-  trackPartRest: "pe-slider__track-rest",
   trackBar: "pe-slider__track-bar",
   trackBarValue: "pe-slider__track-bar-value",
+  trackPart: "pe-slider__track-part",
+  trackPartRest: "pe-slider__track-rest",
+  trackPartValue: "pe-slider__track-value",
 
-  control: "pe-slider__control",
-  ticks: "pe-slider__ticks",
-  tick: "pe-slider__ticks-tick",
-  pin: "pe-slider__pin",
-
-  isDisabled: "pe-slider--disabled",
-  isActive: "pe-slider--active",
-  hasTrack: "pe-slider--track",
-  hasPin: "pe-slider--pin",
+  // states
   hasFocus: "pe-slider--focus",
+  hasPin: "pe-slider--pin",
+  hasTicks: "pe-slider--ticks",
+  hasTrack: "pe-slider--track",
+  isActive: "pe-slider--active",
   isAtMin: "pe-slider--min",
-  hasTicks: "pe-slider--ticks"
+  isDisabled: "pe-slider--disabled"
 };
 
-var rgba$14 = variables.rgba;
+var rgba$16 = variables.rgba;
 
 var lightForeground = variables.color_light_foreground;
 var darkForeground = variables.color_dark_foreground;
@@ -7808,7 +8613,7 @@ var height$1 = Math.max(52, largestThumbSize);
 var side_spacing = Math.max(10, largestElement / 2 - thumb_size / 2);
 var horizontal_layout_side_spacing = side_spacing + 4; // optimization for horizontal layout
 
-var vars$1$16 = {
+var vars$1$17 = {
   height: height$1,
   side_spacing: side_spacing,
   horizontal_layout_side_spacing: horizontal_layout_side_spacing,
@@ -7827,42 +8632,42 @@ var vars$1$16 = {
   pin_width: 26,
   pin_font_size: 10,
 
-  color_light_track_active: rgba$14(lightForeground, .38),
-  color_light_track_inactive: rgba$14(lightForeground, .26),
-  color_light_track_value: rgba$14(activeColor),
+  color_light_track_active: rgba$16(lightForeground, .38),
+  color_light_track_inactive: rgba$16(lightForeground, .26),
+  color_light_track_value: rgba$16(activeColor),
   // background color may be set in theme; disabled by default
   // color_light_thumb_background:        undefined,
-  color_light_thumb_off: rgba$14(lightForeground, .26),
-  color_light_thumb_off_focus: rgba$14(lightForeground),
+  color_light_thumb_off: rgba$16(lightForeground, .26),
+  color_light_thumb_off_focus: rgba$16(lightForeground),
   color_light_thumb_off_focus_opacity: .08,
-  color_light_thumb_on: rgba$14(activeColor),
+  color_light_thumb_on: rgba$16(activeColor),
   color_light_thumb_on_focus_opacity: .11,
-  color_light_thumb_inactive: rgba$14(lightForeground, .26),
-  color_light_tick: rgba$14(lightForeground, 1),
+  color_light_thumb_inactive: rgba$16(lightForeground, .26),
+  color_light_tick: rgba$16(lightForeground, 1),
   color_light_icon: variables.rgba(variables.color_light_foreground, variables.blend_light_text_secondary),
   color_light_disabled_icon: variables.rgba(variables.color_light_foreground, variables.blend_light_text_disabled),
   color_light_label: variables.rgba(variables.color_light_foreground, variables.blend_light_text_secondary),
   color_light_disabled_label: variables.rgba(variables.color_light_foreground, variables.blend_light_text_disabled),
 
-  color_dark_track_active: rgba$14(darkForeground, .3),
-  color_dark_track_inactive: rgba$14(darkForeground, .2),
-  color_dark_track_value: rgba$14(activeColor),
+  color_dark_track_active: rgba$16(darkForeground, .3),
+  color_dark_track_inactive: rgba$16(darkForeground, .2),
+  color_dark_track_value: rgba$16(activeColor),
   // background color may be set in theme; disabled by default
   // color_dark_thumb_background:         undefined,
-  color_dark_thumb_off: rgba$14(darkForeground, .2),
-  color_dark_thumb_off_focus: rgba$14(darkForeground),
+  color_dark_thumb_off: rgba$16(darkForeground, .2),
+  color_dark_thumb_off_focus: rgba$16(darkForeground),
   color_dark_thumb_off_focus_opacity: .08,
-  color_dark_thumb_on: rgba$14(activeColor),
+  color_dark_thumb_on: rgba$16(activeColor),
   color_dark_thumb_on_focus_opacity: .11,
-  color_dark_thumb_inactive: rgba$14(darkForeground, .2),
-  color_dark_tick: rgba$14(darkForeground, 1),
+  color_dark_thumb_inactive: rgba$16(darkForeground, .2),
+  color_dark_tick: rgba$16(darkForeground, 1),
   color_dark_icon: variables.rgba(variables.color_dark_foreground, variables.blend_dark_text_secondary),
   color_dark_disabled_icon: variables.rgba(variables.color_dark_foreground, variables.blend_dark_text_disabled),
   color_dark_label: variables.rgba(variables.color_dark_foreground, variables.blend_dark_text_secondary),
   color_dark_disabled_label: variables.rgba(variables.color_dark_foreground, variables.blend_dark_text_disabled)
 };
 
-function _defineProperty$17(obj, key, value) {
+function _defineProperty$19(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -7880,7 +8685,7 @@ var positionBorder = function positionBorder(thumbSize, borderWidth) {
   };
 };
 
-var layout$17 = function layout(selector, componentVars) {
+var layout$19 = function layout(selector, componentVars) {
   var thumbSize = Math.max(componentVars.thumb_size, 2 * componentVars.thumb_border_width);
   var scaledThumbDiff = (componentVars.active_thumb_scale - 1) * thumbSize / 2;
   var barOffset = thumbSize / 2;
@@ -7888,7 +8693,7 @@ var layout$17 = function layout(selector, componentVars) {
   var thumbTouchSize = componentVars.thumb_touch_size;
   var stepsOffset = barOffset - 1;
 
-  return [_defineProperty$17({}, selector, [mixinFlex.layoutHorizontal, mixinFlex.flexGrow(1), {
+  return [_defineProperty$19({}, selector, [mixinFlex.layoutHorizontal, mixinFlex.flexGrow(1), {
     userSelect: "none",
     height: componentVars.height + "px",
     marginTop: (componentVars.height - componentVars.track_height) / 2 + "px ",
@@ -8077,7 +8882,7 @@ var layout$17 = function layout(selector, componentVars) {
   }])];
 };
 
-function _defineProperty$1$16(obj, key, value) {
+function _defineProperty$1$18(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -8085,8 +8890,8 @@ function _defineProperty$1$16(obj, key, value) {
   }return obj;
 }
 
-var style$15 = function style(scopes, selector, componentVars, tint) {
-  return [_defineProperty$1$16({}, scopes.map(function (s) {
+var style$17 = function style(scopes, selector, componentVars, tint) {
+  return [_defineProperty$1$18({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
     color: componentVars["color_" + tint + "_thumb_on"], // override by specifying "color"
@@ -8186,12 +8991,12 @@ var style$15 = function style(scopes, selector, componentVars, tint) {
   })];
 };
 
-var color$16 = function color(selector, componentVars) {
-  return [style$15([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  style$15(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+var color$18 = function color(selector, componentVars) {
+  return [style$17([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$17(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 };
 
-var _extends$1$20 = Object.assign || function (target) {
+var _extends$1$21 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -8201,16 +9006,16 @@ var _extends$1$20 = Object.assign || function (target) {
   }return target;
 };
 
-var fns$18 = [layout$17, color$16];
-var selector$18 = "." + classes$17.component;
+var fns$20 = [layout$19, color$18];
+var selector$20 = "." + classes$19.component;
 
-var customTheme$18 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$18], _extends$1$20({}, vars$1$16, customVars), fns$18);
+var customTheme$20 = function customTheme(customSelector, customVars) {
+  return styler.generateStyles([customSelector, selector$20], _extends$1$21({}, vars$1$17, customVars), fns$20);
 };
 
-styler.generateStyles([selector$18], vars$1$16, fns$18);
+styler.generateStyles([selector$20], vars$1$17, fns$20);
 
-var _extends$21 = Object.assign || function (target) {
+var _extends$23 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -8257,7 +9062,7 @@ var generateTickMarks = function generateTickMarks(min, max, stepSize) {
   var items = [];
   var s = steps + 1;
   while (s > 0) {
-    items.push(m$1("div", { class: classes$17.tick }));
+    items.push(m$1("div", { class: classes$19.tick }));
     s--;
   }
   return items;
@@ -8266,7 +9071,7 @@ var generateTickMarks = function generateTickMarks(min, max, stepSize) {
 var readRangeData = function readRangeData(state) {
   if (state.controlEl) {
     // range is from the far left to the far right minus the thumb width (max x is at the left side of the thumb)
-    state.controlWidth = vars$1$16.thumb_size;
+    state.controlWidth = vars$1$17.thumb_size;
     state.rangeWidth = state.trackEl.getBoundingClientRect().width - state.controlWidth;
     var styles = window.getComputedStyle(state.trackEl);
     state.rangeOffset = parseFloat(styles.marginLeft);
@@ -8358,8 +9163,8 @@ var createSlider = function createSlider(state, attrs, hasTicks, interactiveTrac
   var flexRestValue = 1 - fraction;
   var flexRestCss = flexRestValue + " 1 0%";
 
-  return [m$1("div", _extends$21({}, {
-    class: classes$17.track,
+  return [m$1("div", _extends$23({}, {
+    class: classes$19.track,
     oncreate: function oncreate(_ref) {
       var dom = _ref.dom;
 
@@ -8371,14 +9176,14 @@ var createSlider = function createSlider(state, attrs, hasTicks, interactiveTrac
       }
     }
   }, interactiveTrack && !attrs.disabled && !isTouch ? { onmousedown: onStartTrack } : null, interactiveTrack && !attrs.disabled && isTouch ? { ontouchstart: onStartTrack } : null), [m$1("div", {
-    class: classes$17.trackPart + " " + classes$17.trackPartValue,
+    class: classes$19.trackPart + " " + classes$19.trackPartValue,
     style: {
       flex: flexValueCss,
       "-ms-flex": flexValueCss,
       webkitFlex: flexValueCss
     }
-  }, m$1("div", { class: classes$17.trackBar }, m$1("div", { class: classes$17.trackBarValue }))), m$1("div", _extends$21({}, {
-    class: classes$17.control,
+  }, m$1("div", { class: classes$19.trackBar }, m$1("div", { class: classes$19.trackBarValue }))), m$1("div", _extends$23({}, {
+    class: classes$19.control,
     oncreate: function oncreate(_ref2) {
       var dom = _ref2.dom;
       return state.controlEl = dom;
@@ -8411,16 +9216,16 @@ var createSlider = function createSlider(state, attrs, hasTicks, interactiveTrac
       readRangeData(state);
       updatePinPosition(state);
     }
-  }, !attrs.disabled && !isTouch ? { onmousedown: onInitDrag } : null, !attrs.disabled && isTouch ? { ontouchstart: onInitDrag } : null, attrs.events ? attrs.events : null, hasTicks ? { step: stepCount } : null), attrs.icon ? m$1("div", { class: classes$17.thumb }, attrs.icon) : null), m$1("div", {
-    class: classes$17.trackPart + " " + classes$17.trackPartRest,
+  }, !attrs.disabled && !isTouch ? { onmousedown: onInitDrag } : null, !attrs.disabled && isTouch ? { ontouchstart: onInitDrag } : null, attrs.events ? attrs.events : null, hasTicks ? { step: stepCount } : null), attrs.icon ? m$1("div", { class: classes$19.thumb }, attrs.icon) : null), m$1("div", {
+    class: classes$19.trackPart + " " + classes$19.trackPartRest,
     style: {
       flex: flexRestCss,
       "-ms-flex": flexRestCss,
       webkitFlex: flexRestCss,
       maxWidth: flexRestValue * 100 + "%" // for IE Edge
     }
-  }, m$1("div", { class: classes$17.trackBar }, m$1("div", { class: classes$17.trackBarValue }))), hasTicks && !attrs.disabled ? m$1("div", { class: classes$17.ticks }, generateTickMarks(state.min, state.max, stepCount)) : null, hasTicks && attrs.pin && !attrs.disabled ? m$1("div", {
-    class: classes$17.pin,
+  }, m$1("div", { class: classes$19.trackBar }, m$1("div", { class: classes$19.trackBarValue }))), hasTicks && !attrs.disabled ? m$1("div", { class: classes$19.ticks }, generateTickMarks(state.min, state.max, stepCount)) : null, hasTicks && attrs.pin && !attrs.disabled ? m$1("div", {
+    class: classes$19.pin,
     value: Math.round(state.value()),
     oncreate: function oncreate(_ref3) {
       var dom = _ref3.dom;
@@ -8429,7 +9234,7 @@ var createSlider = function createSlider(state, attrs, hasTicks, interactiveTrac
   }) : null])];
 };
 
-var view$16 = function view(_ref4) {
+var view$18 = function view(_ref4) {
   var attrs = _ref4.attrs,
       state = _ref4.state;
 
@@ -8439,8 +9244,8 @@ var view$16 = function view(_ref4) {
   var element = attrs.element || "div";
   var hasTicks = attrs.ticks !== undefined && attrs.ticks !== false;
   var interactiveTrack = attrs.interactiveTrack !== undefined ? attrs.interactiveTrack : true;
-  var props = _extends$21({}, filterSupportedAttributes(attrs), {
-    class: [classes$17.component, attrs.disabled ? classes$17.isDisabled : null, attrs.pin ? classes$17.hasPin : null, interactiveTrack ? classes$17.hasTrack : null, state.isActive ? classes$17.isActive : null, state.hasFocus ? classes$17.hasFocus : null, state.fraction() === 0 ? classes$17.isAtMin : null, hasTicks ? classes$17.hasTicks : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.class].join(" ")
+  var props = _extends$23({}, filterSupportedAttributes(attrs), {
+    class: [classes$19.component, attrs.disabled ? classes$19.isDisabled : null, attrs.pin ? classes$19.hasPin : null, interactiveTrack ? classes$19.hasTrack : null, state.isActive ? classes$19.isActive : null, state.hasFocus ? classes$19.hasFocus : null, state.fraction() === 0 ? classes$19.isAtMin : null, hasTicks ? classes$19.hasTicks : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.class].join(" ")
   });
   var content = createSlider(state, attrs, hasTicks, interactiveTrack);
   return m$1(element, props, [attrs.before, content, attrs.after]);
@@ -8474,7 +9279,7 @@ var oninit = function oninit(vnode) {
 
   setValue(_value);
 
-  vnode.state = _extends$21(vnode.state, {
+  vnode.state = _extends$23(vnode.state, {
     min: min,
     max: max,
     trackEl: null,
@@ -8505,9 +9310,9 @@ var oninit = function oninit(vnode) {
 };
 
 var slider = {
-  theme: customTheme$18, // accepts (selector, vars)
+  theme: customTheme$20, // accepts (selector, vars)
   oninit: oninit,
-  view: view$16
+  view: view$18
 };
 
 var _extends$2$1 = Object.assign || function (target) {
@@ -8520,10 +9325,14 @@ var _extends$2$1 = Object.assign || function (target) {
   }return target;
 };
 
-var classes$1$3 = _extends$2$1({}, classes$13, {
+var classes$1$3 = _extends$2$1({}, classes$15, {
   component: "pe-notification pe-snackbar",
+
+  // elements
   holder: "pe-snackbar__holder",
   placeholder: "pe-snackbar__placeholder",
+
+  // states
   open: "pe-snackbar--open"
 });
 
@@ -8537,18 +9346,18 @@ var _extends$3$1 = Object.assign || function (target) {
   }return target;
 };
 
-var rgba$15 = variables.rgba;
+var rgba$17 = variables.rgba;
 
-var vars$2 = _extends$3$1({}, vars$1$13, {
+var vars$2$1 = _extends$3$1({}, vars$1$14, {
   border_radius: 0,
   tablet_min_width: 288,
   tablet_max_width: 568,
   min_height: 0,
 
-  color_dark_background: rgba$15(variables.color_dark_background)
+  color_dark_background: rgba$17(variables.color_dark_background)
 });
 
-function _defineProperty$18(obj, key, value) {
+function _defineProperty$20(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -8574,15 +9383,15 @@ var tabletStyle = function tabletStyle(componentVars) {
   };
 };
 
-var layout$18 = function layout(selector, componentVars) {
+var layout$20 = function layout(selector, componentVars) {
   var _ref2;
 
-  return [(_ref2 = {}, _defineProperty$18(_ref2, selector, {
+  return [(_ref2 = {}, _defineProperty$20(_ref2, selector, {
     minHeight: componentVars.min_height
-  }), _defineProperty$18(_ref2, "@media (min-width: " + variables.breakpoint_small_handset_landscape + "px)", _defineProperty$18({}, selector, tabletStyle(componentVars))), _ref2)];
+  }), _defineProperty$20(_ref2, "@media (min-width: " + variables.breakpoint_small_handset_landscape + "px)", _defineProperty$20({}, selector, tabletStyle(componentVars))), _ref2)];
 };
 
-function _defineProperty$1$17(obj, key, value) {
+function _defineProperty$1$19(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -8590,8 +9399,8 @@ function _defineProperty$1$17(obj, key, value) {
   }return obj;
 }
 
-var style$16 = function style(scopes, selector, componentVars, tint) {
-  return [_defineProperty$1$17({}, scopes.map(function (s) {
+var style$18 = function style(scopes, selector, componentVars, tint) {
+  return [_defineProperty$1$19({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
     color: componentVars["color_" + tint + "_text"],
@@ -8599,9 +9408,9 @@ var style$16 = function style(scopes, selector, componentVars, tint) {
   })];
 };
 
-var color$17 = function color(selector, componentVars) {
-  return [style$16([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  style$16(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+var color$19 = function color(selector, componentVars) {
+  return [style$18([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$18(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 };
 
 function _defineProperty$2$5(obj, key, value) {
@@ -8630,7 +9439,7 @@ var holderLayout$1 = function holderLayout(selector) {
   }])];
 };
 
-var _extends$1$21 = Object.assign || function (target) {
+var _extends$1$22 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -8640,20 +9449,20 @@ var _extends$1$21 = Object.assign || function (target) {
   }return target;
 };
 
-var fns$19 = [layout$18, color$17];
-var selector$19 = "." + classes$1$3.component.replace(/ /g, ".");
+var fns$21 = [layout$20, color$19];
+var selector$21 = "." + classes$1$3.component.replace(/ /g, ".");
 
 var holderFns$1 = [holderLayout$1];
 var holderSelector$1 = "." + classes$1$3.holder.replace(/ /g, ".");
 
-var customTheme$19 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$19], _extends$1$21({}, vars$2, customVars), fns$19), styler.generateStyles([customSelector, holderSelector$1], _extends$1$21({}, vars$2, customVars), holderFns$1);
+var customTheme$21 = function customTheme(customSelector, customVars) {
+  return styler.generateStyles([customSelector, selector$21], _extends$1$22({}, vars$2$1, customVars), fns$21), styler.generateStyles([customSelector, holderSelector$1], _extends$1$22({}, vars$2$1, customVars), holderFns$1);
 };
 
-styler.generateStyles([selector$19], vars$2, fns$19);
-styler.generateStyles([holderSelector$1], vars$2, holderFns$1);
+styler.generateStyles([selector$21], vars$2$1, fns$21);
+styler.generateStyles([holderSelector$1], vars$2$1, holderFns$1);
 
-var _extends$22 = Object.assign || function (target) {
+var _extends$24 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -8663,8 +9472,8 @@ var _extends$22 = Object.assign || function (target) {
   }return target;
 };
 
-var instance$1$1 = _extends$22({}, instance$1, {
-  theme: customTheme$19 // accepts (selector, vars)
+var instance$1$1 = _extends$24({}, instance$1, {
+  theme: customTheme$21 // accepts (selector, vars)
 });
 
 var show$1$2 = function show$$1(el, opts) {
@@ -8713,14 +9522,16 @@ var snackbar = multiple({
   bodyShowClass: classes$1$3.open
 });
 
-var classes$18 = {
+var classes$20 = {
   component: "pe-switch-control",
-  track: "pe-switch-control__track",
+
+  // elements
+  knob: "pe-switch-control__knob",
   thumb: "pe-switch-control__thumb",
-  knob: "pe-switch-control__knob"
+  track: "pe-switch-control__track"
 };
 
-var _extends$1$22 = Object.assign || function (target) {
+var _extends$1$23 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -8736,11 +9547,11 @@ var controlView$1 = function controlView$$1(checked, attrs) {
   var z = checked ? zOn : zOff;
   var raised = attrs.disabled ? false : attrs.raised !== undefined ? attrs.raised : true;
   return [m$1("div", {
-    class: classes$18.track
-  }), m$1(iconButton, _extends$1$22({}, {
-    class: classes$18.thumb,
+    class: classes$20.track
+  }), m$1(iconButton, _extends$1$23({}, {
+    class: classes$20.thumb,
     content: [m$1("div", {
-      class: classes$18.knob
+      class: classes$20.knob
     }, [attrs.icon ? attrs.icon : null, raised ? m$1(shadow, {
       z: z,
       animated: true
@@ -8762,7 +9573,7 @@ var _extends$3$2 = Object.assign || function (target) {
   }return target;
 };
 
-var rgba$16 = variables.rgba;
+var rgba$18 = variables.rgba;
 var hit_area_padding = (variables.grid_unit_icon_button - variables.unit_icon_size) / 2; // 12
 
 var vars$3 = _extends$3$2({}, vars$1$5, {
@@ -8775,17 +9586,17 @@ var vars$3 = _extends$3$2({}, vars$1$5, {
 
   animation_duration: variables.animation_duration,
 
-  color_light_thumb_on: rgba$16(variables.color_primary),
+  color_light_thumb_on: rgba$18(variables.color_primary),
   color_light_thumb_off: "#f1f1f1",
   color_light_thumb_disabled: "#bdbdbd",
-  color_light_wash_on: rgba$16(variables.color_primary),
+  color_light_wash_on: rgba$18(variables.color_primary),
   color_light_wash_off: vars$1$6.color_light_wash,
 
-  color_light_track_on: rgba$16(variables.color_primary_faded),
+  color_light_track_on: rgba$18(variables.color_primary_faded),
   color_light_track_on_opacity: .55,
-  color_light_track_off: rgba$16(variables.color_light_foreground, variables.blend_light_text_regular),
+  color_light_track_off: rgba$18(variables.color_light_foreground, variables.blend_light_text_regular),
   color_light_track_off_opacity: .55,
-  color_light_track_disabled: rgba$16(variables.color_light_foreground, variables.blend_light_background_disabled),
+  color_light_track_disabled: rgba$18(variables.color_light_foreground, variables.blend_light_background_disabled),
   color_light_track_disabled_opacity: 1,
 
   // icon color may be set in theme; default "currentcolor"
@@ -8794,13 +9605,13 @@ var vars$3 = _extends$3$2({}, vars$1$5, {
 
   // color_light_focus_on and so on taken from selectionControlVars
 
-  color_dark_thumb_on: rgba$16(variables.color_primary),
+  color_dark_thumb_on: rgba$18(variables.color_primary),
   color_dark_thumb_off: "#bdbdbd",
   color_dark_thumb_disabled: "#555",
-  color_dark_wash_on: rgba$16(variables.color_primary),
+  color_dark_wash_on: rgba$18(variables.color_primary),
   color_dark_wash_off: vars$1$6.color_dark_wash,
 
-  color_dark_track_on: rgba$16(variables.color_primary_faded, variables.blend_dark_text_tertiary), // or "#5a7f7c"
+  color_dark_track_on: rgba$18(variables.color_primary_faded, variables.blend_dark_text_tertiary), // or "#5a7f7c"
   color_dark_track_on_opacity: 9,
   color_dark_track_off: "#717171",
   color_dark_track_off_opacity: .55,
@@ -8809,7 +9620,7 @@ var vars$3 = _extends$3$2({}, vars$1$5, {
 
 });
 
-function _defineProperty$19(obj, key, value) {
+function _defineProperty$21(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -8876,7 +9687,7 @@ var customSize = function customSize(componentVars, size) {
 };
 
 var layout$1$3 = function layout$1(selector, componentVars) {
-  return layout$7(selector, componentVars, "checkbox").concat([_defineProperty$19({}, selector, {
+  return layout$7(selector, componentVars, "checkbox").concat([_defineProperty$21({}, selector, {
     " .pe-switch-control__track": [transition$1(componentVars, "background, opacity"), {
       position: "absolute",
       left: 0
@@ -8911,7 +9722,7 @@ var layout$1$3 = function layout$1(selector, componentVars) {
   })]);
 };
 
-function _defineProperty$1$18(obj, key, value) {
+function _defineProperty$1$20(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -8919,8 +9730,8 @@ function _defineProperty$1$18(obj, key, value) {
   }return obj;
 }
 
-var style$17 = function style(scopes, selector, componentVars, tint) {
-  return [_defineProperty$1$18({}, scopes.map(function (s) {
+var style$19 = function style(scopes, selector, componentVars, tint) {
+  return [_defineProperty$1$20({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
     ".pe-control--off": {
@@ -8980,7 +9791,7 @@ var style$17 = function style(scopes, selector, componentVars, tint) {
 };
 
 var noTouchStyle$4 = function noTouchStyle(scopes, selector, componentVars, tint) {
-  return [_defineProperty$1$18({}, scopes.map(function (s) {
+  return [_defineProperty$1$20({}, scopes.map(function (s) {
     return s + selector + ":hover";
   }).join(","), {
     ".pe-control--on": {
@@ -8996,9 +9807,9 @@ var noTouchStyle$4 = function noTouchStyle(scopes, selector, componentVars, tint
   })];
 };
 
-var color$18 = function color$$1(selector, componentVars) {
-  return [style$17([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  style$17(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light theme
+var color$20 = function color$$1(selector, componentVars) {
+  return [style$19([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$19(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light theme
   noTouchStyle$4(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, "dark"), // inside dark theme
   noTouchStyle$4(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, "light")];
 };
@@ -9013,16 +9824,16 @@ var _extends$2$2 = Object.assign || function (target) {
   }return target;
 };
 
-var fns$20 = [layout$1$3, color$18];
-var selector$20 = "." + classes$18.component;
+var fns$22 = [layout$1$3, color$20];
+var selector$22 = "." + classes$20.component;
 
-var customTheme$20 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$20], _extends$2$2({}, vars$3, customVars), fns$20);
+var customTheme$22 = function customTheme(customSelector, customVars) {
+  return styler.generateStyles([customSelector, selector$22], _extends$2$2({}, vars$3, customVars), fns$22);
 };
 
-styler.generateStyles([selector$20], vars$3, fns$20);
+styler.generateStyles([selector$22], vars$3, fns$22);
 
-var _extends$23 = Object.assign || function (target) {
+var _extends$25 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -9032,47 +9843,52 @@ var _extends$23 = Object.assign || function (target) {
   }return target;
 };
 
-var view$17 = function view(vnode) {
-  return m$1(selectionControl, _extends$23({}, vnode.attrs, {
+var view$19 = function view(vnode) {
+  return m$1(selectionControl, _extends$25({}, vnode.attrs, {
     controlView: controlView$1,
     selectable: vnode.attrs.selectable || function () {
       return true;
     }, // default: always selectable, regardless the checked state
-    instanceClass: classes$18.component,
+    instanceClass: classes$20.component,
     type: "checkbox"
   }));
 };
 
 var switchButton = {
-  theme: customTheme$20, // accepts (selector, vars)
-  view: view$17
+  theme: customTheme$22, // accepts (selector, vars)
+  view: view$19
 };
 
 var classes$1$4 = {
   component: "pe-tabs",
+
+  // elements
+  indicator: "pe-tabs__indicator",
   scrollButton: "pe-tabs__scroll-button",
-  scrollButtonAtStart: "pe-tabs__scroll-button-start",
   scrollButtonAtEnd: "pe-tabs__scroll-button-end",
+  scrollButtonAtStart: "pe-tabs__scroll-button-start",
   scrollButtonOffset: "pe-tabs__scroll-button-offset",
-  tabRow: "pe-tabs__row",
-  tabRowCentered: "pe-tabs__row--centered",
-  tabRowIndent: "pe-tabs__row--indent",
   tab: "pe-tabs__tab",
   tabContent: "pe-tabs__tab-content",
-  tabHasIcon: "pe-tabs__tab---icon",
-  indicator: "pe-tabs__indicator",
-  scrollable: "pe-tabs--scrollable",
-  isAutofit: "pe-tabs--autofit",
-  isAtStart: "pe-tabs--start",
-  isAtEnd: "pe-tabs--end",
-  smallTabs: "pe-tabs--small",
-  isMenu: "pe-tabs--menu",
-  activeSelectable: "pe-tabs__active-selectable",
+  tabRow: "pe-tabs__row",
 
+  // states
+  activeSelectable: "pe-tabs__active--selectable",
+  isAtEnd: "pe-tabs--end",
+  isAtStart: "pe-tabs--start",
+  isAutofit: "pe-tabs--autofit",
+  isMenu: "pe-tabs--menu",
+  scrollable: "pe-tabs--scrollable",
+  smallTabs: "pe-tabs--small",
+  tabHasIcon: "pe-tabs__tab---icon",
+  tabRowCentered: "pe-tabs__row--centered",
+  tabRowIndent: "pe-tabs__row--indent",
+
+  // lookup
   label: classes$9.label
 };
 
-var rgba$17 = variables.rgba;
+var rgba$19 = variables.rgba;
 
 var fontSize = vars$1$7.font_size;
 var tab_label_line_height = 1.1 * fontSize;
@@ -9107,19 +9923,19 @@ var vars$3$1 = {
   tab_label_transition_property: "opacity, color, backgroundColor",
 
   color_light: "inherit",
-  color_light_selected: rgba$17(variables.color_primary),
+  color_light_selected: rgba$19(variables.color_primary),
   color_light_selected_background: "transparent",
-  color_light_tab_indicator: rgba$17(variables.color_primary),
+  color_light_tab_indicator: rgba$19(variables.color_primary),
   color_light_icon: vars$1$6.color_light,
 
   color_dark: "inherit",
-  color_dark_selected: rgba$17(variables.color_primary),
+  color_dark_selected: rgba$19(variables.color_primary),
   color_dark_selected_background: "transparent",
-  color_dark_tab_indicator: rgba$17(variables.color_primary),
+  color_dark_tab_indicator: rgba$19(variables.color_primary),
   color_dark_icon: vars$1$6.color_dark
 };
 
-function _defineProperty$20(obj, key, value) {
+function _defineProperty$22(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -9127,8 +9943,8 @@ function _defineProperty$20(obj, key, value) {
   }return obj;
 }
 
-var layout$19 = function layout(selector, componentVars) {
-  return [_defineProperty$20({}, selector, {
+var layout$21 = function layout(selector, componentVars) {
+  return [_defineProperty$22({}, selector, {
     userSelect: "none",
     transform: "translate3d(0,0,0)",
     "-webkit-overflow-scrolling": "touch",
@@ -9309,7 +10125,7 @@ var layout$19 = function layout(selector, componentVars) {
       maxWidth: "none"
     }],
 
-    ".pe-tabs__active-selectable": {
+    ".pe-tabs__active--selectable": {
       " .pe-tabs__tab.pe-button--selected": {
         cursor: "pointer",
         pointerEvents: "initial"
@@ -9343,7 +10159,7 @@ var layout$19 = function layout(selector, componentVars) {
   })];
 };
 
-function _defineProperty$1$19(obj, key, value) {
+function _defineProperty$1$21(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -9351,8 +10167,8 @@ function _defineProperty$1$19(obj, key, value) {
   }return obj;
 }
 
-var style$18 = function style(scopes, selector, componentVars, tint) {
-  return [_defineProperty$1$19({}, scopes.map(function (s) {
+var style$20 = function style(scopes, selector, componentVars, tint) {
+  return [_defineProperty$1$21({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
     color: componentVars["color_" + tint],
@@ -9376,16 +10192,16 @@ var style$18 = function style(scopes, selector, componentVars, tint) {
   })];
 };
 
-var color$19 = function color(selector, componentVars) {
-  return [style$18([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  style$18(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+var color$21 = function color(selector, componentVars) {
+  return [style$20([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$20(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 };
 
 var iconArrowBackward = m$1.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\"/></svg>");
 
 var iconArrowForward = m$1.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\"/></svg>");
 
-var _extends$1$23 = Object.assign || function (target) {
+var _extends$1$24 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -9402,14 +10218,14 @@ var arrowForward = {
   msvg: iconArrowForward
 };
 
-var fns$21 = [layout$19, color$19];
-var selector$21 = "." + classes$1$4.component;
+var fns$23 = [layout$21, color$21];
+var selector$23 = "." + classes$1$4.component;
 
-var customTheme$21 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$21], _extends$1$23({}, vars$3$1, customVars), fns$21);
+var customTheme$23 = function customTheme(customSelector, customVars) {
+  return styler.generateStyles([customSelector, selector$23], _extends$1$24({}, vars$3$1, customVars), fns$23);
 };
 
-styler.generateStyles([selector$21], vars$3$1, fns$21);
+styler.generateStyles([selector$23], vars$3$1, fns$23);
 
 var _extends$2$3 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
@@ -9470,7 +10286,7 @@ var scrollButton = {
   view: view$2$1
 };
 
-var _extends$24 = Object.assign || function (target) {
+var _extends$26 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -9604,7 +10420,7 @@ var sortByLargestWidth = function sortByLargestWidth(a, b) {
   return a < b ? 1 : a > b ? -1 : 0;
 };
 
-var view$18 = function view(vnode) {
+var view$20 = function view(vnode) {
   var attrs = vnode.attrs;
   var state = vnode.state;
   var element = attrs.element || "div";
@@ -9620,7 +10436,7 @@ var view$18 = function view(vnode) {
     return setSelectedTab(state, attrs, state.selectedTabIndex, false), m$1.redraw();
   };
 
-  var props = _extends$24({}, filterSupportedAttributes(attrs), {
+  var props = _extends$26({}, filterSupportedAttributes(attrs), {
     class: [classes$1$4.component, attrs.scrollable ? classes$1$4.scrollable : null, state.selectedTabIndex === 0 ? classes$1$4.isAtStart : null, state.selectedTabIndex === state.tabs.length - 1 ? classes$1$4.isAtEnd : null, attrs.activeSelected ? classes$1$4.activeSelectable : null, autofit ? classes$1$4.isAutofit : null, attrs.small ? classes$1$4.smallTabs : null, attrs.menu ? classes$1$4.isMenu : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.class].join(" "),
     oninit: function oninit() {
       return subscribe("resize", onResize);
@@ -9666,7 +10482,7 @@ var view$18 = function view(vnode) {
     var buttonOpts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
     var index = arguments[1];
 
-    var buttonOptsCombined = _extends$24({}, buttonOpts, {
+    var buttonOptsCombined = _extends$26({}, buttonOpts, {
       // These options can be overridden by tabsOpts
       selected: index === state.selectedTabIndex,
       animateOnTap: attrs.animateOnTap !== false ? true : false
@@ -9689,7 +10505,7 @@ var view$18 = function view(vnode) {
   var scrollButtonAtStart = void 0,
       scrollButtonAtEnd = void 0;
   if (attrs.scrollable) {
-    scrollButtonAtStart = m$1(scrollButton, _extends$24({}, {
+    scrollButtonAtStart = m$1(scrollButton, _extends$26({}, {
       icon: attrs.scrollIconBackward,
       class: classes$1$4.scrollButtonAtStart,
       position: "start",
@@ -9698,7 +10514,7 @@ var view$18 = function view(vnode) {
           return handleScrollButtonClick(state, attrs, e, "backward");
         } }
     }));
-    scrollButtonAtEnd = m$1(scrollButton, _extends$24({}, {
+    scrollButtonAtEnd = m$1(scrollButton, _extends$26({}, {
       icon: attrs.scrollIconForward,
       class: classes$1$4.scrollButtonAtEnd,
       position: "end",
@@ -9727,8 +10543,8 @@ var view$18 = function view(vnode) {
 };
 
 var tabs = {
-  theme: customTheme$21, // accepts (selector, vars)
-  view: view$18,
+  theme: customTheme$23, // accepts (selector, vars)
+  view: view$20,
   oninit: function oninit(vnode) {
     var registerTabButton = function registerTabButton(index, data) {
       return vnode.state.tabs[index] = data;
@@ -9736,7 +10552,7 @@ var tabs = {
     var registerScrollButton = function registerScrollButton(position, dom) {
       return vnode.state.scrollButtons[position] = dom;
     };
-    vnode.state = _extends$24(vnode.state, {
+    vnode.state = _extends$26(vnode.state, {
       tabsEl: undefined,
       scrollerEl: undefined,
       tabs: [], // {data, el}
@@ -9759,21 +10575,25 @@ var tabs = {
   }
 };
 
-var classes$19 = {
+var classes$21 = {
   component: "pe-toolbar",
-  compact: "pe-toolbar--compact",
+
+  // elements
   title: "pe-toolbar__title",
+
+  // states
+  compact: "pe-toolbar--compact",
   indentedTitle: "pe-toolbar__title--indent"
 };
 
-var rgba$18 = variables.rgba;
+var rgba$20 = variables.rgba;
 
 var padding_side = variables.grid_unit_component * 2 - 12; // 16 - 12 = 4
 var title_padding = variables.grid_unit_component * 9 - variables.grid_unit_component * 6 - padding_side; // 72 - 48 - 4
 var height_mobile_portrait = variables.grid_unit_component * 7; // 56
 var height_desktop = variables.grid_unit_component * 8; // 64
 
-var vars$1$17 = {
+var vars$1$18 = {
   padding_side: padding_side,
   title_padding: title_padding,
   indent: variables.unit_indent,
@@ -9784,15 +10604,15 @@ var vars$1$17 = {
   height: height_desktop,
   height_compact: height_mobile_portrait,
 
-  color_light_text: rgba$18(variables.color_light_foreground, variables.blend_light_text_primary),
-  color_dark_text: rgba$18(variables.color_dark_foreground, variables.blend_dark_text_primary),
+  color_light_text: rgba$20(variables.color_light_foreground, variables.blend_light_text_primary),
+  color_dark_text: rgba$20(variables.color_dark_foreground, variables.blend_dark_text_primary),
 
   // default gray background, expected to be overridden
   color_light_background: "#CFD8DC", // blue-gray-100
   color_dark_background: "#37474F" // blue-gray-800
 };
 
-function _defineProperty$21(obj, key, value) {
+function _defineProperty$23(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -9800,8 +10620,8 @@ function _defineProperty$21(obj, key, value) {
   }return obj;
 }
 
-var layout$20 = function layout(selector, componentVars) {
-  return [_defineProperty$21({}, selector, [mixinFlex.layout, mixinFlex.layoutHorizontal, mixinFlex.layoutCenter, {
+var layout$22 = function layout(selector, componentVars) {
+  return [_defineProperty$23({}, selector, [mixinFlex.layout, mixinFlex.layoutHorizontal, mixinFlex.layoutCenter, {
     height: componentVars.height + "px",
     fontSize: componentVars.font_size + "px",
     lineHeight: componentVars.line_height + "em",
@@ -9832,7 +10652,7 @@ var layout$20 = function layout(selector, componentVars) {
   }])];
 };
 
-function _defineProperty$1$20(obj, key, value) {
+function _defineProperty$1$22(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -9840,8 +10660,8 @@ function _defineProperty$1$20(obj, key, value) {
   }return obj;
 }
 
-var style$19 = function style(scopes, selector, componentVars, tint) {
-  return [_defineProperty$1$20({}, scopes.map(function (s) {
+var style$21 = function style(scopes, selector, componentVars, tint) {
+  return [_defineProperty$1$22({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
     color: componentVars["color_" + tint + "_text"],
@@ -9849,12 +10669,12 @@ var style$19 = function style(scopes, selector, componentVars, tint) {
   })];
 };
 
-var color$20 = function color(selector, componentVars) {
-  return [style$19([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  style$19(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+var color$22 = function color(selector, componentVars) {
+  return [style$21([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$21(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 };
 
-var _extends$1$24 = Object.assign || function (target) {
+var _extends$1$25 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -9864,16 +10684,16 @@ var _extends$1$24 = Object.assign || function (target) {
   }return target;
 };
 
-var fns$22 = [layout$20, color$20];
-var selector$22 = "." + classes$19.component;
+var fns$24 = [layout$22, color$22];
+var selector$24 = "." + classes$21.component;
 
-var customTheme$22 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$22], _extends$1$24({}, vars$1$17, customVars), fns$22);
+var customTheme$24 = function customTheme(customSelector, customVars) {
+  return styler.generateStyles([customSelector, selector$24], _extends$1$25({}, vars$1$18, customVars), fns$24);
 };
 
-styler.generateStyles([selector$22], vars$1$17, fns$22);
+styler.generateStyles([selector$24], vars$1$18, fns$24);
 
-var _extends$25 = Object.assign || function (target) {
+var _extends$27 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -9883,19 +10703,19 @@ var _extends$25 = Object.assign || function (target) {
   }return target;
 };
 
-var view$19 = function view(vnode) {
+var view$21 = function view(vnode) {
   var attrs = vnode.attrs;
   var element = attrs.element || "div";
-  var props = _extends$25({}, filterSupportedAttributes(attrs), {
-    class: [classes$19.component, attrs.compact ? classes$19.compact : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.class].join(" ")
+  var props = _extends$27({}, filterSupportedAttributes(attrs), {
+    class: [classes$21.component, attrs.compact ? classes$21.compact : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.class].join(" ")
   }, attrs.events ? attrs.events : null);
   var content = attrs.content ? attrs.content : attrs.children || vnode.children;
   return m$1(element, props, [attrs.before, content, attrs.after]);
 };
 
 var toolbar = {
-  theme: customTheme$22, // accepts (selector, vars)
-  view: view$19
+  theme: customTheme$24, // accepts (selector, vars)
+  view: view$21
 };
 
 function createCommonjsModule(fn, module) {
@@ -10732,7 +11552,7 @@ var fastclick = createCommonjsModule(function (module) {
 
 var THROTTLE_DELAY = 100;
 var REINIT_DELAY = THROTTLE_DELAY + 50;
-var layer = document.body;
+var layer$1 = document.body;
 
 var fastClick = void 0;
 var timeoutId = void 0;
@@ -10740,7 +11560,7 @@ var enabled = void 0;
 
 var add$1 = function add() {
   if (!enabled) {
-    fastClick = new fastclick(layer);
+    fastClick = new fastclick(layer$1);
     enabled = true;
   }
 };
@@ -11345,4 +12165,4 @@ var roboto = [{
 
 styler.add("pe-theme", reset, typography, roboto);
 
-export { card, checkbox, variables as defaultVariables, isTouch, touchStartEvent, touchEndEvent, moveEvent, endEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, multiple, show, hide, filterSupportedAttributes, prop, mixin, mixinFlex as flex, styler, dialog, fab, icon, iconButton, list, listTile, polytheneMdSpinner as mdSpinner, menu, notification, radioButton, raisedButton, ripple, search, shadow, slider, snackbar, svg, switchButton, tabs, textfield, toolbar, easing, scrollTo, Timer, variables as vars, button };
+export { card, checkbox, variables as defaultVariables, isTouch, touchStartEvent, touchEndEvent, moveEvent, endEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, multiple, show, hide, filterSupportedAttributes, prop, mixin, mixinFlex as flex, styler, dialog, fab, icon, iconButton, list, listTile, spinner$1 as mdSpinner, menu, notification, radioButton, raisedButton, ripple, search, shadow, slider, snackbar, svg, switchButton, tabs, textfield, toolbar, easing, scrollTo, Timer, variables as vars, button };

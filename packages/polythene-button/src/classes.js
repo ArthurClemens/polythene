@@ -4,13 +4,17 @@ const baseClass = "pe-button";
 export default {
   base:       baseClass,
   component:  `${baseClass} pe-text-button`,
+
+  // elements
   content:    "pe-button__content",
+  focus:      "pe-button__focus",
   label:      "pe-button__label",
   wash:       "pe-button__wash",
-  focus:      "pe-button__focus",
-  selected:   "pe-button--selected",
-  disabled:   "pe-button--disabled",
+
+  // states
   borders:    "pe-button--borders",
+  disabled:   "pe-button--disabled",
+  focused:    "pe-button--focus",
   inactive:   "pe-button--inactive",
-  focused:    "pe-button--focus"
+  selected:   "pe-button--selected",
 };

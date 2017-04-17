@@ -1,7 +1,9 @@
 
 export default {
   component: "pe-switch-control",
-  track:     "pe-switch-control__track",
+
+  // elements
+  knob:      "pe-switch-control__knob",
   thumb:     "pe-switch-control__thumb",
-  knob:      "pe-switch-control__knob"
+  track:     "pe-switch-control__track",
 };

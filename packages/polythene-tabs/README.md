@@ -290,30 +290,7 @@ Tabs is composed from:
 
 ## CSS classes
 
-| **Element**            | **Key**             |  **Class**                     |
-| ---------------------- | ------------------- | ------------------------------ |
-| Component              | component           | `pe-tabs`                      |
-| Tab row                | tabRow              | `pe-tabs__row`                 |
-| Tab                    | tab                 | `pe-tabs__tab`                 |
-| Tab content            | tabContent          | `pe-tabs__tab-content`         |
-| Indicator              | indicator           | `pe-tabs__indicator`           |
-| Scroll button          | scrollButton        | `pe-tabs__scroll-button`       |
-| Scroll button at start | scrollButtonAtStart | `pe-tabs__scroll-button-start` |
-| Scroll button at end   | scrollButtonAtEnd   | `pe-tabs__scroll-button-end`   |
-| Scroll button offset element   | scrollButtonOffset  | `pe-tabs__scroll-button-offset`   |
-
-| **State**                | **Key**            |  **Class**                   |
-| ------------------------ | ------------------ | ---------------------------- |
-| Centered tab row         | tabRowCentered     | `pe-tabs__row--centered`     |
-| Indented tab row         | tabRowIndent       | `pe-tabs__row--indent`       |
-| Tab has icon             | tabHasIcon         | `pe-tabs__tab---icon`        |
-| Tabs are scrollable      | scrollable         | `pe-tabs--scrollable`        |
-| Auto fit tabs            | isAutofit          | `pe-tabs--autofit`           |
-| Small tabs               | smallTabs          | `pe-tabs--small`             |
-| Is menu                  | isMenu             | `pe-tabs--menu`              |
-| Tab is at start          | isAtStart          | `pe-tabs--start`             |
-| Tab is at end            | isAtEnd            | `pe-tabs--end`               |
-| Active tab is selectable | activeSelectable   | `pe-tabs__active-selectable` |
+See: `src/classes.js`
 
 
   

@@ -5,8 +5,12 @@ export default Object.assign(
   notificationClasses,
   {
     component:      "pe-notification pe-snackbar",
+
+    // elements
     holder:         "pe-snackbar__holder",
     placeholder:    "pe-snackbar__placeholder",
-    open:           "pe-snackbar--open"
+
+    // states
+    open:           "pe-snackbar--open",
   }
 );

@@ -155,15 +155,6 @@ Icon is composed from:
 
 ## CSS classes
 
-| **Element** | **Key**     |  **Class** |
-| ----------- | ----------- | --------------- |
-| Component   | component   | `pe-icon` |
+See: `src/classes.js`
 
-| **State**         | **Key**     |  **Class** |
-| ----------------- | ----------- | --------------- |
-| Small             | small       | `pe-icon--small` |
-| Regular           | regular     | `pe-icon--regular` |
-| Medium            | medium      | `pe-icon--medium` |
-| Large             | large       | `pe-icon--large` |
-| Avatar round icon | avatar      | `pe-icon--avatar` |
 

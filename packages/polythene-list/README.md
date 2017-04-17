@@ -200,16 +200,5 @@ List is composed from:
 
 ## CSS classes
 
-| **Element**      | **Key**          |  **Class** |
-| ---------------- | ---------------- | --------------- |
-| Component        | component        | `pe-list` |
-| Header           | header           | `pe-list__header` |
-
-| **State**            | **State**            |  **Class** |
-| -------------------- | -------------------- | --------------- |
-| Has borders          | borders              | `pe-list--borders` |
-| Has indented borders | indentedBorders      | `pe-list--indented-borders` |
-| Has header           | hasHeader            | `pe-list--header` |
-| Compact              | compact              | `pe-list--compact` |
-
+See: `src/classes.js`
 

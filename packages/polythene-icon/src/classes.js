@@ -1,9 +1,11 @@
 
 export default {
   component: "pe-icon",
+
+  // states
   avatar:    "pe-icon--avatar",
-  small:     "pe-icon--small",
-  regular:   "pe-icon--regular",
+  large:     "pe-icon--large",
   medium:    "pe-icon--medium",
-  large:     "pe-icon--large"
+  regular:   "pe-icon--regular",
+  small:     "pe-icon--small",
 };

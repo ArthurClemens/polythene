@@ -147,16 +147,7 @@ If the component - or a component's parent - has option `tone` set to "dark", th
 
 ## CSS classes
 
-| **Element**           | **Key**         |  **Class** |
-| --------------------- | --------------- | --------------- |
-| Component             | component       | `pe-ripple` |
-| Waves element         | waves           | `pe-ripple__waves` |
-| mask                  | mask            | `pe-ripple__mask` |
-
-| **State**             | **Key**         |  **Class** |
-| --------------------- | --------------- | --------------- |
-| Constrained           | constrained     | `pe-ripple--constrained` |
-| Animating waves state | wavesAnimating  | `pe-ripple__waves--animating` |
+See: `src/classes.js`
 
 
 

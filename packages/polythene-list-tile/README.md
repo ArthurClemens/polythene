@@ -242,26 +242,5 @@ List Tile is composed from:
 
 ## CSS classes
 
-| **Element**        | **Key**          |  **Class** |
-| ------------------ | ---------------- | --------------- |
-| Component          | component        | `pe-list-tile` |
-| Primary element    | primary          | `pe-list-tile__primary` |
-| Secondary element  | secondary        | `pe-list-tile__secondary` |
-| Content            | content          | `pe-list-tile__content` |
-| Front content      | contentFront     | `pe-list-tile__content--front` |
-| Title              | title            | `pe-list-tile__title` |
-| Subtitle           | subtitle         | `pe-list-tile__subtitle` |
-| High subtitle      | highSubtitle     | `pe-list-tile__high-subtitle` |
-
-| **State**          | **Key**          |  **Class** |
-| ------------------ | ---------------- | --------------- |
-| Selected           | selected         | `pe-list-tile--selected` |
-| Disabled           | disabled         | `pe-list-tile--disabled` |
-| Sticky             | sticky           | `pe-list-tile--sticky` |
-| Has subtitle       | hasSubtitle      | `pe-list-tile--subtitle` |
-| Has high subtitle  | hasHighSubtitle  | `pe-list-tile--high-subtitle` |
-| Has front content  | hasFront         | `pe-list-tile--front` |
-| Compact            | compact          | `pe-list-tile--compact` |
-| Hoverable          | hoverable        | `pe-list-tile--hoverable` |
-| Selectable         | selectable       | `pe-list-tile--selectable` |
+See: `src/classes.js`
 

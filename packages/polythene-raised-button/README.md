@@ -94,7 +94,5 @@ Raised button is composed from:
 
 ## CSS classes
 
-| **Element**    | **Key**     |  **Class** |
-| -------------- | ----------- | --------------- |
-| Component      | component   | `pe-button pe-text-button pe-raised-button` |
+See: `src/classes.js`
 

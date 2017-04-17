@@ -1,6 +1,10 @@
 
 export default {
   component: "pe-button pe-icon-button",
+
+  // elements
   content:   "pe-icon-button__content",
-  compact:   "pe-icon-button--compact"
+
+  // states
+  compact:   "pe-icon-button--compact",
 };

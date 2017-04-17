@@ -371,19 +371,7 @@ Menu also contains:
 
 ## CSS classes
 
-| **Element**    | **Key**     |  **Class** |
-| -------------- | ----------- | --------------- |
-| Component      | component   | `pe-menu` |
-| Content        | content     | `pe-menu__content` |
-| Placeholder    | placeholder | `pe-menu__placeholder` |
-| Target         | target      | `pe-menu__target` |
-
-| **State**      | **Key**     |  **Class** |
-| -------------- | ----------- | --------------- |
-| Visible        | visible     | `pe-menu--visible` |
-| Permanent      | permanent   | `pe-menu--permanent` |
-| Width          | width_n     | `pe-menu--width-` |
-| Auto width     | width_auto  | `pe-menu--width-auto` |
+See: `src/classes.js`
 
 
 

@@ -449,24 +449,9 @@ Snackbar is composed from:
 
 ## CSS classes
 
+See: `src/classes.js`
+
 Snackbar inherits some classes from [Notification](../polythene-notification).
-
-| **Element**    | **Key**     |  **Class** |
-| -------------- | ----------- | --------------- |
-| Component      | component   | `pe-notification pe-snackbar` |
-| Holder         | holder      | `pe-snackbar__holder` |
-| Placeholder    | placeholder | `pe-snackbar__placeholder` |
-| Content        | content     | `pe-notification__content` |
-| Title          | title       | `pe-notification__title` |
-| Action         | action      | `pe-notification__action` |
-
-| **State**             | **Key**           |  **Class** |
-| --------------------- | ----------------- | --------------- |
-| Horizontal layout     | horizontal        | `pe-notification--horizontal` |
-| Vertical layout       | vertical          | `pe-notification--vertical` |
-| Has multi line title  | multilineTitle    | `pe-notification__title--multiline` |
-| Has container         | hasContainer      | `pe-notification--container` |
-| Is open               | isOpen            | `pe-snackbar--open` |
 
 
 

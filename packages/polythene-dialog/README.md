@@ -389,26 +389,7 @@ Dialog is composed from:
 
 ## CSS classes
 
-| **Element**    | **Key**     |  **Class** |
-| -------------- | ----------- | --------------- |
-| Component      | component   | `pe-dialog` |
-| Content        | body        | `pe-dialog__body` |
-| Content        | content     | `pe-dialog__content` |
-| Menu content (when `menu` is used) | menuContent    | `pe-menu__content` |
-| Header         | header      | `pe-dialog__header` |
-| Footer         | footer      | `pe-dialog__footer` |
-| Title          | title       | `pe-dialog__title` |
-| Actions        | actions     | `pe-dialog__actions` |
-
-| **State**           | **Key**           |  **Class** |
-| ------------------- | ----------------- | --------------- |
-| Visible             | visible           | `pe-dialog--visible` |
-| Fullscreen          | fullscreen        | `pe-dialog--fullscreen` |
-| Inactive            | inactive          | `pe-dialog--inactive` |
-| Has backdrop        | hasBackdrop       | `pe-dialog--backdrop` |
-| Has top overflow    | hasTopOverflow    | `pe-dialog--overflow-top` |
-| Has bottom overflow | hasBottomOverflow | `pe-dialog--overflow-bottom` |
-| High footer         | footerHigh        | `pe-dialog__footer--high` |
+See: `src/classes.js`
 
 
 

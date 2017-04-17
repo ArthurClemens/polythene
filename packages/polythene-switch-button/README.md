@@ -177,19 +177,6 @@ Switch is composed from:
 
 ## CSS classes
 
+See: `src/classes.js`
+
 See also: [Selection control classes](../polythene-selection-control) 
-
-### Control
-
-| **Element** | **Key**     |  **Class** |
-| ----------- | ----------- | --------------- |
-| Component   | component   | `pe-switch-control` |
-
-### Control view
-
-| **Element** | **Key**     |  **Class** |
-| ----------- | ----------- | --------------- |
-| Track       | track       | `pe-switch-control__track` |
-| Thumb       | thumb       | `pe-switch-control__thumb` |
-| Knob        | knob        | `pe-switch-control__knob` |
-

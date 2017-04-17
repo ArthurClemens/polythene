@@ -5,14 +5,16 @@ import { vars as vars$1 } from 'polythene-theme';
 
 var classes = {
   component: "pe-md-spinner",
+
+  // elements
   animation: "pe-md-spinner__animation",
-  layer: "pe-md-spinner__layer",
-  layerN: "pe-md-spinner__layer--",
-  gapPatch: "pe-md-spinner__gap-patch",
   circle: "pe-md-spinner__circle",
   circleClipper: "pe-md-spinner__circle-clipper",
   circleClipperLeft: "pe-md-spinner__circle-clipper-left",
-  circleClipperRight: "pe-md-spinner__circle-clipper-right"
+  circleClipperRight: "pe-md-spinner__circle-clipper-right",
+  gapPatch: "pe-md-spinner__gap-patch",
+  layer: "pe-md-spinner__layer",
+  layerN: "pe-md-spinner__layer-"
 };
 
 /*
@@ -243,7 +245,7 @@ var kfLayer4FadeInOut = function kfLayer4FadeInOut() {
 };
 
 var layerAnimation = function layerAnimation(config, num) {
-  return _defineProperty({}, "&.pe-md-spinner__layer--" + num, {
+  return _defineProperty({}, "&.pe-md-spinner__layer-" + num, {
     animation: "mdSpinnerFillUnfillRotate " + 4 * config.arc_time + "s " + CURVE_INFINITE + ",  mdSpinnerLayer" + num + "FadeInOut " + 4 * config.arc_time + "s " + CURVE_INFINITE
   });
 };

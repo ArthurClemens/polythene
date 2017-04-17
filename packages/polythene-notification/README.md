@@ -449,22 +449,7 @@ Notification is composed from:
 
 ## CSS classes
 
-| **Element**    | **Key**     |  **Class** |
-| -------------- | ----------- | --------------- |
-| Component      | component   | `pe-notification` |
-| Holder         | holder      | `pe-notification__holder` |
-| Placeholder    | placeholder | `pe-notification__placeholder` |
-| Content        | content     | `pe-notification__content` |
-| Title          | title       | `pe-notification__title` |
-| Action         | action      | `pe-notification__action` |
-
-| **State**             | **Key**           |  **Class** |
-| --------------------- | ----------------- | --------------- |
-| Horizontal layout     | horizontal        | `pe-notification--horizontal` |
-| Vertical layout       | vertical          | `pe-notification--vertical` |
-| Has multi line title  | multilineTitle    | `pe-notification__title--multiline` |
-| Has container         | hasContainer      | `pe-notification--container` |
-| Is open               | isOpen            | `pe-notification--open` |
+See: `src/classes.js`
 
 
 

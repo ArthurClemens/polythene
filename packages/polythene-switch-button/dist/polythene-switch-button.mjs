@@ -7,9 +7,11 @@ import { vars as vars$2 } from 'polythene-theme';
 
 var classes = {
   component: "pe-switch-control",
-  track: "pe-switch-control__track",
+
+  // elements
+  knob: "pe-switch-control__knob",
   thumb: "pe-switch-control__thumb",
-  knob: "pe-switch-control__knob"
+  track: "pe-switch-control__track"
 };
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };

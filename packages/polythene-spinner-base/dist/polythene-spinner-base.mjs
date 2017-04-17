@@ -6,18 +6,22 @@ import { vars } from 'polythene-theme';
 
 var classes = {
   component: "pe-spinner",
-  placeholder: "pe-spinner__placeholder",
+
+  // elements
   animation: "pe-spinner__animation",
-  visible: "pe-spinner--visible",
-  small: "pe-spinner--small",
-  regular: "pe-spinner--regular",
-  medium: "pe-spinner--medium",
-  large: "pe-spinner--large",
+  placeholder: "pe-spinner__placeholder",
+
+  // states
+  animated: "pe-spinner--animated",
   fab: "pe-spinner--fab",
-  raised: "pe-spinner--raised",
+  large: "pe-spinner--large",
+  medium: "pe-spinner--medium",
   permanent: "pe-spinner--permanent",
+  raised: "pe-spinner--raised",
+  regular: "pe-spinner--regular",
   singleColor: "pe-spinner--single-color",
-  animated: "pe-spinner--animated"
+  small: "pe-spinner--small",
+  visible: "pe-spinner--visible"
 };
 
 var rgba = vars.rgba;

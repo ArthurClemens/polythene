@@ -6,7 +6,11 @@ import { vars } from 'polythene-theme';
 
 var classes = {
   component: "pe-fab",
+
+  // elements
   content: "pe-fab__content",
+
+  // states
   mini: "pe-fab--mini"
 };
 

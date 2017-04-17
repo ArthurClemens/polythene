@@ -7,8 +7,12 @@ var _extends$2 = Object.assign || function (target) { for (var i = 1; i < argume
 
 var classes$1 = _extends$2({}, classes, {
   component: "pe-notification pe-snackbar",
+
+  // elements
   holder: "pe-snackbar__holder",
   placeholder: "pe-snackbar__placeholder",
+
+  // states
   open: "pe-snackbar--open"
 });
 

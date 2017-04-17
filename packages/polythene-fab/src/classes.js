@@ -1,6 +1,10 @@
 
 export default {
   component: "pe-fab",
+
+  // elements
   content:   "pe-fab__content",
-  mini:      "pe-fab--mini"
+
+  // states
+  mini:      "pe-fab--mini",
 };
