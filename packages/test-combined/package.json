@@ -1,6 +1,5 @@
 {
   "name": "test-combined",
-  "version": "1.0.0-rc.1",
   "description": "",
   "main": "dist/js/test.js",
   "module": "dist/js/test.mjs",

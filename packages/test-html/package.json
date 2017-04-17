@@ -1,0 +1,11 @@
+{
+  "name": "test-html",
+  "description": "",
+  "scripts": {
+    "dev": "http-server -p 3000",
+    "update": "cp ../polythene/dist/polythene.js js/ && cp ../polythene/dist/polythene.js.map js/"
+  },
+  "devDependencies": {
+    "http-server": "^0.9.0"
+  }
+}
