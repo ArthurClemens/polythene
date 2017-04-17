@@ -8,6 +8,12 @@ export default {
   size_large:   6 * vars.grid_unit_component,
   size_fab:     7 * vars.grid_unit_component,
 
+  raisedSize: size => {
+    const padding = size * 0.25;
+    const paddedSize = size + padding * 2;
+    return { padding, paddedSize };
+  },
+
   color_light_raised_background: rgba(vars.color_light_background),
   // also use light background with dark theme
   color_dark_raised_background: rgba(vars.color_light_background)

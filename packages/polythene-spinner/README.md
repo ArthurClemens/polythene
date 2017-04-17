@@ -1,10 +1,133 @@
-# Spinner (base)
+# Spinner
 
-Base functionality for:
+Available themed spinners:
 
 * [Material Design spinner](../polythene-md-spinner)
 * [Material Design "end" spinner](../polythene-md-end-spinner)
 * [iOS spinner](../polythene-ios-spinner)
+
+
+
+## Usage
+
+~~~javascript
+import spinner from "polythene-md-spinner";
+
+m(spinner);
+~~~
+
+Creates a typical Material Design (indeterminate) spinner.
+
+
+
+### Show / hide
+
+By default the spinner is hidden, unless:
+
+* option `show` is true
+* option `show` has a value in delay seconds, the spinner will show after the delay
+* option `hide` is false
+* options `permanent` is true (for testing and demos)
+
+
+
+### Determinate "end" spinner
+
+The end spinner draws a circle between 0 and 360 degrees. The completeness is set with `percentage`, a range between `0.0` and `1.0`. This value would normally be set by a progress function, for instance a loader.
+
+For demonstration purposes, this can be emulated with a "step" function that updates the percentage until 1.0 is reached:
+
+~~~javascript
+import spinner from "polythene-md-end-spinner";
+
+const test = {
+  oninit: vnode => {
+    let start = null;
+
+    vnode.state.percentage = 0;
+    vnode.state.resetStep = () => {
+      start = null;
+    };
+
+    vnode.state.step = timestamp => {
+      if (!start) start = timestamp;
+      const progress = timestamp - start;
+      vnode.state.percentage = Math.min(1, 1.0 / STEP_DURATION * progress);
+      
+      m.redraw();
+      if (progress < STEP_DURATION) {
+        window.requestAnimationFrame(vnode.state.step);
+      }
+    };
+  },
+  view: ({ state }) =>
+    m(spinner, {
+      percentage: state.percentage,
+      animated: true,     // animated the steps "in between"
+      updateDuration: 1.0 // duration of that animation
+      // ... other options
+    })
+};
+
+m(test);
+~~~
+
+
+
+
+## Appearance
+
+### Styling
+
+Below are examples how to change the spinner appearance, either with a theme or with CSS.
+
+You can find more information about theming in [Theme](../polythene-theme).
+
+#### Themed component
+
+~~~javascript
+spinner.theme(".themed-spinner", {
+  color_light_background: "#2196F3",
+  border_radius:          0
+});
+
+m(spinner, {
+  class: "themed-spinner",
+  // ... other options
+});
+~~~
+
+#### CSS
+
+Change CSS using the CSS Classes at the bottom of this page.
+
+When `singleColor` is specified, the primary color is used. Override this by setting the CSS `color` attribute:
+
+~~~css
+.pe-spinner {
+  color: red
+}
+~~~
+
+#### Style
+
+Some style attributes can be set using option `style`
+
+~~~javascript
+m(spinner, {
+  singleColor: true, // required to use color with polythene-md-spinner
+  style: {
+    color: "#2196F3"
+  }
+});
+~~~
+
+#### Dark or light tone
+
+If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 
+
+* Use `tone: "dark"` to render light on dark
+* Use `tone: "light"` to locally render normally when dark tone is set
 
 
 
@@ -39,13 +162,13 @@ Base functionality for:
 | **raised** | optional | Boolean | | Set to `true` to create a FAB-like appearance with shadow and whitespace around the spinner |
 | **z** | optional | Number 0-5 | 1 (if `raised` is set) | Depth of the shadow |
 
-### Material Design spinner options
+### polythene-md-spinner options
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **singleColor** | optional | Boolean | | Set to true to use only one color (by default the primary color) |
 
-### Material Design "end" spinner options
+### polythene-md-end-spinner options
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |

@@ -1,9 +1,9 @@
 {
-  "name": "polythene-md-spinner",
+  "name": "polythene-spinner",
   "version": "1.0.0-rc.1",
   "description": "",
-  "main": "dist/polythene-md-spinner.js",
-  "module": "dist/polythene-md-spinner.mjs",
+  "main": "dist/polythene-spinner.js",
+  "module": "dist/polythene-spinner.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
@@ -17,7 +17,7 @@
     "mithril": "1.1.0",
     "polythene-core": "1.0.0-rc.1",
     "polythene-css": "1.0.0-rc.1",
-    "polythene-spinner": "1.0.0-rc.1",
+    "polythene-shadow": "1.0.0-rc.1",
     "polythene-theme": "1.0.0-rc.1"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",

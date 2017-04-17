@@ -1,5 +1,5 @@
 import m from 'mithril';
-import spinner, { vars } from 'polythene-spinner-base';
+import spinner, { vars } from 'polythene-spinner';
 import { mixin, styler } from 'polythene-css';
 import { vars as vars$1 } from 'polythene-theme';
 
@@ -393,16 +393,16 @@ var style = function style(scopes, selector, componentVars, tint) {
     },
 
     ":not(.pe-spinner--single-color)": {
-      " .pe-md-spinner__layer--1": {
+      " .pe-md-spinner__layer-1": {
         borderColor: componentVars["color_" + tint + "_1"]
       },
-      " .pe-md-spinner__layer--2": {
+      " .pe-md-spinner__layer-2": {
         borderColor: componentVars["color_" + tint + "_2"]
       },
-      " .pe-md-spinner__layer--3": {
+      " .pe-md-spinner__layer-3": {
         borderColor: componentVars["color_" + tint + "_3"]
       },
-      " .pe-md-spinner__layer--4": {
+      " .pe-md-spinner__layer-4": {
         borderColor: componentVars["color_" + tint + "_4"]
       }
     }

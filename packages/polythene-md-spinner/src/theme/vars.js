@@ -11,7 +11,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 */
 
 import { vars } from "polythene-theme";
-import { vars as baseVars } from "polythene-spinner-base";
+import { vars as baseVars } from "polythene-spinner";
 const rgba = vars.rgba;
 
 const arc_size =          270; // degrees - amount of circle the arc takes up

@@ -1,5 +1,5 @@
 import m from "mithril";
-import spinner from "polythene-spinner-base";
+import spinner from "polythene-spinner";
 import { customTheme } from "./theme";
 import classes from "./classes";
 

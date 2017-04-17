@@ -19,16 +19,16 @@ const style = (scopes, selector, componentVars, tint) => [{
     },
 
     ":not(.pe-spinner--single-color)": {
-      " .pe-md-spinner__layer--1": {
+      " .pe-md-spinner__layer-1": {
         borderColor: componentVars["color_" + tint + "_1"]
       },
-      " .pe-md-spinner__layer--2": {
+      " .pe-md-spinner__layer-2": {
         borderColor: componentVars["color_" + tint + "_2"]
       },
-      " .pe-md-spinner__layer--3": {
+      " .pe-md-spinner__layer-3": {
         borderColor: componentVars["color_" + tint + "_3"]
       },
-      " .pe-md-spinner__layer--4": {
+      " .pe-md-spinner__layer-4": {
         borderColor: componentVars["color_" + tint + "_4"]
       }
     }

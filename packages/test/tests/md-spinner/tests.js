@@ -93,15 +93,18 @@ export const tests = [
     ])
   },
   {
-    name: "Option: singleColor",
+    name: "Theme (color)",
     component: toggle([{
-      singleColor: true
+      class: "tests-spinner-themed-spinner"
     }])
   },
   {
-    name: "Theme (colors)",
+    name: "Style (color)",
     component: toggle([{
-      class: "tests-spinner-themed-spinner"
+      singleColor: true,
+      style: {
+        color: "#2196F3"
+      }
     }])
   },
 

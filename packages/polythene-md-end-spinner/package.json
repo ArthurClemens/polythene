@@ -1,9 +1,9 @@
 {
-  "name": "polythene-spinner-base",
+  "name": "polythene-md-end-spinner",
   "version": "1.0.0-rc.1",
   "description": "",
-  "main": "dist/polythene-spinner-base.js",
-  "module": "dist/polythene-spinner-base.mjs",
+  "main": "dist/polythene-md-end-spinner.js",
+  "module": "dist/polythene-md-end-spinner.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
@@ -17,8 +17,9 @@
     "mithril": "1.1.0",
     "polythene-core": "1.0.0-rc.1",
     "polythene-css": "1.0.0-rc.1",
-    "polythene-shadow": "1.0.0-rc.1",
-    "polythene-theme": "1.0.0-rc.1"
+    "polythene-spinner": "1.0.0-rc.1",
+    "polythene-theme": "1.0.0-rc.1",
+    "polythene-utilities": "1.0.0-rc.1"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

@@ -1,0 +1,483 @@
+exports[`test Interactive (animated, updateDuration) 1`] = `
+"<div style=\"display: flex; width: 100%; margin: 0px 0px 20px 0px;\">
+  <div class=\"pe-slider pe-slider--track pe-slider--min\">
+    <div class=\"pe-slider__track\">
+      <div class=\"pe-slider__track-part pe-slider__track-value\">
+        <div class=\"pe-slider__track-bar\">
+          <div class=\"pe-slider__track-bar-value\"></div>
+        </div>
+      </div>
+      <div tabindex=\"0\" class=\"pe-slider__control\"></div>
+      <div style=\"max-width: 100%;\" class=
+      \"pe-slider__track-part pe-slider__track-rest\">
+        <div class=\"pe-slider__track-bar\">
+          <div class=\"pe-slider__track-bar-value\"></div>
+        </div>
+      </div>
+    </div>
+    <div class=
+    \"pe-spinner pe-spinner--regular pe-spinner--animated pe-md-end-spinner self-center\">
+    <div style=\"width: 32px; height: 32px;\" class=
+    \"pe-md-end-spinner__animation\">
+        <div class=
+        \"pe-md-end-spinner__circle pe-md-end-spinner__circle-left\">
+        </div>
+        <div class=
+        \"pe-md-end-spinner__circle pe-md-end-spinner__circle-right\">
+        </div>
+      </div>
+    </div>
+  </div>
+</div><a tabindex=\"0\" class=
+\"pe-button pe-text-button pe-raised-button\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-ripple pe-ripple--constrained\">
+    <div class=\"pe-ripple__mask\">
+      <div class=\"pe-ripple__waves\"></div>
+    </div>
+  </div>
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Run
+  </div>
+</div></a>
+"
+`;
+
+exports[`test Interactive (no animation) 1`] = `
+"<div style=\"display: flex; width: 100%; margin: 0px 0px 20px 0px;\">
+  <div class=\"pe-slider pe-slider--track pe-slider--min\">
+    <div class=\"pe-slider__track\">
+      <div class=\"pe-slider__track-part pe-slider__track-value\">
+        <div class=\"pe-slider__track-bar\">
+          <div class=\"pe-slider__track-bar-value\"></div>
+        </div>
+      </div>
+      <div tabindex=\"0\" class=\"pe-slider__control\"></div>
+      <div style=\"max-width: 100%;\" class=
+      \"pe-slider__track-part pe-slider__track-rest\">
+        <div class=\"pe-slider__track-bar\">
+          <div class=\"pe-slider__track-bar-value\"></div>
+        </div>
+      </div>
+    </div>
+    <div class=
+    \"pe-spinner pe-spinner--regular pe-md-end-spinner self-center\">
+      <div style=\"width: 32px; height: 32px;\" class=
+      \"pe-md-end-spinner__animation\">
+        <div class=
+        \"pe-md-end-spinner__circle pe-md-end-spinner__circle-left\">
+        </div>
+        <div class=
+        \"pe-md-end-spinner__circle pe-md-end-spinner__circle-right\">
+        </div>
+      </div>
+    </div>
+  </div>
+</div><a tabindex=\"0\" class=
+\"pe-button pe-text-button pe-raised-button\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-ripple pe-ripple--constrained\">
+    <div class=\"pe-ripple__mask\">
+      <div class=\"pe-ripple__waves\"></div>
+    </div>
+  </div>
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Run
+  </div>
+</div></a>
+"
+`;
+
+exports[`test No options -- dark tone class 1`] = `
+"<a tabindex=\"0\" class=\"pe-button pe-text-button pe-raised-button\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-ripple pe-ripple--constrained\">
+    <div class=\"pe-ripple__mask\">
+      <div class=\"pe-ripple__waves\"></div>
+    </div>
+  </div>
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Run
+  </div>
+</div></a>
+<div style=\"display: flex; width: 100%; margin: 20px 0px 0px 0px;\">
+  <div style=\"margin-right: 20px; width: 100%;\">
+    <div class=\"pe-spinner pe-spinner--regular pe-md-end-spinner\">
+      <div style=\"width: 32px; height: 32px;\" class=
+      \"pe-md-end-spinner__animation\">
+        <div class=
+        \"pe-md-end-spinner__circle pe-md-end-spinner__circle-left\">
+        </div>
+        <div class=
+        \"pe-md-end-spinner__circle pe-md-end-spinner__circle-right\">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: permanent, percentage (0.5) 1`] = `
+"<div class=
+\"pe-spinner pe-spinner--regular pe-spinner--permanent pe-md-end-spinner\">
+<div style=\"width: 32px; height: 32px;\" class=
+\"pe-md-end-spinner__animation\">
+    <div class=
+    \"pe-md-end-spinner__circle pe-md-end-spinner__circle-left\"
+    style=\"clip: rect(0px, 16px, 32px, 0px);\"></div>
+    <div class=
+    \"pe-md-end-spinner__circle pe-md-end-spinner__circle-right\"
+    style=\"clip: rect(0px, 16px, 32px, 0px);\"></div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: raised, z 1`] = `
+"<a tabindex=\"0\" class=\"pe-button pe-text-button pe-raised-button\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-ripple pe-ripple--constrained\">
+    <div class=\"pe-ripple__mask\">
+      <div class=\"pe-ripple__waves\"></div>
+    </div>
+  </div>
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Run
+  </div>
+</div></a>
+<div style=\"display: flex; width: 100%; margin: 20px 0px 0px 0px;\">
+  <div style=\"margin-right: 20px; width: 100%;\">
+    <div class=
+    \"pe-spinner pe-spinner--regular pe-spinner--raised pe-md-end-spinner\">
+    <div class=\"pe-shadow\">
+        <div class=\"pe-shadow__bottom pe-shadow--z-0\"></div>
+        <div class=\"pe-shadow__top pe-shadow--z-0\"></div>
+      </div>
+      <div style=\"width: 32px; height: 32px;\" class=
+      \"pe-md-end-spinner__animation\">
+        <div class=
+        \"pe-md-end-spinner__circle pe-md-end-spinner__circle-left\">
+        </div>
+        <div class=
+        \"pe-md-end-spinner__circle pe-md-end-spinner__circle-right\">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style=\"margin-right: 20px; width: 100%;\">
+    <div class=
+    \"pe-spinner pe-spinner--regular pe-spinner--raised pe-md-end-spinner\">
+    <div class=\"pe-shadow\">
+        <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+        <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+      </div>
+      <div style=\"width: 32px; height: 32px;\" class=
+      \"pe-md-end-spinner__animation\">
+        <div class=
+        \"pe-md-end-spinner__circle pe-md-end-spinner__circle-left\">
+        </div>
+        <div class=
+        \"pe-md-end-spinner__circle pe-md-end-spinner__circle-right\">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style=\"margin-right: 20px; width: 100%;\">
+    <div class=
+    \"pe-spinner pe-spinner--regular pe-spinner--raised pe-md-end-spinner\">
+    <div class=\"pe-shadow\">
+        <div class=\"pe-shadow__bottom pe-shadow--z-2\"></div>
+        <div class=\"pe-shadow__top pe-shadow--z-2\"></div>
+      </div>
+      <div style=\"width: 32px; height: 32px;\" class=
+      \"pe-md-end-spinner__animation\">
+        <div class=
+        \"pe-md-end-spinner__circle pe-md-end-spinner__circle-left\">
+        </div>
+        <div class=
+        \"pe-md-end-spinner__circle pe-md-end-spinner__circle-right\">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style=\"margin-right: 20px; width: 100%;\">
+    <div class=
+    \"pe-spinner pe-spinner--regular pe-spinner--raised pe-md-end-spinner\">
+    <div class=\"pe-shadow\">
+        <div class=\"pe-shadow__bottom pe-shadow--z-3\"></div>
+        <div class=\"pe-shadow__top pe-shadow--z-3\"></div>
+      </div>
+      <div style=\"width: 32px; height: 32px;\" class=
+      \"pe-md-end-spinner__animation\">
+        <div class=
+        \"pe-md-end-spinner__circle pe-md-end-spinner__circle-left\">
+        </div>
+        <div class=
+        \"pe-md-end-spinner__circle pe-md-end-spinner__circle-right\">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style=\"margin-right: 20px; width: 100%;\">
+    <div class=
+    \"pe-spinner pe-spinner--regular pe-spinner--raised pe-md-end-spinner\">
+    <div class=\"pe-shadow\">
+        <div class=\"pe-shadow__bottom pe-shadow--z-4\"></div>
+        <div class=\"pe-shadow__top pe-shadow--z-4\"></div>
+      </div>
+      <div style=\"width: 32px; height: 32px;\" class=
+      \"pe-md-end-spinner__animation\">
+        <div class=
+        \"pe-md-end-spinner__circle pe-md-end-spinner__circle-left\">
+        </div>
+        <div class=
+        \"pe-md-end-spinner__circle pe-md-end-spinner__circle-right\">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style=\"margin-right: 20px; width: 100%;\">
+    <div class=
+    \"pe-spinner pe-spinner--regular pe-spinner--raised pe-md-end-spinner\">
+    <div class=\"pe-shadow\">
+        <div class=\"pe-shadow__bottom pe-shadow--z-5\"></div>
+        <div class=\"pe-shadow__top pe-shadow--z-5\"></div>
+      </div>
+      <div style=\"width: 32px; height: 32px;\" class=
+      \"pe-md-end-spinner__animation\">
+        <div class=
+        \"pe-md-end-spinner__circle pe-md-end-spinner__circle-left\">
+        </div>
+        <div class=
+        \"pe-md-end-spinner__circle pe-md-end-spinner__circle-right\">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: type (small, regular, medium, large, fab) 1`] = `
+"<a tabindex=\"0\" class=\"pe-button pe-text-button pe-raised-button\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-ripple pe-ripple--constrained\">
+    <div class=\"pe-ripple__mask\">
+      <div class=\"pe-ripple__waves\"></div>
+    </div>
+  </div>
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Run
+  </div>
+</div></a>
+<div style=\"display: flex; width: 100%; margin: 20px 0px 0px 0px;\">
+  <div style=\"margin-right: 20px; width: 100%;\">
+    <div class=\"pe-spinner pe-spinner--small pe-md-end-spinner\">
+      <div style=\"width: 24px; height: 24px;\" class=
+      \"pe-md-end-spinner__animation\">
+        <div class=
+        \"pe-md-end-spinner__circle pe-md-end-spinner__circle-left\">
+        </div>
+        <div class=
+        \"pe-md-end-spinner__circle pe-md-end-spinner__circle-right\">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style=\"margin-right: 20px; width: 100%;\">
+    <div class=\"pe-spinner pe-spinner--regular pe-md-end-spinner\">
+      <div style=\"width: 32px; height: 32px;\" class=
+      \"pe-md-end-spinner__animation\">
+        <div class=
+        \"pe-md-end-spinner__circle pe-md-end-spinner__circle-left\">
+        </div>
+        <div class=
+        \"pe-md-end-spinner__circle pe-md-end-spinner__circle-right\">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style=\"margin-right: 20px; width: 100%;\">
+    <div class=\"pe-spinner pe-spinner--medium pe-md-end-spinner\">
+      <div style=\"width: 40px; height: 40px;\" class=
+      \"pe-md-end-spinner__animation\">
+        <div class=
+        \"pe-md-end-spinner__circle pe-md-end-spinner__circle-left\">
+        </div>
+        <div class=
+        \"pe-md-end-spinner__circle pe-md-end-spinner__circle-right\">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style=\"margin-right: 20px; width: 100%;\">
+    <div class=\"pe-spinner pe-spinner--large pe-md-end-spinner\">
+      <div style=\"width: 48px; height: 48px;\" class=
+      \"pe-md-end-spinner__animation\">
+        <div class=
+        \"pe-md-end-spinner__circle pe-md-end-spinner__circle-left\">
+        </div>
+        <div class=
+        \"pe-md-end-spinner__circle pe-md-end-spinner__circle-right\">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style=\"margin-right: 20px; width: 100%;\">
+    <div class=\"pe-spinner pe-spinner--fab pe-md-end-spinner\">
+      <div style=\"width: 56px; height: 56px;\" class=
+      \"pe-md-end-spinner__animation\">
+        <div class=
+        \"pe-md-end-spinner__circle pe-md-end-spinner__circle-left\">
+        </div>
+        <div class=
+        \"pe-md-end-spinner__circle pe-md-end-spinner__circle-right\">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Style (color) 1`] = `
+"<a tabindex=\"0\" class=\"pe-button pe-text-button pe-raised-button\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-ripple pe-ripple--constrained\">
+    <div class=\"pe-ripple__mask\">
+      <div class=\"pe-ripple__waves\"></div>
+    </div>
+  </div>
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Run
+  </div>
+</div></a>
+<div style=\"display: flex; width: 100%; margin: 20px 0px 0px 0px;\">
+  <div style=\"margin-right: 20px; width: 100%;\">
+    <div style=\"color: rgb(33, 150, 243);\" class=
+    \"pe-spinner pe-spinner--regular pe-md-end-spinner\">
+      <div style=\"width: 32px; height: 32px;\" class=
+      \"pe-md-end-spinner__animation\">
+        <div class=
+        \"pe-md-end-spinner__circle pe-md-end-spinner__circle-left\">
+        </div>
+        <div class=
+        \"pe-md-end-spinner__circle pe-md-end-spinner__circle-right\">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Theme (color) 1`] = `
+"<a tabindex=\"0\" class=\"pe-button pe-text-button pe-raised-button\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-ripple pe-ripple--constrained\">
+    <div class=\"pe-ripple__mask\">
+      <div class=\"pe-ripple__waves\"></div>
+    </div>
+  </div>
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Run
+  </div>
+</div></a>
+<div style=\"display: flex; width: 100%; margin: 20px 0px 0px 0px;\">
+  <div style=\"margin-right: 20px; width: 100%;\">
+    <div class=
+    \"pe-spinner pe-spinner--regular pe-md-end-spinner tests-spinner-themed-spinner\">
+    <div style=\"width: 32px; height: 32px;\" class=
+    \"pe-md-end-spinner__animation\">
+        <div class=
+        \"pe-md-end-spinner__circle pe-md-end-spinner__circle-left\">
+        </div>
+        <div class=
+        \"pe-md-end-spinner__circle pe-md-end-spinner__circle-right\">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Theme (colors) -- dark tone class 1`] = `
+"<a tabindex=\"0\" class=\"pe-button pe-text-button pe-raised-button\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-ripple pe-ripple--constrained\">
+    <div class=\"pe-ripple__mask\">
+      <div class=\"pe-ripple__waves\"></div>
+    </div>
+  </div>
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Run
+  </div>
+</div></a>
+<div style=\"display: flex; width: 100%; margin: 20px 0px 0px 0px;\">
+  <div style=\"margin-right: 20px; width: 100%;\">
+    <div class=
+    \"pe-spinner pe-spinner--regular pe-md-end-spinner tests-spinner-themed-spinner\">
+    <div style=\"width: 32px; height: 32px;\" class=
+    \"pe-md-end-spinner__animation\">
+        <div class=
+        \"pe-md-end-spinner__circle pe-md-end-spinner__circle-left\">
+        </div>
+        <div class=
+        \"pe-md-end-spinner__circle pe-md-end-spinner__circle-right\">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;

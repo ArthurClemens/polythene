@@ -33,6 +33,12 @@ var vars$1 = {
   size_large: 6 * vars.grid_unit_component,
   size_fab: 7 * vars.grid_unit_component,
 
+  raisedSize: function raisedSize(size) {
+    var padding = size * 0.25;
+    var paddedSize = size + padding * 2;
+    return { padding: padding, paddedSize: paddedSize };
+  },
+
   color_light_raised_background: rgba(vars.color_light_background),
   // also use light background with dark theme
   color_dark_raised_background: rgba(vars.color_light_background)
@@ -47,9 +53,11 @@ var sizes = function sizes(size) {
   };
 };
 
-var sizesRaised = function sizesRaised(size) {
-  var padding = size / 4;
-  var paddedSize = size + padding * 2;
+var raisedSize = function raisedSize(size, componentVars) {
+  var _componentVars$raised = componentVars.raisedSize(size),
+      padding = _componentVars$raised.padding,
+      paddedSize = _componentVars$raised.paddedSize;
+
   return {
     width: paddedSize + "px",
     height: paddedSize + "px",
@@ -77,11 +85,11 @@ var layout = (function (selector, componentVars) {
       position: "relative",
       borderRadius: "50%",
 
-      ".pe-spinner--small": sizesRaised(componentVars.size_small),
-      ".pe-spinner--regular": sizesRaised(componentVars.size_regular),
-      ".pe-spinner--medium": sizesRaised(componentVars.size_medium),
-      ".pe-spinner--large": sizesRaised(componentVars.size_large),
-      ".pe-spinner--fab": sizesRaised(componentVars.size_fab)
+      ".pe-spinner--small": raisedSize(componentVars.size_small, componentVars),
+      ".pe-spinner--regular": raisedSize(componentVars.size_regular, componentVars),
+      ".pe-spinner--medium": raisedSize(componentVars.size_medium, componentVars),
+      ".pe-spinner--large": raisedSize(componentVars.size_large, componentVars),
+      ".pe-spinner--fab": raisedSize(componentVars.size_fab, componentVars)
     }
   })];
 });

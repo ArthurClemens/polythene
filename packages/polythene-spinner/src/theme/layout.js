@@ -4,9 +4,8 @@ const sizes = size => ({
   height: size + "px"
 });
 
-const sizesRaised = size => {
-  const padding = size / 4;
-  const paddedSize = size + padding * 2;
+const raisedSize = (size, componentVars) => {
+  const { padding, paddedSize } = componentVars.raisedSize(size);
   return {
     width:   paddedSize + "px",
     height:  paddedSize + "px",
@@ -34,11 +33,11 @@ export default (selector, componentVars) => [{
       position: "relative",
       borderRadius: "50%",
 
-      ".pe-spinner--small":   sizesRaised(componentVars.size_small),
-      ".pe-spinner--regular": sizesRaised(componentVars.size_regular),
-      ".pe-spinner--medium":  sizesRaised(componentVars.size_medium),
-      ".pe-spinner--large":   sizesRaised(componentVars.size_large),
-      ".pe-spinner--fab":     sizesRaised(componentVars.size_fab)
+      ".pe-spinner--small":   raisedSize(componentVars.size_small,   componentVars),
+      ".pe-spinner--regular": raisedSize(componentVars.size_regular, componentVars),
+      ".pe-spinner--medium":  raisedSize(componentVars.size_medium,  componentVars),
+      ".pe-spinner--large":   raisedSize(componentVars.size_large,   componentVars),
+      ".pe-spinner--fab":     raisedSize(componentVars.size_fab,     componentVars)
     }
   }
 }];
