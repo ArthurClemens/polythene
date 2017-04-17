@@ -441,7 +441,7 @@ var view = function view(_ref) {
   attrs.content = m("div", { class: classes.animation }, [1, 2, 3, 4].map(function (num) {
     return layer(num);
   }));
-  attrs.class = [classes.component, attrs.class].join(" ");
+  attrs.instanceClass = classes.component;
   return m(spinner, attrs);
 };
 

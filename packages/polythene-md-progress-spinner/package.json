@@ -1,9 +1,9 @@
 {
-  "name": "polythene-md-end-spinner",
+  "name": "polythene-md-progress-spinner",
   "version": "1.0.0-rc.1",
   "description": "",
-  "main": "dist/polythene-md-end-spinner.js",
-  "module": "dist/polythene-md-end-spinner.mjs",
+  "main": "dist/polythene-md-progress-spinner.js",
+  "module": "dist/polythene-md-progress-spinner.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",

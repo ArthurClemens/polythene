@@ -40,10 +40,7 @@ const view = ({ attrs }) => {
   attrs.content = m("div",
     { class: classes.animation },
     [1,2,3,4].map(num => layer(num)));
-  attrs.class = [
-    classes.component,
-    attrs.class
-  ].join(" ");
+  attrs.instanceClass = classes.component;
   return m(spinner, attrs);
 };
 

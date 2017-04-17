@@ -3,7 +3,7 @@ const style = (scopes, selector, componentVars, tint) => [{
   [scopes.map(s => s + selector).join(",")]: {
     color: componentVars["color_" + tint],
 
-    " .pe-md-end-spinner__circle": {
+    " .pe-md-progress-spinner__circle": {
       borderColor: "currentcolor"
     }
   }

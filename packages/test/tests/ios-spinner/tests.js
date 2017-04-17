@@ -1,12 +1,10 @@
 import m from "mithril";
-import spinner from "polythene-md-spinner";
+import spinner from "polythene-ios-spinner";
 import raisedButton from "polythene-raised-button";
 
-spinner.theme(".tests-spinner-themed-md-spinner", {
-  color_light_1: "orange",
-  color_light_2: "red",
-  color_light_3: "orange",
-  color_light_4: "red",
+spinner.theme(".tests-spinner-themed-ios-spinner", {
+  color_light: "green",
+  color_dark:  "yellow"
 });
 
 const toggle = (spinners = [{}]) => ({
@@ -27,11 +25,13 @@ const toggle = (spinners = [{}]) => ({
       },
       spinners.map(attrs => 
         m("div",
-          { style: { marginRight: "20px" } },
+          {
+            style: { marginRight: "20px" }
+          },
           m(spinner, Object.assign(
             {},
-            attrs,
-            { show: state.show ? (attrs.show || state.show) : false }
+            { show: state.show },
+            attrs
           ))
         )
       )
@@ -46,13 +46,6 @@ export const tests = [
     attrs: {
       permanent: true
     }
-  },
-  {
-    name: "Option: show (2s delay)",
-    interactive: true,
-    component: toggle([
-      { show: 2 }
-    ])
   },
   {
     name: "Option: type (small, regular, medium, large, fab)",
@@ -80,7 +73,7 @@ export const tests = [
     name: "Theme (color)",
     interactive: true,
     component: toggle([{
-      class: "tests-spinner-themed-md-spinner"
+      class: "tests-spinner-themed-ios-spinner"
     }])
   },
   {
@@ -101,6 +94,14 @@ export const tests = [
     interactive: true,
     class: "pe-dark-tone",
     component: toggle()
-  }
+  },
+  {
+    name: "Theme (colors) -- dark tone class",
+    interactive: true,
+    class: "pe-dark-tone",
+    component: toggle([{
+      class: "tests-spinner-themed-ios-spinner"
+    }])
+  },
   
 ];

@@ -88,10 +88,7 @@ const view = ({ attrs }) => {
       })
     ]
   );
-  attrs.class = [
-    classes.component,
-    attrs.class
-  ].join(" ");
+  attrs.instanceClass = classes.component;
   attrs.getPercentage = (percentage, state) => handlePercentage(percentage, state, size, attrs);
   return m(spinner, attrs);
 };

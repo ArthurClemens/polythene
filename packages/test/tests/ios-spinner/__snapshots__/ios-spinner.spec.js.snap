@@ -52,61 +52,19 @@ exports[`test No options 1`] = `
 
 exports[`test Option: permanent 1`] = `
 "<div class=
-\"pe-spinner pe-md-spinner pe-spinner--regular pe-spinner--permanent\">
-<div class=\"pe-md-spinner__animation\">
-    <div class=\"pe-md-spinner__layer pe-md-spinner__layer-1\">
-      <div class=
-      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
-      <div class=\"pe-md-spinner__circle\"></div>
-      </div>
-      <div class=\"pe-md-spinner__gap-patch\">
-        <div class=\"pe-md-spinner__circle\"></div>
-      </div>
-      <div class=
-      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
-      <div class=\"pe-md-spinner__circle\"></div>
-      </div>
-    </div>
-    <div class=\"pe-md-spinner__layer pe-md-spinner__layer-2\">
-      <div class=
-      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
-      <div class=\"pe-md-spinner__circle\"></div>
-      </div>
-      <div class=\"pe-md-spinner__gap-patch\">
-        <div class=\"pe-md-spinner__circle\"></div>
-      </div>
-      <div class=
-      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
-      <div class=\"pe-md-spinner__circle\"></div>
-      </div>
-    </div>
-    <div class=\"pe-md-spinner__layer pe-md-spinner__layer-3\">
-      <div class=
-      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
-      <div class=\"pe-md-spinner__circle\"></div>
-      </div>
-      <div class=\"pe-md-spinner__gap-patch\">
-        <div class=\"pe-md-spinner__circle\"></div>
-      </div>
-      <div class=
-      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
-      <div class=\"pe-md-spinner__circle\"></div>
-      </div>
-    </div>
-    <div class=\"pe-md-spinner__layer pe-md-spinner__layer-4\">
-      <div class=
-      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
-      <div class=\"pe-md-spinner__circle\"></div>
-      </div>
-      <div class=\"pe-md-spinner__gap-patch\">
-        <div class=\"pe-md-spinner__circle\"></div>
-      </div>
-      <div class=
-      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
-      <div class=\"pe-md-spinner__circle\"></div>
-      </div>
-    </div>
-  </div>
+\"pe-spinner pe-ios-spinner pe-spinner--regular pe-spinner--permanent\">
+<div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
 </div>
 "
 `;

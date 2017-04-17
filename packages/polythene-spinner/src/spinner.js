@@ -75,6 +75,7 @@ const createView = (state, attrs) => {
     {
       class: [
         classes.component,
+        attrs.instanceClass,
         classForType(attrs.type),
         attrs.singleColor ? classes.singleColor: null,
         attrs.raised ? classes.raised : null,

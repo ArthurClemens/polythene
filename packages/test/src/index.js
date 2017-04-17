@@ -13,10 +13,11 @@ import { tests as dialogTests } from "../tests/dialog/tests";
 import { tests as fabTests } from "../tests/fab/tests";
 import { tests as iconTests } from "../tests/icon/tests";
 import { tests as iconButtonTests } from "../tests/icon-button/tests";
+import { tests as iOSSpinnerTests } from "../tests/ios-spinner/tests";
 import { tests as listTests } from "../tests/list/tests";
 import { tests as listTileTests } from "../tests/list-tile/tests";
 import { tests as mdSpinnerTests } from "../tests/md-spinner/tests";
-import { tests as mdEndSpinnerTests } from "../tests/md-end-spinner/tests";
+import { tests as mdEndSpinnerTests } from "../tests/md-progress-spinner/tests";
 import { tests as menuTests } from "../tests/menu/tests";
 import { tests as notificationTests } from "../tests/notification/tests";
 import { tests as radioButtonTests } from "../tests/radio-button/tests";
@@ -93,13 +94,18 @@ const pages = [
   },
   {
     path: "/md-spinner",
-    name: "Spinner - Material Design",
+    name: "Material Design spinner",
     tests: mdSpinnerTests
   },
   {
-    path: "/md-end-spinner",
-    name: "\"End\" spinner - Material Design",
+    path: "/md-progress-spinner",
+    name: "Material Design progress spinner",
     tests: mdEndSpinnerTests
+  },
+  {
+    path: "/ios-spinner",
+    name: "iOS spinner",
+    tests: iOSSpinnerTests
   },
   {
     path: "/notification",

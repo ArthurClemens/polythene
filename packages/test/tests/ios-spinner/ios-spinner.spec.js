@@ -3,11 +3,11 @@ import m from "mithril";
 import { tidy, defaultHtmlTidyOptions } from "mithril-jest";
 import { tests } from "./tests.js";
 import { runSnapshots } from "../../scripts/snapshots";
-import spinner from "polythene-md-spinner";
+import spinner from "polythene-ios-spinner";
 
 runSnapshots(tests);
 
-describe("MD spinner component", () => {
+describe("iOS spinner component", () => {
   it("no options", () => {
     const cmp = m(spinner, { permanent: true });
     const html = tidy(cmp, {
@@ -15,7 +15,7 @@ describe("MD spinner component", () => {
       wrap: false,
       indent: false
     });
-    expect(html).toContain("<div class=\"pe-spinner pe-md-spinner pe-spinner--regular    pe-spinner--permanent \">");
+    expect(html).toContain("<div class=\"pe-spinner pe-ios-spinner pe-spinner--regular    pe-spinner--permanent \">");
   });
   it("option id", () => {
     const cmp = m(spinner, {id: "id-x", permanent: true});

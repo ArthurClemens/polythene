@@ -3,12 +3,14 @@
 Available themed spinners:
 
 * [Material Design spinner](../polythene-md-spinner)
-* [Material Design "end" spinner](../polythene-md-end-spinner)
+* [Material Design progress spinner](../polythene-md-progress-spinner)
 * [iOS spinner](../polythene-ios-spinner)
 
 
 
 ## Usage
+
+To create a typical Material Design (indeterminate) spinner:
 
 ~~~javascript
 import spinner from "polythene-md-spinner";
@@ -16,7 +18,15 @@ import spinner from "polythene-md-spinner";
 m(spinner);
 ~~~
 
-Creates a typical Material Design (indeterminate) spinner.
+To create a typical iOS (indeterminate) spinner:
+
+~~~javascript
+import spinner from "polythene-ios-spinner";
+
+m(spinner);
+~~~
+
+
 
 
 
@@ -31,14 +41,24 @@ By default the spinner is hidden, unless:
 
 
 
-### Determinate "end" spinner
+### Progress spinner
 
-The end spinner draws a circle between 0 and 360 degrees. The completeness is set with `percentage`, a range between `0.0` and `1.0`. This value would normally be set by a progress function, for instance a loader.
+To show a progress circle:
+
+~~~javascript
+import spinner from "polythene-md-progress-spinner";
+
+m(spinner, {
+  percentage: vnode.state.percentage // dynamic value
+});
+~~~
+
+The progress spinner draws a circle between 0 and 360 degrees. The completeness is set with `percentage`, a range between `0.0` and `1.0`. This value would normally be set by a progress function, for instance a loader.
 
 For demonstration purposes, this can be emulated with a "step" function that updates the percentage until 1.0 is reached:
 
 ~~~javascript
-import spinner from "polythene-md-end-spinner";
+import spinner from "polythene-md-progress-spinner";
 
 const test = {
   oninit: vnode => {
@@ -115,7 +135,7 @@ Some style attributes can be set using option `style`
 
 ~~~javascript
 m(spinner, {
-  singleColor: true, // required to use color with polythene-md-spinner
+  singleColor: true, // required when using color with polythene-md-spinner
   style: {
     color: "#2196F3"
   }
@@ -148,27 +168,33 @@ If the component - or a component's parent - has option `tone` set to "dark", th
 | **events**    | optional | Object | | Options object containing one or more standard events such as `onclick` |
 | **tone**      | optional | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
+### Spinner options
+
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **permanent** | optional | Boolean | | Set to `true` to always show the spinner (mostly used for demonstration purposes) |
-| **show** | optional | Boolean or Number in seconds | | Set to true to show the menu; set to a seconds value to make the spinner appear after a delay |
-| **hide** | optional | Boolean or Number in seconds | | Set to true to hide the menu; set to a seconds value to make the spinner hide after a delay |
+| **show** | optional | Boolean or Number (in seconds) | | Set to true to show the menu; set to a seconds value to make the spinner appear after a delay |
+| **hide** | optional | Boolean or Number (in seconds) | | Set to true to hide the menu; set to a seconds value to make the spinner hide after a delay |
 
 ### Spinner appearance options
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **type** | optional | String | 'regular' | Either 'small' (24px), 'regular' (32px), 'medium' (40px), 'large' (48px), 'fab' (56px). Adds CSS class 'small', 'regular', 'medium', 'large', 'fab'; `type: 'medium'` is the equivalent of passing `class: 'medium'` |
+| **type** | optional | String | "regular" | Either "small" (24px), "regular" (32px), "medium" (40px), "large" (48px), "fab" (56px). Adds CSS class "small", "regular", "medium", "large", "fab" |
 | **raised** | optional | Boolean | | Set to `true` to create a FAB-like appearance with shadow and whitespace around the spinner |
 | **z** | optional | Number 0-5 | 1 (if `raised` is set) | Depth of the shadow |
 
-### polythene-md-spinner options
+### Indeterminate options
+
+For `polythene-md-spinner` and `polythene-ios-spinner`:
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **singleColor** | optional | Boolean | | Set to true to use only one color (by default the primary color) |
 
-### polythene-md-end-spinner options
+### Determinate options
+
+For `polythene-md-progress-spinner`:
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |

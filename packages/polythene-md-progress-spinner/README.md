@@ -1,13 +1,13 @@
-# Material Design spinner
+# Material Design progress spinner
 
-Indeterminate Material Design spinner.
+Determinate Material Design spinner.
 
 
 
 ## Usage
 
 ~~~javascript
-import spinner from "polythene-md-spinner";
+import spinner from "polythene-md-progress-spinner";
 
 m(spinner, {
   // ... options
@@ -23,3 +23,4 @@ See [Spinner documentation](../polythene-spinner) for all options.
 See: `src/classes.js`
 
 See also: [Spinner base classes](../polythene-spinner) 
+

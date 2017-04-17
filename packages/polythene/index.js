@@ -28,6 +28,8 @@ export { default as icon } from "polythene-icon";
 
 export { default as iconButton } from "polythene-icon-button";
 
+export { default as iosSpinner } from "polythene-ios-spinner";
+
 export { default as list } from "polythene-list";
 
 export { default as listTile } from "polythene-list-tile";

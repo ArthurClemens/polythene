@@ -173,7 +173,7 @@ var view = function view(_ref) {
   }), m("div", {
     class: [classes.circle, classes.circleRight].join(" ")
   })]);
-  attrs.class = [classes.component, attrs.class].join(" ");
+  attrs.instanceClass = classes.component;
   attrs.getPercentage = function (percentage, state) {
     return handlePercentage(percentage, state, size, attrs);
   };

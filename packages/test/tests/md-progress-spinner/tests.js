@@ -1,11 +1,11 @@
 import m from "mithril";
-import spinner from "polythene-md-end-spinner";
+import spinner from "polythene-md-progress-spinner";
 import raisedButton from "polythene-raised-button";
 import slider from "polythene-slider";
 
 const STEP_DURATION = 2000;
 
-spinner.theme(".tests-spinner-themed-spinner", {
+spinner.theme(".tests-spinner-themed-md-end-spinner", {
   color_light: "green",
   color_dark: "yellow"
 });
@@ -112,10 +112,10 @@ const toggleSlider = attrs => ({
 
 export const tests = [
   {
-    name: "Option: permanent, percentage (0.5)",
+    name: "Option: permanent, percentage (0.75)",
     component: spinner,
     attrs: {
-      percentage: .5,
+      percentage: .75,
       permanent: true
     }
   },
@@ -136,36 +136,8 @@ export const tests = [
     })
   },
   {
-    name: "Option: raised, z",
-    component: toggle([
-      {
-        raised: true,
-        z: 0
-      },
-      {
-        raised: true,
-        z: 1
-      },
-      {
-        raised: true,
-        z: 2
-      },
-      {
-        raised: true,
-        z: 3
-      },
-      {
-        raised: true,
-        z: 4
-      },
-      {
-        raised: true,
-        z: 5
-      }
-    ])
-  },
-  {
     name: "Option: type (small, regular, medium, large, fab)",
+    interactive: true,
     component: toggle([
       { type: "small" },
       { type: "regular" },
@@ -175,13 +147,26 @@ export const tests = [
     ])
   },
   {
+    name: "Option: raised, z",
+    interactive: true,
+    component: toggle([
+      { raised: true, type: "small" },
+      { raised: true, type: "regular" },
+      { raised: true, type: "medium" },
+      { raised: true, type: "large" },
+      { raised: true, type: "fab" }
+    ])
+  },
+  {
     name: "Theme (color)",
+    interactive: true,
     component: toggle([{
-      class: "tests-spinner-themed-spinner"
+      class: "tests-spinner-themed-md-end-spinner"
     }])
   },
   {
-    name: "Style (color)",
+    name: "Option: style (color)",
+    interactive: true,
     component: toggle([{
       style: {
         color: "#2196F3"
@@ -194,13 +179,15 @@ export const tests = [
   {
     name: "No options -- dark tone class",
     class: "pe-dark-tone",
+    interactive: true,
     component: toggle()
   },
   {
     name: "Theme (colors) -- dark tone class",
     class: "pe-dark-tone",
+    interactive: true,
     component: toggle([{
-      class: "tests-spinner-themed-spinner"
+      class: "tests-spinner-themed-md-end-spinner"
     }])
   },
   

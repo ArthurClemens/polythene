@@ -736,7 +736,7 @@ exports[`test Slider 1`] = `
 
 exports[`test Spinner 1`] = `
 "<div class=
-\"pe-spinner pe-spinner--regular pe-spinner--permanent pe-md-spinner\">
+\"pe-spinner pe-md-spinner pe-spinner--regular pe-spinner--permanent\">
 <div class=\"pe-md-spinner__animation\">
     <div class=\"pe-md-spinner__layer pe-md-spinner__layer-1\">
       <div class=

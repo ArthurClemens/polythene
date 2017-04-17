@@ -1,13 +1,13 @@
-# Material Design spinner
+# iOS spinner
 
-Indeterminate Material Design spinner.
+iOS-inspired (indeterminate) spinner.
 
 
 
 ## Usage
 
 ~~~javascript
-import spinner from "polythene-md-spinner";
+import spinner from "polythene-ios-spinner";
 
 m(spinner, {
   // ... options
