@@ -1,9 +1,9 @@
-exports[`test Dark theme class + light theme class 1`] = `
+exports[`test Dark tone class + light theme class 1`] = `
 "<div style=\"background: rgb(255, 255, 255); padding: 20px;\" class=
 \"pe-light-tone\">
   <div class=
   \"pe-control pe-radio-control pe-control--off pe-control--regular\">
-  <input name=\"setting\" type=\"radio\" tabindex=\"-1\" class=
+  <input name=\"light-theme\" type=\"radio\" tabindex=\"-1\" class=
   \"pe-control__input\"><label class=
   \"pe-control__form-label\"></label>
     <div class=\"pe-control__box\">
@@ -60,12 +60,12 @@ exports[`test Dark theme class + light theme class 1`] = `
   </div>
   <div class=
   \"pe-control pe-radio-control pe-control--on pe-control--inactive pe-control--regular\">
-  <input name=\"setting\" type=\"radio\" tabindex=\"-1\" class=
+  <input name=\"light-theme\" type=\"radio\" tabindex=\"-1\" class=
   \"pe-control__input\"><label class=
   \"pe-control__form-label\"></label>
     <div class=\"pe-control__box\">
       <label class=\"pe-control__form-label\"></label>
-      <div tabindex=\"-1\" class=
+      <div class=
       \"pe-button pe-icon-button pe-button--inactive pe-control__button\">
       <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-button__content\">
@@ -119,11 +119,11 @@ exports[`test Dark theme class + light theme class 1`] = `
 "
 `;
 
-exports[`test Dark theme class + light tone 1`] = `
+exports[`test Dark tone class + light tone 1`] = `
 "<div style=\"background: rgb(255, 255, 255); padding: 20px;\">
   <div class=
-  \"pe-control pe-radio-control pe-control--off pe-control--regular pe-light-tone\">
-  <input name=\"setting\" type=\"radio\" tabindex=\"-1\" class=
+  \"pe-control pe-radio-control pe-control--off pe-control--regular\">
+  <input name=\"light-tone\" type=\"radio\" tabindex=\"-1\" class=
   \"pe-control__input\"><label class=
   \"pe-control__form-label\"></label>
     <div class=\"pe-control__box\">
@@ -179,13 +179,13 @@ exports[`test Dark theme class + light tone 1`] = `
     </div>
   </div>
   <div class=
-  \"pe-control pe-radio-control pe-control--on pe-control--inactive pe-control--regular pe-light-tone\">
-  <input name=\"setting\" type=\"radio\" tabindex=\"-1\" class=
+  \"pe-control pe-radio-control pe-control--on pe-control--inactive pe-control--regular\">
+  <input name=\"light-tone\" type=\"radio\" tabindex=\"-1\" class=
   \"pe-control__input\"><label class=
   \"pe-control__form-label\"></label>
     <div class=\"pe-control__box\">
       <label class=\"pe-control__form-label\"></label>
-      <div tabindex=\"-1\" class=
+      <div class=
       \"pe-button pe-icon-button pe-button--inactive pe-control__button\">
       <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-button__content\">
@@ -242,7 +242,7 @@ exports[`test Dark theme class + light tone 1`] = `
 exports[`test Option: checked -- dark theme class 1`] = `
 "<div class=
 \"pe-control pe-radio-control pe-control--off pe-control--regular\">
-  <input name=\"name-6}\" type=\"radio\" tabindex=\"-1\" class=
+  <input name=\"checked-dark\" type=\"radio\" tabindex=\"-1\" class=
   \"pe-control__input\"><label class=
   \"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
@@ -299,11 +299,11 @@ exports[`test Option: checked -- dark theme class 1`] = `
 </div>
 <div class=
 \"pe-control pe-radio-control pe-control--on pe-control--inactive pe-control--regular\">
-<input name=\"name-6}\" type=\"radio\" tabindex=\"-1\" class=
+<input name=\"checked-dark\" type=\"radio\" tabindex=\"-1\" class=
 \"pe-control__input\"><label class=\"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
     <label class=\"pe-control__form-label\"></label>
-    <div tabindex=\"-1\" class=
+    <div class=
     \"pe-button pe-icon-button pe-button--inactive pe-control__button\">
     <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
@@ -359,7 +359,7 @@ exports[`test Option: checked -- dark theme class 1`] = `
 exports[`test Option: checked 1`] = `
 "<div class=
 \"pe-control pe-radio-control pe-control--off pe-control--regular\">
-  <input name=\"name-0}\" type=\"radio\" tabindex=\"-1\" class=
+  <input name=\"checked\" type=\"radio\" tabindex=\"-1\" class=
   \"pe-control__input\"><label class=
   \"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
@@ -416,11 +416,11 @@ exports[`test Option: checked 1`] = `
 </div>
 <div class=
 \"pe-control pe-radio-control pe-control--on pe-control--inactive pe-control--regular\">
-<input name=\"name-0}\" type=\"radio\" tabindex=\"-1\" class=
+<input name=\"checked\" type=\"radio\" tabindex=\"-1\" class=
 \"pe-control__input\"><label class=\"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
     <label class=\"pe-control__form-label\"></label>
-    <div tabindex=\"-1\" class=
+    <div class=
     \"pe-button pe-icon-button pe-button--inactive pe-control__button\">
     <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
@@ -476,7 +476,7 @@ exports[`test Option: checked 1`] = `
 exports[`test Option: disabled -- dark theme class 1`] = `
 "<div class=
 \"pe-control pe-radio-control pe-control--off pe-control--disabled pe-control--inactive pe-control--regular\">
-<input name=\"name-8}\" type=\"radio\" tabindex=\"-1\" class=
+<input name=\"disabled-dark\" type=\"radio\" tabindex=\"-1\" class=
 \"pe-control__input\"><label class=\"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
     <label class=\"pe-control__form-label\"></label>
@@ -520,11 +520,11 @@ exports[`test Option: disabled -- dark theme class 1`] = `
 </div>
 <div class=
 \"pe-control pe-radio-control pe-control--on pe-control--disabled pe-control--inactive pe-control--regular\">
-<input name=\"name-8}\" type=\"radio\" tabindex=\"-1\" class=
+<input name=\"disabled-dark\" type=\"radio\" tabindex=\"-1\" class=
 \"pe-control__input\"><label class=\"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
     <label class=\"pe-control__form-label\"></label>
-    <div tabindex=\"-1\" disabled class=
+    <div disabled class=
     \"pe-button pe-icon-button pe-button--disabled pe-button--inactive pe-control__button\">
     <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
@@ -568,7 +568,7 @@ exports[`test Option: disabled -- dark theme class 1`] = `
 exports[`test Option: disabled 1`] = `
 "<div class=
 \"pe-control pe-radio-control pe-control--off pe-control--disabled pe-control--inactive pe-control--regular\">
-<input name=\"name-3}\" type=\"radio\" tabindex=\"-1\" class=
+<input name=\"disabled\" type=\"radio\" tabindex=\"-1\" class=
 \"pe-control__input\"><label class=\"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
     <label class=\"pe-control__form-label\"></label>
@@ -612,11 +612,11 @@ exports[`test Option: disabled 1`] = `
 </div>
 <div class=
 \"pe-control pe-radio-control pe-control--on pe-control--disabled pe-control--inactive pe-control--regular\">
-<input name=\"name-3}\" type=\"radio\" tabindex=\"-1\" class=
+<input name=\"disabled\" type=\"radio\" tabindex=\"-1\" class=
 \"pe-control__input\"><label class=\"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
     <label class=\"pe-control__form-label\"></label>
-    <div tabindex=\"-1\" disabled class=
+    <div disabled class=
     \"pe-button pe-icon-button pe-button--disabled pe-button--inactive pe-control__button\">
     <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
@@ -660,7 +660,7 @@ exports[`test Option: disabled 1`] = `
 exports[`test Option: iconButton (custom hover behaviour) 1`] = `
 "<div class=
 \"pe-control pe-radio-control pe-control--off pe-control--regular\">
-  <input name=\"name-5}\" type=\"radio\" tabindex=\"-1\" class=
+  <input name=\"iconButton\" type=\"radio\" tabindex=\"-1\" class=
   \"pe-control__input\"><label class=
   \"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
@@ -711,7 +711,7 @@ exports[`test Option: iconButton (custom hover behaviour) 1`] = `
 </div>
 <div class=
 \"pe-control pe-radio-control pe-control--off pe-control--regular\">
-  <input name=\"name-5}\" type=\"radio\" tabindex=\"-1\" class=
+  <input name=\"iconButton\" type=\"radio\" tabindex=\"-1\" class=
   \"pe-control__input\"><label class=
   \"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
@@ -1236,7 +1236,7 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
 exports[`test Option: label 1`] = `
 "<div class=
 \"pe-control pe-radio-control pe-control--off pe-control--regular\">
-  <input name=\"setting\" type=\"radio\" tabindex=\"-1\" class=
+  <input name=\"option\" type=\"radio\" tabindex=\"-1\" class=
   \"pe-control__input\"><label class=
   \"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
@@ -1293,11 +1293,11 @@ exports[`test Option: label 1`] = `
 </div>
 <div class=
 \"pe-control pe-radio-control pe-control--on pe-control--inactive pe-control--regular\">
-<input name=\"setting\" type=\"radio\" tabindex=\"-1\" class=
+<input name=\"option\" type=\"radio\" tabindex=\"-1\" class=
 \"pe-control__input\"><label class=\"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
     <label class=\"pe-control__form-label\"></label>
-    <div tabindex=\"-1\" class=
+    <div class=
     \"pe-button pe-icon-button pe-button--inactive pe-control__button\">
     <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
@@ -1353,7 +1353,7 @@ exports[`test Option: label 1`] = `
 exports[`test Option: selectable (true) 1`] = `
 "<div class=
 \"pe-control pe-radio-control pe-control--off pe-control--regular\">
-  <input name=\"name-4}\" type=\"radio\" tabindex=\"-1\" class=
+  <input name=\"selectable\" type=\"radio\" tabindex=\"-1\" class=
   \"pe-control__input\"><label class=
   \"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
@@ -1410,7 +1410,7 @@ exports[`test Option: selectable (true) 1`] = `
 </div>
 <div class=
 \"pe-control pe-radio-control pe-control--off pe-control--regular\">
-  <input name=\"name-4}\" type=\"radio\" tabindex=\"-1\" class=
+  <input name=\"selectable\" type=\"radio\" tabindex=\"-1\" class=
   \"pe-control__input\"><label class=
   \"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
@@ -1941,7 +1941,7 @@ exports[`test Option: size 1`] = `
 exports[`test Option: style (colors) 1`] = `
 "<div style=\"color: rgb(239, 108, 0);\" class=
 \"pe-control pe-radio-control pe-control--off pe-control--regular\">
-  <input name=\"name-2}\" type=\"radio\" tabindex=\"-1\" class=
+  <input name=\"style\" type=\"radio\" tabindex=\"-1\" class=
   \"pe-control__input\"><label class=
   \"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
@@ -1998,11 +1998,11 @@ exports[`test Option: style (colors) 1`] = `
 </div>
 <div style=\"color: rgb(239, 108, 0);\" class=
 \"pe-control pe-radio-control pe-control--on pe-control--inactive pe-control--regular\">
-<input name=\"name-2}\" type=\"radio\" tabindex=\"-1\" class=
+<input name=\"style\" type=\"radio\" tabindex=\"-1\" class=
 \"pe-control__input\"><label class=\"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
     <label class=\"pe-control__form-label\"></label>
-    <div tabindex=\"-1\" class=
+    <div class=
     \"pe-button pe-icon-button pe-button--inactive pe-control__button\">
     <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
@@ -2058,7 +2058,7 @@ exports[`test Option: style (colors) 1`] = `
 exports[`test Option: value 1`] = `
 "<div class=
 \"pe-control pe-radio-control pe-control--off pe-control--regular\">
-  <input name=\"worth\" type=\"radio\" tabindex=\"-1\" class=
+  <input name=\"value\" type=\"radio\" tabindex=\"-1\" class=
   \"pe-control__input\"><label class=
   \"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
@@ -2115,7 +2115,7 @@ exports[`test Option: value 1`] = `
 </div>
 <div class=
 \"pe-control pe-radio-control pe-control--off pe-control--regular\">
-  <input name=\"worth\" type=\"radio\" tabindex=\"-1\" class=
+  <input name=\"value\" type=\"radio\" tabindex=\"-1\" class=
   \"pe-control__input\"><label class=
   \"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
@@ -2176,7 +2176,7 @@ exports[`test Option: value 1`] = `
 exports[`test Themed radio button (color and font size) 1`] = `
 "<div class=
 \"pe-control pe-radio-control pe-control--off pe-control--regular tests-radio-button-themed-radio\">
-<input name=\"name-1}\" type=\"radio\" tabindex=\"-1\" class=
+<input name=\"theme\" type=\"radio\" tabindex=\"-1\" class=
 \"pe-control__input\"><label class=\"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
     <label class=\"pe-control__form-label\"></label>
@@ -2232,11 +2232,11 @@ exports[`test Themed radio button (color and font size) 1`] = `
 </div>
 <div class=
 \"pe-control pe-radio-control pe-control--on pe-control--inactive pe-control--regular tests-radio-button-themed-radio\">
-<input name=\"name-1}\" type=\"radio\" tabindex=\"-1\" class=
+<input name=\"theme\" type=\"radio\" tabindex=\"-1\" class=
 \"pe-control__input\"><label class=\"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
     <label class=\"pe-control__form-label\"></label>
-    <div tabindex=\"-1\" class=
+    <div class=
     \"pe-button pe-icon-button pe-button--inactive pe-control__button\">
     <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
@@ -2292,7 +2292,7 @@ exports[`test Themed radio button (color and font size) 1`] = `
 exports[`test Themed radio button (colors) -- dark theme class 1`] = `
 "<div class=
 \"pe-control pe-radio-control pe-control--off pe-control--regular tests-radio-button-themed-radio\">
-<input name=\"name-7}\" type=\"radio\" tabindex=\"-1\" class=
+<input name=\"theme-dark\" type=\"radio\" tabindex=\"-1\" class=
 \"pe-control__input\"><label class=\"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
     <label class=\"pe-control__form-label\"></label>
@@ -2348,11 +2348,11 @@ exports[`test Themed radio button (colors) -- dark theme class 1`] = `
 </div>
 <div class=
 \"pe-control pe-radio-control pe-control--on pe-control--inactive pe-control--regular tests-radio-button-themed-radio\">
-<input name=\"name-7}\" type=\"radio\" tabindex=\"-1\" class=
+<input name=\"theme-dark\" type=\"radio\" tabindex=\"-1\" class=
 \"pe-control__input\"><label class=\"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
     <label class=\"pe-control__form-label\"></label>
-    <div tabindex=\"-1\" class=
+    <div class=
     \"pe-button pe-icon-button pe-button--inactive pe-control__button\">
     <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">

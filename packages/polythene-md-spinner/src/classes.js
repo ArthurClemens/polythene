@@ -1,16 +1,12 @@
 
 export default {
-  component:   "pe-spinner",
-  placeholder: "pe-spinner__placeholder",
-  animation:   "pe-spinner__animation",
-  visible:     "pe-spinner--visible",
-  small:       "pe-spinner--small",
-  regular:     "pe-spinner--regular",
-  medium:      "pe-spinner--medium",
-  large:       "pe-spinner--large",
-  fab:         "pe-spinner--fab",
-  raised:      "pe-spinner--raised",
-  permanent:   "pe-spinner--permanent",
-  singleColor: "pe-spinner--single-color",
-  animated:    "pe-spinner--animated"
+  component:          "pe-md-spinner",
+  animation:          "pe-md-spinner__animation",
+  layer:              "pe-md-spinner__layer",
+  layerN:             "pe-md-spinner__layer--",
+  gapPatch:           "pe-md-spinner__gap-patch",
+  circle:             "pe-md-spinner__circle",
+  circleClipper:      "pe-md-spinner__circle-clipper",
+  circleClipperLeft:  "pe-md-spinner__circle-clipper-left",
+  circleClipperRight: "pe-md-spinner__circle-clipper-right"
 };

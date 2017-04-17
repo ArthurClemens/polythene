@@ -108,7 +108,7 @@ export const tests = [
     }
   },
 
-  // Dark theme
+  // Dark tone
 
   {
     name: "Option: content -- dark theme class",
@@ -128,7 +128,7 @@ export const tests = [
     }
   },
   {
-    name: "Dark theme class + light theme class",
+    name: "Dark tone class + light theme class",
     class: "pe-dark-tone",
     component: toolbar,
     attrs: {
@@ -137,7 +137,7 @@ export const tests = [
     }
   },
   {
-    name: "Dark theme class + light tone",
+    name: "Dark tone class + light tone",
     class: "test-dark-theme",
     component: toolbar,
     attrs: {

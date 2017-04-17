@@ -1,6 +1,6 @@
 import m from "mithril";
 import { filterSupportedAttributes } from "polythene-core";
-import transition from "polythene-core";
+import { show, hide } from "polythene-core";
 import shadow from "polythene-shadow";
 import { customTheme } from "./theme";
 import classes from "./classes";
@@ -15,12 +15,12 @@ const typeClasses = {
 
 const classForType = (mode = "regular") => typeClasses[mode];
 
-const show = (state, attrs) => {
+const showSpinner = (state, attrs) => {
   if (state.isTransitioning) {
     return;
   }
   state.isTransitioning = true;
-  return transition.show(Object.assign(
+  return show(Object.assign(
     {},
     attrs, {
       el: state.el,
@@ -32,12 +32,12 @@ const show = (state, attrs) => {
   });
 };
 
-const hide = (state, attrs) => {
+const hideSpinner = (state, attrs) => {
   if (state.isTransitioning) {
     return;
   }
   state.isTransitioning = true;
-  return transition.hide(Object.assign(
+  return hide(Object.assign(
     {},
     attrs, {
       el: state.el,
@@ -86,7 +86,7 @@ const createView = (state, attrs) => {
         state.el = dom;
         notifyState(state, attrs);
         if (!attrs.permanent) {
-          setTimeout(() => show(state, attrs), 0);
+          setTimeout(() => showSpinner(state, attrs), 0);
         }
       }
     },
@@ -96,12 +96,12 @@ const createView = (state, attrs) => {
   notifyState(state, attrs);
 
   if (state.hide) {
-    setTimeout(() => { hide(state, attrs); }, 0);
+    setTimeout(() => { hideSpinner(state, attrs); }, 0);
   }
 
   const content = [
     attrs.raised && attrs.content
-      ? m.component(shadow, { z: attrs.z })
+      ? m(shadow, { z: attrs.z })
       : null,
     attrs.content || m("div", { class: classes.animation }, "Specific spinner missing")
   ];
@@ -109,7 +109,7 @@ const createView = (state, attrs) => {
   return m(element, props, [attrs.before, content, attrs.after]);
 };
 
-const view = (state, attrs) => {
+const view = ({ state, attrs }) => {
   if (!state.visible) {
     if ((attrs.hide !== undefined && !attrs.hide) || attrs.show) {
       const showDelay = delay(attrs, "show");

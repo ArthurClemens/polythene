@@ -1,0 +1,243 @@
+exports[`test No options -- dark tone class 1`] = `
+"<a tabindex=\"0\" class=\"pe-button pe-text-button pe-raised-button\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-ripple pe-ripple--constrained\">
+    <div class=\"pe-ripple__mask\">
+      <div class=\"pe-ripple__waves\"></div>
+    </div>
+  </div>
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Toggle
+  </div>
+</div></a>
+<div style=\"display: flex; margin: 20px 0px 0px 0px;\">
+  <div style=\"margin-right: 20px;\">
+    <span class=\"pe-spinner__placeholder\"></span>
+  </div>
+</div>
+"
+`;
+
+exports[`test No options 1`] = `
+"<a tabindex=\"0\" class=\"pe-button pe-text-button pe-raised-button\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-ripple pe-ripple--constrained\">
+    <div class=\"pe-ripple__mask\">
+      <div class=\"pe-ripple__waves\"></div>
+    </div>
+  </div>
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Toggle
+  </div>
+</div></a>
+<div style=\"display: flex; margin: 20px 0px 0px 0px;\">
+  <div style=\"margin-right: 20px;\">
+    <span class=\"pe-spinner__placeholder\"></span>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: permanent 1`] = `
+"<div class=
+\"pe-spinner pe-spinner--regular pe-spinner--permanent pe-md-spinner\">
+<div class=\"pe-md-spinner__animation\">
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer--1\">
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=\"pe-md-spinner__gap-patch\">
+        <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+    </div>
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer--2\">
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=\"pe-md-spinner__gap-patch\">
+        <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+    </div>
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer--3\">
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=\"pe-md-spinner__gap-patch\">
+        <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+    </div>
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer--4\">
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=\"pe-md-spinner__gap-patch\">
+        <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: raised, z 1`] = `
+"<a tabindex=\"0\" class=\"pe-button pe-text-button pe-raised-button\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-ripple pe-ripple--constrained\">
+    <div class=\"pe-ripple__mask\">
+      <div class=\"pe-ripple__waves\"></div>
+    </div>
+  </div>
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Toggle
+  </div>
+</div></a>
+<div style=\"display: flex; margin: 20px 0px 0px 0px;\">
+  <div style=\"margin-right: 20px;\">
+    <span class=\"pe-spinner__placeholder\"></span>
+  </div>
+  <div style=\"margin-right: 20px;\">
+    <span class=\"pe-spinner__placeholder\"></span>
+  </div>
+  <div style=\"margin-right: 20px;\">
+    <span class=\"pe-spinner__placeholder\"></span>
+  </div>
+  <div style=\"margin-right: 20px;\">
+    <span class=\"pe-spinner__placeholder\"></span>
+  </div>
+  <div style=\"margin-right: 20px;\">
+    <span class=\"pe-spinner__placeholder\"></span>
+  </div>
+  <div style=\"margin-right: 20px;\">
+    <span class=\"pe-spinner__placeholder\"></span>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: singleColor 1`] = `
+"<a tabindex=\"0\" class=\"pe-button pe-text-button pe-raised-button\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-ripple pe-ripple--constrained\">
+    <div class=\"pe-ripple__mask\">
+      <div class=\"pe-ripple__waves\"></div>
+    </div>
+  </div>
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Toggle
+  </div>
+</div></a>
+<div style=\"display: flex; margin: 20px 0px 0px 0px;\">
+  <div style=\"margin-right: 20px;\">
+    <span class=\"pe-spinner__placeholder\"></span>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: type (small, regular, medium, large, fab) 1`] = `
+"<a tabindex=\"0\" class=\"pe-button pe-text-button pe-raised-button\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-ripple pe-ripple--constrained\">
+    <div class=\"pe-ripple__mask\">
+      <div class=\"pe-ripple__waves\"></div>
+    </div>
+  </div>
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Toggle
+  </div>
+</div></a>
+<div style=\"display: flex; margin: 20px 0px 0px 0px;\">
+  <div style=\"margin-right: 20px;\">
+    <span class=\"pe-spinner__placeholder\"></span>
+  </div>
+  <div style=\"margin-right: 20px;\">
+    <span class=\"pe-spinner__placeholder\"></span>
+  </div>
+  <div style=\"margin-right: 20px;\">
+    <span class=\"pe-spinner__placeholder\"></span>
+  </div>
+  <div style=\"margin-right: 20px;\">
+    <span class=\"pe-spinner__placeholder\"></span>
+  </div>
+  <div style=\"margin-right: 20px;\">
+    <span class=\"pe-spinner__placeholder\"></span>
+  </div>
+</div>
+"
+`;
+
+exports[`test Theme (colors) 1`] = `
+"<a tabindex=\"0\" class=\"pe-button pe-text-button pe-raised-button\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-ripple pe-ripple--constrained\">
+    <div class=\"pe-ripple__mask\">
+      <div class=\"pe-ripple__waves\"></div>
+    </div>
+  </div>
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Toggle
+  </div>
+</div></a>
+<div style=\"display: flex; margin: 20px 0px 0px 0px;\">
+  <div style=\"margin-right: 20px;\">
+    <span class=\"pe-spinner__placeholder\"></span>
+  </div>
+</div>
+"
+`;

@@ -22,7 +22,7 @@ exports[`test Child node (trusted svg) 1`] = `
 "
 `;
 
-exports[`test Dark theme class + light theme class 1`] = `
+exports[`test Dark tone class + light theme class 1`] = `
 "<div style=\"background: rgb(255, 255, 255); padding: 10px;\" class=
 \"pe-light-tone\">
   <div class=\"pe-svg\">
@@ -37,7 +37,7 @@ exports[`test Dark theme class + light theme class 1`] = `
 "
 `;
 
-exports[`test Dark theme class + light tone 1`] = `
+exports[`test Dark tone class + light tone 1`] = `
 "<div style=\"background: rgb(255, 255, 255); padding: 10px;\">
   <div class=\"pe-svg pe-light-tone\">
     <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\"

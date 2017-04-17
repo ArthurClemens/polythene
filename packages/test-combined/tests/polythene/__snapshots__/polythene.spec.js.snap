@@ -512,7 +512,7 @@ exports[`test Radio button 1`] = `
   \"pe-control__form-label\"></label>
     <div class=\"pe-control__box\">
       <label class=\"pe-control__form-label\"></label>
-      <div tabindex=\"-1\" class=
+      <div class=
       \"pe-button pe-icon-button pe-button--inactive pe-control__button\">
       <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-button__content\">
@@ -637,8 +637,7 @@ exports[`test Search 1`] = `
     <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
   </div>
   <div class=\"pe-search__content\">
-    <a tabindex=\"-1\" class=
-    \"pe-button pe-icon-button pe-button--inactive\">
+    <a class=\"pe-button pe-icon-button pe-button--inactive\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -666,8 +665,7 @@ exports[`test Search 1`] = `
         \"pe-textfield__label\">Search</label><input type=\"text\"
         class=\"pe-textfield__input\">
       </div>
-    </div><a tabindex=\"-1\" class=
-    \"pe-button pe-icon-button pe-button--inactive\">
+    </div><a class=\"pe-button pe-icon-button pe-button--inactive\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple pe-ripple--constrained\">
         <div class=\"pe-ripple__mask\">
@@ -731,6 +729,67 @@ exports[`test Slider 1`] = `
       <div class=\"pe-slider__ticks-tick\"></div>
     </div>
     <div value=\"0\" class=\"pe-slider__pin\"></div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Spinner 1`] = `
+"<div class=
+\"pe-spinner pe-spinner--regular pe-spinner--permanent pe-md-spinner\">
+<div class=\"pe-md-spinner__animation\">
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer--1\">
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=\"pe-md-spinner__gap-patch\">
+        <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+    </div>
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer--2\">
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=\"pe-md-spinner__gap-patch\">
+        <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+    </div>
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer--3\">
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=\"pe-md-spinner__gap-patch\">
+        <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+    </div>
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer--4\">
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=\"pe-md-spinner__gap-patch\">
+        <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+    </div>
   </div>
 </div>
 "

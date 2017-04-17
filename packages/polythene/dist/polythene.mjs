@@ -1,4 +1,5 @@
 import m$1 from 'mithril';
+import polytheneMdSpinner from 'polythene-md-spinner';
 
 // Theme variables
 // How to change these variables for your app - see the README.
@@ -11344,4 +11345,4 @@ var roboto = [{
 
 styler.add("pe-theme", reset, typography, roboto);
 
-export { card, checkbox, variables as defaultVariables, isTouch, touchStartEvent, touchEndEvent, moveEvent, endEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, multiple, show, hide, filterSupportedAttributes, prop, mixin, mixinFlex as flex, styler, dialog, fab, icon, iconButton, list, listTile, menu, notification, radioButton, raisedButton, ripple, search, shadow, slider, snackbar, svg, switchButton, tabs, textfield, toolbar, easing, scrollTo, Timer, variables as vars, button };
+export { card, checkbox, variables as defaultVariables, isTouch, touchStartEvent, touchEndEvent, moveEvent, endEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, multiple, show, hide, filterSupportedAttributes, prop, mixin, mixinFlex as flex, styler, dialog, fab, icon, iconButton, list, listTile, polytheneMdSpinner as mdSpinner, menu, notification, radioButton, raisedButton, ripple, search, shadow, slider, snackbar, svg, switchButton, tabs, textfield, toolbar, easing, scrollTo, Timer, variables as vars, button };

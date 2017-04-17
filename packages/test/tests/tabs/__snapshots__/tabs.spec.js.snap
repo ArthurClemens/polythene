@@ -50,7 +50,7 @@ exports[`test Child node 1`] = `
 "
 `;
 
-exports[`test Dark theme class + light theme class 1`] = `
+exports[`test Dark tone class + light theme class 1`] = `
 "<div style=\"background: rgb(255, 255, 255); padding: 20px;\" class=
 \"pe-light-tone\">
   <div class=\"pe-tabs pe-tabs--scrollable pe-tabs--start\">
@@ -189,7 +189,7 @@ exports[`test Dark theme class + light theme class 1`] = `
 "
 `;
 
-exports[`test Dark theme class + light tone 1`] = `
+exports[`test Dark tone class + light tone 1`] = `
 "<div style=\"background: rgb(255, 255, 255); padding: 20px;\">
   <div class=
   \"pe-tabs pe-tabs--scrollable pe-tabs--start pe-light-tone\">

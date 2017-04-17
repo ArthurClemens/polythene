@@ -58,7 +58,7 @@ exports[`test Colored icon 1`] = `
 "
 `;
 
-exports[`test Dark theme class + light theme class 1`] = `
+exports[`test Dark tone class + light theme class 1`] = `
 "<div style=\"background: rgb(255, 255, 255); padding: 10px;\" class=
 \"pe-light-tone\">
   <a tabindex=\"0\" class=\"pe-fab\">
@@ -116,7 +116,7 @@ exports[`test Dark theme class + light theme class 1`] = `
 "
 `;
 
-exports[`test Dark theme class + light tone 1`] = `
+exports[`test Dark tone class + light tone 1`] = `
 "<div style=\"background: rgb(255, 255, 255); padding: 10px;\">
   <a tabindex=\"0\" class=\"pe-fab\">
   <div class=\"pe-button__content\">

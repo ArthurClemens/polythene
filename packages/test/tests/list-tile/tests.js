@@ -272,7 +272,7 @@ export const tests = [
     }
   },
 
-  // Dark theme
+  // Dark tone
 
   {
     name: "Option: highSubtitle and front -- dark theme class",
@@ -320,7 +320,7 @@ export const tests = [
     }
   },
   {
-    name: "Dark theme class + light theme class",
+    name: "Dark tone class + light theme class",
     component: listTile,
     class: "pe-dark-tone",
     attrs: {
@@ -333,7 +333,7 @@ export const tests = [
     }
   },
   {
-    name: "Dark theme class + light tone",
+    name: "Dark tone class + light tone",
     component: listTile,
     class: "test-dark-theme",
     attrs: {

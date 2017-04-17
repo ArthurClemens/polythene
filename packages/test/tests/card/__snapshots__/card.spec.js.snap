@@ -1776,7 +1776,7 @@ exports[`test Custom card white 1`] = `
 "
 `;
 
-exports[`test Dark theme class + light theme class 1`] = `
+exports[`test Dark tone class + light theme class 1`] = `
 "<div style=\"background: rgb(255, 255, 255);\" class=\"pe-light-tone\">
   <div class=\"pe-card\">
     <div class=\"pe-shadow pe-shadow--animated\">
@@ -1884,7 +1884,7 @@ exports[`test Dark theme class + light theme class 1`] = `
 "
 `;
 
-exports[`test Dark theme class + light tone 1`] = `
+exports[`test Dark tone class + light tone 1`] = `
 "<div style=\"background: rgb(255, 255, 255);\">
   <div class=\"pe-card pe-light-tone\">
     <div class=\"pe-shadow pe-shadow--animated\">

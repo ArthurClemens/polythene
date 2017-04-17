@@ -13,7 +13,7 @@ exports[`test Custom validation 1`] = `
 "
 `;
 
-exports[`test Dark theme class + light theme class 1`] = `
+exports[`test Dark tone class + light theme class 1`] = `
 "<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
   <div class=
   \"pe-textfield pe-textfield--hide-spinner pe-textfield--hide-clear pe-light-tone\">
@@ -26,7 +26,7 @@ exports[`test Dark theme class + light theme class 1`] = `
 "
 `;
 
-exports[`test Dark theme class + light tone 1`] = `
+exports[`test Dark tone class + light tone 1`] = `
 "<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
   <div class=
   \"pe-textfield pe-textfield--hide-spinner pe-textfield--hide-clear pe-light-tone\">

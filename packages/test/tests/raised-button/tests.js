@@ -160,7 +160,7 @@ export const tests = [
     }
   },
 
-  // Dark theme
+  // Dark tone
 
   {
     name: "Option: label -- dark theme class (should be app's primary color)",
@@ -181,7 +181,7 @@ export const tests = [
     }
   },
   {
-    name: "Dark theme class + light theme class",
+    name: "Dark tone class + light theme class",
     class: "pe-dark-tone",
     component: {
       view: () => m(".pe-light-tone", {
@@ -202,7 +202,7 @@ export const tests = [
     }
   },
   {
-    name: "Dark theme class + light tone",
+    name: "Dark tone class + light tone",
     class: "pe-dark-tone",
     component: {
       view: () => m("div", {

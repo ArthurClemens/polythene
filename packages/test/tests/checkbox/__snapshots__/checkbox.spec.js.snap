@@ -1,4 +1,4 @@
-exports[`test Dark theme class + light theme class 1`] = `
+exports[`test Dark tone class + light theme class 1`] = `
 "<div style=\"background: rgb(255, 255, 255); padding: 20px;\" class=
 \"pe-light-tone\">
   <div class=
@@ -62,7 +62,7 @@ exports[`test Dark theme class + light theme class 1`] = `
 "
 `;
 
-exports[`test Dark theme class + light tone 1`] = `
+exports[`test Dark tone class + light tone 1`] = `
 "<div style=\"background: rgb(255, 255, 255); padding: 20px;\">
   <div class=
   \"pe-control pe-checkbox-control pe-control--off pe-control--regular pe-light-tone\">
@@ -775,7 +775,7 @@ exports[`test Option: selectable (false) 1`] = `
 \"pe-control__input\"><label class=\"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">
     <label class=\"pe-control__form-label\"></label>
-    <div tabindex=\"-1\" class=
+    <div class=
     \"pe-button pe-icon-button pe-button--inactive pe-control__button\">
     <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">

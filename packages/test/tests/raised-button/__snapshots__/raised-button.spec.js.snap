@@ -1,4 +1,4 @@
-exports[`test Dark theme class + light theme class 1`] = `
+exports[`test Dark tone class + light theme class 1`] = `
 "<div style=\"background: rgb(255, 255, 255);\" class=\"pe-light-tone\">
   <a tabindex=\"0\" class=
   \"pe-button pe-text-button pe-raised-button\">
@@ -45,7 +45,7 @@ exports[`test Dark theme class + light theme class 1`] = `
 "
 `;
 
-exports[`test Dark theme class + light tone 1`] = `
+exports[`test Dark tone class + light tone 1`] = `
 "<div style=\"background: rgb(255, 255, 255);\">
   <a tabindex=\"0\" class=
   \"pe-button pe-text-button pe-raised-button pe-light-tone\">
@@ -178,7 +178,7 @@ exports[`test Option: inactive (false) 1`] = `
 `;
 
 exports[`test Option: inactive (true) 1`] = `
-"<a tabindex=\"-1\" class=
+"<a class=
 \"pe-button pe-text-button pe-raised-button pe-button--inactive\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">

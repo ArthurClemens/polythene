@@ -163,7 +163,7 @@ export const tests = [
     }
   },
   {
-    name: "Dark theme class + light theme class",
+    name: "Dark tone class + light theme class",
     interactive: true,
     exclude: true,
     class: "pe-dark-tone",
@@ -184,7 +184,7 @@ export const tests = [
     }
   },
   {
-    name: "Dark theme class + light tone",
+    name: "Dark tone class + light tone",
     interactive: true,
     exclude: true,
     class: "pe-dark-tone",

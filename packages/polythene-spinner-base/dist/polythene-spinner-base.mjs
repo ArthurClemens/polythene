@@ -1,5 +1,5 @@
 import m from 'mithril';
-import transition, { filterSupportedAttributes } from 'polythene-core';
+import { filterSupportedAttributes, hide, show } from 'polythene-core';
 import shadow from 'polythene-shadow';
 import { styler } from 'polythene-css';
 import { vars } from 'polythene-theme';
@@ -125,12 +125,12 @@ var classForType = function classForType() {
   return typeClasses[mode];
 };
 
-var show = function show(state, attrs) {
+var showSpinner = function showSpinner(state, attrs) {
   if (state.isTransitioning) {
     return;
   }
   state.isTransitioning = true;
-  return transition.show(_extends({}, attrs, {
+  return show(_extends({}, attrs, {
     el: state.el,
     showClass: classes.visible
   })).then(function () {
@@ -139,12 +139,12 @@ var show = function show(state, attrs) {
   });
 };
 
-var hide = function hide(state, attrs) {
+var hideSpinner = function hideSpinner(state, attrs) {
   if (state.isTransitioning) {
     return;
   }
   state.isTransitioning = true;
-  return transition.hide(_extends({}, attrs, {
+  return hide(_extends({}, attrs, {
     el: state.el,
     afterHide: function afterHide() {
       return state.el.style.display = "none";
@@ -181,7 +181,7 @@ var createView = function createView(state, attrs) {
       notifyState(state, attrs);
       if (!attrs.permanent) {
         setTimeout(function () {
-          return show(state, attrs);
+          return showSpinner(state, attrs);
         }, 0);
       }
     }
@@ -191,16 +191,19 @@ var createView = function createView(state, attrs) {
 
   if (state.hide) {
     setTimeout(function () {
-      hide(state, attrs);
+      hideSpinner(state, attrs);
     }, 0);
   }
 
-  var content = [attrs.raised && attrs.content ? m.component(shadow, { z: attrs.z }) : null, attrs.content || m("div", { class: classes.animation }, "Specific spinner missing")];
+  var content = [attrs.raised && attrs.content ? m(shadow, { z: attrs.z }) : null, attrs.content || m("div", { class: classes.animation }, "Specific spinner missing")];
 
   return m(element, props, [attrs.before, content, attrs.after]);
 };
 
-var view = function view(state, attrs) {
+var view = function view(_ref2) {
+  var state = _ref2.state,
+      attrs = _ref2.attrs;
+
   if (!state.visible) {
     if (attrs.hide !== undefined && !attrs.hide || attrs.show) {
       var showDelay = delay(attrs, "show");

@@ -8,8 +8,7 @@ exports[`test Colored field 1`] = `
       <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
     </div>
     <div class=\"pe-search__content\">
-      <a tabindex=\"-1\" class=
-      \"pe-button pe-icon-button pe-button--inactive\">
+      <a class=\"pe-button pe-icon-button pe-button--inactive\">
       <div class=\"pe-button__content\">
         <div class=\"pe-ripple pe-ripple--constrained\">
           <div class=\"pe-ripple__mask\">
@@ -37,7 +36,7 @@ exports[`test Colored field 1`] = `
           \"pe-textfield__label\">Search</label><input type=\"text\"
           class=\"pe-textfield__input\">
         </div>
-      </div><a tabindex=\"-1\" class=
+      </div><a class=
       \"pe-button pe-icon-button pe-button--inactive\">
       <div class=\"pe-button__content\">
         <div class=\"pe-ripple pe-ripple--constrained\">
@@ -65,7 +64,7 @@ exports[`test Colored field 1`] = `
 "
 `;
 
-exports[`test Dark theme class + light theme class 1`] = `
+exports[`test Dark tone class + light theme class 1`] = `
 "<form style=
 \"min-height: 130px; overflow: hidden; background-color: transparent; padding: 8px;\">
 <div class=\"pe-search pe-search--inset pe-light-tone\">
@@ -74,8 +73,7 @@ exports[`test Dark theme class + light theme class 1`] = `
       <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
     </div>
     <div class=\"pe-search__content\">
-      <a tabindex=\"-1\" class=
-      \"pe-button pe-icon-button pe-button--inactive\">
+      <a class=\"pe-button pe-icon-button pe-button--inactive\">
       <div class=\"pe-button__content\">
         <div class=\"pe-ripple pe-ripple--constrained\">
           <div class=\"pe-ripple__mask\">
@@ -103,7 +101,7 @@ exports[`test Dark theme class + light theme class 1`] = `
           \"pe-textfield__label\">Search</label><input type=\"text\"
           class=\"pe-textfield__input\">
         </div>
-      </div><a tabindex=\"-1\" class=
+      </div><a class=
       \"pe-button pe-icon-button pe-button--inactive\">
       <div class=\"pe-button__content\">
         <div class=\"pe-ripple pe-ripple--constrained\">
@@ -131,7 +129,7 @@ exports[`test Dark theme class + light theme class 1`] = `
 "
 `;
 
-exports[`test Dark theme class + light tone 1`] = `
+exports[`test Dark tone class + light tone 1`] = `
 "<form style=
 \"min-height: 130px; overflow: hidden; background-color: transparent; padding: 8px;\">
 <div class=\"pe-search pe-search--inset pe-light-tone\">
@@ -140,8 +138,7 @@ exports[`test Dark theme class + light tone 1`] = `
       <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
     </div>
     <div class=\"pe-search__content\">
-      <a tabindex=\"-1\" class=
-      \"pe-button pe-icon-button pe-button--inactive\">
+      <a class=\"pe-button pe-icon-button pe-button--inactive\">
       <div class=\"pe-button__content\">
         <div class=\"pe-ripple pe-ripple--constrained\">
           <div class=\"pe-ripple__mask\">
@@ -169,7 +166,7 @@ exports[`test Dark theme class + light tone 1`] = `
           \"pe-textfield__label\">Search</label><input type=\"text\"
           class=\"pe-textfield__input\">
         </div>
-      </div><a tabindex=\"-1\" class=
+      </div><a class=
       \"pe-button pe-icon-button pe-button--inactive\">
       <div class=\"pe-button__content\">
         <div class=\"pe-ripple pe-ripple--constrained\">
@@ -206,8 +203,7 @@ exports[`test Option: textfield, buttons 1`] = `
       <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
     </div>
     <div class=\"pe-search__content\">
-      <a tabindex=\"-1\" class=
-      \"pe-button pe-icon-button pe-button--inactive\">
+      <a class=\"pe-button pe-icon-button pe-button--inactive\">
       <div class=\"pe-button__content\">
         <div class=\"pe-ripple pe-ripple--constrained\">
           <div class=\"pe-ripple__mask\">
@@ -235,7 +231,7 @@ exports[`test Option: textfield, buttons 1`] = `
           \"pe-textfield__label\">Search</label><input type=\"text\"
           class=\"pe-textfield__input\">
         </div>
-      </div><a tabindex=\"-1\" class=
+      </div><a class=
       \"pe-button pe-icon-button pe-button--inactive\">
       <div class=\"pe-button__content\">
         <div class=\"pe-ripple pe-ripple--constrained\">
@@ -272,8 +268,7 @@ exports[`test Option: textfield, buttons, fullWidth 1`] = `
       <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
     </div>
     <div class=\"pe-search__content\">
-      <a tabindex=\"-1\" class=
-      \"pe-button pe-icon-button pe-button--inactive\">
+      <a class=\"pe-button pe-icon-button pe-button--inactive\">
       <div class=\"pe-button__content\">
         <div class=\"pe-ripple pe-ripple--constrained\">
           <div class=\"pe-ripple__mask\">
@@ -301,7 +296,7 @@ exports[`test Option: textfield, buttons, fullWidth 1`] = `
           \"pe-textfield__label\">Search</label><input type=\"text\"
           class=\"pe-textfield__input\">
         </div>
-      </div><a tabindex=\"-1\" class=
+      </div><a class=
       \"pe-button pe-icon-button pe-button--inactive\">
       <div class=\"pe-button__content\">
         <div class=\"pe-ripple pe-ripple--constrained\">
@@ -338,8 +333,7 @@ exports[`test Theme -- dark theme class 1`] = `
       <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
     </div>
     <div class=\"pe-search__content\">
-      <a tabindex=\"-1\" class=
-      \"pe-button pe-icon-button pe-button--inactive\">
+      <a class=\"pe-button pe-icon-button pe-button--inactive\">
       <div class=\"pe-button__content\">
         <div class=\"pe-ripple pe-ripple--constrained\">
           <div class=\"pe-ripple__mask\">
@@ -367,7 +361,7 @@ exports[`test Theme -- dark theme class 1`] = `
           \"pe-textfield__label\">Search</label><input type=\"text\"
           class=\"pe-textfield__input\">
         </div>
-      </div><a tabindex=\"-1\" class=
+      </div><a class=
       \"pe-button pe-icon-button pe-button--inactive\">
       <div class=\"pe-button__content\">
         <div class=\"pe-ripple pe-ripple--constrained\">
@@ -404,8 +398,7 @@ exports[`test Theme 1`] = `
       <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
     </div>
     <div class=\"pe-search__content\">
-      <a tabindex=\"-1\" class=
-      \"pe-button pe-icon-button pe-button--inactive\">
+      <a class=\"pe-button pe-icon-button pe-button--inactive\">
       <div class=\"pe-button__content\">
         <div class=\"pe-ripple pe-ripple--constrained\">
           <div class=\"pe-ripple__mask\">
@@ -433,7 +426,7 @@ exports[`test Theme 1`] = `
           \"pe-textfield__label\">Search</label><input type=\"text\"
           class=\"pe-textfield__input\">
         </div>
-      </div><a tabindex=\"-1\" class=
+      </div><a class=
       \"pe-button pe-icon-button pe-button--inactive\">
       <div class=\"pe-button__content\">
         <div class=\"pe-ripple pe-ripple--constrained\">

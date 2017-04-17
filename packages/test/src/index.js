@@ -15,6 +15,7 @@ import { tests as iconTests } from "../tests/icon/tests";
 import { tests as iconButtonTests } from "../tests/icon-button/tests";
 import { tests as listTests } from "../tests/list/tests";
 import { tests as listTileTests } from "../tests/list-tile/tests";
+import { tests as mdSpinnerTests } from "../tests/spinner-md/tests";
 import { tests as menuTests } from "../tests/menu/tests";
 import { tests as notificationTests } from "../tests/notification/tests";
 import { tests as radioButtonTests } from "../tests/radio-button/tests";
@@ -88,6 +89,11 @@ const pages = [
     path: "/menu",
     name: "Menu",
     tests: menuTests
+  },
+  {
+    path: "/md-spinner",
+    name: "Spinner - Material Design",
+    tests: mdSpinnerTests
   },
   {
     path: "/notification",

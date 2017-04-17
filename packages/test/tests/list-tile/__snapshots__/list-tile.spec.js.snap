@@ -18,7 +18,7 @@ exports[`test Child node 1`] = `
 "
 `;
 
-exports[`test Dark theme class + light theme class 1`] = `
+exports[`test Dark tone class + light theme class 1`] = `
 "<div class=\"pe-list-tile pe-list-tile--front pe-light-tone\">
   <div style=\"\" class=\"pe-list-tile__primary\">
     <div class=
@@ -44,7 +44,7 @@ exports[`test Dark theme class + light theme class 1`] = `
 "
 `;
 
-exports[`test Dark theme class + light tone 1`] = `
+exports[`test Dark tone class + light tone 1`] = `
 "<div class=\"pe-list-tile pe-light-tone pe-list-tile--front\">
   <div style=\"\" class=\"pe-list-tile__primary\">
     <div class=

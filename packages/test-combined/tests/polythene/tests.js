@@ -297,6 +297,13 @@ export const tests = [
     }
   },
   {
+    name: "Spinner",
+    component: polythene.mdSpinner,
+    attrs: {
+      permanent: true
+    }
+  },
+  {
     name: "SVG",
     component: polythene.svg,
     attrs: {

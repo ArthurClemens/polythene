@@ -32,6 +32,8 @@ export { default as list } from "polythene-list";
 
 export { default as listTile } from "polythene-list-tile";
 
+export { default as mdSpinner } from "polythene-md-spinner";
+
 export { default as menu } from "polythene-menu";
 
 export { default as notification } from "polythene-notification";

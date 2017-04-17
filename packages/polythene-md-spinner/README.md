@@ -1,9 +1,8 @@
-# Spinner (base)
+# Material Design spinner
 
-Base functionality for:
+Indeterminate Material Design spinner.
 
-* [Material Design spinner](../polythene-md-spinner)
-* [iOS spinner](../polythene-ios-spinner)
+See [Spinner documentation](../polythene-spinner-base).
 
 
 
@@ -11,21 +10,15 @@ Base functionality for:
 
 ### Control
 
-| **Element** | **Key**     |  **Class** |
-| ----------- | ----------- | --------------- |
-| Component   | component   | `pe-spinner` |
-| Placeholder | placeholder | `pe-spinner__placeholder` |
-| Animation   | animation   | `pe-spinner__animation` |
+| **Element**          | **Key**            |  **Class** |
+| -------------------- | ------------------ | --------------- |
+| Component            | component          | `pe-md-spinner` |
+| Animation            | animation          | `pe-md-spinner__animation` |
+| Layer                | layer              | `pe-md-spinner__layer` |
+| Layer N              | layerN             | `pe-md-spinner__layer--` |
+| Gap patch            | gapPatch           | `pe-md-spinner__gap-patch` |
+| Circle               | circle             | `pe-md-spinner__circle` |
+| Circle clipper       | circleClipper      | `pe-md-spinner__circle-clipper` |
+| Circle clipper left  | circleClipperLeft  | `pe-md-spinner__circle-clipper-left` |
+| circle clipper right | circleClipperRight | `pe-md-spinner__circle-clipper-right` |
 
-| **State**    | **Key**     |  **Class** |
-| ------------ | ----------- | --------------- |
-| Visible      | visible     | `pe-spinner--visible` |
-| Small size   | small       | `pe-spinner--small` |
-| Regular size | regular     | `pe-spinner--regular` |
-| Medium size  | medium      | `pe-spinner--medium` |
-| Large size   | large       | `pe-spinner--large` |
-| FAB size     | fab         | `pe-spinner--fab` |
-| Raised       | raised      | `pe-spinner--raised` |
-| Permanent    | permanent   | `pe-spinner--permanent` |
-| Single color | singleColor | `pe-spinner--single-color` |
-| Animated     | animated    | `pe-spinner--animated` |

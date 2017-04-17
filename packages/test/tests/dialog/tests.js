@@ -283,7 +283,7 @@ export const tests = [
     }
   },
 
-  // Dark theme
+  // Dark tone
   {
     name: "Option: modal with backdrop -- dark theme class",
     interactive: true,
@@ -299,7 +299,7 @@ export const tests = [
     }
   },
   {
-    name: "Dark theme class + light theme class",
+    name: "Dark tone class + light theme class",
     interactive: true,
     exclude: true,
     component: {
@@ -313,7 +313,7 @@ export const tests = [
     }
   },
   {
-    name: "Dark theme class + light tone",
+    name: "Dark tone class + light tone",
     interactive: true,
     exclude: true,
     component: {

@@ -90,7 +90,7 @@ export const tests = [
     }
   },
 
-  // Dark theme
+  // Dark tone
 
   {
     name: "Interactive option: animated -- dark theme class",
