@@ -24,7 +24,7 @@ export default (selector, componentVars) => [{
       " .pe-list-tile__primary, .pe-list-tile__secondary": [
         flex.layoutHorizontal,
         {
-          "text-decoration": "none",
+          textDecoration: "none",
           color: "inherit",
           border: "none"
         }
@@ -42,8 +42,8 @@ export default (selector, componentVars) => [{
       ],
 
       " .pe-list-tile__secondary": {
-        "text-align": "right",
-        "font-size": componentVars.font_size_title + "px",
+        textAlign: "right",
+        fontSize: componentVars.font_size_title + "px",
         position: "relative"
       },
 
@@ -58,31 +58,31 @@ export default (selector, componentVars) => [{
           ],
 
           " small": {
-            "font-size": componentVars.font_size_small + "px"
+            fontSize: componentVars.font_size_small + "px"
           }
         }
       ],
 
       " .pe-list-tile__content--front + .pe-list-tile__content": {
-        "padding-left": 0
+        paddingLeft: 0
       },
 
       " .pe-list-tile__title": [
-        mixin.ellipsis(1), {
-          "font-size": componentVars.font_size_title + "px",
-          "font-weight": vars.font_weight_normal,
-          "line-height": componentVars.single_line_height + "px"
+        mixin.ellipsis(1, componentVars.single_line_height, "px"), {
+          fontSize: componentVars.font_size_title + "px",
+          fontWeight: vars.font_weight_normal,
+          lineHeight: componentVars.single_line_height + "px"
         }
       ],
 
       " .pe-list-tile__subtitle": [
-        mixin.ellipsis(componentVars.subtitle_line_count, componentVars.line_height_subtitle), {
-          "font-size": componentVars.font_size_subtitle + "px",
-          "line-height": componentVars.line_height_subtitle + "px",
+        mixin.ellipsis(componentVars.subtitle_line_count, componentVars.line_height_subtitle, "px"), {
+          fontSize: componentVars.font_size_subtitle + "px",
+          lineHeight: componentVars.line_height_subtitle + "px",
 
           ".pe-list-tile__high-subtitle": [
-            mixin.ellipsis(componentVars.high_subtitle_line_count, componentVars.line_height_subtitle), {
-              "white-space": "normal"
+            mixin.ellipsis(componentVars.high_subtitle_line_count, componentVars.line_height_subtitle, "px"), {
+              whiteSpace: "normal"
             }
           ]
         }
@@ -90,7 +90,7 @@ export default (selector, componentVars) => [{
 
       ".pe-list-tile--selected, &.pe-list-tile--disabled": {
         " a": {
-          "pointer-events": "none"
+          pointerEvents: "none"
         }
       },
 
@@ -124,14 +124,14 @@ export default (selector, componentVars) => [{
         height: componentVars.single_height + "px",
 
         " .pe-list-tile__content": {
-          "padding-top": 0,
-          "padding-bottom": 0
+          paddingTop: 0,
+          paddingBottom: 0
         },
         " .pe-list-tile__title": [
-          mixin.ellipsis(1, componentVars.single_height), {
-            "font-size": componentVars.font_size_list_header + "px",
-            "font-weight": vars.font_weight_medium,
-            "line-height": componentVars.single_height + "px",
+          mixin.ellipsis(1, componentVars.single_height, "px"), {
+            fontSize: componentVars.font_size_list_header + "px",
+            fontWeight: vars.font_weight_medium,
+            lineHeight: componentVars.single_height + "px",
             padding: 0
           }
         ]

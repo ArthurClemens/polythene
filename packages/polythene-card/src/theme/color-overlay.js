@@ -1,7 +1,9 @@
 
 const style = (scopes, selector, componentVars, tint) => [{
   [scopes.map(s => s + selector).join(",")]: {
-    backgroundColor: componentVars["color_" + tint + "_main_background"]
+    " .pe-card__overlay__content": {
+      backgroundColor: componentVars["color_" + tint + "_overlay_background"]
+    }
   }
 }];
 

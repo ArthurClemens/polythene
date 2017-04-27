@@ -41,23 +41,29 @@ const ellipsis = (lines, lineHeight, unit = "px") => {
       textOverflow: "initial",
       overflow: "initial",
       display: "block",
-      height: "auto"
+      height: "auto",
+      maxHeight: "none"
     };
   }
   return Object.assign(
-    {}, {
+    {},
+    {
       overflow: "hidden",
-      "text-overflow": "ellipsis",
-      "text-rendering": "auto" // Samsung Android
+      textOverflow: "ellipsis",
+      textRendering: "auto" // Samsung Android
     },
-    (lines !== undefined) ? {
-      "-webkit-line-clamp": lines,
-      "-webkit-box-orient": "vertical",
-      display: "-webkit-box"
-    } : null,
-    (lineHeight !== undefined) ? {
-      "max-height": (lines * lineHeight) + unit
-    } : null
+    lines !== undefined
+      ? {
+        "-webkit-line-clamp": lines,
+        "-webkit-box-orient": "vertical",
+        display: "-webkit-box"
+      }
+      : null,
+    lineHeight !== undefined
+      ? {
+        maxHeight: (lines * lineHeight) + unit
+      }
+      : null
   );
 };
 

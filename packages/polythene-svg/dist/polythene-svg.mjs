@@ -15,7 +15,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var layout = (function (selector) {
   return [_defineProperty({}, selector, {
-    lineHeight: 1
+    lineHeight: 1,
+
+    " svg": {
+      width: "inherit",
+      height: "inherit"
+    }
   })];
 });
 

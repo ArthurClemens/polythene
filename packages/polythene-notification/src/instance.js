@@ -91,7 +91,7 @@ const createView = (state, opts) => {
     {
       class: [
         state.class,
-        opts.tone === "light" ? null : "pe-dark-tone", // default dark theme
+        opts.tone === "light" ? null : "pe-dark-tone", // default dark tone
         opts.tone === "light" ? "pe-light-tone" : null,
         opts.containerSelector ? classes.hasContainer : null,
         opts.layout === "vertical" ? classes.vertical : classes.horizontal,

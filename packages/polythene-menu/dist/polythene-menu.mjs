@@ -1,7 +1,7 @@
 import m from 'mithril';
 import shadow from 'polythene-shadow';
 import { filterSupportedAttributes, hide, show, subscribe, unsubscribe } from 'polythene-core';
-import { styler } from 'polythene-css';
+import { mixin, styler } from 'polythene-css';
 import { classes } from 'polythene-list-tile';
 import { vars } from 'polythene-theme';
 
@@ -58,7 +58,9 @@ var widthStyle = function widthStyle(componentVars, size) {
 };
 
 var layout = (function (selector, componentVars) {
-  return [_defineProperty({}, selector, [componentVars.sizes.map(function (size) {
+  var _ref3;
+
+  return [(_ref3 = {}, _defineProperty(_ref3, selector, [componentVars.sizes.map(function (size) {
     return widthStyle(componentVars, size);
   }), _defineProperty({
     transitionTimingFunction: "ease-out",
@@ -81,16 +83,13 @@ var layout = (function (selector, componentVars) {
       position: "relative",
       opacity: 1,
       zIndex: 0
-    },
-
-    " .pe-menu__content": {
-      width: "100%",
-      borderRadius: componentVars.border_radius + "px"
     }
 
   }, "@media (max-width: " + vars.unit_screen_size_large + "px)", {
     "max-width": componentVars.max_size_small_screen * vars.grid_unit_menu + "px"
-  })])];
+  })]), _defineProperty(_ref3, " .pe-menu__content", {
+    " .pe-list-tile__title": [mixin.ellipsis("none")]
+  }), _ref3)];
 });
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }

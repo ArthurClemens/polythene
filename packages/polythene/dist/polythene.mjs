@@ -1892,14 +1892,14 @@ var ellipsis = function ellipsis(lines, lineHeight) {
   }
   return _extends$4({}, {
     overflow: "hidden",
-    "text-overflow": "ellipsis",
-    "text-rendering": "auto" // Samsung Android
+    textOverflow: "ellipsis",
+    textRendering: "auto" // Samsung Android
   }, lines !== undefined ? {
     "-webkit-line-clamp": lines,
     "-webkit-box-orient": "vertical",
     display: "-webkit-box"
   } : null, lineHeight !== undefined ? {
-    "max-height": lines * lineHeight + unit
+    maxHeight: lines * lineHeight + unit
   } : null);
 };
 
@@ -2254,7 +2254,7 @@ var vars = {
   color_dark: "currentcolor"
 };
 
-function _defineProperty$2(obj, key, value) {
+function _defineProperty$2$1(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -2263,8 +2263,13 @@ function _defineProperty$2(obj, key, value) {
 }
 
 var layout$2 = function layout(selector) {
-  return [_defineProperty$2({}, selector, {
-    lineHeight: 1
+  return [_defineProperty$2$1({}, selector, {
+    lineHeight: 1,
+
+    " svg": {
+      width: "inherit",
+      height: "inherit"
+    }
   })];
 };
 
@@ -2276,7 +2281,7 @@ function _defineProperty$1$3(obj, key, value) {
   }return obj;
 }
 
-var style$1 = function style(scopes, selector, componentVars, tint) {
+var style$2$1 = function style(scopes, selector, componentVars, tint) {
   return [_defineProperty$1$3({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
@@ -2295,8 +2300,8 @@ var style$1 = function style(scopes, selector, componentVars, tint) {
 };
 
 var color$2 = function color(selector, componentVars) {
-  return [style$1([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  style$1(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+  return [style$2$1([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$2$1(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 };
 
 var _extends$1$3 = Object.assign || function (target) {
@@ -2309,14 +2314,14 @@ var _extends$1$3 = Object.assign || function (target) {
   }return target;
 };
 
-var fns$2 = [layout$2, color$2];
+var fns$1 = [layout$2, color$2];
 var selector$2 = "." + classes$2.component;
 
 var customTheme$2 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$2], _extends$1$3({}, vars, customVars), fns$2);
+  return styler.generateStyles([customSelector, selector$2], _extends$1$3({}, vars, customVars), fns$1);
 };
 
-styler.generateStyles([selector$2], vars, fns$2);
+styler.generateStyles([selector$2], vars, fns$1);
 
 var _extends$3 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
@@ -2391,17 +2396,17 @@ var layout$1 = function layout(selector, componentVars) {
     ".pe-icon--avatar img": {
       border: "none",
       borderRadius: "50%",
-      width: "100%",
-      height: "100%"
+      width: "inherit",
+      height: "inherit"
     },
 
     " img": {
-      height: "100%"
+      height: "inherit"
     },
 
-    " svg": {
-      width: "100%",
-      height: "100%"
+    " .pe-svg": {
+      width: "inherit",
+      height: "inherit"
     },
 
     ".pe-icon--small": iconSizesPx(componentVars.size_small),
@@ -2419,7 +2424,7 @@ function _defineProperty$1$2(obj, key, value) {
   }return obj;
 }
 
-var style = function style(scopes, selector, componentVars, tint) {
+var style$1$1 = function style(scopes, selector, componentVars, tint) {
   return [_defineProperty$1$2({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
@@ -2428,8 +2433,8 @@ var style = function style(scopes, selector, componentVars, tint) {
 };
 
 var color$1 = function color(selector, componentVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+  return [style$1$1([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$1$1(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 };
 
 var _extends$1$1 = Object.assign || function (target) {
@@ -2442,14 +2447,14 @@ var _extends$1$1 = Object.assign || function (target) {
   }return target;
 };
 
-var fns$1 = [layout$1, color$1];
+var fns = [layout$1, color$1];
 var selector$1 = "." + classes$1.component;
 
 var customTheme$1 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$1], _extends$1$1({}, vars$1$1, customVars), fns$1);
+  return styler.generateStyles([customSelector, selector$1], _extends$1$1({}, vars$1$1, customVars), fns);
 };
 
-styler.generateStyles([selector$1], vars$1$1, fns$1);
+styler.generateStyles([selector$1], vars$1$1, fns);
 
 var _extends$1$2 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
@@ -2522,7 +2527,7 @@ var vars$1$2 = {
   "shadow-down-z-2": "inset 0px 4px 6px -3px rgba(0, 0, 0, 0.25)"
 };
 
-function _defineProperty$3(obj, key, value) {
+function _defineProperty$3$1(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -2537,7 +2542,7 @@ var shadowDirective = function shadowDirective(dir) {
 };
 
 var layout$4 = function layout(selector, componentVars) {
-  return [_defineProperty$3({}, selector, [mixin.fit(), {
+  return [_defineProperty$3$1({}, selector, [mixin.fit(), {
     borderRadius: "inherit",
     pointerEvents: "none",
 
@@ -2553,7 +2558,7 @@ var layout$4 = function layout(selector, componentVars) {
   }, [1, 2, 3, 4, 5].map(function (index) {
     var _ref;
 
-    return _ref = {}, _defineProperty$3(_ref, " .pe-shadow__top.pe-shadow--z-" + index, shadowDirective(componentVars["shadow-top-z-" + index])), _defineProperty$3(_ref, " .pe-shadow__bottom.pe-shadow--z-" + index, shadowDirective(componentVars["shadow-bottom-z-" + index])), _ref;
+    return _ref = {}, _defineProperty$3$1(_ref, " .pe-shadow__top.pe-shadow--z-" + index, shadowDirective(componentVars["shadow-top-z-" + index])), _defineProperty$3$1(_ref, " .pe-shadow__bottom.pe-shadow--z-" + index, shadowDirective(componentVars["shadow-bottom-z-" + index])), _ref;
   })])];
 };
 
@@ -2567,14 +2572,14 @@ var _extends$1$4 = Object.assign || function (target) {
   }return target;
 };
 
-var fns$3 = [layout$4];
+var fns$2 = [layout$4];
 var selector$3 = "." + classes$3.component;
 
 var customTheme$3 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$3], _extends$1$4({}, vars$1$2, customVars), fns$3);
+  return styler.generateStyles([customSelector, selector$3], _extends$1$4({}, vars$1$2, customVars), fns$2);
 };
 
-styler.generateStyles([selector$3], vars$1$2, fns$3);
+styler.generateStyles([selector$3], vars$1$2, fns$2);
 
 var _extends$5 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
@@ -2672,7 +2677,7 @@ function _defineProperty$1$5(obj, key, value) {
   }return obj;
 }
 
-var style$3 = function style(scopes, selector, componentVars, tint) {
+var style$4 = function style(scopes, selector, componentVars, tint) {
   return [_defineProperty$1$5({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
@@ -2681,8 +2686,8 @@ var style$3 = function style(scopes, selector, componentVars, tint) {
 };
 
 var color$4 = function color(selector, componentVars) {
-  return [style$3([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  style$3(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+  return [style$4([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$4(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 };
 
 var _extends$1$6 = Object.assign || function (target) {
@@ -2695,16 +2700,16 @@ var _extends$1$6 = Object.assign || function (target) {
   }return target;
 };
 
-var fns$5 = [layout$6, color$4];
+var fns$4 = [layout$6, color$4];
 var selector$5 = "." + classes$5.component;
 
 var customTheme$5 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$5], _extends$1$6({}, vars$1$4, customVars), fns$5);
+  return styler.generateStyles([customSelector, selector$5], _extends$1$6({}, vars$1$4, customVars), fns$4);
 };
 
-styler.generateStyles([selector$5], vars$1$4, fns$5);
+styler.generateStyles([selector$5], vars$1$4, fns$4);
 
-function _defineProperty$2$1(obj, key, value) {
+function _defineProperty$2$2(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -2748,7 +2753,7 @@ var animation = function animation(e, el, wavesEl, attrs, classes, endCallback) 
   style.animationName = animationId;
   style.animationTimingFunction = attrs.animationTimingFunction || variables.animation_curve_default;
 
-  var keyframeStyle = [_defineProperty$2$1({}, "@keyframes " + animationId, {
+  var keyframeStyle = [_defineProperty$2$2({}, "@keyframes " + animationId, {
     " 0%": {
       transform: "scale(" + startScale + ")",
       "opacity": startOpacity
@@ -2811,7 +2816,7 @@ var initRipple = function initRipple(vnode) {
     });
     state.animating = true;
   };
-  var triggerEl = attrs.getTarget ? attrs.getTarget() : vnode.dom.parentElement;
+  var triggerEl = attrs.target ? attrs.target() : vnode.dom.parentElement;
   triggerEl.addEventListener(touchEndEvent, tap, false);
   destroyRipple = function destroyRipple() {
     triggerEl.removeEventListener(touchEndEvent, tap, false);
@@ -2959,7 +2964,7 @@ var layout$5 = function layout(selector, componentVars) {
     ".pe-list-tile--sticky": [mixin.sticky(2)],
 
     " .pe-list-tile__primary, .pe-list-tile__secondary": [mixinFlex.layoutHorizontal, {
-      "text-decoration": "none",
+      textDecoration: "none",
       color: "inherit",
       border: "none"
     }],
@@ -2971,8 +2976,8 @@ var layout$5 = function layout(selector, componentVars) {
     }],
 
     " .pe-list-tile__secondary": {
-      "text-align": "right",
-      "font-size": componentVars.font_size_title + "px",
+      textAlign: "right",
+      fontSize: componentVars.font_size_title + "px",
       position: "relative"
     },
 
@@ -2982,32 +2987,32 @@ var layout$5 = function layout(selector, componentVars) {
       }],
 
       " small": {
-        "font-size": componentVars.font_size_small + "px"
+        fontSize: componentVars.font_size_small + "px"
       }
     }],
 
     " .pe-list-tile__content--front + .pe-list-tile__content": {
-      "padding-left": 0
+      paddingLeft: 0
     },
 
-    " .pe-list-tile__title": [mixin.ellipsis(1), {
-      "font-size": componentVars.font_size_title + "px",
-      "font-weight": variables.font_weight_normal,
-      "line-height": componentVars.single_line_height + "px"
+    " .pe-list-tile__title": [mixin.ellipsis(1, componentVars.single_line_height, "px"), {
+      fontSize: componentVars.font_size_title + "px",
+      fontWeight: variables.font_weight_normal,
+      lineHeight: componentVars.single_line_height + "px"
     }],
 
-    " .pe-list-tile__subtitle": [mixin.ellipsis(componentVars.subtitle_line_count, componentVars.line_height_subtitle), {
-      "font-size": componentVars.font_size_subtitle + "px",
-      "line-height": componentVars.line_height_subtitle + "px",
+    " .pe-list-tile__subtitle": [mixin.ellipsis(componentVars.subtitle_line_count, componentVars.line_height_subtitle, "px"), {
+      fontSize: componentVars.font_size_subtitle + "px",
+      lineHeight: componentVars.line_height_subtitle + "px",
 
-      ".pe-list-tile__high-subtitle": [mixin.ellipsis(componentVars.high_subtitle_line_count, componentVars.line_height_subtitle), {
-        "white-space": "normal"
+      ".pe-list-tile__high-subtitle": [mixin.ellipsis(componentVars.high_subtitle_line_count, componentVars.line_height_subtitle, "px"), {
+        whiteSpace: "normal"
       }]
     }],
 
     ".pe-list-tile--selected, &.pe-list-tile--disabled": {
       " a": {
-        "pointer-events": "none"
+        pointerEvents: "none"
       }
     },
 
@@ -3033,13 +3038,13 @@ var layout$5 = function layout(selector, componentVars) {
       height: componentVars.single_height + "px",
 
       " .pe-list-tile__content": {
-        "padding-top": 0,
-        "padding-bottom": 0
+        paddingTop: 0,
+        paddingBottom: 0
       },
-      " .pe-list-tile__title": [mixin.ellipsis(1, componentVars.single_height), {
-        "font-size": componentVars.font_size_list_header + "px",
-        "font-weight": variables.font_weight_medium,
-        "line-height": componentVars.single_height + "px",
+      " .pe-list-tile__title": [mixin.ellipsis(1, componentVars.single_height, "px"), {
+        fontSize: componentVars.font_size_list_header + "px",
+        fontWeight: variables.font_weight_medium,
+        lineHeight: componentVars.single_height + "px",
         padding: 0
       }]
     },
@@ -3096,7 +3101,7 @@ function _defineProperty$1$4(obj, key, value) {
   }return obj;
 }
 
-var style$2 = function style(scopes, selector, componentVars, tint) {
+var style$3 = function style(scopes, selector, componentVars, tint) {
   return [_defineProperty$1$4({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
@@ -3148,8 +3153,8 @@ var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, tint) 
 };
 
 var color$3 = function color(selector, componentVars) {
-  return [style$2([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  style$2(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light theme
+  return [style$3([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$3(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light tone
 
   noTouchStyle(["html.pe-no-touch .pe-dark-tone .pe-list-tile--hoverable", "html.pe-no-touch .pe-dark-tone .pe-list-tile--hoverable "], selector, componentVars, "dark"), // has/inside dark theme
 
@@ -3166,14 +3171,14 @@ var _extends$1$5 = Object.assign || function (target) {
   }return target;
 };
 
-var fns$4 = [layout$5, color$3];
+var fns$3 = [layout$5, color$3];
 var selector$4 = "." + classes$4.component;
 
 var customTheme$4 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$4], _extends$1$5({}, vars$1$3, customVars), fns$4);
+  return styler.generateStyles([customSelector, selector$4], _extends$1$5({}, vars$1$3, customVars), fns$3);
 };
 
-styler.generateStyles([selector$4], vars$1$3, fns$4);
+styler.generateStyles([selector$4], vars$1$3, fns$3);
 
 var _extends$6 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
@@ -3313,14 +3318,14 @@ var vars$1 = {
   color_light_subtitle_text: rgba(variables.color_light_foreground, variables.blend_light_text_secondary),
   color_light_text: rgba(variables.color_light_foreground, variables.blend_light_text_regular),
   color_light_actions_border: rgba(variables.color_light_foreground, variables.blend_light_border_light),
-  color_light_overlay_background: rgba(variables.color_light_foreground, variables.blend_light_overlay_background),
+  color_light_overlay_background: rgba(variables.color_light_background, variables.blend_light_overlay_background),
 
   color_dark_main_background: rgba(variables.color_dark_background),
   color_dark_title_text: rgba(variables.color_dark_foreground, variables.blend_dark_text_primary),
   color_dark_subtitle_text: rgba(variables.color_dark_foreground, variables.blend_dark_text_secondary),
   color_dark_text: rgba(variables.color_dark_foreground, variables.blend_dark_text_regular),
   color_dark_actions_border: rgba(variables.color_dark_foreground, variables.blend_dark_border_light),
-  color_dark_overlay_background: rgba(variables.color_dark_foreground, variables.blend_dark_overlay_background)
+  color_dark_overlay_background: rgba(variables.color_dark_background, variables.blend_dark_overlay_background)
 };
 
 function _defineProperty(obj, key, value) {
@@ -3357,7 +3362,7 @@ var layout = function layout(selector, componentVars) {
       zIndex: 1, // makes rounded corners on absolute images work (without this, no rounded image)
 
       "&.pe-card__media--landscape": {
-        paddingBottom: Math.floor(100 / 16 * 9) + "%"
+        paddingBottom: 100 / 16 * 9 + "%"
       },
       "&.pe-card__media--square": {
         paddingBottom: "100%"
@@ -3371,7 +3376,7 @@ var layout = function layout(selector, componentVars) {
       " img": [mixin.fit(), {
         display: "none",
         width: "100%",
-        maxWidth: "initial",
+        maxWidth: "none",
 
         "&.pe-card__media--crop-x": {
           width: "100%",
@@ -3572,7 +3577,7 @@ function _defineProperty$1(obj, key, value) {
   }return obj;
 }
 
-var baseStyle = function baseStyle(scopes, selector, componentVars, tint) {
+var style = function style(scopes, selector, componentVars, tint) {
   return [_defineProperty$1({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
@@ -3580,8 +3585,21 @@ var baseStyle = function baseStyle(scopes, selector, componentVars, tint) {
   })];
 };
 
-var contentStyle = function contentStyle(scopes, selector, componentVars, tint) {
-  return [_defineProperty$1({}, scopes.map(function (s) {
+var color = function color(selector, componentVars) {
+  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+};
+
+function _defineProperty$2(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
+  } else {
+    obj[key] = value;
+  }return obj;
+}
+
+var style$1 = function style(scopes, selector, componentVars, tint) {
+  return [_defineProperty$2({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
     " .pe-card__title": {
@@ -3599,9 +3617,22 @@ var contentStyle = function contentStyle(scopes, selector, componentVars, tint) 
   })];
 };
 
-var overlayStyle = function overlayStyle(scopes, selector, componentVars, tint) {
-  return [_defineProperty$1({}, scopes.map(function (s) {
-    return s + ".pe-card__overlay--sheet";
+var contentColor = function contentColor(selector, componentVars) {
+  return [style$1([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$1(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+};
+
+function _defineProperty$3(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
+  } else {
+    obj[key] = value;
+  }return obj;
+}
+
+var style$2 = function style(scopes, selector, componentVars, tint) {
+  return [_defineProperty$3({}, scopes.map(function (s) {
+    return s + selector;
   }).join(","), {
     " .pe-card__overlay__content": {
       backgroundColor: componentVars["color_" + tint + "_overlay_background"]
@@ -3609,15 +3640,9 @@ var overlayStyle = function overlayStyle(scopes, selector, componentVars, tint) 
   })];
 };
 
-var color = function color(selector, componentVars) {
-  return [baseStyle([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  baseStyle(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light theme
-
-  contentStyle([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  contentStyle(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light theme
-
-  overlayStyle([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  overlayStyle(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+var overlayColor = function overlayColor(selector, componentVars) {
+  return [style$2([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$2(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 };
 
 var _extends$1 = Object.assign || function (target) {
@@ -3630,14 +3655,19 @@ var _extends$1 = Object.assign || function (target) {
   }return target;
 };
 
-var fns = [layout, color];
 var selector = "." + classes$$1.component;
+var contentSelector = "." + classes$$1.content;
+var overlaySheetSelector = "." + classes$$1.overlaySheet;
+var overlayContentSelector = "." + classes$$1.overlayContent;
 
 var customTheme = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
+  return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), [layout, color]), styler.generateStyles([customSelector, overlaySheetSelector], _extends$1({}, vars$1, customVars), [overlayColor]), styler.generateStyles([customSelector, contentSelector], _extends$1({}, vars$1, customVars), [contentColor]), styler.generateStyles([customSelector, overlayContentSelector], _extends$1({}, vars$1, customVars), [contentColor]);
 };
 
-styler.generateStyles([selector], vars$1, fns);
+styler.generateStyles([selector], vars$1, [layout, color]);
+styler.generateStyles([overlaySheetSelector], vars$1, [overlayColor]);
+styler.generateStyles([contentSelector], vars$1, [contentColor]);
+styler.generateStyles([overlayContentSelector], vars$1, [contentColor]);
 
 var _extends = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
@@ -3663,7 +3693,8 @@ var createOverlay = function createOverlay() {
     return contentMap[key](o);
   });
   return m$1("div", {
-    class: [classes$$1.overlay, attrs.sheet ? classes$$1.overlaySheet : null].join(" ")
+    class: [classes$$1.overlay, attrs.sheet ? classes$$1.overlaySheet : null, attrs.tone === "light" ? null : "pe-dark-tone", // default dark tone
+    attrs.tone === "light" ? "pe-light-tone" : null].join(" ")
   }, [m$1(element, {
     class: [classes$$1.overlayContent, attrs.class].join(" ")
   }, content), m$1("div", {
@@ -4033,7 +4064,7 @@ var layout$9 = function layout(selector, componentVars) {
   }])];
 };
 
-function _defineProperty$2$2(obj, key, value) {
+function _defineProperty$2$3(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -4041,11 +4072,11 @@ function _defineProperty$2$2(obj, key, value) {
   }return obj;
 }
 
-var style$6 = function style(scopes, selector, componentVars, tint) {
+var style$7 = function style(scopes, selector, componentVars, tint) {
   var normalBorder = componentVars["color_" + tint + "_border"] || "transparent";
   var activeBorder = componentVars["color_" + tint + "_active_border"] || normalBorder;
   var disabledBorder = componentVars["color_" + tint + "_disabled_border"] || normalBorder;
-  return [_defineProperty$2$2({}, scopes.map(function (s) {
+  return [_defineProperty$2$3({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
     "&, &:link, &:visited": {
@@ -4089,7 +4120,7 @@ var style$6 = function style(scopes, selector, componentVars, tint) {
 var noTouchStyle$2 = function noTouchStyle(scopes, selector, componentVars, tint) {
   var normalBorder = componentVars["color_" + tint + "_border"] || "transparent";
   var hoverBorder = componentVars["color_" + tint + "_border"] || normalBorder;
-  return [_defineProperty$2$2({}, scopes.map(function (s) {
+  return [_defineProperty$2$3({}, scopes.map(function (s) {
     return s + selector + ":hover";
   }).join(","), {
     ":not(.pe-button--selected):not(.pe-button--inactive) .pe-button__wash": {
@@ -4100,8 +4131,8 @@ var noTouchStyle$2 = function noTouchStyle(scopes, selector, componentVars, tint
 };
 
 var color$7 = function color(selector, componentVars) {
-  return [style$6([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  style$6(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light theme
+  return [style$7([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$7(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light tone
   noTouchStyle$2(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, "dark"), // inside dark theme
   noTouchStyle$2(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, "light")];
 };
@@ -4116,16 +4147,16 @@ var _extends$1$10 = Object.assign || function (target) {
   }return target;
 };
 
-var fns$8 = [layout$9, color$7];
+var fns$7 = [layout$9, color$7];
 var baseSelector = "." + classes$9.base;
 var selector$8 = "." + classes$9.component.replace(/ /g, ".");
 
 var customTheme$8 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$8], _extends$1$10({}, vars$1$7, customVars), fns$8);
+  return styler.generateStyles([customSelector, selector$8], _extends$1$10({}, vars$1$7, customVars), fns$7);
 };
 
 styler.generateStyles([baseSelector], vars$1$7, [baseLayout]);
-styler.generateStyles([selector$8], vars$1$7, fns$8);
+styler.generateStyles([selector$8], vars$1$7, fns$7);
 
 var _typeof = typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol" ? function (obj) {
   return typeof obj === 'undefined' ? 'undefined' : _typeof2(obj);
@@ -4306,7 +4337,7 @@ function _defineProperty$1$7(obj, key, value) {
   }return obj;
 }
 
-var style$5 = function style(scopes, selector, componentVars, tint) {
+var style$6 = function style(scopes, selector, componentVars, tint) {
   return [_defineProperty$1$7({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
@@ -4340,8 +4371,8 @@ var noTouchStyle$1 = function noTouchStyle(scopes, selector, componentVars, tint
 };
 
 var color$6 = function color(selector, componentVars) {
-  return [style$5([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  style$5(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light theme
+  return [style$6([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$6(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light tone
   noTouchStyle$1(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, "dark"), // inside dark theme
   noTouchStyle$1(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, "light")];
 };
@@ -4356,14 +4387,14 @@ var _extends$1$9 = Object.assign || function (target) {
   }return target;
 };
 
-var fns$7 = [layout$8, color$6];
+var fns$6 = [layout$8, color$6];
 var selector$7 = "." + classes$8.component.replace(/ /g, ".");
 
 var customTheme$7 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$7], _extends$1$9({}, vars$1$6, customVars), fns$7);
+  return styler.generateStyles([customSelector, selector$7], _extends$1$9({}, vars$1$6, customVars), fns$6);
 };
 
-styler.generateStyles([selector$7], vars$1$6, fns$7);
+styler.generateStyles([selector$7], vars$1$6, fns$6);
 
 var _extends$10 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
@@ -4618,7 +4649,7 @@ function _defineProperty$6(obj, key, value) {
 
 // Returns a style function to be used by checkbox and radio-button
 
-var style$4 = function style(scopes, selector, componentVars, tint) {
+var style$5 = function style(scopes, selector, componentVars, tint) {
   return [_defineProperty$6({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
@@ -4667,8 +4698,8 @@ var style$4 = function style(scopes, selector, componentVars, tint) {
 };
 
 var color$5 = function color(selector, componentVars) {
-  return [style$4([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  style$4(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+  return [style$5([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$5(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 };
 
 function _defineProperty$1$6(obj, key, value) {
@@ -4819,14 +4850,14 @@ var _extends$1$7 = Object.assign || function (target) {
   }return target;
 };
 
-var fns$6 = [layout$1$1, color$1$1];
+var fns$5 = [layout$1$1, color$1$1];
 var selector$6 = "." + classes$6.component;
 
 var customTheme$6 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$6], _extends$1$7({}, vars$1$5, customVars), fns$6);
+  return styler.generateStyles([customSelector, selector$6], _extends$1$7({}, vars$1$5, customVars), fns$5);
 };
 
-styler.generateStyles([selector$6], vars$1$5, fns$6);
+styler.generateStyles([selector$6], vars$1$5, fns$5);
 
 var theme = {
   iconOff: iconOff,
@@ -4962,7 +4993,7 @@ function _defineProperty$1$10(obj, key, value) {
   }return obj;
 }
 
-var style$8 = function style(scopes, selector, componentVars, tint) {
+var style$9 = function style(scopes, selector, componentVars, tint) {
   return [_defineProperty$1$10({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
@@ -4973,8 +5004,8 @@ var style$8 = function style(scopes, selector, componentVars, tint) {
 };
 
 var color$9 = function color(selector, componentVars) {
-  return [style$8([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  style$8(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+  return [style$9([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$9(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 };
 
 var _extends$1$12 = Object.assign || function (target) {
@@ -4987,14 +5018,14 @@ var _extends$1$12 = Object.assign || function (target) {
   }return target;
 };
 
-var fns$10 = [layout$11, color$9];
+var fns$9 = [layout$11, color$9];
 var selector$10 = "." + classes$1$2.component;
 
 var customTheme$10 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$10], _extends$1$12({}, vars$1$9, customVars), fns$10);
+  return styler.generateStyles([customSelector, selector$10], _extends$1$12({}, vars$1$9, customVars), fns$9);
 };
 
-styler.generateStyles([selector$10], vars$1$9, fns$10);
+styler.generateStyles([selector$10], vars$1$9, fns$9);
 
 var _extends$13 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
@@ -5406,7 +5437,7 @@ function _defineProperty$1$9(obj, key, value) {
   }return obj;
 }
 
-var style$7 = function style(scopes, selector, componentVars, tint) {
+var style$8 = function style(scopes, selector, componentVars, tint) {
   return [_defineProperty$1$9({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
@@ -5432,8 +5463,8 @@ var style$7 = function style(scopes, selector, componentVars, tint) {
 };
 
 var color$8 = function color(selector, componentVars) {
-  return [style$7([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  style$7(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+  return [style$8([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$8(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 };
 
 var _extends$1$11 = Object.assign || function (target) {
@@ -5446,14 +5477,14 @@ var _extends$1$11 = Object.assign || function (target) {
   }return target;
 };
 
-var fns$9 = [layout$10, color$8];
+var fns$8 = [layout$10, color$8];
 var selector$9 = "." + classes$1$1.component;
 
 var customTheme$9 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$9], _extends$1$11({}, vars$1$8, customVars), fns$9);
+  return styler.generateStyles([customSelector, selector$9], _extends$1$11({}, vars$1$8, customVars), fns$8);
 };
 
-styler.generateStyles([selector$9], vars$1$8, fns$9);
+styler.generateStyles([selector$9], vars$1$8, fns$8);
 
 var _extends$12 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
@@ -5746,7 +5777,7 @@ function _defineProperty$12(obj, key, value) {
   }return obj;
 }
 
-var style$10 = function style(scopes, selector, componentVars, tint) {
+var style$11 = function style(scopes, selector, componentVars, tint) {
   var normalBorder = componentVars["color_" + tint + "_border"] || "transparent";
   var activeBorder = componentVars["color_" + tint + "_active_border"] || normalBorder;
   var disabledBorder = componentVars["color_" + tint + "_disabled_border"] || normalBorder;
@@ -5805,8 +5836,8 @@ var noTouchStyle$3 = function noTouchStyle(scopes, selector, componentVars, tint
 };
 
 var color$11 = function color(selector, componentVars) {
-  return [style$10([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  style$10(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light theme
+  return [style$11([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$11(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light tone
   noTouchStyle$3(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, "dark"), // inside dark theme
   noTouchStyle$3(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, "light")];
 };
@@ -5821,14 +5852,14 @@ var _extends$1$14 = Object.assign || function (target) {
   }return target;
 };
 
-var fns$12 = [color$11];
+var fns$11 = [color$11];
 var selector$12 = "." + classes$11.component.replace(/ /g, ".");
 
 var customTheme$12 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$12], _extends$1$14({}, vars$1$11, customVars), fns$12);
+  return styler.generateStyles([customSelector, selector$12], _extends$1$14({}, vars$1$11, customVars), fns$11);
 };
 
-styler.generateStyles([selector$12], vars$1$11, fns$12);
+styler.generateStyles([selector$12], vars$1$11, fns$11);
 
 var _extends$15 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
@@ -6027,7 +6058,7 @@ function _defineProperty$1$11(obj, key, value) {
   }return obj;
 }
 
-var style$9 = function style(scopes, selector, componentVars, tint) {
+var style$10 = function style(scopes, selector, componentVars, tint) {
   return [_defineProperty$1$11({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
@@ -6039,8 +6070,8 @@ var style$9 = function style(scopes, selector, componentVars, tint) {
 };
 
 var color$10 = function color(selector, componentVars) {
-  return [style$9([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  style$9(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+  return [style$10([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$10(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 };
 
 var _extends$1$13 = Object.assign || function (target) {
@@ -6053,14 +6084,14 @@ var _extends$1$13 = Object.assign || function (target) {
   }return target;
 };
 
-var fns$11 = [layout$12, color$10];
+var fns$10 = [layout$12, color$10];
 var selector$11 = "." + classes$10.component;
 
 var customTheme$11 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$11], _extends$1$13({}, vars$1$10, customVars), fns$11);
+  return styler.generateStyles([customSelector, selector$11], _extends$1$13({}, vars$1$10, customVars), fns$10);
 };
 
-styler.generateStyles([selector$11], vars$1$10, fns$11);
+styler.generateStyles([selector$11], vars$1$10, fns$10);
 
 var _extends$14 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
@@ -6201,7 +6232,7 @@ function _defineProperty$1$13(obj, key, value) {
   }return obj;
 }
 
-var style$12 = function style(scopes, selector, componentVars, tint) {
+var style$13 = function style(scopes, selector, componentVars, tint) {
   return [_defineProperty$1$13({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
@@ -6212,8 +6243,8 @@ var style$12 = function style(scopes, selector, componentVars, tint) {
 };
 
 var color$13 = function color(selector, componentVars) {
-  return [style$12([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  style$12(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+  return [style$13([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$13(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 };
 
 var _extends$1$15 = Object.assign || function (target) {
@@ -6226,14 +6257,14 @@ var _extends$1$15 = Object.assign || function (target) {
   }return target;
 };
 
-var fns$14 = [layout$14, color$13];
+var fns$13 = [layout$14, color$13];
 var selector$14 = "." + classes$13.component;
 
 var customTheme$14 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$14], _extends$1$15({}, vars$1$13, customVars), fns$14);
+  return styler.generateStyles([customSelector, selector$14], _extends$1$15({}, vars$1$13, customVars), fns$13);
 };
 
-styler.generateStyles([selector$14], vars$1$13, fns$14);
+styler.generateStyles([selector$14], vars$1$13, fns$13);
 
 var _extends$17 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
@@ -6461,7 +6492,7 @@ function _defineProperty$1$12(obj, key, value) {
   }return obj;
 }
 
-var style$11 = function style(scopes, selector, componentVars, tint) {
+var style$12 = function style(scopes, selector, componentVars, tint) {
   return [_defineProperty$1$12({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
@@ -6474,8 +6505,8 @@ var style$11 = function style(scopes, selector, componentVars, tint) {
 };
 
 var color$12 = function color(selector, componentVars) {
-  return [style$11([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  style$11(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+  return [style$12([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$12(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 };
 
 var _extends$16 = Object.assign || function (target) {
@@ -6488,14 +6519,14 @@ var _extends$16 = Object.assign || function (target) {
   }return target;
 };
 
-var fns$13 = [layout$13, color$12];
+var fns$12 = [layout$13, color$12];
 var selector$13 = "." + classes$12.component;
 
 var customTheme$13 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$13], _extends$16({}, vars$1$12, customVars), fns$13);
+  return styler.generateStyles([customSelector, selector$13], _extends$16({}, vars$1$12, customVars), fns$12);
 };
 
-styler.generateStyles([selector$13], vars$1$12, fns$13);
+styler.generateStyles([selector$13], vars$1$12, fns$12);
 
 var view$12 = function view(_ref) {
   var attrs = _ref.attrs;
@@ -6604,7 +6635,7 @@ function _defineProperty$1$14(obj, key, value) {
   }return obj;
 }
 
-var style$13 = function style(scopes, selector, componentVars, tint) {
+var style$14 = function style(scopes, selector, componentVars, tint) {
   var _ref;
 
   return [(_ref = {}, _defineProperty$1$14(_ref, scopes.map(function (s) {
@@ -6633,8 +6664,8 @@ var style$13 = function style(scopes, selector, componentVars, tint) {
 };
 
 var color$14 = function color(selector, componentVars) {
-  return [style$13([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  style$13(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+  return [style$14([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$14(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 };
 
 var _extends$1$16 = Object.assign || function (target) {
@@ -6647,14 +6678,14 @@ var _extends$1$16 = Object.assign || function (target) {
   }return target;
 };
 
-var fns$15 = [layout$15, color$14];
+var fns$14 = [layout$15, color$14];
 var selector$15 = "." + classes$14.component;
 
 var customTheme$15 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$15], _extends$1$16({}, vars$1$14, customVars), fns$15);
+  return styler.generateStyles([customSelector, selector$15], _extends$1$16({}, vars$1$14, customVars), fns$14);
 };
 
-styler.generateStyles([selector$15], vars$1$14, fns$15);
+styler.generateStyles([selector$15], vars$1$14, fns$14);
 
 var _extends$18 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
@@ -7077,7 +7108,7 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
 
-var style$14 = function style(scopes, selector, componentVars, tint) {
+var style$15 = function style(scopes, selector, componentVars, tint) {
   return [_defineProperty$1$15({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
@@ -7105,8 +7136,8 @@ var style$14 = function style(scopes, selector, componentVars, tint) {
 };
 
 var color$15 = function color(selector, componentVars) {
-  return [style$14([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  style$14(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+  return [style$15([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$15(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 };
 
 var _extends$19 = Object.assign || function (target) {
@@ -7119,14 +7150,14 @@ var _extends$19 = Object.assign || function (target) {
   }return target;
 };
 
-var fns$16 = [layout$16, color$15];
+var fns$15 = [layout$16, color$15];
 var selector$16 = "." + classes$15.component;
 
 var customTheme$16 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$16], _extends$19({}, vars$2, customVars), fns$16);
+  return styler.generateStyles([customSelector, selector$16], _extends$19({}, vars$2, customVars), fns$15);
 };
 
-styler.generateStyles([selector$16], vars$2, fns$16);
+styler.generateStyles([selector$16], vars$2, fns$15);
 
 var layer = function layer(num) {
   return m$1("div", {
@@ -7389,7 +7420,7 @@ function _defineProperty$1$16(obj, key, value) {
   }return obj;
 }
 
-var style$15 = function style(scopes, selector, componentVars, tint) {
+var style$16 = function style(scopes, selector, componentVars, tint) {
   return [_defineProperty$1$16({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
@@ -7399,11 +7430,11 @@ var style$15 = function style(scopes, selector, componentVars, tint) {
 };
 
 var color$16 = function color(selector, componentVars) {
-  return [style$15([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  style$15(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+  return [style$16([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$16(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 };
 
-function _defineProperty$2$3(obj, key, value) {
+function _defineProperty$2$4(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -7412,7 +7443,7 @@ function _defineProperty$2$3(obj, key, value) {
 }
 
 var holderLayout = function holderLayout(selector) {
-  return [_defineProperty$2$3({}, selector, [mixinFlex.layoutCenterCenter, {
+  return [_defineProperty$2$4({}, selector, [mixinFlex.layoutCenterCenter, {
     top: 0,
     right: 0,
     bottom: 0,
@@ -7439,17 +7470,17 @@ var _extends$1$17 = Object.assign || function (target) {
   }return target;
 };
 
-var fns$17 = [layout$17, color$16];
+var fns$16 = [layout$17, color$16];
 var selector$17 = "." + classes$16.component;
 
 var holderFns = [holderLayout];
 var holderSelector = "." + classes$16.holder;
 
 var customTheme$17 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$17], _extends$1$17({}, vars$1$15, customVars), fns$17), styler.generateStyles([customSelector, holderSelector], _extends$1$17({}, vars$1$15, customVars), holderFns);
+  return styler.generateStyles([customSelector, selector$17], _extends$1$17({}, vars$1$15, customVars), fns$16), styler.generateStyles([customSelector, holderSelector], _extends$1$17({}, vars$1$15, customVars), holderFns);
 };
 
-styler.generateStyles([selector$17], vars$1$15, fns$17);
+styler.generateStyles([selector$17], vars$1$15, fns$16);
 styler.generateStyles([holderSelector], vars$1$15, holderFns);
 
 var _extends$20 = Object.assign || function (target) {
@@ -7537,7 +7568,7 @@ var hideInstance$1 = function hideInstance(state, opts) {
 var createView$3 = function createView(state, opts) {
   var element = opts.element || "div";
   var props = _extends$20({}, filterSupportedAttributes(opts), {
-    class: [state.class, opts.tone === "light" ? null : "pe-dark-tone", // default dark theme
+    class: [state.class, opts.tone === "light" ? null : "pe-dark-tone", // default dark tone
     opts.tone === "light" ? "pe-light-tone" : null, opts.containerSelector ? classes$16.hasContainer : null, opts.layout === "vertical" ? classes$16.vertical : classes$16.horizontal, opts.tone === "dark" ? "pe-dark-tone" : null, opts.tone === "light" ? "pe-light-tone" : null, opts.class].join(" "),
     oncreate: function oncreate(_ref) {
       var dom = _ref.dom;
@@ -7667,14 +7698,14 @@ var _extends$1$18 = Object.assign || function (target) {
   }return target;
 };
 
-var fns$18 = [layout$1$2, color$1$2];
+var fns$17 = [layout$1$2, color$1$2];
 var selector$18 = "." + classes$17.component;
 
 var customTheme$18 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$18], _extends$1$18({}, vars$1$5, customVars), fns$18);
+  return styler.generateStyles([customSelector, selector$18], _extends$1$18({}, vars$1$5, customVars), fns$17);
 };
 
-styler.generateStyles([selector$18], vars$1$5, fns$18);
+styler.generateStyles([selector$18], vars$1$5, fns$17);
 
 var theme$1 = {
   iconOff: iconOff$1,
@@ -8039,7 +8070,7 @@ var layout$19 = function layout(selector, componentVars) {
   }])];
 };
 
-function _defineProperty$2$4(obj, key, value) {
+function _defineProperty$2$5(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -8047,8 +8078,8 @@ function _defineProperty$2$4(obj, key, value) {
   }return obj;
 }
 
-var style$17 = function style(scopes, selector, componentVars, tint) {
-  return [_defineProperty$2$4({}, scopes.map(function (s) {
+var style$18 = function style(scopes, selector, componentVars, tint) {
+  return [_defineProperty$2$5({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
     // border color
@@ -8142,8 +8173,8 @@ var style$17 = function style(scopes, selector, componentVars, tint) {
 };
 
 var color$18 = function color(selector, componentVars) {
-  return [style$17([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  style$17(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+  return [style$18([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$18(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 };
 
 var _extends$1$20 = Object.assign || function (target) {
@@ -8156,14 +8187,14 @@ var _extends$1$20 = Object.assign || function (target) {
   }return target;
 };
 
-var fns$20 = [layout$19, color$18];
+var fns$19 = [layout$19, color$18];
 var selector$20 = "." + classes$19.component;
 
 var customTheme$20 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$20], _extends$1$20({}, vars$1$17, customVars), fns$20);
+  return styler.generateStyles([customSelector, selector$20], _extends$1$20({}, vars$1$17, customVars), fns$19);
 };
 
-styler.generateStyles([selector$20], vars$1$17, fns$20);
+styler.generateStyles([selector$20], vars$1$17, fns$19);
 
 var _extends$23 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
@@ -8626,7 +8657,7 @@ function _defineProperty$1$17(obj, key, value) {
   }return obj;
 }
 
-var style$16 = function style(scopes, selector, componentVars, tint) {
+var style$17 = function style(scopes, selector, componentVars, tint) {
   return [_defineProperty$1$17({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
@@ -8647,8 +8678,8 @@ var style$16 = function style(scopes, selector, componentVars, tint) {
 };
 
 var color$17 = function color(selector, componentVars) {
-  return [style$16([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  style$16(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+  return [style$17([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$17(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 };
 
 var _extends$1$19 = Object.assign || function (target) {
@@ -8661,14 +8692,14 @@ var _extends$1$19 = Object.assign || function (target) {
   }return target;
 };
 
-var fns$19 = [layout$18, color$17];
+var fns$18 = [layout$18, color$17];
 var selector$19 = "." + classes$18.component;
 
 var customTheme$19 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$19], _extends$1$19({}, vars$1$16, customVars), fns$19);
+  return styler.generateStyles([customSelector, selector$19], _extends$1$19({}, vars$1$16, customVars), fns$18);
 };
 
-styler.generateStyles([selector$19], vars$1$16, fns$19);
+styler.generateStyles([selector$19], vars$1$16, fns$18);
 
 var _extends$22 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
@@ -9037,7 +9068,7 @@ function _defineProperty$1$19(obj, key, value) {
   }return obj;
 }
 
-var style$18 = function style(scopes, selector, componentVars, tint) {
+var style$19 = function style(scopes, selector, componentVars, tint) {
   return [_defineProperty$1$19({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
@@ -9139,8 +9170,8 @@ var style$18 = function style(scopes, selector, componentVars, tint) {
 };
 
 var color$19 = function color(selector, componentVars) {
-  return [style$18([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  style$18(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+  return [style$19([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$19(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 };
 
 var _extends$1$21 = Object.assign || function (target) {
@@ -9153,14 +9184,14 @@ var _extends$1$21 = Object.assign || function (target) {
   }return target;
 };
 
-var fns$21 = [layout$20, color$19];
+var fns$20 = [layout$20, color$19];
 var selector$21 = "." + classes$20.component;
 
 var customTheme$21 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$21], _extends$1$21({}, vars$1$18, customVars), fns$21);
+  return styler.generateStyles([customSelector, selector$21], _extends$1$21({}, vars$1$18, customVars), fns$20);
 };
 
-styler.generateStyles([selector$21], vars$1$18, fns$21);
+styler.generateStyles([selector$21], vars$1$18, fns$20);
 
 var _extends$24 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
@@ -9546,7 +9577,7 @@ function _defineProperty$1$20(obj, key, value) {
   }return obj;
 }
 
-var style$19 = function style(scopes, selector, componentVars, tint) {
+var style$20 = function style(scopes, selector, componentVars, tint) {
   return [_defineProperty$1$20({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
@@ -9556,11 +9587,11 @@ var style$19 = function style(scopes, selector, componentVars, tint) {
 };
 
 var color$20 = function color(selector, componentVars) {
-  return [style$19([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  style$19(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+  return [style$20([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$20(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 };
 
-function _defineProperty$2$5(obj, key, value) {
+function _defineProperty$2$6(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -9569,7 +9600,7 @@ function _defineProperty$2$5(obj, key, value) {
 }
 
 var holderLayout$1 = function holderLayout(selector) {
-  return [_defineProperty$2$5({}, selector, [mixinFlex.layoutCenterCenter, {
+  return [_defineProperty$2$6({}, selector, [mixinFlex.layoutCenterCenter, {
     top: "auto",
     right: 0,
     bottom: 0,
@@ -9596,17 +9627,17 @@ var _extends$1$22 = Object.assign || function (target) {
   }return target;
 };
 
-var fns$22 = [layout$21, color$20];
+var fns$21 = [layout$21, color$20];
 var selector$22 = "." + classes$1$3.component.replace(/ /g, ".");
 
 var holderFns$1 = [holderLayout$1];
 var holderSelector$1 = "." + classes$1$3.holder.replace(/ /g, ".");
 
 var customTheme$22 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$22], _extends$1$22({}, vars$2$1, customVars), fns$22), styler.generateStyles([customSelector, holderSelector$1], _extends$1$22({}, vars$2$1, customVars), holderFns$1);
+  return styler.generateStyles([customSelector, selector$22], _extends$1$22({}, vars$2$1, customVars), fns$21), styler.generateStyles([customSelector, holderSelector$1], _extends$1$22({}, vars$2$1, customVars), holderFns$1);
 };
 
-styler.generateStyles([selector$22], vars$2$1, fns$22);
+styler.generateStyles([selector$22], vars$2$1, fns$21);
 styler.generateStyles([holderSelector$1], vars$2$1, holderFns$1);
 
 var _extends$25 = Object.assign || function (target) {
@@ -9877,7 +9908,7 @@ function _defineProperty$1$21(obj, key, value) {
   }return obj;
 }
 
-var style$20 = function style(scopes, selector, componentVars, tint) {
+var style$21 = function style(scopes, selector, componentVars, tint) {
   return [_defineProperty$1$21({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
@@ -9955,8 +9986,8 @@ var noTouchStyle$4 = function noTouchStyle(scopes, selector, componentVars, tint
 };
 
 var color$21 = function color$$1(selector, componentVars) {
-  return [style$20([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  style$20(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light theme
+  return [style$21([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$21(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light tone
   noTouchStyle$4(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, "dark"), // inside dark theme
   noTouchStyle$4(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, "light")];
 };
@@ -9971,14 +10002,14 @@ var _extends$2$2 = Object.assign || function (target) {
   }return target;
 };
 
-var fns$23 = [layout$1$3, color$21];
+var fns$22 = [layout$1$3, color$21];
 var selector$23 = "." + classes$21.component;
 
 var customTheme$23 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$23], _extends$2$2({}, vars$3, customVars), fns$23);
+  return styler.generateStyles([customSelector, selector$23], _extends$2$2({}, vars$3, customVars), fns$22);
 };
 
-styler.generateStyles([selector$23], vars$3, fns$23);
+styler.generateStyles([selector$23], vars$3, fns$22);
 
 var _extends$26 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
@@ -10314,7 +10345,7 @@ function _defineProperty$1$22(obj, key, value) {
   }return obj;
 }
 
-var style$21 = function style(scopes, selector, componentVars, tint) {
+var style$22 = function style(scopes, selector, componentVars, tint) {
   return [_defineProperty$1$22({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
@@ -10340,8 +10371,8 @@ var style$21 = function style(scopes, selector, componentVars, tint) {
 };
 
 var color$22 = function color(selector, componentVars) {
-  return [style$21([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  style$21(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+  return [style$22([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$22(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 };
 
 var iconArrowBackward = m$1.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\"/></svg>");
@@ -10365,14 +10396,14 @@ var arrowForward = {
   msvg: iconArrowForward
 };
 
-var fns$24 = [layout$22, color$22];
+var fns$23 = [layout$22, color$22];
 var selector$24 = "." + classes$1$4.component;
 
 var customTheme$24 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$24], _extends$1$24({}, vars$3$1, customVars), fns$24);
+  return styler.generateStyles([customSelector, selector$24], _extends$1$24({}, vars$3$1, customVars), fns$23);
 };
 
-styler.generateStyles([selector$24], vars$3$1, fns$24);
+styler.generateStyles([selector$24], vars$3$1, fns$23);
 
 var _extends$2$3 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
@@ -10807,7 +10838,7 @@ function _defineProperty$1$23(obj, key, value) {
   }return obj;
 }
 
-var style$22 = function style(scopes, selector, componentVars, tint) {
+var style$23 = function style(scopes, selector, componentVars, tint) {
   return [_defineProperty$1$23({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
@@ -10817,8 +10848,8 @@ var style$22 = function style(scopes, selector, componentVars, tint) {
 };
 
 var color$23 = function color(selector, componentVars) {
-  return [style$22([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  style$22(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+  return [style$23([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$23(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 };
 
 var _extends$1$25 = Object.assign || function (target) {
@@ -10831,14 +10862,14 @@ var _extends$1$25 = Object.assign || function (target) {
   }return target;
 };
 
-var fns$25 = [layout$23, color$23];
+var fns$24 = [layout$23, color$23];
 var selector$25 = "." + classes$22.component;
 
 var customTheme$25 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$25], _extends$1$25({}, vars$1$19, customVars), fns$25);
+  return styler.generateStyles([customSelector, selector$25], _extends$1$25({}, vars$1$19, customVars), fns$24);
 };
 
-styler.generateStyles([selector$25], vars$1$19, fns$25);
+styler.generateStyles([selector$25], vars$1$19, fns$24);
 
 var _extends$28 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {

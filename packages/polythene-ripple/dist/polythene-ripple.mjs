@@ -173,7 +173,7 @@ var initRipple = function initRipple(vnode) {
     });
     state.animating = true;
   };
-  var triggerEl = attrs.getTarget ? attrs.getTarget() : vnode.dom.parentElement;
+  var triggerEl = attrs.target ? attrs.target() : vnode.dom.parentElement;
   triggerEl.addEventListener(touchEndEvent, tap, false);
   destroyRipple = function destroyRipple() {
     triggerEl.removeEventListener(touchEndEvent, tap, false);

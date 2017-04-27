@@ -221,7 +221,7 @@ var hideInstance = function hideInstance(state, opts) {
 var createView = function createView(state, opts) {
   var element = opts.element || "div";
   var props = _extends({}, filterSupportedAttributes(opts), {
-    class: [state.class, opts.tone === "light" ? null : "pe-dark-tone", // default dark theme
+    class: [state.class, opts.tone === "light" ? null : "pe-dark-tone", // default dark tone
     opts.tone === "light" ? "pe-light-tone" : null, opts.containerSelector ? classes.hasContainer : null, opts.layout === "vertical" ? classes.vertical : classes.horizontal, opts.tone === "dark" ? "pe-dark-tone" : null, opts.tone === "light" ? "pe-light-tone" : null, opts.class].join(" "),
     oncreate: function oncreate(_ref) {
       var dom = _ref.dom;

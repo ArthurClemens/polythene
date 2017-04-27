@@ -26,6 +26,9 @@ html {
   padding: 0;
   margin: 0;
 }
+.result {
+  width: 50%; /* for IE10 */
+}
 .app {
   padding-bottom: 40px;
 }
@@ -156,15 +159,23 @@ html {
   .results {
     width: 640px;
   }
+  .result {
+    width: 100%;
+  }
 }
 @media (min-width: 960px) {
   .results {
     width: 960px;
+  }
+  .result {
+    width: 50%;
   }
 }
 @media (min-width: 1200px) {
   .results {
     width: 1200px;
   }
+  .result {
+    width: 50%;
+  }
 }
-

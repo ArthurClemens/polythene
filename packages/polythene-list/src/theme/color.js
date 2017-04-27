@@ -32,5 +32,5 @@ export default (selector, componentVars) => [
     "",
     ".pe-light-tone",
     ".pe-light-tone "
-  ], selector, componentVars, "light"), // normal, has/inside light theme
+  ], selector, componentVars, "light"), // normal, has/inside light tone
 ];

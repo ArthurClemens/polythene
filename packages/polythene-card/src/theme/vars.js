@@ -37,13 +37,13 @@ export default {
   color_light_subtitle_text:           rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
   color_light_text:                    rgba(vars.color_light_foreground, vars.blend_light_text_regular),
   color_light_actions_border:          rgba(vars.color_light_foreground, vars.blend_light_border_light),
-  color_light_overlay_background:      rgba(vars.color_light_foreground, vars.blend_light_overlay_background),
+  color_light_overlay_background:      rgba(vars.color_light_background, vars.blend_light_overlay_background),
      
   color_dark_main_background:          rgba(vars.color_dark_background),
   color_dark_title_text:               rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
   color_dark_subtitle_text:            rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
   color_dark_text:                     rgba(vars.color_dark_foreground, vars.blend_dark_text_regular),
   color_dark_actions_border:           rgba(vars.color_dark_foreground, vars.blend_dark_border_light),
-  color_dark_overlay_background:       rgba(vars.color_dark_foreground, vars.blend_dark_overlay_background)
+  color_dark_overlay_background:       rgba(vars.color_dark_background, vars.blend_dark_overlay_background)
 };
 

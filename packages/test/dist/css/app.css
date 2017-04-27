@@ -26,6 +26,9 @@ html {
   padding: 0;
   margin: 0;
 }
+.result {
+  width: auto;
+}
 .app {
   padding-bottom: 40px;
 }
@@ -167,15 +170,24 @@ html {
   .results {
     width: 640px;
   }
+  .result {
+    width: auto;
+  }
 }
 @media (min-width: 960px) {
   .results {
     width: 960px;
   }
+  .result {
+    width: auto;
+  }
 }
 @media (min-width: 1200px) {
   .results {
     width: 1200px;
+  }
+  .result {
+    width: auto;
   }
 }
 

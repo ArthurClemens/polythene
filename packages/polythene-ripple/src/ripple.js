@@ -22,8 +22,8 @@ const initRipple = vnode => {
     animation(e, rippleEl, wavesEl, attrs, classes, () => state.animating = false);
     state.animating = true;
   };
-  const triggerEl = attrs.getTarget
-    ? attrs.getTarget()
+  const triggerEl = attrs.target
+    ? attrs.target()
     : vnode.dom.parentElement;
   triggerEl.addEventListener(touchEndEvent, tap, false);
   destroyRipple = () => {

@@ -27,7 +27,7 @@ export default (selector, componentVars) => [{
       zIndex: 1, // makes rounded corners on absolute images work (without this, no rounded image)
 
       "&.pe-card__media--landscape": {
-        paddingBottom: Math.floor(100 / 16 * 9) + "%"
+        paddingBottom: (100 / 16 * 9) + "%"
       },
       "&.pe-card__media--square": {
         paddingBottom: "100%"
@@ -43,7 +43,7 @@ export default (selector, componentVars) => [{
         {
           display: "none",
           width: "100%",
-          maxWidth: "initial",
+          maxWidth: "none",
 
           "&.pe-card__media--crop-x": {
             width: "100%",

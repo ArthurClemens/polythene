@@ -602,7 +602,7 @@ export const tests = [
   // Overlay
 
   {
-    name: "Overlay with sheet",
+    name: "Overlay with sheet (default dark tone)",
     component: card,
     attrs: {
       content: [
@@ -613,7 +613,40 @@ export const tests = [
               src: landscapeImage
             }),
             overlay: {
-              class: "pe-dark-tone",
+              sheet: true,
+              content: [
+                {
+                  primary: {
+                    title: "Primary title",
+                    subtitle: "Subtitle"
+                  }
+                },
+                {
+                  actions: {
+                    content: twoButtonRow
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  },
+
+  {
+    name: "Overlay with sheet (light tone)",
+    component: card,
+    attrs: {
+      content: [
+        {
+          media: {
+            ratio: "square",
+            content: m("img", {
+              src: landscapeImage
+            }),
+            overlay: {
+              tone: "light",
               sheet: true,
               content: [
                 {
@@ -881,7 +914,7 @@ export const tests = [
               ratio: "square",
               type: "medium",
               content: m("img", {
-                src: "http://www.the2unlimited.com/pochettes/GET%20READY%2001.JPG"
+                src: "https://lastfm-img2.akamaized.net/i/u/avatar170s/ca297951611442bda8ea55fba764c757"
               })
             }
           }

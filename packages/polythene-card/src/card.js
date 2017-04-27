@@ -21,6 +21,8 @@ const createOverlay = (attrs = {}) => {
     class: [
       classes.overlay,
       attrs.sheet ? classes.overlaySheet : null,
+      attrs.tone === "light" ? null : "pe-dark-tone", // default dark tone
+      attrs.tone === "light" ? "pe-light-tone" : null,
     ].join(" ")
   }, [
     m(element, {

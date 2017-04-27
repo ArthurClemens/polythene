@@ -46,17 +46,17 @@ var layout = (function (selector, componentVars) {
     ".pe-icon--avatar img": {
       border: "none",
       borderRadius: "50%",
-      width: "100%",
-      height: "100%"
+      width: "inherit",
+      height: "inherit"
     },
 
     " img": {
-      height: "100%"
+      height: "inherit"
     },
 
-    " svg": {
-      width: "100%",
-      height: "100%"
+    " .pe-svg": {
+      width: "inherit",
+      height: "inherit"
     },
 
     ".pe-icon--small": iconSizesPx(componentVars.size_small),

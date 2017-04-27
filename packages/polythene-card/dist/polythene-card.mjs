@@ -81,14 +81,14 @@ var vars$1 = {
   color_light_subtitle_text: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
   color_light_text: rgba(vars.color_light_foreground, vars.blend_light_text_regular),
   color_light_actions_border: rgba(vars.color_light_foreground, vars.blend_light_border_light),
-  color_light_overlay_background: rgba(vars.color_light_foreground, vars.blend_light_overlay_background),
+  color_light_overlay_background: rgba(vars.color_light_background, vars.blend_light_overlay_background),
 
   color_dark_main_background: rgba(vars.color_dark_background),
   color_dark_title_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
   color_dark_subtitle_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
   color_dark_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_regular),
   color_dark_actions_border: rgba(vars.color_dark_foreground, vars.blend_dark_border_light),
-  color_dark_overlay_background: rgba(vars.color_dark_foreground, vars.blend_dark_overlay_background)
+  color_dark_overlay_background: rgba(vars.color_dark_background, vars.blend_dark_overlay_background)
 };
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -119,7 +119,7 @@ var layout = (function (selector, componentVars) {
       zIndex: 1, // makes rounded corners on absolute images work (without this, no rounded image)
 
       "&.pe-card__media--landscape": {
-        paddingBottom: Math.floor(100 / 16 * 9) + "%"
+        paddingBottom: 100 / 16 * 9 + "%"
       },
       "&.pe-card__media--square": {
         paddingBottom: "100%"
@@ -133,7 +133,7 @@ var layout = (function (selector, componentVars) {
       " img": [mixin.fit(), {
         display: "none",
         width: "100%",
-        maxWidth: "initial",
+        maxWidth: "none",
 
         "&.pe-card__media--crop-x": {
           width: "100%",
@@ -328,7 +328,7 @@ var layout = (function (selector, componentVars) {
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var baseStyle = function baseStyle(scopes, selector, componentVars, tint) {
+var style = function style(scopes, selector, componentVars, tint) {
   return [_defineProperty$1({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
@@ -336,8 +336,15 @@ var baseStyle = function baseStyle(scopes, selector, componentVars, tint) {
   })];
 };
 
-var contentStyle = function contentStyle(scopes, selector, componentVars, tint) {
-  return [_defineProperty$1({}, scopes.map(function (s) {
+var color = (function (selector, componentVars) {
+  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+});
+
+function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var style$1 = function style(scopes, selector, componentVars, tint) {
+  return [_defineProperty$2({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
     " .pe-card__title": {
@@ -355,9 +362,16 @@ var contentStyle = function contentStyle(scopes, selector, componentVars, tint) 
   })];
 };
 
-var overlayStyle = function overlayStyle(scopes, selector, componentVars, tint) {
-  return [_defineProperty$1({}, scopes.map(function (s) {
-    return s + ".pe-card__overlay--sheet";
+var contentColor = (function (selector, componentVars) {
+  return [style$1([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$1(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+});
+
+function _defineProperty$3(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var style$2 = function style(scopes, selector, componentVars, tint) {
+  return [_defineProperty$3({}, scopes.map(function (s) {
+    return s + selector;
   }).join(","), {
     " .pe-card__overlay__content": {
       backgroundColor: componentVars["color_" + tint + "_overlay_background"]
@@ -365,27 +379,26 @@ var overlayStyle = function overlayStyle(scopes, selector, componentVars, tint) 
   })];
 };
 
-var color = (function (selector, componentVars) {
-  return [baseStyle([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  baseStyle(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light theme
-
-  contentStyle([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  contentStyle(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light theme
-
-  overlayStyle([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  overlayStyle(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+var overlayColor = (function (selector, componentVars) {
+  return [style$2([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$2(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 });
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var fns = [layout, color];
 var selector = "." + classes.component;
+var contentSelector = "." + classes.content;
+var overlaySheetSelector = "." + classes.overlaySheet;
+var overlayContentSelector = "." + classes.overlayContent;
 
 var customTheme = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
+  return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), [layout, color]), styler.generateStyles([customSelector, overlaySheetSelector], _extends$1({}, vars$1, customVars), [overlayColor]), styler.generateStyles([customSelector, contentSelector], _extends$1({}, vars$1, customVars), [contentColor]), styler.generateStyles([customSelector, overlayContentSelector], _extends$1({}, vars$1, customVars), [contentColor]);
 };
 
-styler.generateStyles([selector], vars$1, fns);
+styler.generateStyles([selector], vars$1, [layout, color]);
+styler.generateStyles([overlaySheetSelector], vars$1, [overlayColor]);
+styler.generateStyles([contentSelector], vars$1, [contentColor]);
+styler.generateStyles([overlayContentSelector], vars$1, [contentColor]);
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -403,7 +416,8 @@ var createOverlay = function createOverlay() {
     return contentMap[key](o);
   });
   return m("div", {
-    class: [classes.overlay, attrs.sheet ? classes.overlaySheet : null].join(" ")
+    class: [classes.overlay, attrs.sheet ? classes.overlaySheet : null, attrs.tone === "light" ? null : "pe-dark-tone", // default dark tone
+    attrs.tone === "light" ? "pe-light-tone" : null].join(" ")
   }, [m(element, {
     class: [classes.overlayContent, attrs.class].join(" ")
   }, content), m("div", {

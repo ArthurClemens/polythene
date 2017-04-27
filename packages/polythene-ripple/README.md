@@ -141,7 +141,7 @@ If the component - or a component's parent - has option `tone` set to "dark", th
 | **animationTimingFunction** | optional | String | "ease-out" | Animation function: "ease-in-out" or "cubic-bezier(0.1, 0.7, 1.0, 0.1)" |
 | **opacityDecayVelocity**    | optional | Number | 0.4 | Velocity of decrease of opacity |
 | **persistent**              | optional | Boolean | false | Set to `true` to keep the ripple at the end of the animation |
-| **getTarget**               | optional | Function | | Function to set (on request) the ripple's target; by default the ripple's parent node element is used as target  |
+| **target**                  | optional | Function | | Function to set (on request) the ripple's target; by default the ripple's parent node element is used as target  |
 
 
 

@@ -6,6 +6,18 @@
 * [Theming](packages/polythene-theme/README.md)
 
 
+
+## Browser support
+
+* Internet Explorer: 11
+* Edge: 13+
+* Chrome: 54+
+* Firefox: 49+
+* Safari: 9+
+* Mobile Safari: 9+
+
+
+
 ## Development
 
 Polythene is now a monorepo. Components are located inside the "packages" directory.

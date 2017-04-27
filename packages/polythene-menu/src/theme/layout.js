@@ -1,4 +1,5 @@
 import { vars } from "polythene-theme";
+import { mixin } from "polythene-css";
 
 const unifySize = (componentVars, size) =>
   size < componentVars.min_size ? componentVars.min_size : size;
@@ -46,14 +47,15 @@ export default (selector, componentVars) => [{
         zIndex: 0
       },
 
-      " .pe-menu__content": {
-        width: "100%",
-        borderRadius: componentVars.border_radius + "px"
-      },
-
       ["@media (max-width: " + vars.unit_screen_size_large + "px)"]: {
         "max-width": componentVars.max_size_small_screen * vars.grid_unit_menu + "px"
       }
     }
-  ]
+  ],
+  // In menu and in dialog:
+  " .pe-menu__content": {
+    " .pe-list-tile__title": [
+      mixin.ellipsis("none")
+    ]
+  },
 }];

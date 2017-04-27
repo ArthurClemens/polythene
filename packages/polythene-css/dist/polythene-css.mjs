@@ -51,19 +51,20 @@ var ellipsis = function ellipsis(lines, lineHeight) {
       textOverflow: "initial",
       overflow: "initial",
       display: "block",
-      height: "auto"
+      height: "auto",
+      maxHeight: "none"
     };
   }
   return _extends({}, {
     overflow: "hidden",
-    "text-overflow": "ellipsis",
-    "text-rendering": "auto" // Samsung Android
+    textOverflow: "ellipsis",
+    textRendering: "auto" // Samsung Android
   }, lines !== undefined ? {
     "-webkit-line-clamp": lines,
     "-webkit-box-orient": "vertical",
     display: "-webkit-box"
   } : null, lineHeight !== undefined ? {
-    "max-height": lines * lineHeight + unit
+    maxHeight: lines * lineHeight + unit
   } : null);
 };
 
