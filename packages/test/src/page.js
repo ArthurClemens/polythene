@@ -2,11 +2,11 @@ import m from "mithril";
 import { rules as css } from "./styles";
 import { tidy } from "../scripts/render";
 import toolbar from "polythene-toolbar";
-import iconButton from "polythene-icon-button";
 import dialog from "polythene-dialog";
 import notification from "polythene-notification";
 import snackbar from "polythene-snackbar";
-import iconBack from "mmsvg/google/msvg/navigation/arrow-back";
+// import iconButton from "polythene-icon-button";
+// import iconBack from "mmsvg/google/msvg/navigation/arrow-back";
 
 const generatedHtml = {
   oninit: vnode => (
@@ -35,16 +35,16 @@ export default (name, tests, previous) => ({
         backgroundColor: "rgba(255,255,255,.93)"
       }
     }, [
-      previous && m(iconButton, {
-        icon: { msvg: iconBack },
-        url: {
-          href: "/",
-          oncreate: m.route.link
-        },
-        style: {
-          color: "#0091EA"
-        }
-      }),
+      // previous && m(iconButton, {
+      //   icon: { msvg: iconBack },
+      //   url: {
+      //     href: "/",
+      //     oncreate: m.route.link
+      //   },
+      //   style: {
+      //     color: "#0091EA"
+      //   }
+      // }),
       m("span", name)
     ])),
     m([css.results].join(" "), {

@@ -6,35 +6,35 @@ import testPage from "./page";
 import list from "polythene-list";
 import listTile from "polythene-list-tile";
 import toolbar from "polythene-toolbar";
-import { tests as buttonTests } from "../tests/button/tests";
-import { tests as cardTests } from "../tests/card/tests";
-import { tests as checkboxTests } from "../tests/checkbox/tests";
-import { tests as dialogTests } from "../tests/dialog/tests";
-import { tests as fabTests } from "../tests/fab/tests";
-import { tests as iconTests } from "../tests/icon/tests";
-import { tests as iconButtonTests } from "../tests/icon-button/tests";
-import { tests as iOSSpinnerTests } from "../tests/ios-spinner/tests";
-import { tests as listTests } from "../tests/list/tests";
-import { tests as listTileTests } from "../tests/list-tile/tests";
-import { tests as mdSpinnerTests } from "../tests/md-spinner/tests";
-import { tests as mdEndSpinnerTests } from "../tests/md-progress-spinner/tests";
-import { tests as menuTests } from "../tests/menu/tests";
-import { tests as notificationTests } from "../tests/notification/tests";
-import { tests as radioButtonTests } from "../tests/radio-button/tests";
-import { tests as raisedButtonTests } from "../tests/raised-button/tests";
-import { tests as rippleTests } from "../tests/ripple/tests";
-import { tests as searchTests } from "../tests/search/tests";
-import { tests as shadowTests } from "../tests/shadow/tests";
-import { tests as sliderTests } from "../tests/slider/tests";
-import { tests as snackbarTests } from "../tests/snackbar/tests";
-import { tests as svgTests } from "../tests/svg/tests";
-import { tests as switchButtonTests } from "../tests/switch-button/tests";
-import { tests as tabsTests } from "../tests/tabs/tests";
-import { tests as textfieldTests } from "../tests/textfield/tests";
-import { tests as toolbarTests } from "../tests/toolbar/tests";
-import { tests as cssTests } from "../tests/css/tests";
-import { tests as cssClassesTests } from "../tests/css-classes/tests";
-import { tests as themeTests } from "../tests/theme/tests";
+import buttonTests from "../tests/button/tests-mithril";
+// import { tests as cardTests } from "../tests/card/tests";
+// import { tests as checkboxTests } from "../tests/checkbox/tests";
+// import { tests as dialogTests } from "../tests/dialog/tests";
+// import { tests as fabTests } from "../tests/fab/tests";
+// import { tests as iconTests } from "../tests/icon/tests";
+// import { tests as iconButtonTests } from "../tests/icon-button/tests";
+// import { tests as iOSSpinnerTests } from "../tests/ios-spinner/tests";
+// import { tests as listTests } from "../tests/list/tests";
+// import { tests as listTileTests } from "../tests/list-tile/tests";
+// import { tests as mdSpinnerTests } from "../tests/md-spinner/tests";
+// import { tests as mdEndSpinnerTests } from "../tests/md-progress-spinner/tests";
+// import { tests as menuTests } from "../tests/menu/tests";
+// import { tests as notificationTests } from "../tests/notification/tests";
+// import { tests as radioButtonTests } from "../tests/radio-button/tests";
+// import { tests as raisedButtonTests } from "../tests/raised-button/tests";
+// import { tests as rippleTests } from "../tests/ripple/tests";
+// import { tests as searchTests } from "../tests/search/tests";
+// import { tests as shadowTests } from "../tests/shadow/tests";
+// import { tests as sliderTests } from "../tests/slider/tests";
+// import { tests as snackbarTests } from "../tests/snackbar/tests";
+// import { tests as svgTests } from "../tests/svg/tests";
+// import { tests as switchButtonTests } from "../tests/switch-button/tests";
+// import { tests as tabsTests } from "../tests/tabs/tests";
+// import { tests as textfieldTests } from "../tests/textfield/tests";
+// import { tests as toolbarTests } from "../tests/toolbar/tests";
+// import { tests as cssTests } from "../tests/css/tests";
+// import { tests as cssClassesTests } from "../tests/css-classes/tests";
+// import { tests as themeTests } from "../tests/theme/tests";
 
 const pages = [
   {
@@ -42,146 +42,146 @@ const pages = [
     name: "Button",
     tests: buttonTests
   },
-  {
-    path: "/raised-button",
-    name: "Raised button",
-    tests: raisedButtonTests
-  },
-  {
-    path: "/card",
-    name: "Card",
-    tests: cardTests
-  },
-  {
-    path: "/checkbox",
-    name: "Checkbox",
-    tests: checkboxTests
-  },
-  {
-    path: "/dialog",
-    name: "Dialog",
-    tests: dialogTests
-  },
-  {
-    path: "/fab",
-    name: "FAB",
-    tests: fabTests
-  },
-  {
-    path: "/icon",
-    name: "Icon",
-    tests: iconTests
-  },
-  {
-    path: "/icon-button",
-    name: "Icon Button",
-    tests: iconButtonTests
-  },
-  {
-    path: "/list",
-    name: "List",
-    tests: listTests
-  },
-  {
-    path: "/list-tile",
-    name: "List tile",
-    tests: listTileTests
-  },
-  {
-    path: "/menu",
-    name: "Menu",
-    tests: menuTests
-  },
-  {
-    path: "/md-spinner",
-    name: "Material Design spinner",
-    tests: mdSpinnerTests
-  },
-  {
-    path: "/md-progress-spinner",
-    name: "Material Design progress spinner",
-    tests: mdEndSpinnerTests
-  },
-  {
-    path: "/ios-spinner",
-    name: "iOS spinner",
-    tests: iOSSpinnerTests
-  },
-  {
-    path: "/notification",
-    name: "Notification",
-    tests: notificationTests
-  },
-  {
-    path: "/snackbar",
-    name: "Notification - Snackbar",
-    tests: snackbarTests
-  },
-  {
-    path: "/radio-button",
-    name: "Radio button",
-    tests: radioButtonTests
-  },
-  {
-    path: "/ripple",
-    name: "Ripple",
-    tests: rippleTests
-  },
-  {
-    path: "/search",
-    name: "Search",
-    tests: searchTests
-  },
-  {
-    path: "/shadow",
-    name: "Shadow",
-    tests: shadowTests
-  },
-  {
-    path: "/slider",
-    name: "Slider",
-    tests: sliderTests
-  },
-  {
-    path: "/svg",
-    name: "SVG",
-    tests: svgTests
-  },
-  {
-    path: "/switch-button",
-    name: "Switch button",
-    tests: switchButtonTests
-  },
-  {
-    path: "/tabs",
-    name: "Tabs",
-    tests: tabsTests
-  },
-  {
-    path: "/textfield",
-    name: "Textfield",
-    tests: textfieldTests
-  },
-  {
-    path: "/toolbar",
-    name: "Toolbar",
-    tests: toolbarTests
-  },
-  {
-    path: "/theme",
-    name: "Custom theme",
-    tests: themeTests
-  },
-  {
-    path: "/css",
-    name: "CSS tools",
-    tests: cssTests
-  },
-  {
-    path: "/css-classes",
-    name: "CSS classes",
-    tests: cssClassesTests
-  }
+  // {
+  //   path: "/raised-button",
+  //   name: "Raised button",
+  //   tests: raisedButtonTests
+  // },
+  // {
+  //   path: "/card",
+  //   name: "Card",
+  //   tests: cardTests
+  // },
+  // {
+  //   path: "/checkbox",
+  //   name: "Checkbox",
+  //   tests: checkboxTests
+  // },
+  // {
+  //   path: "/dialog",
+  //   name: "Dialog",
+  //   tests: dialogTests
+  // },
+  // {
+  //   path: "/fab",
+  //   name: "FAB",
+  //   tests: fabTests
+  // },
+  // {
+  //   path: "/icon",
+  //   name: "Icon",
+  //   tests: iconTests
+  // },
+  // {
+  //   path: "/icon-button",
+  //   name: "Icon Button",
+  //   tests: iconButtonTests
+  // },
+  // {
+  //   path: "/list",
+  //   name: "List",
+  //   tests: listTests
+  // },
+  // {
+  //   path: "/list-tile",
+  //   name: "List tile",
+  //   tests: listTileTests
+  // },
+  // {
+  //   path: "/menu",
+  //   name: "Menu",
+  //   tests: menuTests
+  // },
+  // {
+  //   path: "/md-spinner",
+  //   name: "Material Design spinner",
+  //   tests: mdSpinnerTests
+  // },
+  // {
+  //   path: "/md-progress-spinner",
+  //   name: "Material Design progress spinner",
+  //   tests: mdEndSpinnerTests
+  // },
+  // {
+  //   path: "/ios-spinner",
+  //   name: "iOS spinner",
+  //   tests: iOSSpinnerTests
+  // },
+  // {
+  //   path: "/notification",
+  //   name: "Notification",
+  //   tests: notificationTests
+  // },
+  // {
+  //   path: "/snackbar",
+  //   name: "Notification - Snackbar",
+  //   tests: snackbarTests
+  // },
+  // {
+  //   path: "/radio-button",
+  //   name: "Radio button",
+  //   tests: radioButtonTests
+  // },
+  // {
+  //   path: "/ripple",
+  //   name: "Ripple",
+  //   tests: rippleTests
+  // },
+  // {
+  //   path: "/search",
+  //   name: "Search",
+  //   tests: searchTests
+  // },
+  // {
+  //   path: "/shadow",
+  //   name: "Shadow",
+  //   tests: shadowTests
+  // },
+  // {
+  //   path: "/slider",
+  //   name: "Slider",
+  //   tests: sliderTests
+  // },
+  // {
+  //   path: "/svg",
+  //   name: "SVG",
+  //   tests: svgTests
+  // },
+  // {
+  //   path: "/switch-button",
+  //   name: "Switch button",
+  //   tests: switchButtonTests
+  // },
+  // {
+  //   path: "/tabs",
+  //   name: "Tabs",
+  //   tests: tabsTests
+  // },
+  // {
+  //   path: "/textfield",
+  //   name: "Textfield",
+  //   tests: textfieldTests
+  // },
+  // {
+  //   path: "/toolbar",
+  //   name: "Toolbar",
+  //   tests: toolbarTests
+  // },
+  // {
+  //   path: "/theme",
+  //   name: "Custom theme",
+  //   tests: themeTests
+  // },
+  // {
+  //   path: "/css",
+  //   name: "CSS tools",
+  //   tests: cssTests
+  // },
+  // {
+  //   path: "/css-classes",
+  //   name: "CSS classes",
+  //   tests: cssClassesTests
+  // }
 ];
 
 const index = {

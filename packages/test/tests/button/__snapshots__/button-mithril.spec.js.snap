@@ -1,0 +1,142 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`No options 1`] = `
+"<a class=\\"pe-button pe-text-button\\" tabindex=\\"0\\">
+<div class=\\"pe-button__content\\">
+  <div class=\\"pe-ripple pe-ripple--constrained\\">
+    <div class=\\"pe-ripple__mask\\">
+      <div class=\\"pe-ripple__waves\\"></div>
+    </div>
+  </div>
+  <div class=\\"pe-button__wash\\"></div>
+  <div class=\\"pe-button__focus\\"></div>
+</div></a>
+"
+`;
+
+exports[`Option: after 1`] = `
+"<a class=\\"pe-button pe-text-button\\" tabindex=\\"0\\">
+<div class=\\"pe-button__content\\">
+  <div class=\\"pe-ripple pe-ripple--constrained\\">
+    <div class=\\"pe-ripple__mask\\">
+      <div class=\\"pe-ripple__waves\\"></div>
+    </div>
+  </div>
+  <div class=\\"pe-button__wash\\"></div>
+  <div class=\\"pe-button__focus\\"></div>
+</div><span>After</span></a>
+"
+`;
+
+exports[`Option: before 1`] = `
+"<a class=\\"pe-button pe-text-button\\" tabindex=
+\\"0\\"><span>Before</span>
+<div class=\\"pe-button__content\\">
+  <div class=\\"pe-ripple pe-ripple--constrained\\">
+    <div class=\\"pe-ripple__mask\\">
+      <div class=\\"pe-ripple__waves\\"></div>
+    </div>
+  </div>
+  <div class=\\"pe-button__wash\\"></div>
+  <div class=\\"pe-button__focus\\"></div>
+</div></a>
+"
+`;
+
+exports[`Option: children 1`] = `
+"<a class=\\"pe-button pe-text-button\\" tabindex=\\"0\\">
+<div class=\\"pe-button__content\\">
+  <div class=\\"pe-ripple pe-ripple--constrained\\">
+    <div class=\\"pe-ripple__mask\\">
+      <div class=\\"pe-ripple__waves\\"></div>
+    </div>
+  </div>
+  <div class=\\"pe-button__wash\\"></div>
+  <div class=\\"pe-button__focus\\"></div><span>Child</span>
+</div></a>
+"
+`;
+
+exports[`Option: class 1`] = `
+"<a class=\\"pe-button pe-text-button class-x\\" tabindex=\\"0\\">
+<div class=\\"pe-button__content\\">
+  <div class=\\"pe-ripple pe-ripple--constrained\\">
+    <div class=\\"pe-ripple__mask\\">
+      <div class=\\"pe-ripple__waves\\"></div>
+    </div>
+  </div>
+  <div class=\\"pe-button__wash\\"></div>
+  <div class=\\"pe-button__focus\\"></div>
+</div></a>
+"
+`;
+
+exports[`Option: className 1`] = `
+"<a class=\\"pe-button pe-text-button className-x\\" tabindex=\\"0\\">
+<div class=\\"pe-button__content\\">
+  <div class=\\"pe-ripple pe-ripple--constrained\\">
+    <div class=\\"pe-ripple__mask\\">
+      <div class=\\"pe-ripple__waves\\"></div>
+    </div>
+  </div>
+  <div class=\\"pe-button__wash\\"></div>
+  <div class=\\"pe-button__focus\\"></div>
+</div></a>
+"
+`;
+
+exports[`Option: content 1`] = `
+"<a class=\\"pe-button pe-text-button\\" tabindex=\\"0\\">
+<div class=\\"pe-button__content\\">
+  <div class=\\"pe-ripple pe-ripple--constrained\\">
+    <div class=\\"pe-ripple__mask\\">
+      <div class=\\"pe-ripple__waves\\"></div>
+    </div>
+  </div>
+  <div class=\\"pe-button__wash\\"></div>
+  <div class=\\"pe-button__focus\\"></div><span>Content</span>
+</div></a>
+"
+`;
+
+exports[`Option: element 1`] = `
+"<button class=\\"pe-button pe-text-button\\" tabindex=\\"0\\">
+<div class=\\"pe-button__content\\">
+  <div class=\\"pe-ripple pe-ripple--constrained\\">
+    <div class=\\"pe-ripple__mask\\">
+      <div class=\\"pe-ripple__waves\\"></div>
+    </div>
+  </div>
+  <div class=\\"pe-button__wash\\"></div>
+  <div class=\\"pe-button__focus\\"></div>
+</div></button>
+"
+`;
+
+exports[`Option: id 1`] = `
+"<a id=\\"id-x\\" class=\\"pe-button pe-text-button\\" tabindex=\\"0\\">
+<div class=\\"pe-button__content\\">
+  <div class=\\"pe-ripple pe-ripple--constrained\\">
+    <div class=\\"pe-ripple__mask\\">
+      <div class=\\"pe-ripple__waves\\"></div>
+    </div>
+  </div>
+  <div class=\\"pe-button__wash\\"></div>
+  <div class=\\"pe-button__focus\\"></div>
+</div></a>
+"
+`;
+
+exports[`Option: tabindex 1`] = `
+"<a tabindex=\\"3\\" class=\\"pe-button pe-text-button\\">
+<div class=\\"pe-button__content\\">
+  <div class=\\"pe-ripple pe-ripple--constrained\\">
+    <div class=\\"pe-ripple__mask\\">
+      <div class=\\"pe-ripple__waves\\"></div>
+    </div>
+  </div>
+  <div class=\\"pe-button__wash\\"></div>
+  <div class=\\"pe-button__focus\\"></div>
+</div></a>
+"
+`;

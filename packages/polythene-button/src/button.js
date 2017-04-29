@@ -1,34 +1,27 @@
-import m from "mithril";
-import ripple from "polythene-ripple";
+
 import { filterSupportedAttributes } from "polythene-core";
 import { customTheme } from "./theme";
 import classes from "./classes";
 
-const inactivate = (state, attrs) => {
-  state.inactive = true;
-  m.redraw();
-  setTimeout(() => {
-    state.inactive = false;
-    m.redraw();
-  }, attrs.inactivate * 1000);
-};
+export const theme = customTheme;
 
-const view = vnode => {
+export const createProps = (vnode, { updateState, keyer: k }) => {
   const state = vnode.state;
   const attrs = vnode.attrs;
-  const noink = (attrs.ink !== undefined && attrs.ink === false);
   const disabled = attrs.disabled;
-  const element = attrs.element || "a";
   const inactive = attrs.inactive || state.inactive;
-  const tabIndex = disabled || inactive
-    ? -1
-    : attrs.tabindex || 0;
   const onClickHandler = attrs.events && attrs.events.onclick;
-  const props = Object.assign(
+  const handleInactivate = () => (
+    updateState("inactive", true),
+    setTimeout(() => (
+      updateState("inactive", false)
+    ), attrs.inactivate * 1000)
+  );
+  return Object.assign(
     {}, 
     filterSupportedAttributes(attrs, { add: ["formaction", "type"] }),
     {
-      class: [
+      className: [
         attrs.parentClass || classes.component,
         attrs.selected ? classes.selected : null,
         disabled ? classes.disabled : null,
@@ -37,53 +30,60 @@ const view = vnode => {
         state.focus ? classes.focused : null,
         attrs.tone === "dark" ? "pe-dark-tone" : null,
         attrs.tone === "light" ? "pe-light-tone" : null,
-        attrs.class
+        attrs.className || attrs[k.class],
       ].join(" ")
     },
     inactive ? null : {
-      tabIndex,
+      [k.tabindex]: disabled || inactive
+        ? -1
+        : attrs[k.tabindex] || 0,
+      [k.onclick]: e => (
+        attrs.inactivate !== undefined && handleInactivate(),
+        onClickHandler && onClickHandler(e),
+        true
+      ),
       // handle focus events
-      onfocus: () => state.focus = !state.mouseover,
-      onblur: () => state.focus = false,
+      [k.onfocus]: () => updateState("focus", !state.mouseover),
+      [k.onblur]: () => updateState("focus", false),
       // don't show focus on click (detected by not being in mouse over state)
-      onmouseover: () => state.mouseover = true,
-      onmouseout: () => state.mouseover = false,
+      [k.onmouseover]: () => updateState("mouseover", true),
+      [k.onmouseout]: () => updateState("mouseover", false),
       // if focus, dispatch click event on ENTER
-      onkeydown: e => {
+      [k.onkeydown]: e => {
         if (e.which === 13 && state.focus) {
-          state.focus = false;
+          updateState("focus", false);
           if (onClickHandler) {
             onClickHandler(e);
           }
         }
-      },
-      onclick: inactive || disabled
-        ? null
-        : () => {
-          if (attrs.inactivate) {
-            inactivate(state, attrs);
-          }
-        }
+      }
     },
-    attrs.style ? { style: {}} : null,
+    attrs.style ? { style: {} } : null, // Set style on content, not on component
     attrs.events,
     attrs.url,
     disabled ? { disabled: true } : null
   );
+};
+
+export const createContent = (vnode, { renderer: r, keyer: k, ripple }) => {
+  const attrs = vnode.attrs;
+  const noink = attrs.ink !== undefined && attrs.ink === false;
+  const disabled = attrs.disabled;
   const children = attrs.children || vnode.children;
   const label = attrs.content
     ? attrs.content
     : attrs.label
       ? typeof attrs.label === "object"
         ? attrs.label
-        : m("div", {class: classes.label}, attrs.label)
-      : children && children[0]
+        : r("div", {key: "label", className: classes.label}, attrs.label)
+      : children
         ? children
         : null;
   const noWash = disabled || (attrs.wash !== undefined && !attrs.wash);
-  const content = label
-    ? m("div", {
-      class: classes.content,
+  return label
+    ? r("div", {
+      [k.class]: classes.content,
+      key: "button",
       style: attrs.style || {}
     }, [
       !disabled && attrs.shadowComponent // "protected" option, used by raised-button
@@ -92,31 +92,16 @@ const view = vnode => {
       // ripple
       disabled || noink
         ? null
-        : m(ripple, {
+        : ripple && r(ripple, {
           ...attrs.ripple,
-          getTarget: () => vnode.dom
+          key: "ripple",
+          target: () => vnode.dom
         }),
       // hover
-      noWash ? null : m("div", {class: classes.wash}),
+      noWash ? null : r("div", {key: "wash", className: classes.wash}),
       // focus
-      disabled ? null : m("div", {class: classes.focus}),
+      disabled ? null : r("div", {key: "focus", className: classes.focus}),
       label
     ])
     : null;
-  return m(element, props, [attrs.before, content, attrs.after]);
-};
-
-export default {
-  theme: customTheme, // accepts (selector, vars)
-  oninit: vnode => {
-    vnode.state = Object.assign(
-      vnode.state, 
-      {
-        focus: false,
-        mouseover: false,
-        inactive: false
-      }
-    );
-  },
-  view
 };

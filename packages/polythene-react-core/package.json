@@ -1,0 +1,22 @@
+{
+  "name": "polythene-react-core",
+  "version": "1.0.0-rc.1",
+  "description": "",
+  "main": "dist/polythene-react-core.js",
+  "module": "dist/polythene-react-core.mjs",
+  "scripts": {
+    "clean": "rm -rf dist && mkdir dist",
+    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
+    "build": "npm run rollup"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "dependencies": {
+    "react": "^15.5.4",
+    "react-hyperscript": "^3.0.0"
+  },
+  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
+  "license": "MIT"
+}

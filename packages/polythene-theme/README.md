@@ -7,7 +7,7 @@ This page describes a number of ways to create customizations.
 TL;DR: The preferred way to create a custom blue button:
 
 ~~~javascript
-import button from "polythene-button";
+import button from "polythene-mithril-button";
 
 button.theme(".blue-button", {
   color_light_background: "blue",
@@ -140,7 +140,7 @@ To create a blue button on a dark background:
 
 ~~~javascript
 // app.js
-import button from "polythene-button";
+import button from "polythene-mithril-button";
 
 button.theme(".blue-on-dark-button", {
   color_dark_text: "#1976D2"
@@ -166,7 +166,7 @@ Let's say we want to create a flat, bordered secondary button:
 ~~~javascript
 // secondary-button.js
 import m from "mithril";
-import button from "polythene-button";
+import button from "polythene-mithril-button";
 
 export const secondaryButton = {
   view: vnode => m(button, {
@@ -334,7 +334,7 @@ So simply writing `.secondary-button {...}` won't work - we need to include base
 ~~~javascript
 // secondary-button.js
 import m from "mithril";
-import button from "polythene-button";
+import button from "polythene-mithril-button";
 import { styler } from "polythene-css";
 
 const styles = [{

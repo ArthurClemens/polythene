@@ -69,7 +69,7 @@ export { easing, scrollTo, Timer } from "polythene-utilities";
 export { vars } from "polythene-theme";
 
 /* Button is placed here to prevent overwriting by switchButton - possibly a RollUp bug? */
-export { default as button } from "polythene-button";
+export { default as button } from "polythene-mithril-button";
 
 export * from "polythene-fastclick";
 

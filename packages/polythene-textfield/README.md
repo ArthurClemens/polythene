@@ -190,7 +190,7 @@ Instead of passing a fixed value to `focus`, we use a variable. Option `` gets t
 ~~~javascript
 import m from "mithril";
 import textfield from "polythene-textfield";
-import button from "polythene-button";
+import button from "polythene-mithril-button";
 
 const component = {
   view: vnode => block([
@@ -216,7 +216,7 @@ If the textfield value needs to be set from outside, for instance from a control
 ~~~javascript
 import m from "mithril";
 import textfield from "polythene-textfield";
-import button from "polythene-button";
+import button from "polythene-mithril-button";
 
 const component = {
   value: "00000",

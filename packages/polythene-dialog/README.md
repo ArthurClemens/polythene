@@ -163,7 +163,7 @@ const dialogOptions = {
 ~~~javascript
 import m from "mithril";
 import dialog from "polythene-dialog";
-import button from "polythene-button";
+import button from "polythene-mithril-button";
 
 const footerButtons = [
   m(button, {
@@ -280,7 +280,7 @@ A fullscreen dialog uses [Toolbar](../polythene-toolbar) to implement its own he
 ~~~javascript
 import m from "mithril";
 import dialog from "polythene-dialog";
-import button from "polythene-button";
+import button from "polythene-mithril-button";
 import iconButton from "polythene-icon-button";
 import toolbar from "polythene-toolbar";
 import iconClose from "mmsvg/google/msvg/navigation/close";

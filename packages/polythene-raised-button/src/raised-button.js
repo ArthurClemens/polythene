@@ -1,5 +1,5 @@
 import m from "mithril";
-import button from "polythene-button";
+import button from "polythene-mithril-button";
 import shadow from "polythene-shadow";
 import { isTouch, touchStartEvent, touchEndEvent, subscribe } from "polythene-core";
 import { customTheme } from "./theme";
@@ -82,7 +82,7 @@ const view = vnode => {
       ].join(" "),
       animateOnTap: false,
       shadowComponent: m(shadow, {z: state.z, animated: true}),
-      children: children
+      children
     },
     attrs
   ));
@@ -96,7 +96,7 @@ export default {
       {
         el: undefined,
         zBase: z,
-        z: z,
+        z,
         tapEventsInited: false
       }
     );

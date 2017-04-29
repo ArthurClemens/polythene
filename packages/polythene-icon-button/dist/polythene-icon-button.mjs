@@ -1,6 +1,6 @@
 import m from 'mithril';
 import icon from 'polythene-icon';
-import button from 'polythene-button';
+import button from 'polythene-mithril-button';
 import { styler } from 'polythene-css';
 import { vars } from 'polythene-theme';
 

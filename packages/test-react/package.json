@@ -1,0 +1,24 @@
+{
+  "name": "test-react",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "j2c": "^1.0.0-4",
+    "j2c-plugin-prefix-browser": "^1.0.6",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "polythene-react-button": "1.0.0-rc.1",
+    "polythene-material-design": "1.0.0-rc.1"
+  },
+  "devDependencies": {
+    "eslint-plugin-react": "^6.10.3",
+    "prop-types": "^15.5.8",
+    "react-scripts": "0.9.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

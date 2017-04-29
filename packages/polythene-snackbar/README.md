@@ -221,7 +221,7 @@ Let's say the notification has an Undo button. Clicking it shows a dialog is on 
 import m from "mithril";
 import notification from "polythene-notification";
 import dialog from "polythene-dialog";
-import button from "polythene-button";
+import button from "polythene-mithril-button";
 
 const dialogOptions = {
   body: "You pressed a message action",

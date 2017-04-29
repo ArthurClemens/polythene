@@ -1,0 +1,24 @@
+{
+  "name": "polythene-react-button",
+  "version": "1.0.0-rc.1",
+  "description": "",
+  "main": "dist/polythene-react-button.js",
+  "module": "dist/polythene-react-button.mjs",
+  "scripts": {
+    "clean": "rm -rf dist && mkdir dist",
+    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
+    "build": "npm run rollup"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "dependencies": {
+    "polythene-button": "1.0.0-rc.1",
+    "polythene-react-core": "1.0.0-rc.1",
+    "polythene-ripple": "1.0.0-rc.1",
+    "react": "^15.5.4"
+  },
+  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
+  "license": "MIT"
+}

@@ -1,5 +1,3 @@
-import m from 'mithril';
-import ripple from 'polythene-ripple';
 import { filterSupportedAttributes } from 'polythene-core';
 import { mixin, styler } from 'polythene-css';
 import { vars } from 'polythene-theme';
@@ -64,10 +62,10 @@ var vars$1 = {
 
 };
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var baseLayout = (function (selector) {
-  return [_defineProperty({}, selector, {
+  return [_defineProperty$1({}, selector, {
     userSelect: "none",
     outline: "none",
     padding: 0,
@@ -113,10 +111,10 @@ var baseLayout = (function (selector) {
   })];
 });
 
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var layout = (function (selector, componentVars) {
-  return [_defineProperty$1({}, selector, [{
+  return [_defineProperty$2({}, selector, [{
     display: "inline-block",
     minWidth: componentVars.min_width + "px",
     margin: "0 " + componentVars.margin_h + "px",
@@ -154,13 +152,13 @@ var layout = (function (selector, componentVars) {
   }])];
 });
 
-function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$3(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var style = function style(scopes, selector, componentVars, tint) {
   var normalBorder = componentVars["color_" + tint + "_border"] || "transparent";
   var activeBorder = componentVars["color_" + tint + "_active_border"] || normalBorder;
   var disabledBorder = componentVars["color_" + tint + "_disabled_border"] || normalBorder;
-  return [_defineProperty$2({}, scopes.map(function (s) {
+  return [_defineProperty$3({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
     "&, &:link, &:visited": {
@@ -204,7 +202,7 @@ var style = function style(scopes, selector, componentVars, tint) {
 var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, tint) {
   var normalBorder = componentVars["color_" + tint + "_border"] || "transparent";
   var hoverBorder = componentVars["color_" + tint + "_border"] || normalBorder;
-  return [_defineProperty$2({}, scopes.map(function (s) {
+  return [_defineProperty$3({}, scopes.map(function (s) {
     return s + selector + ":hover";
   }).join(","), {
     ":not(.pe-button--selected):not(.pe-button--inactive) .pe-button__wash": {
@@ -238,88 +236,77 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var inactivate = function inactivate(state, attrs) {
-  state.inactive = true;
-  m.redraw();
-  setTimeout(function () {
-    state.inactive = false;
-    m.redraw();
-  }, attrs.inactivate * 1000);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var theme = customTheme;
+
+var createProps = function createProps(vnode, _ref) {
+  var _ref2;
+
+  var updateState = _ref.updateState,
+      k = _ref.keyer;
+
+  var state = vnode.state;
+  var attrs = vnode.attrs;
+  var disabled = attrs.disabled;
+  var inactive = attrs.inactive || state.inactive;
+  var onClickHandler = attrs.events && attrs.events.onclick;
+  var handleInactivate = function handleInactivate() {
+    return updateState("inactive", true), setTimeout(function () {
+      return updateState("inactive", false);
+    }, attrs.inactivate * 1000);
+  };
+  return _extends({}, filterSupportedAttributes(attrs, { add: ["formaction", "type"] }), {
+    className: [attrs.parentClass || classes.component, attrs.selected ? classes.selected : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, attrs.borders ? classes.borders : null, state.focus ? classes.focused : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    // oncreate: ({ dom }) => dom.addEventListener("click", handleInactivate),
+    // onremove: ({ dom }) => dom.removeEventListener("click", handleInactivate)
+  }, inactive ? null : (_ref2 = {}, _defineProperty(_ref2, k.tabindex, disabled || inactive ? -1 : attrs[k.tabindex] || 0), _defineProperty(_ref2, k.onclick, function (e) {
+    return attrs.inactivate !== undefined && handleInactivate(), onClickHandler && onClickHandler(e), true;
+  }), _defineProperty(_ref2, k.onfocus, function () {
+    return updateState("focus", !state.mouseover);
+  }), _defineProperty(_ref2, k.onblur, function () {
+    return updateState("focus", false);
+  }), _defineProperty(_ref2, k.onmouseover, function () {
+    return updateState("mouseover", true);
+  }), _defineProperty(_ref2, k.onmouseout, function () {
+    return updateState("mouseover", false);
+  }), _defineProperty(_ref2, k.onkeydown, function (e) {
+    if (e.which === 13 && state.focus) {
+      updateState("focus", false);
+      if (onClickHandler) {
+        onClickHandler(e);
+      }
+    }
+  }), _ref2), attrs.style ? { style: {} } : null, // Set style on content, not on component
+  attrs.events, attrs.url, disabled ? { disabled: true } : null);
 };
 
-var view = function view(vnode) {
-  var state = vnode.state;
+var createContent = function createContent(vnode, _ref3) {
+  var _r;
+
+  var r = _ref3.renderer,
+      k = _ref3.keyer,
+      ripple = _ref3.ripple;
+
   var attrs = vnode.attrs;
   var noink = attrs.ink !== undefined && attrs.ink === false;
   var disabled = attrs.disabled;
-  var element = attrs.element || "a";
-  var inactive = attrs.inactive || state.inactive;
-  var tabIndex = disabled || inactive ? -1 : attrs.tabindex || 0;
-  var onClickHandler = attrs.events && attrs.events.onclick;
-  var props = _extends({}, filterSupportedAttributes(attrs, { add: ["formaction", "type"] }), {
-    class: [attrs.parentClass || classes.component, attrs.selected ? classes.selected : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, attrs.borders ? classes.borders : null, state.focus ? classes.focused : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.class].join(" ")
-  }, inactive ? null : {
-    tabIndex: tabIndex,
-    // handle focus events
-    onfocus: function onfocus() {
-      return state.focus = !state.mouseover;
-    },
-    onblur: function onblur() {
-      return state.focus = false;
-    },
-    // don't show focus on click (detected by not being in mouse over state)
-    onmouseover: function onmouseover() {
-      return state.mouseover = true;
-    },
-    onmouseout: function onmouseout() {
-      return state.mouseover = false;
-    },
-    // if focus, dispatch click event on ENTER
-    onkeydown: function onkeydown(e) {
-      if (e.which === 13 && state.focus) {
-        state.focus = false;
-        if (onClickHandler) {
-          onClickHandler(e);
-        }
-      }
-    },
-    onclick: inactive || disabled ? null : function () {
-      if (attrs.inactivate) {
-        inactivate(state, attrs);
-      }
-    }
-  }, attrs.style ? { style: {} } : null, attrs.events, attrs.url, disabled ? { disabled: true } : null);
   var children = attrs.children || vnode.children;
-  var label = attrs.content ? attrs.content : attrs.label ? _typeof(attrs.label) === "object" ? attrs.label : m("div", { class: classes.label }, attrs.label) : children && children[0] ? children : null;
+  var label = attrs.content ? attrs.content : attrs.label ? _typeof(attrs.label) === "object" ? attrs.label : r("div", { key: "label", className: classes.label }, attrs.label) : children ? children : null;
   var noWash = disabled || attrs.wash !== undefined && !attrs.wash;
-  var content = label ? m("div", {
-    class: classes.content,
-    style: attrs.style || {}
-  }, [!disabled && attrs.shadowComponent // "protected" option, used by raised-button
+  return label ? r("div", (_r = {}, _defineProperty(_r, k.class, classes.content), _defineProperty(_r, "key", "button"), _defineProperty(_r, "style", attrs.style || {}), _r), [!disabled && attrs.shadowComponent // "protected" option, used by raised-button
   ? attrs.shadowComponent : null,
   // ripple
-  disabled || noink ? null : m(ripple, _extends({}, attrs.ripple, {
-    getTarget: function getTarget() {
+  disabled || noink ? null : ripple && r(ripple, _extends({}, attrs.ripple, {
+    key: "ripple",
+    target: function target() {
       return vnode.dom;
     }
   })),
   // hover
-  noWash ? null : m("div", { class: classes.wash }),
+  noWash ? null : r("div", { key: "wash", className: classes.wash }),
   // focus
-  disabled ? null : m("div", { class: classes.focus }), label]) : null;
-  return m(element, props, [attrs.before, content, attrs.after]);
+  disabled ? null : r("div", { key: "focus", className: classes.focus }), label]) : null;
 };
 
-var button = {
-  theme: customTheme, // accepts (selector, vars)
-  oninit: function oninit(vnode) {
-    vnode.state = _extends(vnode.state, {
-      focus: false,
-      mouseover: false,
-      inactive: false
-    });
-  },
-  view: view
-};
-
-export { classes, vars$1 as vars };export default button;
+export { createProps, createContent, theme, classes, vars$1 as vars };

@@ -16,6 +16,7 @@
   "dependencies": {
     "mithril": "1.1.0",
     "polythene-button": "1.0.0-rc.1",
+    "polythene-mithril-button": "1.0.0-rc.1",
     "polythene-core": "1.0.0-rc.1",
     "polythene-css": "1.0.0-rc.1",
     "polythene-icon": "1.0.0-rc.1",

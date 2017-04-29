@@ -2,9 +2,10 @@ import m from 'mithril';
 import { filterSupportedAttributes, isTouch, subscribe, unsubscribe } from 'polythene-core';
 import { scrollTo } from 'polythene-utilities';
 import { flex, mixin, styler } from 'polythene-css';
-import button, { classes, vars } from 'polythene-button';
+import { classes, vars } from 'polythene-button';
 import { vars as vars$1 } from 'polythene-theme';
 import iconButton, { vars as vars$2 } from 'polythene-icon-button';
+import button from 'polythene-mithril-button';
 import icon from 'polythene-icon';
 
 var classes$1 = {

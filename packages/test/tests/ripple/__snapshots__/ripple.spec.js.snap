@@ -1,8 +1,0 @@
-exports[`test Option: constrained (true) 1`] = `
-"<div class=\"pe-ripple pe-ripple--constrained\">
-  <div class=\"pe-ripple__mask\">
-    <div class=\"pe-ripple__waves\"></div>
-  </div>
-</div>
-"
-`;

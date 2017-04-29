@@ -1,5 +1,5 @@
 import m from 'mithril';
-import button from 'polythene-button';
+import button from 'polythene-mithril-button';
 import shadow from 'polythene-shadow';
 import { isTouch, subscribe, touchEndEvent, touchStartEvent } from 'polythene-core';
 import { styler } from 'polythene-css';
