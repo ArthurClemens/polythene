@@ -1,0 +1,71 @@
+exports[`test No theme: normal button 1`] = `
+"<a class=\"pe-button pe-text-button\" tabindex=\"0\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-ripple pe-ripple--constrained\">
+    <div class=\"pe-ripple__mask\">
+      <div class=\"pe-ripple__waves\"></div>
+    </div>
+  </div>
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Unaffected button
+  </div>
+</div></a>
+"
+`;
+
+exports[`test Theme with deriving component: button (should be bordered with white background) 1`] = `
+"<a class=
+\"pe-button pe-text-button pe-button--borders tests-custom-theme-secondary-button\"
+tabindex=\"0\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-ripple pe-ripple--constrained\">
+    <div class=\"pe-ripple__mask\">
+      <div class=\"pe-ripple__waves\"></div>
+    </div>
+  </div>
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Bordered button
+  </div>
+</div></a>
+"
+`;
+
+exports[`test Theme with style variables: button (should be blue) 1`] = `
+"<a class=\"pe-button pe-text-button tests-custom-theme-blue-button\"
+tabindex=\"0\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-ripple pe-ripple--constrained\">
+    <div class=\"pe-ripple__mask\">
+      <div class=\"pe-ripple__waves\"></div>
+    </div>
+  </div>
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Blue button
+  </div>
+</div></a>
+"
+`;
+
+exports[`test Theme with style variables: button (should be red) 1`] = `
+"<a class=\"pe-button pe-text-button tests-custom-theme-red-button\"
+tabindex=\"0\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-ripple pe-ripple--constrained\">
+    <div class=\"pe-ripple__mask\">
+      <div class=\"pe-ripple__waves\"></div>
+    </div>
+  </div>
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Red button
+  </div>
+</div></a>
+"
+`;

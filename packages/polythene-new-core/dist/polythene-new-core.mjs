@@ -1,4 +1,4 @@
-import { filterSupportedAttributes } from 'polythene-core';
+import { animationEndEvent, filterSupportedAttributes, isTouch, touchEndEvent } from 'polythene-core';
 import { mixin, styler } from 'polythene-css';
 import { vars } from 'polythene-theme';
 
@@ -238,6 +238,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+var element = "a";
+
 var theme = customTheme;
 
 var createProps = function createProps(vnode, _ref) {
@@ -256,7 +258,7 @@ var createProps = function createProps(vnode, _ref) {
       return updateState("inactive", false);
     }, attrs.inactivate * 1000);
   };
-  return _extends({}, filterSupportedAttributes(attrs, { add: ["formaction", "type"] }), {
+  return _extends({}, filterSupportedAttributes(attrs, { add: [k.formaction, "type"] }), {
     className: [attrs.parentClass || classes.component, attrs.selected ? classes.selected : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, attrs.borders ? classes.borders : null, state.focus ? classes.focused : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, inactive ? null : (_ref2 = {}, _defineProperty(_ref2, k.tabindex, disabled || inactive ? -1 : attrs[k.tabindex] || 0), _defineProperty(_ref2, k.onclick, function (e) {
     return attrs.inactivate !== undefined && handleInactivate(), onClickHandler && onClickHandler(e), true;
@@ -280,9 +282,9 @@ var createProps = function createProps(vnode, _ref) {
 };
 
 var createContent = function createContent(vnode, _ref3) {
-  var _r;
+  var _h;
 
-  var r = _ref3.renderer,
+  var h = _ref3.renderer,
       k = _ref3.keys,
       ripple = _ref3.ripple;
 
@@ -290,27 +292,234 @@ var createContent = function createContent(vnode, _ref3) {
   var noink = attrs.ink !== undefined && attrs.ink === false;
   var disabled = attrs.disabled;
   var children = attrs.children || vnode.children;
-  var label = attrs.content ? attrs.content : attrs.label ? _typeof(attrs.label) === "object" ? attrs.label : r("div", { key: "label", className: classes.label }, attrs.label) : children ? children : null;
+  var label = attrs.content ? attrs.content : attrs.label ? _typeof(attrs.label) === "object" ? attrs.label : h("div", { key: "label", className: classes.label }, attrs.label) : children ? children : null;
   var noWash = disabled || attrs.wash !== undefined && !attrs.wash;
-  return label ? r("div", (_r = {}, _defineProperty(_r, k.class, classes.content), _defineProperty(_r, "key", "button"), _defineProperty(_r, "style", attrs.style || {}), _r), [!disabled && attrs.shadowComponent // "protected" option, used by raised-button
+  return label ? h("div", (_h = {}, _defineProperty(_h, k.class, classes.content), _defineProperty(_h, "key", "button"), _defineProperty(_h, "style", attrs.style || {}), _h), [!disabled && attrs.shadowComponent // "protected" option, used by raised-button
   ? attrs.shadowComponent : null,
   // ripple
-  disabled || noink ? null : ripple && r(ripple, _extends({}, attrs.ripple, {
-    key: "ripple",
-    target: function target() {
-      return vnode.dom;
-    }
+  disabled || noink ? null : ripple && h(ripple, _extends({}, attrs.ripple, {
+    key: "ripple"
   })),
   // hover
-  noWash ? null : r("div", { key: "wash", className: classes.wash }),
+  noWash ? null : h("div", { key: "wash", className: classes.wash }),
   // focus
-  disabled ? null : r("div", { key: "focus", className: classes.focus }), label]) : null;
+  disabled ? null : h("div", { key: "focus", className: classes.focus }), label]) : null;
 };
 
 var button = {
-  createProps: createProps, createContent: createContent, theme: theme,
+  createProps: createProps, createContent: createContent, theme: theme, element: element,
   classes: classes,
   vars: vars$1
 };
 
-export { button };
+var classes$1 = {
+  component: "pe-ripple",
+
+  // elements
+  mask: "pe-ripple__mask",
+  waves: "pe-ripple__waves",
+
+  // states
+  constrained: "pe-ripple--constrained",
+  wavesAnimating: "pe-ripple__waves--animating"
+};
+
+var vars$2 = {
+  color: "inherit" // only specify this variable to get both states
+  // color_light:   "inherit",
+  // color_dark:    "inherit"
+};
+
+function _defineProperty$4(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var layout$1 = (function (selector) {
+  return [_defineProperty$4({}, selector, [mixin.fit(), {
+    color: "inherit",
+    borderRadius: "inherit",
+    pointerEvents: "none",
+
+    ".pe-ripple--constrained": {
+      borderRadius: "inherit",
+
+      " .pe-ripple__mask": {
+        overflow: "hidden",
+        borderRadius: "inherit"
+      }
+    },
+    " .pe-ripple__mask": [mixin.fit(), {
+      transform: "translate3d(0,0,0)"
+    }],
+
+    " .pe-ripple__waves": {
+      outline: "1px solid transparent", // for IE10
+      position: "absolute",
+      borderRadius: "50%",
+      pointerEvents: "none",
+      display: "none"
+    },
+    " .pe-ripple__waves--animating": {
+      display: "block"
+    }
+  }])];
+});
+
+function _defineProperty$5(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var style$1 = function style(scopes, selector, componentVars, tint) {
+  return [_defineProperty$5({}, scopes.map(function (s) {
+    return s + selector;
+  }).join(","), {
+    color: componentVars["color_" + tint] || componentVars["color"] || "inherit"
+  })];
+};
+
+var color$1 = (function (selector, componentVars) {
+  return [style$1([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$1(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+});
+
+var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var fns$1 = [layout$1, color$1];
+var selector$1 = "." + classes$1.component;
+
+var customTheme$1 = function customTheme(customSelector, customVars) {
+  return styler.generateStyles([customSelector, selector$1], _extends$3({}, vars$2, customVars), fns$1);
+};
+
+styler.generateStyles([selector$1], vars$2, fns$1);
+
+function _defineProperty$6(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var ANIMATION_END_EVENT = animationEndEvent();
+var DEFAULT_START_OPACITY = 0.2;
+var DEFAULT_END_OPACITY = 0.0;
+var DEFAULT_START_SCALE = 0.1;
+var DEFAULT_END_SCALE = 2.0;
+var OPACITY_DECAY_VELOCITY = 0.35;
+
+var animation = (function (e, el, wavesEl, attrs, classes, endCallback) {
+  var rect = el.getBoundingClientRect();
+  var x = isTouch && e.touches ? e.touches[0].pageX : e.clientX;
+  var y = isTouch && e.touches ? e.touches[0].pageY : e.clientY;
+  var w = el.offsetWidth;
+  var h = el.offsetHeight;
+  var waveRadius = Math.sqrt(w * w + h * h);
+  var mx = attrs.center ? rect.left + rect.width / 2 : x;
+  var my = attrs.center ? rect.top + rect.height / 2 : y;
+  var rx = mx - rect.left - waveRadius / 2;
+  var ry = my - rect.top - waveRadius / 2;
+  var startOpacity = attrs.startOpacity !== undefined ? attrs.startOpacity : DEFAULT_START_OPACITY;
+  var opacityDecayVelocity = attrs.opacityDecayVelocity !== undefined ? attrs.opacityDecayVelocity : OPACITY_DECAY_VELOCITY;
+  var endOpacity = attrs.endOpacity || DEFAULT_END_OPACITY;
+  var startScale = attrs.startScale || DEFAULT_START_SCALE;
+  var endScale = attrs.endScale || DEFAULT_END_SCALE;
+  var duration = attrs.duration ? attrs.duration : 1 / opacityDecayVelocity * 0.2;
+  var color = window.getComputedStyle(el).color;
+  var animationId = "ripple_animation_" + new Date().getTime();
+  var style = wavesEl.style;
+  style.width = style.height = waveRadius + "px";
+  style.top = ry + "px";
+  style.left = rx + "px";
+  style["animation-duration"] = style["-webkit-animation-duration"] = style["-moz-animation-duration"] = style["-o-animation-duration"] = duration + "s";
+  style.backgroundColor = color;
+  style.opacity = startOpacity;
+  style.animationName = animationId;
+  style.animationTimingFunction = attrs.animationTimingFunction || vars.animation_curve_default;
+
+  var keyframeStyle = [_defineProperty$6({}, "@keyframes " + animationId, {
+    " 0%": {
+      transform: "scale(" + startScale + ")",
+      "opacity": startOpacity
+    },
+    " 100%": {
+      transform: "scale(" + endScale + ")",
+      "opacity": endOpacity
+    }
+  })];
+  styler.add(animationId, keyframeStyle);
+
+  var onEnd = function onEnd(evt) {
+    if (attrs.persistent) {
+      style.opacity = endOpacity;
+      style.transform = "scale(" + endScale + ")";
+    } else {
+      endCallback();
+      wavesEl.classList.remove(classes.wavesAnimating);
+    }
+    wavesEl.removeEventListener(ANIMATION_END_EVENT, onEnd, false);
+    styler.remove(animationId);
+    if (attrs.end) {
+      attrs.end(evt);
+    }
+  };
+  wavesEl.addEventListener(ANIMATION_END_EVENT, onEnd, false);
+  if (attrs.start) {
+    attrs.start(e);
+  }
+  wavesEl.classList.add(classes.wavesAnimating);
+});
+
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var element$1 = "div";
+
+var theme$1 = customTheme$1;
+
+var createProps$1 = function createProps(vnode, _ref) {
+  var k = _ref.keys;
+
+  var attrs = vnode.attrs;
+  return _extends$2({}, filterSupportedAttributes(attrs), {
+    className: [classes$1.component, attrs.constrained !== false ? classes$1.constrained : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+  });
+};
+
+var onMount = function onMount(vnode) {
+  var state = vnode.state;
+  var attrs = vnode.attrs;
+  if (!vnode.dom) {
+    return;
+  }
+  var rippleEl = vnode.dom;
+  var wavesEl = vnode.dom.querySelector("." + classes$1.waves);
+
+  var tap = function tap(e) {
+    if (state.animating) {
+      return;
+    }
+    animation(e, rippleEl, wavesEl, attrs, classes$1, function () {
+      return state.animating = false;
+    });
+    state.animating = true;
+  };
+  var triggerEl = attrs.target ? attrs.target() : vnode.dom.parentElement;
+  triggerEl.addEventListener(touchEndEvent, tap, false);
+  state.removeEventListeners = function () {
+    return triggerEl.removeEventListener(touchEndEvent, tap, false);
+  };
+};
+
+var onUnmount = function onUnmount(_ref2) {
+  var state = _ref2.state;
+
+  state.removeEventListeners();
+};
+
+var createContent$1 = function createContent(vnode, _ref3) {
+  var h = _ref3.renderer;
+
+  var attrs = vnode.attrs;
+  if (attrs.disabled) {
+    return null;
+  }
+  return h("div", { className: classes$1.mask }, h("div", { className: classes$1.waves }));
+};
+
+var ripple = {
+  createProps: createProps$1, createContent: createContent$1, onMount: onMount, onUnmount: onUnmount, theme: theme$1, element: element$1,
+  classes: classes$1,
+  vars: vars$2
+};
+
+export { button, ripple };

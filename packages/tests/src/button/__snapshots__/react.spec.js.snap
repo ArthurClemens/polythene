@@ -1,0 +1,642 @@
+exports[`test No options 1`] = `
+<a
+  className="pe-button pe-text-button        "
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+  tabIndex={0} />
+`;
+
+exports[`test Option: after 1`] = `
+<a
+  className="pe-button pe-text-button        "
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+  tabIndex={0}>
+  <span>
+    After
+  </span>
+</a>
+`;
+
+exports[`test Option: before 1`] = `
+<a
+  className="pe-button pe-text-button        "
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+  tabIndex={0}>
+  <span>
+    Before
+  </span>
+</a>
+`;
+
+exports[`test Option: children 1`] = `
+<a
+  className="pe-button pe-text-button        "
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+  tabIndex={0}>
+  <div
+    className="pe-button__content"
+    style={Object {}}>
+    <n />
+    <div
+      className="pe-button__wash" />
+    <div
+      className="pe-button__focus" />
+    <span>
+      Child
+    </span>
+  </div>
+</a>
+`;
+
+exports[`test Option: class 1`] = `
+<a
+  className="pe-button pe-text-button        "
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+  tabIndex={0} />
+`;
+
+exports[`test Option: className 1`] = `
+<a
+  className="pe-button pe-text-button        className-x"
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+  tabIndex={0} />
+`;
+
+exports[`test Option: content 1`] = `
+<a
+  className="pe-button pe-text-button        "
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+  tabIndex={0}>
+  <div
+    className="pe-button__content"
+    style={Object {}}>
+    <n />
+    <div
+      className="pe-button__wash" />
+    <div
+      className="pe-button__focus" />
+    <span>
+      Content
+    </span>
+  </div>
+</a>
+`;
+
+exports[`test Option: disabled (false) 1`] = `
+<a
+  className="pe-button pe-text-button        "
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+  tabIndex={0}>
+  <div
+    className="pe-button__content"
+    style={Object {}}>
+    <n />
+    <div
+      className="pe-button__wash" />
+    <div
+      className="pe-button__focus" />
+    <div
+      className="pe-button__label">
+      Not disabled
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test Option: disabled (true) 1`] = `
+<a
+  className="pe-button pe-text-button  pe-button--disabled      "
+  disabled={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+  tabIndex={-1}>
+  <div
+    className="pe-button__content"
+    style={Object {}}>
+    <div
+      className="pe-button__label">
+      Disabled
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test Option: element 1`] = `
+<button
+  className="pe-button pe-text-button        "
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+  tabIndex={0} />
+`;
+
+exports[`test Option: formaction 1`] = `
+<a
+  className="pe-button pe-text-button        "
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+  tabIndex={0}>
+  <div
+    className="pe-button__content"
+    style={Object {}}>
+    <n />
+    <div
+      className="pe-button__wash" />
+    <div
+      className="pe-button__focus" />
+    <div
+      className="pe-button__label">
+      Form action
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test Option: id 1`] = `
+<a
+  className="pe-button pe-text-button        "
+  id="id-x"
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+  tabIndex={0} />
+`;
+
+exports[`test Option: inactivate (2) 1`] = `
+<a
+  className="pe-button pe-text-button        "
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+  tabIndex={0}>
+  <div
+    className="pe-button__content"
+    style={Object {}}>
+    <n />
+    <div
+      className="pe-button__wash" />
+    <div
+      className="pe-button__focus" />
+    <div
+      className="pe-button__label">
+      Inactivated for 2s
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test Option: inactive (false) 1`] = `
+<a
+  className="pe-button pe-text-button        "
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+  tabIndex={0}>
+  <div
+    className="pe-button__content"
+    style={Object {}}>
+    <n />
+    <div
+      className="pe-button__wash" />
+    <div
+      className="pe-button__focus" />
+    <div
+      className="pe-button__label">
+      Not inactive
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test Option: inactive (true) 1`] = `
+<a
+  className="pe-button pe-text-button   pe-button--inactive     ">
+  <div
+    className="pe-button__content"
+    style={Object {}}>
+    <n />
+    <div
+      className="pe-button__wash" />
+    <div
+      className="pe-button__focus" />
+    <div
+      className="pe-button__label">
+      Inactive
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test Option: ink (false) 1`] = `
+<a
+  className="pe-button pe-text-button        "
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+  tabIndex={0}>
+  <div
+    className="pe-button__content"
+    style={Object {}}>
+    <div
+      className="pe-button__wash" />
+    <div
+      className="pe-button__focus" />
+    <div
+      className="pe-button__label">
+      No ink
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test Option: label -- dark theme class 1`] = `
+<a
+  className="pe-button pe-text-button        "
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+  tabIndex={0}>
+  <div
+    className="pe-button__content"
+    style={Object {}}>
+    <n />
+    <div
+      className="pe-button__wash" />
+    <div
+      className="pe-button__focus" />
+    <div
+      className="pe-button__label">
+      Label
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test Option: label 1`] = `
+<a
+  className="pe-button pe-text-button        "
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+  tabIndex={0}>
+  <div
+    className="pe-button__content"
+    style={Object {}}>
+    <n />
+    <div
+      className="pe-button__wash" />
+    <div
+      className="pe-button__focus" />
+    <div
+      className="pe-button__label">
+      Label
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test Option: selected 1`] = `
+<a
+  className="pe-button pe-text-button pe-button--selected       "
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+  tabIndex={0}>
+  <div
+    className="pe-button__content"
+    style={Object {}}>
+    <n />
+    <div
+      className="pe-button__wash" />
+    <div
+      className="pe-button__focus" />
+    <div
+      className="pe-button__label">
+      Selected
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test Option: style (colors) 1`] = `
+<a
+  className="pe-button pe-text-button        "
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+  style={Object {}}
+  tabIndex={0}>
+  <div
+    className="pe-button__content"
+    style={
+      Object {
+        "backgroundColor": "#EF6C00",
+        "color": "#fff",
+      }
+    }>
+    <n />
+    <div
+      className="pe-button__wash" />
+    <div
+      className="pe-button__focus" />
+    <div
+      className="pe-button__label">
+      Styled
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test Option: tabindex 1`] = `
+<a
+  className="pe-button pe-text-button        "
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+  tabIndex={0}
+  tabindex={3} />
+`;
+
+exports[`test Option: tone "dark" -- dark theme class 1`] = `
+<a
+  className="pe-button pe-text-button      pe-dark-tone  "
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+  tabIndex={0}>
+  <div
+    className="pe-button__content"
+    style={Object {}}>
+    <n />
+    <div
+      className="pe-button__wash" />
+    <div
+      className="pe-button__focus" />
+    <div
+      className="pe-button__label">
+      Label
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test Option: url (without oncreate) 1`] = `
+<a
+  className="pe-button pe-text-button        "
+  href="/shadow"
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+  tabIndex={0}>
+  <div
+    className="pe-button__content"
+    style={Object {}}>
+    <n />
+    <div
+      className="pe-button__wash" />
+    <div
+      className="pe-button__focus" />
+    <div
+      className="pe-button__label">
+      Go to /shadow
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test Option: wash (false) 1`] = `
+<a
+  className="pe-button pe-text-button        "
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+  tabIndex={0}>
+  <div
+    className="pe-button__content"
+    style={Object {}}>
+    <n />
+    <div
+      className="pe-button__focus" />
+    <div
+      className="pe-button__label">
+      No wash
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test Themed button (colors) 1`] = `
+<a
+  className="pe-button pe-text-button        tests-button-themed-button"
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+  tabIndex={0}>
+  <div
+    className="pe-button__content"
+    style={Object {}}>
+    <n />
+    <div
+      className="pe-button__wash" />
+    <div
+      className="pe-button__focus" />
+    <div
+      className="pe-button__label">
+      Themed button
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test Themed button -- dark theme class 1`] = `
+<a
+  className="pe-button pe-text-button        tests-button-themed-button"
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+  tabIndex={0}>
+  <div
+    className="pe-button__content"
+    style={Object {}}>
+    <n />
+    <div
+      className="pe-button__wash" />
+    <div
+      className="pe-button__focus" />
+    <div
+      className="pe-button__label">
+      Themed button
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test Themed button blue on dark -- dark theme class 1`] = `
+<a
+  className="pe-button pe-text-button        blue-on-dark-button"
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+  tabIndex={0}>
+  <div
+    className="pe-button__content"
+    style={Object {}}>
+    <n />
+    <div
+      className="pe-button__wash" />
+    <div
+      className="pe-button__focus" />
+    <div
+      className="pe-button__label">
+      Blue on dark button
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test Themed button: (option: borders) -- dark theme class 1`] = `
+<a
+  className="pe-button pe-text-button    pe-button--borders    tests-button-bordered-button"
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+  tabIndex={0}>
+  <div
+    className="pe-button__content"
+    style={Object {}}>
+    <n />
+    <div
+      className="pe-button__wash" />
+    <div
+      className="pe-button__focus" />
+    <div
+      className="pe-button__label">
+      Borders dark theme
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test Themed button: (option: borders) 1`] = `
+<a
+  className="pe-button pe-text-button    pe-button--borders    tests-button-bordered-button"
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+  tabIndex={0}>
+  <div
+    className="pe-button__content"
+    style={Object {}}>
+    <n />
+    <div
+      className="pe-button__wash" />
+    <div
+      className="pe-button__focus" />
+    <div
+      className="pe-button__label">
+      Borders
+    </div>
+  </div>
+</a>
+`;

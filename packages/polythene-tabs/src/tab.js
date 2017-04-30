@@ -1,5 +1,5 @@
 import m from "mithril";
-import button from "polythene-mithril-button";
+import { button } from "polythene-mithril";
 import icon from "polythene-icon";
 import classes from "./classes";
 

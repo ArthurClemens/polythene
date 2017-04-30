@@ -1,10 +1,10 @@
 import { vars } from "polythene-theme";
-import { vars as buttonVars } from "polythene-button";
+import { button } from "polythene-core";
 import { vars as iconButtonVars } from "polythene-icon-button";
 
 const rgba = vars.rgba;
 
-const fontSize = buttonVars.font_size;
+const fontSize = button.vars.font_size;
 const tab_label_line_height = 1.1 * fontSize;
 
 export default {

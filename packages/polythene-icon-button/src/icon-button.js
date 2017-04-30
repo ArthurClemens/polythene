@@ -1,6 +1,6 @@
 import m from "mithril";
 import icon from "polythene-icon";
-import button from "polythene-mithril-button";
+import { button } from "polythene-mithril";
 import { customTheme } from "./theme";
 import classes from "./classes";
 

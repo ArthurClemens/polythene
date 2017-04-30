@@ -122,11 +122,11 @@ const pages = [
   //   name: "Radio button",
   //   tests: radioButtonTests
   // },
-  // {
-  //   path: "/ripple",
-  //   name: "Ripple",
-  //   tests: rippleTests
-  // },
+  {
+    path: "/ripple",
+    name: "Ripple",
+    tests: mithrilTests.ripple
+  },
   // {
   //   path: "/search",
   //   name: "Search",
@@ -167,11 +167,11 @@ const pages = [
   //   name: "Toolbar",
   //   tests: toolbarTests
   // },
-  // {
-  //   path: "/theme",
-  //   name: "Custom theme",
-  //   tests: themeTests
-  // },
+  {
+    path: "/theme",
+    name: "Custom theme",
+    tests: mithrilTests.theme
+  },
   // {
   //   path: "/css",
   //   name: "CSS tools",

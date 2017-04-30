@@ -1,9 +1,9 @@
-import { createProps, createContent, theme } from "./button";
+import { createProps, createContent, theme, element } from "./button";
 import classes from "./classes";
 import vars from "./theme/vars";
 
 export const button = {
-  createProps, createContent, theme,
+  createProps, createContent, theme, element,
   classes,
   vars
 };

@@ -17,7 +17,6 @@
     "mithril": "1.1.0",
     "polythene-core": "1.0.0-rc.1",
     "polythene-css": "1.0.0-rc.1",
-    "polythene-ripple": "1.0.0-rc.1",
     "polythene-shadow": "1.0.0-rc.1",
     "polythene-theme": "1.0.0-rc.1"
   },

@@ -1,6 +1,6 @@
 // import iconAlarm from "mmsvg/google/msvg/action/alarm-add";
 
-export default ({ button, fab, icon, iconButton, list, listTile/*, renderer: h*/ }) => {
+export default ({ button/*, fab, icon, iconButton, list, listTile, renderer: h*/ }) => {
   button.theme(".tests-custom-theme-blue-button", {
     color_light_background: "#2196F3",
     color_light_text: "#fff"
@@ -11,27 +11,27 @@ export default ({ button, fab, icon, iconButton, list, listTile/*, renderer: h*/
     color_light_text: "#fff"
   });
 
-  icon.theme(".tests-custom-theme-red-icon", {
-    color_light: "red"
-  });
+  // icon.theme(".tests-custom-theme-red-icon", {
+  //   color_light: "red"
+  // });
 
-  fab.theme(".tests-custom-theme-red-fab", {
-    color_light_background: "#ff0000",
-    color_light: "#fff"
-  });
+  // fab.theme(".tests-custom-theme-red-fab", {
+  //   color_light_background: "#ff0000",
+  //   color_light: "#fff"
+  // });
 
-  iconButton.theme(".tests-custom-theme-large-icon-button", {
-    padding: 50,
-    color_background: "#fff"
-  });
+  // iconButton.theme(".tests-custom-theme-large-icon-button", {
+  //   padding: 50,
+  //   color_background: "#fff"
+  // });
 
-  list.theme(".tests-custom-theme-blue-list", {
-    color_light_border: "#2196F3"
-  });
+  // list.theme(".tests-custom-theme-blue-list", {
+  //   color_light_border: "#2196F3"
+  // });
 
-  listTile.theme(".tests-custom-theme-red-list-tile", {
-    color_light_title: "red"
-  });
+  // listTile.theme(".tests-custom-theme-red-list-tile", {
+  //   color_light_title: "red"
+  // });
 
   return [
     {

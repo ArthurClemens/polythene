@@ -23,10 +23,8 @@
     "polythene-icon-button": "1.0.0-rc.1",
     "polythene-list": "1.0.0-rc.1",
     "polythene-list-tile": "1.0.0-rc.1",
-    "polythene-mithril-button": "1.0.0-rc.1",
-    "polythene-mithril-core": "1.0.0-rc.1",
-    "polythene-react-button": "1.0.0-rc.1",
-    "polythene-react-core": "1.0.0-rc.1"
+    "polythene-mithril": "1.0.0-rc.1",
+    "polythene-react": "1.0.0-rc.1"
   },
   "devDependencies": {
     "enzyme": "^2.8.2",

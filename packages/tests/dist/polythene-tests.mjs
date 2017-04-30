@@ -1,12 +1,5 @@
-import { renderer } from 'polythene-mithril-core';
-import button from 'polythene-mithril-button';
-import fab from 'polythene-fab';
-import icon from 'polythene-icon';
-import iconButton from 'polythene-icon-button';
-import list from 'polythene-list';
-import listTile from 'polythene-list-tile';
-import { renderer as renderer$1 } from 'polythene-react-core';
-import button$1 from 'polythene-react-button';
+import { button, renderer, ripple } from 'polythene-mithril';
+import { button as button$1, renderer as renderer$1, ripple as ripple$1 } from 'polythene-react';
 
 var tests = (function (_ref) {
   var button$$1 = _ref.button;
@@ -302,12 +295,7 @@ var testsMithril = [].concat(tests({ button: button, renderer: renderer })).conc
 // import iconAlarm from "mmsvg/google/msvg/action/alarm-add";
 
 var genericTests = (function (_ref) {
-  var button$$1 = _ref.button,
-      fab$$1 = _ref.fab,
-      icon$$1 = _ref.icon,
-      iconButton$$1 = _ref.iconButton,
-      list$$1 = _ref.list,
-      listTile$$1 = _ref.listTile;
+  var button$$1 = _ref.button;
 
   button$$1.theme(".tests-custom-theme-blue-button", {
     color_light_background: "#2196F3",
@@ -319,27 +307,27 @@ var genericTests = (function (_ref) {
     color_light_text: "#fff"
   });
 
-  icon$$1.theme(".tests-custom-theme-red-icon", {
-    color_light: "red"
-  });
+  // icon.theme(".tests-custom-theme-red-icon", {
+  //   color_light: "red"
+  // });
 
-  fab$$1.theme(".tests-custom-theme-red-fab", {
-    color_light_background: "#ff0000",
-    color_light: "#fff"
-  });
+  // fab.theme(".tests-custom-theme-red-fab", {
+  //   color_light_background: "#ff0000",
+  //   color_light: "#fff"
+  // });
 
-  iconButton$$1.theme(".tests-custom-theme-large-icon-button", {
-    padding: 50,
-    color_background: "#fff"
-  });
+  // iconButton.theme(".tests-custom-theme-large-icon-button", {
+  //   padding: 50,
+  //   color_background: "#fff"
+  // });
 
-  list$$1.theme(".tests-custom-theme-blue-list", {
-    color_light_border: "#2196F3"
-  });
+  // list.theme(".tests-custom-theme-blue-list", {
+  //   color_light_border: "#2196F3"
+  // });
 
-  listTile$$1.theme(".tests-custom-theme-red-list-tile", {
-    color_light_title: "red"
-  });
+  // listTile.theme(".tests-custom-theme-red-list-tile", {
+  //   color_light_title: "red"
+  // });
 
   return [{
     name: "Theme with style variables: button (should be blue)",
@@ -372,6 +360,11 @@ Testing 2 theming methods:
 2. Deriving components
 */
 
+// import fab from "polythene-fab";
+// import icon from "polythene-icon";
+// import iconButton from "polythene-icon-button";
+// import list from "polythene-list";
+// import listTile from "polythene-list-tile";
 var h = renderer;
 
 // [2]
@@ -399,21 +392,246 @@ var mithrilTests$2 = function mithrilTests() {
   }];
 };
 
-var testsMithril$1 = [].concat(genericTests({ button: button, fab: fab, icon: icon, iconButton: iconButton, list: list, listTile: listTile, renderer: renderer })).concat(mithrilTests$2());
+var testsMithril$1 = [].concat(genericTests({ button: button /*, fab, icon, iconButton, list, listTile, renderer*/ })).concat(mithrilTests$2());
+
+var tests$1 = (function (_ref) {
+  var ripple$$1 = _ref.ripple;
+
+  ripple$$1.theme(".tests-ripple-themed-ripple", {
+    color_light: "#F44336"
+  });
+  return [{
+    name: "Option: constrained (true)",
+    interactive: true,
+    component: ripple$$1,
+    attrs: {
+      constrained: true
+    }
+  }, {
+    name: "Option: constrained (false)",
+    interactive: true,
+    exclude: true,
+    component: ripple$$1,
+    attrs: {
+      constrained: false
+    }
+  }, {
+    name: "Option: center",
+    interactive: true,
+    exclude: true,
+    component: ripple$$1,
+    attrs: {
+      center: true
+    }
+  }, {
+    name: "Option: start opacity (0.5)",
+    interactive: true,
+    exclude: true,
+    component: ripple$$1,
+    attrs: {
+      startOpacity: 0.5
+    }
+  }, {
+    name: "Option: end opacity (0.1)",
+    interactive: true,
+    exclude: true,
+    component: ripple$$1,
+    attrs: {
+      endOpacity: 0.1
+    }
+  }, {
+    name: "Option: duration (3.0)",
+    interactive: true,
+    exclude: true,
+    component: ripple$$1,
+    attrs: {
+      duration: 3.0
+    }
+  }, {
+    name: "Option: initial opacityDecayVelocity (0.1)",
+    interactive: true,
+    exclude: true,
+    component: ripple$$1,
+    attrs: {
+      opacityDecayVelocity: 0.1
+    }
+  }, {
+    name: "Option: disabled",
+    interactive: true,
+    exclude: true,
+    component: ripple$$1,
+    attrs: {
+      disabled: true
+    }
+  }, {
+    name: "Option: style (color)",
+    interactive: true,
+    exclude: true,
+    component: ripple$$1,
+    attrs: {
+      startOpacity: 0.7,
+      style: {
+        color: "#2196F3"
+      }
+    }
+  }, {
+    name: "Themed (should be red and permanent)",
+    interactive: true,
+    exclude: true,
+    component: ripple$$1,
+    attrs: {
+      className: "tests-ripple-themed-ripple",
+      endOpacity: 1.0,
+      persistent: true
+    }
+  },
+
+  // Dark tone
+
+  {
+    name: "Option: style (white) -- dark theme class",
+    interactive: true,
+    exclude: true,
+    className: "pe-dark-tone",
+    component: ripple$$1,
+    attrs: {
+      constrained: true,
+      style: {
+        color: "#fff"
+      }
+    }
+  }, {
+    name: "Dark tone class + light theme class",
+    interactive: true,
+    exclude: true,
+    className: "pe-dark-tone",
+    component: ripple$$1,
+    attrs: {
+      constrained: true,
+      style: {
+        background: "#fff"
+      },
+      className: "pe-light-tone"
+    }
+  }, {
+    name: "Dark tone class + light tone",
+    interactive: true,
+    exclude: true,
+    className: "test-dark-theme",
+    component: ripple$$1,
+    attrs: {
+      constrained: true,
+      style: {
+        background: "#fff"
+      },
+      tone: "light"
+    }
+  }];
+});
+
+var mithrilTests$3 = function mithrilTests(_ref) {
+  var ripple$$1 = _ref.ripple,
+      h = _ref.renderer;
+
+  return [{
+    name: "Appended to an element",
+    interactive: true,
+    exclude: true,
+    component: {
+      view: function view() {
+        return h("div", {
+          style: {
+            position: "relative",
+            width: "100px",
+            height: "100px"
+          }
+        }, h(ripple$$1));
+      }
+    }
+  }, {
+    name: "Option: start (after click)",
+    interactive: true,
+    exclude: true,
+    component: {
+      oninit: function oninit(vnode) {
+        return vnode.state.started = 0;
+      },
+      view: function view(vnode) {
+        return [h(ripple$$1, {
+          before: h("div", "start called: " + vnode.state.started),
+          start: function start() {
+            return vnode.state.started++, h.redraw();
+          }
+        })];
+      }
+    }
+  }, {
+    name: "Option: end (after click)",
+    interactive: true,
+    exclude: true,
+    component: {
+      oninit: function oninit(vnode) {
+        return vnode.state.ended = 0;
+      },
+      view: function view(vnode) {
+        return [h(ripple$$1, {
+          before: h("div", "end called: " + vnode.state.ended),
+          end: function end() {
+            return vnode.state.ended++, h.redraw();
+          }
+        })];
+      }
+    }
+  }];
+};
+
+var testsMithril$2 = [].concat(tests$1({ ripple: ripple, renderer: renderer })).concat(mithrilTests$3({ ripple: ripple, renderer: renderer }));
 
 
 
 var fromMithrilTests = Object.freeze({
 	button: testsMithril,
-	theme: testsMithril$1
+	theme: testsMithril$1,
+	ripple: testsMithril$2
 });
 
 var testsReact = tests({ button: button$1, renderer: renderer$1 });
 
-// export { default as theme } from "./theme/tests-react";
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var reactTests$1 = function reactTests() {
+
+  var secondaryButton = function secondaryButton(attrs) {
+    return renderer$1(button$1, _extends$1({}, attrs, {
+      className: "tests-custom-theme-secondary-button",
+      borders: true
+    }));
+  };
+
+  button$1.theme(".tests-custom-theme-secondary-button", {
+    color_light_border: "#ddd",
+    color_light_background: "#fff"
+  });
+
+  return [{
+    name: "Theme with deriving component: button (should be bordered with white background)",
+    component: secondaryButton,
+    attrs: {
+      label: "Bordered button"
+    }
+  }];
+};
+
+var testsReact$1 = [].concat(genericTests({ button: button$1, renderer: renderer$1 })).concat(reactTests$1());
+
+var testsReact$2 = tests$1({ ripple: ripple$1, renderer: renderer$1 });
+
+
 
 var fromReactTests = Object.freeze({
-	button: testsReact
+	button: testsReact,
+	theme: testsReact$1,
+	ripple: testsReact$2
 });
 
 var mithrilTests = fromMithrilTests;

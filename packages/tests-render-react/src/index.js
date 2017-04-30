@@ -3,7 +3,7 @@ import "polythene-material-design";
 import { reactTests } from "polythene-tests";
 
 import { rules as css } from "./styles";
-import { renderer as h } from "polythene-react-core";
+import { renderer as h } from "polythene-react";
 
 // const GeneratedHtml = () =>
 //   "generated html";
@@ -30,7 +30,6 @@ const Page = ({name, tests, /*previous*/}) =>
       className: `tests-${name.replace(/[\:\-\+\(\)\[\]]/g, "").replace(/ /g, "-").toLowerCase()}`
     },
     tests.map((test, index) => {
-      console.log("test", test);
       const testName = `test-${(test.name).replace(/[\:\-\+\[\]\(\)]/g, "").replace(/ /g, "-").toLowerCase()}`;
       // const uid = "id-" + index;
       return h([css.resultRow, test.interactive ? css.interactive : null].join(""), {
@@ -70,6 +69,8 @@ const Page = ({name, tests, /*previous*/}) =>
 
 
 ReactDOM.render(
-  Page({name: "Button", tests: reactTests.button, previous: null}),
+  // Page({name: "Button", tests: reactTests.button, previous: null}),
+  Page({name: "Ripple", tests: reactTests.ripple, previous: null}),
+  // Page({name: "Theme", tests: reactTests.theme, previous: null}),
   document.getElementById("root")
 );

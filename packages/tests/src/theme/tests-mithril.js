@@ -4,13 +4,13 @@ Testing 2 theming methods:
 2. Deriving components
 */
 
-import { renderer } from "polythene-mithril-core";
-import button from "polythene-mithril-button";
-import fab from "polythene-fab";
-import icon from "polythene-icon";
-import iconButton from "polythene-icon-button";
-import list from "polythene-list";
-import listTile from "polythene-list-tile";
+import { renderer } from "polythene-mithril";
+import { button } from "polythene-mithril";
+// import fab from "polythene-fab";
+// import icon from "polythene-icon";
+// import iconButton from "polythene-icon-button";
+// import list from "polythene-list";
+// import listTile from "polythene-list-tile";
 import genericTests from "./tests-generic"; // [1]
 
 const h = renderer;
@@ -40,5 +40,5 @@ const mithrilTests = () => [
 ];
 
 export default []
-  .concat(genericTests({ button, fab, icon, iconButton, list, listTile, renderer }))
+  .concat(genericTests({ button/*, fab, icon, iconButton, list, listTile, renderer*/ }))
   .concat(mithrilTests());

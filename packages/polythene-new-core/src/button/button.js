@@ -1,7 +1,8 @@
-
 import { filterSupportedAttributes } from "polythene-core";
 import { customTheme } from "./theme";
 import classes from "./classes";
+
+export const element = "a";
 
 export const theme = customTheme;
 
@@ -19,7 +20,7 @@ export const createProps = (vnode, { updateState, keys: k }) => {
   );
   return Object.assign(
     {}, 
-    filterSupportedAttributes(attrs, { add: ["formaction", "type"] }),
+    filterSupportedAttributes(attrs, { add: [k.formaction, "type"] }),
     {
       className: [
         attrs.parentClass || classes.component,
@@ -65,7 +66,7 @@ export const createProps = (vnode, { updateState, keys: k }) => {
   );
 };
 
-export const createContent = (vnode, { renderer: r, keys: k, ripple }) => {
+export const createContent = (vnode, { renderer: h, keys: k, ripple }) => {
   const attrs = vnode.attrs;
   const noink = attrs.ink !== undefined && attrs.ink === false;
   const disabled = attrs.disabled;
@@ -75,13 +76,13 @@ export const createContent = (vnode, { renderer: r, keys: k, ripple }) => {
     : attrs.label
       ? typeof attrs.label === "object"
         ? attrs.label
-        : r("div", {key: "label", className: classes.label}, attrs.label)
+        : h("div", {key: "label", className: classes.label}, attrs.label)
       : children
         ? children
         : null;
   const noWash = disabled || (attrs.wash !== undefined && !attrs.wash);
   return label
-    ? r("div", {
+    ? h("div", {
       [k.class]: classes.content,
       key: "button",
       style: attrs.style || {}
@@ -92,15 +93,15 @@ export const createContent = (vnode, { renderer: r, keys: k, ripple }) => {
       // ripple
       disabled || noink
         ? null
-        : ripple && r(ripple, {
+        : ripple && h(ripple, {
           ...attrs.ripple,
           key: "ripple",
-          target: () => vnode.dom
+          // target: () => vnode.dom
         }),
       // hover
-      noWash ? null : r("div", {key: "wash", className: classes.wash}),
+      noWash ? null : h("div", {key: "wash", className: classes.wash}),
       // focus
-      disabled ? null : r("div", {key: "focus", className: classes.focus}),
+      disabled ? null : h("div", {key: "focus", className: classes.focus}),
       label
     ])
     : null;
