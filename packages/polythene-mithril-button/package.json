@@ -17,6 +17,7 @@
     "mithril": "1.1.0",
     "polythene-button": "1.0.0-rc.1",
     "polythene-mithril-core": "1.0.0-rc.1",
+    "polythene-new-core": "1.0.0-rc.1",
     "polythene-ripple": "1.0.0-rc.1"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",

@@ -3,6 +3,7 @@
   "description": "",
   "scripts": {
     "dev": "http-server -p 3000",
+    "build": "ls",
     "update": "cp ../polythene/dist/polythene.js js/ && cp ../polythene/dist/polythene.js.map js/"
   },
   "devDependencies": {

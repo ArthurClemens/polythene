@@ -1,8 +1,9 @@
-import h from 'react-hyperscript';
+import renderer from 'react-hyperscript';
+import { Component } from 'react';
 
-// import React from "react";
 var keys = {
   class: "className",
+  formaction: "formAction",
   onblur: "onBlur",
   onclick: "onClick",
   onfocus: "onFocus",
@@ -15,54 +16,50 @@ var keys = {
   tabindex: "tabIndex"
 };
 
-var keyer = keys;
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-// Copied from mithril.js: function hyperscript(selector)
-//
-// Takes:
-// renderer(selector, args, children)
-// renderer(selector, children)
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-// const _renderer = function(selector, args, children) {
-//   let _children = children;
-//   if (!Array.isArray(_children)) _children = [children];
-//   return React.createElement(selector, args, _children);
-// };
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-// export const renderer = function() {
-//   console.log("arguments", arguments, arguments.length);
-//   if (arguments.length === 3) {
-//     return _renderer(arguments[0], arguments[1], arguments[2]);
-//   } else if (arguments.length === 2) {
-//     return _renderer(arguments[0], null, arguments[1]);
-//   } else if (arguments.length === 1) {
-//     return _renderer(arguments[0], null, null);
-//   } else {
-//     return _renderer(null, null, null);
-//   }
-// };
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-var renderer = h;
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-// export const renderer = function(selector) {
-//   console.log("renderer", arguments);
-//   console.log("selector", selector);
-//   let attrs = arguments[1], start = 2, children = null;
-//   if (!attrs) {
-//     attrs = null;
-//   } else if (typeof attrs !== "object" || attrs.tag != null || Array.isArray(attrs)) {
-//     attrs = null;
-//     start = 1;
-//   }
-//   if (arguments.length === start + 1) {
-//     children = arguments[start];
-//     if (!Array.isArray(children)) children = [children];
-//   } else if (arguments.length > start + 1) {
-//     children = [];
-//     while (start < arguments.length) children.push(arguments[start++]);
-//   }
-//   console.log("attrs", attrs, "children", children);
-//   return React.createElement(selector, attrs, children);
-// };
+var StateComponent = (function (createProps, createContent, defaultElement, state) {
 
-export { keyer, renderer };
+  return function (_Component) {
+    _inherits(_class, _Component);
+
+    function _class(props) {
+      _classCallCheck(this, _class);
+
+      var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, props));
+
+      _this.state = state;
+      return _this;
+    }
+
+    _createClass(_class, [{
+      key: "render",
+      value: function render() {
+        var _this2 = this;
+
+        var props = this.props;
+        var vnode = {
+          state: this.state,
+          attrs: props,
+          children: this.props.children
+        };
+        var updateState = function updateState(attrs, value) {
+          return _this2.setState(_defineProperty({}, attrs, value));
+        };
+        return renderer(props.element || defaultElement, createProps(vnode, { renderer: renderer, keys: keys, updateState: updateState }), [props.before, createContent(vnode, { renderer: renderer, keys: keys, updateState: updateState }), props.after]);
+      }
+    }]);
+
+    return _class;
+  }(Component);
+});
+
+export { keys, renderer, StateComponent };

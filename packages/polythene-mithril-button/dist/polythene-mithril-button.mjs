@@ -1,8 +1,10 @@
 import ripple from 'polythene-ripple';
-import { createContent, createProps, theme } from 'polythene-button';
-import { keyer, renderer } from 'polythene-mithril-core';
+import { button } from 'polythene-new-core';
+import { keys, renderer } from 'polythene-mithril-core';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+console.log("button", button);
 
 var updater = function updater(vnode) {
   return function (attrs, value) {
@@ -20,11 +22,11 @@ var oninit = function oninit(vnode) {
 
 var view = function view(vnode) {
   var updateState = updater(vnode);
-  return renderer(vnode.attrs.element || "a", createProps(vnode, { renderer: renderer, updateState: updateState, keyer: keyer, ripple: ripple }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, updateState: updateState, keyer: keyer, ripple: ripple }), vnode.attrs.after]);
+  return renderer(vnode.attrs.element || "a", button.createProps(vnode, { renderer: renderer, updateState: updateState, keys: keys, ripple: ripple }), [vnode.attrs.before, button.createContent(vnode, { renderer: renderer, updateState: updateState, keys: keys, ripple: ripple }), vnode.attrs.after]);
 };
 
 var index = {
-  theme: theme,
+  theme: button.theme,
   oninit: oninit,
   view: view
 };

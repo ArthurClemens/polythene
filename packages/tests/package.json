@@ -1,0 +1,40 @@
+{
+  "name": "polythene-tests",
+  "version": "1.0.0-rc.1",
+  "description": "",
+  "main": "dist/polythene-tests.js",
+  "module": "dist/polythene-tests.mjs",
+  "scripts": {
+    "clean": "rm -rf dist && mkdir dist",
+    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
+    "build": "npm run rollup",
+    "test": "../../node_modules/jest/bin/jest.js tests/**",
+    "test:watch": "npm run test -- --watch --no-watchman"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "dependencies": {
+    "mithril": "1.1.0",
+    "mmsvg": "^1.5.3",
+    "polythene-fab": "1.0.0-rc.1",
+    "polythene-icon": "1.0.0-rc.1",
+    "polythene-icon-button": "1.0.0-rc.1",
+    "polythene-list": "1.0.0-rc.1",
+    "polythene-list-tile": "1.0.0-rc.1",
+    "polythene-mithril-button": "1.0.0-rc.1",
+    "polythene-mithril-core": "1.0.0-rc.1",
+    "polythene-react-button": "1.0.0-rc.1",
+    "polythene-react-core": "1.0.0-rc.1"
+  },
+  "devDependencies": {
+    "enzyme": "^2.8.2",
+    "enzyme-to-json": "^1.5.1",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-test-renderer": "^15.5.4"
+  },
+  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
+  "license": "MIT"
+}

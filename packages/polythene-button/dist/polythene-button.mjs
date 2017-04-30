@@ -244,7 +244,7 @@ var createProps = function createProps(vnode, _ref) {
   var _ref2;
 
   var updateState = _ref.updateState,
-      k = _ref.keyer;
+      k = _ref.keys;
 
   var state = vnode.state;
   var attrs = vnode.attrs;
@@ -258,8 +258,6 @@ var createProps = function createProps(vnode, _ref) {
   };
   return _extends({}, filterSupportedAttributes(attrs, { add: ["formaction", "type"] }), {
     className: [attrs.parentClass || classes.component, attrs.selected ? classes.selected : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, attrs.borders ? classes.borders : null, state.focus ? classes.focused : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
-    // oncreate: ({ dom }) => dom.addEventListener("click", handleInactivate),
-    // onremove: ({ dom }) => dom.removeEventListener("click", handleInactivate)
   }, inactive ? null : (_ref2 = {}, _defineProperty(_ref2, k.tabindex, disabled || inactive ? -1 : attrs[k.tabindex] || 0), _defineProperty(_ref2, k.onclick, function (e) {
     return attrs.inactivate !== undefined && handleInactivate(), onClickHandler && onClickHandler(e), true;
   }), _defineProperty(_ref2, k.onfocus, function () {
@@ -285,7 +283,7 @@ var createContent = function createContent(vnode, _ref3) {
   var _r;
 
   var r = _ref3.renderer,
-      k = _ref3.keyer,
+      k = _ref3.keys,
       ripple = _ref3.ripple;
 
   var attrs = vnode.attrs;

@@ -2,6 +2,7 @@ import m from 'mithril';
 
 var keys = {
   class: "class",
+  formaction: "formaction",
   onblur: "onblur",
   onclick: "onclick",
   onfocus: "onfocus",
@@ -14,8 +15,4 @@ var keys = {
   tabindex: "tabindex"
 };
 
-var keyer = keys;
-
-var renderer = m;
-
-export { keyer, renderer };
+export { keys, m as renderer };

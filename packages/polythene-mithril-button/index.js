@@ -1,1 +1,2 @@
-export { default } from "./src/index";
+import button from "./src/index";
+export { button as default };
