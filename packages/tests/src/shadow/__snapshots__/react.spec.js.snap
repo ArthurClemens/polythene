@@ -1,0 +1,158 @@
+exports[`test Child node 1`] = `
+<div
+  className="pe-shadow  ">
+  Child
+  <div
+    className="pe-shadow__bottom pe-shadow--z-1" />
+  <div
+    className="pe-shadow__top pe-shadow--z-1" />
+</div>
+`;
+
+exports[`test No options 1`] = `
+<div
+  className="pe-shadow  ">
+  <div
+    className="pe-shadow__bottom pe-shadow--z-1" />
+  <div
+    className="pe-shadow__top pe-shadow--z-1" />
+</div>
+`;
+
+exports[`test Option: children 1`] = `
+<div
+  className="pe-shadow  ">
+  <span>
+    Child
+  </span>
+  <div
+    className="pe-shadow__bottom pe-shadow--z-1" />
+  <div
+    className="pe-shadow__top pe-shadow--z-1" />
+</div>
+`;
+
+exports[`test Option: class 1`] = `
+<div
+  className="pe-shadow  ">
+  <div
+    className="pe-shadow__bottom pe-shadow--z-1" />
+  <div
+    className="pe-shadow__top pe-shadow--z-1" />
+</div>
+`;
+
+exports[`test Option: className 1`] = `
+<div
+  className="pe-shadow  className-x">
+  <div
+    className="pe-shadow__bottom pe-shadow--z-1" />
+  <div
+    className="pe-shadow__top pe-shadow--z-1" />
+</div>
+`;
+
+exports[`test Option: content 1`] = `
+<div
+  className="pe-shadow  ">
+  <span>
+    Content
+  </span>
+  <div
+    className="pe-shadow__bottom pe-shadow--z-1" />
+  <div
+    className="pe-shadow__top pe-shadow--z-1" />
+</div>
+`;
+
+exports[`test Option: content 2`] = `
+<div
+  className="pe-shadow  ">
+  Content
+  <div
+    className="pe-shadow__bottom pe-shadow--z-1" />
+  <div
+    className="pe-shadow__top pe-shadow--z-1" />
+</div>
+`;
+
+exports[`test Option: element 1`] = `
+<span
+  className="pe-shadow  ">
+  <div
+    className="pe-shadow__bottom pe-shadow--z-1" />
+  <div
+    className="pe-shadow__top pe-shadow--z-1" />
+</span>
+`;
+
+exports[`test Option: id 1`] = `
+<div
+  className="pe-shadow  "
+  id="id-x">
+  <div
+    className="pe-shadow__bottom pe-shadow--z-1" />
+  <div
+    className="pe-shadow__top pe-shadow--z-1" />
+</div>
+`;
+
+exports[`test Option: z (0) 1`] = `
+<div
+  className="pe-shadow  ">
+  <div
+    className="pe-shadow__bottom pe-shadow--z-0" />
+  <div
+    className="pe-shadow__top pe-shadow--z-0" />
+</div>
+`;
+
+exports[`test Option: z (1) 1`] = `
+<div
+  className="pe-shadow  ">
+  <div
+    className="pe-shadow__bottom pe-shadow--z-1" />
+  <div
+    className="pe-shadow__top pe-shadow--z-1" />
+</div>
+`;
+
+exports[`test Option: z (2) 1`] = `
+<div
+  className="pe-shadow  ">
+  <div
+    className="pe-shadow__bottom pe-shadow--z-2" />
+  <div
+    className="pe-shadow__top pe-shadow--z-2" />
+</div>
+`;
+
+exports[`test Option: z (3) 1`] = `
+<div
+  className="pe-shadow  ">
+  <div
+    className="pe-shadow__bottom pe-shadow--z-3" />
+  <div
+    className="pe-shadow__top pe-shadow--z-3" />
+</div>
+`;
+
+exports[`test Option: z (4) 1`] = `
+<div
+  className="pe-shadow  ">
+  <div
+    className="pe-shadow__bottom pe-shadow--z-4" />
+  <div
+    className="pe-shadow__top pe-shadow--z-4" />
+</div>
+`;
+
+exports[`test Option: z (5) 1`] = `
+<div
+  className="pe-shadow  ">
+  <div
+    className="pe-shadow__bottom pe-shadow--z-5" />
+  <div
+    className="pe-shadow__top pe-shadow--z-5" />
+</div>
+`;

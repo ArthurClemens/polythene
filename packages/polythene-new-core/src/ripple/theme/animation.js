@@ -9,7 +9,7 @@ const DEFAULT_START_SCALE =    0.1;
 const DEFAULT_END_SCALE =      2.0;
 const OPACITY_DECAY_VELOCITY = 0.35;
 
-export default (e, el, wavesEl, attrs, classes, endCallback) => {
+export default (e, el, wavesEl, attrs, classes, onEndCallback) => {
   const rect = el.getBoundingClientRect();
   const x = (isTouch && e.touches) ? e.touches[0].pageX : e.clientX;
   const y = (isTouch && e.touches) ? e.touches[0].pageY : e.clientY;  
@@ -66,7 +66,7 @@ export default (e, el, wavesEl, attrs, classes, endCallback) => {
       style.opacity = endOpacity;
       style.transform = "scale(" + endScale + ")";
     } else {
-      endCallback();
+      onEndCallback();
       wavesEl.classList.remove(classes.wavesAnimating);
     }
     wavesEl.removeEventListener(ANIMATION_END_EVENT, onEnd, false);

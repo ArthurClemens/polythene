@@ -1,7 +1,7 @@
 import { renderer } from "./renderer";
 import { keys } from "./keys";
 
-export const stateComponent = ({
+export const statefulComponent = ({
   createContent,
   createProps,
   element,

@@ -1,5 +1,4 @@
-import { renderer } from "polythene-mithril";
-import { button } from "polythene-mithril";
+import { renderer, button } from "polythene-mithril";
 import genericTests from "./tests-generic";
 
 const mithrilTests = ({ button, renderer: h }) => {

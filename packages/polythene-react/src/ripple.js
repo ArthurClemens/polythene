@@ -1,6 +1,7 @@
-import { stateComponent } from "./core";
+import { statefulComponent } from "./core";
 import { ripple as component } from "polythene-new-core";
 
-export const ripple = stateComponent(Object.assign({}, component));
+export const ripple = statefulComponent(Object.assign({}, component));
 
 ripple.theme = component.theme;
+ripple.displayName = "ripple";

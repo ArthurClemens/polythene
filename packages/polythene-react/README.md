@@ -1,2 +1,2 @@
-# Polythene React Core
+# Polythene for React
 

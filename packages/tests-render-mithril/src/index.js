@@ -6,7 +6,7 @@ import testPage from "./page";
 import list from "polythene-list";
 import listTile from "polythene-list-tile";
 import toolbar from "polythene-toolbar";
-import { mithrilTests } from "polythene-tests";
+import { mithrilTests as tests } from "polythene-tests";
 // import { tests as cardTests } from "../tests/card/tests";
 // import { tests as checkboxTests } from "../tests/checkbox/tests";
 // import { tests as dialogTests } from "../tests/dialog/tests";
@@ -40,7 +40,7 @@ const pages = [
   {
     path: "/button",
     name: "Button",
-    tests: mithrilTests.button
+    tests: tests.button
   },
   // {
   //   path: "/raised-button",
@@ -125,18 +125,18 @@ const pages = [
   {
     path: "/ripple",
     name: "Ripple",
-    tests: mithrilTests.ripple
+    tests: tests.ripple
   },
   // {
   //   path: "/search",
   //   name: "Search",
   //   tests: searchTests
   // },
-  // {
-  //   path: "/shadow",
-  //   name: "Shadow",
-  //   tests: shadowTests
-  // },
+  {
+    path: "/shadow",
+    name: "Shadow",
+    tests: tests.shadow
+  },
   // {
   //   path: "/slider",
   //   name: "Slider",
@@ -170,7 +170,7 @@ const pages = [
   {
     path: "/theme",
     name: "Custom theme",
-    tests: mithrilTests.theme
+    tests: tests.theme
   },
   // {
   //   path: "/css",

@@ -1,5 +1,4 @@
-import { renderer } from "polythene-react";
-import { button } from "polythene-react";
+import { renderer, button } from "polythene-react";
 import genericTests from "./tests-generic";
 
 const reactTests = () => {

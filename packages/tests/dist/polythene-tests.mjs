@@ -1,5 +1,5 @@
-import { button, renderer, ripple } from 'polythene-mithril';
-import { button as button$1, renderer as renderer$1, ripple as ripple$1 } from 'polythene-react';
+import { button, renderer, ripple, shadow } from 'polythene-mithril';
+import { button as button$1, renderer as renderer$1, ripple as ripple$1, shadow as shadow$1 } from 'polythene-react';
 
 var tests = (function (_ref) {
   var button$$1 = _ref.button;
@@ -365,6 +365,7 @@ Testing 2 theming methods:
 // import iconButton from "polythene-icon-button";
 // import list from "polythene-list";
 // import listTile from "polythene-list-tile";
+
 var h = renderer;
 
 // [2]
@@ -587,12 +588,114 @@ var mithrilTests$3 = function mithrilTests(_ref) {
 
 var testsMithril$2 = [].concat(tests$1({ ripple: ripple, renderer: renderer })).concat(mithrilTests$3({ ripple: ripple, renderer: renderer }));
 
+var tests$2 = (function (_ref) {
+  var shadow$$1 = _ref.shadow;
+
+  return [{
+    name: "Child node",
+    component: shadow$$1,
+    attrs: {},
+    children: ["Child"]
+  }, {
+    name: "Option: content",
+    component: shadow$$1,
+    attrs: {
+      content: "Content"
+    }
+  }, {
+    name: "Option: z (0)",
+    component: shadow$$1,
+    attrs: {
+      z: 0
+    }
+  }, {
+    name: "Option: z (1)",
+    component: shadow$$1,
+    attrs: {
+      z: 1
+    }
+  }, {
+    name: "Option: z (2)",
+    component: shadow$$1,
+    attrs: {
+      z: 2
+    }
+  }, {
+    name: "Option: z (3)",
+    component: shadow$$1,
+    attrs: {
+      z: 3
+    }
+  }, {
+    name: "Option: z (4)",
+    component: shadow$$1,
+    attrs: {
+      z: 4
+    }
+  }, {
+    name: "Option: z (5)",
+    component: shadow$$1,
+    attrs: {
+      z: 5
+    }
+  }];
+});
+
+var mithrilTests$4 = function mithrilTests(_ref) {
+  var shadow$$1 = _ref.shadow,
+      h = _ref.renderer;
+
+
+  var interactiveTest = {
+    oninit: function oninit(vnode) {
+      return vnode.state.z = 1;
+    },
+    view: function view(vnode) {
+      return [h(".absolute.absolute--fill", {
+        onclick: function onclick() {
+          var newZ = (vnode.state.z + 1) % 6;
+          vnode.state.z = newZ;
+        }
+      }, "Click me"), h(shadow$$1, {
+        animated: true,
+        z: vnode.state.z
+      })];
+    }
+  };
+
+  return [{
+    name: "Add to a Mithril element",
+    component: {
+      view: function view() {
+        return [h("div", "Some element"), h(shadow$$1)];
+      }
+    }
+  }, {
+    name: "Interactive option: animated",
+    interactive: true,
+    exclude: true,
+    component: interactiveTest
+  },
+
+  // Dark tone
+
+  {
+    name: "Interactive option: animated -- dark theme class",
+    interactive: true,
+    className: "pe-dark-tone",
+    component: interactiveTest
+  }];
+};
+
+var testsMithril$3 = [].concat(tests$2({ shadow: shadow, renderer: renderer })).concat(mithrilTests$4({ shadow: shadow, renderer: renderer }));
+
 
 
 var fromMithrilTests = Object.freeze({
 	button: testsMithril,
 	theme: testsMithril$1,
-	ripple: testsMithril$2
+	ripple: testsMithril$2,
+	shadow: testsMithril$3
 });
 
 var testsReact = tests({ button: button$1, renderer: renderer$1 });
@@ -601,8 +704,8 @@ var _extends$1 = Object.assign || function (target) { for (var i = 1; i < argume
 
 var reactTests$1 = function reactTests() {
 
-  var secondaryButton = function secondaryButton(attrs) {
-    return renderer$1(button$1, _extends$1({}, attrs, {
+  var secondaryButton = function secondaryButton(props) {
+    return renderer$1(button$1, _extends$1({}, props, {
       className: "tests-custom-theme-secondary-button",
       borders: true
     }));
@@ -626,12 +729,15 @@ var testsReact$1 = [].concat(genericTests({ button: button$1, renderer: renderer
 
 var testsReact$2 = tests$1({ ripple: ripple$1, renderer: renderer$1 });
 
+var testsReact$3 = tests$2({ shadow: shadow$1, renderer: renderer$1 });
+
 
 
 var fromReactTests = Object.freeze({
 	button: testsReact,
 	theme: testsReact$1,
-	ripple: testsReact$2
+	ripple: testsReact$2,
+	shadow: testsReact$3
 });
 
 var mithrilTests = fromMithrilTests;

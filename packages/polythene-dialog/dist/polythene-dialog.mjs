@@ -1,6 +1,6 @@
 import { filterSupportedAttributes, hide, multiple, show, subscribe, unsubscribe } from 'polythene-core';
 import m from 'mithril';
-import shadow from 'polythene-shadow';
+import { shadow } from 'polythene-mithril';
 import { flex, mixin, styler } from 'polythene-css';
 import { classes } from 'polythene-menu';
 import { vars } from 'polythene-theme';

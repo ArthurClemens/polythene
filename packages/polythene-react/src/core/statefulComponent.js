@@ -2,7 +2,7 @@ import { Component } from "react";
 import { renderer } from "./renderer";
 import { keys } from "./keys";
 
-export const stateComponent = ({
+export const statefulComponent = ({
   createContent,
   createProps,
   element,
@@ -14,7 +14,7 @@ export const stateComponent = ({
   return class extends Component {
     constructor(props) {
       super(props);
-      this.state = state;
+      this.state = Object.assign({}, state);
     }
 
     componentDidMount() {
@@ -26,29 +26,29 @@ export const stateComponent = ({
     }
 
     createVirtualNode() {
+      const props = Object.assign({}, this.props);
       return {
         state: this.state,
-        attrs: this.props,
-        children: this.props.children,
+        attrs: props,
+        children: props.children,
         dom: this.dom
       };
     }
 
     render() {
-      const props = this.props;
       const vnode = this.createVirtualNode();
       const updateState = (attrs, value) => this.setState({[attrs]: value});
       return renderer(
-        props.element || element,
+        vnode.attrs.element || element,
         Object.assign(
           {},
           createProps(vnode, { renderer, keys, updateState }),
           { ref: dom => this.dom = dom }
         ),
         [
-          props.before,
+          vnode.attrs.before,
           createContent(vnode, { renderer, keys, updateState }),
-          props.after
+          vnode.attrs.after
         ]
       );
     }

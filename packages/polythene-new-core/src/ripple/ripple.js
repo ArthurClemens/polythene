@@ -34,7 +34,7 @@ export const onMount = vnode => {
   const wavesEl = vnode.dom.querySelector(`.${classes.waves}`);
   
   const tap = e => {
-    if (state.animating) {
+    if (state.animating || attrs.disabled) {
       return;
     }
     animation(e, rippleEl, wavesEl, attrs, classes, () => state.animating = false);

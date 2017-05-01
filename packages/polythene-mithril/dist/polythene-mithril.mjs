@@ -1,5 +1,5 @@
 import m from 'mithril';
-import { button, ripple } from 'polythene-new-core';
+import { button, ripple, shadow } from 'polythene-new-core';
 
 var keys = {
   class: "class",
@@ -20,7 +20,7 @@ var renderer = m;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var stateComponent = function stateComponent(_ref) {
+var statefulComponent = function statefulComponent(_ref) {
   var createContent = _ref.createContent,
       createProps = _ref.createProps,
       element = _ref.element,
@@ -72,7 +72,7 @@ var statelessComponent = function statelessComponent(_ref) {
 
 var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var ripple$1 = stateComponent(_extends$2({}, ripple));
+var ripple$1 = statefulComponent(_extends$2({}, ripple));
 
 ripple$1.theme = ripple.theme;
 
@@ -85,11 +85,17 @@ var createContent = function createContent(vnode, args) {
   return button.createContent(vnode, _extends$1(args, { ripple: ripple$1 }));
 };
 
-var button$1 = stateComponent(_extends$1({}, button, {
+var button$1 = statefulComponent(_extends$1({}, button, {
   createProps: createProps,
   createContent: createContent
 }));
 
 button$1.theme = button.theme;
 
-export { button$1 as button, ripple$1 as ripple, keys, renderer, stateComponent, statelessComponent };
+var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var shadow$1 = statelessComponent(_extends$3({}, shadow));
+
+shadow$1.theme = shadow.theme;
+
+export { button$1 as button, ripple$1 as ripple, shadow$1 as shadow, keys, renderer, statefulComponent, statelessComponent };

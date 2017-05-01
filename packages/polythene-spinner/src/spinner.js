@@ -1,7 +1,7 @@
 import m from "mithril";
 import { filterSupportedAttributes } from "polythene-core";
 import { show, hide } from "polythene-core";
-import shadow from "polythene-shadow";
+import { shadow } from "polythene-mithril";
 import { customTheme } from "./theme";
 import classes from "./classes";
 

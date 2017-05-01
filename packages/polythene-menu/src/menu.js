@@ -1,5 +1,5 @@
 import m from "mithril";
-import shadow from "polythene-shadow";
+import { shadow } from "polythene-mithril";
 import { filterSupportedAttributes, subscribe, unsubscribe, show, hide } from "polythene-core";
 import { customTheme } from "./theme";
 import classes from "./classes";

@@ -1,6 +1,6 @@
 import h from 'react-hyperscript';
 import { Component } from 'react';
-import { button, ripple } from 'polythene-new-core';
+import { button, ripple, shadow } from 'polythene-new-core';
 
 var keys = {
   class: "className",
@@ -31,7 +31,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var stateComponent = function stateComponent(_ref) {
+var statefulComponent = function statefulComponent(_ref) {
   var createContent = _ref.createContent,
       createProps = _ref.createProps,
       element = _ref.element,
@@ -51,7 +51,7 @@ var stateComponent = function stateComponent(_ref) {
 
       var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, props));
 
-      _this.state = state;
+      _this.state = _extends({}, state);
       return _this;
     }
 
@@ -68,10 +68,11 @@ var stateComponent = function stateComponent(_ref) {
     }, {
       key: "createVirtualNode",
       value: function createVirtualNode() {
+        var props = _extends({}, this.props);
         return {
           state: this.state,
-          attrs: this.props,
-          children: this.props.children,
+          attrs: props,
+          children: props.children,
           dom: this.dom
         };
       }
@@ -80,14 +81,13 @@ var stateComponent = function stateComponent(_ref) {
       value: function render() {
         var _this2 = this;
 
-        var props = this.props;
         var vnode = this.createVirtualNode();
         var updateState = function updateState(attrs, value) {
           return _this2.setState(_defineProperty({}, attrs, value));
         };
-        return renderer(props.element || element, _extends({}, createProps(vnode, { renderer: renderer, keys: keys, updateState: updateState }), { ref: function ref(dom) {
+        return renderer(vnode.attrs.element || element, _extends({}, createProps(vnode, { renderer: renderer, keys: keys, updateState: updateState }), { ref: function ref(dom) {
             return _this2.dom = dom;
-          } }), [props.before, createContent(vnode, { renderer: renderer, keys: keys, updateState: updateState }), props.after]);
+          } }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, keys: keys, updateState: updateState }), vnode.attrs.after]);
       }
     }]);
 
@@ -95,27 +95,88 @@ var stateComponent = function stateComponent(_ref) {
   }(Component);
 };
 
-var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var ripple$1 = stateComponent(_extends$2({}, ripple));
-
-ripple$1.theme = ripple.theme;
-
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var createProps = function createProps(vnode, args) {
-  return button.createProps(vnode, _extends$1(args, { ripple: ripple$1 }));
-};
-var createContent = function createContent(vnode, args) {
-  return button.createContent(vnode, _extends$1(args, { ripple: ripple$1 }));
+var _createClass$1 = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck$1(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn$1(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits$1(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var statelessComponent = function statelessComponent(_ref) {
+  var createContent = _ref.createContent,
+      createProps = _ref.createProps,
+      element = _ref.element;
+
+
+  return function (_Component) {
+    _inherits$1(_class, _Component);
+
+    function _class() {
+      _classCallCheck$1(this, _class);
+
+      return _possibleConstructorReturn$1(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
+    }
+
+    _createClass$1(_class, [{
+      key: "createVirtualNode",
+      value: function createVirtualNode() {
+        var props = _extends$1({}, this.props);
+        return {
+          state: this.state,
+          attrs: props,
+          children: props.children,
+          dom: this.dom
+        };
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        var _this2 = this;
+
+        var vnode = this.createVirtualNode();
+        return renderer(vnode.attrs.element || element, _extends$1({}, createProps(vnode, { renderer: renderer, keys: keys }), { ref: function ref(dom) {
+            return _this2.dom = dom;
+          } }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, keys: keys }), vnode.attrs.after]);
+      }
+    }]);
+
+    return _class;
+  }(Component);
 };
 
-var button$1 = stateComponent({
+var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var ripple$1 = statefulComponent(_extends$3({}, ripple));
+
+ripple$1.theme = ripple.theme;
+ripple$1.displayName = "ripple";
+
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var createProps = function createProps(vnode, args) {
+  return button.createProps(vnode, _extends$2(args, { ripple: ripple$1 }));
+};
+var createContent = function createContent(vnode, args) {
+  return button.createContent(vnode, _extends$2(args, { ripple: ripple$1 }));
+};
+
+var button$1 = statefulComponent({
   createProps: createProps,
   createContent: createContent,
   element: button.element
 });
 
 button$1.theme = button.theme;
+button$1.displayName = "button";
 
-export { button$1 as button, ripple$1 as ripple, keys, renderer, stateComponent };
+var _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var shadow$1 = statelessComponent(_extends$4({}, shadow));
+
+shadow$1.theme = shadow.theme;
+shadow$1.displayName = "shadow";
+
+export { button$1 as button, ripple$1 as ripple, shadow$1 as shadow, keys, renderer, statefulComponent, statelessComponent };
