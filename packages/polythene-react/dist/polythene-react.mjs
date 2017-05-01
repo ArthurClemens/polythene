@@ -1,6 +1,6 @@
 import h from 'react-hyperscript';
 import { Component } from 'react';
-import { button, ripple, shadow } from 'polythene-new-core';
+import { button, ripple, shadow, svg } from 'polythene-new-core';
 
 var keys = {
   class: "className",
@@ -18,6 +18,15 @@ var keys = {
 };
 
 var renderer = h;
+
+renderer.trust = function (html) {
+  var element = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "div";
+
+  if (html == null) html = "";
+  return h(element, {
+    dangerouslySetInnerHTML: { __html: html }
+  });
+};
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -179,4 +188,11 @@ var shadow$1 = statelessComponent(_extends$4({}, shadow));
 shadow$1.theme = shadow.theme;
 shadow$1.displayName = "shadow";
 
-export { button$1 as button, ripple$1 as ripple, shadow$1 as shadow, keys, renderer, statefulComponent, statelessComponent };
+var _extends$5 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var svg$1 = statelessComponent(_extends$5({}, svg));
+
+svg$1.theme = svg.theme;
+svg$1.displayName = "svg";
+
+export { button$1 as button, ripple$1 as ripple, shadow$1 as shadow, svg$1 as svg, keys, renderer, statefulComponent, statelessComponent };

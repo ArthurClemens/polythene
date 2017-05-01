@@ -1,6 +1,6 @@
 import m from "mithril";
 import { filterSupportedAttributes } from "polythene-core";
-import svg from "polythene-svg";
+import { svg } from "polythene-mithril";
 import { customTheme } from "./theme";
 import classes from "./classes";
 

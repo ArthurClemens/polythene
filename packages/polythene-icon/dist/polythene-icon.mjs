@@ -1,6 +1,6 @@
 import m from 'mithril';
 import { filterSupportedAttributes } from 'polythene-core';
-import svg from 'polythene-svg';
+import { svg } from 'polythene-mithril';
 import { styler } from 'polythene-css';
 import { vars } from 'polythene-theme';
 

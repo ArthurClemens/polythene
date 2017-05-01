@@ -632,4 +632,88 @@ var shadow = {
   vars: vars$3
 };
 
-export { button, ripple, shadow };
+var classes$3 = {
+  component: "pe-svg"
+};
+
+var vars$4 = {
+  color_light: "currentcolor",
+  color_dark: "currentcolor"
+};
+
+function _defineProperty$8(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var layout$3 = (function (selector) {
+  return [_defineProperty$8({}, selector, {
+    lineHeight: 1,
+
+    " svg": {
+      width: "inherit",
+      height: "inherit"
+    }
+  })];
+});
+
+function _defineProperty$9(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var style$2 = function style(scopes, selector, componentVars, tint) {
+  return [_defineProperty$9({}, scopes.map(function (s) {
+    return s + selector;
+  }).join(","), {
+    color: "inherit",
+
+    " svg": {
+      color: "inherit",
+
+      " path, rect, circle, polygon": {
+        "&:not([fill=none])": {
+          fill: componentVars["color_" + tint] || "currentcolor"
+        }
+      }
+    }
+  })];
+};
+
+var color$2 = (function (selector, componentVars) {
+  return [style$2([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$2(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+});
+
+var _extends$7 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var fns$3 = [layout$3, color$2];
+var selector$3 = "." + classes$3.component;
+
+var customTheme$3 = function customTheme(customSelector, customVars) {
+  return styler.generateStyles([customSelector, selector$3], _extends$7({}, vars$4, customVars), fns$3);
+};
+
+styler.generateStyles([selector$3], vars$4, fns$3);
+
+var _extends$6 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var element$3 = "div";
+
+var theme$3 = customTheme$3;
+
+var createProps$3 = function createProps(vnode, _ref) {
+  var k = _ref.keys;
+
+  var attrs = vnode.attrs;
+  return _extends$6({}, filterSupportedAttributes(attrs), {
+    className: [classes$3.component, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+  });
+};
+
+var createContent$3 = function createContent(vnode) {
+  var attrs = vnode.attrs;
+  return attrs.content ? attrs.content : attrs.children || vnode.children;
+};
+
+var svg = {
+  createProps: createProps$3, createContent: createContent$3, theme: theme$3, element: element$3,
+  classes: classes$3,
+  vars: vars$4
+};
+
+export { button, ripple, shadow, svg };

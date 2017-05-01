@@ -1,30 +1,30 @@
-import m from "mithril";
 import { filterSupportedAttributes } from "polythene-core";
 import { customTheme } from "./theme";
 import classes from "./classes";
 
-const view = vnode => {
+export const element = "div";
+
+export const theme = customTheme;
+
+export const createProps = (vnode, { keys: k }) => {
   const attrs = vnode.attrs;
-  const element = attrs.element || "div";
-  const props = Object.assign(
+  return Object.assign(
     {},
     filterSupportedAttributes(attrs),
     {
-      class: [
+      className: [
         classes.component,
         attrs.tone === "dark" ? "pe-dark-tone" : null,
         attrs.tone === "light" ? "pe-light-tone" : null,
-        attrs.class
+        attrs.className || attrs[k.class],
       ].join(" "),
     }
   );
-  const content = attrs.content
-    ? attrs.content
-    : attrs.children || vnode.children;
-  return m(element, props, [attrs.before, content, attrs.after]);
 };
 
-export default {
-  theme: customTheme, // accepts (selector, vars)
-  view
+export const createContent = (vnode) => {
+  const attrs = vnode.attrs;
+  return attrs.content
+    ? attrs.content
+    : attrs.children || vnode.children;
 };

@@ -4,9 +4,8 @@ Testing 2 theming methods:
 2. Deriving components
 */
 
-import { renderer, button } from "polythene-mithril";
+import { renderer, button, fab } from "polythene-mithril";
 
-// import fab from "polythene-fab";
 // import icon from "polythene-icon";
 // import iconButton from "polythene-icon-button";
 // import list from "polythene-list";
@@ -41,5 +40,5 @@ const mithrilTests = () => [
 ];
 
 export default []
-  .concat(genericTests({ button/*, fab, icon, iconButton, list, listTile, renderer*/ }))
+  .concat(genericTests({ button, fab/*, icon, iconButton, list, listTile, renderer*/ }))
   .concat(mithrilTests());

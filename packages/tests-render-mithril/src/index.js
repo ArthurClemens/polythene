@@ -142,11 +142,11 @@ const pages = [
   //   name: "Slider",
   //   tests: sliderTests
   // },
-  // {
-  //   path: "/svg",
-  //   name: "SVG",
-  //   tests: svgTests
-  // },
+  {
+    path: "/svg",
+    name: "SVG",
+    tests: tests.svg
+  },
   // {
   //   path: "/switch-button",
   //   name: "Switch button",

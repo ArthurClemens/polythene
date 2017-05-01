@@ -1,5 +1,5 @@
 import m from 'mithril';
-import { button, ripple, shadow } from 'polythene-new-core';
+import { button, ripple, shadow, svg } from 'polythene-new-core';
 
 var keys = {
   class: "class",
@@ -98,4 +98,10 @@ var shadow$1 = statelessComponent(_extends$3({}, shadow));
 
 shadow$1.theme = shadow.theme;
 
-export { button$1 as button, ripple$1 as ripple, shadow$1 as shadow, keys, renderer, statefulComponent, statelessComponent };
+var _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var svg$1 = statelessComponent(_extends$4({}, svg));
+
+svg$1.theme = svg.theme;
+
+export { button$1 as button, ripple$1 as ripple, shadow$1 as shadow, svg$1 as svg, keys, renderer, statefulComponent, statelessComponent };
