@@ -1,5 +1,5 @@
 import m from 'mithril';
-import { button, ripple, shadow, svg } from 'polythene-new-core';
+import { button, icon, ripple, shadow, svg } from 'polythene-new-core';
 
 var keys = {
   class: "class",
@@ -92,16 +92,32 @@ var button$1 = statefulComponent(_extends$1({}, button, {
 
 button$1.theme = button.theme;
 
-var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var shadow$1 = statelessComponent(_extends$3({}, shadow));
-
-shadow$1.theme = shadow.theme;
-
 var _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var svg$1 = statelessComponent(_extends$4({}, svg));
 
 svg$1.theme = svg.theme;
 
-export { button$1 as button, ripple$1 as ripple, shadow$1 as shadow, svg$1 as svg, keys, renderer, statefulComponent, statelessComponent };
+var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var createProps$1 = function createProps(vnode, args) {
+  return icon.createProps(vnode, _extends$3(args, { svg: svg$1 }));
+};
+var createContent$1 = function createContent(vnode, args) {
+  return icon.createContent(vnode, _extends$3(args, { svg: svg$1 }));
+};
+
+var icon$1 = statelessComponent(_extends$3({}, icon, {
+  createProps: createProps$1,
+  createContent: createContent$1
+}));
+
+icon$1.theme = icon.theme;
+
+var _extends$5 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var shadow$1 = statelessComponent(_extends$5({}, shadow));
+
+shadow$1.theme = shadow.theme;
+
+export { button$1 as button, icon$1 as icon, ripple$1 as ripple, shadow$1 as shadow, svg$1 as svg, keys, renderer, statefulComponent, statelessComponent };

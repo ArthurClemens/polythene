@@ -1,8 +1,10 @@
-import m from "mithril";
 import { filterSupportedAttributes } from "polythene-core";
-import { svg } from "polythene-mithril";
 import { customTheme } from "./theme";
 import classes from "./classes";
+
+export const element = "div";
+
+export const theme = customTheme;
 
 const typeClasses = {
   small:   classes.small,
@@ -13,37 +15,34 @@ const typeClasses = {
 
 const classForType = (mode = "regular") => typeClasses[mode];
 
-const view = vnode => {
+export const createProps = (vnode, { keys: k }) => {
   const attrs = vnode.attrs;
-  const element = attrs.element || "div";
-  const props = Object.assign(
+  return Object.assign(
     {},
     filterSupportedAttributes(attrs),
     {
-      class: [
+      className: [
         classes.component,
         classForType(attrs.type),
         attrs.avatar ? classes.avatar : null,
         attrs.tone === "dark" ? "pe-dark-tone" : null,
         attrs.tone === "light" ? "pe-light-tone" : null,
-        attrs.class
+        attrs.className || attrs[k.class],
       ].join(" "),
     },
     attrs.events ? attrs.events : null
   );
-  const content = attrs.content
-    ? attrs.content
-    : attrs.svg
-      ? m(svg, {...attrs.svg})
-      : attrs.msvg
-        ? m(svg, attrs.msvg)
-        : attrs.src
-          ? m("img", {src: attrs.src})
-          : attrs.children || vnode.children;
-  return m(element, props, [attrs.before, content, attrs.after]);
 };
 
-export default {
-  theme: customTheme, // accepts (selector, vars)
-  view
+export const createContent = (vnode, { renderer: h, svg }) => {
+  const attrs = vnode.attrs;
+  return attrs.content
+    ? attrs.content
+    : attrs.svg
+      ? h(svg, attrs.svg)
+      : attrs.msvg
+        ? h(svg, attrs.msvg)
+        : attrs.src
+          ? h("img", { src: attrs.src })
+          : attrs.children || vnode.children;
 };

@@ -76,7 +76,7 @@ export const createContent = (vnode, { renderer: h, keys: k, ripple }) => {
     : attrs.label
       ? typeof attrs.label === "object"
         ? attrs.label
-        : h("div", {key: "label", className: classes.label}, attrs.label)
+        : h("div", { key: "label", className: classes.label }, attrs.label)
       : children
         ? children
         : null;
@@ -99,9 +99,9 @@ export const createContent = (vnode, { renderer: h, keys: k, ripple }) => {
           // target: () => vnode.dom
         }),
       // hover
-      noWash ? null : h("div", {key: "wash", className: classes.wash}),
+      noWash ? null : h("div", { key: "wash", className: classes.wash }),
       // focus
-      disabled ? null : h("div", {key: "focus", className: classes.focus}),
+      disabled ? null : h("div", { key: "focus", className: classes.focus }),
       label
     ])
     : null;

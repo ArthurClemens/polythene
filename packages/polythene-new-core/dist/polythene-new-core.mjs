@@ -313,6 +313,135 @@ var button = {
 };
 
 var classes$1 = {
+  component: "pe-icon",
+
+  // states
+  avatar: "pe-icon--avatar",
+  large: "pe-icon--large",
+  medium: "pe-icon--medium",
+  regular: "pe-icon--regular",
+  small: "pe-icon--small"
+};
+
+var vars$2 = {
+  size_small: vars.unit_icon_size_small,
+  size_regular: vars.unit_icon_size,
+  size_medium: vars.unit_icon_size_medium,
+  size_large: vars.unit_icon_size_large,
+  color_light: "currentcolor",
+  color_dark: "currentcolor"
+};
+
+function _defineProperty$4(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var iconSizesPx = function iconSizesPx() {
+  var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : vars.unit_icon_size;
+  return {
+    width: size + "px",
+    height: size + "px"
+  };
+};
+
+var layout$1 = (function (selector, componentVars) {
+  return [_defineProperty$4({}, selector, {
+    display: "inline-block",
+    verticalAlign: "middle",
+    backgroundRepeat: "no-repeat",
+    position: "relative",
+    fontSize: 0,
+    lineHeight: 0,
+
+    ".pe-icon--avatar img": {
+      border: "none",
+      borderRadius: "50%",
+      width: "inherit",
+      height: "inherit"
+    },
+
+    " img": {
+      height: "inherit"
+    },
+
+    " .pe-svg": {
+      width: "inherit",
+      height: "inherit"
+    },
+
+    ".pe-icon--small": iconSizesPx(componentVars.size_small),
+    ".pe-icon--regular": iconSizesPx(componentVars.size_regular),
+    ".pe-icon--medium": iconSizesPx(componentVars.size_medium),
+    ".pe-icon--large": iconSizesPx(componentVars.size_large)
+  })];
+});
+
+function _defineProperty$5(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var style$1 = function style(scopes, selector, componentVars, tint) {
+  return [_defineProperty$5({}, scopes.map(function (s) {
+    return s + selector;
+  }).join(","), {
+    color: componentVars["color_" + tint] || "currentcolor"
+  })];
+};
+
+var color$1 = (function (selector, componentVars) {
+  return [style$1([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$1(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+});
+
+var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var fns$1 = [layout$1, color$1];
+var selector$1 = "." + classes$1.component;
+
+var customTheme$1 = function customTheme(customSelector, customVars) {
+  return styler.generateStyles([customSelector, selector$1], _extends$3({}, vars$2, customVars), fns$1);
+};
+
+styler.generateStyles([selector$1], vars$2, fns$1);
+
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var element$1 = "div";
+
+var theme$1 = customTheme$1;
+
+var typeClasses = {
+  small: classes$1.small,
+  regular: classes$1.regular,
+  medium: classes$1.medium,
+  large: classes$1.large
+};
+
+var classForType = function classForType() {
+  var mode = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "regular";
+  return typeClasses[mode];
+};
+
+var createProps$1 = function createProps(vnode, _ref) {
+  var k = _ref.keys;
+
+  var attrs = vnode.attrs;
+  return _extends$2({}, filterSupportedAttributes(attrs), {
+    className: [classes$1.component, classForType(attrs.type), attrs.avatar ? classes$1.avatar : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+  }, attrs.events ? attrs.events : null);
+};
+
+var createContent$1 = function createContent(vnode, _ref2) {
+  var h = _ref2.renderer,
+      svg = _ref2.svg;
+
+  var attrs = vnode.attrs;
+  return attrs.content ? attrs.content : attrs.svg ? h(svg, attrs.svg) : attrs.msvg ? h(svg, attrs.msvg) : attrs.src ? h("img", { src: attrs.src }) : attrs.children || vnode.children;
+};
+
+var icon = {
+  createProps: createProps$1, createContent: createContent$1, theme: theme$1, element: element$1,
+  classes: classes$1,
+  vars: vars$2
+};
+
+var classes$2 = {
   component: "pe-ripple",
 
   // elements
@@ -324,16 +453,16 @@ var classes$1 = {
   wavesAnimating: "pe-ripple__waves--animating"
 };
 
-var vars$2 = {
+var vars$3 = {
   color: "inherit" // only specify this variable to get both states
   // color_light:   "inherit",
   // color_dark:    "inherit"
 };
 
-function _defineProperty$4(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$6(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var layout$1 = (function (selector) {
-  return [_defineProperty$4({}, selector, [mixin.fit(), {
+var layout$2 = (function (selector) {
+  return [_defineProperty$6({}, selector, [mixin.fit(), {
     color: "inherit",
     borderRadius: "inherit",
     pointerEvents: "none",
@@ -363,33 +492,33 @@ var layout$1 = (function (selector) {
   }])];
 });
 
-function _defineProperty$5(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$7(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$1 = function style(scopes, selector, componentVars, tint) {
-  return [_defineProperty$5({}, scopes.map(function (s) {
+var style$2 = function style(scopes, selector, componentVars, tint) {
+  return [_defineProperty$7({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
     color: componentVars["color_" + tint] || componentVars["color"] || "inherit"
   })];
 };
 
-var color$1 = (function (selector, componentVars) {
-  return [style$1([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  style$1(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+var color$2 = (function (selector, componentVars) {
+  return [style$2([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$2(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 });
 
-var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$5 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var fns$1 = [layout$1, color$1];
-var selector$1 = "." + classes$1.component;
+var fns$2 = [layout$2, color$2];
+var selector$2 = "." + classes$2.component;
 
-var customTheme$1 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$1], _extends$3({}, vars$2, customVars), fns$1);
+var customTheme$2 = function customTheme(customSelector, customVars) {
+  return styler.generateStyles([customSelector, selector$2], _extends$5({}, vars$3, customVars), fns$2);
 };
 
-styler.generateStyles([selector$1], vars$2, fns$1);
+styler.generateStyles([selector$2], vars$3, fns$2);
 
-function _defineProperty$6(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$8(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var ANIMATION_END_EVENT = animationEndEvent();
 var DEFAULT_START_OPACITY = 0.2;
@@ -427,7 +556,7 @@ var animation = (function (e, el, wavesEl, attrs, classes, onEndCallback) {
   style.animationName = animationId;
   style.animationTimingFunction = attrs.animationTimingFunction || vars.animation_curve_default;
 
-  var keyframeStyle = [_defineProperty$6({}, "@keyframes " + animationId, {
+  var keyframeStyle = [_defineProperty$8({}, "@keyframes " + animationId, {
     " 0%": {
       transform: "scale(" + startScale + ")",
       "opacity": startOpacity
@@ -460,18 +589,18 @@ var animation = (function (e, el, wavesEl, attrs, classes, onEndCallback) {
   wavesEl.classList.add(classes.wavesAnimating);
 });
 
-var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var element$1 = "div";
+var element$2 = "div";
 
-var theme$1 = customTheme$1;
+var theme$2 = customTheme$2;
 
-var createProps$1 = function createProps(vnode, _ref) {
+var createProps$2 = function createProps(vnode, _ref) {
   var k = _ref.keys;
 
   var attrs = vnode.attrs;
-  return _extends$2({}, filterSupportedAttributes(attrs), {
-    className: [classes$1.component, attrs.constrained !== false ? classes$1.constrained : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+  return _extends$4({}, filterSupportedAttributes(attrs), {
+    className: [classes$2.component, attrs.constrained !== false ? classes$2.constrained : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
 
@@ -482,13 +611,13 @@ var onMount = function onMount(vnode) {
     return;
   }
   var rippleEl = vnode.dom;
-  var wavesEl = vnode.dom.querySelector("." + classes$1.waves);
+  var wavesEl = vnode.dom.querySelector("." + classes$2.waves);
 
   var tap = function tap(e) {
     if (state.animating || attrs.disabled) {
       return;
     }
-    animation(e, rippleEl, wavesEl, attrs, classes$1, function () {
+    animation(e, rippleEl, wavesEl, attrs, classes$2, function () {
       return state.animating = false;
     });
     state.animating = true;
@@ -506,23 +635,23 @@ var onUnmount = function onUnmount(_ref2) {
   state.removeEventListeners();
 };
 
-var createContent$1 = function createContent(vnode, _ref3) {
+var createContent$2 = function createContent(vnode, _ref3) {
   var h = _ref3.renderer;
 
   var attrs = vnode.attrs;
   if (attrs.disabled) {
     return null;
   }
-  return h("div", { className: classes$1.mask }, h("div", { className: classes$1.waves }));
+  return h("div", { className: classes$2.mask }, h("div", { className: classes$2.waves }));
 };
 
 var ripple = {
-  createProps: createProps$1, createContent: createContent$1, onMount: onMount, onUnmount: onUnmount, theme: theme$1, element: element$1,
-  classes: classes$1,
-  vars: vars$2
+  createProps: createProps$2, createContent: createContent$2, onMount: onMount, onUnmount: onUnmount, theme: theme$2, element: element$2,
+  classes: classes$2,
+  vars: vars$3
 };
 
-var classes$2 = {
+var classes$3 = {
   component: "pe-shadow",
 
   // elements
@@ -534,7 +663,7 @@ var classes$2 = {
   depth_n: "pe-shadow--z-"
 };
 
-var vars$3 = {
+var vars$4 = {
   transition: "box-shadow " + vars.animation_duration + " ease-out",
 
   "shadow-top-z-1": "initial",
@@ -556,7 +685,7 @@ var vars$3 = {
   "shadow-down-z-2": "inset 0px 4px 6px -3px rgba(0, 0, 0, 0.25)"
 };
 
-function _defineProperty$7(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$9(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var shadowDirective = function shadowDirective(dir) {
   return {
@@ -564,8 +693,8 @@ var shadowDirective = function shadowDirective(dir) {
   };
 };
 
-var layout$2 = (function (selector, componentVars) {
-  return [_defineProperty$7({}, selector, [mixin.fit(), {
+var layout$3 = (function (selector, componentVars) {
+  return [_defineProperty$9({}, selector, [mixin.fit(), {
     borderRadius: "inherit",
     pointerEvents: "none",
 
@@ -581,107 +710,13 @@ var layout$2 = (function (selector, componentVars) {
   }, [1, 2, 3, 4, 5].map(function (index) {
     var _ref;
 
-    return _ref = {}, _defineProperty$7(_ref, " .pe-shadow__top.pe-shadow--z-" + index, shadowDirective(componentVars["shadow-top-z-" + index])), _defineProperty$7(_ref, " .pe-shadow__bottom.pe-shadow--z-" + index, shadowDirective(componentVars["shadow-bottom-z-" + index])), _ref;
+    return _ref = {}, _defineProperty$9(_ref, " .pe-shadow__top.pe-shadow--z-" + index, shadowDirective(componentVars["shadow-top-z-" + index])), _defineProperty$9(_ref, " .pe-shadow__bottom.pe-shadow--z-" + index, shadowDirective(componentVars["shadow-bottom-z-" + index])), _ref;
   })])];
-});
-
-var _extends$5 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var fns$2 = [layout$2];
-var selector$2 = "." + classes$2.component;
-
-var customTheme$2 = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector$2], _extends$5({}, vars$3, customVars), fns$2);
-};
-
-styler.generateStyles([selector$2], vars$3, fns$2);
-
-var _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var element$2 = "div";
-
-var theme$2 = customTheme$2;
-
-var createProps$2 = function createProps(vnode, _ref) {
-  var k = _ref.keys;
-
-  var attrs = vnode.attrs;
-  return _extends$4({}, filterSupportedAttributes(attrs), {
-    className: [classes$2.component, attrs.animated && classes$2.animated, attrs.className || attrs[k.class]].join(" ")
-  });
-};
-
-var createContent$2 = function createContent(vnode, _ref2) {
-  var h = _ref2.renderer;
-
-  var attrs = vnode.attrs;
-  var content = attrs.content ? attrs.content : attrs.children || vnode.children;
-  var depthClass = "" + classes$2.depth_n + Math.min(5, attrs.z !== undefined ? attrs.z : 1);
-  return [content, h("div", {
-    key: "bottom",
-    className: [classes$2.bottomShadow, depthClass].join(" ")
-  }), h("div", {
-    key: "top",
-    className: [classes$2.topShadow, depthClass].join(" ")
-  })];
-};
-
-var shadow = {
-  createProps: createProps$2, createContent: createContent$2, theme: theme$2, element: element$2,
-  classes: classes$2,
-  vars: vars$3
-};
-
-var classes$3 = {
-  component: "pe-svg"
-};
-
-var vars$4 = {
-  color_light: "currentcolor",
-  color_dark: "currentcolor"
-};
-
-function _defineProperty$8(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var layout$3 = (function (selector) {
-  return [_defineProperty$8({}, selector, {
-    lineHeight: 1,
-
-    " svg": {
-      width: "inherit",
-      height: "inherit"
-    }
-  })];
-});
-
-function _defineProperty$9(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var style$2 = function style(scopes, selector, componentVars, tint) {
-  return [_defineProperty$9({}, scopes.map(function (s) {
-    return s + selector;
-  }).join(","), {
-    color: "inherit",
-
-    " svg": {
-      color: "inherit",
-
-      " path, rect, circle, polygon": {
-        "&:not([fill=none])": {
-          fill: componentVars["color_" + tint] || "currentcolor"
-        }
-      }
-    }
-  })];
-};
-
-var color$2 = (function (selector, componentVars) {
-  return [style$2([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
-  style$2(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 });
 
 var _extends$7 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var fns$3 = [layout$3, color$2];
+var fns$3 = [layout$3];
 var selector$3 = "." + classes$3.component;
 
 var customTheme$3 = function customTheme(customSelector, customVars) {
@@ -701,19 +736,113 @@ var createProps$3 = function createProps(vnode, _ref) {
 
   var attrs = vnode.attrs;
   return _extends$6({}, filterSupportedAttributes(attrs), {
-    className: [classes$3.component, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [classes$3.component, attrs.animated && classes$3.animated, attrs.className || attrs[k.class]].join(" ")
   });
 };
 
-var createContent$3 = function createContent(vnode) {
+var createContent$3 = function createContent(vnode, _ref2) {
+  var h = _ref2.renderer;
+
   var attrs = vnode.attrs;
-  return attrs.content ? attrs.content : attrs.children || vnode.children;
+  var content = attrs.content ? attrs.content : attrs.children || vnode.children;
+  var depthClass = "" + classes$3.depth_n + Math.min(5, attrs.z !== undefined ? attrs.z : 1);
+  return [content, h("div", {
+    key: "bottom",
+    className: [classes$3.bottomShadow, depthClass].join(" ")
+  }), h("div", {
+    key: "top",
+    className: [classes$3.topShadow, depthClass].join(" ")
+  })];
 };
 
-var svg = {
+var shadow = {
   createProps: createProps$3, createContent: createContent$3, theme: theme$3, element: element$3,
   classes: classes$3,
   vars: vars$4
 };
 
-export { button, ripple, shadow, svg };
+var classes$4 = {
+  component: "pe-svg"
+};
+
+var vars$5 = {
+  color_light: "currentcolor",
+  color_dark: "currentcolor"
+};
+
+function _defineProperty$10(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var layout$4 = (function (selector) {
+  return [_defineProperty$10({}, selector, {
+    lineHeight: 1,
+
+    " svg": {
+      width: "inherit",
+      height: "inherit"
+    }
+  })];
+});
+
+function _defineProperty$11(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var style$3 = function style(scopes, selector, componentVars, tint) {
+  return [_defineProperty$11({}, scopes.map(function (s) {
+    return s + selector;
+  }).join(","), {
+    color: "inherit",
+
+    " svg": {
+      color: "inherit",
+
+      " path, rect, circle, polygon": {
+        "&:not([fill=none])": {
+          fill: componentVars["color_" + tint] || "currentcolor"
+        }
+      }
+    }
+  })];
+};
+
+var color$3 = (function (selector, componentVars) {
+  return [style$3([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  style$3(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+});
+
+var _extends$9 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var fns$4 = [layout$4, color$3];
+var selector$4 = "." + classes$4.component;
+
+var customTheme$4 = function customTheme(customSelector, customVars) {
+  return styler.generateStyles([customSelector, selector$4], _extends$9({}, vars$5, customVars), fns$4);
+};
+
+styler.generateStyles([selector$4], vars$5, fns$4);
+
+var _extends$8 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var element$4 = "div";
+
+var theme$4 = customTheme$4;
+
+var createProps$4 = function createProps(vnode, _ref) {
+  var k = _ref.keys;
+
+  var attrs = vnode.attrs;
+  return _extends$8({}, filterSupportedAttributes(attrs), {
+    className: [classes$4.component, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+  });
+};
+
+var createContent$4 = function createContent(vnode) {
+  var attrs = vnode.attrs;
+  return attrs.content ? attrs.content : attrs.children || vnode.children;
+};
+
+var svg = {
+  createProps: createProps$4, createContent: createContent$4, theme: theme$4, element: element$4,
+  classes: classes$4,
+  vars: vars$5
+};
+
+export { button, icon, ripple, shadow, svg };

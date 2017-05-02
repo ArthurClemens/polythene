@@ -73,6 +73,7 @@ ReactDOM.render(
   //Page({name: "Ripple", tests: reactTests.ripple, previous: null}),
   // Page({name: "Theme", tests: reactTests.theme, previous: null}),
   //Page({name: "Shadow", tests: reactTests.shadow, previous: null}),
-  Page({name: "SVG", tests: reactTests.svg, previous: null}),
+  // Page({name: "SVG", tests: reactTests.svg, previous: null}),
+  Page({name: "Icon", tests: reactTests.icon, previous: null}),
   document.getElementById("root")
 );

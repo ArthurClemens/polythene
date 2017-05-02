@@ -7,34 +7,6 @@ import list from "polythene-list";
 import listTile from "polythene-list-tile";
 import toolbar from "polythene-toolbar";
 import { mithrilTests as tests } from "polythene-tests";
-// import { tests as cardTests } from "../tests/card/tests";
-// import { tests as checkboxTests } from "../tests/checkbox/tests";
-// import { tests as dialogTests } from "../tests/dialog/tests";
-// import { tests as fabTests } from "../tests/fab/tests";
-// import { tests as iconTests } from "../tests/icon/tests";
-// import { tests as iconButtonTests } from "../tests/icon-button/tests";
-// import { tests as iOSSpinnerTests } from "../tests/ios-spinner/tests";
-// import { tests as listTests } from "../tests/list/tests";
-// import { tests as listTileTests } from "../tests/list-tile/tests";
-// import { tests as mdSpinnerTests } from "../tests/md-spinner/tests";
-// import { tests as mdEndSpinnerTests } from "../tests/md-progress-spinner/tests";
-// import { tests as menuTests } from "../tests/menu/tests";
-// import { tests as notificationTests } from "../tests/notification/tests";
-// import { tests as radioButtonTests } from "../tests/radio-button/tests";
-// import { tests as raisedButtonTests } from "../tests/raised-button/tests";
-// import { tests as rippleTests } from "../tests/ripple/tests";
-// import { tests as searchTests } from "../tests/search/tests";
-// import { tests as shadowTests } from "../tests/shadow/tests";
-// import { tests as sliderTests } from "../tests/slider/tests";
-// import { tests as snackbarTests } from "../tests/snackbar/tests";
-// import { tests as svgTests } from "../tests/svg/tests";
-// import { tests as switchButtonTests } from "../tests/switch-button/tests";
-// import { tests as tabsTests } from "../tests/tabs/tests";
-// import { tests as textfieldTests } from "../tests/textfield/tests";
-// import { tests as toolbarTests } from "../tests/toolbar/tests";
-// import { tests as cssTests } from "../tests/css/tests";
-// import { tests as cssClassesTests } from "../tests/css-classes/tests";
-// import { tests as themeTests } from "../tests/theme/tests";
 
 const pages = [
   {
@@ -67,11 +39,11 @@ const pages = [
   //   name: "FAB",
   //   tests: fabTests
   // },
-  // {
-  //   path: "/icon",
-  //   name: "Icon",
-  //   tests: iconTests
-  // },
+  {
+    path: "/icon",
+    name: "Icon",
+    tests: tests.icon
+  },
   // {
   //   path: "/icon-button",
   //   name: "Icon Button",

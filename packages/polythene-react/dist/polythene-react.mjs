@@ -1,6 +1,6 @@
 import h from 'react-hyperscript';
 import { Component } from 'react';
-import { button, ripple, shadow, svg } from 'polythene-new-core';
+import { button, icon, ripple, shadow, svg } from 'polythene-new-core';
 
 var keys = {
   class: "className",
@@ -181,13 +181,6 @@ var button$1 = statefulComponent({
 button$1.theme = button.theme;
 button$1.displayName = "button";
 
-var _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var shadow$1 = statelessComponent(_extends$4({}, shadow));
-
-shadow$1.theme = shadow.theme;
-shadow$1.displayName = "shadow";
-
 var _extends$5 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var svg$1 = statelessComponent(_extends$5({}, svg));
@@ -195,4 +188,29 @@ var svg$1 = statelessComponent(_extends$5({}, svg));
 svg$1.theme = svg.theme;
 svg$1.displayName = "svg";
 
-export { button$1 as button, ripple$1 as ripple, shadow$1 as shadow, svg$1 as svg, keys, renderer, statefulComponent, statelessComponent };
+var _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var createProps$1 = function createProps(vnode, args) {
+  return icon.createProps(vnode, _extends$4(args, { svg: svg$1 }));
+};
+var createContent$1 = function createContent(vnode, args) {
+  return icon.createContent(vnode, _extends$4(args, { svg: svg$1 }));
+};
+
+var icon$1 = statefulComponent({
+  createProps: createProps$1,
+  createContent: createContent$1,
+  element: icon.element
+});
+
+icon$1.theme = icon.theme;
+icon$1.displayName = "icon";
+
+var _extends$6 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var shadow$1 = statelessComponent(_extends$6({}, shadow));
+
+shadow$1.theme = shadow.theme;
+shadow$1.displayName = "shadow";
+
+export { button$1 as button, icon$1 as icon, ripple$1 as ripple, shadow$1 as shadow, svg$1 as svg, keys, renderer, statefulComponent, statelessComponent };
