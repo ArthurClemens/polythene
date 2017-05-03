@@ -8,7 +8,7 @@
 ## Styler
 
 ~~~javascript
-import { styler } from "polythene-css";
+import { styler } from "polythene-core-css";
 
 const styles = [
   {
@@ -33,7 +33,7 @@ styler.add("app", styles);
 ## Mixins
 
 ~~~javascript
-import { mixin } from "polythene-css";
+import { mixin } from "polythene-core-css";
 
 const styles = [{
   ".title": [
@@ -58,7 +58,7 @@ const styles = [{
 ## Flexbox mixins
 
 ~~~javascript
-import { flex } from "polythene-css";
+import { flex } from "polythene-core-css";
 
 const styles = [{
   ".horizontal-blocks": [

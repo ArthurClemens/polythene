@@ -443,7 +443,7 @@ Note that the container has `position: relative`. The messages will have `positi
 
 Notification is composed from:
 
-* [Multiple](../polythene-core)
+* [Multiple](../polythene-core-essentials)
 
 
 

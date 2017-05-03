@@ -1,6 +1,6 @@
 import m from 'mithril';
 import { color, controlView, layout, selectionControl, vars } from 'polythene-selection-control';
-import { styler } from 'polythene-css';
+import { styler } from 'polythene-core-css';
 
 var classes = {
   component: "pe-radio-control"

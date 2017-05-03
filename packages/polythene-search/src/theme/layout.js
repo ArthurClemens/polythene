@@ -1,4 +1,4 @@
-import { flex } from "polythene-css";
+import { flex } from "polythene-core-css";
 import { vars } from "polythene-theme";
 
 export default (selector, componentVars) => {

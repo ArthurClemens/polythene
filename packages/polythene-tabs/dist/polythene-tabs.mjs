@@ -1,11 +1,10 @@
 import m from 'mithril';
-import { button, filterSupportedAttributes, isTouch, subscribe, unsubscribe } from 'polythene-core';
+import { button, filterSupportedAttributes, isTouch, subscribe, unsubscribe } from 'polythene-core-essentials';
 import { scrollTo } from 'polythene-utilities';
-import { flex, mixin, styler } from 'polythene-css';
+import { flex, mixin, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 import iconButton, { vars as vars$1 } from 'polythene-icon-button';
-import { button as button$1 } from 'polythene-mithril';
-import icon from 'polythene-icon';
+import { button as button$1, icon } from 'polythene-mithril';
 
 var classes = {
   component: "pe-tabs",

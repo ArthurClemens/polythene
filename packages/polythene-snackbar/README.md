@@ -442,7 +442,7 @@ Note that the container has `position: relative`. The messages will have `positi
 
 Snackbar is composed from:
 
-* [Multiple](../polythene-core)
+* [Multiple](../polythene-core-essentials)
 * [Notification](../polythene-notification)
 
 

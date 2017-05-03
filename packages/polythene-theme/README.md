@@ -98,7 +98,7 @@ export default {
 };
 ~~~
 
-"Global" variables such as `unit_icon_size_small` are imported from `polythene-theme`, which imports the base values from `polythene-core/src/variables.js`. To override these base variables, see "Theme file" on this page.
+"Global" variables such as `unit_icon_size_small` are imported from `polythene-theme`, which imports the base values from `polythene-core-essentials/src/variables.js`. To override these base variables, see "Theme file" on this page.
 
 
 ### Styling components with variables 
@@ -269,12 +269,12 @@ Polythene uses [j2c](http://j2c.py.gy) to write styles directly to the head of t
 }]
 ~~~
 
-Package `polythene-css` contains `styler` that takes the list of style objects to create the CSS.
+Package `polythene-core-css` contains `styler` that takes the list of style objects to create the CSS.
 
 For example:
 
 ~~~javascript
-import { styler } from "polythene-css";
+import { styler } from "polythene-core-css";
 
 const buttonStyles = [
   {
@@ -335,7 +335,7 @@ So simply writing `.secondary-button {...}` won't work - we need to include base
 // secondary-button.js
 import m from "mithril";
 import button from "polythene-mithril-button";
-import { styler } from "polythene-css";
+import { styler } from "polythene-core-css";
 
 const styles = [{
   ".pe-button.secondary-button .pe-button__content": {
@@ -369,11 +369,11 @@ Use this method to set global theme variables, such as the primary action color.
 
 ### Setting the global primary color
 
-The variables module `polythene-core/src/variables.js` contains `color_primary`. We change it with:
+The variables module `polythene-core-essentials/src/variables.js` contains `color_primary`. We change it with:
 
 ~~~javascript
 // custom-theme.js
-import { defaultVariables } from "polythene-core";
+import { defaultVariables } from "polythene-core-essentials";
 
 export const vars = {
   ...defaultVariables

@@ -1,9 +1,9 @@
 import m from 'mithril';
-import { filterSupportedAttributes } from 'polythene-core';
-import icon from 'polythene-icon';
+import { filterSupportedAttributes } from 'polythene-core-essentials';
+import { icon } from 'polythene-mithril';
 import iconButton from 'polythene-icon-button';
 import { vars } from 'polythene-theme';
-import { flex, mixin } from 'polythene-css';
+import { flex, mixin } from 'polythene-core-css';
 
 var classes = {
   component: "pe-control",

@@ -1,5 +1,5 @@
 import { vars } from "polythene-theme";
-import { mixin } from "polythene-css";
+import { mixin } from "polythene-core-css";
 
 const unifySize = (componentVars, size) =>
   size < componentVars.min_size ? componentVars.min_size : size;

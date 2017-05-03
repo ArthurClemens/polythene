@@ -18,7 +18,6 @@
   "dependencies": {
     "mithril": "1.1.0",
     "mmsvg": "^1.5.3",
-    "polythene-icon": "1.0.0-rc.1",
     "polythene-icon-button": "1.0.0-rc.1",
     "polythene-list": "1.0.0-rc.1",
     "polythene-list-tile": "1.0.0-rc.1",

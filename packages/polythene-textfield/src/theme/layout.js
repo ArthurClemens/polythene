@@ -1,5 +1,5 @@
 import { vars } from "polythene-theme";
-import { mixin } from "polythene-css";
+import { mixin } from "polythene-core-css";
 
 export default (selector, componentVars) => [{
   [selector]: [

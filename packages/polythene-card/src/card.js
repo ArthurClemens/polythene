@@ -1,8 +1,8 @@
 import m from "mithril";
-import icon from "polythene-icon";
+import { icon } from "polythene-mithril";
 import shadow from "polythene-shadow";
 import listTile from "polythene-list-tile";
-import { filterSupportedAttributes } from "polythene-core";
+import { filterSupportedAttributes } from "polythene-core-essentials";
 import { customTheme } from "./theme";
 import classes from "./classes";
 

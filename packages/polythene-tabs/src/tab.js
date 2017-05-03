@@ -1,6 +1,5 @@
 import m from "mithril";
-import { button } from "polythene-mithril";
-import icon from "polythene-icon";
+import { icon, button } from "polythene-mithril";
 import classes from "./classes";
 
 const view = vnode => {

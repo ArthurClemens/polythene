@@ -1,1 +1,6 @@
-export * from "./src";
+export * from "polythene-mithril-base";
+export * from "polythene-mithril-button";
+export * from "polythene-mithril-icon";
+export * from "polythene-mithril-ripple";
+export * from "polythene-mithril-shadow";
+export * from "polythene-mithril-svg";

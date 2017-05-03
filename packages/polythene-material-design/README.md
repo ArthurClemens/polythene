@@ -19,10 +19,10 @@ html.wf-active body {
 }
 ~~~
 
-Or with JavaScript using [styler](../polythene-css):
+Or with JavaScript using [styler](../polythene-core-css):
 
 ~~~javascript
-import { styler } from "polythene-css";
+import { styler } from "polythene-core-css";
 
 const foutStyles = [{
   "body": {

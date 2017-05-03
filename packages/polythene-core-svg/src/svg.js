@@ -1,0 +1,30 @@
+import { filterSupportedAttributes } from "polythene-core-essentials";
+import { customTheme } from "./theme";
+import classes from "./classes";
+
+export const element = "div";
+
+export const theme = customTheme;
+
+export const createProps = (vnode, { keys: k }) => {
+  const attrs = vnode.attrs;
+  return Object.assign(
+    {},
+    filterSupportedAttributes(attrs),
+    {
+      className: [
+        classes.component,
+        attrs.tone === "dark" ? "pe-dark-tone" : null,
+        attrs.tone === "light" ? "pe-light-tone" : null,
+        attrs.className || attrs[k.class],
+      ].join(" "),
+    }
+  );
+};
+
+export const createContent = (vnode) => {
+  const attrs = vnode.attrs;
+  return attrs.content
+    ? attrs.content
+    : attrs.children || vnode.children;
+};

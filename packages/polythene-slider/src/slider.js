@@ -1,6 +1,6 @@
 import m from "mithril";
-import { isTouch, moveEvent, endEvent } from "polythene-core";
-import { filterSupportedAttributes } from "polythene-core";
+import { isTouch, moveEvent, endEvent } from "polythene-core-essentials";
+import { filterSupportedAttributes } from "polythene-core-essentials";
 import { customTheme } from "./theme";
 import themeVars from "./theme/vars";
 import classes from "./classes";

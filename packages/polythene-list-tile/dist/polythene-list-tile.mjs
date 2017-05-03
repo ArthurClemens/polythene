@@ -1,8 +1,7 @@
 import m from 'mithril';
-import icon from 'polythene-icon';
-import { ripple } from 'polythene-mithril';
-import { filterSupportedAttributes } from 'polythene-core';
-import { flex, mixin, styler } from 'polythene-css';
+import { icon, ripple } from 'polythene-mithril';
+import { filterSupportedAttributes } from 'polythene-core-essentials';
+import { flex, mixin, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 
 var classes = {

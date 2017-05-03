@@ -1,6 +1,6 @@
 // Returns a style function to be used by checkbox and radio-button
 
-import { mixin, flex } from "polythene-css";
+import { mixin, flex } from "polythene-core-css";
 import { vars } from "polythene-theme";
 
 const makeSize = (componentVars, height, iconSize = vars.unit_icon_size) => {

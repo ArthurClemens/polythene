@@ -1,5 +1,5 @@
 import { vars } from "polythene-theme";
-import { mixin, flex } from "polythene-css";
+import { mixin, flex } from "polythene-core-css";
 
 const lineHeightTitle = 24;
 

@@ -1,4 +1,4 @@
-import { defaultVariables } from 'polythene-core';
+import { defaultVariables } from 'polythene-core-essentials';
 
 // Find the complete info in the README!
 

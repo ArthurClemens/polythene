@@ -1,6 +1,6 @@
 import m from 'mithril';
-import { filterSupportedAttributes, prop, touchStartEvent } from 'polythene-core';
-import { mixin, styler } from 'polythene-css';
+import { filterSupportedAttributes, prop, touchStartEvent } from 'polythene-core-essentials';
+import { mixin, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 
 var classes = {

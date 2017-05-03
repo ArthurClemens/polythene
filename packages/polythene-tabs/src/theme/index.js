@@ -1,4 +1,4 @@
-import { styler } from "polythene-css";
+import { styler } from "polythene-core-css";
 import classes from "../classes";
 import vars from "./vars";
 import layout from "./layout";

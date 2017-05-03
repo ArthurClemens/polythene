@@ -1,6 +1,6 @@
-import { multiple } from 'polythene-core';
+import { multiple } from 'polythene-core-essentials';
 import { classes, instance, vars } from 'polythene-notification';
-import { flex, styler } from 'polythene-css';
+import { flex, styler } from 'polythene-core-css';
 import { vars as vars$1 } from 'polythene-theme';
 
 var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };

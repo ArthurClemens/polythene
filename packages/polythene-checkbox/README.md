@@ -106,7 +106,7 @@ If the component - or a component's parent - has option `tone` set to "dark", th
 
 ### Icons
 
-To use alternative icons, use options `iconOn` and `iconOff` (see also "msvg" at [icon](../polythene-icon)):
+To use alternative icons, use options `iconOn` and `iconOff` (see also "msvg" at [icon](../polythene-core-icon)):
 
 ~~~javascript
 import iconStar from "mmsvg/google/msvg/toggle/star";
@@ -149,10 +149,10 @@ m(checkbox, {
 
 | **Parameter**  |  **Mandatory** | **Type** | **Default** | **Description** |
 | -------------- | -------------- | -------- | ----------- | --------------- |
-| **iconOn**     | optional | Options object for [icon](../polythene-icon) | | Assigns a different icon for the on state |
-| **iconOff**    | optional | Options object for [icon](../polythene-icon) | | Assigns a different icon for the off state |
+| **iconOn**     | optional | Options object for [icon](../polythene-core-icon) | | Assigns a different icon for the on state |
+| **iconOff**    | optional | Options object for [icon](../polythene-core-icon) | | Assigns a different icon for the off state |
 | **iconButton** | optional | Options object for the icon button | | Add attributes like `wash` and `ink` |
-| **size**       | optional | String | "regular" | Equivalent to [icon's type](../polythene-icon) option; either "small" (16px), "regular" (24px), "medium" (32px), "large" (40px) |
+| **size**       | optional | String | "regular" | Equivalent to [icon's type](../polythene-core-icon) option; either "small" (16px), "regular" (24px), "medium" (32px), "large" (40px) |
 
 ### Dynamic values
 
@@ -169,7 +169,7 @@ Checkbox is composed from:
 
 * [Selection control](../polythene-selection-control)
   * [Icon button](../polythene-icon-button)
-  * [Icon](../polythene-icon)
+  * [Icon](../polythene-core-icon)
 
 
 

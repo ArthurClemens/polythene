@@ -1,0 +1,22 @@
+{
+  "name": "polythene-mithril-ripple",
+  "version": "1.0.0-rc.1",
+  "description": "",
+  "main": "dist/polythene-mithril-ripple.js",
+  "module": "dist/polythene-mithril-ripple.mjs",
+  "scripts": {
+    "clean": "rm -rf dist && mkdir dist",
+    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
+    "build": "npm run rollup"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "dependencies": {
+    "polythene-core-ripple": "1.0.0-rc.1",
+    "polythene-mithril-base": "1.0.0-rc.1"
+  },
+  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
+  "license": "MIT"
+}

@@ -1,6 +1,6 @@
 # Icon Button
 
-Displays an [icon](../polythene-icon) as a button. Also called toggle button.
+Displays an [icon](../polythene-core-icon) as a button. Also called toggle button.
 
 
 

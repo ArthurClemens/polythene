@@ -1,7 +1,7 @@
 import m from 'mithril';
 import textfield from 'polythene-textfield';
-import { filterSupportedAttributes } from 'polythene-core';
-import { flex, styler } from 'polythene-css';
+import { filterSupportedAttributes } from 'polythene-core-essentials';
+import { flex, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 
 var classes = {

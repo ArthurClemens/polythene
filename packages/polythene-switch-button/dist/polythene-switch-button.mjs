@@ -2,7 +2,7 @@ import m from 'mithril';
 import { layout, selectionControl, vars } from 'polythene-selection-control';
 import { shadow } from 'polythene-mithril';
 import iconButton, { vars as vars$1 } from 'polythene-icon-button';
-import { mixin, styler } from 'polythene-css';
+import { mixin, styler } from 'polythene-core-css';
 import { vars as vars$2 } from 'polythene-theme';
 
 var classes = {

@@ -1,0 +1,21 @@
+{
+  "name": "polythene-core-essentials",
+  "version": "1.0.0-rc.1",
+  "description": "",
+  "main": "dist/polythene-core-essentials.js",
+  "module": "dist/polythene-core-essentials.mjs",
+  "scripts": {
+    "clean": "rm -rf dist && mkdir dist",
+    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
+    "build": "npm run rollup"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "dependencies": {
+    "mithril": "1.1.0"
+  },
+  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
+  "license": "MIT"
+}

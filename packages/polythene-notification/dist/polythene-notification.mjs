@@ -1,6 +1,6 @@
-import { filterSupportedAttributes, hide, multiple, show } from 'polythene-core';
+import { filterSupportedAttributes, hide, multiple, show } from 'polythene-core-essentials';
 import m from 'mithril';
-import { flex, styler } from 'polythene-css';
+import { flex, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 import { Timer } from 'polythene-utilities';
 

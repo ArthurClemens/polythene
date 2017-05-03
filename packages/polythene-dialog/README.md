@@ -382,7 +382,7 @@ const fullscreenPane = {
 
 Dialog is composed from:
 
-* [Multiple](../polythene-core)
+* [Multiple](../polythene-core-essentials)
 * [Shadow](../polythene-shadow)
 
 

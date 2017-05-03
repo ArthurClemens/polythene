@@ -1,6 +1,6 @@
 import m from 'mithril';
 import spinner from 'polythene-spinner';
-import { styler } from 'polythene-css';
+import { styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 
 var classes = {

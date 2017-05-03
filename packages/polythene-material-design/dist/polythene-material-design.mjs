@@ -1,4 +1,4 @@
-import { styler } from 'polythene-css';
+import { styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 import Webfont from 'webfontloader';
 

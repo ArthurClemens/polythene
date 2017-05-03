@@ -1,7 +1,6 @@
 import m from 'mithril';
-import icon from 'polythene-icon';
-import { button } from 'polythene-mithril';
-import { styler } from 'polythene-css';
+import { button, icon } from 'polythene-mithril';
+import { styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 
 var classes = {

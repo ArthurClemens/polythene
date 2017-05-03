@@ -1,4 +1,4 @@
-import { styler } from "polythene-css";
+import { styler } from "polythene-core-css";
 import typography from "./typography";
 import reset from "./reset";
 import roboto from "./font-roboto";

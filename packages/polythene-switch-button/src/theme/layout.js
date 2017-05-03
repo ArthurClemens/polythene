@@ -1,6 +1,6 @@
 import { layout as selectionControlLayout } from "polythene-selection-control";
 import { vars } from "polythene-theme";
-import { mixin } from "polythene-css";
+import { mixin } from "polythene-core-css";
 
 const transition = (componentVars, properties, duration = componentVars.animation_duration) => [
   mixin.defaultTransition(properties, duration, "ease-out")

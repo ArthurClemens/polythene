@@ -1,7 +1,7 @@
 import m from 'mithril';
 import listTile from 'polythene-list-tile';
-import { filterSupportedAttributes } from 'polythene-core';
-import { styler } from 'polythene-css';
+import { filterSupportedAttributes } from 'polythene-core-essentials';
+import { styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 
 var classes = {
