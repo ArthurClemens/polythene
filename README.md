@@ -27,6 +27,8 @@ Polythene is now a monorepo. Components are located inside the "packages" direct
 This will call `lerna init` and `lerna bootstrap`.
 
 * `lerna run build` - builds all components (in each dist directory)
+* `lerna run build:component button` - builds the button component; the same goes for the other components
+* `lerna run build:tests` - builds the tests
 * `lerna run clean` - removes all dist directories
 
 Packages are built with [Rollup](http://rollupjs.org), both as `es` module and as `umd`. Rollup creates smaller files compared to Webpack 2. If you like to experiment, build scripts are in the root `scripts` directory.

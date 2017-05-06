@@ -84,73 +84,55 @@ var color = (function (selector, componentVars) {
   style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var fns = [layout, color];
 var selector = "." + classes.component;
 
 var customTheme = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends({}, vars$1, customVars), fns);
+  return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
 };
 
 styler.generateStyles([selector], vars$1, fns);
 
-// import m from "mithril";
-// import raisedButton from "polythene-raised-button";
-// import icon from "polythene-icon";
-// import classes from "./classes";
-
-var element = "div";
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var theme = customTheme;
 
+// Don't export 'element': that will be the wrapped raised button component (set in polythene-xxx-fab)
+
+// Props to be passed to a raised button, including 'content'
+
 var createProps = function createProps(vnode, _ref) {
-  // const attrs = vnode.attrs;
+  var k = _ref.keys,
+      h = _ref.renderer,
+      icon = _ref.icon;
 
-  var k = _ref.keys;
+  var attrs = vnode.attrs;
+  var content = attrs.content ? attrs.content : attrs.icon ? h(icon, attrs.icon) : attrs.children || vnode.children;
+  return _extends({}, {
+    content: h("div", {
+      className: classes.content
+    }, content),
+    parentClassName: [classes.component, attrs.mini ? classes.mini : null, attrs.className || attrs[k.class]].join(" "),
+    // defaults
+    ripple: {
+      center: true,
+      opacityDecayVelocity: 0.24
+    },
+    shadow: { increase: 5 },
+    ink: true,
+    wash: true,
+    animateOnTap: attrs.animateOnTap !== undefined ? attrs.animateOnTap : true
+  }, attrs);
 };
 
-var createContent = function createContent(vnode, _ref2) {
-  // const attrs = vnode.attrs;
-
-  var h = _ref2.renderer;
+var createContent = function createContent() {
+  return null;
 };
-
-// const view = vnode => {
-//   const attrs = vnode.attrs;
-//   const content = attrs.content
-//     ? attrs.content
-//     : attrs.icon
-//       ? m(icon, attrs.icon)
-//       : attrs.children || vnode.children;
-//   return m(raisedButton, Object.assign(
-//     {},
-//     {
-//       content: m("div", {
-//         class: classes.content
-//       }, content),
-//       parentClass: [
-//         classes.component,
-//         attrs.mini ? classes.mini : null
-//       ].join(" "),
-//       // defaults
-//       ripple: {
-//         center: true,
-//         opacityDecayVelocity: 0.24
-//       },
-//       shadow: { increase: 5 },
-//       ink: true,
-//       wash: true,
-//       animateOnTap: attrs.animateOnTap !== undefined
-//         ? attrs.animateOnTap
-//         : true
-//     },
-//     attrs
-//   ));
-// };
 
 var fab = {
-  createProps: createProps, createContent: createContent, theme: theme, element: element,
+  createProps: createProps, createContent: createContent, theme: theme,
   classes: classes,
   vars: vars$1
 };

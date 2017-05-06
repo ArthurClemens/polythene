@@ -1,9 +1,9 @@
-import { createProps, createContent, theme, element } from "./fab";
+import { createProps, createContent, theme } from "./fab";
 import classes from "./classes";
 import vars from "./theme/vars";
 
 export const fab = {
-  createProps, createContent, theme, element,
+  createProps, createContent, theme,
   classes,
   vars
 };

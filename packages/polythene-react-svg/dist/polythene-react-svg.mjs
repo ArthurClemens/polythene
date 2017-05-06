@@ -6,6 +6,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 var svg$1 = statelessComponent(_extends({}, svg));
 
 svg$1.theme = svg.theme;
-svg$1.displayName = "svg";
+svg$1.displayName = "SVG";
 
 export { svg$1 as svg };

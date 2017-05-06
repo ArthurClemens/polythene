@@ -8,6 +8,8 @@ const entry = env.ENTRY || "./index.js";
 const context = process.cwd();
 const dependencies = Object.keys(pkg.dependencies || {});
 
+const outputPath = env.OUTPUT_PATH || "./dist";
+
 const externals = {};
 dependencies.forEach(dep => {
   switch (dep) {
@@ -35,7 +37,7 @@ module.exports = {
   entry,
 
   output: {
-    path: path.resolve(context, "./dist")
+    path: path.resolve(context, outputPath)
   },
   
   externals,

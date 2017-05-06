@@ -1,5 +1,6 @@
 import h from 'react-hyperscript';
 import { Component } from 'react';
+import ReactDOM from 'react-dom';
 
 var keys = {
   class: "className",
@@ -31,8 +32,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -42,6 +41,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var statefulComponent = function statefulComponent(_ref) {
   var createContent = _ref.createContent,
       createProps = _ref.createProps,
+      _ref$getInitialState = _ref.getInitialState,
+      getInitialState = _ref$getInitialState === undefined ? function () {
+    return {};
+  } : _ref$getInitialState,
       element = _ref.element,
       _ref$onMount = _ref.onMount,
       onMount = _ref$onMount === undefined ? function () {} : _ref$onMount,
@@ -59,7 +62,10 @@ var statefulComponent = function statefulComponent(_ref) {
 
       var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, props));
 
-      _this.state = _extends({}, state);
+      _this.state = {
+        now: Date.now()
+      };
+      state = _extends({}, state, getInitialState(props));
       return _this;
     }
 
@@ -74,15 +80,25 @@ var statefulComponent = function statefulComponent(_ref) {
         onUnmount(this.createVirtualNode());
       }
     }, {
+      key: "updateState",
+      value: function updateState(attr, value, callback) {
+        state[attr] = value;
+        // Force rerender
+        this.setState({
+          now: Date.now()
+        }, callback);
+      }
+    }, {
       key: "createVirtualNode",
       value: function createVirtualNode() {
         var props = _extends({}, this.props);
-        return {
-          state: this.state,
+        return _extends({}, {
+          state: state,
           attrs: props,
           children: props.children,
-          dom: this.dom
-        };
+          dom: this.dom,
+          updateState: this.updateState.bind(this)
+        });
       }
     }, {
       key: "render",
@@ -90,12 +106,11 @@ var statefulComponent = function statefulComponent(_ref) {
         var _this2 = this;
 
         var vnode = this.createVirtualNode();
-        var updateState = function updateState(attrs, value) {
-          return _this2.setState(_defineProperty({}, attrs, value));
-        };
-        return renderer(vnode.attrs.element || element, _extends({}, createProps(vnode, { renderer: renderer, keys: keys, updateState: updateState }), { ref: function ref(dom) {
-            return _this2.dom = dom;
-          } }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, keys: keys, updateState: updateState }), vnode.attrs.after]);
+        return renderer(vnode.attrs.element || element, _extends({}, createProps(vnode, { renderer: renderer, keys: keys }), { ref: function ref(reactComponent) {
+            if (!_this2.dom) {
+              _this2.dom = ReactDOM.findDOMNode(reactComponent);
+            }
+          } }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, keys: keys }), vnode.attrs.after]);
       }
     }]);
 
@@ -133,7 +148,6 @@ var statelessComponent = function statelessComponent(_ref) {
       value: function createVirtualNode() {
         var props = _extends$1({}, this.props);
         return {
-          state: this.state,
           attrs: props,
           children: props.children,
           dom: this.dom
@@ -145,8 +159,10 @@ var statelessComponent = function statelessComponent(_ref) {
         var _this2 = this;
 
         var vnode = this.createVirtualNode();
-        return renderer(vnode.attrs.element || element, _extends$1({}, createProps(vnode, { renderer: renderer, keys: keys }), { ref: function ref(dom) {
-            return _this2.dom = dom;
+        return renderer(vnode.attrs.element || element, _extends$1({}, createProps(vnode, { renderer: renderer, keys: keys }), { ref: function ref(reactComponent) {
+            if (!_this2.dom) {
+              _this2.dom = ReactDOM.findDOMNode(reactComponent);
+            }
           } }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, keys: keys }), vnode.attrs.after]);
       }
     }]);

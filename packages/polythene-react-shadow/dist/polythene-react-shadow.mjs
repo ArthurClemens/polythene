@@ -6,6 +6,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 var shadow$1 = statelessComponent(_extends({}, shadow));
 
 shadow$1.theme = shadow.theme;
-shadow$1.displayName = "shadow";
+shadow$1.displayName = "Shadow";
 
 export { shadow$1 as shadow };

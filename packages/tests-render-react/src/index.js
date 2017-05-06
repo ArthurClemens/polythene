@@ -1,79 +1,59 @@
 import ReactDOM from "react-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+} from "react-router-dom";
 import "polythene-material-design";
-import { reactTests } from "polythene-tests";
 
 import { rules as css } from "./styles";
 import { renderer as h } from "polythene-react";
+import Page from "./Page";
+import routes from "./routes";
 
-// const GeneratedHtml = () =>
-//   "generated html";
-//   {
-//   oninit: vnode => (
-//     vnode.state.open = false,
-//     vnode.state.toggle = () => vnode.state.open = !vnode.state.open
-//   ),
-//   view: vnode => {
-//     return h(css.resultDataRawHtml, {
-//       className: vnode.state.open ? "open" : "closed",
-//       onclick: vnode.state.toggle,
-//     }, [
-//       h(".html", {id: vnode.attrs.id}, ""),
-//       h(".ellipsis", "...")
-//     ]);
-//   }
-// };
 
-const Page = ({name, tests, /*previous*/}) =>
-  h(
-    [css.results].join(" "),
-    {
-      className: `tests-${name.replace(/[\:\-\+\(\)\[\]]/g, "").replace(/ /g, "-").toLowerCase()}`
-    },
-    tests.map((test, index) => {
-      const testName = `test-${(test.name).replace(/[\:\-\+\[\]\(\)]/g, "").replace(/ /g, "-").toLowerCase()}`;
-      // const uid = "id-" + index;
-      return h([css.resultRow, test.interactive ? css.interactive : null].join(""), {
-        key: testName,
-        className: [testName, test.className || null].join(" "),
+const Index = () =>
+  h("div", null, [
+    h(css.headerRow, null, h("div",
+      {
+        style: { backgroundColor: "rgba(255,255,255,.93)" }
       },
-        [
-          h(css.resultTitle,
-            {
-              className: "result-title"
-            },
-            test.name
-          ),
-          h(css.resultData, null,
-            [
-              h(css.resultDataRendered, null,
-                h(css.content, null,
-                // {
-                  // oncreate: vnode => {
-                  //   if (!test.exclude) {
-                  //     document.querySelector(`#${uid}`).textContent = tidy(vnode.dom.innerHTML);
-                  //   }
-                  // }
-                // },
-                  h(test.component, test.attrs, test.children)
-                )
-              )
-              // !test.exclude && h(css.resultDataRaw, 
-              //   h(GeneratedHtml, {id: uid})
-              // )
-            ]
-          )
-        ]
-      );
+      h("span", "Polythene components")
+    )),
+    h("ul",
+      {
+        role: "nav",
+        style: { padding: "88px 8px 24px 8px" }
+      },
+      routes.map(route => (
+        h("li", null,
+          h(Link, { to: route.path }, route.name)
+        )
+      ))
+    )
+  ]);
+
+const routerMap = routes.map(route =>
+  h(Route,
+    {
+      path: route.path,
+      render: props => Page(Object.assign({}, props, { name: route.name, tests: route.tests, previous: "/" })),
+    }
+  )).concat([
+    h(Route, {
+      exact: true,
+      path: "/",
+      component: Index
     })
-  );
+  ]);
 
-
-ReactDOM.render(
-  // Page({name: "Button", tests: reactTests.button, previous: null}),
-  // Page({name: "Icon", tests: reactTests.icon, previous: null}),
-  // Page({name: "Ripple", tests: reactTests.ripple, previous: null}),
-  // Page({name: "Shadow", tests: reactTests.shadow, previous: null}),
-  Page({name: "SVG", tests: reactTests.svg, previous: null}),
-  // Page({name: "Theme", tests: reactTests.theme, previous: null}),
-  document.getElementById("root")
+const App = () => (
+  h(Router, null, 
+    h("div", routerMap)
+  )
 );
+
+const mountNode = document.querySelector("#app");
+ReactDOM.render((
+  h(App)
+), mountNode);

@@ -245,8 +245,7 @@ var theme = customTheme;
 var createProps = function createProps(vnode, _ref) {
   var _ref2;
 
-  var updateState = _ref.updateState,
-      k = _ref.keys;
+  var k = _ref.keys;
 
   var state = vnode.state;
   var attrs = vnode.attrs;
@@ -254,25 +253,25 @@ var createProps = function createProps(vnode, _ref) {
   var inactive = attrs.inactive || state.inactive;
   var onClickHandler = attrs.events && attrs.events.onclick;
   var handleInactivate = function handleInactivate() {
-    return updateState("inactive", true), setTimeout(function () {
-      return updateState("inactive", false);
+    return vnode.updateState("inactive", true), setTimeout(function () {
+      return vnode.updateState("inactive", false);
     }, attrs.inactivate * 1000);
   };
   return _extends({}, filterSupportedAttributes(attrs, { add: [k.formaction, "type"] }), {
-    className: [attrs.parentClass || classes.component, attrs.selected ? classes.selected : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, attrs.borders ? classes.borders : null, state.focus ? classes.focused : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [attrs.parentClassName || classes.component, attrs.selected ? classes.selected : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, attrs.borders ? classes.borders : null, state.focus ? classes.focused : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, inactive ? null : (_ref2 = {}, _defineProperty(_ref2, k.tabindex, disabled || inactive ? -1 : attrs[k.tabindex] || 0), _defineProperty(_ref2, k.onclick, function (e) {
     return attrs.inactivate !== undefined && handleInactivate(), onClickHandler && onClickHandler(e), true;
   }), _defineProperty(_ref2, k.onfocus, function () {
-    return updateState("focus", !state.mouseover);
+    return vnode.updateState("focus", !state.mouseover);
   }), _defineProperty(_ref2, k.onblur, function () {
-    return updateState("focus", false);
+    return vnode.updateState("focus", false);
   }), _defineProperty(_ref2, k.onmouseover, function () {
-    return updateState("mouseover", true);
+    return vnode.updateState("mouseover", true);
   }), _defineProperty(_ref2, k.onmouseout, function () {
-    return updateState("mouseover", false);
+    return vnode.updateState("mouseover", false);
   }), _defineProperty(_ref2, k.onkeydown, function (e) {
     if (e.which === 13 && state.focus) {
-      updateState("focus", false);
+      vnode.updateState("focus", false);
       if (onClickHandler) {
         onClickHandler(e);
       }

@@ -10,11 +10,12 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "polythene-material-design": "1.0.0-rc.1",
+    "polythene-react": "1.0.0-rc.1",
+    "polythene-tests": "1.0.0-rc.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "polythene-react": "1.0.0-rc.1",
-    "polythene-material-design": "1.0.0-rc.1",
-    "polythene-tests": "1.0.0-rc.1"
+    "react-router-dom": "^4.1.1"
   },
   "devDependencies": {
     "eslint-plugin-react": "^6.10.3",

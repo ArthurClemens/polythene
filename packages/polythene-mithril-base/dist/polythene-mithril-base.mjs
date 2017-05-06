@@ -22,6 +22,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 var statefulComponent = function statefulComponent(_ref) {
   var createContent = _ref.createContent,
       createProps = _ref.createProps,
+      _ref$getInitialState = _ref.getInitialState,
+      getInitialState = _ref$getInitialState === undefined ? function () {
+    return {};
+  } : _ref$getInitialState,
       element = _ref.element,
       _ref$onMount = _ref.onMount,
       onMount = _ref$onMount === undefined ? function () {} : _ref$onMount,
@@ -31,26 +35,42 @@ var statefulComponent = function statefulComponent(_ref) {
       state = _ref$state === undefined ? {} : _ref$state;
 
 
+  var createVirtualNode = function createVirtualNode(vnode) {
+    return _extends({}, vnode, { updateState: updater(vnode) });
+  };
+
   var updater = function updater(vnode) {
-    return function (attrs, value) {
-      return vnode.state[attrs] = value, setTimeout(renderer.redraw, 0);
+    return function (attr, value, callback) {
+      vnode.state[attr] = value;
+      setTimeout(function () {
+        renderer.redraw();
+        if (callback) {
+          callback();
+        }
+      }, 0);
     };
   };
 
-  var oninit = function oninit(vnode) {
-    return vnode.state = _extends(vnode.state, state);
+  var _oninit = function _oninit(vnode) {
+    return vnode.state = _extends(vnode.state, state, getInitialState(vnode.attrs));
   };
 
   var view = function view(vnode) {
-    var updateState = updater(vnode);
-    return renderer(vnode.attrs.element || element, createProps(vnode, { renderer: renderer, keys: keys, updateState: updateState }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, keys: keys, updateState: updateState }), vnode.attrs.after]);
+    var vnode1 = createVirtualNode(vnode);
+    return renderer(vnode.attrs.element || element, createProps(vnode1, { renderer: renderer, keys: keys }), [vnode.attrs.before, createContent(vnode1, { renderer: renderer, keys: keys }), vnode.attrs.after]);
   };
 
   return {
     view: view,
-    oninit: oninit,
-    oncreate: onMount,
-    onremove: onUnmount
+    oninit: function oninit(vnode) {
+      return _oninit(createVirtualNode(vnode));
+    },
+    oncreate: function oncreate(vnode) {
+      return onMount(createVirtualNode(vnode));
+    },
+    onremove: function onremove(vnode) {
+      return onUnmount(createVirtualNode(vnode));
+    }
   };
 };
 

@@ -11,13 +11,12 @@ var createContent = function createContent(vnode, args) {
   return button.createContent(vnode, _extends(args, { ripple: ripple }));
 };
 
-var button$1 = statefulComponent({
+var button$1 = statefulComponent(_extends({}, button, {
   createProps: createProps,
-  createContent: createContent,
-  element: button.element
-});
+  createContent: createContent
+}));
 
 button$1.theme = button.theme;
-button$1.displayName = "button";
+button$1.displayName = "Button";
 
 export { button$1 as button };

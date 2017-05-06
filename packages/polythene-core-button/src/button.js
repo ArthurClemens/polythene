@@ -6,16 +6,16 @@ export const element = "a";
 
 export const theme = customTheme;
 
-export const createProps = (vnode, { updateState, keys: k }) => {
+export const createProps = (vnode, { keys: k }) => {
   const state = vnode.state;
   const attrs = vnode.attrs;
   const disabled = attrs.disabled;
   const inactive = attrs.inactive || state.inactive;
   const onClickHandler = attrs.events && attrs.events.onclick;
   const handleInactivate = () => (
-    updateState("inactive", true),
+    vnode.updateState("inactive", true),
     setTimeout(() => (
-      updateState("inactive", false)
+      vnode.updateState("inactive", false)
     ), attrs.inactivate * 1000)
   );
   return Object.assign(
@@ -23,7 +23,7 @@ export const createProps = (vnode, { updateState, keys: k }) => {
     filterSupportedAttributes(attrs, { add: [k.formaction, "type"] }),
     {
       className: [
-        attrs.parentClass || classes.component,
+        attrs.parentClassName || classes.component,
         attrs.selected ? classes.selected : null,
         disabled ? classes.disabled : null,
         inactive ? classes.inactive : null,
@@ -44,15 +44,15 @@ export const createProps = (vnode, { updateState, keys: k }) => {
         true
       ),
       // handle focus events
-      [k.onfocus]: () => updateState("focus", !state.mouseover),
-      [k.onblur]: () => updateState("focus", false),
+      [k.onfocus]: () => vnode.updateState("focus", !state.mouseover),
+      [k.onblur]: () => vnode.updateState("focus", false),
       // don't show focus on click (detected by not being in mouse over state)
-      [k.onmouseover]: () => updateState("mouseover", true),
-      [k.onmouseout]: () => updateState("mouseover", false),
+      [k.onmouseover]: () => vnode.updateState("mouseover", true),
+      [k.onmouseout]: () => vnode.updateState("mouseover", false),
       // if focus, dispatch click event on ENTER
       [k.onkeydown]: e => {
         if (e.which === 13 && state.focus) {
-          updateState("focus", false);
+          vnode.updateState("focus", false);
           if (onClickHandler) {
             onClickHandler(e);
           }

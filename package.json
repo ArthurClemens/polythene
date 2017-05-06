@@ -2,7 +2,10 @@
   "scripts": {
     "preinstall": "lerna init",
     "postinstall": "lerna bootstrap",
-    "lint": "eslint . --cache"
+    "lint": "eslint . --cache",
+    "build": "lerna clean --yes && lerna bootstrap && lerna run build",
+    "build:component": "node ./scripts/buildComponent",
+    "build:tests": "lerna bootstrap && cd ./packages/polythene-mithril && yarn run build && cd ../../ && cd ./packages/polythene-react && yarn run build && cd ../../ && cd ./packages/tests && yarn run build"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -33,6 +36,7 @@
     "rollup-plugin-pathmodify": "^1.0.1",
     "rollup-plugin-serve": "^0.3.0",
     "rollup-plugin-uglify": "^1.0.2",
-    "webpack": "^2.4.1"
+    "shelljs": "^0.7.7",
+    "webpack": "^2.5.0"
   }
 }

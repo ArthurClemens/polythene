@@ -1,4 +1,5 @@
 import { Component } from "react";
+import ReactDOM from "react-dom";
 import { renderer } from "./renderer";
 import { keys } from "./keys";
 
@@ -13,7 +14,6 @@ export const statelessComponent = ({
     createVirtualNode() {
       const props = Object.assign({}, this.props);
       return {
-        state: this.state,
         attrs: props,
         children: props.children,
         dom: this.dom
@@ -27,7 +27,11 @@ export const statelessComponent = ({
         Object.assign(
           {},
           createProps(vnode, { renderer, keys }),
-          { ref: dom => this.dom = dom }
+          { ref: reactComponent => {
+            if (!this.dom) {
+              this.dom = ReactDOM.findDOMNode(reactComponent);
+            }
+          }}
         ),
         [
           vnode.attrs.before,

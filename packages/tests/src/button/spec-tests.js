@@ -1,5 +1,5 @@
 
-export default ({ button, renderer: h }) => {
+export default ({ button, renderer: h, keys }) => {
   return [
     {
       name: "No options",
@@ -57,7 +57,7 @@ export default ({ button, renderer: h }) => {
       name: "Option: tabindex",
       component: button,
       attrs: {
-        tabindex: 3
+        [keys.tabindex]: 3
       }
     },
     {

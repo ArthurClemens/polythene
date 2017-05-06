@@ -25,7 +25,7 @@ export default (selector, componentVars) => [{
       height: "inherit"
     },
 
-    " .pe-svg": {
+    " .pe-svg, .pe-svg > div": { /* React creates an additional div when wrapping an SVG */
       width: "inherit",
       height: "inherit"
     },

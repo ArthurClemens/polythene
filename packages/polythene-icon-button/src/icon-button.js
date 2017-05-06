@@ -14,8 +14,8 @@ const view = vnode => {
     {},
     {
       content: m("div", {class: classes.content}, content),
-      parentClass: [
-        attrs.parentClass || classes.component,
+      parentClassName: [
+        attrs.parentClassName || classes.component,
         attrs.compact ? classes.compact : null,
       ].join(" "),
       // defaults

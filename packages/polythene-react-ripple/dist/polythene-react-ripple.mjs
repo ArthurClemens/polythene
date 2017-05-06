@@ -6,6 +6,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 var ripple$1 = statefulComponent(_extends({}, ripple));
 
 ripple$1.theme = ripple.theme;
-ripple$1.displayName = "ripple";
+ripple$1.displayName = "Ripple";
 
 export { ripple$1 as ripple };

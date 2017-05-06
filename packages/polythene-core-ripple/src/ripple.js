@@ -48,9 +48,8 @@ export const onMount = vnode => {
     triggerEl.removeEventListener(touchEndEvent, tap, false);
 };
 
-export const onUnmount = ({ state }) => {
+export const onUnmount = ({ state }) =>
   state.removeEventListeners();
-};
 
 export const createContent = (vnode, { renderer: h }) => {
   const attrs = vnode.attrs;

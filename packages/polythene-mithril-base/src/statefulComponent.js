@@ -4,31 +4,41 @@ import { keys } from "./keys";
 export const statefulComponent = ({
   createContent,
   createProps,
+  getInitialState = () => ({}),
   element,
   onMount = () => {},
   onUnmount = () => {},
   state = {},
 }) => {
 
-  const updater = vnode => (attrs, value) => (
-    vnode.state[attrs] = value,
-    setTimeout(renderer.redraw, 0)
-  );
+  const createVirtualNode = vnode => 
+    Object.assign({}, vnode, { updateState: updater(vnode) });
+
+  const updater = vnode => (attr, value, callback) => {
+    vnode.state[attr] = value;
+    setTimeout(() => {
+      renderer.redraw();
+      if (callback) {
+        callback();
+      }
+    }, 0);
+  };
 
   const oninit = vnode => 
     vnode.state = Object.assign(
       vnode.state, 
-      state
+      state,
+      getInitialState(vnode.attrs)
     );
 
   const view = vnode => {
-    const updateState = updater(vnode);
+    const vnode1 = createVirtualNode(vnode);
     return renderer(
       vnode.attrs.element || element,
-      createProps(vnode, { renderer, keys, updateState }),
+      createProps(vnode1, { renderer, keys }),
       [
         vnode.attrs.before,
-        createContent(vnode, { renderer, keys, updateState }),
+        createContent(vnode1, { renderer, keys }),
         vnode.attrs.after
       ]
     );
@@ -36,8 +46,8 @@ export const statefulComponent = ({
 
   return {
     view,
-    oninit,
-    oncreate: onMount,
-    onremove: onUnmount,
+    oninit: vnode => oninit(createVirtualNode(vnode)),
+    oncreate: vnode => onMount(createVirtualNode(vnode)),
+    onremove: vnode => onUnmount(createVirtualNode(vnode))
   };
 };

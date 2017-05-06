@@ -192,8 +192,7 @@ var onMount = function onMount(vnode) {
 
 var onUnmount = function onUnmount(_ref2) {
   var state = _ref2.state;
-
-  state.removeEventListeners();
+  return state.removeEventListeners();
 };
 
 var createContent = function createContent(vnode, _ref3) {

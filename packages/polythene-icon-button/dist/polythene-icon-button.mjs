@@ -128,7 +128,7 @@ var view = function view(vnode) {
   var content = attrs.content ? attrs.content : attrs.icon ? m(icon, attrs.icon) : attrs.children || vnode.children;
   return m(button, _extends({}, {
     content: m("div", { class: classes.content }, content),
-    parentClass: [attrs.parentClass || classes.component, attrs.compact ? classes.compact : null].join(" "),
+    parentClassName: [attrs.parentClassName || classes.component, attrs.compact ? classes.compact : null].join(" "),
     // defaults
     wash: false,
     animateOnTap: false

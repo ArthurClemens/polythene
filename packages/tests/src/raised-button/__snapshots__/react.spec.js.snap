@@ -1,0 +1,298 @@
+exports[`test No options 1`] = `
+<Button
+  animateOnTap={false}
+  parentClassName="pe-button pe-text-button pe-raised-button"
+  shadowComponent={
+    <Shadow
+      animated={true}
+      z={1} />
+  } />
+`;
+
+exports[`test Option: animateOnTap (false) 1`] = `
+<Button
+  animateOnTap={false}
+  label="Don\'t animate shadow"
+  parentClassName="pe-button pe-text-button pe-raised-button"
+  shadowComponent={
+    <Shadow
+      animated={true}
+      z={1} />
+  } />
+`;
+
+exports[`test Option: class 1`] = `
+<Button
+  animateOnTap={false}
+  class="class-x"
+  parentClassName="pe-button pe-text-button pe-raised-button"
+  shadowComponent={
+    <Shadow
+      animated={true}
+      z={1} />
+  } />
+`;
+
+exports[`test Option: className 1`] = `
+<Button
+  animateOnTap={false}
+  className="className-x"
+  parentClassName="pe-button pe-text-button pe-raised-button"
+  shadowComponent={
+    <Shadow
+      animated={true}
+      z={1} />
+  } />
+`;
+
+exports[`test Option: content 1`] = `
+<Button
+  animateOnTap={false}
+  content={
+    <span>
+      Content
+    </span>
+  }
+  parentClassName="pe-button pe-text-button pe-raised-button"
+  shadowComponent={
+    <Shadow
+      animated={true}
+      z={1} />
+  } />
+`;
+
+exports[`test Option: disabled (false) 1`] = `
+<Button
+  animateOnTap={false}
+  disabled={false}
+  label="Not disabled"
+  parentClassName="pe-button pe-text-button pe-raised-button"
+  shadowComponent={
+    <Shadow
+      animated={true}
+      z={1} />
+  } />
+`;
+
+exports[`test Option: disabled (true) 1`] = `
+<Button
+  animateOnTap={false}
+  disabled={true}
+  label="Disabled"
+  parentClassName="pe-button pe-text-button pe-raised-button"
+  shadowComponent={
+    <Shadow
+      animated={true}
+      z={1} />
+  } />
+`;
+
+exports[`test Option: disabled -- dark theme class 1`] = `
+<Button
+  animateOnTap={false}
+  disabled={true}
+  label="Label"
+  parentClassName="pe-button pe-text-button pe-raised-button"
+  shadowComponent={
+    <Shadow
+      animated={true}
+      z={1} />
+  } />
+`;
+
+exports[`test Option: element 1`] = `
+<button
+  animateOnTap={false}
+  element="button"
+  parentClassName="pe-button pe-text-button pe-raised-button"
+  shadowComponent={
+    <Shadow
+      animated={true}
+      z={1} />
+  } />
+`;
+
+exports[`test Option: id 1`] = `
+<Button
+  animateOnTap={false}
+  id="id-x"
+  parentClassName="pe-button pe-text-button pe-raised-button"
+  shadowComponent={
+    <Shadow
+      animated={true}
+      z={1} />
+  } />
+`;
+
+exports[`test Option: inactivate (2) 1`] = `
+<Button
+  animateOnTap={false}
+  inactivate={2}
+  label="Inactivated for 2s"
+  parentClassName="pe-button pe-text-button pe-raised-button"
+  shadowComponent={
+    <Shadow
+      animated={true}
+      z={1} />
+  } />
+`;
+
+exports[`test Option: inactive (false) 1`] = `
+<Button
+  animateOnTap={false}
+  inactive={false}
+  label="Not inactive"
+  parentClassName="pe-button pe-text-button pe-raised-button"
+  shadowComponent={
+    <Shadow
+      animated={true}
+      z={1} />
+  } />
+`;
+
+exports[`test Option: inactive (true) 1`] = `
+<Button
+  animateOnTap={false}
+  inactive={true}
+  label="Inactive"
+  parentClassName="pe-button pe-text-button pe-raised-button"
+  shadowComponent={
+    <Shadow
+      animated={true}
+      z={1} />
+  } />
+`;
+
+exports[`test Option: ink (false) 1`] = `
+<Button
+  animateOnTap={false}
+  ink={false}
+  label="No ink"
+  parentClassName="pe-button pe-text-button pe-raised-button"
+  shadowComponent={
+    <Shadow
+      animated={true}
+      z={1} />
+  } />
+`;
+
+exports[`test Option: label -- dark theme class (should be app's primary color) 1`] = `
+<Button
+  animateOnTap={false}
+  label="Label"
+  parentClassName="pe-button pe-text-button pe-raised-button"
+  shadowComponent={
+    <Shadow
+      animated={true}
+      z={1} />
+  } />
+`;
+
+exports[`test Option: label 1`] = `
+<Button
+  animateOnTap={false}
+  label="Label"
+  parentClassName="pe-button pe-text-button pe-raised-button"
+  shadowComponent={
+    <Shadow
+      animated={true}
+      z={1} />
+  } />
+`;
+
+exports[`test Option: raised (with option z: 2) 1`] = `
+<Button
+  animateOnTap={false}
+  label="Raised to 2"
+  parentClassName="pe-button pe-text-button pe-raised-button"
+  shadowComponent={
+    <Shadow
+      animated={true}
+      z={2} />
+  }
+  z={2} />
+`;
+
+exports[`test Option: raised (with option z: 5) 1`] = `
+<Button
+  animateOnTap={false}
+  label="Raised to 5"
+  parentClassName="pe-button pe-text-button pe-raised-button"
+  shadowComponent={
+    <Shadow
+      animated={true}
+      z={5} />
+  }
+  z={5} />
+`;
+
+exports[`test Option: selected 1`] = `
+<Button
+  animateOnTap={false}
+  label="Selected"
+  parentClassName="pe-button pe-text-button pe-raised-button"
+  selected={true}
+  shadowComponent={
+    <Shadow
+      animated={true}
+      z={1} />
+  } />
+`;
+
+exports[`test Option: style (colors) 1`] = `
+<Button
+  animateOnTap={false}
+  label="Styled"
+  parentClassName="pe-button pe-text-button pe-raised-button"
+  shadowComponent={
+    <Shadow
+      animated={true}
+      z={1} />
+  }
+  style={
+    Object {
+      "backgroundColor": "#EF6C00",
+      "color": "#fff",
+    }
+  } />
+`;
+
+exports[`test Option: wash (false) 1`] = `
+<Button
+  animateOnTap={false}
+  label="No wash"
+  parentClassName="pe-button pe-text-button pe-raised-button"
+  shadowComponent={
+    <Shadow
+      animated={true}
+      z={1} />
+  }
+  wash={false} />
+`;
+
+exports[`test Themed button (should be red) 1`] = `
+<Button
+  animateOnTap={false}
+  className="tests-raised-button-themed-button"
+  label="Themed button"
+  parentClassName="pe-button pe-text-button pe-raised-button"
+  shadowComponent={
+    <Shadow
+      animated={true}
+      z={1} />
+  } />
+`;
+
+exports[`test Themed button (with option disabled) 1`] = `
+<Button
+  animateOnTap={false}
+  className="tests-raised-button-themed-button"
+  disabled={true}
+  label="Disabled themed button"
+  parentClassName="pe-button pe-text-button pe-raised-button"
+  shadowComponent={
+    <Shadow
+      animated={true}
+      z={1} />
+  } />
+`;
