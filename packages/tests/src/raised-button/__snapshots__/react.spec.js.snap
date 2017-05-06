@@ -21,6 +21,17 @@ exports[`test Option: animateOnTap (false) 1`] = `
   } />
 `;
 
+exports[`test Option: children 1`] = `
+<Button
+  animateOnTap={false}
+  parentClassName="pe-button pe-text-button pe-raised-button"
+  shadowComponent={
+    <Shadow
+      animated={true}
+      z={1} />
+  } />
+`;
+
 exports[`test Option: class 1`] = `
 <Button
   animateOnTap={false}
@@ -255,6 +266,18 @@ exports[`test Option: style (colors) 1`] = `
       "color": "#fff",
     }
   } />
+`;
+
+exports[`test Option: tabindex 1`] = `
+<Button
+  animateOnTap={false}
+  parentClassName="pe-button pe-text-button pe-raised-button"
+  shadowComponent={
+    <Shadow
+      animated={true}
+      z={1} />
+  }
+  tabIndex={3} />
 `;
 
 exports[`test Option: wash (false) 1`] = `

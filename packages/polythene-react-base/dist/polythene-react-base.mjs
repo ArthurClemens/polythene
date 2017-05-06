@@ -65,7 +65,8 @@ var statefulComponent = function statefulComponent(_ref) {
       _this.state = {
         now: Date.now()
       };
-      state = _extends({}, state, getInitialState(props));
+      // Store the state we are interested in in a private property
+      _this._state = _extends({}, state, getInitialState(props));
       return _this;
     }
 
@@ -82,8 +83,8 @@ var statefulComponent = function statefulComponent(_ref) {
     }, {
       key: "updateState",
       value: function updateState(attr, value, callback) {
-        state[attr] = value;
-        // Force rerender
+        this._state[attr] = value;
+        // Force new render
         this.setState({
           now: Date.now()
         }, callback);
@@ -92,13 +93,13 @@ var statefulComponent = function statefulComponent(_ref) {
       key: "createVirtualNode",
       value: function createVirtualNode() {
         var props = _extends({}, this.props);
-        return _extends({}, {
-          state: state,
+        return {
+          state: this._state,
           attrs: props,
           children: props.children,
           dom: this.dom,
           updateState: this.updateState.bind(this)
-        });
+        };
       }
     }, {
       key: "render",

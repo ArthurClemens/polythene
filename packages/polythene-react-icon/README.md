@@ -1,5 +1,5 @@
 # Icon
 
-Polythene for Mithril component.
+Polythene for React component.
 
 

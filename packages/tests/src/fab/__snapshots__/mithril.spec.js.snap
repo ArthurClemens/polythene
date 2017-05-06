@@ -409,7 +409,7 @@ class=\"pe-button__content\">
 `;
 
 exports[`test Option: tabindex 1`] = `
-"<a tabindex=\"a\" class=\"pe-fab\">
+"<a tabindex=\"3\" class=\"pe-fab\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>

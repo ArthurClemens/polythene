@@ -115,7 +115,6 @@ var MAX_Z = 5;
 var getInitialState = function getInitialState(attrs) {
   var z = attrs.z !== undefined ? attrs.z : 1;
   return {
-    el: undefined,
     zBase: z,
     z: z,
     tapEventsInited: false
@@ -178,9 +177,7 @@ var createProps = function createProps(vnode, _ref) {
 
   var attrs = vnode.attrs;
   var state = vnode.state;
-  var children = (attrs.children || vnode.children || []).filter(function (c) {
-    return c !== void 0;
-  });
+  var children = attrs.children || vnode.children || [];
   return _extends({}, {
     parentClassName: [attrs.parentClassName || classes.component].join(" "),
     animateOnTap: false,

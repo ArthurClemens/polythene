@@ -37,7 +37,7 @@ export default ({ fab, keys }) => {
       name: "Option: tabindex",
       component: fab,
       attrs: {
-        [keys.tabindex]: "a"
+        [keys.tabindex]: 3
       }
     },
   ];

@@ -36,11 +36,11 @@ export default [
     name: "Icon",
     tests: tests.icon
   },
-  // {
-  //   path: "/icon-button",
-  //   name: "Icon Button",
-  //   tests: iconButtonTests
-  // },
+  {
+    path: "/icon-button",
+    name: "Icon Button",
+    tests: tests.iconButton
+  },
   // {
   //   path: "/list",
   //   name: "List",

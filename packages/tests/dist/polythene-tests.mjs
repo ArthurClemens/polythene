@@ -1,6 +1,6 @@
-import { button, fab, icon, raisedButton, renderer, ripple, shadow, svg } from 'polythene-mithril';
+import { button, fab, icon, iconButton, raisedButton, renderer, ripple, shadow, svg } from 'polythene-mithril';
 import 'mithril';
-import { button as button$1, fab as fab$1, icon as icon$1, raisedButton as raisedButton$1, renderer as renderer$1, ripple as ripple$1, shadow as shadow$1, svg as svg$1 } from 'polythene-react';
+import { button as button$1, fab as fab$1, icon as icon$1, iconButton as iconButton$1, raisedButton as raisedButton$1, renderer as renderer$1, ripple as ripple$1, shadow as shadow$1, svg as svg$1 } from 'polythene-react';
 
 var tests = (function (_ref) {
   var button$$1 = _ref.button;
@@ -313,7 +313,7 @@ var tests$1 = (function (_ref) {
     component: fab$$1,
     attrs: {
       icon: {
-        svg: trustedIconAlarm
+        svg: { content: trustedIconAlarm }
       }
     }
   }, {
@@ -1938,7 +1938,220 @@ var mithrilTests$3 = function mithrilTests(_ref) {
 
 var testsMithril$2 = [].concat(tests$2({ icon: icon, svg: svg, renderer: renderer })).concat(mithrilTests$3({ icon: icon, svg: svg, renderer: renderer }));
 
+var iconFavorite = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z\"/></svg>";
+
 var tests$3 = (function (_ref) {
+  var iconButton$$1 = _ref.iconButton,
+      icon$$1 = _ref.icon,
+      h = _ref.renderer;
+
+
+  var trustedIconFavorite = h.trust(iconFavorite);
+  iconButton$$1.theme(".tests-icon-button-themed-icon-button", {
+    padding: 24,
+    color_light_background: "purple",
+    color_dark_background: "orange",
+    color_light: "white"
+  });
+
+  return [{
+    name: "Child node (icon component)",
+    component: iconButton$$1,
+    attrs: null,
+    children: h(icon$$1, { svg: { content: trustedIconFavorite } })
+  }, {
+    name: "Option: icon",
+    component: iconButton$$1,
+    attrs: {
+      icon: {
+        svg: { content: trustedIconFavorite }
+      }
+    }
+  }, {
+    name: "Option: compact",
+    component: iconButton$$1,
+    attrs: {
+      icon: {
+        svg: { content: trustedIconFavorite }
+      },
+      compact: true
+    }
+  }, {
+    name: "Option: wash (true)",
+    component: iconButton$$1,
+    attrs: {
+      icon: {
+        svg: { content: trustedIconFavorite }
+      },
+      wash: true
+    }
+  }, {
+    name: "Option: style (colors)",
+    component: iconButton$$1,
+    attrs: {
+      icon: {
+        svg: { content: trustedIconFavorite }
+      },
+      style: {
+        color: "#FFCCBC",
+        backgroundColor: "#4E342E"
+      }
+    }
+  }, {
+    name: "Themed (colors and padding)",
+    component: iconButton$$1,
+    attrs: {
+      icon: {
+        svg: { content: trustedIconFavorite }
+      },
+      className: "tests-icon-button-themed-icon-button"
+    }
+  }, {
+    name: "Option: ripple (center)",
+    interactive: true,
+    component: iconButton$$1,
+    attrs: {
+      icon: {
+        svg: { content: trustedIconFavorite }
+      },
+      ripple: {
+        center: true
+      }
+    }
+  }, {
+    name: "Option: type (small)",
+    component: iconButton$$1,
+    attrs: {
+      icon: {
+        svg: { content: trustedIconFavorite },
+        type: "small"
+      }
+    }
+  }, {
+    name: "Option: type (regular)",
+    component: iconButton$$1,
+    attrs: {
+      icon: {
+        svg: { content: trustedIconFavorite },
+        type: "regular"
+      }
+    }
+  }, {
+    name: "Option: type (medium)",
+    component: iconButton$$1,
+    attrs: {
+      icon: {
+        svg: { content: trustedIconFavorite },
+        type: "medium"
+      }
+    }
+  }, {
+    name: "Option: type (large)",
+    component: iconButton$$1,
+    attrs: {
+      icon: {
+        svg: { content: trustedIconFavorite },
+        type: "large"
+      }
+    }
+  },
+
+  // Dark tone
+
+  {
+    name: "Child node (icon component) -- dark theme class",
+    component: iconButton$$1,
+    className: "pe-dark-tone",
+    attrs: null,
+    children: h(icon$$1, { svg: { content: trustedIconFavorite } })
+  }, {
+    name: "Option: wash (true) -- dark theme class",
+    component: iconButton$$1,
+    className: "pe-dark-tone",
+    attrs: {
+      icon: {
+        svg: { content: trustedIconFavorite }
+      },
+      wash: true
+    }
+  }, {
+    name: "Themed (color and size) -- dark theme class",
+    component: iconButton$$1,
+    className: "pe-dark-tone",
+    attrs: {
+      icon: {
+        svg: { content: trustedIconFavorite }
+      },
+      className: "tests-icon-button-themed-icon-button"
+    }
+  }];
+});
+
+var favoriteBorder = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z"/></svg>');
+
+var mithrilTests$4 = function mithrilTests(_ref) {
+  var iconButton$$1 = _ref.iconButton,
+      h = _ref.renderer;
+
+  return [{
+    name: "Option: url",
+    interactive: true,
+    component: iconButton$$1,
+    attrs: {
+      icon: {
+        svg: { content: favoriteBorder }
+      },
+      url: {
+        href: "/shadow",
+        oncreate: h.route.link
+      }
+    }
+  }, {
+    name: "Dark tone class + light theme class",
+    className: "pe-dark-tone",
+    component: {
+      view: function view() {
+        return h(".pe-light-tone", {
+          style: { background: "#fff", padding: "10px" }
+        }, [h(iconButton$$1, {
+          icon: {
+            msvg: favoriteBorder
+          }
+        }), h(iconButton$$1, {
+          icon: {
+            msvg: favoriteBorder
+          },
+          className: "tests-icon-button-themed-icon-button"
+        })]);
+      }
+    }
+  }, {
+    name: "Dark tone class + light tone",
+    className: "test-dark-theme",
+    component: {
+      view: function view() {
+        return h("div", {
+          style: { background: "#fff", padding: "10px" }
+        }, [h(iconButton$$1, {
+          icon: {
+            msvg: favoriteBorder
+          },
+          tone: "light"
+        }), h(iconButton$$1, {
+          icon: {
+            msvg: favoriteBorder
+          },
+          tone: "light",
+          className: "tests-icon-button-themed-icon-button"
+        })]);
+      }
+    }
+  }];
+};
+
+var testsMithril$3 = [].concat(tests$3({ iconButton: iconButton, icon: icon, renderer: renderer })).concat(mithrilTests$4({ iconButton: iconButton, renderer: renderer }));
+
+var tests$4 = (function (_ref) {
   var raisedButton$$1 = _ref.raisedButton;
 
 
@@ -2085,7 +2298,7 @@ var tests$3 = (function (_ref) {
   }];
 });
 
-var mithrilTests$4 = function mithrilTests(_ref) {
+var mithrilTests$5 = function mithrilTests(_ref) {
   var raisedButton$$1 = _ref.raisedButton,
       h = _ref.renderer;
 
@@ -2162,9 +2375,9 @@ var mithrilTests$4 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$3 = [].concat(tests$3({ raisedButton: raisedButton, renderer: renderer })).concat(mithrilTests$4({ raisedButton: raisedButton, renderer: renderer }));
+var testsMithril$4 = [].concat(tests$4({ raisedButton: raisedButton, renderer: renderer })).concat(mithrilTests$5({ raisedButton: raisedButton, renderer: renderer }));
 
-var tests$4 = (function (_ref) {
+var tests$5 = (function (_ref) {
   var ripple$$1 = _ref.ripple;
 
   ripple$$1.theme(".tests-ripple-themed-ripple", {
@@ -2299,7 +2512,7 @@ var tests$4 = (function (_ref) {
   }];
 });
 
-var mithrilTests$5 = function mithrilTests(_ref) {
+var mithrilTests$6 = function mithrilTests(_ref) {
   var ripple$$1 = _ref.ripple,
       h = _ref.renderer;
 
@@ -2355,9 +2568,9 @@ var mithrilTests$5 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$4 = [].concat(tests$4({ ripple: ripple, renderer: renderer })).concat(mithrilTests$5({ ripple: ripple, renderer: renderer }));
+var testsMithril$5 = [].concat(tests$5({ ripple: ripple, renderer: renderer })).concat(mithrilTests$6({ ripple: ripple, renderer: renderer }));
 
-var tests$5 = (function (_ref) {
+var tests$6 = (function (_ref) {
   var shadow$$1 = _ref.shadow;
 
   return [{
@@ -2410,7 +2623,7 @@ var tests$5 = (function (_ref) {
   }];
 });
 
-var mithrilTests$6 = function mithrilTests(_ref) {
+var mithrilTests$7 = function mithrilTests(_ref) {
   var shadow$$1 = _ref.shadow,
       h = _ref.renderer;
 
@@ -2456,13 +2669,13 @@ var mithrilTests$6 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$5 = [].concat(tests$5({ shadow: shadow, renderer: renderer })).concat(mithrilTests$6({ shadow: shadow, renderer: renderer }));
+var testsMithril$6 = [].concat(tests$6({ shadow: shadow, renderer: renderer })).concat(mithrilTests$7({ shadow: shadow, renderer: renderer }));
 
 var iconStars$2 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>";
 
 var iconLink = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z\"/></svg>";
 
-var tests$6 = (function (_ref) {
+var tests$7 = (function (_ref) {
   var svg$$1 = _ref.svg,
       h = _ref.renderer;
 
@@ -2524,7 +2737,7 @@ var tests$6 = (function (_ref) {
   }];
 });
 
-var mithrilTests$7 = function mithrilTests(_ref) {
+var mithrilTests$8 = function mithrilTests(_ref) {
   var svg$$1 = _ref.svg,
       h = _ref.renderer;
 
@@ -2572,7 +2785,7 @@ var mithrilTests$7 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$6 = [].concat(tests$6({ svg: svg, renderer: renderer })).concat(mithrilTests$7({ svg: svg, renderer: renderer }));
+var testsMithril$7 = [].concat(tests$7({ svg: svg, renderer: renderer })).concat(mithrilTests$8({ svg: svg, renderer: renderer }));
 
 // import iconAlarm from "mmsvg/google/msvg/action/alarm-add";
 
@@ -2664,7 +2877,7 @@ secondaryButton.theme(".tests-custom-theme-secondary-button", {
   color_light_background: "#fff"
 });
 
-var mithrilTests$8 = function mithrilTests() {
+var mithrilTests$9 = function mithrilTests() {
   return [{
     name: "Theme with deriving component: button (should be bordered with white background)",
     component: secondaryButton,
@@ -2674,7 +2887,7 @@ var mithrilTests$8 = function mithrilTests() {
   }];
 };
 
-var testsMithril$7 = [].concat(genericTests({ button: button, fab: fab /*, icon, iconButton, list, listTile, renderer*/ })).concat(mithrilTests$8());
+var testsMithril$8 = [].concat(genericTests({ button: button, fab: fab /*, icon, iconButton, list, listTile, renderer*/ })).concat(mithrilTests$9());
 
 
 
@@ -2682,11 +2895,12 @@ var fromMithrilTests = Object.freeze({
 	button: testsMithril,
 	fab: testsMithril$1,
 	icon: testsMithril$2,
-	raisedButton: testsMithril$3,
-	ripple: testsMithril$4,
-	shadow: testsMithril$5,
-	svg: testsMithril$6,
-	theme: testsMithril$7
+	iconButton: testsMithril$3,
+	raisedButton: testsMithril$4,
+	ripple: testsMithril$5,
+	shadow: testsMithril$6,
+	svg: testsMithril$7,
+	theme: testsMithril$8
 });
 
 var testsReact = tests({ button: button$1, renderer: renderer$1 });
@@ -2695,13 +2909,15 @@ var testsReact$1 = tests$1({ fab: fab$1, icon: icon$1, renderer: renderer$1 });
 
 var testsReact$2 = tests$2({ renderer: renderer$1, icon: icon$1, svg: svg$1 });
 
-var testsReact$3 = tests$3({ raisedButton: raisedButton$1, renderer: renderer$1 });
+var testsReact$3 = tests$3({ iconButton: iconButton$1, icon: icon$1, renderer: renderer$1 });
 
-var testsReact$4 = tests$4({ ripple: ripple$1, renderer: renderer$1 });
+var testsReact$4 = tests$4({ raisedButton: raisedButton$1, renderer: renderer$1 });
 
-var testsReact$5 = tests$5({ shadow: shadow$1, renderer: renderer$1 });
+var testsReact$5 = tests$5({ ripple: ripple$1, renderer: renderer$1 });
 
-var testsReact$6 = tests$6({ svg: svg$1, renderer: renderer$1 });
+var testsReact$6 = tests$6({ shadow: shadow$1, renderer: renderer$1 });
+
+var testsReact$7 = tests$7({ svg: svg$1, renderer: renderer$1 });
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -2728,7 +2944,7 @@ var reactTests$1 = function reactTests() {
   }];
 };
 
-var testsReact$7 = [].concat(genericTests({ button: button$1, renderer: renderer$1 })).concat(reactTests$1());
+var testsReact$8 = [].concat(genericTests({ button: button$1, renderer: renderer$1 })).concat(reactTests$1());
 
 
 
@@ -2736,11 +2952,12 @@ var fromReactTests = Object.freeze({
 	button: testsReact,
 	fab: testsReact$1,
 	icon: testsReact$2,
-	raisedButton: testsReact$3,
-	ripple: testsReact$4,
-	shadow: testsReact$5,
-	svg: testsReact$6,
-	theme: testsReact$7
+	iconButton: testsReact$3,
+	raisedButton: testsReact$4,
+	ripple: testsReact$5,
+	shadow: testsReact$6,
+	svg: testsReact$7,
+	theme: testsReact$8
 });
 
 var mithrilTests = fromMithrilTests;

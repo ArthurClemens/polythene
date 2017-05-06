@@ -11,7 +11,6 @@ const MAX_Z = 5;
 export const getInitialState = attrs => {
   const z = attrs.z !== undefined ? attrs.z : 1;
   return {
-    el: undefined,
     zBase: z,
     z,
     tapEventsInited: false
@@ -65,7 +64,7 @@ const clearTapEvents = vnode =>
 export const createProps = (vnode, { renderer: h, shadow }) => {
   const attrs = vnode.attrs;
   const state = vnode.state;
-  const children = (attrs.children || vnode.children || []).filter(c  => c !== void 0);
+  const children = attrs.children || vnode.children || [];
   return Object.assign(
     {},
     {

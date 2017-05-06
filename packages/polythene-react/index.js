@@ -2,6 +2,7 @@ export * from "polythene-react-base";
 export * from "polythene-react-button";
 export * from "polythene-react-fab";
 export * from "polythene-react-icon";
+export * from "polythene-react-icon-button";
 export * from "polythene-react-raised-button";
 export * from "polythene-react-ripple";
 export * from "polythene-react-shadow";

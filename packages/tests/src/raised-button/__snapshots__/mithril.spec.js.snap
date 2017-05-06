@@ -490,6 +490,24 @@ class=\"pe-button__content\">
 "
 `;
 
+exports[`test Option: tabindex 1`] = `
+"<a tabindex=\"3\" class=\"pe-button pe-text-button pe-raised-button\">
+<div class=\"pe-button__content\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-ripple pe-ripple--constrained\">
+    <div class=\"pe-ripple__mask\">
+      <div class=\"pe-ripple__waves\"></div>
+    </div>
+  </div>
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+</div></a>
+"
+`;
+
 exports[`test Option: url (with oncreate) 1`] = `
 "<a class=\"pe-button pe-text-button pe-raised-button\" tabindex=\"0\"
 href=\"#!/shadow\">

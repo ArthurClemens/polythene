@@ -20,7 +20,8 @@ export const statefulComponent = ({
       this.state = {
         now: Date.now()
       };
-      state = Object.assign({}, state, getInitialState(props));
+      // Store the state we are interested in in a private property
+      this._state = Object.assign({}, state, getInitialState(props));
     }
 
     componentDidMount() {
@@ -32,8 +33,8 @@ export const statefulComponent = ({
     }
 
     updateState(attr, value, callback) {
-      state[attr] = value;
-      // Force rerender
+      this._state[attr] = value;
+      // Force new render
       this.setState({
         now: Date.now()
       }, callback);
@@ -41,13 +42,13 @@ export const statefulComponent = ({
 
     createVirtualNode() {
       const props = Object.assign({}, this.props);
-      return Object.assign({}, {
-        state,
+      return {
+        state: this._state,
         attrs: props,
         children: props.children,
         dom: this.dom,
         updateState: this.updateState.bind(this)
-      });
+      };
     }
 
     render() {

@@ -1,5 +1,5 @@
 
-export default ({ raisedButton, renderer: h }) => {
+export default ({ raisedButton, renderer: h, keys }) => {
   return [
     {
       name: "No options",
@@ -51,6 +51,13 @@ export default ({ raisedButton, renderer: h }) => {
       component: raisedButton,
       attrs: {
         element: "button"
+      }
+    },
+    {
+      name: "Option: tabindex",
+      component: raisedButton,
+      attrs: {
+        [keys.tabindex]: 3
       }
     },
     
