@@ -1,5 +1,5 @@
 import m from 'mithril';
-import { endEvent, filterSupportedAttributes, isTouch, moveEvent } from 'polythene-core-essentials';
+import { endEvent, filterSupportedAttributes, isTouch, moveEvent } from 'polythene-core';
 import { flex, mixin, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 

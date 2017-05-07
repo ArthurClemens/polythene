@@ -1,5 +1,5 @@
 import m from 'mithril';
-import { filterSupportedAttributes, hide, show } from 'polythene-core-essentials';
+import { filterSupportedAttributes, hide, show } from 'polythene-core';
 import { shadow } from 'polythene-mithril';
 import { styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';

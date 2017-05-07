@@ -1,4 +1,4 @@
-import { multiple } from 'polythene-core-essentials';
+import { multiple } from 'polythene-core';
 import { classes, instance, vars } from 'polythene-notification';
 import { flex, styler } from 'polythene-core-css';
 import { vars as vars$1 } from 'polythene-theme';

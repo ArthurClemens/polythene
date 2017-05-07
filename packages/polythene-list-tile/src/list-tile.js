@@ -1,6 +1,6 @@
 import m from "mithril";
 import { icon, ripple } from "polythene-mithril";
-import { filterSupportedAttributes } from "polythene-core-essentials";
+import { filterSupportedAttributes } from "polythene-core";
 import { customTheme } from "./theme";
 import classes from "./classes";
 

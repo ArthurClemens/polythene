@@ -1,6 +1,6 @@
 import { flex, styler } from 'polythene-core-css';
 import FastClick from 'fastclick';
-import { isTouch, subscribe } from 'polythene-core-essentials';
+import { isTouch, subscribe } from 'polythene-core';
 
 /*
 https://gist.github.com/gre/1650294

@@ -1,4 +1,4 @@
-import { isTouch, animationEndEvent } from "polythene-core-essentials";
+import { isTouch, animationEndEvent } from "polythene-core";
 import { styler } from "polythene-core-css";
 import { vars } from "polythene-theme";
 

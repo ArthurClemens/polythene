@@ -1,5 +1,5 @@
 import m from 'mithril';
-import { filterSupportedAttributes } from 'polythene-core-essentials';
+import { filterSupportedAttributes } from 'polythene-core';
 import { flex, mixin, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 

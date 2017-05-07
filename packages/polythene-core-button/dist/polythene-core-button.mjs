@@ -1,4 +1,4 @@
-import { filterSupportedAttributes } from 'polythene-core-essentials';
+import { filterSupportedAttributes } from 'polythene-core';
 import { mixin, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 

@@ -1,4 +1,4 @@
-# Essentials
+# Core
 
 Core Polythene functions.
 

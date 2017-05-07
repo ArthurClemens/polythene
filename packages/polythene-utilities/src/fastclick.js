@@ -1,5 +1,5 @@
 import FastClick from "fastclick";
-import { isTouch, subscribe } from "polythene-core-essentials";
+import { isTouch, subscribe } from "polythene-core";
 
 const THROTTLE_DELAY = 100;
 const REINIT_DELAY = THROTTLE_DELAY + 50;

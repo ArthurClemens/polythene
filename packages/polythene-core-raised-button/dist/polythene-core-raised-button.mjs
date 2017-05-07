@@ -1,4 +1,4 @@
-import { isTouch, subscribe, touchEndEvent, touchStartEvent } from 'polythene-core-essentials';
+import { isTouch, subscribe, touchEndEvent, touchStartEvent } from 'polythene-core';
 import { styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 

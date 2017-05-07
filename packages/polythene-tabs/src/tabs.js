@@ -1,6 +1,6 @@
 import m from "mithril";
-import { filterSupportedAttributes } from "polythene-core-essentials";
-import { isTouch, subscribe, unsubscribe } from "polythene-core-essentials";
+import { filterSupportedAttributes } from "polythene-core";
+import { isTouch, subscribe, unsubscribe } from "polythene-core";
 import { scrollTo } from "polythene-utilities";
 import { customTheme } from "./theme";
 import tab from "./tab";

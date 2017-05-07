@@ -1,4 +1,4 @@
-import { touchEndEvent, filterSupportedAttributes } from "polythene-core-essentials";
+import { touchEndEvent, filterSupportedAttributes } from "polythene-core";
 import { customTheme } from "./theme";
 import animation from "./theme/animation";
 import classes from "./classes";

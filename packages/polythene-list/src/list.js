@@ -1,6 +1,6 @@
 import m from "mithril";
 import listTile from "polythene-list-tile";
-import { filterSupportedAttributes } from "polythene-core-essentials";
+import { filterSupportedAttributes } from "polythene-core";
 import { customTheme } from "./theme";
 import classes from "./classes";
 

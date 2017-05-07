@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, hide, multiple, show, subscribe, unsubscribe } from 'polythene-core-essentials';
+import { filterSupportedAttributes, hide, multiple, show, subscribe, unsubscribe } from 'polythene-core';
 import m from 'mithril';
 import { shadow } from 'polythene-mithril';
 import { flex, mixin, styler } from 'polythene-core-css';

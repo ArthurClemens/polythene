@@ -1,5 +1,5 @@
 import { vars } from "polythene-theme";
-import { button } from "polythene-core-essentials";
+import { button } from "polythene-core";
 import { vars as iconButtonVars } from "polythene-icon-button";
 
 const rgba = vars.rgba;

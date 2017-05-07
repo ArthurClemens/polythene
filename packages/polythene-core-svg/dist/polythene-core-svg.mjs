@@ -1,4 +1,4 @@
-import { filterSupportedAttributes } from 'polythene-core-essentials';
+import { filterSupportedAttributes } from 'polythene-core';
 import { styler } from 'polythene-core-css';
 
 var classes = {

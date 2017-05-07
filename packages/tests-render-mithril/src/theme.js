@@ -1,4 +1,4 @@
-import { defaultVariables } from "polythene-core-essentials";
+import { defaultVariables } from "polythene-core";
 
 export const vars = {
   ...defaultVariables

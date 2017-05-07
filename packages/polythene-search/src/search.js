@@ -1,6 +1,6 @@
 import m from "mithril";
 import textfield from "polythene-textfield";
-import { filterSupportedAttributes } from "polythene-core-essentials";
+import { filterSupportedAttributes } from "polythene-core";
 import { customTheme } from "./theme";
 import classes from "./classes";
 

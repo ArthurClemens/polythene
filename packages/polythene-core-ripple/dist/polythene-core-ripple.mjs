@@ -1,4 +1,4 @@
-import { animationEndEvent, filterSupportedAttributes, isTouch, touchEndEvent } from 'polythene-core-essentials';
+import { animationEndEvent, filterSupportedAttributes, isTouch, touchEndEvent } from 'polythene-core';
 import { mixin, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 

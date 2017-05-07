@@ -1,4 +1,4 @@
-import { button } from "polythene-core-essentials";
+import { button } from "polythene-core";
 
 export default {
   component:            "pe-tabs",

@@ -1,5 +1,5 @@
 import m from "mithril";
-import { filterSupportedAttributes } from "polythene-core-essentials";
+import { filterSupportedAttributes } from "polythene-core";
 import classes from "./classes";
 
 const typeClasses = {

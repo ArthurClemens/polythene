@@ -1,4 +1,4 @@
-import { multiple } from "polythene-core-essentials";
+import { multiple } from "polythene-core";
 import instance from "./instance";
 import transitions from "./theme/transitions";
 

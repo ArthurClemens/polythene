@@ -1,5 +1,5 @@
 import m from "mithril";
-import { show, hide, filterSupportedAttributes } from "polythene-core-essentials";
+import { show, hide, filterSupportedAttributes } from "polythene-core";
 import { customTheme } from "./theme";
 import { Timer } from "polythene-utilities";
 import classes from "./classes";
