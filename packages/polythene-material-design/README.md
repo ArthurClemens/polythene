@@ -3,8 +3,13 @@
 ## Usage
 
 ~~~javascript
-import "polythene-material-design";
+import { addTypography, addRoboto } from "polythene-material-design";
+
+addTypography();
+addRoboto();
 ~~~
+
+
 
 ## Roboto font
 

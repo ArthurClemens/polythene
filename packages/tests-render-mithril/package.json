@@ -38,7 +38,8 @@
     "polythene-textfield": "1.0.0-rc.1",
     "polythene-theme": "1.0.0-rc.1",
     "polythene-toolbar": "1.0.0-rc.1",
-    "polythene-utilities": "1.0.0-rc.1"
+    "polythene-utilities": "1.0.0-rc.1",
+    "webpack": "^2.5.1"
   },
   "devDependencies": {
     "npm-run-all": "^4.0.2",

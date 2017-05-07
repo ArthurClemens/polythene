@@ -4,13 +4,17 @@ import {
   Route,
   Link,
 } from "react-router-dom";
-import "polythene-material-design";
-
+import { addLayoutStyles, addFastClick } from "polythene-utilities";
+import { addTypography, addRoboto } from "polythene-material-design";
 import { rules as css } from "./styles";
 import { renderer as h } from "polythene-react";
 import Page from "./Page";
 import routes from "./routes";
 
+addTypography();
+addRoboto();
+addLayoutStyles();
+addFastClick();
 
 const Index = () =>
   h("div", null, [

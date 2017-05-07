@@ -9,7 +9,7 @@
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
     "build": "npm run rollup",
     "test": "../../node_modules/jest/bin/jest.js tests/**",
-    "test:watch": "npm run test -- --watch --no-watchman"
+    "test:watch": "yarn run test -- --watch --no-watchman"
   },
   "files": [
     "dist",
@@ -18,6 +18,7 @@
   "dependencies": {
     "mithril": "1.1.0",
     "mmsvg": "^1.5.3",
+    "polythene-core-css": "1.0.0-rc.1",
     "polythene-icon-button": "1.0.0-rc.1",
     "polythene-list": "1.0.0-rc.1",
     "polythene-list-tile": "1.0.0-rc.1",

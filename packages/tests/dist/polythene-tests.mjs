@@ -1,5 +1,6 @@
 import { button, fab, icon, iconButton, raisedButton, renderer, ripple, shadow, svg } from 'polythene-mithril';
 import 'mithril';
+import { flex, styler } from 'polythene-core-css';
 import { button as button$1, fab as fab$1, icon as icon$1, iconButton as iconButton$1, raisedButton as raisedButton$1, renderer as renderer$1, ripple as ripple$1, shadow as shadow$1, svg as svg$1 } from 'polythene-react';
 
 var tests = (function (_ref) {
@@ -2151,6 +2152,86 @@ var mithrilTests$4 = function mithrilTests(_ref) {
 
 var testsMithril$3 = [].concat(tests$3({ iconButton: iconButton, icon: icon, renderer: renderer })).concat(mithrilTests$4({ iconButton: iconButton, renderer: renderer }));
 
+var blockSize = 40;
+
+var styles = [{
+  " .block": {
+    "min-width": blockSize + "px",
+    "min-height": blockSize + "px",
+    color: "#fff",
+    "text-align": "center",
+    "line-height": blockSize + "px",
+
+    "&:nth-child(1)": {
+      background: "#311B92"
+    },
+    "&:nth-child(2)": {
+      background: "#4527A0"
+    },
+    "&:nth-child(3)": {
+      background: "#512DA8"
+    },
+    "&:nth-child(4)": {
+      background: "#5E35B1"
+    },
+    "&.fixed-height": {
+      height: "90px",
+      position: "relative"
+    }
+  },
+  " .vertical-blocks": [flex.layoutVertical]
+}];
+
+var createBlocks = function createBlocks(renderer$$1) {
+  return [1, 2, 3, 4].map(function (num) {
+    return renderer$$1(".block", num);
+  });
+};
+
+styler.add("css-classes", styles);
+
+var genericTests = (function (_ref) {
+  var h = _ref.renderer,
+      layoutComponent = _ref.layoutComponent,
+      createBlocks$$1 = _ref.createBlocks;
+
+  var blocks = createBlocks$$1(h);
+
+  return [{
+    name: "Should be aligned horizontally",
+    component: layoutComponent(h(".layout", null, blocks))
+  }, {
+    name: "Should be aligned vertically",
+    component: layoutComponent(h(".vertical-blocks", null, blocks))
+  }, {
+    name: "Should be stacked vertically and inline",
+    component: layoutComponent(h(".layout.vertical.inline", null, blocks))
+  }, {
+    name: "Should be reversed",
+    component: layoutComponent(h(".layout.horizontal.reverse", null, blocks))
+  }, {
+    name: "Should be justified horizontally",
+    component: layoutComponent(h(".layout.justified", null, blocks))
+  }, {
+    name: "Should fill the space",
+    component: layoutComponent(h(".fixed-height", null, h(".block.pe-fit")))
+  }];
+});
+
+var layoutComponent = function layoutComponent(content) {
+  return {
+    view: function view() {
+      return content;
+    }
+  };
+};
+
+var mithrilTests$5 = function mithrilTests() {
+  return [];
+};
+
+var testsMithril$4 = [].concat(genericTests({ renderer: renderer, layoutComponent: layoutComponent, createBlocks: createBlocks })).concat(mithrilTests$5({ renderer: renderer, layoutComponent: layoutComponent, createBlocks: createBlocks }));
+
 var tests$4 = (function (_ref) {
   var raisedButton$$1 = _ref.raisedButton;
 
@@ -2298,7 +2379,7 @@ var tests$4 = (function (_ref) {
   }];
 });
 
-var mithrilTests$5 = function mithrilTests(_ref) {
+var mithrilTests$6 = function mithrilTests(_ref) {
   var raisedButton$$1 = _ref.raisedButton,
       h = _ref.renderer;
 
@@ -2375,7 +2456,7 @@ var mithrilTests$5 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$4 = [].concat(tests$4({ raisedButton: raisedButton, renderer: renderer })).concat(mithrilTests$5({ raisedButton: raisedButton, renderer: renderer }));
+var testsMithril$5 = [].concat(tests$4({ raisedButton: raisedButton, renderer: renderer })).concat(mithrilTests$6({ raisedButton: raisedButton, renderer: renderer }));
 
 var tests$5 = (function (_ref) {
   var ripple$$1 = _ref.ripple;
@@ -2512,7 +2593,7 @@ var tests$5 = (function (_ref) {
   }];
 });
 
-var mithrilTests$6 = function mithrilTests(_ref) {
+var mithrilTests$7 = function mithrilTests(_ref) {
   var ripple$$1 = _ref.ripple,
       h = _ref.renderer;
 
@@ -2568,7 +2649,7 @@ var mithrilTests$6 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$5 = [].concat(tests$5({ ripple: ripple, renderer: renderer })).concat(mithrilTests$6({ ripple: ripple, renderer: renderer }));
+var testsMithril$6 = [].concat(tests$5({ ripple: ripple, renderer: renderer })).concat(mithrilTests$7({ ripple: ripple, renderer: renderer }));
 
 var tests$6 = (function (_ref) {
   var shadow$$1 = _ref.shadow;
@@ -2623,7 +2704,7 @@ var tests$6 = (function (_ref) {
   }];
 });
 
-var mithrilTests$7 = function mithrilTests(_ref) {
+var mithrilTests$8 = function mithrilTests(_ref) {
   var shadow$$1 = _ref.shadow,
       h = _ref.renderer;
 
@@ -2669,7 +2750,7 @@ var mithrilTests$7 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$6 = [].concat(tests$6({ shadow: shadow, renderer: renderer })).concat(mithrilTests$7({ shadow: shadow, renderer: renderer }));
+var testsMithril$7 = [].concat(tests$6({ shadow: shadow, renderer: renderer })).concat(mithrilTests$8({ shadow: shadow, renderer: renderer }));
 
 var iconStars$2 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>";
 
@@ -2737,7 +2818,7 @@ var tests$7 = (function (_ref) {
   }];
 });
 
-var mithrilTests$8 = function mithrilTests(_ref) {
+var mithrilTests$9 = function mithrilTests(_ref) {
   var svg$$1 = _ref.svg,
       h = _ref.renderer;
 
@@ -2785,11 +2866,11 @@ var mithrilTests$8 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$7 = [].concat(tests$7({ svg: svg, renderer: renderer })).concat(mithrilTests$8({ svg: svg, renderer: renderer }));
+var testsMithril$8 = [].concat(tests$7({ svg: svg, renderer: renderer })).concat(mithrilTests$9({ svg: svg, renderer: renderer }));
 
 // import iconAlarm from "mmsvg/google/msvg/action/alarm-add";
 
-var genericTests = (function (_ref) {
+var genericTests$1 = (function (_ref) {
   var button$$1 = _ref.button;
 
   button$$1.theme(".tests-custom-theme-blue-button", {
@@ -2877,7 +2958,7 @@ secondaryButton.theme(".tests-custom-theme-secondary-button", {
   color_light_background: "#fff"
 });
 
-var mithrilTests$9 = function mithrilTests() {
+var mithrilTests$10 = function mithrilTests() {
   return [{
     name: "Theme with deriving component: button (should be bordered with white background)",
     component: secondaryButton,
@@ -2887,7 +2968,7 @@ var mithrilTests$9 = function mithrilTests() {
   }];
 };
 
-var testsMithril$8 = [].concat(genericTests({ button: button, fab: fab /*, icon, iconButton, list, listTile, renderer*/ })).concat(mithrilTests$9());
+var testsMithril$9 = [].concat(genericTests$1({ button: button, fab: fab /*, icon, iconButton, list, listTile, renderer*/ })).concat(mithrilTests$10());
 
 
 
@@ -2896,11 +2977,12 @@ var fromMithrilTests = Object.freeze({
 	fab: testsMithril$1,
 	icon: testsMithril$2,
 	iconButton: testsMithril$3,
-	raisedButton: testsMithril$4,
-	ripple: testsMithril$5,
-	shadow: testsMithril$6,
-	svg: testsMithril$7,
-	theme: testsMithril$8
+	layoutStyles: testsMithril$4,
+	raisedButton: testsMithril$5,
+	ripple: testsMithril$6,
+	shadow: testsMithril$7,
+	svg: testsMithril$8,
+	theme: testsMithril$9
 });
 
 var testsReact = tests({ button: button$1, renderer: renderer$1 });
@@ -2911,17 +2993,29 @@ var testsReact$2 = tests$2({ renderer: renderer$1, icon: icon$1, svg: svg$1 });
 
 var testsReact$3 = tests$3({ iconButton: iconButton$1, icon: icon$1, renderer: renderer$1 });
 
-var testsReact$4 = tests$4({ raisedButton: raisedButton$1, renderer: renderer$1 });
+var layoutComponent$1 = function layoutComponent(content) {
+  return function () {
+    return content;
+  };
+};
 
-var testsReact$5 = tests$5({ ripple: ripple$1, renderer: renderer$1 });
+var reactTests$1 = function reactTests() {
+  return [];
+};
 
-var testsReact$6 = tests$6({ shadow: shadow$1, renderer: renderer$1 });
+var testsReact$4 = [].concat(genericTests({ renderer: renderer$1, layoutComponent: layoutComponent$1, createBlocks: createBlocks })).concat(reactTests$1({ renderer: renderer$1, layoutComponent: layoutComponent$1, createBlocks: createBlocks }));
 
-var testsReact$7 = tests$7({ svg: svg$1, renderer: renderer$1 });
+var testsReact$5 = tests$4({ raisedButton: raisedButton$1, renderer: renderer$1 });
+
+var testsReact$6 = tests$5({ ripple: ripple$1, renderer: renderer$1 });
+
+var testsReact$7 = tests$6({ shadow: shadow$1, renderer: renderer$1 });
+
+var testsReact$8 = tests$7({ svg: svg$1, renderer: renderer$1 });
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var reactTests$1 = function reactTests() {
+var reactTests$2 = function reactTests() {
 
   var secondaryButton = function secondaryButton(props) {
     return renderer$1(button$1, _extends$1({}, props, {
@@ -2944,7 +3038,7 @@ var reactTests$1 = function reactTests() {
   }];
 };
 
-var testsReact$8 = [].concat(genericTests({ button: button$1, renderer: renderer$1 })).concat(reactTests$1());
+var testsReact$9 = [].concat(genericTests$1({ button: button$1, renderer: renderer$1 })).concat(reactTests$2());
 
 
 
@@ -2953,11 +3047,12 @@ var fromReactTests = Object.freeze({
 	fab: testsReact$1,
 	icon: testsReact$2,
 	iconButton: testsReact$3,
-	raisedButton: testsReact$4,
-	ripple: testsReact$5,
-	shadow: testsReact$6,
-	svg: testsReact$7,
-	theme: testsReact$8
+	layoutStyles: testsReact$4,
+	raisedButton: testsReact$5,
+	ripple: testsReact$6,
+	shadow: testsReact$7,
+	svg: testsReact$8,
+	theme: testsReact$9
 });
 
 var mithrilTests = fromMithrilTests;

@@ -1,10 +1,24 @@
+import Webfont from 'webfontloader';
 import { styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
-import Webfont from 'webfontloader';
+
+var robotoStyles = [{
+  "html, body, button, input, select, textarea": {
+    fontFamily: "Roboto, Helvetica, Arial, sans-serif"
+  }
+}];
+
+var addRoboto = function addRoboto() {
+  return Webfont.load({
+    google: {
+      families: ["Roboto:400,500,700,400italic:latin"]
+    }
+  }), styler.add("pe-roboto", robotoStyles);
+};
 
 var fontSize = 14;
 
-var typography = [{
+var typographyStyles = [{
   " h1, h2, h3, h4, h5, h6, p": {
     margin: 0,
     padding: 0
@@ -96,12 +110,12 @@ var typography = [{
     "line-height": "24px",
     "letter-spacing": 0
   },
-  "b, strong": {
+  " b, strong": {
     "font-weight": vars.font_weight_medium
   }
 }];
 
-var reset = [{
+var resetStyles = [{
   // apply a natural box layout model to all elements, but allow elements to change
   " html": {
     "box-sizing": "border-box"
@@ -128,16 +142,8 @@ var reset = [{
   }
 }];
 
-Webfont.load({
-  google: {
-    families: ["Roboto:400,500,700,400italic:latin"]
-  }
-});
+var addTypography = function addTypography() {
+  return styler.add("pe-material-design-typography", resetStyles, typographyStyles);
+};
 
-var roboto = [{
-  "html, body, button, input, select, textarea": {
-    fontFamily: "Roboto, Helvetica, Arial, sans-serif"
-  }
-}];
-
-styler.add("pe-theme", reset, typography, roboto);
+export { addRoboto, addTypography };

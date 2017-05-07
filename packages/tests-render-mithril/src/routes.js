@@ -1,4 +1,5 @@
 import { mithrilTests as tests } from "polythene-tests";
+console.log("mithrilTests", tests);
 
 export default [
   {
@@ -141,9 +142,9 @@ export default [
   //   name: "CSS tools",
   //   tests: cssTests
   // },
-  // {
-  //   path: "/css-classes",
-  //   name: "CSS classes",
-  //   tests: cssClassesTests
-  // }
+  {
+    path: "/layout-styles",
+    name: "Layout styles",
+    tests: tests.layoutStyles
+  }
 ];
