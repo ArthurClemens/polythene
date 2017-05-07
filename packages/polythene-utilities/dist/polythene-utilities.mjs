@@ -1,4 +1,6 @@
 import { flex, styler } from 'polythene-core-css';
+import FastClick from 'fastclick';
+import { isTouch, subscribe } from 'polythene-core-essentials';
 
 /*
 https://gist.github.com/gre/1650294
@@ -215,6 +217,49 @@ var commonStyle = [{
   }
 }];
 
-styler.add("pe-layout", flex$1, commonStyle);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-export { easing, scrollTo, Timer };
+var layoutStyles = _extends({}, flex$1, commonStyle);
+
+var addLayoutStyles = function addLayoutStyles() {
+  return styler.add("pe-layout", flex$1, commonStyle);
+};
+
+var THROTTLE_DELAY = 100;
+var REINIT_DELAY = THROTTLE_DELAY + 50;
+var layer = document.body;
+
+var fastClick = void 0;
+var timeoutId = void 0;
+var enabled = void 0;
+
+var add = function add() {
+  if (!enabled) {
+    fastClick = new FastClick(layer);
+    enabled = true;
+  }
+};
+
+var remove = function remove() {
+  if (enabled) {
+    fastClick.destroy();
+    enabled = false;
+  }
+};
+
+var handleScroll = function handleScroll() {
+  remove();
+  if (timeoutId) {
+    window.clearTimeout(timeoutId);
+  }
+  timeoutId = window.setTimeout(add, REINIT_DELAY);
+};
+
+var addFastClick = function addFastClick() {
+  if (isTouch) {
+    subscribe("scroll", handleScroll, THROTTLE_DELAY);
+    add();
+  }
+};
+
+export { easing, scrollTo, Timer, layoutStyles, addLayoutStyles, addFastClick };

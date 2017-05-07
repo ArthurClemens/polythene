@@ -31,7 +31,9 @@ const handleScroll = () => {
   timeoutId = window.setTimeout(add, REINIT_DELAY);
 };
 
-if (isTouch) {
-  subscribe("scroll", handleScroll, THROTTLE_DELAY);
-  add();
-}
+export const addFastClick = () => {
+  if (isTouch) {
+    subscribe("scroll", handleScroll, THROTTLE_DELAY);
+    add();
+  }
+};

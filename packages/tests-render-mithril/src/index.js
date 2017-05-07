@@ -1,5 +1,5 @@
 import m from "mithril";
-import "polythene-fastclick";
+import { addLayoutStyles, addFastClick } from "polythene-utilities";
 import "polythene-material-design";
 import { rules as css } from "./styles";
 import page from "./page";
@@ -7,6 +7,9 @@ import list from "polythene-list";
 import listTile from "polythene-list-tile";
 import toolbar from "polythene-toolbar";
 import routes from "./routes";
+
+addLayoutStyles();
+addFastClick();
 
 const index = {
   oncreate: () => 

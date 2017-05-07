@@ -1,9 +1,11 @@
 # Utility functions
 
 * `easing`: Easing functions
+* `FastClick`: eliminates the 300ms delay on mobile
 * `scrollTo`: Animated scroll to a position
 * `Timer`: Simple start/stop/pause/resume timer
-* `CSS classes`: Provides common and flexbox classes
+* `Layout classes`: Provides common and flexbox classes
+
 
 
 ## easing
@@ -17,6 +19,27 @@ import { easing } from "polythene-utilities";
 
 // ...
 const val = start + change * easing.easeInOutCubic(percentage);
+~~~
+
+
+
+# FastClick
+
+Wrapper around FT Lab's [FastClick](https://github.com/ftlabs/fastclick).
+
+> FastClick is a simple, easy-to-use library for eliminating the 300ms delay between a physical tap and the firing of a click event on mobile browsers. The aim is to make your application feel less laggy and more responsive while avoiding any interference with your current logic.
+
+Because FastClick has an unresolved issue with tap events while scrolling on iOS, it is better to use the convenience wrapper provided by this component. This temporarily removes the FastClick event when an element is being scrolled.
+
+
+## Usage
+
+To simply add FastClick to your app:
+
+~~~javascript
+import { addFastClick } "polythene-utilities";
+
+addFastClick();
 ~~~
 
 
@@ -90,7 +113,7 @@ timer.stop();
 
 
 
-## CSS Classes
+## Layout classes
 
 Provides common and flexbox classes. Note that these are extra and not required for Polythene apps.
 
@@ -100,7 +123,9 @@ Provides common and flexbox classes. Note that these are extra and not required 
 #### Classes
 
 ~~~javascript
-import "polythene-utilities/css-classes";
+import { addLayoutStyles } frmo "polythene-utilities";
+
+addLayoutStyles();
 ~~~
 
 Use in Mithril elements:
