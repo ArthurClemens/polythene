@@ -1,9 +1,9 @@
 import { runSnapshots } from "../../scripts/mithril-snapshots";
-import { renderer, icon } from "polythene-mithril";
+import { renderer, Icon } from "polythene-mithril";
 import specTests from "./spec-tests.js";
 import mithrilTests from "./tests-mithril.js";
 
 runSnapshots({
-  tests: specTests({ icon, renderer }).concat(mithrilTests),
+  tests: specTests({ Icon, renderer }).concat(mithrilTests),
   renderer
 });

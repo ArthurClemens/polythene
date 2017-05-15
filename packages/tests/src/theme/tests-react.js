@@ -1,9 +1,9 @@
-import { renderer, button } from "polythene-react";
+import { renderer, button, FAB, Icon, IconButton } from "polythene-react";
 import genericTests from "./tests-generic";
 
 const reactTests = () => {
 
-  const secondaryButton = props => renderer(button, Object.assign({}, props, {
+  const SecondaryButton = props => renderer(button, Object.assign({}, props, {
     className: "tests-custom-theme-secondary-button",
     borders: true,
   }));
@@ -15,15 +15,26 @@ const reactTests = () => {
 
   return [
     {
+      section: "React specific tests",
+    },
+    {
       name: "Theme with deriving component: button (should be bordered with white background)",
-      component: secondaryButton,
+      component: SecondaryButton,
       attrs: {
         label: "Bordered button"
       }
+    },
+
+    {
+      section: "React JSX tests",
+    },
+    {
+      name: "Option: svg as content attribute (JSX)",
+      component: () => <SecondaryButton label="Bordered button" />
     },
   ];
 };
 
 export default []
-  .concat(genericTests({ button, renderer }))
+  .concat(genericTests({ button, FAB, Icon, IconButton, renderer }))
   .concat(reactTests());

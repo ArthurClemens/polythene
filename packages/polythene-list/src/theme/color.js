@@ -27,7 +27,7 @@ export default (selector, componentVars) => [
   style([
     ".pe-dark-tone",
     ".pe-dark-tone "
-  ], selector, componentVars, "dark"), // has/inside dark theme
+  ], selector, componentVars, "dark"), // has/inside dark tone
   style([
     "",
     ".pe-light-tone",

@@ -15,6 +15,6 @@ export default {
   },
 
   color_light_raised_background: rgba(vars.color_light_background),
-  // also use light background with dark theme
+  // also use light background with dark tone
   color_dark_raised_background: rgba(vars.color_light_background)
 };

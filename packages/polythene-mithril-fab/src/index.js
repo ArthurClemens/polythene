@@ -1,12 +1,12 @@
 import { statelessComponent } from "polythene-mithril-base";
-import { fab as component } from "polythene-core-fab";
-import { icon } from "polythene-mithril-icon";
+import { FAB as component } from "polythene-core-fab";
+import { Icon } from "polythene-mithril-icon";
 import { raisedButton } from "polythene-mithril-raised-button";
 
-const createProps = (vnode, args) => component.createProps(vnode, Object.assign(args, { icon }));
-const createContent = (vnode, args) => component.createContent(vnode, Object.assign(args, { icon }));
+const createProps = (vnode, args) => component.createProps(vnode, Object.assign(args, { Icon }));
+const createContent = (vnode, args) => component.createContent(vnode, Object.assign(args, { Icon }));
 
-export const fab = statelessComponent(Object.assign(
+export const FAB = statelessComponent(Object.assign(
   {},
   component,
   {
@@ -16,4 +16,4 @@ export const fab = statelessComponent(Object.assign(
   }
 ));
 
-fab.theme = component.theme;
+FAB.theme = component.theme;

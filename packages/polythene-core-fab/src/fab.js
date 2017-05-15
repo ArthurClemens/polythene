@@ -6,13 +6,12 @@ export const theme = customTheme;
 // Don't export 'element': that will be the wrapped raised button component (set in polythene-xxx-fab)
 
 // Props to be passed to a raised button, including 'content'
-
-export const createProps = (vnode, { keys: k, renderer: h, icon }) => {
+export const createProps = (vnode, { keys: k, renderer: h, Icon }) => {
   const attrs = vnode.attrs;
   const content = attrs.content
     ? attrs.content
     : attrs.icon
-      ? h(icon, attrs.icon)
+      ? h(Icon, attrs.icon)
       : attrs.children || vnode.children;
   return Object.assign(
     {},

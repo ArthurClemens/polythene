@@ -1,10 +1,10 @@
 const iconStars = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>";
 
-export default ({ icon, svg, renderer: h }) => {
+export default ({ Icon, SVG, renderer: h }) => {
   
   const trustedIconStars = h.trust(iconStars);
 
-  icon.theme(".tests-icon-themed-icon", {
+  Icon.theme(".tests-icon-themed-icon", {
     size_regular: 50,
     color_light: "purple",
     color_dark: "orange"
@@ -13,49 +13,92 @@ export default ({ icon, svg, renderer: h }) => {
   return [
     {
       name: "Child node (trusted svg children)",
-      component: icon,
+      component: Icon,
       attrs: null,
-      children: h(svg, [trustedIconStars])
+      children: h(SVG, [trustedIconStars])
     },
     {
       name: "Option: content",
-      component: icon,
+      component: Icon,
       attrs: {
         content: trustedIconStars
       }
     },
     {
       name: "Option: content (trusted svg content)",
-      component: icon,
+      component: Icon,
       attrs: {
         svg: { content: trustedIconStars }
+      }
+    },
+
+    {
+      name: "Option: style",
+      component: Icon,
+      attrs: {
+        svg: trustedIconStars,
+        style: {
+          color: "#EF6C00"
+        }
       }
     },
     {
-      name: "Option: content (svg content mmsvg)",
-      component: icon,
+      name: "Themed (color and size)",
+      component: Icon,
       attrs: {
-        svg: { content: trustedIconStars }
+        svg: trustedIconStars,
+        className: "tests-icon-themed-icon"
       }
     },
-    
+    {
+      name: "Option: type (small)",
+      component: Icon,
+      attrs: {
+        svg: trustedIconStars,
+        type: "small"
+      }
+    },
+    {
+      name: "Option: type (regular)",
+      component: Icon,
+      attrs: {
+        svg: trustedIconStars,
+        type: "regular"
+      }
+    },
+    {
+      name: "Option: type (medium)",
+      component: Icon,
+      attrs: {
+        svg: trustedIconStars,
+        type: "medium"
+      }
+    },
+    {
+      name: "Option: type (large)",
+      component: Icon,
+      attrs: {
+        svg: trustedIconStars,
+        type: "large"
+      }
+    },
     {
       name: "Option: src (image file)",
-      component: icon,
+      component: Icon,
       attrs: {
         src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png"
       }
     },
     {
       name: "Option: src (svg file)",
-      component: icon,
+      component: Icon,
       attrs: {
         src: "http://arthurclemens.github.io/assets/polythene/examples/recycle.svg"
       }
     },
     {
       name: "Option: avatar (type large)",
-      component: icon,
+      component: Icon,
       attrs: {
         src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
         avatar: true,
@@ -66,15 +109,24 @@ export default ({ icon, svg, renderer: h }) => {
     // Dark tone
 
     {
-      name: "Child node (trusted svg children) -- dark theme class (color set with style option)",
-      component: icon,
+      name: "Child node (trusted svg children) -- dark tone class (color set with style option)",
+      component: Icon,
       className: "pe-dark-tone",
       attrs: {
         style: {
           color: "#fff"
         }
       },
-      children: h(svg, [trustedIconStars])
+      children: h(SVG, [trustedIconStars])
+    },
+    {
+      name: "Themed (color and size) -- dark tone class",
+      component: Icon,
+      className: "pe-dark-tone",
+      attrs: {
+        svg: trustedIconStars,
+        className: "tests-icon-themed-icon"
+      }
     },
   ];
 };

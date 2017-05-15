@@ -102,9 +102,9 @@ var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, tint) 
 };
 
 var color = (function (selector, componentVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
   style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light tone
-  noTouchStyle(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, "dark"), // inside dark theme
+  noTouchStyle(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, "dark"), // inside dark tone
   noTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, "light")];
 });
 
@@ -129,10 +129,10 @@ var theme = customTheme;
 
 var createProps = function createProps(vnode, _ref) {
   var h = _ref.renderer,
-      icon = _ref.icon;
+      Icon = _ref.Icon;
 
   var attrs = vnode.attrs;
-  var content = attrs.content ? attrs.content : attrs.icon ? h(icon, attrs.icon) : attrs.children || vnode.children;
+  var content = attrs.content ? attrs.content : attrs.icon ? h(Icon, attrs.icon) : attrs.children || vnode.children;
   return _extends({}, {
     content: h("div", { className: classes.content }, content),
     parentClassName: [attrs.parentClassName || classes.component, attrs.compact ? classes.compact : null].join(" "),
@@ -146,10 +146,10 @@ var createContent = function createContent() {
   return null;
 };
 
-var iconButton = {
+var IconButton = {
   createProps: createProps, createContent: createContent, theme: theme,
   classes: classes,
   vars: vars$1
 };
 
-export { iconButton };
+export { IconButton };

@@ -1,6 +1,9 @@
-// import iconAlarm from "mmsvg/google/msvg/action/alarm-add";
+const alarmSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3V9z\"/></svg>";
 
-export default ({ button/*, fab, icon, iconButton, list, listTile, renderer: h*/ }) => {
+export default ({ button, FAB, Icon, IconButton, /*, list, listTile*/ renderer: h }) => {
+
+  const trustedAlarmSVG = h.trust(alarmSVG);
+
   button.theme(".tests-custom-theme-blue-button", {
     color_light_background: "#2196F3",
     color_light_text: "#fff"
@@ -11,19 +14,19 @@ export default ({ button/*, fab, icon, iconButton, list, listTile, renderer: h*/
     color_light_text: "#fff"
   });
 
-  // icon.theme(".tests-custom-theme-red-icon", {
-  //   color_light: "red"
-  // });
+  Icon.theme(".tests-custom-theme-red-icon", {
+    color_light: "red"
+  });
 
-  // fab.theme(".tests-custom-theme-red-fab", {
-  //   color_light_background: "#ff0000",
-  //   color_light: "#fff"
-  // });
+  FAB.theme(".tests-custom-theme-red-fab", {
+    color_light_background: "#ff0000",
+    color_light: "#fff"
+  });
 
-  // iconButton.theme(".tests-custom-theme-large-icon-button", {
-  //   padding: 50,
-  //   color_background: "#fff"
-  // });
+  IconButton.theme(".tests-custom-theme-large-icon-button", {
+    padding: 50,
+    color_background: "#fff"
+  });
 
   // list.theme(".tests-custom-theme-blue-list", {
   //   color_light_border: "#2196F3"
@@ -57,43 +60,43 @@ export default ({ button/*, fab, icon, iconButton, list, listTile, renderer: h*/
         label: "Unaffected button"
       }
     },
-    // {
-    //   name: "Theme with theme file (global primary color): FAB (should be orange)",
-    //   component: fab,
-    //   attrs: {
-    //     icon: {
-    //       msvg: iconAlarm
-    //     }
-    //   }
-    // },
-    // {
-    //   name: "Theme with style variables: FAB (should be red)",
-    //   component: fab,
-    //   attrs: {
-    //     className: "tests-custom-theme-red-fab",
-    //     icon: {
-    //       msvg: iconAlarm
-    //     }
-    //   }
-    // },
-    // {
-    //   name: "Theme with style variables: icon (should be red)",
-    //   component: icon,
-    //   attrs: {
-    //     className: "tests-custom-theme-red-icon",
-    //     msvg: iconAlarm
-    //   }
-    // },
-    // {
-    //   name: "Theme with style variables: icon button (should have large padding)",
-    //   component: iconButton,
-    //   attrs: {
-    //     className: "tests-custom-theme-large-icon-button",
-    //     icon: {
-    //       msvg: iconAlarm
-    //     }
-    //   }
-    // },
+    {
+      name: "Theme with theme file (global primary color): FAB (should be orange)",
+      component: FAB,
+      attrs: {
+        icon: {
+          svg: trustedAlarmSVG
+        }
+      }
+    },
+    {
+      name: "Theme with style variables: FAB (should be red)",
+      component: FAB,
+      attrs: {
+        className: "tests-custom-theme-red-fab",
+        icon: {
+          svg: trustedAlarmSVG
+        }
+      }
+    },
+    {
+      name: "Theme with style variables: icon (should be red)",
+      component: Icon,
+      attrs: {
+        className: "tests-custom-theme-red-icon",
+        svg: trustedAlarmSVG
+      }
+    },
+    {
+      name: "Theme with style variables: icon button (should have large padding)",
+      component: IconButton,
+      attrs: {
+        className: "tests-custom-theme-large-icon-button",
+        icon: {
+          svg: trustedAlarmSVG
+        }
+      }
+    },
     // {
     //   name: "Theme with style variables: list (should have blue borders)",
     //   component: list,

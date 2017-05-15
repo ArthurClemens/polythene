@@ -1,6 +1,5 @@
 import m from "mithril";
-import { shadow } from "polythene-mithril";
-import iconButton from "polythene-icon-button";
+import { shadow, IconButton } from "polythene-mithril";
 import classes from "./classes";
 
 export const controlView = (checked, attrs) => {
@@ -14,7 +13,7 @@ export const controlView = (checked, attrs) => {
     m("div", {
       class: classes.track
     }),
-    m(iconButton, Object.assign(
+    m(IconButton, Object.assign(
       {},
       {
         class: classes.thumb,

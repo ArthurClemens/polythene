@@ -1,11 +1,11 @@
 import { statelessComponent } from "polythene-react-base";
 import { icon as component } from "polythene-core-icon";
-import { svg } from "polythene-react-svg";
+import { SVG } from "polythene-react-svg";
 
-const createProps = (vnode, args) => component.createProps(vnode, Object.assign(args, { svg }));
-const createContent = (vnode, args) => component.createContent(vnode, Object.assign(args, { svg }));
+const createProps = (vnode, args) => component.createProps(vnode, Object.assign(args, { SVG }));
+const createContent = (vnode, args) => component.createContent(vnode, Object.assign(args, { SVG }));
 
-export const icon = statelessComponent(Object.assign(
+export const Icon = statelessComponent(Object.assign(
   {},
   component,
   {
@@ -14,5 +14,5 @@ export const icon = statelessComponent(Object.assign(
   }
 ));
 
-icon.theme = component.theme;
-icon.displayName = "Icon";
+Icon.theme = component.theme;
+Icon.displayName = "Icon";

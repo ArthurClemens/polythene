@@ -3,9 +3,10 @@
     ["es2015", { "modules": false }]
   ],
   "plugins": [
-    "transform-object-rest-spread",
+    "transform-async-to-generator",
     "transform-object-assign",
-    "transform-async-to-generator"
+    "transform-object-rest-spread",
+    "transform-react-jsx"
   ],
   "env": {
     "test": {

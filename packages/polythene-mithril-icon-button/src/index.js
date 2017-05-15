@@ -1,12 +1,12 @@
 import { statelessComponent } from "polythene-mithril-base";
-import { iconButton as component } from "polythene-core-icon-button";
-import { icon } from "polythene-mithril-icon";
+import { IconButton as component } from "polythene-core-icon-button";
+import { Icon } from "polythene-mithril-icon";
 import { button } from "polythene-mithril-button";
 
-const createProps = (vnode, args) => component.createProps(vnode, Object.assign(args, { icon }));
-const createContent = (vnode, args) => component.createContent(vnode, Object.assign(args, { icon }));
+const createProps = (vnode, args) => component.createProps(vnode, Object.assign(args, { Icon }));
+const createContent = (vnode, args) => component.createContent(vnode, Object.assign(args, { Icon }));
 
-export const iconButton = statelessComponent(Object.assign(
+export const IconButton = statelessComponent(Object.assign(
   {},
   component,
   {
@@ -16,4 +16,4 @@ export const iconButton = statelessComponent(Object.assign(
   }
 ));
 
-iconButton.theme = component.theme;
+IconButton.theme = component.theme;

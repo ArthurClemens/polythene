@@ -1,9 +1,9 @@
 import { statelessComponent } from "polythene-mithril-base";
-import { svg as component } from "polythene-core-svg";
+import { SVG as component } from "polythene-core-svg";
 
-export const svg = statelessComponent(Object.assign(
+export const SVG = statelessComponent(Object.assign(
   {},
   component
 ));
 
-svg.theme = component.theme;
+SVG.theme = component.theme;

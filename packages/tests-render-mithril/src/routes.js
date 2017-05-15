@@ -1,5 +1,4 @@
 import { mithrilTests as tests } from "polythene-tests";
-console.log("mithrilTests", tests);
 
 export default [
   {

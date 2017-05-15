@@ -229,16 +229,16 @@ m(tabs, {
 | **class**     | optional       | String |  | Extra CSS class appended to "pe-tabs" |
 | **style**     | optional | Object |       | For setting simple style attributes |
 | **id**        | optional       | String | | HTML element id |
-| **content**   | use `vnode.children` or `content` | Array of option objects | | Button row content; replaces `vnode.children` |
-| **before**    | optional | Mithril element | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
-| **after**     | optional | Mithril element | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
+| **content**   | use children or `content` | Array of option objects | | Button row content; replaces children |
+| **before**    | optional | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
+| **after**     | optional | String, hyperscript or component | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 ### Tabs options
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **buttons**   | -              | - |  | Deprecated; use `content` or `vnode.children` |
+| **buttons**   | -              | - |  | Deprecated; use `content` or children |
 | **tabsOpts**  | optional       | Options Object | | Tab button options that will be applied to all tabs, see "Tab button options"  below |
 | **getState**  | optional       | Function(state {Object}) | | Callback function that accepts the tabs state (Object with properties `index` {Boolean}, `data` {Object}, `el` {HTMLElement}) |
 

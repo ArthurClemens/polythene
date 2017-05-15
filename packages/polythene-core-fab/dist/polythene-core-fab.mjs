@@ -80,7 +80,7 @@ var style = function style(scopes, selector, componentVars, tint) {
 };
 
 var color = (function (selector, componentVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
   style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 });
 
@@ -102,14 +102,13 @@ var theme = customTheme;
 // Don't export 'element': that will be the wrapped raised button component (set in polythene-xxx-fab)
 
 // Props to be passed to a raised button, including 'content'
-
 var createProps = function createProps(vnode, _ref) {
   var k = _ref.keys,
       h = _ref.renderer,
-      icon = _ref.icon;
+      Icon = _ref.Icon;
 
   var attrs = vnode.attrs;
-  var content = attrs.content ? attrs.content : attrs.icon ? h(icon, attrs.icon) : attrs.children || vnode.children;
+  var content = attrs.content ? attrs.content : attrs.icon ? h(Icon, attrs.icon) : attrs.children || vnode.children;
   return _extends({}, {
     content: h("div", {
       className: classes.content
@@ -131,10 +130,10 @@ var createContent = function createContent() {
   return null;
 };
 
-var fab = {
+var FAB = {
   createProps: createProps, createContent: createContent, theme: theme,
   classes: classes,
   vars: vars$1
 };
 
-export { fab };
+export { FAB };

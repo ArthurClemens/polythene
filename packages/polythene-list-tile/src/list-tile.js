@@ -1,5 +1,5 @@
 import m from "mithril";
-import { icon, ripple } from "polythene-mithril";
+import { Icon, ripple } from "polythene-mithril";
 import { filterSupportedAttributes } from "polythene-core";
 import { customTheme } from "./theme";
 import classes from "./classes";
@@ -69,7 +69,7 @@ const secondaryContent = (secondaryAttrs = {}) => {
     m("div", {
       class: classes.content
     }, [
-      secondaryAttrs.icon ? m(icon, secondaryAttrs.icon) : null,
+      secondaryAttrs.icon ? m(Icon, secondaryAttrs.icon) : null,
       secondaryAttrs.content ? secondaryAttrs.content : null
     ])
   );

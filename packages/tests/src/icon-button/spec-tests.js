@@ -1,41 +1,41 @@
 
-export default ({ iconButton, keys }) => {
+export default ({ IconButton, keys }) => {
   return [
     {
       name: "No options",
-      component: iconButton
+      component: IconButton
     },
     {
       name: "Option: id",
-      component: iconButton,
+      component: IconButton,
       attrs: {
         id: "id-x"
       }
     },
     {
       name: "Option: className",
-      component: iconButton,
+      component: IconButton,
       attrs: {
         className: "className-x"
       }
     },
     {
       name: "Option: class",
-      component: iconButton,
+      component: IconButton,
       attrs: {
         class: "class-x"
       }
     },
     {
       name: "Option: element",
-      component: iconButton,
+      component: IconButton,
       attrs: {
         element: "a"
       }
     },
     {
       name: "Option: tabindex",
-      component: iconButton,
+      component: IconButton,
       attrs: {
         [keys.tabindex]: 3
       }

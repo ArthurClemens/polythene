@@ -1,5 +1,5 @@
 import m from 'mithril';
-import { icon } from 'polythene-mithril';
+import { Icon } from 'polythene-mithril';
 import shadow from 'polythene-shadow';
 import listTile from 'polythene-list-tile';
 import { filterSupportedAttributes } from 'polythene-core';
@@ -337,7 +337,7 @@ var style = function style(scopes, selector, componentVars, tint) {
 };
 
 var color = (function (selector, componentVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
   style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 });
 
@@ -363,7 +363,7 @@ var style$1 = function style(scopes, selector, componentVars, tint) {
 };
 
 var contentColor = (function (selector, componentVars) {
-  return [style$1([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  return [style$1([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
   style$1(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 });
 
@@ -380,7 +380,7 @@ var style$2 = function style(scopes, selector, componentVars, tint) {
 };
 
 var overlayColor = (function (selector, componentVars) {
-  return [style$2([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  return [style$2([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
   style$2(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 });
 
@@ -514,7 +514,7 @@ var createHeader = function createHeader(o) {
   var attrs = o.header || {};
   return m(listTile, _extends({}, attrs, {
     class: [classes.header, attrs.class].join(" ")
-  }, attrs.icon ? { front: m(icon, attrs.icon) } : null));
+  }, attrs.icon ? { front: m(Icon, attrs.icon) } : null));
 };
 
 var actionLayoutClasses = {

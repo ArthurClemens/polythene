@@ -165,9 +165,9 @@ If the component - or a component's parent - has option `tone` set to "dark", th
 | **class** | optional | String |  | Extra CSS class appended to `pe-list` |
 | **style**     | optional | Object |       | For setting simple style attributes |
 | **id** | optional | String | | HTML element id |
-| **content** | use `tiles` or `content` | Mithril element | | Alternative content; replaces `vnode.children` and ignores `tiles` |
-| **before** | optional | Mithril element | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
-| **after** | optional | Mithril element | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
+| **content** | use `tiles` or `content` | String, hyperscript or component | | Alternative content; replaces children and ignores `tiles` |
+| **before** | optional | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
+| **after** | optional | String, hyperscript or component | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
 | **events** | optional | Object | | Options object containing one or more standard events such as `onclick` |
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
@@ -178,7 +178,7 @@ If the component - or a component's parent - has option `tone` set to "dark", th
 | **header**        | optional | Object | | Options object for a [list tile](../polythene-list-tile); any list tile option can be used ,and in addition the options `title` and `sticky` |
 | **header.title**  | optional | String | | Title text label |
 | **header.sticky** | optional | Boolean | | Make header sticky when scrolling; [does not work in Edge](http://caniuse.com/#feat=css-sticky) |
-| **tiles**         | use `tiles` or `content` | Array of type Mithril element | | List of [list tiles](../polythene-list-tile) |
+| **tiles**         | use `tiles` or `content` | Array of type String, hyperscript or component | | List of [list tiles](../polythene-list-tile) |
 
 ### List appearance options
 

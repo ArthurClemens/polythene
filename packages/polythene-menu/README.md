@@ -317,9 +317,9 @@ If the component - or a component's parent - has option `tone` set to "dark", th
 | **class**     | optional       | String   |             | Extra CSS class appended to `pe-menu` |
 | **style**     | optional       | Object   |             | For setting simple style attributes |
 | **id**        | optional       | String   |             | HTML element id |
-| **content**   | use `content` or `vnode.children` | One or more Mithril elements | | Expects a [list](../polythene-list), or an array of lists; replaces `vnode.children` |
-| **before**    | optional       | Mithril element | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
-| **after**     | optional       | Mithril element | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
+| **content**   | use `content` or children | String, hyperscript or component | | Expects a [list](../polythene-list), or an array of lists; replaces children |
+| **before**    | optional       | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
+| **after**     | optional       | String, hyperscript or component | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
 | **events**    | optional       | Object | | Options object containing one or more standard events such as `onclick` |
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 

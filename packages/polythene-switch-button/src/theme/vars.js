@@ -1,6 +1,6 @@
 import { vars } from "polythene-theme";
 import { vars as selectionControlVars } from "polythene-selection-control";
-import { vars as iconButtonVars } from "polythene-icon-button";
+import { vars as iconButtonVars } from "polythene-core-icon-button";
 
 const rgba = vars.rgba;
 const hit_area_padding = (vars.grid_unit_icon_button - vars.unit_icon_size) / 2; // 12

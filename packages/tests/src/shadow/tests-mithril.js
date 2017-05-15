@@ -40,7 +40,7 @@ const mithrilTests = ({ shadow, renderer: h }) => {
     // Dark tone
 
     {
-      name: "Interactive option: animated -- dark theme class",
+      name: "Interactive option: animated -- dark tone class",
       interactive: true,
       className: "pe-dark-tone",
       component: interactiveTest

@@ -17,6 +17,7 @@ export const rules = {
   listItem: "li.mv1",
   results: ".results",
   resultRow: `.result-row.flex-column${bottomBorder}${resultHeight}.pv2`,
+  sectionTitle: ".flex.flex-row-ns.f4.mt5.mr3.mb3.ml3",
   resultTitle: ".flex.flex-row-ns.f5.ma3",
   resultData: ".flex.flex-column.flex-row-l.mv3",
   resultDataRendered: ".result.relative.flex-none.flex-l.flex-one.ma3.minh4",

@@ -40,7 +40,7 @@ var vars$1 = {
   },
 
   color_light_raised_background: rgba(vars.color_light_background),
-  // also use light background with dark theme
+  // also use light background with dark tone
   color_dark_raised_background: rgba(vars.color_light_background)
 };
 
@@ -107,7 +107,7 @@ var style = function style(scopes, selector, componentVars, tint) {
 };
 
 var color = (function (selector, componentVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
   style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 });
 

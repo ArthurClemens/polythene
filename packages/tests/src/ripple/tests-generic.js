@@ -103,7 +103,7 @@ export default ({ ripple }) => {
     // Dark tone
 
     {
-      name: "Option: style (white) -- dark theme class",
+      name: "Option: style (white) -- dark tone class",
       interactive: true,
       exclude: true,
       className: "pe-dark-tone",
@@ -116,7 +116,7 @@ export default ({ ripple }) => {
       }
     },
     {
-      name: "Dark tone class + light theme class",
+      name: "Dark tone class + light tone class",
       interactive: true,
       exclude: true,
       className: "pe-dark-tone",

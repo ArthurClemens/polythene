@@ -1,6 +1,5 @@
 import m from "mithril";
-import { icon } from "polythene-mithril";
-import iconButton from "polythene-icon-button";
+import { Icon, IconButton } from "polythene-mithril";
 import classes from "./classes";
 
 const createIcon = (onOffType, attrs) => (
@@ -23,18 +22,18 @@ export const controlView = (checked, attrs) =>
   m("div", {
     class: classes.box
   },
-  m(iconButton, Object.assign(
+  m(IconButton, Object.assign(
     {},
     {
       element: "div",
       class: classes.button,
       content: [
-        m(icon, createIcon("iconOn", Object.assign(
+        m(Icon, createIcon("iconOn", Object.assign(
           {},
           attrs,
           { class: classes.buttonOn }
         ))),
-        m(icon, createIcon("iconOff", Object.assign(
+        m(Icon, createIcon("iconOff", Object.assign(
           {},
           attrs,
           { class: classes.buttonOff }

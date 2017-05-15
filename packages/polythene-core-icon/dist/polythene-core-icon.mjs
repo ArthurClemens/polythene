@@ -75,7 +75,7 @@ var style = function style(scopes, selector, componentVars, tint) {
 };
 
 var color = (function (selector, componentVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
   style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 });
 
@@ -119,10 +119,10 @@ var createProps = function createProps(vnode, _ref) {
 
 var createContent = function createContent(vnode, _ref2) {
   var h = _ref2.renderer,
-      svg = _ref2.svg;
+      SVG = _ref2.SVG;
 
   var attrs = vnode.attrs;
-  return attrs.content ? attrs.content : attrs.svg ? h(svg, attrs.svg) : attrs.msvg ? h(svg, attrs.msvg) : attrs.src ? h("img", { src: attrs.src }) : attrs.children || vnode.children;
+  return attrs.content ? attrs.content : attrs.svg ? h(SVG, attrs.svg) : attrs.src ? h("img", { src: attrs.src }) : attrs.children || vnode.children;
 };
 
 var icon = {

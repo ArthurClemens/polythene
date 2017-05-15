@@ -22,9 +22,9 @@ export const createProps = (vnode, { keys: k }) => {
   );
 };
 
-export const createContent = (vnode) => {
+export const createContent = vnode => {
   const attrs = vnode.attrs;
   return attrs.content
     ? attrs.content
-    : attrs.children || vnode.children;
+    : attrs.children || vnode.children || attrs;
 };

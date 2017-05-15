@@ -26,6 +26,9 @@ const Page = ({name, tests, /*previous*/}) =>
       className: `tests-${name.replace(/[:\-+()\[\]]/ug, "").replace(/ /g, "-").toLowerCase()}`
     },
     tests.map((test, index) => {
+      if (test.section) {
+        return h(css.sectionTitle, test.section);
+      }
       const testName = `test-${(test.name).replace(/[:\-+\[\]()]/ug, "").replace(/ /g, "-").toLowerCase()}`;
       // const uid = "id-" + index;
       return h([css.resultRow, test.interactive ? css.interactive : null].join(""), {

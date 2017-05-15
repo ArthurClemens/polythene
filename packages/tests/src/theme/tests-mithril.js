@@ -4,10 +4,8 @@ Testing 2 theming methods:
 2. Deriving components
 */
 
-import { renderer, button, fab } from "polythene-mithril";
+import { renderer, button, FAB, Icon, IconButton } from "polythene-mithril";
 
-// import icon from "polythene-icon";
-// import iconButton from "polythene-icon-button";
 // import list from "polythene-list";
 // import listTile from "polythene-list-tile";
 
@@ -31,6 +29,9 @@ secondaryButton.theme(".tests-custom-theme-secondary-button", {
 
 const mithrilTests = () => [
   {
+    section: "Mithril specific tests",
+  },
+  {
     name: "Theme with deriving component: button (should be bordered with white background)",
     component: secondaryButton,
     attrs: {
@@ -40,5 +41,5 @@ const mithrilTests = () => [
 ];
 
 export default []
-  .concat(genericTests({ button, fab/*, icon, iconButton, list, listTile, renderer*/ }))
+  .concat(genericTests({ button, FAB, Icon, IconButton, renderer /*, list, listTile*/ }))
   .concat(mithrilTests());

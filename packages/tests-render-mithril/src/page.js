@@ -5,8 +5,9 @@ import toolbar from "polythene-toolbar";
 import dialog from "polythene-dialog";
 import notification from "polythene-notification";
 import snackbar from "polythene-snackbar";
-// import iconButton from "polythene-icon-button";
+import { IconButton } from "polythene-mithril";
 // import iconBack from "mmsvg/google/msvg/navigation/arrow-back";
+const iconBack = m.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z\"/></svg>");
 
 const generatedHtml = {
   oninit: vnode => (
@@ -35,21 +36,24 @@ export default (name, tests, previous) => ({
         backgroundColor: "rgba(255,255,255,.93)"
       }
     }, [
-      // previous && m(iconButton, {
-      //   icon: { msvg: iconBack },
-      //   url: {
-      //     href: "/",
-      //     oncreate: m.route.link
-      //   },
-      //   style: {
-      //     color: "#0091EA"
-      //   }
-      // }),
+      previous && m(IconButton, {
+        icon: { svg: iconBack },
+        url: {
+          href: "/",
+          oncreate: m.route.link
+        },
+        style: {
+          color: "#0091EA"
+        }
+      }),
       m("span", name)
     ])),
     m([css.results].join(" "), {
       className: `tests-${name.replace(/[:\-+()\[\]]/ug, "").replace(/ /g, "-").toLowerCase()}`
     }, tests.map((test, index) => {
+      if (test.section) {
+        return m(css.sectionTitle, test.section);
+      }
       const testName = `test-${(test.name).replace(/[:\-+\[\]()]/ug, "").replace(/ /g, "-").toLowerCase()}`;
       const uid = "id-" + index;
       return m([css.resultRow, test.interactive ? css.interactive : null].join(""), {

@@ -143,7 +143,7 @@ export default ({ raisedButton }) => {
     // Dark tone
 
     {
-      name: "Option: label -- dark theme class (should be app's primary color)",
+      name: "Option: label -- dark tone class (should be app's primary color)",
       component: raisedButton,
       className: "pe-dark-tone",
       attrs: {
@@ -152,7 +152,7 @@ export default ({ raisedButton }) => {
     },
 
     {
-      name: "Option: disabled -- dark theme class",
+      name: "Option: disabled -- dark tone class",
       component: raisedButton,
       className: "pe-dark-tone",
       attrs: {

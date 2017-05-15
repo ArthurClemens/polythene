@@ -1,95 +1,26 @@
-import { renderer, icon, svg } from "polythene-mithril";
+import { renderer, Icon, SVG } from "polythene-mithril";
 import genericTests from "./tests-generic";
-import iconStars from "mmsvg/google/msvg/action/stars";
-import wrenchSvg from "mmsvg/zondicons/msvg/wrench";
 
-const mithrilTests = ({ icon, renderer: h }) => {
+const iconStars = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>";
+
+const mithrilTests = ({ Icon, renderer: h }) => {
+  const trustedIconStars = h.trust(iconStars);
   return [
     {
-      name: "Option: msvg",
-      component: icon,
-      attrs: {
-        msvg: iconStars
-      }
+      section: "Mithril specific tests",
     },
     {
-      name: "Option: style",
-      component: icon,
-      attrs: {
-        msvg: iconStars,
-        style: {
-          color: "#EF6C00"
-        }
-      }
-    },
-    {
-      name: "Themed (color and size)",
-      component: icon,
-      attrs: {
-        msvg: iconStars,
-        className: "tests-icon-themed-icon"
-      }
-    },
-    {
-      name: "Option: type (small)",
-      component: icon,
-      attrs: {
-        msvg: iconStars,
-        type: "small"
-      }
-    },
-    {
-      name: "Option: type (regular)",
-      component: icon,
-      attrs: {
-        msvg: iconStars,
-        type: "regular"
-      }
-    },
-    {
-      name: "Option: type (medium)",
-      component: icon,
-      attrs: {
-        msvg: iconStars,
-        type: "medium"
-      }
-    },
-    {
-      name: "Option: type (large)",
-      component: icon,
-      attrs: {
-        msvg: iconStars,
-        type: "large"
-      }
-    },
-    {
-      name: "Option: msvg (Zondicons)",
-      component: icon,
-      attrs: {
-        msvg: wrenchSvg
-      }
-    },
-    {
-      name: "Themed (color and size) -- dark theme class",
-      component: icon,
-      className: "pe-dark-tone",
-      attrs: {
-        msvg: iconStars,
-        className: "tests-icon-themed-icon"
-      }
-    },
-    {
-      name: "Dark tone class + light theme class",
+      name: "Dark tone class + light tone class",
       className: "pe-dark-tone",
       component: {
         view: () => h(".pe-light-tone", {
           style: { background: "#fff" }
         }, [
-          h(icon, {
-            msvg: iconStars
+          h(Icon, {
+            svg: trustedIconStars
           }),
-          h(icon, {
-            msvg: iconStars,
+          h(Icon, {
+            svg: trustedIconStars,
             className: "tests-icon-themed-icon"
           })
         ])
@@ -102,12 +33,12 @@ const mithrilTests = ({ icon, renderer: h }) => {
         view: () => h("div", {
           style: { background: "#fff" }
         }, [
-          h(icon, {
-            msvg: iconStars,
+          h(Icon, {
+            svg: trustedIconStars,
             tone: "light"
           }),
-          h(icon, {
-            msvg: iconStars,
+          h(Icon, {
+            svg: trustedIconStars,
             tone: "light",
             className: "tests-icon-themed-icon"
           })
@@ -118,5 +49,5 @@ const mithrilTests = ({ icon, renderer: h }) => {
 };
 
 export default []
-  .concat(genericTests({ icon, svg, renderer }))
-  .concat(mithrilTests({ icon, svg, renderer }));
+  .concat(genericTests({ Icon, SVG, renderer }))
+  .concat(mithrilTests({ Icon, SVG, renderer }));

@@ -3,8 +3,8 @@ import { button, filterSupportedAttributes, isTouch, subscribe, unsubscribe } fr
 import { scrollTo } from 'polythene-utilities';
 import { flex, mixin, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
-import iconButton, { vars as vars$1 } from 'polythene-icon-button';
-import { button as button$1, icon } from 'polythene-mithril';
+import { vars as vars$1 } from 'polythene-core-icon-button';
+import { Icon, button as button$1, iconButton } from 'polythene-mithril';
 
 var classes = {
   component: "pe-tabs",
@@ -328,7 +328,7 @@ var style = function style(scopes, selector, componentVars, tint) {
 };
 
 var color = (function (selector, componentVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
   style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 });
 
@@ -362,7 +362,7 @@ var view$1 = function view(vnode) {
   attrs.events = attrs.events || {};
   attrs.events.onclick = attrs.events.onclick || function () {};
   var tabButtonOptions = _extends$2({}, attrs, {
-    content: m("div", { class: classes.tabContent }, [attrs.icon ? m(icon, attrs.icon) : null, attrs.label ? m("div", { class: classes.label }, m("span", attrs.label)) : null]),
+    content: m("div", { class: classes.tabContent }, [attrs.icon ? m(Icon, attrs.icon) : null, attrs.label ? m("div", { class: classes.label }, m("span", attrs.label)) : null]),
     class: [classes.tab, attrs.icon && attrs.label ? classes.tabHasIcon : null, attrs.class].join(" "),
     selected: attrs.selected,
     wash: false,
@@ -389,10 +389,10 @@ var tab = {
 
 var view$2 = function view(vnode) {
   var attrs = vnode.attrs;
-  var icon$$1 = attrs.position === "start" ? attrs.icon || arrowBackward : attrs.icon || arrowForward;
+  var icon = attrs.position === "start" ? attrs.icon || arrowBackward : attrs.icon || arrowForward;
   return m(iconButton, {
     class: [classes.scrollButton, attrs.class].join(" "),
-    icon: icon$$1,
+    icon: icon,
     ripple: { center: true },
     events: attrs.events,
     oncreate: function oncreate(vnode) {

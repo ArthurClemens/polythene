@@ -7,12 +7,12 @@ export const theme = customTheme;
 
 // Props to be passed to a button, including 'content'
 
-export const createProps = (vnode, { renderer: h, icon }) => {
+export const createProps = (vnode, { renderer: h, Icon }) => {
   const attrs = vnode.attrs;
   const content = attrs.content
     ? attrs.content
     : attrs.icon
-      ? h(icon, attrs.icon)
+      ? h(Icon, attrs.icon)
       : attrs.children || vnode.children;
   return Object.assign(
     {},

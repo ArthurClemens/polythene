@@ -1,22 +1,22 @@
 import { statelessComponent } from 'polythene-react-base';
 import { icon } from 'polythene-core-icon';
-import { svg } from 'polythene-react-svg';
+import { SVG } from 'polythene-react-svg';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var createProps = function createProps(vnode, args) {
-  return icon.createProps(vnode, _extends(args, { svg: svg }));
+  return icon.createProps(vnode, _extends(args, { SVG: SVG }));
 };
 var createContent = function createContent(vnode, args) {
-  return icon.createContent(vnode, _extends(args, { svg: svg }));
+  return icon.createContent(vnode, _extends(args, { SVG: SVG }));
 };
 
-var icon$1 = statelessComponent(_extends({}, icon, {
+var Icon = statelessComponent(_extends({}, icon, {
   createProps: createProps,
   createContent: createContent
 }));
 
-icon$1.theme = icon.theme;
-icon$1.displayName = "Icon";
+Icon.theme = icon.theme;
+Icon.displayName = "Icon";
 
-export { icon$1 as icon };
+export { Icon };

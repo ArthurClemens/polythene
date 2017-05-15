@@ -203,8 +203,8 @@ m(slider, {
 | **element**   | optional       | String   | "div"       | HTML element tag |
 | **class**     | optional       | String   |             | Extra CSS class appended to `pe-slider` |
 | **id**        | optional       | String   |             | HTML element id |
-| **before**    | optional       | Mithril element |      | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
-| **after**     | optional       | Mithril element |      | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
+| **before**    | optional       | String, hyperscript or component |      | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
+| **after**     | optional       | String, hyperscript or component |      | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
 | **tabindex**  | optional       | Integer  | 0           | Tab index |
 | **events** | optional | Object | | Options object containing one or more standard events such as `onclick` |
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
@@ -227,7 +227,7 @@ m(slider, {
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **thumb** | optional | Mithril element | | Adds a Mithril element to the slider control |
+| **thumb** | optional | String, hyperscript or component | | Adds a String, hyperscript or component to the slider control |
 
 
 

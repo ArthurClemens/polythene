@@ -146,7 +146,7 @@ export default ({ button }) => {
     // Dark tone class
     
     {
-      name: "Option: label -- dark theme class",
+      name: "Option: label -- dark tone class",
       className: "pe-dark-tone",
       component: button,
       attrs: {
@@ -154,7 +154,7 @@ export default ({ button }) => {
       }
     },
     {
-      name: "Option: tone \"dark\" -- dark theme class",
+      name: "Option: tone \"dark\" -- dark tone class",
       className: "test-dark-theme",
       component: button,
       attrs: {
@@ -163,7 +163,7 @@ export default ({ button }) => {
       }
     },
     {
-      name: "Themed button -- dark theme class",
+      name: "Themed button -- dark tone class",
       className: "pe-dark-tone",
       component: button,
       attrs: {
@@ -172,7 +172,7 @@ export default ({ button }) => {
       }
     },
     {
-      name: "Themed button blue on dark -- dark theme class",
+      name: "Themed button blue on dark -- dark tone class",
       className: "pe-dark-tone",
       component: button,
       attrs: {
@@ -181,11 +181,11 @@ export default ({ button }) => {
       }
     },
     {
-      name: "Themed button: (option: borders) -- dark theme class",
+      name: "Themed button: (option: borders) -- dark tone class",
       className: "pe-dark-tone",
       component: button,
       attrs: {
-        label: "Borders dark theme",
+        label: "Borders dark tone",
         className: "tests-button-bordered-button",
         borders: true
       }

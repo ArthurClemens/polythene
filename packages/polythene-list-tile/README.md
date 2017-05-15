@@ -184,8 +184,8 @@ If the component - or a component's parent - has option `tone` set to "dark", th
 | **style**     | optional | Object |       | For setting simple style attributes |
 | **id** | optional | String | | HTML element id |
 | **events** | optional | Object | | Options object containing one or more standard events such as `onclick` |
-| **before** | optional | Mithril element | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
-| **after** | optional | Mithril element | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
+| **before** | optional | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
+| **after** | optional | String, hyperscript or component | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 ### List tile content options
@@ -213,11 +213,11 @@ If the component - or a component's parent - has option `tone` set to "dark", th
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **content** | optional | Mithril element | | Any primary content; replaces `vnode.children` and ignores `title`, `subTitle` and `highSubtitle` |
+| **content** | optional | String, hyperscript or component | | Any primary content; replaces children and ignores `title`, `subTitle` and `highSubtitle` |
 | **title** | optional | String | | The text content |
 | **subtitle** | optional | String | | Secondary text content (1 line high) |
 | **highSubtitle** | optional | String | | Secondary text content (2 lines high) |
-| **front** | optional | Mithril element or component |  | Content to show at the left of the primary content |
+| **front** | optional | String, hyperscript or component |  | Content to show at the left of the primary content |
 | **url** | optional | Object with `href`, optionally `oncreate` | | URL location; for in-app route linking set `oncreate : m.route.link` |
 
 ### List tile secondary content options
@@ -227,7 +227,7 @@ If the component - or a component's parent - has option `tone` set to "dark", th
 | **secondary.element** | optional | String | See "Layout of secondary content" below | HTML element for secondary content |
 | **secondary.icon** | optional | Object |  | [icon](../polythene-icon) options object for icon in secondary content; will be placed above secondary.content |
 | **secondary.url** | optional | Object with `href`, optionally `oncreate` | | URL for secondary content; for in-app route linking set `oncreate : m.route.link` |
-| **secondary.content** | optional | Mithril element | | Secondary content |
+| **secondary.content** | optional | String, hyperscript or component | | Secondary content |
 
 
 

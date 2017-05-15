@@ -34,15 +34,13 @@ export const createProps = (vnode, { keys: k }) => {
   );
 };
 
-export const createContent = (vnode, { renderer: h, svg }) => {
+export const createContent = (vnode, { renderer: h, SVG }) => {
   const attrs = vnode.attrs;
   return attrs.content
     ? attrs.content
     : attrs.svg
-      ? h(svg, attrs.svg)
-      : attrs.msvg
-        ? h(svg, attrs.msvg)
-        : attrs.src
-          ? h("img", { src: attrs.src })
-          : attrs.children || vnode.children;
+      ? h(SVG, attrs.svg)
+      : attrs.src
+        ? h("img", { src: attrs.src })
+        : attrs.children || vnode.children;
 };

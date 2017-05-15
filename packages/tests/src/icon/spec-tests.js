@@ -1,34 +1,34 @@
 
-export default ({ icon }) => {
+export default ({ Icon }) => {
   return [
     {
       name: "No options",
-      component: icon
+      component: Icon
     },
     {
       name: "Option: id",
-      component: icon,
+      component: Icon,
       attrs: {
         id: "id-x"
       }
     },
     {
       name: "Option: className",
-      component: icon,
+      component: Icon,
       attrs: {
         className: "className-x"
       }
     },
     {
       name: "Option: class",
-      component: icon,
+      component: Icon,
       attrs: {
         class: "class-x"
       }
     },
     {
       name: "Option: element",
-      component: icon,
+      component: Icon,
       attrs: {
         element: "a"
       }

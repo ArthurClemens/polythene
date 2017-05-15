@@ -1,12 +1,12 @@
 import { statefulComponent } from "polythene-react-base";
-import { iconButton as component } from "polythene-core-icon-button";
-import { icon } from "polythene-react-icon";
+import { IconButton as component } from "polythene-core-icon-button";
+import { Icon } from "polythene-react-icon";
 import { button } from "polythene-react-button";
 
-const createProps = (vnode, args) => component.createProps(vnode, Object.assign(args, { icon }));
-const createContent = (vnode, args) => component.createContent(vnode, Object.assign(args, { icon }));
+const createProps = (vnode, args) => component.createProps(vnode, Object.assign(args, { Icon }));
+const createContent = (vnode, args) => component.createContent(vnode, Object.assign(args, { Icon }));
 
-export const iconButton = statefulComponent(Object.assign(
+export const IconButton = statefulComponent(Object.assign(
   {},
   component,
   {
@@ -16,5 +16,5 @@ export const iconButton = statefulComponent(Object.assign(
   }
 ));
 
-iconButton.theme = component.theme;
-iconButton.displayName = "IconButton";
+IconButton.theme = component.theme;
+IconButton.displayName = "IconButton";

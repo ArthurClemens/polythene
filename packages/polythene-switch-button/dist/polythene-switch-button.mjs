@@ -1,9 +1,9 @@
 import m from 'mithril';
 import { layout, selectionControl, vars } from 'polythene-selection-control';
-import { shadow } from 'polythene-mithril';
-import iconButton, { vars as vars$1 } from 'polythene-icon-button';
+import { iconButton, shadow } from 'polythene-mithril';
 import { mixin, styler } from 'polythene-core-css';
-import { vars as vars$2 } from 'polythene-theme';
+import { vars as vars$1 } from 'polythene-theme';
+import { vars as vars$2 } from 'polythene-core-icon-button';
 
 var classes = {
   component: "pe-switch-control",
@@ -40,30 +40,30 @@ var controlView = function controlView(checked, attrs) {
 
 var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var rgba = vars$2.rgba;
-var hit_area_padding = (vars$2.grid_unit_icon_button - vars$2.unit_icon_size) / 2; // 12
+var rgba = vars$1.rgba;
+var hit_area_padding = (vars$1.grid_unit_icon_button - vars$1.unit_icon_size) / 2; // 12
 
 var vars$3 = _extends$3({}, vars, {
   track_height: 14,
   track_length: 36,
   thumb_size: 20,
-  padding: vars$2.grid_unit_component,
-  icon_button_padding: vars$1.padding,
+  padding: vars$1.grid_unit_component,
+  icon_button_padding: vars$2.padding,
   hit_area_padding: hit_area_padding,
 
-  animation_duration: vars$2.animation_duration,
+  animation_duration: vars$1.animation_duration,
 
-  color_light_thumb_on: rgba(vars$2.color_primary),
+  color_light_thumb_on: rgba(vars$1.color_primary),
   color_light_thumb_off: "#f1f1f1",
   color_light_thumb_disabled: "#bdbdbd",
-  color_light_wash_on: rgba(vars$2.color_primary),
-  color_light_wash_off: vars$1.color_light_wash,
+  color_light_wash_on: rgba(vars$1.color_primary),
+  color_light_wash_off: vars$2.color_light_wash,
 
-  color_light_track_on: rgba(vars$2.color_primary_faded),
+  color_light_track_on: rgba(vars$1.color_primary_faded),
   color_light_track_on_opacity: .55,
-  color_light_track_off: rgba(vars$2.color_light_foreground, vars$2.blend_light_text_regular),
+  color_light_track_off: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_regular),
   color_light_track_off_opacity: .55,
-  color_light_track_disabled: rgba(vars$2.color_light_foreground, vars$2.blend_light_background_disabled),
+  color_light_track_disabled: rgba(vars$1.color_light_foreground, vars$1.blend_light_background_disabled),
   color_light_track_disabled_opacity: 1,
 
   // icon color may be set in theme; default "currentcolor"
@@ -72,13 +72,13 @@ var vars$3 = _extends$3({}, vars, {
 
   // color_light_focus_on and so on taken from selectionControlVars
 
-  color_dark_thumb_on: rgba(vars$2.color_primary),
+  color_dark_thumb_on: rgba(vars$1.color_primary),
   color_dark_thumb_off: "#bdbdbd",
   color_dark_thumb_disabled: "#555",
-  color_dark_wash_on: rgba(vars$2.color_primary),
-  color_dark_wash_off: vars$1.color_dark_wash,
+  color_dark_wash_on: rgba(vars$1.color_primary),
+  color_dark_wash_off: vars$2.color_dark_wash,
 
-  color_dark_track_on: rgba(vars$2.color_primary_faded, vars$2.blend_dark_text_tertiary), // or "#5a7f7c"
+  color_dark_track_on: rgba(vars$1.color_primary_faded, vars$1.blend_dark_text_tertiary), // or "#5a7f7c"
   color_dark_track_on_opacity: 9,
   color_dark_track_off: "#717171",
   color_dark_track_off_opacity: .55,
@@ -95,7 +95,7 @@ var transition = function transition(componentVars, properties) {
 };
 
 var customSize = function customSize(componentVars, size) {
-  var factor = size / vars$2.unit_icon_size;
+  var factor = size / vars$1.unit_icon_size;
   var thumbSize = Math.floor(0.5 * componentVars.thumb_size * factor) * 2; // round to even
   var scaledTrackHeight = Math.floor(0.5 * componentVars.track_height * factor) * 2; // round to even
   var scaledTrackWidth = Math.floor(0.5 * componentVars.track_length * factor) * 2;
@@ -176,10 +176,10 @@ var layout$1 = (function (selector, componentVars) {
 
     " .pe-button__focus": [transition(componentVars, "all")],
 
-    ".pe-control--small": customSize(componentVars, vars$2.unit_icon_size_small),
-    ".pe-control--regular": customSize(componentVars, vars$2.unit_icon_size),
-    ".pe-control--medium": customSize(componentVars, vars$2.unit_icon_size_medium),
-    ".pe-control--large": customSize(componentVars, vars$2.unit_icon_size_large)
+    ".pe-control--small": customSize(componentVars, vars$1.unit_icon_size_small),
+    ".pe-control--regular": customSize(componentVars, vars$1.unit_icon_size),
+    ".pe-control--medium": customSize(componentVars, vars$1.unit_icon_size_medium),
+    ".pe-control--large": customSize(componentVars, vars$1.unit_icon_size_large)
   })]);
 });
 
@@ -263,9 +263,9 @@ var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, tint) 
 };
 
 var color = (function (selector, componentVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
   style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light tone
-  noTouchStyle(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, "dark"), // inside dark theme
+  noTouchStyle(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, "dark"), // inside dark tone
   noTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, "light")];
 });
 

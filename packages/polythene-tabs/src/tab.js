@@ -1,5 +1,5 @@
 import m from "mithril";
-import { icon, button } from "polythene-mithril";
+import { Icon, button } from "polythene-mithril";
 import classes from "./classes";
 
 const view = vnode => {
@@ -12,7 +12,7 @@ const view = vnode => {
     attrs,
     {
       content: m("div", { class: classes.tabContent }, [
-        attrs.icon ? m(icon, attrs.icon) : null,
+        attrs.icon ? m(Icon, attrs.icon) : null,
         attrs.label
           ? m("div", { class: classes.label }, m("span", attrs.label))
           : null,

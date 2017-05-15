@@ -393,9 +393,9 @@ Note that the container has `position: relative`. The messages will have `positi
 | **class**     | optional       | String   |             | Extra CSS class appended to `pe-notification` |
 | **style**     | optional       | Object   |             | For setting simple style attributes |
 | **id**        | optional       | String   |             | HTML element id |
-| **content**   | optional       | Mithril element | | Alternative content; replaces `title` |
-| **before**    | optional       | Mithril element | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
-| **after**     | optional       | Mithril element | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
+| **content**   | optional       | String, hyperscript or component | | Alternative content; replaces `title` |
+| **before**    | optional       | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
+| **after**     | optional       | String, hyperscript or component | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
 | **theme**     | optional       | String: "dark" or "light" | "dark" | If "dark", adds class `pe-dark-tone` |
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
@@ -405,7 +405,7 @@ Note that the container has `position: relative`. The messages will have `positi
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **containerSelector** | optional | String |  | Selector of container HTML element that will be animated with the notification (does not need to be the direct parent); for instance if a FAB button needs to move together with the notification, both the FAB and notification will be placed in the same container; transitions will then move both simultaneously; if set, the notification's `position` will be `absolute` (default: `fixed`) |
 | **title** | required | String | | Text |
-| **action** | optional | Mithril element | | Will likely contain a button |
+| **action** | optional | String, hyperscript or component | | Will likely contain a button |
 | **timeout** | optional | Number (seconds) | 3 | How long the notification should be displayed before it hides automatically; use `0` to not hide automatically |
 | **dismissSelector** | optional | String | | Not used yet; will implement "Disappear after user interaction elsewhere" |
 

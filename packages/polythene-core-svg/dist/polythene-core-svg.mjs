@@ -44,7 +44,7 @@ var style = function style(scopes, selector, componentVars, tint) {
 };
 
 var color = (function (selector, componentVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
   style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 });
 
@@ -76,13 +76,13 @@ var createProps = function createProps(vnode, _ref) {
 
 var createContent = function createContent(vnode) {
   var attrs = vnode.attrs;
-  return attrs.content ? attrs.content : attrs.children || vnode.children;
+  return attrs.content ? attrs.content : attrs.children || vnode.children || attrs;
 };
 
-var svg = {
+var SVG = {
   createProps: createProps, createContent: createContent, theme: theme, element: element,
   classes: classes,
   vars: vars
 };
 
-export { svg };
+export { SVG };

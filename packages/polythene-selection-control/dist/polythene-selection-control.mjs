@@ -1,7 +1,6 @@
 import m from 'mithril';
 import { filterSupportedAttributes } from 'polythene-core';
-import { icon } from 'polythene-mithril';
-import iconButton from 'polythene-icon-button';
+import { Icon, iconButton } from 'polythene-mithril';
 import { vars } from 'polythene-theme';
 import { flex, mixin } from 'polythene-core-css';
 
@@ -154,7 +153,7 @@ var controlView = function controlView(checked, attrs) {
   }, m(iconButton, _extends$1({}, {
     element: "div",
     class: classes.button,
-    content: [m(icon, createIcon("iconOn", _extends$1({}, attrs, { class: classes.buttonOn }))), m(icon, createIcon("iconOff", _extends$1({}, attrs, { class: classes.buttonOff })))],
+    content: [m(Icon, createIcon("iconOn", _extends$1({}, attrs, { class: classes.buttonOn }))), m(Icon, createIcon("iconOff", _extends$1({}, attrs, { class: classes.buttonOff })))],
     ripple: { center: true },
     disabled: attrs.disabled,
     events: attrs.events
@@ -258,7 +257,7 @@ var style = function style(scopes, selector, componentVars, tint) {
 };
 
 var color = (function (selector, componentVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark theme
+  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
   style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 });
 

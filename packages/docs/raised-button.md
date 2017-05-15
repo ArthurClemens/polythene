@@ -36,7 +36,7 @@ raisedButton.theme(".themed-raised-button", {
 });
 
 m(raisedButton, {
-  class: "themed-raised-button",
+  className: "themed-raised-button",
   // ... other options
 });
 ~~~

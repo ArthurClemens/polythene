@@ -45,7 +45,7 @@ const myListTile = m(listTile, {
   title: "Title",
   after: m(ripple, {
     constrained: false,
-    class: "colored-ripple"
+    className: "colored-ripple"
   })
 });
 ~~~
@@ -68,7 +68,7 @@ ripple.theme(".themed-ripple", {
 });
 
 m(ripple, {
-  class: "themed-ripple",
+  className: "themed-ripple",
   // ... other options
 });
 ~~~
@@ -113,8 +113,8 @@ If the component - or a component's parent - has option `tone` set to "dark", th
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **element** | optional | String | "div" | HTML element tag |
-| **class** | optional | String |  | Extra CSS class appended to `pe-ripple` |
+| **element**   | optional | String | "div" | HTML element tag |
+| **className** | optional | String |  | Extra CSS class appended to `pe-ripple` |
 | **style**     | optional | Object |       | For setting simple style attributes |
 | **id** | optional | String | | HTML element id |
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |

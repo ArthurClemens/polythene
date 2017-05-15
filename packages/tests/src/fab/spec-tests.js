@@ -1,41 +1,41 @@
 
-export default ({ fab, keys }) => {
+export default ({ FAB, keys }) => {
   return [
     {
       name: "No options",
-      component: fab
+      component: FAB
     },
     {
       name: "Option: id",
-      component: fab,
+      component: FAB,
       attrs: {
         id: "id-x"
       }
     },
     {
       name: "Option: className",
-      component: fab,
+      component: FAB,
       attrs: {
         className: "className-x"
       }
     },
     {
       name: "Option: class",
-      component: fab,
+      component: FAB,
       attrs: {
         class: "class-x"
       }
     },
     {
       name: "Option: element",
-      component: fab,
+      component: FAB,
       attrs: {
         element: "a"
       }
     },
     {
       name: "Option: tabindex",
-      component: fab,
+      component: FAB,
       attrs: {
         [keys.tabindex]: 3
       }

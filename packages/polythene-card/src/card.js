@@ -1,5 +1,5 @@
 import m from "mithril";
-import { icon } from "polythene-mithril";
+import { Icon } from "polythene-mithril";
 import shadow from "polythene-shadow";
 import listTile from "polythene-list-tile";
 import { filterSupportedAttributes } from "polythene-core";
@@ -136,7 +136,7 @@ const createHeader = o => {
       class: [classes.header, attrs.class].join(" ")
     },
     attrs.icon
-      ? { front: m(icon, attrs.icon) }
+      ? { front: m(Icon, attrs.icon) }
       : null
   ));
 };

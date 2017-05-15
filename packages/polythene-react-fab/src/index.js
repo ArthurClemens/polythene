@@ -1,12 +1,12 @@
 import { statefulComponent } from "polythene-react-base";
-import { fab as component } from "polythene-core-fab";
-import { icon } from "polythene-react-icon";
+import { FAB as component } from "polythene-core-fab";
+import { Icon } from "polythene-react-icon";
 import { raisedButton } from "polythene-react-raised-button";
 
-const createProps = (vnode, args) => component.createProps(vnode, Object.assign(args, { icon }));
-const createContent = (vnode, args) => component.createContent(vnode, Object.assign(args, { icon }));
+const createProps = (vnode, args) => component.createProps(vnode, Object.assign(args, { Icon }));
+const createContent = (vnode, args) => component.createContent(vnode, Object.assign(args, { Icon }));
 
-export const fab = statefulComponent(Object.assign(
+export const FAB = statefulComponent(Object.assign(
   {},
   component,
   {
@@ -16,5 +16,5 @@ export const fab = statefulComponent(Object.assign(
   }
 ));
 
-fab.theme = component.theme;
-fab.displayName = "Fab";
+FAB.theme = component.theme;
+FAB.displayName = "Fab";

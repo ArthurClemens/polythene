@@ -267,8 +267,8 @@ If the component - or a component's parent - has option `tone` set to "dark", th
 | **class** | optional | String |  | Extra CSS class appended to `pe-search` |
 | **style**     | optional       | Object   |             | For setting simple style attributes |
 | **id** | optional | String | | HTML element id for the search field |
-| **before**    | optional       | Mithril element | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
-| **after**     | optional       | Mithril element | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
+| **before**    | optional       | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
+| **after**     | optional       | String, hyperscript or component | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
 | **events** | optional | Object | | Options object containing one or more standard events such as `onclick` |
 | **tabindex**  | optional       | Integer | 0 | Tab index |
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
@@ -284,7 +284,7 @@ If the component - or a component's parent - has option `tone` set to "dark", th
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **buttons** | optional | Object | | The Object needs to have (optional) attributes `none`, `focus`, `focus_dirty` and `dirty`, each with (optional) attributes `before` and `after`; pass a Mithril element (or Array) to each |
+| **buttons** | optional | Object | | The Object needs to have (optional) attributes `none`, `focus`, `focus_dirty` and `dirty`, each with (optional) attributes `before` and `after`; pass a String, hyperscript or component (or Array) to each |
 
 
 

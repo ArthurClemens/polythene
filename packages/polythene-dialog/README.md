@@ -330,9 +330,9 @@ const fullscreenPane = {
 | **class**     | optional       | String   |             | Extra CSS class appended to `pe-dialog` |
 | **style**     | optional       | Object   |             | For setting simple style attributes; will be applied to `pe-dialog__content` |
 | **id**        | optional       | String   |             | HTML element id |
-| **content**   | optional       | Mithril element | | Alternative content; replaces `body` |
-| **before**    | optional       | Mithril element | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
-| **after**     | optional       | Mithril element | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
+| **content**   | optional       | String, hyperscript or component | | Alternative content; replaces `body` |
+| **before**    | optional       | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
+| **after**     | optional       | String, hyperscript or component | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 ### Dialog specific options
@@ -341,9 +341,9 @@ const fullscreenPane = {
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **formOptions** | optional | Options Object | | Form attribute options such as `type` or `enctype` |
 | **title** | optional | String |  | Header title; if omitted, no header will be shown |
-| **body** | optional | Mithril element |  | Body content; if omitted, no body will be shown |
+| **body** | optional | String, hyperscript or component |  | Body content; if omitted, no body will be shown |
 | **menu** | optional | [Menu](../polythene-menu) options object |  | Pass a menu to use the dialog as enhanced (higher) menu |
-| **footer** | optional | Mithril element |  | Footer actions, usually an array of buttons |
+| **footer** | optional | String, hyperscript or component |  | Footer actions, usually an array of buttons |
 | **modal** | optional | Boolean | false | Set to true to create a modal dialog; tapping the backdrop or pressing ESCAPE will not close the dialog |
 | **fullscreen** | optional | Boolean | false | Set to true to make the dialog fullscreen; tapping the backdrop or pressing ESCAPE will not close the dialog; should be done for mobile screens only; `title` and `footer` will be ignored; pass a [header panel](../polythene-header-panel) to `body` |
 | **updateContentOnScroll** | optional | Boolean | false | Set to true to "unfreeze" dialog contents during scrolling; for performance this is set to false by default |

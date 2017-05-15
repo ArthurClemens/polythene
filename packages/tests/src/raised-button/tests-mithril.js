@@ -35,7 +35,7 @@ const mithrilTests = ({ raisedButton, renderer: h }) => {
       }
     },
     {
-      name: "Dark tone class + light theme class",
+      name: "Dark tone class + light tone class",
       className: "pe-dark-tone",
       component: {
         view: () => h(".pe-light-tone", {
