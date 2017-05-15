@@ -1,2 +1,0 @@
-"use strict";function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj}}Object.defineProperty(exports,"__esModule",{value:!0}),exports.matchSnapshot=void 0;var _mithrilNodeRender=require("mithril-node-render"),_mithrilNodeRender2=_interopRequireDefault(_mithrilNodeRender),beautify=require("js-beautify").html,matchSnapshot=exports.matchSnapshot=function(cmp){var html=beautify((0,_mithrilNodeRender2.default)(cmp));expect(html).toMatchSnapshot()};
-//# sourceMappingURL=testing.js.map

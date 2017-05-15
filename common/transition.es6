@@ -12,13 +12,11 @@ const HIDE_DELAY = 0;
 const TRANSITION = 'both';
 
 // See: transition
-const show = (opts) => {
-    return transition(opts, 'show');
-};
+const show = (opts) =>
+    transition(opts, 'show');
 
-const hide = (opts) => {
-    return transition(opts, 'hide');
-};
+const hide = (opts) =>
+    transition(opts, 'hide');
 
 /*
 opts:
