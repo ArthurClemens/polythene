@@ -84,13 +84,11 @@ let setTransform = (style, string) => {
     style.transform = string;
 };
 
-if(isomorphic.isClient()) {
-	setTransform = (document.documentElement.style.transform !== undefined) ? ((style, string) => {
-	    style.transform = string;
-	}) : ((style, string) => {
-	    style.webkitTransform = string;
-	});
-}
+setTransform = (isomorphic.isClient() && document.documentElement.style.transform !== undefined) ? ((style, string) => {
+    style.transform = string;
+}) : ((style, string) => {
+    style.webkitTransform = string;
+});
 
 const translateY = (style, y) => {
     const t = (y === null) ? '' : 'translate3d(0, ' + y + 'px, 0)';

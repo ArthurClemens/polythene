@@ -104,7 +104,7 @@ const checkValidity = (ctrl, opts) => {
 
 // dirty = contains text
 const checkDirty = (ctrl) => {
-    ctrl.isDirty = (ctrl.value.toString().length > 0);
+    ctrl.isDirty = (ctrl.value && ctrl.value.toString().length > 0);
 };
 
 const updateState = (ctrl, opts) => {
