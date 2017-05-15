@@ -9,12 +9,12 @@ See also: [(flat) Button](../polythene-button), [Icon Button](../polythene-icon-
 ## Usage
 
 ~~~javascript
-import m from "mithril";
-import raisedButton from "polythene-raised-button";
+import m from "mithril"
+import raisedButton from "polythene-raised-button"
 
 m(raisedButton, {
   label: "Button"
-});
+})
 ~~~
 
 
@@ -33,12 +33,12 @@ You can find more information about theming in [Theme](../polythene-theme).
 raisedButton.theme(".themed-raised-button", {
   color_light_background: "#FF1744",
   color_light_text:       "#fff"
-});
+})
 
 m(raisedButton, {
   className: "themed-raised-button",
   // ... other options
-});
+})
 ~~~
 
 #### CSS
@@ -56,7 +56,7 @@ m(raisedButton, {
     color: "#fff"
   },
   // ... other options
-});
+})
 ~~~
 
 #### Dark or light tone

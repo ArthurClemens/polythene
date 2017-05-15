@@ -11,10 +11,10 @@
 #### With SVG JSX
 
 ~~~jsx
-import React from "react";
-import { Icon } from "polythene-react";
+import React from "react"
+import { Icon } from "polythene-react"
 
-const starsSVG = <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>;
+const starsSVG = <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>
 
 // render component with svg option
 <Icon svg={starsSVG} />
@@ -23,7 +23,7 @@ const starsSVG = <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
 Instead of passing `svg` as option, the SVG component can be used as child:
 
 ~~~jsx
-import { Icon, SVG } from "polythene-react";
+import { Icon, SVG } from "polythene-react"
 
 // render component with Icon component
 <Icon><SVG>{starsSVG}</SVG></Icon>
@@ -48,16 +48,15 @@ import { Icon, SVG } from "polythene-react";
 #### With trusted SVG text
 
 ~~~javascript
-import React from "react";
-import { renderer as h, Icon } from "polythene-react";
+import { renderer as h, Icon } from "polythene-react"
 
 // note the quoted SVG string:
-const starsSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>";
+const starsSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>"
 
 // render component
 h(Icon, {
   svg: h.trust(starsSVG)
-});
+})
 ~~~
 
 #### With SVG source files
@@ -65,7 +64,7 @@ h(Icon, {
 ~~~javascript
 h(Icon, {
   svg: { src: "app/assets/stars.svg" }
-});
+})
 ~~~
 
 #### With image source files
@@ -73,9 +72,8 @@ h(Icon, {
 ~~~javascript
 h(Icon, {
   src: "img/arrow.png"
-});
+})
 ~~~
-
 
 
 
@@ -99,7 +97,7 @@ Icon.theme(".themed-icon", {
   size_regular: 50,
   color_light:  "purple",
   color_dark:   "orange"
-});
+})
 
 // render component
 <Icon svg={starsSVG} className="themed-icon" />

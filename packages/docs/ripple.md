@@ -11,7 +11,7 @@ Buttons contain a ripple element by default. This page documents how to add a ri
 Append a ripple to any HTML element (as long as it has `position: relative` and a size):
 
 ~~~javascript
-import m from "mithril";
+import m from "mithril"
 
 m("div",
   {
@@ -22,20 +22,20 @@ m("div",
     }
   },
   m(ripple)
-);
+)
 ~~~
 
 Use parameter `after` to append the ripple to a Polythene content:
 
 ~~~javascript
-import m from "mithril";
-import ripple from "polythene-ripple";
-import listTile from "polythene-list-tile";
+import m from "mithril"
+import ripple from "polythene-ripple"
+import listTile from "polythene-list-tile"
 
 const myListTile = m(listTile, {
   title: "Title",
   after: m(ripple)
-});
+})
 ~~~
 
 Use an options object to define specific behavior:
@@ -47,7 +47,7 @@ const myListTile = m(listTile, {
     constrained: false,
     className: "colored-ripple"
   })
-});
+})
 ~~~
 
 
@@ -65,12 +65,12 @@ You can find more information about theming in [Theme](../polythene-theme).
 ~~~javascript
 ripple.theme(".themed-ripple", {
   color_light:   "#F44336"
-});
+})
 
 m(ripple, {
   className: "themed-ripple",
   // ... other options
-});
+})
 ~~~
 
 #### CSS
@@ -95,7 +95,7 @@ m(ripple, {
     color: "#2196F3"
   },
   // ... other options
-});
+})
 ~~~
 
 #### Dark or light tone

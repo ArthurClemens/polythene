@@ -7,10 +7,10 @@ Adds a configurable shadow to an element.
 ## Usage
 
 ~~~javascript
-import m from "mithril";
-import shadow from "polythene-shadow";
+import m from "mithril"
+import shadow from "polythene-shadow"
 
-const myShadow = m(shadow);
+const myShadow = m(shadow)
 ~~~
 
 Add the shadow to an element:
@@ -19,7 +19,7 @@ Add the shadow to an element:
 const myCard = m(".pe-card", [
   m("div.self-center", "Card!"),
   myShadow
-]);
+])
 ~~~
 
 To animated the shadow on change, use `animated`:
@@ -28,7 +28,7 @@ To animated the shadow on change, use `animated`:
 const myShadow = m(shadow, {
   z: vnode.state.z,
   animated: true
-});
+})
 ~~~
 
 

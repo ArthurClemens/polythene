@@ -11,10 +11,10 @@ Icon Button takes an icon options object.
 ### With JSX
 
 ~~~jsx
-import React from "react";
-import { IconButton } from "polythene-react";
+import React from "react"
+import { IconButton } from "polythene-react"
 
-const starsSVG = <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>;
+const starsSVG = <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>
 
 // render component with icon option
 <IconButton icon={{svg: starsSVG}} />
@@ -23,7 +23,7 @@ const starsSVG = <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
 Instead of passing `icon` as option, the Icon component can be used as child:
 
 ~~~jsx
-import { IconButton, Icon } from "polythene-react";
+import { IconButton, Icon } from "polythene-react"
 
 // render component with Icon component
 <IconButton><Icon svg={starsSVG} /></IconButton>
@@ -32,19 +32,71 @@ import { IconButton, Icon } from "polythene-react";
 
 ### With hyperscript
 
-~~~jsx
-import React from "react";
-import { renderer as h, IconButton } from "polythene-react";
+~~~javascript
+import { renderer as h, IconButton } from "polythene-react"
 
-const starsSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>";
+// note the quoted SVG string:
+const starsSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>"
 
 // render component
 h(IconButton, {
   icon: { svg: h.trust(starsSVG) }
-});
+})
 ~~~
 
 See [Icon](Icon.md) for more Icon options.
+
+
+## Links
+
+Create a link with option `url`:
+
+~~~jsx
+<IconButton url={{href: "some-url"}} />
+~~~
+
+or with hyperscript:
+
+~~~javascript
+h(IconButton, {
+  url: { href: "some-url" }
+})
+~~~
+
+### Router links
+
+React Router is the most popular router library for React. Wrap the component in its `withRouter` HOC:
+
+~~~jsx
+import { withRouter } from "react-router-dom"
+
+// render wrapped
+withRouter(({ history }) => 
+  <IconButton
+    icon={{svg: iconFavoriteSVG}}
+    url={{
+      href: "/some-route", // not required, but makes this a real link
+      onClick: e => (e.preventDefault(), history.push("/some-route"))
+    }}
+  />
+)
+~~~
+
+or with hyperscript:
+
+~~~javascript
+import { withRouter } from "react-router-dom"
+
+withRouter(({ history }) => 
+  h(IconButton, {
+    icon: { svg: trustedIconFavorite },
+    url: {
+      href: "/some-route",
+      onClick: e => (e.preventDefault(), history.push("/some-route"))
+    }
+  })
+)
+~~~
 
 
 
@@ -68,7 +120,7 @@ m(IconButton, {
   icon: { svg: m.trust(starsSVG) },
   wash: false,
   ink: false
-});
+})
 ~~~
 
 Alternatively, use `inactive`:
@@ -101,7 +153,7 @@ IconButton.theme(".themed-icon-button", {
   color_light_background: "purple",
   color_dark_background:  "orange",
   color_light:            "white"
-});
+})
 
 <IconButton icon={{svg: starsSVG}} className="themed-icon-button" />
 ~~~

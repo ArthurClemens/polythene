@@ -22,9 +22,7 @@ const reactTests = ({ FAB, Icon, SVG, renderer: h }) => { // eslint-disable-line
             svg: trustedIconAlarm
           },
           url: {
-            href: "/shadow"
-          },
-          events: {
+            href: "/shadow",
             onClick: e => (e.preventDefault(), history.push("/shadow"))
           }
         })
@@ -91,6 +89,19 @@ const reactTests = ({ FAB, Icon, SVG, renderer: h }) => { // eslint-disable-line
     {
       name: "Option: style (JSX)",
       component: () => <FAB icon={{svg: iconAlarmSVG}} style={{ color: "#ef6c00", backgroundColor: "#fff" }} />
+    },
+    {
+      name: "With router (JSX)",
+      interactive: true,
+      component: withRouter(({ history }) => 
+        <FAB
+          icon={{svg: iconFavoriteSVG}}
+          url={{
+            href: "/shadow",
+            onClick: e => (e.preventDefault(), history.push("/shadow"))
+          }}
+        />
+      )
     },
 
   ];

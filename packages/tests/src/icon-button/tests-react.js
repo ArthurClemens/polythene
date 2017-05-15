@@ -22,11 +22,9 @@ const reactTests = ({ IconButton, Icon, SVG, renderer: h }) => { // eslint-disab
             svg: trustedIconFavorite
           },
           url: {
-            href: "/shadow"
-          },
-          events: {
+            href: "/shadow",
             onClick: e => (e.preventDefault(), history.push("/shadow"))
-          }
+          },
         })
       )
     },
@@ -87,6 +85,19 @@ const reactTests = ({ IconButton, Icon, SVG, renderer: h }) => { // eslint-disab
     {
       name: "Option: style (JSX)",
       component: () => <IconButton icon={{svg: iconFavoriteSVG}} style={{ color: "#FFCCBC", backgroundColor: "#4E342E" }}>{iconFavoriteSVG}</IconButton>
+    },
+    {
+      name: "With router (JSX)",
+      interactive: true,
+      component: withRouter(({ history }) => 
+        <IconButton
+          icon={{svg: iconFavoriteSVG}}
+          url={{
+            href: "/shadow",
+            onClick: e => (e.preventDefault(), history.push("/shadow"))
+          }}
+        />
+      )
     },
 
   ];

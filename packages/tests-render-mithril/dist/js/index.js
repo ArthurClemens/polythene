@@ -38869,9 +38869,7 @@ var reactTests$1 = function reactTests(_ref) {
           svg: trustedIconAlarm
         },
         url: {
-          href: "/shadow"
-        },
-        events: {
+          href: "/shadow",
           onClick: function onClick(e) {
             return e.preventDefault(), history.push("/shadow");
           }
@@ -38948,6 +38946,21 @@ var reactTests$1 = function reactTests(_ref) {
     component: function component() {
       return react.createElement(FAB$$1, { icon: { svg: iconAlarmSVG }, style: { color: "#ef6c00", backgroundColor: "#fff" } });
     }
+  }, {
+    name: "With router (JSX)",
+    interactive: true,
+    component: withRouter(function (_ref3) {
+      var history = _ref3.history;
+      return react.createElement(FAB$$1, {
+        icon: { svg: iconFavoriteSVG },
+        url: {
+          href: "/shadow",
+          onClick: function onClick(e) {
+            return e.preventDefault(), history.push("/shadow");
+          }
+        }
+      });
+    })
   }];
 };
 
@@ -39027,7 +39040,7 @@ var reactTests$2 = function reactTests(_ref) {
 var testsReact$2 = [].concat(genericTests$1({ Icon: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["d" /* Icon */], SVG: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["e" /* SVG */], renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */] })).concat(reactTests$2({ Icon: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["d" /* Icon */], SVG: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["e" /* SVG */], renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */] }));
 
 var iconFavorite$2 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z\"/></svg>";
-var iconFavoriteSVG = react.createElement(
+var iconFavoriteSVG$1 = react.createElement(
   "svg",
   { xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24" },
   react.createElement("path", { d: "M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z" })
@@ -39053,9 +39066,7 @@ var reactTests$3 = function reactTests(_ref) {
           svg: trustedIconFavorite
         },
         url: {
-          href: "/shadow"
-        },
-        events: {
+          href: "/shadow",
           onClick: function onClick(e) {
             return e.preventDefault(), history.push("/shadow");
           }
@@ -39103,7 +39114,7 @@ var reactTests$3 = function reactTests(_ref) {
   }, {
     name: "Option: icon as attribute (JSX)",
     component: function component() {
-      return react.createElement(IconButton$$1, { icon: { svg: iconFavoriteSVG }, mini: true });
+      return react.createElement(IconButton$$1, { icon: { svg: iconFavoriteSVG$1 } });
     }
   }, {
     name: "Option: icon as component (JSX)",
@@ -39117,7 +39128,7 @@ var reactTests$3 = function reactTests(_ref) {
           react.createElement(
             SVG$$1,
             null,
-            iconFavoriteSVG
+            iconFavoriteSVG$1
           )
         )
       );
@@ -39127,10 +39138,25 @@ var reactTests$3 = function reactTests(_ref) {
     component: function component() {
       return react.createElement(
         IconButton$$1,
-        { icon: { svg: iconFavoriteSVG }, style: { color: "#FFCCBC", backgroundColor: "#4E342E" } },
-        iconFavoriteSVG
+        { icon: { svg: iconFavoriteSVG$1 }, style: { color: "#FFCCBC", backgroundColor: "#4E342E" } },
+        iconFavoriteSVG$1
       );
     }
+  }, {
+    name: "With router (JSX)",
+    interactive: true,
+    component: withRouter(function (_ref3) {
+      var history = _ref3.history;
+      return react.createElement(IconButton$$1, {
+        icon: { svg: iconFavoriteSVG$1 },
+        url: {
+          href: "/shadow",
+          onClick: function onClick(e) {
+            return e.preventDefault(), history.push("/shadow");
+          }
+        }
+      });
+    })
   }];
 };
 
