@@ -85,7 +85,7 @@ radioButton.theme(".blue-radio", {
 });
 
 m(radioButton, {
-  class: "blue-radio",
+  className: "blue-radio",
   label: "Label"
 });
 ~~~
@@ -147,7 +147,7 @@ m(radioGroup);
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional       | String   | "div"       | HTML element tag for the radio button container |
-| **class**     | optional       | String   |             | Extra CSS class appended to "pe-radio-control" |
+| **className**     | optional       | String   |             | Extra CSS class appended to "pe-radio-control" |
 | **id**        | optional       | String   |             | HTML element id for the radio button container |
 | **before**    | optional       | String, hyperscript or component |      | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **after**     | optional       | String, hyperscript or component |      | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |

@@ -1,3 +1,16 @@
+exports[`test Appended to an element (JSX) 1`] = `
+<div
+  style={
+    Object {
+      "height": "100px",
+      "position": "relative",
+      "width": "100px",
+    }
+  }>
+  <Ripple />
+</div>
+`;
+
 exports[`test No options 1`] = `
 <div
   className="pe-ripple pe-ripple--constrained   ">
@@ -7,6 +20,11 @@ exports[`test No options 1`] = `
       className="pe-ripple__waves" />
   </div>
 </div>
+`;
+
+exports[`test Option: center (JSX) 1`] = `
+<Ripple
+  center={true} />
 `;
 
 exports[`test Option: class 1`] = `
@@ -63,4 +81,11 @@ exports[`test Option: id 1`] = `
       className="pe-ripple__waves" />
   </div>
 </div>
+`;
+
+exports[`test Themed (should be red and permanent) (JSX) 1`] = `
+<Ripple
+  className="react-ripple-themed-ripple"
+  endOpacity={1}
+  persistent={true} />
 `;

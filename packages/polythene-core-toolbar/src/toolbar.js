@@ -1,16 +1,18 @@
-import m from "mithril";
 import { filterSupportedAttributes } from "polythene-core";
 import { customTheme } from "./theme";
 import classes from "./classes";
 
-const view = vnode => {
+export const element = "div";
+
+export const theme = customTheme;
+
+export const createProps = vnode => {
   const attrs = vnode.attrs;
-  const element = attrs.element || "div";
-  const props = Object.assign(
+  return Object.assign(
     {},
     filterSupportedAttributes(attrs),
     {
-      class: [
+      className: [
         classes.component,
         attrs.compact ? classes.compact : null,
         attrs.tone === "dark" ? "pe-dark-tone" : null,
@@ -18,15 +20,13 @@ const view = vnode => {
         attrs.class
       ].join(" ")
     },
-    attrs.events ? attrs.events : null
+    attrs.events
   );
-  const content = attrs.content
-    ? attrs.content
-    : attrs.children || vnode.children;
-  return m(element, props, [attrs.before, content, attrs.after]);
 };
 
-export default {
-  theme: customTheme, // accepts (selector, vars)
-  view
+export const createContent = vnode => {
+  const attrs = vnode.attrs;
+  return attrs.content
+    ? attrs.content
+    : attrs.children || vnode.children || attrs;
 };

@@ -147,7 +147,7 @@ slider.theme(".themed-slider", {
 });
 
 m(slider, {
-  class: "themed-slider",
+  className: "themed-slider",
   // ... other options
 });
 ~~~
@@ -201,7 +201,7 @@ m(slider, {
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional       | String   | "div"       | HTML element tag |
-| **class**     | optional       | String   |             | Extra CSS class appended to `pe-slider` |
+| **className**     | optional       | String   |             | Extra CSS class appended to `pe-slider` |
 | **id**        | optional       | String   |             | HTML element id |
 | **before**    | optional       | String, hyperscript or component |      | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **after**     | optional       | String, hyperscript or component |      | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |

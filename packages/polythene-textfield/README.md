@@ -259,7 +259,7 @@ textfield.theme(".themed-textfield", {
 });
 
 m(textfield, {
-  class: "themed-textfield",
+  className: "themed-textfield",
   // ... other options
 });
 ~~~
@@ -297,7 +297,7 @@ If the component - or a component's parent - has option `tone` set to "dark", th
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional       | String   | "div"       | HTML element tag |
-| **class**     | optional       | String   |             | Extra CSS class appended to `pe-textfield` |
+| **className**     | optional       | String   |             | Extra CSS class appended to `pe-textfield` |
 | **id**        | optional       | String   |             | HTML element id |
 | **before**    | optional       | String, hyperscript or component |      | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **after**     | optional       | String, hyperscript or component |      | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |

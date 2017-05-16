@@ -1,5 +1,5 @@
 import { statefulComponent } from "polythene-react-base";
-import { IconButton as component } from "polythene-core-icon-button";
+import { CoreIconButton as component } from "polythene-core-icon-button";
 import { Icon } from "polythene-react-icon";
 import { Button } from "polythene-react-button";
 

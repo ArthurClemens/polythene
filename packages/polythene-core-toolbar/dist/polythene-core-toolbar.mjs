@@ -1,4 +1,3 @@
-import m from 'mithril';
 import { filterSupportedAttributes } from 'polythene-core';
 import { flex, mixin, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
@@ -103,19 +102,26 @@ styler.generateStyles([selector], vars$1, fns);
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var view = function view(vnode) {
+var element = "div";
+
+var theme = customTheme;
+
+var createProps = function createProps(vnode) {
   var attrs = vnode.attrs;
-  var element = attrs.element || "div";
-  var props = _extends({}, filterSupportedAttributes(attrs), {
-    class: [classes.component, attrs.compact ? classes.compact : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.class].join(" ")
-  }, attrs.events ? attrs.events : null);
-  var content = attrs.content ? attrs.content : attrs.children || vnode.children;
-  return m(element, props, [attrs.before, content, attrs.after]);
+  return _extends({}, filterSupportedAttributes(attrs), {
+    className: [classes.component, attrs.compact ? classes.compact : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.class].join(" ")
+  }, attrs.events);
 };
 
-var toolbar = {
-  theme: customTheme, // accepts (selector, vars)
-  view: view
+var createContent = function createContent(vnode) {
+  var attrs = vnode.attrs;
+  return attrs.content ? attrs.content : attrs.children || vnode.children || attrs;
 };
 
-export { classes, vars$1 as vars };export default toolbar;
+var CoreToolbar = {
+  createProps: createProps, createContent: createContent, theme: theme, element: element,
+  classes: classes,
+  vars: vars$1
+};
+
+export { CoreToolbar };

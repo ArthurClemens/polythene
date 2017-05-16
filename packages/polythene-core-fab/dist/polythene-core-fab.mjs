@@ -130,10 +130,10 @@ var createContent = function createContent() {
   return null;
 };
 
-var FAB = {
+var CoreFAB = {
   createProps: createProps, createContent: createContent, theme: theme,
   classes: classes,
   vars: vars$1
 };
 
-export { FAB };
+export { CoreFAB };

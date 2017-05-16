@@ -15,7 +15,7 @@ button.theme(".blue-button", {
 });
 
 m(button, {
-  class: "blue-button",
+  className: "blue-button",
   label: "Blue Button"
 });
 ~~~ 
@@ -131,7 +131,7 @@ icon.theme(".app-icon", {
 
 // Show the large icon
 m(icon, {
-  class: "app-icon",
+  className: "app-icon",
   type: "large" // results in 4 * unitSize
 });
 ~~~
@@ -149,7 +149,7 @@ button.theme(".blue-on-dark-button", {
 // Show the blue button on a dark background
 m(".pe-dark-tone", 
   m(button, {
-    class: "blue-on-dark-button",
+    className: "blue-on-dark-button",
     label: "Blue Button"
   })
 );
@@ -170,7 +170,7 @@ import button from "polythene-mithril-button";
 
 export const secondaryButton = {
   view: vnode => m(button, {
-    class: "secondary-button",
+    className: "secondary-button",
     borders: true,
     ...vnode.attrs // pass on other options
   })
@@ -191,7 +191,7 @@ Or make the new component's `theme` function point to the original:
 ~~~javascript
 export const secondaryButton = {
   view: vnode => m(button, {
-    class: "secondary-button",
+    className: "secondary-button",
     borders: true,
     ...vnode.attrs
   }),
@@ -233,7 +233,7 @@ All components have a `class` attribute. For example:
 
 ~~~javascript
 m(button, {
-  class: "send-button",
+  className: "send-button",
   label: "Send"
 })
 ~~~
@@ -247,7 +247,7 @@ To set this button's background color:
 }
 ~~~
 
-Note: to change a style of the component's base class, you must add the base class:
+Note: to change a style of the component's base class, you must add the base className:
 
 ~~~css
 .pe-button.submit-button {
@@ -347,7 +347,7 @@ styler.add("secondary-button", styles);
 
 export const secondaryButton = {
   view: vnode => m(button, {
-    class: "secondary-button",
+    className: "secondary-button",
     borders: true,
     ...vnode.attrs
   })

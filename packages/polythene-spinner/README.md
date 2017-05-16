@@ -112,7 +112,7 @@ spinner.theme(".themed-spinner", {
 });
 
 m(spinner, {
-  class: "themed-spinner",
+  className: "themed-spinner",
   // ... other options
 });
 ~~~
@@ -158,7 +158,7 @@ If the component - or a component's parent - has option `tone` set to "dark", th
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional | String | "div" | HTML element tag |
-| **class**     | optional | String |       | Extra CSS class appended to `pe-fab` |
+| **className**     | optional | String |       | Extra CSS class appended to `pe-fab` |
 | **style**     | optional | Object |       | For setting simple style attributes |
 | **id**        | optional | String |       | HTML element id |
 | **content**   | either `icon` or `content` | String, hyperscript or component |  | Alternative content |

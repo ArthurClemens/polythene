@@ -1,5 +1,5 @@
 import { statelessComponent } from "polythene-mithril-base";
-import { icon as component } from "polythene-core-icon";
+import { CoreIcon as component } from "polythene-core-icon";
 import { SVG } from "polythene-mithril-svg";
 
 const createProps = (vnode, args) => component.createProps(vnode, Object.assign(args, { SVG }));

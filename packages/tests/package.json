@@ -19,6 +19,7 @@
     "mithril": "1.1.0",
     "mmsvg": "^1.5.3",
     "polythene-core-css": "1.0.0-rc.1",
+    "polythene-core-toolbar": "1.0.0-rc.1",
     "polythene-list": "1.0.0-rc.1",
     "polythene-list-tile": "1.0.0-rc.1",
     "polythene-mithril": "1.0.0-rc.1",

@@ -204,7 +204,7 @@ dialog.theme(".blue-dialog", {
 });
 
 dialog.show({
-  class: "blue-dialog",
+  className: "blue-dialog",
   // ... other options
 });
 ~~~
@@ -327,7 +327,7 @@ const fullscreenPane = {
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional       | String   | "form"      | HTML element tag |
-| **class**     | optional       | String   |             | Extra CSS class appended to `pe-dialog` |
+| **className**     | optional       | String   |             | Extra CSS class appended to `pe-dialog` |
 | **style**     | optional       | Object   |             | For setting simple style attributes; will be applied to `pe-dialog__content` |
 | **id**        | optional       | String   |             | HTML element id |
 | **content**   | optional       | String, hyperscript or component | | Alternative content; replaces `body` |

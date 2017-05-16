@@ -1,5 +1,5 @@
 import { statefulComponent } from "polythene-react-base";
-import { Button as component } from "polythene-core-button";
+import { CoreButton as component } from "polythene-core-button";
 import { Ripple } from "polythene-react-ripple";
 
 const createProps = (vnode, args) => component.createProps(vnode, Object.assign(args, { Ripple }));

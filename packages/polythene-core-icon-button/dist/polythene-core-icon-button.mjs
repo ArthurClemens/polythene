@@ -146,10 +146,10 @@ var createContent = function createContent() {
   return null;
 };
 
-var IconButton = {
+var CoreIconButton = {
   createProps: createProps, createContent: createContent, theme: theme,
   classes: classes,
   vars: vars$1
 };
 
-export { IconButton };
+export { CoreIconButton };

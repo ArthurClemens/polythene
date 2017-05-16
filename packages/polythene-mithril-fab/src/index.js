@@ -1,5 +1,5 @@
 import { statelessComponent } from "polythene-mithril-base";
-import { FAB as component } from "polythene-core-fab";
+import { CoreFAB as component } from "polythene-core-fab";
 import { Icon } from "polythene-mithril-icon";
 import { RaisedButton } from "polythene-mithril-raised-button";
 

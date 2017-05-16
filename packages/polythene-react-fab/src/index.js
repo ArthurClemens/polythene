@@ -1,5 +1,5 @@
 import { statefulComponent } from "polythene-react-base";
-import { FAB as component } from "polythene-core-fab";
+import { CoreFAB as component } from "polythene-core-fab";
 import { Icon } from "polythene-react-icon";
 import { RaisedButton } from "polythene-react-raised-button";
 

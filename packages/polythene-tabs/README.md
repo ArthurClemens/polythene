@@ -143,7 +143,7 @@ tabs.theme(".themed-tabs", {
 });
 
 m(tabs, {
-  class: "themed-tabs",
+  className: "themed-tabs",
   // ... other options
 }, tabButtons);
 ~~~
@@ -192,7 +192,7 @@ tabs.theme(".tabs-fixed-width", {
 });
 
 m(tabs, {
-  class: "tabs-fixed-width",
+  className: "tabs-fixed-width",
   // ... other options
 }, tabButtons)
 ~~~
@@ -226,7 +226,7 @@ m(tabs, {
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional       | String | "div" | HTML element tag |
-| **class**     | optional       | String |  | Extra CSS class appended to "pe-tabs" |
+| **className**     | optional       | String |  | Extra CSS class appended to "pe-tabs" |
 | **style**     | optional | Object |       | For setting simple style attributes |
 | **id**        | optional       | String | | HTML element id |
 | **content**   | use children or `content` | Array of option objects | | Button row content; replaces children |
@@ -269,7 +269,7 @@ These options can be grouped into `tabsOpts` and applied to all tabs.
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element** | optional | String | "a" (if `url` is passed) or "div" | HTML element tag |
 | **events** | optional | Object | | Button events; options object containing one or more events like `onclick` |
-| **class** | optional | String |  | Extra CSS class appended to "pe-button pe-tabs__tab" |
+| **className** | optional | String |  | Extra CSS class appended to "pe-button pe-tabs__tab" |
 | **label** | required | String | | The button label |
 | **url** | optional | Object with `href`, optionally `oncreate` | | URL location; for in-app route linking set `oncreate : m.route.link` |
 | **ink** | optional | Boolean | true | Set to false to disable the ripple effect on click/tap |

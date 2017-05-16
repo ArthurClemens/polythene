@@ -126,11 +126,11 @@ export default [
   //   name: "Textfield",
   //   tests: textfieldTests
   // },
-  // {
-  //   path: "/toolbar",
-  //   name: "Toolbar",
-  //   tests: toolbarTests
-  // },
+  {
+    path: "/toolbar",
+    name: "Toolbar",
+    tests: tests.toolbar
+  },
   {
     path: "/theme",
     name: "Custom theme",

@@ -287,7 +287,7 @@ notification.theme(".blue-notification", {
 });
 
 notification.show({
-  class: "blue-notification",
+  className: "blue-notification",
   // ... other options
 });
 ~~~
@@ -391,7 +391,7 @@ Note that the container has `position: relative`. The messages will have `positi
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional       | String   | "div"       | HTML element tag |
-| **class**     | optional       | String   |             | Extra CSS class appended to `pe-notification` |
+| **className**     | optional       | String   |             | Extra CSS class appended to `pe-notification` |
 | **style**     | optional       | Object   |             | For setting simple style attributes |
 | **id**        | optional       | String   |             | HTML element id |
 | **content**   | optional       | String, hyperscript or component | | Alternative content; replaces `title` |

@@ -5,7 +5,7 @@ import { rules as css } from "./styles";
 import page from "./page";
 import list from "polythene-list";
 import listTile from "polythene-list-tile";
-import toolbar from "polythene-toolbar";
+import { Toolbar } from "polythene-mithril";
 import routes from "./routes";
 
 addTypography();
@@ -18,7 +18,7 @@ const index = {
     document.title = "Polythene components",
   view: () =>
     [
-      m(css.headerRow, m(toolbar,
+      m(css.headerRow, m(Toolbar,
         {
           style: {
             backgroundColor: "rgba(255,255,255,.93)"

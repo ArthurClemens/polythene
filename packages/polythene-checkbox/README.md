@@ -77,7 +77,7 @@ checkbox.theme(".blue-checkbox", {
 });
 
 m(checkbox, {
-  class: "blue-checkbox",
+  className: "blue-checkbox",
   label: "Label"
 });
 ~~~
@@ -127,7 +127,7 @@ m(checkbox, {
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional       | String   | "div"       | HTML element tag for the checkbox container |
-| **class**     | optional       | String   |             | Extra CSS class appended to "pe-checkbox-control" |
+| **className**     | optional       | String   |             | Extra CSS class appended to "pe-checkbox-control" |
 | **id**        | optional       | String   |             | HTML element id for the checkbox container |
 | **before**    | optional       | String, hyperscript or component |      | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **after**     | optional       | String, hyperscript or component |      | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |

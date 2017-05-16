@@ -77,7 +77,7 @@ switchButton.theme(".blue-switch-button", {
 });
 
 m(switchButton, {
-  class: "blue-switch-button",
+  className: "blue-switch-button",
   label: "Label"
 });
 ~~~
@@ -128,7 +128,7 @@ m(switchButton, {
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional       | String   | "div"       | HTML element tag for the switch container |
-| **class**     | optional       | String   |             | Extra CSS class appended to "pe-switch-control" |
+| **className**     | optional       | String   |             | Extra CSS class appended to "pe-switch-control" |
 | **id**        | optional       | String   |             | HTML element id for the switch container |
 | **before**    | optional       | String, hyperscript or component |      | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **after**     | optional       | String, hyperscript or component |      | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |

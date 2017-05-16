@@ -157,6 +157,14 @@ Button.theme(".bordered-button", {
 
 Change CSS using the CSS classes in `polythene-core-button/src/classes.js`
 
+Class names can be imported with:
+
+~~~javascript
+import { CoreButton } from "polythene-core-button";
+
+// CoreButton.classes
+~~~
+
 #### Style
 
 Some style attributes can be set using option `style`. For example:

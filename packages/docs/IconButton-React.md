@@ -122,6 +122,14 @@ IconButton.theme(".themed-icon-button", {
 
 Change CSS using the CSS classes in `polythene-core-icon-button/src/classes.js`
 
+Class names can be imported with:
+
+~~~javascript
+import { CoreIconButton } from "polythene-core-icon-button";
+
+// CoreIconButton.classes
+~~~
+
 The icon color is set with the CSS (text) `color` attribute of the parent element. For example:
 
 ~~~css

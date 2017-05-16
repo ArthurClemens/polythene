@@ -2,7 +2,7 @@ import { getInitialState, createProps, createContent, onMount, onUnmount, theme 
 import classes from "./classes";
 import vars from "./theme/vars";
 
-export const RaisedButton = {
+export const CoreRaisedButton = {
   getInitialState, createProps, createContent, onMount, onUnmount, theme,
   classes,
   vars

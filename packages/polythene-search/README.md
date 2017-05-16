@@ -226,7 +226,7 @@ search.theme(".themed-search", {
 });
 
 m(search, {
-  class: "themed-search",
+  className: "themed-search",
   // ... other options
 });
 ~~~
@@ -264,7 +264,7 @@ If the component - or a component's parent - has option `tone` set to "dark", th
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element** | optional | String | "div" | HTML element tag for the checkbox container |
-| **class** | optional | String |  | Extra CSS class appended to `pe-search` |
+| **className** | optional | String |  | Extra CSS class appended to `pe-search` |
 | **style**     | optional       | Object   |             | For setting simple style attributes |
 | **id** | optional | String | | HTML element id for the search field |
 | **before**    | optional       | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |

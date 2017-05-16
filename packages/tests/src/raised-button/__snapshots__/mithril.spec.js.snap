@@ -280,7 +280,7 @@ tabindex=\"0\">
 "
 `;
 
-exports[`test Option: inactivate (2) 1`] = `
+exports[`test Option: inactivate (2s) 1`] = `
 "<a class=\"pe-button pe-text-button pe-raised-button\" tabindex=\"0\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">

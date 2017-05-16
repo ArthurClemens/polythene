@@ -1,5 +1,5 @@
 import { statefulComponent } from "polythene-mithril-base";
-import { RaisedButton as component } from "polythene-core-raised-button";
+import { CoreRaisedButton as component } from "polythene-core-raised-button";
 import { Button } from "polythene-mithril-button";
 import { Shadow } from "polythene-mithril-shadow";
 

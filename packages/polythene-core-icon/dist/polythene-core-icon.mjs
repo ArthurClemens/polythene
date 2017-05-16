@@ -125,10 +125,10 @@ var createContent = function createContent(vnode, _ref2) {
   return attrs.content ? attrs.content : attrs.svg ? h(SVG, attrs.svg) : attrs.src ? h("img", { src: attrs.src }) : attrs.children || vnode.children;
 };
 
-var icon = {
+var CoreIcon = {
   createProps: createProps, createContent: createContent, theme: theme, element: element,
   classes: classes,
   vars: vars$1
 };
 
-export { icon };
+export { CoreIcon };

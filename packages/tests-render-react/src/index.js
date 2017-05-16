@@ -7,7 +7,7 @@ import {
 import { addLayoutStyles, addFastClick } from "polythene-utilities";
 import { addTypography, addRoboto } from "polythene-material-design";
 import { rules as css } from "./styles";
-import { renderer as h } from "polythene-react";
+import { renderer as h, Toolbar } from "polythene-react";
 import Page from "./Page";
 import routes from "./routes";
 
@@ -16,18 +16,28 @@ addRoboto();
 addLayoutStyles();
 addFastClick();
 
-const Index = () =>
-  h("div", null, [
-    h(css.headerRow, null, h("div",
+const NavBar = () =>
+  h(css.headerRow, null,
+    h(Toolbar,
       {
-        style: { backgroundColor: "rgba(255,255,255,.93)" }
+        style: {
+          backgroundColor: "rgba(255,255,255,.93)"
+        }
       },
       h("span", "Polythene components")
-    )),
+    )
+  );
+
+const Index = () =>
+  h("div", null, [
+    NavBar(),
     h("ul",
       {
         role: "nav",
-        style: { padding: "88px 8px 24px 8px" }
+        style: {
+          padding: "88px 8px 24px 8px",
+          margin: 0
+        }
       },
       routes.map(route => (
         h("li", null,

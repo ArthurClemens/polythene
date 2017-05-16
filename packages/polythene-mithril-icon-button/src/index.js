@@ -1,5 +1,5 @@
 import { statelessComponent } from "polythene-mithril-base";
-import { IconButton as component } from "polythene-core-icon-button";
+import { CoreIconButton as component } from "polythene-core-icon-button";
 import { Icon } from "polythene-mithril-icon";
 import { Button } from "polythene-mithril-button";
 

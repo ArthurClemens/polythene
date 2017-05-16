@@ -8,3 +8,4 @@ export { default as ripple }       from "./ripple/tests-mithril";
 export { default as shadow }       from "./shadow/tests-mithril";
 export { default as svg }          from "./svg/tests-mithril";
 export { default as theme }        from "./theme/tests-mithril";
+export { default as toolbar }      from "./toolbar/tests-mithril";

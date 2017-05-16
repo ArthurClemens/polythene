@@ -101,6 +101,14 @@ m(SVG, {
 
 Change CSS using the CSS classes in `polythene-core-svg/src/classes.js`
 
+Class names can be imported with:
+
+~~~javascript
+import { CoreSVG } from "polythene-core-svg";
+
+// CoreSVG.classes
+~~~
+
 #### Style option
 
 Some style attributes can be set using option `style`. For example:

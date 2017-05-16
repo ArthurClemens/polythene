@@ -123,7 +123,7 @@ list.theme(".themed-list", {
 });
 
 m(list, {
-  class: "themed-list",
+  className: "themed-list",
   // ... other options
 });
 ~~~
@@ -162,7 +162,7 @@ If the component - or a component's parent - has option `tone` set to "dark", th
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element** | optional | String | "div" | HTML element tag |
-| **class** | optional | String |  | Extra CSS class appended to `pe-list` |
+| **className** | optional | String |  | Extra CSS class appended to `pe-list` |
 | **style**     | optional | Object |       | For setting simple style attributes |
 | **id** | optional | String | | HTML element id |
 | **content** | use `tiles` or `content` | String, hyperscript or component | | Alternative content; replaces children and ignores `tiles` |

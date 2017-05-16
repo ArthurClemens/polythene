@@ -1,5 +1,5 @@
 import { statefulComponent } from "polythene-react-base";
-import { RaisedButton as component } from "polythene-core-raised-button";
+import { CoreRaisedButton as component } from "polythene-core-raised-button";
 import { Button } from "polythene-react-button";
 import { Shadow } from "polythene-react-shadow";
 

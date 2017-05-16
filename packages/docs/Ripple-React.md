@@ -88,6 +88,14 @@ m(Ripple, {
 
 Change CSS using the CSS classes in `polythene-core-ripple/src/classes.js`
 
+Class names can be imported with:
+
+~~~javascript
+import { CoreRipple } from "polythene-core-ripple";
+
+// CoreRipple.classes
+~~~
+
 By default the inherited `color` from the parent element is used. It can be changed with CSS:
 
 ~~~css

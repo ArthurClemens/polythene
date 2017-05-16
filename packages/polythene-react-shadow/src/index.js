@@ -1,5 +1,5 @@
 import { statelessComponent } from "polythene-react-base";
-import { Shadow as component } from "polythene-core-shadow";
+import { CoreShadow as component } from "polythene-core-shadow";
 
 export const Shadow = statelessComponent(Object.assign(
   {},

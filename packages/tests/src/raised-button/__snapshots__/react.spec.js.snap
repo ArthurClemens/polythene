@@ -1,3 +1,43 @@
+exports[`test Dark tone class + light tone 1`] = `
+<div
+  style={
+    Object {
+      "background": "#fff",
+    }
+  }>
+  <RaisedButton
+    label="Normal"
+    tone="light" />
+  <RaisedButton
+    disabled={true}
+    label="Disabled"
+    tone="light" />
+  <RaisedButton
+    className="tests-raised-button-themed-button"
+    label="Theme"
+    tone="light" />
+</div>
+`;
+
+exports[`test Dark tone class + light tone class 1`] = `
+<div
+  className="pe-light-tone"
+  style={
+    Object {
+      "background": "#fff",
+    }
+  }>
+  <RaisedButton
+    label="Normal" />
+  <RaisedButton
+    disabled={true}
+    label="Disabled" />
+  <RaisedButton
+    className="tests-raised-button-themed-button"
+    label="Theme" />
+</div>
+`;
+
 exports[`test No options 1`] = `
 <Button
   animateOnTap={false}
@@ -135,7 +175,13 @@ exports[`test Option: id 1`] = `
   } />
 `;
 
-exports[`test Option: inactivate (2) 1`] = `
+exports[`test Option: inactivate (2s) (JSX) 1`] = `
+<RaisedButton
+  inactivate={2}
+  label="Inactivated for 2s" />
+`;
+
+exports[`test Option: inactivate (2s) 1`] = `
 <Button
   animateOnTap={false}
   inactivate={2}
@@ -209,6 +255,12 @@ exports[`test Option: label 1`] = `
       animated={true}
       z={1} />
   } />
+`;
+
+exports[`test Option: raised (with option z: 2) (JSX) 1`] = `
+<RaisedButton
+  label="Button"
+  z={2} />
 `;
 
 exports[`test Option: raised (with option z: 2) 1`] = `
@@ -318,4 +370,9 @@ exports[`test Themed button (with option disabled) 1`] = `
       animated={true}
       z={1} />
   } />
+`;
+
+exports[`test With router 1`] = `
+<Route
+  render={[Function]} />
 `;

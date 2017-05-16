@@ -174,7 +174,7 @@ content: [{
     }),
     overlay: {
       sheet: true,
-      class: "pe-dark-tone",
+      className: "pe-dark-tone",
       content: [
         {
           primary: {
@@ -252,7 +252,7 @@ card.theme(".themed-card", {
 });
 
 m(card, {
-  class: "themed-card",
+  className: "themed-card",
   // ... other options
 });
 ~~~
@@ -290,7 +290,7 @@ If the component - or a component's parent - has option `tone` set to "dark", th
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional | String | "a" | HTML element tag |
-| **class**     | optional | String |  | Extra CSS class appended to "pe-card" |
+| **className**     | optional | String |  | Extra CSS class appended to "pe-card" |
 | **id** | optional | String | | HTML element id |
 | **events**    | optional | Object | | Options object containing one or more standard events such as `onclick` |
 | **before**    | optional | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
@@ -320,7 +320,7 @@ Next to the card itself, each content parts has a set of options:
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element** | optional | String | "div" | HTML element tag |
-| **class** | optional | String |  | Extra CSS class appended to `pe-card__primary` |
+| **className** | optional | String |  | Extra CSS class appended to `pe-card__primary` |
 | **title** | optional | String |  | Title text |
 | **subtitle** | optional | String |  | Subtitle text |
 | **media** | optional | Options object, equal to media part below |  | Media that is shown in this part |
@@ -333,7 +333,7 @@ Next to the card itself, each content parts has a set of options:
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element** | optional | String | "div" | HTML tag |
-| **class** | optional | String |  | Extra CSS class appended to `pe-card__text` |
+| **className** | optional | String |  | Extra CSS class appended to `pe-card__text` |
 | **content** | required | String, hyperscript or component |  | Text contents |
 | **tight** | optional | Boolean | | Set to `true` to reduce the top and bottom padding |
 
@@ -342,7 +342,7 @@ Next to the card itself, each content parts has a set of options:
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **class** | optional | String |  | Extra CSS class appended to `pe-card__header` |
+| **className** | optional | String |  | Extra CSS class appended to `pe-card__header` |
 | **element** | optional | String | "a" | HTML tag |
 | **events** | optional | Object | | Card events; options object containing one or more events such as `onclick` |
 | **icon** | optional | Object |  | [icon](#icon) options object; used to show an round "avatar" portrait image |
@@ -355,7 +355,7 @@ Next to the card itself, each content parts has a set of options:
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **class** | optional | String |  | Extra CSS class appended to `pe-card__media` |
+| **className** | optional | String |  | Extra CSS class appended to `pe-card__media` |
 | **content** | required | String, hyperscript or component |  | The image |
 | **element** | optional | String | "a" or div" | HTML tag |
 | **origin** | optional | String: "start", "center", "end | "center" | From which side cropping should be done |
@@ -370,7 +370,7 @@ Next to the card itself, each content parts has a set of options:
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **bordered** | optional | Boolean | | Set to `true` to add a top border |
-| **class** | optional | String |  | Extra CSS class appended to `pe-card__actions` |
+| **className** | optional | String |  | Extra CSS class appended to `pe-card__actions` |
 | **content** | required | String, hyperscript or component |  | Action contents, for instance a list of buttons |
 | **element** | optional | String | "div" | HTML tag |
 | **layout** | optional | String: "horizontal", "vertical" or "justified" | "horizontal" | Set to "vertical" for a vertical list of actions; use "justified" for a horizontally evenly spread of icons |

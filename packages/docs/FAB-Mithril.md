@@ -66,6 +66,14 @@ m(FAB, {
 
 Change CSS using the CSS classes in `polythene-core-fab/src/classes.js`
 
+Class names can be imported with:
+
+~~~javascript
+import { CoreFAB } from "polythene-core-fab";
+
+// CoreFAB.classes
+~~~
+
 #### Style option
 
 Some style attributes can be set using option `style`. For example:

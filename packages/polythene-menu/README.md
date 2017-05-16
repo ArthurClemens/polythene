@@ -257,7 +257,7 @@ menu.theme(".themed-menu", {
 });
 
 m(listTile, {
-  class: "themed-menu",
+  className: "themed-menu",
   // ... other options
 });
 ~~~
@@ -314,7 +314,7 @@ If the component - or a component's parent - has option `tone` set to "dark", th
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional       | String   | "div"       | HTML element tag |
-| **class**     | optional       | String   |             | Extra CSS class appended to `pe-menu` |
+| **className**     | optional       | String   |             | Extra CSS class appended to `pe-menu` |
 | **style**     | optional       | Object   |             | For setting simple style attributes |
 | **id**        | optional       | String   |             | HTML element id |
 | **content**   | use `content` or children | String, hyperscript or component | | Expects a [list](../polythene-list), or an array of lists; replaces children |
