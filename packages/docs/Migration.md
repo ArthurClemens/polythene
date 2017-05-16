@@ -1,8 +1,13 @@
-# Migrating from Polythene 0.2 to 1.0
+# Migrating from Polythene 0.2 to 1.0 (Mithril)
+
+Polythene is now a monorepo with an npm package for each component. 
+
+The repo contains packages for both Mithril and React. Because React is introduced with version 1.0, this guide only describes changes for Mithril.
+
 
 ## Module imports
 
-Polythene is now a monorepo with an npm package for each component. The module imports no longer contain a path:
+Module imports no longer contain a path:
 
 ### v0.2
 
@@ -13,7 +18,7 @@ import button from "polythene/button/button";
 ### v1.x
 
 ```javascript
-import button from "polythene-button";
+import { Button } from "polythene-mithril";
 ```
 
 
@@ -30,7 +35,7 @@ m.component(button, {});
 ### v1.x
 
 ```javascript
-m(button, {});
+m(Button, {});
 ```
 
 
@@ -40,6 +45,7 @@ m(button, {});
 
 v0.2                             |  v1.0
 -------------------------------- | ----------------
+`fastclick`                      | part of `polythene-utilities`
 `font-roboto`                    | no longer exposed as separate component, but used in `polythene-material-design`
 `polythene/common/mixin`         | `mixin` from `polythene-css`
 `polythene/common/webfontloader` | removed; use [webfontloader](https://github.com/typekit/webfontloader)
@@ -74,7 +80,7 @@ m.component(button, {
 #### v1.x
 
 ```javascript
-m(button, {
+m(Button, {
   element: "button"
 });
 ```
@@ -99,7 +105,7 @@ m.component(button, {
 #### v1.x
 
 ```javascript
-m(button, {
+m(Button, {
   url: {
     href: "/page",
     oncreate: m.route.link
@@ -126,13 +132,13 @@ m(listTile, {
 #### v1.x
 
 ```javascript
-import listTile from "polythene-list-tile";
+import { ListTile } from "polythene-mithril";
 
- m(listTile, {
+ m(ListTile, {
   content: "My content"
 });
 
-m(listTile, {}, "My content");
+m(ListTile, {}, "My content");
 ```
 
 
@@ -156,7 +162,7 @@ The `onclick` function of the `events` option (if any) is called.
 
 
 
-### Button "raised" has become Raised Button
+### Button option "raised" has become RaisedButton
 
 The raised button state has moved to its own component.
 
@@ -174,9 +180,9 @@ m(button, {
 #### v1.x
 
 ```javascript
-import raisedButton from "polythene-raised-button";
+import { RaisedButton } from "polythene-mithril";
 
-m(raisedButton, {
+m(RaisedButton, {
   label: "Label"
 });
 ```
@@ -185,7 +191,7 @@ m(raisedButton, {
 
 ### FAB
 
-FAB is now composed from `polythene-raised-button`.
+FAB is now composed from `polythene-raised-button`. This should have no consequences.
 
 
 
@@ -227,9 +233,9 @@ m(search, {
 #### v1.x
 
 ```javascript
-import search from "polythene-search";
+import { Search } from "polythene-mithril";
 
-m(search, {
+m(Search, {
   // ...
   fullWidth: true
 });
@@ -240,16 +246,6 @@ m(search, {
 ### SVG
 
 Dynamic loading and preloading have been removed, as these are infrequent use cases.
-
-
-
-### Switch
-
-`switch` has been renamed to `switchButton` in order to import it without surprises (`switch` is a reserved keyword):
-
-~~~javascript
-import switchButton from "polythene-switch-button";
-~~~
 
 
 
@@ -278,9 +274,9 @@ m(textfield, {
 #### v1.x
 
 ```javascript
-import textfield from "polythene-textfield";
+import { Textfield } from "polythene-mithril";
 
-m(textfield, {
+m(Textfield, {
   // ...
   required: true,
   requiredIndicator: ""
@@ -290,13 +286,13 @@ m(textfield, {
 but also:
 
 ```javascript
-m(textfield, {
+m(Textfield, {
   // ...
   required: true,
   requiredIndicator: "(required)"
 });
 
-m(textfield, {
+m(Textfield, {
   // ...
   optionalIndicator: "(optional)"
 });
@@ -339,20 +335,20 @@ export default {
 
 ~~~javascript
 // any script
-import button from "polythene-button";
+import { Button } from "polythene-mithril";
 
-button.theme("blue-button", {
+Button.theme("blue-button", {
   color_light_normal_background: "blue",
   color_light_normal_text: "white"
 });
 
-m(button, {
+m(Button, {
   class: "blue-button",
   label: "Blue Button"
 });
 ~~~ 
 
-See polythene-theme's README for more details.
+See [Theme](Theme.md) for more details.
 
 
 ### Setting global app styles
@@ -381,7 +377,7 @@ export const vars = {
 };
 ~~~
 
-See polythene-theme's README for more details.
+See [Theme](Theme.md) for more details.
 
 
 ### Variables
@@ -401,5 +397,5 @@ For instance:
 
 ### Toolbar
 
-Toolbar now only displays 1 row of items. Display of multiple bars (top, middle, bottom) has been moved to Header Panel.
+Toolbar now only displays 1 row of items. Display of multiple bars (top, middle, bottom) is not yet implemented.
 
