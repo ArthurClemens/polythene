@@ -1,6 +1,6 @@
 import m from 'mithril';
 import { layout, selectionControl, vars } from 'polythene-selection-control';
-import { iconButton, shadow } from 'polythene-mithril';
+import { IconButton, Shadow } from 'polythene-mithril';
 import { mixin, styler } from 'polythene-core-css';
 import { vars as vars$1 } from 'polythene-theme';
 import { vars as vars$2 } from 'polythene-core-icon-button';
@@ -23,11 +23,11 @@ var controlView = function controlView(checked, attrs) {
   var raised = attrs.disabled ? false : attrs.raised !== undefined ? attrs.raised : true;
   return [m("div", {
     class: classes.track
-  }), m(iconButton, _extends$1({}, {
+  }), m(IconButton, _extends$1({}, {
     class: classes.thumb,
     content: [m("div", {
       class: classes.knob
-    }, [attrs.icon ? attrs.icon : null, raised ? m(shadow, {
+    }, [attrs.icon ? attrs.icon : null, raised ? m(Shadow, {
       z: z,
       animated: true
     }) : null])],

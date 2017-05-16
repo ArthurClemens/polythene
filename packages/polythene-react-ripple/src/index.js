@@ -1,10 +1,10 @@
 import { statefulComponent } from "polythene-react-base";
-import { ripple as component } from "polythene-core-ripple";
+import { Ripple as component } from "polythene-core-ripple";
 
-export const ripple = statefulComponent(Object.assign(
+export const Ripple = statefulComponent(Object.assign(
   {},
   component
 ));
 
-ripple.theme = component.theme;
-ripple.displayName = "Ripple";
+Ripple.theme = component.theme;
+Ripple.displayName = "Ripple";

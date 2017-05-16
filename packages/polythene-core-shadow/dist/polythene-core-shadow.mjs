@@ -106,10 +106,10 @@ var createContent = function createContent(vnode, _ref2) {
   })];
 };
 
-var shadow = {
+var Shadow = {
   createProps: createProps, createContent: createContent, theme: theme, element: element,
   classes: classes,
   vars: vars$1
 };
 
-export { shadow };
+export { Shadow };

@@ -77,6 +77,12 @@ h(Icon, {
 
 
 
+## Options
+
+[Icon options](Icon.md)
+
+
+
 ## Appearance
 
 ### Sizes
@@ -114,9 +120,3 @@ Some style attributes can be set using option `style`. For example:
 ~~~jsx
 <Icon svg={starsSVG} style={{color: "#EF6C00"}} />
 ~~~
-
-
-
-## Options
-
-[Icon options](Icon.md)

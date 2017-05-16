@@ -1,6 +1,6 @@
 import m from 'mithril';
 import { filterSupportedAttributes } from 'polythene-core';
-import { Icon, iconButton } from 'polythene-mithril';
+import { Icon, IconButton } from 'polythene-mithril';
 import { vars } from 'polythene-theme';
 import { flex, mixin } from 'polythene-core-css';
 
@@ -150,7 +150,7 @@ var createIcon = function createIcon(onOffType, attrs) {
 var controlView = function controlView(checked, attrs) {
   return m("div", {
     class: classes.box
-  }, m(iconButton, _extends$1({}, {
+  }, m(IconButton, _extends$1({}, {
     element: "div",
     class: classes.button,
     content: [m(Icon, createIcon("iconOn", _extends$1({}, attrs, { class: classes.buttonOn }))), m(Icon, createIcon("iconOff", _extends$1({}, attrs, { class: classes.buttonOff })))],

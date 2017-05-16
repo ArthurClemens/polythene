@@ -4,7 +4,7 @@ import { scrollTo } from 'polythene-utilities';
 import { flex, mixin, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 import { vars as vars$1 } from 'polythene-core-icon-button';
-import { Icon, button as button$1, iconButton } from 'polythene-mithril';
+import { Icon, IconButton, button as button$1 } from 'polythene-mithril';
 
 var classes = {
   component: "pe-tabs",
@@ -390,7 +390,7 @@ var tab = {
 var view$2 = function view(vnode) {
   var attrs = vnode.attrs;
   var icon = attrs.position === "start" ? attrs.icon || arrowBackward : attrs.icon || arrowForward;
-  return m(iconButton, {
+  return m(IconButton, {
     class: [classes.scrollButton, attrs.class].join(" "),
     icon: icon,
     ripple: { center: true },

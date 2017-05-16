@@ -1,9 +1,9 @@
 import { statefulComponent } from "polythene-react-base";
 import { button as component } from "polythene-core-button";
-import { ripple } from "polythene-react-ripple";
+import { Ripple } from "polythene-react-ripple";
 
-const createProps = (vnode, args) => component.createProps(vnode, Object.assign(args, { ripple }));
-const createContent = (vnode, args) => component.createContent(vnode, Object.assign(args, { ripple }));
+const createProps = (vnode, args) => component.createProps(vnode, Object.assign(args, { Ripple }));
+const createContent = (vnode, args) => component.createContent(vnode, Object.assign(args, { Ripple }));
 
 export const button = statefulComponent(Object.assign(
   {},

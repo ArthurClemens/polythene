@@ -1,34 +1,34 @@
 
-export default ({ ripple }) => {
+export default ({ Ripple }) => {
   return [
     {
       name: "No options",
-      component: ripple
+      component: Ripple
     },
     {
       name: "Option: id",
-      component: ripple,
+      component: Ripple,
       attrs: {
         id: "id-x"
       }
     },
     {
       name: "Option: className",
-      component: ripple,
+      component: Ripple,
       attrs: {
         className: "className-x"
       }
     },
     {
       name: "Option: class",
-      component: ripple,
+      component: Ripple,
       attrs: {
         class: "class-x"
       }
     },
     {
       name: "Option: element",
-      component: ripple,
+      component: Ripple,
       attrs: {
         element: "a"
       }

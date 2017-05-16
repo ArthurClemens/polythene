@@ -1,7 +1,7 @@
 import m from "mithril";
 import { filterSupportedAttributes } from "polythene-core";
 import { show, hide } from "polythene-core";
-import { shadow } from "polythene-mithril";
+import { Shadow } from "polythene-mithril";
 import { customTheme } from "./theme";
 import classes from "./classes";
 
@@ -102,7 +102,7 @@ const createView = (state, attrs) => {
 
   const content = [
     attrs.raised && attrs.content
-      ? m(shadow, { z: attrs.z })
+      ? m(Shadow, { z: attrs.z })
       : null,
     attrs.content || m("div", { class: classes.animation }, "Specific spinner missing")
   ];

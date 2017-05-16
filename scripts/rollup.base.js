@@ -32,7 +32,12 @@ export const createConfig = ({ includeDepencies }) => ({
     }),
 
     // Convert CommonJS modules to ES6, so they can be included in a Rollup bundle
-    commonjs({}),
+    commonjs({
+      namedExports: {
+        "node_modules/react/react.js": ["Children", "Component", "PropTypes", "createElement"],
+        "node_modules/react-dom/index.js": ["render"]
+      }
+    }),
 
     eslint({
       cache: true

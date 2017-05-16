@@ -4,6 +4,9 @@ import genericTests from "./tests-generic";
 const mithrilTests = ({ button, renderer: h }) => {
   return [
     {
+      section: "Mithril specific tests",
+    },
+    {
       name: "Dark tone class + light tone class",
       class: "pe-dark-tone",
       component: {

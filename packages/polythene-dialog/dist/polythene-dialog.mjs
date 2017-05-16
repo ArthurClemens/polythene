@@ -1,6 +1,6 @@
 import { filterSupportedAttributes, hide, multiple, show, subscribe, unsubscribe } from 'polythene-core';
 import m from 'mithril';
-import { shadow } from 'polythene-mithril';
+import { Shadow } from 'polythene-mithril';
 import { flex, mixin, styler } from 'polythene-core-css';
 import { classes } from 'polythene-menu';
 import { vars } from 'polythene-theme';
@@ -372,7 +372,7 @@ var createView = function createView(state, opts) {
   var content = m("div", {
     class: [classes$1.content, opts.menu ? classes$1.menuContent : null].join(" "),
     style: opts.style
-  }, [opts.fullscreen ? null : m(shadow, {
+  }, [opts.fullscreen ? null : m(Shadow, {
     z: state.z,
     animated: true
   }), opts.fullscreen ? null : opts.title ? m("div", {

@@ -95,7 +95,7 @@ const reactTests = ({ FAB, Icon, SVG, renderer: h }) => { // eslint-disable-line
       interactive: true,
       component: withRouter(({ history }) => 
         <FAB
-          icon={{svg: iconFavoriteSVG}}
+          icon={{svg: iconAlarmSVG}}
           url={{
             href: "/shadow",
             onClick: e => (e.preventDefault(), history.push("/shadow"))

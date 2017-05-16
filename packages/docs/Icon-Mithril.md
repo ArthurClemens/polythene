@@ -60,6 +60,11 @@ A large collection of such ready to use SVG modules is available at [mmsvg](http
 
 
 
+## Options
+
+[Icon options](Icon.md)
+
+
 
 ## Appearance
 
@@ -105,9 +110,3 @@ m(Icon, {
   // ... other options
 })
 ~~~
-
-
-
-## Options
-
-[Icon options](Icon.md)

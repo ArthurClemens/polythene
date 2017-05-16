@@ -66,7 +66,7 @@ export const createProps = (vnode, { keys: k }) => {
   );
 };
 
-export const createContent = (vnode, { renderer: h, keys: k, ripple }) => {
+export const createContent = (vnode, { renderer: h, keys: k, Ripple }) => {
   const attrs = vnode.attrs;
   const noink = attrs.ink !== undefined && attrs.ink === false;
   const disabled = attrs.disabled;
@@ -90,10 +90,10 @@ export const createContent = (vnode, { renderer: h, keys: k, ripple }) => {
       !disabled && attrs.shadowComponent // "protected" option, used by raised-button
         ? attrs.shadowComponent
         : null,
-      // ripple
+      // Ripple
       disabled || noink
         ? null
-        : ripple && h(ripple, {
+        : Ripple && h(Ripple, {
           ...attrs.ripple,
           key: "ripple",
           // target: () => vnode.dom

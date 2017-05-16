@@ -1,7 +1,7 @@
 import m from "mithril";
 import { filterSupportedAttributes, subscribe, unsubscribe, show, hide } from "polythene-core";
 import dialog from "./dialog";
-import { shadow } from "polythene-mithril";
+import { Shadow } from "polythene-mithril";
 import { customTheme } from "./theme";
 import classes from "./classes";
 
@@ -172,7 +172,7 @@ const createView = (state, opts) => {
     [
       opts.fullscreen
         ? null
-        : m(shadow, {
+        : m(Shadow, {
           z: state.z,
           animated: true
         }),

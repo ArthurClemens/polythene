@@ -69,6 +69,12 @@ m(Icon, {
 
 
 
+## Options
+
+[SVG options](SVG.md)
+
+
+
 ## Appearance
 
 ### Styling
@@ -107,10 +113,3 @@ m(SVG, {
   // ... other options
 })
 ~~~
-
-
-## Options
-
-[SVG options](SVG.md)
-
-

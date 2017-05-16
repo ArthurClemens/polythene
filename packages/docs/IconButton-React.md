@@ -100,6 +100,12 @@ withRouter(({ history }) =>
 
 
 
+## Options
+
+[Icon Button options](IconButton.md)
+
+
+
 ## Appearance
 
 Pass [Button](Button.md) options to change the behaviour and appearance - see some examples below.
@@ -177,9 +183,3 @@ Some style attributes can be set using option `style`. For example:
 ~~~jsx
 <FAB icon={{svg: starsSVG}} style={{ color: "#FFCCBC", backgroundColor: "#4E342E" }} />
 ~~~
-
-
-
-## Options
-
-[Icon Button options](IconButton.md)

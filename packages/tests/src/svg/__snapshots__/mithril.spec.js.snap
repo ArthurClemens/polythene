@@ -1,55 +1,18 @@
-exports[`test Child node (mmsvg) 1`] = `
-"<div class="pe-svg">
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-  viewbox="0 0 24 24">
-    <path d=
-    "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z">
-    </path>
-  </svg>
-</div>
-"
-`;
-
 exports[`test Child node (trusted) 1`] = `
-"<div class="pe-svg">
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-  viewbox="0 0 24 24">
+"<div class=\"pe-svg\">
+  <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\"
+  viewbox=\"0 0 24 24\">
     <path d=
-    "M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z">
+    \"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\">
     </path>
   </svg>
 </div>
 "
 `;
 
-exports[`test Child node (trusted) 2`] = `
-"<div class="pe-svg">
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-  viewbox="0 0 24 24">
-    <path d=
-    "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z">
-    </path>
-  </svg>
-</div>
-"
-`;
-
-exports[`test Child node 1`] = `
-"<div class="pe-svg">
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-  viewbox="0 0 24 24">
-    <path d=
-    "M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z">
-    </path>
-  </svg>
-</div>
-"
-`;
-
-exports[`test Dark tone class + light theme class 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px;\" class=
-\"pe-light-tone\">
-  <div class=\"pe-svg\">
+exports[`test Dark tone class + light tone 1`] = `
+"<div style=\"background: rgb(255, 255, 255); padding: 10px;\">
+  <div class=\"pe-svg pe-light-tone\">
     <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\"
     viewbox=\"0 0 24 24\">
       <path d=
@@ -61,9 +24,10 @@ exports[`test Dark tone class + light theme class 1`] = `
 "
 `;
 
-exports[`test Dark tone class + light tone 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px;\">
-  <div class=\"pe-svg pe-light-tone\">
+exports[`test Dark tone class + light tone class 1`] = `
+"<div style=\"background: rgb(255, 255, 255); padding: 10px;\" class=
+\"pe-light-tone\">
+  <div class=\"pe-svg\">
     <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\"
     viewbox=\"0 0 24 24\">
       <path d=
@@ -92,13 +56,6 @@ exports[`test Option: attribute (trusted) 1`] = `
 "
 `;
 
-exports[`test Option: children 1`] = `
-"<div class=\"pe-svg\">
-  <span>Child</span>
-</div>
-"
-`;
-
 exports[`test Option: class 1`] = `
 "<div class=\"pe-svg class-x\"></div>
 "
@@ -106,18 +63,6 @@ exports[`test Option: class 1`] = `
 
 exports[`test Option: className 1`] = `
 "<div class=\"pe-svg className-x\"></div>
-"
-`;
-
-exports[`test Option: content (mmsvg) 1`] = `
-"<div class="pe-svg">
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-  viewbox="0 0 24 24">
-    <path d=
-    "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z">
-    </path>
-  </svg>
-</div>
 "
 `;
 
@@ -133,31 +78,12 @@ exports[`test Option: content (trusted) 1`] = `
 "
 `;
 
-exports[`test Option: content -- dark theme class 1`] = `
+exports[`test Option: content -- dark tone class 1`] = `
 "<div class=\"pe-svg\">
   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\"
   viewbox=\"0 0 24 24\">
     <path d=
     \"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\">
-    </path>
-  </svg>
-</div>
-"
-`;
-
-exports[`test Option: content 1`] = `
-"<div class=\"pe-svg\">
-  <span>Content</span>
-</div>
-"
-`;
-
-exports[`test Option: content 2`] = `
-"<div class="pe-svg">
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-  viewbox="0 0 24 24">
-    <path d=
-    "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z">
     </path>
   </svg>
 </div>
@@ -186,7 +112,7 @@ exports[`test Option: style (color) 1`] = `
 "
 `;
 
-exports[`test Themed (color) -- dark theme class 1`] = `
+exports[`test Themed (color) -- dark tone class 1`] = `
 "<div class=\"pe-svg tests-svg-themed-svg\">
   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\"
   viewbox=\"0 0 24 24\">

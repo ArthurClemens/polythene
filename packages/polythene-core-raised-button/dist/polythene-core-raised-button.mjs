@@ -173,7 +173,7 @@ var clearTapEvents = function clearTapEvents(vnode) {
 
 var createProps = function createProps(vnode, _ref) {
   var h = _ref.renderer,
-      shadow = _ref.shadow;
+      Shadow = _ref.Shadow;
 
   var attrs = vnode.attrs;
   var state = vnode.state;
@@ -181,7 +181,7 @@ var createProps = function createProps(vnode, _ref) {
   return _extends({}, {
     parentClassName: [attrs.parentClassName || classes.component].join(" "),
     animateOnTap: false,
-    shadowComponent: h(shadow, { z: state.z, animated: true }),
+    shadowComponent: h(Shadow, { z: state.z, animated: true }),
     children: children
   }, attrs);
 };

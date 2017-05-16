@@ -285,7 +285,7 @@ var createContent = function createContent(vnode, _ref3) {
 
   var h = _ref3.renderer,
       k = _ref3.keys,
-      ripple = _ref3.ripple;
+      Ripple = _ref3.Ripple;
 
   var attrs = vnode.attrs;
   var noink = attrs.ink !== undefined && attrs.ink === false;
@@ -295,8 +295,8 @@ var createContent = function createContent(vnode, _ref3) {
   var noWash = disabled || attrs.wash !== undefined && !attrs.wash;
   return label ? h("div", (_h = {}, _defineProperty(_h, k.class, classes.content), _defineProperty(_h, "key", "button"), _defineProperty(_h, "style", attrs.style || {}), _h), [!disabled && attrs.shadowComponent // "protected" option, used by raised-button
   ? attrs.shadowComponent : null,
-  // ripple
-  disabled || noink ? null : ripple && h(ripple, _extends({}, attrs.ripple, {
+  // Ripple
+  disabled || noink ? null : Ripple && h(Ripple, _extends({}, attrs.ripple, {
     key: "ripple"
   })),
   // hover

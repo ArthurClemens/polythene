@@ -1,5 +1,5 @@
 import m from "mithril";
-import { Icon, ripple } from "polythene-mithril";
+import { Icon, Ripple } from "polythene-mithril";
 import { filterSupportedAttributes } from "polythene-core";
 import { customTheme } from "./theme";
 import classes from "./classes";
@@ -109,7 +109,7 @@ const view = vnode => {
   delete primaryAttrs.class;
   const content = [
     attrs.ink && !attrs.disabled
-      ? m(ripple, attrs.ripple)
+      ? m(Ripple, attrs.ripple)
       : null,
     primaryContent(primaryAttrs, attrs.children || vnode.children),
     attrs.secondary

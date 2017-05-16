@@ -1,5 +1,5 @@
 import m from 'mithril';
-import { shadow } from 'polythene-mithril';
+import { Shadow } from 'polythene-mithril';
 import { filterSupportedAttributes, hide, show, subscribe, unsubscribe } from 'polythene-core';
 import { mixin, styler } from 'polythene-core-css';
 import { classes } from 'polythene-list-tile';
@@ -302,7 +302,7 @@ var createView = function createView(vnode) {
       return e.preventDefault();
     },
     style: attrs.style
-  }, [state.z > 0 && m(shadow, {
+  }, [state.z > 0 && m(Shadow, {
     z: state.z,
     animated: true
   }), attrs.content ? attrs.content : vnode.children]);

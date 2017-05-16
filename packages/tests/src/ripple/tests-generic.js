@@ -1,13 +1,13 @@
 
-export default ({ ripple }) => {
-  ripple.theme(".tests-ripple-themed-ripple", {
+export default ({ Ripple }) => {
+  Ripple.theme(".tests-ripple-themed-ripple", {
     color_light: "#F44336"
   });
   return [
     {
       name: "Option: constrained (true)",
       interactive: true,
-      component: ripple,
+      component: Ripple,
       attrs: {
         constrained: true
       }
@@ -16,7 +16,7 @@ export default ({ ripple }) => {
       name: "Option: constrained (false)",
       interactive: true,
       exclude: true,
-      component: ripple,
+      component: Ripple,
       attrs: {
         constrained: false
       }
@@ -25,7 +25,7 @@ export default ({ ripple }) => {
       name: "Option: center",
       interactive: true,
       exclude: true,
-      component: ripple,
+      component: Ripple,
       attrs: {
         center: true
       }
@@ -34,7 +34,7 @@ export default ({ ripple }) => {
       name: "Option: start opacity (0.5)",
       interactive: true,
       exclude: true,
-      component: ripple,
+      component: Ripple,
       attrs: {
         startOpacity: 0.5
       }
@@ -43,7 +43,7 @@ export default ({ ripple }) => {
       name: "Option: end opacity (0.1)",
       interactive: true,
       exclude: true,
-      component: ripple,
+      component: Ripple,
       attrs: {
         endOpacity: 0.1
       }
@@ -52,7 +52,7 @@ export default ({ ripple }) => {
       name: "Option: duration (3.0)",
       interactive: true,
       exclude: true,
-      component: ripple,
+      component: Ripple,
       attrs: {
         duration: 3.0
       }
@@ -61,7 +61,7 @@ export default ({ ripple }) => {
       name: "Option: initial opacityDecayVelocity (0.1)",
       interactive: true,
       exclude: true,
-      component: ripple,
+      component: Ripple,
       attrs: {
         opacityDecayVelocity: 0.1
       }
@@ -70,7 +70,7 @@ export default ({ ripple }) => {
       name: "Option: disabled",
       interactive: true,
       exclude: true,
-      component: ripple,
+      component: Ripple,
       attrs: {
         disabled: true
       }
@@ -79,7 +79,7 @@ export default ({ ripple }) => {
       name: "Option: style (color)",
       interactive: true,
       exclude: true,
-      component: ripple,
+      component: Ripple,
       attrs: {
         startOpacity: 0.7,
         style: {
@@ -91,7 +91,7 @@ export default ({ ripple }) => {
       name: "Themed (should be red and permanent)",
       interactive: true,
       exclude: true,
-      component: ripple,
+      component: Ripple,
       attrs: {
         className: "tests-ripple-themed-ripple",
         endOpacity: 1.0,
@@ -107,7 +107,7 @@ export default ({ ripple }) => {
       interactive: true,
       exclude: true,
       className: "pe-dark-tone",
-      component: ripple,
+      component: Ripple,
       attrs: {
         constrained: true,
         style: {
@@ -120,7 +120,7 @@ export default ({ ripple }) => {
       interactive: true,
       exclude: true,
       className: "pe-dark-tone",
-      component: ripple,
+      component: Ripple,
       attrs: {
         constrained: true,
         style: {
@@ -134,7 +134,7 @@ export default ({ ripple }) => {
       interactive: true,
       exclude: true,
       className: "test-dark-theme",
-      component: ripple,
+      component: Ripple,
       attrs: {
         constrained: true,
         style: {

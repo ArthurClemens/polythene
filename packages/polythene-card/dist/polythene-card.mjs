@@ -1,6 +1,5 @@
 import m from 'mithril';
-import { Icon } from 'polythene-mithril';
-import shadow from 'polythene-shadow';
+import { Icon, Shadow } from 'polythene-mithril';
 import listTile from 'polythene-list-tile';
 import { filterSupportedAttributes } from 'polythene-core';
 import { flex, mixin, styler } from 'polythene-core-css';
@@ -609,7 +608,7 @@ var view = function view(_ref2) {
     return contentMap[key](attr);
   }) : attrs.content;
 
-  var content = [m(shadow, {
+  var content = [m(Shadow, {
     z: attrs.z !== undefined ? attrs.z : 1,
     animated: true
   }), m("div", {

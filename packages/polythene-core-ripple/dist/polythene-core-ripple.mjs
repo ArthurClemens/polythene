@@ -205,10 +205,10 @@ var createContent = function createContent(vnode, _ref3) {
   return h("div", { className: classes.mask }, h("div", { className: classes.waves }));
 };
 
-var ripple = {
+var Ripple = {
   createProps: createProps, createContent: createContent, onMount: onMount, onUnmount: onUnmount, theme: theme, element: element,
   classes: classes,
   vars: vars$1
 };
 
-export { ripple };
+export { Ripple };

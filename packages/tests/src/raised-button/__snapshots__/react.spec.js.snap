@@ -98,7 +98,7 @@ exports[`test Option: disabled (true) 1`] = `
   } />
 `;
 
-exports[`test Option: disabled -- dark theme class 1`] = `
+exports[`test Option: disabled -- dark tone class 1`] = `
 <Button
   animateOnTap={false}
   disabled={true}
@@ -187,7 +187,7 @@ exports[`test Option: ink (false) 1`] = `
   } />
 `;
 
-exports[`test Option: label -- dark theme class (should be app's primary color) 1`] = `
+exports[`test Option: label -- dark tone class (should be app's primary color) 1`] = `
 <Button
   animateOnTap={false}
   label="Label"

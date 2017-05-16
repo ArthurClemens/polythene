@@ -20,6 +20,12 @@ m(FAB, {
 
 
 
+## Options
+
+[FAB options](FAB.md)
+
+
+
 ## Appearance
 
 FAB's default colors are:
@@ -67,10 +73,3 @@ m(FAB, {
   // ... other options
 })
 ~~~
-
-
-
-## Options
-
-[FAB options](FAB.md)
-

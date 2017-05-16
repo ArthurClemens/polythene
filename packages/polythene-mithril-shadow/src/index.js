@@ -1,9 +1,9 @@
 import { statelessComponent } from "polythene-mithril-base";
-import { shadow as component } from "polythene-core-shadow";
+import { Shadow as component } from "polythene-core-shadow";
 
-export const shadow = statelessComponent(Object.assign(
+export const Shadow = statelessComponent(Object.assign(
   {},
   component
 ));
 
-shadow.theme = component.theme;
+Shadow.theme = component.theme;

@@ -23,6 +23,12 @@ See [Icon](Icon.md) for more Icon options.
 
 
 
+## Options
+
+[Icon Button options](IconButton.md)
+
+
+
 ## Appearance
 
 Pass [Button](Button.md) options to change the behaviour and appearance - see some examples below.
@@ -110,9 +116,3 @@ m(IconButton, {
   // ... other options
 })
 ~~~
-
-
-
-## Options
-
-[Icon Button options](IconButton.md)

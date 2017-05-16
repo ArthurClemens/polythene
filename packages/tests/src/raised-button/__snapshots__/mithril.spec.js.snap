@@ -1,52 +1,3 @@
-exports[`test Dark tone class + light theme class 1`] = `
-"<div style=\"background: rgb(255, 255, 255);\" class=\"pe-light-tone\">
-  <a class=\"pe-button pe-text-button pe-raised-button\" tabindex=
-  \"0\">
-  <div class=\"pe-button__content\">
-    <div class=\"pe-shadow pe-shadow--animated\">
-      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
-    </div>
-    <div class=\"pe-ripple pe-ripple--constrained\">
-      <div class=\"pe-ripple__mask\">
-        <div class=\"pe-ripple__waves\"></div>
-      </div>
-    </div>
-    <div class=\"pe-button__wash\"></div>
-    <div class=\"pe-button__focus\"></div>
-    <div class=\"pe-button__label\">
-      Normal
-    </div>
-  </div></a><a class=
-  \"pe-button pe-text-button pe-raised-button pe-button--disabled\"
-  tabindex=\"-1\" disabled>
-  <div class=\"pe-button__content\">
-    <div class=\"pe-button__label\">
-      Disabled
-    </div>
-  </div></a><a class=
-  \"pe-button pe-text-button pe-raised-button tests-raised-button-themed-button\"
-  tabindex=\"0\">
-  <div class=\"pe-button__content\">
-    <div class=\"pe-shadow pe-shadow--animated\">
-      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
-    </div>
-    <div class=\"pe-ripple pe-ripple--constrained\">
-      <div class=\"pe-ripple__mask\">
-        <div class=\"pe-ripple__waves\"></div>
-      </div>
-    </div>
-    <div class=\"pe-button__wash\"></div>
-    <div class=\"pe-button__focus\"></div>
-    <div class=\"pe-button__label\">
-      Theme
-    </div>
-  </div></a>
-</div>
-"
-`;
-
 exports[`test Dark tone class + light tone 1`] = `
 "<div style=\"background: rgb(255, 255, 255);\">
   <a class=
@@ -76,6 +27,55 @@ exports[`test Dark tone class + light tone 1`] = `
     </div>
   </div></a><a class=
   \"pe-button pe-text-button pe-raised-button pe-light-tone tests-raised-button-themed-button\"
+  tabindex=\"0\">
+  <div class=\"pe-button__content\">
+    <div class=\"pe-shadow pe-shadow--animated\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+    </div>
+    <div class=\"pe-ripple pe-ripple--constrained\">
+      <div class=\"pe-ripple__mask\">
+        <div class=\"pe-ripple__waves\"></div>
+      </div>
+    </div>
+    <div class=\"pe-button__wash\"></div>
+    <div class=\"pe-button__focus\"></div>
+    <div class=\"pe-button__label\">
+      Theme
+    </div>
+  </div></a>
+</div>
+"
+`;
+
+exports[`test Dark tone class + light tone class 1`] = `
+"<div style=\"background: rgb(255, 255, 255);\" class=\"pe-light-tone\">
+  <a class=\"pe-button pe-text-button pe-raised-button\" tabindex=
+  \"0\">
+  <div class=\"pe-button__content\">
+    <div class=\"pe-shadow pe-shadow--animated\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+    </div>
+    <div class=\"pe-ripple pe-ripple--constrained\">
+      <div class=\"pe-ripple__mask\">
+        <div class=\"pe-ripple__waves\"></div>
+      </div>
+    </div>
+    <div class=\"pe-button__wash\"></div>
+    <div class=\"pe-button__focus\"></div>
+    <div class=\"pe-button__label\">
+      Normal
+    </div>
+  </div></a><a class=
+  \"pe-button pe-text-button pe-raised-button pe-button--disabled\"
+  tabindex=\"-1\" disabled>
+  <div class=\"pe-button__content\">
+    <div class=\"pe-button__label\">
+      Disabled
+    </div>
+  </div></a><a class=
+  \"pe-button pe-text-button pe-raised-button tests-raised-button-themed-button\"
   tabindex=\"0\">
   <div class=\"pe-button__content\">
     <div class=\"pe-shadow pe-shadow--animated\">
@@ -243,7 +243,7 @@ tabindex=\"-1\" disabled>
 "
 `;
 
-exports[`test Option: disabled -- dark theme class 1`] = `
+exports[`test Option: disabled -- dark tone class 1`] = `
 "<a class=
 \"pe-button pe-text-button pe-raised-button pe-button--disabled\"
 tabindex=\"-1\" disabled>
@@ -360,7 +360,7 @@ exports[`test Option: ink (false) 1`] = `
 "
 `;
 
-exports[`test Option: label -- dark theme class (should be app's primary color) 1`] = `
+exports[`test Option: label -- dark tone class (should be app's primary color) 1`] = `
 "<a class=\"pe-button pe-text-button pe-raised-button\" tabindex=\"0\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">

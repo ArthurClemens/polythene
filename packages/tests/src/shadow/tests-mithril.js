@@ -1,7 +1,7 @@
-import { renderer, shadow } from "polythene-mithril";
+import { renderer, Shadow } from "polythene-mithril";
 import genericTests from "./tests-generic";
 
-const mithrilTests = ({ shadow, renderer: h }) => {
+const mithrilTests = ({ Shadow, renderer: h }) => {
 
   const interactiveTest = {
     oninit: vnode =>
@@ -13,7 +13,7 @@ const mithrilTests = ({ shadow, renderer: h }) => {
           vnode.state.z = newZ;
         }
       }, "Click me"),
-      h(shadow, {
+      h(Shadow, {
         animated: true,
         z: vnode.state.z,
       })
@@ -22,11 +22,14 @@ const mithrilTests = ({ shadow, renderer: h }) => {
 
   return [
     {
+      section: "Mithril specific tests",
+    },
+    {
       name: "Add to a Mithril element",
       component: {
         view: () => [
           h("div", "Some element"),
-          h(shadow)
+          h(Shadow)
         ]
       },
     },
@@ -49,5 +52,5 @@ const mithrilTests = ({ shadow, renderer: h }) => {
 };
 
 export default []
-  .concat(genericTests({ shadow, renderer }))
-  .concat(mithrilTests({ shadow, renderer }));
+  .concat(genericTests({ Shadow, renderer }))
+  .concat(mithrilTests({ Shadow, renderer }));

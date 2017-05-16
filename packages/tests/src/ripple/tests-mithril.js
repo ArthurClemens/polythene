@@ -1,8 +1,11 @@
-import { renderer, ripple } from "polythene-mithril";
+import { renderer, Ripple } from "polythene-mithril";
 import genericTests from "./tests-generic";
 
-const mithrilTests = ({ ripple, renderer: h }) => {
+const mithrilTests = ({ Ripple, renderer: h }) => {
   return [
+    {
+      section: "Mithril specific tests",
+    },
     {
       name: "Appended to an element",
       interactive: true,
@@ -17,7 +20,7 @@ const mithrilTests = ({ ripple, renderer: h }) => {
                 height: "100px",
               }
             },
-            h(ripple)
+            h(Ripple)
           )
       }
     },
@@ -29,7 +32,7 @@ const mithrilTests = ({ ripple, renderer: h }) => {
         oninit: vnode =>
           vnode.state.started = 0,
         view: vnode => [
-          h(ripple, {
+          h(Ripple, {
             before: h("div", `start called: ${vnode.state.started}`),
             start: () => (vnode.state.started++, h.redraw())
           })
@@ -44,7 +47,7 @@ const mithrilTests = ({ ripple, renderer: h }) => {
         oninit: vnode =>
           vnode.state.ended = 0,
         view: vnode => [
-          h(ripple, {
+          h(Ripple, {
             before: h("div", `end called: ${vnode.state.ended}`),
             end: () => (vnode.state.ended++, h.redraw())
           })
@@ -55,5 +58,5 @@ const mithrilTests = ({ ripple, renderer: h }) => {
 };
 
 export default []
-  .concat(genericTests({ ripple, renderer }))
-  .concat(mithrilTests({ ripple, renderer }));
+  .concat(genericTests({ Ripple, renderer }))
+  .concat(mithrilTests({ Ripple, renderer }));

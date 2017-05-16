@@ -87,6 +87,12 @@ h(Icon, { svg: h.trust(starsSVG) })
 
 
 
+## Options
+
+[SVG options](SVG.md)
+
+
+
 ## Appearance
 
 ### Styling
@@ -127,9 +133,3 @@ Some style attributes can be set using option `style`. For example:
 ~~~jsx
 <SVG style={{ color: "#ef6c00" }}>{starsSVG}</SVG>
 ~~~
-
-
-## Options
-
-[SVG options](SVG.md)
-

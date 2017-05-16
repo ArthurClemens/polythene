@@ -1,6 +1,7 @@
-import { FAB, Icon, IconButton, SVG, button, raisedButton, renderer, ripple, shadow } from 'polythene-mithril';
+import { FAB, Icon, IconButton, Ripple, SVG, Shadow, button, raisedButton, renderer } from 'polythene-mithril';
 import { flex, styler } from 'polythene-core-css';
-import { FAB as FAB$1, Icon as Icon$1, IconButton as IconButton$1, SVG as SVG$1, button as button$1, raisedButton as raisedButton$1, renderer as renderer$1, ripple as ripple$1, shadow as shadow$1 } from 'polythene-react';
+import { FAB as FAB$1, Icon as Icon$1, IconButton as IconButton$1, Ripple as Ripple$1, SVG as SVG$1, Shadow as Shadow$1, button as button$1, raisedButton as raisedButton$1, renderer as renderer$1 } from 'polythene-react';
+import { compose, withHandlers, withState } from 'recompose';
 
 var tests = (function (_ref) {
   var button$$1 = _ref.button;
@@ -184,6 +185,8 @@ var mithrilTests$1 = function mithrilTests(_ref) {
       h = _ref.renderer;
 
   return [{
+    section: "Mithril specific tests"
+  }, {
     name: "Dark tone class + light tone class",
     class: "pe-dark-tone",
     component: {
@@ -1171,16 +1174,16 @@ var mithrilTests$6 = function mithrilTests(_ref) {
 
 var testsMithril$5 = [].concat(tests$1({ raisedButton: raisedButton, renderer: renderer })).concat(mithrilTests$6({ raisedButton: raisedButton, renderer: renderer }));
 
-var tests$2 = (function (_ref) {
-  var ripple$$1 = _ref.ripple;
+var genericTests$4 = (function (_ref) {
+  var Ripple$$1 = _ref.Ripple;
 
-  ripple$$1.theme(".tests-ripple-themed-ripple", {
+  Ripple$$1.theme(".tests-ripple-themed-ripple", {
     color_light: "#F44336"
   });
   return [{
     name: "Option: constrained (true)",
     interactive: true,
-    component: ripple$$1,
+    component: Ripple$$1,
     attrs: {
       constrained: true
     }
@@ -1188,7 +1191,7 @@ var tests$2 = (function (_ref) {
     name: "Option: constrained (false)",
     interactive: true,
     exclude: true,
-    component: ripple$$1,
+    component: Ripple$$1,
     attrs: {
       constrained: false
     }
@@ -1196,7 +1199,7 @@ var tests$2 = (function (_ref) {
     name: "Option: center",
     interactive: true,
     exclude: true,
-    component: ripple$$1,
+    component: Ripple$$1,
     attrs: {
       center: true
     }
@@ -1204,7 +1207,7 @@ var tests$2 = (function (_ref) {
     name: "Option: start opacity (0.5)",
     interactive: true,
     exclude: true,
-    component: ripple$$1,
+    component: Ripple$$1,
     attrs: {
       startOpacity: 0.5
     }
@@ -1212,7 +1215,7 @@ var tests$2 = (function (_ref) {
     name: "Option: end opacity (0.1)",
     interactive: true,
     exclude: true,
-    component: ripple$$1,
+    component: Ripple$$1,
     attrs: {
       endOpacity: 0.1
     }
@@ -1220,7 +1223,7 @@ var tests$2 = (function (_ref) {
     name: "Option: duration (3.0)",
     interactive: true,
     exclude: true,
-    component: ripple$$1,
+    component: Ripple$$1,
     attrs: {
       duration: 3.0
     }
@@ -1228,7 +1231,7 @@ var tests$2 = (function (_ref) {
     name: "Option: initial opacityDecayVelocity (0.1)",
     interactive: true,
     exclude: true,
-    component: ripple$$1,
+    component: Ripple$$1,
     attrs: {
       opacityDecayVelocity: 0.1
     }
@@ -1236,7 +1239,7 @@ var tests$2 = (function (_ref) {
     name: "Option: disabled",
     interactive: true,
     exclude: true,
-    component: ripple$$1,
+    component: Ripple$$1,
     attrs: {
       disabled: true
     }
@@ -1244,7 +1247,7 @@ var tests$2 = (function (_ref) {
     name: "Option: style (color)",
     interactive: true,
     exclude: true,
-    component: ripple$$1,
+    component: Ripple$$1,
     attrs: {
       startOpacity: 0.7,
       style: {
@@ -1255,7 +1258,7 @@ var tests$2 = (function (_ref) {
     name: "Themed (should be red and permanent)",
     interactive: true,
     exclude: true,
-    component: ripple$$1,
+    component: Ripple$$1,
     attrs: {
       className: "tests-ripple-themed-ripple",
       endOpacity: 1.0,
@@ -1270,7 +1273,7 @@ var tests$2 = (function (_ref) {
     interactive: true,
     exclude: true,
     className: "pe-dark-tone",
-    component: ripple$$1,
+    component: Ripple$$1,
     attrs: {
       constrained: true,
       style: {
@@ -1282,7 +1285,7 @@ var tests$2 = (function (_ref) {
     interactive: true,
     exclude: true,
     className: "pe-dark-tone",
-    component: ripple$$1,
+    component: Ripple$$1,
     attrs: {
       constrained: true,
       style: {
@@ -1295,7 +1298,7 @@ var tests$2 = (function (_ref) {
     interactive: true,
     exclude: true,
     className: "test-dark-theme",
-    component: ripple$$1,
+    component: Ripple$$1,
     attrs: {
       constrained: true,
       style: {
@@ -1307,10 +1310,12 @@ var tests$2 = (function (_ref) {
 });
 
 var mithrilTests$7 = function mithrilTests(_ref) {
-  var ripple$$1 = _ref.ripple,
+  var Ripple$$1 = _ref.Ripple,
       h = _ref.renderer;
 
   return [{
+    section: "Mithril specific tests"
+  }, {
     name: "Appended to an element",
     interactive: true,
     exclude: true,
@@ -1322,7 +1327,7 @@ var mithrilTests$7 = function mithrilTests(_ref) {
             width: "100px",
             height: "100px"
           }
-        }, h(ripple$$1));
+        }, h(Ripple$$1));
       }
     }
   }, {
@@ -1334,7 +1339,7 @@ var mithrilTests$7 = function mithrilTests(_ref) {
         return vnode.state.started = 0;
       },
       view: function view(vnode) {
-        return [h(ripple$$1, {
+        return [h(Ripple$$1, {
           before: h("div", "start called: " + vnode.state.started),
           start: function start() {
             return vnode.state.started++, h.redraw();
@@ -1351,7 +1356,7 @@ var mithrilTests$7 = function mithrilTests(_ref) {
         return vnode.state.ended = 0;
       },
       view: function view(vnode) {
-        return [h(ripple$$1, {
+        return [h(Ripple$$1, {
           before: h("div", "end called: " + vnode.state.ended),
           end: function end() {
             return vnode.state.ended++, h.redraw();
@@ -1362,55 +1367,55 @@ var mithrilTests$7 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$6 = [].concat(tests$2({ ripple: ripple, renderer: renderer })).concat(mithrilTests$7({ ripple: ripple, renderer: renderer }));
+var testsMithril$6 = [].concat(genericTests$4({ Ripple: Ripple, renderer: renderer })).concat(mithrilTests$7({ Ripple: Ripple, renderer: renderer }));
 
-var tests$3 = (function (_ref) {
-  var shadow$$1 = _ref.shadow;
+var genericTests$5 = (function (_ref) {
+  var Shadow$$1 = _ref.Shadow;
 
   return [{
     name: "Child node",
-    component: shadow$$1,
+    component: Shadow$$1,
     attrs: {},
     children: ["Child"]
   }, {
     name: "Option: content",
-    component: shadow$$1,
+    component: Shadow$$1,
     attrs: {
       content: "Content"
     }
   }, {
     name: "Option: z (0)",
-    component: shadow$$1,
+    component: Shadow$$1,
     attrs: {
       z: 0
     }
   }, {
     name: "Option: z (1)",
-    component: shadow$$1,
+    component: Shadow$$1,
     attrs: {
       z: 1
     }
   }, {
     name: "Option: z (2)",
-    component: shadow$$1,
+    component: Shadow$$1,
     attrs: {
       z: 2
     }
   }, {
     name: "Option: z (3)",
-    component: shadow$$1,
+    component: Shadow$$1,
     attrs: {
       z: 3
     }
   }, {
     name: "Option: z (4)",
-    component: shadow$$1,
+    component: Shadow$$1,
     attrs: {
       z: 4
     }
   }, {
     name: "Option: z (5)",
-    component: shadow$$1,
+    component: Shadow$$1,
     attrs: {
       z: 5
     }
@@ -1418,7 +1423,7 @@ var tests$3 = (function (_ref) {
 });
 
 var mithrilTests$8 = function mithrilTests(_ref) {
-  var shadow$$1 = _ref.shadow,
+  var Shadow$$1 = _ref.Shadow,
       h = _ref.renderer;
 
 
@@ -1432,7 +1437,7 @@ var mithrilTests$8 = function mithrilTests(_ref) {
           var newZ = (vnode.state.z + 1) % 6;
           vnode.state.z = newZ;
         }
-      }, "Click me"), h(shadow$$1, {
+      }, "Click me"), h(Shadow$$1, {
         animated: true,
         z: vnode.state.z
       })];
@@ -1440,10 +1445,12 @@ var mithrilTests$8 = function mithrilTests(_ref) {
   };
 
   return [{
+    section: "Mithril specific tests"
+  }, {
     name: "Add to a Mithril element",
     component: {
       view: function view() {
-        return [h("div", "Some element"), h(shadow$$1)];
+        return [h("div", "Some element"), h(Shadow$$1)];
       }
     }
   }, {
@@ -1463,11 +1470,11 @@ var mithrilTests$8 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$7 = [].concat(tests$3({ shadow: shadow, renderer: renderer })).concat(mithrilTests$8({ shadow: shadow, renderer: renderer }));
+var testsMithril$7 = [].concat(genericTests$5({ Shadow: Shadow, renderer: renderer })).concat(mithrilTests$8({ Shadow: Shadow, renderer: renderer }));
 
 var iconStars$3 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>";
 
-var genericTests$4 = (function (_ref) {
+var genericTests$6 = (function (_ref) {
   var SVG$$1 = _ref.SVG,
       h = _ref.renderer;
 
@@ -1574,11 +1581,11 @@ var mithrilTests$9 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$8 = [].concat(genericTests$4({ SVG: SVG, renderer: renderer })).concat(mithrilTests$9({ SVG: SVG, renderer: renderer }));
+var testsMithril$8 = [].concat(genericTests$6({ SVG: SVG, renderer: renderer })).concat(mithrilTests$9({ SVG: SVG, renderer: renderer }));
 
 var alarmSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3V9z\"/></svg>";
 
-var genericTests$5 = (function (_ref) {
+var genericTests$7 = (function (_ref) {
   var button$$1 = _ref.button,
       FAB$$1 = _ref.FAB,
       Icon$$1 = _ref.Icon,
@@ -1716,7 +1723,7 @@ var mithrilTests$10 = function mithrilTests() {
   }];
 };
 
-var testsMithril$9 = [].concat(genericTests$5({ button: button, FAB: FAB, Icon: Icon, IconButton: IconButton, renderer: renderer /*, list, listTile*/ })).concat(mithrilTests$10());
+var testsMithril$9 = [].concat(genericTests$7({ button: button, FAB: FAB, Icon: Icon, IconButton: IconButton, renderer: renderer /*, list, listTile*/ })).concat(mithrilTests$10());
 
 
 
@@ -5290,6 +5297,8 @@ var React_1 = React$2;
 
 var react = React_1;
 
+var react_2 = react.Component;
+
 function unwrapExports (x) {
 	return x && x.__esModule ? x['default'] : x;
 }
@@ -7673,23 +7682,23 @@ function _objectWithoutProperties$1(obj, keys) {
 /**
  * A public higher-order component to access the imperative API
  */
-var withRouter = function withRouter(Component) {
+var withRouter = function withRouter(Component$$1) {
   var C = function C(props) {
     var wrappedComponentRef = props.wrappedComponentRef,
         remainingProps = _objectWithoutProperties$1(props, ['wrappedComponentRef']);
 
     return react.createElement(Route, { render: function render(routeComponentProps) {
-        return react.createElement(Component, _extends$5({}, remainingProps, routeComponentProps, { ref: wrappedComponentRef }));
+        return react.createElement(Component$$1, _extends$5({}, remainingProps, routeComponentProps, { ref: wrappedComponentRef }));
       } });
   };
 
-  C.displayName = 'withRouter(' + (Component.displayName || Component.name) + ')';
-  C.WrappedComponent = Component;
+  C.displayName = 'withRouter(' + (Component$$1.displayName || Component$$1.name) + ')';
+  C.WrappedComponent = Component$$1;
   C.propTypes = {
     wrappedComponentRef: index$2.func
   };
 
-  return index$10(C, Component);
+  return index$10(C, Component$$1);
 };
 
 var _typeof$9 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -8423,7 +8432,7 @@ var reactTests$1 = function reactTests(_ref) {
     component: withRouter(function (_ref3) {
       var history = _ref3.history;
       return react.createElement(FAB$$1, {
-        icon: { svg: iconFavoriteSVG },
+        icon: { svg: iconAlarmSVG },
         url: {
           href: "/shadow",
           onClick: function onClick(e) {
@@ -8511,7 +8520,7 @@ var reactTests$2 = function reactTests(_ref) {
 var testsReact$2 = [].concat(genericTests$1({ Icon: Icon$1, SVG: SVG$1, renderer: renderer$1 })).concat(reactTests$2({ Icon: Icon$1, SVG: SVG$1, renderer: renderer$1 }));
 
 var iconFavorite$2 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z\"/></svg>";
-var iconFavoriteSVG$1 = react.createElement(
+var iconFavoriteSVG = react.createElement(
   "svg",
   { xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24" },
   react.createElement("path", { d: "M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z" })
@@ -8585,7 +8594,7 @@ var reactTests$3 = function reactTests(_ref) {
   }, {
     name: "Option: icon as attribute (JSX)",
     component: function component() {
-      return react.createElement(IconButton$$1, { icon: { svg: iconFavoriteSVG$1 } });
+      return react.createElement(IconButton$$1, { icon: { svg: iconFavoriteSVG } });
     }
   }, {
     name: "Option: icon as component (JSX)",
@@ -8599,7 +8608,7 @@ var reactTests$3 = function reactTests(_ref) {
           react.createElement(
             SVG$$1,
             null,
-            iconFavoriteSVG$1
+            iconFavoriteSVG
           )
         )
       );
@@ -8609,8 +8618,8 @@ var reactTests$3 = function reactTests(_ref) {
     component: function component() {
       return react.createElement(
         IconButton$$1,
-        { icon: { svg: iconFavoriteSVG$1 }, style: { color: "#FFCCBC", backgroundColor: "#4E342E" } },
-        iconFavoriteSVG$1
+        { icon: { svg: iconFavoriteSVG }, style: { color: "#FFCCBC", backgroundColor: "#4E342E" } },
+        iconFavoriteSVG
       );
     }
   }, {
@@ -8619,7 +8628,7 @@ var reactTests$3 = function reactTests(_ref) {
     component: withRouter(function (_ref3) {
       var history = _ref3.history;
       return react.createElement(IconButton$$1, {
-        icon: { svg: iconFavoriteSVG$1 },
+        icon: { svg: iconFavoriteSVG },
         url: {
           href: "/shadow",
           onClick: function onClick(e) {
@@ -8647,9 +8656,178 @@ var testsReact$4 = [].concat(genericTests$3({ renderer: renderer$1, layoutCompon
 
 var testsReact$5 = tests$1({ raisedButton: raisedButton$1, renderer: renderer$1 });
 
-var testsReact$6 = tests$2({ ripple: ripple$1, renderer: renderer$1 });
+var reactTests$5 = function reactTests(_ref) {
+  var Ripple$$1 = _ref.Ripple,
+      h = _ref.renderer;
+  // eslint-disable-line no-unused-vars
 
-var testsReact$7 = tests$3({ shadow: shadow$1, renderer: renderer$1 });
+  // const enhance = withState("counter", "setCounter", 0);
+
+  var addCounter = compose(withState("counter", "setCounter", 0), withHandlers({
+    increment: function increment(_ref2) {
+      var setCounter = _ref2.setCounter;
+      return function () {
+        return setCounter(function (n) {
+          return n + 1;
+        });
+      };
+    }
+  }));
+
+  Ripple$$1.theme(".react-ripple-themed-ripple", {
+    color_light: "#F44336"
+  });
+
+  return [{
+    section: "React specific tests"
+  }, {
+    name: "Appended to an element",
+    interactive: true,
+    exclude: true,
+    component: function component() {
+      return h("div", {
+        style: {
+          position: "relative",
+          width: "100px",
+          height: "100px"
+        }
+      }, h(Ripple$$1));
+    }
+  }, {
+    name: "Option: start (after click)",
+    interactive: true,
+    exclude: true,
+    component: addCounter(function (_ref3) {
+      var counter = _ref3.counter,
+          increment = _ref3.increment;
+      return h(Ripple$$1, {
+        before: h("div", "start called: " + counter),
+        start: function start() {
+          return increment();
+        }
+      });
+    })
+  }, {
+    name: "Option: end (after click)",
+    interactive: true,
+    exclude: true,
+    component: addCounter(function (_ref4) {
+      var counter = _ref4.counter,
+          increment = _ref4.increment;
+      return h(Ripple$$1, {
+        before: h("div", "start called: " + counter),
+        end: function end() {
+          return increment();
+        }
+      });
+    })
+  }, {
+    section: "React JSX tests"
+  }, {
+    name: "Option: center (JSX)",
+    component: function component() {
+      return react.createElement(Ripple$$1, { center: true });
+    }
+  }, {
+    name: "Themed (should be red and permanent) (JSX)",
+    component: function component() {
+      return react.createElement(Ripple$$1, {
+        className: "react-ripple-themed-ripple",
+        endOpacity: 1.0,
+        persistent: true
+      });
+    }
+  }, {
+    name: "Appended to an element (JSX)",
+    component: function component() {
+      return react.createElement(
+        "div",
+        { style: {
+            position: "relative",
+            width: "100px",
+            height: "100px"
+          } },
+        react.createElement(Ripple$$1, null)
+      );
+    }
+  }];
+};
+var testsReact$6 = [].concat(genericTests$4({ Ripple: Ripple$1, renderer: renderer$1 })).concat(reactTests$5({ Ripple: Ripple$1, renderer: renderer$1 }));
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck$10(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn$10(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits$10(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var reactTests$6 = function reactTests(_ref) {
+  var Shadow$$1 = _ref.Shadow,
+      h = _ref.renderer;
+
+  // eslint-disable-line no-unused-vars
+
+  var InteractiveTest = function (_Component) {
+    _inherits$10(InteractiveTest, _Component);
+
+    function InteractiveTest() {
+      _classCallCheck$10(this, InteractiveTest);
+
+      var _this = _possibleConstructorReturn$10(this, (InteractiveTest.__proto__ || Object.getPrototypeOf(InteractiveTest)).apply(this, arguments));
+
+      _this.state = {
+        z: 1
+      };
+      return _this;
+    }
+
+    _createClass(InteractiveTest, [{
+      key: "render",
+      value: function render() {
+        var _this2 = this;
+
+        return h("div", null, [h(".absolute.absolute--fill", {
+          onClick: function onClick() {
+            return _this2.setState({
+              z: (_this2.state.z + 1) % 6
+            });
+          }
+        }, "Click me"), h(Shadow$$1, {
+          animated: true,
+          z: this.state.z
+        })]);
+      }
+    }]);
+
+    return InteractiveTest;
+  }(react_2);
+
+  return [{
+    section: "React specific tests"
+  }, {
+    name: "Add to a React element",
+    component: function component() {
+      return h("div", null, [h("div", "Some element"), h(Shadow$$1)]);
+    }
+  }, {
+    name: "Interactive option: animated",
+    interactive: true,
+    exclude: true,
+    component: InteractiveTest
+  },
+
+  // Dark tone
+
+  {
+    name: "Interactive option: animated -- dark tone class",
+    interactive: true,
+    className: "pe-dark-tone",
+    component: InteractiveTest
+  }];
+};
+
+var testsReact$7 = [].concat(genericTests$5({ Shadow: Shadow$1, renderer: renderer$1 })).concat(reactTests$6({ Shadow: Shadow$1, renderer: renderer$1 }));
 
 var iconStars$5 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>";
 
@@ -8659,7 +8837,7 @@ var iconStarsSVG$1 = react.createElement(
   react.createElement("path", { d: "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z" })
 );
 
-var reactTests$5 = function reactTests(_ref) {
+var reactTests$7 = function reactTests(_ref) {
   var SVG$$1 = _ref.SVG,
       h = _ref.renderer;
 
@@ -8715,11 +8893,11 @@ var reactTests$5 = function reactTests(_ref) {
   }];
 };
 
-var testsReact$8 = [].concat(genericTests$4({ SVG: SVG$1, renderer: renderer$1 })).concat(reactTests$5({ SVG: SVG$1, renderer: renderer$1 }));
+var testsReact$8 = [].concat(genericTests$6({ SVG: SVG$1, renderer: renderer$1 })).concat(reactTests$7({ SVG: SVG$1, renderer: renderer$1 }));
 
 var _extends$8 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var reactTests$6 = function reactTests() {
+var reactTests$8 = function reactTests() {
 
   var SecondaryButton = function SecondaryButton(props) {
     return renderer$1(button$1, _extends$8({}, props, {
@@ -8751,7 +8929,7 @@ var reactTests$6 = function reactTests() {
   }];
 };
 
-var testsReact$9 = [].concat(genericTests$5({ button: button$1, FAB: FAB$1, Icon: Icon$1, IconButton: IconButton$1, renderer: renderer$1 })).concat(reactTests$6());
+var testsReact$9 = [].concat(genericTests$7({ button: button$1, FAB: FAB$1, Icon: Icon$1, IconButton: IconButton$1, renderer: renderer$1 })).concat(reactTests$8());
 
 
 

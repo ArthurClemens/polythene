@@ -1,5 +1,5 @@
 import m from "mithril";
-import { shadow, IconButton } from "polythene-mithril";
+import { Shadow, IconButton } from "polythene-mithril";
 import classes from "./classes";
 
 export const controlView = (checked, attrs) => {
@@ -23,7 +23,7 @@ export const controlView = (checked, attrs) => {
           }, [
             attrs.icon ? attrs.icon : null,
             raised
-              ? m(shadow, {
+              ? m(Shadow, {
                 z: z,
                 animated: true
               })

@@ -6,30 +6,8 @@ Adds a configurable shadow to an element.
 
 ## Usage
 
-~~~javascript
-import m from "mithril"
-import shadow from "polythene-shadow"
-
-const myShadow = m(shadow)
-~~~
-
-Add the shadow to an element:
-
-~~~javascript
-const myCard = m(".pe-card", [
-  m("div.self-center", "Card!"),
-  myShadow
-])
-~~~
-
-To animated the shadow on change, use `animated`:
-
-~~~javascript
-const myShadow = m(shadow, {
-  z: vnode.state.z,
-  animated: true
-})
-~~~
+* [Usage with Mithril](Shadow-Mithril.md)
+* [Usage with React](Shadow-React.md)
 
 
 
@@ -57,5 +35,4 @@ const myShadow = m(shadow, {
 
 ## CSS classes
 
-See: `src/classes.js`
-
+See: `polythene-core-shadow/src/classes.js`

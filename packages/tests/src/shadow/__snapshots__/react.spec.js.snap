@@ -1,3 +1,12 @@
+exports[`test Add to a React element 1`] = `
+<div>
+  <div>
+    Some element
+  </div>
+  <Shadow />
+</div>
+`;
+
 exports[`test Child node 1`] = `
 <div
   className="pe-shadow  ">
@@ -9,22 +18,22 @@ exports[`test Child node 1`] = `
 </div>
 `;
 
-exports[`test No options 1`] = `
-<div
-  className="pe-shadow  ">
+exports[`test Interactive option: animated -- dark tone class 1`] = `
+<div>
   <div
-    className="pe-shadow__bottom pe-shadow--z-1" />
-  <div
-    className="pe-shadow__top pe-shadow--z-1" />
+    className="absolute absolute--fill"
+    onClick={[Function]}>
+    Click me
+  </div>
+  <Shadow
+    animated={true}
+    z={1} />
 </div>
 `;
 
-exports[`test Option: children 1`] = `
+exports[`test No options 1`] = `
 <div
   className="pe-shadow  ">
-  <span>
-    Child
-  </span>
   <div
     className="pe-shadow__bottom pe-shadow--z-1" />
   <div

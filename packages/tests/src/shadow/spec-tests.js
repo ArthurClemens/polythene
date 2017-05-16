@@ -1,54 +1,42 @@
 
-export default ({ shadow, renderer: h }) => {
+export default ({ Shadow, renderer: h }) => {
   return [
     {
       name: "No options",
-      component: shadow
+      component: Shadow
     },
-    {
-      name: "Option: children",
-      component: shadow,
-      children: [h("span", "Child")]
-    },
-    // Does not work in snapshots
-    // {
-    //   name: "Option: children as attribute",
-    //   component: shadow,
-    //   attrs: {
-    //     children: h("span", "Child")
-    //   }
-    // },
+    
     {
       name: "Option: content",
-      component: shadow,
+      component: Shadow,
       attrs: {
         content: h("span", {key: "content"}, "Content")
       }
     },
     {
       name: "Option: id",
-      component: shadow,
+      component: Shadow,
       attrs: {
         id: "id-x"
       }
     },
     {
       name: "Option: class",
-      component: shadow,
+      component: Shadow,
       attrs: {
         class: "class-x"
       }
     },
     {
       name: "Option: className",
-      component: shadow,
+      component: Shadow,
       attrs: {
         className: "className-x"
       }
     },
     {
       name: "Option: element",
-      component: shadow,
+      component: Shadow,
       attrs: {
         element: "span"
       }

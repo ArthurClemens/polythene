@@ -54,6 +54,13 @@ h(FAB, {
 ~~~
 
 
+
+## Options
+
+[FAB options](FAB.md)
+
+
+
 ## Links
 
 See description in [IconButton](IconButton-React.md)
@@ -108,8 +115,3 @@ Some style attributes can be set using option `style`. For example:
 ~~~jsx
 <FAB icon={{svg: starsSVG}} style={{ color: "#ef6c00" }} />
 ~~~
-
-
-## Options
-
-[FAB options](FAB.md)

@@ -61,7 +61,7 @@ const initTapEvents = vnode => {
 const clearTapEvents = vnode =>
   vnode.dom.removeEventListener(touchStartEvent, tapStart);
 
-export const createProps = (vnode, { renderer: h, shadow }) => {
+export const createProps = (vnode, { renderer: h, Shadow }) => {
   const attrs = vnode.attrs;
   const state = vnode.state;
   const children = attrs.children || vnode.children || [];
@@ -72,7 +72,7 @@ export const createProps = (vnode, { renderer: h, shadow }) => {
         attrs.parentClassName || classes.component
       ].join(" "),
       animateOnTap: false,
-      shadowComponent: h(shadow, { z: state.z, animated: true }),
+      shadowComponent: h(Shadow, { z: state.z, animated: true }),
       children
     },
     attrs

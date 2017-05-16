@@ -1,5 +1,5 @@
 import m from "mithril";
-import { shadow } from "polythene-mithril";
+import { Shadow } from "polythene-mithril";
 import { filterSupportedAttributes, subscribe, unsubscribe, show, hide } from "polythene-core";
 import { customTheme } from "./theme";
 import classes from "./classes";
@@ -179,7 +179,7 @@ const createView = vnode => {
     onclick: e => e.preventDefault(),
     style: attrs.style
   }, [
-    state.z > 0 && m(shadow, {
+    state.z > 0 && m(Shadow, {
       z: state.z,
       animated: true
     }),

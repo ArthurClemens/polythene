@@ -1,6 +1,5 @@
 import m from "mithril";
-import { Icon } from "polythene-mithril";
-import shadow from "polythene-shadow";
+import { Icon, Shadow } from "polythene-mithril";
 import listTile from "polythene-list-tile";
 import { filterSupportedAttributes } from "polythene-core";
 import { customTheme } from "./theme";
@@ -264,7 +263,7 @@ const view = ({attrs}) => {
     : attrs.content;
 
   const content = [
-    m(shadow, {
+    m(Shadow, {
       z: attrs.z !== undefined ? attrs.z : 1,
       animated: true
     }),

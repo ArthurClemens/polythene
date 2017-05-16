@@ -1,6 +1,6 @@
 import m from 'mithril';
 import { filterSupportedAttributes, hide, show } from 'polythene-core';
-import { shadow } from 'polythene-mithril';
+import { Shadow } from 'polythene-mithril';
 import { styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 
@@ -207,7 +207,7 @@ var createView = function createView(state, attrs) {
     }, 0);
   }
 
-  var content = [attrs.raised && attrs.content ? m(shadow, { z: attrs.z }) : null, attrs.content || m("div", { class: classes.animation }, "Specific spinner missing")];
+  var content = [attrs.raised && attrs.content ? m(Shadow, { z: attrs.z }) : null, attrs.content || m("div", { class: classes.animation }, "Specific spinner missing")];
 
   return m(element, props, [attrs.before, content, attrs.after]);
 };

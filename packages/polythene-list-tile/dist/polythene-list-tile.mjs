@@ -1,5 +1,5 @@
 import m from 'mithril';
-import { Icon, ripple } from 'polythene-mithril';
+import { Icon, Ripple } from 'polythene-mithril';
 import { filterSupportedAttributes } from 'polythene-core';
 import { flex, mixin, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
@@ -360,7 +360,7 @@ var view = function view(vnode) {
   var primaryAttrs = _extends({}, attrs);
   delete primaryAttrs.id;
   delete primaryAttrs.class;
-  var content = [attrs.ink && !attrs.disabled ? m(ripple, attrs.ripple) : null, primaryContent(primaryAttrs, attrs.children || vnode.children), attrs.secondary ? secondaryContent(attrs.secondary) : null];
+  var content = [attrs.ink && !attrs.disabled ? m(Ripple, attrs.ripple) : null, primaryContent(primaryAttrs, attrs.children || vnode.children), attrs.secondary ? secondaryContent(attrs.secondary) : null];
   return m(element, props, [attrs.before, content, attrs.after]);
 };
 
