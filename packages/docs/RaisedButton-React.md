@@ -1,0 +1,77 @@
+[Back to Polythene Raised Button main page](RaisedButton.md)
+
+# Raised Button component for Mithril
+
+
+
+## Usage
+
+### With JSX
+
+~~~jsx
+import React from "react"
+import { RaisedButton } from "polythene-react"
+
+// render component
+<RaisedButton label="Button" />
+~~~
+
+### With hyperscript
+
+~~~javascript
+import { RaisedButton } from "polythene-react"
+
+h(RaisedButton, {
+  label: "Button"
+})
+~~~
+
+
+
+## Links
+
+See description in [IconButton](IconButton-React.md)
+
+
+
+## Options
+
+[Raised Button options](RaisedButton.md)
+
+
+
+## Appearance
+
+### Styling
+
+Below are examples how to change the raised button appearance, either with a theme or with CSS.
+
+You can find more information about theming in [Theme](Theme.md).
+
+#### Themed component
+
+~~~jsx
+RaisedButton.theme(".themed-raised-button", {
+  color_light_background: "#ff1744",
+  color_light_text:       "#fff"
+})
+
+<RaisedButton className="themed-raised-button" />
+~~~
+
+#### CSS
+
+Change CSS using the CSS classes in `polythene-core-raised-button/src/classes.js`
+
+#### Style
+
+Some style attributes can be set using option `style`. For example:
+
+~~~jsx
+<RaisedButton style={{ color: "#fff", backgroundColor: "#ef6c00" }} />
+~~~
+
+
+
+
+

@@ -58,7 +58,7 @@ m(FAB, {
 
 #### CSS
 
-Change CSS using the CSS Classes in the the [FAB main page](FAB.md).
+Change CSS using the CSS classes in `polythene-core-fab/src/classes.js`
 
 #### Style option
 

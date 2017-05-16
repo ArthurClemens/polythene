@@ -203,10 +203,10 @@ var onUnmount = function onUnmount(vnode) {
   }
 };
 
-var raisedButton = {
+var RaisedButton = {
   getInitialState: getInitialState, createProps: createProps, createContent: createContent, onMount: onMount, onUnmount: onUnmount, theme: theme,
   classes: classes,
   vars: vars$1
 };
 
-export { raisedButton };
+export { RaisedButton };

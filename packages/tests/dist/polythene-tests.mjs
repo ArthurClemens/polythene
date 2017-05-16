@@ -1,6 +1,6 @@
-import { FAB, Icon, IconButton, Ripple, SVG, Shadow, button, raisedButton, renderer } from 'polythene-mithril';
+import { FAB, Icon, IconButton, RaisedButton, Ripple, SVG, Shadow, button, renderer } from 'polythene-mithril';
 import { flex, styler } from 'polythene-core-css';
-import { FAB as FAB$1, Icon as Icon$1, IconButton as IconButton$1, Ripple as Ripple$1, SVG as SVG$1, Shadow as Shadow$1, button as button$1, raisedButton as raisedButton$1, renderer as renderer$1 } from 'polythene-react';
+import { FAB as FAB$1, Icon as Icon$1, IconButton as IconButton$1, RaisedButton as RaisedButton$1, Ripple as Ripple$1, SVG as SVG$1, Shadow as Shadow$1, button as button$1, renderer as renderer$1 } from 'polythene-react';
 import { compose, withHandlers, withState } from 'recompose';
 
 var tests = (function (_ref) {
@@ -948,45 +948,45 @@ var mithrilTests$5 = function mithrilTests() {
 
 var testsMithril$4 = [].concat(genericTests$3({ renderer: renderer, layoutComponent: layoutComponent, createBlocks: createBlocks })).concat(mithrilTests$5({ renderer: renderer, layoutComponent: layoutComponent, createBlocks: createBlocks }));
 
-var tests$1 = (function (_ref) {
-  var raisedButton$$1 = _ref.raisedButton;
+var genericTests$4 = (function (_ref) {
+  var RaisedButton$$1 = _ref.RaisedButton;
 
 
-  raisedButton$$1.theme(".tests-raised-button-themed-button", {
+  RaisedButton$$1.theme(".tests-raised-button-themed-button", {
     color_light_background: "#FF1744",
     color_light_text: "#fff"
   });
 
   return [{
     name: "Option: label",
-    component: raisedButton$$1,
+    component: RaisedButton$$1,
     attrs: {
       label: "Label"
     }
   }, {
     name: "Option: raised (with option z: 2)",
-    component: raisedButton$$1,
+    component: RaisedButton$$1,
     attrs: {
       label: "Raised to 2",
       z: 2
     }
   }, {
     name: "Option: raised (with option z: 5)",
-    component: raisedButton$$1,
+    component: RaisedButton$$1,
     attrs: {
       label: "Raised to 5",
       z: 5
     }
   }, {
     name: "Themed button (should be red)",
-    component: raisedButton$$1,
+    component: RaisedButton$$1,
     attrs: {
       label: "Themed button",
       className: "tests-raised-button-themed-button"
     }
   }, {
     name: "Themed button (with option disabled)",
-    component: raisedButton$$1,
+    component: RaisedButton$$1,
     attrs: {
       label: "Disabled themed button",
       className: "tests-raised-button-themed-button",
@@ -994,7 +994,7 @@ var tests$1 = (function (_ref) {
     }
   }, {
     name: "Option: style (colors)",
-    component: raisedButton$$1,
+    component: RaisedButton$$1,
     attrs: {
       label: "Styled",
       style: {
@@ -1005,7 +1005,7 @@ var tests$1 = (function (_ref) {
   }, {
     name: "Option: wash (false)",
     interactive: true,
-    component: raisedButton$$1,
+    component: RaisedButton$$1,
     attrs: {
       label: "No wash",
       wash: false
@@ -1013,7 +1013,7 @@ var tests$1 = (function (_ref) {
   }, {
     name: "Option: ink (false)",
     interactive: true,
-    component: raisedButton$$1,
+    component: RaisedButton$$1,
     attrs: {
       label: "No ink",
       ink: false
@@ -1021,7 +1021,7 @@ var tests$1 = (function (_ref) {
   }, {
     name: "Option: disabled (true)",
     interactive: true,
-    component: raisedButton$$1,
+    component: RaisedButton$$1,
     attrs: {
       label: "Disabled",
       disabled: true
@@ -1029,7 +1029,7 @@ var tests$1 = (function (_ref) {
   }, {
     name: "Option: disabled (false)",
     interactive: true,
-    component: raisedButton$$1,
+    component: RaisedButton$$1,
     attrs: {
       label: "Not disabled",
       disabled: false
@@ -1037,22 +1037,22 @@ var tests$1 = (function (_ref) {
   }, {
     name: "Option: animateOnTap (false)",
     interactive: true,
-    component: raisedButton$$1,
+    component: RaisedButton$$1,
     attrs: {
       label: "Don't animate shadow",
       animateOnTap: false
     }
   }, {
-    name: "Option: inactivate (2)",
+    name: "Option: inactivate (2s)",
     interactive: true,
-    component: raisedButton$$1,
+    component: RaisedButton$$1,
     attrs: {
       label: "Inactivated for 2s",
       inactivate: 2
     }
   }, {
     name: "Option: selected",
-    component: raisedButton$$1,
+    component: RaisedButton$$1,
     attrs: {
       label: "Selected",
       selected: true
@@ -1060,7 +1060,7 @@ var tests$1 = (function (_ref) {
   }, {
     name: "Option: inactive (false)",
     interactive: true,
-    component: raisedButton$$1,
+    component: RaisedButton$$1,
     attrs: {
       label: "Not inactive",
       inactive: false
@@ -1068,7 +1068,7 @@ var tests$1 = (function (_ref) {
   }, {
     name: "Option: inactive (true)",
     interactive: true,
-    component: raisedButton$$1,
+    component: RaisedButton$$1,
     attrs: {
       label: "Inactive",
       inactive: true
@@ -1079,14 +1079,14 @@ var tests$1 = (function (_ref) {
 
   {
     name: "Option: label -- dark tone class (should be app's primary color)",
-    component: raisedButton$$1,
+    component: RaisedButton$$1,
     className: "pe-dark-tone",
     attrs: {
       label: "Label"
     }
   }, {
     name: "Option: disabled -- dark tone class",
-    component: raisedButton$$1,
+    component: RaisedButton$$1,
     className: "pe-dark-tone",
     attrs: {
       label: "Label",
@@ -1096,14 +1096,16 @@ var tests$1 = (function (_ref) {
 });
 
 var mithrilTests$6 = function mithrilTests(_ref) {
-  var raisedButton$$1 = _ref.raisedButton,
+  var RaisedButton$$1 = _ref.RaisedButton,
       h = _ref.renderer;
 
 
   return [{
+    section: "Mithril specific tests"
+  }, {
     name: "Option: url (with oncreate)",
     interactive: true,
-    component: raisedButton$$1,
+    component: RaisedButton$$1,
     attrs: {
       label: "Go to /#/shadow",
       url: {
@@ -1120,7 +1122,7 @@ var mithrilTests$6 = function mithrilTests(_ref) {
         return vnode.state.clicked = 0;
       },
       view: function view(vnode) {
-        return [h("div", "onclick called: " + vnode.state.clicked), h(raisedButton$$1, {
+        return [h("div", "onclick called: " + vnode.state.clicked), h(RaisedButton$$1, {
           label: "Button",
           events: {
             onclick: function onclick() {
@@ -1137,12 +1139,12 @@ var mithrilTests$6 = function mithrilTests(_ref) {
       view: function view() {
         return h(".pe-light-tone", {
           style: { background: "#fff" }
-        }, [h(raisedButton$$1, {
+        }, [h(RaisedButton$$1, {
           label: "Normal"
-        }), h(raisedButton$$1, {
+        }), h(RaisedButton$$1, {
           label: "Disabled",
           disabled: true
-        }), h(raisedButton$$1, {
+        }), h(RaisedButton$$1, {
           label: "Theme",
           className: "tests-raised-button-themed-button"
         })]);
@@ -1155,14 +1157,14 @@ var mithrilTests$6 = function mithrilTests(_ref) {
       view: function view() {
         return h("div", {
           style: { background: "#fff" }
-        }, [h(raisedButton$$1, {
+        }, [h(RaisedButton$$1, {
           label: "Normal",
           tone: "light"
-        }), h(raisedButton$$1, {
+        }), h(RaisedButton$$1, {
           label: "Disabled",
           disabled: true,
           tone: "light"
-        }), h(raisedButton$$1, {
+        }), h(RaisedButton$$1, {
           label: "Theme",
           className: "tests-raised-button-themed-button",
           tone: "light"
@@ -1172,9 +1174,9 @@ var mithrilTests$6 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$5 = [].concat(tests$1({ raisedButton: raisedButton, renderer: renderer })).concat(mithrilTests$6({ raisedButton: raisedButton, renderer: renderer }));
+var testsMithril$5 = [].concat(genericTests$4({ RaisedButton: RaisedButton, renderer: renderer })).concat(mithrilTests$6({ RaisedButton: RaisedButton, renderer: renderer }));
 
-var genericTests$4 = (function (_ref) {
+var genericTests$5 = (function (_ref) {
   var Ripple$$1 = _ref.Ripple;
 
   Ripple$$1.theme(".tests-ripple-themed-ripple", {
@@ -1367,9 +1369,9 @@ var mithrilTests$7 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$6 = [].concat(genericTests$4({ Ripple: Ripple, renderer: renderer })).concat(mithrilTests$7({ Ripple: Ripple, renderer: renderer }));
+var testsMithril$6 = [].concat(genericTests$5({ Ripple: Ripple, renderer: renderer })).concat(mithrilTests$7({ Ripple: Ripple, renderer: renderer }));
 
-var genericTests$5 = (function (_ref) {
+var genericTests$6 = (function (_ref) {
   var Shadow$$1 = _ref.Shadow;
 
   return [{
@@ -1470,11 +1472,11 @@ var mithrilTests$8 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$7 = [].concat(genericTests$5({ Shadow: Shadow, renderer: renderer })).concat(mithrilTests$8({ Shadow: Shadow, renderer: renderer }));
+var testsMithril$7 = [].concat(genericTests$6({ Shadow: Shadow, renderer: renderer })).concat(mithrilTests$8({ Shadow: Shadow, renderer: renderer }));
 
 var iconStars$3 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>";
 
-var genericTests$6 = (function (_ref) {
+var genericTests$7 = (function (_ref) {
   var SVG$$1 = _ref.SVG,
       h = _ref.renderer;
 
@@ -1581,11 +1583,11 @@ var mithrilTests$9 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$8 = [].concat(genericTests$6({ SVG: SVG, renderer: renderer })).concat(mithrilTests$9({ SVG: SVG, renderer: renderer }));
+var testsMithril$8 = [].concat(genericTests$7({ SVG: SVG, renderer: renderer })).concat(mithrilTests$9({ SVG: SVG, renderer: renderer }));
 
 var alarmSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3V9z\"/></svg>";
 
-var genericTests$7 = (function (_ref) {
+var genericTests$8 = (function (_ref) {
   var button$$1 = _ref.button,
       FAB$$1 = _ref.FAB,
       Icon$$1 = _ref.Icon,
@@ -1723,7 +1725,7 @@ var mithrilTests$10 = function mithrilTests() {
   }];
 };
 
-var testsMithril$9 = [].concat(genericTests$7({ button: button, FAB: FAB, Icon: Icon, IconButton: IconButton, renderer: renderer /*, list, listTile*/ })).concat(mithrilTests$10());
+var testsMithril$9 = [].concat(genericTests$8({ button: button, FAB: FAB, Icon: Icon, IconButton: IconButton, renderer: renderer /*, list, listTile*/ })).concat(mithrilTests$10());
 
 
 
@@ -8654,16 +8656,111 @@ var reactTests$4 = function reactTests() {
 
 var testsReact$4 = [].concat(genericTests$3({ renderer: renderer$1, layoutComponent: layoutComponent$1, createBlocks: createBlocks })).concat(reactTests$4({ renderer: renderer$1, layoutComponent: layoutComponent$1, createBlocks: createBlocks }));
 
-var testsReact$5 = tests$1({ raisedButton: raisedButton$1, renderer: renderer$1 });
-
 var reactTests$5 = function reactTests(_ref) {
+  var RaisedButton$$1 = _ref.RaisedButton,
+      h = _ref.renderer;
+
+
+  var withCounter = compose(withState("counter", "setCounter", 0), withHandlers({
+    increment: function increment(_ref2) {
+      var setCounter = _ref2.setCounter;
+      return function () {
+        return setCounter(function (n) {
+          return n + 1;
+        });
+      };
+    }
+  }));
+
+  return [{
+    section: "React specific tests"
+  }, {
+    name: "With router",
+    interactive: true,
+    component: withRouter(function (_ref3) {
+      var history = _ref3.history;
+      return h(RaisedButton$$1, {
+        label: "Go to /shadow",
+        url: {
+          href: "/shadow",
+          onClick: function onClick(e) {
+            return e.preventDefault(), history.push("/shadow");
+          }
+        }
+      });
+    })
+  }, {
+    name: "Option: events (onclick)",
+    interactive: true,
+    exclude: true,
+    component: withCounter(function (_ref4) {
+      var counter = _ref4.counter,
+          increment = _ref4.increment;
+      return h("div", [h("div", "onclick called: " + counter), h(RaisedButton$$1, {
+        label: "Button",
+        events: {
+          onClick: increment
+        }
+      })]);
+    })
+  }, {
+    name: "Dark tone class + light tone class",
+    className: "pe-dark-tone",
+    component: function component() {
+      return h(".pe-light-tone", {
+        style: { background: "#fff" }
+      }, [h(RaisedButton$$1, {
+        label: "Normal"
+      }), h(RaisedButton$$1, {
+        label: "Disabled",
+        disabled: true
+      }), h(RaisedButton$$1, {
+        label: "Theme",
+        className: "tests-raised-button-themed-button"
+      })]);
+    }
+  }, {
+    name: "Dark tone class + light tone",
+    className: "pe-dark-tone",
+    component: function component() {
+      return h("div", {
+        style: { background: "#fff" }
+      }, [h(RaisedButton$$1, {
+        label: "Normal",
+        tone: "light"
+      }), h(RaisedButton$$1, {
+        label: "Disabled",
+        disabled: true,
+        tone: "light"
+      }), h(RaisedButton$$1, {
+        label: "Theme",
+        className: "tests-raised-button-themed-button",
+        tone: "light"
+      })]);
+    }
+  }, {
+    section: "React JSX tests"
+  }, {
+    name: "Option: raised (with option z: 2) (JSX)",
+    component: function component() {
+      return react.createElement(RaisedButton$$1, { label: "Button", z: 2 });
+    }
+  }, {
+    name: "Option: inactivate (2s) (JSX)",
+    component: function component() {
+      return react.createElement(RaisedButton$$1, { label: "Inactivated for 2s", inactivate: 2 });
+    }
+  }];
+};
+
+var testsReact$5 = [].concat(genericTests$4({ RaisedButton: RaisedButton$1, renderer: renderer$1 })).concat(reactTests$5({ RaisedButton: RaisedButton$1, renderer: renderer$1 }));
+
+var reactTests$6 = function reactTests(_ref) {
   var Ripple$$1 = _ref.Ripple,
       h = _ref.renderer;
   // eslint-disable-line no-unused-vars
 
-  // const enhance = withState("counter", "setCounter", 0);
-
-  var addCounter = compose(withState("counter", "setCounter", 0), withHandlers({
+  var withCounter = compose(withState("counter", "setCounter", 0), withHandlers({
     increment: function increment(_ref2) {
       var setCounter = _ref2.setCounter;
       return function () {
@@ -8697,7 +8794,7 @@ var reactTests$5 = function reactTests(_ref) {
     name: "Option: start (after click)",
     interactive: true,
     exclude: true,
-    component: addCounter(function (_ref3) {
+    component: withCounter(function (_ref3) {
       var counter = _ref3.counter,
           increment = _ref3.increment;
       return h(Ripple$$1, {
@@ -8711,7 +8808,7 @@ var reactTests$5 = function reactTests(_ref) {
     name: "Option: end (after click)",
     interactive: true,
     exclude: true,
-    component: addCounter(function (_ref4) {
+    component: withCounter(function (_ref4) {
       var counter = _ref4.counter,
           increment = _ref4.increment;
       return h(Ripple$$1, {
@@ -8752,7 +8849,7 @@ var reactTests$5 = function reactTests(_ref) {
     }
   }];
 };
-var testsReact$6 = [].concat(genericTests$4({ Ripple: Ripple$1, renderer: renderer$1 })).concat(reactTests$5({ Ripple: Ripple$1, renderer: renderer$1 }));
+var testsReact$6 = [].concat(genericTests$5({ Ripple: Ripple$1, renderer: renderer$1 })).concat(reactTests$6({ Ripple: Ripple$1, renderer: renderer$1 }));
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -8762,7 +8859,7 @@ function _possibleConstructorReturn$10(self, call) { if (!self) { throw new Refe
 
 function _inherits$10(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var reactTests$6 = function reactTests(_ref) {
+var reactTests$7 = function reactTests(_ref) {
   var Shadow$$1 = _ref.Shadow,
       h = _ref.renderer;
 
@@ -8827,7 +8924,7 @@ var reactTests$6 = function reactTests(_ref) {
   }];
 };
 
-var testsReact$7 = [].concat(genericTests$5({ Shadow: Shadow$1, renderer: renderer$1 })).concat(reactTests$6({ Shadow: Shadow$1, renderer: renderer$1 }));
+var testsReact$7 = [].concat(genericTests$6({ Shadow: Shadow$1, renderer: renderer$1 })).concat(reactTests$7({ Shadow: Shadow$1, renderer: renderer$1 }));
 
 var iconStars$5 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>";
 
@@ -8837,7 +8934,7 @@ var iconStarsSVG$1 = react.createElement(
   react.createElement("path", { d: "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z" })
 );
 
-var reactTests$7 = function reactTests(_ref) {
+var reactTests$8 = function reactTests(_ref) {
   var SVG$$1 = _ref.SVG,
       h = _ref.renderer;
 
@@ -8893,11 +8990,11 @@ var reactTests$7 = function reactTests(_ref) {
   }];
 };
 
-var testsReact$8 = [].concat(genericTests$6({ SVG: SVG$1, renderer: renderer$1 })).concat(reactTests$7({ SVG: SVG$1, renderer: renderer$1 }));
+var testsReact$8 = [].concat(genericTests$7({ SVG: SVG$1, renderer: renderer$1 })).concat(reactTests$8({ SVG: SVG$1, renderer: renderer$1 }));
 
 var _extends$8 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var reactTests$8 = function reactTests() {
+var reactTests$9 = function reactTests() {
 
   var SecondaryButton = function SecondaryButton(props) {
     return renderer$1(button$1, _extends$8({}, props, {
@@ -8929,7 +9026,7 @@ var reactTests$8 = function reactTests() {
   }];
 };
 
-var testsReact$9 = [].concat(genericTests$7({ button: button$1, FAB: FAB$1, Icon: Icon$1, IconButton: IconButton$1, renderer: renderer$1 })).concat(reactTests$8());
+var testsReact$9 = [].concat(genericTests$8({ button: button$1, FAB: FAB$1, Icon: Icon$1, IconButton: IconButton$1, renderer: renderer$1 })).concat(reactTests$9());
 
 
 

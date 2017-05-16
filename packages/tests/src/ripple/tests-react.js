@@ -5,9 +5,7 @@ import { compose, withState, withHandlers } from "recompose";
 
 const reactTests = ({ Ripple, renderer: h }) => { // eslint-disable-line no-unused-vars
 
-  // const enhance = withState("counter", "setCounter", 0);
-
-  const addCounter = compose(
+  const withCounter = compose(
     withState("counter", "setCounter", 0),
     withHandlers({
       increment: ({ setCounter }) => () => setCounter(n => n + 1)
@@ -42,7 +40,7 @@ const reactTests = ({ Ripple, renderer: h }) => { // eslint-disable-line no-unus
       name: "Option: start (after click)",
       interactive: true,
       exclude: true,
-      component: addCounter(({ counter, increment }) =>
+      component: withCounter(({ counter, increment }) =>
         h(Ripple, {
           before: h("div", `start called: ${counter}`),
           start: () => increment()
@@ -53,7 +51,7 @@ const reactTests = ({ Ripple, renderer: h }) => { // eslint-disable-line no-unus
       name: "Option: end (after click)",
       interactive: true,
       exclude: true,
-      component: addCounter(({ counter, increment }) =>
+      component: withCounter(({ counter, increment }) =>
         h(Ripple, {
           before: h("div", `start called: ${counter}`),
           end: () => increment()

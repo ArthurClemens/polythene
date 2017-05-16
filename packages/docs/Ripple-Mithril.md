@@ -60,7 +60,7 @@ m(Ripple, {
 
 #### CSS
 
-Change CSS using the CSS Classes in the the [Ripple main page](Ripple.md).
+Change CSS using the CSS classes in `polythene-core-ripple/src/classes.js`
 
 By default the inherited `color` from the parent element is used. It can be changed with CSS:
 

@@ -8,7 +8,7 @@ export default [
   },
   {
     path: "/raised-button",
-    name: "Raised button",
+    name: "Raised Button",
     tests: tests.raisedButton
   },
   // {

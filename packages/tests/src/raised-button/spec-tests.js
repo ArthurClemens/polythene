@@ -1,61 +1,61 @@
 
-export default ({ raisedButton, renderer: h, keys }) => {
+export default ({ RaisedButton, renderer: h, keys }) => {
   return [
     {
       name: "No options",
-      component: raisedButton
+      component: RaisedButton
     },
     {
       name: "Option: children",
-      component: raisedButton,
+      component: RaisedButton,
       children: [h("span", "Child")]
     },
     // Does not work in snapshots
     // {
     //   name: "Option: children as attribute",
-    //   component: raisedButton,
+    //   component: RaisedButton,
     //   attrs: {
     //     children: h("span", "Child")
     //   }
     // },
     {
       name: "Option: content",
-      component: raisedButton,
+      component: RaisedButton,
       attrs: {
         content: h("span", {key: "content"}, "Content")
       }
     },
     {
       name: "Option: id",
-      component: raisedButton,
+      component: RaisedButton,
       attrs: {
         id: "id-x"
       }
     },
     {
       name: "Option: class",
-      component: raisedButton,
+      component: RaisedButton,
       attrs: {
         class: "class-x"
       }
     },
     {
       name: "Option: className",
-      component: raisedButton,
+      component: RaisedButton,
       attrs: {
         className: "className-x"
       }
     },
     {
       name: "Option: element",
-      component: raisedButton,
+      component: RaisedButton,
       attrs: {
         element: "button"
       }
     },
     {
       name: "Option: tabindex",
-      component: raisedButton,
+      component: RaisedButton,
       attrs: {
         [keys.tabindex]: 3
       }

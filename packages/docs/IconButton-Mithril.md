@@ -92,7 +92,7 @@ m(IconButton, {
 
 #### CSS
 
-Change CSS using the CSS Classes in the the [Icon Button main page](IconButton.md).
+Change CSS using the CSS classes in `polythene-core-icon-button/src/classes.js`
 
 The icon color is set with the CSS (text) `color` attribute of the parent element. For example:
 

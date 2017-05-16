@@ -96,7 +96,7 @@ m(Icon, {
 
 #### CSS
 
-Change CSS using the CSS Classes in the the [Icon main page](Icon.md).
+Change CSS using the CSS classes in `polythene-core-icon/src/classes.js`
 
 #### Style
 

@@ -1,7 +1,7 @@
 
-export default ({ raisedButton }) => {
+export default ({ RaisedButton }) => {
 
-  raisedButton.theme(".tests-raised-button-themed-button", {
+  RaisedButton.theme(".tests-raised-button-themed-button", {
     color_light_background: "#FF1744",
     color_light_text: "#fff"
   });
@@ -9,14 +9,14 @@ export default ({ raisedButton }) => {
   return [
     {
       name: "Option: label",
-      component: raisedButton,
+      component: RaisedButton,
       attrs: {
         label: "Label"
       }
     },
     {
       name: "Option: raised (with option z: 2)",
-      component: raisedButton,
+      component: RaisedButton,
       attrs: {
         label: "Raised to 2",
         z: 2
@@ -24,7 +24,7 @@ export default ({ raisedButton }) => {
     },
     {
       name: "Option: raised (with option z: 5)",
-      component: raisedButton,
+      component: RaisedButton,
       attrs: {
         label: "Raised to 5",
         z: 5
@@ -32,7 +32,7 @@ export default ({ raisedButton }) => {
     },
     {
       name: "Themed button (should be red)",
-      component: raisedButton,
+      component: RaisedButton,
       attrs: {
         label: "Themed button",
         className: "tests-raised-button-themed-button"
@@ -40,7 +40,7 @@ export default ({ raisedButton }) => {
     },
     {
       name: "Themed button (with option disabled)",
-      component: raisedButton,
+      component: RaisedButton,
       attrs: {
         label: "Disabled themed button",
         className: "tests-raised-button-themed-button",
@@ -49,7 +49,7 @@ export default ({ raisedButton }) => {
     },
     {
       name: "Option: style (colors)",
-      component: raisedButton,
+      component: RaisedButton,
       attrs: {
         label: "Styled",
         style: {
@@ -61,7 +61,7 @@ export default ({ raisedButton }) => {
     {
       name: "Option: wash (false)",
       interactive: true,
-      component: raisedButton,
+      component: RaisedButton,
       attrs: {
         label: "No wash",
         wash: false
@@ -70,7 +70,7 @@ export default ({ raisedButton }) => {
     {
       name: "Option: ink (false)",
       interactive: true,
-      component: raisedButton,
+      component: RaisedButton,
       attrs: {
         label: "No ink",
         ink: false
@@ -79,7 +79,7 @@ export default ({ raisedButton }) => {
     {
       name: "Option: disabled (true)",
       interactive: true,
-      component: raisedButton,
+      component: RaisedButton,
       attrs: {
         label: "Disabled",
         disabled: true
@@ -88,7 +88,7 @@ export default ({ raisedButton }) => {
     {
       name: "Option: disabled (false)",
       interactive: true,
-      component: raisedButton,
+      component: RaisedButton,
       attrs: {
         label: "Not disabled",
         disabled: false
@@ -97,16 +97,16 @@ export default ({ raisedButton }) => {
     {
       name: "Option: animateOnTap (false)",
       interactive: true,
-      component: raisedButton,
+      component: RaisedButton,
       attrs: {
         label: "Don't animate shadow",
         animateOnTap: false
       }
     },
     {
-      name: "Option: inactivate (2)",
+      name: "Option: inactivate (2s)",
       interactive: true,
-      component: raisedButton,
+      component: RaisedButton,
       attrs: {
         label: "Inactivated for 2s",
         inactivate: 2
@@ -114,7 +114,7 @@ export default ({ raisedButton }) => {
     },
     {
       name: "Option: selected",
-      component: raisedButton,
+      component: RaisedButton,
       attrs: {
         label: "Selected",
         selected: true
@@ -124,7 +124,7 @@ export default ({ raisedButton }) => {
     {
       name: "Option: inactive (false)",
       interactive: true,
-      component: raisedButton,
+      component: RaisedButton,
       attrs: {
         label: "Not inactive",
         inactive: false
@@ -133,7 +133,7 @@ export default ({ raisedButton }) => {
     {
       name: "Option: inactive (true)",
       interactive: true,
-      component: raisedButton,
+      component: RaisedButton,
       attrs: {
         label: "Inactive",
         inactive: true
@@ -144,7 +144,7 @@ export default ({ raisedButton }) => {
 
     {
       name: "Option: label -- dark tone class (should be app's primary color)",
-      component: raisedButton,
+      component: RaisedButton,
       className: "pe-dark-tone",
       attrs: {
         label: "Label"
@@ -153,7 +153,7 @@ export default ({ raisedButton }) => {
 
     {
       name: "Option: disabled -- dark tone class",
-      component: raisedButton,
+      component: RaisedButton,
       className: "pe-dark-tone",
       attrs: {
         label: "Label",
