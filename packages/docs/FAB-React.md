@@ -56,7 +56,7 @@ h(FAB, {
 
 ## Links
 
-See description in [IconButton](IconButton-React.md)
+See description in [Button](Button-React.md)
 
 
 
@@ -112,5 +112,8 @@ Change CSS using the CSS classes in `polythene-core-fab/src/classes.js`
 Some style attributes can be set using option `style`. For example:
 
 ~~~jsx
-<FAB icon={{svg: starsSVG}} style={{ color: "#ef6c00" }} />
+<FAB
+  icon={{svg: starsSVG}}
+  style={{ color: "#ef6c00" }}
+/>
 ~~~

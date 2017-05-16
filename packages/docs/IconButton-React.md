@@ -50,54 +50,7 @@ See [Icon](Icon.md) for more Icon options.
 
 ## Links
 
-Create a (non-router) link with option `url`:
-
-~~~jsx
-<IconButton url={{href: "some-url"}} />
-~~~
-
-or with hyperscript:
-
-~~~javascript
-h(IconButton, {
-  url: { href: "some-url" }
-})
-~~~
-
-### Router links
-
-React Router is the most popular router library for React. Wrap the component in its `withRouter` HOC:
-
-~~~jsx
-import { withRouter } from "react-router-dom"
-
-// render wrapped
-withRouter(({ history }) => 
-  <IconButton
-    icon={{svg: iconFavoriteSVG}}
-    url={{
-      href: "/some-route", // not required, but makes this a real link
-      onClick: e => (e.preventDefault(), history.push("/some-route"))
-    }}
-  />
-)
-~~~
-
-or with hyperscript:
-
-~~~javascript
-import { withRouter } from "react-router-dom"
-
-withRouter(({ history }) => 
-  h(IconButton, {
-    icon: { svg: trustedIconFavorite },
-    url: {
-      href: "/some-route",
-      onClick: e => (e.preventDefault(), history.push("/some-route"))
-    }
-  })
-)
-~~~
+See description in [Button](Button-React.md)
 
 
 

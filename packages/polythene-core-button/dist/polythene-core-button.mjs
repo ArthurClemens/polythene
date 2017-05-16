@@ -251,7 +251,7 @@ var createProps = function createProps(vnode, _ref) {
   var attrs = vnode.attrs;
   var disabled = attrs.disabled;
   var inactive = attrs.inactive || state.inactive;
-  var onClickHandler = attrs.events && attrs.events.onclick;
+  var onClickHandler = attrs.events && attrs.events[k.onclick];
   var handleInactivate = function handleInactivate() {
     return vnode.updateState("inactive", true), setTimeout(function () {
       return vnode.updateState("inactive", false);
@@ -305,10 +305,10 @@ var createContent = function createContent(vnode, _ref3) {
   disabled ? null : h("div", { key: "focus", className: classes.focus }), label]) : null;
 };
 
-var button = {
+var Button = {
   createProps: createProps, createContent: createContent, theme: theme, element: element,
   classes: classes,
   vars: vars$1
 };
 
-export { button };
+export { Button };

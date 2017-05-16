@@ -1,7 +1,7 @@
 import { statelessComponent } from 'polythene-mithril-base';
 import { IconButton } from 'polythene-core-icon-button';
 import { Icon } from 'polythene-mithril-icon';
-import { button } from 'polythene-mithril-button';
+import { Button } from 'polythene-mithril-button';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -15,7 +15,7 @@ var createContent = function createContent(vnode, args) {
 var IconButton$1 = statelessComponent(_extends({}, IconButton, {
   createProps: createProps,
   createContent: createContent,
-  element: button
+  element: Button
 }));
 
 IconButton$1.theme = IconButton.theme;

@@ -20,6 +20,12 @@ m(FAB, {
 
 
 
+## Links
+
+See description in [Button](Button-Mithril.md)
+
+
+
 ## Options
 
 [FAB options](FAB.md)

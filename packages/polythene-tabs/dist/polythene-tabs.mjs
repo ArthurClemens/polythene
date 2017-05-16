@@ -1,10 +1,10 @@
 import m from 'mithril';
-import { button, filterSupportedAttributes, isTouch, subscribe, unsubscribe } from 'polythene-core';
+import { Button, button, filterSupportedAttributes, isTouch, subscribe, unsubscribe } from 'polythene-core';
 import { scrollTo } from 'polythene-utilities';
 import { flex, mixin, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 import { vars as vars$1 } from 'polythene-core-icon-button';
-import { Icon, IconButton, button as button$1 } from 'polythene-mithril';
+import { Button as Button$1, Icon, IconButton } from 'polythene-mithril';
 
 var classes = {
   component: "pe-tabs",
@@ -37,7 +37,7 @@ var classes = {
 
 var rgba = vars.rgba;
 
-var fontSize = button.vars.font_size;
+var fontSize = Button.vars.font_size;
 var tab_label_line_height = 1.1 * fontSize;
 
 var vars$2 = {
@@ -380,7 +380,7 @@ var view$1 = function view(vnode) {
       });
     }
   });
-  return m(button$1, tabButtonOptions);
+  return m(Button$1, tabButtonOptions);
 };
 
 var tab = {

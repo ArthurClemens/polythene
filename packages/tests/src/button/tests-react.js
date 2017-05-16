@@ -1,4 +1,138 @@
-import { renderer, button } from "polythene-react";
-import tests from "./tests-generic";
+import React from "react"; // eslint-disable-line no-unused-vars
+import { withRouter } from "react-router-dom";
+import { renderer, Button } from "polythene-react";
+import genericTests from "./tests-generic";
+import { compose, withState, withHandlers } from "recompose";
 
-export default tests({ button, renderer });
+const reactTests = ({ Button, renderer: h }) => {
+
+  const withCounter = compose(
+    withState("counter", "setCounter", 0),
+    withHandlers({
+      increment: ({ setCounter }) => () => setCounter(n => n + 1)
+    })
+  );
+
+  Button.theme(".react-button-bordered-button", {
+    color_light_text: "#673ab7",
+    color_light_border: "#673ab7",
+    color_dark_text: "yellow",
+    color_dark_border: "yellow"
+  });
+
+  return [
+    {
+      section: "React specific tests",
+    },
+    {
+      name: "With router",
+      interactive: true,
+      component: withRouter(({ history }) => 
+        h(Button, {
+          label: "Go to /shadow",
+          url: {
+            href: "/shadow",
+            onClick: e => (e.preventDefault(), history.push("/shadow"))
+          },
+        })
+      )
+    },
+    {
+      name: "Option: events (onclick)",
+      interactive: true,
+      exclude: true,
+      component: withCounter(({ counter, increment }) =>
+        h("div", [
+          h("div", `onclick called: ${counter}`),
+          h(Button, {
+            label: "Button",
+            events: {
+              onClick: increment
+            }
+          })
+        ])
+      )
+    },
+    {
+      name: "Key down (after having focus) results in click",
+      interactive: true,
+      exclude: true,
+      component: withCounter(({ counter, increment }) =>
+        h("div", [
+          h("div", `onclick called: ${counter}`),
+          h(Button, {
+            label: "Button",
+            events: {
+              onClick: increment
+            }
+          })
+        ])
+      )
+    },
+    {
+      name: "Dark tone class + light tone class",
+      className: "pe-dark-tone",
+      component: () =>
+        h(".pe-light-tone",
+          {
+            style: { background: "#fff" }
+          },
+          [
+            h(Button, {
+              label: "Normal"
+            }),
+            h(Button, {
+              label: "Disabled",
+              disabled: true
+            }),
+            h(Button, {
+              label: "Theme",
+              className: "tests-button-themed-button"
+            })
+          ]
+        )
+    },
+    {
+      name: "Dark tone class + light tone",
+      className: "pe-dark-tone",
+      component: () =>
+        h("div",
+          {
+            style: { background: "#fff" }
+          },
+          [
+            h(Button, {
+              label: "Normal",
+              tone: "light"
+            }),
+            h(Button, {
+              label: "Disabled",
+              disabled: true,
+              tone: "light"
+            }),
+            h(Button, {
+              label: "Theme",
+              className: "tests-button-themed-button",
+              tone: "light"
+            })
+          ]
+        )
+    },
+    {
+      section: "React JSX tests",
+    },
+    {
+      name: "Themed Button: (option: borders) (JSX)",
+      component: () => <Button label="Button" className="react-button-bordered-button" borders />
+    },
+    {
+      name: "Option: inactivate (2s) (JSX)",
+      component: () => <Button label="Inactivated for 2s" inactivate={2} />
+    },
+
+  ];
+};
+
+export default []
+  .concat(genericTests({ Button, renderer }))
+  .concat(reactTests({ Button, renderer }));

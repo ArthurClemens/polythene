@@ -11,7 +11,7 @@ export const createProps = (vnode, { keys: k }) => {
   const attrs = vnode.attrs;
   const disabled = attrs.disabled;
   const inactive = attrs.inactive || state.inactive;
-  const onClickHandler = attrs.events && attrs.events.onclick;
+  const onClickHandler = attrs.events && attrs.events[k.onclick];
   const handleInactivate = () => (
     vnode.updateState("inactive", true),
     setTimeout(() => (

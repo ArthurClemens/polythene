@@ -1,60 +1,15 @@
-import { renderer, button } from "polythene-mithril";
+import { renderer, Button } from "polythene-mithril";
 import genericTests from "./tests-generic";
 
-const mithrilTests = ({ button, renderer: h }) => {
+const mithrilTests = ({ Button, renderer: h }) => {
   return [
     {
       section: "Mithril specific tests",
     },
     {
-      name: "Dark tone class + light tone class",
-      class: "pe-dark-tone",
-      component: {
-        view: () => h(".pe-light-tone", {
-          style: { background: "#fff" }
-        }, [
-          h(button, {
-            label: "Normal",
-          }),
-          h(button, {
-            label: "Disabled",
-            disabled: true
-          }),
-          h(button, {
-            label: "Theme",
-            class: "tests-button-themed-button"
-          })
-        ])
-      }
-    },
-    {
-      name: "Dark tone class + light tone",
-      class: "test-dark-theme",
-      component: {
-        view: () => h("div", {
-          style: { background: "#fff" }
-        }, [
-          h(button, {
-            label: "Normal",
-            tone: "light"
-          }),
-          h(button, {
-            label: "Disabled",
-            disabled: true,
-            tone: "light"
-          }),
-          h(button, {
-            label: "Theme",
-            class: "tests-button-themed-button",
-            tone: "light"
-          })
-        ])
-      }
-    },
-    {
       name: "Option: url (with oncreate)",
       interactive: true,
-      component: button,
+      component: Button,
       attrs: {
         label: "Go to /#/shadow",
         url: {
@@ -72,7 +27,7 @@ const mithrilTests = ({ button, renderer: h }) => {
           vnode.state.updated = 0,
         view: vnode => [
           h("div", `Updated: ${vnode.state.updated}`),
-          h(button, {
+          h(Button, {
             label: "Button",
             onbeforeupdate: () => vnode.state.updated++
           })
@@ -88,7 +43,7 @@ const mithrilTests = ({ button, renderer: h }) => {
           vnode.state.clicked = 0,
         view: vnode => [
           h("div", `onclick called: ${vnode.state.clicked}`),
-          h(button, {
+          h(Button, {
             label: "Button",
             events: {
               onclick: () => vnode.state.clicked++
@@ -106,7 +61,7 @@ const mithrilTests = ({ button, renderer: h }) => {
           vnode.state.clickCount = 0,
         view: vnode => [
           h("div", `onclick called: ${vnode.state.clickCount}`),
-          h(button, {
+          h(Button, {
             label: "Button",
             events: {
               onclick: () => vnode.state.clickCount++
@@ -115,9 +70,54 @@ const mithrilTests = ({ button, renderer: h }) => {
         ]
       }
     },
+    {
+      name: "Dark tone class + light tone class",
+      class: "pe-dark-tone",
+      component: {
+        view: () => h(".pe-light-tone", {
+          style: { background: "#fff" }
+        }, [
+          h(Button, {
+            label: "Normal",
+          }),
+          h(Button, {
+            label: "Disabled",
+            disabled: true
+          }),
+          h(Button, {
+            label: "Theme",
+            class: "tests-button-themed-button"
+          })
+        ])
+      }
+    },
+    {
+      name: "Dark tone class + light tone",
+      class: "test-dark-theme",
+      component: {
+        view: () => h("div", {
+          style: { background: "#fff" }
+        }, [
+          h(Button, {
+            label: "Normal",
+            tone: "light"
+          }),
+          h(Button, {
+            label: "Disabled",
+            disabled: true,
+            tone: "light"
+          }),
+          h(Button, {
+            label: "Theme",
+            class: "tests-button-themed-button",
+            tone: "light"
+          })
+        ])
+      }
+    },
   ];
 };
 
 export default []
-  .concat(genericTests({ button, renderer }))
-  .concat(mithrilTests({ button, renderer }));
+  .concat(genericTests({ Button, renderer }))
+  .concat(mithrilTests({ Button, renderer }));

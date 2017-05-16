@@ -1,7 +1,7 @@
 import { statefulComponent } from 'polythene-react-base';
 import { IconButton } from 'polythene-core-icon-button';
 import { Icon } from 'polythene-react-icon';
-import { button } from 'polythene-react-button';
+import { Button } from 'polythene-react-button';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -15,7 +15,7 @@ var createContent = function createContent(vnode, args) {
 var IconButton$1 = statefulComponent(_extends({}, IconButton, {
   createProps: createProps,
   createContent: createContent,
-  element: button
+  element: Button
 }));
 
 IconButton$1.theme = IconButton.theme;

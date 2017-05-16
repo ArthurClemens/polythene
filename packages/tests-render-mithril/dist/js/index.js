@@ -7132,7 +7132,7 @@ var listTile = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return button$1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Button$1; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_button__ = __webpack_require__(75);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_mithril_ripple__ = __webpack_require__(84);
@@ -7143,18 +7143,18 @@ var listTile = {
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var createProps = function createProps(vnode, args) {
-  return __WEBPACK_IMPORTED_MODULE_1_polythene_core_button__["a" /* button */].createProps(vnode, _extends(args, { Ripple: __WEBPACK_IMPORTED_MODULE_2_polythene_mithril_ripple__["a" /* Ripple */] }));
+  return __WEBPACK_IMPORTED_MODULE_1_polythene_core_button__["a" /* Button */].createProps(vnode, _extends(args, { Ripple: __WEBPACK_IMPORTED_MODULE_2_polythene_mithril_ripple__["a" /* Ripple */] }));
 };
 var createContent = function createContent(vnode, args) {
-  return __WEBPACK_IMPORTED_MODULE_1_polythene_core_button__["a" /* button */].createContent(vnode, _extends(args, { Ripple: __WEBPACK_IMPORTED_MODULE_2_polythene_mithril_ripple__["a" /* Ripple */] }));
+  return __WEBPACK_IMPORTED_MODULE_1_polythene_core_button__["a" /* Button */].createContent(vnode, _extends(args, { Ripple: __WEBPACK_IMPORTED_MODULE_2_polythene_mithril_ripple__["a" /* Ripple */] }));
 };
 
-var button$1 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["b" /* statefulComponent */])(_extends({}, __WEBPACK_IMPORTED_MODULE_1_polythene_core_button__["a" /* button */], {
+var Button$1 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["b" /* statefulComponent */])(_extends({}, __WEBPACK_IMPORTED_MODULE_1_polythene_core_button__["a" /* Button */], {
   createProps: createProps,
   createContent: createContent
 }));
 
-button$1.theme = __WEBPACK_IMPORTED_MODULE_1_polythene_core_button__["a" /* button */].theme;
+Button$1.theme = __WEBPACK_IMPORTED_MODULE_1_polythene_core_button__["a" /* Button */].theme;
 
 
 
@@ -9242,7 +9242,7 @@ module.exports = ReactNoopUpdateQueue;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return button$1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Button$1; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_react_base__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_button__ = __webpack_require__(75);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_react_ripple__ = __webpack_require__(120);
@@ -9253,19 +9253,19 @@ module.exports = ReactNoopUpdateQueue;
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var createProps = function createProps(vnode, args) {
-  return __WEBPACK_IMPORTED_MODULE_1_polythene_core_button__["a" /* button */].createProps(vnode, _extends(args, { Ripple: __WEBPACK_IMPORTED_MODULE_2_polythene_react_ripple__["a" /* Ripple */] }));
+  return __WEBPACK_IMPORTED_MODULE_1_polythene_core_button__["a" /* Button */].createProps(vnode, _extends(args, { Ripple: __WEBPACK_IMPORTED_MODULE_2_polythene_react_ripple__["a" /* Ripple */] }));
 };
 var createContent = function createContent(vnode, args) {
-  return __WEBPACK_IMPORTED_MODULE_1_polythene_core_button__["a" /* button */].createContent(vnode, _extends(args, { Ripple: __WEBPACK_IMPORTED_MODULE_2_polythene_react_ripple__["a" /* Ripple */] }));
+  return __WEBPACK_IMPORTED_MODULE_1_polythene_core_button__["a" /* Button */].createContent(vnode, _extends(args, { Ripple: __WEBPACK_IMPORTED_MODULE_2_polythene_react_ripple__["a" /* Ripple */] }));
 };
 
-var button$1 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_polythene_react_base__["c" /* statefulComponent */])(_extends({}, __WEBPACK_IMPORTED_MODULE_1_polythene_core_button__["a" /* button */], {
+var Button$1 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_polythene_react_base__["c" /* statefulComponent */])(_extends({}, __WEBPACK_IMPORTED_MODULE_1_polythene_core_button__["a" /* Button */], {
   createProps: createProps,
   createContent: createContent
 }));
 
-button$1.theme = __WEBPACK_IMPORTED_MODULE_1_polythene_core_button__["a" /* button */].theme;
-button$1.displayName = "Button";
+Button$1.theme = __WEBPACK_IMPORTED_MODULE_1_polythene_core_button__["a" /* Button */].theme;
+Button$1.displayName = "Button";
 
 
 
@@ -9978,7 +9978,7 @@ var rules = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return button; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Button; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_core__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_theme__ = __webpack_require__(8);
@@ -10235,7 +10235,7 @@ var createProps = function createProps(vnode, _ref) {
   var attrs = vnode.attrs;
   var disabled = attrs.disabled;
   var inactive = attrs.inactive || state.inactive;
-  var onClickHandler = attrs.events && attrs.events.onclick;
+  var onClickHandler = attrs.events && attrs.events[k.onclick];
   var handleInactivate = function handleInactivate() {
     return vnode.updateState("inactive", true), setTimeout(function () {
       return vnode.updateState("inactive", false);
@@ -10289,7 +10289,7 @@ var createContent = function createContent(vnode, _ref3) {
   disabled ? null : h("div", { key: "focus", className: classes.focus }), label]) : null;
 };
 
-var button = {
+var Button = {
   createProps: createProps, createContent: createContent, theme: theme, element: element,
   classes: classes,
   vars: vars$1
@@ -11460,7 +11460,7 @@ var RaisedButton$1 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_polythene
   getInitialState: getInitialState,
   createProps: createProps,
   createContent: createContent,
-  element: __WEBPACK_IMPORTED_MODULE_2_polythene_mithril_button__["a" /* button */]
+  element: __WEBPACK_IMPORTED_MODULE_2_polythene_mithril_button__["a" /* Button */]
 }));
 
 RaisedButton$1.theme = __WEBPACK_IMPORTED_MODULE_1_polythene_core_raised_button__["a" /* RaisedButton */].theme;
@@ -14751,7 +14751,7 @@ var RaisedButton$1 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_polythene
   getInitialState: getInitialState,
   createProps: createProps,
   createContent: createContent,
-  element: __WEBPACK_IMPORTED_MODULE_2_polythene_react_button__["a" /* button */]
+  element: __WEBPACK_IMPORTED_MODULE_2_polythene_react_button__["a" /* Button */]
 }));
 
 RaisedButton$1.theme = __WEBPACK_IMPORTED_MODULE_1_polythene_core_raised_button__["a" /* RaisedButton */].theme;
@@ -18506,7 +18506,7 @@ var createContent = function createContent(vnode, args) {
 var IconButton$1 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["a" /* statelessComponent */])(_extends({}, __WEBPACK_IMPORTED_MODULE_1_polythene_core_icon_button__["a" /* IconButton */], {
   createProps: createProps,
   createContent: createContent,
-  element: __WEBPACK_IMPORTED_MODULE_3_polythene_mithril_button__["a" /* button */]
+  element: __WEBPACK_IMPORTED_MODULE_3_polythene_mithril_button__["a" /* Button */]
 }));
 
 IconButton$1.theme = __WEBPACK_IMPORTED_MODULE_1_polythene_core_icon_button__["a" /* IconButton */].theme;
@@ -31159,7 +31159,7 @@ var createContent = function createContent(vnode, args) {
 var IconButton$1 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_polythene_react_base__["c" /* statefulComponent */])(_extends({}, __WEBPACK_IMPORTED_MODULE_1_polythene_core_icon_button__["a" /* IconButton */], {
   createProps: createProps,
   createContent: createContent,
-  element: __WEBPACK_IMPORTED_MODULE_3_polythene_react_button__["a" /* button */]
+  element: __WEBPACK_IMPORTED_MODULE_3_polythene_react_button__["a" /* Button */]
 }));
 
 IconButton$1.theme = __WEBPACK_IMPORTED_MODULE_1_polythene_core_icon_button__["a" /* IconButton */].theme;
@@ -32297,49 +32297,51 @@ module.exports = function(module) {
 
 
 
-var tests = (function (_ref) {
-  var button$$1 = _ref.button;
+var genericTests = (function (_ref) {
+  var Button$$1 = _ref.Button;
 
-  button$$1.theme(".tests-button-themed-button", {
+
+  Button$$1.theme(".tests-button-themed-button", {
     color_light_background: "#2196F3",
     color_dark_background: "#2196F3",
     color_light_text: "#fff"
   });
 
-  button$$1.theme(".blue-on-dark-button", {
+  Button$$1.theme(".blue-on-dark-Button", {
     color_dark_text: "#2196F3"
   });
 
-  button$$1.theme(".tests-button-bordered-button", {
+  Button$$1.theme(".tests-button-bordered-button", {
     color_light_text: "#673ab7",
     color_light_border: "#673ab7",
     color_dark_text: "yellow",
     color_dark_border: "yellow"
   });
+
   return [{
     name: "Option: label",
-    component: button$$1,
+    component: Button$$1,
     attrs: {
       label: "Label"
     }
   }, {
-    name: "Themed button: (option: borders)",
-    component: button$$1,
+    name: "Themed Button: (option: borders)",
+    component: Button$$1,
     attrs: {
       label: "Borders",
       className: "tests-button-bordered-button",
       borders: true
     }
   }, {
-    name: "Themed button (colors)",
-    component: button$$1,
+    name: "Themed Button (colors)",
+    component: Button$$1,
     attrs: {
-      label: "Themed button",
+      label: "Themed Button",
       className: "tests-button-themed-button"
     }
   }, {
     name: "Option: style (colors)",
-    component: button$$1,
+    component: Button$$1,
     attrs: {
       label: "Styled",
       style: {
@@ -32350,7 +32352,7 @@ var tests = (function (_ref) {
   }, {
     name: "Option: wash (false)",
     interactive: true,
-    component: button$$1,
+    component: Button$$1,
     attrs: {
       label: "No wash",
       wash: false
@@ -32358,7 +32360,7 @@ var tests = (function (_ref) {
   }, {
     name: "Option: ink (false)",
     interactive: true,
-    component: button$$1,
+    component: Button$$1,
     attrs: {
       label: "No ink",
       ink: false
@@ -32366,7 +32368,7 @@ var tests = (function (_ref) {
   }, {
     name: "Option: disabled (true)",
     interactive: true,
-    component: button$$1,
+    component: Button$$1,
     attrs: {
       label: "Disabled",
       disabled: true
@@ -32374,21 +32376,21 @@ var tests = (function (_ref) {
   }, {
     name: "Option: disabled (false)",
     interactive: true,
-    component: button$$1,
+    component: Button$$1,
     attrs: {
       label: "Not disabled",
       disabled: false
     }
   }, {
     name: "Option: selected",
-    component: button$$1,
+    component: Button$$1,
     attrs: {
       label: "Selected",
       selected: true
     }
   }, {
     name: "Option: formaction",
-    component: button$$1,
+    component: Button$$1,
     attrs: {
       label: "Form action",
       formaction: "http://polythene.js.org"
@@ -32396,7 +32398,7 @@ var tests = (function (_ref) {
   }, {
     name: "Option: url (without oncreate)",
     interactive: true,
-    component: button$$1,
+    component: Button$$1,
     attrs: {
       label: "Go to /shadow",
       url: {
@@ -32406,7 +32408,7 @@ var tests = (function (_ref) {
   }, {
     name: "Option: inactive (false)",
     interactive: true,
-    component: button$$1,
+    component: Button$$1,
     attrs: {
       label: "Not inactive",
       inactive: false
@@ -32414,7 +32416,7 @@ var tests = (function (_ref) {
   }, {
     name: "Option: inactive (true)",
     interactive: true,
-    component: button$$1,
+    component: Button$$1,
     attrs: {
       label: "Inactive",
       inactive: true
@@ -32422,7 +32424,7 @@ var tests = (function (_ref) {
   }, {
     name: "Option: inactivate (2)",
     interactive: true,
-    component: button$$1,
+    component: Button$$1,
     attrs: {
       label: "Inactivated for 2s",
       inactivate: 2
@@ -32434,38 +32436,38 @@ var tests = (function (_ref) {
   {
     name: "Option: label -- dark tone class",
     className: "pe-dark-tone",
-    component: button$$1,
+    component: Button$$1,
     attrs: {
       label: "Label"
     }
   }, {
     name: "Option: tone \"dark\" -- dark tone class",
     className: "test-dark-theme",
-    component: button$$1,
+    component: Button$$1,
     attrs: {
       label: "Label",
       tone: "dark"
     }
   }, {
-    name: "Themed button -- dark tone class",
+    name: "Themed Button -- dark tone class",
     className: "pe-dark-tone",
-    component: button$$1,
+    component: Button$$1,
     attrs: {
-      label: "Themed button",
+      label: "Themed Button",
       className: "tests-button-themed-button"
     }
   }, {
-    name: "Themed button blue on dark -- dark tone class",
+    name: "Themed Button blue on dark -- dark tone class",
     className: "pe-dark-tone",
-    component: button$$1,
+    component: Button$$1,
     attrs: {
-      label: "Blue on dark button",
-      className: "blue-on-dark-button"
+      label: "Blue on dark Button",
+      className: "blue-on-dark-Button"
     }
   }, {
-    name: "Themed button: (option: borders) -- dark tone class",
+    name: "Themed Button: (option: borders) -- dark tone class",
     className: "pe-dark-tone",
-    component: button$$1,
+    component: Button$$1,
     attrs: {
       label: "Borders dark tone",
       className: "tests-button-bordered-button",
@@ -32475,54 +32477,15 @@ var tests = (function (_ref) {
 });
 
 var mithrilTests$1 = function mithrilTests(_ref) {
-  var button$$1 = _ref.button,
+  var Button$$1 = _ref.Button,
       h = _ref.renderer;
 
   return [{
     section: "Mithril specific tests"
   }, {
-    name: "Dark tone class + light tone class",
-    class: "pe-dark-tone",
-    component: {
-      view: function view() {
-        return h(".pe-light-tone", {
-          style: { background: "#fff" }
-        }, [h(button$$1, {
-          label: "Normal"
-        }), h(button$$1, {
-          label: "Disabled",
-          disabled: true
-        }), h(button$$1, {
-          label: "Theme",
-          class: "tests-button-themed-button"
-        })]);
-      }
-    }
-  }, {
-    name: "Dark tone class + light tone",
-    class: "test-dark-theme",
-    component: {
-      view: function view() {
-        return h("div", {
-          style: { background: "#fff" }
-        }, [h(button$$1, {
-          label: "Normal",
-          tone: "light"
-        }), h(button$$1, {
-          label: "Disabled",
-          disabled: true,
-          tone: "light"
-        }), h(button$$1, {
-          label: "Theme",
-          class: "tests-button-themed-button",
-          tone: "light"
-        })]);
-      }
-    }
-  }, {
     name: "Option: url (with oncreate)",
     interactive: true,
-    component: button$$1,
+    component: Button$$1,
     attrs: {
       label: "Go to /#/shadow",
       url: {
@@ -32539,7 +32502,7 @@ var mithrilTests$1 = function mithrilTests(_ref) {
         return vnode.state.updated = 0;
       },
       view: function view(vnode) {
-        return [h("div", "Updated: " + vnode.state.updated), h(button$$1, {
+        return [h("div", "Updated: " + vnode.state.updated), h(Button$$1, {
           label: "Button",
           onbeforeupdate: function onbeforeupdate() {
             return vnode.state.updated++;
@@ -32556,7 +32519,7 @@ var mithrilTests$1 = function mithrilTests(_ref) {
         return vnode.state.clicked = 0;
       },
       view: function view(vnode) {
-        return [h("div", "onclick called: " + vnode.state.clicked), h(button$$1, {
+        return [h("div", "onclick called: " + vnode.state.clicked), h(Button$$1, {
           label: "Button",
           events: {
             onclick: function onclick() {
@@ -32575,7 +32538,7 @@ var mithrilTests$1 = function mithrilTests(_ref) {
         return vnode.state.clickCount = 0;
       },
       view: function view(vnode) {
-        return [h("div", "onclick called: " + vnode.state.clickCount), h(button$$1, {
+        return [h("div", "onclick called: " + vnode.state.clickCount), h(Button$$1, {
           label: "Button",
           events: {
             onclick: function onclick() {
@@ -32585,14 +32548,53 @@ var mithrilTests$1 = function mithrilTests(_ref) {
         })];
       }
     }
+  }, {
+    name: "Dark tone class + light tone class",
+    class: "pe-dark-tone",
+    component: {
+      view: function view() {
+        return h(".pe-light-tone", {
+          style: { background: "#fff" }
+        }, [h(Button$$1, {
+          label: "Normal"
+        }), h(Button$$1, {
+          label: "Disabled",
+          disabled: true
+        }), h(Button$$1, {
+          label: "Theme",
+          class: "tests-button-themed-button"
+        })]);
+      }
+    }
+  }, {
+    name: "Dark tone class + light tone",
+    class: "test-dark-theme",
+    component: {
+      view: function view() {
+        return h("div", {
+          style: { background: "#fff" }
+        }, [h(Button$$1, {
+          label: "Normal",
+          tone: "light"
+        }), h(Button$$1, {
+          label: "Disabled",
+          disabled: true,
+          tone: "light"
+        }), h(Button$$1, {
+          label: "Theme",
+          class: "tests-button-themed-button",
+          tone: "light"
+        })]);
+      }
+    }
   }];
 };
 
-var testsMithril = [].concat(tests({ button: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["e" /* button */], renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */] })).concat(mithrilTests$1({ button: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["e" /* button */], renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */] }));
+var testsMithril = [].concat(genericTests({ Button: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["e" /* Button */], renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */] })).concat(mithrilTests$1({ Button: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["e" /* Button */], renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */] }));
 
 var iconAlarm$1 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z\"/></svg>";
 
-var genericTests = (function (_ref) {
+var genericTests$1 = (function (_ref) {
   var FAB$$1 = _ref.FAB,
       Icon$$1 = _ref.Icon,
       h = _ref.renderer;
@@ -32776,11 +32778,11 @@ var mithrilTests$2 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$1 = [].concat(genericTests({ FAB: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["g" /* FAB */], Icon: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["c" /* Icon */], renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */] })).concat(mithrilTests$2({ FAB: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["g" /* FAB */], Icon: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["c" /* Icon */], renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */] }));
+var testsMithril$1 = [].concat(genericTests$1({ FAB: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["g" /* FAB */], Icon: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["c" /* Icon */], renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */] })).concat(mithrilTests$2({ FAB: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["g" /* FAB */], Icon: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["c" /* Icon */], renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */] }));
 
 var iconStars$1 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>";
 
-var genericTests$1 = (function (_ref) {
+var genericTests$2 = (function (_ref) {
   var Icon$$1 = _ref.Icon,
       SVG$$1 = _ref.SVG,
       h = _ref.renderer;
@@ -32944,11 +32946,11 @@ var mithrilTests$3 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$2 = [].concat(genericTests$1({ Icon: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["c" /* Icon */], SVG: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["h" /* SVG */], renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */] })).concat(mithrilTests$3({ Icon: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["c" /* Icon */], SVG: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["h" /* SVG */], renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */] }));
+var testsMithril$2 = [].concat(genericTests$2({ Icon: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["c" /* Icon */], SVG: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["h" /* SVG */], renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */] })).concat(mithrilTests$3({ Icon: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["c" /* Icon */], SVG: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["h" /* SVG */], renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */] }));
 
 var iconFavorite$1 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z\"/></svg>";
 
-var genericTests$2 = (function (_ref) {
+var genericTests$3 = (function (_ref) {
   var IconButton$$1 = _ref.IconButton,
       Icon$$1 = _ref.Icon,
       h = _ref.renderer;
@@ -33160,7 +33162,7 @@ var mithrilTests$4 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$3 = [].concat(genericTests$2({ IconButton: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["a" /* IconButton */], Icon: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["c" /* Icon */], renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */] })).concat(mithrilTests$4({ IconButton: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["a" /* IconButton */], renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */] }));
+var testsMithril$3 = [].concat(genericTests$3({ IconButton: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["a" /* IconButton */], Icon: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["c" /* Icon */], renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */] })).concat(mithrilTests$4({ IconButton: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["a" /* IconButton */], renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */] }));
 
 var blockSize = 40;
 
@@ -33200,7 +33202,7 @@ var createBlocks = function createBlocks(renderer$$1) {
 
 __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["b" /* styler */].add("css-classes", styles);
 
-var genericTests$3 = (function (_ref) {
+var genericTests$4 = (function (_ref) {
   var h = _ref.renderer,
       layoutComponent = _ref.layoutComponent,
       createBlocks$$1 = _ref.createBlocks;
@@ -33240,9 +33242,9 @@ var mithrilTests$5 = function mithrilTests() {
   return [];
 };
 
-var testsMithril$4 = [].concat(genericTests$3({ renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */], layoutComponent: layoutComponent, createBlocks: createBlocks })).concat(mithrilTests$5({ renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */], layoutComponent: layoutComponent, createBlocks: createBlocks }));
+var testsMithril$4 = [].concat(genericTests$4({ renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */], layoutComponent: layoutComponent, createBlocks: createBlocks })).concat(mithrilTests$5({ renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */], layoutComponent: layoutComponent, createBlocks: createBlocks }));
 
-var genericTests$4 = (function (_ref) {
+var genericTests$5 = (function (_ref) {
   var RaisedButton$$1 = _ref.RaisedButton;
 
 
@@ -33468,9 +33470,9 @@ var mithrilTests$6 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$5 = [].concat(genericTests$4({ RaisedButton: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["i" /* RaisedButton */], renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */] })).concat(mithrilTests$6({ RaisedButton: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["i" /* RaisedButton */], renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */] }));
+var testsMithril$5 = [].concat(genericTests$5({ RaisedButton: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["i" /* RaisedButton */], renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */] })).concat(mithrilTests$6({ RaisedButton: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["i" /* RaisedButton */], renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */] }));
 
-var genericTests$5 = (function (_ref) {
+var genericTests$6 = (function (_ref) {
   var Ripple$$1 = _ref.Ripple;
 
   Ripple$$1.theme(".tests-ripple-themed-ripple", {
@@ -33663,9 +33665,9 @@ var mithrilTests$7 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$6 = [].concat(genericTests$5({ Ripple: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["d" /* Ripple */], renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */] })).concat(mithrilTests$7({ Ripple: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["d" /* Ripple */], renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */] }));
+var testsMithril$6 = [].concat(genericTests$6({ Ripple: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["d" /* Ripple */], renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */] })).concat(mithrilTests$7({ Ripple: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["d" /* Ripple */], renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */] }));
 
-var genericTests$6 = (function (_ref) {
+var genericTests$7 = (function (_ref) {
   var Shadow$$1 = _ref.Shadow;
 
   return [{
@@ -33766,11 +33768,11 @@ var mithrilTests$8 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$7 = [].concat(genericTests$6({ Shadow: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["b" /* Shadow */], renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */] })).concat(mithrilTests$8({ Shadow: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["b" /* Shadow */], renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */] }));
+var testsMithril$7 = [].concat(genericTests$7({ Shadow: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["b" /* Shadow */], renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */] })).concat(mithrilTests$8({ Shadow: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["b" /* Shadow */], renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */] }));
 
 var iconStars$3 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>";
 
-var genericTests$7 = (function (_ref) {
+var genericTests$8 = (function (_ref) {
   var SVG$$1 = _ref.SVG,
       h = _ref.renderer;
 
@@ -33877,12 +33879,12 @@ var mithrilTests$9 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$8 = [].concat(genericTests$7({ SVG: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["h" /* SVG */], renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */] })).concat(mithrilTests$9({ SVG: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["h" /* SVG */], renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */] }));
+var testsMithril$8 = [].concat(genericTests$8({ SVG: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["h" /* SVG */], renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */] })).concat(mithrilTests$9({ SVG: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["h" /* SVG */], renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */] }));
 
 var alarmSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3V9z\"/></svg>";
 
-var genericTests$8 = (function (_ref) {
-  var button$$1 = _ref.button,
+var genericTests$9 = (function (_ref) {
+  var Button$$1 = _ref.Button,
       FAB$$1 = _ref.FAB,
       Icon$$1 = _ref.Icon,
       IconButton$$1 = _ref.IconButton,
@@ -33891,12 +33893,12 @@ var genericTests$8 = (function (_ref) {
 
   var trustedAlarmSVG = h.trust(alarmSVG);
 
-  button$$1.theme(".tests-custom-theme-blue-button", {
+  Button$$1.theme(".tests-custom-theme-blue-button", {
     color_light_background: "#2196F3",
     color_light_text: "#fff"
   });
 
-  button$$1.theme(".tests-custom-theme-red-button", {
+  Button$$1.theme(".tests-custom-theme-red-button", {
     color_light_background: "#ff0000",
     color_light_text: "#fff"
   });
@@ -33925,21 +33927,21 @@ var genericTests$8 = (function (_ref) {
 
   return [{
     name: "Theme with style variables: button (should be blue)",
-    component: button$$1,
+    component: Button$$1,
     attrs: {
       className: "tests-custom-theme-blue-button",
       label: "Blue button"
     }
   }, {
     name: "Theme with style variables: button (should be red)",
-    component: button$$1,
+    component: Button$$1,
     attrs: {
       className: "tests-custom-theme-red-button",
       label: "Red button"
     }
   }, {
     name: "No theme: normal button",
-    component: button$$1,
+    component: Button$$1,
     attrs: {
       label: "Unaffected button"
     }
@@ -33994,9 +33996,9 @@ var h = __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */];
 
 // [2]
 var secondaryButton = {
-  theme: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["e" /* button */].theme,
+  theme: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["e" /* Button */].theme,
   view: function view(vnode) {
-    return h(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["e" /* button */], _extends({
+    return h(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["e" /* Button */], _extends({
       className: "tests-custom-theme-secondary-button",
       borders: true
     }, vnode.attrs));
@@ -34019,7 +34021,7 @@ var mithrilTests$10 = function mithrilTests() {
   }];
 };
 
-var testsMithril$9 = [].concat(genericTests$8({ button: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["e" /* button */], FAB: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["g" /* FAB */], Icon: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["c" /* Icon */], IconButton: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["a" /* IconButton */], renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */] /*, list, listTile*/ })).concat(mithrilTests$10());
+var testsMithril$9 = [].concat(genericTests$9({ Button: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["e" /* Button */], FAB: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["g" /* FAB */], Icon: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["c" /* Icon */], IconButton: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["a" /* IconButton */], renderer: __WEBPACK_IMPORTED_MODULE_0_polythene_mithril__["f" /* renderer */] /*, list, listTile*/ })).concat(mithrilTests$10());
 
 
 
@@ -34035,8 +34037,6 @@ var fromMithrilTests = Object.freeze({
 	svg: testsMithril$8,
 	theme: testsMithril$9
 });
-
-var testsReact = tests({ button: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["a" /* button */], renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */] });
 
 /*
 object-assign
@@ -40618,6 +40618,126 @@ NavLink.defaultProps = {
   activeClassName: 'active'
 };
 
+var reactTests$1 = function reactTests(_ref) {
+  var Button$$1 = _ref.Button,
+      h = _ref.renderer;
+
+
+  var withCounter = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_recompose__["a" /* compose */])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_recompose__["b" /* withState */])("counter", "setCounter", 0), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_recompose__["c" /* withHandlers */])({
+    increment: function increment(_ref2) {
+      var setCounter = _ref2.setCounter;
+      return function () {
+        return setCounter(function (n) {
+          return n + 1;
+        });
+      };
+    }
+  }));
+
+  Button$$1.theme(".react-button-bordered-button", {
+    color_light_text: "#673ab7",
+    color_light_border: "#673ab7",
+    color_dark_text: "yellow",
+    color_dark_border: "yellow"
+  });
+
+  return [{
+    section: "React specific tests"
+  }, {
+    name: "With router",
+    interactive: true,
+    component: withRouter(function (_ref3) {
+      var history = _ref3.history;
+      return h(Button$$1, {
+        label: "Go to /shadow",
+        url: {
+          href: "/shadow",
+          onClick: function onClick(e) {
+            return e.preventDefault(), history.push("/shadow");
+          }
+        }
+      });
+    })
+  }, {
+    name: "Option: events (onclick)",
+    interactive: true,
+    exclude: true,
+    component: withCounter(function (_ref4) {
+      var counter = _ref4.counter,
+          increment = _ref4.increment;
+      return h("div", [h("div", "onclick called: " + counter), h(Button$$1, {
+        label: "Button",
+        events: {
+          onClick: increment
+        }
+      })]);
+    })
+  }, {
+    name: "Key down (after having focus) results in click",
+    interactive: true,
+    exclude: true,
+    component: withCounter(function (_ref5) {
+      var counter = _ref5.counter,
+          increment = _ref5.increment;
+      return h("div", [h("div", "onclick called: " + counter), h(Button$$1, {
+        label: "Button",
+        events: {
+          onClick: increment
+        }
+      })]);
+    })
+  }, {
+    name: "Dark tone class + light tone class",
+    className: "pe-dark-tone",
+    component: function component() {
+      return h(".pe-light-tone", {
+        style: { background: "#fff" }
+      }, [h(Button$$1, {
+        label: "Normal"
+      }), h(Button$$1, {
+        label: "Disabled",
+        disabled: true
+      }), h(Button$$1, {
+        label: "Theme",
+        className: "tests-button-themed-button"
+      })]);
+    }
+  }, {
+    name: "Dark tone class + light tone",
+    className: "pe-dark-tone",
+    component: function component() {
+      return h("div", {
+        style: { background: "#fff" }
+      }, [h(Button$$1, {
+        label: "Normal",
+        tone: "light"
+      }), h(Button$$1, {
+        label: "Disabled",
+        disabled: true,
+        tone: "light"
+      }), h(Button$$1, {
+        label: "Theme",
+        className: "tests-button-themed-button",
+        tone: "light"
+      })]);
+    }
+  }, {
+    section: "React JSX tests"
+  }, {
+    name: "Themed Button: (option: borders) (JSX)",
+    component: function component() {
+      return react.createElement(Button$$1, { label: "Button", className: "react-button-bordered-button", borders: true });
+    }
+  }, {
+    name: "Option: inactivate (2s) (JSX)",
+    component: function component() {
+      return react.createElement(Button$$1, { label: "Inactivated for 2s", inactivate: 2 });
+    }
+  }];
+};
+
+var testsReact = [].concat(genericTests({ Button: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["a" /* Button */], renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */] })).concat(reactTests$1({ Button: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["a" /* Button */], renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */] }));
+
 var iconAlarm$2 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z\"/></svg>";
 var iconAlarmSVG = react.createElement(
   "svg",
@@ -40625,7 +40745,7 @@ var iconAlarmSVG = react.createElement(
   react.createElement("path", { d: "M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z" })
 );
 
-var reactTests$1 = function reactTests(_ref) {
+var reactTests$2 = function reactTests(_ref) {
   var FAB$$1 = _ref.FAB,
       Icon$$1 = _ref.Icon,
       SVG$$1 = _ref.SVG,
@@ -40740,7 +40860,7 @@ var reactTests$1 = function reactTests(_ref) {
   }];
 };
 
-var testsReact$1 = [].concat(genericTests({ FAB: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["c" /* FAB */], Icon: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["d" /* Icon */], renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */] })).concat(reactTests$1({ FAB: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["c" /* FAB */], Icon: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["d" /* Icon */], SVG: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["e" /* SVG */], renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */] }));
+var testsReact$1 = [].concat(genericTests$1({ FAB: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["c" /* FAB */], Icon: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["d" /* Icon */], renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */] })).concat(reactTests$2({ FAB: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["c" /* FAB */], Icon: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["d" /* Icon */], SVG: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["e" /* SVG */], renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */] }));
 
 var iconStars$4 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>";
 
@@ -40750,7 +40870,7 @@ var iconStarsSVG = react.createElement(
   react.createElement("path", { d: "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z" })
 );
 
-var reactTests$2 = function reactTests(_ref) {
+var reactTests$3 = function reactTests(_ref) {
   var Icon$$1 = _ref.Icon,
       SVG$$1 = _ref.SVG,
       h = _ref.renderer;
@@ -40813,7 +40933,7 @@ var reactTests$2 = function reactTests(_ref) {
   }];
 };
 
-var testsReact$2 = [].concat(genericTests$1({ Icon: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["d" /* Icon */], SVG: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["e" /* SVG */], renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */] })).concat(reactTests$2({ Icon: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["d" /* Icon */], SVG: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["e" /* SVG */], renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */] }));
+var testsReact$2 = [].concat(genericTests$2({ Icon: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["d" /* Icon */], SVG: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["e" /* SVG */], renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */] })).concat(reactTests$3({ Icon: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["d" /* Icon */], SVG: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["e" /* SVG */], renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */] }));
 
 var iconFavorite$2 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z\"/></svg>";
 var iconFavoriteSVG = react.createElement(
@@ -40822,7 +40942,7 @@ var iconFavoriteSVG = react.createElement(
   react.createElement("path", { d: "M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z" })
 );
 
-var reactTests$3 = function reactTests(_ref) {
+var reactTests$4 = function reactTests(_ref) {
   var IconButton$$1 = _ref.IconButton,
       Icon$$1 = _ref.Icon,
       SVG$$1 = _ref.SVG,
@@ -40936,7 +41056,7 @@ var reactTests$3 = function reactTests(_ref) {
   }];
 };
 
-var testsReact$3 = [].concat(genericTests$2({ IconButton: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["f" /* IconButton */], Icon: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["d" /* Icon */], renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */] })).concat(reactTests$3({ IconButton: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["f" /* IconButton */], Icon: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["d" /* Icon */], SVG: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["e" /* SVG */], renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */] }));
+var testsReact$3 = [].concat(genericTests$3({ IconButton: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["f" /* IconButton */], Icon: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["d" /* Icon */], renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */] })).concat(reactTests$4({ IconButton: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["f" /* IconButton */], Icon: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["d" /* Icon */], SVG: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["e" /* SVG */], renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */] }));
 
 var layoutComponent$1 = function layoutComponent(content) {
   return function () {
@@ -40944,13 +41064,13 @@ var layoutComponent$1 = function layoutComponent(content) {
   };
 };
 
-var reactTests$4 = function reactTests() {
+var reactTests$5 = function reactTests() {
   return [];
 };
 
-var testsReact$4 = [].concat(genericTests$3({ renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */], layoutComponent: layoutComponent$1, createBlocks: createBlocks })).concat(reactTests$4({ renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */], layoutComponent: layoutComponent$1, createBlocks: createBlocks }));
+var testsReact$4 = [].concat(genericTests$4({ renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */], layoutComponent: layoutComponent$1, createBlocks: createBlocks })).concat(reactTests$5({ renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */], layoutComponent: layoutComponent$1, createBlocks: createBlocks }));
 
-var reactTests$5 = function reactTests(_ref) {
+var reactTests$6 = function reactTests(_ref) {
   var RaisedButton$$1 = _ref.RaisedButton,
       h = _ref.renderer;
 
@@ -41047,9 +41167,9 @@ var reactTests$5 = function reactTests(_ref) {
   }];
 };
 
-var testsReact$5 = [].concat(genericTests$4({ RaisedButton: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["g" /* RaisedButton */], renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */] })).concat(reactTests$5({ RaisedButton: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["g" /* RaisedButton */], renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */] }));
+var testsReact$5 = [].concat(genericTests$5({ RaisedButton: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["g" /* RaisedButton */], renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */] })).concat(reactTests$6({ RaisedButton: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["g" /* RaisedButton */], renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */] }));
 
-var reactTests$6 = function reactTests(_ref) {
+var reactTests$7 = function reactTests(_ref) {
   var Ripple$$1 = _ref.Ripple,
       h = _ref.renderer;
   // eslint-disable-line no-unused-vars
@@ -41143,7 +41263,7 @@ var reactTests$6 = function reactTests(_ref) {
     }
   }];
 };
-var testsReact$6 = [].concat(genericTests$5({ Ripple: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["h" /* Ripple */], renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */] })).concat(reactTests$6({ Ripple: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["h" /* Ripple */], renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */] }));
+var testsReact$6 = [].concat(genericTests$6({ Ripple: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["h" /* Ripple */], renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */] })).concat(reactTests$7({ Ripple: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["h" /* Ripple */], renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */] }));
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -41153,7 +41273,7 @@ function _possibleConstructorReturn$10(self, call) { if (!self) { throw new Refe
 
 function _inherits$10(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var reactTests$7 = function reactTests(_ref) {
+var reactTests$8 = function reactTests(_ref) {
   var Shadow$$1 = _ref.Shadow,
       h = _ref.renderer;
 
@@ -41218,7 +41338,7 @@ var reactTests$7 = function reactTests(_ref) {
   }];
 };
 
-var testsReact$7 = [].concat(genericTests$6({ Shadow: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["i" /* Shadow */], renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */] })).concat(reactTests$7({ Shadow: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["i" /* Shadow */], renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */] }));
+var testsReact$7 = [].concat(genericTests$7({ Shadow: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["i" /* Shadow */], renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */] })).concat(reactTests$8({ Shadow: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["i" /* Shadow */], renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */] }));
 
 var iconStars$5 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>";
 
@@ -41228,7 +41348,7 @@ var iconStarsSVG$1 = react.createElement(
   react.createElement("path", { d: "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z" })
 );
 
-var reactTests$8 = function reactTests(_ref) {
+var reactTests$9 = function reactTests(_ref) {
   var SVG$$1 = _ref.SVG,
       h = _ref.renderer;
 
@@ -41284,20 +41404,20 @@ var reactTests$8 = function reactTests(_ref) {
   }];
 };
 
-var testsReact$8 = [].concat(genericTests$7({ SVG: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["e" /* SVG */], renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */] })).concat(reactTests$8({ SVG: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["e" /* SVG */], renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */] }));
+var testsReact$8 = [].concat(genericTests$8({ SVG: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["e" /* SVG */], renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */] })).concat(reactTests$9({ SVG: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["e" /* SVG */], renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */] }));
 
 var _extends$8 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var reactTests$9 = function reactTests() {
+var reactTests$10 = function reactTests() {
 
   var SecondaryButton = function SecondaryButton(props) {
-    return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */])(__WEBPACK_IMPORTED_MODULE_2_polythene_react__["a" /* button */], _extends$8({}, props, {
+    return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */])(__WEBPACK_IMPORTED_MODULE_2_polythene_react__["a" /* Button */], _extends$8({}, props, {
       className: "tests-custom-theme-secondary-button",
       borders: true
     }));
   };
 
-  __WEBPACK_IMPORTED_MODULE_2_polythene_react__["a" /* button */].theme(".tests-custom-theme-secondary-button", {
+  __WEBPACK_IMPORTED_MODULE_2_polythene_react__["a" /* Button */].theme(".tests-custom-theme-secondary-button", {
     color_light_border: "#ddd",
     color_light_background: "#fff"
   });
@@ -41320,7 +41440,7 @@ var reactTests$9 = function reactTests() {
   }];
 };
 
-var testsReact$9 = [].concat(genericTests$8({ button: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["a" /* button */], FAB: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["c" /* FAB */], Icon: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["d" /* Icon */], IconButton: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["f" /* IconButton */], renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */] })).concat(reactTests$9());
+var testsReact$9 = [].concat(genericTests$9({ Button: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["a" /* Button */], FAB: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["c" /* FAB */], Icon: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["d" /* Icon */], IconButton: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["f" /* IconButton */], renderer: __WEBPACK_IMPORTED_MODULE_2_polythene_react__["b" /* renderer */] })).concat(reactTests$10());
 
 
 

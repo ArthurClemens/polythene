@@ -4,7 +4,7 @@ Testing 2 theming methods:
 2. Deriving components
 */
 
-import { renderer, button, FAB, Icon, IconButton } from "polythene-mithril";
+import { renderer, Button, FAB, Icon, IconButton } from "polythene-mithril";
 
 // import list from "polythene-list";
 // import listTile from "polythene-list-tile";
@@ -15,8 +15,8 @@ const h = renderer;
 
  // [2]
 const secondaryButton = {
-  theme: button.theme,
-  view: vnode => h(button, {
+  theme: Button.theme,
+  view: vnode => h(Button, {
     className: "tests-custom-theme-secondary-button",
     borders: true,
     ...vnode.attrs
@@ -41,5 +41,5 @@ const mithrilTests = () => [
 ];
 
 export default []
-  .concat(genericTests({ button, FAB, Icon, IconButton, renderer /*, list, listTile*/ }))
+  .concat(genericTests({ Button, FAB, Icon, IconButton, renderer /*, list, listTile*/ }))
   .concat(mithrilTests());

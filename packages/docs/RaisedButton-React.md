@@ -30,7 +30,7 @@ h(RaisedButton, {
 
 ## Links
 
-See description in [IconButton](IconButton-React.md)
+See description in [Button](Button-React.md)
 
 
 

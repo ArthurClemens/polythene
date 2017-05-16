@@ -1,75 +1,75 @@
 
-export default ({ button, renderer: h, keys }) => {
+export default ({ Button, renderer: h, keys }) => {
   return [
     {
       name: "No options",
-      component: button
+      component: Button
     },
     {
       name: "Option: children",
-      component: button,
+      component: Button,
       children: [h("span", "Child")]
     },
     // Does not work in snapshots
     // {
     //   name: "Option: children as attribute",
-    //   component: button,
+    //   component: Button,
     //   attrs: {
     //     children: h("span", "Child")
     //   }
     // },
     {
       name: "Option: content",
-      component: button,
+      component: Button,
       attrs: {
         content: h("span", "Content")
       }
     },
     {
       name: "Option: id",
-      component: button,
+      component: Button,
       attrs: {
         id: "id-x"
       }
     },
     {
       name: "Option: class",
-      component: button,
+      component: Button,
       attrs: {
         class: "class-x"
       }
     },
     {
       name: "Option: className",
-      component: button,
+      component: Button,
       attrs: {
         className: "className-x"
       }
     },
     {
       name: "Option: element",
-      component: button,
+      component: Button,
       attrs: {
-        element: "button"
+        element: "Button"
       }
     },
     {
       name: "Option: tabindex",
-      component: button,
+      component: Button,
       attrs: {
         [keys.tabindex]: 3
       }
     },
     {
       name: "Option: before",
-      component: button,
+      component: Button,
       attrs: {
         before: h("span", "Before")
       }
     },
     {
       name: "Option: after",
-      component: button,
+      component: Button,
       attrs: {
         after: h("span", "After")
       }

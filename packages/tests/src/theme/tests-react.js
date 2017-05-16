@@ -1,14 +1,14 @@
-import { renderer, button, FAB, Icon, IconButton } from "polythene-react";
+import { renderer, Button, FAB, Icon, IconButton } from "polythene-react";
 import genericTests from "./tests-generic";
 
 const reactTests = () => {
 
-  const SecondaryButton = props => renderer(button, Object.assign({}, props, {
+  const SecondaryButton = props => renderer(Button, Object.assign({}, props, {
     className: "tests-custom-theme-secondary-button",
     borders: true,
   }));
 
-  button.theme(".tests-custom-theme-secondary-button", {
+  Button.theme(".tests-custom-theme-secondary-button", {
     color_light_border: "#ddd",
     color_light_background: "#fff"
   });
@@ -36,5 +36,5 @@ const reactTests = () => {
 };
 
 export default []
-  .concat(genericTests({ button, FAB, Icon, IconButton, renderer }))
+  .concat(genericTests({ Button, FAB, Icon, IconButton, renderer }))
   .concat(reactTests());

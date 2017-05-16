@@ -1,15 +1,15 @@
 const alarmSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3V9z\"/></svg>";
 
-export default ({ button, FAB, Icon, IconButton, /*, list, listTile*/ renderer: h }) => {
+export default ({ Button, FAB, Icon, IconButton, /*, list, listTile*/ renderer: h }) => {
 
   const trustedAlarmSVG = h.trust(alarmSVG);
 
-  button.theme(".tests-custom-theme-blue-button", {
+  Button.theme(".tests-custom-theme-blue-button", {
     color_light_background: "#2196F3",
     color_light_text: "#fff"
   });
 
-  button.theme(".tests-custom-theme-red-button", {
+  Button.theme(".tests-custom-theme-red-button", {
     color_light_background: "#ff0000",
     color_light_text: "#fff"
   });
@@ -39,7 +39,7 @@ export default ({ button, FAB, Icon, IconButton, /*, list, listTile*/ renderer: 
   return [
     {
       name: "Theme with style variables: button (should be blue)",
-      component: button,
+      component: Button,
       attrs: {
         className: "tests-custom-theme-blue-button",
         label: "Blue button"
@@ -47,7 +47,7 @@ export default ({ button, FAB, Icon, IconButton, /*, list, listTile*/ renderer: 
     },
     {
       name: "Theme with style variables: button (should be red)",
-      component: button,
+      component: Button,
       attrs: {
         className: "tests-custom-theme-red-button",
         label: "Red button"
@@ -55,7 +55,7 @@ export default ({ button, FAB, Icon, IconButton, /*, list, listTile*/ renderer: 
     },
     {
       name: "No theme: normal button",
-      component: button,
+      component: Button,
       attrs: {
         label: "Unaffected button"
       }

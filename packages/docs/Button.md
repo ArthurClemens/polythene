@@ -1,113 +1,15 @@
 # Button
 
-Displays a text button with a [ripple](../polythene-ripple) effect.
+Displays a text button with a [ripple](Ripple.md) effect.
 
-See also: [Raised Button](../polythene-raised-button), [Icon Button](../polythene-icon-button) and [Floating Action Button](../polythene-fab)
+See also: [Raised Button](RaisedButton.md), [Icon Button](IconButton.md) and [Floating Action Button](FAB.md)
 
 
 
 ## Usage
 
-~~~javascript
-import m from "mithril";
-import button from "polythene-mithril-button";
-
-const myButton = m(button, {
-  label: "Button"
-});
-~~~
-
-Add a URL:
-
-~~~javascript
-const myButton = m(button, {
-  label: "Button",
-  url: {
-    href: "/index",
-    oncreate: m.route.link
-  }
-});
-~~~
-
-Add an onclick event:
-
-~~~javascript
-const myButton = m(button, {
-  label: "Button",
-  events: {
-    onclick: () => console.log("click")
-  }
-});
-~~~
-
-
-
-## Variations
-
-* The hover effect can be hidden with `wash: false`.
-* The ripple effect on click can be hidden with `ink: false`.
-* Button contains no icon as this is not part of the Material Design guidelines; use [icon Button](../polythene-icon-button) instead
-
-
-
-## Mobile and tap delay
-
-To remove the tap delay on mobile devices it is advisable to use a library like [Fastclick](https://github.com/ftlabs/fastclick). But because Fastclick has an unresolved issue with tap events while scrolling on iOS, it is better to use the convenience wrapper provided in "polythene-fastclick". This temporarily removes the Fastclick event when an element is being scrolled.
-
-~~~javascript
-import "polythene-fastclick";
-~~~
-
-
-
-## Appearance
-
-### Styling
-
-Below are examples how to change the button appearance, either with a theme or with CSS.
-
-You can find more information about theming in [Theme](../polythene-theme).
-
-#### Themed component
-
-~~~javascript
-button.theme(".bordered-button", {
-  color_light_text:   "#673ab7",
-  color_light_border: "#673ab7",
-  color_dark_text:    "yellow",
-  color_dark_border:  "yellow"
-});
-
-m(button, {
-  label: "Borders",
-  className: "bordered-button",
-  borders: true
-});
-~~~
-
-#### CSS
-
-Change CSS using the CSS Classes at the bottom of this page.
-
-#### Style
-
-Some style attributes can be set using option `style`. For example:
-
-~~~javascript
-m(button, {
-  style: {
-    backgroundColor: "#EF6C00",
-    color:           "#fff"
-  }
-});
-~~~
-
-#### Dark or light tone
-
-If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 
-
-* Use `tone: "dark"` to render light on dark
-* Use `tone: "light"` to locally render normally when dark tone is set
+* [Usage with Mithril](Button-Mithril.md)
+* [Usage with React](Button-React.md)
 
 
 
@@ -150,19 +52,26 @@ If the component - or a component's parent - has option `tone` set to "dark", th
 | **increase** | optional | Number | 1 | The z-index increment/decrement on tap; note that the maximum z value is 5 |
 | **borders** | optional | Boolean | false | Set to `true` to add a border; by default the border has no color - set border color to class `pe-button__content` to see the border |
 
+### Dark or light tone
+
+If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 
+
+* Use `tone: "dark"` to render light on dark
+* Use `tone: "light"` to locally render normally when dark tone is set
+
 
 
 ### Composition
 
 Button is composed from:
 
-* [Ripple](../polythene-ripple) (when option `ink` is not `false`)
+* [Ripple](Ripple.md) (when option `ink` is not `false`)
 
 
 
 ## CSS classes
 
-See: `src/classes.js`
+See: `polythene-core-button/src/classes.js`
 
 
 

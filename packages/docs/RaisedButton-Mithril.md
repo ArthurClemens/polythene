@@ -17,6 +17,12 @@ m(RaisedButton, {
 
 
 
+## Links
+
+See description in [Button](Button-Mithril.md)
+
+
+
 ## Options
 
 [Raised Button options](RaisedButton.md)

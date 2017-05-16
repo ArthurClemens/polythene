@@ -1,6 +1,6 @@
 import { statefulComponent } from 'polythene-react-base';
 import { RaisedButton } from 'polythene-core-raised-button';
-import { button } from 'polythene-react-button';
+import { Button } from 'polythene-react-button';
 import { Shadow } from 'polythene-react-shadow';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -19,7 +19,7 @@ var RaisedButton$1 = statefulComponent(_extends({}, RaisedButton, {
   getInitialState: getInitialState,
   createProps: createProps,
   createContent: createContent,
-  element: button
+  element: Button
 }));
 
 RaisedButton$1.theme = RaisedButton.theme;

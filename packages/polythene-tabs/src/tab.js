@@ -1,5 +1,5 @@
 import m from "mithril";
-import { Icon, button } from "polythene-mithril";
+import { Icon, Button } from "polythene-mithril";
 import classes from "./classes";
 
 const view = vnode => {
@@ -41,7 +41,7 @@ const view = vnode => {
       })
     }
   );
-  return m(button, tabButtonOptions);
+  return m(Button, tabButtonOptions);
 };
 
 export default {

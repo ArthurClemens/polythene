@@ -23,6 +23,12 @@ See [Icon](Icon.md) for more Icon options.
 
 
 
+## Links
+
+See description in [Button](Button-Mithril.md)
+
+
+
 ## Options
 
 [Icon Button options](IconButton.md)

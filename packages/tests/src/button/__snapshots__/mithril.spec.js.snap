@@ -465,7 +465,7 @@ exports[`test Option: wash (false) 1`] = `
 "
 `;
 
-exports[`test Themed button (colors) 1`] = `
+exports[`test Themed Button (colors) 1`] = `
 "<a class=\"pe-button pe-text-button tests-button-themed-button\"
 tabindex=\"0\">
 <div class=\"pe-button__content\">
@@ -477,13 +477,13 @@ tabindex=\"0\">
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
-    Themed button
+    Themed Button
   </div>
 </div></a>
 "
 `;
 
-exports[`test Themed button -- dark tone class 1`] = `
+exports[`test Themed Button -- dark tone class 1`] = `
 "<a class=\"pe-button pe-text-button tests-button-themed-button\"
 tabindex=\"0\">
 <div class=\"pe-button__content\">
@@ -495,14 +495,14 @@ tabindex=\"0\">
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
-    Themed button
+    Themed Button
   </div>
 </div></a>
 "
 `;
 
-exports[`test Themed button blue on dark -- dark tone class 1`] = `
-"<a class=\"pe-button pe-text-button blue-on-dark-button\" tabindex=
+exports[`test Themed Button blue on dark -- dark tone class 1`] = `
+"<a class=\"pe-button pe-text-button blue-on-dark-Button\" tabindex=
 \"0\">
 <div class=\"pe-button__content\">
   <div class=\"pe-ripple pe-ripple--constrained\">
@@ -513,13 +513,13 @@ exports[`test Themed button blue on dark -- dark tone class 1`] = `
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
-    Blue on dark button
+    Blue on dark Button
   </div>
 </div></a>
 "
 `;
 
-exports[`test Themed button: (option: borders) -- dark tone class 1`] = `
+exports[`test Themed Button: (option: borders) -- dark tone class 1`] = `
 "<a class=
 \"pe-button pe-text-button pe-button--borders tests-button-bordered-button\"
 tabindex=\"0\">
@@ -538,7 +538,7 @@ tabindex=\"0\">
 "
 `;
 
-exports[`test Themed button: (option: borders) 1`] = `
+exports[`test Themed Button: (option: borders) 1`] = `
 "<a class=
 \"pe-button pe-text-button pe-button--borders tests-button-bordered-button\"
 tabindex=\"0\">
@@ -551,6 +551,98 @@ tabindex=\"0\">
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
+    Borders
+  </div>
+</div></a>
+"
+`;
+
+exports[`test Themed button (colors) 1`] = `
+"<a class="pe-button pe-text-button tests-button-themed-button"
+tabindex="0">
+<div class="pe-button__content">
+  <div class="pe-ripple pe-ripple--constrained">
+    <div class="pe-ripple__mask">
+      <div class="pe-ripple__waves"></div>
+    </div>
+  </div>
+  <div class="pe-button__wash"></div>
+  <div class="pe-button__focus"></div>
+  <div class="pe-button__label">
+    Themed button
+  </div>
+</div></a>
+"
+`;
+
+exports[`test Themed button -- dark tone class 1`] = `
+"<a class="pe-button pe-text-button tests-button-themed-button"
+tabindex="0">
+<div class="pe-button__content">
+  <div class="pe-ripple pe-ripple--constrained">
+    <div class="pe-ripple__mask">
+      <div class="pe-ripple__waves"></div>
+    </div>
+  </div>
+  <div class="pe-button__wash"></div>
+  <div class="pe-button__focus"></div>
+  <div class="pe-button__label">
+    Themed button
+  </div>
+</div></a>
+"
+`;
+
+exports[`test Themed button blue on dark -- dark tone class 1`] = `
+"<a class="pe-button pe-text-button blue-on-dark-button" tabindex=
+"0">
+<div class="pe-button__content">
+  <div class="pe-ripple pe-ripple--constrained">
+    <div class="pe-ripple__mask">
+      <div class="pe-ripple__waves"></div>
+    </div>
+  </div>
+  <div class="pe-button__wash"></div>
+  <div class="pe-button__focus"></div>
+  <div class="pe-button__label">
+    Blue on dark button
+  </div>
+</div></a>
+"
+`;
+
+exports[`test Themed button: (option: borders) -- dark tone class 1`] = `
+"<a class=
+"pe-button pe-text-button pe-button--borders tests-button-bordered-button"
+tabindex="0">
+<div class="pe-button__content">
+  <div class="pe-ripple pe-ripple--constrained">
+    <div class="pe-ripple__mask">
+      <div class="pe-ripple__waves"></div>
+    </div>
+  </div>
+  <div class="pe-button__wash"></div>
+  <div class="pe-button__focus"></div>
+  <div class="pe-button__label">
+    Borders dark tone
+  </div>
+</div></a>
+"
+`;
+
+exports[`test Themed button: (option: borders) 1`] = `
+"<a class=
+"pe-button pe-text-button pe-button--borders tests-button-bordered-button"
+tabindex="0">
+<div class="pe-button__content">
+  <div class="pe-ripple pe-ripple--constrained">
+    <div class="pe-ripple__mask">
+      <div class="pe-ripple__waves"></div>
+    </div>
+  </div>
+  <div class="pe-button__wash"></div>
+  <div class="pe-button__focus"></div>
+  <div class="pe-button__label">
     Borders
   </div>
 </div></a>

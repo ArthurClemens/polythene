@@ -1,6 +1,6 @@
 import { statefulComponent } from "polythene-react-base";
 import { RaisedButton as component } from "polythene-core-raised-button";
-import { button } from "polythene-react-button";
+import { Button } from "polythene-react-button";
 import { Shadow } from "polythene-react-shadow";
 
 const getInitialState = args => component.getInitialState(args);
@@ -14,7 +14,7 @@ export const RaisedButton = statefulComponent(Object.assign(
     getInitialState,
     createProps,
     createContent,
-    element: button
+    element: Button
   }
 ));
 

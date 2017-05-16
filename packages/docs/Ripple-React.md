@@ -47,7 +47,7 @@ h(".relative-with-size",
 Use option `after` to append a Ripple to a Polythene component:
 
 ~~~javascript
-import { Ripple, ListTile } from "polythene-mithril"
+import { Ripple, ListTile } from "polythene-react"
 
 h(ListTile, {
   title: "Title",
