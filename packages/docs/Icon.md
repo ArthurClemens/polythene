@@ -35,13 +35,6 @@ Displays an icon (image or [SVG](../polythene-svg)).
 | **type**      | optional | String | "regular" | Sets the size: either "small" (16px), "regular" (24px), "medium" (32px), "large" (40px). Adds CSS class `pe-icon--small`, etcetera |
 | **avatar**    | optional | Boolean | | Set to `true` to add class `pe-icon--avatar` which creates a round image |
 
-### Dark or light tone
-
-If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 
-
-* Use `tone: "dark"` to render light on dark
-* Use `tone: "light"` to locally render normally when dark tone is set
-
 
 
 ## Composition

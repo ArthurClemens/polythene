@@ -4,8 +4,8 @@ import { tidy } from "../scripts/render";
 import dialog from "polythene-dialog";
 import notification from "polythene-notification";
 import snackbar from "polythene-snackbar";
-import { IconButton, Toolbar } from "polythene-mithril";
-// import iconBack from "mmsvg/google/msvg/navigation/arrow-back";
+import { renderer as h, IconButton, Toolbar } from "polythene-mithril";
+
 const iconBack = m.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z\"/></svg>");
 
 const generatedHtml = {
@@ -14,7 +14,7 @@ const generatedHtml = {
     vnode.state.toggle = () => vnode.state.open = !vnode.state.open
   ),
   view: vnode => {
-    return m(css.resultDataRawHtml, {
+    return h(css.resultDataRawHtml, {
       class: vnode.state.open ? "open" : "closed",
       onclick: vnode.state.toggle,
     }, [
@@ -24,34 +24,37 @@ const generatedHtml = {
   }
 };
 
+const navBar = previous =>
+  h(css.headerRow, h(Toolbar, {
+    style: {
+      backgroundColor: "rgba(255,255,255,.93)"
+    }
+  }, [
+    previous && h(IconButton, {
+      icon: { svg: iconBack },
+      url: {
+        href: "/",
+        oncreate: m.route.link
+      },
+      style: {
+        color: "#0091EA"
+      }
+    }),
+    m("span", name)
+  ]));
+  
 export default (name, tests, previous) => ({
   oncreate: () => ( 
     document.title = name,
     scrollTo(0, 0)
   ),
   view: () => [
-    m(css.headerRow, m(Toolbar, {
-      style: {
-        backgroundColor: "rgba(255,255,255,.93)"
-      }
-    }, [
-      previous && m(IconButton, {
-        icon: { svg: iconBack },
-        url: {
-          href: "/",
-          oncreate: m.route.link
-        },
-        style: {
-          color: "#0091EA"
-        }
-      }),
-      m("span", name)
-    ])),
+    navBar(previous),
     m([css.results].join(" "), {
       className: `tests-${name.replace(/[:\-+()\[\]]/ug, "").replace(/ /g, "-").toLowerCase()}`
     }, tests.map((test, index) => {
       if (test.section) {
-        return m(css.sectionTitle, test.section);
+        return h(css.sectionTitle, test.section);
       }
       const testName = `test-${(test.name).replace(/[:\-+\[\]()]/ug, "").replace(/ /g, "-").toLowerCase()}`;
       const uid = "id-" + index;
@@ -59,27 +62,27 @@ export default (name, tests, previous) => ({
         key: testName,
         class: [testName, test.className || null].join(" "),
       }, [
-        m(css.resultTitle, {
+        h(css.resultTitle, {
           class: "result-title"
         }, test.name),
-        m(css.resultData, [
-          m(css.resultDataRendered,
-            m(css.content, {
+        h(css.resultData, [
+          h(css.resultDataRendered,
+            h(css.content, {
               oncreate: vnode => {
                 if (!test.exclude) {
                   document.querySelector(`#${uid}`).textContent = tidy(vnode.dom.innerHTML);
                 }
               }
-            }, m(test.component, test.attrs, test.children))
+            }, h(test.component, test.attrs, test.children))
           ),
-          !test.exclude && m(css.resultDataRaw, 
-            m(generatedHtml, {id: uid})
+          !test.exclude && h(css.resultDataRaw, 
+            h(generatedHtml, {id: uid})
           )
         ])
       ]);
     })),
-    m(dialog),
-    m(snackbar),
-    m(notification)
+    h(dialog),
+    h(snackbar),
+    h(notification)
   ]
 });

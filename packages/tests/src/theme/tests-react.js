@@ -1,3 +1,4 @@
+import React from "react"; // eslint-disable-line no-unused-vars
 import { renderer, Button, FAB, Icon, IconButton } from "polythene-react";
 import genericTests from "./tests-generic";
 

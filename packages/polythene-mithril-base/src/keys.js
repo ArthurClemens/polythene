@@ -13,3 +13,5 @@ export const keys = {
   onmouseup:   "onmouseup",
   tabindex:    "tabindex",
 };
+
+export const normalizeKey = key => key.toLowerCase();

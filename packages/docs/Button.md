@@ -52,13 +52,6 @@ See also: [Raised Button](RaisedButton.md), [Icon Button](IconButton.md) and [Fl
 | **increase** | optional | Number | 1 | The z-index increment/decrement on tap; note that the maximum z value is 5 |
 | **borders** | optional | Boolean | false | Set to `true` to add a border; by default the border has no color - set border color to class `pe-button__content` to see the border |
 
-### Dark or light tone
-
-If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 
-
-* Use `tone: "dark"` to render light on dark
-* Use `tone: "light"` to locally render normally when dark tone is set
-
 
 
 ### Composition

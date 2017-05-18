@@ -3,6 +3,8 @@ export { default as fab }          from "./fab/tests-react";
 export { default as icon }         from "./icon/tests-react";
 export { default as iconButton }   from "./icon-button/tests-react";
 export { default as layoutStyles } from "./layout-styles/tests-react";
+export { default as list }         from "./list/tests-react";
+export { default as listTile }     from "./list-tile/tests-react";
 export { default as raisedButton } from "./raised-button/tests-react";
 export { default as ripple }       from "./ripple/tests-react";
 export { default as shadow }       from "./shadow/tests-react";

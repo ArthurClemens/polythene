@@ -41,16 +41,16 @@ export default [
     name: "Icon Button",
     tests: tests.iconButton
   },
-  // {
-  //   path: "/list",
-  //   name: "List",
-  //   tests: listTests
-  // },
-  // {
-  //   path: "/list-tile",
-  //   name: "List tile",
-  //   tests: listTileTests
-  // },
+  {
+    path: "/list",
+    name: "List",
+    tests: tests.list
+  },
+  {
+    path: "/list-tile",
+    name: "List Tile",
+    tests: tests.listTile
+  },
   // {
   //   path: "/menu",
   //   name: "Menu",

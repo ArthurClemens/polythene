@@ -6,7 +6,7 @@ export const element = "div";
 
 export const theme = customTheme;
 
-export const createProps = vnode => {
+export const createProps = (vnode, { keys: k }) => {
   const attrs = vnode.attrs;
   return Object.assign(
     {},
@@ -17,7 +17,7 @@ export const createProps = vnode => {
         attrs.compact ? classes.compact : null,
         attrs.tone === "dark" ? "pe-dark-tone" : null,
         attrs.tone === "light" ? "pe-light-tone" : null,
-        attrs.class
+        attrs.className || attrs[k.class],
       ].join(" ")
     },
     attrs.events

@@ -3,6 +3,8 @@ export { default as fab }          from "./fab/tests-mithril";
 export { default as icon }         from "./icon/tests-mithril";
 export { default as iconButton }   from "./icon-button/tests-mithril";
 export { default as layoutStyles } from "./layout-styles/tests-mithril";
+export { default as list }         from "./list/tests-mithril";
+export { default as listTile }     from "./list-tile/tests-mithril";
 export { default as raisedButton } from "./raised-button/tests-mithril";
 export { default as ripple }       from "./ripple/tests-mithril";
 export { default as shadow }       from "./shadow/tests-mithril";

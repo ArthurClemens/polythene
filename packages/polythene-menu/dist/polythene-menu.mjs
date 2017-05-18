@@ -2,10 +2,10 @@ import m from 'mithril';
 import { Shadow } from 'polythene-mithril';
 import { filterSupportedAttributes, hide, show, subscribe, unsubscribe } from 'polythene-core';
 import { mixin, styler } from 'polythene-core-css';
-import { classes } from 'polythene-list-tile';
+import { CoreListTile } from 'polythene-core-list-tile';
 import { vars } from 'polythene-theme';
 
-var classes$1 = {
+var classes = {
   component: "pe-menu",
 
   // elements
@@ -20,8 +20,8 @@ var classes$1 = {
   width_n: "pe-menu--width-",
 
   // lookup
-  listTile: classes.component,
-  selectedListTile: classes.selected
+  listTile: CoreListTile.classes.component,
+  selectedListTile: CoreListTile.classes.selected
 };
 
 var rgba = vars.rgba;
@@ -112,7 +112,7 @@ var color = (function (selector, componentVars) {
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var fns = [layout, color];
-var selector = "." + classes$1.component;
+var selector = "." + classes.component;
 
 var customTheme = function customTheme(customSelector, customVars) {
   return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
@@ -140,13 +140,13 @@ var positionMenu = function positionMenu(state, attrs) {
   if (!menuEl) {
     return;
   }
-  var contentEl = state.el.querySelector("." + classes$1.content);
+  var contentEl = state.el.querySelector("." + classes.content);
   var origin = attrs.origin || "top-left";
   var reposition = attrs.reposition === false ? false : true;
   var positionOffset = 0;
   if (reposition) {
-    var firstItem = contentEl.querySelectorAll("." + classes$1.listTile)[0];
-    var selectedItem = contentEl.querySelector("." + classes$1.selectedListTile);
+    var firstItem = contentEl.querySelectorAll("." + classes.listTile)[0];
+    var selectedItem = contentEl.querySelector("." + classes.selectedListTile);
     if (firstItem && selectedItem) {
       // calculate v position: menu should shift upward relative to the first item
       var firstItemRect = firstItem.getBoundingClientRect();
@@ -197,7 +197,7 @@ var showMenu = function showMenu(state, attrs) {
   state.isTransitioning = true;
   return show(_extends({}, attrs, {
     el: state.el,
-    showClass: classes$1.visible
+    showClass: classes.visible
   })).then(function () {
     state.isTransitioning = false;
     state.visible = true;
@@ -211,7 +211,7 @@ var hideMenu = function hideMenu(state, attrs) {
   state.isTransitioning = true;
   return hide(_extends({}, attrs, {
     el: state.el,
-    showClass: classes$1.visible
+    showClass: classes.visible
   })).then(function () {
     state.isTransitioning = false;
     state.visible = false;
@@ -227,7 +227,7 @@ var unifySize = function unifySize(size) {
 };
 
 var widthClass = function widthClass(size) {
-  return classes$1.width_n + size.toString().replace(".", "-");
+  return classes.width_n + size.toString().replace(".", "-");
 };
 
 var createView = function createView(vnode) {
@@ -273,7 +273,7 @@ var createView = function createView(vnode) {
 
   var element = attrs.element || "div";
   var props = _extends({}, filterSupportedAttributes(attrs), {
-    class: [classes$1.component, attrs.permanent ? classes$1.permanent : null, attrs.target ? classes$1.target : null, attrs.size ? widthClass(unifySize(attrs.size)) : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.class].join(" "),
+    class: [classes.component, attrs.permanent ? classes.permanent : null, attrs.target ? classes.target : null, attrs.size ? widthClass(unifySize(attrs.size)) : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.class].join(" "),
     oncreate: function oncreate(_ref) {
       var dom = _ref.dom;
 
@@ -297,7 +297,7 @@ var createView = function createView(vnode) {
     }
   });
   var content = m("div", {
-    class: classes$1.content,
+    class: classes.content,
     onclick: function onclick(e) {
       return e.preventDefault();
     },
@@ -325,9 +325,9 @@ var menu = {
       vnode.state.visible = true;
     }
     return vnode.state.visible ? createView(vnode) : m("span", {
-      class: classes$1.placeholder
+      class: classes.placeholder
     });
   }
 };
 
-export { classes$1 as classes, vars$1 as vars };export default menu;
+export { classes, vars$1 as vars };export default menu;

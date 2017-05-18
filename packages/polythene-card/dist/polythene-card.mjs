@@ -1,6 +1,5 @@
 import m from 'mithril';
-import { Icon, Shadow } from 'polythene-mithril';
-import listTile from 'polythene-list-tile';
+import { Icon, ListTile, Shadow } from 'polythene-mithril';
 import { filterSupportedAttributes } from 'polythene-core';
 import { flex, mixin, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
@@ -511,7 +510,7 @@ var createMedia = function createMedia(o) {
 
 var createHeader = function createHeader(o) {
   var attrs = o.header || {};
-  return m(listTile, _extends({}, attrs, {
+  return m(ListTile, _extends({}, attrs, {
     class: [classes.header, attrs.class].join(" ")
   }, attrs.icon ? { front: m(Icon, attrs.icon) } : null));
 };

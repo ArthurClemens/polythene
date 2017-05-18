@@ -1,4 +1,4 @@
-import { classes as listTile } from "polythene-list-tile";
+import { CoreListTile } from "polythene-core-list-tile";
 
 export default {
   component:   "pe-menu",
@@ -15,6 +15,6 @@ export default {
   width_n:     "pe-menu--width-",
 
   // lookup
-  listTile:         listTile.component,
-  selectedListTile: listTile.selected,
+  listTile:         CoreListTile.classes.component,
+  selectedListTile: CoreListTile.classes.selected,
 };

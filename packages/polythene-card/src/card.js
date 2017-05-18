@@ -1,6 +1,5 @@
 import m from "mithril";
-import { Icon, Shadow } from "polythene-mithril";
-import listTile from "polythene-list-tile";
+import { Icon, Shadow, ListTile } from "polythene-mithril";
 import { filterSupportedAttributes } from "polythene-core";
 import { customTheme } from "./theme";
 import classes from "./classes";
@@ -128,7 +127,7 @@ const createMedia = o => {
 
 const createHeader = o => {
   const attrs = o.header || {};
-  return m(listTile, Object.assign(
+  return m(ListTile, Object.assign(
     {},
     attrs,
     {
