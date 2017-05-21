@@ -138,7 +138,6 @@ import { CoreList } from "polythene-core-list";
 // CoreList.classes
 ~~~
 
-
 #### Style
 
 Some style attributes can be set using option `style`. For example:
@@ -153,7 +152,7 @@ m(List, {
 })
 ~~~
 
-#### Dark or light tone
+### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 
 

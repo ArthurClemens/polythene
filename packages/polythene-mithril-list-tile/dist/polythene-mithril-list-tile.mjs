@@ -1,4 +1,4 @@
-import { statelessComponent } from 'polythene-mithril-base';
+import { viewComponent } from 'polythene-mithril-base';
 import { CoreListTile } from 'polythene-core-list-tile';
 import { Icon } from 'polythene-mithril-icon';
 import { Ripple } from 'polythene-mithril-ripple';
@@ -12,7 +12,7 @@ var createContent = function createContent(vnode, args) {
   return CoreListTile.createContent(vnode, _extends(args, { Icon: Icon, Ripple: Ripple }));
 };
 
-var ListTile = statelessComponent(_extends({}, CoreListTile, {
+var ListTile = viewComponent(_extends({}, CoreListTile, {
   createProps: createProps,
   createContent: createContent
 }));

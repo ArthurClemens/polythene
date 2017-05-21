@@ -1,4 +1,5 @@
 export { keys } from "./keys";
 export { renderer } from "./renderer";
 export { statefulComponent } from "./statefulComponent";
-export { statelessComponent } from "./statelessComponent";
+export { viewComponent } from "./viewComponent";
+export { samStateComponent } from "./samStateComponent";

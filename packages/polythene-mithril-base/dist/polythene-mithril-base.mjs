@@ -1,4 +1,5 @@
 import m from 'mithril';
+import { getModels, getUpdate } from 'polythene-core';
 
 var keys = {
   class: "class",
@@ -19,14 +20,16 @@ var renderer = m;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+var requiresKeys = false;
+
 var statefulComponent = function statefulComponent(_ref) {
   var createContent = _ref.createContent,
       createProps = _ref.createProps,
+      element = _ref.element,
       _ref$getInitialState = _ref.getInitialState,
       getInitialState = _ref$getInitialState === undefined ? function () {
     return {};
   } : _ref$getInitialState,
-      element = _ref.element,
       _ref$onMount = _ref.onMount,
       onMount = _ref$onMount === undefined ? function () {} : _ref$onMount,
       _ref$onUnmount = _ref.onUnmount,
@@ -36,7 +39,9 @@ var statefulComponent = function statefulComponent(_ref) {
 
 
   var createVirtualNode = function createVirtualNode(vnode) {
-    return _extends({}, vnode, { updateState: updater(vnode) });
+    return _extends({}, vnode, vnode.dom ? { dom: vnode.dom } : null, {
+      updateState: updater(vnode)
+    });
   };
 
   var updater = function updater(vnode) {
@@ -57,7 +62,7 @@ var statefulComponent = function statefulComponent(_ref) {
 
   var view = function view(vnode) {
     var vnode1 = createVirtualNode(vnode);
-    return renderer(vnode.attrs.element || element, createProps(vnode1, { renderer: renderer, keys: keys }), [vnode.attrs.before, createContent(vnode1, { renderer: renderer, keys: keys }), vnode.attrs.after]);
+    return renderer(vnode.attrs.element || element, createProps(vnode1, { renderer: renderer, requiresKeys: requiresKeys, keys: keys }), [vnode.attrs.before, createContent(vnode1, { renderer: renderer, requiresKeys: requiresKeys, keys: keys }), vnode.attrs.after]);
   };
 
   return {
@@ -74,19 +79,65 @@ var statefulComponent = function statefulComponent(_ref) {
   };
 };
 
-var statelessComponent = function statelessComponent(_ref) {
+var requiresKeys$1 = false;
+
+var viewComponent = function viewComponent(_ref) {
   var createContent = _ref.createContent,
       createProps = _ref.createProps,
-      element = _ref.element;
+      element = _ref.element,
+      renderView = _ref.renderView,
+      onMount = _ref.onMount,
+      onUnmount = _ref.onUnmount;
 
 
   var view = function view(vnode) {
-    return renderer(vnode.attrs.element || element, createProps(vnode, { renderer: renderer, keys: keys }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, keys: keys }), vnode.attrs.after]);
+    console.log("viewComponent view");
+    return renderer(vnode.attrs.element || element, createProps(vnode, { renderer: renderer, requiresKeys: requiresKeys$1, keys: keys }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, requiresKeys: requiresKeys$1, keys: keys }), vnode.attrs.after]);
   };
 
   return {
-    view: view
+    view: renderView || view,
+    oncreate: onMount,
+    onremove: onUnmount
   };
 };
 
-export { keys, renderer, statefulComponent, statelessComponent };
+var requiresKeys$2 = false;
+
+var samStateComponent = function samStateComponent(_ref) {
+  var createContent = _ref.createContent,
+      createProps = _ref.createProps,
+      getInitialState = _ref.getInitialState,
+      getUpdates = _ref.getUpdates,
+      element = _ref.element,
+      renderView = _ref.renderView,
+      onInit = _ref.onInit,
+      onMount = _ref.onMount,
+      onUnmount = _ref.onUnmount;
+
+
+  var oninit = function oninit(vnode) {
+    var update = getUpdate();
+    var initialModel = getInitialState(vnode.attrs);
+    vnode.state.updates = getUpdates(update);
+    var models = getModels(initialModel, update, function () {
+      return renderer.redraw();
+    });
+    models.map(function (model) {
+      return vnode.state.model = model;
+    });
+  };
+
+  var view = function view(vnode) {
+    return renderer(vnode.attrs.element || element, createProps(vnode, { renderer: renderer, requiresKeys: requiresKeys$2, keys: keys }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, requiresKeys: requiresKeys$2, keys: keys }), vnode.attrs.after]);
+  };
+
+  return {
+    view: renderView || view,
+    oninit: onInit || oninit,
+    oncreate: onMount,
+    onremove: onUnmount
+  };
+};
+
+export { keys, renderer, statefulComponent, viewComponent, samStateComponent };

@@ -37,7 +37,7 @@ export const createProps = (vnode, { keys: k }) => {
   );
 };
 
-const primaryContent = (h, attrs, children) => {
+const primaryContent = (h, requiresKeys, attrs, children) => {
   const element = attrs.element
     ? attrs.element
     : attrs.url
@@ -45,9 +45,17 @@ const primaryContent = (h, attrs, children) => {
       : "div";
   const contentFrontClass = classes.content + " " + classes.contentFront;
   const frontComp = attrs.front
-    ? h("div", { className: contentFrontClass }, attrs.front)
+    ? h("div", Object.assign(
+      {},
+      requiresKeys ? { key: "front" } : null,
+      { className: contentFrontClass }
+    ), attrs.front)
     : attrs.indent
-      ? h("div", { className: contentFrontClass })
+      ? h("div", Object.assign(
+        {},
+        requiresKeys ? { key: "front" } : null,
+        { className: contentFrontClass }
+      ))
       : null;
   const props = Object.assign(
     {},
@@ -61,27 +69,46 @@ const primaryContent = (h, attrs, children) => {
   );
   return h(element, props, [
     frontComp,
-    h("div", {
-      className: classes.content,
-      style: attrs.style
-    }, [
-      attrs.content
-        ? attrs.content
-        : children,
-      attrs.title && !attrs.content
-        ? h("div", { className: classes.title }, attrs.title)
-        : null,
-      attrs.subtitle
-        ? h("div", { className: classes.subtitle }, attrs.subtitle)
-        : null,
-      attrs.highSubtitle
-        ? h("div", { className: classes.subtitle + " " + classes.highSubtitle }, attrs.highSubtitle)
-        : null
-    ])
+    h("div",
+      {
+        className: classes.content,
+        style: attrs.style
+      },
+      [
+        attrs.content
+          ? Object.assign(
+              {},
+              requiresKeys ? { key: "content" } : null,
+              attrs.content
+            )
+          : children,
+        attrs.title && !attrs.content
+          ? h("div", Object.assign(
+              {},
+              requiresKeys ? { key: "title" } : null,
+              { className: classes.title }
+            ), attrs.title)
+          : null,
+        attrs.subtitle
+          ? h("div", Object.assign(
+              {},
+              requiresKeys ? { key: "subtitle" } : null,
+              { className: classes.subtitle }
+            ), attrs.subtitle)
+          : null,
+        attrs.highSubtitle
+          ? h("div", Object.assign(
+              {},
+              requiresKeys ? { key: "high-subtitle" } : null,
+              { className: classes.subtitle + " " + classes.highSubtitle }
+            ), attrs.highSubtitle)
+          : null
+      ]
+    )
   ]);
 };
 
-const secondaryContent = (h, Icon, secondaryAttrs = {}) => {
+const secondaryContent = (h, requiresKeys, Icon, secondaryAttrs = {}) => {
   const element = secondaryAttrs.element
     ? secondaryAttrs.element
     : secondaryAttrs.url
@@ -90,34 +117,45 @@ const secondaryContent = (h, Icon, secondaryAttrs = {}) => {
   return h(element,
     Object.assign(
       {},
-      filterSupportedAttributes(secondaryAttrs),
       secondaryAttrs.url,
+      requiresKeys ? { key: "secondary" } : null,
       {
         className: classes.secondary
-      }
+      },
+      filterSupportedAttributes(secondaryAttrs)
     ),
     h("div",
       { className: classes.content },
       [
-        secondaryAttrs.icon ? h(Icon, secondaryAttrs.icon) : null,
+        secondaryAttrs.icon ? h(Icon, requiresKeys ? { key: "icon" } : null, secondaryAttrs.icon) : null,
         secondaryAttrs.content ? secondaryAttrs.content : null
       ]
     )
   );
 };
 
-export const createContent = (vnode, { renderer: h, keys: k, Ripple, Icon }) => {
+export const createContent = (vnode, { renderer: h, requiresKeys, keys: k, Ripple, Icon }) => {
   const attrs = vnode.attrs;
-  const primaryAttrs = Object.assign({}, attrs);
+  const primaryAttrs = Object.assign(
+    {},
+    requiresKeys ? { key: "primary" } : null,
+    attrs
+  );
   delete primaryAttrs.id;
   delete primaryAttrs[k.class];
   return [
     attrs.ink && !attrs.disabled
-      ? h(Ripple, attrs.ripple)
+      ? h(Ripple, Object.assign(
+        {},
+        requiresKeys ? { key: "ripple" } : null
+      ), attrs.ripple)
       : null,
-    primaryContent(h, primaryAttrs, attrs.children || vnode.children),
+    primaryContent(h, requiresKeys, primaryAttrs, attrs.children || vnode.children),
     attrs.secondary
-      ? secondaryContent(h, Icon, attrs.secondary)
+      ? secondaryContent(h, requiresKeys, Icon, Object.assign(
+        {},
+        requiresKeys ? { key: "secondary" } : null
+      ), attrs.secondary)
       : null
   ];
 };

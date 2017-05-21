@@ -24,7 +24,7 @@ const generatedHtml = {
   }
 };
 
-const navBar = previous =>
+const navBar = (name, previous) =>
   h(css.headerRow, h(Toolbar, {
     style: {
       backgroundColor: "rgba(255,255,255,.93)"
@@ -49,7 +49,7 @@ export default (name, tests, previous) => ({
     scrollTo(0, 0)
   ),
   view: () => [
-    navBar(previous),
+    navBar(name, previous),
     m([css.results].join(" "), {
       className: `tests-${name.replace(/[:\-+()\[\]]/ug, "").replace(/ /g, "-").toLowerCase()}`
     }, tests.map((test, index) => {

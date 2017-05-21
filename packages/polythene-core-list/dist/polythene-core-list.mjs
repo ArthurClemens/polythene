@@ -137,6 +137,7 @@ var createProps = function createProps(vnode, _ref) {
 
 var createContent = function createContent(vnode, _ref2) {
   var h = _ref2.renderer,
+      requiresKeys = _ref2.requiresKeys,
       k = _ref2.keys,
       ListTile = _ref2.ListTile;
 
@@ -146,7 +147,7 @@ var createContent = function createContent(vnode, _ref2) {
     headerOpts = _extends({}, attrs.header);
     headerOpts[k.class] = [classes.header, headerOpts[k.class] || null].join(" ");
   }
-  return [headerOpts ? h(ListTile, headerOpts) : null, attrs.tiles ? attrs.tiles : attrs.content ? attrs.content : attrs.children || vnode.children];
+  return [headerOpts ? h(ListTile, _extends({}, requiresKeys ? { key: "header" } : null, headerOpts)) : null, attrs.tiles ? attrs.tiles : attrs.content ? attrs.content : attrs.children || vnode.children];
 };
 
 var CoreList = {

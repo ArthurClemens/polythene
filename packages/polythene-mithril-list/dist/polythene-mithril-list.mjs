@@ -1,4 +1,4 @@
-import { statelessComponent } from 'polythene-mithril-base';
+import { viewComponent } from 'polythene-mithril-base';
 import { CoreList } from 'polythene-core-list';
 import { ListTile } from 'polythene-mithril-list-tile';
 
@@ -11,7 +11,7 @@ var createContent = function createContent(vnode, args) {
   return CoreList.createContent(vnode, _extends(args, { ListTile: ListTile }));
 };
 
-var List = statelessComponent(_extends({}, CoreList, {
+var List = viewComponent(_extends({}, CoreList, {
   createProps: createProps,
   createContent: createContent
 }));

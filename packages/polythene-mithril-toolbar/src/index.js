@@ -1,7 +1,7 @@
-import { statelessComponent } from "polythene-mithril-base";
+import { viewComponent } from "polythene-mithril-base";
 import { CoreToolbar as component } from "polythene-core-toolbar";
 
-export const Toolbar = statelessComponent(Object.assign(
+export const Toolbar = viewComponent(Object.assign(
   {},
   component
 ));

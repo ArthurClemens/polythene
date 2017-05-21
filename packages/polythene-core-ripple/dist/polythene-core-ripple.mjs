@@ -166,11 +166,11 @@ var createProps = function createProps(vnode, _ref) {
 };
 
 var onMount = function onMount(vnode) {
-  var state = vnode.state;
-  var attrs = vnode.attrs;
   if (!vnode.dom) {
     return;
   }
+  var state = vnode.state;
+  var attrs = vnode.attrs;
   var rippleEl = vnode.dom;
   var wavesEl = vnode.dom.querySelector("." + classes.waves);
 
@@ -197,12 +197,7 @@ var onUnmount = function onUnmount(_ref2) {
 
 var createContent = function createContent(vnode, _ref3) {
   var h = _ref3.renderer;
-
-  var attrs = vnode.attrs;
-  if (attrs.disabled) {
-    return null;
-  }
-  return h("div", { className: classes.mask }, h("div", { className: classes.waves }));
+  return vnode.attrs.disabled ? null : h("div", { className: classes.mask }, h("div", { className: classes.waves }));
 };
 
 var CoreRipple = {

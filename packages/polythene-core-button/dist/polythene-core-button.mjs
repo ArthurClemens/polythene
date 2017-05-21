@@ -242,6 +242,14 @@ var element = "a";
 
 var theme = customTheme;
 
+var getInitialState = function getInitialState(attrs) {
+  return {
+    focus: false,
+    inactive: attrs.inactive,
+    mouseover: false
+  };
+};
+
 var createProps = function createProps(vnode, _ref) {
   var _ref2;
 
@@ -306,7 +314,7 @@ var createContent = function createContent(vnode, _ref3) {
 };
 
 var CoreButton = {
-  createProps: createProps, createContent: createContent, theme: theme, element: element,
+  getInitialState: getInitialState, createProps: createProps, createContent: createContent, theme: theme, element: element,
   classes: classes,
   vars: vars$1
 };

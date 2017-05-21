@@ -1,7 +1,7 @@
-import { statelessComponent } from "polythene-mithril-base";
+import { viewComponent } from "polythene-mithril-base";
 import { CoreShadow as component } from "polythene-core-shadow";
 
-export const Shadow = statelessComponent(Object.assign(
+export const Shadow = viewComponent(Object.assign(
   {},
   component
 ));

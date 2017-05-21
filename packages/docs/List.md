@@ -33,7 +33,7 @@ Lists are also the base component of [menus](Menu.md).
 
 | **Parameter**     |  **Mandatory** | **Type** | **Default** | **Description** |
 | ----------------- | -------------- | -------- | ----------- | --------------- |
-| **header**        | optional | Object | | Options object for a [List Tile](ListTile.md); any list tile option can be used ,and in addition the options `title` and `sticky` |
+| **header**        | optional | Object | | Options object for a [List Tile](ListTile.md); any list tile option can be used; in addition the options `title` and `sticky` |
 | **header.title**  | optional | String | | Title text label |
 | **header.sticky** | optional | Boolean | | Make header sticky when scrolling; [does not work in Edge](http://caniuse.com/#feat=css-sticky) |
 | **tiles**         | use `tiles` or `content` | Array of type String, hyperscript or component | | List of [List Tiles](ListTile.md) |

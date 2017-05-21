@@ -3,11 +3,13 @@ import ReactDOM from "react-dom";
 import { renderer } from "./renderer";
 import { keys } from "./keys";
 
+const requiresKeys = true;
+
 export const statefulComponent = ({
   createContent,
   createProps,
-  getInitialState = () => ({}),
   element,
+  getInitialState = () => ({}),
   onMount = () => {},
   onUnmount = () => {},
   state = {},
@@ -57,7 +59,7 @@ export const statefulComponent = ({
         vnode.attrs.element || element,
         Object.assign(
           {},
-          createProps(vnode, { renderer, keys }),
+          createProps(vnode, { renderer, requiresKeys, keys }),
           { ref: reactComponent => {
             if (!this.dom) {
               this.dom = ReactDOM.findDOMNode(reactComponent);
@@ -66,7 +68,7 @@ export const statefulComponent = ({
         ),
         [
           vnode.attrs.before,
-          createContent(vnode, { renderer, keys }),
+          createContent(vnode, { renderer, requiresKeys, keys }),
           vnode.attrs.after
         ]
       );

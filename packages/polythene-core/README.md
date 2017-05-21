@@ -8,8 +8,10 @@ Core Polythene functions.
 * multiple
 * pointer
 * prop
+* sam
 * transition
 * variables
+
 
 ## Multiple
 

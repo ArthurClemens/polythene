@@ -51,11 +51,11 @@ export default [
     name: "List Tile",
     tests: tests.listTile
   },
-  // {
-  //   path: "/menu",
-  //   name: "Menu",
-  //   tests: menuTests
-  // },
+  {
+    path: "/menu",
+    name: "Menu",
+    tests: tests.menu
+  },
   // {
   //   path: "/md-spinner",
   //   name: "Material Design spinner",

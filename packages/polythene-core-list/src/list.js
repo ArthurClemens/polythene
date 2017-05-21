@@ -26,18 +26,25 @@ export const createProps = (vnode, { keys: k }) => {
   );
 };
 
-export const createContent = (vnode, { renderer: h, keys: k, ListTile }) => {
+export const createContent = (vnode, { renderer: h, requiresKeys, keys: k, ListTile }) => {
   const attrs = vnode.attrs;
   let headerOpts;
   if (attrs.header) {
-    headerOpts = Object.assign({}, attrs.header);
+    headerOpts = Object.assign(
+      {},
+      attrs.header
+    );
     headerOpts[k.class] = [
       classes.header,
       headerOpts[k.class] || null
     ].join(" ");
   }
   return [
-    headerOpts ? h(ListTile, headerOpts) : null,
+    headerOpts ? h(ListTile, Object.assign(
+      {},
+      requiresKeys ? { key: "header" } : null,
+      headerOpts
+    )) : null,
     attrs.tiles
       ? attrs.tiles
       : attrs.content

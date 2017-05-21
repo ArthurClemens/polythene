@@ -17,4 +17,4 @@ export const FAB = statefulComponent(Object.assign(
 ));
 
 FAB.theme = component.theme;
-FAB.displayName = "Fab";
+FAB.displayName = "FAB";

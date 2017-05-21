@@ -1,13 +1,13 @@
 {
   "name": "polythene-tests-render-react",
-  "description": "",
-  "main": "src/index.js",
-  "module": "src/index.js",
+  "private": true,
+  "main": "dist/js/test.js",
+  "module": "dist/js/test.mjs",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "dev": "npm-run-all --parallel dev:watch dev:serve",
+    "dev:serve": "webpack-dev-server --config scripts/webpack.config.dev.js --port 3000",
+    "dev:watch": "webpack --watch --config scripts/webpack.config.dev.js",
+    "build": "webpack -p --config scripts/webpack.config.js"
   },
   "dependencies": {
     "polythene-material-design": "1.0.0-rc.1",
@@ -16,11 +16,11 @@
     "polythene-utilities": "1.0.0-rc.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "react-router-dom": "^4.1.1"
+    "react-router-dom": "^4.1.1",
+    "webpack": "^2.5.1"
   },
   "devDependencies": {
-    "eslint-plugin-react": "^6.10.3",
-    "prop-types": "^15.5.8",
-    "react-scripts": "0.9.5"
+    "npm-run-all": "^4.0.2",
+    "webpack-dev-server": "^2.4.1"
   }
 }

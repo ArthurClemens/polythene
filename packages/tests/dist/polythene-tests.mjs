@@ -1,7 +1,7 @@
-import { Button, FAB, Icon, IconButton, List, ListTile, RaisedButton, Ripple, SVG, Shadow, Toolbar, keys, renderer } from 'polythene-mithril';
+import { Button, FAB, Icon, IconButton, List, ListTile, Menu, RaisedButton, Ripple, SVG, Shadow, Toolbar, keys, renderer } from 'polythene-mithril';
 import { flex, styler } from 'polythene-core-css';
 import { CoreToolbar } from 'polythene-core-toolbar';
-import { Button as Button$1, FAB as FAB$1, Icon as Icon$1, IconButton as IconButton$1, List as List$1, ListTile as ListTile$1, RaisedButton as RaisedButton$1, Ripple as Ripple$1, SVG as SVG$1, Shadow as Shadow$1, Toolbar as Toolbar$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
+import { Button as Button$1, FAB as FAB$1, Icon as Icon$1, IconButton as IconButton$1, List as List$1, ListTile as ListTile$1, Menu as Menu$1, RaisedButton as RaisedButton$1, Ripple as Ripple$1, SVG as SVG$1, Shadow as Shadow$1, Toolbar as Toolbar$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 import { compose, withHandlers, withState } from 'recompose';
 
 var genericTests = (function (_ref) {
@@ -1650,6 +1650,162 @@ var mithrilTests$7 = function mithrilTests(_ref) {
 var testsMithril$6 = [].concat(genericTests$6({ Icon: Icon, ListTile: ListTile, renderer: renderer, keys: keys })).concat(mithrilTests$7({ Icon: Icon, ListTile: ListTile, renderer: renderer, keys: keys }));
 
 var genericTests$7 = (function (_ref) {
+  var Menu$$1 = _ref.Menu,
+      List$$1 = _ref.List,
+      ListTile$$1 = _ref.ListTile,
+      h = _ref.renderer;
+
+
+  var themeColor = "#2196F3";
+  Menu$$1.theme(".menu-tests-blue-menu", {
+    color_light_background: themeColor,
+    border_radius: 0
+  });
+  ListTile$$1.theme(".menu-tests-blue-menu-list-tile", {
+    color_light_title: "#fff",
+    color_light_background: themeColor
+  });
+
+  // const themedSimpleMenuContent = h(List, [
+  //   h(ListTile, {
+  //     title: "Yes",
+  //     ink: true,
+  //     class: "menu-tests-blue-menu-list-tile"
+  //   }),
+  //   h(ListTile, {
+  //     title: "No",
+  //     ink: true,
+  //     class: "menu-tests-blue-menu-list-tile"
+  //   })
+  // ]);
+
+  // const styledSimpleMenuContent = h(List, [
+  //   h(ListTile, {
+  //     title: "Yes",
+  //     ink: true,
+  //     style: {
+  //       backgroundColor: themeColor,
+  //       color: "#fff"
+  //     }
+  //   }),
+  //   h(ListTile, {
+  //     title: "No",
+  //     ink: true,
+  //     style: {
+  //       backgroundColor: themeColor,
+  //       color: "#fff"
+  //     }
+  //   })
+  // ]);
+
+  return [];
+});
+
+var sizesMenu = (function (_ref) {
+  var size = _ref.size,
+      h = _ref.h,
+      Menu$$1 = _ref.Menu,
+      List$$1 = _ref.List,
+      ListTile$$1 = _ref.ListTile;
+
+  var sizeTexts = {
+    "1": ["en", "nl", "de"],
+    "1.5": ["Yes", "No", "Maybe"],
+    "2": ["Copy", "Paste", "Undo"],
+    "3": ["Home", "Back", "Recently viewed"],
+    "4": ["Paragraph styles", "Line spacing", "Numbered list"],
+    "5": ["Add space before paragraph", "Add space after paragraph", "Custom spacing"],
+    "6": ["The Mind Is Its Own Beautiful Prisoner", "If I Should Sleep With A Lady Called Death", "It May Not Always Be So; And I Say"],
+    "7": ["Any bar, any cross, any impediment will be", "medicinable to me: I am sick in displeasure to him", "and whatsoever comes athwart his affection ranges", "evenly with mine. How canst thou cross this marriage?"],
+    "auto": ["Paragraph styles", "Line spacing", "Numbered list"]
+  };
+  var sizeStr = size.toString();
+  return h(Menu$$1, {
+    size: size,
+    permanent: true,
+    content: h(List$$1, {
+      compact: true,
+      header: { title: size },
+      tiles: sizeTexts[sizeStr].map(function (label) {
+        return h(ListTile$$1, {
+          title: label,
+          key: label
+        });
+      })
+    }),
+    style: { margin: "0 0 1rem 0" }
+  });
+});
+
+var simpleMenuContent = renderer(List, [renderer(ListTile, {
+  title: "Yes",
+  ink: true
+}), renderer(ListTile, {
+  title: "No",
+  ink: true
+})]);
+
+var simpleMenuComponent = {
+  oninit: function oninit(vnode) {
+    vnode.state.isOpen = false;
+    vnode.state.id = vnode.attrs.instance;
+  },
+  view: function view(vnode) {
+    return renderer("div", {
+      style: { position: "relative" }
+    }, [renderer(RaisedButton, {
+      label: "Open menu",
+      id: vnode.state.id,
+      events: {
+        onclick: function onclick() {
+          return vnode.state.isOpen = true;
+        }
+      }
+    }), renderer(Menu, {
+      offset: -4,
+      target: "#" + vnode.state.id,
+      show: vnode.state.isOpen,
+      didHide: function didHide() {
+        return vnode.state.isOpen = false;
+      },
+      content: simpleMenuContent
+    })]);
+  }
+};
+
+var mithrilTests$8 = function mithrilTests(_ref) {
+  var Menu$$1 = _ref.Menu,
+      List$$1 = _ref.List,
+      ListTile$$1 = _ref.ListTile,
+      h = _ref.renderer;
+
+
+  return [{
+    section: "Mithril specific tests"
+  }, {
+    name: "Simple menu",
+    interactive: true,
+    exclude: true,
+    component: {
+      view: function view() {
+        return h(simpleMenuComponent, { instance: "one" });
+      }
+    }
+  }, {
+    name: "Simple menu 2",
+    interactive: true,
+    exclude: true,
+    component: {
+      view: function view() {
+        return h(simpleMenuComponent, { instance: "two" });
+      }
+    }
+  }];
+};
+
+var testsMithril$7 = [].concat(genericTests$7({ Menu: Menu, List: List, ListTile: ListTile, renderer: renderer })).concat(mithrilTests$8({ Menu: Menu, List: List, ListTile: ListTile, renderer: renderer }));
+
+var genericTests$8 = (function (_ref) {
   var RaisedButton$$1 = _ref.RaisedButton;
 
 
@@ -1796,7 +1952,7 @@ var genericTests$7 = (function (_ref) {
   }];
 });
 
-var mithrilTests$8 = function mithrilTests(_ref) {
+var mithrilTests$9 = function mithrilTests(_ref) {
   var RaisedButton$$1 = _ref.RaisedButton,
       h = _ref.renderer;
 
@@ -1875,9 +2031,9 @@ var mithrilTests$8 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$7 = [].concat(genericTests$7({ RaisedButton: RaisedButton, renderer: renderer })).concat(mithrilTests$8({ RaisedButton: RaisedButton, renderer: renderer }));
+var testsMithril$8 = [].concat(genericTests$8({ RaisedButton: RaisedButton, renderer: renderer })).concat(mithrilTests$9({ RaisedButton: RaisedButton, renderer: renderer }));
 
-var genericTests$8 = (function (_ref) {
+var genericTests$9 = (function (_ref) {
   var Ripple$$1 = _ref.Ripple;
 
   Ripple$$1.theme(".tests-ripple-themed-ripple", {
@@ -2012,7 +2168,7 @@ var genericTests$8 = (function (_ref) {
   }];
 });
 
-var mithrilTests$9 = function mithrilTests(_ref) {
+var mithrilTests$10 = function mithrilTests(_ref) {
   var Ripple$$1 = _ref.Ripple,
       h = _ref.renderer;
 
@@ -2070,9 +2226,9 @@ var mithrilTests$9 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$8 = [].concat(genericTests$8({ Ripple: Ripple, renderer: renderer })).concat(mithrilTests$9({ Ripple: Ripple, renderer: renderer }));
+var testsMithril$9 = [].concat(genericTests$9({ Ripple: Ripple, renderer: renderer })).concat(mithrilTests$10({ Ripple: Ripple, renderer: renderer }));
 
-var genericTests$9 = (function (_ref) {
+var genericTests$10 = (function (_ref) {
   var Shadow$$1 = _ref.Shadow;
 
   return [{
@@ -2125,7 +2281,7 @@ var genericTests$9 = (function (_ref) {
   }];
 });
 
-var mithrilTests$10 = function mithrilTests(_ref) {
+var mithrilTests$11 = function mithrilTests(_ref) {
   var Shadow$$1 = _ref.Shadow,
       h = _ref.renderer;
 
@@ -2173,11 +2329,11 @@ var mithrilTests$10 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$9 = [].concat(genericTests$9({ Shadow: Shadow, renderer: renderer })).concat(mithrilTests$10({ Shadow: Shadow, renderer: renderer }));
+var testsMithril$10 = [].concat(genericTests$10({ Shadow: Shadow, renderer: renderer })).concat(mithrilTests$11({ Shadow: Shadow, renderer: renderer }));
 
 var iconStars$5 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>";
 
-var genericTests$10 = (function (_ref) {
+var genericTests$11 = (function (_ref) {
   var SVG$$1 = _ref.SVG,
       h = _ref.renderer;
 
@@ -2244,7 +2400,7 @@ var genericTests$10 = (function (_ref) {
 
 var iconStars$4 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>";
 
-var mithrilTests$11 = function mithrilTests(_ref) {
+var mithrilTests$12 = function mithrilTests(_ref) {
   var SVG$$1 = _ref.SVG,
       h = _ref.renderer;
 
@@ -2284,11 +2440,11 @@ var mithrilTests$11 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$10 = [].concat(genericTests$10({ SVG: SVG, renderer: renderer })).concat(mithrilTests$11({ SVG: SVG, renderer: renderer }));
+var testsMithril$11 = [].concat(genericTests$11({ SVG: SVG, renderer: renderer })).concat(mithrilTests$12({ SVG: SVG, renderer: renderer }));
 
 var alarmSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3V9z\"/></svg>";
 
-var genericTests$11 = (function (_ref) {
+var genericTests$12 = (function (_ref) {
   var Button$$1 = _ref.Button,
       FAB$$1 = _ref.FAB,
       Icon$$1 = _ref.Icon,
@@ -2414,7 +2570,7 @@ secondaryButton.theme(".tests-custom-theme-secondary-button", {
   color_light_background: "#fff"
 });
 
-var mithrilTests$12 = function mithrilTests() {
+var mithrilTests$13 = function mithrilTests() {
   return [{
     section: "Mithril specific tests"
   }, {
@@ -2426,7 +2582,7 @@ var mithrilTests$12 = function mithrilTests() {
   }];
 };
 
-var testsMithril$11 = [].concat(genericTests$11({ Button: Button, FAB: FAB, Icon: Icon, IconButton: IconButton, renderer: renderer /*, list, listTile*/ })).concat(mithrilTests$12());
+var testsMithril$12 = [].concat(genericTests$12({ Button: Button, FAB: FAB, Icon: Icon, IconButton: IconButton, renderer: renderer /*, list, listTile*/ })).concat(mithrilTests$13());
 
 var toolbarClasses = CoreToolbar.classes;
 
@@ -2472,7 +2628,7 @@ var shared = (function (_ref) {
   };
 });
 
-var genericTests$12 = (function (_ref) {
+var genericTests$13 = (function (_ref) {
   var Toolbar$$1 = _ref.Toolbar,
       IconButton$$1 = _ref.IconButton,
       h = _ref.renderer;
@@ -2573,7 +2729,7 @@ var genericTests$12 = (function (_ref) {
   }];
 });
 
-var mithrilTests$13 = function mithrilTests(_ref) {
+var mithrilTests$14 = function mithrilTests(_ref) {
   var Toolbar$$1 = _ref.Toolbar,
       IconButton$$1 = _ref.IconButton,
       Shadow$$1 = _ref.Shadow,
@@ -2599,7 +2755,7 @@ var mithrilTests$13 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$12 = [].concat(genericTests$12({ Toolbar: Toolbar, IconButton: IconButton, Shadow: Shadow, renderer: renderer })).concat(mithrilTests$13({ Toolbar: Toolbar, IconButton: IconButton, Shadow: Shadow, renderer: renderer }));
+var testsMithril$13 = [].concat(genericTests$13({ Toolbar: Toolbar, IconButton: IconButton, Shadow: Shadow, renderer: renderer })).concat(mithrilTests$14({ Toolbar: Toolbar, IconButton: IconButton, Shadow: Shadow, renderer: renderer }));
 
 
 
@@ -2611,12 +2767,13 @@ var fromMithrilTests = Object.freeze({
 	layoutStyles: testsMithril$4,
 	list: testsMithril$5,
 	listTile: testsMithril$6,
-	raisedButton: testsMithril$7,
-	ripple: testsMithril$8,
-	shadow: testsMithril$9,
-	svg: testsMithril$10,
-	theme: testsMithril$11,
-	toolbar: testsMithril$12
+	menu: testsMithril$7,
+	raisedButton: testsMithril$8,
+	ripple: testsMithril$9,
+	shadow: testsMithril$10,
+	svg: testsMithril$11,
+	theme: testsMithril$12,
+	toolbar: testsMithril$13
 });
 
 /*
@@ -9885,7 +10042,67 @@ var reactTests$7 = function reactTests(_ref) {
 
 var testsReact$6 = [].concat(genericTests$6({ Icon: Icon$1, ListTile: ListTile$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests$7({ Icon: Icon$1, ListTile: ListTile$1, renderer: renderer$1, keys: keys$1 }));
 
+var simpleMenuContent$1 = renderer$1(List$1, null, [renderer$1(ListTile$1, {
+  title: "Yes",
+  ink: true
+}), renderer$1(ListTile$1, {
+  title: "No",
+  ink: true
+})]);
+
+var SimpleMenuComponent = (function () {
+  var isOpen = false;
+  var id = "id-" + Math.floor(Math.random() * 1000);
+  return renderer$1("div", {
+    style: { position: "relative" }
+  }, [renderer$1(RaisedButton$1, {
+    label: "Open menu",
+    id: id,
+    events: {
+      onClick: function onClick() {
+        return isOpen = true;
+      }
+    }
+  }), renderer$1(Menu$1, {
+    offset: -4,
+    target: "#" + id,
+    show: isOpen,
+    didHide: function didHide() {
+      return isOpen = false;
+    },
+    content: simpleMenuContent$1
+  })]);
+});
+
 var reactTests$8 = function reactTests(_ref) {
+  var Menu$$1 = _ref.Menu,
+      List$$1 = _ref.List,
+      ListTile$$1 = _ref.ListTile,
+      h = _ref.renderer;
+
+
+  return [{
+    section: "React specific tests"
+  }, {
+    name: "Simple menu",
+    interactive: true,
+    exclude: true,
+    component: function component() {
+      return h(SimpleMenuComponent);
+    }
+  }, {
+    name: "Option: size",
+    component: function component() {
+      return h("div", null, [1.5, 2, 3, 4, 5, 6, 7, "auto"].map(function (size) {
+        return sizesMenu({ size: size, Menu: Menu$$1, List: List$$1, ListTile: ListTile$$1, h: h });
+      }));
+    }
+  }];
+};
+
+var testsReact$7 = [].concat(genericTests$7({ Menu: Menu$1, List: List$1, ListTile: ListTile$1, renderer: renderer$1 })).concat(reactTests$8({ Menu: Menu$1, List: List$1, ListTile: ListTile$1, renderer: renderer$1 }));
+
+var reactTests$9 = function reactTests(_ref) {
   var RaisedButton$$1 = _ref.RaisedButton,
       h = _ref.renderer;
 
@@ -9982,9 +10199,9 @@ var reactTests$8 = function reactTests(_ref) {
   }];
 };
 
-var testsReact$7 = [].concat(genericTests$7({ RaisedButton: RaisedButton$1, renderer: renderer$1 })).concat(reactTests$8({ RaisedButton: RaisedButton$1, renderer: renderer$1 }));
+var testsReact$8 = [].concat(genericTests$8({ RaisedButton: RaisedButton$1, renderer: renderer$1 })).concat(reactTests$9({ RaisedButton: RaisedButton$1, renderer: renderer$1 }));
 
-var reactTests$9 = function reactTests(_ref) {
+var reactTests$10 = function reactTests(_ref) {
   var Ripple$$1 = _ref.Ripple,
       h = _ref.renderer;
   // eslint-disable-line no-unused-vars
@@ -10078,7 +10295,7 @@ var reactTests$9 = function reactTests(_ref) {
     }
   }];
 };
-var testsReact$8 = [].concat(genericTests$8({ Ripple: Ripple$1, renderer: renderer$1 })).concat(reactTests$9({ Ripple: Ripple$1, renderer: renderer$1 }));
+var testsReact$9 = [].concat(genericTests$9({ Ripple: Ripple$1, renderer: renderer$1 })).concat(reactTests$10({ Ripple: Ripple$1, renderer: renderer$1 }));
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -10088,7 +10305,7 @@ function _possibleConstructorReturn$10(self, call) { if (!self) { throw new Refe
 
 function _inherits$10(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var reactTests$10 = function reactTests(_ref) {
+var reactTests$11 = function reactTests(_ref) {
   var Shadow$$1 = _ref.Shadow,
       h = _ref.renderer;
 
@@ -10153,7 +10370,7 @@ var reactTests$10 = function reactTests(_ref) {
   }];
 };
 
-var testsReact$9 = [].concat(genericTests$9({ Shadow: Shadow$1, renderer: renderer$1 })).concat(reactTests$10({ Shadow: Shadow$1, renderer: renderer$1 }));
+var testsReact$10 = [].concat(genericTests$10({ Shadow: Shadow$1, renderer: renderer$1 })).concat(reactTests$11({ Shadow: Shadow$1, renderer: renderer$1 }));
 
 var iconStars$8 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>";
 
@@ -10163,7 +10380,7 @@ var iconStarsSVG$1 = react.createElement(
   react.createElement("path", { d: "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z" })
 );
 
-var reactTests$11 = function reactTests(_ref) {
+var reactTests$12 = function reactTests(_ref) {
   var SVG$$1 = _ref.SVG,
       h = _ref.renderer;
 
@@ -10219,11 +10436,11 @@ var reactTests$11 = function reactTests(_ref) {
   }];
 };
 
-var testsReact$10 = [].concat(genericTests$10({ SVG: SVG$1, renderer: renderer$1 })).concat(reactTests$11({ SVG: SVG$1, renderer: renderer$1 }));
+var testsReact$11 = [].concat(genericTests$11({ SVG: SVG$1, renderer: renderer$1 })).concat(reactTests$12({ SVG: SVG$1, renderer: renderer$1 }));
 
 var _extends$8 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var reactTests$12 = function reactTests() {
+var reactTests$13 = function reactTests() {
 
   var SecondaryButton = function SecondaryButton(props) {
     return renderer$1(Button$1, _extends$8({}, props, {
@@ -10255,7 +10472,7 @@ var reactTests$12 = function reactTests() {
   }];
 };
 
-var testsReact$11 = [].concat(genericTests$11({ Button: Button$1, FAB: FAB$1, Icon: Icon$1, IconButton: IconButton$1, renderer: renderer$1 })).concat(reactTests$12());
+var testsReact$12 = [].concat(genericTests$12({ Button: Button$1, FAB: FAB$1, Icon: Icon$1, IconButton: IconButton$1, renderer: renderer$1 })).concat(reactTests$13());
 
 var iconMenuSVG$1 = react.createElement(
   "svg",
@@ -10273,7 +10490,7 @@ var iconAddSVG$1 = react.createElement(
   react.createElement("path", { d: "M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" })
 );
 
-var reactTests$13 = function reactTests(_ref) {
+var reactTests$14 = function reactTests(_ref) {
   var Toolbar$$1 = _ref.Toolbar,
       IconButton$$1 = _ref.IconButton,
       h = _ref.renderer;
@@ -10360,7 +10577,7 @@ var reactTests$13 = function reactTests(_ref) {
   }];
 };
 
-var testsReact$12 = [].concat(genericTests$12({ Toolbar: Toolbar$1, IconButton: IconButton$1, Shadow: Shadow$1, renderer: renderer$1 })).concat(reactTests$13({ Toolbar: Toolbar$1, IconButton: IconButton$1, Shadow: Shadow$1, renderer: renderer$1 }));
+var testsReact$13 = [].concat(genericTests$13({ Toolbar: Toolbar$1, IconButton: IconButton$1, Shadow: Shadow$1, renderer: renderer$1 })).concat(reactTests$14({ Toolbar: Toolbar$1, IconButton: IconButton$1, Shadow: Shadow$1, renderer: renderer$1 }));
 
 
 
@@ -10372,12 +10589,13 @@ var fromReactTests = Object.freeze({
 	layoutStyles: testsReact$4,
 	list: testsReact$5,
 	listTile: testsReact$6,
-	raisedButton: testsReact$7,
-	ripple: testsReact$8,
-	shadow: testsReact$9,
-	svg: testsReact$10,
-	theme: testsReact$11,
-	toolbar: testsReact$12
+	menu: testsReact$7,
+	raisedButton: testsReact$8,
+	ripple: testsReact$9,
+	shadow: testsReact$10,
+	svg: testsReact$11,
+	theme: testsReact$12,
+	toolbar: testsReact$13
 });
 
 var mithrilTests = fromMithrilTests;

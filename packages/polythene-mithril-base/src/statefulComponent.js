@@ -1,18 +1,27 @@
 import { renderer } from "./renderer";
 import { keys } from "./keys";
 
+const requiresKeys = false;
+
 export const statefulComponent = ({
   createContent,
   createProps,
-  getInitialState = () => ({}),
   element,
+  getInitialState = () => ({}),
   onMount = () => {},
   onUnmount = () => {},
   state = {},
 }) => {
 
   const createVirtualNode = vnode => 
-    Object.assign({}, vnode, { updateState: updater(vnode) });
+    Object.assign(
+      {},
+      vnode,
+      vnode.dom ? { dom: vnode.dom } : null,
+      {
+        updateState: updater(vnode)
+      }
+    );
 
   const updater = vnode => (attr, value, callback) => {
     vnode.state[attr] = value;
@@ -35,10 +44,10 @@ export const statefulComponent = ({
     const vnode1 = createVirtualNode(vnode);
     return renderer(
       vnode.attrs.element || element,
-      createProps(vnode1, { renderer, keys }),
+      createProps(vnode1, { renderer, requiresKeys, keys }),
       [
         vnode.attrs.before,
-        createContent(vnode1, { renderer, keys }),
+        createContent(vnode1, { renderer, requiresKeys, keys }),
         vnode.attrs.after
       ]
     );

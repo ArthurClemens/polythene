@@ -6,6 +6,12 @@ export const element = "a";
 
 export const theme = customTheme;
 
+export const getInitialState = attrs => ({
+  focus: false,
+  inactive: attrs.inactive,
+  mouseover: false,
+});
+
 export const createProps = (vnode, { keys: k }) => {
   const state = vnode.state;
   const attrs = vnode.attrs;
@@ -82,27 +88,30 @@ export const createContent = (vnode, { renderer: h, keys: k, Ripple }) => {
         : null;
   const noWash = disabled || (attrs.wash !== undefined && !attrs.wash);
   return label
-    ? h("div", {
-      [k.class]: classes.content,
-      key: "button",
-      style: attrs.style || {}
-    }, [
-      !disabled && attrs.shadowComponent // "protected" option, used by raised-button
-        ? attrs.shadowComponent
-        : null,
-      // Ripple
-      disabled || noink
-        ? null
-        : Ripple && h(Ripple, {
-          ...attrs.ripple,
-          key: "ripple",
-          // target: () => vnode.dom
-        }),
-      // hover
-      noWash ? null : h("div", { key: "wash", className: classes.wash }),
-      // focus
-      disabled ? null : h("div", { key: "focus", className: classes.focus }),
-      label
-    ])
+    ? h("div",
+      {
+        [k.class]: classes.content,
+        key: "button",
+        style: attrs.style || {}
+      },
+      [
+        !disabled && attrs.shadowComponent // "protected" option, used by raised-button
+          ? attrs.shadowComponent
+          : null,
+        // Ripple
+        disabled || noink
+          ? null
+          : Ripple && h(Ripple, {
+            ...attrs.ripple,
+            key: "ripple",
+            // target: () => vnode.dom
+          }),
+        // hover
+        noWash ? null : h("div", { key: "wash", className: classes.wash }),
+        // focus
+        disabled ? null : h("div", { key: "focus", className: classes.focus }),
+        label
+      ]
+    )
     : null;
 };

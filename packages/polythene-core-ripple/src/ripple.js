@@ -25,11 +25,11 @@ export const createProps = (vnode, { keys: k }) => {
 };
 
 export const onMount = vnode => {
-  const state = vnode.state;
-  const attrs = vnode.attrs;
   if (!vnode.dom) {
     return;
   }
+  const state = vnode.state;
+  const attrs = vnode.attrs;
   const rippleEl = vnode.dom;
   const wavesEl = vnode.dom.querySelector(`.${classes.waves}`);
   
@@ -51,12 +51,10 @@ export const onMount = vnode => {
 export const onUnmount = ({ state }) =>
   state.removeEventListeners();
 
-export const createContent = (vnode, { renderer: h }) => {
-  const attrs = vnode.attrs;
-  if (attrs.disabled) {
-    return null;
-  }
-  return h("div", { className: classes.mask },
-    h("div", { className: classes.waves })
-  );
-};
+export const createContent = (vnode, { renderer: h }) =>
+  vnode.attrs.disabled
+    ? null
+    : h("div", { className: classes.mask },
+        h("div", { className: classes.waves })
+      );
+

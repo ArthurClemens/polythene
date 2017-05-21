@@ -1,6 +1,6 @@
-# List Tile
+[Back to Polythene List Tile main page](ListTile.md)
 
-Displays a list element as part of a [list](../polythene-list).
+# List Tile component for Mithril
 
 
 
@@ -178,6 +178,4 @@ If the component - or a component's parent - has option `tone` set to "dark", th
 
 * Use `tone: "dark"` to render light on dark
 * Use `tone: "light"` to locally render normally when dark tone is set
-
-
 

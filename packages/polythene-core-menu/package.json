@@ -1,0 +1,24 @@
+{
+  "name": "polythene-core-menu",
+  "version": "1.0.0-rc.1",
+  "description": "",
+  "main": "dist/polythene-core-menu.js",
+  "module": "dist/polythene-core-menu.mjs",
+  "scripts": {
+    "clean": "rm -rf dist && mkdir dist",
+    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
+    "build": "npm run rollup"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "dependencies": {
+    "polythene-core": "1.0.0-rc.1",
+    "polythene-core-css": "1.0.0-rc.1",
+    "polythene-core-list-tile": "1.0.0-rc.1",
+    "polythene-theme": "1.0.0-rc.1"
+  },
+  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
+  "license": "MIT"
+}

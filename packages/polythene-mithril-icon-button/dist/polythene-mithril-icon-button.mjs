@@ -1,4 +1,4 @@
-import { statelessComponent } from 'polythene-mithril-base';
+import { viewComponent } from 'polythene-mithril-base';
 import { CoreIconButton } from 'polythene-core-icon-button';
 import { Icon } from 'polythene-mithril-icon';
 import { Button } from 'polythene-mithril-button';
@@ -12,7 +12,7 @@ var createContent = function createContent(vnode, args) {
   return CoreIconButton.createContent(vnode, _extends(args, { Icon: Icon }));
 };
 
-var IconButton = statelessComponent(_extends({}, CoreIconButton, {
+var IconButton = viewComponent(_extends({}, CoreIconButton, {
   createProps: createProps,
   createContent: createContent,
   element: Button

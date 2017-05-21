@@ -1,6 +1,7 @@
 # List Tile
 
-Displays a list element as part of a [list](../polythene-list).
+Displays a list element as part of a [List](List.md).
+
 
 
 ## Usage
@@ -64,7 +65,6 @@ Displays a list element as part of a [list](../polythene-list).
 | **secondary.element** | optional | String | See "Layout of secondary content" below | HTML element for secondary content |
 | **secondary.icon** | optional | Object |  | [Icon](Icon.md) options object for icon in secondary content; will be placed above secondary.content |
 | **secondary.url** | optional | Object with `href`, optionally `oncreate` (for Mithril) or `onClick` (for React) | | URL for secondary content; Mithril: for in-app route linking set `oncreate : m.route.link`; React: for in-app route linking use `onClick` and a router such as `react-router-dom` |
-
 | **secondary.content** | optional | String, hyperscript or component | | Secondary content |
 
 

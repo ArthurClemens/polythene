@@ -1,4 +1,4 @@
-import { statelessComponent } from 'polythene-react-base';
+import { viewComponent } from 'polythene-react-base';
 import { CoreIcon } from 'polythene-core-icon';
 import { SVG } from 'polythene-react-svg';
 
@@ -11,7 +11,7 @@ var createContent = function createContent(vnode, args) {
   return CoreIcon.createContent(vnode, _extends(args, { SVG: SVG }));
 };
 
-var Icon = statelessComponent(_extends({}, CoreIcon, {
+var Icon = viewComponent(_extends({}, CoreIcon, {
   createProps: createProps,
   createContent: createContent
 }));

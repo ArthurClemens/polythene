@@ -19,6 +19,6 @@ var FAB = statefulComponent(_extends({}, CoreFAB, {
 }));
 
 FAB.theme = CoreFAB.theme;
-FAB.displayName = "Fab";
+FAB.displayName = "FAB";
 
 export { FAB };

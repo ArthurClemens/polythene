@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Route,
   withRouter,
 } from "react-router-dom";
@@ -77,3 +77,4 @@ const mountNode = document.querySelector("#app");
 ReactDOM.render((
   h(App)
 ), mountNode);
+

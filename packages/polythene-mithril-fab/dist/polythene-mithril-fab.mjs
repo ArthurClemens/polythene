@@ -1,4 +1,4 @@
-import { statelessComponent } from 'polythene-mithril-base';
+import { viewComponent } from 'polythene-mithril-base';
 import { CoreFAB } from 'polythene-core-fab';
 import { Icon } from 'polythene-mithril-icon';
 import { RaisedButton } from 'polythene-mithril-raised-button';
@@ -12,7 +12,7 @@ var createContent = function createContent(vnode, args) {
   return CoreFAB.createContent(vnode, _extends(args, { Icon: Icon }));
 };
 
-var FAB = statelessComponent(_extends({}, CoreFAB, {
+var FAB = viewComponent(_extends({}, CoreFAB, {
   createProps: createProps,
   createContent: createContent,
   element: RaisedButton

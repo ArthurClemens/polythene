@@ -38,14 +38,16 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var requiresKeys = true;
+
 var statefulComponent = function statefulComponent(_ref) {
   var createContent = _ref.createContent,
       createProps = _ref.createProps,
+      element = _ref.element,
       _ref$getInitialState = _ref.getInitialState,
       getInitialState = _ref$getInitialState === undefined ? function () {
     return {};
   } : _ref$getInitialState,
-      element = _ref.element,
       _ref$onMount = _ref.onMount,
       onMount = _ref$onMount === undefined ? function () {} : _ref$onMount,
       _ref$onUnmount = _ref.onUnmount,
@@ -107,11 +109,11 @@ var statefulComponent = function statefulComponent(_ref) {
         var _this2 = this;
 
         var vnode = this.createVirtualNode();
-        return renderer(vnode.attrs.element || element, _extends({}, createProps(vnode, { renderer: renderer, keys: keys }), { ref: function ref(reactComponent) {
+        return renderer(vnode.attrs.element || element, _extends({}, createProps(vnode, { renderer: renderer, requiresKeys: requiresKeys, keys: keys }), { ref: function ref(reactComponent) {
             if (!_this2.dom) {
               _this2.dom = ReactDOM.findDOMNode(reactComponent);
             }
-          } }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, keys: keys }), vnode.attrs.after]);
+          } }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, requiresKeys: requiresKeys, keys: keys }), vnode.attrs.after]);
       }
     }]);
 
@@ -129,7 +131,9 @@ function _possibleConstructorReturn$1(self, call) { if (!self) { throw new Refer
 
 function _inherits$1(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var statelessComponent = function statelessComponent(_ref) {
+var requiresKeys$1 = true;
+
+var viewComponent = function viewComponent(_ref) {
   var createContent = _ref.createContent,
       createProps = _ref.createProps,
       element = _ref.element;
@@ -160,11 +164,11 @@ var statelessComponent = function statelessComponent(_ref) {
         var _this2 = this;
 
         var vnode = this.createVirtualNode();
-        return renderer(vnode.attrs.element || element, _extends$1({}, createProps(vnode, { renderer: renderer, keys: keys }), { ref: function ref(reactComponent) {
+        return renderer(vnode.attrs.element || element, _extends$1({}, createProps(vnode, { renderer: renderer, requiresKeys: requiresKeys$1, keys: keys }), { ref: function ref(reactComponent) {
             if (!_this2.dom) {
               _this2.dom = ReactDOM.findDOMNode(reactComponent);
             }
-          } }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, keys: keys }), vnode.attrs.after]);
+          } }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, requiresKeys: requiresKeys$1, keys: keys }), vnode.attrs.after]);
       }
     }]);
 
@@ -172,4 +176,4 @@ var statelessComponent = function statelessComponent(_ref) {
   }(Component);
 };
 
-export { keys, renderer, statefulComponent, statelessComponent };
+export { keys, renderer, statefulComponent, viewComponent };
