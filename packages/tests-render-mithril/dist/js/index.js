@@ -1997,7 +1997,6 @@ var viewComponent = function viewComponent(_ref) {
 
 
   var view = function view(vnode) {
-    console.log("viewComponent view");
     return renderer(vnode.attrs.element || element, createProps(vnode, { renderer: renderer, requiresKeys: requiresKeys$1, keys: keys }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, requiresKeys: requiresKeys$1, keys: keys }), vnode.attrs.after]);
   };
 
@@ -11408,7 +11407,8 @@ var MIN_SIZE = 1.5;
 var getInitialState = function getInitialState(attrs) {
   return {
     dom: undefined,
-    visible: attrs.permanent || false
+    visible: attrs.permanent || false,
+    transitioning: false
   };
 };
 
@@ -11417,6 +11417,12 @@ var getUpdates = function getUpdates(update) {
     setVisible: function setVisible(value) {
       return update(function (model) {
         model.visible = value;
+        return model;
+      });
+    },
+    setTransitioning: function setTransitioning(value) {
+      return update(function (model) {
+        model.transitioning = value;
         return model;
       });
     },
@@ -11496,10 +11502,12 @@ var positionMenu = function positionMenu(state, attrs) {
 };
 
 var showMenu = function showMenu(state, attrs) {
+  attrs.updates.setTransitioning(true);
   return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_polythene_core__["a" /* show */])(_extends({}, attrs, {
     el: state.dom,
     showClass: classes.visible
   })).then(function () {
+    attrs.updates.setTransitioning(false);
     attrs.updates.setVisible(true);
     if (attrs.didShow) {
       attrs.didShow(attrs.id);
@@ -11508,10 +11516,12 @@ var showMenu = function showMenu(state, attrs) {
 };
 
 var hideMenu = function hideMenu(state, attrs) {
+  attrs.updates.setTransitioning(true);
   return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_polythene_core__["b" /* hide */])(_extends({}, attrs, {
     el: state.dom,
     showClass: classes.visible
   })).then(function () {
+    attrs.updates.setTransitioning(false);
     attrs.updates.setVisible(false);
     if (attrs.didHide) {
       attrs.didHide(attrs.id);
@@ -19967,11 +19977,12 @@ var Menu = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_b
   getInitialState: __WEBPACK_IMPORTED_MODULE_1_polythene_core_menu__["a" /* CoreMenu */].getInitialState,
   getUpdates: __WEBPACK_IMPORTED_MODULE_1_polythene_core_menu__["a" /* CoreMenu */].getUpdates,
   renderView: function renderView(vnode) {
-    if (!vnode.state.model.visible && vnode.attrs.show) {
+    var model = vnode.state.model;
+    if (!model.visible && !model.transitioning && vnode.attrs.show) {
       vnode.state.updates.setVisible(true);
     }
-    return vnode.state.model.visible ? __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["a" /* renderer */])(MenuInstance, _extends({}, vnode.attrs, {
-      model: vnode.state.model,
+    return model.visible ? __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["a" /* renderer */])(MenuInstance, _extends({}, vnode.attrs, {
+      model: model,
       updates: vnode.state.updates
     })) : __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["a" /* renderer */])("span", { className: __WEBPACK_IMPORTED_MODULE_1_polythene_core_menu__["a" /* CoreMenu */].classes.placeholder });
   }

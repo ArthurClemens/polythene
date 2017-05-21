@@ -91,7 +91,6 @@ var viewComponent = function viewComponent(_ref) {
 
 
   var view = function view(vnode) {
-    console.log("viewComponent view");
     return renderer(vnode.attrs.element || element, createProps(vnode, { renderer: renderer, requiresKeys: requiresKeys$1, keys: keys }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, requiresKeys: requiresKeys$1, keys: keys }), vnode.attrs.after]);
   };
 

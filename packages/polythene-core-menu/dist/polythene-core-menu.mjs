@@ -134,7 +134,8 @@ var MIN_SIZE = 1.5;
 var getInitialState = function getInitialState(attrs) {
   return {
     dom: undefined,
-    visible: attrs.permanent || false
+    visible: attrs.permanent || false,
+    transitioning: false
   };
 };
 
@@ -143,6 +144,12 @@ var getUpdates = function getUpdates(update) {
     setVisible: function setVisible(value) {
       return update(function (model) {
         model.visible = value;
+        return model;
+      });
+    },
+    setTransitioning: function setTransitioning(value) {
+      return update(function (model) {
+        model.transitioning = value;
         return model;
       });
     },
@@ -222,10 +229,12 @@ var positionMenu = function positionMenu(state, attrs) {
 };
 
 var showMenu = function showMenu(state, attrs) {
+  attrs.updates.setTransitioning(true);
   return show(_extends({}, attrs, {
     el: state.dom,
     showClass: classes.visible
   })).then(function () {
+    attrs.updates.setTransitioning(false);
     attrs.updates.setVisible(true);
     if (attrs.didShow) {
       attrs.didShow(attrs.id);
@@ -234,10 +243,12 @@ var showMenu = function showMenu(state, attrs) {
 };
 
 var hideMenu = function hideMenu(state, attrs) {
+  attrs.updates.setTransitioning(true);
   return hide(_extends({}, attrs, {
     el: state.dom,
     showClass: classes.visible
   })).then(function () {
+    attrs.updates.setTransitioning(false);
     attrs.updates.setVisible(false);
     if (attrs.didHide) {
       attrs.didHide(attrs.id);

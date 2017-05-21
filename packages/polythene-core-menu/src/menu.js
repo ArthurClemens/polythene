@@ -13,12 +13,17 @@ const MIN_SIZE         = 1.5;
 
 export const getInitialState = attrs => ({
   dom: undefined,
-  visible: attrs.permanent || false
+  visible: attrs.permanent || false,
+  transitioning: false,
 });
 
 export const getUpdates = update => ({
   setVisible: value => update(model => {
     model.visible = value;
+    return model;
+  }),
+  setTransitioning: value => update(model => {
+    model.transitioning = value;
     return model;
   }),
   setDom: dom => update(model => {
@@ -78,12 +83,14 @@ const positionMenu = (state, attrs) => {
 };
 
 const showMenu = (state, attrs) => {
+  attrs.updates.setTransitioning(true);
   return show(Object.assign({},
     attrs, {
       el: state.dom,
       showClass: classes.visible
     }
   )).then(() => {
+    attrs.updates.setTransitioning(false);
     attrs.updates.setVisible(true);
     if (attrs.didShow) {
       attrs.didShow(attrs.id);
@@ -92,12 +99,14 @@ const showMenu = (state, attrs) => {
 };
 
 const hideMenu = (state, attrs) => {
+  attrs.updates.setTransitioning(true);
   return hide(Object.assign({},
     attrs, {
       el: state.dom,
       showClass: classes.visible
     }
   )).then(() => {
+    attrs.updates.setTransitioning(false);
     attrs.updates.setVisible(false);
     if (attrs.didHide) {
       attrs.didHide(attrs.id);

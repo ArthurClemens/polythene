@@ -20,11 +20,12 @@ var Menu = samStateComponent(_extends({}, {
   getInitialState: CoreMenu.getInitialState,
   getUpdates: CoreMenu.getUpdates,
   renderView: function renderView(vnode) {
-    if (!vnode.state.model.visible && vnode.attrs.show) {
+    var model = vnode.state.model;
+    if (!model.visible && !model.transitioning && vnode.attrs.show) {
       vnode.state.updates.setVisible(true);
     }
-    return vnode.state.model.visible ? renderer(MenuInstance, _extends({}, vnode.attrs, {
-      model: vnode.state.model,
+    return model.visible ? renderer(MenuInstance, _extends({}, vnode.attrs, {
+      model: model,
       updates: vnode.state.updates
     })) : renderer("span", { className: CoreMenu.classes.placeholder });
   }

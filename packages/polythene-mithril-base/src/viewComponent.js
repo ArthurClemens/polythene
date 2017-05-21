@@ -13,7 +13,6 @@ export const viewComponent = ({
 }) => {
 
   const view = vnode => {
-    console.log("viewComponent view");
     return renderer(
       vnode.attrs.element || element,
       createProps(vnode, { renderer, requiresKeys, keys }),

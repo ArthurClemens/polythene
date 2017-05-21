@@ -20,15 +20,16 @@ export const Menu = samStateComponent(Object.assign(
     getInitialState: component.getInitialState,
     getUpdates: component.getUpdates,
     renderView: vnode => {
-      if (!vnode.state.model.visible && vnode.attrs.show) {
+      const model = vnode.state.model;
+      if (!model.visible && !model.transitioning && vnode.attrs.show) {
         vnode.state.updates.setVisible(true);
       }
-      return vnode.state.model.visible
+      return model.visible
         ? h(MenuInstance, Object.assign(
           {},
           vnode.attrs,
           {
-            model: vnode.state.model,
+            model,
             updates: vnode.state.updates
           }
         ))
