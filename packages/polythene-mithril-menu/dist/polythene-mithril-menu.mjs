@@ -1,4 +1,4 @@
-import { renderer, samStateComponent, viewComponent } from 'polythene-mithril-base';
+import { Conditional, renderer, statefulComponent } from 'polythene-mithril-base';
 import { CoreMenu } from 'polythene-core-menu';
 import { Shadow } from 'polythene-mithril-shadow';
 
@@ -11,25 +11,19 @@ var createContent = function createContent(vnode, args) {
   return CoreMenu.createContent(vnode, _extends(args, { Shadow: Shadow }));
 };
 
-var MenuInstance = viewComponent(_extends({}, CoreMenu, {
+var MenuInstance = statefulComponent(_extends({}, CoreMenu, {
   createProps: createProps,
   createContent: createContent
 }));
 
-var Menu = samStateComponent(_extends({}, {
-  getInitialState: CoreMenu.getInitialState,
-  getUpdates: CoreMenu.getUpdates,
-  renderView: function renderView(vnode) {
-    var model = vnode.state.model;
-    if (!model.visible && !model.transitioning && vnode.attrs.show) {
-      vnode.state.updates.setVisible(true);
-    }
-    return model.visible ? renderer(MenuInstance, _extends({}, vnode.attrs, {
-      model: model,
-      updates: vnode.state.updates
-    })) : renderer("span", { className: CoreMenu.classes.placeholder });
+var Menu = {
+  view: function view(vnode) {
+    return renderer(Conditional, _extends({}, {
+      placeholderClassName: CoreMenu.classes.placeholder,
+      instance: MenuInstance
+    }, vnode.attrs));
   }
-}));
+};
 
 Menu.theme = CoreMenu.theme;
 

@@ -14,7 +14,6 @@ export const simpleMenuContent = h(List, [
 export default {
   oninit: vnode => {
     vnode.state.isOpen = false;
-    vnode.state.id = vnode.attrs.instance;
   },
   view: vnode => 
     h("div", {
@@ -23,7 +22,7 @@ export default {
       h(RaisedButton,
         {
           label: "Open menu",
-          id: vnode.state.id,
+          id: "SimpleMenu",
           events: {
             onclick: () => vnode.state.isOpen = true
           }
@@ -31,7 +30,7 @@ export default {
       ),
       h(Menu, {
         offset: -4,
-        target: `#${vnode.state.id}`,
+        target: "#SimpleMenu",
         show: vnode.state.isOpen,
         didHide: () => vnode.state.isOpen = false,
         content: simpleMenuContent

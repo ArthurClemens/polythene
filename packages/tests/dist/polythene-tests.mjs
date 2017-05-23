@@ -1748,14 +1748,13 @@ var simpleMenuContent = renderer(List, [renderer(ListTile, {
 var simpleMenuComponent = {
   oninit: function oninit(vnode) {
     vnode.state.isOpen = false;
-    vnode.state.id = vnode.attrs.instance;
   },
   view: function view(vnode) {
     return renderer("div", {
       style: { position: "relative" }
     }, [renderer(RaisedButton, {
       label: "Open menu",
-      id: vnode.state.id,
+      id: "SimpleMenu",
       events: {
         onclick: function onclick() {
           return vnode.state.isOpen = true;
@@ -1763,7 +1762,7 @@ var simpleMenuComponent = {
       }
     }), renderer(Menu, {
       offset: -4,
-      target: "#" + vnode.state.id,
+      target: "#SimpleMenu",
       show: vnode.state.isOpen,
       didHide: function didHide() {
         return vnode.state.isOpen = false;
@@ -1788,16 +1787,16 @@ var mithrilTests$8 = function mithrilTests(_ref) {
     exclude: true,
     component: {
       view: function view() {
-        return h(simpleMenuComponent, { instance: "one" });
+        return h(simpleMenuComponent);
       }
     }
   }, {
-    name: "Simple menu 2",
-    interactive: true,
-    exclude: true,
+    name: "Option: size",
     component: {
       view: function view() {
-        return h(simpleMenuComponent, { instance: "two" });
+        return h("div", [1.5, 2, 3, 4, 5, 6, 7, "auto"].map(function (size) {
+          return sizesMenu({ size: size, Menu: Menu$$1, List: List$$1, ListTile: ListTile$$1, h: h });
+        }));
       }
     }
   }];
@@ -10042,6 +10041,14 @@ var reactTests$7 = function reactTests(_ref) {
 
 var testsReact$6 = [].concat(genericTests$6({ Icon: Icon$1, ListTile: ListTile$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests$7({ Icon: Icon$1, ListTile: ListTile$1, renderer: renderer$1, keys: keys$1 }));
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck$10(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn$10(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits$10(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 var simpleMenuContent$1 = renderer$1(List$1, null, [renderer$1(ListTile$1, {
   title: "Yes",
   ink: true
@@ -10050,29 +10057,44 @@ var simpleMenuContent$1 = renderer$1(List$1, null, [renderer$1(ListTile$1, {
   ink: true
 })]);
 
-var SimpleMenuComponent = (function () {
-  var isOpen = false;
-  var id = "id-" + Math.floor(Math.random() * 1000);
-  return renderer$1("div", {
-    style: { position: "relative" }
-  }, [renderer$1(RaisedButton$1, {
-    label: "Open menu",
-    id: id,
-    events: {
-      onClick: function onClick() {
-        return isOpen = true;
-      }
+var SimpleMenu = function (_Component) {
+  _inherits$10(SimpleMenu, _Component);
+
+  function SimpleMenu(props) {
+    _classCallCheck$10(this, SimpleMenu);
+
+    var _this = _possibleConstructorReturn$10(this, (SimpleMenu.__proto__ || Object.getPrototypeOf(SimpleMenu)).call(this, props));
+
+    _this.state = {
+      show: false
+    };
+    return _this;
+  }
+
+  _createClass(SimpleMenu, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return renderer$1("div", {
+        style: { position: "relative" }
+      }, [renderer$1(RaisedButton$1, {
+        label: "Open menu",
+        id: "SimpleMenu",
+        events: { onClick: function onClick() {
+            return _this2.setState({ show: true });
+          } }
+      }), renderer$1(Menu$1, {
+        offset: -4,
+        target: "#SimpleMenu",
+        show: this.state.show,
+        content: simpleMenuContent$1
+      })]);
     }
-  }), renderer$1(Menu$1, {
-    offset: -4,
-    target: "#" + id,
-    show: isOpen,
-    didHide: function didHide() {
-      return isOpen = false;
-    },
-    content: simpleMenuContent$1
-  })]);
-});
+  }]);
+
+  return SimpleMenu;
+}(react_2);
 
 var reactTests$8 = function reactTests(_ref) {
   var Menu$$1 = _ref.Menu,
@@ -10088,7 +10110,7 @@ var reactTests$8 = function reactTests(_ref) {
     interactive: true,
     exclude: true,
     component: function component() {
-      return h(SimpleMenuComponent);
+      return h(SimpleMenu);
     }
   }, {
     name: "Option: size",
@@ -10297,13 +10319,13 @@ var reactTests$10 = function reactTests(_ref) {
 };
 var testsReact$9 = [].concat(genericTests$9({ Ripple: Ripple$1, renderer: renderer$1 })).concat(reactTests$10({ Ripple: Ripple$1, renderer: renderer$1 }));
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass$1 = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-function _classCallCheck$10(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$11(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _possibleConstructorReturn$10(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+function _possibleConstructorReturn$11(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits$10(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits$11(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var reactTests$11 = function reactTests(_ref) {
   var Shadow$$1 = _ref.Shadow,
@@ -10312,12 +10334,12 @@ var reactTests$11 = function reactTests(_ref) {
   // eslint-disable-line no-unused-vars
 
   var InteractiveTest = function (_Component) {
-    _inherits$10(InteractiveTest, _Component);
+    _inherits$11(InteractiveTest, _Component);
 
     function InteractiveTest() {
-      _classCallCheck$10(this, InteractiveTest);
+      _classCallCheck$11(this, InteractiveTest);
 
-      var _this = _possibleConstructorReturn$10(this, (InteractiveTest.__proto__ || Object.getPrototypeOf(InteractiveTest)).apply(this, arguments));
+      var _this = _possibleConstructorReturn$11(this, (InteractiveTest.__proto__ || Object.getPrototypeOf(InteractiveTest)).apply(this, arguments));
 
       _this.state = {
         z: 1
@@ -10325,7 +10347,7 @@ var reactTests$11 = function reactTests(_ref) {
       return _this;
     }
 
-    _createClass(InteractiveTest, [{
+    _createClass$1(InteractiveTest, [{
       key: "render",
       value: function render() {
         var _this2 = this;

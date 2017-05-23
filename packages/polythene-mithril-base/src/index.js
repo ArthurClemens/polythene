@@ -2,4 +2,4 @@ export { keys } from "./keys";
 export { renderer } from "./renderer";
 export { statefulComponent } from "./statefulComponent";
 export { viewComponent } from "./viewComponent";
-export { samStateComponent } from "./samStateComponent";
+export { Conditional } from "./Conditional";

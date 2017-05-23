@@ -14,23 +14,19 @@ const mithrilTests = ({ Menu, List, ListTile, renderer: h }) => {
       interactive: true,
       exclude: true,
       component: {
-        view: () => h(simpleMenuComponent, { instance: "one" })
+        view: () => h(simpleMenuComponent)
       }
     },
     {
-      name: "Simple menu 2",
-      interactive: true,
-      exclude: true,
+      name: "Option: size",
       component: {
-        view: () => h(simpleMenuComponent, { instance: "two" })
+        view: () => h("div",
+          [1.5, 2, 3, 4, 5, 6, 7, "auto"].map(size =>
+            sizesMenu({ size, Menu, List, ListTile, h })
+          )
+        )
       }
     },
-    // {
-    //   name: "Option: size",
-    //   component: {
-    //     view: () => [1.5, 2, 3, 4, 5, 6, 7, "auto"].map(size => sizesMenu({ size, Menu, List, ListTile, h}))
-    //   }
-    // },
   ];
     
 };

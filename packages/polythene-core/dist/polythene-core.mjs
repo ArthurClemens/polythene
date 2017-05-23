@@ -1,5 +1,4 @@
 import m from 'mithril';
-import flyd from 'flyd';
 
 // Theme variables
 // How to change these variables for your app - see the README.
@@ -628,23 +627,4 @@ var prop = function prop(x) {
   };
 };
 
-/*
-SAM pattern for state management.
-See meiosis.org for examples
-*/
-
-var getUpdate = flyd.stream;
-
-var applyUpdate = function applyUpdate(afterUpdate) {
-  return function (model, modelUpdate) {
-    var newModel = modelUpdate(model);
-    afterUpdate();
-    return newModel;
-  };
-};
-
-var getModels = function getModels(initialModel, update, afterUpdate) {
-  return flyd.scan(applyUpdate(afterUpdate), initialModel, update);
-};
-
-export { variables as defaultVariables, isTouch, touchStartEvent, touchEndEvent, moveEvent, endEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, multiple, show, hide, filterSupportedAttributes, prop, getUpdate, getModels };
+export { variables as defaultVariables, isTouch, touchStartEvent, touchEndEvent, moveEvent, endEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, multiple, show, hide, filterSupportedAttributes, prop };

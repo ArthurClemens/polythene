@@ -1,5 +1,4 @@
 import m from 'mithril';
-import { getModels, getUpdate } from 'polythene-core';
 
 var keys = {
   class: "class",
@@ -101,42 +100,34 @@ var viewComponent = function viewComponent(_ref) {
   };
 };
 
-var requiresKeys$2 = false;
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var samStateComponent = function samStateComponent(_ref) {
-  var createContent = _ref.createContent,
-      createProps = _ref.createProps,
-      getInitialState = _ref.getInitialState,
-      getUpdates = _ref.getUpdates,
-      element = _ref.element,
-      renderView = _ref.renderView,
-      onInit = _ref.onInit,
-      onMount = _ref.onMount,
-      onUnmount = _ref.onUnmount;
-
-
-  var oninit = function oninit(vnode) {
-    var update = getUpdate();
-    var initialModel = getInitialState(vnode.attrs);
-    vnode.state.updates = getUpdates(update);
-    var models = getModels(initialModel, update, function () {
-      return renderer.redraw();
-    });
-    models.map(function (model) {
-      return vnode.state.model = model;
-    });
-  };
-
-  var view = function view(vnode) {
-    return renderer(vnode.attrs.element || element, createProps(vnode, { renderer: renderer, requiresKeys: requiresKeys$2, keys: keys }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, requiresKeys: requiresKeys$2, keys: keys }), vnode.attrs.after]);
-  };
-
-  return {
-    view: renderView || view,
-    oninit: onInit || oninit,
-    oncreate: onMount,
-    onremove: onUnmount
-  };
+var Conditional = {
+  oninit: function oninit(vnode) {
+    vnode.state = {
+      visible: vnode.attrs.permanent || vnode.attrs.show || false,
+      transitioning: false
+    };
+  },
+  view: function view(vnode) {
+    var attrs = vnode.attrs;
+    var state = vnode.state;
+    if (!attrs.permanent && !state.transitioning) {
+      if (attrs.show) {
+        state.visible = true;
+      } else if (attrs.hide) {
+        state.visible = false;
+      }
+    }
+    return state.visible ? m(attrs.instance, _extends$1({}, attrs, {
+      setVisible: function setVisible(value) {
+        return state.visible = value, m.redraw();
+      },
+      setTransitioning: function setTransitioning(value) {
+        return state.transitioning = value, m.redraw();
+      }
+    })) : m("span", { className: attrs.placeholderClassName });
+  }
 };
 
-export { keys, renderer, statefulComponent, viewComponent, samStateComponent };
+export { keys, renderer, statefulComponent, viewComponent, Conditional };

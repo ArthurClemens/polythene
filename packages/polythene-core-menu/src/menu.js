@@ -11,31 +11,7 @@ const OFFSET_V         = -8;
 const DEFAULT_OFFSET_H = 16;
 const MIN_SIZE         = 1.5;
 
-export const getInitialState = attrs => ({
-  dom: undefined,
-  visible: attrs.permanent || false,
-  transitioning: false,
-});
-
-export const getUpdates = update => ({
-  setVisible: value => update(model => {
-    model.visible = value;
-    return model;
-  }),
-  setTransitioning: value => update(model => {
-    model.transitioning = value;
-    return model;
-  }),
-  setDom: dom => update(model => {
-    model.dom = dom;
-    return model;
-  })
-});
-
 const positionMenu = (state, attrs) => {
-  if (!attrs.target) {
-    throw("Menu: no target");
-  }
   const targetEl = document.querySelector(attrs.target);
   if (!targetEl) {
     return;
@@ -83,15 +59,15 @@ const positionMenu = (state, attrs) => {
 };
 
 const showMenu = (state, attrs) => {
-  attrs.updates.setTransitioning(true);
+  attrs.setTransitioning(true);
   return show(Object.assign({},
     attrs, {
       el: state.dom,
       showClass: classes.visible
     }
   )).then(() => {
-    attrs.updates.setTransitioning(false);
-    attrs.updates.setVisible(true);
+    attrs.setTransitioning(false);
+    attrs.setVisible(true);
     if (attrs.didShow) {
       attrs.didShow(attrs.id);
     }
@@ -99,15 +75,15 @@ const showMenu = (state, attrs) => {
 };
 
 const hideMenu = (state, attrs) => {
-  attrs.updates.setTransitioning(true);
+  attrs.setTransitioning(true);
   return hide(Object.assign({},
     attrs, {
       el: state.dom,
       showClass: classes.visible
     }
   )).then(() => {
-    attrs.updates.setTransitioning(false);
-    attrs.updates.setVisible(false);
+    attrs.setTransitioning(false);
+    attrs.setVisible(false);
     if (attrs.didHide) {
       attrs.didHide(attrs.id);
     }
@@ -145,7 +121,6 @@ const handleSubscriptions = (vnode, which) => {
 
   const update = () => {
     positionMenu(state, attrs);
-    // m.redraw();
   };
 
   const handleDismissTap = e => {

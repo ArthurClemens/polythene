@@ -176,4 +176,64 @@ var viewComponent = function viewComponent(_ref) {
   }(Component);
 };
 
-export { keys, renderer, statefulComponent, viewComponent };
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass$2 = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck$2(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn$2(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits$2(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Conditional = function (_Component) {
+  _inherits$2(Conditional, _Component);
+
+  function Conditional(props) {
+    _classCallCheck$2(this, Conditional);
+
+    var _this = _possibleConstructorReturn$2(this, (Conditional.__proto__ || Object.getPrototypeOf(Conditional)).call(this, props));
+
+    _this.state = {
+      visible: props.permanent || props.show || false,
+      transitioning: false
+    };
+    return _this;
+  }
+
+  _createClass$2(Conditional, [{
+    key: "componentWillReceiveProps",
+    value: function componentWillReceiveProps(nextProps) {
+      if (nextProps.permanent || this.state.transitioning) {
+        return;
+      }
+      if (!this.state.visible && nextProps.show) {
+        this.setState({
+          visible: true
+        });
+      } else if (this.state.visible && nextProps.hide) {
+        this.setState({
+          visible: false
+        });
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return this.state.visible ? renderer(this.props.instance, _extends$2({}, this.props, {
+        setVisible: function setVisible(value) {
+          return _this2.setState({ visible: value });
+        },
+        setTransitioning: function setTransitioning(value) {
+          return _this2.setState({ transitioning: value });
+        }
+      })) : renderer("span", { className: this.props.placeholderClassName });
+    }
+  }]);
+
+  return Conditional;
+}(Component);
+
+export { keys, renderer, statefulComponent, viewComponent, Conditional };

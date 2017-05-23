@@ -131,41 +131,7 @@ var OFFSET_V = -8;
 var DEFAULT_OFFSET_H = 16;
 var MIN_SIZE = 1.5;
 
-var getInitialState = function getInitialState(attrs) {
-  return {
-    dom: undefined,
-    visible: attrs.permanent || false,
-    transitioning: false
-  };
-};
-
-var getUpdates = function getUpdates(update) {
-  return {
-    setVisible: function setVisible(value) {
-      return update(function (model) {
-        model.visible = value;
-        return model;
-      });
-    },
-    setTransitioning: function setTransitioning(value) {
-      return update(function (model) {
-        model.transitioning = value;
-        return model;
-      });
-    },
-    setDom: function setDom(dom) {
-      return update(function (model) {
-        model.dom = dom;
-        return model;
-      });
-    }
-  };
-};
-
 var positionMenu = function positionMenu(state, attrs) {
-  if (!attrs.target) {
-    throw "Menu: no target";
-  }
   var targetEl = document.querySelector(attrs.target);
   if (!targetEl) {
     return;
@@ -229,13 +195,13 @@ var positionMenu = function positionMenu(state, attrs) {
 };
 
 var showMenu = function showMenu(state, attrs) {
-  attrs.updates.setTransitioning(true);
+  attrs.setTransitioning(true);
   return show(_extends({}, attrs, {
     el: state.dom,
     showClass: classes.visible
   })).then(function () {
-    attrs.updates.setTransitioning(false);
-    attrs.updates.setVisible(true);
+    attrs.setTransitioning(false);
+    attrs.setVisible(true);
     if (attrs.didShow) {
       attrs.didShow(attrs.id);
     }
@@ -243,13 +209,13 @@ var showMenu = function showMenu(state, attrs) {
 };
 
 var hideMenu = function hideMenu(state, attrs) {
-  attrs.updates.setTransitioning(true);
+  attrs.setTransitioning(true);
   return hide(_extends({}, attrs, {
     el: state.dom,
     showClass: classes.visible
   })).then(function () {
-    attrs.updates.setTransitioning(false);
-    attrs.updates.setVisible(false);
+    attrs.setTransitioning(false);
+    attrs.setVisible(false);
     if (attrs.didHide) {
       attrs.didHide(attrs.id);
     }
@@ -279,7 +245,6 @@ var handleSubscriptions = function handleSubscriptions(vnode, which) {
 
   var update = function update() {
     positionMenu(state, attrs);
-    // m.redraw();
   };
 
   var handleDismissTap = function handleDismissTap(e) {
@@ -369,7 +334,6 @@ var createContent = function createContent(vnode, _ref2) {
 var CoreMenu = {
   theme: theme, element: element, classes: classes, vars: vars$1,
   createProps: createProps, createContent: createContent,
-  getInitialState: getInitialState, getUpdates: getUpdates,
   onMount: onMount, onUnMount: onUnMount
 };
 

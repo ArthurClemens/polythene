@@ -1,3 +1,4 @@
+import { Component } from "react";
 import { renderer as h, Menu, RaisedButton, List, ListTile } from "polythene-react";
 
 export const simpleMenuContent =
@@ -12,30 +13,38 @@ export const simpleMenuContent =
     })
   ]);
 
-export default () => {
-  let isOpen = false;
-  let id = "id-" + Math.floor(Math.random() * 1000);
-  return h("div",
-    {
-      style: { position: "relative" }
-    },
-    [
-      h(RaisedButton,
-        {
-          label: "Open menu",
-          id,
-          events: {
-            onClick: () => isOpen = true
+
+class SimpleMenu extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      show: false
+    };
+  }
+
+  render() {
+    return h("div",
+      {
+        style: { position: "relative" }
+      },
+      [
+        h(RaisedButton,
+          {
+            label: "Open menu",
+            id: "SimpleMenu",
+            events: { onClick: () => this.setState({ show: true }) }
           }
-        }
-      ),
-      h(Menu, {
-        offset: -4,
-        target: `#${id}`,
-        show: isOpen,
-        didHide: () => isOpen = false,
-        content: simpleMenuContent
-      })
-    ]
-  );
-};
+        ),
+        h(Menu, {
+          offset: -4,
+          target: "#SimpleMenu",
+          show: this.state.show,
+          content: simpleMenuContent
+        })
+      ]
+    );
+  }
+}
+
+export default SimpleMenu;

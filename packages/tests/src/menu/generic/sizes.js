@@ -1,6 +1,6 @@
 
 
-export default ({size, h, Menu, List, ListTile}) => {
+export default ({ size, h, Menu, List, ListTile }) => {
   const sizeTexts = {
     "1": ["en", "nl", "de"],
     "1.5": ["Yes", "No", "Maybe"],
