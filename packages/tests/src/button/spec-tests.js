@@ -36,7 +36,7 @@ export default ({ Button, renderer: h, keys }) => {
       name: "Option: class",
       component: Button,
       attrs: {
-        class: "class-x"
+        className: "class-x"
       }
     },
     {

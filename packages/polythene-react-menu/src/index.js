@@ -1,4 +1,4 @@
-import { statefulComponent, Conditional, renderer as h } from "polythene-react-base";
+import { statefulComponent, Toggle, renderer as h } from "polythene-react-base";
 import { CoreMenu as component } from "polythene-core-menu";
 import { Shadow } from "polythene-react-shadow";
 
@@ -15,7 +15,7 @@ const MenuInstance = statefulComponent(Object.assign(
 ));
 
 export const Menu = props =>
-  h(Conditional, Object.assign(
+  h(Toggle, Object.assign(
     {},
     {
       placeholderClassName: component.classes.placeholder,

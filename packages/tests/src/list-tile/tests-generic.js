@@ -231,7 +231,7 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
       }
     },
     {
-      name: "Dark tone class + light theme class",
+      name: "Dark tone class + light tone class",
       component: ListTile,
       className: "pe-dark-tone",
       attrs: {

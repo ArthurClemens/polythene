@@ -36,7 +36,7 @@ export default ({ RaisedButton, renderer: h, keys }) => {
       name: "Option: class",
       component: RaisedButton,
       attrs: {
-        class: "class-x"
+        className: "class-x"
       }
     },
     {

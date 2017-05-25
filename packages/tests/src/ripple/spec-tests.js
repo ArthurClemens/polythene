@@ -23,7 +23,7 @@ export default ({ Ripple }) => {
       name: "Option: class",
       component: Ripple,
       attrs: {
-        class: "class-x"
+        className: "class-x"
       }
     },
     {

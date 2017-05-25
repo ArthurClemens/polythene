@@ -102,7 +102,7 @@ var viewComponent = function viewComponent(_ref) {
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var Conditional = {
+var Toggle = {
   oninit: function oninit(vnode) {
     vnode.state = {
       visible: vnode.attrs.permanent || vnode.attrs.show || false,
@@ -119,15 +119,27 @@ var Conditional = {
         state.visible = false;
       }
     }
-    return state.visible ? m(attrs.instance, _extends$1({}, attrs, {
+    var updateState = function updateState() {
+      if (attrs.getState) {
+        attrs.getState({
+          visible: vnode.state.visible,
+          transitioning: vnode.state.transitioning
+        });
+      }
+    };
+    return state.visible ? renderer(attrs.instance, _extends$1({}, attrs, {
       setVisible: function setVisible(value) {
-        return state.visible = value, m.redraw();
+        state.visible = value;
+        updateState();
+        renderer.redraw();
       },
       setTransitioning: function setTransitioning(value) {
-        return state.transitioning = value, m.redraw();
+        state.transitioning = value;
+        updateState();
+        renderer.redraw();
       }
-    })) : m("span", { className: attrs.placeholderClassName });
+    })) : renderer("span", { className: attrs.placeholderClassName });
   }
 };
 
-export { keys, renderer, statefulComponent, viewComponent, Conditional };
+export { keys, renderer, statefulComponent, viewComponent, Toggle };

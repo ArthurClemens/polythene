@@ -23,7 +23,7 @@ export default ({ FAB, keys }) => {
       name: "Option: class",
       component: FAB,
       attrs: {
-        class: "class-x"
+        className: "class-x"
       }
     },
     {

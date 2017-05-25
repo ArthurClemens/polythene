@@ -24,7 +24,7 @@ export default ({ Shadow, renderer: h }) => {
       name: "Option: class",
       component: Shadow,
       attrs: {
-        class: "class-x"
+        className: "class-x"
       }
     },
     {

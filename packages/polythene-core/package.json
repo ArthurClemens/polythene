@@ -14,7 +14,6 @@
     "README.md"
   ],
   "dependencies": {
-    "flyd": "^0.2.4",
     "mithril": "1.1.0"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",

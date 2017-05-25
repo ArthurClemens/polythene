@@ -22,7 +22,7 @@ const reactTests = ({ Toolbar, IconButton, renderer: h }) => {
     },
     {
       name: "Option: shadow",
-      class: "small-result",
+      className: "small-result",
       component: () =>
         h("div",
           { style: { position: "relative" } },

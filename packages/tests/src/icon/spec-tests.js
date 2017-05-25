@@ -23,7 +23,7 @@ export default ({ Icon }) => {
       name: "Option: class",
       component: Icon,
       attrs: {
-        class: "class-x"
+        className: "class-x"
       }
     },
     {

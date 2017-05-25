@@ -2,6 +2,10 @@ const style = (scopes, selector, componentVars, tint) => [{
   [scopes.map(s => s + selector).join(",")]: {
     backgroundColor: componentVars["color_" + tint + "_background"] || "initial",
 
+    ["& + .pe-list"]: {
+      borderTopColor: componentVars["color_" + tint + "_border"]
+    },
+
     ".pe-list--borders": {
       " .pe-list-tile:not(.pe-list__header)": {
         ":not(:last-child)": {
@@ -17,9 +21,6 @@ const style = (scopes, selector, componentVars, tint) => [{
         }
       }
     }
-  },
-  [selector + " + .pe-list"]: {
-    borderTopColor: componentVars["color_" + tint + "_border"]
   }
 }];
 

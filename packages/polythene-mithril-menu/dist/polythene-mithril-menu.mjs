@@ -1,4 +1,4 @@
-import { Conditional, renderer, statefulComponent } from 'polythene-mithril-base';
+import { Toggle, renderer, statefulComponent } from 'polythene-mithril-base';
 import { CoreMenu } from 'polythene-core-menu';
 import { Shadow } from 'polythene-mithril-shadow';
 
@@ -18,7 +18,7 @@ var MenuInstance = statefulComponent(_extends({}, CoreMenu, {
 
 var Menu = {
   view: function view(vnode) {
-    return renderer(Conditional, _extends({}, {
+    return renderer(Toggle, _extends({}, {
       placeholderClassName: CoreMenu.classes.placeholder,
       instance: MenuInstance
     }, vnode.attrs));

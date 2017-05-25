@@ -1,4 +1,4 @@
-import { Conditional, renderer, statefulComponent } from 'polythene-react-base';
+import { Toggle, renderer, statefulComponent } from 'polythene-react-base';
 import { CoreMenu } from 'polythene-core-menu';
 import { Shadow } from 'polythene-react-shadow';
 
@@ -17,7 +17,7 @@ var MenuInstance = statefulComponent(_extends({}, CoreMenu, {
 }));
 
 var Menu = function Menu(props) {
-  return renderer(Conditional, _extends({}, {
+  return renderer(Toggle, _extends({}, {
     placeholderClassName: CoreMenu.classes.placeholder,
     instance: MenuInstance
   }, props));

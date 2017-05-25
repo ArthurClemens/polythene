@@ -23,7 +23,7 @@ const navBar = () =>
 
 const index = {
   oncreate: () => 
-    document.title = "Polythene components",
+    document.title = "Polythene components for Mithril",
   view: () =>
     [
       navBar(),

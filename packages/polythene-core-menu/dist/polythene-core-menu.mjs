@@ -81,6 +81,11 @@ var layout = (function (selector, componentVars) {
       position: "relative",
       opacity: 1,
       zIndex: 0
+    },
+
+    " .pe-menu__content": {
+      width: "100%",
+      borderRadius: componentVars.border_radius + "px"
     }
 
   }, "@media (max-width: " + vars.unit_screen_size_large + "px)", {

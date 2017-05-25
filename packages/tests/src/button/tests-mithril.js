@@ -72,7 +72,7 @@ const mithrilTests = ({ Button, renderer: h }) => {
     },
     {
       name: "Dark tone class + light tone class",
-      class: "pe-dark-tone",
+      className: "pe-dark-tone",
       component: {
         view: () => h(".pe-light-tone", {
           style: { background: "#fff" }
@@ -86,14 +86,14 @@ const mithrilTests = ({ Button, renderer: h }) => {
           }),
           h(Button, {
             label: "Theme",
-            class: "tests-button-themed-button"
+            className: "tests-button-themed-button"
           })
         ])
       }
     },
     {
       name: "Dark tone class + light tone",
-      class: "test-dark-theme",
+      className: "test-dark-theme",
       component: {
         view: () => h("div", {
           style: { background: "#fff" }
@@ -109,7 +109,7 @@ const mithrilTests = ({ Button, renderer: h }) => {
           }),
           h(Button, {
             label: "Theme",
-            class: "tests-button-themed-button",
+            className: "tests-button-themed-button",
             tone: "light"
           })
         ])

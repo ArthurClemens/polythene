@@ -1,4 +1,4 @@
-import { statefulComponent, Conditional, renderer as h } from "polythene-mithril-base";
+import { statefulComponent, Toggle, renderer as h } from "polythene-mithril-base";
 import { CoreMenu as component } from "polythene-core-menu";
 import { Shadow } from "polythene-mithril-shadow";
 
@@ -16,7 +16,7 @@ const MenuInstance = statefulComponent(Object.assign(
 
 export const Menu = {
   view: vnode =>
-    h(Conditional, Object.assign(
+    h(Toggle, Object.assign(
       {},
       {
         placeholderClassName: component.classes.placeholder,

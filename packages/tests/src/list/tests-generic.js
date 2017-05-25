@@ -194,7 +194,7 @@ export default ({ List, ListTile, Icon, renderer: h }) => {
     // Dark tone
 
     {
-      name: "Option: class -- dark theme class",
+      name: "Option: class -- dark tone class",
       interactive: true,
       className: "pe-dark-tone",
       component: List,
@@ -208,22 +208,25 @@ export default ({ List, ListTile, Icon, renderer: h }) => {
             title: "Jennifer Barker",
             key: "Jennifer Barker",
             subtitle: "Starting post doc",
+            hoverable: true,
           }),
           h(ListTile, {
             title: "Ali Connors",
             key: "Ali Connors",
-            subtitle: "Brunch this weekend?"
+            subtitle: "Brunch this weekend?",
+            hoverable: true,
           }),
           h(ListTile, {
             title: "Grace VanDam",
             key: "Grace VanDam",
-            subtitle: "Binge watching..."
+            subtitle: "Binge watching...",
+            hoverable: true,
           })
         ]
       }
     },
     {
-      name: "Themed list (colors and padding) -- dark theme class",
+      name: "Themed list (colors and padding) -- dark tone class",
       component: List,
       className: "pe-dark-tone",
       attrs: {
@@ -252,7 +255,7 @@ export default ({ List, ListTile, Icon, renderer: h }) => {
       ]
     },
     {
-      name: "Dark tone class + light theme class",
+      name: "Dark tone class + light tone class",
       interactive: true,
       className: "pe-dark-tone",
       component: List,

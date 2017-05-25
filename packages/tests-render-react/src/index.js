@@ -24,7 +24,7 @@ const NavBar = () =>
           backgroundColor: "rgba(255,255,255,.93)"
         }
       },
-      h("span", "Polythene components")
+      h("span", "Polythene components for React")
     )
   );
 

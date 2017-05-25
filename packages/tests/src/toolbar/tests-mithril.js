@@ -14,7 +14,7 @@ const mithrilTests = ({ Toolbar, IconButton, Shadow, renderer: h }) => {
     },
     {
       name: "Option: shadow",
-      class: "small-result",
+      className: "small-result",
       component: {
         view: () => h("div", {
           style: {

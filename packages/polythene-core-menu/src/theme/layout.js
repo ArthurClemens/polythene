@@ -47,6 +47,11 @@ export default (selector, componentVars) => [{
         zIndex: 0
       },
 
+      " .pe-menu__content": {
+        width: "100%",
+        borderRadius: componentVars.border_radius + "px"
+      },
+
       ["@media (max-width: " + vars.unit_screen_size_large + "px)"]: {
         "max-width": componentVars.max_size_small_screen * vars.grid_unit_menu + "px"
       }

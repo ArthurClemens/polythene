@@ -77,31 +77,28 @@ var layout = (function (selector, componentVars) {
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var style = function style(scopes, selector, componentVars, tint) {
-  var _ref;
+  var _scopes$map$join;
 
-  return [(_ref = {}, _defineProperty$1(_ref, scopes.map(function (s) {
+  return [_defineProperty$1({}, scopes.map(function (s) {
     return s + selector;
-  }).join(","), {
-    backgroundColor: componentVars["color_" + tint + "_background"] || "initial",
+  }).join(","), (_scopes$map$join = {
+    backgroundColor: componentVars["color_" + tint + "_background"] || "initial"
 
-    ".pe-list--borders": {
-      " .pe-list-tile:not(.pe-list__header)": {
-        ":not(:last-child)": {
-          borderColor: componentVars["color_" + tint + "_border"]
-        }
-      }
-    },
-
-    ".pe-list--indented-borders": {
-      " .pe-list-tile:not(.pe-list__header)": {
-        " .pe-list-tile__content:not(.pe-list-tile__content--front)": {
-          borderColor: componentVars["color_" + tint + "_border"]
-        }
+  }, _defineProperty$1(_scopes$map$join, "& + .pe-list", {
+    borderTopColor: componentVars["color_" + tint + "_border"]
+  }), _defineProperty$1(_scopes$map$join, ".pe-list--borders", {
+    " .pe-list-tile:not(.pe-list__header)": {
+      ":not(:last-child)": {
+        borderColor: componentVars["color_" + tint + "_border"]
       }
     }
-  }), _defineProperty$1(_ref, selector + " + .pe-list", {
-    borderTopColor: componentVars["color_" + tint + "_border"]
-  }), _ref)];
+  }), _defineProperty$1(_scopes$map$join, ".pe-list--indented-borders", {
+    " .pe-list-tile:not(.pe-list__header)": {
+      " .pe-list-tile__content:not(.pe-list-tile__content--front)": {
+        borderColor: componentVars["color_" + tint + "_border"]
+      }
+    }
+  }), _scopes$map$join))];
 };
 
 var color = (function (selector, componentVars) {

@@ -23,7 +23,7 @@ export default ({ IconButton, keys }) => {
       name: "Option: class",
       component: IconButton,
       attrs: {
-        class: "class-x"
+        className: "class-x"
       }
     },
     {
