@@ -35,7 +35,7 @@ h(StateComponent, { subject: "airco"});
 
 import { Component } from "react";
 
-export const MatchingMithril = component => (
+export const MithrilToReact = component => (
 
   class extends Component {
 
@@ -44,7 +44,7 @@ export const MatchingMithril = component => (
       this.state = Object.assign(
         {},
         component,
-        { state: component.state || {} }
+        { state: {} }
       );
       this.state.oninit && this.state.oninit(this.state);
     }

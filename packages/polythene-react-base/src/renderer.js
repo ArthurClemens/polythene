@@ -1,10 +1,10 @@
 import h from "react-hyperscript";
-import { MatchingMithril } from "./MatchingMithril";
+import { MithrilToReact } from "./MithrilToReact";
 
 export const renderer = (...args) =>
   typeof args[0] === "object"
-    ? h.call(this, MatchingMithril(args[0]), ...args.slice(1))
-    : h.call(this, ...args);
+    ? h.call(null, MithrilToReact(args[0]), ...args.slice(1))
+    : h.call(null, ...args);
 
 renderer.trust = (html, element = "div") => {
   if (html == null) html = "";

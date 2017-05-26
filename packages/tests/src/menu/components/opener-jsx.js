@@ -29,6 +29,6 @@ export default ({ renderer: h, keys: k, Menu, RaisedButton, List, ListTile, menu
         ListTile,
         getState: newState => state.show(newState.visible)
       })}
-    </div>
+    </div>;
   }
 });

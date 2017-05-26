@@ -5,6 +5,9 @@
         "es6": true
     },
     "extends": "eslint:recommended",
+    "plugins": [
+      "react"
+    ],
     "parserOptions": {
         "sourceType": "module",
         "ecmaVersion": 6,
@@ -30,6 +33,8 @@
             "error",
             "always"
         ],
-        "no-console": 1
+        "no-console": 1,
+        "react/jsx-uses-react": "error",
+        "react/jsx-uses-vars": "error"
     }
 }

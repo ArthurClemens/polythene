@@ -62,7 +62,7 @@ const StateComponent = {
 h(StateComponent, { subject: "airco"});
 */
 
-var MatchingMithril = function MatchingMithril(component) {
+var MithrilToReact = function MithrilToReact(component) {
   return function (_Component) {
     _inherits(_class, _Component);
 
@@ -71,7 +71,7 @@ var MatchingMithril = function MatchingMithril(component) {
 
       var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, props));
 
-      _this.state = _extends({}, component, { state: component.state || {} });
+      _this.state = _extends({}, component, { state: {} });
       _this.state.oninit && _this.state.oninit(_this.state);
       return _this;
     }
@@ -96,8 +96,6 @@ var MatchingMithril = function MatchingMithril(component) {
   }(Component);
 };
 
-var _this = undefined;
-
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
@@ -107,7 +105,7 @@ var renderer = function renderer() {
     args[_key] = arguments[_key];
   }
 
-  return _typeof(args[0]) === "object" ? h.call.apply(h, [_this, MatchingMithril(args[0])].concat(_toConsumableArray(args.slice(1)))) : h.call.apply(h, [_this].concat(args));
+  return _typeof(args[0]) === "object" ? h.call.apply(h, [null, MithrilToReact(args[0])].concat(_toConsumableArray(args.slice(1)))) : h.call.apply(h, [null].concat(args));
 };
 
 renderer.trust = function (html) {
@@ -337,4 +335,4 @@ var Toggle = function (_Component) {
   return Toggle;
 }(Component);
 
-export { keys, renderer, statefulComponent, viewComponent, Toggle, MatchingMithril };
+export { keys, renderer, statefulComponent, viewComponent, Toggle, MithrilToReact };
