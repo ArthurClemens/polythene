@@ -1,7 +1,7 @@
-import { statefulComponent } from "polythene-mithril-base";
+import { stateComponent } from "polythene-mithril-base";
 import { CoreRipple as component } from "polythene-core-ripple";
 
-export const Ripple = statefulComponent(Object.assign(
+export const Ripple = stateComponent(Object.assign(
   {},
   component
 ));

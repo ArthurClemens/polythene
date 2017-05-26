@@ -3,7 +3,7 @@ import { keys } from "./keys";
 
 const requiresKeys = false;
 
-export const statefulComponent = ({
+export const stateComponent = ({
   createContent,
   createProps,
   element,
