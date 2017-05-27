@@ -427,18 +427,18 @@ styler.generateStyles([selector], vars$2, fns);
 
 var layer = function layer(num) {
   return m("div", {
-    class: [classes.layer, classes.layerN + num].join(" ")
+    className: [classes.layer, classes.layerN + num].join(" ")
   }, [m("div", {
-    class: [classes.circleClipper, classes.circleClipperLeft].join(" ")
-  }, m("div", { class: classes.circle })), m("div", { class: classes.gapPatch }, m("div", { class: classes.circle })), m("div", {
-    class: [classes.circleClipper, classes.circleClipperRight].join(" ")
-  }, m("div", { class: classes.circle }))]);
+    className: [classes.circleClipper, classes.circleClipperLeft].join(" ")
+  }, m("div", { className: classes.circle })), m("div", { className: classes.gapPatch }, m("div", { className: classes.circle })), m("div", {
+    className: [classes.circleClipper, classes.circleClipperRight].join(" ")
+  }, m("div", { className: classes.circle }))]);
 };
 
 var view = function view(_ref) {
   var attrs = _ref.attrs;
 
-  attrs.content = m("div", { class: classes.animation }, [1, 2, 3, 4].map(function (num) {
+  attrs.content = m("div", { className: classes.animation }, [1, 2, 3, 4].map(function (num) {
     return layer(num);
   }));
   attrs.instanceClass = classes.component;

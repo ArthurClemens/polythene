@@ -15,7 +15,7 @@ const generatedHtml = {
   ),
   view: vnode => {
     return h(css.resultDataRawHtml, {
-      class: vnode.state.open ? "open" : "closed",
+      className: vnode.state.open ? "open" : "closed",
       onclick: vnode.state.toggle,
     }, [
       m(".html", {id: vnode.attrs.id}, ""),
@@ -60,10 +60,10 @@ export default (name, tests, previous) => ({
       const uid = "id-" + index;
       return m([css.resultRow, test.interactive ? css.interactive : null].join(""), {
         key: testName,
-        class: [testName, test.className || null].join(" "),
+        className: [testName, test.className || null].join(" "),
       }, [
         h(css.resultTitle, {
-          class: "result-title"
+          className: "result-title"
         }, test.name),
         h(css.resultData, [
           h(css.resultDataRendered,

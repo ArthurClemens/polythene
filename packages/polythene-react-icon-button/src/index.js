@@ -12,7 +12,7 @@ export const IconButton = stateComponent(Object.assign(
   {
     createProps,
     createContent,
-    element: Button
+    component: Button
   }
 ));
 

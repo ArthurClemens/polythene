@@ -106,10 +106,11 @@ var createContent = function createContent(vnode, _ref2) {
   })];
 };
 
-var CoreShadow = {
-  createProps: createProps, createContent: createContent, theme: theme, element: element,
-  classes: classes,
-  vars: vars$1
-};
+var shadow = Object.freeze({
+	element: element,
+	theme: theme,
+	createProps: createProps,
+	createContent: createContent
+});
 
-export { CoreShadow };
+export { shadow as CoreShadow, classes, vars$1 as vars };

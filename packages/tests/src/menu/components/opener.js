@@ -5,7 +5,7 @@ export default ({ renderer: h, keys: k, Menu, RaisedButton, List, ListTile, menu
     const show = stream(false);
     vnode.state = {
       show,
-      stream: stream.merge([show])
+      redrawOnUpdate: stream.merge([show])
     };
   },
   view: vnode => {

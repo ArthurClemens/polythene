@@ -1,9 +1,5 @@
-import { createProps, createContent, theme, element } from "./svg";
-import classes from "./classes";
-import vars from "./theme/vars";
+import * as CoreSVG from "./svg";
 
-export const CoreSVG = {
-  createProps, createContent, theme, element,
-  classes,
-  vars
-};
+export { CoreSVG };
+export { default as classes } from "./classes";
+export { default as vars } from "./theme/vars";

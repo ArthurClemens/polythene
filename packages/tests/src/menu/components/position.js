@@ -31,7 +31,7 @@ const createPositionContainer = ({ h, k, Menu, List, ListTile, Shadow, IconButto
     const show = stream(false);
     vnode.state = {
       show,
-      stream: stream.merge([show])
+      redrawOnUpdate: stream.merge([show])
     };
   },
   view: vnode => {

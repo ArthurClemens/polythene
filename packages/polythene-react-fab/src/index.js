@@ -12,7 +12,7 @@ export const FAB = stateComponent(Object.assign(
   {
     createProps,
     createContent,
-    element: RaisedButton
+    component: RaisedButton
   }
 ));
 

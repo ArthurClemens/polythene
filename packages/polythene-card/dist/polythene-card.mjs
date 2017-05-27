@@ -414,12 +414,12 @@ var createOverlay = function createOverlay() {
     return contentMap[key](o);
   });
   return m("div", {
-    class: [classes.overlay, attrs.sheet ? classes.overlaySheet : null, attrs.tone === "light" ? null : "pe-dark-tone", // default dark tone
+    className: [classes.overlay, attrs.sheet ? classes.overlaySheet : null, attrs.tone === "light" ? null : "pe-dark-tone", // default dark tone
     attrs.tone === "light" ? "pe-light-tone" : null].join(" ")
   }, [m(element, {
-    class: [classes.overlayContent, attrs.class].join(" ")
+    className: [classes.overlayContent, attrs.class].join(" ")
   }, content), m("div", {
-    class: classes.mediaDimmer
+    className: classes.mediaDimmer
   })]);
 };
 
@@ -427,7 +427,7 @@ var createText = function createText(o) {
   var attrs = o.text || {};
   var element = attrs.element || "div";
   return m(element, {
-    class: [classes.text, attrs.tight ? classes.textTight : null, attrs.class].join(" ")
+    className: [classes.text, attrs.tight ? classes.textTight : null, attrs.class].join(" ")
   }, attrs.content);
 };
 
@@ -503,15 +503,15 @@ var createMedia = function createMedia(o) {
   };
 
   return m(element, {
-    class: [classes.media, mediaClassForType(attrs.type), ratio === "landscape" ? classes.mediaRatioLandscape : classes.mediaRatioSquare, attrs.class].join(" "),
+    className: [classes.media, mediaClassForType(attrs.type), ratio === "landscape" ? classes.mediaRatioLandscape : classes.mediaRatioSquare, attrs.class].join(" "),
     oncreate: initImage
-  }, [attrs.content, attrs.overlay ? createOverlay(attrs.overlay) : m("div", { class: classes.mediaDimmer })]);
+  }, [attrs.content, attrs.overlay ? createOverlay(attrs.overlay) : m("div", { className: classes.mediaDimmer })]);
 };
 
 var createHeader = function createHeader(o) {
   var attrs = o.header || {};
   return m(ListTile, _extends({}, attrs, {
-    class: [classes.header, attrs.class].join(" ")
+    className: [classes.header, attrs.class].join(" ")
   }, attrs.icon ? { front: m(Icon, attrs.icon) } : null));
 };
 
@@ -530,7 +530,7 @@ var createActions = function createActions(o) {
   var attrs = o.actions || {};
   var element = attrs.element || "div";
   return m(element, {
-    class: [classes.actions, actionClassForLayout(attrs.layout), attrs.bordered ? classes.actionsBordered : null, attrs.tight ? classes.actionsTight : null, attrs.class].join(" ")
+    className: [classes.actions, actionClassForLayout(attrs.layout), attrs.bordered ? classes.actionsBordered : null, attrs.tight ? classes.actionsTight : null, attrs.class].join(" ")
   }, attrs.content);
 };
 
@@ -544,12 +544,12 @@ var createPrimary = function createPrimary(o) {
 
   var lookup = {
     title: function title(pops) {
-      return pops.attrs ? pops : m("div", { class: classes.title }, [pops.title ? pops.title : null, pops.subtitle ? m("div", { class: classes.subtitle }, pops.subtitle) : null]);
+      return pops.attrs ? pops : m("div", { className: classes.title }, [pops.title ? pops.title : null, pops.subtitle ? m("div", { className: classes.subtitle }, pops.subtitle) : null]);
     },
     media: function media(pops) {
       primaryHasMedia = true;
       return m("div", {
-        class: classes.primaryMedia
+        className: classes.primaryMedia
       }, createMedia({
         media: pops
       }));
@@ -579,7 +579,7 @@ var createPrimary = function createPrimary(o) {
     }) : null, attrs.media ? lookup.media(attrs.media) : null, attrs.actions ? lookup.actions(attrs.actions) : null, attrs.content];
   }
   return m(element, {
-    class: [classes.primary, attrs.tight ? classes.primaryTight : null, primaryHasMedia ? classes.primaryHasMedia : null].join(" ")
+    className: [classes.primary, attrs.tight ? classes.primaryTight : null, primaryHasMedia ? classes.primaryHasMedia : null].join(" ")
   }, content);
 };
 
@@ -596,7 +596,7 @@ var view = function view(_ref2) {
 
   var element = attrs.element || attrs.url ? "a" : "div";
   var props = _extends({}, filterSupportedAttributes(attrs), {
-    class: [classes.component, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.class].join(" ")
+    className: [classes.component, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.class].join(" ")
   }, attrs.url ? attrs.url : null, attrs.events ? attrs.events : null);
 
   var contents = Array.isArray(attrs.content) ? attrs.content.map(function (attr) {
@@ -611,7 +611,7 @@ var view = function view(_ref2) {
     z: attrs.z !== undefined ? attrs.z : 1,
     animated: true
   }), m("div", {
-    class: classes.content
+    className: classes.content
   }, contents)];
   return m(element, props, [attrs.before, content, attrs.after]);
 };

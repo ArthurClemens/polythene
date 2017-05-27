@@ -11,17 +11,22 @@ const OFFSET_V         = -8;
 const DEFAULT_OFFSET_H = 16;
 const MIN_SIZE         = 1.5;
 
+export const getInitialState = (vnode, createStream) => {
+  const dom = createStream();
+  return { dom };
+};
+
 const positionMenu = (state, attrs) => {
   const targetEl = document.querySelector(attrs.target);
   if (!targetEl) {
     return;
   }
   const offsetH = (attrs.offset !== undefined) ? attrs.offset : DEFAULT_OFFSET_H;
-  const menuEl = state.dom;
+  const menuEl = state.dom();
   if (!menuEl) {
     return;
   }
-  const contentEl = state.dom.querySelector("." + classes.content);
+  const contentEl = state.dom().querySelector("." + classes.content);
   const origin = attrs.origin || "top-left";
   const reposition = attrs.reposition === false ? false : true;
   let positionOffset = 0;
@@ -62,7 +67,7 @@ const showMenu = (state, attrs) => {
   attrs.setTransitioning(true);
   return show(Object.assign({},
     attrs, {
-      el: state.dom,
+      el: state.dom(),
       showClass: classes.visible
     }
   )).then(() => {
@@ -78,7 +83,7 @@ const hideMenu = (state, attrs) => {
   attrs.setTransitioning(true);
   return hide(Object.assign({},
     attrs, {
-      el: state.dom,
+      el: state.dom(),
       showClass: classes.visible
     }
   )).then(() => {
@@ -124,7 +129,7 @@ const handleSubscriptions = (vnode, which) => {
   };
 
   const handleDismissTap = e => {
-    if (e.target === state.dom) {
+    if (e.target === state.dom()) {
       return;
     }
     deActivateDismissTap();
@@ -178,7 +183,7 @@ export const onMount = vnode => {
   }
   const state = vnode.state;
   const attrs = vnode.attrs;
-  state.dom = vnode.dom;
+  state.dom(vnode.dom);
   if (!attrs.permanent) {
     handleSubscriptions(vnode, "mount");
   }

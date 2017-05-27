@@ -96,16 +96,16 @@ var element = "div";
 
 var theme = customTheme;
 
-var typeClasses = {
+var sizeClasses = {
   small: classes.small,
   regular: classes.regular,
   medium: classes.medium,
   large: classes.large
 };
 
-var classForType = function classForType() {
-  var mode = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "regular";
-  return typeClasses[mode];
+var classForSize = function classForSize() {
+  var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "regular";
+  return sizeClasses[size];
 };
 
 var createProps = function createProps(vnode, _ref) {
@@ -113,7 +113,7 @@ var createProps = function createProps(vnode, _ref) {
 
   var attrs = vnode.attrs;
   return _extends({}, filterSupportedAttributes(attrs), {
-    className: [classes.component, classForType(attrs.type), attrs.avatar ? classes.avatar : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [classes.component, classForSize(attrs.size), attrs.avatar ? classes.avatar : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, attrs.events ? attrs.events : null);
 };
 
@@ -125,10 +125,11 @@ var createContent = function createContent(vnode, _ref2) {
   return attrs.content ? attrs.content : attrs.svg ? h(SVG, attrs.svg) : attrs.src ? h("img", { src: attrs.src }) : attrs.children || vnode.children;
 };
 
-var CoreIcon = {
-  createProps: createProps, createContent: createContent, theme: theme, element: element,
-  classes: classes,
-  vars: vars$1
-};
+var icon = Object.freeze({
+	element: element,
+	theme: theme,
+	createProps: createProps,
+	createContent: createContent
+});
 
-export { CoreIcon };
+export { icon as CoreIcon, classes, vars$1 as vars };

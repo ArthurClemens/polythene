@@ -1,0 +1,3 @@
+# Toolbar
+
+Core Polythene component.

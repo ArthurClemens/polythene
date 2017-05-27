@@ -6,9 +6,10 @@ import { keys } from "./keys";
 const requiresKeys = true;
 
 export const viewComponent = ({
-  createContent,
-  createProps,
+  createContent = () => ({}),
+  createProps = () => ({}),
   element,
+  component,
 }) => {
   
   return class extends Component {
@@ -25,7 +26,7 @@ export const viewComponent = ({
     render() {
       const vnode = this.createVirtualNode();
       return renderer(
-        vnode.attrs.element || element,
+        component || vnode.attrs.element || element,
         Object.assign(
           {},
           createProps(vnode, { renderer, requiresKeys, keys }),

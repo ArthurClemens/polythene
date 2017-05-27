@@ -89,7 +89,7 @@ const createView = (state, opts) => {
   const props = Object.assign({},
     filterSupportedAttributes(opts),
     {
-      class: [
+      className: [
         state.class,
         opts.tone === "light" ? null : "pe-dark-tone", // default dark tone
         opts.tone === "light" ? "pe-light-tone" : null,
@@ -109,12 +109,12 @@ const createView = (state, opts) => {
 
   const content = m("div",
     {
-      class: classes.content
+      className: classes.content
     },
     opts.content || [
       opts.title
         ? m("div", {
-          class: classes.title,
+          className: classes.title,
           oncreate: ({ dom }) => {
             const height = dom.getBoundingClientRect().height;
             const lineHeight = parseInt(window.getComputedStyle(dom).lineHeight, 10);
@@ -127,7 +127,7 @@ const createView = (state, opts) => {
         }, opts.title)
         : null,
       opts.action
-        ? m("div", { class: classes.action }, [ opts.action ])
+        ? m("div", { className: classes.action }, [ opts.action ])
         : null
     ]
   );

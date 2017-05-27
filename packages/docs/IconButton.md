@@ -21,7 +21,7 @@ Displays an [icon](../polythene-core-icon) as a button. Also called toggle butto
 | **className** | optional | String |  | Extra CSS class appended to "pe-icon-button" |
 | **style**     | optional | Object |       | For setting simple style attributes |
 | **id**        | optional | String | | HTML element id |
-| **content**   | optional | String, hyperscript or component |  | Any content; replaces children |
+| **content**   | optional | String, hyperscript or component |  | Content; replaces any children |
 | **before**    | optional | String, hyperscript or component | | Extra content before main content; this content is placed left of subsequent elements with a lower stacking depth |
 | **after**     | optional | String, hyperscript or component | | Extra content after main content; this content is placed right of preceding elements with a higher stacking depth |
 | **events**    | optional | Object | | Options object containing one or more standard events such as `onclick` |

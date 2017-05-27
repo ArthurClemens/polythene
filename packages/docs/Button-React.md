@@ -160,9 +160,7 @@ Change CSS using the CSS classes in `polythene-core-button/src/classes.js`
 Class names can be imported with:
 
 ~~~javascript
-import { CoreButton } from "polythene-core-button";
-
-// CoreButton.classes
+import { classes } from "polythene-core-button";
 ~~~
 
 #### Style

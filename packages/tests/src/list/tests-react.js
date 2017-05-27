@@ -14,7 +14,7 @@ const reactTests = ({ List, Icon, ListTile, renderer: h }) => {
         front: h(Icon, {
           src: `http://arthurclemens.github.io/assets/polythene/examples/${filename}.png`,
           avatar: true,
-          type: "large"
+          size: "large"
         }),
         url: {
           href: "/",
@@ -102,21 +102,21 @@ const reactTests = ({ List, Icon, ListTile, renderer: h }) => {
             <Icon
               src="http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png"
               avatar
-              type="large"
+              size="large"
             />}
           />
           <ListTile key="two" indent title="Ali Connors" subtitle="Brunch this weekend?" front={
             <Icon
               src="http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png"
               avatar
-              type="large"
+              size="large"
             />}
           />
           <ListTile key="three" indent title="Grace VanDam" subtitle="Binge watching..." front={
             <Icon
               src="http://arthurclemens.github.io/assets/polythene/examples/avatar-3.png"
               avatar
-              type="large"
+              size="large"
             />}
           />
         </List>

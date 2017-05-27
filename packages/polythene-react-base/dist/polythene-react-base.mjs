@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 
 var keys = {
   class: "className",
+  className: "className",
   formaction: "formAction",
   onblur: "onBlur",
   onclick: "onClick",
@@ -29,7 +30,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 /*
 Takes a Mithril component object and returns a React component (for keys oninit and view).
-Automatically redraws when vnode.state.stream exists, and the stream is updated.
+Automatically redraws when the stream `vnode.state.redrawOnUpdate` exists, and the stream is updated.
 
 Example: 
 
@@ -43,7 +44,7 @@ const StateComponent = {
     vnode.state = {
       checked,
       label,
-      stream: stream.merge([checked, label])
+      redrawOnUpdate: stream.merge([checked, label])
     };
   },
   view: vnode => {
@@ -81,7 +82,7 @@ var MithrilToReact = function MithrilToReact(component) {
       value: function componentDidMount() {
         var _this2 = this;
 
-        this.state.state.stream && this.state.state.stream.map(function () {
+        this.state.state.redrawOnUpdate && this.state.state.redrawOnUpdate.map(function () {
           return _this2.forceUpdate();
         });
       }
@@ -117,6 +118,200 @@ renderer.trust = function (html) {
   });
 };
 
+function createCommonjsModule(fn, module) {
+	return module = { exports: {} }, fn(module, module.exports), module.exports;
+}
+
+var stream$2 = createCommonjsModule(function (module) {
+	"use strict";
+	(function () {
+
+		var guid = 0,
+		    HALT = {};
+		function createStream() {
+			function stream() {
+				if (arguments.length > 0 && arguments[0] !== HALT) updateStream(stream, arguments[0]);
+				return stream._state.value;
+			}
+			initStream(stream);
+
+			if (arguments.length > 0 && arguments[0] !== HALT) updateStream(stream, arguments[0]);
+
+			return stream;
+		}
+		function initStream(stream) {
+			stream.constructor = createStream;
+			stream._state = { id: guid++, value: undefined, state: 0, derive: undefined, recover: undefined, deps: {}, parents: [], endStream: undefined, unregister: undefined };
+			stream.map = stream["fantasy-land/map"] = map, stream["fantasy-land/ap"] = ap, stream["fantasy-land/of"] = createStream;
+			stream.valueOf = valueOf, stream.toJSON = toJSON, stream.toString = valueOf;
+
+			Object.defineProperties(stream, {
+				end: { get: function get() {
+						if (!stream._state.endStream) {
+							var endStream = createStream();
+							endStream.map(function (value) {
+								if (value === true) {
+									unregisterStream(stream);
+									endStream._state.unregister = function () {
+										unregisterStream(endStream);
+									};
+								}
+								return value;
+							});
+							stream._state.endStream = endStream;
+						}
+						return stream._state.endStream;
+					} }
+			});
+		}
+		function updateStream(stream, value) {
+			updateState(stream, value);
+			for (var id in stream._state.deps) {
+				updateDependency(stream._state.deps[id], false);
+			}if (stream._state.unregister != null) stream._state.unregister();
+			finalize(stream);
+		}
+		function updateState(stream, value) {
+			stream._state.value = value;
+			stream._state.changed = true;
+			if (stream._state.state !== 2) stream._state.state = 1;
+		}
+		function updateDependency(stream, mustSync) {
+			var state = stream._state,
+			    parents = state.parents;
+			if (parents.length > 0 && parents.every(active) && (mustSync || parents.some(changed))) {
+				var value = stream._state.derive();
+				if (value === HALT) return false;
+				updateState(stream, value);
+			}
+		}
+		function finalize(stream) {
+			stream._state.changed = false;
+			for (var id in stream._state.deps) {
+				stream._state.deps[id]._state.changed = false;
+			}
+		}
+
+		function combine(fn, streams) {
+			if (!streams.every(valid)) throw new Error("Ensure that each item passed to stream.combine/stream.merge is a stream");
+			return initDependency(createStream(), streams, function () {
+				return fn.apply(this, streams.concat([streams.filter(changed)]));
+			});
+		}
+
+		function initDependency(dep, streams, derive) {
+			var state = dep._state;
+			state.derive = derive;
+			state.parents = streams.filter(notEnded);
+
+			registerDependency(dep, state.parents);
+			updateDependency(dep, true);
+
+			return dep;
+		}
+		function registerDependency(stream, parents) {
+			for (var i = 0; i < parents.length; i++) {
+				parents[i]._state.deps[stream._state.id] = stream;
+				registerDependency(stream, parents[i]._state.parents);
+			}
+		}
+		function unregisterStream(stream) {
+			for (var i = 0; i < stream._state.parents.length; i++) {
+				var parent = stream._state.parents[i];
+				delete parent._state.deps[stream._state.id];
+			}
+			for (var id in stream._state.deps) {
+				var dependent = stream._state.deps[id];
+				var index = dependent._state.parents.indexOf(stream);
+				if (index > -1) dependent._state.parents.splice(index, 1);
+			}
+			stream._state.state = 2; //ended
+			stream._state.deps = {};
+		}
+
+		function map(fn) {
+			return combine(function (stream) {
+				return fn(stream());
+			}, [this]);
+		}
+		function ap(stream) {
+			return combine(function (s1, s2) {
+				return s1()(s2());
+			}, [stream, this]);
+		}
+		function valueOf() {
+			return this._state.value;
+		}
+		function toJSON() {
+			return this._state.value != null && typeof this._state.value.toJSON === "function" ? this._state.value.toJSON() : this._state.value;
+		}
+
+		function valid(stream) {
+			return stream._state;
+		}
+		function active(stream) {
+			return stream._state.state === 1;
+		}
+		function changed(stream) {
+			return stream._state.changed;
+		}
+		function notEnded(stream) {
+			return stream._state.state !== 2;
+		}
+
+		function merge(streams) {
+			return combine(function () {
+				return streams.map(function (s) {
+					return s();
+				});
+			}, streams);
+		}
+
+		function scan(reducer, seed, stream) {
+			var newStream = combine(function (s) {
+				return seed = reducer(seed, s._state.value);
+			}, [stream]);
+
+			if (newStream._state.state === 0) newStream(seed);
+
+			return newStream;
+		}
+
+		function scanMerge(tuples, seed) {
+			var streams = tuples.map(function (tuple) {
+				var stream = tuple[0];
+				if (stream._state.state === 0) stream(undefined);
+				return stream;
+			});
+
+			var newStream = combine(function () {
+				var changed = arguments[arguments.length - 1];
+
+				streams.forEach(function (stream, idx) {
+					if (changed.indexOf(stream) > -1) {
+						seed = tuples[idx][1](seed, stream._state.value);
+					}
+				});
+
+				return seed;
+			}, streams);
+
+			return newStream;
+		}
+
+		createStream["fantasy-land/of"] = createStream;
+		createStream.merge = merge;
+		createStream.combine = combine;
+		createStream.scan = scan;
+		createStream.scanMerge = scanMerge;
+		createStream.HALT = HALT;
+
+		module["exports"] = createStream;
+	})();
+});
+
+var stream = stream$2;
+
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass$1 = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -129,10 +324,17 @@ function _inherits$1(subClass, superClass) { if (typeof superClass !== "function
 
 var requiresKeys = true;
 
-var statefulComponent = function statefulComponent(_ref) {
-  var createContent = _ref.createContent,
-      createProps = _ref.createProps,
+var stateComponent = function stateComponent(_ref) {
+  var _ref$createContent = _ref.createContent,
+      createContent = _ref$createContent === undefined ? function () {
+    return {};
+  } : _ref$createContent,
+      _ref$createProps = _ref.createProps,
+      createProps = _ref$createProps === undefined ? function () {
+    return {};
+  } : _ref$createProps,
       element = _ref.element,
+      component = _ref.component,
       _ref$getInitialState = _ref.getInitialState,
       getInitialState = _ref$getInitialState === undefined ? function () {
     return {};
@@ -140,9 +342,7 @@ var statefulComponent = function statefulComponent(_ref) {
       _ref$onMount = _ref.onMount,
       onMount = _ref$onMount === undefined ? function () {} : _ref$onMount,
       _ref$onUnmount = _ref.onUnmount,
-      onUnmount = _ref$onUnmount === undefined ? function () {} : _ref$onUnmount,
-      _ref$state = _ref.state,
-      state = _ref$state === undefined ? {} : _ref$state;
+      onUnmount = _ref$onUnmount === undefined ? function () {} : _ref$onUnmount;
 
 
   return function (_Component) {
@@ -153,18 +353,23 @@ var statefulComponent = function statefulComponent(_ref) {
 
       var _this = _possibleConstructorReturn$1(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, props));
 
-      _this.state = {
-        now: Date.now()
-      };
-      // Store the state we are interested in in a private property
-      _this._state = _extends$1({}, state, getInitialState(props));
+      var protoState = _extends$1({}, component, _this.createVirtualNode(), {
+        redrawValues: undefined
+      });
+      var initialState = getInitialState(protoState, stream);
+      _this.state = initialState;
       return _this;
     }
 
     _createClass$1(_class, [{
       key: "componentDidMount",
       value: function componentDidMount() {
+        var _this2 = this;
+
         onMount(this.createVirtualNode());
+        this.state.redrawOnUpdate && this.state.redrawOnUpdate.map(function (values) {
+          return _this2.setState({ redrawValues: values });
+        });
       }
     }, {
       key: "componentWillUnmount",
@@ -172,35 +377,25 @@ var statefulComponent = function statefulComponent(_ref) {
         onUnmount(this.createVirtualNode());
       }
     }, {
-      key: "updateState",
-      value: function updateState(attr, value, callback) {
-        this._state[attr] = value;
-        // Force new render
-        this.setState({
-          now: Date.now()
-        }, callback);
-      }
-    }, {
       key: "createVirtualNode",
       value: function createVirtualNode() {
         var props = _extends$1({}, this.props);
         return {
-          state: this._state,
+          state: this.state,
           attrs: props,
           children: props.children,
-          dom: this.dom,
-          updateState: this.updateState.bind(this)
+          dom: this.dom
         };
       }
     }, {
       key: "render",
       value: function render() {
-        var _this2 = this;
+        var _this3 = this;
 
         var vnode = this.createVirtualNode();
-        return renderer(vnode.attrs.element || element, _extends$1({}, createProps(vnode, { renderer: renderer, requiresKeys: requiresKeys, keys: keys }), { ref: function ref(reactComponent) {
-            if (!_this2.dom) {
-              _this2.dom = ReactDOM.findDOMNode(reactComponent);
+        return renderer(component || vnode.attrs.element || element, _extends$1({}, createProps(vnode, { renderer: renderer, requiresKeys: requiresKeys, keys: keys }), { ref: function ref(reactComponent) {
+            if (!_this3.dom) {
+              _this3.dom = ReactDOM.findDOMNode(reactComponent);
             }
           } }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, requiresKeys: requiresKeys, keys: keys }), vnode.attrs.after]);
       }
@@ -223,9 +418,16 @@ function _inherits$2(subClass, superClass) { if (typeof superClass !== "function
 var requiresKeys$1 = true;
 
 var viewComponent = function viewComponent(_ref) {
-  var createContent = _ref.createContent,
-      createProps = _ref.createProps,
-      element = _ref.element;
+  var _ref$createContent = _ref.createContent,
+      createContent = _ref$createContent === undefined ? function () {
+    return {};
+  } : _ref$createContent,
+      _ref$createProps = _ref.createProps,
+      createProps = _ref$createProps === undefined ? function () {
+    return {};
+  } : _ref$createProps,
+      element = _ref.element,
+      component = _ref.component;
 
 
   return function (_Component) {
@@ -253,7 +455,7 @@ var viewComponent = function viewComponent(_ref) {
         var _this2 = this;
 
         var vnode = this.createVirtualNode();
-        return renderer(vnode.attrs.element || element, _extends$2({}, createProps(vnode, { renderer: renderer, requiresKeys: requiresKeys$1, keys: keys }), { ref: function ref(reactComponent) {
+        return renderer(component || vnode.attrs.element || element, _extends$2({}, createProps(vnode, { renderer: renderer, requiresKeys: requiresKeys$1, keys: keys }), { ref: function ref(reactComponent) {
             if (!_this2.dom) {
               _this2.dom = ReactDOM.findDOMNode(reactComponent);
             }
@@ -335,4 +537,4 @@ var Toggle = function (_Component) {
   return Toggle;
 }(Component);
 
-export { keys, renderer, statefulComponent, viewComponent, Toggle, MithrilToReact };
+export { keys, renderer, stateComponent, viewComponent, Toggle, MithrilToReact };

@@ -74,7 +74,7 @@ const createViewContent = (state, opts) => {
   const updateContentOnScroll = opts.updateContentOnScroll || false;
   const ignoreContent = !updateContentOnScroll && state.isScrolling;
   return m("div", {
-    class: classes.body,
+    className: classes.body,
     oncreate: ({ dom }) => state.scrollEl = dom,
     onbeforeupdate: !ignoreContent,
     onscroll: () => {
@@ -113,7 +113,7 @@ const createView = (state, opts) => {
     {},
     filterSupportedAttributes(opts, { remove: ["style"] }), // style set in content, and set by show/hide transition
     {
-      class: [
+      className: [
         classes.component,
         opts.fullscreen ? classes.fullscreen : null,
         opts.backdrop ? classes.hasBackdrop : null,
@@ -163,7 +163,7 @@ const createView = (state, opts) => {
   const body = createViewContent(state, opts);
   const content = m("div",
     {
-      class: [
+      className: [
         classes.content,
         opts.menu ? classes.menuContent : null
       ].join(" "),
@@ -181,18 +181,18 @@ const createView = (state, opts) => {
         : opts.title
           ? m("div",
             {
-              class: classes.header,
+              className: classes.header,
               oncreate: ({ dom }) => {
                 state.headerHeight = dom.scrollHeight;
               }
             },
             m("div", {
-              class: classes.title
+              className: classes.title
             }, opts.title))
           : null,
       body,
       opts.fullscreen ? null : opts.footer ? m("div", {
-        class: classes.footer,
+        className: classes.footer,
         oncreate: ({ dom }) => {
           state.footerHeight = dom.scrollHeight;
           state.footerEl = dom;
@@ -204,7 +204,7 @@ const createView = (state, opts) => {
         )
       }, [
         m("div", {
-          class: classes.actions
+          className: classes.actions
         }, opts.footer)
       ]) : null
     ]

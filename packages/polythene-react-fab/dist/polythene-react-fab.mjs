@@ -1,4 +1,4 @@
-import { statefulComponent } from 'polythene-react-base';
+import { stateComponent } from 'polythene-react-base';
 import { CoreFAB } from 'polythene-core-fab';
 import { Icon } from 'polythene-react-icon';
 import { RaisedButton } from 'polythene-react-raised-button';
@@ -12,10 +12,10 @@ var createContent = function createContent(vnode, args) {
   return CoreFAB.createContent(vnode, _extends(args, { Icon: Icon }));
 };
 
-var FAB = statefulComponent(_extends({}, CoreFAB, {
+var FAB = stateComponent(_extends({}, CoreFAB, {
   createProps: createProps,
   createContent: createContent,
-  element: RaisedButton
+  component: RaisedButton
 }));
 
 FAB.theme = CoreFAB.theme;

@@ -120,10 +120,11 @@ var createContent = function createContent(vnode) {
   return attrs.content ? attrs.content : attrs.children || vnode.children || attrs;
 };
 
-var CoreToolbar = {
-  createProps: createProps, createContent: createContent, theme: theme, element: element,
-  classes: classes,
-  vars: vars$1
-};
+var toolbar = Object.freeze({
+	element: element,
+	theme: theme,
+	createProps: createProps,
+	createContent: createContent
+});
 
-export { CoreToolbar };
+export { toolbar as CoreToolbar, classes, vars$1 as vars };

@@ -10,6 +10,16 @@ export default ({ Icon, SVG, renderer: h }) => {
     color_dark: "orange"
   });
 
+  const sizeNames = ["small", "regular", "medium", "large"];
+
+  const sizes = (sizes, attrs) => sizes.map(size =>
+    h(Icon, Object.assign(
+      {},
+      attrs,
+      { size }
+    ))
+  );
+
   return [
     {
       name: "Child node (trusted svg children)",
@@ -51,36 +61,18 @@ export default ({ Icon, SVG, renderer: h }) => {
       }
     },
     {
-      name: "Option: type (small)",
-      component: Icon,
-      attrs: {
-        svg: trustedIconStars,
-        type: "small"
-      }
-    },
-    {
-      name: "Option: type (regular)",
-      component: Icon,
-      attrs: {
-        svg: trustedIconStars,
-        type: "regular"
-      }
-    },
-    {
-      name: "Option: type (medium)",
-      component: Icon,
-      attrs: {
-        svg: trustedIconStars,
-        type: "medium"
-      }
-    },
-    {
-      name: "Option: type (large)",
-      component: Icon,
-      attrs: {
-        svg: trustedIconStars,
-        type: "large"
-      }
+      name: "Option: size",
+      component: {
+        view: () => h("div", {
+          style: {
+            display: "flex",
+            alignItems: "center"
+          }
+        },
+        sizes(sizeNames, {
+          svg: trustedIconStars,
+        })
+      )}
     },
     {
       name: "Option: src (image file)",

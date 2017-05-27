@@ -1,4 +1,4 @@
-import { button } from "polythene-core";
+import { classes as buttonClasses } from "polythene-core";
 
 export default {
   component:            "pe-tabs",
@@ -26,5 +26,5 @@ export default {
   tabRowIndent:         "pe-tabs__row--indent",
 
   // lookup
-  label:                button.classes.label
+  label:                buttonClasses.label
 };

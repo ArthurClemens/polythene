@@ -19,7 +19,7 @@ const view = ({state, attrs}) => {
     {},
     filterSupportedAttributes(attrs),
     {
-      class: [
+      className: [
         classes.component,
         attrs.fullWidth ? classes.searchFullWidth : classes.searchInset,
         attrs.tone === "dark" ? "pe-dark-tone" : null,
@@ -33,7 +33,7 @@ const view = ({state, attrs}) => {
   const buttons = (attrs.buttons || {})[searchState] || {};
   const textfieldAttrs = attrs.textfield || {};
   const content = m("div", {
-    class: classes.content
+    className: classes.content
   }, [
     buttons.before,
     m(textfield, Object.assign(

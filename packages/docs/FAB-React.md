@@ -110,9 +110,7 @@ Change CSS using the CSS classes in `polythene-core-fab/src/classes.js`
 Class names can be imported with:
 
 ~~~javascript
-import { CoreFAB } from "polythene-core-fab";
-
-// CoreFAB.classes
+import { classes } from "polythene-core-fab";
 ~~~
 
 #### Style option

@@ -570,7 +570,7 @@ var view = function view(_ref) {
   }
 
   var props = _extends({}, filterSupportedAttributes(attrs), {
-    class: [classes.component, isInvalid ? classes.stateInvalid : "", state.focus() ? classes.stateFocused : "", attrs.floatingLabel ? classes.hasFloatingLabel : "", attrs.disabled ? classes.stateDisabled : "", attrs.readonly ? classes.stateReadonly : "", state.isDirty ? classes.stateDirty : "", attrs.dense ? classes.isDense : "", attrs.required ? classes.isRequired : "", attrs.fullWidth ? classes.hasFullWidth : "", attrs.counter ? classes.hasCounter : "", attrs.hideSpinner !== false ? classes.hideSpinner : "", attrs.hideClear !== false ? classes.hideClear : "", attrs.hideValidation ? classes.hideValidation : "", attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.class].join(" "),
+    className: [classes.component, isInvalid ? classes.stateInvalid : "", state.focus() ? classes.stateFocused : "", attrs.floatingLabel ? classes.hasFloatingLabel : "", attrs.disabled ? classes.stateDisabled : "", attrs.readonly ? classes.stateReadonly : "", state.isDirty ? classes.stateDirty : "", attrs.dense ? classes.isDense : "", attrs.required ? classes.isRequired : "", attrs.fullWidth ? classes.hasFullWidth : "", attrs.counter ? classes.hasCounter : "", attrs.hideSpinner !== false ? classes.hideSpinner : "", attrs.hideClear !== false ? classes.hideClear : "", attrs.hideValidation ? classes.hideValidation : "", attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.class].join(" "),
     oncreate: function oncreate(_ref2) {
       var dom = _ref2.dom;
 
@@ -581,14 +581,14 @@ var view = function view(_ref) {
     }
   });
 
-  var requiredIndicator = attrs.required && attrs.requiredIndicator !== "" ? m("span", { class: classes.requiredIndicator }, attrs.requiredIndicator || "*") : null;
-  var optionalIndicator = !attrs.required && attrs.optionalIndicator ? m("span", { class: classes.optionalIndicator }, attrs.optionalIndicator) : null;
+  var requiredIndicator = attrs.required && attrs.requiredIndicator !== "" ? m("span", { className: classes.requiredIndicator }, attrs.requiredIndicator || "*") : null;
+  var optionalIndicator = !attrs.required && attrs.optionalIndicator ? m("span", { className: classes.optionalIndicator }, attrs.optionalIndicator) : null;
   var label = attrs.label ? [attrs.label, requiredIndicator, optionalIndicator] : null;
 
   var content = [m("div", {
-    class: classes.inputArea
+    className: classes.inputArea
   }, [label ? m("label", _defineProperty({
-    class: classes.label
+    className: classes.label
   }, "on" + touchStartEvent, function () {
     if (!inactive) {
       setTimeout(function () {
@@ -596,7 +596,7 @@ var view = function view(_ref) {
       }, 0);
     }
   }), label) : null, m(inputType, _extends({}, {
-    class: classes.input,
+    className: classes.input,
     disabled: attrs.disabled
   }, type ? { type: type } : null, attrs.name ? { name: attrs.name } : null, !ignoreEvent(attrs, "onclick") ? {
     onclick: function onclick() {
@@ -681,9 +681,9 @@ var view = function view(_ref) {
       notifyState(state, attrs);
     }
   }, attrs.events ? attrs.events : null, // NOTE: may overwrite oninput
-  attrs.readonly !== undefined ? { readonly: true } : null, attrs.pattern !== undefined ? { pattern: attrs.pattern } : null, attrs.maxlength !== undefined ? { maxlength: attrs.maxlength } : null, attrs.minlength !== undefined ? { minlength: attrs.minlength } : null, attrs.max !== undefined ? { max: attrs.max } : null, attrs.min !== undefined ? { min: attrs.min } : null, attrs.autofocus !== undefined ? { autofocus: attrs.autofocus } : null, attrs.required !== undefined ? { required: attrs.required } : null, attrs.tabindex !== undefined ? { tabindex: attrs.tabindex } : null, attrs.rows !== undefined ? { rows: attrs.rows } : null))]), attrs.counter ? m("div", { class: classes.counter }, state.value.length + " / " + attrs.counter) : null, attrs.help && !showError ? m("div", {
-    class: [classes.help, attrs.focusHelp ? classes.focusHelp : ""].join(" ")
-  }, attrs.help) : null, showError ? m("div", { class: classes.error }, state.error) : validates && !attrs.help ? m("div", { class: classes.errorPlaceholder }) : null];
+  attrs.readonly !== undefined ? { readonly: true } : null, attrs.pattern !== undefined ? { pattern: attrs.pattern } : null, attrs.maxlength !== undefined ? { maxlength: attrs.maxlength } : null, attrs.minlength !== undefined ? { minlength: attrs.minlength } : null, attrs.max !== undefined ? { max: attrs.max } : null, attrs.min !== undefined ? { min: attrs.min } : null, attrs.autofocus !== undefined ? { autofocus: attrs.autofocus } : null, attrs.required !== undefined ? { required: attrs.required } : null, attrs.tabindex !== undefined ? { tabindex: attrs.tabindex } : null, attrs.rows !== undefined ? { rows: attrs.rows } : null))]), attrs.counter ? m("div", { className: classes.counter }, state.value.length + " / " + attrs.counter) : null, attrs.help && !showError ? m("div", {
+    className: [classes.help, attrs.focusHelp ? classes.focusHelp : ""].join(" ")
+  }, attrs.help) : null, showError ? m("div", { className: classes.error }, state.error) : validates && !attrs.help ? m("div", { className: classes.errorPlaceholder }) : null];
   return m(element, props, [attrs.before, content, attrs.after]);
 };
 

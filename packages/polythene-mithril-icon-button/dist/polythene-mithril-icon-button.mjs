@@ -15,9 +15,10 @@ var createContent = function createContent(vnode, args) {
 var IconButton = viewComponent(_extends({}, CoreIconButton, {
   createProps: createProps,
   createContent: createContent,
-  element: Button
+  component: Button
 }));
 
 IconButton.theme = CoreIconButton.theme;
+IconButton.displayName = "IconButton";
 
 export { IconButton };

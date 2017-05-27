@@ -1,5 +1,5 @@
 import { stateComponent, Toggle, renderer as h } from "polythene-mithril-base";
-import { CoreMenu as component } from "polythene-core-menu";
+import { CoreMenu as component, classes } from "polythene-core-menu";
 import { Shadow } from "polythene-mithril-shadow";
 
 const createProps = (vnode, args) => component.createProps(vnode, Object.assign(args, { Shadow }));
@@ -19,7 +19,7 @@ export const Menu = {
     h(Toggle, Object.assign(
       {},
       {
-        placeholderClassName: component.classes.placeholder,
+        placeholderClassName: classes.placeholder,
         instance: MenuInstance
       },
       vnode.attrs
@@ -27,3 +27,4 @@ export const Menu = {
 };
 
 Menu.theme = component.theme;
+Menu.displayName = "Menu";

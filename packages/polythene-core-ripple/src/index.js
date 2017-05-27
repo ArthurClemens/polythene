@@ -1,9 +1,5 @@
-import { createProps, createContent, onMount, onUnmount, theme, element } from "./ripple";
-import classes from "./classes";
-import vars from "./theme/vars";
+import * as CoreRipple from "./ripple";
 
-export const CoreRipple = {
-  createProps, createContent, onMount, onUnmount, theme, element,
-  classes,
-  vars
-};
+export { CoreRipple };
+export { default as classes } from "./classes";
+export { default as vars } from "./theme/vars";

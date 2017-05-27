@@ -16,11 +16,11 @@ export default [
   //   name: "Card",
   //   tests: cardTests
   // },
-  // {
-  //   path: "/checkbox",
-  //   name: "Checkbox",
-  //   tests: checkboxTests
-  // },
+  {
+    path: "/checkbox",
+    name: "Checkbox",
+    tests: tests.checkbox
+  },
   // {
   //   path: "/dialog",
   //   name: "Dialog",

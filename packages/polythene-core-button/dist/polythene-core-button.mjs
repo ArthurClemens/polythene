@@ -242,11 +242,16 @@ var element = "a";
 
 var theme = customTheme;
 
-var getInitialState = function getInitialState(attrs) {
+var getInitialState = function getInitialState(vnode, createStream) {
+  var attrs = vnode.attrs;
+  var focus = createStream(false);
+  var inactive = createStream(!!attrs.inactive);
+  var mouseover = createStream(false);
   return {
-    focus: false,
-    inactive: attrs.inactive,
-    mouseover: false
+    focus: focus,
+    inactive: inactive,
+    mouseover: mouseover,
+    redrawOnUpdate: createStream.merge([focus, inactive, mouseover])
   };
 };
 
@@ -258,28 +263,28 @@ var createProps = function createProps(vnode, _ref) {
   var state = vnode.state;
   var attrs = vnode.attrs;
   var disabled = attrs.disabled;
-  var inactive = attrs.inactive || state.inactive;
+  var inactive = attrs.inactive || state.inactive();
   var onClickHandler = attrs.events && attrs.events[k.onclick];
   var handleInactivate = function handleInactivate() {
-    return vnode.updateState("inactive", true), setTimeout(function () {
-      return vnode.updateState("inactive", false);
+    return vnode.state.inactive(true), setTimeout(function () {
+      return vnode.state.inactive(false);
     }, attrs.inactivate * 1000);
   };
   return _extends({}, filterSupportedAttributes(attrs, { add: [k.formaction, "type"] }), {
-    className: [attrs.parentClassName || classes.component, attrs.selected ? classes.selected : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, attrs.borders ? classes.borders : null, state.focus ? classes.focused : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [attrs.parentClassName || classes.component, attrs.selected ? classes.selected : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, attrs.borders ? classes.borders : null, state.focus() ? classes.focused : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, inactive ? null : (_ref2 = {}, _defineProperty(_ref2, k.tabindex, disabled || inactive ? -1 : attrs[k.tabindex] || 0), _defineProperty(_ref2, k.onclick, function (e) {
     return attrs.inactivate !== undefined && handleInactivate(), onClickHandler && onClickHandler(e), true;
   }), _defineProperty(_ref2, k.onfocus, function () {
-    return vnode.updateState("focus", !state.mouseover);
+    return vnode.state.focus(!state.mouseover());
   }), _defineProperty(_ref2, k.onblur, function () {
-    return vnode.updateState("focus", false);
+    return vnode.state.focus(false);
   }), _defineProperty(_ref2, k.onmouseover, function () {
-    return vnode.updateState("mouseover", true);
+    return vnode.state.mouseover(true);
   }), _defineProperty(_ref2, k.onmouseout, function () {
-    return vnode.updateState("mouseover", false);
+    return vnode.state.mouseover(false);
   }), _defineProperty(_ref2, k.onkeydown, function (e) {
-    if (e.which === 13 && state.focus) {
-      vnode.updateState("focus", false);
+    if (e.which === 13 && state.focus()) {
+      vnode.state.focus(false);
       if (onClickHandler) {
         onClickHandler(e);
       }
@@ -313,10 +318,12 @@ var createContent = function createContent(vnode, _ref3) {
   disabled ? null : h("div", { key: "focus", className: classes.focus }), label]) : null;
 };
 
-var CoreButton = {
-  getInitialState: getInitialState, createProps: createProps, createContent: createContent, theme: theme, element: element,
-  classes: classes,
-  vars: vars$1
-};
+var button = Object.freeze({
+	element: element,
+	theme: theme,
+	getInitialState: getInitialState,
+	createProps: createProps,
+	createContent: createContent
+});
 
-export { CoreButton };
+export { button as CoreButton, classes, vars$1 as vars };

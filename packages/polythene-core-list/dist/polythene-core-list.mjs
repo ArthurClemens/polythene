@@ -147,10 +147,11 @@ var createContent = function createContent(vnode, _ref2) {
   return [headerOpts ? h(ListTile, _extends({}, requiresKeys ? { key: "header" } : null, headerOpts)) : null, attrs.tiles ? attrs.tiles : attrs.content ? attrs.content : attrs.children || vnode.children];
 };
 
-var CoreList = {
-  createProps: createProps, createContent: createContent, theme: theme, element: element,
-  classes: classes,
-  vars: vars$1
-};
+var list = Object.freeze({
+	element: element,
+	theme: theme,
+	createProps: createProps,
+	createContent: createContent
+});
 
-export { CoreList };
+export { list as CoreList, classes, vars$1 as vars };

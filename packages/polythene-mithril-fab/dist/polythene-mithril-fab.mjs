@@ -15,7 +15,7 @@ var createContent = function createContent(vnode, args) {
 var FAB = viewComponent(_extends({}, CoreFAB, {
   createProps: createProps,
   createContent: createContent,
-  element: RaisedButton
+  component: RaisedButton
 }));
 
 FAB.theme = CoreFAB.theme;

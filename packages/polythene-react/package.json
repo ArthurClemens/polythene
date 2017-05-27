@@ -16,6 +16,7 @@
   "dependencies": {
     "polythene-react-base": "1.0.0-rc.1",
     "polythene-react-button": "1.0.0-rc.1",
+    "polythene-react-checkbox": "1.0.0-rc.1",
     "polythene-react-fab": "1.0.0-rc.1",
     "polythene-react-icon": "1.0.0-rc.1",
     "polythene-react-icon-button": "1.0.0-rc.1",

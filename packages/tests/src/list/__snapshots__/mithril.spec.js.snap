@@ -41,51 +41,51 @@ exports[`test Child nodes 1`] = `
 `;
 
 exports[`test Dark tone class + light theme class 1`] = `
-"<div style=\"background: rgb(255, 255, 255);\" class=
-\"pe-list pe-list--borders pe-list--header pe-light-tone\">
-  <div class=\"pe-list-tile pe-list__header\">
-    <div class=\"pe-list-tile__primary\" style=\"\">
-      <div class=\"pe-list-tile__content\">
-        <div class=\"pe-list-tile__title\">
+"<div style="background: rgb(255, 255, 255);" class=
+"pe-list pe-list--borders pe-list--header pe-light-tone">
+  <div class="pe-list-tile pe-list__header">
+    <div class="pe-list-tile__primary" style="">
+      <div class="pe-list-tile__content">
+        <div class="pe-list-tile__title">
           Friends
         </div>
       </div>
     </div>
   </div>
   <div class=
-  \"pe-list-tile pe-list-tile--hoverable pe-list-tile--subtitle\">
-    <div class=\"pe-list-tile__primary\" style=\"\">
-      <div class=\"pe-list-tile__content\">
-        <div class=\"pe-list-tile__title\">
+  "pe-list-tile pe-list-tile--hoverable pe-list-tile--subtitle">
+    <div class="pe-list-tile__primary" style="">
+      <div class="pe-list-tile__content">
+        <div class="pe-list-tile__title">
           Jennifer Barker
         </div>
-        <div class=\"pe-list-tile__subtitle\">
+        <div class="pe-list-tile__subtitle">
           Starting post doc
         </div>
       </div>
     </div>
   </div>
   <div class=
-  \"pe-list-tile pe-list-tile--hoverable pe-list-tile--subtitle\">
-    <div class=\"pe-list-tile__primary\" style=\"\">
-      <div class=\"pe-list-tile__content\">
-        <div class=\"pe-list-tile__title\">
+  "pe-list-tile pe-list-tile--hoverable pe-list-tile--subtitle">
+    <div class="pe-list-tile__primary" style="">
+      <div class="pe-list-tile__content">
+        <div class="pe-list-tile__title">
           Ali Connors
         </div>
-        <div class=\"pe-list-tile__subtitle\">
+        <div class="pe-list-tile__subtitle">
           Brunch this weekend?
         </div>
       </div>
     </div>
   </div>
   <div class=
-  \"pe-list-tile pe-list-tile--hoverable pe-list-tile--subtitle\">
-    <div class=\"pe-list-tile__primary\" style=\"\">
-      <div class=\"pe-list-tile__content\">
-        <div class=\"pe-list-tile__title\">
+  "pe-list-tile pe-list-tile--hoverable pe-list-tile--subtitle">
+    <div class="pe-list-tile__primary" style="">
+      <div class="pe-list-tile__content">
+        <div class="pe-list-tile__title">
           Grace VanDam
         </div>
-        <div class=\"pe-list-tile__subtitle\">
+        <div class="pe-list-tile__subtitle">
           Binge watching...
         </div>
       </div>
@@ -150,13 +150,9 @@ exports[`test Dark tone class + light tone 1`] = `
 "
 `;
 
-exports[`test No options 1`] = `
-"<div class=\"pe-list\"></div>
-"
-`;
-
-exports[`test Option: class -- dark theme class 1`] = `
-"<div class=\"pe-list pe-list--borders pe-list--header\">
+exports[`test Dark tone class + light tone class 1`] = `
+"<div style=\"background: rgb(255, 255, 255);\" class=
+\"pe-list pe-list--borders pe-list--header pe-light-tone\">
   <div class=\"pe-list-tile pe-list__header\">
     <div class=\"pe-list-tile__primary\" style=\"\">
       <div class=\"pe-list-tile__content\">
@@ -166,7 +162,8 @@ exports[`test Option: class -- dark theme class 1`] = `
       </div>
     </div>
   </div>
-  <div class=\"pe-list-tile pe-list-tile--subtitle\">
+  <div class=
+  \"pe-list-tile pe-list-tile--hoverable pe-list-tile--subtitle\">
     <div class=\"pe-list-tile__primary\" style=\"\">
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
@@ -178,7 +175,8 @@ exports[`test Option: class -- dark theme class 1`] = `
       </div>
     </div>
   </div>
-  <div class=\"pe-list-tile pe-list-tile--subtitle\">
+  <div class=
+  \"pe-list-tile pe-list-tile--hoverable pe-list-tile--subtitle\">
     <div class=\"pe-list-tile__primary\" style=\"\">
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
@@ -190,7 +188,118 @@ exports[`test Option: class -- dark theme class 1`] = `
       </div>
     </div>
   </div>
-  <div class=\"pe-list-tile pe-list-tile--subtitle\">
+  <div class=
+  \"pe-list-tile pe-list-tile--hoverable pe-list-tile--subtitle\">
+    <div class=\"pe-list-tile__primary\" style=\"\">
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Grace VanDam
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Binge watching...
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test No options 1`] = `
+"<div class=\"pe-list\"></div>
+"
+`;
+
+exports[`test Option: class -- dark theme class 1`] = `
+"<div class="pe-list pe-list--borders pe-list--header">
+  <div class="pe-list-tile pe-list__header">
+    <div class="pe-list-tile__primary" style="">
+      <div class="pe-list-tile__content">
+        <div class="pe-list-tile__title">
+          Friends
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pe-list-tile pe-list-tile--subtitle">
+    <div class="pe-list-tile__primary" style="">
+      <div class="pe-list-tile__content">
+        <div class="pe-list-tile__title">
+          Jennifer Barker
+        </div>
+        <div class="pe-list-tile__subtitle">
+          Starting post doc
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pe-list-tile pe-list-tile--subtitle">
+    <div class="pe-list-tile__primary" style="">
+      <div class="pe-list-tile__content">
+        <div class="pe-list-tile__title">
+          Ali Connors
+        </div>
+        <div class="pe-list-tile__subtitle">
+          Brunch this weekend?
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pe-list-tile pe-list-tile--subtitle">
+    <div class="pe-list-tile__primary" style="">
+      <div class="pe-list-tile__content">
+        <div class="pe-list-tile__title">
+          Grace VanDam
+        </div>
+        <div class="pe-list-tile__subtitle">
+          Binge watching...
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: class -- dark tone class 1`] = `
+"<div class=\"pe-list pe-list--borders pe-list--header\">
+  <div class=\"pe-list-tile pe-list__header\">
+    <div class=\"pe-list-tile__primary\" style=\"\">
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Friends
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=
+  \"pe-list-tile pe-list-tile--hoverable pe-list-tile--subtitle\">
+    <div class=\"pe-list-tile__primary\" style=\"\">
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Jennifer Barker
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Starting post doc
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=
+  \"pe-list-tile pe-list-tile--hoverable pe-list-tile--subtitle\">
+    <div class=\"pe-list-tile__primary\" style=\"\">
+      <div class=\"pe-list-tile__content\">
+        <div class=\"pe-list-tile__title\">
+          Ali Connors
+        </div>
+        <div class=\"pe-list-tile__subtitle\">
+          Brunch this weekend?
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=
+  \"pe-list-tile pe-list-tile--hoverable pe-list-tile--subtitle\">
     <div class=\"pe-list-tile__primary\" style=\"\">
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
@@ -1185,6 +1294,51 @@ exports[`test Options: header.sticky 1`] = `
 `;
 
 exports[`test Themed list (colors and padding) -- dark theme class 1`] = `
+"<div class="pe-list pe-list--borders tests-lists-themed-list">
+  <div class=
+  "pe-list-tile pe-list-tile--subtitle tests-lists-themed-list-tile">
+  <div class="pe-list-tile__primary" style="">
+      <div class="pe-list-tile__content">
+        <div class="pe-list-tile__title">
+          Jennifer Barker
+        </div>
+        <div class="pe-list-tile__subtitle">
+          Starting post doc
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=
+  "pe-list-tile pe-list-tile--subtitle tests-lists-themed-list-tile">
+  <div class="pe-list-tile__primary" style="">
+      <div class="pe-list-tile__content">
+        <div class="pe-list-tile__title">
+          Ali Connors
+        </div>
+        <div class="pe-list-tile__subtitle">
+          Brunch this weekend?
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=
+  "pe-list-tile pe-list-tile--subtitle tests-lists-themed-list-tile">
+  <div class="pe-list-tile__primary" style="">
+      <div class="pe-list-tile__content">
+        <div class="pe-list-tile__title">
+          Grace VanDam
+        </div>
+        <div class="pe-list-tile__subtitle">
+          Binge watching...
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Themed list (colors and padding) -- dark tone class 1`] = `
 "<div class=\"pe-list pe-list--borders tests-lists-themed-list\">
   <div class=
   \"pe-list-tile pe-list-tile--subtitle tests-lists-themed-list-tile\">

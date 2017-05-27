@@ -133,9 +133,7 @@ Change CSS using the CSS classes in `polythene-core-list/src/classes.js`
 Class names can be imported with:
 
 ~~~javascript
-import { CoreList } from "polythene-core-list";
-
-// CoreList.classes
+import { classes } from "polythene-core-list";
 ~~~
 
 #### Style

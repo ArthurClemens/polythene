@@ -187,13 +187,13 @@ var view = function view(_ref) {
 
   var element = attrs.element || "div";
   var props = _extends({}, filterSupportedAttributes(attrs), {
-    class: [classes.component, attrs.fullWidth ? classes.searchFullWidth : classes.searchInset, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.class].join(" ")
+    className: [classes.component, attrs.fullWidth ? classes.searchFullWidth : classes.searchInset, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.class].join(" ")
   }, attrs.events);
   var searchState = getNameOfState(state.searchState);
   var buttons = (attrs.buttons || {})[searchState] || {};
   var textfieldAttrs = attrs.textfield || {};
   var content = m("div", {
-    class: classes.content
+    className: classes.content
   }, [buttons.before, m(textfield, _extends({}, textfieldAttrs, {
     getState: function getState(newState) {
       state.searchState = _extends({}, newState);

@@ -1,4 +1,4 @@
-import { CoreMenu } from "polythene-core-menu";
+import { classes as coreMenuClasses } from "polythene-core-menu";
 
 export default {
   component:         "pe-dialog",
@@ -20,5 +20,5 @@ export default {
   visible:           "pe-dialog--visible",
 
   // lookup
-  menuContent:       CoreMenu.classes.content,
+  menuContent:       coreMenuClasses.content,
 };

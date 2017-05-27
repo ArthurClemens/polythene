@@ -11,7 +11,7 @@ const mithrilTests = ({ List, Icon, ListTile, renderer: h }) => {
       front: h(Icon, {
         src: `http://arthurclemens.github.io/assets/polythene/examples/${filename}.png`,
         avatar: true,
-        type: "large"
+        size: "large"
       }),
       url: {
         href: "/",

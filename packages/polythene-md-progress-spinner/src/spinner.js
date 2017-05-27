@@ -73,7 +73,7 @@ const view = ({ attrs }) => {
 
   attrs.content = m("div",
     {
-      class: classes.animation,
+      className: classes.animation,
       style: {
         width: size + "px",
         height: size + "px"
@@ -81,10 +81,10 @@ const view = ({ attrs }) => {
     },
     [
       m("div", {
-        class: [classes.circle, classes.circleLeft].join(" ")
+        className: [classes.circle, classes.circleLeft].join(" ")
       }),
       m("div", {
-        class: [classes.circle, classes.circleRight].join(" ")
+        className: [classes.circle, classes.circleRight].join(" ")
       })
     ]
   );

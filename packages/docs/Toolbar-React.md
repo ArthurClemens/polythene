@@ -150,9 +150,7 @@ Change CSS using the CSS classes in `polythene-core-toolbar/src/classes.js`
 Class names can be imported with:
 
 ~~~javascript
-import { CoreToolbar } from "polythene-core-toolbar";
-
-// CoreToolbar.classes
+import { classes } from "polythene-core-toolbar";
 ~~~
 
 #### Style

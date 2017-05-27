@@ -1,9 +1,9 @@
 import { filterSupportedAttributes, hide, show, subscribe, unsubscribe } from 'polythene-core';
 import { mixin, styler } from 'polythene-core-css';
-import { CoreListTile } from 'polythene-core-list-tile';
+import { classes } from 'polythene-core-list-tile';
 import { vars } from 'polythene-theme';
 
-var classes = {
+var classes$1 = {
   component: "pe-menu",
 
   // elements
@@ -18,8 +18,8 @@ var classes = {
   width_n: "pe-menu--width-",
 
   // lookup
-  listTile: CoreListTile.classes.component,
-  selectedListTile: CoreListTile.classes.selected
+  listTile: classes.component,
+  selectedListTile: classes.selected
 };
 
 var rgba = vars.rgba;
@@ -115,7 +115,7 @@ var color = (function (selector, componentVars) {
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var fns = [layout, color];
-var selector = "." + classes.component;
+var selector = "." + classes$1.component;
 
 var customTheme = function customTheme(customSelector, customVars) {
   return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
@@ -136,23 +136,28 @@ var OFFSET_V = -8;
 var DEFAULT_OFFSET_H = 16;
 var MIN_SIZE = 1.5;
 
+var getInitialState = function getInitialState(vnode, createStream) {
+  var dom = createStream();
+  return { dom: dom };
+};
+
 var positionMenu = function positionMenu(state, attrs) {
   var targetEl = document.querySelector(attrs.target);
   if (!targetEl) {
     return;
   }
   var offsetH = attrs.offset !== undefined ? attrs.offset : DEFAULT_OFFSET_H;
-  var menuEl = state.dom;
+  var menuEl = state.dom();
   if (!menuEl) {
     return;
   }
-  var contentEl = state.dom.querySelector("." + classes.content);
+  var contentEl = state.dom().querySelector("." + classes$1.content);
   var origin = attrs.origin || "top-left";
   var reposition = attrs.reposition === false ? false : true;
   var positionOffset = 0;
   if (reposition) {
-    var firstItem = contentEl.querySelectorAll("." + classes.listTile)[0];
-    var selectedItem = contentEl.querySelector("." + classes.selectedListTile);
+    var firstItem = contentEl.querySelectorAll("." + classes$1.listTile)[0];
+    var selectedItem = contentEl.querySelector("." + classes$1.selectedListTile);
     if (firstItem && selectedItem) {
       // calculate v position: menu should shift upward relative to the first item
       var firstItemRect = firstItem.getBoundingClientRect();
@@ -202,8 +207,8 @@ var positionMenu = function positionMenu(state, attrs) {
 var showMenu = function showMenu(state, attrs) {
   attrs.setTransitioning(true);
   return show(_extends({}, attrs, {
-    el: state.dom,
-    showClass: classes.visible
+    el: state.dom(),
+    showClass: classes$1.visible
   })).then(function () {
     attrs.setTransitioning(false);
     attrs.setVisible(true);
@@ -216,8 +221,8 @@ var showMenu = function showMenu(state, attrs) {
 var hideMenu = function hideMenu(state, attrs) {
   attrs.setTransitioning(true);
   return hide(_extends({}, attrs, {
-    el: state.dom,
-    showClass: classes.visible
+    el: state.dom(),
+    showClass: classes$1.visible
   })).then(function () {
     attrs.setTransitioning(false);
     attrs.setVisible(false);
@@ -232,7 +237,7 @@ var unifySize = function unifySize(size) {
 };
 
 var widthClass = function widthClass(size) {
-  return classes.width_n + size.toString().replace(".", "-");
+  return classes$1.width_n + size.toString().replace(".", "-");
 };
 
 var createProps = function createProps(vnode, _ref) {
@@ -240,7 +245,7 @@ var createProps = function createProps(vnode, _ref) {
 
   var attrs = vnode.attrs;
   return _extends({}, filterSupportedAttributes(attrs), {
-    className: [classes.component, attrs.permanent ? classes.permanent : null, attrs.target ? classes.target : null, attrs.size ? widthClass(unifySize(attrs.size)) : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [classes$1.component, attrs.permanent ? classes$1.permanent : null, attrs.target ? classes$1.target : null, attrs.size ? widthClass(unifySize(attrs.size)) : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
 
@@ -253,7 +258,7 @@ var handleSubscriptions = function handleSubscriptions(vnode, which) {
   };
 
   var handleDismissTap = function handleDismissTap(e) {
-    if (e.target === state.dom) {
+    if (e.target === state.dom()) {
       return;
     }
     deActivateDismissTap();
@@ -303,7 +308,7 @@ var onMount = function onMount(vnode) {
   }
   var state = vnode.state;
   var attrs = vnode.attrs;
-  state.dom = vnode.dom;
+  state.dom(vnode.dom);
   if (!attrs.permanent) {
     handleSubscriptions(vnode, "mount");
   }
@@ -327,7 +332,7 @@ var createContent = function createContent(vnode, _ref2) {
   var attrs = vnode.attrs;
   var z = attrs.z !== undefined ? attrs.z : SHADOW_Z;
   return h("div", (_h = {
-    className: classes.content
+    className: classes$1.content
   }, _defineProperty(_h, k.onclick, function (e) {
     return e.preventDefault();
   }), _defineProperty(_h, "style", attrs.style), _h), [z > 0 && h(Shadow, {
@@ -336,10 +341,14 @@ var createContent = function createContent(vnode, _ref2) {
   }), attrs.content ? attrs.content : vnode.children]);
 };
 
-var CoreMenu = {
-  theme: theme, element: element, classes: classes, vars: vars$1,
-  createProps: createProps, createContent: createContent,
-  onMount: onMount, onUnMount: onUnMount
-};
+var menu = Object.freeze({
+	element: element,
+	theme: theme,
+	getInitialState: getInitialState,
+	createProps: createProps,
+	onMount: onMount,
+	onUnMount: onUnMount,
+	createContent: createContent
+});
 
-export { CoreMenu };
+export { menu as CoreMenu, classes$1 as classes, vars$1 as vars };

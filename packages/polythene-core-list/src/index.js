@@ -1,9 +1,5 @@
-import { createProps, createContent, theme, element } from "./list";
-import classes from "./classes";
-import vars from "./theme/vars";
+import * as CoreList from "./list";
 
-export const CoreList = {
-  createProps, createContent, theme, element,
-  classes,
-  vars
-};
+export { CoreList };
+export { default as classes } from "./classes";
+export { default as vars } from "./theme/vars";

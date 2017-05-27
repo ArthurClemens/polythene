@@ -73,7 +73,7 @@ const createView = (state, attrs) => {
   const props = Object.assign({},
     filterSupportedAttributes(attrs),
     {
-      class: [
+      className: [
         classes.component,
         attrs.instanceClass,
         classForType(attrs.type),
@@ -104,7 +104,7 @@ const createView = (state, attrs) => {
     attrs.raised && attrs.content
       ? m(Shadow, { z: attrs.z })
       : null,
-    attrs.content || m("div", { class: classes.animation }, "Specific spinner missing")
+    attrs.content || m("div", { className: classes.animation }, "Specific spinner missing")
   ];
 
   return m(element, props, [attrs.before, content, attrs.after]);
@@ -138,7 +138,7 @@ const view = ({ state, attrs }) => {
   }
   return state.visible
     ? createView(state, attrs)
-    : m("span", { class: classes.placeholder });
+    : m("span", { className: classes.placeholder });
 };
 
 export default {

@@ -10,6 +10,7 @@ import { rules as css } from "./styles";
 import { renderer as h, List, Toolbar, ListTile } from "polythene-react";
 import Page from "./Page";
 import routes from "./routes";
+import ScrollToTop from "./ScrollToTop";
 
 addTypography();
 addRoboto();
@@ -69,12 +70,12 @@ const routerMap = routes.map(route =>
 
 const App = () => (
   h(Router, null, 
-    h("div", routerMap)
+    h(ScrollToTop, null,
+      h("div", routerMap)
+    )
   )
 );
 
 const mountNode = document.querySelector("#app");
-ReactDOM.render((
-  h(App)
-), mountNode);
+ReactDOM.render(h(App), mountNode);
 

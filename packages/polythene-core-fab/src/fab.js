@@ -16,9 +16,10 @@ export const createProps = (vnode, { keys: k, renderer: h, Icon }) => {
   return Object.assign(
     {},
     {
-      content: h("div", {
-        className: classes.content
-      }, content),
+      content: h("div",
+        { className: classes.content },
+        content
+      ),
       parentClassName: [
         classes.component,
         attrs.mini ? classes.mini : null,

@@ -6,14 +6,14 @@ export const element = "div";
 
 export const theme = customTheme;
 
-const typeClasses = {
+const sizeClasses = {
   small:   classes.small,
   regular: classes.regular,
   medium:  classes.medium,
   large:   classes.large
 };
 
-const classForType = (mode = "regular") => typeClasses[mode];
+const classForSize = (size = "regular") => sizeClasses[size];
 
 export const createProps = (vnode, { keys: k }) => {
   const attrs = vnode.attrs;
@@ -23,7 +23,7 @@ export const createProps = (vnode, { keys: k }) => {
     {
       className: [
         classes.component,
-        classForType(attrs.type),
+        classForSize(attrs.size),
         attrs.avatar ? classes.avatar : null,
         attrs.tone === "dark" ? "pe-dark-tone" : null,
         attrs.tone === "light" ? "pe-light-tone" : null,

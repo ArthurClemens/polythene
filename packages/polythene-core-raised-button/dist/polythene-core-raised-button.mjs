@@ -112,12 +112,17 @@ var theme = customTheme;
 
 var MAX_Z = 5;
 
-var getInitialState = function getInitialState(attrs) {
-  var z = attrs.z !== undefined ? attrs.z : 1;
+var getInitialState = function getInitialState(vnode, createStream) {
+  var attrs = vnode.attrs;
+  var zValue = attrs.z !== undefined ? attrs.z : 1;
+  var z = createStream(zValue);
+  var zBase = createStream(zValue);
+  var tapEventsInited = createStream(false);
   return {
-    zBase: z,
     z: z,
-    tapEventsInited: false
+    zBase: zBase,
+    tapEventsInited: tapEventsInited,
+    redrawOnUpdate: createStream.merge([z])
   };
 };
 
@@ -130,16 +135,16 @@ subscribe(touchEndEvent, function () {
 });
 
 var animateZ = function animateZ(which, vnode) {
-  var zBase = vnode.state.zBase;
+  var zBase = vnode.state.zBase();
   var increase = vnode.attrs.increase || 1;
-  var z = vnode.state.z;
+  var z = vnode.state.z();
   if (which === "down" && zBase < MAX_Z) {
     z = Math.min(zBase + increase, MAX_Z);
   } else if (which === "up") {
     z = Math.max(z - increase, zBase);
   }
-  if (z !== vnode.state.z) {
-    vnode.updateState("z", z);
+  if (z !== vnode.state.z()) {
+    vnode.state.z(z);
   }
 };
 
@@ -191,22 +196,25 @@ var createContent = function createContent() {
 };
 
 var onMount = function onMount(vnode) {
-  if (vnode.dom && !vnode.attrs.disabled && !vnode.state.inactive && !vnode.state.tapEventsInited) {
+  if (vnode.dom && !vnode.attrs.disabled && !vnode.attrs.inactive && !vnode.state.tapEventsInited()) {
     initTapEvents(vnode);
-    vnode.state.tapEventsInited = true;
+    vnode.state.tapEventsInited(true);
   }
 };
 
 var onUnmount = function onUnmount(vnode) {
-  if (vnode.state.tapEventsInited) {
+  if (vnode.state.tapEventsInited()) {
     clearTapEvents(vnode);
   }
 };
 
-var CoreRaisedButton = {
-  getInitialState: getInitialState, createProps: createProps, createContent: createContent, onMount: onMount, onUnmount: onUnmount, theme: theme,
-  classes: classes,
-  vars: vars$1
-};
+var raisedButton = Object.freeze({
+	theme: theme,
+	getInitialState: getInitialState,
+	createProps: createProps,
+	createContent: createContent,
+	onMount: onMount,
+	onUnmount: onUnmount
+});
 
-export { CoreRaisedButton };
+export { raisedButton as CoreRaisedButton, classes, vars$1 as vars };

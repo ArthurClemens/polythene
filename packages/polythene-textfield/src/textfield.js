@@ -128,7 +128,7 @@ const view = ({state, attrs}) => {
     {},
     filterSupportedAttributes(attrs),
     {
-      class: [
+      className: [
         classes.component,
         isInvalid ? classes.stateInvalid : "",
         state.focus() ? classes.stateFocused : "",
@@ -157,10 +157,10 @@ const view = ({state, attrs}) => {
   );
 
   const requiredIndicator = attrs.required && attrs.requiredIndicator !== ""
-    ? m("span", { class: classes.requiredIndicator }, attrs.requiredIndicator || "*")
+    ? m("span", { className: classes.requiredIndicator }, attrs.requiredIndicator || "*")
     : null;
   const optionalIndicator = !attrs.required && attrs.optionalIndicator
-    ? m("span", { class: classes.optionalIndicator }, attrs.optionalIndicator)
+    ? m("span", { className: classes.optionalIndicator }, attrs.optionalIndicator)
     : null;
   const label = attrs.label
     ? [attrs.label, requiredIndicator, optionalIndicator]
@@ -168,10 +168,10 @@ const view = ({state, attrs}) => {
 
   const content = [
     m("div", {
-      class: classes.inputArea
+      className: classes.inputArea
     }, [
       label ? m("label", {
-        class: classes.label,
+        className: classes.label,
         // In IE10 the label catches click events on the field
         // the function causes the input to get focus
 
@@ -186,7 +186,7 @@ const view = ({state, attrs}) => {
       m(inputType, Object.assign(
         {},
         {
-          class: classes.input,
+          className: classes.input,
           disabled: attrs.disabled
         },
         type ? { type } : null,
@@ -304,16 +304,16 @@ const view = ({state, attrs}) => {
         attrs.rows !== undefined ?      { rows: attrs.rows } : null
       ))
     ]),
-    attrs.counter ? m("div", { class: classes.counter }, state.value.length + " / " + attrs.counter) : null,
+    attrs.counter ? m("div", { className: classes.counter }, state.value.length + " / " + attrs.counter) : null,
     attrs.help && !showError
       ? m("div", {
-        class: [classes.help, attrs.focusHelp ? classes.focusHelp : ""].join(" ")
+        className: [classes.help, attrs.focusHelp ? classes.focusHelp : ""].join(" ")
       }, attrs.help)
       : null,
     showError
-      ? m("div", { class: classes.error }, state.error)
+      ? m("div", { className: classes.error }, state.error)
       : (validates && !attrs.help)
-        ? m("div", { class: classes.errorPlaceholder })
+        ? m("div", { className: classes.errorPlaceholder })
         : null
   ];
   return m(element, props, [attrs.before, content, attrs.after]);

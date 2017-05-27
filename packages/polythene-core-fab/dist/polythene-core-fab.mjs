@@ -110,9 +110,7 @@ var createProps = function createProps(vnode, _ref) {
   var attrs = vnode.attrs;
   var content = attrs.content ? attrs.content : attrs.icon ? h(Icon, attrs.icon) : attrs.children || vnode.children;
   return _extends({}, {
-    content: h("div", {
-      className: classes.content
-    }, content),
+    content: h("div", { className: classes.content }, content),
     parentClassName: [classes.component, attrs.mini ? classes.mini : null, attrs.className || attrs[k.class]].join(" "),
     // defaults
     ripple: {
@@ -130,10 +128,10 @@ var createContent = function createContent() {
   return null;
 };
 
-var CoreFAB = {
-  createProps: createProps, createContent: createContent, theme: theme,
-  classes: classes,
-  vars: vars$1
-};
+var fab = Object.freeze({
+	theme: theme,
+	createProps: createProps,
+	createContent: createContent
+});
 
-export { CoreFAB };
+export { fab as CoreFAB, classes, vars$1 as vars };

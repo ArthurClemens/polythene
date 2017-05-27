@@ -1,6 +1,7 @@
 
 export const keys = {
   class:       "class",
+  className:   "class",
   formaction:  "formaction",
   onblur:      "onblur",
   onclick:     "onclick",

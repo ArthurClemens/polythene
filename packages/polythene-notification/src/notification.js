@@ -8,7 +8,7 @@ export default multiple({
   transitions,
   queue:         true,
   defaultId:     "default_notification",
-  class:         classes.component,
+  className:         classes.component,
   element:       `.${classes.holder}`,
   placeholder:   `span.${classes.placeholder}`,
   bodyShowClass: classes.open

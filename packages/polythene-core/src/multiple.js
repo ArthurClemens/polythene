@@ -183,7 +183,7 @@ export const multiple = mOpts => {
     return !candidates.length
       ? m(mOpts.placeholder) // placeholder because we cannot return null
       : m(mOpts.element, {
-        class: attrs.position === "container"
+        className: attrs.position === "container"
           ? "pe-multiple--container"
           : "pe-multiple--screen"
       }, candidates.map(itemData =>

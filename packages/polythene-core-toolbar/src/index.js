@@ -1,9 +1,5 @@
-import { createProps, createContent, theme, element } from "./toolbar";
-import classes from "./classes";
-import vars from "./theme/vars";
+import * as CoreToolbar from "./toolbar";
 
-export const CoreToolbar = {
-  createProps, createContent, theme, element,
-  classes,
-  vars
-};
+export { CoreToolbar };
+export { default as classes } from "./classes";
+export { default as vars } from "./theme/vars";

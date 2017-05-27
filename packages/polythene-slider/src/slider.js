@@ -43,7 +43,7 @@ const generateTickMarks = (min, max, stepSize) => {
   const items = [];
   let s = steps + 1;
   while (s > 0) {
-    items.push(m("div", { class: classes.tick }));
+    items.push(m("div", { className: classes.tick }));
     s--;
   }
   return items;
@@ -144,7 +144,7 @@ const createSlider = (state, attrs, hasTicks, interactiveTrack) => {
     m("div", Object.assign(
       {},
       {
-        class: classes.track,
+        className: classes.track,
         oncreate: ({ dom }) => {
           state.trackEl = dom;
           if (attrs.pin) {
@@ -163,21 +163,21 @@ const createSlider = (state, attrs, hasTicks, interactiveTrack) => {
     ), [
       m("div",
         {
-          class: classes.trackPart + " " + classes.trackPartValue,
+          className: classes.trackPart + " " + classes.trackPartValue,
           style: {
             flex: flexValueCss,
             "-ms-flex": flexValueCss,
             webkitFlex: flexValueCss
           }
         },
-        m("div", { class: classes.trackBar },
-          m("div", { class: classes.trackBarValue })
+        m("div", { className: classes.trackBar },
+          m("div", { className: classes.trackBarValue })
         )
       ),
       m("div", Object.assign(
         {},
         {
-          class: classes.control,
+          className: classes.control,
           oncreate: ({ dom }) => state.controlEl = dom
         },
         attrs.disabled
@@ -221,12 +221,12 @@ const createSlider = (state, attrs, hasTicks, interactiveTrack) => {
           : null
       ),
       attrs.icon
-        ? m("div", { class: classes.thumb }, attrs.icon)
+        ? m("div", { className: classes.thumb }, attrs.icon)
         : null
       ),
       m("div",
         {
-          class: classes.trackPart + " " + classes.trackPartRest,
+          className: classes.trackPart + " " + classes.trackPartRest,
           style: {
             flex: flexRestCss,
             "-ms-flex": flexRestCss,
@@ -234,19 +234,19 @@ const createSlider = (state, attrs, hasTicks, interactiveTrack) => {
             maxWidth: (flexRestValue * 100) + "%" // for IE Edge
           }
         },
-        m("div", { class: classes.trackBar },
-          m("div", { class: classes.trackBarValue })
+        m("div", { className: classes.trackBar },
+          m("div", { className: classes.trackBarValue })
         )
       ),
       hasTicks && !attrs.disabled
-        ? m("div", { class: classes.ticks },
+        ? m("div", { className: classes.ticks },
             generateTickMarks(state.min, state.max, stepCount)
           )
         : null,
       hasTicks && attrs.pin && !attrs.disabled
         ? m("div",
           {
-            class: classes.pin,
+            className: classes.pin,
             value: Math.round(state.value()),
             oncreate: ({ dom }) => state.pinEl = dom
           }
@@ -266,7 +266,7 @@ const view = ({ attrs, state }) => {
   const props = Object.assign({},
     filterSupportedAttributes(attrs),
     {
-      class: [
+      className: [
         classes.component,
         attrs.disabled ? classes.isDisabled : null,
         attrs.pin ? classes.hasPin : null,

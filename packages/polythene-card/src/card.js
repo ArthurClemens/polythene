@@ -16,7 +16,7 @@ const createOverlay = (attrs = {}) => {
     return contentMap[key](o);
   });
   return m("div", {
-    class: [
+    className: [
       classes.overlay,
       attrs.sheet ? classes.overlaySheet : null,
       attrs.tone === "light" ? null : "pe-dark-tone", // default dark tone
@@ -24,10 +24,10 @@ const createOverlay = (attrs = {}) => {
     ].join(" ")
   }, [
     m(element, {
-      class: [classes.overlayContent, attrs.class].join(" ")
+      className: [classes.overlayContent, attrs.class].join(" ")
     }, content),
     m("div", {
-      class: classes.mediaDimmer
+      className: classes.mediaDimmer
     })
   ]);
 };
@@ -36,7 +36,7 @@ const createText = o => {
   const attrs = o.text || {};
   const element = attrs.element || "div";
   return m(element, {
-    class: [
+    className: [
       classes.text,
       attrs.tight ? classes.textTight : null,
       attrs.class
@@ -112,7 +112,7 @@ const createMedia = o => {
   };
 
   return m(element, {
-    class: [
+    className: [
       classes.media,
       mediaClassForType(attrs.type),
       ratio === "landscape" ? classes.mediaRatioLandscape : classes.mediaRatioSquare,
@@ -121,7 +121,7 @@ const createMedia = o => {
     oncreate: initImage
   }, [
     attrs.content,
-    attrs.overlay ? createOverlay(attrs.overlay) : m("div", {class: classes.mediaDimmer})
+    attrs.overlay ? createOverlay(attrs.overlay) : m("div", {className: classes.mediaDimmer})
   ]);
 };
 
@@ -131,7 +131,7 @@ const createHeader = o => {
     {},
     attrs,
     {
-      class: [classes.header, attrs.class].join(" ")
+      className: [classes.header, attrs.class].join(" ")
     },
     attrs.icon
       ? { front: m(Icon, attrs.icon) }
@@ -151,7 +151,7 @@ const createActions = o => {
   const attrs = o.actions || {};
   const element = attrs.element || "div";
   return m(element, {
-    class: [
+    className: [
       classes.actions,
       actionClassForLayout(attrs.layout),
       attrs.bordered ? classes.actionsBordered : null,
@@ -171,18 +171,18 @@ const createPrimary = o => {
     title: pops =>
       pops.attrs
         ? pops
-        : m("div", { class: classes.title },
+        : m("div", { className: classes.title },
           [
             pops.title ? pops.title : null,
             pops.subtitle
-              ? m("div", { class: classes.subtitle }, pops.subtitle)
+              ? m("div", { className: classes.subtitle }, pops.subtitle)
               : null
           ]
         ),
     media: pops => {
       primaryHasMedia = true;
       return m("div", {
-        class: classes.primaryMedia
+        className: classes.primaryMedia
       }, createMedia({
         media: pops
       }));
@@ -218,7 +218,7 @@ const createPrimary = o => {
     ];
   }
   return m(element, {
-    class: [
+    className: [
       classes.primary,
       attrs.tight ? classes.primaryTight : null,
       primaryHasMedia ? classes.primaryHasMedia : null
@@ -240,7 +240,7 @@ const view = ({attrs}) => {
     {},
     filterSupportedAttributes(attrs),
     {
-      class: [
+      className: [
         classes.component,
         attrs.tone === "dark" ? "pe-dark-tone" : null,
         attrs.tone === "light" ? "pe-light-tone" : null,
@@ -267,7 +267,7 @@ const view = ({attrs}) => {
       animated: true
     }),
     m("div", {
-      class: classes.content
+      className: classes.content
     }, contents)
   ];
   return m(element, props, [attrs.before, content, attrs.after]);

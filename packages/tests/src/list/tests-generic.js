@@ -24,7 +24,7 @@ export default ({ List, ListTile, Icon, renderer: h }) => {
     front: h(Icon, {
       src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
       avatar: true,
-      type: "large"
+      size: "large"
     })
   });
 
@@ -35,7 +35,7 @@ export default ({ List, ListTile, Icon, renderer: h }) => {
     front: h(Icon, {
       src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png",
       avatar: true,
-      type: "large"
+      size: "large"
     })
   });
 
@@ -46,7 +46,7 @@ export default ({ List, ListTile, Icon, renderer: h }) => {
     front: h(Icon, {
       src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-3.png",
       avatar: true,
-      type: "large"
+      size: "large"
     })
   });
 

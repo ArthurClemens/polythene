@@ -66,9 +66,7 @@ Change CSS using the CSS classes in `polythene-core-raised-button/src/classes.js
 Class names can be imported with:
 
 ~~~javascript
-import { CoreRaisedButton } from "polythene-core-raised-button";
-
-// CoreRaisedButton.classes
+import { classes } from "polythene-core-raised-button";
 ~~~
 
 #### Style

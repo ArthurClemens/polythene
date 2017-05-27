@@ -11,13 +11,13 @@ const view = vnode => {
     {},
     attrs,
     {
-      content: m("div", { class: classes.tabContent }, [
+      content: m("div", { className: classes.tabContent }, [
         attrs.icon ? m(Icon, attrs.icon) : null,
         attrs.label
-          ? m("div", { class: classes.label }, m("span", attrs.label))
+          ? m("div", { className: classes.label }, m("span", attrs.label))
           : null,
       ]),
-      class: [
+      className: [
         classes.tab,
         attrs.icon && attrs.label ? classes.tabHasIcon : null,
         attrs.class

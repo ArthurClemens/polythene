@@ -7,6 +7,15 @@ export const element = "div";
 
 export const theme = customTheme;
 
+export const getInitialState = (vnode, createStream) => {
+  const animating = createStream(false);
+  const removeEventListeners = createStream(false);
+  return {
+    animating,
+    removeEventListeners
+  };
+};
+
 export const createProps = (vnode, { keys: k }) => {
   const attrs = vnode.attrs;
   return Object.assign(
@@ -34,22 +43,23 @@ export const onMount = vnode => {
   const wavesEl = vnode.dom.querySelector(`.${classes.waves}`);
   
   const tap = e => {
-    if (state.animating || attrs.disabled) {
+    if (state.animating() || attrs.disabled) {
       return;
     }
-    animation(e, rippleEl, wavesEl, attrs, classes, () => state.animating = false);
-    state.animating = true;
+    animation(e, rippleEl, wavesEl, attrs, classes, () => state.animating(false));
+    state.animating(true);
   };
   const triggerEl = attrs.target
     ? attrs.target()
     : vnode.dom.parentElement;
   triggerEl.addEventListener(touchEndEvent, tap, false);
-  state.removeEventListeners = () =>
-    triggerEl.removeEventListener(touchEndEvent, tap, false);
+  state.removeEventListeners(() => (
+    triggerEl.removeEventListener(touchEndEvent, tap, false)
+  ));
 };
 
 export const onUnmount = ({ state }) =>
-  state.removeEventListeners();
+  state.removeEventListeners()();
 
 export const createContent = (vnode, { renderer: h }) =>
   vnode.attrs.disabled

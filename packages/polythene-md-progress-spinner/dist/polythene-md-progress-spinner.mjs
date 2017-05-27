@@ -171,15 +171,15 @@ var view = function view(_ref) {
   var size = attrs.raised ? paddedSize - 2 * padding : rawSize;
 
   attrs.content = m("div", {
-    class: classes.animation,
+    className: classes.animation,
     style: {
       width: size + "px",
       height: size + "px"
     }
   }, [m("div", {
-    class: [classes.circle, classes.circleLeft].join(" ")
+    className: [classes.circle, classes.circleLeft].join(" ")
   }), m("div", {
-    class: [classes.circle, classes.circleRight].join(" ")
+    className: [classes.circle, classes.circleRight].join(" ")
   })]);
   attrs.instanceClass = classes.component;
   attrs.getPercentage = function (percentage, state) {

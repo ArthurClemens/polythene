@@ -156,6 +156,15 @@ var element = "div";
 
 var theme = customTheme;
 
+var getInitialState = function getInitialState(vnode, createStream) {
+  var animating = createStream(false);
+  var removeEventListeners = createStream(false);
+  return {
+    animating: animating,
+    removeEventListeners: removeEventListeners
+  };
+};
+
 var createProps = function createProps(vnode, _ref) {
   var k = _ref.keys;
 
@@ -175,24 +184,24 @@ var onMount = function onMount(vnode) {
   var wavesEl = vnode.dom.querySelector("." + classes.waves);
 
   var tap = function tap(e) {
-    if (state.animating || attrs.disabled) {
+    if (state.animating() || attrs.disabled) {
       return;
     }
     animation(e, rippleEl, wavesEl, attrs, classes, function () {
-      return state.animating = false;
+      return state.animating(false);
     });
-    state.animating = true;
+    state.animating(true);
   };
   var triggerEl = attrs.target ? attrs.target() : vnode.dom.parentElement;
   triggerEl.addEventListener(touchEndEvent, tap, false);
-  state.removeEventListeners = function () {
+  state.removeEventListeners(function () {
     return triggerEl.removeEventListener(touchEndEvent, tap, false);
-  };
+  });
 };
 
 var onUnmount = function onUnmount(_ref2) {
   var state = _ref2.state;
-  return state.removeEventListeners();
+  return state.removeEventListeners()();
 };
 
 var createContent = function createContent(vnode, _ref3) {
@@ -200,10 +209,14 @@ var createContent = function createContent(vnode, _ref3) {
   return vnode.attrs.disabled ? null : h("div", { className: classes.mask }, h("div", { className: classes.waves }));
 };
 
-var CoreRipple = {
-  createProps: createProps, createContent: createContent, onMount: onMount, onUnmount: onUnmount, theme: theme, element: element,
-  classes: classes,
-  vars: vars$1
-};
+var ripple = Object.freeze({
+	element: element,
+	theme: theme,
+	getInitialState: getInitialState,
+	createProps: createProps,
+	onMount: onMount,
+	onUnmount: onUnmount,
+	createContent: createContent
+});
 
-export { CoreRipple };
+export { ripple as CoreRipple, classes, vars$1 as vars };

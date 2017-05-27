@@ -118,16 +118,16 @@ const secondaryContent = (h, requiresKeys, Icon, secondaryAttrs = {}) => {
     Object.assign(
       {},
       secondaryAttrs.url,
-      requiresKeys ? { key: "secondary" } : null,
       {
         className: classes.secondary
       },
+      requiresKeys ? { key: "secondary" } : null,
       filterSupportedAttributes(secondaryAttrs)
     ),
     h("div",
       { className: classes.content },
       [
-        secondaryAttrs.icon ? h(Icon, requiresKeys ? { key: "icon" } : null, secondaryAttrs.icon) : null,
+        secondaryAttrs.icon ? h(Icon, secondaryAttrs.icon) : null,
         secondaryAttrs.content ? secondaryAttrs.content : null
       ]
     )
@@ -145,17 +145,11 @@ export const createContent = (vnode, { renderer: h, requiresKeys, keys: k, Rippl
   delete primaryAttrs[k.class];
   return [
     attrs.ink && !attrs.disabled
-      ? h(Ripple, Object.assign(
-        {},
-        requiresKeys ? { key: "ripple" } : null
-      ), attrs.ripple)
+      ? h(Ripple, Object.assign({}, attrs.ripple, requiresKeys ? { key: "ripple" } : null))
       : null,
     primaryContent(h, requiresKeys, primaryAttrs, attrs.children || vnode.children),
     attrs.secondary
-      ? secondaryContent(h, requiresKeys, Icon, Object.assign(
-        {},
-        requiresKeys ? { key: "secondary" } : null
-      ), attrs.secondary)
+      ? secondaryContent(h, requiresKeys, Icon, attrs.secondary)
       : null
   ];
 };

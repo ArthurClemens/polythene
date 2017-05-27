@@ -44,7 +44,7 @@ const mithrilTests = ({ Icon, ListTile, renderer: h }) => {
         secondary: {
           icon: {
             svg: trustedIconStars,
-            type: "medium"
+            size: "medium"
           },
           url: {
             href: "/",
@@ -62,7 +62,7 @@ const mithrilTests = ({ Icon, ListTile, renderer: h }) => {
         front: h(Icon, {
           src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
           avatar: true,
-          type: "large"
+          size: "large"
         }),
         secondary: {
           icon: {
@@ -88,7 +88,7 @@ const mithrilTests = ({ Icon, ListTile, renderer: h }) => {
         front: h(Icon, {
           src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
           avatar: true,
-          type: "large"
+          size: "large"
         }),
         secondary: {
           icon: {

@@ -13,7 +13,7 @@ export default ({ renderer: h, keys: k, Menu, List, ListTile }) => ({
     vnode.state = {
       show,
       selectedIndex,
-      stream: stream.merge([show, selectedIndex]),
+      redrawOnUpdate: stream.merge([show, selectedIndex]),
       id: "id-" + Math.floor(Math.random() * 1000)
     };
   },
@@ -40,6 +40,7 @@ export default ({ renderer: h, keys: k, Menu, List, ListTile }) => ({
                 title: setting,
                 selected: index === selectedIndex,
                 ink: true,
+                hoverable: true,
                 events: {
                   [k.onclick]: () => state.selectedIndex(index)
                 }

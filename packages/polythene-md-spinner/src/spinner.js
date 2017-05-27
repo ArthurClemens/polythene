@@ -6,7 +6,7 @@ import classes from "./classes";
 const layer = num =>
   m("div",
     {
-      class: [
+      className: [
         classes.layer,
         classes.layerN + num
       ].join(" ")
@@ -14,31 +14,31 @@ const layer = num =>
     [
       m("div",
         {
-          class: [
+          className: [
             classes.circleClipper,
             classes.circleClipperLeft
           ].join(" ")
         },
-        m("div", { class: classes.circle })
+        m("div", { className: classes.circle })
       ),
       m("div",
-        { class: classes.gapPatch },
-        m("div", { class: classes.circle })
+        { className: classes.gapPatch },
+        m("div", { className: classes.circle })
       ),
       m("div",
         {
-          class: [
+          className: [
             classes.circleClipper,
             classes.circleClipperRight
           ].join(" ")
-        }, m("div", { class: classes.circle })
+        }, m("div", { className: classes.circle })
       )
     ]
   );
 
 const view = ({ attrs }) => {
   attrs.content = m("div",
-    { class: classes.animation },
+    { className: classes.animation },
     [1,2,3,4].map(num => layer(num)));
   attrs.instanceClass = classes.component;
   return m(spinner, attrs);

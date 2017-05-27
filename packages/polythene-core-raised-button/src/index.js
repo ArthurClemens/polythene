@@ -1,9 +1,5 @@
-import { getInitialState, createProps, createContent, onMount, onUnmount, theme } from "./raised-button";
-import classes from "./classes";
-import vars from "./theme/vars";
+import * as CoreRaisedButton from "./raised-button";
 
-export const CoreRaisedButton = {
-  getInitialState, createProps, createContent, onMount, onUnmount, theme,
-  classes,
-  vars
-};
+export { CoreRaisedButton };
+export { default as classes } from "./classes";
+export { default as vars } from "./theme/vars";

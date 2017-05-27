@@ -1,5 +1,6 @@
+import interactive from "./components/interactive";
 
-export default ({ Shadow }) => {
+export default ({ Shadow, renderer: h, keys: k }) => {
   return [
     {
       name: "Child node",
@@ -55,6 +56,33 @@ export default ({ Shadow }) => {
       attrs: {
         z: 5
       }
+    },
+
+    {
+      name: "Add to an element",
+      component: {
+        view: () => 
+          h("div", [
+            h("div", "Some element"),
+            h(Shadow)
+          ])
+      },
+    },
+
+    {
+      name: "Interactive option: animated",
+      interactive: true,
+      exclude: true,
+      component: interactive({ h, k, Shadow })
+    },
+
+    // Dark tone
+
+    {
+      name: "Interactive option: animated -- dark tone class",
+      interactive: true,
+      className: "pe-dark-tone",
+      component: interactive({ h, k, Shadow })
     },
   ];
 };

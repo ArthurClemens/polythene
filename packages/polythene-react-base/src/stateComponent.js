@@ -1,62 +1,62 @@
 import { Component } from "react";
 import ReactDOM from "react-dom";
+import stream from "mithril/stream";
 import { renderer } from "./renderer";
 import { keys } from "./keys";
 
 const requiresKeys = true;
 
 export const stateComponent = ({
-  createContent,
-  createProps,
+  createContent = () => ({}),
+  createProps = () => ({}),
   element,
+  component,
   getInitialState = () => ({}),
   onMount = () => {},
   onUnmount = () => {},
-  state = {},
 }) => {
   
   return class extends Component {
     
     constructor(props) {
       super(props);
-      this.state = {
-        now: Date.now()
-      };
-      // Store the state we are interested in in a private property
-      this._state = Object.assign({}, state, getInitialState(props));
+      const protoState = Object.assign(
+        {},
+        component,
+        this.createVirtualNode(),
+        {
+          redrawValues: undefined
+        }
+      );
+      const initialState = getInitialState(protoState, stream);
+      this.state = initialState;
     }
-
+    
     componentDidMount() {
       onMount(this.createVirtualNode());
+      this.state.redrawOnUpdate && this.state.redrawOnUpdate.map(values => (
+        this.setState({ redrawValues: values })
+      ));
     }
 
     componentWillUnmount() {
       onUnmount(this.createVirtualNode());
     }
 
-    updateState(attr, value, callback) {
-      this._state[attr] = value;
-      // Force new render
-      this.setState({
-        now: Date.now()
-      }, callback);
-    }
-
     createVirtualNode() {
       const props = Object.assign({}, this.props);
       return {
-        state: this._state,
+        state: this.state,
         attrs: props,
         children: props.children,
         dom: this.dom,
-        updateState: this.updateState.bind(this)
       };
     }
 
     render() {
       const vnode = this.createVirtualNode();
       return renderer(
-        vnode.attrs.element || element,
+        component || vnode.attrs.element || element,
         Object.assign(
           {},
           createProps(vnode, { renderer, requiresKeys, keys }),

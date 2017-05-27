@@ -107,11 +107,11 @@ var view = function view(_ref) {
   var blades = [];
   for (var i = 0; i < 12; i = i + 1) {
     blades.push(m("div", {
-      class: classes.blade
+      className: classes.blade
     }));
   }
   attrs.content = m("div", {
-    class: classes.blades
+    className: classes.blades
   }, blades);
   attrs.instanceClass = classes.component;
   return m(spinner, attrs);

@@ -79,7 +79,7 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
         front: h(Icon, {
           src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
           avatar: true,
-          type: "large"
+          size: "large"
         })
       }
     },
@@ -90,7 +90,7 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
         title: "Ancillary Justice",
         front: h(Icon, {
           svg: trustedIconStars,
-          type: "medium"
+          size: "medium"
         })
       }
     },
@@ -101,7 +101,7 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
         title: "Ancillary Justice",
         front: h(Icon, {
           svg: trustedIconStars,
-          type: "medium"
+          size: "medium"
         }),
         className: "tests-list-tile-themed-list-tile"
       }
@@ -113,7 +113,7 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
         title: "Ancillary Justice",
         front: h(Icon, {
           svg: trustedIconStars,
-          type: "medium"
+          size: "medium"
         }),
         style: {
           color: "#fff",
@@ -190,7 +190,7 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
         secondary: {
           icon: {
             svg: trustedIconStars,
-            type: "medium"
+            size: "medium"
           }
         }
       }
@@ -201,7 +201,7 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
       attrs: {
         title: "Ancillary Justice",
         secondary: {
-          content: h(Icon, {svg: trustedIconStars})
+          content: h(Icon, { svg: trustedIconStars })
         }
       }
     },
@@ -225,7 +225,7 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
         title: "Ancillary Justice",
         front: h(Icon, {
           svg: trustedIconStars,
-          type: "medium"
+          size: "medium"
         }),
         className: "tests-list-tile-themed-list-tile"
       }
@@ -239,7 +239,7 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
         className: "pe-light-tone",
         front: h(Icon, {
           svg: trustedIconStars,
-          type: "medium"
+          size: "medium"
         })
       }
     },
@@ -252,7 +252,7 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
         tone: "light",
         front: h(Icon, {
           svg: trustedIconStars,
-          type: "medium"
+          size: "medium"
         })
       }
     },

@@ -6,22 +6,29 @@ export const element = "a";
 
 export const theme = customTheme;
 
-export const getInitialState = attrs => ({
-  focus: false,
-  inactive: attrs.inactive,
-  mouseover: false,
-});
+export const getInitialState = (vnode, createStream) => {
+  const attrs = vnode.attrs;
+  const focus = createStream(false);
+  const inactive = createStream(!!attrs.inactive);
+  const mouseover = createStream(false);
+  return {
+    focus,
+    inactive,
+    mouseover,
+    redrawOnUpdate: createStream.merge([focus, inactive, mouseover])
+  };
+};
 
 export const createProps = (vnode, { keys: k }) => {
   const state = vnode.state;
   const attrs = vnode.attrs;
   const disabled = attrs.disabled;
-  const inactive = attrs.inactive || state.inactive;
+  const inactive = attrs.inactive || state.inactive();
   const onClickHandler = attrs.events && attrs.events[k.onclick];
   const handleInactivate = () => (
-    vnode.updateState("inactive", true),
+    vnode.state.inactive(true),
     setTimeout(() => (
-      vnode.updateState("inactive", false)
+      vnode.state.inactive(false)
     ), attrs.inactivate * 1000)
   );
   return Object.assign(
@@ -34,7 +41,7 @@ export const createProps = (vnode, { keys: k }) => {
         disabled ? classes.disabled : null,
         inactive ? classes.inactive : null,
         attrs.borders ? classes.borders : null,
-        state.focus ? classes.focused : null,
+        state.focus() ? classes.focused : null,
         attrs.tone === "dark" ? "pe-dark-tone" : null,
         attrs.tone === "light" ? "pe-light-tone" : null,
         attrs.className || attrs[k.class],
@@ -50,15 +57,15 @@ export const createProps = (vnode, { keys: k }) => {
         true
       ),
       // handle focus events
-      [k.onfocus]: () => vnode.updateState("focus", !state.mouseover),
-      [k.onblur]: () => vnode.updateState("focus", false),
+      [k.onfocus]: () => vnode.state.focus(!state.mouseover()),
+      [k.onblur]: () => vnode.state.focus(false),
       // don't show focus on click (detected by not being in mouse over state)
-      [k.onmouseover]: () => vnode.updateState("mouseover", true),
-      [k.onmouseout]: () => vnode.updateState("mouseover", false),
+      [k.onmouseover]: () => vnode.state.mouseover(true),
+      [k.onmouseout]: () => vnode.state.mouseover(false),
       // if focus, dispatch click event on ENTER
       [k.onkeydown]: e => {
-        if (e.which === 13 && state.focus) {
-          vnode.updateState("focus", false);
+        if (e.which === 13 && state.focus()) {
+          vnode.state.focus(false);
           if (onClickHandler) {
             onClickHandler(e);
           }

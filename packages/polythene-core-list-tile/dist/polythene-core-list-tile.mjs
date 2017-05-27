@@ -348,9 +348,9 @@ var secondaryContent = function secondaryContent(h, requiresKeys, Icon) {
   var secondaryAttrs = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
 
   var element = secondaryAttrs.element ? secondaryAttrs.element : secondaryAttrs.url ? "a" : "div";
-  return h(element, _extends({}, secondaryAttrs.url, requiresKeys ? { key: "secondary" } : null, {
+  return h(element, _extends({}, secondaryAttrs.url, {
     className: classes.secondary
-  }, filterSupportedAttributes(secondaryAttrs)), h("div", { className: classes.content }, [secondaryAttrs.icon ? h(Icon, requiresKeys ? { key: "icon" } : null, secondaryAttrs.icon) : null, secondaryAttrs.content ? secondaryAttrs.content : null]));
+  }, requiresKeys ? { key: "secondary" } : null, filterSupportedAttributes(secondaryAttrs)), h("div", { className: classes.content }, [secondaryAttrs.icon ? h(Icon, secondaryAttrs.icon) : null, secondaryAttrs.content ? secondaryAttrs.content : null]));
 };
 
 var createContent = function createContent(vnode, _ref2) {
@@ -364,13 +364,14 @@ var createContent = function createContent(vnode, _ref2) {
   var primaryAttrs = _extends({}, requiresKeys ? { key: "primary" } : null, attrs);
   delete primaryAttrs.id;
   delete primaryAttrs[k.class];
-  return [attrs.ink && !attrs.disabled ? h(Ripple, _extends({}, requiresKeys ? { key: "ripple" } : null), attrs.ripple) : null, primaryContent(h, requiresKeys, primaryAttrs, attrs.children || vnode.children), attrs.secondary ? secondaryContent(h, requiresKeys, Icon, _extends({}, requiresKeys ? { key: "secondary" } : null), attrs.secondary) : null];
+  return [attrs.ink && !attrs.disabled ? h(Ripple, _extends({}, attrs.ripple, requiresKeys ? { key: "ripple" } : null)) : null, primaryContent(h, requiresKeys, primaryAttrs, attrs.children || vnode.children), attrs.secondary ? secondaryContent(h, requiresKeys, Icon, attrs.secondary) : null];
 };
 
-var CoreListTile = {
-  createProps: createProps, createContent: createContent, theme: theme, element: element,
-  classes: classes,
-  vars: vars$1
-};
+var listTile = Object.freeze({
+	element: element,
+	theme: theme,
+	createProps: createProps,
+	createContent: createContent
+});
 
-export { CoreListTile };
+export { listTile as CoreListTile, classes, vars$1 as vars };

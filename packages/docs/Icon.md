@@ -32,7 +32,7 @@ Displays an icon (image or [SVG](../polythene-svg)).
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **svg**       | either `src` or `svg` must be passed | Object |  | [SVG](SVG.md) options object |
 | **src**       | either `src` or `svg` must be passed | String |  | Icon URL (for `img` only) |
-| **type**      | optional | String | "regular" | Sets the size: either "small" (16px), "regular" (24px), "medium" (32px), "large" (40px). Adds CSS class `pe-icon--small`, etcetera |
+| **size**      | optional | String | "regular" | Sets the size: either "small" (16px), "regular" (24px), "medium" (32px), "large" (40px). Adds CSS class `pe-icon--small`, etcetera |
 | **avatar**    | optional | Boolean | | Set to `true` to add class `pe-icon--avatar` which creates a round image |
 
 

@@ -221,7 +221,7 @@ var hideInstance = function hideInstance(state, opts) {
 var createView = function createView(state, opts) {
   var element = opts.element || "div";
   var props = _extends({}, filterSupportedAttributes(opts), {
-    class: [state.class, opts.tone === "light" ? null : "pe-dark-tone", // default dark tone
+    className: [state.class, opts.tone === "light" ? null : "pe-dark-tone", // default dark tone
     opts.tone === "light" ? "pe-light-tone" : null, opts.containerSelector ? classes.hasContainer : null, opts.layout === "vertical" ? classes.vertical : classes.horizontal, opts.tone === "dark" ? "pe-dark-tone" : null, opts.tone === "light" ? "pe-light-tone" : null, opts.class].join(" "),
     oncreate: function oncreate(_ref) {
       var dom = _ref.dom;
@@ -235,9 +235,9 @@ var createView = function createView(state, opts) {
   });
 
   var content = m("div", {
-    class: classes.content
+    className: classes.content
   }, opts.content || [opts.title ? m("div", {
-    class: classes.title,
+    className: classes.title,
     oncreate: function oncreate(_ref2) {
       var dom = _ref2.dom;
 
@@ -249,7 +249,7 @@ var createView = function createView(state, opts) {
         dom.classList.add(classes.multilineTitle);
       }
     }
-  }, opts.title) : null, opts.action ? m("div", { class: classes.action }, [opts.action]) : null]);
+  }, opts.title) : null, opts.action ? m("div", { className: classes.action }, [opts.action]) : null]);
   return m(element, props, content);
 };
 
@@ -319,7 +319,7 @@ var notification = multiple({
   transitions: transitions,
   queue: true,
   defaultId: "default_notification",
-  class: classes.component,
+  className: classes.component,
   element: "." + classes.holder,
   placeholder: "span." + classes.placeholder,
   bodyShowClass: classes.open

@@ -1,5 +1,3 @@
 # Icon
 
 Core Polythene component.
-
-

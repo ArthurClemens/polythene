@@ -65,6 +65,32 @@ exports[`test Dark tone class + light tone 1`] = `
 </div>
 `;
 
+exports[`test Dark tone class + light tone class 1`] = `
+<div
+  className="pe-list pe-list--borders  pe-list--header    pe-light-tone"
+  style={
+    Object {
+      "background": "#fff",
+    }
+  }>
+  <ListTile
+    className="pe-list__header "
+    title="Friends" />
+  <ListTile
+    hoverable={true}
+    subtitle="Starting post doc"
+    title="Jennifer Barker" />
+  <ListTile
+    hoverable={true}
+    subtitle="Brunch this weekend?"
+    title="Ali Connors" />
+  <ListTile
+    hoverable={true}
+    subtitle="Binge watching..."
+    title="Grace VanDam" />
+</div>
+`;
+
 exports[`test No options 1`] = `
 <div
   className="pe-list       " />
@@ -83,6 +109,27 @@ exports[`test Option: class -- dark theme class 1`] = `
     subtitle="Brunch this weekend?"
     title="Ali Connors" />
   <ListTile
+    subtitle="Binge watching..."
+    title="Grace VanDam" />
+</div>
+`;
+
+exports[`test Option: class -- dark tone class 1`] = `
+<div
+  className="pe-list pe-list--borders  pe-list--header    ">
+  <ListTile
+    className="pe-list__header "
+    title="Friends" />
+  <ListTile
+    hoverable={true}
+    subtitle="Starting post doc"
+    title="Jennifer Barker" />
+  <ListTile
+    hoverable={true}
+    subtitle="Brunch this weekend?"
+    title="Ali Connors" />
+  <ListTile
+    hoverable={true}
     subtitle="Binge watching..."
     title="Grace VanDam" />
 </div>
@@ -299,6 +346,24 @@ exports[`test Options: header, tiles, indent, indentedBorders 1`] = `
 `;
 
 exports[`test Themed list (colors and padding) -- dark theme class 1`] = `
+<div
+  className="pe-list pe-list--borders      tests-lists-themed-list">
+  <ListTile
+    className="tests-lists-themed-list-tile"
+    subtitle="Starting post doc"
+    title="Jennifer Barker" />
+  <ListTile
+    className="tests-lists-themed-list-tile"
+    subtitle="Brunch this weekend?"
+    title="Ali Connors" />
+  <ListTile
+    className="tests-lists-themed-list-tile"
+    subtitle="Binge watching..."
+    title="Grace VanDam" />
+</div>
+`;
+
+exports[`test Themed list (colors and padding) -- dark tone class 1`] = `
 <div
   className="pe-list pe-list--borders      tests-lists-themed-list">
   <ListTile

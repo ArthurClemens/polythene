@@ -153,9 +153,7 @@ Change CSS using the CSS classes in `polythene-core-list-tile/src/classes.js`
 Class names can be imported with:
 
 ~~~javascript
-import { CoreListTile } from "polythene-core-list-tile";
-
-// CoreListTile.classes
+import { classes } from "polythene-core-list-tile";
 ~~~
 
 #### Style

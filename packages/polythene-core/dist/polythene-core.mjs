@@ -410,7 +410,7 @@ var multiple = function multiple(mOpts) {
     document.body.classList[candidates.length ? "add" : "remove"](mOpts.bodyShowClass);
     return !candidates.length ? m(mOpts.placeholder) // placeholder because we cannot return null
     : m(mOpts.element, {
-      class: attrs.position === "container" ? "pe-multiple--container" : "pe-multiple--screen"
+      className: attrs.position === "container" ? "pe-multiple--container" : "pe-multiple--screen"
     }, candidates.map(function (itemData) {
       return m(mOpts.instance, _extends({}, itemData, {
         transitions: mOpts.transitions,

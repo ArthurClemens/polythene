@@ -1,4 +1,4 @@
-import { statefulComponent } from 'polythene-react-base';
+import { stateComponent } from 'polythene-react-base';
 import { CoreIconButton } from 'polythene-core-icon-button';
 import { Icon } from 'polythene-react-icon';
 import { Button } from 'polythene-react-button';
@@ -12,10 +12,10 @@ var createContent = function createContent(vnode, args) {
   return CoreIconButton.createContent(vnode, _extends(args, { Icon: Icon }));
 };
 
-var IconButton = statefulComponent(_extends({}, CoreIconButton, {
+var IconButton = stateComponent(_extends({}, CoreIconButton, {
   createProps: createProps,
   createContent: createContent,
-  element: Button
+  component: Button
 }));
 
 IconButton.theme = CoreIconButton.theme;

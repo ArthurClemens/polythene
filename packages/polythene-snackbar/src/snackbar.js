@@ -8,7 +8,7 @@ export default multiple({
   transitions,
   queue:         true,
   defaultId:     "default_snackbar",
-  class:         classes.component,
+  className:         classes.component,
   element:       `.${classes.holder.replace(/ /g, ".")}`,
   placeholder:   `span.${classes.placeholder.replace(/ /g, ".")}`,
   bodyShowClass: classes.open

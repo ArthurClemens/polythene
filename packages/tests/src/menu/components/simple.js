@@ -9,11 +9,13 @@ export default ({ show, target, h, Menu, List, ListTile, didHide, getState }) =>
     content: h(List, [
       h(ListTile, {
         title: "Yes",
-        ink: true
+        ink: true,
+        hoverable: true,
       }),
       h(ListTile, {
         title: "No",
-        ink: true
+        ink: true,
+        hoverable: true,
       })
     ])
   });

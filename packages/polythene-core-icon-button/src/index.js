@@ -1,9 +1,5 @@
-import { createProps, createContent, theme } from "./icon-button";
-import classes from "./classes";
-import vars from "./theme/vars";
+import * as CoreIconButton from "./icon-button";
 
-export const CoreIconButton = {
-  createProps, createContent, theme,
-  classes,
-  vars
-};
+export { CoreIconButton };
+export { default as classes } from "./classes";
+export { default as vars } from "./theme/vars";

@@ -1,4 +1,4 @@
-import { statefulComponent } from 'polythene-react-base';
+import { stateComponent } from 'polythene-react-base';
 import { CoreButton } from 'polythene-core-button';
 import { Ripple } from 'polythene-react-ripple';
 
@@ -11,7 +11,7 @@ var createContent = function createContent(vnode, args) {
   return CoreButton.createContent(vnode, _extends(args, { Ripple: Ripple }));
 };
 
-var Button = statefulComponent(_extends({}, CoreButton, {
+var Button = stateComponent(_extends({}, CoreButton, {
   createProps: createProps,
   createContent: createContent
 }));

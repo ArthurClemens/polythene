@@ -195,6 +195,12 @@ FAB is now composed from `polythene-raised-button`. This should have no conseque
 
 
 
+### Icon
+
+Option `type` has been replaced with `size`.
+
+
+
 ### Icon Button
 
 CSS class `pe-button__label` has been replaced with `pe-button--icon__content`.

@@ -1,6 +1,6 @@
 /*
 Takes a Mithril component object and returns a React component (for keys oninit and view).
-Automatically redraws when vnode.state.stream exists, and the stream is updated.
+Automatically redraws when the stream `vnode.state.redrawOnUpdate` exists, and the stream is updated.
 
 Example: 
 
@@ -14,7 +14,7 @@ const StateComponent = {
     vnode.state = {
       checked,
       label,
-      stream: stream.merge([checked, label])
+      redrawOnUpdate: stream.merge([checked, label])
     };
   },
   view: vnode => {
@@ -50,7 +50,7 @@ export const MithrilToReact = component => (
     }
     
     componentDidMount() {
-      this.state.state.stream && this.state.state.stream.map(() => (
+      this.state.state.redrawOnUpdate && this.state.state.redrawOnUpdate.map(() => (
         this.forceUpdate()
       ));
     }

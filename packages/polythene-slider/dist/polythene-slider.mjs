@@ -468,7 +468,7 @@ var generateTickMarks = function generateTickMarks(min, max, stepSize) {
   var items = [];
   var s = steps + 1;
   while (s > 0) {
-    items.push(m("div", { class: classes.tick }));
+    items.push(m("div", { className: classes.tick }));
     s--;
   }
   return items;
@@ -570,7 +570,7 @@ var createSlider = function createSlider(state, attrs, hasTicks, interactiveTrac
   var flexRestCss = flexRestValue + " 1 0%";
 
   return [m("div", _extends({}, {
-    class: classes.track,
+    className: classes.track,
     oncreate: function oncreate(_ref) {
       var dom = _ref.dom;
 
@@ -582,14 +582,14 @@ var createSlider = function createSlider(state, attrs, hasTicks, interactiveTrac
       }
     }
   }, interactiveTrack && !attrs.disabled && !isTouch ? { onmousedown: onStartTrack } : null, interactiveTrack && !attrs.disabled && isTouch ? { ontouchstart: onStartTrack } : null), [m("div", {
-    class: classes.trackPart + " " + classes.trackPartValue,
+    className: classes.trackPart + " " + classes.trackPartValue,
     style: {
       flex: flexValueCss,
       "-ms-flex": flexValueCss,
       webkitFlex: flexValueCss
     }
-  }, m("div", { class: classes.trackBar }, m("div", { class: classes.trackBarValue }))), m("div", _extends({}, {
-    class: classes.control,
+  }, m("div", { className: classes.trackBar }, m("div", { className: classes.trackBarValue }))), m("div", _extends({}, {
+    className: classes.control,
     oncreate: function oncreate(_ref2) {
       var dom = _ref2.dom;
       return state.controlEl = dom;
@@ -622,16 +622,16 @@ var createSlider = function createSlider(state, attrs, hasTicks, interactiveTrac
       readRangeData(state);
       updatePinPosition(state);
     }
-  }, !attrs.disabled && !isTouch ? { onmousedown: onInitDrag } : null, !attrs.disabled && isTouch ? { ontouchstart: onInitDrag } : null, attrs.events ? attrs.events : null, hasTicks ? { step: stepCount } : null), attrs.icon ? m("div", { class: classes.thumb }, attrs.icon) : null), m("div", {
-    class: classes.trackPart + " " + classes.trackPartRest,
+  }, !attrs.disabled && !isTouch ? { onmousedown: onInitDrag } : null, !attrs.disabled && isTouch ? { ontouchstart: onInitDrag } : null, attrs.events ? attrs.events : null, hasTicks ? { step: stepCount } : null), attrs.icon ? m("div", { className: classes.thumb }, attrs.icon) : null), m("div", {
+    className: classes.trackPart + " " + classes.trackPartRest,
     style: {
       flex: flexRestCss,
       "-ms-flex": flexRestCss,
       webkitFlex: flexRestCss,
       maxWidth: flexRestValue * 100 + "%" // for IE Edge
     }
-  }, m("div", { class: classes.trackBar }, m("div", { class: classes.trackBarValue }))), hasTicks && !attrs.disabled ? m("div", { class: classes.ticks }, generateTickMarks(state.min, state.max, stepCount)) : null, hasTicks && attrs.pin && !attrs.disabled ? m("div", {
-    class: classes.pin,
+  }, m("div", { className: classes.trackBar }, m("div", { className: classes.trackBarValue }))), hasTicks && !attrs.disabled ? m("div", { className: classes.ticks }, generateTickMarks(state.min, state.max, stepCount)) : null, hasTicks && attrs.pin && !attrs.disabled ? m("div", {
+    className: classes.pin,
     value: Math.round(state.value()),
     oncreate: function oncreate(_ref3) {
       var dom = _ref3.dom;
@@ -651,7 +651,7 @@ var view = function view(_ref4) {
   var hasTicks = attrs.ticks !== undefined && attrs.ticks !== false;
   var interactiveTrack = attrs.interactiveTrack !== undefined ? attrs.interactiveTrack : true;
   var props = _extends({}, filterSupportedAttributes(attrs), {
-    class: [classes.component, attrs.disabled ? classes.isDisabled : null, attrs.pin ? classes.hasPin : null, interactiveTrack ? classes.hasTrack : null, state.isActive ? classes.isActive : null, state.hasFocus ? classes.hasFocus : null, state.fraction() === 0 ? classes.isAtMin : null, hasTicks ? classes.hasTicks : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.class].join(" ")
+    className: [classes.component, attrs.disabled ? classes.isDisabled : null, attrs.pin ? classes.hasPin : null, interactiveTrack ? classes.hasTrack : null, state.isActive ? classes.isActive : null, state.hasFocus ? classes.hasFocus : null, state.fraction() === 0 ? classes.isAtMin : null, hasTicks ? classes.hasTicks : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.class].join(" ")
   });
   var content = createSlider(state, attrs, hasTicks, interactiveTrack);
   return m(element, props, [attrs.before, content, attrs.after]);

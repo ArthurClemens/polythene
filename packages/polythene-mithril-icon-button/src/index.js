@@ -12,8 +12,9 @@ export const IconButton = viewComponent(Object.assign(
   {
     createProps,
     createContent,
-    element: Button,
+    component: Button,
   }
 ));
 
 IconButton.theme = component.theme;
+IconButton.displayName = "IconButton";

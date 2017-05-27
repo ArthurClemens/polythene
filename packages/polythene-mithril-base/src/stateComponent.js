@@ -1,53 +1,38 @@
+import stream from "mithril/stream";
 import { renderer } from "./renderer";
 import { keys } from "./keys";
 
 const requiresKeys = false;
 
 export const stateComponent = ({
-  createContent,
-  createProps,
+  createContent = () => {},
+  createProps = () => {},
   element,
+  component,
   getInitialState = () => ({}),
   onMount = () => {},
   onUnmount = () => {},
-  state = {},
 }) => {
 
-  const createVirtualNode = vnode => 
-    Object.assign(
+  const oninit = vnode => {
+    const protoState = Object.assign(
       {},
-      vnode,
-      vnode.dom ? { dom: vnode.dom } : null,
-      {
-        updateState: updater(vnode)
-      }
+      vnode
     );
-
-  const updater = vnode => (attr, value, callback) => {
-    vnode.state[attr] = value;
-    setTimeout(() => {
-      renderer.redraw();
-      if (callback) {
-        callback();
-      }
-    }, 0);
+    const initialState = getInitialState(protoState, stream);
+    vnode.state = initialState;
+    vnode.state.redrawOnUpdate && vnode.state.redrawOnUpdate.map(() => (
+      renderer.redraw()
+    ));
   };
 
-  const oninit = vnode => 
-    vnode.state = Object.assign(
-      vnode.state, 
-      state,
-      getInitialState(vnode.attrs)
-    );
-
   const view = vnode => {
-    const vnode1 = createVirtualNode(vnode);
     return renderer(
-      vnode.attrs.element || element,
-      createProps(vnode1, { renderer, requiresKeys, keys }),
+      component || vnode.attrs.element || element,
+      createProps(vnode, { renderer, requiresKeys, keys }),
       [
         vnode.attrs.before,
-        createContent(vnode1, { renderer, requiresKeys, keys }),
+        createContent(vnode, { renderer, requiresKeys, keys }),
         vnode.attrs.after
       ]
     );
@@ -55,8 +40,8 @@ export const stateComponent = ({
 
   return {
     view,
-    oninit: vnode => oninit(createVirtualNode(vnode)),
-    oncreate: vnode => onMount(createVirtualNode(vnode)),
-    onremove: vnode => onUnmount(createVirtualNode(vnode))
+    oninit: oninit,
+    oncreate: onMount,
+    onremove: onUnmount
   };
 };

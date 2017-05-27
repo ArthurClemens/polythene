@@ -138,7 +138,8 @@ var createProps = function createProps(vnode, _ref) {
     parentClassName: [attrs.parentClassName || classes.component, attrs.compact ? classes.compact : null].join(" "),
     // defaults
     wash: false,
-    animateOnTap: false
+    animateOnTap: false,
+    element: attrs.element
   }, attrs);
 };
 
@@ -146,10 +147,10 @@ var createContent = function createContent() {
   return null;
 };
 
-var CoreIconButton = {
-  createProps: createProps, createContent: createContent, theme: theme,
-  classes: classes,
-  vars: vars$1
-};
+var iconButton = Object.freeze({
+	theme: theme,
+	createProps: createProps,
+	createContent: createContent
+});
 
-export { CoreIconButton };
+export { iconButton as CoreIconButton, classes, vars$1 as vars };

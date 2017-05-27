@@ -9,7 +9,7 @@ const view = vnode => {
     ? attrs.icon || arrowBackward
     : attrs.icon || arrowForward;
   return m(IconButton, {
-    class: [
+    className: [
       classes.scrollButton,
       attrs.class
     ].join(" "),

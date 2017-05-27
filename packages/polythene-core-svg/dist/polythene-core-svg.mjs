@@ -79,10 +79,11 @@ var createContent = function createContent(vnode) {
   return attrs.content ? attrs.content : attrs.children || vnode.children || attrs;
 };
 
-var CoreSVG = {
-  createProps: createProps, createContent: createContent, theme: theme, element: element,
-  classes: classes,
-  vars: vars
-};
+var svg = Object.freeze({
+	element: element,
+	theme: theme,
+	createProps: createProps,
+	createContent: createContent
+});
 
-export { CoreSVG };
+export { svg as CoreSVG, classes, vars };

@@ -12,7 +12,7 @@ export const FAB = viewComponent(Object.assign(
   {
     createProps,
     createContent,
-    element: RaisedButton,
+    component: RaisedButton,
   }
 ));
 

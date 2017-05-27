@@ -1,9 +1,5 @@
-import { createProps, createContent, theme, element } from "./list-tile";
-import classes from "./classes";
-import vars from "./theme/vars";
+import * as CoreListTile from "./list-tile";
 
-export const CoreListTile = {
-  createProps, createContent, theme, element,
-  classes,
-  vars
-};
+export { CoreListTile };
+export { default as classes } from "./classes";
+export { default as vars } from "./theme/vars";

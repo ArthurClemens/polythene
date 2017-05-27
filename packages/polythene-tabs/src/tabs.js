@@ -165,7 +165,7 @@ const view = vnode => {
     {},
     filterSupportedAttributes(attrs),
     {
-      class: [
+      className: [
         classes.component,
         attrs.scrollable ? classes.scrollable : null,
         state.selectedTabIndex === 0 ? classes.isAtStart : null,
@@ -242,7 +242,7 @@ const view = vnode => {
   const tabRow = attrs.scrollable
     ? tabRowButtons.concat([
       // offset for right scroll button
-      m("div", { class: classes.scrollButtonOffset })
+      m("div", { className: classes.scrollButtonOffset })
     ])
     : tabRowButtons;
 
@@ -252,7 +252,7 @@ const view = vnode => {
       {},
       {
         icon: attrs.scrollIconBackward,
-        class: classes.scrollButtonAtStart,
+        className: classes.scrollButtonAtStart,
         position: "start",
         register: state.registerScrollButton,
         events: { onclick: e => handleScrollButtonClick(state, attrs, e, "backward") }
@@ -262,7 +262,7 @@ const view = vnode => {
       {},
       {
         icon: attrs.scrollIconForward,
-        class: classes.scrollButtonAtEnd,
+        className: classes.scrollButtonAtEnd,
         position: "end",
         register: state.registerScrollButton,
         events: { onclick: e => handleScrollButtonClick(state, attrs, e, "forward") }
@@ -273,14 +273,14 @@ const view = vnode => {
   const tabIndicator = attrs.hideIndicator
     ? null
     : m("div", {
-      class: classes.indicator,
+      className: classes.indicator,
       oncreate: vnode => state.tabIndicatorEl = vnode.dom
     });
 
   const content = [
     attrs.scrollable ? scrollButtonAtStart : null,
     m("div", {
-      class: [
+      className: [
         classes.tabRow,
         attrs.centered ? classes.tabRowCentered : null,
         attrs.scrollable ? classes.tabRowIndent : null

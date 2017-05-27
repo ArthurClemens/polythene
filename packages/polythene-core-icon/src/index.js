@@ -1,9 +1,5 @@
-import { createProps, createContent, theme, element } from "./icon";
-import classes from "./classes";
-import vars from "./theme/vars";
+import * as CoreIcon from "./icon";
 
-export const CoreIcon = {
-  createProps, createContent, theme, element,
-  classes,
-  vars
-};
+export { CoreIcon };
+export { default as classes } from "./classes";
+export { default as vars } from "./theme/vars";

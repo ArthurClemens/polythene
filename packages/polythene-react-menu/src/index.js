@@ -1,5 +1,5 @@
 import { stateComponent, Toggle, renderer as h } from "polythene-react-base";
-import { CoreMenu as component } from "polythene-core-menu";
+import { CoreMenu as component, classes } from "polythene-core-menu";
 import { Shadow } from "polythene-react-shadow";
 
 const createProps = (vnode, args) => component.createProps(vnode, Object.assign(args, { Shadow }));
@@ -18,7 +18,7 @@ export const Menu = props =>
   h(Toggle, Object.assign(
     {},
     {
-      placeholderClassName: component.classes.placeholder,
+      placeholderClassName: classes.placeholder,
       instance: MenuInstance
     },
     props

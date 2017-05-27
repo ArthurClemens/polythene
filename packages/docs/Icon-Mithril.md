@@ -70,7 +70,7 @@ A large collection of such ready to use SVG modules is available at [mmsvg](http
 
 ### Sizes
 
-The size is set with option `type` (4 sizes). Use CSS for more finegrained control.
+The size is set with option `size` (4 sizes). Use CSS for more finegrained control.
 
 
 ### Styling
@@ -101,9 +101,7 @@ Change CSS using the CSS classes in `polythene-core-icon/src/classes.js`
 Class names can be imported with:
 
 ~~~javascript
-import { CoreIcon } from "polythene-core-icon";
-
-// CoreIcon.classes
+import { classes } from "polythene-core-icon";
 ~~~
 
 #### Style

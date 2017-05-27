@@ -154,7 +154,7 @@ var snackbar = multiple({
   transitions: transitions,
   queue: true,
   defaultId: "default_snackbar",
-  class: classes$1.component,
+  className: classes$1.component,
   element: "." + classes$1.holder.replace(/ /g, "."),
   placeholder: "span." + classes$1.placeholder.replace(/ /g, "."),
   bodyShowClass: classes$1.open

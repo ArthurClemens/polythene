@@ -1,9 +1,5 @@
-import { getInitialState, createProps, createContent, theme, element } from "./button";
-import classes from "./classes";
-import vars from "./theme/vars";
+import * as CoreButton from "./button";
 
-export const CoreButton = {
-  getInitialState, createProps, createContent, theme, element,
-  classes,
-  vars
-};
+export { CoreButton };
+export { default as classes } from "./classes";
+export { default as vars } from "./theme/vars";

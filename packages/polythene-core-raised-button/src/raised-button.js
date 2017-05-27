@@ -8,12 +8,17 @@ export const theme = customTheme;
 
 const MAX_Z = 5;
 
-export const getInitialState = attrs => {
-  const z = attrs.z !== undefined ? attrs.z : 1;
+export const getInitialState = (vnode, createStream) => {
+  const attrs = vnode.attrs;
+  const zValue = attrs.z !== undefined ? attrs.z : 1;
+  const z = createStream(zValue);
+  const zBase = createStream(zValue);
+  const tapEventsInited = createStream(false);
   return {
-    zBase: z,
     z,
-    tapEventsInited: false
+    zBase,
+    tapEventsInited,
+    redrawOnUpdate: createStream.merge([z])
   };
 };
 
@@ -24,16 +29,16 @@ let tapStart,
 subscribe(touchEndEvent, () => tapEndAll());
 
 const animateZ = (which, vnode) => {
-  const zBase = vnode.state.zBase;
+  const zBase = vnode.state.zBase();
   const increase = vnode.attrs.increase || 1;
-  let z = vnode.state.z;
+  let z = vnode.state.z();
   if (which === "down" && zBase < MAX_Z) {
     z = Math.min(zBase + increase, MAX_Z);
   } else if (which === "up") {
     z = Math.max(z - increase, zBase);
   }
-  if (z !== vnode.state.z) {
-    vnode.updateState("z", z);
+  if (z !== vnode.state.z()) {
+    vnode.state.z(z);
   }
 };
 
@@ -82,14 +87,14 @@ export const createProps = (vnode, { renderer: h, Shadow }) => {
 export const createContent = () => null;
 
 export const onMount = vnode => {
-  if (vnode.dom && !vnode.attrs.disabled && !vnode.state.inactive && !vnode.state.tapEventsInited) {
+  if (vnode.dom && !vnode.attrs.disabled && !vnode.attrs.inactive && !vnode.state.tapEventsInited()) {
     initTapEvents(vnode);
-    vnode.state.tapEventsInited = true;
+    vnode.state.tapEventsInited(true);
   }
 };
 
 export const onUnmount = vnode => {
-  if (vnode.state.tapEventsInited) {
+  if (vnode.state.tapEventsInited()) {
     clearTapEvents(vnode);
   }
 };

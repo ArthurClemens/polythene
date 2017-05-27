@@ -10,6 +10,18 @@ export default ({ IconButton, Icon, renderer: h }) => {
     color_light: "white"
   });
 
+  const sizeNames = ["small", "regular", "medium", "large"];
+
+  const sizes = (sizes, attrs) => sizes.map(size =>
+    h(IconButton, {
+      icon: Object.assign(
+        {},
+        attrs,
+        { size }
+      )
+    })
+  );
+
   return [
     {
       name: "Child node (icon component)",
@@ -83,43 +95,20 @@ export default ({ IconButton, Icon, renderer: h }) => {
       }
     },
     {
-      name: "Option: type (small)",
-      component: IconButton,
-      attrs: {
-        icon: {
-          svg: { content: trustedIconFavorite },
-          type: "small"
-        }
-      }
-    },
-    {
-      name: "Option: type (regular)",
-      component: IconButton,
-      attrs: {
-        icon: {
-          svg: { content: trustedIconFavorite },
-          type: "regular"
-        }
-      }
-    },
-    {
-      name: "Option: type (medium)",
-      component: IconButton,
-      attrs: {
-        icon: {
-          svg: { content: trustedIconFavorite },
-          type: "medium"
-        }
-      }
-    },
-    {
-      name: "Option: type (large)",
-      component: IconButton,
-      attrs: {
-        icon: {
-          svg: { content: trustedIconFavorite },
-          type: "large"
-        }
+      name: "Option: size",
+      component: {
+        view: () =>
+          h("div",
+            {
+              style: {
+                display: "flex",
+                alignItems: "center"
+              }
+            },
+            sizes(sizeNames, {
+              svg: trustedIconFavorite
+            })
+          )
       }
     },
 

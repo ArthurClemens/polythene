@@ -4,17 +4,18 @@ import { keys } from "./keys";
 const requiresKeys = false;
 
 export const viewComponent = ({
-  createContent,
-  createProps,
+  createContent = () => {},
+  createProps = () => {},
   element,
+  component,
   renderView,
-  onMount,
-  onUnmount,
+  onMount = () => {},
+  onUnmount = () => {},
 }) => {
 
   const view = vnode => {
     return renderer(
-      vnode.attrs.element || element,
+      component || vnode.attrs.element || element,
       createProps(vnode, { renderer, requiresKeys, keys }),
       [
         vnode.attrs.before,

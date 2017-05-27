@@ -185,7 +185,7 @@ var notifyState = function notifyState(state, attrs) {
 var createView = function createView(state, attrs) {
   var element = attrs.element || "div";
   var props = _extends({}, filterSupportedAttributes(attrs), {
-    class: [classes.component, attrs.instanceClass, classForType(attrs.type), attrs.singleColor ? classes.singleColor : null, attrs.raised ? classes.raised : null, attrs.animated ? classes.animated : null, attrs.permanent ? classes.permanent : null, attrs.class].join(" "),
+    className: [classes.component, attrs.instanceClass, classForType(attrs.type), attrs.singleColor ? classes.singleColor : null, attrs.raised ? classes.raised : null, attrs.animated ? classes.animated : null, attrs.permanent ? classes.permanent : null, attrs.class].join(" "),
     oncreate: function oncreate(_ref) {
       var dom = _ref.dom;
 
@@ -207,7 +207,7 @@ var createView = function createView(state, attrs) {
     }, 0);
   }
 
-  var content = [attrs.raised && attrs.content ? m(Shadow, { z: attrs.z }) : null, attrs.content || m("div", { class: classes.animation }, "Specific spinner missing")];
+  var content = [attrs.raised && attrs.content ? m(Shadow, { z: attrs.z }) : null, attrs.content || m("div", { className: classes.animation }, "Specific spinner missing")];
 
   return m(element, props, [attrs.before, content, attrs.after]);
 };
@@ -241,7 +241,7 @@ var view = function view(_ref2) {
       }
     }
   }
-  return state.visible ? createView(state, attrs) : m("span", { class: classes.placeholder });
+  return state.visible ? createView(state, attrs) : m("span", { className: classes.placeholder });
 };
 
 var spinner = {
