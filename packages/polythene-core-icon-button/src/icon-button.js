@@ -24,8 +24,7 @@ export const createProps = (vnode, { renderer: h, Icon }) => {
       ].join(" "),
       // defaults
       wash: false,
-      animateOnTap: false,
-      element: attrs.element
+      animateOnTap: false
     },
     attrs
   );

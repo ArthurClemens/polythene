@@ -5,7 +5,17 @@ import genericTests from "./tests-generic";
 const reactTests = ({ Checkbox, renderer: h }) => { // eslint-disable-line no-unused-vars
 
   return [
-
+    {
+      section: "React JSX tests",
+    },
+    {
+      name: "Option: defaultChecked (JSX)",
+      component: () =>
+        <Checkbox
+          label="Label"
+          defaultChecked
+        />
+    },
   ];
 };
 

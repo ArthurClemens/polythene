@@ -25,7 +25,7 @@ const reactTests = ({ SVG, renderer: h }) => {
     },
     {
       name: "Dark tone class + light tone",
-      className: "test-dark-theme",
+      className: "test-dark-tone",
       component: () =>
         h("div", {
           style: {

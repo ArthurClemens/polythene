@@ -7,6 +7,7 @@ export { default as layoutStyles } from "./layout-styles/tests-mithril";
 export { default as list }         from "./list/tests-mithril";
 export { default as listTile }     from "./list-tile/tests-mithril";
 export { default as menu }         from "./menu/tests-mithril";
+export { default as radioButton }  from "./radio-button/tests-mithril";
 export { default as raisedButton } from "./raised-button/tests-mithril";
 export { default as ripple }       from "./ripple/tests-mithril";
 export { default as shadow }       from "./shadow/tests-mithril";

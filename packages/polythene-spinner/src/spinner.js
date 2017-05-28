@@ -91,7 +91,7 @@ const createView = (state, attrs) => {
         }
       }
     },
-    attrs.events ? attrs.events : null
+    attrs.events
   );
 
   notifyState(state, attrs);

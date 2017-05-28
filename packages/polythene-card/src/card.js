@@ -247,8 +247,8 @@ const view = ({attrs}) => {
         attrs.class
       ].join(" ")
     },
-    attrs.url ? attrs.url : null,
-    attrs.events ? attrs.events : null
+    attrs.url,
+    attrs.events
   );
 
   const contents = Array.isArray(attrs.content)

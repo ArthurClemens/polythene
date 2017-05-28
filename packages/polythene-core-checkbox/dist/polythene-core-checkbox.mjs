@@ -6,7 +6,7 @@ var classes = {
 };
 
 var layout$1 = (function (selector, componentVars) {
-  return layout(selector, componentVars, "checkbox");
+  return layout(selector, componentVars);
 });
 
 var color$1 = (function (selector, componentVars) {

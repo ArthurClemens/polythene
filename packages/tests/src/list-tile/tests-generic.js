@@ -246,7 +246,7 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
     {
       name: "Dark tone class + light tone",
       component: ListTile,
-      className: "test-dark-theme",
+      className: "test-dark-tone",
       attrs: {
         title: "Ancillary Justice",
         tone: "light",

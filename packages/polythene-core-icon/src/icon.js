@@ -30,7 +30,7 @@ export const createProps = (vnode, { keys: k }) => {
         attrs.className || attrs[k.class],
       ].join(" "),
     },
-    attrs.events ? attrs.events : null
+    attrs.events
   );
 };
 

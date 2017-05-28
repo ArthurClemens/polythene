@@ -133,7 +133,7 @@ export default ({ Ripple }) => {
       name: "Dark tone class + light tone",
       interactive: true,
       exclude: true,
-      className: "test-dark-theme",
+      className: "test-dark-tone",
       component: Ripple,
       attrs: {
         constrained: true,

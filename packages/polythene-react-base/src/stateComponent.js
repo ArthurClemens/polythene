@@ -33,6 +33,7 @@ export const stateComponent = ({
     }
     
     componentDidMount() {
+      // this._mounted = true;
       onMount(this.createVirtualNode());
       this.state.redrawOnUpdate && this.state.redrawOnUpdate.map(values => (
         this.setState({ redrawValues: values })
@@ -40,6 +41,7 @@ export const stateComponent = ({
     }
 
     componentWillUnmount() {
+      // this._mounted = false;
       onUnmount(this.createVirtualNode());
     }
 

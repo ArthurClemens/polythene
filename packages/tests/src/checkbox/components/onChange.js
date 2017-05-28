@@ -18,7 +18,7 @@ export default ({ h, Checkbox }) => ({
         }
       },`Checked: ${checked}`),
       h(Checkbox, {
-        getState: newState => state.checked(newState.checked)
+        onChange: newState => state.checked(newState.checked)
       })
     ]);
   }

@@ -138,8 +138,7 @@ var createProps = function createProps(vnode, _ref) {
     parentClassName: [attrs.parentClassName || classes.component, attrs.compact ? classes.compact : null].join(" "),
     // defaults
     wash: false,
-    animateOnTap: false,
-    element: attrs.element
+    animateOnTap: false
   }, attrs);
 };
 

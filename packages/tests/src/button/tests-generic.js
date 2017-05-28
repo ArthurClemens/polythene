@@ -157,7 +157,7 @@ export default ({ Button }) => {
     },
     {
       name: "Option: tone \"dark\" -- dark tone class",
-      className: "test-dark-theme",
+      className: "test-dark-tone",
       component: Button,
       attrs: {
         label: "Label",

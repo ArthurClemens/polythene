@@ -37,67 +37,33 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var element = "div";
 
 var getInitialState = function getInitialState(vnode, createStream) {
-  // Because this module also supports radio buttons (paired control elements)
-  // we won't keep a separate "checked" value but instead keep the checked value
-  // as a HTMLElement checked state.
-
   var attrs = vnode.attrs;
-  var defaultChecked = false;
-  var _value = attrs.value || "1";
-  var inputEl = void 0;
 
-  var inputElChecked = createStream();
+  var defaultChecked = attrs.checked !== undefined ? !!attrs.checked : !!attrs.defaultChecked || false;
 
-  var setInputElChecked = function setInputElChecked(isChecked) {
-    var isQuiet = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-
-    if (inputEl) {
-      inputEl.checked = isChecked;
-      !isQuiet && inputElChecked(isChecked);
-    }
-  };
-
-  var getAttrsChecked = function getAttrsChecked() {
-    if (typeof attrs.checked === "function") {
-      var v = attrs.checked();
-      return v !== undefined ? v : defaultChecked;
-    } else {
-      return attrs.checked !== undefined ? attrs.checked : defaultChecked;
-    }
-  };
-
-  var setInputEl = function setInputEl(el) {
-    inputEl = el;
-    setInputElChecked(getAttrsChecked());
-  };
-
-  var setChecked = function setChecked(isChecked, isQuiet) {
-    setInputElChecked(isChecked, isQuiet);
-    if (attrs.getState) {
-      attrs.getState({
-        checked: inputEl ? inputEl.checked : getAttrsChecked(),
-        value: _value,
-        el: inputEl
-      });
-    }
-  };
+  var checked = createStream(defaultChecked);
+  var redrawOnChange = createStream(defaultChecked);
 
   var toggle = function toggle() {
-    return setChecked(!inputEl.checked);
+    var oldChecked = attrs.checked !== undefined ? attrs.checked : checked();
+    checked(!oldChecked);
+    redrawOnChange(!oldChecked);
   };
-  var checked = function checked() {
-    return inputEl ? inputEl.checked : getAttrsChecked();
+
+  var onChange = attrs.onChange !== undefined ? function (e) {
+    return toggle(), attrs.onChange({
+      event: e,
+      checked: checked(),
+      value: attrs.value
+    });
+  } : function () {
+    return toggle();
   };
 
   return {
-    setInputEl: setInputEl,
-    setChecked: setChecked,
     checked: checked,
-    toggle: toggle,
-    value: function value() {
-      return _value;
-    },
-    redrawOnUpdate: createStream.merge([inputElChecked])
+    onChange: onChange,
+    redrawOnUpdate: createStream.merge([redrawOnChange])
   };
 };
 
@@ -113,25 +79,30 @@ var classForSize = function classForSize() {
   return sizeClasses[size];
 };
 
+var currentState = function currentState(attrs, state) {
+  var checked = attrs.checked !== undefined ? attrs.checked : state.checked();
+  var selectable = attrs.selectable !== undefined ? attrs.selectable(checked) : false;
+  var inactive = attrs.disabled || !selectable;
+  return { checked: checked, inactive: inactive };
+};
+
 var createProps = function createProps(vnode, _ref) {
   var k = _ref.keys;
 
   var attrs = vnode.attrs;
   var state = vnode.state;
-  if (typeof attrs.checked === "function") {
-    state.setChecked(attrs.checked(), true);
-  }
-  var checked = state.checked();
-  var selectable = attrs.selectable !== undefined ? attrs.selectable(checked) : false;
-  var inactive = attrs.disabled || !selectable;
+
+  var _currentState = currentState(attrs, state),
+      checked = _currentState.checked,
+      inactive = _currentState.inactive;
+
   return _extends({}, filterSupportedAttributes(attrs), {
-    className: [classes.component, attrs.instanceClass, checked ? classes.on : classes.off, attrs.disabled ? classes.disabled : null, inactive ? classes.inactive : null, classForSize(attrs.size), attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
-  }, attrs.events ? attrs.events : null);
+    className: [classes.component, attrs.instanceClass, // for instance pe-checkbox-control
+    checked ? classes.on : classes.off, attrs.disabled ? classes.disabled : null, inactive ? classes.inactive : null, classForSize(attrs.size), attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+  }, attrs.events);
 };
 
 var createContent = function createContent(vnode, _ref2) {
-  var _h;
-
   var h = _ref2.renderer,
       k = _ref2.keys,
       Icon = _ref2.Icon,
@@ -139,24 +110,16 @@ var createContent = function createContent(vnode, _ref2) {
 
   var state = vnode.state;
   var attrs = vnode.attrs;
-  var checked = state.checked();
-  var selectable = attrs.selectable !== undefined ? attrs.selectable(checked) : false;
-  var inactive = attrs.disabled || !selectable;
-  var name = attrs.name || "";
-  var controlView = attrs.createControl ? attrs.createControl({ h: h, k: k, checked: checked, toggle: state.toggle, attrs: attrs, Icon: Icon, IconButton: IconButton }) : null;
 
-  return [h("input", (_h = {
-    className: classes.input,
-    name: name,
-    value: state.value(),
-    type: attrs.type }, _defineProperty(_h, k.tabindex, -1), _defineProperty(_h, "checked", checked), _defineProperty(_h, "onChange", function onChange() {}), _defineProperty(_h, "key", "input"), _h)), h("label", {
+  var _currentState2 = currentState(attrs, state),
+      inactive = _currentState2.inactive;
+
+  var controlView = attrs.createControl ? attrs.createControl({ h: h, k: k, inactive: inactive, onChange: state.onChange, attrs: attrs, Icon: Icon, IconButton: IconButton }) : null;
+
+  return h("label", {
     className: classes.formLabel,
     key: "label"
-  }, [controlView, attrs.label ? h("." + classes.label, inactive ? null : _defineProperty({}, k.onclick, state.toggle), attrs.label) : null])];
-};
-
-var onMount = function onMount(vnode) {
-  return vnode.state.setInputEl(vnode.dom.querySelector("input"));
+  }, [controlView, attrs.label ? h("." + classes.label, inactive ? null : _defineProperty({}, k.onclick, state.onChange), attrs.label) : null]);
 };
 
 var createIcon = function createIcon(h, iconType, attrs, className) {
@@ -171,8 +134,8 @@ var createControl = function createControl(_ref4) {
   var h = _ref4.h,
       k = _ref4.k,
       attrs = _ref4.attrs,
-      checked = _ref4.checked,
-      toggle = _ref4.toggle,
+      inactive = _ref4.inactive,
+      onChange = _ref4.onChange,
       Icon = _ref4.Icon,
       IconButton = _ref4.IconButton;
   return h("div", { className: classes.box }, h(IconButton, _extends({}, {
@@ -183,8 +146,9 @@ var createControl = function createControl(_ref4) {
     }),
     ripple: { center: true },
     disabled: attrs.disabled,
-    events: _defineProperty({}, k.onclick, toggle)
-  }, attrs.selectable !== undefined ? { inactive: !attrs.selectable(checked) } : null, attrs.iconButton // for example for hover behaviour
+    events: _defineProperty({}, k.onclick, onChange),
+    inactive: inactive
+  }, attrs.iconButton // for example for hover behaviour
   )));
 };
 
@@ -193,7 +157,6 @@ var selectionControl = Object.freeze({
 	getInitialState: getInitialState,
 	createProps: createProps,
 	createContent: createContent,
-	onMount: onMount,
 	createControl: createControl
 });
 
@@ -281,80 +244,87 @@ var inactiveButton = function inactiveButton() {
   };
 };
 
-var layout = (function (selector, componentVars, type) {
-  var _selector;
-
-  return [_defineProperty$1({}, selector, (_selector = {
+var layout = (function (selector, componentVars) {
+  return [_defineProperty$1({}, selector, {
     display: "inline-block",
     boxSizing: "border-box",
-    margin: 0,
-    padding: 0
-
-  }, _defineProperty$1(_selector, " input[type=" + type + "].pe-control__input", {
-    appearance: "none",
-    lineHeight: componentVars.label_height + "px",
-    // Hide input element
-    position: "absolute",
-    zIndex: "-1",
-    width: 0,
-    height: 0,
     margin: 0,
     padding: 0,
-    opacity: 0,
-    border: "none",
-    pointerEvents: "none"
-  }), _defineProperty$1(_selector, " .pe-control__form-label", [flex.layoutHorizontal, flex.layoutCenter, {
-    position: "relative",
-    cursor: "pointer",
-    fontSize: componentVars.label_font_size + "px",
-    lineHeight: componentVars.label_height + "px",
-    margin: 0,
-    color: "inherit",
 
-    ":focus": {
-      outline: 0
-    }
-  }]), _defineProperty$1(_selector, ".pe-control--inactive", {
-    " .pe-control__form-label": {
-      cursor: "default"
-    }
-  }), _defineProperty$1(_selector, " .pe-control__box", {
-    position: "relative",
-    display: "inline-block",
-    boxSizing: "border-box",
-    width: componentVars.label_height + "px",
-    height: componentVars.label_height + "px",
-    color: "inherit",
+    " .pe-control__form-label": [flex.layoutHorizontal, flex.layoutCenter, {
+      position: "relative",
+      cursor: "pointer",
+      fontSize: componentVars.label_font_size + "px",
+      lineHeight: componentVars.label_height + "px",
+      margin: 0,
+      color: "inherit",
 
-    ":focus": {
-      outline: 0
-    }
-  }), _defineProperty$1(_selector, " .pe-button.pe-control__button", [mixin.defaultTransition("opacity", componentVars.animation_duration), {
-    position: "absolute",
-    left: -((componentVars.button_size - componentVars.icon_size) / 2) + "px",
-    top: -((componentVars.button_size - componentVars.icon_size) / 2) + "px",
-    zIndex: 1
-  }]), _defineProperty$1(_selector, ".pe-control--off", {
-    " .pe-control__button--on": inactiveButton(),
-    " .pe-control__button--off": activeButton()
-  }), _defineProperty$1(_selector, ".pe-control--on", {
-    " .pe-control__button--on": activeButton(),
-    " .pe-control__button--off": inactiveButton()
-  }), _defineProperty$1(_selector, " .pe-control__label", {
-    paddingLeft: componentVars.label_padding_before + "px",
-    paddingRight: componentVars.label_padding_after + "px"
-  }), _defineProperty$1(_selector, ".pe-control--disabled", {
-    " .pe-control__form-label": {
-      cursor: "auto"
+      ":focus": {
+        outline: 0
+      }
+    }],
+
+    ".pe-control--inactive": {
+      " .pe-control__form-label": {
+        cursor: "default"
+      }
     },
-    " .pe-control__button": {
-      pointerEvents: "none"
-    }
-  }), _defineProperty$1(_selector, " .pe-button__content", {
-    " .pe-icon": {
-      position: "absolute"
-    }
-  }), _defineProperty$1(_selector, ".pe-control--small", makeSize(componentVars, vars.unit_icon_size_small, vars.unit_icon_size_small)), _defineProperty$1(_selector, ".pe-control--regular", makeSize(componentVars, componentVars.label_height, vars.unit_icon_size)), _defineProperty$1(_selector, ".pe-control--medium", makeSize(componentVars, vars.unit_icon_size_medium, vars.unit_icon_size_medium)), _defineProperty$1(_selector, ".pe-control--large", makeSize(componentVars, vars.unit_icon_size_large, vars.unit_icon_size_large)), _selector))];
+
+    " .pe-control__box": {
+      position: "relative",
+      display: "inline-block",
+      boxSizing: "border-box",
+      width: componentVars.label_height + "px",
+      height: componentVars.label_height + "px",
+      color: "inherit",
+
+      ":focus": {
+        outline: 0
+      }
+    },
+
+    " .pe-button.pe-control__button": [mixin.defaultTransition("opacity", componentVars.animation_duration), {
+      position: "absolute",
+      left: -((componentVars.button_size - componentVars.icon_size) / 2) + "px",
+      top: -((componentVars.button_size - componentVars.icon_size) / 2) + "px",
+      zIndex: 1
+    }],
+
+    ".pe-control--off": {
+      " .pe-control__button--on": inactiveButton(),
+      " .pe-control__button--off": activeButton()
+    },
+
+    ".pe-control--on": {
+      " .pe-control__button--on": activeButton(),
+      " .pe-control__button--off": inactiveButton()
+    },
+
+    " .pe-control__label": {
+      paddingLeft: componentVars.label_padding_before + "px",
+      paddingRight: componentVars.label_padding_after + "px"
+    },
+
+    ".pe-control--disabled": {
+      " .pe-control__form-label": {
+        cursor: "auto"
+      },
+      " .pe-control__button": {
+        pointerEvents: "none"
+      }
+    },
+
+    " .pe-button__content": {
+      " .pe-icon": {
+        position: "absolute"
+      }
+    },
+
+    ".pe-control--small": makeSize(componentVars, vars.unit_icon_size_small, vars.unit_icon_size_small),
+    ".pe-control--regular": makeSize(componentVars, componentVars.label_height, vars.unit_icon_size),
+    ".pe-control--medium": makeSize(componentVars, vars.unit_icon_size_medium, vars.unit_icon_size_medium),
+    ".pe-control--large": makeSize(componentVars, vars.unit_icon_size_large, vars.unit_icon_size_large)
+  })];
 });
 
 function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }

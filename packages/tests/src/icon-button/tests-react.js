@@ -50,7 +50,7 @@ const reactTests = ({ IconButton, Icon, SVG, renderer: h }) => { // eslint-disab
     },
     {
       name: "Dark tone class + light tone",
-      className: "test-dark-theme",
+      className: "test-dark-tone",
       component: () =>
         h("div", {
           style: { background: "#fff", padding: "10px" }

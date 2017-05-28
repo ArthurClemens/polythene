@@ -33,7 +33,7 @@ html {
   padding-bottom: 40px;
 }
 .result-row.pe-dark-tone,
-.result-row.test-dark-theme {
+.result-row.test-dark-tone {
   background-color: #303030;
   color: #777;
 }
@@ -78,7 +78,7 @@ html {
 .height-100px {
   height: 100px;
 }
-.interactive:not(.pe-dark-tone):not(.test-dark-theme) {
+.interactive:not(.pe-dark-tone):not(.test-dark-tone) {
   background-color: #E1F5FE;
 }
 .header-row,
@@ -117,11 +117,11 @@ html {
 }
 
 .pe-dark-tone .result-title,
-.test-dark-theme .result-title {
+.test-dark-tone .result-title {
   color: #aaa;
 }
 .pe-dark-tone.result-row,
-.test-dark-theme.result-row {
+.test-dark-tone.result-row {
   border-color: #666;
 }
 

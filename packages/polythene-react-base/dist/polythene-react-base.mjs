@@ -7,6 +7,7 @@ var keys = {
   className: "className",
   formaction: "formAction",
   onblur: "onBlur",
+  onchange: "onChange",
   onclick: "onClick",
   onfocus: "onFocus",
   onkeydown: "onKeyDown",
@@ -366,6 +367,7 @@ var stateComponent = function stateComponent(_ref) {
       value: function componentDidMount() {
         var _this2 = this;
 
+        // this._mounted = true;
         onMount(this.createVirtualNode());
         this.state.redrawOnUpdate && this.state.redrawOnUpdate.map(function (values) {
           return _this2.setState({ redrawValues: values });
@@ -374,6 +376,7 @@ var stateComponent = function stateComponent(_ref) {
     }, {
       key: "componentWillUnmount",
       value: function componentWillUnmount() {
+        // this._mounted = false;
         onUnmount(this.createVirtualNode());
       }
     }, {

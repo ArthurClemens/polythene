@@ -7,9 +7,8 @@ export const element = "a";
 export const theme = customTheme;
 
 export const getInitialState = (vnode, createStream) => {
-  const attrs = vnode.attrs;
   const focus = createStream(false);
-  const inactive = createStream(!!attrs.inactive);
+  const inactive = createStream(false);
   const mouseover = createStream(false);
   return {
     focus,

@@ -1,8 +1,8 @@
-import { Button, Checkbox, FAB, Icon, IconButton, List, ListTile, Menu, RaisedButton, Ripple, SVG, Shadow, Toolbar, keys, renderer } from 'polythene-mithril';
+import { Button, Checkbox, FAB, Icon, IconButton, List, ListTile, Menu, RadioButton, RaisedButton, Ripple, SVG, Shadow, Toolbar, keys, renderer } from 'polythene-mithril';
 import { flex, styler } from 'polythene-core-css';
 import dialog from 'polythene-dialog';
 import { classes } from 'polythene-core-toolbar';
-import { Button as Button$1, Checkbox as Checkbox$1, FAB as FAB$1, Icon as Icon$1, IconButton as IconButton$1, List as List$1, ListTile as ListTile$1, Menu as Menu$1, RaisedButton as RaisedButton$1, Ripple as Ripple$1, SVG as SVG$1, Shadow as Shadow$1, Toolbar as Toolbar$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
+import { Button as Button$1, Checkbox as Checkbox$1, FAB as FAB$1, Icon as Icon$1, IconButton as IconButton$1, List as List$1, ListTile as ListTile$1, Menu as Menu$1, RadioButton as RadioButton$1, RaisedButton as RaisedButton$1, Ripple as Ripple$1, SVG as SVG$1, Shadow as Shadow$1, Toolbar as Toolbar$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 import { compose, withHandlers, withState } from 'recompose';
 
 var genericTests = (function (_ref) {
@@ -150,7 +150,7 @@ var genericTests = (function (_ref) {
     }
   }, {
     name: "Option: tone \"dark\" -- dark tone class",
-    className: "test-dark-theme",
+    className: "test-dark-tone",
     component: Button$$1,
     attrs: {
       label: "Label",
@@ -276,7 +276,7 @@ var mithrilTests$1 = function mithrilTests(_ref) {
     }
   }, {
     name: "Dark tone class + light tone",
-    className: "test-dark-theme",
+    className: "test-dark-tone",
     component: {
       view: function view() {
         return h("div", {
@@ -498,7 +498,7 @@ var stream$2 = createCommonjsModule(function (module) {
 
 var stream = stream$2;
 
-var getState = (function (_ref) {
+var onChange = (function (_ref) {
   var h = _ref.h,
       Checkbox$$1 = _ref.Checkbox;
   return {
@@ -517,38 +517,8 @@ var getState = (function (_ref) {
           marginBottom: "1rem"
         }
       }, "Checked: " + checked), h(Checkbox$$1, {
-        getState: function getState(newState) {
+        onChange: function onChange(newState) {
           return state.checked(newState.checked);
-        }
-      })]);
-    }
-  };
-});
-
-var setting = (function (_ref) {
-  var h = _ref.h,
-      Checkbox$$1 = _ref.Checkbox;
-  return {
-    oninit: function oninit(vnode) {
-      var checked = stream(false);
-      vnode.state = {
-        checked: checked,
-        redrawOnUpdate: stream.merge([checked])
-      };
-    },
-    view: function view(vnode) {
-      var state = vnode.state;
-      var _checked = state.checked();
-      return h("div", [h(Checkbox$$1, {
-        label: "Initiator",
-        getState: function getState(newState) {
-          return state.checked(newState.checked);
-        }
-      }), h(Checkbox$$1, {
-        label: "Result",
-        disabled: true,
-        checked: function checked() {
-          return _checked;
         }
       })]);
     }
@@ -628,10 +598,10 @@ var genericTests$1 = (function (_ref) {
       label: "Label"
     }
   }, {
-    name: "Option: checked",
+    name: "Option: defaultChecked",
     component: Checkbox$$1,
     attrs: {
-      checked: true
+      defaultChecked: true
     }
   }, {
     name: "Option: size",
@@ -682,7 +652,7 @@ var genericTests$1 = (function (_ref) {
           label: "Off"
         }), h(Checkbox$$1, {
           disabled: true,
-          checked: true,
+          defaultChecked: true,
           label: "On"
         })]);
       }
@@ -716,15 +686,10 @@ var genericTests$1 = (function (_ref) {
       }
     }
   }, {
-    name: "Option: getState",
+    name: "Option: onChange",
     interactive: true,
     exclude: true,
-    component: getState({ h: h, Checkbox: Checkbox$$1 })
-  }, {
-    name: "Setting the value from outside",
-    interactive: true,
-    exclude: true,
-    component: setting({ h: h, Checkbox: Checkbox$$1 })
+    component: onChange({ h: h, Checkbox: Checkbox$$1 })
   }, {
     name: "Option: events",
     interactive: true,
@@ -735,11 +700,11 @@ var genericTests$1 = (function (_ref) {
   // Dark tone
 
   {
-    name: "Option: checked -- dark tone class",
+    name: "Option: defaultChecked -- dark tone class",
     className: "pe-dark-tone",
     component: Checkbox$$1,
     attrs: {
-      checked: true
+      defaultChecked: true
     }
   }, {
     name: "Themed Checkbox (colors) -- dark tone class",
@@ -759,7 +724,7 @@ var genericTests$1 = (function (_ref) {
           label: "Off"
         }), h(Checkbox$$1, {
           disabled: true,
-          checked: true,
+          defaultChecked: true,
           label: "On"
         })]);
       }
@@ -969,7 +934,7 @@ var mithrilTests$3 = function mithrilTests(_ref) {
     }
   }, {
     name: "Dark tone class + light tone",
-    className: "test-dark-theme",
+    className: "test-dark-tone",
     component: {
       view: function view() {
         return h("div", {
@@ -1136,7 +1101,7 @@ var mithrilTests$4 = function mithrilTests(_ref) {
     }
   }, {
     name: "Dark tone class + light tone",
-    className: "test-dark-theme",
+    className: "test-dark-tone",
     component: {
       view: function view() {
         return h("div", {
@@ -1338,7 +1303,7 @@ var mithrilTests$5 = function mithrilTests(_ref) {
     }
   }, {
     name: "Dark tone class + light tone",
-    className: "test-dark-theme",
+    className: "test-dark-tone",
     component: {
       view: function view() {
         return h("div", {
@@ -1694,7 +1659,7 @@ var genericTests$6 = (function (_ref) {
   }, {
     name: "Dark tone class + light tone",
     interactive: true,
-    className: "test-dark-theme",
+    className: "test-dark-tone",
     component: List$$1,
     attrs: {
       style: { background: "#fff" },
@@ -2028,7 +1993,7 @@ var genericTests$7 = (function (_ref) {
   }, {
     name: "Dark tone class + light tone",
     component: ListTile$$1,
-    className: "test-dark-theme",
+    className: "test-dark-tone",
     attrs: {
       title: "Ancillary Justice",
       tone: "light",
@@ -2677,7 +2642,226 @@ var mithrilTests$9 = function mithrilTests(_ref) {
 
 var testsMithril$8 = [].concat(genericTests$8({ Menu: Menu, List: List, ListTile: ListTile, RaisedButton: RaisedButton, Shadow: Shadow, IconButton: IconButton, renderer: renderer, keys: keys })).concat(mithrilTests$9({ Menu: Menu, List: List, ListTile: ListTile, RaisedButton: RaisedButton, Shadow: Shadow, IconButton: IconButton, renderer: renderer, keys: keys }));
 
+var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var buttonData = [{
+  label: "One",
+  value: "one"
+}, {
+  label: "Two",
+  value: "two"
+}, {
+  label: "Three",
+  value: "three"
+}, {
+  label: "Four",
+  value: "four"
+}];
+
+var RadioGroup = (function (_ref) {
+  var h = _ref.h,
+      RadioButton$$1 = _ref.RadioButton,
+      count = _ref.count,
+      _ref$groupOptions = _ref.groupOptions,
+      groupOptions = _ref$groupOptions === undefined ? {} : _ref$groupOptions,
+      _ref$options = _ref.options,
+      options = _ref$options === undefined ? {} : _ref$options;
+  return {
+    oninit: function oninit(vnode) {
+      var checkedValue = stream(groupOptions.defaultCheckedValue || undefined);
+      vnode.state = {
+        checkedValue: checkedValue,
+        redrawOnUpdate: stream.merge([checkedValue])
+      };
+    },
+    view: function view(vnode) {
+      var state = vnode.state;
+      var checkedValue = state.checkedValue();
+      return h("div", [groupOptions.showState && h("div", {
+        style: {
+          margin: "0 0 1rem 0"
+        }
+      }, "Value: " + checkedValue), h("div", {
+        style: {
+          display: "flex",
+          alignItems: "center"
+        }
+      }, buttonData.slice(0, count).map(function (button, index) {
+        var defaultChecked = options && options[index] && options[index].defaultChecked;
+        // Only set defaultChecked when no value was stored:
+        var isDefaultChecked = defaultChecked && !checkedValue;
+        var isChecked = isDefaultChecked || checkedValue === button.value;
+        return h(RadioButton$$1, _extends$3({}, button, options && options[index], {
+          checked: isChecked,
+          onChange: function onChange(newState) {
+            return state.checkedValue(newState.value);
+          }
+        }));
+      }))]);
+    }
+  };
+});
+
+var iconStarOutlineSVG$1 = "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\" baseProfile=\"full\" width=\"24\" height=\"24\" viewBox=\"0 0 24.00 24.00\" enable-background=\"new 0 0 24.00 24.00\" xml:space=\"preserve\"><path fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"0.2\" stroke-linejoin=\"round\" d=\"M 11.9994,15.3943L 8.2364,17.6643L 9.2314,13.3833L 5.9094,10.5053L 10.2894,10.1293L 11.9994,6.09327L 13.7094,10.1293L 18.0894,10.5053L 14.7674,13.3833L 15.7624,17.6643M 21.9994,9.24227L 14.8084,8.62526L 11.9994,1.99827L 9.1904,8.62526L 1.9994,9.24227L 7.4544,13.9693L 5.8194,20.9983L 11.9994,17.2703L 18.1794,20.9983L 16.5444,13.9693L 21.9994,9.24227 Z \"/></svg>";
+
+var iconStarFilledSVG$1 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\"/></svg>";
+
 var genericTests$9 = (function (_ref) {
+  var RadioButton$$1 = _ref.RadioButton,
+      h = _ref.renderer,
+      k = _ref.keys;
+
+
+  var trustedIconStarsOutline = h.trust(iconStarOutlineSVG$1);
+  var trustedIconStarFilled = h.trust(iconStarFilledSVG$1);
+
+  RadioButton$$1.theme(".tests-radio-button-themed-radio", {
+    label_font_size: 28,
+    color_light_on: "#2196F3",
+    color_light_off: "#2196F3",
+    color_dark_on: "#2196F3",
+    color_dark_off: "#2196F3",
+    color_light_label: "#2196F3",
+    color_dark_label: "#2196F3"
+  });
+
+  var sizeNames = ["small", "regular", "medium", "large"];
+
+  return [{
+    name: "Option: label",
+    component: RadioGroup({ h: h, k: k, RadioButton: RadioButton$$1, count: 2 })
+  }, {
+    name: "Option: defaultChecked",
+    component: RadioGroup({ h: h, k: k, RadioButton: RadioButton$$1, count: 2, options: [null, { defaultChecked: true }] })
+  }, {
+    name: "Default checked value",
+    component: RadioGroup({ h: h, k: k, RadioButton: RadioButton$$1, count: 2, groupOptions: { defaultCheckedValue: "two" } })
+  }, {
+    name: "Option: disabled",
+    interactive: true,
+    component: RadioGroup({ h: h, k: k, RadioButton: RadioButton$$1, count: 2, options: [{ disabled: true }, { disabled: true, defaultChecked: true }] })
+  }, {
+    name: "Option: size",
+    component: RadioGroup({ h: h, k: k, RadioButton: RadioButton$$1, count: 4, options: sizeNames.map(function (size) {
+        return { size: size };
+      }) })
+  }, {
+    name: "Option: iconOn, iconOff (custom icon)",
+    component: RadioGroup({ h: h, k: k, RadioButton: RadioButton$$1, count: 4, options: sizeNames.map(function (size) {
+        return {
+          size: size,
+          iconOn: {
+            svg: trustedIconStarFilled
+          },
+          iconOff: {
+            svg: trustedIconStarsOutline
+          }
+        };
+      }) })
+  }, {
+    name: "Themed radio button (color and font size)",
+    component: RadioGroup({ h: h, k: k, RadioButton: RadioButton$$1, count: 2, options: [{ className: "tests-radio-button-themed-radio" }, { className: "tests-radio-button-themed-radio" }] })
+  }, {
+    name: "Option: style (colors)",
+    component: RadioGroup({ h: h, k: k, RadioButton: RadioButton$$1, count: 2, options: [{
+        style: {
+          color: "#EF6C00"
+        }
+      }, {
+        style: {
+          color: "#EF6C00"
+        },
+        defaultChecked: true
+      }] })
+  }, {
+    name: "Option: selectable (true)",
+    interactive: true,
+    component: RadioGroup({ h: h, k: k, RadioButton: RadioButton$$1, count: 2, options: [{
+        label: "Always",
+        selectable: function selectable() {
+          return true;
+        }
+      }, {
+        label: "Always",
+        selectable: function selectable() {
+          return true;
+        },
+        defaultChecked: true
+      }] })
+  }, {
+    name: "Option: iconButton (custom hover behaviour)",
+    interactive: true,
+    component: RadioGroup({ h: h, k: k, RadioButton: RadioButton$$1, count: 2, options: [{
+        label: "Hover me",
+        iconButton: {
+          wash: true,
+          ink: false
+        }
+      }, {
+        label: "Hover me",
+        iconButton: {
+          wash: true,
+          ink: false
+        }
+      }] })
+  }, {
+    name: "Option: onChange",
+    interactive: true,
+    component: RadioGroup({ h: h, k: k, RadioButton: RadioButton$$1, count: 4, groupOptions: { showState: true } })
+  },
+
+  // Dark tone
+
+  {
+    name: "Option: label -- dark tone",
+    className: "pe-dark-tone",
+    component: RadioGroup({ h: h, k: k, RadioButton: RadioButton$$1, count: 2 })
+  }, {
+    name: "Option: disabled -- dark tone",
+    className: "pe-dark-tone",
+    interactive: true,
+    component: RadioGroup({ h: h, k: k, RadioButton: RadioButton$$1, count: 2, options: [{ disabled: true }, { disabled: true, defaultChecked: true }] })
+  }, {
+    name: "Themed radio button (color and font size) -- dark tone",
+    className: "pe-dark-tone",
+    component: RadioGroup({ h: h, k: k, RadioButton: RadioButton$$1, count: 2, options: [{ className: "tests-radio-button-themed-radio" }, { className: "tests-radio-button-themed-radio" }] })
+  }, {
+    name: "Dark tone class + light theme class",
+    className: "pe-dark-tone",
+    component: {
+      view: function view() {
+        return h("div", {
+          style: {
+            background: "#fff",
+            padding: "20px"
+          },
+          className: "pe-light-tone"
+        }, h(RadioGroup({ h: h, k: k, RadioButton: RadioButton$$1, count: 2 })));
+      }
+    }
+  }, {
+    name: "Dark tone class + light tone",
+    className: "test-dark-tone",
+    component: {
+      view: function view() {
+        return h("div", {
+          style: {
+            background: "#fff",
+            padding: "20px"
+          }
+        }, h(RadioGroup({ h: h, k: k, RadioButton: RadioButton$$1, count: 2 })));
+      }
+    }
+  }];
+});
+
+var mithrilTests$10 = function mithrilTests() {
+  return [];
+};
+
+var testsMithril$9 = [].concat(genericTests$9({ RadioButton: RadioButton, renderer: renderer, keys: keys })).concat(mithrilTests$10({ RadioButton: RadioButton, renderer: renderer, keys: keys }));
+
+var genericTests$10 = (function (_ref) {
   var RaisedButton$$1 = _ref.RaisedButton;
 
 
@@ -2824,7 +3008,7 @@ var genericTests$9 = (function (_ref) {
   }];
 });
 
-var mithrilTests$10 = function mithrilTests(_ref) {
+var mithrilTests$11 = function mithrilTests(_ref) {
   var RaisedButton$$1 = _ref.RaisedButton,
       h = _ref.renderer;
 
@@ -2903,9 +3087,9 @@ var mithrilTests$10 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$9 = [].concat(genericTests$9({ RaisedButton: RaisedButton, renderer: renderer })).concat(mithrilTests$10({ RaisedButton: RaisedButton, renderer: renderer }));
+var testsMithril$10 = [].concat(genericTests$10({ RaisedButton: RaisedButton, renderer: renderer })).concat(mithrilTests$11({ RaisedButton: RaisedButton, renderer: renderer }));
 
-var genericTests$10 = (function (_ref) {
+var genericTests$11 = (function (_ref) {
   var Ripple$$1 = _ref.Ripple;
 
   Ripple$$1.theme(".tests-ripple-themed-ripple", {
@@ -3028,7 +3212,7 @@ var genericTests$10 = (function (_ref) {
     name: "Dark tone class + light tone",
     interactive: true,
     exclude: true,
-    className: "test-dark-theme",
+    className: "test-dark-tone",
     component: Ripple$$1,
     attrs: {
       constrained: true,
@@ -3040,7 +3224,7 @@ var genericTests$10 = (function (_ref) {
   }];
 });
 
-var mithrilTests$11 = function mithrilTests(_ref) {
+var mithrilTests$12 = function mithrilTests(_ref) {
   var Ripple$$1 = _ref.Ripple,
       h = _ref.renderer;
 
@@ -3098,7 +3282,7 @@ var mithrilTests$11 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$10 = [].concat(genericTests$10({ Ripple: Ripple, renderer: renderer })).concat(mithrilTests$11({ Ripple: Ripple, renderer: renderer }));
+var testsMithril$11 = [].concat(genericTests$11({ Ripple: Ripple, renderer: renderer })).concat(mithrilTests$12({ Ripple: Ripple, renderer: renderer }));
 
 function _defineProperty$6(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -3127,7 +3311,7 @@ var interactive = (function (_ref) {
   };
 });
 
-var genericTests$11 = (function (_ref) {
+var genericTests$12 = (function (_ref) {
   var Shadow$$1 = _ref.Shadow,
       h = _ref.renderer,
       k = _ref.keys;
@@ -3203,15 +3387,15 @@ var genericTests$11 = (function (_ref) {
   }];
 });
 
-var mithrilTests$12 = function mithrilTests() {
+var mithrilTests$13 = function mithrilTests() {
   return [];
 };
 
-var testsMithril$11 = [].concat(genericTests$11({ Shadow: Shadow, renderer: renderer, keys: keys })).concat(mithrilTests$12({ Shadow: Shadow, renderer: renderer, keys: keys }));
+var testsMithril$12 = [].concat(genericTests$12({ Shadow: Shadow, renderer: renderer, keys: keys })).concat(mithrilTests$13({ Shadow: Shadow, renderer: renderer, keys: keys }));
 
 var iconStars$5 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>";
 
-var genericTests$12 = (function (_ref) {
+var genericTests$13 = (function (_ref) {
   var SVG$$1 = _ref.SVG,
       h = _ref.renderer;
 
@@ -3278,7 +3462,7 @@ var genericTests$12 = (function (_ref) {
 
 var iconStars$4 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>";
 
-var mithrilTests$13 = function mithrilTests(_ref) {
+var mithrilTests$14 = function mithrilTests(_ref) {
   var SVG$$1 = _ref.SVG,
       h = _ref.renderer;
 
@@ -3301,7 +3485,7 @@ var mithrilTests$13 = function mithrilTests(_ref) {
     }
   }, {
     name: "Dark tone class + light tone",
-    className: "test-dark-theme",
+    className: "test-dark-tone",
     component: {
       view: function view() {
         return h("div", {
@@ -3318,11 +3502,11 @@ var mithrilTests$13 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$12 = [].concat(genericTests$12({ SVG: SVG, renderer: renderer })).concat(mithrilTests$13({ SVG: SVG, renderer: renderer }));
+var testsMithril$13 = [].concat(genericTests$13({ SVG: SVG, renderer: renderer })).concat(mithrilTests$14({ SVG: SVG, renderer: renderer }));
 
 var alarmSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3V9z\"/></svg>";
 
-var genericTests$13 = (function (_ref) {
+var genericTests$14 = (function (_ref) {
   var Button$$1 = _ref.Button,
       FAB$$1 = _ref.FAB,
       Icon$$1 = _ref.Icon,
@@ -3420,7 +3604,7 @@ var genericTests$13 = (function (_ref) {
   }];
 });
 
-var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 /*
 Testing 2 theming methods:
@@ -3437,7 +3621,7 @@ var h = renderer;
 var secondaryButton = {
   theme: Button.theme,
   view: function view(vnode) {
-    return h(Button, _extends$3({
+    return h(Button, _extends$4({
       className: "tests-custom-theme-secondary-button",
       borders: true
     }, vnode.attrs));
@@ -3448,7 +3632,7 @@ secondaryButton.theme(".tests-custom-theme-secondary-button", {
   color_light_background: "#fff"
 });
 
-var mithrilTests$14 = function mithrilTests() {
+var mithrilTests$15 = function mithrilTests() {
   return [{
     section: "Mithril specific tests"
   }, {
@@ -3460,7 +3644,7 @@ var mithrilTests$14 = function mithrilTests() {
   }];
 };
 
-var testsMithril$13 = [].concat(genericTests$13({ Button: Button, FAB: FAB, Icon: Icon, IconButton: IconButton, renderer: renderer /*, list, listTile*/ })).concat(mithrilTests$14());
+var testsMithril$14 = [].concat(genericTests$14({ Button: Button, FAB: FAB, Icon: Icon, IconButton: IconButton, renderer: renderer /*, list, listTile*/ })).concat(mithrilTests$15());
 
 var iconMenuSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>";
 var iconRefreshSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>";
@@ -3504,7 +3688,7 @@ var shared = (function (_ref) {
   };
 });
 
-var genericTests$14 = (function (_ref) {
+var genericTests$15 = (function (_ref) {
   var Toolbar$$1 = _ref.Toolbar,
       IconButton$$1 = _ref.IconButton,
       h = _ref.renderer;
@@ -3596,7 +3780,7 @@ var genericTests$14 = (function (_ref) {
     }
   }, {
     name: "Dark tone class + light tone",
-    className: "test-dark-theme",
+    className: "test-dark-tone",
     component: Toolbar$$1,
     attrs: {
       content: toolbarRow,
@@ -3605,7 +3789,7 @@ var genericTests$14 = (function (_ref) {
   }];
 });
 
-var mithrilTests$15 = function mithrilTests(_ref) {
+var mithrilTests$16 = function mithrilTests(_ref) {
   var Toolbar$$1 = _ref.Toolbar,
       IconButton$$1 = _ref.IconButton,
       Shadow$$1 = _ref.Shadow,
@@ -3631,7 +3815,7 @@ var mithrilTests$15 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$14 = [].concat(genericTests$14({ Toolbar: Toolbar, IconButton: IconButton, Shadow: Shadow, renderer: renderer })).concat(mithrilTests$15({ Toolbar: Toolbar, IconButton: IconButton, Shadow: Shadow, renderer: renderer }));
+var testsMithril$15 = [].concat(genericTests$15({ Toolbar: Toolbar, IconButton: IconButton, Shadow: Shadow, renderer: renderer })).concat(mithrilTests$16({ Toolbar: Toolbar, IconButton: IconButton, Shadow: Shadow, renderer: renderer }));
 
 
 
@@ -3645,12 +3829,13 @@ var fromMithrilTests = Object.freeze({
 	list: testsMithril$6,
 	listTile: testsMithril$7,
 	menu: testsMithril$8,
-	raisedButton: testsMithril$9,
-	ripple: testsMithril$10,
-	shadow: testsMithril$11,
-	svg: testsMithril$12,
-	theme: testsMithril$13,
-	toolbar: testsMithril$14
+	radioButton: testsMithril$9,
+	raisedButton: testsMithril$10,
+	ripple: testsMithril$11,
+	shadow: testsMithril$12,
+	svg: testsMithril$13,
+	theme: testsMithril$14,
+	toolbar: testsMithril$15
 });
 
 /*
@@ -3661,7 +3846,7 @@ object-assign
 
 /* eslint-disable no-unused-vars */
 
-var _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$5 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -3707,7 +3892,7 @@ function shouldUseNative() {
 		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
 			test3[letter] = letter;
 		});
-		if (Object.keys(_extends$4({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
+		if (Object.keys(_extends$5({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
 			return false;
 		}
 
@@ -7236,6 +7421,8 @@ var React_1 = React$1;
 
 var react = React_1;
 
+var react_2 = react.Component;
+
 var factoryWithThrowingShims = function factoryWithThrowingShims() {
   function shim(props, propName, componentName, location, propFullName, secret) {
     if (secret === ReactPropTypesSecret_1$2) {
@@ -8306,7 +8493,7 @@ var createHistory$1 = unwrapExports(createMemoryHistory_1);
 
 var _typeof$12 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _extends$5 = Object.assign || function (target) {
+var _extends$6 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -8357,7 +8544,7 @@ var Router = function (_React$Component) {
 
   Router.prototype.getChildContext = function getChildContext() {
     return {
-      router: _extends$5({}, this.context.router, {
+      router: _extends$6({}, this.context.router, {
         history: this.props.history,
         route: {
           location: this.props.history.location,
@@ -9147,7 +9334,7 @@ var matchPath = function matchPath(pathname) {
 
 var _typeof$15 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _extends$6 = Object.assign || function (target) {
+var _extends$7 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -9198,7 +9385,7 @@ var Route = function (_React$Component) {
 
   Route.prototype.getChildContext = function getChildContext() {
     return {
-      router: _extends$6({}, this.context.router, {
+      router: _extends$7({}, this.context.router, {
         route: {
           location: this.props.location || this.context.router.route.location,
           match: this.state.match
@@ -9292,7 +9479,7 @@ Route.childContextTypes = {
 
 var _typeof$17 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _extends$7 = Object.assign || function (target) {
+var _extends$8 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -9344,7 +9531,7 @@ var normalizeLocation = function normalizeLocation(object) {
 var addBasename = function addBasename(basename, location) {
   if (!basename) return location;
 
-  return _extends$7({}, location, {
+  return _extends$8({}, location, {
     pathname: PathUtils_1(basename) + location.pathname
   });
 };
@@ -9356,7 +9543,7 @@ var stripBasename = function stripBasename(basename, location) {
 
   if (location.pathname.indexOf(base) !== 0) return location;
 
-  return _extends$7({}, location, {
+  return _extends$8({}, location, {
     pathname: location.pathname.substr(base.length)
   });
 };
@@ -9449,7 +9636,7 @@ var StaticRouter = function (_React$Component) {
       block: this.handleBlock
     };
 
-    return react.createElement(Router, _extends$7({}, props, { history: history }));
+    return react.createElement(Router, _extends$8({}, props, { history: history }));
   };
 
   return StaticRouter;
@@ -9596,7 +9783,7 @@ var index$10 = function hoistNonReactStatics(targetComponent, sourceComponent, c
     return targetComponent;
 };
 
-var _extends$8 = Object.assign || function (target) {
+var _extends$9 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -9621,7 +9808,7 @@ var withRouter = function withRouter(Component$$1) {
         remainingProps = _objectWithoutProperties$1(props, ['wrappedComponentRef']);
 
     return react.createElement(Route, { render: function render(routeComponentProps) {
-        return react.createElement(Component$$1, _extends$8({}, remainingProps, routeComponentProps, { ref: wrappedComponentRef }));
+        return react.createElement(Component$$1, _extends$9({}, remainingProps, routeComponentProps, { ref: wrappedComponentRef }));
       } });
   };
 
@@ -10067,7 +10254,7 @@ HashRouter.propTypes = {
 
 var _typeof$20 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _extends$9 = Object.assign || function (target) {
+var _extends$10 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -10153,7 +10340,7 @@ var Link = function (_React$Component) {
 
     var href = this.context.router.history.createHref(typeof to === 'string' ? { pathname: to } : to);
 
-    return react.createElement('a', _extends$9({}, props, { onClick: this.handleClick, href: href }));
+    return react.createElement('a', _extends$10({}, props, { onClick: this.handleClick, href: href }));
   };
 
   return Link;
@@ -10180,7 +10367,7 @@ Link.contextTypes = {
 
 var _typeof2$3 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _extends$10 = Object.assign || function (target) {
+var _extends$11 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -10228,12 +10415,12 @@ var NavLink = function NavLink(_ref) {
 
       var isActive = !!(getIsActive ? getIsActive(match, location) : match);
 
-      return react.createElement(Link, _extends$10({
+      return react.createElement(Link, _extends$11({
         to: to,
         className: isActive ? [activeClassName, className].filter(function (i) {
           return i;
         }).join(' ') : className,
-        style: isActive ? _extends$10({}, style, activeStyle) : style
+        style: isActive ? _extends$11({}, style, activeStyle) : style
       }, rest));
     }
   });
@@ -10380,7 +10567,17 @@ var reactTests$2 = function reactTests(_ref) {
       h = _ref.renderer;
   // eslint-disable-line no-unused-vars
 
-  return [];
+  return [{
+    section: "React JSX tests"
+  }, {
+    name: "Option: defaultChecked (JSX)",
+    component: function component() {
+      return react.createElement(Checkbox$$1, {
+        label: "Label",
+        defaultChecked: true
+      });
+    }
+  }];
 };
 
 var testsReact$1 = [].concat(genericTests$1({ Checkbox: Checkbox$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests$2({ Checkbox: Checkbox$1, renderer: renderer$1, keys: keys$1 }));
@@ -10438,7 +10635,7 @@ var reactTests$3 = function reactTests(_ref) {
     }
   }, {
     name: "Dark tone class + light tone",
-    className: "test-dark-theme",
+    className: "test-dark-tone",
     component: function component() {
       return h("div", {
         style: { background: "#fff", padding: "10px" }
@@ -10635,7 +10832,7 @@ var reactTests$5 = function reactTests(_ref) {
     }
   }, {
     name: "Dark tone class + light tone",
-    className: "test-dark-theme",
+    className: "test-dark-tone",
     component: function component() {
       return h("div", {
         style: { background: "#fff", padding: "10px" }
@@ -11117,7 +11314,77 @@ var reactTests$9 = function reactTests(_ref) {
 
 var testsReact$8 = [].concat(genericTests$8({ Menu: Menu$1, List: List$1, ListTile: ListTile$1, RaisedButton: RaisedButton$1, Shadow: Shadow$1, IconButton: IconButton$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests$9({ Menu: Menu$1, List: List$1, ListTile: ListTile$1, RaisedButton: RaisedButton$1, Shadow: Shadow$1, IconButton: IconButton$1, renderer: renderer$1, keys: keys$1 }));
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck$10(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn$10(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits$10(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 var reactTests$10 = function reactTests(_ref) {
+  var RadioButton$$1 = _ref.RadioButton,
+      h = _ref.renderer;
+
+  // eslint-disable-line no-unused-vars
+
+  var Form = function (_Component) {
+    _inherits$10(Form, _Component);
+
+    function Form(props) {
+      _classCallCheck$10(this, Form);
+
+      var _this = _possibleConstructorReturn$10(this, (Form.__proto__ || Object.getPrototypeOf(Form)).call(this, props));
+
+      _this.state = {
+        value: undefined
+      };
+      return _this;
+    }
+
+    _createClass(Form, [{
+      key: "handleChange",
+      value: function handleChange(newState) {
+        this.setState({
+          value: newState.value
+        });
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        return react.createElement(
+          "form",
+          null,
+          react.createElement(RadioButton$$1, {
+            label: "One",
+            value: "one",
+            checked: this.state.value === "one",
+            onChange: this.handleChange.bind(this)
+          }),
+          react.createElement(RadioButton$$1, {
+            label: "Two",
+            value: "two",
+            checked: this.state.value === "two",
+            onChange: this.handleChange.bind(this)
+          })
+        );
+      }
+    }]);
+
+    return Form;
+  }(react_2);
+
+  return [{
+    section: "React JSX tests"
+  }, {
+    name: "Option: onChange (JSX)",
+    component: Form
+  }];
+};
+
+var testsReact$9 = [].concat(genericTests$9({ RadioButton: RadioButton$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests$10({ RadioButton: RadioButton$1, renderer: renderer$1, keys: keys$1 }));
+
+var reactTests$11 = function reactTests(_ref) {
   var RaisedButton$$1 = _ref.RaisedButton,
       h = _ref.renderer;
 
@@ -11214,9 +11481,9 @@ var reactTests$10 = function reactTests(_ref) {
   }];
 };
 
-var testsReact$9 = [].concat(genericTests$9({ RaisedButton: RaisedButton$1, renderer: renderer$1 })).concat(reactTests$10({ RaisedButton: RaisedButton$1, renderer: renderer$1 }));
+var testsReact$10 = [].concat(genericTests$10({ RaisedButton: RaisedButton$1, renderer: renderer$1 })).concat(reactTests$11({ RaisedButton: RaisedButton$1, renderer: renderer$1 }));
 
-var reactTests$11 = function reactTests(_ref) {
+var reactTests$12 = function reactTests(_ref) {
   var Ripple$$1 = _ref.Ripple,
       h = _ref.renderer;
   // eslint-disable-line no-unused-vars
@@ -11310,9 +11577,9 @@ var reactTests$11 = function reactTests(_ref) {
     }
   }];
 };
-var testsReact$10 = [].concat(genericTests$10({ Ripple: Ripple$1, renderer: renderer$1 })).concat(reactTests$11({ Ripple: Ripple$1, renderer: renderer$1 }));
+var testsReact$11 = [].concat(genericTests$11({ Ripple: Ripple$1, renderer: renderer$1 })).concat(reactTests$12({ Ripple: Ripple$1, renderer: renderer$1 }));
 
-var reactTests$12 = function reactTests(_ref) {
+var reactTests$13 = function reactTests(_ref) {
   var Shadow$$1 = _ref.Shadow,
       h = _ref.renderer,
       k = _ref.keys;
@@ -11337,7 +11604,7 @@ var reactTests$12 = function reactTests(_ref) {
   }];
 };
 
-var testsReact$11 = [].concat(genericTests$11({ Shadow: Shadow$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests$12({ Shadow: Shadow$1, renderer: renderer$1, keys: keys$1 }));
+var testsReact$12 = [].concat(genericTests$12({ Shadow: Shadow$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests$13({ Shadow: Shadow$1, renderer: renderer$1, keys: keys$1 }));
 
 var iconStars$8 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>";
 
@@ -11347,7 +11614,7 @@ var iconStarsSVG$2 = react.createElement(
   react.createElement("path", { d: "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z" })
 );
 
-var reactTests$13 = function reactTests(_ref) {
+var reactTests$14 = function reactTests(_ref) {
   var SVG$$1 = _ref.SVG,
       h = _ref.renderer;
 
@@ -11367,7 +11634,7 @@ var reactTests$13 = function reactTests(_ref) {
     }
   }, {
     name: "Dark tone class + light tone",
-    className: "test-dark-theme",
+    className: "test-dark-tone",
     component: function component() {
       return h("div", {
         style: {
@@ -11403,14 +11670,14 @@ var reactTests$13 = function reactTests(_ref) {
   }];
 };
 
-var testsReact$12 = [].concat(genericTests$12({ SVG: SVG$1, renderer: renderer$1 })).concat(reactTests$13({ SVG: SVG$1, renderer: renderer$1 }));
+var testsReact$13 = [].concat(genericTests$13({ SVG: SVG$1, renderer: renderer$1 })).concat(reactTests$14({ SVG: SVG$1, renderer: renderer$1 }));
 
-var _extends$11 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$12 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var reactTests$14 = function reactTests() {
+var reactTests$15 = function reactTests() {
 
   var SecondaryButton = function SecondaryButton(props) {
-    return renderer$1(Button$1, _extends$11({}, props, {
+    return renderer$1(Button$1, _extends$12({}, props, {
       className: "tests-custom-theme-secondary-button",
       borders: true
     }));
@@ -11439,7 +11706,7 @@ var reactTests$14 = function reactTests() {
   }];
 };
 
-var testsReact$13 = [].concat(genericTests$13({ Button: Button$1, FAB: FAB$1, Icon: Icon$1, IconButton: IconButton$1, renderer: renderer$1 })).concat(reactTests$14());
+var testsReact$14 = [].concat(genericTests$14({ Button: Button$1, FAB: FAB$1, Icon: Icon$1, IconButton: IconButton$1, renderer: renderer$1 })).concat(reactTests$15());
 
 var iconMenuSVG$1 = react.createElement(
   "svg",
@@ -11457,7 +11724,7 @@ var iconAddSVG$1 = react.createElement(
   react.createElement("path", { d: "M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" })
 );
 
-var reactTests$15 = function reactTests(_ref) {
+var reactTests$16 = function reactTests(_ref) {
   var Toolbar$$1 = _ref.Toolbar,
       IconButton$$1 = _ref.IconButton,
       h = _ref.renderer;
@@ -11544,7 +11811,7 @@ var reactTests$15 = function reactTests(_ref) {
   }];
 };
 
-var testsReact$14 = [].concat(genericTests$14({ Toolbar: Toolbar$1, IconButton: IconButton$1, Shadow: Shadow$1, renderer: renderer$1 })).concat(reactTests$15({ Toolbar: Toolbar$1, IconButton: IconButton$1, Shadow: Shadow$1, renderer: renderer$1 }));
+var testsReact$15 = [].concat(genericTests$15({ Toolbar: Toolbar$1, IconButton: IconButton$1, Shadow: Shadow$1, renderer: renderer$1 })).concat(reactTests$16({ Toolbar: Toolbar$1, IconButton: IconButton$1, Shadow: Shadow$1, renderer: renderer$1 }));
 
 
 
@@ -11558,12 +11825,13 @@ var fromReactTests = Object.freeze({
 	list: testsReact$6,
 	listTile: testsReact$7,
 	menu: testsReact$8,
-	raisedButton: testsReact$9,
-	ripple: testsReact$10,
-	shadow: testsReact$11,
-	svg: testsReact$12,
-	theme: testsReact$13,
-	toolbar: testsReact$14
+	radioButton: testsReact$9,
+	raisedButton: testsReact$10,
+	ripple: testsReact$11,
+	shadow: testsReact$12,
+	svg: testsReact$13,
+	theme: testsReact$14,
+	toolbar: testsReact$15
 });
 
 var mithrilTests = fromMithrilTests;

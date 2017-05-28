@@ -4,6 +4,7 @@ export const keys = {
   className:   "className",
   formaction:  "formAction",
   onblur:      "onBlur",
+  onchange:    "onChange",
   onclick:     "onClick",
   onfocus:     "onFocus",
   onkeydown:   "onKeyDown",

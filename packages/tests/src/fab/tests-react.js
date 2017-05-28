@@ -50,7 +50,7 @@ const reactTests = ({ FAB, Icon, SVG, renderer: h }) => { // eslint-disable-line
     },
     {
       name: "Dark tone class + light tone",
-      className: "test-dark-theme",
+      className: "test-dark-tone",
       component: () =>
         h("div", {
           style: { background: "#fff", padding: "10px" }

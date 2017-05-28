@@ -1,0 +1,913 @@
+exports[`test Child node 1`] = `
+<RaisedButton
+  animateOnTap={true}
+  content={
+    <div
+      className="pe-fab__content">
+      <Icon
+        svg={
+          Object {
+            "content": <div
+              dangerouslySetInnerHTML={
+                  Object {
+                      "__html": "<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>",
+                    }
+              } />,
+          }
+        } />
+    </div>
+  }
+  ink={true}
+  parentClassName="pe-fab  "
+  ripple={
+    Object {
+      "center": true,
+      "opacityDecayVelocity": 0.24,
+    }
+  }
+  shadow={
+    Object {
+      "increase": 5,
+    }
+  }
+  wash={true} />
+`;
+
+exports[`test Dark tone class + light tone 1`] = `
+<div
+  style={
+    Object {
+      "background": "#fff",
+      "padding": "10px",
+    }
+  }>
+  <Fab
+    icon={
+      Object {
+        "svg": <div
+          dangerouslySetInnerHTML={
+              Object {
+                  "__html": "<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>",
+                }
+          } />,
+      }
+    }
+    tint="light" />
+  <Fab
+    className="tests-fab-themed-fab"
+    icon={
+      Object {
+        "svg": <div
+          dangerouslySetInnerHTML={
+              Object {
+                  "__html": "<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>",
+                }
+          } />,
+      }
+    }
+    tint="light" />
+</div>
+`;
+
+exports[`test Dark tone class + light tone class 1`] = `
+<div
+  className="pe-light-tone"
+  style={
+    Object {
+      "background": "#fff",
+      "padding": "10px",
+    }
+  }>
+  <Fab
+    icon={
+      Object {
+        "svg": <div
+          dangerouslySetInnerHTML={
+              Object {
+                  "__html": "<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>",
+                }
+          } />,
+      }
+    } />
+  <Fab
+    className="tests-fab-themed-fab"
+    icon={
+      Object {
+        "svg": <div
+          dangerouslySetInnerHTML={
+              Object {
+                  "__html": "<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>",
+                }
+          } />,
+      }
+    } />
+</div>
+`;
+
+exports[`test No options 1`] = `
+<RaisedButton
+  animateOnTap={true}
+  content={
+    <div
+      className="pe-fab__content" />
+  }
+  ink={true}
+  parentClassName="pe-fab  "
+  ripple={
+    Object {
+      "center": true,
+      "opacityDecayVelocity": 0.24,
+    }
+  }
+  shadow={
+    Object {
+      "increase": 5,
+    }
+  }
+  wash={true} />
+`;
+
+exports[`test Option: class 1`] = `
+<RaisedButton
+  animateOnTap={true}
+  class="class-x"
+  content={
+    <div
+      className="pe-fab__content" />
+  }
+  ink={true}
+  parentClassName="pe-fab  "
+  ripple={
+    Object {
+      "center": true,
+      "opacityDecayVelocity": 0.24,
+    }
+  }
+  shadow={
+    Object {
+      "increase": 5,
+    }
+  }
+  wash={true} />
+`;
+
+exports[`test Option: className 1`] = `
+<RaisedButton
+  animateOnTap={true}
+  className="className-x"
+  content={
+    <div
+      className="pe-fab__content" />
+  }
+  ink={true}
+  parentClassName="pe-fab  className-x"
+  ripple={
+    Object {
+      "center": true,
+      "opacityDecayVelocity": 0.24,
+    }
+  }
+  shadow={
+    Object {
+      "increase": 5,
+    }
+  }
+  wash={true} />
+`;
+
+exports[`test Option: content 1`] = `
+<RaisedButton
+  animateOnTap={true}
+  content={
+    <Icon
+      svg={
+        Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                Object {
+                    "__html": "<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>",
+                  }
+            } />,
+        }
+      } />
+  }
+  ink={true}
+  parentClassName="pe-fab  "
+  ripple={
+    Object {
+      "center": true,
+      "opacityDecayVelocity": 0.24,
+    }
+  }
+  shadow={
+    Object {
+      "increase": 5,
+    }
+  }
+  wash={true} />
+`;
+
+exports[`test Option: disabled -- dark tone class 1`] = `
+<div>
+  <Checkbox
+    disabled={true}
+    label="Off" />
+  <Checkbox
+    checked={true}
+    disabled={true}
+    label="On" />
+</div>
+`;
+
+exports[`test Option: disabled 1`] = `
+<div>
+  <Checkbox
+    disabled={true}
+    label="Off" />
+  <Checkbox
+    checked={true}
+    disabled={true}
+    label="On" />
+</div>
+`;
+
+exports[`test Option: element 1`] = `
+<a
+  animateOnTap={true}
+  content={
+    <div
+      className="pe-fab__content" />
+  }
+  element="a"
+  ink={true}
+  parentClassName="pe-fab  "
+  ripple={
+    Object {
+      "center": true,
+      "opacityDecayVelocity": 0.24,
+    }
+  }
+  shadow={
+    Object {
+      "increase": 5,
+    }
+  }
+  wash={true} />
+`;
+
+exports[`test Option: icon -- dark tone class 1`] = `
+<RaisedButton
+  animateOnTap={true}
+  content={
+    <div
+      className="pe-fab__content">
+      <Icon
+        svg={
+          Object {
+            "content": <div
+              dangerouslySetInnerHTML={
+                  Object {
+                      "__html": "<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>",
+                    }
+              } />,
+          }
+        } />
+    </div>
+  }
+  icon={
+    Object {
+      "svg": Object {
+        "content": <div
+          dangerouslySetInnerHTML={
+                Object {
+                      "__html": "<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>",
+                    }
+          } />,
+      },
+    }
+  }
+  ink={true}
+  parentClassName="pe-fab  "
+  ripple={
+    Object {
+      "center": true,
+      "opacityDecayVelocity": 0.24,
+    }
+  }
+  shadow={
+    Object {
+      "increase": 5,
+    }
+  }
+  wash={true} />
+`;
+
+exports[`test Option: icon 1`] = `
+<RaisedButton
+  animateOnTap={true}
+  content={
+    <div
+      className="pe-fab__content">
+      <Icon
+        svg={
+          Object {
+            "content": <div
+              dangerouslySetInnerHTML={
+                  Object {
+                      "__html": "<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>",
+                    }
+              } />,
+          }
+        } />
+    </div>
+  }
+  icon={
+    Object {
+      "svg": Object {
+        "content": <div
+          dangerouslySetInnerHTML={
+                Object {
+                      "__html": "<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>",
+                    }
+          } />,
+      },
+    }
+  }
+  ink={true}
+  parentClassName="pe-fab  "
+  ripple={
+    Object {
+      "center": true,
+      "opacityDecayVelocity": 0.24,
+    }
+  }
+  shadow={
+    Object {
+      "increase": 5,
+    }
+  }
+  wash={true} />
+`;
+
+exports[`test Option: icon as attribute (JSX) 1`] = `
+<Fab
+  icon={
+    Object {
+      "svg": <svg
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg">
+        <path
+            d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z" />
+    </svg>,
+    }
+  }
+  mini={true} />
+`;
+
+exports[`test Option: icon as component (JSX) 1`] = `
+<Fab
+  mini={true}>
+  <Icon>
+    <SVG>
+      <svg
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z" />
+      </svg>
+    </SVG>
+  </Icon>
+</Fab>
+`;
+
+exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+    }
+  }>
+  <Checkbox
+    iconOff={
+      Object {
+        "svg": <div
+          dangerouslySetInnerHTML={
+              Object {
+                  "__html": "<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve"><path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 11.9994,15.3943L 8.2364,17.6643L 9.2314,13.3833L 5.9094,10.5053L 10.2894,10.1293L 11.9994,6.09327L 13.7094,10.1293L 18.0894,10.5053L 14.7674,13.3833L 15.7624,17.6643M 21.9994,9.24227L 14.8084,8.62526L 11.9994,1.99827L 9.1904,8.62526L 1.9994,9.24227L 7.4544,13.9693L 5.8194,20.9983L 11.9994,17.2703L 18.1794,20.9983L 16.5444,13.9693L 21.9994,9.24227 Z "/></svg>",
+                }
+          } />,
+      }
+    }
+    iconOn={
+      Object {
+        "svg": <div
+          dangerouslySetInnerHTML={
+              Object {
+                  "__html": "<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve"><path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 11.9994,15.3943L 8.2364,17.6643L 9.2314,13.3833L 5.9094,10.5053L 10.2894,10.1293L 11.9994,6.09327L 13.7094,10.1293L 18.0894,10.5053L 14.7674,13.3833L 15.7624,17.6643M 21.9994,9.24227L 14.8084,8.62526L 11.9994,1.99827L 9.1904,8.62526L 1.9994,9.24227L 7.4544,13.9693L 5.8194,20.9983L 11.9994,17.2703L 18.1794,20.9983L 16.5444,13.9693L 21.9994,9.24227 Z "/></svg>",
+                }
+          } />,
+      }
+    }
+    label="small"
+    size="small" />
+  <Checkbox
+    iconOff={
+      Object {
+        "svg": <div
+          dangerouslySetInnerHTML={
+              Object {
+                  "__html": "<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve"><path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 11.9994,15.3943L 8.2364,17.6643L 9.2314,13.3833L 5.9094,10.5053L 10.2894,10.1293L 11.9994,6.09327L 13.7094,10.1293L 18.0894,10.5053L 14.7674,13.3833L 15.7624,17.6643M 21.9994,9.24227L 14.8084,8.62526L 11.9994,1.99827L 9.1904,8.62526L 1.9994,9.24227L 7.4544,13.9693L 5.8194,20.9983L 11.9994,17.2703L 18.1794,20.9983L 16.5444,13.9693L 21.9994,9.24227 Z "/></svg>",
+                }
+          } />,
+      }
+    }
+    iconOn={
+      Object {
+        "svg": <div
+          dangerouslySetInnerHTML={
+              Object {
+                  "__html": "<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve"><path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 11.9994,15.3943L 8.2364,17.6643L 9.2314,13.3833L 5.9094,10.5053L 10.2894,10.1293L 11.9994,6.09327L 13.7094,10.1293L 18.0894,10.5053L 14.7674,13.3833L 15.7624,17.6643M 21.9994,9.24227L 14.8084,8.62526L 11.9994,1.99827L 9.1904,8.62526L 1.9994,9.24227L 7.4544,13.9693L 5.8194,20.9983L 11.9994,17.2703L 18.1794,20.9983L 16.5444,13.9693L 21.9994,9.24227 Z "/></svg>",
+                }
+          } />,
+      }
+    }
+    label="regular"
+    size="regular" />
+  <Checkbox
+    iconOff={
+      Object {
+        "svg": <div
+          dangerouslySetInnerHTML={
+              Object {
+                  "__html": "<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve"><path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 11.9994,15.3943L 8.2364,17.6643L 9.2314,13.3833L 5.9094,10.5053L 10.2894,10.1293L 11.9994,6.09327L 13.7094,10.1293L 18.0894,10.5053L 14.7674,13.3833L 15.7624,17.6643M 21.9994,9.24227L 14.8084,8.62526L 11.9994,1.99827L 9.1904,8.62526L 1.9994,9.24227L 7.4544,13.9693L 5.8194,20.9983L 11.9994,17.2703L 18.1794,20.9983L 16.5444,13.9693L 21.9994,9.24227 Z "/></svg>",
+                }
+          } />,
+      }
+    }
+    iconOn={
+      Object {
+        "svg": <div
+          dangerouslySetInnerHTML={
+              Object {
+                  "__html": "<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve"><path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 11.9994,15.3943L 8.2364,17.6643L 9.2314,13.3833L 5.9094,10.5053L 10.2894,10.1293L 11.9994,6.09327L 13.7094,10.1293L 18.0894,10.5053L 14.7674,13.3833L 15.7624,17.6643M 21.9994,9.24227L 14.8084,8.62526L 11.9994,1.99827L 9.1904,8.62526L 1.9994,9.24227L 7.4544,13.9693L 5.8194,20.9983L 11.9994,17.2703L 18.1794,20.9983L 16.5444,13.9693L 21.9994,9.24227 Z "/></svg>",
+                }
+          } />,
+      }
+    }
+    label="medium"
+    size="medium" />
+  <Checkbox
+    iconOff={
+      Object {
+        "svg": <div
+          dangerouslySetInnerHTML={
+              Object {
+                  "__html": "<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve"><path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 11.9994,15.3943L 8.2364,17.6643L 9.2314,13.3833L 5.9094,10.5053L 10.2894,10.1293L 11.9994,6.09327L 13.7094,10.1293L 18.0894,10.5053L 14.7674,13.3833L 15.7624,17.6643M 21.9994,9.24227L 14.8084,8.62526L 11.9994,1.99827L 9.1904,8.62526L 1.9994,9.24227L 7.4544,13.9693L 5.8194,20.9983L 11.9994,17.2703L 18.1794,20.9983L 16.5444,13.9693L 21.9994,9.24227 Z "/></svg>",
+                }
+          } />,
+      }
+    }
+    iconOn={
+      Object {
+        "svg": <div
+          dangerouslySetInnerHTML={
+              Object {
+                  "__html": "<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve"><path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 11.9994,15.3943L 8.2364,17.6643L 9.2314,13.3833L 5.9094,10.5053L 10.2894,10.1293L 11.9994,6.09327L 13.7094,10.1293L 18.0894,10.5053L 14.7674,13.3833L 15.7624,17.6643M 21.9994,9.24227L 14.8084,8.62526L 11.9994,1.99827L 9.1904,8.62526L 1.9994,9.24227L 7.4544,13.9693L 5.8194,20.9983L 11.9994,17.2703L 18.1794,20.9983L 16.5444,13.9693L 21.9994,9.24227 Z "/></svg>",
+                }
+          } />,
+      }
+    }
+    label="large"
+    size="large" />
+</div>
+`;
+
+exports[`test Option: id 1`] = `
+<RaisedButton
+  animateOnTap={true}
+  content={
+    <div
+      className="pe-fab__content" />
+  }
+  id="id-x"
+  ink={true}
+  parentClassName="pe-fab  "
+  ripple={
+    Object {
+      "center": true,
+      "opacityDecayVelocity": 0.24,
+    }
+  }
+  shadow={
+    Object {
+      "increase": 5,
+    }
+  }
+  wash={true} />
+`;
+
+exports[`test Option: mini 1`] = `
+<RaisedButton
+  animateOnTap={true}
+  content={
+    <div
+      className="pe-fab__content">
+      <Icon
+        svg={
+          Object {
+            "content": <div
+              dangerouslySetInnerHTML={
+                  Object {
+                      "__html": "<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>",
+                    }
+              } />,
+          }
+        } />
+    </div>
+  }
+  icon={
+    Object {
+      "svg": Object {
+        "content": <div
+          dangerouslySetInnerHTML={
+                Object {
+                      "__html": "<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>",
+                    }
+          } />,
+      },
+    }
+  }
+  ink={true}
+  mini={true}
+  parentClassName="pe-fab pe-fab--mini "
+  ripple={
+    Object {
+      "center": true,
+      "opacityDecayVelocity": 0.24,
+    }
+  }
+  shadow={
+    Object {
+      "increase": 5,
+    }
+  }
+  wash={true} />
+`;
+
+exports[`test Option: selectable (false) 1`] = `
+<div>
+  <Checkbox
+    label="Never"
+    selectable={[Function]} />
+  <Checkbox
+    label="Only when unchecked"
+    selectable={[Function]} />
+</div>
+`;
+
+exports[`test Option: size 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+    }
+  }>
+  <Checkbox
+    label="small"
+    size="small" />
+  <Checkbox
+    label="regular"
+    size="regular" />
+  <Checkbox
+    label="medium"
+    size="medium" />
+  <Checkbox
+    label="large"
+    size="large" />
+</div>
+`;
+
+exports[`test Option: style (JSX) 1`] = `
+<Fab
+  icon={
+    Object {
+      "svg": <svg
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg">
+        <path
+            d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z" />
+    </svg>,
+    }
+  }
+  style={
+    Object {
+      "backgroundColor": "#fff",
+      "color": "#ef6c00",
+    }
+  } />
+`;
+
+exports[`test Option: style (colors) 1`] = `
+<RaisedButton
+  animateOnTap={true}
+  content={
+    <div
+      className="pe-fab__content">
+      <Icon
+        svg={
+          Object {
+            "content": <div
+              dangerouslySetInnerHTML={
+                  Object {
+                      "__html": "<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>",
+                    }
+              } />,
+          }
+        } />
+    </div>
+  }
+  icon={
+    Object {
+      "svg": Object {
+        "content": <div
+          dangerouslySetInnerHTML={
+                Object {
+                      "__html": "<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>",
+                    }
+          } />,
+      },
+    }
+  }
+  ink={true}
+  parentClassName="pe-fab  "
+  ripple={
+    Object {
+      "center": true,
+      "opacityDecayVelocity": 0.24,
+    }
+  }
+  shadow={
+    Object {
+      "increase": 5,
+    }
+  }
+  style={
+    Object {
+      "backgroundColor": "#4E342E",
+      "color": "#FFCCBC",
+    }
+  }
+  wash={true} />
+`;
+
+exports[`test Option: tabindex 1`] = `
+<RaisedButton
+  animateOnTap={true}
+  content={
+    <div
+      className="pe-fab__content" />
+  }
+  ink={true}
+  parentClassName="pe-fab  "
+  ripple={
+    Object {
+      "center": true,
+      "opacityDecayVelocity": 0.24,
+    }
+  }
+  shadow={
+    Object {
+      "increase": 5,
+    }
+  }
+  tabIndex={3}
+  wash={true} />
+`;
+
+exports[`test Option: z (0) 1`] = `
+<RaisedButton
+  animateOnTap={true}
+  content={
+    <div
+      className="pe-fab__content">
+      <Icon
+        svg={
+          Object {
+            "content": <div
+              dangerouslySetInnerHTML={
+                  Object {
+                      "__html": "<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>",
+                    }
+              } />,
+          }
+        } />
+    </div>
+  }
+  icon={
+    Object {
+      "svg": Object {
+        "content": <div
+          dangerouslySetInnerHTML={
+                Object {
+                      "__html": "<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>",
+                    }
+          } />,
+      },
+    }
+  }
+  ink={true}
+  parentClassName="pe-fab  "
+  ripple={
+    Object {
+      "center": true,
+      "opacityDecayVelocity": 0.24,
+    }
+  }
+  shadow={
+    Object {
+      "increase": 5,
+    }
+  }
+  wash={true}
+  z={0} />
+`;
+
+exports[`test Option: z (5) (JSX) 1`] = `
+<Fab
+  icon={
+    Object {
+      "svg": <svg
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg">
+        <path
+            d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z" />
+    </svg>,
+    }
+  }
+  mini={true}
+  z={5} />
+`;
+
+exports[`test Option: z (5) 1`] = `
+<RaisedButton
+  animateOnTap={true}
+  content={
+    <div
+      className="pe-fab__content">
+      <Icon
+        svg={
+          Object {
+            "content": <div
+              dangerouslySetInnerHTML={
+                  Object {
+                      "__html": "<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>",
+                    }
+              } />,
+          }
+        } />
+    </div>
+  }
+  icon={
+    Object {
+      "svg": Object {
+        "content": <div
+          dangerouslySetInnerHTML={
+                Object {
+                      "__html": "<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>",
+                    }
+          } />,
+      },
+    }
+  }
+  ink={true}
+  parentClassName="pe-fab  "
+  ripple={
+    Object {
+      "center": true,
+      "opacityDecayVelocity": 0.24,
+    }
+  }
+  shadow={
+    Object {
+      "increase": 5,
+    }
+  }
+  wash={true}
+  z={5} />
+`;
+
+exports[`test Themed FAB (colors) 1`] = `
+<RaisedButton
+  animateOnTap={true}
+  className="tests-fab-themed-fab"
+  content={
+    <div
+      className="pe-fab__content">
+      <Icon
+        svg={
+          Object {
+            "content": <div
+              dangerouslySetInnerHTML={
+                  Object {
+                      "__html": "<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>",
+                    }
+              } />,
+          }
+        } />
+    </div>
+  }
+  icon={
+    Object {
+      "svg": Object {
+        "content": <div
+          dangerouslySetInnerHTML={
+                Object {
+                      "__html": "<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>",
+                    }
+          } />,
+      },
+    }
+  }
+  ink={true}
+  parentClassName="pe-fab  tests-fab-themed-fab"
+  ripple={
+    Object {
+      "center": true,
+      "opacityDecayVelocity": 0.24,
+    }
+  }
+  shadow={
+    Object {
+      "increase": 5,
+    }
+  }
+  wash={true} />
+`;
+
+exports[`test Themed FAB -- dark tone class 1`] = `
+<RaisedButton
+  animateOnTap={true}
+  className="tests-fab-themed-fab"
+  content={
+    <div
+      className="pe-fab__content">
+      <Icon
+        svg={
+          Object {
+            "content": <div
+              dangerouslySetInnerHTML={
+                  Object {
+                      "__html": "<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>",
+                    }
+              } />,
+          }
+        } />
+    </div>
+  }
+  icon={
+    Object {
+      "svg": Object {
+        "content": <div
+          dangerouslySetInnerHTML={
+                Object {
+                      "__html": "<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>",
+                    }
+          } />,
+      },
+    }
+  }
+  ink={true}
+  parentClassName="pe-fab  tests-fab-themed-fab"
+  ripple={
+    Object {
+      "center": true,
+      "opacityDecayVelocity": 0.24,
+    }
+  }
+  shadow={
+    Object {
+      "increase": 5,
+    }
+  }
+  wash={true} />
+`;
+
+exports[`test With router (JSX) 1`] = `
+<Route
+  render={[Function]} />
+`;
+
+exports[`test With router 1`] = `
+<Route
+  render={[Function]} />
+`;

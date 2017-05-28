@@ -243,9 +243,8 @@ var element = "a";
 var theme = customTheme;
 
 var getInitialState = function getInitialState(vnode, createStream) {
-  var attrs = vnode.attrs;
   var focus = createStream(false);
-  var inactive = createStream(!!attrs.inactive);
+  var inactive = createStream(false);
   var mouseover = createStream(false);
   return {
     focus: focus,

@@ -46,7 +46,7 @@ const mithrilTests = ({ IconButton, renderer: h }) => {
     },
     {
       name: "Dark tone class + light tone",
-      className: "test-dark-theme",
+      className: "test-dark-tone",
       component: {
         view: () => h("div", {
           style: { background: "#fff", padding: "10px" }

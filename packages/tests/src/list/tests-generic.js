@@ -291,7 +291,7 @@ export default ({ List, ListTile, Icon, renderer: h }) => {
     {
       name: "Dark tone class + light tone",
       interactive: true,
-      className: "test-dark-theme",
+      className: "test-dark-tone",
       component: List,
       attrs: {
         style: { background: "#fff" },      

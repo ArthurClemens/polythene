@@ -1,4 +1,4 @@
-# FAB
+# Checkbox
 
 Polythene for React component.
 

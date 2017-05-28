@@ -5,6 +5,7 @@ export const keys = {
   formaction:  "formaction",
   onblur:      "onblur",
   onclick:     "onclick",
+  onchange:    "onchange",
   onfocus:     "onfocus",
   onkeydown:   "onkeydown",
   onkeyup:     "onkeyup",

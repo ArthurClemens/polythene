@@ -100,7 +100,7 @@ export default ({ Toolbar, IconButton, renderer: h }) => {
     },
     {
       name: "Dark tone class + light tone",
-      className: "test-dark-theme",
+      className: "test-dark-tone",
       component: Toolbar,
       attrs: {
         content: toolbarRow,

@@ -178,7 +178,7 @@ m(radioGroup);
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **getState**  | optional | Function(state {Object}) | | Callback function that accepts the field state (Object with properties `checked` {Boolean}, `value` {String}, `el` {HTMLElement}) |
+| **getState**  | optional | Function(state {Object}) | | Callback function that accepts the field state (Object with properties `checked` {Boolean}, `value` {String}) |
 | **selectable** | optional | Function(checked {Boolean}) | | Use to set the active state based on the radio button state; function that accepts the field checked value (Boolean) |
 
 

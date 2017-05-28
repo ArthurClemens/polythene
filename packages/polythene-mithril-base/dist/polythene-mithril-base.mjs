@@ -6,6 +6,7 @@ var keys = {
   formaction: "formaction",
   onblur: "onblur",
   onclick: "onclick",
+  onchange: "onchange",
   onfocus: "onfocus",
   onkeydown: "onkeydown",
   onkeyup: "onkeyup",
@@ -249,8 +250,7 @@ var stateComponent = function stateComponent(_ref) {
   return {
     view: view,
     oninit: oninit,
-    oncreate: onMount,
-    onremove: onUnmount
+    oncreate: onMount
   };
 };
 
@@ -276,8 +276,7 @@ var viewComponent = function viewComponent(_ref) {
 
   return {
     view: renderView || view,
-    oncreate: onMount,
-    onremove: onUnmount
+    oncreate: onMount
   };
 };
 
