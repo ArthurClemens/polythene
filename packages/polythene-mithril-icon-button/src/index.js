@@ -1,20 +1,17 @@
 import { viewComponent } from "polythene-mithril-base";
-import { CoreIconButton as component } from "polythene-core-icon-button";
+import { coreIconButton as core } from "polythene-core-icon-button";
 import { Icon } from "polythene-mithril-icon";
 import { Button } from "polythene-mithril-button";
 
-const createProps = (vnode, args) => component.createProps(vnode, Object.assign(args, { Icon }));
-const createContent = (vnode, args) => component.createContent(vnode, Object.assign(args, { Icon }));
-
 export const IconButton = viewComponent(Object.assign(
   {},
-  component,
+  core,
   {
-    createProps,
-    createContent,
+    createProps: (vnode, args) => core.createProps(vnode, Object.assign(args, { Icon })),
+    createContent: (vnode, args) => core.createContent(vnode, Object.assign(args, { Icon })),
     component: Button,
   }
 ));
 
-IconButton.theme = component.theme;
+IconButton.theme = core.theme;
 IconButton.displayName = "IconButton";

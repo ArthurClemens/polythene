@@ -16,7 +16,7 @@
     "README.md"
   ],
   "dependencies": {
-    "mithril": "1.1.0",
+    "mithril": "1.1.1",
     "mmsvg": "^1.5.3",
     "polythene-dialog": "1.0.0-rc.1",
     "polythene-core-css": "1.0.0-rc.1",

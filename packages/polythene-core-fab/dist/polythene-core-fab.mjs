@@ -134,4 +134,4 @@ var fab = Object.freeze({
 	createContent: createContent
 });
 
-export { fab as CoreFAB, classes, vars$1 as vars };
+export { fab as coreFAB, classes, vars$1 as vars };

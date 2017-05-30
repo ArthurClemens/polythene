@@ -154,4 +154,4 @@ var list = Object.freeze({
 	createContent: createContent
 });
 
-export { list as CoreList, classes, vars$1 as vars };
+export { list as coreList, classes, vars$1 as vars };

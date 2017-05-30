@@ -1,5 +1,5 @@
-import * as CoreCheckbox from "./checkbox";
+import * as coreCheckbox from "./checkbox";
 
-export { CoreCheckbox };
+export { coreCheckbox };
 export { default as classes } from "./classes";
 export { default as vars } from "./theme/vars";

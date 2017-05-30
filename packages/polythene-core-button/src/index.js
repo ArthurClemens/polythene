@@ -1,5 +1,5 @@
-import * as CoreButton from "./button";
+import * as coreButton from "./button";
 
-export { CoreButton };
+export { coreButton };
 export { default as classes } from "./classes";
 export { default as vars } from "./theme/vars";

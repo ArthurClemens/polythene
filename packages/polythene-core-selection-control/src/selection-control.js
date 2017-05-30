@@ -84,21 +84,24 @@ export const createProps = (vnode, { keys: k }) => {
   );
 };
 
-export const createContent = (vnode, { renderer: h, keys: k, Icon, IconButton }) => {
+export const createContent = (vnode, { renderer: h, keys: k, ViewControl }) => {
   const state = vnode.state;
   const attrs = vnode.attrs;
   const { inactive } = currentState(attrs, state);
-  const controlView = attrs.createControl
-    ? attrs.createControl({ h, k, inactive, onChange: state.onChange, attrs, Icon, IconButton })
-    : null;
-
   return h("label",
     {
       className: classes.formLabel,
       key: "label"
     },
     [
-      controlView,
+      h(ViewControl, Object.assign(
+        {},
+        attrs,
+        {
+          inactive,
+          onChange: state.onChange
+        }
+      )),
       attrs.label
         ? h(`.${classes.label}`,
             inactive
@@ -110,43 +113,3 @@ export const createContent = (vnode, { renderer: h, keys: k, Icon, IconButton })
     ]
   );
 };
-
-const createIcon = (h, iconType, attrs, className) => (
-  // if attrs.iconOn/attrs.iconOff is passed, use that icon options object and ignore size
-  // otherwise create a new object
-  Object.assign(
-    {},
-    attrs[iconType]
-      ? attrs[iconType]
-      : { svg: h.trust(attrs.icons[iconType]) },
-    { className },
-    attrs.icon,
-    attrs.size
-      ? { size: attrs.size }
-      : null
-  )
-);
-
-export const createControl = ({ h, k, attrs, inactive, onChange, Icon, IconButton }) => (
-  h("div",
-    { className: classes.box },
-    h(IconButton, Object.assign(
-      {},
-      {
-        element: "div",
-        className: classes.button,
-        content: [
-          { iconType: "iconOn", className: classes.buttonOn},
-          { iconType: "iconOff", className: classes.buttonOff}
-        ].map(o =>
-          h(Icon, createIcon(h, o.iconType, attrs, o.className))
-        ),
-        ripple: { center: true },
-        disabled: attrs.disabled,
-        events: { [k.onclick]: onChange },
-        inactive
-      },
-      attrs.iconButton // for example for hover behaviour
-    ))
-  )
-);

@@ -1,10 +1,10 @@
 import { viewComponent } from "polythene-react-base";
-import { CoreToolbar as component } from "polythene-core-toolbar";
+import { coreToolbar as core } from "polythene-core-toolbar";
 
 export const Toolbar = viewComponent(Object.assign(
   {},
-  component
+  core
 ));
 
-Toolbar.theme = component.theme;
+Toolbar.theme = core.theme;
 Toolbar.displayName = "Toolbar";

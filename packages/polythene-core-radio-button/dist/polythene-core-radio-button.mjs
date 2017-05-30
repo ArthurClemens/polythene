@@ -40,14 +40,11 @@ var theme = customTheme;
 
 // Props to be passed to a selection control
 
-var createProps = function createProps(vnode, _ref) {
-  var createControl = _ref.createControl;
-
+var createProps = function createProps(vnode) {
   var attrs = vnode.attrs;
   return _extends({}, attrs, {
     theme: theme,
     icons: icons,
-    createControl: createControl,
     selectable: attrs.selectable || function (selected) {
       return !selected;
     }, // default: only selectable when not checked
@@ -61,4 +58,4 @@ var radioButton = Object.freeze({
 	createProps: createProps
 });
 
-export { radioButton as CoreRadioButton, classes, vars };
+export { radioButton as coreRadioButton, classes, vars };

@@ -7,7 +7,7 @@ export const theme = customTheme;
 
 // Props to be passed to a selection control
 
-export const createProps = (vnode, { createControl }) => {
+export const createProps = vnode => {
   const attrs = vnode.attrs;
   return Object.assign(
     {},
@@ -15,7 +15,6 @@ export const createProps = (vnode, { createControl }) => {
     {
       theme,
       icons,
-      createControl,
       selectable: attrs.selectable || ((selected) => !selected), // default: only selectable when not checked
       instanceClass: classes.component,
       type: "radio"

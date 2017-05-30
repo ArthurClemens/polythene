@@ -1,17 +1,15 @@
 import { viewComponent } from "polythene-mithril-base";
-import { CoreList as component } from "polythene-core-list";
+import { coreList as core } from "polythene-core-list";
 import { ListTile } from "polythene-mithril-list-tile";
-
-const createProps = (vnode, args) => component.createProps(vnode, Object.assign(args, { ListTile }));
-const createContent = (vnode, args) => component.createContent(vnode, Object.assign(args, { ListTile }));
 
 export const List = viewComponent(Object.assign(
   {},
-  component,
+  core,
   {
-    createProps,
-    createContent
+    createProps: (vnode, args) => core.createProps(vnode, Object.assign(args, { ListTile })),
+    createContent: (vnode, args) => core.createContent(vnode, Object.assign(args, { ListTile }))
   }
 ));
 
-List.theme = component.theme;
+List.theme = core.theme;
+List.displayName = "List";

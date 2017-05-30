@@ -1,16 +1,14 @@
 import { stateComponent } from "polythene-mithril-base";
-import { CoreCheckbox as component } from "polythene-core-checkbox";
-import { SelectionControl, createControl } from "polythene-mithril-selection-control";
-
-const createProps = (vnode, args) => component.createProps(vnode, Object.assign(args, { createControl }));
+import { coreCheckbox as core } from "polythene-core-checkbox";
+import { SelectionControl } from "./selection-control";
 
 export const Checkbox = stateComponent(Object.assign(
   {},
-  component,
+  core,
   {
-    createProps,
     component: SelectionControl
   }
 ));
 
-Checkbox.theme = component.theme;
+Checkbox.theme = core.theme;
+Checkbox.displayName = "Checkbox";

@@ -597,7 +597,7 @@ var view = function view(_ref2) {
   var element = attrs.element || attrs.url ? "a" : "div";
   var props = _extends({}, filterSupportedAttributes(attrs), {
     className: [classes.component, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.class].join(" ")
-  }, attrs.url ? attrs.url : null, attrs.events ? attrs.events : null);
+  }, attrs.url, attrs.events);
 
   var contents = Array.isArray(attrs.content) ? attrs.content.map(function (attr) {
     var key = Object.keys(attr)[0];

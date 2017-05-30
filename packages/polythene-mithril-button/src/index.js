@@ -1,17 +1,14 @@
 import { stateComponent } from "polythene-mithril-base";
-import { CoreButton as component } from "polythene-core-button";
+import { coreButton as core } from "polythene-core-button";
 import { Ripple } from "polythene-mithril-ripple";
-
-const createProps = (vnode, args) => component.createProps(vnode, Object.assign(args, { Ripple }));
-const createContent = (vnode, args) => component.createContent(vnode, Object.assign(args, { Ripple }));
 
 export const Button = stateComponent(Object.assign(
   {},
-  component,
+  core,
   {
-    createProps,
-    createContent
+    createProps: (vnode, args) => core.createProps(vnode, Object.assign(args, { Ripple })),
+    createContent: (vnode, args) => core.createContent(vnode, Object.assign(args, { Ripple }))
   }
 ));
 
-Button.theme = component.theme;
+Button.theme = core.theme;

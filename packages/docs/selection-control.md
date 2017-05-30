@@ -2,13 +2,18 @@
 
 Base functionality for:
 
-* [Checkbox](../polythene-checkbox)
-* [Radio button](../polythene-radio-button)
-* [Switch](../polythene-switch)
+* [Checkbox](./Checkbox.md)
+* [Radio button](./RadioButton.md)
+* [Switch](./SwitchButton.md)
 
 
 
 ## CSS classes
 
-See: `src/classes.js`
+See: `polythene-core-selection-control/src/classes.js`
 
+Class names can be imported with:
+
+~~~javascript
+import { classes } from "polythene-core-selection-control";
+~~~

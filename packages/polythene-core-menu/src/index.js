@@ -1,5 +1,5 @@
-import * as CoreMenu from "./menu";
+import * as coreMenu from "./menu";
 
-export { CoreMenu };
+export { coreMenu };
 export { default as classes } from "./classes";
 export { default as vars } from "./theme/vars";

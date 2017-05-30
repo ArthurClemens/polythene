@@ -86,4 +86,4 @@ var svg = Object.freeze({
 	createContent: createContent
 });
 
-export { svg as CoreSVG, classes, vars };
+export { svg as coreSVG, classes, vars };

@@ -217,4 +217,4 @@ var raisedButton = Object.freeze({
 	onUnmount: onUnmount
 });
 
-export { raisedButton as CoreRaisedButton, classes, vars$1 as vars };
+export { raisedButton as coreRaisedButton, classes, vars$1 as vars };

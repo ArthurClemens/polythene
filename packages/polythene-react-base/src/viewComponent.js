@@ -8,7 +8,7 @@ const requiresKeys = true;
 export const viewComponent = ({
   createContent = () => ({}),
   createProps = () => ({}),
-  element,
+  element = "div",
   component,
 }) => {
   

@@ -40,14 +40,11 @@ var theme = customTheme;
 
 // Props to be passed to a selection control
 
-var createProps = function createProps(vnode, _ref) {
-  var createControl = _ref.createControl;
-
+var createProps = function createProps(vnode) {
   var attrs = vnode.attrs;
   return _extends({}, attrs, {
     theme: theme,
     icons: icons,
-    createControl: createControl,
     selectable: attrs.selectable || function () {
       return true;
     }, // default: always selectable, regardless the checked state
@@ -61,4 +58,4 @@ var checkbox = Object.freeze({
 	createProps: createProps
 });
 
-export { checkbox as CoreCheckbox, classes, vars };
+export { checkbox as coreCheckbox, classes, vars };

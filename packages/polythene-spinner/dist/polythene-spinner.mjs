@@ -197,7 +197,7 @@ var createView = function createView(state, attrs) {
         }, 0);
       }
     }
-  }, attrs.events ? attrs.events : null);
+  }, attrs.events);
 
   notifyState(state, attrs);
 

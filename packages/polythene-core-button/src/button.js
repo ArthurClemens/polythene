@@ -80,6 +80,7 @@ export const createProps = (vnode, { keys: k }) => {
 
 export const createContent = (vnode, { renderer: h, keys: k, Ripple }) => {
   const attrs = vnode.attrs;
+  const state = vnode.state;
   const noink = attrs.ink !== undefined && attrs.ink === false;
   const disabled = attrs.disabled;
   const children = attrs.children || vnode.children;
@@ -107,11 +108,13 @@ export const createContent = (vnode, { renderer: h, keys: k, Ripple }) => {
         // Ripple
         disabled || noink
           ? null
-          : Ripple && h(Ripple, {
-            ...attrs.ripple,
-            key: "ripple",
-            // target: () => vnode.dom
-          }),
+          : Ripple && h(Ripple, Object.assign({},
+            attrs.ripple,
+            {
+              key: "ripple"
+              // target: () => state.dom
+            }
+          )),
         // hover
         noWash ? null : h("div", { key: "wash", className: classes.wash }),
         // focus

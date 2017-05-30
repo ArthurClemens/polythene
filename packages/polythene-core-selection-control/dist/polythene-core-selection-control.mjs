@@ -105,8 +105,7 @@ var createProps = function createProps(vnode, _ref) {
 var createContent = function createContent(vnode, _ref2) {
   var h = _ref2.renderer,
       k = _ref2.keys,
-      Icon = _ref2.Icon,
-      IconButton = _ref2.IconButton;
+      ViewControl = _ref2.ViewControl;
 
   var state = vnode.state;
   var attrs = vnode.attrs;
@@ -114,50 +113,60 @@ var createContent = function createContent(vnode, _ref2) {
   var _currentState2 = currentState(attrs, state),
       inactive = _currentState2.inactive;
 
-  var controlView = attrs.createControl ? attrs.createControl({ h: h, k: k, inactive: inactive, onChange: state.onChange, attrs: attrs, Icon: Icon, IconButton: IconButton }) : null;
-
   return h("label", {
     className: classes.formLabel,
     key: "label"
-  }, [controlView, attrs.label ? h("." + classes.label, inactive ? null : _defineProperty({}, k.onclick, state.onChange), attrs.label) : null]);
-};
-
-var createIcon = function createIcon(h, iconType, attrs, className) {
-  return (
-    // if attrs.iconOn/attrs.iconOff is passed, use that icon options object and ignore size
-    // otherwise create a new object
-    _extends({}, attrs[iconType] ? attrs[iconType] : { svg: h.trust(attrs.icons[iconType]) }, { className: className }, attrs.icon, attrs.size ? { size: attrs.size } : null)
-  );
-};
-
-var createControl = function createControl(_ref4) {
-  var h = _ref4.h,
-      k = _ref4.k,
-      attrs = _ref4.attrs,
-      inactive = _ref4.inactive,
-      onChange = _ref4.onChange,
-      Icon = _ref4.Icon,
-      IconButton = _ref4.IconButton;
-  return h("div", { className: classes.box }, h(IconButton, _extends({}, {
-    element: "div",
-    className: classes.button,
-    content: [{ iconType: "iconOn", className: classes.buttonOn }, { iconType: "iconOff", className: classes.buttonOff }].map(function (o) {
-      return h(Icon, createIcon(h, o.iconType, attrs, o.className));
-    }),
-    ripple: { center: true },
-    disabled: attrs.disabled,
-    events: _defineProperty({}, k.onclick, onChange),
-    inactive: inactive
-  }, attrs.iconButton // for example for hover behaviour
-  )));
+  }, [h(ViewControl, _extends({}, attrs, {
+    inactive: inactive,
+    onChange: state.onChange
+  })), attrs.label ? h("." + classes.label, inactive ? null : _defineProperty({}, k.onclick, state.onChange), attrs.label) : null]);
 };
 
 var selectionControl = Object.freeze({
 	element: element,
 	getInitialState: getInitialState,
 	createProps: createProps,
-	createContent: createContent,
-	createControl: createControl
+	createContent: createContent
+});
+
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var element$1 = "." + classes.box;
+
+var createIcon = function createIcon(h, iconType, attrs, className) {
+  return (
+    // if attrs.iconOn/attrs.iconOff is passed, use that icon options object and ignore size
+    // otherwise create a new object
+    _extends$1({}, attrs[iconType] ? attrs[iconType] : { svg: h.trust(attrs.icons[iconType]) }, { className: className }, attrs.icon, attrs.size ? { size: attrs.size } : null)
+  );
+};
+
+var createContent$1 = function createContent(vnode, _ref) {
+  var h = _ref.renderer,
+      k = _ref.keys,
+      Icon = _ref.Icon,
+      IconButton = _ref.IconButton;
+
+  var attrs = vnode.attrs;
+  return h(IconButton, _extends$1({}, {
+    element: "div",
+    className: classes.button,
+    content: [{ iconType: "iconOn", className: classes.buttonOn }, { iconType: "iconOff", className: classes.buttonOff }].map(function (o) {
+      return h(Icon, createIcon(h, o.iconType, attrs, o.className));
+    }),
+    // ripple: { center: true },
+    disabled: attrs.disabled,
+    events: _defineProperty$1({}, k.onclick, attrs.onChange),
+    inactive: attrs.inactive
+  }, attrs.iconButton // for example for hover behaviour
+  ));
+};
+
+var viewControl = Object.freeze({
+	element: element$1,
+	createContent: createContent$1
 });
 
 var rgba = vars.rgba;
@@ -204,7 +213,7 @@ var vars$1 = {
   color_dark_focus_off_opacity: .09
 };
 
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 // Returns a style function to be used by checkbox and radio-button
 
@@ -245,7 +254,7 @@ var inactiveButton = function inactiveButton() {
 };
 
 var layout = (function (selector, componentVars) {
-  return [_defineProperty$1({}, selector, {
+  return [_defineProperty$2({}, selector, {
     display: "inline-block",
     boxSizing: "border-box",
     margin: 0,
@@ -327,12 +336,12 @@ var layout = (function (selector, componentVars) {
   })];
 });
 
-function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$3(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 // Returns a style function to be used by checkbox and radio-button
 
 var style = function style(scopes, selector, componentVars, tint) {
-  return [_defineProperty$2({}, scopes.map(function (s) {
+  return [_defineProperty$3({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
     color: componentVars["color_" + tint + "_on"], // override by specifying "color"
@@ -384,4 +393,4 @@ var color = (function (selector, componentVars) {
   style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 });
 
-export { selectionControl as CoreSelectionControl, classes, vars$1 as vars, layout, color };
+export { selectionControl as coreSelectionControl, viewControl, classes, vars$1 as vars, layout, color };

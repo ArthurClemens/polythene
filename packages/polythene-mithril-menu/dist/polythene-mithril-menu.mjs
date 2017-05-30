@@ -1,19 +1,16 @@
 import { Toggle, renderer, stateComponent } from 'polythene-mithril-base';
-import { CoreMenu, classes } from 'polythene-core-menu';
+import { classes, coreMenu } from 'polythene-core-menu';
 import { Shadow } from 'polythene-mithril-shadow';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var createProps = function createProps(vnode, args) {
-  return CoreMenu.createProps(vnode, _extends(args, { Shadow: Shadow }));
-};
-var createContent = function createContent(vnode, args) {
-  return CoreMenu.createContent(vnode, _extends(args, { Shadow: Shadow }));
-};
-
-var MenuInstance = stateComponent(_extends({}, CoreMenu, {
-  createProps: createProps,
-  createContent: createContent
+var MenuInstance = stateComponent(_extends({}, coreMenu, {
+  createProps: function createProps(vnode, args) {
+    return coreMenu.createProps(vnode, _extends(args, { Shadow: Shadow }));
+  },
+  createContent: function createContent(vnode, args) {
+    return coreMenu.createContent(vnode, _extends(args, { Shadow: Shadow }));
+  }
 }));
 
 var Menu = {
@@ -25,7 +22,7 @@ var Menu = {
   }
 };
 
-Menu.theme = CoreMenu.theme;
+Menu.theme = coreMenu.theme;
 Menu.displayName = "Menu";
 
 export { Menu };

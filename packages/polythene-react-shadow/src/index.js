@@ -1,10 +1,10 @@
 import { viewComponent } from "polythene-react-base";
-import { CoreShadow as component } from "polythene-core-shadow";
+import { coreShadow as core } from "polythene-core-shadow";
 
 export const Shadow = viewComponent(Object.assign(
   {},
-  component
+  core
 ));
 
-Shadow.theme = component.theme;
+Shadow.theme = core.theme;
 Shadow.displayName = "Shadow";

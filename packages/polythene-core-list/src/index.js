@@ -1,5 +1,5 @@
-import * as CoreList from "./list";
+import * as coreList from "./list";
 
-export { CoreList };
+export { coreList };
 export { default as classes } from "./classes";
 export { default as vars } from "./theme/vars";

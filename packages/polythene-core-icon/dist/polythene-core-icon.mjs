@@ -114,7 +114,7 @@ var createProps = function createProps(vnode, _ref) {
   var attrs = vnode.attrs;
   return _extends({}, filterSupportedAttributes(attrs), {
     className: [classes.component, classForSize(attrs.size), attrs.avatar ? classes.avatar : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
-  }, attrs.events ? attrs.events : null);
+  }, attrs.events);
 };
 
 var createContent = function createContent(vnode, _ref2) {
@@ -132,4 +132,4 @@ var icon = Object.freeze({
 	createContent: createContent
 });
 
-export { icon as CoreIcon, classes, vars$1 as vars };
+export { icon as coreIcon, classes, vars$1 as vars };

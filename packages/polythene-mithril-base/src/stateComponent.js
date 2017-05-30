@@ -7,7 +7,7 @@ const requiresKeys = false;
 export const stateComponent = ({
   createContent = () => {},
   createProps = () => {},
-  element,
+  element = "div",
   component,
   getInitialState = () => ({}),
   onMount = () => {},
@@ -22,7 +22,7 @@ export const stateComponent = ({
     const initialState = getInitialState(protoState, stream);
     vnode.state = initialState;
     vnode.state.redrawOnUpdate && vnode.state.redrawOnUpdate.map(() => (
-      renderer.redraw()
+      setTimeout(renderer.redraw)
     ));
   };
 

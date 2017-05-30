@@ -2,7 +2,7 @@ import { isTouch, animationEndEvent } from "polythene-core";
 import { styler } from "polythene-core-css";
 import { vars } from "polythene-theme";
 
-const ANIMATION_END_EVENT =    animationEndEvent();
+const ANIMATION_END_EVENT =    animationEndEvent;
 const DEFAULT_START_OPACITY =  0.2;
 const DEFAULT_END_OPACITY =    0.0;
 const DEFAULT_START_SCALE =    0.1;
@@ -62,6 +62,7 @@ export default (e, el, wavesEl, attrs, classes, onEndCallback) => {
   styler.add(animationId, keyframeStyle);
 
   const onEnd = evt => {
+    styler.remove(animationId);
     if (attrs.persistent) {
       style.opacity = endOpacity;
       style.transform = "scale(" + endScale + ")";
@@ -70,7 +71,6 @@ export default (e, el, wavesEl, attrs, classes, onEndCallback) => {
       wavesEl.classList.remove(classes.wavesAnimating);
     }
     wavesEl.removeEventListener(ANIMATION_END_EVENT, onEnd, false);
-    styler.remove(animationId);
     if (attrs.end) {
       attrs.end(evt);
     }

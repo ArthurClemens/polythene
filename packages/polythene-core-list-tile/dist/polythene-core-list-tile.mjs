@@ -374,4 +374,4 @@ var listTile = Object.freeze({
 	createContent: createContent
 });
 
-export { listTile as CoreListTile, classes, vars$1 as vars };
+export { listTile as coreListTile, classes, vars$1 as vars };

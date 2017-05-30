@@ -1,10 +1,10 @@
 import { viewComponent } from "polythene-react-base";
-import { CoreSVG as component } from "polythene-core-svg";
+import { coreSVG as core } from "polythene-core-svg";
 
 export const SVG = viewComponent(Object.assign(
   {},
-  component
+  core
 ));
 
-SVG.theme = component.theme;
+SVG.theme = core.theme;
 SVG.displayName = "SVG";

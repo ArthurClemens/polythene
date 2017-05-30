@@ -113,4 +113,4 @@ var shadow = Object.freeze({
 	createContent: createContent
 });
 
-export { shadow as CoreShadow, classes, vars$1 as vars };
+export { shadow as coreShadow, classes, vars$1 as vars };

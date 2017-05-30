@@ -127,4 +127,4 @@ var toolbar = Object.freeze({
 	createContent: createContent
 });
 
-export { toolbar as CoreToolbar, classes, vars$1 as vars };
+export { toolbar as coreToolbar, classes, vars$1 as vars };

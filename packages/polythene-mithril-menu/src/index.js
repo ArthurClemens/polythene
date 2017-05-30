@@ -1,16 +1,13 @@
 import { stateComponent, Toggle, renderer as h } from "polythene-mithril-base";
-import { CoreMenu as component, classes } from "polythene-core-menu";
+import { coreMenu as core, classes } from "polythene-core-menu";
 import { Shadow } from "polythene-mithril-shadow";
-
-const createProps = (vnode, args) => component.createProps(vnode, Object.assign(args, { Shadow }));
-const createContent = (vnode, args) => component.createContent(vnode, Object.assign(args, { Shadow }));
 
 const MenuInstance = stateComponent(Object.assign(
   {},
-  component,
+  core,
   {
-    createProps,
-    createContent
+    createProps: (vnode, args) => core.createProps(vnode, Object.assign(args, { Shadow })),
+    createContent: (vnode, args) => core.createContent(vnode, Object.assign(args, { Shadow }))
   }
 ));
 
@@ -26,5 +23,5 @@ export const Menu = {
     ))
 };
 
-Menu.theme = component.theme;
+Menu.theme = core.theme;
 Menu.displayName = "Menu";

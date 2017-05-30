@@ -300,6 +300,7 @@ var createContent = function createContent(vnode, _ref3) {
       Ripple = _ref3.Ripple;
 
   var attrs = vnode.attrs;
+  var state = vnode.state;
   var noink = attrs.ink !== undefined && attrs.ink === false;
   var disabled = attrs.disabled;
   var children = attrs.children || vnode.children;
@@ -310,6 +311,7 @@ var createContent = function createContent(vnode, _ref3) {
   // Ripple
   disabled || noink ? null : Ripple && h(Ripple, _extends({}, attrs.ripple, {
     key: "ripple"
+    // target: () => state.dom
   })),
   // hover
   noWash ? null : h("div", { key: "wash", className: classes.wash }),
@@ -325,4 +327,4 @@ var button = Object.freeze({
 	createContent: createContent
 });
 
-export { button as CoreButton, classes, vars$1 as vars };
+export { button as coreButton, classes, vars$1 as vars };

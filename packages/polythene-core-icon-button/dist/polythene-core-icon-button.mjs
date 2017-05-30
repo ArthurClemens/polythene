@@ -152,4 +152,4 @@ var iconButton = Object.freeze({
 	createContent: createContent
 });
 
-export { iconButton as CoreIconButton, classes, vars$1 as vars };
+export { iconButton as coreIconButton, classes, vars$1 as vars };

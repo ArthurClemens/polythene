@@ -81,7 +81,7 @@ styler.generateStyles([selector], vars$1, fns);
 
 function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var ANIMATION_END_EVENT = animationEndEvent();
+var ANIMATION_END_EVENT = animationEndEvent;
 var DEFAULT_START_OPACITY = 0.2;
 var DEFAULT_END_OPACITY = 0.0;
 var DEFAULT_START_SCALE = 0.1;
@@ -130,6 +130,7 @@ var animation = (function (e, el, wavesEl, attrs, classes, onEndCallback) {
   styler.add(animationId, keyframeStyle);
 
   var onEnd = function onEnd(evt) {
+    styler.remove(animationId);
     if (attrs.persistent) {
       style.opacity = endOpacity;
       style.transform = "scale(" + endScale + ")";
@@ -138,7 +139,6 @@ var animation = (function (e, el, wavesEl, attrs, classes, onEndCallback) {
       wavesEl.classList.remove(classes.wavesAnimating);
     }
     wavesEl.removeEventListener(ANIMATION_END_EVENT, onEnd, false);
-    styler.remove(animationId);
     if (attrs.end) {
       attrs.end(evt);
     }
@@ -192,7 +192,7 @@ var onMount = function onMount(vnode) {
     });
     state.animating(true);
   };
-  var triggerEl = attrs.target ? attrs.target() : vnode.dom.parentElement;
+  var triggerEl = attrs.target ? attrs.target() : vnode.dom && vnode.dom.parentElement;
   triggerEl.addEventListener(touchEndEvent, tap, false);
   state.removeEventListeners(function () {
     return triggerEl.removeEventListener(touchEndEvent, tap, false);
@@ -219,4 +219,4 @@ var ripple = Object.freeze({
 	createContent: createContent
 });
 
-export { ripple as CoreRipple, classes, vars$1 as vars };
+export { ripple as coreRipple, classes, vars$1 as vars };

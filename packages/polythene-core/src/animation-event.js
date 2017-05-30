@@ -6,13 +6,13 @@ const evts = {
   "WebkitAnimation": "webkitAnimationEnd"
 };
 
-const element = () => document.createElement("fakeelement");
-
-export const animationEndEvent = () => {
-  const el = element();
+const findAnimationEndEvent = () => {
+  const el = document.createElement("fakeelement");
   for (let a in evts) {
     if (el.style[a] !== undefined) {
       return evts[a];
     }
   }
 };
+
+export const animationEndEvent = findAnimationEndEvent();

@@ -1,5 +1,5 @@
-import * as CoreRaisedButton from "./raised-button";
+import * as coreRaisedButton from "./raised-button";
 
-export { CoreRaisedButton };
+export { coreRaisedButton };
 export { default as classes } from "./classes";
 export { default as vars } from "./theme/vars";

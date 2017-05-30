@@ -222,7 +222,8 @@ var stateComponent = function stateComponent(_ref) {
       createContent = _ref$createContent === undefined ? function () {} : _ref$createContent,
       _ref$createProps = _ref.createProps,
       createProps = _ref$createProps === undefined ? function () {} : _ref$createProps,
-      element = _ref.element,
+      _ref$element = _ref.element,
+      element = _ref$element === undefined ? "div" : _ref$element,
       component = _ref.component,
       _ref$getInitialState = _ref.getInitialState,
       getInitialState = _ref$getInitialState === undefined ? function () {
@@ -239,7 +240,7 @@ var stateComponent = function stateComponent(_ref) {
     var initialState = getInitialState(protoState, stream);
     vnode.state = initialState;
     vnode.state.redrawOnUpdate && vnode.state.redrawOnUpdate.map(function () {
-      return renderer.redraw();
+      return setTimeout(renderer.redraw);
     });
   };
 
@@ -250,7 +251,8 @@ var stateComponent = function stateComponent(_ref) {
   return {
     view: view,
     oninit: oninit,
-    oncreate: onMount
+    oncreate: onMount,
+    onremove: onUnmount
   };
 };
 
@@ -261,7 +263,8 @@ var viewComponent = function viewComponent(_ref) {
       createContent = _ref$createContent === undefined ? function () {} : _ref$createContent,
       _ref$createProps = _ref.createProps,
       createProps = _ref$createProps === undefined ? function () {} : _ref$createProps,
-      element = _ref.element,
+      _ref$element = _ref.element,
+      element = _ref$element === undefined ? "div" : _ref$element,
       component = _ref.component,
       renderView = _ref.renderView,
       _ref$onMount = _ref.onMount,
@@ -276,7 +279,8 @@ var viewComponent = function viewComponent(_ref) {
 
   return {
     view: renderView || view,
-    oncreate: onMount
+    oncreate: onMount,
+    onremove: onUnmount
   };
 };
 

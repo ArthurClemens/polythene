@@ -10,6 +10,6 @@ j2c@^1.0.0-4:
   version "1.0.0-4"
   resolved "https://registry.yarnpkg.com/j2c/-/j2c-1.0.0-4.tgz#a1c85b2b8bc4f71cb8f8bb53e8b396fa3fd899f0"
 
-mithril@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/mithril/-/mithril-1.1.0.tgz#1dbf9cc7843dd9701b7901d5abc4e219b15cf5de"
+mithril@1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/mithril/-/mithril-1.1.1.tgz#0c98644c90503eec2187f66a851ba4053c4a5d66"

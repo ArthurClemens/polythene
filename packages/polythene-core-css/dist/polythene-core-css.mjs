@@ -348,12 +348,14 @@ var add = function add(id) {
  * Removes a style from head.
  */
 var remove = function remove(id) {
-  if (id) {
-    var old = document.getElementById(id);
-    if (old && old.parentNode) {
-      old.parentNode.removeChild(old);
+  setTimeout(function () {
+    if (id) {
+      var old = document.getElementById(id);
+      if (old && old.parentNode) {
+        old.parentNode.removeChild(old);
+      }
     }
-  }
+  }, 0);
 };
 
 /*

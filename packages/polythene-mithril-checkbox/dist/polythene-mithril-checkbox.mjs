@@ -1,18 +1,36 @@
-import { stateComponent } from 'polythene-mithril-base';
-import { CoreCheckbox } from 'polythene-core-checkbox';
-import { SelectionControl, createControl } from 'polythene-mithril-selection-control';
+import { stateComponent, viewComponent } from 'polythene-mithril-base';
+import { coreCheckbox } from 'polythene-core-checkbox';
+import { coreSelectionControl, viewControl } from 'polythene-core-selection-control';
+import { Icon } from 'polythene-mithril-icon';
+import { IconButton } from 'polythene-mithril-icon-button';
+
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var ViewControl = viewComponent(_extends$2({}, viewControl, {
+  createContent: function createContent(vnode, args) {
+    return viewControl.createContent(vnode, _extends$2(args, { Icon: Icon, IconButton: IconButton }));
+  }
+}));
+
+ViewControl.displayName = "ViewControl";
+
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var SelectionControl = stateComponent(_extends$1({}, coreSelectionControl, {
+  createContent: function createContent(vnode, args) {
+    return coreSelectionControl.createContent(vnode, _extends$1(args, { ViewControl: ViewControl }));
+  }
+}));
+
+SelectionControl.displayName = "SelectionControl";
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var createProps = function createProps(vnode, args) {
-  return CoreCheckbox.createProps(vnode, _extends(args, { createControl: createControl }));
-};
-
-var Checkbox = stateComponent(_extends({}, CoreCheckbox, {
-  createProps: createProps,
+var Checkbox = stateComponent(_extends({}, coreCheckbox, {
   component: SelectionControl
 }));
 
-Checkbox.theme = CoreCheckbox.theme;
+Checkbox.theme = coreCheckbox.theme;
+Checkbox.displayName = "Checkbox";
 
 export { Checkbox };

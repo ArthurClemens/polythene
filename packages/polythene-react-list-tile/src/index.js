@@ -1,19 +1,16 @@
 import { viewComponent } from "polythene-react-base";
-import { CoreListTile as component } from "polythene-core-list-tile";
+import { coreListTile as core } from "polythene-core-list-tile";
 import { Icon } from "polythene-react-icon";
 import { Ripple } from "polythene-react-ripple";
 
-const createProps = (vnode, args) => component.createProps(vnode, Object.assign(args, { Icon, Ripple }));
-const createContent = (vnode, args) => component.createContent(vnode, Object.assign(args, { Icon, Ripple }));
-
 export const ListTile = viewComponent(Object.assign(
   {},
-  component,
+  core,
   {
-    createProps,
-    createContent
+    createProps: (vnode, args) => core.createProps(vnode, Object.assign(args, { Icon, Ripple })),
+    createContent: (vnode, args) => core.createContent(vnode, Object.assign(args, { Icon, Ripple }))
   }
 ));
 
-ListTile.theme = component.theme;
+ListTile.theme = core.theme;
 ListTile.displayName = "ListTile";

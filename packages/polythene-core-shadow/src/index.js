@@ -1,5 +1,5 @@
-import * as CoreShadow from "./shadow";
+import * as coreShadow from "./shadow";
 
-export { CoreShadow };
+export { coreShadow };
 export { default as classes } from "./classes";
 export { default as vars } from "./theme/vars";

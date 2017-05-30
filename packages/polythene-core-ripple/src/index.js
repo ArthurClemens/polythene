@@ -1,5 +1,5 @@
-import * as CoreRipple from "./ripple";
+import * as coreRipple from "./ripple";
 
-export { CoreRipple };
+export { coreRipple };
 export { default as classes } from "./classes";
 export { default as vars } from "./theme/vars";

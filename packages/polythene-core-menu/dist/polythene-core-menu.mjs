@@ -351,4 +351,4 @@ var menu = Object.freeze({
 	createContent: createContent
 });
 
-export { menu as CoreMenu, classes$1 as classes, vars$1 as vars };
+export { menu as coreMenu, classes$1 as classes, vars$1 as vars };

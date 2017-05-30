@@ -9,7 +9,7 @@ const requiresKeys = true;
 export const stateComponent = ({
   createContent = () => ({}),
   createProps = () => ({}),
-  element,
+  element = "div",
   component,
   getInitialState = () => ({}),
   onMount = () => {},

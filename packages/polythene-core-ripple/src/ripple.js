@@ -51,7 +51,7 @@ export const onMount = vnode => {
   };
   const triggerEl = attrs.target
     ? attrs.target()
-    : vnode.dom.parentElement;
+    : vnode.dom && vnode.dom.parentElement;
   triggerEl.addEventListener(touchEndEvent, tap, false);
   state.removeEventListeners(() => (
     triggerEl.removeEventListener(touchEndEvent, tap, false)

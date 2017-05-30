@@ -1,22 +1,19 @@
 import { viewComponent } from 'polythene-react-base';
-import { CoreList } from 'polythene-core-list';
+import { coreList } from 'polythene-core-list';
 import { ListTile } from 'polythene-react-list-tile';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var createProps = function createProps(vnode, args) {
-  return CoreList.createProps(vnode, _extends(args, { ListTile: ListTile }));
-};
-var createContent = function createContent(vnode, args) {
-  return CoreList.createContent(vnode, _extends(args, { ListTile: ListTile }));
-};
-
-var List = viewComponent(_extends({}, CoreList, {
-  createProps: createProps,
-  createContent: createContent
+var List = viewComponent(_extends({}, coreList, {
+  createProps: function createProps(vnode, args) {
+    return coreList.createProps(vnode, _extends(args, { ListTile: ListTile }));
+  },
+  createContent: function createContent(vnode, args) {
+    return coreList.createContent(vnode, _extends(args, { ListTile: ListTile }));
+  }
 }));
 
-List.theme = CoreList.theme;
+List.theme = coreList.theme;
 List.displayName = "List";
 
 export { List };
