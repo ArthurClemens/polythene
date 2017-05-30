@@ -12,5 +12,6 @@ export { default as raisedButton } from "./raised-button/tests-react";
 export { default as ripple }       from "./ripple/tests-react";
 export { default as shadow }       from "./shadow/tests-react";
 export { default as svg }          from "./svg/tests-react";
+export { default as switchButton } from "./switch/tests-react";
 export { default as theme }        from "./theme/tests-react";
 export { default as toolbar }      from "./toolbar/tests-react";

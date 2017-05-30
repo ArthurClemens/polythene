@@ -111,15 +111,17 @@ var createContent = function createContent(vnode, _ref2) {
   var attrs = vnode.attrs;
 
   var _currentState2 = currentState(attrs, state),
+      checked = _currentState2.checked,
       inactive = _currentState2.inactive;
 
-  return h("label", {
-    className: classes.formLabel,
-    key: "label"
-  }, [h(ViewControl, _extends({}, attrs, {
+  return h("label", { className: classes.formLabel }, [h(ViewControl, _extends({}, attrs, {
     inactive: inactive,
-    onChange: state.onChange
-  })), attrs.label ? h("." + classes.label, inactive ? null : _defineProperty({}, k.onclick, state.onChange), attrs.label) : null]);
+    checked: checked,
+    onChange: state.onChange,
+    key: "control"
+  })), attrs.label ? h("." + classes.label, _extends({}, {
+    key: "label"
+  }, inactive ? null : _defineProperty({}, k.onclick, state.onChange)), attrs.label) : null]);
 };
 
 var selectionControl = Object.freeze({
@@ -139,7 +141,10 @@ var createIcon = function createIcon(h, iconType, attrs, className) {
   return (
     // if attrs.iconOn/attrs.iconOff is passed, use that icon options object and ignore size
     // otherwise create a new object
-    _extends$1({}, attrs[iconType] ? attrs[iconType] : { svg: h.trust(attrs.icons[iconType]) }, { className: className }, attrs.icon, attrs.size ? { size: attrs.size } : null)
+    _extends$1({}, {
+      className: className,
+      key: iconType
+    }, attrs[iconType] ? attrs[iconType] : { svg: h.trust(attrs.icons[iconType]) }, attrs.icon, attrs.size ? { size: attrs.size } : null)
   );
 };
 
@@ -152,11 +157,12 @@ var createContent$1 = function createContent(vnode, _ref) {
   var attrs = vnode.attrs;
   return h(IconButton, _extends$1({}, {
     element: "div",
+    key: attrs.key,
     className: classes.button,
     content: [{ iconType: "iconOn", className: classes.buttonOn }, { iconType: "iconOff", className: classes.buttonOff }].map(function (o) {
       return h(Icon, createIcon(h, o.iconType, attrs, o.className));
     }),
-    // ripple: { center: true },
+    ripple: { center: true },
     disabled: attrs.disabled,
     events: _defineProperty$1({}, k.onclick, attrs.onChange),
     inactive: attrs.inactive
@@ -187,9 +193,13 @@ var vars$1 = {
   color_light_thumb_off_focus_opacity: .08,
   color_light_thumb_on_focus_opacity: .11,
 
-  // icon colors may be set in theme; disabled by default
+  // icon colors may be set in theme; set to "inherit" by default
   // color_light_on_icon
   // color_light_off_icon
+
+  // label on/off colors may be set in theme; set to "inherit" by default
+  // color_light_on_label
+  // color_light_off_label
 
   color_light_focus_on: rgba(vars.color_primary),
   color_light_focus_on_opacity: .11,
@@ -203,9 +213,13 @@ var vars$1 = {
   color_dark_thumb_off_focus_opacity: .08,
   color_dark_thumb_on_focus_opacity: .11,
 
-  // icon color may be set in theme; disabled by default
+  // icon color may be set in theme; set to "inherit" by default
   // color_dark_on_icon
   // color_dark_off_icon
+
+  // label on/off colors may be set in theme; set to "inherit" by default
+  // color_dark_on_label
+  // color_dark_off_label
 
   color_dark_focus_on: rgba(vars.color_primary), // or '#80cbc4'
   color_dark_focus_on_opacity: .14,
@@ -309,10 +323,10 @@ var layout = (function (selector, componentVars) {
       " .pe-control__button--off": inactiveButton()
     },
 
-    " .pe-control__label": {
+    " .pe-control__label": [mixin.defaultTransition("all", componentVars.animation_duration), {
       paddingLeft: componentVars.label_padding_before + "px",
       paddingRight: componentVars.label_padding_after + "px"
-    },
+    }],
 
     ".pe-control--disabled": {
       " .pe-control__form-label": {
@@ -337,8 +351,6 @@ var layout = (function (selector, componentVars) {
 });
 
 function _defineProperty$3(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-// Returns a style function to be used by checkbox and radio-button
 
 var style = function style(scopes, selector, componentVars, tint) {
   return [_defineProperty$3({}, scopes.map(function (s) {
@@ -366,12 +378,18 @@ var style = function style(scopes, selector, componentVars, tint) {
       " .pe-button--focus .pe-button__focus": {
         opacity: componentVars["color_" + tint + "_focus_off_opacity"],
         backgroundColor: componentVars["color_" + tint + "_focus_off"]
+      },
+      " .pe-control__label": {
+        color: componentVars["color_" + tint + "_off_label"] || "inherit"
       }
     },
     ".pe-control--on": {
       " .pe-button--focus .pe-button__focus": {
         opacity: componentVars["color_" + tint + "_focus_on_opacity"],
         backgroundColor: componentVars["color_" + tint + "_focus_on"]
+      },
+      " .pe-control__label": {
+        color: componentVars["color_" + tint + "_on_label"] || "inherit"
       }
     },
 

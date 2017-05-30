@@ -8,20 +8,20 @@ Separately handled props:
 */
 
 const defaultAttrs = [
-  // Mithril
+  // Universal
   "key",
+  "style",
+  "href",
+  "id",
+  "tabindex",
+
+  // Mithril
   "oninit",
   "oncreate",
   "onupdate",
   "onbeforeremove",
   "onremove",
   "onbeforeupdate",
-  "style",
-  "href",
-  // Polythene
-  // see also "Separately handled props" above
-  "id",
-  "tabindex"
 ];
 
 export const filterSupportedAttributes = (attrs, { add: addAttrs = [], remove: removeAttrs = []} = {} ) => {

@@ -7,10 +7,13 @@ const createIcon = (h, iconType, attrs, className) => (
   // otherwise create a new object
   Object.assign(
     {},
+    {
+      className,
+      key: iconType
+    },
     attrs[iconType]
       ? attrs[iconType]
       : { svg: h.trust(attrs.icons[iconType]) },
-    { className },
     attrs.icon,
     attrs.size
       ? { size: attrs.size }
@@ -24,6 +27,7 @@ export const createContent = (vnode, { renderer: h, keys: k, Icon, IconButton })
     {},
     {
       element: "div",
+      key: attrs.key,
       className: classes.button,
       content: [
         { iconType: "iconOn", className: classes.buttonOn},

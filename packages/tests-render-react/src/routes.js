@@ -111,11 +111,11 @@ export default [
     name: "SVG",
     tests: tests.svg
   },
-  // {
-  //   path: "/switch-button",
-  //   name: "Switch button",
-  //   tests: switchButtonTests
-  // },
+  {
+    path: "/switch",
+    name: "Switch",
+    tests: tests.switchButton
+  },
   // {
   //   path: "/tabs",
   //   name: "Tabs",

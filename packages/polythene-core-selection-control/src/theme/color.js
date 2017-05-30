@@ -1,4 +1,3 @@
-// Returns a style function to be used by checkbox and radio-button
 
 const style = (scopes, selector, componentVars, tint) => [{
   [scopes.map(s => s + selector).join(",")]: {
@@ -24,13 +23,19 @@ const style = (scopes, selector, componentVars, tint) => [{
       " .pe-button--focus .pe-button__focus": {
         opacity: componentVars["color_" + tint + "_focus_off_opacity"],
         backgroundColor: componentVars["color_" + tint + "_focus_off"]
-      }
+      },
+      " .pe-control__label": {
+        color: componentVars["color_" + tint + "_off_label"] || "inherit"
+      },
     },
     ".pe-control--on": {
       " .pe-button--focus .pe-button__focus": {
         opacity: componentVars["color_" + tint + "_focus_on_opacity"],
         backgroundColor: componentVars["color_" + tint + "_focus_on"]
-      }
+      },
+      " .pe-control__label": {
+        color: componentVars["color_" + tint + "_on_label"] || "inherit"
+      },
     },
 
     ".pe-control--disabled": {

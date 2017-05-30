@@ -79,7 +79,8 @@ export default (selector, componentVars) => [{
     },
 
     " .pe-button.pe-control__button": [
-      mixin.defaultTransition("opacity", componentVars.animation_duration), {
+      mixin.defaultTransition("opacity", componentVars.animation_duration),
+      {
         position: "absolute",
         left: -((componentVars.button_size - componentVars.icon_size) / 2) + "px",
         top: -((componentVars.button_size - componentVars.icon_size) / 2) + "px",
@@ -97,10 +98,13 @@ export default (selector, componentVars) => [{
       " .pe-control__button--off": inactiveButton()
     },
 
-    " .pe-control__label": {
-      paddingLeft: componentVars.label_padding_before + "px",
-      paddingRight: componentVars.label_padding_after + "px"
-    },
+    " .pe-control__label": [
+      mixin.defaultTransition("all", componentVars.animation_duration),
+      {
+        paddingLeft: componentVars.label_padding_before + "px",
+        paddingRight: componentVars.label_padding_after + "px"
+      }
+    ],
 
     ".pe-control--disabled": {
       " .pe-control__form-label": {

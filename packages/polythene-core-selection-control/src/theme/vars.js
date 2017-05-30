@@ -18,9 +18,13 @@ export default {
   color_light_thumb_off_focus_opacity: .08,
   color_light_thumb_on_focus_opacity:  .11,
 
-  // icon colors may be set in theme; disabled by default
+  // icon colors may be set in theme; set to "inherit" by default
   // color_light_on_icon
   // color_light_off_icon
+
+  // label on/off colors may be set in theme; set to "inherit" by default
+  // color_light_on_label
+  // color_light_off_label
 
   color_light_focus_on:                rgba(vars.color_primary),
   color_light_focus_on_opacity:        .11,
@@ -34,10 +38,14 @@ export default {
   color_dark_thumb_off_focus_opacity:  .08,
   color_dark_thumb_on_focus_opacity:   .11,
 
-  // icon color may be set in theme; disabled by default
+  // icon color may be set in theme; set to "inherit" by default
   // color_dark_on_icon
   // color_dark_off_icon
   
+  // label on/off colors may be set in theme; set to "inherit" by default
+  // color_dark_on_label
+  // color_dark_off_label
+
   color_dark_focus_on:                 rgba(vars.color_primary), // or '#80cbc4'
   color_dark_focus_on_opacity:         .14,
   color_dark_focus_off:                rgba(vars.color_dark_foreground),

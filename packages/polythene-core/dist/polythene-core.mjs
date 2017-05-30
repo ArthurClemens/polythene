@@ -589,11 +589,11 @@ Separately handled props:
 */
 
 var defaultAttrs = [
+// Universal
+"key", "style", "href", "id", "tabindex",
+
 // Mithril
-"key", "oninit", "oncreate", "onupdate", "onbeforeremove", "onremove", "onbeforeupdate", "style", "href",
-// Polythene
-// see also "Separately handled props" above
-"id", "tabindex"];
+"oninit", "oncreate", "onupdate", "onbeforeremove", "onremove", "onbeforeupdate"];
 
 var filterSupportedAttributes = function filterSupportedAttributes(attrs) {
   var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},

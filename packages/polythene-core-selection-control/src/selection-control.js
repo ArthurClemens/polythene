@@ -87,26 +87,31 @@ export const createProps = (vnode, { keys: k }) => {
 export const createContent = (vnode, { renderer: h, keys: k, ViewControl }) => {
   const state = vnode.state;
   const attrs = vnode.attrs;
-  const { inactive } = currentState(attrs, state);
+  const { checked, inactive } = currentState(attrs, state);
   return h("label",
-    {
-      className: classes.formLabel,
-      key: "label"
-    },
+    { className: classes.formLabel },
     [
       h(ViewControl, Object.assign(
         {},
         attrs,
         {
           inactive,
-          onChange: state.onChange
+          checked,
+          onChange: state.onChange,
+          key: "control"
         }
       )),
       attrs.label
         ? h(`.${classes.label}`,
-            inactive
-              ? null
-              : { [k.onclick]: state.onChange },
+            Object.assign(
+              {},
+              {
+                key: "label"
+              },
+              inactive
+                ? null
+                : { [k.onclick]: state.onChange }
+            ),
             attrs.label
           )
         : null

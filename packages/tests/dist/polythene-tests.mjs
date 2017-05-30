@@ -1,8 +1,8 @@
-import { Button, Checkbox, FAB, Icon, IconButton, List, ListTile, Menu, RadioButton, RaisedButton, Ripple, SVG, Shadow, Toolbar, keys, renderer } from 'polythene-mithril';
+import { Button, Checkbox, FAB, Icon, IconButton, List, ListTile, Menu, RadioButton, RaisedButton, Ripple, SVG, Shadow, Switch, Toolbar, keys, renderer } from 'polythene-mithril';
 import { flex, styler } from 'polythene-core-css';
 import dialog from 'polythene-dialog';
 import { classes } from 'polythene-core-toolbar';
-import { Button as Button$1, Checkbox as Checkbox$1, FAB as FAB$1, Icon as Icon$1, IconButton as IconButton$1, List as List$1, ListTile as ListTile$1, Menu as Menu$1, RadioButton as RadioButton$1, RaisedButton as RaisedButton$1, Ripple as Ripple$1, SVG as SVG$1, Shadow as Shadow$1, Toolbar as Toolbar$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
+import { Button as Button$1, Checkbox as Checkbox$1, FAB as FAB$1, Icon as Icon$1, IconButton as IconButton$1, List as List$1, ListTile as ListTile$1, Menu as Menu$1, RadioButton as RadioButton$1, RaisedButton as RaisedButton$1, Ripple as Ripple$1, SVG as SVG$1, Shadow as Shadow$1, Switch as Switch$1, Toolbar as Toolbar$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 import { compose, withHandlers, withState } from 'recompose';
 
 var genericTests = (function (_ref) {
@@ -3504,9 +3504,300 @@ var mithrilTests$14 = function mithrilTests(_ref) {
 
 var testsMithril$13 = [].concat(genericTests$13({ SVG: SVG, renderer: renderer })).concat(mithrilTests$14({ SVG: SVG, renderer: renderer }));
 
-var alarmSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3V9z\"/></svg>";
+var onChange$1 = (function (_ref) {
+  var h = _ref.h,
+      Switch$$1 = _ref.Switch;
+  return {
+    oninit: function oninit(vnode) {
+      var checked = stream(false);
+      vnode.state = {
+        checked: checked,
+        redrawOnUpdate: stream.merge([checked])
+      };
+    },
+    view: function view(vnode) {
+      var state = vnode.state;
+      var checked = state.checked();
+      return h("div", [h("div", {
+        style: {
+          marginBottom: "1rem"
+        }
+      }, "Checked: " + checked), h(Switch$$1, {
+        onChange: function onChange(newState) {
+          return state.checked(newState.checked);
+        }
+      })]);
+    }
+  };
+});
+
+function _defineProperty$7(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var events$1 = (function (_ref) {
+  var h = _ref.h,
+      k = _ref.k,
+      Switch$$1 = _ref.Switch;
+  return {
+    oninit: function oninit(vnode) {
+      var checked = stream(false);
+      vnode.state = {
+        checked: checked,
+        redrawOnUpdate: stream.merge([checked])
+      };
+    },
+    view: function view(vnode) {
+      var state = vnode.state;
+      var checked = state.checked();
+      return h("div", [h("div", {
+        style: {
+          marginBottom: "1rem"
+        }
+      }, "Checked: " + checked), h(Switch$$1, {
+        events: _defineProperty$7({}, k.onclick, function () {
+          return state.checked(!checked);
+        })
+      })]);
+    }
+  };
+});
+
+var _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var bullsEyeSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\" baseProfile=\"full\" width=\"24\" height=\"24\" viewBox=\"0 0 24.00 24.00\" enable-background=\"new 0 0 24.00 24.00\" xml:space=\"preserve\"><path fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"1.33333\" stroke-linejoin=\"miter\" d=\"M 12,2C 6.47715,2 2,6.4772 2,12C 2,17.5228 6.47715,22 12,22C 17.5228,22 22,17.5228 22,12C 22,6.4772 17.5228,2 12,2 Z M 12,4C 16.4183,4 20,7.5817 20,12C 20,16.4183 16.4183,20 12,20C 7.58172,20 4,16.4183 4,12C 4,7.5817 7.58172,4 12,4 Z M 12,6C 8.68629,6 6,8.6863 6,12C 6,15.3137 8.68629,18 12,18C 15.3137,18 18,15.3137 18,12C 18,8.6863 15.3137,6 12,6 Z M 12,8C 14.2091,8 16,9.7909 16,12C 16,14.2091 14.2091,16 12,16C 9.79086,16 8,14.2091 8,12C 8,9.7909 9.79086,8 12,8 Z M 12,10C 10.8954,10 10,10.8954 10,12C 10,13.1046 10.8954,14 12,14C 13.1046,14 14,13.1046 14,12C 14,10.8954 13.1046,10 12,10 Z \"/></svg>";
 
 var genericTests$14 = (function (_ref) {
+  var Switch$$1 = _ref.Switch,
+      Icon$$1 = _ref.Icon,
+      h = _ref.renderer,
+      k = _ref.keys;
+
+
+  var trustedBullsEyeIcon = h.trust(bullsEyeSVG);
+
+  var orange = "#EF6C00";
+  var blue = "#2196F3";
+  Switch$$1.theme(".tests-switch-themed-switch", {
+    label_font_size: 28,
+    color_light_off_label: orange,
+    color_light_on_label: blue,
+    color_dark_off_label: orange,
+    color_dark_on_label: blue,
+    color_light_thumb_off: orange,
+    color_light_thumb_on: blue,
+    color_dark_thumb_off: orange,
+    color_dark_thumb_on: blue
+  });
+
+  Switch$$1.theme(".tests-switch-themed-icon", {
+    color_light_thumb_off: "#fff",
+    color_light_thumb_on: "#fff",
+    color_light_icon_on: "#EF6C00",
+    color_light_icon_off: "#ddd",
+    color_dark_thumb_off: "#fff",
+    color_dark_thumb_on: "#fff",
+    color_dark_icon_on: "#EF6C00",
+    color_dark_icon_off: "#fff"
+  });
+
+  var sizeNames = ["small", "regular", "medium", "large"];
+
+  var sizes = function sizes(_sizes, attrs) {
+    return _sizes.map(function (size) {
+      return h(Switch$$1, _extends$4({}, attrs, {
+        label: size,
+        size: size
+      }));
+    });
+  };
+
+  return [{
+    name: "No options",
+    component: Switch$$1
+  }, {
+    name: "Option: label",
+    component: Switch$$1,
+    attrs: {
+      label: "Label"
+    }
+  }, {
+    name: "Option: checked",
+    component: Switch$$1,
+    attrs: {
+      defaultChecked: true
+    }
+  }, {
+    name: "Option: size",
+    component: {
+      view: function view() {
+        return h("div", {
+          style: {
+            display: "flex",
+            alignItems: "center"
+          }
+        }, sizes(sizeNames, {
+          label: "Label"
+        }));
+      }
+    }
+  }, {
+    name: "Themed Switch (color and font size)",
+    component: Switch$$1,
+    attrs: {
+      label: "Label",
+      className: "tests-switch-themed-switch"
+    }
+  }, {
+    name: "Option: style (colors)",
+    component: Switch$$1,
+    attrs: {
+      label: "Label",
+      style: {
+        color: "#EF6C00"
+      }
+    }
+  }, {
+    name: "Option: icon",
+    component: {
+      view: function view() {
+        return h("div", sizes(sizeNames, {
+          label: "Label",
+          className: "tests-switch-themed-icon",
+          icon: h(Icon$$1, {
+            svg: trustedBullsEyeIcon
+          })
+        }));
+      } }
+  }, {
+    name: "Option: disabled",
+    interactive: true,
+    component: {
+      view: function view() {
+        return h("div", [h(Switch$$1, {
+          disabled: true,
+          label: "Off"
+        }), h(Switch$$1, {
+          disabled: true,
+          checked: true,
+          label: "On"
+        })]);
+      }
+    }
+  }, {
+    name: "Option: selectable (false)",
+    interactive: true,
+    component: {
+      view: function view() {
+        return h("div", [h(Switch$$1, {
+          selectable: function selectable() {
+            return false;
+          },
+          label: "Never"
+        }), h(Switch$$1, {
+          selectable: function selectable(checked) {
+            return !checked;
+          },
+          label: "Only when unchecked"
+        })]);
+      }
+    }
+  }, {
+    name: "Option: iconButton (custom hover behaviour)",
+    interactive: true,
+    component: Switch$$1,
+    attrs: {
+      iconButton: {
+        wash: true,
+        ink: false
+      }
+    }
+  }, {
+    name: "Option: onChange",
+    interactive: true,
+    exclude: true,
+    component: onChange$1({ h: h, Switch: Switch$$1 })
+  }, {
+    name: "Option: events",
+    interactive: true,
+    exclude: true,
+    component: events$1({ h: h, k: k, Switch: Switch$$1 })
+  },
+
+  // Dark tone
+
+  {
+    name: "Option: defaultChecked -- dark tone class",
+    className: "pe-dark-tone",
+    component: Switch$$1,
+    attrs: {
+      defaultChecked: true
+    }
+  }, {
+    name: "Themed Switch (colors) -- dark tone class",
+    className: "pe-dark-tone",
+    component: Switch$$1,
+    attrs: {
+      label: "Label",
+      className: "tests-switch-themed-switch"
+    }
+  }, {
+    name: "Option: disabled -- dark tone class",
+    className: "pe-dark-tone",
+    component: {
+      view: function view() {
+        return h("div", [h(Switch$$1, {
+          disabled: true,
+          label: "Off"
+        }), h(Switch$$1, {
+          disabled: true,
+          defaultChecked: true,
+          label: "On"
+        })]);
+      }
+    }
+  }, {
+    name: "Dark tone class + light tone class",
+    className: "pe-dark-tone",
+    component: {
+      view: function view() {
+        return h("div", {
+          style: {
+            background: "#fff",
+            padding: "20px"
+          },
+          className: "pe-light-tone"
+        }, h(Switch$$1, {
+          label: "Label"
+        }));
+      }
+    }
+  }, {
+    name: "Dark tone class + light tone",
+    className: "test-dark-tone",
+    component: {
+      view: function view() {
+        return h("div", {
+          style: {
+            background: "#fff",
+            padding: "20px"
+          }
+        }, h(Switch$$1, {
+          tone: "light",
+          label: "Label"
+        }));
+      }
+    }
+  }];
+});
+
+var mithrilTests$15 = function mithrilTests() {
+  return [];
+};
+
+var testsMithril$14 = [].concat(genericTests$14({ Switch: Switch, Icon: Icon, renderer: renderer, keys: keys })).concat(mithrilTests$15({ Switch: Switch, Icon: Icon, renderer: renderer, keys: keys }));
+
+var alarmSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3V9z\"/></svg>";
+
+var genericTests$15 = (function (_ref) {
   var Button$$1 = _ref.Button,
       FAB$$1 = _ref.FAB,
       Icon$$1 = _ref.Icon,
@@ -3604,7 +3895,7 @@ var genericTests$14 = (function (_ref) {
   }];
 });
 
-var _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$5 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 /*
 Testing 2 theming methods:
@@ -3621,7 +3912,7 @@ var h = renderer;
 var secondaryButton = {
   theme: Button.theme,
   view: function view(vnode) {
-    return h(Button, _extends$4({
+    return h(Button, _extends$5({
       className: "tests-custom-theme-secondary-button",
       borders: true
     }, vnode.attrs));
@@ -3632,7 +3923,7 @@ secondaryButton.theme(".tests-custom-theme-secondary-button", {
   color_light_background: "#fff"
 });
 
-var mithrilTests$15 = function mithrilTests() {
+var mithrilTests$16 = function mithrilTests() {
   return [{
     section: "Mithril specific tests"
   }, {
@@ -3644,7 +3935,7 @@ var mithrilTests$15 = function mithrilTests() {
   }];
 };
 
-var testsMithril$14 = [].concat(genericTests$14({ Button: Button, FAB: FAB, Icon: Icon, IconButton: IconButton, renderer: renderer /*, list, listTile*/ })).concat(mithrilTests$15());
+var testsMithril$15 = [].concat(genericTests$15({ Button: Button, FAB: FAB, Icon: Icon, IconButton: IconButton, renderer: renderer /*, list, listTile*/ })).concat(mithrilTests$16());
 
 var iconMenuSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>";
 var iconRefreshSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>";
@@ -3688,7 +3979,7 @@ var shared = (function (_ref) {
   };
 });
 
-var genericTests$15 = (function (_ref) {
+var genericTests$16 = (function (_ref) {
   var Toolbar$$1 = _ref.Toolbar,
       IconButton$$1 = _ref.IconButton,
       h = _ref.renderer;
@@ -3789,7 +4080,7 @@ var genericTests$15 = (function (_ref) {
   }];
 });
 
-var mithrilTests$16 = function mithrilTests(_ref) {
+var mithrilTests$17 = function mithrilTests(_ref) {
   var Toolbar$$1 = _ref.Toolbar,
       IconButton$$1 = _ref.IconButton,
       Shadow$$1 = _ref.Shadow,
@@ -3815,7 +4106,7 @@ var mithrilTests$16 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$15 = [].concat(genericTests$15({ Toolbar: Toolbar, IconButton: IconButton, Shadow: Shadow, renderer: renderer })).concat(mithrilTests$16({ Toolbar: Toolbar, IconButton: IconButton, Shadow: Shadow, renderer: renderer }));
+var testsMithril$16 = [].concat(genericTests$16({ Toolbar: Toolbar, IconButton: IconButton, Shadow: Shadow, renderer: renderer })).concat(mithrilTests$17({ Toolbar: Toolbar, IconButton: IconButton, Shadow: Shadow, renderer: renderer }));
 
 
 
@@ -3834,8 +4125,9 @@ var fromMithrilTests = Object.freeze({
 	ripple: testsMithril$11,
 	shadow: testsMithril$12,
 	svg: testsMithril$13,
-	theme: testsMithril$14,
-	toolbar: testsMithril$15
+	switchButton: testsMithril$14,
+	theme: testsMithril$15,
+	toolbar: testsMithril$16
 });
 
 /*
@@ -3846,7 +4138,7 @@ object-assign
 
 /* eslint-disable no-unused-vars */
 
-var _extends$5 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$6 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -3892,7 +4184,7 @@ function shouldUseNative() {
 		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
 			test3[letter] = letter;
 		});
-		if (Object.keys(_extends$5({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
+		if (Object.keys(_extends$6({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
 			return false;
 		}
 
@@ -8493,7 +8785,7 @@ var createHistory$1 = unwrapExports(createMemoryHistory_1);
 
 var _typeof$12 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _extends$6 = Object.assign || function (target) {
+var _extends$7 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -8544,7 +8836,7 @@ var Router = function (_React$Component) {
 
   Router.prototype.getChildContext = function getChildContext() {
     return {
-      router: _extends$6({}, this.context.router, {
+      router: _extends$7({}, this.context.router, {
         history: this.props.history,
         route: {
           location: this.props.history.location,
@@ -9334,7 +9626,7 @@ var matchPath = function matchPath(pathname) {
 
 var _typeof$15 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _extends$7 = Object.assign || function (target) {
+var _extends$8 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -9385,7 +9677,7 @@ var Route = function (_React$Component) {
 
   Route.prototype.getChildContext = function getChildContext() {
     return {
-      router: _extends$7({}, this.context.router, {
+      router: _extends$8({}, this.context.router, {
         route: {
           location: this.props.location || this.context.router.route.location,
           match: this.state.match
@@ -9479,7 +9771,7 @@ Route.childContextTypes = {
 
 var _typeof$17 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _extends$8 = Object.assign || function (target) {
+var _extends$9 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -9531,7 +9823,7 @@ var normalizeLocation = function normalizeLocation(object) {
 var addBasename = function addBasename(basename, location) {
   if (!basename) return location;
 
-  return _extends$8({}, location, {
+  return _extends$9({}, location, {
     pathname: PathUtils_1(basename) + location.pathname
   });
 };
@@ -9543,7 +9835,7 @@ var stripBasename = function stripBasename(basename, location) {
 
   if (location.pathname.indexOf(base) !== 0) return location;
 
-  return _extends$8({}, location, {
+  return _extends$9({}, location, {
     pathname: location.pathname.substr(base.length)
   });
 };
@@ -9636,7 +9928,7 @@ var StaticRouter = function (_React$Component) {
       block: this.handleBlock
     };
 
-    return react.createElement(Router, _extends$8({}, props, { history: history }));
+    return react.createElement(Router, _extends$9({}, props, { history: history }));
   };
 
   return StaticRouter;
@@ -9679,22 +9971,22 @@ function _inherits$7(subClass, superClass) {
  * The public API for rendering the first <Route> that matches.
  */
 
-var Switch = function (_React$Component) {
-  _inherits$7(Switch, _React$Component);
+var Switch$2 = function (_React$Component) {
+  _inherits$7(Switch$$1, _React$Component);
 
-  function Switch() {
-    _classCallCheck$7(this, Switch);
+  function Switch$$1() {
+    _classCallCheck$7(this, Switch$$1);
 
     return _possibleConstructorReturn$7(this, _React$Component.apply(this, arguments));
   }
 
-  Switch.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+  Switch$$1.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
     warning_1$2(!(nextProps.location && !this.props.location), '<Switch> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.');
 
     warning_1$2(!(!nextProps.location && this.props.location), '<Switch> elements should not change from controlled to uncontrolled (or vice versa). You provided a "location" prop initially but omitted it on a subsequent render.');
   };
 
-  Switch.prototype.render = function render() {
+  Switch$$1.prototype.render = function render() {
     var route = this.context.router.route;
     var children = this.props.children;
 
@@ -9722,15 +10014,15 @@ var Switch = function (_React$Component) {
     return match ? react.cloneElement(child, { location: location, computedMatch: match }) : null;
   };
 
-  return Switch;
+  return Switch$$1;
 }(react.Component);
 
-Switch.contextTypes = {
+Switch$2.contextTypes = {
   router: index$2.shape({
     route: index$2.object.isRequired
   }).isRequired
 };
-Switch.propTypes = {
+Switch$2.propTypes = {
   children: index$2.node,
   location: index$2.object
 };
@@ -9783,7 +10075,7 @@ var index$10 = function hoistNonReactStatics(targetComponent, sourceComponent, c
     return targetComponent;
 };
 
-var _extends$9 = Object.assign || function (target) {
+var _extends$10 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -9808,7 +10100,7 @@ var withRouter = function withRouter(Component$$1) {
         remainingProps = _objectWithoutProperties$1(props, ['wrappedComponentRef']);
 
     return react.createElement(Route, { render: function render(routeComponentProps) {
-        return react.createElement(Component$$1, _extends$9({}, remainingProps, routeComponentProps, { ref: wrappedComponentRef }));
+        return react.createElement(Component$$1, _extends$10({}, remainingProps, routeComponentProps, { ref: wrappedComponentRef }));
       } });
   };
 
@@ -10254,7 +10546,7 @@ HashRouter.propTypes = {
 
 var _typeof$20 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _extends$10 = Object.assign || function (target) {
+var _extends$11 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -10340,7 +10632,7 @@ var Link = function (_React$Component) {
 
     var href = this.context.router.history.createHref(typeof to === 'string' ? { pathname: to } : to);
 
-    return react.createElement('a', _extends$10({}, props, { onClick: this.handleClick, href: href }));
+    return react.createElement('a', _extends$11({}, props, { onClick: this.handleClick, href: href }));
   };
 
   return Link;
@@ -10367,7 +10659,7 @@ Link.contextTypes = {
 
 var _typeof2$3 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _extends$11 = Object.assign || function (target) {
+var _extends$12 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -10415,12 +10707,12 @@ var NavLink = function NavLink(_ref) {
 
       var isActive = !!(getIsActive ? getIsActive(match, location) : match);
 
-      return react.createElement(Link, _extends$11({
+      return react.createElement(Link, _extends$12({
         to: to,
         className: isActive ? [activeClassName, className].filter(function (i) {
           return i;
         }).join(' ') : className,
-        style: isActive ? _extends$11({}, style, activeStyle) : style
+        style: isActive ? _extends$12({}, style, activeStyle) : style
       }, rest));
     }
   });
@@ -11187,7 +11479,7 @@ var reactTests$8 = function reactTests(_ref) {
 
 var testsReact$7 = [].concat(genericTests$7({ Icon: Icon$1, ListTile: ListTile$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests$8({ Icon: Icon$1, ListTile: ListTile$1, renderer: renderer$1, keys: keys$1 }));
 
-function _defineProperty$7(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$8(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var opener$1 = (function (_ref) {
   var h = _ref.renderer,
@@ -11217,7 +11509,7 @@ var opener$1 = (function (_ref) {
         react.createElement(RaisedButton$$1, {
           label: "Open menu",
           id: id,
-          events: _defineProperty$7({}, k.onclick, function () {
+          events: _defineProperty$8({}, k.onclick, function () {
             return state.show(true);
           })
         }),
@@ -11672,12 +11964,32 @@ var reactTests$14 = function reactTests(_ref) {
 
 var testsReact$13 = [].concat(genericTests$13({ SVG: SVG$1, renderer: renderer$1 })).concat(reactTests$14({ SVG: SVG$1, renderer: renderer$1 }));
 
-var _extends$12 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var reactTests$15 = function reactTests(_ref) {
+  var Switch$$1 = _ref.Switch,
+      h = _ref.renderer;
+  // eslint-disable-line no-unused-vars
 
-var reactTests$15 = function reactTests() {
+  return [{
+    section: "React JSX tests"
+  }, {
+    name: "Option: defaultChecked (JSX)",
+    component: function component() {
+      return react.createElement(Switch$$1, {
+        label: "Label",
+        defaultChecked: true
+      });
+    }
+  }];
+};
+
+var testsReact$14 = [].concat(genericTests$14({ Switch: Switch$1, Icon: Icon$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests$15({ Switch: Switch$1, Icon: Icon$1, renderer: renderer$1, keys: keys$1 }));
+
+var _extends$13 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var reactTests$16 = function reactTests() {
 
   var SecondaryButton = function SecondaryButton(props) {
-    return renderer$1(Button$1, _extends$12({}, props, {
+    return renderer$1(Button$1, _extends$13({}, props, {
       className: "tests-custom-theme-secondary-button",
       borders: true
     }));
@@ -11706,7 +12018,7 @@ var reactTests$15 = function reactTests() {
   }];
 };
 
-var testsReact$14 = [].concat(genericTests$14({ Button: Button$1, FAB: FAB$1, Icon: Icon$1, IconButton: IconButton$1, renderer: renderer$1 })).concat(reactTests$15());
+var testsReact$15 = [].concat(genericTests$15({ Button: Button$1, FAB: FAB$1, Icon: Icon$1, IconButton: IconButton$1, renderer: renderer$1 })).concat(reactTests$16());
 
 var iconMenuSVG$1 = react.createElement(
   "svg",
@@ -11724,7 +12036,7 @@ var iconAddSVG$1 = react.createElement(
   react.createElement("path", { d: "M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" })
 );
 
-var reactTests$16 = function reactTests(_ref) {
+var reactTests$17 = function reactTests(_ref) {
   var Toolbar$$1 = _ref.Toolbar,
       IconButton$$1 = _ref.IconButton,
       h = _ref.renderer;
@@ -11811,7 +12123,7 @@ var reactTests$16 = function reactTests(_ref) {
   }];
 };
 
-var testsReact$15 = [].concat(genericTests$15({ Toolbar: Toolbar$1, IconButton: IconButton$1, Shadow: Shadow$1, renderer: renderer$1 })).concat(reactTests$16({ Toolbar: Toolbar$1, IconButton: IconButton$1, Shadow: Shadow$1, renderer: renderer$1 }));
+var testsReact$16 = [].concat(genericTests$16({ Toolbar: Toolbar$1, IconButton: IconButton$1, Shadow: Shadow$1, renderer: renderer$1 })).concat(reactTests$17({ Toolbar: Toolbar$1, IconButton: IconButton$1, Shadow: Shadow$1, renderer: renderer$1 }));
 
 
 
@@ -11830,8 +12142,9 @@ var fromReactTests = Object.freeze({
 	ripple: testsReact$11,
 	shadow: testsReact$12,
 	svg: testsReact$13,
-	theme: testsReact$14,
-	toolbar: testsReact$15
+	switchButton: testsReact$14,
+	theme: testsReact$15,
+	toolbar: testsReact$16
 });
 
 var mithrilTests = fromMithrilTests;
