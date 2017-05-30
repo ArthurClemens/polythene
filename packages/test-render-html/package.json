@@ -1,0 +1,12 @@
+{
+  "name": "polythene-test-render-html",
+  "description": "",
+  "scripts": {
+    "dev": "http-server -p 3000",
+    "build": "ls",
+    "update": "cp ../polythene-mithril/dist/polythene-mithril.js js/ && cp ../polythene-mithril/dist/polythene-mithril.js.map js/"
+  },
+  "devDependencies": {
+    "http-server": "^0.10.0"
+  }
+}

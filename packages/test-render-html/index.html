@@ -14,12 +14,12 @@
 }
 </style>
 <script src="js/mithril.js"></script>
-<script src="js/polythene.js"></script>
+<script src="js/polythene-mithril.js"></script>
 <script>
   /* global m, polythene */
   var SVG = m.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z\"/></svg>");
 
-  polythene.button.theme(".polythene-themed-button", {
+  polythene.Button.theme(".polythene-themed-button", {
     color_light_background: "#FF1744",
     color_light_text: "#fff"
   });
@@ -27,23 +27,23 @@
   var app = {
     view: () => [
       m(".row", 
-        m(polythene.raisedButton, {
+        m(polythene.RaisedButton, {
           label: "Button"
         })
       ),
       m(".row", 
-        m(polythene.button, {
+        m(polythene.Button, {
           label: "Colored button",
           class: "polythene-themed-button"
         })
       ),
       m(".row",
-        m(polythene.checkbox, {
+        m(polythene.Checkbox, {
           label: "Label"
         })
       ),
       m(".row",
-        m(polythene.fab, {
+        m(polythene.FAB, {
           icon: {
             svg: { content: SVG }
           }
