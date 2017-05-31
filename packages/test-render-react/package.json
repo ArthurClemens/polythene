@@ -12,7 +12,7 @@
   "dependencies": {
     "polythene-material-design": "1.0.0-rc.1",
     "polythene-react": "1.0.0-rc.1",
-    "polythene-tests": "1.0.0-rc.1",
+    "polythene-test": "1.0.0-rc.1",
     "polythene-utilities": "1.0.0-rc.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",

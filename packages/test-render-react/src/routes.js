@@ -1,4 +1,4 @@
-import { reactTests as tests } from "polythene-tests";
+import { reactTests as tests } from "polythene-test";
 
 export default [
   {

@@ -1,4 +1,4 @@
-import { mithrilTests as tests } from "polythene-tests";
+import { mithrilTests as tests } from "polythene-test";
 
 export default [
   {
