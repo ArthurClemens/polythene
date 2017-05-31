@@ -25,7 +25,7 @@ const style = (scopes, selector, componentVars, tint) => [{
         backgroundColor: componentVars["color_" + tint + "_focus_off"]
       },
       " .pe-control__label": {
-        color: componentVars["color_" + tint + "_off_label"] || "inherit"
+        color: componentVars["color_" + tint + "_off_label"] || componentVars["color_" + tint + "_label"]
       },
     },
     ".pe-control--on": {
@@ -34,7 +34,7 @@ const style = (scopes, selector, componentVars, tint) => [{
         backgroundColor: componentVars["color_" + tint + "_focus_on"]
       },
       " .pe-control__label": {
-        color: componentVars["color_" + tint + "_on_label"] || "inherit"
+        color: componentVars["color_" + tint + "_on_label"] || componentVars["color_" + tint + "_label"]
       },
     },
 

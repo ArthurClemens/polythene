@@ -197,7 +197,7 @@ var vars$1 = {
   // color_light_on_icon
   // color_light_off_icon
 
-  // label on/off colors may be set in theme; set to "inherit" by default
+  // label on/off colors may be set in theme; set to color_light_label by default
   // color_light_on_label
   // color_light_off_label
 
@@ -217,7 +217,7 @@ var vars$1 = {
   // color_dark_on_icon
   // color_dark_off_icon
 
-  // label on/off colors may be set in theme; set to "inherit" by default
+  // label on/off colors may be set in theme; set to color_dark_label by default
   // color_dark_on_label
   // color_dark_off_label
 
@@ -380,7 +380,7 @@ var style = function style(scopes, selector, componentVars, tint) {
         backgroundColor: componentVars["color_" + tint + "_focus_off"]
       },
       " .pe-control__label": {
-        color: componentVars["color_" + tint + "_off_label"] || "inherit"
+        color: componentVars["color_" + tint + "_off_label"] || componentVars["color_" + tint + "_label"]
       }
     },
     ".pe-control--on": {
@@ -389,7 +389,7 @@ var style = function style(scopes, selector, componentVars, tint) {
         backgroundColor: componentVars["color_" + tint + "_focus_on"]
       },
       " .pe-control__label": {
-        color: componentVars["color_" + tint + "_on_label"] || "inherit"
+        color: componentVars["color_" + tint + "_on_label"] || componentVars["color_" + tint + "_label"]
       }
     },
 
