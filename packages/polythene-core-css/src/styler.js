@@ -43,7 +43,7 @@ const addToDocument = (opts, ...styles) => {
   styles.forEach((styleList) => {
     // each style returns a list
     if (Object.keys(styleList).length) {
-      styleList.forEach((style) => {
+      styleList.forEach(style => {
         const scoped = {
           "@global": style
         };

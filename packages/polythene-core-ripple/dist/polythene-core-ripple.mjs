@@ -88,7 +88,19 @@ var DEFAULT_START_SCALE = 0.1;
 var DEFAULT_END_SCALE = 2.0;
 var OPACITY_DECAY_VELOCITY = 0.35;
 
-var animation = (function (e, el, wavesEl, attrs, classes, onEndCallback) {
+var animation = (function (_ref) {
+  var e = _ref.e,
+      el = _ref.el,
+      attrs = _ref.attrs,
+      classes = _ref.classes,
+      onEndCallback = _ref.onEndCallback;
+
+  var container = document.createElement("div");
+  container.setAttribute("class", classes.mask);
+  el.appendChild(container);
+  var waves = document.createElement("div");
+  waves.setAttribute("class", classes.waves);
+  container.appendChild(waves);
   var rect = el.getBoundingClientRect();
   var x = isTouch && e.touches ? e.touches[0].pageX : e.clientX;
   var y = isTouch && e.touches ? e.touches[0].pageY : e.clientY;
@@ -107,7 +119,7 @@ var animation = (function (e, el, wavesEl, attrs, classes, onEndCallback) {
   var duration = attrs.duration ? attrs.duration : 1 / opacityDecayVelocity * 0.2;
   var color = window.getComputedStyle(el).color;
   var animationId = "ripple_animation_" + new Date().getTime();
-  var style = wavesEl.style;
+  var style = waves.style;
   style.width = style.height = waveRadius + "px";
   style.top = ry + "px";
   style.left = rx + "px";
@@ -129,25 +141,32 @@ var animation = (function (e, el, wavesEl, attrs, classes, onEndCallback) {
   })];
   styler.add(animationId, keyframeStyle);
 
+  var cleanup = function cleanup() {
+    waves.classList.remove(classes.wavesAnimating);
+    container.removeChild(waves);
+    el.removeChild(container);
+  };
+
   var onEnd = function onEnd(evt) {
     styler.remove(animationId);
+    waves.removeEventListener(ANIMATION_END_EVENT, onEnd, false);
+    if (attrs.end) {
+      attrs.end(evt);
+    }
     if (attrs.persistent) {
       style.opacity = endOpacity;
       style.transform = "scale(" + endScale + ")";
     } else {
       onEndCallback();
-      wavesEl.classList.remove(classes.wavesAnimating);
-    }
-    wavesEl.removeEventListener(ANIMATION_END_EVENT, onEnd, false);
-    if (attrs.end) {
-      attrs.end(evt);
+      cleanup();
     }
   };
-  wavesEl.addEventListener(ANIMATION_END_EVENT, onEnd, false);
+
+  waves.addEventListener(ANIMATION_END_EVENT, onEnd, false);
   if (attrs.start) {
     attrs.start(e);
   }
-  wavesEl.classList.add(classes.wavesAnimating);
+  waves.classList.add(classes.wavesAnimating);
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -181,15 +200,17 @@ var onMount = function onMount(vnode) {
   var state = vnode.state;
   var attrs = vnode.attrs;
   var rippleEl = vnode.dom;
-  var wavesEl = vnode.dom.querySelector("." + classes.waves);
 
   var tap = function tap(e) {
-    if (state.animating() || attrs.disabled) {
+    if (attrs.disabled) {
       return;
     }
-    animation(e, rippleEl, wavesEl, attrs, classes, function () {
-      return state.animating(false);
-    });
+    if (state.animating() && !attrs.multi) {
+      return;
+    }
+    animation({ e: e, el: rippleEl, attrs: attrs, classes: classes, onEndCallback: function onEndCallback() {
+        return state.animating(false);
+      } });
     state.animating(true);
   };
   var triggerEl = attrs.target ? attrs.target() : vnode.dom && vnode.dom.parentElement;
@@ -204,19 +225,13 @@ var onUnmount = function onUnmount(_ref2) {
   return state.removeEventListeners()();
 };
 
-var createContent = function createContent(vnode, _ref3) {
-  var h = _ref3.renderer;
-  return vnode.attrs.disabled ? null : h("div", { className: classes.mask }, h("div", { className: classes.waves }));
-};
-
 var ripple = Object.freeze({
 	element: element,
 	theme: theme,
 	getInitialState: getInitialState,
 	createProps: createProps,
 	onMount: onMount,
-	onUnmount: onUnmount,
-	createContent: createContent
+	onUnmount: onUnmount
 });
 
 export { ripple as coreRipple, classes, vars$1 as vars };

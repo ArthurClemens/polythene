@@ -40,31 +40,25 @@ export const onMount = vnode => {
   const state = vnode.state;
   const attrs = vnode.attrs;
   const rippleEl = vnode.dom;
-  const wavesEl = vnode.dom.querySelector(`.${classes.waves}`);
-  
+
   const tap = e => {
-    if (state.animating() || attrs.disabled) {
+    if (attrs.disabled) {
       return;
     }
-    animation(e, rippleEl, wavesEl, attrs, classes, () => state.animating(false));
+    if (state.animating() && !attrs.multi) {
+      return;
+    }
+    animation({ e, el: rippleEl, attrs, classes, onEndCallback: () => state.animating(false) });
     state.animating(true);
   };
   const triggerEl = attrs.target
     ? attrs.target()
     : vnode.dom && vnode.dom.parentElement;
   triggerEl.addEventListener(touchEndEvent, tap, false);
-  state.removeEventListeners(() => (
-    triggerEl.removeEventListener(touchEndEvent, tap, false)
-  ));
+  state.removeEventListeners(() =>
+    triggerEl.removeEventListener(touchEndEvent, tap, false));
 };
 
 export const onUnmount = ({ state }) =>
   state.removeEventListeners()();
-
-export const createContent = (vnode, { renderer: h }) =>
-  vnode.attrs.disabled
-    ? null
-    : h("div", { className: classes.mask },
-        h("div", { className: classes.waves })
-      );
 

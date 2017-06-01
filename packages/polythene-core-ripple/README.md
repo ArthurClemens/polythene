@@ -1,5 +1,3 @@
 # Ripple
 
 Core Polythene component.
-
-

@@ -3127,12 +3127,12 @@ var genericTests$11 = (function (_ref) {
       startOpacity: 0.5
     }
   }, {
-    name: "Option: end opacity (0.1)",
+    name: "Option: end opacity (1)",
     interactive: true,
     exclude: true,
     component: Ripple$$1,
     attrs: {
-      endOpacity: 0.1
+      endOpacity: 1
     }
   }, {
     name: "Option: duration (3.0)",
@@ -3141,6 +3141,15 @@ var genericTests$11 = (function (_ref) {
     component: Ripple$$1,
     attrs: {
       duration: 3.0
+    }
+  }, {
+    name: "Option: multi, duration",
+    interactive: true,
+    exclude: true,
+    component: Ripple$$1,
+    attrs: {
+      multi: true,
+      duration: 1.5
     }
   }, {
     name: "Option: initial opacityDecayVelocity (0.1)",

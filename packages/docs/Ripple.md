@@ -32,6 +32,7 @@ Buttons contain a ripple element by default. This page documents how to add a ri
 | **start**     | optional | Function | | Callback function just before the ripple starts; see Callback functions |
 | **end**       | optional | Function | | Callback function when the ripple has ended; see Callback functions |
 | **disabled**  | optional | Boolean | false | Set to `true` to disable ripples |
+| **multi**     | optional | Boolean | false | Set to `true` to enable multiple simultaneous ripples, instead of one after the other |
 
 ### Ripple appearance options
 

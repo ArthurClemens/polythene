@@ -40,12 +40,12 @@ export default ({ Ripple }) => {
       }
     },
     {
-      name: "Option: end opacity (0.1)",
+      name: "Option: end opacity (1)",
       interactive: true,
       exclude: true,
       component: Ripple,
       attrs: {
-        endOpacity: 0.1
+        endOpacity: 1
       }
     },
     {
@@ -55,6 +55,16 @@ export default ({ Ripple }) => {
       component: Ripple,
       attrs: {
         duration: 3.0
+      }
+    },
+    {
+      name: "Option: multi, duration",
+      interactive: true,
+      exclude: true,
+      component: Ripple,
+      attrs: {
+        multi: true,
+        duration: 1.5
       }
     },
     {

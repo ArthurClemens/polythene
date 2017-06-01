@@ -9,7 +9,13 @@ const DEFAULT_START_SCALE =    0.1;
 const DEFAULT_END_SCALE =      2.0;
 const OPACITY_DECAY_VELOCITY = 0.35;
 
-export default (e, el, wavesEl, attrs, classes, onEndCallback) => {
+export default ({ e, el, attrs, classes, onEndCallback }) => {
+  const container = document.createElement("div");
+  container.setAttribute("class", classes.mask);
+  el.appendChild(container);
+  const waves = document.createElement("div");
+  waves.setAttribute("class", classes.waves);
+  container.appendChild(waves);
   const rect = el.getBoundingClientRect();
   const x = (isTouch && e.touches) ? e.touches[0].pageX : e.clientX;
   const y = (isTouch && e.touches) ? e.touches[0].pageY : e.clientY;  
@@ -34,7 +40,7 @@ export default (e, el, wavesEl, attrs, classes, onEndCallback) => {
     : 1 / opacityDecayVelocity * 0.2;
   const color = window.getComputedStyle(el).color;
   const animationId = `ripple_animation_${new Date().getTime()}`;
-  const style = wavesEl.style;
+  const style = waves.style;
   style.width = style.height = waveRadius + "px";
   style.top = ry + "px";
   style.left = rx + "px";
@@ -61,23 +67,30 @@ export default (e, el, wavesEl, attrs, classes, onEndCallback) => {
   }];
   styler.add(animationId, keyframeStyle);
 
+  const cleanup = () => {
+    waves.classList.remove(classes.wavesAnimating);
+    container.removeChild(waves);
+    el.removeChild(container);
+  };
+
   const onEnd = evt => {
     styler.remove(animationId);
+    waves.removeEventListener(ANIMATION_END_EVENT, onEnd, false);
+    if (attrs.end) {
+      attrs.end(evt);
+    }
     if (attrs.persistent) {
       style.opacity = endOpacity;
       style.transform = "scale(" + endScale + ")";
     } else {
       onEndCallback();
-      wavesEl.classList.remove(classes.wavesAnimating);
-    }
-    wavesEl.removeEventListener(ANIMATION_END_EVENT, onEnd, false);
-    if (attrs.end) {
-      attrs.end(evt);
+      cleanup();
     }
   };
-  wavesEl.addEventListener(ANIMATION_END_EVENT, onEnd, false);
+
+  waves.addEventListener(ANIMATION_END_EVENT, onEnd, false);
   if (attrs.start) {
     attrs.start(e);
   }
-  wavesEl.classList.add(classes.wavesAnimating);
+  waves.classList.add(classes.wavesAnimating);
 };
