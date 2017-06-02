@@ -7,12 +7,11 @@ export const element = "div";
 
 export const theme = customTheme;
 
-export const getInitialState = (vnode, createStream) => {
-  const animating = createStream(false);
-  const removeEventListeners = createStream(false);
+export const getInitialState = () => {
   return {
-    animating,
-    removeEventListeners
+    animations: {},
+    animating: false,
+    removeEventListeners: undefined
   };
 };
 
@@ -33,32 +32,41 @@ export const createProps = (vnode, { keys: k }) => {
   );
 };
 
+const updateAnimationState = state =>
+  state.animating = Object.keys(state.animations).length > 0;
+
 export const onMount = vnode => {
   if (!vnode.dom) {
     return;
   }
   const state = vnode.state;
   const attrs = vnode.attrs;
-  const rippleEl = vnode.dom;
 
   const tap = e => {
     if (attrs.disabled) {
       return;
     }
-    if (state.animating() && !attrs.multi) {
+    if (!attrs.multi && state.animating) {
       return;
     }
-    animation({ e, el: rippleEl, attrs, classes, onEndCallback: () => state.animating(false) });
-    state.animating(true);
+    const id = `ripple_animation_${new Date().getTime()}`;
+    state.animations[id] = animation({ e, id, el: vnode.dom, attrs, classes })
+      .then(evt => {
+        if (attrs.end) {
+          attrs.end(evt);
+        }
+        delete state.animations[id];
+        updateAnimationState(state);
+      });
+    updateAnimationState(state);
   };
   const triggerEl = attrs.target
     ? attrs.target()
     : vnode.dom && vnode.dom.parentElement;
   triggerEl.addEventListener(touchEndEvent, tap, false);
-  state.removeEventListeners(() =>
-    triggerEl.removeEventListener(touchEndEvent, tap, false));
+  state.removeEventListeners = () =>
+    triggerEl.removeEventListener(touchEndEvent, tap, false);
 };
 
 export const onUnmount = ({ state }) =>
-  state.removeEventListeners()();
-
+  state.removeEventListeners();
