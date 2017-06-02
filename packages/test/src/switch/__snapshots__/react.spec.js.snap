@@ -26,10 +26,62 @@ exports[`test Dark tone class + light tone class 1`] = `
 </div>
 `;
 
+exports[`test No options 1`] = `
+<SelectionControl
+  instanceClass="pe-switch-control"
+  selectable={[Function]}
+  theme={[Function]}
+  type="checkbox" />
+`;
+
+exports[`test No options 2`] = `
+<SelectionControl
+  instanceClass="pe-switch-control"
+  selectable={[Function]}
+  theme={[Function]}
+  type="checkbox" />
+`;
+
+exports[`test Option: checked 1`] = `
+<SelectionControl
+  defaultChecked={true}
+  instanceClass="pe-switch-control"
+  selectable={[Function]}
+  theme={[Function]}
+  type="checkbox" />
+`;
+
+exports[`test Option: class 1`] = `
+<SelectionControl
+  className="class-x"
+  instanceClass="pe-switch-control"
+  selectable={[Function]}
+  theme={[Function]}
+  type="checkbox" />
+`;
+
+exports[`test Option: className 1`] = `
+<SelectionControl
+  className="className-x"
+  instanceClass="pe-switch-control"
+  selectable={[Function]}
+  theme={[Function]}
+  type="checkbox" />
+`;
+
 exports[`test Option: defaultChecked (JSX) 1`] = `
 <Switch
   defaultChecked={true}
   label="Label" />
+`;
+
+exports[`test Option: defaultChecked -- dark tone class 1`] = `
+<SelectionControl
+  defaultChecked={true}
+  instanceClass="pe-switch-control"
+  selectable={[Function]}
+  theme={[Function]}
+  type="checkbox" />
 `;
 
 exports[`test Option: disabled -- dark tone class 1`] = `
@@ -54,6 +106,15 @@ exports[`test Option: disabled 1`] = `
     disabled={true}
     label="On" />
 </div>
+`;
+
+exports[`test Option: element 1`] = `
+<SelectionControl
+  element="a"
+  instanceClass="pe-switch-control"
+  selectable={[Function]}
+  theme={[Function]}
+  type="checkbox" />
 `;
 
 exports[`test Option: icon 1`] = `
@@ -121,6 +182,38 @@ exports[`test Option: icon 1`] = `
 </div>
 `;
 
+exports[`test Option: iconButton (custom hover behaviour) 1`] = `
+<SelectionControl
+  iconButton={
+    Object {
+      "ink": false,
+      "wash": true,
+    }
+  }
+  instanceClass="pe-switch-control"
+  selectable={[Function]}
+  theme={[Function]}
+  type="checkbox" />
+`;
+
+exports[`test Option: id 1`] = `
+<SelectionControl
+  id="id-x"
+  instanceClass="pe-switch-control"
+  selectable={[Function]}
+  theme={[Function]}
+  type="checkbox" />
+`;
+
+exports[`test Option: label 1`] = `
+<SelectionControl
+  instanceClass="pe-switch-control"
+  label="Label"
+  selectable={[Function]}
+  theme={[Function]}
+  type="checkbox" />
+`;
+
 exports[`test Option: selectable (false) 1`] = `
 <div>
   <Switch
@@ -153,4 +246,57 @@ exports[`test Option: size 1`] = `
     label="large"
     size="large" />
 </div>
+`;
+
+exports[`test Option: style (colors) 1`] = `
+<SelectionControl
+  instanceClass="pe-switch-control"
+  label="Label"
+  selectable={[Function]}
+  style={
+    Object {
+      "color": "#EF6C00",
+    }
+  }
+  theme={[Function]}
+  type="checkbox" />
+`;
+
+exports[`test Option: tabindex 1`] = `
+<SelectionControl
+  instanceClass="pe-switch-control"
+  selectable={[Function]}
+  tabIndex={3}
+  theme={[Function]}
+  type="checkbox" />
+`;
+
+exports[`test Option: value 1`] = `
+<SelectionControl
+  instanceClass="pe-switch-control"
+  name="worth"
+  selectable={[Function]}
+  theme={[Function]}
+  type="checkbox"
+  value="notable" />
+`;
+
+exports[`test Themed Switch (color and font size) 1`] = `
+<SelectionControl
+  className="tests-switch-themed-switch"
+  instanceClass="pe-switch-control"
+  label="Label"
+  selectable={[Function]}
+  theme={[Function]}
+  type="checkbox" />
+`;
+
+exports[`test Themed Switch (colors) -- dark tone class 1`] = `
+<SelectionControl
+  className="tests-switch-themed-switch"
+  instanceClass="pe-switch-control"
+  label="Label"
+  selectable={[Function]}
+  theme={[Function]}
+  type="checkbox" />
 `;

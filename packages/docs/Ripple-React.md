@@ -57,6 +57,12 @@ h(ListTile, {
 
 
 
+## Variations
+
+Create multiple simultaneous ripples with option `multi`.
+
+
+
 ## Options
 
 [Ripple options](Ripple.md)
@@ -121,5 +127,3 @@ If the component - or a component's parent - has option `tone` set to "dark", th
 
 * Use `tone: "dark"` to render light on dark
 * Use `tone: "light"` to locally render normally when dark tone is set
-
-

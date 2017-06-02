@@ -2,11 +2,6 @@ exports[`test Child node 1`] = `
 "<div class=\"pe-toolbar\">
   <a class=\"pe-button pe-icon-button\" tabindex=\"0\">
   <div class=\"pe-button__content\">
-    <div class=\"pe-ripple pe-ripple--constrained\">
-      <div class=\"pe-ripple__mask\">
-        <div class=\"pe-ripple__waves\"></div>
-      </div>
-    </div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
@@ -25,11 +20,6 @@ exports[`test Child node 1`] = `
     long title
   </div><a class=\"pe-button pe-icon-button\" tabindex=\"0\">
   <div class=\"pe-button__content\">
-    <div class=\"pe-ripple pe-ripple--constrained\">
-      <div class=\"pe-ripple__mask\">
-        <div class=\"pe-ripple__waves\"></div>
-      </div>
-    </div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
@@ -45,11 +35,6 @@ exports[`test Child node 1`] = `
     </div>
   </div></a><a class=\"pe-button pe-icon-button\" tabindex=\"0\">
   <div class=\"pe-button__content\">
-    <div class=\"pe-ripple pe-ripple--constrained\">
-      <div class=\"pe-ripple__mask\">
-        <div class=\"pe-ripple__waves\"></div>
-      </div>
-    </div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
@@ -70,11 +55,6 @@ exports[`test Dark tone class + light tone 1`] = `
 "<div class=\"pe-toolbar pe-light-tone\">
   <a class=\"pe-button pe-icon-button\" tabindex=\"0\">
   <div class=\"pe-button__content\">
-    <div class=\"pe-ripple pe-ripple--constrained\">
-      <div class=\"pe-ripple__mask\">
-        <div class=\"pe-ripple__waves\"></div>
-      </div>
-    </div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
@@ -93,11 +73,6 @@ exports[`test Dark tone class + light tone 1`] = `
     long title
   </div><a class=\"pe-button pe-icon-button\" tabindex=\"0\">
   <div class=\"pe-button__content\">
-    <div class=\"pe-ripple pe-ripple--constrained\">
-      <div class=\"pe-ripple__mask\">
-        <div class=\"pe-ripple__waves\"></div>
-      </div>
-    </div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
@@ -113,11 +88,6 @@ exports[`test Dark tone class + light tone 1`] = `
     </div>
   </div></a><a class=\"pe-button pe-icon-button\" tabindex=\"0\">
   <div class=\"pe-button__content\">
-    <div class=\"pe-ripple pe-ripple--constrained\">
-      <div class=\"pe-ripple__mask\">
-        <div class=\"pe-ripple__waves\"></div>
-      </div>
-    </div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
@@ -135,14 +105,9 @@ exports[`test Dark tone class + light tone 1`] = `
 `;
 
 exports[`test Dark tone class + light tone class 1`] = `
-"<div class=\"pe-toolbar\">
+"<div class=\"pe-toolbar pe-light-tone\">
   <a class=\"pe-button pe-icon-button\" tabindex=\"0\">
   <div class=\"pe-button__content\">
-    <div class=\"pe-ripple pe-ripple--constrained\">
-      <div class=\"pe-ripple__mask\">
-        <div class=\"pe-ripple__waves\"></div>
-      </div>
-    </div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
@@ -161,11 +126,6 @@ exports[`test Dark tone class + light tone class 1`] = `
     long title
   </div><a class=\"pe-button pe-icon-button\" tabindex=\"0\">
   <div class=\"pe-button__content\">
-    <div class=\"pe-ripple pe-ripple--constrained\">
-      <div class=\"pe-ripple__mask\">
-        <div class=\"pe-ripple__waves\"></div>
-      </div>
-    </div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
@@ -181,11 +141,6 @@ exports[`test Dark tone class + light tone class 1`] = `
     </div>
   </div></a><a class=\"pe-button pe-icon-button\" tabindex=\"0\">
   <div class=\"pe-button__content\">
-    <div class=\"pe-ripple pe-ripple--constrained\">
-      <div class=\"pe-ripple__mask\">
-        <div class=\"pe-ripple__waves\"></div>
-      </div>
-    </div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
@@ -208,11 +163,6 @@ exports[`test Indented title (without icons) 1`] = `
     Indented title
   </div><a class=\"pe-button pe-icon-button\" tabindex=\"0\">
   <div class=\"pe-button__content\">
-    <div class=\"pe-ripple pe-ripple--constrained\">
-      <div class=\"pe-ripple__mask\">
-        <div class=\"pe-ripple__waves\"></div>
-      </div>
-    </div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
@@ -235,12 +185,12 @@ exports[`test No options 1`] = `
 `;
 
 exports[`test Option: class 1`] = `
-"<div class=\"pe-toolbar\"></div>
+"<div class=\"pe-toolbar class-x\"></div>
 "
 `;
 
 exports[`test Option: className 1`] = `
-"<div class=\"pe-toolbar\"></div>
+"<div class=\"pe-toolbar className-x\"></div>
 "
 `;
 
@@ -248,11 +198,6 @@ exports[`test Option: compact 1`] = `
 "<div class=\"pe-toolbar pe-toolbar--compact\">
   <a class=\"pe-button pe-icon-button\" tabindex=\"0\">
   <div class=\"pe-button__content\">
-    <div class=\"pe-ripple pe-ripple--constrained\">
-      <div class=\"pe-ripple__mask\">
-        <div class=\"pe-ripple__waves\"></div>
-      </div>
-    </div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
@@ -271,11 +216,6 @@ exports[`test Option: compact 1`] = `
     long title
   </div><a class=\"pe-button pe-icon-button\" tabindex=\"0\">
   <div class=\"pe-button__content\">
-    <div class=\"pe-ripple pe-ripple--constrained\">
-      <div class=\"pe-ripple__mask\">
-        <div class=\"pe-ripple__waves\"></div>
-      </div>
-    </div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
@@ -291,11 +231,6 @@ exports[`test Option: compact 1`] = `
     </div>
   </div></a><a class=\"pe-button pe-icon-button\" tabindex=\"0\">
   <div class=\"pe-button__content\">
-    <div class=\"pe-ripple pe-ripple--constrained\">
-      <div class=\"pe-ripple__mask\">
-        <div class=\"pe-ripple__waves\"></div>
-      </div>
-    </div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
@@ -316,11 +251,6 @@ exports[`test Option: content -- dark tone class 1`] = `
 "<div class=\"pe-toolbar\">
   <a class=\"pe-button pe-icon-button\" tabindex=\"0\">
   <div class=\"pe-button__content\">
-    <div class=\"pe-ripple pe-ripple--constrained\">
-      <div class=\"pe-ripple__mask\">
-        <div class=\"pe-ripple__waves\"></div>
-      </div>
-    </div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
@@ -339,11 +269,6 @@ exports[`test Option: content -- dark tone class 1`] = `
     long title
   </div><a class=\"pe-button pe-icon-button\" tabindex=\"0\">
   <div class=\"pe-button__content\">
-    <div class=\"pe-ripple pe-ripple--constrained\">
-      <div class=\"pe-ripple__mask\">
-        <div class=\"pe-ripple__waves\"></div>
-      </div>
-    </div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
@@ -359,11 +284,6 @@ exports[`test Option: content -- dark tone class 1`] = `
     </div>
   </div></a><a class=\"pe-button pe-icon-button\" tabindex=\"0\">
   <div class=\"pe-button__content\">
-    <div class=\"pe-ripple pe-ripple--constrained\">
-      <div class=\"pe-ripple__mask\">
-        <div class=\"pe-ripple__waves\"></div>
-      </div>
-    </div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
@@ -384,11 +304,6 @@ exports[`test Option: content 1`] = `
 "<div class=\"pe-toolbar\">
   <a class=\"pe-button pe-icon-button\" tabindex=\"0\">
   <div class=\"pe-button__content\">
-    <div class=\"pe-ripple pe-ripple--constrained\">
-      <div class=\"pe-ripple__mask\">
-        <div class=\"pe-ripple__waves\"></div>
-      </div>
-    </div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
@@ -407,11 +322,6 @@ exports[`test Option: content 1`] = `
     long title
   </div><a class=\"pe-button pe-icon-button\" tabindex=\"0\">
   <div class=\"pe-button__content\">
-    <div class=\"pe-ripple pe-ripple--constrained\">
-      <div class=\"pe-ripple__mask\">
-        <div class=\"pe-ripple__waves\"></div>
-      </div>
-    </div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
@@ -427,11 +337,6 @@ exports[`test Option: content 1`] = `
     </div>
   </div></a><a class=\"pe-button pe-icon-button\" tabindex=\"0\">
   <div class=\"pe-button__content\">
-    <div class=\"pe-ripple pe-ripple--constrained\">
-      <div class=\"pe-ripple__mask\">
-        <div class=\"pe-ripple__waves\"></div>
-      </div>
-    </div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
@@ -463,11 +368,6 @@ exports[`test Option: shadow 1`] = `
   <div class=\"pe-toolbar\">
     <a class=\"pe-button pe-icon-button\" tabindex=\"0\">
     <div class=\"pe-button__content\">
-      <div class=\"pe-ripple pe-ripple--constrained\">
-        <div class=\"pe-ripple__mask\">
-          <div class=\"pe-ripple__waves\"></div>
-        </div>
-      </div>
       <div class=\"pe-button__focus\"></div>
       <div class=\"pe-icon-button__content\">
         <div class=\"pe-icon pe-icon--regular\">
@@ -486,11 +386,6 @@ exports[`test Option: shadow 1`] = `
       long title
     </div><a class=\"pe-button pe-icon-button\" tabindex=\"0\">
     <div class=\"pe-button__content\">
-      <div class=\"pe-ripple pe-ripple--constrained\">
-        <div class=\"pe-ripple__mask\">
-          <div class=\"pe-ripple__waves\"></div>
-        </div>
-      </div>
       <div class=\"pe-button__focus\"></div>
       <div class=\"pe-icon-button__content\">
         <div class=\"pe-icon pe-icon--regular\">
@@ -506,11 +401,6 @@ exports[`test Option: shadow 1`] = `
       </div>
     </div></a><a class=\"pe-button pe-icon-button\" tabindex=\"0\">
     <div class=\"pe-button__content\">
-      <div class=\"pe-ripple pe-ripple--constrained\">
-        <div class=\"pe-ripple__mask\">
-          <div class=\"pe-ripple__waves\"></div>
-        </div>
-      </div>
       <div class=\"pe-button__focus\"></div>
       <div class=\"pe-icon-button__content\">
         <div class=\"pe-icon pe-icon--regular\">
@@ -538,11 +428,6 @@ exports[`test Option: style (colors and height) 1`] = `
 class=\"pe-toolbar\">
   <a class=\"pe-button pe-icon-button\" tabindex=\"0\">
   <div class=\"pe-button__content\">
-    <div class=\"pe-ripple pe-ripple--constrained\">
-      <div class=\"pe-ripple__mask\">
-        <div class=\"pe-ripple__waves\"></div>
-      </div>
-    </div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
@@ -561,11 +446,6 @@ class=\"pe-toolbar\">
     long title
   </div><a class=\"pe-button pe-icon-button\" tabindex=\"0\">
   <div class=\"pe-button__content\">
-    <div class=\"pe-ripple pe-ripple--constrained\">
-      <div class=\"pe-ripple__mask\">
-        <div class=\"pe-ripple__waves\"></div>
-      </div>
-    </div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
@@ -581,11 +461,6 @@ class=\"pe-toolbar\">
     </div>
   </div></a><a class=\"pe-button pe-icon-button\" tabindex=\"0\">
   <div class=\"pe-button__content\">
-    <div class=\"pe-ripple pe-ripple--constrained\">
-      <div class=\"pe-ripple__mask\">
-        <div class=\"pe-ripple__waves\"></div>
-      </div>
-    </div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
@@ -603,14 +478,9 @@ class=\"pe-toolbar\">
 `;
 
 exports[`test Themed -- dark tone class 1`] = `
-"<div class=\"pe-toolbar\">
+"<div class=\"pe-toolbar tests-toolbar-themed-toolbar\">
   <a class=\"pe-button pe-icon-button\" tabindex=\"0\">
   <div class=\"pe-button__content\">
-    <div class=\"pe-ripple pe-ripple--constrained\">
-      <div class=\"pe-ripple__mask\">
-        <div class=\"pe-ripple__waves\"></div>
-      </div>
-    </div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
@@ -629,11 +499,6 @@ exports[`test Themed -- dark tone class 1`] = `
     long title
   </div><a class=\"pe-button pe-icon-button\" tabindex=\"0\">
   <div class=\"pe-button__content\">
-    <div class=\"pe-ripple pe-ripple--constrained\">
-      <div class=\"pe-ripple__mask\">
-        <div class=\"pe-ripple__waves\"></div>
-      </div>
-    </div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
@@ -649,11 +514,6 @@ exports[`test Themed -- dark tone class 1`] = `
     </div>
   </div></a><a class=\"pe-button pe-icon-button\" tabindex=\"0\">
   <div class=\"pe-button__content\">
-    <div class=\"pe-ripple pe-ripple--constrained\">
-      <div class=\"pe-ripple__mask\">
-        <div class=\"pe-ripple__waves\"></div>
-      </div>
-    </div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
@@ -674,11 +534,6 @@ exports[`test Title as span 1`] = `
 "<div class=\"pe-toolbar\">
   <a class=\"pe-button pe-icon-button\" tabindex=\"0\">
   <div class=\"pe-button__content\">
-    <div class=\"pe-ripple pe-ripple--constrained\">
-      <div class=\"pe-ripple__mask\">
-        <div class=\"pe-ripple__waves\"></div>
-      </div>
-    </div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
@@ -694,11 +549,6 @@ exports[`test Title as span 1`] = `
   </div></a><span>Toolbar with a very very very long
   title</span><a class=\"pe-button pe-icon-button\" tabindex=\"0\">
   <div class=\"pe-button__content\">
-    <div class=\"pe-ripple pe-ripple--constrained\">
-      <div class=\"pe-ripple__mask\">
-        <div class=\"pe-ripple__waves\"></div>
-      </div>
-    </div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
@@ -721,11 +571,6 @@ exports[`test Title at start 1`] = `
     Title
   </div><a class=\"pe-button pe-icon-button\" tabindex=\"0\">
   <div class=\"pe-button__content\">
-    <div class=\"pe-ripple pe-ripple--constrained\">
-      <div class=\"pe-ripple__mask\">
-        <div class=\"pe-ripple__waves\"></div>
-      </div>
-    </div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">

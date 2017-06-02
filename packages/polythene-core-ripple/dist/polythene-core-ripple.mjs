@@ -142,28 +142,21 @@ var animation = (function (_ref) {
     })];
     styler.add(id, keyframeStyle);
 
-    var cleanup = function cleanup() {
-      waves.classList.remove(classes.wavesAnimating);
-      container.removeChild(waves);
-      el.removeChild(container);
-    };
-
     var animationDone = function animationDone(evt) {
       styler.remove(id);
       waves.removeEventListener(ANIMATION_END_EVENT, animationDone, false);
+      waves.classList.remove(classes.wavesAnimating);
       if (attrs.persistent) {
         style.opacity = endOpacity;
         style.transform = "scale(" + endScale + ")";
       } else {
-        resolve(evt);
-        cleanup();
+        container.removeChild(waves);
+        el.removeChild(container);
       }
+      resolve(evt);
     };
 
     waves.addEventListener(ANIMATION_END_EVENT, animationDone, false);
-    if (attrs.start) {
-      attrs.start(e);
-    }
     waves.classList.add(classes.wavesAnimating);
   });
 });
@@ -209,6 +202,9 @@ var onMount = function onMount(vnode) {
     if (!attrs.multi && state.animating) {
       return;
     }
+    if (attrs.start) {
+      attrs.start(e);
+    }
     var id = "ripple_animation_" + new Date().getTime();
     state.animations[id] = animation({ e: e, id: id, el: vnode.dom, attrs: attrs, classes: classes }).then(function (evt) {
       if (attrs.end) {
@@ -219,7 +215,8 @@ var onMount = function onMount(vnode) {
     });
     updateAnimationState(state);
   };
-  var triggerEl = attrs.target ? attrs.target() : vnode.dom && vnode.dom.parentElement;
+  var triggerEl = attrs.target ? attrs.target : vnode.dom && vnode.dom.parentElement;
+
   triggerEl.addEventListener(touchEndEvent, tap, false);
   state.removeEventListeners = function () {
     return triggerEl.removeEventListener(touchEndEvent, tap, false);

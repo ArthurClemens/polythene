@@ -45,7 +45,7 @@ exports[`test No options 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={1} />
+      z={[Function]} />
   } />
 `;
 
@@ -57,7 +57,7 @@ exports[`test Option: animateOnTap (false) 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={1} />
+      z={[Function]} />
   } />
 `;
 
@@ -68,19 +68,19 @@ exports[`test Option: children 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={1} />
+      z={[Function]} />
   } />
 `;
 
 exports[`test Option: class 1`] = `
 <Button
   animateOnTap={false}
-  class="class-x"
+  className="class-x"
   parentClassName="pe-button pe-text-button pe-raised-button"
   shadowComponent={
     <Shadow
       animated={true}
-      z={1} />
+      z={[Function]} />
   } />
 `;
 
@@ -92,7 +92,7 @@ exports[`test Option: className 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={1} />
+      z={[Function]} />
   } />
 `;
 
@@ -108,7 +108,7 @@ exports[`test Option: content 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={1} />
+      z={[Function]} />
   } />
 `;
 
@@ -121,7 +121,7 @@ exports[`test Option: disabled (false) 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={1} />
+      z={[Function]} />
   } />
 `;
 
@@ -134,7 +134,7 @@ exports[`test Option: disabled (true) 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={1} />
+      z={[Function]} />
   } />
 `;
 
@@ -147,19 +147,19 @@ exports[`test Option: disabled -- dark tone class 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={1} />
+      z={[Function]} />
   } />
 `;
 
 exports[`test Option: element 1`] = `
-<button
+<Button
   animateOnTap={false}
   element="button"
   parentClassName="pe-button pe-text-button pe-raised-button"
   shadowComponent={
     <Shadow
       animated={true}
-      z={1} />
+      z={[Function]} />
   } />
 `;
 
@@ -171,7 +171,7 @@ exports[`test Option: id 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={1} />
+      z={[Function]} />
   } />
 `;
 
@@ -190,7 +190,7 @@ exports[`test Option: inactivate (2s) 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={1} />
+      z={[Function]} />
   } />
 `;
 
@@ -203,7 +203,7 @@ exports[`test Option: inactive (false) 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={1} />
+      z={[Function]} />
   } />
 `;
 
@@ -216,7 +216,7 @@ exports[`test Option: inactive (true) 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={1} />
+      z={[Function]} />
   } />
 `;
 
@@ -229,7 +229,7 @@ exports[`test Option: ink (false) 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={1} />
+      z={[Function]} />
   } />
 `;
 
@@ -241,7 +241,7 @@ exports[`test Option: label -- dark tone class (should be app's primary color) 1
   shadowComponent={
     <Shadow
       animated={true}
-      z={1} />
+      z={[Function]} />
   } />
 `;
 
@@ -253,7 +253,7 @@ exports[`test Option: label 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={1} />
+      z={[Function]} />
   } />
 `;
 
@@ -271,7 +271,7 @@ exports[`test Option: raised (with option z: 2) 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={2} />
+      z={[Function]} />
   }
   z={2} />
 `;
@@ -284,7 +284,7 @@ exports[`test Option: raised (with option z: 5) 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={5} />
+      z={[Function]} />
   }
   z={5} />
 `;
@@ -298,7 +298,7 @@ exports[`test Option: selected 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={1} />
+      z={[Function]} />
   } />
 `;
 
@@ -310,7 +310,7 @@ exports[`test Option: style (colors) 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={1} />
+      z={[Function]} />
   }
   style={
     Object {
@@ -327,7 +327,7 @@ exports[`test Option: tabindex 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={1} />
+      z={[Function]} />
   }
   tabIndex={3} />
 `;
@@ -340,7 +340,7 @@ exports[`test Option: wash (false) 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={1} />
+      z={[Function]} />
   }
   wash={false} />
 `;
@@ -354,7 +354,7 @@ exports[`test Themed button (should be red) 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={1} />
+      z={[Function]} />
   } />
 `;
 
@@ -368,7 +368,7 @@ exports[`test Themed button (with option disabled) 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={1} />
+      z={[Function]} />
   } />
 `;
 

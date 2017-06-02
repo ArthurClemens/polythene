@@ -129,7 +129,7 @@ exports[`test Dark tone class + light tone 1`] = `
 
 exports[`test Dark tone class + light tone class 1`] = `
 <div
-  className="pe-toolbar    ">
+  className="pe-toolbar    pe-light-tone">
   <IconButton
     icon={
       Object {
@@ -564,7 +564,7 @@ exports[`test Option: style (colors and height) 1`] = `
 
 exports[`test Themed -- dark tone class 1`] = `
 <div
-  className="pe-toolbar    ">
+  className="pe-toolbar    tests-toolbar-themed-toolbar">
   <IconButton
     icon={
       Object {

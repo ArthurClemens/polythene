@@ -1,52 +1,29 @@
 exports[`test No options 1`] = `
-"<div class=\"pe-ripple pe-ripple--constrained\">
-  <div class=\"pe-ripple__mask\">
-    <div class=\"pe-ripple__waves\"></div>
-  </div>
-</div>
+"<div class=\"pe-ripple pe-ripple--constrained\"></div>
 "
 `;
 
 exports[`test Option: class 1`] = `
-"<div class=\"pe-ripple pe-ripple--constrained class-x\">
-  <div class=\"pe-ripple__mask\">
-    <div class=\"pe-ripple__waves\"></div>
-  </div>
-</div>
+"<div class=\"pe-ripple pe-ripple--constrained class-x\"></div>
 "
 `;
 
 exports[`test Option: className 1`] = `
-"<div class=\"pe-ripple pe-ripple--constrained className-x\">
-  <div class=\"pe-ripple__mask\">
-    <div class=\"pe-ripple__waves\"></div>
-  </div>
-</div>
+"<div class=\"pe-ripple pe-ripple--constrained className-x\"></div>
 "
 `;
 
 exports[`test Option: constrained (true) 1`] = `
-"<div class=\"pe-ripple pe-ripple--constrained\">
-  <div class=\"pe-ripple__mask\">
-    <div class=\"pe-ripple__waves\"></div>
-  </div>
-</div>
+"<div class=\"pe-ripple pe-ripple--constrained\"></div>
 "
 `;
 
 exports[`test Option: element 1`] = `
-"<a class=\"pe-ripple pe-ripple--constrained\">
-<div class=\"pe-ripple__mask\">
-  <div class=\"pe-ripple__waves\"></div>
-</div></a>
+"<a class=\"pe-ripple pe-ripple--constrained\"></a>
 "
 `;
 
 exports[`test Option: id 1`] = `
-"<div id=\"id-x\" class=\"pe-ripple pe-ripple--constrained\">
-  <div class=\"pe-ripple__mask\">
-    <div class=\"pe-ripple__waves\"></div>
-  </div>
-</div>
+"<div id=\"id-x\" class=\"pe-ripple pe-ripple--constrained\"></div>
 "
 `;

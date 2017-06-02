@@ -7,7 +7,7 @@ import { keys } from "./keys";
 const requiresKeys = true;
 
 export const stateComponent = ({
-  createContent = () => ({}),
+  createContent = () => {},
   createProps = () => ({}),
   element = "div",
   component,
@@ -33,15 +33,15 @@ export const stateComponent = ({
     }
     
     componentDidMount() {
-      // this._mounted = true;
+      this._mounted = true;
       onMount(this.createVirtualNode());
       this.state.redrawOnUpdate && this.state.redrawOnUpdate.map(values => (
-        this.setState({ redrawValues: values })
+        this._mounted && this.setState({ redrawValues: values })
       ));
     }
 
     componentWillUnmount() {
-      // this._mounted = false;
+      this._mounted = false;
       onUnmount(this.createVirtualNode());
     }
 

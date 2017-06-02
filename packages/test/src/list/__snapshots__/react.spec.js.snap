@@ -13,32 +13,6 @@ exports[`test Child nodes 1`] = `
 </div>
 `;
 
-exports[`test Dark tone class + light theme class 1`] = `
-<div
-  className="pe-list pe-list--borders  pe-list--header    pe-light-tone"
-  style={
-    Object {
-      "background": "#fff",
-    }
-  }>
-  <ListTile
-    className="pe-list__header "
-    title="Friends" />
-  <ListTile
-    hoverable={true}
-    subtitle="Starting post doc"
-    title="Jennifer Barker" />
-  <ListTile
-    hoverable={true}
-    subtitle="Brunch this weekend?"
-    title="Ali Connors" />
-  <ListTile
-    hoverable={true}
-    subtitle="Binge watching..."
-    title="Grace VanDam" />
-</div>
-`;
-
 exports[`test Dark tone class + light tone 1`] = `
 <div
   className="pe-list pe-list--borders  pe-list--header   pe-light-tone "
@@ -96,24 +70,6 @@ exports[`test No options 1`] = `
   className="pe-list       " />
 `;
 
-exports[`test Option: class -- dark theme class 1`] = `
-<div
-  className="pe-list pe-list--borders  pe-list--header    ">
-  <ListTile
-    className="pe-list__header "
-    title="Friends" />
-  <ListTile
-    subtitle="Starting post doc"
-    title="Jennifer Barker" />
-  <ListTile
-    subtitle="Brunch this weekend?"
-    title="Ali Connors" />
-  <ListTile
-    subtitle="Binge watching..."
-    title="Grace VanDam" />
-</div>
-`;
-
 exports[`test Option: class -- dark tone class 1`] = `
 <div
   className="pe-list pe-list--borders  pe-list--header    ">
@@ -155,8 +111,8 @@ exports[`test Option: compact 1`] = `
     front={
       <Icon
         avatar={true}
-        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png"
-        type="large" />
+        size="large"
+        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png" />
     }
     subtitle="Starting post doc"
     title="Jennifer Barker" />
@@ -164,8 +120,8 @@ exports[`test Option: compact 1`] = `
     front={
       <Icon
         avatar={true}
-        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png"
-        type="large" />
+        size="large"
+        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png" />
     }
     subtitle="Brunch this weekend?"
     title="Ali Connors" />
@@ -173,8 +129,8 @@ exports[`test Option: compact 1`] = `
     front={
       <Icon
         avatar={true}
-        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-3.png"
-        type="large" />
+        size="large"
+        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-3.png" />
     }
     subtitle="Binge watching..."
     title="Grace VanDam" />
@@ -294,8 +250,8 @@ exports[`test Options: header, tiles, indent, indentedBorders (JSX) 1`] = `
     front={
       <Icon
         avatar={true}
-        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png"
-        type="large" />
+        size="large"
+        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png" />
     }
     indent={true}
     subtitle="Starting post doc"
@@ -304,8 +260,8 @@ exports[`test Options: header, tiles, indent, indentedBorders (JSX) 1`] = `
     front={
       <Icon
         avatar={true}
-        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png"
-        type="large" />
+        size="large"
+        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png" />
     }
     indent={true}
     subtitle="Brunch this weekend?"
@@ -314,8 +270,8 @@ exports[`test Options: header, tiles, indent, indentedBorders (JSX) 1`] = `
     front={
       <Icon
         avatar={true}
-        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-3.png"
-        type="large" />
+        size="large"
+        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-3.png" />
     }
     indent={true}
     subtitle="Binge watching..."
@@ -340,24 +296,6 @@ exports[`test Options: header, tiles, indent, indentedBorders 1`] = `
     title="Ali Connors" />
   <ListTile
     indent={true}
-    subtitle="Binge watching..."
-    title="Grace VanDam" />
-</div>
-`;
-
-exports[`test Themed list (colors and padding) -- dark theme class 1`] = `
-<div
-  className="pe-list pe-list--borders      tests-lists-themed-list">
-  <ListTile
-    className="tests-lists-themed-list-tile"
-    subtitle="Starting post doc"
-    title="Jennifer Barker" />
-  <ListTile
-    className="tests-lists-themed-list-tile"
-    subtitle="Brunch this weekend?"
-    title="Ali Connors" />
-  <ListTile
-    className="tests-lists-themed-list-tile"
     subtitle="Binge watching..."
     title="Grace VanDam" />
 </div>

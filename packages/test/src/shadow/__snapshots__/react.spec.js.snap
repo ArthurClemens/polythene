@@ -1,4 +1,13 @@
-exports[`test Add to a React element 1`] = `
+exports[`test Add to a React element (JSX) 1`] = `
+<div>
+  <div>
+    Some element
+  </div>
+  <Shadow />
+</div>
+`;
+
+exports[`test Add to an element 1`] = `
 <div>
   <div>
     Some element
@@ -27,7 +36,7 @@ exports[`test Interactive option: animated -- dark tone class 1`] = `
   </div>
   <Shadow
     animated={true}
-    z={1} />
+    z={[Function]} />
 </div>
 `;
 
@@ -43,7 +52,7 @@ exports[`test No options 1`] = `
 
 exports[`test Option: class 1`] = `
 <div
-  className="pe-shadow  ">
+  className="pe-shadow  class-x">
   <div
     className="pe-shadow__bottom pe-shadow--z-1" />
   <div

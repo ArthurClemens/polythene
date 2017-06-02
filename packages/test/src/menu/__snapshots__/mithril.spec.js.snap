@@ -15,7 +15,9 @@ exports[`test Menu items -- dark tone 1`] = `
           </div>
         </div>
         <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\"></div>
+          <div class=\"pe-list-tile__content\">
+            ⌘B
+          </div>
         </div>
       </div>
       <div class=\"pe-list-tile pe-list-tile--hoverable\">
@@ -27,7 +29,9 @@ exports[`test Menu items -- dark tone 1`] = `
           </div>
         </div>
         <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\"></div>
+          <div class=\"pe-list-tile__content\">
+            ⌘I
+          </div>
         </div>
       </div>
       <div class=\"pe-list-tile pe-list-tile--hoverable\">
@@ -39,7 +43,9 @@ exports[`test Menu items -- dark tone 1`] = `
           </div>
         </div>
         <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\"></div>
+          <div class=\"pe-list-tile__content\">
+            ⌘U
+          </div>
         </div>
       </div>
       <div class=\"pe-list-tile pe-list-tile--hoverable\">
@@ -51,7 +57,9 @@ exports[`test Menu items -- dark tone 1`] = `
           </div>
         </div>
         <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\"></div>
+          <div class=\"pe-list-tile__content\">
+            Alt+Shift+5
+          </div>
         </div>
       </div>
       <div class=\"pe-list-tile pe-list-tile--hoverable\">
@@ -63,7 +71,9 @@ exports[`test Menu items -- dark tone 1`] = `
           </div>
         </div>
         <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\"></div>
+          <div class=\"pe-list-tile__content\">
+            ⌘.
+          </div>
         </div>
       </div>
       <div class=\"pe-list-tile pe-list-tile--hoverable\">
@@ -75,7 +85,9 @@ exports[`test Menu items -- dark tone 1`] = `
           </div>
         </div>
         <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\"></div>
+          <div class=\"pe-list-tile__content\">
+            ⌘,
+          </div>
         </div>
       </div>
     </div>
@@ -90,7 +102,9 @@ exports[`test Menu items -- dark tone 1`] = `
           </div>
         </div>
         <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\"></div>
+          <div class=\"pe-list-tile__content\">
+            ⌘/
+          </div>
         </div>
       </div>
       <div class=\"pe-list-tile pe-list-tile--hoverable\">
@@ -128,7 +142,9 @@ exports[`test Menu items 1`] = `
           </div>
         </div>
         <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\"></div>
+          <div class=\"pe-list-tile__content\">
+            ⌘B
+          </div>
         </div>
       </div>
       <div class=\"pe-list-tile pe-list-tile--hoverable\">
@@ -140,7 +156,9 @@ exports[`test Menu items 1`] = `
           </div>
         </div>
         <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\"></div>
+          <div class=\"pe-list-tile__content\">
+            ⌘I
+          </div>
         </div>
       </div>
       <div class=\"pe-list-tile pe-list-tile--hoverable\">
@@ -152,7 +170,9 @@ exports[`test Menu items 1`] = `
           </div>
         </div>
         <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\"></div>
+          <div class=\"pe-list-tile__content\">
+            ⌘U
+          </div>
         </div>
       </div>
       <div class=\"pe-list-tile pe-list-tile--hoverable\">
@@ -164,7 +184,9 @@ exports[`test Menu items 1`] = `
           </div>
         </div>
         <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\"></div>
+          <div class=\"pe-list-tile__content\">
+            Alt+Shift+5
+          </div>
         </div>
       </div>
       <div class=\"pe-list-tile pe-list-tile--hoverable\">
@@ -176,7 +198,9 @@ exports[`test Menu items 1`] = `
           </div>
         </div>
         <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\"></div>
+          <div class=\"pe-list-tile__content\">
+            ⌘.
+          </div>
         </div>
       </div>
       <div class=\"pe-list-tile pe-list-tile--hoverable\">
@@ -188,7 +212,9 @@ exports[`test Menu items 1`] = `
           </div>
         </div>
         <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\"></div>
+          <div class=\"pe-list-tile__content\">
+            ⌘,
+          </div>
         </div>
       </div>
     </div>
@@ -203,7 +229,9 @@ exports[`test Menu items 1`] = `
           </div>
         </div>
         <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\"></div>
+          <div class=\"pe-list-tile__content\">
+            ⌘/
+          </div>
         </div>
       </div>
       <div class=\"pe-list-tile pe-list-tile--hoverable\">
@@ -647,11 +675,7 @@ class=\"pe-menu pe-menu--permanent pe-dark-tone\">
       <div style=
       \"background-color: rgb(33, 150, 243); color: rgb(255, 255, 255);\"
       class=\"pe-list-tile\">
-        <div class=\"pe-ripple pe-ripple--constrained\">
-          <div class=\"pe-ripple__mask\">
-            <div class=\"pe-ripple__waves\"></div>
-          </div>
-        </div>
+        <div class=\"pe-ripple pe-ripple--constrained\"></div>
         <div style=\"\" class=\"pe-list-tile__primary\">
           <div class=\"pe-list-tile__content\" style=
           \"background-color: rgb(33, 150, 243); color: rgb(255, 255, 255);\">
@@ -664,11 +688,7 @@ class=\"pe-menu pe-menu--permanent pe-dark-tone\">
       <div style=
       \"background-color: rgb(33, 150, 243); color: rgb(255, 255, 255);\"
       class=\"pe-list-tile\">
-        <div class=\"pe-ripple pe-ripple--constrained\">
-          <div class=\"pe-ripple__mask\">
-            <div class=\"pe-ripple__waves\"></div>
-          </div>
-        </div>
+        <div class=\"pe-ripple pe-ripple--constrained\"></div>
         <div style=\"\" class=\"pe-list-tile__primary\">
           <div class=\"pe-list-tile__content\" style=
           \"background-color: rgb(33, 150, 243); color: rgb(255, 255, 255);\">
@@ -695,11 +715,7 @@ exports[`test Themed (color and border radius) 1`] = `
     <div class=\"pe-list\">
       <div class=
       \"pe-list-tile pe-list-tile--hoverable menu-tests-blue-menu-list-tile\">
-      <div class=\"pe-ripple pe-ripple--constrained\">
-          <div class=\"pe-ripple__mask\">
-            <div class=\"pe-ripple__waves\"></div>
-          </div>
-        </div>
+      <div class=\"pe-ripple pe-ripple--constrained\"></div>
         <div class=\"pe-list-tile__primary\" style=\"\">
           <div class=\"pe-list-tile__content\">
             <div class=\"pe-list-tile__title\">
@@ -710,11 +726,7 @@ exports[`test Themed (color and border radius) 1`] = `
       </div>
       <div class=
       \"pe-list-tile pe-list-tile--hoverable menu-tests-blue-menu-list-tile\">
-      <div class=\"pe-ripple pe-ripple--constrained\">
-          <div class=\"pe-ripple__mask\">
-            <div class=\"pe-ripple__waves\"></div>
-          </div>
-        </div>
+      <div class=\"pe-ripple pe-ripple--constrained\"></div>
         <div class=\"pe-list-tile__primary\" style=\"\">
           <div class=\"pe-list-tile__content\">
             <div class=\"pe-list-tile__title\">

@@ -27,80 +27,83 @@ exports[`test Dark tone class + light tone class 1`] = `
 `;
 
 exports[`test No options 1`] = `
-<RaisedButton
-  animateOnTap={true}
-  content={
-    <div
-      className="pe-fab__content" />
-  }
-  ink={true}
-  parentClassName="pe-fab  "
-  ripple={
+<SelectionControl
+  icons={
     Object {
-      "center": true,
-      "opacityDecayVelocity": 0.24,
+      "iconOff": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\"/></svg>",
+      "iconOn": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\"/></svg>",
     }
   }
-  shadow={
-    Object {
-      "increase": 5,
-    }
-  }
-  wash={true} />
+  instanceClass="pe-checkbox-control"
+  selectable={[Function]}
+  theme={[Function]}
+  type="checkbox" />
 `;
 
 exports[`test Option: class 1`] = `
-<RaisedButton
-  animateOnTap={true}
-  class="class-x"
-  content={
-    <div
-      className="pe-fab__content" />
-  }
-  ink={true}
-  parentClassName="pe-fab  "
-  ripple={
+<SelectionControl
+  className="class-x"
+  icons={
     Object {
-      "center": true,
-      "opacityDecayVelocity": 0.24,
+      "iconOff": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\"/></svg>",
+      "iconOn": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\"/></svg>",
     }
   }
-  shadow={
-    Object {
-      "increase": 5,
-    }
-  }
-  wash={true} />
+  instanceClass="pe-checkbox-control"
+  selectable={[Function]}
+  theme={[Function]}
+  type="checkbox" />
 `;
 
 exports[`test Option: className 1`] = `
-<RaisedButton
-  animateOnTap={true}
+<SelectionControl
   className="className-x"
-  content={
-    <div
-      className="pe-fab__content" />
-  }
-  ink={true}
-  parentClassName="pe-fab  className-x"
-  ripple={
+  icons={
     Object {
-      "center": true,
-      "opacityDecayVelocity": 0.24,
+      "iconOff": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\"/></svg>",
+      "iconOn": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\"/></svg>",
     }
   }
-  shadow={
-    Object {
-      "increase": 5,
-    }
-  }
-  wash={true} />
+  instanceClass="pe-checkbox-control"
+  selectable={[Function]}
+  theme={[Function]}
+  type="checkbox" />
 `;
 
 exports[`test Option: defaultChecked (JSX) 1`] = `
 <Checkbox
   defaultChecked={true}
   label="Label" />
+`;
+
+exports[`test Option: defaultChecked -- dark tone class 1`] = `
+<SelectionControl
+  defaultChecked={true}
+  icons={
+    Object {
+      "iconOff": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\"/></svg>",
+      "iconOn": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\"/></svg>",
+    }
+  }
+  instanceClass="pe-checkbox-control"
+  selectable={[Function]}
+  theme={[Function]}
+  type="checkbox" />
+`;
+
+exports[`test Option: defaultChecked 1`] = `
+<SelectionControl
+  defaultChecked={true}
+  icons={
+    Object {
+      "iconOff": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\"/></svg>",
+      "iconOn": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\"/></svg>",
+    }
+  }
+  instanceClass="pe-checkbox-control"
+  selectable={[Function]}
+  theme={[Function]}
+  type="checkbox" />
 `;
 
 exports[`test Option: disabled -- dark tone class 1`] = `
@@ -128,27 +131,38 @@ exports[`test Option: disabled 1`] = `
 `;
 
 exports[`test Option: element 1`] = `
-<a
-  animateOnTap={true}
-  content={
-    <div
-      className="pe-fab__content" />
-  }
+<SelectionControl
   element="a"
-  ink={true}
-  parentClassName="pe-fab  "
-  ripple={
+  icons={
     Object {
-      "center": true,
-      "opacityDecayVelocity": 0.24,
+      "iconOff": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\"/></svg>",
+      "iconOn": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\"/></svg>",
     }
   }
-  shadow={
+  instanceClass="pe-checkbox-control"
+  selectable={[Function]}
+  theme={[Function]}
+  type="checkbox" />
+`;
+
+exports[`test Option: iconButton (custom hover behaviour) 1`] = `
+<SelectionControl
+  iconButton={
     Object {
-      "increase": 5,
+      "ink": false,
+      "wash": true,
     }
   }
-  wash={true} />
+  icons={
+    Object {
+      "iconOff": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\"/></svg>",
+      "iconOn": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\"/></svg>",
+    }
+  }
+  instanceClass="pe-checkbox-control"
+  selectable={[Function]}
+  theme={[Function]}
+  type="checkbox" />
 `;
 
 exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
@@ -255,27 +269,33 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
 `;
 
 exports[`test Option: id 1`] = `
-<RaisedButton
-  animateOnTap={true}
-  content={
-    <div
-      className="pe-fab__content" />
+<SelectionControl
+  icons={
+    Object {
+      "iconOff": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\"/></svg>",
+      "iconOn": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\"/></svg>",
+    }
   }
   id="id-x"
-  ink={true}
-  parentClassName="pe-fab  "
-  ripple={
+  instanceClass="pe-checkbox-control"
+  selectable={[Function]}
+  theme={[Function]}
+  type="checkbox" />
+`;
+
+exports[`test Option: label 1`] = `
+<SelectionControl
+  icons={
     Object {
-      "center": true,
-      "opacityDecayVelocity": 0.24,
+      "iconOff": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\"/></svg>",
+      "iconOn": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\"/></svg>",
     }
   }
-  shadow={
-    Object {
-      "increase": 5,
-    }
-  }
-  wash={true} />
+  instanceClass="pe-checkbox-control"
+  label="Label"
+  selectable={[Function]}
+  theme={[Function]}
+  type="checkbox" />
 `;
 
 exports[`test Option: selectable (false) 1`] = `
@@ -313,25 +333,64 @@ exports[`test Option: size 1`] = `
 `;
 
 exports[`test Option: tabindex 1`] = `
-<RaisedButton
-  animateOnTap={true}
-  content={
-    <div
-      className="pe-fab__content" />
-  }
-  ink={true}
-  parentClassName="pe-fab  "
-  ripple={
+<SelectionControl
+  icons={
     Object {
-      "center": true,
-      "opacityDecayVelocity": 0.24,
+      "iconOff": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\"/></svg>",
+      "iconOn": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\"/></svg>",
     }
   }
-  shadow={
-    Object {
-      "increase": 5,
-    }
-  }
+  instanceClass="pe-checkbox-control"
+  selectable={[Function]}
   tabIndex={3}
-  wash={true} />
+  theme={[Function]}
+  type="checkbox" />
+`;
+
+exports[`test Option: value 1`] = `
+<SelectionControl
+  icons={
+    Object {
+      "iconOff": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\"/></svg>",
+      "iconOn": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\"/></svg>",
+    }
+  }
+  instanceClass="pe-checkbox-control"
+  name="worth"
+  selectable={[Function]}
+  theme={[Function]}
+  type="checkbox"
+  value="notable" />
+`;
+
+exports[`test Themed Checkbox (color and font size) 1`] = `
+<SelectionControl
+  className="tests-checkbox-themed-checkbox"
+  icons={
+    Object {
+      "iconOff": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\"/></svg>",
+      "iconOn": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\"/></svg>",
+    }
+  }
+  instanceClass="pe-checkbox-control"
+  label="Label"
+  selectable={[Function]}
+  theme={[Function]}
+  type="checkbox" />
+`;
+
+exports[`test Themed Checkbox (colors) -- dark tone class 1`] = `
+<SelectionControl
+  className="tests-checkbox-themed-checkbox"
+  icons={
+    Object {
+      "iconOff": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\"/></svg>",
+      "iconOn": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\"/></svg>",
+    }
+  }
+  instanceClass="pe-checkbox-control"
+  label="Label"
+  selectable={[Function]}
+  theme={[Function]}
+  type="checkbox" />
 `;

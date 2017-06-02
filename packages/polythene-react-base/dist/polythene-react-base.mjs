@@ -327,9 +327,7 @@ var requiresKeys = true;
 
 var stateComponent = function stateComponent(_ref) {
   var _ref$createContent = _ref.createContent,
-      createContent = _ref$createContent === undefined ? function () {
-    return {};
-  } : _ref$createContent,
+      createContent = _ref$createContent === undefined ? function () {} : _ref$createContent,
       _ref$createProps = _ref.createProps,
       createProps = _ref$createProps === undefined ? function () {
     return {};
@@ -368,16 +366,16 @@ var stateComponent = function stateComponent(_ref) {
       value: function componentDidMount() {
         var _this2 = this;
 
-        // this._mounted = true;
+        this._mounted = true;
         onMount(this.createVirtualNode());
         this.state.redrawOnUpdate && this.state.redrawOnUpdate.map(function (values) {
-          return _this2.setState({ redrawValues: values });
+          return _this2._mounted && _this2.setState({ redrawValues: values });
         });
       }
     }, {
       key: "componentWillUnmount",
       value: function componentWillUnmount() {
-        // this._mounted = false;
+        this._mounted = false;
         onUnmount(this.createVirtualNode());
       }
     }, {
@@ -423,9 +421,7 @@ var requiresKeys$1 = true;
 
 var viewComponent = function viewComponent(_ref) {
   var _ref$createContent = _ref.createContent,
-      createContent = _ref$createContent === undefined ? function () {
-    return {};
-  } : _ref$createContent,
+      createContent = _ref$createContent === undefined ? function () {} : _ref$createContent,
       _ref$createProps = _ref.createProps,
       createProps = _ref$createProps === undefined ? function () {
     return {};

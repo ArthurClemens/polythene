@@ -1,5 +1,5 @@
 exports[`test Menu items -- dark tone 1`] = `
-<p
+<c
   content={
     Array [
       <List
@@ -88,7 +88,7 @@ exports[`test Menu items -- dark tone 1`] = `
 `;
 
 exports[`test Menu items 1`] = `
-<p
+<c
   content={
     Array [
       <List
@@ -212,7 +212,7 @@ exports[`test Option: id 1`] = `
 
 exports[`test Option: size 1`] = `
 <div>
-  <p
+  <c
     content={
       <List
         compact={true}
@@ -239,7 +239,7 @@ exports[`test Option: size 1`] = `
         "margin": "0 0 1rem 0",
       }
     } />
-  <p
+  <c
     content={
       <List
         compact={true}
@@ -266,7 +266,7 @@ exports[`test Option: size 1`] = `
         "margin": "0 0 1rem 0",
       }
     } />
-  <p
+  <c
     content={
       <List
         compact={true}
@@ -293,7 +293,7 @@ exports[`test Option: size 1`] = `
         "margin": "0 0 1rem 0",
       }
     } />
-  <p
+  <c
     content={
       <List
         compact={true}
@@ -320,7 +320,7 @@ exports[`test Option: size 1`] = `
         "margin": "0 0 1rem 0",
       }
     } />
-  <p
+  <c
     content={
       <List
         compact={true}
@@ -347,7 +347,7 @@ exports[`test Option: size 1`] = `
         "margin": "0 0 1rem 0",
       }
     } />
-  <p
+  <c
     content={
       <List
         compact={true}
@@ -374,7 +374,7 @@ exports[`test Option: size 1`] = `
         "margin": "0 0 1rem 0",
       }
     } />
-  <p
+  <c
     content={
       <List
         compact={true}
@@ -403,7 +403,7 @@ exports[`test Option: size 1`] = `
         "margin": "0 0 1rem 0",
       }
     } />
-  <p
+  <c
     content={
       <List
         compact={true}
@@ -434,7 +434,7 @@ exports[`test Option: size 1`] = `
 `;
 
 exports[`test Option: style 1`] = `
-<p
+<c
   content={
     <List>
       <ListTile
@@ -468,7 +468,7 @@ exports[`test Option: style 1`] = `
 `;
 
 exports[`test Simple (JSX) 1`] = `
-<p
+<c
   permanent={true}
   size={5}>
   <List
@@ -557,11 +557,11 @@ exports[`test Simple (JSX) 1`] = `
           title="Custom spacing" />,
       ]
     } />
-</p>
+</c>
 `;
 
 exports[`test Themed (color and border radius) 1`] = `
-<p
+<c
   className="menu-tests-blue-menu"
   content={
     <List>

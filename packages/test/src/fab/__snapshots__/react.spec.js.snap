@@ -41,7 +41,7 @@ exports[`test Dark tone class + light tone 1`] = `
       "padding": "10px",
     }
   }>
-  <Fab
+  <FAB
     icon={
       Object {
         "svg": <div
@@ -53,7 +53,7 @@ exports[`test Dark tone class + light tone 1`] = `
       }
     }
     tint="light" />
-  <Fab
+  <FAB
     className="tests-fab-themed-fab"
     icon={
       Object {
@@ -78,7 +78,7 @@ exports[`test Dark tone class + light tone class 1`] = `
       "padding": "10px",
     }
   }>
-  <Fab
+  <FAB
     icon={
       Object {
         "svg": <div
@@ -89,7 +89,7 @@ exports[`test Dark tone class + light tone class 1`] = `
           } />,
       }
     } />
-  <Fab
+  <FAB
     className="tests-fab-themed-fab"
     icon={
       Object {
@@ -130,13 +130,13 @@ exports[`test No options 1`] = `
 exports[`test Option: class 1`] = `
 <RaisedButton
   animateOnTap={true}
-  class="class-x"
+  className="class-x"
   content={
     <div
       className="pe-fab__content" />
   }
   ink={true}
-  parentClassName="pe-fab  "
+  parentClassName="pe-fab  class-x"
   ripple={
     Object {
       "center": true,
@@ -208,7 +208,7 @@ exports[`test Option: content 1`] = `
 `;
 
 exports[`test Option: element 1`] = `
-<a
+<RaisedButton
   animateOnTap={true}
   content={
     <div
@@ -326,7 +326,7 @@ exports[`test Option: icon 1`] = `
 `;
 
 exports[`test Option: icon as attribute (JSX) 1`] = `
-<Fab
+<FAB
   icon={
     Object {
       "svg": <svg
@@ -343,7 +343,7 @@ exports[`test Option: icon as attribute (JSX) 1`] = `
 `;
 
 exports[`test Option: icon as component (JSX) 1`] = `
-<Fab
+<FAB
   mini={true}>
   <Icon>
     <SVG>
@@ -357,7 +357,7 @@ exports[`test Option: icon as component (JSX) 1`] = `
       </svg>
     </SVG>
   </Icon>
-</Fab>
+</FAB>
 `;
 
 exports[`test Option: id 1`] = `
@@ -433,7 +433,7 @@ exports[`test Option: mini 1`] = `
 `;
 
 exports[`test Option: style (JSX) 1`] = `
-<Fab
+<FAB
   icon={
     Object {
       "svg": <svg
@@ -580,7 +580,7 @@ exports[`test Option: z (0) 1`] = `
 `;
 
 exports[`test Option: z (5) (JSX) 1`] = `
-<Fab
+<FAB
   icon={
     Object {
       "svg": <svg

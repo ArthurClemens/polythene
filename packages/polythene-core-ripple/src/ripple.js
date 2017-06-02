@@ -49,6 +49,9 @@ export const onMount = vnode => {
     if (!attrs.multi && state.animating) {
       return;
     }
+    if (attrs.start) {
+      attrs.start(e);
+    }
     const id = `ripple_animation_${new Date().getTime()}`;
     state.animations[id] = animation({ e, id, el: vnode.dom, attrs, classes })
       .then(evt => {
@@ -61,8 +64,9 @@ export const onMount = vnode => {
     updateAnimationState(state);
   };
   const triggerEl = attrs.target
-    ? attrs.target()
+    ? attrs.target
     : vnode.dom && vnode.dom.parentElement;
+    
   triggerEl.addEventListener(touchEndEvent, tap, false);
   state.removeEventListeners = () =>
     triggerEl.removeEventListener(touchEndEvent, tap, false);

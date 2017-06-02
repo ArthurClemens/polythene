@@ -243,15 +243,51 @@ var element = "a";
 var theme = customTheme;
 
 var getInitialState = function getInitialState(vnode, createStream) {
+  var dom = createStream();
   var focus = createStream(false);
   var inactive = createStream(false);
   var mouseover = createStream(false);
   return {
+    dom: dom,
     focus: focus,
     inactive: inactive,
     mouseover: mouseover,
-    redrawOnUpdate: createStream.merge([focus, inactive, mouseover])
+    redrawOnUpdate: createStream.merge([dom, focus, inactive, mouseover])
   };
+};
+
+var onMount = function onMount(vnode) {
+  if (!vnode.dom) {
+    return;
+  }
+  var state = vnode.state;
+  state.dom(vnode.dom);
+
+  var onFocus = function onFocus() {
+    return state.focus(!state.mouseover());
+  };
+  var onBlur = function onBlur() {
+    return state.focus(false);
+  };
+  var onMouseOver = function onMouseOver() {
+    return state.mouseover(true);
+  };
+  var onMouseOut = function onMouseOut() {
+    return state.mouseover(false);
+  };
+
+  vnode.dom.addEventListener("focus", onFocus, false);
+  vnode.dom.addEventListener("blur", onBlur, false);
+  vnode.dom.addEventListener("mouseover", onMouseOver, false);
+  vnode.dom.addEventListener("mouseout", onMouseOut, false);
+
+  state.removeEventListeners = function () {
+    return vnode.dom.removeEventListener("focus", onFocus, false), vnode.dom.removeEventListener("blur", onBlur, false), vnode.dom.removeEventListener("mouseover", onBlur, false), vnode.dom.removeEventListener("mouseout", onMouseOut, false);
+  };
+};
+
+var onUnMount = function onUnMount(vnode) {
+  return vnode.state.removeEventListeners();
 };
 
 var createProps = function createProps(vnode, _ref) {
@@ -265,25 +301,17 @@ var createProps = function createProps(vnode, _ref) {
   var inactive = attrs.inactive || state.inactive();
   var onClickHandler = attrs.events && attrs.events[k.onclick];
   var handleInactivate = function handleInactivate() {
-    return vnode.state.inactive(true), setTimeout(function () {
-      return vnode.state.inactive(false);
+    return state.inactive(true), setTimeout(function () {
+      return state.inactive(false);
     }, attrs.inactivate * 1000);
   };
   return _extends({}, filterSupportedAttributes(attrs, { add: [k.formaction, "type"] }), {
     className: [attrs.parentClassName || classes.component, attrs.selected ? classes.selected : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, attrs.borders ? classes.borders : null, state.focus() ? classes.focused : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, inactive ? null : (_ref2 = {}, _defineProperty(_ref2, k.tabindex, disabled || inactive ? -1 : attrs[k.tabindex] || 0), _defineProperty(_ref2, k.onclick, function (e) {
     return attrs.inactivate !== undefined && handleInactivate(), onClickHandler && onClickHandler(e), true;
-  }), _defineProperty(_ref2, k.onfocus, function () {
-    return vnode.state.focus(!state.mouseover());
-  }), _defineProperty(_ref2, k.onblur, function () {
-    return vnode.state.focus(false);
-  }), _defineProperty(_ref2, k.onmouseover, function () {
-    return vnode.state.mouseover(true);
-  }), _defineProperty(_ref2, k.onmouseout, function () {
-    return vnode.state.mouseover(false);
   }), _defineProperty(_ref2, k.onkeydown, function (e) {
     if (e.which === 13 && state.focus()) {
-      vnode.state.focus(false);
+      state.focus(false);
       if (onClickHandler) {
         onClickHandler(e);
       }
@@ -299,8 +327,8 @@ var createContent = function createContent(vnode, _ref3) {
       k = _ref3.keys,
       Ripple = _ref3.Ripple;
 
-  var attrs = vnode.attrs;
   var state = vnode.state;
+  var attrs = vnode.attrs;
   var noink = attrs.ink !== undefined && attrs.ink === false;
   var disabled = attrs.disabled;
   var children = attrs.children || vnode.children;
@@ -309,10 +337,10 @@ var createContent = function createContent(vnode, _ref3) {
   return label ? h("div", (_h = {}, _defineProperty(_h, k.class, classes.content), _defineProperty(_h, "key", "button"), _defineProperty(_h, "style", attrs.style || {}), _h), [!disabled && attrs.shadowComponent // "protected" option, used by raised-button
   ? attrs.shadowComponent : null,
   // Ripple
-  disabled || noink ? null : Ripple && h(Ripple, _extends({}, attrs.ripple, {
-    key: "ripple"
-    // target: () => state.dom
-  })),
+  disabled || noink ? null : Ripple && state.dom() ? h(Ripple, _extends({}, {
+    key: "ripple",
+    target: state.dom()
+  }, attrs.ripple)) : null,
   // hover
   noWash ? null : h("div", { key: "wash", className: classes.wash }),
   // focus
@@ -323,6 +351,8 @@ var button = Object.freeze({
 	element: element,
 	theme: theme,
 	getInitialState: getInitialState,
+	onMount: onMount,
+	onUnMount: onUnMount,
 	createProps: createProps,
 	createContent: createContent
 });

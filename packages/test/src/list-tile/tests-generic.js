@@ -14,24 +14,10 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
 
   return [
     {
-      name: "Child node",
-      component: ListTile,
-      attrs: null,
-      children: h(Icon, {svg: trustedIconStars})
-    },
-    {
       name: "Option: title",
       component: ListTile,
       attrs: {
         title: "Ancillary Justice"
-      }
-    },
-    {
-      name: "Option: content",
-      component: ListTile,
-      attrs: {
-        title: "Ancillary Justice",
-        content: h(Icon, {svg: trustedIconStars})
       }
     },
     {
@@ -192,16 +178,6 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
             svg: trustedIconStars,
             size: "medium"
           }
-        }
-      }
-    },
-    {
-      name: "Option: secondary (content)",
-      component: ListTile,
-      attrs: {
-        title: "Ancillary Justice",
-        secondary: {
-          content: h(Icon, { svg: trustedIconStars })
         }
       }
     },

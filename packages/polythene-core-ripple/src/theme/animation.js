@@ -68,28 +68,21 @@ export default ({ e, id, el, attrs, classes }) => {
     }];
     styler.add(id, keyframeStyle);
 
-    const cleanup = () => {
-      waves.classList.remove(classes.wavesAnimating);
-      container.removeChild(waves);
-      el.removeChild(container);
-    };
-
     const animationDone = evt => {
       styler.remove(id);
       waves.removeEventListener(ANIMATION_END_EVENT, animationDone, false);
+      waves.classList.remove(classes.wavesAnimating);
       if (attrs.persistent) {
         style.opacity = endOpacity;
         style.transform = "scale(" + endScale + ")";
       } else {
-        resolve(evt);
-        cleanup();
+        container.removeChild(waves);
+        el.removeChild(container);
       }
+      resolve(evt);
     };
 
     waves.addEventListener(ANIMATION_END_EVENT, animationDone, false);
-    if (attrs.start) {
-      attrs.start(e);
-    }
     waves.classList.add(classes.wavesAnimating);
   });
 };

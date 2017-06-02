@@ -1781,22 +1781,10 @@ var genericTests$7 = (function (_ref) {
   });
 
   return [{
-    name: "Child node",
-    component: ListTile$$1,
-    attrs: null,
-    children: h(Icon$$1, { svg: trustedIconStars })
-  }, {
     name: "Option: title",
     component: ListTile$$1,
     attrs: {
       title: "Ancillary Justice"
-    }
-  }, {
-    name: "Option: content",
-    component: ListTile$$1,
-    attrs: {
-      title: "Ancillary Justice",
-      content: h(Icon$$1, { svg: trustedIconStars })
     }
   }, {
     name: "Option: subtitle",
