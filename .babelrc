@@ -1,4 +1,18 @@
 {
-  "presets": ["es2015", "babili"],
-  "plugins": ["add-module-exports", "mithril-objectify"]
+  "presets": [
+    ["es2015", { "modules": false }]
+  ],
+  "plugins": [
+    "transform-async-to-generator",
+    "transform-object-assign",
+    "transform-object-rest-spread",
+  ],
+  "env": {
+    "test": {
+      "presets": [
+        "es2015"
+      ],
+      "plugins": ["transform-runtime"]
+    }
+  }
 }

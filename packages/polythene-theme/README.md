@@ -1,0 +1,3 @@
+# Theme
+
+Core Polythene component.

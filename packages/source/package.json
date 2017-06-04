@@ -1,0 +1,42 @@
+{
+  "name": "polythene-source",
+  "main": "../polythene/index.js",
+  "module": "../polythene/index.mjs",
+  "private": "true",
+  "description": "Modular implementation of Material Design for Mithril.",
+  "license": "MIT",
+  "keywords": [
+    "Material Design",
+    "Mithril"
+  ],
+  "directories": {},
+  "scripts": {
+    "transpile": "yarn run babel",
+    "babel": "babel -D src --out-dir ../polythene",
+    "build": "yarn run transpile && yarn run rollup",
+    "rollup": "DEPS=0 ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && DEPS=0 ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js && DEPS=1 DEST=../polythene/polythene-standalone.js ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd-includes.js "
+  },
+  "dependencies": {
+    "fastclick": "^1.0.6",
+    "j2c": "^0.11.2",
+    "mithril": "^0.2.5",
+    "polythene-core": "0.3.0-rc.1",
+    "polythene-core-css": "0.3.0-rc.1",
+    "polythene-theme": "0.3.0-rc.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ArthurClemens/Polythene.git"
+  },
+  "author": "Arthur Clemens",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/mit-license.php"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/ArthurClemens/Polythene/issues"
+  },
+  "homepage": "https://github.com/ArthurClemens/Polythene"
+}

@@ -1,0 +1,20 @@
+{
+  "name": "polythene-core",
+  "version": "0.3.0-rc.1",
+  "description": "",
+  "main": "dist/polythene-core.js",
+  "module": "dist/polythene-core.mjs",
+  "scripts": {
+    "clean": "rm -rf dist && mkdir dist",
+    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
+    "build": "npm run rollup"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "dependencies": {
+  },
+  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
+  "license": "MIT"
+}

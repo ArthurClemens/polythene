@@ -3,7 +3,7 @@
 [![Join the chat at https://gitter.im/ArthurClemens/Polythene](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ArthurClemens/Polythene?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![CDNJS](https://img.shields.io/cdnjs/v/polythene.svg)](https://cdnjs.com/libraries/polythene)
 
-Modular implementation of Material Design for [Mithril](http://lhorie.github.io/mithril).
+Modular implementation of Material Design for [Mithril](http://mithril.js.org/).
 
 * [Demos / Examples](http://arthurclemens.github.io/Polythene-examples/)
 * [Online documentation](http://polythene.js.org)
@@ -13,8 +13,8 @@ Modular implementation of Material Design for [Mithril](http://lhorie.github.io/
 
 ## Background
 
-* [Polythene background](https://github.com/ArthurClemens/Polythene/blob/master/polythene/polythene.md)
-* [Theming](https://github.com/ArthurClemens/Polythene/blob/master/theme/theme.md)
+* [Polythene background](https://github.com/ArthurClemens/polythene/blob/master/packages/docs/polythene.md)
+* [Theming](https://github.com/ArthurClemens/polythene/blob/master/packages/docs/theme.md)
 
 
 
@@ -22,25 +22,22 @@ Modular implementation of Material Design for [Mithril](http://lhorie.github.io/
 
 Polythene uses Node tools to build. It runs in the browser.
 
-Source files are written in es6 and transpiled to es5. The building blocks are async es6 modules and loaded when needed, but using SystemJS / jspm / Browserify it is also possible to create bundles where all required modules are combined.
-
-Polythene works both in es6 and es5 applications.
+Source files are written in es2015 and transpiled to es5. Polythene works both in es2015 and es5 applications.
 
 
 
 ### Basic example
 
-A simple es6 module that shows a button:
+A simple component that shows a button:
 
 ~~~javascript
 import m from 'mithril';
-import button from 'polythene/button/button';
-import 'polythene/theme/theme';
+import { Theme, Button } from 'polythene';
 
 const app = {
     view: () => {
         return m('div', [
-            m.component(button, {
+            m(Button, {
                 label: 'Button',
                 raised: true
             })
@@ -51,60 +48,44 @@ const app = {
 m.mount(document.body, app);
 ~~~
 
+By importing `Theme`, the default material design styles, including Roboto font, are loaded.
+
+
 ### Standalone version
 
-A standalone script is included for use on JSBin / JSFiddle. Include this script:
+For use on JSBin / JSFiddle, load this script:
 
 ~~~html
-https://rawgit.com/ArthurClemens/Polythene/master/polythene-standalone.js
+https://rawgit.com/ArthurClemens/polythene/master/packages/polythene/polythene-standalone.js
 ~~~
+
+
+
+## Documentation
+
+* [Online documentation](http://polythene.js.org)
+* [Docs](https://github.com/ArthurClemens/polythene/blob/master/packages/docs/)
 
 
 
 ## Installation
 
-You will need:
-
-* `Polythene` - the core components (this repository; see instructions below)
-* [Polythene examples](https://github.com/ArthurClemens/Polythene-examples) - (optional) to see implementations of components
+* `yarn add polythene`
 
 
 
-### Using npm with SystemJS or Browserify
+## Development
 
-~~~
-npm install polythene
-~~~
+* `yarn`
+* `lerna bootstrap`
 
-### Using jspm
+### Polythene
 
-~~~
-jspm install github:ArthurClemens/Polythene
-~~~
+* `yarn run build`
 
+### Examples
 
-
-## Using Polythene with es5
-
-When using Browserify, use `require` to get components:
-
-~~~javascript
-var m = require('mithril');
-require('polythene/theme/theme');
-var btn = require('polythene/button/button');
-~~~
-
-
-
-## Developing
-
-Transpile everything:
-
-* `npm run transpile .`
-
-Transpile dialog component:
-
-* `npm run transpile dialog`
+* `yarn run dev` - runs webpack dev server on port 3000
 
 
 
@@ -160,6 +141,12 @@ The default theme uses flexbox, so this works in IE10 and other browsers. For IE
 1. Picker
 1. Chip
 1. Reorder list
+
+
+
+## Change log
+
+* [Changes from 0.2 to 0.3](https://github.com/ArthurClemens/polythene/blob/master/packages/docs/changes.md)
 
 
 

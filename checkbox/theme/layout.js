@@ -1,2 +1,0 @@
-'use strict';Object.defineProperty(exports,'__esModule',{value:!0});var _mixin=require('polythene/common/mixin'),_mixin2=_interopRequireDefault(_mixin),_layout=require('polythene/selection-control/theme/layout'),_layout2=_interopRequireDefault(_layout);function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}exports.default=function(a){return _mixin2.default.createStyles(a,function(b){return(0,_layout2.default)(b,'.pe-control--checkbox','checkbox')})},module.exports=exports['default'];
-//# sourceMappingURL=layout.js.map
