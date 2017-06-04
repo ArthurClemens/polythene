@@ -1,0 +1,19 @@
+{
+  "name": "polythene-test-isomorphic",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Polythene isomorphic tests",
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha && eslint test/"
+  },
+  "directories": {},
+  "devDependencies": {},
+  "dependencies": {
+    "mithril": "^0.2.5",
+    "mithril-node-render": "^2.1.0",
+    "mocha": "^3.4.2",
+    "polythene": "0.3.0-rc.1"
+  }
+}
