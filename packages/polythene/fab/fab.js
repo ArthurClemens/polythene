@@ -3,7 +3,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 import '../common/object.assign';
 import m from 'mithril';
 import iconBtn from '../icon-button/icon-button';
-import './theme/theme';
+import './theme';
 
 var CSS_CLASSES = {
     block: 'pe-button--fab',

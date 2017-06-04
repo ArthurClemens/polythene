@@ -3,7 +3,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 import '../common/object.assign';
 import p from '../polythene/polythene';
 import m from 'mithril';
-import '../slider/theme/theme';
+import './theme';
 import themeConfig from './theme/config';
 
 var CSS_CLASSES = {

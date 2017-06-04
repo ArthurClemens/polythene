@@ -33,7 +33,7 @@ module.view = () => {
                 m('form.form',
                     {
                         onsubmit: (e) => (validationHelper.submit(e, () => {
-                            notification.show({
+                            Notification.show({
                                 containerSelector: '#notifications',
                                 title: 'Form submitted!',
                                 timeout: 1.5
@@ -79,7 +79,7 @@ module.view = () => {
                             type: 'submit',
                             label: 'Send',
                             raised: true,
-                            disabled: notification.count() !== 0
+                            disabled: Notification.count() !== 0
                         })
                     ])
                 )

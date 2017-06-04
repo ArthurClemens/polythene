@@ -8,7 +8,7 @@ import github from './app/github';
 import mButton from './button/button';
 import mCard from './card/card';
 import mCheckbox from './checkbox/checkbox';
-import mCustomTheme from './custom-theme';
+import mTheming from './custom-theme';
 import mDialog from './dialog/dialog';
 import mFab from './fab/fab';
 import mHeaderPanel from './header-panel/header-panel';
@@ -155,8 +155,8 @@ const links = [{
         module: mLayout,
         name: 'Layout'
     }, {
-        url: '/custom-theme',
-        module: mCustomTheme,
+        url: '/theming',
+        module: mTheming,
         name: 'Custom theme'
     }]
 }, {

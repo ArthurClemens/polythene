@@ -6,7 +6,7 @@ import m from 'mithril';
 import dialog from './dialog';
 import transition from '../common/transition';
 import shadow from '../shadow/shadow';
-import './theme/theme';
+import './theme';
 
 var CSS_CLASSES = {
     block: 'pe-dialog',

@@ -177,7 +177,7 @@ const buttonRow = (instance, containerSelector, dismissSelector) => {
 
 const snackbarContainer = (sizeSelector, idSelector) => {
     return m('.container' + sizeSelector + idSelector, [
-        m('p', 'Message count: ' + snackbar.count()),
+        m('p', 'Message count: ' + Snackbar.count()),
         m('.bottom.layout.vertical', {
             id: 'bottom_container'
         }, [
@@ -193,7 +193,7 @@ const snackbarContainer = (sizeSelector, idSelector) => {
 
 const notificationContainer = (sizeSelector, idSelector) => {
     return m('.container' + sizeSelector + idSelector, [
-        m('p', 'Message count: ' + notification.count()),
+        m('p', 'Message count: ' + Notification.count()),
         m('#notifications.pe-fit.layout.center-center',
             m(Notification)
         )

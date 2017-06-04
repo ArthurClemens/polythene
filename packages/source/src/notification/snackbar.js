@@ -1,7 +1,7 @@
 import multiple from '../common/multiple';
 import instance from './notification-instance';
 import transitions from './theme/snackbar/transitions';
-import './theme/snackbar/theme';
+import './theme/snackbar';
 
 export default multiple({
     instance,

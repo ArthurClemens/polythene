@@ -8,7 +8,7 @@ import button from '../button/button';
 import icon from '../icon/icon';
 import iconBtn from '../icon-button/icon-button';
 import scrollTo from '../common/scroll-to';
-import theme from './theme/theme'; // contains icons
+import theme from './theme'; // contains icons
 import config from './theme/config';
 
 var CSS_CLASSES = {
@@ -61,8 +61,8 @@ var handleScrollButtonClick = function handleScrollButtonClick(ctrl, opts, e, di
 };
 
 var createScrollButton = function createScrollButton(ctrl, position, opts) {
-    var scrollIconForward = opts.scrollIconForward || theme.arrowForward;
-    var scrollIconBackward = opts.scrollIconBackward || theme.arrowBackward;
+    var scrollIconForward = { msvg: opts.scrollIconForward || theme.arrowForward };
+    var scrollIconBackward = { msvg: opts.scrollIconBackward || theme.arrowBackward };
 
     return m(iconBtn, {
         class: [CSS_CLASSES.scrollButton, position === POSITION_LEFT ? CSS_CLASSES.scrollButtonLeft : CSS_CLASSES.scrollButtonRight].join(' '),

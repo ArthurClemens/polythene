@@ -1,7 +1,7 @@
 import multiple from '../common/multiple';
 import instance from './notification-instance';
 import transitions from './theme/notification/transitions';
-import './theme/notification/theme';
+import './theme/notification';
 
 export default multiple({
     instance,

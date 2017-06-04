@@ -2,7 +2,7 @@ import '../common/object.assign';
 import m from 'mithril';
 import transition from '../common/transition';
 import shadow from '../shadow/shadow';
-import './theme/common/theme';
+import './theme/common';
 
 const CSS_CLASSES = {
     block: 'pe-spinner',

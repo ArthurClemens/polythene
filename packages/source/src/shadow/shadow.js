@@ -1,5 +1,5 @@
 import m from 'mithril';
-import './theme/theme';
+import './theme';
 
 const CSS_CLASSES = {
     block: 'pe-shadow',

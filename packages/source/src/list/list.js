@@ -1,7 +1,7 @@
 import '../common/object.assign';
 import m from 'mithril';
 import listTile from '../list-tile/list-tile';
-import './theme/theme';
+import './theme';
 
 const CSS_CLASSES = {
     block: 'pe-list',

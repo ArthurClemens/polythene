@@ -3,7 +3,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 import '../common/object.assign';
 import m from 'mithril';
 import listTile from '../list-tile/list-tile';
-import './theme/theme';
+import './theme';
 
 var CSS_CLASSES = {
     block: 'pe-list',

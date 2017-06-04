@@ -1,3 +1,4 @@
+import mixin from '../../common/mixin';
 
 const style = (config, tint, type, scope = '') => {
     const normalBorder = config['color_' + tint + '_' + type + '_normal_border'] || 'transparent';
@@ -57,30 +58,34 @@ const noTouch = (config, tint, type, scope = '') => {
     }];
 };
 
-export default (selector, config) => [
-    style(config, 'light', 'flat'),
-    style(config, 'light', 'raised', '.pe-button--raised'),
-    {
-        'html.pe-no-touch': [
-            noTouch(config, 'light', 'flat', ' '),
-            noTouch(config, 'light', 'raised', ' .pe-button--raised')
-        ]
-    },
-    {
-        '.pe-dark-theme': [
-            // inside dark theme
-            style(config, 'dark', 'flat', ' '),
-            // has dark theme
-            style(config, 'dark', 'flat', '&'),
-            //
-            style(config, 'dark', 'raised', ' .pe-button--raised')
-        ]
-    },
-    {
-        'html.pe-no-touch .pe-dark-theme': [
-            noTouch(config, 'dark', 'flat', ' '),
-            noTouch(config, 'dark', 'flat', '&'),
-            noTouch(config, 'dark', 'raised', ' .pe-button--raised')
-        ]
-    }
-];
+const createStyles = (config) => {
+    return [
+        style(config, 'light', 'flat'),
+        style(config, 'light', 'raised', '.pe-button--raised'),
+        {
+            'html.pe-no-touch': [
+                noTouch(config, 'light', 'flat', ' '),
+                noTouch(config, 'light', 'raised', ' .pe-button--raised')
+            ]
+        },
+        {
+            '.pe-dark-theme': [
+                // inside dark theme
+                style(config, 'dark', 'flat', ' '),
+                // has dark theme
+                style(config, 'dark', 'flat', '&'),
+                //
+                style(config, 'dark', 'raised', ' .pe-button--raised')
+            ]
+        },
+        {
+            'html.pe-no-touch .pe-dark-theme': [
+                noTouch(config, 'dark', 'flat', ' '),
+                noTouch(config, 'dark', 'flat', '&'),
+                noTouch(config, 'dark', 'raised', ' .pe-button--raised')
+            ]
+        }
+    ];
+};
+
+export default (config) => (mixin.createStyles(config, createStyles));

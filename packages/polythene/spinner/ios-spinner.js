@@ -1,6 +1,6 @@
 import m from 'mithril';
 import spinner from './spinner';
-import './theme/ios/theme';
+import './theme/ios';
 
 var CSS_CLASSES = {
     block: 'pe-spinner--ios'

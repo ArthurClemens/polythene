@@ -187,7 +187,7 @@ module.view = () => {
         m(titleBlock, {
             title: 'In toolbar',
             content: m('.tabArea.hasToolbar',
-                m(toolbar, {
+                m(Toolbar, {
                     mode: 'medium-tall',
                     class: 'pe-toolbar--tabs',
                     topBar: toolbarRow,
@@ -203,7 +203,7 @@ module.view = () => {
         m(titleBlock, {
             title: 'In toolbar and scrollable (small)',
             content: m('.tabArea.small.hasToolbar',
-                m(toolbar, {
+                m(Toolbar, {
                     mode: 'medium-tall',
                     class: 'pe-toolbar--tabs',
                     topBar: toolbarRow,
@@ -220,7 +220,7 @@ module.view = () => {
         m(titleBlock, {
             title: 'In toolbar and scrollable (desktop)',
             content: m('.tabArea.hasToolbar',
-                m(toolbar, {
+                m(Toolbar, {
                     mode: 'medium-tall',
                     class: 'pe-toolbar--tabs',
                     topBar: toolbarRow,
@@ -236,7 +236,7 @@ module.view = () => {
         m(titleBlock, {
             title: 'Custom arrows',
             content: m('.tabArea.hasToolbar',
-                m(toolbar, {
+                m(Toolbar, {
                     mode: 'medium-tall',
                     class: 'pe-toolbar--tabs',
                     topBar: toolbarRow,

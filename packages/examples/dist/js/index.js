@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 35);
+/******/ 	return __webpack_require__(__webpack_require__.s = 37);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -103,18 +103,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Switch", function() { return component$37; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Tabs", function() { return component$39; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TextField", function() { return component$27; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Theme", function() { return theme$3; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Theme", function() { return index; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Toolbar", function() { return component$17; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "config", function() { return common$1; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "custom", function() { return customConfig; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "custom", function() { return custom; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "easing", function() { return easing; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "events", function() { return events; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "styler", function() { return styler$1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "styler", function() { return styler; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ValidationHelper", function() { return validationHelper; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mithril__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mithril___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_mithril__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_j2c__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_j2c__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_j2c___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_j2c__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__ = __webpack_require__(188);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_theme__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_theme___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__);
 
 
 
@@ -177,39 +179,70 @@ var whichTransitionEvent = (function () {
     }
 });
 
-var defaultConfig = {
+var remove = function remove(id) {
+    if (id) {
+        var old = document.getElementById(id);
+        if (old) {
+            old.parentNode.removeChild(old);
+        }
+    }
+};
+
+/*
+* id: identifier, used as HTMLElement id for the attached <style></style> element
+* styles: list of lists style Objects
+*/
+var add = function add(id) {
+    for (var _len = arguments.length, styles = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+        styles[_key - 1] = arguments[_key];
+    }
+
+    addToDocument.apply(undefined, [{ id: id }].concat(styles));
+};
+
+/*
+* opts: options object
+  * id: identifier, used as HTMLElement id for the attached <style></style> element
+  * document: document reference; default window.document
+* styles: list of lists style Objects
+*/
+var addToDocument = function addToDocument(opts) {
+    for (var _len2 = arguments.length, styles = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+        styles[_key2 - 1] = arguments[_key2];
+    }
+
+    var id = opts.id;
+    var documentRef = opts.document || window.document;
+    remove(id);
+    var styleEl = documentRef.createElement('style');
+    if (id) {
+        styleEl.setAttribute('id', id);
+    }
+    styles.forEach(function (styleList) {
+        // each style returns a list
+        if (Object.keys(styleList).length) {
+            styleList.forEach(function (style) {
+                var scoped = { '@global': style };
+                var sheet = __WEBPACK_IMPORTED_MODULE_1_j2c___default.a.sheet(scoped);
+                styleEl.appendChild(documentRef.createTextNode(sheet));
+            });
+        }
+    });
+    documentRef.head.appendChild(styleEl);
+};
+
+var styler = {
+    add: add,
+    addToDocument: addToDocument,
+    remove: remove
+};
+
+var componentConfig = {
     start_scale: 0.1,
     end_scale: 2,
     start_opacity: 0.2,
     end_opacity: 0
 };
-
-// Placeholder for custom theme config file
-// In your app paths setup, change the current path to your custom config file; see the theme README.
-
-// Example:
-
-// import 'polythene/common/object.assign';
-//
-// export default {
-//     button: (config) => {
-//         const mainColor = '#e4521b';
-//         const textColor = '#fff';
-//         const configTestCfg = Object.assign({}, config, {
-//             border_radius: 0,
-//             color_light_raised_normal_background: mainColor,
-//             color_light_raised_normal_text: textColor,
-//             color_dark_raised_normal_background: mainColor,
-//             color_dark_raised_normal_text: textColor
-//         });
-//         return [
-//             {'': config}, // all pages
-//             {'.module-custom-theme': configTestCfg} // only this page
-//         ];
-//     }
-// };
-
-var customConfig = {};
 
 // Global theme variables
 // How to change these variables for your app - see the README.
@@ -606,16 +639,16 @@ var mixin = {
     vendorize: vendorize
 };
 
-var kfRipple = function kfRipple(config) {
+var kfRipple = function kfRipple(config$$1) {
     return {
         ' 100%': {
-            transform: 'scale(' + config.end_scale + ')',
-            'opacity': config.end_opacity
+            transform: 'scale(' + config$$1.end_scale + ')',
+            'opacity': config$$1.end_opacity
         }
     };
 };
 
-var createStyles = function createStyles(config) {
+var createStyles = function createStyles(config$$1) {
     return [{
         '.pe-ripple': [mixin.fit(), {
             color: 'inherit',
@@ -634,7 +667,7 @@ var createStyles = function createStyles(config) {
             }, common$1.prefixes_transform)],
 
             ' .pe-ripple__waves': [mixin.vendorize({
-                'transform': 'scale(' + config.start_scale + ')'
+                'transform': 'scale(' + config$$1.start_scale + ')'
             }, common$1.prefixes_transform), mixin.vendorize({
                 'animation': 'ripple ' + common$1.animation_curve_default
             }, common$1.prefixes_animation),
@@ -645,7 +678,7 @@ var createStyles = function createStyles(config) {
                 outline: '1px solid transparent', // for IE10
                 position: 'absolute',
                 'border-radius': '50%',
-                opacity: config.start_opacity,
+                opacity: config$$1.start_opacity,
                 'pointer-events': 'none',
                 display: 'none'
             }],
@@ -654,77 +687,21 @@ var createStyles = function createStyles(config) {
             }
         }],
 
-        '@keyframes ripple': kfRipple(config)
+        '@keyframes ripple': kfRipple(config$$1)
     }];
 };
 
-var layout = (function (config) {
-    return mixin.createStyles(config, createStyles);
+var layout = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles);
 });
 
-var remove = function remove(id) {
-    if (id) {
-        var old = document.getElementById(id);
-        if (old) {
-            old.parentNode.removeChild(old);
-        }
-    }
-};
-
-/*
-* id: identifier, used as HTMLElement id for the attached <style></style> element
-* styles: list of lists style Objects
-*/
-var add = function add(id) {
-    for (var _len = arguments.length, styles = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-        styles[_key - 1] = arguments[_key];
-    }
-
-    addToDocument.apply(undefined, [{ id: id }].concat(styles));
-};
-
-/*
-* opts: options object
-  * id: identifier, used as HTMLElement id for the attached <style></style> element
-  * document: document reference; default window.document
-* styles: list of lists style Objects
-*/
-var addToDocument = function addToDocument(opts) {
-    for (var _len2 = arguments.length, styles = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-        styles[_key2 - 1] = arguments[_key2];
-    }
-
-    var id = opts.id;
-    var documentRef = opts.document || window.document;
-    remove(id);
-    var styleEl = documentRef.createElement('style');
-    if (id) {
-        styleEl.setAttribute('id', id);
-    }
-    styles.forEach(function (styleList) {
-        // each style returns a list
-        if (Object.keys(styleList).length) {
-            styleList.forEach(function (style) {
-                var scoped = { '@global': style };
-                var sheet = __WEBPACK_IMPORTED_MODULE_1_j2c___default.a.sheet(scoped);
-                styleEl.appendChild(documentRef.createTextNode(sheet));
-            });
-        }
-    });
-    documentRef.head.appendChild(styleEl);
-};
-
-var styler$1 = {
-    add: add,
-    addToDocument: addToDocument,
-    remove: remove
-};
-
-var customConfigFn = customConfig.ripple;
 // Does not contain color styles
-var config = customConfigFn ? customConfigFn(defaultConfig) : defaultConfig;
 
-styler$1.add('pe-ripple', layout(config));
+var themeConfigFn = __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"] && __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"].ripple;
+var config$1 = themeConfigFn ? themeConfigFn(componentConfig) : componentConfig;
+var id = 'pe-ripple';
+
+styler.add(id, layout(config$1));
 
 var transitionEvent = whichTransitionEvent();
 var DEFAULT_START_OPACITY = 0.2;
@@ -840,7 +817,7 @@ var component$1 = {
     }
 };
 
-var defaultConfig$1 = {
+var componentConfig$1 = {
     transition: 'box-shadow 0.18s ease-out',
 
     'shadow-top-z-1': 'none',
@@ -870,7 +847,7 @@ var shadowDirective = function shadowDirective(dir) {
     }, common$1.prefixes_box_shadow);
 };
 
-var createStyles$2 = function createStyles(config) {
+var createStyles$2 = function createStyles(config$$1) {
     return [{
         '.pe-shadow': [mixin.fit(), {
             'border-radius': 'inherit',
@@ -882,26 +859,28 @@ var createStyles$2 = function createStyles(config) {
 
             '&.pe-shadow--animated': {
                 ' .pe-shadow__bottom, .pe-shadow__top': mixin.vendorize({
-                    'transition': config.transition
+                    'transition': config$$1.transition
                 }, common$1.prefixes_transition)
             }
         }, [1, 2, 3, 4, 5].map(function (index) {
             var _ref;
 
-            return _ref = {}, _defineProperty$1(_ref, ' .pe-shadow__top.pe-shadow--z-' + index, shadowDirective(config['shadow-top-z-' + index])), _defineProperty$1(_ref, ' .pe-shadow__bottom.pe-shadow--z-' + index, shadowDirective(config['shadow-bottom-z-' + index])), _ref;
+            return _ref = {}, _defineProperty$1(_ref, ' .pe-shadow__top.pe-shadow--z-' + index, shadowDirective(config$$1['shadow-top-z-' + index])), _defineProperty$1(_ref, ' .pe-shadow__bottom.pe-shadow--z-' + index, shadowDirective(config$$1['shadow-bottom-z-' + index])), _ref;
         })]
     }];
 };
 
-var layout$1 = (function (config) {
-    return mixin.createStyles(config, createStyles$2);
+var layout$1 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$2);
 });
 
-var customConfigFn$1 = customConfig.shadow;
 // Does not contain color styles
-var config$1 = customConfigFn$1 ? customConfigFn$1(defaultConfig$1) : defaultConfig$1;
 
-styler$1.add('pe-shadow', layout$1(config$1));
+var themeConfigFn$1 = __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"] && __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"].shadow;
+var config$2 = themeConfigFn$1 ? themeConfigFn$1(componentConfig$1) : componentConfig$1;
+var id$1 = 'pe-shadow';
+
+styler.add(id$1, layout$1(config$2));
 
 var CSS_CLASSES$2 = {
     block: 'pe-shadow',
@@ -991,32 +970,34 @@ var style = [{
     }]
 }];
 
-styler$1.add('pe-base-button', style);
+var id$2 = 'pe-base-button';
 
-var rgba$1 = common$1.rgba;
+styler.add(id$2, style);
 
-var touch_height = common$1.unit_touch_height;
+var rgba$1 = __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].rgba;
+
+var touch_height = __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].unit_touch_height;
 var height = 36;
 
 var buttonConfig = {
-    margin_h: common$1.grid_unit,
-    border_radius: common$1.unit_item_border_radius,
+    margin_h: __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].grid_unit,
+    border_radius: __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].unit_item_border_radius,
     font_size: 14,
     font_weight: 500,
     outer_padding_v: (touch_height - height) / 2,
-    padding_h: 2 * common$1.grid_unit,
+    padding_h: 2 * __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].grid_unit,
     padding_v: 11,
-    min_width: 8 * common$1.grid_unit_component,
+    min_width: 8 * __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].grid_unit_component,
     text_transform: 'uppercase',
     border_width: 0, // no border in MD, but used to correctly set the height when a theme does set a border
 
     color_light_flat_normal_background: 'transparent',
-    color_light_flat_normal_text: rgba$1(common$1.color_light_foreground, common$1.blend_light_text_primary),
-    color_light_flat_hover_background: rgba$1(common$1.color_light_foreground, common$1.blend_light_background_hover),
-    color_light_flat_focus_background: rgba$1(common$1.color_light_foreground, common$1.blend_light_background_hover),
-    color_light_flat_active_background: rgba$1(common$1.color_light_foreground, common$1.blend_light_background_active),
+    color_light_flat_normal_text: rgba$1(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].color_light_foreground, __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].blend_light_text_primary),
+    color_light_flat_hover_background: rgba$1(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].color_light_foreground, __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].blend_light_background_hover),
+    color_light_flat_focus_background: rgba$1(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].color_light_foreground, __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].blend_light_background_hover),
+    color_light_flat_active_background: rgba$1(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].color_light_foreground, __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].blend_light_background_active),
     color_light_flat_disabled_background: 'transparent',
-    color_light_flat_disabled_text: rgba$1(common$1.color_light_foreground, common$1.blend_light_text_disabled),
+    color_light_flat_disabled_text: rgba$1(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].color_light_foreground, __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].blend_light_text_disabled),
 
     // border colors  may be set in theme; disabled by default
     // color_light_flat_normal_border: 'transparent',
@@ -1025,20 +1006,20 @@ var buttonConfig = {
     // color_light_flat_disabled_border: 'transparent',
 
     color_light_raised_normal_background: '#E0E0E0',
-    color_light_raised_normal_text: rgba$1(common$1.color_light_foreground, common$1.blend_light_text_primary),
+    color_light_raised_normal_text: rgba$1(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].color_light_foreground, __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].blend_light_text_primary),
     color_light_raised_hover_background: 'transparent',
-    color_light_raised_focus_background: rgba$1(common$1.color_light_foreground, common$1.blend_light_background_hover),
-    color_light_raised_active_background: rgba$1(common$1.color_light_foreground, common$1.blend_light_background_hover), // same as hover
-    color_light_raised_disabled_background: rgba$1(common$1.color_light_foreground, common$1.blend_light_background_disabled),
-    color_light_raised_disabled_text: rgba$1(common$1.color_light_foreground, common$1.blend_light_text_disabled),
+    color_light_raised_focus_background: rgba$1(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].color_light_foreground, __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].blend_light_background_hover),
+    color_light_raised_active_background: rgba$1(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].color_light_foreground, __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].blend_light_background_hover), // same as hover
+    color_light_raised_disabled_background: rgba$1(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].color_light_foreground, __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].blend_light_background_disabled),
+    color_light_raised_disabled_text: rgba$1(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].color_light_foreground, __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].blend_light_text_disabled),
 
     color_dark_flat_normal_background: 'transparent',
-    color_dark_flat_normal_text: rgba$1(common$1.color_dark_foreground, common$1.blend_dark_text_primary),
-    color_dark_flat_hover_background: rgba$1(common$1.color_dark_foreground, common$1.blend_dark_background_hover),
-    color_dark_flat_focus_background: rgba$1(common$1.color_dark_foreground, common$1.blend_dark_background_hover),
-    color_dark_flat_active_background: rgba$1(common$1.color_dark_foreground, common$1.blend_dark_background_active),
+    color_dark_flat_normal_text: rgba$1(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].blend_dark_text_primary),
+    color_dark_flat_hover_background: rgba$1(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].blend_dark_background_hover),
+    color_dark_flat_focus_background: rgba$1(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].blend_dark_background_hover),
+    color_dark_flat_active_background: rgba$1(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].blend_dark_background_active),
     color_dark_flat_disabled_background: 'transparent',
-    color_dark_flat_disabled_text: rgba$1(common$1.color_dark_foreground, common$1.blend_dark_text_disabled),
+    color_dark_flat_disabled_text: rgba$1(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].blend_dark_text_disabled),
 
     // border colors  may be set in theme; disabled by default
     // color_dark_flat_normal_border: 'transparent',
@@ -1046,37 +1027,37 @@ var buttonConfig = {
     // color_dark_flat_active_border: 'transparent',
     // color_dark_flat_disabled_border: 'transparent',
 
-    color_dark_raised_normal_background: rgba$1(common$1.color_primary),
-    color_dark_raised_normal_text: rgba$1(common$1.color_dark_foreground, common$1.blend_dark_text_primary),
-    color_dark_raised_hover_background: common$1.color_primary_active,
-    color_dark_raised_focus_background: common$1.color_primary_active,
-    color_dark_raised_active_background: common$1.color_primary_dark,
-    color_dark_raised_disabled_background: rgba$1(common$1.color_dark_foreground, common$1.blend_dark_background_disabled),
-    color_dark_raised_disabled_text: rgba$1(common$1.color_dark_foreground, common$1.blend_dark_text_disabled)
+    color_dark_raised_normal_background: rgba$1(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].color_primary),
+    color_dark_raised_normal_text: rgba$1(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].blend_dark_text_primary),
+    color_dark_raised_hover_background: __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].color_primary_active,
+    color_dark_raised_focus_background: __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].color_primary_active,
+    color_dark_raised_active_background: __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].color_primary_dark,
+    color_dark_raised_disabled_background: rgba$1(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].blend_dark_background_disabled),
+    color_dark_raised_disabled_text: rgba$1(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["defaults"].blend_dark_text_disabled)
 };
 
-var layout$3 = (function (selector, config) {
+var createStyles$3 = function createStyles(config$$1) {
     return [{
         '.pe-button--text': {
             display: 'inline-block',
-            'min-width': config.min_width + 'px',
-            margin: '0 ' + config.margin_h + 'px',
-            padding: config.outer_padding_v + 'px 0',
+            'min-width': config$$1.min_width + 'px',
+            margin: '0 ' + config$$1.margin_h + 'px',
+            padding: config$$1.outer_padding_v + 'px 0',
             background: 'transparent',
             border: 'none',
 
             ' .pe-button__content': {
                 'border-width': 0,
-                padding: '0 ' + config.padding_h + 'px',
-                'border-radius': config.border_radius + 'px'
+                padding: '0 ' + config$$1.padding_h + 'px',
+                'border-radius': config$$1.border_radius + 'px'
             },
 
             ' .pe-button__label': {
-                padding: config.padding_v + 'px 0',
-                'font-size': config.font_size + 'px',
-                'line-height': config.font_size + 'px',
-                'font-weight': config.font_weight,
-                'text-transform': config.text_transform,
+                padding: config$$1.padding_v + 'px 0',
+                'font-size': config$$1.font_size + 'px',
+                'line-height': config$$1.font_size + 'px',
+                'font-weight': config$$1.font_weight,
+                'text-transform': config$$1.text_transform,
                 'white-space': 'pre'
             },
 
@@ -1088,99 +1069,102 @@ var layout$3 = (function (selector, config) {
                     'border-width': '1px'
                 },
                 ' .pe-button__label': {
-                    padding: config.padding_v - 1 + 'px 0'
+                    padding: config$$1.padding_v - 1 + 'px 0'
                 }
             }
         }
     }];
+};
+
+var layout$3 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$3);
 });
 
 function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$1 = function style(config, tint, type) {
+var style$1 = function style(config$$1, tint, type) {
     var scope = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '';
 
-    var normalBorder = config['color_' + tint + '_' + type + '_normal_border'] || 'transparent';
-    var activeBorder = config['color_' + tint + '_' + type + '_active_border'] || normalBorder;
-    var disabledBorder = config['color_' + tint + '_' + type + '_disabled_border'] || normalBorder;
+    var normalBorder = config$$1['color_' + tint + '_' + type + '_normal_border'] || 'transparent';
+    var activeBorder = config$$1['color_' + tint + '_' + type + '_active_border'] || normalBorder;
+    var disabledBorder = config$$1['color_' + tint + '_' + type + '_disabled_border'] || normalBorder;
     return [_defineProperty$2({}, scope + '.pe-button', {
         '&, &:link, &:visited': {
-            color: config['color_' + tint + '_' + type + '_normal_text']
+            color: config$$1['color_' + tint + '_' + type + '_normal_text']
         },
 
         ' .pe-button__content': {
-            'background-color': config['color_' + tint + '_' + type + '_normal_background'],
+            'background-color': config$$1['color_' + tint + '_' + type + '_normal_background'],
             'border-color': normalBorder
         },
 
         '&.pe-button--disabled': {
-            color: config['color_' + tint + '_' + type + '_disabled_text'],
+            color: config$$1['color_' + tint + '_' + type + '_disabled_text'],
 
             ' .pe-button__content': {
-                'background-color': config['color_' + tint + '_' + type + '_disabled_background'],
+                'background-color': config$$1['color_' + tint + '_' + type + '_disabled_background'],
                 'border-color': disabledBorder
             }
         },
 
         '&.pe-button--selected': {
             ' .pe-button__content': {
-                'background-color': config['color_' + tint + '_' + type + '_active_background'],
+                'background-color': config$$1['color_' + tint + '_' + type + '_active_background'],
                 'border-color': activeBorder
             },
             ' .pe-button__focus': {
                 opacity: 1,
-                'background-color': config['color_' + tint + '_' + type + '_focus_background']
+                'background-color': config$$1['color_' + tint + '_' + type + '_focus_background']
             }
         },
 
         '&.pe-button--focus': {
             ' .pe-button__focus': {
                 opacity: 1,
-                'background-color': config['color_' + tint + '_' + type + '_focus_background']
+                'background-color': config$$1['color_' + tint + '_' + type + '_focus_background']
             }
         }
     })];
 };
 
-var noTouch = function noTouch(config, tint, type) {
+var noTouch = function noTouch(config$$1, tint, type) {
     var scope = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '';
 
-    var normalBorder = config['color_' + tint + '_' + type + '_normal_border'];
-    var hoverBorder = config['color_' + tint + '_' + type + '_normal_border'] || normalBorder;
+    var normalBorder = config$$1['color_' + tint + '_' + type + '_normal_border'];
+    var hoverBorder = config$$1['color_' + tint + '_' + type + '_normal_border'] || normalBorder;
     return [_defineProperty$2({}, scope + '.pe-button:hover', {
         '&:not(.pe-button--selected) .pe-button__wash': {
-            'background-color': config['color_' + tint + '_' + type + '_hover_background'],
+            'background-color': config$$1['color_' + tint + '_' + type + '_hover_background'],
             'border-color': hoverBorder
         }
     })];
 };
 
-var color = (function (selector, config) {
-    return [style$1(config, 'light', 'flat'), style$1(config, 'light', 'raised', '.pe-button--raised'), {
-        'html.pe-no-touch': [noTouch(config, 'light', 'flat', ' '), noTouch(config, 'light', 'raised', ' .pe-button--raised')]
+var createStyles$4 = function createStyles(config$$1) {
+    return [style$1(config$$1, 'light', 'flat'), style$1(config$$1, 'light', 'raised', '.pe-button--raised'), {
+        'html.pe-no-touch': [noTouch(config$$1, 'light', 'flat', ' '), noTouch(config$$1, 'light', 'raised', ' .pe-button--raised')]
     }, {
         '.pe-dark-theme': [
         // inside dark theme
-        style$1(config, 'dark', 'flat', ' '),
+        style$1(config$$1, 'dark', 'flat', ' '),
         // has dark theme
-        style$1(config, 'dark', 'flat', '&'),
+        style$1(config$$1, 'dark', 'flat', '&'),
         //
-        style$1(config, 'dark', 'raised', ' .pe-button--raised')]
+        style$1(config$$1, 'dark', 'raised', ' .pe-button--raised')]
     }, {
-        'html.pe-no-touch .pe-dark-theme': [noTouch(config, 'dark', 'flat', ' '), noTouch(config, 'dark', 'flat', '&'), noTouch(config, 'dark', 'raised', ' .pe-button--raised')]
+        'html.pe-no-touch .pe-dark-theme': [noTouch(config$$1, 'dark', 'flat', ' '), noTouch(config$$1, 'dark', 'flat', '&'), noTouch(config$$1, 'dark', 'raised', ' .pe-button--raised')]
     }];
-});
-
-var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var fns = [layout$3, color];
-var selector = '.pe-button.pe-button--text';
-
-var customTheme = function customTheme(customSelector, customVars) {
-  return __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* styler */].generateStyles([customSelector, selector], _extends$2({}, buttonConfig, customVars), fns);
 };
 
-__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* styler */].generateStyles([selector], _extends$2({}, buttonConfig), fns);
+var color = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$4);
+});
+
+var themeConfigFn$2 = __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"] && __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"].button;
+var config$3 = themeConfigFn$2 ? themeConfigFn$2(buttonConfig) : buttonConfig;
+var id$3 = 'pe-button-text';
+
+styler.add(id$3, layout$3(config$3), color(config$3));
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -1332,7 +1316,7 @@ var createView = function createView(ctrl) {
             }
         }
     }, opts.url ? opts.url : null, opts.formaction ? { formaction: opts.formaction } : null, opts.type ? { type: opts.type } : null, opts.events ? opts.events : null, {
-        config: function config() {
+        config: function config$$1() {
             return [buttonConfig.apply(undefined, arguments), optsConfig.apply(undefined, arguments), urlConfig.apply(undefined, arguments)];
         }
     }, disabled ? {
@@ -1378,13 +1362,12 @@ var component = {
         var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
         return createView(ctrl, opts);
-    },
-    theme: customTheme
+    }
 };
 
 // No styles for this component
 
-var _extends$5 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var CSS_CLASSES$5 = {
     block: 'pe-svg'
@@ -1394,7 +1377,7 @@ var createView$5 = function createView(ctrl) {
     var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
     var tag = opts.tag || 'div';
-    var props = _extends$5({}, {
+    var props = _extends$4({}, {
         class: [CSS_CLASSES$5.block, opts.class].join(' '),
         id: opts.id || '',
         config: opts.config
@@ -1411,7 +1394,7 @@ var component$6 = {
     }
 };
 
-var defaultConfig$2 = {
+var componentConfig$2 = {
     size_small: common$1.unit_icon_size_small,
     size_regular: common$1.unit_icon_size,
     size_medium: common$1.unit_icon_size_medium,
@@ -1426,7 +1409,7 @@ var iconSizesPx = function iconSizesPx() {
     };
 };
 
-var createStyles$3 = function createStyles(config) {
+var createStyles$5 = function createStyles(config$$1) {
     return [{
         '.pe-icon': {
             display: 'inline-block',
@@ -1469,25 +1452,27 @@ var createStyles$3 = function createStyles(config) {
                 }
             }],
 
-            '&.pe-icon--small': iconSizesPx(config.size_small),
-            '&.pe-icon--regular': iconSizesPx(config.size_regular),
-            '&.pe-icon--medium': iconSizesPx(config.size_medium),
-            '&.pe-icon--large': iconSizesPx(config.size_large)
+            '&.pe-icon--small': iconSizesPx(config$$1.size_small),
+            '&.pe-icon--regular': iconSizesPx(config$$1.size_regular),
+            '&.pe-icon--medium': iconSizesPx(config$$1.size_medium),
+            '&.pe-icon--large': iconSizesPx(config$$1.size_large)
         }
     }];
 };
 
-var layout$4 = (function (config) {
-    return mixin.createStyles(config, createStyles$3);
+var layout$4 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$5);
 });
 
-var customConfigFn$2 = customConfig.icon;
 // Does not contain color styles
-var config$2 = customConfigFn$2 ? customConfigFn$2(defaultConfig$2) : defaultConfig$2;
 
-styler$1.add('pe-icon', layout$4(config$2));
+var themeConfigFn$3 = __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"] && __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"].icon;
+var config$4 = themeConfigFn$3 ? themeConfigFn$3(componentConfig$2) : componentConfig$2;
+var id$4 = 'pe-icon';
 
-var _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+styler.add(id$4, layout$4(config$4));
+
+var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var CSS_CLASSES$4 = {
     icon: 'pe-icon',
@@ -1515,7 +1500,7 @@ var layoutContent = function layoutContent(opts) {
     if (opts.content) {
         return opts.content;
     } else if (opts.svg) {
-        var svgOpts = _extends$4({}, opts.svg);
+        var svgOpts = _extends$3({}, opts.svg);
         svgOpts.tag = svgOpts.tag || 'i';
         return __WEBPACK_IMPORTED_MODULE_0_mithril___default()(component$6, svgOpts);
     } else if (opts.msvg) {
@@ -1531,7 +1516,7 @@ var createView$4 = function createView(ctrl) {
     var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
     var tag = opts.tag || 'div';
-    var props = _extends$4({}, {
+    var props = _extends$3({}, {
         class: [CSS_CLASSES$4.icon, classForType(opts.type), opts.class].join(' '),
         id: opts.id || '',
         config: opts.config
@@ -1571,7 +1556,7 @@ var single_height = 48;
 var padding = 8;
 var single_with_icon_height = 56;
 
-var defaultConfig$3 = {
+var componentConfig$3 = {
     single_height: single_height,
     single_line_height: single_height - 2 * padding - (2 * 5 + 1),
     single_with_icon_height: single_with_icon_height,
@@ -1833,7 +1818,7 @@ var paddingV = function paddingV(top, bottom) {
     };
 };
 
-var createStyles$4 = function createStyles(config) {
+var createStyles$6 = function createStyles(config$$1) {
     return [{
         '.pe-list-tile': [flex$1.layout, {
             position: 'relative',
@@ -1853,23 +1838,23 @@ var createStyles$4 = function createStyles(config) {
                 position: 'relative',
                 'z-index': 1, // in case a ripple is used (positioned absolute)
 
-                ' .pe-list-tile__content:not(.pe-list-tile__content--front)': [flex$1.flex(), paddingV(config.padding, config.padding + 1)]
+                ' .pe-list-tile__content:not(.pe-list-tile__content--front)': [flex$1.flex(), paddingV(config$$1.padding, config$$1.padding + 1)]
             }],
 
             ' .pe-list-tile__secondary': {
                 'text-align': 'right',
-                'font-size': config.font_size_title + 'px',
+                'font-size': config$$1.font_size_title + 'px',
                 position: 'relative',
                 'z-index': 1 // in case a ripple is used (positioned absolute)
             },
 
-            ' .pe-list-tile__content': [flex$1.layoutVertical, flex$1.selfCenter, paddingH(config.side_padding), {
-                '&.pe-list-tile__content--front': [paddingV(config.padding - 5), {
-                    width: config.front_item_width + 'px'
+            ' .pe-list-tile__content': [flex$1.layoutVertical, flex$1.selfCenter, paddingH(config$$1.side_padding), {
+                '&.pe-list-tile__content--front': [paddingV(config$$1.padding - 5), {
+                    width: config$$1.front_item_width + 'px'
                 }],
 
                 ' small': {
-                    'font-size': config.font_size_small + 'px'
+                    'font-size': config$$1.font_size_small + 'px'
                 }
             }],
 
@@ -1878,16 +1863,16 @@ var createStyles$4 = function createStyles(config) {
             },
 
             ' .pe-list-tile__title': [mixin.ellipsis(1), {
-                'font-size': config.font_size_title + 'px',
+                'font-size': config$$1.font_size_title + 'px',
                 'font-weight': common$1.font_weight_normal,
-                'line-height': config.single_line_height + 'px'
+                'line-height': config$$1.single_line_height + 'px'
             }],
 
-            ' .pe-list-tile__subtitle': [mixin.ellipsis(config.subtitle_line_count, config.line_height_subtitle), {
-                'font-size': config.font_size_subtitle + 'px',
-                'line-height': config.line_height_subtitle + 'px',
+            ' .pe-list-tile__subtitle': [mixin.ellipsis(config$$1.subtitle_line_count, config$$1.line_height_subtitle), {
+                'font-size': config$$1.font_size_subtitle + 'px',
+                'line-height': config$$1.line_height_subtitle + 'px',
 
-                '&.pe-list-tile__subtitle--high': [mixin.ellipsis(config.high_subtitle_line_count, config.line_height_subtitle), {
+                '&.pe-list-tile__subtitle--high': [mixin.ellipsis(config$$1.high_subtitle_line_count, config$$1.line_height_subtitle), {
                     'white-space': 'normal'
                 }]
             }],
@@ -1897,7 +1882,7 @@ var createStyles$4 = function createStyles(config) {
             },
 
             '&.pe-list-tile--subtitle': {
-                ' .pe-list-tile__content': [paddingV(config.has_subtitle_padding, config.has_subtitle_padding + 1), {
+                ' .pe-list-tile__content': [paddingV(config$$1.has_subtitle_padding, config$$1.has_subtitle_padding + 1), {
                     ' .pe-list-tile__title': {
                         padding: 0
                     }
@@ -1906,7 +1891,7 @@ var createStyles$4 = function createStyles(config) {
 
             '&.pe-list-tile--high-subtitle': {
                 ' .pe-list-tile--high-subtitle .pe-list-tile__secondary': [flex$1.layoutHorizontal, flex$1.layoutStart],
-                ' .pe-list-tile__content': [flex$1.selfStart, paddingV(config.has_high_subtitle_padding, config.has_high_subtitle_padding + 1), {
+                ' .pe-list-tile__content': [flex$1.selfStart, paddingV(config$$1.has_high_subtitle_padding, config$$1.has_high_subtitle_padding + 1), {
                     ' .pe-list-tile__title': {
                         padding: 0
                     }
@@ -1915,16 +1900,16 @@ var createStyles$4 = function createStyles(config) {
 
             // List header
             '&.pe-list__header': {
-                height: config.single_height + 'px',
+                height: config$$1.single_height + 'px',
 
                 ' .pe-list-tile__content': {
                     'padding-top': 0,
                     'padding-bottom': 0
                 },
-                ' .pe-list-tile__title': [mixin.ellipsis(1, config.single_height), {
-                    'font-size': config.font_size_list_header + 'px',
+                ' .pe-list-tile__title': [mixin.ellipsis(1, config$$1.single_height), {
+                    'font-size': config$$1.font_size_list_header + 'px',
                     'font-weight': common$1.font_weight_medium,
-                    'line-height': config.single_height + 'px',
+                    'line-height': config$$1.single_height + 'px',
                     padding: 0
                 }]
             },
@@ -1933,7 +1918,7 @@ var createStyles$4 = function createStyles(config) {
 
             ' .pe-list--compact &, &.pe-list-tile--compact': {
                 '&:not(.pe-list__header)': {
-                    ' .pe-list-tile__content': paddingV(config.compact_padding, config.compact_padding + 1)
+                    ' .pe-list-tile__content': paddingV(config$$1.compact_padding, config$$1.compact_padding + 1)
                 }
             },
 
@@ -1976,78 +1961,79 @@ var createStyles$4 = function createStyles(config) {
     }];
 };
 
-var layout$5 = (function (config) {
-    return mixin.createStyles(config, createStyles$4);
+var layout$5 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$6);
 });
 
 function _defineProperty$3(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$2 = function style(config, tint) {
+var style$2 = function style(config$$1, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$3({}, scope + '.pe-list-tile', {
         ' .pe-list-tile__title': {
-            color: config['color_' + tint + '_title']
+            color: config$$1['color_' + tint + '_title']
         },
 
         '&.pe-list__header': {
             'background-color': 'inherit',
 
             ' .pe-list-tile__title': {
-                color: config['color_' + tint + '_list_header']
+                color: config$$1['color_' + tint + '_list_header']
             }
         },
 
         ' .pe-list-tile__content, .pe-list-tile__subtitle': {
-            color: config['color_' + tint + '_subtitle']
+            color: config$$1['color_' + tint + '_subtitle']
         },
 
         '&.pe-list-tile--disabled': {
             '&, .pe-list-tile__title, .pe-list-tile__content, .pe-list-tile__subtitle': {
-                color: config['color_' + tint + '_text_disabled']
+                color: config$$1['color_' + tint + '_text_disabled']
             }
         },
         '&.pe-list-tile--selected': {
-            'background-color': config['color_' + tint + '_background_selected']
+            'background-color': config$$1['color_' + tint + '_background_selected']
         }
     })];
 };
 
-var noTouch$1 = function noTouch(config, tint) {
+var noTouch$1 = function noTouch(config$$1, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$3({}, scope + '.pe-list-tile', {
         '&:not(.pe-list__header):not(.pe-list-tile--disabled):hover': {
-            'background-color': config['color_' + tint + '_background_hover']
+            'background-color': config$$1['color_' + tint + '_background_hover']
         }
     })];
 };
 
-var createStyles$5 = function createStyles(config) {
-    return [style$2(config, 'light'), {
-        'html.pe-no-touch': [noTouch$1(config, 'light', ' .pe-list--hoverable'), noTouch$1(config, 'light', ' .pe-list--hoverable ')]
+var createStyles$7 = function createStyles(config$$1) {
+    return [style$2(config$$1, 'light'), {
+        'html.pe-no-touch': [noTouch$1(config$$1, 'light', ' .pe-list--hoverable'), noTouch$1(config$$1, 'light', ' .pe-list--hoverable ')]
     }, {
         '.pe-dark-theme': [
         // inside dark theme
-        style$2(config, 'dark', ' '),
+        style$2(config$$1, 'dark', ' '),
         // has dark theme
-        style$2(config, 'dark', '&')]
+        style$2(config$$1, 'dark', '&')]
     }, {
-        'html.pe-no-touch .pe-dark-theme': [noTouch$1(config, 'dark', ' .pe-list-tile--hoverable'), noTouch$1(config, 'dark', '.pe-list--hoverable '), noTouch$1(config, 'dark', ' .pe-list--hoverable ')],
-        'html.pe-no-touch .pe-list--hoverable .pe-dark-theme': noTouch$1(config, 'dark')
+        'html.pe-no-touch .pe-dark-theme': [noTouch$1(config$$1, 'dark', ' .pe-list-tile--hoverable'), noTouch$1(config$$1, 'dark', '.pe-list--hoverable '), noTouch$1(config$$1, 'dark', ' .pe-list--hoverable ')],
+        'html.pe-no-touch .pe-list--hoverable .pe-dark-theme': noTouch$1(config$$1, 'dark')
     }];
 };
 
-var color$1 = (function (config) {
-    return mixin.createStyles(config, createStyles$5);
+var color$1 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$7);
 });
 
-var customConfigFn$3 = customConfig['list-tile'];
-var config$3 = customConfigFn$3 ? customConfigFn$3(defaultConfig$3) : defaultConfig$3;
+var themeConfigFn$4 = __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"] && __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"]['list-tile'];
+var config$5 = themeConfigFn$4 ? themeConfigFn$4(componentConfig$3) : componentConfig$3;
+var id$5 = 'pe-list-tile';
 
-styler$1.add('pe-list-tile', layout$5(config$3), color$1(config$3));
+styler.add(id$5, layout$5(config$5), color$1(config$5));
 
-var _extends$6 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$5 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var CSS_CLASSES$6 = {
     block: 'pe-list-tile',
@@ -2078,7 +2064,7 @@ var parsePrimaryContent = function parsePrimaryContent(opts) {
         class: CSS_CLASSES$6.content + ' ' + CSS_CLASSES$6.contentFront
     }) : null;
 
-    return __WEBPACK_IMPORTED_MODULE_0_mithril___default()(tag, _extends$6({}, {
+    return __WEBPACK_IMPORTED_MODULE_0_mithril___default()(tag, _extends$5({}, {
         class: CSS_CLASSES$6.primary
     }, opts.url, opts.events), [frontComp, __WEBPACK_IMPORTED_MODULE_0_mithril___default()('div', {
         class: CSS_CLASSES$6.content
@@ -2097,7 +2083,7 @@ var parseSecondaryContent = function parseSecondaryContent(opts) {
             tag = 'div';
         }
     }
-    return __WEBPACK_IMPORTED_MODULE_0_mithril___default()(tag, _extends$6({}, {
+    return __WEBPACK_IMPORTED_MODULE_0_mithril___default()(tag, _extends$5({}, {
         class: CSS_CLASSES$6.secondary
     }, secondaryOpts.url, secondaryOpts.events), __WEBPACK_IMPORTED_MODULE_0_mithril___default()('div', {
         class: CSS_CLASSES$6.content
@@ -2135,7 +2121,7 @@ var padding_v = 24;
 var padding_actions_v = 8;
 var actions_button_margin_v = 2;
 
-var defaultConfig$4 = {
+var componentConfig$4 = {
     image_size_small: 1 * 80,
     image_size_regular: 1.4 * 80,
     image_size_medium: 2 * 80,
@@ -2176,12 +2162,12 @@ var defaultConfig$4 = {
     color_dark_overlay_background: rgba$3(common$1.color_dark_foreground, common$1.blend_dark_overlay_background)
 };
 
-var createStyles$6 = function createStyles(config) {
+var createStyles$8 = function createStyles(config$$1) {
     return [{
         '.pe-card': {
             display: 'block',
             position: 'relative',
-            'border-radius': config.border_radius + 'px',
+            'border-radius': config$$1.border_radius + 'px',
 
             ' .pe-card__media': {
                 position: 'relative',
@@ -2198,8 +2184,8 @@ var createStyles$6 = function createStyles(config) {
                 },
                 '&:last-child': {
                     '&, img': {
-                        'border-bottom-left-radius': config.border_radius + 'px',
-                        'border-bottom-right-radius': config.border_radius + 'px'
+                        'border-bottom-left-radius': config$$1.border_radius + 'px',
+                        'border-bottom-right-radius': config$$1.border_radius + 'px'
                     }
                 },
                 ' img': [mixin.fit(), {
@@ -2228,16 +2214,16 @@ var createStyles$6 = function createStyles(config) {
                 margin: '16px 16px 0 16px',
 
                 ' .pe-card__media--small': {
-                    width: config.image_size_small + 'px'
+                    width: config$$1.image_size_small + 'px'
                 },
                 ' .pe-card__media--regular': {
-                    width: config.image_size_regular + 'px'
+                    width: config$$1.image_size_regular + 'px'
                 },
                 ' .pe-card__media--medium': {
-                    width: config.image_size_medium + 'px'
+                    width: config$$1.image_size_medium + 'px'
                 },
                 ' .pe-card__media--large': {
-                    width: config.image_size_large + 'px',
+                    width: config$$1.image_size_large + 'px',
                     'margin-bottom': '16px'
                 },
                 ' .pe-card__media': {
@@ -2249,8 +2235,8 @@ var createStyles$6 = function createStyles(config) {
                 ' .shadow + &': {
                     // first child
                     '&, img': {
-                        'border-top-left-radius': config.border_radius + 'px',
-                        'border-top-right-radius': config.border_radius + 'px'
+                        'border-top-left-radius': config$$1.border_radius + 'px',
+                        'border-top-right-radius': config$$1.border_radius + 'px'
                     }
                 }
             },
@@ -2271,7 +2257,7 @@ var createStyles$6 = function createStyles(config) {
             },
 
             ' .pe-card__header': {
-                height: config.one_line_height_with_icon + 'px',
+                height: config$$1.one_line_height_with_icon + 'px',
 
                 ' .pe-list-tile__title': {
                     'font-size': '14px',
@@ -2298,12 +2284,12 @@ var createStyles$6 = function createStyles(config) {
                 },
                 '&.pe-card__primary--tight': {
                     ' .pe-card__title': {
-                        'padding-bottom': config.tight_title_padding_bottom - config.subtitle_line_height_padding_bottom + 'px'
+                        'padding-bottom': config$$1.tight_title_padding_bottom - config$$1.subtitle_line_height_padding_bottom + 'px'
                     }
                 }
             }],
             ' .pe-card__title': [flex$1.flex(), {
-                padding: [config.title_padding_v, config.title_padding_h, config.title_padding_v - config.subtitle_line_height_padding_bottom, config.title_padding_h].map(function (v) {
+                padding: [config$$1.title_padding_v, config$$1.title_padding_h, config$$1.title_padding_v - config$$1.subtitle_line_height_padding_bottom, config$$1.title_padding_h].map(function (v) {
                     return v + 'px';
                 }).join(' '),
                 'font-size': '24px',
@@ -2316,7 +2302,7 @@ var createStyles$6 = function createStyles(config) {
 
             ' .pe-card__actions': [{
                 'min-height': 36 + 2 * 8 + 'px',
-                padding: config.actions_padding_v + 'px' + ' ' + config.padding_actions_h + 'px',
+                padding: config$$1.actions_padding_v + 'px' + ' ' + config$$1.padding_actions_h + 'px',
 
                 '&.pe-card__actions--tight': {
                     'min-height': 0
@@ -2337,45 +2323,45 @@ var createStyles$6 = function createStyles(config) {
 
                 '&.pe-card__actions--vertical': [flex$1.layoutVertical, {
                     // vertical flex layout
-                    'padding-top': config.actions_vertical_padding_v + 'px',
-                    'padding-bottom': config.actions_vertical_padding_v + 'px',
+                    'padding-top': config$$1.actions_vertical_padding_v + 'px',
+                    'padding-bottom': config$$1.actions_vertical_padding_v + 'px',
 
                     // nested
                     ' .pe-card__actions': [{
-                        'margin-left': -config.padding_actions_h + 'px',
-                        'margin-right': -config.padding_actions_h + 'px',
+                        'margin-left': -config$$1.padding_actions_h + 'px',
+                        'margin-right': -config$$1.padding_actions_h + 'px',
                         'min-height': 0,
 
                         '&:first-child': {
-                            'margin-top': -config.actions_vertical_padding_v + 'px'
+                            'margin-top': -config$$1.actions_vertical_padding_v + 'px'
                         },
                         '&:last-child': {
-                            'margin-bottom': -config.actions_vertical_padding_v + 'px'
+                            'margin-bottom': -config$$1.actions_vertical_padding_v + 'px'
                         }
                     }],
 
                     ' .pe-button': {
                         height: '36px',
                         padding: 0,
-                        'margin-top': config.actions_button_margin_v + 'px',
-                        'margin-bottom': config.actions_button_margin_v + 'px'
+                        'margin-top': config$$1.actions_button_margin_v + 'px',
+                        'margin-bottom': config$$1.actions_button_margin_v + 'px'
                     }
                 }]
             }],
 
             ' .pe-card__text': {
-                'padding-top': config.text_padding_v - config.text_line_height_padding_top + 'px',
-                'padding-right': config.text_padding_h + 'px',
-                'padding-left': config.text_padding_h + 'px',
-                'padding-bottom': config.tight_text_padding_bottom - config.text_line_height_padding_bottom + 'px',
+                'padding-top': config$$1.text_padding_v - config$$1.text_line_height_padding_top + 'px',
+                'padding-right': config$$1.text_padding_h + 'px',
+                'padding-left': config$$1.text_padding_h + 'px',
+                'padding-bottom': config$$1.tight_text_padding_bottom - config$$1.text_line_height_padding_bottom + 'px',
                 'font-size': '14px',
                 'line-height': '24px',
 
                 '&:last-child': {
-                    'padding-bottom': config.text_padding_bottom - config.text_line_height_padding_bottom + 'px'
+                    'padding-bottom': config$$1.text_padding_bottom - config$$1.text_line_height_padding_bottom + 'px'
                 },
                 '&.pe-card__text--tight, &.pe-card__text--tight:last-child': {
-                    'padding-bottom': config.tight_text_padding_bottom - config.text_line_height_padding_bottom + 'px'
+                    'padding-bottom': config$$1.tight_text_padding_bottom - config$$1.text_line_height_padding_bottom + 'px'
                 },
                 ' .pe-card__actions + &': {
                     'margin-top': '8px'
@@ -2384,76 +2370,78 @@ var createStyles$6 = function createStyles(config) {
 
             ' .pe-card__text, .pe-card__primary': {
                 '& + .pe-card__actions:not(:last-child)': {
-                    'margin-top': -(config.offset_small_padding_v + 1) + 'px',
-                    'margin-bottom': -(config.offset_small_padding_v - 1) + 'px'
+                    'margin-top': -(config$$1.offset_small_padding_v + 1) + 'px',
+                    'margin-bottom': -(config$$1.offset_small_padding_v - 1) + 'px'
                 }
             }
         }
     }];
 };
 
-var layout$7 = (function (config) {
-    return mixin.createStyles(config, createStyles$6);
+var layout$7 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$8);
 });
 
 function _defineProperty$4(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$3 = function style(config, tint) {
+var style$3 = function style(config$$1, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$4({}, scope + '.pe-card', {
-        'background-color': config['color_' + tint + '_main_background']
+        'background-color': config$$1['color_' + tint + '_main_background']
     })];
 };
 
-var content = function content(config, tint) {
+var content = function content(config$$1, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$4({}, scope, {
         ' .pe-card__title, .pe-list-tile__title': {
-            'color': config['color_' + tint + '_title_text']
+            'color': config$$1['color_' + tint + '_title_text']
         },
         ' .pe-card__subtitle, .pe-list-tile__subtitle': {
-            'color': config['color_' + tint + '_subtitle_text']
+            'color': config$$1['color_' + tint + '_subtitle_text']
         },
         ' .pe-card__text': {
-            'color': config['color_' + tint + '_text']
+            'color': config$$1['color_' + tint + '_text']
         },
         ' .pe-card__actions--borders': [mixin.hairline('border-top'), {
-            'border-top': '1px solid ' + config['color_' + tint + '_actions_border']
+            'border-top': '1px solid ' + config$$1['color_' + tint + '_actions_border']
         }]
     })];
 };
 
-var overlay = function overlay(config, tint) {
+var overlay = function overlay(config$$1, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$4({}, scope + '.pe-card__overlay--sheet', {
         ' .pe-card__overlay__content': {
-            'background-color': config['color_' + tint + '_overlay_background']
+            'background-color': config$$1['color_' + tint + '_overlay_background']
         }
     })];
 };
 
-var createStyles$7 = function createStyles(config) {
-    return [style$3(config, 'light'), content(config, 'light', '.pe-card'), overlay(config, 'light'), {
+var createStyles$9 = function createStyles(config$$1) {
+    return [style$3(config$$1, 'light'), content(config$$1, 'light', '.pe-card'), overlay(config$$1, 'light'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$3(config, 'dark', ' '), content(config, 'dark', ' '), overlay(config, 'dark', ' ')]
+        style$3(config$$1, 'dark', ' '), content(config$$1, 'dark', ' '), overlay(config$$1, 'dark', ' ')]
     },
     // is dark theme
-    style$3(config, 'dark', '.pe-dark-theme'), overlay(config, 'dark', '.pe-dark-theme '), content(config, 'dark', '.pe-card.pe-dark-theme')];
+    style$3(config$$1, 'dark', '.pe-dark-theme'), overlay(config$$1, 'dark', '.pe-dark-theme '), content(config$$1, 'dark', '.pe-card.pe-dark-theme')];
 };
 
-var color$2 = (function (config) {
-    return mixin.createStyles(config, createStyles$7);
+var color$2 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$9);
 });
 
-var customConfigFn$4 = customConfig.card;
-var config$4 = customConfigFn$4 ? customConfigFn$4(defaultConfig$4) : defaultConfig$4;
-styler$1.add('pe-card', layout$7(config$4), color$2(config$4));
+var themeConfigFn$5 = __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"] && __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"].card;
+var config$6 = themeConfigFn$5 ? themeConfigFn$5(componentConfig$4) : componentConfig$4;
+var id$6 = 'pe-card';
 
-var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+styler.add(id$6, layout$7(config$6), color$2(config$6));
+
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var CSS_CLASSES$3 = {
     block: 'pe-card',
@@ -2580,7 +2568,7 @@ var createMedia = function createMedia(o) {
 
 var createHeader = function createHeader(o) {
     var opts = o.header || {};
-    return __WEBPACK_IMPORTED_MODULE_0_mithril___default()(component$7, _extends$3({}, opts, {
+    return __WEBPACK_IMPORTED_MODULE_0_mithril___default()(component$7, _extends$2({}, opts, {
         class: [CSS_CLASSES$3.header, opts.class].join(' ')
     }, opts.icon ? {
         front: __WEBPACK_IMPORTED_MODULE_0_mithril___default()(component$5, opts.icon)
@@ -2666,7 +2654,7 @@ var createView$3 = function createView(ctrl) {
     var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
     var tag = opts.tag || opts.url ? 'a' : 'div';
-    var props = _extends$3({}, {
+    var props = _extends$2({}, {
         class: [CSS_CLASSES$3.block, opts.class].join(' '),
         id: opts.id || '',
         config: opts.config
@@ -2709,7 +2697,7 @@ var component$3 = {
 
 // No styles for this component
 
-var _extends$7 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$6 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var CSS_CLASSES$7 = {
     block: 'pe-control',
@@ -2750,10 +2738,10 @@ var createView$8 = function createView(ctrl) {
     var inactive = opts.disabled || !selectable;
     var tag = opts.tag || 'div';
     var name = opts.name || '';
-    var props = _extends$7({}, {
+    var props = _extends$6({}, {
         class: [CSS_CLASSES$7.block, opts.defaultClass, checked ? CSS_CLASSES$7.on : CSS_CLASSES$7.off, opts.disabled ? CSS_CLASSES$7.disabled : null, inactive ? CSS_CLASSES$7.inactive : null, classForType$1(opts.size), opts.class].join(' '),
         id: opts.id || '',
-        config: function config(el, inited, context, vdom) {
+        config: function config$$1(el, inited, context, vdom) {
             if (inited) {
                 return;
             }
@@ -2769,11 +2757,11 @@ var createView$8 = function createView(ctrl) {
         type: opts.type, // set by checkbox / radio-button
         tabindex: -1, // set in selectionView / icon-button
         checked: checked,
-        config: function config(el, inited) {
+        config: function config$$1(el, inited) {
             if (inited) return;
             ctrl.setInputEl(el);
         }
-    }), __WEBPACK_IMPORTED_MODULE_0_mithril___default()('label', _extends$7({}, {
+    }), __WEBPACK_IMPORTED_MODULE_0_mithril___default()('label', _extends$6({}, {
         class: CSS_CLASSES$7.label,
         tabindex: -1 // set in selectionView
     }, inactive ? null : {
@@ -2865,7 +2853,7 @@ var iconButtonConfig = {
   color_dark_flat_normal_text: common$1.rgba(common$1.color_dark_foreground, common$1.blend_dark_text_secondary)
 };
 
-var createStyles$8 = function createStyles(config) {
+var createStyles$10 = function createStyles(config$$1) {
     return [{
         '.pe-button--icon': {
             // don't set button size to facilitate different icon sizes
@@ -2883,48 +2871,48 @@ var createStyles$8 = function createStyles(config) {
 
             ' .pe-button__label': {
                 'line-height': 1,
-                padding: config.padding + 'px'
+                padding: config$$1.padding + 'px'
             },
 
             '&.pe-button--compact': {
                 ' .pe-button__label': {
-                    padding: config.padding_compact + 'px'
+                    padding: config$$1.padding_compact + 'px'
                 }
             }
         }
     }];
 };
 
-var layout$8 = (function (config) {
-    return mixin.createStyles(config, createStyles$8);
+var layout$8 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$10);
 });
 
 function _defineProperty$5(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$4 = function style(config, tint, type) {
+var style$4 = function style(config$$1, tint, type) {
     var scope = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '';
 
     return [_defineProperty$5({}, scope + '.pe-button.pe-button--icon', {
-        color: config['color_' + tint + '_' + type + '_normal_text'],
+        color: config$$1['color_' + tint + '_' + type + '_normal_text'],
         background: 'none',
 
         ' .pe-button__wash': {
-            opacity: config['color_' + tint + '_wash_opacity']
+            opacity: config$$1['color_' + tint + '_wash_opacity']
         },
 
         '&.pe-button--focus, &.pe-button--selected': {
             ' .pe-button__focus': {
-                opacity: config['color_' + tint + '_focus_opacity'],
+                opacity: config$$1['color_' + tint + '_focus_opacity'],
                 'background-color': 'currentcolor'
             }
         },
 
         '&.pe-button--disabled': {
-            color: config['color_' + tint + '_' + type + '_disabled_text']
+            color: config$$1['color_' + tint + '_' + type + '_disabled_text']
         },
 
         '&.pe-button--raised': {
-            'background-color': config['color_' + tint + '_background'],
+            'background-color': config$$1['color_' + tint + '_background'],
 
             ' .pe-button__content': {
                 background: 'transparent'
@@ -2933,7 +2921,7 @@ var style$4 = function style(config, tint, type) {
     })];
 };
 
-var noTouch$2 = function noTouch(config, tint, type) {
+var noTouch$2 = function noTouch(config$$1, tint, type) {
     var scope = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '';
 
     return [_defineProperty$5({}, scope + '.pe-button.pe-button--icon:hover', tint === 'light' ? {
@@ -2942,35 +2930,36 @@ var noTouch$2 = function noTouch(config, tint, type) {
         }
     } : {
         ' .pe-button__wash': {
-            'background-color': config['color_' + tint + '_' + type + '_normal_text']
+            'background-color': config$$1['color_' + tint + '_' + type + '_normal_text']
         }
     })];
 };
 
-var createStyles$9 = function createStyles(config) {
-    return [style$4(config, 'light', 'flat'), {
-        'html.pe-no-touch': [noTouch$2(config, 'light', 'flat', ' ')]
+var createStyles$11 = function createStyles(config$$1) {
+    return [style$4(config$$1, 'light', 'flat'), {
+        'html.pe-no-touch': [noTouch$2(config$$1, 'light', 'flat', ' ')]
     }, {
         '.pe-dark-theme': [
         // inside dark theme
-        style$4(config, 'dark', 'flat', ' '),
+        style$4(config$$1, 'dark', 'flat', ' '),
         // has dark theme
-        style$4(config, 'dark', 'flat', '&')]
+        style$4(config$$1, 'dark', 'flat', '&')]
     }, {
-        'html.pe-no-touch .pe-dark-theme': [noTouch$2(config, 'dark', 'flat', ' ')]
+        'html.pe-no-touch .pe-dark-theme': [noTouch$2(config$$1, 'dark', 'flat', ' ')]
     }];
 };
 
-var color$3 = (function (config) {
-    return mixin.createStyles(config, createStyles$9);
+var color$3 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$11);
 });
 
-var customConfigFn$5 = customConfig['icon-button'];
-var config$5 = customConfigFn$5 ? customConfigFn$5(iconButtonConfig) : iconButtonConfig;
+var themeConfigFn$6 = __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"] && __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"]['icon-button'];
+var config$7 = themeConfigFn$6 ? themeConfigFn$6(iconButtonConfig) : iconButtonConfig;
+var id$7 = 'pe-icon-button';
 
-styler$1.add('pe-icon-button', layout$8(config$5), color$3(config$5));
+styler.add(id$7, layout$8(config$7), color$3(config$7));
 
-var _extends$9 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$8 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var CSS_CLASSES$9 = {
     block: 'pe-button pe-button--icon',
@@ -2982,7 +2971,7 @@ var createView$9 = function createView(ctrl) {
     var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
     var content = opts.icon ? __WEBPACK_IMPORTED_MODULE_0_mithril___default()(component$5, opts.icon) : opts.content ? opts.content : null;
-    return __WEBPACK_IMPORTED_MODULE_0_mithril___default()(component, _extends$9({}, opts, {
+    return __WEBPACK_IMPORTED_MODULE_0_mithril___default()(component, _extends$8({}, opts, {
         content: __WEBPACK_IMPORTED_MODULE_0_mithril___default()('div', {
             class: CSS_CLASSES$9.label
         }, content),
@@ -3002,7 +2991,7 @@ var component$11 = {
     }
 };
 
-var _extends$8 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$7 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 // Helper function for checkbox and radio button
 var CSS_CLASSES$8 = {
@@ -3015,7 +3004,7 @@ var CSS_CLASSES$8 = {
 var createIcon = function createIcon(onOffType, opts) {
     // if opts.iconOn/Off is passed, use that icon options object and ignore size
     // otherwise create a new object
-    return _extends$8({}, opts[onOffType] ? opts[onOffType] : {
+    return _extends$7({}, opts[onOffType] ? opts[onOffType] : {
         msvg: opts.theme[onOffType]
     }, {
         class: opts.class
@@ -3028,12 +3017,12 @@ var createSelection = function createSelection(checked, opts) {
     var selectable = opts.selectable(checked);
     return __WEBPACK_IMPORTED_MODULE_0_mithril___default()('div', {
         class: CSS_CLASSES$8.box
-    }, __WEBPACK_IMPORTED_MODULE_0_mithril___default()(component$11, _extends$8({}, {
+    }, __WEBPACK_IMPORTED_MODULE_0_mithril___default()(component$11, _extends$7({}, {
         tag: 'div',
         class: CSS_CLASSES$8.button,
-        content: [__WEBPACK_IMPORTED_MODULE_0_mithril___default()(component$5, createIcon('iconOn', _extends$8({}, {
+        content: [__WEBPACK_IMPORTED_MODULE_0_mithril___default()(component$5, createIcon('iconOn', _extends$7({}, {
             class: CSS_CLASSES$8.buttonOn
-        }, opts))), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(component$5, createIcon('iconOff', _extends$8({}, {
+        }, opts))), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(component$5, createIcon('iconOff', _extends$7({}, {
             class: CSS_CLASSES$8.buttonOff
         }, opts)))],
         ripple: {
@@ -3088,10 +3077,10 @@ function _defineProperty$6(obj, key, value) { if (key in obj) { Object.definePro
 
 // Returns a style function to be used by checkbox and radio-button
 
-var getSize = function getSize(config, height) {
+var getSize = function getSize(config$$1, height) {
     var iconSize = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : common$1.unit_icon_size;
 
-    var labelSize = iconSize + 2 * config.label_padding;
+    var labelSize = iconSize + 2 * config$$1.label_padding;
     var iconOffset = (labelSize - iconSize) / 2;
     return {
         ' .pe-control__label': {
@@ -3124,7 +3113,7 @@ var inactiveButton = function inactiveButton() {
     };
 };
 
-var createStyles$10 = function createStyles(config, className, type) {
+var createStyles$12 = function createStyles(config$$1, className, type) {
     var _peControl;
 
     return [{
@@ -3137,8 +3126,8 @@ var createStyles$10 = function createStyles(config, className, type) {
             ' .pe-control__label': [flex$1.layoutHorizontal, flex$1.layoutCenter, {
                 position: 'relative',
                 cursor: 'pointer',
-                'font-size': config.label_font_size + 'px',
-                'line-height': config.label_height + 'px',
+                'font-size': config$$1.label_font_size + 'px',
+                'line-height': config$$1.label_height + 'px',
                 margin: 0,
                 color: 'inherit',
 
@@ -3156,7 +3145,7 @@ var createStyles$10 = function createStyles(config, className, type) {
         }, _defineProperty$6(_peControl, ' input[type=' + type + '].pe-control__input', [mixin.vendorize({
             'appearance': 'none'
         }, common$1.prefixes_appearance), {
-            'line-height': config.label_height + 'px',
+            'line-height': config$$1.label_height + 'px',
             // Hide input element
             position: 'absolute',
             'z-index': '-1',
@@ -3171,17 +3160,17 @@ var createStyles$10 = function createStyles(config, className, type) {
             position: 'relative',
             display: 'inline-block',
             'box-sizing': 'border-box',
-            width: config.label_height + 'px',
-            height: config.label_height + 'px',
+            width: config$$1.label_height + 'px',
+            height: config$$1.label_height + 'px',
             color: 'inherit',
 
             ':focus': {
                 outline: 0
             }
-        }), _defineProperty$6(_peControl, ' .pe-control__button', [mixin.defaultTransition('opacity', config.animation_duration), {
+        }), _defineProperty$6(_peControl, ' .pe-control__button', [mixin.defaultTransition('opacity', config$$1.animation_duration), {
             position: 'absolute',
-            left: -((config.button_size - config.icon_size) / 2) + 'px',
-            top: -((config.button_size - config.icon_size) / 2) + 'px',
+            left: -((config$$1.button_size - config$$1.icon_size) / 2) + 'px',
+            top: -((config$$1.button_size - config$$1.icon_size) / 2) + 'px',
             'z-index': 1
             // opacity: 0,
             // 'pointer-events': 'auto'
@@ -3192,8 +3181,8 @@ var createStyles$10 = function createStyles(config, className, type) {
             ' .pe-control__button--on': activeButton(),
             ' .pe-control__button--off': inactiveButton()
         }), _defineProperty$6(_peControl, ' .pe-control__label span', {
-            'padding-left': config.padding + 'px',
-            'padding-right': config.padding + 'px'
+            'padding-left': config$$1.padding + 'px',
+            'padding-right': config$$1.padding + 'px'
         }), _defineProperty$6(_peControl, '&.pe-control--disabled', {
             ' .pe-control__label': {
                 cursor: 'auto'
@@ -3205,13 +3194,13 @@ var createStyles$10 = function createStyles(config, className, type) {
             ' .pe-icon': {
                 position: 'absolute'
             }
-        }), _defineProperty$6(_peControl, '&.pe-control--small', getSize(config, common$1.unit_icon_size_small, common$1.unit_icon_size_small)), _defineProperty$6(_peControl, '&.pe-control--regular', getSize(config, config.label_height, common$1.unit_icon_size)), _defineProperty$6(_peControl, '&.pe-control--medium', getSize(config, common$1.unit_icon_size_medium, common$1.unit_icon_size_medium)), _defineProperty$6(_peControl, '&.pe-control--large', getSize(config, common$1.unit_icon_size_large, common$1.unit_icon_size_large)), _peControl)
+        }), _defineProperty$6(_peControl, '&.pe-control--small', getSize(config$$1, common$1.unit_icon_size_small, common$1.unit_icon_size_small)), _defineProperty$6(_peControl, '&.pe-control--regular', getSize(config$$1, config$$1.label_height, common$1.unit_icon_size)), _defineProperty$6(_peControl, '&.pe-control--medium', getSize(config$$1, common$1.unit_icon_size_medium, common$1.unit_icon_size_medium)), _defineProperty$6(_peControl, '&.pe-control--large', getSize(config$$1, common$1.unit_icon_size_large, common$1.unit_icon_size_large)), _peControl)
     }];
 };
 
-var layout$9 = (function (config) {
-    return mixin.createStyles(config, function (config) {
-        return createStyles$10(config, '.pe-control--checkbox', 'checkbox');
+var layout$9 = (function (config$$1) {
+    return mixin.createStyles(config$$1, function (config$$1) {
+        return createStyles$12(config$$1, '.pe-control--checkbox', 'checkbox');
     });
 });
 
@@ -3219,15 +3208,15 @@ function _defineProperty$7(obj, key, value) { if (key in obj) { Object.definePro
 
 // Returns a style function to be used by checkbox and radio-button
 
-var style$5 = function style(config, tint) {
+var style$5 = function style(config$$1, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$7({}, scope + '.pe-control', {
-        color: config['color_' + tint + '_on_text'], // override by specifying 'color'
+        color: config$$1['color_' + tint + '_on_text'], // override by specifying 'color'
 
         ' .pe-control__label': {
             ' span': {
-                color: config['color_' + tint + '_label_text']
+                color: config$$1['color_' + tint + '_label_text']
             }
         },
         ' .pe-control__box': {
@@ -3239,66 +3228,67 @@ var style$5 = function style(config, tint) {
                 },
 
                 ' .pe-control__button--off': {
-                    color: config['color_' + tint + '_off_icon']
+                    color: config$$1['color_' + tint + '_off_icon']
                 }
             }
         },
         '&.pe-control--off': {
             ' .pe-button--focus .pe-button__focus': {
-                opacity: config['color_' + tint + '_focus_off_opacity'],
-                'background-color': config['color_' + tint + '_focus_off']
+                opacity: config$$1['color_' + tint + '_focus_off_opacity'],
+                'background-color': config$$1['color_' + tint + '_focus_off']
             },
             // reverse the ripple color so that it corresponds to the resulting state
             ' .pe-ripple': {
-                color: config['color_' + tint + '_focus_on']
+                color: config$$1['color_' + tint + '_focus_on']
             }
         },
         '&.pe-control--on': {
             ' .pe-button--focus .pe-button__focus': {
-                opacity: config['color_' + tint + '_focus_on_opacity'],
-                'background-color': config['color_' + tint + '_focus_on']
+                opacity: config$$1['color_' + tint + '_focus_on_opacity'],
+                'background-color': config$$1['color_' + tint + '_focus_on']
             },
             // reverse the ripple color so that it corresponds to the resulting state
             ' .pe-ripple': {
-                color: config['color_' + tint + '_focus_off']
+                color: config$$1['color_' + tint + '_focus_off']
             }
         },
 
         '&.pe-control--disabled': {
             ' .pe-control__label span': {
-                color: config['color_' + tint + '_disabled_text']
+                color: config$$1['color_' + tint + '_disabled_text']
             },
             ' .pe-control__box': {
                 ' .pe-control__button--on, .pe-control__button--off': {
-                    color: config['color_' + tint + '_disabled_text']
+                    color: config$$1['color_' + tint + '_disabled_text']
                 }
             }
         }
     })];
 };
 
-var createStyles$11 = function createStyles(config) {
-    return [style$5(config, 'light', '.pe-control--checkbox'), {
+var createStyles$13 = function createStyles(config$$1) {
+    return [style$5(config$$1, 'light', '.pe-control--checkbox'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$5(config, 'dark', ' '),
+        style$5(config$$1, 'dark', ' '),
         // has dark theme
-        style$5(config, 'dark', '&')]
+        style$5(config$$1, 'dark', '&')]
     }];
 };
 
-var color$4 = (function (config) {
-    return mixin.createStyles(config, createStyles$11);
+var color$4 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$13);
 });
 
-var customConfigFn$6 = customConfig.checkbox;
+var themeConfigFn$7 = __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"] && __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"].checkbox;
+var config$8 = themeConfigFn$7 ? themeConfigFn$7(selectionControlConfig) : selectionControlConfig;
+var id$8 = 'pe-checkbox';
+
+styler.add(id$8, layout$9(config$8), color$4(config$8));
+
 // default icons
 var iconOff = __WEBPACK_IMPORTED_MODULE_0_mithril___default.a.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>');
 var iconOn = __WEBPACK_IMPORTED_MODULE_0_mithril___default.a.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>');
-
-var config$6 = customConfigFn$6 ? customConfigFn$6(selectionControlConfig) : selectionControlConfig;
-
-styler$1.add('pe-checkbox', layout$9(config$6), color$4(config$6));
 
 var theme = {
     iconOff: iconOff,
@@ -3328,7 +3318,7 @@ var component$8 = {
     }
 };
 
-var _extends$10 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$9 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 /*
 Helper module to manage multiple items of the same component type.
@@ -3425,7 +3415,7 @@ var multiple = function multiple(mOpts) {
             resolveHide = resolve;
         });
 
-        return _extends$10({}, mOpts, {
+        return _extends$9({}, mOpts, {
             instanceId: instanceId,
             opts: itemOpts,
             show: mOpts.queue ? false : true,
@@ -3516,7 +3506,7 @@ var multiple = function multiple(mOpts) {
                 document.body.classList.add(mOpts.bodyShowClass);
             }
             return __WEBPACK_IMPORTED_MODULE_0_mithril___default()(mOpts.tag, toShowItems.map(function (itemData) {
-                return __WEBPACK_IMPORTED_MODULE_0_mithril___default()(mOpts.instance, _extends$10({}, itemData, {
+                return __WEBPACK_IMPORTED_MODULE_0_mithril___default()(mOpts.instance, _extends$9({}, itemData, {
                     transitions: mOpts.transitions,
                     key: itemData.key || itemData.instanceId
                 }));
@@ -3744,7 +3734,7 @@ var transition$1 = {
 
 var rgba$5 = common$1.rgba;
 
-var defaultConfig$6 = {
+var componentConfig$6 = {
     border_radius: common$1.unit_block_border_radius,
     padding: 3 * common$1.grid_unit_component,
     header_bottom: 20,
@@ -3764,8 +3754,8 @@ var defaultConfig$6 = {
     color_dark_backdrop_background: 'rgba(0, 0, 0, .5)'
 };
 
-var createStyles$12 = function createStyles(config) {
-    var padding = config.padding;
+var createStyles$14 = function createStyles(config$$1) {
+    var padding = config$$1.padding;
     var lineHeightTitle = 24;
 
     return [{
@@ -3821,7 +3811,7 @@ var createStyles$12 = function createStyles(config) {
                 'max-height': '100%',
                 'min-width': 56 * 5 + 'px',
                 'max-width': 7 * common$1.grid_unit_menu + 'px',
-                'border-radius': config.border_radius + 'px',
+                'border-radius': config$$1.border_radius + 'px',
 
                 ' > .pe-shadow': {
                     'z-index': -1 // For IE10 to get click events on content
@@ -3846,10 +3836,10 @@ var createStyles$12 = function createStyles(config) {
             },
 
             ' .pe-dialog__header': {
-                padding: [padding - 4, padding, config.header_bottom - 4, padding].map(function (v) {
+                padding: [padding - 4, padding, config$$1.header_bottom - 4, padding].map(function (v) {
                     return v + 'px';
                 }).join(' '),
-                'min-height': config.header_height + 'px',
+                'min-height': config$$1.header_height + 'px',
 
                 ' .pe-dialog__title': [mixin.ellipsis(1), {
                     width: '100%'
@@ -3870,7 +3860,7 @@ var createStyles$12 = function createStyles(config) {
                 'border-style': 'solid none',
                 'border-color': 'transparent',
                 // initially set max-height; will be overridden by dialog core with actual heights
-                'max-height': 'calc(100vh - ' + 2 * padding + 'px - ' + (config.header_height + config.footer_height) + 'px)'
+                'max-height': 'calc(100vh - ' + 2 * padding + 'px - ' + (config$$1.header_height + config$$1.footer_height) + 'px)'
             }],
             ' .pe-dialog__header + .pe-dialog__body': {
                 'padding-top': 0
@@ -3878,7 +3868,7 @@ var createStyles$12 = function createStyles(config) {
 
             ' .pe-dialog__footer': {
                 padding: '2px 8px',
-                'min-height': config.footer_height + 'px',
+                'min-height': config$$1.footer_height + 'px',
                 'font-size': 0, // remove inline block spacing
 
                 '&.pe-dialog__footer--high': {
@@ -3909,57 +3899,58 @@ var createStyles$12 = function createStyles(config) {
     }];
 };
 
-var layout$10 = (function (config) {
-    return mixin.createStyles(config, createStyles$12);
+var layout$10 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$14);
 });
 
 function _defineProperty$8(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$6 = function style(config, tint) {
+var style$6 = function style(config$$1, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$8({}, scope + '.pe-dialog', {
         '&.pe-dialog--backdrop': {
-            'background-color': config['color_' + tint + '_backdrop_background']
+            'background-color': config$$1['color_' + tint + '_backdrop_background']
         },
         ' .pe-dialog__content': {
-            'background-color': config['color_' + tint + '_content_background']
+            'background-color': config$$1['color_' + tint + '_content_background']
         },
         ' .pe-dialog__header .pe-dialog__title': {
-            'color': config['color_' + tint + '_title_text']
+            'color': config$$1['color_' + tint + '_title_text']
         },
         ' .pe-dialog__body': {
-            'color': config['color_' + tint + '_body_text']
+            'color': config$$1['color_' + tint + '_body_text']
         },
         '&.pe-dialog--overflow-top .pe-dialog__body': {
-            'border-top-color': config['color_' + tint + '_body_border']
+            'border-top-color': config$$1['color_' + tint + '_body_border']
         },
         '&.pe-dialog--overflow-bottom .pe-dialog__body': {
-            'border-bottom-color': config['color_' + tint + '_body_border']
+            'border-bottom-color': config$$1['color_' + tint + '_body_border']
         }
     })];
 };
 
-var createStyles$13 = function createStyles(config) {
-    return [style$6(config, 'light'), {
+var createStyles$15 = function createStyles(config$$1) {
+    return [style$6(config$$1, 'light'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$6(config, 'dark', ' '),
+        style$6(config$$1, 'dark', ' '),
         // has dark theme
-        style$6(config, 'dark', '&')]
+        style$6(config$$1, 'dark', '&')]
     }];
 };
 
-var color$5 = (function (config) {
-    return mixin.createStyles(config, createStyles$13);
+var color$5 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$15);
 });
 
-var customConfigFn$7 = customConfig.dialog;
-var config$7 = customConfigFn$7 ? customConfigFn$7(defaultConfig$6) : defaultConfig$6;
+var themeConfigFn$8 = __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"] && __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"].dialog;
+var config$9 = themeConfigFn$8 ? themeConfigFn$8(componentConfig$6) : componentConfig$6;
+var id$9 = 'pe-dialog';
 
-styler$1.add('pe-dialog', layout$10(config$7), color$5(config$7));
+styler.add(id$9, layout$10(config$9), color$5(config$9));
 
-var _extends$11 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$10 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var CSS_CLASSES$10 = {
     block: 'pe-dialog',
@@ -4006,7 +3997,7 @@ var updateFooterState = function updateFooterState(ctrl) {
 var show = function show(ctrl, opts) {
     var id = ctrl.instanceId;
     ctrl.isTransitioning = true;
-    return transition$1.show(_extends$11({}, opts, {
+    return transition$1.show(_extends$10({}, opts, {
         el: ctrl.el,
         showClass: CSS_CLASSES$10.visible
     })).then(function () {
@@ -4023,7 +4014,7 @@ var show = function show(ctrl, opts) {
 var hide = function hide(ctrl, opts) {
     var id = ctrl.instanceId;
     ctrl.isTransitioning = true;
-    return transition$1.hide(_extends$11({}, opts, {
+    return transition$1.hide(_extends$10({}, opts, {
         el: ctrl.el,
         showClass: CSS_CLASSES$10.visible
     })).then(function () {
@@ -4047,7 +4038,7 @@ var createViewContent = function createViewContent(ctrl, opts) {
     return __WEBPACK_IMPORTED_MODULE_0_mithril___default()('div', {
         class: CSS_CLASSES$10.body,
         style: style,
-        config: function config(el, inited) {
+        config: function config$$1(el, inited) {
             if (inited) {
                 return;
             }
@@ -4079,10 +4070,10 @@ var createView$10 = function createView(ctrl) {
         __WEBPACK_IMPORTED_MODULE_0_mithril___default.a.redraw();
     };
 
-    var props = _extends$11({}, {
+    var props = _extends$10({}, {
         class: [CSS_CLASSES$10.block, opts.fullscreen ? CSS_CLASSES$10.fullscreen : null, opts.backdrop ? CSS_CLASSES$10.hasBackdrop : null, ctrl.topOverflow || opts.borders ? CSS_CLASSES$10.hasTopOverflow : null, ctrl.bottomOverflow || opts.borders ? CSS_CLASSES$10.hasBottomOverflow : null, ctrl.visible ? CSS_CLASSES$10.visible : null, opts.class].join(' '),
         id: opts.id || '',
-        config: function config(el, inited, context, vdom) {
+        config: function config$$1(el, inited, context, vdom) {
             if (inited) {
                 return;
             }
@@ -4100,7 +4091,7 @@ var createView$10 = function createView(ctrl) {
                 if (opts.fullscreen || opts.modal) return;
                 if (e.which === 27) {
                     cleanup();
-                    hide(ctrl, _extends$11({}, opts, { hideDelay: 0 }));
+                    hide(ctrl, _extends$10({}, opts, { hideDelay: 0 }));
                 }
             };
 
@@ -4133,7 +4124,7 @@ var createView$10 = function createView(ctrl) {
                 return;
             }
             if (!ctrl.isTransitioning) {
-                hide(ctrl, _extends$11({}, opts, { hideDelay: 0 }));
+                hide(ctrl, _extends$10({}, opts, { hideDelay: 0 }));
             }
         }
     }, opts.formOptions ? opts.formOptions : null);
@@ -4149,12 +4140,12 @@ var createView$10 = function createView(ctrl) {
         animated: true
     }), opts.fullscreen ? null : opts.title ? __WEBPACK_IMPORTED_MODULE_0_mithril___default()('div', {
         class: CSS_CLASSES$10.header,
-        config: function config(el) {
+        config: function config$$1(el) {
             ctrl.headerHeight = el.scrollHeight;
         }
     }, [__WEBPACK_IMPORTED_MODULE_0_mithril___default()('div', { class: CSS_CLASSES$10.title }, opts.title)]) : null, body, opts.fullscreen ? null : opts.footer ? __WEBPACK_IMPORTED_MODULE_0_mithril___default()('div', {
         class: CSS_CLASSES$10.footer,
-        config: function config(el, inited) {
+        config: function config$$1(el, inited) {
             ctrl.footerHeight = el.scrollHeight;
             if (inited) {
                 return;
@@ -4172,7 +4163,7 @@ var component$12 = {
         // instanceData contains {id, opts}
         var opts = instanceData.opts || {};
         var z = opts.z !== undefined ? opts.z : 3; // shadow depth
-        return _extends$11({}, instanceData, {
+        return _extends$10({}, instanceData, {
             instanceId: instanceData.instanceId,
             z: z,
             scrollEl: null,
@@ -4208,7 +4199,7 @@ var dialog = multiple({
 
 var rgba$6 = common$1.rgba;
 
-var defaultConfig$7 = {
+var componentConfig$7 = {
     size_regular: 7 * common$1.grid_unit_component,
     size_mini: 5 * common$1.grid_unit_component,
     padding_regular: 2 * common$1.grid_unit_component,
@@ -4220,7 +4211,7 @@ var defaultConfig$7 = {
     color_dark_text: rgba$6(common$1.color_primary_foreground)
 };
 
-var createStyles$14 = function createStyles(config) {
+var createStyles$16 = function createStyles(config$$1) {
     return [{
         '.pe-button--fab': [mixin.vendorize({
             'user-select': 'none'
@@ -4229,16 +4220,16 @@ var createStyles$14 = function createStyles(config) {
             position: 'relative',
             outline: 'none',
             cursor: 'pointer',
-            width: config.size_regular + 'px',
-            height: config.size_regular + 'px',
-            padding: config.padding_regular + 'px',
+            width: config$$1.size_regular + 'px',
+            height: config$$1.size_regular + 'px',
+            padding: config$$1.padding_regular + 'px',
             'border-radius': '50%',
             border: 'none',
 
             '&.pe-button--fab-mini': {
-                width: config.size_mini + 'px',
-                height: config.size_mini + 'px',
-                padding: (config.size_mini - common$1.unit_icon_size) / 2 + 'px'
+                width: config$$1.size_mini + 'px',
+                height: config$$1.size_mini + 'px',
+                padding: (config$$1.size_mini - common$1.unit_icon_size) / 2 + 'px'
             },
 
             ' .pe-button__content': {
@@ -4261,18 +4252,18 @@ var createStyles$14 = function createStyles(config) {
     }];
 };
 
-var layout$11 = (function (config) {
-    return mixin.createStyles(config, createStyles$14);
+var layout$11 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$16);
 });
 
 function _defineProperty$9(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$7 = function style(config, tint) {
+var style$7 = function style(config$$1, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$9({}, scope + '.pe-button.pe-button--fab', {
-        'background-color': config['color_' + tint + '_background'],
-        color: config['color_' + tint + '_text'],
+        'background-color': config$$1['color_' + tint + '_background'],
+        color: config$$1['color_' + tint + '_text'],
 
         ' .pe-button__content': {
             background: 'transparent'
@@ -4280,26 +4271,27 @@ var style$7 = function style(config, tint) {
     })];
 };
 
-var createStyles$15 = function createStyles(config) {
-    return [style$7(config, 'light'), {
+var createStyles$17 = function createStyles(config$$1) {
+    return [style$7(config$$1, 'light'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$7(config, 'dark', ' '),
+        style$7(config$$1, 'dark', ' '),
         // has dark theme
-        style$7(config, 'dark', '&')]
+        style$7(config$$1, 'dark', '&')]
     }];
 };
 
-var color$6 = (function (config) {
-    return mixin.createStyles(config, createStyles$15);
+var color$6 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$17);
 });
 
-var customConfigFn$8 = customConfig.fab;
-var config$8 = customConfigFn$8 ? customConfigFn$8(defaultConfig$7) : defaultConfig$7;
+var themeConfigFn$9 = __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"] && __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"].fab;
+var config$10 = themeConfigFn$9 ? themeConfigFn$9(componentConfig$7) : componentConfig$7;
+var id$10 = 'pe-fab';
 
-styler$1.add('pe-fab', layout$11(config$8), color$6(config$8));
+styler.add(id$10, layout$11(config$10), color$6(config$10));
 
-var _extends$12 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$11 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var CSS_CLASSES$11 = {
     block: 'pe-button--fab',
@@ -4309,7 +4301,7 @@ var CSS_CLASSES$11 = {
 var createView$11 = function createView(ctrl) {
     var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-    return __WEBPACK_IMPORTED_MODULE_0_mithril___default()(component$11, _extends$12({}, opts, {
+    return __WEBPACK_IMPORTED_MODULE_0_mithril___default()(component$11, _extends$11({}, opts, {
         parentClass: [CSS_CLASSES$11.block, opts.mini ? CSS_CLASSES$11.mini : null].join(' '),
         raised: true,
         ripple: {
@@ -4338,7 +4330,7 @@ var height_desktop = common$1.grid_unit_component * 8; // 64
 var height_mobile_portrait = common$1.grid_unit_component * 7; // 56
 var height_mobile_landscape = common$1.grid_unit_component * 6; // 48
 
-var defaultConfig$8 = {
+var componentConfig$8 = {
     margin_side: margin_side,
     indent: common$1.unit_indent,
     transition_duration: common$1.animation_duration,
@@ -4360,7 +4352,7 @@ var defaultConfig$8 = {
     color_dark_text: common$1.rgba(common$1.color_dark_foreground, common$1.blend_dark_text_primary)
 };
 
-var createStyles$16 = function createStyles(config) {
+var createStyles$18 = function createStyles(config$$1) {
     return [{
         '.pe-toolbar': [
         // use hardware-acceleration
@@ -4369,36 +4361,36 @@ var createStyles$16 = function createStyles(config) {
         }, common$1.prefixes_transform), {
             display: 'block',
             position: 'relative',
-            height: config.height_normal + 'px',
-            'font-size': config.font_size + 'px',
-            'line-height': config.line_height + 'em',
+            height: config$$1.height_normal + 'px',
+            'font-size': config$$1.font_size + 'px',
+            'line-height': config$$1.line_height + 'em',
             'background-color': '#CFD8DC', // just a default color, will normally be overridden
 
-            '&.pe-header--animated': mixin.defaultTransition('height', config.transition_duration, 'ease-in'),
+            '&.pe-header--animated': mixin.defaultTransition('height', config$$1.transition_duration, 'ease-in'),
 
             '&.pe-header--medium-tall': {
-                height: config.height_medium_tall + 'px'
+                height: config$$1.height_medium_tall + 'px'
             },
 
             '&.pe-header--tall': {
-                height: config.height_tall + 'px'
+                height: config$$1.height_tall + 'px'
             },
 
             '&.pe-toolbar--narrow': {
-                height: config.height_narrow + 'px',
+                height: config$$1.height_narrow + 'px',
 
                 ' .pe-toolbar__bar': {
-                    height: config.height_narrow + 'px',
+                    height: config$$1.height_narrow + 'px',
                     padding: 0
                 }
             },
 
             '&.pe-toolbar--narrow.pe-header--medium-tall': {
-                height: config.height_narrow_medium_tall + 'px'
+                height: config$$1.height_narrow_medium_tall + 'px'
             },
 
             '&.pe-toolbar--narrow.pe-header--tall': {
-                height: config.height_narrow_tall + 'px'
+                height: config$$1.height_narrow_tall + 'px'
             },
 
             '&.pe-header--tall .pe-toolbar__bar--middle': mixin.vendorize({
@@ -4412,15 +4404,15 @@ var createStyles$16 = function createStyles(config) {
                 }
             }, {
                 '> :first-child': {
-                    'margin-left': config.margin_side + 'px'
+                    'margin-left': config$$1.margin_side + 'px'
                 }
             }, {
                 '> :last-child': {
-                    'margin-right': config.margin_side + 'px'
+                    'margin-right': config$$1.margin_side + 'px'
                 }
             }, {
                 ' .pe-button--icon + span, .pe-button--icon + .pe-title': {
-                    'margin-left': config.indent - config.margin_side - common$1.grid_unit_icon_button + 'px'
+                    'margin-left': config$$1.indent - config$$1.margin_side - common$1.grid_unit_icon_button + 'px'
                 }
             }, {
                 '> span, > .pe-title': [mixin.ellipsis(1, common$1.line_height, 'em'), mixin.vendorize({
@@ -4431,12 +4423,12 @@ var createStyles$16 = function createStyles(config) {
                 }]
             }, {
                 '> span:first-child, .pe-toolbar__title--indent': [mixin.ellipsis(1, common$1.line_height, 'em'), {
-                    'margin-left': config.indent + 'px'
+                    'margin-left': config$$1.indent + 'px'
                 }]
             }, {
                 width: '100%',
                 position: 'absolute',
-                height: config.height_normal + 'px',
+                height: config$$1.height_normal + 'px',
                 'pointer-events': 'none',
 
                 ' .pe-fit': [mixin.fit(), {
@@ -4471,38 +4463,39 @@ var createStyles$16 = function createStyles(config) {
     }];
 };
 
-var layout$12 = (function (config) {
-    return mixin.createStyles(config, createStyles$16);
+var layout$12 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$18);
 });
 
 function _defineProperty$10(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$8 = function style(config, tint) {
+var style$8 = function style(config$$1, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$10({}, scope + '.pe-toolbar', {
-        color: config['color_' + tint + '_text']
+        color: config$$1['color_' + tint + '_text']
     })];
 };
 
-var createStyles$17 = function createStyles(config) {
-    return [style$8(config, 'light'), {
+var createStyles$19 = function createStyles(config$$1) {
+    return [style$8(config$$1, 'light'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$8(config, 'dark', ' '),
+        style$8(config$$1, 'dark', ' '),
         // has dark theme
-        style$8(config, 'dark', '&')]
+        style$8(config$$1, 'dark', '&')]
     }];
 };
 
-var color$7 = (function (config) {
-    return mixin.createStyles(config, createStyles$17);
+var color$7 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$19);
 });
 
-var customConfigFn$9 = customConfig.toolbar;
-var config$9 = customConfigFn$9 ? customConfigFn$9(defaultConfig$8) : defaultConfig$8;
+var themeConfigFn$10 = __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"] && __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"].toolbar;
+var config$11 = themeConfigFn$10 ? themeConfigFn$10(componentConfig$8) : componentConfig$8;
+var id$11 = 'pe-toolbar';
 
-styler$1.add('pe-toolbar', layout$12(config$9), color$7(config$9));
+styler.add(id$11, layout$12(config$11), color$7(config$11));
 
 var CSS_CLASSES$13 = {
     block: 'pe-toolbar',
@@ -4573,12 +4566,12 @@ var component$17 = {
     }
 };
 
-var defaultConfig$9 = {
+var componentConfig$9 = {
     box_shadow: 'inset 0px 5px 6px -3px rgba(0, 0, 0, 0.4)',
     box_shadow_height: 6
 };
 
-var createStyles$18 = function createStyles(config) {
+var createStyles$20 = function createStyles(config$$1) {
     return [{
         '.pe-header-panel': {
             position: 'relative',
@@ -4605,14 +4598,14 @@ var createStyles$18 = function createStyles(config) {
                 }, common$1.prefixes_transition), mixin.vendorize({
                     transform: 'translate3d(0,0,0)'
                 }, common$1.prefixes_transform), mixin.vendorize({
-                    'box-shadow': config.box_shadow
+                    'box-shadow': config$$1.box_shadow
                 }, common$1.prefixes_box_shadow), {
                     opacity: 0,
                     position: 'absolute',
                     top: 'auto',
                     left: 0,
                     right: 0,
-                    height: config.box_shadow_height + 'px',
+                    height: config$$1.box_shadow_height + 'px',
                     'z-index': 1
                 }]
             },
@@ -4694,17 +4687,19 @@ var createStyles$18 = function createStyles(config) {
     }];
 };
 
-var layout$13 = (function (config) {
-    return mixin.createStyles(config, createStyles$18);
+var layout$13 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$20);
 });
 
-var customConfigFn$10 = customConfig['header-panel'];
 // Does not contain color styles
-var config$10 = customConfigFn$10 ? customConfigFn$10(defaultConfig$9) : defaultConfig$9;
 
-styler$1.add('pe-header-panel', layout$13(config$10));
+var themeConfigFn$11 = __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"] && __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"]['header-panel'];
+var config$12 = themeConfigFn$11 ? themeConfigFn$11(componentConfig$9) : componentConfig$9;
+var id$12 = 'pe-header-panel';
 
-var _extends$13 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+styler.add(id$12, layout$13(config$12));
+
+var _extends$12 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var CSS_CLASSES$12 = {
     panel: 'pe-header-panel',
@@ -4823,7 +4818,7 @@ var createViewHeader = function createViewHeader(ctrl) {
         }
         ctrl.headerContainerElem = headerContainer;
     };
-    var header = opts.header ? createHeaderComponent(_extends$13({}, opts.header, ctrl.headerConfig)) : null;
+    var header = opts.header ? createHeaderComponent(_extends$12({}, opts.header, ctrl.headerConfig)) : null;
     return __WEBPACK_IMPORTED_MODULE_0_mithril___default()('div', {
         class: CSS_CLASSES$12.headerContainer,
         config: initHeaderContainer
@@ -4900,10 +4895,10 @@ var createView$12 = function createView(ctrl) {
         ctrl.restoreScrollPosition();
     };
 
-    var props = _extends$13({}, {
+    var props = _extends$12({}, {
         class: [CSS_CLASSES$12.panel, ctrl.fixed ? CSS_CLASSES$12.fixed : null, classForMode(ctrl.mode), opts.class].join(' '),
         id: opts.id || '',
-        config: function config(el, inited) {
+        config: function config$$1(el, inited) {
             if (inited) {
                 return;
             }
@@ -5197,7 +5192,7 @@ var component$15 = {
 
 var rgba$7 = common$1.rgba;
 
-var defaultConfig$10 = {
+var componentConfig$10 = {
     padding: common$1.grid_unit_component,
     padding_compact: common$1.grid_unit_component / 2,
     border_width_stacked: 1,
@@ -5207,35 +5202,35 @@ var defaultConfig$10 = {
     color_dark_border: rgba$7(common$1.color_dark_foreground, common$1.blend_dark_border_light)
 };
 
-var borderStyle = function borderStyle(config) {
+var borderStyle = function borderStyle(config$$1) {
     return mixin.hairline('border-bottom'), {
         'border-style': 'none none solid none',
-        'border-width': config.border_width_bordered + 'px'
+        'border-width': config$$1.border_width_bordered + 'px'
     };
 };
 
-var createStyles$19 = function createStyles(config) {
+var createStyles$21 = function createStyles(config$$1) {
     return [{
         '.pe-list': {
-            padding: config.padding + 'px 0',
+            padding: config$$1.padding + 'px 0',
 
             '&.pe-list--header': {
                 'padding-top': 0
             },
 
             '&.pe-list--compact': {
-                padding: config.padding_compact + 'px 0'
+                padding: config$$1.padding_compact + 'px 0'
             },
 
             '& + &': [mixin.hairline('border-top'), {
                 'border-style': 'solid none none none',
-                'border-width': config.border_width_stacked + 'px'
+                'border-width': config$$1.border_width_stacked + 'px'
             }],
 
             '&.pe-list--borders': {
                 ' .pe-list-tile:not(.pe-list__header)': {
                     '&:not(:last-child)': {
-                        '&': borderStyle(config)
+                        '&': borderStyle(config$$1)
                     }
                 }
             },
@@ -5245,7 +5240,7 @@ var createStyles$19 = function createStyles(config) {
 
                 ' .pe-list-tile:not(.pe-list__header)': {
                     '&:not(:last-child)': {
-                        ' .pe-list-tile__content:not(.pe-list-tile__content--front)': borderStyle(config)
+                        ' .pe-list-tile__content:not(.pe-list-tile__content--front)': borderStyle(config$$1)
                     }
                 }
             }
@@ -5253,13 +5248,13 @@ var createStyles$19 = function createStyles(config) {
     }];
 };
 
-var layout$14 = (function (config) {
-    return mixin.createStyles(config, createStyles$19);
+var layout$14 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$21);
 });
 
 function _defineProperty$11(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$9 = function style(config, tint) {
+var style$9 = function style(config$$1, tint) {
     var _ref;
 
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
@@ -5268,7 +5263,7 @@ var style$9 = function style(config, tint) {
         '&.pe-list--borders': {
             ' .pe-list-tile:not(.pe-list__header)': {
                 '&:not(:last-child)': {
-                    'border-color': config['color_' + tint + '_border']
+                    'border-color': config$$1['color_' + tint + '_border']
                 }
             }
         },
@@ -5276,35 +5271,36 @@ var style$9 = function style(config, tint) {
         '&.pe-list--borders-indented': {
             ' .pe-list-tile:not(.pe-list__header)': {
                 ' .pe-list-tile__content:not(.pe-list-tile__content--front)': {
-                    'border-color': config['color_' + tint + '_border']
+                    'border-color': config$$1['color_' + tint + '_border']
                 }
             }
         }
     }), _defineProperty$11(_ref, ' .pe-list + .pe-list', {
-        'border-color': config['color_' + tint + '_border']
+        'border-color': config$$1['color_' + tint + '_border']
     }), _ref)];
 };
 
-var createStyles$20 = function createStyles(config) {
-    return [style$9(config, 'light'), {
+var createStyles$22 = function createStyles(config$$1) {
+    return [style$9(config$$1, 'light'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$9(config, 'dark', ' '),
+        style$9(config$$1, 'dark', ' '),
         // has dark theme
-        style$9(config, 'dark', '&')]
+        style$9(config$$1, 'dark', '&')]
     }];
 };
 
-var color$8 = (function (config) {
-    return mixin.createStyles(config, createStyles$20);
+var color$8 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$22);
 });
 
-var customConfigFn$11 = customConfig.list;
-var config$11 = customConfigFn$11 ? customConfigFn$11(defaultConfig$10) : defaultConfig$10;
+var themeConfigFn$12 = __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"] && __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"].list;
+var config$13 = themeConfigFn$12 ? themeConfigFn$12(componentConfig$10) : componentConfig$10;
+var id$13 = 'pe-list';
 
-styler$1.add('pe-list', layout$14(config$11), color$8(config$11));
+styler.add(id$13, layout$14(config$13), color$8(config$13));
 
-var _extends$14 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$13 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var CSS_CLASSES$14 = {
     block: 'pe-list',
@@ -5328,7 +5324,7 @@ var createView$14 = function createView(ctrl) {
     };
     var headerOpts = void 0;
     if (opts.header) {
-        headerOpts = _extends$14({}, opts.header);
+        headerOpts = _extends$13({}, opts.header);
         headerOpts.class = [CSS_CLASSES$14.header, headerOpts.class || null].join(' ');
     }
     var content = [headerOpts ? __WEBPACK_IMPORTED_MODULE_0_mithril___default()(component$7, headerOpts) : null, opts.tiles ? opts.tiles : null];
@@ -5343,7 +5339,7 @@ var component$18 = {
     }
 };
 
-var defaultConfig$11 = {
+var componentConfig$11 = {
     sizes: [1, 1.5, 2, 3, 4, 5, 6, 7],
     min_size: 1.5,
     max_size_small_screen: 5,
@@ -5356,24 +5352,24 @@ var defaultConfig$11 = {
 
 function _defineProperty$12(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var unifySize$1 = function unifySize(config, size) {
-    return size < config.min_size ? config.min_size : size;
+var unifySize$1 = function unifySize(config$$1, size) {
+    return size < config$$1.min_size ? config$$1.min_size : size;
 };
 
-var widthClass$1 = function widthClass(config, size) {
+var widthClass$1 = function widthClass(config$$1, size) {
     var sizeStr = size.toString().replace('.', '-');
     return 'pe-menu--width-' + sizeStr;
 };
 
-var widthStyle = function widthStyle(config, size) {
-    var s = unifySize$1(config, size);
-    return _defineProperty$12({}, '&.' + widthClass$1(config, s), {
-        width: config.size_factor * s + 'px',
+var widthStyle = function widthStyle(config$$1, size) {
+    var s = unifySize$1(config$$1, size);
+    return _defineProperty$12({}, '&.' + widthClass$1(config$$1, s), {
+        width: config$$1.size_factor * s + 'px',
         'max-width': '100%'
     });
 };
 
-var createStyles$21 = function createStyles(config) {
+var createStyles$23 = function createStyles(config$$1) {
     return [{
         '.pe-menu': [
         // transition-duration set in js
@@ -5381,14 +5377,14 @@ var createStyles$21 = function createStyles(config) {
             'transition-timing-function': 'ease-out'
         }, common$1.prefixes_transition), mixin.vendorize({
             'transition-property': 'opacity'
-        }, common$1.prefixes_transition), config.sizes.map(function (size) {
-            return widthStyle(config, size);
+        }, common$1.prefixes_transition), config$$1.sizes.map(function (size) {
+            return widthStyle(config$$1, size);
         }), _defineProperty$12({
             'z-index': common$1.z_menu,
             opacity: 0,
             position: 'absolute',
             width: '100%',
-            'min-width': common$1.grid_unit_menu * config.min_size + 'px',
+            'min-width': common$1.grid_unit_menu * config$$1.min_size + 'px',
 
             '&.pe-menu--width-auto': {
                 width: 'auto'
@@ -5405,52 +5401,53 @@ var createStyles$21 = function createStyles(config) {
 
             ' .pe-menu__content': {
                 width: '100%',
-                'border-radius': config.border_radius + 'px'
+                'border-radius': config$$1.border_radius + 'px'
             }
 
         }, '@media (max-width: ' + common$1.unit_screen_size_large + 'px)', {
-            'max-width': config.max_size_small_screen * common$1.grid_unit_menu + 'px'
+            'max-width': config$$1.max_size_small_screen * common$1.grid_unit_menu + 'px'
         })]
 
     }];
 };
 
-var layout$15 = (function (config) {
-    return mixin.createStyles(config, createStyles$21);
+var layout$15 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$23);
 });
 
 function _defineProperty$13(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$10 = function style(config, tint) {
+var style$10 = function style(config$$1, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$13({}, scope + '.pe-menu', {
         ' .pe-menu__content': {
-            'background-color': config['color_' + tint + '_background']
+            'background-color': config$$1['color_' + tint + '_background']
         }
     })];
 };
 
-var createStyles$22 = function createStyles(config) {
-    return [style$10(config, 'light'), {
+var createStyles$24 = function createStyles(config$$1) {
+    return [style$10(config$$1, 'light'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$10(config, 'dark', ' '),
+        style$10(config$$1, 'dark', ' '),
         // has dark theme
-        style$10(config, 'dark', '&')]
+        style$10(config$$1, 'dark', '&')]
     }];
 };
 
-var color$9 = (function (config) {
-    return mixin.createStyles(config, createStyles$22);
+var color$9 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$24);
 });
 
-var customConfigFn$12 = customConfig.menu;
-var config$12 = customConfigFn$12 ? customConfigFn$12(defaultConfig$11) : defaultConfig$11;
+var themeConfigFn$13 = __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"] && __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"].menu;
+var config$14 = themeConfigFn$13 ? themeConfigFn$13(componentConfig$11) : componentConfig$11;
+var id$14 = 'pe-menu';
 
-styler$1.add('pe-menu', layout$15(config$12), color$9(config$12));
+styler.add(id$14, layout$15(config$14), color$9(config$14));
 
-var _extends$15 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$14 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var CSS_CLASSES$15 = {
     block: 'pe-menu',
@@ -5537,7 +5534,7 @@ var positionMenu = function positionMenu(ctrl, opts) {
 
 var show$2 = function show(ctrl, opts) {
     ctrl.isTransitioning = true;
-    return transition$1.show(_extends$15({}, opts, {
+    return transition$1.show(_extends$14({}, opts, {
         el: ctrl.el,
         showClass: CSS_CLASSES$15.visible
     })).then(function () {
@@ -5551,7 +5548,7 @@ var show$2 = function show(ctrl, opts) {
 
 var hide$2 = function hide(ctrl, opts) {
     ctrl.isTransitioning = true;
-    return transition$1.hide(_extends$15({}, opts, {
+    return transition$1.hide(_extends$14({}, opts, {
         el: ctrl.el,
         showClass: CSS_CLASSES$15.visible
     })).then(function () {
@@ -5592,7 +5589,7 @@ var createView$15 = function createView(ctrl) {
             // clicked on .pe-menu__content
             hide$2(ctrl, opts);
         } else {
-            hide$2(ctrl, _extends$15({}, opts, { hideDelay: 0 }));
+            hide$2(ctrl, _extends$14({}, opts, { hideDelay: 0 }));
         }
     };
     var tag = opts.tag || 'div';
@@ -5600,7 +5597,7 @@ var createView$15 = function createView(ctrl) {
         class: [CSS_CLASSES$15.block, opts.permanent ? CSS_CLASSES$15.permanent : null, opts.target ? CSS_CLASSES$15.target : 'layout center-center', opts.size ? widthClass(unifySize(opts.size)) : null, opts.class].join(' '),
 
         id: opts.id || '',
-        config: function config(el, inited, context, vdom) {
+        config: function config$$1(el, inited, context, vdom) {
             if (inited) {
                 return;
             }
@@ -5616,7 +5613,7 @@ var createView$15 = function createView(ctrl) {
 
             var handleEscape = function handleEscape(e) {
                 if (e.which === 27) {
-                    hide$2(ctrl, _extends$15({}, opts, { hideDelay: 0 }));
+                    hide$2(ctrl, _extends$14({}, opts, { hideDelay: 0 }));
                 }
             };
 
@@ -5641,7 +5638,7 @@ var createView$15 = function createView(ctrl) {
     };
     var content = __WEBPACK_IMPORTED_MODULE_0_mithril___default()('div', {
         class: CSS_CLASSES$15.content,
-        config: function config(el, inited) {
+        config: function config$$1(el, inited) {
             if (!inited) {
                 ctrl.contentEl = el;
             }
@@ -5708,7 +5705,7 @@ var Timer = function Timer(callback, delay) {
     this.resume();
 };
 
-var _extends$16 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$15 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var CSS_CLASSES$16 = {
     content: 'pe-notification__content',
@@ -5745,7 +5742,7 @@ var show$3 = function show(ctrl, opts) {
     stopTimer(ctrl);
     var id = ctrl.instanceId;
     ctrl.isTransitioning = true;
-    return transition$1.show(_extends$16({}, opts, ctrl.transitions.show(ctrl, opts))).then(function () {
+    return transition$1.show(_extends$15({}, opts, ctrl.transitions.show(ctrl, opts))).then(function () {
         ctrl.isTransitioning = false;
         if (ctrl.didShow) {
             // notify multiple
@@ -5770,7 +5767,7 @@ var hide$3 = function hide(ctrl, opts) {
     stopTimer(ctrl);
     var id = ctrl.instanceId;
     ctrl.isTransitioning = true;
-    return transition$1.hide(_extends$16({}, opts, ctrl.transitions.hide(ctrl, opts))).then(function () {
+    return transition$1.hide(_extends$15({}, opts, ctrl.transitions.hide(ctrl, opts))).then(function () {
         stopTimer(ctrl);
         ctrl.isTransitioning = false;
         if (ctrl.didHide) {
@@ -5789,7 +5786,7 @@ var createView$16 = function createView(ctrl) {
     var props = {
         class: [ctrl.class, opts.layout === 'vertical' ? CSS_CLASSES$16.vertical : CSS_CLASSES$16.horizontal, opts.class].join(' '),
         id: opts.id || '',
-        config: function config(el, inited, context, vdom) {
+        config: function config$$1(el, inited, context, vdom) {
             if (inited) return;
             if (opts.config) {
                 opts.config(el, inited, context, vdom);
@@ -5831,7 +5828,7 @@ var component$22 = {
         var instanceData = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
         // instanceData contains {id, opts}
-        return _extends$16({}, instanceData, {
+        return _extends$15({}, instanceData, {
             el: null,
             containerEl: null,
             dismissEl: null,
@@ -5887,7 +5884,7 @@ var transitions = {
 
 var buttonPaddingH = 8; // padding, inner text space
 
-var defaultConfig$12 = {
+var componentConfig$12 = {
     width: 274,
     minHeight: 80,
     border_radius: common$1.unit_block_border_radius,
@@ -5907,7 +5904,7 @@ var defaultConfig$12 = {
     color_dark_text: common$1.rgba(common$1.color_light_foreground, common$1.blend_light_text_primary)
 };
 
-var createStyles$23 = function createStyles(config) {
+var createStyles$25 = function createStyles(config$$1) {
     return [{
         '.pe-notification__holder': [mixin.fit(), flex$1.layoutCenterCenter, {
             'z-index': common$1.z_notification
@@ -5915,18 +5912,18 @@ var createStyles$23 = function createStyles(config) {
         '.pe-notification': [flex$1.layoutCenter, {
             position: 'relative',
 
-            padding: '0 ' + config.side_padding + 'px',
+            padding: '0 ' + config$$1.side_padding + 'px',
             margin: '0 auto',
-            'border-radius': config.border_radius + 'px',
+            'border-radius': config$$1.border_radius + 'px',
 
             ' .pe-notification__content': {
                 width: '100%'
             },
 
             ' .pe-notification__title': {
-                'padding': config.title_single_padding_v + 'px ' + config.title_padding_h + 'px',
-                'font-size': config.font_size + 'px',
-                'line-height': config.line_height + 'px'
+                'padding': config$$1.title_single_padding_v + 'px ' + config$$1.title_padding_h + 'px',
+                'font-size': config$$1.font_size + 'px',
+                'line-height': config$$1.line_height + 'px'
             },
 
             ' .pe-notification__action': {
@@ -5939,8 +5936,8 @@ var createStyles$23 = function createStyles(config) {
                 ' .pe-notification__content': flex$1.layoutHorizontal,
                 ' .pe-notification__title': flex$1.flex(),
                 ' .pe-notification__title--multi-line': {
-                    'padding-top': config.title_multi_padding_v + 'px',
-                    'padding-bottom': config.title_multi_padding_v + 'px'
+                    'padding-top': config$$1.title_multi_padding_v + 'px',
+                    'padding-bottom': config$$1.title_multi_padding_v + 'px'
                 },
                 ' .pe-notification__action': flex$1.layoutCenter
             },
@@ -5950,51 +5947,52 @@ var createStyles$23 = function createStyles(config) {
                     'padding-bottom': '4px'
                 },
                 ' .pe-notification__title--multi-line': {
-                    'padding-top': config.title_multi_padding_v + 'px'
+                    'padding-top': config$$1.title_multi_padding_v + 'px'
                 },
                 ' .pe-notification__action': flex$1.layoutEndJustified
             }
         }],
         '.pe-notification--notification': {
-            width: config.width + 'px',
-            'min-height': config.minHeight + 'px'
+            width: config$$1.width + 'px',
+            'min-height': config$$1.minHeight + 'px'
         }
     }];
 };
 
-var layout$16 = (function (config) {
-    return mixin.createStyles(config, createStyles$23);
+var layout$16 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$25);
 });
 
 function _defineProperty$14(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$11 = function style(config, tint) {
+var style$11 = function style(config$$1, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$14({}, scope + '.pe-notification', {
-        color: config['color_' + tint + '_text'],
-        background: config['color_' + tint + '_background']
+        color: config$$1['color_' + tint + '_text'],
+        background: config$$1['color_' + tint + '_background']
     })];
 };
 
-var createStyles$24 = function createStyles(config) {
-    return [style$11(config, 'light'), {
+var createStyles$26 = function createStyles(config$$1) {
+    return [style$11(config$$1, 'light'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$11(config, 'dark', ' '),
+        style$11(config$$1, 'dark', ' '),
         // has dark theme
-        style$11(config, 'dark', '&')]
+        style$11(config$$1, 'dark', '&')]
     }];
 };
 
-var color$10 = (function (config) {
-    return mixin.createStyles(config, createStyles$24);
+var color$10 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$26);
 });
 
-var customConfigFn$13 = customConfig.notification;
-var config$13 = customConfigFn$13 ? customConfigFn$13(defaultConfig$12) : defaultConfig$12;
+var themeConfigFn$14 = __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"] && __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"].notification;
+var config$15 = themeConfigFn$14 ? themeConfigFn$14(componentConfig$12) : componentConfig$12;
+var id$15 = 'pe-notification-notification';
 
-styler$1.add('pe-notification-notification', layout$16(config$13), color$10(config$13));
+styler.add(id$15, layout$16(config$15), color$10(config$15));
 
 var notification = multiple({
     instance: component$22,
@@ -6007,34 +6005,35 @@ var notification = multiple({
     transitions: transitions
 });
 
-var layout$17 = (function (config) {
-    return mixin.createStyles(config, function (config) {
-        return createStyles$10(config, '.pe-control--radio', 'radio');
+var layout$17 = (function (config$$1) {
+    return mixin.createStyles(config$$1, function (config$$1) {
+        return createStyles$12(config$$1, '.pe-control--radio', 'radio');
     });
 });
 
-var createStyles$25 = function createStyles(config) {
-    return [style$5(config, 'light', '.pe-control--radio'), {
+var createStyles$27 = function createStyles(config$$1) {
+    return [style$5(config$$1, 'light', '.pe-control--radio'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$5(config, 'dark', ' '),
+        style$5(config$$1, 'dark', ' '),
         // has dark theme
-        style$5(config, 'dark', '&')]
+        style$5(config$$1, 'dark', '&')]
     }];
 };
 
-var color$11 = (function (config) {
-    return mixin.createStyles(config, createStyles$25);
+var color$11 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$27);
 });
 
-var customConfigFn$14 = customConfig['radio-button'];
+var themeConfigFn$15 = __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"] && __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"]['radio-button'];
+var config$16 = themeConfigFn$15 ? themeConfigFn$15(selectionControlConfig) : selectionControlConfig;
+var id$16 = 'pe-radio-button';
+
+styler.add(id$16, layout$17(config$16), color$11(config$16));
+
 // default icons
 var iconOff$1 = __WEBPACK_IMPORTED_MODULE_0_mithril___default.a.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>');
 var iconOn$1 = __WEBPACK_IMPORTED_MODULE_0_mithril___default.a.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>');
-
-var config$14 = customConfigFn$14 ? customConfigFn$14(selectionControlConfig) : selectionControlConfig;
-
-styler$1.add('pe-radio-button', layout$17(config$14), color$11(config$14));
 
 var theme$1 = {
     iconOff: iconOff$1,
@@ -6069,7 +6068,7 @@ var rgba$8 = common$1.rgba;
 var line_height_input = 20;
 var input_padding_v = 7;
 
-var defaultConfig$14 = {
+var componentConfig$14 = {
     vertical_spacing_top: 6, // 8 minus natural label height padding (1)
     vertical_spacing_bottom: 7, // 8 minus natural label height padding (1)
     input_focus_border_width: 2,
@@ -6134,7 +6133,7 @@ var defaultConfig$14 = {
     color_dark_counter_ok_border: rgba$8(common$1.color_primary)
 };
 
-var createStyles$26 = function createStyles(config) {
+var createStyles$28 = function createStyles(config$$1) {
     return [{
         '.pe-textfield': [mixin.clearfix(), {
             position: 'relative',
@@ -6143,20 +6142,20 @@ var createStyles$26 = function createStyles(config) {
             'box-sizing': 'border-box',
             margin: 0,
             overflow: 'visible', // Firefox needs this
-            'padding-bottom': config.vertical_spacing_bottom + 'px',
+            'padding-bottom': config$$1.vertical_spacing_bottom + 'px',
             width: '100%',
             'max-width': '100%',
 
             ' .pe-textfield__input-area': {
                 position: 'relative',
-                'padding-top': config.vertical_spacing_top + 'px',
+                'padding-top': config$$1.vertical_spacing_top + 'px',
 
-                '&:after': [mixin.defaultTransition('opacity', config.input_focus_border_animation_duration), {
+                '&:after': [mixin.defaultTransition('opacity', config$$1.input_focus_border_animation_duration), {
                     position: 'absolute',
                     content: '""',
                     bottom: 0,
                     left: 0,
-                    height: config.input_focus_border_width + 'px',
+                    height: config$$1.input_focus_border_width + 'px',
                     width: '100%',
                     opacity: 0
                 }]
@@ -6167,17 +6166,17 @@ var createStyles$26 = function createStyles(config) {
 
             ' .pe-textfield__input': {
                 display: 'block',
-                'font-size': config.font_size_input + 'px',
-                'line-height': config.line_height_input + 'px',
+                'font-size': config$$1.font_size_input + 'px',
+                'line-height': config$$1.line_height_input + 'px',
                 width: '100%',
                 background: 'none',
                 'text-align': 'left',
                 color: 'inherit',
-                'border-width': config.input_border_width + 'px',
+                'border-width': config$$1.input_border_width + 'px',
                 'border-style': 'none none solid none',
                 'border-radius': 0,
                 margin: 0,
-                padding: config.input_padding_v + 'px ' + config.input_padding_h + 'px',
+                padding: config$$1.input_padding_v + 'px ' + config$$1.input_padding_h + 'px',
 
                 // disable glow on textfield--invalid fields
                 '&:textfield--invalid': {
@@ -6188,26 +6187,26 @@ var createStyles$26 = function createStyles(config) {
                 }
             },
             ' textarea.pe-textfield__input': {
-                margin: config.input_padding_v + 'px ' + config.input_padding_h + 'px',
+                margin: config$$1.input_padding_v + 'px ' + config$$1.input_padding_h + 'px',
                 padding: 0,
                 display: 'block'
             },
 
             // focus border
             ' textfield__input:focus, &.pe-textfield--focused .pe-textfield__input': {
-                'border-width': config.input_border_width + 'px',
+                'border-width': config$$1.input_border_width + 'px',
                 outline: 'none'
             },
 
             ' .pe-textfield__label': {
                 position: 'absolute',
                 display: 'block',
-                top: config.vertical_spacing_top + config.input_padding_v + 'px',
+                top: config$$1.vertical_spacing_top + config$$1.input_padding_v + 'px',
                 bottom: 0,
-                left: config.input_padding_h + 'px',
-                right: config.input_padding_h + 'px',
-                'font-size': config.font_size_input + 'px',
-                'line-height': config.line_height_input + 'px',
+                left: config$$1.input_padding_h + 'px',
+                right: config$$1.input_padding_h + 'px',
+                'font-size': config$$1.font_size_input + 'px',
+                'line-height': config$$1.line_height_input + 'px',
                 'pointer-events': 'none',
                 'white-space': 'nowrap',
                 'text-align': 'left',
@@ -6224,44 +6223,44 @@ var createStyles$26 = function createStyles(config) {
             },
 
             '&.pe-textfield--floating-label': {
-                'padding-bottom': config.floating_label_vertical_spacing_bottom + 'px',
+                'padding-bottom': config$$1.floating_label_vertical_spacing_bottom + 'px',
 
                 ' .pe-textfield__input-area': {
-                    'padding-top': config.floating_label_vertical_spacing_top + 'px'
+                    'padding-top': config$$1.floating_label_vertical_spacing_top + 'px'
                 },
 
-                ' .pe-textfield__label': [mixin.defaultTransition('all', config.floating_label_animation_duration), {
-                    top: config.floating_label_vertical_spacing_top + config.input_padding_v + 'px'
+                ' .pe-textfield__label': [mixin.defaultTransition('all', config$$1.floating_label_animation_duration), {
+                    top: config$$1.floating_label_vertical_spacing_top + config$$1.input_padding_v + 'px'
                 }],
 
                 '&.pe-textfield--focused, &.pe-textfield--dirty': {
                     ' .pe-textfield__label': {
-                        'font-size': config.font_size_floating_label + 'px',
-                        top: config.floating_label_top + 'px',
+                        'font-size': config$$1.font_size_floating_label + 'px',
+                        top: config$$1.floating_label_top + 'px',
                         visibility: 'visible'
                     }
                 },
 
                 '&.pe-textfield--dense': {
-                    'font-size': config.dense_font_size_input + 'px',
-                    'padding-bottom': config.dense_floating_label_vertical_spacing_bottom + 'px',
+                    'font-size': config$$1.dense_font_size_input + 'px',
+                    'padding-bottom': config$$1.dense_floating_label_vertical_spacing_bottom + 'px',
 
                     ' .pe-textfield__input-area': {
-                        'padding-top': config.dense_floating_label_vertical_spacing_top + 'px'
+                        'padding-top': config$$1.dense_floating_label_vertical_spacing_top + 'px'
                     },
 
                     ' .pe-textfield__input': {
-                        'font-size': config.dense_font_size_input + 'px'
+                        'font-size': config$$1.dense_font_size_input + 'px'
                     },
                     ' .pe-textfield__label': {
-                        'font-size': config.dense_font_size_input + 'px',
-                        top: config.dense_floating_label_vertical_spacing_top + config.input_padding_v + 'px'
+                        'font-size': config$$1.dense_font_size_input + 'px',
+                        top: config$$1.dense_floating_label_vertical_spacing_top + config$$1.input_padding_v + 'px'
                     },
 
                     '&.pe-textfield--focused, &.pe-textfield--dirty': {
                         ' .pe-textfield__label': {
-                            'font-size': config.dense_font_size_floating_label + 'px',
-                            top: config.dense_floating_label_top + 'px'
+                            'font-size': config$$1.dense_font_size_floating_label + 'px',
+                            top: config$$1.dense_floating_label_top + 'px'
                         }
                     }
                 }
@@ -6285,10 +6284,10 @@ var createStyles$26 = function createStyles(config) {
             },
 
             ' .pe-textfield__error, .pe-textfield__error-placeholder, .pe-textfield__help, .pe-textfield__counter': {
-                'margin-top': config.margin_top_error_message + 'px',
-                'font-size': config.font_size_error + 'px',
+                'margin-top': config$$1.margin_top_error_message + 'px',
+                'font-size': config$$1.font_size_error + 'px',
                 'line-height': common$1.line_height,
-                'min-height': config.font_size_error * common$1.line_height + 'px'
+                'min-height': config$$1.font_size_error * common$1.line_height + 'px'
             },
 
             ' .pe-textfield__counter': {
@@ -6328,30 +6327,30 @@ var createStyles$26 = function createStyles(config) {
                 },
 
                 ' .pe-textfield__input': {
-                    padding: config.full_width_input_padding_v + 'px ' + config.full_width_input_padding_h + 'px'
+                    padding: config$$1.full_width_input_padding_v + 'px ' + config$$1.full_width_input_padding_h + 'px'
                 },
 
                 ' .pe-textfield__error, .pe-textfield__help, .pe-textfield__counter': {
-                    'padding-left': config.full_width_input_padding_h + 'px',
-                    'padding-right': config.full_width_input_padding_h + 'px'
+                    'padding-left': config$$1.full_width_input_padding_h + 'px',
+                    'padding-right': config$$1.full_width_input_padding_h + 'px'
                 },
 
                 ' .pe-textfield__label': {
-                    top: config.full_width_input_padding_v + 'px',
-                    left: config.full_width_input_padding_h + 'px',
-                    right: config.full_width_input_padding_h + 'px'
+                    top: config$$1.full_width_input_padding_v + 'px',
+                    left: config$$1.full_width_input_padding_h + 'px',
+                    right: config$$1.full_width_input_padding_h + 'px'
                 },
 
                 '&.pe-textfield--dense': {
                     ' .pe-textfield__input': {
-                        'font-size': config.dense_full_width_font_size_input + 'px',
-                        padding: config.dense_full_width_input_padding_v + 'px ' + config.dense_full_width_input_padding_h + 'px'
+                        'font-size': config$$1.dense_full_width_font_size_input + 'px',
+                        padding: config$$1.dense_full_width_input_padding_v + 'px ' + config$$1.dense_full_width_input_padding_h + 'px'
                     },
                     ' .pe-textfield__label': {
-                        'font-size': config.dense_full_width_font_size_input + 'px',
-                        top: config.dense_full_width_input_padding_v + 'px',
-                        left: config.dense_full_width_input_padding_h + 'px',
-                        right: config.dense_full_width_input_padding_h + 'px'
+                        'font-size': config$$1.dense_full_width_font_size_input + 'px',
+                        top: config$$1.dense_full_width_input_padding_v + 'px',
+                        left: config$$1.dense_full_width_input_padding_h + 'px',
+                        right: config$$1.dense_full_width_input_padding_h + 'px'
                     }
                 }
             }
@@ -6359,18 +6358,18 @@ var createStyles$26 = function createStyles(config) {
     }];
 };
 
-var layout$18 = (function (config) {
-    return mixin.createStyles(config, createStyles$26);
+var layout$18 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$28);
 });
 
 function _defineProperty$16(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$12 = function style(config, tint) {
+var style$12 = function style(config$$1, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$16({}, scope + '.pe-textfield', {
         // border color
-        color: config['color_' + tint + '_focus_border'], // override by specifying 'color'
+        color: config$$1['color_' + tint + '_focus_border'], // override by specifying 'color'
 
         ' .pe-textfield__input-area': {
             color: 'inherit',
@@ -6381,103 +6380,104 @@ var style$12 = function style(config, tint) {
         },
         '&.pe-textfield--counter ': {
             ' .pe-textfield__input-area:after': {
-                'background-color': config['color_' + tint + '_counter_ok_border']
+                'background-color': config$$1['color_' + tint + '_counter_ok_border']
             }
         },
 
         ' .pe-textfield__input': {
-            color: config['color_' + tint + '_input_text'],
-            'border-color': config['color_' + tint + '_input_bottom_border']
+            color: config$$1['color_' + tint + '_input_text'],
+            'border-color': config$$1['color_' + tint + '_input_bottom_border']
         },
 
         ' .pe-textfield__label': {
-            color: config['color_' + tint + '_label_text']
+            color: config$$1['color_' + tint + '_label_text']
         },
 
         '&.pe-textfield--disabled, &.pe-textfield--readonly': {
             ' .pe-textfield__input-area:after': {
                 'background-color': 'transparent',
-                'background-image': 'linear-gradient(to right, ' + config['color_' + tint + '_disabled_label_text'] + ' 20%, rgba(255, 255, 255, 0) 0%)'
+                'background-image': 'linear-gradient(to right, ' + config$$1['color_' + tint + '_disabled_label_text'] + ' 20%, rgba(255, 255, 255, 0) 0%)'
             }
         },
 
         '&.pe-textfield--disabled': {
             ' .pe-textfield__input, .pe-textfield__label': {
-                color: config['color_' + tint + '_disabled_label_text']
+                color: config$$1['color_' + tint + '_disabled_label_text']
             }
         },
 
         '&.pe-textfield--readonly': {
             ' .pe-textfield__input, .pe-textfield__label': {
-                color: config['color_' + tint + '_readonly_label_text']
+                color: config$$1['color_' + tint + '_readonly_label_text']
             }
         },
 
         '&.pe-textfield--focused': {
             // note: not when textfield--dirty and not textfield--focused
             '&.pe-textfield--floating-label .pe-textfield__label': {
-                color: config['color_' + tint + '_highlight_text']
+                color: config$$1['color_' + tint + '_highlight_text']
             },
 
             '&.pe-textfield--required.pe-textfield--floating-label': {
                 ' .pe-textfield__label:after': {
-                    color: config['color_' + tint + '_required_symbol']
+                    color: config$$1['color_' + tint + '_required_symbol']
                 }
             }
         },
 
         ' .pe-textfield__help, .pe-textfield__counter': {
-            color: config['color_' + tint + '_help_text']
+            color: config$$1['color_' + tint + '_help_text']
         },
 
         '&.pe-textfield--invalid:not(.pe-textfield--hide-validation)': {
             ' .pe-textfield__input': {
-                'border-color': config['color_' + tint + '_input_error_border'],
+                'border-color': config$$1['color_' + tint + '_input_error_border'],
                 'box-shadow': 'none'
             },
             ' .pe-textfield__label': {
-                color: config['color_' + tint + '_input_error_text']
+                color: config$$1['color_' + tint + '_input_error_text']
             },
             ' .pe-textfield__error, .pe-textfield__counter, .pe-textfield__help': {
-                color: config['color_' + tint + '_input_error_text']
+                color: config$$1['color_' + tint + '_input_error_text']
             },
             '&.pe-textfield--required .pe-textfield__label': {
-                color: config['color_' + tint + '_input_error_text']
+                color: config$$1['color_' + tint + '_input_error_text']
             },
             '&, &.pe-textfield--counter': {
                 ' .pe-textfield__input-area:after': {
-                    'background-color': config['color_' + tint + '_input_error_border']
+                    'background-color': config$$1['color_' + tint + '_input_error_border']
                 }
             }
         },
 
         ' .pe-textfield__input:-webkit-autofill': {
-            '-webkit-box-shadow': '0 0 0px 1000px ' + config['color_' + tint + '_input_background'] + ' inset',
-            color: config['color_' + tint + '_input_text'] + ' !important'
+            '-webkit-box-shadow': '0 0 0px 1000px ' + config$$1['color_' + tint + '_input_background'] + ' inset',
+            color: config$$1['color_' + tint + '_input_text'] + ' !important'
         }
     })];
 };
 
-var createStyles$27 = function createStyles(config) {
-    return [style$12(config, 'light'), {
+var createStyles$29 = function createStyles(config$$1) {
+    return [style$12(config$$1, 'light'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$12(config, 'dark', ' '),
+        style$12(config$$1, 'dark', ' '),
         // has dark theme
-        style$12(config, 'dark', '&')]
+        style$12(config$$1, 'dark', '&')]
     }];
 };
 
-var color$12 = (function (config) {
-    return mixin.createStyles(config, createStyles$27);
+var color$12 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$29);
 });
 
-var customConfigFn$15 = customConfig.textfield;
-var config$15 = customConfigFn$15 ? customConfigFn$15(defaultConfig$14) : defaultConfig$14;
+var themeConfigFn$16 = __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"] && __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"].textfield;
+var config$17 = themeConfigFn$16 ? themeConfigFn$16(componentConfig$14) : componentConfig$14;
+var id$17 = 'pe-textfield';
 
-styler$1.add('pe-textfield', layout$18(config$15), color$12(config$15));
+styler.add(id$17, layout$18(config$17), color$12(config$17));
 
-var _extends$18 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$17 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _defineProperty$15(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -6647,7 +6647,7 @@ var createView$19 = function createView(ctrl) {
     var props = {
         class: [CSS_CLASSES$18.block, isInvalid ? CSS_CLASSES$18.stateInvalid : '', ctrl.focus() ? CSS_CLASSES$18.stateFocused : '', opts.floatingLabel ? CSS_CLASSES$18.hasFloatingLabel : '', opts.disabled ? CSS_CLASSES$18.stateDisabled : '', opts.readonly ? CSS_CLASSES$18.stateReadonly : '', ctrl.isDirty ? CSS_CLASSES$18.stateDirty : '', opts.dense ? CSS_CLASSES$18.isDense : '', opts.required ? CSS_CLASSES$18.isRequired : '', opts.fullWidth ? CSS_CLASSES$18.hasFullWidth : '', opts.counter ? CSS_CLASSES$18.hasCounter : '', opts.hideSpinner !== false ? CSS_CLASSES$18.hideSpinner : '', opts.hideClear !== false ? CSS_CLASSES$18.hideClear : '', opts.hideValidation ? CSS_CLASSES$18.hideValidation : '', opts.hideRequiredMark ? CSS_CLASSES$18.hideRequiredChar : '', opts.class].join(' '),
         id: opts.id || '',
-        config: function config(el, inited, context, vdom) {
+        config: function config$$1(el, inited, context, vdom) {
             if (inited) {
                 return;
             }
@@ -6671,7 +6671,7 @@ var createView$19 = function createView(ctrl) {
                 ctrl.inputEl().focus();
             }, 0);
         }
-    }), opts.label) : null, __WEBPACK_IMPORTED_MODULE_0_mithril___default()(inputTag, _extends$18({}, {
+    }), opts.label) : null, __WEBPACK_IMPORTED_MODULE_0_mithril___default()(inputTag, _extends$17({}, {
         class: CSS_CLASSES$18.input,
         type: type,
         name: opts.name || '',
@@ -6742,7 +6742,7 @@ var createView$19 = function createView(ctrl) {
             }
         }
     } : null, {
-        config: function config(el, inited, context) {
+        config: function config$$1(el, inited, context) {
             if (inited) {
                 return;
             }
@@ -6835,7 +6835,7 @@ var fullwidth_side_padding = insetSideMargin;
 var fullwidth_input_right_padding = 0;
 var fullwidth_border_radius = 0;
 
-var defaultConfig$15 = {
+var componentConfig$15 = {
     font_size_input: font_size_input,
     line_height_input: line_height_input$1,
 
@@ -6857,10 +6857,10 @@ var defaultConfig$15 = {
     color_dark_background: rgba$9(common$1.color_dark_background)
 };
 
-var createStyles$28 = function createStyles(config) {
-    var inset_input_padding_v = (config.inset_height - config.line_height_input) / 2;
-    var fullwidth_input_padding_v = (config.fullwidth_height - config.line_height_input) / 2;
-    var fullwidth_input_indent = common$1.unit_indent - config.fullwidth_side_padding - common$1.grid_unit_icon_button;
+var createStyles$30 = function createStyles(config$$1) {
+    var inset_input_padding_v = (config$$1.inset_height - config$$1.line_height_input) / 2;
+    var fullwidth_input_padding_v = (config$$1.fullwidth_height - config$$1.line_height_input) / 2;
+    var fullwidth_input_indent = common$1.unit_indent - config$$1.fullwidth_side_padding - common$1.grid_unit_icon_button;
 
     return [{
         '.pe-search': [flex$1.flex(), {
@@ -6882,8 +6882,8 @@ var createStyles$28 = function createStyles(config) {
             },
 
             ' .pe-textfield__input, .pe-textfield__label': {
-                'font-size': config.font_size_input + 'px',
-                'line-height': config.line_height_input + 'px'
+                'font-size': config$$1.font_size_input + 'px',
+                'line-height': config$$1.line_height_input + 'px'
             },
 
             ' .pe-textfield__input': {
@@ -6904,76 +6904,77 @@ var createStyles$28 = function createStyles(config) {
             ' .pe-button--icon': flex$1.selfCenter,
 
             '&.pe-search--inset': {
-                'border-radius': config.inset_border_radius + 'px',
-                padding: '0 ' + config.inset_side_padding + 'px',
+                'border-radius': config$$1.inset_border_radius + 'px',
+                padding: '0 ' + config$$1.inset_side_padding + 'px',
 
                 '&, .pe-textfield__input-area, .pe-textfield__input, .pe-textfield__label': {
-                    height: config.inset_height + 'px'
+                    height: config$$1.inset_height + 'px'
                 },
                 ' .pe-textfield__input, .pe-textfield__label': {
                     'padding-top': inset_input_padding_v + 'px',
                     'padding-bottom': inset_input_padding_v + 'px',
-                    'padding-left': config.inset_input_indent + 'px',
-                    'padding-right': config.inset_input_right_padding + 'px'
+                    'padding-left': config$$1.inset_input_indent + 'px',
+                    'padding-right': config$$1.inset_input_right_padding + 'px'
                 }
             },
 
             '&.pe-search--fullwidth': {
-                'border-radius': config.fullwidth_border_radius + 'px',
-                padding: '0 ' + config.fullwidth_side_padding + 'px',
+                'border-radius': config$$1.fullwidth_border_radius + 'px',
+                padding: '0 ' + config$$1.fullwidth_side_padding + 'px',
 
                 '&, .pe-textfield__input-area, .pe-textfield__input, .pe-textfield__label': {
-                    height: config.fullwidth_height + 'px'
+                    height: config$$1.fullwidth_height + 'px'
                 },
                 ' .pe-textfield__input, .pe-textfield__label': {
                     'padding-top': fullwidth_input_padding_v + 'px',
                     'padding-bottom': fullwidth_input_padding_v + 'px',
                     'padding-left': fullwidth_input_indent + 'px',
-                    'padding-right': config.fullwidth_input_right_padding + 'px'
+                    'padding-right': config$$1.fullwidth_input_right_padding + 'px'
                 }
             }
         }]
     }];
 };
 
-var layout$19 = (function (config) {
-    return mixin.createStyles(config, createStyles$28);
+var layout$19 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$30);
 });
 
 function _defineProperty$17(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$13 = function style(config, tint) {
+var style$13 = function style(config$$1, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$17({}, scope + '.pe-search', {
-        'background-color': config['color_' + tint + '_background'],
+        'background-color': config$$1['color_' + tint + '_background'],
 
         ' .pe-textfield__label': {
-            color: config['color_' + tint + '_label_text']
+            color: config$$1['color_' + tint + '_label_text']
         }
     })];
 };
 
-var createStyles$29 = function createStyles(config) {
-    return [style$13(config, 'light'), {
+var createStyles$31 = function createStyles(config$$1) {
+    return [style$13(config$$1, 'light'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$13(config, 'dark', ' '),
+        style$13(config$$1, 'dark', ' '),
         // has dark theme
-        style$13(config, 'dark', '&')]
+        style$13(config$$1, 'dark', '&')]
     }];
 };
 
-var color$13 = (function (config) {
-    return mixin.createStyles(config, createStyles$29);
+var color$13 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$31);
 });
 
-var customConfigFn$16 = customConfig.search;
-var config$16 = customConfigFn$16 ? customConfigFn$16(defaultConfig$15) : defaultConfig$15;
+var themeConfigFn$17 = __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"] && __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"].search;
+var config$18 = themeConfigFn$17 ? themeConfigFn$17(componentConfig$15) : componentConfig$15;
+var id$18 = 'pe-search';
 
-styler$1.add('pe-search', layout$19(config$16), color$13(config$16));
+styler.add(id$18, layout$19(config$18), color$13(config$18));
 
-var _extends$17 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$16 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var CSS_CLASSES$17 = {
     block: 'pe-search',
@@ -7010,7 +7011,7 @@ var createView$18 = function createView(ctrl) {
     var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
     var tag = opts.tag || 'div';
-    var props = _extends$17({}, {
+    var props = _extends$16({}, {
         class: [CSS_CLASSES$17.block, classForType$2(opts.type), opts.class].join(' '),
         id: opts.id || '',
         config: opts.config
@@ -7020,7 +7021,7 @@ var createView$18 = function createView(ctrl) {
     var textfieldOpts = opts.textfield || {};
     var content = __WEBPACK_IMPORTED_MODULE_0_mithril___default()('div', {
         class: CSS_CLASSES$17.content
-    }, [buttons.before ? buttons.before : null, __WEBPACK_IMPORTED_MODULE_0_mithril___default()(component$27, _extends$17({}, textfieldOpts, {
+    }, [buttons.before ? buttons.before : null, __WEBPACK_IMPORTED_MODULE_0_mithril___default()(component$27, _extends$16({}, textfieldOpts, {
         getState: function getState(state) {
             ctrl.state(state);
             if (textfieldOpts.getState) {
@@ -7062,7 +7063,7 @@ var height$1 = Math.max(52, largestThumbSize);
 var side_spacing = Math.max(10, largestElement / 2 - thumb_size / 2);
 var horizontal_layout_side_spacing = side_spacing + 4; // optimization for horizontal layout
 
-var defaultConfig$16 = {
+var componentConfig$16 = {
     height: height$1,
     side_spacing: side_spacing,
     horizontal_layout_side_spacing: horizontal_layout_side_spacing,
@@ -7120,38 +7121,38 @@ var positionBorder = function positionBorder(thumbSize, borderWidth) {
     };
 };
 
-var createStyles$30 = function createStyles(config) {
-    var thumbSize = Math.max(config.thumb_size, 2 * config.thumb_border_width);
-    var scaledThumbDiff = (config.active_thumb_scale - 1) * thumbSize / 2;
+var createStyles$32 = function createStyles(config$$1) {
+    var thumbSize = Math.max(config$$1.thumb_size, 2 * config$$1.thumb_border_width);
+    var scaledThumbDiff = (config$$1.active_thumb_scale - 1) * thumbSize / 2;
     var barOffset = thumbSize / 2;
-    var scaledBorderWidth = Math.max(1, config.thumb_border_width / config.active_thumb_scale);
-    var thumbTouchSize = config.thumb_touch_size;
+    var scaledBorderWidth = Math.max(1, config$$1.thumb_border_width / config$$1.active_thumb_scale);
+    var thumbTouchSize = config$$1.thumb_touch_size;
     var stepsOffset = barOffset - 1;
 
     return [{
         '.pe-slider': [mixin.vendorize({
             'user-select': 'none'
         }, common$1.prefixes_user_select), {
-            height: config.height + 'px',
-            'margin-top': (config.height - config.track_height) / 2 + 'px ',
+            height: config$$1.height + 'px',
+            'margin-top': (config$$1.height - config$$1.track_height) / 2 + 'px ',
 
             ' > .pe-icon': {
-                height: config.height + 'px'
+                height: config$$1.height + 'px'
             },
 
-            ' .pe-slider__track': [flex$1.layoutHorizontal, flex$1.flexGrow(1), mixin.defaultTransition('transform', config.animation_duration), mixin.vendorize({
+            ' .pe-slider__track': [flex$1.layoutHorizontal, flex$1.flexGrow(1), mixin.defaultTransition('transform', config$$1.animation_duration), mixin.vendorize({
                 'user-select': 'none'
             }, common$1.prefixes_user_select), {
                 position: 'relative',
-                height: config.track_height + 'px',
-                margin: '0 ' + config.side_spacing + 'px',
+                height: config$$1.track_height + 'px',
+                margin: '0 ' + config$$1.side_spacing + 'px',
                 outline: 0
             }],
             ' div + .pe-slider__track': {
-                margin: '0 ' + config.horizontal_layout_side_spacing + 'px'
+                margin: '0 ' + config$$1.horizontal_layout_side_spacing + 'px'
             },
 
-            ' .pe-slider__control': [flex$1.selfCenter, mixin.defaultTransition('transform, background', config.animation_duration), mixin.vendorize({
+            ' .pe-slider__control': [flex$1.selfCenter, mixin.defaultTransition('transform, background', config$$1.animation_duration), mixin.vendorize({
                 'user-select': 'none'
             }, common$1.prefixes_user_select), {
                 width: thumbSize + 'px',
@@ -7163,7 +7164,7 @@ var createStyles$30 = function createStyles(config) {
                 position: 'relative',
 
                 // touch area
-                '&:before': [mixin.defaultTransition('background-color', config.animation_duration), {
+                '&:before': [mixin.defaultTransition('background-color', config$$1.animation_duration), {
                     content: '""',
                     position: 'absolute',
                     'border-radius': '50%',
@@ -7174,7 +7175,7 @@ var createStyles$30 = function createStyles(config) {
                 }],
 
                 // border
-                '&:after': [mixin.defaultTransition('border', config.animation_duration), positionBorder(thumbSize, config.thumb_border_width), {
+                '&:after': [mixin.defaultTransition('border', config$$1.animation_duration), positionBorder(thumbSize, config$$1.thumb_border_width), {
                     content: '""',
                     position: 'absolute',
                     'border-radius': '50%',
@@ -7182,7 +7183,7 @@ var createStyles$30 = function createStyles(config) {
                 }]
             }],
 
-            ' .pe-slider__thumb': [mixin.defaultTransition('opacity', config.animation_duration), mixin.fit(), {
+            ' .pe-slider__thumb': [mixin.defaultTransition('opacity', config$$1.animation_duration), mixin.fit(), {
                 '&, .pe-icon': {
                     width: 'inherit',
                     height: 'inherit'
@@ -7190,8 +7191,8 @@ var createStyles$30 = function createStyles(config) {
             }],
 
             ' .pe-slider__label': {
-                height: config.height + 'px',
-                'line-height': config.height + 'px',
+                height: config$$1.height + 'px',
+                'line-height': config$$1.height + 'px',
                 'min-width': common$1.unit_icon_size + 'px',
                 'text-align': 'center',
                 'font-size': '16px',
@@ -7201,8 +7202,8 @@ var createStyles$30 = function createStyles(config) {
             ' .pe-slider__track-part': [flex$1.flex(), mixin.vendorize({
                 'user-select': 'none'
             }, common$1.prefixes_user_select), {
-                height: config.bar_height + 'px',
-                margin: (config.track_height - config.bar_height) / 2 + 'px 0px',
+                height: config$$1.bar_height + 'px',
+                margin: (config$$1.track_height - config$$1.bar_height) / 2 + 'px 0px',
                 overflow: 'hidden' // Firefox otherwise uses 6x at 0%
             }],
 
@@ -7212,8 +7213,8 @@ var createStyles$30 = function createStyles(config) {
                 position: 'relative',
                 overflow: 'hidden'
             }],
-            ' .pe-slider__track-bar-value': [flex$1.flex(), mixin.defaultTransition('transform, background-color', config.animation_duration), {
-                height: config.bar_height + 'px'
+            ' .pe-slider__track-bar-value': [flex$1.flex(), mixin.defaultTransition('transform, background-color', config$$1.animation_duration), {
+                height: config$$1.bar_height + 'px'
             }],
             ' .pe-slider__track-value .pe-slider__track-bar': {
                 'margin-left': barOffset + 'px'
@@ -7227,16 +7228,16 @@ var createStyles$30 = function createStyles(config) {
             }, common$1.prefixes_user_select), {
                 position: 'absolute',
                 width: 'calc(100% - ' + 2 * stepsOffset + 'px)',
-                height: config.bar_height + 'px',
+                height: config$$1.bar_height + 'px',
                 left: 0,
-                top: config.height / 2 - 1 + 'px',
+                top: config$$1.height / 2 - 1 + 'px',
                 margin: '0 ' + stepsOffset + 'px',
                 'pointer-events': 'none'
             }],
 
             ' .pe-slider__ticks-tick': {
-                width: config.step_width + 'px',
-                height: config.bar_height + 'px'
+                width: config$$1.step_width + 'px',
+                height: config$$1.bar_height + 'px'
             },
 
             ' .pe-slider__pin': [mixin.vendorize({
@@ -7246,11 +7247,11 @@ var createStyles$30 = function createStyles(config) {
             }, common$1.prefixes_transform), mixin.defaultTransition('transform', '.11s'), {
                 position: 'absolute',
                 'z-index': 1,
-                width: config.pin_width + 'px',
+                width: config$$1.pin_width + 'px',
                 height: 0,
                 left: 0, // set in js
                 top: 0,
-                'margin': '0 ' + stepsOffset + 'px 0 ' + (stepsOffset - config.pin_width / 2 + 1) + 'px',
+                'margin': '0 ' + stepsOffset + 'px 0 ' + (stepsOffset - config$$1.pin_width / 2 + 1) + 'px',
                 'pointer-events': 'none',
 
                 '&::before': [mixin.vendorize({
@@ -7260,8 +7261,8 @@ var createStyles$30 = function createStyles(config) {
                     position: 'absolute',
                     top: 0,
                     left: 0,
-                    width: config.pin_width + 'px',
-                    height: config.pin_width + 'px',
+                    width: config$$1.pin_width + 'px',
+                    height: config$$1.pin_width + 'px',
                     'border-radius': '50% 50% 50% 0',
                     'background-color': 'inherit'
                 }],
@@ -7270,18 +7271,18 @@ var createStyles$30 = function createStyles(config) {
                     position: 'absolute',
                     top: 0,
                     left: 0,
-                    width: config.pin_width + 'px',
-                    height: config.pin_height + 'px',
+                    width: config$$1.pin_width + 'px',
+                    height: config$$1.pin_height + 'px',
                     'text-align': 'center',
                     color: '#fff',
-                    'font-size': config.pin_font_size + 'px',
-                    'line-height': config.pin_width + 'px'
+                    'font-size': config$$1.pin_font_size + 'px',
+                    'line-height': config$$1.pin_width + 'px'
                 }
             }],
 
             '&.pe-slider--active:not(.pe-slider--ticks)': {
                 ' .pe-slider__control': [mixin.vendorize({
-                    'transform': 'scale(' + config.active_thumb_scale + ')'
+                    'transform': 'scale(' + config$$1.active_thumb_scale + ')'
                 }, common$1.prefixes_transform), {
                     'border-width': scaledBorderWidth + 'px'
                 }],
@@ -7300,7 +7301,7 @@ var createStyles$30 = function createStyles(config) {
                     'transform': 'translateZ(0) scale(1) translate(0, -24px)'
                 }, common$1.prefixes_transform)],
                 ' .pe-slider__control': [mixin.vendorize({
-                    'transform': 'scale(' + config.active_pin_thumb_scale + ')'
+                    'transform': 'scale(' + config$$1.active_pin_thumb_scale + ')'
                 }, common$1.prefixes_transform)]
             },
 
@@ -7317,44 +7318,44 @@ var createStyles$30 = function createStyles(config) {
 
             '&.pe-slider--disabled': {
                 ' .pe-slider__control': [mixin.vendorize({
-                    'transform': 'scale(' + config.disabled_thumb_scale + ')'
+                    'transform': 'scale(' + config$$1.disabled_thumb_scale + ')'
                 }, common$1.prefixes_transform), {
                     'border-width': 0
                 }],
                 '&.pe-slider--min': {
-                    ' .pe-slider__control:after': [positionBorder(thumbSize, 1 / config.disabled_thumb_scale * config.thumb_border_width)]
+                    ' .pe-slider__control:after': [positionBorder(thumbSize, 1 / config$$1.disabled_thumb_scale * config$$1.thumb_border_width)]
                 }
             }
         }]
     }];
 };
 
-var layout$20 = (function (config) {
-    return mixin.createStyles(config, createStyles$30);
+var layout$20 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$32);
 });
 
 function _defineProperty$18(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$14 = function style(config, tint) {
+var style$14 = function style(config$$1, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$18({}, scope + '.pe-slider', {
 
-        color: config['color_' + tint + '_thumb_on'], // override by specifying 'color'
+        color: config$$1['color_' + tint + '_thumb_on'], // override by specifying 'color'
 
         ' .pe-slider__control': {
-            background: config['color_' + tint + '_thumb_off'],
+            background: config$$1['color_' + tint + '_thumb_off'],
 
             '&:after': {
                 'border-color': 'transparent'
             }
         },
         ' .pe-slider__track-bar-value': {
-            background: config['color_' + tint + '_track_inactive']
+            background: config$$1['color_' + tint + '_track_inactive']
         },
 
         ' .pe-slider__ticks-tick': {
-            background: config['color_' + tint + '_tick']
+            background: config$$1['color_' + tint + '_tick']
         },
 
         ' .pe-slider__pin': {
@@ -7362,18 +7363,18 @@ var style$14 = function style(config, tint) {
         },
 
         ' > .pe-icon': {
-            color: config['color_' + tint + '_disabled_icon']
+            color: config$$1['color_' + tint + '_disabled_icon']
         },
 
         ' .pe-slider__label': {
-            color: config['color_' + tint + '_disabled_label']
+            color: config$$1['color_' + tint + '_disabled_label']
         },
 
         // states
 
         '&.pe-slider--active': {
             ' .pe-slider__track-bar-value': {
-                background: config['color_' + tint + '_track_active']
+                background: config$$1['color_' + tint + '_track_active']
             }
         },
 
@@ -7382,7 +7383,7 @@ var style$14 = function style(config, tint) {
                 background: 'currentcolor',
 
                 '&:before': {
-                    opacity: config['color_' + tint + '_thumb_off_focus_opacity']
+                    opacity: config$$1['color_' + tint + '_thumb_off_focus_opacity']
                 }
             },
             ' .pe-slider__track-value .pe-slider__track-bar-value': {
@@ -7390,18 +7391,18 @@ var style$14 = function style(config, tint) {
             },
             '&.pe-slider--focus.pe-slider--min:not(.pe-slider--pin) .pe-slider__control:before,\
                 &.pe-slider--min:not(.pe-slider--pin) .pe-slider__control:focus:before': {
-                'background-color': config['color_' + tint + '_thumb_off_focus']
+                'background-color': config$$1['color_' + tint + '_thumb_off_focus']
             },
             '&.pe-slider--focus:not(.pe-slider--min):not(.pe-slider--pin) .pe-slider__control:before,\
                 &:not(.pe-slider--min):not(.pe-slider--pin) .pe-slider__control:focus:before': {
                 'background-color': 'currentcolor',
-                opacity: config['color_' + tint + '_thumb_on_focus_opacity']
+                opacity: config$$1['color_' + tint + '_thumb_on_focus_opacity']
             },
             ' > .pe-icon': {
-                color: config['color_' + tint + '_icon']
+                color: config$$1['color_' + tint + '_icon']
             },
             ' .pe-slider__label': {
-                color: config['color_' + tint + '_label']
+                color: config$$1['color_' + tint + '_label']
             }
         },
         '&.pe-slider--min:not(.pe-slider--disabled)': {
@@ -7412,46 +7413,47 @@ var style$14 = function style(config, tint) {
                 'opacity': 0
             },
             ' .pe-slider__control:after': {
-                'border-color': config['color_' + tint + '_track_inactive']
+                'border-color': config$$1['color_' + tint + '_track_inactive']
             },
             '&.pe-slider--active .pe-slider__control:after': {
-                'border-color': config['color_' + tint + '_track_active']
+                'border-color': config$$1['color_' + tint + '_track_active']
             },
             '&.pe-slider--ticks': {
                 ' .pe-slider__control': {
-                    'background-color': config['color_' + tint + '_tick']
+                    'background-color': config$$1['color_' + tint + '_tick']
                 },
                 ' .pe-slider__control:after': {
                     'border-color': 'transparent'
                 }
             },
             ' .pe-slider__pin': {
-                'background-color': config['color_' + tint + '_track_inactive']
+                'background-color': config$$1['color_' + tint + '_track_inactive']
             }
         }
     })];
 };
 
-var createStyles$31 = function createStyles(config) {
-    return [style$14(config, 'light'), {
+var createStyles$33 = function createStyles(config$$1) {
+    return [style$14(config$$1, 'light'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$14(config, 'dark', ' '),
+        style$14(config$$1, 'dark', ' '),
         // has dark theme
-        style$14(config, 'dark', '&')]
+        style$14(config$$1, 'dark', '&')]
     }];
 };
 
-var color$14 = (function (config) {
-    return mixin.createStyles(config, createStyles$31);
+var color$14 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$33);
 });
 
-var customConfigFn$17 = customConfig.slider;
-var config$17 = customConfigFn$17 ? customConfigFn$17(defaultConfig$16) : defaultConfig$16;
+var themeConfigFn$18 = __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"] && __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"].slider;
+var config$19 = themeConfigFn$18 ? themeConfigFn$18(componentConfig$16) : componentConfig$16;
+var id$19 = 'pe-slider';
 
-styler$1.add('pe-slider', layout$20(config$17), color$14(config$17));
+styler.add(id$19, layout$20(config$19), color$14(config$19));
 
-var _extends$19 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$18 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var CSS_CLASSES$19 = {
     block: 'pe-slider',
@@ -7532,7 +7534,7 @@ var generateTickMarks = function generateTickMarks(min, max, stepSize) {
 var readRangeData = function readRangeData(ctrl) {
     if (ctrl.controlEl) {
         // range is from the far left to the far right minus the thumb width (max x is at the left side of the thumb)
-        ctrl.controlWidth = defaultConfig$16.thumb_size;
+        ctrl.controlWidth = componentConfig$16.thumb_size;
         ctrl.rangeWidth = ctrl.trackEl.getBoundingClientRect().width - ctrl.controlWidth;
         var styles = window.getComputedStyle(ctrl.trackEl);
         ctrl.rangeOffset = parseFloat(styles.marginLeft);
@@ -7626,9 +7628,9 @@ var createSlider = function createSlider(ctrl) {
     var flexRestValue = 1 - fraction;
     var flexRestCss = flexRestValue + ' 1 0%';
 
-    return [__WEBPACK_IMPORTED_MODULE_0_mithril___default()('div', _extends$19({}, {
+    return [__WEBPACK_IMPORTED_MODULE_0_mithril___default()('div', _extends$18({}, {
         class: CSS_CLASSES$19.track,
-        config: function config(el, inited) {
+        config: function config$$1(el, inited) {
             if (inited) return;
             ctrl.trackEl = el;
             if (opts.pin) {
@@ -7648,9 +7650,9 @@ var createSlider = function createSlider(ctrl) {
             '-ms-flex': flexValueCss,
             webkitFlex: flexValueCss
         }
-    }, __WEBPACK_IMPORTED_MODULE_0_mithril___default()('div', { class: CSS_CLASSES$19.trackBar }, __WEBPACK_IMPORTED_MODULE_0_mithril___default()('div', { class: CSS_CLASSES$19.trackBarValue }))), __WEBPACK_IMPORTED_MODULE_0_mithril___default()('div', _extends$19({}, {
+    }, __WEBPACK_IMPORTED_MODULE_0_mithril___default()('div', { class: CSS_CLASSES$19.trackBar }, __WEBPACK_IMPORTED_MODULE_0_mithril___default()('div', { class: CSS_CLASSES$19.trackBarValue }))), __WEBPACK_IMPORTED_MODULE_0_mithril___default()('div', _extends$18({}, {
         class: CSS_CLASSES$19.control,
-        config: function config(el, inited) {
+        config: function config$$1(el, inited) {
             if (inited) return;
             ctrl.controlEl = el;
         }
@@ -7701,7 +7703,7 @@ var createSlider = function createSlider(ctrl) {
     }, __WEBPACK_IMPORTED_MODULE_0_mithril___default()('div', { class: CSS_CLASSES$19.trackBar }, __WEBPACK_IMPORTED_MODULE_0_mithril___default()('div', { class: CSS_CLASSES$19.trackBarValue }))), hasTicks && !opts.disabled ? __WEBPACK_IMPORTED_MODULE_0_mithril___default()('div', { class: CSS_CLASSES$19.ticks }, generateTickMarks(ctrl.min, ctrl.max, stepCount)) : null, hasTicks && opts.pin && !opts.disabled ? __WEBPACK_IMPORTED_MODULE_0_mithril___default()('div', {
         class: CSS_CLASSES$19.pin,
         value: Math.round(ctrl.value()),
-        config: function config(el, inited) {
+        config: function config$$1(el, inited) {
             if (inited) return;
             ctrl.pinEl = el;
         }
@@ -7829,7 +7831,7 @@ var transitions$1 = {
 
 var buttonPaddingH$1 = 8; // padding, inner text space
 
-var defaultConfig$17 = {
+var componentConfig$17 = {
     width: 274,
     border_radius: 0,
     title_padding_h: buttonPaddingH$1,
@@ -7852,10 +7854,10 @@ var defaultConfig$17 = {
 
 function _defineProperty$19(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var tabletStyle = function tabletStyle(config) {
+var tabletStyle = function tabletStyle(config$$1) {
     return {
-        'min-width': config.tablet_min_width + 'px',
-        'max-width': config.tablet_max_width + 'px',
+        'min-width': config$$1.tablet_min_width + 'px',
+        'max-width': config$$1.tablet_max_width + 'px',
         'border-bottom-left-radius': 0,
         'border-bottom-right-radius': 0,
         'border-top-left-radius': common$1.unit_block_border_radius + 'px',
@@ -7869,45 +7871,46 @@ var tabletStyle = function tabletStyle(config) {
     };
 };
 
-var createStyles$32 = function createStyles(config) {
+var createStyles$34 = function createStyles(config$$1) {
     return [_defineProperty$19({}, '@media (min-width: ' + common$1.breakpoint_small_handset_landscape + 'px)', {
-        '.pe-notification--snackbar': tabletStyle(config)
+        '.pe-notification--snackbar': tabletStyle(config$$1)
     })];
 };
 
-var layout$21 = (function (config) {
-    return mixin.createStyles(config, createStyles$32);
+var layout$21 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$34);
 });
 
 function _defineProperty$20(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$15 = function style(config, tint) {
+var style$15 = function style(config$$1, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$20({}, scope + '.pe-notification--snackbar', {
-        color: config['color_' + tint + '_text'],
-        background: config['color_' + tint + '_background']
+        color: config$$1['color_' + tint + '_text'],
+        background: config$$1['color_' + tint + '_background']
     })];
 };
 
-var createStyles$33 = function createStyles(config) {
-    return [style$15(config, 'light'), {
+var createStyles$35 = function createStyles(config$$1) {
+    return [style$15(config$$1, 'light'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$15(config, 'dark', ' '),
+        style$15(config$$1, 'dark', ' '),
         // has dark theme
-        style$15(config, 'dark', '&')]
+        style$15(config$$1, 'dark', '&')]
     }];
 };
 
-var color$15 = (function (config) {
-    return mixin.createStyles(config, createStyles$33);
+var color$15 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$35);
 });
 
-var customConfigFn$18 = customConfig.snackbar;
-var config$18 = customConfigFn$18 ? customConfigFn$18(defaultConfig$17) : defaultConfig$17;
+var themeConfigFn$19 = __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"] && __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"].snackbar;
+var config$20 = themeConfigFn$19 ? themeConfigFn$19(componentConfig$17) : componentConfig$17;
+var id$20 = 'pe-notification-snackbar';
 
-styler$1.add('pe-notification-snackbar', layout$21(config$18), color$15(config$18));
+styler.add(id$20, layout$21(config$20), color$15(config$20));
 
 var snackbar = multiple({
     instance: component$22,
@@ -7922,7 +7925,7 @@ var snackbar = multiple({
 
 var rgba$11 = common$1.rgba;
 
-var defaultConfig$18 = {
+var defaultConfig = {
     size_small: 24,
     size_regular: 32,
     size_medium: 40,
@@ -7951,7 +7954,7 @@ var sizesRaised = function sizesRaised(size) {
     };
 };
 
-var createStyles$34 = function createStyles(config) {
+var createStyles$36 = function createStyles(config$$1) {
     return [{
         '.pe-spinner': [mixin.vendorize({
             'transition-timing-function': 'ease-out'
@@ -7964,62 +7967,63 @@ var createStyles$34 = function createStyles(config) {
                 opacity: 1
             },
 
-            '&.pe-spinner--small': sizes(config.size_small),
-            '&.pe-spinner--regular': sizes(config.size_regular),
-            '&.pe-spinner--medium': sizes(config.size_medium),
-            '&.pe-spinner--large': sizes(config.size_large),
-            '&.pe-spinner--fab': sizes(config.size_fab),
+            '&.pe-spinner--small': sizes(config$$1.size_small),
+            '&.pe-spinner--regular': sizes(config$$1.size_regular),
+            '&.pe-spinner--medium': sizes(config$$1.size_medium),
+            '&.pe-spinner--large': sizes(config$$1.size_large),
+            '&.pe-spinner--fab': sizes(config$$1.size_fab),
 
             '&.pe-spinner--raised': {
                 position: 'relative',
                 'border-radius': '50%',
 
-                '&.pe-spinner--small': sizesRaised(config.size_small),
-                '&.pe-spinner--regular': sizesRaised(config.size_regular),
-                '&.pe-spinner--medium': sizesRaised(config.size_medium),
-                '&.pe-spinner--large': sizesRaised(config.size_large),
-                '&.pe-spinner--fab': sizesRaised(config.size_fab)
+                '&.pe-spinner--small': sizesRaised(config$$1.size_small),
+                '&.pe-spinner--regular': sizesRaised(config$$1.size_regular),
+                '&.pe-spinner--medium': sizesRaised(config$$1.size_medium),
+                '&.pe-spinner--large': sizesRaised(config$$1.size_large),
+                '&.pe-spinner--fab': sizesRaised(config$$1.size_fab)
             }
         }]
     }];
 };
 
-var layout$22 = (function (config) {
-    return mixin.createStyles(config, createStyles$34);
+var layout$22 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$36);
 });
 
 function _defineProperty$21(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$16 = function style(config, tint) {
+var style$16 = function style(config$$1, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$21({}, scope + '.pe-spinner', {
         '&.pe-spinner--raised': {
-            'background-color': config['color_' + tint + '_raised_background']
+            'background-color': config$$1['color_' + tint + '_raised_background']
         }
     })];
 };
 
-var createStyles$35 = function createStyles(config) {
-    return [style$16(config, 'light'), {
+var createStyles$37 = function createStyles(config$$1) {
+    return [style$16(config$$1, 'light'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$16(config, 'dark', ' '),
+        style$16(config$$1, 'dark', ' '),
         // has dark theme
-        style$16(config, 'dark', '&')]
+        style$16(config$$1, 'dark', '&')]
     }];
 };
 
-var color$16 = (function (config) {
-    return mixin.createStyles(config, createStyles$35);
+var color$16 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$37);
 });
 
-var customConfigFn$19 = customConfig.spinner;
-var config$19 = customConfigFn$19 ? customConfigFn$19(defaultConfig$18) : defaultConfig$18;
+var themeConfigFn$20 = __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"] && __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"]['spinner-default'];
+var config$21 = themeConfigFn$20 ? themeConfigFn$20(defaultConfig) : defaultConfig;
+var id$21 = 'pe-spinner-default';
 
-styler$1.add('pe-spinner-default', layout$22(config$19), color$16(config$19));
+styler.add(id$21, layout$22(config$21), color$16(config$21));
 
-var _extends$20 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$19 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var CSS_CLASSES$21 = {
     block: 'pe-spinner',
@@ -8056,7 +8060,7 @@ var show$6 = function show(ctrl, opts) {
         return;
     }
     ctrl.isTransitioning = true;
-    return transition$1.show(_extends$20({}, opts, {
+    return transition$1.show(_extends$19({}, opts, {
         el: ctrl.el,
         showClass: CSS_CLASSES$21.visible
     })).then(function () {
@@ -8070,7 +8074,7 @@ var hide$6 = function hide(ctrl, opts) {
         return;
     }
     ctrl.isTransitioning = true;
-    return transition$1.hide(_extends$20({}, opts, {
+    return transition$1.hide(_extends$19({}, opts, {
         el: ctrl.el,
         afterHide: function afterHide() {
             return ctrl.el.style.display = 'none';
@@ -8100,10 +8104,10 @@ var createView$21 = function createView(ctrl) {
     var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
     var tag = opts.tag || 'div';
-    var props = _extends$20({}, {
+    var props = _extends$19({}, {
         class: [CSS_CLASSES$21.block, classForType$3(opts.type), opts.singleColor ? CSS_CLASSES$21.singleColor : null, opts.raised ? CSS_CLASSES$21.raised : null, opts.animated ? CSS_CLASSES$21.animated : null, opts.permanent ? CSS_CLASSES$21.permanent : null, opts.class].join(' '),
         id: opts.id || '',
-        config: function config(el, inited, context, vdom) {
+        config: function config$$1(el, inited, context, vdom) {
             if (inited) return;
             if (opts.config) {
                 opts.config(el, inited, context, vdom);
@@ -8186,7 +8190,7 @@ var component$32 = {
     }
 };
 
-var defaultConfig$19 = {
+var componentConfig$18 = {
     animation_duration: 1, // seconds
 
     color_light: common$1.rgba(common$1.color_light_foreground),
@@ -8206,23 +8210,23 @@ var kfFade = function kfFade() {
     };
 };
 
-var positionBlades = function positionBlades(config) {
+var positionBlades = function positionBlades(config$$1) {
     return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(function (i) {
         // reverse to improve performance on iOS
-        var delay = -(1 / 12 * i * config.animation_duration);
+        var delay = -(1 / 12 * i * config$$1.animation_duration);
         var rotation = 360 - 360 / 12 * i;
 
         return _defineProperty$22({}, ' div:nth-of-type(' + (i + 1) + ')', [mixin.vendorize({
             'transform': 'rotate(' + rotation + 'deg) translate3d(0,-142%,0)'
         }, common$1.prefixes_transform), mixin.vendorize({
-            'animation': 'iosSpinnerFade ' + config.animation_duration + 's ' + delay + 's linear infinite'
+            'animation': 'iosSpinnerFade ' + config$$1.animation_duration + 's ' + delay + 's linear infinite'
         }, common$1.prefixes_animation)]);
     });
 };
 
-var createStyles$36 = function createStyles(config) {
+var createStyles$38 = function createStyles(config$$1) {
     return [{
-        '.pe-spinner--ios': [mixin.vendorize({ 'transform': 'translate3d(0,0,0)' }, common$1.prefixes_transform), positionBlades(config), {
+        '.pe-spinner--ios': [mixin.vendorize({ 'transform': 'translate3d(0,0,0)' }, common$1.prefixes_transform), positionBlades(config$$1), {
             position: 'relative',
 
             ' > div': {
@@ -8240,17 +8244,17 @@ var createStyles$36 = function createStyles(config) {
     }];
 };
 
-var layout$23 = (function (config) {
-    return mixin.createStyles(config, createStyles$36);
+var layout$23 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$38);
 });
 
 function _defineProperty$23(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$17 = function style(config, tint) {
+var style$17 = function style(config$$1, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$23({}, scope + '.pe-spinner--ios', {
-        color: config['color_' + tint],
+        color: config$$1['color_' + tint],
 
         ' > div': {
             background: 'currentcolor'
@@ -8258,24 +8262,25 @@ var style$17 = function style(config, tint) {
     })];
 };
 
-var createStyles$37 = function createStyles(config) {
-    return [style$17(config, 'light'), {
+var createStyles$39 = function createStyles(config$$1) {
+    return [style$17(config$$1, 'light'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$17(config, 'dark', ' '),
+        style$17(config$$1, 'dark', ' '),
         // has dark theme
-        style$17(config, 'dark', '&')]
+        style$17(config$$1, 'dark', '&')]
     }];
 };
 
-var color$17 = (function (config) {
-    return mixin.createStyles(config, createStyles$37);
+var color$17 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$39);
 });
 
-var customConfigFn$20 = undefined;
-var config$20 = customConfigFn$20 ? customConfigFn$20(defaultConfig$19) : defaultConfig$19;
+var themeConfigFn$21 = __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"] && __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"]['spinner-ios'];
+var config$22 = themeConfigFn$21 ? themeConfigFn$21(componentConfig$18) : componentConfig$18;
+var id$22 = 'pe-spinner-ios';
 
-styler$1.add('pe-spinner-ios', layout$23(config$20), color$17(config$20));
+styler.add(id$22, layout$23(config$22), color$17(config$22));
 
 var CSS_CLASSES$20 = {
     block: 'pe-spinner--ios'
@@ -8295,20 +8300,20 @@ var component$30 = {
     }
 };
 
-var _extends$21 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$20 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var defaultConfig$20 = _extends$21({}, defaultConfig$18, {
-    border_width_small: defaultConfig$18.size_small / defaultConfig$18.size_regular * 3,
+var componentConfig$19 = _extends$20({}, defaultConfig, {
+    border_width_small: defaultConfig.size_small / defaultConfig.size_regular * 3,
     border_width_regular: 3,
-    border_width_medium: defaultConfig$18.size_medium / defaultConfig$18.size_regular * 3,
-    border_width_large: defaultConfig$18.size_large / defaultConfig$18.size_regular * 3,
-    border_width_fab: defaultConfig$18.size_fab / defaultConfig$18.size_regular * 3,
+    border_width_medium: defaultConfig.size_medium / defaultConfig.size_regular * 3,
+    border_width_large: defaultConfig.size_large / defaultConfig.size_regular * 3,
+    border_width_fab: defaultConfig.size_fab / defaultConfig.size_regular * 3,
 
     color_light: common$1.rgba(common$1.color_primary),
     color_dark: common$1.rgba(common$1.color_primary)
 });
 
-var createStyles$38 = function createStyles() {
+var createStyles$40 = function createStyles() {
     return [{
         '.pe-spinner-determinate': {
             position: 'relative',
@@ -8333,17 +8338,17 @@ var createStyles$38 = function createStyles() {
     }];
 };
 
-var layout$24 = (function (config) {
-    return mixin.createStyles(config, createStyles$38);
+var layout$24 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$40);
 });
 
 function _defineProperty$24(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$18 = function style(config, tint) {
+var style$18 = function style(config$$1, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$24({}, scope + '.pe-spinner--determinate', {
-        color: config['color_' + tint],
+        color: config$$1['color_' + tint],
 
         ' .pe-spinner-determinate__circle': {
             'border-color': 'currentcolor'
@@ -8351,24 +8356,25 @@ var style$18 = function style(config, tint) {
     })];
 };
 
-var createStyles$39 = function createStyles(config) {
-    return [style$18(config, 'light'), {
+var createStyles$41 = function createStyles(config$$1) {
+    return [style$18(config$$1, 'light'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$18(config, 'dark', ' '),
+        style$18(config$$1, 'dark', ' '),
         // has dark theme
-        style$18(config, 'dark', '&')]
+        style$18(config$$1, 'dark', '&')]
     }];
 };
 
-var color$18 = (function (config) {
-    return mixin.createStyles(config, createStyles$39);
+var color$18 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$41);
 });
 
-var customConfigFn$21 = undefined;
-var config$21 = customConfigFn$21 ? customConfigFn$21(defaultConfig$20) : defaultConfig$20;
+var themeConfigFn$22 = __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"] && __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"]['spinner-determinate'];
+var config$23 = themeConfigFn$22 ? themeConfigFn$22(componentConfig$19) : componentConfig$19;
+var id$23 = 'pe-spinner-determinate';
 
-styler$1.add('pe-spinner-determinate', layout$24(config$21), color$18(config$21));
+styler.add(id$23, layout$24(config$23), color$18(config$23));
 
 /*
 https://gist.github.com/gre/1650294
@@ -8453,7 +8459,7 @@ var CSS_CLASSES$22 = {
 
 var sizeFromType = function sizeFromType() {
     var type = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'regular';
-    return defaultConfig$20['size_' + type];
+    return componentConfig$19['size_' + type];
 };
 
 var percentageValue = function percentageValue(min, max, percentage) {
@@ -8551,12 +8557,12 @@ var arc_time = 1.333; // s - time it takes to expand and contract arc
 var arc_start_degrees = 360 / 5 * 3; // degrees - how much the start location of the arc should rotate each time, 216 gives us a 5 pointed star shape (it's 360/5 * 3). For a 7 pointed star, we might do 360/7 * 3 = 154.286.
 var rotation_duration = 360 * arc_time / (arc_start_degrees + (360 - arc_size)); // 1.568s
 
-var defaultConfig$21 = {
-    border_width_small: defaultConfig$18.size_small / defaultConfig$18.size_regular * 3,
+var componentConfig$20 = {
+    border_width_small: defaultConfig.size_small / defaultConfig.size_regular * 3,
     border_width_regular: 3,
-    border_width_medium: defaultConfig$18.size_medium / defaultConfig$18.size_regular * 3,
-    border_width_large: defaultConfig$18.size_large / defaultConfig$18.size_regular * 3,
-    border_width_fab: defaultConfig$18.size_fab / defaultConfig$18.size_regular * 3,
+    border_width_medium: defaultConfig.size_medium / defaultConfig.size_regular * 3,
+    border_width_large: defaultConfig.size_large / defaultConfig.size_regular * 3,
+    border_width_fab: defaultConfig.size_fab / defaultConfig.size_regular * 3,
     rotation_duration: rotation_duration,
     arc_size: arc_size,
     arc_time: arc_time,
@@ -8593,12 +8599,12 @@ var OPACITY_MIN = 0;
 var OPACITY_MAX = .99;
 var CURVE_INFINITE = 'cubic-bezier(0.4, 0.0, 0.2, 1) infinite both';
 
-var createStyles$40 = function createStyles(config) {
+var createStyles$42 = function createStyles(config$$1) {
     return [{
         '.pe-spinner-indeterminate': {
 
             ' .pe-spinner-indeterminate__animation': [mixin.vendorize({
-                'animation': 'indeterminateSpinnerRotate ' + config.rotation_duration + 's linear infinite'
+                'animation': 'indeterminateSpinnerRotate ' + config$$1.rotation_duration + 's linear infinite'
             }, common$1.prefixes_animation), {
                 position: 'relative',
                 width: '100%',
@@ -8662,7 +8668,7 @@ var createStyles$40 = function createStyles(config) {
             '&': ['small', 'regular', 'medium', 'large', 'fab'].map(function (size) {
                 return _defineProperty$25({}, '&.pe-spinner--' + size, {
                     ' .pe-spinner-indeterminate__circle': {
-                        'border-width': config['border_width_' + size] + 'px'
+                        'border-width': config$$1['border_width_' + size] + 'px'
                     }
                 });
             }),
@@ -8670,7 +8676,7 @@ var createStyles$40 = function createStyles(config) {
             ' .pe-spinner-indeterminate__circle-clipper--left .pe-spinner-indeterminate__circle': [mixin.vendorize({
                 'transform': 'rotate(129deg)'
             }, common$1.prefixes_transform), mixin.vendorize({
-                'animation': 'indeterminateLeftSpin ' + config.arc_time + 's ' + CURVE_INFINITE
+                'animation': 'indeterminateLeftSpin ' + config$$1.arc_time + 's ' + CURVE_INFINITE
             }, common$1.prefixes_animation), {
                 'border-right-color': 'transparent !important'
             }],
@@ -8678,7 +8684,7 @@ var createStyles$40 = function createStyles(config) {
             ' .pe-spinner-indeterminate__circle-clipper--right .pe-spinner-indeterminate__circle': [mixin.vendorize({
                 'transform': 'rotate(-129deg)'
             }, common$1.prefixes_transform), mixin.vendorize({
-                'animation': 'indeterminateRightSpin ' + config.arc_time + 's ' + CURVE_INFINITE
+                'animation': 'indeterminateRightSpin ' + config$$1.arc_time + 's ' + CURVE_INFINITE
             }, common$1.prefixes_animation), {
                 left: '-100%',
                 'border-left-color': 'transparent !important'
@@ -8698,9 +8704,9 @@ var createStyles$40 = function createStyles(config) {
             * other animation rules. See https://github.com/Polymer/platform/issues/53.
             */
             ' .pe-spinner-indeterminate__layer': [mixin.vendorize({
-                'animation': 'indeterminateFillUnfillRotate ' + 4 * config.arc_time + 's ' + CURVE_INFINITE
+                'animation': 'indeterminateFillUnfillRotate ' + 4 * config$$1.arc_time + 's ' + CURVE_INFINITE
             }, common$1.prefixes_animation), [1, 2, 3, 4].map(function (num) {
-                return layerAnimation(config, num);
+                return layerAnimation(config$$1, num);
             }), {
                 position: 'absolute',
                 width: '100%',
@@ -8712,7 +8718,7 @@ var createStyles$40 = function createStyles(config) {
             '@keyframes indeterminateRightSpin': kfRightSpin(),
             '@keyframes indeterminateLeftSpin': kfLeftSpin(),
             '@keyframes indeterminateFadeOut': kfFadeOut(),
-            '@keyframes indeterminateFillUnfillRotate': kfFillUnfillRotate(config),
+            '@keyframes indeterminateFillUnfillRotate': kfFillUnfillRotate(config$$1),
             '@keyframes indeterminateLayer1FadeInOut': kfLayer1FadeInOut(),
             '@keyframes indeterminateLayer2FadeInOut': kfLayer2FadeInOut(),
             '@keyframes indeterminateLayer3FadeInOut': kfLayer3FadeInOut(),
@@ -8761,31 +8767,31 @@ var kfFadeOut = function kfFadeOut() {
     };
 };
 
-var kfFillUnfillRotate = function kfFillUnfillRotate(config) {
+var kfFillUnfillRotate = function kfFillUnfillRotate(config$$1) {
     return {
         ' 12.5%': {
-            transform: 'rotate(' + 0.5 * config.arc_size + 'deg)'
+            transform: 'rotate(' + 0.5 * config$$1.arc_size + 'deg)'
         },
         ' 25%': {
-            transform: 'rotate(' + 1.0 * config.arc_size + 'deg)'
+            transform: 'rotate(' + 1.0 * config$$1.arc_size + 'deg)'
         },
         ' 37.5%': {
-            transform: 'rotate(' + 1.5 * config.arc_size + 'deg)'
+            transform: 'rotate(' + 1.5 * config$$1.arc_size + 'deg)'
         },
         ' 50%': {
-            transform: 'rotate(' + 2.0 * config.arc_size + 'deg)'
+            transform: 'rotate(' + 2.0 * config$$1.arc_size + 'deg)'
         },
         ' 62.5%': {
-            transform: 'rotate(' + 2.5 * config.arc_size + 'deg)'
+            transform: 'rotate(' + 2.5 * config$$1.arc_size + 'deg)'
         },
         ' 75%': {
-            transform: 'rotate(' + 3.0 * config.arc_size + 'deg)'
+            transform: 'rotate(' + 3.0 * config$$1.arc_size + 'deg)'
         },
         ' 87.5%': {
-            transform: 'rotate(' + 3.5 * config.arc_size + 'deg)'
+            transform: 'rotate(' + 3.5 * config$$1.arc_size + 'deg)'
         },
         ' to': {
-            transform: 'rotate(' + 4.0 * config.arc_size + 'deg)'
+            transform: 'rotate(' + 4.0 * config$$1.arc_size + 'deg)'
         }
     };
 };
@@ -8883,14 +8889,14 @@ var kfLayer4FadeInOut = function kfLayer4FadeInOut() {
     };
 };
 
-var layerAnimation = function layerAnimation(config, num) {
+var layerAnimation = function layerAnimation(config$$1, num) {
     return _defineProperty$25({}, '&.pe-spinner-indeterminate__layer--' + num, [mixin.vendorize({
-        'animation': 'indeterminateFillUnfillRotate ' + 4 * config.arc_time + 's ' + CURVE_INFINITE + ',  indeterminateLayer' + num + 'FadeInOut ' + 4 * config.arc_time + 's ' + CURVE_INFINITE
+        'animation': 'indeterminateFillUnfillRotate ' + 4 * config$$1.arc_time + 's ' + CURVE_INFINITE + ',  indeterminateLayer' + num + 'FadeInOut ' + 4 * config$$1.arc_time + 's ' + CURVE_INFINITE
     }, common$1.prefixes_animation)]);
 };
 
-var layout$25 = (function (config) {
-    return mixin.createStyles(config, createStyles$40);
+var layout$25 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$42);
 });
 
 function _defineProperty$26(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -8907,12 +8913,12 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
 
-var style$19 = function style(config, tint) {
+var style$19 = function style(config$$1, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$26({}, scope + '.pe-spinner-indeterminate', {
 
-        color: config['color_' + tint + '_single'],
+        color: config$$1['color_' + tint + '_single'],
 
         ' .pe-spinner-indeterminate__layer': {
             'border-color': 'currentcolor'
@@ -8920,39 +8926,40 @@ var style$19 = function style(config, tint) {
 
         '&:not(.pe-spinner--single-color)': {
             ' .pe-spinner-indeterminate__layer--1': {
-                'border-color': config['color_' + tint + '_1']
+                'border-color': config$$1['color_' + tint + '_1']
             },
             ' .pe-spinner-indeterminate__layer--2': {
-                'border-color': config['color_' + tint + '_2']
+                'border-color': config$$1['color_' + tint + '_2']
             },
             ' .pe-spinner-indeterminate__layer--3': {
-                'border-color': config['color_' + tint + '_3']
+                'border-color': config$$1['color_' + tint + '_3']
             },
             ' .pe-spinner-indeterminate__layer--4': {
-                'border-color': config['color_' + tint + '_4']
+                'border-color': config$$1['color_' + tint + '_4']
             }
         }
     })];
 };
 
-var createStyles$41 = function createStyles(config) {
-    return [style$19(config, 'light'), {
+var createStyles$43 = function createStyles(config$$1) {
+    return [style$19(config$$1, 'light'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$19(config, 'dark', ' '),
+        style$19(config$$1, 'dark', ' '),
         // has dark theme
-        style$19(config, 'dark', '&')]
+        style$19(config$$1, 'dark', '&')]
     }];
 };
 
-var color$19 = (function (config) {
-    return mixin.createStyles(config, createStyles$41);
+var color$19 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$43);
 });
 
-var customConfigFn$22 = undefined;
-var config$22 = customConfigFn$22 ? customConfigFn$22(defaultConfig$21) : defaultConfig$21;
+var themeConfigFn$23 = __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"] && __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"]['spinner-indeterminate'];
+var config$24 = themeConfigFn$23 ? themeConfigFn$23(componentConfig$20) : componentConfig$20;
+var id$24 = 'pe-spinner-indeterminate';
 
-styler$1.add('pe-spinner-indeterminate', layout$25(config$22), color$19(config$22));
+styler.add(id$24, layout$25(config$24), color$19(config$24));
 
 /*
 Derived from https://github.com/PolymerElements/paper-spinner
@@ -9010,12 +9017,12 @@ var component$35 = {
     }
 };
 
-var _extends$22 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$21 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var rgba$12 = common$1.rgba;
 var hit_area_padding = (common$1.grid_unit_icon_button - common$1.unit_icon_size) / 2; // 12
 
-var config$24 = _extends$22({}, selectionControlConfig, {
+var config$26 = _extends$21({}, selectionControlConfig, {
     track_height: 14,
     track_length: 36,
     thumb_size: 20,
@@ -9052,20 +9059,20 @@ var config$24 = _extends$22({}, selectionControlConfig, {
     // color_dark_focus_on and so on taken from selectionControlConfig
 });
 
-var transition$2 = function transition(config, properties) {
-    var duration = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : config.animation_duration;
+var transition$2 = function transition(config$$1, properties) {
+    var duration = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : config$$1.animation_duration;
 
     return [mixin.defaultTransition(properties, duration, 'ease-out')];
 };
 
-var customSize = function customSize(config, size) {
+var customSize = function customSize(config$$1, size) {
     var factor = size / common$1.unit_icon_size;
-    var thumbSize = Math.floor(0.5 * config.thumb_size * factor) * 2; // round to even
-    var scaledTrackHeight = Math.floor(0.5 * config.track_height * factor) * 2; // round to even
-    var scaledTrackWidth = Math.floor(0.5 * config.track_length * factor) * 2;
-    var scaledThumbSize = Math.floor(0.5 * config.thumb_size * factor) * 2;
-    var trackTop = (config.label_height * factor - scaledTrackHeight) / 2;
-    var thumbPadding = config.icon_button_padding;
+    var thumbSize = Math.floor(0.5 * config$$1.thumb_size * factor) * 2; // round to even
+    var scaledTrackHeight = Math.floor(0.5 * config$$1.track_height * factor) * 2; // round to even
+    var scaledTrackWidth = Math.floor(0.5 * config$$1.track_length * factor) * 2;
+    var scaledThumbSize = Math.floor(0.5 * config$$1.thumb_size * factor) * 2;
+    var trackTop = (config$$1.label_height * factor - scaledTrackHeight) / 2;
+    var thumbPadding = config$$1.icon_button_padding;
     var thumbMargin = (size - scaledThumbSize) / 2;
     var thumbOuterSize = size + 2 * thumbPadding;
     var thumbOffsetMin = -(thumbOuterSize / 2) + thumbSize / 2;
@@ -9079,7 +9086,7 @@ var customSize = function customSize(config, size) {
             'min-width': scaledTrackWidth + 'px',
 
             ' span': {
-                'padding-left': config.padding * factor + 8 + scaledTrackWidth + 'px'
+                'padding-left': config$$1.padding * factor + 8 + scaledTrackWidth + 'px'
             }
         },
         ' .pe-control--switch__track': {
@@ -9120,16 +9127,16 @@ var customSize = function customSize(config, size) {
     };
 };
 
-var createStyles$42 = function createStyles(config) {
-    return [createStyles$10(config, '.pe-control--switch', 'checkbox'), {
+var createStyles$44 = function createStyles(config$$1) {
+    return [createStyles$12(config$$1, '.pe-control--switch', 'checkbox'), {
         '.pe-control--switch': {
 
-            ' .pe-control--switch__track': [transition$2(config, 'background, opacity'), {
+            ' .pe-control--switch__track': [transition$2(config$$1, 'background, opacity'), {
                 position: 'absolute',
                 left: 0
             }],
 
-            ' .pe-control--switch__thumb': [transition$2(config, 'left, color'), {
+            ' .pe-control--switch__thumb': [transition$2(config$$1, 'left, color'), {
                 position: 'absolute',
                 color: 'inherit',
 
@@ -9138,95 +9145,96 @@ var createStyles$42 = function createStyles(config) {
                 }
             }],
 
-            ' .pe-button__focus': [transition$2(config, 'all')],
+            ' .pe-button__focus': [transition$2(config$$1, 'all')],
 
-            '&.pe-control--small': customSize(config, common$1.unit_icon_size_small),
-            '&.pe-control--regular': customSize(config, common$1.unit_icon_size),
-            '&.pe-control--medium': customSize(config, common$1.unit_icon_size_medium),
-            '&.pe-control--large': customSize(config, common$1.unit_icon_size_large)
+            '&.pe-control--small': customSize(config$$1, common$1.unit_icon_size_small),
+            '&.pe-control--regular': customSize(config$$1, common$1.unit_icon_size),
+            '&.pe-control--medium': customSize(config$$1, common$1.unit_icon_size_medium),
+            '&.pe-control--large': customSize(config$$1, common$1.unit_icon_size_large)
         }
     }];
 };
 
-var layout$26 = (function (config) {
-    return mixin.createStyles(config, createStyles$42);
+var layout$26 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$44);
 });
 
 function _defineProperty$27(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$20 = function style(config, tint) {
+var style$20 = function style(config$$1, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
-    return [style$5(config, tint, scope), _defineProperty$27({}, scope + '.pe-control--switch', {
+    return [style$5(config$$1, tint, scope), _defineProperty$27({}, scope + '.pe-control--switch', {
 
         '&.pe-control--off': {
             ' .pe-control--switch__track': {
-                opacity: config['color_' + tint + '_track_off_opacity'],
-                'background-color': config['color_' + tint + '_track_off']
+                opacity: config$$1['color_' + tint + '_track_off_opacity'],
+                'background-color': config$$1['color_' + tint + '_track_off']
             },
             ' .pe-control--switch__thumb': {
-                color: config['color_' + tint + '_thumb_off']
+                color: config$$1['color_' + tint + '_thumb_off']
             },
             ' .pe-control--switch__knob': {
                 'background-color': 'currentcolor'
             },
             ' .pe-button--focus': {
                 ' .pe-button__focus': {
-                    opacity: config['color_' + tint + '_focus_off_opacity'],
-                    'background-color': config['color_' + tint + '_focus_off']
+                    opacity: config$$1['color_' + tint + '_focus_off_opacity'],
+                    'background-color': config$$1['color_' + tint + '_focus_off']
                 }
             }
         },
 
         '&.pe-control--on': {
             ' .pe-control--switch__track': {
-                opacity: config['color_' + tint + '_track_on_opacity'],
-                'background-color': config['color_' + tint + '_track_on']
+                opacity: config$$1['color_' + tint + '_track_on_opacity'],
+                'background-color': config$$1['color_' + tint + '_track_on']
             },
             ' .pe-control--switch__thumb': {
-                color: config['color_' + tint + '_thumb_on']
+                color: config$$1['color_' + tint + '_thumb_on']
             },
             ' .pe-control--switch__knob': {
                 'background-color': 'currentcolor'
             },
             ' .pe-button--focus': {
                 ' .pe-button__focus': {
-                    opacity: config['color_' + tint + '_focus_on_opacity'],
-                    'background-color': config['color_' + tint + '_focus_on']
+                    opacity: config$$1['color_' + tint + '_focus_on_opacity'],
+                    'background-color': config$$1['color_' + tint + '_focus_on']
                 }
             }
         },
 
         '&.pe-control--on.pe-control--disabled, &.pe-control--off.pe-control--disabled': {
             ' .pe-control--switch__track': {
-                opacity: config['color_' + tint + '_track_disabled_opacity'],
-                'background-color': config['color_' + tint + '_track_disabled']
+                opacity: config$$1['color_' + tint + '_track_disabled_opacity'],
+                'background-color': config$$1['color_' + tint + '_track_disabled']
             },
             ' .pe-control--switch__thumb': {
-                color: config['color_' + tint + '_thumb_disabled']
+                color: config$$1['color_' + tint + '_thumb_disabled']
             }
         }
     })];
 };
 
-var createStyles$43 = function createStyles(config) {
-    return [style$20(config, 'light'), {
+var createStyles$45 = function createStyles(config$$1) {
+    return [style$20(config$$1, 'light'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$20(config, 'dark', ' '),
+        style$20(config$$1, 'dark', ' '),
         // has dark theme
-        style$20(config, 'dark', '&')]
+        style$20(config$$1, 'dark', '&')]
     }];
 };
 
-var color$20 = (function (config) {
-    return mixin.createStyles(config, createStyles$43);
+var color$20 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$45);
 });
 
-var customConfigFn$23 = customConfig.switch;
-var config$23 = customConfigFn$23 ? customConfigFn$23(config$24) : config$24;
+var themeConfigFn$24 = __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"] && __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"].switch;
+var config$25 = themeConfigFn$24 ? themeConfigFn$24(config$26) : config$26;
+var id$25 = 'pe-switch';
 
-styler$1.add('pe-switch', layout$26(config$23), color$20(config$23));
+styler.add(id$25, layout$26(config$25), color$20(config$25));
 
 var CSS_CLASSES$24 = {
     block: 'pe-control--switch',
@@ -9341,7 +9349,7 @@ var requestAnimFrame = function () {
 var fontSize = buttonConfig.font_size;
 var tab_label_line_height = 1.1 * fontSize;
 
-var defaultConfig$23 = {
+var componentConfig$22 = {
     min_width: 72,
     medium_min_width: 160,
     label_max_width: 264,
@@ -9379,7 +9387,7 @@ var defaultConfig$23 = {
 
 function _defineProperty$28(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var createStyles$44 = function createStyles(config) {
+var createStyles$46 = function createStyles(config$$1) {
     return [{
         '.pe-tabs': [mixin.vendorize({
             'user-select': 'none'
@@ -9395,18 +9403,18 @@ var createStyles$44 = function createStyles(config) {
             '&.pe-tabs--menu': {
                 // reset sizes to fit within a small space
                 ' .pe-tabs__tab': {
-                    height: config.menu_tab_height + 'px'
+                    height: config$$1.menu_tab_height + 'px'
                 },
                 ' .pe-tabs__tab---icon': {
-                    height: config.menu_tab_icon_label_height + 'px'
+                    height: config$$1.menu_tab_icon_label_height + 'px'
                 },
                 ' .pe-tabs__tab, .pe-tabs__tab.pe-tabs__tab---icon': {
                     'min-width': 0,
-                    height: config.menu_tab_icon_label_height + 'px',
+                    height: config$$1.menu_tab_icon_label_height + 'px',
 
                     ' .pe-button__content': {
-                        padding: '0 ' + config.tab_menu_content_padding_v + 'px',
-                        height: config.menu_tab_icon_label_height + 'px',
+                        padding: '0 ' + config$$1.tab_menu_content_padding_v + 'px',
+                        height: config$$1.menu_tab_icon_label_height + 'px',
 
                         ' .pe-icon': {
                             'margin-bottom': 0
@@ -9422,7 +9430,7 @@ var createStyles$44 = function createStyles(config) {
 
             '&.pe-tabs--scrollable': {
                 // hide scrollbar (this approach is required for Firefox)
-                'max-height': config.tab_height + 'px',
+                'max-height': config$$1.tab_height + 'px',
                 '-ms-overflow-style': 'none',
 
                 ' .pe-tabs__scroll-button': {
@@ -9431,7 +9439,7 @@ var createStyles$44 = function createStyles(config) {
                 },
 
                 ' .pe-tabs__row': {
-                    'margin-bottom': -config.scrollbar_offset + 'px'
+                    'margin-bottom': -config$$1.scrollbar_offset + 'px'
                 }
             },
 
@@ -9454,13 +9462,13 @@ var createStyles$44 = function createStyles(config) {
                     ' .pe-button__label': [mixin.vendorize({
                         'transition-property': 'opacity'
                     }, common$1.prefixes_transition), mixin.vendorize({
-                        'transition-duration': config.scroll_button_fade_duration + 's'
+                        'transition-duration': config$$1.scroll_button_fade_duration + 's'
                     }, common$1.prefixes_transition), mixin.vendorize({
                         'transition-timing-function': 'ease-out'
                     }, common$1.prefixes_transition), mixin.vendorize({
-                        'transition-delay': config.scroll_button_fade_delay + 's'
+                        'transition-delay': config$$1.scroll_button_fade_delay + 's'
                     }, common$1.prefixes_transition), {
-                        opacity: config.scroll_button_opacity
+                        opacity: config$$1.scroll_button_opacity
                     }]
                 },
                 '&.pe-tabs--start .pe-tabs__scroll-button--start': {
@@ -9505,28 +9513,28 @@ var createStyles$44 = function createStyles(config) {
             }, common$1.prefixes_user_select), mixin.defaultTransition('color'), {
                 margin: 0,
                 'border-radius': 0,
-                height: config.tab_height + 'px',
+                height: config$$1.tab_height + 'px',
                 padding: 0,
                 color: 'inherit',
-                'min-width': config.min_width + 'px', // for smaller screens, see also media query below
+                'min-width': config$$1.min_width + 'px', // for smaller screens, see also media query below
                 // max-width: 264px, // set in theme js
 
                 ' .pe-button__content': {
-                    padding: '0 ' + config.tab_content_padding_v + 'px',
-                    height: config.tab_height + 'px',
+                    padding: '0 ' + config$$1.tab_content_padding_v + 'px',
+                    height: config$$1.tab_height + 'px',
                     'line-height': common$1.line_height + 'em',
 
                     ' .pe-button__label, .pe-icon': {
-                        'max-width': config.label_max_width + 'px', // or .pe-tabs width minus 56dp
-                        'line-height': config.tab_label_line_height + 'px',
-                        'max-height': 2 * config.tab_label_line_height + 'px',
+                        'max-width': config$$1.label_max_width + 'px', // or .pe-tabs width minus 56dp
+                        'line-height': config$$1.tab_label_line_height + 'px',
+                        'max-height': 2 * config$$1.tab_label_line_height + 'px',
                         overflow: 'hidden',
                         'white-space': 'normal'
                     },
-                    ' .pe-button__label': [mixin.defaultTransition('opacity', config.animation_duration), {
-                        margin: config.tab_label_vertical_offset + 'px 0 0 0',
+                    ' .pe-button__label': [mixin.defaultTransition('opacity', config$$1.animation_duration), {
+                        margin: config$$1.tab_label_vertical_offset + 'px 0 0 0',
                         padding: 0,
-                        opacity: config.label_opacity
+                        opacity: config$$1.label_opacity
                     }],
                     ' .pe-icon': {
                         'margin-left': 'auto',
@@ -9543,14 +9551,14 @@ var createStyles$44 = function createStyles(config) {
                 },
                 '&.pe-tabs__tab---icon': {
                     '&, .pe-button__content': [{
-                        height: config.tab_icon_label_height + 'px'
+                        height: config$$1.tab_icon_label_height + 'px'
                     }, {
                         ' .pe-button__label, .pe-icon': {
                             margin: '0 auto'
                         }
                     }, {
                         ' .pe-icon': {
-                            'margin-bottom': config.tab_icon_label_icon_spacing + 'px'
+                            'margin-bottom': config$$1.tab_icon_label_icon_spacing + 'px'
                         }
                     }]
                 }
@@ -9581,7 +9589,7 @@ var createStyles$44 = function createStyles(config) {
                 'transition-timing-function': 'ease-out'
             }, common$1.prefixes_transition), {
                 position: 'absolute',
-                height: config.tab_indicator_height + 'px',
+                height: config$$1.tab_indicator_height + 'px',
                 bottom: 0,
                 left: 0,
                 'z-index': 3,
@@ -9603,7 +9611,7 @@ var createStyles$44 = function createStyles(config) {
 
         }, '@media (min-width: ' + common$1.breakpoint_small_tablet_portrait + 'px)', {
             '&:not(.pe-tabs--small):not(.pe-tabs--menu) .pe-tabs__tab': {
-                'min-width': config.medium_min_width + 'px'
+                'min-width': config$$1.medium_min_width + 'px'
             }
         })],
 
@@ -9614,65 +9622,62 @@ var createStyles$44 = function createStyles(config) {
     }];
 };
 
-var layout$27 = (function (config) {
-    return mixin.createStyles(config, createStyles$44);
+var layout$27 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$46);
 });
 
 function _defineProperty$29(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$21 = function style(config, tint) {
+var style$21 = function style(config$$1, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$29({}, scope + '.pe-tabs', {
         ' .pe-tabs__tab.pe-button--selected': {
-            color: config['color_' + tint + '_selected_text'],
+            color: config$$1['color_' + tint + '_selected_text'],
 
             ' .pe-button__content': {
-                background: config['color_' + tint + '_selected_background']
+                background: config$$1['color_' + tint + '_selected_background']
             }
         },
         ' .pe-tabs__tab:not(.pe-button--selected) .pe-icon': {
-            color: config['color_' + tint + '_icon']
+            color: config$$1['color_' + tint + '_icon']
         },
         ' .pe-tabs__indicator': {
-            'background-color': config['color_' + tint + '_tab_indicator']
+            'background-color': config$$1['color_' + tint + '_tab_indicator']
         }
     })];
 };
 
-var createStyles$45 = function createStyles(config) {
-    return [style$21(config, 'light'), {
+var createStyles$47 = function createStyles(config$$1) {
+    return [style$21(config$$1, 'light'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$21(config, 'dark', ' '),
+        style$21(config$$1, 'dark', ' '),
         // has dark theme
-        style$21(config, 'dark', '&')]
+        style$21(config$$1, 'dark', '&')]
     }];
 };
 
-var color$21 = (function (config) {
-    return mixin.createStyles(config, createStyles$45);
+var color$21 = (function (config$$1) {
+    return mixin.createStyles(config$$1, createStyles$47);
 });
 
-var customConfigFn$24 = customConfig.tabs;
+var themeConfigFn$25 = __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"] && __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["config"].tabs;
+var config$27 = themeConfigFn$25 ? themeConfigFn$25(componentConfig$22) : componentConfig$22;
+var id$26 = 'pe-tabs';
+
+styler.add(id$26, layout$27(config$27), color$21(config$27));
+
 // default icons
-var arrowBackward = __WEBPACK_IMPORTED_MODULE_0_mithril___default.a.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>');
-var arrowForward = __WEBPACK_IMPORTED_MODULE_0_mithril___default.a.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>');
-
-var config$25 = customConfigFn$24 ? customConfigFn$24(defaultConfig$23) : defaultConfig$23;
-
-styler$1.add('pe-tabs', layout$27(config$25), color$21(config$25));
+var arrowBackward = __WEBPACK_IMPORTED_MODULE_0_mithril___default.a.trust('<svg width="24" height="24" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>');
+var arrowForward = __WEBPACK_IMPORTED_MODULE_0_mithril___default.a.trust('<svg width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>');
 
 var theme$2 = {
-    arrowBackward: {
-        msvg: arrowBackward
-    },
-    arrowForward: {
-        msvg: arrowForward
-    }
+    arrowBackward: arrowBackward,
+    arrowForward: arrowForward
 };
 
-var _extends$23 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$22 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var CSS_CLASSES$25 = {
     block: 'pe-tabs',
@@ -9724,8 +9729,8 @@ var handleScrollButtonClick = function handleScrollButtonClick(ctrl, opts, e, di
 };
 
 var createScrollButton = function createScrollButton(ctrl, position, opts) {
-    var scrollIconForward = opts.scrollIconForward || theme$2.arrowForward;
-    var scrollIconBackward = opts.scrollIconBackward || theme$2.arrowBackward;
+    var scrollIconForward = { msvg: opts.scrollIconForward || theme$2.arrowForward };
+    var scrollIconBackward = { msvg: opts.scrollIconBackward || theme$2.arrowBackward };
 
     return __WEBPACK_IMPORTED_MODULE_0_mithril___default()(component$11, {
         class: [CSS_CLASSES$25.scrollButton, position === POSITION_LEFT ? CSS_CLASSES$25.scrollButtonLeft : CSS_CLASSES$25.scrollButtonRight].join(' '),
@@ -9733,7 +9738,7 @@ var createScrollButton = function createScrollButton(ctrl, position, opts) {
         ripple: {
             center: true
         },
-        config: function config(el) {
+        config: function config$$1(el) {
             if (ctrl.scrollButtonLeftEl && ctrl.scrollButtonRightEl) {
                 return;
             }
@@ -9785,13 +9790,13 @@ var scrollToTab = function scrollToTab(ctrl, tabIndex) {
     var left = Math.min(tabLeft, maxScroll);
     var currentLeft = scroller.scrollLeft;
     if (currentLeft !== left) {
-        var duration = Math.abs(currentLeft - left) / defaultConfig$23.tabs_scroll_speed;
-        var delaySeconds = defaultConfig$23.tabs_scroll_delay || 0;
+        var duration = Math.abs(currentLeft - left) / componentConfig$22.tabs_scroll_speed;
+        var delaySeconds = componentConfig$22.tabs_scroll_delay || 0;
         setTimeout(function () {
             scrollTo({
                 element: scroller,
                 to: left,
-                duration: Math.max(defaultConfig$23.tabs_scroll_min_duration, duration),
+                duration: Math.max(componentConfig$22.tabs_scroll_min_duration, duration),
                 direction: 'horizontal'
             });
         }, delaySeconds * 1000);
@@ -9818,7 +9823,7 @@ var animateIndicator = function animateIndicator(selectedTabEl, animate, ctrl) {
     var style = ctrl.tabIndicatorEl.style;
     var translateX = rect.left - parentRect.left + ctrl.scrollerEl.scrollLeft;
     var transformCmd = 'translate(' + translateX + 'px, 0)';
-    var duration = animate ? defaultConfig$23.indicator_slide_min_duration : 0;
+    var duration = animate ? componentConfig$22.indicator_slide_min_duration : 0;
     // use width instead of scale to please IE10
     style.width = rect.width + 'px';
     style['transition-duration'] = style['-webkit-transition-duration'] = style['-moz-transition-duration'] = style['-o-transition-duration'] = duration + 's';
@@ -9849,20 +9854,20 @@ var createTab = function createTab(ctrl, opts, index, buttonOpts) {
     // Let internal onclick function co-exist with passed button option
     buttonOpts.events = buttonOpts.events || {};
     buttonOpts.events.onclick = buttonOpts.events.onclick || function () {};
-    var tabButtonOptions = _extends$23({}, buttonOpts, {
+    var tabButtonOptions = _extends$22({}, buttonOpts, {
         content: __WEBPACK_IMPORTED_MODULE_0_mithril___default()('div', {
             class: CSS_CLASSES$25.tabContent
         }, [buttonOpts.icon ? __WEBPACK_IMPORTED_MODULE_0_mithril___default()(component$5, buttonOpts.icon) : null, buttonOpts.label ? __WEBPACK_IMPORTED_MODULE_0_mithril___default()('div', { class: CSS_CLASSES$25.label }, __WEBPACK_IMPORTED_MODULE_0_mithril___default()('span', buttonOpts.label)) : null]),
         class: [CSS_CLASSES$25.tab, buttonOpts.icon && buttonOpts.label ? CSS_CLASSES$25.tabHasIcon : null, buttonOpts.class].join(' '),
         wash: false,
         ripple: true,
-        events: _extends$23({}, buttonOpts.events, {
+        events: _extends$22({}, buttonOpts.events, {
             onclick: function onclick(e) {
                 setSelectedTab(ctrl, opts, index, opts.noIndicatorSlide ? false : true);
                 buttonOpts.events.onclick(e);
             }
         }),
-        config: function config(el, inited) {
+        config: function config$$1(el, inited) {
             if (inited) {
                 return;
             }
@@ -9892,7 +9897,7 @@ var createView$23 = function createView(ctrl) {
     var props = {
         class: [CSS_CLASSES$25.block, opts.scrollable ? CSS_CLASSES$25.scrollable : null, ctrl.selectedTabIndex === 0 ? CSS_CLASSES$25.isAtStart : null, ctrl.selectedTabIndex === ctrl.tabs.length - 1 ? CSS_CLASSES$25.isAtEnd : null, opts.activeSelected ? CSS_CLASSES$25.activeSelected : null, autofit ? CSS_CLASSES$25.isAutofit : null, opts.menu ? CSS_CLASSES$25.isMenu : null, opts.small ? CSS_CLASSES$25.isSmall : null, opts.class].join(' '),
         id: opts.id || '',
-        config: function config(el, inited, context) {
+        config: function config$$1(el, inited, context) {
             if (inited) {
                 return;
             }
@@ -9932,7 +9937,7 @@ var createView$23 = function createView(ctrl) {
         }
     };
     var tabRow = opts.buttons.map(function (buttonOpts, index) {
-        var buttonOptsCombined = _extends$23({}, buttonOpts, {
+        var buttonOptsCombined = _extends$22({}, buttonOpts, {
             selected: index === ctrl.selectedTabIndex,
             animateOnTap: opts.animateOnTap !== false ? true : false
         }, opts.tabsOpts || {});
@@ -9950,7 +9955,7 @@ var createView$23 = function createView(ctrl) {
 
     var tabIndicator = opts.hideIndicator ? null : __WEBPACK_IMPORTED_MODULE_0_mithril___default()('div', {
         class: CSS_CLASSES$25.indicator,
-        config: function config(el, inited) {
+        config: function config$$1(el, inited) {
             if (inited) {
                 return;
             }
@@ -9960,7 +9965,7 @@ var createView$23 = function createView(ctrl) {
 
     var content = [opts.scrollable ? scrollButtonLeft : null, __WEBPACK_IMPORTED_MODULE_0_mithril___default()('div', {
         class: [CSS_CLASSES$25.tabRow, opts.centered ? CSS_CLASSES$25.tabRowCentered : null, opts.scrollable ? CSS_CLASSES$25.tabRowIndent : null].join(' '),
-        config: function config(el, inited) {
+        config: function config$$1(el, inited) {
             if (inited) {
                 return;
             }
@@ -10157,9 +10162,36 @@ var general = [{
     }
 }];
 
-var theme$3 = (function () {
-    styler$1.add('pe-theme', roboto, styles, general);
+var index = (function () {
+    styler.add('pe-theme', roboto, styles, general);
 })();
+
+// Placeholder for custom theme config file
+// In your app paths setup, change the current path to your custom config file; see the theme README.
+
+// Example:
+
+// import 'polythene/common/object.assign';
+//
+// export default {
+//     button: (config) => {
+//         const mainColor = '#e4521b';
+//         const textColor = '#fff';
+//         const configTestCfg = Object.assign({}, config, {
+//             border_radius: 0,
+//             color_light_raised_normal_background: mainColor,
+//             color_light_raised_normal_text: textColor,
+//             color_dark_raised_normal_background: mainColor,
+//             color_dark_raised_normal_text: textColor
+//         });
+//         return [
+//             {'': config}, // all pages
+//             {'.module-custom-theme': configTestCfg} // only this page
+//         ];
+//     }
+// };
+
+var custom = {};
 
 var validationHelper = (function () {
     var opts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -10291,7 +10323,7 @@ exports.default = {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__default__ = __webpack_require__(158);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__default__ = __webpack_require__(161);
 // Conduit for global theme variables
 // In your app paths setup, change the current path to your custom config file; see the theme README.
 
@@ -10829,7 +10861,7 @@ var _common = __webpack_require__(5);
 
 var _common2 = _interopRequireDefault(_common);
 
-var _dialogReplaceTwo = __webpack_require__(63);
+var _dialogReplaceTwo = __webpack_require__(64);
 
 var _dialogReplaceTwo2 = _interopRequireDefault(_dialogReplaceTwo);
 
@@ -10908,7 +10940,7 @@ var _mithril2 = _interopRequireDefault(_mithril);
 
 var _polythene = __webpack_require__(1);
 
-var _sliderRgbStyle = __webpack_require__(129);
+var _sliderRgbStyle = __webpack_require__(130);
 
 var _sliderRgbStyle2 = _interopRequireDefault(_sliderRgbStyle);
 
@@ -10987,11 +11019,11 @@ var _mithril2 = _interopRequireDefault(_mithril);
 
 var _polythene = __webpack_require__(1);
 
-var _tabsMenuStyle = __webpack_require__(146);
+var _tabsMenuStyle = __webpack_require__(147);
 
 var _tabsMenuStyle2 = _interopRequireDefault(_tabsMenuStyle);
 
-var _tabsMenuScreen = __webpack_require__(145);
+var _tabsMenuScreen = __webpack_require__(146);
 
 var _tabsMenuScreen2 = _interopRequireDefault(_tabsMenuScreen);
 
@@ -11042,7 +11074,7 @@ var _mithril2 = _interopRequireDefault(_mithril);
 
 var _polythene = __webpack_require__(1);
 
-var _tabsRoutingStyle = __webpack_require__(147);
+var _tabsRoutingStyle = __webpack_require__(148);
 
 var _tabsRoutingStyle2 = _interopRequireDefault(_tabsRoutingStyle);
 
@@ -11120,24 +11152,112 @@ exports.default = _module;
 /* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var m = __webpack_require__(0);
-module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>');
+"use strict";
 
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.config = exports.defaults = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; // theme override
+
+var _polytheneCore = __webpack_require__(191);
+
+var defaults = exports.defaults = _extends({}, _polytheneCore.defaultVariables, { color_primary: "255, 152, 0" // new base color: orange 500
+});
+
+var config = exports.config = {
+  button: function button(vars) {
+    var mainColor = '#e4521b';
+    var textColor = '#fff';
+    var newVars = Object.assign({}, vars, {
+      border_radius: 0,
+      color_light_raised_normal_background: mainColor,
+      color_light_raised_normal_text: textColor,
+      color_dark_raised_normal_background: mainColor,
+      color_dark_raised_normal_text: textColor
+    });
+    return [{ '': vars }, // default vars for all pages
+    { '.example-custom-theme ': newVars // custom vars for this selector
+    }];
+  }
+};
 
 /***/ }),
 /* 21 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-var m = __webpack_require__(0);
-module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>');
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_j2c__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_j2c___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_j2c__);
 
+
+var remove = function remove(id) {
+    if (id) {
+        var old = document.getElementById(id);
+        if (old) {
+            old.parentNode.removeChild(old);
+        }
+    }
+};
+
+/*
+* id: identifier, used as HTMLElement id for the attached <style></style> element
+* styles: list of lists style Objects
+*/
+var add = function add(id) {
+    for (var _len = arguments.length, styles = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+        styles[_key - 1] = arguments[_key];
+    }
+
+    addToDocument.apply(undefined, [{ id: id }].concat(styles));
+};
+
+/*
+* opts: options object
+  * id: identifier, used as HTMLElement id for the attached <style></style> element
+  * document: document reference; default window.document
+* styles: list of lists style Objects
+*/
+var addToDocument = function addToDocument(opts) {
+    for (var _len2 = arguments.length, styles = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+        styles[_key2 - 1] = arguments[_key2];
+    }
+
+    var id = opts.id;
+    var documentRef = opts.document || window.document;
+    remove(id);
+    var styleEl = documentRef.createElement('style');
+    if (id) {
+        styleEl.setAttribute('id', id);
+    }
+    styles.forEach(function (styleList) {
+        // each style returns a list
+        if (Object.keys(styleList).length) {
+            styleList.forEach(function (style) {
+                var scoped = { '@global': style };
+                var sheet = __WEBPACK_IMPORTED_MODULE_0_j2c___default.a.sheet(scoped);
+                styleEl.appendChild(documentRef.createTextNode(sheet));
+            });
+        }
+    });
+    documentRef.head.appendChild(styleEl);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    add: add,
+    addToDocument: addToDocument,
+    remove: remove
+});
 
 /***/ }),
 /* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
-module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>');
+module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>');
 
 
 /***/ }),
@@ -11145,7 +11265,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" hei
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
-module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>');
+module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>');
 
 
 /***/ }),
@@ -11153,7 +11273,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" hei
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
-module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>');
+module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>');
 
 
 /***/ }),
@@ -11161,7 +11281,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" hei
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
-module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/></svg>');
+module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>');
 
 
 /***/ }),
@@ -11169,7 +11289,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" hei
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
-module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>');
+module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>');
 
 
 /***/ }),
@@ -11177,7 +11297,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" hei
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
-module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve"><path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 14,20C 14,21.1046 13.1046,22 12,22C 10.8954,22 10,21.1046 10,20L 14,20 Z M 12,2.00001C 12.5523,2.00001 13,2.44772 13,3L 13,4.08298C 15.8377,4.55905 18,7.02702 18,10L 18,16L 21,19L 3,19L 6,16L 6.00001,9.99998C 6.00001,7.02698 8.1623,4.55902 11,4.08294L 11,3C 11,2.44772 11.4477,2.00001 12,2.00001 Z "/></svg>');
+module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/></svg>');
 
 
 /***/ }),
@@ -11185,7 +11305,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="h
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
-module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve"><path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 11.9994,0.998068C 7.02841,0.998068 2.9994,5.02706 2.9994,9.99807L 2.9994,16.9981C 2.9994,18.6551 4.3424,19.9981 5.9994,19.9981L 8.9994,19.9981L 8.9994,11.9981L 4.9994,11.9981L 4.9994,9.99807C 4.9994,6.13207 8.1334,2.99807 11.9994,2.99807C 15.8654,2.99807 18.9994,6.13207 18.9994,9.99807L 18.9994,11.9981L 14.9994,11.9981L 14.9994,19.9981L 17.9994,19.9981C 19.6564,19.9981 20.9994,18.6551 20.9994,16.9981L 20.9994,9.99807C 20.9994,5.02706 16.9704,0.998068 11.9994,0.998068 Z "/></svg>');
+module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>');
 
 
 /***/ }),
@@ -11193,7 +11313,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="h
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
-module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve"><path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 18.9994,12.998L 12.9994,12.998L 12.9994,18.998L 10.9994,18.998L 10.9994,12.998L 4.99936,12.998L 4.99936,10.998L 10.9994,10.998L 10.9994,4.99805L 12.9994,4.99805L 12.9994,10.998L 18.9994,10.998L 18.9994,12.998 Z "/></svg>');
+module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve"><path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 14,20C 14,21.1046 13.1046,22 12,22C 10.8954,22 10,21.1046 10,20L 14,20 Z M 12,2.00001C 12.5523,2.00001 13,2.44772 13,3L 13,4.08298C 15.8377,4.55905 18,7.02702 18,10L 18,16L 21,19L 3,19L 6,16L 6.00001,9.99998C 6.00001,7.02698 8.1623,4.55902 11,4.08294L 11,3C 11,2.44772 11.4477,2.00001 12,2.00001 Z "/></svg>');
 
 
 /***/ }),
@@ -11201,7 +11321,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="h
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
-module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve"><path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 11.9994,15.498C 10.0664,15.498 8.49939,13.931 8.49939,11.998C 8.49939,10.0651 10.0664,8.49805 11.9994,8.49805C 13.9324,8.49805 15.4994,10.0651 15.4994,11.998C 15.4994,13.931 13.9324,15.498 11.9994,15.498 Z M 19.4284,12.9741C 19.4704,12.6531 19.4984,12.329 19.4984,11.998C 19.4984,11.6671 19.4704,11.343 19.4284,11.022L 21.5414,9.36804C 21.7294,9.21606 21.7844,8.94604 21.6594,8.73004L 19.6594,5.26605C 19.5354,5.05005 19.2734,4.96204 19.0474,5.04907L 16.5584,6.05206C 16.0424,5.65607 15.4774,5.32104 14.8684,5.06903L 14.4934,2.41907C 14.4554,2.18103 14.2484,1.99805 13.9994,1.99805L 9.99939,1.99805C 9.74939,1.99805 9.5434,2.18103 9.5054,2.41907L 9.1304,5.06805C 8.52039,5.32104 7.95538,5.65607 7.43939,6.05206L 4.95139,5.04907C 4.7254,4.96204 4.46338,5.05005 4.33939,5.26605L 2.33939,8.73004C 2.21439,8.94604 2.26938,9.21606 2.4574,9.36804L 4.5694,11.022C 4.5274,11.342 4.49939,11.6671 4.49939,11.998C 4.49939,12.329 4.5274,12.6541 4.5694,12.9741L 2.4574,14.6271C 2.26938,14.78 2.21439,15.05 2.33939,15.2661L 4.33939,18.73C 4.46338,18.946 4.7254,19.0341 4.95139,18.947L 7.4404,17.944C 7.95639,18.34 8.52139,18.675 9.1304,18.9271L 9.5054,21.577C 9.5434,21.8151 9.74939,21.998 9.99939,21.998L 13.9994,21.998C 14.2484,21.998 14.4554,21.8151 14.4934,21.577L 14.8684,18.9271C 15.4764,18.6741 16.0414,18.34 16.5574,17.9431L 19.0474,18.947C 19.2734,19.0341 19.5354,18.946 19.6594,18.73L 21.6594,15.2661C 21.7844,15.05 21.7294,14.78 21.5414,14.6271L 19.4284,12.9741 Z "/></svg>');
+module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve"><path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 11.9994,0.998068C 7.02841,0.998068 2.9994,5.02706 2.9994,9.99807L 2.9994,16.9981C 2.9994,18.6551 4.3424,19.9981 5.9994,19.9981L 8.9994,19.9981L 8.9994,11.9981L 4.9994,11.9981L 4.9994,9.99807C 4.9994,6.13207 8.1334,2.99807 11.9994,2.99807C 15.8654,2.99807 18.9994,6.13207 18.9994,9.99807L 18.9994,11.9981L 14.9994,11.9981L 14.9994,19.9981L 17.9994,19.9981C 19.6564,19.9981 20.9994,18.6551 20.9994,16.9981L 20.9994,9.99807C 20.9994,5.02706 16.9704,0.998068 11.9994,0.998068 Z "/></svg>');
 
 
 /***/ }),
@@ -11209,7 +11329,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="h
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
-module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve"><path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 11.9994,15.3943L 8.2364,17.6643L 9.2314,13.3833L 5.9094,10.5053L 10.2894,10.1293L 11.9994,6.09327L 13.7094,10.1293L 18.0894,10.5053L 14.7674,13.3833L 15.7624,17.6643M 21.9994,9.24227L 14.8084,8.62526L 11.9994,1.99827L 9.1904,8.62526L 1.9994,9.24227L 7.4544,13.9693L 5.8194,20.9983L 11.9994,17.2703L 18.1794,20.9983L 16.5444,13.9693L 21.9994,9.24227 Z "/></svg>');
+module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve"><path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 18.9994,12.998L 12.9994,12.998L 12.9994,18.998L 10.9994,18.998L 10.9994,12.998L 4.99936,12.998L 4.99936,10.998L 10.9994,10.998L 10.9994,4.99805L 12.9994,4.99805L 12.9994,10.998L 18.9994,10.998L 18.9994,12.998 Z "/></svg>');
 
 
 /***/ }),
@@ -11217,11 +11337,27 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="h
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
-module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve"><path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 11.9994,17.2708L 18.1794,20.9978L 16.5444,13.9688L 21.9994,9.24277L 14.8084,8.62477L 11.9994,1.99777L 9.1904,8.62477L 1.9994,9.24277L 7.4544,13.9688L 5.8194,20.9978L 11.9994,17.2708 Z "/></svg>');
+module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve"><path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 11.9994,15.498C 10.0664,15.498 8.49939,13.931 8.49939,11.998C 8.49939,10.0651 10.0664,8.49805 11.9994,8.49805C 13.9324,8.49805 15.4994,10.0651 15.4994,11.998C 15.4994,13.931 13.9324,15.498 11.9994,15.498 Z M 19.4284,12.9741C 19.4704,12.6531 19.4984,12.329 19.4984,11.998C 19.4984,11.6671 19.4704,11.343 19.4284,11.022L 21.5414,9.36804C 21.7294,9.21606 21.7844,8.94604 21.6594,8.73004L 19.6594,5.26605C 19.5354,5.05005 19.2734,4.96204 19.0474,5.04907L 16.5584,6.05206C 16.0424,5.65607 15.4774,5.32104 14.8684,5.06903L 14.4934,2.41907C 14.4554,2.18103 14.2484,1.99805 13.9994,1.99805L 9.99939,1.99805C 9.74939,1.99805 9.5434,2.18103 9.5054,2.41907L 9.1304,5.06805C 8.52039,5.32104 7.95538,5.65607 7.43939,6.05206L 4.95139,5.04907C 4.7254,4.96204 4.46338,5.05005 4.33939,5.26605L 2.33939,8.73004C 2.21439,8.94604 2.26938,9.21606 2.4574,9.36804L 4.5694,11.022C 4.5274,11.342 4.49939,11.6671 4.49939,11.998C 4.49939,12.329 4.5274,12.6541 4.5694,12.9741L 2.4574,14.6271C 2.26938,14.78 2.21439,15.05 2.33939,15.2661L 4.33939,18.73C 4.46338,18.946 4.7254,19.0341 4.95139,18.947L 7.4404,17.944C 7.95639,18.34 8.52139,18.675 9.1304,18.9271L 9.5054,21.577C 9.5434,21.8151 9.74939,21.998 9.99939,21.998L 13.9994,21.998C 14.2484,21.998 14.4554,21.8151 14.4934,21.577L 14.8684,18.9271C 15.4764,18.6741 16.0414,18.34 16.5574,17.9431L 19.0474,18.947C 19.2734,19.0341 19.5354,18.946 19.6594,18.73L 21.6594,15.2661C 21.7844,15.05 21.7294,14.78 21.5414,14.6271L 19.4284,12.9741 Z "/></svg>');
 
 
 /***/ }),
 /* 33 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var m = __webpack_require__(0);
+module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve"><path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 11.9994,15.3943L 8.2364,17.6643L 9.2314,13.3833L 5.9094,10.5053L 10.2894,10.1293L 11.9994,6.09327L 13.7094,10.1293L 18.0894,10.5053L 14.7674,13.3833L 15.7624,17.6643M 21.9994,9.24227L 14.8084,8.62526L 11.9994,1.99827L 9.1904,8.62526L 1.9994,9.24227L 7.4544,13.9693L 5.8194,20.9983L 11.9994,17.2703L 18.1794,20.9983L 16.5444,13.9693L 21.9994,9.24227 Z "/></svg>');
+
+
+/***/ }),
+/* 34 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var m = __webpack_require__(0);
+module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="24" height="24" viewBox="0 0 24.00 24.00" enable-background="new 0 0 24.00 24.00" xml:space="preserve"><path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 11.9994,17.2708L 18.1794,20.9978L 16.5444,13.9688L 21.9994,9.24277L 14.8084,8.62477L 11.9994,1.99777L 9.1904,8.62477L 1.9994,9.24277L 7.4544,13.9688L 5.8194,20.9978L 11.9994,17.2708 Z "/></svg>');
+
+
+/***/ }),
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11622,13 +11758,13 @@ delete j2c.use
 module.exports = j2c;
 
 /***/ }),
-/* 34 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(156);
+__webpack_require__(160);
 
 var _mithril = __webpack_require__(0);
 
@@ -11636,111 +11772,111 @@ var _mithril2 = _interopRequireDefault(_mithril);
 
 var _polythene = __webpack_require__(1);
 
-var _nav = __webpack_require__(39);
+var _nav = __webpack_require__(41);
 
 var _nav2 = _interopRequireDefault(_nav);
 
-var _github = __webpack_require__(37);
+var _github = __webpack_require__(39);
 
 var _github2 = _interopRequireDefault(_github);
 
-var _button = __webpack_require__(43);
+var _button = __webpack_require__(45);
 
 var _button2 = _interopRequireDefault(_button);
 
-var _card = __webpack_require__(45);
+var _card = __webpack_require__(47);
 
 var _card2 = _interopRequireDefault(_card);
 
-var _checkbox = __webpack_require__(47);
+var _checkbox = __webpack_require__(49);
 
 var _checkbox2 = _interopRequireDefault(_checkbox);
 
-var _customTheme = __webpack_require__(48);
+var _customTheme = __webpack_require__(50);
 
 var _customTheme2 = _interopRequireDefault(_customTheme);
 
-var _dialog = __webpack_require__(52);
+var _dialog = __webpack_require__(53);
 
 var _dialog2 = _interopRequireDefault(_dialog);
 
-var _fab = __webpack_require__(69);
+var _fab = __webpack_require__(70);
 
 var _fab2 = _interopRequireDefault(_fab);
 
-var _headerPanel = __webpack_require__(89);
+var _headerPanel = __webpack_require__(90);
 
 var _headerPanel2 = _interopRequireDefault(_headerPanel);
 
-var _icon = __webpack_require__(96);
+var _icon = __webpack_require__(97);
 
 var _icon2 = _interopRequireDefault(_icon);
 
-var _iconButton = __webpack_require__(94);
+var _iconButton = __webpack_require__(95);
 
 var _iconButton2 = _interopRequireDefault(_iconButton);
 
-var _layout = __webpack_require__(98);
+var _layout = __webpack_require__(99);
 
 var _layout2 = _interopRequireDefault(_layout);
 
-var _list = __webpack_require__(112);
+var _list = __webpack_require__(113);
 
 var _list2 = _interopRequireDefault(_list);
 
-var _listControls = __webpack_require__(104);
+var _listControls = __webpack_require__(105);
 
 var _listControls2 = _interopRequireDefault(_listControls);
 
-var _listTile = __webpack_require__(110);
+var _listTile = __webpack_require__(111);
 
 var _listTile2 = _interopRequireDefault(_listTile);
 
-var _menu = __webpack_require__(116);
+var _menu = __webpack_require__(117);
 
 var _menu2 = _interopRequireDefault(_menu);
 
-var _notification = __webpack_require__(120);
+var _notification = __webpack_require__(121);
 
 var _notification2 = _interopRequireDefault(_notification);
 
-var _radioButton = __webpack_require__(122);
+var _radioButton = __webpack_require__(123);
 
 var _radioButton2 = _interopRequireDefault(_radioButton);
 
-var _ripple = __webpack_require__(124);
+var _ripple = __webpack_require__(125);
 
 var _ripple2 = _interopRequireDefault(_ripple);
 
-var _search = __webpack_require__(126);
+var _search = __webpack_require__(127);
 
 var _search2 = _interopRequireDefault(_search);
 
-var _shadow = __webpack_require__(128);
+var _shadow = __webpack_require__(129);
 
 var _shadow2 = _interopRequireDefault(_shadow);
 
-var _slider = __webpack_require__(133);
+var _slider = __webpack_require__(134);
 
 var _slider2 = _interopRequireDefault(_slider);
 
-var _speedTest = __webpack_require__(135);
+var _speedTest = __webpack_require__(136);
 
 var _speedTest2 = _interopRequireDefault(_speedTest);
 
-var _spinner = __webpack_require__(137);
+var _spinner = __webpack_require__(138);
 
 var _spinner2 = _interopRequireDefault(_spinner);
 
-var _svg = __webpack_require__(139);
+var _svg = __webpack_require__(140);
 
 var _svg2 = _interopRequireDefault(_svg);
 
-var _switch = __webpack_require__(141);
+var _switch = __webpack_require__(142);
 
 var _switch2 = _interopRequireDefault(_switch);
 
-var _tabs = __webpack_require__(148);
+var _tabs = __webpack_require__(149);
 
 var _tabs2 = _interopRequireDefault(_tabs);
 
@@ -11752,21 +11888,21 @@ var _tabsRouting = __webpack_require__(19);
 
 var _tabsRouting2 = _interopRequireDefault(_tabsRouting);
 
-var _textfield = __webpack_require__(150);
+var _textfield = __webpack_require__(151);
 
 var _textfield2 = _interopRequireDefault(_textfield);
 
-var _toolbar = __webpack_require__(152);
+var _toolbar = __webpack_require__(153);
 
 var _toolbar2 = _interopRequireDefault(_toolbar);
 
-var _validation = __webpack_require__(154);
+var _validation = __webpack_require__(155);
 
 var _validation2 = _interopRequireDefault(_validation);
 
-__webpack_require__(162);
+__webpack_require__(165);
 
-var _appStyle = __webpack_require__(36);
+var _appStyle = __webpack_require__(38);
 
 var _appStyle2 = _interopRequireDefault(_appStyle);
 
@@ -11774,7 +11910,7 @@ var _arrowRight = __webpack_require__(13);
 
 var _arrowRight2 = _interopRequireDefault(_arrowRight);
 
-var _recycle = __webpack_require__(40);
+var _recycle = __webpack_require__(42);
 
 var _recycle2 = _interopRequireDefault(_recycle);
 
@@ -11894,7 +12030,7 @@ var links = [{
         module: _layout2.default,
         name: 'Layout'
     }, {
-        url: '/custom-theme',
+        url: '/theming',
         module: _customTheme2.default,
         name: 'Custom theme'
     }]
@@ -12045,18 +12181,18 @@ window.addEventListener('pageshow', function (e) {
 }, false);
 
 /***/ }),
-/* 35 */
+/* 37 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__src__);
 /* harmony namespace reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in __WEBPACK_IMPORTED_MODULE_0__src__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return __WEBPACK_IMPORTED_MODULE_0__src__[key]; }) }(__WEBPACK_IMPORT_KEY__));
 
 
 /***/ }),
-/* 36 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12212,7 +12348,7 @@ var styles = [_defineProperty({
 exports.default = styles;
 
 /***/ }),
-/* 37 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12248,7 +12384,7 @@ _polythene.styler.add('polythene-examples-github', style);
 exports.default = content;
 
 /***/ }),
-/* 38 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12324,7 +12460,7 @@ var styles = [(_ref = {
 exports.default = styles;
 
 /***/ }),
-/* 39 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12340,11 +12476,11 @@ var _mithril2 = _interopRequireDefault(_mithril);
 
 var _polythene = __webpack_require__(1);
 
-var _navStyle = __webpack_require__(38);
+var _navStyle = __webpack_require__(40);
 
 var _navStyle2 = _interopRequireDefault(_navStyle);
 
-var _apps = __webpack_require__(175);
+var _apps = __webpack_require__(178);
 
 var _apps2 = _interopRequireDefault(_apps);
 
@@ -12394,7 +12530,7 @@ var nav = function nav(title, content) {
 exports.default = nav;
 
 /***/ }),
-/* 40 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12403,7 +12539,7 @@ exports.default = nav;
 var m = __webpack_require__(0);module.exports = m.trust('<?xml version="1.0" encoding="utf-8"?><svg version="1.1" x="0px" y="0px" width="100px" height="100px" viewBox="-149.5 250.5 100 100" enable-background="new -149.5 250.5 100 100" xml:space="preserve"><g><path d="M-121.911,326.974l4.529,4.53h-21.011c-1.058,0-2.041-0.556-2.564-1.449c-0.507-0.868-0.507-1.945,0.001-2.814 l15.481-26.467l-7.046-4.123l-15.482,26.467c-1.995,3.412-1.995,7.65,0.002,11.062c1.984,3.385,5.666,5.487,9.609,5.487h21.007 l-4.524,4.525l5.772,5.771l14.379-14.378l-14.378-14.384L-121.911,326.974z"/><path d="M-51.021,322.837l-10.604-18.144l6.196,1.626l2.07-7.896l-19.671-5.161l-5.161,19.673l7.895,2.073l1.625-6.189 l10.599,18.134c0.533,0.917,0.55,2.048,0.048,2.941c-0.498,0.88-1.431,1.427-2.438,1.427l-30.657-0.011l-0.004,8.164l30.661,0.011 c3.942,0,7.599-2.135,9.55-5.582C-48.99,330.485-49.033,326.246-51.021,322.837z"/><path d="M-74.419,282.942l-15.458-26.484c-1.964-3.356-5.577-5.422-9.458-5.422c-0.059,0-0.117,0-0.176,0 c-3.91,0.063-7.547,2.236-9.492,5.678l-10.32,18.311l-1.718-6.167l-7.865,2.19l5.458,19.59l19.597-5.469l-2.194-7.862l-6.162,1.72 l10.312-18.301c0.524-0.923,1.487-1.508,2.515-1.525c0.016,0,0.029,0,0.045,0c0.99,0,1.912,0.528,2.41,1.38l15.455,26.478 L-74.419,282.942z"/></g></svg>');
 
 /***/ }),
-/* 41 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12456,7 +12592,7 @@ exports.default = function (opts) {
 };
 
 /***/ }),
-/* 42 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12487,7 +12623,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 43 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12501,13 +12637,13 @@ var _mithril = __webpack_require__(0);
 
 var _mithril2 = _interopRequireDefault(_mithril);
 
-var _buttonRow = __webpack_require__(41);
+var _buttonRow = __webpack_require__(43);
 
 var _buttonRow2 = _interopRequireDefault(_buttonRow);
 
 var _polythene = __webpack_require__(1);
 
-var _buttonStyle = __webpack_require__(42);
+var _buttonStyle = __webpack_require__(44);
 
 var _buttonStyle2 = _interopRequireDefault(_buttonStyle);
 
@@ -12553,7 +12689,7 @@ _module.view = function () {
 exports.default = _module;
 
 /***/ }),
-/* 44 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12626,7 +12762,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 45 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12642,7 +12778,7 @@ var _mithril2 = _interopRequireDefault(_mithril);
 
 var _polythene = __webpack_require__(1);
 
-var _cardStyle = __webpack_require__(44);
+var _cardStyle = __webpack_require__(46);
 
 var _cardStyle2 = _interopRequireDefault(_cardStyle);
 
@@ -12650,15 +12786,15 @@ var _heart = __webpack_require__(8);
 
 var _heart2 = _interopRequireDefault(_heart);
 
-var _bookmark = __webpack_require__(180);
+var _bookmark = __webpack_require__(183);
 
 var _bookmark2 = _interopRequireDefault(_bookmark);
 
-var _share = __webpack_require__(183);
+var _share = __webpack_require__(186);
 
 var _share2 = _interopRequireDefault(_share);
 
-var _expandLess = __webpack_require__(177);
+var _expandLess = __webpack_require__(180);
 
 var _expandLess2 = _interopRequireDefault(_expandLess);
 
@@ -13618,7 +13754,7 @@ _module.view = function () {
 exports.default = _module;
 
 /***/ }),
-/* 46 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13661,7 +13797,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 47 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13677,15 +13813,15 @@ var _mithril2 = _interopRequireDefault(_mithril);
 
 var _polythene = __webpack_require__(1);
 
-var _checkboxStyle = __webpack_require__(46);
+var _checkboxStyle = __webpack_require__(48);
 
 var _checkboxStyle2 = _interopRequireDefault(_checkboxStyle);
 
-var _star = __webpack_require__(26);
+var _star = __webpack_require__(28);
 
 var _star2 = _interopRequireDefault(_star);
 
-var _starBorder = __webpack_require__(25);
+var _starBorder = __webpack_require__(27);
 
 var _starBorder2 = _interopRequireDefault(_starBorder);
 
@@ -13842,7 +13978,7 @@ _module.view = function (ctrl) {
 exports.default = _module;
 
 /***/ }),
-/* 48 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13858,7 +13994,7 @@ var _mithril2 = _interopRequireDefault(_mithril);
 
 var _polythene = __webpack_require__(1);
 
-var _primaryButton = __webpack_require__(49);
+var _primaryButton = __webpack_require__(51);
 
 var _primaryButton2 = _interopRequireDefault(_primaryButton);
 
@@ -13882,13 +14018,22 @@ _module.view = function () {
                 margin: '0 -4px'
             }
         }, [(0, _mithril2.default)(_primaryButton2.default, { label: 'One' }), (0, _mithril2.default)(_primaryButton2.default, { label: 'Two' }), (0, _mithril2.default)(_primaryButton2.default, { label: 'Three' })])
+    }), _mithril2.default.component(titleBlock, {
+        title: 'Custom style as configuration',
+        info: (0, _mithril2.default)('p', _mithril2.default.trust('Enhancing/replacing styles with configuration per component. This new configuration is scoped to this page.')),
+        class: 'example-custom-theme',
+        content: (0, _mithril2.default)('div', {
+            style: {
+                margin: '0 -4px'
+            }
+        }, [(0, _mithril2.default)(_polythene.Button, { raised: true, label: 'One' }), (0, _mithril2.default)(_polythene.Button, { raised: true, label: 'Two' }), (0, _mithril2.default)(_polythene.Button, { raised: true, label: 'Three' })])
     })]);
 };
 
 exports.default = _module;
 
 /***/ }),
-/* 49 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13904,44 +14049,50 @@ var _mithril2 = _interopRequireDefault(_mithril);
 
 var _polythene = __webpack_require__(1);
 
+__webpack_require__(2);
+
+var _config = __webpack_require__(157);
+
+var _config2 = _interopRequireDefault(_config);
+
+var _layout = __webpack_require__(158);
+
+var _layout2 = _interopRequireDefault(_layout);
+
+var _color = __webpack_require__(156);
+
+var _color2 = _interopRequireDefault(_color);
+
+var _styler = __webpack_require__(21);
+
+var _styler2 = _interopRequireDefault(_styler);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_polythene.Button.theme(".blue-button", {
-    color_light_flat_background: "blue",
-    color_light_flat_text: "white"
-});
+var reconfig = function reconfig(cfg) {
+    return [{ '.my-button--primary': Object.assign({}, cfg, {
+            border_radius: 0,
+            text_transform: 'none',
+            color_light_flat_normal_background: '#673ab7',
+            color_light_flat_normal_text: '#fff'
+        }) }];
+};
+
+var newConfig = reconfig(_config2.default);
+_styler2.default.add('my-button-primary', (0, _layout2.default)(newConfig), (0, _color2.default)(newConfig));
 
 exports.default = {
-    view: function view(ctrl, attrs) {
-        return (0, _mithril2.default)(_polythene.Button, Object.assign({}, {
-            class: "blue-button",
-            borders: true
-        }, attrs));
+    view: function view(ctrl) {
+        var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+        opts.class = (opts.class || '') + ' my-button--primary';
+        opts.borders = true;
+        return (0, _mithril2.default)(_polythene.Button, opts);
     }
 };
 
 /***/ }),
-/* 50 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.vars = undefined;
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; // custom-theme.js
-
-
-var _polytheneCore = __webpack_require__(191);
-
-var vars = exports.vars = _extends({}, _polytheneCore.defaultVariables, { color_primary: "255, 152, 0" // new base color: orange 500
-});
-
-/***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14007,7 +14158,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14025,51 +14176,51 @@ var _mithril2 = _interopRequireDefault(_mithril);
 
 var _polythene = __webpack_require__(1);
 
-var _dialogShort = __webpack_require__(65);
+var _dialogShort = __webpack_require__(66);
 
 var _dialogShort2 = _interopRequireDefault(_dialogShort);
 
-var _dialogNotransition = __webpack_require__(62);
+var _dialogNotransition = __webpack_require__(63);
 
 var _dialogNotransition2 = _interopRequireDefault(_dialogNotransition);
 
-var _dialogLong = __webpack_require__(57);
+var _dialogLong = __webpack_require__(58);
 
 var _dialogLong2 = _interopRequireDefault(_dialogLong);
 
-var _dialogForm = __webpack_require__(54);
+var _dialogForm = __webpack_require__(55);
 
 var _dialogForm2 = _interopRequireDefault(_dialogForm);
 
-var _dialogModal = __webpack_require__(58);
+var _dialogModal = __webpack_require__(59);
 
 var _dialogModal2 = _interopRequireDefault(_dialogModal);
 
-var _dialogDark = __webpack_require__(53);
+var _dialogDark = __webpack_require__(54);
 
 var _dialogDark2 = _interopRequireDefault(_dialogDark);
 
-var _dialogSimpleFullscreen = __webpack_require__(66);
+var _dialogSimpleFullscreen = __webpack_require__(67);
 
 var _dialogSimpleFullscreen2 = _interopRequireDefault(_dialogSimpleFullscreen);
 
-var _dialogFullscreen = __webpack_require__(55);
+var _dialogFullscreen = __webpack_require__(56);
 
 var _dialogFullscreen2 = _interopRequireDefault(_dialogFullscreen);
 
-var _dialogSimple = __webpack_require__(67);
+var _dialogSimple = __webpack_require__(68);
 
 var _dialogSimple2 = _interopRequireDefault(_dialogSimple);
 
-var _dialogSettingsmenu = __webpack_require__(64);
+var _dialogSettingsmenu = __webpack_require__(65);
 
 var _dialogSettingsmenu2 = _interopRequireDefault(_dialogSettingsmenu);
 
-var _dialogFullwidth = __webpack_require__(56);
+var _dialogFullwidth = __webpack_require__(57);
 
 var _dialogFullwidth2 = _interopRequireDefault(_dialogFullwidth);
 
-var _dialogMultiRoute = __webpack_require__(61);
+var _dialogMultiRoute = __webpack_require__(62);
 
 var _dialogMultiRoute2 = _interopRequireDefault(_dialogMultiRoute);
 
@@ -14077,7 +14228,7 @@ var _dialogReplace = __webpack_require__(15);
 
 var _dialogReplace2 = _interopRequireDefault(_dialogReplace);
 
-var _dialogStyle = __webpack_require__(51);
+var _dialogStyle = __webpack_require__(52);
 
 var _dialogStyle2 = _interopRequireDefault(_dialogStyle);
 
@@ -14238,7 +14389,7 @@ _module.view = function (ctrl) {
 exports.default = _module;
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14269,7 +14420,7 @@ exports.default = Object.assign({}, _common2.default.dialogProps, {
 });
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14342,7 +14493,7 @@ var componentFn = function componentFn() {
 exports.default = componentFn;
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14364,7 +14515,7 @@ var _common = __webpack_require__(5);
 
 var _common2 = _interopRequireDefault(_common);
 
-var _close = __webpack_require__(23);
+var _close = __webpack_require__(25);
 
 var _close2 = _interopRequireDefault(_close);
 
@@ -14443,7 +14594,7 @@ exports.default = Object.assign({}, _common2.default.dialogProps, {
 });
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14488,7 +14639,7 @@ exports.default = Object.assign({}, _common2.default.dialogProps, {
 });
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14516,7 +14667,7 @@ exports.default = Object.assign({}, _common2.default.dialogProps, {
 });
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14546,7 +14697,7 @@ exports.default = Object.assign({}, _common2.default.dialogProps, {
 });
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14579,7 +14730,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14612,7 +14763,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14628,11 +14779,11 @@ var _mithril2 = _interopRequireDefault(_mithril);
 
 var _polythene = __webpack_require__(1);
 
-var _dialogMultiRoutePage = __webpack_require__(59);
+var _dialogMultiRoutePage = __webpack_require__(60);
 
 var _dialogMultiRoutePage2 = _interopRequireDefault(_dialogMultiRoutePage);
 
-var _dialogMultiRoutePage3 = __webpack_require__(60);
+var _dialogMultiRoutePage3 = __webpack_require__(61);
 
 var _dialogMultiRoutePage4 = _interopRequireDefault(_dialogMultiRoutePage3);
 
@@ -14656,7 +14807,7 @@ exports.default = function () {
 };
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14680,7 +14831,7 @@ exports.default = Object.assign({}, _common2.default.dialogProps, {
 });
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14721,7 +14872,7 @@ exports.default = Object.assign({}, _common2.default.dialogProps, {
 });
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14769,7 +14920,7 @@ exports.default = Object.assign({}, _common2.default.dialogProps, {
 });
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14792,7 +14943,7 @@ exports.default = Object.assign({}, _common2.default.dialogProps, {
 });
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14814,7 +14965,7 @@ var _common = __webpack_require__(5);
 
 var _common2 = _interopRequireDefault(_common);
 
-var _close = __webpack_require__(23);
+var _close = __webpack_require__(25);
 
 var _close2 = _interopRequireDefault(_close);
 
@@ -14856,7 +15007,7 @@ exports.default = Object.assign({}, _common2.default.dialogProps, {
 });
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14878,7 +15029,7 @@ var _common = __webpack_require__(5);
 
 var _common2 = _interopRequireDefault(_common);
 
-var _accountCircle = __webpack_require__(168);
+var _accountCircle = __webpack_require__(171);
 
 var _accountCircle2 = _interopRequireDefault(_accountCircle);
 
@@ -14909,7 +15060,7 @@ exports.default = Object.assign({}, _common2.default.dialogProps, {
 });
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14946,7 +15097,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14962,11 +15113,11 @@ var _mithril2 = _interopRequireDefault(_mithril);
 
 var _polythene = __webpack_require__(1);
 
-var _fabStyle = __webpack_require__(68);
+var _fabStyle = __webpack_require__(69);
 
 var _fabStyle2 = _interopRequireDefault(_fabStyle);
 
-var _plus = __webpack_require__(29);
+var _plus = __webpack_require__(31);
 
 var _plus2 = _interopRequireDefault(_plus);
 
@@ -15047,7 +15198,7 @@ _module.view = function () {
 exports.default = _module;
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15098,7 +15249,7 @@ _module.updateContentOnScroll = true;
 exports.default = _module;
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15122,7 +15273,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15144,7 +15295,7 @@ var _common = __webpack_require__(6);
 
 var _common2 = _interopRequireDefault(_common);
 
-var _background1Style = __webpack_require__(71);
+var _background1Style = __webpack_require__(72);
 
 var _background1Style2 = _interopRequireDefault(_background1Style);
 
@@ -15181,7 +15332,7 @@ _module.hideNav = true;
 exports.default = _module;
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15210,7 +15361,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15232,7 +15383,7 @@ var _common = __webpack_require__(6);
 
 var _common2 = _interopRequireDefault(_common);
 
-var _background2Style = __webpack_require__(73);
+var _background2Style = __webpack_require__(74);
 
 var _background2Style2 = _interopRequireDefault(_background2Style);
 
@@ -15267,7 +15418,7 @@ _module.hideNav = true;
 exports.default = _module;
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15299,7 +15450,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15321,7 +15472,7 @@ var _common = __webpack_require__(6);
 
 var _common2 = _interopRequireDefault(_common);
 
-var _background3Style = __webpack_require__(75);
+var _background3Style = __webpack_require__(76);
 
 var _background3Style2 = _interopRequireDefault(_background3Style);
 
@@ -15358,7 +15509,7 @@ _module.hideNav = true;
 exports.default = _module;
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15408,7 +15559,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15430,7 +15581,7 @@ var _common = __webpack_require__(6);
 
 var _common2 = _interopRequireDefault(_common);
 
-var _background4Style = __webpack_require__(77);
+var _background4Style = __webpack_require__(78);
 
 var _background4Style2 = _interopRequireDefault(_background4Style);
 
@@ -15468,7 +15619,7 @@ _module.hideNav = true;
 exports.default = _module;
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15486,7 +15637,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15508,7 +15659,7 @@ var _common = __webpack_require__(6);
 
 var _common2 = _interopRequireDefault(_common);
 
-var _condenses1Style = __webpack_require__(79);
+var _condenses1Style = __webpack_require__(80);
 
 var _condenses1Style2 = _interopRequireDefault(_condenses1Style);
 
@@ -15553,7 +15704,7 @@ _module.hideNav = true;
 exports.default = _module;
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15604,7 +15755,7 @@ _module.hideNav = true;
 exports.default = _module;
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15653,7 +15804,7 @@ _module.hideNav = true;
 exports.default = _module;
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15671,7 +15822,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15693,7 +15844,7 @@ var _common = __webpack_require__(6);
 
 var _common2 = _interopRequireDefault(_common);
 
-var _keepCondensedStyle = __webpack_require__(83);
+var _keepCondensedStyle = __webpack_require__(84);
 
 var _keepCondensedStyle2 = _interopRequireDefault(_keepCondensedStyle);
 
@@ -15730,7 +15881,7 @@ _module.hideNav = true;
 exports.default = _module;
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15821,7 +15972,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15841,7 +15992,7 @@ var _common = __webpack_require__(6);
 
 var _common2 = _interopRequireDefault(_common);
 
-var _kitchensinkStyle = __webpack_require__(85);
+var _kitchensinkStyle = __webpack_require__(86);
 
 var _kitchensinkStyle2 = _interopRequireDefault(_kitchensinkStyle);
 
@@ -15849,7 +16000,7 @@ var _menu = __webpack_require__(11);
 
 var _menu2 = _interopRequireDefault(_menu);
 
-var _refresh = __webpack_require__(178);
+var _refresh = __webpack_require__(181);
 
 var _refresh2 = _interopRequireDefault(_refresh);
 
@@ -16055,7 +16206,7 @@ _module.hideNav = true;
 exports.default = _module;
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16106,7 +16257,7 @@ _module.hideNav = true;
 exports.default = _module;
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16156,7 +16307,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16172,55 +16323,55 @@ var _mithril2 = _interopRequireDefault(_mithril);
 
 var _polythene = __webpack_require__(1);
 
-var _headerPanelStyle = __webpack_require__(88);
+var _headerPanelStyle = __webpack_require__(89);
 
 var _headerPanelStyle2 = _interopRequireDefault(_headerPanelStyle);
 
-var _kitchensink = __webpack_require__(86);
+var _kitchensink = __webpack_require__(87);
 
 var _kitchensink2 = _interopRequireDefault(_kitchensink);
 
-var _infinite = __webpack_require__(92);
+var _infinite = __webpack_require__(93);
 
 var _infinite2 = _interopRequireDefault(_infinite);
 
-var _condenses = __webpack_require__(80);
+var _condenses = __webpack_require__(81);
 
 var _condenses2 = _interopRequireDefault(_condenses);
 
-var _condenses3 = __webpack_require__(81);
+var _condenses3 = __webpack_require__(82);
 
 var _condenses4 = _interopRequireDefault(_condenses3);
 
-var _animated = __webpack_require__(70);
+var _animated = __webpack_require__(71);
 
 var _animated2 = _interopRequireDefault(_animated);
 
-var _noReveal = __webpack_require__(87);
+var _noReveal = __webpack_require__(88);
 
 var _noReveal2 = _interopRequireDefault(_noReveal);
 
-var _fixed = __webpack_require__(82);
+var _fixed = __webpack_require__(83);
 
 var _fixed2 = _interopRequireDefault(_fixed);
 
-var _keepCondensed = __webpack_require__(84);
+var _keepCondensed = __webpack_require__(85);
 
 var _keepCondensed2 = _interopRequireDefault(_keepCondensed);
 
-var _background = __webpack_require__(72);
+var _background = __webpack_require__(73);
 
 var _background2 = _interopRequireDefault(_background);
 
-var _background3 = __webpack_require__(74);
+var _background3 = __webpack_require__(75);
 
 var _background4 = _interopRequireDefault(_background3);
 
-var _background5 = __webpack_require__(76);
+var _background5 = __webpack_require__(77);
 
 var _background6 = _interopRequireDefault(_background5);
 
-var _background7 = __webpack_require__(78);
+var _background7 = __webpack_require__(79);
 
 var _background8 = _interopRequireDefault(_background7);
 
@@ -16347,7 +16498,7 @@ _module.updateContentOnScroll = true;
 exports.default = _module;
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16431,7 +16582,7 @@ var styles = [makeMediaStyle('min', 4), makeMediaStyle('max', 4), makeMediaStyle
 exports.default = styles;
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16470,7 +16621,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16486,7 +16637,7 @@ var _mithril = __webpack_require__(0);
 
 var _mithril2 = _interopRequireDefault(_mithril);
 
-var _mithrilInfinite = __webpack_require__(166);
+var _mithrilInfinite = __webpack_require__(169);
 
 var _mithrilInfinite2 = _interopRequireDefault(_mithrilInfinite);
 
@@ -16496,11 +16647,11 @@ var _common = __webpack_require__(6);
 
 var _common2 = _interopRequireDefault(_common);
 
-var _infiniteGridStyle = __webpack_require__(90);
+var _infiniteGridStyle = __webpack_require__(91);
 
 var _infiniteGridStyle2 = _interopRequireDefault(_infiniteGridStyle);
 
-var _infiniteStyle = __webpack_require__(91);
+var _infiniteStyle = __webpack_require__(92);
 
 var _infiniteStyle2 = _interopRequireDefault(_infiniteStyle);
 
@@ -16584,7 +16735,7 @@ _module.hideNav = true;
 exports.default = _module;
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16607,7 +16758,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 94 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16623,7 +16774,7 @@ var _mithril2 = _interopRequireDefault(_mithril);
 
 var _polythene = __webpack_require__(1);
 
-var _iconButtonStyle = __webpack_require__(93);
+var _iconButtonStyle = __webpack_require__(94);
 
 var _iconButtonStyle2 = _interopRequireDefault(_iconButtonStyle);
 
@@ -16764,7 +16915,7 @@ _module.view = function () {
 exports.default = _module;
 
 /***/ }),
-/* 95 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16801,7 +16952,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 96 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16817,43 +16968,43 @@ var _mithril2 = _interopRequireDefault(_mithril);
 
 var _polythene = __webpack_require__(1);
 
-var _iconStyle = __webpack_require__(95);
+var _iconStyle = __webpack_require__(96);
 
 var _iconStyle2 = _interopRequireDefault(_iconStyle);
 
-var _stars = __webpack_require__(20);
+var _stars = __webpack_require__(22);
 
 var _stars2 = _interopRequireDefault(_stars);
 
-var _group = __webpack_require__(24);
+var _group = __webpack_require__(26);
 
 var _group2 = _interopRequireDefault(_group);
 
-var _chatBubble = __webpack_require__(22);
+var _chatBubble = __webpack_require__(24);
 
 var _chatBubble2 = _interopRequireDefault(_chatBubble);
 
-var _female = __webpack_require__(186);
+var _female = __webpack_require__(189);
 
 var _female2 = _interopRequireDefault(_female);
 
-var _attachment = __webpack_require__(184);
+var _attachment = __webpack_require__(187);
 
 var _attachment2 = _interopRequireDefault(_attachment);
 
-var _cloudDownload = __webpack_require__(187);
+var _cloudDownload = __webpack_require__(190);
 
 var _cloudDownload2 = _interopRequireDefault(_cloudDownload);
 
-var _barcode = __webpack_require__(179);
+var _barcode = __webpack_require__(182);
 
 var _barcode2 = _interopRequireDefault(_barcode);
 
-var _emoticonHappy = __webpack_require__(181);
+var _emoticonHappy = __webpack_require__(184);
 
 var _emoticonHappy2 = _interopRequireDefault(_emoticonHappy);
 
-var _headphones = __webpack_require__(28);
+var _headphones = __webpack_require__(30);
 
 var _headphones2 = _interopRequireDefault(_headphones);
 
@@ -16940,7 +17091,7 @@ _module.view = function () {
 exports.default = _module;
 
 /***/ }),
-/* 97 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17000,7 +17151,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 98 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17016,7 +17167,7 @@ var _mithril2 = _interopRequireDefault(_mithril);
 
 var _polythene = __webpack_require__(1);
 
-var _layoutStyle = __webpack_require__(97);
+var _layoutStyle = __webpack_require__(98);
 
 var _layoutStyle2 = _interopRequireDefault(_layoutStyle);
 
@@ -17139,7 +17290,7 @@ _module.view = function () {
 exports.default = _module;
 
 /***/ }),
-/* 99 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17175,7 +17326,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 100 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17191,11 +17342,11 @@ var _mithril2 = _interopRequireDefault(_mithril);
 
 var _polythene = __webpack_require__(1);
 
-var _checkboxPrimaryStyle = __webpack_require__(99);
+var _checkboxPrimaryStyle = __webpack_require__(100);
 
 var _checkboxPrimaryStyle2 = _interopRequireDefault(_checkboxPrimaryStyle);
 
-var _message = __webpack_require__(173);
+var _message = __webpack_require__(176);
 
 var _message2 = _interopRequireDefault(_message);
 
@@ -17247,7 +17398,7 @@ cbList.view = function () {
 exports.default = cbList;
 
 /***/ }),
-/* 101 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17283,7 +17434,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 102 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17299,7 +17450,7 @@ var _mithril2 = _interopRequireDefault(_mithril);
 
 var _polythene = __webpack_require__(1);
 
-var _checkboxSecondaryStyle = __webpack_require__(101);
+var _checkboxSecondaryStyle = __webpack_require__(102);
 
 var _checkboxSecondaryStyle2 = _interopRequireDefault(_checkboxSecondaryStyle);
 
@@ -17357,7 +17508,7 @@ cbList.view = function () {
 exports.default = cbList;
 
 /***/ }),
-/* 103 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17387,7 +17538,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 104 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17401,25 +17552,25 @@ var _mithril = __webpack_require__(0);
 
 var _mithril2 = _interopRequireDefault(_mithril);
 
-var _sortableList = __webpack_require__(106);
+var _sortableList = __webpack_require__(107);
 
 var _sortableList2 = _interopRequireDefault(_sortableList);
 
-var _checkboxPrimary = __webpack_require__(100);
+var _checkboxPrimary = __webpack_require__(101);
 
 var _checkboxPrimary2 = _interopRequireDefault(_checkboxPrimary);
 
-var _checkboxSecondary = __webpack_require__(102);
+var _checkboxSecondary = __webpack_require__(103);
 
 var _checkboxSecondary2 = _interopRequireDefault(_checkboxSecondary);
 
-var _switchSecondary = __webpack_require__(108);
+var _switchSecondary = __webpack_require__(109);
 
 var _switchSecondary2 = _interopRequireDefault(_switchSecondary);
 
 var _polythene = __webpack_require__(1);
 
-var _listControlsStyle = __webpack_require__(103);
+var _listControlsStyle = __webpack_require__(104);
 
 var _listControlsStyle2 = _interopRequireDefault(_listControlsStyle);
 
@@ -17456,7 +17607,7 @@ _module.view = function () {
 exports.default = _module;
 
 /***/ }),
-/* 105 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17503,7 +17654,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 106 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17519,15 +17670,15 @@ var _mithril2 = _interopRequireDefault(_mithril);
 
 var _polythene = __webpack_require__(1);
 
-var _sortableListStyle = __webpack_require__(105);
+var _sortableListStyle = __webpack_require__(106);
 
 var _sortableListStyle2 = _interopRequireDefault(_sortableListStyle);
 
-var _starOutline = __webpack_require__(31);
+var _starOutline = __webpack_require__(33);
 
 var _starOutline2 = _interopRequireDefault(_starOutline);
 
-var _star = __webpack_require__(32);
+var _star = __webpack_require__(34);
 
 var _star2 = _interopRequireDefault(_star);
 
@@ -17649,7 +17800,7 @@ var sortableList = {
 exports.default = sortableList;
 
 /***/ }),
-/* 107 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17697,7 +17848,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 108 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17713,7 +17864,7 @@ var _mithril2 = _interopRequireDefault(_mithril);
 
 var _polythene = __webpack_require__(1);
 
-var _switchSecondaryStyle = __webpack_require__(107);
+var _switchSecondaryStyle = __webpack_require__(108);
 
 var _switchSecondaryStyle2 = _interopRequireDefault(_switchSecondaryStyle);
 
@@ -17771,7 +17922,7 @@ cbList.view = function () {
 exports.default = cbList;
 
 /***/ }),
-/* 109 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17853,7 +18004,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 110 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17871,19 +18022,19 @@ var _mithril2 = _interopRequireDefault(_mithril);
 
 var _polythene = __webpack_require__(1);
 
-var _listTileStyle = __webpack_require__(109);
+var _listTileStyle = __webpack_require__(110);
 
 var _listTileStyle2 = _interopRequireDefault(_listTileStyle);
 
-var _starOutline = __webpack_require__(31);
+var _starOutline = __webpack_require__(33);
 
 var _starOutline2 = _interopRequireDefault(_starOutline);
 
-var _star = __webpack_require__(32);
+var _star = __webpack_require__(34);
 
 var _star2 = _interopRequireDefault(_star);
 
-var _heartOutline = __webpack_require__(182);
+var _heartOutline = __webpack_require__(185);
 
 var _heartOutline2 = _interopRequireDefault(_heartOutline);
 
@@ -18129,7 +18280,7 @@ _module.view = function () {
 exports.default = _module;
 
 /***/ }),
-/* 111 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18179,7 +18330,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 112 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18201,7 +18352,7 @@ var _formattingList = __webpack_require__(16);
 
 var _formattingList2 = _interopRequireDefault(_formattingList);
 
-var _listStyle = __webpack_require__(111);
+var _listStyle = __webpack_require__(112);
 
 var _listStyle2 = _interopRequireDefault(_listStyle);
 
@@ -18358,7 +18509,7 @@ _module.view = function () {
 exports.default = _module;
 
 /***/ }),
-/* 113 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18404,7 +18555,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 114 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18482,7 +18633,7 @@ settings.view = function (ctrl) {
 exports.default = settings;
 
 /***/ }),
-/* 115 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18557,7 +18708,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 116 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18577,11 +18728,11 @@ var _formattingList = __webpack_require__(16);
 
 var _formattingList2 = _interopRequireDefault(_formattingList);
 
-var _dialogSettingsMenu = __webpack_require__(113);
+var _dialogSettingsMenu = __webpack_require__(114);
 
 var _dialogSettingsMenu2 = _interopRequireDefault(_dialogSettingsMenu);
 
-var _menuSettings = __webpack_require__(114);
+var _menuSettings = __webpack_require__(115);
 
 var _menuSettings2 = _interopRequireDefault(_menuSettings);
 
@@ -18589,7 +18740,7 @@ var _moreVert = __webpack_require__(12);
 
 var _moreVert2 = _interopRequireDefault(_moreVert);
 
-var _menuStyle = __webpack_require__(115);
+var _menuStyle = __webpack_require__(116);
 
 var _menuStyle2 = _interopRequireDefault(_menuStyle);
 
@@ -18801,7 +18952,7 @@ _module.updateContentOnScroll = false;
 exports.default = _module;
 
 /***/ }),
-/* 117 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18888,7 +19039,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 118 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18904,11 +19055,11 @@ var _mithril2 = _interopRequireDefault(_mithril);
 
 var _polythene = __webpack_require__(1);
 
-var _notificationMessagesStyle = __webpack_require__(117);
+var _notificationMessagesStyle = __webpack_require__(118);
 
 var _notificationMessagesStyle2 = _interopRequireDefault(_notificationMessagesStyle);
 
-var _plus = __webpack_require__(29);
+var _plus = __webpack_require__(31);
 
 var _plus2 = _interopRequireDefault(_plus);
 
@@ -19085,7 +19236,7 @@ var buttonRow = function buttonRow(instance, containerSelector, dismissSelector)
 };
 
 var snackbarContainer = function snackbarContainer(sizeSelector, idSelector) {
-    return (0, _mithril2.default)('.container' + sizeSelector + idSelector, [(0, _mithril2.default)('p', 'Message count: ' + snackbar.count()), (0, _mithril2.default)('.bottom.layout.vertical', {
+    return (0, _mithril2.default)('.container' + sizeSelector + idSelector, [(0, _mithril2.default)('p', 'Message count: ' + _polythene.Snackbar.count()), (0, _mithril2.default)('.bottom.layout.vertical', {
         id: 'bottom_container'
     }, [(0, _mithril2.default)(_polythene.FAB, {
         class: 'self-end',
@@ -19095,7 +19246,7 @@ var snackbarContainer = function snackbarContainer(sizeSelector, idSelector) {
 };
 
 var notificationContainer = function notificationContainer(sizeSelector, idSelector) {
-    return (0, _mithril2.default)('.container' + sizeSelector + idSelector, [(0, _mithril2.default)('p', 'Message count: ' + notification.count()), (0, _mithril2.default)('#notifications.pe-fit.layout.center-center', (0, _mithril2.default)(_polythene.Notification))]);
+    return (0, _mithril2.default)('.container' + sizeSelector + idSelector, [(0, _mithril2.default)('p', 'Message count: ' + _polythene.Notification.count()), (0, _mithril2.default)('#notifications.pe-fit.layout.center-center', (0, _mithril2.default)(_polythene.Notification))]);
 };
 
 var containerSizes = [{
@@ -19175,7 +19326,7 @@ _module.title = 'Notification message variations';
 exports.default = _module;
 
 /***/ }),
-/* 119 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19208,10 +19359,10 @@ _module.view = function () {
         content: (0, _mithril2.default)(_polythene.Button, {
             label: 'Show',
             raised: true,
-            disabled: notification.count() !== 0,
+            disabled: _polythene.Notification.count() !== 0,
             events: {
                 onclick: function onclick() {
-                    notification.show({
+                    _polythene.Notification.show({
                         title: 'Done!',
                         containerSelector: '#notifications'
                     }, 'body');
@@ -19229,7 +19380,7 @@ _module.title = 'Simple page notification';
 exports.default = _module;
 
 /***/ }),
-/* 120 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19249,11 +19400,11 @@ var _arrowRight = __webpack_require__(13);
 
 var _arrowRight2 = _interopRequireDefault(_arrowRight);
 
-var _notificationSimple = __webpack_require__(119);
+var _notificationSimple = __webpack_require__(120);
 
 var _notificationSimple2 = _interopRequireDefault(_notificationSimple);
 
-var _notificationMessages = __webpack_require__(118);
+var _notificationMessages = __webpack_require__(119);
 
 var _notificationMessages2 = _interopRequireDefault(_notificationMessages);
 
@@ -19323,7 +19474,7 @@ _module.view = function () {
 exports.default = _module;
 
 /***/ }),
-/* 121 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19361,7 +19512,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 122 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19379,15 +19530,15 @@ var _mithril2 = _interopRequireDefault(_mithril);
 
 var _polythene = __webpack_require__(1);
 
-var _radioButtonStyle = __webpack_require__(121);
+var _radioButtonStyle = __webpack_require__(122);
 
 var _radioButtonStyle2 = _interopRequireDefault(_radioButtonStyle);
 
-var _star = __webpack_require__(26);
+var _star = __webpack_require__(28);
 
 var _star2 = _interopRequireDefault(_star);
 
-var _starBorder = __webpack_require__(25);
+var _starBorder = __webpack_require__(27);
 
 var _starBorder2 = _interopRequireDefault(_starBorder);
 
@@ -19598,7 +19749,7 @@ _module.view = function (ctrl) {
 exports.default = _module;
 
 /***/ }),
-/* 123 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19641,7 +19792,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 124 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19657,7 +19808,7 @@ var _mithril2 = _interopRequireDefault(_mithril);
 
 var _polythene = __webpack_require__(1);
 
-var _rippleStyle = __webpack_require__(123);
+var _rippleStyle = __webpack_require__(124);
 
 var _rippleStyle2 = _interopRequireDefault(_rippleStyle);
 
@@ -19768,7 +19919,7 @@ _module.view = function () {
 exports.default = _module;
 
 /***/ }),
-/* 125 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19830,7 +19981,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 126 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19846,7 +19997,7 @@ var _mithril2 = _interopRequireDefault(_mithril);
 
 var _polythene = __webpack_require__(1);
 
-var _searchStyle = __webpack_require__(125);
+var _searchStyle = __webpack_require__(126);
 
 var _searchStyle2 = _interopRequireDefault(_searchStyle);
 
@@ -19858,15 +20009,15 @@ var _arrowBack = __webpack_require__(10);
 
 var _arrowBack2 = _interopRequireDefault(_arrowBack);
 
-var _mic = __webpack_require__(172);
+var _mic = __webpack_require__(175);
 
 var _mic2 = _interopRequireDefault(_mic);
 
-var _clear = __webpack_require__(174);
+var _clear = __webpack_require__(177);
 
 var _clear2 = _interopRequireDefault(_clear);
 
-var _filterList = __webpack_require__(185);
+var _filterList = __webpack_require__(188);
 
 var _filterList2 = _interopRequireDefault(_filterList);
 
@@ -20076,7 +20227,7 @@ _module.view = function (ctrl) {
 exports.default = _module;
 
 /***/ }),
-/* 127 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20142,7 +20293,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 128 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20158,7 +20309,7 @@ var _mithril2 = _interopRequireDefault(_mithril);
 
 var _polythene = __webpack_require__(1);
 
-var _shadowStyle = __webpack_require__(127);
+var _shadowStyle = __webpack_require__(128);
 
 var _shadowStyle2 = _interopRequireDefault(_shadowStyle);
 
@@ -20246,7 +20397,7 @@ _module.view = function () {
 exports.default = _module;
 
 /***/ }),
-/* 129 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20260,7 +20411,7 @@ var _config = __webpack_require__(4);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _config3 = __webpack_require__(164);
+var _config3 = __webpack_require__(167);
 
 var _config4 = _interopRequireDefault(_config3);
 
@@ -20307,7 +20458,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 130 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20356,7 +20507,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 131 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20399,7 +20550,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 132 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20415,19 +20566,19 @@ var _mithril2 = _interopRequireDefault(_mithril);
 
 var _polythene = __webpack_require__(1);
 
-var _sliderVolumeStyle = __webpack_require__(131);
+var _sliderVolumeStyle = __webpack_require__(132);
 
 var _sliderVolumeStyle2 = _interopRequireDefault(_sliderVolumeStyle);
 
-var _volumeUp = __webpack_require__(21);
+var _volumeUp = __webpack_require__(23);
 
 var _volumeUp2 = _interopRequireDefault(_volumeUp);
 
-var _alarm = __webpack_require__(169);
+var _alarm = __webpack_require__(172);
 
 var _alarm2 = _interopRequireDefault(_alarm);
 
-var _headphones = __webpack_require__(28);
+var _headphones = __webpack_require__(30);
 
 var _headphones2 = _interopRequireDefault(_headphones);
 
@@ -20470,7 +20621,7 @@ _module.view = function () {
 exports.default = _module;
 
 /***/ }),
-/* 133 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20486,7 +20637,7 @@ var _mithril2 = _interopRequireDefault(_mithril);
 
 var _polythene = __webpack_require__(1);
 
-var _sliderVolume = __webpack_require__(132);
+var _sliderVolume = __webpack_require__(133);
 
 var _sliderVolume2 = _interopRequireDefault(_sliderVolume);
 
@@ -20494,7 +20645,7 @@ var _sliderRgb = __webpack_require__(17);
 
 var _sliderRgb2 = _interopRequireDefault(_sliderRgb);
 
-var _sliderStyle = __webpack_require__(130);
+var _sliderStyle = __webpack_require__(131);
 
 var _sliderStyle2 = _interopRequireDefault(_sliderStyle);
 
@@ -20502,7 +20653,7 @@ var _bullseye = __webpack_require__(14);
 
 var _bullseye2 = _interopRequireDefault(_bullseye);
 
-var _volumeUp = __webpack_require__(21);
+var _volumeUp = __webpack_require__(23);
 
 var _volumeUp2 = _interopRequireDefault(_volumeUp);
 
@@ -20711,7 +20862,7 @@ _module.view = function (ctrl) {
 exports.default = _module;
 
 /***/ }),
-/* 134 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20741,7 +20892,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 135 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20757,7 +20908,7 @@ var _mithril2 = _interopRequireDefault(_mithril);
 
 var _polythene = __webpack_require__(1);
 
-var _speedTestStyle = __webpack_require__(134);
+var _speedTestStyle = __webpack_require__(135);
 
 var _speedTestStyle2 = _interopRequireDefault(_speedTestStyle);
 
@@ -20871,7 +21022,7 @@ _module.view = function (ctrl) {
 exports.default = _module;
 
 /***/ }),
-/* 136 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20939,7 +21090,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 137 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20955,7 +21106,7 @@ var _mithril2 = _interopRequireDefault(_mithril);
 
 var _polythene = __webpack_require__(1);
 
-var _spinnerStyle = __webpack_require__(136);
+var _spinnerStyle = __webpack_require__(137);
 
 var _spinnerStyle2 = _interopRequireDefault(_spinnerStyle);
 
@@ -21295,7 +21446,7 @@ _module.updateContentOnScroll = false;
 exports.default = _module;
 
 /***/ }),
-/* 138 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21355,7 +21506,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 139 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21371,19 +21522,19 @@ var _mithril2 = _interopRequireDefault(_mithril);
 
 var _polythene = __webpack_require__(1);
 
-var _svgStyle = __webpack_require__(138);
+var _svgStyle = __webpack_require__(139);
 
 var _svgStyle2 = _interopRequireDefault(_svgStyle);
 
-var _stars = __webpack_require__(20);
+var _stars = __webpack_require__(22);
 
 var _stars2 = _interopRequireDefault(_stars);
 
-var _group = __webpack_require__(24);
+var _group = __webpack_require__(26);
 
 var _group2 = _interopRequireDefault(_group);
 
-var _chatBubble = __webpack_require__(22);
+var _chatBubble = __webpack_require__(24);
 
 var _chatBubble2 = _interopRequireDefault(_chatBubble);
 
@@ -21561,7 +21712,7 @@ _module.view = function () {
 exports.default = _module;
 
 /***/ }),
-/* 140 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21639,7 +21790,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 141 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21655,7 +21806,7 @@ var _mithril2 = _interopRequireDefault(_mithril);
 
 var _polythene = __webpack_require__(1);
 
-var _switchStyle = __webpack_require__(140);
+var _switchStyle = __webpack_require__(141);
 
 var _switchStyle2 = _interopRequireDefault(_switchStyle);
 
@@ -21787,7 +21938,7 @@ _module.view = function (ctrl) {
 exports.default = _module;
 
 /***/ }),
-/* 142 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21859,7 +22010,7 @@ _module.title = 'Tabs with events';
 exports.default = _module;
 
 /***/ }),
-/* 143 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21938,7 +22089,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 144 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21954,7 +22105,7 @@ var _mithril2 = _interopRequireDefault(_mithril);
 
 var _polythene = __webpack_require__(1);
 
-var _tabsKitchensinkStyle = __webpack_require__(143);
+var _tabsKitchensinkStyle = __webpack_require__(144);
 
 var _tabsKitchensinkStyle2 = _interopRequireDefault(_tabsKitchensinkStyle);
 
@@ -21962,11 +22113,11 @@ var _heart = __webpack_require__(8);
 
 var _heart2 = _interopRequireDefault(_heart);
 
-var _bell = __webpack_require__(27);
+var _bell = __webpack_require__(29);
 
 var _bell2 = _interopRequireDefault(_bell);
 
-var _settings = __webpack_require__(30);
+var _settings = __webpack_require__(32);
 
 var _settings2 = _interopRequireDefault(_settings);
 
@@ -21986,7 +22137,7 @@ var _arrowBack = __webpack_require__(10);
 
 var _arrowBack2 = _interopRequireDefault(_arrowBack);
 
-var _arrowForward = __webpack_require__(176);
+var _arrowForward = __webpack_require__(179);
 
 var _arrowForward2 = _interopRequireDefault(_arrowForward);
 
@@ -22127,7 +22278,7 @@ _module.view = function () {
         }))
     }), (0, _mithril2.default)(titleBlock, {
         title: 'In toolbar',
-        content: (0, _mithril2.default)('.tabArea.hasToolbar', (0, _mithril2.default)(toolbar, {
+        content: (0, _mithril2.default)('.tabArea.hasToolbar', (0, _mithril2.default)(_polythene.Toolbar, {
             mode: 'medium-tall',
             class: 'pe-toolbar--tabs',
             topBar: toolbarRow,
@@ -22139,7 +22290,7 @@ _module.view = function () {
         }))
     }), (0, _mithril2.default)(titleBlock, {
         title: 'In toolbar and scrollable (small)',
-        content: (0, _mithril2.default)('.tabArea.small.hasToolbar', (0, _mithril2.default)(toolbar, {
+        content: (0, _mithril2.default)('.tabArea.small.hasToolbar', (0, _mithril2.default)(_polythene.Toolbar, {
             mode: 'medium-tall',
             class: 'pe-toolbar--tabs',
             topBar: toolbarRow,
@@ -22152,7 +22303,7 @@ _module.view = function () {
         }))
     }), (0, _mithril2.default)(titleBlock, {
         title: 'In toolbar and scrollable (desktop)',
-        content: (0, _mithril2.default)('.tabArea.hasToolbar', (0, _mithril2.default)(toolbar, {
+        content: (0, _mithril2.default)('.tabArea.hasToolbar', (0, _mithril2.default)(_polythene.Toolbar, {
             mode: 'medium-tall',
             class: 'pe-toolbar--tabs',
             topBar: toolbarRow,
@@ -22164,7 +22315,7 @@ _module.view = function () {
         }))
     }), (0, _mithril2.default)(titleBlock, {
         title: 'Custom arrows',
-        content: (0, _mithril2.default)('.tabArea.hasToolbar', (0, _mithril2.default)(toolbar, {
+        content: (0, _mithril2.default)('.tabArea.hasToolbar', (0, _mithril2.default)(_polythene.Toolbar, {
             mode: 'medium-tall',
             class: 'pe-toolbar--tabs',
             topBar: toolbarRow,
@@ -22266,7 +22417,7 @@ _module.title = 'Tabs kitchen sink';
 exports.default = _module;
 
 /***/ }),
-/* 145 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22282,7 +22433,7 @@ var _mithril2 = _interopRequireDefault(_mithril);
 
 var _polythene = __webpack_require__(1);
 
-var _home = __webpack_require__(171);
+var _home = __webpack_require__(174);
 
 var _home2 = _interopRequireDefault(_home);
 
@@ -22290,11 +22441,11 @@ var _heart = __webpack_require__(8);
 
 var _heart2 = _interopRequireDefault(_heart);
 
-var _bell = __webpack_require__(27);
+var _bell = __webpack_require__(29);
 
 var _bell2 = _interopRequireDefault(_bell);
 
-var _settings = __webpack_require__(30);
+var _settings = __webpack_require__(32);
 
 var _settings2 = _interopRequireDefault(_settings);
 
@@ -22419,7 +22570,7 @@ _module.view = function (ctrl, opts) {
 exports.default = _module;
 
 /***/ }),
-/* 146 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22478,7 +22629,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 147 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22531,7 +22682,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 148 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22551,7 +22702,7 @@ var _arrowRight = __webpack_require__(13);
 
 var _arrowRight2 = _interopRequireDefault(_arrowRight);
 
-var _tabsKitchensink = __webpack_require__(144);
+var _tabsKitchensink = __webpack_require__(145);
 
 var _tabsKitchensink2 = _interopRequireDefault(_tabsKitchensink);
 
@@ -22559,7 +22710,7 @@ var _tabsRouting = __webpack_require__(19);
 
 var _tabsRouting2 = _interopRequireDefault(_tabsRouting);
 
-var _tabsEvents = __webpack_require__(142);
+var _tabsEvents = __webpack_require__(143);
 
 var _tabsEvents2 = _interopRequireDefault(_tabsEvents);
 
@@ -22642,7 +22793,7 @@ _module.view = function () {
 exports.default = _module;
 
 /***/ }),
-/* 149 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22681,7 +22832,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 150 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22701,7 +22852,7 @@ var _sliderRgb = __webpack_require__(17);
 
 var _sliderRgb2 = _interopRequireDefault(_sliderRgb);
 
-var _textfieldStyle = __webpack_require__(149);
+var _textfieldStyle = __webpack_require__(150);
 
 var _textfieldStyle2 = _interopRequireDefault(_textfieldStyle);
 
@@ -23014,7 +23165,7 @@ _module.view = function (ctrl) {
 exports.default = _module;
 
 /***/ }),
-/* 151 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23045,7 +23196,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 152 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23061,7 +23212,7 @@ var _mithril2 = _interopRequireDefault(_mithril);
 
 var _polythene = __webpack_require__(1);
 
-var _toolbarStyle = __webpack_require__(151);
+var _toolbarStyle = __webpack_require__(152);
 
 var _toolbarStyle2 = _interopRequireDefault(_toolbarStyle);
 
@@ -23073,7 +23224,7 @@ var _search = __webpack_require__(9);
 
 var _search2 = _interopRequireDefault(_search);
 
-var _favorite = __webpack_require__(170);
+var _favorite = __webpack_require__(173);
 
 var _favorite2 = _interopRequireDefault(_favorite);
 
@@ -23097,7 +23248,7 @@ var toolbarRow = [btn(_menu2.default), (0, _mithril2.default)('span.flex', 'Tool
 
 var toolbarBlock = {
     view: function view(ctrl, args) {
-        return (0, _mithril2.default)('.p-block', [(0, _mithril2.default)('.p-block-header', args.label), (0, _mithril2.default)(toolbar, args.toolbar)]);
+        return (0, _mithril2.default)('.p-block', [(0, _mithril2.default)('.p-block-header', args.label), (0, _mithril2.default)(_polythene.Toolbar, args.toolbar)]);
     }
 };
 
@@ -23149,7 +23300,7 @@ _module.view = function () {
 exports.default = _module;
 
 /***/ }),
-/* 153 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23193,7 +23344,7 @@ var styles = [{
 exports.default = styles;
 
 /***/ }),
-/* 154 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23209,7 +23360,7 @@ var _mithril2 = _interopRequireDefault(_mithril);
 
 var _polythene = __webpack_require__(1);
 
-var _validationStyle = __webpack_require__(153);
+var _validationStyle = __webpack_require__(154);
 
 var _validationStyle2 = _interopRequireDefault(_validationStyle);
 
@@ -23238,7 +23389,7 @@ _module.view = function () {
         content: (0, _mithril2.default)('.form-container layout center-center', (0, _mithril2.default)('#notifications.pe-fit.layout.center-center', (0, _mithril2.default)(_polythene.Notification)), (0, _mithril2.default)('form.form', {
             onsubmit: function onsubmit(e) {
                 return validationHelper.submit(e, function () {
-                    notification.show({
+                    _polythene.Notification.show({
                         containerSelector: '#notifications',
                         title: 'Form submitted!',
                         timeout: 1.5
@@ -23278,7 +23429,7 @@ _module.view = function () {
             type: 'submit',
             label: 'Send',
             raised: true,
-            disabled: notification.count() !== 0
+            disabled: _polythene.Notification.count() !== 0
         })])))
     })]);
 };
@@ -23286,7 +23437,227 @@ _module.view = function () {
 exports.default = _module;
 
 /***/ }),
-/* 155 */
+/* 156 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common_mixin__ = __webpack_require__(7);
+function _defineProperty(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
+    } else {
+        obj[key] = value;
+    }return obj;
+}
+
+
+
+var style = function style(config, tint, type) {
+    var scope = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '';
+
+    var normalBorder = config['color_' + tint + '_' + type + '_normal_border'] || 'transparent';
+    var activeBorder = config['color_' + tint + '_' + type + '_active_border'] || normalBorder;
+    var disabledBorder = config['color_' + tint + '_' + type + '_disabled_border'] || normalBorder;
+    return [_defineProperty({}, scope + '.pe-button', {
+        '&, &:link, &:visited': {
+            color: config['color_' + tint + '_' + type + '_normal_text']
+        },
+
+        ' .pe-button__content': {
+            'background-color': config['color_' + tint + '_' + type + '_normal_background'],
+            'border-color': normalBorder
+        },
+
+        '&.pe-button--disabled': {
+            color: config['color_' + tint + '_' + type + '_disabled_text'],
+
+            ' .pe-button__content': {
+                'background-color': config['color_' + tint + '_' + type + '_disabled_background'],
+                'border-color': disabledBorder
+            }
+        },
+
+        '&.pe-button--selected': {
+            ' .pe-button__content': {
+                'background-color': config['color_' + tint + '_' + type + '_active_background'],
+                'border-color': activeBorder
+            },
+            ' .pe-button__focus': {
+                opacity: 1,
+                'background-color': config['color_' + tint + '_' + type + '_focus_background']
+            }
+        },
+
+        '&.pe-button--focus': {
+            ' .pe-button__focus': {
+                opacity: 1,
+                'background-color': config['color_' + tint + '_' + type + '_focus_background']
+            }
+        }
+    })];
+};
+
+var noTouch = function noTouch(config, tint, type) {
+    var scope = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '';
+
+    var normalBorder = config['color_' + tint + '_' + type + '_normal_border'];
+    var hoverBorder = config['color_' + tint + '_' + type + '_normal_border'] || normalBorder;
+    return [_defineProperty({}, scope + '.pe-button:hover', {
+        '&:not(.pe-button--selected) .pe-button__wash': {
+            'background-color': config['color_' + tint + '_' + type + '_hover_background'],
+            'border-color': hoverBorder
+        }
+    })];
+};
+
+var createStyles = function createStyles(config) {
+    return [style(config, 'light', 'flat'), style(config, 'light', 'raised', '.pe-button--raised'), {
+        'html.pe-no-touch': [noTouch(config, 'light', 'flat', ' '), noTouch(config, 'light', 'raised', ' .pe-button--raised')]
+    }, {
+        '.pe-dark-theme': [
+        // inside dark theme
+        style(config, 'dark', 'flat', ' '),
+        // has dark theme
+        style(config, 'dark', 'flat', '&'),
+        //
+        style(config, 'dark', 'raised', ' .pe-button--raised')]
+    }, {
+        'html.pe-no-touch .pe-dark-theme': [noTouch(config, 'dark', 'flat', ' '), noTouch(config, 'dark', 'flat', '&'), noTouch(config, 'dark', 'raised', ' .pe-button--raised')]
+    }];
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (function (config) {
+    return __WEBPACK_IMPORTED_MODULE_0__common_mixin__["default"].createStyles(config, createStyles);
+});
+
+/***/ }),
+/* 157 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_theme__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_theme___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_polythene_theme__);
+
+
+var rgba = __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].rgba;
+
+var touch_height = __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].unit_touch_height;
+var height = 36;
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    margin_h: __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].grid_unit,
+    border_radius: __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].unit_item_border_radius,
+    font_size: 14,
+    font_weight: 500,
+    outer_padding_v: (touch_height - height) / 2,
+    padding_h: 2 * __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].grid_unit,
+    padding_v: 11,
+    min_width: 8 * __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].grid_unit_component,
+    text_transform: 'uppercase',
+    border_width: 0, // no border in MD, but used to correctly set the height when a theme does set a border
+
+    color_light_flat_normal_background: 'transparent',
+    color_light_flat_normal_text: rgba(__WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].color_light_foreground, __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].blend_light_text_primary),
+    color_light_flat_hover_background: rgba(__WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].color_light_foreground, __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].blend_light_background_hover),
+    color_light_flat_focus_background: rgba(__WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].color_light_foreground, __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].blend_light_background_hover),
+    color_light_flat_active_background: rgba(__WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].color_light_foreground, __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].blend_light_background_active),
+    color_light_flat_disabled_background: 'transparent',
+    color_light_flat_disabled_text: rgba(__WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].color_light_foreground, __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].blend_light_text_disabled),
+
+    // border colors  may be set in theme; disabled by default
+    // color_light_flat_normal_border: 'transparent',
+    // color_light_flat_hover_border: 'transparent',
+    // color_light_flat_active_border: 'transparent',
+    // color_light_flat_disabled_border: 'transparent',
+
+    color_light_raised_normal_background: '#E0E0E0',
+    color_light_raised_normal_text: rgba(__WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].color_light_foreground, __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].blend_light_text_primary),
+    color_light_raised_hover_background: 'transparent',
+    color_light_raised_focus_background: rgba(__WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].color_light_foreground, __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].blend_light_background_hover),
+    color_light_raised_active_background: rgba(__WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].color_light_foreground, __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].blend_light_background_hover), // same as hover
+    color_light_raised_disabled_background: rgba(__WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].color_light_foreground, __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].blend_light_background_disabled),
+    color_light_raised_disabled_text: rgba(__WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].color_light_foreground, __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].blend_light_text_disabled),
+
+    color_dark_flat_normal_background: 'transparent',
+    color_dark_flat_normal_text: rgba(__WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].blend_dark_text_primary),
+    color_dark_flat_hover_background: rgba(__WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].blend_dark_background_hover),
+    color_dark_flat_focus_background: rgba(__WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].blend_dark_background_hover),
+    color_dark_flat_active_background: rgba(__WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].blend_dark_background_active),
+    color_dark_flat_disabled_background: 'transparent',
+    color_dark_flat_disabled_text: rgba(__WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].blend_dark_text_disabled),
+
+    // border colors  may be set in theme; disabled by default
+    // color_dark_flat_normal_border: 'transparent',
+    // color_dark_flat_hover_border: 'transparent',
+    // color_dark_flat_active_border: 'transparent',
+    // color_dark_flat_disabled_border: 'transparent',
+
+    color_dark_raised_normal_background: rgba(__WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].color_primary),
+    color_dark_raised_normal_text: rgba(__WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].blend_dark_text_primary),
+    color_dark_raised_hover_background: __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].color_primary_active,
+    color_dark_raised_focus_background: __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].color_primary_active,
+    color_dark_raised_active_background: __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].color_primary_dark,
+    color_dark_raised_disabled_background: rgba(__WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].blend_dark_background_disabled),
+    color_dark_raised_disabled_text: rgba(__WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["defaults"].blend_dark_text_disabled)
+});
+
+/***/ }),
+/* 158 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common_mixin__ = __webpack_require__(7);
+
+
+var createStyles = function createStyles(config) {
+    return [{
+        '.pe-button--text': {
+            display: 'inline-block',
+            'min-width': config.min_width + 'px',
+            margin: '0 ' + config.margin_h + 'px',
+            padding: config.outer_padding_v + 'px 0',
+            background: 'transparent',
+            border: 'none',
+
+            ' .pe-button__content': {
+                'border-width': 0,
+                padding: '0 ' + config.padding_h + 'px',
+                'border-radius': config.border_radius + 'px'
+            },
+
+            ' .pe-button__label': {
+                padding: config.padding_v + 'px 0',
+                'font-size': config.font_size + 'px',
+                'line-height': config.font_size + 'px',
+                'font-weight': config.font_weight,
+                'text-transform': config.text_transform,
+                'white-space': 'pre'
+            },
+
+            '&.pe-button--borders': {
+                ' .pe-button__wash, pe-button__focus, .pe-ripple': __WEBPACK_IMPORTED_MODULE_0__common_mixin__["default"].fit(-1),
+
+                ' .pe-button__content': {
+                    'border-style': 'solid',
+                    'border-width': '1px'
+                },
+                ' .pe-button__label': {
+                    padding: config.padding_v - 1 + 'px 0'
+                }
+            }
+        }
+    }];
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (function (config) {
+    return __WEBPACK_IMPORTED_MODULE_0__common_mixin__["default"].createStyles(config, createStyles);
+});
+
+/***/ }),
+/* 159 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -23358,15 +23729,15 @@ window.addEventListener('keydown', function (e) {
 });
 
 /***/ }),
-/* 156 */
+/* 160 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_fastclick__ = __webpack_require__(192);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_fastclick___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_fastclick__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__polythene_polythene__ = __webpack_require__(163);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__events__ = __webpack_require__(155);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__polythene_polythene__ = __webpack_require__(166);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__events__ = __webpack_require__(159);
 
 
 
@@ -23415,74 +23786,7 @@ init();
 });
 
 /***/ }),
-/* 157 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_j2c__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_j2c___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_j2c__);
-
-
-var remove = function remove(id) {
-    if (id) {
-        var old = document.getElementById(id);
-        if (old) {
-            old.parentNode.removeChild(old);
-        }
-    }
-};
-
-/*
-* id: identifier, used as HTMLElement id for the attached <style></style> element
-* styles: list of lists style Objects
-*/
-var add = function add(id) {
-    for (var _len = arguments.length, styles = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-        styles[_key - 1] = arguments[_key];
-    }
-
-    addToDocument.apply(undefined, [{ id: id }].concat(styles));
-};
-
-/*
-* opts: options object
-  * id: identifier, used as HTMLElement id for the attached <style></style> element
-  * document: document reference; default window.document
-* styles: list of lists style Objects
-*/
-var addToDocument = function addToDocument(opts) {
-    for (var _len2 = arguments.length, styles = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-        styles[_key2 - 1] = arguments[_key2];
-    }
-
-    var id = opts.id;
-    var documentRef = opts.document || window.document;
-    remove(id);
-    var styleEl = documentRef.createElement('style');
-    if (id) {
-        styleEl.setAttribute('id', id);
-    }
-    styles.forEach(function (styleList) {
-        // each style returns a list
-        if (Object.keys(styleList).length) {
-            styleList.forEach(function (style) {
-                var scoped = { '@global': style };
-                var sheet = __WEBPACK_IMPORTED_MODULE_0_j2c___default.a.sheet(scoped);
-                styleEl.appendChild(documentRef.createTextNode(sheet));
-            });
-        }
-    });
-    documentRef.head.appendChild(styleEl);
-};
-
-/* harmony default export */ __webpack_exports__["a"] = ({
-    add: add,
-    addToDocument: addToDocument,
-    remove: remove
-});
-
-/***/ }),
-/* 158 */
+/* 161 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -23632,7 +23936,7 @@ var animation_curve_linear_in_fast_out = 'cubic-bezier(.4, 0, 1, 1)';
 });
 
 /***/ }),
-/* 159 */
+/* 162 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -23666,11 +23970,11 @@ var styles = [{
 /* harmony default export */ __webpack_exports__["a"] = (styles);
 
 /***/ }),
-/* 160 */
+/* 163 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__flex__ = __webpack_require__(161);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__flex__ = __webpack_require__(164);
 
 
 var styles = [{
@@ -23724,7 +24028,7 @@ var styles = [{
 /* harmony default export */ __webpack_exports__["a"] = (styles);
 
 /***/ }),
-/* 161 */
+/* 164 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -23941,22 +24245,22 @@ var selfStretch = {
 });
 
 /***/ }),
-/* 162 */
+/* 165 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common_styler__ = __webpack_require__(157);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__flex_style__ = __webpack_require__(160);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_style__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common_styler__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__flex_style__ = __webpack_require__(163);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_style__ = __webpack_require__(162);
 
 
 
 
-__WEBPACK_IMPORTED_MODULE_0__common_styler__["a" /* default */].add('pe-layout', __WEBPACK_IMPORTED_MODULE_1__flex_style__["a" /* default */], __WEBPACK_IMPORTED_MODULE_2__common_style__["a" /* default */]);
+__WEBPACK_IMPORTED_MODULE_0__common_styler__["default"].add('pe-layout', __WEBPACK_IMPORTED_MODULE_1__flex_style__["a" /* default */], __WEBPACK_IMPORTED_MODULE_2__common_style__["a" /* default */]);
 
 /***/ }),
-/* 163 */
+/* 166 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -23969,7 +24273,7 @@ document.querySelector('html').classList.add(isTouch ? 'pe-touch' : 'pe-no-touch
 });
 
 /***/ }),
-/* 164 */
+/* 167 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -24043,7 +24347,7 @@ var horizontal_layout_side_spacing = side_spacing + 4; // optimization for horiz
 });
 
 /***/ }),
-/* 165 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24706,16 +25010,16 @@ module.exports = j2c;
 
 
 /***/ }),
-/* 166 */
+/* 169 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mithril__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mithril___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_mithril__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_verge__ = __webpack_require__(167);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_verge__ = __webpack_require__(170);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_verge___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_verge__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_j2c__ = __webpack_require__(165);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_j2c__ = __webpack_require__(168);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_j2c___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_j2c__);
 
 
@@ -25193,7 +25497,7 @@ infinite$1.isElementInViewport = isElementInViewport;
 
 
 /***/ }),
-/* 167 */
+/* 170 */
 /***/ (function(module, exports) {
 
 /*!
@@ -25359,7 +25663,7 @@ infinite$1.isElementInViewport = isElementInViewport;
 }));
 
 /***/ }),
-/* 168 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
@@ -25367,7 +25671,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" hei
 
 
 /***/ }),
-/* 169 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
@@ -25375,7 +25679,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" hei
 
 
 /***/ }),
-/* 170 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
@@ -25383,7 +25687,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" hei
 
 
 /***/ }),
-/* 171 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
@@ -25391,7 +25695,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" hei
 
 
 /***/ }),
-/* 172 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
@@ -25399,7 +25703,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" hei
 
 
 /***/ }),
-/* 173 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
@@ -25407,7 +25711,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" hei
 
 
 /***/ }),
-/* 174 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
@@ -25415,7 +25719,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" hei
 
 
 /***/ }),
-/* 175 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
@@ -25423,7 +25727,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" hei
 
 
 /***/ }),
-/* 176 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
@@ -25431,7 +25735,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" hei
 
 
 /***/ }),
-/* 177 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
@@ -25439,7 +25743,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" hei
 
 
 /***/ }),
-/* 178 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
@@ -25447,7 +25751,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" hei
 
 
 /***/ }),
-/* 179 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
@@ -25455,7 +25759,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="h
 
 
 /***/ }),
-/* 180 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
@@ -25463,7 +25767,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="h
 
 
 /***/ }),
-/* 181 */
+/* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
@@ -25471,7 +25775,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="h
 
 
 /***/ }),
-/* 182 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
@@ -25479,7 +25783,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="h
 
 
 /***/ }),
-/* 183 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
@@ -25487,7 +25791,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="h
 
 
 /***/ }),
-/* 184 */
+/* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
@@ -25495,7 +25799,7 @@ module.exports = m.trust('<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns
 
 
 /***/ }),
-/* 185 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
@@ -25503,7 +25807,7 @@ module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" hei
 
 
 /***/ }),
-/* 186 */
+/* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
@@ -25511,1734 +25815,11 @@ module.exports = m.trust('<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns
 
 
 /***/ }),
-/* 187 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var m = __webpack_require__(0);
 module.exports = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>');
-
-
-/***/ }),
-/* 188 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export mixin */
-/* unused harmony export flex */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return styler; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_theme__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_theme___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_polythene_theme__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_j2c_plugin_prefix_browser__ = __webpack_require__(189);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_j2c_plugin_prefix_browser___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_j2c_plugin_prefix_browser__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_j2c__ = __webpack_require__(190);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_j2c___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_j2c__);
-
-
-
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-// Mixins for j2c
-
-// Centers an item absolutely within relative parent
-// mixin.fit()
-var fit = function fit() {
-    var offset = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-
-    var offsetPx = offset + 'px';
-    return {
-        position: 'absolute',
-        top: offsetPx,
-        right: offsetPx,
-        bottom: offsetPx,
-        left: offsetPx
-    };
-};
-
-// Optional font smoothing
-// mixin.fontSmoothing()
-var fontSmoothing = function fontSmoothing() {
-    var smoothing = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
-
-    if (smoothing) {
-        return {
-            '-webkit-font-smoothing': 'antialiased',
-            '-moz-osx-font-smoothing': 'grayscale'
-        };
-    } else {
-        return {
-            '-webkit-font-smoothing': 'subpixel-antialiased',
-            '-moz-osx-font-smoothing': 'auto'
-        };
-    }
-};
-
-// Breaks off a line with ...
-// unless lines is 'none'
-// mixin.ellipsis(1, 16) // max 1 line, 16px high
-// mixin.ellipsis(2, 1.3, 'em') // max 2 lines, 2.6em high
-var ellipsis = function ellipsis(lines, lineHeight) {
-    var unit = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'px';
-
-    if (lines === 'none') {
-        return {
-            textOverflow: 'initial',
-            overflow: 'initial',
-            display: 'block',
-            height: 'auto',
-            maxHeight: 'none'
-        };
-    }
-    return _extends({}, {
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
-        textRendering: 'auto' // Samsung Android
-    }, lines !== undefined ? {
-        '-webkit-line-clamp': lines,
-        '-webkit-box-orient': 'vertical',
-        display: '-webkit-box'
-    } : null, lineHeight !== undefined ? {
-        maxHeight: lines * lineHeight + unit
-    } : null);
-};
-
-// Clears float
-// mixin.clearfix()
-var clearfix = function clearfix() {
-    return {
-        '&:after': {
-            content: '\'\'',
-            display: 'table',
-            clear: 'both'
-        }
-    };
-};
-
-// Creates sticky headers in a scrollable list
-// Does not work in Chrome: http://caniuse.com/#feat=css-sticky
-// mixin.sticky()
-var sticky = function sticky() {
-    var zIndex = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-    return {
-        position: 'sticky',
-        top: 0,
-        zIndex: zIndex
-    };
-};
-
-// Creats a transition with presets
-// mixin.defaultTransition('opacity', vars.animation_duration)
-var defaultTransition = function defaultTransition() {
-    var properties = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'all';
-    var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["vars"].animation_duration;
-    var curve = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["vars"].animation_curve_default;
-    return {
-        transitionDelay: 0,
-        transitionDuration: duration,
-        transitionTimingFunction: curve,
-        transitionProperty: properties
-    };
-};
-
-var mixin = {
-    clearfix: clearfix,
-    defaultTransition: defaultTransition,
-    ellipsis: ellipsis,
-    fit: fit,
-    fontSmoothing: fontSmoothing,
-    sticky: sticky
-};
-
-var layout = [{
-    'display': '-webkit-box'
-}, {
-    'display': '-moz-box'
-}, {
-    'display': '-ms-flexbox',
-    '-ms-flex-preferred-size': 'initial' // IE10
-}, {
-    'display': '-webkit-flex'
-}, {
-    'display': 'flex'
-}];
-
-var layoutInline = [layout, {
-    'display': '-ms-inline-flexbox'
-}, {
-    'display': '-webkit-inline-flex'
-}, {
-    'display': 'inline-flex'
-}];
-
-var layoutHorizontal = [layout, {
-    '-ms-flex-direction': 'row',
-    '-webkit-flex-direction': 'row',
-    'flex-direction': 'row'
-}];
-
-var layoutHorizontalReverse = [layout, {
-    '-ms-flex-direction': 'row-reverse',
-    '-webkit-flex-direction': 'row-reverse',
-    'flex-direction': 'row-reverse'
-}];
-
-var layoutVertical = [layout, {
-    '-ms-flex-direction': 'column',
-    '-webkit-flex-direction': 'column',
-    'flex-direction': 'column'
-}];
-
-var layoutVerticalReverse = [layout, {
-    '-ms-flex-direction': 'column-reverse',
-    '-webkit-flex-direction': 'column-reverse',
-    'flex-direction': 'column-reverse'
-}];
-
-var layoutWrap = [layout, {
-    '-ms-flex-wrap': 'wrap',
-    '-webkit-flex-wrap': 'wrap',
-    'flex-wrap': 'wrap'
-}];
-
-var layoutWrapReverse = [layout, {
-    '-ms-flex-wrap': 'wrap-reverse',
-    '-webkit-flex-wrap': 'wrap-reverse',
-    'flex-wrap': 'wrap-reverse'
-}];
-
-var layoutStart = [layout, {
-    '-ms-flex-align': 'start',
-    '-webkit-align-items': 'flex-start',
-    'align-items': 'flex-start'
-}];
-
-var layoutCenter = [layout, {
-    '-ms-flex-align': 'center',
-    '-webkit-align-items': 'center',
-    'align-items': 'center'
-}];
-
-var layoutEnd = [layout, {
-    '-ms-flex-align': 'end',
-    '-webkit-align-items': 'flex-end',
-    'align-items': 'flex-end'
-}];
-
-var layoutJustified = [layout, {
-    '-ms-flex-line-pack': 'stretch', // IE10
-    '-ms-flex-pack': 'justify',
-    '-webkit-justify-content': 'space-between',
-    'justify-content': 'space-between'
-}];
-
-var layoutStartJustified = [layout, {
-    '-ms-flex-align': 'start', // IE10
-    '-ms-flex-pack': 'start',
-    '-webkit-justify-content': 'flex-start',
-    'justify-content': 'flex-start'
-}];
-
-var layoutCenterJustified = [layout, {
-    '-ms-flex-pack': 'center',
-    '-webkit-justify-content': 'center',
-    'justify-content': 'center'
-}];
-
-var layoutEndJustified = [layout, {
-    '-ms-flex-pack': 'end',
-    '-webkit-justify-content': 'flex-end',
-    'justify-content': 'flex-end'
-}];
-
-var layoutCenterCenter = [layoutCenterJustified, layoutCenter];
-
-var layoutAroundJustified = [layout, {
-    '-ms-flex-pack': 'distribute',
-    '-webkit-justify-content': 'space-around',
-    'justify-content': 'space-around'
-}];
-
-var flex = function flex() {
-    var num = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-    return [{
-        '-webkit-box-flex': num
-    }, {
-        '-moz-box-flex': num
-    }, {
-        '-webkit-flex': num
-    }, {
-        '-ms-flex': num
-    }, {
-        'flex': num
-    }, num === 1 ? {
-        '-webkit-flex-basis': '0.000000001px'
-    } : {}, num === 1 ? {
-        'flex-basis': '0.000000001px'
-    } : {}];
-};
-
-var flexAuto = {
-    '-ms-flex': '1 1 auto',
-    '-webkit-flex-basis': 'auto',
-    'flex-basis': 'auto'
-};
-
-var flexAutoVertical = {
-    '-ms-flex': '1 1 auto',
-    '-webkit-flex-basis': 'auto',
-    'flex-basis': 'auto'
-};
-
-var flexIndex = function flexIndex(index) {
-    return {
-        '-ms-flex': index,
-        '-webkit-flex': index,
-        'flex': index
-    };
-};
-
-var flexGrow = function flexGrow(value) {
-    return {
-        '-webkit-flex-grow': value,
-        'flex-grow': value
-    };
-};
-
-var selfStart = {
-    '-ms-flex-item-align': 'start', // IE10
-    '-ms-align-self': 'flex-start',
-    '-webkit-align-self': 'flex-start',
-    'align-self': 'flex-start'
-};
-
-var selfCenter = {
-    '-ms-flex-item-align': 'center', // IE10
-    '-ms-align-self': 'center',
-    '-webkit-align-self': 'center',
-    'align-self': 'center'
-};
-
-var selfEnd = {
-    '-ms-flex-item-align': 'end', // IE10
-    '-ms-align-self': 'flex-end',
-    '-webkit-align-self': 'flex-end',
-    'align-self': 'flex-end'
-};
-
-var selfStretch = {
-    '-ms-flex-item-align': 'stretch', // IE10
-    '-ms-align-self': 'stretch',
-    '-webkit-align-self': 'stretch',
-    'align-self': 'stretch'
-};
-
-var mixinFlex = {
-    flex: flex,
-    flexAuto: flexAuto,
-    flexAutoVertical: flexAutoVertical,
-    flexIndex: flexIndex,
-    flexGrow: flexGrow,
-    layout: layout,
-    layoutAroundJustified: layoutAroundJustified,
-    layoutCenter: layoutCenter,
-    layoutCenterCenter: layoutCenterCenter,
-    layoutCenterJustified: layoutCenterJustified,
-    layoutEnd: layoutEnd,
-    layoutEndJustified: layoutEndJustified,
-    layoutHorizontal: layoutHorizontal,
-    layoutHorizontalReverse: layoutHorizontalReverse,
-    layoutInline: layoutInline,
-    layoutJustified: layoutJustified,
-    layoutStart: layoutStart,
-    layoutStartJustified: layoutStartJustified,
-    layoutVertical: layoutVertical,
-    layoutVerticalReverse: layoutVerticalReverse,
-    layoutWrap: layoutWrap,
-    layoutWrapReverse: layoutWrapReverse,
-    selfCenter: selfCenter,
-    selfEnd: selfEnd,
-    selfStart: selfStart,
-    selfStretch: selfStretch
-};
-
-var j2c = new __WEBPACK_IMPORTED_MODULE_2_j2c___default.a(__WEBPACK_IMPORTED_MODULE_1_j2c_plugin_prefix_browser__["prefixPlugin"]);
-var ID_REGEX = /[^a-z0-9\-]/g;
-
-/*
- * @param id: identifier, used as HTMLElement id for the attached <style></style> element
- * @param styles: list of lists style Objects
- */
-var add = function add(id) {
-    for (var _len = arguments.length, styles = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-        styles[_key - 1] = arguments[_key];
-    }
-
-    addToDocument.apply(undefined, [{
-        id: id
-    }].concat(styles));
-};
-
-/*
- * Removes a style from head.
- */
-var remove = function remove(id) {
-    if (id) {
-        var old = document.getElementById(id);
-        if (old && old.parentNode) {
-            old.parentNode.removeChild(old);
-        }
-    }
-};
-
-/*
- * opts: options object
- * id: identifier, used as HTMLElement id for the attached <style></style> element
- * document: document reference; default window.document
- * styles: list of lists style objects
- */
-var addToDocument = function addToDocument(opts) {
-    for (var _len2 = arguments.length, styles = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-        styles[_key2 - 1] = arguments[_key2];
-    }
-
-    var id = opts.id.replace(ID_REGEX, '_');
-    var documentRef = opts.document || window.document;
-    remove(id);
-    var styleEl = documentRef.createElement('style');
-    if (id) {
-        styleEl.setAttribute('id', id);
-    }
-    styles.forEach(function (styleList) {
-        // each style returns a list
-        if (Object.keys(styleList).length) {
-            styleList.forEach(function (style) {
-                var scoped = {
-                    '@global': style
-                };
-                var sheet = j2c.sheet(scoped);
-                styleEl.appendChild(documentRef.createTextNode(sheet));
-            });
-        }
-    });
-    documentRef.head.appendChild(styleEl);
-};
-
-/*
- * Adds styles to head for a component.
- * @param selector: Array of Strings: selectors
- * @param vars: Object configuration variables
- * @param styleFns: Array of Functions: (selector, componentVars) => [j2c style objects]
- */
-var generateStyles = function generateStyles(selectors, vars$$1, styleFns) {
-    var selector = selectors.join('');
-    var id = selector.trim().replace(/^[^a-z]?(.*)/, '$1');
-    add(id, styleFns.map(function (fn) {
-        return fn(selector, vars$$1);
-    }));
-};
-
-var styler = {
-    add: add,
-    addToDocument: addToDocument,
-    remove: remove,
-    generateStyles: generateStyles
-};
-
-
-
-
-/***/ }),
-/* 189 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-// Derived from Lea Verou's PrefixFree
-
-var allStyles;
-var styleAttr;
-var styleElement;
-var supportedProperty;
-var supportedDecl;
-
-function init() {
-  allStyles = getComputedStyle(document.documentElement, null);
-  styleAttr = document.createElement('div').style;
-  styleElement = document.documentElement.appendChild(document.createElement('style'));
-  supportedDecl = _supportedDecl;
-  supportedProperty = _supportedProperty;
-  if ('zIndex' in styleAttr && !('z-index' in styleAttr)) {
-    // Some browsers like it dash-cased, some camelCased, most like both.
-    supportedDecl = function(property, value) {return _supportedDecl(camelCase(property), value)};
-    supportedProperty = function(property) {return _supportedProperty(camelCase(property))};
-  }
-}
-function finalize() {
-  if (typeof document !== 'undefined') document.documentElement.removeChild(styleElement);
-  // `styleAttr` is used at run time via `supportedProperty()`
-  // `allStyles` and `styleElement` can be displosed of after initialization.
-  allStyles = styleElement = null;
-}
-// Helpers, in alphabetic order
-
-function camelCase(str) {
-  return str.replace(/-([a-z])/g, function($0, $1) { return $1.toUpperCase() }).replace('-','')
-}
-function deCamelCase(str) {
-  return str.replace(/[A-Z]/g, function($0) { return '-' + $0.toLowerCase() })
-}
-function _supportedDecl(property, value) {
-  styleAttr[property] = '';
-  styleAttr[property] = value;
-  return !!styleAttr[property]
-}
-function supportedMedia(condition) {
-  styleElement.textContent = '@media (' + condition +'){}';
-  // Opera 11 treats unknown conditions as 'all', the rest as 'not all'.
-  // So far tested in modern browsers (01/01/2017), and desktop IE9, FF4,
-  // Opera 11/12, and Safari 6. TY SauceLabs.
-  return !/^@media(?:\s+not)?\s+all/.test(styleElement.sheet.cssRules[0].cssText)
-}
-function _supportedProperty(property) {
-  return property in styleAttr
-}
-function supportedRule(selector) {
-  styleElement.textContent = selector + '{}';
-  return !!styleElement.sheet.cssRules.length
-}
-
-// Derived from Lea Verou's PrefixFree
-
-// TODO: http://caniuse.com/#feat=css-media-resolution
-
-function detectAtrules(fixers) {
-  if (fixers.prefix === '') return
-  var atrules = {
-    'keyframes': 'name',
-    'viewport': null,
-    'document': 'regexp(".")'
-  };
-
-  // build a map of {'@ruleX': '@-prefix-ruleX'}
-  for(var atrule in atrules) {
-    var test = atrule + ' ' + (atrules[atrule] || '');
-    if (!supportedRule('@' + test) && supportedRule('@' + fixers.prefix + test)) {
-
-      fixers.hasAtrules = true;
-      fixers.atrules['@' + atrule] = '@' + fixers.prefix + atrule;
-    }
-  }
-
-  // Standard
-  fixers.hasDppx = supportedMedia('resolution:1dppx');
-  // Webkit
-  fixers.hasPixelRatio = supportedMedia(fixers.prefix + 'device-pixel-ratio:1');
-  // Opera
-  fixers.hasPixelRatioFraction = supportedMedia(fixers.prefix + 'device-pixel-ratio:1/1');
-
-  if (fixers.hasPixelRatio || fixers.hasPixelRatioFraction) {
-    fixers.properties['resolution'] = fixers.prefix + 'device-pixel-ratio';
-    fixers.properties['min-resolution'] = fixers.prefix + 'min-device-pixel-ratio';
-    fixers.properties['max-resolution'] = fixers.prefix + 'max-device-pixel-ratio';
-    if (supportedMedia('min-' + fixers.prefix + 'device-pixel-ratio:1')) {
-      // Mozilla/Firefox tunred a vendor prefix into a vendor infix
-      fixers.properties['min-resolution'] = 'min-' + fixers.prefix + 'device-pixel-ratio';
-      fixers.properties['max-resolution'] = 'max-' + fixers.prefix + 'device-pixel-ratio';
-    }
-  }
-}
-
-// Derived from Lea Verou's PrefixFree
-
-function detectFunctions(fixers) {
-  // Values that might need prefixing
-  if (fixers.prefix === '') return
-  var functions = {
-    'linear-gradient': {
-      property: 'background-image',
-      params: 'red, teal'
-    },
-    'calc': {
-      property: 'width',
-      params: '1px + 5%'
-    },
-    'element': {
-      property: 'background-image',
-      params: '#foo'
-    },
-    'cross-fade': {
-      property: 'backgroundImage',
-      params: 'url(a.png), url(b.png), 50%'
-    }
-  };
-  functions['repeating-linear-gradient'] =
-  functions['repeating-radial-gradient'] =
-  functions['radial-gradient'] =
-  functions['linear-gradient'];
-
-  // build an array of prefixable functions
-  for (var func in functions) {
-    var test = functions[func],
-      property = test.property,
-      value = func + '(' + test.params + ')';
-
-    if (!supportedDecl(property, value) && supportedDecl(property, fixers.prefix + value)) {
-      // It's only supported with a prefix
-      fixers.functions.push(func);
-    }
-  }
-}
-
-// Derived from Lea Verou's PrefixFree and Robin Frischmann's Inline Style Prefixer
-
-// TODO: http://caniuse.com/#feat=css-writing-mode
-
-// db of prop/value pairs whose values may need treatment.
-
-var keywords = [
-
-  // `initial` applies to all properties and is thus handled separately.
-  {
-    props: ['cursor'],
-    values: [ 'grab', 'grabbing', 'zoom-in', 'zoom-out']
-  },
-  {
-    props: ['display'],
-    values:['box', 'inline-box', 'flexbox', 'inline-flexbox', 'flex', 'inline-flex', 'grid', 'inline-grid']
-  },
-  {
-    props: ['position'],
-    values: [ 'sticky' ]
-  },
-  {
-    props: ['width', 'column-width', 'height', 'max-height', 'max-width', 'min-height', 'min-width'],
-    values: ['contain-floats', 'fill-available', 'fit-content', 'max-content', 'min-content']
-  }
-];
-// The flexbox zoo
-//
-// ## Specs:
-// - box     (2009/old):  https://www.w3.org/TR/2009/WD-css3-flexbox-20090723/
-// - flexbox (2012/ie10): https://www.w3.org/TR/2012/WD-css3-flexbox-20120322/
-// - flex    (final):     https://www.w3.org/TR/css-flexbox-1/
-var flex2009Props = {
-  // ?align-content =>
-  // ?align-self =>
-  'align-items': 'box-align',
-  'flex': 'box-flex', // https://css-tricks.com/snippets/css/a-guide-to-flexbox/#comment-371025,
-  // ?flex-basis =>
-  // !!flex-direction => box-direction + box-orient, covered in `plugin.js`
-  'box-direction' : 'box-direction', // we prepopulate the cache for the above case.
-  'box-orient': 'box-orient',
-  // !!flex-flow => flex-direction and/or flex-wrap, covered in `plugin.js`
-  // ?flex-grow =>
-  // ?flex-shrink =>
-  'flex-wrap': 'box-lines',
-  'justify-content': 'box-pack',
-  'order': 'box-ordinal-group' // https://css-tricks.com/snippets/css/a-guide-to-flexbox/#comment-371025
-};
-var flex2009Values = {
-  // flex => box || only for display? handled in the code
-  'flex-end': 'end',
-  'flex-start': 'start',
-  // inline-flex => inline-box || see flex
-  'nowrap': 'single',
-  'space-around': 'justify',
-  'space-between': 'justify',
-  'wrap': 'multiple',
-  'wrap-reverse': 'multiple'
-};
-var flex2012Props = {
-  'align-content': '-ms-flex-line-pack',
-  'align-items': '-ms-flex-align',
-  'align-self': '-ms-flex-item-align',
-  // flex => -ms-flex
-  'flex-basis': '-ms-preferred-size',
-  // flex-direction => -ms-flex-direction
-  // flex-flow => -ms-flex-flow
-  'flex-grow': '-ms-flex-positive',
-  'flex-shrink': '-ms-flex-negative',
-  // flex-wrap => -ms-flex-wrap
-  'justify-content': '-ms-flex-pack',
-  'order': '-ms-flex-order'
-};
-var flex2012Values = {
-  // flex => flexbox || only for display? handled in the code
-  'flex-end': 'end',
-  'flex-start': 'start',
-  // inline-flex => inline-flexbox || see 'flex'
-  // nowrap => nowrap
-  'space-around': 'distribute',
-  'space-between': 'justify'
-  // wrap => wrap
-  // wrap-reverse => wrap-reverse
-};
-
-function detectKeywords(fixers) {
-  if (fixers.prefix === '') return
-
-  // build a map of {propertyI: {keywordJ: previxedKeywordJ, ...}, ...}
-  for (var i = 0; i < keywords.length; i++) {
-    var map = {}, property = keywords[i].props[0];
-    // eslint-disable-next-line
-    for (var j = 0, keyword; keyword = keywords[i].values[j]; j++) {
-
-      if (
-        !supportedDecl(property, keyword) &&
-        supportedDecl(property, fixers.prefix + keyword)
-      ) {
-        fixers.hasKeywords = true;
-        map[keyword] = fixers.prefix + keyword;
-      }
-    }
-    // eslint-disable-next-line
-    for (j = 0; property = keywords[i].props[j]; j++) {
-      fixers.keywords[property] = map;
-    }
-  }
-  if (fixers.keywords.display && fixers.keywords.display.flexbox && !supportedDecl('display', 'flex')) {
-    // old IE
-    fixers.keywords.display.flex = fixers.keywords.display.flexbox;
-    fixers.keywords.display['inline-flex'] = fixers.keywords.display['inline-flexbox'];
-    for (var k in flex2012Props) {
-      fixers.properties[k] = flex2012Props[k];
-      fixers.keywords[k] = flex2012Values;
-    }
-  } else if (fixers.keywords.display && fixers.keywords.display.box && !supportedDecl('display', 'flex')) {
-    // old flexbox spec
-    fixers.keywords.display.flex = fixers.keywords.display.box;
-    fixers.keywords.display['inline-flex'] = fixers.keywords.display['inline-box'];
-    fixers.flexbox2009 = true;
-    for (k in flex2009Props) {
-      fixers.properties[k] = fixers.prefix + flex2009Props[k];
-      fixers.keywords[k] = flex2009Values;
-    }
-  }
-  if (
-    !supportedDecl('color', 'initial') &&
-    supportedDecl('color', fixers.prefix + 'initial')
-  ) {
-    // `initial` does not use the `hasKeywords` branch, no need to set it to true.
-    fixers.initial = fixers.prefix + 'initial';
-  }
-}
-
-// Derived from Lea Verou's PrefixFree
-
-function detectPrefix(fixers) {
-  var prefixCounters = {};
-  // Why are we doing this instead of iterating over properties in a .style object? Because Webkit.
-  // 1. Older Webkit won't iterate over those.
-  // 2. Recent Webkit will, but the 'Webkit'-prefixed properties are not enumerable. The 'webkit'
-  //    (lower case 'w') ones are, but they don't `deCamelCase()` into a prefix that we can detect.
-
-  function iteration(property) {
-    if(property.charAt(0) === '-') {
-      var prefix = property.split('-')[1];
-
-      // Count prefix uses
-      prefixCounters[prefix] = ++prefixCounters[prefix] || 1;
-    }
-  }
-
-  // Some browsers have numerical indices for the properties, some don't
-  if(allStyles && allStyles.length > 0) {
-    for(var i=0; i<allStyles.length; i++) {
-      iteration(allStyles[i]);
-    }
-  } else {
-    for(var property in allStyles) {
-      iteration(deCamelCase(property));
-    }
-  }
-
-  var highest = 0;
-  for(var prefix in prefixCounters) {
-    if(highest < prefixCounters[prefix]) {
-      highest = prefixCounters[prefix];
-      fixers.prefix = '-' + prefix + '-';
-    }
-  }
-  fixers.Prefix = camelCase(fixers.prefix);
-}
-
-// Derived from Lea Verou's PrefixFree
-
-function detectSelectors(fixers) {
-  var selector, prefixed;
-  function prefixSelector(selector) {
-    return selector.replace(/^::?/, function($0) { return $0 + fixers.prefix })
-  }
-
-  if (fixers.prefix === '') return
-  var selectors = {
-    ':any-link': ':any-link',
-    ':read-only': ':read-only',
-    ':read-write': ':read-write',
-    '::selection': '::selection',
-
-    ':fullscreen': ':fullscreen', //TODO sort out what changed between specs
-    ':full-screen': ':fullscreen',
-    '::backdrop': '::backdrop',
-
-    //sigh
-    ':placeholder': '::placeholder',
-    '::placeholder': '::placeholder',
-    ':input-placeholder': '::placeholder',
-    '::input-placeholder': '::placeholder'
-  };
-
-  // builds an array of selectors that need a prefix.
-  for (selector in selectors) {
-    prefixed = prefixSelector(selector);
-    if(!supportedRule(selector) && supportedRule(prefixed)) {
-      fixers.hasSelectors = true;
-      fixers.selectorList.push(selectors[selector]);
-      fixers.selectorMap[selectors[selector]] = prefixed;
-    }
-  }
-}
-
-function blankFixers() {
-  return {
-    atrules: {},
-    hasAtrules: false,
-    hasDppx: null,
-    hasKeywords: false,
-    hasPixelRatio: false,
-    hasPixelRatioFraction: false,
-    hasSelectors: false,
-    hasValues: false,
-    fixAtMediaParams: null,
-    fixAtSupportsParams: null,
-    fixProperty: null,
-    fixSelector: null,
-    fixValue: null,
-    flexbox2009: false,
-    functions: [],
-    initial: null,
-    keywords: {},
-    placeholder: null,
-    prefix: '',
-    Prefix: '',
-    properties: {},
-    selectorList: [],
-    selectorMap: {},
-    valueProperties: {
-      'transition': 1,
-      'transition-property': 1,
-      'will-change': 1
-    }
-  }
-}
-
-
-function browserDetector(fixers) {
-  // add the required data to the fixers object.
-  init();
-  detectPrefix(fixers);
-  detectSelectors(fixers);
-  detectAtrules(fixers);
-  detectKeywords(fixers);
-  detectFunctions(fixers);
-  finalize();
-}
-
-var emptySet = {};
-
-var valueTokenizer = /[(),]|\/\*[\s\S]*?\*\//g;
-
-/**
- * For properties whose values are also properties, this will split a coma-separated
- * value list into individual values, ignoring comas in comments and in
- * functions(parameter, lists).
- *
- * @param {string} selector
- * @return {string[]}
- */
-
-function splitValue(value) {
-  var indices = [], res = [], inParen = 0, o;
-  /*eslint-disable no-cond-assign*/
-  while (o = valueTokenizer.exec(value)) {
-  /*eslint-enable no-cond-assign*/
-    switch (o[0]) {
-    case '(': inParen++; break
-    case ')': inParen--; break
-    case ',': if (inParen) break; indices.push(o.index);
-    }
-  }
-  for (o = indices.length; o--;){
-    res.unshift(value.slice(indices[o] + 1));
-    value = value.slice(0, indices[o]);
-  }
-  res.unshift(value);
-  return res
-}
-
-function makeDetector (before, targets, after) {
-  return new RegExp(before + '(?:' + targets.join('|') + ')' + after)
-}
-
-function makeLexer (before, targets, after) {
-  return new RegExp(
-        "\"(?:\\\\[\\S\\s]|[^\"])*\"|'(?:\\\\[\\S\\s]|[^'])*'|\\/\\*[\\S\\s]*?\\*\\/|" +
-            before + '((?:' +
-            targets.join('|') +
-            '))' + after,
-        'gi'
-    )
-}
-
-
-function finalizeFixers(fixers) {
-  var prefix = fixers.prefix;
-
-
-  // properties
-  // ----------
-
-  fixers.fixProperty = fixers.fixProperty || function(prop) {
-    var prefixed;
-    return fixers.properties[prop] = (
-      supportedProperty(prop) ||
-      !supportedProperty(prefixed = prefix + prop)
-    ) ? prop : prefixed
-  };
-
-
-  // selectors
-  // ----------
-
-  var selectorDetector = makeDetector('', fixers.selectorList, '(?:\\b|$|[^-])');
-  var selectorMatcher = makeLexer('', fixers.selectorList, '(?:\\b|$|[^-])');
-  var selectorReplacer = function(match, selector) {
-    return selector != null ? fixers.selectorMap[selector] : match
-  };
-  fixers.fixSelector = function(selector) {
-    return selectorDetector.test(selector) ? selector.replace(selectorMatcher, selectorReplacer) : selector
-  };
-
-
-  // values
-  // ------
-
-  // When gradients are supported with a prefix, convert angles to legacy
-  // (from clockwise to trigonometric)
-  var hasGradients = fixers.functions.indexOf('linear-gradient') > -1;
-  var gradientDetector = /\blinear-gradient\(/;
-  var gradientMatcher = /(^|\s|,|\()((?:repeating-)?linear-gradient\()\s*(-?\d*\.?\d*)deg/ig;
-  var gradientReplacer = function (match, delim, gradient, deg) {
-    return delim + gradient + (90-deg) + 'deg'
-  };
-
-  // functions
-  var hasFunctions = !!fixers.functions.length;
-  var functionsDetector = makeDetector('(?:^|\\s|,|\\()', fixers.functions, '\\s*\\(');
-  var functionsMatcher = makeLexer('(^|\\s|,|\\()', fixers.functions, '(?=\\s*\\()');
-  function functionReplacer (match, $1, $2) {
-    return $1 + prefix + $2
-  }
-
-  // properties as values (for transition, ...)
-  // No need to look for strings in these properties. We may insert prefixes in comments. Oh the humanity.
-  var valuePropertiesMatcher = /^\s*([-\w]+)/gi;
-  var valuePropertiesReplacer = function(match, prop){
-    return fixers.properties[prop] || fixers.fixProperty(prop)
-  };
-
-  fixers.fixValue = function (value, property) {
-    var res;
-    if (fixers.initial != null && value === 'initial') return fixers.initial
-
-    if (fixers.hasKeywords && (res = (fixers.keywords[property] || emptySet)[value])) return res
-
-    res = value;
-
-    if (fixers.valueProperties.hasOwnProperty(property)) {
-      res = (value.indexOf(',') === -1) ?
-        value.replace(valuePropertiesMatcher, valuePropertiesReplacer) :
-        splitValue(value).map(function(v) {
-          return v.replace(valuePropertiesMatcher, valuePropertiesReplacer)
-        }).join(',');
-    }
-
-    if (hasFunctions && functionsDetector.test(value)) {
-      if (hasGradients && gradientDetector.test(value)) {
-        res = res.replace(gradientMatcher, gradientReplacer);
-      }
-      res = res.replace(functionsMatcher, functionReplacer);
-    }
-    return res
-  };
-
-
-  // @media (resolution:...) {
-  // -------------------------
-
-  var resolutionMatcher = /((?:min-|max-)?resolution)\s*:\s*((?:\d*.)?\d+)dppx/g;
-  var resolutionReplacer = (
-    fixers.hasPixelRatio ? function(_, prop, param){return fixers.properties[prop] + ':' + param} :
-    fixers.hasPixelRatioFraction ? function(_, prop, param){return fixers.properties[prop] + ':' + Math.round(param*10) + '/10'} :
-    function(_, prop, param){return prop + ':' + Math.round(param * 96) +'dpi'}
-  );
-
-  fixers.fixAtMediaParams = fixers.hasDppx !== false /*it may be null*/ ?
-    function(p) {return p} :
-    function (params) {
-      return (params.indexOf('reso') !== -1) ?
-        params.replace(resolutionMatcher, resolutionReplacer) :
-        params
-    };
-
-
-  // @supports ... {
-  // ---------------
-
-  // regexp built by scripts/regexps.js
-  var atSupportsParamsMatcher = /\(\s*([-\w]+)\s*:\s*((?:"(?:\\[\S\s]|[^"])*"|'(?:\\[\S\s]|[^'])*'|\/\*[\S\s]*?\*\/|\((?:"(?:\\[\S\s]|[^"])*"|'(?:\\[\S\s]|[^'])*'|\/\*[\S\s]*?\*\/|\((?:"(?:\\[\S\s]|[^"])*"|'(?:\\[\S\s]|[^'])*'|\/\*[\S\s]*?\*\/|\((?:"(?:\\[\S\s]|[^"])*"|'(?:\\[\S\s]|[^'])*'|\/\*[\S\s]*?\*\/|\((?:"(?:\\[\S\s]|[^"])*"|'(?:\\[\S\s]|[^'])*'|\/\*[\S\s]*?\*\/|\([^\)]*\)|[^\)])*\)|[^\)])*\)|[^\)])*\)|[^\)])*\)|[^\)])*)/g;
-  function atSupportsParamsReplacer(match, prop, value) {
-    return '(' + (fixers.properties[prop] || fixers.fixProperty(prop)) + ':' + fixers.fixValue(value, prop)
-  }
-  fixers.fixAtSupportsParams = function(params) {
-    return params.replace(atSupportsParamsMatcher, atSupportsParamsReplacer)
-  };
-}
-
-var commonFixers;
-
-function initBrowser() {
-  commonFixers = blankFixers();
-  if (typeof getComputedStyle === 'function') browserDetector(commonFixers);
-  finalizeFixers(commonFixers);
-}
-initBrowser();
-
-function prefixPlugin(j2c) {
-  var fixers = commonFixers;
-  var cache = [];
-
-  if (j2c) j2c.setPrefixDb = function(f) {
-    if (cache.indexOf(f) === -1) {
-      finalizeFixers(f);
-      cache.push(f);
-    }
-    fixers = f;
-    return prefixPlugin
-  };
-  return {
-    $filter: function(next) {
-      return {
-        atrule: function(rule, kind, params, hasBlock) {
-          next.atrule(
-            fixers.hasAtrules && fixers.atrules[rule] || rule,
-            kind,
-            (
-              rule === '@media'    ? fixers.fixAtMediaParams(params) :
-              rule === '@supports' ? fixers.fixAtSupportsParams(params) :
-              params
-            ),
-            hasBlock
-          );
-        },
-        decl: function decl(property, value) {
-          if (!property || !(typeof value === 'string' || typeof value === 'number')){
-            return next.decl(fixers.properties[property] || fixers.fixProperty(property), value)
-          }
-          value = value + '';
-          if (property === 'flex-flow' && fixers.flexbox2009) {
-            value.split(' ').forEach(function(v){
-              // recurse! The lack of `next.` is intentional.
-              if (v.indexOf('wrap') > -1) decl('flex-wrap', v);
-              else if(v !== '') decl('flex-direction', v);
-            });
-          } else if (property === 'flex-direction' && fixers.flexbox2009) {
-            next.decl(fixers.properties['box-orient'], value.indexOf('column') > -1 ? 'block-axis' : 'inline-axis');
-            next.decl(fixers.properties['box-direction'], value.indexOf('-reverse') > -1 ? 'reverse' : 'normal');
-          } else {
-            next.decl(
-              fixers.properties[property] || fixers.fixProperty(property),
-              fixers.fixValue(value, property)
-            );
-          }
-        },
-        rule: function(selector) {
-          next.rule(
-            fixers.hasSelectors ? fixers.fixSelector(selector) : selector
-          );
-        }
-      }
-    }
-  }
-}
-
-exports.prefixPlugin = prefixPlugin;
-
-
-/***/ }),
-/* 190 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var emptyArray = [];
-var emptyObject = {};
-var type = emptyObject.toString;
-var ARRAY =  type.call(emptyArray);
-var OBJECT = type.call(emptyObject);
-var STRING = type.call('');
-var FUNCTION = type.call(type);
-var own =  emptyObject.hasOwnProperty;
-var freeze = Object.freeze || function(o) {return o};
-
-
-function defaults(target, source) {
-  for (var k in source) if (own.call(source, k)) {
-    if (k.indexOf('$') && !(k in target)) target[k] = source[k];
-  }
-  return target
-}
-
-function cartesian(a,b) {
-  var res = [], i, j;
-  for (j in b) if(own.call(b, j))
-    for (i in a) if(own.call(a, i))
-      res.push(a[i] + b[j]);
-  return res
-}
-
-// "Tokenizes" the selectors into parts relevant for the next function.
-// Strings and comments are matched, but ignored afterwards.
-// This is not a full tokenizers. It only recognizes comas, parentheses,
-// strings and comments.
-// regexp generated by scripts/regexps.js then trimmed by hand
-var selectorTokenizer = /[(),]|"(?:\\.|[^"\n])*"|'(?:\\.|[^'\n])*'|\/\*[\s\S]*?\*\//g;
-
-
-/**
- * This will split a coma-separated selector list into individual selectors,
- * ignoring comas in strings, comments and in :pseudo-selectors(parameter, lists).
- *
- * @param {string} selector
- * @return {string[]}
- */
-
-function splitSelector(selector) {
-  var indices = [], res = [], inParen = 0, o;
-  /*eslint-disable no-cond-assign*/
-  while (o = selectorTokenizer.exec(selector)) {
-  /*eslint-enable no-cond-assign*/
-    switch (o[0]) {
-    case '(': inParen++; break
-    case ')': inParen--; break
-    case ',': if (inParen) break; indices.push(o.index);
-    }
-  }
-  for (o = indices.length; o--;){
-    res.unshift(selector.slice(indices[o] + 1));
-    selector = selector.slice(0, indices[o]);
-  }
-  res.unshift(selector);
-  return res
-}
-
-// Like the `selectorTokenizer`, but for the `&` operator
-var ampersandTokenizer = /&|"(?:\\.|[^"\n])*"|'(?:\\.|[^'\n])*'|\/\*[\s\S]*?\*\//g;
-
-function ampersand (selector, parents) {
-  var indices = [], split = [], res, o;
-  /*eslint-disable no-cond-assign*/
-  while (o = ampersandTokenizer.exec(selector)) {
-  /*eslint-enable no-cond-assign*/
-    if (o[0] == '&') indices.push(o.index);
-  }
-  for (o = indices.length; o--;){
-    split.unshift(selector.slice(indices[o] + 1));
-    selector = selector.slice(0, indices[o]);
-  }
-  split.unshift(selector);
-  if (split.length === 1) split.unshift('');
-  res = [split[0]];
-  for (o = 1; o < split.length; o++) {
-    res = cartesian(res, cartesian(parents, [split[o]]));
-  }
-  return res.join(',')
-}
-
-function flatIter (f) {
-  return function iter(arg) {
-    if (type.call(arg) === ARRAY) for (var i= 0 ; i < arg.length; i ++) iter(arg[i]);
-    else f(arg);
-  }
-}
-
-function decamelize(match) {
-  return '-' + match.toLowerCase()
-}
-
-/**
- * Handles the property:value; pairs.
- *
- * @param {object} state - holds the localizer- and walker-related methods
- *                         and state
- * @param {object} emit - the contextual emitters to the final buffer
- * @param {string} prefix - the current property or a prefix in case of nested
- *                          sub-properties.
- * @param {array|object|string} o - the declarations.
- * @param {boolean} local - are we in @local or in @global scope.
- */
-
-function declarations(state, emit, prefix, o, local) {
-  var k, v, kk;
-  if (o==null) return
-
-  switch ( type.call(o = o.valueOf()) ) {
-  case ARRAY:
-    for (k = 0; k < o.length; k++)
-
-      declarations(state, emit, prefix, o[k], local);
-
-    break
-  case OBJECT:
-    // prefix is falsy iif it is the empty string, which means we're at the root
-    // of the declarations list.
-    prefix = (prefix && prefix + '-');
-    for (k in o) if (own.call(o, k)){
-      v = o[k];
-      if (/\$/.test(k)) {
-        for (kk in (k = k.split('$'))) if (own.call(k, kk)) {
-
-          declarations(state, emit, prefix + k[kk], v, local);
-
-        }
-      } else {
-
-        declarations(state, emit, prefix + k, v, local);
-
-      }
-    }
-    break
-  default:
-    // prefix is falsy when it is "", which means that we're
-    // at the top level.
-    // `o` is then treated as a `property:value` pair, or a
-    // semi-colon-separated list thereof.
-    // Otherwise, `prefix` is the property name, and
-    // `o` is the value.
-
-    // restore the dashes
-    k = prefix.replace(/_/g, '-').replace(/[A-Z]/g, decamelize);
-
-    if (local && (k == 'animation-name' || k == 'animation' || k == 'list-style')) {
-      // no need to tokenize here a plain `.split(',')` has all bases covered.
-      // We may 'localize' a comment, but it's not a big deal.
-      o = o.split(',').map(function (o) {
-
-        return o.replace(/^\s*(?:(var\([^)]+\))|:?global\(\s*([_A-Za-z][-\w]*)\s*\)|()(-?[_A-Za-z][-\w]*))/, state.localizeReplacer)
-
-      }).join(',');
-    }
-
-    emit.decl(k, o);
-
-  }
-}
-
-/**
- * Handles a single at-rules
- *
- * @param {object} state - holds the localizer- and walker-related methods
- *                         and state
- * @param {object} emit - the contextual emitters to the final buffer
- * @param {array} k - The parsed at-rule, including the parameters,
- *                    if takes both parameters and a block.
- *                    k == [match, fullAtRule, atRuleType, params?]
- *                    So in `@-webkit-keyframes foo`, we have
- *                     - match = "@-webkit-keyframes foo"
- *                     - fullAtRule = "@-webkit-keyframes"
- *                     - atRuleType = "keyframes"
- *                     - params = "foo"
- * @param {string|string[]|object|object[]} v - Either parameters for
- *                                              block-less rules or
- *                                              their block
- *                                              for the others.
- * @param {string} prefix - the current selector or the selector prefix
- *                          in case of nested rules
- * @param {boolean} local - are we in @local or in @global scope?
- * @param {string} nestingDepth - are we nested in an at-rule or a selector?
- */
-
-function atRules(state, emit, k, v, prefix, local, nestingDepth) {
-
-  // First iterate over user-provided at-rules and return if one of them corresponds to the current one
-  for (var i = 0; i < state.$atHandlers.length; i++) {
-
-    if (state.$atHandlers[i](state, emit, k, v, prefix, local, nestingDepth)) return
-
-  }
-
-  // using `/^global$/.test(k[2])` rather that 'global' == k[2] gzips
-  // slightly better thanks to the regexps tests further down.
-  // It is slightly less efficient but this isn't a critical path.
-
-  if (!k[3] && /^global$/.test(k[2])) {
-
-    rules(state, emit, prefix, v, 0, nestingDepth);
-
-
-  } else if (!k[3] && /^local$/.test(k[2])) {
-
-    rules(state, emit, prefix, v, 1, nestingDepth);
-
-
-  } else if (k[3] && /^adopt$/.test(k[2])) {
-
-    if (!local || nestingDepth) return emit.err('@adopt global or nested: ' + k[0])
-
-    if (!/^\.?[_A-Za-z][-\w]*$/.test(k[3])) return emit.err('bad adopter ' + JSON.stringify(k[3]) + ' in ' + k[0])
-
-    i = [];
-    flatIter(function(adoptee, asString) {
-
-      if(adoptee == null || !/^\.?[_A-Za-z][-\w]*(?:\s+\.?[_A-Za-z][-\w]*)*$/.test(asString = adoptee + '')) emit.err('bad adoptee '+ JSON.stringify(adoptee) + ' in ' + k[0]);
-
-      else i.push(asString.replace(/\./g, ''));
-
-    })(v);
-
-    // we may end up with duplicate classes but AFAIK it has no consequences on specificity.
-    if (i.length) {
-      state.localize(k[3] = k[3].replace(/\./g, ''));
-      state.names[k[3]] += (' ' + i.join(' '));
-    }
-
-
-  } else if (!k[3] && /^(?:namespace|import|charset)$/.test(k[2])) {
-    flatIter(function(v) {
-
-      emit.atrule(k[1], k[2], v);
-
-    })(v);
-
-
-  } else if (!k[3] && /^(?:font-face|viewport)$/.test(k[2])) {
-    flatIter(function(v) {
-
-      emit.atrule(k[1], k[2], k[3], 1);
-
-      declarations(state, emit, '', v, local);
-
-      emit._atrule();
-
-    })(v);
-
-  } else if (k[3] && /^(?:media|supports|page|keyframes)$/.test(k[2])) {
-
-    if (local && 'keyframes' == k[2]) {
-      k[3] = k[3].replace(
-        // generated by script/regexps.js
-        /(var\([^)]+\))|:?global\(\s*([_A-Za-z][-\w]*)\s*\)|()(-?[_A-Za-z][-\w]*)/,
-        state.localizeReplacer
-      );
-    }
-
-
-    emit.atrule(k[1], k[2], k[3], 1);
-
-    if ('page' == k[2]) {
-
-      declarations(state, emit, '', v, local);
-
-    } else {
-
-      rules(
-        state, emit,
-        'keyframes' == k[2] ? '' : prefix,
-        v, local, nestingDepth + 1
-      );
-
-    }
-
-    emit._atrule();
-
-  } else {
-
-    emit.err('Unsupported at-rule: ' + k[0]);
-
-  }
-}
-
-/**
- * Add rulesets and other CSS tree to the sheet.
- *
- * @param {object} state - holds the localizer- and walker-related methods
- *                         and state
- * @param {object} emit - the contextual emitters to the final buffer
- * @param {string} prefix - the current selector or a prefix in case of nested rules
- * @param {array|string|object} tree - a source object or sub-object.
- * @param {string} nestingDepth - are we nested in an at-rule?
- * @param {boolean} local - are we in @local or in @global scope?
- */
-function rules(state, emit, prefix, tree, local, nestingDepth) {
-  var k, v, inDeclaration, kk;
-
-  switch (type.call(tree)) {
-
-  case OBJECT:
-    for (k in tree) if (own.call(tree, k)) {
-      v = tree[k];
-
-      if (prefix.length > 0 && /^[-\w$]+$/.test(k)) {
-        if (!inDeclaration) {
-          inDeclaration = 1;
-
-          emit.rule(prefix);
-
-        }
-        if (/\$/.test(k)) {
-          for (kk in (k = k.split('$'))) if (own.call(k, kk)) {
-
-            declarations(state, emit, k[kk], v, local);
-
-          }
-        } else {
-
-          declarations(state, emit, k, v, local);
-
-        }
-
-      } else if (/^@/.test(k)) {
-        // Handle At-rules
-        inDeclaration = 0;
-
-        atRules(state, emit,
-          /^(.(?:-[\w]+-)?([_A-Za-z][-\w]*))\b\s*(.*?)\s*$/.exec(k) || [k,'@','',''],
-          v, prefix, local, nestingDepth
-        );
-
-      } else {
-        // selector or nested sub-selectors
-        inDeclaration = 0;
-
-        rules(
-          state, emit,
-          // build the selector `prefix` for the next iteration.
-          // ugly and full of redundant bits but so far the fastest/shortest.gz
-          /*0 if*/(prefix.length > 0 && (/,/.test(prefix) || /,/.test(k))) ?
-
-            /*0 then*/ (kk = splitSelector(prefix), splitSelector(
-              local ?
-
-                k.replace(
-                  /("(?:\\.|[^"\n])*"|'(?:\\.|[^'\n])*'|\/\*[\s\S]*?\*\/)|:global\(\s*(\.-?[_A-Za-z][-\w]*)\s*\)|(\.)(-?[_A-Za-z][-\w]*)/g,
-                  state.localizeReplacer
-                ) :
-
-                k
-            ).map(function (k) {
-              return /&/.test(k) ? ampersand(k, kk) : kk.map(function(kk) {
-                return kk + k
-              }).join(',')
-            }).join(',')) :
-
-            /*0 else*/ /*1 if*/ /&/.test(k) ?
-
-              /*1 then*/ ampersand(
-                local ?
-
-                  k.replace(
-                    /("(?:\\.|[^"\n])*"|'(?:\\.|[^'\n])*'|\/\*[\s\S]*?\*\/)|:global\(\s*(\.-?[_A-Za-z][-\w]*)\s*\)|(\.)(-?[_A-Za-z][-\w]*)/g,
-                    state.localizeReplacer
-                  ) :
-
-                  k,
-                [prefix]
-              ) :
-
-              /*1 else*/ prefix + (
-                local ?
-
-                  k.replace(
-                    /("(?:\\.|[^"\n])*"|'(?:\\.|[^'\n])*'|\/\*[\s\S]*?\*\/)|:global\(\s*(\.-?[_A-Za-z][-\w]*)\s*\)|(\.)(-?[_A-Za-z][-\w]*)/g,
-                    state.localizeReplacer
-                  ) :
-
-                  k
-                ),
-           v, local, nestingDepth + 1
-        );
-
-      }
-    }
-
-    break
-
-  case ARRAY:
-    for (k = 0; k < tree.length; k++){
-
-      rules(state, emit, prefix, tree[k], local, nestingDepth);
-
-    }
-    break
-
-  case STRING:
-    // CSS hacks or ouptut of `j2c.inline`.
-    if (!prefix.length) emit.err('No selector');
-    emit.rule(prefix || ' ');
-
-    declarations(state, emit, '', tree, local);
-
-  }
-}
-
-// This is the first entry in the filters array, which is
-// actually the last step of the compiler. It inserts
-// closing braces to close normal (non at-) rules (those
-// that start with a selector). Doing it earlier is
-// impossible without passing state around in unrelated code
-// or ending up with duplicated selectors when the source tree
-// contains arrays.
-// There's no `_rule` handler, because the core compiler never
-// calls it.
-function closeSelectors(next, inline) {
-  var lastSelector;
-  return inline ? next : {
-    init: function(){lastSelector = 0; next.init();},
-    done: function (raw) {
-      if (lastSelector) {next._rule(); lastSelector = 0;}
-      return next.done(raw)
-    },
-    atrule: function (rule, kind, param, takesBlock) {
-      if (lastSelector) {next._rule(); lastSelector = 0;}
-      next.atrule(rule, kind, param, takesBlock);
-    },
-    _atrule: function (rule) {
-      if (lastSelector) {next._rule(); lastSelector = 0;}
-      next._atrule(rule);
-    },
-    rule: function (selector) {
-      if (selector !== lastSelector){
-        if (lastSelector) next._rule();
-        next.rule(selector);
-        lastSelector = selector;
-      }
-    }
-  }
-}
-
-function global(x) {
-  return ':global(' + x + ')'
-}
-
-function kv (k, v, o) {
-  o = {};
-  o[k] = v;
-  return o
-}
-
-function at (rule, params, block) {
-  if (
-    arguments.length < 3
-  ) {
-    // inner curry!
-    var _at = at.bind.apply(at, [null].concat([].slice.call(arguments,0)));
-    // So that it can be used as a key in an ES6 object literal.
-    _at.toString = function(){return '@' + rule + ' ' + params};
-    return _at
-  }
-  else return kv('@' + rule +' ' + params, block)
-}
-
-function j2c() {
-
-  // the buffer that accumulates the output. Initialized in `$sink.i()`
-  var buf, err;
-
-  // the bottom of the 'codegen' stream. Mirrors the `$filter` plugin API.
-  var $sink = {
-    init: function(){buf=[], err=[];},
-    done: function (raw) {
-      if (err.length != 0) throw new Error('j2c error(s): ' + JSON.stringify(err,null,2) + 'in context:\n' + buf.join(''))
-      return raw ? buf : buf.join('')
-    },
-    err: function(msg) {
-      err.push(msg);
-      buf.push('/* +++ ERROR +++ ' + msg + ' */\n');
-    },
-    atrule: function (rule, kind, param, takesBlock) {
-      buf.push(rule, param && ' ', param, takesBlock ? ' {' : ';', _instance.endline);
-    },
-    // close atrule
-    _atrule: function () {buf.push('}', _instance.endline);},
-    rule: function (selector) {buf.push(selector, ' {', _instance.endline);},
-    // close rule
-    _rule: function () {buf.push('}', _instance.endline);},
-    decl: function (prop, value) {buf.push(prop, prop && ':', value, ';', _instance.endline);}
-  };
-
-  // holds the `$filter` and `$at` handlers
-  var $filters = [closeSelectors];
-  var $atHandlers = [];
-
-  // the public API (see the main docs)
-  var _instance = {
-    at: at,
-    global: global,
-    kv: kv,
-    names: {},
-    endline: '\n',
-    suffix: '__j2c-' +
-      // 128 bits of randomness
-      Math.floor(Math.random() * 0x100000000).toString(36) + '-' +
-      Math.floor(Math.random() * 0x100000000).toString(36) + '-' +
-      Math.floor(Math.random() * 0x100000000).toString(36) + '-' +
-      Math.floor(Math.random() * 0x100000000).toString(36),
-    $plugins: [],
-    sheet: function(tree) {
-      var emit = _createOrRetrieveStream(0);
-      emit.init();
-      rules(
-        _walkers[0],
-        emit,
-        '', // prefix
-        tree,
-        1,  // local, by default
-        0   // nesting depth
-      );
-
-      return emit.done()
-    },
-    inline: function (tree, options) {
-      var emit = _createOrRetrieveStream(1);
-      emit.init();
-      declarations(
-        _walkers[1],
-        emit,
-        '', // prefix
-        tree,
-        !(options && options.global)   // local, by default
-      );
-      return emit.done()
-    }
-  };
-
-  // The `state` (for the core functions) / `walker` (for the plugins) tables.
-  var _walkers = [
-    // for j2c.sheet
-    {
-      // helpers for locaizing class and animation names
-      localizeReplacer: _localizeReplacer, // second argument to String.prototype.replace
-      localize: _localize,                 // mangles local names
-      names: _instance.names,              // local => mangled mapping
-      $atHandlers: $atHandlers,            // extra at-rules
-      // The core walker methods, to be provided to plugins
-      atrule: atRules,
-      decl: declarations,
-      rule: rules
-    },
-    // likewise, for j2c.inline (idem with `$a`, `a` and `s` removed)
-    {
-      localizeReplacer: _localizeReplacer,
-      localize: _localize,
-      names: _instance.names,
-      decl: declarations
-    }
-  ];
-
-
-  // inner helpers
-
-  var _use = flatIter(function(plugin) {
-    // `~n` is falsy for `n === -1` and truthy otherwise.
-    // Works well to turn the  result of `a.indexOf(x)`
-    // into a value that reflects the presence of `x` in
-    // `a`.
-    if (~_instance.$plugins.indexOf(plugin)) return
-
-    _instance.$plugins.push(plugin);
-
-    if (type.call(plugin) === FUNCTION) plugin = plugin(_instance);
-
-    if (!plugin) return
-
-    flatIter(function(filter) {
-      $filters.push(filter);
-    })(plugin.$filter || emptyArray);
-
-    flatIter(function(handler) {
-      $atHandlers.push(handler);
-    })(plugin.$at || emptyArray);
-
-    defaults(_instance.names, plugin.$names || emptyObject);
-
-    _use(plugin.$plugins || emptyArray);
-
-    $sink = plugin.$sink || $sink;
-
-    defaults(_instance, plugin);
-  });
-
-
-  var _streams = [];
-  /**
-   * returns the codegen streams, creating them if necessary
-   * @param
-   */
-  function _createOrRetrieveStream(inline) {
-    // build the stream processors if needed
-    if (!_streams.length) {
-      // append the $sink as the ultimate filter
-      $filters.push(function(_, inline) {return inline ? {init:$sink.init, decl:$sink.decl, done:$sink.done, err: $sink.err} : $sink});
-      for(var i = 0; i < 2; i++){ // 0 for j2c.sheet, 1 for j2c.inline
-        for (var j = $filters.length; j--;) {
-          _streams[i] = freeze(
-            defaults(
-              $filters[j](_streams[i], !!i),
-              _streams[i]
-            )
-          );
-        }
-      }
-    }
-    return _streams[inline]
-  }
-
-  /**
-   * Returns a localized version of a given name.
-   * Registers the pair in `instnace.name` if needed.
-   *
-   * @param {string} name - the name to localize
-   * @return {string} - the localized version
-   */
-  function _localize(name) {
-    if (!_instance.names[name]) _instance.names[name] = name + _instance.suffix;
-    return _instance.names[name].match(/^\S+/)
-  }
-
-  /**
-   * Used as second argument for str.replace(localizeRegex, replacer)
-   * `ignore`, `global` and `(dot, name)` are mutually exclusive
-   *
-   * @param {string} match - the whole match (ignored)
-   * @param {string|null} ignore - a comment or a string literal
-   * @param {string|null} global - a global name
-   * @param {string|null} dot - either '.' for a local class name or the empty string otherwise
-   * @param {string|null} name - the name to localize
-   * @return {string}
-   */
-  function _localizeReplacer(match, ignore, global$$1, dot, name) {
-    return ignore || global$$1 || dot + _localize(name)
-  }
-
-  _use(emptyArray.slice.call(arguments));
-  return _instance
-}
-
-module.exports = j2c;
 
 
 /***/ }),

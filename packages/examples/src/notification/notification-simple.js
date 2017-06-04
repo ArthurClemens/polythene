@@ -26,10 +26,10 @@ module.view = () => {
             content: m(Button, {
                 label: 'Show',
                 raised: true,
-                disabled: notification.count() !== 0,
+                disabled: Notification.count() !== 0,
                 events: {
                     onclick: () => {
-                        notification.show({
+                        Notification.show({
                             title: 'Done!',
                             containerSelector: '#notifications',
                         }, 'body');

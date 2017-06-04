@@ -1,6 +1,6 @@
 import '../common/object.assign';
 import m from 'mithril';
-import './theme/theme';
+import './theme';
 
 const startEventType = window.PointerEvent ? 'pointerdown' : (('ontouchstart' in window) || window.DocumentTouch && document instanceof window.DocumentTouch) ? 'touchstart' : 'mousedown';
 

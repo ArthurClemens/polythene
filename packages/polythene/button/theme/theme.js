@@ -1,15 +1,13 @@
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+import styler from '../../common/styler';
+import { customVariables } from 'polythene-theme';
 
-import vars from "./config";
+console.log("customVariables", customVariables);
+
+import defaultConfig from './config';
+var customConfigFn = customVariables.button;
 import layout from './layout';
 import color from './color';
-import { styler } from 'polythene-core-css';
 
-var fns = [layout, color];
-var selector = '.pe-button.pe-button--text';
+var config = customConfigFn ? customConfigFn(defaultConfig) : defaultConfig;
 
-export var customTheme = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends({}, vars, customVars), fns);
-};
-
-styler.generateStyles([selector], _extends({}, vars), fns);
+styler.add('pe-button-text', layout(config), color(config));

@@ -23,7 +23,8 @@ export { default as SVG } from './svg/svg';
 export { default as Switch } from './switch/switch';
 export { default as Tabs } from './tabs/tabs';
 export { default as TextField } from './textfield/textfield';
-export { default as Theme } from './theme/theme';
+export { default as Theme } from './theme';
+export { default as Toolbar } from './toolbar/toolbar';
 
 export { default as config } from './config/config';
 export { default as custom } from './config/custom';

@@ -1,7 +1,7 @@
 import '../common/object.assign';
 import m from 'mithril';
 import svg from '../svg/svg';
-import './theme/theme';
+import './theme';
 
 const CSS_CLASSES = {
     icon: 'pe-icon',

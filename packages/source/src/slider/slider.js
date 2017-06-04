@@ -1,7 +1,7 @@
 import '../common/object.assign';
 import p from '../polythene/polythene';
 import m from 'mithril';
-import '../slider/theme/theme';
+import './theme';
 import themeConfig from './theme/config';
 
 const CSS_CLASSES = {

@@ -1,6 +1,6 @@
 import mixin from '../../common/mixin';
 
-export default (function (selector, config) {
+var createStyles = function createStyles(config) {
     return [{
         '.pe-button--text': {
             display: 'inline-block',
@@ -38,4 +38,8 @@ export default (function (selector, config) {
             }
         }
     }];
+};
+
+export default (function (config) {
+    return mixin.createStyles(config, createStyles);
 });

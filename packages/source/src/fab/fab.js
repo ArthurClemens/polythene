@@ -1,7 +1,7 @@
 import '../common/object.assign';
 import m from 'mithril';
 import iconBtn from '../icon-button/icon-button';
-import './theme/theme';
+import './theme';
 
 const CSS_CLASSES = {
     block: 'pe-button--fab',

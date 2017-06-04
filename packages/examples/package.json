@@ -29,7 +29,6 @@
     "mmsvg": "^1.1.1",
     "polythene": "0.3.0-rc.1",
     "polythene-core": "0.3.0-rc.1",
-    "polythene-core-css": "0.3.0-rc.1",
     "verge": "^1.9.1"
   }
 }

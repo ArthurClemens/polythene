@@ -21,7 +21,6 @@
     "j2c": "^0.11.2",
     "mithril": "^0.2.5",
     "polythene-core": "0.3.0-rc.1",
-    "polythene-core-css": "0.3.0-rc.1",
     "polythene-theme": "0.3.0-rc.1"
   },
   "repository": {

@@ -3,7 +3,7 @@ import p from '../polythene/polythene';
 import events from '../common/events';
 import m from 'mithril';
 import toolbar from '../toolbar/toolbar';
-import './theme/theme';
+import './theme';
 
 const CSS_CLASSES = {
     panel: 'pe-header-panel',

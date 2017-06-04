@@ -1,7 +1,7 @@
 import '../common/object.assign';
 import m from 'mithril';
 import textfield from '../textfield/textfield';
-import './theme/theme';
+import './theme';
 
 const CSS_CLASSES = {
     block: 'pe-search',

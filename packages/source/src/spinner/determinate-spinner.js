@@ -12,7 +12,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 import m from 'mithril';
 import spinner from './spinner';
-import './theme/determinate/theme';
+import './theme/determinate';
 import themeConfig from './theme/determinate/config';
 import easing from '../common/easing';
 

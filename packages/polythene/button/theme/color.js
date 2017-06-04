@@ -1,5 +1,7 @@
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+import mixin from '../../common/mixin';
+
 var style = function style(config, tint, type) {
     var scope = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '';
 
@@ -58,7 +60,7 @@ var noTouch = function noTouch(config, tint, type) {
     })];
 };
 
-export default (function (selector, config) {
+var createStyles = function createStyles(config) {
     return [style(config, 'light', 'flat'), style(config, 'light', 'raised', '.pe-button--raised'), {
         'html.pe-no-touch': [noTouch(config, 'light', 'flat', ' '), noTouch(config, 'light', 'raised', ' .pe-button--raised')]
     }, {
@@ -72,4 +74,8 @@ export default (function (selector, config) {
     }, {
         'html.pe-no-touch .pe-dark-theme': [noTouch(config, 'dark', 'flat', ' '), noTouch(config, 'dark', 'flat', '&'), noTouch(config, 'dark', 'raised', ' .pe-button--raised')]
     }];
+};
+
+export default (function (config) {
+    return mixin.createStyles(config, createStyles);
 });

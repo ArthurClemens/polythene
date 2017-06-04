@@ -5,7 +5,7 @@ import m from 'mithril';
 import shadow from '../shadow/shadow';
 import icon from '../icon/icon';
 import listTile from '../list-tile/list-tile';
-import "./theme/theme";
+import "./theme";
 
 var CSS_CLASSES = {
     block: 'pe-card',

@@ -6,7 +6,7 @@ import button from '../button/button';
 import icon from '../icon/icon';
 import iconBtn from '../icon-button/icon-button';
 import scrollTo from '../common/scroll-to';
-import theme from './theme/theme'; // contains icons
+import theme from './theme'; // contains icons
 import config from './theme/config';
 
 const CSS_CLASSES = {
@@ -60,8 +60,8 @@ const handleScrollButtonClick = (ctrl, opts, e, direction) => {
 
 
 const createScrollButton = (ctrl, position, opts) => {
-    const scrollIconForward = opts.scrollIconForward || theme.arrowForward;
-    const scrollIconBackward = opts.scrollIconBackward || theme.arrowBackward;
+    const scrollIconForward = { msvg: opts.scrollIconForward || theme.arrowForward };
+    const scrollIconBackward = { msvg: opts.scrollIconBackward || theme.arrowBackward };
 
     return m(iconBtn, {
         class: [

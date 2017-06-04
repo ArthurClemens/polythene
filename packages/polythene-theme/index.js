@@ -1,1 +1,1 @@
-export { vars } from './src';
+export * from './src';

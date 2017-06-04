@@ -12,7 +12,7 @@ module.exports = {
 
   resolve: {
     alias: {
-      "polythene-theme": path.resolve(__dirname, "../src/custom-theme/theme.js")
+      "polythene-theme": path.resolve(__dirname, "../src/theme")
     }
   },
 

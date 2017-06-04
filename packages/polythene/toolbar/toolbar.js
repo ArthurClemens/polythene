@@ -1,5 +1,5 @@
 import m from 'mithril';
-import './theme/theme';
+import './theme';
 
 var CSS_CLASSES = {
     block: 'pe-toolbar',

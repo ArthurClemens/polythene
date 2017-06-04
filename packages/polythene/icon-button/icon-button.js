@@ -4,7 +4,7 @@ import '../common/object.assign';
 import m from 'mithril';
 import icon from '../icon/icon';
 import button from '../button/button';
-import './theme/theme';
+import './theme';
 
 var CSS_CLASSES = {
     block: 'pe-button pe-button--icon',

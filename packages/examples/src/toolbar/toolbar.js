@@ -28,7 +28,7 @@ const toolbarBlock = {
     view: function(ctrl, args) {
         return m('.p-block', [
             m('.p-block-header', args.label),
-            m(toolbar, args.toolbar)
+            m(Toolbar, args.toolbar)
         ]);
     }
 };

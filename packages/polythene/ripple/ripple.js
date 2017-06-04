@@ -1,7 +1,7 @@
 import m from 'mithril';
 import p from '../polythene/polythene';
 import whichTransitionEvent from '../common/transition-event';
-import '../ripple/theme/theme';
+import './theme';
 
 var transitionEvent = whichTransitionEvent();
 var DEFAULT_START_OPACITY = 0.2;

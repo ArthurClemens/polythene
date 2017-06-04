@@ -4,7 +4,7 @@ import events from '../common/events';
 import m from 'mithril';
 import shadow from '../shadow/shadow';
 import transition from '../common/transition';
-import './theme/theme';
+import './theme';
 
 var CSS_CLASSES = {
     block: 'pe-menu',

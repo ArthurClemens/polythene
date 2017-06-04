@@ -1,7 +1,7 @@
 import m from 'mithril';
 import selectionControl from '../selection-control/selection-control';
 import iconSelection from '../selection-control/icon-selection';
-import theme from './theme/theme'; // contains default icons
+import theme from './theme'; // contains default icons
 
 var selectable = function selectable() {
     return true;

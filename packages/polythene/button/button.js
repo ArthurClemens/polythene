@@ -7,8 +7,8 @@ import p from '../polythene/polythene';
 import m from 'mithril';
 import ripple from '../ripple/ripple';
 import shadow from '../shadow/shadow';
-import '../base-button/base-button';
-import { customTheme } from "./theme/theme";
+import '../base-button';
+import "./theme";
 
 var CSS_CLASSES = {
     block: 'pe-button pe-button--text',
@@ -202,8 +202,7 @@ var component = {
         var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
         return createView(ctrl, opts);
-    },
-    theme: customTheme
+    }
 };
 
 export default component;

@@ -4,7 +4,7 @@ import '../common/object.assign';
 import m from 'mithril';
 import icon from '../icon/icon';
 import ripple from '../ripple/ripple';
-import './theme/theme';
+import './theme';
 
 var CSS_CLASSES = {
     block: 'pe-list-tile',

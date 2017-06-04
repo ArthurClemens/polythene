@@ -12,7 +12,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 import m from 'mithril';
 import spinner from './spinner';
-import './theme/indeterminate/theme';
+import './theme/indeterminate';
 
 var CSS_CLASSES = {
     block: 'pe-spinner-indeterminate',
