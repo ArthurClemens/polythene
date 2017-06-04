@@ -1,5 +1,6 @@
+import isomorphic from 'polythene/common/isomorphic';
 
-if (!window.WebFontConfig) {
+if (isomorphic.isClient() && !window.WebFontConfig) {
     window.WebFontConfig = {};
     (function() {
         let wf = document.createElement('script');
@@ -14,6 +15,9 @@ if (!window.WebFontConfig) {
 
 const webfontLoader = {
     add: (vendor, family, key) => {
+		if(isomorphic.isServer()) {
+			return;
+		}
         const vendorCfg = window.WebFontConfig[vendor] || {};
         vendorCfg.families = vendorCfg.families || [];
         vendorCfg.families.push(family);

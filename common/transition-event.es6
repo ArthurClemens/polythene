@@ -1,5 +1,9 @@
+import isomorphic from 'polythene/common/isomorphic';
 
 export default () => {
+	if(isomorphic.isServer()){
+		return 'animationend';
+	}
     const el = document.createElement('fakeelement');
     const animations = {
         'animation': 'animationend',

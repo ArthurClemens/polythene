@@ -1,8 +1,12 @@
 import 'polythene/common/object.assign';
 import m from 'mithril';
 import 'polythene/textfield/theme/theme';
+import isomorphic from 'polythene/common/isomorphic';
 
-const startEventType = window.PointerEvent ? 'pointerdown' : (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) ? 'touchstart' : 'mousedown';
+let startEventType = 'mousedown';
+if(isomorphic.isClient()) {
+	startEventType = window.PointerEvent ? 'pointerdown' : (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) ? 'touchstart' : 'mousedown';
+}
 
 const CSS_CLASSES = {
     block: 'pe-textfield',
@@ -89,6 +93,7 @@ const checkValidity = (ctrl, opts) => {
     ctrl.error = status.message;
     ctrl.isInvalid = status.invalid;
     if (status.invalid !== previousInvalid) {
+		console.log('REDRAW 2');
         setTimeout(m.redraw, 0);
     }
 
@@ -99,7 +104,7 @@ const checkValidity = (ctrl, opts) => {
 
 // dirty = contains text
 const checkDirty = (ctrl) => {
-    ctrl.isDirty = (ctrl.value.toString().length > 0);
+    ctrl.isDirty = (ctrl.value && ctrl.value.toString().length > 0);
 };
 
 const updateState = (ctrl, opts) => {
@@ -256,7 +261,7 @@ const createView = (ctrl, opts = {}) => {
                         }
                     }
                     : null,
-                    
+
                 // onblur defined in config
 
                 (!ignoreEvent(opts, 'oninput'))
@@ -295,6 +300,7 @@ const createView = (ctrl, opts = {}) => {
                                 // Safari only needs 1 tick, but Chrome needs more than 150ms to create a distinctive new redraw event.
                                 // But we also may have buttons that change place (search field), a large timeout works better in general.
                                 setTimeout(() => {
+									console.log('REDRAW 1');
                                     m.redraw();
                                     setTimeout(m.redraw, 250);
                                 }, 1);

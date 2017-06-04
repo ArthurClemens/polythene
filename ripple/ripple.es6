@@ -1,6 +1,7 @@
 import m from 'mithril';
 import p from 'polythene/polythene/polythene';
 import whichTransitionEvent from 'polythene/common/transition-event';
+import isomorphic from 'polythene/common/isomorphic';
 import 'polythene/ripple/theme/theme';
 
 const transitionEvent = whichTransitionEvent();
@@ -16,6 +17,9 @@ const CSS_CLASSES = {
 };
 
 const makeRipple = (e, ctrl, opts = {}) => {
+	if(isomorphic.isServer()){
+		return;
+	}
     const el = ctrl.ripple();
     const wavesEl = ctrl.waves();
     const w = el.offsetWidth;

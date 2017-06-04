@@ -1,3 +1,4 @@
+import isomorphic from 'polythene/common/isomorphic';
 // Global theme variables
 // How to change these variables for your app - see the README.
 
@@ -14,7 +15,7 @@ const rgba = (colorStr, opacity = 1) => ('rgba(' + colorStr + ',' + opacity + ')
 const isInteger = (nVal) => (typeof nVal === 'number' && isFinite(nVal) && nVal > -9007199254740992 && nVal < 9007199254740992 && Math.floor(nVal) === nVal);
 
 //const isTablet = window.innerWidth >= 600;
-const isDesktop = window.innerWidth >= 1024;
+const isDesktop = isomorphic.isClient()? window.innerWidth >= 1024: true;
 
 const grid_unit = 4;
 const grid_unit_component = 8;
@@ -127,8 +128,8 @@ export default {
     breakpoint_large_handset_landscape: 720,
 
     // environment
-    env_tablet: window.innerWidth >= 600,
-    env_desktop: window.innerWidth >= 1024,
+    env_tablet: isomorphic.isClient()? window.innerWidth >= 600: false,
+    env_desktop: isomorphic.isClient()? window.innerWidth >= 1024: true,
 
     // z-index
     z_menu: 1000,

@@ -1,4 +1,5 @@
 import j2c from 'j2c';
+import isomorphic from 'polythene/common/isomorphic';
 
 const remove = (id) => {
     if (id) {
@@ -24,6 +25,9 @@ const add = (id, ...styles) => {
 * styles: list of lists style Objects
 */
 const addToDocument = (opts, ...styles) => {
+	if(isomorphic.isServer()){
+		return;
+	}
     const id = opts.id;
     const documentRef = opts.document || window.document;
     remove(id);

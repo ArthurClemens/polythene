@@ -1,7 +1,9 @@
+import isomorphic from 'polythene/common/isomorphic';
+
 const listeners = {};
 
 // https://gist.github.com/Eartz/fe651f2fadcc11444549
-const throttle = (func, s = 0.05, context = window) => {
+const throttle = (func, s = 0.05, context = isomorphic.isClient()? window: {}) => {
     let wait = false;
     return (...args) => {
         const later = () => {
@@ -43,10 +45,11 @@ const emit = (eventName, event) => {
     });
 };
 
-
-window.addEventListener('resize', e => (emit('resize', e)));
-window.addEventListener('scroll', e => (emit('scroll', e)));
-window.addEventListener('keydown', e => (emit('keydown', e)));
+if(isomorphic.isClient()) {
+	window.addEventListener('resize', e => (emit('resize', e)));
+	window.addEventListener('scroll', e => (emit('scroll', e)));
+	window.addEventListener('keydown', e => (emit('keydown', e)));
+}
 
 export default {
     throttle,

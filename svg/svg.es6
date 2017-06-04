@@ -47,7 +47,7 @@ const createView = (ctrl, opts = {}) => {
 };
 
 const loadSvg = (path, ctrl, opts, preloading = false) => {
-    if (System && System.import) {
+    if (typeof System !== "undefined" && System.import) {
         const normalizedName = System.normalizeSync(path);
         return System.import(normalizedName).then(function(data) {
             if (preloading) {
@@ -59,8 +59,15 @@ const loadSvg = (path, ctrl, opts, preloading = false) => {
             }
         });
     } else {
-        if (console) {
+        if (typeof console !== "undefined" && console.log) {
             console.log('polythene/svg: System not found.');
+        }
+        return {
+            then: function(){
+                if (typeof console !== "undefined" && console.log) {
+                    console.log('polythene/svg: System not found.');
+                }
+            }
         }
     }
 };

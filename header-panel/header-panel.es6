@@ -3,6 +3,7 @@ import p from 'polythene/polythene/polythene';
 import events from 'polythene/common/events';
 import m from 'mithril';
 import toolbar from 'polythene/toolbar/toolbar';
+import isomorphic from 'polythene/common/isomorphic';
 import 'polythene/header-panel/theme/theme';
 
 const CSS_CLASSES = {
@@ -79,7 +80,11 @@ const classForMode = (mode = 'standard') => {
     return modeClasses[mode];
 };
 
-const setTransform = (document.documentElement.style.transform !== undefined) ? ((style, string) => {
+let setTransform = (style, string) => {
+    style.transform = string;
+};
+
+setTransform = (isomorphic.isClient() && document.documentElement.style.transform !== undefined) ? ((style, string) => {
     style.transform = string;
 }) : ((style, string) => {
     style.webkitTransform = string;
@@ -307,7 +312,7 @@ const component = {
                 } else {
                     sTop = ctrl.scrollerElem.scrollTop;
                 }
- 
+
                 if (!ctrl.scrollInited && opts.initialPositionFixed) {
                     prevScrollTop = sTop;
                     y = 0;

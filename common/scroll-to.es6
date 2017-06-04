@@ -5,6 +5,7 @@ Adapted to Mithril and rewritten to es6.
 */
 
 import easing from 'polythene/common/easing';
+import isomorphic from 'polythene/common/isomorphic';
 
 /*
 opts:
@@ -56,6 +57,9 @@ const scrollTo = (opts) => {
 };
 
 const requestAnimFrame = (() => {
+	if(isomorphic.isServer()) {
+		return;
+	}
     return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || (callback => {
         window.setTimeout(callback, 1000 / 60);
     });

@@ -1,2 +1,2 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});var Timer=function(a,b){var c,d,e=b;this.stop=function(){window.clearTimeout(c)},this.pause=function(){window.clearTimeout(c),e-=new Date-d},this.resume=function(){d=new Date,window.clearTimeout(c),c=window.setTimeout(a,e)},this.resume()};exports.default=Timer,module.exports=exports["default"];
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0});var Timer=function(a,b){var c,d,e=b;this.stop=function(){clearTimeout(c)},this.pause=function(){clearTimeout(c),e-=new Date-d},this.resume=function(){d=new Date,clearTimeout(c),c=setTimeout(a,e)},this.resume()};exports.default=Timer,module.exports=exports["default"];
 //# sourceMappingURL=timer.js.map
