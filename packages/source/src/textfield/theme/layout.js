@@ -1,13 +1,13 @@
-import common from '../../config/config';
+import { appConfig } from "polythene-theme";
 import mixin from '../../common/mixin';
 
-const createStyles = (config) => {
+const createStyles = config => {
     return [{
         '.pe-textfield': [
             mixin.clearfix(),
             {
                 position: 'relative',
-                'line-height': common.line_height,
+                'line-height': appConfig.line_height,
                 display: 'inline-block',
                 'box-sizing': 'border-box',
                 margin: 0,
@@ -161,8 +161,8 @@ const createStyles = (config) => {
                 ' .pe-textfield__error, .pe-textfield__error-placeholder, .pe-textfield__help, .pe-textfield__counter': {
                     'margin-top': config.margin_top_error_message + 'px',
                     'font-size': config.font_size_error + 'px',
-                    'line-height': common.line_height,
-                    'min-height': config.font_size_error * common.line_height + 'px'
+                    'line-height': appConfig.line_height,
+                    'min-height': config.font_size_error * appConfig.line_height + 'px'
                 },
 
                 ' .pe-textfield__counter': {
@@ -238,4 +238,4 @@ const createStyles = (config) => {
     }];
 };
 
-export default (config) => (mixin.createStyles(config, createStyles));
+export default config => mixin.createStyles(config, createStyles);

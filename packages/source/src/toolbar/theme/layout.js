@@ -1,14 +1,14 @@
-import common from '../../config/config';
+import { appConfig } from "polythene-theme";
 import mixin from '../../common/mixin';
 import flex from '../../layout/theme/flex';
 
-const createStyles = (config) => {
+const createStyles = config => {
     return [{
         '.pe-toolbar': [
             // use hardware-acceleration
             mixin.vendorize({
                 transform: 'translate3d(0,0,0)'
-            }, common.prefixes_transform),
+            }, appConfig.prefixes_transform),
             {
                 display: 'block',
                 position: 'relative',
@@ -46,7 +46,7 @@ const createStyles = (config) => {
 
                 '&.pe-header--tall .pe-toolbar__bar--middle': mixin.vendorize({
                     transform: 'translateY(100%)'
-                }, common.prefixes_transform),
+                }, appConfig.prefixes_transform),
 
                 ' .pe-toolbar__bar': [
                     flex.layoutCenter,
@@ -66,22 +66,22 @@ const createStyles = (config) => {
                         }
                     }, {
                         ' .pe-button--icon + span, .pe-button--icon + .pe-title': {
-                            'margin-left': config.indent - config.margin_side - common.grid_unit_icon_button + 'px'
+                            'margin-left': config.indent - config.margin_side - appConfig.grid_unit_icon_button + 'px'
                         }
                     },
                     {
                         '> span, > .pe-title': [
-                            mixin.ellipsis(1, common.line_height, 'em'),
+                            mixin.ellipsis(1, appConfig.line_height, 'em'),
                             mixin.vendorize({
                                 'transform-origin': 'left 50%'
-                            }, common.prefixes_transform), {
-                                'line-height': common.line_height + 'em',
+                            }, appConfig.prefixes_transform), {
+                                'line-height': appConfig.line_height + 'em',
                                 'word-break': 'break-all'
                             }
                         ]
                     }, {
                         '> span:first-child, .pe-toolbar__title--indent': [
-                            mixin.ellipsis(1, common.line_height, 'em'), {
+                            mixin.ellipsis(1, appConfig.line_height, 'em'), {
                                 'margin-left': config.indent + 'px'
                             }
                         ]
@@ -101,7 +101,7 @@ const createStyles = (config) => {
                                 }
                             }
                         ],
-                        ' .pe-header': mixin.ellipsis(1, common.line_height, 'em'),
+                        ' .pe-header': mixin.ellipsis(1, appConfig.line_height, 'em'),
 
                         '&.pe-toolbar__bar--top': {
                             'z-index': 3
@@ -127,4 +127,4 @@ const createStyles = (config) => {
     }];
 };
 
-export default (config) => (mixin.createStyles(config, createStyles));
+export default config => mixin.createStyles(config, createStyles);

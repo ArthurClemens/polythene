@@ -1,12 +1,12 @@
-import common from '../../config/config';
+import { appConfig } from "polythene-theme";
 import mixin from '../../common/mixin';
 
-const createStyles = (config) => {
+const createStyles = config => {
     return [{
         '.pe-button--fab': [
             mixin.vendorize({
                 'user-select': 'none'
-            }, common.prefixes_user_select), {
+            }, appConfig.prefixes_user_select), {
                 display: 'inline-block',
                 position: 'relative',
                 outline: 'none',
@@ -20,7 +20,7 @@ const createStyles = (config) => {
                 '&.pe-button--fab-mini': {
                     width: config.size_mini + 'px',
                     height: config.size_mini + 'px',
-                    padding: ((config.size_mini - common.unit_icon_size) / 2) + 'px'
+                    padding: ((config.size_mini - appConfig.unit_icon_size) / 2) + 'px'
                 },
 
                 ' .pe-button__content': {
@@ -34,8 +34,8 @@ const createStyles = (config) => {
 
                 ' .pe-button__wash': [
                     mixin.vendorize({
-                        transition: 'background-color ' + common.animation_duration + ' ease-in-out'
-                    }, common.prefixes_transition), {
+                        transition: 'background-color ' + appConfig.animation_duration + ' ease-in-out'
+                    }, appConfig.prefixes_transition), {
                         'border-radius': 'inherit',
                         'pointer-events': 'none',
                         'background-color': 'transparent'
@@ -46,4 +46,4 @@ const createStyles = (config) => {
     }];
 };
 
-export default (config) => (mixin.createStyles(config, createStyles));
+export default config => mixin.createStyles(config, createStyles);

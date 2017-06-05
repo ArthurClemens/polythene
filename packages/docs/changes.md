@@ -33,10 +33,10 @@ import button from 'polythene/button/button';
 Version 0.2 imports are still supported, but are be deprecated and no longer supported in 1.0.
 
 
-The importing of Polythene theme is similar:
+### Importing Material Design theme
 
 ```javascript
-import { Theme } from 'polythene';
+import 'polythene-material-design';
 ```
 
 

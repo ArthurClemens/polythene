@@ -1,4 +1,4 @@
-import common from '../../config/config';
+import { appConfig } from "polythene-theme";
 import mixin from '../../common/mixin';
 import flex from '../../layout/theme/flex';
 
@@ -61,7 +61,7 @@ var createStyles = function createStyles(config) {
 
             ' .pe-list-tile__title': [mixin.ellipsis(1), {
                 'font-size': config.font_size_title + 'px',
-                'font-weight': common.font_weight_normal,
+                'font-weight': appConfig.font_weight_normal,
                 'line-height': config.single_line_height + 'px'
             }],
 
@@ -105,7 +105,7 @@ var createStyles = function createStyles(config) {
                 },
                 ' .pe-list-tile__title': [mixin.ellipsis(1, config.single_height), {
                     'font-size': config.font_size_list_header + 'px',
-                    'font-weight': common.font_weight_medium,
+                    'font-weight': appConfig.font_weight_medium,
                     'line-height': config.single_height + 'px',
                     padding: 0
                 }]
@@ -139,7 +139,7 @@ var createStyles = function createStyles(config) {
                     '&, .pe-list-tile__primary, .pe-list-tile__secondary': {
                         ' .pe-list-tile__title, .pe-list-tile__subtitle': [mixin.vendorize({
                             'user-select': 'none'
-                        }, common.prefixes_user_select)]
+                        }, appConfig.prefixes_user_select)]
                     }
                 }
             },

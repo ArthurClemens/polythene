@@ -1,9 +1,9 @@
-import common from '../../config/config';
+import { appConfig as cfg } from "polythene-theme";
 
-var rgba = common.rgba;
-var lightForeground = common.color_light_foreground;
-var darkForeground = common.color_dark_foreground;
-var activeColor = common.color_primary; // or override in CSS by setting 'color' property on '.pe-slider'
+var rgba = cfg.rgba;
+var lightForeground = cfg.color_light_foreground;
+var darkForeground = cfg.color_dark_foreground;
+var activeColor = cfg.color_primary; // or override in CSS by setting 'color' property on '.pe-slider'
 
 var thumb_size = 12;
 var thumb_touch_size = Math.max(40, thumb_size);
@@ -27,7 +27,7 @@ export default {
     bar_height: 2,
     thumb_border_width: thumb_border_width,
     active_thumb_scale: active_thumb_scale,
-    animation_duration: common.animation_duration,
+    animation_duration: cfg.animation_duration,
     disabled_thumb_scale: disabled_thumb_scale,
     active_pin_thumb_scale: active_pin_thumb_scale,
 
@@ -45,10 +45,10 @@ export default {
     color_light_thumb_on: rgba(activeColor),
     color_light_thumb_on_focus_opacity: .11,
     color_light_tick: rgba(lightForeground, 1),
-    color_light_icon: common.rgba(common.color_light_foreground, common.blend_light_text_secondary),
-    color_light_disabled_icon: common.rgba(common.color_light_foreground, common.blend_light_text_disabled),
-    color_light_label: common.rgba(common.color_light_foreground, common.blend_light_text_secondary),
-    color_light_disabled_label: common.rgba(common.color_light_foreground, common.blend_light_text_disabled),
+    color_light_icon: cfg.rgba(cfg.color_light_foreground, cfg.blend_light_text_secondary),
+    color_light_disabled_icon: cfg.rgba(cfg.color_light_foreground, cfg.blend_light_text_disabled),
+    color_light_label: cfg.rgba(cfg.color_light_foreground, cfg.blend_light_text_secondary),
+    color_light_disabled_label: cfg.rgba(cfg.color_light_foreground, cfg.blend_light_text_disabled),
 
     color_dark_track_active: rgba(darkForeground, 0.3),
     color_dark_track_inactive: rgba(darkForeground, 0.2),
@@ -59,8 +59,8 @@ export default {
     color_dark_thumb_on: rgba(activeColor),
     color_dark_thumb_on_focus_opacity: .11,
     color_dark_tick: rgba(darkForeground, 1),
-    color_dark_icon: common.rgba(common.color_dark_foreground, common.blend_dark_text_secondary),
-    color_dark_disabled_icon: common.rgba(common.color_dark_foreground, common.blend_dark_text_disabled),
-    color_dark_label: common.rgba(common.color_dark_foreground, common.blend_dark_text_secondary),
-    color_dark_disabled_label: common.rgba(common.color_dark_foreground, common.blend_dark_text_disabled)
+    color_dark_icon: cfg.rgba(cfg.color_dark_foreground, cfg.blend_dark_text_secondary),
+    color_dark_disabled_icon: cfg.rgba(cfg.color_dark_foreground, cfg.blend_dark_text_disabled),
+    color_dark_label: cfg.rgba(cfg.color_dark_foreground, cfg.blend_dark_text_secondary),
+    color_dark_disabled_label: cfg.rgba(cfg.color_dark_foreground, cfg.blend_dark_text_disabled)
 };

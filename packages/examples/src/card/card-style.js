@@ -1,5 +1,5 @@
 import vars from '../app/common-vars';
-import config from 'polythene/config/config';
+import { appConfig } from "polythene-theme";
 import mixin from 'polythene/common/mixin';
 
 const styles = [{
@@ -22,7 +22,7 @@ const styles = [{
             },
             '&.on .pe-card__media__dimmer, &.small .pe-card__media__dimmer': mixin.vendorize({
                 'box-shadow': 'inset 0px 0px 40px rgba(0, 0, 0, 0.6)'
-            }, config.prefixes_box_shadow),
+            }, appConfig.prefixes_box_shadow),
             '&.extra-large': {
                 width: vars.listWidth + 'px'
             },
@@ -44,7 +44,7 @@ const styles = [{
         },
         ' a[href].demo-card:hover .pe-card__media__dimmer': mixin.vendorize({
             'box-shadow': 'inset 0px 0px 40px rgba(0, 0, 0, 0.6)'
-        }, config.prefixes_box_shadow)
+        }, appConfig.prefixes_box_shadow)
     }
 }];
 

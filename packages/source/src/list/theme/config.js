@@ -1,13 +1,13 @@
-import common from '../../config/config';
+import { appConfig as cfg } from "polythene-theme";
 
-const rgba = common.rgba;
+const rgba = cfg.rgba;
 
 export default {
-    padding: common.grid_unit_component,
-    padding_compact: common.grid_unit_component / 2,
+    padding: cfg.grid_unit_component,
+    padding_compact: cfg.grid_unit_component / 2,
     border_width_stacked: 1,
     border_width_bordered: 1,
 
-    color_light_border: rgba(common.color_light_foreground, common.blend_light_border_light),
-    color_dark_border: rgba(common.color_dark_foreground, common.blend_dark_border_light)
+    color_light_border: rgba(cfg.color_light_foreground, cfg.blend_light_border_light),
+    color_dark_border: rgba(cfg.color_dark_foreground, cfg.blend_dark_border_light)
 };

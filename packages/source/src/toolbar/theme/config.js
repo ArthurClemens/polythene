@@ -1,16 +1,16 @@
-import common from '../../config/config';
+import { appConfig as cfg } from "polythene-theme";
 
-const margin_side = 2 * common.grid_unit_component - 12; // (buttonSize - iconSize) / 2 = (48 - 24) / 2
-const height_desktop = common.grid_unit_component * 8; // 64
-const height_mobile_portrait = common.grid_unit_component * 7; // 56
-const height_mobile_landscape = common.grid_unit_component * 6; // 48
+const margin_side = 2 * cfg.grid_unit_component - 12; // (buttonSize - iconSize) / 2 = (48 - 24) / 2
+const height_desktop = cfg.grid_unit_component * 8; // 64
+const height_mobile_portrait = cfg.grid_unit_component * 7; // 56
+const height_mobile_landscape = cfg.grid_unit_component * 6; // 48
 
 export default {
     margin_side,
-    indent: common.unit_indent,
-    transition_duration: common.animation_duration,
-    font_size: common.font_size_title,
-    line_height: common.line_height,
+    indent: cfg.unit_indent,
+    transition_duration: cfg.animation_duration,
+    font_size: cfg.font_size_title,
+    line_height: cfg.line_height,
 
     height_desktop,
     height_mobile_portrait,
@@ -23,6 +23,6 @@ export default {
     height_narrow_medium_tall: 112,
     height_narrow_tall: 168,
 
-    color_light_text: common.rgba(common.color_light_foreground, common.blend_light_text_primary),
-    color_dark_text: common.rgba(common.color_dark_foreground, common.blend_dark_text_primary)
+    color_light_text: cfg.rgba(cfg.color_light_foreground, cfg.blend_light_text_primary),
+    color_dark_text: cfg.rgba(cfg.color_dark_foreground, cfg.blend_dark_text_primary)
 };

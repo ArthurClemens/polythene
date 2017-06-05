@@ -1,16 +1,16 @@
-import common from '../../config/config';
+import { appConfig } from "polythene-theme";
 import mixin from '../../common/mixin';
 import flex from '../../layout/theme/flex';
 
-const createStyles = (config) => {
+const createStyles = config => {
     return [{
         '.pe-tabs': [
             mixin.vendorize({
                 'user-select': 'none'
-            }, common.prefixes_user_select),
+            }, appConfig.prefixes_user_select),
             mixin.vendorize({
                 transform: 'translate3d(0,0,0)'
-            }, common.prefixes_transform),
+            }, appConfig.prefixes_transform),
             {
                 '-webkit-overflow-scrolling': 'touch',
 
@@ -80,16 +80,16 @@ const createStyles = (config) => {
                         ' .pe-button__label': [
                             mixin.vendorize({
                                 'transition-property': 'opacity'
-                            }, common.prefixes_transition),
+                            }, appConfig.prefixes_transition),
                             mixin.vendorize({
                                 'transition-duration': config.scroll_button_fade_duration + 's'
-                            }, common.prefixes_transition),
+                            }, appConfig.prefixes_transition),
                             mixin.vendorize({
                                 'transition-timing-function': 'ease-out'
-                            }, common.prefixes_transition),
+                            }, appConfig.prefixes_transition),
                             mixin.vendorize({
                                 'transition-delay': config.scroll_button_fade_delay + 's'
-                            }, common.prefixes_transition),
+                            }, appConfig.prefixes_transition),
                             {
                                 opacity: config.scroll_button_opacity
                             }
@@ -124,7 +124,7 @@ const createStyles = (config) => {
                     flex.layoutHorizontal,
                     mixin.vendorize({
                         'user-select': 'none'
-                    }, common.prefixes_user_select), {
+                    }, appConfig.prefixes_user_select), {
                         position: 'relative',
                         'white-space': 'nowrap',
                         overflow: 'auto'
@@ -143,7 +143,7 @@ const createStyles = (config) => {
                     flex.flexIndex('none'),
                     mixin.vendorize({
                         'user-select': 'none'
-                    }, common.prefixes_user_select),
+                    }, appConfig.prefixes_user_select),
                     mixin.defaultTransition('color'),
                     {
                         margin: 0,
@@ -157,7 +157,7 @@ const createStyles = (config) => {
                         ' .pe-button__content': {
                             padding: '0 ' + config.tab_content_padding_v + 'px',
                             height: config.tab_height + 'px',
-                            'line-height': common.line_height + 'em',
+                            'line-height': appConfig.line_height + 'em',
 
                             ' .pe-button__label, .pe-icon': {
                                 'max-width': config.label_max_width + 'px', // or .pe-tabs width minus 56dp
@@ -228,16 +228,16 @@ const createStyles = (config) => {
                 ' .pe-tabs__indicator': [
                     mixin.vendorize({
                         'transform': 'translate3d(0,0,0)'
-                    }, common.prefixes_transform),
+                    }, appConfig.prefixes_transform),
                     mixin.vendorize({
                         'transform-origin': 'left 50%'
-                    }, common.prefixes_transform),
+                    }, appConfig.prefixes_transform),
                     mixin.vendorize({
                         'transition-property': 'all'
-                    }, common.prefixes_transition),
+                    }, appConfig.prefixes_transition),
                     mixin.vendorize({
                         'transition-timing-function': 'ease-out'
-                    }, common.prefixes_transition),
+                    }, appConfig.prefixes_transition),
                     {
                         position: 'absolute',
                         height: config.tab_indicator_height + 'px',
@@ -258,13 +258,13 @@ const createStyles = (config) => {
 
                         ' .pe-tabs__row.pe-tabs__row--indent': {
                             margin: 0,
-                            'padding-left': common.unit_indent + 'px',
+                            'padding-left': appConfig.unit_indent + 'px',
                             overflow: 'auto'
                         }
                     }
                 ],
 
-                ['@media (min-width: ' + common.breakpoint_small_tablet_portrait + 'px)']: {
+                ['@media (min-width: ' + appConfig.breakpoint_small_tablet_portrait + 'px)']: {
                     '&:not(.pe-tabs--small):not(.pe-tabs--menu) .pe-tabs__tab': {
                         'min-width': config.medium_min_width + 'px'
                     }
@@ -279,4 +279,4 @@ const createStyles = (config) => {
     }];
 };
 
-export default (config) => (mixin.createStyles(config, createStyles));
+export default config => mixin.createStyles(config, createStyles);

@@ -1,14 +1,14 @@
-import common from '../../../config/config';
+import { appConfig } from "polythene-theme";
 import mixin from '../../../common/mixin';
 import flex from '../../../layout/theme/flex';
 
-const createStyles = (config) => {
+const createStyles = config => {
     return [{
         '.pe-notification__holder': [
             mixin.fit(),
             flex.layoutCenterCenter,
             {
-                'z-index': common.z_notification
+                'z-index': appConfig.z_notification
             }
         ],
         '.pe-notification': [
@@ -64,4 +64,4 @@ const createStyles = (config) => {
     }];
 };
 
-export default (config) => (mixin.createStyles(config, createStyles));
+export default config => mixin.createStyles(config, createStyles);

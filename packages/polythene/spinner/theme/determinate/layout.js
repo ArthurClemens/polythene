@@ -1,4 +1,4 @@
-import common from '../../../config/config';
+import { appConfig } from "polythene-theme";
 import mixin from '../../../common/mixin';
 
 var createStyles = function createStyles() {
@@ -8,7 +8,7 @@ var createStyles = function createStyles() {
 
             ' .pe-spinner-determinate__animation': [mixin.vendorize({
                 'animation-duration': '1.5s'
-            }, common.prefixes_animation), {
+            }, appConfig.prefixes_animation), {
                 position: 'absolute',
                 width: '100%',
                 height: '100%'

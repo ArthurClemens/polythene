@@ -1,6 +1,6 @@
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-import common from '../../config/config';
+import { appConfig } from "polythene-theme";
 import mixin from '../../common/mixin';
 import flex from '../../layout/theme/flex';
 
@@ -8,9 +8,9 @@ var createStyles = function createStyles(config) {
     return [{
         '.pe-tabs': [mixin.vendorize({
             'user-select': 'none'
-        }, common.prefixes_user_select), mixin.vendorize({
+        }, appConfig.prefixes_user_select), mixin.vendorize({
             transform: 'translate3d(0,0,0)'
-        }, common.prefixes_transform), _defineProperty({
+        }, appConfig.prefixes_transform), _defineProperty({
             '-webkit-overflow-scrolling': 'touch',
 
             '& ::-webkit-scrollbar': {
@@ -78,13 +78,13 @@ var createStyles = function createStyles(config) {
                     },
                     ' .pe-button__label': [mixin.vendorize({
                         'transition-property': 'opacity'
-                    }, common.prefixes_transition), mixin.vendorize({
+                    }, appConfig.prefixes_transition), mixin.vendorize({
                         'transition-duration': config.scroll_button_fade_duration + 's'
-                    }, common.prefixes_transition), mixin.vendorize({
+                    }, appConfig.prefixes_transition), mixin.vendorize({
                         'transition-timing-function': 'ease-out'
-                    }, common.prefixes_transition), mixin.vendorize({
+                    }, appConfig.prefixes_transition), mixin.vendorize({
                         'transition-delay': config.scroll_button_fade_delay + 's'
-                    }, common.prefixes_transition), {
+                    }, appConfig.prefixes_transition), {
                         opacity: config.scroll_button_opacity
                     }]
                 },
@@ -115,7 +115,7 @@ var createStyles = function createStyles(config) {
 
             ' .pe-tabs__row': [flex.layoutHorizontal, mixin.vendorize({
                 'user-select': 'none'
-            }, common.prefixes_user_select), {
+            }, appConfig.prefixes_user_select), {
                 position: 'relative',
                 'white-space': 'nowrap',
                 overflow: 'auto'
@@ -127,7 +127,7 @@ var createStyles = function createStyles(config) {
 
             ' .pe-tabs__tab': [flex.flex(), flex.flexIndex('none'), mixin.vendorize({
                 'user-select': 'none'
-            }, common.prefixes_user_select), mixin.defaultTransition('color'), {
+            }, appConfig.prefixes_user_select), mixin.defaultTransition('color'), {
                 margin: 0,
                 'border-radius': 0,
                 height: config.tab_height + 'px',
@@ -139,7 +139,7 @@ var createStyles = function createStyles(config) {
                 ' .pe-button__content': {
                     padding: '0 ' + config.tab_content_padding_v + 'px',
                     height: config.tab_height + 'px',
-                    'line-height': common.line_height + 'em',
+                    'line-height': appConfig.line_height + 'em',
 
                     ' .pe-button__label, .pe-icon': {
                         'max-width': config.label_max_width + 'px', // or .pe-tabs width minus 56dp
@@ -198,13 +198,13 @@ var createStyles = function createStyles(config) {
 
             ' .pe-tabs__indicator': [mixin.vendorize({
                 'transform': 'translate3d(0,0,0)'
-            }, common.prefixes_transform), mixin.vendorize({
+            }, appConfig.prefixes_transform), mixin.vendorize({
                 'transform-origin': 'left 50%'
-            }, common.prefixes_transform), mixin.vendorize({
+            }, appConfig.prefixes_transform), mixin.vendorize({
                 'transition-property': 'all'
-            }, common.prefixes_transition), mixin.vendorize({
+            }, appConfig.prefixes_transition), mixin.vendorize({
                 'transition-timing-function': 'ease-out'
-            }, common.prefixes_transition), {
+            }, appConfig.prefixes_transition), {
                 position: 'absolute',
                 height: config.tab_indicator_height + 'px',
                 bottom: 0,
@@ -221,12 +221,12 @@ var createStyles = function createStyles(config) {
 
                 ' .pe-tabs__row.pe-tabs__row--indent': {
                     margin: 0,
-                    'padding-left': common.unit_indent + 'px',
+                    'padding-left': appConfig.unit_indent + 'px',
                     overflow: 'auto'
                 }
             }]
 
-        }, '@media (min-width: ' + common.breakpoint_small_tablet_portrait + 'px)', {
+        }, '@media (min-width: ' + appConfig.breakpoint_small_tablet_portrait + 'px)', {
             '&:not(.pe-tabs--small):not(.pe-tabs--menu) .pe-tabs__tab': {
                 'min-width': config.medium_min_width + 'px'
             }

@@ -1,4 +1,4 @@
-import common from '../../config/config';
+import { appConfig as cfg } from "polythene-theme";
 import buttonConfig from '../../button/theme/config';
 import iconButtonConfig from '../../icon-button/theme/config';
 
@@ -30,13 +30,13 @@ export default {
     scroll_button_opacity: .7,
     label_opacity: .7,
 
-    color_light_selected_text: common.rgba(common.color_primary),
+    color_light_selected_text: cfg.rgba(cfg.color_primary),
     color_light_selected_background: 'transparent',
-    color_light_tab_indicator: common.rgba(common.color_primary),
+    color_light_tab_indicator: cfg.rgba(cfg.color_primary),
     color_light_icon: iconButtonConfig.color_light_flat_normal_text,
 
-    color_dark_selected_text: common.rgba(common.color_primary),
+    color_dark_selected_text: cfg.rgba(cfg.color_primary),
     color_dark_selected_background: 'transparent',
-    color_dark_tab_indicator: common.rgba(common.color_primary),
+    color_dark_tab_indicator: cfg.rgba(cfg.color_primary),
     color_dark_icon: iconButtonConfig.color_dark_flat_normal_text
 };

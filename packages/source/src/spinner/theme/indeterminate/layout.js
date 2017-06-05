@@ -10,7 +10,7 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
 
-import common from '../../../config/config';
+import { appConfig } from "polythene-theme";
 import mixin from '../../../common/mixin';
 
 const OPACITY_MIN = 0;
@@ -24,7 +24,7 @@ const createStyles = (config) => {
             ' .pe-spinner-indeterminate__animation': [
                 mixin.vendorize({
                     'animation': 'indeterminateSpinnerRotate ' + config.rotation_duration + 's linear infinite'
-                }, common.prefixes_animation),
+                }, appConfig.prefixes_animation),
                 {
                     position: 'relative',
                     width: '100%',
@@ -79,7 +79,7 @@ const createStyles = (config) => {
                 mixin.fit(),
                 mixin.vendorize({
                     'animation': 'none'
-                }, common.prefixes_animation),
+                }, appConfig.prefixes_animation),
                 {
                     'box-sizing': 'border-box',
                     height: '100%',
@@ -101,10 +101,10 @@ const createStyles = (config) => {
             ' .pe-spinner-indeterminate__circle-clipper--left .pe-spinner-indeterminate__circle': [
                 mixin.vendorize({
                     'transform': 'rotate(129deg)'
-                }, common.prefixes_transform),
+                }, appConfig.prefixes_transform),
                 mixin.vendorize({
                     'animation': 'indeterminateLeftSpin ' + config.arc_time + 's ' + CURVE_INFINITE
-                }, common.prefixes_animation),
+                }, appConfig.prefixes_animation),
                 {
                     'border-right-color': 'transparent !important'
                 }
@@ -113,10 +113,10 @@ const createStyles = (config) => {
             ' .pe-spinner-indeterminate__circle-clipper--right .pe-spinner-indeterminate__circle': [
                 mixin.vendorize({
                     'transform': 'rotate(-129deg)'
-                }, common.prefixes_transform),
+                }, appConfig.prefixes_transform),
                 mixin.vendorize({
                     'animation': 'indeterminateRightSpin ' + config.arc_time + 's ' + CURVE_INFINITE
-                }, common.prefixes_animation),
+                }, appConfig.prefixes_animation),
                 {
                     left: '-100%',
                     'border-left-color': 'transparent !important'
@@ -139,7 +139,7 @@ const createStyles = (config) => {
             ' .pe-spinner-indeterminate__layer': [
                 mixin.vendorize({
                     'animation': 'indeterminateFillUnfillRotate ' + 4 * config.arc_time + 's ' + CURVE_INFINITE
-                }, common.prefixes_animation),
+                }, appConfig.prefixes_animation),
                 [1,2,3,4].map((num) => (layerAnimation(config, num))),
                 {
                     position: 'absolute',
@@ -308,8 +308,8 @@ const layerAnimation = (config, num) => ({
     ['&.pe-spinner-indeterminate__layer--' + num]: [
         mixin.vendorize({
             'animation': 'indeterminateFillUnfillRotate ' + 4 * config.arc_time + 's ' + CURVE_INFINITE + ',  indeterminateLayer' + num + 'FadeInOut ' + 4 * config.arc_time + 's ' + CURVE_INFINITE
-        }, common.prefixes_animation)
+        }, appConfig.prefixes_animation)
     ]
 });
 
-export default (config) => (mixin.createStyles(config, createStyles));
+export default config => mixin.createStyles(config, createStyles);

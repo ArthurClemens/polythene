@@ -1,0 +1,24 @@
+{
+  "name": "polythene-core-css",
+  "version": "0.3.0-rc.1",
+  "description": "",
+  "main": "dist/polythene-core-css.js",
+  "module": "dist/polythene-core-css.mjs",
+  "scripts": {
+    "clean": "rm -rf dist && mkdir dist",
+    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
+    "build": "yarn run rollup"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "dependencies": {
+    "j2c": "^1.0.0-4",
+    "j2c-plugin-prefix-browser": "^1.0.6",
+    "mithril": "0.2.5",
+    "polythene-theme": "0.3.0-rc.1"
+  },
+  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
+  "license": "MIT"
+}

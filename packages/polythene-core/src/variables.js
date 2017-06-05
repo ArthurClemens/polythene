@@ -1,3 +1,5 @@
+// Global theme variables
+// How to change these variables for your app - see the README.
 
 const hex = hex => {
     const bigint = parseInt(hex.substring(1), 16);
@@ -8,6 +10,8 @@ const hex = hex => {
 };
 
 const rgba = (colorStr, opacity = 1) => ('rgba(' + colorStr + ',' + opacity + ')');
+
+const isInteger = (nVal) => (typeof nVal === 'number' && isFinite(nVal) && nVal > -9007199254740992 && nVal < 9007199254740992 && Math.floor(nVal) === nVal);
 
 //const isTablet = window.innerWidth >= 600;
 const isDesktop = window.innerWidth >= 1024;
@@ -23,6 +27,7 @@ export default {
     // util functions
     rgba,
     hex,
+    isInteger,
 
     grid_unit,
     grid_unit_component,
@@ -100,6 +105,16 @@ export default {
     blend_dark_background_disabled: .12,
     blend_dark_overlay_background: .3,
 
+    // css vendor prefixes
+    prefixes_animation: ['o', 'moz', 'webkit'],
+    prefixes_appearance: ['o', 'moz', 'ms', 'webkit'],
+    prefixes_background_size: ['o', 'moz', 'webkit'],
+    prefixes_box_shadow: ['moz', 'webkit'],
+    prefixes_keyframes: ['o', 'moz', 'webkit'],
+    prefixes_transform: ['o', 'moz', 'ms', 'webkit'],
+    prefixes_transition: ['o', 'moz', 'webkit'],
+    prefixes_user_select: ['moz', 'ms', 'webkit'],
+
     // breakpoints
     breakpoint_small_handset_portrait: 0,
     breakpoint_medium_handset_portrait: 360,
@@ -116,7 +131,7 @@ export default {
     env_desktop: window.innerWidth >= 1024,
 
     // z-index
-    z_menu: 1,
+    z_menu: 1000,
     z_header_container: 2000,
     z_fixed_header_container: 3000,
     z_notification: 4000,

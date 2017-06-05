@@ -1,4 +1,4 @@
-import common from '../../config/config';
+import { appConfig } from "polythene-theme";
 import mixin from '../../common/mixin';
 import flex from '../../layout/theme/flex';
 
@@ -10,7 +10,7 @@ const positionBorder = (thumbSize, borderWidth) => ({
     top: '2px'
 });
 
-const createStyles = (config) => {
+const createStyles = config => {
     const thumbSize = Math.max(config.thumb_size, 2 * config.thumb_border_width);
     const scaledThumbDiff = (config.active_thumb_scale - 1) * thumbSize / 2;
     const barOffset = (thumbSize / 2);
@@ -22,7 +22,7 @@ const createStyles = (config) => {
         '.pe-slider': [
             mixin.vendorize({
                 'user-select': 'none'
-            }, common.prefixes_user_select),
+            }, appConfig.prefixes_user_select),
             {
                 height: config.height + 'px',
                 'margin-top': ((config.height - config.track_height) / 2) + 'px ',
@@ -37,7 +37,7 @@ const createStyles = (config) => {
                     mixin.defaultTransition('transform', config.animation_duration),
                     mixin.vendorize({
                         'user-select': 'none'
-                    }, common.prefixes_user_select),
+                    }, appConfig.prefixes_user_select),
                     {
                         position: 'relative',
                         height: config.track_height + 'px',
@@ -54,7 +54,7 @@ const createStyles = (config) => {
                     mixin.defaultTransition('transform, background', config.animation_duration),
                     mixin.vendorize({
                         'user-select': 'none'
-                    }, common.prefixes_user_select), {
+                    }, appConfig.prefixes_user_select), {
                         width: thumbSize + 'px',
                         height: thumbSize + 'px',
                         'line-height': 0,
@@ -105,17 +105,17 @@ const createStyles = (config) => {
                 ' .pe-slider__label': {
                     height: config.height + 'px',
                     'line-height': config.height + 'px',
-                    'min-width': common.unit_icon_size + 'px',
+                    'min-width': appConfig.unit_icon_size + 'px',
                     'text-align': 'center',
                     'font-size': '16px',
-                    'font-weight': common.font_weight_medium
+                    'font-weight': appConfig.font_weight_medium
                 },
 
                 ' .pe-slider__track-part': [
                     flex.flex(),
                     mixin.vendorize({
                         'user-select': 'none'
-                    }, common.prefixes_user_select),
+                    }, appConfig.prefixes_user_select),
                     {
                         height: config.bar_height + 'px',
                         margin: ((config.track_height - config.bar_height) / 2) + 'px 0px',
@@ -149,7 +149,7 @@ const createStyles = (config) => {
                     flex.layoutJustified,
                     mixin.vendorize({
                         'user-select': 'none'
-                    }, common.prefixes_user_select), {
+                    }, appConfig.prefixes_user_select), {
                         position: 'absolute',
                         width: 'calc(100% - ' + (2 * stepsOffset) + 'px)',
                         height: config.bar_height + 'px',
@@ -168,10 +168,10 @@ const createStyles = (config) => {
                 ' .pe-slider__pin': [
                     mixin.vendorize({
                         'transform': 'translateZ(0) scale(0) translate(0, 0)'
-                    }, common.prefixes_transform),
+                    }, appConfig.prefixes_transform),
                     mixin.vendorize({
                         'transform-origin': 'bottom'
-                    }, common.prefixes_transform),
+                    }, appConfig.prefixes_transform),
                     mixin.defaultTransition('transform', '.11s'), {
                         position: 'absolute',
                         'z-index': 1,
@@ -185,7 +185,7 @@ const createStyles = (config) => {
                         '&::before': [
                             mixin.vendorize({
                                 'transform': 'rotate(-45deg)'
-                            }, common.prefixes_transform), {
+                            }, appConfig.prefixes_transform), {
                                 content: '" "',
                                 position: 'absolute',
                                 top: 0,
@@ -215,7 +215,7 @@ const createStyles = (config) => {
                     ' .pe-slider__control': [
                         mixin.vendorize({
                             'transform': 'scale(' + config.active_thumb_scale + ')'
-                        }, common.prefixes_transform),
+                        }, appConfig.prefixes_transform),
                         {
                             'border-width': scaledBorderWidth + 'px'
                         }
@@ -224,13 +224,13 @@ const createStyles = (config) => {
                     ' .pe-slider__track-value .pe-slider__track-bar-value': [
                         mixin.vendorize({
                             'transform': 'translateX(' + (-scaledThumbDiff) + 'px)'
-                        }, common.prefixes_transform)
+                        }, appConfig.prefixes_transform)
                     ],
                     // right side
                     ' .pe-slider__track-rest .pe-slider__track-bar-value': [
                         mixin.vendorize({
                             'transform': 'translateX(' + (scaledThumbDiff) + 'px)'
-                        }, common.prefixes_transform)
+                        }, appConfig.prefixes_transform)
                     ]
                 },
 
@@ -238,12 +238,12 @@ const createStyles = (config) => {
                     ' .pe-slider__pin': [
                         mixin.vendorize({
                             'transform': 'translateZ(0) scale(1) translate(0, -24px)'
-                        }, common.prefixes_transform)
+                        }, appConfig.prefixes_transform)
                     ],
                     ' .pe-slider__control': [
                         mixin.vendorize({
                             'transform': 'scale(' + config.active_pin_thumb_scale + ')'
-                        }, common.prefixes_transform)
+                        }, appConfig.prefixes_transform)
                     ]
                 },
 
@@ -262,7 +262,7 @@ const createStyles = (config) => {
                     ' .pe-slider__control': [
                         mixin.vendorize({
                             'transform': 'scale(' + config.disabled_thumb_scale + ')'
-                        }, common.prefixes_transform), {
+                        }, appConfig.prefixes_transform), {
                             'border-width': 0
                         }
                     ],
@@ -277,4 +277,4 @@ const createStyles = (config) => {
     }];
 };
 
-export default (config) => (mixin.createStyles(config, createStyles));
+export default config => mixin.createStyles(config, createStyles);

@@ -1,6 +1,6 @@
-import common from '../../config/config';
+import { appConfig as cfg } from "polythene-theme";
 
-var rgba = common.rgba;
+var rgba = cfg.rgba;
 
 var padding_v = 24;
 var padding_actions_v = 8;
@@ -11,7 +11,7 @@ export default {
     image_size_regular: 1.4 * 80,
     image_size_medium: 2 * 80,
     image_size_large: 3 * 80,
-    border_radius: common.unit_block_border_radius,
+    border_radius: cfg.unit_block_border_radius,
     padding_h: 16,
     offset_small_padding_v: padding_v - 16,
     padding_actions_h: 8,
@@ -32,17 +32,17 @@ export default {
     actions_button_margin_v: actions_button_margin_v,
     actions_vertical_padding_v: padding_actions_v - actions_button_margin_v,
 
-    color_light_main_background: rgba(common.color_light_background),
-    color_light_title_text: rgba(common.color_light_foreground, common.blend_light_text_primary),
-    color_light_subtitle_text: rgba(common.color_light_foreground, common.blend_light_text_secondary),
-    color_light_text: rgba(common.color_light_foreground, common.blend_light_text_regular),
-    color_light_actions_border: rgba(common.color_light_foreground, common.blend_light_border_light),
-    color_light_overlay_background: rgba(common.color_light_foreground, common.blend_light_overlay_background),
+    color_light_main_background: rgba(cfg.color_light_background),
+    color_light_title_text: rgba(cfg.color_light_foreground, cfg.blend_light_text_primary),
+    color_light_subtitle_text: rgba(cfg.color_light_foreground, cfg.blend_light_text_secondary),
+    color_light_text: rgba(cfg.color_light_foreground, cfg.blend_light_text_regular),
+    color_light_actions_border: rgba(cfg.color_light_foreground, cfg.blend_light_border_light),
+    color_light_overlay_background: rgba(cfg.color_light_foreground, cfg.blend_light_overlay_background),
 
-    color_dark_main_background: rgba(common.color_dark_background),
-    color_dark_title_text: rgba(common.color_dark_foreground, common.blend_dark_text_primary),
-    color_dark_subtitle_text: rgba(common.color_dark_foreground, common.blend_dark_text_secondary),
-    color_dark_text: rgba(common.color_dark_foreground, common.blend_dark_text_regular),
-    color_dark_actions_border: rgba(common.color_dark_foreground, common.blend_dark_border_light),
-    color_dark_overlay_background: rgba(common.color_dark_foreground, common.blend_dark_overlay_background)
+    color_dark_main_background: rgba(cfg.color_dark_background),
+    color_dark_title_text: rgba(cfg.color_dark_foreground, cfg.blend_dark_text_primary),
+    color_dark_subtitle_text: rgba(cfg.color_dark_foreground, cfg.blend_dark_text_secondary),
+    color_dark_text: rgba(cfg.color_dark_foreground, cfg.blend_dark_text_regular),
+    color_dark_actions_border: rgba(cfg.color_dark_foreground, cfg.blend_dark_border_light),
+    color_dark_overlay_background: rgba(cfg.color_dark_foreground, cfg.blend_dark_overlay_background)
 };

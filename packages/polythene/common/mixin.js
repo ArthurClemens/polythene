@@ -4,11 +4,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 // Mixins for j2c
 
-import common from '../config/config';
+import { appConfig as cfg } from "polythene-theme";
 import './object.assign';
 
 // Creates j2c vendor key string from vendor list
-// mixin.vendorize({'user-select': 'none'}, common.prefixes_user_select)
+// mixin.vendorize({'user-select': 'none'}, cfg.prefixes_user_select)
 var vendorize = function vendorize(what, prefixes) {
     var vendorsSel = prefixes.map(function (v) {
         return '_' + v + '$';
@@ -145,18 +145,18 @@ var createStyles = function createStyles(common, fn) {
 // mixin.defaultTransition('opacity', config.animation_duration)
 var defaultTransition = function defaultTransition() {
     var properties = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'all';
-    var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : common.animation_duration;
-    var curve = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : common.animation_curve_default;
+    var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : cfg.animation_duration;
+    var curve = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : cfg.animation_curve_default;
 
     return [vendorize({
         'transition-delay': 0
-    }, common.prefixes_transition), vendorize({
+    }, cfg.prefixes_transition), vendorize({
         'transition-duration': duration
-    }, common.prefixes_transition), vendorize({
+    }, cfg.prefixes_transition), vendorize({
         'transition-timing-function': curve
-    }, common.prefixes_transition), vendorize({
+    }, cfg.prefixes_transition), vendorize({
         'transition-property': properties
-    }, common.prefixes_transition)];
+    }, cfg.prefixes_transition)];
 };
 
 // Scales an item dynamically between 2 screen sizes

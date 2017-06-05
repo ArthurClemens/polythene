@@ -1,14 +1,14 @@
-import common from '../../config/config';
+import { appConfig } from "polythene-theme";
 import mixin from '../../common/mixin';
 
-const kfRipple = (config) => ({
+const kfRipple = config => ({
     ' 100%': {
         transform: 'scale(' + config.end_scale + ')',
         'opacity': config.end_opacity
     }
 });
 
-const createStyles = (config) => {
+const createStyles = config => {
     return [{
         '.pe-ripple': [
             mixin.fit(),
@@ -28,20 +28,20 @@ const createStyles = (config) => {
                     mixin.fit(),
                     mixin.vendorize({
                         'transform': 'translate3d(0,0,0)'
-                    }, common.prefixes_transform)
+                    }, appConfig.prefixes_transform)
                 ],
 
                 ' .pe-ripple__waves': [
                     mixin.vendorize({
                         'transform': 'scale(' + config.start_scale + ')'
-                    }, common.prefixes_transform),
+                    }, appConfig.prefixes_transform),
                     mixin.vendorize({
-                        'animation': 'ripple ' + common.animation_curve_default
-                    }, common.prefixes_animation),
+                        'animation': 'ripple ' + appConfig.animation_curve_default
+                    }, appConfig.prefixes_animation),
                     // default durations; finally set in js
                     mixin.vendorize({
-                        'animation-duration': common.animation_duration
-                    }, common.prefixes_animation), {
+                        'animation-duration': appConfig.animation_duration
+                    }, appConfig.prefixes_animation), {
                         outline: '1px solid transparent', // for IE10
                         position: 'absolute',
                         'border-radius': '50%',
@@ -60,4 +60,4 @@ const createStyles = (config) => {
     }];
 };
 
-export default (config) => (mixin.createStyles(config, createStyles));
+export default config => mixin.createStyles(config, createStyles);

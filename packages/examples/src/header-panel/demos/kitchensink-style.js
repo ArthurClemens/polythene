@@ -1,4 +1,4 @@
-import config from 'polythene/config/config';
+import { appConfig } from "polythene-theme";
 import mixin from 'polythene/common/mixin';
 
 const styles = [{
@@ -28,7 +28,7 @@ const styles = [{
             ' .pe-header': [
                 mixin.vendorize({
                     'transition': 'height 0.25s'
-                }, config.prefixes_transition), {
+                }, appConfig.prefixes_transition), {
                     height: '48px',
                     'line-height': '48px',
                     'font-size': '18px',
@@ -45,7 +45,7 @@ const styles = [{
             },
             ' .pe-toolbar': mixin.vendorize({
                 'transition': 'height 0.25s'
-            }, config.prefixes_transition)
+            }, appConfig.prefixes_transition)
         },
         ' .pe-header-panel__main-container .pe-header-panel .toolbar': {
             'font-size': '18px',

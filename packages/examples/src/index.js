@@ -2,6 +2,7 @@ import 'polythene/common/no-tap-delay';
 
 import m from 'mithril';
 import { Dialog, Icon, List, ListTile, HeaderPanel, Theme, styler } from 'polythene';
+import 'polythene-material-design';
 import nav from './app/nav';
 import github from './app/github';
 

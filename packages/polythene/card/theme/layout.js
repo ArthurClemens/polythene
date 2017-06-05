@@ -1,6 +1,6 @@
 import mixin from '../../common/mixin';
 import flex from '../../layout/theme/flex';
-import common from '../../config/config';
+import { appConfig } from "polythene-theme";
 
 var createStyles = function createStyles(config) {
     return [{
@@ -101,7 +101,7 @@ var createStyles = function createStyles(config) {
 
                 ' .pe-list-tile__title': {
                     'font-size': '14px',
-                    'font-weight': common.font_weight_normal,
+                    'font-weight': appConfig.font_weight_normal,
                     'line-height': '20px',
                     'margin-top': '2px'
                 },

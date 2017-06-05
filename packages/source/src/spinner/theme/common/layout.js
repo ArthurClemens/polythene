@@ -1,12 +1,12 @@
-import common from '../../../config/config';
+import { appConfig } from "polythene-theme";
 import mixin from '../../../common/mixin';
 
-const sizes = (size) => ({
+const sizes = size => ({
     width: size + 'px',
     height: size + 'px'
 });
 
-const sizesRaised = (size) => {
+const sizesRaised = size => {
     const padding = size / 4;
     const paddedSize = size + padding * 2;
     return {
@@ -16,15 +16,15 @@ const sizesRaised = (size) => {
     };
 };
 
-const createStyles = (config) => {
+const createStyles = config => {
     return [{
         '.pe-spinner': [
             mixin.vendorize({
                 'transition-timing-function': 'ease-out'
-            }, common.prefixes_transition),
+            }, appConfig.prefixes_transition),
             mixin.vendorize({
                 'transition-property': 'opacity'
-            }, common.prefixes_transition),
+            }, appConfig.prefixes_transition),
             {
                 opacity: 0,
 
@@ -53,4 +53,4 @@ const createStyles = (config) => {
     }];
 };
 
-export default (config) => (mixin.createStyles(config, createStyles));
+export default config => mixin.createStyles(config, createStyles);

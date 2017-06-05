@@ -1,11 +1,11 @@
-import common from '../../../config/config';
+import { appConfig } from "polythene-theme";
 import mixin from '../../../common/mixin';
 import flex from '../../../layout/theme/flex';
 
 var createStyles = function createStyles(config) {
     return [{
         '.pe-notification__holder': [mixin.fit(), flex.layoutCenterCenter, {
-            'z-index': common.z_notification
+            'z-index': appConfig.z_notification
         }],
         '.pe-notification': [flex.layoutCenter, {
             position: 'relative',

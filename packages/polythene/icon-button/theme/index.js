@@ -1,11 +1,11 @@
 import styler from '../../common/styler';
-import { config as themeConfig } from 'polythene-theme';
-import componentConfig from './config';
+import { componentConfig } from 'polythene-theme';
+import vars from './config';
 import layout from './layout';
 import color from './color';
 
-var themeConfigFn = themeConfig && themeConfig['icon-button'];
-var config = themeConfigFn ? themeConfigFn(componentConfig) : componentConfig;
+var configFn = componentConfig && componentConfig['icon-button'];
+var config = configFn ? configFn(vars) : vars;
 var id = 'pe-icon-button';
 
 styler.add(id, layout(config), color(config));

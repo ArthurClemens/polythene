@@ -27,4 +27,4 @@ const createStyles = (config) => {
     ];
 };
 
-export default (config) => (mixin.createStyles(config, createStyles));
+export default config => mixin.createStyles(config, createStyles);

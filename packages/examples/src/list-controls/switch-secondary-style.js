@@ -1,4 +1,4 @@
-import config from 'polythene/config/config';
+import { appConfig } from "polythene-theme";
 import mixin from 'polythene/common/mixin';
 
 const styles = [{
@@ -22,7 +22,7 @@ const styles = [{
             ' .pe-list-tile__title': [
                 mixin.vendorize({
                     'user-select': 'none'
-                }, config.prefixes_user_select)
+                }, appConfig.prefixes_user_select)
             ]
         }
     }

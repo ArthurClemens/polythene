@@ -1,4 +1,4 @@
-import common from '../../config/config';
+import { appConfig } from "polythene-theme";
 import mixin from '../../common/mixin';
 
 const unifySize = (config, size) => {
@@ -20,25 +20,25 @@ const widthStyle = (config, size) => {
     };
 };
 
-const createStyles = (config) => {
+const createStyles = config => {
     return [{
         '.pe-menu': [
             // transition-duration set in js
             mixin.vendorize({
                 'transition-timing-function': 'ease-out'
-            }, common.prefixes_transition),
+            }, appConfig.prefixes_transition),
             mixin.vendorize({
                 'transition-property': 'opacity'
-            }, common.prefixes_transition),
+            }, appConfig.prefixes_transition),
             config.sizes.map((size) => {
                 return widthStyle(config, size);
             }),
             {
-                'z-index': common.z_menu,
+                'z-index': appConfig.z_menu,
                 opacity: 0,
                 position: 'absolute',
                 width: '100%',
-                'min-width': common.grid_unit_menu * config.min_size + 'px',
+                'min-width': appConfig.grid_unit_menu * config.min_size + 'px',
 
                 '&.pe-menu--width-auto': {
                     width: 'auto'
@@ -58,8 +58,8 @@ const createStyles = (config) => {
                     'border-radius': config.border_radius + 'px'
                 },
 
-                ['@media (max-width: ' + common.unit_screen_size_large + 'px)']: {
-                    'max-width': config.max_size_small_screen * common.grid_unit_menu + 'px'
+                ['@media (max-width: ' + appConfig.unit_screen_size_large + 'px)']: {
+                    'max-width': config.max_size_small_screen * appConfig.grid_unit_menu + 'px'
                 }
             }
         ]
@@ -67,4 +67,4 @@ const createStyles = (config) => {
     }];
 };
 
-export default (config) => (mixin.createStyles(config, createStyles));
+export default config => mixin.createStyles(config, createStyles);

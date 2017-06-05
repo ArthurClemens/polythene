@@ -10,8 +10,8 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
 
-import common from '../../../config/config';
-import defaultConfig from '../../../spinner/theme/common/config';
+import { appConfig as cfg } from "polythene-theme";
+import defaultConfig from '../common/config';
 
 var arc_size = 270; // degrees - amount of circle the arc takes up
 var arc_time = 1.333; // s - time it takes to expand and contract arc
@@ -29,13 +29,13 @@ export default {
     arc_time: arc_time,
     arc_start_degrees: arc_start_degrees,
 
-    color_light_single: common.rgba(common.color_primary),
+    color_light_single: cfg.rgba(cfg.color_primary),
     color_light_1: '#42a5f5', // blue 400
     color_light_2: '#f44336', // red 500
     color_light_3: '#fdd835', // yellow 600,
     color_light_4: '#4caf50', // green 500
 
-    color_dark_single: common.rgba(common.color_primary),
+    color_dark_single: cfg.rgba(cfg.color_primary),
     color_dark_1: '#42a5f5', // blue 400
     color_dark_2: '#f44336', // red 500
     color_dark_3: '#fdd835', // yellow 600,

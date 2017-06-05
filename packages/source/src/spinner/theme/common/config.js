@@ -1,5 +1,6 @@
-import common from '../../../config/config';
-const rgba = common.rgba;
+import { appConfig as cfg } from "polythene-theme";
+
+const rgba = cfg.rgba;
 
 export default {
     size_small: 24,
@@ -8,7 +9,7 @@ export default {
     size_large: 48,
     size_fab: 56,
 
-    color_light_raised_background: rgba(common.color_light_background),
+    color_light_raised_background: rgba(cfg.color_light_background),
     // also use light background with dark theme
-    color_dark_raised_background: rgba(common.color_light_background)
+    color_dark_raised_background: rgba(cfg.color_light_background)
 };

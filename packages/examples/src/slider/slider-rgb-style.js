@@ -1,4 +1,4 @@
-import common from 'polythene/config/config';
+import { appConfig } from "polythene-theme";
 import sliderConfig from 'polythene/slider/theme/config';
 
 const labelWidth = 24;
@@ -14,7 +14,7 @@ const styles = [{
         },
         ' .pe-header': {
             'font-size': '14px',
-            color: common.rgba(common.color_light_foreground, common.blend_light_text_secondary)
+            color: appConfig.rgba(appConfig.color_light_foreground, appConfig.blend_light_text_secondary)
         },
         ' .pe-slider': {
             color: '#009688',

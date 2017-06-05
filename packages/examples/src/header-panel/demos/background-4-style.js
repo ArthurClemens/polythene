@@ -1,4 +1,4 @@
-import config from 'polythene/config/config';
+import { appConfig } from "polythene-theme";
 import mixin from 'polythene/common/mixin';
 
 const styles = [{
@@ -24,7 +24,7 @@ const styles = [{
         },
         ' .pe-header-panel__media-dimmer': mixin.vendorize({
             'box-shadow': 'inset 0px 0px 200px rgba(0, 0, 0, 1)'
-        }, config.prefixes_box_shadow)
+        }, appConfig.prefixes_box_shadow)
     }
 }];
 

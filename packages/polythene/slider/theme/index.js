@@ -1,11 +1,11 @@
 import styler from '../../common/styler';
-import { config as themeConfig } from 'polythene-theme';
-import componentConfig from './config';
+import { componentConfig } from 'polythene-theme';
+import vars from './config';
 import layout from './layout';
 import color from './color';
 
-var themeConfigFn = themeConfig && themeConfig.slider;
-var config = themeConfigFn ? themeConfigFn(componentConfig) : componentConfig;
+var configFn = componentConfig && componentConfig.slider;
+var config = configFn ? configFn(vars) : vars;
 var id = 'pe-slider';
 
 styler.add(id, layout(config), color(config));

@@ -1,11 +1,11 @@
 
 // Returns a style function to be used by checkbox and radio-button
 
-import common from '../../config/config';
+import { appConfig } from "polythene-theme";
 import mixin from '../../common/mixin';
 import flex from '../../layout/theme/flex';
 
-const getSize = (config, height, iconSize = common.unit_icon_size) => {
+const getSize = (config, height, iconSize = appConfig.unit_icon_size) => {
     const labelSize = iconSize + 2 * config.label_padding;
     const iconOffset = (labelSize - iconSize) / 2;
     return {
@@ -71,7 +71,7 @@ const createStyles = (config, className, type) => {
             [' input[type=' + type + '].pe-control__input']: [
                 mixin.vendorize({
                     'appearance': 'none'
-                }, common.prefixes_appearance), {
+                }, appConfig.prefixes_appearance), {
                     'line-height': config.label_height + 'px',
                     // Hide input element
                     position: 'absolute',
@@ -141,10 +141,10 @@ const createStyles = (config, className, type) => {
                 }
             },
 
-            '&.pe-control--small': getSize(config, common.unit_icon_size_small, common.unit_icon_size_small),
-            '&.pe-control--regular': getSize(config, config.label_height, common.unit_icon_size),
-            '&.pe-control--medium': getSize(config, common.unit_icon_size_medium, common.unit_icon_size_medium),
-            '&.pe-control--large': getSize(config, common.unit_icon_size_large, common.unit_icon_size_large)
+            '&.pe-control--small': getSize(config, appConfig.unit_icon_size_small, appConfig.unit_icon_size_small),
+            '&.pe-control--regular': getSize(config, config.label_height, appConfig.unit_icon_size),
+            '&.pe-control--medium': getSize(config, appConfig.unit_icon_size_medium, appConfig.unit_icon_size_medium),
+            '&.pe-control--large': getSize(config, appConfig.unit_icon_size_large, appConfig.unit_icon_size_large)
         }
     }];
 };

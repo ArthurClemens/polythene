@@ -1,6 +1,6 @@
-import common from '../../config/config';
+import { appConfig as cfg } from "polythene-theme";
 
-var rgba = common.rgba;
+var rgba = cfg.rgba;
 
 // SPECS
 // heights:
@@ -32,26 +32,26 @@ export default {
     high_subtitle_line_count: 2,
     has_high_subtitle_padding: 13,
     front_item_width: 72,
-    side_padding: 2 * common.grid_unit_component,
+    side_padding: 2 * cfg.grid_unit_component,
     font_size_title: 16,
     font_size_subtitle: 14,
     line_height_subtitle: 20,
     font_size_list_header: 14,
     font_size_small: 12,
 
-    color_light_title: rgba(common.color_light_foreground, common.blend_light_text_primary),
-    color_light_subtitle: rgba(common.color_light_foreground, common.blend_light_text_secondary),
-    color_light_info: rgba(common.color_light_foreground, common.blend_light_text_tertiary),
-    color_light_text_disabled: rgba(common.color_light_foreground, common.blend_light_text_disabled),
-    color_light_list_header: rgba(common.color_light_foreground, common.blend_light_text_tertiary),
-    color_light_background_hover: rgba(common.color_light_foreground, common.blend_light_background_hover),
-    color_light_background_selected: rgba(common.color_light_foreground, common.blend_light_background_hover),
+    color_light_title: rgba(cfg.color_light_foreground, cfg.blend_light_text_primary),
+    color_light_subtitle: rgba(cfg.color_light_foreground, cfg.blend_light_text_secondary),
+    color_light_info: rgba(cfg.color_light_foreground, cfg.blend_light_text_tertiary),
+    color_light_text_disabled: rgba(cfg.color_light_foreground, cfg.blend_light_text_disabled),
+    color_light_list_header: rgba(cfg.color_light_foreground, cfg.blend_light_text_tertiary),
+    color_light_background_hover: rgba(cfg.color_light_foreground, cfg.blend_light_background_hover),
+    color_light_background_selected: rgba(cfg.color_light_foreground, cfg.blend_light_background_hover),
 
-    color_dark_title: rgba(common.color_dark_foreground, common.blend_dark_text_primary),
-    color_dark_subtitle: rgba(common.color_dark_foreground, common.blend_dark_text_secondary),
-    color_dark_info: rgba(common.color_dark_foreground, common.blend_dark_text_tertiary),
-    color_dark_text_disabled: rgba(common.color_dark_foreground, common.blend_dark_text_disabled),
-    color_dark_list_header: rgba(common.color_dark_foreground, common.blend_dark_text_tertiary),
-    color_dark_background_hover: rgba(common.color_dark_foreground, common.blend_dark_background_hover),
-    color_dark_background_selected: rgba(common.color_dark_foreground, common.blend_dark_background_hover)
+    color_dark_title: rgba(cfg.color_dark_foreground, cfg.blend_dark_text_primary),
+    color_dark_subtitle: rgba(cfg.color_dark_foreground, cfg.blend_dark_text_secondary),
+    color_dark_info: rgba(cfg.color_dark_foreground, cfg.blend_dark_text_tertiary),
+    color_dark_text_disabled: rgba(cfg.color_dark_foreground, cfg.blend_dark_text_disabled),
+    color_dark_list_header: rgba(cfg.color_dark_foreground, cfg.blend_dark_text_tertiary),
+    color_dark_background_hover: rgba(cfg.color_dark_foreground, cfg.blend_dark_background_hover),
+    color_dark_background_selected: rgba(cfg.color_dark_foreground, cfg.blend_dark_background_hover)
 };

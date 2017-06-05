@@ -1,8 +1,8 @@
-import common from '../../config/config';
+import { appConfig } from "polythene-theme";
 import mixin from '../../common/mixin';
 import flex from '../../layout/theme/flex';
 
-const createStyles = (config) => {
+const createStyles = config => {
     const padding = config.padding;
     const lineHeightTitle = 24;
 
@@ -12,16 +12,16 @@ const createStyles = (config) => {
             // transition-duration set in js
             mixin.vendorize({
                 'transition-timing-function': 'ease-out'
-            }, common.prefixes_transition),
+            }, appConfig.prefixes_transition),
             mixin.vendorize({
                 'transition-property': 'opacity'
-            }, common.prefixes_transition), {
+            }, appConfig.prefixes_transition), {
                 position: 'fixed',
                 top: 0,
                 left: 0,
                 right: 0,
                 bottom: 0,
-                'z-index': common.z_dialog,
+                'z-index': appConfig.z_dialog,
                 height: '100%', // 100vh would make the dialog go beneath Mobile Safari toolbar
                 padding: padding + 'px 40px',
                 opacity: 0,
@@ -62,7 +62,7 @@ const createStyles = (config) => {
                         position: 'relative',
                         'max-height': '100%',
                         'min-width': 56 * 5 + 'px',
-                        'max-width': 7 * common.grid_unit_menu + 'px',
+                        'max-width': 7 * appConfig.grid_unit_menu + 'px',
                         'border-radius': config.border_radius + 'px',
 
                         ' > .pe-shadow': {
@@ -79,9 +79,9 @@ const createStyles = (config) => {
                 ],
 
                 ' .pe-dialog__title': {
-                    'font-size': common.font_size_title + 'px',
+                    'font-size': appConfig.font_size_title + 'px',
                     'line-height': lineHeightTitle + 'px',
-                    'font-weight': common.font_weight_medium,
+                    'font-weight': appConfig.font_weight_medium,
 
                     '& + div': {
                         'margin-top': '16px'
@@ -162,4 +162,4 @@ const createStyles = (config) => {
     }];
 };
 
-export default (config) => (mixin.createStyles(config, createStyles));
+export default config => mixin.createStyles(config, createStyles);

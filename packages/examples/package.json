@@ -1,6 +1,6 @@
 {
   "name": "polythene-examples",
-  "version": "0.3.0",
+  "version": "0.3.0-rc.1",
   "description": "Polythene examples",
   "license": "MIT",
   "repository": {
@@ -28,6 +28,7 @@
     "mmsvg": "^1.1.1",
     "polythene": "0.3.0-rc.1",
     "polythene-core": "0.3.0-rc.1",
+    "polythene-material-design": "0.3.0-rc.1",
     "verge": "^1.9.1"
   }
 }

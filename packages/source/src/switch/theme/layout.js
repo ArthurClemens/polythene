@@ -1,4 +1,4 @@
-import common from '../../config/config';
+import { appConfig } from "polythene-theme";
 import mixin from '../../common/mixin';
 import selectionControlStyle from '../../selection-control/theme/layout';
 
@@ -9,7 +9,7 @@ const transition = (config, properties, duration = config.animation_duration) =>
 };
 
 const customSize = (config, size) => {
-    const factor = size / common.unit_icon_size;
+    const factor = size / appConfig.unit_icon_size;
     const thumbSize = Math.floor(0.5 * config.thumb_size * factor) * 2; // round to even
     const scaledTrackHeight = Math.floor(0.5 * config.track_height * factor) * 2; // round to even
     const scaledTrackWidth = Math.floor(0.5 * config.track_length * factor) * 2;
@@ -101,12 +101,12 @@ const createStyles = (config) => {
                 transition(config, 'all')
             ],
 
-            '&.pe-control--small': customSize(config, common.unit_icon_size_small),
-            '&.pe-control--regular': customSize(config, common.unit_icon_size),
-            '&.pe-control--medium': customSize(config, common.unit_icon_size_medium),
-            '&.pe-control--large': customSize(config, common.unit_icon_size_large)
+            '&.pe-control--small': customSize(config, appConfig.unit_icon_size_small),
+            '&.pe-control--regular': customSize(config, appConfig.unit_icon_size),
+            '&.pe-control--medium': customSize(config, appConfig.unit_icon_size_medium),
+            '&.pe-control--large': customSize(config, appConfig.unit_icon_size_large)
         }
     }];
 };
 
-export default (config) => (mixin.createStyles(config, createStyles));
+export default config => mixin.createStyles(config, createStyles);

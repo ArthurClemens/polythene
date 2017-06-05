@@ -1,4 +1,4 @@
-import common from '../../../config/config';
+import { appConfig } from "polythene-theme";
 import mixin from '../../../common/mixin';
 
 var sizes = function sizes(size) {
@@ -22,9 +22,9 @@ var createStyles = function createStyles(config) {
     return [{
         '.pe-spinner': [mixin.vendorize({
             'transition-timing-function': 'ease-out'
-        }, common.prefixes_transition), mixin.vendorize({
+        }, appConfig.prefixes_transition), mixin.vendorize({
             'transition-property': 'opacity'
-        }, common.prefixes_transition), {
+        }, appConfig.prefixes_transition), {
             opacity: 0,
 
             '&.pe-spinner--visible, &.pe-spinner--permanent': {

@@ -1,64 +1,134 @@
-import m from 'mithril';
 import j2c from 'j2c';
-import { config, defaults } from 'polythene-theme';
+import m from 'mithril';
+import { appConfig, componentConfig } from 'polythene-theme';
 
 /*
-Polyfill
+https://gist.github.com/gre/1650294
+Easing Functions - inspired from http://gizma.com/easing/
+Only considering the t value for the range [0, 1] => [0, 1]
 */
-if (!Object.assign) {
-    Object.defineProperty(Object, 'assign', {
-        enumerable: false,
-        configurable: true,
-        writable: true,
-        value: function value(target) {
-            if (target === undefined || target === null) {
-                throw new TypeError('Cannot convert first argument to object');
-            }
 
-            var to = Object(target);
-            for (var i = 1; i < arguments.length; i++) {
-                var nextSource = arguments[i];
-                if (nextSource === undefined || nextSource === null) {
-                    continue;
-                }
-                nextSource = Object(nextSource);
-
-                var keysArray = Object.keys(nextSource);
-                for (var nextIndex = 0, len = keysArray.length; nextIndex < len; nextIndex++) {
-                    var nextKey = keysArray[nextIndex];
-                    var desc = Object.getOwnPropertyDescriptor(nextSource, nextKey);
-                    if (desc !== undefined && desc.enumerable) {
-                        to[nextKey] = nextSource[nextKey];
-                    }
-                }
-            }
-            return to;
-        }
-    });
-}
-
-var isTouch = 'ontouchstart' in window || navigator.MaxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
-
-document.querySelector('html').classList.add(isTouch ? 'pe-touch' : 'pe-no-touch');
-
-var p = {
-    isTouch: isTouch
+var easing = {
+    // no easing, no acceleration
+    linear: function linear(t) {
+        return t;
+    },
+    // accelerating from zero velocity
+    easeInQuad: function easeInQuad(t) {
+        return t * t;
+    },
+    // decelerating to zero velocity
+    easeOutQuad: function easeOutQuad(t) {
+        return t * (2 - t);
+    },
+    // acceleration until halfway, then deceleration
+    easeInOutQuad: function easeInOutQuad(t) {
+        return t < .5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+    },
+    // accelerating from zero velocity
+    easeInCubic: function easeInCubic(t) {
+        return t * t * t;
+    },
+    // decelerating to zero velocity
+    easeOutCubic: function easeOutCubic(t) {
+        return --t * t * t + 1;
+    },
+    // acceleration until halfway, then deceleration
+    easeInOutCubic: function easeInOutCubic(t) {
+        return t < .5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+    },
+    // accelerating from zero velocity
+    easeInQuart: function easeInQuart(t) {
+        return t * t * t * t;
+    },
+    // decelerating to zero velocity
+    easeOutQuart: function easeOutQuart(t) {
+        return 1 - --t * t * t * t;
+    },
+    // acceleration until halfway, then deceleration
+    easeInOutQuart: function easeInOutQuart(t) {
+        return t < .5 ? 8 * t * t * t * t : 1 - 8 * --t * t * t * t;
+    },
+    // accelerating from zero velocity
+    easeInQuint: function easeInQuint(t) {
+        return t * t * t * t * t;
+    },
+    // decelerating to zero velocity
+    easeOutQuint: function easeOutQuint(t) {
+        return 1 + --t * t * t * t * t;
+    },
+    // acceleration until halfway, then deceleration
+    easeInOutQuint: function easeInOutQuint(t) {
+        return t < .5 ? 16 * t * t * t * t * t : 1 + 16 * --t * t * t * t * t;
+    }
 };
 
-var whichTransitionEvent = (function () {
-    var el = document.createElement('fakeelement');
-    var animations = {
-        'animation': 'animationend',
-        'OAnimation': 'oAnimationEnd',
-        'MozAnimation': 'animationend',
-        'WebkitAnimation': 'webkitAnimationEnd'
-    };
-    for (var a in animations) {
-        if (el.style[a] !== undefined) {
-            return animations[a];
+var listeners = {};
+
+// https://gist.github.com/Eartz/fe651f2fadcc11444549
+var throttle = function throttle(func) {
+    var s = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0.05;
+    var context = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : window;
+
+    var wait = false;
+    return function () {
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
         }
+
+        var later = function later() {
+            func.apply(context, args);
+        };
+        if (!wait) {
+            later();
+            wait = true;
+            setTimeout(function () {
+                wait = false;
+            }, s);
+        }
+    };
+};
+
+var subscribe = function subscribe(eventName, listener, delay) {
+    listeners[eventName] = listeners[eventName] || [];
+    listeners[eventName].push(delay ? throttle(listener, delay) : listener);
+};
+
+var unsubscribe = function unsubscribe(eventName, listener) {
+    if (!listeners[eventName]) {
+        return;
     }
+    var index = listeners[eventName].indexOf(listener);
+    if (index > -1) {
+        listeners[eventName].splice(index, 1);
+    }
+};
+
+var emit = function emit(eventName, event) {
+    if (!listeners[eventName]) {
+        return;
+    }
+    listeners[eventName].forEach(function (listener) {
+        listener(event);
+    });
+};
+
+window.addEventListener('resize', function (e) {
+    return emit('resize', e);
 });
+window.addEventListener('scroll', function (e) {
+    return emit('scroll', e);
+});
+window.addEventListener('keydown', function (e) {
+    return emit('keydown', e);
+});
+
+var events = {
+    throttle: throttle,
+    subscribe: subscribe,
+    unsubscribe: unsubscribe,
+    emit: emit
+};
 
 var remove = function remove(id) {
     if (id) {
@@ -118,176 +188,121 @@ var styler = {
     remove: remove
 };
 
-var componentConfig = {
+var validationHelper = (function () {
+    var opts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+    var elProp = opts.element || 'el';
+    var invalidProp = opts.invalid || 'invalid';
+
+    var fieldStates = [];
+
+    var submit = function submit(e, onValidated) {
+        e.preventDefault();
+        var firstInvalidIndex = getInvalidIndex();
+        if (firstInvalidIndex !== undefined) {
+            if (fieldStates[firstInvalidIndex][elProp]) {
+                fieldStates[firstInvalidIndex][elProp].focus();
+            }
+        } else {
+            onValidated(e);
+        }
+    };
+
+    var getIndex = function getIndex(el) {
+        for (var i = 0; i < fieldStates.length; i++) {
+            if (fieldStates[i][elProp] === el) {
+                return i;
+            }
+        }
+    };
+
+    var getInvalidIndex = function getInvalidIndex() {
+        for (var i = 0; i < fieldStates.length; i++) {
+            if (fieldStates[i][invalidProp]) {
+                return i;
+            }
+        }
+    };
+
+    var update = function update(state) {
+        var index = getIndex(state[elProp]);
+        if (index === undefined) {
+            fieldStates.push(state);
+        } else {
+            fieldStates[index] = state;
+        }
+    };
+
+    return {
+        submit: submit,
+        update: update
+    };
+});
+
+/*
+Polyfill
+*/
+if (!Object.assign) {
+    Object.defineProperty(Object, 'assign', {
+        enumerable: false,
+        configurable: true,
+        writable: true,
+        value: function value(target) {
+            if (target === undefined || target === null) {
+                throw new TypeError('Cannot convert first argument to object');
+            }
+
+            var to = Object(target);
+            for (var i = 1; i < arguments.length; i++) {
+                var nextSource = arguments[i];
+                if (nextSource === undefined || nextSource === null) {
+                    continue;
+                }
+                nextSource = Object(nextSource);
+
+                var keysArray = Object.keys(nextSource);
+                for (var nextIndex = 0, len = keysArray.length; nextIndex < len; nextIndex++) {
+                    var nextKey = keysArray[nextIndex];
+                    var desc = Object.getOwnPropertyDescriptor(nextSource, nextKey);
+                    if (desc !== undefined && desc.enumerable) {
+                        to[nextKey] = nextSource[nextKey];
+                    }
+                }
+            }
+            return to;
+        }
+    });
+}
+
+var isTouch = 'ontouchstart' in window || navigator.MaxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+
+document.querySelector('html').classList.add(isTouch ? 'pe-touch' : 'pe-no-touch');
+
+var p = {
+    isTouch: isTouch
+};
+
+var whichTransitionEvent = (function () {
+    var el = document.createElement('fakeelement');
+    var animations = {
+        'animation': 'animationend',
+        'OAnimation': 'oAnimationEnd',
+        'MozAnimation': 'animationend',
+        'WebkitAnimation': 'webkitAnimationEnd'
+    };
+    for (var a in animations) {
+        if (el.style[a] !== undefined) {
+            return animations[a];
+        }
+    }
+});
+
+var vars = {
     start_scale: 0.1,
     end_scale: 2,
     start_opacity: 0.2,
     end_opacity: 0
 };
-
-// Global theme variables
-// How to change these variables for your app - see the README.
-
-var hex = function hex(_hex) {
-    var bigint = parseInt(_hex.substring(1), 16);
-    var r = bigint >> 16 & 255;
-    var g = bigint >> 8 & 255;
-    var b = bigint & 255;
-    return r + ',' + g + ',' + b;
-};
-
-var rgba = function rgba(colorStr) {
-    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    return 'rgba(' + colorStr + ',' + opacity + ')';
-};
-
-var isInteger = function isInteger(nVal) {
-    return typeof nVal === 'number' && isFinite(nVal) && nVal > -9007199254740992 && nVal < 9007199254740992 && Math.floor(nVal) === nVal;
-};
-
-//const isTablet = window.innerWidth >= 600;
-var isDesktop = window.innerWidth >= 1024;
-
-var grid_unit = 4;
-var grid_unit_component = 8;
-
-var animation_curve_slow_in_fast_out = 'cubic-bezier(.4, 0, .2, 1)';
-var animation_curve_slow_in_linear_out = 'cubic-bezier(0, 0, .2, 1)';
-var animation_curve_linear_in_fast_out = 'cubic-bezier(.4, 0, 1, 1)';
-
-var common$1 = {
-    // util functions
-    rgba: rgba,
-    hex: hex,
-    isInteger: isInteger,
-
-    grid_unit: grid_unit,
-    grid_unit_component: grid_unit_component,
-    grid_unit_menu: 56,
-    grid_unit_icon_button: 6 * grid_unit_component, // 48
-
-    // common sizes
-    unit_block_border_radius: 2,
-    unit_item_border_radius: 2,
-    unit_indent: 72,
-    unit_side_padding: isDesktop ? 24 : 16,
-
-    // buttons
-    unit_touch_height: 48,
-    unit_icon_size_small: 2 * grid_unit_component, // 16
-    unit_icon_size: 3 * grid_unit_component, // 24
-    unit_icon_size_medium: 4 * grid_unit_component, // 32
-    unit_icon_size_large: 5 * grid_unit_component, // 40
-
-    // screen dimensions
-    unit_screen_size_extra_large: 1280,
-    unit_screen_size_large: 960,
-    unit_screen_size_medium: 480,
-    unit_screen_size_small: 320,
-
-    // transitions
-    animation_duration: '.18s',
-    animation_curve_slow_in_fast_out: animation_curve_slow_in_fast_out,
-    animation_curve_slow_in_linear_out: animation_curve_slow_in_linear_out,
-    animation_curve_linear_in_fast_out: animation_curve_linear_in_fast_out,
-    animation_curve_default: 'ease-out',
-
-    // font
-    font_weight_light: 300,
-    font_weight_normal: 400,
-    font_weight_medium: 500,
-    font_weight_bold: 700,
-    font_size_title: 20,
-    line_height: 1.3,
-
-    // base colors
-    color_primary: '33, 150, 243', // blue 500
-    color_primary_active: '30, 136, 229', // blue 600
-    color_primary_dark: '25, 118, 210', // blue 700
-    color_primary_faded: '100, 181, 249', // blue 300
-    color_primary_foreground: '255, 255, 255',
-
-    color_light_background: '255, 255, 255',
-    color_light_foreground: '0, 0, 0',
-    color_dark_background: '34, 34, 34',
-    color_dark_foreground: '255, 255, 255',
-
-    // blends
-    blend_light_text_primary: .87,
-    blend_light_text_regular: .73,
-    blend_light_text_secondary: .54,
-    blend_light_text_tertiary: .40,
-    blend_light_text_disabled: .26,
-    blend_light_border_light: .11,
-    blend_light_background_active: .14,
-    blend_light_background_hover: .06,
-    blend_light_background_hover_medium: .12, // for the lighter tinted icon buttons
-    blend_light_background_disabled: .09,
-    blend_light_overlay_background: .3,
-
-    blend_dark_text_primary: 1,
-    blend_dark_text_regular: .87,
-    blend_dark_text_secondary: .70,
-    blend_dark_text_tertiary: .40,
-    blend_dark_text_disabled: .26,
-    blend_dark_border_light: .10,
-    blend_dark_background_active: .14,
-    blend_dark_background_hover: .08,
-    blend_dark_background_hoverMedium: .12, // for the lighter tinted icon buttons
-    blend_dark_background_disabled: .12,
-    blend_dark_overlay_background: .3,
-
-    // css vendor prefixes
-    prefixes_animation: ['o', 'moz', 'webkit'],
-    prefixes_appearance: ['o', 'moz', 'ms', 'webkit'],
-    prefixes_background_size: ['o', 'moz', 'webkit'],
-    prefixes_box_shadow: ['moz', 'webkit'],
-    prefixes_keyframes: ['o', 'moz', 'webkit'],
-    prefixes_transform: ['o', 'moz', 'ms', 'webkit'],
-    prefixes_transition: ['o', 'moz', 'webkit'],
-    prefixes_user_select: ['moz', 'ms', 'webkit'],
-
-    // breakpoints
-    breakpoint_small_handset_portrait: 0,
-    breakpoint_medium_handset_portrait: 360,
-    breakpoint_large_handset_portrait: 400,
-    breakpoint_small_tablet_portrait: 600,
-    breakpoint_large_tablet_portrait: 720,
-    // landscape
-    breakpoint_small_handset_landscape: 480,
-    breakpoint_medium_handset_landscape: 600,
-    breakpoint_large_handset_landscape: 720,
-
-    // environment
-    env_tablet: window.innerWidth >= 600,
-    env_desktop: window.innerWidth >= 1024,
-
-    // z-index
-    z_menu: 1000,
-    z_header_container: 2000,
-    z_fixed_header_container: 3000,
-    z_notification: 4000,
-    z_dialog: 5000
-};
-
-// Conduit for global theme variables
-// In your app paths setup, change the current path to your custom config file; see the theme README.
-
-
-
-// Example customization in custom config file:
-//
-// import 'polythene/common/object.assign';
-// import config from 'polythene/config/default';
-//
-// export default Object.assign({}, config, {
-//     // this site's base colors
-//     color_primary: '255, 152, 0', // orange 500
-//     color_primary_active: '251, 140, 0', // orange 600
-//     color_primary_dark: '245, 124, 0', // orange 700
-//     color_primary_faded: '255, 183, 77', // orange 300
-//     color_primary_foreground: '255, 255, 255'
-// });
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -296,7 +311,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 // Mixins for j2c
 
 // Creates j2c vendor key string from vendor list
-// mixin.vendorize({'user-select': 'none'}, common.prefixes_user_select)
+// mixin.vendorize({'user-select': 'none'}, cfg.prefixes_user_select)
 var vendorize = function vendorize(what, prefixes) {
     var vendorsSel = prefixes.map(function (v) {
         return '_' + v + '$';
@@ -433,18 +448,18 @@ var createStyles$1 = function createStyles(common, fn) {
 // mixin.defaultTransition('opacity', config.animation_duration)
 var defaultTransition = function defaultTransition() {
     var properties = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'all';
-    var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : common$1.animation_duration;
-    var curve = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : common$1.animation_curve_default;
+    var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : appConfig.animation_duration;
+    var curve = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : appConfig.animation_curve_default;
 
     return [vendorize({
         'transition-delay': 0
-    }, common$1.prefixes_transition), vendorize({
+    }, appConfig.prefixes_transition), vendorize({
         'transition-duration': duration
-    }, common$1.prefixes_transition), vendorize({
+    }, appConfig.prefixes_transition), vendorize({
         'transition-timing-function': curve
-    }, common$1.prefixes_transition), vendorize({
+    }, appConfig.prefixes_transition), vendorize({
         'transition-property': properties
-    }, common$1.prefixes_transition)];
+    }, appConfig.prefixes_transition)];
 };
 
 // Scales an item dynamically between 2 screen sizes
@@ -520,16 +535,16 @@ var mixin = {
     vendorize: vendorize
 };
 
-var kfRipple = function kfRipple(config$$1) {
+var kfRipple = function kfRipple(config) {
     return {
         ' 100%': {
-            transform: 'scale(' + config$$1.end_scale + ')',
-            'opacity': config$$1.end_opacity
+            transform: 'scale(' + config.end_scale + ')',
+            'opacity': config.end_opacity
         }
     };
 };
 
-var createStyles = function createStyles(config$$1) {
+var createStyles = function createStyles(config) {
     return [{
         '.pe-ripple': [mixin.fit(), {
             color: 'inherit',
@@ -545,21 +560,21 @@ var createStyles = function createStyles(config$$1) {
             },
             ' .pe-ripple__mask': [mixin.fit(), mixin.vendorize({
                 'transform': 'translate3d(0,0,0)'
-            }, common$1.prefixes_transform)],
+            }, appConfig.prefixes_transform)],
 
             ' .pe-ripple__waves': [mixin.vendorize({
-                'transform': 'scale(' + config$$1.start_scale + ')'
-            }, common$1.prefixes_transform), mixin.vendorize({
-                'animation': 'ripple ' + common$1.animation_curve_default
-            }, common$1.prefixes_animation),
+                'transform': 'scale(' + config.start_scale + ')'
+            }, appConfig.prefixes_transform), mixin.vendorize({
+                'animation': 'ripple ' + appConfig.animation_curve_default
+            }, appConfig.prefixes_animation),
             // default durations; finally set in js
             mixin.vendorize({
-                'animation-duration': common$1.animation_duration
-            }, common$1.prefixes_animation), {
+                'animation-duration': appConfig.animation_duration
+            }, appConfig.prefixes_animation), {
                 outline: '1px solid transparent', // for IE10
                 position: 'absolute',
                 'border-radius': '50%',
-                opacity: config$$1.start_opacity,
+                opacity: config.start_opacity,
                 'pointer-events': 'none',
                 display: 'none'
             }],
@@ -568,21 +583,21 @@ var createStyles = function createStyles(config$$1) {
             }
         }],
 
-        '@keyframes ripple': kfRipple(config$$1)
+        '@keyframes ripple': kfRipple(config)
     }];
 };
 
-var layout = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles);
+var layout = (function (config) {
+    return mixin.createStyles(config, createStyles);
 });
 
 // Does not contain color styles
 
-var themeConfigFn = config && config.ripple;
-var config$1 = themeConfigFn ? themeConfigFn(componentConfig) : componentConfig;
+var configFn = componentConfig && componentConfig.ripple;
+var config = configFn ? configFn(vars) : vars;
 var id = 'pe-ripple';
 
-styler.add(id, layout(config$1));
+styler.add(id, layout(config));
 
 var transitionEvent = whichTransitionEvent();
 var DEFAULT_START_OPACITY = 0.2;
@@ -698,7 +713,7 @@ var component$1 = {
     }
 };
 
-var componentConfig$1 = {
+var vars$1 = {
     transition: 'box-shadow 0.18s ease-out',
 
     'shadow-top-z-1': 'none',
@@ -725,10 +740,10 @@ function _defineProperty$1(obj, key, value) { if (key in obj) { Object.definePro
 var shadowDirective = function shadowDirective(dir) {
     return mixin.vendorize({
         'box-shadow': dir
-    }, common$1.prefixes_box_shadow);
+    }, appConfig.prefixes_box_shadow);
 };
 
-var createStyles$2 = function createStyles(config$$1) {
+var createStyles$2 = function createStyles(config) {
     return [{
         '.pe-shadow': [mixin.fit(), {
             'border-radius': 'inherit',
@@ -740,28 +755,28 @@ var createStyles$2 = function createStyles(config$$1) {
 
             '&.pe-shadow--animated': {
                 ' .pe-shadow__bottom, .pe-shadow__top': mixin.vendorize({
-                    'transition': config$$1.transition
-                }, common$1.prefixes_transition)
+                    'transition': config.transition
+                }, appConfig.prefixes_transition)
             }
         }, [1, 2, 3, 4, 5].map(function (index) {
             var _ref;
 
-            return _ref = {}, _defineProperty$1(_ref, ' .pe-shadow__top.pe-shadow--z-' + index, shadowDirective(config$$1['shadow-top-z-' + index])), _defineProperty$1(_ref, ' .pe-shadow__bottom.pe-shadow--z-' + index, shadowDirective(config$$1['shadow-bottom-z-' + index])), _ref;
+            return _ref = {}, _defineProperty$1(_ref, ' .pe-shadow__top.pe-shadow--z-' + index, shadowDirective(config['shadow-top-z-' + index])), _defineProperty$1(_ref, ' .pe-shadow__bottom.pe-shadow--z-' + index, shadowDirective(config['shadow-bottom-z-' + index])), _ref;
         })]
     }];
 };
 
-var layout$1 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$2);
+var layout$1 = (function (config) {
+    return mixin.createStyles(config, createStyles$2);
 });
 
 // Does not contain color styles
 
-var themeConfigFn$1 = config && config.shadow;
-var config$2 = themeConfigFn$1 ? themeConfigFn$1(componentConfig$1) : componentConfig$1;
+var configFn$1 = componentConfig && componentConfig.shadow;
+var config$1 = configFn$1 ? configFn$1(vars$1) : vars$1;
 var id$1 = 'pe-shadow';
 
-styler.add(id$1, layout$1(config$2));
+styler.add(id$1, layout$1(config$1));
 
 var CSS_CLASSES$2 = {
     block: 'pe-shadow',
@@ -805,7 +820,7 @@ var component$2 = {
 var style = [{
     '.pe-button': [mixin.vendorize({
         'user-select': 'none'
-    }, common$1.prefixes_user_select), {
+    }, appConfig.prefixes_user_select), {
         outline: 'none',
         padding: 0,
         'text-decoration': 'none',
@@ -855,30 +870,30 @@ var id$2 = 'pe-base-button';
 
 styler.add(id$2, style);
 
-var rgba$1 = defaults.rgba;
+var rgba = appConfig.rgba;
 
-var touch_height = defaults.unit_touch_height;
+var touch_height = appConfig.unit_touch_height;
 var height = 36;
 
 var buttonConfig = {
-    margin_h: defaults.grid_unit,
-    border_radius: defaults.unit_item_border_radius,
+    margin_h: appConfig.grid_unit,
+    border_radius: appConfig.unit_item_border_radius,
     font_size: 14,
     font_weight: 500,
     outer_padding_v: (touch_height - height) / 2,
-    padding_h: 2 * defaults.grid_unit,
+    padding_h: 2 * appConfig.grid_unit,
     padding_v: 11,
-    min_width: 8 * defaults.grid_unit_component,
+    min_width: 8 * appConfig.grid_unit_component,
     text_transform: 'uppercase',
     border_width: 0, // no border in MD, but used to correctly set the height when a theme does set a border
 
     color_light_flat_normal_background: 'transparent',
-    color_light_flat_normal_text: rgba$1(defaults.color_light_foreground, defaults.blend_light_text_primary),
-    color_light_flat_hover_background: rgba$1(defaults.color_light_foreground, defaults.blend_light_background_hover),
-    color_light_flat_focus_background: rgba$1(defaults.color_light_foreground, defaults.blend_light_background_hover),
-    color_light_flat_active_background: rgba$1(defaults.color_light_foreground, defaults.blend_light_background_active),
+    color_light_flat_normal_text: rgba(appConfig.color_light_foreground, appConfig.blend_light_text_primary),
+    color_light_flat_hover_background: rgba(appConfig.color_light_foreground, appConfig.blend_light_background_hover),
+    color_light_flat_focus_background: rgba(appConfig.color_light_foreground, appConfig.blend_light_background_hover),
+    color_light_flat_active_background: rgba(appConfig.color_light_foreground, appConfig.blend_light_background_active),
     color_light_flat_disabled_background: 'transparent',
-    color_light_flat_disabled_text: rgba$1(defaults.color_light_foreground, defaults.blend_light_text_disabled),
+    color_light_flat_disabled_text: rgba(appConfig.color_light_foreground, appConfig.blend_light_text_disabled),
 
     // border colors  may be set in theme; disabled by default
     // color_light_flat_normal_border: 'transparent',
@@ -887,20 +902,20 @@ var buttonConfig = {
     // color_light_flat_disabled_border: 'transparent',
 
     color_light_raised_normal_background: '#E0E0E0',
-    color_light_raised_normal_text: rgba$1(defaults.color_light_foreground, defaults.blend_light_text_primary),
+    color_light_raised_normal_text: rgba(appConfig.color_light_foreground, appConfig.blend_light_text_primary),
     color_light_raised_hover_background: 'transparent',
-    color_light_raised_focus_background: rgba$1(defaults.color_light_foreground, defaults.blend_light_background_hover),
-    color_light_raised_active_background: rgba$1(defaults.color_light_foreground, defaults.blend_light_background_hover), // same as hover
-    color_light_raised_disabled_background: rgba$1(defaults.color_light_foreground, defaults.blend_light_background_disabled),
-    color_light_raised_disabled_text: rgba$1(defaults.color_light_foreground, defaults.blend_light_text_disabled),
+    color_light_raised_focus_background: rgba(appConfig.color_light_foreground, appConfig.blend_light_background_hover),
+    color_light_raised_active_background: rgba(appConfig.color_light_foreground, appConfig.blend_light_background_hover), // same as hover
+    color_light_raised_disabled_background: rgba(appConfig.color_light_foreground, appConfig.blend_light_background_disabled),
+    color_light_raised_disabled_text: rgba(appConfig.color_light_foreground, appConfig.blend_light_text_disabled),
 
     color_dark_flat_normal_background: 'transparent',
-    color_dark_flat_normal_text: rgba$1(defaults.color_dark_foreground, defaults.blend_dark_text_primary),
-    color_dark_flat_hover_background: rgba$1(defaults.color_dark_foreground, defaults.blend_dark_background_hover),
-    color_dark_flat_focus_background: rgba$1(defaults.color_dark_foreground, defaults.blend_dark_background_hover),
-    color_dark_flat_active_background: rgba$1(defaults.color_dark_foreground, defaults.blend_dark_background_active),
+    color_dark_flat_normal_text: rgba(appConfig.color_dark_foreground, appConfig.blend_dark_text_primary),
+    color_dark_flat_hover_background: rgba(appConfig.color_dark_foreground, appConfig.blend_dark_background_hover),
+    color_dark_flat_focus_background: rgba(appConfig.color_dark_foreground, appConfig.blend_dark_background_hover),
+    color_dark_flat_active_background: rgba(appConfig.color_dark_foreground, appConfig.blend_dark_background_active),
     color_dark_flat_disabled_background: 'transparent',
-    color_dark_flat_disabled_text: rgba$1(defaults.color_dark_foreground, defaults.blend_dark_text_disabled),
+    color_dark_flat_disabled_text: rgba(appConfig.color_dark_foreground, appConfig.blend_dark_text_disabled),
 
     // border colors  may be set in theme; disabled by default
     // color_dark_flat_normal_border: 'transparent',
@@ -908,37 +923,37 @@ var buttonConfig = {
     // color_dark_flat_active_border: 'transparent',
     // color_dark_flat_disabled_border: 'transparent',
 
-    color_dark_raised_normal_background: rgba$1(defaults.color_primary),
-    color_dark_raised_normal_text: rgba$1(defaults.color_dark_foreground, defaults.blend_dark_text_primary),
-    color_dark_raised_hover_background: defaults.color_primary_active,
-    color_dark_raised_focus_background: defaults.color_primary_active,
-    color_dark_raised_active_background: defaults.color_primary_dark,
-    color_dark_raised_disabled_background: rgba$1(defaults.color_dark_foreground, defaults.blend_dark_background_disabled),
-    color_dark_raised_disabled_text: rgba$1(defaults.color_dark_foreground, defaults.blend_dark_text_disabled)
+    color_dark_raised_normal_background: rgba(appConfig.color_primary),
+    color_dark_raised_normal_text: rgba(appConfig.color_dark_foreground, appConfig.blend_dark_text_primary),
+    color_dark_raised_hover_background: appConfig.color_primary_active,
+    color_dark_raised_focus_background: appConfig.color_primary_active,
+    color_dark_raised_active_background: appConfig.color_primary_dark,
+    color_dark_raised_disabled_background: rgba(appConfig.color_dark_foreground, appConfig.blend_dark_background_disabled),
+    color_dark_raised_disabled_text: rgba(appConfig.color_dark_foreground, appConfig.blend_dark_text_disabled)
 };
 
-var createStyles$3 = function createStyles(config$$1) {
+var createStyles$3 = function createStyles(config) {
     return [{
         '.pe-button--text': {
             display: 'inline-block',
-            'min-width': config$$1.min_width + 'px',
-            margin: '0 ' + config$$1.margin_h + 'px',
-            padding: config$$1.outer_padding_v + 'px 0',
+            'min-width': config.min_width + 'px',
+            margin: '0 ' + config.margin_h + 'px',
+            padding: config.outer_padding_v + 'px 0',
             background: 'transparent',
             border: 'none',
 
             ' .pe-button__content': {
                 'border-width': 0,
-                padding: '0 ' + config$$1.padding_h + 'px',
-                'border-radius': config$$1.border_radius + 'px'
+                padding: '0 ' + config.padding_h + 'px',
+                'border-radius': config.border_radius + 'px'
             },
 
             ' .pe-button__label': {
-                padding: config$$1.padding_v + 'px 0',
-                'font-size': config$$1.font_size + 'px',
-                'line-height': config$$1.font_size + 'px',
-                'font-weight': config$$1.font_weight,
-                'text-transform': config$$1.text_transform,
+                padding: config.padding_v + 'px 0',
+                'font-size': config.font_size + 'px',
+                'line-height': config.font_size + 'px',
+                'font-weight': config.font_weight,
+                'text-transform': config.text_transform,
                 'white-space': 'pre'
             },
 
@@ -950,102 +965,102 @@ var createStyles$3 = function createStyles(config$$1) {
                     'border-width': '1px'
                 },
                 ' .pe-button__label': {
-                    padding: config$$1.padding_v - 1 + 'px 0'
+                    padding: config.padding_v - 1 + 'px 0'
                 }
             }
         }
     }];
 };
 
-var layout$3 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$3);
+var layout$3 = (function (config) {
+    return mixin.createStyles(config, createStyles$3);
 });
 
 function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$1 = function style(config$$1, tint, type) {
+var style$1 = function style(config, tint, type) {
     var scope = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '';
 
-    var normalBorder = config$$1['color_' + tint + '_' + type + '_normal_border'] || 'transparent';
-    var activeBorder = config$$1['color_' + tint + '_' + type + '_active_border'] || normalBorder;
-    var disabledBorder = config$$1['color_' + tint + '_' + type + '_disabled_border'] || normalBorder;
+    var normalBorder = config['color_' + tint + '_' + type + '_normal_border'] || 'transparent';
+    var activeBorder = config['color_' + tint + '_' + type + '_active_border'] || normalBorder;
+    var disabledBorder = config['color_' + tint + '_' + type + '_disabled_border'] || normalBorder;
     return [_defineProperty$2({}, scope + '.pe-button', {
         '&, &:link, &:visited': {
-            color: config$$1['color_' + tint + '_' + type + '_normal_text']
+            color: config['color_' + tint + '_' + type + '_normal_text']
         },
 
         ' .pe-button__content': {
-            'background-color': config$$1['color_' + tint + '_' + type + '_normal_background'],
+            'background-color': config['color_' + tint + '_' + type + '_normal_background'],
             'border-color': normalBorder
         },
 
         '&.pe-button--disabled': {
-            color: config$$1['color_' + tint + '_' + type + '_disabled_text'],
+            color: config['color_' + tint + '_' + type + '_disabled_text'],
 
             ' .pe-button__content': {
-                'background-color': config$$1['color_' + tint + '_' + type + '_disabled_background'],
+                'background-color': config['color_' + tint + '_' + type + '_disabled_background'],
                 'border-color': disabledBorder
             }
         },
 
         '&.pe-button--selected': {
             ' .pe-button__content': {
-                'background-color': config$$1['color_' + tint + '_' + type + '_active_background'],
+                'background-color': config['color_' + tint + '_' + type + '_active_background'],
                 'border-color': activeBorder
             },
             ' .pe-button__focus': {
                 opacity: 1,
-                'background-color': config$$1['color_' + tint + '_' + type + '_focus_background']
+                'background-color': config['color_' + tint + '_' + type + '_focus_background']
             }
         },
 
         '&.pe-button--focus': {
             ' .pe-button__focus': {
                 opacity: 1,
-                'background-color': config$$1['color_' + tint + '_' + type + '_focus_background']
+                'background-color': config['color_' + tint + '_' + type + '_focus_background']
             }
         }
     })];
 };
 
-var noTouch = function noTouch(config$$1, tint, type) {
+var noTouch = function noTouch(config, tint, type) {
     var scope = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '';
 
-    var normalBorder = config$$1['color_' + tint + '_' + type + '_normal_border'];
-    var hoverBorder = config$$1['color_' + tint + '_' + type + '_normal_border'] || normalBorder;
+    var normalBorder = config['color_' + tint + '_' + type + '_normal_border'];
+    var hoverBorder = config['color_' + tint + '_' + type + '_normal_border'] || normalBorder;
     return [_defineProperty$2({}, scope + '.pe-button:hover', {
         '&:not(.pe-button--selected) .pe-button__wash': {
-            'background-color': config$$1['color_' + tint + '_' + type + '_hover_background'],
+            'background-color': config['color_' + tint + '_' + type + '_hover_background'],
             'border-color': hoverBorder
         }
     })];
 };
 
-var createStyles$4 = function createStyles(config$$1) {
-    return [style$1(config$$1, 'light', 'flat'), style$1(config$$1, 'light', 'raised', '.pe-button--raised'), {
-        'html.pe-no-touch': [noTouch(config$$1, 'light', 'flat', ' '), noTouch(config$$1, 'light', 'raised', ' .pe-button--raised')]
+var createStyles$4 = function createStyles(config) {
+    return [style$1(config, 'light', 'flat'), style$1(config, 'light', 'raised', '.pe-button--raised'), {
+        'html.pe-no-touch': [noTouch(config, 'light', 'flat', ' '), noTouch(config, 'light', 'raised', ' .pe-button--raised')]
     }, {
         '.pe-dark-theme': [
         // inside dark theme
-        style$1(config$$1, 'dark', 'flat', ' '),
+        style$1(config, 'dark', 'flat', ' '),
         // has dark theme
-        style$1(config$$1, 'dark', 'flat', '&'),
+        style$1(config, 'dark', 'flat', '&'),
         //
-        style$1(config$$1, 'dark', 'raised', ' .pe-button--raised')]
+        style$1(config, 'dark', 'raised', ' .pe-button--raised')]
     }, {
-        'html.pe-no-touch .pe-dark-theme': [noTouch(config$$1, 'dark', 'flat', ' '), noTouch(config$$1, 'dark', 'flat', '&'), noTouch(config$$1, 'dark', 'raised', ' .pe-button--raised')]
+        'html.pe-no-touch .pe-dark-theme': [noTouch(config, 'dark', 'flat', ' '), noTouch(config, 'dark', 'flat', '&'), noTouch(config, 'dark', 'raised', ' .pe-button--raised')]
     }];
 };
 
-var color = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$4);
+var color = (function (config) {
+    return mixin.createStyles(config, createStyles$4);
 });
 
-var themeConfigFn$2 = config && config.button;
-var config$3 = themeConfigFn$2 ? themeConfigFn$2(buttonConfig) : buttonConfig;
+var configFn$2 = componentConfig && componentConfig.button;
+var config$2 = configFn$2 ? configFn$2(buttonConfig) : buttonConfig;
 var id$3 = 'pe-button-text';
 
-styler.add(id$3, layout$3(config$3), color(config$3));
+styler.add(id$3, layout$3(config$2), color(config$2));
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -1197,7 +1212,7 @@ var createView = function createView(ctrl) {
             }
         }
     }, opts.url ? opts.url : null, opts.formaction ? { formaction: opts.formaction } : null, opts.type ? { type: opts.type } : null, opts.events ? opts.events : null, {
-        config: function config$$1() {
+        config: function config() {
             return [buttonConfig.apply(undefined, arguments), optsConfig.apply(undefined, arguments), urlConfig.apply(undefined, arguments)];
         }
     }, disabled ? {
@@ -1275,22 +1290,22 @@ var component$6 = {
     }
 };
 
-var componentConfig$2 = {
-    size_small: common$1.unit_icon_size_small,
-    size_regular: common$1.unit_icon_size,
-    size_medium: common$1.unit_icon_size_medium,
-    size_large: common$1.unit_icon_size_large
+var vars$2 = {
+    size_small: appConfig.unit_icon_size_small,
+    size_regular: appConfig.unit_icon_size,
+    size_medium: appConfig.unit_icon_size_medium,
+    size_large: appConfig.unit_icon_size_large
 };
 
 var iconSizesPx = function iconSizesPx() {
-    var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : common$1.unit_icon_size;
+    var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : appConfig.unit_icon_size;
     return {
         width: size + 'px',
         height: size + 'px'
     };
 };
 
-var createStyles$5 = function createStyles(config$$1) {
+var createStyles$5 = function createStyles(config) {
     return [{
         '.pe-icon': {
             display: 'inline-block',
@@ -1333,25 +1348,25 @@ var createStyles$5 = function createStyles(config$$1) {
                 }
             }],
 
-            '&.pe-icon--small': iconSizesPx(config$$1.size_small),
-            '&.pe-icon--regular': iconSizesPx(config$$1.size_regular),
-            '&.pe-icon--medium': iconSizesPx(config$$1.size_medium),
-            '&.pe-icon--large': iconSizesPx(config$$1.size_large)
+            '&.pe-icon--small': iconSizesPx(config.size_small),
+            '&.pe-icon--regular': iconSizesPx(config.size_regular),
+            '&.pe-icon--medium': iconSizesPx(config.size_medium),
+            '&.pe-icon--large': iconSizesPx(config.size_large)
         }
     }];
 };
 
-var layout$4 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$5);
+var layout$4 = (function (config) {
+    return mixin.createStyles(config, createStyles$5);
 });
 
 // Does not contain color styles
 
-var themeConfigFn$3 = config && config.icon;
-var config$4 = themeConfigFn$3 ? themeConfigFn$3(componentConfig$2) : componentConfig$2;
+var configFn$3 = componentConfig && componentConfig.icon;
+var config$3 = configFn$3 ? configFn$3(vars$2) : vars$2;
 var id$4 = 'pe-icon';
 
-styler.add(id$4, layout$4(config$4));
+styler.add(id$4, layout$4(config$3));
 
 var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -1417,7 +1432,7 @@ var component$5 = {
     }
 };
 
-var rgba$2 = common$1.rgba;
+var rgba$1 = appConfig.rgba;
 
 // SPECS
 // heights:
@@ -1437,7 +1452,7 @@ var single_height = 48;
 var padding = 8;
 var single_with_icon_height = 56;
 
-var componentConfig$3 = {
+var vars$3 = {
     single_height: single_height,
     single_line_height: single_height - 2 * padding - (2 * 5 + 1),
     single_with_icon_height: single_with_icon_height,
@@ -1449,28 +1464,28 @@ var componentConfig$3 = {
     high_subtitle_line_count: 2,
     has_high_subtitle_padding: 13,
     front_item_width: 72,
-    side_padding: 2 * common$1.grid_unit_component,
+    side_padding: 2 * appConfig.grid_unit_component,
     font_size_title: 16,
     font_size_subtitle: 14,
     line_height_subtitle: 20,
     font_size_list_header: 14,
     font_size_small: 12,
 
-    color_light_title: rgba$2(common$1.color_light_foreground, common$1.blend_light_text_primary),
-    color_light_subtitle: rgba$2(common$1.color_light_foreground, common$1.blend_light_text_secondary),
-    color_light_info: rgba$2(common$1.color_light_foreground, common$1.blend_light_text_tertiary),
-    color_light_text_disabled: rgba$2(common$1.color_light_foreground, common$1.blend_light_text_disabled),
-    color_light_list_header: rgba$2(common$1.color_light_foreground, common$1.blend_light_text_tertiary),
-    color_light_background_hover: rgba$2(common$1.color_light_foreground, common$1.blend_light_background_hover),
-    color_light_background_selected: rgba$2(common$1.color_light_foreground, common$1.blend_light_background_hover),
+    color_light_title: rgba$1(appConfig.color_light_foreground, appConfig.blend_light_text_primary),
+    color_light_subtitle: rgba$1(appConfig.color_light_foreground, appConfig.blend_light_text_secondary),
+    color_light_info: rgba$1(appConfig.color_light_foreground, appConfig.blend_light_text_tertiary),
+    color_light_text_disabled: rgba$1(appConfig.color_light_foreground, appConfig.blend_light_text_disabled),
+    color_light_list_header: rgba$1(appConfig.color_light_foreground, appConfig.blend_light_text_tertiary),
+    color_light_background_hover: rgba$1(appConfig.color_light_foreground, appConfig.blend_light_background_hover),
+    color_light_background_selected: rgba$1(appConfig.color_light_foreground, appConfig.blend_light_background_hover),
 
-    color_dark_title: rgba$2(common$1.color_dark_foreground, common$1.blend_dark_text_primary),
-    color_dark_subtitle: rgba$2(common$1.color_dark_foreground, common$1.blend_dark_text_secondary),
-    color_dark_info: rgba$2(common$1.color_dark_foreground, common$1.blend_dark_text_tertiary),
-    color_dark_text_disabled: rgba$2(common$1.color_dark_foreground, common$1.blend_dark_text_disabled),
-    color_dark_list_header: rgba$2(common$1.color_dark_foreground, common$1.blend_dark_text_tertiary),
-    color_dark_background_hover: rgba$2(common$1.color_dark_foreground, common$1.blend_dark_background_hover),
-    color_dark_background_selected: rgba$2(common$1.color_dark_foreground, common$1.blend_dark_background_hover)
+    color_dark_title: rgba$1(appConfig.color_dark_foreground, appConfig.blend_dark_text_primary),
+    color_dark_subtitle: rgba$1(appConfig.color_dark_foreground, appConfig.blend_dark_text_secondary),
+    color_dark_info: rgba$1(appConfig.color_dark_foreground, appConfig.blend_dark_text_tertiary),
+    color_dark_text_disabled: rgba$1(appConfig.color_dark_foreground, appConfig.blend_dark_text_disabled),
+    color_dark_list_header: rgba$1(appConfig.color_dark_foreground, appConfig.blend_dark_text_tertiary),
+    color_dark_background_hover: rgba$1(appConfig.color_dark_foreground, appConfig.blend_dark_background_hover),
+    color_dark_background_selected: rgba$1(appConfig.color_dark_foreground, appConfig.blend_dark_background_hover)
 };
 
 var layout$6 = [{
@@ -1699,7 +1714,7 @@ var paddingV = function paddingV(top, bottom) {
     };
 };
 
-var createStyles$6 = function createStyles(config$$1) {
+var createStyles$6 = function createStyles(config) {
     return [{
         '.pe-list-tile': [flex$1.layout, {
             position: 'relative',
@@ -1719,23 +1734,23 @@ var createStyles$6 = function createStyles(config$$1) {
                 position: 'relative',
                 'z-index': 1, // in case a ripple is used (positioned absolute)
 
-                ' .pe-list-tile__content:not(.pe-list-tile__content--front)': [flex$1.flex(), paddingV(config$$1.padding, config$$1.padding + 1)]
+                ' .pe-list-tile__content:not(.pe-list-tile__content--front)': [flex$1.flex(), paddingV(config.padding, config.padding + 1)]
             }],
 
             ' .pe-list-tile__secondary': {
                 'text-align': 'right',
-                'font-size': config$$1.font_size_title + 'px',
+                'font-size': config.font_size_title + 'px',
                 position: 'relative',
                 'z-index': 1 // in case a ripple is used (positioned absolute)
             },
 
-            ' .pe-list-tile__content': [flex$1.layoutVertical, flex$1.selfCenter, paddingH(config$$1.side_padding), {
-                '&.pe-list-tile__content--front': [paddingV(config$$1.padding - 5), {
-                    width: config$$1.front_item_width + 'px'
+            ' .pe-list-tile__content': [flex$1.layoutVertical, flex$1.selfCenter, paddingH(config.side_padding), {
+                '&.pe-list-tile__content--front': [paddingV(config.padding - 5), {
+                    width: config.front_item_width + 'px'
                 }],
 
                 ' small': {
-                    'font-size': config$$1.font_size_small + 'px'
+                    'font-size': config.font_size_small + 'px'
                 }
             }],
 
@@ -1744,16 +1759,16 @@ var createStyles$6 = function createStyles(config$$1) {
             },
 
             ' .pe-list-tile__title': [mixin.ellipsis(1), {
-                'font-size': config$$1.font_size_title + 'px',
-                'font-weight': common$1.font_weight_normal,
-                'line-height': config$$1.single_line_height + 'px'
+                'font-size': config.font_size_title + 'px',
+                'font-weight': appConfig.font_weight_normal,
+                'line-height': config.single_line_height + 'px'
             }],
 
-            ' .pe-list-tile__subtitle': [mixin.ellipsis(config$$1.subtitle_line_count, config$$1.line_height_subtitle), {
-                'font-size': config$$1.font_size_subtitle + 'px',
-                'line-height': config$$1.line_height_subtitle + 'px',
+            ' .pe-list-tile__subtitle': [mixin.ellipsis(config.subtitle_line_count, config.line_height_subtitle), {
+                'font-size': config.font_size_subtitle + 'px',
+                'line-height': config.line_height_subtitle + 'px',
 
-                '&.pe-list-tile__subtitle--high': [mixin.ellipsis(config$$1.high_subtitle_line_count, config$$1.line_height_subtitle), {
+                '&.pe-list-tile__subtitle--high': [mixin.ellipsis(config.high_subtitle_line_count, config.line_height_subtitle), {
                     'white-space': 'normal'
                 }]
             }],
@@ -1763,7 +1778,7 @@ var createStyles$6 = function createStyles(config$$1) {
             },
 
             '&.pe-list-tile--subtitle': {
-                ' .pe-list-tile__content': [paddingV(config$$1.has_subtitle_padding, config$$1.has_subtitle_padding + 1), {
+                ' .pe-list-tile__content': [paddingV(config.has_subtitle_padding, config.has_subtitle_padding + 1), {
                     ' .pe-list-tile__title': {
                         padding: 0
                     }
@@ -1772,7 +1787,7 @@ var createStyles$6 = function createStyles(config$$1) {
 
             '&.pe-list-tile--high-subtitle': {
                 ' .pe-list-tile--high-subtitle .pe-list-tile__secondary': [flex$1.layoutHorizontal, flex$1.layoutStart],
-                ' .pe-list-tile__content': [flex$1.selfStart, paddingV(config$$1.has_high_subtitle_padding, config$$1.has_high_subtitle_padding + 1), {
+                ' .pe-list-tile__content': [flex$1.selfStart, paddingV(config.has_high_subtitle_padding, config.has_high_subtitle_padding + 1), {
                     ' .pe-list-tile__title': {
                         padding: 0
                     }
@@ -1781,16 +1796,16 @@ var createStyles$6 = function createStyles(config$$1) {
 
             // List header
             '&.pe-list__header': {
-                height: config$$1.single_height + 'px',
+                height: config.single_height + 'px',
 
                 ' .pe-list-tile__content': {
                     'padding-top': 0,
                     'padding-bottom': 0
                 },
-                ' .pe-list-tile__title': [mixin.ellipsis(1, config$$1.single_height), {
-                    'font-size': config$$1.font_size_list_header + 'px',
-                    'font-weight': common$1.font_weight_medium,
-                    'line-height': config$$1.single_height + 'px',
+                ' .pe-list-tile__title': [mixin.ellipsis(1, config.single_height), {
+                    'font-size': config.font_size_list_header + 'px',
+                    'font-weight': appConfig.font_weight_medium,
+                    'line-height': config.single_height + 'px',
                     padding: 0
                 }]
             },
@@ -1799,7 +1814,7 @@ var createStyles$6 = function createStyles(config$$1) {
 
             ' .pe-list--compact &, &.pe-list-tile--compact': {
                 '&:not(.pe-list__header)': {
-                    ' .pe-list-tile__content': paddingV(config$$1.compact_padding, config$$1.compact_padding + 1)
+                    ' .pe-list-tile__content': paddingV(config.compact_padding, config.compact_padding + 1)
                 }
             },
 
@@ -1823,7 +1838,7 @@ var createStyles$6 = function createStyles(config$$1) {
                     '&, .pe-list-tile__primary, .pe-list-tile__secondary': {
                         ' .pe-list-tile__title, .pe-list-tile__subtitle': [mixin.vendorize({
                             'user-select': 'none'
-                        }, common$1.prefixes_user_select)]
+                        }, appConfig.prefixes_user_select)]
                     }
                 }
             },
@@ -1842,77 +1857,77 @@ var createStyles$6 = function createStyles(config$$1) {
     }];
 };
 
-var layout$5 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$6);
+var layout$5 = (function (config) {
+    return mixin.createStyles(config, createStyles$6);
 });
 
 function _defineProperty$3(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$2 = function style(config$$1, tint) {
+var style$2 = function style(config, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$3({}, scope + '.pe-list-tile', {
         ' .pe-list-tile__title': {
-            color: config$$1['color_' + tint + '_title']
+            color: config['color_' + tint + '_title']
         },
 
         '&.pe-list__header': {
             'background-color': 'inherit',
 
             ' .pe-list-tile__title': {
-                color: config$$1['color_' + tint + '_list_header']
+                color: config['color_' + tint + '_list_header']
             }
         },
 
         ' .pe-list-tile__content, .pe-list-tile__subtitle': {
-            color: config$$1['color_' + tint + '_subtitle']
+            color: config['color_' + tint + '_subtitle']
         },
 
         '&.pe-list-tile--disabled': {
             '&, .pe-list-tile__title, .pe-list-tile__content, .pe-list-tile__subtitle': {
-                color: config$$1['color_' + tint + '_text_disabled']
+                color: config['color_' + tint + '_text_disabled']
             }
         },
         '&.pe-list-tile--selected': {
-            'background-color': config$$1['color_' + tint + '_background_selected']
+            'background-color': config['color_' + tint + '_background_selected']
         }
     })];
 };
 
-var noTouch$1 = function noTouch(config$$1, tint) {
+var noTouch$1 = function noTouch(config, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$3({}, scope + '.pe-list-tile', {
         '&:not(.pe-list__header):not(.pe-list-tile--disabled):hover': {
-            'background-color': config$$1['color_' + tint + '_background_hover']
+            'background-color': config['color_' + tint + '_background_hover']
         }
     })];
 };
 
-var createStyles$7 = function createStyles(config$$1) {
-    return [style$2(config$$1, 'light'), {
-        'html.pe-no-touch': [noTouch$1(config$$1, 'light', ' .pe-list--hoverable'), noTouch$1(config$$1, 'light', ' .pe-list--hoverable ')]
+var createStyles$7 = function createStyles(config) {
+    return [style$2(config, 'light'), {
+        'html.pe-no-touch': [noTouch$1(config, 'light', ' .pe-list--hoverable'), noTouch$1(config, 'light', ' .pe-list--hoverable ')]
     }, {
         '.pe-dark-theme': [
         // inside dark theme
-        style$2(config$$1, 'dark', ' '),
+        style$2(config, 'dark', ' '),
         // has dark theme
-        style$2(config$$1, 'dark', '&')]
+        style$2(config, 'dark', '&')]
     }, {
-        'html.pe-no-touch .pe-dark-theme': [noTouch$1(config$$1, 'dark', ' .pe-list-tile--hoverable'), noTouch$1(config$$1, 'dark', '.pe-list--hoverable '), noTouch$1(config$$1, 'dark', ' .pe-list--hoverable ')],
-        'html.pe-no-touch .pe-list--hoverable .pe-dark-theme': noTouch$1(config$$1, 'dark')
+        'html.pe-no-touch .pe-dark-theme': [noTouch$1(config, 'dark', ' .pe-list-tile--hoverable'), noTouch$1(config, 'dark', '.pe-list--hoverable '), noTouch$1(config, 'dark', ' .pe-list--hoverable ')],
+        'html.pe-no-touch .pe-list--hoverable .pe-dark-theme': noTouch$1(config, 'dark')
     }];
 };
 
-var color$1 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$7);
+var color$1 = (function (config) {
+    return mixin.createStyles(config, createStyles$7);
 });
 
-var themeConfigFn$4 = config && config['list-tile'];
-var config$5 = themeConfigFn$4 ? themeConfigFn$4(componentConfig$3) : componentConfig$3;
+var configFn$4 = componentConfig && componentConfig['list-tile'];
+var config$4 = configFn$4 ? configFn$4(vars$3) : vars$3;
 var id$5 = 'pe-list-tile';
 
-styler.add(id$5, layout$5(config$5), color$1(config$5));
+styler.add(id$5, layout$5(config$4), color$1(config$4));
 
 var _extends$5 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -1996,18 +2011,18 @@ var component$7 = {
     }
 };
 
-var rgba$3 = common$1.rgba;
+var rgba$2 = appConfig.rgba;
 
 var padding_v = 24;
 var padding_actions_v = 8;
 var actions_button_margin_v = 2;
 
-var componentConfig$4 = {
+var vars$4 = {
     image_size_small: 1 * 80,
     image_size_regular: 1.4 * 80,
     image_size_medium: 2 * 80,
     image_size_large: 3 * 80,
-    border_radius: common$1.unit_block_border_radius,
+    border_radius: appConfig.unit_block_border_radius,
     padding_h: 16,
     offset_small_padding_v: padding_v - 16,
     padding_actions_h: 8,
@@ -2028,27 +2043,27 @@ var componentConfig$4 = {
     actions_button_margin_v: actions_button_margin_v,
     actions_vertical_padding_v: padding_actions_v - actions_button_margin_v,
 
-    color_light_main_background: rgba$3(common$1.color_light_background),
-    color_light_title_text: rgba$3(common$1.color_light_foreground, common$1.blend_light_text_primary),
-    color_light_subtitle_text: rgba$3(common$1.color_light_foreground, common$1.blend_light_text_secondary),
-    color_light_text: rgba$3(common$1.color_light_foreground, common$1.blend_light_text_regular),
-    color_light_actions_border: rgba$3(common$1.color_light_foreground, common$1.blend_light_border_light),
-    color_light_overlay_background: rgba$3(common$1.color_light_foreground, common$1.blend_light_overlay_background),
+    color_light_main_background: rgba$2(appConfig.color_light_background),
+    color_light_title_text: rgba$2(appConfig.color_light_foreground, appConfig.blend_light_text_primary),
+    color_light_subtitle_text: rgba$2(appConfig.color_light_foreground, appConfig.blend_light_text_secondary),
+    color_light_text: rgba$2(appConfig.color_light_foreground, appConfig.blend_light_text_regular),
+    color_light_actions_border: rgba$2(appConfig.color_light_foreground, appConfig.blend_light_border_light),
+    color_light_overlay_background: rgba$2(appConfig.color_light_foreground, appConfig.blend_light_overlay_background),
 
-    color_dark_main_background: rgba$3(common$1.color_dark_background),
-    color_dark_title_text: rgba$3(common$1.color_dark_foreground, common$1.blend_dark_text_primary),
-    color_dark_subtitle_text: rgba$3(common$1.color_dark_foreground, common$1.blend_dark_text_secondary),
-    color_dark_text: rgba$3(common$1.color_dark_foreground, common$1.blend_dark_text_regular),
-    color_dark_actions_border: rgba$3(common$1.color_dark_foreground, common$1.blend_dark_border_light),
-    color_dark_overlay_background: rgba$3(common$1.color_dark_foreground, common$1.blend_dark_overlay_background)
+    color_dark_main_background: rgba$2(appConfig.color_dark_background),
+    color_dark_title_text: rgba$2(appConfig.color_dark_foreground, appConfig.blend_dark_text_primary),
+    color_dark_subtitle_text: rgba$2(appConfig.color_dark_foreground, appConfig.blend_dark_text_secondary),
+    color_dark_text: rgba$2(appConfig.color_dark_foreground, appConfig.blend_dark_text_regular),
+    color_dark_actions_border: rgba$2(appConfig.color_dark_foreground, appConfig.blend_dark_border_light),
+    color_dark_overlay_background: rgba$2(appConfig.color_dark_foreground, appConfig.blend_dark_overlay_background)
 };
 
-var createStyles$8 = function createStyles(config$$1) {
+var createStyles$8 = function createStyles(config) {
     return [{
         '.pe-card': {
             display: 'block',
             position: 'relative',
-            'border-radius': config$$1.border_radius + 'px',
+            'border-radius': config.border_radius + 'px',
 
             ' .pe-card__media': {
                 position: 'relative',
@@ -2065,8 +2080,8 @@ var createStyles$8 = function createStyles(config$$1) {
                 },
                 '&:last-child': {
                     '&, img': {
-                        'border-bottom-left-radius': config$$1.border_radius + 'px',
-                        'border-bottom-right-radius': config$$1.border_radius + 'px'
+                        'border-bottom-left-radius': config.border_radius + 'px',
+                        'border-bottom-right-radius': config.border_radius + 'px'
                     }
                 },
                 ' img': [mixin.fit(), {
@@ -2095,16 +2110,16 @@ var createStyles$8 = function createStyles(config$$1) {
                 margin: '16px 16px 0 16px',
 
                 ' .pe-card__media--small': {
-                    width: config$$1.image_size_small + 'px'
+                    width: config.image_size_small + 'px'
                 },
                 ' .pe-card__media--regular': {
-                    width: config$$1.image_size_regular + 'px'
+                    width: config.image_size_regular + 'px'
                 },
                 ' .pe-card__media--medium': {
-                    width: config$$1.image_size_medium + 'px'
+                    width: config.image_size_medium + 'px'
                 },
                 ' .pe-card__media--large': {
-                    width: config$$1.image_size_large + 'px',
+                    width: config.image_size_large + 'px',
                     'margin-bottom': '16px'
                 },
                 ' .pe-card__media': {
@@ -2116,8 +2131,8 @@ var createStyles$8 = function createStyles(config$$1) {
                 ' .shadow + &': {
                     // first child
                     '&, img': {
-                        'border-top-left-radius': config$$1.border_radius + 'px',
-                        'border-top-right-radius': config$$1.border_radius + 'px'
+                        'border-top-left-radius': config.border_radius + 'px',
+                        'border-top-right-radius': config.border_radius + 'px'
                     }
                 }
             },
@@ -2138,11 +2153,11 @@ var createStyles$8 = function createStyles(config$$1) {
             },
 
             ' .pe-card__header': {
-                height: config$$1.one_line_height_with_icon + 'px',
+                height: config.one_line_height_with_icon + 'px',
 
                 ' .pe-list-tile__title': {
                     'font-size': '14px',
-                    'font-weight': common$1.font_weight_normal,
+                    'font-weight': appConfig.font_weight_normal,
                     'line-height': '20px',
                     'margin-top': '2px'
                 },
@@ -2165,12 +2180,12 @@ var createStyles$8 = function createStyles(config$$1) {
                 },
                 '&.pe-card__primary--tight': {
                     ' .pe-card__title': {
-                        'padding-bottom': config$$1.tight_title_padding_bottom - config$$1.subtitle_line_height_padding_bottom + 'px'
+                        'padding-bottom': config.tight_title_padding_bottom - config.subtitle_line_height_padding_bottom + 'px'
                     }
                 }
             }],
             ' .pe-card__title': [flex$1.flex(), {
-                padding: [config$$1.title_padding_v, config$$1.title_padding_h, config$$1.title_padding_v - config$$1.subtitle_line_height_padding_bottom, config$$1.title_padding_h].map(function (v) {
+                padding: [config.title_padding_v, config.title_padding_h, config.title_padding_v - config.subtitle_line_height_padding_bottom, config.title_padding_h].map(function (v) {
                     return v + 'px';
                 }).join(' '),
                 'font-size': '24px',
@@ -2183,7 +2198,7 @@ var createStyles$8 = function createStyles(config$$1) {
 
             ' .pe-card__actions': [{
                 'min-height': 36 + 2 * 8 + 'px',
-                padding: config$$1.actions_padding_v + 'px' + ' ' + config$$1.padding_actions_h + 'px',
+                padding: config.actions_padding_v + 'px' + ' ' + config.padding_actions_h + 'px',
 
                 '&.pe-card__actions--tight': {
                     'min-height': 0
@@ -2204,45 +2219,45 @@ var createStyles$8 = function createStyles(config$$1) {
 
                 '&.pe-card__actions--vertical': [flex$1.layoutVertical, {
                     // vertical flex layout
-                    'padding-top': config$$1.actions_vertical_padding_v + 'px',
-                    'padding-bottom': config$$1.actions_vertical_padding_v + 'px',
+                    'padding-top': config.actions_vertical_padding_v + 'px',
+                    'padding-bottom': config.actions_vertical_padding_v + 'px',
 
                     // nested
                     ' .pe-card__actions': [{
-                        'margin-left': -config$$1.padding_actions_h + 'px',
-                        'margin-right': -config$$1.padding_actions_h + 'px',
+                        'margin-left': -config.padding_actions_h + 'px',
+                        'margin-right': -config.padding_actions_h + 'px',
                         'min-height': 0,
 
                         '&:first-child': {
-                            'margin-top': -config$$1.actions_vertical_padding_v + 'px'
+                            'margin-top': -config.actions_vertical_padding_v + 'px'
                         },
                         '&:last-child': {
-                            'margin-bottom': -config$$1.actions_vertical_padding_v + 'px'
+                            'margin-bottom': -config.actions_vertical_padding_v + 'px'
                         }
                     }],
 
                     ' .pe-button': {
                         height: '36px',
                         padding: 0,
-                        'margin-top': config$$1.actions_button_margin_v + 'px',
-                        'margin-bottom': config$$1.actions_button_margin_v + 'px'
+                        'margin-top': config.actions_button_margin_v + 'px',
+                        'margin-bottom': config.actions_button_margin_v + 'px'
                     }
                 }]
             }],
 
             ' .pe-card__text': {
-                'padding-top': config$$1.text_padding_v - config$$1.text_line_height_padding_top + 'px',
-                'padding-right': config$$1.text_padding_h + 'px',
-                'padding-left': config$$1.text_padding_h + 'px',
-                'padding-bottom': config$$1.tight_text_padding_bottom - config$$1.text_line_height_padding_bottom + 'px',
+                'padding-top': config.text_padding_v - config.text_line_height_padding_top + 'px',
+                'padding-right': config.text_padding_h + 'px',
+                'padding-left': config.text_padding_h + 'px',
+                'padding-bottom': config.tight_text_padding_bottom - config.text_line_height_padding_bottom + 'px',
                 'font-size': '14px',
                 'line-height': '24px',
 
                 '&:last-child': {
-                    'padding-bottom': config$$1.text_padding_bottom - config$$1.text_line_height_padding_bottom + 'px'
+                    'padding-bottom': config.text_padding_bottom - config.text_line_height_padding_bottom + 'px'
                 },
                 '&.pe-card__text--tight, &.pe-card__text--tight:last-child': {
-                    'padding-bottom': config$$1.tight_text_padding_bottom - config$$1.text_line_height_padding_bottom + 'px'
+                    'padding-bottom': config.tight_text_padding_bottom - config.text_line_height_padding_bottom + 'px'
                 },
                 ' .pe-card__actions + &': {
                     'margin-top': '8px'
@@ -2251,76 +2266,76 @@ var createStyles$8 = function createStyles(config$$1) {
 
             ' .pe-card__text, .pe-card__primary': {
                 '& + .pe-card__actions:not(:last-child)': {
-                    'margin-top': -(config$$1.offset_small_padding_v + 1) + 'px',
-                    'margin-bottom': -(config$$1.offset_small_padding_v - 1) + 'px'
+                    'margin-top': -(config.offset_small_padding_v + 1) + 'px',
+                    'margin-bottom': -(config.offset_small_padding_v - 1) + 'px'
                 }
             }
         }
     }];
 };
 
-var layout$7 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$8);
+var layout$7 = (function (config) {
+    return mixin.createStyles(config, createStyles$8);
 });
 
 function _defineProperty$4(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$3 = function style(config$$1, tint) {
+var style$3 = function style(config, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$4({}, scope + '.pe-card', {
-        'background-color': config$$1['color_' + tint + '_main_background']
+        'background-color': config['color_' + tint + '_main_background']
     })];
 };
 
-var content = function content(config$$1, tint) {
+var content = function content(config, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$4({}, scope, {
         ' .pe-card__title, .pe-list-tile__title': {
-            'color': config$$1['color_' + tint + '_title_text']
+            'color': config['color_' + tint + '_title_text']
         },
         ' .pe-card__subtitle, .pe-list-tile__subtitle': {
-            'color': config$$1['color_' + tint + '_subtitle_text']
+            'color': config['color_' + tint + '_subtitle_text']
         },
         ' .pe-card__text': {
-            'color': config$$1['color_' + tint + '_text']
+            'color': config['color_' + tint + '_text']
         },
         ' .pe-card__actions--borders': [mixin.hairline('border-top'), {
-            'border-top': '1px solid ' + config$$1['color_' + tint + '_actions_border']
+            'border-top': '1px solid ' + config['color_' + tint + '_actions_border']
         }]
     })];
 };
 
-var overlay = function overlay(config$$1, tint) {
+var overlay = function overlay(config, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$4({}, scope + '.pe-card__overlay--sheet', {
         ' .pe-card__overlay__content': {
-            'background-color': config$$1['color_' + tint + '_overlay_background']
+            'background-color': config['color_' + tint + '_overlay_background']
         }
     })];
 };
 
-var createStyles$9 = function createStyles(config$$1) {
-    return [style$3(config$$1, 'light'), content(config$$1, 'light', '.pe-card'), overlay(config$$1, 'light'), {
+var createStyles$9 = function createStyles(config) {
+    return [style$3(config, 'light'), content(config, 'light', '.pe-card'), overlay(config, 'light'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$3(config$$1, 'dark', ' '), content(config$$1, 'dark', ' '), overlay(config$$1, 'dark', ' ')]
+        style$3(config, 'dark', ' '), content(config, 'dark', ' '), overlay(config, 'dark', ' ')]
     },
     // is dark theme
-    style$3(config$$1, 'dark', '.pe-dark-theme'), overlay(config$$1, 'dark', '.pe-dark-theme '), content(config$$1, 'dark', '.pe-card.pe-dark-theme')];
+    style$3(config, 'dark', '.pe-dark-theme'), overlay(config, 'dark', '.pe-dark-theme '), content(config, 'dark', '.pe-card.pe-dark-theme')];
 };
 
-var color$2 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$9);
+var color$2 = (function (config) {
+    return mixin.createStyles(config, createStyles$9);
 });
 
-var themeConfigFn$5 = config && config.card;
-var config$6 = themeConfigFn$5 ? themeConfigFn$5(componentConfig$4) : componentConfig$4;
+var configFn$5 = componentConfig && componentConfig.card;
+var config$5 = configFn$5 ? configFn$5(vars$4) : vars$4;
 var id$6 = 'pe-card';
 
-styler.add(id$6, layout$7(config$6), color$2(config$6));
+styler.add(id$6, layout$7(config$5), color$2(config$5));
 
 var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -2622,7 +2637,7 @@ var createView$8 = function createView(ctrl) {
     var props = _extends$6({}, {
         class: [CSS_CLASSES$7.block, opts.defaultClass, checked ? CSS_CLASSES$7.on : CSS_CLASSES$7.off, opts.disabled ? CSS_CLASSES$7.disabled : null, inactive ? CSS_CLASSES$7.inactive : null, classForType$1(opts.size), opts.class].join(' '),
         id: opts.id || '',
-        config: function config$$1(el, inited, context, vdom) {
+        config: function config(el, inited, context, vdom) {
             if (inited) {
                 return;
             }
@@ -2638,7 +2653,7 @@ var createView$8 = function createView(ctrl) {
         type: opts.type, // set by checkbox / radio-button
         tabindex: -1, // set in selectionView / icon-button
         checked: checked,
-        config: function config$$1(el, inited) {
+        config: function config(el, inited) {
             if (inited) return;
             ctrl.setInputEl(el);
         }
@@ -2718,23 +2733,23 @@ var component$10 = {
     }
 };
 
-var padding$1 = (common$1.grid_unit_icon_button - common$1.unit_icon_size) / 2; // 12
-var padding_compact = (common$1.grid_unit_icon_button - common$1.unit_icon_size) / 3; // 8
+var padding$1 = (appConfig.grid_unit_icon_button - appConfig.unit_icon_size) / 2; // 12
+var padding_compact = (appConfig.grid_unit_icon_button - appConfig.unit_icon_size) / 3; // 8
 
 var iconButtonConfig = {
   padding: padding$1,
   padding_compact: padding_compact,
 
-  color_light_wash_opacity: common$1.blend_light_background_hover_medium,
-  color_light_focus_opacity: common$1.blend_light_background_hover_medium,
-  color_light_flat_normal_text: common$1.rgba(common$1.color_light_foreground, common$1.blend_light_text_secondary),
+  color_light_wash_opacity: appConfig.blend_light_background_hover_medium,
+  color_light_focus_opacity: appConfig.blend_light_background_hover_medium,
+  color_light_flat_normal_text: appConfig.rgba(appConfig.color_light_foreground, appConfig.blend_light_text_secondary),
 
-  color_dark_wash_opacity: common$1.blend_dark_background_hover_medium,
-  color_dark_focus_opacity: common$1.blend_dark_background_hover_medium,
-  color_dark_flat_normal_text: common$1.rgba(common$1.color_dark_foreground, common$1.blend_dark_text_secondary)
+  color_dark_wash_opacity: appConfig.blend_dark_background_hover_medium,
+  color_dark_focus_opacity: appConfig.blend_dark_background_hover_medium,
+  color_dark_flat_normal_text: appConfig.rgba(appConfig.color_dark_foreground, appConfig.blend_dark_text_secondary)
 };
 
-var createStyles$10 = function createStyles(config$$1) {
+var createStyles$10 = function createStyles(config) {
     return [{
         '.pe-button--icon': {
             // don't set button size to facilitate different icon sizes
@@ -2752,48 +2767,48 @@ var createStyles$10 = function createStyles(config$$1) {
 
             ' .pe-button__label': {
                 'line-height': 1,
-                padding: config$$1.padding + 'px'
+                padding: config.padding + 'px'
             },
 
             '&.pe-button--compact': {
                 ' .pe-button__label': {
-                    padding: config$$1.padding_compact + 'px'
+                    padding: config.padding_compact + 'px'
                 }
             }
         }
     }];
 };
 
-var layout$8 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$10);
+var layout$8 = (function (config) {
+    return mixin.createStyles(config, createStyles$10);
 });
 
 function _defineProperty$5(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$4 = function style(config$$1, tint, type) {
+var style$4 = function style(config, tint, type) {
     var scope = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '';
 
     return [_defineProperty$5({}, scope + '.pe-button.pe-button--icon', {
-        color: config$$1['color_' + tint + '_' + type + '_normal_text'],
+        color: config['color_' + tint + '_' + type + '_normal_text'],
         background: 'none',
 
         ' .pe-button__wash': {
-            opacity: config$$1['color_' + tint + '_wash_opacity']
+            opacity: config['color_' + tint + '_wash_opacity']
         },
 
         '&.pe-button--focus, &.pe-button--selected': {
             ' .pe-button__focus': {
-                opacity: config$$1['color_' + tint + '_focus_opacity'],
+                opacity: config['color_' + tint + '_focus_opacity'],
                 'background-color': 'currentcolor'
             }
         },
 
         '&.pe-button--disabled': {
-            color: config$$1['color_' + tint + '_' + type + '_disabled_text']
+            color: config['color_' + tint + '_' + type + '_disabled_text']
         },
 
         '&.pe-button--raised': {
-            'background-color': config$$1['color_' + tint + '_background'],
+            'background-color': config['color_' + tint + '_background'],
 
             ' .pe-button__content': {
                 background: 'transparent'
@@ -2802,7 +2817,7 @@ var style$4 = function style(config$$1, tint, type) {
     })];
 };
 
-var noTouch$2 = function noTouch(config$$1, tint, type) {
+var noTouch$2 = function noTouch(config, tint, type) {
     var scope = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '';
 
     return [_defineProperty$5({}, scope + '.pe-button.pe-button--icon:hover', tint === 'light' ? {
@@ -2811,34 +2826,34 @@ var noTouch$2 = function noTouch(config$$1, tint, type) {
         }
     } : {
         ' .pe-button__wash': {
-            'background-color': config$$1['color_' + tint + '_' + type + '_normal_text']
+            'background-color': config['color_' + tint + '_' + type + '_normal_text']
         }
     })];
 };
 
-var createStyles$11 = function createStyles(config$$1) {
-    return [style$4(config$$1, 'light', 'flat'), {
-        'html.pe-no-touch': [noTouch$2(config$$1, 'light', 'flat', ' ')]
+var createStyles$11 = function createStyles(config) {
+    return [style$4(config, 'light', 'flat'), {
+        'html.pe-no-touch': [noTouch$2(config, 'light', 'flat', ' ')]
     }, {
         '.pe-dark-theme': [
         // inside dark theme
-        style$4(config$$1, 'dark', 'flat', ' '),
+        style$4(config, 'dark', 'flat', ' '),
         // has dark theme
-        style$4(config$$1, 'dark', 'flat', '&')]
+        style$4(config, 'dark', 'flat', '&')]
     }, {
-        'html.pe-no-touch .pe-dark-theme': [noTouch$2(config$$1, 'dark', 'flat', ' ')]
+        'html.pe-no-touch .pe-dark-theme': [noTouch$2(config, 'dark', 'flat', ' ')]
     }];
 };
 
-var color$3 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$11);
+var color$3 = (function (config) {
+    return mixin.createStyles(config, createStyles$11);
 });
 
-var themeConfigFn$6 = config && config['icon-button'];
-var config$7 = themeConfigFn$6 ? themeConfigFn$6(iconButtonConfig) : iconButtonConfig;
+var configFn$6 = componentConfig && componentConfig['icon-button'];
+var config$6 = configFn$6 ? configFn$6(iconButtonConfig) : iconButtonConfig;
 var id$7 = 'pe-icon-button';
 
-styler.add(id$7, layout$8(config$7), color$3(config$7));
+styler.add(id$7, layout$8(config$6), color$3(config$6));
 
 var _extends$8 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -2914,43 +2929,43 @@ var createSelection = function createSelection(checked, opts) {
     }, opts.iconButton)));
 };
 
-var activeColor = common$1.color_primary; // or override in CSS by setting 'color' property on '.pe-checkbox' / '.pe-radio-button'
-var rgba$4 = common$1.rgba;
-var label_padding = (common$1.grid_unit_icon_button - common$1.unit_icon_size) / 2; // 12
+var activeColor = appConfig.color_primary; // or override in CSS by setting 'color' property on '.pe-checkbox' / '.pe-radio-button'
+var rgba$3 = appConfig.rgba;
+var label_padding = (appConfig.grid_unit_icon_button - appConfig.unit_icon_size) / 2; // 12
 
 var selectionControlConfig = {
-    label_font_size: 2 * common$1.grid_unit_component, // 16
-    label_height: 3 * common$1.grid_unit_component, // 24
-    padding: Math.floor(1.7 * common$1.grid_unit_component),
+    label_font_size: 2 * appConfig.grid_unit_component, // 16
+    label_height: 3 * appConfig.grid_unit_component, // 24
+    padding: Math.floor(1.7 * appConfig.grid_unit_component),
     label_padding: label_padding,
-    button_size: 6 * common$1.grid_unit_component,
-    icon_size: 3 * common$1.grid_unit_component,
-    animation_duration: common$1.animation_duration,
+    button_size: 6 * appConfig.grid_unit_component,
+    icon_size: 3 * appConfig.grid_unit_component,
+    animation_duration: appConfig.animation_duration,
 
-    color_light_on_text: common$1.rgba(activeColor),
-    color_light_off_text: rgba$4(common$1.color_light_foreground, common$1.blend_light_text_secondary),
-    color_light_off_icon: rgba$4(common$1.color_light_foreground, common$1.blend_light_text_secondary),
-    color_light_label_text: rgba$4(common$1.color_light_foreground, common$1.blend_light_text_secondary),
-    color_light_disabled_text: rgba$4(common$1.color_light_foreground, common$1.blend_light_text_disabled),
+    color_light_on_text: appConfig.rgba(activeColor),
+    color_light_off_text: rgba$3(appConfig.color_light_foreground, appConfig.blend_light_text_secondary),
+    color_light_off_icon: rgba$3(appConfig.color_light_foreground, appConfig.blend_light_text_secondary),
+    color_light_label_text: rgba$3(appConfig.color_light_foreground, appConfig.blend_light_text_secondary),
+    color_light_disabled_text: rgba$3(appConfig.color_light_foreground, appConfig.blend_light_text_disabled),
     color_light_thumb_off_focus_opacity: .08,
     color_light_thumb_on_focus_opacity: .11,
 
-    color_light_focus_on: rgba$4(common$1.color_primary),
+    color_light_focus_on: rgba$3(appConfig.color_primary),
     color_light_focus_on_opacity: .11,
-    color_light_focus_off: rgba$4(common$1.color_light_foreground),
+    color_light_focus_off: rgba$3(appConfig.color_light_foreground),
     color_light_focus_off_opacity: .07,
 
-    color_dark_on_text: common$1.rgba(activeColor),
-    color_dark_off_text: rgba$4(common$1.color_dark_foreground, common$1.blend_dark_text_secondary),
+    color_dark_on_text: appConfig.rgba(activeColor),
+    color_dark_off_text: rgba$3(appConfig.color_dark_foreground, appConfig.blend_dark_text_secondary),
     color_dark_off_icon: '#fff',
-    color_dark_label_text: rgba$4(common$1.color_dark_foreground, common$1.blend_dark_text_secondary),
-    color_dark_disabled_text: rgba$4(common$1.color_dark_foreground, common$1.blend_dark_text_disabled),
+    color_dark_label_text: rgba$3(appConfig.color_dark_foreground, appConfig.blend_dark_text_secondary),
+    color_dark_disabled_text: rgba$3(appConfig.color_dark_foreground, appConfig.blend_dark_text_disabled),
     color_dark_thumb_off_focus_opacity: .08,
     color_dark_thumb_on_focus_opacity: .11,
 
-    color_dark_focus_on: rgba$4(common$1.color_primary), // or '#80cbc4'
+    color_dark_focus_on: rgba$3(appConfig.color_primary), // or '#80cbc4'
     color_dark_focus_on_opacity: .14,
-    color_dark_focus_off: rgba$4(common$1.color_dark_foreground),
+    color_dark_focus_off: rgba$3(appConfig.color_dark_foreground),
     color_dark_focus_off_opacity: .09
 };
 
@@ -2958,10 +2973,10 @@ function _defineProperty$6(obj, key, value) { if (key in obj) { Object.definePro
 
 // Returns a style function to be used by checkbox and radio-button
 
-var getSize = function getSize(config$$1, height) {
-    var iconSize = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : common$1.unit_icon_size;
+var getSize = function getSize(config, height) {
+    var iconSize = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : appConfig.unit_icon_size;
 
-    var labelSize = iconSize + 2 * config$$1.label_padding;
+    var labelSize = iconSize + 2 * config.label_padding;
     var iconOffset = (labelSize - iconSize) / 2;
     return {
         ' .pe-control__label': {
@@ -2994,7 +3009,7 @@ var inactiveButton = function inactiveButton() {
     };
 };
 
-var createStyles$12 = function createStyles(config$$1, className, type) {
+var createStyles$12 = function createStyles(config, className, type) {
     var _peControl;
 
     return [{
@@ -3007,8 +3022,8 @@ var createStyles$12 = function createStyles(config$$1, className, type) {
             ' .pe-control__label': [flex$1.layoutHorizontal, flex$1.layoutCenter, {
                 position: 'relative',
                 cursor: 'pointer',
-                'font-size': config$$1.label_font_size + 'px',
-                'line-height': config$$1.label_height + 'px',
+                'font-size': config.label_font_size + 'px',
+                'line-height': config.label_height + 'px',
                 margin: 0,
                 color: 'inherit',
 
@@ -3025,8 +3040,8 @@ var createStyles$12 = function createStyles(config$$1, className, type) {
 
         }, _defineProperty$6(_peControl, ' input[type=' + type + '].pe-control__input', [mixin.vendorize({
             'appearance': 'none'
-        }, common$1.prefixes_appearance), {
-            'line-height': config$$1.label_height + 'px',
+        }, appConfig.prefixes_appearance), {
+            'line-height': config.label_height + 'px',
             // Hide input element
             position: 'absolute',
             'z-index': '-1',
@@ -3041,17 +3056,17 @@ var createStyles$12 = function createStyles(config$$1, className, type) {
             position: 'relative',
             display: 'inline-block',
             'box-sizing': 'border-box',
-            width: config$$1.label_height + 'px',
-            height: config$$1.label_height + 'px',
+            width: config.label_height + 'px',
+            height: config.label_height + 'px',
             color: 'inherit',
 
             ':focus': {
                 outline: 0
             }
-        }), _defineProperty$6(_peControl, ' .pe-control__button', [mixin.defaultTransition('opacity', config$$1.animation_duration), {
+        }), _defineProperty$6(_peControl, ' .pe-control__button', [mixin.defaultTransition('opacity', config.animation_duration), {
             position: 'absolute',
-            left: -((config$$1.button_size - config$$1.icon_size) / 2) + 'px',
-            top: -((config$$1.button_size - config$$1.icon_size) / 2) + 'px',
+            left: -((config.button_size - config.icon_size) / 2) + 'px',
+            top: -((config.button_size - config.icon_size) / 2) + 'px',
             'z-index': 1
             // opacity: 0,
             // 'pointer-events': 'auto'
@@ -3062,8 +3077,8 @@ var createStyles$12 = function createStyles(config$$1, className, type) {
             ' .pe-control__button--on': activeButton(),
             ' .pe-control__button--off': inactiveButton()
         }), _defineProperty$6(_peControl, ' .pe-control__label span', {
-            'padding-left': config$$1.padding + 'px',
-            'padding-right': config$$1.padding + 'px'
+            'padding-left': config.padding + 'px',
+            'padding-right': config.padding + 'px'
         }), _defineProperty$6(_peControl, '&.pe-control--disabled', {
             ' .pe-control__label': {
                 cursor: 'auto'
@@ -3075,13 +3090,13 @@ var createStyles$12 = function createStyles(config$$1, className, type) {
             ' .pe-icon': {
                 position: 'absolute'
             }
-        }), _defineProperty$6(_peControl, '&.pe-control--small', getSize(config$$1, common$1.unit_icon_size_small, common$1.unit_icon_size_small)), _defineProperty$6(_peControl, '&.pe-control--regular', getSize(config$$1, config$$1.label_height, common$1.unit_icon_size)), _defineProperty$6(_peControl, '&.pe-control--medium', getSize(config$$1, common$1.unit_icon_size_medium, common$1.unit_icon_size_medium)), _defineProperty$6(_peControl, '&.pe-control--large', getSize(config$$1, common$1.unit_icon_size_large, common$1.unit_icon_size_large)), _peControl)
+        }), _defineProperty$6(_peControl, '&.pe-control--small', getSize(config, appConfig.unit_icon_size_small, appConfig.unit_icon_size_small)), _defineProperty$6(_peControl, '&.pe-control--regular', getSize(config, config.label_height, appConfig.unit_icon_size)), _defineProperty$6(_peControl, '&.pe-control--medium', getSize(config, appConfig.unit_icon_size_medium, appConfig.unit_icon_size_medium)), _defineProperty$6(_peControl, '&.pe-control--large', getSize(config, appConfig.unit_icon_size_large, appConfig.unit_icon_size_large)), _peControl)
     }];
 };
 
-var layout$9 = (function (config$$1) {
-    return mixin.createStyles(config$$1, function (config$$1) {
-        return createStyles$12(config$$1, '.pe-control--checkbox', 'checkbox');
+var layout$9 = (function (config) {
+    return mixin.createStyles(config, function (config) {
+        return createStyles$12(config, '.pe-control--checkbox', 'checkbox');
     });
 });
 
@@ -3089,15 +3104,15 @@ function _defineProperty$7(obj, key, value) { if (key in obj) { Object.definePro
 
 // Returns a style function to be used by checkbox and radio-button
 
-var style$5 = function style(config$$1, tint) {
+var style$5 = function style(config, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$7({}, scope + '.pe-control', {
-        color: config$$1['color_' + tint + '_on_text'], // override by specifying 'color'
+        color: config['color_' + tint + '_on_text'], // override by specifying 'color'
 
         ' .pe-control__label': {
             ' span': {
-                color: config$$1['color_' + tint + '_label_text']
+                color: config['color_' + tint + '_label_text']
             }
         },
         ' .pe-control__box': {
@@ -3109,63 +3124,63 @@ var style$5 = function style(config$$1, tint) {
                 },
 
                 ' .pe-control__button--off': {
-                    color: config$$1['color_' + tint + '_off_icon']
+                    color: config['color_' + tint + '_off_icon']
                 }
             }
         },
         '&.pe-control--off': {
             ' .pe-button--focus .pe-button__focus': {
-                opacity: config$$1['color_' + tint + '_focus_off_opacity'],
-                'background-color': config$$1['color_' + tint + '_focus_off']
+                opacity: config['color_' + tint + '_focus_off_opacity'],
+                'background-color': config['color_' + tint + '_focus_off']
             },
             // reverse the ripple color so that it corresponds to the resulting state
             ' .pe-ripple': {
-                color: config$$1['color_' + tint + '_focus_on']
+                color: config['color_' + tint + '_focus_on']
             }
         },
         '&.pe-control--on': {
             ' .pe-button--focus .pe-button__focus': {
-                opacity: config$$1['color_' + tint + '_focus_on_opacity'],
-                'background-color': config$$1['color_' + tint + '_focus_on']
+                opacity: config['color_' + tint + '_focus_on_opacity'],
+                'background-color': config['color_' + tint + '_focus_on']
             },
             // reverse the ripple color so that it corresponds to the resulting state
             ' .pe-ripple': {
-                color: config$$1['color_' + tint + '_focus_off']
+                color: config['color_' + tint + '_focus_off']
             }
         },
 
         '&.pe-control--disabled': {
             ' .pe-control__label span': {
-                color: config$$1['color_' + tint + '_disabled_text']
+                color: config['color_' + tint + '_disabled_text']
             },
             ' .pe-control__box': {
                 ' .pe-control__button--on, .pe-control__button--off': {
-                    color: config$$1['color_' + tint + '_disabled_text']
+                    color: config['color_' + tint + '_disabled_text']
                 }
             }
         }
     })];
 };
 
-var createStyles$13 = function createStyles(config$$1) {
-    return [style$5(config$$1, 'light', '.pe-control--checkbox'), {
+var createStyles$13 = function createStyles(config) {
+    return [style$5(config, 'light', '.pe-control--checkbox'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$5(config$$1, 'dark', ' '),
+        style$5(config, 'dark', ' '),
         // has dark theme
-        style$5(config$$1, 'dark', '&')]
+        style$5(config, 'dark', '&')]
     }];
 };
 
-var color$4 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$13);
+var color$4 = (function (config) {
+    return mixin.createStyles(config, createStyles$13);
 });
 
-var themeConfigFn$7 = config && config.checkbox;
-var config$8 = themeConfigFn$7 ? themeConfigFn$7(selectionControlConfig) : selectionControlConfig;
+var configFn$7 = componentConfig && componentConfig.checkbox;
+var config$7 = configFn$7 ? configFn$7(selectionControlConfig) : selectionControlConfig;
 var id$8 = 'pe-checkbox';
 
-styler.add(id$8, layout$9(config$8), color$4(config$8));
+styler.add(id$8, layout$9(config$7), color$4(config$7));
 
 // default icons
 var iconOff = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>');
@@ -3396,73 +3411,6 @@ var multiple = function multiple(mOpts) {
     };
 };
 
-var listeners = {};
-
-// https://gist.github.com/Eartz/fe651f2fadcc11444549
-var throttle = function throttle(func) {
-    var s = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0.05;
-    var context = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : window;
-
-    var wait = false;
-    return function () {
-        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-            args[_key] = arguments[_key];
-        }
-
-        var later = function later() {
-            func.apply(context, args);
-        };
-        if (!wait) {
-            later();
-            wait = true;
-            setTimeout(function () {
-                wait = false;
-            }, s);
-        }
-    };
-};
-
-var subscribe = function subscribe(eventName, listener, delay) {
-    listeners[eventName] = listeners[eventName] || [];
-    listeners[eventName].push(delay ? throttle(listener, delay) : listener);
-};
-
-var unsubscribe = function unsubscribe(eventName, listener) {
-    if (!listeners[eventName]) {
-        return;
-    }
-    var index = listeners[eventName].indexOf(listener);
-    if (index > -1) {
-        listeners[eventName].splice(index, 1);
-    }
-};
-
-var emit = function emit(eventName, event) {
-    if (!listeners[eventName]) {
-        return;
-    }
-    listeners[eventName].forEach(function (listener) {
-        listener(event);
-    });
-};
-
-window.addEventListener('resize', function (e) {
-    return emit('resize', e);
-});
-window.addEventListener('scroll', function (e) {
-    return emit('scroll', e);
-});
-window.addEventListener('keydown', function (e) {
-    return emit('keydown', e);
-});
-
-var events = {
-    throttle: throttle,
-    subscribe: subscribe,
-    unsubscribe: unsubscribe,
-    emit: emit
-};
-
 /*
 Generic show/hide transition module
 */
@@ -3613,30 +3561,30 @@ var transition$1 = {
     hide: hide$1
 };
 
-var rgba$5 = common$1.rgba;
+var rgba$4 = appConfig.rgba;
 
-var componentConfig$6 = {
-    border_radius: common$1.unit_block_border_radius,
-    padding: 3 * common$1.grid_unit_component,
+var vars$6 = {
+    border_radius: appConfig.unit_block_border_radius,
+    padding: 3 * appConfig.grid_unit_component,
     header_bottom: 20,
     header_height: 60,
     footer_height: 52,
 
-    color_light_content_background: rgba$5(common$1.color_light_background),
-    color_light_title_text: rgba$5(common$1.color_light_foreground, common$1.blend_light_text_primary),
-    color_light_body_text: rgba$5(common$1.color_light_foreground, common$1.blend_light_text_regular),
-    color_light_body_border: rgba$5(common$1.color_light_foreground, common$1.blend_light_border_light),
+    color_light_content_background: rgba$4(appConfig.color_light_background),
+    color_light_title_text: rgba$4(appConfig.color_light_foreground, appConfig.blend_light_text_primary),
+    color_light_body_text: rgba$4(appConfig.color_light_foreground, appConfig.blend_light_text_regular),
+    color_light_body_border: rgba$4(appConfig.color_light_foreground, appConfig.blend_light_border_light),
     color_light_backdrop_background: 'rgba(0, 0, 0, .4)',
 
-    color_dark_content_background: rgba$5(common$1.color_dark_background),
-    color_dark_title_text: rgba$5(common$1.color_dark_foreground, common$1.blend_dark_text_primary),
-    color_dark_body_text: rgba$5(common$1.color_dark_foreground, common$1.blend_dark_text_regular),
-    color_dark_body_border: rgba$5(common$1.color_dark_foreground, common$1.blend_dark_border_light),
+    color_dark_content_background: rgba$4(appConfig.color_dark_background),
+    color_dark_title_text: rgba$4(appConfig.color_dark_foreground, appConfig.blend_dark_text_primary),
+    color_dark_body_text: rgba$4(appConfig.color_dark_foreground, appConfig.blend_dark_text_regular),
+    color_dark_body_border: rgba$4(appConfig.color_dark_foreground, appConfig.blend_dark_border_light),
     color_dark_backdrop_background: 'rgba(0, 0, 0, .5)'
 };
 
-var createStyles$14 = function createStyles(config$$1) {
-    var padding = config$$1.padding;
+var createStyles$14 = function createStyles(config) {
+    var padding = config.padding;
     var lineHeightTitle = 24;
 
     return [{
@@ -3644,15 +3592,15 @@ var createStyles$14 = function createStyles(config$$1) {
         // transition-duration set in js
         mixin.vendorize({
             'transition-timing-function': 'ease-out'
-        }, common$1.prefixes_transition), mixin.vendorize({
+        }, appConfig.prefixes_transition), mixin.vendorize({
             'transition-property': 'opacity'
-        }, common$1.prefixes_transition), {
+        }, appConfig.prefixes_transition), {
             position: 'fixed',
             top: 0,
             left: 0,
             right: 0,
             bottom: 0,
-            'z-index': common$1.z_dialog,
+            'z-index': appConfig.z_dialog,
             height: '100%', // 100vh would make the dialog go beneath Mobile Safari toolbar
             padding: padding + 'px 40px',
             opacity: 0,
@@ -3691,8 +3639,8 @@ var createStyles$14 = function createStyles(config$$1) {
                 position: 'relative',
                 'max-height': '100%',
                 'min-width': 56 * 5 + 'px',
-                'max-width': 7 * common$1.grid_unit_menu + 'px',
-                'border-radius': config$$1.border_radius + 'px',
+                'max-width': 7 * appConfig.grid_unit_menu + 'px',
+                'border-radius': config.border_radius + 'px',
 
                 ' > .pe-shadow': {
                     'z-index': -1 // For IE10 to get click events on content
@@ -3707,9 +3655,9 @@ var createStyles$14 = function createStyles(config$$1) {
             }],
 
             ' .pe-dialog__title': {
-                'font-size': common$1.font_size_title + 'px',
+                'font-size': appConfig.font_size_title + 'px',
                 'line-height': lineHeightTitle + 'px',
-                'font-weight': common$1.font_weight_medium,
+                'font-weight': appConfig.font_weight_medium,
 
                 '& + div': {
                     'margin-top': '16px'
@@ -3717,10 +3665,10 @@ var createStyles$14 = function createStyles(config$$1) {
             },
 
             ' .pe-dialog__header': {
-                padding: [padding - 4, padding, config$$1.header_bottom - 4, padding].map(function (v) {
+                padding: [padding - 4, padding, config.header_bottom - 4, padding].map(function (v) {
                     return v + 'px';
                 }).join(' '),
-                'min-height': config$$1.header_height + 'px',
+                'min-height': config.header_height + 'px',
 
                 ' .pe-dialog__title': [mixin.ellipsis(1), {
                     width: '100%'
@@ -3741,7 +3689,7 @@ var createStyles$14 = function createStyles(config$$1) {
                 'border-style': 'solid none',
                 'border-color': 'transparent',
                 // initially set max-height; will be overridden by dialog core with actual heights
-                'max-height': 'calc(100vh - ' + 2 * padding + 'px - ' + (config$$1.header_height + config$$1.footer_height) + 'px)'
+                'max-height': 'calc(100vh - ' + 2 * padding + 'px - ' + (config.header_height + config.footer_height) + 'px)'
             }],
             ' .pe-dialog__header + .pe-dialog__body': {
                 'padding-top': 0
@@ -3749,7 +3697,7 @@ var createStyles$14 = function createStyles(config$$1) {
 
             ' .pe-dialog__footer': {
                 padding: '2px 8px',
-                'min-height': config$$1.footer_height + 'px',
+                'min-height': config.footer_height + 'px',
                 'font-size': 0, // remove inline block spacing
 
                 '&.pe-dialog__footer--high': {
@@ -3780,56 +3728,56 @@ var createStyles$14 = function createStyles(config$$1) {
     }];
 };
 
-var layout$10 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$14);
+var layout$10 = (function (config) {
+    return mixin.createStyles(config, createStyles$14);
 });
 
 function _defineProperty$8(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$6 = function style(config$$1, tint) {
+var style$6 = function style(config, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$8({}, scope + '.pe-dialog', {
         '&.pe-dialog--backdrop': {
-            'background-color': config$$1['color_' + tint + '_backdrop_background']
+            'background-color': config['color_' + tint + '_backdrop_background']
         },
         ' .pe-dialog__content': {
-            'background-color': config$$1['color_' + tint + '_content_background']
+            'background-color': config['color_' + tint + '_content_background']
         },
         ' .pe-dialog__header .pe-dialog__title': {
-            'color': config$$1['color_' + tint + '_title_text']
+            'color': config['color_' + tint + '_title_text']
         },
         ' .pe-dialog__body': {
-            'color': config$$1['color_' + tint + '_body_text']
+            'color': config['color_' + tint + '_body_text']
         },
         '&.pe-dialog--overflow-top .pe-dialog__body': {
-            'border-top-color': config$$1['color_' + tint + '_body_border']
+            'border-top-color': config['color_' + tint + '_body_border']
         },
         '&.pe-dialog--overflow-bottom .pe-dialog__body': {
-            'border-bottom-color': config$$1['color_' + tint + '_body_border']
+            'border-bottom-color': config['color_' + tint + '_body_border']
         }
     })];
 };
 
-var createStyles$15 = function createStyles(config$$1) {
-    return [style$6(config$$1, 'light'), {
+var createStyles$15 = function createStyles(config) {
+    return [style$6(config, 'light'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$6(config$$1, 'dark', ' '),
+        style$6(config, 'dark', ' '),
         // has dark theme
-        style$6(config$$1, 'dark', '&')]
+        style$6(config, 'dark', '&')]
     }];
 };
 
-var color$5 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$15);
+var color$5 = (function (config) {
+    return mixin.createStyles(config, createStyles$15);
 });
 
-var themeConfigFn$8 = config && config.dialog;
-var config$9 = themeConfigFn$8 ? themeConfigFn$8(componentConfig$6) : componentConfig$6;
+var configFn$8 = componentConfig && componentConfig.dialog;
+var config$8 = configFn$8 ? configFn$8(vars$6) : vars$6;
 var id$9 = 'pe-dialog';
 
-styler.add(id$9, layout$10(config$9), color$5(config$9));
+styler.add(id$9, layout$10(config$8), color$5(config$8));
 
 var _extends$10 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -3919,7 +3867,7 @@ var createViewContent = function createViewContent(ctrl, opts) {
     return m('div', {
         class: CSS_CLASSES$10.body,
         style: style,
-        config: function config$$1(el, inited) {
+        config: function config(el, inited) {
             if (inited) {
                 return;
             }
@@ -3954,7 +3902,7 @@ var createView$10 = function createView(ctrl) {
     var props = _extends$10({}, {
         class: [CSS_CLASSES$10.block, opts.fullscreen ? CSS_CLASSES$10.fullscreen : null, opts.backdrop ? CSS_CLASSES$10.hasBackdrop : null, ctrl.topOverflow || opts.borders ? CSS_CLASSES$10.hasTopOverflow : null, ctrl.bottomOverflow || opts.borders ? CSS_CLASSES$10.hasBottomOverflow : null, ctrl.visible ? CSS_CLASSES$10.visible : null, opts.class].join(' '),
         id: opts.id || '',
-        config: function config$$1(el, inited, context, vdom) {
+        config: function config(el, inited, context, vdom) {
             if (inited) {
                 return;
             }
@@ -4021,12 +3969,12 @@ var createView$10 = function createView(ctrl) {
         animated: true
     }), opts.fullscreen ? null : opts.title ? m('div', {
         class: CSS_CLASSES$10.header,
-        config: function config$$1(el) {
+        config: function config(el) {
             ctrl.headerHeight = el.scrollHeight;
         }
     }, [m('div', { class: CSS_CLASSES$10.title }, opts.title)]) : null, body, opts.fullscreen ? null : opts.footer ? m('div', {
         class: CSS_CLASSES$10.footer,
-        config: function config$$1(el, inited) {
+        config: function config(el, inited) {
             ctrl.footerHeight = el.scrollHeight;
             if (inited) {
                 return;
@@ -4078,39 +4026,39 @@ var dialog = multiple({
     bodyShowClass: 'pe-dialog--open'
 });
 
-var rgba$6 = common$1.rgba;
+var rgba$5 = appConfig.rgba;
 
-var componentConfig$7 = {
-    size_regular: 7 * common$1.grid_unit_component,
-    size_mini: 5 * common$1.grid_unit_component,
-    padding_regular: 2 * common$1.grid_unit_component,
+var vars$7 = {
+    size_regular: 7 * appConfig.grid_unit_component,
+    size_mini: 5 * appConfig.grid_unit_component,
+    padding_regular: 2 * appConfig.grid_unit_component,
 
-    color_light_background: rgba$6(common$1.color_primary),
-    color_light_text: rgba$6(common$1.color_primary_foreground),
+    color_light_background: rgba$5(appConfig.color_primary),
+    color_light_text: rgba$5(appConfig.color_primary_foreground),
 
-    color_dark_background: rgba$6(common$1.color_primary),
-    color_dark_text: rgba$6(common$1.color_primary_foreground)
+    color_dark_background: rgba$5(appConfig.color_primary),
+    color_dark_text: rgba$5(appConfig.color_primary_foreground)
 };
 
-var createStyles$16 = function createStyles(config$$1) {
+var createStyles$16 = function createStyles(config) {
     return [{
         '.pe-button--fab': [mixin.vendorize({
             'user-select': 'none'
-        }, common$1.prefixes_user_select), {
+        }, appConfig.prefixes_user_select), {
             display: 'inline-block',
             position: 'relative',
             outline: 'none',
             cursor: 'pointer',
-            width: config$$1.size_regular + 'px',
-            height: config$$1.size_regular + 'px',
-            padding: config$$1.padding_regular + 'px',
+            width: config.size_regular + 'px',
+            height: config.size_regular + 'px',
+            padding: config.padding_regular + 'px',
             'border-radius': '50%',
             border: 'none',
 
             '&.pe-button--fab-mini': {
-                width: config$$1.size_mini + 'px',
-                height: config$$1.size_mini + 'px',
-                padding: (config$$1.size_mini - common$1.unit_icon_size) / 2 + 'px'
+                width: config.size_mini + 'px',
+                height: config.size_mini + 'px',
+                padding: (config.size_mini - appConfig.unit_icon_size) / 2 + 'px'
             },
 
             ' .pe-button__content': {
@@ -4123,8 +4071,8 @@ var createStyles$16 = function createStyles(config$$1) {
             },
 
             ' .pe-button__wash': [mixin.vendorize({
-                transition: 'background-color ' + common$1.animation_duration + ' ease-in-out'
-            }, common$1.prefixes_transition), {
+                transition: 'background-color ' + appConfig.animation_duration + ' ease-in-out'
+            }, appConfig.prefixes_transition), {
                 'border-radius': 'inherit',
                 'pointer-events': 'none',
                 'background-color': 'transparent'
@@ -4133,18 +4081,18 @@ var createStyles$16 = function createStyles(config$$1) {
     }];
 };
 
-var layout$11 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$16);
+var layout$11 = (function (config) {
+    return mixin.createStyles(config, createStyles$16);
 });
 
 function _defineProperty$9(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$7 = function style(config$$1, tint) {
+var style$7 = function style(config, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$9({}, scope + '.pe-button.pe-button--fab', {
-        'background-color': config$$1['color_' + tint + '_background'],
-        color: config$$1['color_' + tint + '_text'],
+        'background-color': config['color_' + tint + '_background'],
+        color: config['color_' + tint + '_text'],
 
         ' .pe-button__content': {
             background: 'transparent'
@@ -4152,25 +4100,25 @@ var style$7 = function style(config$$1, tint) {
     })];
 };
 
-var createStyles$17 = function createStyles(config$$1) {
-    return [style$7(config$$1, 'light'), {
+var createStyles$17 = function createStyles(config) {
+    return [style$7(config, 'light'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$7(config$$1, 'dark', ' '),
+        style$7(config, 'dark', ' '),
         // has dark theme
-        style$7(config$$1, 'dark', '&')]
+        style$7(config, 'dark', '&')]
     }];
 };
 
-var color$6 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$17);
+var color$6 = (function (config) {
+    return mixin.createStyles(config, createStyles$17);
 });
 
-var themeConfigFn$9 = config && config.fab;
-var config$10 = themeConfigFn$9 ? themeConfigFn$9(componentConfig$7) : componentConfig$7;
+var configFn$9 = componentConfig && componentConfig.fab;
+var config$9 = configFn$9 ? configFn$9(vars$7) : vars$7;
 var id$10 = 'pe-fab';
 
-styler.add(id$10, layout$11(config$10), color$6(config$10));
+styler.add(id$10, layout$11(config$9), color$6(config$9));
 
 var _extends$11 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -4206,17 +4154,17 @@ var component$13 = {
     }
 };
 
-var margin_side = 2 * common$1.grid_unit_component - 12; // (buttonSize - iconSize) / 2 = (48 - 24) / 2
-var height_desktop = common$1.grid_unit_component * 8; // 64
-var height_mobile_portrait = common$1.grid_unit_component * 7; // 56
-var height_mobile_landscape = common$1.grid_unit_component * 6; // 48
+var margin_side = 2 * appConfig.grid_unit_component - 12; // (buttonSize - iconSize) / 2 = (48 - 24) / 2
+var height_desktop = appConfig.grid_unit_component * 8; // 64
+var height_mobile_portrait = appConfig.grid_unit_component * 7; // 56
+var height_mobile_landscape = appConfig.grid_unit_component * 6; // 48
 
-var componentConfig$8 = {
+var vars$8 = {
     margin_side: margin_side,
-    indent: common$1.unit_indent,
-    transition_duration: common$1.animation_duration,
-    font_size: common$1.font_size_title,
-    line_height: common$1.line_height,
+    indent: appConfig.unit_indent,
+    transition_duration: appConfig.animation_duration,
+    font_size: appConfig.font_size_title,
+    line_height: appConfig.line_height,
 
     height_desktop: height_desktop,
     height_mobile_portrait: height_mobile_portrait,
@@ -4229,54 +4177,54 @@ var componentConfig$8 = {
     height_narrow_medium_tall: 112,
     height_narrow_tall: 168,
 
-    color_light_text: common$1.rgba(common$1.color_light_foreground, common$1.blend_light_text_primary),
-    color_dark_text: common$1.rgba(common$1.color_dark_foreground, common$1.blend_dark_text_primary)
+    color_light_text: appConfig.rgba(appConfig.color_light_foreground, appConfig.blend_light_text_primary),
+    color_dark_text: appConfig.rgba(appConfig.color_dark_foreground, appConfig.blend_dark_text_primary)
 };
 
-var createStyles$18 = function createStyles(config$$1) {
+var createStyles$18 = function createStyles(config) {
     return [{
         '.pe-toolbar': [
         // use hardware-acceleration
         mixin.vendorize({
             transform: 'translate3d(0,0,0)'
-        }, common$1.prefixes_transform), {
+        }, appConfig.prefixes_transform), {
             display: 'block',
             position: 'relative',
-            height: config$$1.height_normal + 'px',
-            'font-size': config$$1.font_size + 'px',
-            'line-height': config$$1.line_height + 'em',
+            height: config.height_normal + 'px',
+            'font-size': config.font_size + 'px',
+            'line-height': config.line_height + 'em',
             'background-color': '#CFD8DC', // just a default color, will normally be overridden
 
-            '&.pe-header--animated': mixin.defaultTransition('height', config$$1.transition_duration, 'ease-in'),
+            '&.pe-header--animated': mixin.defaultTransition('height', config.transition_duration, 'ease-in'),
 
             '&.pe-header--medium-tall': {
-                height: config$$1.height_medium_tall + 'px'
+                height: config.height_medium_tall + 'px'
             },
 
             '&.pe-header--tall': {
-                height: config$$1.height_tall + 'px'
+                height: config.height_tall + 'px'
             },
 
             '&.pe-toolbar--narrow': {
-                height: config$$1.height_narrow + 'px',
+                height: config.height_narrow + 'px',
 
                 ' .pe-toolbar__bar': {
-                    height: config$$1.height_narrow + 'px',
+                    height: config.height_narrow + 'px',
                     padding: 0
                 }
             },
 
             '&.pe-toolbar--narrow.pe-header--medium-tall': {
-                height: config$$1.height_narrow_medium_tall + 'px'
+                height: config.height_narrow_medium_tall + 'px'
             },
 
             '&.pe-toolbar--narrow.pe-header--tall': {
-                height: config$$1.height_narrow_tall + 'px'
+                height: config.height_narrow_tall + 'px'
             },
 
             '&.pe-header--tall .pe-toolbar__bar--middle': mixin.vendorize({
                 transform: 'translateY(100%)'
-            }, common$1.prefixes_transform),
+            }, appConfig.prefixes_transform),
 
             ' .pe-toolbar__bar': [flex$1.layoutCenter, flex$1.layoutHorizontal, {
                 '> *:not(.disabled)': {
@@ -4285,31 +4233,31 @@ var createStyles$18 = function createStyles(config$$1) {
                 }
             }, {
                 '> :first-child': {
-                    'margin-left': config$$1.margin_side + 'px'
+                    'margin-left': config.margin_side + 'px'
                 }
             }, {
                 '> :last-child': {
-                    'margin-right': config$$1.margin_side + 'px'
+                    'margin-right': config.margin_side + 'px'
                 }
             }, {
                 ' .pe-button--icon + span, .pe-button--icon + .pe-title': {
-                    'margin-left': config$$1.indent - config$$1.margin_side - common$1.grid_unit_icon_button + 'px'
+                    'margin-left': config.indent - config.margin_side - appConfig.grid_unit_icon_button + 'px'
                 }
             }, {
-                '> span, > .pe-title': [mixin.ellipsis(1, common$1.line_height, 'em'), mixin.vendorize({
+                '> span, > .pe-title': [mixin.ellipsis(1, appConfig.line_height, 'em'), mixin.vendorize({
                     'transform-origin': 'left 50%'
-                }, common$1.prefixes_transform), {
-                    'line-height': common$1.line_height + 'em',
+                }, appConfig.prefixes_transform), {
+                    'line-height': appConfig.line_height + 'em',
                     'word-break': 'break-all'
                 }]
             }, {
-                '> span:first-child, .pe-toolbar__title--indent': [mixin.ellipsis(1, common$1.line_height, 'em'), {
-                    'margin-left': config$$1.indent + 'px'
+                '> span:first-child, .pe-toolbar__title--indent': [mixin.ellipsis(1, appConfig.line_height, 'em'), {
+                    'margin-left': config.indent + 'px'
                 }]
             }, {
                 width: '100%',
                 position: 'absolute',
-                height: config$$1.height_normal + 'px',
+                height: config.height_normal + 'px',
                 'pointer-events': 'none',
 
                 ' .pe-fit': [mixin.fit(), {
@@ -4320,7 +4268,7 @@ var createStyles$18 = function createStyles(config$$1) {
                         top: 'auto'
                     }
                 }],
-                ' .pe-header': mixin.ellipsis(1, common$1.line_height, 'em'),
+                ' .pe-header': mixin.ellipsis(1, appConfig.line_height, 'em'),
 
                 '&.pe-toolbar__bar--top': {
                     'z-index': 3
@@ -4344,39 +4292,39 @@ var createStyles$18 = function createStyles(config$$1) {
     }];
 };
 
-var layout$12 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$18);
+var layout$12 = (function (config) {
+    return mixin.createStyles(config, createStyles$18);
 });
 
 function _defineProperty$10(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$8 = function style(config$$1, tint) {
+var style$8 = function style(config, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$10({}, scope + '.pe-toolbar', {
-        color: config$$1['color_' + tint + '_text']
+        color: config['color_' + tint + '_text']
     })];
 };
 
-var createStyles$19 = function createStyles(config$$1) {
-    return [style$8(config$$1, 'light'), {
+var createStyles$19 = function createStyles(config) {
+    return [style$8(config, 'light'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$8(config$$1, 'dark', ' '),
+        style$8(config, 'dark', ' '),
         // has dark theme
-        style$8(config$$1, 'dark', '&')]
+        style$8(config, 'dark', '&')]
     }];
 };
 
-var color$7 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$19);
+var color$7 = (function (config) {
+    return mixin.createStyles(config, createStyles$19);
 });
 
-var themeConfigFn$10 = config && config.toolbar;
-var config$11 = themeConfigFn$10 ? themeConfigFn$10(componentConfig$8) : componentConfig$8;
+var configFn$10 = componentConfig && componentConfig.toolbar;
+var config$10 = configFn$10 ? configFn$10(vars$8) : vars$8;
 var id$11 = 'pe-toolbar';
 
-styler.add(id$11, layout$12(config$11), color$7(config$11));
+styler.add(id$11, layout$12(config$10), color$7(config$10));
 
 var CSS_CLASSES$13 = {
     block: 'pe-toolbar',
@@ -4447,12 +4395,12 @@ var component$17 = {
     }
 };
 
-var componentConfig$9 = {
+var vars$9 = {
     box_shadow: 'inset 0px 5px 6px -3px rgba(0, 0, 0, 0.4)',
     box_shadow_height: 6
 };
 
-var createStyles$20 = function createStyles(config$$1) {
+var createStyles$20 = function createStyles(config) {
     return [{
         '.pe-header-panel': {
             position: 'relative',
@@ -4476,17 +4424,17 @@ var createStyles$20 = function createStyles(config$$1) {
                 },
                 ' .pe-header-panel__drop-shadow': [mixin.vendorize({
                     transition: 'opacity 0.25s'
-                }, common$1.prefixes_transition), mixin.vendorize({
+                }, appConfig.prefixes_transition), mixin.vendorize({
                     transform: 'translate3d(0,0,0)'
-                }, common$1.prefixes_transform), mixin.vendorize({
-                    'box-shadow': config$$1.box_shadow
-                }, common$1.prefixes_box_shadow), {
+                }, appConfig.prefixes_transform), mixin.vendorize({
+                    'box-shadow': config.box_shadow
+                }, appConfig.prefixes_box_shadow), {
                     opacity: 0,
                     position: 'absolute',
                     top: 'auto',
                     left: 0,
                     right: 0,
-                    height: config$$1.box_shadow_height + 'px',
+                    height: config.box_shadow_height + 'px',
                     'z-index': 1
                 }]
             },
@@ -4513,17 +4461,17 @@ var createStyles$20 = function createStyles(config$$1) {
                 ' .pe-toolbar__bottom-bar': {}
             },
             ':not(.pe-header-panel--fit):not(.pe-header-panel--fixed):not(.pe-header-panel--scroll) > .pe-header-panel__outer-container > .pe-header-panel__header-container': {
-                'z-index': common$1.z_header_container
+                'z-index': appConfig.z_header_container
             },
             '.pe-header-panel--fit > .pe-header-panel__outer-container > .pe-header-panel__header-container': {
-                'z-index': common$1.z_fixed_header_container
+                'z-index': appConfig.z_fixed_header_container
             },
             ' .pe-header-panel__condensed-background': {
                 opacity: 0
             },
             ' .pe-header-panel__header-background, .pe-header-panel__condensed-background': [mixin.vendorize({
                 'background-size': 'cover'
-            }, common$1.prefixes_background_size), {
+            }, appConfig.prefixes_background_size), {
                 position: 'absolute',
                 top: 0,
                 left: 0,
@@ -4568,17 +4516,17 @@ var createStyles$20 = function createStyles(config$$1) {
     }];
 };
 
-var layout$13 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$20);
+var layout$13 = (function (config) {
+    return mixin.createStyles(config, createStyles$20);
 });
 
 // Does not contain color styles
 
-var themeConfigFn$11 = config && config['header-panel'];
-var config$12 = themeConfigFn$11 ? themeConfigFn$11(componentConfig$9) : componentConfig$9;
+var configFn$11 = componentConfig && componentConfig['header-panel'];
+var config$11 = configFn$11 ? configFn$11(vars$9) : vars$9;
 var id$12 = 'pe-header-panel';
 
-styler.add(id$12, layout$13(config$12));
+styler.add(id$12, layout$13(config$11));
 
 var _extends$12 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -4779,7 +4727,7 @@ var createView$12 = function createView(ctrl) {
     var props = _extends$12({}, {
         class: [CSS_CLASSES$12.panel, ctrl.fixed ? CSS_CLASSES$12.fixed : null, classForMode(ctrl.mode), opts.class].join(' '),
         id: opts.id || '',
-        config: function config$$1(el, inited) {
+        config: function config(el, inited) {
             if (inited) {
                 return;
             }
@@ -5071,47 +5019,47 @@ var component$15 = {
     }
 };
 
-var rgba$7 = common$1.rgba;
+var rgba$6 = appConfig.rgba;
 
-var componentConfig$10 = {
-    padding: common$1.grid_unit_component,
-    padding_compact: common$1.grid_unit_component / 2,
+var vars$10 = {
+    padding: appConfig.grid_unit_component,
+    padding_compact: appConfig.grid_unit_component / 2,
     border_width_stacked: 1,
     border_width_bordered: 1,
 
-    color_light_border: rgba$7(common$1.color_light_foreground, common$1.blend_light_border_light),
-    color_dark_border: rgba$7(common$1.color_dark_foreground, common$1.blend_dark_border_light)
+    color_light_border: rgba$6(appConfig.color_light_foreground, appConfig.blend_light_border_light),
+    color_dark_border: rgba$6(appConfig.color_dark_foreground, appConfig.blend_dark_border_light)
 };
 
-var borderStyle = function borderStyle(config$$1) {
+var borderStyle = function borderStyle(config) {
     return mixin.hairline('border-bottom'), {
         'border-style': 'none none solid none',
-        'border-width': config$$1.border_width_bordered + 'px'
+        'border-width': config.border_width_bordered + 'px'
     };
 };
 
-var createStyles$21 = function createStyles(config$$1) {
+var createStyles$21 = function createStyles(config) {
     return [{
         '.pe-list': {
-            padding: config$$1.padding + 'px 0',
+            padding: config.padding + 'px 0',
 
             '&.pe-list--header': {
                 'padding-top': 0
             },
 
             '&.pe-list--compact': {
-                padding: config$$1.padding_compact + 'px 0'
+                padding: config.padding_compact + 'px 0'
             },
 
             '& + &': [mixin.hairline('border-top'), {
                 'border-style': 'solid none none none',
-                'border-width': config$$1.border_width_stacked + 'px'
+                'border-width': config.border_width_stacked + 'px'
             }],
 
             '&.pe-list--borders': {
                 ' .pe-list-tile:not(.pe-list__header)': {
                     '&:not(:last-child)': {
-                        '&': borderStyle(config$$1)
+                        '&': borderStyle(config)
                     }
                 }
             },
@@ -5121,7 +5069,7 @@ var createStyles$21 = function createStyles(config$$1) {
 
                 ' .pe-list-tile:not(.pe-list__header)': {
                     '&:not(:last-child)': {
-                        ' .pe-list-tile__content:not(.pe-list-tile__content--front)': borderStyle(config$$1)
+                        ' .pe-list-tile__content:not(.pe-list-tile__content--front)': borderStyle(config)
                     }
                 }
             }
@@ -5129,13 +5077,13 @@ var createStyles$21 = function createStyles(config$$1) {
     }];
 };
 
-var layout$14 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$21);
+var layout$14 = (function (config) {
+    return mixin.createStyles(config, createStyles$21);
 });
 
 function _defineProperty$11(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$9 = function style(config$$1, tint) {
+var style$9 = function style(config, tint) {
     var _ref;
 
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
@@ -5144,7 +5092,7 @@ var style$9 = function style(config$$1, tint) {
         '&.pe-list--borders': {
             ' .pe-list-tile:not(.pe-list__header)': {
                 '&:not(:last-child)': {
-                    'border-color': config$$1['color_' + tint + '_border']
+                    'border-color': config['color_' + tint + '_border']
                 }
             }
         },
@@ -5152,34 +5100,34 @@ var style$9 = function style(config$$1, tint) {
         '&.pe-list--borders-indented': {
             ' .pe-list-tile:not(.pe-list__header)': {
                 ' .pe-list-tile__content:not(.pe-list-tile__content--front)': {
-                    'border-color': config$$1['color_' + tint + '_border']
+                    'border-color': config['color_' + tint + '_border']
                 }
             }
         }
     }), _defineProperty$11(_ref, ' .pe-list + .pe-list', {
-        'border-color': config$$1['color_' + tint + '_border']
+        'border-color': config['color_' + tint + '_border']
     }), _ref)];
 };
 
-var createStyles$22 = function createStyles(config$$1) {
-    return [style$9(config$$1, 'light'), {
+var createStyles$22 = function createStyles(config) {
+    return [style$9(config, 'light'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$9(config$$1, 'dark', ' '),
+        style$9(config, 'dark', ' '),
         // has dark theme
-        style$9(config$$1, 'dark', '&')]
+        style$9(config, 'dark', '&')]
     }];
 };
 
-var color$8 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$22);
+var color$8 = (function (config) {
+    return mixin.createStyles(config, createStyles$22);
 });
 
-var themeConfigFn$12 = config && config.list;
-var config$13 = themeConfigFn$12 ? themeConfigFn$12(componentConfig$10) : componentConfig$10;
+var configFn$12 = componentConfig && componentConfig.list;
+var config$12 = configFn$12 ? configFn$12(vars$10) : vars$10;
 var id$13 = 'pe-list';
 
-styler.add(id$13, layout$14(config$13), color$8(config$13));
+styler.add(id$13, layout$14(config$12), color$8(config$12));
 
 var _extends$13 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -5220,52 +5168,52 @@ var component$18 = {
     }
 };
 
-var componentConfig$11 = {
+var vars$11 = {
     sizes: [1, 1.5, 2, 3, 4, 5, 6, 7],
     min_size: 1.5,
     max_size_small_screen: 5,
-    size_factor: common$1.grid_unit_menu,
-    border_radius: common$1.unit_block_border_radius,
+    size_factor: appConfig.grid_unit_menu,
+    border_radius: appConfig.unit_block_border_radius,
 
-    color_light_background: common$1.rgba(common$1.color_light_background),
-    color_dark_background: common$1.rgba(common$1.color_dark_background)
+    color_light_background: appConfig.rgba(appConfig.color_light_background),
+    color_dark_background: appConfig.rgba(appConfig.color_dark_background)
 };
 
 function _defineProperty$12(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var unifySize$1 = function unifySize(config$$1, size) {
-    return size < config$$1.min_size ? config$$1.min_size : size;
+var unifySize$1 = function unifySize(config, size) {
+    return size < config.min_size ? config.min_size : size;
 };
 
-var widthClass$1 = function widthClass(config$$1, size) {
+var widthClass$1 = function widthClass(config, size) {
     var sizeStr = size.toString().replace('.', '-');
     return 'pe-menu--width-' + sizeStr;
 };
 
-var widthStyle = function widthStyle(config$$1, size) {
-    var s = unifySize$1(config$$1, size);
-    return _defineProperty$12({}, '&.' + widthClass$1(config$$1, s), {
-        width: config$$1.size_factor * s + 'px',
+var widthStyle = function widthStyle(config, size) {
+    var s = unifySize$1(config, size);
+    return _defineProperty$12({}, '&.' + widthClass$1(config, s), {
+        width: config.size_factor * s + 'px',
         'max-width': '100%'
     });
 };
 
-var createStyles$23 = function createStyles(config$$1) {
+var createStyles$23 = function createStyles(config) {
     return [{
         '.pe-menu': [
         // transition-duration set in js
         mixin.vendorize({
             'transition-timing-function': 'ease-out'
-        }, common$1.prefixes_transition), mixin.vendorize({
+        }, appConfig.prefixes_transition), mixin.vendorize({
             'transition-property': 'opacity'
-        }, common$1.prefixes_transition), config$$1.sizes.map(function (size) {
-            return widthStyle(config$$1, size);
+        }, appConfig.prefixes_transition), config.sizes.map(function (size) {
+            return widthStyle(config, size);
         }), _defineProperty$12({
-            'z-index': common$1.z_menu,
+            'z-index': appConfig.z_menu,
             opacity: 0,
             position: 'absolute',
             width: '100%',
-            'min-width': common$1.grid_unit_menu * config$$1.min_size + 'px',
+            'min-width': appConfig.grid_unit_menu * config.min_size + 'px',
 
             '&.pe-menu--width-auto': {
                 width: 'auto'
@@ -5282,51 +5230,51 @@ var createStyles$23 = function createStyles(config$$1) {
 
             ' .pe-menu__content': {
                 width: '100%',
-                'border-radius': config$$1.border_radius + 'px'
+                'border-radius': config.border_radius + 'px'
             }
 
-        }, '@media (max-width: ' + common$1.unit_screen_size_large + 'px)', {
-            'max-width': config$$1.max_size_small_screen * common$1.grid_unit_menu + 'px'
+        }, '@media (max-width: ' + appConfig.unit_screen_size_large + 'px)', {
+            'max-width': config.max_size_small_screen * appConfig.grid_unit_menu + 'px'
         })]
 
     }];
 };
 
-var layout$15 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$23);
+var layout$15 = (function (config) {
+    return mixin.createStyles(config, createStyles$23);
 });
 
 function _defineProperty$13(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$10 = function style(config$$1, tint) {
+var style$10 = function style(config, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$13({}, scope + '.pe-menu', {
         ' .pe-menu__content': {
-            'background-color': config$$1['color_' + tint + '_background']
+            'background-color': config['color_' + tint + '_background']
         }
     })];
 };
 
-var createStyles$24 = function createStyles(config$$1) {
-    return [style$10(config$$1, 'light'), {
+var createStyles$24 = function createStyles(config) {
+    return [style$10(config, 'light'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$10(config$$1, 'dark', ' '),
+        style$10(config, 'dark', ' '),
         // has dark theme
-        style$10(config$$1, 'dark', '&')]
+        style$10(config, 'dark', '&')]
     }];
 };
 
-var color$9 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$24);
+var color$9 = (function (config) {
+    return mixin.createStyles(config, createStyles$24);
 });
 
-var themeConfigFn$13 = config && config.menu;
-var config$14 = themeConfigFn$13 ? themeConfigFn$13(componentConfig$11) : componentConfig$11;
+var configFn$13 = componentConfig && componentConfig.menu;
+var config$13 = configFn$13 ? configFn$13(vars$11) : vars$11;
 var id$14 = 'pe-menu';
 
-styler.add(id$14, layout$15(config$14), color$9(config$14));
+styler.add(id$14, layout$15(config$13), color$9(config$13));
 
 var _extends$14 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -5478,7 +5426,7 @@ var createView$15 = function createView(ctrl) {
         class: [CSS_CLASSES$15.block, opts.permanent ? CSS_CLASSES$15.permanent : null, opts.target ? CSS_CLASSES$15.target : 'layout center-center', opts.size ? widthClass(unifySize(opts.size)) : null, opts.class].join(' '),
 
         id: opts.id || '',
-        config: function config$$1(el, inited, context, vdom) {
+        config: function config(el, inited, context, vdom) {
             if (inited) {
                 return;
             }
@@ -5519,7 +5467,7 @@ var createView$15 = function createView(ctrl) {
     };
     var content = m('div', {
         class: CSS_CLASSES$15.content,
-        config: function config$$1(el, inited) {
+        config: function config(el, inited) {
             if (!inited) {
                 ctrl.contentEl = el;
             }
@@ -5667,7 +5615,7 @@ var createView$16 = function createView(ctrl) {
     var props = {
         class: [ctrl.class, opts.layout === 'vertical' ? CSS_CLASSES$16.vertical : CSS_CLASSES$16.horizontal, opts.class].join(' '),
         id: opts.id || '',
-        config: function config$$1(el, inited, context, vdom) {
+        config: function config(el, inited, context, vdom) {
             if (inited) return;
             if (opts.config) {
                 opts.config(el, inited, context, vdom);
@@ -5765,10 +5713,10 @@ var transitions = {
 
 var buttonPaddingH = 8; // padding, inner text space
 
-var componentConfig$12 = {
+var vars$12 = {
     width: 274,
     minHeight: 80,
-    border_radius: common$1.unit_block_border_radius,
+    border_radius: appConfig.unit_block_border_radius,
     title_padding_h: buttonPaddingH,
     title_single_padding_v: 14,
     title_multi_padding_v: 20,
@@ -5778,33 +5726,33 @@ var componentConfig$12 = {
 
     // switch light and dark: dark on light and light on dark
 
-    color_light_background: common$1.rgba(common$1.color_dark_background, .85),
-    color_light_text: common$1.rgba(common$1.color_dark_foreground, common$1.blend_light_dark_primary),
+    color_light_background: appConfig.rgba(appConfig.color_dark_background, .85),
+    color_light_text: appConfig.rgba(appConfig.color_dark_foreground, appConfig.blend_light_dark_primary),
 
-    color_dark_background: common$1.rgba(common$1.color_light_background),
-    color_dark_text: common$1.rgba(common$1.color_light_foreground, common$1.blend_light_text_primary)
+    color_dark_background: appConfig.rgba(appConfig.color_light_background),
+    color_dark_text: appConfig.rgba(appConfig.color_light_foreground, appConfig.blend_light_text_primary)
 };
 
-var createStyles$25 = function createStyles(config$$1) {
+var createStyles$25 = function createStyles(config) {
     return [{
         '.pe-notification__holder': [mixin.fit(), flex$1.layoutCenterCenter, {
-            'z-index': common$1.z_notification
+            'z-index': appConfig.z_notification
         }],
         '.pe-notification': [flex$1.layoutCenter, {
             position: 'relative',
 
-            padding: '0 ' + config$$1.side_padding + 'px',
+            padding: '0 ' + config.side_padding + 'px',
             margin: '0 auto',
-            'border-radius': config$$1.border_radius + 'px',
+            'border-radius': config.border_radius + 'px',
 
             ' .pe-notification__content': {
                 width: '100%'
             },
 
             ' .pe-notification__title': {
-                'padding': config$$1.title_single_padding_v + 'px ' + config$$1.title_padding_h + 'px',
-                'font-size': config$$1.font_size + 'px',
-                'line-height': config$$1.line_height + 'px'
+                'padding': config.title_single_padding_v + 'px ' + config.title_padding_h + 'px',
+                'font-size': config.font_size + 'px',
+                'line-height': config.line_height + 'px'
             },
 
             ' .pe-notification__action': {
@@ -5817,8 +5765,8 @@ var createStyles$25 = function createStyles(config$$1) {
                 ' .pe-notification__content': flex$1.layoutHorizontal,
                 ' .pe-notification__title': flex$1.flex(),
                 ' .pe-notification__title--multi-line': {
-                    'padding-top': config$$1.title_multi_padding_v + 'px',
-                    'padding-bottom': config$$1.title_multi_padding_v + 'px'
+                    'padding-top': config.title_multi_padding_v + 'px',
+                    'padding-bottom': config.title_multi_padding_v + 'px'
                 },
                 ' .pe-notification__action': flex$1.layoutCenter
             },
@@ -5828,52 +5776,52 @@ var createStyles$25 = function createStyles(config$$1) {
                     'padding-bottom': '4px'
                 },
                 ' .pe-notification__title--multi-line': {
-                    'padding-top': config$$1.title_multi_padding_v + 'px'
+                    'padding-top': config.title_multi_padding_v + 'px'
                 },
                 ' .pe-notification__action': flex$1.layoutEndJustified
             }
         }],
         '.pe-notification--notification': {
-            width: config$$1.width + 'px',
-            'min-height': config$$1.minHeight + 'px'
+            width: config.width + 'px',
+            'min-height': config.minHeight + 'px'
         }
     }];
 };
 
-var layout$16 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$25);
+var layout$16 = (function (config) {
+    return mixin.createStyles(config, createStyles$25);
 });
 
 function _defineProperty$14(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$11 = function style(config$$1, tint) {
+var style$11 = function style(config, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$14({}, scope + '.pe-notification', {
-        color: config$$1['color_' + tint + '_text'],
-        background: config$$1['color_' + tint + '_background']
+        color: config['color_' + tint + '_text'],
+        background: config['color_' + tint + '_background']
     })];
 };
 
-var createStyles$26 = function createStyles(config$$1) {
-    return [style$11(config$$1, 'light'), {
+var createStyles$26 = function createStyles(config) {
+    return [style$11(config, 'light'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$11(config$$1, 'dark', ' '),
+        style$11(config, 'dark', ' '),
         // has dark theme
-        style$11(config$$1, 'dark', '&')]
+        style$11(config, 'dark', '&')]
     }];
 };
 
-var color$10 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$26);
+var color$10 = (function (config) {
+    return mixin.createStyles(config, createStyles$26);
 });
 
-var themeConfigFn$14 = config && config.notification;
-var config$15 = themeConfigFn$14 ? themeConfigFn$14(componentConfig$12) : componentConfig$12;
+var configFn$14 = componentConfig && componentConfig.notification;
+var config$14 = configFn$14 ? configFn$14(vars$12) : vars$12;
 var id$15 = 'pe-notification-notification';
 
-styler.add(id$15, layout$16(config$15), color$10(config$15));
+styler.add(id$15, layout$16(config$14), color$10(config$14));
 
 var notification = multiple({
     instance: component$22,
@@ -5886,31 +5834,31 @@ var notification = multiple({
     transitions: transitions
 });
 
-var layout$17 = (function (config$$1) {
-    return mixin.createStyles(config$$1, function (config$$1) {
-        return createStyles$12(config$$1, '.pe-control--radio', 'radio');
+var layout$17 = (function (config) {
+    return mixin.createStyles(config, function (config) {
+        return createStyles$12(config, '.pe-control--radio', 'radio');
     });
 });
 
-var createStyles$27 = function createStyles(config$$1) {
-    return [style$5(config$$1, 'light', '.pe-control--radio'), {
+var createStyles$27 = function createStyles(config) {
+    return [style$5(config, 'light', '.pe-control--radio'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$5(config$$1, 'dark', ' '),
+        style$5(config, 'dark', ' '),
         // has dark theme
-        style$5(config$$1, 'dark', '&')]
+        style$5(config, 'dark', '&')]
     }];
 };
 
-var color$11 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$27);
+var color$11 = (function (config) {
+    return mixin.createStyles(config, createStyles$27);
 });
 
-var themeConfigFn$15 = config && config['radio-button'];
-var config$16 = themeConfigFn$15 ? themeConfigFn$15(selectionControlConfig) : selectionControlConfig;
+var configFn$15 = componentConfig && componentConfig['radio-button'];
+var config$15 = configFn$15 ? configFn$15(selectionControlConfig) : selectionControlConfig;
 var id$16 = 'pe-radio-button';
 
-styler.add(id$16, layout$17(config$16), color$11(config$16));
+styler.add(id$16, layout$17(config$15), color$11(config$15));
 
 // default icons
 var iconOff$1 = m.trust('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>');
@@ -5944,16 +5892,16 @@ var component$23 = {
     }
 };
 
-var rgba$8 = common$1.rgba;
+var rgba$7 = appConfig.rgba;
 
 var line_height_input = 20;
 var input_padding_v = 7;
 
-var componentConfig$14 = {
+var vars$14 = {
     vertical_spacing_top: 6, // 8 minus natural label height padding (1)
     vertical_spacing_bottom: 7, // 8 minus natural label height padding (1)
     input_focus_border_width: 2,
-    input_focus_border_animation_duration: common$1.animation_duration,
+    input_focus_border_animation_duration: appConfig.animation_duration,
 
     floating_label_vertical_spacing_top: 30, // 16 + 8 + 8 minus natural label height padding (2)
     floating_label_vertical_spacing_bottom: 7, // 8 minus natural label height padding (1)
@@ -5983,60 +5931,60 @@ var componentConfig$14 = {
     dense_full_width_input_padding_v: 15, // 16 minus natural label height padding (1)
     dense_full_width_font_size_input: 13,
 
-    color_light_input_text: rgba$8(common$1.color_light_foreground, common$1.blend_light_text_primary),
-    color_light_input_background: rgba$8(common$1.color_light_background), // only used to 'remove' autofill color
-    color_light_highlight_text: rgba$8(common$1.color_primary, common$1.blend_light_text_primary),
-    color_light_input_bottom_border: rgba$8(common$1.color_light_foreground, common$1.blend_light_border_light),
-    color_light_input_error_text: rgba$8('221, 44, 0'),
-    color_light_input_error_border: rgba$8('221, 44, 0'),
-    color_light_input_placeholder: rgba$8(common$1.color_light_foreground, common$1.blend_light_text_tertiary),
-    color_light_label_text: rgba$8(common$1.color_light_foreground, common$1.blend_light_text_tertiary),
-    color_light_disabled_label_text: rgba$8(common$1.color_light_foreground, common$1.blend_light_text_disabled),
-    color_light_readonly_label_text: rgba$8(common$1.color_light_foreground, common$1.blend_light_text_tertiary),
-    color_light_help_text: rgba$8(common$1.color_light_foreground, common$1.blend_light_text_tertiary),
-    color_light_required_symbol: rgba$8('221, 44, 0'),
-    color_light_focus_border: rgba$8(common$1.color_primary),
-    color_light_counter_ok_border: rgba$8(common$1.color_primary),
+    color_light_input_text: rgba$7(appConfig.color_light_foreground, appConfig.blend_light_text_primary),
+    color_light_input_background: rgba$7(appConfig.color_light_background), // only used to 'remove' autofill color
+    color_light_highlight_text: rgba$7(appConfig.color_primary, appConfig.blend_light_text_primary),
+    color_light_input_bottom_border: rgba$7(appConfig.color_light_foreground, appConfig.blend_light_border_light),
+    color_light_input_error_text: rgba$7('221, 44, 0'),
+    color_light_input_error_border: rgba$7('221, 44, 0'),
+    color_light_input_placeholder: rgba$7(appConfig.color_light_foreground, appConfig.blend_light_text_tertiary),
+    color_light_label_text: rgba$7(appConfig.color_light_foreground, appConfig.blend_light_text_tertiary),
+    color_light_disabled_label_text: rgba$7(appConfig.color_light_foreground, appConfig.blend_light_text_disabled),
+    color_light_readonly_label_text: rgba$7(appConfig.color_light_foreground, appConfig.blend_light_text_tertiary),
+    color_light_help_text: rgba$7(appConfig.color_light_foreground, appConfig.blend_light_text_tertiary),
+    color_light_required_symbol: rgba$7('221, 44, 0'),
+    color_light_focus_border: rgba$7(appConfig.color_primary),
+    color_light_counter_ok_border: rgba$7(appConfig.color_primary),
 
-    color_dark_input_text: rgba$8(common$1.color_dark_foreground, common$1.blend_dark_text_primary),
-    color_dark_input_background: rgba$8(common$1.color_dark_background), // only used to 'remove' autofill color
-    color_dark_highlight_text: rgba$8(common$1.color_primary, common$1.blend_dark_text_primary),
-    color_dark_input_bottom_border: rgba$8(common$1.color_dark_foreground, common$1.blend_dark_border_light),
-    color_dark_input_error_text: rgba$8('222, 50, 38'),
-    color_dark_input_error_border: rgba$8('222, 50, 38'),
-    color_dark_input_placeholder: rgba$8(common$1.color_dark_foreground, common$1.blend_dark_text_tertiary),
-    color_dark_label_text: rgba$8(common$1.color_dark_foreground, common$1.blend_dark_text_tertiary),
-    color_dark_disabled_label_text: rgba$8(common$1.color_dark_foreground, common$1.blend_dark_text_disabled),
-    color_dark_readonly_label_text: rgba$8(common$1.color_dark_foreground, common$1.blend_dark_text_tertiary),
-    color_dark_help_text: rgba$8(common$1.color_dark_foreground, common$1.blend_dark_text_tertiary),
-    color_dark_required_symbol: rgba$8('221, 44, 0'),
-    color_dark_focus_border: rgba$8(common$1.color_primary),
-    color_dark_counter_ok_border: rgba$8(common$1.color_primary)
+    color_dark_input_text: rgba$7(appConfig.color_dark_foreground, appConfig.blend_dark_text_primary),
+    color_dark_input_background: rgba$7(appConfig.color_dark_background), // only used to 'remove' autofill color
+    color_dark_highlight_text: rgba$7(appConfig.color_primary, appConfig.blend_dark_text_primary),
+    color_dark_input_bottom_border: rgba$7(appConfig.color_dark_foreground, appConfig.blend_dark_border_light),
+    color_dark_input_error_text: rgba$7('222, 50, 38'),
+    color_dark_input_error_border: rgba$7('222, 50, 38'),
+    color_dark_input_placeholder: rgba$7(appConfig.color_dark_foreground, appConfig.blend_dark_text_tertiary),
+    color_dark_label_text: rgba$7(appConfig.color_dark_foreground, appConfig.blend_dark_text_tertiary),
+    color_dark_disabled_label_text: rgba$7(appConfig.color_dark_foreground, appConfig.blend_dark_text_disabled),
+    color_dark_readonly_label_text: rgba$7(appConfig.color_dark_foreground, appConfig.blend_dark_text_tertiary),
+    color_dark_help_text: rgba$7(appConfig.color_dark_foreground, appConfig.blend_dark_text_tertiary),
+    color_dark_required_symbol: rgba$7('221, 44, 0'),
+    color_dark_focus_border: rgba$7(appConfig.color_primary),
+    color_dark_counter_ok_border: rgba$7(appConfig.color_primary)
 };
 
-var createStyles$28 = function createStyles(config$$1) {
+var createStyles$28 = function createStyles(config) {
     return [{
         '.pe-textfield': [mixin.clearfix(), {
             position: 'relative',
-            'line-height': common$1.line_height,
+            'line-height': appConfig.line_height,
             display: 'inline-block',
             'box-sizing': 'border-box',
             margin: 0,
             overflow: 'visible', // Firefox needs this
-            'padding-bottom': config$$1.vertical_spacing_bottom + 'px',
+            'padding-bottom': config.vertical_spacing_bottom + 'px',
             width: '100%',
             'max-width': '100%',
 
             ' .pe-textfield__input-area': {
                 position: 'relative',
-                'padding-top': config$$1.vertical_spacing_top + 'px',
+                'padding-top': config.vertical_spacing_top + 'px',
 
-                '&:after': [mixin.defaultTransition('opacity', config$$1.input_focus_border_animation_duration), {
+                '&:after': [mixin.defaultTransition('opacity', config.input_focus_border_animation_duration), {
                     position: 'absolute',
                     content: '""',
                     bottom: 0,
                     left: 0,
-                    height: config$$1.input_focus_border_width + 'px',
+                    height: config.input_focus_border_width + 'px',
                     width: '100%',
                     opacity: 0
                 }]
@@ -6047,17 +5995,17 @@ var createStyles$28 = function createStyles(config$$1) {
 
             ' .pe-textfield__input': {
                 display: 'block',
-                'font-size': config$$1.font_size_input + 'px',
-                'line-height': config$$1.line_height_input + 'px',
+                'font-size': config.font_size_input + 'px',
+                'line-height': config.line_height_input + 'px',
                 width: '100%',
                 background: 'none',
                 'text-align': 'left',
                 color: 'inherit',
-                'border-width': config$$1.input_border_width + 'px',
+                'border-width': config.input_border_width + 'px',
                 'border-style': 'none none solid none',
                 'border-radius': 0,
                 margin: 0,
-                padding: config$$1.input_padding_v + 'px ' + config$$1.input_padding_h + 'px',
+                padding: config.input_padding_v + 'px ' + config.input_padding_h + 'px',
 
                 // disable glow on textfield--invalid fields
                 '&:textfield--invalid': {
@@ -6068,26 +6016,26 @@ var createStyles$28 = function createStyles(config$$1) {
                 }
             },
             ' textarea.pe-textfield__input': {
-                margin: config$$1.input_padding_v + 'px ' + config$$1.input_padding_h + 'px',
+                margin: config.input_padding_v + 'px ' + config.input_padding_h + 'px',
                 padding: 0,
                 display: 'block'
             },
 
             // focus border
             ' textfield__input:focus, &.pe-textfield--focused .pe-textfield__input': {
-                'border-width': config$$1.input_border_width + 'px',
+                'border-width': config.input_border_width + 'px',
                 outline: 'none'
             },
 
             ' .pe-textfield__label': {
                 position: 'absolute',
                 display: 'block',
-                top: config$$1.vertical_spacing_top + config$$1.input_padding_v + 'px',
+                top: config.vertical_spacing_top + config.input_padding_v + 'px',
                 bottom: 0,
-                left: config$$1.input_padding_h + 'px',
-                right: config$$1.input_padding_h + 'px',
-                'font-size': config$$1.font_size_input + 'px',
-                'line-height': config$$1.line_height_input + 'px',
+                left: config.input_padding_h + 'px',
+                right: config.input_padding_h + 'px',
+                'font-size': config.font_size_input + 'px',
+                'line-height': config.line_height_input + 'px',
                 'pointer-events': 'none',
                 'white-space': 'nowrap',
                 'text-align': 'left',
@@ -6104,44 +6052,44 @@ var createStyles$28 = function createStyles(config$$1) {
             },
 
             '&.pe-textfield--floating-label': {
-                'padding-bottom': config$$1.floating_label_vertical_spacing_bottom + 'px',
+                'padding-bottom': config.floating_label_vertical_spacing_bottom + 'px',
 
                 ' .pe-textfield__input-area': {
-                    'padding-top': config$$1.floating_label_vertical_spacing_top + 'px'
+                    'padding-top': config.floating_label_vertical_spacing_top + 'px'
                 },
 
-                ' .pe-textfield__label': [mixin.defaultTransition('all', config$$1.floating_label_animation_duration), {
-                    top: config$$1.floating_label_vertical_spacing_top + config$$1.input_padding_v + 'px'
+                ' .pe-textfield__label': [mixin.defaultTransition('all', config.floating_label_animation_duration), {
+                    top: config.floating_label_vertical_spacing_top + config.input_padding_v + 'px'
                 }],
 
                 '&.pe-textfield--focused, &.pe-textfield--dirty': {
                     ' .pe-textfield__label': {
-                        'font-size': config$$1.font_size_floating_label + 'px',
-                        top: config$$1.floating_label_top + 'px',
+                        'font-size': config.font_size_floating_label + 'px',
+                        top: config.floating_label_top + 'px',
                         visibility: 'visible'
                     }
                 },
 
                 '&.pe-textfield--dense': {
-                    'font-size': config$$1.dense_font_size_input + 'px',
-                    'padding-bottom': config$$1.dense_floating_label_vertical_spacing_bottom + 'px',
+                    'font-size': config.dense_font_size_input + 'px',
+                    'padding-bottom': config.dense_floating_label_vertical_spacing_bottom + 'px',
 
                     ' .pe-textfield__input-area': {
-                        'padding-top': config$$1.dense_floating_label_vertical_spacing_top + 'px'
+                        'padding-top': config.dense_floating_label_vertical_spacing_top + 'px'
                     },
 
                     ' .pe-textfield__input': {
-                        'font-size': config$$1.dense_font_size_input + 'px'
+                        'font-size': config.dense_font_size_input + 'px'
                     },
                     ' .pe-textfield__label': {
-                        'font-size': config$$1.dense_font_size_input + 'px',
-                        top: config$$1.dense_floating_label_vertical_spacing_top + config$$1.input_padding_v + 'px'
+                        'font-size': config.dense_font_size_input + 'px',
+                        top: config.dense_floating_label_vertical_spacing_top + config.input_padding_v + 'px'
                     },
 
                     '&.pe-textfield--focused, &.pe-textfield--dirty': {
                         ' .pe-textfield__label': {
-                            'font-size': config$$1.dense_font_size_floating_label + 'px',
-                            top: config$$1.dense_floating_label_top + 'px'
+                            'font-size': config.dense_font_size_floating_label + 'px',
+                            top: config.dense_floating_label_top + 'px'
                         }
                     }
                 }
@@ -6165,10 +6113,10 @@ var createStyles$28 = function createStyles(config$$1) {
             },
 
             ' .pe-textfield__error, .pe-textfield__error-placeholder, .pe-textfield__help, .pe-textfield__counter': {
-                'margin-top': config$$1.margin_top_error_message + 'px',
-                'font-size': config$$1.font_size_error + 'px',
-                'line-height': common$1.line_height,
-                'min-height': config$$1.font_size_error * common$1.line_height + 'px'
+                'margin-top': config.margin_top_error_message + 'px',
+                'font-size': config.font_size_error + 'px',
+                'line-height': appConfig.line_height,
+                'min-height': config.font_size_error * appConfig.line_height + 'px'
             },
 
             ' .pe-textfield__counter': {
@@ -6208,30 +6156,30 @@ var createStyles$28 = function createStyles(config$$1) {
                 },
 
                 ' .pe-textfield__input': {
-                    padding: config$$1.full_width_input_padding_v + 'px ' + config$$1.full_width_input_padding_h + 'px'
+                    padding: config.full_width_input_padding_v + 'px ' + config.full_width_input_padding_h + 'px'
                 },
 
                 ' .pe-textfield__error, .pe-textfield__help, .pe-textfield__counter': {
-                    'padding-left': config$$1.full_width_input_padding_h + 'px',
-                    'padding-right': config$$1.full_width_input_padding_h + 'px'
+                    'padding-left': config.full_width_input_padding_h + 'px',
+                    'padding-right': config.full_width_input_padding_h + 'px'
                 },
 
                 ' .pe-textfield__label': {
-                    top: config$$1.full_width_input_padding_v + 'px',
-                    left: config$$1.full_width_input_padding_h + 'px',
-                    right: config$$1.full_width_input_padding_h + 'px'
+                    top: config.full_width_input_padding_v + 'px',
+                    left: config.full_width_input_padding_h + 'px',
+                    right: config.full_width_input_padding_h + 'px'
                 },
 
                 '&.pe-textfield--dense': {
                     ' .pe-textfield__input': {
-                        'font-size': config$$1.dense_full_width_font_size_input + 'px',
-                        padding: config$$1.dense_full_width_input_padding_v + 'px ' + config$$1.dense_full_width_input_padding_h + 'px'
+                        'font-size': config.dense_full_width_font_size_input + 'px',
+                        padding: config.dense_full_width_input_padding_v + 'px ' + config.dense_full_width_input_padding_h + 'px'
                     },
                     ' .pe-textfield__label': {
-                        'font-size': config$$1.dense_full_width_font_size_input + 'px',
-                        top: config$$1.dense_full_width_input_padding_v + 'px',
-                        left: config$$1.dense_full_width_input_padding_h + 'px',
-                        right: config$$1.dense_full_width_input_padding_h + 'px'
+                        'font-size': config.dense_full_width_font_size_input + 'px',
+                        top: config.dense_full_width_input_padding_v + 'px',
+                        left: config.dense_full_width_input_padding_h + 'px',
+                        right: config.dense_full_width_input_padding_h + 'px'
                     }
                 }
             }
@@ -6239,18 +6187,18 @@ var createStyles$28 = function createStyles(config$$1) {
     }];
 };
 
-var layout$18 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$28);
+var layout$18 = (function (config) {
+    return mixin.createStyles(config, createStyles$28);
 });
 
 function _defineProperty$16(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$12 = function style(config$$1, tint) {
+var style$12 = function style(config, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$16({}, scope + '.pe-textfield', {
         // border color
-        color: config$$1['color_' + tint + '_focus_border'], // override by specifying 'color'
+        color: config['color_' + tint + '_focus_border'], // override by specifying 'color'
 
         ' .pe-textfield__input-area': {
             color: 'inherit',
@@ -6261,102 +6209,102 @@ var style$12 = function style(config$$1, tint) {
         },
         '&.pe-textfield--counter ': {
             ' .pe-textfield__input-area:after': {
-                'background-color': config$$1['color_' + tint + '_counter_ok_border']
+                'background-color': config['color_' + tint + '_counter_ok_border']
             }
         },
 
         ' .pe-textfield__input': {
-            color: config$$1['color_' + tint + '_input_text'],
-            'border-color': config$$1['color_' + tint + '_input_bottom_border']
+            color: config['color_' + tint + '_input_text'],
+            'border-color': config['color_' + tint + '_input_bottom_border']
         },
 
         ' .pe-textfield__label': {
-            color: config$$1['color_' + tint + '_label_text']
+            color: config['color_' + tint + '_label_text']
         },
 
         '&.pe-textfield--disabled, &.pe-textfield--readonly': {
             ' .pe-textfield__input-area:after': {
                 'background-color': 'transparent',
-                'background-image': 'linear-gradient(to right, ' + config$$1['color_' + tint + '_disabled_label_text'] + ' 20%, rgba(255, 255, 255, 0) 0%)'
+                'background-image': 'linear-gradient(to right, ' + config['color_' + tint + '_disabled_label_text'] + ' 20%, rgba(255, 255, 255, 0) 0%)'
             }
         },
 
         '&.pe-textfield--disabled': {
             ' .pe-textfield__input, .pe-textfield__label': {
-                color: config$$1['color_' + tint + '_disabled_label_text']
+                color: config['color_' + tint + '_disabled_label_text']
             }
         },
 
         '&.pe-textfield--readonly': {
             ' .pe-textfield__input, .pe-textfield__label': {
-                color: config$$1['color_' + tint + '_readonly_label_text']
+                color: config['color_' + tint + '_readonly_label_text']
             }
         },
 
         '&.pe-textfield--focused': {
             // note: not when textfield--dirty and not textfield--focused
             '&.pe-textfield--floating-label .pe-textfield__label': {
-                color: config$$1['color_' + tint + '_highlight_text']
+                color: config['color_' + tint + '_highlight_text']
             },
 
             '&.pe-textfield--required.pe-textfield--floating-label': {
                 ' .pe-textfield__label:after': {
-                    color: config$$1['color_' + tint + '_required_symbol']
+                    color: config['color_' + tint + '_required_symbol']
                 }
             }
         },
 
         ' .pe-textfield__help, .pe-textfield__counter': {
-            color: config$$1['color_' + tint + '_help_text']
+            color: config['color_' + tint + '_help_text']
         },
 
         '&.pe-textfield--invalid:not(.pe-textfield--hide-validation)': {
             ' .pe-textfield__input': {
-                'border-color': config$$1['color_' + tint + '_input_error_border'],
+                'border-color': config['color_' + tint + '_input_error_border'],
                 'box-shadow': 'none'
             },
             ' .pe-textfield__label': {
-                color: config$$1['color_' + tint + '_input_error_text']
+                color: config['color_' + tint + '_input_error_text']
             },
             ' .pe-textfield__error, .pe-textfield__counter, .pe-textfield__help': {
-                color: config$$1['color_' + tint + '_input_error_text']
+                color: config['color_' + tint + '_input_error_text']
             },
             '&.pe-textfield--required .pe-textfield__label': {
-                color: config$$1['color_' + tint + '_input_error_text']
+                color: config['color_' + tint + '_input_error_text']
             },
             '&, &.pe-textfield--counter': {
                 ' .pe-textfield__input-area:after': {
-                    'background-color': config$$1['color_' + tint + '_input_error_border']
+                    'background-color': config['color_' + tint + '_input_error_border']
                 }
             }
         },
 
         ' .pe-textfield__input:-webkit-autofill': {
-            '-webkit-box-shadow': '0 0 0px 1000px ' + config$$1['color_' + tint + '_input_background'] + ' inset',
-            color: config$$1['color_' + tint + '_input_text'] + ' !important'
+            '-webkit-box-shadow': '0 0 0px 1000px ' + config['color_' + tint + '_input_background'] + ' inset',
+            color: config['color_' + tint + '_input_text'] + ' !important'
         }
     })];
 };
 
-var createStyles$29 = function createStyles(config$$1) {
-    return [style$12(config$$1, 'light'), {
+var createStyles$29 = function createStyles(config) {
+    return [style$12(config, 'light'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$12(config$$1, 'dark', ' '),
+        style$12(config, 'dark', ' '),
         // has dark theme
-        style$12(config$$1, 'dark', '&')]
+        style$12(config, 'dark', '&')]
     }];
 };
 
-var color$12 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$29);
+var color$12 = (function (config) {
+    return mixin.createStyles(config, createStyles$29);
 });
 
-var themeConfigFn$16 = config && config.textfield;
-var config$17 = themeConfigFn$16 ? themeConfigFn$16(componentConfig$14) : componentConfig$14;
+var configFn$16 = componentConfig && componentConfig.textfield;
+var config$16 = configFn$16 ? configFn$16(vars$14) : vars$14;
 var id$17 = 'pe-textfield';
 
-styler.add(id$17, layout$18(config$17), color$12(config$17));
+styler.add(id$17, layout$18(config$16), color$12(config$16));
 
 var _extends$17 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -6518,7 +6466,7 @@ var createView$19 = function createView(ctrl) {
     var props = {
         class: [CSS_CLASSES$18.block, isInvalid ? CSS_CLASSES$18.stateInvalid : '', ctrl.focus() ? CSS_CLASSES$18.stateFocused : '', opts.floatingLabel ? CSS_CLASSES$18.hasFloatingLabel : '', opts.disabled ? CSS_CLASSES$18.stateDisabled : '', opts.readonly ? CSS_CLASSES$18.stateReadonly : '', ctrl.isDirty ? CSS_CLASSES$18.stateDirty : '', opts.dense ? CSS_CLASSES$18.isDense : '', opts.required ? CSS_CLASSES$18.isRequired : '', opts.fullWidth ? CSS_CLASSES$18.hasFullWidth : '', opts.counter ? CSS_CLASSES$18.hasCounter : '', opts.hideSpinner !== false ? CSS_CLASSES$18.hideSpinner : '', opts.hideClear !== false ? CSS_CLASSES$18.hideClear : '', opts.hideValidation ? CSS_CLASSES$18.hideValidation : '', opts.hideRequiredMark ? CSS_CLASSES$18.hideRequiredChar : '', opts.class].join(' '),
         id: opts.id || '',
-        config: function config$$1(el, inited, context, vdom) {
+        config: function config(el, inited, context, vdom) {
             if (inited) {
                 return;
             }
@@ -6621,7 +6569,7 @@ var createView$19 = function createView(ctrl) {
             }
         }
     } : null, {
-        config: function config$$1(el, inited) {
+        config: function config(el, inited) {
             if (inited) {
                 return;
             }
@@ -6685,7 +6633,7 @@ var component$27 = {
     }
 };
 
-var rgba$9 = common$1.rgba;
+var rgba$8 = appConfig.rgba;
 
 var insetSideMargin = 8;
 
@@ -6695,7 +6643,7 @@ var font_size_input = 20;
 var inset_height = 48;
 var inset_input_indent = 16;
 var inset_input_right_padding = 0;
-var inset_border_radius = common$1.unit_block_border_radius;
+var inset_border_radius = appConfig.unit_block_border_radius;
 
 var fullwidth_side_margin = 0;
 var fullwidth_height = 56;
@@ -6703,7 +6651,7 @@ var fullwidth_side_padding = insetSideMargin;
 var fullwidth_input_right_padding = 0;
 var fullwidth_border_radius = 0;
 
-var componentConfig$15 = {
+var vars$15 = {
     font_size_input: font_size_input,
     line_height_input: line_height_input$1,
 
@@ -6718,17 +6666,17 @@ var componentConfig$15 = {
     fullwidth_input_right_padding: fullwidth_input_right_padding,
     fullwidth_border_radius: fullwidth_border_radius,
 
-    color_light_label_text: rgba$9(common$1.color_light_foreground, common$1.blend_light_text_disabled),
-    color_light_background: rgba$9(common$1.color_light_background),
+    color_light_label_text: rgba$8(appConfig.color_light_foreground, appConfig.blend_light_text_disabled),
+    color_light_background: rgba$8(appConfig.color_light_background),
 
-    color_dark_label_text: rgba$9(common$1.color_dark_foreground, common$1.blend_dark_text_disabled),
-    color_dark_background: rgba$9(common$1.color_dark_background)
+    color_dark_label_text: rgba$8(appConfig.color_dark_foreground, appConfig.blend_dark_text_disabled),
+    color_dark_background: rgba$8(appConfig.color_dark_background)
 };
 
-var createStyles$30 = function createStyles(config$$1) {
-    var inset_input_padding_v = (config$$1.inset_height - config$$1.line_height_input) / 2;
-    var fullwidth_input_padding_v = (config$$1.fullwidth_height - config$$1.line_height_input) / 2;
-    var fullwidth_input_indent = common$1.unit_indent - config$$1.fullwidth_side_padding - common$1.grid_unit_icon_button;
+var createStyles$30 = function createStyles(config) {
+    var inset_input_padding_v = (config.inset_height - config.line_height_input) / 2;
+    var fullwidth_input_padding_v = (config.fullwidth_height - config.line_height_input) / 2;
+    var fullwidth_input_indent = appConfig.unit_indent - config.fullwidth_side_padding - appConfig.grid_unit_icon_button;
 
     return [{
         '.pe-search': [flex$1.flex(), {
@@ -6751,8 +6699,8 @@ var createStyles$30 = function createStyles(config$$1) {
             },
 
             ' .pe-textfield__input, .pe-textfield__label': {
-                'font-size': config$$1.font_size_input + 'px',
-                'line-height': config$$1.line_height_input + 'px'
+                'font-size': config.font_size_input + 'px',
+                'line-height': config.line_height_input + 'px'
             },
 
             ' .pe-textfield__input': {
@@ -6775,75 +6723,75 @@ var createStyles$30 = function createStyles(config$$1) {
             ' .pe-button--icon': flex$1.selfCenter,
 
             '&.pe-search--inset': {
-                'border-radius': config$$1.inset_border_radius + 'px',
-                padding: '0 ' + config$$1.inset_side_padding + 'px',
+                'border-radius': config.inset_border_radius + 'px',
+                padding: '0 ' + config.inset_side_padding + 'px',
 
                 '&, .pe-textfield__input-area, .pe-textfield__input, .pe-textfield__label': {
-                    height: config$$1.inset_height + 'px'
+                    height: config.inset_height + 'px'
                 },
                 ' .pe-textfield__input, .pe-textfield__label': {
                     'padding-top': inset_input_padding_v + 'px',
                     'padding-bottom': inset_input_padding_v + 'px',
-                    'padding-left': config$$1.inset_input_indent + 'px',
-                    'padding-right': config$$1.inset_input_right_padding + 'px'
+                    'padding-left': config.inset_input_indent + 'px',
+                    'padding-right': config.inset_input_right_padding + 'px'
                 }
             },
 
             '&.pe-search--fullwidth': {
-                'border-radius': config$$1.fullwidth_border_radius + 'px',
-                padding: '0 ' + config$$1.fullwidth_side_padding + 'px',
+                'border-radius': config.fullwidth_border_radius + 'px',
+                padding: '0 ' + config.fullwidth_side_padding + 'px',
 
                 '&, .pe-textfield__input-area, .pe-textfield__input, .pe-textfield__label': {
-                    height: config$$1.fullwidth_height + 'px'
+                    height: config.fullwidth_height + 'px'
                 },
                 ' .pe-textfield__input, .pe-textfield__label': {
                     'padding-top': fullwidth_input_padding_v + 'px',
                     'padding-bottom': fullwidth_input_padding_v + 'px',
                     'padding-left': fullwidth_input_indent + 'px',
-                    'padding-right': config$$1.fullwidth_input_right_padding + 'px'
+                    'padding-right': config.fullwidth_input_right_padding + 'px'
                 }
             }
         }]
     }];
 };
 
-var layout$19 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$30);
+var layout$19 = (function (config) {
+    return mixin.createStyles(config, createStyles$30);
 });
 
 function _defineProperty$17(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$13 = function style(config$$1, tint) {
+var style$13 = function style(config, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$17({}, scope + '.pe-search', {
-        'background-color': config$$1['color_' + tint + '_background'],
+        'background-color': config['color_' + tint + '_background'],
 
         ' .pe-textfield__label': {
-            color: config$$1['color_' + tint + '_label_text']
+            color: config['color_' + tint + '_label_text']
         }
     })];
 };
 
-var createStyles$31 = function createStyles(config$$1) {
-    return [style$13(config$$1, 'light'), {
+var createStyles$31 = function createStyles(config) {
+    return [style$13(config, 'light'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$13(config$$1, 'dark', ' '),
+        style$13(config, 'dark', ' '),
         // has dark theme
-        style$13(config$$1, 'dark', '&')]
+        style$13(config, 'dark', '&')]
     }];
 };
 
-var color$13 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$31);
+var color$13 = (function (config) {
+    return mixin.createStyles(config, createStyles$31);
 });
 
-var themeConfigFn$17 = config && config.search;
-var config$18 = themeConfigFn$17 ? themeConfigFn$17(componentConfig$15) : componentConfig$15;
+var configFn$17 = componentConfig && componentConfig.search;
+var config$17 = configFn$17 ? configFn$17(vars$15) : vars$15;
 var id$18 = 'pe-search';
 
-styler.add(id$18, layout$19(config$18), color$13(config$18));
+styler.add(id$18, layout$19(config$17), color$13(config$17));
 
 var _extends$16 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -6893,7 +6841,7 @@ var createView$18 = function createView(ctrl) {
     var content = m('div', {
         class: CSS_CLASSES$17.content
     }, [m(component$27, _extends$16({}, textfieldOpts, {
-        config: function config$$1() {
+        config: function config() {
             m.redraw.strategy('none');
         },
         getState: function getState(state) {
@@ -6922,10 +6870,10 @@ var component$25 = {
     }
 };
 
-var rgba$10 = common$1.rgba;
-var lightForeground = common$1.color_light_foreground;
-var darkForeground = common$1.color_dark_foreground;
-var activeColor$1 = common$1.color_primary; // or override in CSS by setting 'color' property on '.pe-slider'
+var rgba$9 = appConfig.rgba;
+var lightForeground = appConfig.color_light_foreground;
+var darkForeground = appConfig.color_dark_foreground;
+var activeColor$1 = appConfig.color_primary; // or override in CSS by setting 'color' property on '.pe-slider'
 
 var thumb_size = 12;
 var thumb_touch_size = Math.max(40, thumb_size);
@@ -6939,7 +6887,7 @@ var height$1 = Math.max(52, largestThumbSize);
 var side_spacing = Math.max(10, largestElement / 2 - thumb_size / 2);
 var horizontal_layout_side_spacing = side_spacing + 4; // optimization for horizontal layout
 
-var componentConfig$16 = {
+var vars$16 = {
     height: height$1,
     side_spacing: side_spacing,
     horizontal_layout_side_spacing: horizontal_layout_side_spacing,
@@ -6949,7 +6897,7 @@ var componentConfig$16 = {
     bar_height: 2,
     thumb_border_width: thumb_border_width,
     active_thumb_scale: active_thumb_scale,
-    animation_duration: common$1.animation_duration,
+    animation_duration: appConfig.animation_duration,
     disabled_thumb_scale: disabled_thumb_scale,
     active_pin_thumb_scale: active_pin_thumb_scale,
 
@@ -6958,33 +6906,33 @@ var componentConfig$16 = {
     pin_width: 26,
     pin_font_size: 10,
 
-    color_light_track_active: rgba$10(lightForeground, .38),
-    color_light_track_inactive: rgba$10(lightForeground, .26),
-    color_light_track_value: rgba$10(activeColor$1),
-    color_light_thumb_off: rgba$10(lightForeground, .26),
-    color_light_thumb_off_focus: rgba$10(lightForeground),
+    color_light_track_active: rgba$9(lightForeground, .38),
+    color_light_track_inactive: rgba$9(lightForeground, .26),
+    color_light_track_value: rgba$9(activeColor$1),
+    color_light_thumb_off: rgba$9(lightForeground, .26),
+    color_light_thumb_off_focus: rgba$9(lightForeground),
     color_light_thumb_off_focus_opacity: .08,
-    color_light_thumb_on: rgba$10(activeColor$1),
+    color_light_thumb_on: rgba$9(activeColor$1),
     color_light_thumb_on_focus_opacity: .11,
-    color_light_tick: rgba$10(lightForeground, 1),
-    color_light_icon: common$1.rgba(common$1.color_light_foreground, common$1.blend_light_text_secondary),
-    color_light_disabled_icon: common$1.rgba(common$1.color_light_foreground, common$1.blend_light_text_disabled),
-    color_light_label: common$1.rgba(common$1.color_light_foreground, common$1.blend_light_text_secondary),
-    color_light_disabled_label: common$1.rgba(common$1.color_light_foreground, common$1.blend_light_text_disabled),
+    color_light_tick: rgba$9(lightForeground, 1),
+    color_light_icon: appConfig.rgba(appConfig.color_light_foreground, appConfig.blend_light_text_secondary),
+    color_light_disabled_icon: appConfig.rgba(appConfig.color_light_foreground, appConfig.blend_light_text_disabled),
+    color_light_label: appConfig.rgba(appConfig.color_light_foreground, appConfig.blend_light_text_secondary),
+    color_light_disabled_label: appConfig.rgba(appConfig.color_light_foreground, appConfig.blend_light_text_disabled),
 
-    color_dark_track_active: rgba$10(darkForeground, 0.3),
-    color_dark_track_inactive: rgba$10(darkForeground, 0.2),
-    color_dark_track_value: rgba$10(activeColor$1),
-    color_dark_thumb_off: rgba$10(darkForeground, 0.2),
-    color_dark_thumb_off_focus: rgba$10(darkForeground),
+    color_dark_track_active: rgba$9(darkForeground, 0.3),
+    color_dark_track_inactive: rgba$9(darkForeground, 0.2),
+    color_dark_track_value: rgba$9(activeColor$1),
+    color_dark_thumb_off: rgba$9(darkForeground, 0.2),
+    color_dark_thumb_off_focus: rgba$9(darkForeground),
     color_dark_thumb_off_focus_opacity: .08,
-    color_dark_thumb_on: rgba$10(activeColor$1),
+    color_dark_thumb_on: rgba$9(activeColor$1),
     color_dark_thumb_on_focus_opacity: .11,
-    color_dark_tick: rgba$10(darkForeground, 1),
-    color_dark_icon: common$1.rgba(common$1.color_dark_foreground, common$1.blend_dark_text_secondary),
-    color_dark_disabled_icon: common$1.rgba(common$1.color_dark_foreground, common$1.blend_dark_text_disabled),
-    color_dark_label: common$1.rgba(common$1.color_dark_foreground, common$1.blend_dark_text_secondary),
-    color_dark_disabled_label: common$1.rgba(common$1.color_dark_foreground, common$1.blend_dark_text_disabled)
+    color_dark_tick: rgba$9(darkForeground, 1),
+    color_dark_icon: appConfig.rgba(appConfig.color_dark_foreground, appConfig.blend_dark_text_secondary),
+    color_dark_disabled_icon: appConfig.rgba(appConfig.color_dark_foreground, appConfig.blend_dark_text_disabled),
+    color_dark_label: appConfig.rgba(appConfig.color_dark_foreground, appConfig.blend_dark_text_secondary),
+    color_dark_disabled_label: appConfig.rgba(appConfig.color_dark_foreground, appConfig.blend_dark_text_disabled)
 };
 
 var positionBorder = function positionBorder(thumbSize, borderWidth) {
@@ -6997,40 +6945,40 @@ var positionBorder = function positionBorder(thumbSize, borderWidth) {
     };
 };
 
-var createStyles$32 = function createStyles(config$$1) {
-    var thumbSize = Math.max(config$$1.thumb_size, 2 * config$$1.thumb_border_width);
-    var scaledThumbDiff = (config$$1.active_thumb_scale - 1) * thumbSize / 2;
+var createStyles$32 = function createStyles(config) {
+    var thumbSize = Math.max(config.thumb_size, 2 * config.thumb_border_width);
+    var scaledThumbDiff = (config.active_thumb_scale - 1) * thumbSize / 2;
     var barOffset = thumbSize / 2;
-    var scaledBorderWidth = Math.max(1, config$$1.thumb_border_width / config$$1.active_thumb_scale);
-    var thumbTouchSize = config$$1.thumb_touch_size;
+    var scaledBorderWidth = Math.max(1, config.thumb_border_width / config.active_thumb_scale);
+    var thumbTouchSize = config.thumb_touch_size;
     var stepsOffset = barOffset - 1;
 
     return [{
         '.pe-slider': [mixin.vendorize({
             'user-select': 'none'
-        }, common$1.prefixes_user_select), {
-            height: config$$1.height + 'px',
-            'margin-top': (config$$1.height - config$$1.track_height) / 2 + 'px ',
+        }, appConfig.prefixes_user_select), {
+            height: config.height + 'px',
+            'margin-top': (config.height - config.track_height) / 2 + 'px ',
 
             ' > .pe-icon': {
-                height: config$$1.height + 'px'
+                height: config.height + 'px'
             },
 
-            ' .pe-slider__track': [flex$1.layoutHorizontal, flex$1.flexGrow(1), mixin.defaultTransition('transform', config$$1.animation_duration), mixin.vendorize({
+            ' .pe-slider__track': [flex$1.layoutHorizontal, flex$1.flexGrow(1), mixin.defaultTransition('transform', config.animation_duration), mixin.vendorize({
                 'user-select': 'none'
-            }, common$1.prefixes_user_select), {
+            }, appConfig.prefixes_user_select), {
                 position: 'relative',
-                height: config$$1.track_height + 'px',
-                margin: '0 ' + config$$1.side_spacing + 'px',
+                height: config.track_height + 'px',
+                margin: '0 ' + config.side_spacing + 'px',
                 outline: 0
             }],
             ' div + .pe-slider__track': {
-                margin: '0 ' + config$$1.horizontal_layout_side_spacing + 'px'
+                margin: '0 ' + config.horizontal_layout_side_spacing + 'px'
             },
 
-            ' .pe-slider__control': [flex$1.selfCenter, mixin.defaultTransition('transform, background', config$$1.animation_duration), mixin.vendorize({
+            ' .pe-slider__control': [flex$1.selfCenter, mixin.defaultTransition('transform, background', config.animation_duration), mixin.vendorize({
                 'user-select': 'none'
-            }, common$1.prefixes_user_select), {
+            }, appConfig.prefixes_user_select), {
                 width: thumbSize + 'px',
                 height: thumbSize + 'px',
                 'line-height': 0,
@@ -7040,7 +6988,7 @@ var createStyles$32 = function createStyles(config$$1) {
                 position: 'relative',
 
                 // touch area
-                '&:before': [mixin.defaultTransition('background-color', config$$1.animation_duration), {
+                '&:before': [mixin.defaultTransition('background-color', config.animation_duration), {
                     content: '""',
                     position: 'absolute',
                     'border-radius': '50%',
@@ -7051,7 +6999,7 @@ var createStyles$32 = function createStyles(config$$1) {
                 }],
 
                 // border
-                '&:after': [mixin.defaultTransition('border', config$$1.animation_duration), positionBorder(thumbSize, config$$1.thumb_border_width), {
+                '&:after': [mixin.defaultTransition('border', config.animation_duration), positionBorder(thumbSize, config.thumb_border_width), {
                     content: '""',
                     position: 'absolute',
                     'border-radius': '50%',
@@ -7059,7 +7007,7 @@ var createStyles$32 = function createStyles(config$$1) {
                 }]
             }],
 
-            ' .pe-slider__thumb': [mixin.defaultTransition('opacity', config$$1.animation_duration), mixin.fit(), {
+            ' .pe-slider__thumb': [mixin.defaultTransition('opacity', config.animation_duration), mixin.fit(), {
                 '&, .pe-icon': {
                     width: 'inherit',
                     height: 'inherit'
@@ -7067,19 +7015,19 @@ var createStyles$32 = function createStyles(config$$1) {
             }],
 
             ' .pe-slider__label': {
-                height: config$$1.height + 'px',
-                'line-height': config$$1.height + 'px',
-                'min-width': common$1.unit_icon_size + 'px',
+                height: config.height + 'px',
+                'line-height': config.height + 'px',
+                'min-width': appConfig.unit_icon_size + 'px',
                 'text-align': 'center',
                 'font-size': '16px',
-                'font-weight': common$1.font_weight_medium
+                'font-weight': appConfig.font_weight_medium
             },
 
             ' .pe-slider__track-part': [flex$1.flex(), mixin.vendorize({
                 'user-select': 'none'
-            }, common$1.prefixes_user_select), {
-                height: config$$1.bar_height + 'px',
-                margin: (config$$1.track_height - config$$1.bar_height) / 2 + 'px 0px',
+            }, appConfig.prefixes_user_select), {
+                height: config.bar_height + 'px',
+                margin: (config.track_height - config.bar_height) / 2 + 'px 0px',
                 overflow: 'hidden' // Firefox otherwise uses 6x at 0%
             }],
 
@@ -7089,8 +7037,8 @@ var createStyles$32 = function createStyles(config$$1) {
                 position: 'relative',
                 overflow: 'hidden'
             }],
-            ' .pe-slider__track-bar-value': [flex$1.flex(), mixin.defaultTransition('transform, background-color', config$$1.animation_duration), {
-                height: config$$1.bar_height + 'px'
+            ' .pe-slider__track-bar-value': [flex$1.flex(), mixin.defaultTransition('transform, background-color', config.animation_duration), {
+                height: config.bar_height + 'px'
             }],
             ' .pe-slider__track-value .pe-slider__track-bar': {
                 'margin-left': barOffset + 'px'
@@ -7101,44 +7049,44 @@ var createStyles$32 = function createStyles(config$$1) {
 
             ' .pe-slider__ticks': [flex$1.layoutJustified, mixin.vendorize({
                 'user-select': 'none'
-            }, common$1.prefixes_user_select), {
+            }, appConfig.prefixes_user_select), {
                 position: 'absolute',
                 width: 'calc(100% - ' + 2 * stepsOffset + 'px)',
-                height: config$$1.bar_height + 'px',
+                height: config.bar_height + 'px',
                 left: 0,
-                top: config$$1.height / 2 - 1 + 'px',
+                top: config.height / 2 - 1 + 'px',
                 margin: '0 ' + stepsOffset + 'px',
                 'pointer-events': 'none'
             }],
 
             ' .pe-slider__ticks-tick': {
-                width: config$$1.step_width + 'px',
-                height: config$$1.bar_height + 'px'
+                width: config.step_width + 'px',
+                height: config.bar_height + 'px'
             },
 
             ' .pe-slider__pin': [mixin.vendorize({
                 'transform': 'translateZ(0) scale(0) translate(0, 0)'
-            }, common$1.prefixes_transform), mixin.vendorize({
+            }, appConfig.prefixes_transform), mixin.vendorize({
                 'transform-origin': 'bottom'
-            }, common$1.prefixes_transform), mixin.defaultTransition('transform', '.11s'), {
+            }, appConfig.prefixes_transform), mixin.defaultTransition('transform', '.11s'), {
                 position: 'absolute',
                 'z-index': 1,
-                width: config$$1.pin_width + 'px',
+                width: config.pin_width + 'px',
                 height: 0,
                 left: 0, // set in js
                 top: 0,
-                'margin': '0 ' + stepsOffset + 'px 0 ' + (stepsOffset - config$$1.pin_width / 2 + 1) + 'px',
+                'margin': '0 ' + stepsOffset + 'px 0 ' + (stepsOffset - config.pin_width / 2 + 1) + 'px',
                 'pointer-events': 'none',
 
                 '&::before': [mixin.vendorize({
                     'transform': 'rotate(-45deg)'
-                }, common$1.prefixes_transform), {
+                }, appConfig.prefixes_transform), {
                     content: '" "',
                     position: 'absolute',
                     top: 0,
                     left: 0,
-                    width: config$$1.pin_width + 'px',
-                    height: config$$1.pin_width + 'px',
+                    width: config.pin_width + 'px',
+                    height: config.pin_width + 'px',
                     'border-radius': '50% 50% 50% 0',
                     'background-color': 'inherit'
                 }],
@@ -7147,38 +7095,38 @@ var createStyles$32 = function createStyles(config$$1) {
                     position: 'absolute',
                     top: 0,
                     left: 0,
-                    width: config$$1.pin_width + 'px',
-                    height: config$$1.pin_height + 'px',
+                    width: config.pin_width + 'px',
+                    height: config.pin_height + 'px',
                     'text-align': 'center',
                     color: '#fff',
-                    'font-size': config$$1.pin_font_size + 'px',
-                    'line-height': config$$1.pin_width + 'px'
+                    'font-size': config.pin_font_size + 'px',
+                    'line-height': config.pin_width + 'px'
                 }
             }],
 
             '&.pe-slider--active:not(.pe-slider--ticks)': {
                 ' .pe-slider__control': [mixin.vendorize({
-                    'transform': 'scale(' + config$$1.active_thumb_scale + ')'
-                }, common$1.prefixes_transform), {
+                    'transform': 'scale(' + config.active_thumb_scale + ')'
+                }, appConfig.prefixes_transform), {
                     'border-width': scaledBorderWidth + 'px'
                 }],
                 // left side
                 ' .pe-slider__track-value .pe-slider__track-bar-value': [mixin.vendorize({
                     'transform': 'translateX(' + -scaledThumbDiff + 'px)'
-                }, common$1.prefixes_transform)],
+                }, appConfig.prefixes_transform)],
                 // right side
                 ' .pe-slider__track-rest .pe-slider__track-bar-value': [mixin.vendorize({
                     'transform': 'translateX(' + scaledThumbDiff + 'px)'
-                }, common$1.prefixes_transform)]
+                }, appConfig.prefixes_transform)]
             },
 
             '&.pe-slider--pin.pe-slider--active, &.pe-slider--pin.pe-slider--focus': {
                 ' .pe-slider__pin': [mixin.vendorize({
                     'transform': 'translateZ(0) scale(1) translate(0, -24px)'
-                }, common$1.prefixes_transform)],
+                }, appConfig.prefixes_transform)],
                 ' .pe-slider__control': [mixin.vendorize({
-                    'transform': 'scale(' + config$$1.active_pin_thumb_scale + ')'
-                }, common$1.prefixes_transform)]
+                    'transform': 'scale(' + config.active_pin_thumb_scale + ')'
+                }, appConfig.prefixes_transform)]
             },
 
             '&:not(.pe-slider--disabled)': {
@@ -7194,44 +7142,44 @@ var createStyles$32 = function createStyles(config$$1) {
 
             '&.pe-slider--disabled': {
                 ' .pe-slider__control': [mixin.vendorize({
-                    'transform': 'scale(' + config$$1.disabled_thumb_scale + ')'
-                }, common$1.prefixes_transform), {
+                    'transform': 'scale(' + config.disabled_thumb_scale + ')'
+                }, appConfig.prefixes_transform), {
                     'border-width': 0
                 }],
                 '&.pe-slider--min': {
-                    ' .pe-slider__control:after': [positionBorder(thumbSize, 1 / config$$1.disabled_thumb_scale * config$$1.thumb_border_width)]
+                    ' .pe-slider__control:after': [positionBorder(thumbSize, 1 / config.disabled_thumb_scale * config.thumb_border_width)]
                 }
             }
         }]
     }];
 };
 
-var layout$20 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$32);
+var layout$20 = (function (config) {
+    return mixin.createStyles(config, createStyles$32);
 });
 
 function _defineProperty$18(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$14 = function style(config$$1, tint) {
+var style$14 = function style(config, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$18({}, scope + '.pe-slider', {
 
-        color: config$$1['color_' + tint + '_thumb_on'], // override by specifying 'color'
+        color: config['color_' + tint + '_thumb_on'], // override by specifying 'color'
 
         ' .pe-slider__control': {
-            background: config$$1['color_' + tint + '_thumb_off'],
+            background: config['color_' + tint + '_thumb_off'],
 
             '&:after': {
                 'border-color': 'transparent'
             }
         },
         ' .pe-slider__track-bar-value': {
-            background: config$$1['color_' + tint + '_track_inactive']
+            background: config['color_' + tint + '_track_inactive']
         },
 
         ' .pe-slider__ticks-tick': {
-            background: config$$1['color_' + tint + '_tick']
+            background: config['color_' + tint + '_tick']
         },
 
         ' .pe-slider__pin': {
@@ -7239,18 +7187,18 @@ var style$14 = function style(config$$1, tint) {
         },
 
         ' > .pe-icon': {
-            color: config$$1['color_' + tint + '_disabled_icon']
+            color: config['color_' + tint + '_disabled_icon']
         },
 
         ' .pe-slider__label': {
-            color: config$$1['color_' + tint + '_disabled_label']
+            color: config['color_' + tint + '_disabled_label']
         },
 
         // states
 
         '&.pe-slider--active': {
             ' .pe-slider__track-bar-value': {
-                background: config$$1['color_' + tint + '_track_active']
+                background: config['color_' + tint + '_track_active']
             }
         },
 
@@ -7259,7 +7207,7 @@ var style$14 = function style(config$$1, tint) {
                 background: 'currentcolor',
 
                 '&:before': {
-                    opacity: config$$1['color_' + tint + '_thumb_off_focus_opacity']
+                    opacity: config['color_' + tint + '_thumb_off_focus_opacity']
                 }
             },
             ' .pe-slider__track-value .pe-slider__track-bar-value': {
@@ -7267,18 +7215,18 @@ var style$14 = function style(config$$1, tint) {
             },
             '&.pe-slider--focus.pe-slider--min:not(.pe-slider--pin) .pe-slider__control:before,\
                 &.pe-slider--min:not(.pe-slider--pin) .pe-slider__control:focus:before': {
-                'background-color': config$$1['color_' + tint + '_thumb_off_focus']
+                'background-color': config['color_' + tint + '_thumb_off_focus']
             },
             '&.pe-slider--focus:not(.pe-slider--min):not(.pe-slider--pin) .pe-slider__control:before,\
                 &:not(.pe-slider--min):not(.pe-slider--pin) .pe-slider__control:focus:before': {
                 'background-color': 'currentcolor',
-                opacity: config$$1['color_' + tint + '_thumb_on_focus_opacity']
+                opacity: config['color_' + tint + '_thumb_on_focus_opacity']
             },
             ' > .pe-icon': {
-                color: config$$1['color_' + tint + '_icon']
+                color: config['color_' + tint + '_icon']
             },
             ' .pe-slider__label': {
-                color: config$$1['color_' + tint + '_label']
+                color: config['color_' + tint + '_label']
             }
         },
         '&.pe-slider--min:not(.pe-slider--disabled)': {
@@ -7289,45 +7237,45 @@ var style$14 = function style(config$$1, tint) {
                 'opacity': 0
             },
             ' .pe-slider__control:after': {
-                'border-color': config$$1['color_' + tint + '_track_inactive']
+                'border-color': config['color_' + tint + '_track_inactive']
             },
             '&.pe-slider--active .pe-slider__control:after': {
-                'border-color': config$$1['color_' + tint + '_track_active']
+                'border-color': config['color_' + tint + '_track_active']
             },
             '&.pe-slider--ticks': {
                 ' .pe-slider__control': {
-                    'background-color': config$$1['color_' + tint + '_tick']
+                    'background-color': config['color_' + tint + '_tick']
                 },
                 ' .pe-slider__control:after': {
                     'border-color': 'transparent'
                 }
             },
             ' .pe-slider__pin': {
-                'background-color': config$$1['color_' + tint + '_track_inactive']
+                'background-color': config['color_' + tint + '_track_inactive']
             }
         }
     })];
 };
 
-var createStyles$33 = function createStyles(config$$1) {
-    return [style$14(config$$1, 'light'), {
+var createStyles$33 = function createStyles(config) {
+    return [style$14(config, 'light'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$14(config$$1, 'dark', ' '),
+        style$14(config, 'dark', ' '),
         // has dark theme
-        style$14(config$$1, 'dark', '&')]
+        style$14(config, 'dark', '&')]
     }];
 };
 
-var color$14 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$33);
+var color$14 = (function (config) {
+    return mixin.createStyles(config, createStyles$33);
 });
 
-var themeConfigFn$18 = config && config.slider;
-var config$19 = themeConfigFn$18 ? themeConfigFn$18(componentConfig$16) : componentConfig$16;
+var configFn$18 = componentConfig && componentConfig.slider;
+var config$18 = configFn$18 ? configFn$18(vars$16) : vars$16;
 var id$19 = 'pe-slider';
 
-styler.add(id$19, layout$20(config$19), color$14(config$19));
+styler.add(id$19, layout$20(config$18), color$14(config$18));
 
 var _extends$18 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -7410,7 +7358,7 @@ var generateTickMarks = function generateTickMarks(min, max, stepSize) {
 var readRangeData = function readRangeData(ctrl) {
     if (ctrl.controlEl) {
         // range is from the far left to the far right minus the thumb width (max x is at the left side of the thumb)
-        ctrl.controlWidth = componentConfig$16.thumb_size;
+        ctrl.controlWidth = vars$16.thumb_size;
         ctrl.rangeWidth = ctrl.trackEl.getBoundingClientRect().width - ctrl.controlWidth;
         var styles = window.getComputedStyle(ctrl.trackEl);
         ctrl.rangeOffset = parseFloat(styles.marginLeft);
@@ -7506,7 +7454,7 @@ var createSlider = function createSlider(ctrl) {
 
     return [m('div', _extends$18({}, {
         class: CSS_CLASSES$19.track,
-        config: function config$$1(el, inited) {
+        config: function config(el, inited) {
             if (inited) return;
             ctrl.trackEl = el;
             if (opts.pin) {
@@ -7528,7 +7476,7 @@ var createSlider = function createSlider(ctrl) {
         }
     }, m('div', { class: CSS_CLASSES$19.trackBar }, m('div', { class: CSS_CLASSES$19.trackBarValue }))), m('div', _extends$18({}, {
         class: CSS_CLASSES$19.control,
-        config: function config$$1(el, inited) {
+        config: function config(el, inited) {
             if (inited) return;
             ctrl.controlEl = el;
         }
@@ -7579,7 +7527,7 @@ var createSlider = function createSlider(ctrl) {
     }, m('div', { class: CSS_CLASSES$19.trackBar }, m('div', { class: CSS_CLASSES$19.trackBarValue }))), hasTicks && !opts.disabled ? m('div', { class: CSS_CLASSES$19.ticks }, generateTickMarks(ctrl.min, ctrl.max, stepCount)) : null, hasTicks && opts.pin && !opts.disabled ? m('div', {
         class: CSS_CLASSES$19.pin,
         value: Math.round(ctrl.value()),
-        config: function config$$1(el, inited) {
+        config: function config(el, inited) {
             if (inited) return;
             ctrl.pinEl = el;
         }
@@ -7707,7 +7655,7 @@ var transitions$1 = {
 
 var buttonPaddingH$1 = 8; // padding, inner text space
 
-var componentConfig$17 = {
+var vars$17 = {
     width: 274,
     border_radius: 0,
     title_padding_h: buttonPaddingH$1,
@@ -7721,23 +7669,23 @@ var componentConfig$17 = {
 
     // switch light and dark: dark on light and light on dark
 
-    color_light_background: common$1.rgba(common$1.color_dark_background),
-    color_light_text: common$1.rgba(common$1.color_dark_foreground, common$1.blend_light_dark_primary),
+    color_light_background: appConfig.rgba(appConfig.color_dark_background),
+    color_light_text: appConfig.rgba(appConfig.color_dark_foreground, appConfig.blend_light_dark_primary),
 
-    color_dark_background: common$1.rgba(common$1.color_light_background),
-    color_dark_text: common$1.rgba(common$1.color_light_foreground, common$1.blend_light_text_primary)
+    color_dark_background: appConfig.rgba(appConfig.color_light_background),
+    color_dark_text: appConfig.rgba(appConfig.color_light_foreground, appConfig.blend_light_text_primary)
 };
 
 function _defineProperty$19(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var tabletStyle = function tabletStyle(config$$1) {
+var tabletStyle = function tabletStyle(config) {
     return {
-        'min-width': config$$1.tablet_min_width + 'px',
-        'max-width': config$$1.tablet_max_width + 'px',
+        'min-width': config.tablet_min_width + 'px',
+        'max-width': config.tablet_max_width + 'px',
         'border-bottom-left-radius': 0,
         'border-bottom-right-radius': 0,
-        'border-top-left-radius': common$1.unit_block_border_radius + 'px',
-        'border-top-right-radius': common$1.unit_block_border_radius + 'px',
+        'border-top-left-radius': appConfig.unit_block_border_radius + 'px',
+        'border-top-right-radius': appConfig.unit_block_border_radius + 'px',
 
         '&.pe-notification--horizontal': {
             ' .pe-notification__title': {
@@ -7747,46 +7695,46 @@ var tabletStyle = function tabletStyle(config$$1) {
     };
 };
 
-var createStyles$34 = function createStyles(config$$1) {
-    return [_defineProperty$19({}, '@media (min-width: ' + common$1.breakpoint_small_handset_landscape + 'px)', {
-        '.pe-notification--snackbar': tabletStyle(config$$1)
+var createStyles$34 = function createStyles(config) {
+    return [_defineProperty$19({}, '@media (min-width: ' + appConfig.breakpoint_small_handset_landscape + 'px)', {
+        '.pe-notification--snackbar': tabletStyle(config)
     })];
 };
 
-var layout$21 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$34);
+var layout$21 = (function (config) {
+    return mixin.createStyles(config, createStyles$34);
 });
 
 function _defineProperty$20(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$15 = function style(config$$1, tint) {
+var style$15 = function style(config, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$20({}, scope + '.pe-notification--snackbar', {
-        color: config$$1['color_' + tint + '_text'],
-        background: config$$1['color_' + tint + '_background']
+        color: config['color_' + tint + '_text'],
+        background: config['color_' + tint + '_background']
     })];
 };
 
-var createStyles$35 = function createStyles(config$$1) {
-    return [style$15(config$$1, 'light'), {
+var createStyles$35 = function createStyles(config) {
+    return [style$15(config, 'light'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$15(config$$1, 'dark', ' '),
+        style$15(config, 'dark', ' '),
         // has dark theme
-        style$15(config$$1, 'dark', '&')]
+        style$15(config, 'dark', '&')]
     }];
 };
 
-var color$15 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$35);
+var color$15 = (function (config) {
+    return mixin.createStyles(config, createStyles$35);
 });
 
-var themeConfigFn$19 = config && config.snackbar;
-var config$20 = themeConfigFn$19 ? themeConfigFn$19(componentConfig$17) : componentConfig$17;
+var configFn$19 = componentConfig && componentConfig.snackbar;
+var config$19 = configFn$19 ? configFn$19(vars$17) : vars$17;
 var id$20 = 'pe-notification-snackbar';
 
-styler.add(id$20, layout$21(config$20), color$15(config$20));
+styler.add(id$20, layout$21(config$19), color$15(config$19));
 
 var snackbar = multiple({
     instance: component$22,
@@ -7799,7 +7747,7 @@ var snackbar = multiple({
     transitions: transitions$1
 });
 
-var rgba$11 = common$1.rgba;
+var rgba$10 = appConfig.rgba;
 
 var defaultConfig = {
     size_small: 24,
@@ -7808,9 +7756,9 @@ var defaultConfig = {
     size_large: 48,
     size_fab: 56,
 
-    color_light_raised_background: rgba$11(common$1.color_light_background),
+    color_light_raised_background: rgba$10(appConfig.color_light_background),
     // also use light background with dark theme
-    color_dark_raised_background: rgba$11(common$1.color_light_background)
+    color_dark_raised_background: rgba$10(appConfig.color_light_background)
 };
 
 var sizes = function sizes(size) {
@@ -7830,74 +7778,74 @@ var sizesRaised = function sizesRaised(size) {
     };
 };
 
-var createStyles$36 = function createStyles(config$$1) {
+var createStyles$36 = function createStyles(config) {
     return [{
         '.pe-spinner': [mixin.vendorize({
             'transition-timing-function': 'ease-out'
-        }, common$1.prefixes_transition), mixin.vendorize({
+        }, appConfig.prefixes_transition), mixin.vendorize({
             'transition-property': 'opacity'
-        }, common$1.prefixes_transition), {
+        }, appConfig.prefixes_transition), {
             opacity: 0,
 
             '&.pe-spinner--visible, &.pe-spinner--permanent': {
                 opacity: 1
             },
 
-            '&.pe-spinner--small': sizes(config$$1.size_small),
-            '&.pe-spinner--regular': sizes(config$$1.size_regular),
-            '&.pe-spinner--medium': sizes(config$$1.size_medium),
-            '&.pe-spinner--large': sizes(config$$1.size_large),
-            '&.pe-spinner--fab': sizes(config$$1.size_fab),
+            '&.pe-spinner--small': sizes(config.size_small),
+            '&.pe-spinner--regular': sizes(config.size_regular),
+            '&.pe-spinner--medium': sizes(config.size_medium),
+            '&.pe-spinner--large': sizes(config.size_large),
+            '&.pe-spinner--fab': sizes(config.size_fab),
 
             '&.pe-spinner--raised': {
                 position: 'relative',
                 'border-radius': '50%',
 
-                '&.pe-spinner--small': sizesRaised(config$$1.size_small),
-                '&.pe-spinner--regular': sizesRaised(config$$1.size_regular),
-                '&.pe-spinner--medium': sizesRaised(config$$1.size_medium),
-                '&.pe-spinner--large': sizesRaised(config$$1.size_large),
-                '&.pe-spinner--fab': sizesRaised(config$$1.size_fab)
+                '&.pe-spinner--small': sizesRaised(config.size_small),
+                '&.pe-spinner--regular': sizesRaised(config.size_regular),
+                '&.pe-spinner--medium': sizesRaised(config.size_medium),
+                '&.pe-spinner--large': sizesRaised(config.size_large),
+                '&.pe-spinner--fab': sizesRaised(config.size_fab)
             }
         }]
     }];
 };
 
-var layout$22 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$36);
+var layout$22 = (function (config) {
+    return mixin.createStyles(config, createStyles$36);
 });
 
 function _defineProperty$21(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$16 = function style(config$$1, tint) {
+var style$16 = function style(config, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$21({}, scope + '.pe-spinner', {
         '&.pe-spinner--raised': {
-            'background-color': config$$1['color_' + tint + '_raised_background']
+            'background-color': config['color_' + tint + '_raised_background']
         }
     })];
 };
 
-var createStyles$37 = function createStyles(config$$1) {
-    return [style$16(config$$1, 'light'), {
+var createStyles$37 = function createStyles(config) {
+    return [style$16(config, 'light'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$16(config$$1, 'dark', ' '),
+        style$16(config, 'dark', ' '),
         // has dark theme
-        style$16(config$$1, 'dark', '&')]
+        style$16(config, 'dark', '&')]
     }];
 };
 
-var color$16 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$37);
+var color$16 = (function (config) {
+    return mixin.createStyles(config, createStyles$37);
 });
 
-var themeConfigFn$20 = config && config['spinner-default'];
-var config$21 = themeConfigFn$20 ? themeConfigFn$20(defaultConfig) : defaultConfig;
+var configFn$20 = componentConfig && componentConfig['spinner-default'];
+var config$20 = configFn$20 ? configFn$20(defaultConfig) : defaultConfig;
 var id$21 = 'pe-spinner-default';
 
-styler.add(id$21, layout$22(config$21), color$16(config$21));
+styler.add(id$21, layout$22(config$20), color$16(config$20));
 
 var _extends$19 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -7983,7 +7931,7 @@ var createView$21 = function createView(ctrl) {
     var props = _extends$19({}, {
         class: [CSS_CLASSES$21.block, classForType$3(opts.type), opts.singleColor ? CSS_CLASSES$21.singleColor : null, opts.raised ? CSS_CLASSES$21.raised : null, opts.animated ? CSS_CLASSES$21.animated : null, opts.permanent ? CSS_CLASSES$21.permanent : null, opts.class].join(' '),
         id: opts.id || '',
-        config: function config$$1(el, inited, context, vdom) {
+        config: function config(el, inited, context, vdom) {
             if (inited) return;
             if (opts.config) {
                 opts.config(el, inited, context, vdom);
@@ -8066,11 +8014,11 @@ var component$32 = {
     }
 };
 
-var componentConfig$18 = {
+var vars$18 = {
     animation_duration: 1, // seconds
 
-    color_light: common$1.rgba(common$1.color_light_foreground),
-    color_dark: common$1.rgba(common$1.color_dark_foreground)
+    color_light: appConfig.rgba(appConfig.color_light_foreground),
+    color_dark: appConfig.rgba(appConfig.color_dark_foreground)
 };
 
 function _defineProperty$22(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -8086,23 +8034,23 @@ var kfFade = function kfFade() {
     };
 };
 
-var positionBlades = function positionBlades(config$$1) {
+var positionBlades = function positionBlades(config) {
     return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(function (i) {
         // reverse to improve performance on iOS
-        var delay = -(1 / 12 * i * config$$1.animation_duration);
+        var delay = -(1 / 12 * i * config.animation_duration);
         var rotation = 360 - 360 / 12 * i;
 
         return _defineProperty$22({}, ' div:nth-of-type(' + (i + 1) + ')', [mixin.vendorize({
             'transform': 'rotate(' + rotation + 'deg) translate3d(0,-142%,0)'
-        }, common$1.prefixes_transform), mixin.vendorize({
-            'animation': 'iosSpinnerFade ' + config$$1.animation_duration + 's ' + delay + 's linear infinite'
-        }, common$1.prefixes_animation)]);
+        }, appConfig.prefixes_transform), mixin.vendorize({
+            'animation': 'iosSpinnerFade ' + config.animation_duration + 's ' + delay + 's linear infinite'
+        }, appConfig.prefixes_animation)]);
     });
 };
 
-var createStyles$38 = function createStyles(config$$1) {
+var createStyles$38 = function createStyles(config) {
     return [{
-        '.pe-spinner--ios': [mixin.vendorize({ 'transform': 'translate3d(0,0,0)' }, common$1.prefixes_transform), positionBlades(config$$1), {
+        '.pe-spinner--ios': [mixin.vendorize({ 'transform': 'translate3d(0,0,0)' }, appConfig.prefixes_transform), positionBlades(config), {
             position: 'relative',
 
             ' > div': {
@@ -8120,17 +8068,17 @@ var createStyles$38 = function createStyles(config$$1) {
     }];
 };
 
-var layout$23 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$38);
+var layout$23 = (function (config) {
+    return mixin.createStyles(config, createStyles$38);
 });
 
 function _defineProperty$23(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$17 = function style(config$$1, tint) {
+var style$17 = function style(config, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$23({}, scope + '.pe-spinner--ios', {
-        color: config$$1['color_' + tint],
+        color: config['color_' + tint],
 
         ' > div': {
             background: 'currentcolor'
@@ -8138,25 +8086,25 @@ var style$17 = function style(config$$1, tint) {
     })];
 };
 
-var createStyles$39 = function createStyles(config$$1) {
-    return [style$17(config$$1, 'light'), {
+var createStyles$39 = function createStyles(config) {
+    return [style$17(config, 'light'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$17(config$$1, 'dark', ' '),
+        style$17(config, 'dark', ' '),
         // has dark theme
-        style$17(config$$1, 'dark', '&')]
+        style$17(config, 'dark', '&')]
     }];
 };
 
-var color$17 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$39);
+var color$17 = (function (config) {
+    return mixin.createStyles(config, createStyles$39);
 });
 
-var themeConfigFn$21 = config && config['spinner-ios'];
-var config$22 = themeConfigFn$21 ? themeConfigFn$21(componentConfig$18) : componentConfig$18;
+var configFn$21 = componentConfig && componentConfig['spinner-ios'];
+var config$21 = configFn$21 ? configFn$21(vars$18) : vars$18;
 var id$22 = 'pe-spinner-ios';
 
-styler.add(id$22, layout$23(config$22), color$17(config$22));
+styler.add(id$22, layout$23(config$21), color$17(config$21));
 
 var CSS_CLASSES$20 = {
     block: 'pe-spinner--ios'
@@ -8178,15 +8126,15 @@ var component$30 = {
 
 var _extends$20 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var componentConfig$19 = _extends$20({}, defaultConfig, {
+var vars$19 = _extends$20({}, defaultConfig, {
     border_width_small: defaultConfig.size_small / defaultConfig.size_regular * 3,
     border_width_regular: 3,
     border_width_medium: defaultConfig.size_medium / defaultConfig.size_regular * 3,
     border_width_large: defaultConfig.size_large / defaultConfig.size_regular * 3,
     border_width_fab: defaultConfig.size_fab / defaultConfig.size_regular * 3,
 
-    color_light: common$1.rgba(common$1.color_primary),
-    color_dark: common$1.rgba(common$1.color_primary)
+    color_light: appConfig.rgba(appConfig.color_primary),
+    color_dark: appConfig.rgba(appConfig.color_primary)
 });
 
 var createStyles$40 = function createStyles() {
@@ -8196,7 +8144,7 @@ var createStyles$40 = function createStyles() {
 
             ' .pe-spinner-determinate__animation': [mixin.vendorize({
                 'animation-duration': '1.5s'
-            }, common$1.prefixes_animation), {
+            }, appConfig.prefixes_animation), {
                 position: 'absolute',
                 width: '100%',
                 height: '100%'
@@ -8214,17 +8162,17 @@ var createStyles$40 = function createStyles() {
     }];
 };
 
-var layout$24 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$40);
+var layout$24 = (function (config) {
+    return mixin.createStyles(config, createStyles$40);
 });
 
 function _defineProperty$24(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$18 = function style(config$$1, tint) {
+var style$18 = function style(config, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$24({}, scope + '.pe-spinner--determinate', {
-        color: config$$1['color_' + tint],
+        color: config['color_' + tint],
 
         ' .pe-spinner-determinate__circle': {
             'border-color': 'currentcolor'
@@ -8232,86 +8180,25 @@ var style$18 = function style(config$$1, tint) {
     })];
 };
 
-var createStyles$41 = function createStyles(config$$1) {
-    return [style$18(config$$1, 'light'), {
+var createStyles$41 = function createStyles(config) {
+    return [style$18(config, 'light'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$18(config$$1, 'dark', ' '),
+        style$18(config, 'dark', ' '),
         // has dark theme
-        style$18(config$$1, 'dark', '&')]
+        style$18(config, 'dark', '&')]
     }];
 };
 
-var color$18 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$41);
+var color$18 = (function (config) {
+    return mixin.createStyles(config, createStyles$41);
 });
 
-var themeConfigFn$22 = config && config['spinner-determinate'];
-var config$23 = themeConfigFn$22 ? themeConfigFn$22(componentConfig$19) : componentConfig$19;
+var configFn$22 = componentConfig && componentConfig['spinner-determinate'];
+var config$22 = configFn$22 ? configFn$22(vars$19) : vars$19;
 var id$23 = 'pe-spinner-determinate';
 
-styler.add(id$23, layout$24(config$23), color$18(config$23));
-
-/*
-https://gist.github.com/gre/1650294
-Easing Functions - inspired from http://gizma.com/easing/
-Only considering the t value for the range [0, 1] => [0, 1]
-*/
-
-var easing = {
-    // no easing, no acceleration
-    linear: function linear(t) {
-        return t;
-    },
-    // accelerating from zero velocity
-    easeInQuad: function easeInQuad(t) {
-        return t * t;
-    },
-    // decelerating to zero velocity
-    easeOutQuad: function easeOutQuad(t) {
-        return t * (2 - t);
-    },
-    // acceleration until halfway, then deceleration
-    easeInOutQuad: function easeInOutQuad(t) {
-        return t < .5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-    },
-    // accelerating from zero velocity
-    easeInCubic: function easeInCubic(t) {
-        return t * t * t;
-    },
-    // decelerating to zero velocity
-    easeOutCubic: function easeOutCubic(t) {
-        return --t * t * t + 1;
-    },
-    // acceleration until halfway, then deceleration
-    easeInOutCubic: function easeInOutCubic(t) {
-        return t < .5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
-    },
-    // accelerating from zero velocity
-    easeInQuart: function easeInQuart(t) {
-        return t * t * t * t;
-    },
-    // decelerating to zero velocity
-    easeOutQuart: function easeOutQuart(t) {
-        return 1 - --t * t * t * t;
-    },
-    // acceleration until halfway, then deceleration
-    easeInOutQuart: function easeInOutQuart(t) {
-        return t < .5 ? 8 * t * t * t * t : 1 - 8 * --t * t * t * t;
-    },
-    // accelerating from zero velocity
-    easeInQuint: function easeInQuint(t) {
-        return t * t * t * t * t;
-    },
-    // decelerating to zero velocity
-    easeOutQuint: function easeOutQuint(t) {
-        return 1 + --t * t * t * t * t;
-    },
-    // acceleration until halfway, then deceleration
-    easeInOutQuint: function easeInOutQuint(t) {
-        return t < .5 ? 16 * t * t * t * t * t : 1 + 16 * --t * t * t * t * t;
-    }
-};
+styler.add(id$23, layout$24(config$22), color$18(config$22));
 
 /*
 Derived from https://github.com/PolymerElements/paper-spinner
@@ -8335,7 +8222,7 @@ var CSS_CLASSES$22 = {
 
 var sizeFromType = function sizeFromType() {
     var type = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'regular';
-    return componentConfig$19['size_' + type];
+    return vars$19['size_' + type];
 };
 
 var percentageValue = function percentageValue(min, max, percentage) {
@@ -8433,7 +8320,7 @@ var arc_time = 1.333; // s - time it takes to expand and contract arc
 var arc_start_degrees = 360 / 5 * 3; // degrees - how much the start location of the arc should rotate each time, 216 gives us a 5 pointed star shape (it's 360/5 * 3). For a 7 pointed star, we might do 360/7 * 3 = 154.286.
 var rotation_duration = 360 * arc_time / (arc_start_degrees + (360 - arc_size)); // 1.568s
 
-var componentConfig$20 = {
+var vars$20 = {
     border_width_small: defaultConfig.size_small / defaultConfig.size_regular * 3,
     border_width_regular: 3,
     border_width_medium: defaultConfig.size_medium / defaultConfig.size_regular * 3,
@@ -8444,13 +8331,13 @@ var componentConfig$20 = {
     arc_time: arc_time,
     arc_start_degrees: arc_start_degrees,
 
-    color_light_single: common$1.rgba(common$1.color_primary),
+    color_light_single: appConfig.rgba(appConfig.color_primary),
     color_light_1: '#42a5f5', // blue 400
     color_light_2: '#f44336', // red 500
     color_light_3: '#fdd835', // yellow 600,
     color_light_4: '#4caf50', // green 500
 
-    color_dark_single: common$1.rgba(common$1.color_primary),
+    color_dark_single: appConfig.rgba(appConfig.color_primary),
     color_dark_1: '#42a5f5', // blue 400
     color_dark_2: '#f44336', // red 500
     color_dark_3: '#fdd835', // yellow 600,
@@ -8475,13 +8362,13 @@ var OPACITY_MIN = 0;
 var OPACITY_MAX = .99;
 var CURVE_INFINITE = 'cubic-bezier(0.4, 0.0, 0.2, 1) infinite both';
 
-var createStyles$42 = function createStyles(config$$1) {
+var createStyles$42 = function createStyles(config) {
     return [{
         '.pe-spinner-indeterminate': {
 
             ' .pe-spinner-indeterminate__animation': [mixin.vendorize({
-                'animation': 'indeterminateSpinnerRotate ' + config$$1.rotation_duration + 's linear infinite'
-            }, common$1.prefixes_animation), {
+                'animation': 'indeterminateSpinnerRotate ' + config.rotation_duration + 's linear infinite'
+            }, appConfig.prefixes_animation), {
                 position: 'relative',
                 width: '100%',
                 height: '100%',
@@ -8532,7 +8419,7 @@ var createStyles$42 = function createStyles(config$$1) {
 
             ' .pe-spinner-indeterminate__circle': [mixin.fit(), mixin.vendorize({
                 'animation': 'none'
-            }, common$1.prefixes_animation), {
+            }, appConfig.prefixes_animation), {
                 'box-sizing': 'border-box',
                 height: '100%',
                 'border-style': 'solid',
@@ -8544,24 +8431,24 @@ var createStyles$42 = function createStyles(config$$1) {
             '&': ['small', 'regular', 'medium', 'large', 'fab'].map(function (size) {
                 return _defineProperty$25({}, '&.pe-spinner--' + size, {
                     ' .pe-spinner-indeterminate__circle': {
-                        'border-width': config$$1['border_width_' + size] + 'px'
+                        'border-width': config['border_width_' + size] + 'px'
                     }
                 });
             }),
 
             ' .pe-spinner-indeterminate__circle-clipper--left .pe-spinner-indeterminate__circle': [mixin.vendorize({
                 'transform': 'rotate(129deg)'
-            }, common$1.prefixes_transform), mixin.vendorize({
-                'animation': 'indeterminateLeftSpin ' + config$$1.arc_time + 's ' + CURVE_INFINITE
-            }, common$1.prefixes_animation), {
+            }, appConfig.prefixes_transform), mixin.vendorize({
+                'animation': 'indeterminateLeftSpin ' + config.arc_time + 's ' + CURVE_INFINITE
+            }, appConfig.prefixes_animation), {
                 'border-right-color': 'transparent !important'
             }],
 
             ' .pe-spinner-indeterminate__circle-clipper--right .pe-spinner-indeterminate__circle': [mixin.vendorize({
                 'transform': 'rotate(-129deg)'
-            }, common$1.prefixes_transform), mixin.vendorize({
-                'animation': 'indeterminateRightSpin ' + config$$1.arc_time + 's ' + CURVE_INFINITE
-            }, common$1.prefixes_animation), {
+            }, appConfig.prefixes_transform), mixin.vendorize({
+                'animation': 'indeterminateRightSpin ' + config.arc_time + 's ' + CURVE_INFINITE
+            }, appConfig.prefixes_animation), {
                 left: '-100%',
                 'border-left-color': 'transparent !important'
             }],
@@ -8580,9 +8467,9 @@ var createStyles$42 = function createStyles(config$$1) {
             * other animation rules. See https://github.com/Polymer/platform/issues/53.
             */
             ' .pe-spinner-indeterminate__layer': [mixin.vendorize({
-                'animation': 'indeterminateFillUnfillRotate ' + 4 * config$$1.arc_time + 's ' + CURVE_INFINITE
-            }, common$1.prefixes_animation), [1, 2, 3, 4].map(function (num) {
-                return layerAnimation(config$$1, num);
+                'animation': 'indeterminateFillUnfillRotate ' + 4 * config.arc_time + 's ' + CURVE_INFINITE
+            }, appConfig.prefixes_animation), [1, 2, 3, 4].map(function (num) {
+                return layerAnimation(config, num);
             }), {
                 position: 'absolute',
                 width: '100%',
@@ -8594,7 +8481,7 @@ var createStyles$42 = function createStyles(config$$1) {
             '@keyframes indeterminateRightSpin': kfRightSpin(),
             '@keyframes indeterminateLeftSpin': kfLeftSpin(),
             '@keyframes indeterminateFadeOut': kfFadeOut(),
-            '@keyframes indeterminateFillUnfillRotate': kfFillUnfillRotate(config$$1),
+            '@keyframes indeterminateFillUnfillRotate': kfFillUnfillRotate(config),
             '@keyframes indeterminateLayer1FadeInOut': kfLayer1FadeInOut(),
             '@keyframes indeterminateLayer2FadeInOut': kfLayer2FadeInOut(),
             '@keyframes indeterminateLayer3FadeInOut': kfLayer3FadeInOut(),
@@ -8643,31 +8530,31 @@ var kfFadeOut = function kfFadeOut() {
     };
 };
 
-var kfFillUnfillRotate = function kfFillUnfillRotate(config$$1) {
+var kfFillUnfillRotate = function kfFillUnfillRotate(config) {
     return {
         ' 12.5%': {
-            transform: 'rotate(' + 0.5 * config$$1.arc_size + 'deg)'
+            transform: 'rotate(' + 0.5 * config.arc_size + 'deg)'
         },
         ' 25%': {
-            transform: 'rotate(' + 1.0 * config$$1.arc_size + 'deg)'
+            transform: 'rotate(' + 1.0 * config.arc_size + 'deg)'
         },
         ' 37.5%': {
-            transform: 'rotate(' + 1.5 * config$$1.arc_size + 'deg)'
+            transform: 'rotate(' + 1.5 * config.arc_size + 'deg)'
         },
         ' 50%': {
-            transform: 'rotate(' + 2.0 * config$$1.arc_size + 'deg)'
+            transform: 'rotate(' + 2.0 * config.arc_size + 'deg)'
         },
         ' 62.5%': {
-            transform: 'rotate(' + 2.5 * config$$1.arc_size + 'deg)'
+            transform: 'rotate(' + 2.5 * config.arc_size + 'deg)'
         },
         ' 75%': {
-            transform: 'rotate(' + 3.0 * config$$1.arc_size + 'deg)'
+            transform: 'rotate(' + 3.0 * config.arc_size + 'deg)'
         },
         ' 87.5%': {
-            transform: 'rotate(' + 3.5 * config$$1.arc_size + 'deg)'
+            transform: 'rotate(' + 3.5 * config.arc_size + 'deg)'
         },
         ' to': {
-            transform: 'rotate(' + 4.0 * config$$1.arc_size + 'deg)'
+            transform: 'rotate(' + 4.0 * config.arc_size + 'deg)'
         }
     };
 };
@@ -8765,14 +8652,14 @@ var kfLayer4FadeInOut = function kfLayer4FadeInOut() {
     };
 };
 
-var layerAnimation = function layerAnimation(config$$1, num) {
+var layerAnimation = function layerAnimation(config, num) {
     return _defineProperty$25({}, '&.pe-spinner-indeterminate__layer--' + num, [mixin.vendorize({
-        'animation': 'indeterminateFillUnfillRotate ' + 4 * config$$1.arc_time + 's ' + CURVE_INFINITE + ',  indeterminateLayer' + num + 'FadeInOut ' + 4 * config$$1.arc_time + 's ' + CURVE_INFINITE
-    }, common$1.prefixes_animation)]);
+        'animation': 'indeterminateFillUnfillRotate ' + 4 * config.arc_time + 's ' + CURVE_INFINITE + ',  indeterminateLayer' + num + 'FadeInOut ' + 4 * config.arc_time + 's ' + CURVE_INFINITE
+    }, appConfig.prefixes_animation)]);
 };
 
-var layout$25 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$42);
+var layout$25 = (function (config) {
+    return mixin.createStyles(config, createStyles$42);
 });
 
 function _defineProperty$26(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -8789,12 +8676,12 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
 
-var style$19 = function style(config$$1, tint) {
+var style$19 = function style(config, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$26({}, scope + '.pe-spinner-indeterminate', {
 
-        color: config$$1['color_' + tint + '_single'],
+        color: config['color_' + tint + '_single'],
 
         ' .pe-spinner-indeterminate__layer': {
             'border-color': 'currentcolor'
@@ -8802,40 +8689,40 @@ var style$19 = function style(config$$1, tint) {
 
         '&:not(.pe-spinner--single-color)': {
             ' .pe-spinner-indeterminate__layer--1': {
-                'border-color': config$$1['color_' + tint + '_1']
+                'border-color': config['color_' + tint + '_1']
             },
             ' .pe-spinner-indeterminate__layer--2': {
-                'border-color': config$$1['color_' + tint + '_2']
+                'border-color': config['color_' + tint + '_2']
             },
             ' .pe-spinner-indeterminate__layer--3': {
-                'border-color': config$$1['color_' + tint + '_3']
+                'border-color': config['color_' + tint + '_3']
             },
             ' .pe-spinner-indeterminate__layer--4': {
-                'border-color': config$$1['color_' + tint + '_4']
+                'border-color': config['color_' + tint + '_4']
             }
         }
     })];
 };
 
-var createStyles$43 = function createStyles(config$$1) {
-    return [style$19(config$$1, 'light'), {
+var createStyles$43 = function createStyles(config) {
+    return [style$19(config, 'light'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$19(config$$1, 'dark', ' '),
+        style$19(config, 'dark', ' '),
         // has dark theme
-        style$19(config$$1, 'dark', '&')]
+        style$19(config, 'dark', '&')]
     }];
 };
 
-var color$19 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$43);
+var color$19 = (function (config) {
+    return mixin.createStyles(config, createStyles$43);
 });
 
-var themeConfigFn$23 = config && config['spinner-indeterminate'];
-var config$24 = themeConfigFn$23 ? themeConfigFn$23(componentConfig$20) : componentConfig$20;
+var configFn$23 = componentConfig && componentConfig['spinner-indeterminate'];
+var config$23 = configFn$23 ? configFn$23(vars$20) : vars$20;
 var id$24 = 'pe-spinner-indeterminate';
 
-styler.add(id$24, layout$25(config$24), color$19(config$24));
+styler.add(id$24, layout$25(config$23), color$19(config$23));
 
 /*
 Derived from https://github.com/PolymerElements/paper-spinner
@@ -8895,37 +8782,37 @@ var component$35 = {
 
 var _extends$21 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var rgba$12 = common$1.rgba;
-var hit_area_padding = (common$1.grid_unit_icon_button - common$1.unit_icon_size) / 2; // 12
+var rgba$11 = appConfig.rgba;
+var hit_area_padding = (appConfig.grid_unit_icon_button - appConfig.unit_icon_size) / 2; // 12
 
-var config$26 = _extends$21({}, selectionControlConfig, {
+var config$25 = _extends$21({}, selectionControlConfig, {
     track_height: 14,
     track_length: 36,
     thumb_size: 20,
-    padding: 1 * common$1.grid_unit_component,
+    padding: 1 * appConfig.grid_unit_component,
     icon_button_padding: iconButtonConfig.padding,
     hit_area_padding: hit_area_padding,
 
     animation_duration: '.18s',
 
-    color_light_thumb_on: rgba$12(common$1.color_primary),
+    color_light_thumb_on: rgba$11(appConfig.color_primary),
     color_light_thumb_off: '#f1f1f1',
     color_light_thumb_disabled: '#bdbdbd',
 
-    color_light_track_on: rgba$12(common$1.color_primary_faded),
+    color_light_track_on: rgba$11(appConfig.color_primary_faded),
     color_light_track_on_opacity: .55,
-    color_light_track_off: rgba$12(common$1.color_light_foreground, common$1.blend_light_text_regular),
+    color_light_track_off: rgba$11(appConfig.color_light_foreground, appConfig.blend_light_text_regular),
     color_light_track_off_opacity: .55,
-    color_light_track_disabled: rgba$12(common$1.color_light_foreground, common$1.blend_light_background_disabled),
+    color_light_track_disabled: rgba$11(appConfig.color_light_foreground, appConfig.blend_light_background_disabled),
     color_light_track_disabled_opacity: 1,
 
     // color_light_focus_on and so on taken from selectionControlConfig
 
-    color_dark_thumb_on: rgba$12(common$1.color_primary), // or '#80cbc4'
+    color_dark_thumb_on: rgba$11(appConfig.color_primary), // or '#80cbc4'
     color_dark_thumb_off: '#bdbdbd',
     color_dark_thumb_disabled: '#555',
 
-    color_dark_track_on: rgba$12(common$1.color_primary_faded, common$1.blend_dark_text_tertiary), // or '#5a7f7c'
+    color_dark_track_on: rgba$11(appConfig.color_primary_faded, appConfig.blend_dark_text_tertiary), // or '#5a7f7c'
     color_dark_track_on_opacity: .9,
     color_dark_track_off: '#717171',
     color_dark_track_off_opacity: .55,
@@ -8935,20 +8822,20 @@ var config$26 = _extends$21({}, selectionControlConfig, {
     // color_dark_focus_on and so on taken from selectionControlConfig
 });
 
-var transition$2 = function transition(config$$1, properties) {
-    var duration = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : config$$1.animation_duration;
+var transition$2 = function transition(config, properties) {
+    var duration = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : config.animation_duration;
 
     return [mixin.defaultTransition(properties, duration, 'ease-out')];
 };
 
-var customSize = function customSize(config$$1, size) {
-    var factor = size / common$1.unit_icon_size;
-    var thumbSize = Math.floor(0.5 * config$$1.thumb_size * factor) * 2; // round to even
-    var scaledTrackHeight = Math.floor(0.5 * config$$1.track_height * factor) * 2; // round to even
-    var scaledTrackWidth = Math.floor(0.5 * config$$1.track_length * factor) * 2;
-    var scaledThumbSize = Math.floor(0.5 * config$$1.thumb_size * factor) * 2;
-    var trackTop = (config$$1.label_height * factor - scaledTrackHeight) / 2;
-    var thumbPadding = config$$1.icon_button_padding;
+var customSize = function customSize(config, size) {
+    var factor = size / appConfig.unit_icon_size;
+    var thumbSize = Math.floor(0.5 * config.thumb_size * factor) * 2; // round to even
+    var scaledTrackHeight = Math.floor(0.5 * config.track_height * factor) * 2; // round to even
+    var scaledTrackWidth = Math.floor(0.5 * config.track_length * factor) * 2;
+    var scaledThumbSize = Math.floor(0.5 * config.thumb_size * factor) * 2;
+    var trackTop = (config.label_height * factor - scaledTrackHeight) / 2;
+    var thumbPadding = config.icon_button_padding;
     var thumbMargin = (size - scaledThumbSize) / 2;
     var thumbOuterSize = size + 2 * thumbPadding;
     var thumbOffsetMin = -(thumbOuterSize / 2) + thumbSize / 2;
@@ -8962,7 +8849,7 @@ var customSize = function customSize(config$$1, size) {
             'min-width': scaledTrackWidth + 'px',
 
             ' span': {
-                'padding-left': config$$1.padding * factor + 8 + scaledTrackWidth + 'px'
+                'padding-left': config.padding * factor + 8 + scaledTrackWidth + 'px'
             }
         },
         ' .pe-control--switch__track': {
@@ -9003,16 +8890,16 @@ var customSize = function customSize(config$$1, size) {
     };
 };
 
-var createStyles$44 = function createStyles(config$$1) {
-    return [createStyles$12(config$$1, '.pe-control--switch', 'checkbox'), {
+var createStyles$44 = function createStyles(config) {
+    return [createStyles$12(config, '.pe-control--switch', 'checkbox'), {
         '.pe-control--switch': {
 
-            ' .pe-control--switch__track': [transition$2(config$$1, 'background, opacity'), {
+            ' .pe-control--switch__track': [transition$2(config, 'background, opacity'), {
                 position: 'absolute',
                 left: 0
             }],
 
-            ' .pe-control--switch__thumb': [transition$2(config$$1, 'left, color'), {
+            ' .pe-control--switch__thumb': [transition$2(config, 'left, color'), {
                 position: 'absolute',
                 color: 'inherit',
 
@@ -9021,96 +8908,96 @@ var createStyles$44 = function createStyles(config$$1) {
                 }
             }],
 
-            ' .pe-button__focus': [transition$2(config$$1, 'all')],
+            ' .pe-button__focus': [transition$2(config, 'all')],
 
-            '&.pe-control--small': customSize(config$$1, common$1.unit_icon_size_small),
-            '&.pe-control--regular': customSize(config$$1, common$1.unit_icon_size),
-            '&.pe-control--medium': customSize(config$$1, common$1.unit_icon_size_medium),
-            '&.pe-control--large': customSize(config$$1, common$1.unit_icon_size_large)
+            '&.pe-control--small': customSize(config, appConfig.unit_icon_size_small),
+            '&.pe-control--regular': customSize(config, appConfig.unit_icon_size),
+            '&.pe-control--medium': customSize(config, appConfig.unit_icon_size_medium),
+            '&.pe-control--large': customSize(config, appConfig.unit_icon_size_large)
         }
     }];
 };
 
-var layout$26 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$44);
+var layout$26 = (function (config) {
+    return mixin.createStyles(config, createStyles$44);
 });
 
 function _defineProperty$27(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$20 = function style(config$$1, tint) {
+var style$20 = function style(config, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
-    return [style$5(config$$1, tint, scope), _defineProperty$27({}, scope + '.pe-control--switch', {
+    return [style$5(config, tint, scope), _defineProperty$27({}, scope + '.pe-control--switch', {
 
         '&.pe-control--off': {
             ' .pe-control--switch__track': {
-                opacity: config$$1['color_' + tint + '_track_off_opacity'],
-                'background-color': config$$1['color_' + tint + '_track_off']
+                opacity: config['color_' + tint + '_track_off_opacity'],
+                'background-color': config['color_' + tint + '_track_off']
             },
             ' .pe-control--switch__thumb': {
-                color: config$$1['color_' + tint + '_thumb_off']
+                color: config['color_' + tint + '_thumb_off']
             },
             ' .pe-control--switch__knob': {
                 'background-color': 'currentcolor'
             },
             ' .pe-button--focus': {
                 ' .pe-button__focus': {
-                    opacity: config$$1['color_' + tint + '_focus_off_opacity'],
-                    'background-color': config$$1['color_' + tint + '_focus_off']
+                    opacity: config['color_' + tint + '_focus_off_opacity'],
+                    'background-color': config['color_' + tint + '_focus_off']
                 }
             }
         },
 
         '&.pe-control--on': {
             ' .pe-control--switch__track': {
-                opacity: config$$1['color_' + tint + '_track_on_opacity'],
-                'background-color': config$$1['color_' + tint + '_track_on']
+                opacity: config['color_' + tint + '_track_on_opacity'],
+                'background-color': config['color_' + tint + '_track_on']
             },
             ' .pe-control--switch__thumb': {
-                color: config$$1['color_' + tint + '_thumb_on']
+                color: config['color_' + tint + '_thumb_on']
             },
             ' .pe-control--switch__knob': {
                 'background-color': 'currentcolor'
             },
             ' .pe-button--focus': {
                 ' .pe-button__focus': {
-                    opacity: config$$1['color_' + tint + '_focus_on_opacity'],
-                    'background-color': config$$1['color_' + tint + '_focus_on']
+                    opacity: config['color_' + tint + '_focus_on_opacity'],
+                    'background-color': config['color_' + tint + '_focus_on']
                 }
             }
         },
 
         '&.pe-control--on.pe-control--disabled, &.pe-control--off.pe-control--disabled': {
             ' .pe-control--switch__track': {
-                opacity: config$$1['color_' + tint + '_track_disabled_opacity'],
-                'background-color': config$$1['color_' + tint + '_track_disabled']
+                opacity: config['color_' + tint + '_track_disabled_opacity'],
+                'background-color': config['color_' + tint + '_track_disabled']
             },
             ' .pe-control--switch__thumb': {
-                color: config$$1['color_' + tint + '_thumb_disabled']
+                color: config['color_' + tint + '_thumb_disabled']
             }
         }
     })];
 };
 
-var createStyles$45 = function createStyles(config$$1) {
-    return [style$20(config$$1, 'light'), {
+var createStyles$45 = function createStyles(config) {
+    return [style$20(config, 'light'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$20(config$$1, 'dark', ' '),
+        style$20(config, 'dark', ' '),
         // has dark theme
-        style$20(config$$1, 'dark', '&')]
+        style$20(config, 'dark', '&')]
     }];
 };
 
-var color$20 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$45);
+var color$20 = (function (config) {
+    return mixin.createStyles(config, createStyles$45);
 });
 
-var themeConfigFn$24 = config && config.switch;
-var config$25 = themeConfigFn$24 ? themeConfigFn$24(config$26) : config$26;
+var configFn$24 = componentConfig && componentConfig.switch;
+var config$24 = configFn$24 ? configFn$24(config$25) : config$25;
 var id$25 = 'pe-switch';
 
-styler.add(id$25, layout$26(config$25), color$20(config$25));
+styler.add(id$25, layout$26(config$24), color$20(config$24));
 
 var CSS_CLASSES$24 = {
     block: 'pe-control--switch',
@@ -9225,7 +9112,7 @@ var requestAnimFrame = function () {
 var fontSize = buttonConfig.font_size;
 var tab_label_line_height = 1.1 * fontSize;
 
-var componentConfig$22 = {
+var vars$22 = {
     min_width: 72,
     medium_min_width: 160,
     label_max_width: 264,
@@ -9250,26 +9137,26 @@ var componentConfig$22 = {
     scroll_button_opacity: .7,
     label_opacity: .7,
 
-    color_light_selected_text: common$1.rgba(common$1.color_primary),
+    color_light_selected_text: appConfig.rgba(appConfig.color_primary),
     color_light_selected_background: 'transparent',
-    color_light_tab_indicator: common$1.rgba(common$1.color_primary),
+    color_light_tab_indicator: appConfig.rgba(appConfig.color_primary),
     color_light_icon: iconButtonConfig.color_light_flat_normal_text,
 
-    color_dark_selected_text: common$1.rgba(common$1.color_primary),
+    color_dark_selected_text: appConfig.rgba(appConfig.color_primary),
     color_dark_selected_background: 'transparent',
-    color_dark_tab_indicator: common$1.rgba(common$1.color_primary),
+    color_dark_tab_indicator: appConfig.rgba(appConfig.color_primary),
     color_dark_icon: iconButtonConfig.color_dark_flat_normal_text
 };
 
 function _defineProperty$28(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var createStyles$46 = function createStyles(config$$1) {
+var createStyles$46 = function createStyles(config) {
     return [{
         '.pe-tabs': [mixin.vendorize({
             'user-select': 'none'
-        }, common$1.prefixes_user_select), mixin.vendorize({
+        }, appConfig.prefixes_user_select), mixin.vendorize({
             transform: 'translate3d(0,0,0)'
-        }, common$1.prefixes_transform), _defineProperty$28({
+        }, appConfig.prefixes_transform), _defineProperty$28({
             '-webkit-overflow-scrolling': 'touch',
 
             '& ::-webkit-scrollbar': {
@@ -9279,18 +9166,18 @@ var createStyles$46 = function createStyles(config$$1) {
             '&.pe-tabs--menu': {
                 // reset sizes to fit within a small space
                 ' .pe-tabs__tab': {
-                    height: config$$1.menu_tab_height + 'px'
+                    height: config.menu_tab_height + 'px'
                 },
                 ' .pe-tabs__tab---icon': {
-                    height: config$$1.menu_tab_icon_label_height + 'px'
+                    height: config.menu_tab_icon_label_height + 'px'
                 },
                 ' .pe-tabs__tab, .pe-tabs__tab.pe-tabs__tab---icon': {
                     'min-width': 0,
-                    height: config$$1.menu_tab_icon_label_height + 'px',
+                    height: config.menu_tab_icon_label_height + 'px',
 
                     ' .pe-button__content': {
-                        padding: '0 ' + config$$1.tab_menu_content_padding_v + 'px',
-                        height: config$$1.menu_tab_icon_label_height + 'px',
+                        padding: '0 ' + config.tab_menu_content_padding_v + 'px',
+                        height: config.menu_tab_icon_label_height + 'px',
 
                         ' .pe-icon': {
                             'margin-bottom': 0
@@ -9306,7 +9193,7 @@ var createStyles$46 = function createStyles(config$$1) {
 
             '&.pe-tabs--scrollable': {
                 // hide scrollbar (this approach is required for Firefox)
-                'max-height': config$$1.tab_height + 'px',
+                'max-height': config.tab_height + 'px',
                 '-ms-overflow-style': 'none',
 
                 ' .pe-tabs__scroll-button': {
@@ -9315,7 +9202,7 @@ var createStyles$46 = function createStyles(config$$1) {
                 },
 
                 ' .pe-tabs__row': {
-                    'margin-bottom': -config$$1.scrollbar_offset + 'px'
+                    'margin-bottom': -config.scrollbar_offset + 'px'
                 }
             },
 
@@ -9337,14 +9224,14 @@ var createStyles$46 = function createStyles(config$$1) {
                     },
                     ' .pe-button__label': [mixin.vendorize({
                         'transition-property': 'opacity'
-                    }, common$1.prefixes_transition), mixin.vendorize({
-                        'transition-duration': config$$1.scroll_button_fade_duration + 's'
-                    }, common$1.prefixes_transition), mixin.vendorize({
+                    }, appConfig.prefixes_transition), mixin.vendorize({
+                        'transition-duration': config.scroll_button_fade_duration + 's'
+                    }, appConfig.prefixes_transition), mixin.vendorize({
                         'transition-timing-function': 'ease-out'
-                    }, common$1.prefixes_transition), mixin.vendorize({
-                        'transition-delay': config$$1.scroll_button_fade_delay + 's'
-                    }, common$1.prefixes_transition), {
-                        opacity: config$$1.scroll_button_opacity
+                    }, appConfig.prefixes_transition), mixin.vendorize({
+                        'transition-delay': config.scroll_button_fade_delay + 's'
+                    }, appConfig.prefixes_transition), {
+                        opacity: config.scroll_button_opacity
                     }]
                 },
                 '&.pe-tabs--start .pe-tabs__scroll-button--start': {
@@ -9374,7 +9261,7 @@ var createStyles$46 = function createStyles(config$$1) {
 
             ' .pe-tabs__row': [flex$1.layoutHorizontal, mixin.vendorize({
                 'user-select': 'none'
-            }, common$1.prefixes_user_select), {
+            }, appConfig.prefixes_user_select), {
                 position: 'relative',
                 'white-space': 'nowrap',
                 overflow: 'auto'
@@ -9386,31 +9273,31 @@ var createStyles$46 = function createStyles(config$$1) {
 
             ' .pe-tabs__tab': [flex$1.flex(), flex$1.flexIndex('none'), mixin.vendorize({
                 'user-select': 'none'
-            }, common$1.prefixes_user_select), mixin.defaultTransition('color'), {
+            }, appConfig.prefixes_user_select), mixin.defaultTransition('color'), {
                 margin: 0,
                 'border-radius': 0,
-                height: config$$1.tab_height + 'px',
+                height: config.tab_height + 'px',
                 padding: 0,
                 color: 'inherit',
-                'min-width': config$$1.min_width + 'px', // for smaller screens, see also media query below
+                'min-width': config.min_width + 'px', // for smaller screens, see also media query below
                 // max-width: 264px, // set in theme js
 
                 ' .pe-button__content': {
-                    padding: '0 ' + config$$1.tab_content_padding_v + 'px',
-                    height: config$$1.tab_height + 'px',
-                    'line-height': common$1.line_height + 'em',
+                    padding: '0 ' + config.tab_content_padding_v + 'px',
+                    height: config.tab_height + 'px',
+                    'line-height': appConfig.line_height + 'em',
 
                     ' .pe-button__label, .pe-icon': {
-                        'max-width': config$$1.label_max_width + 'px', // or .pe-tabs width minus 56dp
-                        'line-height': config$$1.tab_label_line_height + 'px',
-                        'max-height': 2 * config$$1.tab_label_line_height + 'px',
+                        'max-width': config.label_max_width + 'px', // or .pe-tabs width minus 56dp
+                        'line-height': config.tab_label_line_height + 'px',
+                        'max-height': 2 * config.tab_label_line_height + 'px',
                         overflow: 'hidden',
                         'white-space': 'normal'
                     },
-                    ' .pe-button__label': [mixin.defaultTransition('opacity', config$$1.animation_duration), {
-                        margin: config$$1.tab_label_vertical_offset + 'px 0 0 0',
+                    ' .pe-button__label': [mixin.defaultTransition('opacity', config.animation_duration), {
+                        margin: config.tab_label_vertical_offset + 'px 0 0 0',
                         padding: 0,
-                        opacity: config$$1.label_opacity
+                        opacity: config.label_opacity
                     }],
                     ' .pe-icon': {
                         'margin-left': 'auto',
@@ -9427,14 +9314,14 @@ var createStyles$46 = function createStyles(config$$1) {
                 },
                 '&.pe-tabs__tab---icon': {
                     '&, .pe-button__content': [{
-                        height: config$$1.tab_icon_label_height + 'px'
+                        height: config.tab_icon_label_height + 'px'
                     }, {
                         ' .pe-button__label, .pe-icon': {
                             margin: '0 auto'
                         }
                     }, {
                         ' .pe-icon': {
-                            'margin-bottom': config$$1.tab_icon_label_icon_spacing + 'px'
+                            'margin-bottom': config.tab_icon_label_icon_spacing + 'px'
                         }
                     }]
                 }
@@ -9457,15 +9344,15 @@ var createStyles$46 = function createStyles(config$$1) {
 
             ' .pe-tabs__indicator': [mixin.vendorize({
                 'transform': 'translate3d(0,0,0)'
-            }, common$1.prefixes_transform), mixin.vendorize({
+            }, appConfig.prefixes_transform), mixin.vendorize({
                 'transform-origin': 'left 50%'
-            }, common$1.prefixes_transform), mixin.vendorize({
+            }, appConfig.prefixes_transform), mixin.vendorize({
                 'transition-property': 'all'
-            }, common$1.prefixes_transition), mixin.vendorize({
+            }, appConfig.prefixes_transition), mixin.vendorize({
                 'transition-timing-function': 'ease-out'
-            }, common$1.prefixes_transition), {
+            }, appConfig.prefixes_transition), {
                 position: 'absolute',
-                height: config$$1.tab_indicator_height + 'px',
+                height: config.tab_indicator_height + 'px',
                 bottom: 0,
                 left: 0,
                 'z-index': 3,
@@ -9480,14 +9367,14 @@ var createStyles$46 = function createStyles(config$$1) {
 
                 ' .pe-tabs__row.pe-tabs__row--indent': {
                     margin: 0,
-                    'padding-left': common$1.unit_indent + 'px',
+                    'padding-left': appConfig.unit_indent + 'px',
                     overflow: 'auto'
                 }
             }]
 
-        }, '@media (min-width: ' + common$1.breakpoint_small_tablet_portrait + 'px)', {
+        }, '@media (min-width: ' + appConfig.breakpoint_small_tablet_portrait + 'px)', {
             '&:not(.pe-tabs--small):not(.pe-tabs--menu) .pe-tabs__tab': {
-                'min-width': config$$1.medium_min_width + 'px'
+                'min-width': config.medium_min_width + 'px'
             }
         })],
 
@@ -9498,51 +9385,51 @@ var createStyles$46 = function createStyles(config$$1) {
     }];
 };
 
-var layout$27 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$46);
+var layout$27 = (function (config) {
+    return mixin.createStyles(config, createStyles$46);
 });
 
 function _defineProperty$29(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style$21 = function style(config$$1, tint) {
+var style$21 = function style(config, tint) {
     var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
     return [_defineProperty$29({}, scope + '.pe-tabs', {
         ' .pe-tabs__tab.pe-button--selected': {
-            color: config$$1['color_' + tint + '_selected_text'],
+            color: config['color_' + tint + '_selected_text'],
 
             ' .pe-button__content': {
-                background: config$$1['color_' + tint + '_selected_background']
+                background: config['color_' + tint + '_selected_background']
             }
         },
         ' .pe-tabs__tab:not(.pe-button--selected) .pe-icon': {
-            color: config$$1['color_' + tint + '_icon']
+            color: config['color_' + tint + '_icon']
         },
         ' .pe-tabs__indicator': {
-            'background-color': config$$1['color_' + tint + '_tab_indicator']
+            'background-color': config['color_' + tint + '_tab_indicator']
         }
     })];
 };
 
-var createStyles$47 = function createStyles(config$$1) {
-    return [style$21(config$$1, 'light'), {
+var createStyles$47 = function createStyles(config) {
+    return [style$21(config, 'light'), {
         '.pe-dark-theme': [
         // inside dark theme
-        style$21(config$$1, 'dark', ' '),
+        style$21(config, 'dark', ' '),
         // has dark theme
-        style$21(config$$1, 'dark', '&')]
+        style$21(config, 'dark', '&')]
     }];
 };
 
-var color$21 = (function (config$$1) {
-    return mixin.createStyles(config$$1, createStyles$47);
+var color$21 = (function (config) {
+    return mixin.createStyles(config, createStyles$47);
 });
 
-var themeConfigFn$25 = config && config.tabs;
-var config$27 = themeConfigFn$25 ? themeConfigFn$25(componentConfig$22) : componentConfig$22;
+var configFn$25 = componentConfig && componentConfig.tabs;
+var config$26 = configFn$25 ? configFn$25(vars$22) : vars$22;
 var id$26 = 'pe-tabs';
 
-styler.add(id$26, layout$27(config$27), color$21(config$27));
+styler.add(id$26, layout$27(config$26), color$21(config$26));
 
 // default icons
 var arrowBackward = m.trust('<svg width="24" height="24" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>');
@@ -9614,7 +9501,7 @@ var createScrollButton = function createScrollButton(ctrl, position, opts) {
         ripple: {
             center: true
         },
-        config: function config$$1(el) {
+        config: function config(el) {
             if (ctrl.scrollButtonLeftEl && ctrl.scrollButtonRightEl) {
                 return;
             }
@@ -9666,13 +9553,13 @@ var scrollToTab = function scrollToTab(ctrl, tabIndex) {
     var left = Math.min(tabLeft, maxScroll);
     var currentLeft = scroller.scrollLeft;
     if (currentLeft !== left) {
-        var duration = Math.abs(currentLeft - left) / componentConfig$22.tabs_scroll_speed;
-        var delaySeconds = componentConfig$22.tabs_scroll_delay || 0;
+        var duration = Math.abs(currentLeft - left) / vars$22.tabs_scroll_speed;
+        var delaySeconds = vars$22.tabs_scroll_delay || 0;
         setTimeout(function () {
             scrollTo({
                 element: scroller,
                 to: left,
-                duration: Math.max(componentConfig$22.tabs_scroll_min_duration, duration),
+                duration: Math.max(vars$22.tabs_scroll_min_duration, duration),
                 direction: 'horizontal'
             });
         }, delaySeconds * 1000);
@@ -9699,7 +9586,7 @@ var animateIndicator = function animateIndicator(selectedTabEl, animate, ctrl) {
     var style = ctrl.tabIndicatorEl.style;
     var translateX = rect.left - parentRect.left + ctrl.scrollerEl.scrollLeft;
     var transformCmd = 'translate(' + translateX + 'px, 0)';
-    var duration = animate ? componentConfig$22.indicator_slide_min_duration : 0;
+    var duration = animate ? vars$22.indicator_slide_min_duration : 0;
     // use width instead of scale to please IE10
     style.width = rect.width + 'px';
     style['transition-duration'] = style['-webkit-transition-duration'] = style['-moz-transition-duration'] = style['-o-transition-duration'] = duration + 's';
@@ -9743,7 +9630,7 @@ var createTab = function createTab(ctrl, opts, index, buttonOpts) {
                 buttonOpts.events.onclick(e);
             }
         }),
-        config: function config$$1(el, inited) {
+        config: function config(el, inited) {
             if (inited) {
                 return;
             }
@@ -9773,7 +9660,7 @@ var createView$23 = function createView(ctrl) {
     var props = {
         class: [CSS_CLASSES$25.block, opts.scrollable ? CSS_CLASSES$25.scrollable : null, ctrl.selectedTabIndex === 0 ? CSS_CLASSES$25.isAtStart : null, ctrl.selectedTabIndex === ctrl.tabs.length - 1 ? CSS_CLASSES$25.isAtEnd : null, opts.activeSelected ? CSS_CLASSES$25.activeSelected : null, autofit ? CSS_CLASSES$25.isAutofit : null, opts.menu ? CSS_CLASSES$25.isMenu : null, opts.small ? CSS_CLASSES$25.isSmall : null, opts.class].join(' '),
         id: opts.id || '',
-        config: function config$$1(el, inited, context) {
+        config: function config(el, inited, context) {
             if (inited) {
                 return;
             }
@@ -9831,7 +9718,7 @@ var createView$23 = function createView(ctrl) {
 
     var tabIndicator = opts.hideIndicator ? null : m('div', {
         class: CSS_CLASSES$25.indicator,
-        config: function config$$1(el, inited) {
+        config: function config(el, inited) {
             if (inited) {
                 return;
             }
@@ -9841,7 +9728,7 @@ var createView$23 = function createView(ctrl) {
 
     var content = [opts.scrollable ? scrollButtonLeft : null, m('div', {
         class: [CSS_CLASSES$25.tabRow, opts.centered ? CSS_CLASSES$25.tabRowCentered : null, opts.scrollable ? CSS_CLASSES$25.tabRowIndent : null].join(' '),
-        config: function config$$1(el, inited) {
+        config: function config(el, inited) {
             if (inited) {
                 return;
             }
@@ -9877,247 +9764,4 @@ var component$39 = {
     }
 };
 
-if (!window.WebFontConfig) {
-    window.WebFontConfig = {};
-    (function () {
-        var wf = document.createElement('script');
-        wf.src = (document.location.protocol === 'https:' ? 'https' : 'http') + '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-        wf.type = 'text/javascript';
-        wf.async = 'true';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(wf, s);
-    })();
-}
-
-var webfontLoader = {
-    add: function add(vendor, family, key) {
-        var vendorCfg = window.WebFontConfig[vendor] || {};
-        vendorCfg.families = vendorCfg.families || [];
-        vendorCfg.families.push(family);
-        if (key) {
-            vendorCfg.key = key;
-        }
-        window.WebFontConfig[vendor] = vendorCfg;
-    }
-};
-
-webfontLoader.add('google', 'Roboto:400,500,700,400italic:latin');
-
-var fontSize$1 = 14;
-
-var styles = [{
-    ' h1, h2, h3, h4, h5, h6, p': {
-        margin: 0,
-        padding: 0
-    }
-}, {
-    ' h1 small, h2 small, h3 small, h4 small, h5 small, h6 small': {
-        'font-weight': common$1.font_weight_normal,
-        'line-height': common$1.line_height,
-        'letter-spacing': '-0.02em',
-        'font-size': '0.6em'
-    }
-}, {
-    ' h1': {
-        'font-size': '56px',
-        'font-weight': common$1.font_weight_normal,
-        'line-height': common$1.line_height,
-        'margin-top': '24px',
-        'margin-bottom': '24px'
-    }
-}, {
-    ' h2': {
-        'font-size': '45px',
-        'font-weight': common$1.font_weight_normal,
-        'line-height': '48px',
-        'margin-top': '24px',
-        'margin-bottom': '24px'
-    }
-}, {
-    ' h3': {
-        'font-size': '34px',
-        'font-weight': common$1.font_weight_normal,
-        'line-height': '40px',
-        'margin-top': '24px',
-        'margin-bottom': '24px'
-    }
-}, {
-    ' h4': {
-        'font-size': '24px',
-        'font-weight': common$1.font_weight_normal,
-        'line-height': '32px',
-        '-moz-osx-font-smoothing': 'grayscale',
-        'margin-top': '24px',
-        'margin-bottom': '16px'
-    }
-}, {
-    ' h5': {
-        'font-size': '20px',
-        'font-weight': common$1.font_weight_medium,
-        'line-height': '1',
-        'letter-spacing': '-0.02em',
-        'margin-top': '24px',
-        'margin-bottom': '16px'
-    }
-}, {
-    ' h6': {
-        'font-size': '16px',
-        'font-weight': common$1.font_weight_normal,
-        'line-height': '24px',
-        'letter-spacing': '0.04em',
-        'margin-top': '24px',
-        'margin-bottom': '16px'
-    }
-}, {
-    ' html, body': {
-        'font-size': fontSize$1 + 'px',
-        'line-height': '20px',
-        'font-weight': common$1.font_weight_normal
-    },
-    ' p': {
-        'font-size': fontSize$1 + 'px',
-        'font-weight': common$1.font_weight_normal,
-        'line-height': '24px',
-        'letter-spacing': '0',
-        'margin-bottom': '16px'
-    },
-    ' blockquote': {
-        'position': 'relative',
-        'font-size': '24px',
-        'font-weight': common$1.font_weight_normal,
-        'font-style': 'italic',
-        'line-height': common$1.line_height,
-        'letter-spacing': '0.08em',
-        'margin-top': '24px',
-        'margin-bottom': '16px'
-    },
-    ' ul, ol': {
-        'font-size': fontSize$1 + 'px',
-        'font-weight': common$1.font_weight_normal,
-        'line-height': '24px',
-        'letter-spacing': 0
-    },
-    'b, strong': {
-        'font-weight': common$1.font_weight_medium
-    }
-}];
-
-// Roboto font
-// Typography
-// Use Roboto font
-var roboto = [{
-    'html, body, input, textarea': {
-        'font-family': 'Roboto, Helvetica, Arial, sans-serif'
-    }
-}];
-
-var general = [{
-    // apply a natural box layout model to all elements, but allow elements to change
-    ' html': {
-        'box-sizing': 'border-box'
-    },
-    ' *, *:before, *:after': {
-        'box-sizing': 'inherit'
-    },
-    ' *': [
-    // remove tap highlight in mobile Safari
-    {
-        '-webkit-tap-highlight-color': 'rgba(0,0,0,0)'
-    }, {
-        '-webkit-tap-highlight-color': 'transparent' // For some Androids
-    }],
-
-    // Remove dotted link borders in Firefox
-    ' a, a:active, a:focus, input:active, input[type]:focus': {
-        outline: 0
-    },
-
-    // Mobile Safari: override default fading of disabled elements
-    ' input:disabled': {
-        opacity: 1
-    }
-}];
-
-var index = (function () {
-    styler.add('pe-theme', roboto, styles, general);
-})();
-
-// Placeholder for custom theme config file
-// In your app paths setup, change the current path to your custom config file; see the theme README.
-
-// Example:
-
-// import 'polythene/common/object.assign';
-//
-// export default {
-//     button: (config) => {
-//         const mainColor = '#e4521b';
-//         const textColor = '#fff';
-//         const configTestCfg = Object.assign({}, config, {
-//             border_radius: 0,
-//             color_light_raised_normal_background: mainColor,
-//             color_light_raised_normal_text: textColor,
-//             color_dark_raised_normal_background: mainColor,
-//             color_dark_raised_normal_text: textColor
-//         });
-//         return [
-//             {'': config}, // all pages
-//             {'.module-custom-theme': configTestCfg} // only this page
-//         ];
-//     }
-// };
-
-var custom = {};
-
-var validationHelper = (function () {
-    var opts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-    var elProp = opts.element || 'el';
-    var invalidProp = opts.invalid || 'invalid';
-
-    var fieldStates = [];
-
-    var submit = function submit(e, onValidated) {
-        e.preventDefault();
-        var firstInvalidIndex = getInvalidIndex();
-        if (firstInvalidIndex !== undefined) {
-            if (fieldStates[firstInvalidIndex][elProp]) {
-                fieldStates[firstInvalidIndex][elProp].focus();
-            }
-        } else {
-            onValidated(e);
-        }
-    };
-
-    var getIndex = function getIndex(el) {
-        for (var i = 0; i < fieldStates.length; i++) {
-            if (fieldStates[i][elProp] === el) {
-                return i;
-            }
-        }
-    };
-
-    var getInvalidIndex = function getInvalidIndex() {
-        for (var i = 0; i < fieldStates.length; i++) {
-            if (fieldStates[i][invalidProp]) {
-                return i;
-            }
-        }
-    };
-
-    var update = function update(state) {
-        var index = getIndex(state[elProp]);
-        if (index === undefined) {
-            fieldStates.push(state);
-        } else {
-            fieldStates[index] = state;
-        }
-    };
-
-    return {
-        submit: submit,
-        update: update
-    };
-});
-
-export { component as Button, component$3 as Card, component$8 as Checkbox, dialog as Dialog, component$13 as FAB, component$15 as HeaderPanel, component$5 as Icon, component$11 as IconButton, component$18 as List, component$7 as ListTile, component$20 as Menu, notification as Notification, component$23 as RadioButton, component$1 as Ripple, component$25 as Search, component$2 as Shadow, component$28 as Slider, snackbar as Snackbar, component$30 as IOSSpinner, component$33 as DeterminateSpinner, component$35 as IndeterminateSpinner, component$6 as SVG, component$37 as Switch, component$39 as Tabs, component$27 as TextField, index as Theme, component$17 as Toolbar, common$1 as config, custom, easing, events, styler, validationHelper as ValidationHelper };
+export { component as Button, component$3 as Card, component$8 as Checkbox, dialog as Dialog, component$13 as FAB, component$15 as HeaderPanel, component$5 as Icon, component$11 as IconButton, component$18 as List, component$7 as ListTile, component$20 as Menu, notification as Notification, component$23 as RadioButton, component$1 as Ripple, component$25 as Search, component$2 as Shadow, component$28 as Slider, snackbar as Snackbar, component$30 as IOSSpinner, component$33 as DeterminateSpinner, component$35 as IndeterminateSpinner, component$6 as SVG, component$37 as Switch, component$39 as Tabs, component$27 as TextField, component$17 as Toolbar, easing, events, styler, validationHelper as ValidationHelper };

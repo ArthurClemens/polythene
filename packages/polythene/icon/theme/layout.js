@@ -1,8 +1,8 @@
-import common from '../../config/config';
+import { appConfig } from "polythene-theme";
 import mixin from '../../common/mixin';
 
 var iconSizesPx = function iconSizesPx() {
-    var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : common.unit_icon_size;
+    var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : appConfig.unit_icon_size;
     return {
         width: size + 'px',
         height: size + 'px'

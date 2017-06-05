@@ -1,13 +1,13 @@
 // theme override
 
-import { defaultVariables } from "polythene-core";
+import { defaultVariables } from 'polythene-core';
 
-export const defaults = {
+export const appConfig = {
   ...defaultVariables
-  , color_primary: "255, 152, 0" // new base color: orange 500
+  , color_primary: '33, 150, 245' // new base color: orange 500
 };
 
-export const config = {
+export const componentConfig = {
   button: vars => {
     const mainColor = '#e4521b';
     const textColor = '#fff';

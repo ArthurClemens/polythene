@@ -1,4 +1,4 @@
-import common from '../../config/config';
+import { appConfig } from "polythene-theme";
 import mixin from '../../common/mixin';
 import selectionControlStyle from '../../selection-control/theme/layout';
 
@@ -9,7 +9,7 @@ var transition = function transition(config, properties) {
 };
 
 var customSize = function customSize(config, size) {
-    var factor = size / common.unit_icon_size;
+    var factor = size / appConfig.unit_icon_size;
     var thumbSize = Math.floor(0.5 * config.thumb_size * factor) * 2; // round to even
     var scaledTrackHeight = Math.floor(0.5 * config.track_height * factor) * 2; // round to even
     var scaledTrackWidth = Math.floor(0.5 * config.track_length * factor) * 2;
@@ -90,10 +90,10 @@ var createStyles = function createStyles(config) {
 
             ' .pe-button__focus': [transition(config, 'all')],
 
-            '&.pe-control--small': customSize(config, common.unit_icon_size_small),
-            '&.pe-control--regular': customSize(config, common.unit_icon_size),
-            '&.pe-control--medium': customSize(config, common.unit_icon_size_medium),
-            '&.pe-control--large': customSize(config, common.unit_icon_size_large)
+            '&.pe-control--small': customSize(config, appConfig.unit_icon_size_small),
+            '&.pe-control--regular': customSize(config, appConfig.unit_icon_size),
+            '&.pe-control--medium': customSize(config, appConfig.unit_icon_size_medium),
+            '&.pe-control--large': customSize(config, appConfig.unit_icon_size_large)
         }
     }];
 };

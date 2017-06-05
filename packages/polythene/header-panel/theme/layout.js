@@ -1,4 +1,4 @@
-import common from '../../config/config';
+import { appConfig } from "polythene-theme";
 import mixin from '../../common/mixin';
 import flex from '../../layout/theme/flex';
 
@@ -26,11 +26,11 @@ var createStyles = function createStyles(config) {
                 },
                 ' .pe-header-panel__drop-shadow': [mixin.vendorize({
                     transition: 'opacity 0.25s'
-                }, common.prefixes_transition), mixin.vendorize({
+                }, appConfig.prefixes_transition), mixin.vendorize({
                     transform: 'translate3d(0,0,0)'
-                }, common.prefixes_transform), mixin.vendorize({
+                }, appConfig.prefixes_transform), mixin.vendorize({
                     'box-shadow': config.box_shadow
-                }, common.prefixes_box_shadow), {
+                }, appConfig.prefixes_box_shadow), {
                     opacity: 0,
                     position: 'absolute',
                     top: 'auto',
@@ -63,17 +63,17 @@ var createStyles = function createStyles(config) {
                 ' .pe-toolbar__bottom-bar': {}
             },
             ':not(.pe-header-panel--fit):not(.pe-header-panel--fixed):not(.pe-header-panel--scroll) > .pe-header-panel__outer-container > .pe-header-panel__header-container': {
-                'z-index': common.z_header_container
+                'z-index': appConfig.z_header_container
             },
             '.pe-header-panel--fit > .pe-header-panel__outer-container > .pe-header-panel__header-container': {
-                'z-index': common.z_fixed_header_container
+                'z-index': appConfig.z_fixed_header_container
             },
             ' .pe-header-panel__condensed-background': {
                 opacity: 0
             },
             ' .pe-header-panel__header-background, .pe-header-panel__condensed-background': [mixin.vendorize({
                 'background-size': 'cover'
-            }, common.prefixes_background_size), {
+            }, appConfig.prefixes_background_size), {
                 position: 'absolute',
                 top: 0,
                 left: 0,

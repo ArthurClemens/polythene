@@ -1,4 +1,4 @@
-import common from '../../../config/config';
+import { appConfig } from "polythene-theme";
 import mixin from '../../../common/mixin';
 
 const kfFade = () => ({
@@ -10,7 +10,7 @@ const kfFade = () => ({
     }
 });
 
-const positionBlades = (config) => {
+const positionBlades = config => {
     return [0,1,2,3,4,5,6,7,8,9,10,11].map((i) => {
         // reverse to improve performance on iOS
         const delay = -(1 / 12 * i * config.animation_duration);
@@ -20,19 +20,19 @@ const positionBlades = (config) => {
             [' div:nth-of-type(' + (i + 1) + ')']: [
                 mixin.vendorize({
                     'transform': 'rotate(' + rotation + 'deg) translate3d(0,-142%,0)'
-                }, common.prefixes_transform),
+                }, appConfig.prefixes_transform),
                 mixin.vendorize({
                     'animation': 'iosSpinnerFade ' + config.animation_duration + 's ' + delay + 's linear infinite'
-                }, common.prefixes_animation)
+                }, appConfig.prefixes_animation)
             ]
         };
     });
 };
 
-const createStyles = (config) => {
+const createStyles = config => {
     return [{
         '.pe-spinner--ios': [
-            mixin.vendorize({'transform': 'translate3d(0,0,0)'}, common.prefixes_transform),
+            mixin.vendorize({'transform': 'translate3d(0,0,0)'}, appConfig.prefixes_transform),
             positionBlades(config),
             {
                 position: 'relative',
@@ -53,4 +53,4 @@ const createStyles = (config) => {
     }];
 };
 
-export default (config) => (mixin.createStyles(config, createStyles));
+export default config => mixin.createStyles(config, createStyles);

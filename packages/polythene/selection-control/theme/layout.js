@@ -2,12 +2,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 // Returns a style function to be used by checkbox and radio-button
 
-import common from '../../config/config';
+import { appConfig } from "polythene-theme";
 import mixin from '../../common/mixin';
 import flex from '../../layout/theme/flex';
 
 var getSize = function getSize(config, height) {
-    var iconSize = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : common.unit_icon_size;
+    var iconSize = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : appConfig.unit_icon_size;
 
     var labelSize = iconSize + 2 * config.label_padding;
     var iconOffset = (labelSize - iconSize) / 2;
@@ -73,7 +73,7 @@ var createStyles = function createStyles(config, className, type) {
 
         }, _defineProperty(_peControl, ' input[type=' + type + '].pe-control__input', [mixin.vendorize({
             'appearance': 'none'
-        }, common.prefixes_appearance), {
+        }, appConfig.prefixes_appearance), {
             'line-height': config.label_height + 'px',
             // Hide input element
             position: 'absolute',
@@ -123,7 +123,7 @@ var createStyles = function createStyles(config, className, type) {
             ' .pe-icon': {
                 position: 'absolute'
             }
-        }), _defineProperty(_peControl, '&.pe-control--small', getSize(config, common.unit_icon_size_small, common.unit_icon_size_small)), _defineProperty(_peControl, '&.pe-control--regular', getSize(config, config.label_height, common.unit_icon_size)), _defineProperty(_peControl, '&.pe-control--medium', getSize(config, common.unit_icon_size_medium, common.unit_icon_size_medium)), _defineProperty(_peControl, '&.pe-control--large', getSize(config, common.unit_icon_size_large, common.unit_icon_size_large)), _peControl)
+        }), _defineProperty(_peControl, '&.pe-control--small', getSize(config, appConfig.unit_icon_size_small, appConfig.unit_icon_size_small)), _defineProperty(_peControl, '&.pe-control--regular', getSize(config, config.label_height, appConfig.unit_icon_size)), _defineProperty(_peControl, '&.pe-control--medium', getSize(config, appConfig.unit_icon_size_medium, appConfig.unit_icon_size_medium)), _defineProperty(_peControl, '&.pe-control--large', getSize(config, appConfig.unit_icon_size_large, appConfig.unit_icon_size_large)), _peControl)
     }];
 };
 

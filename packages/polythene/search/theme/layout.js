@@ -1,11 +1,11 @@
-import common from '../../config/config';
+import { appConfig } from "polythene-theme";
 import mixin from '../../common/mixin';
 import flex from '../../layout/theme/flex';
 
 var createStyles = function createStyles(config) {
     var inset_input_padding_v = (config.inset_height - config.line_height_input) / 2;
     var fullwidth_input_padding_v = (config.fullwidth_height - config.line_height_input) / 2;
-    var fullwidth_input_indent = common.unit_indent - config.fullwidth_side_padding - common.grid_unit_icon_button;
+    var fullwidth_input_indent = appConfig.unit_indent - config.fullwidth_side_padding - appConfig.grid_unit_icon_button;
 
     return [{
         '.pe-search': [flex.flex(), {

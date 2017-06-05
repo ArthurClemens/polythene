@@ -5,7 +5,7 @@ import { defaultVariables } from 'polythene-core';
 
 // Example:
 
-// export const config = {
+// export const componentConfig = {
 //     Button: vars => {
 //         const mainColor = '#e4521b';
 //         const textColor = '#fff';
@@ -27,6 +27,6 @@ import { defaultVariables } from 'polythene-core';
 //     }
 // };
 
-var config = {};
+var componentConfig = {};
 
-export { defaultVariables as defaults, config };
+export { defaultVariables as appConfig, componentConfig };

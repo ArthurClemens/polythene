@@ -1,8 +1,8 @@
-import common from '../../config/config';
+import { appConfig } from "polythene-theme";
 import mixin from '../../common/mixin';
 import flex from '../../layout/theme/flex';
 
-const paddingH = (h) => ({
+const paddingH = h => ({
     'padding-left': h + 'px',
     'padding-right': h + 'px'
 });
@@ -12,7 +12,7 @@ const paddingV = (top, bottom) => ({
     'padding-bottom': (bottom || top) + 'px'
 });
 
-const createStyles = (config) => {
+const createStyles = config => {
     return [{
         '.pe-list-tile': [
             flex.layout,
@@ -81,7 +81,7 @@ const createStyles = (config) => {
                     mixin.ellipsis(1),
                     {
                         'font-size': config.font_size_title + 'px',
-                        'font-weight': common.font_weight_normal,
+                        'font-weight': appConfig.font_weight_normal,
                         'line-height': config.single_line_height + 'px'
                     }
                 ],
@@ -144,7 +144,7 @@ const createStyles = (config) => {
                         mixin.ellipsis(1, config.single_height),
                         {
                             'font-size': config.font_size_list_header + 'px',
-                            'font-weight': common.font_weight_medium,
+                            'font-weight': appConfig.font_weight_medium,
                             'line-height': config.single_height + 'px',
                             padding: 0
                         }
@@ -180,7 +180,7 @@ const createStyles = (config) => {
                             ' .pe-list-tile__title, .pe-list-tile__subtitle': [
                                 mixin.vendorize({
                                     'user-select': 'none'
-                                }, common.prefixes_user_select)
+                                }, appConfig.prefixes_user_select)
                             ]
                         }
                     }
@@ -201,4 +201,4 @@ const createStyles = (config) => {
     }];
 };
 
-export default (config) => (mixin.createStyles(config, createStyles));
+export default config => mixin.createStyles(config, createStyles);

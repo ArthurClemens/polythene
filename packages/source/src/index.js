@@ -1,3 +1,4 @@
+export * from './common';
 export { default as Button } from './button/button';
 export { default as Card } from './card/card';
 export { default as Checkbox } from './checkbox/checkbox';
@@ -23,10 +24,4 @@ export { default as SVG } from './svg/svg';
 export { default as Switch } from './switch/switch';
 export { default as Tabs } from './tabs/tabs';
 export { default as TextField } from './textfield/textfield';
-export { default as Theme } from './theme';
 export { default as Toolbar } from './toolbar/toolbar';
-
-export { default as config } from './config/config';
-export { default as custom } from './config/custom';
-
-export * from './common';

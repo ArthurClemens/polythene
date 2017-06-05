@@ -3,7 +3,7 @@
 
 // Example:
 
-// export const config = {
+// export const componentConfig = {
 //     Button: vars => {
 //         const mainColor = '#e4521b';
 //         const textColor = '#fff';
@@ -25,4 +25,4 @@
 //     }
 // };
 
-export const config = {};
+export const componentConfig = {};

@@ -1,12 +1,12 @@
-import common from '../../config/config';
+import { appConfig } from "polythene-theme";
 import mixin from '../../common/mixin';
 
-const iconSizesPx = (size = common.unit_icon_size) => ({
+const iconSizesPx = (size = appConfig.unit_icon_size) => ({
     width: size + 'px',
     height: size + 'px'
 });
 
-const createStyles = (config) => {
+const createStyles = config => {
     return [{
         '.pe-icon': {
             display: 'inline-block',
@@ -60,4 +60,4 @@ const createStyles = (config) => {
     }];
 };
 
-export default (config) => (mixin.createStyles(config, createStyles));
+export default config => mixin.createStyles(config, createStyles);

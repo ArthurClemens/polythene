@@ -16,7 +16,7 @@ cbListTile.view = (ctrl) => {
         onclick: () => ctrl.selected(!ctrl.selected())
     };
     return m(ListTile, {
-        title: ctrl.selected ? 'Line item selected' : 'Line item unselected',
+        title: ctrl.selected() ? 'Line item selected' : 'Line item unselected',
         front: m(Checkbox, {
             checked: () => ctrl.selected(),
             getState: state => ctrl.selected(state.checked),
@@ -34,7 +34,7 @@ const cbList = {};
 cbList.view = () => {
     return m(List, {
         class: 'demo-list checkbox-primary-list',
-        tiles: [1,2,3].map((index) => (m(cbListTile, {index})))
+        tiles: [1,2,3].map(index => m(cbListTile, {index}))
     });
 };
 

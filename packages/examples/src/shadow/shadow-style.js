@@ -1,5 +1,5 @@
 import vars from '../app/common-vars';
-import config from 'polythene/config/config';
+import { appConfig } from "polythene-theme";
 import mixin from 'polythene/common/mixin';
 
 const styles = [{
@@ -11,7 +11,7 @@ const styles = [{
         ' .shadow-card, .shadow-fab': [
             mixin.vendorize({
                 'user-select': 'none'
-            }, config.prefixes_user_select), {
+            }, appConfig.prefixes_user_select), {
                 display: 'inline-block',
                 position: 'relative',
                 'text-align': 'center',

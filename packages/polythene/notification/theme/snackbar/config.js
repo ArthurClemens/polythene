@@ -1,4 +1,4 @@
-import common from '../../../config/config';
+import { appConfig as cfg } from "polythene-theme";
 
 var buttonPaddingH = 8; // padding, inner text space
 
@@ -16,9 +16,9 @@ export default {
 
     // switch light and dark: dark on light and light on dark
 
-    color_light_background: common.rgba(common.color_dark_background),
-    color_light_text: common.rgba(common.color_dark_foreground, common.blend_light_dark_primary),
+    color_light_background: cfg.rgba(cfg.color_dark_background),
+    color_light_text: cfg.rgba(cfg.color_dark_foreground, cfg.blend_light_dark_primary),
 
-    color_dark_background: common.rgba(common.color_light_background),
-    color_dark_text: common.rgba(common.color_light_foreground, common.blend_light_text_primary)
+    color_dark_background: cfg.rgba(cfg.color_light_background),
+    color_dark_text: cfg.rgba(cfg.color_light_foreground, cfg.blend_light_text_primary)
 };

@@ -1,11 +1,11 @@
 import mixin from '../../common/mixin';
-import common from '../../config/config';
+import { appConfig as cfg } from "polythene-theme";
 
 const style = [{
     '.pe-button': [
         mixin.vendorize({
             'user-select': 'none'
-        }, common.prefixes_user_select),
+        }, cfg.prefixes_user_select),
         {
             outline: 'none',
             padding: 0,
