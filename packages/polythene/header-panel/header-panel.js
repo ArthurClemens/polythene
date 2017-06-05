@@ -1,6 +1,7 @@
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 import '../common/object.assign';
+import { isClient } from 'polythene-core';
 import p from '../polythene/polythene';
 import events from '../common/events';
 import m from 'mithril';
@@ -83,10 +84,12 @@ var classForMode = function classForMode() {
     return modeClasses[mode];
 };
 
-var setTransform = document.documentElement.style.transform !== undefined ? function (style, string) {
-    style.transform = string;
+var setTransform = isClient ? document.documentElement.style.transform !== undefined ? function (style, string) {
+    return style.transform = string;
 } : function (style, string) {
-    style.webkitTransform = string;
+    return style.webkitTransform = string;
+} : function (style, string) {
+    return style.transform = string;
 };
 
 var translateY = function translateY(style, y) {

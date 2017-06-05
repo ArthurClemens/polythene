@@ -4,6 +4,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 Helper module to manage multiple items of the same component type.
 */
 import m from 'mithril';
+import { isClient } from 'polythene-core';
 import './object.assign';
 
 /*
@@ -182,11 +183,15 @@ var multiple = function multiple(mOpts) {
                 return item.show;
             });
             if (!toShowItems.length) {
-                document.body.classList.remove(mOpts.bodyShowClass);
+                if (isClient) {
+                    document.body.classList.remove(mOpts.bodyShowClass);
+                }
                 // placeholder because we cannot return null
                 return m(mOpts.noneTag);
             } else {
-                document.body.classList.add(mOpts.bodyShowClass);
+                if (isClient) {
+                    document.body.classList.add(mOpts.bodyShowClass);
+                }
             }
             return m(mOpts.tag, toShowItems.map(function (itemData) {
                 return m(mOpts.instance, _extends({}, itemData, {

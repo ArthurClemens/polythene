@@ -1,6 +1,7 @@
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 import '../common/object.assign';
+import { isServer } from 'polythene-core';
 import events from '../common/events';
 import m from 'mithril';
 import dialog from './dialog';
@@ -37,6 +38,9 @@ var updateScrollState = function updateScrollState(ctrl) {
 };
 
 var updateFooterState = function updateFooterState(ctrl) {
+    if (isServer) {
+        return;
+    }
     var footerEl = ctrl.footerEl;
     if (footerEl) {
         var style = window.getComputedStyle(footerEl);

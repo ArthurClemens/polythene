@@ -1,8 +1,11 @@
-import '../common/object.assign';
 import m from 'mithril';
+import { isClient } from 'polythene-core';
+import '../common/object.assign';
 import './theme';
 
-const startEventType = window.PointerEvent ? 'pointerdown' : (('ontouchstart' in window) || window.DocumentTouch && document instanceof window.DocumentTouch) ? 'touchstart' : 'mousedown';
+const startEventType = isClient
+    ? window.PointerEvent ? 'pointerdown' : (('ontouchstart' in window) || window.DocumentTouch && document instanceof window.DocumentTouch) ? 'touchstart' : 'mousedown'
+    : 'mousedown';
 
 const CSS_CLASSES = {
     block: 'pe-textfield',
@@ -99,7 +102,7 @@ const checkValidity = (ctrl, opts) => {
 
 // dirty = contains text
 const checkDirty = ctrl => {
-    ctrl.isDirty = (ctrl.value.toString().length > 0);
+    ctrl.isDirty = ctrl.value.toString().length > 0;
 };
 
 const updateState = (ctrl, opts) => {

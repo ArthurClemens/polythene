@@ -1,9 +1,11 @@
+import { isClient } from 'polythene-core';
+
 var listeners = {};
 
 // https://gist.github.com/Eartz/fe651f2fadcc11444549
 var throttle = function throttle(func) {
     var s = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0.05;
-    var context = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : window;
+    var context = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : isClient ? window : {};
 
     var wait = false;
     return function () {
@@ -48,15 +50,17 @@ var emit = function emit(eventName, event) {
     });
 };
 
-window.addEventListener('resize', function (e) {
-    return emit('resize', e);
-});
-window.addEventListener('scroll', function (e) {
-    return emit('scroll', e);
-});
-window.addEventListener('keydown', function (e) {
-    return emit('keydown', e);
-});
+if (isClient) {
+    window.addEventListener('resize', function (e) {
+        return emit('resize', e);
+    });
+    window.addEventListener('scroll', function (e) {
+        return emit('scroll', e);
+    });
+    window.addEventListener('keydown', function (e) {
+        return emit('keydown', e);
+    });
+}
 
 export default {
     throttle: throttle,

@@ -1,7 +1,8 @@
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-import events from '../common/events';
 import m from 'mithril';
+import { isServer } from 'polythene-core';
+import events from '../common/events';
 import shadow from '../shadow/shadow';
 import transition from '../common/transition';
 import './theme';
@@ -26,6 +27,9 @@ var DEFAULT_OFFSET_H = 16;
 var MIN_SIZE = 1.5;
 
 var positionMenu = function positionMenu(ctrl, opts) {
+    if (isServer) {
+        return;
+    }
     if (!opts.target) {
         return;
     }
@@ -130,6 +134,9 @@ var widthClass = function widthClass(size) {
 var createView = function createView(ctrl) {
     var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
+    if (isServer) {
+        return;
+    }
     var listenEl = document.body;
     var activateDismissTap = function activateDismissTap() {
         listenEl.addEventListener('click', handleDismissTap);

@@ -1,6 +1,7 @@
-import '../common/object.assign';
-import p from '../polythene/polythene';
 import m from 'mithril';
+import '../common/object.assign';
+import { isClient, isServer } from 'polythene-core';
+import p from '../polythene/polythene';
 import './theme';
 import themeConfig from './theme/config';
 
@@ -32,8 +33,12 @@ const CSS_CLASSES = {
 let focusElement;
 
 // const eventStartType = window.PointerEvent ? 'pointerdown' : (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) ? 'touchstart' : 'mousedown';
-const eventMoveType = window.PointerEvent ? 'pointermove' : (('ontouchmove' in window) || window.DocumentTouch && document instanceof window.DocumentTouch) ? 'touchmove' : 'mousemove';
-const eventEndType = window.PointerEvent ? 'pointerup' : (('ontouchend' in window) || window.DocumentTouch && document instanceof window.DocumentTouch) ? 'touchend' : 'mouseup';
+const eventMoveType = isClient
+    ? window.PointerEvent ? 'pointermove' : (('ontouchmove' in window) || window.DocumentTouch && document instanceof window.DocumentTouch) ? 'touchmove' : 'mousemove'
+    : 'mousemove';
+const eventEndType = isClient
+    ? window.PointerEvent ? 'pointerup' : (('ontouchend' in window) || window.DocumentTouch && document instanceof window.DocumentTouch) ? 'touchend' : 'mouseup'
+    : 'mouseup';
 
 const deFocus = (ctrl) => {
     if (focusElement) {
@@ -113,7 +118,12 @@ const handlePosEvent = (ctrl, e) => {
 };
 
 const startDrag = (ctrl, opts, e) => {
-    if (ctrl.isDragging) return;
+    if (isServer) {
+        return;
+    }
+    if (ctrl.isDragging) {
+        return;
+    }
     e.preventDefault();
     ctrl.isDragging = true;
     ctrl.isActive = true;

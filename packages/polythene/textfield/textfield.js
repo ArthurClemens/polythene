@@ -2,11 +2,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-import '../common/object.assign';
 import m from 'mithril';
+import { isClient } from 'polythene-core';
+import '../common/object.assign';
 import './theme';
 
-var startEventType = window.PointerEvent ? 'pointerdown' : 'ontouchstart' in window || window.DocumentTouch && document instanceof window.DocumentTouch ? 'touchstart' : 'mousedown';
+var startEventType = isClient ? window.PointerEvent ? 'pointerdown' : 'ontouchstart' in window || window.DocumentTouch && document instanceof window.DocumentTouch ? 'touchstart' : 'mousedown' : 'mousedown';
 
 var CSS_CLASSES = {
     block: 'pe-textfield',

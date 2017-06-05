@@ -1,3 +1,4 @@
+import { isServer } from 'polythene-core';
 import { prefixPlugin } from "j2c-plugin-prefix-browser";
 import J2c from "j2c";
 
@@ -33,6 +34,9 @@ const remove = id => {
  * styles: list of lists style objects
  */
 const addToDocument = (opts, ...styles) => {
+  if (isServer) {
+    return;
+  }
   const id = opts.id.replace(ID_REGEX, "_");
   const documentRef = opts.document || window.document;
   remove(id);

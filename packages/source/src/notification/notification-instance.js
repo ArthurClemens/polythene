@@ -1,5 +1,6 @@
-import '../common/object.assign';
 import m from 'mithril';
+import '../common/object.assign';
+import { isClient, isServer } from 'polythene-core';
 import Timer from '../common/timer';
 import transition from '../common/transition';
 
@@ -96,7 +97,9 @@ const createView = (ctrl, opts = {}) => {
             ctrl.el = el;
 
             // container element is used for transitioning the notification
-            ctrl.containerEl = document.querySelector(opts.containerSelector || '.pe-notification__holder');
+            ctrl.containerEl = isClient
+                ? document.querySelector(opts.containerSelector || '.pe-notification__holder')
+                : null;
             show(ctrl, opts);
         },
         onclick: (e) => {
@@ -104,7 +107,12 @@ const createView = (ctrl, opts = {}) => {
         }
     };
     const titleConfig = (el, inited) => {
-        if (inited) return;
+        if (isServer) {
+            return;
+        }
+        if (inited) {
+            return;
+        }
         const height = el.getBoundingClientRect().height;
         const lineHeight = parseInt(window.getComputedStyle(el).lineHeight, 10);
         const paddingTop = parseInt(window.getComputedStyle(el).paddingTop, 10);

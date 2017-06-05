@@ -1,3 +1,4 @@
+import { isServer } from 'polythene-core';
 import { prefixPlugin } from 'j2c-plugin-prefix-browser';
 import J2c from 'j2c';
 
@@ -366,6 +367,9 @@ var addToDocument = function addToDocument(opts) {
     styles[_key2 - 1] = arguments[_key2];
   }
 
+  if (isServer) {
+    return;
+  }
   var id = opts.id.replace(ID_REGEX, "_");
   var documentRef = opts.document || window.document;
   remove(id);

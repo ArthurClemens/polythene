@@ -4,6 +4,7 @@ Derived from https://github.com/madebysource/animated-scrollto
 Adapted to Mithril and rewritten to es6.
 */
 
+import { isServer } from 'polythene-core';
 import easing from './easing';
 
 /*
@@ -56,6 +57,9 @@ const scrollTo = (opts) => {
 };
 
 const requestAnimFrame = (() => {
+    if (isServer) {
+        return;
+    }
     return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || (callback => {
         window.setTimeout(callback, 1000 / 60);
     });

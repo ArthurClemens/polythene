@@ -3,6 +3,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 import '../common/object.assign';
+import { isClient, isServer } from 'polythene-core';
 import p from '../polythene/polythene';
 import m from 'mithril';
 import ripple from '../ripple/ripple';
@@ -25,9 +26,8 @@ var CSS_CLASSES = {
 };
 
 var MAX_Z = 5;
-
-var startType = window.PointerEvent ? 'pointerdown' : 'ontouchstart' in window || window.DocumentTouch && document instanceof window.DocumentTouch ? 'touchstart' : 'mousedown';
-var endType = window.PointerEvent ? 'pointerup' : 'ontouchend' in window || window.DocumentTouch && document instanceof window.DocumentTouch ? 'touchend' : 'mouseup';
+var startType = isClient ? window.PointerEvent ? 'pointerdown' : 'ontouchstart' in window || window.DocumentTouch && document instanceof window.DocumentTouch ? 'touchstart' : 'mousedown' : 'mousedown';
+var endType = isClient ? window.PointerEvent ? 'pointerup' : 'ontouchend' in window || window.DocumentTouch && document instanceof window.DocumentTouch ? 'touchend' : 'mouseup' : 'mouseup';
 
 var tapStart = void 0,
     tapEnd = void 0,
@@ -61,6 +61,9 @@ var inactivate = function inactivate(ctrl, opts) {
 };
 
 var initTapEvents = function initTapEvents(el, ctrl, opts) {
+    if (isServer) {
+        return;
+    }
     var tapHandler = function tapHandler(ctrl, opts, name) {
         if (name === 'down') {
             downButtons.push({ ctrl: ctrl, opts: opts });
@@ -92,6 +95,9 @@ var initTapEvents = function initTapEvents(el, ctrl, opts) {
 };
 
 var clearTapEvents = function clearTapEvents(el) {
+    if (isServer) {
+        return;
+    }
     el.removeEventListener(startType, tapStart);
     el.removeEventListener(endType, tapEnd);
     window.removeEventListener(endType, tapEndAll);
@@ -148,7 +154,7 @@ var createView = function createView(ctrl) {
             if (e.which === 13 && ctrl.focus && ctrl.el) {
                 // ENTER
                 var event = new MouseEvent('click', {
-                    view: window,
+                    view: isClient ? window : {},
                     bubbles: true,
                     cancelable: true
                 });

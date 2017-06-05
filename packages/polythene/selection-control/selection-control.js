@@ -68,7 +68,8 @@ var createView = function createView(ctrl) {
         }
     }), m('label', _extends({}, {
         class: CSS_CLASSES.label,
-        tabindex: -1 }, inactive ? null : {
+        tabindex: -1 // set in selectionView
+    }, inactive ? null : {
         onclick: function onclick() {
             return ctrl.toggle();
         }

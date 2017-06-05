@@ -1,5 +1,6 @@
-import Webfont from 'webfontloader';
+import { addWebFont } from 'polythene-utilities';
 import { styler } from 'polythene-core-css';
+import { isClient } from 'polythene-core';
 
 var robotoStyles = [{
   "html, body, button, input, select, textarea": {
@@ -8,11 +9,7 @@ var robotoStyles = [{
 }];
 
 var addRoboto = function addRoboto() {
-  return Webfont.load({
-    google: {
-      families: ["Roboto:400,500,700,400italic:latin"]
-    }
-  }), styler.add("pe-roboto", robotoStyles);
+  return addWebFont('google', 'Roboto:400,500,700,400italic:latin'), styler.add("pe-roboto", robotoStyles);
 };
 
 // Global theme variables
@@ -36,7 +33,7 @@ var isInteger = function isInteger(nVal) {
 };
 
 //const isTablet = window.innerWidth >= 600;
-var isDesktop = window.innerWidth >= 1024;
+var isDesktop = isClient ? window.innerWidth >= 1024 : true;
 
 var grid_unit = 4;
 var grid_unit_component = 8;
@@ -149,8 +146,8 @@ var defaultVariables = {
     breakpoint_large_handset_landscape: 720,
 
     // environment
-    env_tablet: window.innerWidth >= 600,
-    env_desktop: window.innerWidth >= 1024,
+    env_tablet: isClient ? window.innerWidth >= 600 : false,
+    env_desktop: isClient ? window.innerWidth >= 1024 : true,
 
     // z-index
     z_menu: 1000,

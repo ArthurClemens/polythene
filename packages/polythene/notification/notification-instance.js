@@ -1,7 +1,8 @@
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-import '../common/object.assign';
 import m from 'mithril';
+import '../common/object.assign';
+import { isClient, isServer } from 'polythene-core';
 import Timer from '../common/timer';
 import transition from '../common/transition';
 
@@ -92,7 +93,7 @@ var createView = function createView(ctrl) {
             ctrl.el = el;
 
             // container element is used for transitioning the notification
-            ctrl.containerEl = document.querySelector(opts.containerSelector || '.pe-notification__holder');
+            ctrl.containerEl = isClient ? document.querySelector(opts.containerSelector || '.pe-notification__holder') : null;
             show(ctrl, opts);
         },
         onclick: function onclick(e) {
@@ -100,7 +101,12 @@ var createView = function createView(ctrl) {
         }
     };
     var titleConfig = function titleConfig(el, inited) {
-        if (inited) return;
+        if (isServer) {
+            return;
+        }
+        if (inited) {
+            return;
+        }
         var height = el.getBoundingClientRect().height;
         var lineHeight = parseInt(window.getComputedStyle(el).lineHeight, 10);
         var paddingTop = parseInt(window.getComputedStyle(el).paddingTop, 10);

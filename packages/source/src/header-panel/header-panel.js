@@ -1,4 +1,5 @@
 import '../common/object.assign';
+import { isClient } from 'polythene-core';
 import p from '../polythene/polythene';
 import events from '../common/events';
 import m from 'mithril';
@@ -79,11 +80,11 @@ const classForMode = (mode = 'standard') => {
     return modeClasses[mode];
 };
 
-const setTransform = (document.documentElement.style.transform !== undefined) ? ((style, string) => {
-    style.transform = string;
-}) : ((style, string) => {
-    style.webkitTransform = string;
-});
+const setTransform = isClient
+    ? document.documentElement.style.transform !== undefined
+        ? (style, string) => style.transform = string
+        : (style, string) => style.webkitTransform = string
+    : (style, string) => style.transform = string;
 
 const translateY = (style, y) => {
     const t = (y === null) ? '' : 'translate3d(0, ' + y + 'px, 0)';

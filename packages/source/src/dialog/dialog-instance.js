@@ -1,4 +1,5 @@
 import '../common/object.assign';
+import { isServer } from 'polythene-core';
 import events from '../common/events';
 import m from 'mithril';
 import dialog from './dialog';
@@ -25,7 +26,7 @@ const CSS_CLASSES = {
 
 const SCROLL_WATCH_TIMER = 150;
 
-const updateScrollState = (ctrl) => {
+const updateScrollState = ctrl => {
     const scroller = ctrl.scrollEl;
     if (!scroller) {
         return;
@@ -34,7 +35,10 @@ const updateScrollState = (ctrl) => {
     ctrl.bottomOverflow = (scroller.scrollHeight - (scroller.scrollTop + scroller.getBoundingClientRect().height) > 0);
 };
 
-const updateFooterState = (ctrl) => {
+const updateFooterState = ctrl => {
+    if (isServer) {
+        return;
+    }
     const footerEl = ctrl.footerEl;
     if (footerEl) {
         const style = window.getComputedStyle(footerEl);

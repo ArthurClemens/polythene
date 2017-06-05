@@ -1,5 +1,6 @@
-import events from '../common/events';
 import m from 'mithril';
+import { isServer } from 'polythene-core';
+import events from '../common/events';
 import shadow from '../shadow/shadow';
 import transition from '../common/transition';
 import './theme';
@@ -24,6 +25,9 @@ const DEFAULT_OFFSET_H = 16;
 const MIN_SIZE = 1.5;
 
 const positionMenu = (ctrl, opts) => {
+    if (isServer) {
+        return;
+    }
     if (!opts.target) {
         return;
     }
@@ -117,6 +121,9 @@ const widthClass = (size) => {
 };
 
 const createView = (ctrl, opts = {}) => {
+    if (isServer) {
+        return;
+    }
     const listenEl = document.body;
     const activateDismissTap = () => {
         listenEl.addEventListener('click', handleDismissTap);

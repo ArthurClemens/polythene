@@ -1,8 +1,9 @@
 import FastClick from 'fastclick';
+import { isClient } from 'polythene-core';
 import p from '../polythene/polythene';
 import events from './events';
 
-var layer = document.body;
+var layer = isClient ? document.body : { body: {} };
 var throttleDelay = 150;
 var reInitDelay = throttleDelay + 50;
 var fastClick = void 0;

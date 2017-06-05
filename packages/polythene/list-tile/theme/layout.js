@@ -43,7 +43,8 @@ var createStyles = function createStyles(config) {
                 'text-align': 'right',
                 'font-size': config.font_size_title + 'px',
                 position: 'relative',
-                'z-index': 1 },
+                'z-index': 1 // in case a ripple is used (positioned absolute)
+            },
 
             ' .pe-list-tile__content': [flex.layoutVertical, flex.selfCenter, paddingH(config.side_padding), {
                 '&.pe-list-tile__content--front': [paddingV(config.padding - 5), {

@@ -1,5 +1,9 @@
+import { isServer } from 'polythene-core';
 
 export default (function () {
+    if (isServer) {
+        return 'animationend';
+    }
     var el = document.createElement('fakeelement');
     var animations = {
         'animation': 'animationend',

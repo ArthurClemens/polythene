@@ -1,5 +1,6 @@
+import { isClient, isServer } from 'polythene-core';
 
-if (!window.WebFontConfig) {
+if (isClient && !window.WebFontConfig) {
     window.WebFontConfig = {};
     (function() {
         let wf = document.createElement('script');
@@ -12,16 +13,15 @@ if (!window.WebFontConfig) {
     })();
 }
 
-const webfontLoader = {
-    add: (vendor, family, key) => {
-        const vendorCfg = window.WebFontConfig[vendor] || {};
-        vendorCfg.families = vendorCfg.families || [];
-        vendorCfg.families.push(family);
-        if (key) {
-            vendorCfg.key = key;
-        }
-        window.WebFontConfig[vendor] = vendorCfg;
+export const addWebFont = (vendor, family, key) => {
+    if (isServer) {
+        return;
     }
+    const vendorCfg = window.WebFontConfig[vendor] || {};
+    vendorCfg.families = vendorCfg.families || [];
+    vendorCfg.families.push(family);
+    if (key) {
+        vendorCfg.key = key;
+    }
+    window.WebFontConfig[vendor] = vendorCfg;
 };
-
-export default webfontLoader;

@@ -1,5 +1,6 @@
+export { isClient, isServer } from 'polythene-core';
 
-if (!window.WebFontConfig) {
+if (isClient && !window.WebFontConfig) {
     window.WebFontConfig = {};
     (function () {
         var wf = document.createElement('script');
@@ -13,6 +14,9 @@ if (!window.WebFontConfig) {
 
 var webfontLoader = {
     add: function add(vendor, family, key) {
+        if (isServer) {
+            return;
+        }
         var vendorCfg = window.WebFontConfig[vendor] || {};
         vendorCfg.families = vendorCfg.families || [];
         vendorCfg.families.push(family);

@@ -1,4 +1,4 @@
-import Webfont from "webfontloader";
+import { addWebFont } from "polythene-utilities";
 import { styler } from "polythene-core-css";
 
 const robotoStyles = [{
@@ -8,10 +8,6 @@ const robotoStyles = [{
 }];
 
 export const addRoboto = () => (
-  Webfont.load({
-    google: {
-      families: ["Roboto:400,500,700,400italic:latin"]
-    }
-  }),
+  addWebFont('google', 'Roboto:400,500,700,400italic:latin'),
   styler.add("pe-roboto", robotoStyles)
 );

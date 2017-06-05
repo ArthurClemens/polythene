@@ -1,4 +1,5 @@
 import { flex, styler } from 'polythene-core-css';
+import { isClient, isServer } from 'polythene-core';
 
 var flex$1 = [{
   ".layout, .layout.horizontal": flex.layout,
@@ -90,4 +91,29 @@ var addLayoutStyles = function addLayoutStyles() {
   return styler.add("pe-layout", flex$1, commonStyle);
 };
 
-export { layoutStyles, addLayoutStyles };
+if (isClient && !window.WebFontConfig) {
+    window.WebFontConfig = {};
+    (function () {
+        var wf = document.createElement('script');
+        wf.src = (document.location.protocol === 'https:' ? 'https' : 'http') + '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+    })();
+}
+
+var addWebFont = function addWebFont(vendor, family, key) {
+    if (isServer) {
+        return;
+    }
+    var vendorCfg = window.WebFontConfig[vendor] || {};
+    vendorCfg.families = vendorCfg.families || [];
+    vendorCfg.families.push(family);
+    if (key) {
+        vendorCfg.key = key;
+    }
+    window.WebFontConfig[vendor] = vendorCfg;
+};
+
+export { layoutStyles, addLayoutStyles, addWebFont };

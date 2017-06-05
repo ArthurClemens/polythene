@@ -2,6 +2,7 @@
 Helper module to manage multiple items of the same component type.
 */
 import m from 'mithril';
+import { isClient } from 'polythene-core';
 import './object.assign';
 
 /*
@@ -170,11 +171,15 @@ const multiple = (mOpts) => {
                 return item.show;
             });
             if (!toShowItems.length) {
-                document.body.classList.remove(mOpts.bodyShowClass);
+                if (isClient) {
+                    document.body.classList.remove(mOpts.bodyShowClass);
+                }
                 // placeholder because we cannot return null
                 return m(mOpts.noneTag);
             } else {
-                document.body.classList.add(mOpts.bodyShowClass);
+                if (isClient) {
+                    document.body.classList.add(mOpts.bodyShowClass);
+                }
             }
             return m(mOpts.tag, toShowItems.map((itemData) => {
                 return m(mOpts.instance, Object.assign({}, itemData, {

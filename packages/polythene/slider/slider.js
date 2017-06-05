@@ -1,8 +1,9 @@
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-import '../common/object.assign';
-import p from '../polythene/polythene';
 import m from 'mithril';
+import '../common/object.assign';
+import { isClient, isServer } from 'polythene-core';
+import p from '../polythene/polythene';
 import './theme';
 import themeConfig from './theme/config';
 
@@ -34,8 +35,8 @@ var CSS_CLASSES = {
 var focusElement = void 0;
 
 // const eventStartType = window.PointerEvent ? 'pointerdown' : (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) ? 'touchstart' : 'mousedown';
-var eventMoveType = window.PointerEvent ? 'pointermove' : 'ontouchmove' in window || window.DocumentTouch && document instanceof window.DocumentTouch ? 'touchmove' : 'mousemove';
-var eventEndType = window.PointerEvent ? 'pointerup' : 'ontouchend' in window || window.DocumentTouch && document instanceof window.DocumentTouch ? 'touchend' : 'mouseup';
+var eventMoveType = isClient ? window.PointerEvent ? 'pointermove' : 'ontouchmove' in window || window.DocumentTouch && document instanceof window.DocumentTouch ? 'touchmove' : 'mousemove' : 'mousemove';
+var eventEndType = isClient ? window.PointerEvent ? 'pointerup' : 'ontouchend' in window || window.DocumentTouch && document instanceof window.DocumentTouch ? 'touchend' : 'mouseup' : 'mouseup';
 
 var deFocus = function deFocus(ctrl) {
     if (focusElement) {
@@ -117,7 +118,12 @@ var handlePosEvent = function handlePosEvent(ctrl, e) {
 };
 
 var startDrag = function startDrag(ctrl, opts, e) {
-    if (ctrl.isDragging) return;
+    if (isServer) {
+        return;
+    }
+    if (ctrl.isDragging) {
+        return;
+    }
     e.preventDefault();
     ctrl.isDragging = true;
     ctrl.isActive = true;

@@ -1,4 +1,5 @@
 import m from 'mithril';
+import { isServer } from 'polythene-core';
 import p from '../polythene/polythene';
 import whichTransitionEvent from '../common/transition-event';
 import './theme';
@@ -16,6 +17,9 @@ const CSS_CLASSES = {
 };
 
 const makeRipple = (e, ctrl, opts = {}) => {
+    if (isServer) {
+        return;
+    }
     const el = ctrl.ripple();
     const wavesEl = ctrl.waves();
     const w = el.offsetWidth;

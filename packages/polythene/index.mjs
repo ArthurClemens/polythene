@@ -1,3 +1,4 @@
+import { isClient, isServer } from 'polythene-core';
 import j2c from 'j2c';
 import m from 'mithril';
 import { styler } from 'polythene-core-css';
@@ -69,7 +70,7 @@ var listeners = {};
 // https://gist.github.com/Eartz/fe651f2fadcc11444549
 var throttle = function throttle(func) {
     var s = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0.05;
-    var context = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : window;
+    var context = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : isClient ? window : {};
 
     var wait = false;
     return function () {
@@ -114,15 +115,17 @@ var emit = function emit(eventName, event) {
     });
 };
 
-window.addEventListener('resize', function (e) {
-    return emit('resize', e);
-});
-window.addEventListener('scroll', function (e) {
-    return emit('scroll', e);
-});
-window.addEventListener('keydown', function (e) {
-    return emit('keydown', e);
-});
+if (isClient) {
+    window.addEventListener('resize', function (e) {
+        return emit('resize', e);
+    });
+    window.addEventListener('scroll', function (e) {
+        return emit('scroll', e);
+    });
+    window.addEventListener('keydown', function (e) {
+        return emit('keydown', e);
+    });
+}
 
 var events = {
     throttle: throttle,
@@ -275,15 +278,20 @@ if (!Object.assign) {
     });
 }
 
-var isTouch = 'ontouchstart' in window || navigator.MaxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+var isTouch = isServer ? false : 'ontouchstart' in window || navigator.MaxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
 
-document.querySelector('html').classList.add(isTouch ? 'pe-touch' : 'pe-no-touch');
+if (isClient) {
+  document.querySelector('html').classList.add(isTouch ? 'pe-touch' : 'pe-no-touch');
+}
 
 var p = {
-    isTouch: isTouch
+  isTouch: isTouch
 };
 
 var whichTransitionEvent = (function () {
+    if (isServer) {
+        return 'animationend';
+    }
     var el = document.createElement('fakeelement');
     var animations = {
         'animation': 'animationend',
@@ -615,6 +623,9 @@ var CSS_CLASSES$1 = {
 var makeRipple = function makeRipple(e, ctrl) {
     var opts = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
+    if (isServer) {
+        return;
+    }
     var el = ctrl.ripple();
     var wavesEl = ctrl.waves();
     var w = el.offsetWidth;
@@ -1082,9 +1093,8 @@ var CSS_CLASSES = {
 };
 
 var MAX_Z = 5;
-
-var startType = window.PointerEvent ? 'pointerdown' : 'ontouchstart' in window || window.DocumentTouch && document instanceof window.DocumentTouch ? 'touchstart' : 'mousedown';
-var endType = window.PointerEvent ? 'pointerup' : 'ontouchend' in window || window.DocumentTouch && document instanceof window.DocumentTouch ? 'touchend' : 'mouseup';
+var startType = isClient ? window.PointerEvent ? 'pointerdown' : 'ontouchstart' in window || window.DocumentTouch && document instanceof window.DocumentTouch ? 'touchstart' : 'mousedown' : 'mousedown';
+var endType = isClient ? window.PointerEvent ? 'pointerup' : 'ontouchend' in window || window.DocumentTouch && document instanceof window.DocumentTouch ? 'touchend' : 'mouseup' : 'mouseup';
 
 var tapStart = void 0;
 var tapEnd = void 0;
@@ -1118,6 +1128,9 @@ var inactivate = function inactivate(ctrl, opts) {
 };
 
 var initTapEvents = function initTapEvents(el, ctrl, opts) {
+    if (isServer) {
+        return;
+    }
     var tapHandler = function tapHandler(ctrl, opts, name) {
         if (name === 'down') {
             downButtons.push({ ctrl: ctrl, opts: opts });
@@ -1149,6 +1162,9 @@ var initTapEvents = function initTapEvents(el, ctrl, opts) {
 };
 
 var clearTapEvents = function clearTapEvents(el) {
+    if (isServer) {
+        return;
+    }
     el.removeEventListener(startType, tapStart);
     el.removeEventListener(endType, tapEnd);
     window.removeEventListener(endType, tapEndAll);
@@ -1205,7 +1221,7 @@ var createView = function createView(ctrl) {
             if (e.which === 13 && ctrl.focus && ctrl.el) {
                 // ENTER
                 var event = new MouseEvent('click', {
-                    view: window,
+                    view: isClient ? window : {},
                     bubbles: true,
                     cancelable: true
                 });
@@ -3396,11 +3412,15 @@ var multiple = function multiple(mOpts) {
                 return item.show;
             });
             if (!toShowItems.length) {
-                document.body.classList.remove(mOpts.bodyShowClass);
+                if (isClient) {
+                    document.body.classList.remove(mOpts.bodyShowClass);
+                }
                 // placeholder because we cannot return null
                 return m(mOpts.noneTag);
             } else {
-                document.body.classList.add(mOpts.bodyShowClass);
+                if (isClient) {
+                    document.body.classList.add(mOpts.bodyShowClass);
+                }
             }
             return m(mOpts.tag, toShowItems.map(function (itemData) {
                 return m(mOpts.instance, _extends$9({}, itemData, {
@@ -3811,6 +3831,9 @@ var updateScrollState = function updateScrollState(ctrl) {
 };
 
 var updateFooterState = function updateFooterState(ctrl) {
+    if (isServer) {
+        return;
+    }
     var footerEl = ctrl.footerEl;
     if (footerEl) {
         var style = window.getComputedStyle(footerEl);
@@ -4607,10 +4630,12 @@ var classForMode = function classForMode() {
     return modeClasses[mode];
 };
 
-var setTransform = document.documentElement.style.transform !== undefined ? function (style, string) {
-    style.transform = string;
+var setTransform = isClient ? document.documentElement.style.transform !== undefined ? function (style, string) {
+    return style.transform = string;
 } : function (style, string) {
-    style.webkitTransform = string;
+    return style.webkitTransform = string;
+} : function (style, string) {
+    return style.transform = string;
 };
 
 var translateY = function translateY(style, y) {
@@ -5299,6 +5324,9 @@ var DEFAULT_OFFSET_H = 16;
 var MIN_SIZE = 1.5;
 
 var positionMenu = function positionMenu(ctrl, opts) {
+    if (isServer) {
+        return;
+    }
     if (!opts.target) {
         return;
     }
@@ -5403,6 +5431,9 @@ var widthClass = function widthClass(size) {
 var createView$15 = function createView(ctrl) {
     var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
+    if (isServer) {
+        return;
+    }
     var listenEl = document.body;
     var activateDismissTap = function activateDismissTap() {
         listenEl.addEventListener('click', handleDismissTap);
@@ -5518,18 +5549,18 @@ var Timer = function Timer(callback, delay) {
         remaining = delay;
 
     this.stop = function () {
-        window.clearTimeout(timerId);
+        clearTimeout(timerId);
     };
 
     this.pause = function () {
-        window.clearTimeout(timerId);
+        clearTimeout(timerId);
         remaining -= new Date() - start;
     };
 
     this.resume = function () {
         start = new Date();
-        window.clearTimeout(timerId);
-        timerId = window.setTimeout(callback, remaining);
+        clearTimeout(timerId);
+        timerId = setTimeout(callback, remaining);
     };
 
     this.resume();
@@ -5624,7 +5655,7 @@ var createView$16 = function createView(ctrl) {
             ctrl.el = el;
 
             // container element is used for transitioning the notification
-            ctrl.containerEl = document.querySelector(opts.containerSelector || '.pe-notification__holder');
+            ctrl.containerEl = isClient ? document.querySelector(opts.containerSelector || '.pe-notification__holder') : null;
             show$3(ctrl, opts);
         },
         onclick: function onclick(e) {
@@ -5632,7 +5663,12 @@ var createView$16 = function createView(ctrl) {
         }
     };
     var titleConfig = function titleConfig(el, inited) {
-        if (inited) return;
+        if (isServer) {
+            return;
+        }
+        if (inited) {
+            return;
+        }
         var height = el.getBoundingClientRect().height;
         var lineHeight = parseInt(window.getComputedStyle(el).lineHeight, 10);
         var paddingTop = parseInt(window.getComputedStyle(el).paddingTop, 10);
@@ -6311,7 +6347,7 @@ var _extends$17 = Object.assign || function (target) { for (var i = 1; i < argum
 
 function _defineProperty$15(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var startEventType = window.PointerEvent ? 'pointerdown' : 'ontouchstart' in window || window.DocumentTouch && document instanceof window.DocumentTouch ? 'touchstart' : 'mousedown';
+var startEventType = isClient ? window.PointerEvent ? 'pointerdown' : 'ontouchstart' in window || window.DocumentTouch && document instanceof window.DocumentTouch ? 'touchstart' : 'mousedown' : 'mousedown';
 
 var CSS_CLASSES$18 = {
     block: 'pe-textfield',
@@ -7308,8 +7344,8 @@ var CSS_CLASSES$19 = {
 var focusElement = void 0;
 
 // const eventStartType = window.PointerEvent ? 'pointerdown' : (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) ? 'touchstart' : 'mousedown';
-var eventMoveType = window.PointerEvent ? 'pointermove' : 'ontouchmove' in window || window.DocumentTouch && document instanceof window.DocumentTouch ? 'touchmove' : 'mousemove';
-var eventEndType = window.PointerEvent ? 'pointerup' : 'ontouchend' in window || window.DocumentTouch && document instanceof window.DocumentTouch ? 'touchend' : 'mouseup';
+var eventMoveType = isClient ? window.PointerEvent ? 'pointermove' : 'ontouchmove' in window || window.DocumentTouch && document instanceof window.DocumentTouch ? 'touchmove' : 'mousemove' : 'mousemove';
+var eventEndType = isClient ? window.PointerEvent ? 'pointerup' : 'ontouchend' in window || window.DocumentTouch && document instanceof window.DocumentTouch ? 'touchend' : 'mouseup' : 'mouseup';
 
 var deFocus = function deFocus(ctrl) {
     if (focusElement) {
@@ -7391,7 +7427,12 @@ var handlePosEvent = function handlePosEvent(ctrl, e) {
 };
 
 var startDrag = function startDrag(ctrl, opts, e) {
-    if (ctrl.isDragging) return;
+    if (isServer) {
+        return;
+    }
+    if (ctrl.isDragging) {
+        return;
+    }
     e.preventDefault();
     ctrl.isDragging = true;
     ctrl.isActive = true;
@@ -9105,6 +9146,9 @@ var scrollTo = function scrollTo(opts) {
 };
 
 var requestAnimFrame = function () {
+    if (isServer) {
+        return;
+    }
     return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function (callback) {
         window.setTimeout(callback, 1000 / 60);
     };

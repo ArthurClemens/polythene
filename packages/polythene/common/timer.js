@@ -6,18 +6,18 @@ var Timer = function Timer(callback, delay) {
         remaining = delay;
 
     this.stop = function () {
-        window.clearTimeout(timerId);
+        clearTimeout(timerId);
     };
 
     this.pause = function () {
-        window.clearTimeout(timerId);
+        clearTimeout(timerId);
         remaining -= new Date() - start;
     };
 
     this.resume = function () {
         start = new Date();
-        window.clearTimeout(timerId);
-        timerId = window.setTimeout(callback, remaining);
+        clearTimeout(timerId);
+        timerId = setTimeout(callback, remaining);
     };
 
     this.resume();
