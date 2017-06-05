@@ -1,4 +1,3 @@
-import { appConfig } from 'polythene-theme';
 import { prefixPlugin } from 'j2c-plugin-prefix-browser';
 import J2c from 'j2c';
 
@@ -93,11 +92,11 @@ var sticky = function sticky() {
 };
 
 // Creats a transition with presets
-// mixin.defaultTransition("opacity", appConfig.animation_duration)
+// mixin.defaultTransition("opacity", config.animation_duration)
 var defaultTransition = function defaultTransition() {
   var properties = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "all";
-  var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : appConfig.animation_duration;
-  var curve = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : appConfig.animation_curve_default;
+  var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '.18s';
+  var curve = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'ease-out';
   return {
     transitionDelay: 0,
     transitionDuration: duration,

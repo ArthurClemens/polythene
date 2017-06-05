@@ -1,5 +1,6 @@
 import m from 'mithril';
-import { Button, Dialog, FAB, Notification, Snackbar, styler } from 'polythene';
+import { Button, Dialog, FAB, Notification, Snackbar } from 'polythene';
+import { styler } from 'polythene-core-css';
 import style from './notification-messages-style';
 styler.add('polythene-examples-notification-messages', style);
 

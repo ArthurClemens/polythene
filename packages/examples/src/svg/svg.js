@@ -1,5 +1,6 @@
 import m from 'mithril';
-import { Button, Icon, SVG, styler } from 'polythene';
+import { Button, Icon, SVG } from 'polythene';
+import { styler } from 'polythene-core-css';
 import style from './svg-style';
 styler.add('polythene-examples-svg', style);
 

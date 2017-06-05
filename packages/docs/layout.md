@@ -6,9 +6,11 @@ Provides common and flexbox classes.
 
 ## Usage
 
-~~~javascript
-import 'polythene/layout/theme/theme';
-~~~
+```javascript
+import { addLayoutStyles } from 'polythene-utilities';
+
+addLayoutStyles();
+```
 
 Use in Mithril elements:
 

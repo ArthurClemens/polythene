@@ -1,5 +1,6 @@
 import m from 'mithril';
-import { Button, DeterminateSpinner, IndeterminateSpinner, IOSSpinner, Slider, styler } from 'polythene';
+import { Button, DeterminateSpinner, IndeterminateSpinner, IOSSpinner, Slider } from 'polythene';
+import { styler } from 'polythene-core-css';
 import style from './spinner-style';
 styler.add('polythene-examples-spinner', style);
 

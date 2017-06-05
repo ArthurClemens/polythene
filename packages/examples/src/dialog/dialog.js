@@ -3,7 +3,8 @@ In index.es6.js the dialog is rendered in the app.view function.
 */
 import 'polythene/common/object.assign';
 import m from 'mithril';
-import { Button, Dialog, Switch, styler } from 'polythene';
+import { Button, Dialog, Switch } from 'polythene';
+import { styler } from 'polythene-core-css';
 import shortDialog from './dialogs/dialog-short';
 import noTransitionDialog from './dialogs/dialog-notransition';
 import longDialog from './dialogs/dialog-long';

@@ -1,5 +1,6 @@
 import m from 'mithril';
-import { Card, List, ListTile, Button, IconButton, styler } from 'polythene';
+import { Card, List, ListTile, Button, IconButton } from 'polythene';
+import { styler } from 'polythene-core-css';
 import style from './card-style';
 styler.add('polythene-examples-card', style);
 

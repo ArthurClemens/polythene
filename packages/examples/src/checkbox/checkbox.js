@@ -1,5 +1,6 @@
 import m from 'mithril';
-import { Checkbox, styler } from 'polythene';
+import { Checkbox } from 'polythene';
+import { styler } from 'polythene-core-css';
 import style from './checkbox-style';
 styler.add('polythene-examples-checkbox', style);
 

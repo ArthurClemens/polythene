@@ -3,7 +3,7 @@ import sortableList from './sortable-list';
 import checkboxPrimary from './checkbox-primary';
 import checkboxSecondary from './checkbox-secondary';
 import switchSecondary from './switch-secondary';
-import { styler } from 'polythene';
+import { styler } from 'polythene-core-css';
 import style from './list-controls-style';
 styler.add('polythene-examples-list-controls', style);
 

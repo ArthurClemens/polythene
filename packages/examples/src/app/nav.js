@@ -1,5 +1,6 @@
 import m from 'mithril';
-import { styler, HeaderPanel, IconButton } from 'polythene';
+import { HeaderPanel, IconButton } from 'polythene';
+import { styler } from 'polythene-core-css';
 
 import style from './nav-style';
 styler.add('polythene-examples-nav', style);

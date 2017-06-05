@@ -1,6 +1,7 @@
 import 'polythene/common/object.assign';
 import m from 'mithril';
-import { RadioButton, styler } from 'polythene';
+import { RadioButton } from 'polythene';
+import { styler } from 'polythene-core-css';
 import style from './radio-button-style';
 styler.add('polythene-examples-radio-button', style);
 

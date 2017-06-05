@@ -26,17 +26,36 @@ import button from 'polythene/button/button';
 ```javascript
 import { Button } from 'polythene';
 
-// or still use
+// you can also still use
 import button from 'polythene/button/button';
 ```
 
-Version 0.2 imports are still supported, but are be deprecated and no longer supported in 1.0.
+Version 0.2 are deprecated and won't be supported in Polythene 1.0.
 
 
-### Importing Material Design theme
+### Material Design styles
 
 ```javascript
-import 'polythene-material-design';
+import { addRoboto, addTypography } from 'polythene-motif';
+
+addRoboto();
+addTypography();
+```
+
+### Layout classes
+
+Common and flexbox classes, for instance to use
+
+```javascript
+m(".layout.vertical", ...)
+```
+
+Import using:
+
+```javascript
+import { addLayoutStyles } from 'polythene-utilities';
+
+addLayoutStyles();
 ```
 
 

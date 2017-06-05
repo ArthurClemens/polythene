@@ -1,11 +1,10 @@
 import m from 'mithril';
 import { Button } from 'polythene';
-
 import 'polythene/common/object.assign';
 import defaultConfig from 'polythene/button/theme/config';
 import layout from 'polythene/button/theme/layout';
 import color from 'polythene/button/theme/color';
-import styler from 'polythene/common/styler';
+import { styler } from 'polythene-core-css';
 
 const reconfig = cfg => {
     return [

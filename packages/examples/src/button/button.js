@@ -1,6 +1,6 @@
 import m from 'mithril';
 import buttonRow from './button-row';
-import { styler } from 'polythene';
+import { styler } from 'polythene-core-css';
 import style from './button-style';
 styler.add('polythene-examples-button', style);
 

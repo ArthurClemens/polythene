@@ -1,5 +1,6 @@
 import m from 'mithril';
-import { Checkbox, Icon, List, ListTile, styler } from 'polythene';
+import { Checkbox, Icon, List, ListTile } from 'polythene';
+import { styler } from 'polythene-core-css';
 import style from './checkbox-secondary-style';
 styler.add('polythene-examples-checkbox-secondary-list', style);
 

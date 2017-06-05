@@ -1,5 +1,6 @@
 import m from 'mithril';
-import { Button, Checkbox, IconButton, styler } from 'polythene';
+import { Button, Checkbox, IconButton } from 'polythene';
+import { styler } from 'polythene-core-css';
 import style from './speed-test-style';
 styler.add('polythene-examples-speed-test', style);
 

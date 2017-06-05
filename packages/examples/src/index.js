@@ -1,8 +1,10 @@
 import 'polythene/common/no-tap-delay';
 
 import m from 'mithril';
-import { Dialog, Icon, List, ListTile, HeaderPanel, Theme, styler } from 'polythene';
-import 'polythene-material-design';
+import { Dialog, Icon, List, ListTile, HeaderPanel, Theme } from 'polythene';
+import { styler } from 'polythene-core-css';
+import { addLayoutStyles } from 'polythene-utilities';
+import { addRoboto, addTypography } from 'polythene-motif';
 import nav from './app/nav';
 import github from './app/github';
 
@@ -37,12 +39,15 @@ import mTheming from './theming';
 import mToolbar from './toolbar/toolbar';
 import mValidation from './validation/validation';
 
-import 'polythene/layout/theme/theme';
 import appStyle from './app/app-style';
-styler.add('polythene-examples-app', appStyle);
 
 import listItemIcon from 'mmsvg/templarian/msvg/arrow-right';
 import recycleIcon from './assets/recycle';
+
+addLayoutStyles();
+addRoboto();
+addTypography();
+styler.add('polythene-examples-app', appStyle);
 
 const links = [{
     label: 'Components',

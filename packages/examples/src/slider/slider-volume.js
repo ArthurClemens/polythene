@@ -1,5 +1,6 @@
 import m from 'mithril';
-import { Icon, Slider, styler } from 'polythene';
+import { Icon, Slider } from 'polythene';
+import { styler } from 'polythene-core-css';
 import style from './slider-volume-style';
 styler.add('polythene-examples-slider-volume', style);
 

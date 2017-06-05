@@ -1,5 +1,6 @@
 import m from 'mithril';
-import { HeaderPanel, IconButton, styler } from 'polythene';
+import { HeaderPanel, IconButton } from 'polythene';
+import { styler } from 'polythene-core-css';
 import common from './common';
 import style from './kitchensink-style';
 styler.add('polythene-examples-header-panel-kitchensink', style);

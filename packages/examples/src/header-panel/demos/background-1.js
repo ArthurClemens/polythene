@@ -1,6 +1,7 @@
 import 'polythene/common/object.assign';
 import m from 'mithril';
-import { HeaderPanel, styler } from 'polythene';
+import { HeaderPanel } from 'polythene';
+import { styler } from 'polythene-core-css';
 import common from './common';
 import style from './background-1-style';
 styler.add('polythene-examples-header-panel-background-1', style);

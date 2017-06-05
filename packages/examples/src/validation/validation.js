@@ -1,5 +1,6 @@
 import m from 'mithril';
-import { Button, TextField, Notification, ValidationHelper, styler } from 'polythene';
+import { Button, TextField, Notification, ValidationHelper } from 'polythene';
+import { styler } from 'polythene-core-css';
 import style from './validation-style';
 styler.add('polythene-examples-validation', style);
 

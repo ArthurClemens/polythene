@@ -1,7 +1,8 @@
 import 'polythene/common/object.assign';
 import m from 'mithril';
 import infinite from 'mithril-infinite';
-import { HeaderPanel, styler } from 'polythene';
+import { HeaderPanel } from 'polythene';
+import { styler } from 'polythene-core-css';
 import common from '../demos/common';
 import gridStyle from './infinite-grid-style';
 import infiniteStyle from './infinite-style';

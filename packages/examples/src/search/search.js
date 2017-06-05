@@ -1,5 +1,6 @@
 import m from 'mithril';
-import { Button, IconButton, Search, Shadow, styler } from 'polythene';
+import { Button, IconButton, Search, Shadow } from 'polythene';
+import { styler } from 'polythene-core-css';
 import SearchField from './search-field';
 
 import style from './search-style';

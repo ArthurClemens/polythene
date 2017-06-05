@@ -1,5 +1,6 @@
 import m from 'mithril';
-import { Switch, styler } from 'polythene';
+import { Switch } from 'polythene';
+import { styler } from 'polythene-core-css';
 import style from './switch-style';
 styler.add('polythene-examples-switch', style);
 

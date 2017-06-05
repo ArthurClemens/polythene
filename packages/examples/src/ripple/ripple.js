@@ -1,5 +1,6 @@
 import m from 'mithril';
-import { List, ListTile, IconButton, Ripple, styler } from 'polythene';
+import { List, ListTile, IconButton, Ripple } from 'polythene';
+import { styler } from 'polythene-core-css';
 import style from './ripple-style';
 styler.add('polythene-examples-ripple', style);
 

@@ -1,4 +1,4 @@
-import styler from '../../common/styler';
+import { styler } from 'polythene-core-css';
 import { componentConfig } from 'polythene-theme';
 import vars from './config';
 import layout from './layout';

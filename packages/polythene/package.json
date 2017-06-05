@@ -12,9 +12,10 @@
   "directories": {},
   "dependencies": {
     "fastclick": "^1.0.6",
-    "j2c": "^0.11.2",
+    "j2c": "^1.0.0-4",
+    "j2c-plugin-prefix-browser": "^1.0.6",
     "mithril": "^0.2.5",
-    "polythene-core": "0.3.0-rc.1",
+    "polythene-core-css": "0.3.0-rc.1",
     "polythene-theme": "0.3.0-rc.1"
   },
   "repository": {

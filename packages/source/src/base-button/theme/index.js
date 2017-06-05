@@ -1,4 +1,4 @@
-import styler from '../../common/styler';
+import { styler } from 'polythene-core-css';
 import layout from './layout';
 
 const id = 'pe-base-button';

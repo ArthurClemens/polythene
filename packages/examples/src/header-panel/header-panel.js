@@ -1,5 +1,6 @@
 import m from 'mithril';
-import { Icon, List, ListTile, styler } from 'polythene';
+import { Icon, List, ListTile } from 'polythene';
+import { styler } from 'polythene-core-css';
 import style from './header-panel-style';
 styler.add('polythene-examples-header-panel', style);
 

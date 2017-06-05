@@ -1,5 +1,6 @@
 import m from 'mithril';
-import { Button, Shadow, styler } from 'polythene';
+import { Button, Shadow } from 'polythene';
+import { styler } from 'polythene-core-css';
 import style from './shadow-style';
 styler.add('polythene-examples-shadow', style);
 

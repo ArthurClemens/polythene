@@ -1,5 +1,6 @@
 import j2c from 'j2c';
 import m from 'mithril';
+import { styler } from 'polythene-core-css';
 import { appConfig, componentConfig } from 'polythene-theme';
 
 /*
@@ -182,7 +183,7 @@ var addToDocument = function addToDocument(opts) {
     documentRef.head.appendChild(styleEl);
 };
 
-var styler = {
+var styler$1 = {
     add: add,
     addToDocument: addToDocument,
     remove: remove
@@ -9764,4 +9765,4 @@ var component$39 = {
     }
 };
 
-export { component as Button, component$3 as Card, component$8 as Checkbox, dialog as Dialog, component$13 as FAB, component$15 as HeaderPanel, component$5 as Icon, component$11 as IconButton, component$18 as List, component$7 as ListTile, component$20 as Menu, notification as Notification, component$23 as RadioButton, component$1 as Ripple, component$25 as Search, component$2 as Shadow, component$28 as Slider, snackbar as Snackbar, component$30 as IOSSpinner, component$33 as DeterminateSpinner, component$35 as IndeterminateSpinner, component$6 as SVG, component$37 as Switch, component$39 as Tabs, component$27 as TextField, component$17 as Toolbar, easing, events, styler, validationHelper as ValidationHelper };
+export { component as Button, component$3 as Card, component$8 as Checkbox, dialog as Dialog, component$13 as FAB, component$15 as HeaderPanel, component$5 as Icon, component$11 as IconButton, component$18 as List, component$7 as ListTile, component$20 as Menu, notification as Notification, component$23 as RadioButton, component$1 as Ripple, component$25 as Search, component$2 as Shadow, component$28 as Slider, snackbar as Snackbar, component$30 as IOSSpinner, component$33 as DeterminateSpinner, component$35 as IndeterminateSpinner, component$6 as SVG, component$37 as Switch, component$39 as Tabs, component$27 as TextField, component$17 as Toolbar, easing, events, styler$1 as styler, validationHelper as ValidationHelper };

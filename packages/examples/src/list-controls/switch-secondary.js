@@ -1,5 +1,6 @@
 import m from 'mithril';
-import { Icon, List, ListTile, Switch, styler } from 'polythene';
+import { Icon, List, ListTile, Switch } from 'polythene';
+import { styler } from 'polythene-core-css';
 import style from './switch-secondary-style';
 styler.add('polythene-examples-switch-secondary-list', style);
 

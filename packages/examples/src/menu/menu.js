@@ -1,5 +1,6 @@
 import m from 'mithril';
-import { Button, Dialog, IconButton, List, ListTile, Menu, Shadow, styler } from 'polythene';
+import { Button, Dialog, IconButton, List, ListTile, Menu, Shadow } from 'polythene';
+import { styler } from 'polythene-core-css';
 import formattingList from './formatting-list';
 import settingsMenuDialog from './dialog-settings-menu';
 import settings from './menu-settings';

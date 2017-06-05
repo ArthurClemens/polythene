@@ -1,4 +1,4 @@
-import { defaultVariables } from 'polythene-core';
+import { defaultVariables } from 'polythene-motif';
 
 // Placeholder for custom theme config file
 // In your app paths setup, change the current path to your custom config file; see the theme README.

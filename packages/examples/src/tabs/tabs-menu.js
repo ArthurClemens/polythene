@@ -1,5 +1,5 @@
 import m from 'mithril';
-import { styler } from 'polythene';
+import { styler } from 'polythene-core-css';
 import style from './tabs-menu-style';
 styler.add('polythene-examples-tabs-menu', style);
 

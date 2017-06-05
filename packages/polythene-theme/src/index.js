@@ -1,2 +1,2 @@
-export { defaultVariables as appConfig } from 'polythene-core';
+export { defaultVariables as appConfig } from 'polythene-motif';
 export { componentConfig } from './component-config';

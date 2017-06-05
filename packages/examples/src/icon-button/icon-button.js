@@ -1,5 +1,6 @@
 import m from 'mithril';
-import { Icon, IconButton, styler } from 'polythene';
+import { Icon, IconButton } from 'polythene';
+import { styler } from 'polythene-core-css';
 import style from './icon-button-style';
 styler.add('polythene-examples-icon-button', style);
 import iconHeart from 'mmsvg/templarian/msvg/heart';

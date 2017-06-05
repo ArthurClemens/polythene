@@ -1,1 +1,0 @@
-export { defaultVariables as default } from 'polythene-core';

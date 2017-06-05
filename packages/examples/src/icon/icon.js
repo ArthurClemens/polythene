@@ -1,5 +1,6 @@
 import m from 'mithril';
-import { Icon, styler } from 'polythene';
+import { Icon } from 'polythene';
+import { styler } from 'polythene-core-css';
 import style from './icon-style';
 styler.add('polythene-examples-icon', style);
 

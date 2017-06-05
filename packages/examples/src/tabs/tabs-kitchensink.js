@@ -1,5 +1,6 @@
 import m from 'mithril';
-import { IconButton, Toolbar, Tabs, styler } from 'polythene';
+import { IconButton, Toolbar, Tabs } from 'polythene';
+import { styler } from 'polythene-core-css';
 import style from './tabs-kitchensink-style';
 styler.add('polythene-examples-tabs', style);
 

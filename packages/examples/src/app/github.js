@@ -1,4 +1,5 @@
 import m from 'mithril';
+import { styler } from 'polythene-core-css';
 
 const content = m('.github', m.trust('Polythene, a modular implementation of Material Design for Mithril.<br /><a href="http://polythene.js.org">Documentation</a> and <a href="https://github.com/ArthurClemens/Polythene">Github project page</a>.'));
 
@@ -13,7 +14,6 @@ const style = [{
     }
 }];
 
-import { styler } from 'polythene';
 styler.add('polythene-examples-github', style);
 
 export default content;

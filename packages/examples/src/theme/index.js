@@ -1,6 +1,6 @@
 // theme override
 
-import { defaultVariables } from 'polythene-core';
+import { defaultVariables } from 'polythene-motif';
 
 export const appConfig = {
   ...defaultVariables

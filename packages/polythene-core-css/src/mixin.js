@@ -1,7 +1,5 @@
 // Mixins for j2c
 
-import { appConfig } from "polythene-theme";
-
 // Centers an item absolutely within relative parent
 // mixin.fit()
 const fit = (offset = 0) => {
@@ -87,8 +85,8 @@ const sticky = (zIndex = 1) => ({
 });
 
 // Creats a transition with presets
-// mixin.defaultTransition("opacity", appConfig.animation_duration)
-const defaultTransition = (properties = "all", duration = appConfig.animation_duration, curve = appConfig.animation_curve_default) => ({
+// mixin.defaultTransition("opacity", config.animation_duration)
+const defaultTransition = (properties = "all", duration = '.18s', curve = 'ease-out') => ({
   transitionDelay: 0,
   transitionDuration: duration,
   transitionTimingFunction: curve,

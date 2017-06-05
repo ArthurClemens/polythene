@@ -1,5 +1,6 @@
 import m from 'mithril';
-import { Button, Tabs, styler } from 'polythene';
+import { Button, Tabs } from 'polythene';
+import { styler } from 'polythene-core-css';
 import style from './tabs-routing-style';
 styler.add('polythene-examples-tabs-routing', style);
 

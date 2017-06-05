@@ -1,5 +1,6 @@
 import m from 'mithril';
-import { Slider, TextField, styler } from 'polythene';
+import { Slider, TextField } from 'polythene';
+import { styler } from 'polythene-core-css';
 import style from './slider-rgb-style';
 styler.add('polythene-examples-slider-rgb', style);
 

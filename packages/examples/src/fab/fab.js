@@ -1,5 +1,6 @@
 import m from 'mithril';
-import { FAB, styler } from 'polythene';
+import { FAB } from 'polythene';
+import { styler } from 'polythene-core-css';
 import style from './fab-style';
 styler.add('polythene-examples-fab', style);
 

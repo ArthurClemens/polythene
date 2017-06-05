@@ -1,6 +1,7 @@
 import 'polythene/common/object.assign';
 import m from 'mithril';
-import { Icon, ListTile, styler } from 'polythene';
+import { Icon, ListTile } from 'polythene';
+import { styler } from 'polythene-core-css';
 import style from './list-tile-style';
 styler.add('polythene-examples-list-tile', style);
 

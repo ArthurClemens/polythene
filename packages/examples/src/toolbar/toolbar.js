@@ -1,5 +1,6 @@
 import m from 'mithril';
-import { IconButton, Toolbar, styler } from 'polythene';
+import { IconButton, Toolbar } from 'polythene';
+import { styler } from 'polythene-core-css';
 import style from './toolbar-style';
 styler.add('polythene-examples-toolbar', style);
 
