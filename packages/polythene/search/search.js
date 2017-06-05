@@ -50,14 +50,19 @@ var createView = function createView(ctrl) {
     var textfieldOpts = opts.textfield || {};
     var content = m('div', {
         class: CSS_CLASSES.content
-    }, [buttons.before ? buttons.before : null, m(textfield, _extends({}, textfieldOpts, {
+    }, [m(textfield, _extends({}, textfieldOpts, {
+        config: function config() {
+            m.redraw.strategy('none');
+        },
         getState: function getState(state) {
             ctrl.state(state);
             if (textfieldOpts.getState) {
                 textfieldOpts.getState(state);
             }
-        }
-    })), buttons.after ? buttons.after : null]);
+        },
+        before: buttons.before,
+        after: buttons.after
+    }))]);
     return m(tag, props, [opts.before, content, opts.after]);
 };
 

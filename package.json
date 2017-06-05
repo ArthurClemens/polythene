@@ -14,5 +14,8 @@
     "rollup-plugin-eslint": "^3.0.0",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-uglify": "^2.0.1"
+  },
+  "scripts": {
+    "github": "cd packages/source && yarn run build && cd - && cd packages/examples && yarn run build && cd - && node scripts/github"
   }
 }

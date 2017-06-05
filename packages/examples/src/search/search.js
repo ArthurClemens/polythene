@@ -1,5 +1,7 @@
 import m from 'mithril';
 import { Button, IconButton, Search, Shadow, styler } from 'polythene';
+import SearchField from './search-field';
+
 import style from './search-style';
 styler.add('polythene-examples-search', style);
 
@@ -24,6 +26,17 @@ const containerSizes = [
     }
 ];
 
+const types = [
+    {
+        type: 'inset',
+        title: 'Inset'
+    },
+    {
+        type: 'fullwidth',
+        title: 'Full width'
+    }
+];
+
 const controlButtons = (ctrl) => {
     return [
         m('.size-buttons', containerSizes.map((s, index) => {
@@ -34,12 +47,21 @@ const controlButtons = (ctrl) => {
                     onclick: () => (ctrl.sizeIndex = index)
                 }
             });
+        })),
+        m('.size-buttons', types.map((s, index) => {
+            return m(Button, {
+                label: s.title,
+                selected: ctrl.typeIndex === index,
+                events: {
+                    onclick: () => (ctrl.typeIndex = index)
+                }
+            });
         }))
     ];
 };
 
 const titleBlock = {
-    view: function(ctrl, args) {
+    view: function(ctrl, args = {}) {
         return m('.p-block', {
             class: args.class || ''
         }, [
@@ -50,100 +72,37 @@ const titleBlock = {
     }
 };
 
-const btnSearch = m(IconButton, {
-    key: 'btnSearch',
-    icon: {
-        msvg: iconSearch
-    },
-    inactive: true
-});
-
-const btnMic = m(IconButton, {
-    icon: {
-        msvg: iconMic
-    },
-    events: {
-        onclick: () => {}
+const SearchBlock = {
+    view: (ctrl, opts = {}) => {
+        return m("form", {
+          class: ['demo-search', opts.sizeClass].join(' '),
+          style: Object.assign(
+            {},
+            {
+              minHeight: "130px",
+              overflow: "hidden" // hides top and side shadow with full width search field
+            },
+            opts.dark ? { backgroundColor: "transparent" } : { backgroundColor: "#e4e4e4" },
+            opts.type && opts.type === 'fullwidth'
+              ? { padding: "0" }
+              : { padding: "8px" }
+          )},
+          m(SearchField, opts)
+        );
     }
-});
+};
 
-const insetClearBtn = (ctrl) => (
-    m(IconButton, {
-        icon: {
-            msvg: iconClear
-        },
-        events: {
-            onclick: () => (
-                ctrl.query().value = '',
-                console.log('ctrl.query().value', ctrl.query().value),
-                m.redraw(),
-                ctrl.query().el.focus()
-            )
-        }
-    })
-);
-
-const insetDismissBtn = (ctrl) => (
-    m(IconButton, {
-        key: 'insetDismissBtn',
-        icon: {
-            msvg: iconBack
-        },
-        events: {
-            onclick: () => (
-                ctrl.query().value = '',
-                setTimeout(m.redraw, 0)
-            )
-        },
-        inactive: false
-    })
-);
-
-const fullwidthClearBtn = (ctrl) => (
-    m(IconButton, {
-        icon: {
-            msvg: iconClear
-        },
-        events: {
-            onclick: () => (
-                ctrl.queryFullwidth().value = '',
-                m.redraw(),
-                ctrl.queryFullwidth().el.focus()
-            )
-        }
-    })
-);
-
-const fullwidthDismissBtn = (ctrl) => (
-    m(IconButton, {
-        icon: {
-            msvg: iconBack
-        },
-        events: {
-            onclick: () => (
-                ctrl.queryFullwidth().value = '',
-                m.redraw()
-            )
-        }
-    })
-);
-
-const btnFilter = m(IconButton, {
-    icon: {
-        msvg: iconFilter
-    }
-});
 
 const module = {};
 module.controller = () => {
     return {
         sizeIndex: 0,
-        query: m.prop(),
-        queryFullwidth: m.prop()
+        typeIndex: 0,
     };
 };
 module.view = (ctrl) => {
     const sizeClass = containerSizes[ctrl.sizeIndex].class;
+    const type = types[ctrl.typeIndex].type;
 
     return m('.module-search', [
 
@@ -154,74 +113,8 @@ module.view = (ctrl) => {
         m(titleBlock, {
             title: 'Inset search (default)',
             info: m('p', 'Icons specified as component options'),
-            content: m('form', {
-                class: ['demo-search', sizeClass].join(' '),
-                onsubmit: (e) => (e.preventDefault(), alert('Form submitted'))
-            }, m(Search, {
-                textfield: {
-                    key: 'input',
-                    label: 'Search',
-                    type: 'search',
-                    value: () => (ctrl.query() ? ctrl.query().value : ''),
-                    getState: ctrl.query
-                },
-                buttons: {
-                    none: {
-                        before: btnSearch,
-                        after: btnMic
-                    },
-                    focus: {
-                        before: insetDismissBtn(ctrl),
-                        after: btnMic
-                    },
-                    focus_dirty: {
-                        before: insetDismissBtn(ctrl),
-                        after: insetClearBtn(ctrl)
-                    },
-                    dirty: {
-                        before: insetDismissBtn(ctrl),
-                        after: insetClearBtn(ctrl)
-                    }
-                },
-                before: m(Shadow)
-            }))
+            content: m(SearchBlock, { type, sizeClass })
         }),
-
-        m(titleBlock, {
-            title: 'Full-width search',
-            info: m('p', 'Using a different combination of icons'),
-            content: m('form', {
-                class: ['demo-search', 'fullwidth', sizeClass].join(' '),
-                onsubmit: (e) => (e.preventDefault(), alert('Form submitted'))
-            }, [
-                m(Search, {
-                    type: 'fullwidth',
-                    textfield: {
-                        label: 'Search',
-                        type: 'search',
-                        value: () => (ctrl.queryFullwidth() ? ctrl.queryFullwidth().value : ''),
-                        getState: ctrl.queryFullwidth
-                    },
-                    buttons: {
-                        none: {
-                            before: fullwidthDismissBtn(ctrl)
-                        },
-                        focus: {
-                            before: fullwidthDismissBtn(ctrl)
-                        },
-                        focus_dirty: {
-                            before: fullwidthDismissBtn(ctrl),
-                            after: fullwidthClearBtn(ctrl)
-                        },
-                        dirty: {
-                            before: fullwidthDismissBtn(ctrl),
-                            after: [fullwidthClearBtn(ctrl), btnFilter]
-                        }
-                    }
-                }),
-                m('.drop-shadow')
-            ])
-        })
 
     ]);
 };

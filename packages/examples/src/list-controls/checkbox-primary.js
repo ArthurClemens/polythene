@@ -8,25 +8,25 @@ import iconMessage from 'mmsvg/google/msvg/communication/message';
 const cbListTile = {};
 cbListTile.controller = (opts) => {
     return {
-        selected: opts.index === 2
+        selected: m.prop(opts.index === 2)
     };
 };
 cbListTile.view = (ctrl) => {
+    const events = {
+        onclick: () => ctrl.selected(!ctrl.selected())
+    };
     return m(ListTile, {
         title: ctrl.selected ? 'Line item selected' : 'Line item unselected',
         front: m(Checkbox, {
-            checked: () => ctrl.selected,
-            getState: (state) => (ctrl.selected = state.checked)
+            checked: () => ctrl.selected(),
+            getState: state => ctrl.selected(state.checked),
+            events
         }),
         secondary: {
-            icon: {
-                msvg: iconMessage
-            }
+            icon: { msvg: iconMessage }
         },
         hoverable: true,
-        events: {
-            onclick: () => ctrl.selected = !ctrl.selected
-        }
+        events
     });
 };
 

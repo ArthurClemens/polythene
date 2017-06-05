@@ -20,6 +20,7 @@ var createStyles = function createStyles(config) {
 
             ' .pe-textfield__input-area': {
                 padding: 0,
+                flexGrow: 1,
 
                 '&:after': {
                     display: 'none'
@@ -42,7 +43,9 @@ var createStyles = function createStyles(config) {
                 bottom: 0
             },
 
-            ' .pe-search__content': flex.layoutHorizontal,
+            ' .pe-search__content': {
+                '&, .pe-textfield': flex.layoutHorizontal
+            },
 
             ' .pe-search__content > *': flex.layoutVertical,
 

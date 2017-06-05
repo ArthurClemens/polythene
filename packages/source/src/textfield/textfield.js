@@ -98,7 +98,7 @@ const checkValidity = (ctrl, opts) => {
 };
 
 // dirty = contains text
-const checkDirty = (ctrl) => {
+const checkDirty = ctrl => {
     ctrl.isDirty = (ctrl.value.toString().length > 0);
 };
 
@@ -152,16 +152,6 @@ const createView = (ctrl, opts = {}) => {
         notifyState(ctrl, opts);
         ctrl.inputEl().value = value;
     }
-
-    const onBlur = (e) => {
-        ctrl.focus(false);
-        ctrl.touched = true;
-        ctrl.value = e.target.value;
-        updateState(ctrl, opts);
-        notifyState(ctrl, opts);
-        // same principle as onfocus
-        ctrl.el.classList.remove(CSS_CLASSES.stateFocused);
-    };
 
     const props = {
         class: [
@@ -256,12 +246,10 @@ const createView = (ctrl, opts = {}) => {
                         }
                     }
                     : null,
-                    
-                // onblur defined in config
 
                 (!ignoreEvent(opts, 'oninput'))
                     ? {
-                        oninput: (e) => {
+                        oninput: e => {
                             // default input event
                             // may be overwritten by opts.events
                             ctrl.value = e.target.value;
@@ -278,9 +266,25 @@ const createView = (ctrl, opts = {}) => {
                     }
                     : null,
 
+                (!ignoreEvent(opts, "onblur"))
+                    ? {
+                      onblur: e => {
+                        ctrl.focus(false);
+                        ctrl.touched = true;
+                        ctrl.value = e.target.value;
+                        updateState(ctrl, opts);
+                        notifyState(ctrl, opts);
+                        // same principle as onfocus
+                        if (ctrl.el) {
+                            ctrl.el.classList.remove(CSS_CLASSES.stateFocused);
+                        }
+                      }
+                    }
+                    : null,
+
                 (!ignoreEvent(opts, 'onkeydown'))
                     ? {
-                        onkeydown: (e) => {
+                        onkeydown: e => {
                             if (e.which === 13) {
                                 // ENTER
                                 ctrl.touched = true;
@@ -304,24 +308,13 @@ const createView = (ctrl, opts = {}) => {
                     : null,
 
                 {
-                    config: (el, inited, context) => {
+                    config: (el, inited) => {
                         if (inited) {
                             return;
                         }
                         ctrl.inputEl(el);
                         el.value = ctrl.value;
                         notifyState(ctrl, opts);
-                        if (!inactive) {
-                            if (!ignoreEvent(opts, 'onblur')) {
-                                // use event delegation for the blur event
-                                // so that click events bubble up
-                                // http://www.quirksmode.org/blog/archives/2008/04/delegating_the.html
-                                el.addEventListener('blur', onBlur, true);
-                                context.onunload = function() {
-                                    el.removeEventListener('blur', onBlur, true);
-                                };
-                            }
-                        }
                     }
                 },
                 opts.events ? opts.events : null, // NOTE: may overwrite oninput

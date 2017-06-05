@@ -159,16 +159,6 @@ var createView = function createView(ctrl) {
         ctrl.inputEl().value = value;
     }
 
-    var onBlur = function onBlur(e) {
-        ctrl.focus(false);
-        ctrl.touched = true;
-        ctrl.value = e.target.value;
-        updateState(ctrl, opts);
-        notifyState(ctrl, opts);
-        // same principle as onfocus
-        ctrl.el.classList.remove(CSS_CLASSES.stateFocused);
-    };
-
     var props = {
         class: [CSS_CLASSES.block, isInvalid ? CSS_CLASSES.stateInvalid : '', ctrl.focus() ? CSS_CLASSES.stateFocused : '', opts.floatingLabel ? CSS_CLASSES.hasFloatingLabel : '', opts.disabled ? CSS_CLASSES.stateDisabled : '', opts.readonly ? CSS_CLASSES.stateReadonly : '', ctrl.isDirty ? CSS_CLASSES.stateDirty : '', opts.dense ? CSS_CLASSES.isDense : '', opts.required ? CSS_CLASSES.isRequired : '', opts.fullWidth ? CSS_CLASSES.hasFullWidth : '', opts.counter ? CSS_CLASSES.hasCounter : '', opts.hideSpinner !== false ? CSS_CLASSES.hideSpinner : '', opts.hideClear !== false ? CSS_CLASSES.hideClear : '', opts.hideValidation ? CSS_CLASSES.hideValidation : '', opts.hideRequiredMark ? CSS_CLASSES.hideRequiredChar : '', opts.class].join(' '),
         id: opts.id || '',
@@ -226,11 +216,7 @@ var createView = function createView(ctrl) {
             }
             notifyState(ctrl, opts);
         }
-    } : null,
-
-    // onblur defined in config
-
-    !ignoreEvent(opts, 'oninput') ? {
+    } : null, !ignoreEvent(opts, 'oninput') ? {
         oninput: function oninput(e) {
             // default input event
             // may be overwritten by opts.events
@@ -243,6 +229,18 @@ var createView = function createView(ctrl) {
             notifyState(ctrl, opts);
             if (opts.oninput) {
                 opts.oninput(ctrl.value, e);
+            }
+        }
+    } : null, !ignoreEvent(opts, "onblur") ? {
+        onblur: function onblur(e) {
+            ctrl.focus(false);
+            ctrl.touched = true;
+            ctrl.value = e.target.value;
+            updateState(ctrl, opts);
+            notifyState(ctrl, opts);
+            // same principle as onfocus
+            if (ctrl.el) {
+                ctrl.el.classList.remove(CSS_CLASSES.stateFocused);
             }
         }
     } : null, !ignoreEvent(opts, 'onkeydown') ? {
@@ -267,24 +265,13 @@ var createView = function createView(ctrl) {
             }
         }
     } : null, {
-        config: function config(el, inited, context) {
+        config: function config(el, inited) {
             if (inited) {
                 return;
             }
             ctrl.inputEl(el);
             el.value = ctrl.value;
             notifyState(ctrl, opts);
-            if (!inactive) {
-                if (!ignoreEvent(opts, 'onblur')) {
-                    // use event delegation for the blur event
-                    // so that click events bubble up
-                    // http://www.quirksmode.org/blog/archives/2008/04/delegating_the.html
-                    el.addEventListener('blur', onBlur, true);
-                    context.onunload = function () {
-                        el.removeEventListener('blur', onBlur, true);
-                    };
-                }
-            }
         }
     }, opts.events ? opts.events : null, // NOTE: may overwrite oninput
     opts.readonly !== undefined ? { readonly: true } : null, opts.pattern !== undefined ? { pattern: opts.pattern } : null, opts.maxlength !== undefined ? { maxlength: opts.maxlength } : null, opts.minlength !== undefined ? { minlength: opts.minlength } : null, opts.max !== undefined ? { max: opts.max } : null, opts.min !== undefined ? { min: opts.min } : null, opts.autofocus !== undefined ? { autofocus: opts.autofocus } : null, opts.required !== undefined ? { required: opts.required } : null, opts.tabindex !== undefined ? { tabindex: opts.tabindex } : null, opts.rows !== undefined ? { rows: opts.rows } : null))]), opts.counter ? m('div', { class: CSS_CLASSES.counter }, ctrl.value.length + ' / ' + opts.counter) : null, opts.help && !showError ? m('div', {

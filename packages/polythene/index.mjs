@@ -6515,16 +6515,6 @@ var createView$19 = function createView(ctrl) {
         ctrl.inputEl().value = value;
     }
 
-    var onBlur = function onBlur(e) {
-        ctrl.focus(false);
-        ctrl.touched = true;
-        ctrl.value = e.target.value;
-        updateState(ctrl, opts);
-        notifyState(ctrl, opts);
-        // same principle as onfocus
-        ctrl.el.classList.remove(CSS_CLASSES$18.stateFocused);
-    };
-
     var props = {
         class: [CSS_CLASSES$18.block, isInvalid ? CSS_CLASSES$18.stateInvalid : '', ctrl.focus() ? CSS_CLASSES$18.stateFocused : '', opts.floatingLabel ? CSS_CLASSES$18.hasFloatingLabel : '', opts.disabled ? CSS_CLASSES$18.stateDisabled : '', opts.readonly ? CSS_CLASSES$18.stateReadonly : '', ctrl.isDirty ? CSS_CLASSES$18.stateDirty : '', opts.dense ? CSS_CLASSES$18.isDense : '', opts.required ? CSS_CLASSES$18.isRequired : '', opts.fullWidth ? CSS_CLASSES$18.hasFullWidth : '', opts.counter ? CSS_CLASSES$18.hasCounter : '', opts.hideSpinner !== false ? CSS_CLASSES$18.hideSpinner : '', opts.hideClear !== false ? CSS_CLASSES$18.hideClear : '', opts.hideValidation ? CSS_CLASSES$18.hideValidation : '', opts.hideRequiredMark ? CSS_CLASSES$18.hideRequiredChar : '', opts.class].join(' '),
         id: opts.id || '',
@@ -6582,11 +6572,7 @@ var createView$19 = function createView(ctrl) {
             }
             notifyState(ctrl, opts);
         }
-    } : null,
-
-    // onblur defined in config
-
-    !ignoreEvent(opts, 'oninput') ? {
+    } : null, !ignoreEvent(opts, 'oninput') ? {
         oninput: function oninput(e) {
             // default input event
             // may be overwritten by opts.events
@@ -6599,6 +6585,18 @@ var createView$19 = function createView(ctrl) {
             notifyState(ctrl, opts);
             if (opts.oninput) {
                 opts.oninput(ctrl.value, e);
+            }
+        }
+    } : null, !ignoreEvent(opts, "onblur") ? {
+        onblur: function onblur(e) {
+            ctrl.focus(false);
+            ctrl.touched = true;
+            ctrl.value = e.target.value;
+            updateState(ctrl, opts);
+            notifyState(ctrl, opts);
+            // same principle as onfocus
+            if (ctrl.el) {
+                ctrl.el.classList.remove(CSS_CLASSES$18.stateFocused);
             }
         }
     } : null, !ignoreEvent(opts, 'onkeydown') ? {
@@ -6623,24 +6621,13 @@ var createView$19 = function createView(ctrl) {
             }
         }
     } : null, {
-        config: function config$$1(el, inited, context) {
+        config: function config$$1(el, inited) {
             if (inited) {
                 return;
             }
             ctrl.inputEl(el);
             el.value = ctrl.value;
             notifyState(ctrl, opts);
-            if (!inactive) {
-                if (!ignoreEvent(opts, 'onblur')) {
-                    // use event delegation for the blur event
-                    // so that click events bubble up
-                    // http://www.quirksmode.org/blog/archives/2008/04/delegating_the.html
-                    el.addEventListener('blur', onBlur, true);
-                    context.onunload = function () {
-                        el.removeEventListener('blur', onBlur, true);
-                    };
-                }
-            }
         }
     }, opts.events ? opts.events : null, // NOTE: may overwrite oninput
     opts.readonly !== undefined ? { readonly: true } : null, opts.pattern !== undefined ? { pattern: opts.pattern } : null, opts.maxlength !== undefined ? { maxlength: opts.maxlength } : null, opts.minlength !== undefined ? { minlength: opts.minlength } : null, opts.max !== undefined ? { max: opts.max } : null, opts.min !== undefined ? { min: opts.min } : null, opts.autofocus !== undefined ? { autofocus: opts.autofocus } : null, opts.required !== undefined ? { required: opts.required } : null, opts.tabindex !== undefined ? { tabindex: opts.tabindex } : null, opts.rows !== undefined ? { rows: opts.rows } : null))]), opts.counter ? m('div', { class: CSS_CLASSES$18.counter }, ctrl.value.length + ' / ' + opts.counter) : null, opts.help && !showError ? m('div', {
@@ -6756,6 +6743,7 @@ var createStyles$30 = function createStyles(config$$1) {
 
             ' .pe-textfield__input-area': {
                 padding: 0,
+                flexGrow: 1,
 
                 '&:after': {
                     display: 'none'
@@ -6778,7 +6766,9 @@ var createStyles$30 = function createStyles(config$$1) {
                 bottom: 0
             },
 
-            ' .pe-search__content': flex$1.layoutHorizontal,
+            ' .pe-search__content': {
+                '&, .pe-textfield': flex$1.layoutHorizontal
+            },
 
             ' .pe-search__content > *': flex$1.layoutVertical,
 
@@ -6902,14 +6892,19 @@ var createView$18 = function createView(ctrl) {
     var textfieldOpts = opts.textfield || {};
     var content = m('div', {
         class: CSS_CLASSES$17.content
-    }, [buttons.before ? buttons.before : null, m(component$27, _extends$16({}, textfieldOpts, {
+    }, [m(component$27, _extends$16({}, textfieldOpts, {
+        config: function config$$1() {
+            m.redraw.strategy('none');
+        },
         getState: function getState(state) {
             ctrl.state(state);
             if (textfieldOpts.getState) {
                 textfieldOpts.getState(state);
             }
-        }
-    })), buttons.after ? buttons.after : null]);
+        },
+        before: buttons.before,
+        after: buttons.after
+    }))]);
     return m(tag, props, [opts.before, content, opts.after]);
 };
 

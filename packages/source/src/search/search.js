@@ -50,16 +50,19 @@ const createView = (ctrl, opts = {}) => {
     const content = m('div', {
         class: CSS_CLASSES.content
     }, [
-        buttons.before ? buttons.before : null,
         m(textfield, Object.assign({}, textfieldOpts, {
+            config: () => {
+                m.redraw.strategy('none');
+            },
             getState: (state) => {
                 ctrl.state(state);
                 if (textfieldOpts.getState) {
                     textfieldOpts.getState(state);
                 }
-            }
+            },
+            before: buttons.before,
+            after: buttons.after
         })),
-        buttons.after ? buttons.after : null
     ]);
     return m(tag, props, [opts.before, content, opts.after]);
 };
