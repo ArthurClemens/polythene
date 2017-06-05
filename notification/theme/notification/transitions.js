@@ -1,2 +1,0 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});var show=function(a,b){return{el:a.containerEl,showDuration:b.showDuration||.5,showDelay:b.showDelay||0,beforeShow:function beforeShow(){return a.containerEl.style.opacity=0},show:function(){return a.containerEl.style.opacity=1}}},hide=function(a,b){return{el:a.containerEl,hideDuration:b.hideDuration||.5,hideDelay:b.hideDelay||0,hide:function(){return a.containerEl.style.opacity=0}}};exports.default={show:show,hide:hide},module.exports=exports["default"];
-//# sourceMappingURL=transitions.js.map

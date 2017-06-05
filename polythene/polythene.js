@@ -1,2 +1,0 @@
-'use strict';Object.defineProperty(exports,'__esModule',{value:!0});var isTouch='ontouchstart'in window||0<navigator.MaxTouchPoints||0<navigator.msMaxTouchPoints;document.querySelector('html').classList.add(isTouch?'pe-touch':'pe-no-touch'),exports.default={isTouch:isTouch},module.exports=exports['default'];
-//# sourceMappingURL=polythene.js.map

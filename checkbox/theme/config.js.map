@@ -1,1 +1,0 @@
-{"version":3,"sources":["config.es6"],"names":[],"mappings":"oEAAA,yG","file":"config.js","sourcesContent":["import defaultConfig from 'polythene/selection-control/theme/config'; // Note the generic config\nexport default defaultConfig;\n"]}

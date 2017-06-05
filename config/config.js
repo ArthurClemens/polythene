@@ -1,2 +1,0 @@
-'use strict';Object.defineProperty(exports,'__esModule',{value:!0});var _default=require('polythene/config/default'),_default2=_interopRequireDefault(_default);function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}exports.default=_default2.default,module.exports=exports['default'];
-//# sourceMappingURL=config.js.map

@@ -1,0 +1,1 @@
+{"version":3,"file":"polythene-core.js","sources":["../src/iso.js"],"sourcesContent":["export const isClient = typeof window !== \"undefined\";\nexport const isServer = !isClient;\n"],"names":["isClient","window","isServer"],"mappings":"yMAAO,IAAMA,EAA6B,oBAAXC,OAClBC,GAAYF"}

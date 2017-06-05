@@ -1,2 +1,0 @@
-'use strict';Object.assign||Object.defineProperty(Object,'assign',{enumerable:!1,configurable:!0,writable:!0,value:function value(a){if(a===void 0||null===a)throw new TypeError('Cannot convert first argument to object');for(var d,b=Object(a),c=1;c<arguments.length;c++)if(d=arguments[c],void 0!==d&&null!==d){d=Object(d);for(var e=Object.keys(d),f=0,g=e.length;f<g;f++){var h=e[f],j=Object.getOwnPropertyDescriptor(d,h);void 0!==j&&j.enumerable&&(b[h]=d[h])}}return b}});
-//# sourceMappingURL=object.assign.js.map
