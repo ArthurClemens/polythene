@@ -2,7 +2,7 @@
   "name": "polythene",
   "main": "index.js",
   "module": "index.mjs",
-  "version": "0.3.0-rc.1",
+  "version": "0.3.0",
   "description": "Modular implementation of Material Design for Mithril.",
   "license": "MIT",
   "keywords": [
@@ -15,8 +15,9 @@
     "j2c": "^1.0.0-4",
     "j2c-plugin-prefix-browser": "^1.0.6",
     "mithril": "^0.2.5",
-    "polythene-core-css": "0.3.0-rc.1",
-    "polythene-theme": "0.3.0-rc.1"
+    "polythene-core": "0.3.0",
+    "polythene-core-css": "0.3.0",
+    "polythene-theme": "0.3.0"
   },
   "repository": {
     "type": "git",

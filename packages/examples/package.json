@@ -1,6 +1,7 @@
 {
   "name": "polythene-examples",
-  "version": "0.3.0-rc.1",
+  "private": true,
+  "version": "0.3.0",
   "description": "Polythene examples",
   "license": "MIT",
   "repository": {
@@ -26,10 +27,10 @@
     "mithril": "^0.2.5",
     "mithril-infinite": "^0.6.2",
     "mmsvg": "^1.1.1",
-    "polythene": "0.3.0-rc.1",
-    "polythene-core-css": "0.3.0-rc.1",
-    "polythene-motif": "0.3.0-rc.1",
-    "polythene-utilities": "0.3.0-rc.1",
+    "polythene": "0.3.0",
+    "polythene-core-css": "0.3.0",
+    "polythene-motif": "0.3.0",
+    "polythene-utilities": "0.3.0",
     "verge": "^1.9.1"
   }
 }
