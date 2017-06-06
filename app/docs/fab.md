@@ -9,9 +9,9 @@ A circular main button with a [shadow](#shadow) and [ripple](#ripple) effect.
 
 ~~~javascript
 import m from 'mithril';
-import fab from 'polythene/fab/fab';
+import { FAB } from 'polythene';
 
-const myFab = m.component(fab, {
+m(FAB, {
     icon: {
     	svg: {
     	    src: 'img/arrow.svg'

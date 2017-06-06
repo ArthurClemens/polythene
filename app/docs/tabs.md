@@ -9,7 +9,7 @@ Displays a tab row.
 
 ~~~javascript
 import m from 'mithril';
-import tabs from 'polythene/tabs/tabs';
+import { Tabs } from 'polythene';
 
 const tabButtons = [
     {
@@ -23,7 +23,7 @@ const tabButtons = [
     }
 ];
 
-const myTabs = m.component(tabs, {
+m(Tabs, {
     buttons: tabButtons,
     autofit: true
 })
@@ -43,7 +43,7 @@ const iconButtons = [
     ...
 ];
 
-const myTabs = m.component(tabs, {
+m(Tabs, {
     buttons: iconButtons,
     autofit: true
 })
@@ -61,7 +61,7 @@ const iconTextButtons = [
     },
     ...
 
-const myTabs = m.component(tabs, {
+m(Tabs, {
     buttons: iconTextButtons,
     autofit: true
 })
@@ -70,7 +70,7 @@ const myTabs = m.component(tabs, {
 To disable ripple (ink) effect:
 
 ~~~javascript
-const myTabs = m.component(tabs, {
+m(Tabs, {
     buttons: tabButtons,
     tabsOpts: {
         ink: false
@@ -83,7 +83,7 @@ const myTabs = m.component(tabs, {
 Set `scrollable` to true:
 
 ~~~javascript
-const myTabs = m.component(tabs, {
+m(Tabs, {
     buttons: tabButtons,
     scrollable: true
 })
@@ -96,7 +96,7 @@ Optionally create custom arrow icons:
 import arrowBack from 'mmsvg/google/msvg/navigation/arrow-back';
 import arrowForward from 'mmsvg/google/msvg/navigation/arrow-forward';
 
-const myTabs = m.component(tabs, {
+m(Tabs, {
     buttons: tabButtons,
     scrollable: true,
     scrollIconBackward: {
@@ -119,7 +119,7 @@ The toolbar must have the class `pe-toolbar--tabs`. This will fit the tab row in
 To read the currently selected tab, for instance to write the selected tab to a controller variable, use `getState`:
 
 ~~~javascript
-m.component(tabs, {
+m(Tabs, {
     buttons: tabButtons,
     getState: (state) => (ctrl.selectedTabIndex = state.index)
 })
@@ -164,7 +164,7 @@ To use a fixed width without `autofit`:
 Use option `menu` to remove the minimum width settings from the tab buttons and compress padding and label font size.
 
 ~~~javascript
-m.component(tabs, {
+m(Tabs, {
     menu: true,
     buttons: tabButtons,
     autofit: true,
@@ -191,7 +191,7 @@ m.component(tabs, {
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **buttons** | required | Array of options Objects |  | Tab buttons |
 | **tabsOpts** | optional | Options Object | | Tab button options that will be applied to all tabs, see "Tab button options"  below |
-| **getState**  | optional | Function(state {Object}) | | Callback function that accepts the tabs state (Object with properties `index` {Boolean}, `id` {String}, `el` {HTMLElement}) |
+| **getState**  | optional | Function(state {Object}) | | Callback function that accepts the tabs state (Object with properties `index` {Boolean}, `data` {Object}, `el` {HTMLElement}) |
 
 
 ### Tabs appearance options

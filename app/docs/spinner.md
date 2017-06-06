@@ -7,16 +7,16 @@ Circular progress indicator for indeterminate and determinate processes.
 
 Available themed spinners:
 
-* Material Design indeterminate spinner at `polythene/spinner/indeterminate-spinner`
-* Material Design determinate spinner at `polythene/spinner/determinate-spinner`
-* iOS indeterminate spinner at `polythene/spinner/ios-spinner`
+* Material Design indeterminate spinner at `polythene/spinner/indeterminate-spinner` - import as `IndeterminateSpinner`
+* Material Design determinate spinner at `polythene/spinner/determinate-spinner` - import as `DeterminateSpinner`
+* iOS indeterminate spinner at `polythene/spinner/ios-spinner` - import as `IOSSpinner`
 
 ## Usage
 
 ~~~javascript
-import spinner from 'polythene/spinner/indeterminate-spinner';
+import { IndeterminateSpinner as Spinner } from 'polythene';
 
-m.component(spinner, {
+m(Spinner, {
     singleColor: true,
     type: 'small'
 })
@@ -37,19 +37,19 @@ By default the spinner is hidden, unless:
 To manage the visibility of a spinner, store its visible state for example in the controller. Each of the following setups are possible:
 
 ~~~javascript
-m.component(spinner, {
+m(Spinner, {
     show: ctrl.visible
 })
 ~~~
 
 ~~~javascript
-m.component(spinner, {
+m(Spinner, {
     hide: !ctrl.visible
 })
 ~~~
 
 ~~~javascript
-m.component(spinner, {
+m(Spinner, {
     show: ctrl.visible,
     hide: !ctrl.visible
 })

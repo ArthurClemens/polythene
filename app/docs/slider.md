@@ -24,15 +24,15 @@ Supported features:
 
 ~~~javascript
 import m from 'mithril';
-import slider from 'polythene/slider/slider';
+import { Slider } from 'polythene';
 
-const mySlider = m.component(slider);
+m(Slider);
 ~~~
 
 Creates a slider with a range of 0 to 100.
 
 ~~~javascript
-const mySlider = m.component(slider, {
+m(Slider, {
     min: 0,
     max: 50,
     value: 10,
@@ -45,7 +45,7 @@ Creates a slider with a range of 0 to 50 and a step size of 10 (step count of 6 
 To add tick marks and pins:
 
 ~~~javascript
-const mySlider = m.component(slider, {
+m(Slider, {
     min: 0,
     max: 50,
     value: 10,
@@ -60,18 +60,18 @@ const mySlider = m.component(slider, {
 To place an icon next to the slider, use the option `before`:
 
 ~~~javascript
-import icon from 'polythene/icon/icon';
+import { Icon } from 'polythene';
 import iconVolume from 'mmsvg/google/msvg/av/volume-up';
 
 m('.volume', [
     m('.header', 'Media volume'),
-    m.component(slider, {
+    m(Slider, {
         class: 'layout horizontal',
         min: 0,
         max: 10,
         value: 4,
         step: 0,
-        before: m.component(icon, {
+        before: m(Icon, {
             msvg: iconVolume
         })
     })
@@ -91,7 +91,7 @@ myModule.controller = () => {
 myModule.view = (ctrl) => {
     return m('div', [
         m('h2', 'Value: ' + ctrl.sliderValue),
-        m.component(slider, {
+        m(slider, {
             min: 0,
             max: 100,
             value: 0,
@@ -115,7 +115,7 @@ module.controller = () => {
     };
 };
 module.view = (ctrl) => {
-    return m.component(textfield, {
+    return m(TextField, {
         min: 0,
         max: 10,
         value: () => (ctrl.volume)
@@ -173,11 +173,11 @@ CSS:
 Setting a custom thumb icon:
 
 ~~~javascript
-import icon from 'polythene/icon/icon';
+import { Slider, Icon } from 'polythene';
 import bullseyeIcon from 'app/assets/bullseye';
 
-m.component(slider, {
-    icon: m.component(icon, {
+m(Slider, {
+    icon: m(Icon, {
         msvg: bullseyeIcon
     })
 })

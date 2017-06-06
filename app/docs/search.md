@@ -9,9 +9,9 @@ Search field with optional icons.
 
 ~~~javascript
 import m from 'mithril';
-import search from 'polythene/search/search';
+import { Search } from 'polythene';
 
-const mySearch = m.component(search, {
+m(Search, {
     textfield: {
         label: 'Search'
     }
@@ -30,7 +30,7 @@ An inset search box is presented in an area/box/tile with some surrounding space
 A full width search box is a little higher and visually corresponds to a toolbar, and in fact can be displayed in a toolbar.
 
 ~~~javascript
-const mySearch = m.component(search, {
+m(Search, {
     type: 'fullwidth',
     textfield: {
         label: 'Search'
@@ -60,29 +60,29 @@ We'll create a search field with icons for the following states:
 * `dirty` - left: back
 
 ~~~javascript
-import iconButton from 'polythene/icon-button/icon-button';
+import { IconButton } from 'polythene';
 
 import iconSearch from 'mmsvg/google/msvg/action/search';
 import iconBack from 'mmsvg/google/msvg/navigation/arrow-back';
 import iconClear from 'mmsvg/google/msvg/content/clear';
 
-const btnSearch = m.component(iconButton, {
+const btnSearch = m(IconButton, {
     icon: {
         msvg: iconSearch
     }
 });
-const btnDismiss = m.component(iconButton, {
+const btnDismiss = m(IconButton, {
     icon: {
         msvg: iconBack
     }
 });
-const btnClear = m.component(iconButton, {
+const btnClear = m(IconButton, {
     icon: {
         msvg: iconClear
     }
 });
 
-const mySearch = m.component(search, {
+m(Search, {
     textfield: {
         label: 'Search'
     },
@@ -134,7 +134,7 @@ To clear the field we add an onclick event. To make sure that the field state is
 
 ~~~javascript
 const clearBtn = (ctrl) => (
-    m.component(iconButton, {
+    m(IconButton, {
         icon: {
             msvg: iconClear
         },
@@ -153,29 +153,26 @@ Let's also add a microphone icon and a shadow around the box. The full code:
 
 ~~~javascript
 import m from 'mithril';
-import search from 'polythene/search/search';
-import shadow from 'polythene/shadow/shadow';
-
-import iconButton from 'polythene/icon-button/icon-button';
+import { Search, Shadow, IconButton } from 'polythene';
 
 import iconSearch from 'mmsvg/google/msvg/action/search';
 import iconBack from 'mmsvg/google/msvg/navigation/arrow-back';
 import iconClear from 'mmsvg/google/msvg/content/clear';
 import iconMic from 'mmsvg/google/msvg/av/mic';
 
-const btnSearch = m.component(iconButton, {
+const btnSearch = m(IconButton, {
     icon: {
         msvg: iconSearch
     }
 });
-const btnDismiss = m.component(iconButton, {
+const btnDismiss = m(IconButton, {
     icon: {
         msvg: iconBack
     }
 });
 
 const clearBtn = (ctrl) => (
-    m.component(iconButton, {
+    m(IconButton, {
         icon: {
             msvg: iconClear
         },
@@ -197,7 +194,7 @@ module.controller = () => {
 };
 module.view = (ctrl) => {
     return m('.page', [
-        m.component(search, {
+        m(Search, {
             textfield: {
                 label: 'Search',
                 value: () => (ctrl.query() ? ctrl.query().value : ''),
@@ -218,7 +215,7 @@ module.view = (ctrl) => {
                     before: btnDismiss
                 }
             },
-            before: m.component(shadow)
+            before: m(Shadow)
         })
     ]);
 };

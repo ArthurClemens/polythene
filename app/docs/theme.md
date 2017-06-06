@@ -63,13 +63,13 @@ Sub-classing is actually creating a wrapper around a component. For example to c
 
 ~~~javascript
 import m from 'mithril';
-import button from 'polythene/button/button';
+import { Button } from 'polythene';
 
 export default {
     view: (ctrl, opts = {}) => {
         opts.class = (opts.class || '') + ' my-button--primary';
         opts.borders = true;
-        return m.component(button, opts);
+        return m(Button, opts);
     }
 };
 ~~~
@@ -84,7 +84,7 @@ For ease of use we can place the theme code in the same file:
 
 ~~~javascript
 import m from 'mithril';
-import button from 'polythene/button/button';
+import { Button } from 'polythene';
 
 import 'polythene/common/object.assign';
 import defaultConfig from 'polythene/button/theme/config';
@@ -112,7 +112,7 @@ export default {
     view: (ctrl, opts = {}) => {
         opts.class = (opts.class || '') + ' my-button--primary';
         opts.borders = true;
-        return m.component(button, opts);
+        return m(Button, opts);
     }
 };
 ~~~

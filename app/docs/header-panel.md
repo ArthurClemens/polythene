@@ -22,9 +22,9 @@ For small panels, the header will often be fixed:
 
 ~~~javascript
 import m from 'mithril';
-import headerPanel from 'polythene/header-panel/header-panel';
+import { HeaderPanel } from 'polythene';
 
-const myHeaderPanel = m.component(headerPanel, {
+m(HeaderPanel, {
 	fixed: true,
     header: {
         content: 'My title'
@@ -36,7 +36,7 @@ const myHeaderPanel = m.component(headerPanel, {
 To make the panel stretch the width and height of the page, use class `header-panel--fit`:
 
 ~~~javascript
-const myHeaderPanel = m.component(headerPanel, {
+m(HeaderPanel, {
 	class: 'header-panel--fit',
     header: {
         content: 'Flex'
@@ -48,7 +48,7 @@ const myHeaderPanel = m.component(headerPanel, {
 To make a tall header condensing when scrolling:
 
 ~~~javascript
-const myHeaderPanel = m.component(headerPanel, {
+m(HeaderPanel, {
     header: {
         toolbar: {
             mode: 'tall',

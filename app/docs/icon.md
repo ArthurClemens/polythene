@@ -23,10 +23,10 @@ Use param `msvg`:
 
 ~~~javascript
 import m from 'mithril';
-import icon from 'polythene/icon/icon';
+import { Icon } from 'polythene';
 import gIconStars from 'mmsvg/google/action/stars';
 
-const myIcon = m.component(icon, {
+m(Icon, {
 	msvg: gIconStars
 });
 ~~~
@@ -42,9 +42,9 @@ module.exports = m.trust('paste svg contents here');
 ### Using PNG or SVG files
 
 ~~~javascript
-import icon from 'polythene/icon/icon';
+import { Icon } from 'polythene';
 
-const myIcon = m.component(icon, {
+m(Icon, {
 	src: 'img/arrow.png'
 });
 ~~~
@@ -52,7 +52,7 @@ const myIcon = m.component(icon, {
 To use SVG instead of an image, pass an [svg](#svg) option object:
 
 ~~~javascript
-const myIcon = m.component(icon, {
+m(Icon, {
 	svg: {
 	    src: 'img/arrow.svg'
 	}
@@ -62,7 +62,7 @@ const myIcon = m.component(icon, {
 Or pass `iconSet` (sub folder) and filename (without `.svg`):
 
 ~~~javascript
-const myIcon = m.component(icon, {
+m(Icon, {
 	svg: {
 		iconSet: 'mdi',
 	    name: 'emoticon-happy'

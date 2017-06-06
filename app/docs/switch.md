@@ -9,15 +9,15 @@ Form control to toggle the state of a single setting. Generates a styled checkbo
 
 ~~~javascript
 import m from 'mithril';
-import switchCmp from 'polythene/switch/switch';
+import { Switch } from 'polythene';
 
-m.component(switchCmp);
+m(Switch);
 ~~~
 
 Creates an unselected switch button.
 
 ~~~javascript
-m.component(switchCmp, {
+m(Switch, {
     label: 'Switch',
     state: true,
     getState: (state) => (ctrl.checked = state.checked)
@@ -29,7 +29,7 @@ Creates a selected switch with a label, receives updates through `getState`.
 To read the switch state, for instance to write its checked state to a controller variable, use `getState`:
 
 ~~~javascript
-m.component(switchCmp, {
+m(Switch, {
     label: 'Switch',
     getState: (state) => (ctrl.checked = state.checked)
 })
@@ -45,7 +45,7 @@ module.controller = () => {
     };
 };
 module.view = (ctrl) => {
-    return m.component(switchCmp, {
+    return m(Switch, {
         label: 'Switch',
         checked: ctrl.checked,
         getState: (state) => (ctrl.checked = state.checked)
@@ -73,7 +73,7 @@ module.view = (ctrl) => {
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **name** | optional | String | | Input element name |
 | **label** | optional | String | | Text label |
-| **checked** | optional | Boolean | false | Sets the checked state |
+| **checked** | optional | Boolean or Function | false | Checked state; use as function to set the value from outside |
 | **getState**  | optional | Function(state {Object}) | | Callback function that accepts the field state (Object with properties `checked` {Boolean}, `value` {String}, `el` {HTMLElement}) |
 | **value** | optional | String | '1' | Input element value |
 | **disabled** | optional | Boolean |  | Set to true to disable the switch |
@@ -120,11 +120,11 @@ To include the focus ring in the color scheme you need to address the thumb (whi
 Setting a custom thumb icon:
 
 ~~~javascript
-import icon from 'polythene/icon/icon';
+import { Icon } from 'polythene';
 import bullseyeIcon from 'app/assets/bullseye';
 
-m.component(slider, {
-    icon: m.component(icon, {
+m(Switch, {
+    icon: m(Icon, {
         msvg: bullseyeIcon
     })
 })

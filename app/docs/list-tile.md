@@ -9,9 +9,9 @@ Displays a list element as part of a [list](#list).
 
 ~~~javascript
 import m from 'mithril';
-import listTile from 'polythene/list-tile/list-tile';
+import { ListTile } from 'polythene';
 
-const myListTile = m.component(listTile, {
+m(ListTile, {
 	title: 'My title'
 });
 ~~~
@@ -19,7 +19,7 @@ const myListTile = m.component(listTile, {
 To show a secondary line:
 
 ~~~javascript
-const myListTile = m.component(listTile, {
+m(ListTile, {
 	title: 'My title',
 	subtitle: 'My subtitle'
 });
@@ -28,7 +28,7 @@ const myListTile = m.component(listTile, {
 To show 2 secondary lines:
 
 ~~~javascript
-const myListTile = m.component(listTile, {
+m(ListTile, {
 	title: 'My title',
 	highSubtitle: 'My loooooooooooong subtitle'
 });
@@ -37,9 +37,9 @@ const myListTile = m.component(listTile, {
 To show an icon:
 
 ~~~javascript
-const myListTile = m.component(listTile, {
+m(ListTile, {
 	title: 'My title',
-    front: m.component(icon, {
+    front: m(icon, {
 	    type: 'large',
 	    class: 'avatar',
 	    src: 'app/list-tile/avatars/1.png'
@@ -52,9 +52,9 @@ Or use an SVG as icon:
 ~~~javascript
 import iconStarOutline from 'mmsvg/templarian/msvg/star-outline';
 
-const myListTile = m.component(listTile, {
+m(ListTile, {
 	title: 'My title',
-	front: m.component(icon, {
+	front: m(icon, {
         msvg: iconStarOutline
     })
 });
@@ -63,9 +63,9 @@ const myListTile = m.component(listTile, {
 To make the primary content a link:
 
 ~~~javascript
-const myListTile = m.component(listTile, {
+m(ListTile, {
 	title: 'My title',
-	front: m.component(icon, {
+	front: m(icon, {
 	    type: 'large',
 	    src: 'app/list-tile/avatars/1.png'
 	}),
@@ -76,19 +76,19 @@ const myListTile = m.component(listTile, {
 To show secondary content at the right, including a link:
 
 ~~~javascript
-import icon from 'polythene/icon/icon';
+import { Icon } from 'polythene';
 import iconStarOutline from 'mmsvg/templarian/msvg/star-outline';
 
-const myListTile = m.component(listTile, {
+m(ListTile, {
 	title: 'My title',
-	front: m.component(icon, {
-	    type: 'large',
-	    src: 'app/list-tile/avatars/1.png'
+	front: m(Icon, {
+    type: 'large',
+    src: 'app/list-tile/avatars/1.png'
 	}),
 	secondary: {
 		icon: {
-            type: 'small',
-            msvg: iconStarOutline
+	    type: 'small',
+	    msvg: iconStarOutline
 		},
 		url: {'faved', config: m.route}
     })
@@ -116,7 +116,7 @@ A list tile can optionally have secondary content, displayed to the right. Secon
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **tag** | optional | String | 'div.horizontal.layout.center' | HTML element tag |
+| **tag** | optional | String | 'div' | HTML element tag |
 | **class** | optional | String |  | Extra CSS class appended to 'pe-list-tile' |
 | **id** | optional | String | | HTML element id |
 | **events** | optional | Object | | Options object containing one or more standard events such as `onclick` |

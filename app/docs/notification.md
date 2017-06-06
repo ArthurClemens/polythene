@@ -16,14 +16,14 @@ Importing notification:
 
 ~~~javascript
 import m from 'mithril';
-import notification from 'polythene/notification/notification';
+import { Notification } from 'polythene';
 ~~~
 
 Importing snackbar:
 
 ~~~javascript
 import m from 'mithril';
-import snackbar from 'polythene/notification/snackbar';
+import { Snackbar } from 'polythene';
 ~~~
 
 
@@ -35,14 +35,14 @@ It is a global global component - only one notification container may appear on 
 
 ~~~javascript
 import m from 'mithril';
-import notification from 'polythene/notification/notification';
+import { Notification } from 'polythene';
 
 const app = {};
 app.view = (ctrl, opts) => {
     return [
         // app content
         // optional dialog
-        m('#notifications', m.component(notification))
+        m('#notifications', m(Notification))
     ];
 };
 ~~~
@@ -53,8 +53,8 @@ We are using `#notifications` as a container for future notification messages. W
 The notification component is called using:
 
 ~~~javascript
-notification.show(options);
-notification.hide();
+Notification.show(options);
+Notification.hide();
 ~~~
 
 Function calls are described below.
@@ -65,14 +65,14 @@ Any time `show` is called to show a message, this message will be queued. Subseq
 ### Examples
 
 ~~~javascript
-import notification from 'polythene/notification/notification';
+import { Notification } from 'polythene';
 
-notification.show({
+Notification.show({
     title: 'This is the message',
     containerSelector: '#notifications'
 });
 
-notification.show({
+Notification.show({
     title: 'This is a second message',
     containerSelector: '#notifications'
 });
@@ -81,9 +81,9 @@ notification.show({
 Add an action:
 
 ~~~javascript
-notification.show({
+Notification.show({
     title: 'This is the message',
-    action: m.component(button, {
+    action: m(Button, {
         label: 'Undo',
         events: {
             onclick: () => {
@@ -98,14 +98,14 @@ notification.show({
 With a little more work, we can make the notification pause when a dialog is shown. In this example we want to pause the notification when the dialog is on screen, then unpause on cancel, and hide on OK:
 
 ~~~javascript
-import dialog from 'polythene/dialog/dialog';
+import { Dialog } from 'polythene';
 
 const actionDialog = () => {
     return {
         class: 'notification-action-dialog',
         body: 'You pressed a notification action',
         footer: [
-            m.component(button, {
+            m(button, {
                 label: 'Cancel',
                 events: {
                     onclick: () => {
@@ -114,7 +114,7 @@ const actionDialog = () => {
                     }
                 }
             }),
-            m.component(button, {
+            m(Button, {
                 label: 'OK',
                 events: {
                     onclick: () => {
@@ -129,14 +129,14 @@ const actionDialog = () => {
     };
 };
 
-notification.show({
+Notification.show({
     title: 'This is the message',
-    action: m.component(button, {
+    action: m(Button, {
         label: 'Undo',
         events: {
             onclick: () => {
-                notification.pause();
-                dialog.show(actionDialog());
+                Notification.pause();
+                Dialog.show(actionDialog());
             }
         }
     }),
@@ -147,12 +147,12 @@ notification.show({
 ### Function calls
 
 ~~~javascript
-notification.show(options);
-notification.hide();
-notification.pause();
-notification.unpause();
-notification.clear();
-notification.count();
+Notification.show(options);
+Notification.hide();
+Notification.pause();
+Notification.unpause();
+Notification.clear();
+Notification.count();
 ~~~
 
 Functions that return a promise:
@@ -164,11 +164,11 @@ Functions that return a promise:
 #### show
 
 ~~~javascript
-notification.show(options);
+Notification.show(options);
 ~~~
 
 ~~~javascript
-notification.show(options).then(() => (console.log('notification shown')));
+Notification.show(options).then(() => (console.log('notification shown')));
 ~~~
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
@@ -180,11 +180,11 @@ notification.show(options).then(() => (console.log('notification shown')));
 Hides the current message.
 
 ~~~javascript
-notification.hide();
+Notification.hide();
 ~~~
 
 ~~~javascript
-notification.hide().then(() => (console.log('notification hidden')));
+Notification.hide().then(() => (console.log('notification hidden')));
 ~~~
 
 #### pause
@@ -192,7 +192,7 @@ notification.hide().then(() => (console.log('notification hidden')));
 Pauses the timer of the current message.
 
 ~~~javascript
-notification.pause();
+Notification.pause();
 ~~~
 
 #### unpause
@@ -200,7 +200,7 @@ notification.pause();
 Unpauses the timer of the current message.
 
 ~~~javascript
-notification.unpause();
+Notification.unpause();
 ~~~
 
 #### clear
@@ -208,15 +208,15 @@ notification.unpause();
 Clears the lists of messages.
 
 ~~~javascript
-notification.clear();
+Notification.clear();
 ~~~
 
 If a message is on screen, this would suddenly disappear. You might first want to hide the current message before clearing all:
 
 ~~~javascript
 onclick: () => {
-    notification.hide().then(() => {
-        notification.clear();
+    Notification.hide().then(() => {
+        Notification.clear();
         m.redraw();
     });
 }
@@ -227,7 +227,7 @@ onclick: () => {
 Returns the number of messages.
 
 ~~~javascript
-let messages = notification.count();
+let messages = Notification.count();
 ~~~
 
 ### Transitions

@@ -11,15 +11,16 @@ This implementation closely follows the [design specification](http://www.google
 
 ~~~javascript
 import m from 'mithril';
-import card from 'polythene/card/card';
+import { Theme, Card } from 'polythene';
 ~~~
 
 The card can contain various elements. The `content` parameter accepts any Mithril element:
 
 ~~~javascript
-import list from 'polythene/list/list';
-const myCard = m.component(card, {
-	content: m.component(list, {...})
+import { List } from 'polythene';
+
+m(Card, {
+	content: m(List, {...})
 });
 ~~~
 
@@ -35,7 +36,7 @@ To generated Material Design elements, pass an array of element options, where e
 Element `primary` contains the sub-options `title` and `subtitle`:
 
 ~~~javascript
-const myCard = m.component(card, {
+m(Card, {
 	content: [{
 	    primary: {
 	        title: 'Primary title',
@@ -58,7 +59,7 @@ To show in order:
 these are passed in this order to `content`:
 
 ~~~javascript
-const myCard = m.component(card, {
+m(Card, {
 	content: [{
 	    header: {
 	        title: 'Name',
@@ -83,10 +84,10 @@ const myCard = m.component(card, {
 	}, {
         actions: {
             content: [
-                m.component(button, {
+                m(Button, {
                     label: 'Action 1'
                 }),
-                m.component(button, {
+                m(Button, {
                     label: 'Action 2'
                 })
             ]
@@ -138,10 +139,10 @@ content: [{
             }, {
                 actions: {
                     content: [
-                        m.component(button, {
+                        m(Button, {
                             label: 'Action 1'
                         }),
-                        m.component(button, {
+                        m(Button, {
                             label: 'Action 2'
                         })
                     ]

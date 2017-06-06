@@ -11,9 +11,9 @@ Icon Button takes an icon options object:
 
 ~~~javascript
 import m from 'mithril';
-import iconBtn from 'polythene/icon-button/icon-button';
+import { IconButton } from 'polythene/icon-button/icon-button';
 
-const myIconBtn = m.component(iconBtn, {
+m(IconButton, {
 	icon: {
 		src: 'img/arrow.png'
 	}
@@ -24,9 +24,9 @@ To use SVG instead of an image, pass an `msvg` object:
 
 ~~~javascript
 import gIconStars from 'mmsvg/google/msvg/action/stars';
-import iconBtn from 'polythene/icon-button/icon-button';
+import { IconButton } from 'polythene';
 
-const myIconBtn = m.component(iconBtn, {
+m(IconButton, {
 	icon: {
 		msvg: gIconStars
 	}
@@ -36,7 +36,7 @@ const myIconBtn = m.component(iconBtn, {
 or pass a [svg](#svg) option object:
 
 ~~~javascript
-const myIconBtn = m.component(iconBtn, {
+m(IconButton, {
 	icon: {
 		svg: {
 		    src: 'img/arrow.svg'
@@ -48,14 +48,14 @@ const myIconBtn = m.component(iconBtn, {
 Finally, instead of an `icon` options object, you can pass an icon component as `content`:
 
 ~~~javascript
-import icon from 'polythene/icon/icon';
+import { icon } from 'polythene';
 import gIconStars from 'mmsvg/google/msvg/action/stars';
 
-const myIcon = m.component(icon, {
+m(Icon, {
     msvg: gIconStars
 });
 
-const myIconBtn = m.component(iconBtn, {
+m(IconButton, {
 	content: myIcon
 });
 ~~~
@@ -73,7 +73,7 @@ The icon color is set with the CSS (text) `color` attribute of the parent elemen
 
 ~~~javascript
 // JS
-const myIconBtn = m.component(iconBtn, {
+m(IconButton, {
 	class: 'colored'
 });
 ~~~
@@ -81,7 +81,7 @@ const myIconBtn = m.component(iconBtn, {
 Disable hover and ripple effects:
 
 ~~~javascript
-const myIconBtn = m.component(iconBtn, {
+m(IconButton, {
 	icon: {
 		svg: {
 		    src: 'img/arrow.svg'

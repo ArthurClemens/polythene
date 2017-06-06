@@ -21,9 +21,7 @@ Because we are using state, this can be best created with a custom component whe
 
 ~~~javascript
 import m from 'mithril';
-import menu from 'polythene/menu/menu';
-import list from 'polythene/list/list';
-import listTile from 'polythene/list-tile/list-tile';
+import { Menu, List, ListTile } from 'polythene';
 
 const simpleContainer = {};
 simpleContainer.controller = () => {
@@ -31,25 +29,25 @@ simpleContainer.controller = () => {
         open: false
     };
 };
-simpleContainer.view = (ctrl) => {
+simpleContainer.view = ctrl => {
     return m('.container',
         m('a', {
             href: 'javascript: void(0)',
             id: 'simple_btn', // use as menu's target
             onclick: () => (ctrl.open = true) // opens at next redraw
         }, 'Open menu'),
-        m.component(menu, {
+        m(Menu, {
             target: 'simple_btn', // to align with the link
             offset: 0, // horizontally align with link
             show: ctrl.open, // should the menu be open or closed?
             didHide: () => (ctrl.open = false), // called after closing
-            content: m.component(list, {
+            content: m(List, {
                 tiles: [
-                    m.component(listTile, {
+                    m(ListTile, {
                         title: 'Yes',
                         ink: true
                     }),
-                    m.component(listTile, {
+                    m(ListTile, {
                         title: 'No',
                         ink: true
                     })
@@ -130,15 +128,13 @@ When a menu contains longer elements that don't fit on 1 line, MD guidelines sug
 A dialog can be used as menu by passing param `menu` to the dialog component:
 
 ~~~javascript
-import dialog from 'polythene/dialog/dialog';
-import list from 'polythene/list/list';
-import listTile from 'polythene/list-tile/list-tile';
+import { dialog, List, ListTile } from 'polythene';
 
-dialog.show(menuDialogOptions);
+Dialog.show(menuDialogOptions);
 
 const menuDialogOptions = {
     class: 'demo-menu',
-    menu: m.component(list, {
+    menu: m(List, {
         hoverable: true,
         tiles: [
             createTile('Selected item', true, false),
@@ -152,7 +148,7 @@ const menuDialogOptions = {
 };
 
 const createTile = (title, selected, disabled) => {
-    return m.component(listTile, {
+    return m(ListTile, {
         title,
         selected,
         disabled,

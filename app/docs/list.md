@@ -10,27 +10,51 @@ Lists are also the base component of [menus](#menu).
 
 ~~~javascript
 import m from 'mithril';
-import list from 'polythene/list/list';
-import listTile from 'polythene/list-tile/list-tile';
+import { List, ListTile } from 'polythene';
 
-const myList = m.component(list, {
+m(List, {
 	header: {
-		title: 'My header'
+		title: 'Friends'
 	},
 	tiles: [
-	    m.component(listTile, {
+	    m(ListTile, {
 	        title: 'Ali Connors',
-	        subtitle: 'Brunch this weekend?',
-	        icon: {
-	            type: 'large',
-	            src: 'app/list-tile/avatars/1.png'
-	        }
-	    })
+	        subtitle: 'Brunch this weekend?'
+	    }),
+	    // ...
 	]
 });
 ~~~
 
-The header will be rendered using a list tile too.
+The header will be also rendered using a list tile.
+
+See [List Tile](#list-tile) for layout variations, for example to add links, icons and images. For example:
+
+~~~javascript
+import m from 'mithril';
+import { List, ListTile, icon } from 'polythene';
+
+m(List, {
+	header: {
+		title: 'Friends'
+	},
+	tiles: [
+	    m(ListTile, {
+	        title: 'Ali Connors',
+	        subtitle: 'Brunch this weekend?',
+	        front: m(icon, {
+	            type: 'large',
+	            src: 'images/ali.png'
+	        }),
+	        url: {
+				    href: '/friends/ali'
+				    config: m.route
+				  }
+	    }),
+	    // ...
+	]
+});
+~~~
 
 
 ## Variations
@@ -39,7 +63,23 @@ The header will be rendered using a list tile too.
 > align the subheader with the text content.
 > [source](http://www.google.com/design/spec/components/subheaders.html#subheaders-list-subheaders)
 
-In this situation we want to indent the list-header, and if we show borders, indent them too. We do so by adding the parameter `indent` to the header [list tiles](#list-tile), and set `indentedBorders` to true.
+In this situation we want to indent the list-header, and if we show borders, indent them too. We do so by adding the parameter `indent` to the header [list tiles](#list-tile), and set `indentedBorders` to true. For example:
+
+~~~javascript
+import m from "mithril";
+import { List, ListTile } from 'polythene';
+
+const myList = m(List, {
+	indentedBorders: true,
+	tiles: [
+	    m(ListTile, {
+	        title: 'Ali Connors',
+	        indent: true
+	    }),
+	    // ...
+	]
+});
+~~~
 
 
 ## Options
@@ -70,6 +110,6 @@ In this situation we want to indent the list-header, and if we show borders, ind
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **borders** | optional | Boolean | | Set to `true` to add borders to list tiles |
-| **indentedBorders** | optional | Boolean | | Set to `true` to indent the list tile borders |
+| **indentedBorders** | optional | Boolean | | Set to `true` to indent the list tile borders; note that list tiles must have option `indent` as well |
 | **hoverable** | optional | Boolean | false | Set to true to show a hover effect on list tiles (non-touch devices) |
 | **selectable** | optional | Boolean | false | Set to true to show a mouse pointer on list tiles (non-touch devices) |

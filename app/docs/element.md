@@ -7,9 +7,9 @@ A simple element to wrap a component around a Mithril element. It doesn't do any
 
 ~~~javascript
 import m from 'mithril';
-import element from 'polythene/element/element';
+import { Element } from 'polythene';
 
-const myElement = m.component(element, {
+m(Element, {
     content: m('.content', 'My content')
 });
 ~~~

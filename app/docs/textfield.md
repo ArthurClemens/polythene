@@ -23,9 +23,9 @@ Features:
 
 ~~~javascript
 import m from 'mithril';
-import textfield from 'polythene/textfield/textfield';
+import { TextField } from 'polythene';
 
-const field = m.component(textfield, {
+m(TextField, {
     label: 'Name'
 });
 ~~~
@@ -37,7 +37,7 @@ Other types of input fields can be created using option `type` (for instance "nu
 To create a floating hint label that moves up when the field gets focus:
 
 ~~~javascript
-const field = m.component(textfield, {
+m(TextField, {
     label: 'Name',
     floatingLabel: true
 });
@@ -46,7 +46,7 @@ const field = m.component(textfield, {
 A more compact field with floating hint label:
 
 ~~~javascript
-const field = m.component(textfield, {
+m(TextField, {
     label: 'Name',
     dense: true,
     floatingLabel: true
@@ -56,7 +56,7 @@ const field = m.component(textfield, {
 Full-width field, compact field and with floating hint label:
 
 ~~~javascript
-const field = m.component(textfield, {
+m(TextField, {
     label: 'Name',
     fullWidth: true,
     dense: true,
@@ -67,7 +67,7 @@ const field = m.component(textfield, {
 Create a multi-line field (textarea) with `multiline`:
 
 ~~~javascript
-const field = m.component(textfield, {
+m(TextField, {
     label: 'Name',
     multiline: true,
     rows: 4
@@ -79,7 +79,7 @@ const field = m.component(textfield, {
 Pass `help` to create a help text below the field:
 
 ~~~javascript
-const field = m.component(textfield, {
+m(TextField, {
     label: 'Your Name',
     help: 'Enter the name as written on the credit card'
 });
@@ -88,7 +88,7 @@ const field = m.component(textfield, {
 Pass `help` to create a help text below the field:
 
 ~~~javascript
-const field = m.component(textfield, {
+m(TextField, {
     label: 'Your Name',
     help: 'Enter the name as written on the credit card'
 });
@@ -97,7 +97,7 @@ const field = m.component(textfield, {
 To show the help text only on focus, use `focusHelp`:
 
 ~~~javascript
-const field = m.component(textfield, {
+m(TextField, {
     label: 'Your Name',
     help: 'Enter the name as written on the credit card',
     focusHelp: true
@@ -112,7 +112,7 @@ A help text has a double function as error message when the field input is inval
 Passing `required` adds a `*` to the label, and uses HTML5 field validation to test for a non-empty value:
 
 ~~~javascript
-const field = m.component(textfield, {
+m(TextField, {
     label: 'Your Name',
     required: true,
     floatingLabel: true,
@@ -146,7 +146,7 @@ Variations:
 Option `validate` is a function that accepts the current field value and is called on every `oninput`. Return an object with attributes `valid` (Boolean) and `error` (message string):
 
 ~~~javascript
-const field = m.component(textfield, {
+m(TextField, {
     validate: (value) => {
         if (value !== value.toLowerCase()) {
             return {
@@ -167,7 +167,7 @@ The validation function can of course have multiple checks.
 Adding `counter` with a value adds a counter below the field:
 
 ~~~javascript
-const field = m.component(textfield, {
+m(TextField, {
     label: 'Your Name',
     counter: 30
 });
@@ -178,7 +178,7 @@ After 30 characters, the field with show an error status, but the user will be a
 To limit the input to 30 characters, add constraint `maxlength`:
 
 ~~~javascript
-const field = m.component(textfield, {
+m(TextField, {
     label: 'Your Name',
     counter: 30,
     maxlength: 30,
@@ -195,8 +195,7 @@ Instead of passing a fixed value to `focus`, we use a variable. Option `` gets t
 
 ~~~javascript
 import m from 'mithril';
-import textfield from 'polythene/textfield/textfield';
-import button from 'polythene/button/button';
+import { TextField, Button } from 'polythene';
 
 const module = {};
 module.controller = () => {
@@ -206,12 +205,12 @@ module.controller = () => {
 };
 module.view = (ctrl) => {
     return m('.form', [
-        m.component(textfield, {
+        m(TextField, {
             label: 'Your name',
             focus: ctrl.focusState,
             getState: (state) => (ctrl.focusState = state.focus)
         }),
-        m.component(button, {
+        m(Button, {
             label: 'Give focus',
             raised: true,
             events: {
@@ -234,7 +233,7 @@ module.controller = () => {
     };
 };
 module.view = (ctrl) => {
-    return m.component(textfield, {
+    return m(TextField, {
         type: 'number',
         value: () => (ctrl.volume.toString()),
         events: {

@@ -9,9 +9,9 @@ Form control to select multiple options from a set. Generates a styled checkbox 
 
 ~~~javascript
 import m from 'mithril';
-import checkbox from 'polythene/checkbox/checkbox';
+import { Theme, Checkbox } from 'polythene';
 
-m.component(checkbox);
+m(Checkbox);
 ~~~
 
 Creates an unselected checkbox.
@@ -19,7 +19,7 @@ Creates an unselected checkbox.
 To read the checkbox state, for instance to write its checked state to a controller variable, use `getState`:
 
 ~~~javascript
-m.component(checkbox, {
+m(Checkbox, {
     label: 'Checkbox',
     getState: (state) => (ctrl.checked = state.checked)
 })
@@ -28,14 +28,14 @@ m.component(checkbox, {
 Because `checked` can be called as a function, it can be written much shorter in combination with `m.prop`:
 
 ~~~javascript
-const module = {};
+const cmp = {};
 module.controller = () => {
     return {
         checked: m.prop(false)
     };
 };
 module.view = (ctrl) => {
-    return m.component(checkbox, {
+    return m(Checkbox, {
         label: 'Checkbox',
         checked: ctrl.checked,
         getState: (state) => (ctrl.checked = state.checked)
@@ -86,7 +86,7 @@ To use alternative icons, use options `iconOn` and `iconOff` (see also "msvg" at
 import iconAltCheckOff from 'app/checkbox/comment-outline';
 import iconAltCheckOn from 'app/checkbox/comment-check-outline';
 
-m.component(checkbox, {
+m(Checkbox, {
     label: 'Checkbox',
     iconOn: {
         msvg: iconAltCheckOn

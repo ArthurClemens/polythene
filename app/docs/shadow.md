@@ -11,9 +11,9 @@ Other than Polymer, the shadow component does not wrap content. Instead the shad
 
 ~~~javascript
 import m from 'mithril';
-import shadow from 'polythene/shadow/shadow';
+import { Shadow } from 'polythene';
 
-const myShadow = m.component(shadow, {
+const myShadow = m(Shadow, {
 	z: 1
 });
 ~~~
@@ -30,7 +30,7 @@ const myCard = m('.pe-card', [
 To animated the shadow on change, use `animated`:
 
 ~~~javascript
-const myShadow = m.component(shadow, {
+const myShadow = m(Shadow, {
 	z: 1,
 	animated: true
 });

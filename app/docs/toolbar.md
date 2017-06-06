@@ -9,9 +9,9 @@ Displays a horizontal bar containing a label and action items. One toolbar can h
 
 ~~~javascript
 import m from 'mithril';
-import toolbar from 'polythene/toolbar/toolbar';
+import { Toolbar } from 'polythene';
 
-const myToolbar = m.component(toolbar, {
+m(Toolbar, {
     content: ...
 });
 ~~~
@@ -19,10 +19,10 @@ const myToolbar = m.component(toolbar, {
 To show a toolbar with a label and 3 icon buttons:
 
 ~~~javascript
-import iconBtn from 'polythene/icon-button/icon-button';
+import { IconButton } from 'polythene';
 
 const btn = function(group, name) {
-    return m.component(iconBtn, {
+    return m(IconButton, {
         icon: {
             svg: {
                 group: group,
@@ -39,7 +39,7 @@ const toolbarRow = [
     btn('content', 'add')
 ];
 
-const myToolbar = m.component(toolbar, {
+m(Toolbar, {
     content: toolbarRow
 });
 ~~~
@@ -47,7 +47,7 @@ const myToolbar = m.component(toolbar, {
 To show 3 bars:
 
 ~~~javascript
-const myToolbar = m.component(toolbar, {
+m(Toolbar, {
 	mode: 'tall',
 	topBar: toolbarRow,
 	middleBar: ...,
@@ -109,7 +109,7 @@ These heights are predefined by the toolbar CSS.
 To indent a title, use CSS class 'toolbar__title--indent':
 
 ~~~javascript
-const myToolbar = m.component(toolbar, {
+const myToolbar = m(Toolbar, {
 	mode: 'tall',
 	topBar: toolbarRow,
 	middleBar: m.trust('<div flex class="middle toolbar__title--indent">label aligns to the middle</div>'),

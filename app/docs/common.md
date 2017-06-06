@@ -8,7 +8,6 @@ The "common" directory contains a couple of number of reusable scripts:
 * `multiple`: Helper module to manage multiple items of the same component type
 * `object.assign`: Polyfill
 * `scroll-to`: Animated scroll to a position
-* `styler`: Wrapper around j2c to add styles to the head
 * `timer`: Simple start/stop/pause/resume timer
 * `transition`: Generic show/hide transition module
 * `validation-helper`: Function to enhance validated forms; only submit form when all fields are valid, on submit jump to the next invalid field

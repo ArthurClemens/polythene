@@ -9,14 +9,14 @@ Form control to select 1 option from a set. Generates a styled radio button inpu
 
 ~~~javascript
 import m from 'mithril';
-import radioButton from 'polythene/radio-button/radio-button';
+import { RadioButton } from 'polythene';
 
 // view
 return m('form', [
-    m.component(radioButton, {
+    m(RadioButton, {
         name: 'pref'
     }),
-    m.component(radioButton, {
+    m(RadioButton, {
         name: 'pref',
         state: true
     })
@@ -35,7 +35,7 @@ module.controller = () => {
     };
 };
 module.view = (ctrl) => {
-    return m.component(radioButton, {
+    return m(RadioButton, {
         label: 'Label',
         checked: ctrl.checked,
         getState: (state) => (ctrl.value = state.value)
@@ -89,7 +89,7 @@ import iconAltCheckOn from 'app/radio-button/comment-check-outline';
 
 // view
 return m('form', [
-    m.component(radioButton, {
+    m(RadioButton, {
         name: 'pref',
         iconOn: {
             msvg: iconAltCheckOn
@@ -98,7 +98,7 @@ return m('form', [
             msvg: iconAltCheckOff
         }
     }),
-    m.component(radioButton, {
+    m(RadioButton, {
         name: 'pref',
         state: true,
         iconOn: {

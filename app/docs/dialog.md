@@ -16,13 +16,13 @@ Because a dialog should float on top of everything else, outside of the context 
 
 ~~~javascript
 import m from 'mithril';
-import dialog from 'polythene/dialog/dialog';
+import { Dialog } from 'polythene';
 
 const app = {};
 app.view = (ctrl, opts) => {
     return [
         // app contents
-        m.component(dialog)
+        m(Dialog)
     ];
 };
 ~~~
@@ -30,8 +30,8 @@ app.view = (ctrl, opts) => {
 The dialog component itself does not accept any options. Instead, you pass options when calling `show` - allowing to create custom dialogs from anywhere in the app.
 
 ~~~javascript
-dialog.show(options, id);
-dialog.hide(id);
+Dialog.show(options, id);
+Dialog.hide(id);
 ~~~
 
 `options` can be a regular options object:
@@ -41,7 +41,7 @@ const options = {
     body: 'some text'
 };
 
-dialog.show(options);
+Dialog.show(options);
 ~~~
 
 This will work in most scenarios. In case the dialog contents needs to change when a state changes (for instance after user interaction, or after reading in translations), you should pass a function instead.
@@ -54,7 +54,7 @@ const optionsFn = () => {
     };
 };
 
-dialog.show(optionsFn);
+Dialog.show(optionsFn);
 ~~~
 
 Using a function ensures that the options are read afresh with the new state.
@@ -64,14 +64,13 @@ Using a function ensures that the options are read afresh with the new state.
 
 ~~~javascript
 import m from 'mithril';
-import dialog from 'polythene/dialog/dialog';
-import button from 'polythene/button/button';
+import { Dialog, Button } from 'polythene';
 
 const footerButtons = [
-    m.component(button, {
+    m(Button, {
         label: 'Cancel'
     }),
-    m.component(button, {
+    m(Button, {
         label: 'Discard'
     })
 ];
@@ -81,7 +80,7 @@ const dialogOptions = {
     footer: footerButtons
 });
 
-dialog.show(dialogOptions);
+Dialog.show(dialogOptions);
 ~~~
 
 Create a modal dialog with `modal` and `backdrop`:
@@ -100,7 +99,7 @@ const dialogOptions = {
 
 A dialog is closed by tapping outside of the dialog (unless the dialog is a modal), or by pressing ESCAPE.
 
-The dialog can be closed programmatically with `dialog.hide()`.
+The dialog can be closed programmatically with `Dialog.hide()`.
 
 
 ### Function calls
@@ -110,24 +109,24 @@ Functions `show` and `hide` return a Promise.
 #### show
 
 ~~~javascript
-dialog.show(options, id);
+Dialog.show(options, id);
 ~~~
 
 ~~~javascript
-dialog.show(options, id).then((id) => (console.log('dialog shown', id)));
+Dialog.show(options, id).then((id) => (console.log('dialog shown', id)));
 ~~~
 
 
 Calling `show` a second time with the same id will redraw the dialog with new options:
 
 ~~~javascript
-dialog.show({
+Dialog.show({
     title: 'Log in'
 }, 'login');
 
 // sometime later:
 
-dialog.show({
+Dialog.show({
     title: 'Log in again'
 }, 'login');
 ~~~
@@ -144,7 +143,7 @@ Sometimes you may need a dialog to be appear without a fade in - for instance wh
 ~~~javascript
 import logonDialog from './dialogs/logon'; // logonDialog is an options object
 
-dialog.show(logonDialog, void 0, {
+Dialog.show(logonDialog, void 0, {
     transition: 'hide'
 });
 ~~~
@@ -152,11 +151,11 @@ dialog.show(logonDialog, void 0, {
 #### hide
 
 ~~~javascript
-dialog.hide(id);
+Dialog.hide(id);
 ~~~
 
 ~~~javascript
-dialog.hide(id).then((id) => (console.log('dialog hidden', id)));
+Dialog.hide(id).then((id) => (console.log('dialog hidden', id)));
 ~~~
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
@@ -211,7 +210,7 @@ A fullscreen dialog uses [Header Panel](#header-panel) to implement its own head
 ~~~javascript
 const fullscreenDialogOptions = {
     class: 'demo-dialog',
-    body: m.component(headerPanel, {
+    body: m(HeaderPanel, {
         class: 'pe-dark-theme',
         fixed: true,
         header: {
@@ -232,8 +231,8 @@ It is possible to create a dialog on top of a dialog. This is not so bad as it s
 Dialogs are stacked by using `dialog.show` multiple times:
 
 ~~~javascript
-dialog.show(myFullscreenDialogOptions); // no id passed, so this is the default
-dialog.show(myConfirmationDialogOptions, 'confirmation'); // the id makes this distinguishable from the default dialog
+Dialog.show(myFullscreenDialogOptions); // no id passed, so this is the default
+Dialog.show(myConfirmationDialogOptions, 'confirmation'); // the id makes this distinguishable from the default dialog
 ~~~
 
 

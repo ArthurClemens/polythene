@@ -13,21 +13,20 @@ Use parameter `after` to append the ripple to the content:
 
 ~~~javascript
 import m from 'mithril';
-import ripple from 'polythene/ripple/ripple';
-import listTile from 'polythene/list-tile/list-tile';
+import { Ripple, ListTile } from 'polythene';
 
-const myListTile = m.component(listTile, {
+m(ListTile, {
     title: 'Title',
-    after: m.component(ripple)
+    after: m(Ripple)
 });
 ~~~
 
 Use an options object to define specific behavior:
 
 ~~~javascript
-const myListTile = m.component(listTile, {
+m(ListTile, {
     title: 'Title',
-    after: m.component(ripple, {
+    after: m(Ripple, {
     	constrained: false,
     	class: 'colored-ripple'
 	})
@@ -51,6 +50,7 @@ const myListTile = m.component(listTile, {
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **start** | optional | Function | | Callback function just before the ripple starts; see Callback functions |
 | **end** | optional | Function | | Callback function when the ripple has ended; see Callback functions |
+| **disabled** | optional | Boolean | false | Set to `true` to disable ripples |
 
 ### Ripple appearance options
 

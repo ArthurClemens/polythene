@@ -2,6 +2,8 @@
 
 Modular implementation of Material Design for [Mithril](http://lhorie.github.io/mithril). Available on [Github](https://github.com/ArthurClemens/Polythene).
 
+Compatible with Mithril 0.2.5. Documentation for Polythene version 0.3.0.
+
 <a class="btn-demo" href="http://arthurclemens.github.io/Polythene-examples/index.html">All demos</a>
 
 
@@ -28,8 +30,8 @@ Polythene components are Mithril components: from an icon to a page wide header 
 The icon component is a small example how components can be combined. It is a wrapper around an image or SVG (itself a component too):
 
 ~~~javascript
-import icon from 'polythene/icon/icon';
-let myIcon = m.component(icon, {
+import { Icon } from 'polythene';
+m(Icon, {
 	src: 'app/icon/img/ic_directions_black_48dp.png'
 });
 ~~~
@@ -39,13 +41,13 @@ let myIcon = m.component(icon, {
 This principle can also be used to create a larger component, such as an [icon button](#icon-button):
 
 ~~~javascript
-import icon from 'polythene/icon/icon';
-let menuIcon = m.component(icon, {
+import { Icon } from 'polythene';
+m(Icon, {
     src: 'img/arrow.png'
 });
 
-import iconBtn from 'polythene/icon-button/icon-button';
-let myIconBtn = m.component(iconBtn, {
+import { IconButton } from 'polythene';
+m(IconButton, {
 	content: menuIcon
 });
 ~~~
@@ -53,8 +55,8 @@ let myIconBtn = m.component(iconBtn, {
 Because icon-button accepts an icon options object, we can use object notation as well:
 
 ~~~javascript
-import iconBtn from 'polythene/icon-button/icon-button';
-let myIconBtn = m.component(iconBtn({
+import { IconButton } from 'polythene';
+m(IconButton({
 	icon: {
 	    src: 'img/arrow.png'
 	}
@@ -64,9 +66,9 @@ let myIconBtn = m.component(iconBtn({
 If we want to create a toolbar with buttons, it is easier to create a function that generates buttons:
 
 ~~~javascript
-import iconBtn from 'polythene/icon-button/icon-button';
+import { IconButton } from 'polythene';
 let btn = (group, name) => {
-    return m.component(iconBtn, {
+    return m(IconButton, {
         icon: {
             svg: {
                 group: group,
@@ -92,8 +94,8 @@ const toolbarRow = [
 And the toolbar incorporates the row:
 
 ~~~javascript
-import toolbar from 'polythene/toolbar/toolbar';
-m.component(toolbar, {
+import { Toolbar } from 'polythene';
+m(Toolbar, {
     class: 'pe-dark-theme',
     content: toolbarRow
 });

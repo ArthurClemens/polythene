@@ -9,9 +9,9 @@ See also: [Icon Button](#icon-button) and [Floating Action Button](#fab)
 
 ~~~javascript
 import m from 'mithril';
-import btn from 'polythene/button/button';
+import { Theme, Button } from 'polythene';
 
-const myBtn = m.component(btn, {
+m(Button, {
     label: 'Button',
     raised: true
 });
@@ -20,7 +20,7 @@ const myBtn = m.component(btn, {
 Add a URL:
 
 ~~~javascript
-const myBtn = m.component(btn, {
+m(Button, {
     label: 'Button',
     raised: true,
     url: {
@@ -32,7 +32,7 @@ const myBtn = m.component(btn, {
 Add an onclick event:
 
 ~~~javascript
-const myBtn = m.component(btn, {
+m(Button, {
     label: 'Button',
     raised: true,
     events: {
