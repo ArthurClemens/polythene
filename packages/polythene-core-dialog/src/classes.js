@@ -4,6 +4,8 @@ export default {
   component:         "pe-dialog",
 
   // elements
+  placeholder:       "pe-dialog__placeholder",
+  holder:            "pe-dialog__holder",
   actions:           "pe-dialog__actions",
   body:              "pe-dialog__body",
   content:           "pe-dialog__content",
@@ -17,7 +19,8 @@ export default {
   hasBackdrop:       "pe-dialog--backdrop",
   hasBottomOverflow: "pe-dialog--overflow-bottom",
   hasTopOverflow:    "pe-dialog--overflow-top",
-  visible:           "pe-dialog--visible",
+  open:              "pe-dialog--open",
+  transitioning:     "pe-dialog--transitioning",
 
   // lookup
   menuContent:       coreMenuClasses.content,

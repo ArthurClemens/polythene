@@ -3,6 +3,7 @@ export { isTouch, touchStartEvent, touchEndEvent, moveEvent, endEvent } from "./
 export { throttle, subscribe, unsubscribe, emit } from "./events";
 export { animationEndEvent } from "./animation-event";
 export { multiple } from "./multiple";
+export { multipleHOC } from "./multiple-hoc";
 export { show, hide } from "./transition";
 export { filterSupportedAttributes } from "./attrs";
 export { prop } from "./prop";

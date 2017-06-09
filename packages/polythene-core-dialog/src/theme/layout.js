@@ -20,6 +20,7 @@ export default (selector, componentVars) => [{
         padding: 0,
 
         " .pe-dialog__content": {
+          opacity: 0,
           borderRadius: 0,
           maxWidth: "none",
           height: "100%",

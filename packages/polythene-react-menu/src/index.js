@@ -12,13 +12,14 @@ const MenuInstance = stateComponent(Object.assign(
 ));
 
 export const Menu = props =>
-  h(Toggle, Object.assign(
+  h(Toggle(MenuInstance, Object.assign(
     {},
     {
       placeholderClassName: classes.placeholder,
-      instance: MenuInstance
-    },
-    props
-  ));
+      show: props.show,
+      attrs: props
+    }
+  )));
 
 Menu.theme = core.theme;
+Menu.displayName = "Menu";

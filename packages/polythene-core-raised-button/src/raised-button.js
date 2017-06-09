@@ -93,7 +93,7 @@ export const onMount = vnode => {
   }
 };
 
-export const onUnmount = vnode => {
+export const onUnMount = vnode => {
   if (vnode.state.tapEventsInited()) {
     clearTapEvents(vnode);
   }

@@ -205,13 +205,12 @@ var positionMenu = function positionMenu(state, attrs) {
 };
 
 var showMenu = function showMenu(state, attrs) {
-  attrs.setTransitioning(true);
+  attrs.setDisplayState({ transitioning: true });
   return show(_extends({}, attrs, {
     el: state.dom(),
     showClass: classes$1.visible
   })).then(function () {
-    attrs.setTransitioning(false);
-    attrs.setVisible(true);
+    attrs.setDisplayState({ visible: true });
     if (attrs.didShow) {
       attrs.didShow(attrs.id);
     }
@@ -219,13 +218,12 @@ var showMenu = function showMenu(state, attrs) {
 };
 
 var hideMenu = function hideMenu(state, attrs) {
-  attrs.setTransitioning(true);
+  attrs.setDisplayState({ transitioning: true });
   return hide(_extends({}, attrs, {
     el: state.dom(),
     showClass: classes$1.visible
   })).then(function () {
-    attrs.setTransitioning(false);
-    attrs.setVisible(false);
+    attrs.setDisplayState({ visible: false });
     if (attrs.didHide) {
       attrs.didHide(attrs.id);
     }

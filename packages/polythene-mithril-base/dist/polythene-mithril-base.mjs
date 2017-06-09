@@ -14,6 +14,7 @@ var keys = {
   onmouseout: "onmouseout",
   onmouseover: "onmouseover",
   onmouseup: "onmouseup",
+  onscroll: "onscroll",
   tabindex: "tabindex"
 };
 
@@ -231,8 +232,8 @@ var stateComponent = function stateComponent(_ref) {
   } : _ref$getInitialState,
       _ref$onMount = _ref.onMount,
       onMount = _ref$onMount === undefined ? function () {} : _ref$onMount,
-      _ref$onUnmount = _ref.onUnmount,
-      onUnmount = _ref$onUnmount === undefined ? function () {} : _ref$onUnmount;
+      _ref$onUnMount = _ref.onUnMount,
+      onUnMount = _ref$onUnMount === undefined ? function () {} : _ref$onUnMount;
 
 
   var oninit = function oninit(vnode) {
@@ -240,7 +241,10 @@ var stateComponent = function stateComponent(_ref) {
     var initialState = getInitialState(protoState, stream);
     vnode.state = initialState;
     vnode.state.redrawOnUpdate && vnode.state.redrawOnUpdate.map(function () {
-      return setTimeout(renderer.redraw);
+      return (
+        // console.log("redrawOnUpdate", value),
+        setTimeout(renderer.redraw)
+      );
     });
   };
 
@@ -252,7 +256,7 @@ var stateComponent = function stateComponent(_ref) {
     view: view,
     oninit: oninit,
     oncreate: onMount,
-    onremove: onUnmount
+    onremove: onUnMount
   };
 };
 
@@ -269,8 +273,8 @@ var viewComponent = function viewComponent(_ref) {
       renderView = _ref.renderView,
       _ref$onMount = _ref.onMount,
       onMount = _ref$onMount === undefined ? function () {} : _ref$onMount,
-      _ref$onUnmount = _ref.onUnmount,
-      onUnmount = _ref$onUnmount === undefined ? function () {} : _ref$onUnmount;
+      _ref$onUnMount = _ref.onUnMount,
+      onUnMount = _ref$onUnMount === undefined ? function () {} : _ref$onUnMount;
 
 
   var view = function view(vnode) {
@@ -280,7 +284,7 @@ var viewComponent = function viewComponent(_ref) {
   return {
     view: renderView || view,
     oncreate: onMount,
-    onremove: onUnmount
+    onremove: onUnMount
   };
 };
 

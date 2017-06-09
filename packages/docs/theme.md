@@ -375,7 +375,7 @@ The variables module `polythene-core-essentials/src/variables.js` contains `colo
 
 ~~~javascript
 // custom-theme.js
-import { defaultVariables } from "polythene-core-essentials";
+import { defaultVariables } from "polythene-core";
 
 export const vars = {
   ...defaultVariables

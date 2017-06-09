@@ -21,11 +21,11 @@ export default [
     name: "Checkbox",
     tests: tests.checkbox
   },
-  // {
-  //   path: "/dialog",
-  //   name: "Dialog",
-  //   tests: dialogTests
-  // },
+  {
+    path: "/dialog",
+    name: "Dialog",
+    tests: tests.dialog
+  },
   {
     path: "/fab",
     name: "FAB",

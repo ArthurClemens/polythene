@@ -1,8 +1,7 @@
-import { Button, Checkbox, FAB, Icon, IconButton, List, ListTile, Menu, RadioButton, RaisedButton, Ripple, SVG, Shadow, Switch, Toolbar, keys, renderer } from 'polythene-mithril';
+import { Button, Checkbox, Dialog, FAB, Icon, IconButton, List, ListTile, Menu, RadioButton, RaisedButton, Ripple, SVG, Shadow, Switch, Toolbar, keys, renderer } from 'polythene-mithril';
 import { flex, styler } from 'polythene-core-css';
-import dialog from 'polythene-dialog';
 import { classes } from 'polythene-core-toolbar';
-import { Button as Button$1, Checkbox as Checkbox$1, FAB as FAB$1, Icon as Icon$1, IconButton as IconButton$1, List as List$1, ListTile as ListTile$1, Menu as Menu$1, RadioButton as RadioButton$1, RaisedButton as RaisedButton$1, Ripple as Ripple$1, SVG as SVG$1, Shadow as Shadow$1, Switch as Switch$1, Toolbar as Toolbar$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
+import { Button as Button$1, Checkbox as Checkbox$1, Dialog as Dialog$1, FAB as FAB$1, Icon as Icon$1, IconButton as IconButton$1, List as List$1, ListTile as ListTile$1, Menu as Menu$1, RadioButton as RadioButton$1, RaisedButton as RaisedButton$1, Ripple as Ripple$1, SVG as SVG$1, Shadow as Shadow$1, Switch as Switch$1, Toolbar as Toolbar$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 import { compose, withHandlers, withState } from 'recompose';
 
 var genericTests = (function (_ref) {
@@ -770,9 +769,196 @@ var mithrilTests$2 = function mithrilTests() {
 
 var testsMithril$1 = [].concat(genericTests$1({ Checkbox: Checkbox, renderer: renderer, keys: keys })).concat(mithrilTests$2({ Checkbox: Checkbox, renderer: renderer, keys: keys }));
 
-var iconAlarm$1 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z\"/></svg>";
+function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var shortText = "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>";
+
+var longText = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(function () {
+  return shortText;
+}).join("");
+
+var cancelOkButtons = function cancelOkButtons(_ref) {
+  var h = _ref.renderer,
+      k = _ref.keys,
+      Button$$1 = _ref.Button,
+      Dialog$$1 = _ref.Dialog;
+  return [h(Button$$1, {
+    label: "Cancel",
+    events: _defineProperty$2({}, k.onclick, function () {
+      return Dialog$$1.hide();
+    })
+  }), h(Button$$1, {
+    label: "Discard",
+    events: _defineProperty$2({}, k.onclick, function () {
+      return Dialog$$1.hide();
+    })
+  })];
+};
+
+var commonDialogProps = function commonDialogProps(_ref2) {
+  var renderer$$1 = _ref2.renderer,
+      keys$$1 = _ref2.keys,
+      Button$$1 = _ref2.Button,
+      Dialog$$1 = _ref2.Dialog;
+  return {
+    footer: cancelOkButtons({ renderer: renderer$$1, keys: keys$$1, Button: Button$$1, Dialog: Dialog$$1 })
+    // didHide: () => m.route.set("/dialog")
+  };
+};
+
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var genericTests$2 = (function (_ref) {
+  var renderer$$1 = _ref.renderer,
+      keys$$1 = _ref.keys,
+      Dialog$$1 = _ref.Dialog,
+      Button$$1 = _ref.Button,
+      RaisedButton$$1 = _ref.RaisedButton;
+
+
+  var Opener = function Opener(dialogAttrs) {
+    var label = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "Open";
+    return renderer$$1(RaisedButton$$1, {
+      label: label,
+      events: _defineProperty$1({}, keys$$1.onclick, function () {
+        return Dialog$$1.show(dialogAttrs);
+      })
+    });
+  };
+
+  Dialog$$1.theme(".dialog-tests-blue-dialog", {
+    color_light_content_background: "#2196F3",
+    color_light_body_text: "#fff",
+    border_radius: 5
+  });
+
+  return [{
+    name: "Option: body",
+    exclude: true,
+    interactive: true,
+    component: {
+      view: function view() {
+        return Opener({ body: "Hello" });
+      }
+    }
+  }, {
+    name: "Themed (color and border radius)",
+    interactive: true,
+    exclude: true,
+    component: {
+      view: function view() {
+        return Opener({
+          content: renderer$$1("div", "Hello"),
+          className: "dialog-tests-blue-dialog"
+        });
+      }
+    }
+  }, {
+    name: "Option: style",
+    interactive: true,
+    exclude: true,
+    component: {
+      view: function view() {
+        return Opener({
+          body: "Hello",
+          style: {
+            background: "#fff59d",
+            padding: "1.5rem"
+          }
+        });
+      }
+    }
+  }, {
+    name: "Option: z (0)",
+    interactive: true,
+    exclude: true,
+    component: {
+      view: function view() {
+        return Opener({
+          body: renderer$$1.trust(shortText),
+          z: 0
+        });
+      }
+    }
+  }, {
+    name: "Option: z (5)",
+    interactive: true,
+    exclude: true,
+    component: {
+      view: function view() {
+        return Opener({
+          body: renderer$$1.trust(shortText),
+          z: 5
+        });
+      }
+    }
+  }, {
+    name: "Option: title and body (long text)",
+    interactive: true,
+    exclude: true,
+    component: {
+      view: function view() {
+        return Opener({
+          title: "Long dialog with a very long title that surely won't fit here",
+          body: renderer$$1.trust(longText)
+        });
+      }
+    }
+  }, {
+    name: "Option: modal with backdrop",
+    interactive: true,
+    exclude: true,
+    component: {
+      view: function view() {
+        return Opener(_extends$1({}, commonDialogProps({ renderer: renderer$$1, keys: keys$$1, Button: Button$$1, Dialog: Dialog$$1 }), {
+          title: "Long dialog with a very long title that surely won't fit here",
+          body: renderer$$1.trust(longText),
+          modal: true,
+          backdrop: true
+        }));
+      }
+    }
+  }];
+});
+
+// import createSettingsDialog from "./components/settings-dialog";
+
+var mithrilTests$3 = function mithrilTests(_ref) {
+  var Dialog$$1 = _ref.Dialog,
+      h = _ref.renderer;
+
+
+  // const settingsDialog = createSettingsDialog({ renderer, keys, dialog, Menu, List, ListTile });
+
+  return [
+    // {
+    //   section: "Mithril specific tests",
+    // },
+    // {
+    //   name: "Dialog with option 'menu' (demo without state)",
+    //   interactive: true,
+    //   exclude: true,
+    //   component: {
+    //     view: () => 
+    //       h(RaisedButton, {
+    //         label: "Open",
+    //         events: {
+    //           onclick: () => dialog.show(settingsDialog)
+    //         }
+    //       }
+    //     )
+    //   }
+    // },
+  ];
+};
+
+var testsMithril$2 = [].concat(genericTests$2({ Dialog: Dialog, Button: Button, RaisedButton: RaisedButton, renderer: renderer, keys: keys })).concat(mithrilTests$3({ Dialog: Dialog, Button: Button, RaisedButton: RaisedButton, renderer: renderer, keys: keys }));
+
+var iconAlarm$1 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z\"/></svg>";
+
+var genericTests$3 = (function (_ref) {
   var FAB$$1 = _ref.FAB,
       Icon$$1 = _ref.Icon,
       h = _ref.renderer;
@@ -892,7 +1078,7 @@ var genericTests$2 = (function (_ref) {
 
 var iconAlarm = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3V9z\"/></svg>";
 
-var mithrilTests$3 = function mithrilTests(_ref) {
+var mithrilTests$4 = function mithrilTests(_ref) {
   var FAB$$1 = _ref.FAB,
       h = _ref.renderer;
 
@@ -956,13 +1142,13 @@ var mithrilTests$3 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$2 = [].concat(genericTests$2({ FAB: FAB, Icon: Icon, renderer: renderer })).concat(mithrilTests$3({ FAB: FAB, Icon: Icon, renderer: renderer }));
+var testsMithril$3 = [].concat(genericTests$3({ FAB: FAB, Icon: Icon, renderer: renderer })).concat(mithrilTests$4({ FAB: FAB, Icon: Icon, renderer: renderer }));
 
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var iconStars$1 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>";
 
-var genericTests$3 = (function (_ref) {
+var genericTests$4 = (function (_ref) {
   var Icon$$1 = _ref.Icon,
       SVG$$1 = _ref.SVG,
       h = _ref.renderer;
@@ -980,7 +1166,7 @@ var genericTests$3 = (function (_ref) {
 
   var sizes = function sizes(_sizes, attrs) {
     return _sizes.map(function (size) {
-      return h(Icon$$1, _extends$1({}, attrs, { size: size }));
+      return h(Icon$$1, _extends$2({}, attrs, { size: size }));
     });
   };
 
@@ -1077,7 +1263,7 @@ var genericTests$3 = (function (_ref) {
 
 var iconStars = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>";
 
-var mithrilTests$4 = function mithrilTests(_ref) {
+var mithrilTests$5 = function mithrilTests(_ref) {
   var Icon$$1 = _ref.Icon,
       h = _ref.renderer;
 
@@ -1119,13 +1305,13 @@ var mithrilTests$4 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$3 = [].concat(genericTests$3({ Icon: Icon, SVG: SVG, renderer: renderer })).concat(mithrilTests$4({ Icon: Icon, SVG: SVG, renderer: renderer }));
+var testsMithril$4 = [].concat(genericTests$4({ Icon: Icon, SVG: SVG, renderer: renderer })).concat(mithrilTests$5({ Icon: Icon, SVG: SVG, renderer: renderer }));
 
-var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var iconFavorite$1 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z\"/></svg>";
 
-var genericTests$4 = (function (_ref) {
+var genericTests$5 = (function (_ref) {
   var IconButton$$1 = _ref.IconButton,
       Icon$$1 = _ref.Icon,
       h = _ref.renderer;
@@ -1144,7 +1330,7 @@ var genericTests$4 = (function (_ref) {
   var sizes = function sizes(_sizes, attrs) {
     return _sizes.map(function (size) {
       return h(IconButton$$1, {
-        icon: _extends$2({}, attrs, { size: size })
+        icon: _extends$3({}, attrs, { size: size })
       });
     });
   };
@@ -1262,7 +1448,7 @@ var genericTests$4 = (function (_ref) {
 
 var iconFavorite = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z\"/></svg>";
 
-var mithrilTests$5 = function mithrilTests(_ref) {
+var mithrilTests$6 = function mithrilTests(_ref) {
   var IconButton$$1 = _ref.IconButton,
       h = _ref.renderer;
 
@@ -1325,7 +1511,7 @@ var mithrilTests$5 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$4 = [].concat(genericTests$4({ IconButton: IconButton, Icon: Icon, renderer: renderer })).concat(mithrilTests$5({ IconButton: IconButton, renderer: renderer }));
+var testsMithril$5 = [].concat(genericTests$5({ IconButton: IconButton, Icon: Icon, renderer: renderer })).concat(mithrilTests$6({ IconButton: IconButton, renderer: renderer }));
 
 var blockSize = 40;
 
@@ -1365,7 +1551,7 @@ var createBlocks = function createBlocks(renderer$$1) {
 
 styler.add("css-classes", styles);
 
-var genericTests$5 = (function (_ref) {
+var genericTests$6 = (function (_ref) {
   var h = _ref.renderer,
       layoutComponent = _ref.layoutComponent,
       createBlocks$$1 = _ref.createBlocks;
@@ -1401,13 +1587,13 @@ var layoutComponent = function layoutComponent(content) {
   };
 };
 
-var mithrilTests$6 = function mithrilTests() {
+var mithrilTests$7 = function mithrilTests() {
   return [];
 };
 
-var testsMithril$5 = [].concat(genericTests$5({ renderer: renderer, layoutComponent: layoutComponent, createBlocks: createBlocks })).concat(mithrilTests$6({ renderer: renderer, layoutComponent: layoutComponent, createBlocks: createBlocks }));
+var testsMithril$6 = [].concat(genericTests$6({ renderer: renderer, layoutComponent: layoutComponent, createBlocks: createBlocks })).concat(mithrilTests$7({ renderer: renderer, layoutComponent: layoutComponent, createBlocks: createBlocks }));
 
-var genericTests$6 = (function (_ref) {
+var genericTests$7 = (function (_ref) {
   var List$$1 = _ref.List,
       ListTile$$1 = _ref.ListTile,
       Icon$$1 = _ref.Icon,
@@ -1688,7 +1874,7 @@ var genericTests$6 = (function (_ref) {
   }];
 });
 
-var mithrilTests$7 = function mithrilTests(_ref) {
+var mithrilTests$8 = function mithrilTests(_ref) {
   var List$$1 = _ref.List,
       Icon$$1 = _ref.Icon,
       ListTile$$1 = _ref.ListTile,
@@ -1757,13 +1943,13 @@ var mithrilTests$7 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$6 = [].concat(genericTests$6({ List: List, Icon: Icon, ListTile: ListTile, renderer: renderer, keys: keys })).concat(mithrilTests$7({ List: List, Icon: Icon, ListTile: ListTile, renderer: renderer, keys: keys }));
+var testsMithril$7 = [].concat(genericTests$7({ List: List, Icon: Icon, ListTile: ListTile, renderer: renderer, keys: keys })).concat(mithrilTests$8({ List: List, Icon: Icon, ListTile: ListTile, renderer: renderer, keys: keys }));
 
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$3(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var iconStars$3 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>";
 
-var genericTests$7 = (function (_ref) {
+var genericTests$8 = (function (_ref) {
   var ListTile$$1 = _ref.ListTile,
       Icon$$1 = _ref.Icon,
       h = _ref.renderer,
@@ -1814,7 +2000,7 @@ var genericTests$7 = (function (_ref) {
     component: ListTile$$1,
     attrs: {
       title: "Click me",
-      events: _defineProperty$1({}, keys$$1.onclick, function () {
+      events: _defineProperty$3({}, keys$$1.onclick, function () {
         return alert("clicked");
       })
     }
@@ -1933,15 +2119,6 @@ var genericTests$7 = (function (_ref) {
         }
       }
     }
-  }, {
-    name: "Option: secondary (content)",
-    component: ListTile$$1,
-    attrs: {
-      title: "Ancillary Justice",
-      secondary: {
-        content: h(Icon$$1, { svg: trustedIconStars })
-      }
-    }
   },
 
   // Dark tone
@@ -1995,7 +2172,7 @@ var genericTests$7 = (function (_ref) {
 
 var iconStars$2 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>";
 
-var mithrilTests$8 = function mithrilTests(_ref) {
+var mithrilTests$9 = function mithrilTests(_ref) {
   var Icon$$1 = _ref.Icon,
       ListTile$$1 = _ref.ListTile,
       h = _ref.renderer;
@@ -2094,7 +2271,7 @@ var mithrilTests$8 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$7 = [].concat(genericTests$7({ Icon: Icon, ListTile: ListTile, renderer: renderer, keys: keys })).concat(mithrilTests$8({ Icon: Icon, ListTile: ListTile, renderer: renderer, keys: keys }));
+var testsMithril$8 = [].concat(genericTests$8({ Icon: Icon, ListTile: ListTile, renderer: renderer, keys: keys })).concat(mithrilTests$9({ Icon: Icon, ListTile: ListTile, renderer: renderer, keys: keys }));
 
 var menuItems = (function (_ref) {
   var h = _ref.renderer,
@@ -2159,7 +2336,7 @@ var simple = (function (_ref) {
   });
 });
 
-function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$4(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var opener = (function (_ref) {
   var h = _ref.renderer,
@@ -2186,7 +2363,7 @@ var opener = (function (_ref) {
       }, [h(RaisedButton$$1, {
         label: "Open menu",
         id: id,
-        events: _defineProperty$2({}, k.onclick, function () {
+        events: _defineProperty$4({}, k.onclick, function () {
           return state.show(true);
         })
       }), menuFn({
@@ -2195,10 +2372,7 @@ var opener = (function (_ref) {
         h: h,
         Menu: Menu$$1,
         List: List$$1,
-        ListTile: ListTile$$1,
-        getState: function getState(newState) {
-          return state.show(newState.visible);
-        }
+        ListTile: ListTile$$1
       })]);
     }
   };
@@ -2254,7 +2428,7 @@ var sizes = (function (_ref2) {
   };
 });
 
-function _defineProperty$3(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$5(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var iconMoreVertSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z\"/></svg>";
 
@@ -2306,9 +2480,6 @@ var createPositionContainer = function createPositionContainer(_ref) {
         show: show,
         size: 3,
         hideDelay: .240,
-        getState: function getState(newState) {
-          return state.show(newState.visible);
-        },
         content: h(List$$1, {
           tiles: ["Refresh", "Help & Feedback", "Settings", "Sign Out"].map(function (title) {
             return h(ListTile$$1, {
@@ -2322,7 +2493,7 @@ var createPositionContainer = function createPositionContainer(_ref) {
       }), h(".bar-row.pe-dark-tone.layout.horizontal", [attrs.buttonPosition === "right" ? h(".flex") : null, h(IconButton$$1, {
         id: attrs.id,
         icon: { svg: h.trust(iconMoreVertSVG) },
-        events: _defineProperty$3({}, k.onclick, function () {
+        events: _defineProperty$5({}, k.onclick, function () {
           return state.show(true);
         })
       })])])]);
@@ -2367,7 +2538,7 @@ var position = (function (_ref2) {
   };
 });
 
-function _defineProperty$4(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$6(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var menuOptions = ["Show all notification content", "Hide sensitive notification content", "Hide all notification content"];
 
@@ -2384,7 +2555,7 @@ var settings = (function (_ref) {
       vnode.state = {
         show: show,
         selectedIndex: selectedIndex,
-        redrawOnUpdate: stream.merge([show, selectedIndex]),
+        redrawOnUpdate: stream.merge([show]),
         id: "id-" + Math.floor(Math.random() * 1000)
       };
     },
@@ -2399,9 +2570,6 @@ var settings = (function (_ref) {
         target: "#" + id,
         show: show,
         hideDelay: .240,
-        getState: function getState(newState) {
-          return state.show(newState.visible);
-        },
         size: 5,
         content: h(List$$1, {
           hoverable: true,
@@ -2411,8 +2579,8 @@ var settings = (function (_ref) {
               selected: index === selectedIndex,
               ink: true,
               hoverable: true,
-              events: _defineProperty$4({}, k.onclick, function () {
-                return state.selectedIndex(index);
+              events: _defineProperty$6({}, k.onclick, function () {
+                return state.selectedIndex(index), state.show(false);
               })
             });
           })
@@ -2426,7 +2594,7 @@ var settings = (function (_ref) {
           id: id,
           title: "When device is locked",
           subtitle: menuOptions[selectedIndex],
-          events: _defineProperty$4({}, k.onclick, function () {
+          events: _defineProperty$6({}, k.onclick, function () {
             return state.show(true);
           }),
           hoverable: true,
@@ -2494,7 +2662,7 @@ var themed = (function (_ref) {
   return { themeColor: themeColor, themedList: themedList, styledList: styledList };
 });
 
-var genericTests$8 = (function (_ref) {
+var genericTests$9 = (function (_ref) {
   var renderer$$1 = _ref.renderer,
       keys$$1 = _ref.keys,
       Menu$$1 = _ref.Menu,
@@ -2564,12 +2732,12 @@ var genericTests$8 = (function (_ref) {
   }];
 });
 
-function _defineProperty$5(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$7(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var createSettingsDialog = (function (_ref) {
   var h = _ref.renderer,
       k = _ref.keys,
-      dialog$$1 = _ref.dialog,
+      dialog = _ref.dialog,
       List$$1 = _ref.List,
       ListTile$$1 = _ref.ListTile;
 
@@ -2581,9 +2749,9 @@ var createSettingsDialog = (function (_ref) {
       selected: selected,
       disabled: disabled,
       ink: true,
-      events: _defineProperty$5({}, k.onclick, function () {
+      events: _defineProperty$7({}, k.onclick, function () {
         if (!disabled) {
-          dialog$$1.hide();
+          dialog.hide();
         }
       })
     });
@@ -2598,14 +2766,14 @@ var createSettingsDialog = (function (_ref) {
   };
 });
 
-var mithrilTests$9 = function mithrilTests(_ref) {
+var mithrilTests$10 = function mithrilTests(_ref) {
   var Menu$$1 = _ref.Menu,
       List$$1 = _ref.List,
       ListTile$$1 = _ref.ListTile,
       h = _ref.renderer;
 
 
-  var settingsDialog = createSettingsDialog({ renderer: renderer, keys: keys, dialog: dialog, Menu: Menu$$1, List: List$$1, ListTile: ListTile$$1 });
+  var settingsDialog = createSettingsDialog({ renderer: renderer, keys: keys, Dialog: Dialog, Menu: Menu$$1, List: List$$1, ListTile: ListTile$$1 });
 
   return [{
     section: "Mithril specific tests"
@@ -2619,7 +2787,7 @@ var mithrilTests$9 = function mithrilTests(_ref) {
           label: "Open",
           events: {
             onclick: function onclick() {
-              return dialog.show(settingsDialog);
+              return Dialog.show(settingsDialog);
             }
           }
         });
@@ -2628,9 +2796,9 @@ var mithrilTests$9 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$8 = [].concat(genericTests$8({ Menu: Menu, List: List, ListTile: ListTile, RaisedButton: RaisedButton, Shadow: Shadow, IconButton: IconButton, renderer: renderer, keys: keys })).concat(mithrilTests$9({ Menu: Menu, List: List, ListTile: ListTile, RaisedButton: RaisedButton, Shadow: Shadow, IconButton: IconButton, renderer: renderer, keys: keys }));
+var testsMithril$9 = [].concat(genericTests$9({ Menu: Menu, List: List, ListTile: ListTile, RaisedButton: RaisedButton, Shadow: Shadow, IconButton: IconButton, renderer: renderer, keys: keys })).concat(mithrilTests$10({ Menu: Menu, List: List, ListTile: ListTile, RaisedButton: RaisedButton, Shadow: Shadow, IconButton: IconButton, renderer: renderer, keys: keys }));
 
-var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var buttonData = [{
   label: "One",
@@ -2679,7 +2847,7 @@ var RadioGroup = (function (_ref) {
         // Only set defaultChecked when no value was stored:
         var isDefaultChecked = defaultChecked && !checkedValue;
         var isChecked = isDefaultChecked || checkedValue === button.value;
-        return h(RadioButton$$1, _extends$3({}, button, options && options[index], {
+        return h(RadioButton$$1, _extends$4({}, button, options && options[index], {
           checked: isChecked,
           onChange: function onChange(newState) {
             return state.checkedValue(newState.value);
@@ -2694,7 +2862,7 @@ var iconStarOutlineSVG$1 = "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlin
 
 var iconStarFilledSVG$1 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\"/></svg>";
 
-var genericTests$9 = (function (_ref) {
+var genericTests$10 = (function (_ref) {
   var RadioButton$$1 = _ref.RadioButton,
       h = _ref.renderer,
       k = _ref.keys;
@@ -2843,13 +3011,13 @@ var genericTests$9 = (function (_ref) {
   }];
 });
 
-var mithrilTests$10 = function mithrilTests() {
+var mithrilTests$11 = function mithrilTests() {
   return [];
 };
 
-var testsMithril$9 = [].concat(genericTests$9({ RadioButton: RadioButton, renderer: renderer, keys: keys })).concat(mithrilTests$10({ RadioButton: RadioButton, renderer: renderer, keys: keys }));
+var testsMithril$10 = [].concat(genericTests$10({ RadioButton: RadioButton, renderer: renderer, keys: keys })).concat(mithrilTests$11({ RadioButton: RadioButton, renderer: renderer, keys: keys }));
 
-var genericTests$10 = (function (_ref) {
+var genericTests$11 = (function (_ref) {
   var RaisedButton$$1 = _ref.RaisedButton;
 
 
@@ -2996,7 +3164,7 @@ var genericTests$10 = (function (_ref) {
   }];
 });
 
-var mithrilTests$11 = function mithrilTests(_ref) {
+var mithrilTests$12 = function mithrilTests(_ref) {
   var RaisedButton$$1 = _ref.RaisedButton,
       h = _ref.renderer;
 
@@ -3075,9 +3243,9 @@ var mithrilTests$11 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$10 = [].concat(genericTests$10({ RaisedButton: RaisedButton, renderer: renderer })).concat(mithrilTests$11({ RaisedButton: RaisedButton, renderer: renderer }));
+var testsMithril$11 = [].concat(genericTests$11({ RaisedButton: RaisedButton, renderer: renderer })).concat(mithrilTests$12({ RaisedButton: RaisedButton, renderer: renderer }));
 
-var genericTests$11 = (function (_ref) {
+var genericTests$12 = (function (_ref) {
   var Ripple$$1 = _ref.Ripple;
 
   Ripple$$1.theme(".tests-ripple-themed-ripple", {
@@ -3221,7 +3389,7 @@ var genericTests$11 = (function (_ref) {
   }];
 });
 
-var mithrilTests$12 = function mithrilTests(_ref) {
+var mithrilTests$13 = function mithrilTests(_ref) {
   var Ripple$$1 = _ref.Ripple,
       h = _ref.renderer;
 
@@ -3279,9 +3447,9 @@ var mithrilTests$12 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$11 = [].concat(genericTests$11({ Ripple: Ripple, renderer: renderer })).concat(mithrilTests$12({ Ripple: Ripple, renderer: renderer }));
+var testsMithril$12 = [].concat(genericTests$12({ Ripple: Ripple, renderer: renderer })).concat(mithrilTests$13({ Ripple: Ripple, renderer: renderer }));
 
-function _defineProperty$6(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$8(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var interactive = (function (_ref) {
   var h = _ref.h,
@@ -3298,7 +3466,7 @@ var interactive = (function (_ref) {
     view: function view(vnode) {
       var state = vnode.state;
       var z = state.z();
-      return h("div", null, [h(".absolute.absolute--fill", _defineProperty$6({}, k.onclick, function () {
+      return h("div", null, [h(".absolute.absolute--fill", _defineProperty$8({}, k.onclick, function () {
         return state.z((z + 1) % 6);
       }), "Click me"), h(Shadow$$1, {
         animated: true,
@@ -3308,7 +3476,7 @@ var interactive = (function (_ref) {
   };
 });
 
-var genericTests$12 = (function (_ref) {
+var genericTests$13 = (function (_ref) {
   var Shadow$$1 = _ref.Shadow,
       h = _ref.renderer,
       k = _ref.keys;
@@ -3384,15 +3552,15 @@ var genericTests$12 = (function (_ref) {
   }];
 });
 
-var mithrilTests$13 = function mithrilTests() {
+var mithrilTests$14 = function mithrilTests() {
   return [];
 };
 
-var testsMithril$12 = [].concat(genericTests$12({ Shadow: Shadow, renderer: renderer, keys: keys })).concat(mithrilTests$13({ Shadow: Shadow, renderer: renderer, keys: keys }));
+var testsMithril$13 = [].concat(genericTests$13({ Shadow: Shadow, renderer: renderer, keys: keys })).concat(mithrilTests$14({ Shadow: Shadow, renderer: renderer, keys: keys }));
 
 var iconStars$5 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>";
 
-var genericTests$13 = (function (_ref) {
+var genericTests$14 = (function (_ref) {
   var SVG$$1 = _ref.SVG,
       h = _ref.renderer;
 
@@ -3459,7 +3627,7 @@ var genericTests$13 = (function (_ref) {
 
 var iconStars$4 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>";
 
-var mithrilTests$14 = function mithrilTests(_ref) {
+var mithrilTests$15 = function mithrilTests(_ref) {
   var SVG$$1 = _ref.SVG,
       h = _ref.renderer;
 
@@ -3499,7 +3667,7 @@ var mithrilTests$14 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$13 = [].concat(genericTests$13({ SVG: SVG, renderer: renderer })).concat(mithrilTests$14({ SVG: SVG, renderer: renderer }));
+var testsMithril$14 = [].concat(genericTests$14({ SVG: SVG, renderer: renderer })).concat(mithrilTests$15({ SVG: SVG, renderer: renderer }));
 
 var onChange$1 = (function (_ref) {
   var h = _ref.h,
@@ -3528,7 +3696,7 @@ var onChange$1 = (function (_ref) {
   };
 });
 
-function _defineProperty$7(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$9(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var events$1 = (function (_ref) {
   var h = _ref.h,
@@ -3550,7 +3718,7 @@ var events$1 = (function (_ref) {
           marginBottom: "1rem"
         }
       }, "Checked: " + checked), h(Switch$$1, {
-        events: _defineProperty$7({}, k.onclick, function () {
+        events: _defineProperty$9({}, k.onclick, function () {
           return state.checked(!checked);
         })
       })]);
@@ -3558,11 +3726,11 @@ var events$1 = (function (_ref) {
   };
 });
 
-var _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$5 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var bullsEyeSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\" baseProfile=\"full\" width=\"24\" height=\"24\" viewBox=\"0 0 24.00 24.00\" enable-background=\"new 0 0 24.00 24.00\" xml:space=\"preserve\"><path fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"1.33333\" stroke-linejoin=\"miter\" d=\"M 12,2C 6.47715,2 2,6.4772 2,12C 2,17.5228 6.47715,22 12,22C 17.5228,22 22,17.5228 22,12C 22,6.4772 17.5228,2 12,2 Z M 12,4C 16.4183,4 20,7.5817 20,12C 20,16.4183 16.4183,20 12,20C 7.58172,20 4,16.4183 4,12C 4,7.5817 7.58172,4 12,4 Z M 12,6C 8.68629,6 6,8.6863 6,12C 6,15.3137 8.68629,18 12,18C 15.3137,18 18,15.3137 18,12C 18,8.6863 15.3137,6 12,6 Z M 12,8C 14.2091,8 16,9.7909 16,12C 16,14.2091 14.2091,16 12,16C 9.79086,16 8,14.2091 8,12C 8,9.7909 9.79086,8 12,8 Z M 12,10C 10.8954,10 10,10.8954 10,12C 10,13.1046 10.8954,14 12,14C 13.1046,14 14,13.1046 14,12C 14,10.8954 13.1046,10 12,10 Z \"/></svg>";
 
-var genericTests$14 = (function (_ref) {
+var genericTests$15 = (function (_ref) {
   var Switch$$1 = _ref.Switch,
       Icon$$1 = _ref.Icon,
       h = _ref.renderer,
@@ -3600,7 +3768,7 @@ var genericTests$14 = (function (_ref) {
 
   var sizes = function sizes(_sizes, attrs) {
     return _sizes.map(function (size) {
-      return h(Switch$$1, _extends$4({}, attrs, {
+      return h(Switch$$1, _extends$5({}, attrs, {
         label: size,
         size: size
       }));
@@ -3786,15 +3954,15 @@ var genericTests$14 = (function (_ref) {
   }];
 });
 
-var mithrilTests$15 = function mithrilTests() {
+var mithrilTests$16 = function mithrilTests() {
   return [];
 };
 
-var testsMithril$14 = [].concat(genericTests$14({ Switch: Switch, Icon: Icon, renderer: renderer, keys: keys })).concat(mithrilTests$15({ Switch: Switch, Icon: Icon, renderer: renderer, keys: keys }));
+var testsMithril$15 = [].concat(genericTests$15({ Switch: Switch, Icon: Icon, renderer: renderer, keys: keys })).concat(mithrilTests$16({ Switch: Switch, Icon: Icon, renderer: renderer, keys: keys }));
 
 var alarmSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3V9z\"/></svg>";
 
-var genericTests$15 = (function (_ref) {
+var genericTests$16 = (function (_ref) {
   var Button$$1 = _ref.Button,
       FAB$$1 = _ref.FAB,
       Icon$$1 = _ref.Icon,
@@ -3892,7 +4060,7 @@ var genericTests$15 = (function (_ref) {
   }];
 });
 
-var _extends$5 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$6 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 /*
 Testing 2 theming methods:
@@ -3909,7 +4077,7 @@ var h = renderer;
 var secondaryButton = {
   theme: Button.theme,
   view: function view(vnode) {
-    return h(Button, _extends$5({
+    return h(Button, _extends$6({
       className: "tests-custom-theme-secondary-button",
       borders: true
     }, vnode.attrs));
@@ -3920,7 +4088,7 @@ secondaryButton.theme(".tests-custom-theme-secondary-button", {
   color_light_background: "#fff"
 });
 
-var mithrilTests$16 = function mithrilTests() {
+var mithrilTests$17 = function mithrilTests() {
   return [{
     section: "Mithril specific tests"
   }, {
@@ -3932,7 +4100,7 @@ var mithrilTests$16 = function mithrilTests() {
   }];
 };
 
-var testsMithril$15 = [].concat(genericTests$15({ Button: Button, FAB: FAB, Icon: Icon, IconButton: IconButton, renderer: renderer /*, list, listTile*/ })).concat(mithrilTests$16());
+var testsMithril$16 = [].concat(genericTests$16({ Button: Button, FAB: FAB, Icon: Icon, IconButton: IconButton, renderer: renderer /*, list, listTile*/ })).concat(mithrilTests$17());
 
 var iconMenuSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>";
 var iconRefreshSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>";
@@ -3976,7 +4144,7 @@ var shared = (function (_ref) {
   };
 });
 
-var genericTests$16 = (function (_ref) {
+var genericTests$17 = (function (_ref) {
   var Toolbar$$1 = _ref.Toolbar,
       IconButton$$1 = _ref.IconButton,
       h = _ref.renderer;
@@ -4077,7 +4245,7 @@ var genericTests$16 = (function (_ref) {
   }];
 });
 
-var mithrilTests$17 = function mithrilTests(_ref) {
+var mithrilTests$18 = function mithrilTests(_ref) {
   var Toolbar$$1 = _ref.Toolbar,
       IconButton$$1 = _ref.IconButton,
       Shadow$$1 = _ref.Shadow,
@@ -4103,28 +4271,29 @@ var mithrilTests$17 = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril$16 = [].concat(genericTests$16({ Toolbar: Toolbar, IconButton: IconButton, Shadow: Shadow, renderer: renderer })).concat(mithrilTests$17({ Toolbar: Toolbar, IconButton: IconButton, Shadow: Shadow, renderer: renderer }));
+var testsMithril$17 = [].concat(genericTests$17({ Toolbar: Toolbar, IconButton: IconButton, Shadow: Shadow, renderer: renderer })).concat(mithrilTests$18({ Toolbar: Toolbar, IconButton: IconButton, Shadow: Shadow, renderer: renderer }));
 
 
 
 var fromMithrilTests = Object.freeze({
 	button: testsMithril,
 	checkbox: testsMithril$1,
-	fab: testsMithril$2,
-	icon: testsMithril$3,
-	iconButton: testsMithril$4,
-	layoutStyles: testsMithril$5,
-	list: testsMithril$6,
-	listTile: testsMithril$7,
-	menu: testsMithril$8,
-	radioButton: testsMithril$9,
-	raisedButton: testsMithril$10,
-	ripple: testsMithril$11,
-	shadow: testsMithril$12,
-	svg: testsMithril$13,
-	switchButton: testsMithril$14,
-	theme: testsMithril$15,
-	toolbar: testsMithril$16
+	dialog: testsMithril$2,
+	fab: testsMithril$3,
+	icon: testsMithril$4,
+	iconButton: testsMithril$5,
+	layoutStyles: testsMithril$6,
+	list: testsMithril$7,
+	listTile: testsMithril$8,
+	menu: testsMithril$9,
+	radioButton: testsMithril$10,
+	raisedButton: testsMithril$11,
+	ripple: testsMithril$12,
+	shadow: testsMithril$13,
+	svg: testsMithril$14,
+	switchButton: testsMithril$15,
+	theme: testsMithril$16,
+	toolbar: testsMithril$17
 });
 
 /*
@@ -4135,7 +4304,7 @@ object-assign
 
 /* eslint-disable no-unused-vars */
 
-var _extends$6 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$7 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -4181,7 +4350,7 @@ function shouldUseNative() {
 		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
 			test3[letter] = letter;
 		});
-		if (Object.keys(_extends$6({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
+		if (Object.keys(_extends$7({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
 			return false;
 		}
 
@@ -8782,7 +8951,7 @@ var createHistory$1 = unwrapExports(createMemoryHistory_1);
 
 var _typeof$12 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _extends$7 = Object.assign || function (target) {
+var _extends$8 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -8833,7 +9002,7 @@ var Router = function (_React$Component) {
 
   Router.prototype.getChildContext = function getChildContext() {
     return {
-      router: _extends$7({}, this.context.router, {
+      router: _extends$8({}, this.context.router, {
         history: this.props.history,
         route: {
           location: this.props.history.location,
@@ -9623,7 +9792,7 @@ var matchPath = function matchPath(pathname) {
 
 var _typeof$15 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _extends$8 = Object.assign || function (target) {
+var _extends$9 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -9674,7 +9843,7 @@ var Route = function (_React$Component) {
 
   Route.prototype.getChildContext = function getChildContext() {
     return {
-      router: _extends$8({}, this.context.router, {
+      router: _extends$9({}, this.context.router, {
         route: {
           location: this.props.location || this.context.router.route.location,
           match: this.state.match
@@ -9768,7 +9937,7 @@ Route.childContextTypes = {
 
 var _typeof$17 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _extends$9 = Object.assign || function (target) {
+var _extends$10 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -9820,7 +9989,7 @@ var normalizeLocation = function normalizeLocation(object) {
 var addBasename = function addBasename(basename, location) {
   if (!basename) return location;
 
-  return _extends$9({}, location, {
+  return _extends$10({}, location, {
     pathname: PathUtils_1(basename) + location.pathname
   });
 };
@@ -9832,7 +10001,7 @@ var stripBasename = function stripBasename(basename, location) {
 
   if (location.pathname.indexOf(base) !== 0) return location;
 
-  return _extends$9({}, location, {
+  return _extends$10({}, location, {
     pathname: location.pathname.substr(base.length)
   });
 };
@@ -9925,7 +10094,7 @@ var StaticRouter = function (_React$Component) {
       block: this.handleBlock
     };
 
-    return react.createElement(Router, _extends$9({}, props, { history: history }));
+    return react.createElement(Router, _extends$10({}, props, { history: history }));
   };
 
   return StaticRouter;
@@ -10072,7 +10241,7 @@ var index$10 = function hoistNonReactStatics(targetComponent, sourceComponent, c
     return targetComponent;
 };
 
-var _extends$10 = Object.assign || function (target) {
+var _extends$11 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -10097,7 +10266,7 @@ var withRouter = function withRouter(Component$$1) {
         remainingProps = _objectWithoutProperties$1(props, ['wrappedComponentRef']);
 
     return react.createElement(Route, { render: function render(routeComponentProps) {
-        return react.createElement(Component$$1, _extends$10({}, remainingProps, routeComponentProps, { ref: wrappedComponentRef }));
+        return react.createElement(Component$$1, _extends$11({}, remainingProps, routeComponentProps, { ref: wrappedComponentRef }));
       } });
   };
 
@@ -10543,7 +10712,7 @@ HashRouter.propTypes = {
 
 var _typeof$20 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _extends$11 = Object.assign || function (target) {
+var _extends$12 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -10629,7 +10798,7 @@ var Link = function (_React$Component) {
 
     var href = this.context.router.history.createHref(typeof to === 'string' ? { pathname: to } : to);
 
-    return react.createElement('a', _extends$11({}, props, { onClick: this.handleClick, href: href }));
+    return react.createElement('a', _extends$12({}, props, { onClick: this.handleClick, href: href }));
   };
 
   return Link;
@@ -10656,7 +10825,7 @@ Link.contextTypes = {
 
 var _typeof2$3 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _extends$12 = Object.assign || function (target) {
+var _extends$13 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -10704,12 +10873,12 @@ var NavLink = function NavLink(_ref) {
 
       var isActive = !!(getIsActive ? getIsActive(match, location) : match);
 
-      return react.createElement(Link, _extends$12({
+      return react.createElement(Link, _extends$13({
         to: to,
         className: isActive ? [activeClassName, className].filter(function (i) {
           return i;
         }).join(' ') : className,
-        style: isActive ? _extends$12({}, style, activeStyle) : style
+        style: isActive ? _extends$13({}, style, activeStyle) : style
       }, rest));
     }
   });
@@ -10871,6 +11040,54 @@ var reactTests$2 = function reactTests(_ref) {
 
 var testsReact$1 = [].concat(genericTests$1({ Checkbox: Checkbox$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests$2({ Checkbox: Checkbox$1, renderer: renderer$1, keys: keys$1 }));
 
+var reactTests$3 = function reactTests() {
+
+  return [
+    // {
+    //   section: "React JSX tests",
+    // },
+    // {
+    //   name: "Simple (JSX)",
+    //   component: () =>
+    //     <Menu
+    //       size={5}
+    //       permanent
+    //     >
+    //       <List
+    //         key="one"
+    //         compact
+    //         hoverable
+    //         tiles={[
+    //           Tile("Bold", "\u2318B"),
+    //           Tile("Italic", "\u2318I"),
+    //           Tile("Underline", "\u2318U"),
+    //           Tile("Strikethrough", "Alt+Shift+5"),
+    //           Tile("Superscript", "\u2318."),
+    //           Tile("Subscript", "\u2318,"),
+    //         ]}
+    //       />
+    //       <List
+    //         key="two"
+    //         compact
+    //         hoverable
+    //         tiles={[
+    //           Tile("Clear formatting", "\u2318/", true),
+    //           Tile("Custom spacing", "")
+    //         ]}
+    //       />
+    //     </Menu>
+    // },
+    // {
+    //   name: "Simple menu (demo without state) (JSX)",
+    //   interactive: true,
+    //   exclude: true,
+    //   component: opener({ renderer, keys, Menu, RaisedButton, List, ListTile, menuFn: simple, id: "simple-jsx" })
+    // },
+  ];
+};
+
+var testsReact$2 = [].concat(genericTests$2({ Dialog: Dialog$1, Button: Button$1, RaisedButton: RaisedButton$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests$3({ Dialog: Dialog$1, Button: Button$1, RaisedButton: RaisedButton$1, renderer: renderer$1, keys: keys$1 }));
+
 var iconAlarm$2 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z\"/></svg>";
 var iconAlarmSVG = react.createElement(
   "svg",
@@ -10878,7 +11095,7 @@ var iconAlarmSVG = react.createElement(
   react.createElement("path", { d: "M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z" })
 );
 
-var reactTests$3 = function reactTests(_ref) {
+var reactTests$4 = function reactTests(_ref) {
   var FAB$$1 = _ref.FAB,
       Icon$$1 = _ref.Icon,
       SVG$$1 = _ref.SVG,
@@ -10993,7 +11210,7 @@ var reactTests$3 = function reactTests(_ref) {
   }];
 };
 
-var testsReact$2 = [].concat(genericTests$2({ FAB: FAB$1, Icon: Icon$1, renderer: renderer$1 })).concat(reactTests$3({ FAB: FAB$1, Icon: Icon$1, SVG: SVG$1, renderer: renderer$1 }));
+var testsReact$3 = [].concat(genericTests$3({ FAB: FAB$1, Icon: Icon$1, renderer: renderer$1 })).concat(reactTests$4({ FAB: FAB$1, Icon: Icon$1, SVG: SVG$1, renderer: renderer$1 }));
 
 var iconStars$6 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>";
 
@@ -11003,7 +11220,7 @@ var iconStarsSVG = react.createElement(
   react.createElement("path", { d: "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z" })
 );
 
-var reactTests$4 = function reactTests(_ref) {
+var reactTests$5 = function reactTests(_ref) {
   var Icon$$1 = _ref.Icon,
       SVG$$1 = _ref.SVG,
       h = _ref.renderer;
@@ -11066,7 +11283,7 @@ var reactTests$4 = function reactTests(_ref) {
   }];
 };
 
-var testsReact$3 = [].concat(genericTests$3({ Icon: Icon$1, SVG: SVG$1, renderer: renderer$1 })).concat(reactTests$4({ Icon: Icon$1, SVG: SVG$1, renderer: renderer$1 }));
+var testsReact$4 = [].concat(genericTests$4({ Icon: Icon$1, SVG: SVG$1, renderer: renderer$1 })).concat(reactTests$5({ Icon: Icon$1, SVG: SVG$1, renderer: renderer$1 }));
 
 var iconFavorite$2 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z\"/></svg>";
 var iconFavoriteSVG = react.createElement(
@@ -11075,7 +11292,7 @@ var iconFavoriteSVG = react.createElement(
   react.createElement("path", { d: "M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z" })
 );
 
-var reactTests$5 = function reactTests(_ref) {
+var reactTests$6 = function reactTests(_ref) {
   var IconButton$$1 = _ref.IconButton,
       Icon$$1 = _ref.Icon,
       SVG$$1 = _ref.SVG,
@@ -11189,7 +11406,7 @@ var reactTests$5 = function reactTests(_ref) {
   }];
 };
 
-var testsReact$4 = [].concat(genericTests$4({ IconButton: IconButton$1, Icon: Icon$1, renderer: renderer$1 })).concat(reactTests$5({ IconButton: IconButton$1, Icon: Icon$1, SVG: SVG$1, renderer: renderer$1 }));
+var testsReact$5 = [].concat(genericTests$5({ IconButton: IconButton$1, Icon: Icon$1, renderer: renderer$1 })).concat(reactTests$6({ IconButton: IconButton$1, Icon: Icon$1, SVG: SVG$1, renderer: renderer$1 }));
 
 var layoutComponent$1 = function layoutComponent(content) {
   return function () {
@@ -11197,13 +11414,13 @@ var layoutComponent$1 = function layoutComponent(content) {
   };
 };
 
-var reactTests$6 = function reactTests() {
+var reactTests$7 = function reactTests() {
   return [];
 };
 
-var testsReact$5 = [].concat(genericTests$5({ renderer: renderer$1, layoutComponent: layoutComponent$1, createBlocks: createBlocks })).concat(reactTests$6({ renderer: renderer$1, layoutComponent: layoutComponent$1, createBlocks: createBlocks }));
+var testsReact$6 = [].concat(genericTests$6({ renderer: renderer$1, layoutComponent: layoutComponent$1, createBlocks: createBlocks })).concat(reactTests$7({ renderer: renderer$1, layoutComponent: layoutComponent$1, createBlocks: createBlocks }));
 
-var reactTests$7 = function reactTests(_ref) {
+var reactTests$8 = function reactTests(_ref) {
   var List$$1 = _ref.List,
       Icon$$1 = _ref.Icon,
       ListTile$$1 = _ref.ListTile,
@@ -11308,7 +11525,7 @@ var reactTests$7 = function reactTests(_ref) {
   }];
 };
 
-var testsReact$6 = [].concat(genericTests$6({ List: List$1, Icon: Icon$1, ListTile: ListTile$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests$7({ List: List$1, Icon: Icon$1, ListTile: ListTile$1, renderer: renderer$1, keys: keys$1 }));
+var testsReact$7 = [].concat(genericTests$7({ List: List$1, Icon: Icon$1, ListTile: ListTile$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests$8({ List: List$1, Icon: Icon$1, ListTile: ListTile$1, renderer: renderer$1, keys: keys$1 }));
 
 var iconStars$7 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>";
 
@@ -11318,7 +11535,7 @@ var iconStarsSVG$1 = react.createElement(
   react.createElement("path", { d: "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z" })
 );
 
-var reactTests$8 = function reactTests(_ref) {
+var reactTests$9 = function reactTests(_ref) {
   var Icon$$1 = _ref.Icon,
       ListTile$$1 = _ref.ListTile,
       h = _ref.renderer;
@@ -11474,9 +11691,9 @@ var reactTests$8 = function reactTests(_ref) {
   }];
 };
 
-var testsReact$7 = [].concat(genericTests$7({ Icon: Icon$1, ListTile: ListTile$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests$8({ Icon: Icon$1, ListTile: ListTile$1, renderer: renderer$1, keys: keys$1 }));
+var testsReact$8 = [].concat(genericTests$8({ Icon: Icon$1, ListTile: ListTile$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests$9({ Icon: Icon$1, ListTile: ListTile$1, renderer: renderer$1, keys: keys$1 }));
 
-function _defineProperty$8(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$10(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var opener$1 = (function (_ref) {
   var h = _ref.renderer,
@@ -11506,7 +11723,7 @@ var opener$1 = (function (_ref) {
         react.createElement(RaisedButton$$1, {
           label: "Open menu",
           id: id,
-          events: _defineProperty$8({}, k.onclick, function () {
+          events: _defineProperty$10({}, k.onclick, function () {
             return state.show(true);
           })
         }),
@@ -11516,10 +11733,7 @@ var opener$1 = (function (_ref) {
           h: h,
           Menu: Menu$$1,
           List: List$$1,
-          ListTile: ListTile$$1,
-          getState: function getState(newState) {
-            return state.show(newState.visible);
-          }
+          ListTile: ListTile$$1
         })
       );
     }
@@ -11552,7 +11766,7 @@ var simple$1 = (function (_ref) {
   );
 });
 
-var reactTests$9 = function reactTests(_ref) {
+var reactTests$10 = function reactTests(_ref) {
   var Menu$$1 = _ref.Menu,
       List$$1 = _ref.List,
       ListTile$$1 = _ref.ListTile;
@@ -11601,7 +11815,7 @@ var reactTests$9 = function reactTests(_ref) {
   }];
 };
 
-var testsReact$8 = [].concat(genericTests$8({ Menu: Menu$1, List: List$1, ListTile: ListTile$1, RaisedButton: RaisedButton$1, Shadow: Shadow$1, IconButton: IconButton$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests$9({ Menu: Menu$1, List: List$1, ListTile: ListTile$1, RaisedButton: RaisedButton$1, Shadow: Shadow$1, IconButton: IconButton$1, renderer: renderer$1, keys: keys$1 }));
+var testsReact$9 = [].concat(genericTests$9({ Menu: Menu$1, List: List$1, ListTile: ListTile$1, RaisedButton: RaisedButton$1, Shadow: Shadow$1, IconButton: IconButton$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests$10({ Menu: Menu$1, List: List$1, ListTile: ListTile$1, RaisedButton: RaisedButton$1, Shadow: Shadow$1, IconButton: IconButton$1, renderer: renderer$1, keys: keys$1 }));
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -11611,7 +11825,7 @@ function _possibleConstructorReturn$10(self, call) { if (!self) { throw new Refe
 
 function _inherits$10(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var reactTests$10 = function reactTests(_ref) {
+var reactTests$11 = function reactTests(_ref) {
   var RadioButton$$1 = _ref.RadioButton,
       h = _ref.renderer;
 
@@ -11671,9 +11885,9 @@ var reactTests$10 = function reactTests(_ref) {
   }];
 };
 
-var testsReact$9 = [].concat(genericTests$9({ RadioButton: RadioButton$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests$10({ RadioButton: RadioButton$1, renderer: renderer$1, keys: keys$1 }));
+var testsReact$10 = [].concat(genericTests$10({ RadioButton: RadioButton$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests$11({ RadioButton: RadioButton$1, renderer: renderer$1, keys: keys$1 }));
 
-var reactTests$11 = function reactTests(_ref) {
+var reactTests$12 = function reactTests(_ref) {
   var RaisedButton$$1 = _ref.RaisedButton,
       h = _ref.renderer;
 
@@ -11770,9 +11984,9 @@ var reactTests$11 = function reactTests(_ref) {
   }];
 };
 
-var testsReact$10 = [].concat(genericTests$10({ RaisedButton: RaisedButton$1, renderer: renderer$1 })).concat(reactTests$11({ RaisedButton: RaisedButton$1, renderer: renderer$1 }));
+var testsReact$11 = [].concat(genericTests$11({ RaisedButton: RaisedButton$1, renderer: renderer$1 })).concat(reactTests$12({ RaisedButton: RaisedButton$1, renderer: renderer$1 }));
 
-var reactTests$12 = function reactTests(_ref) {
+var reactTests$13 = function reactTests(_ref) {
   var Ripple$$1 = _ref.Ripple,
       h = _ref.renderer;
   // eslint-disable-line no-unused-vars
@@ -11866,9 +12080,9 @@ var reactTests$12 = function reactTests(_ref) {
     }
   }];
 };
-var testsReact$11 = [].concat(genericTests$11({ Ripple: Ripple$1, renderer: renderer$1 })).concat(reactTests$12({ Ripple: Ripple$1, renderer: renderer$1 }));
+var testsReact$12 = [].concat(genericTests$12({ Ripple: Ripple$1, renderer: renderer$1 })).concat(reactTests$13({ Ripple: Ripple$1, renderer: renderer$1 }));
 
-var reactTests$13 = function reactTests(_ref) {
+var reactTests$14 = function reactTests(_ref) {
   var Shadow$$1 = _ref.Shadow,
       h = _ref.renderer,
       k = _ref.keys;
@@ -11893,7 +12107,7 @@ var reactTests$13 = function reactTests(_ref) {
   }];
 };
 
-var testsReact$12 = [].concat(genericTests$12({ Shadow: Shadow$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests$13({ Shadow: Shadow$1, renderer: renderer$1, keys: keys$1 }));
+var testsReact$13 = [].concat(genericTests$13({ Shadow: Shadow$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests$14({ Shadow: Shadow$1, renderer: renderer$1, keys: keys$1 }));
 
 var iconStars$8 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>";
 
@@ -11903,7 +12117,7 @@ var iconStarsSVG$2 = react.createElement(
   react.createElement("path", { d: "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z" })
 );
 
-var reactTests$14 = function reactTests(_ref) {
+var reactTests$15 = function reactTests(_ref) {
   var SVG$$1 = _ref.SVG,
       h = _ref.renderer;
 
@@ -11959,9 +12173,9 @@ var reactTests$14 = function reactTests(_ref) {
   }];
 };
 
-var testsReact$13 = [].concat(genericTests$13({ SVG: SVG$1, renderer: renderer$1 })).concat(reactTests$14({ SVG: SVG$1, renderer: renderer$1 }));
+var testsReact$14 = [].concat(genericTests$14({ SVG: SVG$1, renderer: renderer$1 })).concat(reactTests$15({ SVG: SVG$1, renderer: renderer$1 }));
 
-var reactTests$15 = function reactTests(_ref) {
+var reactTests$16 = function reactTests(_ref) {
   var Switch$$1 = _ref.Switch,
       h = _ref.renderer;
   // eslint-disable-line no-unused-vars
@@ -11979,14 +12193,14 @@ var reactTests$15 = function reactTests(_ref) {
   }];
 };
 
-var testsReact$14 = [].concat(genericTests$14({ Switch: Switch$1, Icon: Icon$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests$15({ Switch: Switch$1, Icon: Icon$1, renderer: renderer$1, keys: keys$1 }));
+var testsReact$15 = [].concat(genericTests$15({ Switch: Switch$1, Icon: Icon$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests$16({ Switch: Switch$1, Icon: Icon$1, renderer: renderer$1, keys: keys$1 }));
 
-var _extends$13 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$14 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var reactTests$16 = function reactTests() {
+var reactTests$17 = function reactTests() {
 
   var SecondaryButton = function SecondaryButton(props) {
-    return renderer$1(Button$1, _extends$13({}, props, {
+    return renderer$1(Button$1, _extends$14({}, props, {
       className: "tests-custom-theme-secondary-button",
       borders: true
     }));
@@ -12015,7 +12229,7 @@ var reactTests$16 = function reactTests() {
   }];
 };
 
-var testsReact$15 = [].concat(genericTests$15({ Button: Button$1, FAB: FAB$1, Icon: Icon$1, IconButton: IconButton$1, renderer: renderer$1 })).concat(reactTests$16());
+var testsReact$16 = [].concat(genericTests$16({ Button: Button$1, FAB: FAB$1, Icon: Icon$1, IconButton: IconButton$1, renderer: renderer$1 })).concat(reactTests$17());
 
 var iconMenuSVG$1 = react.createElement(
   "svg",
@@ -12033,7 +12247,7 @@ var iconAddSVG$1 = react.createElement(
   react.createElement("path", { d: "M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" })
 );
 
-var reactTests$17 = function reactTests(_ref) {
+var reactTests$18 = function reactTests(_ref) {
   var Toolbar$$1 = _ref.Toolbar,
       IconButton$$1 = _ref.IconButton,
       h = _ref.renderer;
@@ -12120,28 +12334,29 @@ var reactTests$17 = function reactTests(_ref) {
   }];
 };
 
-var testsReact$16 = [].concat(genericTests$16({ Toolbar: Toolbar$1, IconButton: IconButton$1, Shadow: Shadow$1, renderer: renderer$1 })).concat(reactTests$17({ Toolbar: Toolbar$1, IconButton: IconButton$1, Shadow: Shadow$1, renderer: renderer$1 }));
+var testsReact$17 = [].concat(genericTests$17({ Toolbar: Toolbar$1, IconButton: IconButton$1, Shadow: Shadow$1, renderer: renderer$1 })).concat(reactTests$18({ Toolbar: Toolbar$1, IconButton: IconButton$1, Shadow: Shadow$1, renderer: renderer$1 }));
 
 
 
 var fromReactTests = Object.freeze({
 	button: testsReact,
 	checkbox: testsReact$1,
-	fab: testsReact$2,
-	icon: testsReact$3,
-	iconButton: testsReact$4,
-	layoutStyles: testsReact$5,
-	list: testsReact$6,
-	listTile: testsReact$7,
-	menu: testsReact$8,
-	radioButton: testsReact$9,
-	raisedButton: testsReact$10,
-	ripple: testsReact$11,
-	shadow: testsReact$12,
-	svg: testsReact$13,
-	switchButton: testsReact$14,
-	theme: testsReact$15,
-	toolbar: testsReact$16
+	dialog: testsReact$2,
+	fab: testsReact$3,
+	icon: testsReact$4,
+	iconButton: testsReact$5,
+	layoutStyles: testsReact$6,
+	list: testsReact$7,
+	listTile: testsReact$8,
+	menu: testsReact$9,
+	radioButton: testsReact$10,
+	raisedButton: testsReact$11,
+	ripple: testsReact$12,
+	shadow: testsReact$13,
+	svg: testsReact$14,
+	switchButton: testsReact$15,
+	theme: testsReact$16,
+	toolbar: testsReact$17
 });
 
 var mithrilTests = fromMithrilTests;

@@ -10,7 +10,7 @@ export const viewComponent = ({
   component,
   renderView,
   onMount = () => {},
-  onUnmount = () => {},
+  onUnMount = () => {},
 }) => {
 
   const view = vnode => {
@@ -28,6 +28,6 @@ export const viewComponent = ({
   return {
     view: renderView || view,
     oncreate: onMount,
-    onremove: onUnmount
+    onremove: onUnMount
   };
 };

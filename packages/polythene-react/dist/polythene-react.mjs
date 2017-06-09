@@ -1,6 +1,7 @@
 export * from 'polythene-react-base';
 export * from 'polythene-react-button';
 export * from 'polythene-react-checkbox';
+export * from 'polythene-react-dialog';
 export * from 'polythene-react-fab';
 export * from 'polythene-react-icon';
 export * from 'polythene-react-icon-button';

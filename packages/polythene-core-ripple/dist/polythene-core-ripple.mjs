@@ -171,7 +171,7 @@ var getInitialState = function getInitialState() {
   return {
     animations: {},
     animating: false,
-    removeEventListeners: undefined
+    cleanUp: undefined
   };
 };
 
@@ -218,14 +218,14 @@ var onMount = function onMount(vnode) {
   var triggerEl = attrs.target ? attrs.target : vnode.dom && vnode.dom.parentElement;
 
   triggerEl.addEventListener(touchEndEvent, tap, false);
-  state.removeEventListeners = function () {
+  state.cleanUp = function () {
     return triggerEl.removeEventListener(touchEndEvent, tap, false);
   };
 };
 
-var onUnmount = function onUnmount(_ref2) {
+var onUnMount = function onUnMount(_ref2) {
   var state = _ref2.state;
-  return state.removeEventListeners();
+  return state.cleanUp();
 };
 
 var ripple = Object.freeze({
@@ -234,7 +234,7 @@ var ripple = Object.freeze({
 	getInitialState: getInitialState,
 	createProps: createProps,
 	onMount: onMount,
-	onUnmount: onUnmount
+	onUnMount: onUnMount
 });
 
 export { ripple as coreRipple, classes, vars$1 as vars };

@@ -623,10 +623,7 @@ var view = function view(_ref) {
       }
       notifyState(state, attrs);
     }
-  } : null,
-
-  // onblur defined in oncreate
-  !ignoreEvent(attrs, "onblur") ? {
+  } : null, !ignoreEvent(attrs, "onblur") ? {
     onblur: function onblur(e) {
       state.focus(false);
       state.touched = true;

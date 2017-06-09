@@ -1,5 +1,6 @@
 export { default as button }       from "./button/tests-react";
 export { default as checkbox }     from "./checkbox/tests-react";
+export { default as dialog }       from "./dialog/tests-react";
 export { default as fab }          from "./fab/tests-react";
 export { default as icon }         from "./icon/tests-react";
 export { default as iconButton }   from "./icon-button/tests-react";

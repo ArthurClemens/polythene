@@ -226,7 +226,6 @@ const view = ({state, attrs}) => {
           }
           : null,
             
-        // onblur defined in oncreate
         !ignoreEvent(attrs, "onblur")
             ? {
               onblur: e => {

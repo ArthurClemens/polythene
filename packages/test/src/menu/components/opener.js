@@ -32,7 +32,6 @@ export default ({ renderer: h, keys: k, Menu, RaisedButton, List, ListTile, menu
           Menu,
           List,
           ListTile,
-          getState: newState => state.show(newState.visible)
         })
       ]
     );

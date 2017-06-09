@@ -10,11 +10,9 @@ import { renderer as h, RaisedButton } from "polythene-react";
 const StateComponent = {
   oninit: vnode => {
     const checked = stream(false);
-    const label = stream("State");
     vnode.state = {
       checked,
-      label,
-      redrawOnUpdate: stream.merge([checked, label])
+      redrawOnUpdate: stream.merge([checked])
     };
   },
   view: vnode => {
@@ -22,7 +20,7 @@ const StateComponent = {
     const attrs = vnode.attrs;
     const checked = state.checked();
     return h(RaisedButton, {
-      label: `${state.label()} of ${attrs.subject} is ${checked ? "On" : "Off"}`,
+      label: `Click ${attrs.subject} to switch ${checked ? "Off" : "On"}`,
       events: {
         [keys.onclick]: () => state.checked(!checked)
       }
@@ -50,9 +48,9 @@ export const MithrilToReact = component => (
     }
     
     componentDidMount() {
-      this.state.state.redrawOnUpdate && this.state.state.redrawOnUpdate.map(() => (
+      this.state.state.redrawOnUpdate && this.state.state.redrawOnUpdate.map(() =>
         this.forceUpdate()
-      ));
+      );
     }
 
     render() {

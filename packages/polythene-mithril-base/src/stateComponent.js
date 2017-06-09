@@ -11,7 +11,7 @@ export const stateComponent = ({
   component,
   getInitialState = () => ({}),
   onMount = () => {},
-  onUnmount = () => {},
+  onUnMount = () => {},
 }) => {
 
   const oninit = vnode => {
@@ -22,6 +22,7 @@ export const stateComponent = ({
     const initialState = getInitialState(protoState, stream);
     vnode.state = initialState;
     vnode.state.redrawOnUpdate && vnode.state.redrawOnUpdate.map(() => (
+      // console.log("redrawOnUpdate", value),
       setTimeout(renderer.redraw)
     ));
   };
@@ -42,6 +43,6 @@ export const stateComponent = ({
     view,
     oninit: oninit,
     oncreate: onMount,
-    onremove: onUnmount
+    onremove: onUnMount
   };
 };

@@ -1,6 +1,6 @@
 import { mixin } from "polythene-core-css";
 
-export default (selector) => [{
+export default selector => [{
   [selector]: {
     userSelect: "none",
     outline: "none",

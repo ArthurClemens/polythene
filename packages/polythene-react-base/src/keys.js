@@ -13,6 +13,7 @@ export const keys = {
   onmouseout:  "onMouseOut",
   onmouseover: "onMouseOver",
   onmouseup:   "onMouseUp",
+  onscroll:    "onScroll",
   tabindex:    "tabIndex",
 };
 

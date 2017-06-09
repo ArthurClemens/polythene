@@ -16,6 +16,7 @@ var keys = {
   onmouseout: "onMouseOut",
   onmouseover: "onMouseOver",
   onmouseup: "onMouseUp",
+  onscroll: "onScroll",
   tabindex: "tabIndex"
 };
 
@@ -41,11 +42,9 @@ import { renderer as h, RaisedButton } from "polythene-react";
 const StateComponent = {
   oninit: vnode => {
     const checked = stream(false);
-    const label = stream("State");
     vnode.state = {
       checked,
-      label,
-      redrawOnUpdate: stream.merge([checked, label])
+      redrawOnUpdate: stream.merge([checked])
     };
   },
   view: vnode => {
@@ -53,7 +52,7 @@ const StateComponent = {
     const attrs = vnode.attrs;
     const checked = state.checked();
     return h(RaisedButton, {
-      label: `${state.label()} of ${attrs.subject} is ${checked ? "On" : "Off"}`,
+      label: `Click ${attrs.subject} to switch ${checked ? "Off" : "On"}`,
       events: {
         [keys.onclick]: () => state.checked(!checked)
       }
@@ -341,8 +340,10 @@ var stateComponent = function stateComponent(_ref) {
   } : _ref$getInitialState,
       _ref$onMount = _ref.onMount,
       onMount = _ref$onMount === undefined ? function () {} : _ref$onMount,
-      _ref$onUnmount = _ref.onUnmount,
-      onUnmount = _ref$onUnmount === undefined ? function () {} : _ref$onUnmount;
+      _ref$onUnMount = _ref.onUnMount,
+      onUnMount = _ref$onUnMount === undefined ? function () {} : _ref$onUnMount,
+      _ref$view = _ref.view,
+      view = _ref$view === undefined ? null : _ref$view;
 
 
   return function (_Component) {
@@ -369,14 +370,17 @@ var stateComponent = function stateComponent(_ref) {
         this._mounted = true;
         onMount(this.createVirtualNode());
         this.state.redrawOnUpdate && this.state.redrawOnUpdate.map(function (values) {
-          return _this2._mounted && _this2.setState({ redrawValues: values });
+          return (
+            // console.log("redrawOnUpdate", values),
+            _this2._mounted && _this2.setState({ redrawValues: values })
+          );
         });
       }
     }, {
       key: "componentWillUnmount",
       value: function componentWillUnmount() {
         this._mounted = false;
-        onUnmount(this.createVirtualNode());
+        onUnMount(this.createVirtualNode());
       }
     }, {
       key: "createVirtualNode",
@@ -390,8 +394,8 @@ var stateComponent = function stateComponent(_ref) {
         };
       }
     }, {
-      key: "render",
-      value: function render() {
+      key: "_render",
+      value: function _render() {
         var _this3 = this;
 
         var vnode = this.createVirtualNode();
@@ -400,6 +404,11 @@ var stateComponent = function stateComponent(_ref) {
               _this3.dom = ReactDOM.findDOMNode(reactComponent);
             }
           } }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, requiresKeys: requiresKeys, keys: keys }), vnode.attrs.after]);
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        return view ? view(this.createVirtualNode()) : this._render(this.props);
       }
     }]);
 
@@ -478,64 +487,73 @@ function _possibleConstructorReturn$3(self, call) { if (!self) { throw new Refer
 
 function _inherits$3(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Toggle = function (_Component) {
-  _inherits$3(Toggle, _Component);
+var normalizeAttrs = function normalizeAttrs(attrs) {
+  return typeof attrs === "function" ? attrs() : attrs;
+};
 
-  function Toggle(props) {
-    _classCallCheck$3(this, Toggle);
+var Toggle = function Toggle(Instance, toggleProps) {
+  var attrs = normalizeAttrs(toggleProps.attrs);
 
-    var _this = _possibleConstructorReturn$3(this, (Toggle.__proto__ || Object.getPrototypeOf(Toggle)).call(this, props));
+  return function (_Component) {
+    _inherits$3(_class, _Component);
 
-    _this.state = {
-      visible: props.permanent || props.show || false,
-      transitioning: false
-    };
-    return _this;
-  }
+    function _class(props) {
+      _classCallCheck$3(this, _class);
 
-  _createClass$3(Toggle, [{
-    key: "componentWillReceiveProps",
-    value: function componentWillReceiveProps(nextProps) {
-      if (nextProps.permanent || this.state.transitioning) {
-        return;
-      }
-      if (!this.state.visible && nextProps.show) {
-        this.setState({
-          visible: true
-        });
-      } else if (this.state.visible && nextProps.hide) {
-        this.setState({
-          visible: false
-        });
-      }
+      var _this = _possibleConstructorReturn$3(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, props));
+
+      var hide = toggleProps.hide || attrs.hide;
+      var show = !hide && (toggleProps.show || attrs.show || false);
+      _this.state = {
+        visible: toggleProps.permanent || attrs.permanent || show,
+        transitioning: show || hide
+      };
+      _this._mounted = false;
+      return _this;
     }
-  }, {
-    key: "updateState",
-    value: function updateState() {
-      if (this.props.getState) {
-        this.props.getState({
-          visible: this.state.visible,
-          transitioning: this.state.transitioning
-        });
-      }
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
 
-      return this.state.visible ? renderer(this.props.instance, _extends$3({}, this.props, {
-        setVisible: function setVisible(value) {
-          return _this2.setState({ visible: value }, _this2.updateState);
-        },
-        setTransitioning: function setTransitioning(value) {
-          return _this2.setState({ transitioning: value }, _this2.updateState);
+    _createClass$3(_class, [{
+      key: "componentDidMount",
+      value: function componentDidMount() {
+        this._mounted = true;
+      }
+    }, {
+      key: "componentWillUnmount",
+      value: function componentWillUnmount() {
+        this._mounted = false;
+      }
+    }, {
+      key: "setDisplayState",
+      value: function setDisplayState(newState) {
+        if (!this._mounted) {
+          return;
         }
-      })) : renderer("span", { className: this.props.placeholderClassName });
-    }
-  }]);
+        var transitioning = newState.visible !== undefined ? false : newState.transitioning !== undefined ? newState.transitioning : this.state.transitioning;
+        var visible = newState.visible !== undefined ? newState.visible : this.state.visible;
+        this.setState({ visible: visible, transitioning: transitioning }, this.updateState);
+      }
+    }, {
+      key: "updateState",
+      value: function updateState() {
+        if (attrs.getState) {
+          attrs.getState({
+            visible: this.state.visible,
+            transitioning: this.state.transitioning
+          });
+        }
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        return this.state.visible ? renderer(Instance, _extends$3({}, attrs, {
+          transitions: toggleProps.transitions,
+          setDisplayState: this.setDisplayState.bind(this)
+        })) : renderer("span", { className: toggleProps.placeholderClassName });
+      }
+    }]);
 
-  return Toggle;
-}(Component);
+    return _class;
+  }(Component);
+};
 
 export { keys, renderer, stateComponent, viewComponent, Toggle, MithrilToReact };

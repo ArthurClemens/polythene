@@ -13,7 +13,7 @@ const getNameOfState = state =>
         ? "dirty"
         : "none";
 
-const view = ({state, attrs}) => {
+const view = ({ state, attrs }) => {
   const element = attrs.element || "div";
   const props = Object.assign(
     {},

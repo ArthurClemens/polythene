@@ -11,7 +11,7 @@ export const getInitialState = () => {
   return {
     animations: {},
     animating: false,
-    removeEventListeners: undefined
+    cleanUp: undefined
   };
 };
 
@@ -68,9 +68,9 @@ export const onMount = vnode => {
     : vnode.dom && vnode.dom.parentElement;
     
   triggerEl.addEventListener(touchEndEvent, tap, false);
-  state.removeEventListeners = () =>
+  state.cleanUp = () =>
     triggerEl.removeEventListener(touchEndEvent, tap, false);
 };
 
-export const onUnmount = ({ state }) =>
-  state.removeEventListeners();
+export const onUnMount = ({ state }) =>
+  state.cleanUp();

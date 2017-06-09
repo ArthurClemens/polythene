@@ -13,7 +13,8 @@ export const stateComponent = ({
   component,
   getInitialState = () => ({}),
   onMount = () => {},
-  onUnmount = () => {},
+  onUnMount = () => {},
+  view = null
 }) => {
   
   return class extends Component {
@@ -36,13 +37,14 @@ export const stateComponent = ({
       this._mounted = true;
       onMount(this.createVirtualNode());
       this.state.redrawOnUpdate && this.state.redrawOnUpdate.map(values => (
+        // console.log("redrawOnUpdate", values),
         this._mounted && this.setState({ redrawValues: values })
       ));
     }
 
     componentWillUnmount() {
       this._mounted = false;
-      onUnmount(this.createVirtualNode());
+      onUnMount(this.createVirtualNode());
     }
 
     createVirtualNode() {
@@ -55,7 +57,7 @@ export const stateComponent = ({
       };
     }
 
-    render() {
+    _render() {
       const vnode = this.createVirtualNode();
       return renderer(
         component || vnode.attrs.element || element,
@@ -74,6 +76,12 @@ export const stateComponent = ({
           vnode.attrs.after
         ]
       );
+    }
+
+    render() {
+      return view
+        ? view(this.createVirtualNode())
+        : this._render(this.props);
     }
   };
 };

@@ -1,9 +1,9 @@
 {
-  "name": "polythene-dialog",
+  "name": "polythene-core-dialog",
   "version": "1.0.0-rc.1",
   "description": "",
-  "main": "dist/polythene-dialog.js",
-  "module": "dist/polythene-dialog.mjs",
+  "main": "dist/polythene-core-dialog.js",
+  "module": "dist/polythene-core-dialog.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
@@ -14,11 +14,9 @@
     "README.md"
   ],
   "dependencies": {
-    "mithril": "1.1.1",
     "polythene-core": "1.0.0-rc.1",
-    "polythene-core-menu": "1.0.0-rc.1",
     "polythene-core-css": "1.0.0-rc.1",
-    "polythene-mithril": "1.0.0-rc.1",
+    "polythene-core-menu": "1.0.0-rc.1",
     "polythene-theme": "1.0.0-rc.1"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",

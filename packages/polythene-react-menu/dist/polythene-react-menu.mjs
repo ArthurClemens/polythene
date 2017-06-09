@@ -14,12 +14,14 @@ var MenuInstance = stateComponent(_extends({}, coreMenu, {
 }));
 
 var Menu = function Menu(props) {
-  return renderer(Toggle, _extends({}, {
+  return renderer(Toggle(MenuInstance, _extends({}, {
     placeholderClassName: classes.placeholder,
-    instance: MenuInstance
-  }, props));
+    show: props.show,
+    attrs: props
+  })));
 };
 
 Menu.theme = coreMenu.theme;
+Menu.displayName = "Menu";
 
 export { Menu };

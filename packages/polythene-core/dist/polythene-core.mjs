@@ -408,7 +408,7 @@ var multiple = function multiple(mOpts) {
     document.body.classList[candidates.length ? "add" : "remove"](mOpts.bodyShowClass);
     return !candidates.length ? m(mOpts.placeholder) // placeholder because we cannot return null
     : m(mOpts.element, {
-      className: attrs.position === "container" ? "pe-multiple--container" : "pe-multiple--screen"
+      class: attrs.position === "container" ? "pe-multiple--container" : "pe-multiple--screen"
     }, candidates.map(function (itemData) {
       return m(mOpts.instance, _extends({}, itemData, {
         transitions: mOpts.transitions,
@@ -435,6 +435,236 @@ var multiple = function multiple(mOpts) {
     },
     view: view,
     theme: mOpts.instance.theme
+  };
+};
+
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+/*
+Helper module to manage multiple items of the same component type.
+
+mOptions:
+- instance
+- defaultId
+- element
+- placeholder
+- bodyShowClass
+*/
+
+var multipleHOC = function multipleHOC(_ref) {
+  var mOptions = _ref.options,
+      renderer = _ref.renderer;
+
+
+  var items = [];
+  var current = void 0;
+
+  var getInitialState = function getInitialState(vnode, createStream) {
+    current = createStream();
+    return {
+      current: current,
+      redrawOnUpdate: createStream.merge([current])
+    };
+  };
+
+  var itemIndex = function itemIndex(id) {
+    var item = findItem(id);
+    return items.indexOf(item);
+  };
+
+  var removeItem = function removeItem(id) {
+    var index = itemIndex(id);
+    if (index !== -1) {
+      items.splice(index, 1);
+    }
+  };
+
+  var replaceItem = function replaceItem(id, newItem) {
+    var index = itemIndex(id);
+    if (index !== -1) {
+      items[index] = newItem;
+    }
+  };
+
+  var findItem = function findItem(id) {
+    // traditional for loop for IE10
+    for (var i = 0; i < items.length; i++) {
+      if (items[i].instanceId === id) {
+        return items[i];
+      }
+    }
+  };
+
+  var next = function next() {
+    if (items.length) {
+      items[0].show = true;
+      current(items[0].instanceId);
+    }
+  };
+
+  var remove = function remove() {
+    var instanceId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : mOptions.defaultId;
+
+    if (mOptions.queue) {
+      items.shift();
+      // add time to remove the previous instance before drawing the next one
+      setTimeout(next, 0);
+    } else {
+      removeItem(instanceId);
+    }
+  };
+
+  var removeAll = function removeAll() {
+    // traditional for loop for IE10
+    for (var i = 0; i < items.length; i++) {
+      items[i].cancelled = true;
+    }
+    items.length = 0;
+    current(null);
+  };
+
+  var setPauseState = function setPauseState(pause, instanceId) {
+    var item = findItem(instanceId);
+    if (item) {
+      item.pause = pause;
+      item.unpause = !pause;
+    }
+  };
+
+  var normalizeAttrs = function normalizeAttrs(attrs) {
+    return typeof attrs === "function" ? attrs() : attrs;
+  };
+
+  var makeItem = function makeItem(itemAttrs, instanceId, spawn) {
+    var resolveShow = void 0;
+    var didShow = function didShow() {
+      var attrs = normalizeAttrs(itemAttrs);
+      if (attrs.didShow) {
+        attrs.didShow(instanceId);
+      }
+      current(instanceId);
+      return resolveShow(instanceId);
+    };
+    var showPromise = new Promise(function (resolve) {
+      return resolveShow = resolve;
+    });
+
+    var resolveHide = void 0;
+    var didHide = function didHide() {
+      var attrs = normalizeAttrs(itemAttrs);
+      if (attrs.didHide) {
+        attrs.didHide(instanceId);
+      }
+      remove(instanceId);
+      current(instanceId);
+      return resolveHide(instanceId);
+    };
+
+    var hidePromise = new Promise(function (resolve) {
+      return resolveHide = resolve;
+    });
+
+    return _extends$1({}, mOptions, {
+      instanceId: instanceId,
+      spawn: spawn,
+      attrs: itemAttrs,
+      show: mOptions.queue ? false : true,
+      cancelled: false,
+      showPromise: showPromise,
+      hidePromise: hidePromise,
+      didShow: didShow,
+      didHide: didHide
+    });
+  };
+
+  var count = function count() {
+    return items.length;
+  };
+  var pause = function pause() {
+    var instanceId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : mOptions.defaultId;
+    return setPauseState(true, instanceId);
+  };
+  var unpause = function unpause() {
+    var instanceId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : mOptions.defaultId;
+    return setPauseState(false, instanceId);
+  };
+
+  var show = function show() {
+    var attrs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var spawnOpts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+    var instanceId = spawnOpts.id || mOptions.defaultId;
+    var spawn = spawnOpts.spawn || mOptions.defaultId;
+    var item = void 0;
+    if (mOptions.queue) {
+      item = makeItem(attrs, instanceId, spawn);
+      items.push(item);
+      if (items.length === 1) {
+        next();
+      }
+    } else {
+      var storedItem = findItem(instanceId);
+      item = makeItem(attrs, instanceId, spawn);
+      if (!storedItem) {
+        items.push(item);
+      } else {
+        replaceItem(instanceId, item);
+      }
+      current(instanceId);
+    }
+    return item.showPromise;
+  };
+
+  var hide = function hide() {
+    var spawnOpts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+    var instanceId = spawnOpts.id || mOptions.defaultId;
+    var item = mOptions.queue && items.length ? items[0] : findItem(instanceId);
+    if (item) {
+      item.hide = true;
+      current(null);
+      return item.hidePromise;
+    }
+    return Promise.resolve(instanceId);
+  };
+
+  var clear = function clear() {
+    return removeAll();
+  };
+
+  var view = function view(_ref2) {
+    var attrs = _ref2.attrs;
+
+    var spawn = attrs.spawn || mOptions.defaultId;
+    var candidates = items.filter(function (item) {
+      return item.show && item.spawn === spawn;
+    });
+    document.body.classList[candidates.length ? "add" : "remove"](mOptions.bodyShowClass);
+    return !candidates.length ? renderer(mOptions.placeholder) // placeholder because we cannot return null
+    : renderer(mOptions.element, {
+      className: attrs.position === "container" ? "pe-multiple--container" : "pe-multiple--screen"
+    }, candidates.map(function (itemData) {
+      return renderer(mOptions.instance, _extends$1({}, {
+        key: itemData.key || itemData.instanceId,
+        transitions: mOptions.transitions,
+        show: itemData.show,
+        hide: itemData.hide,
+        multipleDidShow: itemData.didShow,
+        multipleDidHide: itemData.didHide
+      }, itemData.attrs));
+    }));
+  };
+
+  return {
+    clear: clear,
+    count: count,
+    getInitialState: getInitialState,
+    hide: hide,
+    pause: pause,
+    remove: remove,
+    show: show,
+    unpause: unpause,
+    view: view
   };
 };
 
@@ -625,4 +855,4 @@ var prop = function prop(x) {
   };
 };
 
-export { variables as defaultVariables, isTouch, touchStartEvent, touchEndEvent, moveEvent, endEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, multiple, show, hide, filterSupportedAttributes, prop };
+export { variables as defaultVariables, isTouch, touchStartEvent, touchEndEvent, moveEvent, endEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, multiple, multipleHOC, show, hide, filterSupportedAttributes, prop };

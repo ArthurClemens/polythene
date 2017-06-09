@@ -1,5 +1,3 @@
 # SVG
 
 Core Polythene component.
-
-

@@ -13,7 +13,7 @@ export default ({ renderer: h, keys: k, Menu, List, ListTile }) => ({
     vnode.state = {
       show,
       selectedIndex,
-      redrawOnUpdate: stream.merge([show, selectedIndex]),
+      redrawOnUpdate: stream.merge([show]),
       id: "id-" + Math.floor(Math.random() * 1000)
     };
   },
@@ -31,7 +31,6 @@ export default ({ renderer: h, keys: k, Menu, List, ListTile }) => ({
           target: `#${id}`,
           show,
           hideDelay: .240,
-          getState: newState => state.show(newState.visible),
           size: 5,
           content: h(List, {
             hoverable: true,
@@ -42,7 +41,10 @@ export default ({ renderer: h, keys: k, Menu, List, ListTile }) => ({
                 ink: true,
                 hoverable: true,
                 events: {
-                  [k.onclick]: () => state.selectedIndex(index)
+                  [k.onclick]: () => (
+                    state.selectedIndex(index),
+                    state.show(false)
+                  )
                 }
               })
             )

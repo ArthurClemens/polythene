@@ -202,7 +202,7 @@ var onMount = function onMount(vnode) {
   }
 };
 
-var onUnmount = function onUnmount(vnode) {
+var onUnMount = function onUnMount(vnode) {
   if (vnode.state.tapEventsInited()) {
     clearTapEvents(vnode);
   }
@@ -214,7 +214,7 @@ var raisedButton = Object.freeze({
 	createProps: createProps,
 	createContent: createContent,
 	onMount: onMount,
-	onUnmount: onUnmount
+	onUnMount: onUnMount
 });
 
 export { raisedButton as coreRaisedButton, classes, vars$1 as vars };

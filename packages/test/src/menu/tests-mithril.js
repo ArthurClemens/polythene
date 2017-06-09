@@ -1,11 +1,10 @@
-import { renderer, keys, RaisedButton, Menu, List, ListTile, Shadow, IconButton } from "polythene-mithril";
+import { renderer, keys, Dialog, RaisedButton, Menu, List, ListTile, Shadow, IconButton } from "polythene-mithril";
 import genericTests from "./tests-generic";
-import dialog from "polythene-dialog";
 import createSettingsDialog from "./components/settings-dialog";
 
 const mithrilTests = ({ Menu, List, ListTile, renderer: h }) => {
 
-  const settingsDialog = createSettingsDialog({ renderer, keys, dialog, Menu, List, ListTile });
+  const settingsDialog = createSettingsDialog({ renderer, keys, Dialog, Menu, List, ListTile });
 
   return [
     {
@@ -20,7 +19,7 @@ const mithrilTests = ({ Menu, List, ListTile, renderer: h }) => {
           h(RaisedButton, {
             label: "Open",
             events: {
-              onclick: () => dialog.show(settingsDialog)
+              onclick: () => Dialog.show(settingsDialog)
             }
           }
         )

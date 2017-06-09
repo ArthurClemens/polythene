@@ -64,15 +64,14 @@ const positionMenu = (state, attrs) => {
 };
 
 const showMenu = (state, attrs) => {
-  attrs.setTransitioning(true);
+  attrs.setDisplayState({ transitioning: true });
   return show(Object.assign({},
     attrs, {
       el: state.dom(),
       showClass: classes.visible
     }
   )).then(() => {
-    attrs.setTransitioning(false);
-    attrs.setVisible(true);
+    attrs.setDisplayState({ visible: true });
     if (attrs.didShow) {
       attrs.didShow(attrs.id);
     }
@@ -80,15 +79,14 @@ const showMenu = (state, attrs) => {
 };
 
 const hideMenu = (state, attrs) => {
-  attrs.setTransitioning(true);
+  attrs.setDisplayState({ transitioning: true });
   return hide(Object.assign({},
     attrs, {
       el: state.dom(),
       showClass: classes.visible
     }
   )).then(() => {
-    attrs.setTransitioning(false);
-    attrs.setVisible(false);
+    attrs.setDisplayState({ visible: false });
     if (attrs.didHide) {
       attrs.didHide(attrs.id);
     }
