@@ -438,6 +438,43 @@ var multiple = function multiple(mOpts) {
   };
 };
 
+var r = function r(acc, p) {
+  return acc[p] = 1, acc;
+};
+
+/* 
+Separately handled props:
+- class
+- element
+*/
+
+var defaultAttrs = [
+// Universal
+"key", "style", "href", "id", "tabindex",
+
+// Mithril
+"oninit", "oncreate", "onupdate", "onbeforeremove", "onremove", "onbeforeupdate"];
+
+var filterSupportedAttributes = function filterSupportedAttributes(attrs) {
+  var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+      _ref$add = _ref.add,
+      addAttrs = _ref$add === undefined ? [] : _ref$add,
+      _ref$remove = _ref.remove,
+      removeAttrs = _ref$remove === undefined ? [] : _ref$remove;
+
+  var removeLookup = removeAttrs.reduce(r, {});
+  var supported = defaultAttrs.concat(addAttrs).filter(function (item) {
+    return !removeLookup[item];
+  }).reduce(r, {});
+  return Object.keys(attrs).reduce(function (acc, key) {
+    return supported[key] ? acc[key] = attrs[key] : null, acc;
+  }, {});
+};
+
+var unpackAttrs = function unpackAttrs(attrs) {
+  return typeof attrs === "function" ? attrs() : attrs;
+};
+
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 /*
@@ -531,14 +568,10 @@ var multipleHOC = function multipleHOC(_ref) {
     }
   };
 
-  var normalizeAttrs = function normalizeAttrs(attrs) {
-    return typeof attrs === "function" ? attrs() : attrs;
-  };
-
   var makeItem = function makeItem(itemAttrs, instanceId, spawn) {
     var resolveShow = void 0;
     var didShow = function didShow() {
-      var attrs = normalizeAttrs(itemAttrs);
+      var attrs = unpackAttrs(itemAttrs);
       if (attrs.didShow) {
         attrs.didShow(instanceId);
       }
@@ -551,7 +584,7 @@ var multipleHOC = function multipleHOC(_ref) {
 
     var resolveHide = void 0;
     var didHide = function didHide() {
-      var attrs = normalizeAttrs(itemAttrs);
+      var attrs = unpackAttrs(itemAttrs);
       if (attrs.didHide) {
         attrs.didHide(instanceId);
       }
@@ -651,7 +684,7 @@ var multipleHOC = function multipleHOC(_ref) {
         hide: itemData.hide,
         multipleDidShow: itemData.didShow,
         multipleDidHide: itemData.didHide
-      }, itemData.attrs));
+      }, unpackAttrs(itemData.attrs)));
     }));
   };
 
@@ -808,39 +841,6 @@ var transition = function transition(opts, state) {
   }
 };
 
-var r = function r(acc, p) {
-  return acc[p] = 1, acc;
-};
-
-/* 
-Separately handled props:
-- class
-- element
-*/
-
-var defaultAttrs = [
-// Universal
-"key", "style", "href", "id", "tabindex",
-
-// Mithril
-"oninit", "oncreate", "onupdate", "onbeforeremove", "onremove", "onbeforeupdate"];
-
-var filterSupportedAttributes = function filterSupportedAttributes(attrs) {
-  var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
-      _ref$add = _ref.add,
-      addAttrs = _ref$add === undefined ? [] : _ref$add,
-      _ref$remove = _ref.remove,
-      removeAttrs = _ref$remove === undefined ? [] : _ref$remove;
-
-  var removeLookup = removeAttrs.reduce(r, {});
-  var supported = defaultAttrs.concat(addAttrs).filter(function (item) {
-    return !removeLookup[item];
-  }).reduce(r, {});
-  return Object.keys(attrs).reduce(function (acc, key) {
-    return supported[key] ? acc[key] = attrs[key] : null, acc;
-  }, {});
-};
-
 /*
 The most simple prop function to emulate m.prop from Mithril 0.2.
 */
@@ -855,4 +855,4 @@ var prop = function prop(x) {
   };
 };
 
-export { variables as defaultVariables, isTouch, touchStartEvent, touchEndEvent, moveEvent, endEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, multiple, multipleHOC, show, hide, filterSupportedAttributes, prop };
+export { variables as defaultVariables, isTouch, touchStartEvent, touchEndEvent, moveEvent, endEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, multiple, multipleHOC, show, hide, filterSupportedAttributes, unpackAttrs, prop };

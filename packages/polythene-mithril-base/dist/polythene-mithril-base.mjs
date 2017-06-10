@@ -3,6 +3,7 @@ import m from 'mithril';
 var keys = {
   class: "class",
   className: "class",
+  enctype: "enctype",
   formaction: "formaction",
   onblur: "onblur",
   onclick: "onclick",
@@ -15,6 +16,7 @@ var keys = {
   onmouseover: "onmouseover",
   onmouseup: "onmouseup",
   onscroll: "onscroll",
+  onsubmit: "onsubmit",
   tabindex: "tabindex"
 };
 
@@ -233,7 +235,9 @@ var stateComponent = function stateComponent(_ref) {
       _ref$onMount = _ref.onMount,
       onMount = _ref$onMount === undefined ? function () {} : _ref$onMount,
       _ref$onUnMount = _ref.onUnMount,
-      onUnMount = _ref$onUnMount === undefined ? function () {} : _ref$onUnMount;
+      onUnMount = _ref$onUnMount === undefined ? function () {} : _ref$onUnMount,
+      _ref$view = _ref.view,
+      view = _ref$view === undefined ? null : _ref$view;
 
 
   var oninit = function oninit(vnode) {
@@ -248,12 +252,13 @@ var stateComponent = function stateComponent(_ref) {
     });
   };
 
-  var view = function view(vnode) {
+  var render = function render(vnode) {
+
     return renderer(component || vnode.attrs.element || element, createProps(vnode, { renderer: renderer, requiresKeys: requiresKeys, keys: keys }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, requiresKeys: requiresKeys, keys: keys }), vnode.attrs.after]);
   };
 
   return {
-    view: view,
+    view: view || render,
     oninit: oninit,
     oncreate: onMount,
     onremove: onUnMount

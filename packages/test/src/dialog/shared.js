@@ -11,14 +11,9 @@ export const cancelOkButtons = ({ renderer: h, keys: k, Button, Dialog }) => [
     }
   }),
   h(Button, {
-    label: "Discard",
+    label: "Save",
     events: {
       [k.onclick]: () => Dialog.hide()
     }
   })
 ];
-
-export const commonDialogProps = ({ renderer, keys, Button, Dialog }) => ({
-  footer: cancelOkButtons({ renderer, keys, Button, Dialog })
-  // didHide: () => m.route.set("/dialog")
-});

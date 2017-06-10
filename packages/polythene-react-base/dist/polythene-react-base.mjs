@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 var keys = {
   class: "className",
   className: "className",
+  enctype: "encType",
   formaction: "formAction",
   onblur: "onBlur",
   onchange: "onChange",
@@ -17,6 +18,7 @@ var keys = {
   onmouseover: "onMouseOver",
   onmouseup: "onMouseUp",
   onscroll: "onScroll",
+  onsubmit: "onSubmit",
   tabindex: "tabIndex"
 };
 
@@ -487,12 +489,12 @@ function _possibleConstructorReturn$3(self, call) { if (!self) { throw new Refer
 
 function _inherits$3(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var normalizeAttrs = function normalizeAttrs(attrs) {
+var unpackAttrs = function unpackAttrs(attrs) {
   return typeof attrs === "function" ? attrs() : attrs;
 };
 
 var Toggle = function Toggle(Instance, toggleProps) {
-  var attrs = normalizeAttrs(toggleProps.attrs);
+  var attrs = unpackAttrs(toggleProps.attrs);
 
   return function (_Component) {
     _inherits$3(_class, _Component);

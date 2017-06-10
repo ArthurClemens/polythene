@@ -1,13 +1,13 @@
 import { Component } from "react";
 import { renderer } from "./renderer";
 
-const normalizeAttrs = attrs =>
+const unpackAttrs = attrs =>
   typeof attrs === "function"
       ? attrs()
       : attrs;
 
 export const Toggle = (Instance, toggleProps) => {
-  const attrs = normalizeAttrs(toggleProps.attrs);
+  const attrs = unpackAttrs(toggleProps.attrs);
 
   return class extends Component {
     

@@ -1,24 +1,24 @@
 exports[`test No options - instance 1`] = `
-"<form class=\"pe-dialog\">
-  <div class=\"pe-dialog__content\">
-    <div class=\"pe-shadow pe-shadow--animated\">
-      <div class=\"pe-shadow__bottom pe-shadow--z-3\"></div>
-      <div class=\"pe-shadow__top pe-shadow--z-3\"></div>
+"<form class="pe-dialog">
+  <div class="pe-dialog__content">
+    <div class="pe-shadow pe-shadow--animated">
+      <div class="pe-shadow__bottom pe-shadow--z-3"></div>
+      <div class="pe-shadow__top pe-shadow--z-3"></div>
     </div>
-    <div class=\"pe-dialog__body\"></div>
+    <div class="pe-dialog__body"></div>
   </div>
 </form>
 "
 `;
 
 exports[`test Option: body - instance 1`] = `
-"<form class=\"pe-dialog\">
-  <div class=\"pe-dialog__content\">
-    <div class=\"pe-shadow pe-shadow--animated\">
-      <div class=\"pe-shadow__bottom pe-shadow--z-3\"></div>
-      <div class=\"pe-shadow__top pe-shadow--z-3\"></div>
+"<form class="pe-dialog">
+  <div class="pe-dialog__content">
+    <div class="pe-shadow pe-shadow--animated">
+      <div class="pe-shadow__bottom pe-shadow--z-3"></div>
+      <div class="pe-shadow__top pe-shadow--z-3"></div>
     </div>
-    <div class=\"pe-dialog__body\">
+    <div class="pe-dialog__body">
       Hello
     </div>
   </div>
@@ -26,71 +26,96 @@ exports[`test Option: body - instance 1`] = `
 "
 `;
 
+exports[`test Option: body - spec 1`] = `
+"
+"
+`;
+
 exports[`test Option: class - instance 1`] = `
-"<form class=\"pe-dialog class-x\">
-  <div class=\"pe-dialog__content\">
-    <div class=\"pe-shadow pe-shadow--animated\">
-      <div class=\"pe-shadow__bottom pe-shadow--z-3\"></div>
-      <div class=\"pe-shadow__top pe-shadow--z-3\"></div>
+"<form class="pe-dialog class-x">
+  <div class="pe-dialog__content">
+    <div class="pe-shadow pe-shadow--animated">
+      <div class="pe-shadow__bottom pe-shadow--z-3"></div>
+      <div class="pe-shadow__top pe-shadow--z-3"></div>
     </div>
-    <div class=\"pe-dialog__body\"></div>
+    <div class="pe-dialog__body"></div>
   </div>
 </form>
+"
+`;
+
+exports[`test Option: class - spec 1`] = `
+"
 "
 `;
 
 exports[`test Option: className - instance 1`] = `
-"<form class=\"pe-dialog className-x\">
-  <div class=\"pe-dialog__content\">
-    <div class=\"pe-shadow pe-shadow--animated\">
-      <div class=\"pe-shadow__bottom pe-shadow--z-3\"></div>
-      <div class=\"pe-shadow__top pe-shadow--z-3\"></div>
+"<form class="pe-dialog className-x">
+  <div class="pe-dialog__content">
+    <div class="pe-shadow pe-shadow--animated">
+      <div class="pe-shadow__bottom pe-shadow--z-3"></div>
+      <div class="pe-shadow__top pe-shadow--z-3"></div>
     </div>
-    <div class=\"pe-dialog__body\"></div>
+    <div class="pe-dialog__body"></div>
   </div>
 </form>
+"
+`;
+
+exports[`test Option: className - spec 1`] = `
+"
 "
 `;
 
 exports[`test Option: element - instance 1`] = `
-"<a class=\"pe-dialog\">
-<div class=\"pe-dialog__content\">
-  <div class=\"pe-shadow pe-shadow--animated\">
-    <div class=\"pe-shadow__bottom pe-shadow--z-3\"></div>
-    <div class=\"pe-shadow__top pe-shadow--z-3\"></div>
+"<a class="pe-dialog">
+<div class="pe-dialog__content">
+  <div class="pe-shadow pe-shadow--animated">
+    <div class="pe-shadow__bottom pe-shadow--z-3"></div>
+    <div class="pe-shadow__top pe-shadow--z-3"></div>
   </div>
-  <div class=\"pe-dialog__body\"></div>
+  <div class="pe-dialog__body"></div>
 </div></a>
 "
 `;
 
+exports[`test Option: element - spec 1`] = `
+"
+"
+`;
+
 exports[`test Option: id - instance 1`] = `
-"<form id=\"id-x\" class=\"pe-dialog\" name=\"id-x\">
-  <div class=\"pe-dialog__content\">
-    <div class=\"pe-shadow pe-shadow--animated\">
-      <div class=\"pe-shadow__bottom pe-shadow--z-3\"></div>
-      <div class=\"pe-shadow__top pe-shadow--z-3\"></div>
+"<form id="id-x" class="pe-dialog" name="id-x">
+  <div class="pe-dialog__content">
+    <div class="pe-shadow pe-shadow--animated">
+      <div class="pe-shadow__bottom pe-shadow--z-3"></div>
+      <div class="pe-shadow__top pe-shadow--z-3"></div>
     </div>
-    <div class=\"pe-dialog__body\"></div>
+    <div class="pe-dialog__body"></div>
   </div>
 </form>
 "
 `;
 
+exports[`test Option: id - spec 1`] = `
+"
+"
+`;
+
 exports[`test Option: modal with backdrop - instance 1`] = `
-"<form class=\"pe-dialog pe-dialog--backdrop\">
-  <div class=\"pe-dialog__content\">
-    <div class=\"pe-shadow pe-shadow--animated\">
-      <div class=\"pe-shadow__bottom pe-shadow--z-3\"></div>
-      <div class=\"pe-shadow__top pe-shadow--z-3\"></div>
+"<form class="pe-dialog pe-dialog--backdrop">
+  <div class="pe-dialog__content">
+    <div class="pe-shadow pe-shadow--animated">
+      <div class="pe-shadow__bottom pe-shadow--z-3"></div>
+      <div class="pe-shadow__top pe-shadow--z-3"></div>
     </div>
-    <div class=\"pe-dialog__header\">
-      <div class=\"pe-dialog__title\">
-        Long dialog with a very long title that surely won\'t fit
+    <div class="pe-dialog__header">
+      <div class="pe-dialog__title">
+        Long dialog with a very long title that surely won't fit
         here
       </div>
     </div>
-    <div class=\"pe-dialog__body\">
+    <div class="pe-dialog__body">
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit,
         sed do eiusmod tempor incididunt ut labore et dolore magna
@@ -242,20 +267,20 @@ exports[`test Option: modal with backdrop - instance 1`] = `
         deserunt mollit anim id est laborum.
       </p>
     </div>
-    <div class=\"pe-dialog__footer\">
-      <div class=\"pe-dialog__actions\">
-        <a class=\"pe-button pe-text-button\" tabindex=\"0\">
-        <div class=\"pe-button__content\">
-          <div class=\"pe-button__wash\"></div>
-          <div class=\"pe-button__focus\"></div>
-          <div class=\"pe-button__label\">
+    <div class="pe-dialog__footer">
+      <div class="pe-dialog__actions">
+        <a class="pe-button pe-text-button" tabindex="0">
+        <div class="pe-button__content">
+          <div class="pe-button__wash"></div>
+          <div class="pe-button__focus"></div>
+          <div class="pe-button__label">
             Cancel
           </div>
-        </div></a><a class=\"pe-button pe-text-button\" tabindex=\"0\">
-        <div class=\"pe-button__content\">
-          <div class=\"pe-button__wash\"></div>
-          <div class=\"pe-button__focus\"></div>
-          <div class=\"pe-button__label\">
+        </div></a><a class="pe-button pe-text-button" tabindex="0">
+        <div class="pe-button__content">
+          <div class="pe-button__wash"></div>
+          <div class="pe-button__focus"></div>
+          <div class="pe-button__label">
             Discard
           </div>
         </div></a>
@@ -266,15 +291,20 @@ exports[`test Option: modal with backdrop - instance 1`] = `
 "
 `;
 
+exports[`test Option: modal with backdrop - spec 1`] = `
+"
+"
+`;
+
 exports[`test Option: style - instance 1`] = `
-"<form class=\"pe-dialog\">
-  <div class=\"pe-dialog__content\" style=
-  \"background: rgb(255, 245, 157);\">
-    <div class=\"pe-shadow pe-shadow--animated\">
-      <div class=\"pe-shadow__bottom pe-shadow--z-3\"></div>
-      <div class=\"pe-shadow__top pe-shadow--z-3\"></div>
+"<form class="pe-dialog">
+  <div class="pe-dialog__content" style=
+  "background: rgb(255, 245, 157);">
+    <div class="pe-shadow pe-shadow--animated">
+      <div class="pe-shadow__bottom pe-shadow--z-3"></div>
+      <div class="pe-shadow__top pe-shadow--z-3"></div>
     </div>
-    <div class=\"pe-dialog__body\">
+    <div class="pe-dialog__body">
       Hello
     </div>
   </div>
@@ -282,20 +312,25 @@ exports[`test Option: style - instance 1`] = `
 "
 `;
 
+exports[`test Option: style - spec 1`] = `
+"
+"
+`;
+
 exports[`test Option: title and body (long text) - instance 1`] = `
-"<form class=\"pe-dialog\">
-  <div class=\"pe-dialog__content\">
-    <div class=\"pe-shadow pe-shadow--animated\">
-      <div class=\"pe-shadow__bottom pe-shadow--z-3\"></div>
-      <div class=\"pe-shadow__top pe-shadow--z-3\"></div>
+"<form class="pe-dialog">
+  <div class="pe-dialog__content">
+    <div class="pe-shadow pe-shadow--animated">
+      <div class="pe-shadow__bottom pe-shadow--z-3"></div>
+      <div class="pe-shadow__top pe-shadow--z-3"></div>
     </div>
-    <div class=\"pe-dialog__header\">
-      <div class=\"pe-dialog__title\">
-        Long dialog with a very long title that surely won\'t fit
+    <div class="pe-dialog__header">
+      <div class="pe-dialog__title">
+        Long dialog with a very long title that surely won't fit
         here
       </div>
     </div>
-    <div class=\"pe-dialog__body\">
+    <div class="pe-dialog__body">
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit,
         sed do eiusmod tempor incididunt ut labore et dolore magna
@@ -449,17 +484,22 @@ exports[`test Option: title and body (long text) - instance 1`] = `
     </div>
   </div>
 </form>
+"
+`;
+
+exports[`test Option: title and body (long text) - spec 1`] = `
+"
 "
 `;
 
 exports[`test Option: z (0) - instance 1`] = `
-"<form class=\"pe-dialog\">
-  <div class=\"pe-dialog__content\">
-    <div class=\"pe-shadow pe-shadow--animated\">
-      <div class=\"pe-shadow__bottom pe-shadow--z-0\"></div>
-      <div class=\"pe-shadow__top pe-shadow--z-0\"></div>
+"<form class="pe-dialog">
+  <div class="pe-dialog__content">
+    <div class="pe-shadow pe-shadow--animated">
+      <div class="pe-shadow__bottom pe-shadow--z-0"></div>
+      <div class="pe-shadow__top pe-shadow--z-0"></div>
     </div>
-    <div class=\"pe-dialog__body\">
+    <div class="pe-dialog__body">
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit,
         sed do eiusmod tempor incididunt ut labore et dolore magna
@@ -473,17 +513,22 @@ exports[`test Option: z (0) - instance 1`] = `
     </div>
   </div>
 </form>
+"
+`;
+
+exports[`test Option: z (0) - spec 1`] = `
+"
 "
 `;
 
 exports[`test Option: z (5) - instance 1`] = `
-"<form class=\"pe-dialog\">
-  <div class=\"pe-dialog__content\">
-    <div class=\"pe-shadow pe-shadow--animated\">
-      <div class=\"pe-shadow__bottom pe-shadow--z-5\"></div>
-      <div class=\"pe-shadow__top pe-shadow--z-5\"></div>
+"<form class="pe-dialog">
+  <div class="pe-dialog__content">
+    <div class="pe-shadow pe-shadow--animated">
+      <div class="pe-shadow__bottom pe-shadow--z-5"></div>
+      <div class="pe-shadow__top pe-shadow--z-5"></div>
     </div>
-    <div class=\"pe-dialog__body\">
+    <div class="pe-dialog__body">
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit,
         sed do eiusmod tempor incididunt ut labore et dolore magna
@@ -500,19 +545,29 @@ exports[`test Option: z (5) - instance 1`] = `
 "
 `;
 
+exports[`test Option: z (5) - spec 1`] = `
+"
+"
+`;
+
 exports[`test Themed (color and border radius) - instance 1`] = `
-"<form class=\"pe-dialog dialog-tests-blue-dialog\">
-  <div class=\"pe-dialog__content\">
-    <div class=\"pe-shadow pe-shadow--animated\">
-      <div class=\"pe-shadow__bottom pe-shadow--z-3\"></div>
-      <div class=\"pe-shadow__top pe-shadow--z-3\"></div>
+"<form class="pe-dialog dialog-tests-blue-dialog">
+  <div class="pe-dialog__content">
+    <div class="pe-shadow pe-shadow--animated">
+      <div class="pe-shadow__bottom pe-shadow--z-3"></div>
+      <div class="pe-shadow__top pe-shadow--z-3"></div>
     </div>
-    <div class=\"pe-dialog__body\">
+    <div class="pe-dialog__body">
       <div>
         Hello
       </div>
     </div>
   </div>
 </form>
+"
+`;
+
+exports[`test Themed (color and border radius) - spec 1`] = `
+"
 "
 `;

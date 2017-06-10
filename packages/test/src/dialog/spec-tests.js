@@ -1,34 +1,34 @@
-import { shortText, longText, commonDialogProps } from "./shared";
+import { shortText, longText, cancelOkButtons } from "./shared";
 
 export default ({ DialogInstance, renderer, keys, Button, Dialog }) => {
   return [
     {
-      name: "No options - instance",
+      name: "No options - spec",
       component: DialogInstance
     },
     {
-      name: "Option: id - instance",
+      name: "Option: id - spec",
       component: DialogInstance,
       attrs: {
         id: "id-x"
       }
     },
     {
-      name: "Option: class - instance",
+      name: "Option: class - spec",
       component: DialogInstance,
       attrs: {
         className: "class-x"
       }
     },
     {
-      name: "Option: className - instance",
+      name: "Option: className - spec",
       component: DialogInstance,
       attrs: {
         className: "className-x"
       }
     },
     {
-      name: "Option: element - instance",
+      name: "Option: element - spec",
       component: DialogInstance,
       attrs: {
         element: "a"
@@ -36,33 +36,14 @@ export default ({ DialogInstance, renderer, keys, Button, Dialog }) => {
     },
 
     {
-      name: "Option: body - instance",
+      name: "Option: body - spec",
       component: DialogInstance,
       attrs: {
         body: "Hello"
       }
     },
     {
-      name: "Themed (color and border radius) - instance",
-      component: DialogInstance,
-      attrs: {
-        content: renderer("div", "Hello"),
-        className: "dialog-tests-blue-dialog"
-      }
-    },
-    {
-      name: "Option: style - instance",
-      component: DialogInstance,
-      attrs: {
-        body: "Hello",
-        style: {
-          background: "#fff59d",
-          padding: "1.5rem"
-        }
-      }
-    },
-    {
-      name: "Option: z (0) - instance",
+      name: "Option: z (0) - spec",
       component: DialogInstance,
       attrs: {
         body: renderer.trust(shortText),
@@ -70,7 +51,7 @@ export default ({ DialogInstance, renderer, keys, Button, Dialog }) => {
       }
     },
     {
-      name: "Option: z (5) - instance",
+      name: "Option: z (5) - spec",
       component: DialogInstance,
       attrs: {
         body: renderer.trust(shortText),
@@ -78,7 +59,7 @@ export default ({ DialogInstance, renderer, keys, Button, Dialog }) => {
       }
     },
     {
-      name: "Option: title and body (long text) - instance",
+      name: "Option: title and body (long text) - spec",
       component: DialogInstance,
       attrs: {
         title: "Long dialog with a very long title that surely won't fit here",
@@ -86,17 +67,15 @@ export default ({ DialogInstance, renderer, keys, Button, Dialog }) => {
       }
     },
     {
-      name: "Option: modal with backdrop - instance",
+      name: "Option: modal with backdrop - spec",
       component: DialogInstance,
-      attrs: Object.assign(
-        {},
-        commonDialogProps({ renderer, keys, Button, Dialog }), {
-          title: "Long dialog with a very long title that surely won't fit here",
-          body: renderer.trust(longText),
-          modal: true,
-          backdrop: true
-        }
-      )
+      attrs: {
+        title: "Long dialog with a very long title that surely won't fit here",
+        body: renderer.trust(longText),
+        footer: cancelOkButtons({ renderer, keys, Button, Dialog }),
+        modal: true,
+        backdrop: true
+      }
     },
   ];
 };

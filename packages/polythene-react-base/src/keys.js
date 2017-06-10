@@ -2,6 +2,7 @@
 export const keys = {
   class:       "className",
   className:   "className",
+  enctype:     "encType",
   formaction:  "formAction",
   onblur:      "onBlur",
   onchange:    "onChange",
@@ -14,6 +15,7 @@ export const keys = {
   onmouseover: "onMouseOver",
   onmouseup:   "onMouseUp",
   onscroll:    "onScroll",
+  onsubmit:    "onSubmit",
   tabindex:    "tabIndex",
 };
 

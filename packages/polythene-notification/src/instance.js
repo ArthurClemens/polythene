@@ -153,7 +153,7 @@ export default {
   },
   view: ({ state, attrs }) => {
     // attrs contains {id, opts}
-    const opts = (typeof attrs.opts === "function")
+    const opts = (typeof attrs.opts === "function") // TODO: use unpackAttrs
       ? attrs.opts()
       : attrs.opts;
     if (attrs.hide && !state.transitioning) {

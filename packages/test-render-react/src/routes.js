@@ -27,6 +27,11 @@ export default [
     tests: tests.dialog
   },
   {
+    path: "/dialog-pane",
+    name: "Dialog Pane",
+    tests: tests.dialogPane
+  },
+  {
     path: "/fab",
     name: "FAB",
     tests: tests.fab

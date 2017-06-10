@@ -1,6 +1,7 @@
 export { default as button }       from "./button/tests-mithril";
 export { default as checkbox }     from "./checkbox/tests-mithril";
 export { default as dialog }       from "./dialog/tests-mithril";
+export { default as dialogPane }   from "./dialog-pane/tests-mithril";
 export { default as fab }          from "./fab/tests-mithril";
 export { default as icon }         from "./icon/tests-mithril";
 export { default as iconButton }   from "./icon-button/tests-mithril";

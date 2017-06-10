@@ -1,10 +1,32 @@
 import React, { Component } from "react"; // eslint-disable-line no-unused-vars
-import { renderer, keys, Dialog, Button, RaisedButton } from "polythene-react";
+import { renderer, keys, Dialog, DialogPane, Button, RaisedButton, Toolbar, IconButton, Icon, List, ListTile } from "polythene-react";
 import genericTests from "./tests-generic";
+import formPane from "./components/form-react";
 
 const reactTests = () => {
 
+  const Opener = (dialogAttrs, label = "Open") => renderer(RaisedButton, {
+    label,
+    events: {
+      [keys.onclick]: () => Dialog.show(dialogAttrs)
+    }
+  });
+
   return [
+    {
+      section: "React specific tests",
+    },
+    {
+      name: "Conditional button states",
+      interactive: true,
+      exclude: true,
+      component: {
+        view: () => 
+          Opener({
+            panes: [renderer(formPane)]
+          })
+      }
+    },
     // {
     //   section: "React JSX tests",
     // },
@@ -50,5 +72,5 @@ const reactTests = () => {
 };
 
 export default []
-  .concat(genericTests({ Dialog, Button, RaisedButton, renderer, keys }))
-  .concat(reactTests({ Dialog, Button, RaisedButton, renderer, keys }));
+  .concat(genericTests({ Dialog, DialogPane, Button, RaisedButton, Toolbar, IconButton, Icon, List, ListTile, renderer, keys }))
+  .concat(reactTests({ Dialog, DialogPane, Button, RaisedButton, Toolbar, IconButton, Icon, List, ListTile, renderer, keys }));

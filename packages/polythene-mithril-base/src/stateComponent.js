@@ -12,6 +12,7 @@ export const stateComponent = ({
   getInitialState = () => ({}),
   onMount = () => {},
   onUnMount = () => {},
+  view = null
 }) => {
 
   const oninit = vnode => {
@@ -27,7 +28,8 @@ export const stateComponent = ({
     ));
   };
 
-  const view = vnode => {
+  const render = vnode => {
+    
     return renderer(
       component || vnode.attrs.element || element,
       createProps(vnode, { renderer, requiresKeys, keys }),
@@ -40,7 +42,7 @@ export const stateComponent = ({
   };
 
   return {
-    view,
+    view: view || render,
     oninit: oninit,
     oncreate: onMount,
     onremove: onUnMount

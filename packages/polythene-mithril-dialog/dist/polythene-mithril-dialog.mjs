@@ -1,16 +1,17 @@
 import { renderer, stateComponent } from 'polythene-mithril-base';
 import { multipleHOC } from 'polythene-core';
 import { classes, coreDialogInstance, transitions } from 'polythene-core-dialog';
+import { DialogPane } from 'polythene-mithril-dialog-pane';
 import { Shadow } from 'polythene-mithril-shadow';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var DialogInstance = stateComponent(_extends({}, coreDialogInstance, {
   createProps: function createProps(vnode, args) {
-    return coreDialogInstance.createProps(vnode, _extends(args, { Shadow: Shadow }));
+    return coreDialogInstance.createProps(vnode, _extends(args, { Shadow: Shadow, DialogPane: DialogPane }));
   },
   createContent: function createContent(vnode, args) {
-    return coreDialogInstance.createContent(vnode, _extends(args, { Shadow: Shadow }));
+    return coreDialogInstance.createContent(vnode, _extends(args, { Shadow: Shadow, DialogPane: DialogPane }));
   }
 }));
 

@@ -9,6 +9,8 @@ mOptions:
 - bodyShowClass
 */
 
+import { unpackAttrs } from "./attrs";
+
 export const multipleHOC = ({ options: mOptions, renderer }) => {
 
   const items = [];
@@ -84,15 +86,10 @@ export const multipleHOC = ({ options: mOptions, renderer }) => {
     }
   };
 
-  const normalizeAttrs = attrs =>
-    typeof attrs === "function"
-        ? attrs()
-        : attrs;
-
   const makeItem = (itemAttrs, instanceId, spawn) => {
     let resolveShow;
     const didShow = () => {
-      const attrs = normalizeAttrs(itemAttrs);
+      const attrs = unpackAttrs(itemAttrs);
       if (attrs.didShow) {
         attrs.didShow(instanceId);
       }
@@ -105,7 +102,7 @@ export const multipleHOC = ({ options: mOptions, renderer }) => {
 
     let resolveHide;
     const didHide = () => {
-      const attrs = normalizeAttrs(itemAttrs);
+      const attrs = unpackAttrs(itemAttrs);
       if (attrs.didHide) {
         attrs.didHide(instanceId);
       }
@@ -183,12 +180,14 @@ export const multipleHOC = ({ options: mOptions, renderer }) => {
     document.body.classList[candidates.length ? "add" : "remove"](mOptions.bodyShowClass);
     return !candidates.length
       ? renderer(mOptions.placeholder) // placeholder because we cannot return null
-      : renderer(mOptions.element, {
-        className: attrs.position === "container"
-          ? "pe-multiple--container"
-          : "pe-multiple--screen"
-      }, candidates.map(itemData =>
-          renderer(mOptions.instance, Object.assign(
+      : renderer(mOptions.element,
+        {
+          className: attrs.position === "container"
+            ? "pe-multiple--container"
+            : "pe-multiple--screen"
+        },
+        candidates.map(itemData => {
+          return renderer(mOptions.instance, Object.assign(
             {},
             {
               key: itemData.key || itemData.instanceId,
@@ -198,9 +197,9 @@ export const multipleHOC = ({ options: mOptions, renderer }) => {
               multipleDidShow: itemData.didShow,
               multipleDidHide: itemData.didHide
             },
-            itemData.attrs
-          ))
-        )
+            unpackAttrs(itemData.attrs)
+          ));
+        })
       );
   };
 

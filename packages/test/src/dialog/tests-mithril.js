@@ -1,34 +1,32 @@
-import { renderer, keys, Button, RaisedButton, Dialog } from "polythene-mithril";
+import { renderer, keys, Button, RaisedButton, Dialog, DialogPane, Toolbar, IconButton, Icon, List, ListTile } from "polythene-mithril";
 import genericTests from "./tests-generic";
-// import createSettingsDialog from "./components/settings-dialog";
+import form from "./components/form-mithril";
 
-const mithrilTests = ({ Dialog, renderer: h }) => {
+const mithrilTests = ({ renderer, keys, Dialog, RaisedButton, }) => {
 
-  // const settingsDialog = createSettingsDialog({ renderer, keys, dialog, Menu, List, ListTile });
+  const Opener = (dialogAttrs, label = "Open") => renderer(RaisedButton, {
+    label,
+    events: {
+      [keys.onclick]: () => Dialog.show(dialogAttrs)
+    }
+  });
 
   return [
-    // {
-    //   section: "Mithril specific tests",
-    // },
-    // {
-    //   name: "Dialog with option 'menu' (demo without state)",
-    //   interactive: true,
-    //   exclude: true,
-    //   component: {
-    //     view: () => 
-    //       h(RaisedButton, {
-    //         label: "Open",
-    //         events: {
-    //           onclick: () => dialog.show(settingsDialog)
-    //         }
-    //       }
-    //     )
-    //   }
-    // },
+    {
+      section: "Mithril specific tests",
+    },
+    {
+      name: "Conditional button states",
+      interactive: true,
+      exclude: true,
+      component: {
+        view: () => 
+          Opener(form())
+      }
+    },
   ];
-    
 };
 
 export default []
-  .concat(genericTests({ Dialog, Button, RaisedButton, renderer, keys }))
-  .concat(mithrilTests({ Dialog, Button, RaisedButton, renderer, keys }));
+  .concat(genericTests({ Dialog, DialogPane, Button, RaisedButton, Toolbar, IconButton, Icon, List, ListTile, renderer, keys }))
+  .concat(mithrilTests({ Dialog, DialogPane, Button, RaisedButton, Toolbar, IconButton, Icon, List, ListTile, renderer, keys }));

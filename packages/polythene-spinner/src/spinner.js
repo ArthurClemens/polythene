@@ -61,7 +61,7 @@ const delay = (attrs, mode) => {
 
 const notifyState = (state, attrs) => {
   if (attrs.percentage && attrs.getPercentage) {
-    const percentage = (typeof attrs.percentage === "function")
+    const percentage = (typeof attrs.percentage === "function") // TODO: use unpackAttrs
       ? attrs.percentage()
       : attrs.percentage;
     attrs.getPercentage(percentage, state, attrs);

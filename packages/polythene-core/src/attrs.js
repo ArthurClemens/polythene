@@ -34,3 +34,8 @@ export const filterSupportedAttributes = (attrs, { add: addAttrs = [], remove: r
     acc
   ), {});
 };
+
+export const unpackAttrs = attrs =>
+  typeof attrs === "function"
+    ? attrs()
+    : attrs;
