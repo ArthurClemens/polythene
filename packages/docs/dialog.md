@@ -15,18 +15,18 @@ The dialog component itself does not accept any appearance options. Instead, you
 
 ### Dialog spawner
 
-Dialogs will be spawned from `m(dialog)`. To show dialogs, use `dialog.show()` - more on that later.
+Dialogs will be spawned from `m(Dialog)`. To show dialogs, use `Dialog.show()` - more on that later.
 
 Because a dialog should float on top of everything else, outside of the context of the caller, it can be considered a global component. It is best placed in the root view, so that it is not obstructed by other components:
 
 ~~~javascript
 import m from "mithril";
-import dialog from "polythene-dialog";
+import { Dialog } from "polythene-mithril";
 
 const app = {
   view: () => [
     // ... app content
-    m(dialog)
+    m(Dialog)
   ]
 };
 ~~~
@@ -44,13 +44,13 @@ Usually you'll use only one location for dialogs - on top of all content and cen
 If you are using multiple spawners, differentiate them with option `spawn`:
 
 ~~~javascript
-m(dialog, { spawn: "special" })
+m(Dialog, { spawn: "special" })
 ~~~
 
 Calls to show the message will then also need to pass that spawn:
 
 ~~~javascript
-dialog.show(dialogOptions, { spawn: "special" });
+Dialog.show(dialogOptions, { spawn: "special" });
 ~~~
 
 
@@ -59,15 +59,15 @@ dialog.show(dialogOptions, { spawn: "special" });
 Dialog functions:
 
 ~~~javascript
-dialog.show(options);
-dialog.hide(options);
+Dialog.show(options);
+Dialog.hide(options);
 ~~~
 
 #### show
 
 Shows a new dialog.
 
-`dialog.show(dialogOptions, spawnOptions)`
+`Dialog.show(dialogOptions, spawnOptions)`
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
@@ -82,16 +82,16 @@ const dialogOptions = {
   body: "some text"
 };
 
-dialog.show(dialogOptions);
-dialog.show(dialogOptions, { id: "confirm" });
-dialog.show(dialogOptions, { spawn: "special" });
-dialog.show(dialogOptions).then(() => console.log("dialog shown"));
+Dialog.show(dialogOptions);
+Dialog.show(dialogOptions, { id: "confirm" });
+Dialog.show(dialogOptions, { spawn: "special" });
+Dialog.show(dialogOptions).then(() => console.log("dialog shown"));
 ~~~
 
 Calling `show` a second time with the same id will redraw the dialog with new options:
 
 ~~~javascript
-dialog.show(
+Dialog.show(
   {
     title: "Log in"
   },
@@ -102,7 +102,7 @@ dialog.show(
 
 // sometime later:
 
-dialog.show(
+Dialog.show(
   {
     title: "Log in again"
   },
@@ -122,7 +122,7 @@ const optionsFn = () => ({
   body: "some text"
 });
 
-dialog.show(optionsFn);
+Dialog.show(optionsFn);
 ~~~
 
 Using a function ensures that the options are read afresh with the new state.
@@ -132,7 +132,7 @@ Using a function ensures that the options are read afresh with the new state.
 
 Hides the current dialog.
 
-`dialog.hide(spawnOptions)`
+`Dialog.hide(spawnOptions)`
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
@@ -142,10 +142,10 @@ Hides the current dialog.
 Examples:
 
 ~~~javascript
-dialog.hide();
-dialog.hide({ id: "confirm" })
-dialog.hide({ spawn: "special" })
-dialog.hide().then(() => console.log("dialog hidden"));
+Dialog.hide();
+Dialog.hide({ id: "confirm" })
+Dialog.hide({ spawn: "special" })
+Dialog.hide().then(() => console.log("dialog hidden"));
 ~~~
 
 
@@ -164,14 +164,13 @@ const dialogOptions = {
 
 ~~~javascript
 import m from "mithril";
-import dialog from "polythene-dialog";
-import button from "polythene-mithril-button";
+import { Dialog, Button } from "polythene-mithril";
 
 const footerButtons = [
-  m(button, {
+  m(Button, {
     label: "Cancel"
   }),
-  m(button, {
+  m(Button, {
     label: "Discard"
   })
 ];
@@ -183,7 +182,7 @@ const dialogOptions = {
   footer: footerButtons
 });
 
-dialog.show(dialogOptions);
+Dialog.show(dialogOptions);
 ~~~
 
 
@@ -199,13 +198,13 @@ You can find more information about theming in [Theme](../polythene-theme).
 #### Themed component
 
 ~~~javascript
-dialog.theme(".blue-dialog", {
+Dialog.theme(".blue-dialog", {
   color_light_content_background: "#2196F3",
   color_light_body_text: "#fff",
   border_radius: 5
 });
 
-dialog.show({
+Dialog.show({
   className: "blue-dialog",
   // ... other options
 });
@@ -220,7 +219,7 @@ Change CSS using the CSS Classes at the bottom of this page.
 Some style attributes can be set using option `style`. For example:
 
 ~~~javascript
-dialog.show({
+Dialog.show({
   style: {
     background: "#fff59d",
     padding: "1.5rem"
@@ -281,33 +280,29 @@ A fullscreen dialog uses [Toolbar](../polythene-toolbar) to implement its own he
 
 ~~~javascript
 import m from "mithril";
-import dialog from "polythene-dialog";
-import button from "polythene-mithril-button";
-import iconButton from "polythene-icon-button";
-import toolbar from "polythene-toolbar";
-import iconClose from "mmsvg/google/msvg/navigation/close";
+import { Dialog, Button, IconButton, Toolbar, IconClose } from "polythene-mithril";
 
 cconst toolbarRow = title => [
-  m(iconButton, {
+  m(IconButton, {
     icon: {
-      msvg: iconClose
+      svg: m.trust(iconClose)
     },
     events: {
-      onclick: () => dialog.hide()
+      onclick: () => Dialog.hide()
     }
   }),
   m("span.flex", title),
-  m(button, {
+  m(Button, {
     label: "Save",
     events: {
-      onclick: () => dialog.hide()
+      onclick: () => Dialog.hide()
     }
   })
 ];
 
 const fullscreenPane = {
   view: () => [
-    m(toolbar, {
+    m(Toolbar, {
       content: toolbarRow("New event")
     }),
     // content

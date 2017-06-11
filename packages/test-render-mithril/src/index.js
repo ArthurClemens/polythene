@@ -11,6 +11,8 @@ addRoboto();
 addLayoutStyles();
 addFastClick();
 
+const TITLE = "Polythene components for Mithril";
+
 const navBar = () =>
   h(css.headerRow, h(Toolbar,
     {
@@ -18,12 +20,12 @@ const navBar = () =>
         backgroundColor: "rgba(255,255,255,.93)"
       }
     },
-    m("span", "Polythene components")
+    m("span", TITLE)
   ));
 
 const index = {
   oncreate: () => 
-    document.title = "Polythene components for Mithril",
+    document.title = TITLE,
   view: () =>
     [
       navBar(),

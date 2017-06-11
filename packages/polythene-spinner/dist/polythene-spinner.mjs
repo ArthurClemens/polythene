@@ -177,7 +177,8 @@ var delay = function delay(attrs, mode) {
 
 var notifyState = function notifyState(state, attrs) {
   if (attrs.percentage && attrs.getPercentage) {
-    var percentage = typeof attrs.percentage === "function" ? attrs.percentage() : attrs.percentage;
+    var percentage = typeof attrs.percentage === "function" ? // TODO: use unpackAttrs
+    attrs.percentage() : attrs.percentage;
     attrs.getPercentage(percentage, state, attrs);
   }
 };

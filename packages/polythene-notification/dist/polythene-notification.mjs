@@ -271,7 +271,8 @@ var instance = {
         attrs = _ref3.attrs;
 
     // attrs contains {id, opts}
-    var opts = typeof attrs.opts === "function" ? attrs.opts() : attrs.opts;
+    var opts = typeof attrs.opts === "function" ? // TODO: use unpackAttrs
+    attrs.opts() : attrs.opts;
     if (attrs.hide && !state.transitioning) {
       hideInstance(state, opts);
     }
