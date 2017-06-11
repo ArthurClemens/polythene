@@ -1,9 +1,9 @@
-import { stateComponent } from "polythene-react-base";
+import { StateComponent } from "polythene-react-base";
 import { coreFAB as core } from "polythene-core-fab";
 import { Icon } from "polythene-react-icon";
 import { RaisedButton } from "polythene-react-raised-button";
 
-export const FAB = stateComponent(Object.assign(
+export const FAB = StateComponent(Object.assign(
   {},
   core,
   {

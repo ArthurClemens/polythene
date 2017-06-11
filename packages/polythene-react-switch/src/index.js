@@ -1,8 +1,8 @@
-import { stateComponent } from "polythene-react-base";
+import { StateComponent } from "polythene-react-base";
 import { coreSwitch as core } from "polythene-core-switch";
 import { SelectionControl } from "./selection-control";
 
-export const Switch = stateComponent(Object.assign(
+export const Switch = StateComponent(Object.assign(
   {},
   core,
   {

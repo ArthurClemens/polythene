@@ -1,8 +1,8 @@
-import { stateComponent } from "polythene-react-base";
+import { StateComponent } from "polythene-react-base";
 import { coreSelectionControl as core } from "polythene-core-selection-control";
 import { ViewControl } from "./view-control";
 
-export const SelectionControl = stateComponent(Object.assign(
+export const SelectionControl = StateComponent(Object.assign(
   {},
   core,
   {

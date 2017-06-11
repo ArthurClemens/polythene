@@ -1,9 +1,9 @@
-import { stateComponent } from "polythene-react-base";
+import { StateComponent } from "polythene-react-base";
 import { coreRaisedButton as core } from "polythene-core-raised-button";
 import { Button } from "polythene-react-button";
 import { Shadow } from "polythene-react-shadow";
 
-export const RaisedButton = stateComponent(Object.assign(
+export const RaisedButton = StateComponent(Object.assign(
   {},
   core,
   {

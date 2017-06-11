@@ -1,7 +1,7 @@
-import { viewComponent } from "polythene-react-base";
+import { ViewComponent } from "polythene-react-base";
 import { coreToolbar as core } from "polythene-core-toolbar";
 
-export const Toolbar = viewComponent(Object.assign(
+export const Toolbar = ViewComponent(Object.assign(
   {},
   core
 ));

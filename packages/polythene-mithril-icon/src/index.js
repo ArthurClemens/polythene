@@ -1,8 +1,8 @@
-import { viewComponent } from "polythene-mithril-base";
+import { ViewComponent } from "polythene-mithril-base";
 import { coreIcon as core } from "polythene-core-icon";
 import { SVG } from "polythene-mithril-svg";
 
-export const Icon = viewComponent(Object.assign(
+export const Icon = ViewComponent(Object.assign(
   {},
   core,
   {

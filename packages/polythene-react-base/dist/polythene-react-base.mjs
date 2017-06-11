@@ -326,7 +326,7 @@ function _inherits$1(subClass, superClass) { if (typeof superClass !== "function
 
 var requiresKeys = true;
 
-var stateComponent = function stateComponent(_ref) {
+var StateComponent = function StateComponent(_ref) {
   var _ref$createContent = _ref.createContent,
       createContent = _ref$createContent === undefined ? function () {} : _ref$createContent,
       _ref$createProps = _ref.createProps,
@@ -430,7 +430,7 @@ function _inherits$2(subClass, superClass) { if (typeof superClass !== "function
 
 var requiresKeys$1 = true;
 
-var viewComponent = function viewComponent(_ref) {
+var ViewComponent = function ViewComponent(_ref) {
   var _ref$createContent = _ref.createContent,
       createContent = _ref$createContent === undefined ? function () {} : _ref$createContent,
       _ref$createProps = _ref.createProps,
@@ -558,4 +558,4 @@ var Toggle = function Toggle(Instance, toggleProps) {
   }(Component);
 };
 
-export { keys, renderer, stateComponent, viewComponent, Toggle, MithrilToReact };
+export { keys, renderer, StateComponent, ViewComponent, Toggle, MithrilToReact };

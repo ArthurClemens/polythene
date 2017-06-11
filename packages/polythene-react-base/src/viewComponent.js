@@ -5,7 +5,7 @@ import { keys } from "./keys";
 
 const requiresKeys = true;
 
-export const viewComponent = ({
+export const ViewComponent = ({
   createContent = () => {},
   createProps = () => ({}),
   element = "div",

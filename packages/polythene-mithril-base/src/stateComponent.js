@@ -4,7 +4,7 @@ import { keys } from "./keys";
 
 const requiresKeys = false;
 
-export const stateComponent = ({
+export const StateComponent = ({
   createContent = () => {},
   createProps = () => {},
   element = "div",

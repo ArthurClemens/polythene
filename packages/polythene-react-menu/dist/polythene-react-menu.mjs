@@ -1,10 +1,10 @@
-import { Toggle, renderer, stateComponent } from 'polythene-react-base';
+import { StateComponent, Toggle, renderer } from 'polythene-react-base';
 import { classes, coreMenu } from 'polythene-core-menu';
 import { Shadow } from 'polythene-react-shadow';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var MenuInstance = stateComponent(_extends({}, coreMenu, {
+var MenuInstance = StateComponent(_extends({}, coreMenu, {
   createProps: function createProps(vnode, args) {
     return coreMenu.createProps(vnode, _extends(args, { Shadow: Shadow }));
   },

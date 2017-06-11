@@ -1,10 +1,10 @@
-import { stateComponent, renderer } from "polythene-react-base";
+import { StateComponent, renderer } from "polythene-react-base";
 import { multipleHOC } from "polythene-core";
 import { coreDialogInstance as core, transitions, classes } from "polythene-core-dialog";
 import { DialogPane } from "polythene-react-dialog-pane";
 import { Shadow } from "polythene-react-shadow";
 
-export const DialogInstance = stateComponent(Object.assign(
+export const DialogInstance = StateComponent(Object.assign(
   {},
   core,
   {
@@ -25,7 +25,7 @@ const options = {
 };
 
 const multiple = multipleHOC({ options, renderer });
-export const Dialog = stateComponent(multiple);
+export const Dialog = StateComponent(multiple);
 Object.getOwnPropertyNames(multiple).forEach(p => Dialog[p] = multiple[p]);
 
 Dialog.theme = core.theme;

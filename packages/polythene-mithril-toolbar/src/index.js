@@ -1,7 +1,7 @@
-import { viewComponent } from "polythene-mithril-base";
+import { ViewComponent } from "polythene-mithril-base";
 import { coreToolbar as core } from "polythene-core-toolbar";
 
-export const Toolbar = viewComponent(Object.assign(
+export const Toolbar = ViewComponent(Object.assign(
   {},
   core
 ));

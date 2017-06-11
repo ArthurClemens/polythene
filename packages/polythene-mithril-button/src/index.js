@@ -1,8 +1,8 @@
-import { stateComponent } from "polythene-mithril-base";
+import { StateComponent } from "polythene-mithril-base";
 import { coreButton as core } from "polythene-core-button";
 import { Ripple } from "polythene-mithril-ripple";
 
-export const Button = stateComponent(Object.assign(
+export const Button = StateComponent(Object.assign(
   {},
   core,
   {

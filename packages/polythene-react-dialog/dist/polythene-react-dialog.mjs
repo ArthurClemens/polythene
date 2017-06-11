@@ -1,4 +1,4 @@
-import { renderer, stateComponent } from 'polythene-react-base';
+import { StateComponent, renderer } from 'polythene-react-base';
 import { multipleHOC } from 'polythene-core';
 import { classes, coreDialogInstance, transitions } from 'polythene-core-dialog';
 import { DialogPane } from 'polythene-react-dialog-pane';
@@ -6,7 +6,7 @@ import { Shadow } from 'polythene-react-shadow';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var DialogInstance = stateComponent(_extends({}, coreDialogInstance, {
+var DialogInstance = StateComponent(_extends({}, coreDialogInstance, {
   createProps: function createProps(vnode, args) {
     return coreDialogInstance.createProps(vnode, _extends(args, { Shadow: Shadow, DialogPane: DialogPane }));
   },
@@ -27,7 +27,7 @@ var options = {
 };
 
 var multiple = multipleHOC({ options: options, renderer: renderer });
-var Dialog = stateComponent(multiple);
+var Dialog = StateComponent(multiple);
 Object.getOwnPropertyNames(multiple).forEach(function (p) {
   return Dialog[p] = multiple[p];
 });

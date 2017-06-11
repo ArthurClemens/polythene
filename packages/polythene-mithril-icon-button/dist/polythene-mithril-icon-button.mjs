@@ -1,11 +1,11 @@
-import { viewComponent } from 'polythene-mithril-base';
+import { ViewComponent } from 'polythene-mithril-base';
 import { coreIconButton } from 'polythene-core-icon-button';
 import { Icon } from 'polythene-mithril-icon';
 import { Button } from 'polythene-mithril-button';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var IconButton = viewComponent(_extends({}, coreIconButton, {
+var IconButton = ViewComponent(_extends({}, coreIconButton, {
   createProps: function createProps(vnode, args) {
     return coreIconButton.createProps(vnode, _extends(args, { Icon: Icon }));
   },

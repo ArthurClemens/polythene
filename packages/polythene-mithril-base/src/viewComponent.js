@@ -3,7 +3,7 @@ import { keys } from "./keys";
 
 const requiresKeys = false;
 
-export const viewComponent = ({
+export const ViewComponent = ({
   createContent = () => {},
   createProps = () => {},
   element = "div",

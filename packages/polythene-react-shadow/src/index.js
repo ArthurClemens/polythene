@@ -1,7 +1,7 @@
-import { viewComponent } from "polythene-react-base";
+import { ViewComponent } from "polythene-react-base";
 import { coreShadow as core } from "polythene-core-shadow";
 
-export const Shadow = viewComponent(Object.assign(
+export const Shadow = ViewComponent(Object.assign(
   {},
   core
 ));

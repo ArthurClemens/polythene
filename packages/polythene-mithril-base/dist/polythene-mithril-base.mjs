@@ -220,7 +220,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var requiresKeys = false;
 
-var stateComponent = function stateComponent(_ref) {
+var StateComponent = function StateComponent(_ref) {
   var _ref$createContent = _ref.createContent,
       createContent = _ref$createContent === undefined ? function () {} : _ref$createContent,
       _ref$createProps = _ref.createProps,
@@ -267,7 +267,7 @@ var stateComponent = function stateComponent(_ref) {
 
 var requiresKeys$1 = false;
 
-var viewComponent = function viewComponent(_ref) {
+var ViewComponent = function ViewComponent(_ref) {
   var _ref$createContent = _ref.createContent,
       createContent = _ref$createContent === undefined ? function () {} : _ref$createContent,
       _ref$createProps = _ref.createProps,
@@ -335,4 +335,4 @@ var Toggle = {
   }
 };
 
-export { keys, renderer, stateComponent, viewComponent, Toggle };
+export { keys, renderer, StateComponent, ViewComponent, Toggle };

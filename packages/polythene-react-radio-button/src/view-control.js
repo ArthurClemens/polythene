@@ -1,9 +1,9 @@
-import { viewComponent } from "polythene-react-base";
+import { ViewComponent } from "polythene-react-base";
 import { viewControl as core } from "polythene-core-selection-control";
 import { Icon } from "polythene-react-icon";
 import { IconButton } from "polythene-react-icon-button";
 
-export const ViewControl = viewComponent(Object.assign(
+export const ViewControl = ViewComponent(Object.assign(
   {},
   core,
   {

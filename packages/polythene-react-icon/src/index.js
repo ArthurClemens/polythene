@@ -1,8 +1,8 @@
-import { viewComponent } from "polythene-react-base";
+import { ViewComponent } from "polythene-react-base";
 import { coreIcon as core } from "polythene-core-icon";
 import { SVG } from "polythene-react-svg";
 
-export const Icon = viewComponent(Object.assign(
+export const Icon = ViewComponent(Object.assign(
   {},
   core,
   {

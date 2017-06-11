@@ -1,9 +1,9 @@
-import { viewComponent } from "polythene-mithril-base";
+import { ViewComponent } from "polythene-mithril-base";
 import { coreIconButton as core } from "polythene-core-icon-button";
 import { Icon } from "polythene-mithril-icon";
 import { Button } from "polythene-mithril-button";
 
-export const IconButton = viewComponent(Object.assign(
+export const IconButton = ViewComponent(Object.assign(
   {},
   core,
   {

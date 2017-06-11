@@ -1,9 +1,9 @@
-import { viewComponent } from "polythene-mithril-base";
+import { ViewComponent } from "polythene-mithril-base";
 import { coreListTile as core } from "polythene-core-list-tile";
 import { Icon } from "polythene-mithril-icon";
 import { Ripple } from "polythene-mithril-ripple";
 
-export const ListTile = viewComponent(Object.assign(
+export const ListTile = ViewComponent(Object.assign(
   {},
   core,
   {
