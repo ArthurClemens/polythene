@@ -1,7 +1,7 @@
 
 const style = (scopes, selector, componentVars, tint) => [{
   [scopes.map(s => s + selector).join(",")]: {
-    backgroundColor: componentVars["color_" + tint + "_main_background"]
+    color: componentVars["color_" + tint] || "currentcolor"
   }
 }];
 

@@ -675,7 +675,7 @@ var createContent$3 = function createContent(vnode, _ref) {
   var dispatcher = attrs.dispatcher;
   var primaryDispatch = {
     title: function title(pAttrs) {
-      return pAttrs.attrs ? pAttrs : h("div", {
+      return pAttrs.attrs || pAttrs.props ? pAttrs || pAttrs.props : h("div", {
         className: classes.title,
         key: "title"
       }, [pAttrs.title, pAttrs.subtitle ? h("div", {

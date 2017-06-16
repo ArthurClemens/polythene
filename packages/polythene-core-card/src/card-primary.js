@@ -28,9 +28,9 @@ export const createContent = (vnode, { renderer: h })  => {
   const attrs = vnode.attrs;
   const dispatcher = attrs.dispatcher;
   const primaryDispatch = {
-    title: pAttrs =>
-      pAttrs.attrs
-        ? pAttrs
+    title: pAttrs => (
+      pAttrs.attrs || pAttrs.props
+        ? pAttrs || pAttrs.props
         : h("div",
           {
             className: classes.title,
@@ -48,7 +48,8 @@ export const createContent = (vnode, { renderer: h })  => {
             )
             : null
           ]
-        ),
+        )
+      ),
     media: pAttrs => {
       return h("div",
         {

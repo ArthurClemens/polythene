@@ -732,7 +732,7 @@ var genericTests = (function (_ref) {
       content: [{
         primary: {
           content: [{
-            title: h(".pe-card__title", { key: "title" }, [h(".pe-card__subtitle", "Travel"), h("span", "Road Trip")])
+            title: h(".pe-card__title", { key: "title" }, [h(".pe-card__subtitle", { key: "subtitle" }, "Travel"), h("span", { key: "title-content" }, "Road Trip")])
           }, {
             media: {
               ratio: "square",
@@ -4652,7 +4652,7 @@ if (process.env.NODE_ENV !== 'production') {
   };
 }
 
-var React = {
+var React$1 = {
 
   // Modern
 
@@ -4694,7 +4694,7 @@ var React = {
 // TODO: Fix tests so that this deprecation warning doesn't cause failures.
 if (process.env.NODE_ENV !== 'production') {
   if (canDefineProperty) {
-    Object.defineProperty(React, 'PropTypes', {
+    Object.defineProperty(React$1, 'PropTypes', {
       get: function get() {
         process.env.NODE_ENV !== 'production' ? warning_1(didWarnPropTypesDeprecated, 'Accessing PropTypes via the main React package is deprecated. Use ' + 'the prop-types package from npm instead.') : void 0;
         didWarnPropTypesDeprecated = true;
@@ -4704,11 +4704,54 @@ if (process.env.NODE_ENV !== 'production') {
   }
 }
 
-var reactTests = function reactTests() {
+var React_1 = React$1;
+
+var react = React_1;
+
+var reactTests = function reactTests(_ref) {
+  var Card$$1 = _ref.Card,
+      Button$$1 = _ref.Button;
   // eslint-disable-line no-unused-vars
+
+  var titleLineText = "Title";
+  var infoLineText = "Subhead";
+  var avatarImageUrl = function avatarImageUrl(fileName) {
+    return "http://arthurclemens.github.io/assets/polythene/examples/avatar-" + fileName;
+  };
+  var IMG_URL = "http://arthurclemens.github.io/assets/polythene/examples/";
+  var holidayImage = IMG_URL + "3.jpg";
+
+  var twoButtonRow = [react.createElement(Button$$1, { label: "Action 1", key: "one" }), react.createElement(Button$$1, { label: "Action 2", key: "two" })];
 
   return [{
     section: "React specific tests"
+  }, {
+    section: "React JSX tests"
+  }, {
+    name: "Header with icon, media, actions (JSX)",
+    component: function component() {
+      return react.createElement(Card$$1, {
+        content: [{
+          header: {
+            title: titleLineText,
+            subtitle: infoLineText,
+            icon: {
+              size: "large",
+              avatar: true,
+              src: avatarImageUrl("1.png")
+            }
+          }
+        }, {
+          media: {
+            content: react.createElement("img", { src: holidayImage })
+          }
+        }, {
+          actions: {
+            content: twoButtonRow
+          }
+        }]
+      });
+    }
   }];
 };
 

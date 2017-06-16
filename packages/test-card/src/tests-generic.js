@@ -872,11 +872,10 @@ export default ({ Card, List, ListTile, Button, IconButton, renderer: h, keys: k
             primary: {
               content: [
                 {
-                  title: h(".pe-card__title",
-                    { key: "title" },
+                  title: h(".pe-card__title", { key: "title" },
                     [
-                      h(".pe-card__subtitle", "Travel"),
-                      h("span", "Road Trip")
+                      h(".pe-card__subtitle", { key: "subtitle" }, "Travel"),
+                      h("span", { key: "title-content" }, "Road Trip")
                     ]
                   )
                 },
