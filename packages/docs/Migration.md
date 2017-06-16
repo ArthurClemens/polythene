@@ -189,6 +189,12 @@ m(RaisedButton, {
 
 
 
+### Card
+
+Option `type` has been renamed to `size`.
+
+
+
 ### FAB
 
 FAB is now composed from `polythene-raised-button`. This should have no consequences.

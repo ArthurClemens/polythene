@@ -191,7 +191,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var element = "form";
+var getElement = function getElement(vnode) {
+  return vnode.attrs.element || "form";
+};
 
 var theme = customTheme;
 
@@ -319,7 +321,7 @@ var createContent = function createContent(vnode, _ref2) {
 };
 
 var dialogPane = Object.freeze({
-	element: element,
+	getElement: getElement,
 	theme: theme,
 	getInitialState: getInitialState,
 	onMount: onMount,

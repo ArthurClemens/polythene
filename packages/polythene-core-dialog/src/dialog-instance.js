@@ -2,7 +2,8 @@ import { filterSupportedAttributes, subscribe, unsubscribe, show, hide } from "p
 import { customTheme } from "./theme";
 import classes from "./classes";
 
-export const element = "div";
+export const getElement = vnode =>
+  vnode.attrs.element || "div";
 
 export const theme = customTheme;
 

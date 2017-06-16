@@ -2,7 +2,8 @@ import { filterSupportedAttributes } from "polythene-core";
 import { customTheme } from "./theme";
 import classes from "./classes";
 
-export const element = "a";
+export const getElement = vnode =>
+  vnode.attrs.element || "a";
 
 export const theme = customTheme;
 
@@ -131,7 +132,7 @@ export const createContent = (vnode, { renderer: h, keys: k, Ripple }) => {
         // Ripple
         disabled || noink
           ? null
-          : Ripple && state.dom()
+          : Ripple //&& state.dom()
             ? h(Ripple, Object.assign({},
               {
                 key: "ripple",

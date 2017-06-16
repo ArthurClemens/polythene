@@ -13,7 +13,7 @@ import { unpackAttrs } from "./attrs";
 
 export const multipleHOC = ({ options: mOptions, renderer }) => {
 
-  const items = [];
+  const items = []; // This is shared between all instances of a type (Dialog, Notification, ...)
   let current;
 
   const getInitialState = (vnode, createStream) => {

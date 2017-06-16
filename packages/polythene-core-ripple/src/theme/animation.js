@@ -71,11 +71,11 @@ export default ({ e, id, el, attrs, classes }) => {
     const animationDone = evt => {
       styler.remove(id);
       waves.removeEventListener(ANIMATION_END_EVENT, animationDone, false);
-      waves.classList.remove(classes.wavesAnimating);
       if (attrs.persistent) {
         style.opacity = endOpacity;
         style.transform = "scale(" + endScale + ")";
       } else {
+        waves.classList.remove(classes.wavesAnimating);
         container.removeChild(waves);
         el.removeChild(container);
       }

@@ -3,7 +3,8 @@ import { customTheme } from "./theme";
 import animation from "./theme/animation";
 import classes from "./classes";
 
-export const element = "div";
+export const getElement = vnode =>
+  vnode.attrs.element || "div";
 
 export const theme = customTheme;
 

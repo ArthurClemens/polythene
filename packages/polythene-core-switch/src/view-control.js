@@ -1,6 +1,7 @@
 import classes from "./classes";
 
-export const element = "div";
+export const getElement = vnode =>
+  vnode.attrs.element || "div";
 
 export const createContent = (vnode, { renderer: h, keys: k, Shadow, IconButton }) => {
   const attrs = vnode.attrs;

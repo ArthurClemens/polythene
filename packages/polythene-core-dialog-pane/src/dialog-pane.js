@@ -2,7 +2,8 @@ import { filterSupportedAttributes, unpackAttrs, subscribe, unsubscribe } from "
 import { customTheme } from "./theme";
 import classes from "./classes";
 
-export const element = "form";
+export const getElement = vnode =>
+  vnode.attrs.element || "form";
 
 export const theme = customTheme;
 

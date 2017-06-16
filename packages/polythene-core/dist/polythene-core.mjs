@@ -493,7 +493,7 @@ var multipleHOC = function multipleHOC(_ref) {
       renderer = _ref.renderer;
 
 
-  var items = [];
+  var items = []; // This is shared between all instances of a type (Dialog, Notification, ...)
   var current = void 0;
 
   var getInitialState = function getInitialState(vnode, createStream) {

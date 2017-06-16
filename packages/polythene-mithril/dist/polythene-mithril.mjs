@@ -1,5 +1,6 @@
 export * from 'polythene-mithril-base';
 export * from 'polythene-mithril-button';
+export * from 'polythene-mithril-card';
 export * from 'polythene-mithril-checkbox';
 export * from 'polythene-mithril-dialog';
 export * from 'polythene-mithril-dialog-pane';

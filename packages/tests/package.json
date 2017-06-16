@@ -1,0 +1,59 @@
+{
+  "name": "polythene-test",
+  "version": "1.0.0-rc.1",
+  "description": "",
+  "main": "dist/polythene-test.js",
+  "module": "dist/polythene-test.mjs",
+  "scripts": {
+    "clean": "rm -rf dist && mkdir dist",
+    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
+    "build": "npm run rollup",
+    "test": "../../node_modules/jest/bin/jest.js tests/**",
+    "test:watch": "yarn run test -- --watch --no-watchman"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "dependencies": {
+    "mithril": "1.1.1",
+    "mmsvg": "^1.5.3",
+    "polythene-core-css": "1.0.0-rc.1",
+    "polythene-core-toolbar": "1.0.0-rc.1",
+    "polythene-mithril": "1.0.0-rc.1",
+    "polythene-mithril-base": "1.0.0-rc.1",
+    "polythene-react": "1.0.0-rc.1",
+    "polythene-react-base": "1.0.0-rc.1",
+    "recompose": "^0.23.4",
+    "test-button": "1.0.0-rc.1",
+    "test-card": "1.0.0-rc.1",
+    "test-checkbox": "1.0.0-rc.1",
+    "test-dialog": "1.0.0-rc.1",
+    "test-dialog-pane": "1.0.0-rc.1",
+    "test-fab": "1.0.0-rc.1",
+    "test-icon": "1.0.0-rc.1",
+    "test-icon-button": "1.0.0-rc.1",
+    "test-layout-styles": "1.0.0-rc.1",
+    "test-list": "1.0.0-rc.1",
+    "test-list-tile": "1.0.0-rc.1",
+    "test-menu": "1.0.0-rc.1",
+    "test-radio-button": "1.0.0-rc.1",
+    "test-raised-button": "1.0.0-rc.1",
+    "test-ripple": "1.0.0-rc.1",
+    "test-shadow": "1.0.0-rc.1",
+    "test-svg": "1.0.0-rc.1",
+    "test-switch": "1.0.0-rc.1",
+    "test-theme": "1.0.0-rc.1",
+    "test-toolbar": "1.0.0-rc.1"
+  },
+  "devDependencies": {
+    "enzyme": "^2.8.2",
+    "enzyme-to-json": "^1.5.1",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-router-dom": "^4.1.1",
+    "react-test-renderer": "^15.5.4"
+  },
+  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
+  "license": "MIT"
+}

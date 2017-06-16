@@ -238,7 +238,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var element = "a";
+var getElement = function getElement(vnode) {
+  return vnode.attrs.element || "a";
+};
 
 var theme = customTheme;
 
@@ -337,7 +339,8 @@ var createContent = function createContent(vnode, _ref3) {
   return label ? h("div", (_h = {}, _defineProperty(_h, k.class, classes.content), _defineProperty(_h, "key", "button"), _defineProperty(_h, "style", attrs.style || {}), _h), [!disabled && attrs.shadowComponent // "protected" option, used by raised-button
   ? attrs.shadowComponent : null,
   // Ripple
-  disabled || noink ? null : Ripple && state.dom() ? h(Ripple, _extends({}, {
+  disabled || noink ? null : Ripple //&& state.dom()
+  ? h(Ripple, _extends({}, {
     key: "ripple",
     target: state.dom()
   }, attrs.ripple)) : null,
@@ -348,7 +351,7 @@ var createContent = function createContent(vnode, _ref3) {
 };
 
 var button = Object.freeze({
-	element: element,
+	getElement: getElement,
 	theme: theme,
 	getInitialState: getInitialState,
 	onMount: onMount,

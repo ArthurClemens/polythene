@@ -1,0 +1,1 @@
+{"version":3,"file":"polythene-test.js","sources":["../index.js"],"sourcesContent":["\nimport * as fromMithrilTests from \"./src/mithril-tests\";\nexport const mithrilTests = fromMithrilTests;\n\nimport * as fromReactTests from \"./src/react-tests\";\nexport const reactTests = fromReactTests;\n"],"names":["mithrilTests","reactTests"],"mappings":"22CAEaA,ieAGAC"}

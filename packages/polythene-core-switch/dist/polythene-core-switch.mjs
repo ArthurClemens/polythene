@@ -297,7 +297,9 @@ var _extends$3 = Object.assign || function (target) { for (var i = 1; i < argume
 
 function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var element = "div";
+var getElement = function getElement(vnode) {
+  return vnode.attrs.element || "div";
+};
 
 var createContent = function createContent(vnode, _ref) {
   var h = _ref.renderer,
@@ -330,7 +332,7 @@ var createContent = function createContent(vnode, _ref) {
 };
 
 var viewControl = Object.freeze({
-	element: element,
+	getElement: getElement,
 	createContent: createContent
 });
 

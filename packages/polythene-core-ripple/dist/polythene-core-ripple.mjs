@@ -145,11 +145,11 @@ var animation = (function (_ref) {
     var animationDone = function animationDone(evt) {
       styler.remove(id);
       waves.removeEventListener(ANIMATION_END_EVENT, animationDone, false);
-      waves.classList.remove(classes.wavesAnimating);
       if (attrs.persistent) {
         style.opacity = endOpacity;
         style.transform = "scale(" + endScale + ")";
       } else {
+        waves.classList.remove(classes.wavesAnimating);
         container.removeChild(waves);
         el.removeChild(container);
       }
@@ -163,7 +163,9 @@ var animation = (function (_ref) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var element = "div";
+var getElement = function getElement(vnode) {
+  return vnode.attrs.element || "div";
+};
 
 var theme = customTheme;
 
@@ -229,7 +231,7 @@ var onUnMount = function onUnMount(_ref2) {
 };
 
 var ripple = Object.freeze({
-	element: element,
+	getElement: getElement,
 	theme: theme,
 	getInitialState: getInitialState,
 	createProps: createProps,

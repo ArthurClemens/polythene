@@ -1,0 +1,139 @@
+import { filterSupportedAttributes } from "polythene-core";
+import { customTheme } from "./theme";
+import classes from "./classes";
+
+export const theme = customTheme;
+
+const createOverlay = ({ dispatcher, attrs, h, k }) => {
+  const element = attrs.element || "div";
+  const content = attrs.content.map(dispatcher);
+  return h("div",
+    {
+      key: attrs.key || "card-overlay",
+      className: [
+        classes.overlay,
+        attrs.sheet ? classes.overlaySheet : null,
+        attrs.tone === "light" ? null : "pe-dark-tone", // default dark tone
+        attrs.tone === "light" ? "pe-light-tone" : null,
+      ].join(" ")
+    },
+    [
+      h(element, {
+        key: "content",
+        className: [
+          classes.overlayContent,
+          attrs.className || attrs[k.class]
+        ].join(" ")
+      }, content),
+      h("div",
+        {
+          key: "dimmer",
+          className: classes.mediaDimmer
+        }
+      )
+    ]
+  );
+};
+
+const createText = ({ attrs, h, k }) => {
+  const element = attrs.element || "div";
+  return h(element, {
+    key: attrs.key || "card-text",
+    className: [
+      classes.text,
+      attrs.tight ? classes.textTight : null,
+      attrs.className || attrs[k.class]
+    ].join(" ")
+  }, attrs.content);
+};
+
+const createHeader = ({ attrs, h, k, Icon, ListTile }) => {
+  return h(ListTile, Object.assign(
+    {},
+    attrs,
+    {
+      key: attrs.key || "card-header",
+      className: [
+        classes.header,
+        attrs.className || attrs[k.class]
+      ].join(" ")
+    },
+    attrs.icon
+      ? { front: h(Icon, attrs.icon) }
+      : null
+  ));
+};
+
+export const getElement = vnode =>
+  vnode.attrs.element || vnode.attrs.url
+    ? "a"
+    : "div";
+
+export const createProps = (vnode, { keys: k }) => {
+  const attrs = vnode.attrs;
+  return Object.assign(
+    {},
+    filterSupportedAttributes(attrs),
+    {
+      className: [
+        classes.component,
+        attrs.tone === "dark" ? "pe-dark-tone" : null,
+        attrs.tone === "light" ? "pe-light-tone" : null,
+        attrs.className || attrs[k.class],
+      ].join(" ")
+    },
+    attrs.url,
+    attrs.events
+  );
+};
+
+export const createContent = (vnode, { renderer: h, keys: k, CardActions, CardMedia, CardPrimary, Icon, Shadow, ListTile }) => {
+
+  const dispatcher = block => {
+    const key = Object.keys(block)[0];
+    const attrs = Object.assign(
+      {},
+      block[key],
+      {
+        dispatcher,
+        key
+      }
+    );
+    switch (key) {
+    case "actions": 
+      return h(CardActions, attrs);
+    case "header": 
+      return createHeader({ dispatcher, attrs, h, k, Icon, ListTile });
+    case "media": 
+      return h(CardMedia, attrs);
+    case "overlay": 
+      return createOverlay({ dispatcher, attrs, h, k });
+    case "primary": 
+      return h(CardPrimary, attrs);
+    case "text": 
+      return createText({ dispatcher, attrs, h, k });
+    default:
+      throw(`Content type "${key}" does not exist`);
+    }
+  };
+
+  const attrs = vnode.attrs;
+  const contents = Array.isArray(attrs.content)
+    ? attrs.content.map(dispatcher)
+    : attrs.content;
+
+  return [
+    h(Shadow, {
+      z: attrs.z !== undefined ? attrs.z : 1,
+      animated: true,
+      key: "shadow"
+    }),
+    h("div",
+      {
+        className: classes.content,
+        key: "content"
+      },
+      contents
+    )
+  ];
+};

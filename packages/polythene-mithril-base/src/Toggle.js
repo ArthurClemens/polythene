@@ -1,5 +1,14 @@
 import { renderer as h } from "./renderer";
 
+const updateState = vnode => {
+  if (vnode.attrs.getState) {
+    vnode.attrs.getState({
+      visible: vnode.state.visible,
+      transitioning: vnode.state.transitioning
+    });
+  }
+};
+
 export const Toggle = {
   oninit: vnode => {
     vnode.state = {
@@ -17,30 +26,25 @@ export const Toggle = {
         state.visible = false;
       }
     }
-    const updateState = () => {
-      if (attrs.getState) {
-        attrs.getState({
-          visible: vnode.state.visible,
-          transitioning: vnode.state.transitioning
-        });
-      }
-    };
+    console.log("state.visible", state.visible);
     return state.visible
       ? h(attrs.instance,
           Object.assign(
             {},
             attrs,
             {
-              setVisible: value => {
-                state.visible = value;
-                updateState();
-                h.redraw();
-              },
-              setTransitioning: value => {
-                state.transitioning = value;
-                updateState();
-                h.redraw();
-              },
+              setDisplayState: ({ transitioning, visible }) => {
+                console.log("setDisplayState", "transitioning", transitioning, "visible", visible);
+                if (transitioning !== undefined) {
+                  state.transitioning = transitioning;
+                }
+                if (visible !== undefined) {
+                  state.visible = visible;
+                  state.transitioning = false;
+                }
+                updateState(vnode);
+                setTimeout(h.redraw);
+              }
             }
           )
         )

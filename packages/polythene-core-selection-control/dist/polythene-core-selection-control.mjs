@@ -34,7 +34,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 // Does not export theme
-var element = "div";
+var getElement = function getElement(vnode) {
+  return vnode.attrs.element || "div";
+};
 
 var getInitialState = function getInitialState(vnode, createStream) {
   var attrs = vnode.attrs;
@@ -125,7 +127,7 @@ var createContent = function createContent(vnode, _ref2) {
 };
 
 var selectionControl = Object.freeze({
-	element: element,
+	getElement: getElement,
 	getInitialState: getInitialState,
 	createProps: createProps,
 	createContent: createContent
@@ -135,7 +137,7 @@ var _extends$1 = Object.assign || function (target) { for (var i = 1; i < argume
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var element$1 = "." + classes.box;
+var element = "." + classes.box;
 
 var createIcon = function createIcon(h, iconType, attrs, className) {
   return (
@@ -171,7 +173,7 @@ var createContent$1 = function createContent(vnode, _ref) {
 };
 
 var viewControl = Object.freeze({
-	element: element$1,
+	element: element,
 	createContent: createContent$1
 });
 

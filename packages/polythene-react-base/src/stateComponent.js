@@ -9,7 +9,7 @@ const requiresKeys = true;
 export const StateComponent = ({
   createContent = () => {},
   createProps = () => ({}),
-  element = "div",
+  getElement = () => "div",
   component,
   getInitialState = () => ({}),
   onMount = () => {},
@@ -60,7 +60,7 @@ export const StateComponent = ({
     _render() {
       const vnode = this.createVirtualNode();
       return renderer(
-        component || vnode.attrs.element || element,
+        component || getElement(vnode),
         Object.assign(
           {},
           createProps(vnode, { renderer, requiresKeys, keys }),

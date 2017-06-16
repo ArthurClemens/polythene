@@ -8,7 +8,7 @@ const requiresKeys = true;
 export const ViewComponent = ({
   createContent = () => {},
   createProps = () => ({}),
-  element = "div",
+  getElement = () => "div",
   component,
 }) => {
   
@@ -26,7 +26,7 @@ export const ViewComponent = ({
     render() {
       const vnode = this.createVirtualNode();
       return renderer(
-        component || vnode.attrs.element || element,
+        component || getElement(vnode),
         Object.assign(
           {},
           createProps(vnode, { renderer, requiresKeys, keys }),

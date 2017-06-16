@@ -333,8 +333,10 @@ var StateComponent = function StateComponent(_ref) {
       createProps = _ref$createProps === undefined ? function () {
     return {};
   } : _ref$createProps,
-      _ref$element = _ref.element,
-      element = _ref$element === undefined ? "div" : _ref$element,
+      _ref$getElement = _ref.getElement,
+      getElement = _ref$getElement === undefined ? function () {
+    return "div";
+  } : _ref$getElement,
       component = _ref.component,
       _ref$getInitialState = _ref.getInitialState,
       getInitialState = _ref$getInitialState === undefined ? function () {
@@ -401,7 +403,7 @@ var StateComponent = function StateComponent(_ref) {
         var _this3 = this;
 
         var vnode = this.createVirtualNode();
-        return renderer(component || vnode.attrs.element || element, _extends$1({}, createProps(vnode, { renderer: renderer, requiresKeys: requiresKeys, keys: keys }), { ref: function ref(reactComponent) {
+        return renderer(component || getElement(vnode), _extends$1({}, createProps(vnode, { renderer: renderer, requiresKeys: requiresKeys, keys: keys }), { ref: function ref(reactComponent) {
             if (!_this3.dom) {
               _this3.dom = ReactDOM.findDOMNode(reactComponent);
             }
@@ -437,8 +439,10 @@ var ViewComponent = function ViewComponent(_ref) {
       createProps = _ref$createProps === undefined ? function () {
     return {};
   } : _ref$createProps,
-      _ref$element = _ref.element,
-      element = _ref$element === undefined ? "div" : _ref$element,
+      _ref$getElement = _ref.getElement,
+      getElement = _ref$getElement === undefined ? function () {
+    return "div";
+  } : _ref$getElement,
       component = _ref.component;
 
 
@@ -467,7 +471,7 @@ var ViewComponent = function ViewComponent(_ref) {
         var _this2 = this;
 
         var vnode = this.createVirtualNode();
-        return renderer(component || vnode.attrs.element || element, _extends$2({}, createProps(vnode, { renderer: renderer, requiresKeys: requiresKeys$1, keys: keys }), { ref: function ref(reactComponent) {
+        return renderer(component || getElement(vnode), _extends$2({}, createProps(vnode, { renderer: renderer, requiresKeys: requiresKeys$1, keys: keys }), { ref: function ref(reactComponent) {
             if (!_this2.dom) {
               _this2.dom = ReactDOM.findDOMNode(reactComponent);
             }

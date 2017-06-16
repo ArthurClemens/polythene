@@ -1,5 +1,3 @@
 # FAB
 
 Core Polythene component.
-
-

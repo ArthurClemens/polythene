@@ -7,8 +7,8 @@ const requiresKeys = false;
 export const StateComponent = ({
   createContent = () => {},
   createProps = () => {},
-  element = "div",
   component,
+  getElement = () => "div",
   getInitialState = () => ({}),
   onMount = () => {},
   onUnMount = () => {},
@@ -29,9 +29,8 @@ export const StateComponent = ({
   };
 
   const render = vnode => {
-    
     return renderer(
-      component || vnode.attrs.element || element,
+      component || getElement(vnode),
       createProps(vnode, { renderer, requiresKeys, keys }),
       [
         vnode.attrs.before,

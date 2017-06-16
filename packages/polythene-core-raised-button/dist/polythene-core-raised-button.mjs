@@ -106,7 +106,7 @@ styler.generateStyles([selector], vars$1, fns);
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-// Don't export 'element': that will be the wrapped button component (set in polythene-xxx-raised-button)
+// Don't export 'getElement': that will be the wrapped button component (set in polythene-xxx-raised-button)
 
 var theme = customTheme;
 

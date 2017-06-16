@@ -102,7 +102,9 @@ styler.generateStyles([selector], vars$1, fns);
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var element = "div";
+var getElement = function getElement(vnode) {
+  return vnode.attrs.element || "div";
+};
 
 var theme = customTheme;
 
@@ -121,7 +123,7 @@ var createContent = function createContent(vnode) {
 };
 
 var toolbar = Object.freeze({
-	element: element,
+	getElement: getElement,
 	theme: theme,
 	createProps: createProps,
 	createContent: createContent

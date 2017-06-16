@@ -225,9 +225,11 @@ var StateComponent = function StateComponent(_ref) {
       createContent = _ref$createContent === undefined ? function () {} : _ref$createContent,
       _ref$createProps = _ref.createProps,
       createProps = _ref$createProps === undefined ? function () {} : _ref$createProps,
-      _ref$element = _ref.element,
-      element = _ref$element === undefined ? "div" : _ref$element,
       component = _ref.component,
+      _ref$getElement = _ref.getElement,
+      getElement = _ref$getElement === undefined ? function () {
+    return "div";
+  } : _ref$getElement,
       _ref$getInitialState = _ref.getInitialState,
       getInitialState = _ref$getInitialState === undefined ? function () {
     return {};
@@ -253,8 +255,7 @@ var StateComponent = function StateComponent(_ref) {
   };
 
   var render = function render(vnode) {
-
-    return renderer(component || vnode.attrs.element || element, createProps(vnode, { renderer: renderer, requiresKeys: requiresKeys, keys: keys }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, requiresKeys: requiresKeys, keys: keys }), vnode.attrs.after]);
+    return renderer(component || getElement(vnode), createProps(vnode, { renderer: renderer, requiresKeys: requiresKeys, keys: keys }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, requiresKeys: requiresKeys, keys: keys }), vnode.attrs.after]);
   };
 
   return {
@@ -272,8 +273,10 @@ var ViewComponent = function ViewComponent(_ref) {
       createContent = _ref$createContent === undefined ? function () {} : _ref$createContent,
       _ref$createProps = _ref.createProps,
       createProps = _ref$createProps === undefined ? function () {} : _ref$createProps,
-      _ref$element = _ref.element,
-      element = _ref$element === undefined ? "div" : _ref$element,
+      _ref$getElement = _ref.getElement,
+      getElement = _ref$getElement === undefined ? function () {
+    return "div";
+  } : _ref$getElement,
       component = _ref.component,
       renderView = _ref.renderView,
       _ref$onMount = _ref.onMount,
@@ -283,7 +286,7 @@ var ViewComponent = function ViewComponent(_ref) {
 
 
   var view = function view(vnode) {
-    return renderer(component || vnode.attrs.element || element, createProps(vnode, { renderer: renderer, requiresKeys: requiresKeys$1, keys: keys }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, requiresKeys: requiresKeys$1, keys: keys }), vnode.attrs.after]);
+    return renderer(component || getElement(vnode), createProps(vnode, { renderer: renderer, requiresKeys: requiresKeys$1, keys: keys }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, requiresKeys: requiresKeys$1, keys: keys }), vnode.attrs.after]);
   };
 
   return {
@@ -294,6 +297,15 @@ var ViewComponent = function ViewComponent(_ref) {
 };
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var updateState = function updateState(vnode) {
+  if (vnode.attrs.getState) {
+    vnode.attrs.getState({
+      visible: vnode.state.visible,
+      transitioning: vnode.state.transitioning
+    });
+  }
+};
 
 var Toggle = {
   oninit: function oninit(vnode) {
@@ -312,24 +324,22 @@ var Toggle = {
         state.visible = false;
       }
     }
-    var updateState = function updateState() {
-      if (attrs.getState) {
-        attrs.getState({
-          visible: vnode.state.visible,
-          transitioning: vnode.state.transitioning
-        });
-      }
-    };
+    console.log("state.visible", state.visible);
     return state.visible ? renderer(attrs.instance, _extends$1({}, attrs, {
-      setVisible: function setVisible(value) {
-        state.visible = value;
-        updateState();
-        renderer.redraw();
-      },
-      setTransitioning: function setTransitioning(value) {
-        state.transitioning = value;
-        updateState();
-        renderer.redraw();
+      setDisplayState: function setDisplayState(_ref) {
+        var transitioning = _ref.transitioning,
+            visible = _ref.visible;
+
+        console.log("setDisplayState", "transitioning", transitioning, "visible", visible);
+        if (transitioning !== undefined) {
+          state.transitioning = transitioning;
+        }
+        if (visible !== undefined) {
+          state.visible = visible;
+          state.transitioning = false;
+        }
+        updateState(vnode);
+        setTimeout(renderer.redraw);
       }
     })) : renderer("span", { className: attrs.placeholderClassName });
   }

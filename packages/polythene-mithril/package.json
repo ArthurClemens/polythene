@@ -16,6 +16,7 @@
   "dependencies": {
     "polythene-mithril-base": "1.0.0-rc.1",
     "polythene-mithril-button": "1.0.0-rc.1",
+    "polythene-mithril-card": "1.0.0-rc.1",
     "polythene-mithril-checkbox": "1.0.0-rc.1",
     "polythene-mithril-dialog": "1.0.0-rc.1",
     "polythene-mithril-dialog-pane": "1.0.0-rc.1",

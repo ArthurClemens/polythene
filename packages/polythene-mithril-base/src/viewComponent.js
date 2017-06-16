@@ -6,7 +6,7 @@ const requiresKeys = false;
 export const ViewComponent = ({
   createContent = () => {},
   createProps = () => {},
-  element = "div",
+  getElement = () => "div",
   component,
   renderView,
   onMount = () => {},
@@ -15,7 +15,7 @@ export const ViewComponent = ({
 
   const view = vnode => {
     return renderer(
-      component || vnode.attrs.element || element,
+      component || getElement(vnode),
       createProps(vnode, { renderer, requiresKeys, keys }),
       [
         vnode.attrs.before,

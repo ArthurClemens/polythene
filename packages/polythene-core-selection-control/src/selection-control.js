@@ -2,7 +2,8 @@ import { filterSupportedAttributes } from "polythene-core";
 // Does not export theme
 import classes from "./classes";
 
-export const element = "div";
+export const getElement = vnode =>
+  vnode.attrs.element || "div";
 
 export const getInitialState = (vnode, createStream) => {
   const attrs = vnode.attrs;
