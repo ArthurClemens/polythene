@@ -1,14 +1,18 @@
 import m from 'mithril';
 
 var keys = {
+  autofocus: "autofocus",
   class: "class",
   className: "class",
   enctype: "enctype",
   formaction: "formaction",
+  maxlength: "maxlength",
+  minlength: "minlength",
   onblur: "onblur",
   onclick: "onclick",
   onchange: "onchange",
   onfocus: "onfocus",
+  oninput: "oninput",
   onkeydown: "onkeydown",
   onkeyup: "onkeyup",
   onmousedown: "onmousedown",
@@ -17,6 +21,7 @@ var keys = {
   onmouseup: "onmouseup",
   onscroll: "onscroll",
   onsubmit: "onsubmit",
+  readonly: "readonly",
   tabindex: "tabindex"
 };
 
@@ -324,13 +329,11 @@ var Toggle = {
         state.visible = false;
       }
     }
-    console.log("state.visible", state.visible);
     return state.visible ? renderer(attrs.instance, _extends$1({}, attrs, {
       setDisplayState: function setDisplayState(_ref) {
         var transitioning = _ref.transitioning,
             visible = _ref.visible;
 
-        console.log("setDisplayState", "transitioning", transitioning, "visible", visible);
         if (transitioning !== undefined) {
           state.transitioning = transitioning;
         }

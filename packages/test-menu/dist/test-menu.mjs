@@ -374,7 +374,7 @@ var styles = [{
   }
 }];
 
-styler.add("test-Menu-position", styles);
+styler.add("test-menu-position", styles);
 
 var createPositionContainer = function createPositionContainer(_ref) {
   var h = _ref.h,

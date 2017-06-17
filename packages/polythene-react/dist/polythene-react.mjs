@@ -16,4 +16,5 @@ export * from 'polythene-react-ripple';
 export * from 'polythene-react-shadow';
 export * from 'polythene-react-svg';
 export * from 'polythene-react-switch';
+export * from 'polythene-react-textfield';
 export * from 'polythene-react-toolbar';

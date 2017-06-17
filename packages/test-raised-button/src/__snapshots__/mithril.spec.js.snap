@@ -8,6 +8,7 @@ exports[`test Dark tone class + light tone 1`] = `
       <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
       <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
     </div>
+    <div class=\"pe-ripple pe-ripple--constrained\"></div>
     <div class=\"pe-button__wash\"></div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-button__label\">
@@ -28,6 +29,7 @@ exports[`test Dark tone class + light tone 1`] = `
       <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
       <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
     </div>
+    <div class=\"pe-ripple pe-ripple--constrained\"></div>
     <div class=\"pe-button__wash\"></div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-button__label\">
@@ -47,6 +49,7 @@ exports[`test Dark tone class + light tone class 1`] = `
       <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
       <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
     </div>
+    <div class=\"pe-ripple pe-ripple--constrained\"></div>
     <div class=\"pe-button__wash\"></div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-button__label\">
@@ -67,6 +70,7 @@ exports[`test Dark tone class + light tone class 1`] = `
       <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
       <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
     </div>
+    <div class=\"pe-ripple pe-ripple--constrained\"></div>
     <div class=\"pe-button__wash\"></div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-button__label\">
@@ -84,6 +88,7 @@ exports[`test No options 1`] = `
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
     <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
   </div>
+  <div class=\"pe-ripple pe-ripple--constrained\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
 </div></a>
@@ -97,6 +102,7 @@ exports[`test Option: animateOnTap (false) 1`] = `
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
     <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
   </div>
+  <div class=\"pe-ripple pe-ripple--constrained\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
@@ -113,6 +119,7 @@ exports[`test Option: children 1`] = `
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
     <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
   </div>
+  <div class=\"pe-ripple pe-ripple--constrained\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div><span>Child</span>
 </div></a>
@@ -127,6 +134,7 @@ tabindex=\"0\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
     <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
   </div>
+  <div class=\"pe-ripple pe-ripple--constrained\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
 </div></a>
@@ -141,6 +149,7 @@ tabindex=\"0\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
     <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
   </div>
+  <div class=\"pe-ripple pe-ripple--constrained\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
 </div></a>
@@ -154,6 +163,7 @@ exports[`test Option: content 1`] = `
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
     <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
   </div>
+  <div class=\"pe-ripple pe-ripple--constrained\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div><span>Content</span>
 </div></a>
@@ -167,6 +177,7 @@ exports[`test Option: disabled (false) 1`] = `
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
     <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
   </div>
+  <div class=\"pe-ripple pe-ripple--constrained\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
@@ -208,6 +219,7 @@ exports[`test Option: element 1`] = `
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
     <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
   </div>
+  <div class=\"pe-ripple pe-ripple--constrained\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
 </div></button>
@@ -222,6 +234,7 @@ tabindex=\"0\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
     <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
   </div>
+  <div class=\"pe-ripple pe-ripple--constrained\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
 </div></a>
@@ -235,6 +248,7 @@ exports[`test Option: inactivate (2s) 1`] = `
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
     <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
   </div>
+  <div class=\"pe-ripple pe-ripple--constrained\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
@@ -251,6 +265,7 @@ exports[`test Option: inactive (false) 1`] = `
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
     <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
   </div>
+  <div class=\"pe-ripple pe-ripple--constrained\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
@@ -268,6 +283,7 @@ exports[`test Option: inactive (true) 1`] = `
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
     <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
   </div>
+  <div class=\"pe-ripple pe-ripple--constrained\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
@@ -300,6 +316,7 @@ exports[`test Option: label -- dark tone class (should be app's primary color) 1
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
     <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
   </div>
+  <div class=\"pe-ripple pe-ripple--constrained\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
@@ -316,6 +333,7 @@ exports[`test Option: label 1`] = `
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
     <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
   </div>
+  <div class=\"pe-ripple pe-ripple--constrained\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
@@ -332,6 +350,7 @@ exports[`test Option: raised (with option z: 2) 1`] = `
     <div class=\"pe-shadow__bottom pe-shadow--z-2\"></div>
     <div class=\"pe-shadow__top pe-shadow--z-2\"></div>
   </div>
+  <div class=\"pe-ripple pe-ripple--constrained\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
@@ -348,6 +367,7 @@ exports[`test Option: raised (with option z: 5) 1`] = `
     <div class=\"pe-shadow__bottom pe-shadow--z-5\"></div>
     <div class=\"pe-shadow__top pe-shadow--z-5\"></div>
   </div>
+  <div class=\"pe-ripple pe-ripple--constrained\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
@@ -366,6 +386,7 @@ tabindex=\"0\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
     <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
   </div>
+  <div class=\"pe-ripple pe-ripple--constrained\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
@@ -384,6 +405,7 @@ class=\"pe-button__content\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
     <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
   </div>
+  <div class=\"pe-ripple pe-ripple--constrained\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
@@ -400,6 +422,7 @@ exports[`test Option: tabindex 1`] = `
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
     <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
   </div>
+  <div class=\"pe-ripple pe-ripple--constrained\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
 </div></a>
@@ -414,6 +437,7 @@ href=\"#!/shadow\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
     <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
   </div>
+  <div class=\"pe-ripple pe-ripple--constrained\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
@@ -430,6 +454,7 @@ exports[`test Option: wash (false) 1`] = `
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
     <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
   </div>
+  <div class=\"pe-ripple pe-ripple--constrained\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
     No wash
@@ -447,6 +472,7 @@ tabindex=\"0\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
     <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
   </div>
+  <div class=\"pe-ripple pe-ripple--constrained\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">

@@ -79,6 +79,7 @@ exports[`test Option: children 1`] = `
   <div
     className="pe-button__content"
     style={Object {}}>
+    <Ripple />
     <div
       className="pe-button__wash" />
     <div
@@ -115,6 +116,7 @@ exports[`test Option: content 1`] = `
   <div
     className="pe-button__content"
     style={Object {}}>
+    <Ripple />
     <div
       className="pe-button__wash" />
     <div
@@ -135,6 +137,7 @@ exports[`test Option: disabled (false) 1`] = `
   <div
     className="pe-button__content"
     style={Object {}}>
+    <Ripple />
     <div
       className="pe-button__wash" />
     <div
@@ -182,6 +185,7 @@ exports[`test Option: formaction 1`] = `
   <div
     className="pe-button__content"
     style={Object {}}>
+    <Ripple />
     <div
       className="pe-button__wash" />
     <div
@@ -212,6 +216,7 @@ exports[`test Option: inactivate (2) 1`] = `
   <div
     className="pe-button__content"
     style={Object {}}>
+    <Ripple />
     <div
       className="pe-button__wash" />
     <div
@@ -239,6 +244,7 @@ exports[`test Option: inactive (false) 1`] = `
   <div
     className="pe-button__content"
     style={Object {}}>
+    <Ripple />
     <div
       className="pe-button__wash" />
     <div
@@ -257,6 +263,7 @@ exports[`test Option: inactive (true) 1`] = `
   <div
     className="pe-button__content"
     style={Object {}}>
+    <Ripple />
     <div
       className="pe-button__wash" />
     <div
@@ -299,6 +306,7 @@ exports[`test Option: label -- dark tone class 1`] = `
   <div
     className="pe-button__content"
     style={Object {}}>
+    <Ripple />
     <div
       className="pe-button__wash" />
     <div
@@ -320,6 +328,7 @@ exports[`test Option: label 1`] = `
   <div
     className="pe-button__content"
     style={Object {}}>
+    <Ripple />
     <div
       className="pe-button__wash" />
     <div
@@ -341,6 +350,7 @@ exports[`test Option: selected 1`] = `
   <div
     className="pe-button__content"
     style={Object {}}>
+    <Ripple />
     <div
       className="pe-button__wash" />
     <div
@@ -368,6 +378,7 @@ exports[`test Option: style (colors) 1`] = `
         "color": "#fff",
       }
     }>
+    <Ripple />
     <div
       className="pe-button__wash" />
     <div
@@ -397,6 +408,7 @@ exports[`test Option: tone "dark" -- dark tone class 1`] = `
   <div
     className="pe-button__content"
     style={Object {}}>
+    <Ripple />
     <div
       className="pe-button__wash" />
     <div
@@ -419,6 +431,7 @@ exports[`test Option: url (without oncreate) 1`] = `
   <div
     className="pe-button__content"
     style={Object {}}>
+    <Ripple />
     <div
       className="pe-button__wash" />
     <div
@@ -440,6 +453,7 @@ exports[`test Option: wash (false) 1`] = `
   <div
     className="pe-button__content"
     style={Object {}}>
+    <Ripple />
     <div
       className="pe-button__focus" />
     <div
@@ -459,6 +473,7 @@ exports[`test Themed Button (colors) 1`] = `
   <div
     className="pe-button__content"
     style={Object {}}>
+    <Ripple />
     <div
       className="pe-button__wash" />
     <div
@@ -480,6 +495,7 @@ exports[`test Themed Button -- dark tone class 1`] = `
   <div
     className="pe-button__content"
     style={Object {}}>
+    <Ripple />
     <div
       className="pe-button__wash" />
     <div
@@ -501,6 +517,7 @@ exports[`test Themed Button blue on dark -- dark tone class 1`] = `
   <div
     className="pe-button__content"
     style={Object {}}>
+    <Ripple />
     <div
       className="pe-button__wash" />
     <div
@@ -529,6 +546,7 @@ exports[`test Themed Button: (option: borders) -- dark tone class 1`] = `
   <div
     className="pe-button__content"
     style={Object {}}>
+    <Ripple />
     <div
       className="pe-button__wash" />
     <div
@@ -550,6 +568,7 @@ exports[`test Themed Button: (option: borders) 1`] = `
   <div
     className="pe-button__content"
     style={Object {}}>
+    <Ripple />
     <div
       className="pe-button__wash" />
     <div

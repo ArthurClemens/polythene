@@ -17,9 +17,6 @@ const reactTests = ({ Card, Button }) => { // eslint-disable-line no-unused-vars
 
   return [
     {
-      section: "React specific tests",
-    },
-    {
       section: "React JSX tests",
     },
     {

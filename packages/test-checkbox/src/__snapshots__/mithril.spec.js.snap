@@ -10,6 +10,9 @@ exports[`test Dark tone class + light tone 1`] = `
         <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-button__content\">
           <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple pe-ripple--constrained\">
+            <label class=\"pe-control__form-label\"></label>
+          </div>
           <div class=\"pe-button__focus\">
             <label class=\"pe-control__form-label\"></label>
           </div>
@@ -63,6 +66,9 @@ exports[`test Dark tone class + light tone class 1`] = `
         <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-button__content\">
           <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple pe-ripple--constrained\">
+            <label class=\"pe-control__form-label\"></label>
+          </div>
           <div class=\"pe-button__focus\">
             <label class=\"pe-control__form-label\"></label>
           </div>
@@ -114,6 +120,9 @@ exports[`test No options 1`] = `
       <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
         <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
         <div class=\"pe-button__focus\">
           <label class=\"pe-control__form-label\"></label>
         </div>
@@ -161,6 +170,9 @@ exports[`test Option: class 1`] = `
       <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
         <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
         <div class=\"pe-button__focus\">
           <label class=\"pe-control__form-label\"></label>
         </div>
@@ -208,6 +220,9 @@ exports[`test Option: className 1`] = `
       <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
         <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
         <div class=\"pe-button__focus\">
           <label class=\"pe-control__form-label\"></label>
         </div>
@@ -255,6 +270,9 @@ exports[`test Option: defaultChecked -- dark tone class 1`] = `
       <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
         <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
         <div class=\"pe-button__focus\">
           <label class=\"pe-control__form-label\"></label>
         </div>
@@ -302,6 +320,9 @@ exports[`test Option: defaultChecked 1`] = `
       <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
         <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
         <div class=\"pe-button__focus\">
           <label class=\"pe-control__form-label\"></label>
         </div>
@@ -535,6 +556,9 @@ exports[`test Option: element 1`] = `
   <label class=\"pe-control__form-label\"></label>
   <div class=\"pe-button__content\">
     <label class=\"pe-control__form-label\"></label>
+    <div class=\"pe-ripple pe-ripple--constrained\">
+      <label class=\"pe-control__form-label\"></label>
+    </div>
     <div class=\"pe-button__focus\">
       <label class=\"pe-control__form-label\"></label>
     </div>
@@ -629,6 +653,9 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
         <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-button__content\">
           <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple pe-ripple--constrained\">
+            <label class=\"pe-control__form-label\"></label>
+          </div>
           <div class=\"pe-button__focus\">
             <label class=\"pe-control__form-label\"></label>
           </div>
@@ -680,6 +707,9 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
         <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-button__content\">
           <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple pe-ripple--constrained\">
+            <label class=\"pe-control__form-label\"></label>
+          </div>
           <div class=\"pe-button__focus\">
             <label class=\"pe-control__form-label\"></label>
           </div>
@@ -731,6 +761,9 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
         <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-button__content\">
           <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple pe-ripple--constrained\">
+            <label class=\"pe-control__form-label\"></label>
+          </div>
           <div class=\"pe-button__focus\">
             <label class=\"pe-control__form-label\"></label>
           </div>
@@ -782,6 +815,9 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
         <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-button__content\">
           <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple pe-ripple--constrained\">
+            <label class=\"pe-control__form-label\"></label>
+          </div>
           <div class=\"pe-button__focus\">
             <label class=\"pe-control__form-label\"></label>
           </div>
@@ -838,6 +874,9 @@ exports[`test Option: id 1`] = `
       <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
         <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
         <div class=\"pe-button__focus\">
           <label class=\"pe-control__form-label\"></label>
         </div>
@@ -885,6 +924,9 @@ exports[`test Option: label 1`] = `
       <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
         <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
         <div class=\"pe-button__focus\">
           <label class=\"pe-control__form-label\"></label>
         </div>
@@ -936,6 +978,9 @@ exports[`test Option: selectable (false) 1`] = `
       <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-button__content\">
           <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple pe-ripple--constrained\">
+            <label class=\"pe-control__form-label\"></label>
+          </div>
           <div class=\"pe-button__focus\">
             <label class=\"pe-control__form-label\"></label>
           </div>
@@ -982,6 +1027,9 @@ exports[`test Option: selectable (false) 1`] = `
         <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-button__content\">
           <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple pe-ripple--constrained\">
+            <label class=\"pe-control__form-label\"></label>
+          </div>
           <div class=\"pe-button__focus\">
             <label class=\"pe-control__form-label\"></label>
           </div>
@@ -1035,6 +1083,9 @@ exports[`test Option: size 1`] = `
         <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-button__content\">
           <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple pe-ripple--constrained\">
+            <label class=\"pe-control__form-label\"></label>
+          </div>
           <div class=\"pe-button__focus\">
             <label class=\"pe-control__form-label\"></label>
           </div>
@@ -1081,6 +1132,9 @@ exports[`test Option: size 1`] = `
         <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-button__content\">
           <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple pe-ripple--constrained\">
+            <label class=\"pe-control__form-label\"></label>
+          </div>
           <div class=\"pe-button__focus\">
             <label class=\"pe-control__form-label\"></label>
           </div>
@@ -1127,6 +1181,9 @@ exports[`test Option: size 1`] = `
         <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-button__content\">
           <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple pe-ripple--constrained\">
+            <label class=\"pe-control__form-label\"></label>
+          </div>
           <div class=\"pe-button__focus\">
             <label class=\"pe-control__form-label\"></label>
           </div>
@@ -1173,6 +1230,9 @@ exports[`test Option: size 1`] = `
         <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-button__content\">
           <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-ripple pe-ripple--constrained\">
+            <label class=\"pe-control__form-label\"></label>
+          </div>
           <div class=\"pe-button__focus\">
             <label class=\"pe-control__form-label\"></label>
           </div>
@@ -1224,6 +1284,9 @@ exports[`test Option: tabindex 1`] = `
       <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
         <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
         <div class=\"pe-button__focus\">
           <label class=\"pe-control__form-label\"></label>
         </div>
@@ -1271,6 +1334,9 @@ exports[`test Option: value 1`] = `
       <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
         <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
         <div class=\"pe-button__focus\">
           <label class=\"pe-control__form-label\"></label>
         </div>
@@ -1318,6 +1384,9 @@ exports[`test Themed Checkbox (color and font size) 1`] = `
       <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
         <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
         <div class=\"pe-button__focus\">
           <label class=\"pe-control__form-label\"></label>
         </div>
@@ -1368,6 +1437,9 @@ exports[`test Themed Checkbox (colors) -- dark tone class 1`] = `
       <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
         <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-ripple pe-ripple--constrained\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
         <div class=\"pe-button__focus\">
           <label class=\"pe-control__form-label\"></label>
         </div>

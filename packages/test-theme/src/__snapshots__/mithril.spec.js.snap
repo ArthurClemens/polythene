@@ -1,6 +1,7 @@
 exports[`test No theme: normal button 1`] = `
 "<a class=\"pe-button pe-text-button\" tabindex=\"0\">
 <div class=\"pe-button__content\">
+  <div class=\"pe-ripple pe-ripple--constrained\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
@@ -15,6 +16,7 @@ exports[`test Theme with deriving component: button (should be bordered with whi
 \"pe-button pe-text-button pe-button--borders tests-custom-theme-secondary-button\"
 tabindex=\"0\">
 <div class=\"pe-button__content\">
+  <div class=\"pe-ripple pe-ripple--constrained\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
@@ -33,6 +35,7 @@ tabindex=\"0\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
     <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
   </div>
+  <div class=\"pe-ripple pe-ripple--constrained\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-fab__content\">
@@ -55,6 +58,7 @@ exports[`test Theme with style variables: button (should be blue) 1`] = `
 "<a class=\"pe-button pe-text-button tests-custom-theme-blue-button\"
 tabindex=\"0\">
 <div class=\"pe-button__content\">
+  <div class=\"pe-ripple pe-ripple--constrained\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
@@ -68,6 +72,7 @@ exports[`test Theme with style variables: button (should be red) 1`] = `
 "<a class=\"pe-button pe-text-button tests-custom-theme-red-button\"
 tabindex=\"0\">
 <div class=\"pe-button__content\">
+  <div class=\"pe-ripple pe-ripple--constrained\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
@@ -96,6 +101,7 @@ exports[`test Theme with style variables: icon button (should have large padding
 \"pe-button pe-icon-button tests-custom-theme-large-icon-button\"
 tabindex=\"0\">
 <div class=\"pe-button__content\">
+  <div class=\"pe-ripple pe-ripple--constrained\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-icon-button__content\">
     <div class=\"pe-icon pe-icon--regular\">
@@ -120,6 +126,7 @@ exports[`test Theme with theme file (global primary color): FAB (should be orang
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
     <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
   </div>
+  <div class=\"pe-ripple pe-ripple--constrained\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-fab__content\">

@@ -9,7 +9,7 @@
     "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
     "build": "npm run rollup",
-    "test": "../../node_modules/jest/bin/jest.js tests/**",
+    "test": "../../node_modules/jest/bin/jest.js src/**",
     "test:watch": "yarn run test -- --watch --no-watchman"
   },
   "files": [

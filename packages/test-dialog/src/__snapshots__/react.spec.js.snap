@@ -1,49 +1,15 @@
-exports[`test No options - instance 1`] = `
-<form
-  className="pe-dialog       "
-  onClick={[Function]}>
-  <div
-    className="pe-dialog__content ">
-    <Shadow
-      animated={true}
-      z={3} />
-    <div
-      className="pe-dialog__body"
-      onScroll={[Function]} />
-  </div>
-</form>
-`;
-
 exports[`test No options - spec 1`] = `
 <div
   className="pe-dialog     "
   onClick={[Function]}>
   <div
-    className=" ">
-    <Shadow
-      animated={true}
-      z={3} />
-    <undefined />
-  </div>
-</div>
-`;
-
-exports[`test Option: body - instance 1`] = `
-<form
-  className="pe-dialog       "
-  onClick={[Function]}>
-  <div
     className="pe-dialog__content ">
     <Shadow
       animated={true}
       z={3} />
-    <div
-      className="pe-dialog__body"
-      onScroll={[Function]}>
-      Hello
-    </div>
+    <DialogPane />
   </div>
-</form>
+</div>
 `;
 
 exports[`test Option: body - spec 1`] = `
@@ -51,30 +17,14 @@ exports[`test Option: body - spec 1`] = `
   className="pe-dialog     "
   onClick={[Function]}>
   <div
-    className=" ">
-    <Shadow
-      animated={true}
-      z={3} />
-    <undefined
-      body="Hello" />
-  </div>
-</div>
-`;
-
-exports[`test Option: class - instance 1`] = `
-<form
-  className="pe-dialog       class-x"
-  onClick={[Function]}>
-  <div
     className="pe-dialog__content ">
     <Shadow
       animated={true}
       z={3} />
-    <div
-      className="pe-dialog__body"
-      onScroll={[Function]} />
+    <DialogPane
+      body="Hello" />
   </div>
-</form>
+</div>
 `;
 
 exports[`test Option: class - spec 1`] = `
@@ -82,29 +32,14 @@ exports[`test Option: class - spec 1`] = `
   className="pe-dialog     class-x"
   onClick={[Function]}>
   <div
-    className=" ">
-    <Shadow
-      animated={true}
-      z={3} />
-    <undefined />
-  </div>
-</div>
-`;
-
-exports[`test Option: className - instance 1`] = `
-<form
-  className="pe-dialog       className-x"
-  onClick={[Function]}>
-  <div
     className="pe-dialog__content ">
     <Shadow
       animated={true}
       z={3} />
-    <div
-      className="pe-dialog__body"
-      onScroll={[Function]} />
+    <DialogPane
+      className="class-x" />
   </div>
-</form>
+</div>
 `;
 
 exports[`test Option: className - spec 1`] = `
@@ -112,29 +47,14 @@ exports[`test Option: className - spec 1`] = `
   className="pe-dialog     className-x"
   onClick={[Function]}>
   <div
-    className=" ">
-    <Shadow
-      animated={true}
-      z={3} />
-    <undefined />
-  </div>
-</div>
-`;
-
-exports[`test Option: element - instance 1`] = `
-<a
-  className="pe-dialog       "
-  onClick={[Function]}>
-  <div
     className="pe-dialog__content ">
     <Shadow
       animated={true}
       z={3} />
-    <div
-      className="pe-dialog__body"
-      onScroll={[Function]} />
+    <DialogPane
+      className="className-x" />
   </div>
-</a>
+</div>
 `;
 
 exports[`test Option: element - spec 1`] = `
@@ -142,30 +62,13 @@ exports[`test Option: element - spec 1`] = `
   className="pe-dialog     "
   onClick={[Function]}>
   <div
-    className=" ">
-    <Shadow
-      animated={true}
-      z={3} />
-    <undefined />
-  </div>
-</a>
-`;
-
-exports[`test Option: id - instance 1`] = `
-<form
-  className="pe-dialog       "
-  id="id-x"
-  onClick={[Function]}>
-  <div
     className="pe-dialog__content ">
     <Shadow
       animated={true}
       z={3} />
-    <div
-      className="pe-dialog__body"
-      onScroll={[Function]} />
+    <DialogPane />
   </div>
-</form>
+</a>
 `;
 
 exports[`test Option: id - spec 1`] = `
@@ -174,75 +77,25 @@ exports[`test Option: id - spec 1`] = `
   id="id-x"
   onClick={[Function]}>
   <div
-    className=" ">
+    className="pe-dialog__content ">
     <Shadow
       animated={true}
       z={3} />
-    <undefined />
+    <DialogPane />
   </div>
 </div>
 `;
 
-exports[`test Option: modal with backdrop - instance 1`] = `
-<form
-  className="pe-dialog  pe-dialog--backdrop     "
+exports[`test Option: modal with backdrop - spec 1`] = `
+<div
+  className="pe-dialog  pe-dialog--backdrop   "
   onClick={[Function]}>
   <div
     className="pe-dialog__content ">
     <Shadow
       animated={true}
       z={3} />
-    <div
-      className="pe-dialog__header">
-      <div
-        className="pe-dialog__title">
-        Long dialog with a very long title that surely won't fit here
-      </div>
-    </div>
-    <div
-      className="pe-dialog__body"
-      onScroll={[Function]}>
-      <div
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>",
-          }
-        } />
-    </div>
-    <div
-      className="pe-dialog__footer">
-      <div
-        className="pe-dialog__actions">
-        <Button
-          events={
-            Object {
-              "onClick": [Function],
-            }
-          }
-          label="Cancel" />
-        <Button
-          events={
-            Object {
-              "onClick": [Function],
-            }
-          }
-          label="Discard" />
-      </div>
-    </div>
-  </div>
-</form>
-`;
-
-exports[`test Option: modal with backdrop - spec 1`] = `
-<div
-  className="pe-dialog     "
-  onClick={[Function]}>
-  <div
-    className=" ">
-    <Shadow
-      animated={true}
-      z={3} />
-    <undefined
+    <DialogPane
       body={
         <div
           dangerouslySetInnerHTML={
@@ -266,7 +119,7 @@ exports[`test Option: modal with backdrop - spec 1`] = `
                     "onClick": [Function],
                   }
             }
-            label="Discard" />,
+            label="Save" />,
         ]
       }
       title="Long dialog with a very long title that surely won\'t fit here" />
@@ -274,91 +127,16 @@ exports[`test Option: modal with backdrop - spec 1`] = `
 </div>
 `;
 
-exports[`test Option: style - instance 1`] = `
-<form
-  className="pe-dialog       "
-  onClick={[Function]}>
-  <div
-    className="pe-dialog__content "
-    style={
-      Object {
-        "background": "#fff59d",
-        "padding": "1.5rem",
-      }
-    }>
-    <Shadow
-      animated={true}
-      z={3} />
-    <div
-      className="pe-dialog__body"
-      onScroll={[Function]}>
-      Hello
-    </div>
-  </div>
-</form>
-`;
-
-exports[`test Option: style - spec 1`] = `
+exports[`test Option: title and body (long text) - spec 1`] = `
 <div
   className="pe-dialog     "
-  onClick={[Function]}>
-  <div
-    className=" "
-    style={
-      Object {
-        "background": "#fff59d",
-        "padding": "1.5rem",
-      }
-    }>
-    <Shadow
-      animated={true}
-      z={3} />
-    <undefined
-      body="Hello" />
-  </div>
-</div>
-`;
-
-exports[`test Option: title and body (long text) - instance 1`] = `
-<form
-  className="pe-dialog       "
   onClick={[Function]}>
   <div
     className="pe-dialog__content ">
     <Shadow
       animated={true}
       z={3} />
-    <div
-      className="pe-dialog__header">
-      <div
-        className="pe-dialog__title">
-        Long dialog with a very long title that surely won't fit here
-      </div>
-    </div>
-    <div
-      className="pe-dialog__body"
-      onScroll={[Function]}>
-      <div
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>",
-          }
-        } />
-    </div>
-  </div>
-</form>
-`;
-
-exports[`test Option: title and body (long text) - spec 1`] = `
-<div
-  className="pe-dialog     "
-  onClick={[Function]}>
-  <div
-    className=" ">
-    <Shadow
-      animated={true}
-      z={3} />
-    <undefined
+    <DialogPane
       body={
         <div
           dangerouslySetInnerHTML={
@@ -372,39 +150,16 @@ exports[`test Option: title and body (long text) - spec 1`] = `
 </div>
 `;
 
-exports[`test Option: z (0) - instance 1`] = `
-<form
-  className="pe-dialog       "
+exports[`test Option: z (0) - spec 1`] = `
+<div
+  className="pe-dialog     "
   onClick={[Function]}>
   <div
     className="pe-dialog__content ">
     <Shadow
       animated={true}
       z={0} />
-    <div
-      className="pe-dialog__body"
-      onScroll={[Function]}>
-      <div
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>",
-          }
-        } />
-    </div>
-  </div>
-</form>
-`;
-
-exports[`test Option: z (0) - spec 1`] = `
-<div
-  className="pe-dialog     "
-  onClick={[Function]}>
-  <div
-    className=" ">
-    <Shadow
-      animated={true}
-      z={0} />
-    <undefined
+    <DialogPane
       body={
         <div
           dangerouslySetInnerHTML={
@@ -415,29 +170,6 @@ exports[`test Option: z (0) - spec 1`] = `
       } />
   </div>
 </div>
-`;
-
-exports[`test Option: z (5) - instance 1`] = `
-<form
-  className="pe-dialog       "
-  onClick={[Function]}>
-  <div
-    className="pe-dialog__content ">
-    <Shadow
-      animated={true}
-      z={6} />
-    <div
-      className="pe-dialog__body"
-      onScroll={[Function]}>
-      <div
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>",
-          }
-        } />
-    </div>
-  </div>
-</form>
 `;
 
 exports[`test Option: z (5) - spec 1`] = `
@@ -445,11 +177,11 @@ exports[`test Option: z (5) - spec 1`] = `
   className="pe-dialog     "
   onClick={[Function]}>
   <div
-    className=" ">
+    className="pe-dialog__content ">
     <Shadow
       animated={true}
       z={6} />
-    <undefined
+    <DialogPane
       body={
         <div
           dangerouslySetInnerHTML={
@@ -457,45 +189,6 @@ exports[`test Option: z (5) - spec 1`] = `
               "__html": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>",
             }
           } />
-      } />
-  </div>
-</div>
-`;
-
-exports[`test Themed (color and border radius) - instance 1`] = `
-<form
-  className="pe-dialog       dialog-tests-blue-dialog"
-  onClick={[Function]}>
-  <div
-    className="pe-dialog__content ">
-    <Shadow
-      animated={true}
-      z={3} />
-    <div
-      className="pe-dialog__body"
-      onScroll={[Function]}>
-      <div>
-        Hello
-      </div>
-    </div>
-  </div>
-</form>
-`;
-
-exports[`test Themed (color and border radius) - spec 1`] = `
-<div
-  className="pe-dialog     dialog-tests-blue-dialog"
-  onClick={[Function]}>
-  <div
-    className=" ">
-    <Shadow
-      animated={true}
-      z={3} />
-    <undefined
-      body={
-        <div>
-          Hello
-        </div>
       } />
   </div>
 </div>

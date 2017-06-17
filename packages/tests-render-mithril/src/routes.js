@@ -126,11 +126,11 @@ export default [
   //   name: "Tabs",
   //   tests: tabsTests
   // },
-  // {
-  //   path: "/textfield",
-  //   name: "Textfield",
-  //   tests: textfieldTests
-  // },
+  {
+    path: "/textfield",
+    name: "Text Field",
+    tests: tests.textfield
+  },
   {
     path: "/toolbar",
     name: "Toolbar",

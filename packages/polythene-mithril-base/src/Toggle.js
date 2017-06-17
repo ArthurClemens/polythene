@@ -26,7 +26,6 @@ export const Toggle = {
         state.visible = false;
       }
     }
-    console.log("state.visible", state.visible);
     return state.visible
       ? h(attrs.instance,
           Object.assign(
@@ -34,7 +33,6 @@ export const Toggle = {
             attrs,
             {
               setDisplayState: ({ transitioning, visible }) => {
-                console.log("setDisplayState", "transitioning", transitioning, "visible", visible);
                 if (transitioning !== undefined) {
                   state.transitioning = transitioning;
                 }

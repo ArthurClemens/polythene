@@ -4724,8 +4724,6 @@ var reactTests = function reactTests(_ref) {
   var twoButtonRow = [react.createElement(Button$$1, { label: "Action 1", key: "one" }), react.createElement(Button$$1, { label: "Action 2", key: "two" })];
 
   return [{
-    section: "React specific tests"
-  }, {
     section: "React JSX tests"
   }, {
     name: "Header with icon, media, actions (JSX)",

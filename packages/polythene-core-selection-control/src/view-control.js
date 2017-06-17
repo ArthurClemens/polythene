@@ -1,6 +1,7 @@
 import classes from "./classes";
 
-export const element = `.${classes.box}`;
+export const getElement = vnode =>
+  vnode.attrs.element || `.${classes.box}`;
 
 const createIcon = (h, iconType, attrs, className) => (
   // if attrs.iconOn/attrs.iconOff is passed, use that icon options object and ignore size

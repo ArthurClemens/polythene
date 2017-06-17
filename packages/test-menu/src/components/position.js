@@ -24,7 +24,7 @@ const styles = [
   }
 ];
 
-styler.add("test-Menu-position", styles);
+styler.add("test-menu-position", styles);
 
 const createPositionContainer = ({ h, k, Menu, List, ListTile, Shadow, IconButton }) => ({
   oninit: vnode => {
