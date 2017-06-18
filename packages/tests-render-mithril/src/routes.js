@@ -121,11 +121,11 @@ export default [
     name: "Switch",
     tests: tests.switchButton
   },
-  // {
-  //   path: "/tabs",
-  //   name: "Tabs",
-  //   tests: tabsTests
-  // },
+  {
+    path: "/tabs",
+    name: "Tabs",
+    tests: tests.tabs
+  },
   {
     path: "/textfield",
     name: "Text Field",

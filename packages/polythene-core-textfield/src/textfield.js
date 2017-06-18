@@ -202,7 +202,9 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
   const inputType = attrs.multiline ? "textarea" : "input";
   const type = attrs.multiline
     ? null
-    : (!attrs.type || attrs.type === "submit" || attrs.type === "search") ? "text" : attrs.type;
+    : !attrs.type || attrs.type === "submit" || attrs.type === "search"
+      ? "text"
+      : attrs.type;
   const showError = isInvalid && state.error() !== undefined;
   const validates = attrs.validate || attrs.min || attrs.max || attrs[k.minlength] || attrs[k.maxlength] || attrs.required || attrs.pattern;
   const inactive = attrs.disabled || attrs[k.readonly];

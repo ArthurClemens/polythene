@@ -9,10 +9,20 @@ export const ViewComponent = ({
   createContent = () => {},
   createProps = () => ({}),
   getElement = () => "div",
+  onMount = () => {},
+  onUnMount = () => {},
   component,
 }) => {
   
   return class extends Component {
+
+    componentDidMount() {
+      onMount(this.createVirtualNode());
+    }
+
+    componentWillUnmount() {
+      onUnMount(this.createVirtualNode());
+    }
 
     createVirtualNode() {
       const props = Object.assign({}, this.props);

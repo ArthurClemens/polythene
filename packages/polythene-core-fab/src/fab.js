@@ -3,7 +3,7 @@ import classes from "./classes";
 
 export const theme = customTheme;
 
-// Don't export 'element': that will be the wrapped raised button component (set in polythene-xxx-fab)
+// Don't export 'element': it will be the wrapped raised button component (set in polythene-xxx-fab)
 
 // Props to be passed to a raised button, including 'content'
 export const createProps = (vnode, { keys: k, renderer: h, Icon }) => {

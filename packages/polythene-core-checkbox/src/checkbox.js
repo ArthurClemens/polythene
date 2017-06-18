@@ -3,7 +3,7 @@ import classes from "./classes";
 
 export const theme = customTheme;
 
-// Don't export 'element': that will be the wrapped selection control component (set in polythene-xxx-checkbox)
+// Don't export 'element': it will be the wrapped selection control component (set in polythene-xxx-checkbox)
 
 // Props to be passed to a selection control
 

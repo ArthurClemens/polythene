@@ -2,7 +2,7 @@ import { isTouch, touchStartEvent, touchEndEvent, subscribe } from "polythene-co
 import { customTheme } from "./theme";
 import classes from "./classes";
 
-// Don't export 'getElement': that will be the wrapped button component (set in polythene-xxx-raised-button)
+// Don't export 'getElement': it will be the wrapped button component (set in polythene-xxx-raised-button)
 
 export const theme = customTheme;
 

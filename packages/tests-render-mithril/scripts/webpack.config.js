@@ -6,8 +6,7 @@ module.exports = {
   context: path.resolve(__dirname, "../src"), 
 
   entry: {
-    index: "../index.js",
-    // vendor: ["mithril"]
+    index: "../index.js"
   },
 
   resolve: {
@@ -38,9 +37,6 @@ module.exports = {
   },
 
   plugins: [
-    // new webpack.optimize.CommonsChunkPlugin({
-    //   name: "vendor"
-    // }),
   ],
 
   devtool: "source-map"

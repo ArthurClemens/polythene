@@ -99,7 +99,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var theme = customTheme;
 
-// Don't export 'element': that will be the wrapped raised button component (set in polythene-xxx-fab)
+// Don't export 'element': it will be the wrapped raised button component (set in polythene-xxx-fab)
 
 // Props to be passed to a raised button, including 'content'
 var createProps = function createProps(vnode, _ref) {

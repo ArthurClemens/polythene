@@ -448,6 +448,10 @@ var ViewComponent = function ViewComponent(_ref) {
       getElement = _ref$getElement === undefined ? function () {
     return "div";
   } : _ref$getElement,
+      _ref$onMount = _ref.onMount,
+      onMount = _ref$onMount === undefined ? function () {} : _ref$onMount,
+      _ref$onUnMount = _ref.onUnMount,
+      onUnMount = _ref$onUnMount === undefined ? function () {} : _ref$onUnMount,
       component = _ref.component;
 
 
@@ -461,6 +465,16 @@ var ViewComponent = function ViewComponent(_ref) {
     }
 
     _createClass$2(_class, [{
+      key: "componentDidMount",
+      value: function componentDidMount() {
+        onMount(this.createVirtualNode());
+      }
+    }, {
+      key: "componentWillUnmount",
+      value: function componentWillUnmount() {
+        onUnMount(this.createVirtualNode());
+      }
+    }, {
       key: "createVirtualNode",
       value: function createVirtualNode() {
         var props = _extends$2({}, this.props);

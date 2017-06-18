@@ -6,14 +6,14 @@ module.exports = {
   context: path.resolve(__dirname, "../src"), 
 
   entry: {
-    index: "../index.js",
+    index: "../index.js"
   },
 
-  // resolve: {
-  //   alias: {
-  //     "polythene-theme": path.resolve(__dirname, "../src/theme.js")
-  //   }
-  // },
+  resolve: {
+    alias: {
+      "polythene-theme": path.resolve(__dirname, "../src/theme.js")
+    }
+  },
 
   output: {
     path: path.resolve(__dirname, "../dist/js"),
@@ -33,9 +33,6 @@ module.exports = {
   },
 
   plugins: [
-    // new webpack.optimize.CommonsChunkPlugin({
-    //   name: "vendor"
-    // }),
   ],
 
   devtool: "source-map"

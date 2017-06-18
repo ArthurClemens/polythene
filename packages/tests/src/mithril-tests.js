@@ -17,6 +17,7 @@ export { mithrilTests as ripple }       from "test-ripple";
 export { mithrilTests as shadow }       from "test-shadow";
 export { mithrilTests as svg }          from "test-svg";
 export { mithrilTests as switchButton } from "test-switch";
+export { mithrilTests as tabs }         from "test-tabs";
 export { mithrilTests as theme }        from "test-theme";
 export { mithrilTests as textfield }    from "test-textfield";
 export { mithrilTests as toolbar }      from "test-toolbar";

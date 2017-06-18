@@ -10,6 +10,7 @@
     "build": "webpack -p --config scripts/webpack.config.js"
   },
   "dependencies": {
+    "polythene-core": "1.0.0-rc.1",
     "polythene-material-design": "1.0.0-rc.1",
     "polythene-react": "1.0.0-rc.1",
     "polythene-test": "1.0.0-rc.1",

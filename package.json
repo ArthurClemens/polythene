@@ -5,7 +5,7 @@
     "lint": "eslint . --cache",
     "build": "lerna clean --yes && lerna bootstrap && lerna run build",
     "build:component": "node ./scripts/buildComponent",
-    "build:test": "lerna bootstrap && cd ./packages/polythene-mithril && yarn run build && cd ../../ && cd ./packages/polythene-react && yarn run build && cd ../../ && cd ./packages/tests && yarn run build"
+    "build:tests": "lerna bootstrap && cd ./packages/polythene-mithril && yarn run build && cd - && cd ./packages/polythene-react && yarn run build && cd - && cd ./packages/tests && yarn run build"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",

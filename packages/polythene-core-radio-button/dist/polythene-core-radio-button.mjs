@@ -36,7 +36,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var theme = customTheme;
 
-// Don't export 'element': that will be the wrapped selection control component (set in polythene-xxx-checkbox)
+// Don't export 'element': it will be the wrapped selection control component (set in polythene-xxx-checkbox)
 
 // Props to be passed to a selection control
 
