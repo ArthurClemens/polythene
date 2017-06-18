@@ -42,15 +42,24 @@ export const MithrilToReact = component => (
       this.state = Object.assign(
         {},
         component,
-        { state: {} }
+        {
+          state: {
+            redrawValues: undefined
+          }
+        }
       );
       this.state.oninit && this.state.oninit(this.state);
     }
-    
+
     componentDidMount() {
-      this.state.state.redrawOnUpdate && this.state.state.redrawOnUpdate.map(() =>
-        this.forceUpdate()
+      this._mounted = true;
+      this.state.state.redrawOnUpdate && this.state.state.redrawOnUpdate.map(values =>
+        this._mounted && this.setState({ redrawValues: values })
       );
+    }
+
+    componentWillUnmount() {
+      this._mounted = false;
     }
 
     render() {

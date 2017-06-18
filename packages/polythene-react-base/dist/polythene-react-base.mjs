@@ -79,7 +79,11 @@ var MithrilToReact = function MithrilToReact(component) {
 
       var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, props));
 
-      _this.state = _extends({}, component, { state: {} });
+      _this.state = _extends({}, component, {
+        state: {
+          redrawValues: undefined
+        }
+      });
       _this.state.oninit && _this.state.oninit(_this.state);
       return _this;
     }
@@ -89,9 +93,15 @@ var MithrilToReact = function MithrilToReact(component) {
       value: function componentDidMount() {
         var _this2 = this;
 
-        this.state.state.redrawOnUpdate && this.state.state.redrawOnUpdate.map(function () {
-          return _this2.forceUpdate();
+        this._mounted = true;
+        this.state.state.redrawOnUpdate && this.state.state.redrawOnUpdate.map(function (values) {
+          return _this2._mounted && _this2.setState({ redrawValues: values });
         });
+      }
+    }, {
+      key: "componentWillUnmount",
+      value: function componentWillUnmount() {
+        this._mounted = false;
       }
     }, {
       key: "render",
@@ -379,10 +389,7 @@ var StateComponent = function StateComponent(_ref) {
         this._mounted = true;
         onMount(this.createVirtualNode());
         this.state.redrawOnUpdate && this.state.redrawOnUpdate.map(function (values) {
-          return (
-            // console.log("redrawOnUpdate", values),
-            _this2._mounted && _this2.setState({ redrawValues: values })
-          );
+          return _this2._mounted && _this2.setState({ redrawValues: values });
         });
       }
     }, {

@@ -2,7 +2,7 @@ import React from "react"; // eslint-disable-line no-unused-vars
 import { renderer, keys, TextField, RaisedButton } from "polythene-react";
 import genericTests from "./tests-generic";
 
-const reactTests = ({ TextField, renderer: h }) => { // eslint-disable-line no-unused-vars
+const reactTests = ({ TextField, renderer: h, keys: k }) => { // eslint-disable-line no-unused-vars
 
   const block = (test, attrs = {}) =>
     <div

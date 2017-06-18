@@ -1,4 +1,5 @@
 import focus from "./components/focus";
+import getState from "./components/getState";
 
 export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
 
@@ -22,10 +23,9 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
   });
 
   const ipsum = "Lorem ipsum dolor sit amet, idque signiferumque at usu, eum recusabo aliquando id. Deleniti percipitur concludaturque eu eos. Vix elitr feugait ne. Mel agam integre eu, has minim aliquid salutandi eu. Est nusquam abhorreant ne. Ei wisi dicant eam, vix tota reque persequeris an. Quo in theophrastus reprehendunt, ius te graecis epicuri volutpat.";
-
   const shortIpsum = "Lorem ipsum dolor sit amet,";
-
-  const FocusComponent = focus({ h, k, TextField, RaisedButton });
+  const Focus = focus({ h, k, TextField, RaisedButton });
+  const GetState = getState({ h, k, TextField, RaisedButton });
 
   return [
     {
@@ -48,7 +48,7 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
       component: {
         view: () => block([
           h(TextField, {
-            autofocus: true
+            [k.autofocus]: true
           })
         ])
       }
@@ -440,29 +440,17 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
       interactive: true,
       component: {
         view: () => block(
-          h(FocusComponent)
+          h(Focus)
         )
       }
     },
     {
-      name: "Set value from outside",
+      name: "Option: getState",
       interactive: true,
       component: {
-        value: "00000",
-        view: vnode => block([
-          h(TextField, {
-            value: () => vnode.state.value,
-            getState: state => vnode.state.value = state.value,
-            key: "a", // for React
-          }),
-          h(RaisedButton, {
-            label: "Randomize",
-            events: {
-              [k.onclick]: () => vnode.state.value = Math.floor(Math.random() * 100000)
-            },
-            key: "b", // for React
-          })
-        ])
+        view: () => block(
+          h(GetState)
+        )
       }
     },
     {

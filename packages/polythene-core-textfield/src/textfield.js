@@ -8,7 +8,7 @@ export const getElement = vnode =>
 export const theme = customTheme;
 
 const validateCustom = (state, attrs) => {
-  const validState = attrs.validate(state.value());
+  const validState = attrs.validate(state.inputEl().value);
   return {
     invalid: (validState && !validState.valid),
     message: (validState && validState.error)
@@ -16,7 +16,7 @@ const validateCustom = (state, attrs) => {
 };
 
 const validateCounter = (state, attrs) => ({
-  invalid: state.value().length > attrs.counter,
+  invalid: state.inputEl().value.length > attrs.counter,
   message: attrs.error
 });
 
@@ -31,8 +31,8 @@ const getValidStatus = (state, attrs) => {
     message: undefined
   };
 
-  // validateResetOnClear: reset validation when field is cleared
-  if (state.isTouched() && state.isInvalid() && state.value().length === 0 && attrs.validateResetOnClear) {
+  // attrs.validateResetOnClear: reset validation when field is cleared
+  if (state.isTouched() && state.isInvalid() && state.inputEl().value.length === 0 && attrs.validateResetOnClear) {
     state.isTouched(false);
     state.isInvalid(false);
     state.error(undefined);
@@ -78,7 +78,6 @@ const notifyState = vnode => {
     attrs.getState({
       focus:   state.hasFocus(),
       dirty:   state.isDirty(),
-      value:   state.value(),
       el:      state.inputEl(),
       invalid: status.invalid,
       error:   status.error
@@ -123,17 +122,12 @@ export const createProps = (vnode, { keys: k }) => {
 export const getInitialState = (vnode, createStream) => {
   const attrs = vnode.attrs;
 
-  const defaultValue = typeof attrs.value === "function"
-    ? attrs.value() !== undefined
-      ? attrs.value()
-      : ""
-    : attrs.value !== undefined
+  const defaultValue = attrs.value !== undefined
       ? attrs.value
       : "";
 
   const el = createStream();
   const inputEl = createStream();
-  const value = createStream(defaultValue);
   const setValue = createStream();
   const error = createStream(attrs.error);
   const hasFocus = createStream(attrs.focus || false);
@@ -141,18 +135,20 @@ export const getInitialState = (vnode, createStream) => {
   const isTouched = createStream(false); // true when any change is made
   const isDirty = createStream(defaultValue !== ""); // true for any input
   const isInvalid = createStream(false);
+  const previousValue = undefined;
 
   return {
+    defaultValue,
+    previousValue,
     el,
     error,
     hasFocus,
     inputEl,
-    isDirty,
     isInvalid,
     isTouched,
+    isDirty,
     setFocus,
     setValue,
-    value,
     redrawOnUpdate: createStream.merge([el, inputEl, isInvalid, isDirty])
   };
 };
@@ -168,15 +164,14 @@ export const onMount = vnode => {
   const inputType = attrs.multiline ? "textarea" : "input";
   const inputEl = dom.querySelector(inputType);
   vnode.state.inputEl(inputEl);
-  state.inputEl().value = state.value();
+  state.inputEl().value = state.defaultValue;
 
-  state.setValue.map(({ value: newValue, type, focus }) => (
-    state.value(newValue),
+  state.setValue.map(({ type, focus }) => (
     focus !== undefined && state.setFocus(focus),
-    type === "input" && (attrs.validateOnInput || attrs.counter) && state.isTouched(newValue !== ""),
-    type !== "input" && state.isTouched(newValue !== ""),
+    type === "input" && (attrs.validateOnInput || attrs.counter) && state.isTouched(state.inputEl().value !== ""),
+    type !== "input" && state.isTouched(state.inputEl().value !== ""),
     type === "onblur" && state.isTouched(true),
-    state.isDirty(newValue !== ""),
+    state.isDirty(state.inputEl().value !== ""),
     checkValidity(vnode),
     notifyState(vnode)
   ));
@@ -190,7 +185,7 @@ export const onMount = vnode => {
     }
   });
 
-  state.setValue({ value: state.value(), type: "input" });
+  notifyState(vnode);
 };
 
 export const createContent = (vnode, { renderer: h, keys: k }) => {
@@ -213,11 +208,19 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
     state.setFocus(true);
   }
 
-  // Only update from outside if the field is not being edited
-  if (typeof attrs.value === "function" && inputEl && !state.hasFocus() && !inactive) {
-    const value = attrs.value().toString();
-    state.setValue({ value, type: "outside" });
+  const value = attrs.value
+    ? attrs.value 
+    : inputEl
+        ? inputEl.value
+        : state.previousValue;
+
+  if (state.previousValue !== value && inputEl) {
     inputEl.value = value;
+    state.previousValue = value;
+    setTimeout(() => {
+      checkValidity(vnode);
+      notifyState(vnode);
+    }, 0); // perform in next tick to play nice with React
   }
 
   const requiredIndicator = attrs.required && attrs.requiredIndicator !== ""
@@ -254,11 +257,10 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
             className: classes.label,
             // In IE10 the label catches click events on the field
             // the function causes the input to get focus
-
             [k["on" + touchStartEvent]]: () => {
               if (!inactive) {
                 setTimeout(() => {
-                  state.inputEl().focus();
+                  state.inputEl.focus();
                 }, 0);
               }
             }
@@ -312,9 +314,8 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
             
         !ignoreEvent(attrs, [k.onblur])
           ? {
-            [k.onblur]: e => {
-              state.setValue({ value: e.target.value, type: "onblur", focus: false });
-              // state.setFocus(false);
+            [k.onblur]: () => {
+              state.setValue({ type: "onblur", focus: false });
               // same principle as onfocus
               state.el().classList.remove(classes.stateFocused);
             }
@@ -323,13 +324,10 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
 
         !ignoreEvent(attrs, [k.oninput])
           ? {
-            [k.oninput]: e => {
+            [k.oninput]: () => {
               // default input event
               // may be overwritten by attrs.events
-              state.setValue({ value: e.target.value, type: "input" });
-              if (attrs.oninput) {
-                attrs.oninput(state.value(), e);
-              }
+              state.setValue({ type: "input" });
             }
           }
           : null,
@@ -342,16 +340,7 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
                 state.isTouched(true);
               } else if (e.which === 27) {
                 // ESCAPE
-                state.inputEl().blur(e);
-              } else if (e.which === 9) {
-                // TAB
-                // Update after the blur event when TAB is used to leave the field and no other field will get focus.
-                // Safari only needs 1 tick, but Chrome needs more than 150ms to create a distinctive new redraw event.
-                // But we also may have buttons that change place (search field), a large timeout works better in general.
-                // setTimeout(() => {
-                //   m.redraw();
-                //   setTimeout(m.redraw, 250);
-                // }, 1);
+                inputEl.blur(e);
               }
             }
           }
@@ -377,7 +366,7 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
           key: "counter",
           className: classes.counter
         },
-        state.value().length + " / " + attrs.counter
+        ((inputEl && inputEl.value.length) || 0) + " / " + attrs.counter
       )
       : null,
     attrs.help && !showError

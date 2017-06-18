@@ -229,6 +229,40 @@ var focus = (function (_ref) {
   };
 });
 
+function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var getState = (function (_ref) {
+  var h = _ref.h,
+      k = _ref.k,
+      TextField$$1 = _ref.TextField,
+      RaisedButton$$1 = _ref.RaisedButton;
+  return {
+    oninit: function oninit(vnode) {
+      var textfieldState = stream({});
+      var value = stream("");
+      vnode.state = {
+        textfieldState: textfieldState,
+        value: value,
+        redrawOnUpdate: stream.merge([textfieldState, value])
+      };
+    },
+    view: function view(vnode) {
+      var state = vnode.state;
+      return h("div", [h(TextField$$1, {
+        value: state.value(),
+        getState: state.textfieldState,
+        counter: 6,
+        error: "You have exceeded the maximum number of characters."
+      }), h("div", { style: { margin: "10px 0" } }, [h("div", { key: "focus" }, "focus: " + state.textfieldState().focus), h("div", { key: "dirty" }, "dirty: " + state.textfieldState().dirty), h("div", { key: "invalid" }, "invalid: " + state.textfieldState().invalid)]), h(RaisedButton$$1, {
+        label: "Random",
+        events: _defineProperty$2({}, k.onclick, function () {
+          return state.value(Math.floor(Math.random() * 100000));
+        })
+      })]);
+    }
+  };
+});
+
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -254,10 +288,9 @@ var genericTests = (function (_ref) {
   });
 
   var ipsum = "Lorem ipsum dolor sit amet, idque signiferumque at usu, eum recusabo aliquando id. Deleniti percipitur concludaturque eu eos. Vix elitr feugait ne. Mel agam integre eu, has minim aliquid salutandi eu. Est nusquam abhorreant ne. Ei wisi dicant eam, vix tota reque persequeris an. Quo in theophrastus reprehendunt, ius te graecis epicuri volutpat.";
-
   var shortIpsum = "Lorem ipsum dolor sit amet,";
-
-  var FocusComponent = focus({ h: h, k: k, TextField: TextField$$1, RaisedButton: RaisedButton$$1 });
+  var Focus = focus({ h: h, k: k, TextField: TextField$$1, RaisedButton: RaisedButton$$1 });
+  var GetState = getState({ h: h, k: k, TextField: TextField$$1, RaisedButton: RaisedButton$$1 });
 
   return [{
     name: "Option: value",
@@ -276,9 +309,7 @@ var genericTests = (function (_ref) {
     name: "Option: autofocus",
     component: {
       view: function view() {
-        return block([h(TextField$$1, {
-          autofocus: true
-        })]);
+        return block([h(TextField$$1, _defineProperty({}, k.autofocus, true))]);
       }
     }
   }, {
@@ -525,11 +556,11 @@ var genericTests = (function (_ref) {
     interactive: true,
     component: {
       view: function view() {
-        var _h;
+        var _h2;
 
-        return block([h(TextField$$1, (_h = {
+        return block([h(TextField$$1, (_h2 = {
           value: "123"
-        }, _defineProperty(_h, k.maxlength, 3), _defineProperty(_h, "error", "Enter max 3 characters"), _h))]);
+        }, _defineProperty(_h2, k.maxlength, 3), _defineProperty(_h2, "error", "Enter max 3 characters"), _h2))]);
       }
     }
   }, {
@@ -624,28 +655,15 @@ var genericTests = (function (_ref) {
     interactive: true,
     component: {
       view: function view() {
-        return block(h(FocusComponent));
+        return block(h(Focus));
       }
     }
   }, {
-    name: "Set value from outside",
+    name: "Option: getState",
     interactive: true,
     component: {
-      value: "00000",
-      view: function view(vnode) {
-        return block([h(TextField$$1, {
-          value: function value() {
-            return vnode.state.value;
-          },
-          getState: function getState(state) {
-            return vnode.state.value = state.value;
-          },
-          key: "a" }), h(RaisedButton$$1, {
-          label: "Randomize",
-          events: _defineProperty({}, k.onclick, function () {
-            return vnode.state.value = Math.floor(Math.random() * 100000);
-          }),
-          key: "b" })]);
+      view: function view() {
+        return block(h(GetState));
       }
     }
   }, {
@@ -4389,7 +4407,8 @@ var _extends$1 = Object.assign || function (target) { for (var i = 1; i < argume
 
 var reactTests = function reactTests(_ref) {
   var TextField$$1 = _ref.TextField,
-      h = _ref.renderer;
+      h = _ref.renderer,
+      k = _ref.keys;
   // eslint-disable-line no-unused-vars
 
   var block = function block(test) {
