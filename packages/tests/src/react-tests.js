@@ -14,6 +14,7 @@ export { reactTests as menu }         from "test-menu";
 export { reactTests as radioButton }  from "test-radio-button";
 export { reactTests as raisedButton } from "test-raised-button";
 export { reactTests as ripple }       from "test-ripple";
+export { reactTests as search }       from "test-search";
 export { reactTests as shadow }       from "test-shadow";
 export { reactTests as svg }          from "test-svg";
 export { reactTests as switchButton } from "test-switch";

@@ -173,7 +173,8 @@ export const onMount = vnode => {
     type === "onblur" && state.isTouched(true),
     state.isDirty(state.inputEl().value !== ""),
     checkValidity(vnode),
-    notifyState(vnode)
+    notifyState(vnode),
+    state.previousValue = state.inputEl().value
   ));
 
   state.setFocus.map(focusState => {
@@ -217,10 +218,7 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
   if (state.previousValue !== value && inputEl) {
     inputEl.value = value;
     state.previousValue = value;
-    setTimeout(() => {
-      checkValidity(vnode);
-      notifyState(vnode);
-    }, 0); // perform in next tick to play nice with React
+    setTimeout(() => state.setValue({ type: "input" }), 0); // perform in next tick to play nice with React
   }
 
   const requiredIndicator = attrs.required && attrs.requiredIndicator !== ""
@@ -246,120 +244,124 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
     : null;
 
   return [
-    h("div", {
-      className: classes.inputArea,
-      key: "input-area"
-    }, [
-      label
-        ? h("label",
+    h("div",
+      {
+        className: classes.inputArea,
+        key: "input-area"
+      },
+      [
+        label
+          ? h("label",
+            {
+              key: "label",
+              className: classes.label,
+              // In IE10 the label catches click events on the field
+              // the function causes the input to get focus
+              [k["on" + touchStartEvent]]: () => {
+                if (!inactive) {
+                  setTimeout(() => {
+                    state.inputEl.focus();
+                  }, 0);
+                }
+              }
+            },
+          label)
+          : null,
+        h(inputType, Object.assign(
+          {},
           {
-            key: "label",
-            className: classes.label,
-            // In IE10 the label catches click events on the field
-            // the function causes the input to get focus
-            [k["on" + touchStartEvent]]: () => {
-              if (!inactive) {
-                setTimeout(() => {
-                  state.inputEl.focus();
-                }, 0);
-              }
-            }
+            key: "input",
+            className: classes.input,
+            disabled: attrs.disabled
           },
-        label)
-        : null,
-      h(inputType, Object.assign(
-        {},
-        {
-          key: "input",
-          className: classes.input,
-          disabled: attrs.disabled
-        },
-        type ? { type } : null,
-        attrs.name 
-          ? { name: attrs.name }
-          : null,
+          type ? { type } : null,
+          attrs.name 
+            ? { name: attrs.name }
+            : null,
 
-        !ignoreEvent(attrs, [k.onclick])
-          ? {
-            [k.onclick]: () => {
-              if (inactive) {
-                return;
-              }
-              // in case the browser does not give the field focus,
-              // for instance when the user tapped to the current field off screen
-              state.setFocus(true);
-              notifyState(vnode);
-            }
-          }
-          : null,
-
-        !ignoreEvent(attrs, [k.onfocus])
-          ? {
-            [k.onfocus]: () => {
-              if (inactive) {
-                return;
-              }
-              state.setFocus(true);
-              // set CSS class manually in case field gets focus but is off screen
-              // and no redraw is triggered
-              // at the next redraw state.hasFocus() will be read and the focus class be set
-              // in the props.class statement
-              if (state.el()) {
-                state.el().classList.add(classes.stateFocused);
-              }
-              notifyState(vnode);
-            }
-          }
-          : null,
-            
-        !ignoreEvent(attrs, [k.onblur])
-          ? {
-            [k.onblur]: () => {
-              state.setValue({ type: "onblur", focus: false });
-              // same principle as onfocus
-              state.el().classList.remove(classes.stateFocused);
-            }
-          }
-          : null,
-
-        !ignoreEvent(attrs, [k.oninput])
-          ? {
-            [k.oninput]: () => {
-              // default input event
-              // may be overwritten by attrs.events
-              state.setValue({ type: "input" });
-            }
-          }
-          : null,
-
-        !ignoreEvent(attrs, [k.onkeydown])
-          ? {
-            [k.onkeydown]: e => {
-              if (e.which === 13) {
-                // ENTER
-                state.isTouched(true);
-              } else if (e.which === 27) {
-                // ESCAPE
-                inputEl.blur(e);
+          !ignoreEvent(attrs, [k.onclick])
+            ? {
+              [k.onclick]: () => {
+                if (inactive) {
+                  return;
+                }
+                // in case the browser does not give the field focus,
+                // for instance when the user tapped to the current field off screen
+                state.setFocus(true);
+                notifyState(vnode);
               }
             }
-          }
-          : null,
+            : null,
 
-          attrs.events ? attrs.events : null, // NOTE: may overwrite oninput
-          attrs[k.readonly] !== undefined ?  { [k.readonly]: true } : null,
-          attrs.pattern !== undefined ?      { pattern: attrs.pattern } : null,
-          attrs[k.maxlength] !== undefined ? { [k.maxlength]: attrs[k.maxlength] } : null,
-          attrs[k.minlength] !== undefined ? { [k.minlength]: attrs[k.minlength] } : null,
-          attrs.max !== undefined ?          { max: attrs.max } : null,
-          attrs.min !== undefined ?          { min: attrs.min } : null,
-          attrs[k.autofocus] !== undefined ? { [k.autofocus]: attrs[k.autofocus] } : null,
-          attrs.required !== undefined ?     { required: attrs.required } : null,
-          attrs[k.tabindex] !== undefined ?  { [k.tabindex]: attrs[k.tabindex] } : null,
-          attrs.rows !== undefined ?         { rows: attrs.rows } : null
+          !ignoreEvent(attrs, [k.onfocus])
+            ? {
+              [k.onfocus]: () => {
+                if (inactive) {
+                  return;
+                }
+                state.setFocus(true);
+                // set CSS class manually in case field gets focus but is off screen
+                // and no redraw is triggered
+                // at the next redraw state.hasFocus() will be read and the focus class be set
+                // in the props.class statement
+                if (state.el()) {
+                  state.el().classList.add(classes.stateFocused);
+                }
+                notifyState(vnode);
+              }
+            }
+            : null,
+              
+          !ignoreEvent(attrs, [k.onblur])
+            ? {
+              [k.onblur]: () => {
+                state.setValue({ type: "onblur", focus: false });
+                // same principle as onfocus
+                state.el().classList.remove(classes.stateFocused);
+              }
+            }
+            : null,
+
+          !ignoreEvent(attrs, [k.oninput])
+            ? {
+              [k.oninput]: () => {
+                // default input event
+                // may be overwritten by attrs.events
+                state.setValue({ type: "input" });
+              }
+            }
+            : null,
+
+          !ignoreEvent(attrs, [k.onkeydown])
+            ? {
+              [k.onkeydown]: e => {
+                if (e.which === 13) {
+                  // ENTER
+                  state.isTouched(true);
+                } else if (e.which === 27) {
+                  // ESCAPE
+                  inputEl.blur(e);
+                }
+              }
+            }
+            : null,
+
+            attrs.events ? attrs.events : null, // NOTE: may overwrite oninput
+            attrs[k.readonly] !== undefined ?  { [k.readonly]: true } : null,
+            attrs.pattern !== undefined ?      { pattern: attrs.pattern } : null,
+            attrs[k.maxlength] !== undefined ? { [k.maxlength]: attrs[k.maxlength] } : null,
+            attrs[k.minlength] !== undefined ? { [k.minlength]: attrs[k.minlength] } : null,
+            attrs.max !== undefined ?          { max: attrs.max } : null,
+            attrs.min !== undefined ?          { min: attrs.min } : null,
+            attrs[k.autofocus] !== undefined ? { [k.autofocus]: attrs[k.autofocus] } : null,
+            attrs.required !== undefined ?     { required: attrs.required } : null,
+            attrs[k.tabindex] !== undefined ?  { [k.tabindex]: attrs[k.tabindex] } : null,
+            attrs.rows !== undefined ?         { rows: attrs.rows } : null
+          
+          )
         )
-      )
-    ]),
+      ]
+    ),
     attrs.counter
       ? h("div",
         {

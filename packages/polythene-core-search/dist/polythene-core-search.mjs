@@ -1,5 +1,3 @@
-import m from 'mithril';
-import textfield from 'polythene-textfield';
 import { filterSupportedAttributes } from 'polythene-core';
 import { flex, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
@@ -100,7 +98,12 @@ var layout = (function (selector, componentVars) {
       }
     }],
 
-    " .pe-search__content": flex.layoutHorizontal,
+    " .pe-search__content": {
+      "&, .pe-textfield": flex.layoutHorizontal,
+      "&, .pe-textfield__input-area": {
+        flexGrow: 1
+      }
+    },
 
     " .pe-search__content > *": [flex.layoutVertical, flex.selfCenter],
 
@@ -177,40 +180,58 @@ styler.generateStyles([selector], vars$1, fns);
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+var getElement = function getElement(vnode) {
+  return vnode.attrs.element || "div";
+};
+
+var theme = customTheme;
+
 var getNameOfState = function getNameOfState(state) {
   return state.focus && state.dirty ? "focus_dirty" : state.focus ? "focus" : state.dirty ? "dirty" : "none";
 };
 
-var view = function view(_ref) {
-  var state = _ref.state,
-      attrs = _ref.attrs;
+var getInitialState = function getInitialState(vnode, createStream) {
+  var searchState = createStream({});
+  return {
+    searchState: searchState
+  };
+};
 
-  var element = attrs.element || "div";
-  var props = _extends({}, filterSupportedAttributes(attrs), {
-    className: [classes.component, attrs.fullWidth ? classes.searchFullWidth : classes.searchInset, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.class].join(" ")
+var createProps = function createProps(vnode, _ref) {
+  var k = _ref.keys;
+
+  var attrs = vnode.attrs;
+  return _extends({}, filterSupportedAttributes(attrs), {
+    className: [classes.component, attrs.fullWidth ? classes.searchFullWidth : classes.searchInset, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, attrs.events);
-  var searchState = getNameOfState(state.searchState);
+};
+
+var createContent = function createContent(vnode, _ref2) {
+  var h = _ref2.renderer,
+      TextField = _ref2.TextField;
+
+  var state = vnode.state;
+  var attrs = vnode.attrs;
+  var searchState = getNameOfState(state.searchState());
   var buttons = (attrs.buttons || {})[searchState] || {};
   var textfieldAttrs = attrs.textfield || {};
-  var content = m("div", {
-    className: classes.content
-  }, [buttons.before, m(textfield, _extends({}, textfieldAttrs, {
+  return h("div", { className: classes.content }, [buttons.before, h(TextField, _extends({}, textfieldAttrs, {
+    key: "input",
     getState: function getState(newState) {
-      state.searchState = _extends({}, newState);
+      state.searchState(newState);
       if (textfieldAttrs.getState) {
-        textfieldAttrs.getState(state.searchState);
+        textfieldAttrs.getState(newState);
       }
     }
   })), buttons.after]);
-  return m(element, props, [attrs.before, content, attrs.after]);
 };
 
-var search = {
-  theme: customTheme, // accepts (selector, vars)
-  oninit: function oninit(vnode) {
-    vnode.state.searchState = {};
-  },
-  view: view
-};
+var search = Object.freeze({
+	getElement: getElement,
+	theme: theme,
+	getInitialState: getInitialState,
+	createProps: createProps,
+	createContent: createContent
+});
 
-export { classes, vars$1 as vars };export default search;
+export { search as coreSearch, classes, vars$1 as vars };

@@ -14,6 +14,7 @@ export { mithrilTests as menu }         from "test-menu";
 export { mithrilTests as radioButton }  from "test-radio-button";
 export { mithrilTests as raisedButton } from "test-raised-button";
 export { mithrilTests as ripple }       from "test-ripple";
+export { mithrilTests as search }       from "test-search";
 export { mithrilTests as shadow }       from "test-shadow";
 export { mithrilTests as svg }          from "test-svg";
 export { mithrilTests as switchButton } from "test-switch";

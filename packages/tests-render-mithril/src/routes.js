@@ -96,11 +96,11 @@ export default [
     name: "Ripple",
     tests: tests.ripple
   },
-  // {
-  //   path: "/search",
-  //   name: "Search",
-  //   tests: searchTests
-  // },
+  {
+    path: "/search",
+    name: "Search",
+    tests: tests.search
+  },
   {
     path: "/shadow",
     name: "Shadow",

@@ -45,7 +45,12 @@ export default (selector, componentVars) => {
           }
         ],
 
-        " .pe-search__content": flex.layoutHorizontal,
+        " .pe-search__content": {
+          "&, .pe-textfield": flex.layoutHorizontal,
+          "&, .pe-textfield__input-area": {
+            flexGrow: 1
+          }
+        },
 
         " .pe-search__content > *": [
           flex.layoutVertical,

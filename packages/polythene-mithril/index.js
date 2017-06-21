@@ -13,6 +13,7 @@ export * from "polythene-mithril-menu";
 export * from "polythene-mithril-radio-button";
 export * from "polythene-mithril-raised-button";
 export * from "polythene-mithril-ripple";
+export * from "polythene-mithril-search";
 export * from "polythene-mithril-shadow";
 export * from "polythene-mithril-svg";
 export * from "polythene-mithril-switch";

@@ -592,7 +592,7 @@ var onMount = function onMount(vnode) {
   state.setValue.map(function (_ref2) {
     var type = _ref2.type,
         focus = _ref2.focus;
-    return focus !== undefined && state.setFocus(focus), type === "input" && (attrs.validateOnInput || attrs.counter) && state.isTouched(state.inputEl().value !== ""), type !== "input" && state.isTouched(state.inputEl().value !== ""), type === "onblur" && state.isTouched(true), state.isDirty(state.inputEl().value !== ""), checkValidity(vnode), notifyState(vnode);
+    return focus !== undefined && state.setFocus(focus), type === "input" && (attrs.validateOnInput || attrs.counter) && state.isTouched(state.inputEl().value !== ""), type !== "input" && state.isTouched(state.inputEl().value !== ""), type === "onblur" && state.isTouched(true), state.isDirty(state.inputEl().value !== ""), checkValidity(vnode), notifyState(vnode), state.previousValue = state.inputEl().value;
   });
 
   state.setFocus.map(function (focusState) {
@@ -634,8 +634,7 @@ var createContent = function createContent(vnode, _ref3) {
     inputEl.value = value;
     state.previousValue = value;
     setTimeout(function () {
-      checkValidity(vnode);
-      notifyState(vnode);
+      return state.setValue({ type: "input" });
     }, 0); // perform in next tick to play nice with React
   }
 
