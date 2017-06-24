@@ -38,9 +38,7 @@ var vars$1 = {
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var layout = (function (selector, componentVars) {
-  var _ref;
-
-  return [(_ref = {}, _defineProperty$1(_ref, selector, [flex.layoutCenterCenter, {
+  return [_defineProperty$1({}, selector, [flex.layoutCenterCenter, {
     position: "fixed",
     top: 0,
     left: 0,
@@ -59,13 +57,7 @@ var layout = (function (selector, componentVars) {
       position: "relative",
       borderRadius: componentVars.border_radius + "px"
     }
-  }]), _defineProperty$1(_ref, " body.pe-dialog--open", {
-    overflow: "hidden",
-    left: 0,
-    "-webkit-overflow-scrolling": "touch",
-    top: 0,
-    width: "100%"
-  }), _ref)];
+  }])];
 });
 
 function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }

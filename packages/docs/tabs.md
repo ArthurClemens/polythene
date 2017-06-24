@@ -113,11 +113,11 @@ const myTabs = m(tabs, {
 
 ### Getting the tabs state
 
-To read the currently selected tab, for instance to write the selected tab to a controller variable, use `getState`:
+To read the currently selected tab, for instance to write the selected tab to a controller variable, use `onChange`:
 
 ~~~javascript
 m(tabs, {
-  getState: state => vnode.state.selectedTabIndex = state.index
+  onChange: state => vnode.state.selectedTabIndex = state.index
 }, tabButtons)
 ~~~
 
@@ -242,7 +242,7 @@ m(tabs, {
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **buttons**   | -              | - |  | Deprecated; use `content` or children |
 | **tabsOpts**  | optional       | Options Object | | Tab button options that will be applied to all tabs, see "Tab button options"  below |
-| **getState**  | optional       | Function(state {Object}) | | Callback function that accepts the tabs state (Object with properties `index` {Boolean}, `data` {Object}, `el` {HTMLElement}) |
+| **onChange**  | optional       | Function(state {Object}) | | Callback function that accepts the tabs state (Object with properties `index` {Boolean}, `data` {Object}, `el` {HTMLElement}) |
 
 ### Tabs appearance options
 

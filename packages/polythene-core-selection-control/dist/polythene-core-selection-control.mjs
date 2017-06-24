@@ -41,7 +41,7 @@ var getElement = function getElement(vnode) {
 var getInitialState = function getInitialState(vnode, createStream) {
   var attrs = vnode.attrs;
 
-  var defaultChecked = attrs.checked !== undefined ? !!attrs.checked : !!attrs.defaultChecked || false;
+  var defaultChecked = attrs.defaultChecked !== undefined ? !!attrs.defaultChecked : !!attrs.checked;
 
   var checked = createStream(defaultChecked);
   var redrawOnChange = createStream(defaultChecked);

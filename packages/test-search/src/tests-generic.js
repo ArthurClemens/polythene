@@ -1,6 +1,5 @@
-import searchField from "./components/searchfield";
 
-export default ({ renderer: h, keys: k, Search, IconButton, Button, Shadow }) => {
+export default ({ renderer: h, Search, SearchField }) => {
 
   Search.theme(".tests-search-themed-search", {
     color_light_input_text: "#0D47A1",
@@ -8,8 +7,6 @@ export default ({ renderer: h, keys: k, Search, IconButton, Button, Shadow }) =>
     color_dark_input_text: "#eee",
     color_dark_background: "#333"
   });
-
-  const SearchFieldComponent = searchField({ h, k, Search, IconButton, Button, Shadow }); 
 
   const Block = {
     view: ({ attrs }) => 
@@ -25,7 +22,7 @@ export default ({ renderer: h, keys: k, Search, IconButton, Button, Shadow }) =>
             ? null
             : { padding: "8px" }
         )},
-        h(SearchFieldComponent, attrs)
+        h(SearchField, attrs)
       )
   };
 

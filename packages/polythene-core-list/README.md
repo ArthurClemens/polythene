@@ -1,5 +1,3 @@
 # List
 
 Core Polythene component.
-
-

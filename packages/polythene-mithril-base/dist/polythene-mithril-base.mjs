@@ -252,10 +252,7 @@ var StateComponent = function StateComponent(_ref) {
     var initialState = getInitialState(protoState, stream);
     vnode.state = initialState;
     vnode.state.redrawOnUpdate && vnode.state.redrawOnUpdate.map(function () {
-      return (
-        // console.log("redrawOnUpdate", value),
-        setTimeout(renderer.redraw)
-      );
+      return setTimeout(renderer.redraw);
     });
   };
 

@@ -34,12 +34,12 @@ m(radioGroup);
 
 ### Dynamic values
 
-To read the checked state use `getState`:
+To read the checked state use `onChange`:
 
 ~~~javascript
 m(radioButton, {
   name: "setting",
-  getState: state => vnode.state.value = state.value
+  onChange: state => vnode.state.value = state.value
 })
 ~~~
 
@@ -180,7 +180,7 @@ m(radioGroup);
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **getState**  | optional | Function(state {Object}) | | Callback function that accepts the field state (Object with properties `checked` {Boolean}, `value` {String}) |
+| **onChange**  | optional | Function(state {Object}) | | Callback function that accepts the field state (Object with properties `checked` {Boolean}, `value` {String}) |
 | **selectable** | optional | Function(checked {Boolean}) | | Use to set the active state based on the radio button state; function that accepts the field checked value (Boolean) |
 
 

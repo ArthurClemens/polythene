@@ -98,7 +98,7 @@ export default ({ Ripple }) => {
       }
     },
     {
-      name: "Themed (should be red and permanent)",
+      name: "Themed (end with permanent red)",
       interactive: true,
       exclude: true,
       component: Ripple,

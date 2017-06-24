@@ -14,6 +14,7 @@ export default (selector, componentVars) => {
         " .pe-textfield": [
           flex.flex(),
           {
+            alignItems: "center",
             padding: 0,
             // prevent that neighboring icon button with ripple hides the cursor
             position: "relative",

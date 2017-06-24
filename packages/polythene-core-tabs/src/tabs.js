@@ -117,8 +117,8 @@ const setSelectedTab = (state, attrs, index, animate) => {
     updateScrollButtons(state);
     scrollToTab(state, index);
   }
-  if (attrs.getState) {
-    attrs.getState({
+  if (attrs.onChange) {
+    attrs.onChange({
       index,
       data: state.tabs[index].attrs,
       el: selectedTabEl
@@ -177,7 +177,7 @@ export const createContent = (vnode, { renderer: h, keys: k, Tab, ScrollButton }
     ? attrs.content
     : attrs.buttons
       ? attrs.buttons
-      : attrs.children || vnode.children;
+      : attrs.children || vnode.children || [];
 
   const tabRowButtons = buttons.map((buttonOpts = {}, index) => {
     const buttonOptsCombined = Object.assign(
@@ -314,7 +314,7 @@ export const onMount = vnode => {
   // A promise can't resolve during the oncreate loop
   // The Mithril draw loop is synchronous - there is no delay between one this oncreate and the tab button's oncreate
   whenCreateDone().then(() => {
-    if (attrs.largestWidth) {
+    if (state.tabs && attrs.largestWidth) {
       const widths = state.tabs.map(tabData => tabData.dom.getBoundingClientRect().width);
       const largest = widths.sort(sortByLargestWidth)[0];
       state.tabs.forEach(tabData => tabData.dom.style.width = largest + "px");

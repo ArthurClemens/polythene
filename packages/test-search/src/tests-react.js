@@ -3,10 +3,10 @@ import { renderer, keys, Search, IconButton, Button, Shadow } from "polythene-re
 import genericTests from "./tests-generic";
 import searchField from "./components/searchfield-jsx";
 
-const reactTests = ({ Search, IconButton, Shadow }) => {
+const SearchField = searchField({ Search, IconButton, Shadow });
 
-  const SearchField = searchField({ Search, IconButton, Shadow });
-  
+const reactTests = () => {
+
   return [
     {
       section: "React JSX tests",
@@ -21,5 +21,5 @@ const reactTests = ({ Search, IconButton, Shadow }) => {
 };
 
 export default []
-  .concat(genericTests({ Search, IconButton, Button, Shadow, renderer, keys }))
-  .concat(reactTests({ Search, IconButton, Button, Shadow, renderer, keys }));
+  .concat(genericTests({ Search, IconButton, Button, Shadow, SearchField, renderer, keys }))
+  .concat(reactTests({ Search, IconButton, Button, Shadow, SearchField, renderer, keys }));

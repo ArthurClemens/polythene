@@ -8,9 +8,9 @@ export const getElement = vnode =>
 export const getInitialState = (vnode, createStream) => {
   const attrs = vnode.attrs;
 
-  const defaultChecked = attrs.checked !== undefined
-    ? !!attrs.checked
-    : !!attrs.defaultChecked || false;
+  const defaultChecked = attrs.defaultChecked !== undefined
+    ? !!attrs.defaultChecked
+    : !!attrs.checked;
 
   const checked = createStream(defaultChecked);
   const redrawOnChange = createStream(defaultChecked);

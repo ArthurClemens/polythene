@@ -7,13 +7,16 @@
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
-    "build": "npm run rollup"
+    "build-standalone": "DEPS=1 ENTRY=standalone.js SOURCEMAP=1 DEST=./dist/polythene-mithril-standalone.js ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd-includes.js",
+    "build": "npm run rollup && yarn run build-standalone"
   },
   "files": [
     "dist",
     "README.md"
   ],
   "dependencies": {
+    "mithril": "1.1.1",
+    "polythene-material-design": "1.0.0-rc.1",
     "polythene-mithril-base": "1.0.0-rc.1",
     "polythene-mithril-button": "1.0.0-rc.1",
     "polythene-mithril-card": "1.0.0-rc.1",
@@ -31,11 +34,13 @@
     "polythene-mithril-ripple": "1.0.0-rc.1",
     "polythene-mithril-search": "1.0.0-rc.1",
     "polythene-mithril-shadow": "1.0.0-rc.1",
+    "polythene-mithril-slider": "1.0.0-rc.1",
     "polythene-mithril-svg": "1.0.0-rc.1",
     "polythene-mithril-switch": "1.0.0-rc.1",
     "polythene-mithril-tabs": "1.0.0-rc.1",
     "polythene-mithril-textfield": "1.0.0-rc.1",
-    "polythene-mithril-toolbar": "1.0.0-rc.1"
+    "polythene-mithril-toolbar": "1.0.0-rc.1",
+    "polythene-utilities": "1.0.0-rc.1"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

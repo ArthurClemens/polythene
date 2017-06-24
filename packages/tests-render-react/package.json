@@ -5,7 +5,7 @@
   "module": "dist/js/test.mjs",
   "scripts": {
     "dev": "npm-run-all --parallel dev:watch dev:serve",
-    "dev:serve": "webpack-dev-server --config scripts/webpack.config.dev.js --port 3000",
+    "dev:serve": "webpack-dev-server --config scripts/webpack.config.dev.js --port 3100",
     "dev:watch": "webpack --watch --config scripts/webpack.config.dev.js",
     "build": "webpack -p --config scripts/webpack.config.js"
   },

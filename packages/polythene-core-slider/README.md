@@ -1,0 +1,3 @@
+# Slider
+
+Core Polythene component.

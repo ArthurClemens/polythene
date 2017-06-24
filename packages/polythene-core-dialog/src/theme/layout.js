@@ -26,11 +26,11 @@ export default (selector, componentVars) => [{
       }
     }
   ],
-  " body.pe-dialog--open": {
-    overflow: "hidden",
-    left: 0,
-    "-webkit-overflow-scrolling": "touch",
-    top: 0,
-    width: "100%"
-  }
+  // " body.pe-dialog--open": {
+  //   overflow: "hidden",
+  //   left: 0,
+  //   "-webkit-overflow-scrolling": "touch",
+  //   top: 0,
+  //   width: "100%"
+  // }
 }];

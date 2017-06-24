@@ -106,11 +106,11 @@ export default [
     name: "Shadow",
     tests: tests.shadow
   },
-  // {
-  //   path: "/slider",
-  //   name: "Slider",
-  //   tests: sliderTests
-  // },
+  {
+    path: "/slider",
+    name: "Slider",
+    tests: tests.slider
+  },
   {
     path: "/svg",
     name: "SVG",

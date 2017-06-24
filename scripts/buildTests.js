@@ -10,3 +10,4 @@ const buildDir = function(dir) {
 shell.exec("lerna bootstrap");
 glob.readdirSync("./packages/test-*").forEach(buildDir);
 buildDir("./packages/tests");
+buildDir("./packages/tests-render-html");

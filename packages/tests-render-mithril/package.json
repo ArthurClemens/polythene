@@ -5,7 +5,7 @@
   "module": "dist/js/test.mjs",
   "scripts": {
     "dev": "npm-run-all --parallel dev:watch dev:serve",
-    "dev:serve": "webpack-dev-server --config scripts/webpack.config.dev.js --port 3001",
+    "dev:serve": "webpack-dev-server --config scripts/webpack.config.dev.js --port 3000",
     "dev:watch": "webpack --watch --config scripts/webpack.config.dev.js",
     "build": "webpack -p --config scripts/webpack.config.js"
   },
@@ -21,10 +21,8 @@
     "polythene-md-spinner": "1.0.0-rc.1",
     "polythene-mithril": "1.0.0-rc.1",
     "polythene-notification": "1.0.0-rc.1",
-    "polythene-slider": "1.0.0-rc.1",
     "polythene-snackbar": "1.0.0-rc.1",
     "polythene-test": "1.0.0-rc.1",
-    "polythene-textfield": "1.0.0-rc.1",
     "polythene-theme": "1.0.0-rc.1",
     "polythene-utilities": "1.0.0-rc.1",
     "webpack": "^2.5.1"

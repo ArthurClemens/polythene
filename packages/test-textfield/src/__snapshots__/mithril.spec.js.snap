@@ -117,7 +117,7 @@ exports[`test Option: counter 1`] = `
       \"pe-textfield__input\" type=\"text\">
     </div>
     <div class=\"pe-textfield__counter\">
-      27 / 30
+      0 / 30
     </div>
   </div>
 </div>
@@ -134,9 +134,37 @@ exports[`test Option: counter, maxlength 1`] = `
       \"pe-textfield__input\" type=\"text\" maxlength=\"30\">
     </div>
     <div class=\"pe-textfield__counter\">
-      27 / 30
+      0 / 30
     </div>
     <div class=\"pe-textfield__error-placeholder\"></div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: defaultValue 1`] = `
+"<div class=
+\"pe-textfield pe-textfield--dirty pe-textfield--hide-spinner pe-textfield--hide-clear\">
+<div class=\"pe-textfield__input-area\">
+    <input class=\"pe-textfield__input\" type=\"text\">
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: defaultValue 2`] = `
+"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
+  <div class=
+  \"pe-textfield pe-textfield--dirty pe-textfield--hide-spinner pe-textfield--hide-clear\">
+  <div class=\"pe-textfield__input-area\">
+      <input class=\"pe-textfield__input\" type=\"text\">
+    </div>
+  </div>
+  <div class=
+  \"pe-textfield pe-textfield--dirty pe-textfield--hide-spinner pe-textfield--hide-clear\">
+  <div class=\"pe-textfield__input-area\">
+      <input class=\"pe-textfield__input\" type=\"text\">
+    </div>
   </div>
 </div>
 "
@@ -427,6 +455,47 @@ exports[`test Option: multiline 1`] = `
 "
 `;
 
+exports[`test Option: onChange 1`] = `
+"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
+  <div>
+    <div class=
+    \"pe-textfield pe-textfield--counter pe-textfield--hide-spinner pe-textfield--hide-clear\">
+    <div class=\"pe-textfield__input-area\">
+        <input class=\"pe-textfield__input\" type=\"text\">
+      </div>
+      <div class=\"pe-textfield__counter\">
+        0 / 6
+      </div>
+    </div>
+    <div style=\"margin: 10px 0px;\">
+      <div>
+        focus: undefined
+      </div>
+      <div>
+        dirty: undefined
+      </div>
+      <div>
+        invalid: undefined
+      </div>
+    </div><a class=\"pe-button pe-text-button pe-raised-button\"
+    tabindex=\"0\">
+    <div class=\"pe-button__content\">
+      <div class=\"pe-shadow pe-shadow--animated\">
+        <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+        <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+      </div>
+      <div class=\"pe-ripple pe-ripple--constrained\"></div>
+      <div class=\"pe-button__wash\"></div>
+      <div class=\"pe-button__focus\"></div>
+      <div class=\"pe-button__label\">
+        Random
+      </div>
+    </div></a>
+  </div>
+</div>
+"
+`;
+
 exports[`test Option: optionalIndicator (element) 1`] = `
 "<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
   <div class=
@@ -666,44 +735,11 @@ exports[`test Option: type email, required 1`] = `
 `;
 
 exports[`test Option: value 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
-  <div class=
-  \"pe-textfield pe-textfield--dirty pe-textfield--hide-spinner pe-textfield--hide-clear\">
-  <div class=\"pe-textfield__input-area\">
-      <input class=\"pe-textfield__input\" type=\"text\">
-    </div>
+"<div class=
+\"pe-textfield pe-textfield--dirty pe-textfield--hide-spinner pe-textfield--hide-clear\">
+<div class=\"pe-textfield__input-area\">
+    <input class=\"pe-textfield__input\" type=\"text\">
   </div>
-  <div class=
-  \"pe-textfield pe-textfield--dirty pe-textfield--hide-spinner pe-textfield--hide-clear\">
-  <div class=\"pe-textfield__input-area\">
-      <input class=\"pe-textfield__input\" type=\"text\">
-    </div>
-  </div>
-</div>
-"
-`;
-
-exports[`test Set value from outside 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
-  <div class=
-  \"pe-textfield pe-textfield--dirty pe-textfield--hide-spinner pe-textfield--hide-clear\">
-  <div class=\"pe-textfield__input-area\">
-      <input class=\"pe-textfield__input\" type=\"text\">
-    </div>
-  </div><a class=\"pe-button pe-text-button pe-raised-button\"
-  tabindex=\"0\">
-  <div class=\"pe-button__content\">
-    <div class=\"pe-shadow pe-shadow--animated\">
-      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
-    </div>
-    <div class=\"pe-ripple pe-ripple--constrained\"></div>
-    <div class=\"pe-button__wash\"></div>
-    <div class=\"pe-button__focus\"></div>
-    <div class=\"pe-button__label\">
-      Randomize
-    </div>
-  </div></a>
 </div>
 "
 `;

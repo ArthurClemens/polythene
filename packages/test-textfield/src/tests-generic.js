@@ -1,5 +1,5 @@
 import focus from "./components/focus";
-import getState from "./components/getState";
+import onChange from "./components/onChange";
 
 export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
 
@@ -25,19 +25,19 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
   const ipsum = "Lorem ipsum dolor sit amet, idque signiferumque at usu, eum recusabo aliquando id. Deleniti percipitur concludaturque eu eos. Vix elitr feugait ne. Mel agam integre eu, has minim aliquid salutandi eu. Est nusquam abhorreant ne. Ei wisi dicant eam, vix tota reque persequeris an. Quo in theophrastus reprehendunt, ius te graecis epicuri volutpat.";
   const shortIpsum = "Lorem ipsum dolor sit amet,";
   const Focus = focus({ h, k, TextField, RaisedButton });
-  const GetState = getState({ h, k, TextField, RaisedButton });
+  const OnChange = onChange({ h, k, TextField, RaisedButton });
 
   return [
     {
-      name: "Option: value",
+      name: "Option: defaultValue",
       component: {
         view: () => block([
           h(TextField, {
-            value: "Text A",
+            defaultValue: "Text A",
             key: "a" // for React
           }),
           h(TextField, {
-            value: "Text B",
+            defaultValue: "Text B",
             key: "b" // for React
           })
         ])
@@ -59,17 +59,17 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
         view: () => block([
           h(TextField, {
             type: "password",
-            value: "123456",
+            defaultValue: "123456",
             key: "a" // for React
           }),
           h(TextField, {
             type: "number",
-            value: "123456",
+            defaultValue: "123456",
             key: "b" // for React
           }),
           h(TextField, {
             type: "email",
-            value: "a@b.com",
+            defaultValue: "a@b.com",
             key: "c" // for React
           })
         ])
@@ -199,7 +199,7 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
             key: "b" // for React
           }),
           h(TextField, {
-            value: "4 rows: " + ipsum,
+            defaultValue: "4 rows: " + ipsum,
             multiline: true,
             rows: 4,
             key: "c" // for React
@@ -333,7 +333,7 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
       component: {
         view: () => block([
           h(TextField, {
-            value: "123",
+            defaultValue: "123",
             [k.maxlength]: 3,
             error: "Enter max 3 characters"
           })
@@ -349,7 +349,7 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
             type: "number",
             min: 3,
             max: 8,
-            value: 10,
+            defaultValue: 10,
             error: "Enter a value between 3 and 8",
             required: true
           })
@@ -364,7 +364,7 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
           h(TextField, {
             label: "Email",
             type: "email",
-            value: "a@",
+            defaultValue: "a@",
             required: true,
             error: "Enter a valid email address"
           })
@@ -379,7 +379,7 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
           h(TextField, {
             label: "Number",
             type: "text",
-            value: "abc",
+            defaultValue: "abc",
             pattern: "[0-9]+",
             validateAtStart: true
           })
@@ -392,7 +392,7 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
       component: {
         view: () => block([
           h(TextField, {
-            value: "abC",
+            defaultValue: "abC",
             validate: value => 
               value !== value.toLowerCase()
                 ? ({
@@ -413,7 +413,7 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
           h(TextField, {
             label: "Description",
             floatingLabel: true,
-            value: shortIpsum,
+            defaultValue: shortIpsum,
             counter: 30,
             error: "You have exceeded the maximum number of characters."
           })
@@ -428,7 +428,7 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
           h(TextField, {
             label: "Description",
             floatingLabel: true,
-            value: shortIpsum,
+            defaultValue: shortIpsum,
             counter: 30,
             [k.maxlength]: 30
           })
@@ -445,11 +445,11 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
       }
     },
     {
-      name: "Option: getState",
+      name: "Option: onChange",
       interactive: true,
       component: {
         view: () => block(
-          h(GetState)
+          h(OnChange)
         )
       }
     },
@@ -469,7 +469,7 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
       component: {
         view: () => block(
           h(TextField, {
-            value: "John",
+            defaultValue: "John",
             disabled: true
           })
         )
@@ -480,7 +480,7 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
       component: {
         view: () => block(
           h(TextField, {
-            value: "John",
+            defaultValue: "John",
             [k.readonly]: true
           })
         )
@@ -553,7 +553,7 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
           h(TextField, {
             label: "Email",
             type: "email",
-            value: "a@",
+            defaultValue: "a@",
             required: true,
             error: "Enter a valid email address"
           }), {dark: true})
@@ -565,7 +565,7 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
       component: {
         view: () => block(
           h(TextField, {
-            value: "John",
+            defaultValue: "John",
             disabled: true
           }), { dark: true })
       }
@@ -576,7 +576,7 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
       component: {
         view: () => block(
           h(TextField, {
-            value: "John",
+            defaultValue: "John",
             readonly: true
           }), { dark: true })
       }

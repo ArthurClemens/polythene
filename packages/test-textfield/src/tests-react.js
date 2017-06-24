@@ -25,17 +25,17 @@ const reactTests = ({ TextField, renderer: h, keys: k }) => { // eslint-disable-
         block([
           <TextField
             type="password"
-            value="123456"
+            defaultValue="123456"
             key="a"
           />,
           <TextField
             type="number"
-            value="123456"
+            defaultValue="123456"
             key="b"
           />,
           <TextField
             type="email"
-            value="a@b.com"
+            defaultValue="a@b.com"
             key="c"
           />
         ])
@@ -48,7 +48,6 @@ const reactTests = ({ TextField, renderer: h, keys: k }) => { // eslint-disable-
           <TextField
             label="Description"
             floatingLabel
-            value=""
             counter={15}
             error="You have exceeded the maximum number of characters."
             key="x"

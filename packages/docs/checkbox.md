@@ -31,11 +31,11 @@ m(checkbox, {
 
 ### Dynamic values
 
-To read the checked state use `getState`:
+To read the checked state use `onChange`:
 
 ~~~javascript
 m(checkbox, {
-  getState: state => vnode.state.checked = state.checked
+  onChange: state => vnode.state.checked = state.checked
 })
 ~~~
 
@@ -160,7 +160,7 @@ m(checkbox, {
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **getState**  | optional | Function(state {Object}) | | Callback function that accepts the field state (Object with properties `checked` {Boolean}, `value` {String}) |
+| **onChange**  | optional | Function(state {Object}) | | Callback function that accepts the field state (Object with properties `checked` {Boolean}, `value` {String}) |
 | **selectable** | optional | Function(checked {Boolean}) | | Use to set the active state based on the checkbox state; function that accepts the field checked value (Boolean) |
 
 

@@ -13,6 +13,20 @@ export default ({ TextField }) => {
       }
     },
     {
+      name: "Option: value",
+      component: TextField,
+      attrs: {
+        value: "QWERTY"
+      }
+    },
+    {
+      name: "Option: defaultValue",
+      component: TextField,
+      attrs: {
+        defaultValue: "AZERTY"
+      }
+    },
+    {
       name: "Option: className",
       component: TextField,
       attrs: {

@@ -68,6 +68,7 @@ var layout = (function (selector, componentVars) {
     position: "relative", // necessary when a shadow is added
 
     " .pe-textfield": [flex.flex(), {
+      alignItems: "center",
       padding: 0,
       // prevent that neighboring icon button with ripple hides the cursor
       position: "relative",
@@ -217,10 +218,10 @@ var createContent = function createContent(vnode, _ref2) {
   var textfieldAttrs = attrs.textfield || {};
   return h("div", { className: classes.content }, [buttons.before, h(TextField, _extends({}, textfieldAttrs, {
     key: "input",
-    getState: function getState(newState) {
+    onChange: function onChange(newState) {
       state.searchState(newState);
-      if (textfieldAttrs.getState) {
-        textfieldAttrs.getState(newState);
+      if (textfieldAttrs.onChange) {
+        textfieldAttrs.onChange(newState);
       }
     }
   })), buttons.after]);

@@ -91,7 +91,7 @@ var genericTests = (function (_ref) {
       }
     }
   }, {
-    name: "Themed (should be red and permanent)",
+    name: "Themed (end with permanent red)",
     interactive: true,
     exclude: true,
     component: Ripple$$1,

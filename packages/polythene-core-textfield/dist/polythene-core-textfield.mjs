@@ -517,14 +517,15 @@ var checkValidity = function checkValidity(vnode) {
 var notifyState = function notifyState(vnode) {
   var state = vnode.state;
   var attrs = vnode.attrs;
-  if (attrs.getState) {
+  if (attrs.onChange) {
     var status = getValidStatus(state, attrs);
-    attrs.getState({
+    attrs.onChange({
       focus: state.hasFocus(),
       dirty: state.isDirty(),
       el: state.inputEl(),
       invalid: status.invalid,
-      error: status.error
+      error: status.error,
+      value: state.inputEl().value
     });
   }
 };
@@ -533,21 +534,10 @@ var ignoreEvent = function ignoreEvent(attrs, name) {
   return attrs.ignoreEvents && attrs.ignoreEvents.indexOf(name) !== -1;
 };
 
-var createProps = function createProps(vnode, _ref) {
-  var k = _ref.keys;
-
-  var state = vnode.state;
-  var attrs = vnode.attrs;
-  var isInvalid = state.isInvalid();
-  return _extends({}, filterSupportedAttributes(attrs), {
-    className: [classes.component, isInvalid ? classes.stateInvalid : "", state.hasFocus() ? classes.stateFocused : "", state.isDirty() ? classes.stateDirty : "", attrs.floatingLabel ? classes.hasFloatingLabel : "", attrs.disabled ? classes.stateDisabled : "", attrs.readonly ? classes.stateReadonly : "", attrs.dense ? classes.isDense : "", attrs.required ? classes.isRequired : "", attrs.fullWidth ? classes.hasFullWidth : "", attrs.counter ? classes.hasCounter : "", attrs.hideSpinner !== false ? classes.hideSpinner : "", attrs.hideClear !== false ? classes.hideClear : "", attrs.hideValidation ? classes.hideValidation : "", attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
-  });
-};
-
 var getInitialState = function getInitialState(vnode, createStream) {
   var attrs = vnode.attrs;
 
-  var defaultValue = attrs.value !== undefined ? attrs.value : "";
+  var defaultValue = attrs.defaultValue !== undefined ? attrs.defaultValue : attrs.value !== undefined ? attrs.value : "";
 
   var el = createStream();
   var inputEl = createStream();
@@ -558,7 +548,7 @@ var getInitialState = function getInitialState(vnode, createStream) {
   var isTouched = createStream(false); // true when any change is made
   var isDirty = createStream(defaultValue !== ""); // true for any input
   var isInvalid = createStream(false);
-  var previousValue = undefined;
+  var previousValue = createStream();
 
   return {
     defaultValue: defaultValue,
@@ -589,10 +579,10 @@ var onMount = function onMount(vnode) {
   vnode.state.inputEl(inputEl);
   state.inputEl().value = state.defaultValue;
 
-  state.setValue.map(function (_ref2) {
-    var type = _ref2.type,
-        focus = _ref2.focus;
-    return focus !== undefined && state.setFocus(focus), type === "input" && (attrs.validateOnInput || attrs.counter) && state.isTouched(state.inputEl().value !== ""), type !== "input" && state.isTouched(state.inputEl().value !== ""), type === "onblur" && state.isTouched(true), state.isDirty(state.inputEl().value !== ""), checkValidity(vnode), notifyState(vnode), state.previousValue = state.inputEl().value;
+  state.setValue.map(function (_ref) {
+    var type = _ref.type,
+        focus = _ref.focus;
+    return focus !== undefined && state.setFocus(focus), type === "input" && (attrs.validateOnInput || attrs.counter) && state.isTouched(state.inputEl().value !== ""), type !== "input" && state.isTouched(state.inputEl().value !== ""), type === "onblur" && state.isTouched(true), state.isDirty(state.inputEl().value !== ""), checkValidity(vnode), notifyState(vnode), state.previousValue(state.inputEl().value);
   });
 
   state.setFocus.map(function (focusState) {
@@ -607,6 +597,19 @@ var onMount = function onMount(vnode) {
   });
 
   notifyState(vnode);
+};
+
+var createProps = function createProps(vnode, _ref2) {
+  var k = _ref2.keys;
+
+  var state = vnode.state;
+  var attrs = vnode.attrs;
+  var isInvalid = state.isInvalid();
+  var inputEl = state.inputEl();
+
+  return _extends({}, filterSupportedAttributes(attrs), {
+    className: [classes.component, isInvalid ? classes.stateInvalid : "", state.hasFocus() ? classes.stateFocused : "", state.isDirty() ? classes.stateDirty : "", attrs.floatingLabel ? classes.hasFloatingLabel : "", attrs.disabled ? classes.stateDisabled : "", attrs.readonly ? classes.stateReadonly : "", attrs.dense ? classes.isDense : "", attrs.required ? classes.isRequired : "", attrs.fullWidth ? classes.hasFullWidth : "", attrs.counter ? classes.hasCounter : "", attrs.hideSpinner !== false ? classes.hideSpinner : "", attrs.hideClear !== false ? classes.hideClear : "", attrs.hideValidation ? classes.hideValidation : "", attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+  });
 };
 
 var createContent = function createContent(vnode, _ref3) {
@@ -628,11 +631,11 @@ var createContent = function createContent(vnode, _ref3) {
     state.setFocus(true);
   }
 
-  var value = attrs.value ? attrs.value : inputEl ? inputEl.value : state.previousValue;
+  var value = attrs.value !== undefined ? attrs.value : inputEl ? inputEl.value : state.previousValue();
 
-  if (state.previousValue !== value && inputEl) {
+  if (inputEl && state.previousValue() !== value) {
     inputEl.value = value;
-    state.previousValue = value;
+    state.previousValue(value);
     setTimeout(function () {
       return state.setValue({ type: "input" });
     }, 0); // perform in next tick to play nice with React
@@ -720,9 +723,9 @@ var createContent = function createContent(vnode, _ref3) {
 var textfield = Object.freeze({
 	getElement: getElement,
 	theme: theme,
-	createProps: createProps,
 	getInitialState: getInitialState,
 	onMount: onMount,
+	createProps: createProps,
 	createContent: createContent
 });
 

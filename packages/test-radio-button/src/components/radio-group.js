@@ -60,6 +60,7 @@ export default ({ h, RadioButton, count, groupOptions={}, options={} }) => ({
                 options && options[index],
                 {
                   checked: isChecked,
+                  defaultChecked,
                   onChange: newState => state.checkedValue(newState.value)
                 }
               )

@@ -20,7 +20,8 @@ const reactTests = ({ Tabs }) => {
         <Tabs
           autofit
           selectedTab={1}
-        >{threeButtons}</Tabs>
+          tabs={threeButtons}
+        />
     },
   ];
     

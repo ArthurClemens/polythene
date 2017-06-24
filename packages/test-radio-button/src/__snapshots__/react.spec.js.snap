@@ -1,3 +1,26 @@
+exports[`test A default checked value 1`] = `
+<div>
+  <div
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+      }
+    }>
+    <RadioButton
+      checked={false}
+      label="One"
+      onChange={[Function]}
+      value="one" />
+    <RadioButton
+      checked={true}
+      label="Two"
+      onChange={[Function]}
+      value="two" />
+  </div>
+</div>
+`;
+
 exports[`test Dark tone class + light theme class 1`] = `
 <div
   className="pe-light-tone"
@@ -20,29 +43,6 @@ exports[`test Dark tone class + light tone 1`] = `
     }
   }>
   <n />
-</div>
-`;
-
-exports[`test Default checked value 1`] = `
-<div>
-  <div
-    style={
-      Object {
-        "alignItems": "center",
-        "display": "flex",
-      }
-    }>
-    <RadioButton
-      checked={false}
-      label="One"
-      onChange={[Function]}
-      value="one" />
-    <RadioButton
-      checked={true}
-      label="Two"
-      onChange={[Function]}
-      value="two" />
-  </div>
 </div>
 `;
 
@@ -101,6 +101,7 @@ exports[`test Option: defaultChecked 1`] = `
     }>
     <RadioButton
       checked={false}
+      defaultChecked={null}
       label="One"
       onChange={[Function]}
       value="one" />
@@ -396,6 +397,14 @@ exports[`test Option: label 1`] = `
 
 exports[`test Option: onChange (JSX) 1`] = `
 <form>
+  <div
+    style={
+      Object {
+        "margin": "0 0 1rem 0",
+      }
+    }>
+    Value: undefined
+  </div>
   <RadioButton
     checked={false}
     label="One"

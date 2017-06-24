@@ -15,7 +15,7 @@ export default ({ h, k, TextField, RaisedButton }) => ({
       h(TextField, {
         label: "Your name",
         focus: hasFocus,
-        getState: newState => state.hasFocus(newState.focus)
+        onChange: newState => state.hasFocus(newState.focus)
       }),
       h(RaisedButton, {
         label: "Give focus",

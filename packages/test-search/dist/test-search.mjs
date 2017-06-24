@@ -1,6 +1,104 @@
 import { Button, IconButton, Search, Shadow, keys, renderer } from 'polythene-mithril';
 import { Button as Button$1, IconButton as IconButton$1, Search as Search$1, Shadow as Shadow$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var genericTests = (function (_ref) {
+  var h = _ref.renderer,
+      Search$$1 = _ref.Search,
+      SearchField = _ref.SearchField;
+
+
+  Search$$1.theme(".tests-search-themed-search", {
+    color_light_input_text: "#0D47A1",
+    color_light_background: "#BBDEFB",
+    color_dark_input_text: "#eee",
+    color_dark_background: "#333"
+  });
+
+  var Block = {
+    view: function view(_ref2) {
+      var attrs = _ref2.attrs;
+      return h("form", {
+        style: _extends({}, {
+          minHeight: "130px",
+          overflow: "hidden" // hides top and side shadow with full width search field
+        }, attrs.dark ? { backgroundColor: "transparent" } : { backgroundColor: "#e4e4e4" }, attrs.fullWidth ? null : { padding: "8px" }) }, h(SearchField, attrs));
+    }
+  };
+
+  return [{
+    name: "Option: textfield, buttons",
+    component: {
+      view: function view() {
+        return h(Block);
+      }
+    }
+  }, {
+    name: "Option: textfield, buttons, fullWidth",
+    component: {
+      view: function view() {
+        return h(Block, { fullWidth: true });
+      }
+    }
+  }, {
+    name: "Colored field",
+    component: {
+      view: function view() {
+        return h(Block, {
+          style: { background: "#BBDEFB" }
+        });
+      }
+    }
+  }, {
+    name: "Theme",
+    component: {
+      view: function view() {
+        return h(Block, {
+          className: "tests-search-themed-search"
+        });
+      }
+    }
+  },
+
+  // Dark tone
+
+  {
+    name: "Theme -- dark tone class",
+    className: "pe-dark-tone",
+    component: {
+      view: function view() {
+        return h(Block, {
+          className: "tests-search-themed-search",
+          dark: true
+        });
+      }
+    }
+  }, {
+    name: "Dark tone class + light tone class",
+    className: "pe-dark-tone",
+    component: {
+      view: function view() {
+        return h(Block, {
+          className: "pe-light-tone",
+          dark: true
+        });
+      }
+    }
+  }, {
+    name: "Dark tone class + light tone",
+    className: "test-dark-tone",
+    component: {
+      view: function view() {
+        return h(Block, {
+          tone: "light",
+          dark: true
+        });
+      }
+    }
+  }];
+});
+
 function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
 }
@@ -205,8 +303,8 @@ var iconClearSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" heigh
 var iconMicSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z\"/></svg>";
 
 var searchField = (function (_ref) {
-  var h = _ref.h,
-      k = _ref.k,
+  var h = _ref.renderer,
+      k = _ref.keys,
       Search$$1 = _ref.Search,
       IconButton$$1 = _ref.IconButton,
       Shadow$$1 = _ref.Shadow;
@@ -217,89 +315,102 @@ var searchField = (function (_ref) {
   var iconClear = h.trust(iconClearSVG);
   var iconMic = h.trust(iconMicSVG);
 
-  var SearchButton = function SearchButton() {
-    return h(IconButton$$1, {
-      icon: { svg: iconSearch },
-      inactive: true,
-      key: "search"
-    });
+  var SearchButton = {
+    view: function view() {
+      return h(IconButton$$1, {
+        icon: { svg: iconSearch },
+        inactive: true,
+        key: "search"
+      });
+    }
   };
 
-  var BackButton = function BackButton(attrs) {
-    return h(IconButton$$1, {
-      icon: { svg: iconBack },
-      ink: false,
-      events: _defineProperty({}, k.onclick, attrs.leave),
-      key: "back"
-    });
+  var BackButton = {
+    view: function view(_ref2) {
+      var attrs = _ref2.attrs;
+      return h(IconButton$$1, {
+        icon: { svg: iconBack },
+        ink: false,
+        events: _defineProperty({}, k.onclick, attrs.leave),
+        key: "back"
+      });
+    }
   };
 
-  var ClearButton = function ClearButton(attrs) {
-    return h(IconButton$$1, {
-      icon: { svg: iconClear },
-      ink: false,
-      events: _defineProperty({}, k.onclick, attrs.clear),
-      key: "clear"
-    });
+  var ClearButton = {
+    view: function view(_ref3) {
+      var attrs = _ref3.attrs;
+      return h(IconButton$$1, {
+        icon: { svg: iconClear },
+        ink: false,
+        events: _defineProperty({}, k.onclick, attrs.clear),
+        key: "clear"
+      });
+    }
   };
 
-  var MicButton = function MicButton() {
-    return h(IconButton$$1, {
-      icon: { svg: iconMic },
-      inactive: true,
-      key: "mic"
-    });
+  var MicButton = {
+    view: function view() {
+      return h(IconButton$$1, {
+        icon: { svg: iconMic },
+        inactive: true,
+        key: "mic"
+      });
+    }
   };
 
   return {
     oninit: function oninit(vnode) {
-      var fieldState = stream({});
+      var inputEl = stream();
       var value = stream("");
       var clear = function clear() {
-        fieldState().el.value = "";
+        inputEl().value = "";
         value("");
         setTimeout(function () {
-          return fieldState().el.focus();
+          return inputEl().focus();
         }, 0);
       };
       var leave = function leave() {
-        fieldState().el.value = "";
+        inputEl().value = "";
         value("");
       };
       vnode.state = {
-        fieldState: fieldState,
+        inputEl: inputEl,
         value: value,
         clear: clear,
         leave: leave,
-        redrawOnUpdate: stream.merge([fieldState, value])
+        redrawOnUpdate: stream.merge([inputEl, value])
       };
     },
-    view: function view(_ref2) {
-      var state = _ref2.state,
-          attrs = _ref2.attrs;
+    view: function view(_ref4) {
+      var state = _ref4.state,
+          attrs = _ref4.attrs;
 
       return h("div", [h(Search$$1, _extends$1({}, {
         textfield: {
           label: "Search",
-          getState: state.fieldState,
+          onChange: function onChange(_ref5) {
+            var el = _ref5.el;
+            return state.inputEl(el);
+          },
           key: "input"
         },
         buttons: {
           none: {
-            before: SearchButton(),
-            after: MicButton()
+            before: h(SearchButton),
+            after: h(MicButton)
           },
           focus: {
-            before: SearchButton(),
-            after: MicButton()
+            before: h(SearchButton),
+            after: h(MicButton)
           },
           focus_dirty: {
-            before: BackButton({ leave: state.leave }),
-            after: ClearButton({ clear: state.clear })
+            before: h(BackButton, { leave: state.leave }),
+            after: h(ClearButton, { clear: state.clear })
           },
           dirty: {
-            before: BackButton({ leave: state.leave }),
-            after: ClearButton({ clear: state.clear })
+            before: h(BackButton, { leave: state.leave }),
+            after: h(ClearButton, { clear: state.clear })
           }
         },
         before: h(Shadow$$1)
@@ -308,115 +419,14 @@ var searchField = (function (_ref) {
   };
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var genericTests = (function (_ref) {
-  var h = _ref.renderer,
-      k = _ref.keys,
-      Search$$1 = _ref.Search,
-      IconButton$$1 = _ref.IconButton,
-      Button$$1 = _ref.Button,
-      Shadow$$1 = _ref.Shadow;
-
-
-  Search$$1.theme(".tests-search-themed-search", {
-    color_light_input_text: "#0D47A1",
-    color_light_background: "#BBDEFB",
-    color_dark_input_text: "#eee",
-    color_dark_background: "#333"
-  });
-
-  var SearchFieldComponent = searchField({ h: h, k: k, Search: Search$$1, IconButton: IconButton$$1, Button: Button$$1, Shadow: Shadow$$1 });
-
-  var Block = {
-    view: function view(_ref2) {
-      var attrs = _ref2.attrs;
-      return h("form", {
-        style: _extends({}, {
-          minHeight: "130px",
-          overflow: "hidden" // hides top and side shadow with full width search field
-        }, attrs.dark ? { backgroundColor: "transparent" } : { backgroundColor: "#e4e4e4" }, attrs.fullWidth ? null : { padding: "8px" }) }, h(SearchFieldComponent, attrs));
-    }
-  };
-
-  return [{
-    name: "Option: textfield, buttons",
-    component: {
-      view: function view() {
-        return h(Block);
-      }
-    }
-  }, {
-    name: "Option: textfield, buttons, fullWidth",
-    component: {
-      view: function view() {
-        return h(Block, { fullWidth: true });
-      }
-    }
-  }, {
-    name: "Colored field",
-    component: {
-      view: function view() {
-        return h(Block, {
-          style: { background: "#BBDEFB" }
-        });
-      }
-    }
-  }, {
-    name: "Theme",
-    component: {
-      view: function view() {
-        return h(Block, {
-          className: "tests-search-themed-search"
-        });
-      }
-    }
-  },
-
-  // Dark tone
-
-  {
-    name: "Theme -- dark tone class",
-    className: "pe-dark-tone",
-    component: {
-      view: function view() {
-        return h(Block, {
-          className: "tests-search-themed-search",
-          dark: true
-        });
-      }
-    }
-  }, {
-    name: "Dark tone class + light tone class",
-    className: "pe-dark-tone",
-    component: {
-      view: function view() {
-        return h(Block, {
-          className: "pe-light-tone",
-          dark: true
-        });
-      }
-    }
-  }, {
-    name: "Dark tone class + light tone",
-    className: "test-dark-tone",
-    component: {
-      view: function view() {
-        return h(Block, {
-          tone: "light",
-          dark: true
-        });
-      }
-    }
-  }];
-});
+var SearchField = searchField({ renderer: renderer, keys: keys, Search: Search, IconButton: IconButton, Button: Button, Shadow: Shadow });
 
 var mithrilTests = function mithrilTests() {
 
   return [];
 };
 
-var testsMithril = [].concat(genericTests({ Search: Search, IconButton: IconButton, Button: Button, Shadow: Shadow, renderer: renderer, keys: keys })).concat(mithrilTests({ Search: Search, IconButton: IconButton, Button: Button, Shadow: Shadow, renderer: renderer, keys: keys }));
+var testsMithril = [].concat(genericTests({ Search: Search, IconButton: IconButton, Button: Button, Shadow: Shadow, SearchField: SearchField, renderer: renderer, keys: keys })).concat(mithrilTests({ Search: Search, IconButton: IconButton, Button: Button, Shadow: Shadow, SearchField: SearchField, renderer: renderer, keys: keys }));
 
 /*
 object-assign
@@ -4115,7 +4125,7 @@ var searchField$1 = (function (_ref) {
         return react.createElement(Search$$1, {
           textfield: {
             label: "Search",
-            getState: function getState(fieldState) {
+            onChange: function onChange(fieldState) {
               return _this3.setState({ fieldState: fieldState });
             },
             key: "input"
@@ -4147,24 +4157,20 @@ var searchField$1 = (function (_ref) {
   }(react_2);
 });
 
-var reactTests = function reactTests(_ref) {
-  var Search$$1 = _ref.Search,
-      IconButton$$1 = _ref.IconButton,
-      Shadow$$1 = _ref.Shadow;
+var SearchField$1 = searchField$1({ Search: Search$1, IconButton: IconButton$1, Shadow: Shadow$1 });
 
-
-  var SearchField = searchField$1({ Search: Search$$1, IconButton: IconButton$$1, Shadow: Shadow$$1 });
+var reactTests = function reactTests() {
 
   return [{
     section: "React JSX tests"
   }, {
     name: "Option: textfield, buttons (JSX)",
     component: function component() {
-      return react.createElement(SearchField, null);
+      return react.createElement(SearchField$1, null);
     }
   }];
 };
 
-var testsReact = [].concat(genericTests({ Search: Search$1, IconButton: IconButton$1, Button: Button$1, Shadow: Shadow$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests({ Search: Search$1, IconButton: IconButton$1, Button: Button$1, Shadow: Shadow$1, renderer: renderer$1, keys: keys$1 }));
+var testsReact = [].concat(genericTests({ Search: Search$1, IconButton: IconButton$1, Button: Button$1, Shadow: Shadow$1, SearchField: SearchField$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests({ Search: Search$1, IconButton: IconButton$1, Button: Button$1, Shadow: Shadow$1, SearchField: SearchField$1, renderer: renderer$1, keys: keys$1 }));
 
 export { testsMithril as mithrilTests, testsReact as reactTests };

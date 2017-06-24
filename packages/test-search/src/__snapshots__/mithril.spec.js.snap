@@ -1,659 +1,243 @@
-exports[`test Menu items -- dark tone 1`] = `
-"<div class=\"pe-menu pe-menu--permanent pe-menu--width-5\">
-  <div class=\"pe-menu__content\">
-    <div class=\"pe-shadow pe-shadow--animated\">
-      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
-    </div>
-    <div class=\"pe-list pe-list--compact\">
-      <div class=\"pe-list-tile pe-list-tile--hoverable\">
-        <div class=\"pe-list-tile__primary\" style=\"\">
-          <div class=\"pe-list-tile__content\">
-            <div class=\"pe-list-tile__title\">
-              Bold
-            </div>
-          </div>
-        </div>
-        <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\">
-            ⌘B
-          </div>
-        </div>
+exports[`test Colored field 1`] = `
+"<form style=
+\"min-height: 130px; overflow: hidden; background-color: rgb(228, 228, 228); padding: 8px;\">
+<div>
+    <div style=\"background: rgb(187, 222, 251);\" class=
+    \"pe-search pe-search--inset\">
+      <div class=\"pe-shadow\">
+        <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+        <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
       </div>
-      <div class=\"pe-list-tile pe-list-tile--hoverable\">
-        <div class=\"pe-list-tile__primary\" style=\"\">
-          <div class=\"pe-list-tile__content\">
-            <div class=\"pe-list-tile__title\">
-              Italic
+      <div class=\"pe-search__content\">
+        <a class=\"pe-button pe-icon-button pe-button--inactive\">
+        <div class=\"pe-button__content\">
+          <div class=\"pe-ripple pe-ripple--constrained\"></div>
+          <div class=\"pe-button__focus\"></div>
+          <div class=\"pe-icon-button__content\">
+            <div class=\"pe-icon pe-icon--regular\">
+              <div class=\"pe-svg\">
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <path d=
+                  \"M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z\">
+                  </path>
+                </svg>
+              </div>
             </div>
           </div>
-        </div>
-        <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\">
-            ⌘I
+        </div></a>
+        <div class=
+        \"pe-textfield pe-textfield--hide-spinner pe-textfield--hide-clear\">
+        <div class=\"pe-textfield__input-area\">
+            <label class=
+            \"pe-textfield__label\">Search</label><input class=
+            \"pe-textfield__input\" type=\"text\">
           </div>
-        </div>
-      </div>
-      <div class=\"pe-list-tile pe-list-tile--hoverable\">
-        <div class=\"pe-list-tile__primary\" style=\"\">
-          <div class=\"pe-list-tile__content\">
-            <div class=\"pe-list-tile__title\">
-              Underline
+        </div><a class=
+        \"pe-button pe-icon-button pe-button--inactive\">
+        <div class=\"pe-button__content\">
+          <div class=\"pe-ripple pe-ripple--constrained\"></div>
+          <div class=\"pe-button__focus\"></div>
+          <div class=\"pe-icon-button__content\">
+            <div class=\"pe-icon pe-icon--regular\">
+              <div class=\"pe-svg\">
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <path d=
+                  \"M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z\">
+                  </path>
+                </svg>
+              </div>
             </div>
           </div>
-        </div>
-        <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\">
-            ⌘U
-          </div>
-        </div>
-      </div>
-      <div class=\"pe-list-tile pe-list-tile--hoverable\">
-        <div class=\"pe-list-tile__primary\" style=\"\">
-          <div class=\"pe-list-tile__content\">
-            <div class=\"pe-list-tile__title\">
-              Strikethrough
-            </div>
-          </div>
-        </div>
-        <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\">
-            Alt+Shift+5
-          </div>
-        </div>
-      </div>
-      <div class=\"pe-list-tile pe-list-tile--hoverable\">
-        <div class=\"pe-list-tile__primary\" style=\"\">
-          <div class=\"pe-list-tile__content\">
-            <div class=\"pe-list-tile__title\">
-              Superscript
-            </div>
-          </div>
-        </div>
-        <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\">
-            ⌘.
-          </div>
-        </div>
-      </div>
-      <div class=\"pe-list-tile pe-list-tile--hoverable\">
-        <div class=\"pe-list-tile__primary\" style=\"\">
-          <div class=\"pe-list-tile__content\">
-            <div class=\"pe-list-tile__title\">
-              Subscript
-            </div>
-          </div>
-        </div>
-        <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\">
-            ⌘,
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class=\"pe-list pe-list--compact\">
-      <div class=
-      \"pe-list-tile pe-list-tile--disabled pe-list-tile--hoverable\">
-      <div class=\"pe-list-tile__primary\" style=\"\">
-          <div class=\"pe-list-tile__content\">
-            <div class=\"pe-list-tile__title\">
-              Clear formatting
-            </div>
-          </div>
-        </div>
-        <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\">
-            ⌘/
-          </div>
-        </div>
-      </div>
-      <div class=\"pe-list-tile pe-list-tile--hoverable\">
-        <div class=\"pe-list-tile__primary\" style=\"\">
-          <div class=\"pe-list-tile__content\">
-            <div class=\"pe-list-tile__title\">
-              Custom spacing
-            </div>
-          </div>
-        </div>
-        <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\"></div>
-        </div>
+        </div></a>
       </div>
     </div>
   </div>
-</div>
+</form>
 "
 `;
 
-exports[`test Menu items 1`] = `
-"<div class=\"pe-menu pe-menu--permanent pe-menu--width-5\">
-  <div class=\"pe-menu__content\">
-    <div class=\"pe-shadow pe-shadow--animated\">
-      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
-    </div>
-    <div class=\"pe-list pe-list--compact\">
-      <div class=\"pe-list-tile pe-list-tile--hoverable\">
-        <div class=\"pe-list-tile__primary\" style=\"\">
-          <div class=\"pe-list-tile__content\">
-            <div class=\"pe-list-tile__title\">
-              Bold
-            </div>
-          </div>
-        </div>
-        <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\">
-            ⌘B
-          </div>
-        </div>
+exports[`test Dark tone class + light tone 1`] = `
+"<form style=
+\"min-height: 130px; overflow: hidden; background-color: transparent; padding: 8px;\">
+<div>
+    <div class=\"pe-search pe-search--inset pe-light-tone\">
+      <div class=\"pe-shadow\">
+        <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+        <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
       </div>
-      <div class=\"pe-list-tile pe-list-tile--hoverable\">
-        <div class=\"pe-list-tile__primary\" style=\"\">
-          <div class=\"pe-list-tile__content\">
-            <div class=\"pe-list-tile__title\">
-              Italic
+      <div class=\"pe-search__content\">
+        <a class=\"pe-button pe-icon-button pe-button--inactive\">
+        <div class=\"pe-button__content\">
+          <div class=\"pe-ripple pe-ripple--constrained\"></div>
+          <div class=\"pe-button__focus\"></div>
+          <div class=\"pe-icon-button__content\">
+            <div class=\"pe-icon pe-icon--regular\">
+              <div class=\"pe-svg\">
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <path d=
+                  \"M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z\">
+                  </path>
+                </svg>
+              </div>
             </div>
           </div>
-        </div>
-        <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\">
-            ⌘I
+        </div></a>
+        <div class=
+        \"pe-textfield pe-textfield--hide-spinner pe-textfield--hide-clear\">
+        <div class=\"pe-textfield__input-area\">
+            <label class=
+            \"pe-textfield__label\">Search</label><input class=
+            \"pe-textfield__input\" type=\"text\">
           </div>
-        </div>
-      </div>
-      <div class=\"pe-list-tile pe-list-tile--hoverable\">
-        <div class=\"pe-list-tile__primary\" style=\"\">
-          <div class=\"pe-list-tile__content\">
-            <div class=\"pe-list-tile__title\">
-              Underline
+        </div><a class=
+        \"pe-button pe-icon-button pe-button--inactive\">
+        <div class=\"pe-button__content\">
+          <div class=\"pe-ripple pe-ripple--constrained\"></div>
+          <div class=\"pe-button__focus\"></div>
+          <div class=\"pe-icon-button__content\">
+            <div class=\"pe-icon pe-icon--regular\">
+              <div class=\"pe-svg\">
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <path d=
+                  \"M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z\">
+                  </path>
+                </svg>
+              </div>
             </div>
           </div>
-        </div>
-        <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\">
-            ⌘U
-          </div>
-        </div>
-      </div>
-      <div class=\"pe-list-tile pe-list-tile--hoverable\">
-        <div class=\"pe-list-tile__primary\" style=\"\">
-          <div class=\"pe-list-tile__content\">
-            <div class=\"pe-list-tile__title\">
-              Strikethrough
-            </div>
-          </div>
-        </div>
-        <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\">
-            Alt+Shift+5
-          </div>
-        </div>
-      </div>
-      <div class=\"pe-list-tile pe-list-tile--hoverable\">
-        <div class=\"pe-list-tile__primary\" style=\"\">
-          <div class=\"pe-list-tile__content\">
-            <div class=\"pe-list-tile__title\">
-              Superscript
-            </div>
-          </div>
-        </div>
-        <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\">
-            ⌘.
-          </div>
-        </div>
-      </div>
-      <div class=\"pe-list-tile pe-list-tile--hoverable\">
-        <div class=\"pe-list-tile__primary\" style=\"\">
-          <div class=\"pe-list-tile__content\">
-            <div class=\"pe-list-tile__title\">
-              Subscript
-            </div>
-          </div>
-        </div>
-        <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\">
-            ⌘,
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class=\"pe-list pe-list--compact\">
-      <div class=
-      \"pe-list-tile pe-list-tile--disabled pe-list-tile--hoverable\">
-      <div class=\"pe-list-tile__primary\" style=\"\">
-          <div class=\"pe-list-tile__content\">
-            <div class=\"pe-list-tile__title\">
-              Clear formatting
-            </div>
-          </div>
-        </div>
-        <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\">
-            ⌘/
-          </div>
-        </div>
-      </div>
-      <div class=\"pe-list-tile pe-list-tile--hoverable\">
-        <div class=\"pe-list-tile__primary\" style=\"\">
-          <div class=\"pe-list-tile__content\">
-            <div class=\"pe-list-tile__title\">
-              Custom spacing
-            </div>
-          </div>
-        </div>
-        <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\"></div>
-        </div>
+        </div></a>
       </div>
     </div>
   </div>
-</div>
+</form>
+"
+`;
+
+exports[`test Dark tone class + light tone class 1`] = `
+"<form style=
+\"min-height: 130px; overflow: hidden; background-color: transparent; padding: 8px;\">
+<div>
+    <div class=\"pe-search pe-search--inset pe-light-tone\">
+      <div class=\"pe-shadow\">
+        <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+        <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+      </div>
+      <div class=\"pe-search__content\">
+        <a class=\"pe-button pe-icon-button pe-button--inactive\">
+        <div class=\"pe-button__content\">
+          <div class=\"pe-ripple pe-ripple--constrained\"></div>
+          <div class=\"pe-button__focus\"></div>
+          <div class=\"pe-icon-button__content\">
+            <div class=\"pe-icon pe-icon--regular\">
+              <div class=\"pe-svg\">
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <path d=
+                  \"M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z\">
+                  </path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div></a>
+        <div class=
+        \"pe-textfield pe-textfield--hide-spinner pe-textfield--hide-clear\">
+        <div class=\"pe-textfield__input-area\">
+            <label class=
+            \"pe-textfield__label\">Search</label><input class=
+            \"pe-textfield__input\" type=\"text\">
+          </div>
+        </div><a class=
+        \"pe-button pe-icon-button pe-button--inactive\">
+        <div class=\"pe-button__content\">
+          <div class=\"pe-ripple pe-ripple--constrained\"></div>
+          <div class=\"pe-button__focus\"></div>
+          <div class=\"pe-icon-button__content\">
+            <div class=\"pe-icon pe-icon--regular\">
+              <div class=\"pe-svg\">
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <path d=
+                  \"M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z\">
+                  </path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div></a>
+      </div>
+    </div>
+  </div>
+</form>
 "
 `;
 
 exports[`test No options 1`] = `
-"<span class=\"pe-menu__placeholder\"></span>
+"<div class=\"pe-search pe-search--inset\">
+  <div class=\"pe-search__content\">
+    <div class=
+    \"pe-textfield pe-textfield--hide-spinner pe-textfield--hide-clear\">
+    <div class=\"pe-textfield__input-area\">
+        <input class=\"pe-textfield__input\" type=\"text\">
+      </div>
+    </div>
+  </div>
+</div>
 "
 `;
 
 exports[`test Option: class 1`] = `
-"<span class=\"pe-menu__placeholder\"></span>
+"<div class=\"pe-search pe-search--inset class-x\">
+  <div class=\"pe-search__content\">
+    <div class=
+    \"pe-textfield pe-textfield--hide-spinner pe-textfield--hide-clear\">
+    <div class=\"pe-textfield__input-area\">
+        <input class=\"pe-textfield__input\" type=\"text\">
+      </div>
+    </div>
+  </div>
+</div>
 "
 `;
 
 exports[`test Option: className 1`] = `
-"<span class=\"pe-menu__placeholder\"></span>
+"<div class=\"pe-search pe-search--inset className-x\">
+  <div class=\"pe-search__content\">
+    <div class=
+    \"pe-textfield pe-textfield--hide-spinner pe-textfield--hide-clear\">
+    <div class=\"pe-textfield__input-area\">
+        <input class=\"pe-textfield__input\" type=\"text\">
+      </div>
+    </div>
+  </div>
+</div>
 "
 `;
 
 exports[`test Option: element 1`] = `
-"<span class=\"pe-menu__placeholder\"></span>
+"<a class=\"pe-search pe-search--inset\">
+<div class=\"pe-search__content\">
+  <div class=
+  \"pe-textfield pe-textfield--hide-spinner pe-textfield--hide-clear\">
+  <div class=\"pe-textfield__input-area\">
+      <input class=\"pe-textfield__input\" type=\"text\">
+    </div>
+  </div>
+</div></a>
 "
 `;
 
 exports[`test Option: id 1`] = `
-"<span class=\"pe-menu__placeholder\"></span>
-"
-`;
-
-exports[`test Option: size 1`] = `
-"<div>
-  <div class=\"pe-menu pe-menu--permanent pe-menu--width-1-5\">
-    <div class=\"pe-menu__content\">
-      <div class=\"pe-shadow pe-shadow--animated\">
-        <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-        <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
-      </div>
-      <div class=\"pe-list pe-list--header pe-list--compact\">
-        <div class=\"pe-list-tile pe-list__header\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
-                1.5
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class=\"pe-list-tile\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
-                Yes
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class=\"pe-list-tile\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
-                No
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class=\"pe-list-tile\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
-                Maybe
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class=\"pe-menu pe-menu--permanent pe-menu--width-2\">
-    <div class=\"pe-menu__content\">
-      <div class=\"pe-shadow pe-shadow--animated\">
-        <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-        <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
-      </div>
-      <div class=\"pe-list pe-list--header pe-list--compact\">
-        <div class=\"pe-list-tile pe-list__header\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
-                2
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class=\"pe-list-tile\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
-                Copy
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class=\"pe-list-tile\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
-                Paste
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class=\"pe-list-tile\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
-                Undo
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class=\"pe-menu pe-menu--permanent pe-menu--width-3\">
-    <div class=\"pe-menu__content\">
-      <div class=\"pe-shadow pe-shadow--animated\">
-        <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-        <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
-      </div>
-      <div class=\"pe-list pe-list--header pe-list--compact\">
-        <div class=\"pe-list-tile pe-list__header\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
-                3
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class=\"pe-list-tile\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
-                Home
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class=\"pe-list-tile\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
-                Back
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class=\"pe-list-tile\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
-                Recently viewed
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class=\"pe-menu pe-menu--permanent pe-menu--width-4\">
-    <div class=\"pe-menu__content\">
-      <div class=\"pe-shadow pe-shadow--animated\">
-        <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-        <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
-      </div>
-      <div class=\"pe-list pe-list--header pe-list--compact\">
-        <div class=\"pe-list-tile pe-list__header\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
-                4
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class=\"pe-list-tile\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
-                Paragraph styles
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class=\"pe-list-tile\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
-                Line spacing
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class=\"pe-list-tile\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
-                Numbered list
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class=\"pe-menu pe-menu--permanent pe-menu--width-5\">
-    <div class=\"pe-menu__content\">
-      <div class=\"pe-shadow pe-shadow--animated\">
-        <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-        <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
-      </div>
-      <div class=\"pe-list pe-list--header pe-list--compact\">
-        <div class=\"pe-list-tile pe-list__header\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
-                5
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class=\"pe-list-tile\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
-                Add space before paragraph
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class=\"pe-list-tile\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
-                Add space after paragraph
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class=\"pe-list-tile\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
-                Custom spacing
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class=\"pe-menu pe-menu--permanent pe-menu--width-6\">
-    <div class=\"pe-menu__content\">
-      <div class=\"pe-shadow pe-shadow--animated\">
-        <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-        <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
-      </div>
-      <div class=\"pe-list pe-list--header pe-list--compact\">
-        <div class=\"pe-list-tile pe-list__header\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
-                6
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class=\"pe-list-tile\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
-                The Mind Is Its Own Beautiful Prisoner
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class=\"pe-list-tile\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
-                If I Should Sleep With A Lady Called Death
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class=\"pe-list-tile\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
-                It May Not Always Be So; And I Say
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class=\"pe-menu pe-menu--permanent pe-menu--width-7\">
-    <div class=\"pe-menu__content\">
-      <div class=\"pe-shadow pe-shadow--animated\">
-        <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-        <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
-      </div>
-      <div class=\"pe-list pe-list--header pe-list--compact\">
-        <div class=\"pe-list-tile pe-list__header\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
-                7
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class=\"pe-list-tile\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
-                Any bar, any cross, any impediment will be
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class=\"pe-list-tile\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
-                medicinable to me: I am sick in displeasure to him
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class=\"pe-list-tile\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
-                and whatsoever comes athwart his affection ranges
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class=\"pe-list-tile\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
-                evenly with mine. How canst thou cross this
-                marriage?
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class=\"pe-menu pe-menu--permanent pe-menu--width-auto\">
-    <div class=\"pe-menu__content\">
-      <div class=\"pe-shadow pe-shadow--animated\">
-        <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-        <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
-      </div>
-      <div class=\"pe-list pe-list--header pe-list--compact\">
-        <div class=\"pe-list-tile pe-list__header\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
-                auto
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class=\"pe-list-tile\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
-                Paragraph styles
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class=\"pe-list-tile\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
-                Line spacing
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class=\"pe-list-tile\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
-                Numbered list
-              </div>
-            </div>
-          </div>
-        </div>
+"<div id=\"id-x\" class=\"pe-search pe-search--inset\">
+  <div class=\"pe-search__content\">
+    <div class=
+    \"pe-textfield pe-textfield--hide-spinner pe-textfield--hide-clear\">
+    <div class=\"pe-textfield__input-area\">
+        <input class=\"pe-textfield__input\" type=\"text\">
       </div>
     </div>
   </div>
@@ -661,82 +245,240 @@ exports[`test Option: size 1`] = `
 "
 `;
 
-exports[`test Option: style 1`] = `
-"<div style=
-\"background-color: rgb(33, 150, 243); color: rgb(255, 255, 255);\"
-class=\"pe-menu pe-menu--permanent pe-dark-tone\">
-  <div class=\"pe-menu__content\" style=
-  \"background-color: rgb(33, 150, 243); color: rgb(255, 255, 255);\">
-  <div class=\"pe-shadow pe-shadow--animated\">
-      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
-    </div>
-    <div class=\"pe-list\">
-      <div style=
-      \"background-color: rgb(33, 150, 243); color: rgb(255, 255, 255);\"
-      class=\"pe-list-tile\">
-        <div class=\"pe-ripple pe-ripple--constrained\"></div>
-        <div style=\"\" class=\"pe-list-tile__primary\">
-          <div class=\"pe-list-tile__content\" style=
-          \"background-color: rgb(33, 150, 243); color: rgb(255, 255, 255);\">
-          <div class=\"pe-list-tile__title\">
-              Yes
-            </div>
-          </div>
-        </div>
+exports[`test Option: textfield, buttons 1`] = `
+"<form style=
+\"min-height: 130px; overflow: hidden; background-color: rgb(228, 228, 228); padding: 8px;\">
+<div>
+    <div class=\"pe-search pe-search--inset\">
+      <div class=\"pe-shadow\">
+        <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+        <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
       </div>
-      <div style=
-      \"background-color: rgb(33, 150, 243); color: rgb(255, 255, 255);\"
-      class=\"pe-list-tile\">
-        <div class=\"pe-ripple pe-ripple--constrained\"></div>
-        <div style=\"\" class=\"pe-list-tile__primary\">
-          <div class=\"pe-list-tile__content\" style=
-          \"background-color: rgb(33, 150, 243); color: rgb(255, 255, 255);\">
-          <div class=\"pe-list-tile__title\">
-              No
+      <div class=\"pe-search__content\">
+        <a class=\"pe-button pe-icon-button pe-button--inactive\">
+        <div class=\"pe-button__content\">
+          <div class=\"pe-ripple pe-ripple--constrained\"></div>
+          <div class=\"pe-button__focus\"></div>
+          <div class=\"pe-icon-button__content\">
+            <div class=\"pe-icon pe-icon--regular\">
+              <div class=\"pe-svg\">
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <path d=
+                  \"M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z\">
+                  </path>
+                </svg>
+              </div>
             </div>
           </div>
-        </div>
+        </div></a>
+        <div class=
+        \"pe-textfield pe-textfield--hide-spinner pe-textfield--hide-clear\">
+        <div class=\"pe-textfield__input-area\">
+            <label class=
+            \"pe-textfield__label\">Search</label><input class=
+            \"pe-textfield__input\" type=\"text\">
+          </div>
+        </div><a class=
+        \"pe-button pe-icon-button pe-button--inactive\">
+        <div class=\"pe-button__content\">
+          <div class=\"pe-ripple pe-ripple--constrained\"></div>
+          <div class=\"pe-button__focus\"></div>
+          <div class=\"pe-icon-button__content\">
+            <div class=\"pe-icon pe-icon--regular\">
+              <div class=\"pe-svg\">
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <path d=
+                  \"M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z\">
+                  </path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div></a>
       </div>
     </div>
   </div>
-</div>
+</form>
 "
 `;
 
-exports[`test Themed (color and border radius) 1`] = `
-"<div class=
-\"pe-menu pe-menu--permanent pe-dark-tone menu-tests-blue-menu\">
-  <div class=\"pe-menu__content\">
-    <div class=\"pe-shadow pe-shadow--animated\">
-      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
-    </div>
-    <div class=\"pe-list\">
-      <div class=
-      \"pe-list-tile pe-list-tile--hoverable menu-tests-blue-menu-list-tile\">
-      <div class=\"pe-ripple pe-ripple--constrained\"></div>
-        <div class=\"pe-list-tile__primary\" style=\"\">
-          <div class=\"pe-list-tile__content\">
-            <div class=\"pe-list-tile__title\">
-              Yes
-            </div>
-          </div>
-        </div>
+exports[`test Option: textfield, buttons, fullWidth 1`] = `
+"<form style=
+\"min-height: 130px; overflow: hidden; background-color: rgb(228, 228, 228);\">
+<div>
+    <div class=\"pe-search pe-search--full-width\">
+      <div class=\"pe-shadow\">
+        <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+        <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
       </div>
-      <div class=
-      \"pe-list-tile pe-list-tile--hoverable menu-tests-blue-menu-list-tile\">
-      <div class=\"pe-ripple pe-ripple--constrained\"></div>
-        <div class=\"pe-list-tile__primary\" style=\"\">
-          <div class=\"pe-list-tile__content\">
-            <div class=\"pe-list-tile__title\">
-              No
+      <div class=\"pe-search__content\">
+        <a class=\"pe-button pe-icon-button pe-button--inactive\">
+        <div class=\"pe-button__content\">
+          <div class=\"pe-ripple pe-ripple--constrained\"></div>
+          <div class=\"pe-button__focus\"></div>
+          <div class=\"pe-icon-button__content\">
+            <div class=\"pe-icon pe-icon--regular\">
+              <div class=\"pe-svg\">
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <path d=
+                  \"M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z\">
+                  </path>
+                </svg>
+              </div>
             </div>
           </div>
-        </div>
+        </div></a>
+        <div class=
+        \"pe-textfield pe-textfield--hide-spinner pe-textfield--hide-clear\">
+        <div class=\"pe-textfield__input-area\">
+            <label class=
+            \"pe-textfield__label\">Search</label><input class=
+            \"pe-textfield__input\" type=\"text\">
+          </div>
+        </div><a class=
+        \"pe-button pe-icon-button pe-button--inactive\">
+        <div class=\"pe-button__content\">
+          <div class=\"pe-ripple pe-ripple--constrained\"></div>
+          <div class=\"pe-button__focus\"></div>
+          <div class=\"pe-icon-button__content\">
+            <div class=\"pe-icon pe-icon--regular\">
+              <div class=\"pe-svg\">
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <path d=
+                  \"M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z\">
+                  </path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div></a>
       </div>
     </div>
   </div>
-</div>
+</form>
+"
+`;
+
+exports[`test Theme -- dark tone class 1`] = `
+"<form style=
+\"min-height: 130px; overflow: hidden; background-color: transparent; padding: 8px;\">
+<div>
+    <div class=
+    \"pe-search pe-search--inset tests-search-themed-search\">
+      <div class=\"pe-shadow\">
+        <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+        <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+      </div>
+      <div class=\"pe-search__content\">
+        <a class=\"pe-button pe-icon-button pe-button--inactive\">
+        <div class=\"pe-button__content\">
+          <div class=\"pe-ripple pe-ripple--constrained\"></div>
+          <div class=\"pe-button__focus\"></div>
+          <div class=\"pe-icon-button__content\">
+            <div class=\"pe-icon pe-icon--regular\">
+              <div class=\"pe-svg\">
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <path d=
+                  \"M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z\">
+                  </path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div></a>
+        <div class=
+        \"pe-textfield pe-textfield--hide-spinner pe-textfield--hide-clear\">
+        <div class=\"pe-textfield__input-area\">
+            <label class=
+            \"pe-textfield__label\">Search</label><input class=
+            \"pe-textfield__input\" type=\"text\">
+          </div>
+        </div><a class=
+        \"pe-button pe-icon-button pe-button--inactive\">
+        <div class=\"pe-button__content\">
+          <div class=\"pe-ripple pe-ripple--constrained\"></div>
+          <div class=\"pe-button__focus\"></div>
+          <div class=\"pe-icon-button__content\">
+            <div class=\"pe-icon pe-icon--regular\">
+              <div class=\"pe-svg\">
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <path d=
+                  \"M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z\">
+                  </path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div></a>
+      </div>
+    </div>
+  </div>
+</form>
+"
+`;
+
+exports[`test Theme 1`] = `
+"<form style=
+\"min-height: 130px; overflow: hidden; background-color: rgb(228, 228, 228); padding: 8px;\">
+<div>
+    <div class=
+    \"pe-search pe-search--inset tests-search-themed-search\">
+      <div class=\"pe-shadow\">
+        <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+        <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+      </div>
+      <div class=\"pe-search__content\">
+        <a class=\"pe-button pe-icon-button pe-button--inactive\">
+        <div class=\"pe-button__content\">
+          <div class=\"pe-ripple pe-ripple--constrained\"></div>
+          <div class=\"pe-button__focus\"></div>
+          <div class=\"pe-icon-button__content\">
+            <div class=\"pe-icon pe-icon--regular\">
+              <div class=\"pe-svg\">
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <path d=
+                  \"M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z\">
+                  </path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div></a>
+        <div class=
+        \"pe-textfield pe-textfield--hide-spinner pe-textfield--hide-clear\">
+        <div class=\"pe-textfield__input-area\">
+            <label class=
+            \"pe-textfield__label\">Search</label><input class=
+            \"pe-textfield__input\" type=\"text\">
+          </div>
+        </div><a class=
+        \"pe-button pe-icon-button pe-button--inactive\">
+        <div class=\"pe-button__content\">
+          <div class=\"pe-ripple pe-ripple--constrained\"></div>
+          <div class=\"pe-button__focus\"></div>
+          <div class=\"pe-icon-button__content\">
+            <div class=\"pe-icon pe-icon--regular\">
+              <div class=\"pe-svg\">
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
+                height=\"24\" viewbox=\"0 0 24 24\">
+                  <path d=
+                  \"M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z\">
+                  </path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div></a>
+      </div>
+    </div>
+  </div>
+</form>
 "
 `;

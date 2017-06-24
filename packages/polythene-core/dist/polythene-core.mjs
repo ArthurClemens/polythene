@@ -628,16 +628,14 @@ var multipleHOC = function multipleHOC(_ref) {
 
     var instanceId = spawnOpts.id || mOptions.defaultId;
     var spawn = spawnOpts.spawn || mOptions.defaultId;
-    var item = void 0;
+    var item = makeItem(attrs, instanceId, spawn);
     if (mOptions.queue) {
-      item = makeItem(attrs, instanceId, spawn);
       items.push(item);
       if (items.length === 1) {
         next();
       }
     } else {
       var storedItem = findItem(instanceId);
-      item = makeItem(attrs, instanceId, spawn);
       if (!storedItem) {
         items.push(item);
       } else {

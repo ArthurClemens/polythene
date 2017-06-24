@@ -246,6 +246,7 @@ var RadioGroup = (function (_ref) {
         var isChecked = isDefaultChecked || checkedValue === button.value;
         return h(RadioButton$$1, _extends({}, button, options && options[index], {
           checked: isChecked,
+          defaultChecked: defaultChecked,
           onChange: function onChange(newState) {
             return state.checkedValue(newState.value);
           }
@@ -287,7 +288,7 @@ var genericTests = (function (_ref) {
     name: "Option: defaultChecked",
     component: RadioGroup({ h: h, k: k, RadioButton: RadioButton$$1, count: 2, options: [null, { defaultChecked: true }] })
   }, {
-    name: "Default checked value",
+    name: "A default checked value",
     component: RadioGroup({ h: h, k: k, RadioButton: RadioButton$$1, count: 2, groupOptions: { defaultCheckedValue: "two" } })
   }, {
     name: "Option: disabled",
@@ -4040,6 +4041,11 @@ var reactTests = function reactTests(_ref) {
         return react.createElement(
           "form",
           null,
+          react.createElement(
+            "div",
+            { style: { margin: "0 0 1rem 0" } },
+            "Value: " + this.state.value
+          ),
           react.createElement(RadioButton$$1, {
             label: "One",
             value: "one",

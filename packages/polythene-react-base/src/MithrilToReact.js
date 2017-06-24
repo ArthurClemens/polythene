@@ -39,23 +39,28 @@ export const MithrilToReact = component => (
 
     constructor(props) {
       super(props);
-      this.state = Object.assign(
+      const vnode = Object.assign(
         {},
         component,
         {
-          state: {
-            redrawValues: undefined
-          }
+          state: {},
+          attrs: this.props,
+          redrawValues: undefined
         }
       );
-      this.state.oninit && this.state.oninit(this.state);
+      if (component.oninit) {
+        component.oninit(vnode);
+      }
+      this.state = vnode;
     }
 
     componentDidMount() {
       this._mounted = true;
-      this.state.state.redrawOnUpdate && this.state.state.redrawOnUpdate.map(values =>
-        this._mounted && this.setState({ redrawValues: values })
-      );
+      this.state.state.redrawOnUpdate && this.state.state.redrawOnUpdate.map(values => {
+        if (this._mounted) {
+          this.setState({ redrawValues: values });
+        }
+      });
     }
 
     componentWillUnmount() {
@@ -63,7 +68,7 @@ export const MithrilToReact = component => (
     }
 
     render() {
-      return this.state.view({ state: this.state.state, attrs: this.props }, this.props.children);
+      return component.view({ state: this.state.state, attrs: this.props }, this.props.children);
     }
   }
 );

@@ -2,9 +2,9 @@
   "name": "polythene-test-render-html",
   "description": "",
   "scripts": {
-    "dev": "http-server -p 3000",
+    "dev": "http-server -p 3200",
     "build": "ls",
-    "update": "cp ../polythene-mithril/dist/polythene-mithril.js js/ && cp ../polythene-mithril/dist/polythene-mithril.js.map js/"
+    "update": "cd ../polythene-mithril && yarn run build-standalone && cd - && cp ../polythene-mithril/dist/polythene-mithril-standalone.js* js/"
   },
   "devDependencies": {
     "http-server": "^0.10.0"

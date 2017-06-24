@@ -23,7 +23,6 @@ export const StateComponent = ({
     const initialState = getInitialState(protoState, stream);
     vnode.state = initialState;
     vnode.state.redrawOnUpdate && vnode.state.redrawOnUpdate.map(() => (
-      // console.log("redrawOnUpdate", value),
       setTimeout(renderer.redraw)
     ));
   };

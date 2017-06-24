@@ -31,11 +31,11 @@ m(switchButton, {
 
 ### Dynamic values
 
-To read the checked state use `getState`:
+To read the checked state use `onChange`:
 
 ~~~javascript
 m(switchButton, {
-  getState: state => vnode.state.checked = state.checked
+  onChange: state => vnode.state.checked = state.checked
 })
 ~~~
 
@@ -161,7 +161,7 @@ m(switchButton, {
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **getState**  | optional | Function(state {Object}) | | Callback function that accepts the field state (Object with properties `checked` {Boolean}, `value` {String}, `el` {HTMLElement}) |
+| **onChange**  | optional | Function(state {Object}) | | Callback function that accepts the field state (Object with properties `checked` {Boolean}, `value` {String}, `el` {HTMLElement}) |
 | **selectable** | optional | Function(checked {Boolean}) | | Use to set the active state based on the switch state; function that accepts the field checked value (Boolean) |
 
 

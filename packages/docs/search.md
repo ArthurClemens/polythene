@@ -79,13 +79,13 @@ Not all button state need to be defined.
 
 ### Logic: storing and clearing the value
 
-To add logic to the search field, we will wrap the search field in a component. We will store the textfield state in our component state, and set the text field input value programmatically. For this we will use the [text field callback functions](../polythene-textfield) `value` and `getState`:
+To add logic to the search field, we will wrap the search field in a component. We will store the textfield state in our component state, and set the text field input value programmatically. For this we will use the [text field callback functions](../polythene-textfield) `value` and `onChange`:
 
 * `value()` - sets the text field input
-* `getState(state)` - receives updates on changes and events
+* `onChange(state)` - receives updates on changes and events
 
 <!--
-the return value of textfield's `getState` is a object:
+the return value of textfield's `onChange` is a object:
 
 ~~~javascript
 {
@@ -105,7 +105,7 @@ Textfield attributes are passed with option `textfield`:
 textfield: {
   label: "Search",
   value: () => state.fieldState ? state.fieldState.value : "",
-  getState: fieldState => state.fieldState = fieldState
+  onChange: fieldState => state.fieldState = fieldState
 }
 ~~~
 
@@ -181,7 +181,7 @@ const mySearchComponent = {
       textfield: {
         label: "Search",
         value: () => state.fieldState ? state.fieldState.value : "",
-        getState: fieldState => state.fieldState = fieldState
+        onChange: fieldState => state.fieldState = fieldState
       },
       buttons: {
         none: {

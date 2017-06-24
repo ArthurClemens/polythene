@@ -66,7 +66,7 @@ export default ({ Search, IconButton, Shadow }) => {
         <Search
           textfield={{
             label: "Search",
-            getState: fieldState => this.setState({ fieldState }),
+            onChange: fieldState => this.setState({ fieldState }),
             key: "input"
           }}
           buttons={{

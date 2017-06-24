@@ -197,7 +197,7 @@ var stream = stream$2;
 
 var threeButtons = [{ label: "New" }, { label: "My Favorites" }, { label: "Saved" }];
 
-var getState = (function (_ref) {
+var onChange = (function (_ref) {
   var h = _ref.h,
       Tabs$$1 = _ref.Tabs;
   return {
@@ -212,7 +212,7 @@ var getState = (function (_ref) {
       var state = vnode.state;
       var tab = state.tab();
 
-      return h("div", h("ul", {
+      return h("div", [h("ul", {
         style: {
           margin: "0 0 1rem 0",
           padding: 0,
@@ -222,10 +222,10 @@ var getState = (function (_ref) {
       }, [h("li", { key: "index" }, "" + tab.index), h("li", { key: "data" }, "" + JSON.stringify(tab.data))]), h(Tabs$$1, {
         buttons: threeButtons,
         autofit: true,
-        getState: function getState(newTab) {
+        onChange: function onChange(newTab) {
           return state.tab(newTab);
         }
-      }));
+      })]);
     }
   };
 });
@@ -247,7 +247,7 @@ var genericTests = (function (_ref) {
   var arrowBack = h.trust(arrowBackSVG);
   var arrowForward = h.trust(arrowForwardSVG);
 
-  var GetStateComponent = getState({ h: h, Tabs: Tabs$$1 });
+  var OnChange = onChange({ h: h, Tabs: Tabs$$1 });
 
   Tabs$$1.theme(".tests-tabs-fixed-width", {
     tab_max_width: 110,
@@ -508,10 +508,10 @@ var genericTests = (function (_ref) {
       autofit: true
     }
   }, {
-    name: "Option: getState",
+    name: "Option: onChange",
     interactive: true,
     exclude: true,
-    component: GetStateComponent
+    component: OnChange
   },
 
   // Dark tone

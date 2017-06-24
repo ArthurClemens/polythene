@@ -15,7 +15,7 @@ export const multipleHOC = ({ options: mOptions, renderer }) => {
 
   const items = []; // This is shared between all instances of a type (Dialog, Notification, ...)
   let current;
-
+  
   const getInitialState = (vnode, createStream) => {
     current = createStream();
     return {
@@ -137,16 +137,14 @@ export const multipleHOC = ({ options: mOptions, renderer }) => {
   const show = (attrs = {}, spawnOpts = {}) => {
     const instanceId = spawnOpts.id || mOptions.defaultId;
     const spawn = spawnOpts.spawn || mOptions.defaultId;
-    let item;
+    const item = makeItem(attrs, instanceId, spawn);
     if (mOptions.queue) {
-      item = makeItem(attrs, instanceId, spawn);
       items.push(item);
       if (items.length === 1) {
         next();
       }
     } else {
       const storedItem = findItem(instanceId);
-      item = makeItem(attrs, instanceId, spawn);
       if (!storedItem) {
         items.push(item);
       } else {

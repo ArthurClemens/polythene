@@ -2,13 +2,11 @@ DOES NOT WORK YET
 
 # Polythene simple HTML test
 
-This test loads a HTML page with a static `polythene-mithril.js` file.
+This test loads a HTML page with a static `polythene-mithril-standalone.js` file.
 The HTML page contains all app JS.
 
 
 ## Scripts
   
-* `update` - copies the latest `polythene-mithril.js` file
-* `dev` - starts a web server on port 3000
-
-
+* `update` - generates and copies the latest `polythene-mithril-standalone.js` file
+* `dev` - starts a web server on port 3200

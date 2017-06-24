@@ -31,7 +31,7 @@ export default ({ RadioButton, renderer: h, keys: k }) => {
       component: RadioGroup({ h, k, RadioButton, count: 2, options: [null, { defaultChecked: true }] })
     },
     {
-      name: "Default checked value",
+      name: "A default checked value",
       component: RadioGroup({ h, k, RadioButton, count: 2, groupOptions: { defaultCheckedValue: "two"} })
     },
     {

@@ -216,7 +216,7 @@ var focus = (function (_ref) {
       return h("div", [h(TextField$$1, {
         label: "Your name",
         focus: hasFocus,
-        getState: function getState(newState) {
+        onChange: function onChange(newState) {
           return state.hasFocus(newState.focus);
         }
       }), h(RaisedButton$$1, {
@@ -231,7 +231,7 @@ var focus = (function (_ref) {
 
 function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var getState = (function (_ref) {
+var onChange = (function (_ref) {
   var h = _ref.h,
       k = _ref.k,
       TextField$$1 = _ref.TextField,
@@ -240,6 +240,11 @@ var getState = (function (_ref) {
     oninit: function oninit(vnode) {
       var textfieldState = stream({});
       var value = stream("");
+      value.map(function (v) {
+        if (textfieldState().el) {
+          textfieldState().el.value = v;
+        }
+      });
       vnode.state = {
         textfieldState: textfieldState,
         value: value,
@@ -249,8 +254,7 @@ var getState = (function (_ref) {
     view: function view(vnode) {
       var state = vnode.state;
       return h("div", [h(TextField$$1, {
-        value: state.value(),
-        getState: state.textfieldState,
+        onChange: state.textfieldState,
         counter: 6,
         error: "You have exceeded the maximum number of characters."
       }), h("div", { style: { margin: "10px 0" } }, [h("div", { key: "focus" }, "focus: " + state.textfieldState().focus), h("div", { key: "dirty" }, "dirty: " + state.textfieldState().dirty), h("div", { key: "invalid" }, "invalid: " + state.textfieldState().invalid)]), h(RaisedButton$$1, {
@@ -290,17 +294,17 @@ var genericTests = (function (_ref) {
   var ipsum = "Lorem ipsum dolor sit amet, idque signiferumque at usu, eum recusabo aliquando id. Deleniti percipitur concludaturque eu eos. Vix elitr feugait ne. Mel agam integre eu, has minim aliquid salutandi eu. Est nusquam abhorreant ne. Ei wisi dicant eam, vix tota reque persequeris an. Quo in theophrastus reprehendunt, ius te graecis epicuri volutpat.";
   var shortIpsum = "Lorem ipsum dolor sit amet,";
   var Focus = focus({ h: h, k: k, TextField: TextField$$1, RaisedButton: RaisedButton$$1 });
-  var GetState = getState({ h: h, k: k, TextField: TextField$$1, RaisedButton: RaisedButton$$1 });
+  var OnChange = onChange({ h: h, k: k, TextField: TextField$$1, RaisedButton: RaisedButton$$1 });
 
   return [{
-    name: "Option: value",
+    name: "Option: defaultValue",
     component: {
       view: function view() {
         return block([h(TextField$$1, {
-          value: "Text A",
+          defaultValue: "Text A",
           key: "a" // for React
         }), h(TextField$$1, {
-          value: "Text B",
+          defaultValue: "Text B",
           key: "b" // for React
         })]);
       }
@@ -318,15 +322,15 @@ var genericTests = (function (_ref) {
       view: function view() {
         return block([h(TextField$$1, {
           type: "password",
-          value: "123456",
+          defaultValue: "123456",
           key: "a" // for React
         }), h(TextField$$1, {
           type: "number",
-          value: "123456",
+          defaultValue: "123456",
           key: "b" // for React
         }), h(TextField$$1, {
           type: "email",
-          value: "a@b.com",
+          defaultValue: "a@b.com",
           key: "c" // for React
         })]);
       }
@@ -438,7 +442,7 @@ var genericTests = (function (_ref) {
           rows: 2,
           key: "b" // for React
         }), h(TextField$$1, {
-          value: "4 rows: " + ipsum,
+          defaultValue: "4 rows: " + ipsum,
           multiline: true,
           rows: 4,
           key: "c" // for React
@@ -559,7 +563,7 @@ var genericTests = (function (_ref) {
         var _h2;
 
         return block([h(TextField$$1, (_h2 = {
-          value: "123"
+          defaultValue: "123"
         }, _defineProperty(_h2, k.maxlength, 3), _defineProperty(_h2, "error", "Enter max 3 characters"), _h2))]);
       }
     }
@@ -572,7 +576,7 @@ var genericTests = (function (_ref) {
           type: "number",
           min: 3,
           max: 8,
-          value: 10,
+          defaultValue: 10,
           error: "Enter a value between 3 and 8",
           required: true
         })]);
@@ -586,7 +590,7 @@ var genericTests = (function (_ref) {
         return block([h(TextField$$1, {
           label: "Email",
           type: "email",
-          value: "a@",
+          defaultValue: "a@",
           required: true,
           error: "Enter a valid email address"
         })]);
@@ -600,7 +604,7 @@ var genericTests = (function (_ref) {
         return block([h(TextField$$1, {
           label: "Number",
           type: "text",
-          value: "abc",
+          defaultValue: "abc",
           pattern: "[0-9]+",
           validateAtStart: true
         })]);
@@ -612,7 +616,7 @@ var genericTests = (function (_ref) {
     component: {
       view: function view() {
         return block([h(TextField$$1, {
-          value: "abC",
+          defaultValue: "abC",
           validate: function validate(value) {
             return value !== value.toLowerCase() ? {
               valid: false,
@@ -631,7 +635,7 @@ var genericTests = (function (_ref) {
         return block([h(TextField$$1, {
           label: "Description",
           floatingLabel: true,
-          value: shortIpsum,
+          defaultValue: shortIpsum,
           counter: 30,
           error: "You have exceeded the maximum number of characters."
         })]);
@@ -645,7 +649,7 @@ var genericTests = (function (_ref) {
         return block([h(TextField$$1, _defineProperty({
           label: "Description",
           floatingLabel: true,
-          value: shortIpsum,
+          defaultValue: shortIpsum,
           counter: 30
         }, k.maxlength, 30))]);
       }
@@ -659,11 +663,11 @@ var genericTests = (function (_ref) {
       }
     }
   }, {
-    name: "Option: getState",
+    name: "Option: onChange",
     interactive: true,
     component: {
       view: function view() {
-        return block(h(GetState));
+        return block(h(OnChange));
       }
     }
   }, {
@@ -681,7 +685,7 @@ var genericTests = (function (_ref) {
     component: {
       view: function view() {
         return block(h(TextField$$1, {
-          value: "John",
+          defaultValue: "John",
           disabled: true
         }));
       }
@@ -691,7 +695,7 @@ var genericTests = (function (_ref) {
     component: {
       view: function view() {
         return block(h(TextField$$1, _defineProperty({
-          value: "John"
+          defaultValue: "John"
         }, k.readonly, true)));
       }
     }
@@ -761,7 +765,7 @@ var genericTests = (function (_ref) {
         return block(h(TextField$$1, {
           label: "Email",
           type: "email",
-          value: "a@",
+          defaultValue: "a@",
           required: true,
           error: "Enter a valid email address"
         }), { dark: true });
@@ -773,7 +777,7 @@ var genericTests = (function (_ref) {
     component: {
       view: function view() {
         return block(h(TextField$$1, {
-          value: "John",
+          defaultValue: "John",
           disabled: true
         }), { dark: true });
       }
@@ -784,7 +788,7 @@ var genericTests = (function (_ref) {
     component: {
       view: function view() {
         return block(h(TextField$$1, {
-          value: "John",
+          defaultValue: "John",
           readonly: true
         }), { dark: true });
       }
@@ -4429,15 +4433,15 @@ var reactTests = function reactTests(_ref) {
     component: function component() {
       return block([react.createElement(TextField$$1, {
         type: "password",
-        value: "123456",
+        defaultValue: "123456",
         key: "a"
       }), react.createElement(TextField$$1, {
         type: "number",
-        value: "123456",
+        defaultValue: "123456",
         key: "b"
       }), react.createElement(TextField$$1, {
         type: "email",
-        value: "a@b.com",
+        defaultValue: "a@b.com",
         key: "c"
       })]);
     }
@@ -4448,7 +4452,6 @@ var reactTests = function reactTests(_ref) {
       return block([react.createElement(TextField$$1, {
         label: "Description",
         floatingLabel: true,
-        value: "",
         counter: 15,
         error: "You have exceeded the maximum number of characters.",
         key: "x"

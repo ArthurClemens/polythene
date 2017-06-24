@@ -56,10 +56,10 @@ export const createContent = (vnode, { renderer: h, TextField }) => {
         textfieldAttrs,
         {
           key: "input",
-          getState: newState => {
+          onChange: newState => {
             state.searchState(newState);
-            if (textfieldAttrs.getState) {
-              textfieldAttrs.getState(newState);
+            if (textfieldAttrs.onChange) {
+              textfieldAttrs.onChange(newState);
             }
           },
         }
