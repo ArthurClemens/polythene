@@ -1,5 +1,3 @@
-DOES NOT WORK YET
-
 # Polythene simple HTML test
 
 This test loads a HTML page with a static `polythene-mithril-standalone.js` file.
