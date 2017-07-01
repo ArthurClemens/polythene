@@ -12,6 +12,7 @@ export default (selector, componentVars) => [{
       minWidth: 56 * 5 + "px",
       maxWidth: 7 * vars.grid_unit_menu + "px",
       borderRadius: "inherit",
+      margin: 0,
       
       ".pe-menu__content": {
         " .pe-dialog-pane__body": {

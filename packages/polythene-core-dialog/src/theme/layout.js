@@ -13,7 +13,7 @@ export default (selector, componentVars) => [{
       zIndex: vars.z_dialog,
       height: "100%", // 100vh would make the dialog go beneath Mobile Safari toolbar
       padding: componentVars.padding + "px 40px",
-
+      
       ".pe-dialog--fullscreen": {
         padding: 0,
 
