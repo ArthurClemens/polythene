@@ -37,6 +37,7 @@ var vars$1 = {
   min_width: 8 * vars.grid_unit_component,
   text_transform: "uppercase",
   border_width: 0, // no border in MD, but used to correctly set the height when a theme does set a border
+  animation_duration: vars.animation_duration,
 
   color_light_background: "transparent",
   color_light_text: rgba(vars.color_light_foreground, vars.blend_light_text_primary),
@@ -64,14 +65,15 @@ var vars$1 = {
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var baseLayout = (function (selector) {
-  return [_defineProperty$1({}, selector, {
+var baseLayout = (function (selector, componentVars) {
+  return [_defineProperty$1({}, selector, [mixin.defaultTransition("all", componentVars.animation_duration), {
     userSelect: "none",
     outline: "none",
     padding: 0,
     textDecoration: "none",
     textAlign: "center",
     cursor: "pointer",
+    transition: "all " + componentVars.animation_duration + " ease-in-out",
 
     ".pe-button--selected, &.pe-button--disabled, &.pe-button--inactive": {
       cursor: "default",
@@ -108,7 +110,7 @@ var baseLayout = (function (selector) {
     " .pe-button__wash": {
       zIndex: 0
     }
-  })];
+  }])];
 });
 
 function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -222,6 +224,7 @@ var color = (function (selector, componentVars) {
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var fns = [layout, color];
+var baseFns = [baseLayout];
 var baseSelector = "." + classes.base;
 var selector = "." + classes.component.replace(/ /g, ".");
 
@@ -229,7 +232,7 @@ var customTheme = function customTheme(customSelector, customVars) {
   return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
 };
 
-styler.generateStyles([baseSelector], vars$1, [baseLayout]);
+styler.generateStyles([baseSelector], vars$1, baseFns);
 styler.generateStyles([selector], vars$1, fns);
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };

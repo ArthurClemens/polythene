@@ -4,12 +4,13 @@ Helper module to manage multiple items of the same component type.
 mOptions:
 - instance
 - defaultId
-- element
+- holder
 - placeholder
 - bodyShowClass
 */
 
 import { unpackAttrs } from "./attrs";
+import { emit } from "./events";
 
 export const multipleHOC = ({ options: mOptions, renderer }) => {
 
@@ -22,6 +23,14 @@ export const multipleHOC = ({ options: mOptions, renderer }) => {
       current,
       redrawOnUpdate: createStream.merge([current])
     };
+  };
+
+  /*
+  @param e: { id, eventName }
+  */
+  const onChange = e => {
+    current(e.id);
+    emit(mOptions.name, e);
   };
 
   const itemIndex = id => {
@@ -55,15 +64,16 @@ export const multipleHOC = ({ options: mOptions, renderer }) => {
   const next = () => {
     if (items.length) {
       items[0].show = true;
-      current(items[0].instanceId);
     }
+    onChange({ id: items.length ? items[0].instanceId : null, name: "next" });
   };
 
   const remove = (instanceId = mOptions.defaultId) => {
     if (mOptions.queue) {
       items.shift();
       // add time to remove the previous instance before drawing the next one
-      setTimeout(next, 0);
+      //setTimeout(next, 0);
+      next();
     } else {
       removeItem(instanceId);
     }
@@ -75,7 +85,7 @@ export const multipleHOC = ({ options: mOptions, renderer }) => {
       items[i].cancelled = true;
     }
     items.length = 0;
-    current(null);
+    onChange({ id: null, name: "removeAll" });
   };
 
   const setPauseState = (pause, instanceId) => {
@@ -88,26 +98,27 @@ export const multipleHOC = ({ options: mOptions, renderer }) => {
 
   const makeItem = (itemAttrs, instanceId, spawn) => {
     let resolveShow;
+    let resolveHide;
+
     const didShow = () => {
       const attrs = unpackAttrs(itemAttrs);
       if (attrs.didShow) {
         attrs.didShow(instanceId);
       }
-      current(instanceId);
+      onChange({ id: instanceId, name: "didShow" });
       return resolveShow(instanceId);
     };
     const showPromise = new Promise(resolve => 
       resolveShow = resolve
     );
 
-    let resolveHide;
     const didHide = () => {
       const attrs = unpackAttrs(itemAttrs);
       if (attrs.didHide) {
         attrs.didHide(instanceId);
       }
+      onChange({ id: instanceId, name: "didHide" });
       remove(instanceId);
-      current(instanceId);
       return resolveHide(instanceId);
     };
 
@@ -138,6 +149,7 @@ export const multipleHOC = ({ options: mOptions, renderer }) => {
     const instanceId = spawnOpts.id || mOptions.defaultId;
     const spawn = spawnOpts.spawn || mOptions.defaultId;
     const item = makeItem(attrs, instanceId, spawn);
+    onChange({ id: instanceId, name: "show" });
     if (mOptions.queue) {
       items.push(item);
       if (items.length === 1) {
@@ -150,7 +162,6 @@ export const multipleHOC = ({ options: mOptions, renderer }) => {
       } else {
         replaceItem(instanceId, item);
       }
-      current(instanceId);
     }
     return item.showPromise;
   };
@@ -162,10 +173,11 @@ export const multipleHOC = ({ options: mOptions, renderer }) => {
       : findItem(instanceId);
     if (item) {
       item.hide = true;
-      current(null);
-      return item.hidePromise;
     }
-    return Promise.resolve(instanceId);
+    onChange({ id: instanceId, name: "hide" });
+    return item
+      ? item.hidePromise
+      : Promise.resolve(instanceId);
   };
 
   const clear = () => removeAll();
@@ -175,10 +187,12 @@ export const multipleHOC = ({ options: mOptions, renderer }) => {
     const candidates = items.filter(item => 
       item.show && item.spawn === spawn
     );
-    document.body.classList[candidates.length ? "add" : "remove"](mOptions.bodyShowClass);
+    if (mOptions.bodyShowClass) {
+      document.body.classList[candidates.length ? "add" : "remove"](mOptions.bodyShowClass);
+    }
     return !candidates.length
       ? renderer(mOptions.placeholder) // placeholder because we cannot return null
-      : renderer(mOptions.element,
+      : renderer(mOptions.holder,
         {
           className: attrs.position === "container"
             ? "pe-multiple--container"
@@ -190,8 +204,11 @@ export const multipleHOC = ({ options: mOptions, renderer }) => {
             {
               key: itemData.key || itemData.instanceId,
               transitions: mOptions.transitions,
+              holder: mOptions.holder,
               show: itemData.show,
               hide: itemData.hide,
+              pause: itemData.pause,
+              unpause: itemData.unpause,
               multipleDidShow: itemData.didShow,
               multipleDidHide: itemData.didHide
             },

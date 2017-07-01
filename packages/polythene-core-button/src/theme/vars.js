@@ -5,16 +5,17 @@ const touch_height = vars.unit_touch_height;
 const height = 36;
 
 export default {
-  margin_h:        vars.grid_unit,
-  border_radius:   vars.unit_item_border_radius,
-  font_size:       14,
-  font_weight:     500,
-  outer_padding_v: (touch_height - height) / 2,
-  padding_h:       2 * vars.grid_unit,
-  padding_v:       11,
-  min_width:       8 * vars.grid_unit_component,
-  text_transform:  "uppercase",
-  border_width:    0, // no border in MD, but used to correctly set the height when a theme does set a border
+  margin_h:           vars.grid_unit,
+  border_radius:      vars.unit_item_border_radius,
+  font_size:          14,
+  font_weight:        500,
+  outer_padding_v:    (touch_height - height) / 2,
+  padding_h:          2 * vars.grid_unit,
+  padding_v:          11,
+  min_width:          8 * vars.grid_unit_component,
+  text_transform:     "uppercase",
+  border_width:       0, // no border in MD, but used to correctly set the height when a theme does set a border
+  animation_duration: vars.animation_duration,
 
   color_light_background:          "transparent",
   color_light_text:                rgba(vars.color_light_foreground, vars.blend_light_text_primary),

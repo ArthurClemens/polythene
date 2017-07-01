@@ -1,0 +1,209 @@
+import { filterSupportedAttributes, show, hide } from "polythene-core";
+import { Timer } from "polythene-utilities";
+import { customTheme } from "./theme";
+import classes from "./classes";
+
+const DEFAULT_TIME_OUT = 3;
+
+export const getElement = vnode =>
+  vnode.attrs.element || "div";
+
+export const theme = customTheme;
+
+const pauseInstance = state => {
+  state.paused(true);
+  if (state.timer) {
+    state.timer.pause();
+  }
+};
+
+const unpauseInstance = state => {
+  state.paused(false);
+  if (state.timer) {
+    state.timer.resume();
+  }
+};
+
+const stopTimer = state => {
+  if (state.timer) {
+    state.timer.stop();
+  }
+};
+
+const prepareShow = (state, attrs) => {
+  if (!state.containerEl) {
+    state.containerEl = document.querySelector(attrs.containerSelector || attrs.holder);
+  }
+  if (!state.containerEl) {
+    console.error("No containerEl found");
+  }
+  if (attrs.containerSelector) {
+    const holderEl = state.containerEl.querySelector(attrs.holder);
+    holderEl.classList.add(classes.hasContainer);
+  }
+};
+
+const showInstance = (state, attrs) => {
+  if (state.transitioning()) {
+    return Promise.resolve();
+  }
+  state.transitioning(true);
+  stopTimer(state);
+  prepareShow(state, attrs);
+  const id = state.instanceId;
+  const transitions = attrs.transitions;
+  return show(Object.assign({},
+    attrs,
+    transitions.show(state.containerEl, attrs)
+  )).then(() => {
+    if (attrs.multipleDidShow) {
+      attrs.multipleDidShow(id); // this will call attrs.didShow
+    }
+    // set timer to hide in a few seconds
+    const timeout = attrs.timeout;
+    if (timeout === 0) {
+      // do not time out
+    } else {
+      const timeoutSeconds = timeout !== undefined
+        ? timeout
+        : DEFAULT_TIME_OUT;
+      state.timer.start(() => {
+        hideInstance(state, attrs);
+      }, timeoutSeconds);
+    }
+    state.transitioning(false);
+    state.visible(true);
+  });
+};
+
+const hideInstance = (state, attrs) => {
+  if (state.transitioning()) {
+    return Promise.resolve();
+  }
+  state.transitioning(true);
+  stopTimer(state);
+  const id = state.instanceId;
+  const transitions = attrs.transitions;
+  return hide(Object.assign({},
+    attrs,
+    transitions.hide(state.containerEl, attrs)
+  )).then(() => {
+    if (attrs.multipleDidHide) {
+      attrs.multipleDidHide(id); // this will call attrs.didHide
+    }
+    state.transitioning(false);
+    state.visible(false);
+  });
+};
+
+const setTitleStyles = titleEl => {
+  const height = titleEl.getBoundingClientRect().height;
+  const lineHeight = parseInt(window.getComputedStyle(titleEl).lineHeight, 10);
+  const paddingTop = parseInt(window.getComputedStyle(titleEl).paddingTop, 10);
+  const paddingBottom = parseInt(window.getComputedStyle(titleEl).paddingBottom, 10);
+  if (height > (lineHeight + paddingTop + paddingBottom)) {
+    titleEl.classList.add(classes.multilineTitle);
+  }
+};
+
+export const getInitialState = (vnode, createStream) => {
+  const transitioning = createStream(false);
+  const paused = createStream(false);
+  const mounted = createStream(false);
+  const visible = createStream(false);
+  return {
+    cleanUp:       undefined,
+    containerEl:   undefined,
+    dismissEl:     undefined,
+    timer:         undefined,
+    el:            undefined,
+    timer:         new Timer(),
+    paused,
+    transitioning,
+    visible,
+    mounted,
+    redrawOnUpdate: createStream.merge([visible])
+  };
+};
+
+export const onMount = vnode => {
+  if (!vnode.dom) {
+    return;
+  }
+  const state = vnode.state;
+  const attrs = vnode.attrs;
+  state.el = vnode.dom;
+  const titleEl = state.el.querySelector(`.${classes.title}`);
+  if (titleEl) {
+    setTitleStyles(titleEl);
+  }
+  if (attrs.show && !state.visible()) {
+    showInstance(state, attrs);
+  }
+  state.mounted(true);
+};
+
+export const onUnMount = vnode =>
+  vnode.state.mounted(false);
+
+export const createProps = (vnode, { keys: k }) => {
+  const attrs = vnode.attrs;
+  return Object.assign(
+    {},
+    filterSupportedAttributes(attrs),
+    {
+      className: [
+        classes.component,
+        attrs.tone === "light" ? null : "pe-dark-tone", // default dark tone
+        attrs.tone === "light" ? "pe-light-tone" : null,
+        attrs.containerSelector ? classes.hasContainer : null,
+        attrs.layout === "vertical" ? classes.vertical : classes.horizontal,
+        attrs.tone === "dark" ? "pe-dark-tone" : null,
+        attrs.tone === "light" ? "pe-light-tone" : null,
+        attrs.className || attrs[k.class],
+      ].join(" "),
+      [k.onclick]: e => e.preventDefault()
+    }
+  );
+};
+
+export const createContent = (vnode, { renderer: h }) => {
+  const state = vnode.state;
+  const attrs = vnode.attrs;
+
+  if (state.mounted() && !state.transitioning()) {
+    if (attrs.hide && state.visible()) {
+      setTimeout(() => hideInstance(state, attrs));
+      // hideInstance(state, attrs);
+    } else if (attrs.show && !state.visible()) {
+      setTimeout(() => showInstance(state, attrs));
+      // showInstance(state, attrs);
+    }
+  }
+  if (attrs.pause && !state.paused()) {
+    pauseInstance(state, attrs);
+  } else if (attrs.unpause && state.paused()) {
+    unpauseInstance(state, attrs);
+  }
+
+  return h("div",
+    {
+      className: classes.content,
+      style: attrs.style
+    },
+    attrs.content || [
+      attrs.title
+        ? h("div",
+            { className: classes.title },
+          attrs.title
+        )
+        : null,
+      attrs.action
+        ? h("div",
+            { className: classes.action },
+          attrs.action
+        )
+        : null
+    ]
+  );
+};

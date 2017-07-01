@@ -112,20 +112,6 @@ var theme = customTheme;
 
 var MAX_Z = 5;
 
-var getInitialState = function getInitialState(vnode, createStream) {
-  var attrs = vnode.attrs;
-  var zValue = attrs.z !== undefined ? attrs.z : 1;
-  var z = createStream(zValue);
-  var zBase = createStream(zValue);
-  var tapEventsInited = createStream(false);
-  return {
-    z: z,
-    zBase: zBase,
-    tapEventsInited: tapEventsInited,
-    redrawOnUpdate: createStream.merge([z])
-  };
-};
-
 var tapStart = void 0;
 var tapEndAll = function tapEndAll() {};
 var downButtons = [];
@@ -135,16 +121,12 @@ subscribe(touchEndEvent, function () {
 });
 
 var animateZ = function animateZ(which, vnode) {
-  var zBase = vnode.state.zBase();
+  var zBase = vnode.state.zBase;
   var increase = vnode.attrs.increase || 1;
   var z = vnode.state.z();
-  if (which === "down" && zBase < MAX_Z) {
-    z = Math.min(zBase + increase, MAX_Z);
-  } else if (which === "up") {
-    z = Math.max(z - increase, zBase);
-  }
-  if (z !== vnode.state.z()) {
-    vnode.state.z(z);
+  var newZ = which === "down" && zBase < MAX_Z ? Math.min(zBase + increase, MAX_Z) : which === "up" ? Math.max(z - increase, zBase) : z;
+  if (newZ !== z) {
+    vnode.state.updateZ(newZ);
   }
 };
 
@@ -176,6 +158,37 @@ var clearTapEvents = function clearTapEvents(vnode) {
   return vnode.dom.removeEventListener(touchStartEvent, tapStart);
 };
 
+var getInitialState = function getInitialState(vnode, createStream) {
+  var attrs = vnode.attrs;
+  var zValue = attrs.z !== undefined ? attrs.z : 1;
+  var z = createStream(zValue);
+  var redraw = createStream();
+  var updateZ = function updateZ(newZ) {
+    return z(newZ), redraw(newZ);
+  };
+  var tapEventsInited = createStream(false);
+  return {
+    zBase: zValue,
+    z: z,
+    updateZ: updateZ,
+    tapEventsInited: tapEventsInited,
+    redrawOnUpdate: createStream.merge([redraw])
+  };
+};
+
+var onMount = function onMount(vnode) {
+  if (vnode.dom && !vnode.attrs.disabled && !vnode.attrs.inactive && !vnode.state.tapEventsInited()) {
+    initTapEvents(vnode);
+    vnode.state.tapEventsInited(true);
+  }
+};
+
+var onUnMount = function onUnMount(vnode) {
+  if (vnode.state.tapEventsInited()) {
+    clearTapEvents(vnode);
+  }
+};
+
 var createProps = function createProps(vnode, _ref) {
   var h = _ref.renderer,
       Shadow = _ref.Shadow;
@@ -195,26 +208,13 @@ var createContent = function createContent() {
   return null;
 };
 
-var onMount = function onMount(vnode) {
-  if (vnode.dom && !vnode.attrs.disabled && !vnode.attrs.inactive && !vnode.state.tapEventsInited()) {
-    initTapEvents(vnode);
-    vnode.state.tapEventsInited(true);
-  }
-};
-
-var onUnMount = function onUnMount(vnode) {
-  if (vnode.state.tapEventsInited()) {
-    clearTapEvents(vnode);
-  }
-};
-
 var raisedButton = Object.freeze({
 	theme: theme,
 	getInitialState: getInitialState,
-	createProps: createProps,
-	createContent: createContent,
 	onMount: onMount,
-	onUnMount: onUnMount
+	onUnMount: onUnMount,
+	createProps: createProps,
+	createContent: createContent
 });
 
 export { raisedButton as coreRaisedButton, classes, vars$1 as vars };

@@ -156,13 +156,13 @@ var throttle = function throttle(func) {
     }
 
     var later = function later() {
-      func.apply(context, args);
+      return func.apply(context, args);
     };
     if (!wait) {
       later();
       wait = true;
       setTimeout(function () {
-        wait = false;
+        return wait = false;
       }, s);
     }
   };
@@ -188,7 +188,7 @@ var emit = function emit(eventName, event) {
     return;
   }
   listeners[eventName].forEach(function (listener) {
-    listener(event);
+    return listener(event);
   });
 };
 
@@ -483,7 +483,7 @@ Helper module to manage multiple items of the same component type.
 mOptions:
 - instance
 - defaultId
-- element
+- holder
 - placeholder
 - bodyShowClass
 */
@@ -502,6 +502,14 @@ var multipleHOC = function multipleHOC(_ref) {
       current: current,
       redrawOnUpdate: createStream.merge([current])
     };
+  };
+
+  /*
+  @param e: { id, eventName }
+  */
+  var onChange = function onChange(e) {
+    current(e.id);
+    emit(mOptions.name, e);
   };
 
   var itemIndex = function itemIndex(id) {
@@ -535,8 +543,8 @@ var multipleHOC = function multipleHOC(_ref) {
   var next = function next() {
     if (items.length) {
       items[0].show = true;
-      current(items[0].instanceId);
     }
+    onChange({ id: items.length ? items[0].instanceId : null, name: "next" });
   };
 
   var remove = function remove() {
@@ -545,7 +553,8 @@ var multipleHOC = function multipleHOC(_ref) {
     if (mOptions.queue) {
       items.shift();
       // add time to remove the previous instance before drawing the next one
-      setTimeout(next, 0);
+      //setTimeout(next, 0);
+      next();
     } else {
       removeItem(instanceId);
     }
@@ -557,7 +566,7 @@ var multipleHOC = function multipleHOC(_ref) {
       items[i].cancelled = true;
     }
     items.length = 0;
-    current(null);
+    onChange({ id: null, name: "removeAll" });
   };
 
   var setPauseState = function setPauseState(pause, instanceId) {
@@ -570,26 +579,27 @@ var multipleHOC = function multipleHOC(_ref) {
 
   var makeItem = function makeItem(itemAttrs, instanceId, spawn) {
     var resolveShow = void 0;
+    var resolveHide = void 0;
+
     var didShow = function didShow() {
       var attrs = unpackAttrs(itemAttrs);
       if (attrs.didShow) {
         attrs.didShow(instanceId);
       }
-      current(instanceId);
+      onChange({ id: instanceId, name: "didShow" });
       return resolveShow(instanceId);
     };
     var showPromise = new Promise(function (resolve) {
       return resolveShow = resolve;
     });
 
-    var resolveHide = void 0;
     var didHide = function didHide() {
       var attrs = unpackAttrs(itemAttrs);
       if (attrs.didHide) {
         attrs.didHide(instanceId);
       }
+      onChange({ id: instanceId, name: "didHide" });
       remove(instanceId);
-      current(instanceId);
       return resolveHide(instanceId);
     };
 
@@ -629,6 +639,7 @@ var multipleHOC = function multipleHOC(_ref) {
     var instanceId = spawnOpts.id || mOptions.defaultId;
     var spawn = spawnOpts.spawn || mOptions.defaultId;
     var item = makeItem(attrs, instanceId, spawn);
+    onChange({ id: instanceId, name: "show" });
     if (mOptions.queue) {
       items.push(item);
       if (items.length === 1) {
@@ -641,7 +652,6 @@ var multipleHOC = function multipleHOC(_ref) {
       } else {
         replaceItem(instanceId, item);
       }
-      current(instanceId);
     }
     return item.showPromise;
   };
@@ -653,10 +663,9 @@ var multipleHOC = function multipleHOC(_ref) {
     var item = mOptions.queue && items.length ? items[0] : findItem(instanceId);
     if (item) {
       item.hide = true;
-      current(null);
-      return item.hidePromise;
     }
-    return Promise.resolve(instanceId);
+    onChange({ id: instanceId, name: "hide" });
+    return item ? item.hidePromise : Promise.resolve(instanceId);
   };
 
   var clear = function clear() {
@@ -670,16 +679,21 @@ var multipleHOC = function multipleHOC(_ref) {
     var candidates = items.filter(function (item) {
       return item.show && item.spawn === spawn;
     });
-    document.body.classList[candidates.length ? "add" : "remove"](mOptions.bodyShowClass);
+    if (mOptions.bodyShowClass) {
+      document.body.classList[candidates.length ? "add" : "remove"](mOptions.bodyShowClass);
+    }
     return !candidates.length ? renderer(mOptions.placeholder) // placeholder because we cannot return null
-    : renderer(mOptions.element, {
+    : renderer(mOptions.holder, {
       className: attrs.position === "container" ? "pe-multiple--container" : "pe-multiple--screen"
     }, candidates.map(function (itemData) {
       return renderer(mOptions.instance, _extends$1({}, {
         key: itemData.key || itemData.instanceId,
         transitions: mOptions.transitions,
+        holder: mOptions.holder,
         show: itemData.show,
         hide: itemData.hide,
+        pause: itemData.pause,
+        unpause: itemData.unpause,
         multipleDidShow: itemData.didShow,
         multipleDidHide: itemData.didHide
       }, unpackAttrs(itemData.attrs)));

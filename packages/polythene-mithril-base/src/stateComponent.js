@@ -22,9 +22,9 @@ export const StateComponent = ({
     );
     const initialState = getInitialState(protoState, stream);
     vnode.state = initialState;
-    vnode.state.redrawOnUpdate && vnode.state.redrawOnUpdate.map(() => (
+    vnode.state.redrawOnUpdate && vnode.state.redrawOnUpdate.map(() =>
       setTimeout(renderer.redraw)
-    ));
+    );
   };
 
   const render = vnode => {

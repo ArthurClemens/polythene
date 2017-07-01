@@ -10,6 +10,7 @@ export * from 'polythene-react-icon-button';
 export * from 'polythene-react-list';
 export * from 'polythene-react-list-tile';
 export * from 'polythene-react-menu';
+export * from 'polythene-react-notification';
 export * from 'polythene-react-radio-button';
 export * from 'polythene-react-raised-button';
 export * from 'polythene-react-ripple';

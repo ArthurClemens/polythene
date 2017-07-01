@@ -16,6 +16,11 @@ export const ViewComponent = ({
   
   return class extends Component {
 
+    constructor(props) {
+      super(props);
+      this.registerDOM = this.registerDOM.bind(this);
+    }
+
     componentDidMount() {
       onMount(this.createVirtualNode());
     }
@@ -33,6 +38,12 @@ export const ViewComponent = ({
       };
     }
 
+    registerDOM(el) {
+      if (!this.dom) {
+        this.dom = ReactDOM.findDOMNode(el);
+      }
+    }
+
     render() {
       const vnode = this.createVirtualNode();
       return renderer(
@@ -40,11 +51,7 @@ export const ViewComponent = ({
         Object.assign(
           {},
           createProps(vnode, { renderer, requiresKeys, keys }),
-          { ref: reactComponent => {
-            if (!this.dom) {
-              this.dom = ReactDOM.findDOMNode(reactComponent);
-            }
-          }}
+          { ref: this.registerDOM }
         ),
         [
           vnode.attrs.before,

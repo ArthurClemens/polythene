@@ -4196,14 +4196,11 @@ var reactTests = function reactTests(_ref) {
   }, {
     name: "Option: selectedTab (1) (JSX)",
     component: function component() {
-      return react.createElement(
-        Tabs$$1,
-        {
-          autofit: true,
-          selectedTab: 1
-        },
-        threeButtons
-      );
+      return react.createElement(Tabs$$1, {
+        autofit: true,
+        selectedTab: 1,
+        tabs: threeButtons
+      });
     }
   }];
 };

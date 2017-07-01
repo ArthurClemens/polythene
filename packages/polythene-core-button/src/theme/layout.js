@@ -34,7 +34,7 @@ export default (selector, componentVars) => [{
           borderWidth: "1px"
         },
         " .pe-button__label": {
-          padding: (componentVars.padding_v - 1) + "px 0",
+          padding: (componentVars.padding_v - 1) + "px 0"
         }
       }
     }

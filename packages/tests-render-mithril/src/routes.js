@@ -76,11 +76,11 @@ export default [
   //   name: "iOS spinner",
   //   tests: iOSSpinnerTests
   // },
-  // {
-  //   path: "/notification",
-  //   name: "Notification",
-  //   tests: notificationTests
-  // },
+  {
+    path: "/notification",
+    name: "Notification",
+    tests: tests.notification
+  },
   // {
   //   path: "/snackbar",
   //   name: "Notification - Snackbar",

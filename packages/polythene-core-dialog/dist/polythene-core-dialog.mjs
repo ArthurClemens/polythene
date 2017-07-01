@@ -106,10 +106,9 @@ var DEFAULT_Z = 3;
 
 var getInitialState = function getInitialState(vnode, createStream) {
   var transitioning = createStream(false);
-  var el = createStream();
   return {
     cleanUp: undefined,
-    el: el,
+    el: undefined,
     transitioning: transitioning
   };
 };
@@ -120,8 +119,8 @@ var showDialog = function showDialog(state, attrs) {
   }
   var id = state.instanceId;
   state.transitioning(true);
-  var transitions = attrs.transitions || state.transitions;
-  return show(_extends({}, attrs, transitions.show(state.el(), attrs))).then(function () {
+  var transitions = attrs.transitions;
+  return show(_extends({}, attrs, transitions.show(state.el, attrs))).then(function () {
     state.transitioning(false);
     if (attrs.multipleDidShow) {
       attrs.multipleDidShow(id); // this will call attrs.didShow
@@ -135,8 +134,8 @@ var hideDialog = function hideDialog(state, attrs) {
   }
   var id = state.instanceId;
   state.transitioning(true);
-  var transitions = attrs.transitions || state.transitions;
-  return hide(_extends({}, attrs, transitions.hide(state.el(), attrs))).then(function () {
+  var transitions = attrs.transitions;
+  return hide(_extends({}, attrs, transitions.hide(state.el, attrs))).then(function () {
     state.transitioning(false);
     if (attrs.multipleDidHide) {
       attrs.multipleDidHide(id); // this will call attrs.didHide
@@ -150,7 +149,7 @@ var onMount = function onMount(vnode) {
   }
   var state = vnode.state;
   var attrs = vnode.attrs;
-  state.el(vnode.dom);
+  state.el = vnode.dom;
 
   var handleEscape = function handleEscape(e) {
     if (attrs.fullscreen || attrs.modal) return;
@@ -185,7 +184,7 @@ var createProps = function createProps(vnode, _ref) {
   _defineProperty({
     className: [classes$1.component, attrs.fullscreen ? classes$1.fullscreen : null, attrs.backdrop ? classes$1.backdrop : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, k.onclick, function (e) {
-    if (e.target !== state.el()) {
+    if (e.target !== state.el) {
       return;
     }
     if (attrs.modal) {
@@ -236,11 +235,11 @@ var dialogInstance = Object.freeze({
 
 var ANIMATION_DURATION = .220;
 
-var show$1 = function show$$1(el, opts) {
+var show$1 = function show$$1(el, attrs) {
   return {
     el: el,
-    showDuration: opts.showDuration || ANIMATION_DURATION,
-    showDelay: opts.showDelay || 0,
+    showDuration: attrs.showDuration || ANIMATION_DURATION,
+    showDelay: attrs.showDelay || 0,
     beforeShow: function beforeShow() {
       return el.style.opacity = 0;
     },
@@ -250,11 +249,11 @@ var show$1 = function show$$1(el, opts) {
   };
 };
 
-var hide$1 = function hide$$1(el, opts) {
+var hide$1 = function hide$$1(el, attrs) {
   return {
     el: el,
-    hideDuration: opts.hideDuration || ANIMATION_DURATION,
-    hideDelay: opts.hideDelay || 0,
+    hideDuration: attrs.hideDuration || ANIMATION_DURATION,
+    hideDelay: attrs.hideDelay || 0,
     hide: function hide$$1() {
       return el.style.opacity = 0;
     }

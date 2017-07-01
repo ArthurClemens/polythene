@@ -32,13 +32,9 @@ const NavBar = () =>
 const Index = () =>
   h("div", null, [
     NavBar(),
+    h(".navbar-spacer"),
     h(List,
-      {
-        style: {
-          padding: "88px 8px 24px 8px",
-          margin: 0
-        }
-      },
+      { className: "index-list" },
       routes.map(route => (
         h(withRouter(({ history }) =>
           h(ListTile, {

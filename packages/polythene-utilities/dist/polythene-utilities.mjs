@@ -105,32 +105,36 @@ var requestAnimFrame = function () {
   };
 }();
 
-var Timer = function Timer(callback, delaySeconds) {
+var Timer = function Timer() {
   var timerId = void 0,
       startTime = void 0,
-      remaining = delaySeconds * 1000;
+      remaining = void 0,
+      cb = void 0;
 
   var stop = function stop() {
     return window.clearTimeout(timerId);
   };
 
   var pause = function pause() {
-    window.clearTimeout(timerId);
-    remaining -= new Date() - startTime;
+    return stop(), remaining -= new Date() - startTime;
   };
 
-  var start = function start() {
-    startTime = new Date();
-    window.clearTimeout(timerId);
-    timerId = window.setTimeout(callback, remaining);
+  var startTimer = function startTimer() {
+    return stop(), startTime = new Date(), timerId = window.setTimeout(cb, remaining);
   };
 
-  start();
+  var start = function start(callback, delaySeconds) {
+    return cb = callback, remaining = delaySeconds * 1000, startTimer();
+  };
+
+  var resume = function resume() {
+    return startTimer();
+  };
 
   return {
     start: start,
     pause: pause,
-    resume: start,
+    resume: resume,
     stop: stop
   };
 };

@@ -8,20 +8,6 @@ export const theme = customTheme;
 
 const MAX_Z = 5;
 
-export const getInitialState = (vnode, createStream) => {
-  const attrs = vnode.attrs;
-  const zValue = attrs.z !== undefined ? attrs.z : 1;
-  const z = createStream(zValue);
-  const zBase = createStream(zValue);
-  const tapEventsInited = createStream(false);
-  return {
-    z,
-    zBase,
-    tapEventsInited,
-    redrawOnUpdate: createStream.merge([z])
-  };
-};
-
 let tapStart,
   tapEndAll = () => {},
   downButtons = [];
@@ -29,16 +15,16 @@ let tapStart,
 subscribe(touchEndEvent, () => tapEndAll());
 
 const animateZ = (which, vnode) => {
-  const zBase = vnode.state.zBase();
+  const zBase = vnode.state.zBase;
   const increase = vnode.attrs.increase || 1;
-  let z = vnode.state.z();
-  if (which === "down" && zBase < MAX_Z) {
-    z = Math.min(zBase + increase, MAX_Z);
-  } else if (which === "up") {
-    z = Math.max(z - increase, zBase);
-  }
-  if (z !== vnode.state.z()) {
-    vnode.state.z(z);
+  const z = vnode.state.z();
+  const newZ = which === "down" && zBase < MAX_Z
+    ? Math.min(zBase + increase, MAX_Z)
+    : which === "up"
+      ? Math.max(z - increase, zBase)
+      : z;
+  if (newZ !== z) {
+    vnode.state.updateZ(newZ);
   }
 };
 
@@ -66,6 +52,38 @@ const initTapEvents = vnode => {
 const clearTapEvents = vnode =>
   vnode.dom.removeEventListener(touchStartEvent, tapStart);
 
+export const getInitialState = (vnode, createStream) => {
+  const attrs = vnode.attrs;
+  const zValue = attrs.z !== undefined ? attrs.z : 1;
+  const z = createStream(zValue);
+  const redraw = createStream(); // helper stream to call redraw whenever z changes, but not on the initial value
+  const updateZ = newZ => (
+    z(newZ),
+    redraw(newZ)
+  );
+  const tapEventsInited = createStream(false);
+  return {
+    zBase: zValue,
+    z,
+    updateZ,
+    tapEventsInited,
+    redrawOnUpdate: createStream.merge([redraw])
+  };
+};
+
+export const onMount = vnode => {
+  if (vnode.dom && !vnode.attrs.disabled && !vnode.attrs.inactive && !vnode.state.tapEventsInited()) {
+    initTapEvents(vnode);
+    vnode.state.tapEventsInited(true);
+  }
+};
+
+export const onUnMount = vnode => {
+  if (vnode.state.tapEventsInited()) {
+    clearTapEvents(vnode);
+  }
+};
+
 export const createProps = (vnode, { renderer: h, Shadow }) => {
   const attrs = vnode.attrs;
   const state = vnode.state;
@@ -85,16 +103,3 @@ export const createProps = (vnode, { renderer: h, Shadow }) => {
 };
 
 export const createContent = () => null;
-
-export const onMount = vnode => {
-  if (vnode.dom && !vnode.attrs.disabled && !vnode.attrs.inactive && !vnode.state.tapEventsInited()) {
-    initTapEvents(vnode);
-    vnode.state.tapEventsInited(true);
-  }
-};
-
-export const onUnMount = vnode => {
-  if (vnode.state.tapEventsInited()) {
-    clearTapEvents(vnode);
-  }
-};

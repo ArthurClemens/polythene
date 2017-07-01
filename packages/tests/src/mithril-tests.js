@@ -11,6 +11,7 @@ export { mithrilTests as layoutStyles } from "test-layout-styles";
 export { mithrilTests as list }         from "test-list";
 export { mithrilTests as listTile }     from "test-list-tile";
 export { mithrilTests as menu }         from "test-menu";
+export { mithrilTests as notification } from "test-notification";
 export { mithrilTests as radioButton }  from "test-radio-button";
 export { mithrilTests as raisedButton } from "test-raised-button";
 export { mithrilTests as ripple }       from "test-ripple";

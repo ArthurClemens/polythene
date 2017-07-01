@@ -1,27 +1,34 @@
 
-export const Timer = (callback, delaySeconds) => {
-  let timerId, startTime, remaining = delaySeconds * 1000;
+export const Timer = () => {
+  let timerId, startTime, remaining, cb;
 
   const stop = () =>
     window.clearTimeout(timerId);
 
-  const pause = () => {
-    window.clearTimeout(timerId);
-    remaining -= new Date() - startTime;
-  };
+  const pause = () => (
+    stop(),
+    remaining -= new Date() - startTime
+  );
 
-  const start = () => {
-    startTime = new Date();
-    window.clearTimeout(timerId);
-    timerId = window.setTimeout(callback, remaining);
-  };
+  const startTimer = () => (
+    stop(),
+    startTime = new Date(),
+    timerId = window.setTimeout(cb, remaining)
+  );
 
-  start();
+  const start = (callback, delaySeconds) => (
+    cb = callback,
+    remaining = delaySeconds * 1000,
+    startTimer()
+  );
+
+  const resume = () =>
+    startTimer();
 
   return {
     start,
     pause,
-    resume: start,
+    resume,
     stop
   };
 };

@@ -31,14 +31,15 @@ export const StateComponent = ({
       );
       const initialState = getInitialState(protoState, stream);
       this.state = initialState;
+      this.registerDOM = this.registerDOM.bind(this);
     }
     
     componentDidMount() {
       this._mounted = true;
-      onMount(this.createVirtualNode());
       this.state.redrawOnUpdate && this.state.redrawOnUpdate.map(values => (
         this._mounted && this.setState({ redrawValues: values })
       ));
+      onMount(this.createVirtualNode());
     }
 
     componentWillUnmount() {
@@ -56,6 +57,12 @@ export const StateComponent = ({
       };
     }
 
+    registerDOM(el) {
+      if (!this.dom) {
+        this.dom = ReactDOM.findDOMNode(el);
+      }
+    }
+
     _render() {
       const vnode = this.createVirtualNode();
       return renderer(
@@ -63,11 +70,7 @@ export const StateComponent = ({
         Object.assign(
           {},
           createProps(vnode, { renderer, requiresKeys, keys }),
-          { ref: reactComponent => {
-            if (!this.dom) {
-              this.dom = ReactDOM.findDOMNode(reactComponent);
-            }
-          }}
+          { ref: this.registerDOM }
         ),
         [
           vnode.attrs.before,

@@ -6,11 +6,11 @@ const listeners = {};
 export const throttle = (func, s = 0.05, context = window) => {
   let wait = false;
   return (...args) => {
-    const later = () => { func.apply(context, args); };
+    const later = () => func.apply(context, args);
     if (!wait) {
       later();
       wait = true;
-      setTimeout(() => { wait = false; }, s);
+      setTimeout(() => wait = false, s);
     }
   };
 };
@@ -34,9 +34,7 @@ export const emit = (eventName, event) => {
   if (!listeners[eventName]) {
     return;
   }
-  listeners[eventName].forEach((listener) => {
-    listener(event);
-  });
+  listeners[eventName].forEach(listener => listener(event));
 };
 
 window.addEventListener("resize",      e => emit("resize", e));

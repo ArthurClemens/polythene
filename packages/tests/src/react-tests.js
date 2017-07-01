@@ -11,6 +11,7 @@ export { reactTests as layoutStyles } from "test-layout-styles";
 export { reactTests as list }         from "test-list";
 export { reactTests as listTile }     from "test-list-tile";
 export { reactTests as menu }         from "test-menu";
+export { reactTests as notification } from "test-notification";
 export { reactTests as radioButton }  from "test-radio-button";
 export { reactTests as raisedButton } from "test-raised-button";
 export { reactTests as ripple }       from "test-ripple";

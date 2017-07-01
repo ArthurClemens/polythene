@@ -11,10 +11,9 @@ const DEFAULT_Z = 3;
 
 export const getInitialState = (vnode, createStream) => {
   const transitioning = createStream(false);
-  const el = createStream();
   return {
     cleanUp: undefined,
-    el,
+    el:      undefined,
     transitioning
   };
 };
@@ -25,10 +24,10 @@ const showDialog = (state, attrs) => {
   }
   const id = state.instanceId;
   state.transitioning(true);
-  const transitions = attrs.transitions || state.transitions;
+  const transitions = attrs.transitions;
   return show(Object.assign({},
     attrs,
-    transitions.show(state.el(), attrs)
+    transitions.show(state.el, attrs)
   )).then(() => {
     state.transitioning(false);
     if (attrs.multipleDidShow) {
@@ -43,10 +42,10 @@ const hideDialog = (state, attrs) => {
   }
   const id = state.instanceId;
   state.transitioning(true);
-  const transitions = attrs.transitions || state.transitions;
+  const transitions = attrs.transitions;
   return hide(Object.assign({},
     attrs,
-    transitions.hide(state.el(), attrs)
+    transitions.hide(state.el, attrs)
   )).then(() => {
     state.transitioning(false);
     if (attrs.multipleDidHide) {
@@ -61,7 +60,7 @@ export const onMount = vnode => {
   }
   const state = vnode.state;
   const attrs = vnode.attrs;
-  state.el(vnode.dom);
+  state.el = vnode.dom;
  
   const handleEscape = e => {
     if (attrs.fullscreen || attrs.modal) return;
@@ -104,7 +103,7 @@ export const createProps = (vnode, { keys: k }) => {
       ].join(" "),
       // click backdrop: close dialog
       [k.onclick]: e => {
-        if (e.target !== state.el()) {
+        if (e.target !== state.el) {
           return;
         }
         if (attrs.modal) {

@@ -1,17 +1,17 @@
 const ANIMATION_DURATION = .220;
 
-const show = (el, opts) => ({
+const show = (el, attrs) => ({
   el,
-  showDuration: opts.showDuration || ANIMATION_DURATION,
-  showDelay:    opts.showDelay || 0,
+  showDuration: attrs.showDuration || ANIMATION_DURATION,
+  showDelay:    attrs.showDelay || 0,
   beforeShow:   () => el.style.opacity = 0,
   show:         () => el.style.opacity = 1,
 });
 
-const hide = (el, opts) => ({
+const hide = (el, attrs) => ({
   el,
-  hideDuration: opts.hideDuration || ANIMATION_DURATION,
-  hideDelay:    opts.hideDelay || 0,
+  hideDuration: attrs.hideDuration || ANIMATION_DURATION,
+  hideDelay:    attrs.hideDelay || 0,
   hide:         () => el.style.opacity = 0
 });
 

@@ -383,6 +383,7 @@ var StateComponent = function StateComponent(_ref) {
       });
       var initialState = getInitialState(protoState, stream);
       _this.state = initialState;
+      _this.registerDOM = _this.registerDOM.bind(_this);
       return _this;
     }
 
@@ -392,10 +393,10 @@ var StateComponent = function StateComponent(_ref) {
         var _this2 = this;
 
         this._mounted = true;
-        onMount(this.createVirtualNode());
         this.state.redrawOnUpdate && this.state.redrawOnUpdate.map(function (values) {
           return _this2._mounted && _this2.setState({ redrawValues: values });
         });
+        onMount(this.createVirtualNode());
       }
     }, {
       key: "componentWillUnmount",
@@ -415,16 +416,17 @@ var StateComponent = function StateComponent(_ref) {
         };
       }
     }, {
+      key: "registerDOM",
+      value: function registerDOM(el) {
+        if (!this.dom) {
+          this.dom = ReactDOM.findDOMNode(el);
+        }
+      }
+    }, {
       key: "_render",
       value: function _render() {
-        var _this3 = this;
-
         var vnode = this.createVirtualNode();
-        return renderer(component || getElement(vnode), _extends$1({}, createProps(vnode, { renderer: renderer, requiresKeys: requiresKeys, keys: keys }), { ref: function ref(reactComponent) {
-            if (!_this3.dom) {
-              _this3.dom = ReactDOM.findDOMNode(reactComponent);
-            }
-          } }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, requiresKeys: requiresKeys, keys: keys }), vnode.attrs.after]);
+        return renderer(component || getElement(vnode), _extends$1({}, createProps(vnode, { renderer: renderer, requiresKeys: requiresKeys, keys: keys }), { ref: this.registerDOM }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, requiresKeys: requiresKeys, keys: keys }), vnode.attrs.after]);
       }
     }, {
       key: "render",
@@ -470,10 +472,13 @@ var ViewComponent = function ViewComponent(_ref) {
   return function (_Component) {
     _inherits$2(_class, _Component);
 
-    function _class() {
+    function _class(props) {
       _classCallCheck$2(this, _class);
 
-      return _possibleConstructorReturn$2(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
+      var _this = _possibleConstructorReturn$2(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, props));
+
+      _this.registerDOM = _this.registerDOM.bind(_this);
+      return _this;
     }
 
     _createClass$2(_class, [{
@@ -497,16 +502,17 @@ var ViewComponent = function ViewComponent(_ref) {
         };
       }
     }, {
+      key: "registerDOM",
+      value: function registerDOM(el) {
+        if (!this.dom) {
+          this.dom = ReactDOM.findDOMNode(el);
+        }
+      }
+    }, {
       key: "render",
       value: function render() {
-        var _this2 = this;
-
         var vnode = this.createVirtualNode();
-        return renderer(component || getElement(vnode), _extends$2({}, createProps(vnode, { renderer: renderer, requiresKeys: requiresKeys$1, keys: keys }), { ref: function ref(reactComponent) {
-            if (!_this2.dom) {
-              _this2.dom = ReactDOM.findDOMNode(reactComponent);
-            }
-          } }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, requiresKeys: requiresKeys$1, keys: keys }), vnode.attrs.after]);
+        return renderer(component || getElement(vnode), _extends$2({}, createProps(vnode, { renderer: renderer, requiresKeys: requiresKeys$1, keys: keys }), { ref: this.registerDOM }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, requiresKeys: requiresKeys$1, keys: keys }), vnode.attrs.after]);
       }
     }]);
 

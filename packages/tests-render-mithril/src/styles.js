@@ -22,6 +22,4 @@ export const rules = {
   resultData: ".flex.flex-column.flex-row-l.mv3",
   resultDataRendered: ".result.relative.flex-none.flex-l.flex-one.ma3.minh4",
   content: ".component-result.relative.w-100",
-  resultDataRaw: ".flex-none.flex-l.flex-one.ma3",
-  resultDataRawHtml: ".generated-html.prewrap.relative.light-silver.h-100"
 };

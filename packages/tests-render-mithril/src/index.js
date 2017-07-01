@@ -16,25 +16,20 @@ const TITLE = "Polythene components for Mithril";
 const navBar = () =>
   h(css.headerRow, h(Toolbar,
     {
-      style: {
-        backgroundColor: "rgba(255,255,255,.93)"
-      }
+      style: { backgroundColor: "rgba(255,255,255,.93)" }
     },
     m("span", TITLE)
   ));
 
 const index = {
-  oncreate: () => 
-    document.title = TITLE,
+  oncreate: () => document.title = TITLE,
   view: () =>
     [
       navBar(),
+      h(".navbar-spacer"),
       h(List,
-        {
-          style: {
-            padding: "88px 8px 24px 8px"
-          }
-        }, routes.map(route => (
+        { className: "index-list" },
+        routes.map(route => (
           h(ListTile, {
             title: route.name,
             url: {

@@ -16,9 +16,10 @@ export const DialogInstance = StateComponent(Object.assign(
 DialogInstance.displayName = "DialogInstance";
 
 const options = {
+  name:          "dialog",
   bodyShowClass: classes.open,
   defaultId:     "default_dialog",
-  element:       `div.${classes.holder}`,
+  holder:        `div.${classes.holder}`,
   instance:      DialogInstance,
   placeholder:   `span.${classes.placeholder}`,
   transitions

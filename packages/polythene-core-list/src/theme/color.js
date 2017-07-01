@@ -1,6 +1,6 @@
 const style = (scopes, selector, componentVars, tint) => [{
   [scopes.map(s => s + selector).join(",")]: {
-    backgroundColor: componentVars["color_" + tint + "_background"] || "initial",
+    componentVars["color_" + tint + "_background"] && backgroundColor: componentVars["color_" + tint + "_background"],
 
     ["& + .pe-list"]: {
       borderTopColor: componentVars["color_" + tint + "_border"]
