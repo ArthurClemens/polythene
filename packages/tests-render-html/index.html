@@ -37,7 +37,7 @@
         m("h2", "Polythene for Mithril HTML Test"),
         m(".row",
           [
-            m("h6", "Button"),
+            m("h6", "Raised button"),
             m(polythene.RaisedButton, {
               label: "Button"
             })
@@ -45,10 +45,28 @@
         ),
         m(".row", 
           [
-            m("h6", "Themed button"),
+            m("h6", "Regular button"),
+            m(polythene.Button, {
+              label: "Button"
+            })
+          ]
+        ),
+        m(".row", 
+          [
+            m("h6", "Themed regular button"),
             m(polythene.Button, {
               label: "Button",
               className: "polythene-themed-button"
+            })
+          ]
+        ),
+        m(".row",
+          [
+            m("h6", "FAB"),
+            m(polythene.FAB, {
+              icon: {
+                svg: { content: SVG }
+              }
             })
           ]
         ),
@@ -65,16 +83,6 @@
             m("h6", "Switch"),
             m(polythene.Switch, {
               label: "Label"
-            })
-          ]
-        ),
-        m(".row",
-          [
-            m("h6", "FAB"),
-            m(polythene.FAB, {
-              icon: {
-                svg: { content: SVG }
-              }
             })
           ]
         ),
@@ -102,7 +110,7 @@
               label: "Show dialog",
               events: {
                 onclick: () => polythene.Dialog.show({
-                  /* note the Dialog component as last element in the app */
+                  /* note the Dialog component is below the other elements in the app */
                   title: "Hello",
                   body: "Click outside to close",
                   backdrop: true
@@ -111,7 +119,22 @@
             })
           ]
         ),
-        m(polythene.Dialog)
+        m(".row",
+          [
+            m("h6", "Notification"),
+            m(polythene.RaisedButton, {
+              label: "Show notification",
+              events: {
+                onclick: () => polythene.Notification.show({
+                  /* note the Dialog component is below the other elements in the app */
+                  title: "Hello"
+                })
+              }
+            })
+          ]
+        ),
+        m(polythene.Dialog),
+        m(polythene.Notification)
       ])
   };
 
