@@ -22,6 +22,15 @@ An example project setup is available at [polythene-mithril-rewrite-branch-start
 
 Polythene is now a monorepo. Components are located inside the "packages" directory.
 
+
+Install Lerna:
+
+```
+npm install -g lerna
+```
+
+Get the rewrite branch:
+
 ```
 git clone https://github.com/ArthurClemens/polythene.git
 cd polythene
