@@ -1,6 +1,5 @@
 {
   "scripts": {
-    "preinstall": "lerna init",
     "postinstall": "lerna bootstrap",
     "lint": "eslint . --cache",
     "build": "lerna clean --yes && lerna bootstrap && lerna run build",
