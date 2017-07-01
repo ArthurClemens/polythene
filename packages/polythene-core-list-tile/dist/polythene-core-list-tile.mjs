@@ -246,7 +246,7 @@ var style = function style(scopes, selector, componentVars, tint) {
     return s + selector;
   }).join(","), {
     color: componentVars["color_" + tint + "_title"],
-    backgroundColor: componentVars["color_" + tint + "_background"] || "initial",
+    backgroundColor: componentVars["color_" + tint + "_background"],
 
     ".pe-list__header": {
       color: componentVars["color_" + tint + "_list_header"],

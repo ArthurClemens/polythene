@@ -1,7 +1,7 @@
 const style = (scopes, selector, componentVars, tint) => [{
   [scopes.map(s => s + selector).join(",")]: {
     color:           componentVars["color_" + tint + "_title"],
-    componentVars["color_" + tint + "_background"] && backgroundColor: componentVars["color_" + tint + "_background"],
+    backgroundColor: componentVars["color_" + tint + "_background"],
 
     ".pe-list__header": {
       color: componentVars["color_" + tint + "_list_header"],

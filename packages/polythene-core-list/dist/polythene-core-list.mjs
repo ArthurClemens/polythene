@@ -82,7 +82,7 @@ var style = function style(scopes, selector, componentVars, tint) {
   return [_defineProperty$1({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), (_scopes$map$join = {
-    backgroundColor: componentVars["color_" + tint + "_background"] || ""
+    backgroundColor: componentVars["color_" + tint + "_background"]
 
   }, _defineProperty$1(_scopes$map$join, "& + .pe-list", {
     borderTopColor: componentVars["color_" + tint + "_border"]

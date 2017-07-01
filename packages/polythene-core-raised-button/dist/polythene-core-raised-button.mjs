@@ -162,7 +162,7 @@ var getInitialState = function getInitialState(vnode, createStream) {
   var attrs = vnode.attrs;
   var zValue = attrs.z !== undefined ? attrs.z : 1;
   var z = createStream(zValue);
-  var redraw = createStream();
+  var redraw = createStream(); // helper stream to call redraw whenever z changes, but not on the initial value
   var updateZ = function updateZ(newZ) {
     return z(newZ), redraw(newZ);
   };

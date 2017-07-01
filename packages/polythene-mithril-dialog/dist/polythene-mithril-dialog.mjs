@@ -18,6 +18,7 @@ var DialogInstance = StateComponent(_extends({}, coreDialogInstance, {
 DialogInstance.displayName = "DialogInstance";
 
 var options = {
+  name: "dialog",
   bodyShowClass: classes.open,
   defaultId: "default_dialog",
   holder: "div." + classes.holder,
