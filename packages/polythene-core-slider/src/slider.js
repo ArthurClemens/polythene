@@ -326,7 +326,7 @@ export const getInitialState = (vnode, createStream) => {
     rangeWidth: 0,
     rangeOffset: 0,
     clickOffset: 0,
-    redrawOnUpdate: createStream.merge([state.isActive, state.value])
+    redrawOnUpdate: createStream.merge([isActive, value])
   };
 };
 

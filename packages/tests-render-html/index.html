@@ -13,7 +13,7 @@
   padding: 16px;
 }
 .row {
-  padding: 16px 0;
+  padding: 0 0 16px 0;
 }
 .row + .row {
   margin: 1rem 0 0 0;
@@ -123,10 +123,22 @@
           [
             m("h6", "Notification"),
             m(polythene.RaisedButton, {
-              label: "Show notification",
+              label: "Show Notification",
               events: {
                 onclick: () => polythene.Notification.show({
-                  /* note the Dialog component is below the other elements in the app */
+                  title: "Hello"
+                })
+              }
+            })
+          ]
+        ),
+        m(".row",
+          [
+            m("h6", "Snackbar"),
+            m(polythene.RaisedButton, {
+              label: "Show Snackbar",
+              events: {
+                onclick: () => polythene.Snackbar.show({
                   title: "Hello"
                 })
               }
@@ -134,6 +146,7 @@
           ]
         ),
         m(polythene.Dialog),
+        m(polythene.Snackbar),
         m(polythene.Notification)
       ])
   };

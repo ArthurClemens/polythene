@@ -27,7 +27,6 @@ var typographyStyles = [{
   " h1 small, h2 small, h3 small, h4 small, h5 small, h6 small": {
     "font-weight": vars.font_weight_normal,
     "line-height": vars.line_height,
-    "letter-spacing": "-0.02em",
     "font-size": "0.6em"
   }
 }, {
@@ -68,7 +67,6 @@ var typographyStyles = [{
     "font-size": "20px",
     "font-weight": vars.font_weight_medium,
     "line-height": "1",
-    "letter-spacing": "-0.02em",
     "margin-top": "24px",
     "margin-bottom": "16px"
   }
@@ -77,7 +75,6 @@ var typographyStyles = [{
     "font-size": "16px",
     "font-weight": vars.font_weight_normal,
     "line-height": "24px",
-    "letter-spacing": "0.04em",
     "margin-top": "24px",
     "margin-bottom": "16px"
   }
@@ -91,7 +88,6 @@ var typographyStyles = [{
     "font-size": fontSize + "px",
     "font-weight": vars.font_weight_normal,
     "line-height": "24px",
-    "letter-spacing": "0",
     "margin-bottom": "16px"
   },
   " blockquote": {
@@ -100,15 +96,13 @@ var typographyStyles = [{
     "font-weight": vars.font_weight_normal,
     "font-style": "italic",
     "line-height": vars.line_height,
-    "letter-spacing": "0.08em",
     "margin-top": "24px",
     "margin-bottom": "16px"
   },
   " ul, ol": {
     "font-size": fontSize + "px",
     "font-weight": vars.font_weight_normal,
-    "line-height": "24px",
-    "letter-spacing": 0
+    "line-height": "24px"
   },
   " b, strong": {
     "font-weight": vars.font_weight_medium
