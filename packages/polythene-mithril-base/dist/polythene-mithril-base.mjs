@@ -251,9 +251,16 @@ var StateComponent = function StateComponent(_ref) {
     var protoState = _extends({}, vnode);
     var initialState = getInitialState(protoState, stream);
     vnode.state = initialState;
+    vnode._mounted = false;
+
     vnode.state.redrawOnUpdate && vnode.state.redrawOnUpdate.map(function () {
-      return setTimeout(renderer.redraw);
+      return vnode._mounted && setTimeout(renderer.redraw);
     });
+  };
+
+  var oncreate = function oncreate(vnode) {
+    onMount(vnode);
+    vnode._mounted = true;
   };
 
   var render = function render(vnode) {
@@ -263,7 +270,7 @@ var StateComponent = function StateComponent(_ref) {
   return {
     view: view || render,
     oninit: oninit,
-    oncreate: onMount,
+    oncreate: oncreate,
     onremove: onUnMount
   };
 };

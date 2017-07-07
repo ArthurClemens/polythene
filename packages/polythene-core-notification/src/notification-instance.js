@@ -32,14 +32,14 @@ const stopTimer = state => {
 
 const prepareShow = (state, attrs) => {
   if (!state.containerEl) {
-    state.containerEl = document.querySelector(attrs.containerSelector || attrs.holder);
+    // attrs.holderSelector is passed as option to Multiple
+    state.containerEl = document.querySelector(attrs.containerSelector || attrs.holderSelector);
   }
   if (!state.containerEl) {
-    console.error("No containerEl found");
+    console.error("No container element found"); // eslint-disable-line no-console
   }
-  if (attrs.containerSelector) {
-    const holderEl = state.containerEl.querySelector(attrs.holder);
-    holderEl.classList.add(classes.hasContainer);
+  if (attrs.containerSelector && state.containerEl) {
+    state.containerEl.classList.add(classes.hasContainer);
   }
 };
 
@@ -50,11 +50,18 @@ const showInstance = (state, attrs) => {
   state.transitioning(true);
   stopTimer(state);
   prepareShow(state, attrs);
-  const id = state.instanceId;
+  const id = attrs.instanceId;
   const transitions = attrs.transitions;
   return show(Object.assign({},
     attrs,
-    transitions.show(state.containerEl, attrs)
+    transitions.show(Object.assign(
+      {},
+      attrs,
+      {
+        containerEl: state.containerEl,
+        el: state.el,
+      }
+    ))
   )).then(() => {
     if (attrs.multipleDidShow) {
       attrs.multipleDidShow(id); // this will call attrs.didShow
@@ -71,8 +78,8 @@ const showInstance = (state, attrs) => {
         hideInstance(state, attrs);
       }, timeoutSeconds);
     }
-    state.transitioning(false);
     state.visible(true);
+    state.transitioning(false);
   });
 };
 
@@ -82,17 +89,24 @@ const hideInstance = (state, attrs) => {
   }
   state.transitioning(true);
   stopTimer(state);
-  const id = state.instanceId;
+  const id = attrs.instanceId;
   const transitions = attrs.transitions;
   return hide(Object.assign({},
     attrs,
-    transitions.hide(state.containerEl, attrs)
+    transitions.hide(Object.assign(
+      {},
+      attrs,
+      {
+        containerEl: state.containerEl,
+        el: state.el,
+      }
+    ))
   )).then(() => {
     if (attrs.multipleDidHide) {
       attrs.multipleDidHide(id); // this will call attrs.didHide
     }
-    state.transitioning(false);
     state.visible(false);
+    state.transitioning(false);
   });
 };
 
@@ -112,12 +126,11 @@ export const getInitialState = (vnode, createStream) => {
   const mounted = createStream(false);
   const visible = createStream(false);
   return {
-    cleanUp:       undefined,
-    containerEl:   undefined,
-    dismissEl:     undefined,
-    timer:         undefined,
-    el:            undefined,
-    timer:         new Timer(),
+    cleanUp:        undefined,
+    containerEl:    undefined,
+    dismissEl:      undefined,
+    el:             undefined,
+    timer:          new Timer(),
     paused,
     transitioning,
     visible,
@@ -127,17 +140,18 @@ export const getInitialState = (vnode, createStream) => {
 };
 
 export const onMount = vnode => {
-  if (!vnode.dom) {
+  const dom = vnode.dom;
+  if (!dom) {
     return;
   }
   const state = vnode.state;
   const attrs = vnode.attrs;
-  state.el = vnode.dom;
+  state.el = dom;
   const titleEl = state.el.querySelector(`.${classes.title}`);
   if (titleEl) {
     setTitleStyles(titleEl);
   }
-  if (attrs.show && !state.visible()) {
+  if (attrs.showInstance && !state.visible()) {
     showInstance(state, attrs);
   }
   state.mounted(true);
@@ -170,19 +184,16 @@ export const createProps = (vnode, { keys: k }) => {
 export const createContent = (vnode, { renderer: h }) => {
   const state = vnode.state;
   const attrs = vnode.attrs;
-
   if (state.mounted() && !state.transitioning()) {
-    if (attrs.hide && state.visible()) {
-      setTimeout(() => hideInstance(state, attrs));
-      // hideInstance(state, attrs);
-    } else if (attrs.show && !state.visible()) {
-      setTimeout(() => showInstance(state, attrs));
-      // showInstance(state, attrs);
+    if (attrs.hideInstance && state.visible()) {
+      hideInstance(state, attrs);
+    } else if (attrs.showInstance && !state.visible()) {
+      showInstance(state, attrs);
     }
   }
-  if (attrs.pause && !state.paused()) {
+  if (attrs.pauseInstance && !state.paused()) {
     pauseInstance(state, attrs);
-  } else if (attrs.unpause && state.paused()) {
+  } else if (attrs.unpauseInstance && state.paused()) {
     unpauseInstance(state, attrs);
   }
 

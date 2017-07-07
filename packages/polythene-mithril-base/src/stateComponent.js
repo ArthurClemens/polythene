@@ -22,9 +22,16 @@ export const StateComponent = ({
     );
     const initialState = getInitialState(protoState, stream);
     vnode.state = initialState;
-    vnode.state.redrawOnUpdate && vnode.state.redrawOnUpdate.map(() =>
-      setTimeout(renderer.redraw)
-    );
+    vnode._mounted = false;
+
+    vnode.state.redrawOnUpdate && vnode.state.redrawOnUpdate.map(() => (
+      vnode._mounted && setTimeout(renderer.redraw)
+    ));
+  };
+
+  const oncreate = vnode => {
+    onMount(vnode);
+    vnode._mounted = true;
   };
 
   const render = vnode => {
@@ -41,8 +48,8 @@ export const StateComponent = ({
 
   return {
     view: view || render,
-    oninit: oninit,
-    oncreate: onMount,
+    oninit,
+    oncreate,
     onremove: onUnMount
   };
 };

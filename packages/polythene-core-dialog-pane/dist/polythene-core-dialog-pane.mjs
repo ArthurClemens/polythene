@@ -252,12 +252,12 @@ var getInitialState = function getInitialState(vnode, createStream) {
 };
 
 var onMount = function onMount(vnode) {
-  if (!vnode.dom) {
+  var dom = vnode.dom;
+  if (!dom) {
     return;
   }
   var state = vnode.state;
-  // const attrs = vnode.attrs;
-  state.el(vnode.dom);
+  state.el(dom);
 
   state.scrollEl(vnode.dom.querySelector("." + classes.body));
   state.footerEl(vnode.dom.querySelector("." + classes.footer));

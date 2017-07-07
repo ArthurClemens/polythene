@@ -638,36 +638,6 @@ var createSlider = function createSlider(vnode, _ref) {
   }) : null]);
 };
 
-var createProps = function createProps(vnode, _ref7) {
-  var k = _ref7.keys;
-
-  var state = vnode.state;
-  var attrs = vnode.attrs;
-  if (attrs.value !== undefined) {
-    if (state.previousValue() !== attrs.value) {
-      state.previousValue(attrs.value);
-      setTimeout(function () {
-        return state.setValue(state.previousValue());
-      }, 0); // perform in next tick to play nice with React
-    }
-  }
-  var hasTicks = attrs.ticks !== undefined && attrs.ticks !== false;
-  var interactiveTrack = attrs.interactiveTrack !== undefined ? attrs.interactiveTrack : true;
-  return _extends({}, filterSupportedAttributes(attrs), {
-    className: [classes.component, attrs.disabled ? classes.isDisabled : null, attrs.pin ? classes.hasPin : null, interactiveTrack ? classes.hasTrack : null, state.isActive() ? classes.isActive : null, state.hasFocus() ? classes.hasFocus : null, state.fraction() === 0 ? classes.isAtMin : null, hasTicks ? classes.hasTicks : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
-  });
-};
-
-var createContent = function createContent(vnode, _ref8) {
-  var h = _ref8.renderer,
-      k = _ref8.keys;
-
-  var attrs = vnode.attrs;
-  var hasTicks = attrs.ticks !== undefined && attrs.ticks !== false;
-  var interactiveTrack = attrs.interactiveTrack !== undefined ? attrs.interactiveTrack : true;
-  return createSlider(vnode, { h: h, k: k, hasTicks: hasTicks, interactiveTrack: interactiveTrack });
-};
-
 var getInitialState = function getInitialState(vnode, createStream) {
   var attrs = vnode.attrs;
 
@@ -729,17 +699,15 @@ var getInitialState = function getInitialState(vnode, createStream) {
     rangeWidth: 0,
     rangeOffset: 0,
     clickOffset: 0,
-    redrawOnUpdate: createStream.merge([isActive, value])
+    redrawOnUpdate: createStream.merge([state.isActive, state.value])
   };
 };
 
 var onMount = function onMount(vnode) {
   var dom = vnode.dom;
-  if (!dom) {
-    return;
-  }
   var state = vnode.state;
   var attrs = vnode.attrs;
+
   state.trackEl = dom.querySelector("." + classes.track);
   state.controlEl = dom.querySelector("." + classes.control);
   state.pinEl = dom.querySelector("." + classes.pin);
@@ -750,12 +718,42 @@ var onMount = function onMount(vnode) {
   }
 };
 
+var createProps = function createProps(vnode, _ref7) {
+  var k = _ref7.keys;
+
+  var state = vnode.state;
+  var attrs = vnode.attrs;
+  if (attrs.value !== undefined) {
+    if (state.previousValue() !== attrs.value) {
+      state.previousValue(attrs.value);
+      setTimeout(function () {
+        return state.setValue(state.previousValue());
+      }, 0); // perform in next tick to play nice with React
+    }
+  }
+  var hasTicks = attrs.ticks !== undefined && attrs.ticks !== false;
+  var interactiveTrack = attrs.interactiveTrack !== undefined ? attrs.interactiveTrack : true;
+  return _extends({}, filterSupportedAttributes(attrs), {
+    className: [classes.component, attrs.disabled ? classes.isDisabled : null, attrs.pin ? classes.hasPin : null, interactiveTrack ? classes.hasTrack : null, state.isActive() ? classes.isActive : null, state.hasFocus() ? classes.hasFocus : null, state.fraction() === 0 ? classes.isAtMin : null, hasTicks ? classes.hasTicks : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+  });
+};
+
+var createContent = function createContent(vnode, _ref8) {
+  var h = _ref8.renderer,
+      k = _ref8.keys;
+
+  var attrs = vnode.attrs;
+  var hasTicks = attrs.ticks !== undefined && attrs.ticks !== false;
+  var interactiveTrack = attrs.interactiveTrack !== undefined ? attrs.interactiveTrack : true;
+  return createSlider(vnode, { h: h, k: k, hasTicks: hasTicks, interactiveTrack: interactiveTrack });
+};
+
 var slider = Object.freeze({
 	theme: theme,
-	createProps: createProps,
-	createContent: createContent,
 	getInitialState: getInitialState,
-	onMount: onMount
+	onMount: onMount,
+	createProps: createProps,
+	createContent: createContent
 });
 
 export { slider as coreSlider, classes, vars$1 as vars };

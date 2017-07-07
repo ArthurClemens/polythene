@@ -227,7 +227,7 @@ var onMount = function onMount(vnode) {
 
 var onUnMount = function onUnMount(_ref2) {
   var state = _ref2.state;
-  return state.cleanUp();
+  return state.cleanUp && state.cleanUp();
 };
 
 var ripple = Object.freeze({

@@ -133,6 +133,78 @@ const sortByLargestWidth = (a, b) =>
       ? -1
       : 0;
 
+export const getInitialState = (vnode, createStream) => {
+  const attrs = vnode.attrs;
+  const selectedTabIndex = createStream(vnode.attrs.selectedTab || 0);
+  const registerTabButton = state => (index, data) => state.tabs[index] = data;
+  const registerScrollButton = state => (position, dom) => state.scrollButtons[position] = dom;
+  return {
+    tabsEl:              undefined,
+    scrollerEl:          undefined,
+    tabs:                [], // {data, el}
+    tabRow:              undefined,
+    tabIndicatorEl:      undefined,
+    selectedTabIndex,
+    previousSelectedTab: undefined,
+    managesScroll:       attrs.scrollable && !isTouch,
+    scrollButtonStates: {
+      start: false,
+      end: false
+    },
+    scrollButtons: {
+      start: undefined,
+      end: undefined
+    },
+    registerTabButton,
+    registerScrollButton,
+    cleanUp: undefined, // set in onMount
+    redrawOnUpdate: createStream.merge([selectedTabIndex])
+  };
+};
+
+export const onMount = vnode => {
+  const dom = vnode.dom;
+  const state = vnode.state;
+  const attrs = vnode.attrs;
+
+  state.tabsEl = dom;
+  if (!attrs.hideIndicator) {
+    state.tabIndicatorEl = dom.querySelector(`.${classes.indicator}`);
+  }
+  state.scrollerEl = dom.querySelector(`.${classes.tabRow}`);
+
+  // A promise can't resolve during the oncreate loop
+  // The Mithril draw loop is synchronous - there is no delay between one this oncreate and the tab button's oncreate
+  whenCreateDone().then(() => {
+    if (state.tabs && attrs.largestWidth) {
+      const widths = state.tabs.map(tabData => tabData.dom.getBoundingClientRect().width);
+      const largest = widths.sort(sortByLargestWidth)[0];
+      state.tabs.forEach(tabData => tabData.dom.style.width = largest + "px");
+    }
+    // Align first scrollable tab to title
+    if (attrs.scrollable) {
+      alignToTitle(state);
+    }
+    // Handle scroll
+    if (state.managesScroll) {
+      createRightButtonOffset(state);
+    }
+    setSelectedTab(state, attrs, state.selectedTabIndex(), false);
+  });
+
+  const onResize = () =>
+    setSelectedTab(state, attrs, state.selectedTabIndex(), false);
+
+  subscribe("resize", onResize),
+
+  state.cleanUp = () => (
+    unsubscribe("resize", onResize)
+  );
+};
+
+export const onUnMount = ({ state }) =>
+  state.cleanUp();
+
 export const createProps = (vnode, { keys: k }) => {
   const state = vnode.state;
   const attrs = vnode.attrs;
@@ -268,79 +340,3 @@ export const createContent = (vnode, { renderer: h, keys: k, Tab, ScrollButton }
   ];
 };
 
-export const getInitialState = (vnode, createStream) => {
-  const attrs = vnode.attrs;
-  const selectedTabIndex = createStream(vnode.attrs.selectedTab || 0);
-  const registerTabButton = state => (index, data) => state.tabs[index] = data;
-  const registerScrollButton = state => (position, dom) => state.scrollButtons[position] = dom;
-  return {
-    tabsEl:              undefined,
-    scrollerEl:          undefined,
-    tabs:                [], // {data, el}
-    tabRow:              undefined,
-    tabIndicatorEl:      undefined,
-    selectedTabIndex,
-    previousSelectedTab: undefined,
-    managesScroll:       attrs.scrollable && !isTouch,
-    scrollButtonStates: {
-      start: false,
-      end: false
-    },
-    scrollButtons: {
-      start: undefined,
-      end: undefined
-    },
-    registerTabButton,
-    registerScrollButton,
-    cleanUp: undefined, // set in onMount
-    redrawOnUpdate: createStream.merge([selectedTabIndex])
-  };
-};
-
-export const onMount = vnode => {
-  const dom = vnode.dom;
-  if (!dom) {
-    return;
-  }
-  const state = vnode.state;
-  const attrs = vnode.attrs;
-
-  state.tabsEl = dom;
-  if (!attrs.hideIndicator) {
-    state.tabIndicatorEl = dom.querySelector(`.${classes.indicator}`);
-  }
-  state.scrollerEl = dom.querySelector(`.${classes.tabRow}`);
-
-  // A promise can't resolve during the oncreate loop
-  // The Mithril draw loop is synchronous - there is no delay between one this oncreate and the tab button's oncreate
-  whenCreateDone().then(() => {
-    if (state.tabs && attrs.largestWidth) {
-      const widths = state.tabs.map(tabData => tabData.dom.getBoundingClientRect().width);
-      const largest = widths.sort(sortByLargestWidth)[0];
-      state.tabs.forEach(tabData => tabData.dom.style.width = largest + "px");
-    }
-    // Align first scrollable tab to title
-    if (attrs.scrollable) {
-      alignToTitle(state);
-    }
-    // Handle scroll
-    if (state.managesScroll) {
-      createRightButtonOffset(state);
-    }
-    setSelectedTab(state, attrs, state.selectedTabIndex(), false);
-  });
-
-
-  const onResize = () =>
-    setSelectedTab(state, attrs, state.selectedTabIndex(), false);
-
-  subscribe("resize", onResize),
-
-  state.cleanUp = () => (
-    unsubscribe("resize", onResize)
-  );
-
-};
-
-export const onUnMount = ({ state }) =>
-  state.cleanUp();

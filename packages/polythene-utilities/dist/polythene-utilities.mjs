@@ -116,7 +116,7 @@ var Timer = function Timer() {
   };
 
   var pause = function pause() {
-    return stop(), remaining -= new Date() - startTime;
+    return stop(), remaining -= new Date() - startTime, console.log("timer paused");
   };
 
   var startTimer = function startTimer() {

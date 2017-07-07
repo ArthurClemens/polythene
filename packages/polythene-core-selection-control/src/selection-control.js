@@ -5,6 +5,26 @@ import classes from "./classes";
 export const getElement = vnode =>
   vnode.attrs.element || "div";
 
+const sizeClasses = {
+  small:   classes.small,
+  regular: classes.regular,
+  medium:  classes.medium,
+  large:   classes.large
+};
+
+const classForSize = (size = "regular") => sizeClasses[size];
+
+const currentState = (attrs, state) => {
+  const checked = attrs.checked !== undefined
+    ? attrs.checked
+    : state.checked();
+  const selectable = attrs.selectable !== undefined
+    ? attrs.selectable(checked)
+    : false;
+  const inactive = attrs.disabled || !selectable;
+  return { checked, inactive };
+};
+
 export const getInitialState = (vnode, createStream) => {
   const attrs = vnode.attrs;
 
@@ -39,26 +59,6 @@ export const getInitialState = (vnode, createStream) => {
     onChange,
     redrawOnUpdate: createStream.merge([redrawOnChange])
   };
-};
-
-const sizeClasses = {
-  small:   classes.small,
-  regular: classes.regular,
-  medium:  classes.medium,
-  large:   classes.large
-};
-
-const classForSize = (size = "regular") => sizeClasses[size];
-
-const currentState = (attrs, state) => {
-  const checked = attrs.checked !== undefined
-    ? attrs.checked
-    : state.checked();
-  const selectable = attrs.selectable !== undefined
-    ? attrs.selectable(checked)
-    : false;
-  const inactive = attrs.disabled || !selectable;
-  return { checked, inactive };
 };
 
 export const createProps = (vnode, { keys: k }) => {

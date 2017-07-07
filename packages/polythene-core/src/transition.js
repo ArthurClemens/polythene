@@ -83,23 +83,12 @@ const transition = (opts, state) => {
       const delay = getDelay(opts, state) * 1000;
       const style = el.style;
 
-      const resetTransition = () => {
-        style.transitionDuration = "0ms";
-        style.transitionDelay = "0ms";
-      };
-
       const beforeTransition = opts.beforeShow && state === "show"
-        ? () => {
-          resetTransition();
-          opts.beforeShow();
-        }
+        ? () => opts.beforeShow()
         : null;
 
       const afterTransition = opts.afterHide && state === "hide"
-        ? () => {
-          resetTransition();
-          opts.afterHide();
-        }
+        ? () => opts.afterHide()
         : null;
 
       const applyTransition = () => {
@@ -136,10 +125,8 @@ const transition = (opts, state) => {
 
       if (beforeTransition) {
         beforeTransition();
-        setTimeout(maybeDelayTransition, 0);
-      } else {
-        maybeDelayTransition();
       }
+      maybeDelayTransition();
     });
   }
 };

@@ -74,4 +74,4 @@ export const onMount = vnode => {
 };
 
 export const onUnMount = ({ state }) =>
-  state.cleanUp();
+  state.cleanUp && state.cleanUp();

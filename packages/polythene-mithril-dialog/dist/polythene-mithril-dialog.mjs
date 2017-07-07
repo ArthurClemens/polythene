@@ -1,5 +1,5 @@
 import { StateComponent, renderer } from 'polythene-mithril-base';
-import { multipleHOC } from 'polythene-core';
+import { Multi } from 'polythene-core';
 import { classes, coreDialogInstance, transitions } from 'polythene-core-dialog';
 import { DialogPane } from 'polythene-mithril-dialog-pane';
 import { Shadow } from 'polythene-mithril-shadow';
@@ -21,16 +21,16 @@ var options = {
   name: "dialog",
   bodyShowClass: classes.open,
   defaultId: "default_dialog",
-  holder: "div." + classes.holder,
+  holderSelector: "div." + classes.holder,
   instance: DialogInstance,
   placeholder: "span." + classes.placeholder,
   transitions: transitions
 };
 
-var multiple = multipleHOC({ options: options, renderer: renderer });
-var Dialog = StateComponent(multiple);
-Object.getOwnPropertyNames(multiple).forEach(function (p) {
-  return Dialog[p] = multiple[p];
+var Multiple = Multi({ options: options, renderer: renderer });
+var Dialog = StateComponent(Multiple);
+Object.getOwnPropertyNames(Multiple).forEach(function (p) {
+  return Dialog[p] = Multiple[p];
 });
 
 Dialog.theme = coreDialogInstance.theme;

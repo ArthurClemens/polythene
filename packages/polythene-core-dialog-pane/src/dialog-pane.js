@@ -61,12 +61,12 @@ export const getInitialState = (vnode, createStream) => {
 };
 
 export const onMount = vnode => {
-  if (!vnode.dom) {
+  const dom = vnode.dom;
+  if (!dom) {
     return;
   }
   const state = vnode.state;
-  // const attrs = vnode.attrs;
-  state.el(vnode.dom);
+  state.el(dom);
 
   state.scrollEl(vnode.dom.querySelector(`.${classes.body}`));
   state.footerEl(vnode.dom.querySelector(`.${classes.footer}`));

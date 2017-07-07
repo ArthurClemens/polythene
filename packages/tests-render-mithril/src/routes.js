@@ -81,11 +81,11 @@ export default [
     name: "Notification",
     tests: tests.notification
   },
-  // {
-  //   path: "/snackbar",
-  //   name: "Notification - Snackbar",
-  //   tests: snackbarTests
-  // },
+  {
+    path: "/snackbar",
+    name: "Notification - Snackbar",
+    tests: tests.snackbar
+  },
   {
     path: "/radio-button",
     name: "Radio Button",

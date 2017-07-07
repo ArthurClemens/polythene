@@ -1,5 +1,3 @@
-import m from 'mithril';
-
 // Theme variables
 // How to change these variables for your app - see the README.
 
@@ -223,221 +221,6 @@ var findAnimationEndEvent = function findAnimationEndEvent() {
 
 var animationEndEvent = findAnimationEndEvent();
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-/*
-Helper module to manage multiple items of the same component type.
-*/
-/*
-mOpts:
-- instance
-- defaultId
-- element
-- placeholder
-- bodyShowClass
-*/
-var multiple = function multiple(mOpts) {
-
-  var items = [];
-
-  var itemIndex = function itemIndex(id) {
-    var item = findItem(id);
-    return items.indexOf(item);
-  };
-
-  var removeItem = function removeItem(id) {
-    var index = itemIndex(id);
-    if (index !== -1) {
-      items.splice(index, 1);
-    }
-  };
-
-  var replaceItem = function replaceItem(id, newItem) {
-    var index = itemIndex(id);
-    if (index !== -1) {
-      items[index] = newItem;
-    }
-  };
-
-  var findItem = function findItem(id) {
-    // traditional for loop for IE10
-    for (var i = 0; i < items.length; i++) {
-      if (items[i].instanceId === id) {
-        return items[i];
-      }
-    }
-  };
-
-  var isCancelled = function isCancelled(id) {
-    var item = findItem(id);
-    return item !== undefined ? item.cancelled : true;
-  };
-
-  var next = function next() {
-    if (items.length) {
-      items[0].show = true;
-      m.redraw();
-    }
-  };
-
-  var remove = function remove() {
-    var instanceId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : mOpts.defaultId;
-
-    if (mOpts.queue) {
-      items.shift();
-      // add time to remove the previous instance before drawing the next one
-      setTimeout(next, 0);
-    } else {
-      removeItem(instanceId);
-    }
-  };
-
-  var removeAll = function removeAll() {
-    // traditional for loop for IE10
-    for (var i = 0; i < items.length; i++) {
-      items[i].cancelled = true;
-    }
-    items.length = 0;
-    setTimeout(m.redraw);
-  };
-
-  var setPauseState = function setPauseState(pause, instanceId) {
-    var item = findItem(instanceId);
-    if (item) {
-      item.pause = pause;
-      item.unpause = !pause;
-    }
-  };
-
-  var makeItem = function makeItem(itemOpts, instanceId, spawn) {
-    var resolveShow = void 0;
-    var didShow = function didShow() {
-      if (isCancelled(instanceId)) {
-        return;
-      }
-      var opts = typeof itemOpts === "function" ? itemOpts() : itemOpts;
-      if (opts.didShow) {
-        opts.didShow(instanceId);
-      }
-      return resolveShow(instanceId);
-    };
-    var showPromise = new Promise(function (resolve) {
-      return resolveShow = resolve;
-    });
-
-    var resolveHide = void 0;
-    var didHide = function didHide() {
-      if (isCancelled(instanceId)) {
-        return;
-      }
-      var opts = typeof itemOpts === "function" ? itemOpts() : itemOpts;
-      if (opts.didHide) {
-        opts.didHide(instanceId);
-      }
-      if (mOpts.queue) {
-        remove(instanceId);
-      }
-      return resolveHide(instanceId);
-    };
-
-    var hidePromise = new Promise(function (resolve) {
-      return resolveHide = resolve;
-    });
-
-    return _extends({}, mOpts, {
-      instanceId: instanceId,
-      spawn: spawn,
-      opts: itemOpts,
-      show: mOpts.queue ? false : true,
-      cancelled: false,
-      showPromise: showPromise,
-      hidePromise: hidePromise,
-      didShow: didShow,
-      didHide: didHide
-    });
-  };
-
-  var show = function show() {
-    var opts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-    var spawnOpts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-    var instanceId = spawnOpts.id || mOpts.defaultId;
-    var spawn = spawnOpts.spawn || mOpts.defaultId;
-    var item = void 0;
-    if (mOpts.queue) {
-      item = makeItem(opts, instanceId, spawn);
-      items.push(item);
-      if (items.length === 1) {
-        next();
-      }
-    } else {
-      var storedItem = findItem(instanceId);
-      item = makeItem(opts, instanceId, spawn);
-      if (!storedItem) {
-        items.push(item);
-      } else {
-        replaceItem(instanceId, item);
-      }
-    }
-    return item.showPromise;
-  };
-
-  var hide = function hide() {
-    var spawnOpts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-    var instanceId = spawnOpts.id || mOpts.defaultId;
-    var item = mOpts.queue && items.length ? items[0] : findItem(instanceId);
-    if (item) {
-      item.hide = true;
-      return item.hidePromise;
-    }
-    return Promise.resolve(instanceId);
-  };
-
-  var clear = function clear() {
-    return removeAll();
-  };
-
-  var view = function view(_ref) {
-    var attrs = _ref.attrs;
-
-    var spawn = attrs.spawn || mOpts.defaultId;
-    var candidates = items.filter(function (item) {
-      return item.show && item.spawn === spawn;
-    });
-    document.body.classList[candidates.length ? "add" : "remove"](mOpts.bodyShowClass);
-    return !candidates.length ? m(mOpts.placeholder) // placeholder because we cannot return null
-    : m(mOpts.element, {
-      class: attrs.position === "container" ? "pe-multiple--container" : "pe-multiple--screen"
-    }, candidates.map(function (itemData) {
-      return m(mOpts.instance, _extends({}, itemData, {
-        transitions: mOpts.transitions,
-        key: itemData.key || itemData.instanceId
-      }));
-    }));
-  };
-
-  return {
-    count: function count() {
-      return items.length;
-    },
-    clear: clear,
-    show: show,
-    hide: hide,
-    remove: remove,
-    pause: function pause() {
-      var instanceId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : mOpts.defaultId;
-      return setPauseState(true, instanceId);
-    },
-    unpause: function unpause() {
-      var instanceId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : mOpts.defaultId;
-      return setPauseState(false, instanceId);
-    },
-    view: view,
-    theme: mOpts.instance.theme
-  };
-};
-
 var r = function r(acc, p) {
   return acc[p] = 1, acc;
 };
@@ -475,20 +258,13 @@ var unpackAttrs = function unpackAttrs(attrs) {
   return typeof attrs === "function" ? attrs() : attrs;
 };
 
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 /*
 Helper module to manage multiple items of the same component type.
-
-mOptions:
-- instance
-- defaultId
-- holder
-- placeholder
-- bodyShowClass
 */
 
-var multipleHOC = function multipleHOC(_ref) {
+var Multi = function Multi(_ref) {
   var mOptions = _ref.options,
       renderer = _ref.renderer;
 
@@ -508,6 +284,9 @@ var multipleHOC = function multipleHOC(_ref) {
   @param e: { id, eventName }
   */
   var onChange = function onChange(e) {
+    if (!current) {
+      console.error("Cannot set state. Did you set a root element like Dialog to show instances?"); // eslint-disable-line no-console
+    }
     current(e.id);
     emit(mOptions.name, e);
   };
@@ -552,8 +331,6 @@ var multipleHOC = function multipleHOC(_ref) {
 
     if (mOptions.queue) {
       items.shift();
-      // add time to remove the previous instance before drawing the next one
-      //setTimeout(next, 0);
       next();
     } else {
       removeItem(instanceId);
@@ -562,9 +339,6 @@ var multipleHOC = function multipleHOC(_ref) {
 
   var removeAll = function removeAll() {
     // traditional for loop for IE10
-    for (var i = 0; i < items.length; i++) {
-      items[i].cancelled = true;
-    }
     items.length = 0;
     onChange({ id: null, name: "removeAll" });
   };
@@ -574,15 +348,16 @@ var multipleHOC = function multipleHOC(_ref) {
     if (item) {
       item.pause = pause;
       item.unpause = !pause;
+      onChange({ id: instanceId, name: pause ? "pause" : "unpause" });
     }
   };
 
   var makeItem = function makeItem(itemAttrs, instanceId, spawn) {
     var resolveShow = void 0;
     var resolveHide = void 0;
+    var attrs = unpackAttrs(itemAttrs);
 
     var didShow = function didShow() {
-      var attrs = unpackAttrs(itemAttrs);
       if (attrs.didShow) {
         attrs.didShow(instanceId);
       }
@@ -594,7 +369,6 @@ var multipleHOC = function multipleHOC(_ref) {
     });
 
     var didHide = function didHide() {
-      var attrs = unpackAttrs(itemAttrs);
       if (attrs.didHide) {
         attrs.didHide(instanceId);
       }
@@ -607,12 +381,11 @@ var multipleHOC = function multipleHOC(_ref) {
       return resolveHide = resolve;
     });
 
-    return _extends$1({}, mOptions, {
+    return _extends({}, mOptions, {
       instanceId: instanceId,
       spawn: spawn,
       attrs: itemAttrs,
       show: mOptions.queue ? false : true,
-      cancelled: false,
       showPromise: showPromise,
       hidePromise: hidePromise,
       didShow: didShow,
@@ -683,17 +456,19 @@ var multipleHOC = function multipleHOC(_ref) {
       document.body.classList[candidates.length ? "add" : "remove"](mOptions.bodyShowClass);
     }
     return !candidates.length ? renderer(mOptions.placeholder) // placeholder because we cannot return null
-    : renderer(mOptions.holder, {
+    : renderer(mOptions.holderSelector, {
       className: attrs.position === "container" ? "pe-multiple--container" : "pe-multiple--screen"
     }, candidates.map(function (itemData) {
-      return renderer(mOptions.instance, _extends$1({}, {
-        key: itemData.key || itemData.instanceId,
+      return renderer(mOptions.instance, _extends({}, {
+        key: itemData.key,
+        instanceId: itemData.instanceId,
         transitions: mOptions.transitions,
-        holder: mOptions.holder,
-        show: itemData.show,
-        hide: itemData.hide,
-        pause: itemData.pause,
-        unpause: itemData.unpause,
+        holderSelector: mOptions.holderSelector,
+        className: mOptions.className,
+        showInstance: itemData.show,
+        hideInstance: itemData.hide,
+        pauseInstance: itemData.pause,
+        unpauseInstance: itemData.unpause,
         multipleDidShow: itemData.didShow,
         multipleDidHide: itemData.didHide
       }, unpackAttrs(itemData.attrs)));
@@ -796,19 +571,12 @@ var transition = function transition(opts, state) {
       var delay = getDelay(opts, state) * 1000;
       var style = el.style;
 
-      var resetTransition = function resetTransition() {
-        style.transitionDuration = "0ms";
-        style.transitionDelay = "0ms";
-      };
-
       var beforeTransition = opts.beforeShow && state === "show" ? function () {
-        resetTransition();
-        opts.beforeShow();
+        return opts.beforeShow();
       } : null;
 
       var afterTransition = opts.afterHide && state === "hide" ? function () {
-        resetTransition();
-        opts.afterHide();
+        return opts.afterHide();
       } : null;
 
       var applyTransition = function applyTransition() {
@@ -845,10 +613,8 @@ var transition = function transition(opts, state) {
 
       if (beforeTransition) {
         beforeTransition();
-        setTimeout(maybeDelayTransition, 0);
-      } else {
-        maybeDelayTransition();
       }
+      maybeDelayTransition();
     });
   }
 };
@@ -867,4 +633,4 @@ var prop = function prop(x) {
   };
 };
 
-export { variables as defaultVariables, isTouch, touchStartEvent, touchEndEvent, moveEvent, endEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, multiple, multipleHOC, show, hide, filterSupportedAttributes, unpackAttrs, prop };
+export { variables as defaultVariables, isTouch, touchStartEvent, touchEndEvent, moveEvent, endEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, Multi, show, hide, filterSupportedAttributes, unpackAttrs, prop };

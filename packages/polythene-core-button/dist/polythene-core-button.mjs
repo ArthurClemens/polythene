@@ -292,7 +292,7 @@ var onMount = function onMount(vnode) {
 };
 
 var onUnMount = function onUnMount(vnode) {
-  return vnode.state.removeEventListeners();
+  return vnode.state.removeEventListeners && vnode.state.removeEventListeners();
 };
 
 var createProps = function createProps(vnode, _ref) {
@@ -339,7 +339,7 @@ var createContent = function createContent(vnode, _ref3) {
   var children = attrs.children || vnode.children;
   var label = attrs.content ? attrs.content : attrs.label ? _typeof(attrs.label) === "object" ? attrs.label : h("div", { key: "label", className: classes.label }, attrs.label) : children ? children : null;
   var noWash = disabled || attrs.wash !== undefined && !attrs.wash;
-  return label ? h("div", (_h = {}, _defineProperty(_h, k.class, classes.content), _defineProperty(_h, "key", "button"), _defineProperty(_h, "style", attrs.style || {}), _h), [!disabled && attrs.shadowComponent // "protected" option, used by raised-button
+  return label ? h("div", (_h = {}, _defineProperty(_h, k.class, classes.content), _defineProperty(_h, "key", "button"), _defineProperty(_h, "style", attrs.style), _h), [!disabled && attrs.shadowComponent // "protected" option, used by raised-button
   ? attrs.shadowComponent : null,
   // Ripple
   disabled || noink ? null : Ripple //&& state.dom()

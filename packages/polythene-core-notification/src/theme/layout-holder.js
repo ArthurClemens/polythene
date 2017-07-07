@@ -14,10 +14,10 @@ export default (selector) => [{
 
       ".pe-multiple--screen": {
         position: "fixed",
-      },
-      ".pe-multiple--container": {
-        position: "absolute",
       }
     }
-  ]
+  ],
+  ":not(.pe-notification--container) .pe-multiple--container": {
+    position: "absolute",
+  }
 }];

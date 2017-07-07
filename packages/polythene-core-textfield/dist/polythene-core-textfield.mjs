@@ -562,17 +562,15 @@ var getInitialState = function getInitialState(vnode, createStream) {
     isDirty: isDirty,
     setFocus: setFocus,
     setValue: setValue,
-    redrawOnUpdate: createStream.merge([el, inputEl, isInvalid, isDirty])
+    redrawOnUpdate: createStream.merge([inputEl, isInvalid, isDirty])
   };
 };
 
 var onMount = function onMount(vnode) {
   var dom = vnode.dom;
-  if (!dom) {
-    return;
-  }
   var state = vnode.state;
   var attrs = vnode.attrs;
+
   state.el(dom);
   var inputType = attrs.multiline ? "textarea" : "input";
   var inputEl = dom.querySelector(inputType);

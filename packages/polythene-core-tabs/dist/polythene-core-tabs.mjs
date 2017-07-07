@@ -476,8 +476,93 @@ var sortByLargestWidth = function sortByLargestWidth(a, b) {
   return a < b ? 1 : a > b ? -1 : 0;
 };
 
-var createProps = function createProps(vnode, _ref) {
-  var k = _ref.keys;
+var getInitialState = function getInitialState(vnode, createStream) {
+  var attrs = vnode.attrs;
+  var selectedTabIndex = createStream(vnode.attrs.selectedTab || 0);
+  var registerTabButton = function registerTabButton(state) {
+    return function (index, data) {
+      return state.tabs[index] = data;
+    };
+  };
+  var registerScrollButton = function registerScrollButton(state) {
+    return function (position, dom) {
+      return state.scrollButtons[position] = dom;
+    };
+  };
+  return {
+    tabsEl: undefined,
+    scrollerEl: undefined,
+    tabs: [], // {data, el}
+    tabRow: undefined,
+    tabIndicatorEl: undefined,
+    selectedTabIndex: selectedTabIndex,
+    previousSelectedTab: undefined,
+    managesScroll: attrs.scrollable && !isTouch,
+    scrollButtonStates: {
+      start: false,
+      end: false
+    },
+    scrollButtons: {
+      start: undefined,
+      end: undefined
+    },
+    registerTabButton: registerTabButton,
+    registerScrollButton: registerScrollButton,
+    cleanUp: undefined, // set in onMount
+    redrawOnUpdate: createStream.merge([selectedTabIndex])
+  };
+};
+
+var onMount = function onMount(vnode) {
+  var dom = vnode.dom;
+  var state = vnode.state;
+  var attrs = vnode.attrs;
+
+  state.tabsEl = dom;
+  if (!attrs.hideIndicator) {
+    state.tabIndicatorEl = dom.querySelector("." + classes$1.indicator);
+  }
+  state.scrollerEl = dom.querySelector("." + classes$1.tabRow);
+
+  // A promise can't resolve during the oncreate loop
+  // The Mithril draw loop is synchronous - there is no delay between one this oncreate and the tab button's oncreate
+  whenCreateDone().then(function () {
+    if (state.tabs && attrs.largestWidth) {
+      var widths = state.tabs.map(function (tabData) {
+        return tabData.dom.getBoundingClientRect().width;
+      });
+      var largest = widths.sort(sortByLargestWidth)[0];
+      state.tabs.forEach(function (tabData) {
+        return tabData.dom.style.width = largest + "px";
+      });
+    }
+    // Align first scrollable tab to title
+    if (attrs.scrollable) {
+      alignToTitle(state);
+    }
+    // Handle scroll
+    if (state.managesScroll) {
+      createRightButtonOffset(state);
+    }
+    setSelectedTab(state, attrs, state.selectedTabIndex(), false);
+  });
+
+  var onResize = function onResize() {
+    return setSelectedTab(state, attrs, state.selectedTabIndex(), false);
+  };
+
+  subscribe("resize", onResize), state.cleanUp = function () {
+    return unsubscribe("resize", onResize);
+  };
+};
+
+var onUnMount = function onUnMount(_ref) {
+  var state = _ref.state;
+  return state.cleanUp();
+};
+
+var createProps = function createProps(vnode, _ref2) {
+  var k = _ref2.keys;
 
   var state = vnode.state;
   var attrs = vnode.attrs;
@@ -494,11 +579,11 @@ var createProps = function createProps(vnode, _ref) {
   });
 };
 
-var createContent = function createContent(vnode, _ref2) {
-  var h = _ref2.renderer,
-      k = _ref2.keys,
-      Tab = _ref2.Tab,
-      ScrollButton = _ref2.ScrollButton;
+var createContent = function createContent(vnode, _ref3) {
+  var h = _ref3.renderer,
+      k = _ref3.keys,
+      Tab = _ref3.Tab,
+      ScrollButton = _ref3.ScrollButton;
 
   var state = vnode.state;
   var attrs = vnode.attrs;
@@ -568,101 +653,13 @@ var createContent = function createContent(vnode, _ref2) {
   }, [tabRow, tabIndicator]), attrs.scrollable ? scrollButtonAtEnd : null];
 };
 
-var getInitialState = function getInitialState(vnode, createStream) {
-  var attrs = vnode.attrs;
-  var selectedTabIndex = createStream(vnode.attrs.selectedTab || 0);
-  var registerTabButton = function registerTabButton(state) {
-    return function (index, data) {
-      return state.tabs[index] = data;
-    };
-  };
-  var registerScrollButton = function registerScrollButton(state) {
-    return function (position, dom) {
-      return state.scrollButtons[position] = dom;
-    };
-  };
-  return {
-    tabsEl: undefined,
-    scrollerEl: undefined,
-    tabs: [], // {data, el}
-    tabRow: undefined,
-    tabIndicatorEl: undefined,
-    selectedTabIndex: selectedTabIndex,
-    previousSelectedTab: undefined,
-    managesScroll: attrs.scrollable && !isTouch,
-    scrollButtonStates: {
-      start: false,
-      end: false
-    },
-    scrollButtons: {
-      start: undefined,
-      end: undefined
-    },
-    registerTabButton: registerTabButton,
-    registerScrollButton: registerScrollButton,
-    cleanUp: undefined, // set in onMount
-    redrawOnUpdate: createStream.merge([selectedTabIndex])
-  };
-};
-
-var onMount = function onMount(vnode) {
-  var dom = vnode.dom;
-  if (!dom) {
-    return;
-  }
-  var state = vnode.state;
-  var attrs = vnode.attrs;
-
-  state.tabsEl = dom;
-  if (!attrs.hideIndicator) {
-    state.tabIndicatorEl = dom.querySelector("." + classes$1.indicator);
-  }
-  state.scrollerEl = dom.querySelector("." + classes$1.tabRow);
-
-  // A promise can't resolve during the oncreate loop
-  // The Mithril draw loop is synchronous - there is no delay between one this oncreate and the tab button's oncreate
-  whenCreateDone().then(function () {
-    if (state.tabs && attrs.largestWidth) {
-      var widths = state.tabs.map(function (tabData) {
-        return tabData.dom.getBoundingClientRect().width;
-      });
-      var largest = widths.sort(sortByLargestWidth)[0];
-      state.tabs.forEach(function (tabData) {
-        return tabData.dom.style.width = largest + "px";
-      });
-    }
-    // Align first scrollable tab to title
-    if (attrs.scrollable) {
-      alignToTitle(state);
-    }
-    // Handle scroll
-    if (state.managesScroll) {
-      createRightButtonOffset(state);
-    }
-    setSelectedTab(state, attrs, state.selectedTabIndex(), false);
-  });
-
-  var onResize = function onResize() {
-    return setSelectedTab(state, attrs, state.selectedTabIndex(), false);
-  };
-
-  subscribe("resize", onResize), state.cleanUp = function () {
-    return unsubscribe("resize", onResize);
-  };
-};
-
-var onUnMount = function onUnMount(_ref3) {
-  var state = _ref3.state;
-  return state.cleanUp();
-};
-
 var tabs = Object.freeze({
 	theme: theme,
-	createProps: createProps,
-	createContent: createContent,
 	getInitialState: getInitialState,
 	onMount: onMount,
-	onUnMount: onUnMount
+	onUnMount: onUnMount,
+	createProps: createProps,
+	createContent: createContent
 });
 
 var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };

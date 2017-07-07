@@ -126,7 +126,7 @@ var animateZ = function animateZ(which, vnode) {
   var z = vnode.state.z();
   var newZ = which === "down" && zBase < MAX_Z ? Math.min(zBase + increase, MAX_Z) : which === "up" ? Math.max(z - increase, zBase) : z;
   if (newZ !== z) {
-    vnode.state.updateZ(newZ);
+    vnode.state.z(newZ);
   }
 };
 
@@ -160,26 +160,23 @@ var clearTapEvents = function clearTapEvents(vnode) {
 
 var getInitialState = function getInitialState(vnode, createStream) {
   var attrs = vnode.attrs;
-  var zValue = attrs.z !== undefined ? attrs.z : 1;
-  var z = createStream(zValue);
-  var redraw = createStream(); // helper stream to call redraw whenever z changes, but not on the initial value
-  var updateZ = function updateZ(newZ) {
-    return z(newZ), redraw(newZ);
-  };
+  var zBase = attrs.z !== undefined ? attrs.z : 1;
+  var z = createStream(zBase);
   var tapEventsInited = createStream(false);
   return {
-    zBase: zValue,
+    zBase: zBase,
     z: z,
-    updateZ: updateZ,
     tapEventsInited: tapEventsInited,
-    redrawOnUpdate: createStream.merge([redraw])
+    redrawOnUpdate: createStream.merge([z])
   };
 };
 
 var onMount = function onMount(vnode) {
-  if (vnode.dom && !vnode.attrs.disabled && !vnode.attrs.inactive && !vnode.state.tapEventsInited()) {
+  var state = vnode.state;
+  var attrs = vnode.attrs;
+  if (vnode.dom && !state.tapEventsInited()) {
     initTapEvents(vnode);
-    vnode.state.tapEventsInited(true);
+    state.tapEventsInited(true);
   }
 };
 

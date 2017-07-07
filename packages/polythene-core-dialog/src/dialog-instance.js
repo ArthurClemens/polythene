@@ -77,7 +77,7 @@ export const onMount = vnode => {
 
   subscribe("keydown", handleEscape);
 
-  if (attrs.show) {
+  if (attrs.showInstance) {
     showDialog(state, attrs);
   }
 };
@@ -122,7 +122,7 @@ export const createProps = (vnode, { keys: k }) => {
 export const createContent = (vnode, { renderer: h, Shadow, DialogPane }) => {
   const state = vnode.state;
   const attrs = vnode.attrs;
-  if (attrs.hide) {
+  if (attrs.hideInstance) {
     hideDialog(state, attrs);
   }
   const pane = attrs.panes && attrs.panes.length

@@ -12,8 +12,7 @@ const holderFns = [holderLayout];
 const holderSelector = `.${classes.holder}`;
 
 export const customTheme = (customSelector, customVars) => (
-  styler.generateStyles([customSelector, selector], {...vars, ...customVars}, fns),
-  styler.generateStyles([customSelector, holderSelector], {...vars, ...customVars}, holderFns)
+  styler.generateStyles([customSelector, selector], {...vars, ...customVars}, fns)
 );
 
 styler.generateStyles([selector], vars, fns);

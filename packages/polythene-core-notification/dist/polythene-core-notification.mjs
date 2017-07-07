@@ -111,7 +111,9 @@ var color = (function (selector, componentVars) {
 function _defineProperty$3(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var holderLayout = (function (selector) {
-  return [_defineProperty$3({}, selector, [flex.layoutCenterCenter, {
+  var _ref;
+
+  return [(_ref = {}, _defineProperty$3(_ref, selector, [flex.layoutCenterCenter, {
     top: 0,
     right: 0,
     bottom: 0,
@@ -121,11 +123,10 @@ var holderLayout = (function (selector) {
 
     ".pe-multiple--screen": {
       position: "fixed"
-    },
-    ".pe-multiple--container": {
-      position: "absolute"
     }
-  }])];
+  }]), _defineProperty$3(_ref, ":not(.pe-notification--container) .pe-multiple--container", {
+    position: "absolute"
+  }), _ref)];
 });
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -137,7 +138,7 @@ var holderFns = [holderLayout];
 var holderSelector = "." + classes.holder;
 
 var customTheme = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns), styler.generateStyles([customSelector, holderSelector], _extends$1({}, vars$1, customVars), holderFns);
+  return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
 };
 
 styler.generateStyles([selector], vars$1, fns);
@@ -177,14 +178,14 @@ var stopTimer = function stopTimer(state) {
 
 var prepareShow = function prepareShow(state, attrs) {
   if (!state.containerEl) {
-    state.containerEl = document.querySelector(attrs.containerSelector || attrs.holder);
+    // attrs.holderSelector is passed as option to Multiple
+    state.containerEl = document.querySelector(attrs.containerSelector || attrs.holderSelector);
   }
   if (!state.containerEl) {
-    console.error("No containerEl found");
+    console.error("No container element found"); // eslint-disable-line no-console
   }
-  if (attrs.containerSelector) {
-    var holderEl = state.containerEl.querySelector(attrs.holder);
-    holderEl.classList.add(classes.hasContainer);
+  if (attrs.containerSelector && state.containerEl) {
+    state.containerEl.classList.add(classes.hasContainer);
   }
 };
 
@@ -195,9 +196,12 @@ var showInstance = function showInstance(state, attrs) {
   state.transitioning(true);
   stopTimer(state);
   prepareShow(state, attrs);
-  var id = state.instanceId;
+  var id = attrs.instanceId;
   var transitions = attrs.transitions;
-  return show(_extends({}, attrs, transitions.show(state.containerEl, attrs))).then(function () {
+  return show(_extends({}, attrs, transitions.show(_extends({}, attrs, {
+    containerEl: state.containerEl,
+    el: state.el
+  })))).then(function () {
     if (attrs.multipleDidShow) {
       attrs.multipleDidShow(id); // this will call attrs.didShow
     }
@@ -211,8 +215,8 @@ var showInstance = function showInstance(state, attrs) {
         hideInstance(state, attrs);
       }, timeoutSeconds);
     }
-    state.transitioning(false);
     state.visible(true);
+    state.transitioning(false);
   });
 };
 
@@ -222,14 +226,17 @@ var hideInstance = function hideInstance(state, attrs) {
   }
   state.transitioning(true);
   stopTimer(state);
-  var id = state.instanceId;
+  var id = attrs.instanceId;
   var transitions = attrs.transitions;
-  return hide(_extends({}, attrs, transitions.hide(state.containerEl, attrs))).then(function () {
+  return hide(_extends({}, attrs, transitions.hide(_extends({}, attrs, {
+    containerEl: state.containerEl,
+    el: state.el
+  })))).then(function () {
     if (attrs.multipleDidHide) {
       attrs.multipleDidHide(id); // this will call attrs.didHide
     }
-    state.transitioning(false);
     state.visible(false);
+    state.transitioning(false);
   });
 };
 
@@ -244,33 +251,37 @@ var setTitleStyles = function setTitleStyles(titleEl) {
 };
 
 var getInitialState = function getInitialState(vnode, createStream) {
-  var _ref;
-
   var transitioning = createStream(false);
   var paused = createStream(false);
   var mounted = createStream(false);
   var visible = createStream(false);
-  return _ref = {
+  return {
     cleanUp: undefined,
     containerEl: undefined,
     dismissEl: undefined,
-    timer: undefined,
-    el: undefined
-  }, _defineProperty(_ref, "timer", new Timer()), _defineProperty(_ref, "paused", paused), _defineProperty(_ref, "transitioning", transitioning), _defineProperty(_ref, "visible", visible), _defineProperty(_ref, "mounted", mounted), _defineProperty(_ref, "redrawOnUpdate", createStream.merge([visible])), _ref;
+    el: undefined,
+    timer: new Timer(),
+    paused: paused,
+    transitioning: transitioning,
+    visible: visible,
+    mounted: mounted,
+    redrawOnUpdate: createStream.merge([visible])
+  };
 };
 
 var onMount = function onMount(vnode) {
-  if (!vnode.dom) {
+  var dom = vnode.dom;
+  if (!dom) {
     return;
   }
   var state = vnode.state;
   var attrs = vnode.attrs;
-  state.el = vnode.dom;
+  state.el = dom;
   var titleEl = state.el.querySelector("." + classes.title);
   if (titleEl) {
     setTitleStyles(titleEl);
   }
-  if (attrs.show && !state.visible()) {
+  if (attrs.showInstance && !state.visible()) {
     showInstance(state, attrs);
   }
   state.mounted(true);
@@ -280,8 +291,8 @@ var onUnMount = function onUnMount(vnode) {
   return vnode.state.mounted(false);
 };
 
-var createProps = function createProps(vnode, _ref2) {
-  var k = _ref2.keys;
+var createProps = function createProps(vnode, _ref) {
+  var k = _ref.keys;
 
   var attrs = vnode.attrs;
   return _extends({}, filterSupportedAttributes(attrs), _defineProperty({
@@ -292,28 +303,21 @@ var createProps = function createProps(vnode, _ref2) {
   }));
 };
 
-var createContent = function createContent(vnode, _ref3) {
-  var h = _ref3.renderer;
+var createContent = function createContent(vnode, _ref2) {
+  var h = _ref2.renderer;
 
   var state = vnode.state;
   var attrs = vnode.attrs;
-
   if (state.mounted() && !state.transitioning()) {
-    if (attrs.hide && state.visible()) {
-      setTimeout(function () {
-        return hideInstance(state, attrs);
-      });
-      // hideInstance(state, attrs);
-    } else if (attrs.show && !state.visible()) {
-      setTimeout(function () {
-        return showInstance(state, attrs);
-      });
-      // showInstance(state, attrs);
+    if (attrs.hideInstance && state.visible()) {
+      hideInstance(state, attrs);
+    } else if (attrs.showInstance && !state.visible()) {
+      showInstance(state, attrs);
     }
   }
-  if (attrs.pause && !state.paused()) {
+  if (attrs.pauseInstance && !state.paused()) {
     pauseInstance(state, attrs);
-  } else if (attrs.unpause && state.paused()) {
+  } else if (attrs.unpauseInstance && state.paused()) {
     unpauseInstance(state, attrs);
   }
 
@@ -335,11 +339,14 @@ var notificationInstance = Object.freeze({
 
 var ANIMATION_DURATION = .5;
 
-var show$1 = function show$$1(el, attrs) {
+var show$1 = function show$$1(_ref) {
+  var el = _ref.el,
+      showDuration = _ref.showDuration,
+      showDelay = _ref.showDelay;
   return {
     el: el,
-    showDuration: attrs.showDuration || ANIMATION_DURATION,
-    showDelay: attrs.showDelay || 0,
+    showDuration: showDuration || ANIMATION_DURATION,
+    showDelay: showDelay || 0,
     beforeShow: function beforeShow() {
       return el.style.opacity = 0;
     },
@@ -349,11 +356,14 @@ var show$1 = function show$$1(el, attrs) {
   };
 };
 
-var hide$1 = function hide$$1(el, attrs) {
+var hide$1 = function hide$$1(_ref2) {
+  var el = _ref2.el,
+      hideDuration = _ref2.hideDuration,
+      hideDelay = _ref2.hideDelay;
   return {
     el: el,
-    hideDuration: attrs.hideDuration || ANIMATION_DURATION,
-    hideDelay: attrs.hideDelay || 0,
+    hideDuration: hideDuration || ANIMATION_DURATION,
+    hideDelay: hideDelay || 0,
     hide: function hide$$1() {
       return el.style.opacity = 0;
     }

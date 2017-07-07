@@ -263,45 +263,6 @@ const createSlider = (vnode, { h, k, hasTicks, interactiveTrack }) => {
   );
 };
 
-export const createProps = (vnode, { keys: k }) => {
-  const state = vnode.state;
-  const attrs = vnode.attrs;
-  if (attrs.value !== undefined) {
-    if (state.previousValue() !== attrs.value) {
-      state.previousValue(attrs.value);
-      setTimeout(() => state.setValue(state.previousValue()), 0); // perform in next tick to play nice with React
-    }
-  }
-  const hasTicks = attrs.ticks !== undefined && attrs.ticks !== false;
-  const interactiveTrack = (attrs.interactiveTrack !== undefined) ? attrs.interactiveTrack : true;
-  return Object.assign(
-    {}, 
-    filterSupportedAttributes(attrs),
-    {
-      className: [
-        classes.component,
-        attrs.disabled ? classes.isDisabled : null,
-        attrs.pin ? classes.hasPin : null,
-        interactiveTrack ? classes.hasTrack : null,
-        state.isActive() ? classes.isActive : null,
-        state.hasFocus() ? classes.hasFocus : null,
-        state.fraction() === 0 ? classes.isAtMin : null,
-        hasTicks ? classes.hasTicks : null,
-        attrs.tone === "dark" ? "pe-dark-tone" : null,
-        attrs.tone === "light" ? "pe-light-tone" : null,
-        attrs.className || attrs[k.class],
-      ].join(" ")
-    }
-  );
-};
-
-export const createContent = (vnode, { renderer: h, keys: k }) => {
-  const attrs = vnode.attrs;
-  const hasTicks = attrs.ticks !== undefined && attrs.ticks !== false;
-  const interactiveTrack = (attrs.interactiveTrack !== undefined) ? attrs.interactiveTrack : true;
-  return createSlider(vnode, { h, k, hasTicks, interactiveTrack });
-};
-
 export const getInitialState = (vnode, createStream) => {
   const attrs = vnode.attrs;
 
@@ -365,17 +326,15 @@ export const getInitialState = (vnode, createStream) => {
     rangeWidth: 0,
     rangeOffset: 0,
     clickOffset: 0,
-    redrawOnUpdate: createStream.merge([isActive, value])
+    redrawOnUpdate: createStream.merge([state.isActive, state.value])
   };
 };
 
 export const onMount = vnode => {
   const dom = vnode.dom;
-  if (!dom) {
-    return;
-  }
   const state = vnode.state;
   const attrs = vnode.attrs;
+
   state.trackEl = dom.querySelector(`.${classes.track}`);
   state.controlEl = dom.querySelector(`.${classes.control}`);
   state.pinEl = dom.querySelector(`.${classes.pin}`);
@@ -385,4 +344,44 @@ export const onMount = vnode => {
     }, 0);
   }
 };
+
+export const createProps = (vnode, { keys: k }) => {
+  const state = vnode.state;
+  const attrs = vnode.attrs;
+  if (attrs.value !== undefined) {
+    if (state.previousValue() !== attrs.value) {
+      state.previousValue(attrs.value);
+      setTimeout(() => state.setValue(state.previousValue()), 0); // perform in next tick to play nice with React
+    }
+  }
+  const hasTicks = attrs.ticks !== undefined && attrs.ticks !== false;
+  const interactiveTrack = (attrs.interactiveTrack !== undefined) ? attrs.interactiveTrack : true;
+  return Object.assign(
+    {}, 
+    filterSupportedAttributes(attrs),
+    {
+      className: [
+        classes.component,
+        attrs.disabled ? classes.isDisabled : null,
+        attrs.pin ? classes.hasPin : null,
+        interactiveTrack ? classes.hasTrack : null,
+        state.isActive() ? classes.isActive : null,
+        state.hasFocus() ? classes.hasFocus : null,
+        state.fraction() === 0 ? classes.isAtMin : null,
+        hasTicks ? classes.hasTicks : null,
+        attrs.tone === "dark" ? "pe-dark-tone" : null,
+        attrs.tone === "light" ? "pe-light-tone" : null,
+        attrs.className || attrs[k.class],
+      ].join(" ")
+    }
+  );
+};
+
+export const createContent = (vnode, { renderer: h, keys: k }) => {
+  const attrs = vnode.attrs;
+  const hasTicks = attrs.ticks !== undefined && attrs.ticks !== false;
+  const interactiveTrack = (attrs.interactiveTrack !== undefined) ? attrs.interactiveTrack : true;
+  return createSlider(vnode, { h, k, hasTicks, interactiveTrack });
+};
+
 

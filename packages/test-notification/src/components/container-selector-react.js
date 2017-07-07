@@ -51,7 +51,7 @@ export default buttonGroup => {
       }
     }
 
-    notificationChange(e) {
+    notificationChange() {
       this.updateCount(Notification.count());
     }
 

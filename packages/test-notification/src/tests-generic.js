@@ -1,5 +1,5 @@
 
-export default ({ renderer: h, keys :k, Notification, Dialog, Button, buttonGroup, containerSelector }) => {
+export default ({ renderer: h, keys: k, Notification, Dialog, Button, buttonGroup, containerSelector }) => {
 
   Notification.theme(".notification-tests-blue-notification", {
     color_dark_background: "#2196F3",
@@ -134,7 +134,7 @@ export default ({ renderer: h, keys :k, Notification, Dialog, Button, buttonGrou
       })
     },
     {
-      name: "Option: title (2 lines), action, layout (\"vertical\")",
+      name: "Option: title (2 lines), action, layout vertical",
       interactive: true,
       exclude: true,
       component: buttonGroup({

@@ -39,7 +39,7 @@ export default (messageOptions, spawnOptions) => {
         <RaisedButton
           label="Show"
           events={{
-            onClick: () => Notification.show(messageOptions, spawnOptions)
+            onClick: () => Notification.show(Object.assign({}, messageOptions, { key: messageOptions.title }), spawnOptions)
           }}
         />
         <RaisedButton

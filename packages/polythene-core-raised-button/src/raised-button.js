@@ -24,7 +24,7 @@ const animateZ = (which, vnode) => {
       ? Math.max(z - increase, zBase)
       : z;
   if (newZ !== z) {
-    vnode.state.updateZ(newZ);
+    vnode.state.z(newZ);
   }
 };
 
@@ -54,27 +54,23 @@ const clearTapEvents = vnode =>
 
 export const getInitialState = (vnode, createStream) => {
   const attrs = vnode.attrs;
-  const zValue = attrs.z !== undefined ? attrs.z : 1;
-  const z = createStream(zValue);
-  const redraw = createStream(); // helper stream to call redraw whenever z changes, but not on the initial value
-  const updateZ = newZ => (
-    z(newZ),
-    redraw(newZ)
-  );
+  const zBase = attrs.z !== undefined ? attrs.z : 1;
+  const z = createStream(zBase);
   const tapEventsInited = createStream(false);
   return {
-    zBase: zValue,
+    zBase,
     z,
-    updateZ,
     tapEventsInited,
-    redrawOnUpdate: createStream.merge([redraw])
+    redrawOnUpdate: createStream.merge([z])
   };
 };
 
 export const onMount = vnode => {
-  if (vnode.dom && !vnode.attrs.disabled && !vnode.attrs.inactive && !vnode.state.tapEventsInited()) {
+  const state = vnode.state;
+  const attrs = vnode.attrs;
+  if (vnode.dom && !state.tapEventsInited()) {
     initTapEvents(vnode);
-    vnode.state.tapEventsInited(true);
+    state.tapEventsInited(true);
   }
 };
 

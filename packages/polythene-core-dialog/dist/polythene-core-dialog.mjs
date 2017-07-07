@@ -166,7 +166,7 @@ var onMount = function onMount(vnode) {
 
   subscribe("keydown", handleEscape);
 
-  if (attrs.show) {
+  if (attrs.showInstance) {
     showDialog(state, attrs);
   }
 };
@@ -204,7 +204,7 @@ var createContent = function createContent(vnode, _ref2) {
 
   var state = vnode.state;
   var attrs = vnode.attrs;
-  if (attrs.hide) {
+  if (attrs.hideInstance) {
     hideDialog(state, attrs);
   }
   var pane = attrs.panes && attrs.panes.length ? attrs.panes[0] : h(DialogPane, {

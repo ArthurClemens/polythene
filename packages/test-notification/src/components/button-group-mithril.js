@@ -16,12 +16,9 @@ export default (messageOptions, spawnOptions) => ({
         label: "Clear",
         disabled: Notification.count() === 0,
         events: {
-          onclick: () => {
-            Notification.hide(spawnOptions).then(() => {
-              Notification.clear();
-              m.redraw();
-            });
-          }
+          onclick: () => Notification.hide(spawnOptions).then(() =>
+            Notification.clear()
+          )
         }
       })
     ])

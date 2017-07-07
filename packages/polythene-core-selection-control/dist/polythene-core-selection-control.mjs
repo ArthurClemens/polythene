@@ -38,6 +38,25 @@ var getElement = function getElement(vnode) {
   return vnode.attrs.element || "div";
 };
 
+var sizeClasses = {
+  small: classes.small,
+  regular: classes.regular,
+  medium: classes.medium,
+  large: classes.large
+};
+
+var classForSize = function classForSize() {
+  var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "regular";
+  return sizeClasses[size];
+};
+
+var currentState = function currentState(attrs, state) {
+  var checked = attrs.checked !== undefined ? attrs.checked : state.checked();
+  var selectable = attrs.selectable !== undefined ? attrs.selectable(checked) : false;
+  var inactive = attrs.disabled || !selectable;
+  return { checked: checked, inactive: inactive };
+};
+
 var getInitialState = function getInitialState(vnode, createStream) {
   var attrs = vnode.attrs;
 
@@ -67,25 +86,6 @@ var getInitialState = function getInitialState(vnode, createStream) {
     onChange: onChange,
     redrawOnUpdate: createStream.merge([redrawOnChange])
   };
-};
-
-var sizeClasses = {
-  small: classes.small,
-  regular: classes.regular,
-  medium: classes.medium,
-  large: classes.large
-};
-
-var classForSize = function classForSize() {
-  var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "regular";
-  return sizeClasses[size];
-};
-
-var currentState = function currentState(attrs, state) {
-  var checked = attrs.checked !== undefined ? attrs.checked : state.checked();
-  var selectable = attrs.selectable !== undefined ? attrs.selectable(checked) : false;
-  var inactive = attrs.disabled || !selectable;
-  return { checked: checked, inactive: inactive };
 };
 
 var createProps = function createProps(vnode, _ref) {

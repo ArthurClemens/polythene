@@ -47,7 +47,7 @@ export const onMount = vnode => {
 };
 
 export const onUnMount = vnode =>
-  vnode.state.removeEventListeners();
+  vnode.state.removeEventListeners && vnode.state.removeEventListeners();
 
 export const createProps = (vnode, { keys: k }) => {
   const state = vnode.state;
@@ -123,7 +123,7 @@ export const createContent = (vnode, { renderer: h, keys: k, Ripple }) => {
       {
         [k.class]: classes.content,
         key: "button",
-        style: attrs.style || {}
+        style: attrs.style
       },
       [
         !disabled && attrs.shadowComponent // "protected" option, used by raised-button
