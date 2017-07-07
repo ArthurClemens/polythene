@@ -619,18 +619,4 @@ var transition = function transition(opts, state) {
   }
 };
 
-/*
-The most simple prop function to emulate m.prop from Mithril 0.2.
-*/
-var prop = function prop(x) {
-  var p = x;
-  return function (args) {
-    if (args === undefined) {
-      return p;
-    } else {
-      p = args;
-    }
-  };
-};
-
-export { variables as defaultVariables, isTouch, touchStartEvent, touchEndEvent, moveEvent, endEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, Multi, show, hide, filterSupportedAttributes, unpackAttrs, prop };
+export { variables as defaultVariables, isTouch, touchStartEvent, touchEndEvent, moveEvent, endEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, Multi, show, hide, filterSupportedAttributes, unpackAttrs };
