@@ -8,12 +8,12 @@ export const ViewComponent = ({
   createProps = () => {},
   getElement = () => "div",
   component,
-  renderView,
+  view = null,
   onMount = () => {},
   onUnMount = () => {},
 }) => {
 
-  const view = vnode => {
+  const render = vnode => {
     return renderer(
       component || getElement(vnode),
       createProps(vnode, { renderer, requiresKeys, keys }),
@@ -26,7 +26,9 @@ export const ViewComponent = ({
   };
 
   return {
-    view: renderView || view,
+    view: view
+      ? vnode => view(vnode, { render, renderer })
+      : vnode => render(vnode),
     oncreate: onMount,
     onremove: onUnMount
   };

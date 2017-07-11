@@ -295,7 +295,10 @@ var opener = (function (_ref) {
         h: h,
         Menu: Menu$$1,
         List: List$$1,
-        ListTile: ListTile$$1
+        ListTile: ListTile$$1,
+        didHide: function didHide() {
+          return state.show(false);
+        }
       })]);
     }
   };
@@ -401,6 +404,9 @@ var createPositionContainer = function createPositionContainer(_ref) {
         target: "#" + attrs.id,
         origin: attrs.origin,
         show: show,
+        didHide: function didHide() {
+          return state.show(false);
+        },
         size: 3,
         hideDelay: .240,
         content: h(List$$1, {
@@ -492,6 +498,9 @@ var settings = (function (_ref) {
       }, [h(Menu$$1, {
         target: "#" + id,
         show: show,
+        didHide: function didHide() {
+          return state.show(false);
+        },
         hideDelay: .240,
         size: 5,
         content: h(List$$1, {
@@ -698,25 +707,26 @@ var mithrilTests = function mithrilTests(_ref) {
 
   var settingsDialog = createSettingsDialog({ renderer: renderer, keys: keys, Dialog: Dialog, Menu: Menu$$1, List: List$$1, ListTile: ListTile$$1 });
 
-  return [{
-    section: "Mithril specific tests"
-  }, {
-    name: "Dialog with option 'menu' (demo without state)",
-    interactive: true,
-    exclude: true,
-    component: {
-      view: function view() {
-        return h(RaisedButton, {
-          label: "Open",
-          events: {
-            onclick: function onclick() {
-              return Dialog.show(settingsDialog);
-            }
-          }
-        });
-      }
-    }
-  }];
+  return [
+    // {
+    //   section: "Mithril specific tests",
+    // },
+    // {
+    //   name: "Dialog with option 'menu' (demo without state)",
+    //   interactive: true,
+    //   exclude: true,
+    //   component: {
+    //     view: () => 
+    //       h(RaisedButton, {
+    //         label: "Open",
+    //         events: {
+    //           onclick: () => Dialog.show(settingsDialog)
+    //         }
+    //       }
+    //     )
+    //   }
+    // },
+  ];
 };
 
 var testsMithril = [].concat(genericTests({ Menu: Menu, List: List, ListTile: ListTile, RaisedButton: RaisedButton, Shadow: Shadow, IconButton: IconButton, renderer: renderer, keys: keys })).concat(mithrilTests({ Menu: Menu, List: List, ListTile: ListTile, RaisedButton: RaisedButton, Shadow: Shadow, IconButton: IconButton, renderer: renderer, keys: keys }));
@@ -4344,7 +4354,10 @@ var opener$1 = (function (_ref) {
           h: h,
           Menu: Menu$$1,
           List: List$$1,
-          ListTile: ListTile$$1
+          ListTile: ListTile$$1,
+          didHide: function didHide() {
+            return state.show(false);
+          }
         })
       );
     }
@@ -4371,8 +4384,8 @@ var simple$1 = (function (_ref) {
     react.createElement(
       List$$1,
       null,
-      react.createElement(ListTile$$1, { title: "Yes", ink: true }),
-      react.createElement(ListTile$$1, { title: "No", ink: true })
+      react.createElement(ListTile$$1, { title: "Yes", ink: true, hoverable: true }),
+      react.createElement(ListTile$$1, { title: "No", ink: true, hoverable: true })
     )
   );
 });

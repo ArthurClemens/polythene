@@ -1,4 +1,5 @@
-import { StateComponent, Toggle, renderer as h } from "polythene-react-base";
+import { StateComponent, renderer as h } from "polythene-react-base";
+import { Conditional } from "polythene-core";
 import { coreMenu as core, classes } from "polythene-core-menu";
 import { Shadow } from "polythene-react-shadow";
 
@@ -6,20 +7,22 @@ const MenuInstance = StateComponent(Object.assign(
   {},
   core,
   {
-    createProps: (vnode, args) => core.createProps(vnode, Object.assign(args, { Shadow })),
     createContent: (vnode, args) => core.createContent(vnode, Object.assign(args, { Shadow }))
   }
 ));
 
-export const Menu = props =>
-  h(Toggle(MenuInstance, Object.assign(
+const MenuToggle = StateComponent(Conditional);
+
+export const Menu = props => (
+  h(MenuToggle, Object.assign(
     {},
+    props,
     {
       placeholderClassName: classes.placeholder,
-      show: props.show,
-      attrs: props
+      instance: MenuInstance
     }
-  )));
+  ))
+);
 
 Menu.theme = core.theme;
 Menu.displayName = "Menu";

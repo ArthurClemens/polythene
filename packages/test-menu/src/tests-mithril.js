@@ -7,24 +7,24 @@ const mithrilTests = ({ Menu, List, ListTile, renderer: h }) => {
   const settingsDialog = createSettingsDialog({ renderer, keys, Dialog, Menu, List, ListTile });
 
   return [
-    {
-      section: "Mithril specific tests",
-    },
-    {
-      name: "Dialog with option 'menu' (demo without state)",
-      interactive: true,
-      exclude: true,
-      component: {
-        view: () => 
-          h(RaisedButton, {
-            label: "Open",
-            events: {
-              onclick: () => Dialog.show(settingsDialog)
-            }
-          }
-        )
-      }
-    },
+    // {
+    //   section: "Mithril specific tests",
+    // },
+    // {
+    //   name: "Dialog with option 'menu' (demo without state)",
+    //   interactive: true,
+    //   exclude: true,
+    //   component: {
+    //     view: () => 
+    //       h(RaisedButton, {
+    //         label: "Open",
+    //         events: {
+    //           onclick: () => Dialog.show(settingsDialog)
+    //         }
+    //       }
+    //     )
+    //   }
+    // },
   ];
     
 };

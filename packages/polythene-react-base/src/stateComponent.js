@@ -32,6 +32,7 @@ export const StateComponent = ({
       const initialState = getInitialState(protoState, stream);
       this.state = initialState;
       this.registerDOM = this.registerDOM.bind(this);
+      this._render = this._render.bind(this);
     }
     
     componentDidMount() {
@@ -82,7 +83,7 @@ export const StateComponent = ({
 
     render() {
       return view
-        ? view(this.createVirtualNode())
+        ? view(this.createVirtualNode(), { renderer, render: this._render })
         : this._render(this.props);
     }
   };

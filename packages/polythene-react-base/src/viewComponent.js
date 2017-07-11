@@ -12,6 +12,7 @@ export const ViewComponent = ({
   onMount = () => {},
   onUnMount = () => {},
   component,
+  view = null
 }) => {
   
   return class extends Component {
@@ -19,6 +20,7 @@ export const ViewComponent = ({
     constructor(props) {
       super(props);
       this.registerDOM = this.registerDOM.bind(this);
+      this._render = this._render.bind(this);
     }
 
     componentDidMount() {
@@ -44,7 +46,7 @@ export const ViewComponent = ({
       }
     }
 
-    render() {
+    _render() {
       const vnode = this.createVirtualNode();
       return renderer(
         component || getElement(vnode),
@@ -59,6 +61,12 @@ export const ViewComponent = ({
           vnode.attrs.after
         ]
       );
+    }
+
+    render() {
+      return view
+        ? view(this.createVirtualNode(), { renderer, render: this._render })
+        : this._render(this.props);
     }
   };
 };

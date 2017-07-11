@@ -384,6 +384,7 @@ var StateComponent = function StateComponent(_ref) {
       var initialState = getInitialState(protoState, stream);
       _this.state = initialState;
       _this.registerDOM = _this.registerDOM.bind(_this);
+      _this._render = _this._render.bind(_this);
       return _this;
     }
 
@@ -431,7 +432,7 @@ var StateComponent = function StateComponent(_ref) {
     }, {
       key: "render",
       value: function render() {
-        return view ? view(this.createVirtualNode()) : this._render(this.props);
+        return view ? view(this.createVirtualNode(), { renderer: renderer, render: this._render }) : this._render(this.props);
       }
     }]);
 
@@ -466,7 +467,9 @@ var ViewComponent = function ViewComponent(_ref) {
       onMount = _ref$onMount === undefined ? function () {} : _ref$onMount,
       _ref$onUnMount = _ref.onUnMount,
       onUnMount = _ref$onUnMount === undefined ? function () {} : _ref$onUnMount,
-      component = _ref.component;
+      component = _ref.component,
+      _ref$view = _ref.view,
+      view = _ref$view === undefined ? null : _ref$view;
 
 
   return function (_Component) {
@@ -478,6 +481,7 @@ var ViewComponent = function ViewComponent(_ref) {
       var _this = _possibleConstructorReturn$2(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, props));
 
       _this.registerDOM = _this.registerDOM.bind(_this);
+      _this._render = _this._render.bind(_this);
       return _this;
     }
 
@@ -509,89 +513,15 @@ var ViewComponent = function ViewComponent(_ref) {
         }
       }
     }, {
-      key: "render",
-      value: function render() {
+      key: "_render",
+      value: function _render() {
         var vnode = this.createVirtualNode();
         return renderer(component || getElement(vnode), _extends$2({}, createProps(vnode, { renderer: renderer, requiresKeys: requiresKeys$1, keys: keys }), { ref: this.registerDOM }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, requiresKeys: requiresKeys$1, keys: keys }), vnode.attrs.after]);
       }
-    }]);
-
-    return _class;
-  }(Component);
-};
-
-var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass$3 = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck$3(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn$3(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits$3(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var unpackAttrs = function unpackAttrs(attrs) {
-  return typeof attrs === "function" ? attrs() : attrs;
-};
-
-var Toggle = function Toggle(Instance, toggleProps) {
-  var attrs = unpackAttrs(toggleProps.attrs);
-
-  return function (_Component) {
-    _inherits$3(_class, _Component);
-
-    function _class(props) {
-      _classCallCheck$3(this, _class);
-
-      var _this = _possibleConstructorReturn$3(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, props));
-
-      var hide = toggleProps.hide || attrs.hide;
-      var show = !hide && (toggleProps.show || attrs.show || false);
-      _this.state = {
-        visible: toggleProps.permanent || attrs.permanent || show,
-        transitioning: show || hide
-      };
-      _this._mounted = false;
-      return _this;
-    }
-
-    _createClass$3(_class, [{
-      key: "componentDidMount",
-      value: function componentDidMount() {
-        this._mounted = true;
-      }
-    }, {
-      key: "componentWillUnmount",
-      value: function componentWillUnmount() {
-        this._mounted = false;
-      }
-    }, {
-      key: "setDisplayState",
-      value: function setDisplayState(newState) {
-        if (!this._mounted) {
-          return;
-        }
-        var transitioning = newState.visible !== undefined ? false : newState.transitioning !== undefined ? newState.transitioning : this.state.transitioning;
-        var visible = newState.visible !== undefined ? newState.visible : this.state.visible;
-        this.setState({ visible: visible, transitioning: transitioning }, this.updateState);
-      }
-    }, {
-      key: "updateState",
-      value: function updateState() {
-        if (attrs.getState) {
-          attrs.getState({
-            visible: this.state.visible,
-            transitioning: this.state.transitioning
-          });
-        }
-      }
     }, {
       key: "render",
       value: function render() {
-        return this.state.visible ? renderer(Instance, _extends$3({}, attrs, {
-          transitions: toggleProps.transitions,
-          setDisplayState: this.setDisplayState.bind(this)
-        })) : renderer("span", { className: toggleProps.placeholderClassName });
+        return view ? view(this.createVirtualNode(), { renderer: renderer, render: this._render }) : this._render(this.props);
       }
     }]);
 
@@ -599,4 +529,4 @@ var Toggle = function Toggle(Instance, toggleProps) {
   }(Component);
 };
 
-export { keys, renderer, StateComponent, ViewComponent, Toggle, MithrilToReact };
+export { keys, renderer, StateComponent, ViewComponent, MithrilToReact };

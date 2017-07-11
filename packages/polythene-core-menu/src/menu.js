@@ -12,11 +12,6 @@ const OFFSET_V         = -8;
 const DEFAULT_OFFSET_H = 16;
 const MIN_SIZE         = 1.5;
 
-export const getInitialState = (vnode, createStream) => {
-  const dom = createStream();
-  return { dom };
-};
-
 const positionMenu = (state, attrs) => {
   const targetEl = document.querySelector(attrs.target);
   if (!targetEl) {
@@ -65,32 +60,43 @@ const positionMenu = (state, attrs) => {
 };
 
 const showMenu = (state, attrs) => {
-  attrs.setDisplayState({ transitioning: true });
+  if (attrs.onChange) {
+    attrs.onChange({ visible: false, transitioning: true });
+  }
+  positionMenu(state, attrs);
   return show(Object.assign({},
     attrs, {
       el: state.dom(),
       showClass: classes.visible
     }
   )).then(() => {
-    attrs.setDisplayState({ visible: true });
+    if (attrs.onChange) {
+      attrs.onChange({ visible: true, transitioning: false });
+    }
     if (attrs.didShow) {
       attrs.didShow(attrs.id);
     }
+    state.visible(false);
   });
 };
 
 const hideMenu = (state, attrs) => {
-  attrs.setDisplayState({ transitioning: true });
+  if (attrs.onChange) {
+    attrs.onChange({ visible: true, transitioning: true });
+  }
   return hide(Object.assign({},
     attrs, {
       el: state.dom(),
       showClass: classes.visible
     }
   )).then(() => {
-    attrs.setDisplayState({ visible: false });
+    if (attrs.onChange) {
+      attrs.onChange({ visible: false, transitioning: false });
+    }
     if (attrs.didHide) {
       attrs.didHide(attrs.id);
     }
+    state.visible(false);
   });
 };
 
@@ -99,6 +105,95 @@ const unifySize = size =>
 
 const widthClass = size =>
   classes.width_n + size.toString().replace(".", "-");
+
+const handleSubscriptions = (vnode, which) => {
+  const state = vnode.state;
+  const attrs = vnode.attrs;
+
+  if (which === "mount") {
+    subscribe("resize", state.update);
+    subscribe("keydown", state.handleEscape);
+    setTimeout(() => {
+      state.activateDismissTap();
+      showMenu(state, attrs);
+    }, 0);
+  } else {
+    unsubscribe("resize", state.update);
+    unsubscribe("keydown", state.handleEscape);
+    state.deActivateDismissTap();
+  }
+};
+
+export const onMount = vnode => {
+  if (!vnode.dom) {
+    return;
+  }
+  const state = vnode.state;
+  const attrs = vnode.attrs;
+  state.dom(vnode.dom);
+
+  if (!attrs.permanent) {
+    state.handleDismissTap = e => {
+      if (e.target === state.dom()) {
+        return;
+      }
+      if (e.defaultPrevented) {
+        // clicked on .pe-menu__content
+        hideMenu(state, attrs);
+      } else {
+        hideMenu(state, Object.assign({}, attrs, {
+          hideDelay: 0
+        }));
+      }
+    };
+
+    state.update = () => {
+      positionMenu(state, attrs);
+    };
+
+    state.activateDismissTap = () => {
+      document.body.addEventListener("click", state.handleDismissTap);
+    };
+
+    state.deActivateDismissTap = () => {
+      document.body.removeEventListener("click", state.handleDismissTap);
+    };
+
+    state.handleEscape = e => {
+      if (e.which === 27) {
+        hideMenu(state, Object.assign(
+          {},
+          attrs,
+          { hideDelay: 0 }
+        ));
+      }
+    };
+
+    handleSubscriptions(vnode, "mount");
+  }
+};
+
+export const onUnMount = vnode => {
+  const attrs = vnode.attrs;
+  if (!attrs.permanent) {
+    handleSubscriptions(vnode, "unmount");
+  }
+};
+
+export const getInitialState = (vnode, createStream) => {
+  const dom = createStream();
+  const visible = createStream(false);
+  return {
+    dom,
+    visible,
+    activateDismissTap: undefined, // set in onMount
+    deActivateDismissTap: undefined, // set in onMount
+    handleDismissTap: undefined, // set in onMount
+    handleEscape: undefined, // set in onMount
+    update: undefined, // set in onMount
+    redrawOnUpdate: createStream.merge([visible])
+  };
+};
 
 export const createProps = (vnode, { keys: k }) => {
   const attrs = vnode.attrs;
@@ -117,83 +212,6 @@ export const createProps = (vnode, { keys: k }) => {
       ].join(" ")
     }
   );
-};
-
-const handleSubscriptions = (vnode, which) => {
-  const state = vnode.state;
-  const attrs = vnode.attrs;
-
-  const update = () => {
-    positionMenu(state, attrs);
-  };
-
-  const handleDismissTap = e => {
-    if (e.target === state.dom()) {
-      return;
-    }
-    deActivateDismissTap();
-    if (e.defaultPrevented) {
-      // clicked on .pe-menu__content
-      hideMenu(state, attrs);
-    } else {
-      hideMenu(state, Object.assign({}, attrs, {
-        hideDelay: 0
-      }));
-    }
-  };
-
-  const listenEl = document.body;
-
-  const activateDismissTap = () => {
-    listenEl.addEventListener("click", handleDismissTap);
-  };
-
-  const deActivateDismissTap = () => {
-    listenEl.removeEventListener("click", handleDismissTap);
-  };
-
-  const handleEscape = e => {
-    if (e.which === 27) {
-      hideMenu(state, Object.assign(
-        {},
-        attrs,
-        { hideDelay: 0 }
-      ));
-    }
-  };
-
-  if (which === "mount") {
-    subscribe("resize", update);
-    subscribe("keydown", handleEscape);
-    setTimeout(() => {
-      activateDismissTap();
-      showMenu(state, attrs);
-    }, 0);
-  } else if (which === "unmount") {
-    unsubscribe("resize", update);
-    unsubscribe("keydown", handleEscape);
-    deActivateDismissTap();
-  }
-};
-
-export const onMount = vnode => {
-  if (!vnode.dom) {
-    return;
-  }
-  const state = vnode.state;
-  const attrs = vnode.attrs;
-  state.dom(vnode.dom);
-  if (!attrs.permanent) {
-    handleSubscriptions(vnode, "mount");
-  }
-  positionMenu(state, attrs);
-};
-
-export const onUnMount = vnode => {
-  const attrs = vnode.attrs;
-  if (!attrs.permanent) {
-    handleSubscriptions(vnode, "unmount");
-  }
 };
 
 export const createContent = (vnode, { renderer: h, keys: k, Shadow }) => {

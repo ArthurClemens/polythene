@@ -14,6 +14,7 @@
     "README.md"
   ],
   "dependencies": {
+    "polythene-core": "1.0.0-rc.1",
     "polythene-core-menu": "1.0.0-rc.1",
     "polythene-react-base": "1.0.0-rc.1",
     "polythene-react-shadow": "1.0.0-rc.1"

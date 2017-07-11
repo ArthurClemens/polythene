@@ -47,7 +47,9 @@ export const StateComponent = ({
   };
 
   return {
-    view: view || render,
+    view: view
+      ? vnode => view(vnode, { render, renderer })
+      : vnode => render(vnode),
     oninit,
     oncreate,
     onremove: onUnMount

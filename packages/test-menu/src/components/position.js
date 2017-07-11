@@ -51,6 +51,7 @@ const createPositionContainer = ({ h, k, Menu, List, ListTile, Shadow, IconButto
             target: `#${attrs.id}`,
             origin: attrs.origin,
             show,
+            didHide: () => state.show(false),
             size: 3,
             hideDelay: .240,
             content: h(List, {

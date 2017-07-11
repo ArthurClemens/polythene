@@ -30,6 +30,7 @@ export default ({ renderer: h, keys: k, Menu, List, ListTile }) => ({
         h(Menu, {
           target: `#${id}`,
           show,
+          didHide: () => state.show(false),
           hideDelay: .240,
           size: 5,
           content: h(List, {

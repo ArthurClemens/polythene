@@ -138,11 +138,6 @@ var OFFSET_V = -8;
 var DEFAULT_OFFSET_H = 16;
 var MIN_SIZE = 1.5;
 
-var getInitialState = function getInitialState(vnode, createStream) {
-  var dom = createStream();
-  return { dom: dom };
-};
-
 var positionMenu = function positionMenu(state, attrs) {
   var targetEl = document.querySelector(attrs.target);
   if (!targetEl) {
@@ -207,28 +202,39 @@ var positionMenu = function positionMenu(state, attrs) {
 };
 
 var showMenu = function showMenu(state, attrs) {
-  attrs.setDisplayState({ transitioning: true });
+  if (attrs.onChange) {
+    attrs.onChange({ visible: false, transitioning: true });
+  }
+  positionMenu(state, attrs);
   return show(_extends({}, attrs, {
     el: state.dom(),
     showClass: classes$1.visible
   })).then(function () {
-    attrs.setDisplayState({ visible: true });
+    if (attrs.onChange) {
+      attrs.onChange({ visible: true, transitioning: false });
+    }
     if (attrs.didShow) {
       attrs.didShow(attrs.id);
     }
+    state.visible(false);
   });
 };
 
 var hideMenu = function hideMenu(state, attrs) {
-  attrs.setDisplayState({ transitioning: true });
+  if (attrs.onChange) {
+    attrs.onChange({ visible: true, transitioning: true });
+  }
   return hide(_extends({}, attrs, {
     el: state.dom(),
     showClass: classes$1.visible
   })).then(function () {
-    attrs.setDisplayState({ visible: false });
+    if (attrs.onChange) {
+      attrs.onChange({ visible: false, transitioning: false });
+    }
     if (attrs.didHide) {
       attrs.didHide(attrs.id);
     }
+    state.visible(false);
   });
 };
 
@@ -240,65 +246,21 @@ var widthClass = function widthClass(size) {
   return classes$1.width_n + size.toString().replace(".", "-");
 };
 
-var createProps = function createProps(vnode, _ref) {
-  var k = _ref.keys;
-
-  var attrs = vnode.attrs;
-  return _extends({}, filterSupportedAttributes(attrs), {
-    className: [classes$1.component, attrs.permanent ? classes$1.permanent : null, attrs.target ? classes$1.target : null, attrs.size ? widthClass(unifySize(attrs.size)) : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
-  });
-};
-
 var handleSubscriptions = function handleSubscriptions(vnode, which) {
   var state = vnode.state;
   var attrs = vnode.attrs;
 
-  var update = function update() {
-    positionMenu(state, attrs);
-  };
-
-  var handleDismissTap = function handleDismissTap(e) {
-    if (e.target === state.dom()) {
-      return;
-    }
-    deActivateDismissTap();
-    if (e.defaultPrevented) {
-      // clicked on .pe-menu__content
-      hideMenu(state, attrs);
-    } else {
-      hideMenu(state, _extends({}, attrs, {
-        hideDelay: 0
-      }));
-    }
-  };
-
-  var listenEl = document.body;
-
-  var activateDismissTap = function activateDismissTap() {
-    listenEl.addEventListener("click", handleDismissTap);
-  };
-
-  var deActivateDismissTap = function deActivateDismissTap() {
-    listenEl.removeEventListener("click", handleDismissTap);
-  };
-
-  var handleEscape = function handleEscape(e) {
-    if (e.which === 27) {
-      hideMenu(state, _extends({}, attrs, { hideDelay: 0 }));
-    }
-  };
-
   if (which === "mount") {
-    subscribe("resize", update);
-    subscribe("keydown", handleEscape);
+    subscribe("resize", state.update);
+    subscribe("keydown", state.handleEscape);
     setTimeout(function () {
-      activateDismissTap();
+      state.activateDismissTap();
       showMenu(state, attrs);
     }, 0);
-  } else if (which === "unmount") {
-    unsubscribe("resize", update);
-    unsubscribe("keydown", handleEscape);
-    deActivateDismissTap();
+  } else {
+    unsubscribe("resize", state.update);
+    unsubscribe("keydown", state.handleEscape);
+    state.deActivateDismissTap();
   }
 };
 
@@ -309,10 +271,42 @@ var onMount = function onMount(vnode) {
   var state = vnode.state;
   var attrs = vnode.attrs;
   state.dom(vnode.dom);
+
   if (!attrs.permanent) {
+    state.handleDismissTap = function (e) {
+      if (e.target === state.dom()) {
+        return;
+      }
+      if (e.defaultPrevented) {
+        // clicked on .pe-menu__content
+        hideMenu(state, attrs);
+      } else {
+        hideMenu(state, _extends({}, attrs, {
+          hideDelay: 0
+        }));
+      }
+    };
+
+    state.update = function () {
+      positionMenu(state, attrs);
+    };
+
+    state.activateDismissTap = function () {
+      document.body.addEventListener("click", state.handleDismissTap);
+    };
+
+    state.deActivateDismissTap = function () {
+      document.body.removeEventListener("click", state.handleDismissTap);
+    };
+
+    state.handleEscape = function (e) {
+      if (e.which === 27) {
+        hideMenu(state, _extends({}, attrs, { hideDelay: 0 }));
+      }
+    };
+
     handleSubscriptions(vnode, "mount");
   }
-  positionMenu(state, attrs);
 };
 
 var onUnMount = function onUnMount(vnode) {
@@ -320,6 +314,30 @@ var onUnMount = function onUnMount(vnode) {
   if (!attrs.permanent) {
     handleSubscriptions(vnode, "unmount");
   }
+};
+
+var getInitialState = function getInitialState(vnode, createStream) {
+  var dom = createStream();
+  var visible = createStream(false);
+  return {
+    dom: dom,
+    visible: visible,
+    activateDismissTap: undefined, // set in onMount
+    deActivateDismissTap: undefined, // set in onMount
+    handleDismissTap: undefined, // set in onMount
+    handleEscape: undefined, // set in onMount
+    update: undefined, // set in onMount
+    redrawOnUpdate: createStream.merge([visible])
+  };
+};
+
+var createProps = function createProps(vnode, _ref) {
+  var k = _ref.keys;
+
+  var attrs = vnode.attrs;
+  return _extends({}, filterSupportedAttributes(attrs), {
+    className: [classes$1.component, attrs.permanent ? classes$1.permanent : null, attrs.target ? classes$1.target : null, attrs.size ? widthClass(unifySize(attrs.size)) : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+  });
 };
 
 var createContent = function createContent(vnode, _ref2) {
@@ -344,10 +362,10 @@ var createContent = function createContent(vnode, _ref2) {
 var menu = Object.freeze({
 	getElement: getElement,
 	theme: theme,
-	getInitialState: getInitialState,
-	createProps: createProps,
 	onMount: onMount,
 	onUnMount: onUnMount,
+	getInitialState: getInitialState,
+	createProps: createProps,
 	createContent: createContent
 });
 

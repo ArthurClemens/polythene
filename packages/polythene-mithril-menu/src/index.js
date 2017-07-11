@@ -1,4 +1,5 @@
-import { StateComponent, Toggle, renderer as h } from "polythene-mithril-base";
+import { StateComponent, renderer as h } from "polythene-mithril-base";
+import { Conditional } from "polythene-core";
 import { coreMenu as core, classes } from "polythene-core-menu";
 import { Shadow } from "polythene-mithril-shadow";
 
@@ -6,20 +7,20 @@ const MenuInstance = StateComponent(Object.assign(
   {},
   core,
   {
-    createProps: (vnode, args) => core.createProps(vnode, Object.assign(args, { Shadow })),
     createContent: (vnode, args) => core.createContent(vnode, Object.assign(args, { Shadow }))
   }
 ));
 
+const MenuToggle = StateComponent(Conditional);
+
 export const Menu = {
   view: vnode =>
-    h(Toggle, Object.assign(
-      {},
+    h(MenuToggle, Object.assign({},
+      vnode.attrs,
       {
         placeholderClassName: classes.placeholder,
         instance: MenuInstance
-      },
-      vnode.attrs
+      }
     ))
 };
 

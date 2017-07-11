@@ -9,7 +9,7 @@ export default ({ show, target, Menu, List, ListTile, didHide, getState }) =>
     offset={-4}
   >
     <List>
-      <ListTile title="Yes" ink />
-      <ListTile title="No" ink />
+      <ListTile title="Yes" ink hoverable />
+      <ListTile title="No" ink hoverable />
     </List>
   </Menu>;

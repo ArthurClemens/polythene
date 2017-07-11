@@ -15,6 +15,7 @@
   ],
   "dependencies": {
     "mithril": "1.1.1",
+    "polythene-core": "1.0.0-rc.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-hyperscript": "^3.0.0"

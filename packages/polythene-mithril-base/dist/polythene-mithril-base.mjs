@@ -268,7 +268,11 @@ var StateComponent = function StateComponent(_ref) {
   };
 
   return {
-    view: view || render,
+    view: view ? function (vnode) {
+      return view(vnode, { render: render, renderer: renderer });
+    } : function (vnode) {
+      return render(vnode);
+    },
     oninit: oninit,
     oncreate: oncreate,
     onremove: onUnMount
@@ -287,69 +291,27 @@ var ViewComponent = function ViewComponent(_ref) {
     return "div";
   } : _ref$getElement,
       component = _ref.component,
-      renderView = _ref.renderView,
+      _ref$view = _ref.view,
+      view = _ref$view === undefined ? null : _ref$view,
       _ref$onMount = _ref.onMount,
       onMount = _ref$onMount === undefined ? function () {} : _ref$onMount,
       _ref$onUnMount = _ref.onUnMount,
       onUnMount = _ref$onUnMount === undefined ? function () {} : _ref$onUnMount;
 
 
-  var view = function view(vnode) {
+  var render = function render(vnode) {
     return renderer(component || getElement(vnode), createProps(vnode, { renderer: renderer, requiresKeys: requiresKeys$1, keys: keys }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, requiresKeys: requiresKeys$1, keys: keys }), vnode.attrs.after]);
   };
 
   return {
-    view: renderView || view,
+    view: view ? function (vnode) {
+      return view(vnode, { render: render, renderer: renderer });
+    } : function (vnode) {
+      return render(vnode);
+    },
     oncreate: onMount,
     onremove: onUnMount
   };
 };
 
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var updateState = function updateState(vnode) {
-  if (vnode.attrs.getState) {
-    vnode.attrs.getState({
-      visible: vnode.state.visible,
-      transitioning: vnode.state.transitioning
-    });
-  }
-};
-
-var Toggle = {
-  oninit: function oninit(vnode) {
-    vnode.state = {
-      visible: vnode.attrs.permanent || vnode.attrs.show || false,
-      transitioning: false
-    };
-  },
-  view: function view(vnode) {
-    var attrs = vnode.attrs;
-    var state = vnode.state;
-    if (!attrs.permanent && !state.transitioning) {
-      if (attrs.show) {
-        state.visible = true;
-      } else if (attrs.hide) {
-        state.visible = false;
-      }
-    }
-    return state.visible ? renderer(attrs.instance, _extends$1({}, attrs, {
-      setDisplayState: function setDisplayState(_ref) {
-        var transitioning = _ref.transitioning,
-            visible = _ref.visible;
-
-        if (transitioning !== undefined) {
-          state.transitioning = transitioning;
-        }
-        if (visible !== undefined) {
-          state.visible = visible;
-          state.transitioning = false;
-        }
-        updateState(vnode);
-        setTimeout(renderer.redraw);
-      }
-    })) : renderer("span", { className: attrs.placeholderClassName });
-  }
-};
-
-export { keys, renderer, StateComponent, ViewComponent, Toggle };
+export { keys, renderer, StateComponent, ViewComponent };

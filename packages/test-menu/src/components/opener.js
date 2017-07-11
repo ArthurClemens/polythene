@@ -32,6 +32,7 @@ export default ({ renderer: h, keys: k, Menu, RaisedButton, List, ListTile, menu
           Menu,
           List,
           ListTile,
+          didHide: () => state.show(false)
         })
       ]
     );

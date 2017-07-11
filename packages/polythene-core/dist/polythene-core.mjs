@@ -488,6 +488,15 @@ var Multi = function Multi(_ref) {
   };
 };
 
+var Conditional = {
+  view: function view(vnode, _ref) {
+    var h = _ref.renderer;
+
+    var attrs = vnode.attrs;
+    return attrs.permanent || attrs.show ? h(attrs.instance, attrs) : h("span", { className: attrs.placeholderClassName });
+  }
+};
+
 /*
 Generic show/hide transition module
 */
@@ -619,4 +628,4 @@ var transition = function transition(opts, state) {
   }
 };
 
-export { variables as defaultVariables, isTouch, touchStartEvent, touchEndEvent, moveEvent, endEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, Multi, show, hide, filterSupportedAttributes, unpackAttrs };
+export { variables as defaultVariables, isTouch, touchStartEvent, touchEndEvent, moveEvent, endEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, Multi, Conditional, show, hide, filterSupportedAttributes, unpackAttrs };
