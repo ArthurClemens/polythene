@@ -1,0 +1,12 @@
+{
+  "name": "polythene-test-render-react-html",
+  "description": "",
+  "scripts": {
+    "dev": "http-server -p 3500",
+    "build": "ls",
+    "update": "cd ../polythene-react && yarn run build-standalone && cd - && cp ../polythene-react/dist/polythene-react-standalone.js* js/"
+  },
+  "devDependencies": {
+    "http-server": "^0.10.0"
+  }
+}

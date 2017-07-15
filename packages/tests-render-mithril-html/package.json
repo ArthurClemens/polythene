@@ -1,5 +1,5 @@
 {
-  "name": "polythene-test-render-html",
+  "name": "polythene-test-render-mithril-html",
   "description": "",
   "scripts": {
     "dev": "http-server -p 3200",

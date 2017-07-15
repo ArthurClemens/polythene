@@ -22,7 +22,7 @@ external.forEach(ext => {
 export const createConfig = ({ includeDepencies, lint }) => {
   const config = {
     entry: process.env.ENTRY || "index.js",
-    external: includeDepencies ? ["mithril"] : external,
+    external: includeDepencies ? ["mithril", "react"] : external,
     moduleName: "polythene",
     globals,
     plugins: []
