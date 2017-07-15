@@ -7,6 +7,7 @@
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
+    "build-standalone": "DEPS=1 ENTRY=standalone.js SOURCEMAP=1 DEST=./dist/polythene-react-standalone.js ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd-includes.js",
     "build": "npm run rollup"
   },
   "files": [
@@ -40,6 +41,8 @@
     "polythene-react-tabs": "1.0.0-rc.1",
     "polythene-react-textfield": "1.0.0-rc.1",
     "polythene-react-toolbar": "1.0.0-rc.1",
+    "polythene-style": "1.0.0-rc.1",
+    "polythene-utilities": "1.0.0-rc.1",
     "react": "^15.5.4",
     "react-hyperscript": "^3.0.0"
   },

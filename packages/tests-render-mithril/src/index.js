@@ -1,6 +1,6 @@
 import m from "mithril";
 import { addLayoutStyles, addFastClick } from "polythene-utilities";
-import { addTypography, addRoboto } from "polythene-material-design";
+import { addTypography, addRoboto } from "polythene-style";
 import { rules as css } from "./styles";
 import page from "./page";
 import { renderer as h, List, ListTile, Toolbar } from "polythene-mithril";

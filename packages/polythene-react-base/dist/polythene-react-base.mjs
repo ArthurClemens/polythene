@@ -1,5 +1,5 @@
-import h from 'react-hyperscript';
 import { Component } from 'react';
+import h from 'react-hyperscript';
 import ReactDOM from 'react-dom';
 
 var keys = {
@@ -529,4 +529,4 @@ var ViewComponent = function ViewComponent(_ref) {
   }(Component);
 };
 
-export { keys, renderer, StateComponent, ViewComponent, MithrilToReact };
+export { keys, MithrilToReact, renderer, StateComponent, ViewComponent };

@@ -1,6 +1,6 @@
 export * from "./index";
 import { addLayoutStyles, addFastClick } from "polythene-utilities";
-import { addTypography, addRoboto } from "polythene-material-design";
+import { addTypography, addRoboto } from "polythene-style";
 
 addTypography();
 addRoboto();

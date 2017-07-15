@@ -228,16 +228,30 @@ export const addRoboto = () => (
 
 ### How to prevent Flash of Unstyled Text
 
-To make the body content invisible until the font has loaded, add this CSS:
+To prevent the [Flash of Unstyled Text (FOUT)](https://www.paulirish.com/2009/fighting-the-font-face-fout/), add these styles:
 
 ~~~css
 body {
-  opacity: 0;
+  opacity: 0
 }
 html.wf-active body {
-  opacity: 1;
+  opacity: 1
 }
 ~~~
 
+Or with JavaScript using [styler](../polythene-core-css):
 
+~~~javascript
+import { styler } from "polythene-core-css";
 
+const foutStyles = [{
+  "body": {
+    opacity: 0
+  },
+  "html.wf-active body": {
+    opacity: 1
+  }
+}];
+
+styler.add("fout", foutStyles);
+~~~

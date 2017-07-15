@@ -16,7 +16,6 @@
   ],
   "dependencies": {
     "mithril": "1.1.1",
-    "polythene-material-design": "1.0.0-rc.1",
     "polythene-mithril-base": "1.0.0-rc.1",
     "polythene-mithril-button": "1.0.0-rc.1",
     "polythene-mithril-card": "1.0.0-rc.1",
@@ -43,6 +42,7 @@
     "polythene-mithril-tabs": "1.0.0-rc.1",
     "polythene-mithril-textfield": "1.0.0-rc.1",
     "polythene-mithril-toolbar": "1.0.0-rc.1",
+    "polythene-style": "1.0.0-rc.1",
     "polythene-utilities": "1.0.0-rc.1"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",

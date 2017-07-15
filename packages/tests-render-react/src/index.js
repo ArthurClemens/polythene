@@ -5,7 +5,7 @@ import {
   withRouter,
 } from "react-router-dom";
 import { addLayoutStyles, addFastClick } from "polythene-utilities";
-import { addTypography, addRoboto } from "polythene-material-design";
+import { addTypography, addRoboto } from "polythene-style";
 import { rules as css } from "./styles";
 import { renderer as h, List, Toolbar, ListTile } from "polythene-react";
 import Page from "./Page";
