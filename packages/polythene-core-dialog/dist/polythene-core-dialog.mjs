@@ -121,10 +121,10 @@ var showDialog = function showDialog(state, attrs) {
   state.transitioning(true);
   var transitions = attrs.transitions;
   return show(_extends({}, attrs, transitions.show(state.el, attrs))).then(function () {
-    state.transitioning(false);
     if (attrs.multipleDidShow) {
       attrs.multipleDidShow(id); // this will call attrs.didShow
     }
+    state.transitioning(false);
   });
 };
 
@@ -132,14 +132,16 @@ var hideDialog = function hideDialog(state, attrs) {
   if (state.transitioning()) {
     return Promise.resolve();
   }
+  console.log("hideDialog", "state.transitioning", state.transitioning());
   var id = state.instanceId;
   state.transitioning(true);
   var transitions = attrs.transitions;
   return hide(_extends({}, attrs, transitions.hide(state.el, attrs))).then(function () {
-    state.transitioning(false);
     if (attrs.multipleDidHide) {
+      console.log("will call attrs.multipleDidHide");
       attrs.multipleDidHide(id); // this will call attrs.didHide
     }
+    state.transitioning(false);
   });
 };
 
@@ -191,6 +193,7 @@ var createProps = function createProps(vnode, _ref) {
       // not allowed
       return;
     }
+    console.log("click backdrop");
     hideDialog(state, _extends({}, attrs, {
       hideDelay: 0
     }));
@@ -205,6 +208,7 @@ var createContent = function createContent(vnode, _ref2) {
   var state = vnode.state;
   var attrs = vnode.attrs;
   if (attrs.hideInstance) {
+    console.log("attrs.hideInstance");
     hideDialog(state, attrs);
   }
   var pane = attrs.panes && attrs.panes.length ? attrs.panes[0] : h(DialogPane, {

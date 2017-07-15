@@ -29,10 +29,10 @@ const showDialog = (state, attrs) => {
     attrs,
     transitions.show(state.el, attrs)
   )).then(() => {
-    state.transitioning(false);
     if (attrs.multipleDidShow) {
       attrs.multipleDidShow(id); // this will call attrs.didShow
     }
+    state.transitioning(false);
   });
 };
 
@@ -47,10 +47,10 @@ const hideDialog = (state, attrs) => {
     attrs,
     transitions.hide(state.el, attrs)
   )).then(() => {
-    state.transitioning(false);
     if (attrs.multipleDidHide) {
       attrs.multipleDidHide(id); // this will call attrs.didHide
     }
+    state.transitioning(false);
   });
 };
 

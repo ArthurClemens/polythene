@@ -379,7 +379,7 @@ var genericTests = (function (_ref) {
       }
     }
   }, {
-    name: "Fullwidth buttons",
+    name: "Vertically stacked buttons",
     interactive: true,
     exclude: true,
     component: {

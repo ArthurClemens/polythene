@@ -39,6 +39,7 @@ export const Multi = ({ options: mOptions, renderer }) => {
     if (index !== -1) {
       items.splice(index, 1);
     }
+    onChange({ id, name: "removeItem" });
   };
 
   const replaceItem = (id, newItem) => {

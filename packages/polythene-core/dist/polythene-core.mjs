@@ -301,6 +301,7 @@ var Multi = function Multi(_ref) {
     if (index !== -1) {
       items.splice(index, 1);
     }
+    onChange({ id: id, name: "removeItem" });
   };
 
   var replaceItem = function replaceItem(id, newItem) {

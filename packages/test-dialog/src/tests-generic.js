@@ -142,7 +142,7 @@ export default ({ renderer, keys, Dialog, DialogPane, Button, RaisedButton, Tool
       }
     },
     {
-      name: "Fullwidth buttons",
+      name: "Vertically stacked buttons",
       interactive: true,
       exclude: true,
       component: {
