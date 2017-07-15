@@ -1,0 +1,59 @@
+Arguments: 
+  /usr/local/Cellar/node/7.4.0/bin/node /usr/local/bin/yarn run build
+
+PATH: 
+  /Users/arthur/code/Github Projects/Polythene/polythene/rewrite-universal/node_modules/.bin:/Users/arthur/.config/yarn/link/node_modules/.bin:/Users/arthur/code/Github Projects/Polythene/polythene/rewrite-universal/node_modules/.bin:/Users/arthur/.config/yarn/link/node_modules/.bin:/usr/local/lib/node_modules/yarn/bin/node-gyp-bin:/Users/arthur/google-cloud-sdk/bin:/Users/arthur/go_appengine:/Users/arthur/code/Go/bin:/Users/arthur/.kerl/installs/18.3/bin:/Users/arthur/perl5/bin:/Users/arthur/perl5/bin:/usr/local/ActivePerl-5.20/site/bin:/usr/local/ActivePerl-5.20/bin:/Users/arthur/code/Erlang/Libraries/rebar3:/Users/arthur/code/Erlang/Libraries:/usr/local/bin:/usr/local/share/python:/Users/arthur/code/closure-compiler:/Users/arthur/.rvm/gems/ruby-2.3.3/bin:/Users/arthur/.rvm/gems/ruby-2.3.3@global/bin:/Users/arthur/.rvm/rubies/ruby-2.3.3/bin:/Applications/Postgres.app/Contents/Versions/9.3/bin:~/.npm/bin:/Users/arthur/code/Erlang/zotonic-bootstrap-3/bin:/Users/arthur/code/Erlang/zotonic/bin:/Users/arthur/Libs/ImageMagick-6.8.9/bin:/Applications/Postgres.app/Contents/Versions/9.3/bin:/usr/local/Cellar/gettext/0.19.5.1/bin/:/Users/arthur/.cabal/bin:/Users/arthur/Library/Haskell/bin:/Users/arthur/bin/erlbrew.d:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/arthur/.rvm/bin:/Users/arthur/code/Fonts/css3FontConverter-master:/Users/arthur/code/Fonts/font-compression-reference/woff2:/usr/local/opt/go/libexec/bin
+
+Yarn version: 
+  0.23.3
+
+Node version: 
+  7.4.0
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  {
+    "name": "polythene-react-spinner",
+    "version": "1.0.0-rc.1",
+    "description": "",
+    "main": "dist/polythene-react-spinner.js",
+    "module": "dist/polythene-react-spinner.mjs",
+    "scripts": {
+      "clean": "rm -rf dist && mkdir dist",
+      "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
+      "build": "yarn run rollup"
+    },
+    "files": [
+      "dist",
+      "README.md"
+    ],
+    "dependencies": {
+      "polythene-core": "1.0.0-rc.1",
+      "polythene-core-spinner": "1.0.0-rc.1",
+      "polythene-react-base": "1.0.0-rc.1",
+      "polythene-react-shadow": "1.0.0-rc.1"
+    },
+    "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
+    "license": "MIT"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: ENFILE: file table overflow, open '/Users/arthur/Library/Caches/Yarn/.roadrunner.json'
+      at Object.fs.openSync (fs.js:558:18)
+      at Object.fs.writeFileSync (fs.js:1223:33)
+      at /usr/local/lib/node_modules/yarn/node_modules/roadrunner/index.js:25:6
+      at /usr/local/lib/node_modules/yarn/node_modules/roadrunner/index.js:12:12
+      at emitOne (events.js:101:20)
+      at process.emit (events.js:188:7)
+      at processEmit [as emit] (/usr/local/lib/node_modules/yarn/node_modules/signal-exit/index.js:149:35)
+      at process.exit (internal/process.js:147:15)
+      at exit (/usr/local/lib/node_modules/yarn/lib/cli/index.js:426:13)
+      at process._tickCallback (internal/process/next_tick.js:103:7)

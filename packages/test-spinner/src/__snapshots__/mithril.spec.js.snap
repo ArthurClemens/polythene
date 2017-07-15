@@ -1,0 +1,955 @@
+exports[`test Emulating progress to 100% -- Material Design Progress Spinner 1`] = `
+"<div style=\"position: relative;\">
+  <a class=\"pe-button pe-text-button pe-raised-button\" tabindex=
+  \"0\">
+  <div class=\"pe-button__content\">
+    <div class=\"pe-shadow pe-shadow--animated\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+    </div>
+    <div class=\"pe-ripple pe-ripple--constrained\"></div>
+    <div class=\"pe-button__wash\"></div>
+    <div class=\"pe-button__focus\"></div>
+    <div class=\"pe-button__label\">
+      Run
+    </div>
+  </div></a>
+  <div style=
+  \"display: flex; width: 100%; margin: 20px 0px 0px 0px;\">
+    <div style=\"margin-right: 20px; width: 100%;\">
+      <div class=
+      \"pe-spinner pe-spinner--regular pe-md-progress-spinner\">
+        <div class=\"pe-md-progress-spinner__animation\" style=
+        \"width: 32px; height: 32px;\">
+          <div class=
+          \"pe-md-progress-spinner__circle pe-md-progress-spinner__circle-left\">
+          </div>
+          <div class=
+          \"pe-md-progress-spinner__circle pe-md-progress-spinner__circle-right\">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Interactive (animated) -- Material Design Progress Spinner 1`] = `
+"<div>
+  <div style=
+  \"display: flex; width: 100%; margin: 0px 0px 20px 0px;\">
+    <div style=\"display: flex;\" class=
+    \"pe-slider pe-slider--track pe-slider--min\">
+      <div class=\"pe-slider__track\">
+        <div class=\"pe-slider__track-part pe-slider__track-value\">
+          <div class=\"pe-slider__track-bar\">
+            <div class=\"pe-slider__track-bar-value\"></div>
+          </div>
+        </div>
+        <div class=\"pe-slider__control\" tabindex=\"0\"></div>
+        <div class=\"pe-slider__track-part pe-slider__track-rest\"
+        style=\"max-width: 100%;\">
+          <div class=\"pe-slider__track-bar\">
+            <div class=\"pe-slider__track-bar-value\"></div>
+          </div>
+        </div>
+      </div>
+      <div class=
+      \"pe-spinner pe-spinner--regular pe-spinner--animated pe-md-progress-spinner\">
+      <div class=\"pe-md-progress-spinner__animation\" style=
+      \"width: 32px; height: 32px;\">
+          <div class=
+          \"pe-md-progress-spinner__circle pe-md-progress-spinner__circle-left\">
+          </div>
+          <div class=
+          \"pe-md-progress-spinner__circle pe-md-progress-spinner__circle-right\">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Interactive (animated, updateDuration) -- Material Design Progress Spinner 1`] = `
+"<div>
+  <div style=
+  \"display: flex; width: 100%; margin: 0px 0px 20px 0px;\">
+    <div style=\"display: flex;\" class=
+    \"pe-slider pe-slider--track pe-slider--min\">
+      <div class=\"pe-slider__track\">
+        <div class=\"pe-slider__track-part pe-slider__track-value\">
+          <div class=\"pe-slider__track-bar\">
+            <div class=\"pe-slider__track-bar-value\"></div>
+          </div>
+        </div>
+        <div class=\"pe-slider__control\" tabindex=\"0\"></div>
+        <div class=\"pe-slider__track-part pe-slider__track-rest\"
+        style=\"max-width: 100%;\">
+          <div class=\"pe-slider__track-bar\">
+            <div class=\"pe-slider__track-bar-value\"></div>
+          </div>
+        </div>
+      </div>
+      <div class=
+      \"pe-spinner pe-spinner--regular pe-md-progress-spinner\">
+        <div class=\"pe-md-progress-spinner__animation\" style=
+        \"width: 32px; height: 32px;\">
+          <div class=
+          \"pe-md-progress-spinner__circle pe-md-progress-spinner__circle-left\">
+          </div>
+          <div class=
+          \"pe-md-progress-spinner__circle pe-md-progress-spinner__circle-right\">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><a class=\"pe-button pe-text-button pe-raised-button\"
+  tabindex=\"0\">
+  <div class=\"pe-button__content\">
+    <div class=\"pe-shadow pe-shadow--animated\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+    </div>
+    <div class=\"pe-ripple pe-ripple--constrained\"></div>
+    <div class=\"pe-button__wash\"></div>
+    <div class=\"pe-button__focus\"></div>
+    <div class=\"pe-button__label\">
+      Run
+    </div>
+  </div></a>
+</div>
+"
+`;
+
+exports[`test Material Design Spinner -- dark tone class -- Material Design Spinner 1`] = `
+"<div style=\"position: relative;\">
+  <a class=\"pe-button pe-text-button pe-raised-button\" tabindex=
+  \"0\">
+  <div class=\"pe-button__content\">
+    <div class=\"pe-shadow pe-shadow--animated\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+    </div>
+    <div class=\"pe-ripple pe-ripple--constrained\"></div>
+    <div class=\"pe-button__wash\"></div>
+    <div class=\"pe-button__focus\"></div>
+    <div class=\"pe-button__label\">
+      Toggle
+    </div>
+  </div></a>
+  <div style=\"display: flex; margin: 20px 0px 0px 0px;\">
+    <div style=\"margin-right: 20px;\">
+      <span class=\"pe-spinner__placeholder\"></span>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test No options -- iOS Spinner 1`] = `
+"<div class=
+\"pe-spinner pe-spinner--regular pe-spinner--permanent pe-spinner--visible pe-ios-spinner\">
+<div class=\"pe-ios-spinner__blades\">
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+  </div>
+</div>
+"
+`;
+
+exports[`test No options 1`] = `
+"<div class=
+\"pe-spinner pe-spinner--regular pe-spinner--permanent pe-spinner--visible pe-md-spinner\">
+<div class=\"pe-md-spinner__animation\">
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer-1\">
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=\"pe-md-spinner__gap-patch\">
+        <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+    </div>
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer-2\">
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=\"pe-md-spinner__gap-patch\">
+        <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+    </div>
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer-3\">
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=\"pe-md-spinner__gap-patch\">
+        <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+    </div>
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer-4\">
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=\"pe-md-spinner__gap-patch\">
+        <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: class -- Material Design Spinner 1`] = `
+"<div class=
+\"pe-spinner pe-spinner--regular pe-spinner--permanent pe-spinner--visible pe-md-spinner class-x\">
+<div class=\"pe-md-spinner__animation\">
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer-1\">
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=\"pe-md-spinner__gap-patch\">
+        <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+    </div>
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer-2\">
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=\"pe-md-spinner__gap-patch\">
+        <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+    </div>
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer-3\">
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=\"pe-md-spinner__gap-patch\">
+        <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+    </div>
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer-4\">
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=\"pe-md-spinner__gap-patch\">
+        <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: class -- iOS Spinner 1`] = `
+"<div class=
+\"pe-spinner pe-spinner--regular pe-spinner--permanent pe-spinner--visible pe-ios-spinner class-x\">
+<div class=\"pe-ios-spinner__blades\">
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: className -- Material Design Spinner 1`] = `
+"<div class=
+\"pe-spinner pe-spinner--regular pe-spinner--permanent pe-spinner--visible pe-md-spinner className-x\">
+<div class=\"pe-md-spinner__animation\">
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer-1\">
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=\"pe-md-spinner__gap-patch\">
+        <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+    </div>
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer-2\">
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=\"pe-md-spinner__gap-patch\">
+        <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+    </div>
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer-3\">
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=\"pe-md-spinner__gap-patch\">
+        <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+    </div>
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer-4\">
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=\"pe-md-spinner__gap-patch\">
+        <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: className -- iOS Spinner 1`] = `
+"<div class=
+\"pe-spinner pe-spinner--regular pe-spinner--permanent pe-spinner--visible pe-ios-spinner className-x\">
+<div class=\"pe-ios-spinner__blades\">
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: content -- Material Design Spinner 1`] = `
+"<div class=
+\"pe-spinner pe-spinner--regular pe-spinner--permanent pe-spinner--visible pe-md-spinner\">
+<div class=\"pe-md-spinner__animation\">
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer-1\">
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=\"pe-md-spinner__gap-patch\">
+        <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+    </div>
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer-2\">
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=\"pe-md-spinner__gap-patch\">
+        <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+    </div>
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer-3\">
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=\"pe-md-spinner__gap-patch\">
+        <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+    </div>
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer-4\">
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=\"pe-md-spinner__gap-patch\">
+        <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: content -- iOS Spinner 1`] = `
+"<div class=
+\"pe-spinner pe-spinner--regular pe-spinner--permanent pe-spinner--visible pe-ios-spinner\">
+<div class=\"pe-ios-spinner__blades\">
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: element -- Material Design Spinner 1`] = `
+"<div class=
+\"pe-spinner pe-spinner--regular pe-spinner--permanent pe-spinner--visible pe-md-spinner\">
+<div class=\"pe-md-spinner__animation\">
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer-1\">
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=\"pe-md-spinner__gap-patch\">
+        <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+    </div>
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer-2\">
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=\"pe-md-spinner__gap-patch\">
+        <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+    </div>
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer-3\">
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=\"pe-md-spinner__gap-patch\">
+        <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+    </div>
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer-4\">
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=\"pe-md-spinner__gap-patch\">
+        <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: element -- iOS Spinner 1`] = `
+"<div class=
+\"pe-spinner pe-spinner--regular pe-spinner--permanent pe-spinner--visible pe-ios-spinner\">
+<div class=\"pe-ios-spinner__blades\">
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: id -- Material Design Spinner 1`] = `
+"<div id=\"id-x\" class=
+\"pe-spinner pe-spinner--regular pe-spinner--permanent pe-spinner--visible pe-md-spinner\">
+<div class=\"pe-md-spinner__animation\">
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer-1\">
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=\"pe-md-spinner__gap-patch\">
+        <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+    </div>
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer-2\">
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=\"pe-md-spinner__gap-patch\">
+        <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+    </div>
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer-3\">
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=\"pe-md-spinner__gap-patch\">
+        <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+    </div>
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer-4\">
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=\"pe-md-spinner__gap-patch\">
+        <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: id -- iOS Spinner 1`] = `
+"<div id=\"id-x\" class=
+\"pe-spinner pe-spinner--regular pe-spinner--permanent pe-spinner--visible pe-ios-spinner\">
+<div class=\"pe-ios-spinner__blades\">
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+    <div class=\"pe-ios-spinner__blade\"></div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: permanent -- Material Design Spinner 1`] = `
+"<div class=
+\"pe-spinner pe-spinner--regular pe-spinner--permanent pe-spinner--visible pe-md-spinner\">
+<div class=\"pe-md-spinner__animation\">
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer-1\">
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=\"pe-md-spinner__gap-patch\">
+        <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+    </div>
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer-2\">
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=\"pe-md-spinner__gap-patch\">
+        <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+    </div>
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer-3\">
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=\"pe-md-spinner__gap-patch\">
+        <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+    </div>
+    <div class=\"pe-md-spinner__layer pe-md-spinner__layer-4\">
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-left\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=\"pe-md-spinner__gap-patch\">
+        <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+      <div class=
+      \"pe-md-spinner__circle-clipper pe-md-spinner__circle-clipper-right\">
+      <div class=\"pe-md-spinner__circle\"></div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: permanent 1`] = `
+"<div class=
+\"pe-spinner pe-spinner--regular pe-spinner--permanent pe-spinner--visible pe-md-progress-spinner\">
+<div class=\"pe-md-progress-spinner__animation\" style=
+\"width: 32px; height: 32px;\">
+    <div class=
+    \"pe-md-progress-spinner__circle pe-md-progress-spinner__circle-left\"
+    style=\"clip: rect(0px, 16px, 32px, 0px);\"></div>
+    <div class=
+    \"pe-md-progress-spinner__circle pe-md-progress-spinner__circle-right\"
+    style=\"clip: rect(0px, 16px, 32px, 0px);\"></div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: raised, z -- Material Design Spinner 1`] = `
+"<div style=\"position: relative;\">
+  <a class=\"pe-button pe-text-button pe-raised-button\" tabindex=
+  \"0\">
+  <div class=\"pe-button__content\">
+    <div class=\"pe-shadow pe-shadow--animated\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+    </div>
+    <div class=\"pe-ripple pe-ripple--constrained\"></div>
+    <div class=\"pe-button__wash\"></div>
+    <div class=\"pe-button__focus\"></div>
+    <div class=\"pe-button__label\">
+      Toggle
+    </div>
+  </div></a>
+  <div style=\"display: flex; margin: 20px 0px 0px 0px;\">
+    <div style=\"margin-right: 20px;\">
+      <span class=\"pe-spinner__placeholder\"></span>
+    </div>
+    <div style=\"margin-right: 20px;\">
+      <span class=\"pe-spinner__placeholder\"></span>
+    </div>
+    <div style=\"margin-right: 20px;\">
+      <span class=\"pe-spinner__placeholder\"></span>
+    </div>
+    <div style=\"margin-right: 20px;\">
+      <span class=\"pe-spinner__placeholder\"></span>
+    </div>
+    <div style=\"margin-right: 20px;\">
+      <span class=\"pe-spinner__placeholder\"></span>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: size -- Material Design Spinner 1`] = `
+"<div style=\"position: relative;\">
+  <a class=\"pe-button pe-text-button pe-raised-button\" tabindex=
+  \"0\">
+  <div class=\"pe-button__content\">
+    <div class=\"pe-shadow pe-shadow--animated\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+    </div>
+    <div class=\"pe-ripple pe-ripple--constrained\"></div>
+    <div class=\"pe-button__wash\"></div>
+    <div class=\"pe-button__focus\"></div>
+    <div class=\"pe-button__label\">
+      Toggle
+    </div>
+  </div></a>
+  <div style=\"display: flex; margin: 20px 0px 0px 0px;\">
+    <div style=\"margin-right: 20px;\">
+      <span class=\"pe-spinner__placeholder\"></span>
+    </div>
+    <div style=\"margin-right: 20px;\">
+      <span class=\"pe-spinner__placeholder\"></span>
+    </div>
+    <div style=\"margin-right: 20px;\">
+      <span class=\"pe-spinner__placeholder\"></span>
+    </div>
+    <div style=\"margin-right: 20px;\">
+      <span class=\"pe-spinner__placeholder\"></span>
+    </div>
+    <div style=\"margin-right: 20px;\">
+      <span class=\"pe-spinner__placeholder\"></span>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: size -- iOS Spinner 1`] = `
+"<div style=\"position: relative;\">
+  <a class=\"pe-button pe-text-button pe-raised-button\" tabindex=
+  \"0\">
+  <div class=\"pe-button__content\">
+    <div class=\"pe-shadow pe-shadow--animated\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+    </div>
+    <div class=\"pe-ripple pe-ripple--constrained\"></div>
+    <div class=\"pe-button__wash\"></div>
+    <div class=\"pe-button__focus\"></div>
+    <div class=\"pe-button__label\">
+      Toggle
+    </div>
+  </div></a>
+  <div style=\"display: flex; margin: 20px 0px 0px 0px;\">
+    <div style=\"margin-right: 20px;\">
+      <span class=\"pe-spinner__placeholder\"></span>
+    </div>
+    <div style=\"margin-right: 20px;\">
+      <span class=\"pe-spinner__placeholder\"></span>
+    </div>
+    <div style=\"margin-right: 20px;\">
+      <span class=\"pe-spinner__placeholder\"></span>
+    </div>
+    <div style=\"margin-right: 20px;\">
+      <span class=\"pe-spinner__placeholder\"></span>
+    </div>
+    <div style=\"margin-right: 20px;\">
+      <span class=\"pe-spinner__placeholder\"></span>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: style (color) -- Material Design Spinner 1`] = `
+"<div style=\"position: relative;\">
+  <a class=\"pe-button pe-text-button pe-raised-button\" tabindex=
+  \"0\">
+  <div class=\"pe-button__content\">
+    <div class=\"pe-shadow pe-shadow--animated\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+    </div>
+    <div class=\"pe-ripple pe-ripple--constrained\"></div>
+    <div class=\"pe-button__wash\"></div>
+    <div class=\"pe-button__focus\"></div>
+    <div class=\"pe-button__label\">
+      Toggle
+    </div>
+  </div></a>
+  <div style=\"display: flex; margin: 20px 0px 0px 0px;\">
+    <div style=\"margin-right: 20px;\">
+      <span class=\"pe-spinner__placeholder\"></span>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: style (color) -- iOS Spinner 1`] = `
+"<div style=\"position: relative;\">
+  <a class=\"pe-button pe-text-button pe-raised-button\" tabindex=
+  \"0\">
+  <div class=\"pe-button__content\">
+    <div class=\"pe-shadow pe-shadow--animated\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+    </div>
+    <div class=\"pe-ripple pe-ripple--constrained\"></div>
+    <div class=\"pe-button__wash\"></div>
+    <div class=\"pe-button__focus\"></div>
+    <div class=\"pe-button__label\">
+      Toggle
+    </div>
+  </div></a>
+  <div style=\"display: flex; margin: 20px 0px 0px 0px;\">
+    <div style=\"margin-right: 20px;\">
+      <span class=\"pe-spinner__placeholder\"></span>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Theme (color) -- Material Design Spinner 1`] = `
+"<div style=\"position: relative;\">
+  <a class=\"pe-button pe-text-button pe-raised-button\" tabindex=
+  \"0\">
+  <div class=\"pe-button__content\">
+    <div class=\"pe-shadow pe-shadow--animated\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+    </div>
+    <div class=\"pe-ripple pe-ripple--constrained\"></div>
+    <div class=\"pe-button__wash\"></div>
+    <div class=\"pe-button__focus\"></div>
+    <div class=\"pe-button__label\">
+      Toggle
+    </div>
+  </div></a>
+  <div style=\"display: flex; margin: 20px 0px 0px 0px;\">
+    <div style=\"margin-right: 20px;\">
+      <span class=\"pe-spinner__placeholder\"></span>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Theme (color) -- iOS Spinner 1`] = `
+"<div style=\"position: relative;\">
+  <a class=\"pe-button pe-text-button pe-raised-button\" tabindex=
+  \"0\">
+  <div class=\"pe-button__content\">
+    <div class=\"pe-shadow pe-shadow--animated\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+    </div>
+    <div class=\"pe-ripple pe-ripple--constrained\"></div>
+    <div class=\"pe-button__wash\"></div>
+    <div class=\"pe-button__focus\"></div>
+    <div class=\"pe-button__label\">
+      Toggle
+    </div>
+  </div></a>
+  <div style=\"display: flex; margin: 20px 0px 0px 0px;\">
+    <div style=\"margin-right: 20px;\">
+      <span class=\"pe-spinner__placeholder\"></span>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test iOS Spinner -- dark tone class -- Material Design Spinner 1`] = `
+"<div style=\"position: relative;\">
+  <a class=\"pe-button pe-text-button pe-raised-button\" tabindex=
+  \"0\">
+  <div class=\"pe-button__content\">
+    <div class=\"pe-shadow pe-shadow--animated\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+    </div>
+    <div class=\"pe-ripple pe-ripple--constrained\"></div>
+    <div class=\"pe-button__wash\"></div>
+    <div class=\"pe-button__focus\"></div>
+    <div class=\"pe-button__label\">
+      Toggle
+    </div>
+  </div></a>
+  <div style=\"display: flex; margin: 20px 0px 0px 0px;\">
+    <div style=\"margin-right: 20px;\">
+      <span class=\"pe-spinner__placeholder\"></span>
+    </div>
+  </div>
+</div>
+"
+`;

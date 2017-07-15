@@ -18,6 +18,7 @@ export * from "polythene-mithril-search";
 export * from "polythene-mithril-shadow";
 export * from "polythene-mithril-slider";
 export * from "polythene-mithril-snackbar";
+export * from "polythene-mithril-spinner";
 export * from "polythene-mithril-svg";
 export * from "polythene-mithril-switch";
 export * from "polythene-mithril-tabs";

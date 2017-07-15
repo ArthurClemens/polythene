@@ -19,6 +19,7 @@ export { mithrilTests as search }       from "test-search";
 export { mithrilTests as shadow }       from "test-shadow";
 export { mithrilTests as slider }       from "test-slider";
 export { mithrilTests as snackbar }     from "test-snackbar";
+export { mithrilTests as spinner }      from "test-spinner";
 export { mithrilTests as svg }          from "test-svg";
 export { mithrilTests as switchButton } from "test-switch";
 export { mithrilTests as tabs }         from "test-tabs";

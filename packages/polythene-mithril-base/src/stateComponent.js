@@ -7,7 +7,7 @@ const requiresKeys = false;
 export const StateComponent = ({
   createContent = () => {},
   createProps = () => {},
-  component,
+  component = null,
   getElement = () => "div",
   getInitialState = () => ({}),
   onMount = () => {},

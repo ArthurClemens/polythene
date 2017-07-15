@@ -7,14 +7,14 @@ export const ViewComponent = ({
   createContent = () => {},
   createProps = () => {},
   getElement = () => "div",
-  component,
+  component = null,
   view = null,
   onMount = () => {},
   onUnMount = () => {},
 }) => {
 
-  const render = vnode => {
-    return renderer(
+  const render = vnode =>
+    renderer(
       component || getElement(vnode),
       createProps(vnode, { renderer, requiresKeys, keys }),
       [
@@ -23,7 +23,6 @@ export const ViewComponent = ({
         vnode.attrs.after
       ]
     );
-  };
 
   return {
     view: view

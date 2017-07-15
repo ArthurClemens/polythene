@@ -19,6 +19,7 @@ export { reactTests as search }       from "test-search";
 export { reactTests as shadow }       from "test-shadow";
 export { reactTests as slider }       from "test-slider";
 export { reactTests as snackbar }     from "test-snackbar";
+export { reactTests as spinner }      from "test-spinner";
 export { reactTests as svg }          from "test-svg";
 export { reactTests as switchButton } from "test-switch";
 export { reactTests as tabs }         from "test-tabs";

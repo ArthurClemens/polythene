@@ -18,12 +18,13 @@ import { mithrilTests as mithrilTests$16, reactTests as reactTests$16 } from 'te
 import { mithrilTests as mithrilTests$17, reactTests as reactTests$17 } from 'test-shadow';
 import { mithrilTests as mithrilTests$18, reactTests as reactTests$18 } from 'test-slider';
 import { mithrilTests as mithrilTests$19, reactTests as reactTests$19 } from 'test-snackbar';
-import { mithrilTests as mithrilTests$20, reactTests as reactTests$20 } from 'test-svg';
-import { mithrilTests as mithrilTests$21, reactTests as reactTests$21 } from 'test-switch';
-import { mithrilTests as mithrilTests$22, reactTests as reactTests$22 } from 'test-tabs';
-import { mithrilTests as mithrilTests$23, reactTests as reactTests$23 } from 'test-theme';
-import { mithrilTests as mithrilTests$24, reactTests as reactTests$24 } from 'test-textfield';
-import { mithrilTests as mithrilTests$25, reactTests as reactTests$25 } from 'test-toolbar';
+import { mithrilTests as mithrilTests$20, reactTests as reactTests$20 } from 'test-spinner';
+import { mithrilTests as mithrilTests$21, reactTests as reactTests$21 } from 'test-svg';
+import { mithrilTests as mithrilTests$22, reactTests as reactTests$22 } from 'test-switch';
+import { mithrilTests as mithrilTests$23, reactTests as reactTests$23 } from 'test-tabs';
+import { mithrilTests as mithrilTests$24, reactTests as reactTests$24 } from 'test-theme';
+import { mithrilTests as mithrilTests$25, reactTests as reactTests$25 } from 'test-textfield';
+import { mithrilTests as mithrilTests$26, reactTests as reactTests$26 } from 'test-toolbar';
 
 
 
@@ -48,12 +49,13 @@ var fromMithrilTests = Object.freeze({
 	shadow: mithrilTests$17,
 	slider: mithrilTests$18,
 	snackbar: mithrilTests$19,
-	svg: mithrilTests$20,
-	switchButton: mithrilTests$21,
-	tabs: mithrilTests$22,
-	theme: mithrilTests$23,
-	textfield: mithrilTests$24,
-	toolbar: mithrilTests$25
+	spinner: mithrilTests$20,
+	svg: mithrilTests$21,
+	switchButton: mithrilTests$22,
+	tabs: mithrilTests$23,
+	theme: mithrilTests$24,
+	textfield: mithrilTests$25,
+	toolbar: mithrilTests$26
 });
 
 
@@ -79,16 +81,17 @@ var fromReactTests = Object.freeze({
 	shadow: reactTests$17,
 	slider: reactTests$18,
 	snackbar: reactTests$19,
-	svg: reactTests$20,
-	switchButton: reactTests$21,
-	tabs: reactTests$22,
-	theme: reactTests$23,
-	textfield: reactTests$24,
-	toolbar: reactTests$25
+	spinner: reactTests$20,
+	svg: reactTests$21,
+	switchButton: reactTests$22,
+	tabs: reactTests$23,
+	theme: reactTests$24,
+	textfield: reactTests$25,
+	toolbar: reactTests$26
 });
 
-var mithrilTests$26 = fromMithrilTests;
+var mithrilTests$27 = fromMithrilTests;
 
-var reactTests$26 = fromReactTests;
+var reactTests$27 = fromReactTests;
 
-export { mithrilTests$26 as mithrilTests, reactTests$26 as reactTests };
+export { mithrilTests$27 as mithrilTests, reactTests$27 as reactTests };

@@ -230,7 +230,8 @@ var StateComponent = function StateComponent(_ref) {
       createContent = _ref$createContent === undefined ? function () {} : _ref$createContent,
       _ref$createProps = _ref.createProps,
       createProps = _ref$createProps === undefined ? function () {} : _ref$createProps,
-      component = _ref.component,
+      _ref$component = _ref.component,
+      component = _ref$component === undefined ? null : _ref$component,
       _ref$getElement = _ref.getElement,
       getElement = _ref$getElement === undefined ? function () {
     return "div";
@@ -290,7 +291,8 @@ var ViewComponent = function ViewComponent(_ref) {
       getElement = _ref$getElement === undefined ? function () {
     return "div";
   } : _ref$getElement,
-      component = _ref.component,
+      _ref$component = _ref.component,
+      component = _ref$component === undefined ? null : _ref$component,
       _ref$view = _ref.view,
       view = _ref$view === undefined ? null : _ref$view,
       _ref$onMount = _ref.onMount,

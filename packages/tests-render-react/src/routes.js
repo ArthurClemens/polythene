@@ -61,21 +61,6 @@ export default [
     name: "Menu",
     tests: tests.menu
   },
-  // {
-  //   path: "/md-spinner",
-  //   name: "Material Design spinner",
-  //   tests: mdSpinnerTests
-  // },
-  // {
-  //   path: "/md-progress-spinner",
-  //   name: "Material Design progress spinner",
-  //   tests: mdEndSpinnerTests
-  // },
-  // {
-  //   path: "/ios-spinner",
-  //   name: "iOS spinner",
-  //   tests: iOSSpinnerTests
-  // },
   {
     path: "/notification",
     name: "Notification",
@@ -110,6 +95,11 @@ export default [
     path: "/slider",
     name: "Slider",
     tests: tests.slider
+  },
+  {
+    path: "/spinner",
+    name: "Spinner",
+    tests: tests.spinner
   },
   {
     path: "/svg",

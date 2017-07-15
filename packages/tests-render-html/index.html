@@ -105,6 +105,14 @@
         ),
         m(".row",
           [
+            m("h6", "Spinner"),
+            m(polythene.MaterialDesignSpinner, {
+              permanent: true
+            })
+          ]
+        ),
+        m(".row",
+          [
             m("h6", "Dialog"),
             m(polythene.RaisedButton, {
               label: "Show dialog",
