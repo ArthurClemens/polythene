@@ -7,8 +7,7 @@ export const Timer = () => {
 
   const pause = () => (
     stop(),
-    remaining -= new Date() - startTime,
-    console.log("timer paused")
+    remaining -= new Date() - startTime
   );
 
   const startTimer = () => (

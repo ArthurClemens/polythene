@@ -16,7 +16,7 @@
   "dependencies": {
     "polythene-core-css": "1.0.0-rc.1",
     "polythene-theme": "1.0.0-rc.1",
-    "webfontloader": "^1.6.27"
+    "polythene-utilties": "1.0.0-rc.1"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

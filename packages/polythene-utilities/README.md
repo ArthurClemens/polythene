@@ -203,3 +203,41 @@ m(".layout.vertical", ...)
 .self-stretch
 ~~~
 
+
+## Webfont loader
+
+Wrapper around [webfontloader](https://github.com/typekit/webfontloader).
+
+Loads one or more webfonts (multiple vendors). This is a simple script without loading state callbacks.
+
+~~~javascript
+import { addWebFont } from "polythene-utilities";
+import { styler } from "polythene-core-css";
+
+const robotoStyles = [{
+  "html, body, button, input, select, textarea": {
+    fontFamily: "Roboto, Helvetica, Arial, sans-serif"
+  }
+}];
+
+export const addRoboto = () => (
+  addWebFont('google', 'Roboto:400,500,700,400italic:latin'),
+  styler.add("pe-roboto", robotoStyles)
+);
+~~~
+
+### How to prevent Flash of Unstyled Text
+
+To make the body content invisible until the font has loaded, add this CSS:
+
+~~~css
+body {
+  opacity: 0;
+}
+html.wf-active body {
+  opacity: 1;
+}
+~~~
+
+
+

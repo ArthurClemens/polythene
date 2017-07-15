@@ -1,3 +1,30 @@
+var evts = {
+  "animation": "animationend",
+  "OAnimation": "oAnimationEnd",
+  "MozAnimation": "animationend",
+  "WebkitAnimation": "webkitAnimationEnd"
+};
+
+var findAnimationEndEvent = function findAnimationEndEvent() {
+  var el = document.createElement("fakeelement");
+  for (var a in evts) {
+    if (el.style[a] !== undefined) {
+      return evts[a];
+    }
+  }
+};
+
+var animationEndEvent = findAnimationEndEvent();
+
+var Conditional = {
+  view: function view(vnode, _ref) {
+    var h = _ref.renderer;
+
+    var attrs = vnode.attrs;
+    return attrs.permanent || attrs.show ? h(attrs.instance, attrs) : h("span", { className: attrs.placeholderClassName });
+  }
+};
+
 // Theme variables
 // How to change these variables for your app - see the README.
 
@@ -128,6 +155,46 @@ var variables = {
   z_dialog: 5000
 };
 
+var r = function r(acc, p) {
+  return acc[p] = 1, acc;
+};
+
+/* 
+Separately handled props:
+- class
+- element
+*/
+
+var defaultAttrs = [
+// Universal
+"key", "style", "href", "id", "tabindex",
+
+// Mithril
+"oninit", "oncreate", "onupdate", "onbeforeremove", "onremove", "onbeforeupdate"];
+
+var filterSupportedAttributes = function filterSupportedAttributes(attrs) {
+  var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+      _ref$add = _ref.add,
+      addAttrs = _ref$add === undefined ? [] : _ref$add,
+      _ref$remove = _ref.remove,
+      removeAttrs = _ref$remove === undefined ? [] : _ref$remove;
+
+  var removeLookup = removeAttrs.reduce(r, {});
+  var supported = defaultAttrs.concat(addAttrs).filter(function (item) {
+    return !removeLookup[item];
+  }).reduce(r, {});
+  return Object.keys(attrs).reduce(function (acc, key) {
+    return supported[key] ? acc[key] = attrs[key] : null, acc;
+  }, {});
+};
+
+var unpackAttrs = function unpackAttrs(attrs) {
+  return typeof attrs === "function" ? attrs() : attrs;
+};
+
+var isClient = typeof window !== "undefined";
+var isServer = !isClient;
+
 var isTouch = "ontouchstart" in window || navigator.MaxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
 
 var touchStartEvent = isTouch ? "click" : "mousedown";
@@ -202,61 +269,6 @@ window.addEventListener("keydown", function (e) {
 window.addEventListener(touchEndEvent, function (e) {
   return emit(touchEndEvent, e);
 });
-
-var evts = {
-  "animation": "animationend",
-  "OAnimation": "oAnimationEnd",
-  "MozAnimation": "animationend",
-  "WebkitAnimation": "webkitAnimationEnd"
-};
-
-var findAnimationEndEvent = function findAnimationEndEvent() {
-  var el = document.createElement("fakeelement");
-  for (var a in evts) {
-    if (el.style[a] !== undefined) {
-      return evts[a];
-    }
-  }
-};
-
-var animationEndEvent = findAnimationEndEvent();
-
-var r = function r(acc, p) {
-  return acc[p] = 1, acc;
-};
-
-/* 
-Separately handled props:
-- class
-- element
-*/
-
-var defaultAttrs = [
-// Universal
-"key", "style", "href", "id", "tabindex",
-
-// Mithril
-"oninit", "oncreate", "onupdate", "onbeforeremove", "onremove", "onbeforeupdate"];
-
-var filterSupportedAttributes = function filterSupportedAttributes(attrs) {
-  var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
-      _ref$add = _ref.add,
-      addAttrs = _ref$add === undefined ? [] : _ref$add,
-      _ref$remove = _ref.remove,
-      removeAttrs = _ref$remove === undefined ? [] : _ref$remove;
-
-  var removeLookup = removeAttrs.reduce(r, {});
-  var supported = defaultAttrs.concat(addAttrs).filter(function (item) {
-    return !removeLookup[item];
-  }).reduce(r, {});
-  return Object.keys(attrs).reduce(function (acc, key) {
-    return supported[key] ? acc[key] = attrs[key] : null, acc;
-  }, {});
-};
-
-var unpackAttrs = function unpackAttrs(attrs) {
-  return typeof attrs === "function" ? attrs() : attrs;
-};
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -489,15 +501,6 @@ var Multi = function Multi(_ref) {
   };
 };
 
-var Conditional = {
-  view: function view(vnode, _ref) {
-    var h = _ref.renderer;
-
-    var attrs = vnode.attrs;
-    return attrs.permanent || attrs.show ? h(attrs.instance, attrs) : h("span", { className: attrs.placeholderClassName });
-  }
-};
-
 /*
 Generic show/hide transition module
 */
@@ -629,4 +632,4 @@ var transition = function transition(opts, state) {
   }
 };
 
-export { variables as defaultVariables, isTouch, touchStartEvent, touchEndEvent, moveEvent, endEvent, throttle, subscribe, unsubscribe, emit, animationEndEvent, Multi, Conditional, show, hide, filterSupportedAttributes, unpackAttrs };
+export { animationEndEvent, Conditional, variables as defaultVariables, filterSupportedAttributes, unpackAttrs, isClient, isServer, isTouch, touchStartEvent, touchEndEvent, moveEvent, endEvent, Multi, show, hide, throttle, subscribe, unsubscribe, emit };

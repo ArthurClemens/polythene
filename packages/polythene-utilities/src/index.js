@@ -1,5 +1,6 @@
+export { addFastClick } from "./fastclick";
+export { addWebFont } from "./webfont-loader";
 export { easing } from "./easing";
+export { layoutStyles, addLayoutStyles } from "./layout-styles";
 export { scrollTo } from "./scroll-to";
 export { Timer } from "./timer";
-export { layoutStyles, addLayoutStyles } from "./layout-styles";
-export { addFastClick } from "./fastclick";

@@ -1,6 +1,68 @@
-import { flex, styler } from 'polythene-core-css';
 import FastClick from 'fastclick';
-import { isTouch, subscribe } from 'polythene-core';
+import { isClient, isServer, isTouch, subscribe } from 'polythene-core';
+import { flex, styler } from 'polythene-core-css';
+
+var THROTTLE_DELAY = 100;
+var REINIT_DELAY = THROTTLE_DELAY + 50;
+var layer = document.body;
+
+var fastClick = void 0;
+var timeoutId = void 0;
+var enabled = void 0;
+
+var add = function add() {
+  if (!enabled) {
+    fastClick = new FastClick(layer);
+    enabled = true;
+  }
+};
+
+var remove = function remove() {
+  if (enabled) {
+    fastClick.destroy();
+    enabled = false;
+  }
+};
+
+var handleScroll = function handleScroll() {
+  remove();
+  if (timeoutId) {
+    window.clearTimeout(timeoutId);
+  }
+  timeoutId = window.setTimeout(add, REINIT_DELAY);
+};
+
+var addFastClick = function addFastClick() {
+  if (isTouch) {
+    subscribe("scroll", handleScroll, THROTTLE_DELAY);
+    add();
+  }
+};
+
+if (isClient && !window.WebFontConfig) {
+  window.WebFontConfig = {};
+  (function () {
+    var wf = document.createElement("script");
+    wf.src = (document.location.protocol === "https:" ? "https" : "http") + "://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";
+    wf.type = "text/javascript";
+    wf.async = "true";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(wf, s);
+  })();
+}
+
+var addWebFont = function addWebFont(vendor, family, key) {
+  if (isServer) {
+    return;
+  }
+  var vendorCfg = window.WebFontConfig[vendor] || {};
+  vendorCfg.families = vendorCfg.families || [];
+  vendorCfg.families.push(family);
+  if (key) {
+    vendorCfg.key = key;
+  }
+  window.WebFontConfig[vendor] = vendorCfg;
+};
 
 /*
 https://gist.github.com/gre/1650294
@@ -61,82 +123,6 @@ var easing = {
   easeInOutQuint: function easeInOutQuint(t) {
     return t < .5 ? 16 * t * t * t * t * t : 1 + 16 * --t * t * t * t * t;
   }
-};
-
-/*
- Animated scroll to a position.
- Derived from https://github.com/madebysource/animated-scrollto
- Adapted to Mithril and rewritten to es6.
-*/
-
-var scrollTo = function scrollTo(opts) {
-  var element = opts.element;
-  var which = opts.direction === "horizontal" ? "scrollLeft" : "scrollTop";
-  var to = opts.to;
-  var duration = opts.duration * 1000;
-  var easingFn = opts.easing || easing.easeInOutCubic;
-  var start = element[which];
-  var change = to - start;
-  var animationStart = new Date().getTime();
-  var animating = true;
-  return new Promise(function (resolve) {
-    var animateScroll = function animateScroll() {
-      if (!animating) {
-        return;
-      }
-      requestAnimFrame(animateScroll);
-      var now = new Date().getTime();
-      var percentage = (now - animationStart) / duration;
-      var val = start + change * easingFn(percentage);
-      element[which] = val;
-      if (percentage >= 1) {
-        element[which] = to;
-        animating = false;
-        resolve();
-      }
-    };
-    requestAnimFrame(animateScroll);
-  });
-};
-
-var requestAnimFrame = function () {
-  return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function (callback) {
-    return window.setTimeout(callback, 1000 / 60);
-  };
-}();
-
-var Timer = function Timer() {
-  var timerId = void 0,
-      startTime = void 0,
-      remaining = void 0,
-      cb = void 0;
-
-  var stop = function stop() {
-    return window.clearTimeout(timerId);
-  };
-
-  var pause = function pause() {
-    return stop(), remaining -= new Date() - startTime, console.log("timer paused");
-  };
-
-  var startTimer = function startTimer() {
-    return stop(), startTime = new Date(), timerId = window.setTimeout(cb, remaining);
-  };
-
-  var start = function start(callback, delaySeconds) {
-    return cb = callback, remaining = delaySeconds * 1000, startTimer();
-  };
-
-  var resume = function resume() {
-    return startTimer();
-  };
-
-  return {
-    start: start,
-    pause: pause,
-    resume: resume,
-    stop: stop
-  };
 };
 
 var flex$1 = [{
@@ -229,41 +215,80 @@ var addLayoutStyles = function addLayoutStyles() {
   return styler.add("pe-layout", flex$1, commonStyle);
 };
 
-var THROTTLE_DELAY = 100;
-var REINIT_DELAY = THROTTLE_DELAY + 50;
-var layer = document.body;
+/*
+ Animated scroll to a position.
+ Derived from https://github.com/madebysource/animated-scrollto
+ Adapted to Mithril and rewritten to es6.
+*/
 
-var fastClick = void 0;
-var timeoutId = void 0;
-var enabled = void 0;
-
-var add = function add() {
-  if (!enabled) {
-    fastClick = new FastClick(layer);
-    enabled = true;
-  }
+var scrollTo = function scrollTo(opts) {
+  var element = opts.element;
+  var which = opts.direction === "horizontal" ? "scrollLeft" : "scrollTop";
+  var to = opts.to;
+  var duration = opts.duration * 1000;
+  var easingFn = opts.easing || easing.easeInOutCubic;
+  var start = element[which];
+  var change = to - start;
+  var animationStart = new Date().getTime();
+  var animating = true;
+  return new Promise(function (resolve) {
+    var animateScroll = function animateScroll() {
+      if (!animating) {
+        return;
+      }
+      requestAnimFrame(animateScroll);
+      var now = new Date().getTime();
+      var percentage = (now - animationStart) / duration;
+      var val = start + change * easingFn(percentage);
+      element[which] = val;
+      if (percentage >= 1) {
+        element[which] = to;
+        animating = false;
+        resolve();
+      }
+    };
+    requestAnimFrame(animateScroll);
+  });
 };
 
-var remove = function remove() {
-  if (enabled) {
-    fastClick.destroy();
-    enabled = false;
-  }
+var requestAnimFrame = function () {
+  return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function (callback) {
+    return window.setTimeout(callback, 1000 / 60);
+  };
+}();
+
+var Timer = function Timer() {
+  var timerId = void 0,
+      startTime = void 0,
+      remaining = void 0,
+      cb = void 0;
+
+  var stop = function stop() {
+    return window.clearTimeout(timerId);
+  };
+
+  var pause = function pause() {
+    return stop(), remaining -= new Date() - startTime;
+  };
+
+  var startTimer = function startTimer() {
+    return stop(), startTime = new Date(), timerId = window.setTimeout(cb, remaining);
+  };
+
+  var start = function start(callback, delaySeconds) {
+    return cb = callback, remaining = delaySeconds * 1000, startTimer();
+  };
+
+  var resume = function resume() {
+    return startTimer();
+  };
+
+  return {
+    start: start,
+    pause: pause,
+    resume: resume,
+    stop: stop
+  };
 };
 
-var handleScroll = function handleScroll() {
-  remove();
-  if (timeoutId) {
-    window.clearTimeout(timeoutId);
-  }
-  timeoutId = window.setTimeout(add, REINIT_DELAY);
-};
-
-var addFastClick = function addFastClick() {
-  if (isTouch) {
-    subscribe("scroll", handleScroll, THROTTLE_DELAY);
-    add();
-  }
-};
-
-export { easing, scrollTo, Timer, layoutStyles, addLayoutStyles, addFastClick };
+export { addFastClick, addWebFont, easing, layoutStyles, addLayoutStyles, scrollTo, Timer };
