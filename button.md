@@ -70,5 +70,5 @@ See: `polythene-core-button/src/classes.js`
 
 ## Future
 
-* Option to wait for ripple to finish before url/event is followed
+* Option to wait before url/event is followed
 
