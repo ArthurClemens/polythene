@@ -2,7 +2,7 @@
 
 Displays a text button with a [ripple](ripple.md) effect.
 
-See also: [Raised Button](raisedButton.md), [Icon Button](icon-button.md) and [Floating Action Button](fab.md)
+Button variations: [Raised Button](raisedButton.md), [Icon Button](icon-button.md) and [Floating Action Button](fab.md)
 
 
 
