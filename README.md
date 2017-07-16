@@ -4,7 +4,7 @@
 ## Guides 
 
 * [Migrating from 0.2 to 1.x](packages/docs/Migration.md)
-* [Theming](packages/docs/theme.md)
+* [Theming](theme.md)
 
 
 ## Using the rewrite-universal branch
