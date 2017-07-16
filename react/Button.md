@@ -1,4 +1,4 @@
-[Back to Polythene Button main page](../button.md)
+[Back to Polythene Button main page](../Button.md)
 
 # Button component for React
 
