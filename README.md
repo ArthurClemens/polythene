@@ -1,11 +1,15 @@
 # Polythene v1.0 (UNDER DEVELOPMENT)
 
+[![Join the chat at https://gitter.im/ArthurClemens/Polythene](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ArthurClemens/Polythene?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![CDNJS](https://img.shields.io/cdnjs/v/polythene.svg)](https://cdnjs.com/libraries/polythene)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=9ZXKVTQSW3AFA&lc=NL&item_name=Arthur%20Clemens&item_number=polythene&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
 
 ## Guides
 
-* [Migrating from 0.2 to 1.x](migration.md)
-* [Theming](theme.md)
+Compatible with Mithril 0.2.5. Polythene version 0.3.0. Rewrite for Mithril 1.x is in development.
 
+
+* [Online documentation](http://polythene.js.org)
 
 ## Using the rewrite-universal branch
 
@@ -15,12 +19,21 @@ An example project setup is available at [polythene-mithril-rewrite-branch-start
 
 
 
-## Developing
+## Documentation
+
+* [Online documentation](http://polythene.js.org)
+* [Docs](https://github.com/ArthurClemens/polythene/blob/master/packages/docs/)
+* [Changes from 0.2 to 0.3](https://github.com/ArthurClemens/polythene/blob/master/packages/docs/changes.md)
+
+
+
+## Setup
 
 Polythene is now a monorepo. Components are located inside the "packages" directory.
 
 
-Install Lerna:
+* [Project setup example](https://github.com/ArthurClemens/Polythene-setup)
+
 
 ```
 npm install -g lerna
@@ -57,16 +70,24 @@ Includes Jest snapshots and a viewer to verify the output.
 
 * Run in browser:
 
-* `yarn run dev` - uses Webpack's dev server
+## Installation
 
-Build files:
+* `yarn add polythene`
 
-* `yarn run build` - builds files in `dist`
 
-Update snapshots:
 
-* `yarn run test`
-* `yarn run test:watch`
+## Development
+
+* `yarn`
+* `lerna bootstrap`
+
+### Polythene
+
+* `yarn run build`
+
+### Examples
+
+* `yarn run dev` - runs webpack dev server on port 3000
 
 
 
