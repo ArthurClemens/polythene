@@ -62,7 +62,7 @@ m(Button, {
 To remove the tap delay on mobile devices it is advisable to use a library like [Fastclick](https://github.com/ftlabs/fastclick). But because Fastclick has an unresolved issue with tap events while scrolling on iOS, it is better to use the convenience wrapper provided in "polythene-utilities". This temporarily removes the Fastclick event when an element is being scrolled.
 
 ~~~javascript
-import { addFastClick } from "polythene-utilities"
+import { addFastClick } from "polythene-fastclick"
 
 addFastClick()
 ~~~
