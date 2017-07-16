@@ -1,15 +1,15 @@
 # Button
 
-Displays a text button with a [ripple](Ripple.md) effect.
+Displays a text button with a [ripple](ripple.md) effect.
 
-See also: [Raised Button](RaisedButton.md), [Icon Button](IconButton.md) and [Floating Action Button](FAB.md)
+See also: [Raised Button](raisedButton.md), [Icon Button](icon-button.md) and [Floating Action Button](fab.md)
 
 
 
 ## Usage
 
-* [Usage with Mithril](mithril/Button.md)
-* [Usage with React](react/Button.md)
+* [Usage with Mithril](mithril/button.md)
+* [Usage with React](react/button.md)
 
 
 
@@ -58,7 +58,7 @@ See also: [Raised Button](RaisedButton.md), [Icon Button](IconButton.md) and [Fl
 
 Button is composed from:
 
-* [Ripple](Ripple.md) (when option `ink` is not `false`)
+* [Ripple](ripple.md) (when option `ink` is not `false`)
 
 
 
