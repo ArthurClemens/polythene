@@ -4,9 +4,6 @@ Displays a text button with a [ripple](ripple.md) effect.
 
 Button variations: [Raised Button](raisedButton.md), [Icon Button](icon-button.md), [Floating Action Button](fab.md)
 
-<script async type="text/javascript" src="https://jsfiddle.net/ArthurClemens/1wmhfwbs/embed/js,result/">
-<h2>Basic example</h2>
-</script>
 
 ## Usage
 
