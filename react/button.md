@@ -16,16 +16,6 @@ import { Button } from "polythene-react"
 <Button label="Button" />
 ~~~
 
-Add an onclick event:
-
-~~~jsx
-<Button
-  label="Button"
-  events={{
-    onClick: () => console.log("click")
-  }}
-/>
-~~~
 
 ### With hyperscript
 
@@ -34,17 +24,6 @@ import { renderer as h, Button } from "polythene-react"
 
 h(Button, {
   label: "Button"
-})
-~~~
-
-Add an onclick event:
-
-~~~javascript
-h(Button, {
-  label: "Button",
-  events: {
-    onClick: () => console.log("click")
-  }
 })
 ~~~
 
@@ -66,6 +45,34 @@ h(Button, {
 })
 ~~~
 
+
+## Events
+
+Add an onclick event:
+
+Add an onclick event:
+
+~~~jsx
+<Button
+  label="Button"
+  events={{
+    onClick: () => console.log("click")
+  }}
+/>
+~~~
+
+With hyperscript:
+
+~~~javascript
+h(Button, {
+  label: "Button",
+  events: {
+    onClick: () => console.log("click")
+  }
+})
+~~~
+
+
 ### Router links
 
 React Router is the most popular router library for React. Wrap the component in its `withRouter` HOC.
@@ -84,7 +91,7 @@ withRouter(({ history }) =>
 )
 ~~~
 
-or with hyperscript:
+With hyperscript:
 
 ~~~javascript
 import { withRouter } from "react-router-dom"
@@ -103,7 +110,7 @@ withRouter(({ history }) =>
 
 ## Options
 
-[Button options](Button.md)
+[Button options](../button.md)
 
 
 
