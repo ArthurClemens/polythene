@@ -7,6 +7,7 @@
 ## Components
 
 * [Button](button.md)
+* [Ripple](ripple.md)
 
 ## Mithril
 
