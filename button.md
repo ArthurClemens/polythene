@@ -8,8 +8,8 @@ See also: [Raised Button](RaisedButton.md), [Icon Button](IconButton.md) and [Fl
 
 ## Usage
 
-* [Usage with Mithril](Button-Mithril.md)
-* [Usage with React](Button-React.md)
+* [Usage with Mithril](Mithril/Button.md)
+* [Usage with React](React/Button.md)
 
 
 
