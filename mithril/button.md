@@ -30,6 +30,9 @@ m(Button, {
 })
 ~~~
 
+
+## Events
+
 Add an onclick event:
 
 ~~~javascript
