@@ -4,6 +4,8 @@
 
 * [My Awesome API](README.md)
 
-## Methods
+## Components
 
+* [Button](button.md)
 * [Defining Methods](methods.md)
+
