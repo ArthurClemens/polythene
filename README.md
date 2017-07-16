@@ -3,7 +3,7 @@
 
 ## Guides 
 
-* [Migrating from 0.2 to 1.x](packages/docs/Migration.md)
+* [Migrating from 0.2 to 1.x](migration.md)
 * [Theming](theme.md)
 
 
