@@ -1,4 +1,4 @@
-import defaultVariables from "./variables";
+import { vars } from "./variables";
 
 const fontSize = 14;
 
@@ -11,8 +11,8 @@ export default [
   },
   {
     " h1 small, h2 small, h3 small, h4 small, h5 small, h6 small": {
-      "font-weight": defaultVariables.font_weight_normal,
-      "line-height": defaultVariables.line_height,
+      "font-weight": vars.font_weight_normal,
+      "line-height": vars.line_height,
       "letter-spacing": "-0.02em",
       "font-size": "0.6em"
     }
@@ -20,8 +20,8 @@ export default [
   {
     " h1": {
       "font-size": "56px",
-      "font-weight": defaultVariables.font_weight_normal,
-      "line-height": defaultVariables.line_height,
+      "font-weight": vars.font_weight_normal,
+      "line-height": vars.line_height,
       "margin-top": "24px",
       "margin-bottom": "24px"
     }
@@ -29,7 +29,7 @@ export default [
   {
     " h2": {
       "font-size": "45px",
-      "font-weight": defaultVariables.font_weight_normal,
+      "font-weight": vars.font_weight_normal,
       "line-height": "48px",
       "margin-top": "24px",
       "margin-bottom": "24px"
@@ -38,7 +38,7 @@ export default [
   {
     " h3": {
       "font-size": "34px",
-      "font-weight": defaultVariables.font_weight_normal,
+      "font-weight": vars.font_weight_normal,
       "line-height": "40px",
       "margin-top": "24px",
       "margin-bottom": "24px"
@@ -47,7 +47,7 @@ export default [
   {
     " h4": {
       "font-size": "24px",
-      "font-weight": defaultVariables.font_weight_normal,
+      "font-weight": vars.font_weight_normal,
       "line-height": "32px",
       "-moz-osx-font-smoothing": "grayscale",
       "margin-top": "24px",
@@ -57,7 +57,7 @@ export default [
   {
     " h5": {
       "font-size": "20px",
-      "font-weight": defaultVariables.font_weight_medium,
+      "font-weight": vars.font_weight_medium,
       "line-height": "1",
       "letter-spacing": "-0.02em",
       "margin-top": "24px",
@@ -67,7 +67,7 @@ export default [
   {
     " h6": {
       "font-size": "16px",
-      "font-weight": defaultVariables.font_weight_normal,
+      "font-weight": vars.font_weight_normal,
       "line-height": "24px",
       "letter-spacing": "0.04em",
       "margin-top": "24px",
@@ -78,11 +78,11 @@ export default [
     " html, body": {
       "font-size": fontSize + "px",
       "line-height": "20px",
-      "font-weight": defaultVariables.font_weight_normal,
+      "font-weight": vars.font_weight_normal,
     },
     " p": {
       "font-size": fontSize + "px",
-      "font-weight": defaultVariables.font_weight_normal,
+      "font-weight": vars.font_weight_normal,
       "line-height": "24px",
       "letter-spacing": "0",
       "margin-bottom": "16px"
@@ -90,21 +90,21 @@ export default [
     " blockquote": {
       "position": "relative",
       "font-size": "24px",
-      "font-weight": defaultVariables.font_weight_normal,
+      "font-weight": vars.font_weight_normal,
       "font-style": "italic",
-      "line-height": defaultVariables.line_height,
+      "line-height": vars.line_height,
       "letter-spacing": "0.08em",
       "margin-top": "24px",
       "margin-bottom": "16px"
     },
     " ul, ol": {
       "font-size": fontSize + "px",
-      "font-weight": defaultVariables.font_weight_normal,
+      "font-weight": vars.font_weight_normal,
       "line-height": "24px",
       "letter-spacing": 0
     },
     " b, strong": {
-      "font-weight": defaultVariables.font_weight_medium
+      "font-weight": vars.font_weight_medium
     }
   }
 ];

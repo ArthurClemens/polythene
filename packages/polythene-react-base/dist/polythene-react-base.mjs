@@ -23,6 +23,9 @@ var keys = {
   onmouseup: "onMouseUp",
   onscroll: "onScroll",
   onsubmit: "onSubmit",
+  ontouchend: "onTouchEnd",
+  ontouchmove: "onTouchMove",
+  ontouchstart: "onTouchStart",
   readonly: "readOnly",
   tabindex: "tabIndex"
 };

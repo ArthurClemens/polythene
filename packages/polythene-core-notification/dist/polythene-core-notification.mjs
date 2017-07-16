@@ -1,6 +1,6 @@
-import { filterSupportedAttributes, hide, show } from 'polythene-core';
+import { filterSupportedAttributes, hide, isClient, isServer, show } from 'polythene-core';
 import { Timer } from 'polythene-utilities';
-import { flex, styler } from 'polythene-core-css';
+import { flex, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 
 var classes = {
@@ -19,8 +19,6 @@ var classes = {
   multilineTitle: "pe-notification__title--multiline",
   vertical: "pe-notification--vertical"
 };
-
-var rgba = vars.rgba;
 
 var buttonPaddingH = 8; // padding, inner text space
 
@@ -177,11 +175,11 @@ var stopTimer = function stopTimer(state) {
 };
 
 var prepareShow = function prepareShow(state, attrs) {
-  if (!state.containerEl) {
+  if (!state.containerEl && isClient) {
     // attrs.holderSelector is passed as option to Multiple
     state.containerEl = document.querySelector(attrs.containerSelector || attrs.holderSelector);
   }
-  if (!state.containerEl) {
+  if (!state.containerEl && isClient) {
     console.error("No container element found"); // eslint-disable-line no-console
   }
   if (attrs.containerSelector && state.containerEl) {
@@ -241,6 +239,7 @@ var hideInstance = function hideInstance(state, attrs) {
 };
 
 var setTitleStyles = function setTitleStyles(titleEl) {
+  if (isServer) return;
   var height = titleEl.getBoundingClientRect().height;
   var lineHeight = parseInt(window.getComputedStyle(titleEl).lineHeight, 10);
   var paddingTop = parseInt(window.getComputedStyle(titleEl).paddingTop, 10);

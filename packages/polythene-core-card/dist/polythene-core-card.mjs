@@ -1,5 +1,5 @@
 import { filterSupportedAttributes } from 'polythene-core';
-import { flex, mixin, styler } from 'polythene-core-css';
+import { flex, mixin, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 
 var classes = {
@@ -39,8 +39,6 @@ var classes = {
   primaryTight: "pe-card__primary--tight",
   textTight: "pe-card__text--tight"
 };
-
-var rgba = vars.rgba;
 
 var padding_v = 24;
 var padding_actions_v = 8;

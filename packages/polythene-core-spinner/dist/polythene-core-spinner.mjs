@@ -1,5 +1,5 @@
 import { filterSupportedAttributes, hide, show, unpackAttrs } from 'polythene-core';
-import { mixin, styler } from 'polythene-core-css';
+import { mixin, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 import { easing } from 'polythene-utilities';
 
@@ -22,8 +22,6 @@ var classes = {
   small: "pe-spinner--small",
   visible: "pe-spinner--visible"
 };
-
-var rgba = vars.rgba;
 
 var baseVars = {
   size_small: 3 * vars.grid_unit_component,
@@ -260,8 +258,6 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
 
-var rgba$1 = vars.rgba;
-
 var arc_size = 270; // degrees - amount of circle the arc takes up
 var arc_time = 1.333; // s - time it takes to expand and contract arc
 var arc_start_degrees = 360 / 5 * 3; // degrees - how much the start location of the arc should rotate each time, 216 gives us a 5 pointed star shape (it"s 360/5 * 3). For a 7 pointed star, we might do 360/7 * 3 = 154.286.
@@ -283,13 +279,13 @@ var vars$1 = {
   arc_time: arc_time,
   arc_start_degrees: arc_start_degrees,
 
-  color_light_single: rgba$1(vars.color_primary),
+  color_light_single: rgba(vars.color_primary),
   color_light_1: blue400,
   color_light_2: red500,
   color_light_3: yellow600,
   color_light_4: green500,
 
-  color_dark_single: rgba$1(vars.color_primary),
+  color_dark_single: rgba(vars.color_primary),
   color_dark_1: blue400,
   color_dark_2: red500,
   color_dark_3: yellow600,
@@ -717,8 +713,6 @@ var classes$2 = {
 
 var _extends$6 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var rgba$2 = vars.rgba;
-
 var vars$2 = _extends$6({}, baseVars, {
   border_width_small: baseVars.size_small / baseVars.size_regular * 3,
   border_width_regular: 3,
@@ -727,8 +721,8 @@ var vars$2 = _extends$6({}, baseVars, {
   border_width_fab: baseVars.size_fab / baseVars.size_regular * 3,
   animation_duration: "1.5s",
 
-  color_light: rgba$2(vars.color_primary),
-  color_dark: rgba$2(vars.color_primary)
+  color_light: rgba(vars.color_primary),
+  color_dark: rgba(vars.color_primary)
 });
 
 function _defineProperty$4(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -953,13 +947,11 @@ var classes$3 = {
   blade: "pe-ios-spinner__blade"
 };
 
-var rgba$3 = vars.rgba;
-
 var vars$3 = {
   animation_duration: 1, // seconds
 
-  color_light: rgba$3(vars.color_light_foreground),
-  color_dark: rgba$3(vars.color_dark_foreground)
+  color_light: rgba(vars.color_light_foreground),
+  color_dark: rgba(vars.color_dark_foreground)
 };
 
 function _defineProperty$6(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }

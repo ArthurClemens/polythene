@@ -1,5 +1,5 @@
 import { filterSupportedAttributes, subscribe, unpackAttrs, unsubscribe } from 'polythene-core';
-import { flex, mixin, styler } from 'polythene-core-css';
+import { flex, mixin, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 
 var classes = {
@@ -18,8 +18,6 @@ var classes = {
   hasBottomOverflow: "pe-dialog-pane--overflow-bottom",
   hasTopOverflow: "pe-dialog-pane--overflow-top"
 };
-
-var rgba = vars.rgba;
 
 var vars$1 = {
   padding: 3 * vars.grid_unit_component,

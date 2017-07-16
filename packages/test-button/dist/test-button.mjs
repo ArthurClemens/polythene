@@ -304,7 +304,7 @@ object-assign
 
 /* eslint-disable no-unused-vars */
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -350,7 +350,7 @@ function shouldUseNative() {
 		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
 			test3[letter] = letter;
 		});
-		if (Object.keys(_extends({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
+		if (Object.keys(_extends$1({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
 			return false;
 		}
 
@@ -4975,7 +4975,7 @@ var createHistory$1 = unwrapExports(createMemoryHistory_1);
 
 var _typeof$12 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _extends$1 = Object.assign || function (target) {
+var _extends$2 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -5026,7 +5026,7 @@ var Router = function (_React$Component) {
 
   Router.prototype.getChildContext = function getChildContext() {
     return {
-      router: _extends$1({}, this.context.router, {
+      router: _extends$2({}, this.context.router, {
         history: this.props.history,
         route: {
           location: this.props.history.location,
@@ -5816,7 +5816,7 @@ var matchPath = function matchPath(pathname) {
 
 var _typeof$15 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _extends$2 = Object.assign || function (target) {
+var _extends$3 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -5867,7 +5867,7 @@ var Route = function (_React$Component) {
 
   Route.prototype.getChildContext = function getChildContext() {
     return {
-      router: _extends$2({}, this.context.router, {
+      router: _extends$3({}, this.context.router, {
         route: {
           location: this.props.location || this.context.router.route.location,
           match: this.state.match
@@ -5961,7 +5961,7 @@ Route.childContextTypes = {
 
 var _typeof$17 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _extends$3 = Object.assign || function (target) {
+var _extends$4 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -6013,7 +6013,7 @@ var normalizeLocation = function normalizeLocation(object) {
 var addBasename = function addBasename(basename, location) {
   if (!basename) return location;
 
-  return _extends$3({}, location, {
+  return _extends$4({}, location, {
     pathname: PathUtils_1(basename) + location.pathname
   });
 };
@@ -6025,7 +6025,7 @@ var stripBasename$$1 = function stripBasename$$1(basename, location) {
 
   if (location.pathname.indexOf(base) !== 0) return location;
 
-  return _extends$3({}, location, {
+  return _extends$4({}, location, {
     pathname: location.pathname.substr(base.length)
   });
 };
@@ -6118,7 +6118,7 @@ var StaticRouter = function (_React$Component) {
       block: this.handleBlock
     };
 
-    return react.createElement(Router, _extends$3({}, props, { history: history }));
+    return react.createElement(Router, _extends$4({}, props, { history: history }));
   };
 
   return StaticRouter;
@@ -6265,7 +6265,7 @@ var index$10 = function hoistNonReactStatics(targetComponent, sourceComponent, c
     return targetComponent;
 };
 
-var _extends$4 = Object.assign || function (target) {
+var _extends$5 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -6290,7 +6290,7 @@ var withRouter = function withRouter(Component$$1) {
         remainingProps = _objectWithoutProperties$1(props, ['wrappedComponentRef']);
 
     return react.createElement(Route, { render: function render(routeComponentProps) {
-        return react.createElement(Component$$1, _extends$4({}, remainingProps, routeComponentProps, { ref: wrappedComponentRef }));
+        return react.createElement(Component$$1, _extends$5({}, remainingProps, routeComponentProps, { ref: wrappedComponentRef }));
       } });
   };
 
@@ -6738,7 +6738,7 @@ HashRouter.propTypes = {
 
 var _typeof$20 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _extends$5 = Object.assign || function (target) {
+var _extends$6 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -6824,7 +6824,7 @@ var Link = function (_React$Component) {
 
     var href = this.context.router.history.createHref(typeof to === 'string' ? { pathname: to } : to);
 
-    return react.createElement('a', _extends$5({}, props, { onClick: this.handleClick, href: href }));
+    return react.createElement('a', _extends$6({}, props, { onClick: this.handleClick, href: href }));
   };
 
   return Link;
@@ -6851,7 +6851,7 @@ Link.contextTypes = {
 
 var _typeof2$3 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _extends$6 = Object.assign || function (target) {
+var _extends$7 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -6899,12 +6899,12 @@ var NavLink = function NavLink(_ref) {
 
       var isActive = !!(getIsActive ? getIsActive(match, location) : match);
 
-      return react.createElement(Link, _extends$6({
+      return react.createElement(Link, _extends$7({
         to: to,
         className: isActive ? [activeClassName, className].filter(function (i) {
           return i;
         }).join(' ') : className,
-        style: isActive ? _extends$6({}, style, activeStyle) : style
+        style: isActive ? _extends$7({}, style, activeStyle) : style
       }, rest));
     }
   });
@@ -7072,7 +7072,7 @@ var classCallCheck = function classCallCheck(instance, Constructor) {
   }
 };
 
-var _extends$7 = Object.assign || function (target) {
+var _extends$8 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];
 
@@ -7113,7 +7113,7 @@ var possibleConstructorReturn = function possibleConstructorReturn(self, call) {
 var createEagerElementUtil = function createEagerElementUtil(hasKey, isReferentiallyTransparent, type, props, children) {
   if (!hasKey && isReferentiallyTransparent) {
     if (children) {
-      return type(_extends$7({}, props, { children: children }));
+      return type(_extends$8({}, props, { children: children }));
     }
     return type(props);
   }
@@ -7179,7 +7179,7 @@ var withHandlers = function withHandlers(handlers) {
       };
 
       WithHandlers.prototype.render = function render() {
-        return factory(_extends$7({}, this.props, this.handlers));
+        return factory(_extends$8({}, this.props, this.handlers));
       };
 
       return WithHandlers;
@@ -7248,7 +7248,7 @@ var withState = function withState(stateName, stateUpdaterName, initialState) {
       WithState.prototype.render = function render() {
         var _babelHelpers$extends;
 
-        return factory(_extends$7({}, this.props, (_babelHelpers$extends = {}, _babelHelpers$extends[stateName] = this.state.stateValue, _babelHelpers$extends[stateUpdaterName] = this.updateStateValue, _babelHelpers$extends)));
+        return factory(_extends$8({}, this.props, (_babelHelpers$extends = {}, _babelHelpers$extends[stateName] = this.state.stateValue, _babelHelpers$extends[stateUpdaterName] = this.updateStateValue, _babelHelpers$extends)));
       };
 
       return WithState;
@@ -7300,10 +7300,23 @@ function compose() {
   });
 }
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var reactTests = function reactTests(_ref) {
   var Button$$1 = _ref.Button,
       h = _ref.renderer;
 
+
+  var SecondaryButton = function SecondaryButton(props) {
+    return react.createElement(Button$$1, _extends({ className: "react-secondary-button", borders: true }, props));
+  };
+
+  Button$$1.theme(".react-secondary-button", {
+    color_light_text: "#673ab7",
+    color_light_border: "#673ab7",
+    color_dark_text: "yellow",
+    color_dark_border: "yellow"
+  });
 
   var withCounter = compose(withState("counter", "setCounter", 0), withHandlers({
     increment: function increment(_ref2) {
@@ -7414,6 +7427,11 @@ var reactTests = function reactTests(_ref) {
     name: "Option: inactivate (2s) (JSX)",
     component: function component() {
       return react.createElement(Button$$1, { label: "Inactivated for 2s", inactivate: 2 });
+    }
+  }, {
+    name: "HOC (JSX)",
+    component: function component() {
+      return react.createElement(SecondaryButton, { label: "Secondary Button" });
     }
   }];
 };

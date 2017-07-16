@@ -1,4 +1,4 @@
-import { animationEndEvent, filterSupportedAttributes, isTouch, touchEndEvent } from 'polythene-core';
+import { filterSupportedAttributes, getAnimationEndEvent, isServer, isTouch, pointerEndEvent } from 'polythene-core';
 import { mixin, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 
@@ -81,7 +81,7 @@ styler.generateStyles([selector], vars$1, fns);
 
 function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var ANIMATION_END_EVENT = animationEndEvent;
+var ANIMATION_END_EVENT = getAnimationEndEvent();
 var DEFAULT_START_OPACITY = 0.2;
 var DEFAULT_END_OPACITY = 0.0;
 var DEFAULT_START_SCALE = 0.1;
@@ -191,17 +191,14 @@ var updateAnimationState = function updateAnimationState(state) {
 };
 
 var onMount = function onMount(vnode) {
-  if (!vnode.dom) {
+  if (!vnode.dom && isServer) {
     return;
   }
   var state = vnode.state;
   var attrs = vnode.attrs;
 
   var tap = function tap(e) {
-    if (attrs.disabled) {
-      return;
-    }
-    if (!attrs.multi && state.animating) {
+    if (attrs.disabled || !attrs.multi && state.animating) {
       return;
     }
     if (attrs.start) {
@@ -219,9 +216,9 @@ var onMount = function onMount(vnode) {
   };
   var triggerEl = attrs.target ? attrs.target : vnode.dom && vnode.dom.parentElement;
 
-  triggerEl.addEventListener(touchEndEvent, tap, false);
+  triggerEl.addEventListener(pointerEndEvent, tap, false);
   state.cleanUp = function () {
-    return triggerEl.removeEventListener(touchEndEvent, tap, false);
+    return triggerEl.removeEventListener(pointerEndEvent, tap, false);
   };
 };
 

@@ -1,11 +1,11 @@
-import { styler } from "polythene-core-css";
+import { styler, rgba } from "polythene-core-css";
 import { vars } from "polythene-theme";
 
 const styles = [{
   " .volume": {
     " .pe-header": {
       fontSize: "14px",
-      color: vars.rgba(vars.color_light_foreground, vars.blend_light_text_secondary)
+      color: rgba(vars.color_light_foreground, vars.blend_light_text_secondary)
     },
     " .pe-slider": {
       color: "#009688",
@@ -14,7 +14,7 @@ const styles = [{
   },
   " .pe-dark-tone.volume": {
     " .pe-header": {
-      color: vars.rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary)
+      color: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary)
     }
   }
 }];

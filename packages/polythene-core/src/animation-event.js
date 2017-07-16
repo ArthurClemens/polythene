@@ -1,3 +1,4 @@
+import { isClient } from "./iso";
 
 const evts = {
   "animation": "animationend",
@@ -6,13 +7,13 @@ const evts = {
   "WebkitAnimation": "webkitAnimationEnd"
 };
 
-const findAnimationEndEvent = () => {
-  const el = document.createElement("fakeelement");
-  for (let a in evts) {
-    if (el.style[a] !== undefined) {
-      return evts[a];
+export const getAnimationEndEvent = () => {
+  if (isClient) {
+    const el = document.createElement("fakeelement");
+    for (let a in evts) {
+      if (el.style[a] !== undefined) {
+        return evts[a];
+      }
     }
   }
 };
-
-export const animationEndEvent = findAnimationEndEvent();

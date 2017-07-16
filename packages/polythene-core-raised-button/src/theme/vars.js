@@ -1,9 +1,8 @@
 import { vars } from "polythene-theme";
-
-const rgba = vars.rgba;
+import { rgba } from "polythene-core-css";
 
 export default {
-  color_light_background:          "#e0e0e0", // grey-300
+  color_light_background:          "#fff",
   color_light_text:                rgba(vars.color_light_foreground, vars.blend_light_text_primary),
   color_light_hover_background:    "transparent",
   color_light_focus_background:    rgba(vars.color_light_foreground, vars.blend_light_background_hover),

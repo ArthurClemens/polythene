@@ -1,0 +1,22 @@
+{
+  "name": "tests-render-mithril-isomorphic",
+  "private": true,
+  "description": "Polythene for Mithril isomorphic tests",
+  "license": "MIT",
+  "scripts": {
+    "test": "mocha && yarn run lint",
+    "lint": "node ../../node_modules/eslint test/"
+  },
+  "directories": {},
+  "devDependencies": {},
+  "dependencies": {
+    "mithril": "1.1.3",
+    "mithril-node-render": "2.1.0",
+    "mocha": "^3.4.2",
+    "polythene-mithril": "1.0.0-rc.1",
+    "polythene-mithril-button": "1.0.0-rc.1",
+    "polythene-mithril-raised-button": "1.0.0-rc.1",
+    "polythene-mithril-slider": "1.0.0-rc.1",
+    "polythene-mithril-snackbar": "1.0.0-rc.1"
+  }
+}

@@ -1,8 +1,8 @@
-import { isTouch, animationEndEvent } from "polythene-core";
+import { isTouch, getAnimationEndEvent } from "polythene-core";
 import { styler } from "polythene-core-css";
 import { vars } from "polythene-theme";
 
-const ANIMATION_END_EVENT =    animationEndEvent;
+const ANIMATION_END_EVENT =    getAnimationEndEvent();
 const DEFAULT_START_OPACITY =  0.2;
 const DEFAULT_END_OPACITY =    0.0;
 const DEFAULT_START_SCALE =    0.1;

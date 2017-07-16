@@ -1,6 +1,5 @@
 import { vars } from "polythene-theme";
-
-const rgba = vars.rgba;
+import { rgba } from "polythene-core-css";
 
 export default {
   padding:                vars.grid_unit_component, // vertical padding
@@ -15,4 +14,3 @@ export default {
   // color_light_background: "inherit",
   // color_dark_background:  "inherit"
 };
-

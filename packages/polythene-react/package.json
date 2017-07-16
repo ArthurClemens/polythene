@@ -8,13 +8,14 @@
     "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
     "build-standalone": "DEPS=1 ENTRY=standalone.js SOURCEMAP=1 DEST=./dist/polythene-react-standalone.js ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd-includes.js",
-    "build": "npm run rollup"
+    "build": "npm run rollup && yarn run build-standalone"
   },
   "files": [
     "dist",
     "README.md"
   ],
   "dependencies": {
+    "polythene-fastclick": "1.0.0-rc.1",
     "polythene-react-base": "1.0.0-rc.1",
     "polythene-react-button": "1.0.0-rc.1",
     "polythene-react-card": "1.0.0-rc.1",

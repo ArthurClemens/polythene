@@ -1,4 +1,4 @@
-import { styler } from 'polythene-core-css';
+import { rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 
 var classes = {
@@ -11,11 +11,10 @@ var classes = {
   compact: "pe-icon-button--compact"
 };
 
-var rgba = vars.rgba;
 var padding = (vars.grid_unit_icon_button - vars.unit_icon_size) / 2; // 12
 var padding_compact = (vars.grid_unit_icon_button - vars.unit_icon_size) / 3; // 8
-var color_light = vars.rgba(vars.color_light_foreground, vars.blend_light_text_secondary);
-var color_dark = vars.rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary);
+var color_light = rgba(vars.color_light_foreground, vars.blend_light_text_secondary);
+var color_dark = rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary);
 
 var vars$1 = {
   padding: padding,
@@ -37,7 +36,6 @@ var vars$1 = {
   color_dark_wash: color_dark,
   color_dark_wash_opacity: vars.blend_dark_background_hover_medium,
   color_dark_focus_opacity: vars.blend_dark_background_hover_medium
-
 };
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }

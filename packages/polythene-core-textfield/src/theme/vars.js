@@ -1,6 +1,6 @@
 import { vars } from "polythene-theme";
+import { rgba } from "polythene-core-css";
 
-const rgba = vars.rgba;
 const line_height_input = 20;
 const input_padding_v = 7;
 

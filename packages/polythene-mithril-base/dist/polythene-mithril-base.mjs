@@ -9,8 +9,8 @@ var keys = {
   maxlength: "maxlength",
   minlength: "minlength",
   onblur: "onblur",
-  onclick: "onclick",
   onchange: "onchange",
+  onclick: "onclick",
   onfocus: "onfocus",
   oninput: "oninput",
   onkeydown: "onkeydown",
@@ -21,6 +21,9 @@ var keys = {
   onmouseup: "onmouseup",
   onscroll: "onscroll",
   onsubmit: "onsubmit",
+  ontouchend: "ontouchend",
+  ontouchmove: "ontouchmove",
+  ontouchstart: "ontouchstart",
   readonly: "readonly",
   tabindex: "tabindex"
 };

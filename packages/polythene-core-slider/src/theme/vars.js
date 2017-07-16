@@ -1,6 +1,5 @@
 import { vars } from "polythene-theme";
-
-const rgba = vars.rgba;
+import { rgba } from "polythene-core-css";
 
 const lightForeground =                vars.color_light_foreground;
 const darkForeground =                 vars.color_dark_foreground;
@@ -48,10 +47,10 @@ export default {
   color_light_thumb_on_focus_opacity:  .11,
   color_light_thumb_inactive:          rgba(lightForeground, .26),
   color_light_tick:                    rgba(lightForeground, 1),
-  color_light_icon:                    vars.rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
-  color_light_disabled_icon:           vars.rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
-  color_light_label:                   vars.rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
-  color_light_disabled_label:          vars.rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
+  color_light_icon:                    rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
+  color_light_disabled_icon:           rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
+  color_light_label:                   rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
+  color_light_disabled_label:          rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
 
   color_dark_track_active:             rgba(darkForeground, .3),
   color_dark_track_inactive:           rgba(darkForeground, .2),
@@ -65,8 +64,8 @@ export default {
   color_dark_thumb_on_focus_opacity:   .11,
   color_dark_thumb_inactive:           rgba(darkForeground, .2),
   color_dark_tick:                     rgba(darkForeground, 1),
-  color_dark_icon:                     vars.rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
-  color_dark_disabled_icon:            vars.rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
-  color_dark_label:                    vars.rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
-  color_dark_disabled_label:           vars.rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled)
+  color_dark_icon:                     rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
+  color_dark_disabled_icon:            rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
+  color_dark_label:                    rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
+  color_dark_disabled_label:           rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled)
 };

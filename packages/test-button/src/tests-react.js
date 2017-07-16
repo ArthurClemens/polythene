@@ -6,6 +6,17 @@ import { compose, withState, withHandlers } from "recompose";
 
 const reactTests = ({ Button, renderer: h }) => {
 
+  const SecondaryButton = props =>
+    <Button className="react-secondary-button" borders {...props} />;
+
+  Button.theme(".react-secondary-button", {
+    color_light_text: "#673ab7",
+    color_light_border: "#673ab7",
+    color_dark_text: "yellow",
+    color_dark_border: "yellow"
+  });
+
+
   const withCounter = compose(
     withState("counter", "setCounter", 0),
     withHandlers({
@@ -129,7 +140,10 @@ const reactTests = ({ Button, renderer: h }) => {
       name: "Option: inactivate (2s) (JSX)",
       component: () => <Button label="Inactivated for 2s" inactivate={2} />
     },
-
+    {
+      name: "HOC (JSX)",
+      component: () => <SecondaryButton label="Secondary Button" />
+    },
   ];
 };
 

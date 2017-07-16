@@ -1,5 +1,5 @@
-import { filterSupportedAttributes, touchStartEvent } from 'polythene-core';
-import { mixin, styler } from 'polythene-core-css';
+import { filterSupportedAttributes, pointerStartEvent } from 'polythene-core';
+import { mixin, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 
 var classes = {
@@ -33,7 +33,6 @@ var classes = {
   stateReadonly: "pe-textfield--readonly"
 };
 
-var rgba = vars.rgba;
 var line_height_input = 20;
 var input_padding_v = 7;
 
@@ -655,7 +654,7 @@ var createContent = function createContent(vnode, _ref3) {
   }, [label ? h("label", _defineProperty({
     key: "label",
     className: classes.label
-  }, k["on" + touchStartEvent], function () {
+  }, k["on" + pointerStartEvent], function () {
     if (!inactive) {
       setTimeout(function () {
         state.inputEl.focus();

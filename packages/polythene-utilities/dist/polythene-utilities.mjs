@@ -1,43 +1,5 @@
-import FastClick from 'fastclick';
-import { isClient, isServer, isTouch, subscribe } from 'polythene-core';
+import { isClient, isServer } from 'polythene-core';
 import { flex, styler } from 'polythene-core-css';
-
-var THROTTLE_DELAY = 100;
-var REINIT_DELAY = THROTTLE_DELAY + 50;
-var layer = document.body;
-
-var fastClick = void 0;
-var timeoutId = void 0;
-var enabled = void 0;
-
-var add = function add() {
-  if (!enabled) {
-    fastClick = new FastClick(layer);
-    enabled = true;
-  }
-};
-
-var remove = function remove() {
-  if (enabled) {
-    fastClick.destroy();
-    enabled = false;
-  }
-};
-
-var handleScroll = function handleScroll() {
-  remove();
-  if (timeoutId) {
-    window.clearTimeout(timeoutId);
-  }
-  timeoutId = window.setTimeout(add, REINIT_DELAY);
-};
-
-var addFastClick = function addFastClick() {
-  if (isTouch) {
-    subscribe("scroll", handleScroll, THROTTLE_DELAY);
-    add();
-  }
-};
 
 if (isClient && !window.WebFontConfig) {
   window.WebFontConfig = {};
@@ -52,9 +14,7 @@ if (isClient && !window.WebFontConfig) {
 }
 
 var addWebFont = function addWebFont(vendor, family, key) {
-  if (isServer) {
-    return;
-  }
+  if (isServer) return;
   var vendorCfg = window.WebFontConfig[vendor] || {};
   vendorCfg.families = vendorCfg.families || [];
   vendorCfg.families.push(family);
@@ -291,4 +251,4 @@ var Timer = function Timer() {
   };
 };
 
-export { addFastClick, addWebFont, easing, layoutStyles, addLayoutStyles, scrollTo, Timer };
+export { addWebFont, easing, layoutStyles, addLayoutStyles, scrollTo, Timer };

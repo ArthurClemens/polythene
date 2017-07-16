@@ -1,5 +1,5 @@
 import { vars } from "polythene-theme";
-const rgba = vars.rgba;
+import { rgba } from "polythene-core-css";
 
 export default {
   sizes:                  [1, 1.5, 2, 3, 4, 5, 6, 7],

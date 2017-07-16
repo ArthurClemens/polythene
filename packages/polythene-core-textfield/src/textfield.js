@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, touchStartEvent } from "polythene-core";
+import { filterSupportedAttributes, pointerStartEvent } from "polythene-core";
 import { customTheme } from "./theme";
 import classes from "./classes";
 
@@ -260,7 +260,7 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
               className: classes.label,
               // In IE10 the label catches click events on the field
               // the function causes the input to get focus
-              [k["on" + touchStartEvent]]: () => {
+              [k["on" + pointerStartEvent]]: () => {
                 if (!inactive) {
                   setTimeout(() => {
                     state.inputEl.focus();

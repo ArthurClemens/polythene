@@ -2,6 +2,7 @@
 Helper module to manage multiple items of the same component type.
 */
 
+import { isClient } from "./iso";
 import { unpackAttrs } from "./attrs";
 import { emit } from "./events";
 
@@ -178,7 +179,7 @@ export const Multi = ({ options: mOptions, renderer }) => {
     const candidates = items.filter(item => 
       item.show && item.spawn === spawn
     );
-    if (mOptions.bodyShowClass) {
+    if (mOptions.bodyShowClass && isClient) {
       document.body.classList[candidates.length ? "add" : "remove"](mOptions.bodyShowClass);
     }
     return !candidates.length

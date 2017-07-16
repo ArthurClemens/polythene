@@ -1,0 +1,1 @@
+export { addFastClick } from "./fastclick";

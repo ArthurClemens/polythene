@@ -1,5 +1,5 @@
-import { endEvent, filterSupportedAttributes, isTouch, moveEvent } from 'polythene-core';
-import { flex, mixin, styler } from 'polythene-core-css';
+import { filterSupportedAttributes, isClient, isTouch, pointerEndMoveEvent, pointerMoveEvent, pointerStartMoveEvent } from 'polythene-core';
+import { flex, mixin, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 
 var classes = {
@@ -28,8 +28,6 @@ var classes = {
   isAtMin: "pe-slider--min",
   isDisabled: "pe-slider--disabled"
 };
-
-var rgba = vars.rgba;
 
 var lightForeground = vars.color_light_foreground;
 var darkForeground = vars.color_dark_foreground;
@@ -77,10 +75,10 @@ var vars$1 = {
   color_light_thumb_on_focus_opacity: .11,
   color_light_thumb_inactive: rgba(lightForeground, .26),
   color_light_tick: rgba(lightForeground, 1),
-  color_light_icon: vars.rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
-  color_light_disabled_icon: vars.rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
-  color_light_label: vars.rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
-  color_light_disabled_label: vars.rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
+  color_light_icon: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
+  color_light_disabled_icon: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
+  color_light_label: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
+  color_light_disabled_label: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
 
   color_dark_track_active: rgba(darkForeground, .3),
   color_dark_track_inactive: rgba(darkForeground, .2),
@@ -94,10 +92,10 @@ var vars$1 = {
   color_dark_thumb_on_focus_opacity: .11,
   color_dark_thumb_inactive: rgba(darkForeground, .2),
   color_dark_tick: rgba(darkForeground, 1),
-  color_dark_icon: vars.rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
-  color_dark_disabled_icon: vars.rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
-  color_dark_label: vars.rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
-  color_dark_disabled_label: vars.rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled)
+  color_dark_icon: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
+  color_dark_disabled_icon: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
+  color_dark_label: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
+  color_dark_disabled_label: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled)
 };
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -124,6 +122,7 @@ var layout = (function (selector, componentVars) {
     userSelect: "none",
     height: componentVars.height + "px",
     marginTop: (componentVars.height - componentVars.track_height) / 2 + "px ",
+    alignItems: "center",
 
     " > .pe-icon": [flex.layoutCenter, {
       height: componentVars.height + "px"
@@ -451,7 +450,10 @@ var focus = function focus(state, el) {
 };
 
 var positionFromEvent = function positionFromEvent(e, isVertical) {
-  return isTouch ? isVertical ? e.touches[0].pageY : e.touches[0].pageX : isVertical ? e.pageY : e.pageX;
+  return (
+    // isVertical not yet implemented
+    isTouch && e.touches ? isVertical ? e.touches[0].pageY : e.touches[0].pageX : isVertical ? e.pageY : e.pageX
+  );
 };
 
 var updatePinPosition = function updatePinPosition(state) {
@@ -481,7 +483,7 @@ var generateTickMarks = function generateTickMarks(h, min, max, stepSize) {
 };
 
 var readRangeData = function readRangeData(state) {
-  if (state.controlEl) {
+  if (state.controlEl && isClient) {
     // range is from the far left to the far right minus the thumb width (max x is at the left side of the thumb)
     state.controlWidth = vars$1.thumb_size;
     state.rangeWidth = state.trackEl.getBoundingClientRect().width - state.controlWidth;
@@ -528,15 +530,18 @@ var startDrag = function startDrag(state, attrs, e) {
   var endDrag = function endDrag() {
     if (!state.isDragging()) return;
     deFocus(state);
-    window.removeEventListener(moveEvent, drag);
-    window.removeEventListener(endEvent, endDrag);
+    if (isClient) {
+      window.removeEventListener(pointerMoveEvent, drag);
+      window.removeEventListener(pointerEndMoveEvent, endDrag);
+    }
     state.isDragging(false);
     state.isActive(false);
   };
 
-  window.addEventListener(moveEvent, drag);
-  window.addEventListener(endEvent, endDrag);
-
+  if (isClient) {
+    window.addEventListener(pointerMoveEvent, drag);
+    window.addEventListener(pointerEndMoveEvent, endDrag);
+  }
   readRangeData(state);
 
   if (attrs.pin) {
@@ -556,7 +561,7 @@ var startTrack = function startTrack(state, attrs, e) {
 };
 
 var createSlider = function createSlider(vnode, _ref) {
-  var _ref4;
+  var _ref3;
 
   var h = _ref.h,
       k = _ref.k,
@@ -582,7 +587,7 @@ var createSlider = function createSlider(vnode, _ref) {
   var flexRestValue = 1 - fraction;
   var flexRestCss = flexRestValue + " 1 0%";
 
-  return h("div", _extends({}, { className: classes.track }, interactiveTrack && !attrs.disabled && !isTouch ? _defineProperty({}, k.onmousedown, onStartTrack) : null, interactiveTrack && !attrs.disabled && isTouch ? _defineProperty({}, k.ontouchstart, onStartTrack) : null), [h("div", {
+  return h("div", _extends({}, { className: classes.track }, interactiveTrack && !attrs.disabled && _defineProperty({}, k["on" + pointerStartMoveEvent], onStartTrack)), [h("div", {
     className: classes.trackPart + " " + classes.trackPartValue,
     key: "trackPartValue",
     style: {
@@ -593,11 +598,11 @@ var createSlider = function createSlider(vnode, _ref) {
   }, h("div", { className: classes.trackBar }, h("div", { className: classes.trackBarValue }))), h("div", _extends({}, {
     className: classes.control,
     key: "control"
-  }, attrs.disabled ? { disabled: true } : (_ref4 = {}, _defineProperty(_ref4, k.tabindex, attrs[k.tabindex] || 0), _defineProperty(_ref4, k.onfocus, function () {
+  }, attrs.disabled ? { disabled: true } : (_ref3 = {}, _defineProperty(_ref3, k.tabindex, attrs[k.tabindex] || 0), _defineProperty(_ref3, k.onfocus, function () {
     return focus(state, state.controlEl);
-  }), _defineProperty(_ref4, k.onblur, function () {
+  }), _defineProperty(_ref3, k.onblur, function () {
     return deFocus(state);
-  }), _defineProperty(_ref4, k.onkeydown, function (e) {
+  }), _defineProperty(_ref3, k.onkeydown, function (e) {
     if (e.which === 27) {
       // ESCAPE
       state.controlEl.blur(e);
@@ -616,7 +621,7 @@ var createSlider = function createSlider(vnode, _ref) {
     }
     readRangeData(state);
     updatePinPosition(state);
-  }), _ref4), !attrs.disabled && !isTouch ? _defineProperty({}, k.onmousedown, onInitDrag) : null, !attrs.disabled && isTouch ? _defineProperty({}, k.ontouchstart, onInitDrag) : null, attrs.events ? attrs.events : null, hasTicks ? { step: stepCount } : null), attrs.icon ? h("div", {
+  }), _ref3), !attrs.disabled && _defineProperty({}, k["on" + pointerStartMoveEvent], onInitDrag), attrs.events ? attrs.events : null, hasTicks ? { step: stepCount } : null), attrs.icon ? h("div", {
     className: classes.thumb,
     key: "icon"
   }, attrs.icon) : null), h("div", {
@@ -718,8 +723,8 @@ var onMount = function onMount(vnode) {
   }
 };
 
-var createProps = function createProps(vnode, _ref7) {
-  var k = _ref7.keys;
+var createProps = function createProps(vnode, _ref5) {
+  var k = _ref5.keys;
 
   var state = vnode.state;
   var attrs = vnode.attrs;
@@ -738,9 +743,9 @@ var createProps = function createProps(vnode, _ref7) {
   });
 };
 
-var createContent = function createContent(vnode, _ref8) {
-  var h = _ref8.renderer,
-      k = _ref8.keys;
+var createContent = function createContent(vnode, _ref6) {
+  var h = _ref6.renderer,
+      k = _ref6.keys;
 
   var attrs = vnode.attrs;
   var hasTicks = attrs.ticks !== undefined && attrs.ticks !== false;

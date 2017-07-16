@@ -3,9 +3,7 @@ import { scrollTo } from 'polythene-utilities';
 import { vars } from 'polythene-theme';
 import { classes, vars as vars$1 } from 'polythene-core-button';
 import { vars as vars$2 } from 'polythene-core-icon-button';
-import { flex, mixin, styler } from 'polythene-core-css';
-
-var rgba = vars.rgba;
+import { flex, mixin, rgba, styler } from 'polythene-core-css';
 
 var fontSize = vars$1.font_size;
 var tab_label_line_height = 1.1 * fontSize;

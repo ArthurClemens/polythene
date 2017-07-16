@@ -1,4 +1,3 @@
-export { addFastClick } from "./fastclick";
 export { addWebFont } from "./webfont-loader";
 export { easing } from "./easing";
 export { layoutStyles, addLayoutStyles } from "./layout-styles";

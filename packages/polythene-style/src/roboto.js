@@ -8,6 +8,6 @@ const robotoStyles = [{
 }];
 
 export const addRoboto = () => (
-  addWebFont('google', 'Roboto:400,500,700,400italic:latin'),
+  addWebFont("google", "Roboto:400,500,700,400italic:latin"),
   styler.add("pe-roboto", robotoStyles)
 );

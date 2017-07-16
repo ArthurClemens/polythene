@@ -1,4 +1,4 @@
-import { mixin, styler } from 'polythene-core-css';
+import { mixin, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 import { layout, vars as vars$1 } from 'polythene-core-selection-control';
 import { vars as vars$2 } from 'polythene-core-icon-button';
@@ -14,7 +14,6 @@ var classes = {
 
 var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var rgba = vars.rgba;
 var hit_area_padding = (vars.grid_unit_icon_button - vars.unit_icon_size) / 2; // 12
 
 var vars$3 = _extends$2({}, vars$1, {

@@ -1,14 +1,4 @@
-/*
-Testing 2 theming methods:
-1. Style variables
-2. Deriving components
-*/
-
-import { renderer, Button, FAB, Icon, IconButton } from "polythene-mithril";
-
-// import list from "polythene-list";
-// import listTile from "polythene-list-tile";
-
+import { renderer, Button, FAB, Icon, IconButton, List, ListTile } from "polythene-mithril";
 import genericTests from "./tests-generic"; // [1]
 
 const h = renderer;
@@ -41,5 +31,5 @@ const mithrilTests = () => [
 ];
 
 export default []
-  .concat(genericTests({ Button, FAB, Icon, IconButton, renderer /*, list, listTile*/ }))
+  .concat(genericTests({ Button, FAB, Icon, IconButton, List, ListTile, renderer /*, list, listTile*/ }))
   .concat(mithrilTests());

@@ -1,5 +1,5 @@
 import { filterSupportedAttributes, hide, show, subscribe, unsubscribe } from 'polythene-core';
-import { flex, styler } from 'polythene-core-css';
+import { flex, rgba, styler } from 'polythene-core-css';
 import { classes } from 'polythene-core-menu';
 import { vars } from 'polythene-theme';
 
@@ -19,8 +19,6 @@ var classes$1 = {
   // lookup
   menuContent: classes.content
 };
-
-var rgba = vars.rgba;
 
 var vars$1 = {
   border_radius: vars.unit_block_border_radius,

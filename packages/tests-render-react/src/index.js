@@ -4,7 +4,8 @@ import {
   Route,
   withRouter,
 } from "react-router-dom";
-import { addLayoutStyles, addFastClick } from "polythene-utilities";
+import { addLayoutStyles } from "polythene-utilities";
+import { addFastClick } from "polythene-fastclick";
 import { addTypography, addRoboto } from "polythene-style";
 import { rules as css } from "./styles";
 import { renderer as h, List, Toolbar, ListTile } from "polythene-react";

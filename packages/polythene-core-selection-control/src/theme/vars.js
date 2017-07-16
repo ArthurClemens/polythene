@@ -1,6 +1,5 @@
 import { vars } from "polythene-theme";
-
-const rgba = vars.rgba;
+import { rgba } from "polythene-core-css";
 
 export default {
   label_font_size:                     2 * vars.grid_unit_component, // 16
@@ -11,7 +10,7 @@ export default {
   icon_size:                           3 * vars.grid_unit_component,
   animation_duration:                  vars.animation_duration,
 
-  color_light_on:                      vars.rgba(vars.color_primary),
+  color_light_on:                      rgba(vars.color_primary),
   color_light_off:                     rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
   color_light_label:                   rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
   color_light_disabled:                rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
@@ -28,10 +27,10 @@ export default {
 
   color_light_focus_on:                rgba(vars.color_primary),
   color_light_focus_on_opacity:        .11,
-  color_light_focus_off:                rgba(vars.color_light_foreground),
+  color_light_focus_off:               rgba(vars.color_light_foreground),
   color_light_focus_off_opacity:       .07,
 
-  color_dark_on:                       vars.rgba(vars.color_primary),
+  color_dark_on:                       rgba(vars.color_primary),
   color_dark_off:                      rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
   color_dark_label:                    rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
   color_dark_disabled:                 rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),

@@ -1,5 +1,5 @@
 import { vars } from "polythene-theme";
-const rgba = vars.rgba;
+import { rgba } from "polythene-core-css";
 
 export default {
   size_small:   3 * vars.grid_unit_component,

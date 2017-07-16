@@ -1,5 +1,5 @@
 import { Icon, Slider, TextField, keys, renderer } from 'polythene-mithril';
-import { styler } from 'polythene-core-css';
+import { rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 import { Icon as Icon$1, Slider as Slider$1, TextField as TextField$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 
@@ -9,7 +9,7 @@ var styles = [{
   " .volume": {
     " .pe-header": {
       fontSize: "14px",
-      color: vars.rgba(vars.color_light_foreground, vars.blend_light_text_secondary)
+      color: rgba(vars.color_light_foreground, vars.blend_light_text_secondary)
     },
     " .pe-slider": {
       color: "#009688",
@@ -18,7 +18,7 @@ var styles = [{
   },
   " .pe-dark-tone.volume": {
     " .pe-header": {
-      color: vars.rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary)
+      color: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary)
     }
   }
 }];
@@ -399,7 +399,7 @@ var styles$1 = [{
     },
     " .pe-header": {
       fontSize: "14px",
-      color: vars.rgba(vars.color_light_foreground, vars.blend_light_text_secondary)
+      color: rgba(vars.color_light_foreground, vars.blend_light_text_secondary)
     },
     " .pe-slider": {
       color: "#009688",
@@ -416,6 +416,7 @@ var styles$1 = [{
     " .pe-textfield": {
       color: "#009688",
       width: inputWidth + "px",
+      paddingBottom: 0,
 
       " .pe-textfield__input": {
         textAlign: "center"
@@ -4295,7 +4296,7 @@ var styles$2 = [{
     },
     " .pe-header": {
       fontSize: "14px",
-      color: vars.rgba(vars.color_light_foreground, vars.blend_light_text_secondary)
+      color: rgba(vars.color_light_foreground, vars.blend_light_text_secondary)
     },
     " .pe-slider": {
       color: "#009688",
@@ -4312,6 +4313,7 @@ var styles$2 = [{
     " .pe-textfield": {
       color: "#009688",
       width: inputWidth$1 + "px",
+      paddingBottom: 0,
 
       " .pe-textfield__input": {
         textAlign: "center"

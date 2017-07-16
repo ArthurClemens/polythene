@@ -1,7 +1,6 @@
-
 import { vars } from "polythene-theme";
 import baseVars from "../../base/theme/vars";
-const rgba = vars.rgba;
+import { rgba } from "polythene-core-css";
 
 export default Object.assign(
   {},

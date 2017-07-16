@@ -1,5 +1,5 @@
 import { filterSupportedAttributes } from 'polythene-core';
-import { flex, styler } from 'polythene-core-css';
+import { flex, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 
 var classes = {
@@ -12,8 +12,6 @@ var classes = {
   searchFullWidth: "pe-search--full-width",
   searchInset: "pe-search--inset"
 };
-
-var rgba = vars.rgba;
 
 var insetSideMargin = 8;
 

@@ -1,4 +1,4 @@
-import { isTouch, touchStartEvent, touchEndEvent, subscribe } from "polythene-core";
+import { isServer, pointerStartMoveEvent, pointerEndEvent, subscribe } from "polythene-core";
 import { customTheme } from "./theme";
 import classes from "./classes";
 
@@ -12,7 +12,7 @@ let tapStart,
   tapEndAll = () => {},
   downButtons = [];
 
-subscribe(touchEndEvent, () => tapEndAll());
+subscribe(pointerEndEvent, () => tapEndAll());
 
 const animateZ = (which, vnode) => {
   const zBase = vnode.state.zBase;
@@ -32,25 +32,25 @@ const tapHandler = (which, vnode) => {
   if (which === "down") {
     downButtons.push(Object.assign({}, vnode));
   }
-  // no z animation on touch
   const animateOnTap = vnode.attrs.animateOnTap !== false ? true : false;
-  if (animateOnTap && !isTouch) {
+  if (animateOnTap) {
     animateZ(which, vnode);
   }
 };
 
 const initTapEvents = vnode => {
+  if (isServer) return;
   tapStart = () => tapHandler("down", vnode);
   tapEndAll = () => {
     downButtons.map(buttonVnode =>
       tapHandler("up", buttonVnode));
     downButtons = [];
   };
-  vnode.dom.addEventListener(touchStartEvent, tapStart);
+  vnode.dom.addEventListener(pointerStartMoveEvent, tapStart);
 };
 
 const clearTapEvents = vnode =>
-  vnode.dom.removeEventListener(touchStartEvent, tapStart);
+  vnode.dom.removeEventListener(pointerStartMoveEvent, tapStart);
 
 export const getInitialState = (vnode, createStream) => {
   const attrs = vnode.attrs;
@@ -67,7 +67,6 @@ export const getInitialState = (vnode, createStream) => {
 
 export const onMount = vnode => {
   const state = vnode.state;
-  const attrs = vnode.attrs;
   if (vnode.dom && !state.tapEventsInited()) {
     initTapEvents(vnode);
     state.tapEventsInited(true);

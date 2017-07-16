@@ -1,4 +1,4 @@
-import { touchEndEvent, filterSupportedAttributes } from "polythene-core";
+import { pointerEndEvent, filterSupportedAttributes, isServer } from "polythene-core";
 import { customTheme } from "./theme";
 import animation from "./theme/animation";
 import classes from "./classes";
@@ -37,17 +37,14 @@ const updateAnimationState = state =>
   state.animating = Object.keys(state.animations).length > 0;
 
 export const onMount = vnode => {
-  if (!vnode.dom) {
+  if (!vnode.dom && isServer) {
     return;
   }
   const state = vnode.state;
   const attrs = vnode.attrs;
 
   const tap = e => {
-    if (attrs.disabled) {
-      return;
-    }
-    if (!attrs.multi && state.animating) {
+    if (attrs.disabled || (!attrs.multi && state.animating)) {
       return;
     }
     if (attrs.start) {
@@ -67,10 +64,10 @@ export const onMount = vnode => {
   const triggerEl = attrs.target
     ? attrs.target
     : vnode.dom && vnode.dom.parentElement;
-    
-  triggerEl.addEventListener(touchEndEvent, tap, false);
+  
+  triggerEl.addEventListener(pointerEndEvent, tap, false);
   state.cleanUp = () =>
-    triggerEl.removeEventListener(touchEndEvent, tap, false);
+    triggerEl.removeEventListener(pointerEndEvent, tap, false);
 };
 
 export const onUnMount = ({ state }) =>

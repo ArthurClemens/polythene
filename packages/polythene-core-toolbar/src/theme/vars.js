@@ -1,6 +1,5 @@
 import { vars } from "polythene-theme";
-
-const rgba = vars.rgba;
+import { rgba } from "polythene-core-css";
 
 const padding_side =            vars.grid_unit_component * 2 - 12; // 16 - 12 = 4
 const title_padding =           vars.grid_unit_component * 9 - vars.grid_unit_component * 6 - padding_side; // 72 - 48 - 4

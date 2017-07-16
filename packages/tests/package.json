@@ -14,7 +14,6 @@
     "README.md"
   ],
   "dependencies": {
-    "mithril": "1.1.1",
     "test-button": "1.0.0-rc.1",
     "test-card": "1.0.0-rc.1",
     "test-checkbox": "1.0.0-rc.1",
@@ -26,7 +25,6 @@
     "test-layout-styles": "1.0.0-rc.1",
     "test-list": "1.0.0-rc.1",
     "test-list-tile": "1.0.0-rc.1",
-    "test-spinner": "1.0.0-rc.1",
     "test-menu": "1.0.0-rc.1",
     "test-notification": "1.0.0-rc.1",
     "test-radio-button": "1.0.0-rc.1",
@@ -36,6 +34,7 @@
     "test-shadow": "1.0.0-rc.1",
     "test-slider": "1.0.0-rc.1",
     "test-snackbar": "1.0.0-rc.1",
+    "test-spinner": "1.0.0-rc.1",
     "test-svg": "1.0.0-rc.1",
     "test-switch": "1.0.0-rc.1",
     "test-tabs": "1.0.0-rc.1",

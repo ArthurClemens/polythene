@@ -25,7 +25,8 @@ export default (selector, componentVars) => {
         userSelect: "none",
         height: componentVars.height + "px",
         marginTop: ((componentVars.height - componentVars.track_height) / 2) + "px ",
-
+        alignItems: "center",
+        
         " > .pe-icon": [
           flex.layoutCenter,
           {

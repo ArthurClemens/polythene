@@ -1,5 +1,5 @@
 import { vars } from "polythene-theme";
-const rgba = vars.rgba;
+import { rgba } from "polythene-core-css";
 
 const buttonPaddingH = 8; // padding, inner text space
 

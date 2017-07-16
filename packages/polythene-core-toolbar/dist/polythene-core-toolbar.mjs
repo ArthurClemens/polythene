@@ -1,5 +1,5 @@
 import { filterSupportedAttributes } from 'polythene-core';
-import { flex, mixin, styler } from 'polythene-core-css';
+import { flex, mixin, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 
 var classes = {
@@ -12,8 +12,6 @@ var classes = {
   compact: "pe-toolbar--compact",
   indentedTitle: "pe-toolbar__title--indent"
 };
-
-var rgba = vars.rgba;
 
 var padding_side = vars.grid_unit_component * 2 - 12; // 16 - 12 = 4
 var title_padding = vars.grid_unit_component * 9 - vars.grid_unit_component * 6 - padding_side; // 72 - 48 - 4

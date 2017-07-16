@@ -1,9 +1,11 @@
 import FastClick from "fastclick";
-import { isTouch, subscribe } from "polythene-core";
+import { isTouch, subscribe, isClient } from "polythene-core";
 
 const THROTTLE_DELAY = 100;
 const REINIT_DELAY = THROTTLE_DELAY + 50;
-const layer = document.body;
+const layer = isClient
+  ? document.body
+  : { body: {} };
 
 let fastClick;
 let timeoutId;
@@ -26,13 +28,13 @@ const remove = () => {
 const handleScroll = () => {
   remove();
   if (timeoutId) {
-    window.clearTimeout(timeoutId);
+    clearTimeout(timeoutId);
   }
-  timeoutId = window.setTimeout(add, REINIT_DELAY);
+  timeoutId = setTimeout(add, REINIT_DELAY);
 };
 
 export const addFastClick = () => {
-  if (isTouch) {
+  if (isTouch && isClient) {
     subscribe("scroll", handleScroll, THROTTLE_DELAY);
     add();
   }

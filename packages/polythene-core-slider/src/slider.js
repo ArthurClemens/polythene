@@ -1,4 +1,4 @@
-import { isTouch, moveEvent, endEvent } from "polythene-core";
+import { isTouch, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, isClient } from "polythene-core";
 import { filterSupportedAttributes } from "polythene-core";
 import { customTheme } from "./theme";
 import themeVars from "./theme/vars";
@@ -22,10 +22,11 @@ const focus = (state, el) => {
   state.hasFocus(true);
 };
 
-const positionFromEvent = (e, isVertical) =>
-  isTouch
+const positionFromEvent = (e, isVertical) => (
+  // isVertical not yet implemented
+  isTouch && e.touches
     ? isVertical ? e.touches[0].pageY : e.touches[0].pageX
-    : isVertical ? e.pageY : e.pageX;
+    : isVertical ? e.pageY : e.pageX);
 
 const updatePinPosition = state => {
   if (state.controlEl && state.pinEl) {
@@ -54,7 +55,7 @@ const generateTickMarks = (h, min, max, stepSize) => {
 };
 
 const readRangeData = state => {
-  if (state.controlEl) {
+  if (state.controlEl && isClient) {
     // range is from the far left to the far right minus the thumb width (max x is at the left side of the thumb)
     state.controlWidth = themeVars.thumb_size;
     state.rangeWidth = state.trackEl.getBoundingClientRect().width - state.controlWidth;
@@ -98,15 +99,18 @@ const startDrag = (state, attrs, e) => {
   const endDrag = () => {
     if (!state.isDragging()) return;
     deFocus(state);
-    window.removeEventListener(moveEvent, drag);
-    window.removeEventListener(endEvent, endDrag);
+    if (isClient) {
+      window.removeEventListener(pointerMoveEvent, drag);
+      window.removeEventListener(pointerEndMoveEvent, endDrag);
+    }
     state.isDragging(false);
     state.isActive(false);
   };
 
-  window.addEventListener(moveEvent, drag);
-  window.addEventListener(endEvent, endDrag);
-
+  if (isClient) {
+    window.addEventListener(pointerMoveEvent, drag);
+    window.addEventListener(pointerEndMoveEvent, endDrag);
+  }
   readRangeData(state);
 
   if (attrs.pin) {
@@ -131,8 +135,9 @@ const createSlider = (vnode, { h, k, hasTicks, interactiveTrack }) => {
   const fraction = state.fraction();
   const stepCount = Math.max(10, parseInt(attrs.step, 10) || 1); // not more than 100 steps on the screen
 
-  const onStartTrack = e =>
-    startTrack(state, attrs, e);
+  const onStartTrack = e => (
+    startTrack(state, attrs, e)
+  );
 
   const onInitDrag = e => {
     readRangeData(state);
@@ -148,12 +153,9 @@ const createSlider = (vnode, { h, k, hasTicks, interactiveTrack }) => {
     Object.assign(
       {},
       { className: classes.track },
-      interactiveTrack && !attrs.disabled && !isTouch
-        ? { [k.onmousedown]: onStartTrack }
-        : null,
-      interactiveTrack && !attrs.disabled && isTouch
-        ? { [k.ontouchstart]: onStartTrack }
-        : null
+      interactiveTrack && !attrs.disabled && {
+        [k[`on${pointerStartMoveEvent}`]]: onStartTrack
+      }
     ),
     [
       h("div",
@@ -203,12 +205,9 @@ const createSlider = (vnode, { h, k, hasTicks, interactiveTrack }) => {
               updatePinPosition(state);
             }
           },
-        !attrs.disabled && !isTouch
-          ? { [k.onmousedown]: onInitDrag }
-          : null,
-        !attrs.disabled && isTouch
-          ? { [k.ontouchstart]: onInitDrag }
-          : null,
+        !attrs.disabled && {
+          [k[`on${pointerStartMoveEvent}`]]: onInitDrag
+        },
         attrs.events
           ? attrs.events
           : null,

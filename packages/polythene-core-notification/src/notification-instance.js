@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, show, hide } from "polythene-core";
+import { filterSupportedAttributes, show, hide, isClient, isServer } from "polythene-core";
 import { Timer } from "polythene-utilities";
 import { customTheme } from "./theme";
 import classes from "./classes";
@@ -31,11 +31,11 @@ const stopTimer = state => {
 };
 
 const prepareShow = (state, attrs) => {
-  if (!state.containerEl) {
+  if (!state.containerEl && isClient) {
     // attrs.holderSelector is passed as option to Multiple
     state.containerEl = document.querySelector(attrs.containerSelector || attrs.holderSelector);
   }
-  if (!state.containerEl) {
+  if (!state.containerEl && isClient) {
     console.error("No container element found"); // eslint-disable-line no-console
   }
   if (attrs.containerSelector && state.containerEl) {
@@ -111,6 +111,7 @@ const hideInstance = (state, attrs) => {
 };
 
 const setTitleStyles = titleEl => {
+  if (isServer) return;
   const height = titleEl.getBoundingClientRect().height;
   const lineHeight = parseInt(window.getComputedStyle(titleEl).lineHeight, 10);
   const paddingTop = parseInt(window.getComputedStyle(titleEl).paddingTop, 10);

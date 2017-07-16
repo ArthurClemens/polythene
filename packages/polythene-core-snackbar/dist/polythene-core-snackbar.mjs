@@ -1,5 +1,5 @@
 import { classes, coreNotificationInstance, vars } from 'polythene-core-notification';
-import { flex, styler } from 'polythene-core-css';
+import { flex, rgba, styler } from 'polythene-core-css';
 import { vars as vars$1 } from 'polythene-theme';
 
 var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -16,8 +16,6 @@ var classes$1 = _extends$2({}, classes, {
 });
 
 var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var rgba = vars$1.rgba;
 
 var vars$2 = _extends$3({}, vars, {
   border_radius: 0,

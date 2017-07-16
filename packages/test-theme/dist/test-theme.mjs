@@ -1,5 +1,5 @@
-import { Button, FAB, Icon, IconButton, renderer } from 'polythene-mithril';
-import { Button as Button$1, FAB as FAB$1, Icon as Icon$1, IconButton as IconButton$1, renderer as renderer$1 } from 'polythene-react';
+import { Button, FAB, Icon, IconButton, List, ListTile, renderer } from 'polythene-mithril';
+import { Button as Button$1, FAB as FAB$1, Icon as Icon$1, IconButton as IconButton$1, List as List$1, ListTile as ListTile$1, renderer as renderer$1 } from 'polythene-react';
 
 var alarmSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3V9z\"/></svg>";
 
@@ -8,6 +8,8 @@ var genericTests = (function (_ref) {
       FAB$$1 = _ref.FAB,
       Icon$$1 = _ref.Icon,
       IconButton$$1 = _ref.IconButton,
+      List$$1 = _ref.List,
+      ListTile$$1 = _ref.ListTile,
       h = _ref.renderer;
 
 
@@ -37,15 +39,17 @@ var genericTests = (function (_ref) {
     color_background: "#fff"
   });
 
-  // list.theme(".tests-custom-theme-blue-list", {
-  //   color_light_border: "#2196F3"
-  // });
+  List$$1.theme(".tests-custom-theme-blue-list", {
+    color_light_border: "#2196F3"
+  });
 
-  // listTile.theme(".tests-custom-theme-red-list-tile", {
-  //   color_light_title: "red"
-  // });
+  ListTile$$1.theme(".tests-custom-theme-red-list-tile", {
+    color_light_title: "red"
+  });
 
   return [{
+    section: "Style variables"
+  }, {
     name: "Theme with style variables: button (should be blue)",
     component: Button$$1,
     attrs: {
@@ -64,14 +68,6 @@ var genericTests = (function (_ref) {
     component: Button$$1,
     attrs: {
       label: "Unaffected button"
-    }
-  }, {
-    name: "Theme with theme file (global primary color): FAB (should be orange)",
-    component: FAB$$1,
-    attrs: {
-      icon: {
-        svg: trustedAlarmSVG
-      }
     }
   }, {
     name: "Theme with style variables: FAB (should be red)",
@@ -98,19 +94,45 @@ var genericTests = (function (_ref) {
         svg: trustedAlarmSVG
       }
     }
+  }, {
+    name: "Theme with style variables: list (should have blue borders)",
+    component: List$$1,
+    attrs: {
+      className: "tests-custom-theme-blue-list",
+      borders: true,
+      tiles: [h(ListTile$$1, {
+        title: "Jennifer Barker",
+        subtitle: "Starting post doc"
+      }), h(ListTile$$1, {
+        title: "Ali Connors",
+        subtitle: "Brunch this weekend?"
+      }), h(ListTile$$1, {
+        title: "Mike Eden",
+        subtitle: "Watch a game"
+      })]
+    }
+  }, {
+    name: "Theme with style variables: list tile (should have red titles)",
+    component: List$$1,
+    attrs: {
+      tiles: [h(ListTile$$1, {
+        className: "tests-custom-theme-red-list-tile",
+        title: "Jennifer Barker",
+        subtitle: "Starting post doc"
+      }), h(ListTile$$1, {
+        className: "tests-custom-theme-red-list-tile",
+        title: "Ali Connors",
+        subtitle: "Brunch this weekend?"
+      }), h(ListTile$$1, {
+        className: "tests-custom-theme-red-list-tile",
+        title: "Mike Eden",
+        subtitle: "Watch a game"
+      })]
+    }
   }];
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-/*
-Testing 2 theming methods:
-1. Style variables
-2. Deriving components
-*/
-
-// import list from "polythene-list";
-// import listTile from "polythene-list-tile";
 
 var h = renderer;
 
@@ -141,7 +163,7 @@ var mithrilTests = function mithrilTests() {
   }];
 };
 
-var testsMithril = [].concat(genericTests({ Button: Button, FAB: FAB, Icon: Icon, IconButton: IconButton, renderer: renderer /*, list, listTile*/ })).concat(mithrilTests());
+var testsMithril = [].concat(genericTests({ Button: Button, FAB: FAB, Icon: Icon, IconButton: IconButton, List: List, ListTile: ListTile, renderer: renderer /*, list, listTile*/ })).concat(mithrilTests());
 
 /*
 object-assign
@@ -3760,6 +3782,6 @@ var reactTests = function reactTests() {
   }];
 };
 
-var testsReact = [].concat(genericTests({ Button: Button$1, FAB: FAB$1, Icon: Icon$1, IconButton: IconButton$1, renderer: renderer$1 })).concat(reactTests());
+var testsReact = [].concat(genericTests({ Button: Button$1, FAB: FAB$1, Icon: Icon$1, IconButton: IconButton$1, List: List$1, ListTile: ListTile$1, renderer: renderer$1 })).concat(reactTests());
 
 export { testsMithril as mithrilTests, testsReact as reactTests };

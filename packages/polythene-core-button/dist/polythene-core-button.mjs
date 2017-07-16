@@ -1,5 +1,5 @@
-import { filterSupportedAttributes } from 'polythene-core';
-import { mixin, styler } from 'polythene-core-css';
+import { filterSupportedAttributes, isClient } from 'polythene-core';
+import { mixin, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 
 var baseClass = "pe-button";
@@ -22,7 +22,6 @@ var classes = {
   selected: "pe-button--selected"
 };
 
-var rgba = vars.rgba;
 var touch_height = vars.unit_touch_height;
 var height = 36;
 
@@ -136,6 +135,7 @@ var layout = (function (selector, componentVars) {
       fontSize: componentVars.font_size + "px",
       lineHeight: componentVars.font_size + "px",
       fontWeight: componentVars.font_weight,
+      height: 2 * componentVars.padding_v + componentVars.font_size - 1 + "px",
       textTransform: componentVars.text_transform,
       whiteSpace: "pre"
     },
@@ -268,27 +268,29 @@ var onMount = function onMount(vnode) {
   var state = vnode.state;
   state.dom(vnode.dom);
 
-  var onFocus = function onFocus() {
-    return state.focus(!state.mouseover());
-  };
-  var onBlur = function onBlur() {
-    return state.focus(false);
-  };
-  var onMouseOver = function onMouseOver() {
-    return state.mouseover(true);
-  };
-  var onMouseOut = function onMouseOut() {
-    return state.mouseover(false);
-  };
+  if (isClient) {
+    var onFocus = function onFocus() {
+      return state.focus(!state.mouseover());
+    };
+    var onBlur = function onBlur() {
+      return state.focus(false);
+    };
+    var onMouseOver = function onMouseOver() {
+      return state.mouseover(true);
+    };
+    var onMouseOut = function onMouseOut() {
+      return state.mouseover(false);
+    };
 
-  vnode.dom.addEventListener("focus", onFocus, false);
-  vnode.dom.addEventListener("blur", onBlur, false);
-  vnode.dom.addEventListener("mouseover", onMouseOver, false);
-  vnode.dom.addEventListener("mouseout", onMouseOut, false);
+    vnode.dom.addEventListener("focus", onFocus, false);
+    vnode.dom.addEventListener("blur", onBlur, false);
+    vnode.dom.addEventListener("mouseover", onMouseOver, false);
+    vnode.dom.addEventListener("mouseout", onMouseOut, false);
 
-  state.removeEventListeners = function () {
-    return vnode.dom.removeEventListener("focus", onFocus, false), vnode.dom.removeEventListener("blur", onBlur, false), vnode.dom.removeEventListener("mouseover", onBlur, false), vnode.dom.removeEventListener("mouseout", onMouseOut, false);
-  };
+    state.removeEventListeners = function () {
+      return vnode.dom.removeEventListener("focus", onFocus, false), vnode.dom.removeEventListener("blur", onBlur, false), vnode.dom.removeEventListener("mouseover", onBlur, false), vnode.dom.removeEventListener("mouseout", onMouseOut, false);
+    };
+  }
 };
 
 var onUnMount = function onUnMount(vnode) {
@@ -337,9 +339,9 @@ var createContent = function createContent(vnode, _ref3) {
   var noink = attrs.ink !== undefined && attrs.ink === false;
   var disabled = attrs.disabled;
   var children = attrs.children || vnode.children;
-  var label = attrs.content ? attrs.content : attrs.label ? _typeof(attrs.label) === "object" ? attrs.label : h("div", { key: "label", className: classes.label }, attrs.label) : children ? children : null;
+  var label = attrs.content ? attrs.content : attrs.label ? _typeof(attrs.label) === "object" ? attrs.label : h("div", { className: classes.label }, attrs.label) : children ? children : null;
   var noWash = disabled || attrs.wash !== undefined && !attrs.wash;
-  return label ? h("div", (_h = {}, _defineProperty(_h, k.class, classes.content), _defineProperty(_h, "key", "button"), _defineProperty(_h, "style", attrs.style), _h), [!disabled && attrs.shadowComponent // "protected" option, used by raised-button
+  return label ? h("div", (_h = {}, _defineProperty(_h, k.class, classes.content), _defineProperty(_h, "style", attrs.style), _h), [!disabled && attrs.shadowComponent // "protected" option, used by raised-button
   ? attrs.shadowComponent : null,
   // Ripple
   disabled || noink ? null : Ripple //&& state.dom()

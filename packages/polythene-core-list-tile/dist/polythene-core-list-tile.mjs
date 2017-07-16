@@ -1,5 +1,5 @@
 import { filterSupportedAttributes } from 'polythene-core';
-import { flex, mixin, styler } from 'polythene-core-css';
+import { flex, mixin, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 
 var classes = {
@@ -25,8 +25,6 @@ var classes = {
   selected: "pe-list-tile--selected",
   sticky: "pe-list-tile--sticky"
 };
-
-var rgba = vars.rgba;
 
 // SPECS
 //

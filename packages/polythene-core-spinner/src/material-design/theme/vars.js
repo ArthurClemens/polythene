@@ -12,7 +12,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 import { vars } from "polythene-theme";
 import baseVars from "../../base/theme/vars";
-const rgba = vars.rgba;
+import { rgba } from "polythene-core-css";
 
 const arc_size =          270; // degrees - amount of circle the arc takes up
 const arc_time =          1.333; // s - time it takes to expand and contract arc

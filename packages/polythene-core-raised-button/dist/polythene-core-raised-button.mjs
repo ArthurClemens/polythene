@@ -1,15 +1,13 @@
-import { isTouch, subscribe, touchEndEvent, touchStartEvent } from 'polythene-core';
-import { styler } from 'polythene-core-css';
+import { isServer, pointerEndEvent, pointerStartMoveEvent, subscribe } from 'polythene-core';
+import { rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 
 var classes = {
   component: "pe-button pe-text-button pe-raised-button"
 };
 
-var rgba = vars.rgba;
-
 var vars$1 = {
-  color_light_background: "#e0e0e0", // grey-300
+  color_light_background: "#fff",
   color_light_text: rgba(vars.color_light_foreground, vars.blend_light_text_primary),
   color_light_hover_background: "transparent",
   color_light_focus_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
@@ -116,7 +114,7 @@ var tapStart = void 0;
 var tapEndAll = function tapEndAll() {};
 var downButtons = [];
 
-subscribe(touchEndEvent, function () {
+subscribe(pointerEndEvent, function () {
   return tapEndAll();
 });
 
@@ -134,14 +132,14 @@ var tapHandler = function tapHandler(which, vnode) {
   if (which === "down") {
     downButtons.push(_extends({}, vnode));
   }
-  // no z animation on touch
   var animateOnTap = vnode.attrs.animateOnTap !== false ? true : false;
-  if (animateOnTap && !isTouch) {
+  if (animateOnTap) {
     animateZ(which, vnode);
   }
 };
 
 var initTapEvents = function initTapEvents(vnode) {
+  if (isServer) return;
   tapStart = function tapStart() {
     return tapHandler("down", vnode);
   };
@@ -151,11 +149,11 @@ var initTapEvents = function initTapEvents(vnode) {
     });
     downButtons = [];
   };
-  vnode.dom.addEventListener(touchStartEvent, tapStart);
+  vnode.dom.addEventListener(pointerStartMoveEvent, tapStart);
 };
 
 var clearTapEvents = function clearTapEvents(vnode) {
-  return vnode.dom.removeEventListener(touchStartEvent, tapStart);
+  return vnode.dom.removeEventListener(pointerStartMoveEvent, tapStart);
 };
 
 var getInitialState = function getInitialState(vnode, createStream) {
@@ -173,7 +171,6 @@ var getInitialState = function getInitialState(vnode, createStream) {
 
 var onMount = function onMount(vnode) {
   var state = vnode.state;
-  var attrs = vnode.attrs;
   if (vnode.dom && !state.tapEventsInited()) {
     initTapEvents(vnode);
     state.tapEventsInited(true);

@@ -13,9 +13,7 @@ if (isClient && !window.WebFontConfig) {
 }
 
 export const addWebFont = (vendor, family, key) => {
-  if (isServer) {
-    return;
-  }
+  if (isServer) return;
   const vendorCfg = window.WebFontConfig[vendor] || {};
   vendorCfg.families = vendorCfg.families || [];
   vendorCfg.families.push(family);

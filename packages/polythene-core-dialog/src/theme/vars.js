@@ -1,5 +1,5 @@
 import { vars } from "polythene-theme";
-const rgba = vars.rgba;
+import { rgba } from "polythene-core-css";
 
 export default {
   border_radius:                   vars.unit_block_border_radius,

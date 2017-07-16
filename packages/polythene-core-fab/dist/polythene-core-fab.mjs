@@ -1,4 +1,4 @@
-import { styler } from 'polythene-core-css';
+import { rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 
 var classes = {
@@ -10,8 +10,6 @@ var classes = {
   // states
   mini: "pe-fab--mini"
 };
-
-var rgba = vars.rgba;
 
 var vars$1 = {
   size_regular: 7 * vars.grid_unit_component,

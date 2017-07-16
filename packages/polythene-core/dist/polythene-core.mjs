@@ -1,3 +1,6 @@
+var isClient = typeof document !== "undefined";
+var isServer = !isClient;
+
 var evts = {
   "animation": "animationend",
   "OAnimation": "oAnimationEnd",
@@ -5,16 +8,16 @@ var evts = {
   "WebkitAnimation": "webkitAnimationEnd"
 };
 
-var findAnimationEndEvent = function findAnimationEndEvent() {
-  var el = document.createElement("fakeelement");
-  for (var a in evts) {
-    if (el.style[a] !== undefined) {
-      return evts[a];
+var getAnimationEndEvent = function getAnimationEndEvent() {
+  if (isClient) {
+    var el = document.createElement("fakeelement");
+    for (var a in evts) {
+      if (el.style[a] !== undefined) {
+        return evts[a];
+      }
     }
   }
 };
-
-var animationEndEvent = findAnimationEndEvent();
 
 var Conditional = {
   view: function view(vnode, _ref) {
@@ -23,136 +26,6 @@ var Conditional = {
     var attrs = vnode.attrs;
     return attrs.permanent || attrs.show ? h(attrs.instance, attrs) : h("span", { className: attrs.placeholderClassName });
   }
-};
-
-// Theme variables
-// How to change these variables for your app - see the README.
-
-var hex = function hex(_hex) {
-  var bigint = parseInt(_hex.substring(1), 16);
-  var r = bigint >> 16 & 255;
-  var g = bigint >> 8 & 255;
-  var b = bigint & 255;
-  return r + "," + g + "," + b;
-};
-
-var rgba = function rgba(colorStr) {
-  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-  return "rgba(" + colorStr + "," + opacity + ")";
-};
-
-//const isTablet = window.innerWidth >= 600;
-var isDesktop = window.innerWidth >= 1024;
-
-var grid_unit = 4;
-var grid_unit_component = 8;
-
-var animation_curve_slow_in_fast_out = "cubic-bezier(.4, 0, .2, 1)";
-var animation_curve_slow_in_linear_out = "cubic-bezier(0, 0, .2, 1)";
-var animation_curve_linear_in_fast_out = "cubic-bezier(.4, 0, 1, 1)";
-
-var variables = {
-  // util functions
-  rgba: rgba,
-  hex: hex,
-
-  grid_unit: grid_unit,
-  grid_unit_component: grid_unit_component,
-  grid_unit_menu: 56,
-  grid_unit_icon_button: 6 * grid_unit_component, // 48
-
-  // common sizes
-  unit_block_border_radius: 2,
-  unit_item_border_radius: 2,
-  unit_indent: 72,
-  unit_side_padding: isDesktop ? 24 : 16,
-
-  // buttons
-  unit_touch_height: 48,
-  unit_icon_size_small: 2 * grid_unit_component, // 16
-  unit_icon_size: 3 * grid_unit_component, // 24
-  unit_icon_size_medium: 4 * grid_unit_component, // 32
-  unit_icon_size_large: 5 * grid_unit_component, // 40
-
-  // screen dimensions
-  unit_screen_size_extra_large: 1280,
-  unit_screen_size_large: 960,
-  unit_screen_size_medium: 480,
-  unit_screen_size_small: 320,
-
-  // transitions
-  animation_duration: ".18s",
-  animation_curve_slow_in_fast_out: animation_curve_slow_in_fast_out,
-  animation_curve_slow_in_linear_out: animation_curve_slow_in_linear_out,
-  animation_curve_linear_in_fast_out: animation_curve_linear_in_fast_out,
-  animation_curve_default: "ease-out",
-
-  // font
-  font_weight_light: 300,
-  font_weight_normal: 400,
-  font_weight_medium: 500,
-  font_weight_bold: 700,
-  font_size_title: 20,
-  line_height: 1.3,
-
-  // base colors
-  color_primary: "33, 150, 243", // blue 500
-  color_primary_active: "30, 136, 229", // blue 600
-  color_primary_dark: "25, 118, 210", // blue 700
-  color_primary_faded: "100, 181, 249", // blue 300
-  color_primary_foreground: "255, 255, 255",
-
-  color_light_background: "255, 255, 255",
-  color_light_foreground: "0, 0, 0",
-  color_dark_background: "34, 34, 34",
-  color_dark_foreground: "255, 255, 255",
-
-  // blends
-  blend_light_text_primary: .87,
-  blend_light_text_regular: .73,
-  blend_light_text_secondary: .54,
-  blend_light_text_tertiary: .40,
-  blend_light_text_disabled: .26,
-  blend_light_border_light: .11,
-  blend_light_background_active: .14,
-  blend_light_background_hover: .06,
-  blend_light_background_hover_medium: .12, // for the lighter tinted icon buttons
-  blend_light_background_disabled: .09,
-  blend_light_overlay_background: .3,
-
-  blend_dark_text_primary: 1,
-  blend_dark_text_regular: .87,
-  blend_dark_text_secondary: .70,
-  blend_dark_text_tertiary: .40,
-  blend_dark_text_disabled: .26,
-  blend_dark_border_light: .10,
-  blend_dark_background_active: .14,
-  blend_dark_background_hover: .08,
-  blend_dark_background_hoverMedium: .12, // for the lighter tinted icon buttons
-  blend_dark_background_disabled: .12,
-  blend_dark_overlay_background: .3,
-
-  // breakpoints
-  breakpoint_small_handset_portrait: 0,
-  breakpoint_medium_handset_portrait: 360,
-  breakpoint_large_handset_portrait: 400,
-  breakpoint_small_tablet_portrait: 600,
-  breakpoint_large_tablet_portrait: 720,
-  // landscape
-  breakpoint_small_handset_landscape: 480,
-  breakpoint_medium_handset_landscape: 600,
-  breakpoint_large_handset_landscape: 720,
-
-  // environment
-  env_tablet: window.innerWidth >= 600,
-  env_desktop: window.innerWidth >= 1024,
-
-  // z-index
-  z_menu: 1,
-  z_header_container: 2000,
-  z_fixed_header_container: 3000,
-  z_notification: 4000,
-  z_dialog: 5000
 };
 
 var r = function r(acc, p) {
@@ -192,27 +65,28 @@ var unpackAttrs = function unpackAttrs(attrs) {
   return typeof attrs === "function" ? attrs() : attrs;
 };
 
-var isClient = typeof window !== "undefined";
-var isServer = !isClient;
+var isTouch = isServer ? false : "ontouchstart" in document.documentElement;
 
-var isTouch = "ontouchstart" in window || navigator.MaxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+var pointerStartEvent = isTouch ? "click" : "mousedown";
 
-var touchStartEvent = isTouch ? "click" : "mousedown";
+var pointerEndEvent = isTouch ? "click" : "mouseup";
 
-var touchEndEvent = isTouch ? "click" : "mouseup";
+var pointerStartMoveEvent = isTouch ? "touchstart" : "mousedown";
 
-var moveEvent = window.PointerEvent ? "pointermove" : "ontouchmove" in window || window.DocumentTouch && document instanceof window.DocumentTouch ? "touchmove" : "mousemove";
+var pointerMoveEvent = isTouch ? "touchmove" : "mousemove";
 
-var endEvent = window.PointerEvent ? "pointerup" : "ontouchend" in window || window.DocumentTouch && document instanceof window.DocumentTouch ? "touchend" : "mouseup";
+var pointerEndMoveEvent = isTouch ? "touchend" : "mouseup";
 
-document.querySelector("html").classList.add(isTouch ? "pe-touch" : "pe-no-touch");
+if (isClient) {
+  document.querySelector("html").classList.add(isTouch ? "pe-touch" : "pe-no-touch");
+}
 
 var listeners = {};
 
 // https://gist.github.com/Eartz/fe651f2fadcc11444549
 var throttle = function throttle(func) {
   var s = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0.05;
-  var context = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : window;
+  var context = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : isClient ? window : {};
 
   var wait = false;
   return function () {
@@ -257,18 +131,20 @@ var emit = function emit(eventName, event) {
   });
 };
 
-window.addEventListener("resize", function (e) {
-  return emit("resize", e);
-});
-window.addEventListener("scroll", function (e) {
-  return emit("scroll", e);
-});
-window.addEventListener("keydown", function (e) {
-  return emit("keydown", e);
-});
-window.addEventListener(touchEndEvent, function (e) {
-  return emit(touchEndEvent, e);
-});
+if (isClient) {
+  window.addEventListener("resize", function (e) {
+    return emit("resize", e);
+  });
+  window.addEventListener("scroll", function (e) {
+    return emit("scroll", e);
+  });
+  window.addEventListener("keydown", function (e) {
+    return emit("keydown", e);
+  });
+  window.addEventListener(pointerEndEvent, function (e) {
+    return emit(pointerEndEvent, e);
+  });
+}
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -465,7 +341,7 @@ var Multi = function Multi(_ref) {
     var candidates = items.filter(function (item) {
       return item.show && item.spawn === spawn;
     });
-    if (mOptions.bodyShowClass) {
+    if (mOptions.bodyShowClass && isClient) {
       document.body.classList[candidates.length ? "add" : "remove"](mOptions.bodyShowClass);
     }
     return !candidates.length ? renderer(mOptions.placeholder) // placeholder because we cannot return null
@@ -632,4 +508,4 @@ var transition = function transition(opts, state) {
   }
 };
 
-export { animationEndEvent, Conditional, variables as defaultVariables, filterSupportedAttributes, unpackAttrs, isClient, isServer, isTouch, touchStartEvent, touchEndEvent, moveEvent, endEvent, Multi, show, hide, throttle, subscribe, unsubscribe, emit };
+export { getAnimationEndEvent, Conditional, filterSupportedAttributes, unpackAttrs, isClient, isServer, isTouch, pointerStartEvent, pointerEndEvent, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, Multi, show, hide, throttle, subscribe, unsubscribe, emit };

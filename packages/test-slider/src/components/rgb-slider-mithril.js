@@ -1,5 +1,5 @@
 import stream from "mithril/stream";
-import { styler } from "polythene-core-css";
+import { styler, rgba } from "polythene-core-css";
 import { vars } from "polythene-theme";
 
 const labelWidth = 24;
@@ -15,7 +15,7 @@ const styles = [{
     },
     " .pe-header": {
       fontSize: "14px",
-      color: vars.rgba(vars.color_light_foreground, vars.blend_light_text_secondary)
+      color: rgba(vars.color_light_foreground, vars.blend_light_text_secondary)
     },
     " .pe-slider": {
       color: "#009688",
@@ -32,7 +32,8 @@ const styles = [{
     " .pe-textfield": {
       color: "#009688",
       width: inputWidth + "px",
-
+      paddingBottom: 0,
+      
       " .pe-textfield__input": {
         textAlign: "center"
       }

@@ -1,6 +1,7 @@
 export * from "./index";
-import { addLayoutStyles, addFastClick } from "polythene-utilities";
+import { addLayoutStyles } from "polythene-utilities";
 import { addTypography, addRoboto } from "polythene-style";
+import { addFastClick } from "polythene-fastclick";
 
 addTypography();
 addRoboto();

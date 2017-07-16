@@ -1,22 +1,29 @@
+import { isClient, isServer } from "./iso";
 
-export const isTouch = "ontouchstart" in window || navigator.MaxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+export const isTouch = isServer
+  ? false
+  : "ontouchstart" in document.documentElement;
 
-export const touchStartEvent = isTouch ? "click" : "mousedown";
+export const pointerStartEvent = isTouch
+  ? "click"
+  : "mousedown";
 
-export const touchEndEvent = isTouch ? "click" : "mouseup";
+export const pointerEndEvent = isTouch
+  ? "click"
+  : "mouseup";
 
-export const moveEvent = window.PointerEvent
-  ? "pointermove"
-  : ("ontouchmove" in window) || (window.DocumentTouch && document instanceof window.DocumentTouch)
-    ? "touchmove"
-    : "mousemove";
+export const pointerStartMoveEvent = isTouch
+  ? "touchstart"
+  : "mousedown";
 
-export const endEvent = window.PointerEvent
-  ? "pointerup"
-  : ("ontouchend" in window) || (window.DocumentTouch && document instanceof window.DocumentTouch)
-    ? "touchend"
-    : "mouseup";
+export const pointerMoveEvent = isTouch
+  ? "touchmove"
+  : "mousemove";
 
+export const pointerEndMoveEvent = isTouch
+  ? "touchend"
+  : "mouseup";
 
-document.querySelector("html").classList.add(isTouch ? "pe-touch" : "pe-no-touch");
-
+if (isClient) {
+  document.querySelector("html").classList.add(isTouch ? "pe-touch" : "pe-no-touch");
+}

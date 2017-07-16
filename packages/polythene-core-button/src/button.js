@@ -1,4 +1,4 @@
-import { filterSupportedAttributes } from "polythene-core";
+import { filterSupportedAttributes, isClient } from "polythene-core";
 import { customTheme } from "./theme";
 import classes from "./classes";
 
@@ -28,22 +28,24 @@ export const onMount = vnode => {
   const state = vnode.state;
   state.dom(vnode.dom);
   
-  const onFocus = () => state.focus(!state.mouseover());
-  const onBlur = () => state.focus(false);
-  const onMouseOver = () => state.mouseover(true);
-  const onMouseOut = () => state.mouseover(false);
-  
-  vnode.dom.addEventListener("focus", onFocus, false);
-  vnode.dom.addEventListener("blur", onBlur, false);
-  vnode.dom.addEventListener("mouseover", onMouseOver, false);
-  vnode.dom.addEventListener("mouseout", onMouseOut, false);
+  if (isClient) {
+    const onFocus = () => state.focus(!state.mouseover());
+    const onBlur = () => state.focus(false);
+    const onMouseOver = () => state.mouseover(true);
+    const onMouseOut = () => state.mouseover(false);
+    
+    vnode.dom.addEventListener("focus", onFocus, false);
+    vnode.dom.addEventListener("blur", onBlur, false);
+    vnode.dom.addEventListener("mouseover", onMouseOver, false);
+    vnode.dom.addEventListener("mouseout", onMouseOut, false);
 
-  state.removeEventListeners = () => (
-    vnode.dom.removeEventListener("focus", onFocus, false),
-    vnode.dom.removeEventListener("blur", onBlur, false),
-    vnode.dom.removeEventListener("mouseover", onBlur, false),
-    vnode.dom.removeEventListener("mouseout", onMouseOut, false)
-  );
+    state.removeEventListeners = () => (
+      vnode.dom.removeEventListener("focus", onFocus, false),
+      vnode.dom.removeEventListener("blur", onBlur, false),
+      vnode.dom.removeEventListener("mouseover", onBlur, false),
+      vnode.dom.removeEventListener("mouseout", onMouseOut, false)
+    );
+  }
 };
 
 export const onUnMount = vnode =>
@@ -113,7 +115,7 @@ export const createContent = (vnode, { renderer: h, keys: k, Ripple }) => {
     : attrs.label
       ? typeof attrs.label === "object"
         ? attrs.label
-        : h("div", { key: "label", className: classes.label }, attrs.label)
+        : h("div", { className: classes.label }, attrs.label)
       : children
         ? children
         : null;
@@ -122,7 +124,6 @@ export const createContent = (vnode, { renderer: h, keys: k, Ripple }) => {
     ? h("div",
       {
         [k.class]: classes.content,
-        key: "button",
         style: attrs.style
       },
       [

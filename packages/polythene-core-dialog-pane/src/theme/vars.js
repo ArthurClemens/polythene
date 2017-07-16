@@ -1,5 +1,5 @@
 import { vars } from "polythene-theme";
-const rgba = vars.rgba;
+import { rgba } from "polythene-core-css";
 
 export default {
   padding:       3 * vars.grid_unit_component,
@@ -17,6 +17,3 @@ export default {
   color_dark_body_border:          rgba(vars.color_dark_foreground, vars.blend_dark_border_light),
   color_dark_background:           "inherit",
 };
-
-
-  

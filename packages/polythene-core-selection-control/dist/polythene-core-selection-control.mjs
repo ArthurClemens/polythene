@@ -1,6 +1,6 @@
 import { filterSupportedAttributes } from 'polythene-core';
 import { vars } from 'polythene-theme';
-import { flex, mixin } from 'polythene-core-css';
+import { flex, mixin, rgba } from 'polythene-core-css';
 
 var classes = {
   component: "pe-control",
@@ -179,8 +179,6 @@ var viewControl = Object.freeze({
 	createContent: createContent$1
 });
 
-var rgba = vars.rgba;
-
 var vars$1 = {
   label_font_size: 2 * vars.grid_unit_component, // 16
   label_height: 3 * vars.grid_unit_component, // 24
@@ -190,7 +188,7 @@ var vars$1 = {
   icon_size: 3 * vars.grid_unit_component,
   animation_duration: vars.animation_duration,
 
-  color_light_on: vars.rgba(vars.color_primary),
+  color_light_on: rgba(vars.color_primary),
   color_light_off: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
   color_light_label: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
   color_light_disabled: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
@@ -210,7 +208,7 @@ var vars$1 = {
   color_light_focus_off: rgba(vars.color_light_foreground),
   color_light_focus_off_opacity: .07,
 
-  color_dark_on: vars.rgba(vars.color_primary),
+  color_dark_on: rgba(vars.color_primary),
   color_dark_off: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
   color_dark_label: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
   color_dark_disabled: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),

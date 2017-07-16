@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, subscribe, unsubscribe, show, hide } from "polythene-core";
+import { filterSupportedAttributes, subscribe, unsubscribe, show, hide, isServer } from "polythene-core";
 import { customTheme } from "./theme";
 import classes from "./classes";
 
@@ -13,6 +13,9 @@ const DEFAULT_OFFSET_H = 16;
 const MIN_SIZE         = 1.5;
 
 const positionMenu = (state, attrs) => {
+  if (isServer) {
+    return;
+  }
   const targetEl = document.querySelector(attrs.target);
   if (!targetEl) {
     return;

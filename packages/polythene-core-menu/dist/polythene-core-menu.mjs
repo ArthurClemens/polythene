@@ -1,5 +1,5 @@
-import { filterSupportedAttributes, hide, show, subscribe, unsubscribe } from 'polythene-core';
-import { mixin, styler } from 'polythene-core-css';
+import { filterSupportedAttributes, hide, isServer, show, subscribe, unsubscribe } from 'polythene-core';
+import { mixin, rgba, styler } from 'polythene-core-css';
 import { classes } from 'polythene-core-list-tile';
 import { vars } from 'polythene-theme';
 
@@ -21,8 +21,6 @@ var classes$1 = {
   listTile: classes.component,
   selectedListTile: classes.selected
 };
-
-var rgba = vars.rgba;
 
 var vars$1 = {
   sizes: [1, 1.5, 2, 3, 4, 5, 6, 7],
@@ -139,6 +137,9 @@ var DEFAULT_OFFSET_H = 16;
 var MIN_SIZE = 1.5;
 
 var positionMenu = function positionMenu(state, attrs) {
+  if (isServer) {
+    return;
+  }
   var targetEl = document.querySelector(attrs.target);
   if (!targetEl) {
     return;

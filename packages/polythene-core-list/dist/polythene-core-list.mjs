@@ -1,5 +1,5 @@
 import { filterSupportedAttributes } from 'polythene-core';
-import { styler } from 'polythene-core-css';
+import { rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 
 var classes = {
@@ -14,8 +14,6 @@ var classes = {
   hasHeader: "pe-list--header",
   indentedBorders: "pe-list--indented-borders"
 };
-
-var rgba = vars.rgba;
 
 var vars$1 = {
   padding: vars.grid_unit_component, // vertical padding

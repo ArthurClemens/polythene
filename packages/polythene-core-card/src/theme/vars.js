@@ -1,6 +1,5 @@
 import { vars } from "polythene-theme";
-
-const rgba = vars.rgba;
+import { rgba } from "polythene-core-css";
 
 const padding_v = 24;
 const padding_actions_v = 8;
@@ -46,4 +45,3 @@ export default {
   color_dark_actions_border:           rgba(vars.color_dark_foreground, vars.blend_dark_border_light),
   color_dark_overlay_background:       rgba(vars.color_dark_background, vars.blend_dark_overlay_background)
 };
-
