@@ -2,7 +2,7 @@
 
 ## Overview
 
-* [Polythene](README.md)
+* [Introduction](README.md)
 
 ## Components
 
