@@ -2,13 +2,11 @@
 
 ## Overview
 
-* [My Awesome API](README.md)
-* Button
+* [Polythene](README.md)
 
 ## Components
 
 * [Button](button.md)
-* [Defining Methods](methods.md)
 
 ## Mithril
 
