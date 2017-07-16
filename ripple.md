@@ -2,7 +2,7 @@
 
 Adds a touch ripple effect to an element.
 
-Buttons contain a ripple element by default. This page documents how to add a ripple to other components.
+[Buttons](../button.md) contain a ripple element by default. This page documents how to add a ripple to other components.
 
 
 
