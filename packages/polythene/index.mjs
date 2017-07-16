@@ -8296,6 +8296,7 @@ var animate = function animate(ctrlEl, size, percentage) {
 var handlePercentage = function handlePercentage(percentage, ctrl, size) {
     var opts = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
 
+    console.log("handlePercentage", percentage);
     if (!ctrl.el) {
         return;
     }

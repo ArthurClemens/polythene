@@ -23,10 +23,18 @@ const CSS_CLASSES = {
 
 const MAX_Z = 5;
 const startType = isClient
-    ? window.PointerEvent ? 'pointerdown' : (('ontouchstart' in window) || window.DocumentTouch && document instanceof window.DocumentTouch) ? 'touchstart' : 'mousedown'
+    ? window.PointerEvent
+        ? 'pointerdown'
+        : (('ontouchstart' in window) || window.DocumentTouch && document instanceof window.DocumentTouch)
+            ? 'touchstart'
+            : 'mousedown'
     : 'mousedown';
 const endType = isClient
-    ? window.PointerEvent ? 'pointerup' : (('ontouchend' in window) || window.DocumentTouch && document instanceof window.DocumentTouch) ? 'touchend' : 'mouseup'
+    ? window.PointerEvent
+        ? 'pointerup'
+        : (('ontouchend' in window) || window.DocumentTouch && document instanceof window.DocumentTouch)
+            ? 'touchend'
+            : 'mouseup'
     : 'mouseup';
 
 let tapStart,

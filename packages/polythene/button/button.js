@@ -26,8 +26,20 @@ var CSS_CLASSES = {
 };
 
 var MAX_Z = 5;
-var startType = isClient ? window.PointerEvent ? 'pointerdown' : 'ontouchstart' in window || window.DocumentTouch && document instanceof window.DocumentTouch ? 'touchstart' : 'mousedown' : 'mousedown';
-var endType = isClient ? window.PointerEvent ? 'pointerup' : 'ontouchend' in window || window.DocumentTouch && document instanceof window.DocumentTouch ? 'touchend' : 'mouseup' : 'mouseup';
+var startType = isClient
+    ? window.PointerEvent
+        ? 'pointerdown'
+        : 'ontouchstart' in window || window.DocumentTouch && document instanceof window.DocumentTouch
+            ? 'touchstart'
+            : 'mousedown'
+    : 'mousedown';
+var endType = isClient
+    ? window.PointerEvent
+        ? 'pointerup'
+        : 'ontouchend' in window || window.DocumentTouch && document instanceof window.DocumentTouch
+            ? 'touchend'
+            : 'mouseup'
+    : 'mouseup';
 
 var tapStart = void 0,
     tapEnd = void 0,

@@ -2,13 +2,14 @@
 
 [![Join the chat at https://gitter.im/ArthurClemens/Polythene](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ArthurClemens/Polythene?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![CDNJS](https://img.shields.io/cdnjs/v/polythene.svg)](https://cdnjs.com/libraries/polythene)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=9ZXKVTQSW3AFA&lc=NL&item_name=Arthur%20Clemens&item_number=polythene&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
 
 Modular implementation of Material Design for [Mithril](http://mithril.js.org/).
 
-* [Demos / Examples](http://arthurclemens.github.io/Polythene-examples/)
-* [Online documentation](http://polythene.js.org)
-* [Project setup example](https://github.com/ArthurClemens/Polythene-setup)
+Compatible with Mithril 0.2.5. Polythene version 0.3.0. Rewrite for Mithril 1.x is in development.
 
+
+* [Online documentation](http://polythene.js.org)
 
 
 ## Background
@@ -18,11 +19,21 @@ Modular implementation of Material Design for [Mithril](http://mithril.js.org/).
 
 
 
+## Documentation
+
+* [Online documentation](http://polythene.js.org)
+* [Docs](https://github.com/ArthurClemens/polythene/blob/master/packages/docs/)
+* [Changes from 0.2 to 0.3](https://github.com/ArthurClemens/polythene/blob/master/packages/docs/changes.md)
+
+
+
 ## Setup
 
 Polythene uses Node tools to build. It runs in the browser.
 
 Source files are written in es2015 and transpiled to es5. Polythene works both in es2015 and es5 applications.
+
+* [Project setup example](https://github.com/ArthurClemens/Polythene-setup)
 
 
 
@@ -58,13 +69,6 @@ For use on JSBin / JSFiddle, load this script:
 ~~~html
 https://rawgit.com/ArthurClemens/polythene/master/packages/polythene/polythene-standalone.js
 ~~~
-
-
-
-## Documentation
-
-* [Online documentation](http://polythene.js.org)
-* [Docs](https://github.com/ArthurClemens/polythene/blob/master/packages/docs/)
 
 
 
@@ -143,11 +147,11 @@ The default theme uses flexbox, so this works in IE10 and other browsers. For IE
 1. Reorder list
 
 
+## Donations
 
-## Change log
+Polythene is a volunteer run project. Support its development by donating:
 
-* [Changes from 0.2 to 0.3](https://github.com/ArthurClemens/polythene/blob/master/packages/docs/changes.md)
-
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=9ZXKVTQSW3AFA&lc=NL&item_name=Arthur%20Clemens&item_number=polythene&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
 
 
 ## License

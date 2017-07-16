@@ -3,9 +3,8 @@
 ## Usage
 
 ~~~javascript
-import "polythene-mofif";
+import "polythene-motif";
 ~~~
-
 
 
 ## Roboto font

@@ -1,7 +1,6 @@
 /*
 Build to an Universal Module Definition
 */
-const path = require("path");
 import { pkg, createConfig } from "./rollup.base.js";
 import uglify from "rollup-plugin-uglify";
 
@@ -13,7 +12,7 @@ const baseConfig = createConfig({ includeDepencies, lint: false });
 const targetConfig = Object.assign({}, baseConfig, {
   dest: env.DEST || pkg.main,
   format: "umd",
-  sourceMap: true,
+  sourceMap: (env.SOURCEMAP !== undefined) ? !!parseInt(env.SOURCEMAP, 10) : true,
   moduleName,
 });
 

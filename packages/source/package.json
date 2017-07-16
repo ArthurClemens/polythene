@@ -13,8 +13,9 @@
   "scripts": {
     "transpile": "yarn run babel",
     "babel": "babel -D src --out-dir ../polythene",
-    "build": "yarn run transpile && yarn run rollup",
-    "rollup": "DEPS=0 ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && DEPS=0 ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js && DEPS=1 DEST=../polythene/polythene-standalone.js ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd-includes.js "
+    "build": "yarn run transpile && yarn run rollup && yarn run build-standalone",
+    "build-standalone": "DEPS=1 ENTRY=standalone.js SOURCEMAP=0 DEST=../polythene/polythene-standalone.js ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd-includes.js",
+    "rollup": "DEPS=0 ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && DEPS=0 ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js"
   },
   "dependencies": {
     "fastclick": "^1.0.6",
@@ -22,6 +23,7 @@
     "mithril": "^0.2.5",
     "polythene-core": "0.3.0",
     "polythene-core-css": "0.3.0",
+    "polythene-motif": "0.3.0",
     "polythene-theme": "0.3.0",
     "polythene-utilities": "0.3.0"
   },
