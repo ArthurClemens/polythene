@@ -1,4 +1,4 @@
-# Polythene for React - Simple HTML test
+# Polythene for React standalone test
 
 **Does not work yet**
 

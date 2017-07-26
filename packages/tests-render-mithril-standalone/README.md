@@ -1,4 +1,4 @@
-# Polythene for Mithril - Simple HTML test
+# Polythene for Mithril standalone test
 
 This test loads a HTML page with a static `polythene-mithril-standalone.js` file.
 The HTML page contains all app JS.

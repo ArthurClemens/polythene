@@ -35,12 +35,16 @@ const inactiveButton = () => ({
   zIndex: 0
 });
 
-export default (selector, componentVars) => [{
+export default (selector, componentVars, type) => [{
   [selector]: {
     display: "inline-block",
     boxSizing: "border-box",
     margin: 0,
     padding: 0,
+
+    [` input[type=${type}]`]: {
+      display: "none"
+    },
 
     " .pe-control__form-label": [
       flex.layoutHorizontal,

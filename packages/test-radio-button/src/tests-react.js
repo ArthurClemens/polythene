@@ -1,5 +1,5 @@
 import React, { Component } from "react"; // eslint-disable-line no-unused-vars
-import { renderer, RadioButton, keys } from "polythene-react";
+import { renderer, RadioButton, RadioGroup, keys } from "polythene-react";
 import genericTests from "./tests-generic";
 
 const reactTests = ({ RadioButton, renderer: h }) => { // eslint-disable-line no-unused-vars
@@ -55,5 +55,5 @@ const reactTests = ({ RadioButton, renderer: h }) => { // eslint-disable-line no
 };
 
 export default []
-  .concat(genericTests({ RadioButton, renderer, keys }))
-  .concat(reactTests({ RadioButton, renderer, keys }));
+  .concat(genericTests({ RadioButton, RadioGroup, renderer, keys }))
+  .concat(reactTests({ RadioButton, RadioGroup, renderer, keys }));

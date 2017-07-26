@@ -10,11 +10,6 @@ const reactTests = ({ Card, Button }) => { // eslint-disable-line no-unused-vars
   const IMG_URL = "http://arthurclemens.github.io/assets/polythene/examples/";
   const holidayImage = IMG_URL + "3.jpg";
 
-  const twoButtonRow = [
-    <Button label="Action 1" key="one" />,
-    <Button label="Action 2" key="two" />
-  ];
-
   return [
     {
       section: "React JSX tests",
@@ -42,7 +37,10 @@ const reactTests = ({ Card, Button }) => { // eslint-disable-line no-unused-vars
             },
             {
               actions: {
-                content: twoButtonRow
+                content: <div>
+                  <Button label="Action 1" key="one" />
+                  <Button label="Action 2" key="two" />
+                </div>
               }
             }
           ]}

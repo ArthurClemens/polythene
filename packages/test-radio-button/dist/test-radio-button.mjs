@@ -1,5 +1,5 @@
-import { RadioButton, keys, renderer } from 'polythene-mithril';
-import { RadioButton as RadioButton$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
+import { RadioButton, RadioGroup, keys, renderer } from 'polythene-mithril';
+import { RadioButton as RadioButton$1, RadioGroup as RadioGroup$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 
 function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
@@ -195,33 +195,12 @@ var stream$2 = createCommonjsModule(function (module) {
 
 var stream = stream$2;
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var buttonData = [{
-  label: "One",
-  value: "one"
-}, {
-  label: "Two",
-  value: "two"
-}, {
-  label: "Three",
-  value: "three"
-}, {
-  label: "Four",
-  value: "four"
-}];
-
-var RadioGroup = (function (_ref) {
+var onChange = (function (_ref) {
   var h = _ref.h,
-      RadioButton$$1 = _ref.RadioButton,
-      count = _ref.count,
-      _ref$groupOptions = _ref.groupOptions,
-      groupOptions = _ref$groupOptions === undefined ? {} : _ref$groupOptions,
-      _ref$options = _ref.options,
-      options = _ref$options === undefined ? {} : _ref$options;
+      RadioGroup$$1 = _ref.RadioGroup;
   return {
     oninit: function oninit(vnode) {
-      var checkedValue = stream(groupOptions.defaultCheckedValue || undefined);
+      var checkedValue = stream();
       vnode.state = {
         checkedValue: checkedValue,
         redrawOnUpdate: stream.merge([checkedValue])
@@ -230,28 +209,23 @@ var RadioGroup = (function (_ref) {
     view: function view(vnode) {
       var state = vnode.state;
       var checkedValue = state.checkedValue();
-      return h("div", [groupOptions.showState && h("div", {
+      return h("div", [h("div", {
         style: {
           margin: "0 0 1rem 0"
         }
-      }, "Value: " + checkedValue), h("div", {
-        style: {
-          display: "flex",
-          alignItems: "center"
-        }
-      }, buttonData.slice(0, count).map(function (button, index) {
-        var defaultChecked = options && options[index] && options[index].defaultChecked;
-        // Only set defaultChecked when no value was stored:
-        var isDefaultChecked = defaultChecked && !checkedValue;
-        var isChecked = isDefaultChecked || checkedValue === button.value;
-        return h(RadioButton$$1, _extends({}, button, options && options[index], {
-          checked: isChecked,
-          defaultChecked: defaultChecked,
-          onChange: function onChange(newState) {
-            return state.checkedValue(newState.value);
-          }
-        }));
-      }))]);
+      }, "Value: " + (checkedValue === undefined ? "Not set" : checkedValue)), h(RadioGroup$$1, {
+        name: "onChange",
+        onChange: function onChange(newValue) {
+          return state.checkedValue(newValue);
+        },
+        content: [{
+          value: "One",
+          label: "One"
+        }, {
+          value: "Two",
+          label: "Two"
+        }]
+      })]);
     }
   };
 });
@@ -262,6 +236,7 @@ var iconStarFilledSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" 
 
 var genericTests = (function (_ref) {
   var RadioButton$$1 = _ref.RadioButton,
+      RadioGroup$$1 = _ref.RadioGroup,
       h = _ref.renderer,
       k = _ref.keys;
 
@@ -283,85 +258,140 @@ var genericTests = (function (_ref) {
 
   return [{
     name: "Option: label",
-    component: RadioGroup({ h: h, k: k, RadioButton: RadioButton$$1, count: 2 })
+    component: RadioGroup$$1,
+    attrs: {
+      name: "label",
+      content: [{
+        value: "One",
+        label: "One"
+      }, {
+        value: "Two",
+        label: "Two"
+      }]
+    }
   }, {
     name: "Option: defaultChecked",
-    component: RadioGroup({ h: h, k: k, RadioButton: RadioButton$$1, count: 2, options: [null, { defaultChecked: true }] })
-  }, {
-    name: "A default checked value",
-    component: RadioGroup({ h: h, k: k, RadioButton: RadioButton$$1, count: 2, groupOptions: { defaultCheckedValue: "two" } })
+    component: RadioGroup$$1,
+    attrs: {
+      name: "defaultChecked",
+      content: [{
+        value: "One",
+        label: "One"
+      }, {
+        value: "Two",
+        label: "Two",
+        defaultChecked: true
+      }]
+    }
   }, {
     name: "Option: disabled",
-    interactive: true,
-    component: RadioGroup({ h: h, k: k, RadioButton: RadioButton$$1, count: 2, options: [{ disabled: true }, { disabled: true, defaultChecked: true }] })
+    component: RadioGroup$$1,
+    attrs: {
+      name: "disabled",
+      content: [{
+        value: "One",
+        label: "One",
+        disabled: true
+      }, {
+        value: "Two",
+        label: "Two",
+        disabled: true,
+        checked: true
+      }]
+    }
   }, {
     name: "Option: size",
-    component: RadioGroup({ h: h, k: k, RadioButton: RadioButton$$1, count: 4, options: sizeNames.map(function (size) {
-        return { size: size };
-      }) })
-  }, {
-    name: "Option: iconOn, iconOff (custom icon)",
-    component: RadioGroup({ h: h, k: k, RadioButton: RadioButton$$1, count: 4, options: sizeNames.map(function (size) {
+    component: RadioGroup$$1,
+    attrs: {
+      name: "size",
+      style: {
+        display: "flex",
+        alignItems: "center"
+      },
+      content: sizeNames.map(function (size) {
         return {
           size: size,
-          iconOn: {
-            svg: trustedIconStarFilled
-          },
-          iconOff: {
-            svg: trustedIconStarsOutline
-          }
+          value: size,
+          label: size
         };
-      }) })
+      })
+    }
+  }, {
+    name: "Option: iconOn, iconOff (custom icon)",
+    component: RadioGroup$$1,
+    attrs: {
+      name: "icon",
+      style: {
+        display: "flex",
+        alignItems: "center"
+      },
+      content: sizeNames.map(function (size) {
+        return {
+          size: size,
+          value: size,
+          iconOn: { svg: trustedIconStarFilled },
+          iconOff: { svg: trustedIconStarsOutline }
+        };
+      })
+    }
   }, {
     name: "Themed radio button (color and font size)",
-    component: RadioGroup({ h: h, k: k, RadioButton: RadioButton$$1, count: 2, options: [{ className: "tests-radio-button-themed-radio" }, { className: "tests-radio-button-themed-radio" }] })
+    component: RadioGroup$$1,
+    attrs: {
+      name: "themed",
+      content: [{
+        value: "One",
+        label: "One",
+        className: "tests-radio-button-themed-radio"
+      }, {
+        value: "Two",
+        label: "Two",
+        className: "tests-radio-button-themed-radio",
+        defaultChecked: true
+      }]
+    }
   }, {
     name: "Option: style (colors)",
-    component: RadioGroup({ h: h, k: k, RadioButton: RadioButton$$1, count: 2, options: [{
-        style: {
-          color: "#EF6C00"
-        }
+    component: RadioGroup$$1,
+    attrs: {
+      name: "style",
+      content: [{
+        value: "One",
+        label: "One",
+        style: { color: "#EF6C00" }
       }, {
-        style: {
-          color: "#EF6C00"
-        },
+        value: "Two",
+        label: "Two",
+        style: { color: "#EF6C00" },
         defaultChecked: true
-      }] })
-  }, {
-    name: "Option: selectable (true)",
-    interactive: true,
-    component: RadioGroup({ h: h, k: k, RadioButton: RadioButton$$1, count: 2, options: [{
-        label: "Always",
-        selectable: function selectable() {
-          return true;
-        }
-      }, {
-        label: "Always",
-        selectable: function selectable() {
-          return true;
-        },
-        defaultChecked: true
-      }] })
+      }]
+    }
   }, {
     name: "Option: iconButton (custom hover behaviour)",
     interactive: true,
-    component: RadioGroup({ h: h, k: k, RadioButton: RadioButton$$1, count: 2, options: [{
+    component: RadioGroup$$1,
+    attrs: {
+      name: "iconButton",
+      content: [{
+        value: "One",
         label: "Hover me",
         iconButton: {
           wash: true,
           ink: false
         }
       }, {
+        value: "Two",
         label: "Hover me",
         iconButton: {
           wash: true,
           ink: false
         }
-      }] })
+      }]
+    }
   }, {
-    name: "Option: onChange",
+    name: "Option: Radio Group onChange",
     interactive: true,
-    component: RadioGroup({ h: h, k: k, RadioButton: RadioButton$$1, count: 4, groupOptions: { showState: true } })
+    component: onChange({ h: h, RadioGroup: RadioGroup$$1 })
   },
 
   // Dark tone
@@ -369,16 +399,51 @@ var genericTests = (function (_ref) {
   {
     name: "Option: label -- dark tone",
     className: "pe-dark-tone",
-    component: RadioGroup({ h: h, k: k, RadioButton: RadioButton$$1, count: 2 })
+    component: RadioGroup$$1,
+    attrs: {
+      name: "label-dark",
+      content: [{
+        value: "One",
+        label: "One"
+      }, {
+        value: "Two",
+        label: "Two"
+      }]
+    }
   }, {
     name: "Option: disabled -- dark tone",
     className: "pe-dark-tone",
-    interactive: true,
-    component: RadioGroup({ h: h, k: k, RadioButton: RadioButton$$1, count: 2, options: [{ disabled: true }, { disabled: true, defaultChecked: true }] })
+    component: RadioGroup$$1,
+    attrs: {
+      name: "disabled-dark",
+      content: [{
+        value: "One",
+        label: "One",
+        disabled: true
+      }, {
+        value: "Two",
+        label: "Two",
+        disabled: true,
+        checked: true
+      }]
+    }
   }, {
     name: "Themed radio button (color and font size) -- dark tone",
     className: "pe-dark-tone",
-    component: RadioGroup({ h: h, k: k, RadioButton: RadioButton$$1, count: 2, options: [{ className: "tests-radio-button-themed-radio" }, { className: "tests-radio-button-themed-radio" }] })
+    component: RadioGroup$$1,
+    attrs: {
+      name: "themed-dark",
+      content: [{
+        value: "One",
+        label: "One",
+        className: "tests-radio-button-themed-radio"
+      }, {
+        value: "Two",
+        label: "Two",
+        className: "tests-radio-button-themed-radio",
+        defaultChecked: true
+      }]
+    }
   }, {
     name: "Dark tone class + light theme class",
     className: "pe-dark-tone",
@@ -390,7 +455,17 @@ var genericTests = (function (_ref) {
             padding: "20px"
           },
           className: "pe-light-tone"
-        }, h(RadioGroup({ h: h, k: k, RadioButton: RadioButton$$1, count: 2 })));
+        }, h(RadioGroup$$1, {
+          name: "test-dark-tone-light-class",
+          content: [{
+            value: "One",
+            label: "One"
+          }, {
+            value: "Two",
+            label: "Two",
+            defaultChecked: true
+          }]
+        }));
       }
     }
   }, {
@@ -403,7 +478,17 @@ var genericTests = (function (_ref) {
             background: "#fff",
             padding: "20px"
           }
-        }, h(RadioGroup({ h: h, k: k, RadioButton: RadioButton$$1, count: 2 })));
+        }, h(RadioGroup$$1, {
+          name: "test-dark-tone-light",
+          content: [{
+            value: "One",
+            label: "One"
+          }, {
+            value: "Two",
+            label: "Two",
+            defaultChecked: true
+          }]
+        }));
       }
     }
   }];
@@ -413,7 +498,7 @@ var mithrilTests = function mithrilTests() {
   return [];
 };
 
-var testsMithril = [].concat(genericTests({ RadioButton: RadioButton, renderer: renderer, keys: keys })).concat(mithrilTests({ RadioButton: RadioButton, renderer: renderer, keys: keys }));
+var testsMithril = [].concat(genericTests({ RadioButton: RadioButton, RadioGroup: RadioGroup, renderer: renderer, keys: keys })).concat(mithrilTests({ RadioButton: RadioButton, RadioGroup: RadioGroup, renderer: renderer, keys: keys }));
 
 /*
 object-assign
@@ -423,7 +508,7 @@ object-assign
 
 /* eslint-disable no-unused-vars */
 
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -469,7 +554,7 @@ function shouldUseNative() {
 		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
 			test3[letter] = letter;
 		});
-		if (Object.keys(_extends$1({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
+		if (Object.keys(_extends({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
 			return false;
 		}
 
@@ -4073,6 +4158,6 @@ var reactTests = function reactTests(_ref) {
   }];
 };
 
-var testsReact = [].concat(genericTests({ RadioButton: RadioButton$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests({ RadioButton: RadioButton$1, renderer: renderer$1, keys: keys$1 }));
+var testsReact = [].concat(genericTests({ RadioButton: RadioButton$1, RadioGroup: RadioGroup$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests({ RadioButton: RadioButton$1, RadioGroup: RadioGroup$1, renderer: renderer$1, keys: keys$1 }));
 
 export { testsMithril as mithrilTests, testsReact as reactTests };

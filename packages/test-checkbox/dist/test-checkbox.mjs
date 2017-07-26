@@ -1,5 +1,5 @@
-import { Checkbox, keys, renderer } from 'polythene-mithril';
-import { Checkbox as Checkbox$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
+import { Checkbox, RaisedButton, keys, renderer } from 'polythene-mithril';
+import { Checkbox as Checkbox$1, RaisedButton as RaisedButton$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 
 function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
@@ -203,7 +203,7 @@ var onChange = (function (_ref) {
       var checked = stream(false);
       vnode.state = {
         checked: checked,
-        redrawOnUpdate: stream.merge([checked])
+        redrawOnUpdate: stream.merge([checked]) // for React
       };
     },
     view: function view(vnode) {
@@ -216,7 +216,8 @@ var onChange = (function (_ref) {
       }, "Checked: " + checked), h(Checkbox$$1, {
         onChange: function onChange(newState) {
           return state.checked(newState.checked);
-        }
+        },
+        checked: checked
       })]);
     }
   };
@@ -233,7 +234,7 @@ var events = (function (_ref) {
       var checked = stream(false);
       vnode.state = {
         checked: checked,
-        redrawOnUpdate: stream.merge([checked])
+        redrawOnUpdate: stream.merge([checked]) // for React
       };
     },
     view: function view(vnode) {
@@ -246,8 +247,47 @@ var events = (function (_ref) {
       }, "Checked: " + checked), h(Checkbox$$1, {
         events: _defineProperty({}, k.onclick, function () {
           return state.checked(!checked);
-        })
+        }),
+        checked: checked
       })]);
+    }
+  };
+});
+
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var toggleButton = (function (_ref) {
+  var h = _ref.h,
+      k = _ref.k,
+      RaisedButton$$1 = _ref.RaisedButton,
+      Checkbox$$1 = _ref.Checkbox;
+  return {
+    oninit: function oninit(vnode) {
+      var checked = stream(false);
+      vnode.state = {
+        checked: checked,
+        redrawOnUpdate: stream.merge([checked])
+      };
+    },
+    view: function view(vnode) {
+      var state = vnode.state;
+      var checked = state.checked();
+      return h("div", [h(Checkbox$$1, {
+        label: "Label",
+        onChange: function onChange(newState) {
+          return state.checked(newState.checked);
+        },
+        checked: checked
+      }), h("div", {
+        style: {
+          marginTop: "1rem"
+        }
+      }, h(RaisedButton$$1, {
+        label: "Toggle",
+        events: _defineProperty$1({}, k.onclick, function () {
+          return state.checked(!checked);
+        })
+      }))]);
     }
   };
 });
@@ -260,6 +300,7 @@ var iconStarFilledSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" 
 
 var genericTests = (function (_ref) {
   var Checkbox$$1 = _ref.Checkbox,
+      RaisedButton$$1 = _ref.RaisedButton,
       h = _ref.renderer,
       k = _ref.keys;
 
@@ -392,6 +433,11 @@ var genericTests = (function (_ref) {
     interactive: true,
     exclude: true,
     component: events({ h: h, k: k, Checkbox: Checkbox$$1 })
+  }, {
+    name: "Setting the checked state",
+    interactive: true,
+    exclude: true,
+    component: toggleButton({ h: h, k: k, RaisedButton: RaisedButton$$1, Checkbox: Checkbox$$1 })
   },
 
   // Dark tone
@@ -461,11 +507,61 @@ var genericTests = (function (_ref) {
   }];
 });
 
-var mithrilTests = function mithrilTests() {
-  return [];
+var toggleButton$1 = (function (_ref) {
+  var h = _ref.h,
+      RaisedButton$$1 = _ref.RaisedButton,
+      Checkbox$$1 = _ref.Checkbox;
+  return {
+    oninit: function oninit(vnode) {
+      var checked = stream(false);
+      vnode.state = {
+        checked: checked
+      };
+    },
+    view: function view(vnode) {
+      var state = vnode.state;
+      var checked = state.checked();
+      return h("div", [h(Checkbox$$1, {
+        label: "Label",
+        checked: checked,
+        events: {
+          onclick: h.withAttr("checked", function (checked) {
+            return state.checked(checked);
+          })
+        }
+      }), h("div", {
+        style: {
+          marginTop: "1rem"
+        }
+      }, h(RaisedButton$$1, {
+        label: "Toggle",
+        events: {
+          onclick: function onclick() {
+            return state.checked(!checked);
+          }
+        }
+      }))]);
+    }
+  };
+});
+
+var mithrilTests = function mithrilTests(_ref) {
+  var Checkbox$$1 = _ref.Checkbox,
+      RaisedButton$$1 = _ref.RaisedButton,
+      h = _ref.renderer,
+      k = _ref.keys;
+
+  return [{
+    section: "Mithril specific tests"
+  }, {
+    name: "Setting the checked state",
+    interactive: true,
+    exclude: true,
+    component: toggleButton$1({ h: h, k: k, RaisedButton: RaisedButton$$1, Checkbox: Checkbox$$1 })
+  }];
 };
 
-var testsMithril = [].concat(genericTests({ Checkbox: Checkbox, renderer: renderer, keys: keys })).concat(mithrilTests({ Checkbox: Checkbox, renderer: renderer, keys: keys }));
+var testsMithril = [].concat(genericTests({ Checkbox: Checkbox, RaisedButton: RaisedButton, renderer: renderer, keys: keys })).concat(mithrilTests({ Checkbox: Checkbox, RaisedButton: RaisedButton, renderer: renderer, keys: keys }));
 
 /*
 object-assign
@@ -3994,7 +4090,7 @@ if (process.env.NODE_ENV !== 'production') {
   };
 }
 
-var React$1 = {
+var React = {
 
   // Modern
 
@@ -4036,7 +4132,7 @@ var React$1 = {
 // TODO: Fix tests so that this deprecation warning doesn't cause failures.
 if (process.env.NODE_ENV !== 'production') {
   if (canDefineProperty) {
-    Object.defineProperty(React$1, 'PropTypes', {
+    Object.defineProperty(React, 'PropTypes', {
       get: function get() {
         process.env.NODE_ENV !== 'production' ? warning_1(didWarnPropTypesDeprecated, 'Accessing PropTypes via the main React package is deprecated. Use ' + 'the prop-types package from npm instead.') : void 0;
         didWarnPropTypesDeprecated = true;
@@ -4046,28 +4142,26 @@ if (process.env.NODE_ENV !== 'production') {
   }
 }
 
-var React_1 = React$1;
-
-var react = React_1;
-
 var reactTests = function reactTests(_ref) {
   var Checkbox$$1 = _ref.Checkbox,
       h = _ref.renderer;
   // eslint-disable-line no-unused-vars
 
-  return [{
-    section: "React JSX tests"
-  }, {
-    name: "Option: defaultChecked (JSX)",
-    component: function component() {
-      return react.createElement(Checkbox$$1, {
-        label: "Label",
-        defaultChecked: true
-      });
-    }
-  }];
+  return [
+    // {
+    //   section: "React JSX tests",
+    // },
+    // {
+    //   name: "Option: defaultChecked (JSX)",
+    //   component: () =>
+    //     <Checkbox
+    //       label="Label"
+    //       defaultChecked
+    //     />
+    // },
+  ];
 };
 
-var testsReact = [].concat(genericTests({ Checkbox: Checkbox$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests({ Checkbox: Checkbox$1, renderer: renderer$1, keys: keys$1 }));
+var testsReact = [].concat(genericTests({ Checkbox: Checkbox$1, RaisedButton: RaisedButton$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests({ Checkbox: Checkbox$1, RaisedButton: RaisedButton$1, renderer: renderer$1, keys: keys$1 }));
 
 export { testsMithril as mithrilTests, testsReact as reactTests };

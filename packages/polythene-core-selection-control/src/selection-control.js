@@ -27,37 +27,36 @@ const currentState = (attrs, state) => {
 
 export const getInitialState = (vnode, createStream) => {
   const attrs = vnode.attrs;
+  const isChecked = attrs.defaultChecked !== undefined
+    ? attrs.defaultChecked
+    : attrs.checked;
+  const checked = createStream(isChecked);
 
-  const defaultChecked = attrs.defaultChecked !== undefined
-    ? !!attrs.defaultChecked
-    : !!attrs.checked;
-
-  const checked = createStream(defaultChecked);
-  const redrawOnChange = createStream(defaultChecked);
-
-  const toggle = () => {
-    const oldChecked = attrs.checked !== undefined
-      ? attrs.checked
-      : checked();
-    checked(!oldChecked);
-    redrawOnChange(!oldChecked);
+  const notifyChange = (isChecked) => {
+    if (attrs.onChange) {
+      attrs.onChange({
+        checked: isChecked,
+        value: attrs.value
+      });
+    } 
   };
 
-  const onChange = attrs.onChange !== undefined
-    ? e => (
-        toggle(),
-        attrs.onChange({
-          event: e,
-          checked: checked(),
-          value: attrs.value
-        })
-      )
-    : () => toggle();
+  const onChange = e => {
+    let isChecked;
+    if (attrs.type === "radio") {
+      // do not set directly
+      isChecked = e.currentTarget.checked;
+    } else {
+      isChecked = !checked();
+      checked(isChecked);
+    }
+    notifyChange(isChecked);
+  };
 
   return {
     checked,
     onChange,
-    redrawOnUpdate: createStream.merge([redrawOnChange])
+    redrawOnUpdate: createStream.merge([checked])
   };
 };
 
@@ -80,8 +79,7 @@ export const createProps = (vnode, { keys: k }) => {
         attrs.tone === "light" ? "pe-light-tone" : null,
         attrs.className || attrs[k.class],
       ].join(" ")
-    },
-    attrs.events
+    }
   );
 };
 
@@ -89,8 +87,10 @@ export const createContent = (vnode, { renderer: h, keys: k, ViewControl }) => {
   const state = vnode.state;
   const attrs = vnode.attrs;
   const { checked, inactive } = currentState(attrs, state);
-  return h("label",
-    { className: classes.formLabel },
+  return h("label", Object.assign(
+    {},
+    { className: classes.formLabel }
+    ),
     [
       h(ViewControl, Object.assign(
         {},
@@ -98,24 +98,27 @@ export const createContent = (vnode, { renderer: h, keys: k, ViewControl }) => {
         {
           inactive,
           checked,
-          onChange: state.onChange,
           key: "control"
         }
       )),
       attrs.label
         ? h(`.${classes.label}`,
-            Object.assign(
-              {},
-              {
-                key: "label"
-              },
-              inactive
-                ? null
-                : { [k.onclick]: state.onChange }
-            ),
-            attrs.label
-          )
-        : null
+          { key: "label" },
+          attrs.label
+        )
+        : null,
+      h("input", Object.assign(
+        {},
+        attrs.events,
+        {
+          name: attrs.name,
+          type: attrs.type,
+          value: attrs.value,
+        },
+        attrs.disabled || inactive
+          ? { disabled: "disabled" }
+          : { [k.onchange]: state.onChange }
+      ))
     ]
   );
 };

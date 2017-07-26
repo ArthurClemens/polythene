@@ -163,7 +163,6 @@ export const createProps = (vnode, { keys: k }) => {
   const state = vnode.state;
   const attrs = vnode.attrs;
   const isInvalid = state.isInvalid();
-  const inputEl = state.inputEl();
 
   return Object.assign(
     {},

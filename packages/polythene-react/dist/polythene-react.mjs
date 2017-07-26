@@ -12,6 +12,7 @@ export * from 'polythene-react-list-tile';
 export * from 'polythene-react-menu';
 export * from 'polythene-react-notification';
 export * from 'polythene-react-radio-button';
+export * from 'polythene-react-radio-group';
 export * from 'polythene-react-raised-button';
 export * from 'polythene-react-ripple';
 export * from 'polythene-react-search';

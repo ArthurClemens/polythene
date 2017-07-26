@@ -1,5 +1,5 @@
-import { Icon, Switch, keys, renderer } from 'polythene-mithril';
-import { Icon as Icon$1, Switch as Switch$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
+import { Icon, RaisedButton, Switch, keys, renderer } from 'polythene-mithril';
+import { Icon as Icon$1, RaisedButton as RaisedButton$1, Switch as Switch$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 
 function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
@@ -233,7 +233,7 @@ var events = (function (_ref) {
       var checked = stream(false);
       vnode.state = {
         checked: checked,
-        redrawOnUpdate: stream.merge([checked])
+        redrawOnUpdate: stream.merge([checked]) // for React
       };
     },
     view: function view(vnode) {
@@ -246,8 +246,46 @@ var events = (function (_ref) {
       }, "Checked: " + checked), h(Switch$$1, {
         events: _defineProperty({}, k.onclick, function () {
           return state.checked(!checked);
-        })
+        }),
+        checked: checked
       })]);
+    }
+  };
+});
+
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var toggleButton = (function (_ref) {
+  var h = _ref.h,
+      k = _ref.k,
+      RaisedButton$$1 = _ref.RaisedButton,
+      Switch$$1 = _ref.Switch;
+  return {
+    oninit: function oninit(vnode) {
+      var checked = stream(false);
+      vnode.state = {
+        checked: checked,
+        redrawOnUpdate: stream.merge([checked])
+      };
+    },
+    view: function view(vnode) {
+      var state = vnode.state;
+      var checked = state.checked();
+      return h("div", [h(Switch$$1, {
+        onChange: function onChange(newState) {
+          return state.checked(newState.checked);
+        },
+        checked: checked
+      }), h("div", {
+        style: {
+          marginTop: "1rem"
+        }
+      }, h(RaisedButton$$1, {
+        label: "Toggle",
+        events: _defineProperty$1({}, k.onclick, function () {
+          return state.checked(!checked);
+        })
+      }))]);
     }
   };
 });
@@ -259,6 +297,7 @@ var bullsEyeSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http:
 var genericTests = (function (_ref) {
   var Switch$$1 = _ref.Switch,
       Icon$$1 = _ref.Icon,
+      RaisedButton$$1 = _ref.RaisedButton,
       h = _ref.renderer,
       k = _ref.keys;
 
@@ -411,6 +450,11 @@ var genericTests = (function (_ref) {
     interactive: true,
     exclude: true,
     component: events({ h: h, k: k, Switch: Switch$$1 })
+  }, {
+    name: "Setting the checked state",
+    interactive: true,
+    exclude: true,
+    component: toggleButton({ h: h, k: k, RaisedButton: RaisedButton$$1, Switch: Switch$$1 })
   },
 
   // Dark tone
@@ -484,7 +528,7 @@ var mithrilTests = function mithrilTests() {
   return [];
 };
 
-var testsMithril = [].concat(genericTests({ Switch: Switch, Icon: Icon, renderer: renderer, keys: keys })).concat(mithrilTests({ Switch: Switch, Icon: Icon, renderer: renderer, keys: keys }));
+var testsMithril = [].concat(genericTests({ Switch: Switch, Icon: Icon, RaisedButton: RaisedButton, renderer: renderer, keys: keys })).concat(mithrilTests({ Switch: Switch, Icon: Icon, RaisedButton: RaisedButton, renderer: renderer, keys: keys }));
 
 /*
 object-assign
@@ -4087,6 +4131,6 @@ var reactTests = function reactTests(_ref) {
   }];
 };
 
-var testsReact = [].concat(genericTests({ Switch: Switch$1, Icon: Icon$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests({ Switch: Switch$1, Icon: Icon$1, renderer: renderer$1, keys: keys$1 }));
+var testsReact = [].concat(genericTests({ Switch: Switch$1, Icon: Icon$1, RaisedButton: RaisedButton$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests({ Switch: Switch$1, Icon: Icon$1, RaisedButton: RaisedButton$1, renderer: renderer$1, keys: keys$1 }));
 
 export { testsMithril as mithrilTests, testsReact as reactTests };

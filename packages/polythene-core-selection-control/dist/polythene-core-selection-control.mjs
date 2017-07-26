@@ -59,32 +59,34 @@ var currentState = function currentState(attrs, state) {
 
 var getInitialState = function getInitialState(vnode, createStream) {
   var attrs = vnode.attrs;
+  var isChecked = attrs.defaultChecked !== undefined ? attrs.defaultChecked : attrs.checked;
+  var checked = createStream(isChecked);
 
-  var defaultChecked = attrs.defaultChecked !== undefined ? !!attrs.defaultChecked : !!attrs.checked;
-
-  var checked = createStream(defaultChecked);
-  var redrawOnChange = createStream(defaultChecked);
-
-  var toggle = function toggle() {
-    var oldChecked = attrs.checked !== undefined ? attrs.checked : checked();
-    checked(!oldChecked);
-    redrawOnChange(!oldChecked);
+  var notifyChange = function notifyChange(isChecked) {
+    if (attrs.onChange) {
+      attrs.onChange({
+        checked: isChecked,
+        value: attrs.value
+      });
+    }
   };
 
-  var onChange = attrs.onChange !== undefined ? function (e) {
-    return toggle(), attrs.onChange({
-      event: e,
-      checked: checked(),
-      value: attrs.value
-    });
-  } : function () {
-    return toggle();
+  var onChange = function onChange(e) {
+    var isChecked = void 0;
+    if (attrs.type === "radio") {
+      // do not set directly
+      isChecked = e.currentTarget.checked;
+    } else {
+      isChecked = !checked();
+      checked(isChecked);
+    }
+    notifyChange(isChecked);
   };
 
   return {
     checked: checked,
     onChange: onChange,
-    redrawOnUpdate: createStream.merge([redrawOnChange])
+    redrawOnUpdate: createStream.merge([checked])
   };
 };
 
@@ -101,7 +103,7 @@ var createProps = function createProps(vnode, _ref) {
   return _extends({}, filterSupportedAttributes(attrs), {
     className: [classes.component, attrs.instanceClass, // for instance pe-checkbox-control
     checked ? classes.on : classes.off, attrs.disabled ? classes.disabled : null, inactive ? classes.inactive : null, classForSize(attrs.size), attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
-  }, attrs.events);
+  });
 };
 
 var createContent = function createContent(vnode, _ref2) {
@@ -116,14 +118,15 @@ var createContent = function createContent(vnode, _ref2) {
       checked = _currentState2.checked,
       inactive = _currentState2.inactive;
 
-  return h("label", { className: classes.formLabel }, [h(ViewControl, _extends({}, attrs, {
+  return h("label", _extends({}, { className: classes.formLabel }), [h(ViewControl, _extends({}, attrs, {
     inactive: inactive,
     checked: checked,
-    onChange: state.onChange,
     key: "control"
-  })), attrs.label ? h("." + classes.label, _extends({}, {
-    key: "label"
-  }, inactive ? null : _defineProperty({}, k.onclick, state.onChange)), attrs.label) : null]);
+  })), attrs.label ? h("." + classes.label, { key: "label" }, attrs.label) : null, h("input", _extends({}, attrs.events, {
+    name: attrs.name,
+    type: attrs.type,
+    value: attrs.value
+  }, attrs.disabled || inactive ? { disabled: "disabled" } : _defineProperty({}, k.onchange, state.onChange)))]);
 };
 
 var selectionControl = Object.freeze({
@@ -134,8 +137,6 @@ var selectionControl = Object.freeze({
 });
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var getElement$1 = function getElement(vnode) {
   return vnode.attrs.element || "." + classes.box;
@@ -154,7 +155,6 @@ var createIcon = function createIcon(h, iconType, attrs, className) {
 
 var createContent$1 = function createContent(vnode, _ref) {
   var h = _ref.renderer,
-      k = _ref.keys,
       Icon = _ref.Icon,
       IconButton = _ref.IconButton;
 
@@ -168,7 +168,7 @@ var createContent$1 = function createContent(vnode, _ref) {
     }),
     ripple: { center: true },
     disabled: attrs.disabled,
-    events: _defineProperty$1({}, k.onclick, attrs.onChange),
+    events: null,
     inactive: attrs.inactive
   }, attrs.iconButton // for example for hover behaviour
   ));
@@ -229,7 +229,7 @@ var vars$1 = {
   color_dark_focus_off_opacity: .09
 };
 
-function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 // Returns a style function to be used by checkbox and radio-button
 
@@ -269,93 +269,75 @@ var inactiveButton = function inactiveButton() {
   };
 };
 
-var layout = (function (selector, componentVars) {
-  return [_defineProperty$2({}, selector, {
+var layout = (function (selector, componentVars, type) {
+  var _selector;
+
+  return [_defineProperty$1({}, selector, (_selector = {
     display: "inline-block",
     boxSizing: "border-box",
     margin: 0,
-    padding: 0,
+    padding: 0
 
-    " .pe-control__form-label": [flex.layoutHorizontal, flex.layoutCenter, {
-      position: "relative",
-      cursor: "pointer",
-      fontSize: componentVars.label_font_size + "px",
-      lineHeight: componentVars.label_height + "px",
-      margin: 0,
-      color: "inherit",
+  }, _defineProperty$1(_selector, " input[type=" + type + "]", {
+    display: "none"
+  }), _defineProperty$1(_selector, " .pe-control__form-label", [flex.layoutHorizontal, flex.layoutCenter, {
+    position: "relative",
+    cursor: "pointer",
+    fontSize: componentVars.label_font_size + "px",
+    lineHeight: componentVars.label_height + "px",
+    margin: 0,
+    color: "inherit",
 
-      ":focus": {
-        outline: 0
-      }
-    }],
+    ":focus": {
+      outline: 0
+    }
+  }]), _defineProperty$1(_selector, ".pe-control--inactive", {
+    " .pe-control__form-label": {
+      cursor: "default"
+    }
+  }), _defineProperty$1(_selector, " .pe-control__box", {
+    position: "relative",
+    display: "inline-block",
+    boxSizing: "border-box",
+    width: componentVars.label_height + "px",
+    height: componentVars.label_height + "px",
+    color: "inherit",
 
-    ".pe-control--inactive": {
-      " .pe-control__form-label": {
-        cursor: "default"
-      }
+    ":focus": {
+      outline: 0
+    }
+  }), _defineProperty$1(_selector, " .pe-button.pe-control__button", [mixin.defaultTransition("opacity", componentVars.animation_duration), {
+    position: "absolute",
+    left: -((componentVars.button_size - componentVars.icon_size) / 2) + "px",
+    top: -((componentVars.button_size - componentVars.icon_size) / 2) + "px",
+    zIndex: 1
+  }]), _defineProperty$1(_selector, ".pe-control--off", {
+    " .pe-control__button--on": inactiveButton(),
+    " .pe-control__button--off": activeButton()
+  }), _defineProperty$1(_selector, ".pe-control--on", {
+    " .pe-control__button--on": activeButton(),
+    " .pe-control__button--off": inactiveButton()
+  }), _defineProperty$1(_selector, " .pe-control__label", [mixin.defaultTransition("all", componentVars.animation_duration), {
+    paddingLeft: componentVars.label_padding_before + "px",
+    paddingRight: componentVars.label_padding_after + "px"
+  }]), _defineProperty$1(_selector, ".pe-control--disabled", {
+    " .pe-control__form-label": {
+      cursor: "auto"
     },
-
-    " .pe-control__box": {
-      position: "relative",
-      display: "inline-block",
-      boxSizing: "border-box",
-      width: componentVars.label_height + "px",
-      height: componentVars.label_height + "px",
-      color: "inherit",
-
-      ":focus": {
-        outline: 0
-      }
-    },
-
-    " .pe-button.pe-control__button": [mixin.defaultTransition("opacity", componentVars.animation_duration), {
-      position: "absolute",
-      left: -((componentVars.button_size - componentVars.icon_size) / 2) + "px",
-      top: -((componentVars.button_size - componentVars.icon_size) / 2) + "px",
-      zIndex: 1
-    }],
-
-    ".pe-control--off": {
-      " .pe-control__button--on": inactiveButton(),
-      " .pe-control__button--off": activeButton()
-    },
-
-    ".pe-control--on": {
-      " .pe-control__button--on": activeButton(),
-      " .pe-control__button--off": inactiveButton()
-    },
-
-    " .pe-control__label": [mixin.defaultTransition("all", componentVars.animation_duration), {
-      paddingLeft: componentVars.label_padding_before + "px",
-      paddingRight: componentVars.label_padding_after + "px"
-    }],
-
-    ".pe-control--disabled": {
-      " .pe-control__form-label": {
-        cursor: "auto"
-      },
-      " .pe-control__button": {
-        pointerEvents: "none"
-      }
-    },
-
-    " .pe-button__content": {
-      " .pe-icon": {
-        position: "absolute"
-      }
-    },
-
-    ".pe-control--small": makeSize(componentVars, vars.unit_icon_size_small, vars.unit_icon_size_small),
-    ".pe-control--regular": makeSize(componentVars, componentVars.label_height, vars.unit_icon_size),
-    ".pe-control--medium": makeSize(componentVars, vars.unit_icon_size_medium, vars.unit_icon_size_medium),
-    ".pe-control--large": makeSize(componentVars, vars.unit_icon_size_large, vars.unit_icon_size_large)
-  })];
+    " .pe-control__button": {
+      pointerEvents: "none"
+    }
+  }), _defineProperty$1(_selector, " .pe-button__content", {
+    " .pe-icon": {
+      position: "absolute"
+    }
+  }), _defineProperty$1(_selector, ".pe-control--small", makeSize(componentVars, vars.unit_icon_size_small, vars.unit_icon_size_small)), _defineProperty$1(_selector, ".pe-control--regular", makeSize(componentVars, componentVars.label_height, vars.unit_icon_size)), _defineProperty$1(_selector, ".pe-control--medium", makeSize(componentVars, vars.unit_icon_size_medium, vars.unit_icon_size_medium)), _defineProperty$1(_selector, ".pe-control--large", makeSize(componentVars, vars.unit_icon_size_large, vars.unit_icon_size_large)), _selector))];
 });
 
-function _defineProperty$3(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var style = function style(scopes, selector, componentVars, tint) {
-  return [_defineProperty$3({}, scopes.map(function (s) {
+  return [_defineProperty$2({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
     color: componentVars["color_" + tint + "_on"], // override by specifying "color"

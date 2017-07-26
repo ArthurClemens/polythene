@@ -135,7 +135,6 @@ var layout = (function (selector, componentVars) {
       fontSize: componentVars.font_size + "px",
       lineHeight: componentVars.font_size + "px",
       fontWeight: componentVars.font_weight,
-      height: 2 * componentVars.padding_v + componentVars.font_size - 1 + "px",
       textTransform: componentVars.text_transform,
       whiteSpace: "pre"
     },

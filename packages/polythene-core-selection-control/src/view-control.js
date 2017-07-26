@@ -22,7 +22,7 @@ const createIcon = (h, iconType, attrs, className) => (
   )
 );
 
-export const createContent = (vnode, { renderer: h, keys: k, Icon, IconButton }) => {
+export const createContent = (vnode, { renderer: h, Icon, IconButton }) => {
   const attrs = vnode.attrs;
   return h(IconButton, Object.assign(
     {},
@@ -38,7 +38,7 @@ export const createContent = (vnode, { renderer: h, keys: k, Icon, IconButton })
       ),
       ripple: { center: true },
       disabled: attrs.disabled,
-      events: { [k.onclick]: attrs.onChange },
+      events: null,
       inactive: attrs.inactive
     },
     attrs.iconButton // for example for hover behaviour

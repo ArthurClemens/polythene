@@ -1,4 +1,4 @@
-import { renderer, RadioButton, keys } from "polythene-mithril";
+import { renderer, RadioButton, RadioGroup, keys } from "polythene-mithril";
 import genericTests from "./tests-generic";
 
 const mithrilTests = () => {
@@ -6,5 +6,5 @@ const mithrilTests = () => {
 };
 
 export default []
-  .concat(genericTests({ RadioButton, renderer, keys }))
-  .concat(mithrilTests({ RadioButton, renderer, keys }));
+  .concat(genericTests({ RadioButton, RadioGroup, renderer, keys }))
+  .concat(mithrilTests({ RadioButton, RadioGroup, renderer, keys }));

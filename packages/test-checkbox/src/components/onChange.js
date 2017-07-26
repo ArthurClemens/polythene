@@ -5,7 +5,7 @@ export default ({ h, Checkbox }) => ({
     const checked = stream(false);
     vnode.state = {
       checked,
-      redrawOnUpdate: stream.merge([checked])
+      redrawOnUpdate: stream.merge([checked]) // for React
     };
   },
   view: vnode => {
@@ -18,7 +18,8 @@ export default ({ h, Checkbox }) => ({
         }
       },`Checked: ${checked}`),
       h(Checkbox, {
-        onChange: newState => state.checked(newState.checked)
+        onChange: newState => state.checked(newState.checked),
+        checked
       })
     ]);
   }

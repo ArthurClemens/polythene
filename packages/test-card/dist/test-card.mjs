@@ -4721,8 +4721,6 @@ var reactTests = function reactTests(_ref) {
   var IMG_URL = "http://arthurclemens.github.io/assets/polythene/examples/";
   var holidayImage = IMG_URL + "3.jpg";
 
-  var twoButtonRow = [react.createElement(Button$$1, { label: "Action 1", key: "one" }), react.createElement(Button$$1, { label: "Action 2", key: "two" })];
-
   return [{
     section: "React JSX tests"
   }, {
@@ -4745,7 +4743,12 @@ var reactTests = function reactTests(_ref) {
           }
         }, {
           actions: {
-            content: twoButtonRow
+            content: react.createElement(
+              "div",
+              null,
+              react.createElement(Button$$1, { label: "Action 1", key: "one" }),
+              react.createElement(Button$$1, { label: "Action 2", key: "two" })
+            )
           }
         }]
       });

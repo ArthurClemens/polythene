@@ -1,5 +1,5 @@
 {
-  "name": "polythene-test-render-react-html",
+  "name": "tests-render-react-standalone",
   "description": "",
   "scripts": {
     "dev": "http-server -p 3500",
