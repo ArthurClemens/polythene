@@ -216,7 +216,8 @@ var onChange = (function (_ref) {
       }, "Checked: " + checked), h(Switch$$1, {
         onChange: function onChange(newState) {
           return state.checked(newState.checked);
-        }
+        },
+        checked: checked
       })]);
     }
   };
@@ -413,7 +414,7 @@ var genericTests = (function (_ref) {
       }
     }
   }, {
-    name: "Option: selectable (false)",
+    name: "Option: selectable",
     interactive: true,
     component: {
       view: function view() {

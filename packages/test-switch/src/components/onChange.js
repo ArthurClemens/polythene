@@ -18,7 +18,8 @@ export default ({ h, Switch }) => ({
         }
       },`Checked: ${checked}`),
       h(Switch, {
-        onChange: newState => state.checked(newState.checked)
+        onChange: newState => state.checked(newState.checked),
+        checked
       })
     ]);
   }

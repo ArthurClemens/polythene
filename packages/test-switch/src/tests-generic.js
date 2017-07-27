@@ -132,7 +132,7 @@ export default ({ Switch, Icon, RaisedButton, renderer: h, keys: k }) => {
       }
     },
     {
-      name: "Option: selectable (false)",
+      name: "Option: selectable",
       interactive: true,
       component: {
         view: () => 

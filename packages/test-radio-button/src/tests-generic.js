@@ -78,6 +78,26 @@ export default ({ RadioButton, RadioGroup, renderer: h, keys: k }) => {
       }
     },
     {
+      name: "Option: selectable",
+      interactive: true,
+      component: RadioGroup,
+      attrs: {
+        name: "selectable",
+        content: [
+          {
+            value: "One",
+            label: "Never",
+            selectable: () => false,
+          },
+          {
+            value: "Two",
+            label: "Only when unchecked",
+            selectable: checked => !checked,
+          }
+        ]
+      }
+    },
+    {
       name: "Option: size",
       component: RadioGroup,
       attrs: {

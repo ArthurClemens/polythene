@@ -300,6 +300,26 @@ var genericTests = (function (_ref) {
       }]
     }
   }, {
+    name: "Option: selectable",
+    interactive: true,
+    component: RadioGroup$$1,
+    attrs: {
+      name: "selectable",
+      content: [{
+        value: "One",
+        label: "Never",
+        selectable: function selectable() {
+          return false;
+        }
+      }, {
+        value: "Two",
+        label: "Only when unchecked",
+        selectable: function selectable(checked) {
+          return !checked;
+        }
+      }]
+    }
+  }, {
     name: "Option: size",
     component: RadioGroup$$1,
     attrs: {

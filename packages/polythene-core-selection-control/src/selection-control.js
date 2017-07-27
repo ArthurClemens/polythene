@@ -29,12 +29,13 @@ export const getInitialState = (vnode, createStream) => {
   const attrs = vnode.attrs;
   const isChecked = attrs.defaultChecked !== undefined
     ? attrs.defaultChecked
-    : attrs.checked;
+    : attrs.checked || false;
   const checked = createStream(isChecked);
 
-  const notifyChange = (isChecked) => {
+  const notifyChange = (e, isChecked) => {
     if (attrs.onChange) {
       attrs.onChange({
+        event: e,
         checked: isChecked,
         value: attrs.value
       });
@@ -42,15 +43,13 @@ export const getInitialState = (vnode, createStream) => {
   };
 
   const onChange = e => {
-    let isChecked;
+    let isChecked = e.currentTarget.checked;
     if (attrs.type === "radio") {
       // do not set directly
-      isChecked = e.currentTarget.checked;
     } else {
-      isChecked = !checked();
       checked(isChecked);
     }
-    notifyChange(isChecked);
+    notifyChange(e, isChecked);
   };
 
   return {
@@ -114,6 +113,7 @@ export const createContent = (vnode, { renderer: h, keys: k, ViewControl }) => {
           name: attrs.name,
           type: attrs.type,
           value: attrs.value,
+          checked
         },
         attrs.disabled || inactive
           ? { disabled: "disabled" }

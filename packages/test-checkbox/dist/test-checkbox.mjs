@@ -294,9 +294,9 @@ var toggleButton = (function (_ref) {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var iconStarOutlineSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\" baseProfile=\"full\" width=\"24\" height=\"24\" viewBox=\"0 0 24.00 24.00\" enable-background=\"new 0 0 24.00 24.00\" xml:space=\"preserve\"><path fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"0.2\" stroke-linejoin=\"round\" d=\"M 11.9994,15.3943L 8.2364,17.6643L 9.2314,13.3833L 5.9094,10.5053L 10.2894,10.1293L 11.9994,6.09327L 13.7094,10.1293L 18.0894,10.5053L 14.7674,13.3833L 15.7624,17.6643M 21.9994,9.24227L 14.8084,8.62526L 11.9994,1.99827L 9.1904,8.62526L 1.9994,9.24227L 7.4544,13.9693L 5.8194,20.9983L 11.9994,17.2703L 18.1794,20.9983L 16.5444,13.9693L 21.9994,9.24227 Z \"/></svg>";
+var iconStarOutlineSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24.00 24.00\" enable-background=\"new 0 0 24.00 24.00\"><path fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"0.2\" stroke-linejoin=\"round\" d=\"M 11.9994,15.3943L 8.2364,17.6643L 9.2314,13.3833L 5.9094,10.5053L 10.2894,10.1293L 11.9994,6.09327L 13.7094,10.1293L 18.0894,10.5053L 14.7674,13.3833L 15.7624,17.6643M 21.9994,9.24227L 14.8084,8.62526L 11.9994,1.99827L 9.1904,8.62526L 1.9994,9.24227L 7.4544,13.9693L 5.8194,20.9983L 11.9994,17.2703L 18.1794,20.9983L 16.5444,13.9693L 21.9994,9.24227 Z \"/></svg>";
 
-var iconStarFilledSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\"/></svg>";
+var iconStarFilledSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\"/></svg>";
 
 var genericTests = (function (_ref) {
   var Checkbox$$1 = _ref.Checkbox,
@@ -396,7 +396,7 @@ var genericTests = (function (_ref) {
       }
     }
   }, {
-    name: "Option: selectable (false)",
+    name: "Option: selectable",
     interactive: true,
     component: {
       view: function view() {
@@ -507,58 +507,8 @@ var genericTests = (function (_ref) {
   }];
 });
 
-var toggleButton$1 = (function (_ref) {
-  var h = _ref.h,
-      RaisedButton$$1 = _ref.RaisedButton,
-      Checkbox$$1 = _ref.Checkbox;
-  return {
-    oninit: function oninit(vnode) {
-      var checked = stream(false);
-      vnode.state = {
-        checked: checked
-      };
-    },
-    view: function view(vnode) {
-      var state = vnode.state;
-      var checked = state.checked();
-      return h("div", [h(Checkbox$$1, {
-        label: "Label",
-        checked: checked,
-        events: {
-          onclick: h.withAttr("checked", function (checked) {
-            return state.checked(checked);
-          })
-        }
-      }), h("div", {
-        style: {
-          marginTop: "1rem"
-        }
-      }, h(RaisedButton$$1, {
-        label: "Toggle",
-        events: {
-          onclick: function onclick() {
-            return state.checked(!checked);
-          }
-        }
-      }))]);
-    }
-  };
-});
-
-var mithrilTests = function mithrilTests(_ref) {
-  var Checkbox$$1 = _ref.Checkbox,
-      RaisedButton$$1 = _ref.RaisedButton,
-      h = _ref.renderer,
-      k = _ref.keys;
-
-  return [{
-    section: "Mithril specific tests"
-  }, {
-    name: "Setting the checked state",
-    interactive: true,
-    exclude: true,
-    component: toggleButton$1({ h: h, k: k, RaisedButton: RaisedButton$$1, Checkbox: Checkbox$$1 })
-  }];
+var mithrilTests = function mithrilTests() {
+  return [];
 };
 
 var testsMithril = [].concat(genericTests({ Checkbox: Checkbox, RaisedButton: RaisedButton, renderer: renderer, keys: keys })).concat(mithrilTests({ Checkbox: Checkbox, RaisedButton: RaisedButton, renderer: renderer, keys: keys }));
@@ -4090,7 +4040,7 @@ if (process.env.NODE_ENV !== 'production') {
   };
 }
 
-var React = {
+var React$1 = {
 
   // Modern
 
@@ -4132,7 +4082,7 @@ var React = {
 // TODO: Fix tests so that this deprecation warning doesn't cause failures.
 if (process.env.NODE_ENV !== 'production') {
   if (canDefineProperty) {
-    Object.defineProperty(React, 'PropTypes', {
+    Object.defineProperty(React$1, 'PropTypes', {
       get: function get() {
         process.env.NODE_ENV !== 'production' ? warning_1(didWarnPropTypesDeprecated, 'Accessing PropTypes via the main React package is deprecated. Use ' + 'the prop-types package from npm instead.') : void 0;
         didWarnPropTypesDeprecated = true;
@@ -4142,24 +4092,130 @@ if (process.env.NODE_ENV !== 'production') {
   }
 }
 
+var React_1 = React$1;
+
+var react = React_1;
+
+var react_2 = react.Component;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SimpleForm = function (_Component) {
+  _inherits(SimpleForm, _Component);
+
+  function SimpleForm(props) {
+    _classCallCheck(this, SimpleForm);
+
+    var _this = _possibleConstructorReturn(this, (SimpleForm.__proto__ || Object.getPrototypeOf(SimpleForm)).call(this, props));
+
+    _this.state = {
+      checked: false
+    };
+    _this.setCheckedState = _this.setCheckedState.bind(_this);
+    _this.toggleState = _this.toggleState.bind(_this);
+    return _this;
+  }
+
+  _createClass(SimpleForm, [{
+    key: "setCheckedState",
+    value: function setCheckedState(newState) {
+      this.setState({ checked: newState.checked });
+    }
+  }, {
+    key: "toggleState",
+    value: function toggleState() {
+      this.setState({ checked: !this.state.checked });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react.createElement(
+        "div",
+        null,
+        react.createElement(Checkbox$1, {
+          label: "Label",
+          onChange: this.setCheckedState,
+          checked: this.state.checked
+        }),
+        react.createElement(
+          "div",
+          {
+            style: {
+              marginTop: "1rem"
+            }
+          },
+          react.createElement(RaisedButton$1, {
+            label: "Toggle",
+            events: {
+              onClick: this.toggleState
+            }
+          })
+        )
+      );
+    }
+  }]);
+
+  return SimpleForm;
+}(react_2);
+
+var iconStarOutlineSVG$1 = react.createElement(
+  "svg",
+  { width: "24", height: "24", viewBox: "0 0 24.00 24.00", enableBackground: "new 0 0 24.00 24.00" },
+  react.createElement("path", { fill: "#000000", fillOpacity: "1", strokeWidth: "0.2", strokeLinejoin: "round", d: "M 11.9994,15.3943L 8.2364,17.6643L 9.2314,13.3833L 5.9094,10.5053L 10.2894,10.1293L 11.9994,6.09327L 13.7094,10.1293L 18.0894,10.5053L 14.7674,13.3833L 15.7624,17.6643M 21.9994,9.24227L 14.8084,8.62526L 11.9994,1.99827L 9.1904,8.62526L 1.9994,9.24227L 7.4544,13.9693L 5.8194,20.9983L 11.9994,17.2703L 18.1794,20.9983L 16.5444,13.9693L 21.9994,9.24227 Z " })
+);
+var iconStarFilledSVG$1 = react.createElement(
+  "svg",
+  { width: "24", height: "24", viewBox: "0 0 24 24" },
+  react.createElement("path", { d: "M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" })
+);
+
 var reactTests = function reactTests(_ref) {
   var Checkbox$$1 = _ref.Checkbox,
       h = _ref.renderer;
   // eslint-disable-line no-unused-vars
 
-  return [
-    // {
-    //   section: "React JSX tests",
-    // },
-    // {
-    //   name: "Option: defaultChecked (JSX)",
-    //   component: () =>
-    //     <Checkbox
-    //       label="Label"
-    //       defaultChecked
-    //     />
-    // },
-  ];
+  return [{
+    section: "React JSX tests"
+  }, {
+    name: "Option: defaultChecked (JSX)",
+    component: function component() {
+      return react.createElement(Checkbox$$1, {
+        label: "Label",
+        defaultChecked: true
+      });
+    }
+  }, {
+    name: "Option: iconOn, iconOff (custom icon) (JSX)",
+    component: function component() {
+      return react.createElement(
+        "div",
+        {
+          style: {
+            display: "flex",
+            alignItems: "center"
+          }
+        },
+        react.createElement(Checkbox$$1, {
+          label: "Label",
+          iconOff: { svg: iconStarOutlineSVG$1 },
+          iconOn: { svg: iconStarFilledSVG$1 }
+        })
+      );
+    }
+  }, {
+    name: "Setting the checked state (JSX)",
+    interactive: true,
+    exclude: true,
+    component: function component() {
+      return react.createElement(SimpleForm, null);
+    }
+  }];
 };
 
 var testsReact = [].concat(genericTests({ Checkbox: Checkbox$1, RaisedButton: RaisedButton$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests({ Checkbox: Checkbox$1, RaisedButton: RaisedButton$1, renderer: renderer$1, keys: keys$1 }));

@@ -59,12 +59,13 @@ var currentState = function currentState(attrs, state) {
 
 var getInitialState = function getInitialState(vnode, createStream) {
   var attrs = vnode.attrs;
-  var isChecked = attrs.defaultChecked !== undefined ? attrs.defaultChecked : attrs.checked;
+  var isChecked = attrs.defaultChecked !== undefined ? attrs.defaultChecked : attrs.checked || false;
   var checked = createStream(isChecked);
 
-  var notifyChange = function notifyChange(isChecked) {
+  var notifyChange = function notifyChange(e, isChecked) {
     if (attrs.onChange) {
       attrs.onChange({
+        event: e,
         checked: isChecked,
         value: attrs.value
       });
@@ -72,15 +73,13 @@ var getInitialState = function getInitialState(vnode, createStream) {
   };
 
   var onChange = function onChange(e) {
-    var isChecked = void 0;
+    var isChecked = e.currentTarget.checked;
     if (attrs.type === "radio") {
       // do not set directly
-      isChecked = e.currentTarget.checked;
     } else {
-      isChecked = !checked();
       checked(isChecked);
     }
-    notifyChange(isChecked);
+    notifyChange(e, isChecked);
   };
 
   return {
@@ -125,7 +124,8 @@ var createContent = function createContent(vnode, _ref2) {
   })), attrs.label ? h("." + classes.label, { key: "label" }, attrs.label) : null, h("input", _extends({}, attrs.events, {
     name: attrs.name,
     type: attrs.type,
-    value: attrs.value
+    value: attrs.value,
+    checked: checked
   }, attrs.disabled || inactive ? { disabled: "disabled" } : _defineProperty({}, k.onchange, state.onChange)))]);
 };
 
