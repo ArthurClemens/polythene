@@ -443,7 +443,7 @@ exports[`test Option: min, max 1`] = `
 </div>
 `;
 
-exports[`test Option: multiline 1`] = `
+exports[`test Option: multiLine 1`] = `
 <div
   style={
     Object {
@@ -453,16 +453,16 @@ exports[`test Option: multiline 1`] = `
   }>
   <TextField
     label="Label in multi-line input"
-    multiline={true}
+    multiLine={true}
     rows={2} />
   <TextField
     floatingLabel={true}
     label="Floating label in multi-line input"
-    multiline={true}
+    multiLine={true}
     rows={2} />
   <TextField
     defaultValue="4 rows: Lorem ipsum dolor sit amet, idque signiferumque at usu, eum recusabo aliquando id. Deleniti percipitur concludaturque eu eos. Vix elitr feugait ne. Mel agam integre eu, has minim aliquid salutandi eu. Est nusquam abhorreant ne. Ei wisi dicant eam, vix tota reque persequeris an. Quo in theophrastus reprehendunt, ius te graecis epicuri volutpat."
-    multiline={true}
+    multiLine={true}
     rows={4} />
 </div>
 `;
@@ -768,6 +768,18 @@ exports[`test Option: value 1`] = `
       onKeyDown={[Function]}
       type="text" />
   </div>
+</div>
+`;
+
+exports[`test Set value 1`] = `
+<div
+  style={
+    Object {
+      "background": "#fff",
+      "padding": "10px 15px",
+    }
+  }>
+  <n />
 </div>
 `;
 

@@ -1,5 +1,6 @@
 import focus from "./components/focus";
 import onChange from "./components/onChange";
+import setValue from "./components/set-value";
 
 export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
 
@@ -26,6 +27,7 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
   const shortIpsum = "Lorem ipsum dolor sit amet,";
   const Focus = focus({ h, k, TextField, RaisedButton });
   const OnChange = onChange({ h, k, TextField, RaisedButton });
+  const SetValue = setValue({ h, k, TextField, RaisedButton });
 
   return [
     {
@@ -182,25 +184,25 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
       }
     },
     {
-      name: "Option: multiline",
+      name: "Option: multiLine",
       component: {
         view: () => block([
           h(TextField, {
             label: "Label in multi-line input",
-            multiline: true,
+            multiLine: true,
             rows: 2,
             key: "a" // for React
           }),
           h(TextField, {
             label: "Floating label in multi-line input",
             floatingLabel: true,
-            multiline: true,
+            multiLine: true,
             rows: 2,
             key: "b" // for React
           }),
           h(TextField, {
             defaultValue: "4 rows: " + ipsum,
-            multiline: true,
+            multiLine: true,
             rows: 4,
             key: "c" // for React
           })
@@ -450,6 +452,15 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
       component: {
         view: () => block(
           h(OnChange)
+        )
+      }
+    },
+    {
+      name: "Set value",
+      interactive: true,
+      component: {
+        view: () => block(
+          h(SetValue)
         )
       }
     },

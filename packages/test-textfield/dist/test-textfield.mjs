@@ -267,7 +267,47 @@ var onChange = (function (_ref) {
   };
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+function _defineProperty$3(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var setValue = (function (_ref) {
+  var h = _ref.h,
+      k = _ref.k,
+      TextField$$1 = _ref.TextField,
+      RaisedButton$$1 = _ref.RaisedButton;
+  return {
+    oninit: function oninit(vnode) {
+      var value = stream("");
+      vnode.state = {
+        value: value,
+        redrawOnUpdate: stream.merge([value]) // for React
+      };
+    },
+    view: function view(vnode) {
+      var state = vnode.state;
+      var value = state.value();
+      return h("div", [h(TextField$$1, {
+        help: "Type text, or press ARROW RIGHT to insert a character programmaticaly",
+        onChange: function onChange(newState) {
+          return state.value(newState.value);
+        },
+        events: _defineProperty$3({}, k.onkeydown, function (e) {
+          if (e.which === 39) {
+            // KEY RIGHT
+            state.value(value + String.fromCharCode(97 + Math.floor(Math.random() * 26)));
+          }
+        }),
+        value: value
+      }), h(RaisedButton$$1, {
+        label: "Clear",
+        events: _defineProperty$3({}, k.onclick, function () {
+          return state.value("");
+        })
+      })]);
+    }
+  };
+});
+
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -281,7 +321,7 @@ var genericTests = (function (_ref) {
   var block = function block(test) {
     var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
     return h("div", {
-      style: _extends({}, attrs.dark ? null : { background: "#fff" }, attrs.fullWidth ? null : { padding: "10px 15px" }) }, test);
+      style: _extends$1({}, attrs.dark ? null : { background: "#fff" }, attrs.fullWidth ? null : { padding: "10px 15px" }) }, test);
   };
 
   TextField$$1.theme(".tests-textfield-themed-textfield", {
@@ -295,6 +335,7 @@ var genericTests = (function (_ref) {
   var shortIpsum = "Lorem ipsum dolor sit amet,";
   var Focus = focus({ h: h, k: k, TextField: TextField$$1, RaisedButton: RaisedButton$$1 });
   var OnChange = onChange({ h: h, k: k, TextField: TextField$$1, RaisedButton: RaisedButton$$1 });
+  var SetValue = setValue({ h: h, k: k, TextField: TextField$$1, RaisedButton: RaisedButton$$1 });
 
   return [{
     name: "Option: defaultValue",
@@ -427,23 +468,23 @@ var genericTests = (function (_ref) {
       }
     }
   }, {
-    name: "Option: multiline",
+    name: "Option: multiLine",
     component: {
       view: function view() {
         return block([h(TextField$$1, {
           label: "Label in multi-line input",
-          multiline: true,
+          multiLine: true,
           rows: 2,
           key: "a" // for React
         }), h(TextField$$1, {
           label: "Floating label in multi-line input",
           floatingLabel: true,
-          multiline: true,
+          multiLine: true,
           rows: 2,
           key: "b" // for React
         }), h(TextField$$1, {
           defaultValue: "4 rows: " + ipsum,
-          multiline: true,
+          multiLine: true,
           rows: 4,
           key: "c" // for React
         })]);
@@ -671,6 +712,14 @@ var genericTests = (function (_ref) {
       }
     }
   }, {
+    name: "Set value",
+    interactive: true,
+    component: {
+      view: function view() {
+        return block(h(SetValue));
+      }
+    }
+  }, {
     name: "Option: disabled (label)",
     component: {
       view: function view() {
@@ -818,8 +867,73 @@ var genericTests = (function (_ref) {
   }];
 });
 
-var mithrilTests = function mithrilTests() {
-  return [];
+var setValue$1 = (function (_ref) {
+  var h = _ref.h,
+      TextField$$1 = _ref.TextField,
+      RaisedButton$$1 = _ref.RaisedButton;
+  return {
+    oninit: function oninit(vnode) {
+      var value = stream("");
+      vnode.state = {
+        value: value
+      };
+    },
+    view: function view(vnode) {
+      var state = vnode.state;
+      var value = state.value();
+      return h("div", [h(TextField$$1, {
+        help: "Type text, or press ARROW RIGHT to insert a character programmaticaly",
+        events: {
+          oninput: h.withAttr("value", function (value) {
+            return state.value(value);
+          }),
+          onkeydown: function onkeydown(e) {
+            if (e.which === 39) {
+              // KEY RIGHT
+              state.value(value + String.fromCharCode(97 + Math.floor(Math.random() * 26)));
+            }
+          }
+        },
+        value: value
+      }), h(RaisedButton$$1, {
+        label: "Clear",
+        events: {
+          onclick: function onclick() {
+            return state.value("");
+          }
+        }
+      })]);
+    }
+  };
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var mithrilTests = function mithrilTests(_ref) {
+  var TextField$$1 = _ref.TextField,
+      RaisedButton$$1 = _ref.RaisedButton,
+      h = _ref.renderer;
+
+
+  var block = function block(test) {
+    var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    return h("div", {
+      style: _extends({}, attrs.dark ? null : { background: "#fff" }, attrs.fullWidth ? null : { padding: "10px 15px" }) }, test);
+  };
+
+  var SetValue = setValue$1({ h: h, TextField: TextField$$1, RaisedButton: RaisedButton$$1 });
+
+  return [{
+    section: "Mithril specific tests (variation with withAttr)"
+  }, {
+    name: "Set value",
+    interactive: true,
+    component: {
+      view: function view() {
+        return block(h(SetValue));
+      }
+    }
+  }];
 };
 
 var testsMithril = [].concat(genericTests({ TextField: TextField, RaisedButton: RaisedButton, renderer: renderer, keys: keys })).concat(mithrilTests({ TextField: TextField, RaisedButton: RaisedButton, renderer: renderer, keys: keys }));
@@ -832,7 +946,7 @@ object-assign
 
 /* eslint-disable no-unused-vars */
 
-var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -878,7 +992,7 @@ function shouldUseNative() {
 		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
 			test3[letter] = letter;
 		});
-		if (Object.keys(_extends$2({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
+		if (Object.keys(_extends$3({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
 			return false;
 		}
 
@@ -4407,12 +4521,12 @@ var React_1 = React$1;
 
 var react = React_1;
 
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var reactTests = function reactTests(_ref) {
   var TextField$$1 = _ref.TextField,
-      h = _ref.renderer,
-      k = _ref.keys;
+      RaisedButton$$1 = _ref.RaisedButton,
+      h = _ref.renderer;
   // eslint-disable-line no-unused-vars
 
   var block = function block(test) {
@@ -4420,7 +4534,7 @@ var reactTests = function reactTests(_ref) {
     return react.createElement(
       "div",
       {
-        style: _extends$1({}, attrs.dark ? null : { background: "#fff" }, attrs.fullWidth ? null : { padding: "10px 15px" })
+        style: _extends$2({}, attrs.dark ? null : { background: "#fff" }, attrs.fullWidth ? null : { padding: "10px 15px" })
       },
       test
     );
