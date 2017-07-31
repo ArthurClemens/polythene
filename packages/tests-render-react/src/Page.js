@@ -29,7 +29,7 @@ const NavBar = (name, previous) =>
 const Results = (name, tests) => 
   h([css.results].join(" "),
     { className: `tests-${name.replace(/[^\w\d]/g, "-").toLowerCase()}` },
-    tests.map((test, index) => {
+    tests.map(test => {
       if (test.section) {
         return h(css.sectionTitle, test.section);
       }

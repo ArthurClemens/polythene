@@ -38,6 +38,11 @@ exports[`test Dark tone class + light tone class 1`] = `
 </div>
 `;
 
+exports[`test HOC (JSX) 1`] = `
+<SecondaryButton
+  label="Secondary Button" />
+`;
+
 exports[`test No options 1`] = `
 <a
   className="pe-button pe-text-button        "
@@ -77,8 +82,7 @@ exports[`test Option: children 1`] = `
   onKeyDown={[Function]}
   tabIndex={0}>
   <div
-    className="pe-button__content"
-    style={Object {}}>
+    className="pe-button__content">
     <Ripple />
     <div
       className="pe-button__wash" />
@@ -114,8 +118,7 @@ exports[`test Option: content 1`] = `
   onKeyDown={[Function]}
   tabIndex={0}>
   <div
-    className="pe-button__content"
-    style={Object {}}>
+    className="pe-button__content">
     <Ripple />
     <div
       className="pe-button__wash" />
@@ -135,8 +138,7 @@ exports[`test Option: disabled (false) 1`] = `
   onKeyDown={[Function]}
   tabIndex={0}>
   <div
-    className="pe-button__content"
-    style={Object {}}>
+    className="pe-button__content">
     <Ripple />
     <div
       className="pe-button__wash" />
@@ -158,8 +160,7 @@ exports[`test Option: disabled (true) 1`] = `
   onKeyDown={[Function]}
   tabIndex={-1}>
   <div
-    className="pe-button__content"
-    style={Object {}}>
+    className="pe-button__content">
     <div
       className="pe-button__label">
       Disabled
@@ -183,8 +184,7 @@ exports[`test Option: formaction 1`] = `
   onKeyDown={[Function]}
   tabIndex={0}>
   <div
-    className="pe-button__content"
-    style={Object {}}>
+    className="pe-button__content">
     <Ripple />
     <div
       className="pe-button__wash" />
@@ -214,8 +214,7 @@ exports[`test Option: inactivate (2) 1`] = `
   onKeyDown={[Function]}
   tabIndex={0}>
   <div
-    className="pe-button__content"
-    style={Object {}}>
+    className="pe-button__content">
     <Ripple />
     <div
       className="pe-button__wash" />
@@ -242,8 +241,7 @@ exports[`test Option: inactive (false) 1`] = `
   onKeyDown={[Function]}
   tabIndex={0}>
   <div
-    className="pe-button__content"
-    style={Object {}}>
+    className="pe-button__content">
     <Ripple />
     <div
       className="pe-button__wash" />
@@ -261,8 +259,7 @@ exports[`test Option: inactive (true) 1`] = `
 <a
   className="pe-button pe-text-button   pe-button--inactive     ">
   <div
-    className="pe-button__content"
-    style={Object {}}>
+    className="pe-button__content">
     <Ripple />
     <div
       className="pe-button__wash" />
@@ -283,8 +280,7 @@ exports[`test Option: ink (false) 1`] = `
   onKeyDown={[Function]}
   tabIndex={0}>
   <div
-    className="pe-button__content"
-    style={Object {}}>
+    className="pe-button__content">
     <div
       className="pe-button__wash" />
     <div
@@ -304,8 +300,7 @@ exports[`test Option: label -- dark tone class 1`] = `
   onKeyDown={[Function]}
   tabIndex={0}>
   <div
-    className="pe-button__content"
-    style={Object {}}>
+    className="pe-button__content">
     <Ripple />
     <div
       className="pe-button__wash" />
@@ -326,8 +321,7 @@ exports[`test Option: label 1`] = `
   onKeyDown={[Function]}
   tabIndex={0}>
   <div
-    className="pe-button__content"
-    style={Object {}}>
+    className="pe-button__content">
     <Ripple />
     <div
       className="pe-button__wash" />
@@ -348,8 +342,7 @@ exports[`test Option: selected 1`] = `
   onKeyDown={[Function]}
   tabIndex={0}>
   <div
-    className="pe-button__content"
-    style={Object {}}>
+    className="pe-button__content">
     <Ripple />
     <div
       className="pe-button__wash" />
@@ -406,8 +399,7 @@ exports[`test Option: tone "dark" -- dark tone class 1`] = `
   onKeyDown={[Function]}
   tabIndex={0}>
   <div
-    className="pe-button__content"
-    style={Object {}}>
+    className="pe-button__content">
     <Ripple />
     <div
       className="pe-button__wash" />
@@ -429,8 +421,7 @@ exports[`test Option: url (without oncreate) 1`] = `
   onKeyDown={[Function]}
   tabIndex={0}>
   <div
-    className="pe-button__content"
-    style={Object {}}>
+    className="pe-button__content">
     <Ripple />
     <div
       className="pe-button__wash" />
@@ -451,8 +442,7 @@ exports[`test Option: wash (false) 1`] = `
   onKeyDown={[Function]}
   tabIndex={0}>
   <div
-    className="pe-button__content"
-    style={Object {}}>
+    className="pe-button__content">
     <Ripple />
     <div
       className="pe-button__focus" />
@@ -471,8 +461,7 @@ exports[`test Themed Button (colors) 1`] = `
   onKeyDown={[Function]}
   tabIndex={0}>
   <div
-    className="pe-button__content"
-    style={Object {}}>
+    className="pe-button__content">
     <Ripple />
     <div
       className="pe-button__wash" />
@@ -493,8 +482,7 @@ exports[`test Themed Button -- dark tone class 1`] = `
   onKeyDown={[Function]}
   tabIndex={0}>
   <div
-    className="pe-button__content"
-    style={Object {}}>
+    className="pe-button__content">
     <Ripple />
     <div
       className="pe-button__wash" />
@@ -515,8 +503,7 @@ exports[`test Themed Button blue on dark -- dark tone class 1`] = `
   onKeyDown={[Function]}
   tabIndex={0}>
   <div
-    className="pe-button__content"
-    style={Object {}}>
+    className="pe-button__content">
     <Ripple />
     <div
       className="pe-button__wash" />
@@ -544,8 +531,7 @@ exports[`test Themed Button: (option: borders) -- dark tone class 1`] = `
   onKeyDown={[Function]}
   tabIndex={0}>
   <div
-    className="pe-button__content"
-    style={Object {}}>
+    className="pe-button__content">
     <Ripple />
     <div
       className="pe-button__wash" />
@@ -566,8 +552,7 @@ exports[`test Themed Button: (option: borders) 1`] = `
   onKeyDown={[Function]}
   tabIndex={0}>
   <div
-    className="pe-button__content"
-    style={Object {}}>
+    className="pe-button__content">
     <Ripple />
     <div
       className="pe-button__wash" />
