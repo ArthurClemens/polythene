@@ -4082,7 +4082,7 @@ var buttonGroup$1 = (function (messageOptions, spawnOptions) {
       }
     }, {
       key: "notificationChange",
-      value: function notificationChange(e) {
+      value: function notificationChange() {
         this.updateCount(Notification$1.count());
       }
     }, {
@@ -4217,9 +4217,65 @@ var containerSelector$1 = (function (buttonGroup) {
   }(react_2);
 });
 
+var dialogOptions = {
+  body: "You pressed a message action",
+  footer: [react.createElement(Button$1, {
+    label: "Cancel",
+    events: {
+      onClick: function onClick() {
+        Dialog$1.hide();
+        Notification$1.unpause();
+      }
+    }
+  }), react.createElement(Button$1, {
+    label: "OK",
+    events: {
+      onClick: function onClick() {
+        Dialog$1.hide();
+        Notification$1.hide();
+      }
+    }
+  })],
+  backdrop: true,
+  modal: true,
+  hideDelay: .2
+};
+
+var ShowNotification = (function () {
+  return react.createElement(RaisedButton$1, {
+    label: "Show notification",
+    events: {
+      onClick: function onClick() {
+        return Notification$1.show({
+          title: "This is the message",
+          layout: "vertical",
+          action: react.createElement(Button$1, {
+            label: "Let me think about it",
+            events: {
+              onClick: function onClick() {
+                Notification$1.pause();
+                Dialog$1.show(dialogOptions);
+              }
+            }
+          })
+        });
+      }
+    }
+  });
+});
+
 var reactTests = function reactTests() {
 
-  return [];
+  return [{
+    section: "React JSX tests"
+  }, {
+    name: "Option: layout vertical (JSX)",
+    interactive: true,
+    exclude: true,
+    component: function component() {
+      return react.createElement(ShowNotification, null);
+    }
+  }];
 };
 
 var testsReact = [].concat(genericTests({ Notification: Notification$1, Dialog: Dialog$1, Button: Button$1, buttonGroup: buttonGroup$1, containerSelector: containerSelector$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests({ Notification: Notification$1, Dialog: Dialog$1, Button: Button$1, buttonGroup: buttonGroup$1, containerSelector: containerSelector$1, renderer: renderer$1, keys: keys$1 }));

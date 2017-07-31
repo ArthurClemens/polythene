@@ -1,4 +1,4 @@
-import { renderer as h, RaisedButton, Notification } from "polythene-mithril";
+import { renderer as h, Notification } from "polythene-mithril";
 
 export default buttonGroup => {
 

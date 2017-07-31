@@ -1,5 +1,5 @@
 import React, { Component } from "react"; // eslint-disable-line no-unused-vars
-import { RaisedButton, Notification } from "polythene-react";
+import { Notification } from "polythene-react";
 import { subscribe, unsubscribe } from "polythene-core";
 
 export default buttonGroup => {

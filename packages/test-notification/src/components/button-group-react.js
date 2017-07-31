@@ -29,7 +29,7 @@ export default (messageOptions, spawnOptions) => {
       }
     }
 
-    notificationChange(e) {
+    notificationChange() {
       this.updateCount(Notification.count());
     }
 
