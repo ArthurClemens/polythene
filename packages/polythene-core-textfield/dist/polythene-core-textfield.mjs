@@ -571,7 +571,7 @@ var onMount = function onMount(vnode) {
   var attrs = vnode.attrs;
 
   state.el(dom);
-  var inputType = attrs.multiline ? "textarea" : "input";
+  var inputType = attrs.multiLine ? "textarea" : "input";
   var inputEl = dom.querySelector(inputType);
   vnode.state.inputEl(inputEl);
   state.inputEl().value = state.defaultValue;
@@ -617,8 +617,8 @@ var createContent = function createContent(vnode, _ref3) {
 
   var inputEl = state.inputEl();
   var isInvalid = state.isInvalid();
-  var inputType = attrs.multiline ? "textarea" : "input";
-  var type = attrs.multiline ? null : !attrs.type || attrs.type === "submit" || attrs.type === "search" ? "text" : attrs.type;
+  var inputType = attrs.multiLine ? "textarea" : "input";
+  var type = attrs.multiLine ? null : !attrs.type || attrs.type === "submit" || attrs.type === "search" ? "text" : attrs.type;
   var showError = isInvalid && state.error() !== undefined;
   var validates = attrs.validate || attrs.min || attrs.max || attrs[k.minlength] || attrs[k.maxlength] || attrs.required || attrs.pattern;
   var inactive = attrs.disabled || attrs[k.readonly];

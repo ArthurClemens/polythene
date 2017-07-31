@@ -131,7 +131,7 @@ export const onMount = vnode => {
   const attrs = vnode.attrs;
 
   state.el(dom);
-  const inputType = attrs.multiline ? "textarea" : "input";
+  const inputType = attrs.multiLine ? "textarea" : "input";
   const inputEl = dom.querySelector(inputType);
   vnode.state.inputEl(inputEl);
   state.inputEl().value = state.defaultValue;
@@ -197,8 +197,8 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
 
   const inputEl = state.inputEl();
   const isInvalid = state.isInvalid();
-  const inputType = attrs.multiline ? "textarea" : "input";
-  const type = attrs.multiline
+  const inputType = attrs.multiLine ? "textarea" : "input";
+  const type = attrs.multiLine
     ? null
     : !attrs.type || attrs.type === "submit" || attrs.type === "search"
       ? "text"
