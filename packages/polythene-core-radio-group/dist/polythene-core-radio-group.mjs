@@ -23,7 +23,7 @@ var createProps = function createProps(vnode, _ref) {
 
   var attrs = vnode.attrs;
   return _extends({}, filterSupportedAttributes(attrs), {
-    className: [classes.component, attrs.className || attrs[k.class]].join(" ")
+    className: [classes.component, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
 
@@ -37,7 +37,10 @@ var createContent = function createContent(vnode, _ref2) {
 
   var buttons = attrs.content ? attrs.content : attrs.buttons ? attrs.buttons : attrs.children || vnode.children || [];
 
-  return buttons.map(function (buttonOpts) {
+  return buttons.length ? buttons.map(function (buttonOpts) {
+    if (!buttonOpts) {
+      return null;
+    }
     // Only set defaultChecked the first time when no value has been stored yet
     var isDefaultChecked = (buttonOpts.defaultChecked || buttonOpts.checked) && checkedValue === undefined;
     if (buttonOpts.value === undefined) {
@@ -57,7 +60,7 @@ var createContent = function createContent(vnode, _ref2) {
       },
       checked: isChecked
     }));
-  });
+  }) : null;
 };
 
 var radioGroup = Object.freeze({

@@ -11,6 +11,7 @@ const reactTests = ({ RadioButton, renderer: h }) => { // eslint-disable-line no
       this.state = {
         value: undefined
       };
+      this.handleChange = this.handleChange.bind(this);
     }
 
     handleChange(newState) {
@@ -29,13 +30,13 @@ const reactTests = ({ RadioButton, renderer: h }) => { // eslint-disable-line no
             label="One"
             value="one"
             checked={this.state.value === "one"}
-            onChange={this.handleChange.bind(this)}
+            onChange={this.handleChange}
           />
           <RadioButton
             label="Two"
             value="two"
             checked={this.state.value === "two"}
-            onChange={this.handleChange.bind(this)}
+            onChange={this.handleChange}
           />
         </form>
       );
@@ -45,6 +46,22 @@ const reactTests = ({ RadioButton, renderer: h }) => { // eslint-disable-line no
   return [
     {
       section: "React JSX tests",
+    },
+    {
+      name: "Option: label (JSX)",
+      component: () =>
+        <RadioGroup buttons={[
+          {
+            value: "One",
+            label: "One",
+            key: "one",
+          },
+          {
+            value: "Two",
+            label: "Two",
+            key: "two",
+          }
+        ]}/>
     },
     {
       name: "Option: onChange (JSX)",

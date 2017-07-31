@@ -20,6 +20,8 @@ export const createProps = (vnode, { keys: k }) => {
     {
       className: [
         classes.component,
+        attrs.tone === "dark" ? "pe-dark-tone" : null,
+        attrs.tone === "light" ? "pe-light-tone" : null,
         attrs.className || attrs[k.class],
       ].join(" "),
     }
@@ -37,30 +39,35 @@ export const createContent = (vnode, { renderer: h, RadioButton }) => {
       ? attrs.buttons
       : attrs.children || vnode.children || [];
 
-  return buttons.map(buttonOpts => {
-    // Only set defaultChecked the first time when no value has been stored yet
-    const isDefaultChecked = (buttonOpts.defaultChecked || buttonOpts.checked) && checkedValue === undefined;
-    if (buttonOpts.value === undefined) {
-      console.error("Option 'value' not set for radio button"); // eslint-disable-line no-console
-    }
-    const isChecked = isDefaultChecked || checkedValue === buttonOpts.value;
-    return h(RadioButton, Object.assign(
-      {},
-      {
-        /* group attributes that may be overwritten by individual buttons */
-        name: attrs.name,
-        key: buttonOpts.value
-      },
-      /* individual button options */
-      buttonOpts,
-      {
-        /* this component's options */
-        onChange: newState => (
-          state.checkedValue(newState.value),
-          attrs.onChange && attrs.onChange(newState.value)
-        ),
-        checked: isChecked
+  return buttons.length
+    ? buttons.map(buttonOpts => {
+      if (!buttonOpts) {
+        return null;
       }
-    ));
-  });
+      // Only set defaultChecked the first time when no value has been stored yet
+      const isDefaultChecked = (buttonOpts.defaultChecked || buttonOpts.checked) && checkedValue === undefined;
+      if (buttonOpts.value === undefined) {
+        console.error("Option 'value' not set for radio button"); // eslint-disable-line no-console
+      }
+      const isChecked = isDefaultChecked || checkedValue === buttonOpts.value;
+      return h(RadioButton, Object.assign(
+        {},
+        {
+          /* group attributes that may be overwritten by individual buttons */
+          name: attrs.name,
+          key: buttonOpts.value
+        },
+        /* individual button options */
+        buttonOpts,
+        {
+          /* this component's options */
+          onChange: newState => (
+            state.checkedValue(newState.value),
+            attrs.onChange && attrs.onChange(newState.value)
+          ),
+          checked: isChecked
+        }
+      ));
+    })
+    : null;
 };

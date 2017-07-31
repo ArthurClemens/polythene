@@ -4130,6 +4130,7 @@ var reactTests = function reactTests(_ref) {
       _this.state = {
         value: undefined
       };
+      _this.handleChange = _this.handleChange.bind(_this);
       return _this;
     }
 
@@ -4155,13 +4156,13 @@ var reactTests = function reactTests(_ref) {
             label: "One",
             value: "one",
             checked: this.state.value === "one",
-            onChange: this.handleChange.bind(this)
+            onChange: this.handleChange
           }),
           react.createElement(RadioButton$$1, {
             label: "Two",
             value: "two",
             checked: this.state.value === "two",
-            onChange: this.handleChange.bind(this)
+            onChange: this.handleChange
           })
         );
       }
@@ -4172,6 +4173,21 @@ var reactTests = function reactTests(_ref) {
 
   return [{
     section: "React JSX tests"
+  }, {
+    name: "Option: label (JSX)",
+    component: function component() {
+      return react.createElement(
+        RadioGroup$1,
+        null,
+        [{
+          value: "One",
+          label: "One"
+        }, {
+          value: "Two",
+          label: "Two"
+        }]
+      );
+    }
   }, {
     name: "Option: onChange (JSX)",
     component: Form
