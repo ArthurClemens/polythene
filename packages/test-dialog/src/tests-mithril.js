@@ -2,7 +2,7 @@ import { renderer, keys, Button, RaisedButton, Dialog, DialogPane, Toolbar, Icon
 import genericTests from "./tests-generic";
 import form from "./components/form-mithril";
 
-const mithrilTests = ({ renderer, keys, Dialog, RaisedButton, }) => {
+const mithrilTests = ({ renderer, keys, Dialog, RaisedButton }) => {
 
   const Opener = (dialogAttrs, label = "Open") => renderer(RaisedButton, {
     label,

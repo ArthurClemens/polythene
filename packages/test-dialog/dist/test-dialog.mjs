@@ -4506,18 +4506,118 @@ var Pane = function (_Component) {
   return Pane;
 }(react_2);
 
-function _defineProperty$8(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var iconClose = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\"/></svg>";
 
-var reactTests = function reactTests() {
+var content = "Content...";
 
-  var Opener = function Opener(dialogAttrs) {
-    var label = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "Open";
-    return renderer$1(RaisedButton$1, {
+var toolbarRow = function toolbarRow(title) {
+  return [renderer$1(IconButton$1, {
+    key: "close",
+    icon: {
+      svg: renderer$1.trust(iconClose)
+    },
+    events: {
+      onClick: function onClick() {
+        return Dialog$1.hide();
+      }
+    }
+  }), renderer$1("span.flex", { key: "spacer" }, title), renderer$1(Button$1, {
+    key: "save",
+    label: "Save",
+    events: {
+      onClick: function onClick() {
+        return Dialog$1.hide();
+      }
+    }
+  })];
+};
+
+var fullScreenOptions = {
+  fullscreen: true,
+  backdrop: true,
+  content: [renderer$1(Toolbar$1, {
+    content: toolbarRow("New event"),
+    key: "header"
+  }),
+  // content
+  renderer$1("div", {
+    style: { padding: "21px" },
+    key: "content"
+  }, renderer$1.trust(content))]
+};
+
+var iconClose$1 = react.createElement(
+  "svg",
+  { width: "24", height: "24", viewBox: "0 0 24 24" },
+  react.createElement("path", { d: "M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" })
+);
+
+var content$1 = "Content...";
+
+var toolbarRow$1 = function toolbarRow(title) {
+  return [react.createElement(IconButton$1, {
+    key: "close",
+    icon: {
+      svg: iconClose$1
+    },
+    events: {
+      onClick: function onClick() {
+        return Dialog$1.hide();
+      }
+    }
+  }), react.createElement(
+    "span",
+    { className: "flex", key: "spacer" },
+    title
+  ), react.createElement(Button$1, {
+    key: "save",
+    label: "Save",
+    events: {
+      onClick: function onClick() {
+        return Dialog$1.hide();
+      }
+    }
+  })];
+};
+
+var fullScreenJsxOptions = {
+  fullscreen: true,
+  backdrop: true,
+  content: [react.createElement(Toolbar$1, {
+    content: toolbarRow$1("New event"),
+    key: "header"
+  }), react.createElement(
+    "div",
+    { style: { padding: "21px" }, key: "content" },
+    content$1
+  )]
+};
+
+var reactTests = function reactTests(_ref) {
+  var h = _ref.renderer,
+      Dialog$$1 = _ref.Dialog,
+      RaisedButton$$1 = _ref.RaisedButton;
+
+
+  var Opener = function Opener(_ref2) {
+    var dialogAttrs = _ref2.dialogAttrs,
+        _ref2$label = _ref2.label,
+        label = _ref2$label === undefined ? "Open" : _ref2$label;
+    return react.createElement(RaisedButton$$1, {
       label: label,
-      events: _defineProperty$8({}, keys$1.onclick, function () {
-        return Dialog$1.show(dialogAttrs);
-      })
+      events: {
+        onClick: function onClick() {
+          return Dialog$$1.show(dialogAttrs);
+        }
+      }
     });
+  };
+
+  var modalDialogOptions = {
+    body: "Discard draft?",
+    modal: true,
+    backdrop: true,
+    footer: [react.createElement(Button$1, { key: "cancel", label: "Cancel", events: { onClick: Dialog$$1.hide } }), react.createElement(Button$1, { key: "discard", label: "Discard", events: { onClick: Dialog$$1.hide } })]
   };
 
   return [{
@@ -4529,9 +4629,38 @@ var reactTests = function reactTests() {
     component: {
       view: function view() {
         return Opener({
-          panes: [renderer$1(Pane)]
+          dialogAttrs: {
+            panes: [h(Pane)]
+          }
         });
       }
+    }
+  }, {
+    name: "Full screen",
+    interactive: true,
+    exclude: true,
+    component: {
+      view: function view() {
+        return Opener({
+          dialogAttrs: fullScreenOptions
+        });
+      }
+    }
+  }, {
+    section: "React JSX tests"
+  }, {
+    name: "Option: modal with backdrop (JSX)",
+    interactive: true,
+    exclude: true,
+    component: function component() {
+      return react.createElement(Opener, { dialogAttrs: modalDialogOptions });
+    }
+  }, {
+    name: "Full screen (JSX)",
+    interactive: true,
+    exclude: true,
+    component: function component() {
+      return react.createElement(Opener, { dialogAttrs: fullScreenJsxOptions });
     }
   }];
 };

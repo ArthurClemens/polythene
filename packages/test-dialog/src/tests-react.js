@@ -2,15 +2,28 @@ import React, { Component } from "react"; // eslint-disable-line no-unused-vars
 import { renderer, keys, Dialog, DialogPane, Button, RaisedButton, Toolbar, IconButton, Icon, List, ListTile } from "polythene-react";
 import genericTests from "./tests-generic";
 import formPane from "./components/form-react";
+import fullScreenOptions from "./components/fullscreen-react";
+import fullScreenJsxOptions from "./components/fullscreen-react-jsx";
 
-const reactTests = () => {
+const reactTests = ({ renderer: h, Dialog, RaisedButton }) => {
 
-  const Opener = (dialogAttrs, label = "Open") => renderer(RaisedButton, {
-    label,
-    events: {
-      [keys.onclick]: () => Dialog.show(dialogAttrs)
-    }
-  });
+  const Opener = ({ dialogAttrs, label = "Open" }) =>
+    <RaisedButton
+      label={label}
+      events={{
+        onClick: () => Dialog.show(dialogAttrs)
+      }}
+    />;
+
+  const modalDialogOptions = {
+    body: "Discard draft?",
+    modal: true,
+    backdrop: true,
+    footer: [
+      <Button key="cancel" label="Cancel" events={{ onClick: Dialog.hide }} />,
+      <Button key="discard" label="Discard" events={{ onClick: Dialog.hide }} />
+    ]
+  };
 
   return [
     {
@@ -23,50 +36,40 @@ const reactTests = () => {
       component: {
         view: () => 
           Opener({
-            panes: [renderer(formPane)]
+            dialogAttrs: {
+              panes: [h(formPane)]
+            }
           })
       }
     },
-    // {
-    //   section: "React JSX tests",
-    // },
-    // {
-    //   name: "Simple (JSX)",
-    //   component: () =>
-    //     <Menu
-    //       size={5}
-    //       permanent
-    //     >
-    //       <List
-    //         key="one"
-    //         compact
-    //         hoverable
-    //         tiles={[
-    //           Tile("Bold", "\u2318B"),
-    //           Tile("Italic", "\u2318I"),
-    //           Tile("Underline", "\u2318U"),
-    //           Tile("Strikethrough", "Alt+Shift+5"),
-    //           Tile("Superscript", "\u2318."),
-    //           Tile("Subscript", "\u2318,"),
-    //         ]}
-    //       />
-    //       <List
-    //         key="two"
-    //         compact
-    //         hoverable
-    //         tiles={[
-    //           Tile("Clear formatting", "\u2318/", true),
-    //           Tile("Custom spacing", "")
-    //         ]}
-    //       />
-    //     </Menu>
-    // },
-    // {
-    //   name: "Simple menu (demo without state) (JSX)",
-    //   interactive: true,
-    //   exclude: true,
-    //   component: opener({ renderer, keys, Menu, RaisedButton, List, ListTile, menuFn: simple, id: "simple-jsx" })
-    // },
+    {
+      name: "Full screen",
+      interactive: true,
+      exclude: true,
+      component: {
+        view: () => 
+          Opener({
+            dialogAttrs: fullScreenOptions
+          })
+      }
+    },
+    {
+      section: "React JSX tests",
+    },
+    {
+      name: "Option: modal with backdrop (JSX)",
+      interactive: true,
+      exclude: true,
+      component: () =>
+        <Opener dialogAttrs={modalDialogOptions} />
+    },
+    {
+      name: "Full screen (JSX)",
+      interactive: true,
+      exclude: true,
+      component: () =>
+        <Opener dialogAttrs={fullScreenJsxOptions} />
+    },
   ];
     
 };
