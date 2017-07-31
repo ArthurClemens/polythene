@@ -1,6 +1,6 @@
 import { Dialog, IconButton, List, ListTile, Menu, RaisedButton, Shadow, keys, renderer } from 'polythene-mithril';
 import { styler } from 'polythene-core-css';
-import { IconButton as IconButton$1, List as List$1, ListTile as ListTile$1, Menu as Menu$1, RaisedButton as RaisedButton$1, Shadow as Shadow$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
+import { Dialog as Dialog$1, IconButton as IconButton$1, List as List$1, ListTile as ListTile$1, Menu as Menu$1, RaisedButton as RaisedButton$1, Shadow as Shadow$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 
 var menuItems = (function (_ref) {
   var h = _ref.renderer,
@@ -666,10 +666,10 @@ var genericTests = (function (_ref) {
 
 function _defineProperty$3(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var createSettingsDialog = (function (_ref) {
+var settingsDialog = (function (_ref) {
   var h = _ref.renderer,
       k = _ref.keys,
-      dialog = _ref.dialog,
+      Dialog$$1 = _ref.Dialog,
       List$$1 = _ref.List,
       ListTile$$1 = _ref.ListTile;
 
@@ -683,7 +683,7 @@ var createSettingsDialog = (function (_ref) {
       ink: true,
       events: _defineProperty$3({}, k.onclick, function () {
         if (!disabled) {
-          dialog.hide();
+          Dialog$$1.hide();
         }
       })
     });
@@ -705,28 +705,27 @@ var mithrilTests = function mithrilTests(_ref) {
       h = _ref.renderer;
 
 
-  var settingsDialog = createSettingsDialog({ renderer: renderer, keys: keys, Dialog: Dialog, Menu: Menu$$1, List: List$$1, ListTile: ListTile$$1 });
+  var settingsDialogOptions = settingsDialog({ renderer: renderer, keys: keys, Dialog: Dialog, Menu: Menu$$1, List: List$$1, ListTile: ListTile$$1 });
 
-  return [
-    // {
-    //   section: "Mithril specific tests",
-    // },
-    // {
-    //   name: "Dialog with option 'menu' (demo without state)",
-    //   interactive: true,
-    //   exclude: true,
-    //   component: {
-    //     view: () => 
-    //       h(RaisedButton, {
-    //         label: "Open",
-    //         events: {
-    //           onclick: () => Dialog.show(settingsDialog)
-    //         }
-    //       }
-    //     )
-    //   }
-    // },
-  ];
+  return [{
+    section: "Mithril specific tests"
+  }, {
+    name: "Dialog with option 'menu' (demo without state)",
+    interactive: true,
+    exclude: true,
+    component: {
+      view: function view() {
+        return h(RaisedButton, {
+          label: "Open",
+          events: {
+            onclick: function onclick() {
+              return Dialog.show(settingsDialogOptions);
+            }
+          }
+        });
+      }
+    }
+  }];
 };
 
 var testsMithril = [].concat(genericTests({ Menu: Menu, List: List, ListTile: ListTile, RaisedButton: RaisedButton, Shadow: Shadow, IconButton: IconButton, renderer: renderer, keys: keys })).concat(mithrilTests({ Menu: Menu, List: List, ListTile: ListTile, RaisedButton: RaisedButton, Shadow: Shadow, IconButton: IconButton, renderer: renderer, keys: keys }));
@@ -4314,84 +4313,165 @@ var React_1 = React$1;
 
 var react = React_1;
 
-function _defineProperty$4(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var react_2 = react.Component;
 
-var opener$1 = (function (_ref) {
-  var h = _ref.renderer,
-      k = _ref.keys,
-      Menu$$1 = _ref.Menu,
-      RaisedButton$$1 = _ref.RaisedButton,
-      List$$1 = _ref.List,
-      ListTile$$1 = _ref.ListTile,
-      menuFn = _ref.menuFn,
-      id = _ref.id;
-  return {
-    oninit: function oninit(vnode) {
-      var show = stream(false);
-      vnode.state = {
-        show: show,
-        redrawOnUpdate: stream.merge([show])
-      };
-    },
-    view: function view(vnode) {
-      var state = vnode.state;
-      var show = state.show();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _class = function (_Component) {
+  _inherits(_class, _Component);
+
+  function _class(props) {
+    _classCallCheck(this, _class);
+
+    var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, props));
+
+    _this.state = {
+      isOpen: false
+    };
+    return _this;
+  }
+
+  _createClass(_class, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var isOpen = this.state.isOpen;
+      var target = "simple-menu";
+      return renderer$1("div", { style: { position: "relative" } }, [renderer$1(RaisedButton$1, {
+        label: "Open menu",
+        id: target,
+        events: {
+          onClick: function onClick() {
+            return _this2.setState({ isOpen: true });
+          }
+        }
+      }), renderer$1(Menu$1, {
+        target: "#" + target,
+        show: isOpen,
+        offset: -4,
+        didHide: function didHide() {
+          return _this2.setState({ isOpen: false });
+        }
+      }, renderer$1(List$1, [renderer$1(ListTile$1, { title: "Yes", ink: true, hoverable: true }), renderer$1(ListTile$1, { title: "No", ink: true, hoverable: true })]))]);
+    }
+  }]);
+
+  return _class;
+}(react_2);
+
+var _createClass$1 = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck$1(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn$1(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits$1(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _class$1 = function (_Component) {
+  _inherits$1(_class, _Component);
+
+  function _class(props) {
+    _classCallCheck$1(this, _class);
+
+    var _this = _possibleConstructorReturn$1(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, props));
+
+    _this.state = {
+      isOpen: false
+    };
+    return _this;
+  }
+
+  _createClass$1(_class, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var isOpen = this.state.isOpen;
+      var target = "simple-menu-jsx";
       return react.createElement(
         "div",
-        {
-          style: { position: "relative" }
-        },
-        react.createElement(RaisedButton$$1, {
+        { style: { position: "relative" } },
+        react.createElement(RaisedButton$1, {
           label: "Open menu",
-          id: id,
-          events: _defineProperty$4({}, k.onclick, function () {
-            return state.show(true);
-          })
-        }),
-        menuFn({
-          show: show,
-          target: "#" + id,
-          h: h,
-          Menu: Menu$$1,
-          List: List$$1,
-          ListTile: ListTile$$1,
-          didHide: function didHide() {
-            return state.show(false);
+          id: target,
+          events: {
+            onClick: function onClick() {
+              return _this2.setState({ isOpen: true });
+            }
           }
-        })
+        }),
+        react.createElement(
+          Menu$1,
+          {
+            target: "#" + target,
+            show: isOpen,
+            offset: -4,
+            didHide: function didHide() {
+              return _this2.setState({ isOpen: false });
+            }
+          },
+          react.createElement(
+            List$1,
+            null,
+            react.createElement(ListTile$1, { title: "Yes", ink: true, hoverable: true }),
+            react.createElement(ListTile$1, { title: "No", ink: true, hoverable: true })
+          )
+        )
       );
     }
-  };
-});
+  }]);
 
-var simple$1 = (function (_ref) {
-  var show = _ref.show,
-      target = _ref.target,
-      Menu$$1 = _ref.Menu,
-      List$$1 = _ref.List,
-      ListTile$$1 = _ref.ListTile,
-      didHide = _ref.didHide,
-      getState = _ref.getState;
-  return react.createElement(
-    Menu$$1,
-    {
-      target: target,
-      show: show,
-      didHide: didHide,
-      getState: getState,
-      offset: -4
-    },
-    react.createElement(
-      List$$1,
-      null,
-      react.createElement(ListTile$$1, { title: "Yes", ink: true, hoverable: true }),
-      react.createElement(ListTile$$1, { title: "No", ink: true, hoverable: true })
-    )
-  );
+  return _class;
+}(react_2);
+
+var Tile = function Tile(_ref) {
+  var title = _ref.title,
+      selected = _ref.selected,
+      disabled = _ref.disabled;
+  return react.createElement(ListTile$1, {
+    title: title,
+    selected: selected,
+    disabled: disabled,
+    ink: true,
+    events: {
+      onClick: function onClick() {
+        if (!disabled) {
+          Dialog$1.hide();
+        }
+      }
+    }
+  });
+};
+
+var dialogOptions = {
+  menu: react.createElement(List$1, {
+    hoverable: true,
+    tiles: [react.createElement(Tile, { title: "Item one", selected: true, disabled: false }), react.createElement(Tile, { title: "Item two", selected: false, disabled: false }), react.createElement(Tile, { title: "Item three", selected: false, disabled: true })]
+  }),
+  hideDelay: .240
+};
+
+var SettingsJSX = (function () {
+  return react.createElement(RaisedButton$1, {
+    label: "Open Menu Dialog",
+    events: {
+      onClick: function onClick() {
+        return Dialog$1.show(dialogOptions);
+      }
+    }
+  });
 });
 
 var reactTests = function reactTests(_ref) {
-  var Menu$$1 = _ref.Menu,
+  var h = _ref.renderer,
+      Menu$$1 = _ref.Menu,
       List$$1 = _ref.List,
       ListTile$$1 = _ref.ListTile;
 
@@ -4406,10 +4486,20 @@ var reactTests = function reactTests(_ref) {
       disabled: disabled
     });
   };
+
   return [{
+    section: "React specific tests"
+  }, {
+    name: "Simple menu (demo without state) (hyperscript)",
+    interactive: true,
+    exclude: true,
+    component: function component() {
+      return h(_class);
+    }
+  }, {
     section: "React JSX tests"
   }, {
-    name: "Simple (JSX)",
+    name: "Permanent (JSX)",
     component: function component() {
       return react.createElement(
         Menu$$1,
@@ -4435,7 +4525,16 @@ var reactTests = function reactTests(_ref) {
     name: "Simple menu (demo without state) (JSX)",
     interactive: true,
     exclude: true,
-    component: opener$1({ renderer: renderer$1, keys: keys$1, Menu: Menu$$1, RaisedButton: RaisedButton$1, List: List$$1, ListTile: ListTile$$1, menuFn: simple$1, id: "simple-jsx" })
+    component: function component() {
+      return react.createElement(_class$1, null);
+    }
+  }, {
+    name: "Dialog with option 'menu' (demo without state) (JSX)",
+    interactive: true,
+    exclude: true,
+    component: function component() {
+      return react.createElement(SettingsJSX, null);
+    }
   }];
 };
 

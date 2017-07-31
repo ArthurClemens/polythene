@@ -1,5 +1,5 @@
 
-export default ({ renderer: h, keys: k, dialog, List, ListTile }) => {
+export default ({ renderer: h, keys: k, Dialog, List, ListTile }) => {
 
   const tile = (title, selected, disabled) =>
     h(ListTile, {
@@ -11,7 +11,7 @@ export default ({ renderer: h, keys: k, dialog, List, ListTile }) => {
       events: {
         [k.onclick]: () => {
           if (!disabled) {
-            dialog.hide();
+            Dialog.hide();
           }
         }
       }

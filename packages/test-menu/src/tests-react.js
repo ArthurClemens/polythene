@@ -1,10 +1,11 @@
 import React, { Component } from "react"; // eslint-disable-line no-unused-vars
 import { renderer, keys, Menu, List, ListTile, Shadow, IconButton, RaisedButton } from "polythene-react";
 import genericTests from "./tests-generic";
-import opener from "./components/opener-jsx";
-import simple from "./components/simple-jsx";
+import SimpleHyperscript from "./components/simple-react-hyperscript";
+import SimpleJSX from "./components/simple-jsx";
+import SettingsJSX from "./components/settings-dialog-jsx";
 
-const reactTests = ({ Menu, List, ListTile }) => {
+const reactTests = ({ renderer: h, Menu, List, ListTile }) => {
 
   const Tile = (left, right, disabled = false) =>
     <ListTile
@@ -14,12 +15,23 @@ const reactTests = ({ Menu, List, ListTile }) => {
       hoverable={true}
       disabled={disabled}
     />;
+
   return [
+    {
+      section: "React specific tests"
+    },
+    {
+      name: "Simple menu (demo without state) (hyperscript)",
+      interactive: true,
+      exclude: true,
+      component: () => 
+        h(SimpleHyperscript)
+    },
     {
       section: "React JSX tests",
     },
     {
-      name: "Simple (JSX)",
+      name: "Permanent (JSX)",
       component: () =>
         <Menu
           size={5}
@@ -53,7 +65,13 @@ const reactTests = ({ Menu, List, ListTile }) => {
       name: "Simple menu (demo without state) (JSX)",
       interactive: true,
       exclude: true,
-      component: opener({ renderer, keys, Menu, RaisedButton, List, ListTile, menuFn: simple, id: "simple-jsx" })
+      component: () => <SimpleJSX />
+    },
+    {
+      name: "Dialog with option 'menu' (demo without state) (JSX)",
+      interactive: true,
+      exclude: true,
+      component: () => <SettingsJSX />
     },
   ];
     
