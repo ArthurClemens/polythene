@@ -1,8 +1,6 @@
 import { filterSupportedAttributes } from "polythene-core";
 import { isTouch, subscribe, unsubscribe } from "polythene-core";
 import { scrollTo } from "polythene-utilities";
-// import tab from "./tab";
-// import scrollButton from "./scroll-button";
 import vars from "./theme/vars";
 import classes from "./classes";
 import { customTheme } from "./theme";
@@ -120,7 +118,7 @@ const setSelectedTab = (state, attrs, index, animate) => {
   if (attrs.onChange) {
     attrs.onChange({
       index,
-      data: state.tabs[index].attrs,
+      options: state.tabs[index].attrs,
       el: selectedTabEl
     });
   }
@@ -247,20 +245,24 @@ export const createContent = (vnode, { renderer: h, keys: k, Tab, ScrollButton }
 
   const buttons = attrs.content
     ? attrs.content
-    : attrs.buttons
-      ? attrs.buttons
+    : attrs.tabs
+      ? attrs.tabs
       : attrs.children || vnode.children || [];
+
+  if (buttons.length === 0) {
+    console.error("No tabs specified"); // eslint-disable-line no-console
+  }
 
   const tabRowButtons = buttons.map((buttonOpts = {}, index) => {
     const buttonOptsCombined = Object.assign(
       {},
       buttonOpts,
       {
-        // These options can be overridden by tabsOpts
+        // These options can be overridden by `all`
         selected: index === state.selectedTabIndex(),
         animateOnTap: (attrs.animateOnTap !== false) ? true : false
       },
-      attrs.tabsOpts,
+      attrs.all,
       {
         // Internal options, should not get overridden
         index,

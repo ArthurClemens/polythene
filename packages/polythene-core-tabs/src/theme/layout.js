@@ -167,8 +167,8 @@ export default (selector, componentVars) => [{
             display: "none"
           }
         },
-        ".pe-button--selected": {
-          " .pe-button__content .pe-button__content": {
+        ".pe-button--selected .pe-button__content": {
+          " .pe-button__label": {
             opacity: 1
           }
         },

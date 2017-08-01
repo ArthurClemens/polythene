@@ -234,8 +234,8 @@ var layout = (function (selector, componentVars) {
           display: "none"
         }
       },
-      ".pe-button--selected": {
-        " .pe-button__content .pe-button__content": {
+      ".pe-button--selected .pe-button__content": {
+        " .pe-button__label": {
           opacity: 1
         }
       },
@@ -347,8 +347,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-// import tab from "./tab";
-// import scrollButton from "./scroll-button";
 var theme = customTheme;
 
 var whenCreateDone = function whenCreateDone() {
@@ -464,7 +462,7 @@ var setSelectedTab = function setSelectedTab(state, attrs, index, animate) {
   if (attrs.onChange) {
     attrs.onChange({
       index: index,
-      data: state.tabs[index].attrs,
+      options: state.tabs[index].attrs,
       el: selectedTabEl
     });
   }
@@ -586,17 +584,21 @@ var createContent = function createContent(vnode, _ref3) {
   var state = vnode.state;
   var attrs = vnode.attrs;
 
-  var buttons = attrs.content ? attrs.content : attrs.buttons ? attrs.buttons : attrs.children || vnode.children || [];
+  var buttons = attrs.content ? attrs.content : attrs.tabs ? attrs.tabs : attrs.children || vnode.children || [];
+
+  if (buttons.length === 0) {
+    console.error("No tabs specified"); // eslint-disable-line no-console
+  }
 
   var tabRowButtons = buttons.map(function () {
     var buttonOpts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
     var index = arguments[1];
 
     var buttonOptsCombined = _extends({}, buttonOpts, {
-      // These options can be overridden by tabsOpts
+      // These options can be overridden by `all`
       selected: index === state.selectedTabIndex(),
       animateOnTap: attrs.animateOnTap !== false ? true : false
-    }, attrs.tabsOpts, {
+    }, attrs.all, {
       // Internal options, should not get overridden
       index: index,
       key: "tab-" + index,

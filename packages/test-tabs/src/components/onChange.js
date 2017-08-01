@@ -30,11 +30,11 @@ export default ({ h, Tabs }) => ({
         },
         [
           h("li", { key: "index" }, `${tab.index}`),
-          h("li", { key: "data" }, `${JSON.stringify(tab.data)}`)
+          h("li", { key: "options" }, `${JSON.stringify(tab.options)}`)
         ]
       ),
       h(Tabs, {
-        buttons: threeButtons,
+        tabs: threeButtons,
         autofit: true,
         onChange: newTab => state.tab(newTab)
       })
