@@ -1,6 +1,6 @@
 import stream from "mithril/stream";
 
-export default ({ h, k, TextField, RaisedButton }) => ({
+export default ({ h, TextField }) => ({
   oninit: vnode => {
     const textfieldState = stream({});
     const value = stream("");
@@ -27,13 +27,7 @@ export default ({ h, k, TextField, RaisedButton }) => ({
         h("div", { key: "focus" },   `focus: ${state.textfieldState().focus}`),
         h("div", { key: "dirty" },   `dirty: ${state.textfieldState().dirty}`),
         h("div", { key: "invalid" }, `invalid: ${state.textfieldState().invalid}`),
-      ]),
-      h(RaisedButton, {
-        label: "Random",
-        events: {
-          [k.onclick]: () => state.value(Math.floor(Math.random() * 100000))
-        },
-      })
+      ])
     ]);
   }
 });

@@ -229,13 +229,9 @@ var focus = (function (_ref) {
   };
 });
 
-function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 var onChange = (function (_ref) {
   var h = _ref.h,
-      k = _ref.k,
-      TextField$$1 = _ref.TextField,
-      RaisedButton$$1 = _ref.RaisedButton;
+      TextField$$1 = _ref.TextField;
   return {
     oninit: function oninit(vnode) {
       var textfieldState = stream({});
@@ -257,17 +253,12 @@ var onChange = (function (_ref) {
         onChange: state.textfieldState,
         counter: 6,
         error: "You have exceeded the maximum number of characters."
-      }), h("div", { style: { margin: "10px 0" } }, [h("div", { key: "focus" }, "focus: " + state.textfieldState().focus), h("div", { key: "dirty" }, "dirty: " + state.textfieldState().dirty), h("div", { key: "invalid" }, "invalid: " + state.textfieldState().invalid)]), h(RaisedButton$$1, {
-        label: "Random",
-        events: _defineProperty$2({}, k.onclick, function () {
-          return state.value(Math.floor(Math.random() * 100000));
-        })
-      })]);
+      }), h("div", { style: { margin: "10px 0" } }, [h("div", { key: "focus" }, "focus: " + state.textfieldState().focus), h("div", { key: "dirty" }, "dirty: " + state.textfieldState().dirty), h("div", { key: "invalid" }, "invalid: " + state.textfieldState().invalid)])]);
     }
   };
 });
 
-function _defineProperty$3(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var setValue = (function (_ref) {
   var h = _ref.h,
@@ -277,30 +268,36 @@ var setValue = (function (_ref) {
   return {
     oninit: function oninit(vnode) {
       var value = stream("");
+      var focus = stream(false);
       vnode.state = {
         value: value,
+        focus: focus,
         redrawOnUpdate: stream.merge([value]) // for React
       };
     },
     view: function view(vnode) {
       var state = vnode.state;
       var value = state.value();
+      var focus = state.focus();
       return h("div", [h(TextField$$1, {
         help: "Type text, or press ARROW RIGHT to insert a character programmaticaly",
-        onChange: function onChange(newState) {
-          return state.value(newState.value);
+        onChange: function onChange(_ref2) {
+          var value = _ref2.value,
+              focus = _ref2.focus;
+          return state.value(value), state.focus(focus);
         },
-        events: _defineProperty$3({}, k.onkeydown, function (e) {
+        events: _defineProperty$2({}, k.onkeydown, function (e) {
           if (e.which === 39) {
             // KEY RIGHT
             state.value(value + String.fromCharCode(97 + Math.floor(Math.random() * 26)));
           }
         }),
-        value: value
+        value: value,
+        focus: focus
       }), h(RaisedButton$$1, {
         label: "Clear",
-        events: _defineProperty$3({}, k.onclick, function () {
-          return state.value("");
+        events: _defineProperty$2({}, k.onclick, function () {
+          return state.value(""), state.focus(true);
         })
       })]);
     }

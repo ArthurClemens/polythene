@@ -1,6 +1,6 @@
 import { Component } from "react";
 
-export default ({ h, TextField, RaisedButton }) => {
+export default ({ h, TextField }) => {
 
   return class extends Component {
     constructor(props) {
@@ -16,7 +16,7 @@ export default ({ h, TextField, RaisedButton }) => {
       return h("div", [
         h(TextField, {
           value: this.state.value,
-          onChange: newState => this.setState({ textfieldState: newState }),
+          onChange: newState => this.setState({ value: newState.value }),
           counter: 6,
           error: "You have exceeded the maximum number of characters."
         }),
@@ -24,13 +24,7 @@ export default ({ h, TextField, RaisedButton }) => {
           h("div", { key: "focus" },   `focus: ${textfieldState.focus}`),
           h("div", { key: "dirty" },   `dirty: ${textfieldState.dirty}`),
           h("div", { key: "invalid" }, `invalid: ${textfieldState.invalid}`),
-        ]),
-        h(RaisedButton, {
-          label: "Random",
-          events: {
-            onClick: () => this.setState({ value: Math.floor(Math.random() * 100000) })
-          },
-        })
+        ])
       ]);
     }
   };
