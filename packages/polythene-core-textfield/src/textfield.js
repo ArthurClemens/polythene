@@ -216,10 +216,13 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
     : inputEl
       ? inputEl.value
       : state.previousValue();
+  const valueStr = value === undefined
+    ? ""
+    : value.toString();
 
-  if (inputEl && state.previousValue() !== value) {
-    inputEl.value = value;
-    state.previousValue(value);
+  if (inputEl && state.previousValue() !== valueStr) {
+    inputEl.value = valueStr;
+    state.previousValue(valueStr);
     setTimeout(() => state.setValue({ type: "input" }), 0); // perform in next tick to play nice with React
   }
 

@@ -628,10 +628,11 @@ var createContent = function createContent(vnode, _ref3) {
   }
 
   var value = attrs.value !== undefined ? attrs.value : inputEl ? inputEl.value : state.previousValue();
+  var valueStr = value === undefined ? "" : value.toString();
 
-  if (inputEl && state.previousValue() !== value) {
-    inputEl.value = value;
-    state.previousValue(value);
+  if (inputEl && state.previousValue() !== valueStr) {
+    inputEl.value = valueStr;
+    state.previousValue(valueStr);
     setTimeout(function () {
       return state.setValue({ type: "input" });
     }, 0); // perform in next tick to play nice with React
