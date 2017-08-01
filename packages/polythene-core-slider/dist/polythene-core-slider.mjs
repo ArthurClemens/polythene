@@ -36,7 +36,7 @@ var thumb_size = 12;
 var thumb_touch_size = Math.max(40, thumb_size);
 var thumb_border_width = 2;
 var active_thumb_scale = 3 / 2;
-var disabled_thumb_scale = 2 / 3;
+var disabled_thumb_scale = 1 / 2;
 var active_pin_thumb_scale = 2 / 6;
 var largestThumbSize = active_thumb_scale * thumb_size;
 var largestElement = Math.max(thumb_touch_size, largestThumbSize);
@@ -100,13 +100,22 @@ var vars$1 = {
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var positionBorder = function positionBorder(thumbSize, borderWidth) {
+// const positionBorder = (thumbSize, borderWidth) => ({
+//   borderWidth: borderWidth + "px",
+//   width: (thumbSize - 2 * borderWidth) + "px",
+//   height: (thumbSize - 2 * borderWidth) + "px",
+//   left: "2px",
+//   top: "2px"
+// });
+
+var positionBorder = function positionBorder(size, borderWidth, isDisabled) {
+  var thumbSize = isDisabled ? size - 2 * borderWidth : size;
   return {
     borderWidth: borderWidth + "px",
-    width: thumbSize - 2 * borderWidth + "px",
-    height: thumbSize - 2 * borderWidth + "px",
-    left: "2px",
-    top: "2px"
+    width: thumbSize + "px",
+    height: thumbSize + "px",
+    left: size - thumbSize + "px",
+    top: size - thumbSize + "px"
   };
 };
 
@@ -150,7 +159,7 @@ var layout = (function (selector, componentVars) {
       position: "relative",
 
       // touch area
-      "&:before": [mixin.defaultTransition("background-color", componentVars.animation_duration), {
+      ":before": [mixin.defaultTransition("background-color", componentVars.animation_duration), {
         content: "\"\"",
         position: "absolute",
         borderRadius: "50%",
@@ -161,7 +170,7 @@ var layout = (function (selector, componentVars) {
       }],
 
       // border
-      "&:after": [mixin.defaultTransition("border", componentVars.animation_duration), positionBorder(thumbSize, componentVars.thumb_border_width), {
+      ":after": [mixin.defaultTransition("border", componentVars.animation_duration), positionBorder(thumbSize, componentVars.thumb_border_width, false), {
         content: "\"\"",
         position: "absolute",
         borderRadius: "50%",
@@ -236,7 +245,7 @@ var layout = (function (selector, componentVars) {
       margin: "0 " + stepsOffset + "px 0 " + (stepsOffset - componentVars.pin_width / 2 + 1) + "px",
       pointerEvents: "none",
 
-      "&::before": {
+      "::before": {
         transform: "rotate(-45deg)",
         content: "\"\"",
         position: "absolute",
@@ -247,7 +256,7 @@ var layout = (function (selector, componentVars) {
         borderRadius: "50% 50% 50% 0",
         backgroundColor: "inherit"
       },
-      "&::after": {
+      "::after": {
         content: "attr(value)",
         position: "absolute",
         top: 0,
@@ -261,7 +270,7 @@ var layout = (function (selector, componentVars) {
       }
     }],
 
-    "&.pe-slider--active:not(.pe-slider--ticks)": {
+    ".pe-slider--active:not(.pe-slider--ticks)": {
       " .pe-slider__control": {
         transform: "scale(" + componentVars.active_thumb_scale + ")",
         borderWidth: scaledBorderWidth + "px"
@@ -276,7 +285,7 @@ var layout = (function (selector, componentVars) {
       }
     },
 
-    "&.pe-slider--pin.pe-slider--active, &.pe-slider--pin.pe-slider--focus": {
+    ".pe-slider--pin.pe-slider--active, &.pe-slider--pin.pe-slider--focus": {
       " .pe-slider__pin": {
         transform: "translateZ(0) scale(1) translate(0, -24px)"
       },
@@ -285,25 +294,23 @@ var layout = (function (selector, componentVars) {
       }
     },
 
-    "&:not(.pe-slider--disabled)": {
+    ":not(.pe-slider--disabled)": {
       " .pe-slider__control": {
         cursor: "pointer"
       },
-      "&.pe-slider--track": {
+      ".pe-slider--track": {
         " .pe-slider__track": {
           cursor: "pointer"
         }
       }
     },
 
-    "&.pe-slider--disabled": {
+    ".pe-slider--disabled": {
       " .pe-slider__control": {
         transform: "scale(" + componentVars.disabled_thumb_scale + ")",
         borderWidth: 0
       },
-      "&.pe-slider--min": {
-        " .pe-slider__control:after": [positionBorder(thumbSize, 1 / componentVars.disabled_thumb_scale * componentVars.thumb_border_width)]
-      }
+      " .pe-slider__control:after": [positionBorder(thumbSize, 1 / componentVars.disabled_thumb_scale * componentVars.thumb_border_width, true)]
     }
   }])];
 });
@@ -603,21 +610,23 @@ var createSlider = function createSlider(vnode, _ref) {
   }), _defineProperty(_ref3, k.onblur, function () {
     return deFocus(state);
   }), _defineProperty(_ref3, k.onkeydown, function (e) {
-    if (e.which === 27) {
-      // ESCAPE
+    if (e.key !== "Tab") {
+      e.preventDefault();
+    }
+    if (e.key === "Escape") {
       state.controlEl.blur(e);
-    } else if (e.which === 37) {
-      // LEFT
-      state.decrease(e.shiftKey);
-    } else if (e.which === 38) {
-      // UP
-      state.increase(e.shiftKey);
-    } else if (e.which === 39) {
-      // RIGHT
-      state.increase(e.shiftKey);
-    } else if (e.which === 40) {
-      // DOWN
-      state.decrease(e.shiftKey);
+    } else if (e.key === "ArrowLeft" || e.key === "ArrowDown") {
+      state.decrement(e.shiftKey);
+    } else if (e.key === "ArrowRight" || e.key === "ArrowUp") {
+      state.increment(e.shiftKey);
+    } else if (e.key === "Home") {
+      state.setValue(state.min);
+    } else if (e.key === "End") {
+      state.setValue(state.max);
+    } else if (e.key === "PageDown") {
+      state.decrement(true);
+    } else if (e.key === "PageUp") {
+      state.increment(true);
     }
     readRangeData(state);
     updatePinPosition(state);
@@ -650,7 +659,6 @@ var getInitialState = function getInitialState(vnode, createStream) {
   var max = attrs.max !== undefined ? attrs.max : 100;
   var step = attrs.step !== undefined ? attrs.step : 1;
   var defaultValue = attrs.defaultValue !== undefined ? attrs.defaultValue : attrs.value !== undefined ? attrs.value : 0;
-
   var previousValue = createStream(undefined);
   var isActive = createStream(false);
   var hasFocus = createStream(false);
@@ -671,12 +679,12 @@ var getInitialState = function getInitialState(vnode, createStream) {
     previousValue(v);
   };
 
-  var increase = function increase(multiply) {
-    return setValue(value() + (multiply ? 10 : 1) * (step || 1));
+  var increment = function increment(useLargeStep) {
+    return setValue(value() + (useLargeStep ? 10 : 1) * (step || 1));
   };
 
-  var decrease = function decrease(multiply) {
-    return setValue(value() - (multiply ? 10 : 1) * (step || 1));
+  var decrement = function decrement(useLargeStep) {
+    return setValue(value() - (useLargeStep ? 10 : 1) * (step || 1));
   };
 
   setValue(defaultValue);
@@ -691,8 +699,8 @@ var getInitialState = function getInitialState(vnode, createStream) {
     pinEl: null,
     // functions
     setValue: setValue,
-    increase: increase,
-    decrease: decrease,
+    increment: increment,
+    decrement: decrement,
     // streams
     isDragging: isDragging,
     isActive: isActive,

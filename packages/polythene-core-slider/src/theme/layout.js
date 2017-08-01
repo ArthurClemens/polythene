@@ -1,13 +1,26 @@
 import { vars } from "polythene-theme";
 import { mixin, flex } from "polythene-core-css";
 
-const positionBorder = (thumbSize, borderWidth) => ({
-  borderWidth: borderWidth + "px",
-  width: (thumbSize - 2 * borderWidth) + "px",
-  height: (thumbSize - 2 * borderWidth) + "px",
-  left: "2px",
-  top: "2px"
-});
+// const positionBorder = (thumbSize, borderWidth) => ({
+//   borderWidth: borderWidth + "px",
+//   width: (thumbSize - 2 * borderWidth) + "px",
+//   height: (thumbSize - 2 * borderWidth) + "px",
+//   left: "2px",
+//   top: "2px"
+// });
+
+const positionBorder = (size, borderWidth, isDisabled) => {
+  const thumbSize = isDisabled
+    ? size - 2 * borderWidth
+    : size;
+  return {
+    borderWidth: borderWidth + "px",
+    width: thumbSize + "px",
+    height: thumbSize + "px",
+    left: (size - thumbSize) + "px",
+    top: (size - thumbSize) + "px"
+  };
+};
 
 export default (selector, componentVars) => {
   const thumbSize =         Math.max(componentVars.thumb_size, 2 * componentVars.thumb_border_width);
@@ -64,7 +77,7 @@ export default (selector, componentVars) => {
             position: "relative",
 
             // touch area
-            "&:before": [
+            ":before": [
               mixin.defaultTransition("background-color", componentVars.animation_duration), {
                 content: "\"\"",
                 position: "absolute",
@@ -77,9 +90,9 @@ export default (selector, componentVars) => {
             ],
 
             // border
-            "&:after": [
+            ":after": [
               mixin.defaultTransition("border", componentVars.animation_duration),
-              positionBorder(thumbSize, componentVars.thumb_border_width), {
+              positionBorder(thumbSize, componentVars.thumb_border_width, false), {
                 content: "\"\"",
                 position: "absolute",
                 borderRadius: "50%",
@@ -172,7 +185,7 @@ export default (selector, componentVars) => {
             margin: "0 " + stepsOffset + "px 0 " + (stepsOffset - componentVars.pin_width / 2 + 1) + "px",
             pointerEvents: "none",
 
-            "&::before": {
+            "::before": {
               transform: "rotate(-45deg)",
               content: "\"\"",
               position: "absolute",
@@ -183,7 +196,7 @@ export default (selector, componentVars) => {
               borderRadius: "50% 50% 50% 0",
               backgroundColor: "inherit"
             },
-            "&::after": {
+            "::after": {
               content: "attr(value)",
               position: "absolute",
               top: 0,
@@ -198,7 +211,7 @@ export default (selector, componentVars) => {
           }
         ],
 
-        "&.pe-slider--active:not(.pe-slider--ticks)": {
+        ".pe-slider--active:not(.pe-slider--ticks)": {
           " .pe-slider__control": {
             transform: "scale(" + componentVars.active_thumb_scale + ")",
             borderWidth: scaledBorderWidth + "px"
@@ -213,7 +226,7 @@ export default (selector, componentVars) => {
           }
         },
 
-        "&.pe-slider--pin.pe-slider--active, &.pe-slider--pin.pe-slider--focus": {
+        ".pe-slider--pin.pe-slider--active, &.pe-slider--pin.pe-slider--focus": {
           " .pe-slider__pin": {
             transform: "translateZ(0) scale(1) translate(0, -24px)"
           },
@@ -222,27 +235,25 @@ export default (selector, componentVars) => {
           }
         },
 
-        "&:not(.pe-slider--disabled)": {
+        ":not(.pe-slider--disabled)": {
           " .pe-slider__control": {
             cursor: "pointer"
           },
-          "&.pe-slider--track": {
+          ".pe-slider--track": {
             " .pe-slider__track": {
               cursor: "pointer"
             }
           }
         },
 
-        "&.pe-slider--disabled": {
+        ".pe-slider--disabled": {
           " .pe-slider__control": {
             transform: "scale(" + componentVars.disabled_thumb_scale + ")",
             borderWidth: 0
           },
-          "&.pe-slider--min": {
-            " .pe-slider__control:after": [
-              positionBorder(thumbSize, 1 / componentVars.disabled_thumb_scale * componentVars.thumb_border_width)
-            ]
-          }
+          " .pe-slider__control:after": [
+            positionBorder(thumbSize, 1 / componentVars.disabled_thumb_scale * componentVars.thumb_border_width, true)
+          ]
         }
       }
     ]

@@ -185,21 +185,23 @@ const createSlider = (vnode, { h, k, hasTicks, interactiveTrack }) => {
             [k.onfocus]: () => focus(state, state.controlEl),
             [k.onblur]: () => deFocus(state),
             [k.onkeydown]: e => {
-              if (e.which === 27) {
-                // ESCAPE
+              if (e.key !== "Tab") {
+                e.preventDefault();
+              }
+              if (e.key === "Escape") {
                 state.controlEl.blur(e);
-              } else if (e.which === 37) {
-                // LEFT
-                state.decrease(e.shiftKey);
-              } else if (e.which === 38) {
-                // UP
-                state.increase(e.shiftKey);
-              } else if (e.which === 39) {
-                // RIGHT
-                state.increase(e.shiftKey);
-              } else if (e.which === 40) {
-                // DOWN
-                state.decrease(e.shiftKey);
+              } else if (e.key === "ArrowLeft" || e.key === "ArrowDown") {
+                state.decrement(e.shiftKey);
+              } else if (e.key === "ArrowRight" || e.key === "ArrowUp") {
+                state.increment(e.shiftKey);
+              } else if (e.key === "Home") {
+                state.setValue(state.min);
+              } else if (e.key === "End") {
+                state.setValue(state.max);
+              } else if (e.key === "PageDown") {
+                state.decrement(true);
+              } else if (e.key === "PageUp") {
+                state.increment(true);
               }
               readRangeData(state);
               updatePinPosition(state);
@@ -273,7 +275,6 @@ export const getInitialState = (vnode, createStream) => {
     : attrs.value !== undefined
       ? attrs.value
       : 0;
-  
   const previousValue = createStream(undefined);
   const isActive = createStream(false);
   const hasFocus = createStream(false);
@@ -294,11 +295,11 @@ export const getInitialState = (vnode, createStream) => {
     previousValue(v);
   };
 
-  const increase = multiply =>
-    setValue(value() + (multiply ? 10 : 1) * (step || 1));
+  const increment = useLargeStep =>
+    setValue(value() + (useLargeStep ? 10 : 1) * (step || 1));
 
-  const decrease = multiply =>
-    setValue(value() - (multiply ? 10 : 1) * (step || 1));
+  const decrement = useLargeStep =>
+    setValue(value() - (useLargeStep ? 10 : 1) * (step || 1));
   
   setValue(defaultValue);
   
@@ -312,8 +313,8 @@ export const getInitialState = (vnode, createStream) => {
     pinEl: null,
     // functions
     setValue,
-    increase,
-    decrease, 
+    increment,
+    decrement, 
     // streams
     isDragging,
     isActive,
