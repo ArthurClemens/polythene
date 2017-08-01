@@ -308,10 +308,10 @@ var sticky = function sticky() {
 // mixin.defaultTransition("opacity", vars.animation_duration)
 var defaultTransition = function defaultTransition() {
   var properties = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "all";
-  var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '.18s';
-  var curve = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'ease-out';
+  var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : ".18s";
+  var curve = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "ease-out";
   return {
-    transitionDelay: 0,
+    transitionDelay: "0ms",
     transitionDuration: duration,
     transitionTimingFunction: curve,
     transitionProperty: properties

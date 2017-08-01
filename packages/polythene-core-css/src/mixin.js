@@ -86,8 +86,8 @@ const sticky = (zIndex = 1) => ({
 
 // Creats a transition with presets
 // mixin.defaultTransition("opacity", vars.animation_duration)
-const defaultTransition = (properties = "all", duration = '.18s', curve = 'ease-out') => ({
-  transitionDelay: 0,
+const defaultTransition = (properties = "all", duration = ".18s", curve = "ease-out") => ({
+  transitionDelay: "0ms",
   transitionDuration: duration,
   transitionTimingFunction: curve,
   transitionProperty: properties
