@@ -47,34 +47,29 @@ const colorSlider = ({ h, k, Slider, TextField }) => {
   return {
     oninit: vnode => {
       const attrs = vnode.attrs;
-      const textfieldState = stream({});
       const value = stream(attrs.defaultValue);
-      textfieldState.map(v => (
-        value(v.value),
-        attrs.onChange(v.value)
+      value.map(newValue => (
+        attrs.onUpdateValue(newValue)
       ));
-      value.map(v =>
-        textfieldState().el !== undefined ? textfieldState().el.value = v : null
-      );
       vnode.state = {
-        textfieldState,
         value
       };
     },
     view: vnode => {
       const state = vnode.state;
       const attrs = vnode.attrs;
+      const value = state.value();
       return h(Slider, {
         min: 0,
         max: 255,
-        value: state.value(),
+        value: value,
         onChange: ({ value }) => state.value(value),
         before: h(".pe-slider__label", attrs.label),
         after: h(TextField, {
           type: "number",
           hideSpinner: true,
-          defaultValue: attrs.defaultValue,
-          onChange: state.textfieldState,
+          value,
+          onChange: ({ value }) => state.value(value),
           [k.maxlength]: 3,
           min: 0,
           max: 255,
@@ -108,11 +103,11 @@ export default ({ h, k, Slider, TextField }) => {
       const state = vnode.state;
       return h(".rgb-slider", [
         h(".result", {
-          style: { backgroundColor: `rgb(${state.rgb()})` }
+          style: { backgroundColor: `rgb(${ state.rgb() })` }
         }),
-        h(ColorSlider, { defaultValue: state.red(), onChange: state.red, label: "R" }),
-        h(ColorSlider, { defaultValue: state.red(), onChange: state.green, label: "G" }),
-        h(ColorSlider, { defaultValue: state.red(), onChange: state.blue, label: "B" }),
+        h(ColorSlider, { defaultValue: state.red(), onUpdateValue: value => state.red(value), label: "R" }),
+        h(ColorSlider, { defaultValue: state.green(), onUpdateValue: value => state.green(value), label: "G" }),
+        h(ColorSlider, { defaultValue: state.blue(), onUpdateValue: value => state.blue(value), label: "B" }),
       ]);
     }
   };

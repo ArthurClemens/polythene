@@ -494,12 +494,10 @@ exports[`test Option: label (JSX) 1`] = `
   buttons={
     Array [
       Object {
-        "key": "one",
         "label": "One",
         "value": "One",
       },
       Object {
-        "key": "two",
         "label": "Two",
         "value": "Two",
       },

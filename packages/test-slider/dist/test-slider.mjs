@@ -3,193 +3,6 @@ import { rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 import { Icon as Icon$1, Slider as Slider$1, TextField as TextField$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var styles = [{
-  " .volume": {
-    " .pe-header": {
-      fontSize: "14px",
-      color: rgba(vars.color_light_foreground, vars.blend_light_text_secondary)
-    },
-    " .pe-slider": {
-      color: "#009688",
-      margin: "13px 0 11px 0"
-    }
-  },
-  " .pe-dark-tone.volume": {
-    " .pe-header": {
-      color: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary)
-    }
-  }
-}];
-
-styler.add("polythene-test-slider-volume", styles);
-
-var volumeIconSVG$1 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z\"/></svg>";
-var alarmIconSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3V9z\"/></svg>";
-var headphonesIconSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\" baseProfile=\"full\" width=\"24\" height=\"24\" viewBox=\"0 0 24.00 24.00\" enable-background=\"new 0 0 24.00 24.00\" xml:space=\"preserve\"><path fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"0.2\" stroke-linejoin=\"round\" d=\"M 11.9994,0.998068C 7.02841,0.998068 2.9994,5.02706 2.9994,9.99807L 2.9994,16.9981C 2.9994,18.6551 4.3424,19.9981 5.9994,19.9981L 8.9994,19.9981L 8.9994,11.9981L 4.9994,11.9981L 4.9994,9.99807C 4.9994,6.13207 8.1334,2.99807 11.9994,2.99807C 15.8654,2.99807 18.9994,6.13207 18.9994,9.99807L 18.9994,11.9981L 14.9994,11.9981L 14.9994,19.9981L 17.9994,19.9981C 19.6564,19.9981 20.9994,18.6551 20.9994,16.9981L 20.9994,9.99807C 20.9994,5.02706 16.9704,0.998068 11.9994,0.998068 Z \"/></svg>";
-
-var volumeSlider = (function (_ref) {
-  var h = _ref.h,
-      Slider$$1 = _ref.Slider,
-      Icon$$1 = _ref.Icon;
-
-
-  var volumeIcon = h.trust(volumeIconSVG$1);
-  var alarmIcon = h.trust(alarmIconSVG);
-  var headphonesIcon = h.trust(headphonesIconSVG);
-  var defaults = {
-    min: 0,
-    max: 10,
-    step: 0
-  };
-  return {
-    view: function view() {
-      return h(".volume", [h(".header", "Media volume"), h(Slider$$1, _extends({}, defaults, {
-        defaultValue: 4,
-        before: h(Icon$$1, {
-          svg: volumeIcon
-        })
-      })), h(".header", "Alarm volume"), h(Slider$$1, _extends({}, defaults, {
-        defaultValue: 2,
-        before: h(Icon$$1, {
-          svg: alarmIcon
-        })
-      })), h(".header", "Headphone volume"), h(Slider$$1, _extends({}, defaults, {
-        defaultValue: 2,
-        disabled: true,
-        before: h(Icon$$1, {
-          svg: headphonesIcon
-        })
-      }))]);
-    }
-  };
-});
-
-var bullsEyeIconSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\" baseProfile=\"full\" width=\"24\" height=\"24\" viewBox=\"0 0 24.00 24.00\" enable-background=\"new 0 0 24.00 24.00\" xml:space=\"preserve\"><path fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"1.33333\" stroke-linejoin=\"miter\" d=\"M 12,2C 6.47715,2 2,6.4772 2,12C 2,17.5228 6.47715,22 12,22C 17.5228,22 22,17.5228 22,12C 22,6.4772 17.5228,2 12,2 Z M 12,4C 16.4183,4 20,7.5817 20,12C 20,16.4183 16.4183,20 12,20C 7.58172,20 4,16.4183 4,12C 4,7.5817 7.58172,4 12,4 Z M 12,6C 8.68629,6 6,8.6863 6,12C 6,15.3137 8.68629,18 12,18C 15.3137,18 18,15.3137 18,12C 18,8.6863 15.3137,6 12,6 Z M 12,8C 14.2091,8 16,9.7909 16,12C 16,14.2091 14.2091,16 12,16C 9.79086,16 8,14.2091 8,12C 8,9.7909 9.79086,8 12,8 Z M 12,10C 10.8954,10 10,10.8954 10,12C 10,13.1046 10.8954,14 12,14C 13.1046,14 14,13.1046 14,12C 14,10.8954 13.1046,10 12,10 Z \"/></svg>";
-
-var volumeIconSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z\"/></svg>";
-
-var genericTests = (function (_ref) {
-  var Slider$$1 = _ref.Slider,
-      Icon$$1 = _ref.Icon,
-      h = _ref.renderer;
-
-
-  var bullsEyeIcon = h.trust(bullsEyeIconSVG);
-  var volumeIcon = h.trust(volumeIconSVG);
-
-  var VolumeSlider = volumeSlider({ Slider: Slider$$1, Icon: Icon$$1, h: h });
-
-  Slider$$1.theme(".slider-custom-icon", {
-    color_light_thumb_background: "#fff"
-  });
-
-  Slider$$1.theme(".slider-custom-color", {
-    color_light_track_active: "#82b1ff",
-    color_light_track_inactive: "#c5cae9",
-    color_light_track_value: "#f50057",
-    color_light_thumb_on: "#f50057"
-  });
-
-  return [{
-    name: "No options (range 0-100, steps rounded to 1)",
-    interactive: true,
-    component: Slider$$1
-  }, {
-    name: "Option: step (0), defaultValue (50)",
-    interactive: true,
-    component: Slider$$1,
-    attrs: {
-      step: 0,
-      defaultValue: 50
-    }
-  }, {
-    name: "Option: ticks",
-    interactive: true,
-    component: Slider$$1,
-    attrs: {
-      min: 0,
-      max: 100,
-      step: 10,
-      ticks: true
-    }
-  }, {
-    name: "Option: ticks with pin",
-    interactive: true,
-    component: Slider$$1,
-    attrs: {
-      min: 0,
-      max: 100,
-      step: 10,
-      defaultValue: 2,
-      pin: true,
-      ticks: true
-    }
-  }, {
-    name: "Option: interactiveTrack (false)",
-    interactive: true,
-    component: Slider$$1,
-    attrs: {
-      interactiveTrack: false
-    }
-  }, {
-    name: "Option: style (colors)",
-    interactive: true,
-    component: Slider$$1,
-    attrs: {
-      style: {
-        color: "red"
-      },
-      min: 0,
-      max: 100,
-      defaultValue: 50
-    }
-  }, {
-    name: "Option: icon (custom svg)",
-    interactive: true,
-    component: Slider$$1,
-    attrs: {
-      min: 0,
-      max: 100,
-      defaultValue: 50,
-      icon: h(Icon$$1, {
-        svg: bullsEyeIcon
-      }),
-      className: "slider-custom-icon"
-    }
-  }, {
-    name: "Themed slider (colors)",
-    interactive: true,
-    component: Slider$$1,
-    attrs: {
-      min: 0,
-      max: 100,
-      defaultValue: 50,
-      className: "slider-custom-color"
-    }
-  }, {
-    name: "With icons",
-    interactive: true,
-    component: VolumeSlider
-  }, {
-    name: "With icon, pin and ticks",
-    interactive: true,
-    component: Slider$$1,
-    attrs: {
-      min: 0,
-      max: 100,
-      step: 10,
-      defaultValue: 2,
-      pin: true,
-      ticks: true,
-      before: h(Icon$$1, {
-        svg: volumeIcon
-      })
-    }
-  }];
-});
-
 function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
 }
@@ -384,6 +197,260 @@ var stream$2 = createCommonjsModule(function (module) {
 
 var stream = stream$2;
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var onChange = (function (_ref) {
+  var h = _ref.h,
+      Slider$$1 = _ref.Slider,
+      _ref$displayFn = _ref.displayFn,
+      displayFn = _ref$displayFn === undefined ? function (value) {
+    return "Value: " + (value === undefined ? "Not set" : Math.floor(value * 100) / 100);
+  } : _ref$displayFn,
+      attrs = _ref.attrs;
+  return {
+    oninit: function oninit(vnode) {
+      var value = stream(attrs.defaultValue || attrs.value || 0);
+      vnode.state = {
+        value: value,
+        redrawOnUpdate: stream.merge([value])
+      };
+    },
+    view: function view(vnode) {
+      var state = vnode.state;
+      var value = state.value();
+      return h("div", [h("div", {
+        style: {
+          margin: "0 0 1rem 0"
+        }
+      }, displayFn(value)), h(Slider$$1, _extends({}, attrs, {
+        onChange: function onChange(newState) {
+          return state.value(newState.value);
+        }
+      }))]);
+    }
+  };
+});
+
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var styles = [{
+  " .volume": {
+    " .pe-header": {
+      fontSize: "14px",
+      color: rgba(vars.color_light_foreground, vars.blend_light_text_secondary)
+    },
+    " .pe-slider": {
+      color: "#009688",
+      margin: "13px 0 11px 0"
+    }
+  },
+  " .pe-dark-tone.volume": {
+    " .pe-header": {
+      color: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary)
+    }
+  }
+}];
+
+styler.add("polythene-test-slider-volume", styles);
+
+var volumeIconSVG$1 = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z\"/></svg>";
+var alarmIconSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3V9z\"/></svg>";
+var headphonesIconSVG = "<svg xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\" baseProfile=\"full\" width=\"24\" height=\"24\" viewBox=\"0 0 24.00 24.00\" enable-background=\"new 0 0 24.00 24.00\" xml:space=\"preserve\"><path fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"0.2\" stroke-linejoin=\"round\" d=\"M 11.9994,0.998068C 7.02841,0.998068 2.9994,5.02706 2.9994,9.99807L 2.9994,16.9981C 2.9994,18.6551 4.3424,19.9981 5.9994,19.9981L 8.9994,19.9981L 8.9994,11.9981L 4.9994,11.9981L 4.9994,9.99807C 4.9994,6.13207 8.1334,2.99807 11.9994,2.99807C 15.8654,2.99807 18.9994,6.13207 18.9994,9.99807L 18.9994,11.9981L 14.9994,11.9981L 14.9994,19.9981L 17.9994,19.9981C 19.6564,19.9981 20.9994,18.6551 20.9994,16.9981L 20.9994,9.99807C 20.9994,5.02706 16.9704,0.998068 11.9994,0.998068 Z \"/></svg>";
+
+var volumeSlider = (function (_ref) {
+  var h = _ref.h,
+      Slider$$1 = _ref.Slider,
+      Icon$$1 = _ref.Icon;
+
+
+  var volumeIcon = h.trust(volumeIconSVG$1);
+  var alarmIcon = h.trust(alarmIconSVG);
+  var headphonesIcon = h.trust(headphonesIconSVG);
+  var defaults = {
+    min: 0,
+    max: 10,
+    step: 0
+  };
+  return {
+    view: function view() {
+      return h(".volume", [h(".header", "Media volume"), h(Slider$$1, _extends$1({}, defaults, {
+        defaultValue: 4,
+        before: h(Icon$$1, {
+          svg: volumeIcon
+        })
+      })), h(".header", "Alarm volume"), h(Slider$$1, _extends$1({}, defaults, {
+        defaultValue: 2,
+        before: h(Icon$$1, {
+          svg: alarmIcon
+        })
+      })), h(".header", "Headphone volume"), h(Slider$$1, _extends$1({}, defaults, {
+        defaultValue: 2,
+        disabled: true,
+        before: h(Icon$$1, {
+          svg: headphonesIcon
+        })
+      }))]);
+    }
+  };
+});
+
+var bullsEyeIconSVG = "<svg xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\" baseProfile=\"full\" width=\"24\" height=\"24\" viewBox=\"0 0 24.00 24.00\" enable-background=\"new 0 0 24.00 24.00\" xml:space=\"preserve\"><path fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"1.33333\" stroke-linejoin=\"miter\" d=\"M 12,2C 6.47715,2 2,6.4772 2,12C 2,17.5228 6.47715,22 12,22C 17.5228,22 22,17.5228 22,12C 22,6.4772 17.5228,2 12,2 Z M 12,4C 16.4183,4 20,7.5817 20,12C 20,16.4183 16.4183,20 12,20C 7.58172,20 4,16.4183 4,12C 4,7.5817 7.58172,4 12,4 Z M 12,6C 8.68629,6 6,8.6863 6,12C 6,15.3137 8.68629,18 12,18C 15.3137,18 18,15.3137 18,12C 18,8.6863 15.3137,6 12,6 Z M 12,8C 14.2091,8 16,9.7909 16,12C 16,14.2091 14.2091,16 12,16C 9.79086,16 8,14.2091 8,12C 8,9.7909 9.79086,8 12,8 Z M 12,10C 10.8954,10 10,10.8954 10,12C 10,13.1046 10.8954,14 12,14C 13.1046,14 14,13.1046 14,12C 14,10.8954 13.1046,10 12,10 Z \"/></svg>";
+
+var volumeIconSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z\"/></svg>";
+
+var genericTests = (function (_ref) {
+  var Slider$$1 = _ref.Slider,
+      Icon$$1 = _ref.Icon,
+      h = _ref.renderer;
+
+
+  var bullsEyeIcon = h.trust(bullsEyeIconSVG);
+  var volumeIcon = h.trust(volumeIconSVG);
+
+  var VolumeSlider = volumeSlider({ Slider: Slider$$1, Icon: Icon$$1, h: h });
+
+  Slider$$1.theme(".slider-custom-icon", {
+    color_light_thumb_background: "#fff"
+  });
+
+  Slider$$1.theme(".slider-custom-color", {
+    color_light_track_active: "#82b1ff",
+    color_light_track_inactive: "#c5cae9",
+    color_light_track_value: "#f50057",
+    color_light_thumb_on: "#f50057"
+  });
+
+  return [{
+    name: "No options (range 0-100, steps rounded to 1)",
+    interactive: true,
+    component: onChange({ h: h, Slider: Slider$$1, attrs: {} })
+  }, {
+    name: "Option: step (0), defaultValue (50)",
+    interactive: true,
+    component: onChange({ h: h, Slider: Slider$$1, attrs: {
+        step: 0,
+        defaultValue: 50
+      } })
+  }, {
+    name: "Option: min (-1), max (1), step (0.1)",
+    interactive: true,
+    component: onChange({ h: h, Slider: Slider$$1, attrs: {
+        min: -1,
+        max: 1,
+        step: 0.1
+      } })
+  }, {
+    name: "Use left value for extra \"unspecified value\" step",
+    interactive: true,
+    component: onChange({
+      h: h,
+      Slider: Slider$$1,
+      attrs: {
+        min: -1,
+        max: 100,
+        defaultValue: -1
+      },
+      displayFn: function displayFn(value) {
+        return value === undefined || value === -1 ? "Age (not set)" : "Age: " + Math.floor(value * 100) / 100;
+      }
+    })
+  }, {
+    name: "Option: ticks, step (10)",
+    interactive: true,
+    component: onChange({
+      h: h,
+      Slider: Slider$$1,
+      attrs: {
+        min: 0,
+        max: 100,
+        step: 10,
+        ticks: true
+      }
+    })
+  }, {
+    name: "Option: ticks with pin",
+    interactive: true,
+    component: Slider$$1,
+    attrs: {
+      min: 0,
+      max: 100,
+      step: 10,
+      defaultValue: 2,
+      pin: true,
+      ticks: true
+    }
+  }, {
+    name: "Option: interactiveTrack (false)",
+    interactive: true,
+    component: Slider$$1,
+    attrs: {
+      interactiveTrack: false
+    }
+  }, {
+    name: "Option: style (colors)",
+    interactive: true,
+    component: Slider$$1,
+    attrs: {
+      style: {
+        color: "red"
+      },
+      min: 0,
+      max: 100,
+      defaultValue: 50
+    }
+  }, {
+    name: "Option: icon (custom svg)",
+    interactive: true,
+    component: Slider$$1,
+    attrs: {
+      min: 0,
+      max: 100,
+      defaultValue: 50,
+      icon: h(Icon$$1, {
+        svg: bullsEyeIcon
+      }),
+      className: "slider-custom-icon"
+    }
+  }, {
+    name: "Themed slider (colors)",
+    interactive: true,
+    component: Slider$$1,
+    attrs: {
+      min: 0,
+      max: 100,
+      defaultValue: 50,
+      className: "slider-custom-color"
+    }
+  }, {
+    name: "With icons",
+    interactive: true,
+    component: VolumeSlider
+  }, {
+    name: "With icon, pin and ticks",
+    interactive: true,
+    component: Slider$$1,
+    attrs: {
+      min: 0,
+      max: 100,
+      step: 10,
+      defaultValue: 2,
+      pin: true,
+      ticks: true,
+      before: h(Icon$$1, {
+        svg: volumeIcon
+      })
+    }
+  }, {
+    name: "Option: disabled",
+    interactive: true,
+    component: Slider$$1,
+    attrs: {
+      disabled: true,
+      value: 50
+    }
+  }];
+});
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var labelWidth = 24;
@@ -436,16 +503,11 @@ var colorSlider = function colorSlider(_ref) {
   return {
     oninit: function oninit(vnode) {
       var attrs = vnode.attrs;
-      var textfieldState = stream({});
       var value = stream(attrs.defaultValue);
-      textfieldState.map(function (v) {
-        return value(v.value), attrs.onChange(v.value);
-      });
-      value.map(function (v) {
-        return textfieldState().el !== undefined ? textfieldState().el.value = v : null;
+      value.map(function (newValue) {
+        return attrs.onUpdateValue(newValue);
       });
       vnode.state = {
-        textfieldState: textfieldState,
         value: value
       };
     },
@@ -454,10 +516,11 @@ var colorSlider = function colorSlider(_ref) {
 
       var state = vnode.state;
       var attrs = vnode.attrs;
+      var value = state.value();
       return h(Slider$$1, {
         min: 0,
         max: 255,
-        value: state.value(),
+        value: value,
         onChange: function onChange(_ref2) {
           var value = _ref2.value;
           return state.value(value);
@@ -466,19 +529,22 @@ var colorSlider = function colorSlider(_ref) {
         after: h(TextField$$1, (_h = {
           type: "number",
           hideSpinner: true,
-          defaultValue: attrs.defaultValue,
-          onChange: state.textfieldState
+          value: value,
+          onChange: function onChange(_ref3) {
+            var value = _ref3.value;
+            return state.value(value);
+          }
         }, _defineProperty(_h, k.maxlength, 3), _defineProperty(_h, "min", 0), _defineProperty(_h, "max", 255), _defineProperty(_h, "hideValidation", true), _h))
       });
     }
   };
 };
 
-var rgbSlider = (function (_ref3) {
-  var h = _ref3.h,
-      k = _ref3.k,
-      Slider$$1 = _ref3.Slider,
-      TextField$$1 = _ref3.TextField;
+var rgbSlider = (function (_ref4) {
+  var h = _ref4.h,
+      k = _ref4.k,
+      Slider$$1 = _ref4.Slider,
+      TextField$$1 = _ref4.TextField;
 
   var ColorSlider = colorSlider({ h: h, k: k, Slider: Slider$$1, TextField: TextField$$1 });
 
@@ -502,7 +568,13 @@ var rgbSlider = (function (_ref3) {
       var state = vnode.state;
       return h(".rgb-slider", [h(".result", {
         style: { backgroundColor: "rgb(" + state.rgb() + ")" }
-      }), h(ColorSlider, { defaultValue: state.red(), onChange: state.red, label: "R" }), h(ColorSlider, { defaultValue: state.red(), onChange: state.green, label: "G" }), h(ColorSlider, { defaultValue: state.red(), onChange: state.blue, label: "B" })]);
+      }), h(ColorSlider, { defaultValue: state.red(), onUpdateValue: function onUpdateValue(value) {
+          return state.red(value);
+        }, label: "R" }), h(ColorSlider, { defaultValue: state.green(), onUpdateValue: function onUpdateValue(value) {
+          return state.green(value);
+        }, label: "G" }), h(ColorSlider, { defaultValue: state.blue(), onUpdateValue: function onUpdateValue(value) {
+          return state.blue(value);
+        }, label: "B" })]);
     }
   };
 });
@@ -536,7 +608,7 @@ object-assign
 
 /* eslint-disable no-unused-vars */
 
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -582,7 +654,7 @@ function shouldUseNative() {
 		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
 			test3[letter] = letter;
 		});
-		if (Object.keys(_extends$1({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
+		if (Object.keys(_extends$2({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
 			return false;
 		}
 
@@ -4333,8 +4405,7 @@ var ColorSlider = function (_Component) {
     var _this = _possibleConstructorReturn(this, (ColorSlider.__proto__ || Object.getPrototypeOf(ColorSlider)).call(this, props));
 
     _this.state = {
-      value: _this.props.defaultValue || 0,
-      textfieldState: {}
+      value: _this.props.defaultValue || 0
     };
     _this.update = _this.update.bind(_this);
     return _this;
@@ -4357,9 +4428,6 @@ var ColorSlider = function (_Component) {
 
       if (this._mounted) {
         this.setState({ value: value });
-        if (this.state.textfieldState.el) {
-          this.state.textfieldState.el.value = value;
-        }
         this.props.onChange({ value: value });
       }
     }
@@ -4368,10 +4436,11 @@ var ColorSlider = function (_Component) {
     value: function render() {
       var _this2 = this;
 
+      var value = this.state.value;
       return react.createElement(Slider$1, {
         min: 0,
         max: 255,
-        value: this.state.value,
+        value: value,
         onChange: this.update,
         before: react.createElement(
           "div",
@@ -4381,11 +4450,10 @@ var ColorSlider = function (_Component) {
         after: react.createElement(TextField$1, {
           type: "number",
           hideSpinner: true,
-          defaultValue: this.props.defaultValue,
-          onChange: function onChange(textfieldState) {
-            return _this2.setState({ textfieldState: textfieldState }, function () {
-              return _this2.update({ value: textfieldState.value });
-            });
+          value: value,
+          onChange: function onChange(_ref2) {
+            var value = _ref2.value;
+            return _this2.setState({ value: value });
           },
           maxLength: 3,
           min: 0,
@@ -4428,9 +4496,9 @@ var RGBSlider = function (_Component2) {
     }
   }, {
     key: "update",
-    value: function update(_ref2) {
-      var key = _ref2.key,
-          value = _ref2.value;
+    value: function update(_ref3) {
+      var key = _ref3.key,
+          value = _ref3.value;
 
       if (this._mounted) {
         this.setState(_defineProperty$1({}, key, value));
@@ -4447,24 +4515,24 @@ var RGBSlider = function (_Component2) {
         react.createElement("div", { className: "result", style: { backgroundColor: "rgb(" + this.state.red + "," + this.state.green + "," + this.state.blue + ")" } }),
         react.createElement(ColorSlider, {
           defaultValue: this.state.red,
-          onChange: function onChange(_ref3) {
-            var value = _ref3.value;
+          onChange: function onChange(_ref4) {
+            var value = _ref4.value;
             return _this4.update({ key: "red", value: value });
           },
           label: "R"
         }),
         react.createElement(ColorSlider, {
           defaultValue: this.state.green,
-          onChange: function onChange(_ref4) {
-            var value = _ref4.value;
+          onChange: function onChange(_ref5) {
+            var value = _ref5.value;
             return _this4.update({ key: "green", value: value });
           },
           label: "G"
         }),
         react.createElement(ColorSlider, {
           defaultValue: this.state.blue,
-          onChange: function onChange(_ref5) {
-            var value = _ref5.value;
+          onChange: function onChange(_ref6) {
+            var value = _ref6.value;
             return _this4.update({ key: "blue", value: value });
           },
           label: "B"

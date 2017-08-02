@@ -230,9 +230,50 @@ var onChange = (function (_ref) {
   };
 });
 
-var iconStarOutlineSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\" baseProfile=\"full\" width=\"24\" height=\"24\" viewBox=\"0 0 24.00 24.00\" enable-background=\"new 0 0 24.00 24.00\" xml:space=\"preserve\"><path fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"0.2\" stroke-linejoin=\"round\" d=\"M 11.9994,15.3943L 8.2364,17.6643L 9.2314,13.3833L 5.9094,10.5053L 10.2894,10.1293L 11.9994,6.09327L 13.7094,10.1293L 18.0894,10.5053L 14.7674,13.3833L 15.7624,17.6643M 21.9994,9.24227L 14.8084,8.62526L 11.9994,1.99827L 9.1904,8.62526L 1.9994,9.24227L 7.4544,13.9693L 5.8194,20.9983L 11.9994,17.2703L 18.1794,20.9983L 16.5444,13.9693L 21.9994,9.24227 Z \"/></svg>";
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var iconStarFilledSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\"/></svg>";
+var events = (function (_ref) {
+  var h = _ref.h,
+      k = _ref.k,
+      RadioGroup$$1 = _ref.RadioGroup;
+  return {
+    oninit: function oninit(vnode) {
+      var checkedValue = stream();
+      vnode.state = {
+        checkedValue: checkedValue,
+        redrawOnUpdate: stream.merge([checkedValue])
+      };
+    },
+    view: function view(vnode) {
+      var state = vnode.state;
+      var checkedValue = state.checkedValue();
+      return h("div", [h("div", {
+        style: {
+          margin: "0 0 1rem 0"
+        }
+      }, "Value: " + (checkedValue === undefined ? "Not set" : checkedValue)), h(RadioGroup$$1, {
+        name: "events",
+        content: [{
+          value: "One",
+          label: "One",
+          events: _defineProperty({}, k.onclick, function () {
+            return state.checkedValue("One");
+          })
+        }, {
+          value: "Two",
+          label: "Two",
+          events: _defineProperty({}, k.onclick, function () {
+            return state.checkedValue("Two");
+          })
+        }]
+      })]);
+    }
+  };
+});
+
+var iconStarOutlineSVG = "<svg xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\" baseProfile=\"full\" width=\"24\" height=\"24\" viewBox=\"0 0 24.00 24.00\" enable-background=\"new 0 0 24.00 24.00\" xml:space=\"preserve\"><path fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"0.2\" stroke-linejoin=\"round\" d=\"M 11.9994,15.3943L 8.2364,17.6643L 9.2314,13.3833L 5.9094,10.5053L 10.2894,10.1293L 11.9994,6.09327L 13.7094,10.1293L 18.0894,10.5053L 14.7674,13.3833L 15.7624,17.6643M 21.9994,9.24227L 14.8084,8.62526L 11.9994,1.99827L 9.1904,8.62526L 1.9994,9.24227L 7.4544,13.9693L 5.8194,20.9983L 11.9994,17.2703L 18.1794,20.9983L 16.5444,13.9693L 21.9994,9.24227 Z \"/></svg>";
+
+var iconStarFilledSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\"/></svg>";
 
 var genericTests = (function (_ref) {
   var RadioButton$$1 = _ref.RadioButton,
@@ -412,6 +453,11 @@ var genericTests = (function (_ref) {
     name: "Option: Radio Group onChange",
     interactive: true,
     component: onChange({ h: h, RadioGroup: RadioGroup$$1 })
+  }, {
+    name: "Option: events",
+    interactive: true,
+    exclude: true,
+    component: events({ h: h, k: k, RadioGroup: RadioGroup$$1 })
   },
 
   // Dark tone
@@ -4176,17 +4222,13 @@ var reactTests = function reactTests(_ref) {
   }, {
     name: "Option: label (JSX)",
     component: function component() {
-      return react.createElement(
-        RadioGroup$1,
-        null,
-        [{
+      return react.createElement(RadioGroup$1, { buttons: [{
           value: "One",
           label: "One"
         }, {
           value: "Two",
           label: "Two"
-        }]
-      );
+        }] });
     }
   }, {
     name: "Option: onChange (JSX)",

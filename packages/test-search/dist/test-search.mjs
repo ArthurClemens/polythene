@@ -6,7 +6,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 var genericTests = (function (_ref) {
   var h = _ref.renderer,
       Search$$1 = _ref.Search,
-      SearchField = _ref.SearchField;
+      SearchField = _ref.SearchField,
+      Shadow$$1 = _ref.Shadow;
 
 
   Search$$1.theme(".tests-search-themed-search", {
@@ -28,6 +29,18 @@ var genericTests = (function (_ref) {
   };
 
   return [{
+    name: "Option: textfield",
+    component: {
+      view: function view() {
+        return h(Search$$1, {
+          textfield: {
+            label: "Search"
+          },
+          after: h(Shadow$$1)
+        });
+      }
+    }
+  }, {
     name: "Option: textfield, buttons",
     component: {
       view: function view() {
@@ -315,24 +328,13 @@ var searchField = (function (_ref) {
   var iconClear = h.trust(iconClearSVG);
   var iconMic = h.trust(iconMicSVG);
 
-  var SearchButton = {
-    view: function view() {
-      return h(IconButton$$1, {
-        icon: { svg: iconSearch },
-        inactive: true,
-        key: "search"
-      });
-    }
-  };
-
   var BackButton = {
     view: function view(_ref2) {
       var attrs = _ref2.attrs;
       return h(IconButton$$1, {
         icon: { svg: iconBack },
         ink: false,
-        events: _defineProperty({}, k.onclick, attrs.leave),
-        key: "back"
+        events: _defineProperty({}, k.onclick, attrs.leave)
       });
     }
   };
@@ -343,18 +345,25 @@ var searchField = (function (_ref) {
       return h(IconButton$$1, {
         icon: { svg: iconClear },
         ink: false,
-        events: _defineProperty({}, k.onclick, attrs.clear),
-        key: "clear"
+        events: _defineProperty({}, k.onclick, attrs.clear)
       });
     }
   };
 
-  var MicButton = {
+  var SearchIcon = {
+    view: function view() {
+      return h(IconButton$$1, {
+        icon: { svg: iconSearch },
+        inactive: true
+      });
+    }
+  };
+
+  var MicIcon = {
     view: function view() {
       return h(IconButton$$1, {
         icon: { svg: iconMic },
-        inactive: true,
-        key: "mic"
+        inactive: true
       });
     }
   };
@@ -385,7 +394,7 @@ var searchField = (function (_ref) {
 
       var value = state.value();
       var focus = state.focus();
-      return h("div", [h(Search$$1, _extends$1({}, {
+      return h(Search$$1, _extends$1({}, {
         textfield: {
           label: "Search",
           onChange: function onChange(_ref5) {
@@ -394,17 +403,16 @@ var searchField = (function (_ref) {
             return state.value(value), state.focus(focus);
           },
           value: value,
-          focus: focus,
-          key: "input"
+          focus: focus
         },
         buttons: {
           none: {
-            before: h(SearchButton),
-            after: h(MicButton)
+            before: h(SearchIcon),
+            after: h(MicIcon)
           },
           focus: {
-            before: h(SearchButton),
-            after: h(MicButton)
+            before: h(SearchIcon),
+            after: h(MicIcon)
           },
           focus_dirty: {
             before: h(BackButton, { leave: state.leave }),
@@ -416,7 +424,7 @@ var searchField = (function (_ref) {
           }
         },
         before: h(Shadow$$1)
-      }, attrs))]);
+      }, attrs));
     }
   };
 });
@@ -4015,6 +4023,8 @@ var react = React_1;
 
 var react_2 = react.Component;
 
+var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -4023,159 +4033,274 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var iconSearch = react.createElement(
+var iconSearchSVG$1 = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z\"/></svg>";
+var iconBackSVG$1 = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z\"/></svg>";
+var iconClearSVG$1 = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\"/></svg>";
+var iconMicSVG$1 = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z\"/></svg>";
+
+var iconSearch = renderer$1.trust(iconSearchSVG$1);
+var iconBack = renderer$1.trust(iconBackSVG$1);
+var iconClear = renderer$1.trust(iconClearSVG$1);
+var iconMic = renderer$1.trust(iconMicSVG$1);
+
+var BackButton = function BackButton(_ref) {
+  var leave = _ref.leave;
+  return renderer$1(IconButton$1, {
+    icon: { svg: iconBack },
+    ink: false,
+    events: { onClick: leave }
+  });
+};
+
+var ClearButton = function ClearButton(_ref2) {
+  var clear = _ref2.clear;
+  return renderer$1(IconButton$1, {
+    icon: { svg: iconClear },
+    ink: false,
+    events: { onClick: clear }
+  });
+};
+
+var SearchIcon = function SearchIcon() {
+  return renderer$1(IconButton$1, {
+    icon: { svg: iconSearch },
+    inactive: true
+  });
+};
+
+var MicIcon = function MicIcon() {
+  return renderer$1(IconButton$1, {
+    icon: { svg: iconMic },
+    inactive: true
+  });
+};
+
+var _class = function (_Component) {
+  _inherits(_class, _Component);
+
+  function _class(props) {
+    _classCallCheck(this, _class);
+
+    var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, props));
+
+    _this.state = {
+      value: "",
+      focus: false
+    };
+    _this.clear = _this.clear.bind(_this);
+    _this.leave = _this.leave.bind(_this);
+    return _this;
+  }
+
+  _createClass(_class, [{
+    key: "clear",
+    value: function clear() {
+      this.setState({
+        value: "",
+        focus: true
+      });
+    }
+  }, {
+    key: "leave",
+    value: function leave() {
+      this.setState({ value: "" });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return renderer$1(Search$1, _extends$3({}, {
+        textfield: {
+          label: "Search",
+          onChange: function onChange(_ref3) {
+            var value = _ref3.value,
+                focus = _ref3.focus;
+            return _this2.setState({ value: value, focus: focus });
+          },
+          value: this.state.value,
+          focus: this.state.focus
+        },
+        buttons: {
+          none: {
+            before: renderer$1(SearchIcon),
+            after: renderer$1(MicIcon)
+          },
+          focus: {
+            before: renderer$1(SearchIcon),
+            after: renderer$1(MicIcon)
+          },
+          focus_dirty: {
+            before: renderer$1(BackButton, { leave: this.leave }),
+            after: renderer$1(ClearButton, { clear: this.clear })
+          },
+          dirty: {
+            before: renderer$1(BackButton, { leave: this.leave }),
+            after: renderer$1(ClearButton, { clear: this.clear })
+          }
+        },
+        before: renderer$1(Shadow$1)
+      }));
+    }
+  }]);
+
+  return _class;
+}(react_2);
+
+var _createClass$1 = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck$1(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn$1(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits$1(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var iconSearch$1 = react.createElement(
   "svg",
   { width: "24", height: "24", viewBox: "0 0 24 24" },
   react.createElement("path", { d: "M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" })
 );
-var iconBack = react.createElement(
+var iconBack$1 = react.createElement(
   "svg",
   { width: "24", height: "24", viewBox: "0 0 24 24" },
   react.createElement("path", { d: "M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" })
 );
-var iconClear = react.createElement(
+var iconClear$1 = react.createElement(
   "svg",
   { width: "24", height: "24", viewBox: "0 0 24 24" },
   react.createElement("path", { d: "M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" })
 );
-var iconMic = react.createElement(
+var iconMic$1 = react.createElement(
   "svg",
   { width: "24", height: "24", viewBox: "0 0 24 24" },
   react.createElement("path", { d: "M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z" })
 );
 
-var searchField$1 = (function (_ref) {
-  var Search$$1 = _ref.Search,
-      IconButton$$1 = _ref.IconButton,
-      Shadow$$1 = _ref.Shadow;
+var BackButton$1 = function BackButton(_ref) {
+  var leave = _ref.leave;
+  return react.createElement(IconButton$1, {
+    icon: { svg: iconBack$1 },
+    ink: false,
+    events: { onClick: leave }
+  });
+};
 
+var ClearButton$1 = function ClearButton(_ref2) {
+  var clear = _ref2.clear;
+  return react.createElement(IconButton$1, {
+    icon: { svg: iconClear$1 },
+    ink: false,
+    events: { onClick: clear }
+  });
+};
 
-  var SearchButton = function SearchButton() {
-    return react.createElement(IconButton$$1, {
-      icon: { svg: iconSearch },
-      inactive: true,
-      key: "search"
-    });
-  };
+var SearchIcon$1 = function SearchIcon() {
+  return react.createElement(IconButton$1, {
+    icon: { svg: iconSearch$1 },
+    inactive: true
+  });
+};
 
-  var BackButton = function BackButton(_ref2) {
-    var leave = _ref2.leave;
-    return react.createElement(IconButton$$1, {
-      icon: { svg: iconBack },
-      ink: false,
-      events: { onClick: leave },
-      key: "back"
-    });
-  };
+var MicIcon$1 = function MicIcon() {
+  return react.createElement(IconButton$1, {
+    icon: { svg: iconMic$1 },
+    inactive: true
+  });
+};
 
-  var ClearButton = function ClearButton(_ref3) {
-    var clear = _ref3.clear;
-    return react.createElement(IconButton$$1, {
-      icon: { svg: iconClear },
-      ink: false,
-      events: { onClick: clear },
-      key: "clear"
-    });
-  };
+var _class$1 = function (_Component) {
+  _inherits$1(_class, _Component);
 
-  var MicButton = function MicButton() {
-    return react.createElement(IconButton$$1, {
-      icon: { svg: iconMic },
-      inactive: true,
-      key: "mic"
-    });
-  };
+  function _class(props) {
+    _classCallCheck$1(this, _class);
 
-  return function (_Component) {
-    _inherits(_class, _Component);
+    var _this = _possibleConstructorReturn$1(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, props));
 
-    function _class(props) {
-      _classCallCheck(this, _class);
+    _this.state = {
+      value: "",
+      focus: false
+    };
+    _this.clear = _this.clear.bind(_this);
+    _this.leave = _this.leave.bind(_this);
+    return _this;
+  }
 
-      var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, props));
-
-      _this.state = {
+  _createClass$1(_class, [{
+    key: "clear",
+    value: function clear() {
+      this.setState({
         value: "",
-        focus: false
-      };
-      _this.clear = _this.clear.bind(_this);
-      _this.leave = _this.leave.bind(_this);
-      return _this;
+        focus: true
+      });
     }
+  }, {
+    key: "leave",
+    value: function leave() {
+      this.setState({ value: "" });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
 
-    _createClass(_class, [{
-      key: "clear",
-      value: function clear() {
-        this.setState({
-          value: "",
-          focus: true
-        });
-      }
-    }, {
-      key: "leave",
-      value: function leave() {
-        this.setState({ value: "" });
-      }
-    }, {
-      key: "render",
-      value: function render() {
-        var _this2 = this;
-
-        var value = this.state.value;
-        var focus = this.state.focus;
-        return react.createElement(Search$$1, {
-          textfield: {
-            label: "Search",
-            onChange: function onChange(_ref4) {
-              var value = _ref4.value,
-                  focus = _ref4.focus;
-              return _this2.setState({ value: value, focus: focus });
-            },
-            value: value,
-            focus: focus,
-            key: "input"
+      var value = this.state.value;
+      var focus = this.state.focus;
+      return react.createElement(Search$1, {
+        textfield: {
+          label: "Search",
+          onChange: function onChange(_ref3) {
+            var value = _ref3.value,
+                focus = _ref3.focus;
+            return _this2.setState({ value: value, focus: focus });
           },
-          buttons: {
-            none: {
-              before: SearchButton(),
-              after: MicButton()
-            },
-            focus: {
-              before: SearchButton(),
-              after: MicButton()
-            },
-            focus_dirty: {
-              before: BackButton({ leave: this.leave }),
-              after: ClearButton({ clear: this.clear })
-            },
-            dirty: {
-              before: BackButton({ leave: this.leave }),
-              after: ClearButton({ clear: this.clear })
-            }
+          value: value,
+          focus: focus
+        },
+        buttons: {
+          none: {
+            before: SearchIcon$1(),
+            after: MicIcon$1()
           },
-          before: react.createElement(Shadow$$1, null)
-        });
-      }
-    }]);
+          focus: {
+            before: SearchIcon$1(),
+            after: MicIcon$1()
+          },
+          focus_dirty: {
+            before: BackButton$1({ leave: this.leave }),
+            after: ClearButton$1({ clear: this.clear })
+          },
+          dirty: {
+            before: BackButton$1({ leave: this.leave }),
+            after: ClearButton$1({ clear: this.clear })
+          }
+        },
+        before: react.createElement(Shadow$1, null)
+      });
+    }
+  }]);
 
-    return _class;
-  }(react_2);
-});
-
-var SearchField$1 = searchField$1({ Search: Search$1, IconButton: IconButton$1, Shadow: Shadow$1 });
+  return _class;
+}(react_2);
 
 var reactTests = function reactTests() {
 
   return [{
+    section: "React specific tests"
+  }, {
+    name: "Option: textfield, buttons (hyperscript)",
+    component: function component() {
+      return react.createElement(_class, null);
+    }
+  }, {
     section: "React JSX tests"
   }, {
     name: "Option: textfield, buttons (JSX)",
     component: function component() {
-      return react.createElement(SearchField$1, null);
+      return react.createElement(_class$1, null);
     }
   }];
 };
 
-var testsReact = [].concat(genericTests({ Search: Search$1, IconButton: IconButton$1, Button: Button$1, Shadow: Shadow$1, SearchField: SearchField$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests({ Search: Search$1, IconButton: IconButton$1, Button: Button$1, Shadow: Shadow$1, SearchField: SearchField$1, renderer: renderer$1, keys: keys$1 }));
+var testsReact = [].concat(genericTests({ Search: Search$1, IconButton: IconButton$1, Button: Button$1, Shadow: Shadow$1, SearchField: _class, renderer: renderer$1, keys: keys$1 })).concat(reactTests({ Search: Search$1, IconButton: IconButton$1, Button: Button$1, Shadow: Shadow$1, SearchField: _class, renderer: renderer$1, keys: keys$1 }));
 
 export { testsMithril as mithrilTests, testsReact as reactTests };

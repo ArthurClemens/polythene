@@ -1,5 +1,5 @@
 
-export default ({ renderer: h, Search, SearchField }) => {
+export default ({ renderer: h, Search, SearchField, Shadow }) => {
 
   Search.theme(".tests-search-themed-search", {
     color_light_input_text: "#0D47A1",
@@ -27,6 +27,18 @@ export default ({ renderer: h, Search, SearchField }) => {
   };
 
   return [
+    {
+      name: "Option: textfield",
+      component: {
+        view: () =>
+          h(Search, {
+            textfield: {
+              label: "Search"
+            },
+            after: h(Shadow)
+          })
+      }
+    },
     {
       name: "Option: textfield, buttons",
       component: {

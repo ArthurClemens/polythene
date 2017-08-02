@@ -12,22 +12,12 @@ export default ({ renderer: h, keys: k, Search, IconButton, Shadow } ) => {
   const iconClear = h.trust(iconClearSVG);
   const iconMic = h.trust(iconMicSVG);
 
-  const SearchButton = {
-    view: () => 
-      h(IconButton, {
-        icon: { svg: iconSearch },
-        inactive: true,
-        key: "search"
-      })
-  };
-
   const BackButton = {
     view: ({ attrs }) =>
       h(IconButton, {
         icon: { svg: iconBack },
         ink: false,
         events: { [k.onclick]: attrs.leave },
-        key: "back"
       })
   };
 
@@ -37,16 +27,22 @@ export default ({ renderer: h, keys: k, Search, IconButton, Shadow } ) => {
         icon: { svg: iconClear },
         ink: false,
         events: { [k.onclick]: attrs.clear },
-        key: "clear"
       })
   };
 
-  const MicButton = {
+  const SearchIcon = {
+    view: () => 
+      h(IconButton, {
+        icon: { svg: iconSearch },
+        inactive: true,
+      })
+  };
+
+  const MicIcon = {
     view: () => 
       h(IconButton, {
         icon: { svg: iconMic },
         inactive: true,
-        key: "mic"
       })
   };
 
@@ -54,7 +50,7 @@ export default ({ renderer: h, keys: k, Search, IconButton, Shadow } ) => {
     oninit: vnode => {
       const value = stream("");
       const focus = stream(false);
-      
+
       const clear = () => (
         value(""),
         focus(true)
@@ -73,40 +69,37 @@ export default ({ renderer: h, keys: k, Search, IconButton, Shadow } ) => {
     view: ({ state, attrs }) => {
       const value = state.value();
       const focus = state.focus();
-      return h("div", [
-        h(Search, Object.assign(
-          {},
-          {
-            textfield: {
-              label: "Search",
-              onChange: ({ value, focus }) => (state.value(value), state.focus(focus)),
-              value,
-              focus,
-              key: "input"
-            },
-            buttons: {
-              none: {
-                before: h(SearchButton),
-                after: h(MicButton)
-              },
-              focus: {
-                before: h(SearchButton),
-                after: h(MicButton)
-              },
-              focus_dirty: {
-                before: h(BackButton, { leave: state.leave }),
-                after: h(ClearButton, { clear: state.clear })
-              },
-              dirty: {
-                before: h(BackButton, { leave: state.leave }),
-                after: h(ClearButton, { clear: state.clear })
-              }
-            },
-            before: h(Shadow)
+      return h(Search, Object.assign(
+        {},
+        {
+          textfield: {
+            label: "Search",
+            onChange: ({ value, focus }) => (state.value(value), state.focus(focus)),
+            value,
+            focus
           },
-          attrs
-        ))
-      ]);
+          buttons: {
+            none: {
+              before: h(SearchIcon),
+              after: h(MicIcon)
+            },
+            focus: {
+              before: h(SearchIcon),
+              after: h(MicIcon)
+            },
+            focus_dirty: {
+              before: h(BackButton, { leave: state.leave }),
+              after: h(ClearButton, { clear: state.clear })
+            },
+            dirty: {
+              before: h(BackButton, { leave: state.leave }),
+              after: h(ClearButton, { clear: state.clear })
+            }
+          },
+          before: h(Shadow)
+        },
+        attrs
+      ));
     }
   };
 };

@@ -49,8 +49,7 @@ class ColorSlider extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: this.props.defaultValue || 0,
-      textfieldState: {}
+      value: this.props.defaultValue || 0
     };
     this.update = this.update.bind(this);
   }
@@ -66,25 +65,23 @@ class ColorSlider extends Component {
   update({ value }) {
     if (this._mounted) {
       this.setState({ value });
-      if (this.state.textfieldState.el) {
-        this.state.textfieldState.el.value = value;
-      }
       this.props.onChange({ value });
     }
   }
 
   render() {
+    const value = this.state.value;
     return <Slider
       min={0}
       max={255}
-      value={this.state.value}
+      value={value}
       onChange={this.update}
       before={<div className=".pe-slider__label">{this.props.label}</div>}
       after={<TextField
         type="number"
         hideSpinner
-        defaultValue={this.props.defaultValue}
-        onChange={textfieldState => this.setState({ textfieldState }, () => this.update({ value: textfieldState.value }))}
+        value={value}
+        onChange={({ value }) => this.setState({ value })}
         maxLength={3}
         min={0}
         max={255}
@@ -124,17 +121,17 @@ class RGBSlider extends Component {
       <div className="result" style={{ backgroundColor: `rgb(${this.state.red},${this.state.green},${this.state.blue})` }} />
       <ColorSlider
         defaultValue={this.state.red}
-        onChange={({value}) => this.update({ key: "red", value })}
+        onChange={({ value }) => this.update({ key: "red", value })}
         label="R"
       />
       <ColorSlider
         defaultValue={this.state.green}
-        onChange={({value}) => this.update({ key: "green", value })}
+        onChange={({ value }) => this.update({ key: "green", value })}
         label="G"
       />
       <ColorSlider
         defaultValue={this.state.blue}
-        onChange={({value}) => this.update({ key: "blue", value })}
+        onChange={({ value }) => this.update({ key: "blue", value })}
         label="B"
       />
     </div>;

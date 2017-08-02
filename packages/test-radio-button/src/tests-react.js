@@ -54,12 +54,10 @@ const reactTests = ({ RadioButton, renderer: h }) => { // eslint-disable-line no
           {
             value: "One",
             label: "One",
-            key: "one",
           },
           {
             value: "Two",
             label: "Two",
-            key: "two",
           }
         ]}/>
     },
