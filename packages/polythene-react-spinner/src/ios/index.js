@@ -23,4 +23,5 @@ export const iOSSpinner = props => (
 );
 
 iOSSpinner.theme = core.theme;
+iOSSpinner.classes = core.classes;
 iOSSpinner.displayName = "iOSSpinner";

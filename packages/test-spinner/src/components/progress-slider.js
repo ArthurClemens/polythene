@@ -51,7 +51,7 @@ export default ({ renderer: h, keys: k, Spinner, RaisedButton, Slider, animated,
               updateDuration,
               class: "self-center",
               animated
-            },
+            }
           ))
         })
       ),

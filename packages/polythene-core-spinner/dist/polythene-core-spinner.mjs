@@ -796,6 +796,8 @@ var _extends$4 = Object.assign || function (target) { for (var i = 1; i < argume
 
 var theme$2 = customTheme$2;
 
+var DEFAULT_UPDATE_DURATION = .8;
+
 var sizeFromName = function sizeFromName() {
   var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "regular";
   return vars$2["size_" + size];
@@ -835,7 +837,7 @@ var handlePercentage = function handlePercentage(percentage, state, size, attrs)
   }
   var previousPercentage = state.percentage();
   if (attrs.animated && previousPercentage !== percentage) {
-    var animationDuration = attrs.updateDuration * 1000;
+    var animationDuration = (attrs.updateDuration || DEFAULT_UPDATE_DURATION) * 1000;
     var el = state.dom();
     var start = null;
     var step = function step(timestamp) {
@@ -861,7 +863,7 @@ var handlePercentage = function handlePercentage(percentage, state, size, attrs)
 };
 
 var notifyState = function notifyState(state, attrs, size) {
-  if (attrs.percentage) {
+  if (attrs.percentage !== undefined) {
     var percentage = unpackAttrs(attrs.percentage);
     handlePercentage(percentage, state, size, attrs);
   }

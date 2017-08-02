@@ -23,4 +23,5 @@ export const MaterialDesignSpinner = {
 };
 
 MaterialDesignSpinner.theme = core.theme;
+MaterialDesignSpinner.classes = core.classes;
 MaterialDesignSpinner.displayName = "MaterialDesignSpinner";

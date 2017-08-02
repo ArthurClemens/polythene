@@ -6,6 +6,8 @@ import classes from "./classes";
 
 export const theme = customTheme;
 
+const DEFAULT_UPDATE_DURATION = .8;
+
 const sizeFromName = (size = "regular") => themeVars["size_" + size];
 
 const percentageValue = (min, max, percentage = 0) => min + ((max - min) * percentage);
@@ -43,7 +45,7 @@ const handlePercentage = (percentage, state, size, attrs) => {
   }
   const previousPercentage = state.percentage();
   if (attrs.animated && previousPercentage !== percentage) {
-    const animationDuration = attrs.updateDuration * 1000;
+    const animationDuration = (attrs.updateDuration || DEFAULT_UPDATE_DURATION) * 1000;
     const el = state.dom();
     let start = null;
     const step = timestamp => {
@@ -69,7 +71,7 @@ const handlePercentage = (percentage, state, size, attrs) => {
 };
 
 const notifyState = (state, attrs, size) => {
-  if (attrs.percentage) {
+  if (attrs.percentage !== undefined) {
     const percentage = unpackAttrs(attrs.percentage);
     handlePercentage(percentage, state, size, attrs);
   }

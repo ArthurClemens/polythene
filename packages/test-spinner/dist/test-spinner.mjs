@@ -527,7 +527,7 @@ var genericTests = (function (_ref) {
       Slider: Slider$$1,
       showActivateButton: false,
       animated: true,
-      updateDuration: 1.0
+      updateDuration: .3
     })
   },
 
@@ -4145,6 +4145,113 @@ var React_1 = React$1;
 
 var react = React_1;
 
+var react_2 = react.Component;
+
+var _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var STEP_DURATION$2 = 2000;
+
+var _class = function (_Component) {
+  _inherits(_class, _Component);
+
+  function _class(props) {
+    _classCallCheck(this, _class);
+
+    var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, props));
+
+    _this.state = {
+      percentage: 0
+    };
+    _this.step = _this.step.bind(_this);
+    _this.updatePercentage = _this.updatePercentage.bind(_this);
+    return _this;
+  }
+
+  _createClass(_class, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this._mounted = true;
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this._mounted = false;
+    }
+  }, {
+    key: "updatePercentage",
+    value: function updatePercentage(percentage) {
+      if (this._mounted) {
+        this.setState({ percentage: percentage });
+      }
+    }
+  }, {
+    key: "step",
+    value: function step(timestamp) {
+      if (!this._start) {
+        this._start = timestamp;
+      }
+      var progress = timestamp - this._start;
+      this.setState({
+        percentage: Math.min(1, 1.0 / STEP_DURATION$2 * progress)
+      });
+      if (progress <= STEP_DURATION$2) {
+        window.requestAnimationFrame(this.step);
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var percentage = this.state.percentage;
+      console.log("percentage", percentage);
+      return renderer$1("div", [renderer$1("div", {
+        style: {
+          display: "flex",
+          width: "100%",
+          margin: "0 0 20px 0"
+        }
+      }, renderer$1(Slider$1, {
+        min: 0,
+        max: 1,
+        step: 0,
+        value: percentage,
+        permanent: true,
+        onChange: function onChange(_ref) {
+          var value = _ref.value;
+          return _this2.updatePercentage(value);
+        },
+        style: {
+          display: "flex",
+          alignItems: "center"
+        },
+        after: renderer$1(MaterialDesignProgressSpinner$1, _extends$4({}, {
+          show: true,
+          percentage: percentage,
+          class: "self-center"
+        }))
+      })), renderer$1(RaisedButton$1, {
+        label: "Run",
+        events: {
+          onClick: function onClick() {
+            return _this2._start = null, window.requestAnimationFrame(_this2.step);
+          }
+        }
+      })]);
+    }
+  }]);
+
+  return _class;
+}(react_2);
+
 var reactTests = function reactTests(_ref) {
   var Shadow = _ref.Shadow,
       h = _ref.renderer,
@@ -4152,6 +4259,13 @@ var reactTests = function reactTests(_ref) {
   // eslint-disable-line no-unused-vars
 
   return [{
+    section: "React specific tests"
+  }, {
+    name: "Interactive (animated, updateDuration) -- Material Design Progress Spinner (hyperscript)",
+    component: function component() {
+      return react.createElement(_class, { updateDuration: 0.3 });
+    }
+  }, {
     section: "React JSX tests"
   }, {
     name: "Option: permanent (JSX) -- Material Design Spinner",

@@ -30,6 +30,7 @@ var iOSSpinner = {
 };
 
 iOSSpinner.theme = coreiOSSpinner.theme;
+iOSSpinner.classes = coreiOSSpinner.classes;
 iOSSpinner.displayName = "iOSSpinner";
 
 var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -48,6 +49,7 @@ var MaterialDesignSpinner = {
 };
 
 MaterialDesignSpinner.theme = coreMaterialDesignSpinner.theme;
+MaterialDesignSpinner.classes = coreMaterialDesignSpinner.classes;
 MaterialDesignSpinner.displayName = "MaterialDesignSpinner";
 
 var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -66,6 +68,7 @@ var MaterialDesignProgressSpinner = {
 };
 
 MaterialDesignProgressSpinner.theme = coreMaterialDesignProgressSpinner.theme;
+MaterialDesignProgressSpinner.classes = coreMaterialDesignProgressSpinner.classes;
 MaterialDesignProgressSpinner.displayName = "MaterialDesignProgressSpinner";
 
 export { iOSSpinner, MaterialDesignSpinner, MaterialDesignProgressSpinner };

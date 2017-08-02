@@ -1,3 +1,3 @@
-export * from "./ios";
-export * from "./material-design";
-export * from "./material-design-progress";
+export { iOSSpinner } from "./ios";
+export { MaterialDesignSpinner } from "./material-design";
+export { MaterialDesignProgressSpinner } from "./material-design-progress";

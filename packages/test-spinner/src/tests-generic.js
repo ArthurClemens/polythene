@@ -189,7 +189,7 @@ export default ({ MaterialDesignSpinner, MaterialDesignProgressSpinner, iOSSpinn
         Slider,
         showActivateButton: false,
         animated: true,
-        updateDuration: 1.0
+        updateDuration: .3
       })
     },
 
