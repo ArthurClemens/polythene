@@ -33,6 +33,8 @@ const index = {
         routes.map(route => (
           h(ListTile, {
             title: route.name,
+            hoverable: true,
+            // tabindex: index + 1,
             url: {
               href: route.path,
               oncreate: m.route.link

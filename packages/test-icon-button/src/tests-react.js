@@ -104,5 +104,5 @@ const reactTests = ({ IconButton, Icon, SVG, renderer: h }) => { // eslint-disab
 };
 
 export default []
-  .concat(genericTests({ IconButton, Icon, renderer }))
+  .concat(genericTests({ IconButton, Icon, SVG, renderer }))
   .concat(reactTests({ IconButton, Icon, SVG, renderer }));

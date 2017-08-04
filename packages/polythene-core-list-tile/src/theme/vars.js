@@ -44,8 +44,9 @@ export default {
   color_light_text_disabled:       rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
   color_light_list_header:         rgba(vars.color_light_foreground, vars.blend_light_text_tertiary),
   color_light_secondary:           rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
-  color_light_background_hover:    rgba(vars.color_light_foreground, vars.blend_light_background_hover),
-  color_light_background_selected: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
+  color_light_hover_background:    rgba(vars.color_light_foreground, vars.blend_light_background_hover),
+  color_light_focus_background:    rgba(vars.color_light_foreground, vars.blend_light_background_hover),
+  color_light_selected_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
   // background color may be set in theme; disabled by default
   // color_light_background:          "inherit",
 
@@ -55,8 +56,8 @@ export default {
   color_dark_text_disabled:        rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
   color_dark_list_header:          rgba(vars.color_dark_foreground, vars.blend_dark_text_tertiary),
   color_dark_secondary:            rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
-  color_dark_background_hover:     rgba(vars.color_dark_foreground, vars.blend_dark_background_hover),
-  color_dark_background_selected:  rgba(vars.color_dark_foreground, vars.blend_dark_background_hover),
+  color_dark_hover_background:     rgba(vars.color_dark_foreground, vars.blend_dark_background_hover),
+  color_dark_selected_background:  rgba(vars.color_dark_foreground, vars.blend_dark_background_hover),
   // background color may be set in theme; disabled by default
   // color_dark_background:           "inherit",
 };

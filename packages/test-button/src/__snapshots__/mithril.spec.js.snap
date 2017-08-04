@@ -145,17 +145,6 @@ exports[`test Option: disabled (false) 1`] = `
 "
 `;
 
-exports[`test Option: disabled (true) 1`] = `
-"<a class=\"pe-button pe-text-button pe-button--disabled\" tabindex=
-\"-1\" disabled>
-<div class=\"pe-button__content\">
-  <div class=\"pe-button__label\">
-    Disabled
-  </div>
-</div></a>
-"
-`;
-
 exports[`test Option: element 1`] = `
 "<button class=\"pe-button pe-text-button\" tabindex=\"0\">
 <div class=\"pe-button__content\">
@@ -262,6 +251,20 @@ exports[`test Option: label 1`] = `
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
     Label
+  </div>
+</div></a>
+"
+`;
+
+exports[`test Option: ripple 1`] = `
+"<a class=\"pe-button pe-text-button\" tabindex=\"0\">
+<div class=\"pe-button__content\">
+  <div style=\"color: rgb(33, 150, 243);\" class=
+  \"pe-ripple pe-ripple--constrained\"></div>
+  <div class=\"pe-button__wash\"></div>
+  <div class=\"pe-button__focus\"></div>
+  <div class=\"pe-button__label\">
+    Custom ripple
   </div>
 </div></a>
 "

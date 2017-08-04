@@ -3,7 +3,7 @@ import classes from "./classes";
 export const getElement = vnode =>
   vnode.attrs.element || "div";
 
-export const createContent = (vnode, { renderer: h, keys: k, Shadow, IconButton }) => {
+export const createContent = (vnode, { renderer: h, Shadow, IconButton }) => {
   const attrs = vnode.attrs;
 
   const zOff = attrs.zOff !== undefined ? attrs.zOff : 1;
@@ -40,7 +40,7 @@ export const createContent = (vnode, { renderer: h, keys: k, Shadow, IconButton 
         ),
         style: attrs.style,
         disabled: attrs.disabled,
-        events: { [k.onclick]: attrs.onChange },
+        events: attrs.events,
         ink: attrs.ink || false,
         inactive: attrs.inactive
       },

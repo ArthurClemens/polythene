@@ -340,11 +340,9 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
           !ignoreEvent(attrs, [k.onkeydown])
             ? {
               [k.onkeydown]: e => {
-                if (e.which === 13) {
-                  // ENTER
+                if (e.key === "Enter") {
                   state.isTouched(true);
-                } else if (e.which === 27) {
-                  // ESCAPE
+                } else if (e.key === "Escape") {
                   inputEl.blur(e);
                 }
               }

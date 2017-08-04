@@ -82,8 +82,15 @@ var getInitialState = function getInitialState(vnode, createStream) {
     notifyChange(e, isChecked);
   };
 
+  var toggle = function toggle(e) {
+    var newChecked = !checked();
+    checked(newChecked);
+    notifyChange(e, newChecked);
+  };
+
   return {
     checked: checked,
+    toggle: toggle,
     onChange: onChange,
     redrawOnUpdate: createStream.merge([checked])
   };
@@ -117,10 +124,22 @@ var createContent = function createContent(vnode, _ref2) {
       checked = _currentState2.checked,
       inactive = _currentState2.inactive;
 
+  var viewControlClickHandler = attrs.events && attrs.events[k.onclick];
+  var viewControlKeyDownHandler = attrs.events && attrs.events[k.onkeydown] ? attrs.events[k.onkeydown] : function (e) {
+    if (e.key === "Enter") {
+      if (viewControlClickHandler) {
+        viewControlClickHandler(e);
+      } else {
+        state.toggle(e);
+      }
+    }
+  };
+
   return h("label", _extends({}, { className: classes.formLabel }), [h(ViewControl, _extends({}, attrs, {
     inactive: inactive,
     checked: checked,
-    key: "control"
+    key: "control",
+    events: _defineProperty({}, k.onkeydown, viewControlKeyDownHandler)
   })), attrs.label ? h("." + classes.label, { key: "label" }, attrs.label) : null, h("input", _extends({}, attrs.events, {
     name: attrs.name,
     type: attrs.type,
@@ -137,6 +156,8 @@ var selectionControl = Object.freeze({
 });
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var CONTENT = [{ iconType: "iconOn", className: classes.buttonOn }, { iconType: "iconOff", className: classes.buttonOff }];
 
 var getElement$1 = function getElement(vnode) {
   return vnode.attrs.element || "." + classes.box;
@@ -163,12 +184,12 @@ var createContent$1 = function createContent(vnode, _ref) {
     element: "div",
     key: attrs.key,
     className: classes.button,
-    content: [{ iconType: "iconOn", className: classes.buttonOn }, { iconType: "iconOff", className: classes.buttonOff }].map(function (o) {
+    content: CONTENT.map(function (o) {
       return h(Icon, createIcon(h, o.iconType, attrs, o.className));
     }),
     ripple: { center: true },
     disabled: attrs.disabled,
-    events: null,
+    events: attrs.events,
     inactive: attrs.inactive
   }, attrs.iconButton // for example for hover behaviour
   ));

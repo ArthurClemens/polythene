@@ -26,7 +26,7 @@ export default (selector, componentVars) => [{
     ),
     {
       transitionTimingFunction: "ease-out",
-      transitionProperty: "opacity",
+      transitionProperty: "all",
       zIndex: vars.z_menu,
       opacity: 0,
       position: "absolute",

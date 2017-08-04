@@ -30,6 +30,7 @@ export default class extends Component {
             target: `#${target}`,
             show: isOpen,
             offset: -4,
+            size: 2,
             didHide: () => this.setState({ isOpen: false })
           },
           h(List, [

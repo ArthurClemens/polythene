@@ -29,6 +29,7 @@ export default ({ h, k, RadioGroup }) => ({
             events: {
               [k.onclick]: () => state.checkedValue("One")
             },
+            checked: checkedValue === "One"
           },
           {
             value: "Two",
@@ -36,6 +37,7 @@ export default ({ h, k, RadioGroup }) => ({
             events: {
               [k.onclick]: () => state.checkedValue("Two")
             },
+            checked: checkedValue === "Two"
           }
         ]
       })

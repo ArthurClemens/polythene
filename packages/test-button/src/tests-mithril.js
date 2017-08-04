@@ -7,11 +7,22 @@ const mithrilTests = ({ Button, renderer: h }) => {
       section: "Mithril specific tests",
     },
     {
+      name: "Option: router url (with hash)",
+      interactive: true,
+      component: Button,
+      attrs: {
+        label: "Go to #/shadow",
+        url: {
+          href: "#/shadow"
+        }
+      }
+    },
+    {
       name: "Option: url (with oncreate)",
       interactive: true,
       component: Button,
       attrs: {
-        label: "Go to /#/shadow",
+        label: "Go to /shadow",
         url: {
           href: "/shadow",
           oncreate: h.route.link

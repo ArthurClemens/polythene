@@ -2,41 +2,9 @@ import { filterSupportedAttributes } from "polythene-core";
 import { customTheme } from "./theme";
 import classes from "./classes";
 
-export const getElement = vnode =>
-  vnode.attrs.element || "div";
+export const getElement = () => "div"; // because primary or secondary content can be an "a", the container is always defined as "div", and option `element` is passed to primary content
 
 export const theme = customTheme;
-
-export const createProps = (vnode, { keys: k }) => {
-  const attrs = vnode.attrs;
-  const heightClass = attrs.subtitle
-    ? classes.hasSubtitle
-    : attrs.highSubtitle
-      ? classes.hasHighSubtitle
-      : attrs.front || attrs.indent
-        ? classes.hasFront
-        : null;
-  return Object.assign(
-    {},
-    filterSupportedAttributes(attrs),
-    {
-      className: [
-        classes.component,
-        attrs.selected   ? classes.selected : null,
-        attrs.disabled   ? classes.disabled : null,
-        attrs.sticky     ? classes.sticky : null,
-        attrs.compact    ? classes.compact : null,
-        attrs.hoverable  ? classes.hoverable : null,
-        attrs.selectable ? classes.selectable : null,
-        attrs.tone === "dark" ? "pe-dark-tone" : null,
-        attrs.tone === "light" ? "pe-light-tone" : null,
-        heightClass,
-        attrs.className || attrs[k.class],
-      ].join(" ")
-    }
-    // events and url are attached to primary content to not interfere with controls
-  );
-};
 
 const primaryContent = (h, requiresKeys, attrs, children) => {
   const element = attrs.element
@@ -120,7 +88,7 @@ const secondaryContent = (h, requiresKeys, Icon, secondaryAttrs = {}) => {
       {},
       secondaryAttrs.url,
       {
-        className: classes.secondary
+        className: classes.secondary,
       },
       requiresKeys ? { key: "secondary" } : null,
       filterSupportedAttributes(secondaryAttrs)
@@ -132,6 +100,37 @@ const secondaryContent = (h, requiresKeys, Icon, secondaryAttrs = {}) => {
         secondaryAttrs.content ? secondaryAttrs.content : null
       ]
     )
+  );
+};
+
+export const createProps = (vnode, { keys: k }) => {
+  const attrs = vnode.attrs;
+  const heightClass = attrs.subtitle
+    ? classes.hasSubtitle
+    : attrs.highSubtitle
+      ? classes.hasHighSubtitle
+      : attrs.front || attrs.indent
+        ? classes.hasFront
+        : null;
+  return Object.assign(
+    {},
+    filterSupportedAttributes(attrs, { remove: ["tabindex", "tabIndex"] }), // tab index set in primary or secondary content
+    {
+      className: [
+        classes.component,
+        attrs.selected   ? classes.selected : null,
+        attrs.disabled   ? classes.disabled : null,
+        attrs.sticky     ? classes.sticky : null,
+        attrs.compact    ? classes.compact : null,
+        attrs.hoverable  ? classes.hoverable : null,
+        attrs.selectable ? classes.selectable : null,
+        attrs.tone === "dark" ? "pe-dark-tone" : null,
+        attrs.tone === "light" ? "pe-light-tone" : null,
+        heightClass,
+        attrs.className || attrs[k.class],
+      ].join(" ")
+    }
+    // events and url are attached to primary content to not interfere with controls
   );
 };
 

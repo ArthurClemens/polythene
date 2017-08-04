@@ -306,23 +306,26 @@ var createProps = function createProps(vnode, _ref) {
   var disabled = attrs.disabled;
   var inactive = attrs.inactive || state.inactive();
   var onClickHandler = attrs.events && attrs.events[k.onclick];
+  var onKeyDownHandler = attrs.events && attrs.events[k.onkeydown] || onClickHandler;
+
   var handleInactivate = function handleInactivate() {
     return state.inactive(true), setTimeout(function () {
       return state.inactive(false);
     }, attrs.inactivate * 1000);
   };
+
   return _extends({}, filterSupportedAttributes(attrs, { add: [k.formaction, "type"] }), {
     className: [attrs.parentClassName || classes.component, attrs.selected ? classes.selected : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, attrs.borders ? classes.borders : null, state.focus() ? classes.focused : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, inactive ? null : (_ref2 = {}, _defineProperty(_ref2, k.tabindex, disabled || inactive ? -1 : attrs[k.tabindex] || 0), _defineProperty(_ref2, k.onclick, function (e) {
     return attrs.inactivate !== undefined && handleInactivate(), onClickHandler && onClickHandler(e), true;
   }), _defineProperty(_ref2, k.onkeydown, function (e) {
-    if (e.which === 13 && state.focus()) {
+    if (e.key === "Enter" && state.focus()) {
       state.focus(false);
-      if (onClickHandler) {
-        onClickHandler(e);
+      if (onKeyDownHandler) {
+        onKeyDownHandler(e);
       }
     }
-  }), _ref2), attrs.style ? { style: {} } : null, // Set style on content, not on component
+  }), _ref2), { style: null }, // Set style on content, not on component
   attrs.events, attrs.url, disabled ? { disabled: true } : null);
 };
 

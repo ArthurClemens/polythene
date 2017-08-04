@@ -53,11 +53,14 @@ var simple = (function (_ref) {
     didHide: didHide,
     getState: getState,
     offset: -4,
+    size: 2,
     content: h(List$$1, [h(ListTile$$1, {
+      element: "a",
       title: "Yes",
       ink: true,
       hoverable: true
     }), h(ListTile$$1, {
+      element: "a",
       title: "No",
       ink: true,
       hoverable: true
@@ -269,6 +272,7 @@ var opener = (function (_ref) {
       List$$1 = _ref.List,
       ListTile$$1 = _ref.ListTile,
       menuFn = _ref.menuFn,
+      transitionOptions = _ref.transitionOptions,
       id = _ref.id;
   return {
     oninit: function oninit(vnode) {
@@ -296,6 +300,7 @@ var opener = (function (_ref) {
         Menu: Menu$$1,
         List: List$$1,
         ListTile: ListTile$$1,
+        transitionOptions: transitionOptions,
         didHide: function didHide() {
           return state.show(false);
         }
@@ -594,6 +599,39 @@ var themed = (function (_ref) {
   return { themeColor: themeColor, themedList: themedList, styledList: styledList };
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var transitions = (function (_ref) {
+  var show = _ref.show,
+      target = _ref.target,
+      h = _ref.h,
+      Menu$$1 = _ref.Menu,
+      List$$1 = _ref.List,
+      ListTile$$1 = _ref.ListTile,
+      didHide = _ref.didHide,
+      getState = _ref.getState,
+      transitionOptions = _ref.transitionOptions;
+  return h(Menu$$1, _extends({}, transitionOptions, {
+    target: target,
+    show: show,
+    didHide: didHide,
+    getState: getState,
+    offset: -4,
+    size: 2,
+    content: h(List$$1, [h(ListTile$$1, {
+      element: "a",
+      title: "Yes",
+      ink: true,
+      hoverable: true
+    }), h(ListTile$$1, {
+      element: "a",
+      title: "No",
+      ink: true,
+      hoverable: true
+    })])
+  }));
+});
+
 var genericTests = (function (_ref) {
   var renderer$$1 = _ref.renderer,
       keys$$1 = _ref.keys,
@@ -658,6 +696,47 @@ var genericTests = (function (_ref) {
         });
       }
     }
+  }, {
+    name: "Option: transitions",
+    interactive: true,
+    exclude: true,
+    component: opener({ renderer: renderer$$1, keys: keys$$1, Menu: Menu$$1, RaisedButton: RaisedButton$$1, List: List$$1, ListTile: ListTile$$1, menuFn: transitions, id: "transitions",
+      transitionOptions: {
+        transitions: {
+          show: function show(el) {
+            return {
+              el: el,
+              beforeShow: function beforeShow() {
+                return el.style.opacity = 0, el.style.transform = "translate3d(0, 20px, 0)";
+              },
+              show: function show() {
+                return el.style.opacity = 1, el.style.transform = "translate3d(0, 0px,  0)";
+              }
+            };
+          },
+          hide: function hide(el) {
+            return {
+              el: el,
+              hide: function hide() {
+                return el.style.opacity = 0, el.style.transform = "translate3d(0, 20px, 0)";
+              }
+            };
+          }
+        }
+      }
+    })
+  }, {
+    name: "Option: showDelay, hideDelay, showDuration, hideDuration",
+    interactive: true,
+    exclude: true,
+    component: opener({ renderer: renderer$$1, keys: keys$$1, Menu: Menu$$1, RaisedButton: RaisedButton$$1, List: List$$1, ListTile: ListTile$$1, menuFn: transitions, id: "showDelay",
+      transitionOptions: {
+        showDelay: .4,
+        hideDelay: .4,
+        showDuration: 1.0,
+        hideDuration: 1.0
+      }
+    })
   }, {
     name: "Option: size",
     component: sizes({ renderer: renderer$$1, Menu: Menu$$1, List: List$$1, ListTile: ListTile$$1 })
@@ -738,7 +817,7 @@ object-assign
 
 /* eslint-disable no-unused-vars */
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -784,7 +863,7 @@ function shouldUseNative() {
 		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
 			test3[letter] = letter;
 		});
-		if (Object.keys(_extends({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
+		if (Object.keys(_extends$1({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
 			return false;
 		}
 
@@ -4356,6 +4435,7 @@ var _class = function (_Component) {
         target: "#" + target,
         show: isOpen,
         offset: -4,
+        size: 2,
         didHide: function didHide() {
           return _this2.setState({ isOpen: false });
         }
@@ -4413,6 +4493,7 @@ var _class$1 = function (_Component) {
             target: "#" + target,
             show: isOpen,
             offset: -4,
+            size: 2,
             didHide: function didHide() {
               return _this2.setState({ isOpen: false });
             }

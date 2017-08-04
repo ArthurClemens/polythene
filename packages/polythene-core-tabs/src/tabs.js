@@ -229,7 +229,7 @@ export const createProps = (vnode, { keys: k }) => {
         state.selectedTabIndex === state.tabs.length - 1 ? classes.isAtEnd : null,
         attrs.activeSelected ? classes.activeSelectable : null,
         autofit ? classes.isAutofit : null,
-        attrs.small ? classes.smallTabs : null,
+        attrs.compact ? classes.compactTabs : null,
         attrs.menu ? classes.isMenu : null,
         attrs.tone === "dark" ? "pe-dark-tone" : null,
         attrs.tone === "light" ? "pe-light-tone" : null,

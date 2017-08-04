@@ -1,5 +1,10 @@
 import classes from "./classes";
 
+const CONTENT = [
+  { iconType: "iconOn", className: classes.buttonOn},
+  { iconType: "iconOff", className: classes.buttonOff}
+];
+
 export const getElement = vnode =>
   vnode.attrs.element || `.${classes.box}`;
 
@@ -30,15 +35,12 @@ export const createContent = (vnode, { renderer: h, Icon, IconButton }) => {
       element: "div",
       key: attrs.key,
       className: classes.button,
-      content: [
-        { iconType: "iconOn", className: classes.buttonOn},
-        { iconType: "iconOff", className: classes.buttonOff}
-      ].map(o =>
+      content: CONTENT.map(o =>
         h(Icon, createIcon(h, o.iconType, attrs, o.className))
       ),
       ripple: { center: true },
       disabled: attrs.disabled,
-      events: null,
+      events: attrs.events,
       inactive: attrs.inactive
     },
     attrs.iconButton // for example for hover behaviour

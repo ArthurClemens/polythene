@@ -16,8 +16,7 @@ export default ({ h, TextField, RaisedButton }) => ({
         events: {
           oninput: h.withAttr("value", value => state.value(value)),
           onkeydown: e => {
-            if (e.which === 39) {
-              // KEY RIGHT
+            if (e.key === "ArrowRight") {
               state.value(value + String.fromCharCode(97 + Math.floor(Math.random() * 26)));
             }
           }

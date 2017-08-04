@@ -57,12 +57,15 @@ export const createProps = (vnode, { keys: k }) => {
   const disabled = attrs.disabled;
   const inactive = attrs.inactive || state.inactive();
   const onClickHandler = attrs.events && attrs.events[k.onclick];
+  const onKeyDownHandler = (attrs.events && attrs.events[k.onkeydown]) || onClickHandler;
+
   const handleInactivate = () => (
     state.inactive(true),
     setTimeout(() => (
       state.inactive(false)
     ), attrs.inactivate * 1000)
   );
+
   return Object.assign(
     {}, 
     filterSupportedAttributes(attrs, { add: [k.formaction, "type"] }),
@@ -89,15 +92,15 @@ export const createProps = (vnode, { keys: k }) => {
         true
       ),
       [k.onkeydown]: e => {
-        if (e.which === 13 && state.focus()) {
+        if (e.key === "Enter" && state.focus()) {
           state.focus(false);
-          if (onClickHandler) {
-            onClickHandler(e);
+          if (onKeyDownHandler) {
+            onKeyDownHandler(e);
           }
         }
-      }
+      },
     },
-    attrs.style ? { style: {} } : null, // Set style on content, not on component
+    { style: null }, // Set style on content, not on component
     attrs.events,
     attrs.url,
     disabled ? { disabled: true } : null

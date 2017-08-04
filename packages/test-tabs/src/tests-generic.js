@@ -120,7 +120,15 @@ export default ({ renderer: h, Tabs }) => {
       }
     },
     {
-      name: "Option: autofit (true)",
+      name: "Option: compact",
+      component: Tabs,
+      attrs: {
+        tabs: threeButtons,
+        compact: true,
+      }
+    },
+    {
+      name: "Option: autofit",
       component: Tabs,
       attrs: {
         tabs: threeButtons,

@@ -20,7 +20,7 @@ export default {
   isAutofit:            "pe-tabs--autofit",
   isMenu:               "pe-tabs--menu",
   scrollable:           "pe-tabs--scrollable",
-  smallTabs:            "pe-tabs--small",
+  compactTabs:          "pe-tabs--compact",
   tabHasIcon:           "pe-tabs__tab---icon",
   tabRowCentered:       "pe-tabs__row--centered",
   tabRowIndent:         "pe-tabs__row--indent",

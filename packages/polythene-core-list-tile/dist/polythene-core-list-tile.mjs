@@ -69,8 +69,9 @@ var vars$1 = {
   color_light_text_disabled: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
   color_light_list_header: rgba(vars.color_light_foreground, vars.blend_light_text_tertiary),
   color_light_secondary: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
-  color_light_background_hover: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
-  color_light_background_selected: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
+  color_light_hover_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
+  color_light_focus_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
+  color_light_selected_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
   // background color may be set in theme; disabled by default
   // color_light_background:          "inherit",
 
@@ -80,8 +81,8 @@ var vars$1 = {
   color_dark_text_disabled: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
   color_dark_list_header: rgba(vars.color_dark_foreground, vars.blend_dark_text_tertiary),
   color_dark_secondary: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
-  color_dark_background_hover: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover),
-  color_dark_background_selected: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover)
+  color_dark_hover_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover),
+  color_dark_selected_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover)
 };
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -253,15 +254,12 @@ var style = function style(scopes, selector, componentVars, tint) {
         backgroundColor: "inherit"
       }
     },
-
     " .pe-list-tile__subtitle": {
       color: componentVars["color_" + tint + "_subtitle"]
     },
-
     " .pe-list-tile__secondary": {
       color: componentVars["color_" + tint + "_secondary"]
     },
-
     ".pe-list-tile--disabled": {
       "&, .pe-list-tile__title, .pe-list-tile__content, .pe-list-tile__subtitle": {
         color: componentVars["color_" + tint + "_text_disabled"]
@@ -269,11 +267,16 @@ var style = function style(scopes, selector, componentVars, tint) {
     },
     ".pe-list-tile--selected": {
       " .pe-list-tile__primary, pe-list-tile__secondary": {
-        backgroundColor: componentVars["color_" + tint + "_background_selected"]
+        backgroundColor: componentVars["color_" + tint + "_selected_background"]
       }
     },
     "&.pe-list-tile--sticky": {
       backgroundColor: componentVars["color_" + tint + "_background"] || "inherit"
+    },
+    ":not(.pe-list-tile--disabled)": {
+      " a.pe-list-tile__primary:focus, a.pe-list-tile__secondary:focus": {
+        backgroundColor: componentVars["color_" + tint + "_focus_background"] || "inherit"
+      }
     }
   })];
 };
@@ -284,7 +287,7 @@ var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, tint) 
   }).join(","), {
     ":not(.pe-list__header):not(.pe-list-tile--disabled)": {
       " .pe-list-tile__primary, .pe-list-tile__secondary": {
-        backgroundColor: componentVars["color_" + tint + "_background_hover"]
+        backgroundColor: componentVars["color_" + tint + "_hover_background"]
       }
     }
   })];
@@ -312,23 +315,11 @@ styler.generateStyles([selector], vars$1, fns);
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var getElement = function getElement(vnode) {
-  return vnode.attrs.element || "div";
-};
+var getElement = function getElement() {
+  return "div";
+}; // because primary or secondary content can be an "a", the container is always defined as "div", and option `element` is passed to primary content
 
 var theme = customTheme;
-
-var createProps = function createProps(vnode, _ref) {
-  var k = _ref.keys;
-
-  var attrs = vnode.attrs;
-  var heightClass = attrs.subtitle ? classes.hasSubtitle : attrs.highSubtitle ? classes.hasHighSubtitle : attrs.front || attrs.indent ? classes.hasFront : null;
-  return _extends({}, filterSupportedAttributes(attrs), {
-    className: [classes.component, attrs.selected ? classes.selected : null, attrs.disabled ? classes.disabled : null, attrs.sticky ? classes.sticky : null, attrs.compact ? classes.compact : null, attrs.hoverable ? classes.hoverable : null, attrs.selectable ? classes.selectable : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, heightClass, attrs.className || attrs[k.class]].join(" ")
-  }
-  // events and url are attached to primary content to not interfere with controls
-  );
-};
 
 var primaryContent = function primaryContent(h, requiresKeys, attrs, children) {
   var element = attrs.element ? attrs.element : attrs.url ? "a" : "div";
@@ -351,6 +342,19 @@ var secondaryContent = function secondaryContent(h, requiresKeys, Icon) {
   return h(element, _extends({}, secondaryAttrs.url, {
     className: classes.secondary
   }, requiresKeys ? { key: "secondary" } : null, filterSupportedAttributes(secondaryAttrs)), h("div", { className: classes.content }, [secondaryAttrs.icon ? h(Icon, secondaryAttrs.icon) : null, secondaryAttrs.content ? secondaryAttrs.content : null]));
+};
+
+var createProps = function createProps(vnode, _ref) {
+  var k = _ref.keys;
+
+  var attrs = vnode.attrs;
+  var heightClass = attrs.subtitle ? classes.hasSubtitle : attrs.highSubtitle ? classes.hasHighSubtitle : attrs.front || attrs.indent ? classes.hasFront : null;
+  return _extends({}, filterSupportedAttributes(attrs, { remove: ["tabindex", "tabIndex"] }), // tab index set in primary or secondary content
+  {
+    className: [classes.component, attrs.selected ? classes.selected : null, attrs.disabled ? classes.disabled : null, attrs.sticky ? classes.sticky : null, attrs.compact ? classes.compact : null, attrs.hoverable ? classes.hoverable : null, attrs.selectable ? classes.selectable : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, heightClass, attrs.className || attrs[k.class]].join(" ")
+  }
+  // events and url are attached to primary content to not interfere with controls
+  );
 };
 
 var createContent = function createContent(vnode, _ref2) {

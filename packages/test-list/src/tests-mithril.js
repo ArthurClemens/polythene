@@ -61,10 +61,10 @@ const mithrilTests = ({ List, Icon, ListTile, renderer: h }) => {
       name: "Options: header.sticky",
       interactive: true,
       component: {
-        view: () => h(".scrollable-list", [0,1,2,3,4].map(num => {
+        view: () => h(".scrollable-list", ["one", "two", "three", "four", "five"].map(ord => {
           return h(List, {
             header: {
-              title: `Subheader ${num}`,
+              title: `Sub header ${ord}`,
               sticky: true
             },
             tiles: [

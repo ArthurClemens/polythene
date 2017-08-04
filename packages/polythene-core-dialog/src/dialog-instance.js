@@ -64,7 +64,7 @@ export const onMount = vnode => {
  
   const handleEscape = e => {
     if (attrs.fullscreen || attrs.modal) return;
-    if (e.which === 27) {
+    if (e.key === "Escape") {
       hideDialog(state, Object.assign({}, attrs, {
         hideDelay: 0
       }));

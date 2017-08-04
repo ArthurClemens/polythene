@@ -70,12 +70,18 @@ var genericTests = (function (_ref) {
       ink: false
     }
   }, {
-    name: "Option: disabled (true)",
+    name: "Option: ripple",
     interactive: true,
     component: Button$$1,
     attrs: {
-      label: "Disabled",
-      disabled: true
+      label: "Custom ripple",
+      ripple: {
+        endOpacity: 1,
+        persistent: true,
+        style: {
+          color: "#2196F3"
+        }
+      }
     }
   }, {
     name: "Option: disabled (false)",
@@ -98,16 +104,6 @@ var genericTests = (function (_ref) {
     attrs: {
       label: "Form action",
       formaction: "http://polythene.js.org"
-    }
-  }, {
-    name: "Option: url (without oncreate)",
-    interactive: true,
-    component: Button$$1,
-    attrs: {
-      label: "Go to /shadow",
-      url: {
-        href: "/shadow"
-      }
     }
   }, {
     name: "Option: inactive (false)",
@@ -187,11 +183,21 @@ var mithrilTests = function mithrilTests(_ref) {
   return [{
     section: "Mithril specific tests"
   }, {
+    name: "Option: router url (with hash)",
+    interactive: true,
+    component: Button$$1,
+    attrs: {
+      label: "Go to #/shadow",
+      url: {
+        href: "#/shadow"
+      }
+    }
+  }, {
     name: "Option: url (with oncreate)",
     interactive: true,
     component: Button$$1,
     attrs: {
-      label: "Go to /#/shadow",
+      label: "Go to /shadow",
       url: {
         href: "/shadow",
         oncreate: h.route.link
@@ -7338,6 +7344,16 @@ var reactTests = function reactTests(_ref) {
 
   return [{
     section: "React specific tests"
+  }, {
+    name: "Option: router url (with hash)",
+    interactive: true,
+    component: function component() {
+      return h(Button$$1, {
+        label: "Go to #/shadow",
+        url: {
+          href: "#/shadow" }
+      });
+    }
   }, {
     name: "With router",
     interactive: true,

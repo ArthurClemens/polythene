@@ -52,8 +52,15 @@ export const getInitialState = (vnode, createStream) => {
     notifyChange(e, isChecked);
   };
 
+  const toggle = e => {
+    const newChecked = !checked();
+    checked(newChecked);
+    notifyChange(e, newChecked);
+  };
+
   return {
     checked,
+    toggle,
     onChange,
     redrawOnUpdate: createStream.merge([checked])
   };
@@ -86,9 +93,23 @@ export const createContent = (vnode, { renderer: h, keys: k, ViewControl }) => {
   const state = vnode.state;
   const attrs = vnode.attrs;
   const { checked, inactive } = currentState(attrs, state);
-  return h("label", Object.assign(
-    {},
-    { className: classes.formLabel }
+  const viewControlClickHandler = attrs.events && attrs.events[k.onclick];
+  const viewControlKeyDownHandler = attrs.events && attrs.events[k.onkeydown]
+    ? attrs.events[k.onkeydown]
+    : e => {
+      if (e.key === "Enter") {
+        if (viewControlClickHandler) {
+          viewControlClickHandler(e);
+        } else {
+          state.toggle(e);
+        }
+      }
+    };
+
+  return h("label",
+    Object.assign(
+      {},
+      { className: classes.formLabel }
     ),
     [
       h(ViewControl, Object.assign(
@@ -97,7 +118,11 @@ export const createContent = (vnode, { renderer: h, keys: k, ViewControl }) => {
         {
           inactive,
           checked,
-          key: "control"
+          key: "control",
+          events: {
+            // Only use key down event; click events are handled by input element
+            [k.onkeydown]: viewControlKeyDownHandler
+          }
         }
       )),
       attrs.label
@@ -117,7 +142,9 @@ export const createContent = (vnode, { renderer: h, keys: k, ViewControl }) => {
         },
         attrs.disabled || inactive
           ? { disabled: "disabled" }
-          : { [k.onchange]: state.onChange }
+          : {
+            [k.onchange]: state.onChange
+          }
       ))
     ]
   );

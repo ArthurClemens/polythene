@@ -67,12 +67,18 @@ const showMenu = (state, attrs) => {
     attrs.onChange({ visible: false, transitioning: true });
   }
   positionMenu(state, attrs);
+  const transitions = attrs.transitions;
+  const el = state.dom();
   return show(Object.assign({},
-    attrs, {
-      el: state.dom(),
-      showClass: classes.visible
-    }
-  )).then(() => {
+    attrs,
+    transitions
+      ? transitions.show(el, attrs)
+      : {
+        el,
+        showClass: classes.visible
+      }
+    )
+  ).then(() => {
     if (attrs.onChange) {
       attrs.onChange({ visible: true, transitioning: false });
     }
@@ -87,12 +93,18 @@ const hideMenu = (state, attrs) => {
   if (attrs.onChange) {
     attrs.onChange({ visible: true, transitioning: true });
   }
+  const transitions = attrs.transitions;
+  const el = state.dom();
   return hide(Object.assign({},
-    attrs, {
-      el: state.dom(),
-      showClass: classes.visible
-    }
-  )).then(() => {
+    attrs,
+    transitions
+      ? transitions.hide(el, attrs)
+      : {
+        el,
+        showClass: classes.visible
+      }
+    )
+  ).then(() => {
     if (attrs.onChange) {
       attrs.onChange({ visible: false, transitioning: false });
     }
@@ -163,7 +175,7 @@ export const onMount = vnode => {
     };
 
     state.handleEscape = e => {
-      if (e.which === 27) {
+      if (e.key === "Escape") {
         hideMenu(state, Object.assign(
           {},
           attrs,

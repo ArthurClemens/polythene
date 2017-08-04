@@ -23,8 +23,7 @@ export default ({ h, k, TextField, RaisedButton }) => ({
         ),
         events: {
           [k.onkeydown]: e => {
-            if (e.which === 39) {
-              // KEY RIGHT
+            if (e.key === "ArrowRight") {
               state.value(value + String.fromCharCode(97 + Math.floor(Math.random() * 26)));
             }
           }

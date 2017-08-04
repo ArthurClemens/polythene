@@ -70,7 +70,7 @@ var classes$1 = {
   isAutofit: "pe-tabs--autofit",
   isMenu: "pe-tabs--menu",
   scrollable: "pe-tabs--scrollable",
-  smallTabs: "pe-tabs--small",
+  compactTabs: "pe-tabs--compact",
   tabHasIcon: "pe-tabs__tab---icon",
   tabRowCentered: "pe-tabs__row--centered",
   tabRowIndent: "pe-tabs__row--indent",
@@ -253,6 +253,12 @@ var layout = (function (selector, componentVars) {
         }]
       }
     }],
+
+    ".pe-tabs--compact": {
+      " .pe-tabs__tab": {
+        minWidth: "initial"
+      }
+    },
 
     " .pe-tabs__tab-content": [flex.layoutCenterCenter, flex.layoutVertical, {
       height: "inherit"
@@ -571,7 +577,7 @@ var createProps = function createProps(vnode, _ref2) {
   state.previousSelectedTab = attrs.selectedTab;
 
   return _extends({}, filterSupportedAttributes(attrs), {
-    className: [classes$1.component, attrs.scrollable ? classes$1.scrollable : null, state.selectedTabIndex === 0 ? classes$1.isAtStart : null, state.selectedTabIndex === state.tabs.length - 1 ? classes$1.isAtEnd : null, attrs.activeSelected ? classes$1.activeSelectable : null, autofit ? classes$1.isAutofit : null, attrs.small ? classes$1.smallTabs : null, attrs.menu ? classes$1.isMenu : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [classes$1.component, attrs.scrollable ? classes$1.scrollable : null, state.selectedTabIndex === 0 ? classes$1.isAtStart : null, state.selectedTabIndex === state.tabs.length - 1 ? classes$1.isAtEnd : null, attrs.activeSelected ? classes$1.activeSelectable : null, autofit ? classes$1.isAutofit : null, attrs.compact ? classes$1.compactTabs : null, attrs.menu ? classes$1.isMenu : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
 

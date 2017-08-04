@@ -1,5 +1,5 @@
-import { Icon, IconButton, renderer } from 'polythene-mithril';
-import { Icon as Icon$1, IconButton as IconButton$1, SVG, renderer as renderer$1 } from 'polythene-react';
+import { Icon, IconButton, SVG, renderer } from 'polythene-mithril';
+import { Icon as Icon$1, IconButton as IconButton$1, SVG as SVG$1, renderer as renderer$1 } from 'polythene-react';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -8,6 +8,7 @@ var iconFavorite$1 = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><pat
 var genericTests = (function (_ref) {
   var IconButton$$1 = _ref.IconButton,
       Icon$$1 = _ref.Icon,
+      SVG$$1 = _ref.SVG,
       h = _ref.renderer;
 
 
@@ -21,6 +22,8 @@ var genericTests = (function (_ref) {
 
   var sizeNames = ["small", "regular", "medium", "large"];
 
+  var FavIcon = h(Icon$$1, null, h(SVG$$1, null, trustedIconFavorite));
+
   var sizes = function sizes(_sizes, attrs) {
     return _sizes.map(function (size) {
       return h(IconButton$$1, {
@@ -33,7 +36,7 @@ var genericTests = (function (_ref) {
     name: "Child node (icon component)",
     component: IconButton$$1,
     attrs: null,
-    children: h(Icon$$1, { svg: { content: trustedIconFavorite } })
+    children: FavIcon
   }, {
     name: "Option: icon",
     component: IconButton$$1,
@@ -205,7 +208,7 @@ var mithrilTests = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril = [].concat(genericTests({ IconButton: IconButton, Icon: Icon, renderer: renderer })).concat(mithrilTests({ IconButton: IconButton, renderer: renderer }));
+var testsMithril = [].concat(genericTests({ IconButton: IconButton, Icon: Icon, SVG: SVG, renderer: renderer })).concat(mithrilTests({ IconButton: IconButton, SVG: SVG, renderer: renderer }));
 
 /*
 object-assign
@@ -6938,6 +6941,6 @@ var reactTests = function reactTests(_ref) {
   }];
 };
 
-var testsReact = [].concat(genericTests({ IconButton: IconButton$1, Icon: Icon$1, renderer: renderer$1 })).concat(reactTests({ IconButton: IconButton$1, Icon: Icon$1, SVG: SVG, renderer: renderer$1 }));
+var testsReact = [].concat(genericTests({ IconButton: IconButton$1, Icon: Icon$1, SVG: SVG$1, renderer: renderer$1 })).concat(reactTests({ IconButton: IconButton$1, Icon: Icon$1, SVG: SVG$1, renderer: renderer$1 }));
 
 export { testsMithril as mithrilTests, testsReact as reactTests };

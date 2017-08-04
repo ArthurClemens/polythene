@@ -17,7 +17,7 @@ var classes = {
 
 var vars$1 = {
   padding: vars.grid_unit_component, // vertical padding
-  padding_compact: vars.grid_unit_component / 2,
+  padding_compact: vars.grid_unit_component * 3 / 4,
   border_width_stacked: 1,
   border_width_bordered: 1,
 

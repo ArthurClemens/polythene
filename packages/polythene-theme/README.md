@@ -1,3 +1,5 @@
-# Theme
+# polythene-theme
 
-Core Polythene component.
+Core Polythene package.
+
+[Documentation](../../docs/theming.md)

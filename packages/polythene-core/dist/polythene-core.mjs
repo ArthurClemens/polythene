@@ -40,10 +40,13 @@ Separately handled props:
 
 var defaultAttrs = [
 // Universal
-"key", "style", "href", "id", "tabindex",
+"key", "style", "href", "id",
+
+// React
+"tabIndex",
 
 // Mithril
-"oninit", "oncreate", "onupdate", "onbeforeremove", "onremove", "onbeforeupdate"];
+"tabindex", "oninit", "oncreate", "onupdate", "onbeforeremove", "onremove", "onbeforeupdate"];
 
 var filterSupportedAttributes = function filterSupportedAttributes(attrs) {
   var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},

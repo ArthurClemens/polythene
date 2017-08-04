@@ -36,6 +36,16 @@ const reactTests = ({ Button, renderer: h }) => {
       section: "React specific tests",
     },
     {
+      name: "Option: router url (with hash)",
+      interactive: true,
+      component: () => 
+        h(Button, {
+          label: "Go to #/shadow",
+          url: {
+            href: "#/shadow"          },
+        })
+    },
+    {
       name: "With router",
       interactive: true,
       component: withRouter(({ history }) => 

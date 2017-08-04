@@ -73,21 +73,18 @@ export default ({ Button }) => {
       }
     },
     {
-      name: "Option: disabled (true)",
+      name: "Option: ripple",
       interactive: true,
       component: Button,
       attrs: {
-        label: "Disabled",
-        disabled: true
-      }
-    },
-    {
-      name: "Option: disabled (false)",
-      interactive: true,
-      component: Button,
-      attrs: {
-        label: "Not disabled",
-        disabled: false
+        label: "Custom ripple",
+        ripple: {
+          endOpacity: 1,
+          persistent: true,
+          style: {
+            color: "#2196F3"
+          }
+        }
       }
     },
     {
@@ -104,17 +101,6 @@ export default ({ Button }) => {
       attrs: {
         label: "Form action",
         formaction: "http://polythene.js.org"
-      }
-    },
-    {
-      name: "Option: url (without oncreate)",
-      interactive: true,
-      component: Button,
-      attrs: {
-        label: "Go to /shadow",
-        url: {
-          href: "/shadow"
-        }
       }
     },
     {

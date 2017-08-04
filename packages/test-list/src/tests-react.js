@@ -66,10 +66,10 @@ const reactTests = ({ List, Icon, ListTile, renderer: h }) => {
       interactive: true,
       exclude: true,
       component: () =>
-        h(".scrollable-list", [0,1,2,3,4].map(num => {
+        h(".scrollable-list", ["one", "two", "three", "four", "five"].map(ord => {
           return h(List, {
             header: {
-              title: `Subheader ${num}`,
+              title: `Sub header ${ord}`,
               sticky: true
             },
             tiles: [

@@ -320,6 +320,13 @@ var genericTests = (function (_ref) {
       tabs: threeButtons
     }
   }, {
+    name: "Option: compact",
+    component: Tabs$$1,
+    attrs: {
+      tabs: threeButtons,
+      compact: true
+    }
+  }, {
     name: "Option: autofit (true)",
     component: Tabs$$1,
     attrs: {

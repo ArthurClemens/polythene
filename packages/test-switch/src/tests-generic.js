@@ -160,6 +160,15 @@ export default ({ Switch, Icon, RaisedButton, renderer: h, keys: k }) => {
       }
     },
     {
+      name: "Option: zOff (0), zOn (2)",
+      interactive: true,
+      component: Switch,
+      attrs: {
+        zOff: 0,
+        zOn: 2
+      }
+    },
+    {
       name: "Option: onChange",
       interactive: true,
       exclude: true,

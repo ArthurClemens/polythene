@@ -49,7 +49,7 @@ export const createContent = (vnode, { renderer: h, RadioButton }) => {
       if (buttonOpts.value === undefined) {
         console.error("Option 'value' not set for radio button"); // eslint-disable-line no-console
       }
-      const isChecked = isDefaultChecked || checkedValue === buttonOpts.value;
+      const isChecked = isDefaultChecked || attrs.checked || checkedValue === buttonOpts.value;
       return h(RadioButton, Object.assign(
         {},
         {

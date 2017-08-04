@@ -258,13 +258,15 @@ var events = (function (_ref) {
           label: "One",
           events: _defineProperty({}, k.onclick, function () {
             return state.checkedValue("One");
-          })
+          }),
+          checked: checkedValue === "One"
         }, {
           value: "Two",
           label: "Two",
           events: _defineProperty({}, k.onclick, function () {
             return state.checkedValue("Two");
-          })
+          }),
+          checked: checkedValue === "Two"
         }]
       })]);
     }

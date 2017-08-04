@@ -13,9 +13,12 @@ const defaultAttrs = [
   "style",
   "href",
   "id",
-  "tabindex",
+  
+  // React
+  "tabIndex",
 
   // Mithril
+  "tabindex",
   "oninit",
   "oncreate",
   "onupdate",

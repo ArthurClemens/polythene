@@ -294,15 +294,12 @@ var _switch = Object.freeze({
 
 var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 var getElement = function getElement(vnode) {
   return vnode.attrs.element || "div";
 };
 
 var createContent = function createContent(vnode, _ref) {
   var h = _ref.renderer,
-      k = _ref.keys,
       Shadow = _ref.Shadow,
       IconButton = _ref.IconButton;
 
@@ -324,7 +321,7 @@ var createContent = function createContent(vnode, _ref) {
     }) : null]),
     style: attrs.style,
     disabled: attrs.disabled,
-    events: _defineProperty$2({}, k.onclick, attrs.onChange),
+    events: attrs.events,
     ink: attrs.ink || false,
     inactive: attrs.inactive
   }, attrs.iconButton))];

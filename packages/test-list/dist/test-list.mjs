@@ -337,10 +337,10 @@ var mithrilTests = function mithrilTests(_ref) {
     interactive: true,
     component: {
       view: function view() {
-        return h(".scrollable-list", [0, 1, 2, 3, 4].map(function (num) {
+        return h(".scrollable-list", ["one", "two", "three", "four", "five"].map(function (ord) {
           return h(List$$1, {
             header: {
-              title: "Subheader " + num,
+              title: "Sub header " + ord,
               sticky: true
             },
             tiles: [listTileJennifer, listTileAli, listTileGrace, listTileJennifer, listTileAli, listTileGrace]
@@ -7021,10 +7021,10 @@ var reactTests = function reactTests(_ref) {
     interactive: true,
     exclude: true,
     component: function component() {
-      return h(".scrollable-list", [0, 1, 2, 3, 4].map(function (num) {
+      return h(".scrollable-list", ["one", "two", "three", "four", "five"].map(function (ord) {
         return h(List$$1, {
           header: {
-            title: "Subheader " + num,
+            title: "Sub header " + ord,
             sticky: true
           },
           tiles: [listTileJennifer, listTileAli, listTileGrace, listTileJennifer, listTileAli, listTileGrace]

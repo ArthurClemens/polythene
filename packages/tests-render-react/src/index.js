@@ -41,6 +41,7 @@ const Index = () =>
           h(ListTile, {
             title: route.name,
             key: route.path,
+            hoverable: true,
             url: {
               href: route.path,
               onClick: e => (e.preventDefault(), history.push(route.path))

@@ -442,6 +442,14 @@ var genericTests = (function (_ref) {
       }
     }
   }, {
+    name: "Option: zOff (0), zOn (2)",
+    interactive: true,
+    component: Switch$$1,
+    attrs: {
+      zOff: 0,
+      zOn: 2
+    }
+  }, {
     name: "Option: onChange",
     interactive: true,
     exclude: true,

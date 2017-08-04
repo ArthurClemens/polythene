@@ -192,6 +192,12 @@ export default (selector, componentVars) => [{
       }
     ],
 
+    ".pe-tabs--compact": {
+      " .pe-tabs__tab": {
+        minWidth: "initial"
+      }
+    },
+
     " .pe-tabs__tab-content": [
       flex.layoutCenterCenter,
       flex.layoutVertical, {

@@ -35,7 +35,7 @@ export default ({ ListTile, Icon, renderer: h }) => {
       name: "Option: element",
       component: ListTile,
       attrs: {
-        element: "a"
+        element: "a" // should result in "div"
       }
     },
     {

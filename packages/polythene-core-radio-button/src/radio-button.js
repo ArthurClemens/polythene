@@ -15,7 +15,7 @@ export const createProps = vnode => {
     {
       theme,
       icons,
-      selectable: attrs.selectable || ((selected) => !selected), // default: only selectable when not checked
+      selectable: attrs.selectable || (selected => !selected), // default: only selectable when not checked
       instanceClass: classes.component,
       type: "radio"
     }

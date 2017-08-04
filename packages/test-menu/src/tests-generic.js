@@ -5,6 +5,7 @@ import sizes from "./components/sizes";
 import position from "./components/position";
 import settings from "./components/settings";
 import themed from "./components/themed";
+import transitions from "./components/transitions";
 
 export default ({ renderer, keys, Menu, List, ListTile, RaisedButton, Shadow, IconButton }) => {
 
@@ -64,6 +65,48 @@ export default ({ renderer, keys, Menu, List, ListTile, RaisedButton, Shadow, Ic
             }
           })
       }
+    },
+    {
+      name: "Option: transitions",
+      interactive: true,
+      exclude: true,
+      component: opener({ renderer, keys, Menu, RaisedButton, List, ListTile, menuFn: transitions, id: "transitions",
+        transitionOptions: {
+          transitions: {
+            show: el => ({
+              el,
+              beforeShow:   () => (
+                el.style.opacity = 0,
+                el.style.transform = "translate3d(0, 20px, 0)"
+              ),
+              show:         () => (
+                el.style.opacity = 1,
+                el.style.transform = "translate3d(0, 0px,  0)"
+              )
+            }),
+            hide: el => ({
+              el,
+              hide:         () => (
+                el.style.opacity = 0,
+                el.style.transform = "translate3d(0, 20px, 0)"
+              )
+            })
+          }
+        }
+      })
+    },
+    {
+      name: "Option: showDelay, hideDelay, showDuration, hideDuration",
+      interactive: true,
+      exclude: true,
+      component: opener({ renderer, keys, Menu, RaisedButton, List, ListTile, menuFn: transitions, id: "showDelay",
+        transitionOptions: {
+          showDelay: .4,
+          hideDelay: .4,
+          showDuration: 1.0,
+          hideDuration: 1.0
+        }
+      })
     },
     {
       name: "Option: size",

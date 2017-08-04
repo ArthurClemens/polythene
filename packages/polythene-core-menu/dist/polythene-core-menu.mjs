@@ -60,7 +60,7 @@ var layout = (function (selector, componentVars) {
     return widthStyle(componentVars, size);
   }), _defineProperty$1({
     transitionTimingFunction: "ease-out",
-    transitionProperty: "opacity",
+    transitionProperty: "all",
     zIndex: vars.z_menu,
     opacity: 0,
     position: "absolute",
@@ -207,8 +207,10 @@ var showMenu = function showMenu(state, attrs) {
     attrs.onChange({ visible: false, transitioning: true });
   }
   positionMenu(state, attrs);
-  return show(_extends({}, attrs, {
-    el: state.dom(),
+  var transitions = attrs.transitions;
+  var el = state.dom();
+  return show(_extends({}, attrs, transitions ? transitions.show(el, attrs) : {
+    el: el,
     showClass: classes$1.visible
   })).then(function () {
     if (attrs.onChange) {
@@ -225,8 +227,10 @@ var hideMenu = function hideMenu(state, attrs) {
   if (attrs.onChange) {
     attrs.onChange({ visible: true, transitioning: true });
   }
-  return hide(_extends({}, attrs, {
-    el: state.dom(),
+  var transitions = attrs.transitions;
+  var el = state.dom();
+  return hide(_extends({}, attrs, transitions ? transitions.hide(el, attrs) : {
+    el: el,
     showClass: classes$1.visible
   })).then(function () {
     if (attrs.onChange) {
@@ -301,7 +305,7 @@ var onMount = function onMount(vnode) {
     };
 
     state.handleEscape = function (e) {
-      if (e.which === 27) {
+      if (e.key === "Escape") {
         hideMenu(state, _extends({}, attrs, { hideDelay: 0 }));
       }
     };
