@@ -253,27 +253,61 @@ exports[`test Menu items 1`] = `
 `;
 
 exports[`test No options 1`] = `
-"<span class=\"pe-menu__placeholder\"></span>
+"<div class=\"pe-menu pe-menu--permanent\">
+  <div class=\"pe-menu__content\">
+    <div class=\"pe-shadow pe-shadow--animated\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+    </div>
+  </div>
+</div>
 "
 `;
 
 exports[`test Option: class 1`] = `
-"<span class=\"pe-menu__placeholder\"></span>
+"<div class=\"pe-menu pe-menu--permanent class-x\">
+  <div class=\"pe-menu__content\">
+    <div class=\"pe-shadow pe-shadow--animated\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+    </div>
+  </div>
+</div>
 "
 `;
 
 exports[`test Option: className 1`] = `
-"<span class=\"pe-menu__placeholder\"></span>
+"<div class=\"pe-menu pe-menu--permanent className-x\">
+  <div class=\"pe-menu__content\">
+    <div class=\"pe-shadow pe-shadow--animated\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+    </div>
+  </div>
+</div>
 "
 `;
 
 exports[`test Option: element 1`] = `
-"<span class=\"pe-menu__placeholder\"></span>
+"<a class=\"pe-menu pe-menu--permanent\">
+<div class=\"pe-menu__content\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+</div></a>
 "
 `;
 
 exports[`test Option: id 1`] = `
-"<span class=\"pe-menu__placeholder\"></span>
+"<div id=\"id-x\" class=\"pe-menu pe-menu--permanent\">
+  <div class=\"pe-menu__content\">
+    <div class=\"pe-shadow pe-shadow--animated\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+    </div>
+  </div>
+</div>
 "
 `;
 

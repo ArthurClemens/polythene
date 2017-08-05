@@ -7,3 +7,5 @@ export const Conditional = {
       : h("span", { className: attrs.placeholderClassName });
   }
 };
+
+Conditional.displayName = "Conditional";

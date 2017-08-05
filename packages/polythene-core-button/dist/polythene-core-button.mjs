@@ -314,7 +314,8 @@ var createProps = function createProps(vnode, _ref) {
     }, attrs.inactivate * 1000);
   };
 
-  return _extends({}, filterSupportedAttributes(attrs, { add: [k.formaction, "type"] }), {
+  return _extends({}, filterSupportedAttributes(attrs, { add: [k.formaction, "type"], remove: ["style"] }), // Set style on content, not on component
+  {
     className: [attrs.parentClassName || classes.component, attrs.selected ? classes.selected : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, attrs.borders ? classes.borders : null, state.focus() ? classes.focused : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, inactive ? null : (_ref2 = {}, _defineProperty(_ref2, k.tabindex, disabled || inactive ? -1 : attrs[k.tabindex] || 0), _defineProperty(_ref2, k.onclick, function (e) {
     return attrs.inactivate !== undefined && handleInactivate(), onClickHandler && onClickHandler(e), true;
@@ -325,8 +326,7 @@ var createProps = function createProps(vnode, _ref) {
         onKeyDownHandler(e);
       }
     }
-  }), _ref2), { style: null }, // Set style on content, not on component
-  attrs.events, attrs.url, disabled ? { disabled: true } : null);
+  }), _ref2), attrs.events, attrs.url, disabled ? { disabled: true } : null);
 };
 
 var createContent = function createContent(vnode, _ref3) {

@@ -28,6 +28,8 @@ var Conditional = {
   }
 };
 
+Conditional.displayName = "Conditional";
+
 var r = function r(acc, p) {
   return acc[p] = 1, acc;
 };
@@ -380,6 +382,8 @@ var Multi = function Multi(_ref) {
   };
 };
 
+Multi.displayName = "Multi";
+
 /*
 Generic show/hide transition module
 */
@@ -462,9 +466,10 @@ var transition = function transition(opts, state) {
       var transitionDuration = getDuration(opts, state) * 1000;
       var delay = getDelay(opts, state) * 1000;
       var style = el.style;
-
       var beforeTransition = opts.beforeShow && state === "show" ? function () {
-        return opts.beforeShow();
+        style.transitionDuration = "0ms";
+        style.transitionDelay = "0ms";
+        opts.beforeShow();
       } : null;
 
       var afterTransition = opts.afterHide && state === "hide" ? function () {
@@ -505,8 +510,12 @@ var transition = function transition(opts, state) {
 
       if (beforeTransition) {
         beforeTransition();
+        setTimeout(function () {
+          maybeDelayTransition();
+        }, 100);
+      } else {
+        maybeDelayTransition();
       }
-      maybeDelayTransition();
     });
   }
 };

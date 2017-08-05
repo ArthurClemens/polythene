@@ -593,7 +593,7 @@ exports[`test Options: header.sticky 1`] = `
       <div class=\"pe-list-tile__primary\" style=\"\">
         <div class=\"pe-list-tile__content\">
           <div class=\"pe-list-tile__title\">
-            Subheader 0
+            Sub header one
           </div>
         </div>
       </div>
@@ -712,7 +712,7 @@ exports[`test Options: header.sticky 1`] = `
       <div class=\"pe-list-tile__primary\" style=\"\">
         <div class=\"pe-list-tile__content\">
           <div class=\"pe-list-tile__title\">
-            Subheader 1
+            Sub header two
           </div>
         </div>
       </div>
@@ -831,7 +831,7 @@ exports[`test Options: header.sticky 1`] = `
       <div class=\"pe-list-tile__primary\" style=\"\">
         <div class=\"pe-list-tile__content\">
           <div class=\"pe-list-tile__title\">
-            Subheader 2
+            Sub header three
           </div>
         </div>
       </div>
@@ -950,7 +950,7 @@ exports[`test Options: header.sticky 1`] = `
       <div class=\"pe-list-tile__primary\" style=\"\">
         <div class=\"pe-list-tile__content\">
           <div class=\"pe-list-tile__title\">
-            Subheader 3
+            Sub header four
           </div>
         </div>
       </div>
@@ -1069,7 +1069,7 @@ exports[`test Options: header.sticky 1`] = `
       <div class=\"pe-list-tile__primary\" style=\"\">
         <div class=\"pe-list-tile__content\">
           <div class=\"pe-list-tile__title\">
-            Subheader 4
+            Sub header five
           </div>
         </div>
       </div>

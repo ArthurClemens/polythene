@@ -176,15 +176,44 @@ exports[`test Menu items 1`] = `
   size={5} />
 `;
 
-exports[`test No options 1`] = `<o />`;
+exports[`test No options 1`] = `
+<t
+  instance={[Function]}
+  permanent={true}
+  placeholderClassName="pe-menu__placeholder" />
+`;
 
-exports[`test Option: class 1`] = `<o />`;
+exports[`test Option: class 1`] = `
+<t
+  className="class-x"
+  instance={[Function]}
+  permanent={true}
+  placeholderClassName="pe-menu__placeholder" />
+`;
 
-exports[`test Option: className 1`] = `<o />`;
+exports[`test Option: className 1`] = `
+<t
+  className="className-x"
+  instance={[Function]}
+  permanent={true}
+  placeholderClassName="pe-menu__placeholder" />
+`;
 
-exports[`test Option: element 1`] = `<o />`;
+exports[`test Option: element 1`] = `
+<t
+  element="a"
+  instance={[Function]}
+  permanent={true}
+  placeholderClassName="pe-menu__placeholder" />
+`;
 
-exports[`test Option: id 1`] = `<o />`;
+exports[`test Option: id 1`] = `
+<t
+  id="id-x"
+  instance={[Function]}
+  permanent={true}
+  placeholderClassName="pe-menu__placeholder" />
+`;
 
 exports[`test Option: size 1`] = `
 <div>
@@ -443,7 +472,7 @@ exports[`test Option: style 1`] = `
   tone="dark" />
 `;
 
-exports[`test Simple (JSX) 1`] = `
+exports[`test Permanent (JSX) 1`] = `
 <Menu
   permanent={true}
   size={5}>

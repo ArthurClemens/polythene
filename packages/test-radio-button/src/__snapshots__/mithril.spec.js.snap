@@ -1599,8 +1599,7 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-              height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\">
                 </path></label>
@@ -1612,11 +1611,9 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <label class=\"pe-control__form-label\"><path fill=
                 \"#000000\" fill-opacity=\"1\" stroke-width=\"0.2\"
                 stroke-linejoin=\"round\" d=
@@ -1651,8 +1648,7 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-              height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\">
                 </path></label>
@@ -1664,11 +1660,9 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <label class=\"pe-control__form-label\"><path fill=
                 \"#000000\" fill-opacity=\"1\" stroke-width=\"0.2\"
                 stroke-linejoin=\"round\" d=
@@ -1703,8 +1697,7 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-              height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\">
                 </path></label>
@@ -1716,11 +1709,9 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <label class=\"pe-control__form-label\"><path fill=
                 \"#000000\" fill-opacity=\"1\" stroke-width=\"0.2\"
                 stroke-linejoin=\"round\" d=
@@ -1755,8 +1746,7 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-              height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\">
                 </path></label>
@@ -1768,11 +1758,9 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <label class=\"pe-control__form-label\"><path fill=
                 \"#000000\" fill-opacity=\"1\" stroke-width=\"0.2\"
                 stroke-linejoin=\"round\" d=

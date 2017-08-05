@@ -65,10 +65,10 @@ export const createProps = (vnode, { keys: k }) => {
       state.inactive(false)
     ), attrs.inactivate * 1000)
   );
-
+  
   return Object.assign(
     {}, 
-    filterSupportedAttributes(attrs, { add: [k.formaction, "type"] }),
+    filterSupportedAttributes(attrs, { add: [k.formaction, "type"], remove: ["style"] }), // Set style on content, not on component
     {
       className: [
         attrs.parentClassName || classes.component,
@@ -100,7 +100,6 @@ export const createProps = (vnode, { keys: k }) => {
         }
       },
     },
-    { style: null }, // Set style on content, not on component
     attrs.events,
     attrs.url,
     disabled ? { disabled: true } : null

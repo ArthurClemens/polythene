@@ -13,7 +13,31 @@ npm install --save polythene-react polythene-style
 ~~~
 
 
-## App code (JSX)
+## A simple component
+
+### With JSX
+
+~~~jsx
+import React from "react"
+import { RaisedButton } from "polythene-react"
+
+<RaisedButton label="Click" />
+~~~
+
+### With hyperscript
+
+~~~javascript
+import { renderer as h, RaisedButton } from "polythene-react"
+
+h(RaisedButton, {
+  label: "Click"
+})
+~~~
+
+
+## A simple app
+
+### With JSX
 
 ~~~jsx
 import React from "react"
@@ -46,7 +70,7 @@ ReactDOM.render(<App />, mountNode)
 ~~~
 
 
-## App code (hyperscript)
+### With hyperscript
 
 ~~~javascript
 import ReactDOM from "react-dom"

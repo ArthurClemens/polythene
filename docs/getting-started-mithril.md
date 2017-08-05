@@ -12,7 +12,20 @@ or
 npm install --save polythene-mithril polythene-style
 ~~~
 
-## App code
+
+## A simple component
+
+~~~javascript
+import m from "mithril"
+import { RaisedButton } from "polythene-mithril"
+
+m(RaisedButton, {
+  label: "Click"
+})
+~~~
+
+
+## A simple app
 
 ~~~javascript
 import m from "mithril"

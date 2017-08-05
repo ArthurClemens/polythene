@@ -20,11 +20,9 @@ exports[`test 1:1 media with landscape image, anchor origin: end 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 11.9994,21.3497L 10.5504,20.0327C 5.4014,15.3607 1.99939,12.2736 1.99939,8.49762C 1.99939,5.41364 4.41537,2.99762 7.49939,2.99762C 9.24039,2.99762 10.9084,3.80566 11.9994,5.08362C 13.0904,3.80566 14.7584,2.99762 16.4994,2.99762C 19.5834,2.99762 21.9994,5.41364 21.9994,8.49762C 21.9994,12.2736 18.5974,15.3607 13.4484,20.0327L 11.9994,21.3497 Z\">
@@ -40,11 +38,9 @@ exports[`test 1:1 media with landscape image, anchor origin: end 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#050708\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 16.9994,2.99805L 6.9994,2.99805C 5.8954,2.99805 5.0104,3.89404 5.0104,4.99805L 4.9994,20.998L 11.9994,17.998L 18.9994,20.998L 18.9994,4.99805C 18.9994,3.89404 18.1044,2.99805 16.9994,2.99805 Z\">
@@ -60,11 +56,9 @@ exports[`test 1:1 media with landscape image, anchor origin: end 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 20.9994,10.9981L 13.9994,3.99807L 13.9994,7.99807C 6.9994,8.99807 3.9994,13.9981 2.9994,18.9981C 5.4994,15.4981 8.9994,13.8981 13.9994,13.8981L 13.9994,17.9981L 20.9994,10.9981 Z\">
@@ -102,11 +96,9 @@ exports[`test 1:1 media with landscape image, anchor origin: start 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 11.9994,21.3497L 10.5504,20.0327C 5.4014,15.3607 1.99939,12.2736 1.99939,8.49762C 1.99939,5.41364 4.41537,2.99762 7.49939,2.99762C 9.24039,2.99762 10.9084,3.80566 11.9994,5.08362C 13.0904,3.80566 14.7584,2.99762 16.4994,2.99762C 19.5834,2.99762 21.9994,5.41364 21.9994,8.49762C 21.9994,12.2736 18.5974,15.3607 13.4484,20.0327L 11.9994,21.3497 Z\">
@@ -122,11 +114,9 @@ exports[`test 1:1 media with landscape image, anchor origin: start 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#050708\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 16.9994,2.99805L 6.9994,2.99805C 5.8954,2.99805 5.0104,3.89404 5.0104,4.99805L 4.9994,20.998L 11.9994,17.998L 18.9994,20.998L 18.9994,4.99805C 18.9994,3.89404 18.1044,2.99805 16.9994,2.99805 Z\">
@@ -142,11 +132,9 @@ exports[`test 1:1 media with landscape image, anchor origin: start 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 20.9994,10.9981L 13.9994,3.99807L 13.9994,7.99807C 6.9994,8.99807 3.9994,13.9981 2.9994,18.9981C 5.4994,15.4981 8.9994,13.8981 13.9994,13.8981L 13.9994,17.9981L 20.9994,10.9981 Z\">
@@ -184,11 +172,9 @@ exports[`test 1:1 media with square image, anchor origin: default 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 11.9994,21.3497L 10.5504,20.0327C 5.4014,15.3607 1.99939,12.2736 1.99939,8.49762C 1.99939,5.41364 4.41537,2.99762 7.49939,2.99762C 9.24039,2.99762 10.9084,3.80566 11.9994,5.08362C 13.0904,3.80566 14.7584,2.99762 16.4994,2.99762C 19.5834,2.99762 21.9994,5.41364 21.9994,8.49762C 21.9994,12.2736 18.5974,15.3607 13.4484,20.0327L 11.9994,21.3497 Z\">
@@ -204,11 +190,9 @@ exports[`test 1:1 media with square image, anchor origin: default 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#050708\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 16.9994,2.99805L 6.9994,2.99805C 5.8954,2.99805 5.0104,3.89404 5.0104,4.99805L 4.9994,20.998L 11.9994,17.998L 18.9994,20.998L 18.9994,4.99805C 18.9994,3.89404 18.1044,2.99805 16.9994,2.99805 Z\">
@@ -224,11 +208,9 @@ exports[`test 1:1 media with square image, anchor origin: default 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 20.9994,10.9981L 13.9994,3.99807L 13.9994,7.99807C 6.9994,8.99807 3.9994,13.9981 2.9994,18.9981C 5.4994,15.4981 8.9994,13.8981 13.9994,13.8981L 13.9994,17.9981L 20.9994,10.9981 Z\">
@@ -266,11 +248,9 @@ exports[`test 16:9 media with landscape image, anchor origin: default 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 11.9994,21.3497L 10.5504,20.0327C 5.4014,15.3607 1.99939,12.2736 1.99939,8.49762C 1.99939,5.41364 4.41537,2.99762 7.49939,2.99762C 9.24039,2.99762 10.9084,3.80566 11.9994,5.08362C 13.0904,3.80566 14.7584,2.99762 16.4994,2.99762C 19.5834,2.99762 21.9994,5.41364 21.9994,8.49762C 21.9994,12.2736 18.5974,15.3607 13.4484,20.0327L 11.9994,21.3497 Z\">
@@ -286,11 +266,9 @@ exports[`test 16:9 media with landscape image, anchor origin: default 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#050708\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 16.9994,2.99805L 6.9994,2.99805C 5.8954,2.99805 5.0104,3.89404 5.0104,4.99805L 4.9994,20.998L 11.9994,17.998L 18.9994,20.998L 18.9994,4.99805C 18.9994,3.89404 18.1044,2.99805 16.9994,2.99805 Z\">
@@ -306,11 +284,9 @@ exports[`test 16:9 media with landscape image, anchor origin: default 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 20.9994,10.9981L 13.9994,3.99807L 13.9994,7.99807C 6.9994,8.99807 3.9994,13.9981 2.9994,18.9981C 5.4994,15.4981 8.9994,13.8981 13.9994,13.8981L 13.9994,17.9981L 20.9994,10.9981 Z\">
@@ -348,11 +324,9 @@ exports[`test 16:9 media with landscape image, anchor origin: end 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 11.9994,21.3497L 10.5504,20.0327C 5.4014,15.3607 1.99939,12.2736 1.99939,8.49762C 1.99939,5.41364 4.41537,2.99762 7.49939,2.99762C 9.24039,2.99762 10.9084,3.80566 11.9994,5.08362C 13.0904,3.80566 14.7584,2.99762 16.4994,2.99762C 19.5834,2.99762 21.9994,5.41364 21.9994,8.49762C 21.9994,12.2736 18.5974,15.3607 13.4484,20.0327L 11.9994,21.3497 Z\">
@@ -368,11 +342,9 @@ exports[`test 16:9 media with landscape image, anchor origin: end 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#050708\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 16.9994,2.99805L 6.9994,2.99805C 5.8954,2.99805 5.0104,3.89404 5.0104,4.99805L 4.9994,20.998L 11.9994,17.998L 18.9994,20.998L 18.9994,4.99805C 18.9994,3.89404 18.1044,2.99805 16.9994,2.99805 Z\">
@@ -388,11 +360,9 @@ exports[`test 16:9 media with landscape image, anchor origin: end 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 20.9994,10.9981L 13.9994,3.99807L 13.9994,7.99807C 6.9994,8.99807 3.9994,13.9981 2.9994,18.9981C 5.4994,15.4981 8.9994,13.8981 13.9994,13.8981L 13.9994,17.9981L 20.9994,10.9981 Z\">
@@ -430,11 +400,9 @@ exports[`test 16:9 media with landscape image, anchor origin: start 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 11.9994,21.3497L 10.5504,20.0327C 5.4014,15.3607 1.99939,12.2736 1.99939,8.49762C 1.99939,5.41364 4.41537,2.99762 7.49939,2.99762C 9.24039,2.99762 10.9084,3.80566 11.9994,5.08362C 13.0904,3.80566 14.7584,2.99762 16.4994,2.99762C 19.5834,2.99762 21.9994,5.41364 21.9994,8.49762C 21.9994,12.2736 18.5974,15.3607 13.4484,20.0327L 11.9994,21.3497 Z\">
@@ -450,11 +418,9 @@ exports[`test 16:9 media with landscape image, anchor origin: start 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#050708\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 16.9994,2.99805L 6.9994,2.99805C 5.8954,2.99805 5.0104,3.89404 5.0104,4.99805L 4.9994,20.998L 11.9994,17.998L 18.9994,20.998L 18.9994,4.99805C 18.9994,3.89404 18.1044,2.99805 16.9994,2.99805 Z\">
@@ -470,11 +436,9 @@ exports[`test 16:9 media with landscape image, anchor origin: start 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 20.9994,10.9981L 13.9994,3.99807L 13.9994,7.99807C 6.9994,8.99807 3.9994,13.9981 2.9994,18.9981C 5.4994,15.4981 8.9994,13.8981 13.9994,13.8981L 13.9994,17.9981L 20.9994,10.9981 Z\">
@@ -512,11 +476,9 @@ exports[`test 16:9 media with portrait image, anchor origin: default 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 11.9994,21.3497L 10.5504,20.0327C 5.4014,15.3607 1.99939,12.2736 1.99939,8.49762C 1.99939,5.41364 4.41537,2.99762 7.49939,2.99762C 9.24039,2.99762 10.9084,3.80566 11.9994,5.08362C 13.0904,3.80566 14.7584,2.99762 16.4994,2.99762C 19.5834,2.99762 21.9994,5.41364 21.9994,8.49762C 21.9994,12.2736 18.5974,15.3607 13.4484,20.0327L 11.9994,21.3497 Z\">
@@ -532,11 +494,9 @@ exports[`test 16:9 media with portrait image, anchor origin: default 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#050708\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 16.9994,2.99805L 6.9994,2.99805C 5.8954,2.99805 5.0104,3.89404 5.0104,4.99805L 4.9994,20.998L 11.9994,17.998L 18.9994,20.998L 18.9994,4.99805C 18.9994,3.89404 18.1044,2.99805 16.9994,2.99805 Z\">
@@ -552,11 +512,9 @@ exports[`test 16:9 media with portrait image, anchor origin: default 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 20.9994,10.9981L 13.9994,3.99807L 13.9994,7.99807C 6.9994,8.99807 3.9994,13.9981 2.9994,18.9981C 5.4994,15.4981 8.9994,13.8981 13.9994,13.8981L 13.9994,17.9981L 20.9994,10.9981 Z\">
@@ -594,11 +552,9 @@ exports[`test 16:9 media with portrait image, anchor origin: end 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 11.9994,21.3497L 10.5504,20.0327C 5.4014,15.3607 1.99939,12.2736 1.99939,8.49762C 1.99939,5.41364 4.41537,2.99762 7.49939,2.99762C 9.24039,2.99762 10.9084,3.80566 11.9994,5.08362C 13.0904,3.80566 14.7584,2.99762 16.4994,2.99762C 19.5834,2.99762 21.9994,5.41364 21.9994,8.49762C 21.9994,12.2736 18.5974,15.3607 13.4484,20.0327L 11.9994,21.3497 Z\">
@@ -614,11 +570,9 @@ exports[`test 16:9 media with portrait image, anchor origin: end 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#050708\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 16.9994,2.99805L 6.9994,2.99805C 5.8954,2.99805 5.0104,3.89404 5.0104,4.99805L 4.9994,20.998L 11.9994,17.998L 18.9994,20.998L 18.9994,4.99805C 18.9994,3.89404 18.1044,2.99805 16.9994,2.99805 Z\">
@@ -634,11 +588,9 @@ exports[`test 16:9 media with portrait image, anchor origin: end 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 20.9994,10.9981L 13.9994,3.99807L 13.9994,7.99807C 6.9994,8.99807 3.9994,13.9981 2.9994,18.9981C 5.4994,15.4981 8.9994,13.8981 13.9994,13.8981L 13.9994,17.9981L 20.9994,10.9981 Z\">
@@ -676,11 +628,9 @@ exports[`test 16:9 media with portrait image, anchor origin: start 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 11.9994,21.3497L 10.5504,20.0327C 5.4014,15.3607 1.99939,12.2736 1.99939,8.49762C 1.99939,5.41364 4.41537,2.99762 7.49939,2.99762C 9.24039,2.99762 10.9084,3.80566 11.9994,5.08362C 13.0904,3.80566 14.7584,2.99762 16.4994,2.99762C 19.5834,2.99762 21.9994,5.41364 21.9994,8.49762C 21.9994,12.2736 18.5974,15.3607 13.4484,20.0327L 11.9994,21.3497 Z\">
@@ -696,11 +646,9 @@ exports[`test 16:9 media with portrait image, anchor origin: start 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#050708\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 16.9994,2.99805L 6.9994,2.99805C 5.8954,2.99805 5.0104,3.89404 5.0104,4.99805L 4.9994,20.998L 11.9994,17.998L 18.9994,20.998L 18.9994,4.99805C 18.9994,3.89404 18.1044,2.99805 16.9994,2.99805 Z\">
@@ -716,11 +664,9 @@ exports[`test 16:9 media with portrait image, anchor origin: start 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 20.9994,10.9981L 13.9994,3.99807L 13.9994,7.99807C 6.9994,8.99807 3.9994,13.9981 2.9994,18.9981C 5.4994,15.4981 8.9994,13.8981 13.9994,13.8981L 13.9994,17.9981L 20.9994,10.9981 Z\">
@@ -758,11 +704,9 @@ exports[`test 16:9 media with square image, anchor origin: default 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 11.9994,21.3497L 10.5504,20.0327C 5.4014,15.3607 1.99939,12.2736 1.99939,8.49762C 1.99939,5.41364 4.41537,2.99762 7.49939,2.99762C 9.24039,2.99762 10.9084,3.80566 11.9994,5.08362C 13.0904,3.80566 14.7584,2.99762 16.4994,2.99762C 19.5834,2.99762 21.9994,5.41364 21.9994,8.49762C 21.9994,12.2736 18.5974,15.3607 13.4484,20.0327L 11.9994,21.3497 Z\">
@@ -778,11 +722,9 @@ exports[`test 16:9 media with square image, anchor origin: default 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#050708\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 16.9994,2.99805L 6.9994,2.99805C 5.8954,2.99805 5.0104,3.89404 5.0104,4.99805L 4.9994,20.998L 11.9994,17.998L 18.9994,20.998L 18.9994,4.99805C 18.9994,3.89404 18.1044,2.99805 16.9994,2.99805 Z\">
@@ -798,11 +740,9 @@ exports[`test 16:9 media with square image, anchor origin: default 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 20.9994,10.9981L 13.9994,3.99807L 13.9994,7.99807C 6.9994,8.99807 3.9994,13.9981 2.9994,18.9981C 5.4994,15.4981 8.9994,13.8981 13.9994,13.8981L 13.9994,17.9981L 20.9994,10.9981 Z\">
@@ -840,11 +780,9 @@ exports[`test 16:9 media with square image, anchor origin: end 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 11.9994,21.3497L 10.5504,20.0327C 5.4014,15.3607 1.99939,12.2736 1.99939,8.49762C 1.99939,5.41364 4.41537,2.99762 7.49939,2.99762C 9.24039,2.99762 10.9084,3.80566 11.9994,5.08362C 13.0904,3.80566 14.7584,2.99762 16.4994,2.99762C 19.5834,2.99762 21.9994,5.41364 21.9994,8.49762C 21.9994,12.2736 18.5974,15.3607 13.4484,20.0327L 11.9994,21.3497 Z\">
@@ -860,11 +798,9 @@ exports[`test 16:9 media with square image, anchor origin: end 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#050708\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 16.9994,2.99805L 6.9994,2.99805C 5.8954,2.99805 5.0104,3.89404 5.0104,4.99805L 4.9994,20.998L 11.9994,17.998L 18.9994,20.998L 18.9994,4.99805C 18.9994,3.89404 18.1044,2.99805 16.9994,2.99805 Z\">
@@ -880,11 +816,9 @@ exports[`test 16:9 media with square image, anchor origin: end 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 20.9994,10.9981L 13.9994,3.99807L 13.9994,7.99807C 6.9994,8.99807 3.9994,13.9981 2.9994,18.9981C 5.4994,15.4981 8.9994,13.8981 13.9994,13.8981L 13.9994,17.9981L 20.9994,10.9981 Z\">
@@ -922,11 +856,9 @@ exports[`test 16:9 media with square image, anchor origin: start 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 11.9994,21.3497L 10.5504,20.0327C 5.4014,15.3607 1.99939,12.2736 1.99939,8.49762C 1.99939,5.41364 4.41537,2.99762 7.49939,2.99762C 9.24039,2.99762 10.9084,3.80566 11.9994,5.08362C 13.0904,3.80566 14.7584,2.99762 16.4994,2.99762C 19.5834,2.99762 21.9994,5.41364 21.9994,8.49762C 21.9994,12.2736 18.5974,15.3607 13.4484,20.0327L 11.9994,21.3497 Z\">
@@ -942,11 +874,9 @@ exports[`test 16:9 media with square image, anchor origin: start 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#050708\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 16.9994,2.99805L 6.9994,2.99805C 5.8954,2.99805 5.0104,3.89404 5.0104,4.99805L 4.9994,20.998L 11.9994,17.998L 18.9994,20.998L 18.9994,4.99805C 18.9994,3.89404 18.1044,2.99805 16.9994,2.99805 Z\">
@@ -962,11 +892,9 @@ exports[`test 16:9 media with square image, anchor origin: start 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 20.9994,10.9981L 13.9994,3.99807L 13.9994,7.99807C 6.9994,8.99807 3.9994,13.9981 2.9994,18.9981C 5.4994,15.4981 8.9994,13.8981 13.9994,13.8981L 13.9994,17.9981L 20.9994,10.9981 Z\">
@@ -1137,8 +1065,7 @@ exports[`test Bottom action row, bordered 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--medium\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-              height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
                 <path d=
                 \"M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z\"></path>
               </svg>
@@ -1585,8 +1512,7 @@ exports[`test Dark tone class + light theme class 1`] = `
           <div class=\"pe-icon-button__content\">
             <div class=\"pe-icon pe-icon--medium\">
               <div class=\"pe-svg\">
-                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-                height=\"24\" viewbox=\"0 0 24 24\">
+                <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
                   <path d=
                   \"M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z\"></path>
                 </svg>
@@ -1681,8 +1607,7 @@ exports[`test Dark tone class + light tone 1`] = `
           <div class=\"pe-icon-button__content\">
             <div class=\"pe-icon pe-icon--medium\">
               <div class=\"pe-svg\">
-                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-                height=\"24\" viewbox=\"0 0 24 24\">
+                <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
                   <path d=
                   \"M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z\"></path>
                 </svg>
@@ -1980,11 +1905,9 @@ exports[`test Overlay without sheet 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 11.9994,21.3497L 10.5504,20.0327C 5.4014,15.3607 1.99939,12.2736 1.99939,8.49762C 1.99939,5.41364 4.41537,2.99762 7.49939,2.99762C 9.24039,2.99762 10.9084,3.80566 11.9994,5.08362C 13.0904,3.80566 14.7584,2.99762 16.4994,2.99762C 19.5834,2.99762 21.9994,5.41364 21.9994,8.49762C 21.9994,12.2736 18.5974,15.3607 13.4484,20.0327L 11.9994,21.3497 Z\">
@@ -2000,11 +1923,9 @@ exports[`test Overlay without sheet 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#050708\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 16.9994,2.99805L 6.9994,2.99805C 5.8954,2.99805 5.0104,3.89404 5.0104,4.99805L 4.9994,20.998L 11.9994,17.998L 18.9994,20.998L 18.9994,4.99805C 18.9994,3.89404 18.1044,2.99805 16.9994,2.99805 Z\">
@@ -2020,11 +1941,9 @@ exports[`test Overlay without sheet 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 20.9994,10.9981L 13.9994,3.99807L 13.9994,7.99807C 6.9994,8.99807 3.9994,13.9981 2.9994,18.9981C 5.4994,15.4981 8.9994,13.8981 13.9994,13.8981L 13.9994,17.9981L 20.9994,10.9981 Z\">
@@ -2087,8 +2006,7 @@ exports[`test Primary text with action row and text 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--medium\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-              height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
                 <path d=
                 \"M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z\"></path>
               </svg>
@@ -2237,11 +2155,9 @@ exports[`test Separate elements - icon button actions 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 11.9994,21.3497L 10.5504,20.0327C 5.4014,15.3607 1.99939,12.2736 1.99939,8.49762C 1.99939,5.41364 4.41537,2.99762 7.49939,2.99762C 9.24039,2.99762 10.9084,3.80566 11.9994,5.08362C 13.0904,3.80566 14.7584,2.99762 16.4994,2.99762C 19.5834,2.99762 21.9994,5.41364 21.9994,8.49762C 21.9994,12.2736 18.5974,15.3607 13.4484,20.0327L 11.9994,21.3497 Z\">
@@ -2257,11 +2173,9 @@ exports[`test Separate elements - icon button actions 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#050708\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 16.9994,2.99805L 6.9994,2.99805C 5.8954,2.99805 5.0104,3.89404 5.0104,4.99805L 4.9994,20.998L 11.9994,17.998L 18.9994,20.998L 18.9994,4.99805C 18.9994,3.89404 18.1044,2.99805 16.9994,2.99805 Z\">
@@ -2277,11 +2191,9 @@ exports[`test Separate elements - icon button actions 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--regular\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
                 \"0.2\" stroke-linejoin=\"round\" d=
                 \"M 20.9994,10.9981L 13.9994,3.99807L 13.9994,7.99807C 6.9994,8.99807 3.9994,13.9981 2.9994,18.9981C 5.4994,15.4981 8.9994,13.8981 13.9994,13.8981L 13.9994,17.9981L 20.9994,10.9981 Z\">
@@ -2514,8 +2426,7 @@ exports[`test Texts -- dark theme class 1`] = `
         <div class=\"pe-icon-button__content\">
           <div class=\"pe-icon pe-icon--medium\">
             <div class=\"pe-svg\">
-              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-              height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
                 <path d=
                 \"M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z\"></path>
               </svg>
@@ -2668,10 +2579,8 @@ exports[`test Title image, sizse large, landscape 1`] = `
           <div class=\"pe-icon-button__content\">
             <div class=\"pe-icon pe-icon--regular\">
               <div class=\"pe-svg\">
-                <svg xmlns=\"http://www.w3.org/2000/svg\"
-                xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=
-                \"1.1\" baseprofile=\"full\" width=\"24\" height=\"24\"
-                viewbox=\"0 0 24.00 24.00\" enable-background=
+                <svg width=\"24\" height=\"24\" viewbox=
+                \"0 0 24.00 24.00\" enable-background=
                 \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
                   <path fill=\"#000000\" fill-opacity=\"1\"
                   stroke-width=\"0.2\" stroke-linejoin=\"round\" d=
@@ -2688,10 +2597,8 @@ exports[`test Title image, sizse large, landscape 1`] = `
           <div class=\"pe-icon-button__content\">
             <div class=\"pe-icon pe-icon--regular\">
               <div class=\"pe-svg\">
-                <svg xmlns=\"http://www.w3.org/2000/svg\"
-                xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=
-                \"1.1\" baseprofile=\"full\" width=\"24\" height=\"24\"
-                viewbox=\"0 0 24.00 24.00\" enable-background=
+                <svg width=\"24\" height=\"24\" viewbox=
+                \"0 0 24.00 24.00\" enable-background=
                 \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
                   <path fill=\"#050708\" fill-opacity=\"1\"
                   stroke-width=\"0.2\" stroke-linejoin=\"round\" d=
@@ -2708,10 +2615,8 @@ exports[`test Title image, sizse large, landscape 1`] = `
           <div class=\"pe-icon-button__content\">
             <div class=\"pe-icon pe-icon--regular\">
               <div class=\"pe-svg\">
-                <svg xmlns=\"http://www.w3.org/2000/svg\"
-                xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=
-                \"1.1\" baseprofile=\"full\" width=\"24\" height=\"24\"
-                viewbox=\"0 0 24.00 24.00\" enable-background=
+                <svg width=\"24\" height=\"24\" viewbox=
+                \"0 0 24.00 24.00\" enable-background=
                 \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
                   <path fill=\"#000000\" fill-opacity=\"1\"
                   stroke-width=\"0.2\" stroke-linejoin=\"round\" d=
@@ -2754,10 +2659,8 @@ exports[`test Title image, sizse large, square 1`] = `
           <div class=\"pe-icon-button__content\">
             <div class=\"pe-icon pe-icon--regular\">
               <div class=\"pe-svg\">
-                <svg xmlns=\"http://www.w3.org/2000/svg\"
-                xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=
-                \"1.1\" baseprofile=\"full\" width=\"24\" height=\"24\"
-                viewbox=\"0 0 24.00 24.00\" enable-background=
+                <svg width=\"24\" height=\"24\" viewbox=
+                \"0 0 24.00 24.00\" enable-background=
                 \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
                   <path fill=\"#000000\" fill-opacity=\"1\"
                   stroke-width=\"0.2\" stroke-linejoin=\"round\" d=
@@ -2774,10 +2677,8 @@ exports[`test Title image, sizse large, square 1`] = `
           <div class=\"pe-icon-button__content\">
             <div class=\"pe-icon pe-icon--regular\">
               <div class=\"pe-svg\">
-                <svg xmlns=\"http://www.w3.org/2000/svg\"
-                xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=
-                \"1.1\" baseprofile=\"full\" width=\"24\" height=\"24\"
-                viewbox=\"0 0 24.00 24.00\" enable-background=
+                <svg width=\"24\" height=\"24\" viewbox=
+                \"0 0 24.00 24.00\" enable-background=
                 \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
                   <path fill=\"#050708\" fill-opacity=\"1\"
                   stroke-width=\"0.2\" stroke-linejoin=\"round\" d=
@@ -2794,10 +2695,8 @@ exports[`test Title image, sizse large, square 1`] = `
           <div class=\"pe-icon-button__content\">
             <div class=\"pe-icon pe-icon--regular\">
               <div class=\"pe-svg\">
-                <svg xmlns=\"http://www.w3.org/2000/svg\"
-                xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=
-                \"1.1\" baseprofile=\"full\" width=\"24\" height=\"24\"
-                viewbox=\"0 0 24.00 24.00\" enable-background=
+                <svg width=\"24\" height=\"24\" viewbox=
+                \"0 0 24.00 24.00\" enable-background=
                 \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
                   <path fill=\"#000000\" fill-opacity=\"1\"
                   stroke-width=\"0.2\" stroke-linejoin=\"round\" d=

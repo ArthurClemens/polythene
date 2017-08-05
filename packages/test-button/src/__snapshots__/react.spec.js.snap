@@ -131,27 +131,6 @@ exports[`test Option: content 1`] = `
 </a>
 `;
 
-exports[`test Option: disabled (false) 1`] = `
-<a
-  className="pe-button pe-text-button        "
-  onClick={[Function]}
-  onKeyDown={[Function]}
-  tabIndex={0}>
-  <div
-    className="pe-button__content">
-    <Ripple />
-    <div
-      className="pe-button__wash" />
-    <div
-      className="pe-button__focus" />
-    <div
-      className="pe-button__label">
-      Not disabled
-    </div>
-  </div>
-</a>
-`;
-
 exports[`test Option: element 1`] = `
 <button
   className="pe-button pe-text-button        "
@@ -346,6 +325,16 @@ exports[`test Option: ripple 1`] = `
 </a>
 `;
 
+exports[`test Option: router url (with hash) 1`] = `
+<Button
+  label="Go to #/shadow"
+  url={
+    Object {
+      "href": "#/shadow",
+    }
+  } />
+`;
+
 exports[`test Option: selected 1`] = `
 <a
   className="pe-button pe-text-button pe-button--selected       "
@@ -372,7 +361,6 @@ exports[`test Option: style (colors) 1`] = `
   className="pe-button pe-text-button        "
   onClick={[Function]}
   onKeyDown={[Function]}
-  style={Object {}}
   tabIndex={0}>
   <div
     className="pe-button__content"
@@ -419,28 +407,6 @@ exports[`test Option: tone "dark" -- dark tone class 1`] = `
     <div
       className="pe-button__label">
       Label
-    </div>
-  </div>
-</a>
-`;
-
-exports[`test Option: url (without oncreate) 1`] = `
-<a
-  className="pe-button pe-text-button        "
-  href="/shadow"
-  onClick={[Function]}
-  onKeyDown={[Function]}
-  tabIndex={0}>
-  <div
-    className="pe-button__content">
-    <Ripple />
-    <div
-      className="pe-button__wash" />
-    <div
-      className="pe-button__focus" />
-    <div
-      className="pe-button__label">
-      Go to /shadow
     </div>
   </div>
 </a>

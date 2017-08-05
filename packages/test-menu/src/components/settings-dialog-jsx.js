@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { renderer as h, Dialog, RaisedButton, List, ListTile } from "polythene-react";
+import React from "react";
+import { Dialog, RaisedButton, List, ListTile } from "polythene-react";
 
 const Tile = ({ title, selected, disabled }) =>
   <ListTile
@@ -10,7 +10,7 @@ const Tile = ({ title, selected, disabled }) =>
     events={{
       onClick: () => {
         if (!disabled) {
-          Dialog.hide()
+          Dialog.hide();
         }
       }
     }}

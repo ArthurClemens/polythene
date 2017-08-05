@@ -224,3 +224,7 @@ export const Multi = ({ options: mOptions, renderer }) => {
     view,
   };
 };
+
+Multi.displayName = "Multi";
+
+

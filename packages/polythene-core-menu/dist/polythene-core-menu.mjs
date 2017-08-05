@@ -133,7 +133,7 @@ var theme = customTheme;
 
 var SHADOW_Z = 1;
 var OFFSET_V = -8;
-var DEFAULT_OFFSET_H = 16;
+var DEFAULT_OFFSET_H = 0;
 var MIN_SIZE = 1.5;
 
 var positionMenu = function positionMenu(state, attrs) {

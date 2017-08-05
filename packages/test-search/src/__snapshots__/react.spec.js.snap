@@ -75,13 +75,30 @@ exports[`test Option: id 1`] = `
 </div>
 `;
 
+exports[`test Option: textfield 1`] = `
+<Search
+  after={<Shadow />}
+  textfield={
+    Object {
+      "label": "Search",
+    }
+  } />
+`;
+
 exports[`test Option: textfield, buttons (JSX) 1`] = `<_class />`;
+
+exports[`test Option: textfield, buttons (hyperscript) 1`] = `<_class />`;
 
 exports[`test Option: textfield, buttons 1`] = `<n />`;
 
 exports[`test Option: textfield, buttons, fullWidth 1`] = `
 <n
   fullWidth={true} />
+`;
+
+exports[`test Theme (JSX) 1`] = `
+<_class
+  className="tests-search-themed-search" />
 `;
 
 exports[`test Theme -- dark tone class 1`] = `

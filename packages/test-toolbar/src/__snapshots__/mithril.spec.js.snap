@@ -7,8 +7,7 @@ exports[`test Child node 1`] = `
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
-          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-          height=\"24\" viewbox=\"0 0 24 24\">
+          <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
             <path d=
             \"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"></path>
           </svg>
@@ -26,8 +25,7 @@ exports[`test Child node 1`] = `
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
-          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-          height=\"24\" viewbox=\"0 0 24 24\">
+          <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
             <path d=
             \"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\">
             </path>
@@ -42,8 +40,7 @@ exports[`test Child node 1`] = `
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
-          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-          height=\"24\" viewbox=\"0 0 24 24\">
+          <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
             <path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"></path>
           </svg>
         </div>
@@ -63,8 +60,7 @@ exports[`test Dark tone class + light tone 1`] = `
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
-          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-          height=\"24\" viewbox=\"0 0 24 24\">
+          <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
             <path d=
             \"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"></path>
           </svg>
@@ -82,8 +78,7 @@ exports[`test Dark tone class + light tone 1`] = `
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
-          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-          height=\"24\" viewbox=\"0 0 24 24\">
+          <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
             <path d=
             \"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\">
             </path>
@@ -98,8 +93,7 @@ exports[`test Dark tone class + light tone 1`] = `
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
-          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-          height=\"24\" viewbox=\"0 0 24 24\">
+          <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
             <path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"></path>
           </svg>
         </div>
@@ -119,8 +113,7 @@ exports[`test Dark tone class + light tone class 1`] = `
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
-          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-          height=\"24\" viewbox=\"0 0 24 24\">
+          <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
             <path d=
             \"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"></path>
           </svg>
@@ -138,8 +131,7 @@ exports[`test Dark tone class + light tone class 1`] = `
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
-          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-          height=\"24\" viewbox=\"0 0 24 24\">
+          <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
             <path d=
             \"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\">
             </path>
@@ -154,8 +146,7 @@ exports[`test Dark tone class + light tone class 1`] = `
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
-          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-          height=\"24\" viewbox=\"0 0 24 24\">
+          <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
             <path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"></path>
           </svg>
         </div>
@@ -177,8 +168,7 @@ exports[`test Indented title (without icons) 1`] = `
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
-          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-          height=\"24\" viewbox=\"0 0 24 24\">
+          <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
             <path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"></path>
           </svg>
         </div>
@@ -213,8 +203,7 @@ exports[`test Option: compact 1`] = `
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
-          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-          height=\"24\" viewbox=\"0 0 24 24\">
+          <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
             <path d=
             \"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"></path>
           </svg>
@@ -232,8 +221,7 @@ exports[`test Option: compact 1`] = `
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
-          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-          height=\"24\" viewbox=\"0 0 24 24\">
+          <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
             <path d=
             \"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\">
             </path>
@@ -248,8 +236,7 @@ exports[`test Option: compact 1`] = `
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
-          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-          height=\"24\" viewbox=\"0 0 24 24\">
+          <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
             <path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"></path>
           </svg>
         </div>
@@ -269,8 +256,7 @@ exports[`test Option: content -- dark tone class 1`] = `
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
-          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-          height=\"24\" viewbox=\"0 0 24 24\">
+          <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
             <path d=
             \"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"></path>
           </svg>
@@ -288,8 +274,7 @@ exports[`test Option: content -- dark tone class 1`] = `
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
-          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-          height=\"24\" viewbox=\"0 0 24 24\">
+          <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
             <path d=
             \"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\">
             </path>
@@ -304,8 +289,7 @@ exports[`test Option: content -- dark tone class 1`] = `
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
-          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-          height=\"24\" viewbox=\"0 0 24 24\">
+          <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
             <path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"></path>
           </svg>
         </div>
@@ -325,8 +309,7 @@ exports[`test Option: content 1`] = `
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
-          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-          height=\"24\" viewbox=\"0 0 24 24\">
+          <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
             <path d=
             \"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"></path>
           </svg>
@@ -344,8 +327,7 @@ exports[`test Option: content 1`] = `
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
-          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-          height=\"24\" viewbox=\"0 0 24 24\">
+          <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
             <path d=
             \"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\">
             </path>
@@ -360,8 +342,7 @@ exports[`test Option: content 1`] = `
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
-          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-          height=\"24\" viewbox=\"0 0 24 24\">
+          <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
             <path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"></path>
           </svg>
         </div>
@@ -392,8 +373,7 @@ exports[`test Option: shadow 1`] = `
       <div class=\"pe-icon-button__content\">
         <div class=\"pe-icon pe-icon--regular\">
           <div class=\"pe-svg\">
-            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-            height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
               <path d=
               \"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"></path>
             </svg>
@@ -411,8 +391,7 @@ exports[`test Option: shadow 1`] = `
       <div class=\"pe-icon-button__content\">
         <div class=\"pe-icon pe-icon--regular\">
           <div class=\"pe-svg\">
-            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-            height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
               <path d=
               \"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\">
               </path>
@@ -427,8 +406,7 @@ exports[`test Option: shadow 1`] = `
       <div class=\"pe-icon-button__content\">
         <div class=\"pe-icon pe-icon--regular\">
           <div class=\"pe-svg\">
-            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-            height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
               <path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"></path>
             </svg>
           </div>
@@ -455,8 +433,7 @@ class=\"pe-toolbar\">
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
-          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-          height=\"24\" viewbox=\"0 0 24 24\">
+          <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
             <path d=
             \"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"></path>
           </svg>
@@ -474,8 +451,7 @@ class=\"pe-toolbar\">
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
-          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-          height=\"24\" viewbox=\"0 0 24 24\">
+          <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
             <path d=
             \"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\">
             </path>
@@ -490,8 +466,7 @@ class=\"pe-toolbar\">
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
-          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-          height=\"24\" viewbox=\"0 0 24 24\">
+          <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
             <path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"></path>
           </svg>
         </div>
@@ -511,8 +486,7 @@ exports[`test Themed -- dark tone class 1`] = `
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
-          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-          height=\"24\" viewbox=\"0 0 24 24\">
+          <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
             <path d=
             \"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"></path>
           </svg>
@@ -530,8 +504,7 @@ exports[`test Themed -- dark tone class 1`] = `
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
-          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-          height=\"24\" viewbox=\"0 0 24 24\">
+          <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
             <path d=
             \"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\">
             </path>
@@ -546,8 +519,7 @@ exports[`test Themed -- dark tone class 1`] = `
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
-          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-          height=\"24\" viewbox=\"0 0 24 24\">
+          <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
             <path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"></path>
           </svg>
         </div>
@@ -567,8 +539,7 @@ exports[`test Title as span 1`] = `
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
-          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-          height=\"24\" viewbox=\"0 0 24 24\">
+          <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
             <path d=
             \"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"></path>
           </svg>
@@ -583,8 +554,7 @@ exports[`test Title as span 1`] = `
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
-          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-          height=\"24\" viewbox=\"0 0 24 24\">
+          <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
             <path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"></path>
           </svg>
         </div>
@@ -606,8 +576,7 @@ exports[`test Title at start 1`] = `
     <div class=\"pe-icon-button__content\">
       <div class=\"pe-icon pe-icon--regular\">
         <div class=\"pe-svg\">
-          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-          height=\"24\" viewbox=\"0 0 24 24\">
+          <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
             <path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"></path>
           </svg>
         </div>

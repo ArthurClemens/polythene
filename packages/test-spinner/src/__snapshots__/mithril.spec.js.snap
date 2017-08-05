@@ -20,13 +20,13 @@ exports[`test Emulating progress to 100% -- Material Design Progress Spinner 1`]
       <div class=
       \"pe-spinner pe-spinner--regular pe-md-progress-spinner\">
         <div class=\"pe-md-progress-spinner__animation\" style=
-        \"width: 32px; height: 32px;\">
+        \"width: 32px; height: 32px; clip: rect(0px, 32px, 32px, 16px);\">
+        <div class=
+        \"pe-md-progress-spinner__circle pe-md-progress-spinner__circle-left\"
+          style=\"clip: rect(0px, 16px, 32px, 0px);\"></div>
           <div class=
-          \"pe-md-progress-spinner__circle pe-md-progress-spinner__circle-left\">
-          </div>
-          <div class=
-          \"pe-md-progress-spinner__circle pe-md-progress-spinner__circle-right\">
-          </div>
+          \"pe-md-progress-spinner__circle pe-md-progress-spinner__circle-right\"
+          style=\"clip: rect(0px, 16px, 32px, 0px);\"></div>
         </div>
       </div>
     </div>
@@ -58,13 +58,13 @@ exports[`test Interactive (animated) -- Material Design Progress Spinner 1`] = `
       <div class=
       \"pe-spinner pe-spinner--regular pe-spinner--animated pe-md-progress-spinner\">
       <div class=\"pe-md-progress-spinner__animation\" style=
-      \"width: 32px; height: 32px;\">
+      \"width: 32px; height: 32px; clip: rect(0px, 32px, 32px, 16px);\">
+        <div class=
+        \"pe-md-progress-spinner__circle pe-md-progress-spinner__circle-left\"
+          style=\"clip: rect(0px, 16px, 32px, 0px);\"></div>
           <div class=
-          \"pe-md-progress-spinner__circle pe-md-progress-spinner__circle-left\">
-          </div>
-          <div class=
-          \"pe-md-progress-spinner__circle pe-md-progress-spinner__circle-right\">
-          </div>
+          \"pe-md-progress-spinner__circle pe-md-progress-spinner__circle-right\"
+          style=\"clip: rect(0px, 16px, 32px, 0px);\"></div>
         </div>
       </div>
     </div>
@@ -96,13 +96,13 @@ exports[`test Interactive (animated, updateDuration) -- Material Design Progress
       <div class=
       \"pe-spinner pe-spinner--regular pe-md-progress-spinner\">
         <div class=\"pe-md-progress-spinner__animation\" style=
-        \"width: 32px; height: 32px;\">
+        \"width: 32px; height: 32px; clip: rect(0px, 32px, 32px, 16px);\">
+        <div class=
+        \"pe-md-progress-spinner__circle pe-md-progress-spinner__circle-left\"
+          style=\"clip: rect(0px, 16px, 32px, 0px);\"></div>
           <div class=
-          \"pe-md-progress-spinner__circle pe-md-progress-spinner__circle-left\">
-          </div>
-          <div class=
-          \"pe-md-progress-spinner__circle pe-md-progress-spinner__circle-right\">
-          </div>
+          \"pe-md-progress-spinner__circle pe-md-progress-spinner__circle-right\"
+          style=\"clip: rect(0px, 16px, 32px, 0px);\"></div>
         </div>
       </div>
     </div>

@@ -12,3 +12,4 @@ export const Button = StateComponent(Object.assign(
 ));
 
 Button.theme = core.theme;
+Button.displayName = "Button";

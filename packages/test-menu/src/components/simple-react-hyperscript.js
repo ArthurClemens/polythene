@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import { renderer as h, Menu, List, ListTile, RaisedButton } from "polythene-react";
 
 export default class extends Component {
@@ -29,7 +29,6 @@ export default class extends Component {
           {
             target: `#${target}`,
             show: isOpen,
-            offset: -4,
             size: 2,
             didHide: () => this.setState({ isOpen: false })
           },

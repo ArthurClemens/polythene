@@ -1,39 +1,46 @@
 
+const tabs = [
+  { label: "New" },
+  { label: "My Favorites" },
+  { label: "Saved" }
+];
+
 export default ({ Tabs }) => {
   return [
-    {
-      name: "No options",
-      component: Tabs
-    },
     {
       name: "Option: id",
       component: Tabs,
       attrs: {
-        id: "id-x"
+        id: "id-x",
+        tabs
       }
     },
     {
       name: "Option: class",
       component: Tabs,
       attrs: {
-        className: "class-x"
+        className: "class-x",
+        tabs
       }
     },
     {
       name: "Option: className",
       component: Tabs,
       attrs: {
-        className: "className-x"
+        className: "className-x",
+        tabs
       }
     },
     {
-      name: "Option: element",
+      name: "Option: all (className)",
       component: Tabs,
       attrs: {
-        element: "a"
+        tabs,
+        all: {
+          className: "className-x"
+        }
       }
     },
-    
   ];
 };
 

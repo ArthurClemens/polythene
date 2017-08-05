@@ -52,7 +52,6 @@ var simple = (function (_ref) {
     show: show,
     didHide: didHide,
     getState: getState,
-    offset: -4,
     size: 2,
     content: h(List$$1, [h(ListTile$$1, {
       element: "a",
@@ -413,6 +412,7 @@ var createPositionContainer = function createPositionContainer(_ref) {
           return state.show(false);
         },
         size: 3,
+        offset: 16,
         hideDelay: .240,
         content: h(List$$1, {
           tiles: ["Refresh", "Help & Feedback", "Settings", "Sign Out"].map(function (title) {
@@ -508,6 +508,7 @@ var settings = (function (_ref) {
         },
         hideDelay: .240,
         size: 5,
+        offset: 16,
         content: h(List$$1, {
           hoverable: true,
           tiles: menuOptions.map(function (setting, index) {
@@ -4434,7 +4435,6 @@ var _class = function (_Component) {
       }), renderer$1(Menu$1, {
         target: "#" + target,
         show: isOpen,
-        offset: -4,
         size: 2,
         didHide: function didHide() {
           return _this2.setState({ isOpen: false });
@@ -4492,7 +4492,6 @@ var _class$1 = function (_Component) {
           {
             target: "#" + target,
             show: isOpen,
-            offset: -4,
             size: 2,
             didHide: function didHide() {
               return _this2.setState({ isOpen: false });

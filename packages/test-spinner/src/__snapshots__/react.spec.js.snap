@@ -52,7 +52,7 @@ exports[`test Interactive (animated) -- Material Design Progress Spinner 1`] = `
           class="self-center"
           percentage={0}
           show={true}
-          updateDuration={1} />
+          updateDuration={0.3} />
       }
       max={1}
       min={0}
@@ -67,6 +67,11 @@ exports[`test Interactive (animated) -- Material Design Progress Spinner 1`] = `
       value={0} />
   </div>
 </div>
+`;
+
+exports[`test Interactive (animated, updateDuration) -- Material Design Progress Spinner (hyperscript) 1`] = `
+<_class
+  updateDuration={0.3} />
 `;
 
 exports[`test Interactive (animated, updateDuration) -- Material Design Progress Spinner 1`] = `

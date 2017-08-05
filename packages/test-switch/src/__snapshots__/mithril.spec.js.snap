@@ -31,7 +31,8 @@ exports[`test Dark tone class + light tone 1`] = `
     </div>
     <div class=\"pe-control__label\">
       <label class=\"pe-control__form-label\">Label</label>
-    </div>
+    </div><label class=\"pe-control__form-label\"><input type=
+    \"checkbox\"></label>
   </div>
 </div>
 "
@@ -71,7 +72,8 @@ exports[`test Dark tone class + light tone class 1`] = `
     </div>
     <div class=\"pe-control__label\">
       <label class=\"pe-control__form-label\">Label</label>
-    </div>
+    </div><label class=\"pe-control__form-label\"><input type=
+    \"checkbox\"></label>
   </div>
 </div>
 "
@@ -106,7 +108,8 @@ exports[`test No options 1`] = `
         </div>
       </div>
     </div></a></label>
-  </div>
+  </div><label class=\"pe-control__form-label\"><input type=
+  \"checkbox\"></label>
 </div>
 "
 `;
@@ -140,7 +143,8 @@ exports[`test No options 2`] = `
         </div>
       </div>
     </div></a></label>
-  </div>
+  </div><label class=\"pe-control__form-label\"><input type=
+  \"checkbox\"></label>
 </div>
 "
 `;
@@ -174,7 +178,8 @@ exports[`test Option: checked 1`] = `
         </div>
       </div>
     </div></a></label>
-  </div>
+  </div><label class=\"pe-control__form-label\"><input type=
+  \"checkbox\"></label>
 </div>
 "
 `;
@@ -208,7 +213,8 @@ exports[`test Option: class 1`] = `
         </div>
       </div>
     </div></a></label>
-  </div>
+  </div><label class=\"pe-control__form-label\"><input type=
+  \"checkbox\"></label>
 </div>
 "
 `;
@@ -242,7 +248,8 @@ exports[`test Option: className 1`] = `
         </div>
       </div>
     </div></a></label>
-  </div>
+  </div><label class=\"pe-control__form-label\"><input type=
+  \"checkbox\"></label>
 </div>
 "
 `;
@@ -276,7 +283,8 @@ exports[`test Option: defaultChecked -- dark tone class 1`] = `
         </div>
       </div>
     </div></a></label>
-  </div>
+  </div><label class=\"pe-control__form-label\"><input type=
+  \"checkbox\"></label>
 </div>
 "
 `;
@@ -302,7 +310,8 @@ exports[`test Option: disabled -- dark tone class 1`] = `
     </div>
     <div class=\"pe-control__label\">
       <label class=\"pe-control__form-label\">Off</label>
-    </div>
+    </div><label class=\"pe-control__form-label\"><input type=
+    \"checkbox\" disabled></label>
   </div>
   <div class=
   \"pe-control pe-switch-control pe-control--on pe-control--disabled pe-control--inactive pe-control--regular\">
@@ -323,7 +332,8 @@ exports[`test Option: disabled -- dark tone class 1`] = `
     </div>
     <div class=\"pe-control__label\">
       <label class=\"pe-control__form-label\">On</label>
-    </div>
+    </div><label class=\"pe-control__form-label\"><input type=
+    \"checkbox\" disabled></label>
   </div>
 </div>
 "
@@ -350,7 +360,8 @@ exports[`test Option: disabled 1`] = `
     </div>
     <div class=\"pe-control__label\">
       <label class=\"pe-control__form-label\">Off</label>
-    </div>
+    </div><label class=\"pe-control__form-label\"><input type=
+    \"checkbox\" disabled></label>
   </div>
   <div class=
   \"pe-control pe-switch-control pe-control--on pe-control--disabled pe-control--inactive pe-control--regular\">
@@ -371,7 +382,8 @@ exports[`test Option: disabled 1`] = `
     </div>
     <div class=\"pe-control__label\">
       <label class=\"pe-control__form-label\">On</label>
-    </div>
+    </div><label class=\"pe-control__form-label\"><input type=
+    \"checkbox\" disabled></label>
   </div>
 </div>
 "
@@ -402,7 +414,7 @@ exports[`test Option: element 1`] = `
       </div>
     </div>
   </div>
-</div></a></label>
+</div></a><input type=\"checkbox\"></label>
 "
 `;
 
@@ -429,11 +441,9 @@ exports[`test Option: icon 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <label class=\"pe-control__form-label\"><path fill=
                 \"#000000\" fill-opacity=\"1\" stroke-width=\"1.33333\"
                 stroke-linejoin=\"miter\" d=
@@ -456,7 +466,8 @@ exports[`test Option: icon 1`] = `
     </div>
     <div class=\"pe-control__label\">
       <label class=\"pe-control__form-label\">small</label>
-    </div>
+    </div><label class=\"pe-control__form-label\"><input type=
+    \"checkbox\" /></label>
   </div>
   <div class=
   \"pe-control pe-switch-control pe-control--off pe-control--regular tests-switch-themed-icon\">
@@ -479,11 +490,9 @@ exports[`test Option: icon 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <label class=\"pe-control__form-label\"><path fill=
                 \"#000000\" fill-opacity=\"1\" stroke-width=\"1.33333\"
                 stroke-linejoin=\"miter\" d=
@@ -506,7 +515,8 @@ exports[`test Option: icon 1`] = `
     </div>
     <div class=\"pe-control__label\">
       <label class=\"pe-control__form-label\">regular</label>
-    </div>
+    </div><label class=\"pe-control__form-label\"><input type=
+    \"checkbox\" /></label>
   </div>
   <div class=
   \"pe-control pe-switch-control pe-control--off pe-control--medium tests-switch-themed-icon\">
@@ -529,11 +539,9 @@ exports[`test Option: icon 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <label class=\"pe-control__form-label\"><path fill=
                 \"#000000\" fill-opacity=\"1\" stroke-width=\"1.33333\"
                 stroke-linejoin=\"miter\" d=
@@ -556,7 +564,8 @@ exports[`test Option: icon 1`] = `
     </div>
     <div class=\"pe-control__label\">
       <label class=\"pe-control__form-label\">medium</label>
-    </div>
+    </div><label class=\"pe-control__form-label\"><input type=
+    \"checkbox\" /></label>
   </div>
   <div class=
   \"pe-control pe-switch-control pe-control--off pe-control--large tests-switch-themed-icon\">
@@ -579,11 +588,9 @@ exports[`test Option: icon 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=
-              \"http://www.w3.org/1999/xlink\" version=\"1.1\"
-              baseprofile=\"full\" width=\"24\" height=\"24\" viewbox=
-              \"0 0 24.00 24.00\" enable-background=
-              \"new 0 0 24.00 24.00\" xml:space=\"preserve\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+              enable-background=\"new 0 0 24.00 24.00\" xml:space=
+              \"preserve\">
                 <label class=\"pe-control__form-label\"><path fill=
                 \"#000000\" fill-opacity=\"1\" stroke-width=\"1.33333\"
                 stroke-linejoin=\"miter\" d=
@@ -606,7 +613,8 @@ exports[`test Option: icon 1`] = `
     </div>
     <div class=\"pe-control__label\">
       <label class=\"pe-control__form-label\">large</label>
-    </div>
+    </div><label class=\"pe-control__form-label\"><input type=
+    \"checkbox\" /></label>
   </div>
 </div>
 "
@@ -644,7 +652,8 @@ exports[`test Option: iconButton (custom hover behaviour) 1`] = `
         </div>
       </div>
     </div></a></label>
-  </div>
+  </div><label class=\"pe-control__form-label\"><input type=
+  \"checkbox\"></label>
 </div>
 "
 `;
@@ -678,7 +687,8 @@ exports[`test Option: id 1`] = `
         </div>
       </div>
     </div></a></label>
-  </div>
+  </div><label class=\"pe-control__form-label\"><input type=
+  \"checkbox\"></label>
 </div>
 "
 `;
@@ -715,12 +725,13 @@ exports[`test Option: label 1`] = `
   </div>
   <div class=\"pe-control__label\">
     <label class=\"pe-control__form-label\">Label</label>
-  </div>
+  </div><label class=\"pe-control__form-label\"><input type=
+  \"checkbox\"></label>
 </div>
 "
 `;
 
-exports[`test Option: selectable (false) 1`] = `
+exports[`test Option: selectable 1`] = `
 "<div>
   <div class=
   \"pe-control pe-switch-control pe-control--off pe-control--inactive pe-control--regular\">
@@ -752,7 +763,8 @@ exports[`test Option: selectable (false) 1`] = `
     </div>
     <div class=\"pe-control__label\">
       <label class=\"pe-control__form-label\">Never</label>
-    </div>
+    </div><label class=\"pe-control__form-label\"><input type=
+    \"checkbox\" disabled></label>
   </div>
   <div class=
   \"pe-control pe-switch-control pe-control--off pe-control--regular\">
@@ -786,7 +798,8 @@ exports[`test Option: selectable (false) 1`] = `
     <div class=\"pe-control__label\">
       <label class=\"pe-control__form-label\">Only when
       unchecked</label>
-    </div>
+    </div><label class=\"pe-control__form-label\"><input type=
+    \"checkbox\"></label>
   </div>
 </div>
 "
@@ -825,7 +838,8 @@ exports[`test Option: size 1`] = `
     </div>
     <div class=\"pe-control__label\">
       <label class=\"pe-control__form-label\">small</label>
-    </div>
+    </div><label class=\"pe-control__form-label\"><input type=
+    \"checkbox\"></label>
   </div>
   <div class=
   \"pe-control pe-switch-control pe-control--off pe-control--regular\">
@@ -858,7 +872,8 @@ exports[`test Option: size 1`] = `
     </div>
     <div class=\"pe-control__label\">
       <label class=\"pe-control__form-label\">regular</label>
-    </div>
+    </div><label class=\"pe-control__form-label\"><input type=
+    \"checkbox\"></label>
   </div>
   <div class=
   \"pe-control pe-switch-control pe-control--off pe-control--medium\">
@@ -891,7 +906,8 @@ exports[`test Option: size 1`] = `
     </div>
     <div class=\"pe-control__label\">
       <label class=\"pe-control__form-label\">medium</label>
-    </div>
+    </div><label class=\"pe-control__form-label\"><input type=
+    \"checkbox\"></label>
   </div>
   <div class=
   \"pe-control pe-switch-control pe-control--off pe-control--large\">
@@ -924,7 +940,8 @@ exports[`test Option: size 1`] = `
     </div>
     <div class=\"pe-control__label\">
       <label class=\"pe-control__form-label\">large</label>
-    </div>
+    </div><label class=\"pe-control__form-label\"><input type=
+    \"checkbox\"></label>
   </div>
 </div>
 "
@@ -963,7 +980,8 @@ exports[`test Option: style (colors) 1`] = `
   </div>
   <div class=\"pe-control__label\">
     <label class=\"pe-control__form-label\">Label</label>
-  </div>
+  </div><label class=\"pe-control__form-label\"><input type=
+  \"checkbox\"></label>
 </div>
 "
 `;
@@ -997,7 +1015,8 @@ exports[`test Option: tabindex 1`] = `
         </div>
       </div>
     </div></a></label>
-  </div>
+  </div><label class=\"pe-control__form-label\"><input type=
+  \"checkbox\"></label>
 </div>
 "
 `;
@@ -1031,7 +1050,43 @@ exports[`test Option: value 1`] = `
         </div>
       </div>
     </div></a></label>
-  </div>
+  </div><label class=\"pe-control__form-label\"><input name=\"worth\"
+  type=\"checkbox\"></label>
+</div>
+"
+`;
+
+exports[`test Option: zOff (0), zOn (2) 1`] = `
+"<div class=
+\"pe-control pe-switch-control pe-control--off pe-control--regular\">
+  <label class=\"pe-control__form-label\"></label>
+  <div>
+    <label class=\"pe-control__form-label\"></label>
+    <div class=\"pe-switch-control__track\">
+      <label class=\"pe-control__form-label\"></label>
+    </div><label class=\"pe-control__form-label\"><a class=
+    \"pe-button pe-icon-button pe-switch-control__thumb\" tabindex=
+    \"0\">
+    <div class=\"pe-button__content\">
+      <label class=\"pe-control__form-label\"></label>
+      <div class=\"pe-button__focus\">
+        <label class=\"pe-control__form-label\"></label>
+      </div>
+      <div class=\"pe-switch-control__knob\">
+        <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-shadow pe-shadow--animated\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-shadow__bottom pe-shadow--z-0\">
+            <label class=\"pe-control__form-label\"></label>
+          </div>
+          <div class=\"pe-shadow__top pe-shadow--z-0\">
+            <label class=\"pe-control__form-label\"></label>
+          </div>
+        </div>
+      </div>
+    </div></a></label>
+  </div><label class=\"pe-control__form-label\"><input type=
+  \"checkbox\"></label>
 </div>
 "
 `;
@@ -1068,7 +1123,8 @@ exports[`test Themed Switch (color and font size) 1`] = `
   </div>
   <div class=\"pe-control__label\">
     <label class=\"pe-control__form-label\">Label</label>
-  </div>
+  </div><label class=\"pe-control__form-label\"><input type=
+  \"checkbox\"></label>
 </div>
 "
 `;
@@ -1105,7 +1161,8 @@ exports[`test Themed Switch (colors) -- dark tone class 1`] = `
   </div>
   <div class=\"pe-control__label\">
     <label class=\"pe-control__form-label\">Label</label>
-  </div>
+  </div><label class=\"pe-control__form-label\"><input type=
+  \"checkbox\"></label>
 </div>
 "
 `;

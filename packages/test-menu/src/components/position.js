@@ -53,6 +53,7 @@ const createPositionContainer = ({ h, k, Menu, List, ListTile, Shadow, IconButto
             show,
             didHide: () => state.show(false),
             size: 3,
+            offset: 16,
             hideDelay: .240,
             content: h(List, {
               tiles: ["Refresh", "Help & Feedback", "Settings", "Sign Out"].map(title =>

@@ -9,7 +9,7 @@ export const theme = customTheme;
 
 const SHADOW_Z         = 1;
 const OFFSET_V         = -8;
-const DEFAULT_OFFSET_H = 16;
+const DEFAULT_OFFSET_H = 0;
 const MIN_SIZE         = 1.5;
 
 const positionMenu = (state, attrs) => {
