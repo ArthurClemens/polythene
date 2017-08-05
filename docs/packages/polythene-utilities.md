@@ -89,12 +89,9 @@ timer.stop()
 ~~~
 
 
-
-
 ## Layout classes
 
 Provides common and flexbox classes. Note that these are extra and not required for Polythene apps.
-
 
 ### Usage
 
@@ -119,7 +116,7 @@ m(".layout.vertical", ...)
 ~~~
 
 
-### Class list
+### List of layout classes 
 
 #### Common
 

@@ -1,13 +1,16 @@
 # Polythene documentation
 
-## Overview
 
-* [Introduction](introduction.md)
+## Getting started
+
+* [Getting started with Mithril](getting-started-mithril.md)
+* [Getting started with React](getting-started-react.md)
 
 ## Topics
 
 * [Handling state](handling-state.md)
 * [URLs and router links](handling-urls.md)
+* [CSS](css.md)
 * [Theming](theming.md)
   * [Light and dark](theming/light-and-dark.md)
   * [Configuration variables](theming/configuration-variables.md)

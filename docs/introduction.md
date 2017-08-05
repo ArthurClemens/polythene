@@ -1,13 +1,8 @@
 # Polythene: Material Design for Mithril and React
 
-Modular implementation of Material Design for [Mithril](http://lhorie.github.io/mithril) and [React](https://facebook.github.io/react/).
-
-Can also be used as general-purpose component library that includes dialogs, cards, notifications, lists, buttons, form elements, and more.
-
-
 ## Material Design / custom design
 
-Polythene components closely follow the [Material Design specification](http://www.google.com/design/spec/material-design/introduction.html). But styling is set up in a flexible way - it is easy to [create a theme or change the style entirely](theming.md).
+Polythene components closely follow the [Material Design specification](https://material.io/guidelines/material-design/introduction.html). But styling is set up in a flexible way - it is easy to [create a theme or change the style entirely](theming.md).
 
 
 ## No architecture
@@ -235,3 +230,7 @@ h(Menu, {
   })
 })
 ~~~
+
+## Next
+
+* [Documentation](../docs/README.md)

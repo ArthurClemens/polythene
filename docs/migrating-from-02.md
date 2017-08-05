@@ -406,6 +406,3 @@ For instance:
 
 Toolbar now only displays 1 row of items. Display of multiple bars (top, middle, bottom) is not yet implemented.
 
-
-
-
