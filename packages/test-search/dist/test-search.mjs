@@ -4140,12 +4140,14 @@ var _class = function (_Component) {
           }
         },
         before: renderer$1(Shadow$1)
-      }));
+      }, this.props));
     }
   }]);
 
   return _class;
 }(react_2);
+
+var _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass$1 = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -4245,7 +4247,7 @@ var _class$1 = function (_Component) {
 
       var value = this.state.value;
       var focus = this.state.focus;
-      return react.createElement(Search$1, {
+      return react.createElement(Search$1, _extends$4({
         textfield: {
           label: "Search",
           onChange: function onChange(_ref3) {
@@ -4275,7 +4277,7 @@ var _class$1 = function (_Component) {
           }
         },
         before: react.createElement(Shadow$1, null)
-      });
+      }, this.props));
     }
   }]);
 
@@ -4297,6 +4299,11 @@ var reactTests = function reactTests() {
     name: "Option: textfield, buttons (JSX)",
     component: function component() {
       return react.createElement(_class$1, null);
+    }
+  }, {
+    name: "Theme (JSX)",
+    component: function component() {
+      return react.createElement(_class$1, { className: "tests-search-themed-search" });
     }
   }];
 };

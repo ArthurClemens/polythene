@@ -85,6 +85,7 @@ export default class extends Component {
           }
         }}
         before={<Shadow />}
+        {...this.props}
       />
     );
   }

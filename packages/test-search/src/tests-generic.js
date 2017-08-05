@@ -9,7 +9,7 @@ export default ({ renderer: h, Search, SearchField, Shadow }) => {
   });
 
   const Block = {
-    view: ({ attrs }) => 
+    view: ({ attrs }) =>
       h("form", {
         style: Object.assign(
           {},

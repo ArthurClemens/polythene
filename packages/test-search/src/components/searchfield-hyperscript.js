@@ -89,7 +89,8 @@ export default class extends Component {
           }
         },
         before: h(Shadow)
-      }
+      },
+      this.props
     ));
   }
 }
