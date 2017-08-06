@@ -1,5 +1,5 @@
 
-export default ({ SnackbarInstance, renderer, keys,  }) => {
+export default ({ SnackbarInstance }) => {
   return [
     {
       name: "No options - spec",

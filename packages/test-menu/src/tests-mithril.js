@@ -16,13 +16,14 @@ const mithrilTests = ({ Menu, List, ListTile, renderer: h }) => {
       exclude: true,
       component: {
         view: () => 
-          h(RaisedButton, {
-            label: "Open",
-            events: {
-              onclick: () => Dialog.show(settingsDialogOptions)
+          h(RaisedButton,
+            {
+              label: "Open",
+              events: {
+                onclick: () => Dialog.show(settingsDialogOptions)
+              }
             }
-          }
-        )
+          )
       }
     },
   ];

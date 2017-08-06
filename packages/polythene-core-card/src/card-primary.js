@@ -5,10 +5,9 @@ export const createProps = vnode => {
   const attrs = vnode.attrs;
   const primaryHasMedia = Array.isArray(attrs.content)
     ? attrs.content.reduce((total, current) =>
-        Object.keys(current)[0] === "media"
-          ? true
-          : total
-    , false)
+      Object.keys(current)[0] === "media"
+        ? true
+        : total, false)
     : attrs.media || false;
   return Object.assign(
     {},
@@ -39,17 +38,17 @@ export const createContent = (vnode, { renderer: h })  => {
           [
             pAttrs.title,
             pAttrs.subtitle
-            ? h("div",
-              { 
-                className: classes.subtitle,
-                key: "subtitle"
-              },
-              pAttrs.subtitle
-            )
-            : null
+              ? h("div",
+                { 
+                  className: classes.subtitle,
+                  key: "subtitle"
+                },
+                pAttrs.subtitle
+              )
+              : null
           ]
         )
-      ),
+    ),
     media: pAttrs => {
       return h("div",
         {

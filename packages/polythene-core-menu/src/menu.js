@@ -77,8 +77,7 @@ const showMenu = (state, attrs) => {
         el,
         showClass: classes.visible
       }
-    )
-  ).then(() => {
+  )).then(() => {
     if (attrs.onChange) {
       attrs.onChange({ visible: true, transitioning: false });
     }
@@ -103,8 +102,7 @@ const hideMenu = (state, attrs) => {
         el,
         showClass: classes.visible
       }
-    )
-  ).then(() => {
+  )).then(() => {
     if (attrs.onChange) {
       attrs.onChange({ visible: false, transitioning: false });
     }

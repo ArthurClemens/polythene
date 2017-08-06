@@ -230,7 +230,7 @@ export default (selector, componentVars) => [{
       bottom: 0,
       left: 0,
       width: "100%" // and transformed with js
-        // background-color defined in implementation/theme css
+      // background-color defined in implementation/theme css
     },
 
     " .pe-toolbar--tabs .pe-toolbar__bar &": [

@@ -1,9 +1,8 @@
 import { renderer, Button, FAB, Icon, IconButton, List, ListTile } from "polythene-mithril";
-import genericTests from "./tests-generic"; // [1]
+import genericTests from "./tests-generic";
 
 const h = renderer;
 
- // [2]
 const secondaryButton = {
   theme: Button.theme,
   view: vnode => h(Button, {
@@ -31,5 +30,5 @@ const mithrilTests = () => [
 ];
 
 export default []
-  .concat(genericTests({ Button, FAB, Icon, IconButton, List, ListTile, renderer /*, list, listTile*/ }))
+  .concat(genericTests({ Button, FAB, Icon, IconButton, List, ListTile, renderer }))
   .concat(mithrilTests());

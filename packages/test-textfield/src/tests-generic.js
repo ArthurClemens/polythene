@@ -5,14 +5,16 @@ import setValue from "./components/set-value";
 export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
 
   const block = (test, attrs = {}) =>
-    h("div", {
-      style: Object.assign(
-        {},
-        attrs.dark ? null : { background: "#fff" },
-        attrs.fullWidth
-          ? null
-          : { padding: "10px 15px" }
-      )},
+    h("div",
+      {
+        style: Object.assign(
+          {},
+          attrs.dark ? null : { background: "#fff" },
+          attrs.fullWidth
+            ? null
+            : { padding: "10px 15px" }
+        )
+      },
       test
     );
 

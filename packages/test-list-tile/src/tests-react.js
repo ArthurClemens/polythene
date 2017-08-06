@@ -80,8 +80,8 @@ const reactTests = ({ Icon, ListTile, renderer: h }) => {
               onClick: e => (e.preventDefault(), history.push("/shadow"))
             }
           }
-        }
-      ))
+        })
+      )
     },
 
     // Dark tone
@@ -107,8 +107,8 @@ const reactTests = ({ Icon, ListTile, renderer: h }) => {
               onClick: e => (e.preventDefault(), history.push("/shadow"))
             }
           }
-        }
-      ))
+        })
+      )
     },
     {
       section: "React JSX tests",

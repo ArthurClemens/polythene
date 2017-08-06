@@ -55,7 +55,7 @@ export default (messageOptions, spawnOptions) => {
           events={{
             onClick: () =>
               Notification.hide(spawnOptions)
-              .then(Notification.clear)
+                .then(Notification.clear)
           }}
         />
       </div>;

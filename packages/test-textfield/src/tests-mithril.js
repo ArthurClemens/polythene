@@ -5,14 +5,16 @@ import setValue from "./components/set-value-mithril-withAttr";
 const mithrilTests = ({ TextField, RaisedButton, renderer: h }) => {
 
   const block = (test, attrs = {}) =>
-    h("div", {
-      style: Object.assign(
-        {},
-        attrs.dark ? null : { background: "#fff" },
-        attrs.fullWidth
-          ? null
-          : { padding: "10px 15px" }
-      )},
+    h("div",
+      {
+        style: Object.assign(
+          {},
+          attrs.dark ? null : { background: "#fff" },
+          attrs.fullWidth
+            ? null
+            : { padding: "10px 15px" }
+        )
+      },
       test
     );
   

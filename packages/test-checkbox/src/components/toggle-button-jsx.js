@@ -39,7 +39,7 @@ class SimpleForm extends Component {
           }}
         />
       </div>
-    </div>
+    </div>;
   }
 
 }

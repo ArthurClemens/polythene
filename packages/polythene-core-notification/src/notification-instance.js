@@ -206,13 +206,13 @@ export const createContent = (vnode, { renderer: h }) => {
     attrs.content || [
       attrs.title
         ? h("div",
-            { className: classes.title },
+          { className: classes.title },
           attrs.title
         )
         : null,
       attrs.action
         ? h("div",
-            { className: classes.action },
+          { className: classes.action },
           attrs.action
         )
         : null

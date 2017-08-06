@@ -58,8 +58,7 @@ const reactTests = ({ List, Icon, ListTile, renderer: h }) => {
               listTileGrace
             ]
           })
-        ]
-      )
+        ])
     },
     {
       name: "Options: header.sticky",
@@ -67,22 +66,23 @@ const reactTests = ({ List, Icon, ListTile, renderer: h }) => {
       exclude: true,
       component: () =>
         h(".scrollable-list", ["one", "two", "three", "four", "five"].map(ord => {
-          return h(List, {
-            header: {
-              title: `Sub header ${ord}`,
-              sticky: true
-            },
-            tiles: [
-              listTileJennifer,
-              listTileAli,
-              listTileGrace,
-              listTileJennifer,
-              listTileAli,
-              listTileGrace
-            ]
-          });
-        })
-      )
+          return h(List,
+            {
+              header: {
+                title: `Sub header ${ord}`,
+                sticky: true
+              },
+              tiles: [
+                listTileJennifer,
+                listTileAli,
+                listTileGrace,
+                listTileJennifer,
+                listTileAli,
+                listTileGrace
+              ]
+            }
+          );
+        }))
     },
     
     {

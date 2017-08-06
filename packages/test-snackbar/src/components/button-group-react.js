@@ -73,7 +73,7 @@ export default class extends Component {
         events={{
           onClick: () =>
             Snackbar.hide({ spawn, position })
-            .then(Snackbar.clear)
+              .then(Snackbar.clear)
         }}
       />
     </div>);

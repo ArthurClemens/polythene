@@ -52,16 +52,18 @@ export default ({ Checkbox, RaisedButton, renderer: h, keys: k }) => {
     {
       name: "Option: size",
       component: {
-        view: () => h("div", {
-          style: {
-            display: "flex",
-            alignItems: "center"
-          }
-        },
-        sizes(sizeNames, {
-          label: "Label"
-        })
-      )}
+        view: () => h("div",
+          {
+            style: {
+              display: "flex",
+              alignItems: "center"
+            }
+          },
+          sizes(sizeNames, {
+            label: "Label"
+          })
+        )
+      }
     },
     {
       name: "Themed Checkbox (color and font size)",
@@ -74,22 +76,24 @@ export default ({ Checkbox, RaisedButton, renderer: h, keys: k }) => {
     {
       name: "Option: iconOn, iconOff (custom icon)",
       component: {
-        view: () => h("div", {
-          style: {
-            display: "flex",
-            alignItems: "center"
-          }
-        }, 
-        sizes(sizeNames, {
-          label: "Label",
-          iconOn: {
-            svg: trustedIconStarFilled
-          },
-          iconOff: {
-            svg: trustedIconStarsOutline
-          }
-        })
-      )}
+        view: () => h("div", 
+          {
+            style: {
+              display: "flex",
+              alignItems: "center"
+            }
+          }, 
+          sizes(sizeNames, {
+            label: "Label",
+            iconOn: {
+              svg: trustedIconStarFilled
+            },
+            iconOff: {
+              svg: trustedIconStarsOutline
+            }
+          })
+        )
+      }
     },
     {
       name: "Option: disabled",
@@ -198,17 +202,18 @@ export default ({ Checkbox, RaisedButton, renderer: h, keys: k }) => {
       className: "pe-dark-tone",
       component: {
         view: () => 
-          h("div", {
-            style: {
-              background: "#fff",
-              padding: "20px"
+          h("div",
+            {
+              style: {
+                background: "#fff",
+                padding: "20px"
+              },
+              className: "pe-light-tone"
             },
-            className: "pe-light-tone"
-          },
-          h(Checkbox, {
-            label: "Label"
-          })
-        )
+            h(Checkbox, {
+              label: "Label"
+            })
+          )
       }
     },
     {
@@ -216,17 +221,18 @@ export default ({ Checkbox, RaisedButton, renderer: h, keys: k }) => {
       className: "test-dark-tone",
       component: {
         view: () => 
-          h("div", {
-            style: {
-              background: "#fff",
-              padding: "20px"
-            }
-          },
-          h(Checkbox, {
-            tone: "light",
-            label: "Label"
-          })
-        )
+          h("div",
+            {
+              style: {
+                background: "#fff",
+                padding: "20px"
+              }
+            },
+            h(Checkbox, {
+              tone: "light",
+              label: "Label"
+            })
+          )
       }
     },
   ];

@@ -43,7 +43,6 @@ export default class extends Component {
 
   render() {
     const percentage = this.state.percentage;
-    console.log("percentage", percentage);
     return h("div", [
       h("div",
         {

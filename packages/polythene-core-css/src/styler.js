@@ -3,7 +3,7 @@ import { isServer } from "polythene-core";
 import J2c from "j2c";
 
 const j2c = new J2c(prefixPlugin);
-const ID_REGEX = /[^a-z0-9\-]/g;
+const ID_REGEX = /[^a-z0-9\\-]/g;
 
 /*
  * @param id: identifier, used as HTMLElement id for the attached <style></style> element

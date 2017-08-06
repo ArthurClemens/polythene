@@ -298,7 +298,7 @@ export default ({ RadioButton, RadioGroup, renderer: h, keys: k }) => {
                 }
               ]
             })
-        )
+          )
       }
     },
     {
@@ -306,27 +306,28 @@ export default ({ RadioButton, RadioGroup, renderer: h, keys: k }) => {
       className: "test-dark-tone",
       component: {
         view: () => 
-          h("div", {
-            style: {
-              background: "#fff",
-              padding: "20px"
-            }
-          },
-          h(RadioGroup, {
-            name: "test-dark-tone-light",
-            content: [
-              {
-                value: "One",
-                label: "One",
-              },
-              {
-                value: "Two",
-                label: "Two",
-                defaultChecked: true
+          h("div",
+            {
+              style: {
+                background: "#fff",
+                padding: "20px"
               }
-            ]
-          })
-        )
+            },
+            h(RadioGroup, {
+              name: "test-dark-tone-light",
+              content: [
+                {
+                  value: "One",
+                  label: "One",
+                },
+                {
+                  value: "Two",
+                  label: "Two",
+                  defaultChecked: true
+                }
+              ]
+            })
+          )
       }
     },
   ];

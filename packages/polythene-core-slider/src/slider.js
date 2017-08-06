@@ -224,7 +224,7 @@ const createSlider = (vnode, { h, k, hasTicks, interactiveTrack }) => {
             key: "icon"
           },
           attrs.icon
-          )
+        )
         : null
       ),
       h("div",

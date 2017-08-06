@@ -270,7 +270,7 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
                 }
               }
             },
-          label)
+            label)
           : null,
         h(inputType, Object.assign(
           {},
@@ -349,20 +349,18 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
             }
             : null,
 
-            attrs.events ? attrs.events : null, // NOTE: may overwrite oninput
-            attrs[k.readonly] !== undefined ?  { [k.readonly]: true } : null,
-            attrs.pattern !== undefined ?      { pattern: attrs.pattern } : null,
-            attrs[k.maxlength] !== undefined ? { [k.maxlength]: attrs[k.maxlength] } : null,
-            attrs[k.minlength] !== undefined ? { [k.minlength]: attrs[k.minlength] } : null,
-            attrs.max !== undefined ?          { max: attrs.max } : null,
-            attrs.min !== undefined ?          { min: attrs.min } : null,
-            attrs[k.autofocus] !== undefined ? { [k.autofocus]: attrs[k.autofocus] } : null,
-            attrs.required !== undefined ?     { required: attrs.required } : null,
-            attrs[k.tabindex] !== undefined ?  { [k.tabindex]: attrs[k.tabindex] } : null,
-            attrs.rows !== undefined ?         { rows: attrs.rows } : null
-          
-          )
-        )
+          attrs.events ? attrs.events : null, // NOTE: may overwrite oninput
+          attrs[k.readonly] !== undefined ?  { [k.readonly]: true } : null,
+          attrs.pattern !== undefined ?      { pattern: attrs.pattern } : null,
+          attrs[k.maxlength] !== undefined ? { [k.maxlength]: attrs[k.maxlength] } : null,
+          attrs[k.minlength] !== undefined ? { [k.minlength]: attrs[k.minlength] } : null,
+          attrs.max !== undefined ?          { max: attrs.max } : null,
+          attrs.min !== undefined ?          { min: attrs.min } : null,
+          attrs[k.autofocus] !== undefined ? { [k.autofocus]: attrs[k.autofocus] } : null,
+          attrs.required !== undefined ?     { required: attrs.required } : null,
+          attrs[k.tabindex] !== undefined ?  { [k.tabindex]: attrs[k.tabindex] } : null,
+          attrs.rows !== undefined ?         { rows: attrs.rows } : null
+        ))
       ]
     ),
     attrs.counter

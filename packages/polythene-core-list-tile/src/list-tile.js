@@ -46,31 +46,31 @@ const primaryContent = (h, requiresKeys, attrs, children) => {
       [
         attrs.content
           ? Object.assign(
-              {},
-              requiresKeys ? { key: "content" } : null,
-              attrs.content
-            )
+            {},
+            requiresKeys ? { key: "content" } : null,
+            attrs.content
+          )
           : children,
         attrs.title && !attrs.content
           ? h("div", Object.assign(
-              {},
-              requiresKeys ? { key: "title" } : null,
-              { className: classes.title }
-            ), attrs.title)
+            {},
+            requiresKeys ? { key: "title" } : null,
+            { className: classes.title }
+          ), attrs.title)
           : null,
         attrs.subtitle
           ? h("div", Object.assign(
-              {},
-              requiresKeys ? { key: "subtitle" } : null,
-              { className: classes.subtitle }
-            ), attrs.subtitle)
+            {},
+            requiresKeys ? { key: "subtitle" } : null,
+            { className: classes.subtitle }
+          ), attrs.subtitle)
           : null,
         attrs.highSubtitle
           ? h("div", Object.assign(
-              {},
-              requiresKeys ? { key: "high-subtitle" } : null,
-              { className: classes.subtitle + " " + classes.highSubtitle }
-            ), attrs.highSubtitle)
+            {},
+            requiresKeys ? { key: "high-subtitle" } : null,
+            { className: classes.subtitle + " " + classes.highSubtitle }
+          ), attrs.highSubtitle)
           : null
       ]
     )

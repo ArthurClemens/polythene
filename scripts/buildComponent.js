@@ -22,7 +22,7 @@ componentNames.forEach(function(name) {
 
   [mithrilBaseDir, reactBaseDir, coreDir, mithrilDir, reactDir, testDir].forEach(function(dir) {
     if (shell.test("-d", dir)) {
-      console.log(`Building dir ${dir}`);
+      console.log(`Building dir ${dir}`); // eslint-disable-line no-console
       build(dir);
     } else {
       console.log(`Directory ${dir} does not exist`); // eslint-disable-line no-console

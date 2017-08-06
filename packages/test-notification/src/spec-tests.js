@@ -1,5 +1,5 @@
 
-export default ({ NotificationInstance, renderer, keys,  }) => {
+export default ({ NotificationInstance }) => {
   return [
     {
       name: "No options - spec",

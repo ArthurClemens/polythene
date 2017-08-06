@@ -110,8 +110,8 @@ export default ({ Switch, Icon, RaisedButton, renderer: h, keys: k }) => {
             icon: h(Icon, {
               svg: trustedBullsEyeIcon
             })
-          })
-      )}
+          }))
+      }
     },
     {
       name: "Option: disabled",
@@ -229,17 +229,18 @@ export default ({ Switch, Icon, RaisedButton, renderer: h, keys: k }) => {
       className: "pe-dark-tone",
       component: {
         view: () => 
-          h("div", {
-            style: {
-              background: "#fff",
-              padding: "20px"
+          h("div",
+            {
+              style: {
+                background: "#fff",
+                padding: "20px"
+              },
+              className: "pe-light-tone"
             },
-            className: "pe-light-tone"
-          },
-          h(Switch, {
-            label: "Label"
-          })
-        )
+            h(Switch, {
+              label: "Label"
+            })
+          )
       }
     },
     {
@@ -247,17 +248,18 @@ export default ({ Switch, Icon, RaisedButton, renderer: h, keys: k }) => {
       className: "test-dark-tone",
       component: {
         view: () => 
-          h("div", {
-            style: {
-              background: "#fff",
-              padding: "20px"
-            }
-          },
-          h(Switch, {
-            tone: "light",
-            label: "Label"
-          })
-        )
+          h("div",
+            {
+              style: {
+                background: "#fff",
+                padding: "20px"
+              }
+            },
+            h(Switch, {
+              tone: "light",
+              label: "Label"
+            })
+          )
       }
     },
   ];

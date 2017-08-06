@@ -10,18 +10,20 @@ export default ({ renderer: h, Search, SearchField, Shadow }) => {
 
   const Block = {
     view: ({ attrs }) =>
-      h("form", {
-        style: Object.assign(
-          {},
-          {
-            minHeight: "130px",
-            overflow: "hidden" // hides top and side shadow with full width search field
-          },
-          attrs.dark ? { backgroundColor: "transparent" } : { backgroundColor: "#e4e4e4" },
-          attrs.fullWidth
-            ? null
-            : { padding: "8px" }
-        )},
+      h("form",
+        {
+          style: Object.assign(
+            {},
+            {
+              minHeight: "130px",
+              overflow: "hidden" // hides top and side shadow with full width search field
+            },
+            attrs.dark ? { backgroundColor: "transparent" } : { backgroundColor: "#e4e4e4" },
+            attrs.fullWidth
+              ? null
+              : { padding: "8px" }
+          )
+        },
         h(SearchField, attrs)
       )
   };

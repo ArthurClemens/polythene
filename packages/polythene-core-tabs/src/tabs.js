@@ -54,8 +54,7 @@ const scrollToTab = (state, tabIndex) => {
   const scroller = state.scrollerEl;
   // Scroll to position of selected tab
   const tabLeft = tabs.slice(0, tabIndex).reduce((totalWidth, tabData) =>
-    totalWidth + tabData.dom.getBoundingClientRect().width
-  , 0);
+    totalWidth + tabData.dom.getBoundingClientRect().width, 0);
   // Tabs at the far right will not fully move to the left
   // because the scrollable row will stick to the right 
   // to get the max scroll left, we subtract the visible viewport from the scroll width

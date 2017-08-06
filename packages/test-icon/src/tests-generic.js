@@ -63,16 +63,18 @@ export default ({ Icon, SVG, renderer: h }) => {
     {
       name: "Option: size",
       component: {
-        view: () => h("div", {
-          style: {
-            display: "flex",
-            alignItems: "center"
-          }
-        },
-        sizes(sizeNames, {
-          svg: trustedIconStars,
-        })
-      )}
+        view: () => h("div",
+          {
+            style: {
+              display: "flex",
+              alignItems: "center"
+            }
+          },
+          sizes(sizeNames, {
+            svg: trustedIconStars,
+          })
+        )
+      }
     },
     {
       name: "Option: src (image file)",

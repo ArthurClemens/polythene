@@ -1,2 +1,4 @@
 node_modules
 dist
+packages/tests-render-mithril-standalone/js/polythene-mithril-standalone.js
+packages/tests-render-react-standalone/js/polythene-react-standalone.js
