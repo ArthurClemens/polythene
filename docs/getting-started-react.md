@@ -1,9 +1,27 @@
 # Getting started with React
 
+
+## Which packages do you need?
+
+Required:
+
+* `polythene-react`
+
+Recommended:
+
+* `polythene-style` Material Design styles (typography and font) [more info](packages/polythene-style.md)
+
+Optional:
+
+* `polythene-utilities` Layout helper classes [more info](packages/polythene-utilities.md)
+* `polythene-fastclick` Eliminating the 300ms delay on mobile [more info](packages/polythene-fastclick.md)
+* `polythene-core-css` CSS tools [more info](packages/polythene-core-css.md)
+
+
 ## Installation
 
 ~~~bash
-yard add polythene-react polythene-style
+yarn add polythene-react polythene-style
 ~~~
 
 or
@@ -100,3 +118,8 @@ const App = () => (
 const mountNode = document.querySelector("#app")
 ReactDOM.render(h(App), mountNode)
 ~~~
+
+
+## Next
+
+* [Documentation](README.md)

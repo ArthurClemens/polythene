@@ -1,5 +1,8 @@
 # polythene-style: Material Design style
 
+This package includes Material Design styles (typography and font).
+
+
 ## Usage
 
 ~~~javascript

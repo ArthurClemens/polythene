@@ -1,5 +1,23 @@
 # Getting started with Mithril
 
+
+## Which packages do you need?
+
+Required:
+
+* `polythene-mithril`
+
+Recommended:
+
+* `polythene-style` Material Design styles (typography and font) [more info](packages/polythene-style.md)
+
+Optional:
+
+* `polythene-utilities` Layout helper classes [more info](packages/polythene-utilities.md)
+* `polythene-fastclick` Eliminating the 300ms delay on mobile [more info](packages/polythene-fastclick.md)
+* `polythene-core-css` CSS tools [more info](packages/polythene-core-css.md)
+
+
 ## Installation
 
 ~~~bash
@@ -54,3 +72,8 @@ const app = {
 
 m.mount(document.querySelector("#app"), app)
 ~~~
+
+
+## Next
+
+* [Documentation](README.md)

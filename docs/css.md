@@ -12,7 +12,7 @@ Supporting styles (typography and Roboto web font styles) are optional and are a
 ### Installation
 
 ~~~bash
-yard add polythene-style
+yarn add polythene-style
 ~~~
 
 or
@@ -45,7 +45,7 @@ See: [Complete list of layout classes](packages/polythene-utilities.md#list-of-l
 ### Installation
 
 ~~~bash
-yard add polythene-utilities
+yarn add polythene-utilities
 ~~~
 
 or
@@ -85,7 +85,7 @@ See: [Package polythene-fastclick](packages/polythene-fastclick.md)
 ### Installation
 
 ~~~bash
-yard add polythene-fastclick
+yarn add polythene-fastclick
 ~~~
 
 or
