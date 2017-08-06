@@ -1,3 +1,0 @@
-# Snackbar
-
-See: Notification
