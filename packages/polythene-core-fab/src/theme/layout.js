@@ -1,4 +1,5 @@
 import { vars } from "polythene-theme";
+import { mixin } from "polythene-core-css";
 
 export default (selector, componentVars) => [{
   [selector]: {
@@ -17,6 +18,13 @@ export default (selector, componentVars) => [{
       borderRadius: "50%",
       padding: componentVars.padding_regular + "px",
     },
+
+    " .pe-button__wash, .pe-button__focus": [
+      mixin.fit(),
+      {
+        borderRadius: "inherit",
+      }
+    ],
 
     ".pe-fab--mini": {
       " .pe-button__content": {

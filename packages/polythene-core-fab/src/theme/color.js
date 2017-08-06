@@ -3,8 +3,15 @@ const style = (scopes, selector, componentVars, tint) => [{
   [scopes.map(s => s + selector).join(",")]: {
     " .pe-button__content": {
       backgroundColor: componentVars["color_" + tint + "_background"],
-      color:           componentVars["color_" + tint]
-    }
+      color:           componentVars["color_" + tint],
+    },
+
+    "&.pe-button--focus": {
+      " .pe-button__focus": {
+        opacity: 1,
+        backgroundColor: componentVars["color_" + tint + "_focus_background"]
+      }
+    },
   }
 }];
 

@@ -1,4 +1,4 @@
-import { rgba, styler } from 'polythene-core-css';
+import { mixin, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 
 var classes = {
@@ -17,9 +17,13 @@ var vars$1 = {
   padding_regular: 2 * vars.grid_unit_component,
 
   color_light: rgba(vars.color_primary_foreground),
-  color_dark: rgba(vars.color_primary_foreground),
+  color_light_focus_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
 
+  color_light_focus_opacity: vars.blend_light_background_hover_medium, // same as button
   color_light_background: rgba(vars.color_primary),
+
+  color_dark: rgba(vars.color_primary_foreground),
+  color_dark_focus_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover), // same as button
   color_dark_background: rgba(vars.color_primary)
 };
 
@@ -42,6 +46,10 @@ var layout = (function (selector, componentVars) {
       borderRadius: "50%",
       padding: componentVars.padding_regular + "px"
     },
+
+    " .pe-button__wash, .pe-button__focus": [mixin.fit(), {
+      borderRadius: "inherit"
+    }],
 
     ".pe-fab--mini": {
       " .pe-button__content": {
@@ -73,6 +81,13 @@ var style = function style(scopes, selector, componentVars, tint) {
     " .pe-button__content": {
       backgroundColor: componentVars["color_" + tint + "_background"],
       color: componentVars["color_" + tint]
+    },
+
+    "&.pe-button--focus": {
+      " .pe-button__focus": {
+        opacity: 1,
+        backgroundColor: componentVars["color_" + tint + "_focus_background"]
+      }
     }
   })];
 };
