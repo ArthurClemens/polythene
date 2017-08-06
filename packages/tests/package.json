@@ -1,0 +1,49 @@
+{
+  "name": "polythene-test",
+  "private": true,
+  "version": "1.0.0-rc.1",
+  "description": "",
+  "main": "dist/polythene-test.js",
+  "module": "dist/polythene-test.mjs",
+  "scripts": {
+    "clean": "rm -rf dist && mkdir dist",
+    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
+    "build": "npm run rollup"
+  },
+  "dependencies": {
+    "test-button": "1.0.0-rc.1",
+    "test-card": "1.0.0-rc.1",
+    "test-checkbox": "1.0.0-rc.1",
+    "test-dialog": "1.0.0-rc.1",
+    "test-dialog-pane": "1.0.0-rc.1",
+    "test-fab": "1.0.0-rc.1",
+    "test-icon": "1.0.0-rc.1",
+    "test-icon-button": "1.0.0-rc.1",
+    "test-layout-styles": "1.0.0-rc.1",
+    "test-list": "1.0.0-rc.1",
+    "test-list-tile": "1.0.0-rc.1",
+    "test-menu": "1.0.0-rc.1",
+    "test-notification": "1.0.0-rc.1",
+    "test-radio-button": "1.0.0-rc.1",
+    "test-raised-button": "1.0.0-rc.1",
+    "test-ripple": "1.0.0-rc.1",
+    "test-search": "1.0.0-rc.1",
+    "test-shadow": "1.0.0-rc.1",
+    "test-slider": "1.0.0-rc.1",
+    "test-snackbar": "1.0.0-rc.1",
+    "test-spinner": "1.0.0-rc.1",
+    "test-svg": "1.0.0-rc.1",
+    "test-switch": "1.0.0-rc.1",
+    "test-tabs": "1.0.0-rc.1",
+    "test-textfield": "1.0.0-rc.1",
+    "test-theme": "1.0.0-rc.1",
+    "test-toolbar": "1.0.0-rc.1"
+  },
+  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "enzyme": "^2.9.1",
+    "enzyme-to-json": "^1.5.1",
+    "react": "^15.6.1"
+  }
+}

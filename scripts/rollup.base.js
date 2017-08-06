@@ -1,3 +1,4 @@
+/* global process */
 import fs from "fs";
 import babel from "rollup-plugin-babel";
 import eslint from "rollup-plugin-eslint";
@@ -5,7 +6,7 @@ import resolve from "rollup-plugin-node-resolve";
 import commonjs from "rollup-plugin-commonjs";
 
 export const pkg = JSON.parse(fs.readFileSync("./package.json"));
-const external = Object.keys(pkg.dependencies || {});
+const external = Object.keys(pkg.dependencies || []).concat(Object.keys(pkg.devDependencies || []));
 
 const globals = {};
 external.forEach(ext => {
@@ -21,7 +22,9 @@ external.forEach(ext => {
 export const createConfig = ({ includeDepencies, lint }) => {
   const config = {
     entry: process.env.ENTRY || "index.js",
-    external: includeDepencies ? ["mithril"] : external,
+    external: includeDepencies
+      ? ["mithril", "react", "react-dom"].concat(Object.keys(pkg.devDependencies || []))
+      : external,
     moduleName: "polythene",
     globals,
     plugins: []
@@ -33,7 +36,13 @@ export const createConfig = ({ includeDepencies, lint }) => {
   lint && config.plugins.push(eslint({
     cache: true
   }));
-  config.plugins.push(commonjs());
-  config.plugins.push(babel());
+  config.plugins.push(commonjs({
+    namedExports: {
+      "node_modules/react/react.js": ["Children", "Component", "PropTypes", "createElement"],
+      "node_modules/react-dom/index.js": ["render"]
+    }
+  }));
+  config.plugins.push(babel({
+  }));
   return config;
 };

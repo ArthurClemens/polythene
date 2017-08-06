@@ -1,0 +1,31 @@
+{
+  "name": "test-button",
+  "version": "1.0.0-rc.1",
+  "private": true,
+  "description": "",
+  "main": "dist/test-button.js",
+  "module": "dist/test-button.mjs",
+  "scripts": {
+    "clean": "rm -rf dist && mkdir dist",
+    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
+    "build": "npm run rollup",
+    "test": "../../node_modules/jest/bin/jest.js src/**",
+    "test:watch": "yarn run test -- --watch --no-watchman"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "dependencies": {
+    "polythene-mithril": "1.0.0-rc.1",
+    "polythene-react": "1.0.0-rc.1"
+  },
+  "devDependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-router-dom": "^4.1.2",
+    "recompose": "^0.24.0"
+  },
+  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
+  "license": "MIT"
+}

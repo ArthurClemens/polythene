@@ -1,0 +1,684 @@
+exports[`test Emulating progress to 100% -- Material Design Progress Spinner 1`] = `
+<div
+  style={
+    Object {
+      "position": "relative",
+    }
+  }>
+  <RaisedButton
+    events={
+      Object {
+        "onClick": [Function],
+      }
+    }
+    label="Run" />
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "margin": "20px 0 0 0",
+        "width": "100%",
+      }
+    }>
+    <div
+      style={
+        Object {
+          "marginRight": "20px",
+          "width": "100%",
+        }
+      }>
+      <MaterialDesignProgressSpinner
+        percentage={0}
+        show={true} />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`test Interactive (animated) -- Material Design Progress Spinner 1`] = `
+<div>
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "margin": "0 0 20px 0",
+        "width": "100%",
+      }
+    }>
+    <Slider
+      after={
+        <MaterialDesignProgressSpinner
+          animated={true}
+          class="self-center"
+          percentage={0}
+          show={true}
+          updateDuration={0.3} />
+      }
+      max={1}
+      min={0}
+      onChange={[Function]}
+      step={0}
+      style={
+        Object {
+          "alignItems": "center",
+          "display": "flex",
+        }
+      }
+      value={0} />
+  </div>
+</div>
+`;
+
+exports[`test Interactive (animated, updateDuration) -- Material Design Progress Spinner (hyperscript) 1`] = `
+<_class
+  updateDuration={0.3} />
+`;
+
+exports[`test Interactive (animated, updateDuration) -- Material Design Progress Spinner 1`] = `
+<div>
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "margin": "0 0 20px 0",
+        "width": "100%",
+      }
+    }>
+    <Slider
+      after={
+        <MaterialDesignProgressSpinner
+          class="self-center"
+          percentage={0}
+          show={true} />
+      }
+      max={1}
+      min={0}
+      onChange={[Function]}
+      step={0}
+      style={
+        Object {
+          "alignItems": "center",
+          "display": "flex",
+        }
+      }
+      value={0} />
+  </div>
+  <RaisedButton
+    events={
+      Object {
+        "onClick": [Function],
+      }
+    }
+    label="Run" />
+</div>
+`;
+
+exports[`test Material Design Spinner -- dark tone class -- Material Design Spinner 1`] = `
+<div
+  style={
+    Object {
+      "position": "relative",
+    }
+  }>
+  <RaisedButton
+    events={
+      Object {
+        "onClick": [Function],
+      }
+    }
+    label="Toggle" />
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "margin": "20px 0 0 0",
+      }
+    }>
+    <div
+      style={
+        Object {
+          "marginRight": "20px",
+        }
+      }>
+      <MaterialDesignSpinner
+        show={false} />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`test No options -- iOS Spinner 1`] = `
+<SpinnerToggle
+  instance={[Function]}
+  permanent={true}
+  placeholderClassName="pe-spinner__placeholder" />
+`;
+
+exports[`test No options 1`] = `
+<SpinnerToggle
+  instance={[Function]}
+  permanent={true}
+  placeholderClassName="pe-spinner__placeholder" />
+`;
+
+exports[`test Option: class -- Material Design Spinner 1`] = `
+<SpinnerToggle
+  className="class-x"
+  instance={[Function]}
+  permanent={true}
+  placeholderClassName="pe-spinner__placeholder" />
+`;
+
+exports[`test Option: class -- iOS Spinner 1`] = `
+<SpinnerToggle
+  className="class-x"
+  instance={[Function]}
+  permanent={true}
+  placeholderClassName="pe-spinner__placeholder" />
+`;
+
+exports[`test Option: className -- Material Design Spinner 1`] = `
+<SpinnerToggle
+  className="className-x"
+  instance={[Function]}
+  permanent={true}
+  placeholderClassName="pe-spinner__placeholder" />
+`;
+
+exports[`test Option: className -- iOS Spinner 1`] = `
+<SpinnerToggle
+  className="className-x"
+  instance={[Function]}
+  permanent={true}
+  placeholderClassName="pe-spinner__placeholder" />
+`;
+
+exports[`test Option: content -- Material Design Spinner 1`] = `
+<SpinnerToggle
+  content={
+    <span>
+      Content
+    </span>
+  }
+  instance={[Function]}
+  permanent={true}
+  placeholderClassName="pe-spinner__placeholder" />
+`;
+
+exports[`test Option: content -- iOS Spinner 1`] = `
+<SpinnerToggle
+  content={
+    <span>
+      Content
+    </span>
+  }
+  instance={[Function]}
+  permanent={true}
+  placeholderClassName="pe-spinner__placeholder" />
+`;
+
+exports[`test Option: element -- Material Design Spinner 1`] = `
+<SpinnerToggle
+  element="span"
+  instance={[Function]}
+  permanent={true}
+  placeholderClassName="pe-spinner__placeholder" />
+`;
+
+exports[`test Option: element -- iOS Spinner 1`] = `
+<SpinnerToggle
+  element="span"
+  instance={[Function]}
+  permanent={true}
+  placeholderClassName="pe-spinner__placeholder" />
+`;
+
+exports[`test Option: id -- Material Design Spinner 1`] = `
+<SpinnerToggle
+  id="id-x"
+  instance={[Function]}
+  permanent={true}
+  placeholderClassName="pe-spinner__placeholder" />
+`;
+
+exports[`test Option: id -- iOS Spinner 1`] = `
+<SpinnerToggle
+  id="id-x"
+  instance={[Function]}
+  permanent={true}
+  placeholderClassName="pe-spinner__placeholder" />
+`;
+
+exports[`test Option: permanent (JSX) -- Material Design Spinner 1`] = `
+<MaterialDesignSpinner
+  permanent={true} />
+`;
+
+exports[`test Option: permanent -- Material Design Spinner 1`] = `
+<SpinnerToggle
+  instance={[Function]}
+  permanent={true}
+  placeholderClassName="pe-spinner__placeholder" />
+`;
+
+exports[`test Option: permanent 1`] = `
+<SpinnerToggle
+  instance={[Function]}
+  percentage={0.75}
+  permanent={true}
+  placeholderClassName="pe-spinner__placeholder" />
+`;
+
+exports[`test Option: raised, z -- Material Design Spinner 1`] = `
+<div
+  style={
+    Object {
+      "position": "relative",
+    }
+  }>
+  <RaisedButton
+    events={
+      Object {
+        "onClick": [Function],
+      }
+    }
+    label="Toggle" />
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "margin": "20px 0 0 0",
+      }
+    }>
+    <div
+      style={
+        Object {
+          "marginRight": "20px",
+        }
+      }>
+      <MaterialDesignSpinner
+        raised={true}
+        show={false}
+        size="small" />
+    </div>
+    <div
+      style={
+        Object {
+          "marginRight": "20px",
+        }
+      }>
+      <MaterialDesignSpinner
+        raised={true}
+        show={false}
+        size="regular" />
+    </div>
+    <div
+      style={
+        Object {
+          "marginRight": "20px",
+        }
+      }>
+      <MaterialDesignSpinner
+        raised={true}
+        show={false}
+        size="medium" />
+    </div>
+    <div
+      style={
+        Object {
+          "marginRight": "20px",
+        }
+      }>
+      <MaterialDesignSpinner
+        raised={true}
+        show={false}
+        size="large" />
+    </div>
+    <div
+      style={
+        Object {
+          "marginRight": "20px",
+        }
+      }>
+      <MaterialDesignSpinner
+        raised={true}
+        show={false}
+        size="fab" />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`test Option: size -- Material Design Spinner 1`] = `
+<div
+  style={
+    Object {
+      "position": "relative",
+    }
+  }>
+  <RaisedButton
+    events={
+      Object {
+        "onClick": [Function],
+      }
+    }
+    label="Toggle" />
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "margin": "20px 0 0 0",
+      }
+    }>
+    <div
+      style={
+        Object {
+          "marginRight": "20px",
+        }
+      }>
+      <MaterialDesignSpinner
+        show={false}
+        size="small" />
+    </div>
+    <div
+      style={
+        Object {
+          "marginRight": "20px",
+        }
+      }>
+      <MaterialDesignSpinner
+        show={false}
+        size="regular" />
+    </div>
+    <div
+      style={
+        Object {
+          "marginRight": "20px",
+        }
+      }>
+      <MaterialDesignSpinner
+        show={false}
+        size="medium" />
+    </div>
+    <div
+      style={
+        Object {
+          "marginRight": "20px",
+        }
+      }>
+      <MaterialDesignSpinner
+        show={false}
+        size="large" />
+    </div>
+    <div
+      style={
+        Object {
+          "marginRight": "20px",
+        }
+      }>
+      <MaterialDesignSpinner
+        show={false}
+        size="fab" />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`test Option: size -- iOS Spinner 1`] = `
+<div
+  style={
+    Object {
+      "position": "relative",
+    }
+  }>
+  <RaisedButton
+    events={
+      Object {
+        "onClick": [Function],
+      }
+    }
+    label="Toggle" />
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "margin": "20px 0 0 0",
+      }
+    }>
+    <div
+      style={
+        Object {
+          "marginRight": "20px",
+        }
+      }>
+      <iOSSpinner
+        show={false}
+        size="small" />
+    </div>
+    <div
+      style={
+        Object {
+          "marginRight": "20px",
+        }
+      }>
+      <iOSSpinner
+        show={false}
+        size="regular" />
+    </div>
+    <div
+      style={
+        Object {
+          "marginRight": "20px",
+        }
+      }>
+      <iOSSpinner
+        show={false}
+        size="medium" />
+    </div>
+    <div
+      style={
+        Object {
+          "marginRight": "20px",
+        }
+      }>
+      <iOSSpinner
+        show={false}
+        size="large" />
+    </div>
+    <div
+      style={
+        Object {
+          "marginRight": "20px",
+        }
+      }>
+      <iOSSpinner
+        show={false}
+        size="fab" />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`test Option: style (color) -- Material Design Spinner 1`] = `
+<div
+  style={
+    Object {
+      "position": "relative",
+    }
+  }>
+  <RaisedButton
+    events={
+      Object {
+        "onClick": [Function],
+      }
+    }
+    label="Toggle" />
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "margin": "20px 0 0 0",
+      }
+    }>
+    <div
+      style={
+        Object {
+          "marginRight": "20px",
+        }
+      }>
+      <MaterialDesignSpinner
+        show={false}
+        singleColor={true}
+        style={
+          Object {
+            "color": "#2196F3",
+          }
+        } />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`test Option: style (color) -- iOS Spinner 1`] = `
+<div
+  style={
+    Object {
+      "position": "relative",
+    }
+  }>
+  <RaisedButton
+    events={
+      Object {
+        "onClick": [Function],
+      }
+    }
+    label="Toggle" />
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "margin": "20px 0 0 0",
+      }
+    }>
+    <div
+      style={
+        Object {
+          "marginRight": "20px",
+        }
+      }>
+      <iOSSpinner
+        show={false}
+        singleColor={true}
+        style={
+          Object {
+            "color": "#2196F3",
+          }
+        } />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`test Theme (color) -- Material Design Spinner 1`] = `
+<div
+  style={
+    Object {
+      "position": "relative",
+    }
+  }>
+  <RaisedButton
+    events={
+      Object {
+        "onClick": [Function],
+      }
+    }
+    label="Toggle" />
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "margin": "20px 0 0 0",
+      }
+    }>
+    <div
+      style={
+        Object {
+          "marginRight": "20px",
+        }
+      }>
+      <MaterialDesignSpinner
+        className="tests-spinner-themed-md-spinner"
+        show={false} />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`test Theme (color) -- iOS Spinner 1`] = `
+<div
+  style={
+    Object {
+      "position": "relative",
+    }
+  }>
+  <RaisedButton
+    events={
+      Object {
+        "onClick": [Function],
+      }
+    }
+    label="Toggle" />
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "margin": "20px 0 0 0",
+      }
+    }>
+    <div
+      style={
+        Object {
+          "marginRight": "20px",
+        }
+      }>
+      <iOSSpinner
+        className="tests-spinner-themed-ios-spinner"
+        show={false} />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`test iOS Spinner -- dark tone class -- Material Design Spinner 1`] = `
+<div
+  style={
+    Object {
+      "position": "relative",
+    }
+  }>
+  <RaisedButton
+    events={
+      Object {
+        "onClick": [Function],
+      }
+    }
+    label="Toggle" />
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "margin": "20px 0 0 0",
+      }
+    }>
+    <div
+      style={
+        Object {
+          "marginRight": "20px",
+        }
+      }>
+      <iOSSpinner
+        show={false} />
+    </div>
+  </div>
+</div>
+`;

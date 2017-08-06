@@ -1,0 +1,634 @@
+exports[`test No options (range 0-100, steps rounded to 1) 1`] = `
+"<div>
+  <div>
+    Value: 0
+  </div>
+  <div class=\"pe-slider pe-slider--track pe-slider--min\">
+    <div class=\"pe-slider__track\">
+      <div class=\"pe-slider__track-part pe-slider__track-value\">
+        <div class=\"pe-slider__track-bar\">
+          <div class=\"pe-slider__track-bar-value\"></div>
+        </div>
+      </div>
+      <div class=\"pe-slider__control\" tabindex=\"0\"></div>
+      <div class=\"pe-slider__track-part pe-slider__track-rest\"
+      style=\"max-width: 100%;\">
+        <div class=\"pe-slider__track-bar\">
+          <div class=\"pe-slider__track-bar-value\"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test No options 1`] = `
+"<div class=\"pe-slider pe-slider--track pe-slider--min\">
+  <div class=\"pe-slider__track\">
+    <div class=\"pe-slider__track-part pe-slider__track-value\">
+      <div class=\"pe-slider__track-bar\">
+        <div class=\"pe-slider__track-bar-value\"></div>
+      </div>
+    </div>
+    <div class=\"pe-slider__control\" tabindex=\"0\"></div>
+    <div class=\"pe-slider__track-part pe-slider__track-rest\" style=
+    \"max-width: 100%;\">
+      <div class=\"pe-slider__track-bar\">
+        <div class=\"pe-slider__track-bar-value\"></div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: class 1`] = `
+"<div class=\"pe-slider pe-slider--track pe-slider--min class-x\">
+  <div class=\"pe-slider__track\">
+    <div class=\"pe-slider__track-part pe-slider__track-value\">
+      <div class=\"pe-slider__track-bar\">
+        <div class=\"pe-slider__track-bar-value\"></div>
+      </div>
+    </div>
+    <div class=\"pe-slider__control\" tabindex=\"0\"></div>
+    <div class=\"pe-slider__track-part pe-slider__track-rest\" style=
+    \"max-width: 100%;\">
+      <div class=\"pe-slider__track-bar\">
+        <div class=\"pe-slider__track-bar-value\"></div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: className 1`] = `
+"<div class=\"pe-slider pe-slider--track pe-slider--min className-x\">
+  <div class=\"pe-slider__track\">
+    <div class=\"pe-slider__track-part pe-slider__track-value\">
+      <div class=\"pe-slider__track-bar\">
+        <div class=\"pe-slider__track-bar-value\"></div>
+      </div>
+    </div>
+    <div class=\"pe-slider__control\" tabindex=\"0\"></div>
+    <div class=\"pe-slider__track-part pe-slider__track-rest\" style=
+    \"max-width: 100%;\">
+      <div class=\"pe-slider__track-bar\">
+        <div class=\"pe-slider__track-bar-value\"></div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: content 1`] = `
+"<div class=\"pe-slider pe-slider--track pe-slider--min\">
+  <div class=\"pe-slider__track\">
+    <div class=\"pe-slider__track-part pe-slider__track-value\">
+      <div class=\"pe-slider__track-bar\">
+        <div class=\"pe-slider__track-bar-value\"></div>
+      </div>
+    </div>
+    <div class=\"pe-slider__control\" tabindex=\"0\"></div>
+    <div class=\"pe-slider__track-part pe-slider__track-rest\" style=
+    \"max-width: 100%;\">
+      <div class=\"pe-slider__track-bar\">
+        <div class=\"pe-slider__track-bar-value\"></div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: disabled 1`] = `
+"<div class=\"pe-slider pe-slider--disabled pe-slider--track\">
+  <div class=\"pe-slider__track\">
+    <div class=\"pe-slider__track-part pe-slider__track-value\">
+      <div class=\"pe-slider__track-bar\">
+        <div class=\"pe-slider__track-bar-value\"></div>
+      </div>
+    </div>
+    <div class=\"pe-slider__control\" disabled></div>
+    <div class=\"pe-slider__track-part pe-slider__track-rest\" style=
+    \"max-width: 50%;\">
+      <div class=\"pe-slider__track-bar\">
+        <div class=\"pe-slider__track-bar-value\"></div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: element 1`] = `
+"<div class=\"pe-slider pe-slider--track pe-slider--min\">
+  <div class=\"pe-slider__track\">
+    <div class=\"pe-slider__track-part pe-slider__track-value\">
+      <div class=\"pe-slider__track-bar\">
+        <div class=\"pe-slider__track-bar-value\"></div>
+      </div>
+    </div>
+    <div class=\"pe-slider__control\" tabindex=\"0\"></div>
+    <div class=\"pe-slider__track-part pe-slider__track-rest\" style=
+    \"max-width: 100%;\">
+      <div class=\"pe-slider__track-bar\">
+        <div class=\"pe-slider__track-bar-value\"></div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: icon (custom svg) 1`] = `
+"<div class=\"pe-slider pe-slider--track slider-custom-icon\">
+  <div class=\"pe-slider__track\">
+    <div class=\"pe-slider__track-part pe-slider__track-value\">
+      <div class=\"pe-slider__track-bar\">
+        <div class=\"pe-slider__track-bar-value\"></div>
+      </div>
+    </div>
+    <div class=\"pe-slider__control\" tabindex=\"0\">
+      <div class=\"pe-slider__thumb\">
+        <div class=\"pe-icon pe-icon--regular\">
+          <div class=\"pe-svg\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+            enable-background=\"new 0 0 24.00 24.00\" xml:space=
+            \"preserve\">
+              <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=
+              \"1.33333\" stroke-linejoin=\"miter\" d=
+              \"M 12,2C 6.47715,2 2,6.4772 2,12C 2,17.5228 6.47715,22 12,22C 17.5228,22 22,17.5228 22,12C 22,6.4772 17.5228,2 12,2 Z M 12,4C 16.4183,4 20,7.5817 20,12C 20,16.4183 16.4183,20 12,20C 7.58172,20 4,16.4183 4,12C 4,7.5817 7.58172,4 12,4 Z M 12,6C 8.68629,6 6,8.6863 6,12C 6,15.3137 8.68629,18 12,18C 15.3137,18 18,15.3137 18,12C 18,8.6863 15.3137,6 12,6 Z M 12,8C 14.2091,8 16,9.7909 16,12C 16,14.2091 14.2091,16 12,16C 9.79086,16 8,14.2091 8,12C 8,9.7909 9.79086,8 12,8 Z M 12,10C 10.8954,10 10,10.8954 10,12C 10,13.1046 10.8954,14 12,14C 13.1046,14 14,13.1046 14,12C 14,10.8954 13.1046,10 12,10 Z\">
+              </path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class=\"pe-slider__track-part pe-slider__track-rest\" style=
+    \"max-width: 50%;\">
+      <div class=\"pe-slider__track-bar\">
+        <div class=\"pe-slider__track-bar-value\"></div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: id 1`] = `
+"<div id=\"id-x\" class=\"pe-slider pe-slider--track pe-slider--min\">
+  <div class=\"pe-slider__track\">
+    <div class=\"pe-slider__track-part pe-slider__track-value\">
+      <div class=\"pe-slider__track-bar\">
+        <div class=\"pe-slider__track-bar-value\"></div>
+      </div>
+    </div>
+    <div class=\"pe-slider__control\" tabindex=\"0\"></div>
+    <div class=\"pe-slider__track-part pe-slider__track-rest\" style=
+    \"max-width: 100%;\">
+      <div class=\"pe-slider__track-bar\">
+        <div class=\"pe-slider__track-bar-value\"></div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: interactiveTrack (false) 1`] = `
+"<div class=\"pe-slider pe-slider--min\">
+  <div class=\"pe-slider__track\">
+    <div class=\"pe-slider__track-part pe-slider__track-value\">
+      <div class=\"pe-slider__track-bar\">
+        <div class=\"pe-slider__track-bar-value\"></div>
+      </div>
+    </div>
+    <div class=\"pe-slider__control\" tabindex=\"0\"></div>
+    <div class=\"pe-slider__track-part pe-slider__track-rest\" style=
+    \"max-width: 100%;\">
+      <div class=\"pe-slider__track-bar\">
+        <div class=\"pe-slider__track-bar-value\"></div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: min (-1), max (1), step (0.1) 1`] = `
+"<div>
+  <div>
+    Value: 0
+  </div>
+  <div class=\"pe-slider pe-slider--track\">
+    <div class=\"pe-slider__track\">
+      <div class=\"pe-slider__track-part pe-slider__track-value\">
+        <div class=\"pe-slider__track-bar\">
+          <div class=\"pe-slider__track-bar-value\"></div>
+        </div>
+      </div>
+      <div class=\"pe-slider__control\" tabindex=\"0\"></div>
+      <div class=\"pe-slider__track-part pe-slider__track-rest\"
+      style=\"max-width: 50%;\">
+        <div class=\"pe-slider__track-bar\">
+          <div class=\"pe-slider__track-bar-value\"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: step (0), defaultValue (50) 1`] = `
+"<div>
+  <div>
+    Value: 50
+  </div>
+  <div class=\"pe-slider pe-slider--track\">
+    <div class=\"pe-slider__track\">
+      <div class=\"pe-slider__track-part pe-slider__track-value\">
+        <div class=\"pe-slider__track-bar\">
+          <div class=\"pe-slider__track-bar-value\"></div>
+        </div>
+      </div>
+      <div class=\"pe-slider__control\" tabindex=\"0\"></div>
+      <div class=\"pe-slider__track-part pe-slider__track-rest\"
+      style=\"max-width: 50%;\">
+        <div class=\"pe-slider__track-bar\">
+          <div class=\"pe-slider__track-bar-value\"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: style (colors) 1`] = `
+"<div style=\"color: red;\" class=\"pe-slider pe-slider--track\">
+  <div class=\"pe-slider__track\">
+    <div class=\"pe-slider__track-part pe-slider__track-value\">
+      <div class=\"pe-slider__track-bar\">
+        <div class=\"pe-slider__track-bar-value\"></div>
+      </div>
+    </div>
+    <div class=\"pe-slider__control\" tabindex=\"0\"></div>
+    <div class=\"pe-slider__track-part pe-slider__track-rest\" style=
+    \"max-width: 50%;\">
+      <div class=\"pe-slider__track-bar\">
+        <div class=\"pe-slider__track-bar-value\"></div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: ticks with pin 1`] = `
+"<div class=
+\"pe-slider pe-slider--pin pe-slider--track pe-slider--min pe-slider--ticks\">
+<div class=\"pe-slider__track\">
+    <div class=\"pe-slider__track-part pe-slider__track-value\">
+      <div class=\"pe-slider__track-bar\">
+        <div class=\"pe-slider__track-bar-value\"></div>
+      </div>
+    </div>
+    <div class=\"pe-slider__control\" tabindex=\"0\" step=\"10\"></div>
+    <div class=\"pe-slider__track-part pe-slider__track-rest\" style=
+    \"max-width: 100%;\">
+      <div class=\"pe-slider__track-bar\">
+        <div class=\"pe-slider__track-bar-value\"></div>
+      </div>
+    </div>
+    <div class=\"pe-slider__ticks\">
+      <div class=\"pe-slider__ticks-tick\"></div>
+      <div class=\"pe-slider__ticks-tick\"></div>
+      <div class=\"pe-slider__ticks-tick\"></div>
+      <div class=\"pe-slider__ticks-tick\"></div>
+      <div class=\"pe-slider__ticks-tick\"></div>
+      <div class=\"pe-slider__ticks-tick\"></div>
+      <div class=\"pe-slider__ticks-tick\"></div>
+      <div class=\"pe-slider__ticks-tick\"></div>
+      <div class=\"pe-slider__ticks-tick\"></div>
+      <div class=\"pe-slider__ticks-tick\"></div>
+      <div class=\"pe-slider__ticks-tick\"></div>
+    </div>
+    <div class=\"pe-slider__pin\" value=\"0\"></div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Option: ticks, step (10) 1`] = `
+"<div>
+  <div>
+    Value: 0
+  </div>
+  <div class=
+  \"pe-slider pe-slider--track pe-slider--min pe-slider--ticks\">
+    <div class=\"pe-slider__track\">
+      <div class=\"pe-slider__track-part pe-slider__track-value\">
+        <div class=\"pe-slider__track-bar\">
+          <div class=\"pe-slider__track-bar-value\"></div>
+        </div>
+      </div>
+      <div class=\"pe-slider__control\" tabindex=\"0\" step=\"10\"></div>
+      <div class=\"pe-slider__track-part pe-slider__track-rest\"
+      style=\"max-width: 100%;\">
+        <div class=\"pe-slider__track-bar\">
+          <div class=\"pe-slider__track-bar-value\"></div>
+        </div>
+      </div>
+      <div class=\"pe-slider__ticks\">
+        <div class=\"pe-slider__ticks-tick\"></div>
+        <div class=\"pe-slider__ticks-tick\"></div>
+        <div class=\"pe-slider__ticks-tick\"></div>
+        <div class=\"pe-slider__ticks-tick\"></div>
+        <div class=\"pe-slider__ticks-tick\"></div>
+        <div class=\"pe-slider__ticks-tick\"></div>
+        <div class=\"pe-slider__ticks-tick\"></div>
+        <div class=\"pe-slider__ticks-tick\"></div>
+        <div class=\"pe-slider__ticks-tick\"></div>
+        <div class=\"pe-slider__ticks-tick\"></div>
+        <div class=\"pe-slider__ticks-tick\"></div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Themed slider (colors) 1`] = `
+"<div class=\"pe-slider pe-slider--track slider-custom-color\">
+  <div class=\"pe-slider__track\">
+    <div class=\"pe-slider__track-part pe-slider__track-value\">
+      <div class=\"pe-slider__track-bar\">
+        <div class=\"pe-slider__track-bar-value\"></div>
+      </div>
+    </div>
+    <div class=\"pe-slider__control\" tabindex=\"0\"></div>
+    <div class=\"pe-slider__track-part pe-slider__track-rest\" style=
+    \"max-width: 50%;\">
+      <div class=\"pe-slider__track-bar\">
+        <div class=\"pe-slider__track-bar-value\"></div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test Use left value for extra "unspecified value" step 1`] = `
+"<div>
+  <div>
+    Age (not set)
+  </div>
+  <div class=\"pe-slider pe-slider--track pe-slider--min\">
+    <div class=\"pe-slider__track\">
+      <div class=\"pe-slider__track-part pe-slider__track-value\">
+        <div class=\"pe-slider__track-bar\">
+          <div class=\"pe-slider__track-bar-value\"></div>
+        </div>
+      </div>
+      <div class=\"pe-slider__control\" tabindex=\"0\"></div>
+      <div class=\"pe-slider__track-part pe-slider__track-rest\"
+      style=\"max-width: 100%;\">
+        <div class=\"pe-slider__track-bar\">
+          <div class=\"pe-slider__track-bar-value\"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test With an editable numeric value 1`] = `
+"<div class=\"rgb-slider\">
+  <div style=\"background-color: rgb(127, 127, 127);\" class=
+  \"result\"></div>
+  <div class=\"pe-slider pe-slider--track\">
+    <div class=\"pe-slider__label\">
+      R
+    </div>
+    <div class=\"pe-slider__track\">
+      <div class=\"pe-slider__track-part pe-slider__track-value\">
+        <div class=\"pe-slider__track-bar\">
+          <div class=\"pe-slider__track-bar-value\"></div>
+        </div>
+      </div>
+      <div class=\"pe-slider__control\" tabindex=\"0\"></div>
+      <div class=\"pe-slider__track-part pe-slider__track-rest\"
+      style=\"max-width: 50.19607843137255%;\">
+        <div class=\"pe-slider__track-bar\">
+          <div class=\"pe-slider__track-bar-value\"></div>
+        </div>
+      </div>
+    </div>
+    <div class=
+    \"pe-textfield pe-textfield--dirty pe-textfield--hide-spinner pe-textfield--hide-clear pe-textfield--hide-validation\">
+    <div class=\"pe-textfield__input-area\">
+        <input class=\"pe-textfield__input\" type=\"number\" maxlength=
+        \"3\" max=\"255\" min=\"0\">
+      </div>
+      <div class=\"pe-textfield__error-placeholder\"></div>
+    </div>
+  </div>
+  <div class=\"pe-slider pe-slider--track\">
+    <div class=\"pe-slider__label\">
+      G
+    </div>
+    <div class=\"pe-slider__track\">
+      <div class=\"pe-slider__track-part pe-slider__track-value\">
+        <div class=\"pe-slider__track-bar\">
+          <div class=\"pe-slider__track-bar-value\"></div>
+        </div>
+      </div>
+      <div class=\"pe-slider__control\" tabindex=\"0\"></div>
+      <div class=\"pe-slider__track-part pe-slider__track-rest\"
+      style=\"max-width: 50.19607843137255%;\">
+        <div class=\"pe-slider__track-bar\">
+          <div class=\"pe-slider__track-bar-value\"></div>
+        </div>
+      </div>
+    </div>
+    <div class=
+    \"pe-textfield pe-textfield--dirty pe-textfield--hide-spinner pe-textfield--hide-clear pe-textfield--hide-validation\">
+    <div class=\"pe-textfield__input-area\">
+        <input class=\"pe-textfield__input\" type=\"number\" maxlength=
+        \"3\" max=\"255\" min=\"0\">
+      </div>
+      <div class=\"pe-textfield__error-placeholder\"></div>
+    </div>
+  </div>
+  <div class=\"pe-slider pe-slider--track\">
+    <div class=\"pe-slider__label\">
+      B
+    </div>
+    <div class=\"pe-slider__track\">
+      <div class=\"pe-slider__track-part pe-slider__track-value\">
+        <div class=\"pe-slider__track-bar\">
+          <div class=\"pe-slider__track-bar-value\"></div>
+        </div>
+      </div>
+      <div class=\"pe-slider__control\" tabindex=\"0\"></div>
+      <div class=\"pe-slider__track-part pe-slider__track-rest\"
+      style=\"max-width: 50.19607843137255%;\">
+        <div class=\"pe-slider__track-bar\">
+          <div class=\"pe-slider__track-bar-value\"></div>
+        </div>
+      </div>
+    </div>
+    <div class=
+    \"pe-textfield pe-textfield--dirty pe-textfield--hide-spinner pe-textfield--hide-clear pe-textfield--hide-validation\">
+    <div class=\"pe-textfield__input-area\">
+        <input class=\"pe-textfield__input\" type=\"number\" maxlength=
+        \"3\" max=\"255\" min=\"0\">
+      </div>
+      <div class=\"pe-textfield__error-placeholder\"></div>
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`test With icon, pin and ticks 1`] = `
+"<div class=
+\"pe-slider pe-slider--pin pe-slider--track pe-slider--min pe-slider--ticks\">
+<div class=\"pe-icon pe-icon--regular\">
+    <div class=\"pe-svg\">
+      <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+        <path d=
+        \"M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z\">
+        </path>
+      </svg>
+    </div>
+  </div>
+  <div class=\"pe-slider__track\">
+    <div class=\"pe-slider__track-part pe-slider__track-value\">
+      <div class=\"pe-slider__track-bar\">
+        <div class=\"pe-slider__track-bar-value\"></div>
+      </div>
+    </div>
+    <div class=\"pe-slider__control\" tabindex=\"0\" step=\"10\"></div>
+    <div class=\"pe-slider__track-part pe-slider__track-rest\" style=
+    \"max-width: 100%;\">
+      <div class=\"pe-slider__track-bar\">
+        <div class=\"pe-slider__track-bar-value\"></div>
+      </div>
+    </div>
+    <div class=\"pe-slider__ticks\">
+      <div class=\"pe-slider__ticks-tick\"></div>
+      <div class=\"pe-slider__ticks-tick\"></div>
+      <div class=\"pe-slider__ticks-tick\"></div>
+      <div class=\"pe-slider__ticks-tick\"></div>
+      <div class=\"pe-slider__ticks-tick\"></div>
+      <div class=\"pe-slider__ticks-tick\"></div>
+      <div class=\"pe-slider__ticks-tick\"></div>
+      <div class=\"pe-slider__ticks-tick\"></div>
+      <div class=\"pe-slider__ticks-tick\"></div>
+      <div class=\"pe-slider__ticks-tick\"></div>
+      <div class=\"pe-slider__ticks-tick\"></div>
+    </div>
+    <div class=\"pe-slider__pin\" value=\"0\"></div>
+  </div>
+</div>
+"
+`;
+
+exports[`test With icons 1`] = `
+"<div class=\"volume\">
+  <div class=\"header\">
+    Media volume
+  </div>
+  <div class=\"pe-slider pe-slider--track\">
+    <div class=\"pe-icon pe-icon--regular\">
+      <div class=\"pe-svg\">
+        <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+          <path d=
+          \"M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z\">
+          </path>
+        </svg>
+      </div>
+    </div>
+    <div class=\"pe-slider__track\">
+      <div class=\"pe-slider__track-part pe-slider__track-value\">
+        <div class=\"pe-slider__track-bar\">
+          <div class=\"pe-slider__track-bar-value\"></div>
+        </div>
+      </div>
+      <div class=\"pe-slider__control\" tabindex=\"0\"></div>
+      <div class=\"pe-slider__track-part pe-slider__track-rest\"
+      style=\"max-width: 60%;\">
+        <div class=\"pe-slider__track-bar\">
+          <div class=\"pe-slider__track-bar-value\"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\"header\">
+    Alarm volume
+  </div>
+  <div class=\"pe-slider pe-slider--track\">
+    <div class=\"pe-icon pe-icon--regular\">
+      <div class=\"pe-svg\">
+        <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+          <path d=
+          \"M7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3V9z\">
+          </path>
+        </svg>
+      </div>
+    </div>
+    <div class=\"pe-slider__track\">
+      <div class=\"pe-slider__track-part pe-slider__track-value\">
+        <div class=\"pe-slider__track-bar\">
+          <div class=\"pe-slider__track-bar-value\"></div>
+        </div>
+      </div>
+      <div class=\"pe-slider__control\" tabindex=\"0\"></div>
+      <div class=\"pe-slider__track-part pe-slider__track-rest\"
+      style=\"max-width: 80%;\">
+        <div class=\"pe-slider__track-bar\">
+          <div class=\"pe-slider__track-bar-value\"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\"header\">
+    Headphone volume
+  </div>
+  <div class=\"pe-slider pe-slider--disabled pe-slider--track\">
+    <div class=\"pe-icon pe-icon--regular\">
+      <div class=\"pe-svg\">
+        <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
+        enable-background=\"new 0 0 24.00 24.00\" xml:space=
+        \"preserve\">
+          <path fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"0.2\"
+          stroke-linejoin=\"round\" d=
+          \"M 11.9994,0.998068C 7.02841,0.998068 2.9994,5.02706 2.9994,9.99807L 2.9994,16.9981C 2.9994,18.6551 4.3424,19.9981 5.9994,19.9981L 8.9994,19.9981L 8.9994,11.9981L 4.9994,11.9981L 4.9994,9.99807C 4.9994,6.13207 8.1334,2.99807 11.9994,2.99807C 15.8654,2.99807 18.9994,6.13207 18.9994,9.99807L 18.9994,11.9981L 14.9994,11.9981L 14.9994,19.9981L 17.9994,19.9981C 19.6564,19.9981 20.9994,18.6551 20.9994,16.9981L 20.9994,9.99807C 20.9994,5.02706 16.9704,0.998068 11.9994,0.998068 Z\">
+          </path>
+        </svg>
+      </div>
+    </div>
+    <div class=\"pe-slider__track\">
+      <div class=\"pe-slider__track-part pe-slider__track-value\">
+        <div class=\"pe-slider__track-bar\">
+          <div class=\"pe-slider__track-bar-value\"></div>
+        </div>
+      </div>
+      <div class=\"pe-slider__control\" disabled=\"disabled\"></div>
+      <div class=\"pe-slider__track-part pe-slider__track-rest\"
+      style=\"max-width: 80%;\">
+        <div class=\"pe-slider__track-bar\">
+          <div class=\"pe-slider__track-bar-value\"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;

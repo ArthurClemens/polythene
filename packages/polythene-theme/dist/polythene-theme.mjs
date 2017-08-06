@@ -1,4 +1,4 @@
-import { defaultVariables } from 'polythene-motif';
+import { vars } from 'polythene-style';
 
 // Placeholder for custom theme config file
 // In your app paths setup, change the current path to your custom config file; see the theme README.
@@ -29,4 +29,4 @@ import { defaultVariables } from 'polythene-motif';
 
 var componentConfig = {};
 
-export { defaultVariables as appConfig, componentConfig };
+export { vars, componentConfig };

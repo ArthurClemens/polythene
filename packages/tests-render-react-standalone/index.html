@@ -1,0 +1,205 @@
+<!doctype html>
+<head>
+<title>Polythene for React Standalone Test</title>
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta http-equiv="cleartype" content="on">
+</head>
+<body>
+<div id="root" class="app"></div>
+
+<style>
+body, html {
+  height: 100%;
+  background: #f0f0f0;
+  line-height: 1.3;
+  padding: 0;
+  margin: 0;
+}
+.page {}
+.row {
+  padding: 8px 16px;
+  max-width: 480px;
+  margin: 0 auto;
+  background: #fff;
+}
+.row + .row {
+  border-top: 1px solid #eee;
+}
+.component {
+  margin: 1rem 0;
+}
+h1 {
+  font-size: 32px;
+  margin: 1rem 0 0 0;
+  color: #222;
+}
+h2 {
+  font-size: 18px;
+  margin: 0;
+  color: #444;
+}
+@media only screen and (min-width:480px) {
+  .page {
+    padding: 16px;
+  }
+  .row {
+    padding: 16px 24px;
+  }
+}
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react-dom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+<script src="js/polythene-react-standalone.js"></script>
+
+<script type="text/babel">
+/* global polythene */
+const { Button, RaisedButton, FAB, Checkbox, Dialog, Switch, TextField, Slider, MaterialDesignSpinner, Notification, Snackbar } = polythene;
+
+const linkIconSVG = <svg width="24" height="24" viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>;
+
+Button.theme(".themed-button", {
+  color_light_background: "#FF1744",
+  color_light_text: "#fff"
+});
+
+const App = () => (
+  <div className="page">
+    <div className="row">
+      <h1>Polythene for React</h1>
+      <h2>Standalone Test</h2>
+    </div>
+    <div className="row">
+      <h2>Raised Button</h2>
+      <div className="component">
+        <RaisedButton
+          label="Button"
+        />
+      </div>
+    </div>
+    <div className="row">
+      <h2>Regular Button</h2>
+      <div className="component">
+        <Button
+          label="Button"
+        />
+      </div>
+    </div>
+    <div className="row">
+      <h2>Themed Regular Button</h2>
+      <div className="component">
+        <Button
+          label="Button"
+          className="themed-button"
+        />
+      </div>
+    </div>
+    <div className="row">
+      <h2>FAB</h2>
+      <div className="component">
+        <FAB
+          icon={{ svg: linkIconSVG }}
+        />
+      </div>
+    </div>
+    <div className="row">
+      <h2>Checkbox</h2>
+      <div className="component">
+        <Checkbox
+          label="Label"
+        />
+      </div>
+    </div>
+    <div className="row">
+      <h2>Switch</h2>
+      <div className="component">
+        <Switch
+          label="Label"
+        />
+      </div>
+    </div>
+    <div className="row">
+      <h2>TextField</h2>
+      <div className="component">
+        <TextField
+          label="Name"
+          floatingLabel
+        />
+      </div>
+    </div>
+    <div className="row">
+      <h2>Slider</h2>
+      <div className="component">
+        <Slider
+          defaultValue={50}
+        />
+      </div>
+    </div>
+    <div className="row">
+      <h2>Spinner</h2>
+      <div className="component">
+        <MaterialDesignSpinner
+          permanent
+        />
+      </div>
+    </div>
+    <div className="row">
+      <h2>Dialog</h2>
+      <div className="component">
+        <RaisedButton
+          label="Show dialog"
+          events={{
+            onClick: () => Dialog.show({
+              /* note the Dialog component is below the other elements in the app */
+              title: "Hello",
+              body: "Click outside to close, or press ESCAPE",
+              backdrop: true
+            })
+          }}
+        />
+      </div>
+    </div>
+    <div className="row">
+      <h2>Notification</h2>
+      <div className="component">
+        <RaisedButton
+          label="Show notification"
+          events={{
+            onClick: () => Notification.show({
+              /* note the Notification component is below the other elements in the app */
+              title: "Hello"
+            })
+          }}
+        />
+      </div>
+    </div>
+    <div className="row">
+      <h2>Snackbar</h2>
+      <div className="component">
+        <RaisedButton
+          label="Show snackbar"
+          events={{
+            onClick: () => Snackbar.show({
+              /* note the Snackbar component is below the other elements in the app */
+              title: "Hello"
+            })
+          }}
+        />
+      </div>
+    </div>
+    <Dialog />
+    <Snackbar />
+    <Notification />
+  </div>
+);
+
+ReactDOM.render(
+  <App />,
+  document.getElementById("root")
+);
+</script>
+
+</body>

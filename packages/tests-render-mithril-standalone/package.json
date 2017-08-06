@@ -1,0 +1,13 @@
+{
+  "name": "tests-render-mithril-standalone",
+  "private": true,
+  "description": "",
+  "scripts": {
+    "dev": "http-server -p 3200",
+    "build": "yarn run update",
+    "update": "cd ../polythene-mithril && yarn run build-standalone && cd - && cp ../polythene-mithril/dist/polythene-mithril-standalone.js* js/"
+  },
+  "devDependencies": {
+    "http-server": "^0.10.0"
+  }
+}

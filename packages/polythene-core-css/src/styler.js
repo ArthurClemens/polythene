@@ -1,9 +1,9 @@
-import { isServer } from 'polythene-core';
 import { prefixPlugin } from "j2c-plugin-prefix-browser";
+import { isServer } from "polythene-core";
 import J2c from "j2c";
 
 const j2c = new J2c(prefixPlugin);
-const ID_REGEX = /[^a-z0-9\-]/g;
+const ID_REGEX = /[^a-z0-9\\-]/g;
 
 /*
  * @param id: identifier, used as HTMLElement id for the attached <style></style> element
@@ -19,6 +19,7 @@ const add = (id, ...styles) => {
  * Removes a style from head.
  */
 const remove = id => {
+  if (isServer) return;
   if (id) {
     const old = document.getElementById(id);
     if (old && old.parentNode) {
@@ -34,9 +35,7 @@ const remove = id => {
  * styles: list of lists style objects
  */
 const addToDocument = (opts, ...styles) => {
-  if (isServer) {
-    return;
-  }
+  if (isServer) return;
   const id = opts.id.replace(ID_REGEX, "_");
   const documentRef = opts.document || window.document;
   remove(id);

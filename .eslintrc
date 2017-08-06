@@ -6,22 +6,35 @@
     },
     "extends": "eslint:recommended",
     "plugins": [
+      "react"
     ],
     "parserOptions": {
         "sourceType": "module",
         "ecmaVersion": 6,
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,
+            "jsx": true
         }
     },
     "rules": {
-        "indent": "off",
+        "indent": [
+            "error",
+            2
+        ],
         "linebreak-style": [
             "error",
             "unix"
         ],
-        "quotes": 0,
-        "semi": 0,
-        "no-console": 1
+        "quotes": [
+            "error",
+            "double"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "no-console": 1,
+        "react/jsx-uses-react": "error",
+        "react/jsx-uses-vars": "error"
     }
 }

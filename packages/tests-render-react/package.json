@@ -1,0 +1,27 @@
+{
+  "name": "polythene-test-render-react",
+  "private": true,
+  "main": "dist/js/test.js",
+  "module": "dist/js/test.mjs",
+  "scripts": {
+    "dev": "npm-run-all --parallel dev:watch dev:serve",
+    "dev:serve": "webpack-dev-server --config scripts/webpack.config.dev.js --port 3100",
+    "dev:watch": "webpack --watch --config scripts/webpack.config.dev.js",
+    "build": "webpack -p --config scripts/webpack.config.js"
+  },
+  "dependencies": {
+    "polythene-core": "1.0.0-rc.1",
+    "polythene-fastclick": "1.0.0-rc.1",
+    "polythene-react": "1.0.0-rc.1",
+    "polythene-style": "1.0.0-rc.1",
+    "polythene-test": "1.0.0-rc.1",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-router-dom": "^4.1.1"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.0.2",
+    "webpack": "^2.5.1",
+    "webpack-dev-server": "^2.4.1"
+  }
+}

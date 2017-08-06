@@ -1,0 +1,23 @@
+{
+  "name": "polythene-react-icon",
+  "version": "1.0.0-rc.1",
+  "description": "",
+  "main": "dist/polythene-react-icon.js",
+  "module": "dist/polythene-react-icon.mjs",
+  "scripts": {
+    "clean": "rm -rf dist && mkdir dist",
+    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
+    "build": "yarn run rollup"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "dependencies": {
+    "polythene-core-icon": "1.0.0-rc.1",
+    "polythene-react-base": "1.0.0-rc.1",
+    "polythene-react-svg": "1.0.0-rc.1"
+  },
+  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
+  "license": "MIT"
+}

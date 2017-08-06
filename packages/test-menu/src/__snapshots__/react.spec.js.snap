@@ -1,0 +1,587 @@
+exports[`test Menu items -- dark tone 1`] = `
+<Menu
+  content={
+    Array [
+      <List
+        compact={true}
+        hoverable={true}
+        tiles={
+            Array [
+                <ListTile
+                  hoverable={true}
+                  secondary={
+                        Object {
+                              "content": "⌘B",
+                            }
+                  }
+                  title="Bold" />,
+                <ListTile
+                  hoverable={true}
+                  secondary={
+                        Object {
+                              "content": "⌘I",
+                            }
+                  }
+                  title="Italic" />,
+                <ListTile
+                  hoverable={true}
+                  secondary={
+                        Object {
+                              "content": "⌘U",
+                            }
+                  }
+                  title="Underline" />,
+                <ListTile
+                  hoverable={true}
+                  secondary={
+                        Object {
+                              "content": "Alt+Shift+5",
+                            }
+                  }
+                  title="Strikethrough" />,
+                <ListTile
+                  hoverable={true}
+                  secondary={
+                        Object {
+                              "content": "⌘.",
+                            }
+                  }
+                  title="Superscript" />,
+                <ListTile
+                  hoverable={true}
+                  secondary={
+                        Object {
+                              "content": "⌘,",
+                            }
+                  }
+                  title="Subscript" />,
+              ]
+        } />,
+      <List
+        compact={true}
+        hoverable={true}
+        tiles={
+            Array [
+                <ListTile
+                  disabled={true}
+                  hoverable={true}
+                  secondary={
+                        Object {
+                              "content": "⌘/",
+                            }
+                  }
+                  title="Clear formatting" />,
+                <ListTile
+                  hoverable={true}
+                  secondary={
+                        Object {
+                              "content": "",
+                            }
+                  }
+                  title="Custom spacing" />,
+              ]
+        } />,
+    ]
+  }
+  permanent={true}
+  size={5} />
+`;
+
+exports[`test Menu items 1`] = `
+<Menu
+  content={
+    Array [
+      <List
+        compact={true}
+        hoverable={true}
+        tiles={
+            Array [
+                <ListTile
+                  hoverable={true}
+                  secondary={
+                        Object {
+                              "content": "⌘B",
+                            }
+                  }
+                  title="Bold" />,
+                <ListTile
+                  hoverable={true}
+                  secondary={
+                        Object {
+                              "content": "⌘I",
+                            }
+                  }
+                  title="Italic" />,
+                <ListTile
+                  hoverable={true}
+                  secondary={
+                        Object {
+                              "content": "⌘U",
+                            }
+                  }
+                  title="Underline" />,
+                <ListTile
+                  hoverable={true}
+                  secondary={
+                        Object {
+                              "content": "Alt+Shift+5",
+                            }
+                  }
+                  title="Strikethrough" />,
+                <ListTile
+                  hoverable={true}
+                  secondary={
+                        Object {
+                              "content": "⌘.",
+                            }
+                  }
+                  title="Superscript" />,
+                <ListTile
+                  hoverable={true}
+                  secondary={
+                        Object {
+                              "content": "⌘,",
+                            }
+                  }
+                  title="Subscript" />,
+              ]
+        } />,
+      <List
+        compact={true}
+        hoverable={true}
+        tiles={
+            Array [
+                <ListTile
+                  disabled={true}
+                  hoverable={true}
+                  secondary={
+                        Object {
+                              "content": "⌘/",
+                            }
+                  }
+                  title="Clear formatting" />,
+                <ListTile
+                  hoverable={true}
+                  secondary={
+                        Object {
+                              "content": "",
+                            }
+                  }
+                  title="Custom spacing" />,
+              ]
+        } />,
+    ]
+  }
+  permanent={true}
+  size={5} />
+`;
+
+exports[`test No options 1`] = `
+<MenuToggle
+  instance={[Function]}
+  permanent={true}
+  placeholderClassName="pe-menu__placeholder" />
+`;
+
+exports[`test Option: class 1`] = `
+<MenuToggle
+  className="class-x"
+  instance={[Function]}
+  permanent={true}
+  placeholderClassName="pe-menu__placeholder" />
+`;
+
+exports[`test Option: className 1`] = `
+<MenuToggle
+  className="className-x"
+  instance={[Function]}
+  permanent={true}
+  placeholderClassName="pe-menu__placeholder" />
+`;
+
+exports[`test Option: element 1`] = `
+<MenuToggle
+  element="a"
+  instance={[Function]}
+  permanent={true}
+  placeholderClassName="pe-menu__placeholder" />
+`;
+
+exports[`test Option: id 1`] = `
+<MenuToggle
+  id="id-x"
+  instance={[Function]}
+  permanent={true}
+  placeholderClassName="pe-menu__placeholder" />
+`;
+
+exports[`test Option: size 1`] = `
+<div>
+  <Menu
+    content={
+      <List
+        compact={true}
+        header={
+          Object {
+            "title": 1.5,
+          }
+        }
+        tiles={
+          Array [
+            <ListTile
+              title="Yes" />,
+            <ListTile
+              title="No" />,
+            <ListTile
+              title="Maybe" />,
+          ]
+        } />
+    }
+    permanent={true}
+    size={1.5}
+    style={
+      Object {
+        "margin": "0 0 1rem 0",
+      }
+    } />
+  <Menu
+    content={
+      <List
+        compact={true}
+        header={
+          Object {
+            "title": 2,
+          }
+        }
+        tiles={
+          Array [
+            <ListTile
+              title="Copy" />,
+            <ListTile
+              title="Paste" />,
+            <ListTile
+              title="Undo" />,
+          ]
+        } />
+    }
+    permanent={true}
+    size={2}
+    style={
+      Object {
+        "margin": "0 0 1rem 0",
+      }
+    } />
+  <Menu
+    content={
+      <List
+        compact={true}
+        header={
+          Object {
+            "title": 3,
+          }
+        }
+        tiles={
+          Array [
+            <ListTile
+              title="Home" />,
+            <ListTile
+              title="Back" />,
+            <ListTile
+              title="Recently viewed" />,
+          ]
+        } />
+    }
+    permanent={true}
+    size={3}
+    style={
+      Object {
+        "margin": "0 0 1rem 0",
+      }
+    } />
+  <Menu
+    content={
+      <List
+        compact={true}
+        header={
+          Object {
+            "title": 4,
+          }
+        }
+        tiles={
+          Array [
+            <ListTile
+              title="Paragraph styles" />,
+            <ListTile
+              title="Line spacing" />,
+            <ListTile
+              title="Numbered list" />,
+          ]
+        } />
+    }
+    permanent={true}
+    size={4}
+    style={
+      Object {
+        "margin": "0 0 1rem 0",
+      }
+    } />
+  <Menu
+    content={
+      <List
+        compact={true}
+        header={
+          Object {
+            "title": 5,
+          }
+        }
+        tiles={
+          Array [
+            <ListTile
+              title="Add space before paragraph" />,
+            <ListTile
+              title="Add space after paragraph" />,
+            <ListTile
+              title="Custom spacing" />,
+          ]
+        } />
+    }
+    permanent={true}
+    size={5}
+    style={
+      Object {
+        "margin": "0 0 1rem 0",
+      }
+    } />
+  <Menu
+    content={
+      <List
+        compact={true}
+        header={
+          Object {
+            "title": 6,
+          }
+        }
+        tiles={
+          Array [
+            <ListTile
+              title="The Mind Is Its Own Beautiful Prisoner" />,
+            <ListTile
+              title="If I Should Sleep With A Lady Called Death" />,
+            <ListTile
+              title="It May Not Always Be So; And I Say" />,
+          ]
+        } />
+    }
+    permanent={true}
+    size={6}
+    style={
+      Object {
+        "margin": "0 0 1rem 0",
+      }
+    } />
+  <Menu
+    content={
+      <List
+        compact={true}
+        header={
+          Object {
+            "title": 7,
+          }
+        }
+        tiles={
+          Array [
+            <ListTile
+              title="Any bar, any cross, any impediment will be" />,
+            <ListTile
+              title="medicinable to me: I am sick in displeasure to him" />,
+            <ListTile
+              title="and whatsoever comes athwart his affection ranges" />,
+            <ListTile
+              title="evenly with mine. How canst thou cross this marriage?" />,
+          ]
+        } />
+    }
+    permanent={true}
+    size={7}
+    style={
+      Object {
+        "margin": "0 0 1rem 0",
+      }
+    } />
+  <Menu
+    content={
+      <List
+        compact={true}
+        header={
+          Object {
+            "title": "auto",
+          }
+        }
+        tiles={
+          Array [
+            <ListTile
+              title="Paragraph styles" />,
+            <ListTile
+              title="Line spacing" />,
+            <ListTile
+              title="Numbered list" />,
+          ]
+        } />
+    }
+    permanent={true}
+    size="auto"
+    style={
+      Object {
+        "margin": "0 0 1rem 0",
+      }
+    } />
+</div>
+`;
+
+exports[`test Option: style 1`] = `
+<Menu
+  content={
+    <List>
+      <ListTile
+        ink={true}
+        style={
+          Object {
+            "backgroundColor": "#2196F3",
+            "color": "#fff",
+          }
+        }
+        title="Yes" />
+      <ListTile
+        ink={true}
+        style={
+          Object {
+            "backgroundColor": "#2196F3",
+            "color": "#fff",
+          }
+        }
+        title="No" />
+    </List>
+  }
+  permanent={true}
+  style={
+    Object {
+      "backgroundColor": "#2196F3",
+      "color": "#fff",
+    }
+  }
+  tone="dark" />
+`;
+
+exports[`test Permanent (JSX) 1`] = `
+<Menu
+  permanent={true}
+  size={5}>
+  <List
+    compact={true}
+    hoverable={true}
+    tiles={
+      Array [
+        <ListTile
+          disabled={false}
+          hoverable={true}
+          secondary={
+              Object {
+                  "content": "⌘B",
+                }
+          }
+          title="Bold" />,
+        <ListTile
+          disabled={false}
+          hoverable={true}
+          secondary={
+              Object {
+                  "content": "⌘I",
+                }
+          }
+          title="Italic" />,
+        <ListTile
+          disabled={false}
+          hoverable={true}
+          secondary={
+              Object {
+                  "content": "⌘U",
+                }
+          }
+          title="Underline" />,
+        <ListTile
+          disabled={false}
+          hoverable={true}
+          secondary={
+              Object {
+                  "content": "Alt+Shift+5",
+                }
+          }
+          title="Strikethrough" />,
+        <ListTile
+          disabled={false}
+          hoverable={true}
+          secondary={
+              Object {
+                  "content": "⌘.",
+                }
+          }
+          title="Superscript" />,
+        <ListTile
+          disabled={false}
+          hoverable={true}
+          secondary={
+              Object {
+                  "content": "⌘,",
+                }
+          }
+          title="Subscript" />,
+      ]
+    } />
+  <List
+    compact={true}
+    hoverable={true}
+    tiles={
+      Array [
+        <ListTile
+          disabled={true}
+          hoverable={true}
+          secondary={
+              Object {
+                  "content": "⌘/",
+                }
+          }
+          title="Clear formatting" />,
+        <ListTile
+          disabled={false}
+          hoverable={true}
+          secondary={
+              Object {
+                  "content": "",
+                }
+          }
+          title="Custom spacing" />,
+      ]
+    } />
+</Menu>
+`;
+
+exports[`test Themed (color and border radius) 1`] = `
+<Menu
+  className="menu-tests-blue-menu"
+  content={
+    <List>
+      <ListTile
+        className="menu-tests-blue-menu-list-tile"
+        hoverable={true}
+        ink={true}
+        title="Yes" />
+      <ListTile
+        className="menu-tests-blue-menu-list-tile"
+        hoverable={true}
+        ink={true}
+        title="No" />
+    </List>
+  }
+  permanent={true}
+  tone="dark" />
+`;

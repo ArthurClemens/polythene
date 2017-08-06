@@ -1,119 +1,6 @@
-import { isServer } from 'polythene-core';
 import { prefixPlugin } from 'j2c-plugin-prefix-browser';
+import { isServer } from 'polythene-core';
 import J2c from 'j2c';
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-// Mixins for j2c
-
-// Centers an item absolutely within relative parent
-// mixin.fit()
-var fit = function fit() {
-  var offset = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-
-  var offsetPx = offset + "px";
-  return {
-    position: "absolute",
-    top: offsetPx,
-    right: offsetPx,
-    bottom: offsetPx,
-    left: offsetPx
-  };
-};
-
-// Optional font smoothing
-// mixin.fontSmoothing()
-var fontSmoothing = function fontSmoothing() {
-  var smoothing = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
-
-  if (smoothing) {
-    return {
-      "-webkit-font-smoothing": "antialiased",
-      "-moz-osx-font-smoothing": "grayscale"
-    };
-  } else {
-    return {
-      "-webkit-font-smoothing": "subpixel-antialiased",
-      "-moz-osx-font-smoothing": "auto"
-    };
-  }
-};
-
-// Breaks off a line with ...
-// unless lines is "none"
-// mixin.ellipsis(1, 16) // max 1 line, 16px high
-// mixin.ellipsis(2, 1.3, "em") // max 2 lines, 2.6em high
-var ellipsis = function ellipsis(lines, lineHeight) {
-  var unit = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "px";
-
-  if (lines === "none") {
-    return {
-      textOverflow: "initial",
-      overflow: "initial",
-      display: "block",
-      height: "auto",
-      maxHeight: "none"
-    };
-  }
-  return _extends({}, {
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-    textRendering: "auto" // Samsung Android
-  }, lines !== undefined ? {
-    "-webkit-line-clamp": lines,
-    "-webkit-box-orient": "vertical",
-    display: "-webkit-box"
-  } : null, lineHeight !== undefined ? {
-    maxHeight: lines * lineHeight + unit
-  } : null);
-};
-
-// Clears float
-// mixin.clearfix()
-var clearfix = function clearfix() {
-  return {
-    "&:after": {
-      content: "\"\"",
-      display: "table",
-      clear: "both"
-    }
-  };
-};
-
-// Creates sticky headers in a scrollable list
-// Does not work in Chrome: http://caniuse.com/#feat=css-sticky
-// mixin.sticky()
-var sticky = function sticky() {
-  var zIndex = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-  return {
-    position: "sticky",
-    top: 0,
-    zIndex: zIndex
-  };
-};
-
-// Creats a transition with presets
-// mixin.defaultTransition("opacity", config.animation_duration)
-var defaultTransition = function defaultTransition() {
-  var properties = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "all";
-  var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '.18s';
-  var curve = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'ease-out';
-  return {
-    transitionDelay: 0,
-    transitionDuration: duration,
-    transitionTimingFunction: curve,
-    transitionProperty: properties
-  };
-};
-
-var mixin = {
-  clearfix: clearfix,
-  defaultTransition: defaultTransition,
-  ellipsis: ellipsis,
-  fit: fit,
-  fontSmoothing: fontSmoothing,
-  sticky: sticky
-};
 
 var layout = [{
   "display": "-webkit-box"
@@ -327,8 +214,121 @@ var mixinFlex = {
   selfStretch: selfStretch
 };
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+// Mixins for j2c
+
+// Centers an item absolutely within relative parent
+// mixin.fit()
+var fit = function fit() {
+  var offset = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+
+  var offsetPx = offset + "px";
+  return {
+    position: "absolute",
+    top: offsetPx,
+    right: offsetPx,
+    bottom: offsetPx,
+    left: offsetPx
+  };
+};
+
+// Optional font smoothing
+// mixin.fontSmoothing()
+var fontSmoothing = function fontSmoothing() {
+  var smoothing = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+
+  if (smoothing) {
+    return {
+      "-webkit-font-smoothing": "antialiased",
+      "-moz-osx-font-smoothing": "grayscale"
+    };
+  } else {
+    return {
+      "-webkit-font-smoothing": "subpixel-antialiased",
+      "-moz-osx-font-smoothing": "auto"
+    };
+  }
+};
+
+// Breaks off a line with ...
+// unless lines is "none"
+// mixin.ellipsis(1, 16) // max 1 line, 16px high
+// mixin.ellipsis(2, 1.3, "em") // max 2 lines, 2.6em high
+var ellipsis = function ellipsis(lines, lineHeight) {
+  var unit = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "px";
+
+  if (lines === "none") {
+    return {
+      textOverflow: "initial",
+      overflow: "initial",
+      display: "block",
+      height: "auto",
+      maxHeight: "none"
+    };
+  }
+  return _extends({}, {
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    textRendering: "auto" // Samsung Android
+  }, lines !== undefined ? {
+    "-webkit-line-clamp": lines,
+    "-webkit-box-orient": "vertical",
+    display: "-webkit-box"
+  } : null, lineHeight !== undefined ? {
+    maxHeight: lines * lineHeight + unit
+  } : null);
+};
+
+// Clears float
+// mixin.clearfix()
+var clearfix = function clearfix() {
+  return {
+    "&:after": {
+      content: "\"\"",
+      display: "table",
+      clear: "both"
+    }
+  };
+};
+
+// Creates sticky headers in a scrollable list
+// Does not work in Chrome: http://caniuse.com/#feat=css-sticky
+// mixin.sticky()
+var sticky = function sticky() {
+  var zIndex = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+  return {
+    position: "sticky",
+    top: 0,
+    zIndex: zIndex
+  };
+};
+
+// Creats a transition with presets
+// mixin.defaultTransition("opacity", vars.animation_duration)
+var defaultTransition = function defaultTransition() {
+  var properties = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "all";
+  var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : ".18s";
+  var curve = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "ease-out";
+  return {
+    transitionDelay: "0ms",
+    transitionDuration: duration,
+    transitionTimingFunction: curve,
+    transitionProperty: properties
+  };
+};
+
+var mixin = {
+  clearfix: clearfix,
+  defaultTransition: defaultTransition,
+  ellipsis: ellipsis,
+  fit: fit,
+  fontSmoothing: fontSmoothing,
+  sticky: sticky
+};
+
 var j2c = new J2c(prefixPlugin);
-var ID_REGEX = /[^a-z0-9\-]/g;
+var ID_REGEX = /[^a-z0-9\\-]/g;
 
 /*
  * @param id: identifier, used as HTMLElement id for the attached <style></style> element
@@ -348,6 +348,7 @@ var add = function add(id) {
  * Removes a style from head.
  */
 var remove = function remove(id) {
+  if (isServer) return;
   if (id) {
     var old = document.getElementById(id);
     if (old && old.parentNode) {
@@ -367,9 +368,7 @@ var addToDocument = function addToDocument(opts) {
     styles[_key2 - 1] = arguments[_key2];
   }
 
-  if (isServer) {
-    return;
-  }
+  if (isServer) return;
   var id = opts.id.replace(ID_REGEX, "_");
   var documentRef = opts.document || window.document;
   remove(id);
@@ -413,4 +412,17 @@ var styler = {
   generateStyles: generateStyles
 };
 
-export { mixin, mixinFlex as flex, styler };
+var hex = function hex(value) {
+  var bigint = parseInt(value.substring(1), 16);
+  var r = bigint >> 16 & 255;
+  var g = bigint >> 8 & 255;
+  var b = bigint & 255;
+  return r + "," + g + "," + b;
+};
+
+var rgba = function rgba(colorStr) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return "rgba(" + colorStr + "," + opacity + ")";
+};
+
+export { mixinFlex as flex, mixin, styler, hex, rgba };

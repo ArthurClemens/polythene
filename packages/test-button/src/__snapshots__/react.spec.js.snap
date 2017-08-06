@@ -1,0 +1,549 @@
+exports[`test Dark tone class + light tone 1`] = `
+<div
+  style={
+    Object {
+      "background": "#fff",
+    }
+  }>
+  <Button
+    label="Normal"
+    tone="light" />
+  <Button
+    disabled={true}
+    label="Disabled"
+    tone="light" />
+  <Button
+    className="tests-button-themed-button"
+    label="Theme"
+    tone="light" />
+</div>
+`;
+
+exports[`test Dark tone class + light tone class 1`] = `
+<div
+  className="pe-light-tone"
+  style={
+    Object {
+      "background": "#fff",
+    }
+  }>
+  <Button
+    label="Normal" />
+  <Button
+    disabled={true}
+    label="Disabled" />
+  <Button
+    className="tests-button-themed-button"
+    label="Theme" />
+</div>
+`;
+
+exports[`test HOC (JSX) 1`] = `
+<SecondaryButton
+  label="Secondary Button" />
+`;
+
+exports[`test No options 1`] = `
+<a
+  className="pe-button pe-text-button        "
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0} />
+`;
+
+exports[`test Option: after 1`] = `
+<a
+  className="pe-button pe-text-button        "
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0}>
+  <span>
+    After
+  </span>
+</a>
+`;
+
+exports[`test Option: before 1`] = `
+<a
+  className="pe-button pe-text-button        "
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0}>
+  <span>
+    Before
+  </span>
+</a>
+`;
+
+exports[`test Option: children 1`] = `
+<a
+  className="pe-button pe-text-button        "
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0}>
+  <div
+    className="pe-button__content">
+    <Ripple />
+    <div
+      className="pe-button__wash" />
+    <div
+      className="pe-button__focus" />
+    <span>
+      Child
+    </span>
+  </div>
+</a>
+`;
+
+exports[`test Option: class 1`] = `
+<a
+  className="pe-button pe-text-button        class-x"
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0} />
+`;
+
+exports[`test Option: className 1`] = `
+<a
+  className="pe-button pe-text-button        className-x"
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0} />
+`;
+
+exports[`test Option: content 1`] = `
+<a
+  className="pe-button pe-text-button        "
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0}>
+  <div
+    className="pe-button__content">
+    <Ripple />
+    <div
+      className="pe-button__wash" />
+    <div
+      className="pe-button__focus" />
+    <span>
+      Content
+    </span>
+  </div>
+</a>
+`;
+
+exports[`test Option: element 1`] = `
+<button
+  className="pe-button pe-text-button        "
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0} />
+`;
+
+exports[`test Option: formaction 1`] = `
+<a
+  className="pe-button pe-text-button        "
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0}>
+  <div
+    className="pe-button__content">
+    <Ripple />
+    <div
+      className="pe-button__wash" />
+    <div
+      className="pe-button__focus" />
+    <div
+      className="pe-button__label">
+      Form action
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test Option: id 1`] = `
+<a
+  className="pe-button pe-text-button        "
+  id="id-x"
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0} />
+`;
+
+exports[`test Option: inactivate (2) 1`] = `
+<a
+  className="pe-button pe-text-button        "
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0}>
+  <div
+    className="pe-button__content">
+    <Ripple />
+    <div
+      className="pe-button__wash" />
+    <div
+      className="pe-button__focus" />
+    <div
+      className="pe-button__label">
+      Inactivated for 2s
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test Option: inactivate (2s) (JSX) 1`] = `
+<Button
+  inactivate={2}
+  label="Inactivated for 2s" />
+`;
+
+exports[`test Option: inactive (false) 1`] = `
+<a
+  className="pe-button pe-text-button        "
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0}>
+  <div
+    className="pe-button__content">
+    <Ripple />
+    <div
+      className="pe-button__wash" />
+    <div
+      className="pe-button__focus" />
+    <div
+      className="pe-button__label">
+      Not inactive
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test Option: inactive (true) 1`] = `
+<a
+  className="pe-button pe-text-button   pe-button--inactive     ">
+  <div
+    className="pe-button__content">
+    <Ripple />
+    <div
+      className="pe-button__wash" />
+    <div
+      className="pe-button__focus" />
+    <div
+      className="pe-button__label">
+      Inactive
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test Option: ink (false) 1`] = `
+<a
+  className="pe-button pe-text-button        "
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0}>
+  <div
+    className="pe-button__content">
+    <div
+      className="pe-button__wash" />
+    <div
+      className="pe-button__focus" />
+    <div
+      className="pe-button__label">
+      No ink
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test Option: label -- dark tone class 1`] = `
+<a
+  className="pe-button pe-text-button        "
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0}>
+  <div
+    className="pe-button__content">
+    <Ripple />
+    <div
+      className="pe-button__wash" />
+    <div
+      className="pe-button__focus" />
+    <div
+      className="pe-button__label">
+      Label
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test Option: label 1`] = `
+<a
+  className="pe-button pe-text-button        "
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0}>
+  <div
+    className="pe-button__content">
+    <Ripple />
+    <div
+      className="pe-button__wash" />
+    <div
+      className="pe-button__focus" />
+    <div
+      className="pe-button__label">
+      Label
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test Option: ripple 1`] = `
+<a
+  className="pe-button pe-text-button        "
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0}>
+  <div
+    className="pe-button__content">
+    <Ripple
+      endOpacity={1}
+      persistent={true}
+      style={
+        Object {
+          "color": "#2196F3",
+        }
+      } />
+    <div
+      className="pe-button__wash" />
+    <div
+      className="pe-button__focus" />
+    <div
+      className="pe-button__label">
+      Custom ripple
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test Option: router url (with hash) 1`] = `
+<Button
+  label="Go to #/shadow"
+  url={
+    Object {
+      "href": "#/shadow",
+    }
+  } />
+`;
+
+exports[`test Option: selected 1`] = `
+<a
+  className="pe-button pe-text-button pe-button--selected       "
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0}>
+  <div
+    className="pe-button__content">
+    <Ripple />
+    <div
+      className="pe-button__wash" />
+    <div
+      className="pe-button__focus" />
+    <div
+      className="pe-button__label">
+      Selected
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test Option: style (colors) 1`] = `
+<a
+  className="pe-button pe-text-button        "
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0}>
+  <div
+    className="pe-button__content"
+    style={
+      Object {
+        "backgroundColor": "#EF6C00",
+        "color": "#fff",
+      }
+    }>
+    <Ripple />
+    <div
+      className="pe-button__wash" />
+    <div
+      className="pe-button__focus" />
+    <div
+      className="pe-button__label">
+      Styled
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test Option: tabindex 1`] = `
+<a
+  className="pe-button pe-text-button        "
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={3} />
+`;
+
+exports[`test Option: tone "dark" -- dark tone class 1`] = `
+<a
+  className="pe-button pe-text-button      pe-dark-tone  "
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0}>
+  <div
+    className="pe-button__content">
+    <Ripple />
+    <div
+      className="pe-button__wash" />
+    <div
+      className="pe-button__focus" />
+    <div
+      className="pe-button__label">
+      Label
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test Option: wash (false) 1`] = `
+<a
+  className="pe-button pe-text-button        "
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0}>
+  <div
+    className="pe-button__content">
+    <Ripple />
+    <div
+      className="pe-button__focus" />
+    <div
+      className="pe-button__label">
+      No wash
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test Themed Button (colors) 1`] = `
+<a
+  className="pe-button pe-text-button        tests-button-themed-button"
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0}>
+  <div
+    className="pe-button__content">
+    <Ripple />
+    <div
+      className="pe-button__wash" />
+    <div
+      className="pe-button__focus" />
+    <div
+      className="pe-button__label">
+      Themed Button
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test Themed Button -- dark tone class 1`] = `
+<a
+  className="pe-button pe-text-button        tests-button-themed-button"
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0}>
+  <div
+    className="pe-button__content">
+    <Ripple />
+    <div
+      className="pe-button__wash" />
+    <div
+      className="pe-button__focus" />
+    <div
+      className="pe-button__label">
+      Themed Button
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test Themed Button blue on dark -- dark tone class 1`] = `
+<a
+  className="pe-button pe-text-button        blue-on-dark-Button"
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0}>
+  <div
+    className="pe-button__content">
+    <Ripple />
+    <div
+      className="pe-button__wash" />
+    <div
+      className="pe-button__focus" />
+    <div
+      className="pe-button__label">
+      Blue on dark Button
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test Themed Button: (option: borders) (JSX) 1`] = `
+<Button
+  borders={true}
+  className="react-button-bordered-button"
+  label="Button" />
+`;
+
+exports[`test Themed Button: (option: borders) -- dark tone class 1`] = `
+<a
+  className="pe-button pe-text-button    pe-button--borders    tests-button-bordered-button"
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0}>
+  <div
+    className="pe-button__content">
+    <Ripple />
+    <div
+      className="pe-button__wash" />
+    <div
+      className="pe-button__focus" />
+    <div
+      className="pe-button__label">
+      Borders dark tone
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test Themed Button: (option: borders) 1`] = `
+<a
+  className="pe-button pe-text-button    pe-button--borders    tests-button-bordered-button"
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0}>
+  <div
+    className="pe-button__content">
+    <Ripple />
+    <div
+      className="pe-button__wash" />
+    <div
+      className="pe-button__focus" />
+    <div
+      className="pe-button__label">
+      Borders
+    </div>
+  </div>
+</a>
+`;
+
+exports[`test With router 1`] = `
+<Route
+  render={[Function]} />
+`;

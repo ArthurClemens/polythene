@@ -1,0 +1,29 @@
+exports[`test No options 1`] = `
+"<div class=\"pe-ripple pe-ripple--constrained\"></div>
+"
+`;
+
+exports[`test Option: class 1`] = `
+"<div class=\"pe-ripple pe-ripple--constrained class-x\"></div>
+"
+`;
+
+exports[`test Option: className 1`] = `
+"<div class=\"pe-ripple pe-ripple--constrained className-x\"></div>
+"
+`;
+
+exports[`test Option: constrained (true) 1`] = `
+"<div class=\"pe-ripple pe-ripple--constrained\"></div>
+"
+`;
+
+exports[`test Option: element 1`] = `
+"<a class=\"pe-ripple pe-ripple--constrained\"></a>
+"
+`;
+
+exports[`test Option: id 1`] = `
+"<div id=\"id-x\" class=\"pe-ripple pe-ripple--constrained\"></div>
+"
+`;
