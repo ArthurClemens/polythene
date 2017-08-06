@@ -1,7 +1,7 @@
 {
   "name": "test-spinner",
   "version": "1.0.0-rc.1",
-  "private": "true",
+  "private": true,
   "description": "",
   "main": "dist/test-spinner.js",
   "module": "dist/test-spinner.mjs",

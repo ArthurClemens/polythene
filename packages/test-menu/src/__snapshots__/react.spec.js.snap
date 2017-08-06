@@ -177,14 +177,14 @@ exports[`test Menu items 1`] = `
 `;
 
 exports[`test No options 1`] = `
-<t
+<MenuToggle
   instance={[Function]}
   permanent={true}
   placeholderClassName="pe-menu__placeholder" />
 `;
 
 exports[`test Option: class 1`] = `
-<t
+<MenuToggle
   className="class-x"
   instance={[Function]}
   permanent={true}
@@ -192,7 +192,7 @@ exports[`test Option: class 1`] = `
 `;
 
 exports[`test Option: className 1`] = `
-<t
+<MenuToggle
   className="className-x"
   instance={[Function]}
   permanent={true}
@@ -200,7 +200,7 @@ exports[`test Option: className 1`] = `
 `;
 
 exports[`test Option: element 1`] = `
-<t
+<MenuToggle
   element="a"
   instance={[Function]}
   permanent={true}
@@ -208,7 +208,7 @@ exports[`test Option: element 1`] = `
 `;
 
 exports[`test Option: id 1`] = `
-<t
+<MenuToggle
   id="id-x"
   instance={[Function]}
   permanent={true}

@@ -1,7 +1,7 @@
 {
   "name": "test-shadow",
   "version": "1.0.0-rc.1",
-  "private": "true",
+  "private": true,
   "description": "",
   "main": "dist/test-shadow.js",
   "module": "dist/test-shadow.mjs",

@@ -8,8 +8,7 @@
     "lint": "node ../../node_modules/eslint test/"
   },
   "directories": {},
-  "devDependencies": {},
-  "dependencies": {
+  "devDependencies": {
     "mithril": "1.1.3",
     "mithril-node-render": "2.1.0",
     "mocha": "^3.4.2",

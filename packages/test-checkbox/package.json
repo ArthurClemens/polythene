@@ -1,7 +1,7 @@
 {
   "name": "test-checkbox",
   "version": "1.0.0-rc.1",
-  "private": "true",
+  "private": true,
   "description": "",
   "main": "dist/test-checkbox.js",
   "module": "dist/test-checkbox.mjs",

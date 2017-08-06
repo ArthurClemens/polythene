@@ -12,6 +12,7 @@ var MenuInstance = StateComponent(_extends({}, coreMenu, {
 }));
 
 var MenuToggle = StateComponent(Conditional);
+MenuToggle.displayName = "MenuToggle";
 
 var Menu = function Menu(props) {
   return renderer(MenuToggle, _extends({}, props, {

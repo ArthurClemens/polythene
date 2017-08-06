@@ -1,7 +1,7 @@
 {
   "name": "test-dialog",
   "version": "1.0.0-rc.1",
-  "private": "true",
+  "private": true,
   "description": "",
   "main": "dist/test-dialog.js",
   "module": "dist/test-dialog.mjs",

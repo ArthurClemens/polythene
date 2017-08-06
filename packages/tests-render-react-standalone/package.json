@@ -1,6 +1,6 @@
 {
   "name": "tests-render-react-standalone",
-  "private": "true",
+  "private": true,
   "description": "",
   "scripts": {
     "dev": "http-server -p 3300",

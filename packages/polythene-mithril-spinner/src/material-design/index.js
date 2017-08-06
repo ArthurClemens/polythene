@@ -10,6 +10,7 @@ const SpinnerInstance = StateComponent(Object.assign(
 ));
 
 const SpinnerToggle = StateComponent(Conditional);
+SpinnerToggle.displayName = "SpinnerToggle";
 
 export const MaterialDesignSpinner = {
   view: vnode =>

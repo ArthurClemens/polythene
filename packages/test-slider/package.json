@@ -1,7 +1,7 @@
 {
   "name": "test-slider",
   "version": "1.0.0-rc.1",
-  "private": "true",
+  "private": true,
   "description": "",
   "main": "dist/test-slider.js",
   "module": "dist/test-slider.mjs",

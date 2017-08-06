@@ -1,7 +1,7 @@
 {
   "name": "test-fab",
   "version": "1.0.0-rc.1",
-  "private": "true",
+  "private": true,
   "description": "",
   "main": "dist/test-fab.js",
   "module": "dist/test-fab.mjs",

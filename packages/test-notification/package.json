@@ -1,7 +1,7 @@
 {
   "name": "test-notification",
   "version": "1.0.0-rc.1",
-  "private": "true",
+  "private": true,
   "description": "",
   "main": "dist/test-notification.js",
   "module": "dist/test-notification.mjs",

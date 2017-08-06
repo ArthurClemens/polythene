@@ -1,7 +1,7 @@
 {
   "name": "test-list-tile",
   "version": "1.0.0-rc.1",
-  "private": "true",
+  "private": true,
   "description": "",
   "main": "dist/test-list-tile.js",
   "module": "dist/test-list-tile.mjs",

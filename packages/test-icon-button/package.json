@@ -1,7 +1,7 @@
 {
   "name": "test-icon-button",
   "version": "1.0.0-rc.1",
-  "private": "true",
+  "private": true,
   "description": "",
   "main": "dist/test-icon-button.js",
   "module": "dist/test-icon-button.mjs",

@@ -1,7 +1,7 @@
 {
   "name": "test-search",
   "version": "1.0.0-rc.1",
-  "private": "true",
+  "private": true,
   "description": "",
   "main": "dist/test-search.js",
   "module": "dist/test-search.mjs",

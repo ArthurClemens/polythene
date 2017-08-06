@@ -12,6 +12,7 @@ var MenuInstance = StateComponent(_extends({}, coreMenu, {
 }));
 
 var MenuToggle = StateComponent(Conditional);
+MenuToggle.displayName = "MenuToggle";
 
 var Menu = {
   view: function view(vnode) {

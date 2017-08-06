@@ -6,7 +6,7 @@ import resolve from "rollup-plugin-node-resolve";
 import commonjs from "rollup-plugin-commonjs";
 
 export const pkg = JSON.parse(fs.readFileSync("./package.json"));
-const external = Object.keys(pkg.dependencies || []);
+const external = Object.keys(pkg.dependencies || []).concat(Object.keys(pkg.devDependencies || []));
 
 const globals = {};
 external.forEach(ext => {
@@ -22,9 +22,11 @@ external.forEach(ext => {
 export const createConfig = ({ includeDepencies, lint }) => {
   const config = {
     entry: process.env.ENTRY || "index.js",
-    external: includeDepencies ? [] : external,
+    external: includeDepencies
+      ? ["mithril", "react", "react-dom"].concat(Object.keys(pkg.devDependencies || []))
+      : external,
     moduleName: "polythene",
-    // globals,
+    globals,
     plugins: []
   };
   config.plugins.push(resolve({
@@ -40,6 +42,7 @@ export const createConfig = ({ includeDepencies, lint }) => {
       "node_modules/react-dom/index.js": ["render"]
     }
   }));
-  config.plugins.push(babel());
+  config.plugins.push(babel({
+  }));
   return config;
 };

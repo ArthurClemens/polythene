@@ -328,7 +328,7 @@ var mixin = {
 };
 
 var j2c = new J2c(prefixPlugin);
-var ID_REGEX = /[^a-z0-9\-]/g;
+var ID_REGEX = /[^a-z0-9\\-]/g;
 
 /*
  * @param id: identifier, used as HTMLElement id for the attached <style></style> element

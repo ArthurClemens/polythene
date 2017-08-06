@@ -12,6 +12,7 @@ const MenuInstance = StateComponent(Object.assign(
 ));
 
 const MenuToggle = StateComponent(Conditional);
+MenuToggle.displayName = "MenuToggle";
 
 export const Menu = props => (
   h(MenuToggle, Object.assign(

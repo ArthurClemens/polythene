@@ -19,6 +19,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 var SpinnerInstance = StateComponent(_extends({}, coreiOSSpinner, { component: BaseSpinner }));
 
 var SpinnerToggle = StateComponent(Conditional);
+SpinnerToggle.displayName = "SpinnerToggle";
 
 var iOSSpinner = function iOSSpinner(props) {
   return renderer(SpinnerToggle, _extends({}, props, {
@@ -36,6 +37,7 @@ var _extends$2 = Object.assign || function (target) { for (var i = 1; i < argume
 var SpinnerInstance$1 = StateComponent(_extends$2({}, coreMaterialDesignSpinner, { component: BaseSpinner }));
 
 var SpinnerToggle$1 = StateComponent(Conditional);
+SpinnerToggle$1.displayName = "SpinnerToggle";
 
 var MaterialDesignSpinner = function MaterialDesignSpinner(props) {
   return renderer(SpinnerToggle$1, _extends$2({}, props, {
@@ -53,6 +55,7 @@ var _extends$3 = Object.assign || function (target) { for (var i = 1; i < argume
 var SpinnerInstance$2 = StateComponent(_extends$3({}, coreMaterialDesignProgressSpinner, { component: BaseSpinner }));
 
 var SpinnerToggle$2 = StateComponent(Conditional);
+SpinnerToggle$2.displayName = "SpinnerToggle";
 
 var MaterialDesignProgressSpinner = function MaterialDesignProgressSpinner(props) {
   return renderer(SpinnerToggle$2, _extends$3({}, props, {

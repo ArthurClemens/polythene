@@ -1,7 +1,7 @@
 {
   "name": "test-toolbar",
   "version": "1.0.0-rc.1",
-  "private": "true",
+  "private": true,
   "description": "",
   "main": "dist/test-toolbar.js",
   "module": "dist/test-toolbar.mjs",

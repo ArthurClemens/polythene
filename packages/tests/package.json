@@ -1,6 +1,6 @@
 {
   "name": "polythene-test",
-  "private": "true",
+  "private": true,
   "version": "1.0.0-rc.1",
   "description": "",
   "main": "dist/polythene-test.js",
@@ -40,5 +40,10 @@
     "test-toolbar": "1.0.0-rc.1"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "enzyme": "^2.9.1",
+    "enzyme-to-json": "^1.5.1",
+    "react": "^15.6.1"
+  }
 }
