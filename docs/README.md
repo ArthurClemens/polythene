@@ -3,6 +3,7 @@
 
 ## Getting started
 
+* [Introduction](introduction.md)
 * [Getting started with Mithril](getting-started-mithril.md)
 * [Getting started with React](getting-started-react.md)
 

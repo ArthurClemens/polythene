@@ -1,4 +1,4 @@
-# Getting started with React
+# Getting started with Polythene for React
 
 
 ## Which packages do you need?
@@ -31,7 +31,7 @@ npm install --save polythene-react polythene-style
 ~~~
 
 
-## A simple component
+## A single component
 
 ### With JSX
 

@@ -14,23 +14,28 @@ Version: `1.0.0-rc.1` (release candidate 1)
 
 ## Main features
 
-* Follows the Material Design specification closely
 * Allows creating dynamic and interactive interfaces with ease
+* Closely follows the Material Design specification
 * Versatile theming options
 * Supports touch, mouse and keyboard
 * Extensive documentation
 
 
-## Guides
+## Demos
 
-* [Introduction](docs/introduction.md)
-* [Getting started with Mithril](docs/getting-started-mithril.md) and [Getting started with React](docs/getting-started-react.md)
-* [Documentation](docs/README.md)
 * [Demos](http://arthurclemens.github.io/polythene-0.x-examples)
 
 
-## And also
+## Getting started
 
+* [Introduction](docs/introduction.md)
+* [Getting started with Mithril](docs/getting-started-mithril.md)
+* [Getting started with React](docs/getting-started-react.md)
+
+
+## Guides
+
+* [Documentation](docs/README.md)
 * [Developing](docs/developing.md)
 * [Migrating from 0.2](docs/migrating-from-02.md)
 
@@ -49,3 +54,10 @@ Version: `1.0.0-rc.1` (release candidate 1)
 * Internet Explorer: 11
 * Mobile Safari: 9+
 * Safari: 9+
+
+
+## Previous versions
+
+* Polythene for Mithril 0.x
+
+

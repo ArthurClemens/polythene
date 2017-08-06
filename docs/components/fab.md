@@ -6,6 +6,7 @@ Differences from [Raised Button](raised-button.md) behaviour:
 
 * The ripple emanates from the center of the button
 * The ripple has a 2/3 decay speed
+* No selected state
 
 
 ## Main features

@@ -1,4 +1,4 @@
-# Getting started with Mithril
+# Getting started with Polythene for Mithril
 
 
 ## Which packages do you need?
@@ -31,7 +31,7 @@ npm install --save polythene-mithril polythene-style
 ~~~
 
 
-## A simple component
+## A single component
 
 ~~~javascript
 import m from "mithril"
