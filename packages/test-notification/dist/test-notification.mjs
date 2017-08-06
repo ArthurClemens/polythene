@@ -157,7 +157,8 @@ var genericTests = (function (_ref) {
     component: buttonGroup({
       title: "Custom transitions",
       transitions: {
-        show: function show(el) {
+        show: function show(_ref2) {
+          var el = _ref2.el;
           return {
             el: el,
             showDuration: .5,
@@ -169,7 +170,8 @@ var genericTests = (function (_ref) {
             }
           };
         },
-        hide: function hide(el) {
+        hide: function hide(_ref3) {
+          var el = _ref3.el;
           return {
             el: el,
             hideDuration: .5,

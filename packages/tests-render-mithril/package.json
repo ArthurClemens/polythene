@@ -16,7 +16,8 @@
     "polythene-fastclick": "1.0.0-rc.1",
     "polythene-mithril": "1.0.0-rc.1",
     "polythene-style": "1.0.0-rc.1",
-    "polythene-test": "1.0.0-rc.1"
+    "polythene-test": "1.0.0-rc.1",
+    "polythene-utilities": "1.0.0-rc.1"
   },
   "devDependencies": {
     "npm-run-all": "^4.0.2",

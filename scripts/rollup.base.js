@@ -38,8 +38,8 @@ export const createConfig = ({ includeDepencies, lint }) => {
   }));
   config.plugins.push(commonjs({
     namedExports: {
-      "node_modules/react/react.js": ["Children", "Component", "PropTypes", "createElement"],
-      "node_modules/react-dom/index.js": ["render"]
+      "node_modules/dist/react.js": ["Children", "Component", "PropTypes", "createElement"],
+      "node_modules/react-dom/dist/react-dom.js": ["render"]
     }
   }));
   config.plugins.push(babel({
