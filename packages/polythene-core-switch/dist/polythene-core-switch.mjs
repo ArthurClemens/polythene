@@ -58,6 +58,11 @@ var vars$3 = _extends$2({}, vars$1, {
   color_dark_track_disabled: "#717171",
   color_dark_track_disabled_opacity: .3
 
+  // icon color may be set in theme; default "currentcolor"
+  // color_dark_icon_on:                    "currentcolor"
+  // color_dark_icon_off:                   "currentcolor"
+
+  // color_dark_focus_on and so on taken from selectionControlVars
 });
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }

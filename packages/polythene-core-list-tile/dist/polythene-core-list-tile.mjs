@@ -83,6 +83,8 @@ var vars$1 = {
   color_dark_secondary: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
   color_dark_hover_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover),
   color_dark_selected_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover)
+  // background color may be set in theme; disabled by default
+  // color_dark_background:           "inherit",
 };
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -352,9 +354,8 @@ var createProps = function createProps(vnode, _ref) {
   return _extends({}, filterSupportedAttributes(attrs, { remove: ["tabindex", "tabIndex"] }), // tab index set in primary or secondary content
   {
     className: [classes.component, attrs.selected ? classes.selected : null, attrs.disabled ? classes.disabled : null, attrs.sticky ? classes.sticky : null, attrs.compact ? classes.compact : null, attrs.hoverable ? classes.hoverable : null, attrs.selectable ? classes.selectable : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, heightClass, attrs.className || attrs[k.class]].join(" ")
-  }
-  // events and url are attached to primary content to not interfere with controls
-  );
+    // events and url are attached to primary content to not interfere with controls
+  });
 };
 
 var createContent = function createContent(vnode, _ref2) {

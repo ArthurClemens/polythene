@@ -49,6 +49,7 @@ var layout = (function (selector, componentVars) {
     ".pe-dialog--fullscreen": {
       padding: 0
 
+      // dialog-content styles: see dialog pane
     },
 
     " .pe-dialog__content": {
@@ -151,7 +152,7 @@ var onMount = function onMount(vnode) {
 
   var handleEscape = function handleEscape(e) {
     if (attrs.fullscreen || attrs.modal) return;
-    if (e.which === 27) {
+    if (e.key === "Escape") {
       hideDialog(state, _extends({}, attrs, {
         hideDelay: 0
       }));

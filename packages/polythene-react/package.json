@@ -7,7 +7,7 @@
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
-    "build-standalone": "DEPS=1 ENTRY=standalone.js SOURCEMAP=1 DEST=./dist/polythene-react-standalone.js ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd-includes.js",
+    "build-standalone": "DEPS=1 ENTRY=standalone.js SOURCEMAP=1 DEST=./dist/polythene-react-standalone.js ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd-includes.js && echo '// Version 1.0.0-rc.1' >> ./dist/polythene-react-standalone.js",
     "build": "npm run rollup && yarn run build-standalone"
   },
   "files": [
@@ -15,6 +15,7 @@
     "README.md"
   ],
   "dependencies": {
+    "polythene-core": "1.0.0-rc.1",
     "polythene-fastclick": "1.0.0-rc.1",
     "polythene-react-base": "1.0.0-rc.1",
     "polythene-react-button": "1.0.0-rc.1",
@@ -45,7 +46,7 @@
     "polythene-react-toolbar": "1.0.0-rc.1",
     "polythene-style": "1.0.0-rc.1",
     "polythene-utilities": "1.0.0-rc.1",
-    "react": "^15.5.4",
+    "react": "^15.6.1",
     "react-hyperscript": "^3.0.0"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",

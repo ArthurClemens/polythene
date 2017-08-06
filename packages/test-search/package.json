@@ -22,8 +22,8 @@
     "polythene-react": "1.0.0-rc.1"
   },
   "devDependencies": {
-    "mithril": "1.1.1",
-    "react": "^15.5.4"
+    "mithril": "1.1.3",
+    "react": "^15.6.1"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

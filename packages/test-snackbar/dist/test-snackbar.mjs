@@ -117,8 +117,8 @@ var buttonGroup = {
       return renderer(RaisedButton, {
         label: opts.label,
         events: { onclick: function onclick() {
-            return Snackbar.show(_extends({}, opts, { key: opts.title } // add a key to let Mithril better distinguish between the notifications
-            ), vnode.attrs.spawnOptions);
+            return Snackbar.show(_extends({}, opts, { key: opts.title // add a key to let Mithril better distinguish between the notifications
+            }), vnode.attrs.spawnOptions);
           } }
       });
     }), renderer(RaisedButton, {
@@ -4021,7 +4021,8 @@ var _class = function (_Component) {
               onClick: function onClick() {
                 needsDisplay && needsDisplay();
                 Snackbar$1.show(_extends$3({}, opts, {
-                  key: opts.title }), { spawn: spawn, position: position });
+                  key: opts.title // add a key to let React better distinguish between the notifications
+                }), { spawn: spawn, position: position });
               }
             }
           });

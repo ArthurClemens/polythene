@@ -60,6 +60,11 @@ var vars$1 = {
   color_dark_disabled_background: "transparent",
   color_dark_disabled_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled)
 
+  // border colors may be set in theme; disabled by default
+  // color_dark_border:               "transparent", // only specify this variable to get all 4 states
+  // color_dark_hover_border:         "transparent",
+  // color_dark_active_border:        "transparent",
+  // color_dark_disabled_border:      "transparent"
 };
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }

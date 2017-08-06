@@ -24,6 +24,9 @@ var vars$1 = {
   color_light_border: rgba(vars.color_light_foreground, vars.blend_light_border_light),
   color_dark_border: rgba(vars.color_dark_foreground, vars.blend_dark_border_light)
 
+  // background color may be set in theme; disabled by default
+  // color_light_background: "inherit",
+  // color_dark_background:  "inherit"
 };
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }

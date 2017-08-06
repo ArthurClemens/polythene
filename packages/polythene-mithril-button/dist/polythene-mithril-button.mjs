@@ -14,5 +14,6 @@ var Button = StateComponent(_extends({}, coreButton, {
 }));
 
 Button.theme = coreButton.theme;
+Button.displayName = "Button";
 
 export { Button };

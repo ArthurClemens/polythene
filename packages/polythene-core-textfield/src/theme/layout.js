@@ -3,7 +3,8 @@ import { mixin } from "polythene-core-css";
 
 export default (selector, componentVars) => [{
   [selector]: [
-    mixin.clearfix(), {
+    mixin.clearfix(),
+    {
       position: "relative",
       lineHeight: vars.line_height,
       display: "inline-block",

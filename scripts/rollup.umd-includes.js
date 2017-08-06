@@ -13,7 +13,9 @@ const baseConfig = createConfig({ includeDepencies, lint: false });
 const targetConfig = Object.assign({}, baseConfig, {
   dest: env.DEST || pkg.main,
   format: "umd",
-  sourceMap: (env.SOURCEMAP !== undefined) ? !!parseInt(env.SOURCEMAP, 10) : true,
+  sourceMap: (env.SOURCEMAP !== undefined)
+    ? !!parseInt(env.SOURCEMAP, 10)
+    : true,
   moduleName,
 });
 

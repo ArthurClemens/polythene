@@ -694,11 +694,9 @@ var createContent = function createContent(vnode, _ref3) {
     // may be overwritten by attrs.events
     state.setValue({ type: "input" });
   }) : null, !ignoreEvent(attrs, [k.onkeydown]) ? _defineProperty({}, k.onkeydown, function (e) {
-    if (e.which === 13) {
-      // ENTER
+    if (e.key === "Enter") {
       state.isTouched(true);
-    } else if (e.which === 27) {
-      // ESCAPE
+    } else if (e.key === "Escape") {
       inputEl.blur(e);
     }
   }) : null, attrs.events ? attrs.events : null, // NOTE: may overwrite oninput
