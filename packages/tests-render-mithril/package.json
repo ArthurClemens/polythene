@@ -10,21 +10,17 @@
     "build": "webpack -p --config scripts/webpack.config.js"
   },
   "dependencies": {
-    "fastclick": "^1.0.6",
-    "mithril": "1.1.1",
-    "mmsvg": "^1.5.3",
+    "mithril": "1.1.3",
     "polythene-core": "1.0.0-rc.1",
     "polythene-core-css": "1.0.0-rc.1",
     "polythene-fastclick": "1.0.0-rc.1",
     "polythene-mithril": "1.0.0-rc.1",
     "polythene-style": "1.0.0-rc.1",
-    "polythene-test": "1.0.0-rc.1",
-    "polythene-theme": "1.0.0-rc.1",
-    "polythene-utilities": "1.0.0-rc.1",
-    "webpack": "^2.5.1"
+    "polythene-test": "1.0.0-rc.1"
   },
   "devDependencies": {
     "npm-run-all": "^4.0.2",
+    "webpack": "^2.5.1",
     "webpack-dev-server": "^2.4.1"
   }
 }

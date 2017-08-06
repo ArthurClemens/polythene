@@ -38,19 +38,19 @@ const Results = (name, tests) =>
         key: testName,
         className: [testName.replace(/[^\w\d]/g, "-").toLowerCase(), test.className || null].join(" "),
       },
-        [
-          h(css.resultTitle,
-            { className: "result-title" },
-            test.name
-          ),
-          h(css.resultData, null,
-            h(css.resultDataRendered, null,
-              h(css.content, null,
-                h(test.component, test.attrs, test.children)
-              )
+      [
+        h(css.resultTitle,
+          { className: "result-title" },
+          test.name
+        ),
+        h(css.resultData, null,
+          h(css.resultDataRendered, null,
+            h(css.content, null,
+              h(test.component, test.attrs, test.children)
             )
           )
-        ]
+        )
+      ]
       );
     })
   );

@@ -1,5 +1,6 @@
 {
   "name": "tests-render-mithril-standalone",
+  "private": "true",
   "description": "",
   "scripts": {
     "dev": "http-server -p 3200",

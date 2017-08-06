@@ -1,5 +1,4 @@
 import m from "mithril";
-import { addLayoutStyles } from "polythene-utilities";
 import { addFastClick } from "polythene-fastclick";
 import { addTypography, addRoboto } from "polythene-style";
 import { rules as css } from "./styles";
@@ -9,10 +8,9 @@ import routes from "./routes";
 
 addTypography();
 addRoboto();
-addLayoutStyles();
 addFastClick();
 
-const TITLE = "Polythene components for Mithril";
+const TITLE = "Polythene Components for Mithril";
 
 const navBar = () =>
   h(css.headerRow, h(Toolbar,
@@ -34,7 +32,6 @@ const index = {
           h(ListTile, {
             title: route.name,
             hoverable: true,
-            // tabindex: index + 1,
             url: {
               href: route.path,
               oncreate: m.route.link

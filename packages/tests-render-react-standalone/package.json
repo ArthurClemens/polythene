@@ -1,8 +1,9 @@
 {
   "name": "tests-render-react-standalone",
+  "private": "true",
   "description": "",
   "scripts": {
-    "dev": "http-server -p 3500",
+    "dev": "http-server -p 3300",
     "build": "yarn run update",
     "update": "cd ../polythene-react && yarn run build-standalone && cd - && cp ../polythene-react/dist/polythene-react-standalone.js* js/"
   },

@@ -7,18 +7,19 @@
 <meta http-equiv="cleartype" content="on">
 </head>
 <body>
-<div id="app" class="app"></div>
+<div id="root" class="app"></div>
+
 <style>
 body, html {
   height: 100%;
   background: #f0f0f0;
   line-height: 1.3;
+  padding: 0;
+  margin: 0;
 }
-.page {
-  padding: 16px;
-}
+.page {}
 .row {
-  padding: 16px 16px 32px 16px;
+  padding: 8px 16px;
   max-width: 480px;
   margin: 0 auto;
   background: #fff;
@@ -26,159 +27,200 @@ body, html {
 .row + .row {
   border-top: 1px solid #eee;
 }
+.component {
+  margin: 1rem 0;
+}
 h1 {
   font-size: 32px;
-  margin: 0;
+  margin: 1rem 0 0 0;
   color: #222;
 }
 h2 {
   font-size: 18px;
-  margin: 0 0 2rem 0;
+  margin: 0;
   color: #444;
 }
+@media only screen and (min-width:480px) {
+  .page {
+    padding: 16px;
+  }
+  .row {
+    padding: 16px 24px;
+  }
+}
 </style>
+
 <script src="https://unpkg.com/mithril"></script>
 <script src="js/polythene-mithril-standalone.js"></script>
 <script>
-  /* global m, polythene */
-  var SVG = m.trust("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z\"/></svg>");
+/* global m, polythene */
+const { Button, RaisedButton, FAB, Checkbox, Dialog, Switch, TextField, Slider, MaterialDesignSpinner, Notification, Snackbar } = polythene;
 
-  polythene.Button.theme(".polythene-themed-button", {
-    color_light_background: "#FF1744",
-    color_light_text: "#fff"
-  });
+const linkIconSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z\"/></svg>";
 
-  var app = {
-    view: () => 
-      m(".page", [
-        m(".row",
-          m("h1", "Polythene for Mithril HTML Test")
-        ),
-        m(".row",
-          [
-            m("h2", "Raised button"),
-            m(polythene.RaisedButton, {
+Button.theme(".themed-button", {
+  color_light_background: "#FF1744",
+  color_light_text: "#fff"
+});
+
+const app = {
+  view: () => 
+    m(".page", [
+      m(".row", [
+        m("h1", "Polythene for Mithril"),
+        m("h2", "Standalone Test")
+      ]),
+      m(".row",
+        [
+          m("h2", "Raised Button"),
+          m(".component", 
+            m(RaisedButton, {
               label: "Button"
             })
-          ]
-        ),
-        m(".row", 
-          [
-            m("h2", "Regular button"),
-            m(polythene.Button, {
+          )
+        ]
+      ),
+      m(".row", 
+        [
+          m("h2", "Regular Button"),
+          m(".component", 
+            m(Button, {
               label: "Button"
             })
-          ]
-        ),
-        m(".row", 
-          [
-            m("h2", "Themed regular button"),
-            m(polythene.Button, {
+          )
+        ]
+      ),
+      m(".row", 
+        [
+          m("h2", "Themed Regular Button"),
+          m(".component", 
+            m(Button, {
               label: "Button",
-              className: "polythene-themed-button"
+              className: "themed-button"
             })
-          ]
-        ),
-        m(".row",
-          [
-            m("h2", "FAB"),
-            m(polythene.FAB, {
+          )
+        ]
+      ),
+      m(".row",
+        [
+          m("h2", "FAB"),
+          m(".component", 
+            m(FAB, {
               icon: {
-                svg: { content: SVG }
+                svg: m.trust(linkIconSVG)
               }
             })
-          ]
-        ),
-        m(".row",
-          [
-            m("h2", "Checkbox"),
-            m(polythene.Checkbox, {
+          )
+        ]
+      ),
+      m(".row",
+        [
+          m("h2", "Checkbox"),
+          m(".component", 
+            m(Checkbox, {
               label: "Label"
             })
-          ]
-        ),
-        m(".row",
-          [
-            m("h2", "Switch"),
-            m(polythene.Switch, {
+          )
+        ]
+      ),
+      m(".row",
+        [
+          m("h2", "Switch"),
+          m(".component", 
+            m(Switch, {
               label: "Label"
             })
-          ]
-        ),
-        m(".row",
-          [
-            m("h2", "TextField"),
-            m(polythene.TextField, {
+          )
+        ]
+      ),
+      m(".row",
+        [
+          m("h2", "TextField"),
+          m(".component", 
+            m(TextField, {
               label: "Name",
               floatingLabel: true
             })
-          ]
-        ),
-        m(".row",
-          [
-            m("h2", "Slider"),
-            m(polythene.Slider, {
+          )
+        ]
+      ),
+      m(".row",
+        [
+          m("h2", "Slider"),
+          m(".component", 
+            m(Slider, {
               defaultValue: 50
             })
-          ]
-        ),
-        m(".row",
-          [
-            m("h2", "Spinner"),
-            m(polythene.MaterialDesignSpinner, {
+          )
+        ]
+      ),
+      m(".row",
+        [
+          m("h2", "Spinner"),
+          m(".component", 
+            m(MaterialDesignSpinner, {
               permanent: true
             })
-          ]
-        ),
-        m(".row",
-          [
-            m("h2", "Dialog"),
-            m(polythene.RaisedButton, {
+          )
+        ]
+      ),
+      m(".row",
+        [
+          m("h2", "Dialog"),
+          m(".component", 
+            m(RaisedButton, {
               label: "Show dialog",
               events: {
-                onclick: () => polythene.Dialog.show({
+                onclick: () => Dialog.show({
                   /* note the Dialog component is below the other elements in the app */
                   title: "Hello",
-                  body: "Click outside to close",
+                  body: "Click outside to close, or press ESCAPE",
                   backdrop: true
                 })
               }
             })
-          ]
-        ),
-        m(".row",
-          [
-            m("h2", "Notification"),
-            m(polythene.RaisedButton, {
+          )
+        ]
+      ),
+      m(".row",
+        [
+          m("h2", "Notification"),
+          m(".component", 
+            m(RaisedButton, {
               label: "Show Notification",
               events: {
-                onclick: () => polythene.Notification.show({
+                onclick: () => Notification.show({
+                  /* note the Notification component is below the other elements in the app */
                   title: "Hello"
                 })
               }
             })
-          ]
-        ),
-        m(".row",
-          [
-            m("h2", "Snackbar"),
-            m(polythene.RaisedButton, {
+          )
+        ]
+      ),
+      m(".row",
+        [
+          m("h2", "Snackbar"),
+          m(".component", 
+            m(RaisedButton, {
               label: "Show Snackbar",
               events: {
-                onclick: () => polythene.Snackbar.show({
+                onclick: () => Snackbar.show({
+                  /* note the Snackbar component is below the other elements in the app */
                   title: "Hello"
                 })
               }
             })
-          ]
-        ),
-        m(polythene.Dialog),
-        m(polythene.Snackbar),
-        m(polythene.Notification)
-      ])
-  };
+          )
+        ]
+      ),
+      m(Dialog),
+      m(Snackbar),
+      m(Notification)
+    ])
+};
 
-  m.mount(document.querySelector("#app"), app);
+m.mount(document.querySelector("#root"), app);
 
 </script>
 </body>

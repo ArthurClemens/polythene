@@ -45,7 +45,9 @@
     "polythene-react-textfield": "1.0.0-rc.1",
     "polythene-react-toolbar": "1.0.0-rc.1",
     "polythene-style": "1.0.0-rc.1",
-    "polythene-utilities": "1.0.0-rc.1",
+    "polythene-utilities": "1.0.0-rc.1"
+  },
+  "devDependencies": {
     "react": "^15.6.1",
     "react-hyperscript": "^3.0.0"
   },

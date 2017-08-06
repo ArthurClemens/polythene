@@ -10,10 +10,6 @@
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
     "build": "npm run rollup"
   },
-  "files": [
-    "dist",
-    "README.md"
-  ],
   "dependencies": {
     "test-button": "1.0.0-rc.1",
     "test-card": "1.0.0-rc.1",
@@ -42,11 +38,6 @@
     "test-textfield": "1.0.0-rc.1",
     "test-theme": "1.0.0-rc.1",
     "test-toolbar": "1.0.0-rc.1"
-  },
-  "devDependencies": {
-    "enzyme": "^2.8.2",
-    "enzyme-to-json": "^1.5.1",
-    "react": "^15.5.4"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

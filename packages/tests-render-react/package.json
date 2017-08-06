@@ -15,14 +15,13 @@
     "polythene-react": "1.0.0-rc.1",
     "polythene-style": "1.0.0-rc.1",
     "polythene-test": "1.0.0-rc.1",
-    "polythene-utilities": "1.0.0-rc.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "react-router-dom": "^4.1.1",
-    "webpack": "^2.5.1"
+    "react-router-dom": "^4.1.1"
   },
   "devDependencies": {
     "npm-run-all": "^4.0.2",
+    "webpack": "^2.5.1",
     "webpack-dev-server": "^2.4.1"
   }
 }

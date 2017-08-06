@@ -46,6 +46,5 @@
     "rollup-plugin-uglify": "^2.0.1",
     "shelljs": "^0.7.8",
     "webpack": "^3.4.1"
-  },
-  "dependencies": {}
+  }
 }

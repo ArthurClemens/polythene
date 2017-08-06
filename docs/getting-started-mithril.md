@@ -61,7 +61,7 @@ const app = {
         onclick: () => Dialog.show({
           /* note the Dialog component is below the other elements in the app */
           title: "Hello",
-          body: "Click outside to close",
+          body: "Click outside to close, or press ESCAPE",
           backdrop: true
         })
       }

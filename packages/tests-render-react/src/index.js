@@ -4,7 +4,6 @@ import {
   Route,
   withRouter,
 } from "react-router-dom";
-import { addLayoutStyles } from "polythene-utilities";
 import { addFastClick } from "polythene-fastclick";
 import { addTypography, addRoboto } from "polythene-style";
 import { rules as css } from "./styles";
@@ -15,7 +14,6 @@ import ScrollToTop from "./ScrollToTop";
 
 addTypography();
 addRoboto();
-addLayoutStyles();
 addFastClick();
 
 const NavBar = () =>
@@ -26,7 +24,7 @@ const NavBar = () =>
           backgroundColor: "rgba(255,255,255,.93)"
         }
       },
-      h("span", "Polythene components for React")
+      h("span", "Polythene Components for React")
     )
   );
 
@@ -59,12 +57,12 @@ const routerMap = routes.map(route =>
       render: props => Page(Object.assign({}, props, { name: route.name, tests: route.tests, previous: "/" })),
     }
   )).concat([
-    h(Route, {
-      exact: true,
-      path: "/",
-      component: Index
-    })
-  ]);
+  h(Route, {
+    exact: true,
+    path: "/",
+    component: Index
+  })
+]);
 
 const App = () => (
   h(Router, null, 
