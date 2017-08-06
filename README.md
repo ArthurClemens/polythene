@@ -23,7 +23,7 @@ Version: `1.0.0-rc.1` (release candidate 1)
 
 ## Demos
 
-* [Demos](http://arthurclemens.github.io/polythene-0.x-examples)
+* Demos: TODO
 
 
 ## Getting started
