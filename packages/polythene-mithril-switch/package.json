@@ -14,11 +14,11 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-switch": "1.0.0-rc.1",
-    "polythene-core-selection-control": "1.0.0-rc.1",
-    "polythene-mithril-base": "1.0.0-rc.1",
-    "polythene-mithril-icon-button": "1.0.0-rc.1",
-    "polythene-mithril-shadow": "1.0.0-rc.1"
+    "polythene-core-selection-control": "^1.0.0-rc.1",
+    "polythene-core-switch": "^1.0.0-rc.1",
+    "polythene-mithril-base": "^1.0.0-rc.1",
+    "polythene-mithril-icon-button": "^1.0.0-rc.1",
+    "polythene-mithril-shadow": "^1.0.0-rc.1"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

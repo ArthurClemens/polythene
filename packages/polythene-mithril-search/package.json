@@ -14,9 +14,9 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-search": "1.0.0-rc.1",
-    "polythene-mithril-base": "1.0.0-rc.1",
-    "polythene-mithril-textfield": "1.0.0-rc.1"
+    "polythene-core-search": "^1.0.0-rc.1",
+    "polythene-mithril-base": "^1.0.0-rc.1",
+    "polythene-mithril-textfield": "^1.0.0-rc.1"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

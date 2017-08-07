@@ -14,8 +14,8 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-dialog-pane": "1.0.0-rc.1",
-    "polythene-react-base": "1.0.0-rc.1"
+    "polythene-core-dialog-pane": "^1.0.0-rc.1",
+    "polythene-react-base": "^1.0.0-rc.1"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

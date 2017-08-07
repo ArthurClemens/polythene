@@ -17,8 +17,8 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-mithril": "1.0.0-rc.1",
-    "polythene-react": "1.0.0-rc.1"
+    "polythene-mithril": "^1.0.0-rc.1",
+    "polythene-react": "^1.0.0-rc.1"
   },
   "devDependencies": {
     "react": "^15.6.1",

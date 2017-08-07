@@ -17,9 +17,9 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-toolbar": "1.0.0-rc.1",
-    "polythene-mithril": "1.0.0-rc.1",
-    "polythene-react": "1.0.0-rc.1"
+    "polythene-core-toolbar": "^1.0.0-rc.1",
+    "polythene-mithril": "^1.0.0-rc.1",
+    "polythene-react": "^1.0.0-rc.1"
   },
   "devDependencies": {
     "react": "^15.6.1"

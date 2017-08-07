@@ -14,7 +14,7 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-style": "1.0.0-rc.1"
+    "polythene-style": "^1.0.0-rc.1"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"
