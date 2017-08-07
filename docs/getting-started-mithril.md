@@ -98,7 +98,7 @@ A "standalone" version of Polythene is available for demonstration purposes. Thi
 URL:
 
 ~~~
-https://rawgit.com/ArthurClemens/polythene/rewrite-universal/packages/polythene-mithril/dist/polythene-mithril-standalone.js
+https://rawgit.com/ArthurClemens/polythene/master/packages/polythene-mithril/dist/polythene-mithril-standalone.js
 ~~~
 
 Add to your HTML file:
@@ -107,7 +107,7 @@ Add to your HTML file:
 <div id="root"></div>
 
 <script src="https://unpkg.com/mithril@1.1.3"></script>
-<script src="https://rawgit.com/ArthurClemens/polythene/rewrite-universal/packages/polythene-mithril/dist/polythene-mithril-standalone.js"></script>
+<script src="https://rawgit.com/ArthurClemens/polythene/master/packages/polythene-mithril/dist/polythene-mithril-standalone.js"></script>
 ~~~
 
 To be able to write es6, add `babel-standalone`:

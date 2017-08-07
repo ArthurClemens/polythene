@@ -145,7 +145,7 @@ A "standalone" version of Polythene is available for demonstration purposes. Thi
 URL:
 
 ~~~
-https://rawgit.com/ArthurClemens/polythene/rewrite-universal/packages/polythene-react/dist/polythene-react-standalone.js
+https://rawgit.com/ArthurClemens/polythene/master/packages/polythene-react/dist/polythene-react-standalone.js
 ~~~
 
 Add to your HTML file:
@@ -155,7 +155,7 @@ Add to your HTML file:
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react-dom.js"></script>
-<script src="https://rawgit.com/ArthurClemens/polythene/rewrite-universal/packages/polythene-react/dist/polythene-react-standalone.js"></script>
+<script src="https://rawgit.com/ArthurClemens/polythene/master/packages/polythene-react/dist/polythene-react-standalone.js"></script>
 ~~~
 
 To be able to write es6, add `babel-standalone`:

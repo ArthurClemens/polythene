@@ -7,7 +7,7 @@
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
-    "build-standalone": "DEPS=1 ENTRY=standalone.js SOURCEMAP=1 DEST=./dist/polythene-react-standalone.js ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd-includes.js && echo '// Version 1.0.0-rc.2' >> ./dist/polythene-react-standalone.js",
+    "build-standalone": "DEPS=1 ENTRY=standalone.js SOURCEMAP=1 DEST=./dist/polythene-react-standalone.js ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd-includes.js && echo '// Version 1.0.0-rc.3' >> ./dist/polythene-react-standalone.js",
     "build": "npm run rollup && yarn run build-standalone"
   },
   "files": [
