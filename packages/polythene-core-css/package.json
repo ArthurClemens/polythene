@@ -1,6 +1,6 @@
 {
   "name": "polythene-core-css",
-  "version": "1.0.0-rc.1",
+  "version": "1.0.0-rc.2",
   "description": "",
   "main": "dist/polythene-core-css.js",
   "module": "dist/polythene-core-css.mjs",
@@ -16,7 +16,7 @@
   "dependencies": {
     "j2c": "^1.0.0-4",
     "j2c-plugin-prefix-browser": "^1.0.6",
-    "polythene-core": "^1.0.0-rc.1"
+    "polythene-core": "^1.0.0-rc.2"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

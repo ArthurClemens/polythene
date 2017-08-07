@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-ripple",
-  "version": "1.0.0-rc.1",
+  "version": "1.0.0-rc.2",
   "description": "",
   "main": "dist/polythene-mithril-ripple.js",
   "module": "dist/polythene-mithril-ripple.mjs",
@@ -14,8 +14,8 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-ripple": "^1.0.0-rc.1",
-    "polythene-mithril-base": "^1.0.0-rc.1"
+    "polythene-core-ripple": "^1.0.0-rc.2",
+    "polythene-mithril-base": "^1.0.0-rc.2"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

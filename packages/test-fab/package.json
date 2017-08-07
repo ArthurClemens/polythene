@@ -1,6 +1,6 @@
 {
   "name": "test-fab",
-  "version": "1.0.0-rc.1",
+  "version": "1.0.0-rc.2",
   "private": true,
   "description": "",
   "main": "dist/test-fab.js",
@@ -17,8 +17,8 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-mithril": "^1.0.0-rc.1",
-    "polythene-react": "^1.0.0-rc.1"
+    "polythene-mithril": "^1.0.0-rc.2",
+    "polythene-react": "^1.0.0-rc.2"
   },
   "devDependencies": {
     "react": "^15.6.1",
