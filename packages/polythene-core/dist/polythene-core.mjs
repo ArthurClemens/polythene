@@ -510,9 +510,8 @@ var transition = function transition(opts, state) {
 
       if (beforeTransition) {
         beforeTransition();
-        setTimeout(function () {
-          maybeDelayTransition();
-        }, 100);
+        el.offsetHeight; // force reflow
+        maybeDelayTransition();
       } else {
         maybeDelayTransition();
       }

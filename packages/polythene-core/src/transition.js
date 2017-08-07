@@ -128,9 +128,8 @@ const transition = (opts, state) => {
 
       if (beforeTransition) {
         beforeTransition();
-        setTimeout(() => {
-          maybeDelayTransition();
-        }, 100);
+        el.offsetHeight; // force reflow
+        maybeDelayTransition();
       } else {
         maybeDelayTransition();
       }
