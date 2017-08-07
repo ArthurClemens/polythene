@@ -2,4 +2,4 @@
 
 Core Polythene component.
 
-[Documentation](../../docs/components/textfield.md)
+[Documentation](https://github.com/ArthurClemens/polythene/blob/master/packages/docs/components/textfield.md)

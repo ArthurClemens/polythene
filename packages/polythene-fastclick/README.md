@@ -2,4 +2,4 @@
 
 Polythene utility package.
 
-[Documentation](../../docs/packages/polythene-fastclick.md)
+[Documentation](https://github.com/ArthurClemens/polythene/blob/master/packages/docs/packages/polythene-fastclick.md)

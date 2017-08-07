@@ -2,4 +2,4 @@
 
 Polythene for Mithril component.
 
-[Documentation](../../docs/components/mithril/list-tile.md)
+[Documentation](https://github.com/ArthurClemens/polythene/blob/master/packages/docs/components/mithril/list-tile.md)

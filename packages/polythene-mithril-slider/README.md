@@ -2,4 +2,4 @@
 
 Polythene for Mithril component.
 
-[Documentation](../../docs/components/mithril/slider.md)
+[Documentation](https://github.com/ArthurClemens/polythene/blob/master/packages/docs/components/mithril/slider.md)

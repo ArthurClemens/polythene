@@ -2,4 +2,4 @@
 
 Core Polythene component.
 
-[Documentation](../../docs/components/radio-button.md)
+[Documentation](https://github.com/ArthurClemens/polythene/blob/master/packages/docs/components/radio-button.md)

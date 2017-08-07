@@ -2,4 +2,4 @@
 
 Core Polythene package.
 
-[Documentation](../../docs/packages/polythene-style.md)
+[Documentation](https://github.com/ArthurClemens/polythene/blob/master/packages/docs/packages/polythene-style.md)

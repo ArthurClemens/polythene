@@ -2,4 +2,4 @@
 
 Core Polythene component.
 
-[Documentation](../../docs/components/radio-group.md)
+[Documentation](https://github.com/ArthurClemens/polythene/blob/master/packages/docs/components/radio-group.md)
