@@ -135,7 +135,7 @@ export const createContent = (vnode, { renderer: h, keys: k, Ripple }) => {
         // Ripple
         disabled || noink
           ? null
-          : Ripple //&& state.dom()
+          : Ripple && state.dom()
             ? h(Ripple, Object.assign({},
               {
                 key: "ripple",
