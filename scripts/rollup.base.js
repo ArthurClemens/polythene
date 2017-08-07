@@ -6,7 +6,7 @@ import resolve from "rollup-plugin-node-resolve";
 import commonjs from "rollup-plugin-commonjs";
 
 export const pkg = JSON.parse(fs.readFileSync("./package.json"));
-const external = Object.keys(pkg.dependencies || []).concat(Object.keys(pkg.devDependencies || []));
+const external = Object.keys(pkg.dependencies || []);
 
 const globals = {};
 external.forEach(ext => {
@@ -22,9 +22,7 @@ external.forEach(ext => {
 export const createConfig = ({ includeDepencies, lint }) => {
   const config = {
     entry: process.env.ENTRY || "index.js",
-    external: includeDepencies
-      ? ["mithril", "react", "react-dom"].concat(Object.keys(pkg.devDependencies || []))
-      : external,
+    external: includeDepencies ? ["mithril"] : external,
     moduleName: "polythene",
     globals,
     plugins: []
@@ -38,11 +36,10 @@ export const createConfig = ({ includeDepencies, lint }) => {
   }));
   config.plugins.push(commonjs({
     namedExports: {
-      "node_modules/dist/react.js": ["Children", "Component", "PropTypes", "createElement"],
-      "node_modules/react-dom/dist/react-dom.js": ["render"]
+      "node_modules/react/react.js": ["Children", "Component", "PropTypes", "createElement"],
+      "node_modules/react-dom/index.js": ["render"]
     }
   }));
-  config.plugins.push(babel({
-  }));
+  config.plugins.push(babel());
   return config;
 };
