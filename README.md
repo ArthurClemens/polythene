@@ -2,7 +2,7 @@
 
 [![Join the chat at https://gitter.im/ArthurClemens/Polythene](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ArthurClemens/Polythene?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Modular implementation of **Material Design** for [Mithril](http://mithril.js.org) and [React](https://facebook.github.io/react/).
+Material Design component library for [Mithril](http://mithril.js.org) and [React](https://facebook.github.io/react/).
 
 Can also be used as general-purpose component library that includes dialogs, cards, notifications, lists, buttons, form elements, and more.
 

@@ -1,4 +1,4 @@
-# Polythene: Material Design for Mithril and React
+# Polythene: Material Design component library for Mithril and React
 
 ## Material Design / custom design
 

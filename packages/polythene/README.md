@@ -1,5 +1,3 @@
 # Polythene
 
-* [Polythene for Mithril](../polythene-mithril)
-* [Polythene for React](../polythene-react)
-
+[Documentation](https://github.com/ArthurClemens/polythene/tree/master/docs/README.md)

@@ -1,7 +1,7 @@
 {
   "name": "polythene",
   "version": "1.0.0-rc.3",
-  "description": "",
+  "description": "Material Design component library for Mithril and React",
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"
 }
