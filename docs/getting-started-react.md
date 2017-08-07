@@ -1,7 +1,24 @@
 # Getting started with Polythene for React
 
 
-## Which packages do you need?
+<!-- MarkdownTOC bracket="round" autolink="true" depth="3" -->
+
+- [Usage in JavaScript modules](#usage-in-javascript-modules)
+  - [Which packages do you need?](#which-packages-do-you-need)
+  - [Installation](#installation)
+  - [Examples](#examples)
+    - [A single component](#a-single-component)
+    - [A simple app](#a-simple-app)
+- [Usage in a HTML file or JSFiddle](#usage-in-a-html-file-or-jsfiddle)
+
+<!-- /MarkdownTOC -->
+
+
+## Usage in JavaScript modules
+
+Add Polythene to your project with yarn or npm.
+
+### Which packages do you need?
 
 Required:
 
@@ -18,7 +35,7 @@ Optional:
 * `polythene-core-css` CSS tools [more info](packages/polythene-core-css.md)
 
 
-## Installation
+### Installation
 
 ~~~bash
 yarn add polythene-react polythene-style
@@ -30,10 +47,11 @@ or
 npm install --save polythene-react polythene-style
 ~~~
 
+### Examples
 
-## A single component
+#### A single component
 
-### With JSX
+##### With JSX
 
 ~~~jsx
 import React from "react"
@@ -42,7 +60,7 @@ import { RaisedButton } from "polythene-react"
 <RaisedButton label="Click" />
 ~~~
 
-### With hyperscript
+##### With hyperscript
 
 ~~~javascript
 import { renderer as h, RaisedButton } from "polythene-react"
@@ -53,9 +71,9 @@ h(RaisedButton, {
 ~~~
 
 
-## A simple app
+#### A simple app
 
-### With JSX
+##### With JSX
 
 ~~~jsx
 import React from "react"
@@ -88,7 +106,7 @@ ReactDOM.render(<App />, mountNode)
 ~~~
 
 
-### With hyperscript
+##### With hyperscript
 
 ~~~javascript
 import ReactDOM from "react-dom"
@@ -120,6 +138,53 @@ ReactDOM.render(h(App), mountNode)
 ~~~
 
 
-## Next
+## Usage in a HTML file or JSFiddle
 
-* [Documentation](README.md)
+A "standalone" version of Polythene is available for demonstration purposes. This build includes all dependencies, except for `react` and `react-dom`.
+
+URL:
+
+~~~
+https://rawgit.com/ArthurClemens/polythene/rewrite-universal/packages/polythene-react/dist/polythene-react-standalone.js
+~~~
+
+Add to your HTML file:
+
+~~~html
+<div id="root"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react-dom.js"></script>
+<script src="https://rawgit.com/ArthurClemens/polythene/rewrite-universal/packages/polythene-react/dist/polythene-react-standalone.js"></script>
+~~~
+
+To be able to write es6, add `babel-standalone`:
+
+~~~html
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+~~~
+
+
+Example script:
+
+~~~jsx
+/* global polythene */
+const { RaisedButton } = polythene
+
+const App = () => (
+  <div>
+    <RaisedButton
+      label="Button"
+    />
+  </div>
+)
+
+ReactDOM.render(
+  <App />,
+  document.getElementById("root")
+)
+~~~
+
+
+See: [Full working JSFiddle](https://jsfiddle.net/ArthurClemens/5db99xoj/)
+
