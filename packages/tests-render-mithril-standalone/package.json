@@ -1,5 +1,6 @@
 {
   "name": "tests-render-mithril-standalone",
+  "version": "1.0.0-rc.1",
   "private": true,
   "description": "",
   "scripts": {

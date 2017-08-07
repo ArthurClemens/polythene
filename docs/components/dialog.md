@@ -62,7 +62,7 @@ Displays a single dialog, or a stack of dialogs.
 | **Parameter**    |  **Mandatory** | **Type** | **Default** | **Description** |
 | ---------------- | -------------- | -------- | ----------- | --------------- |
 | **transition**   | optional | String: "both", "show", "hide", "none" | "both" | Sets when a transition is used |
-| **transitions**  | optional | Object | Module `src/theme/transitions.js` | Object with functions for keys `show` and `hide` |
+| **transitions**  | optional | Object | Module `src/theme/transitions.js` | Object with functions for keys `show` and `hide`; see "Usage" for an example |
 | **showDuration** | optional | Number | .150 | The show transition duration in seconds |
 | **hideDuration** | optional | Number | .150 | The hide transition duration in seconds |
 | **showDelay**    | optional | Number | 0 | The show delay duration in seconds |

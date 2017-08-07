@@ -1,6 +1,8 @@
 {
   "name": "polythene-test-render-mithril",
+  "version": "1.0.0-rc.1",
   "description": "",
+  "private": true,
   "main": "dist/js/test.js",
   "module": "dist/js/test.mjs",
   "scripts": {

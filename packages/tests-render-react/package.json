@@ -1,5 +1,6 @@
 {
   "name": "polythene-test-render-react",
+  "version": "1.0.0-rc.1",
   "private": true,
   "main": "dist/js/test.js",
   "module": "dist/js/test.mjs",
