@@ -23,7 +23,8 @@ Version: `1.0.0-rc.3` (release candidate 3)
 
 ## Demos
 
-* Demos: TODO
+* [Mithril demo](https://arthurclemens.github.io/polythene-demos/mithril/)
+* [React demo](https://arthurclemens.github.io/polythene-demos/react/)
 
 
 ## Getting started
