@@ -2,4 +2,4 @@
 
 Polythene for Mithril component.
 
-[Documentation](https://github.com/ArthurClemens/polythene/blob/master/packages/docs/components/mithril/toolbar.md)
+[Documentation](https://github.com/ArthurClemens/polythene/tree/master/docs/components/mithril/toolbar.md)

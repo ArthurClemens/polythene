@@ -2,4 +2,4 @@
 
 Polythene utility package.
 
-[Documentation](https://github.com/ArthurClemens/polythene/blob/master/packages/docs/packages/polythene-core-css.md)
+[Documentation](https://github.com/ArthurClemens/polythene/tree/master/docs/packages/polythene-core-css.md)

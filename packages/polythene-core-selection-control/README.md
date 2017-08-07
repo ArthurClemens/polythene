@@ -2,4 +2,4 @@
 
 Core Polythene component.
 
-[Documentation](https://github.com/ArthurClemens/polythene/blob/master/packages/docs/components/selection-control.md)
+[Documentation](https://github.com/ArthurClemens/polythene/tree/master/docs/components/selection-control.md)

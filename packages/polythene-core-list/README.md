@@ -2,4 +2,4 @@
 
 Core Polythene component.
 
-[Documentation](https://github.com/ArthurClemens/polythene/blob/master/packages/docs/components/list.md)
+[Documentation](https://github.com/ArthurClemens/polythene/tree/master/docs/components/list.md)

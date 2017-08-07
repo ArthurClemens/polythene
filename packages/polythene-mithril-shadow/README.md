@@ -2,4 +2,4 @@
 
 Polythene for Mithril component.
 
-[Documentation](https://github.com/ArthurClemens/polythene/blob/master/packages/docs/components/mithril/shadow.md)
+[Documentation](https://github.com/ArthurClemens/polythene/tree/master/docs/components/mithril/shadow.md)

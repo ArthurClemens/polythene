@@ -2,4 +2,4 @@
 
 Polythene for React component.
 
-[Documentation](https://github.com/ArthurClemens/polythene/blob/master/packages/docs/components/react/dialog.md)
+[Documentation](https://github.com/ArthurClemens/polythene/tree/master/docs/components/react/dialog.md)
