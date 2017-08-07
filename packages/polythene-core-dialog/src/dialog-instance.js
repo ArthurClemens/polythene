@@ -27,7 +27,7 @@ const showDialog = (state, attrs) => {
   const transitions = attrs.transitions;
   return show(Object.assign({},
     attrs,
-    transitions.show(state.el, attrs)
+    transitions.show({ el: state.el, showDuration: attrs.showDuration, showDelay: attrs.showDelay })
   )).then(() => {
     if (attrs.multipleDidShow) {
       attrs.multipleDidShow(id); // this will call attrs.didShow
@@ -45,7 +45,7 @@ const hideDialog = (state, attrs) => {
   const transitions = attrs.transitions;
   return hide(Object.assign({},
     attrs,
-    transitions.hide(state.el, attrs)
+    transitions.hide({ el: state.el, hideDuration: attrs.hideDuration, hideDelay: attrs.hideDelay })
   )).then(() => {
     if (attrs.multipleDidHide) {
       attrs.multipleDidHide(id); // this will call attrs.didHide

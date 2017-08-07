@@ -303,7 +303,7 @@ To create a fade-in while moving up:
 ~~~javascript
 const messageOptions = {
   transitions: {
-    show: el => ({
+    show: ({ el }) => ({
       el,
       showDuration: .5,
       beforeShow:   () => (
@@ -315,7 +315,7 @@ const messageOptions = {
         el.style.transform = "translate3d(0, 0px,  0)"
       )
     }),
-    hide: el => ({
+    hide: ({ el }) => ({
       el,
       hideDuration: .5,
       hide:         () => el.style.opacity = 0

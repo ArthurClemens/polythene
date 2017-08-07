@@ -60,7 +60,7 @@ The information on this page refers to the **Notification** component, but it al
 | **Parameter**    |  **Mandatory** | **Type** | **Default** | **Description** |
 | ---------------- | -------------- | -------- | ----------- | --------------- |
 | **transition**   | optional | String: "both", "show", "hide", "none" | "both" | Sets when a transition is used |
-| **transitions**  | optional | Object | Module `src/theme/transitions.js` | Object with keys `show` and `hide` |
+| **transitions**  | optional | Object | Module `src/theme/transitions.js` | Object with functions for keys `show` and `hide` |
 | **timeout**      |  |  | | See "Notification specific options" above |
 | **showDuration** | optional | Number | .150 | The show transition duration in seconds |
 | **hideDuration** | optional | Number | .150 | The hide transition duration in seconds |

@@ -119,7 +119,7 @@ var showDialog = function showDialog(state, attrs) {
   var id = state.instanceId;
   state.transitioning(true);
   var transitions = attrs.transitions;
-  return show(_extends({}, attrs, transitions.show(state.el, attrs))).then(function () {
+  return show(_extends({}, attrs, transitions.show({ el: state.el, showDuration: attrs.showDuration, showDelay: attrs.showDelay }))).then(function () {
     if (attrs.multipleDidShow) {
       attrs.multipleDidShow(id); // this will call attrs.didShow
     }
@@ -134,7 +134,7 @@ var hideDialog = function hideDialog(state, attrs) {
   var id = state.instanceId;
   state.transitioning(true);
   var transitions = attrs.transitions;
-  return hide(_extends({}, attrs, transitions.hide(state.el, attrs))).then(function () {
+  return hide(_extends({}, attrs, transitions.hide({ el: state.el, hideDuration: attrs.hideDuration, hideDelay: attrs.hideDelay }))).then(function () {
     if (attrs.multipleDidHide) {
       attrs.multipleDidHide(id); // this will call attrs.didHide
     }
@@ -234,11 +234,14 @@ var dialogInstance = Object.freeze({
 
 var ANIMATION_DURATION = .220;
 
-var show$1 = function show$$1(el, attrs) {
+var show$1 = function show$$1(_ref) {
+  var el = _ref.el,
+      showDuration = _ref.showDuration,
+      showDelay = _ref.showDelay;
   return {
     el: el,
-    showDuration: attrs.showDuration || ANIMATION_DURATION,
-    showDelay: attrs.showDelay || 0,
+    showDuration: showDuration || ANIMATION_DURATION,
+    showDelay: showDelay || 0,
     beforeShow: function beforeShow() {
       return el.style.opacity = 0;
     },
@@ -248,11 +251,14 @@ var show$1 = function show$$1(el, attrs) {
   };
 };
 
-var hide$1 = function hide$$1(el, attrs) {
+var hide$1 = function hide$$1(_ref2) {
+  var el = _ref2.el,
+      hideDuration = _ref2.hideDuration,
+      hideDelay = _ref2.hideDelay;
   return {
     el: el,
-    hideDuration: attrs.hideDuration || ANIMATION_DURATION,
-    hideDelay: attrs.hideDelay || 0,
+    hideDuration: hideDuration || ANIMATION_DURATION,
+    hideDelay: hideDelay || 0,
     hide: function hide$$1() {
       return el.style.opacity = 0;
     }
