@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-list-tile",
-  "version": "1.0.0-rc.2",
+  "version": "1.0.0-rc.3",
   "description": "",
   "main": "dist/polythene-react-list-tile.js",
   "module": "dist/polythene-react-list-tile.mjs",
@@ -14,10 +14,10 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-list-tile": "^1.0.0-rc.2",
-    "polythene-react-base": "^1.0.0-rc.2",
-    "polythene-react-icon": "^1.0.0-rc.2",
-    "polythene-react-ripple": "^1.0.0-rc.2"
+    "polythene-core-list-tile": "^1.0.0-rc.3",
+    "polythene-react-base": "^1.0.0-rc.3",
+    "polythene-react-icon": "^1.0.0-rc.3",
+    "polythene-react-ripple": "^1.0.0-rc.3"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

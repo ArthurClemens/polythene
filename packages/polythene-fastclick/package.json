@@ -1,6 +1,6 @@
 {
   "name": "polythene-fastclick",
-  "version": "1.0.0-rc.2",
+  "version": "1.0.0-rc.3",
   "description": "",
   "main": "dist/polythene-fastclick.js",
   "module": "dist/polythene-fastclick.mjs",
@@ -15,7 +15,7 @@
   ],
   "dependencies": {
     "fastclick": "^1.0.6",
-    "polythene-core": "^1.0.0-rc.2"
+    "polythene-core": "^1.0.0-rc.3"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

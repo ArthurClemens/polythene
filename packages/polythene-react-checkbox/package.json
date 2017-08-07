@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-checkbox",
-  "version": "1.0.0-rc.2",
+  "version": "1.0.0-rc.3",
   "description": "",
   "main": "dist/polythene-react-checkbox.js",
   "module": "dist/polythene-react-checkbox.mjs",
@@ -14,11 +14,11 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-checkbox": "^1.0.0-rc.2",
-    "polythene-core-selection-control": "^1.0.0-rc.2",
-    "polythene-react-base": "^1.0.0-rc.2",
-    "polythene-react-icon": "^1.0.0-rc.2",
-    "polythene-react-icon-button": "^1.0.0-rc.2"
+    "polythene-core-checkbox": "^1.0.0-rc.3",
+    "polythene-core-selection-control": "^1.0.0-rc.3",
+    "polythene-react-base": "^1.0.0-rc.3",
+    "polythene-react-icon": "^1.0.0-rc.3",
+    "polythene-react-icon-button": "^1.0.0-rc.3"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

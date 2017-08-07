@@ -1,6 +1,6 @@
 {
   "name": "polythene-test-render-react",
-  "version": "1.0.0-rc.2",
+  "version": "1.0.0-rc.3",
   "private": true,
   "main": "dist/js/test.js",
   "module": "dist/js/test.mjs",
@@ -11,12 +11,12 @@
     "build": "webpack -p --config scripts/webpack.config.js"
   },
   "dependencies": {
-    "polythene-core": "^1.0.0-rc.2",
-    "polythene-fastclick": "^1.0.0-rc.2",
-    "polythene-react": "^1.0.0-rc.2",
-    "polythene-style": "^1.0.0-rc.2",
-    "polythene-test": "^1.0.0-rc.2",
-    "polythene-utilities": "^1.0.0-rc.2",
+    "polythene-core": "^1.0.0-rc.3",
+    "polythene-fastclick": "^1.0.0-rc.3",
+    "polythene-react": "^1.0.0-rc.3",
+    "polythene-style": "^1.0.0-rc.3",
+    "polythene-test": "^1.0.0-rc.3",
+    "polythene-utilities": "^1.0.0-rc.3",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-router-dom": "^4.1.1"

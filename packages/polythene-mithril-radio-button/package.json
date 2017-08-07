@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-radio-button",
-  "version": "1.0.0-rc.2",
+  "version": "1.0.0-rc.3",
   "description": "",
   "main": "dist/polythene-mithril-radio-button.js",
   "module": "dist/polythene-mithril-radio-button.mjs",
@@ -14,11 +14,11 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-radio-button": "^1.0.0-rc.2",
-    "polythene-core-selection-control": "^1.0.0-rc.2",
-    "polythene-mithril-base": "^1.0.0-rc.2",
-    "polythene-mithril-icon": "^1.0.0-rc.2",
-    "polythene-mithril-icon-button": "^1.0.0-rc.2"
+    "polythene-core-radio-button": "^1.0.0-rc.3",
+    "polythene-core-selection-control": "^1.0.0-rc.3",
+    "polythene-mithril-base": "^1.0.0-rc.3",
+    "polythene-mithril-icon": "^1.0.0-rc.3",
+    "polythene-mithril-icon-button": "^1.0.0-rc.3"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

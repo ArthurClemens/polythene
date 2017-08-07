@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-snackbar",
-  "version": "1.0.0-rc.2",
+  "version": "1.0.0-rc.3",
   "description": "",
   "main": "dist/polythene-mithril-snackbar.js",
   "module": "dist/polythene-mithril-snackbar.mjs",
@@ -14,9 +14,9 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "^1.0.0-rc.2",
-    "polythene-core-snackbar": "^1.0.0-rc.2",
-    "polythene-mithril-base": "^1.0.0-rc.2"
+    "polythene-core": "^1.0.0-rc.3",
+    "polythene-core-snackbar": "^1.0.0-rc.3",
+    "polythene-mithril-base": "^1.0.0-rc.3"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

@@ -1,6 +1,6 @@
 {
   "name": "test-search",
-  "version": "1.0.0-rc.2",
+  "version": "1.0.0-rc.3",
   "private": true,
   "description": "",
   "main": "dist/test-search.js",
@@ -17,9 +17,9 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-css": "^1.0.0-rc.2",
-    "polythene-mithril": "^1.0.0-rc.2",
-    "polythene-react": "^1.0.0-rc.2"
+    "polythene-core-css": "^1.0.0-rc.3",
+    "polythene-mithril": "^1.0.0-rc.3",
+    "polythene-react": "^1.0.0-rc.3"
   },
   "devDependencies": {
     "mithril": "1.1.3",
