@@ -19,6 +19,8 @@ import { Button } from "polythene-react"
 <Button label="Button" />
 ~~~
 
+<a href="https://jsfiddle.net/ArthurClemens/5db99xoj/" target="_blank"><img src="http://arthurclemens.github.io/assets/polythene/docs/online-example.gif" height="36" /></a>
+
 
 #### With hyperscript
 
@@ -29,6 +31,8 @@ h(Button, {
   label: "Button"
 })
 ~~~
+
+<a href="https://jsfiddle.net/ArthurClemens/hL8wmrpL/" target="_blank"><img src="http://arthurclemens.github.io/assets/polythene/docs/online-example.gif" height="36" /></a>
 
 
 ### Links

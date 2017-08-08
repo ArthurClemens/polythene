@@ -19,6 +19,8 @@ m(Button, {
 })
 ~~~
 
+<a href="https://jsfiddle.net/ArthurClemens/5d5xfoxs/" target="_blank"><img src="http://arthurclemens.github.io/assets/polythene/docs/online-example.gif" height="36" /></a>
+
 
 ### Links
 
