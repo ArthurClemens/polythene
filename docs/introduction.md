@@ -24,10 +24,10 @@ State is handled by your app. That means that your app sets the initial state an
 import m from "mithril"
 import { Icon, SVG } from "polythene-mithril"
 
-const starsSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>"
+const iconSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\"/></svg>"
 
 m(Icon,
-  m(SVG, m.trust(starsSVG))
+  m(SVG, m.trust(iconSVG))
 )
 ~~~
 
@@ -37,10 +37,10 @@ m(Icon,
 import React from "react"
 import { Icon, SVG } from "polythene-react"
 
-const starsSVG = <svg width="24" height="24" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>
+const iconSVG = <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
 
 <Icon>
-  <SVG>{starsSVG}</SVG>
+  <SVG>{iconSVG}</SVG>
 </Icon>
 ~~~
 
@@ -49,10 +49,10 @@ const starsSVG = <svg width="24" height="24" viewBox="0 0 24 24"><path d="M11.99
 ~~~javascript
 import { renderer as h, Icon, SVG } from "polythene-react"
 
-const starsSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>"
+const iconSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\"/></svg>"
 
 h(Icon,
-  h(SVG, m.trust(starsSVG))
+  h(SVG, m.trust(iconSVG))
 )
 ~~~
 
@@ -68,10 +68,10 @@ We can pass a custom Icon as a child to Icon Button:
 import m from "mithril"
 import { Icon, IconButton, SVG } from "polythene-mithril"
 
-const starsSVG = "..." // see above
+const iconSVG = "..." // see above
 
 const StarIcon = m(Icon,
-  m(SVG, m.trust(starsSVG))
+  m(SVG, m.trust(iconSVG))
 )
 
 m(IconButton, StarIcon)
@@ -83,12 +83,12 @@ Because Icon Button accepts `icon` options (and Icon accepts `svg` options), we 
 import m from "mithril"
 import { IconButton } from "polythene-mithril"
 
-const starsSVG = "..." // see above
+const iconSVG = "..." // see above
 
 m(IconButton,
   {
     icon: {
-      svg: m.trust(starsSVG)
+      svg: m.trust(iconSVG)
     }
   }
 )
@@ -102,11 +102,11 @@ Passing a custom Icon as a child to Icon Button:
 import React from "react"
 import { Icon, IconButton, SVG } from "polythene-react"
 
-const starsSVG = ... // see above
+const iconSVG = ... // see above
 
 <IconButton>
   <Icon>
-    <SVG>{starsSVG}</SVG>
+    <SVG>{iconSVG}</SVG>
   </Icon>
 </IconButton>
 ~~~
@@ -117,11 +117,11 @@ Because Icon Button accepts `icon` options (and Icon accepts `svg` options), we 
 import React from "react"
 import { IconButton } from "polythene-react"
 
-const starsSVG = ... // see above
+const iconSVG = ... // see above
 
 <IconButton
   icon={{
-    svg: starsSVG
+    svg: iconSVG
   }}
 />
 ~~~
@@ -133,10 +133,10 @@ Passing a custom Icon as a child to Icon Button:
 ~~~javascript
 import { renderer as h, Icon, IconButton, SVG } from "polythene-react"
 
-const starsSVG = "..." // see above
+const iconSVG = "..." // see above
 
 const StarIcon = h(Icon,
-  h(SVG, h.trust(starsSVG))
+  h(SVG, h.trust(iconSVG))
 )
 
 h(IconButton, StarIcon)
@@ -147,12 +147,12 @@ Because Icon Button accepts `icon` options (and Icon accepts `svg` options), we 
 ~~~javascript
 import { renderer as h, IconButton } from "polythene-react"
 
-const starsSVG = "..." // see above
+const iconSVG = "..." // see above
 
 h(IconButton,
   {
     icon: {
-      svg: h.trust(starsSVG)
+      svg: h.trust(iconSVG)
     }
   }
 )

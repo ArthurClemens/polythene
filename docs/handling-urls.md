@@ -17,7 +17,7 @@ To [make a link a router link](https://mithril.js.org/route.html#mroutelink), it
 
 ### Router links
 
-<a href="https://jsfiddle.net/ArthurClemens/7vurv0c3/" target="_blank"><img src="http://arthurclemens.github.io/assets/polythene/docs/online-example.gif" height="36" /></a>
+<a href="https://jsfiddle.net/ArthurClemens/7vurv0c3/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 ~~~javascript
 m(Button, {
@@ -56,7 +56,7 @@ React does not include a router. [React Router](https://github.com/ReactTraining
 
 #### With JSX
 
-<a href="https://jsfiddle.net/ArthurClemens/1hm2w5xd/" target="_blank"><img src="http://arthurclemens.github.io/assets/polythene/docs/online-example.gif" height="36" /></a>
+<a href="https://jsfiddle.net/ArthurClemens/1hm2w5xd/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 ~~~jsx
 import { HashRouter as Router, Switch, Route } from "react-router-dom"
@@ -98,7 +98,7 @@ ReactDOM.render(
 
 #### With hyperscript
 
-<a href="https://jsfiddle.net/ArthurClemens/gqef8c0g/" target="_blank"><img src="http://arthurclemens.github.io/assets/polythene/docs/online-example.gif" height="36" /></a>
+<a href="https://jsfiddle.net/ArthurClemens/gqef8c0g/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 ~~~javascript
 import { HashRouter as Router, Switch, Route } from "react-router-dom"
