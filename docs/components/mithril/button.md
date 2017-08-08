@@ -10,6 +10,8 @@
 
 ## Usage
 
+<a href="https://jsfiddle.net/ArthurClemens/5d5xfoxs/" target="_blank"><img src="http://arthurclemens.github.io/assets/polythene/docs/online-example.gif" height="36" /></a>
+
 ~~~javascript
 import m from "mithril"
 import { Button } from "polythene-mithril"
@@ -18,9 +20,6 @@ m(Button, {
   label: "Button"
 })
 ~~~
-
-<a href="https://jsfiddle.net/ArthurClemens/5d5xfoxs/" target="_blank"><img src="http://arthurclemens.github.io/assets/polythene/docs/online-example.gif" height="36" /></a>
-
 
 ### Links
 

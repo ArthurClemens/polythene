@@ -7,7 +7,7 @@ Requirements for the `url` object differ per renderer.
 
 ## Mithril
 
-Mithril includes [a build in router](https://mithril.js.org/#routing).
+Mithril includes [a build-in router](https://mithril.js.org/#routing).
 
 To [make a link a router link](https://mithril.js.org/route.html#mroutelink), it should either:
 
@@ -16,6 +16,8 @@ To [make a link a router link](https://mithril.js.org/route.html#mroutelink), it
   * and if the href attribute is not static, the onupdate hook must also be set: `onupdate: m.route.link`
 
 ### Router links
+
+<a href="https://jsfiddle.net/ArthurClemens/7vurv0c3/" target="_blank"><img src="http://arthurclemens.github.io/assets/polythene/docs/online-example.gif" height="36" /></a>
 
 ~~~javascript
 m(Button, {
@@ -52,41 +54,94 @@ m(Button, {
 
 React does not include a router. [React Router](https://github.com/ReactTraining/react-router) is well known external router library. 
 
-To enable router links, wrap the component in its `withRouter` HOC.
-
 #### With JSX
 
-~~~jsx
-import { withRouter } from "react-router-dom"
+<a href="https://jsfiddle.net/ArthurClemens/1hm2w5xd/" target="_blank"><img src="http://arthurclemens.github.io/assets/polythene/docs/online-example.gif" height="36" /></a>
 
-withRouter(({ history }) => 
-  <Button
-    url={{
-      href: "/index", // not required, but makes the button a real link
-      onClick: e => (
-        e.preventDefault(),
-        history.push("/index")
-      )
-    }}
-  />
+~~~jsx
+import { HashRouter as Router, Switch, Route } from "react-router-dom"
+import { RaisedButton } from "polythene-react"
+
+const Index = ({ history }) => 
+  <div>
+    <h1>Home</h1>
+    <RaisedButton
+      label="Go to page 1"
+      events={{
+        onClick: e => history.push("/page1")
+      }}
+    />
+  </div>
+
+const Page1 = ({ history }) => 
+  <div>
+    <h1>Page 1</h1>
+    <RaisedButton
+      label="Go to home"
+      events={{
+        onClick: e => history.push("/")
+      }}
+    />
+  </div>
+
+const App = () => 
+  <Switch>
+    <Route exact path="/" component={Index}/>
+    <Route path="/page1" component={Page1} />
+  </Switch>
+
+ReactDOM.render(
+  <Router><App /></Router>,
+  document.getElementById("root")
 )
 ~~~
 
 #### With hyperscript
 
-~~~javascript
-import { withRouter } from "react-router-dom"
+<a href="https://jsfiddle.net/ArthurClemens/gqef8c0g/" target="_blank"><img src="http://arthurclemens.github.io/assets/polythene/docs/online-example.gif" height="36" /></a>
 
-withRouter(({ history }) => 
-  h(Button, {
-    url: {
-      href: "/index", // not required, but makes the button a real link
-      onClick: e => (
-        e.preventDefault(),
-        history.push("/index")
-      )
-    }
-  })
+~~~javascript
+import { HashRouter as Router, Switch, Route } from "react-router-dom"
+import { RaisedButton } from "polythene-react"
+
+const Index = ({ history }) => 
+  h("div", [
+    h("h1", "Home"),
+    h(RaisedButton, {
+      label: "Go to page 1",
+      events: {
+        onClick: e => history.push("/page1")
+      }
+     })
+  ])
+
+const Page1 = ({ history }) => 
+  h("div", [
+    h("h1", "Page 1"),
+    h(RaisedButton, {
+      label: "Go to home",
+      events: {
+        onClick: e => history.push("/")
+      }
+     })
+  ])
+
+const App = () => 
+  h(Switch, [
+    h(Route, {
+      exact: true,
+      path: "/",
+      component: Index
+    }),
+    h(Route, {
+      path: "/page1",
+      component: Page1
+     })
+  ])
+
+ReactDOM.render(
+  h(Router, null, h(App)),
+  document.getElementById("root")
 )
 ~~~
 
