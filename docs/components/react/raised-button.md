@@ -12,6 +12,8 @@
 
 #### With JSX
 
+<a href="https://jsfiddle.net/ArthurClemens/sbtonwbf/" target="_blank"><img src="http://arthurclemens.github.io/assets/polythene/docs/online-example.gif" height="36" /></a>
+
 ~~~jsx
 import React from "react"
 import { RaisedButton } from "polythene-react"
@@ -20,6 +22,8 @@ import { RaisedButton } from "polythene-react"
 ~~~
 
 #### With hyperscript
+
+<a href="https://jsfiddle.net/ArthurClemens/hL8wmrpL/" target="_blank"><img src="http://arthurclemens.github.io/assets/polythene/docs/online-example.gif" height="36" /></a>
 
 ~~~javascript
 import { RaisedButton } from "polythene-react"
