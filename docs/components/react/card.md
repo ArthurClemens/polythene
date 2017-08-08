@@ -12,6 +12,8 @@
 
 #### With JSX
 
+<a href="https://jsfiddle.net/ArthurClemens/dhq3cLrv/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+
 ~~~jsx
 import React from "react"
 import { Card } from "polythene-react"
@@ -143,6 +145,8 @@ addLayoutStyles() // to use m(".flex")
 ~~~
 
 #### With hyperscript
+
+<a href="https://jsfiddle.net/ArthurClemens/h6n5jzgd/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 The card can contain various elements. The `content` parameter accepts any String, hyperscript or component:
 

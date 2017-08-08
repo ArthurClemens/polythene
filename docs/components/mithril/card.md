@@ -10,6 +10,8 @@
 
 ## Usage
 
+<a href="https://jsfiddle.net/ArthurClemens/47uy6e1w/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+
 ~~~javascript
 import m from "mithril"
 import { Card } from "polythene-mithril"
@@ -20,7 +22,7 @@ The card can contain various elements. The `content` parameter accepts any Strin
 ~~~javascript
 import { Card, List } from "polythene-mithril"
 
-m(card, {
+m(Card, {
   content: m(List, {...})
 })
 ~~~
