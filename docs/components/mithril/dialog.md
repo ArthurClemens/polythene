@@ -201,15 +201,13 @@ const closeSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=
 
 const fullScreenToolbarRow = title => [
   m(IconButton, {
-    key: "close",
     icon: { svg: m.trust(closeSVG) },
     events: {
       onclick: () => Dialog.show(confirmDialogOpts, { id: DIALOG_CONFIRM })
     }
   }),
-  m("span.flex", { key: "title" }, title),
+  m("span.flex", title),
   m(Button, {
-    key: "save",
     label: "Save",
     events: {
       onclick: () => Dialog.hide()
@@ -221,31 +219,27 @@ const FullScreenPane = {
   view: () => 
     m("div", [
       m(Toolbar, {
-        key: "toolbar",
         content: fullScreenToolbarRow("New event")
       }),
       m("div", {
-        key: "content",
         style: { padding: "21px" }
       }, m.trust(longText))
     ])
 }
 
 const confirmDialogOpts = ({
-  body: m.trust(shortText),
+  body: "This event is not yet saved. Are you sure you want to delete this event?",
   modal: true,
   backdrop: true,
   footer: [
     m(Button, {
-      key: "close",
-      label: "Close this",
+      label: "Cancel",
       events: {
         onclick: () => Dialog.hide({ id: DIALOG_CONFIRM })
       }
     }),
     m(Button, {
-      key: "close-all",
-      label: "Close all",
+      label: "Delete",
       events: {
         onclick: () => (
           // hide confirm dialog
