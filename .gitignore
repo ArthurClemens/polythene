@@ -5,3 +5,6 @@ lerna-debug.log
 .eslintcache
 
 npm-debug*
+
+packages/tests-render-mithril/dist/js/*
+packages/tests-render-react/dist/js/*
