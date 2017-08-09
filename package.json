@@ -5,7 +5,8 @@
     "build": "lerna clean --yes && lerna bootstrap && lerna run build",
     "build:component": "node ./scripts/buildComponent",
     "build:tests": "node ./scripts/buildTests",
-    "test": "node ./scripts/runTests"
+    "test": "node ./scripts/runTests",
+    "github:demos": "node ./scripts/copyToDemos"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
