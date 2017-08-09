@@ -12,7 +12,7 @@
 
 Shadow has 5 depth levels, configured with option `z`.
 
-### With JSX
+#### With JSX
 
 ~~~jsx
 import React from "react"
@@ -21,7 +21,7 @@ import { Shadow } from "polythene-react"
 <Shadow z={2} />
 ~~~
 
-### With hyperscript
+#### With hyperscript
 
 ~~~javascript
 import { renderer as h, Shadow } from "polythene-react"

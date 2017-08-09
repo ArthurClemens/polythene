@@ -20,6 +20,8 @@ Because a dialog should float on top of everything else, outside of the context 
 
 #### With JSX
 
+<a href="https://jsfiddle.net/ArthurClemens/m08o291L/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+
 ~~~jsx
 import React from "react"
 import { Dialog } from "polythene-react"
@@ -126,19 +128,20 @@ Dialog.show(
 
 ##### Dynamic content
 
-In case the dialog contents needs to change when a state changes (for instance after user interaction, after loading translation strings, etcetera), you should pass a function instead.
+**NOTE: the following only applies to passing options as a POJO. For React, the better alternative is to manage state in a DialogPane wrapper component. See a more complete example below at "Conditional footer buttons".**
 
-`optionsFn` is a function that returns an options object:
+When passing a POJO object to `Dialog.show`, the object contents is rendered statically and changes will not get reflected properly. Passing the options as a function ensures that the options are read afresh with the new state:
 
 ~~~javascript
-const optionsFn = () => ({
-  body: "some text"
-})
+const optionsFn = () => {
+  return {
+    body: "some text"
+  }
+}
 
 Dialog.show(optionsFn)
 ~~~
 
-Using a function ensures that the options are read afresh with the new state.
 
 #### hide
 
@@ -170,7 +173,7 @@ const dialogOptions = {
 }
 ~~~
 
-### Example with `modal` and `backdrop`
+### Example with modal and backdrop
 
 A modal dialog is a dialog that can only be closed with an explicit choice; clicking the background does not count as a choice.
 
@@ -228,11 +231,13 @@ const dialogOptions = {
 Dialog.show(dialogOptions)
 ~~~
 
-### Fullscreen dialog
+### Full screen dialog
 
-A fullscreen dialog uses [Toolbar](../toolbar.md) to implement its own header (options `title` and `footer` are not used):
+A full screen dialog uses [Toolbar](../toolbar.md) to implement its own header (options `title` and `footer` are not used):
 
-### With JSX
+#### With JSX
+
+<a href="https://jsfiddle.net/ArthurClemens/npq4phf3/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 ~~~jsx
 import React from "react"
@@ -241,45 +246,50 @@ import { addLayoutStyles } from "polythene-utilities"
 
 addLayoutStyles() // to use <span className="flex" />
 
+const DIALOG_CONFIRM = "confirm-fullscreen"
 const iconClose = <svg width="24" height="24" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+const shortText = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 
-const content = "Content..."
+const BodyText = () => (
+  <div>
+    {[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15].map(num => <p key={num}>{shortText}</p>)}
+  </div>
+)
 
-const toolbarRow = title => [
-  /* Note that we are passing JSX elements in an array, hence the comma separators and keys */
-  <IconButton
-    key="close"
-    icon={{
-      svg: iconClose
-    }}
-    events={{
-      onClick: () => Dialog.hide()
-    }}
-  />,
-  <span className="flex" key="spacer">{title}</span>,
-  <Button
-    key="save"
-    label="Save"
-    events={{
-      onClick: () => Dialog.hide()
-    }}
-  />
-]
+// Second dialog
+const confirmDialogOpts = ({
+  body: "This event is not yet saved. Are you sure you want to delete this event?",
+  modal: true,
+  backdrop: true,
+  footer: [
+    <Button
+      label="Cancel"
+      events={{
+        onClick: () => Dialog.hide({ id: DIALOG_CONFIRM })
+      }}
+    />,
+    <Button
+      label="Delete"
+      events={{
+        onClick: () => (
+          // hide confirm dialog
+          Dialog.hide({ id: DIALOG_CONFIRM }),
+          // hide main dialog
+          Dialog.hide()
+        )
+      }}
+    />
+  ],
+})
 
-export default {
-  fullscreen: true,
+Dialog.show({
+  fullScreen: true,
   backdrop: true,
   content: [
-    /* Note that we are passing JSX elements in an array, hence the comma separator and keys */
-    <Toolbar
-      content={toolbarRow("New event")}
-      key="header"
-    />,
-    <div style={{ padding: "21px" }} key="content">
-      {content}
-    </div>
+    <Toolbar content={toolbarRow("New event")} />,
+    <div style={{ padding: "21px" }}><BodyText /></div>
   ]
-}
+})
 ~~~
 
 #### With hyperscript
@@ -291,6 +301,7 @@ import { addLayoutStyles } from "polythene-utilities"
 addLayoutStyles() // to use h(".flex")
 
 const iconClose = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\"/></svg>"
+const shortText = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 
 const content = "Content..."
 
@@ -315,7 +326,7 @@ const toolbarRow = title => [
 ]
 
 const dialogOptions = {
-  fullscreen: true,
+  fullScreen: true,
   backdrop: true,
   content: [
     h(Toolbar,
@@ -337,6 +348,78 @@ const dialogOptions = {
 
 Dialog.show(dialogOptions)
 ~~~
+
+### Dynamic content: conditional footer buttons
+
+To create dynamic dialog content, create a DialogPane wrapper component.
+
+The example dialog shows a file upload form, where the submit button is disabled until a file has been selected.
+
+#### With JSX
+
+<a href="https://jsfiddle.net/ArthurClemens/1fgh0bgt/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+
+~~~jsx
+import React, { Component } from "react"
+import { Button, Dialog, DialogPane } from "polythene-react"
+
+class ConditionalDialogPane extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      file: undefined
+    }
+  }
+  render() {
+    const disabled = this.state.file === undefined
+    return (
+      <DialogPane
+        title="Select a file..."
+        body={<input
+          type="file"
+          id="file"
+          name="file"
+          onChange={e => this.setState({file: e.target.value})}
+        />}
+        formOptions={{
+          name: "demo",
+          type: "post",
+          encType: "multipart/form-data",
+          onSubmit: e => {
+            e.preventDefault()
+            alert("Posted: " + this.state.file)
+            Dialog.hide()
+            this.setState({file: null})
+          }
+        }}
+        footer={<div>
+          <Button
+            label="Cancel"
+            events={{
+              onClick: () => Dialog.hide()
+            }}
+          />
+          <Button
+            disabled={disabled}
+            label="Post"
+            type="submit"
+            element="button"
+            events={{
+              onClick: () => Dialog.hide()
+            }}
+          />
+        </div>}
+        didHide={() => this.setState({file: null})}
+      />
+    )
+  }
+}
+
+Dialog.show({
+  panes: [<ConditionalDialogPane />]  
+})
+~~~
+
 
 
 ## Appearance

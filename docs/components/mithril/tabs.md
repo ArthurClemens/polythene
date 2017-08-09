@@ -185,8 +185,8 @@ m("div",
   m(Tabs,
     {
       scrollable: true,
-      scrollIconBackward: { svg: h.trust(arrowBackSVG) },
-      scrollIconForward: { svg: h.trust(arrowForwardSVG) }
+      scrollIconBackward: { svg: m.trust(arrowBackSVG) },
+      scrollIconForward: { svg: m.trust(arrowForwardSVG) }
     },
     tabButtons
   )

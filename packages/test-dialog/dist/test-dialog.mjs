@@ -41,7 +41,7 @@ var fullScreen = (function (_ref) {
       Dialog$$1 = _ref.Dialog;
 
 
-  var fullscreenToolbarRow = function fullscreenToolbarRow(title) {
+  var fullScreenToolbarRow = function fullScreenToolbarRow(title) {
     return [h(IconButton$$1, {
       key: "close",
       icon: { svg: h.trust(closeSVG) },
@@ -57,11 +57,11 @@ var fullScreen = (function (_ref) {
     })];
   };
 
-  var FullscreenPane = {
+  var FullScreenPane = {
     view: function view() {
       return h("div", [h(Toolbar$$1, {
         key: "toolbar",
-        content: fullscreenToolbarRow("New event")
+        content: fullScreenToolbarRow("New event")
       }), h("div", {
         key: "content",
         style: { padding: "21px" }
@@ -70,18 +70,16 @@ var fullScreen = (function (_ref) {
   };
 
   var confirmDialogOpts = {
-    body: h.trust(shortText),
+    body: "This event is not yet saved. Are you sure you want to delete this event?",
     modal: true,
     backdrop: true,
     footer: [h(Button$$1, {
-      key: "close",
-      label: "Close this",
+      label: "Cancel",
       events: _defineProperty$3({}, k.onclick, function () {
         return Dialog$$1.hide({ id: DIALOG_CONFIRM });
       })
     }), h(Button$$1, {
-      key: "close-all",
-      label: "Close all",
+      label: "Delete",
       events: _defineProperty$3({}, k.onclick, function () {
         return (
           // hide confirm dialog
@@ -94,7 +92,7 @@ var fullScreen = (function (_ref) {
   };
 
   return {
-    body: h(FullscreenPane),
+    body: h(FullScreenPane),
     fullScreen: true
   };
 });
@@ -110,7 +108,7 @@ var fullwidth = (function (_ref) {
     style: {
       width: "280px"
     },
-    body: [h(".pe-dialog__title", "Let your apps know your location"), h("div", "This means that your location data will be sent to our servers, anonymously of course.")],
+    body: [h(".pe-dialog-pane__title", "Let your apps know your location"), h("div", "This means that your location data will be sent to our servers, anonymously of course.")],
     footer: [h(Button$$1, {
       label: "Turn on location services",
       events: _defineProperty$4({}, k.onclick, function () {
@@ -757,52 +755,48 @@ var stream$2 = createCommonjsModule(function (module) {
 var stream = stream$2;
 
 var file = stream(null);
+file.map(renderer.redraw); // redraw whenever file changes value
 
-// use a function to have the state of hasValue reflected in the Dialog
+// Return a function so that the component attributes are not rendered statically
 var form = (function () {
-  // Return a function so that these component attributes are not rendered statically:
-  return function () {
-    return {
-      title: "Select a file...",
-      body: renderer("input", {
-        type: "file",
-        id: "file",
-        name: "file",
-        onchange: function onchange(e) {
-          var fileInput = e.target;
-          file(fileInput.value);
-          setTimeout(renderer.redraw);
-        }
-      }),
-      formOptions: {
-        name: "demo",
-        type: "post",
-        enctype: "multipart/form-data",
-        onsubmit: function onsubmit(e) {
-          e.preventDefault();
-          var form = e.target;
-          alert("Posted: " + form.file.value);
-          Dialog.hide();
-          file(null);
-        }
-      },
-      footer: [renderer(Button, {
-        label: "Cancel",
-        events: {
-          onclick: function onclick() {
-            return Dialog.hide();
-          }
-        }
-      }), renderer(Button, {
-        disabled: file() === null,
-        label: "Post",
-        element: "button",
-        type: "submit"
-      })],
-      didHide: function didHide() {
-        return file(null);
+  return {
+    title: "Select a file...",
+    body: renderer("input", {
+      type: "file",
+      id: "file",
+      name: "file",
+      onchange: function onchange(e) {
+        return file(e.target.value);
       }
-    };
+    }),
+    formOptions: {
+      name: "demo",
+      type: "post",
+      enctype: "multipart/form-data",
+      onsubmit: function onsubmit(e) {
+        e.preventDefault();
+        var form = e.target;
+        alert("Posted: " + form.file.value);
+        Dialog.hide();
+        file(null);
+      }
+    },
+    footer: [renderer(Button, {
+      label: "Cancel",
+      events: {
+        onclick: function onclick() {
+          return Dialog.hide();
+        }
+      }
+    }), renderer(Button, {
+      disabled: file() === null,
+      label: "Post",
+      element: "button",
+      type: "submit"
+    })],
+    didHide: function didHide() {
+      return file(null);
+    }
   };
 });
 
@@ -833,7 +827,7 @@ var mithrilTests = function mithrilTests(_ref) {
     exclude: true,
     component: {
       view: function view() {
-        return Opener(form());
+        return Opener(form);
       }
     }
   }];
@@ -4708,13 +4702,53 @@ var fullScreenOptions = {
   }, renderer$1.trust(content))]
 };
 
+var DIALOG_CONFIRM$1 = "confirm-fullscreen";
 var iconClose$1 = react.createElement(
   "svg",
   { width: "24", height: "24", viewBox: "0 0 24 24" },
   react.createElement("path", { d: "M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" })
 );
+var shortText$1 = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
-var content$1 = "Content...";
+var BodyText = function BodyText() {
+  return react.createElement(
+    "div",
+    null,
+    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(function (num) {
+      return react.createElement(
+        "p",
+        { key: num },
+        shortText$1
+      );
+    })
+  );
+};
+
+var confirmDialogOpts = {
+  body: "This event is not yet saved. Are you sure you want to delete this event?",
+  modal: true,
+  backdrop: true,
+  footer: [react.createElement(Button$1, {
+    label: "Cancel",
+    events: {
+      onClick: function onClick() {
+        return Dialog$1.hide({ id: DIALOG_CONFIRM$1 });
+      }
+    }
+  }), react.createElement(Button$1, {
+    label: "Delete",
+    events: {
+      onClick: function onClick() {
+        return (
+          // hide confirm dialog
+          Dialog$1.hide({ id: DIALOG_CONFIRM$1 }),
+          // hide main dialog
+          Dialog$1.hide()
+        );
+      }
+    }
+  })]
+};
 
 var toolbarRow$1 = function toolbarRow(title) {
   return [react.createElement(IconButton$1, {
@@ -4724,7 +4758,7 @@ var toolbarRow$1 = function toolbarRow(title) {
     },
     events: {
       onClick: function onClick() {
-        return Dialog$1.hide();
+        return Dialog$1.show(confirmDialogOpts, { id: DIALOG_CONFIRM$1 });
       }
     }
   }), react.createElement(
@@ -4746,18 +4780,16 @@ var fullScreenJsxOptions = {
   fullScreen: true,
   backdrop: true,
   content: [react.createElement(Toolbar$1, {
-    content: toolbarRow$1("New event"),
-    key: "header"
+    content: toolbarRow$1("New event")
   }), react.createElement(
     "div",
-    { style: { padding: "21px" }, key: "content" },
-    content$1
+    { style: { padding: "21px" } },
+    react.createElement(BodyText, null)
   )]
 };
 
 var reactTests = function reactTests(_ref) {
-  var h = _ref.renderer,
-      Dialog$$1 = _ref.Dialog,
+  var Dialog$$1 = _ref.Dialog,
       RaisedButton$$1 = _ref.RaisedButton;
 
 
@@ -4782,21 +4814,26 @@ var reactTests = function reactTests(_ref) {
     footer: [react.createElement(Button$1, { key: "cancel", label: "Cancel", events: { onClick: Dialog$$1.hide } }), react.createElement(Button$1, { key: "discard", label: "Discard", events: { onClick: Dialog$$1.hide } })]
   };
 
+  var shortText = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+
+  var cancelOkButtons = [react.createElement(Button$1, { key: "cancel", label: "Cancel", events: { onClick: Dialog$$1.hide } }), react.createElement(Button$1, { key: "save", label: "Save", events: { onClick: Dialog$$1.hide } })];
+
+  var LongText = function LongText() {
+    return react.createElement(
+      "div",
+      null,
+      [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(function (num) {
+        return react.createElement(
+          "p",
+          { key: num },
+          shortText
+        );
+      })
+    );
+  };
+
   return [{
     section: "React specific tests"
-  }, {
-    name: "Conditional button states",
-    interactive: true,
-    exclude: true,
-    component: {
-      view: function view() {
-        return Opener({
-          dialogAttrs: {
-            panes: [h(Pane)]
-          }
-        });
-      }
-    }
   }, {
     name: "Full screen",
     interactive: true,
@@ -4811,6 +4848,17 @@ var reactTests = function reactTests(_ref) {
   }, {
     section: "React JSX tests"
   }, {
+    name: "Option: title and body (long text) (JSX)",
+    interactive: true,
+    exclude: true,
+    component: function component() {
+      return react.createElement(Opener, { dialogAttrs: {
+          title: "Long dialog with a very long title that surely won't fit here",
+          body: react.createElement(LongText, null),
+          footer: cancelOkButtons
+        } });
+    }
+  }, {
     name: "Option: modal with backdrop (JSX)",
     interactive: true,
     exclude: true,
@@ -4823,6 +4871,15 @@ var reactTests = function reactTests(_ref) {
     exclude: true,
     component: function component() {
       return react.createElement(Opener, { dialogAttrs: fullScreenJsxOptions });
+    }
+  }, {
+    name: "Conditional button states",
+    interactive: true,
+    exclude: true,
+    component: function component() {
+      return react.createElement(Opener, { dialogAttrs: {
+          panes: [react.createElement(Pane, null)]
+        } });
     }
   }];
 };

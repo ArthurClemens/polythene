@@ -10,6 +10,8 @@
     - [A single component](#a-single-component)
     - [A simple app](#a-simple-app)
 - [Usage in a HTML file or JSFiddle](#usage-in-a-html-file-or-jsfiddle)
+  - [Setup](#setup)
+  - [Example script](#example-script)
 
 <!-- /MarkdownTOC -->
 
@@ -93,13 +95,24 @@ m.mount(document.querySelector("#app"), App)
 
 ## Usage in a HTML file or JSFiddle
 
-A "standalone" version of Polythene is available for demonstration purposes. This build includes all dependencies, except for `mithril`.
-
-URL:
+A "standalone" version of Polythene - useful for demonstration purposes - is available at:
 
 ~~~
 https://rawgit.com/ArthurClemens/polythene/master/packages/polythene-mithril/dist/polythene-mithril-standalone.js
 ~~~
+
+Included:
+
+* All components
+* Layout styles from `polythene-utilities`
+* Text and Roboto font from `polythene-style`
+* Fast Click from `polythene-fastclick`
+
+Not included:
+
+* Mithril
+
+### Setup
 
 Add to your HTML file:
 
@@ -110,16 +123,15 @@ Add to your HTML file:
 <script src="https://rawgit.com/ArthurClemens/polythene/master/packages/polythene-mithril/dist/polythene-mithril-standalone.js"></script>
 ~~~
 
-To be able to write es6, add `babel-standalone`:
+To be able to write es6, add `babel-standalone` (not necessary for JSFiddle):
 
 ~~~html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
 ~~~
 
+### Example script
 
-Example script:
-
-~~~jsx
+~~~javascript
 /* global m, polythene */
 const { RaisedButton } = polythene
 
@@ -130,6 +142,7 @@ const App = {
     })
 }
 
+// Assuming a html element with id `root`
 m.mount(document.getElementById("root"), App)
 ~~~
 

@@ -2,48 +2,42 @@ import { renderer as h, Dialog, Button } from "polythene-mithril";
 import stream from "mithril/stream";
 
 const file = stream(null);
+file.map(h.redraw); // redraw whenever file changes value
 
-// use a function to have the state of hasValue reflected in the Dialog
-export default () => {
-  // Return a function so that these component attributes are not rendered statically:
-  return () => ({
-    title: "Select a file...",
-    body: h("input", {
-      type: "file",
-      id: "file",
-      name: "file",
-      onchange: e => {
-        const fileInput = e.target;
-        file(fileInput.value);
-        setTimeout(h.redraw);
+// Return a function so that the component attributes are not rendered statically
+export default () => ({
+  title: "Select a file...",
+  body: h("input", {
+    type: "file",
+    id: "file",
+    name: "file",
+    onchange: e => file(e.target.value)
+  }),
+  formOptions: {
+    name: "demo",
+    type: "post",
+    enctype: "multipart/form-data",
+    onsubmit: e => {
+      e.preventDefault();
+      const form = e.target;
+      alert("Posted: " + form.file.value);
+      Dialog.hide();
+      file(null);
+    }
+  },
+  footer: [
+    h(Button, {
+      label: "Cancel",
+      events: {
+        onclick: () => Dialog.hide()
       }
     }),
-    formOptions: {
-      name: "demo",
-      type: "post",
-      enctype: "multipart/form-data",
-      onsubmit: e => {
-        e.preventDefault();
-        const form = e.target;
-        alert("Posted: " + form.file.value);
-        Dialog.hide();
-        file(null);
-      }
-    },
-    footer: [
-      h(Button, {
-        label: "Cancel",
-        events: {
-          onclick: () => Dialog.hide()
-        }
-      }),
-      h(Button, {
-        disabled: file() === null,
-        label: "Post",
-        element: "button",
-        type: "submit"
-      })
-    ],
-    didHide: () => file(null)
-  });
-};
+    h(Button, {
+      disabled: file() === null,
+      label: "Post",
+      element: "button",
+      type: "submit"
+    })
+  ],
+  didHide: () => file(null)
+});

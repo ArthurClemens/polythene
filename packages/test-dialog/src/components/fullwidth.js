@@ -4,7 +4,7 @@ export default ({ renderer: h, keys: k, Dialog, Button }) => ({
     width: "280px"
   },
   body: [
-    h(".pe-dialog__title", "Let your apps know your location"),
+    h(".pe-dialog-pane__title", "Let your apps know your location"),
     h("div", "This means that your location data will be sent to our servers, anonymously of course.")
   ],
   footer: [

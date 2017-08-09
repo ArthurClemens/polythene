@@ -179,7 +179,7 @@ const MySearch = {
   view: ({ state, attrs }) => {
     const value = state.value()
     const focus = state.focus()
-    return h(Search, Object.assign(
+    return m(Search, Object.assign(
       {},
       {
         textfield: {
@@ -190,23 +190,23 @@ const MySearch = {
         },
         buttons: {
           none: {
-            before: h(SearchIcon),
-            after: h(MicIcon)
+            before: m(SearchIcon),
+            after: m(MicIcon)
           },
           focus: {
-            before: h(SearchIcon),
-            after: h(MicIcon)
+            before: m(SearchIcon),
+            after: m(MicIcon)
           },
           focus_dirty: {
-            before: h(BackButton, { leave: state.leave }),
-            after: h(ClearButton, { clear: state.clear })
+            before: m(BackButton, { leave: state.leave }),
+            after: m(ClearButton, { clear: state.clear })
           },
           dirty: {
-            before: h(BackButton, { leave: state.leave }),
-            after: h(ClearButton, { clear: state.clear })
+            before: m(BackButton, { leave: state.leave }),
+            after: m(ClearButton, { clear: state.clear })
           }
         },
-        before: h(Shadow)
+        before: m(Shadow)
       }
     ))
   }

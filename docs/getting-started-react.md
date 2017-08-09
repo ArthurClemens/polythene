@@ -10,6 +10,8 @@
     - [A single component](#a-single-component)
     - [A simple app](#a-simple-app)
 - [Usage in a HTML file or JSFiddle](#usage-in-a-html-file-or-jsfiddle)
+  - [Setup](#setup)
+  - [Example script](#example-script)
 
 <!-- /MarkdownTOC -->
 
@@ -140,13 +142,25 @@ ReactDOM.render(h(App), mountNode)
 
 ## Usage in a HTML file or JSFiddle
 
-A "standalone" version of Polythene is available for demonstration purposes. This build includes all dependencies, except for `react` and `react-dom`.
-
-URL:
+A "standalone" version of Polythene - useful for demonstration purposes - is available at:
 
 ~~~
 https://rawgit.com/ArthurClemens/polythene/master/packages/polythene-react/dist/polythene-react-standalone.js
 ~~~
+
+Included:
+
+* All components
+* Layout styles from `polythene-utilities`
+* Text and Roboto font from `polythene-style`
+* Fast Click from `polythene-fastclick`
+
+Not included:
+
+* React
+* ReactDom
+
+### Setup
 
 Add to your HTML file:
 
@@ -158,26 +172,20 @@ Add to your HTML file:
 <script src="https://rawgit.com/ArthurClemens/polythene/master/packages/polythene-react/dist/polythene-react-standalone.js"></script>
 ~~~
 
-To be able to write es6, add `babel-standalone`:
+To be able to write es6, add `babel-standalone` (not necessary for JSFiddle):
 
 ~~~html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
 ~~~
 
-
-Example script:
+### Example script
 
 ~~~jsx
 /* global polythene */
 const { RaisedButton } = polythene
 
-const App = () => (
-  <div>
-    <RaisedButton
-      label="Button"
-    />
-  </div>
-)
+const App = () =>
+  <RaisedButton label="Button" />
 
 ReactDOM.render(
   <App />,

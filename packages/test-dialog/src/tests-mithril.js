@@ -21,7 +21,7 @@ const mithrilTests = ({ renderer, keys, Dialog, RaisedButton }) => {
       exclude: true,
       component: {
         view: () => 
-          Opener(form())
+          Opener(form)
       }
     },
   ];

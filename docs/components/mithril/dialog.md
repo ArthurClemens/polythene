@@ -10,14 +10,15 @@
 
 ## Usage
 
-Other than most other components, `Dialog` is not rendered directly but invoked through function calls `show` and `hide`.
+<a href="https://jsfiddle.net/ArthurClemens/t4uy26Lb/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
+Other than most other components, `Dialog` is not rendered directly but invoked through function calls `show` and `hide`.
 
 ### Dialog spawner
 
 Dialogs will be spawned from the component invocation: `m(Dialog)`. To show a dialog instance, use `Dialog.show()` - more on that later.
 
-Because a dialog should float on top of everything else, outside of the context of the caller, it can be considered a global component. It is best placed in the root view, so that it is not obstructed by other components:
+Because a dialog should float on top of everything else, outside of the context of the caller, it can be considered a global component. It is best placed in the root view, so that it is not obstructed by other components.
 
 ~~~javascript
 import m from "mithril"
@@ -106,19 +107,20 @@ Dialog.show(
 
 ##### Dynamic content
 
-In case the dialog contents needs to change when a state changes (for instance after user interaction, after loading translation strings, etcetera), you should pass a function instead.
-
-`optionsFn` is a function that returns an options object:
+When passing a POJO object to `Dialog.show`, the object contents is rendered statically and changes will not get reflected properly. Passing the options as a function ensures that the options are read afresh with the new state:
 
 ~~~javascript
-const optionsFn = () => ({
-  body: "some text"
-})
+const optionsFn = () => {
+  return {
+    body: "some text"
+  }
+}
 
 Dialog.show(optionsFn)
 ~~~
 
-Using a function ensures that the options are read afresh with the new state.
+See a more complete example below at "Conditional footer buttons".
+
 
 #### hide
 
@@ -150,7 +152,7 @@ const dialogOptions = {
 }
 ~~~
 
-### Example with `modal` and `backdrop`
+### Example with modal and backdrop
 
 A modal dialog is a dialog that can only be closed with an explicit choice; clicking the background does not count as a choice.
 
@@ -179,9 +181,11 @@ const dialogOptions = {
 Dialog.show(dialogOptions)
 ~~~
 
-### Fullscreen dialog
+### Full screen dialog
 
-A fullscreen dialog uses [Toolbar](../toolbar.md) to implement its own header (options `title` and `footer` are not used):
+A full screen dialog uses [Toolbar](../toolbar.md) to implement its own header (options `title` and `footer` are not used).
+
+<a href="https://jsfiddle.net/ArthurClemens/v4uhjnyx/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 ~~~javascript
 import m from "mithril"
@@ -190,21 +194,22 @@ import { addLayoutStyles } from "polythene-utilities"
 
 addLayoutStyles() // to use m(".flex")
 
-const iconClose = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\"/></svg>"
+const shortText = "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
+const longText = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15].map(() => shortText).join("")
+const DIALOG_CONFIRM = "confirm-fullscreen"
+const closeSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\"/></svg>"
 
-const content = "Content..."
-
-const toolbarRow = title => [
+const fullScreenToolbarRow = title => [
   m(IconButton, {
-    icon: {
-      svg: h.trust(iconClose)
-    },
+    key: "close",
+    icon: { svg: m.trust(closeSVG) },
     events: {
-      onclick: () => Dialog.hide()
+      onclick: () => Dialog.show(confirmDialogOpts, { id: DIALOG_CONFIRM })
     }
   }),
-  m("span.flex", title),
+  m("span.flex", { key: "title" }, title),
   m(Button, {
+    key: "save",
     label: "Save",
     events: {
       onclick: () => Dialog.hide()
@@ -212,23 +217,110 @@ const toolbarRow = title => [
   })
 ]
 
-const dialogOptions = {
-  fullscreen: true,
-  backdrop: true,
-  content: [
-    m(Toolbar,
-      { content: toolbarRow("New event") }
-    ),
-    // content
-    m("div",
-      { style: { padding: "21px" } },
-      m.trust(content)
-    )
-  ]
+const FullScreenPane = {
+  view: () => 
+    m("div", [
+      m(Toolbar, {
+        key: "toolbar",
+        content: fullScreenToolbarRow("New event")
+      }),
+      m("div", {
+        key: "content",
+        style: { padding: "21px" }
+      }, m.trust(longText))
+    ])
 }
 
-Dialog.show(dialogOptions)
+const confirmDialogOpts = ({
+  body: m.trust(shortText),
+  modal: true,
+  backdrop: true,
+  footer: [
+    m(Button, {
+      key: "close",
+      label: "Close this",
+      events: {
+        onclick: () => Dialog.hide({ id: DIALOG_CONFIRM })
+      }
+    }),
+    m(Button, {
+      key: "close-all",
+      label: "Close all",
+      events: {
+        onclick: () => (
+          // hide confirm dialog
+          Dialog.hide({ id: DIALOG_CONFIRM }),
+          // hide main dialog
+          Dialog.hide()
+        )
+      }
+    })
+  ],
+})
+
+Dialog.show({
+  body: m(FullScreenPane),
+  fullScreen: true
+})
 ~~~
+
+### Dynamic content: conditional footer buttons
+
+To create dynamic dialog content, pass the dialog options as function.
+
+The example dialog shows a file upload form, where the submit button is disabled until a file has been selected.
+
+<a href="https://jsfiddle.net/ArthurClemens/0g6010eu/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+
+~~~javascript
+import m from "mithril"
+import { Dialog, Button } from "polythene-mithril"
+import stream from "mithril/stream"
+
+const file = stream(null)
+file.map(m.redraw) // redraw whenever the file steam changes value
+
+// Return a function so that the component attributes are not rendered statically
+Dialog.show(() => 
+  ({
+    title: "Select a file...",
+    body: m("input", {
+      type: "file",
+      id: "file",
+      name: "file",
+      onchange: e => file(e.target.value)
+    }),
+    formOptions: {
+      name: "demo",
+      type: "post",
+      enctype: "multipart/form-data",
+      onsubmit: e => {
+        e.preventDefault()
+        const form = e.target
+        alert("Posted: " + form.file.value)
+        Dialog.hide()
+        file(null)
+      }
+    },
+    footer: [
+      m(Button, {
+        label: "Cancel",
+        events: {
+          onclick: () => Dialog.hide()
+        }
+      }),
+      m(Button, {
+        disabled: file() === null,
+        label: "Post",
+        element: "button",
+        type: "submit"
+      })
+    ],
+    didHide: () => file(null)
+  })
+)
+~~~
+
 
 
 ## Appearance
