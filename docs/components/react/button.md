@@ -23,7 +23,7 @@ import { Button } from "polythene-react"
 
 #### With hyperscript
 
-<a href="https://jsfiddle.net/ArthurClemens/hL8wmrpL/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+<a href="https://jsfiddle.net/ArthurClemens/5z374g58/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 ~~~javascript
 import { renderer as h, Button } from "polythene-react"
