@@ -1,4 +1,4 @@
-import { renderer, keys, Card, List, ListTile, Button, IconButton } from "polythene-mithril";
+import { renderer, keys, Card, List, ListTile, Button, IconButton, Tabs } from "polythene-mithril";
 import genericTests from "./tests-generic";
 
 const mithrilTests = () => {
@@ -6,5 +6,5 @@ const mithrilTests = () => {
 };
 
 export default []
-  .concat(genericTests({ Card, List, ListTile, Button, IconButton, renderer, keys }))
-  .concat(mithrilTests({ Card, List, ListTile, Button, IconButton, renderer, keys }));
+  .concat(genericTests({ Card, List, ListTile, Button, IconButton, Tabs, renderer, keys }))
+  .concat(mithrilTests({ Card, List, ListTile, Button, IconButton, Tabs, renderer, keys }));

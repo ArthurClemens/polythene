@@ -1,5 +1,5 @@
-import { Button, Card, IconButton, List, ListTile, keys, renderer } from 'polythene-mithril';
-import { Button as Button$1, Card as Card$1, IconButton as IconButton$1, List as List$1, ListTile as ListTile$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
+import { Button, Card, IconButton, List, ListTile, Tabs, keys, renderer } from 'polythene-mithril';
+import { Button as Button$1, Card as Card$1, IconButton as IconButton$1, List as List$1, ListTile as ListTile$1, Tabs as Tabs$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -16,6 +16,7 @@ var genericTests = (function (_ref) {
       ListTile$$1 = _ref.ListTile,
       Button$$1 = _ref.Button,
       IconButton$$1 = _ref.IconButton,
+      Tabs$$1 = _ref.Tabs,
       h = _ref.renderer,
       k = _ref.keys;
 
@@ -137,17 +138,14 @@ var genericTests = (function (_ref) {
     }];
   };
 
-  // const tabsContent = {
-  //   view: () => 
-  //     h(Tabs, {
-  //       buttons: [
-  //         { label: "New" },
-  //         { label: "My Favorites" },
-  //         { label: "Saved" }
-  //       ],
-  //       autofit: true
-  //     })
-  // };
+  var tabsContent = {
+    view: function view() {
+      return h(Tabs$$1, {
+        tabs: [{ label: "New" }, { label: "My Favorites" }, { label: "Saved" }],
+        autofit: true
+      });
+    }
+  };
 
   Card$$1.theme(".tests-card-colored-card", {
     color_light_main_background: "#0097a7",
@@ -173,17 +171,16 @@ var genericTests = (function (_ref) {
         })]
       })
     }
-  },
-  // {
-  //   name: "Any content (tabs)",
-  //   component: {
-  //     view: () =>
-  //       h(Card, {
-  //         content: h(tabsContent)
-  //       })
-  //   }  
-  // },
-  {
+  }, {
+    name: "Any content (tabs)",
+    component: {
+      view: function view() {
+        return h(Card$$1, {
+          content: h(tabsContent)
+        });
+      }
+    }
+  }, {
     name: "Primary with title and subtitle",
     component: Card$$1,
     attrs: {
@@ -1123,7 +1120,7 @@ var mithrilTests = function mithrilTests() {
   return [];
 };
 
-var testsMithril = [].concat(genericTests({ Card: Card, List: List, ListTile: ListTile, Button: Button, IconButton: IconButton, renderer: renderer, keys: keys })).concat(mithrilTests({ Card: Card, List: List, ListTile: ListTile, Button: Button, IconButton: IconButton, renderer: renderer, keys: keys }));
+var testsMithril = [].concat(genericTests({ Card: Card, List: List, ListTile: ListTile, Button: Button, IconButton: IconButton, Tabs: Tabs, renderer: renderer, keys: keys })).concat(mithrilTests({ Card: Card, List: List, ListTile: ListTile, Button: Button, IconButton: IconButton, Tabs: Tabs, renderer: renderer, keys: keys }));
 
 /*
 object-assign
@@ -4916,6 +4913,6 @@ var reactTests = function reactTests(_ref) {
   }];
 };
 
-var testsReact = [].concat(genericTests({ Card: Card$1, List: List$1, ListTile: ListTile$1, Button: Button$1, IconButton: IconButton$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests({ Card: Card$1, List: List$1, ListTile: ListTile$1, Button: Button$1, IconButton: IconButton$1, renderer: renderer$1, keys: keys$1 }));
+var testsReact = [].concat(genericTests({ Card: Card$1, List: List$1, ListTile: ListTile$1, Button: Button$1, IconButton: IconButton$1, Tabs: Tabs$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests({ Card: Card$1, List: List$1, ListTile: ListTile$1, Button: Button$1, IconButton: IconButton$1, Tabs: Tabs$1, renderer: renderer$1, keys: keys$1 }));
 
 export { testsMithril as mithrilTests, testsReact as reactTests };

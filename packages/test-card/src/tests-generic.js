@@ -5,7 +5,7 @@ const iconBookmarkSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24.00 24.
 const iconShareSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24.00 24.00\" enable-background=\"new 0 0 24.00 24.00\" xml:space=\"preserve\"><path fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"0.2\" stroke-linejoin=\"round\" d=\"M 20.9994,10.9981L 13.9994,3.99807L 13.9994,7.99807C 6.9994,8.99807 3.9994,13.9981 2.9994,18.9981C 5.4994,15.4981 8.9994,13.8981 13.9994,13.8981L 13.9994,17.9981L 20.9994,10.9981 Z \"/></svg>";
 
 
-export default ({ Card, List, ListTile, Button, IconButton, renderer: h, keys: k }) => {
+export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, keys: k }) => {
 
   const IMG_URL = "http://arthurclemens.github.io/assets/polythene/examples/";
   const iconLess = h.trust(iconLessSVG);
@@ -147,17 +147,17 @@ export default ({ Card, List, ListTile, Button, IconButton, renderer: h, keys: k
     }
   ];
 
-  // const tabsContent = {
-  //   view: () => 
-  //     h(Tabs, {
-  //       buttons: [
-  //         { label: "New" },
-  //         { label: "My Favorites" },
-  //         { label: "Saved" }
-  //       ],
-  //       autofit: true
-  //     })
-  // };
+  const tabsContent = {
+    view: () => 
+      h(Tabs, {
+        tabs: [
+          { label: "New" },
+          { label: "My Favorites" },
+          { label: "Saved" }
+        ],
+        autofit: true
+      })
+  };
 
   Card.theme(".tests-card-colored-card", {
     color_light_main_background: "#0097a7",
@@ -189,15 +189,15 @@ export default ({ Card, List, ListTile, Button, IconButton, renderer: h, keys: k
         })
       }
     },
-    // {
-    //   name: "Any content (tabs)",
-    //   component: {
-    //     view: () =>
-    //       h(Card, {
-    //         content: h(tabsContent)
-    //       })
-    //   }  
-    // },
+    {
+      name: "Any content (tabs)",
+      component: {
+        view: () =>
+          h(Card, {
+            content: h(tabsContent)
+          })
+      }  
+    },
     {
       name: "Primary with title and subtitle",
       component: Card,

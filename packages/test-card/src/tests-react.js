@@ -1,5 +1,5 @@
 import React from "react"; // eslint-disable-line no-unused-vars
-import { renderer, keys, Card, List, ListTile, Button, IconButton } from "polythene-react";
+import { renderer, keys, Card, List, ListTile, Button, IconButton, Tabs } from "polythene-react";
 import genericTests from "./tests-generic";
 
 const reactTests = ({ Card, Button }) => { // eslint-disable-line no-unused-vars
@@ -52,5 +52,5 @@ const reactTests = ({ Card, Button }) => { // eslint-disable-line no-unused-vars
 };
 
 export default []
-  .concat(genericTests({ Card, List, ListTile, Button, IconButton, renderer, keys }))
-  .concat(reactTests({ Card, List, ListTile, Button, IconButton, renderer, keys }));
+  .concat(genericTests({ Card, List, ListTile, Button, IconButton, Tabs, renderer, keys }))
+  .concat(reactTests({ Card, List, ListTile, Button, IconButton, Tabs, renderer, keys }));
