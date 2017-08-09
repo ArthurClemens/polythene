@@ -186,6 +186,10 @@ Option `type` has been renamed to `size`.
 
 Option `getState` has been renamed to `onChange`.
 
+### Dialog
+
+Option `fullscreen` has been renamed to `fullScreen`.
+
 ### FAB
 
 FAB is now composed from `polythene-raised-button`. This should have no consequences.

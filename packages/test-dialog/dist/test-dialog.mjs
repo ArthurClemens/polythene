@@ -32,7 +32,7 @@ function _defineProperty$3(obj, key, value) { if (key in obj) { Object.definePro
 var DIALOG_CONFIRM = "confirm-fullscreen";
 var closeSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\"/></svg>";
 
-var fullscreen = (function (_ref) {
+var fullScreen = (function (_ref) {
   var h = _ref.renderer,
       k = _ref.keys,
       Toolbar$$1 = _ref.Toolbar,
@@ -95,7 +95,7 @@ var fullscreen = (function (_ref) {
 
   return {
     body: h(FullscreenPane),
-    fullscreen: true
+    fullScreen: true
   };
 });
 
@@ -368,12 +368,12 @@ var genericTests = (function (_ref) {
       }
     }
   }, {
-    name: "Option: fullscreen (and show second dialog on top)",
+    name: "Option: fullScreen (and show second dialog on top)",
     interactive: true,
     exclude: true,
     component: {
       view: function view() {
-        return Opener(fullscreen({ renderer: renderer$$1, keys: keys$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, Button: Button$$1, Dialog: Dialog$$1 }));
+        return Opener(fullScreen({ renderer: renderer$$1, keys: keys$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, Button: Button$$1, Dialog: Dialog$$1 }));
       }
     }
   }, {
@@ -4695,7 +4695,7 @@ var toolbarRow = function toolbarRow(title) {
 };
 
 var fullScreenOptions = {
-  fullscreen: true,
+  fullScreen: true,
   backdrop: true,
   content: [renderer$1(Toolbar$1, {
     content: toolbarRow("New event"),
@@ -4743,7 +4743,7 @@ var toolbarRow$1 = function toolbarRow(title) {
 };
 
 var fullScreenJsxOptions = {
-  fullscreen: true,
+  fullScreen: true,
   backdrop: true,
   content: [react.createElement(Toolbar$1, {
     content: toolbarRow$1("New event"),

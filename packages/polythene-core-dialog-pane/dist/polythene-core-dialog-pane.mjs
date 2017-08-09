@@ -129,7 +129,7 @@ var layout = (function (selector, componentVars) {
       padding: 0,
       border: "none"
     }
-  }), _defineProperty$1(_ref, " .pe-dialog--fullscreen", {
+  }), _defineProperty$1(_ref, " .pe-dialog--full-screen", {
     " .pe-dialog-pane__content": {
       borderRadius: 0,
       maxWidth: "none",

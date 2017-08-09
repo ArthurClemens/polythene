@@ -12,7 +12,7 @@ var classes$1 = {
   content: "pe-dialog__content",
 
   // states
-  fullscreen: "pe-dialog--fullscreen",
+  fullScreen: "pe-dialog--full-screen",
   backdrop: "pe-dialog--backdrop",
   open: "pe-dialog--open",
 
@@ -46,7 +46,7 @@ var layout = (function (selector, componentVars) {
     height: "100%", // 100vh would make the dialog go beneath Mobile Safari toolbar
     padding: componentVars.padding + "px 40px",
 
-    ".pe-dialog--fullscreen": {
+    ".pe-dialog--full-screen": {
       padding: 0
 
       // dialog-content styles: see dialog pane
@@ -151,7 +151,7 @@ var onMount = function onMount(vnode) {
   state.el = vnode.dom;
 
   var handleEscape = function handleEscape(e) {
-    if (attrs.fullscreen || attrs.modal) return;
+    if (attrs.fullScreen || attrs.modal) return;
     if (e.key === "Escape") {
       hideDialog(state, _extends({}, attrs, {
         hideDelay: 0
@@ -181,7 +181,7 @@ var createProps = function createProps(vnode, _ref) {
   var attrs = vnode.attrs;
   return _extends({}, filterSupportedAttributes(attrs, { remove: ["style"] }), // style set in content, and set by show/hide transition
   _defineProperty({
-    className: [classes$1.component, attrs.fullscreen ? classes$1.fullscreen : null, attrs.backdrop ? classes$1.backdrop : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [classes$1.component, attrs.fullScreen ? classes$1.fullScreen : null, attrs.backdrop ? classes$1.backdrop : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, k.onclick, function (e) {
     if (e.target !== state.el) {
       return;
@@ -216,7 +216,7 @@ var createContent = function createContent(vnode, _ref2) {
   return h("div", {
     className: [classes$1.content, attrs.menu ? classes$1.menuContent : null].join(" "),
     style: attrs.style
-  }, [attrs.fullscreen ? null : h(Shadow, {
+  }, [attrs.fullScreen ? null : h(Shadow, {
     z: attrs.z !== undefined ? attrs.z : DEFAULT_Z,
     animated: true
   }), pane]);

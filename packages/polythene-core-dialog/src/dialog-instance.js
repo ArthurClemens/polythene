@@ -63,7 +63,7 @@ export const onMount = vnode => {
   state.el = vnode.dom;
  
   const handleEscape = e => {
-    if (attrs.fullscreen || attrs.modal) return;
+    if (attrs.fullScreen || attrs.modal) return;
     if (e.key === "Escape") {
       hideDialog(state, Object.assign({}, attrs, {
         hideDelay: 0
@@ -95,7 +95,7 @@ export const createProps = (vnode, { keys: k }) => {
     {
       className: [
         classes.component,
-        attrs.fullscreen ? classes.fullscreen : null,
+        attrs.fullScreen ? classes.fullScreen : null,
         attrs.backdrop ? classes.backdrop : null,
         attrs.tone === "dark" ? "pe-dark-tone" : null,
         attrs.tone === "light" ? "pe-light-tone" : null,
@@ -143,7 +143,7 @@ export const createContent = (vnode, { renderer: h, Shadow, DialogPane }) => {
       style: attrs.style
     },
     [
-      attrs.fullscreen
+      attrs.fullScreen
         ? null
         : h(Shadow, {
           z: attrs.z !== undefined ? attrs.z : DEFAULT_Z,

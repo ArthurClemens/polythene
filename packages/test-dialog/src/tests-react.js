@@ -2,8 +2,8 @@ import React, { Component } from "react"; // eslint-disable-line no-unused-vars
 import { renderer, keys, Dialog, DialogPane, Button, RaisedButton, Toolbar, IconButton, Icon, List, ListTile } from "polythene-react";
 import genericTests from "./tests-generic";
 import formPane from "./components/form-react";
-import fullScreenOptions from "./components/fullscreen-react";
-import fullScreenJsxOptions from "./components/fullscreen-react-jsx";
+import fullScreenOptions from "./components/full-screen-react";
+import fullScreenJsxOptions from "./components/full-screen-react-jsx";
 
 const reactTests = ({ renderer: h, Dialog, RaisedButton }) => {
 

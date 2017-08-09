@@ -66,7 +66,7 @@ export default ({ renderer: h, keys: k, Toolbar, IconButton, Button, Dialog }) =
 
   return {
     body: h(FullscreenPane),
-    fullscreen: true
+    fullScreen: true
   };
 
 };

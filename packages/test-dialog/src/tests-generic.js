@@ -1,5 +1,5 @@
 import { shortText, longText, cancelOkButtons } from "./shared";
-import fullscreen from "./components/fullscreen";
+import fullScreen from "./components/full-screen";
 import fullwidth from "./components/fullwidth";
 import menu from "./components/menu";
 import settings from "./components/settings";
@@ -133,12 +133,12 @@ export default ({ renderer, keys, Dialog, DialogPane, Button, RaisedButton, Tool
       }
     },
     {
-      name: "Option: fullscreen (and show second dialog on top)",
+      name: "Option: fullScreen (and show second dialog on top)",
       interactive: true,
       exclude: true,
       component: {
         view: () =>
-          Opener(fullscreen({ renderer, keys, Toolbar, IconButton, Button, Dialog }))
+          Opener(fullScreen({ renderer, keys, Toolbar, IconButton, Button, Dialog }))
       }
     },
     {

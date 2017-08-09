@@ -25,7 +25,7 @@ const toolbarRow = title => [
 ];
 
 export default {
-  fullscreen: true,
+  fullScreen: true,
   backdrop: true,
   content: [
     h(Toolbar,

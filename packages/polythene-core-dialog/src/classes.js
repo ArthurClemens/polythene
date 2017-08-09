@@ -9,7 +9,7 @@ export default {
   content:           "pe-dialog__content",
 
   // states
-  fullscreen:        "pe-dialog--fullscreen",
+  fullScreen:        "pe-dialog--full-screen",
   backdrop:          "pe-dialog--backdrop",
   open:              "pe-dialog--open",
 

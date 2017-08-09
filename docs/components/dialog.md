@@ -7,7 +7,7 @@ Displays a single dialog, or a stack of dialogs.
 
 * Set as dismissable or as modal dialog
 * Set backdrop background
-* Set fullscreen
+* Set full screen
 * Set z-index
 * Custom transitions
 * Create multiple stacked dialogs
@@ -46,7 +46,7 @@ Displays a single dialog, or a stack of dialogs.
 | **menu** | optional | [Menu](../polythene-menu) options object |  | Pass a menu to use the dialog as enhanced (higher) menu |
 | **footer** | optional | String, hyperscript or component |  | Footer actions, usually an array of buttons |
 | **modal** | optional | Boolean | false | Set to true to create a modal dialog; tapping the backdrop or pressing ESCAPE will not close the dialog |
-| **fullscreen** | optional | Boolean | false | Set to true to make the dialog fullscreen; tapping the backdrop or pressing ESCAPE will not close the dialog; should be done for mobile screens only; `title` and `footer` will be ignored; pass a [header panel](../polythene-header-panel) to `body` |
+| **fullScreen** | optional | Boolean | false | Set to true to make the dialog full screen; tapping the backdrop or pressing ESCAPE will not close the dialog; should be done for mobile screens only; `title` and `footer` will be ignored; pass a [Toolbar](toolbar.md) to `body` (see "Usage" for an example) |
 | **updateContentOnScroll** | optional | Boolean | false | Set to true to "unfreeze" dialog contents during scrolling; for performance this is set to false by default |
 
 ### Dialog appearance options

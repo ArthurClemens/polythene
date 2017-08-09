@@ -102,7 +102,7 @@ export default (selector, componentVars) => [{
       border: "none"
     }
   },
-  " .pe-dialog--fullscreen": {
+  " .pe-dialog--full-screen": {
     " .pe-dialog-pane__content": {
       borderRadius: 0,
       maxWidth: "none",
