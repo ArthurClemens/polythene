@@ -8,7 +8,7 @@ export default ({ Switch, Icon, RaisedButton, renderer: h, keys: k }) => {
   
   const trustedBullsEyeIcon = h.trust(bullsEyeSVG);
 
-  const orange = "#EF6C00";
+  const orange = "#ef6c00";
   const blue = "#2196F3";
   Switch.theme(".tests-switch-themed-switch", {
     label_font_size: 28,
@@ -25,11 +25,11 @@ export default ({ Switch, Icon, RaisedButton, renderer: h, keys: k }) => {
   Switch.theme(".tests-switch-themed-icon", {
     color_light_thumb_off: "#fff",
     color_light_thumb_on:  "#fff",
-    color_light_icon_on:   "#ef6c00",
+    color_light_icon_on:   orange,
     color_light_icon_off:  "#ddd",
     color_dark_thumb_off:  "#fff",
     color_dark_thumb_on:   "#fff",
-    color_dark_icon_on:    "#ef6c00",
+    color_dark_icon_on:    orange,
     color_dark_icon_off:   "#fff"
   });
 

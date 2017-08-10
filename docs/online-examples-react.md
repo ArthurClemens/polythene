@@ -24,6 +24,7 @@ Try out Polythene in JSFiddles.
 * [Ripple](https://jsfiddle.net/ArthurClemens/brx9wdhv/)
 * [Shadow](https://jsfiddle.net/ArthurClemens/uej4sw3q/)
 * [SVG](https://jsfiddle.net/ArthurClemens/qm31tx7b/)
+* [Toolbar](https://jsfiddle.net/ArthurClemens/rgmzx6jr/)
 
 
 ## Hyperscript
@@ -47,3 +48,5 @@ Try out Polythene in JSFiddles.
 * [Ripple](https://jsfiddle.net/ArthurClemens/L0e0bb68/)
 * [Shadow](https://jsfiddle.net/ArthurClemens/ohuxgfef/)
 * [SVG](https://jsfiddle.net/ArthurClemens/3v5v5kdb/)
+* [Toolbar](https://jsfiddle.net/ArthurClemens/dg9f6day/)
+

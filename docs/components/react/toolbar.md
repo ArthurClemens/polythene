@@ -12,6 +12,8 @@
 
 #### With JSX
 
+<a href="https://jsfiddle.net/ArthurClemens/rgmzx6jr/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+
 ~~~jsx
 import React from "react"
 import { Toolbar } from "polythene-react"
@@ -48,6 +50,8 @@ const ToolbarButton = ({ svg }) =>
 ~~~
 
 #### With hyperscript
+
+<a href="https://jsfiddle.net/ArthurClemens/dg9f6day/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 ~~~javascript
 import { renderer as h, Toolbar } from "polythene-react"

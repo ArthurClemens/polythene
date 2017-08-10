@@ -1,5 +1,5 @@
-import { classes } from 'polythene-core-toolbar';
 import { IconButton, Shadow, Toolbar, renderer } from 'polythene-mithril';
+import { classes } from 'polythene-core-toolbar';
 import { IconButton as IconButton$1, Shadow as Shadow$1, Toolbar as Toolbar$1, renderer as renderer$1 } from 'polythene-react';
 
 var iconMenuSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>";
@@ -47,6 +47,7 @@ var shared = (function (_ref) {
 var genericTests = (function (_ref) {
   var Toolbar$$1 = _ref.Toolbar,
       IconButton$$1 = _ref.IconButton,
+      Shadow$$1 = _ref.Shadow,
       h = _ref.renderer;
 
   var _shared = shared({ IconButton: IconButton$$1, renderer: h }),
@@ -56,6 +57,7 @@ var genericTests = (function (_ref) {
       toolbarRowIndentedTitle = _shared.toolbarRowIndentedTitle;
 
   Toolbar$$1.theme(".tests-toolbar-themed-toolbar", {
+    color_light_background: "#00c853",
     color_dark_background: "#00c853"
   });
 
@@ -107,6 +109,25 @@ var genericTests = (function (_ref) {
         height: "72px"
       }
     }
+  }, {
+    name: "Themed (dark tone)",
+    component: Toolbar$$1,
+    attrs: {
+      className: "tests-toolbar-themed-toolbar",
+      content: toolbarRow,
+      tone: "dark"
+    }
+  }, {
+    name: "Shadow",
+    component: {
+      view: function view() {
+        return h("div", {
+          style: {
+            position: "relative"
+          }
+        }, [h(Toolbar$$1, toolbarRow), h(Shadow$$1)]);
+      }
+    }
   },
 
   // Dark tone
@@ -145,30 +166,9 @@ var genericTests = (function (_ref) {
   }];
 });
 
-var mithrilTests = function mithrilTests(_ref) {
-  var Toolbar$$1 = _ref.Toolbar,
-      IconButton$$1 = _ref.IconButton,
-      Shadow$$1 = _ref.Shadow,
-      h = _ref.renderer;
+var mithrilTests = function mithrilTests() {
 
-  var _shared = shared({ IconButton: IconButton$$1, renderer: h }),
-      toolbarRow = _shared.toolbarRow;
-
-  return [{
-    section: "Mithril specific tests"
-  }, {
-    name: "Option: shadow",
-    className: "small-result",
-    component: {
-      view: function view() {
-        return h("div", {
-          style: {
-            position: "relative"
-          }
-        }, [h(Toolbar$$1, toolbarRow), h(Shadow$$1)]);
-      }
-    }
-  }];
+  return [];
 };
 
 var testsMithril = [].concat(genericTests({ Toolbar: Toolbar, IconButton: IconButton, Shadow: Shadow, renderer: renderer })).concat(mithrilTests({ Toolbar: Toolbar, IconButton: IconButton, Shadow: Shadow, renderer: renderer }));
@@ -3918,17 +3918,17 @@ var react = React_1;
 
 var iconMenuSVG$1 = react.createElement(
   "svg",
-  { xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24" },
+  { width: "24", height: "24", viewBox: "0 0 24 24" },
   react.createElement("path", { d: "M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" })
 );
 var iconRefreshSVG$1 = react.createElement(
   "svg",
-  { xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24" },
+  { width: "24", height: "24", viewBox: "0 0 24 24" },
   react.createElement("path", { d: "M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" })
 );
 var iconAddSVG$1 = react.createElement(
   "svg",
-  { xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24" },
+  { width: "24", height: "24", viewBox: "0 0 24 24" },
   react.createElement("path", { d: "M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" })
 );
 
@@ -3972,14 +3972,14 @@ var reactTests = function reactTests(_ref) {
       return react.createElement(
         Toolbar$$1,
         null,
-        react.createElement(ToolbarButton, { key: "menu", svg: iconMenuSVG$1 }),
+        react.createElement(ToolbarButton, { svg: iconMenuSVG$1 }),
         react.createElement(
           "span",
-          { key: "title" },
+          null,
           "Title"
         ),
-        react.createElement(ToolbarButton, { key: "refresh", svg: iconRefreshSVG$1 }),
-        react.createElement(ToolbarButton, { key: "add", svg: iconAddSVG$1 })
+        react.createElement(ToolbarButton, { svg: iconRefreshSVG$1 }),
+        react.createElement(ToolbarButton, { svg: iconAddSVG$1 })
       );
     }
   }, {
@@ -4004,14 +4004,14 @@ var reactTests = function reactTests(_ref) {
         react.createElement(
           Toolbar$$1,
           null,
-          react.createElement(ToolbarButton, { key: "menu", svg: iconMenuSVG$1 }),
+          react.createElement(ToolbarButton, { svg: iconMenuSVG$1 }),
           react.createElement(
             "span",
-            { key: "title" },
+            null,
             "Title"
           ),
-          react.createElement(ToolbarButton, { key: "refresh", svg: iconRefreshSVG$1 }),
-          react.createElement(ToolbarButton, { key: "add", svg: iconAddSVG$1 })
+          react.createElement(ToolbarButton, { svg: iconRefreshSVG$1 }),
+          react.createElement(ToolbarButton, { svg: iconAddSVG$1 })
         ),
         react.createElement(Shadow$1, null)
       );

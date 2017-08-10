@@ -1,6 +1,6 @@
 import shared from "./shared";
 
-export default ({ Toolbar, IconButton, renderer: h }) => {
+export default ({ Toolbar, IconButton, Shadow, renderer: h }) => {
 
   const {
     toolbarRow,
@@ -10,7 +10,8 @@ export default ({ Toolbar, IconButton, renderer: h }) => {
   } = shared({ IconButton, renderer: h });
 
   Toolbar.theme(".tests-toolbar-themed-toolbar", {
-    color_dark_background: "#00c853"
+    color_light_background: "#00c853",
+    color_dark_background:  "#00c853"
   });
 
   return [
@@ -67,6 +68,28 @@ export default ({ Toolbar, IconButton, renderer: h }) => {
           color: "#fff",
           height: "72px"
         }
+      }
+    },
+    {
+      name: "Themed (dark tone)",
+      component: Toolbar,
+      attrs: {
+        className: "tests-toolbar-themed-toolbar",
+        content: toolbarRow,
+        tone: "dark"
+      }
+    },
+    {
+      name: "Shadow",
+      component: {
+        view: () => h("div", {
+          style: {
+            position: "relative"
+          }
+        }, [
+          h(Toolbar, toolbarRow),
+          h(Shadow)
+        ])
       }
     },
 

@@ -24,3 +24,4 @@ Try out Polythene in JSFiddles.
 * [Ripple](https://jsfiddle.net/ArthurClemens/rcyn8f64/)
 * [Shadow](https://jsfiddle.net/ArthurClemens/87wjreeu/)
 * [SVG](https://jsfiddle.net/ArthurClemens/wu1v74yk/)
+* [Toolbar](https://jsfiddle.net/ArthurClemens/t5hhcuxn/)
