@@ -310,14 +310,15 @@ var genericTests = (function (_ref) {
   var trustedIconStarsOutline = h.trust(iconStarOutlineSVG);
   var trustedIconStarFilled = h.trust(iconStarFilledSVG);
 
+  var themeColor = "#ff1744";
   Checkbox$$1.theme(".tests-checkbox-themed-checkbox", {
     label_font_size: 28,
-    color_light_on: "#2196F3",
-    color_light_off: "#2196F3",
-    color_dark_on: "#2196F3",
-    color_dark_off: "#2196F3",
-    color_light_label: "#2196F3",
-    color_dark_label: "#2196F3"
+    color_light_on: themeColor,
+    color_light_off: themeColor,
+    color_dark_on: themeColor,
+    color_dark_off: themeColor,
+    color_light_label: themeColor,
+    color_dark_label: themeColor
   });
 
   var sizeNames = ["small", "regular", "medium", "large"];
@@ -355,6 +356,16 @@ var genericTests = (function (_ref) {
         }, sizes(sizeNames, {
           label: "Label"
         }));
+      }
+    }
+  }, {
+    name: "Styled Checkbox",
+    component: Checkbox$$1,
+    attrs: {
+      label: "Label",
+      defaultChecked: true,
+      style: {
+        color: "#ff9800"
       }
     }
   }, {

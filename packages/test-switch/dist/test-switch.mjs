@@ -476,7 +476,8 @@ var genericTests = (function (_ref) {
     className: "pe-dark-tone",
     component: Switch$$1,
     attrs: {
-      defaultChecked: true
+      defaultChecked: true,
+      label: "Label"
     }
   }, {
     name: "Themed Switch (colors) -- dark tone class",

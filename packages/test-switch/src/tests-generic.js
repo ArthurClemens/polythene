@@ -194,7 +194,8 @@ export default ({ Switch, Icon, RaisedButton, renderer: h, keys: k }) => {
       className: "pe-dark-tone",
       component: Switch,
       attrs: {
-        defaultChecked: true
+        defaultChecked: true,
+        label: "Label"
       }
     },
     {
