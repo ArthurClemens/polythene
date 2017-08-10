@@ -91,12 +91,12 @@ export default ({ Icon, SVG, renderer: h }) => {
       }
     },
     {
-      name: "Option: avatar (type large)",
+      name: "Option: avatar (size large)",
       component: Icon,
       attrs: {
         src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
         avatar: true,
-        type: "large"
+        size: "large"
       }
     },
 

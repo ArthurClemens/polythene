@@ -87,12 +87,12 @@ var genericTests = (function (_ref) {
       src: "http://arthurclemens.github.io/assets/polythene/examples/recycle.svg"
     }
   }, {
-    name: "Option: avatar (type large)",
+    name: "Option: avatar (size large)",
     component: Icon$$1,
     attrs: {
       src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
       avatar: true,
-      type: "large"
+      size: "large"
     }
   },
 
