@@ -8,12 +8,9 @@ var genericTests = (function (_ref) {
     color_light: "#F44336"
   });
   return [{
-    name: "Option: constrained (true)",
+    name: "Option: constrained (default)",
     interactive: true,
-    component: Ripple$$1,
-    attrs: {
-      constrained: true
-    }
+    component: Ripple$$1
   }, {
     name: "Option: constrained (false)",
     interactive: true,

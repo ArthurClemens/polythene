@@ -18,13 +18,16 @@ export const getInitialState = () => {
 
 export const createProps = (vnode, { keys: k }) => {
   const attrs = vnode.attrs;
+  const constrained = attrs.constrained === undefined
+    ? true
+    : attrs.constrained;
   return Object.assign(
     {},
     filterSupportedAttributes(attrs),
     {
       className: [
         classes.component,
-        attrs.constrained !== false ? classes.constrained : null,
+        constrained ? classes.constrained : null,
         attrs.tone === "dark" ? "pe-dark-tone" : null,
         attrs.tone === "light" ? "pe-light-tone" : null,
         attrs.className || attrs[k.class],

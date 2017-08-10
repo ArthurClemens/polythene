@@ -5,12 +5,9 @@ export default ({ Ripple }) => {
   });
   return [
     {
-      name: "Option: constrained (true)",
+      name: "Option: constrained (default)",
       interactive: true,
-      component: Ripple,
-      attrs: {
-        constrained: true
-      }
+      component: Ripple
     },
     {
       name: "Option: constrained (false)",
