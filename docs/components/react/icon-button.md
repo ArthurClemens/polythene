@@ -14,6 +14,8 @@ Icon Button takes an icon options object.
 
 #### With JSX
 
+<a href="https://jsfiddle.net/ArthurClemens/xuo1gow5/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+
 ~~~jsx
 import React from "react"
 import { IconButton } from "polythene-react"
@@ -31,7 +33,17 @@ import { IconButton, Icon } from "polythene-react"
 <IconButton><Icon svg={starsSVG} /></IconButton>
 ~~~
 
+Or even:
+
+~~~jsx
+import { IconButton, Icon, SVG } from "polythene-react"
+
+<IconButton><Icon><SVG>{starsSVG}</SVG></Icon></IconButton>
+~~~
+
 #### With hyperscript
+
+<a href="https://jsfiddle.net/ArthurClemens/xh7jgutu/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 ~~~javascript
 import { renderer as h, IconButton } from "polythene-react"

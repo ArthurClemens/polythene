@@ -10,6 +10,8 @@
 
 ## Usage
 
+<a href="https://jsfiddle.net/ArthurClemens/87wjreeu/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+
 Shadow has 5 depth levels, configured with option `z`.
 
 ~~~javascript

@@ -17,7 +17,7 @@ export default ({ h, k, Shadow }) => ({
       }, "Click me"),
       h(Shadow, {
         animated: true,
-        z: state.z
+        z
       })
     ]);
   }

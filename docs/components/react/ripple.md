@@ -12,6 +12,8 @@
 
 #### With JSX
 
+<a href="https://jsfiddle.net/ArthurClemens/brx9wdhv/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+
 Append a ripple to any HTML element (which requires to have style `position: relative` and a size):
 
 ~~~jsx
@@ -42,6 +44,8 @@ import { Ripple, ListTile } from "polythene-react"
 ~~~
 
 #### With hyperscript
+
+<a href="https://jsfiddle.net/ArthurClemens/L0e0bb68/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 ~~~javascript
 import { Ripple } from "polythene-react"

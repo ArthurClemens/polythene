@@ -10,6 +10,8 @@
 
 ## Usage
 
+<a href="https://jsfiddle.net/ArthurClemens/rcyn8f64/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+
 Append a ripple to any HTML element (which requires to have style `position: relative` and a size):
 
 ~~~javascript

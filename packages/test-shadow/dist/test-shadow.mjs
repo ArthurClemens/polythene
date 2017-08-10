@@ -218,7 +218,7 @@ var interactive = (function (_ref) {
         return state.z((z + 1) % 6);
       }), "Click me"), h(Shadow$$1, {
         animated: true,
-        z: state.z
+        z: z
       })]);
     }
   };

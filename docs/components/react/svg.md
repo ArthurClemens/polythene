@@ -12,6 +12,8 @@
 
 #### With JSX
 
+<a href="https://jsfiddle.net/ArthurClemens/qm31tx7b/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+
 ~~~jsx
 import React from "react"
 import { SVG } from "polythene-react"
@@ -28,6 +30,8 @@ const starsSVG = <svg width="24" height="24" viewBox="0 0 24 24"><path d="M11.99
 Note that JSX needs SVG attributes to be camelCased; see [React: All Supported SVG Attributes](https://facebook.github.io/react/docs/dom-elements.html#all-supported-svg-attributes).
 
 #### With hyperscript
+
+<a href="https://jsfiddle.net/ArthurClemens/3v5v5kdb/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 ~~~javascript
 import { renderer as h, SVG } from "polythene-react"

@@ -10,6 +10,8 @@
 
 ## Usage
 
+<a href="https://jsfiddle.net/ArthurClemens/ubzhapwy/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+
 ### With trusted SVG text
 
 ~~~javascript

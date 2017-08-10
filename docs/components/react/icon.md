@@ -12,6 +12,8 @@
 
 #### With JSX
 
+<a href="https://jsfiddle.net/ArthurClemens/ep9pf5wp/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+
 ##### With SVG
 
 ~~~jsx
@@ -44,6 +46,8 @@ import { Icon, SVG } from "polythene-react"
 ~~~
 
 #### With hyperscript
+
+<a href="https://jsfiddle.net/ArthurClemens/qhh725aa/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 ##### With trusted SVG text
 
