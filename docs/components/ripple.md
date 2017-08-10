@@ -49,7 +49,7 @@ Adds a touch ripple effect to an element.
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **constrained**             | optional | Boolean | true | Set to `false` to make the ripple shape no longer bound to the target element |   
+| **unconstrained**           | optional | Boolean | false | Set to `true` to make the ripple shape no longer bound to the target element |   
 | **center**                  | optional | Boolean | false | Set to `true` to start the ripple from the center |
 | **duration**                | optional | Number | `1 / opacityDecayVelocity * 0.2` | The animation duration in seconds |
 | **startOpacity**            | optional | Number | 0.2 | Opacity at the start of the ripple animation |

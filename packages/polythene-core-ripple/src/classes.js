@@ -7,6 +7,6 @@ export default {
   waves:          "pe-ripple__waves",
 
   // states
-  constrained:    "pe-ripple--constrained",
+  unconstrained:    "pe-ripple--unconstrained",
   wavesAnimating: "pe-ripple__waves--animating",
 };

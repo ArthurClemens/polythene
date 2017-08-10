@@ -10,7 +10,7 @@ var classes = {
   waves: "pe-ripple__waves",
 
   // states
-  constrained: "pe-ripple--constrained",
+  unconstrained: "pe-ripple--unconstrained",
   wavesAnimating: "pe-ripple__waves--animating"
 };
 
@@ -28,7 +28,7 @@ var layout = (function (selector) {
     borderRadius: "inherit",
     pointerEvents: "none",
 
-    ".pe-ripple--constrained": {
+    ":not(.pe-ripple--unconstrained)": {
       borderRadius: "inherit",
 
       " .pe-ripple__mask": {
@@ -181,9 +181,8 @@ var createProps = function createProps(vnode, _ref) {
   var k = _ref.keys;
 
   var attrs = vnode.attrs;
-  var constrained = attrs.constrained === undefined ? true : attrs.constrained;
   return _extends({}, filterSupportedAttributes(attrs), {
-    className: [classes.component, constrained ? classes.constrained : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [classes.component, attrs.unconstrained ? classes.unconstrained : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
 
