@@ -23,6 +23,7 @@ Try out Polythene in JSFiddles.
 * Inputs and Controls
   * [Checkbox](https://jsfiddle.net/ArthurClemens/hp6ksg2m/)
   * [Radio Button](https://jsfiddle.net/ArthurClemens/b1vbbLgw/)
+  * [Search](https://jsfiddle.net/ArthurClemens/qm85uyd9/)
   * [Switch](https://jsfiddle.net/ArthurClemens/orqdxd4a/)
 * [Ripple](https://jsfiddle.net/ArthurClemens/brx9wdhv/)
 * [Shadow](https://jsfiddle.net/ArthurClemens/uej4sw3q/)
@@ -48,6 +49,7 @@ Try out Polythene in JSFiddles.
 * Inputs and Controls
   * [Checkbox](https://jsfiddle.net/ArthurClemens/g07snvox/)
   * [Radio Button](https://jsfiddle.net/ArthurClemens/fhqrcuL9/)
+  * [Search](https://jsfiddle.net/ArthurClemens/hruxczph/)
   * [Switch](https://jsfiddle.net/ArthurClemens/0eaeadbm/)
 * [Ripple](https://jsfiddle.net/ArthurClemens/L0e0bb68/)
 * [Shadow](https://jsfiddle.net/ArthurClemens/ohuxgfef/)

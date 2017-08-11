@@ -11,10 +11,10 @@ var genericTests = (function (_ref) {
 
 
   Search$$1.theme(".tests-search-themed-search", {
-    color_light_input_text: "#0D47A1",
-    color_light_background: "#BBDEFB",
-    color_dark_input_text: "#eee",
-    color_dark_background: "#333"
+    // color_light_input_text: "#0D47A1",
+    // color_light_background: "#00c853",
+    color_dark_input_text: "#fff",
+    color_dark_background: "#43a047"
   });
 
   var Block = {
@@ -69,7 +69,8 @@ var genericTests = (function (_ref) {
     component: {
       view: function view() {
         return h(Block, {
-          className: "tests-search-themed-search"
+          className: "tests-search-themed-search",
+          tone: "dark"
         });
       }
     }
