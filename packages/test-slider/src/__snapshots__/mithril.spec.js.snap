@@ -290,8 +290,8 @@ exports[`test Option: style (colors) 1`] = `
 
 exports[`test Option: ticks with pin 1`] = `
 "<div class=
-\"pe-slider pe-slider--pin pe-slider--track pe-slider--min pe-slider--ticks\">
-<div class=\"pe-slider__track\">
+\"pe-slider pe-slider--pin pe-slider--track pe-slider--ticks\">
+  <div class=\"pe-slider__track\">
     <div class=\"pe-slider__track-part pe-slider__track-value\">
       <div class=\"pe-slider__track-bar\">
         <div class=\"pe-slider__track-bar-value\"></div>
@@ -299,7 +299,7 @@ exports[`test Option: ticks with pin 1`] = `
     </div>
     <div class=\"pe-slider__control\" tabindex=\"0\" step=\"10\"></div>
     <div class=\"pe-slider__track-part pe-slider__track-rest\" style=
-    \"max-width: 100%;\">
+    \"max-width: 80%;\">
       <div class=\"pe-slider__track-bar\">
         <div class=\"pe-slider__track-bar-value\"></div>
       </div>
@@ -317,7 +317,7 @@ exports[`test Option: ticks with pin 1`] = `
       <div class=\"pe-slider__ticks-tick\"></div>
       <div class=\"pe-slider__ticks-tick\"></div>
     </div>
-    <div class=\"pe-slider__pin\" value=\"0\"></div>
+    <div class=\"pe-slider__pin\" value=\"20\"></div>
   </div>
 </div>
 "

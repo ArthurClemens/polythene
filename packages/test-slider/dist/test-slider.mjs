@@ -312,7 +312,8 @@ var genericTests = (function (_ref) {
   var VolumeSlider = volumeSlider({ Slider: Slider$$1, Icon: Icon$$1, h: h });
 
   Slider$$1.theme(".slider-custom-icon", {
-    color_light_thumb_background: "#fff"
+    color_light_thumb_on: "#f50057",
+    color_light_icon: "#fff"
   });
 
   Slider$$1.theme(".slider-custom-color", {
@@ -377,7 +378,7 @@ var genericTests = (function (_ref) {
       min: 0,
       max: 100,
       step: 10,
-      defaultValue: 2,
+      defaultValue: 20,
       pin: true,
       ticks: true
     }

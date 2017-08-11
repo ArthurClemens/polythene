@@ -13,14 +13,15 @@ export default ({ Slider, Icon, renderer: h }) => {
   const VolumeSlider = volumeSlider({ Slider, Icon, h });
 
   Slider.theme(".slider-custom-icon", {
-    color_light_thumb_background: "#fff"
+    color_light_thumb_on:       "#f50057",
+    color_light_icon: "#fff"
   });
 
   Slider.theme(".slider-custom-color", {
-    color_light_track_active: "#82b1ff",
+    color_light_track_active:   "#82b1ff",
     color_light_track_inactive: "#c5cae9",
-    color_light_track_value: "#f50057",
-    color_light_thumb_on: "#f50057"
+    color_light_track_value:    "#f50057",
+    color_light_thumb_on:       "#f50057"
   });
 
   return [
@@ -85,7 +86,7 @@ export default ({ Slider, Icon, renderer: h }) => {
         min: 0,
         max: 100,
         step: 10,
-        defaultValue: 2,
+        defaultValue: 20,
         pin: true,
         ticks: true
       }

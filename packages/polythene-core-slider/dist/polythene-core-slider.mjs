@@ -340,7 +340,7 @@ var style = function style(scopes, selector, componentVars, tint) {
       backgroundColor: "currentcolor"
     },
 
-    " > .pe-icon": {
+    " .pe-icon": {
       color: componentVars["color_" + tint + "_disabled_icon"]
     },
 
@@ -382,7 +382,7 @@ var style = function style(scopes, selector, componentVars, tint) {
         backgroundColor: "currentcolor",
         opacity: componentVars["color_" + tint + "_thumb_on_focus_opacity"]
       },
-      " > .pe-icon": {
+      " .pe-icon": {
         color: componentVars["color_" + tint + "_icon"]
       },
       " .pe-slider__label": {

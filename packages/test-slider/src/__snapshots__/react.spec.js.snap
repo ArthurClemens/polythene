@@ -553,7 +553,7 @@ exports[`test Option: ticks with pin (JSX) 1`] = `
 
 exports[`test Option: ticks with pin 1`] = `
 <div
-  className="pe-slider  pe-slider--pin pe-slider--track   pe-slider--min pe-slider--ticks   ">
+  className="pe-slider  pe-slider--pin pe-slider--track    pe-slider--ticks   ">
   <div
     className="pe-slider__track"
     onMouseDown={[Function]}>
@@ -561,9 +561,9 @@ exports[`test Option: ticks with pin 1`] = `
       className="pe-slider__track-part pe-slider__track-value"
       style={
         Object {
-          "WebkitFlex": "0 1 0%",
-          "flex": "0 1 0%",
-          "msFlex": "0 1 0%",
+          "WebkitFlex": "0.2 1 0%",
+          "flex": "0.2 1 0%",
+          "msFlex": "0.2 1 0%",
         }
       }>
       <div
@@ -584,10 +584,10 @@ exports[`test Option: ticks with pin 1`] = `
       className="pe-slider__track-part pe-slider__track-rest"
       style={
         Object {
-          "WebkitFlex": "1 1 0%",
-          "flex": "1 1 0%",
-          "maxWidth": "100%",
-          "msFlex": "1 1 0%",
+          "WebkitFlex": "0.8 1 0%",
+          "flex": "0.8 1 0%",
+          "maxWidth": "80%",
+          "msFlex": "0.8 1 0%",
         }
       }>
       <div
@@ -623,7 +623,7 @@ exports[`test Option: ticks with pin 1`] = `
     </div>
     <div
       className="pe-slider__pin"
-      value={0} />
+      value={20} />
   </div>
 </div>
 `;
