@@ -404,14 +404,15 @@ var genericTests = (function (_ref) {
     component: RadioGroup$$1,
     attrs: {
       name: "themed",
+      all: {
+        className: "tests-radio-button-themed-radio"
+      },
       content: [{
         value: "One",
-        label: "One",
-        className: "tests-radio-button-themed-radio"
+        label: "One"
       }, {
         value: "Two",
         label: "Two",
-        className: "tests-radio-button-themed-radio",
         defaultChecked: true
       }]
     }
@@ -420,14 +421,15 @@ var genericTests = (function (_ref) {
     component: RadioGroup$$1,
     attrs: {
       name: "style",
+      all: {
+        style: { color: "#EF6C00" }
+      },
       content: [{
         value: "One",
-        label: "One",
-        style: { color: "#EF6C00" }
+        label: "One"
       }, {
         value: "Two",
         label: "Two",
-        style: { color: "#EF6C00" },
         defaultChecked: true
       }]
     }
@@ -437,20 +439,17 @@ var genericTests = (function (_ref) {
     component: RadioGroup$$1,
     attrs: {
       name: "iconButton",
+      all: {
+        label: "Hover me",
+        iconButton: {
+          wash: true,
+          ink: false
+        }
+      },
       content: [{
-        value: "One",
-        label: "Hover me",
-        iconButton: {
-          wash: true,
-          ink: false
-        }
+        value: "One"
       }, {
-        value: "Two",
-        label: "Hover me",
-        iconButton: {
-          wash: true,
-          ink: false
-        }
+        value: "Two"
       }]
     }
   }, {
@@ -486,14 +485,15 @@ var genericTests = (function (_ref) {
     component: RadioGroup$$1,
     attrs: {
       name: "disabled-dark",
+      all: {
+        disabled: true
+      },
       content: [{
         value: "One",
-        label: "One",
-        disabled: true
+        label: "One"
       }, {
         value: "Two",
         label: "Two",
-        disabled: true,
         checked: true
       }]
     }
@@ -503,14 +503,15 @@ var genericTests = (function (_ref) {
     component: RadioGroup$$1,
     attrs: {
       name: "themed-dark",
+      all: {
+        className: "tests-radio-button-themed-radio"
+      },
       content: [{
         value: "One",
-        label: "One",
-        className: "tests-radio-button-themed-radio"
+        label: "One"
       }, {
         value: "Two",
         label: "Two",
-        className: "tests-radio-button-themed-radio",
         defaultChecked: true
       }]
     }

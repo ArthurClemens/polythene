@@ -51,7 +51,7 @@ var createContent = function createContent(vnode, _ref2) {
       /* group attributes that may be overwritten by individual buttons */
       name: attrs.name,
       key: buttonOpts.value
-    },
+    }, attrs.all,
     /* individual button options */
     buttonOpts, {
       /* this component's options */

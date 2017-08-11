@@ -136,16 +136,17 @@ export default ({ RadioButton, RadioGroup, renderer: h, keys: k }) => {
       component: RadioGroup,
       attrs: {
         name: "themed",
+        all: {
+          className: "tests-radio-button-themed-radio"
+        },
         content: [
           {
             value: "One",
             label: "One",
-            className: "tests-radio-button-themed-radio"
           },
           {
             value: "Two",
             label: "Two",
-            className: "tests-radio-button-themed-radio",
             defaultChecked: true
           }
         ]
@@ -156,16 +157,17 @@ export default ({ RadioButton, RadioGroup, renderer: h, keys: k }) => {
       component: RadioGroup,
       attrs: {
         name: "style",
+        all: {
+          style: { color: "#EF6C00" }
+        },
         content: [
           {
             value: "One",
             label: "One",
-            style: { color: "#EF6C00" }
           },
           {
             value: "Two",
             label: "Two",
-            style: { color: "#EF6C00" },
             defaultChecked: true
           }
         ]
@@ -177,22 +179,19 @@ export default ({ RadioButton, RadioGroup, renderer: h, keys: k }) => {
       component: RadioGroup,
       attrs: {
         name: "iconButton",
+        all: {
+          label: "Hover me",
+          iconButton: {
+            wash: true,
+            ink: false
+          }
+        },
         content: [
           {
-            value: "One",
-            label: "Hover me",
-            iconButton: {
-              wash: true,
-              ink: false
-            }
+            value: "One"
           },
           {
-            value: "Two",
-            label: "Hover me",
-            iconButton: {
-              wash: true,
-              ink: false
-            }
+            value: "Two"
           }
         ]
       }
@@ -235,16 +234,17 @@ export default ({ RadioButton, RadioGroup, renderer: h, keys: k }) => {
       component: RadioGroup,
       attrs: {
         name: "disabled-dark",
+        all: {
+          disabled: true
+        },
         content: [
           {
             value: "One",
             label: "One",
-            disabled: true
           },
           {
             value: "Two",
             label: "Two",
-            disabled: true,
             checked: true
           }
         ]
@@ -256,16 +256,17 @@ export default ({ RadioButton, RadioGroup, renderer: h, keys: k }) => {
       component: RadioGroup,
       attrs: {
         name: "themed-dark",
+        all: {
+          className: "tests-radio-button-themed-radio"
+        },
         content: [
           {
             value: "One",
             label: "One",
-            className: "tests-radio-button-themed-radio"
           },
           {
             value: "Two",
             label: "Two",
-            className: "tests-radio-button-themed-radio",
             defaultChecked: true
           }
         ]

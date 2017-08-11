@@ -34,7 +34,8 @@ Described in:
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **buttons**   | use `buttons` or `content` | Array | | List of [Radio Button](radio-button.md) options |
+| **buttons**   | use `buttons` or `content` | Array | | List of [Radio Button options](radio-button.md#options) |
+| **all**       | optional       | Options Object | | [Radio Button options](radio-button.md#options) that will be applied to all Radio Buttons |
 | **name**      | required | String | | Name for all radio button elements |
 | **onChange**  | optional | Function(state {Object}) | | Callback function that accepts the input state (Object with properties `event`, `checked` {Boolean}, `value` {String}) (see: [Handling state](../handling-state.md)) |
 

@@ -57,6 +57,7 @@ export const createContent = (vnode, { renderer: h, RadioButton }) => {
           name: attrs.name,
           key: buttonOpts.value
         },
+        attrs.all,
         /* individual button options */
         buttonOpts,
         {
