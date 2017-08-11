@@ -20,6 +20,7 @@ Try out Polythene in JSFiddles.
 * [Icon](https://jsfiddle.net/ArthurClemens/ubzhapwy/)
 * Inputs and Controls
   * [Checkbox](https://jsfiddle.net/ArthurClemens/gcuc9mch/)
+  * [Radio Button](https://jsfiddle.net/ArthurClemens/ct0ear8h/)
   * [Switch](https://jsfiddle.net/ArthurClemens/70bejjr8/)
 * [Ripple](https://jsfiddle.net/ArthurClemens/rcyn8f64/)
 * [Shadow](https://jsfiddle.net/ArthurClemens/87wjreeu/)

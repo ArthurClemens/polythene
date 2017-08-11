@@ -16,6 +16,7 @@ Radio buttons always come in groups. To simply show 2 radio buttons, without han
 import React from "react"
 import { RadioButton } from "polythene-react"
 
+// Inferior solution
 <div>
   <RadioButton 
     name="company"
@@ -38,10 +39,13 @@ Equivalent to the example above, now including state handling:
 
 #### With JSX
 
+<a href="https://jsfiddle.net/ArthurClemens/b1vbbLgw/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+
 ~~~jsx
 import React from "react"
 import { RadioGroup } from "polythene-react"
 
+// Better solution
 <RadioGroup
   name="company"
   buttons={[
@@ -59,9 +63,12 @@ import { RadioGroup } from "polythene-react"
 
 #### With hyperscript
 
+<a href="https://jsfiddle.net/ArthurClemens/fhqrcuL9/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+
 ~~~javascript
 import { renderer as h, RadioGroup } from "polythene-react"
 
+// Better solution
 h(RadioGroup, {
   name: "company",
   buttons: [
@@ -96,6 +103,38 @@ To read the checked state, use `onChange`. But unlike [Checkbox](checkbox.md), t
 ~~~javascript
 h(RadioGroup, {
   onChange: state => this.setState({ checkedValue: state.value })
+})
+~~~
+
+### Shared options
+
+Use RadioGroup's option `all` to pass options that should be applied to all Radio Buttons.
+
+#### With JSX
+
+~~~jsx
+<RadioGroup
+  name="company"
+  all={{
+    className: "my-class"
+  }}
+  buttons={[
+    // ...
+  ]}
+/>
+~~~
+
+#### With hyperscript
+
+~~~javascript
+h(RadioGroup, {
+  name: "company",
+  all: {
+    className: "my-class"
+  },
+  buttons: [
+    // ...
+  ]
 })
 ~~~
 

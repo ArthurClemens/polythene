@@ -11,12 +11,15 @@
 
 ## Usage
 
+<a href="https://jsfiddle.net/ArthurClemens/ct0ear8h/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+
 Radio buttons always come in groups. To simply show 2 radio buttons, without handling their state, does not make much sense:
 
 ~~~javascript
 import m from "mithril"
 import { RadioButton } from "polythene-mithril"
 
+// Inferior solution
 m("div", [
   m(RadioButton, {
     name: "company",
@@ -41,6 +44,7 @@ Equivalent to the example above, now including state handling:
 import m from "mithril"
 import { RadioGroup } from "polythene-mithril"
 
+// Better solution
 m(RadioGroup, {
   name: "company",
   buttons: [
@@ -65,6 +69,22 @@ To read the checked state, use `onChange`. But unlike [Checkbox](checkbox.md), t
 ~~~javascript
 m(RadioGroup, {
   onChange: state => vnode.state.checkedValue = state.value
+})
+~~~
+
+### Shared options
+
+Use RadioGroup's option `all` to pass options that should be applied to all Radio Buttons:
+
+~~~javascript
+m(RadioGroup, {
+  name: "company",
+  all: {
+    className: "my-class"
+  },
+  buttons: [
+    // ...
+  ]
 })
 ~~~
 
