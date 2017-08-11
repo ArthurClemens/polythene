@@ -22,9 +22,11 @@ Try out Polythene in JSFiddles.
   * [Checkbox](https://jsfiddle.net/ArthurClemens/gcuc9mch/)
   * [Radio Button](https://jsfiddle.net/ArthurClemens/ct0ear8h/)
   * [Search](https://jsfiddle.net/ArthurClemens/4zmtfd5u/)
+  * [Slider](https://jsfiddle.net/ArthurClemens/nL12sq4x/)
   * [Switch](https://jsfiddle.net/ArthurClemens/70bejjr8/)
+* [List](https://jsfiddle.net/ArthurClemens/8k7gg3va/)  
+* [List Tile](https://jsfiddle.net/ArthurClemens/eyksxemo/)
 * [Ripple](https://jsfiddle.net/ArthurClemens/rcyn8f64/)
 * [Shadow](https://jsfiddle.net/ArthurClemens/87wjreeu/)
 * [SVG](https://jsfiddle.net/ArthurClemens/wu1v74yk/)
 * [Toolbar](https://jsfiddle.net/ArthurClemens/t5hhcuxn/)
-

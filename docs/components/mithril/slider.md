@@ -8,8 +8,9 @@
 [Slider options](../slider.md)
 
 
-
 ## Usage
+
+<a href="https://jsfiddle.net/ArthurClemens/nL12sq4x/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 A Slider with default settings (a range of 0 to 100, default value 0, step size 1):
 

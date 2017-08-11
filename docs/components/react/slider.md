@@ -14,6 +14,8 @@ A Slider with default settings (a range of 0 to 100, default value 0, step size 
 
 #### With JSX
 
+<a href="https://jsfiddle.net/ArthurClemens/6crka9hy/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+
 ~~~jsx
 import React from "react"
 import { Slider } from "polythene-react"
@@ -22,6 +24,8 @@ import { Slider } from "polythene-react"
 ~~~
 
 #### With hyperscript
+
+<a href="https://jsfiddle.net/ArthurClemens/ekht8sef/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 ~~~javascript
 import { renderer as h, Slider } from "polythene-react"

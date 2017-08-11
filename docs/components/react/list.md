@@ -12,6 +12,8 @@
 
 #### With JSX
 
+<a href="https://jsfiddle.net/ArthurClemens/yzba5Lvn/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+
 ~~~jsx
 import React from "react"
 import { List, ListTile } from "polythene-react"
@@ -25,6 +27,8 @@ import { List, ListTile } from "polythene-react"
 The list header will be also rendered using a list tile.
 
 #### With hyperscript
+
+<a href="https://jsfiddle.net/ArthurClemens/3vdfmg8p/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 ~~~javascript
 import { renderer as h, List, ListTile } from "polythene-react"
