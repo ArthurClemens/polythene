@@ -79,6 +79,7 @@ exports[`test Option: defaultChecked -- dark tone class 1`] = `
 <SelectionControl
   defaultChecked={true}
   instanceClass="pe-switch-control"
+  label="Label"
   selectable={[Function]}
   theme={[Function]}
   type="checkbox" />

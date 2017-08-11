@@ -13,7 +13,12 @@ exports[`test Appended to an element (JSX) 1`] = `
 
 exports[`test No options 1`] = `
 <div
-  className="pe-ripple pe-ripple--constrained   " />
+  className="pe-ripple    " />
+`;
+
+exports[`test No options 2`] = `
+<div
+  className="pe-ripple    " />
 `;
 
 exports[`test Option: center (JSX) 1`] = `
@@ -23,27 +28,22 @@ exports[`test Option: center (JSX) 1`] = `
 
 exports[`test Option: class 1`] = `
 <div
-  className="pe-ripple pe-ripple--constrained   class-x" />
+  className="pe-ripple    class-x" />
 `;
 
 exports[`test Option: className 1`] = `
 <div
-  className="pe-ripple pe-ripple--constrained   className-x" />
-`;
-
-exports[`test Option: constrained (true) 1`] = `
-<div
-  className="pe-ripple pe-ripple--constrained   " />
+  className="pe-ripple    className-x" />
 `;
 
 exports[`test Option: element 1`] = `
 <a
-  className="pe-ripple pe-ripple--constrained   " />
+  className="pe-ripple    " />
 `;
 
 exports[`test Option: id 1`] = `
 <div
-  className="pe-ripple pe-ripple--constrained   "
+  className="pe-ripple    "
   id="id-x" />
 `;
 

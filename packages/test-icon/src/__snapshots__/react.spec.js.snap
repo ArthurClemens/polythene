@@ -112,9 +112,9 @@ exports[`test Option: SVG as component (JSX) 1`] = `
 </Icon>
 `;
 
-exports[`test Option: avatar (type large) 1`] = `
+exports[`test Option: avatar (size large) 1`] = `
 <div
-  className="pe-icon pe-icon--regular pe-icon--avatar   ">
+  className="pe-icon pe-icon--large pe-icon--avatar   ">
   <img
     src="http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png" />
 </div>

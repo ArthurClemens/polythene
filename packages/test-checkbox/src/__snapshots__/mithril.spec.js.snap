@@ -10,7 +10,7 @@ exports[`test Dark tone class + light tone 1`] = `
         <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-button__content\">
           <label class=\"pe-control__form-label\"></label>
-          <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple\">
             <label class=\"pe-control__form-label\"></label>
           </div>
           <div class=\"pe-button__focus\">
@@ -21,8 +21,7 @@ exports[`test Dark tone class + light tone 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-              height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
                 </path></label>
@@ -34,8 +33,7 @@ exports[`test Dark tone class + light tone 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-              height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
                 </path></label>
@@ -67,7 +65,7 @@ exports[`test Dark tone class + light tone class 1`] = `
         <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-button__content\">
           <label class=\"pe-control__form-label\"></label>
-          <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple\">
             <label class=\"pe-control__form-label\"></label>
           </div>
           <div class=\"pe-button__focus\">
@@ -78,8 +76,7 @@ exports[`test Dark tone class + light tone class 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-              height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
                 </path></label>
@@ -91,8 +88,7 @@ exports[`test Dark tone class + light tone class 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-              height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
                 </path></label>
@@ -122,7 +118,7 @@ exports[`test No options 1`] = `
       <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
         <label class=\"pe-control__form-label\"></label>
-        <div class=\"pe-ripple pe-ripple--constrained\">
+        <div class=\"pe-ripple\">
           <label class=\"pe-control__form-label\"></label>
         </div>
         <div class=\"pe-button__focus\">
@@ -133,8 +129,7 @@ exports[`test No options 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-            height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
               <label class=\"pe-control__form-label\"><path d=
               \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
               </path></label>
@@ -146,8 +141,7 @@ exports[`test No options 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-            height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
               <label class=\"pe-control__form-label\"><path d=
               \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
               </path></label>
@@ -173,7 +167,7 @@ exports[`test Option: class 1`] = `
       <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
         <label class=\"pe-control__form-label\"></label>
-        <div class=\"pe-ripple pe-ripple--constrained\">
+        <div class=\"pe-ripple\">
           <label class=\"pe-control__form-label\"></label>
         </div>
         <div class=\"pe-button__focus\">
@@ -184,8 +178,7 @@ exports[`test Option: class 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-            height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
               <label class=\"pe-control__form-label\"><path d=
               \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
               </path></label>
@@ -197,8 +190,7 @@ exports[`test Option: class 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-            height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
               <label class=\"pe-control__form-label\"><path d=
               \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
               </path></label>
@@ -224,7 +216,7 @@ exports[`test Option: className 1`] = `
       <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
         <label class=\"pe-control__form-label\"></label>
-        <div class=\"pe-ripple pe-ripple--constrained\">
+        <div class=\"pe-ripple\">
           <label class=\"pe-control__form-label\"></label>
         </div>
         <div class=\"pe-button__focus\">
@@ -235,8 +227,7 @@ exports[`test Option: className 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-            height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
               <label class=\"pe-control__form-label\"><path d=
               \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
               </path></label>
@@ -248,8 +239,7 @@ exports[`test Option: className 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-            height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
               <label class=\"pe-control__form-label\"><path d=
               \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
               </path></label>
@@ -275,7 +265,7 @@ exports[`test Option: defaultChecked -- dark tone class 1`] = `
       <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
         <label class=\"pe-control__form-label\"></label>
-        <div class=\"pe-ripple pe-ripple--constrained\">
+        <div class=\"pe-ripple\">
           <label class=\"pe-control__form-label\"></label>
         </div>
         <div class=\"pe-button__focus\">
@@ -286,8 +276,7 @@ exports[`test Option: defaultChecked -- dark tone class 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-            height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
               <label class=\"pe-control__form-label\"><path d=
               \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
               </path></label>
@@ -299,8 +288,7 @@ exports[`test Option: defaultChecked -- dark tone class 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-            height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
               <label class=\"pe-control__form-label\"><path d=
               \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
               </path></label>
@@ -326,7 +314,7 @@ exports[`test Option: defaultChecked 1`] = `
       <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
         <label class=\"pe-control__form-label\"></label>
-        <div class=\"pe-ripple pe-ripple--constrained\">
+        <div class=\"pe-ripple\">
           <label class=\"pe-control__form-label\"></label>
         </div>
         <div class=\"pe-button__focus\">
@@ -337,8 +325,7 @@ exports[`test Option: defaultChecked 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-            height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
               <label class=\"pe-control__form-label\"><path d=
               \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
               </path></label>
@@ -350,8 +337,7 @@ exports[`test Option: defaultChecked 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-            height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
               <label class=\"pe-control__form-label\"><path d=
               \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
               </path></label>
@@ -384,8 +370,7 @@ exports[`test Option: disabled -- dark tone class 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-              height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
                 </path></label>
@@ -397,8 +382,7 @@ exports[`test Option: disabled -- dark tone class 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-              height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
                 </path></label>
@@ -429,8 +413,7 @@ exports[`test Option: disabled -- dark tone class 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-              height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
                 </path></label>
@@ -442,8 +425,7 @@ exports[`test Option: disabled -- dark tone class 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-              height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
                 </path></label>
@@ -480,8 +462,7 @@ exports[`test Option: disabled 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-              height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
                 </path></label>
@@ -493,8 +474,7 @@ exports[`test Option: disabled 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-              height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
                 </path></label>
@@ -525,8 +505,7 @@ exports[`test Option: disabled 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-              height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
                 </path></label>
@@ -538,8 +517,7 @@ exports[`test Option: disabled 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-              height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
                 </path></label>
@@ -567,7 +545,7 @@ exports[`test Option: element 1`] = `
   <label class=\"pe-control__form-label\"></label>
   <div class=\"pe-button__content\">
     <label class=\"pe-control__form-label\"></label>
-    <div class=\"pe-ripple pe-ripple--constrained\">
+    <div class=\"pe-ripple\">
       <label class=\"pe-control__form-label\"></label>
     </div>
     <div class=\"pe-button__focus\">
@@ -577,8 +555,7 @@ exports[`test Option: element 1`] = `
       <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-svg\">
         <label class=\"pe-control__form-label\"></label>
-        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=
-        \"24\" viewbox=\"0 0 24 24\">
+        <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
           <label class=\"pe-control__form-label\"><path d=
           \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
           </path></label>
@@ -589,8 +566,7 @@ exports[`test Option: element 1`] = `
       <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-svg\">
         <label class=\"pe-control__form-label\"></label>
-        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=
-        \"24\" viewbox=\"0 0 24 24\">
+        <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
           <label class=\"pe-control__form-label\"><path d=
           \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
           </path></label>
@@ -627,8 +603,7 @@ exports[`test Option: iconButton (custom hover behaviour) 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-            height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
               <label class=\"pe-control__form-label\"><path d=
               \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
               </path></label>
@@ -640,8 +615,7 @@ exports[`test Option: iconButton (custom hover behaviour) 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-            height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
               <label class=\"pe-control__form-label\"><path d=
               \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
               </path></label>
@@ -668,7 +642,7 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
         <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-button__content\">
           <label class=\"pe-control__form-label\"></label>
-          <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple\">
             <label class=\"pe-control__form-label\"></label>
           </div>
           <div class=\"pe-button__focus\">
@@ -719,7 +693,7 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
         <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-button__content\">
           <label class=\"pe-control__form-label\"></label>
-          <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple\">
             <label class=\"pe-control__form-label\"></label>
           </div>
           <div class=\"pe-button__focus\">
@@ -770,7 +744,7 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
         <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-button__content\">
           <label class=\"pe-control__form-label\"></label>
-          <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple\">
             <label class=\"pe-control__form-label\"></label>
           </div>
           <div class=\"pe-button__focus\">
@@ -821,7 +795,7 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
         <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-button__content\">
           <label class=\"pe-control__form-label\"></label>
-          <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple\">
             <label class=\"pe-control__form-label\"></label>
           </div>
           <div class=\"pe-button__focus\">
@@ -877,7 +851,7 @@ exports[`test Option: id 1`] = `
       <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
         <label class=\"pe-control__form-label\"></label>
-        <div class=\"pe-ripple pe-ripple--constrained\">
+        <div class=\"pe-ripple\">
           <label class=\"pe-control__form-label\"></label>
         </div>
         <div class=\"pe-button__focus\">
@@ -888,8 +862,7 @@ exports[`test Option: id 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-            height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
               <label class=\"pe-control__form-label\"><path d=
               \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
               </path></label>
@@ -901,8 +874,7 @@ exports[`test Option: id 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-            height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
               <label class=\"pe-control__form-label\"><path d=
               \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
               </path></label>
@@ -928,7 +900,7 @@ exports[`test Option: label 1`] = `
       <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
         <label class=\"pe-control__form-label\"></label>
-        <div class=\"pe-ripple pe-ripple--constrained\">
+        <div class=\"pe-ripple\">
           <label class=\"pe-control__form-label\"></label>
         </div>
         <div class=\"pe-button__focus\">
@@ -939,8 +911,7 @@ exports[`test Option: label 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-            height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
               <label class=\"pe-control__form-label\"><path d=
               \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
               </path></label>
@@ -952,8 +923,7 @@ exports[`test Option: label 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-            height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
               <label class=\"pe-control__form-label\"><path d=
               \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
               </path></label>
@@ -983,7 +953,7 @@ exports[`test Option: selectable 1`] = `
       <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-button__content\">
           <label class=\"pe-control__form-label\"></label>
-          <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple\">
             <label class=\"pe-control__form-label\"></label>
           </div>
           <div class=\"pe-button__focus\">
@@ -994,8 +964,7 @@ exports[`test Option: selectable 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-              height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
                 </path></label>
@@ -1007,8 +976,7 @@ exports[`test Option: selectable 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-              height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
                 </path></label>
@@ -1033,7 +1001,7 @@ exports[`test Option: selectable 1`] = `
         <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-button__content\">
           <label class=\"pe-control__form-label\"></label>
-          <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple\">
             <label class=\"pe-control__form-label\"></label>
           </div>
           <div class=\"pe-button__focus\">
@@ -1044,8 +1012,7 @@ exports[`test Option: selectable 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-              height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
                 </path></label>
@@ -1057,8 +1024,7 @@ exports[`test Option: selectable 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-              height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
                 </path></label>
@@ -1090,7 +1056,7 @@ exports[`test Option: size 1`] = `
         <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-button__content\">
           <label class=\"pe-control__form-label\"></label>
-          <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple\">
             <label class=\"pe-control__form-label\"></label>
           </div>
           <div class=\"pe-button__focus\">
@@ -1101,8 +1067,7 @@ exports[`test Option: size 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-              height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
                 </path></label>
@@ -1114,8 +1079,7 @@ exports[`test Option: size 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-              height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
                 </path></label>
@@ -1140,7 +1104,7 @@ exports[`test Option: size 1`] = `
         <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-button__content\">
           <label class=\"pe-control__form-label\"></label>
-          <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple\">
             <label class=\"pe-control__form-label\"></label>
           </div>
           <div class=\"pe-button__focus\">
@@ -1151,8 +1115,7 @@ exports[`test Option: size 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-              height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
                 </path></label>
@@ -1164,8 +1127,7 @@ exports[`test Option: size 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-              height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
                 </path></label>
@@ -1190,7 +1152,7 @@ exports[`test Option: size 1`] = `
         <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-button__content\">
           <label class=\"pe-control__form-label\"></label>
-          <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple\">
             <label class=\"pe-control__form-label\"></label>
           </div>
           <div class=\"pe-button__focus\">
@@ -1201,8 +1163,7 @@ exports[`test Option: size 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-              height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
                 </path></label>
@@ -1214,8 +1175,7 @@ exports[`test Option: size 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-              height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
                 </path></label>
@@ -1240,7 +1200,7 @@ exports[`test Option: size 1`] = `
         <label class=\"pe-control__form-label\"></label>
         <div class=\"pe-button__content\">
           <label class=\"pe-control__form-label\"></label>
-          <div class=\"pe-ripple pe-ripple--constrained\">
+          <div class=\"pe-ripple\">
             <label class=\"pe-control__form-label\"></label>
           </div>
           <div class=\"pe-button__focus\">
@@ -1251,8 +1211,7 @@ exports[`test Option: size 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-              height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
                 </path></label>
@@ -1264,8 +1223,7 @@ exports[`test Option: size 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-              height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
                 </path></label>
@@ -1295,7 +1253,7 @@ exports[`test Option: tabindex 1`] = `
       <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
         <label class=\"pe-control__form-label\"></label>
-        <div class=\"pe-ripple pe-ripple--constrained\">
+        <div class=\"pe-ripple\">
           <label class=\"pe-control__form-label\"></label>
         </div>
         <div class=\"pe-button__focus\">
@@ -1306,8 +1264,7 @@ exports[`test Option: tabindex 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-            height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
               <label class=\"pe-control__form-label\"><path d=
               \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
               </path></label>
@@ -1319,8 +1276,7 @@ exports[`test Option: tabindex 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-            height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
               <label class=\"pe-control__form-label\"><path d=
               \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
               </path></label>
@@ -1346,7 +1302,7 @@ exports[`test Option: value 1`] = `
       <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
         <label class=\"pe-control__form-label\"></label>
-        <div class=\"pe-ripple pe-ripple--constrained\">
+        <div class=\"pe-ripple\">
           <label class=\"pe-control__form-label\"></label>
         </div>
         <div class=\"pe-button__focus\">
@@ -1357,8 +1313,7 @@ exports[`test Option: value 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-            height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
               <label class=\"pe-control__form-label\"><path d=
               \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
               </path></label>
@@ -1370,8 +1325,7 @@ exports[`test Option: value 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-            height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
               <label class=\"pe-control__form-label\"><path d=
               \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
               </path></label>
@@ -1382,6 +1336,58 @@ exports[`test Option: value 1`] = `
     </div>
   </div><label class=\"pe-control__form-label\"><input name=\"worth\"
   type=\"checkbox\"></label>
+</div>
+"
+`;
+
+exports[`test Styled Checkbox 1`] = `
+"<div style=\"color: rgb(255, 152, 0);\" class=
+\"pe-control pe-checkbox-control pe-control--on pe-control--regular\">
+<label class=\"pe-control__form-label\"></label>
+  <div class=\"pe-control__box\">
+    <label class=\"pe-control__form-label\"></label>
+    <div class=\"pe-button pe-icon-button pe-control__button\"
+    tabindex=\"0\">
+      <label class=\"pe-control__form-label\"></label>
+      <div class=\"pe-button__content\">
+        <label class=\"pe-control__form-label\"></label>
+        <div class=\"pe-ripple\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
+        <div class=\"pe-button__focus\">
+          <label class=\"pe-control__form-label\"></label>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--on\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+        <div class=
+        \"pe-icon pe-icon--regular pe-control__button--off\">
+          <label class=\"pe-control__form-label\"></label>
+          <div class=\"pe-svg\">
+            <label class=\"pe-control__form-label\"></label>
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <label class=\"pe-control__form-label\"><path d=
+              \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
+              </path></label>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\"pe-control__label\">
+    <label class=\"pe-control__form-label\">Label</label>
+  </div><label class=\"pe-control__form-label\"><input type=
+  \"checkbox\"></label>
 </div>
 "
 `;
@@ -1397,7 +1403,7 @@ exports[`test Themed Checkbox (color and font size) 1`] = `
       <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
         <label class=\"pe-control__form-label\"></label>
-        <div class=\"pe-ripple pe-ripple--constrained\">
+        <div class=\"pe-ripple\">
           <label class=\"pe-control__form-label\"></label>
         </div>
         <div class=\"pe-button__focus\">
@@ -1408,8 +1414,7 @@ exports[`test Themed Checkbox (color and font size) 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-            height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
               <label class=\"pe-control__form-label\"><path d=
               \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
               </path></label>
@@ -1421,8 +1426,7 @@ exports[`test Themed Checkbox (color and font size) 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-            height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
               <label class=\"pe-control__form-label\"><path d=
               \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
               </path></label>
@@ -1451,7 +1455,7 @@ exports[`test Themed Checkbox (colors) -- dark tone class 1`] = `
       <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-button__content\">
         <label class=\"pe-control__form-label\"></label>
-        <div class=\"pe-ripple pe-ripple--constrained\">
+        <div class=\"pe-ripple\">
           <label class=\"pe-control__form-label\"></label>
         </div>
         <div class=\"pe-button__focus\">
@@ -1462,8 +1466,7 @@ exports[`test Themed Checkbox (colors) -- dark tone class 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-            height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
               <label class=\"pe-control__form-label\"><path d=
               \"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\">
               </path></label>
@@ -1475,8 +1478,7 @@ exports[`test Themed Checkbox (colors) -- dark tone class 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\"
-            height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
               <label class=\"pe-control__form-label\"><path d=
               \"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\">
               </path></label>

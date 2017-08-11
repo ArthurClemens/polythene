@@ -14,7 +14,7 @@ exports[`test Conditional button states 1`] = `
       <div class=\"pe-dialog-pane__actions\">
         <a class=\"pe-button pe-text-button\" tabindex=\"0\">
         <div class=\"pe-button__content\">
-          <div class=\"pe-ripple pe-ripple--constrained\"></div>
+          <div class=\"pe-ripple\"></div>
           <div class=\"pe-button__wash\"></div>
           <div class=\"pe-button__focus\"></div>
           <div class=\"pe-button__label\">
@@ -307,7 +307,7 @@ exports[`test Option: title and body (long text) - spec 2`] = `
       <div class=\"pe-dialog-pane__actions\">
         <a class=\"pe-button pe-text-button\" tabindex=\"0\">
         <div class=\"pe-button__content\">
-          <div class=\"pe-ripple pe-ripple--constrained\"></div>
+          <div class=\"pe-ripple\"></div>
           <div class=\"pe-button__wash\"></div>
           <div class=\"pe-button__focus\"></div>
           <div class=\"pe-button__label\">
@@ -315,7 +315,7 @@ exports[`test Option: title and body (long text) - spec 2`] = `
           </div>
         </div></a><a class=\"pe-button pe-text-button\" tabindex=\"0\">
         <div class=\"pe-button__content\">
-          <div class=\"pe-ripple pe-ripple--constrained\"></div>
+          <div class=\"pe-ripple\"></div>
           <div class=\"pe-button__wash\"></div>
           <div class=\"pe-button__focus\"></div>
           <div class=\"pe-button__label\">
@@ -494,7 +494,7 @@ exports[`test Option: title, body, footer 1`] = `
       <div class=\"pe-dialog-pane__actions\">
         <a class=\"pe-button pe-text-button\" tabindex=\"0\">
         <div class=\"pe-button__content\">
-          <div class=\"pe-ripple pe-ripple--constrained\"></div>
+          <div class=\"pe-ripple\"></div>
           <div class=\"pe-button__wash\"></div>
           <div class=\"pe-button__focus\"></div>
           <div class=\"pe-button__label\">
@@ -502,7 +502,7 @@ exports[`test Option: title, body, footer 1`] = `
           </div>
         </div></a><a class=\"pe-button pe-text-button\" tabindex=\"0\">
         <div class=\"pe-button__content\">
-          <div class=\"pe-ripple pe-ripple--constrained\"></div>
+          <div class=\"pe-ripple\"></div>
           <div class=\"pe-button__wash\"></div>
           <div class=\"pe-button__focus\"></div>
           <div class=\"pe-button__label\">

@@ -744,6 +744,11 @@ exports[`test Any content (list) 1`] = `
 </div>
 `;
 
+exports[`test Any content (tabs) 1`] = `
+<Card
+  content={<n />} />
+`;
+
 exports[`test Bottom action row, bordered 1`] = `
 <div
   className="pe-card   ">

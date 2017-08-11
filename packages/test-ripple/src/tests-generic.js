@@ -5,17 +5,17 @@ export default ({ Ripple }) => {
   });
   return [
     {
-      name: "Option: constrained (default)",
+      name: "No options",
       interactive: true,
       component: Ripple
     },
     {
-      name: "Option: constrained (false)",
+      name: "Option: unconstrained",
       interactive: true,
       exclude: true,
       component: Ripple,
       attrs: {
-        constrained: false
+        unconstrained: true
       }
     },
     {
@@ -116,7 +116,6 @@ export default ({ Ripple }) => {
       className: "pe-dark-tone",
       component: Ripple,
       attrs: {
-        constrained: true,
         style: {
           color: "#fff"
         }
@@ -129,7 +128,6 @@ export default ({ Ripple }) => {
       className: "pe-dark-tone",
       component: Ripple,
       attrs: {
-        constrained: true,
         style: {
           background: "#fff"
         },
@@ -143,7 +141,6 @@ export default ({ Ripple }) => {
       className: "test-dark-tone",
       component: Ripple,
       attrs: {
-        constrained: true,
         style: {
           background: "#fff"
         },

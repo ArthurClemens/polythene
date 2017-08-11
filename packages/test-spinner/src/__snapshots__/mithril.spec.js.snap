@@ -7,7 +7,7 @@ exports[`test Emulating progress to 100% -- Material Design Progress Spinner 1`]
       <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
       <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
     </div>
-    <div class=\"pe-ripple pe-ripple--constrained\"></div>
+    <div class=\"pe-ripple\"></div>
     <div class=\"pe-button__wash\"></div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-button__label\">
@@ -113,7 +113,7 @@ exports[`test Interactive (animated, updateDuration) -- Material Design Progress
       <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
       <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
     </div>
-    <div class=\"pe-ripple pe-ripple--constrained\"></div>
+    <div class=\"pe-ripple\"></div>
     <div class=\"pe-button__wash\"></div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-button__label\">
@@ -133,7 +133,7 @@ exports[`test Material Design Spinner -- dark tone class -- Material Design Spin
       <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
       <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
     </div>
-    <div class=\"pe-ripple pe-ripple--constrained\"></div>
+    <div class=\"pe-ripple\"></div>
     <div class=\"pe-button__wash\"></div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-button__label\">
@@ -727,7 +727,7 @@ exports[`test Option: raised, z -- Material Design Spinner 1`] = `
       <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
       <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
     </div>
-    <div class=\"pe-ripple pe-ripple--constrained\"></div>
+    <div class=\"pe-ripple\"></div>
     <div class=\"pe-button__wash\"></div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-button__label\">
@@ -764,7 +764,7 @@ exports[`test Option: size -- Material Design Spinner 1`] = `
       <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
       <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
     </div>
-    <div class=\"pe-ripple pe-ripple--constrained\"></div>
+    <div class=\"pe-ripple\"></div>
     <div class=\"pe-button__wash\"></div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-button__label\">
@@ -801,7 +801,7 @@ exports[`test Option: size -- iOS Spinner 1`] = `
       <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
       <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
     </div>
-    <div class=\"pe-ripple pe-ripple--constrained\"></div>
+    <div class=\"pe-ripple\"></div>
     <div class=\"pe-button__wash\"></div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-button__label\">
@@ -838,7 +838,7 @@ exports[`test Option: style (color) -- Material Design Spinner 1`] = `
       <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
       <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
     </div>
-    <div class=\"pe-ripple pe-ripple--constrained\"></div>
+    <div class=\"pe-ripple\"></div>
     <div class=\"pe-button__wash\"></div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-button__label\">
@@ -863,7 +863,7 @@ exports[`test Option: style (color) -- iOS Spinner 1`] = `
       <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
       <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
     </div>
-    <div class=\"pe-ripple pe-ripple--constrained\"></div>
+    <div class=\"pe-ripple\"></div>
     <div class=\"pe-button__wash\"></div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-button__label\">
@@ -888,7 +888,7 @@ exports[`test Theme (color) -- Material Design Spinner 1`] = `
       <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
       <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
     </div>
-    <div class=\"pe-ripple pe-ripple--constrained\"></div>
+    <div class=\"pe-ripple\"></div>
     <div class=\"pe-button__wash\"></div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-button__label\">
@@ -913,7 +913,7 @@ exports[`test Theme (color) -- iOS Spinner 1`] = `
       <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
       <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
     </div>
-    <div class=\"pe-ripple pe-ripple--constrained\"></div>
+    <div class=\"pe-ripple\"></div>
     <div class=\"pe-button__wash\"></div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-button__label\">
@@ -938,7 +938,7 @@ exports[`test iOS Spinner -- dark tone class -- Material Design Spinner 1`] = `
       <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
       <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
     </div>
-    <div class=\"pe-ripple pe-ripple--constrained\"></div>
+    <div class=\"pe-ripple\"></div>
     <div class=\"pe-button__wash\"></div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-button__label\">

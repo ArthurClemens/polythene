@@ -79,8 +79,8 @@ exports[`test No options 1`] = `
 "
 `;
 
-exports[`test Option: avatar (type large) 1`] = `
-"<div class=\"pe-icon pe-icon--regular pe-icon--avatar\">
+exports[`test Option: avatar (size large) 1`] = `
+"<div class=\"pe-icon pe-icon--large pe-icon--avatar\">
   <img src=
   \"http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png\">
 </div>

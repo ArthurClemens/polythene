@@ -36,7 +36,7 @@ exports[`test Interactive option: animated -- dark tone class 1`] = `
   </div>
   <Shadow
     animated={true}
-    z={[Function]} />
+    z={1} />
 </div>
 `;
 

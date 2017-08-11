@@ -356,7 +356,7 @@ exports[`test Option: indent 1`] = `
 
 exports[`test Option: ink 1`] = `
 "<div class=\"pe-list-tile\">
-  <div class=\"pe-ripple pe-ripple--constrained\"></div>
+  <div class=\"pe-ripple\"></div>
   <div class=\"pe-list-tile__primary\" style=\"\">
     <div class=\"pe-list-tile__content\">
       <div class=\"pe-list-tile__title\">
@@ -370,7 +370,7 @@ exports[`test Option: ink 1`] = `
 
 exports[`test Option: ink with ripple options 1`] = `
 "<div class=\"pe-list-tile\">
-  <div class=\"pe-ripple pe-ripple--constrained\"></div>
+  <div class=\"pe-ripple\"></div>
   <div class=\"pe-list-tile__primary\" style=\"\">
     <div class=\"pe-list-tile__content\">
       <div class=\"pe-list-tile__title\">

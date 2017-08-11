@@ -53,7 +53,7 @@ exports[`test Give focus 1`] = `
         <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
         <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
       </div>
-      <div class=\"pe-ripple pe-ripple--constrained\"></div>
+      <div class=\"pe-ripple\"></div>
       <div class=\"pe-button__wash\"></div>
       <div class=\"pe-button__focus\"></div>
       <div class=\"pe-button__label\">
@@ -750,7 +750,7 @@ exports[`test Set value 1`] = `
         <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
         <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
       </div>
-      <div class=\"pe-ripple pe-ripple--constrained\"></div>
+      <div class=\"pe-ripple\"></div>
       <div class=\"pe-button__wash\"></div>
       <div class=\"pe-button__focus\"></div>
       <div class=\"pe-button__label\">
@@ -781,7 +781,7 @@ exports[`test Set value 2`] = `
         <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
         <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
       </div>
-      <div class=\"pe-ripple pe-ripple--constrained\"></div>
+      <div class=\"pe-ripple\"></div>
       <div class=\"pe-button__wash\"></div>
       <div class=\"pe-button__focus\"></div>
       <div class=\"pe-button__label\">

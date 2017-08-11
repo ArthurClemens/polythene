@@ -283,6 +283,9 @@ exports[`test Option: defaultChecked -- dark tone class 1`] = `
         </div>
       </div>
     </div></a></label>
+  </div>
+  <div class=\"pe-control__label\">
+    <label class=\"pe-control__form-label\">Label</label>
   </div><label class=\"pe-control__form-label\"><input type=
   \"checkbox\"></label>
 </div>

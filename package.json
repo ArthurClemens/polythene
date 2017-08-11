@@ -5,7 +5,8 @@
     "build": "lerna clean --yes && lerna bootstrap && lerna run build",
     "build:component": "node ./scripts/buildComponent",
     "build:tests": "node ./scripts/buildTests",
-    "test": "node ./scripts/runTests",
+    "tests:run": "node ./scripts/runTests",
+    "tests:update": "node_modules/jest/bin/jest.js --updateSnapshot",
     "github:demos": "node ./scripts/copyToDemos"
   },
   "devDependencies": {

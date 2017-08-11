@@ -8,16 +8,16 @@ var genericTests = (function (_ref) {
     color_light: "#F44336"
   });
   return [{
-    name: "Option: constrained (default)",
+    name: "No options",
     interactive: true,
     component: Ripple$$1
   }, {
-    name: "Option: constrained (false)",
+    name: "Option: unconstrained",
     interactive: true,
     exclude: true,
     component: Ripple$$1,
     attrs: {
-      constrained: false
+      unconstrained: true
     }
   }, {
     name: "Option: center",
@@ -108,7 +108,6 @@ var genericTests = (function (_ref) {
     className: "pe-dark-tone",
     component: Ripple$$1,
     attrs: {
-      constrained: true,
       style: {
         color: "#fff"
       }
@@ -120,7 +119,6 @@ var genericTests = (function (_ref) {
     className: "pe-dark-tone",
     component: Ripple$$1,
     attrs: {
-      constrained: true,
       style: {
         background: "#fff"
       },
@@ -133,7 +131,6 @@ var genericTests = (function (_ref) {
     className: "test-dark-tone",
     component: Ripple$$1,
     attrs: {
-      constrained: true,
       style: {
         background: "#fff"
       },

@@ -2,7 +2,7 @@ exports[`test Dark tone class + light tone 1`] = `
 "<div style=\"background: rgb(255, 255, 255);\">
   <a class=\"pe-button pe-text-button pe-light-tone\" tabindex=\"0\">
   <div class=\"pe-button__content\">
-    <div class=\"pe-ripple pe-ripple--constrained\"></div>
+    <div class=\"pe-ripple\"></div>
     <div class=\"pe-button__wash\"></div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-button__label\">
@@ -19,7 +19,7 @@ exports[`test Dark tone class + light tone 1`] = `
   \"pe-button pe-text-button pe-light-tone tests-button-themed-button\"
   tabindex=\"0\">
   <div class=\"pe-button__content\">
-    <div class=\"pe-ripple pe-ripple--constrained\"></div>
+    <div class=\"pe-ripple\"></div>
     <div class=\"pe-button__wash\"></div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-button__label\">
@@ -34,7 +34,7 @@ exports[`test Dark tone class + light tone class 1`] = `
 "<div style=\"background: rgb(255, 255, 255);\" class=\"pe-light-tone\">
   <a class=\"pe-button pe-text-button\" tabindex=\"0\">
   <div class=\"pe-button__content\">
-    <div class=\"pe-ripple pe-ripple--constrained\"></div>
+    <div class=\"pe-ripple\"></div>
     <div class=\"pe-button__wash\"></div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-button__label\">
@@ -50,7 +50,7 @@ exports[`test Dark tone class + light tone class 1`] = `
   \"pe-button pe-text-button tests-button-themed-button\" tabindex=
   \"0\">
   <div class=\"pe-button__content\">
-    <div class=\"pe-ripple pe-ripple--constrained\"></div>
+    <div class=\"pe-ripple\"></div>
     <div class=\"pe-button__wash\"></div>
     <div class=\"pe-button__focus\"></div>
     <div class=\"pe-button__label\">
@@ -64,7 +64,7 @@ exports[`test Dark tone class + light tone class 1`] = `
 exports[`test No options 1`] = `
 "<a class=\"pe-button pe-text-button\" tabindex=\"0\">
 <div class=\"pe-button__content\">
-  <div class=\"pe-ripple pe-ripple--constrained\"></div>
+  <div class=\"pe-ripple\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
 </div></a>
@@ -74,7 +74,7 @@ exports[`test No options 1`] = `
 exports[`test Option: after 1`] = `
 "<a class=\"pe-button pe-text-button\" tabindex=\"0\">
 <div class=\"pe-button__content\">
-  <div class=\"pe-ripple pe-ripple--constrained\"></div>
+  <div class=\"pe-ripple\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
 </div><span>After</span></a>
@@ -85,7 +85,7 @@ exports[`test Option: before 1`] = `
 "<a class=\"pe-button pe-text-button\" tabindex=
 \"0\"><span>Before</span>
 <div class=\"pe-button__content\">
-  <div class=\"pe-ripple pe-ripple--constrained\"></div>
+  <div class=\"pe-ripple\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
 </div></a>
@@ -95,7 +95,7 @@ exports[`test Option: before 1`] = `
 exports[`test Option: children 1`] = `
 "<a class=\"pe-button pe-text-button\" tabindex=\"0\">
 <div class=\"pe-button__content\">
-  <div class=\"pe-ripple pe-ripple--constrained\"></div>
+  <div class=\"pe-ripple\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div><span>Child</span>
 </div></a>
@@ -105,7 +105,7 @@ exports[`test Option: children 1`] = `
 exports[`test Option: class 1`] = `
 "<a class=\"pe-button pe-text-button class-x\" tabindex=\"0\">
 <div class=\"pe-button__content\">
-  <div class=\"pe-ripple pe-ripple--constrained\"></div>
+  <div class=\"pe-ripple\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
 </div></a>
@@ -115,7 +115,7 @@ exports[`test Option: class 1`] = `
 exports[`test Option: className 1`] = `
 "<a class=\"pe-button pe-text-button className-x\" tabindex=\"0\">
 <div class=\"pe-button__content\">
-  <div class=\"pe-ripple pe-ripple--constrained\"></div>
+  <div class=\"pe-ripple\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
 </div></a>
@@ -125,7 +125,7 @@ exports[`test Option: className 1`] = `
 exports[`test Option: content 1`] = `
 "<a class=\"pe-button pe-text-button\" tabindex=\"0\">
 <div class=\"pe-button__content\">
-  <div class=\"pe-ripple pe-ripple--constrained\"></div>
+  <div class=\"pe-ripple\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div><span>Content</span>
 </div></a>
@@ -135,7 +135,7 @@ exports[`test Option: content 1`] = `
 exports[`test Option: element 1`] = `
 "<button class=\"pe-button pe-text-button\" tabindex=\"0\">
 <div class=\"pe-button__content\">
-  <div class=\"pe-ripple pe-ripple--constrained\"></div>
+  <div class=\"pe-ripple\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
 </div></button>
@@ -146,7 +146,7 @@ exports[`test Option: formaction 1`] = `
 "<a formaction=\"http://polythene.js.org\" class=
 \"pe-button pe-text-button\" tabindex=\"0\">
 <div class=\"pe-button__content\">
-  <div class=\"pe-ripple pe-ripple--constrained\"></div>
+  <div class=\"pe-ripple\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
@@ -159,7 +159,7 @@ exports[`test Option: formaction 1`] = `
 exports[`test Option: id 1`] = `
 "<a id=\"id-x\" class=\"pe-button pe-text-button\" tabindex=\"0\">
 <div class=\"pe-button__content\">
-  <div class=\"pe-ripple pe-ripple--constrained\"></div>
+  <div class=\"pe-ripple\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
 </div></a>
@@ -169,7 +169,7 @@ exports[`test Option: id 1`] = `
 exports[`test Option: inactivate (2) 1`] = `
 "<a class=\"pe-button pe-text-button\" tabindex=\"0\">
 <div class=\"pe-button__content\">
-  <div class=\"pe-ripple pe-ripple--constrained\"></div>
+  <div class=\"pe-ripple\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
@@ -182,7 +182,7 @@ exports[`test Option: inactivate (2) 1`] = `
 exports[`test Option: inactive (false) 1`] = `
 "<a class=\"pe-button pe-text-button\" tabindex=\"0\">
 <div class=\"pe-button__content\">
-  <div class=\"pe-ripple pe-ripple--constrained\"></div>
+  <div class=\"pe-ripple\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
@@ -195,7 +195,7 @@ exports[`test Option: inactive (false) 1`] = `
 exports[`test Option: inactive (true) 1`] = `
 "<a class=\"pe-button pe-text-button pe-button--inactive\">
 <div class=\"pe-button__content\">
-  <div class=\"pe-ripple pe-ripple--constrained\"></div>
+  <div class=\"pe-ripple\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
@@ -220,7 +220,7 @@ exports[`test Option: ink (false) 1`] = `
 exports[`test Option: label -- dark tone class 1`] = `
 "<a class=\"pe-button pe-text-button\" tabindex=\"0\">
 <div class=\"pe-button__content\">
-  <div class=\"pe-ripple pe-ripple--constrained\"></div>
+  <div class=\"pe-ripple\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
@@ -233,7 +233,7 @@ exports[`test Option: label -- dark tone class 1`] = `
 exports[`test Option: label 1`] = `
 "<a class=\"pe-button pe-text-button\" tabindex=\"0\">
 <div class=\"pe-button__content\">
-  <div class=\"pe-ripple pe-ripple--constrained\"></div>
+  <div class=\"pe-ripple\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
@@ -246,8 +246,7 @@ exports[`test Option: label 1`] = `
 exports[`test Option: ripple 1`] = `
 "<a class=\"pe-button pe-text-button\" tabindex=\"0\">
 <div class=\"pe-button__content\">
-  <div style=\"color: rgb(33, 150, 243);\" class=
-  \"pe-ripple pe-ripple--constrained\"></div>
+  <div style=\"color: rgb(33, 150, 243);\" class=\"pe-ripple\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
@@ -260,7 +259,7 @@ exports[`test Option: ripple 1`] = `
 exports[`test Option: router url (with hash) 1`] = `
 "<a class=\"pe-button pe-text-button\" tabindex=\"0\" href=\"#/shadow\">
 <div class=\"pe-button__content\">
-  <div class=\"pe-ripple pe-ripple--constrained\"></div>
+  <div class=\"pe-ripple\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
@@ -274,7 +273,7 @@ exports[`test Option: selected 1`] = `
 "<a class=\"pe-button pe-text-button pe-button--selected\" tabindex=
 \"0\">
 <div class=\"pe-button__content\">
-  <div class=\"pe-ripple pe-ripple--constrained\"></div>
+  <div class=\"pe-ripple\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
@@ -289,7 +288,7 @@ exports[`test Option: style (colors) 1`] = `
 <div style=
 \"background-color: rgb(239, 108, 0); color: rgb(255, 255, 255);\"
 class=\"pe-button__content\">
-  <div class=\"pe-ripple pe-ripple--constrained\"></div>
+  <div class=\"pe-ripple\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
@@ -302,7 +301,7 @@ class=\"pe-button__content\">
 exports[`test Option: tabindex 1`] = `
 "<a tabindex=\"3\" class=\"pe-button pe-text-button\">
 <div class=\"pe-button__content\">
-  <div class=\"pe-ripple pe-ripple--constrained\"></div>
+  <div class=\"pe-ripple\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
 </div></a>
@@ -312,7 +311,7 @@ exports[`test Option: tabindex 1`] = `
 exports[`test Option: tone "dark" -- dark tone class 1`] = `
 "<a class=\"pe-button pe-text-button pe-dark-tone\" tabindex=\"0\">
 <div class=\"pe-button__content\">
-  <div class=\"pe-ripple pe-ripple--constrained\"></div>
+  <div class=\"pe-ripple\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
@@ -325,7 +324,7 @@ exports[`test Option: tone "dark" -- dark tone class 1`] = `
 exports[`test Option: url (with oncreate) 1`] = `
 "<a class=\"pe-button pe-text-button\" tabindex=\"0\" href=\"#!/shadow\">
 <div class=\"pe-button__content\">
-  <div class=\"pe-ripple pe-ripple--constrained\"></div>
+  <div class=\"pe-ripple\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
@@ -338,7 +337,7 @@ exports[`test Option: url (with oncreate) 1`] = `
 exports[`test Option: wash (false) 1`] = `
 "<a class=\"pe-button pe-text-button\" tabindex=\"0\">
 <div class=\"pe-button__content\">
-  <div class=\"pe-ripple pe-ripple--constrained\"></div>
+  <div class=\"pe-ripple\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
     No wash
@@ -351,7 +350,7 @@ exports[`test Themed Button (colors) 1`] = `
 "<a class=\"pe-button pe-text-button tests-button-themed-button\"
 tabindex=\"0\">
 <div class=\"pe-button__content\">
-  <div class=\"pe-ripple pe-ripple--constrained\"></div>
+  <div class=\"pe-ripple\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
@@ -365,7 +364,7 @@ exports[`test Themed Button -- dark tone class 1`] = `
 "<a class=\"pe-button pe-text-button tests-button-themed-button\"
 tabindex=\"0\">
 <div class=\"pe-button__content\">
-  <div class=\"pe-ripple pe-ripple--constrained\"></div>
+  <div class=\"pe-ripple\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
@@ -379,7 +378,7 @@ exports[`test Themed Button blue on dark -- dark tone class 1`] = `
 "<a class=\"pe-button pe-text-button blue-on-dark-Button\" tabindex=
 \"0\">
 <div class=\"pe-button__content\">
-  <div class=\"pe-ripple pe-ripple--constrained\"></div>
+  <div class=\"pe-ripple\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
@@ -394,7 +393,7 @@ exports[`test Themed Button: (option: borders) -- dark tone class 1`] = `
 \"pe-button pe-text-button pe-button--borders tests-button-bordered-button\"
 tabindex=\"0\">
 <div class=\"pe-button__content\">
-  <div class=\"pe-ripple pe-ripple--constrained\"></div>
+  <div class=\"pe-ripple\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
@@ -409,7 +408,7 @@ exports[`test Themed Button: (option: borders) 1`] = `
 \"pe-button pe-text-button pe-button--borders tests-button-bordered-button\"
 tabindex=\"0\">
 <div class=\"pe-button__content\">
-  <div class=\"pe-ripple pe-ripple--constrained\"></div>
+  <div class=\"pe-ripple\"></div>
   <div class=\"pe-button__wash\"></div>
   <div class=\"pe-button__focus\"></div>
   <div class=\"pe-button__label\">
