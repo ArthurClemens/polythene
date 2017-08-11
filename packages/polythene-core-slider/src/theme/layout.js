@@ -67,6 +67,7 @@ export default (selector, componentVars) => {
           flex.selfCenter,
           mixin.defaultTransition("transform, background", ".200s"),
           {
+            transform: "scale(1)",
             userSelect: "none",
             width: thumbSize + "px",
             height: thumbSize + "px",

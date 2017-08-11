@@ -313,7 +313,8 @@ var genericTests = (function (_ref) {
 
   Slider$$1.theme(".slider-custom-icon", {
     color_light_thumb_on: "#f50057",
-    color_light_icon: "#fff"
+    color_light_icon: "#fff",
+    thumb_size: 18
   });
 
   Slider$$1.theme(".slider-custom-color", {

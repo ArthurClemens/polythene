@@ -149,6 +149,7 @@ var layout = (function (selector, componentVars) {
     },
 
     " .pe-slider__control": [flex.selfCenter, mixin.defaultTransition("transform, background", ".200s"), {
+      transform: "scale(1)",
       userSelect: "none",
       width: thumbSize + "px",
       height: thumbSize + "px",

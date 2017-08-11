@@ -13,8 +13,9 @@ export default ({ Slider, Icon, renderer: h }) => {
   const VolumeSlider = volumeSlider({ Slider, Icon, h });
 
   Slider.theme(".slider-custom-icon", {
-    color_light_thumb_on:       "#f50057",
-    color_light_icon: "#fff"
+    color_light_thumb_on: "#f50057",
+    color_light_icon:     "#fff",
+    thumb_size:           18
   });
 
   Slider.theme(".slider-custom-color", {
