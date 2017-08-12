@@ -95,7 +95,7 @@ Ripple.theme(".themed-ripple", {
   color_light:   "#F44336"
 })
 
-m(Ripple, {
+h(Ripple, {
   className: "themed-ripple"
 })
 ~~~

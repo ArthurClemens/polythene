@@ -336,7 +336,17 @@ export default class extends Component {
 
 ### Shadow
 
-Add `before: m(Shadow)` to add a drop shadow to the search field.
+To add a drop shadow to the search field:
+
+~~~jsx
+before={<Shadow/>}
+~~~
+
+or with hyperscript:
+
+~~~javascript
+before: h(Shadow)
+~~~
 
 ### Styling
 

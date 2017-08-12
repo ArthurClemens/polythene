@@ -246,7 +246,7 @@ const tabButtons = [
   { label: "More" }
 ]
 
-m("div",
+h("div",
   {
     style: {
       maxWidth: "400px",
@@ -256,7 +256,7 @@ m("div",
       height: "48px"
     },
   },
-  m(Tabs,
+  h(Tabs,
     {
       scrollable: true,
       scrollIconBackward: { svg: h.trust(arrowBackSVG) },
@@ -310,10 +310,10 @@ Some style attributes can be set using option `style`. The tab button styles can
 />
 ~~~
 
-or:
+or with hyperscript:
 
 ~~~javascript
-m(Tabs, {
+h(Tabs, {
   all: {
     style: {
       backgroundColor: "#EF6C00",

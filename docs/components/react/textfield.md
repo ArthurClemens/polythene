@@ -40,7 +40,7 @@ To create a floating hint label that moves up when the field gets focus:
 <TextField label="Name" floatingLabel />
 ~~~
 
-or:
+or with hyperscript:
 
 ~~~javascript
 h(TextField, {
@@ -59,7 +59,7 @@ A more compact field with floating hint label:
 />
 ~~~
 
-or:
+or with hyperscript:
 
 ~~~javascript
 h(TextField, {
@@ -80,7 +80,7 @@ Full-width field, compact field and with floating hint label:
 />
 ~~~
 
-or:
+or with hyperscript:
 
 ~~~javascript
 h(TextField, {
@@ -101,7 +101,7 @@ Create a multi-line field (textarea) with `multiLine`:
 />
 ~~~
 
-or:
+or with hyperscript:
 
 ~~~javascript
 h(TextField, {
@@ -122,7 +122,7 @@ Pass `help` to create a help text below the field:
 />
 ~~~
 
-or:
+or with hyperscript:
 
 ~~~javascript
 h(TextField, {
@@ -141,7 +141,7 @@ To show the help text only on focus, use `focusHelp`:
 />
 ~~~
 
-or:
+or with hyperscript:
 
 ~~~javascript
 h(TextField, {
@@ -166,7 +166,7 @@ Passing `required` adds a mark `*` to the label, and uses HTML5 field validation
 />
 ~~~
 
-or:
+or with hyperscript:
 
 ~~~javascript
 h(TextField, {
@@ -242,7 +242,7 @@ Adding `counter` with a value adds a live counter below the field:
 />
 ~~~
 
-or:
+or with hyperscript:
 
 ~~~javascript
 h(TextField, {
@@ -264,10 +264,10 @@ To limit the input to 30 characters, add constraint `maxlength`:
 />
 ~~~
 
-or:
+or with hyperscript:
 
 ~~~javascript
-m(TextField, {
+h(TextField, {
   label: "Your Name",
   counter: 30,
   maxlength: 30,
@@ -287,7 +287,7 @@ To read the input value, use `onChange`:
 />
 ~~~
 
-or:
+or with hyperscript:
 
 ~~~javascript
 h(TextField, {
@@ -304,7 +304,7 @@ To programmatically set the input value, pass `value`:
 />
 ~~~
 
-or:
+or with hyperscript:
 
 ~~~javascript
 h(TextField, {
@@ -331,7 +331,7 @@ Reading and setting the focus state is similar to handling the input value:
 })
 ~~~
 
-or:
+or with hyperscript:
 
 ~~~javascript
 h(TextField, {

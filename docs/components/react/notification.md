@@ -16,7 +16,7 @@ The Notification component itself does not accept any appearance options. Instea
 
 ### Notification spawner
 
-Notifications will be spawned from `m(Notification)`. To show notification messages, use `Notification.show()` - more on that later.
+Notifications will be spawned from `<Notification />` (hyperscript: `h(Notification)`). To show notification messages, use `Notification.show()` - more on that later.
 
 Because a notification should float on top of everything else, outside of the context of the caller, it can be considered a global component. It is best placed in the root view, so that it is not obstructed by other components:
 
@@ -64,7 +64,7 @@ If you are using multiple spawners, differentiate them with option `spawn`:
 <Notification spawn="notifs" />
 ~~~
 
-or:
+or with hyperscript:
 
 ~~~javascript
 h(Notification, { spawn: "notifs" })

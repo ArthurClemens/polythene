@@ -112,7 +112,7 @@ For further control over the `primary` content, you can pass an array to `primar
 import { Card, IconButton } from "polythene-react"
 import { addLayoutStyles } from "polythene-utilities"
 
-addLayoutStyles() // to use m(".flex")
+addLayoutStyles() // to use className="flex"
 
 <Card
   content={[
@@ -126,7 +126,7 @@ addLayoutStyles() // to use m(".flex")
               content: <img src="img/large.jpg" />
             }
           },
-          m(".flex"),
+          <div className="flex" />
           {
             actions: {
               layout: "vertical",
@@ -207,7 +207,7 @@ h(Card, {
     },
     {
       media: {
-        content: m("img", {
+        content: h("img", {
           src: "img/large.jpg"
         })
       }
@@ -221,10 +221,10 @@ h(Card, {
     {
       actions: {
         content: [
-          m(button, {
+          h(button, {
             label: "Action 1"
           }),
-          m(button, {
+          h(button, {
             label: "Action 2"
           })
         ]
@@ -253,7 +253,7 @@ h(Card, {
           media: {
             ratio: ratio,
             size: "large",
-            content: m("img", {
+            content: h("img", {
               src: "img/large.jpg"
             })
           }
@@ -308,7 +308,7 @@ h(Card, {
   content: [{
     media: {
       origin: "start",
-      content: m("img", {
+      content: h("img", {
         src: "img/large.png"
       })
     }
@@ -363,7 +363,7 @@ h(Card, {
   content: [{
     media: {
       ratio: "square",
-      content: m("img", {
+      content: h("img", {
         src: "img/large.jpg"
       }),
       overlay: {
@@ -379,10 +379,10 @@ h(Card, {
           {
             actions: {
               content: [
-                m(button, {
+                h(Button, {
                   label: "Action 1"
                 }),
-                m(button, {
+                h(Button, {
                   label: "Action 2"
                 })
               ]
@@ -443,7 +443,7 @@ h(Card, {
       media: {
         ratio: "square",
         size,
-        content: m("img", {
+        content: h("img", {
           src: "img/large.jpg"
         })
       }

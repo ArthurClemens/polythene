@@ -37,7 +37,7 @@ import { MaterialDesignSpinner as Spinner } from "polythene-react"
 <Spinner show />
 ~~~
 
-or:
+or with hyperscript:
 
 ~~~javascript
 import { renderer as h, MaterialDesignSpinner as Spinner } from "polythene-react"

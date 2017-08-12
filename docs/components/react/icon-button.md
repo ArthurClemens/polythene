@@ -93,7 +93,7 @@ Disable hover and ripple effects:
 or with hyperscript:
 
 ~~~javascript
-m(IconButton, {
+h(IconButton, {
   icon: { svg: m.trust(starsSVG) },
   wash: false,
   ink: false

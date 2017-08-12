@@ -64,7 +64,7 @@ When you are using multiple spawners, differentiate them with option `spawn`:
 <Dialog spawn="special" />
 ~~~
 
-or:
+or with hyperscript:
 
 ~~~javascript
 h(Dialog, { spawn: "special" })
