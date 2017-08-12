@@ -30,8 +30,8 @@ export const StateComponent = ({
   };
 
   const oncreate = vnode => {
-    onMount(vnode);
     vnode._mounted = true;
+    onMount(vnode);
   };
 
   const render = vnode => {

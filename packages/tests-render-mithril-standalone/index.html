@@ -138,8 +138,15 @@ const app = {
           m("h2", "TextField"),
           m(".component", 
             m(TextField, {
-              label: "Name",
-              floatingLabel: true
+              defaultValue: "abC",
+              validate: value => 
+                value !== value.toLowerCase()
+                  ? ({
+                    valid: false,
+                    error: "Only use lowercase characters."
+                  })
+                  : null,
+              validateAtStart: true
             })
           )
         ]

@@ -265,8 +265,8 @@ var StateComponent = function StateComponent(_ref) {
   };
 
   var oncreate = function oncreate(vnode) {
-    onMount(vnode);
     vnode._mounted = true;
+    onMount(vnode);
   };
 
   var render = function render(vnode) {

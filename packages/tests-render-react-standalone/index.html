@@ -126,8 +126,15 @@ const App = () => (
       <h2>TextField</h2>
       <div className="component">
         <TextField
-          label="Name"
-          floatingLabel
+          defaultValue="abC"
+          validate={value => 
+            value !== value.toLowerCase()
+              ? ({
+                valid: false,
+                error: "Only use lowercase characters."
+              })
+              : null}
+          validateAtStart
         />
       </div>
     </div>
