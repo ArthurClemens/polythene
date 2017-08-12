@@ -267,21 +267,9 @@ var genericTests = (function (_ref) {
 
   var threeButtons = [{ label: "New" }, { label: "My Favorites" }, { label: "Saved" }];
 
-  var menuButtons = [{
-    label: "New"
-  }, {
-    label: "Favs"
-  }, {
-    label: "Saved"
-  }];
+  var menuButtons = [{ label: "New" }, { label: "Favs" }, { label: "Saved" }];
 
-  var longLabels = [{
-    label: "New"
-  }, {
-    label: "A very long label that does not fit"
-  }, {
-    label: "Saved"
-  }];
+  var longLabels = [{ label: "New" }, { label: "A very long label that runs on two lines" }, { label: "Saved" }];
 
   var longList = [{ label: "Web" }, { label: "Shopping" }, { label: "Videos" }, { label: "Images" }, { label: "Books" }, { label: "More" }];
 

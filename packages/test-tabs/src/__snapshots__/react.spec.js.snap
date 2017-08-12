@@ -117,7 +117,7 @@ exports[`test Long labels: wrap to second line 1`] = `
     <Tab
       animateOnTap={true}
       index={1}
-      label="A very long label that does not fit"
+      label="A very long label that runs on two lines"
       onSelect={[Function]}
       register={[Function]}
       selected={false} />

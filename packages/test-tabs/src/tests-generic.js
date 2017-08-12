@@ -39,27 +39,15 @@ export default ({ renderer: h, Tabs }) => {
   ];
 
   const menuButtons = [
-    {
-      label: "New"
-    },
-    {
-      label: "Favs"
-    },
-    {
-      label: "Saved"
-    }
+    { label: "New" },
+    { label: "Favs" },
+    { label: "Saved" }
   ];
 
   const longLabels = [
-    {
-      label: "New"
-    },
-    {
-      label: "A very long label that does not fit"
-    },
-    {
-      label: "Saved"
-    }
+    { label: "New" },
+    { label: "A very long label that runs on two lines" },
+    { label: "Saved" }
   ];
 
   const longList = [

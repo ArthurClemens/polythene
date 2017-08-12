@@ -14,6 +14,8 @@ Tab buttons are passed as a child node (hyperscript only), or with option `tabs`
 
 #### With JSX
 
+<a href="https://jsfiddle.net/ArthurClemens/zoppbr7t/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+
 ~~~jsx
 import React from "react"
 import { Tabs } from "polythene-react"
@@ -24,6 +26,8 @@ const tabButtons = []
 ~~~
 
 #### With hyperscript
+
+<a href="https://jsfiddle.net/ArthurClemens/hd68eu6n/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 ~~~javascript
 import { renderer as h, Tabs } from "polythene-react"
@@ -42,6 +46,8 @@ h(Tabs,
   tabButtons
 )
 ~~~
+
+### Tab options
 
 Each tab button is passed as an option object, and can show a text label, an icon, or the combination of the two.
 

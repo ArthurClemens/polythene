@@ -275,7 +275,7 @@ exports[`test Long labels: wrap to second line 1`] = `
       <div class=\"pe-button__focus\"></div>
       <div class=\"pe-tabs__tab-content\">
         <div class=\"pe-button__label\">
-          <span>A very long label that does not fit</span>
+          <span>A very long label that runs on two lines</span>
         </div>
       </div>
     </div></a><a class=\"pe-button pe-text-button pe-tabs__tab\"
