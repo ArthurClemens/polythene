@@ -254,6 +254,11 @@ exports[`test Option: permanent (JSX) -- Material Design Spinner 1`] = `
   permanent={true} />
 `;
 
+exports[`test Option: permanent (JSX) -- iOS Spinner 1`] = `
+<IOSSpinner
+  permanent={true} />
+`;
+
 exports[`test Option: permanent -- Material Design Spinner 1`] = `
 <SpinnerToggle
   instance={[Function]}
@@ -451,7 +456,7 @@ exports[`test Option: size -- iOS Spinner 1`] = `
           "marginRight": "20px",
         }
       }>
-      <iOSSpinner
+      <IOSSpinner
         show={false}
         size="small" />
     </div>
@@ -461,7 +466,7 @@ exports[`test Option: size -- iOS Spinner 1`] = `
           "marginRight": "20px",
         }
       }>
-      <iOSSpinner
+      <IOSSpinner
         show={false}
         size="regular" />
     </div>
@@ -471,7 +476,7 @@ exports[`test Option: size -- iOS Spinner 1`] = `
           "marginRight": "20px",
         }
       }>
-      <iOSSpinner
+      <IOSSpinner
         show={false}
         size="medium" />
     </div>
@@ -481,7 +486,7 @@ exports[`test Option: size -- iOS Spinner 1`] = `
           "marginRight": "20px",
         }
       }>
-      <iOSSpinner
+      <IOSSpinner
         show={false}
         size="large" />
     </div>
@@ -491,7 +496,7 @@ exports[`test Option: size -- iOS Spinner 1`] = `
           "marginRight": "20px",
         }
       }>
-      <iOSSpinner
+      <IOSSpinner
         show={false}
         size="fab" />
     </div>
@@ -566,7 +571,7 @@ exports[`test Option: style (color) -- iOS Spinner 1`] = `
           "marginRight": "20px",
         }
       }>
-      <iOSSpinner
+      <IOSSpinner
         show={false}
         singleColor={true}
         style={
@@ -641,7 +646,7 @@ exports[`test Theme (color) -- iOS Spinner 1`] = `
           "marginRight": "20px",
         }
       }>
-      <iOSSpinner
+      <IOSSpinner
         className="tests-spinner-themed-ios-spinner"
         show={false} />
     </div>
@@ -676,7 +681,7 @@ exports[`test iOS Spinner -- dark tone class -- Material Design Spinner 1`] = `
           "marginRight": "20px",
         }
       }>
-      <iOSSpinner
+      <IOSSpinner
         show={false} />
     </div>
   </div>
