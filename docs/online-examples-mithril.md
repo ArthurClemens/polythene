@@ -33,6 +33,7 @@ Try out Polythene in JSFiddles.
   * [Menu opening variations](https://jsfiddle.net/ArthurClemens/0jccysmx/)
 * [Ripple](https://jsfiddle.net/ArthurClemens/rcyn8f64/)
 * [Shadow](https://jsfiddle.net/ArthurClemens/87wjreeu/)
+* [Spinner](https://jsfiddle.net/ArthurClemens/hnzvnhxa/)
 * [SVG](https://jsfiddle.net/ArthurClemens/wu1v74yk/)
 * [Tabs](https://jsfiddle.net/ArthurClemens/dos13t3z/)
 * [Toolbar](https://jsfiddle.net/ArthurClemens/t5hhcuxn/)

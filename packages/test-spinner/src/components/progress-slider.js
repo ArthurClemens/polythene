@@ -58,7 +58,10 @@ export default ({ renderer: h, keys: k, Spinner, RaisedButton, Slider, animated,
       showActivateButton && h(RaisedButton, {
         label: "Run",
         events: {
-          [k.onclick]: () => (state.start(null), window.requestAnimationFrame(state.step))
+          [k.onclick]: () => (
+            state.start(null),
+            window.requestAnimationFrame(state.step)
+          )
         }
       })
     ]);

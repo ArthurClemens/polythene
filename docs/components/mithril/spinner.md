@@ -10,6 +10,8 @@
 
 ## Usage
 
+<a href="https://jsfiddle.net/ArthurClemens/hnzvnhxa/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+
 A typical Material Design (indeterminate) spinner:
 
 ~~~javascript
@@ -19,7 +21,7 @@ import { MaterialDesignSpinner as Spinner } from "polythene-mithril"
 A typical iOS (indeterminate) spinner:
 
 ~~~javascript
-import { iOSSpinner as Spinner } from "polythene-mithril"
+import { IOSSpinner as Spinner } from "polythene-mithril"
 ~~~
 
 A Material Design determinate spinner:

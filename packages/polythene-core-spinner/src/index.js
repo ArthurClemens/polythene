@@ -7,5 +7,5 @@ export { coreMaterialDesignSpinner };
 import * as coreMaterialDesignProgressSpinner from "./material-design-progress";
 export { coreMaterialDesignProgressSpinner };
 
-import * as coreiOSSpinner from "./ios";
-export { coreiOSSpinner };
+import * as coreIOSSpinner from "./ios";
+export { coreIOSSpinner };

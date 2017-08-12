@@ -2,7 +2,7 @@ import opener from "./components/opener";
 import progressOpener from "./components/progress-opener";
 import progressSlider from "./components/progress-slider";
 
-export default ({ MaterialDesignSpinner, MaterialDesignProgressSpinner, iOSSpinner, RaisedButton, Slider, renderer, keys }) => {
+export default ({ MaterialDesignSpinner, MaterialDesignProgressSpinner, IOSSpinner, RaisedButton, Slider, renderer, keys }) => {
 
   MaterialDesignSpinner.theme(".tests-spinner-themed-md-spinner", {
     color_light_1: "orange",
@@ -11,7 +11,7 @@ export default ({ MaterialDesignSpinner, MaterialDesignProgressSpinner, iOSSpinn
     color_light_4: "red",
   });
 
-  iOSSpinner.theme(".tests-spinner-themed-ios-spinner", {
+  IOSSpinner.theme(".tests-spinner-themed-ios-spinner", {
     color_light: "green",
     color_dark:  "yellow"
   });
@@ -103,7 +103,7 @@ export default ({ MaterialDesignSpinner, MaterialDesignProgressSpinner, iOSSpinn
         renderer,
         keys,
         RaisedButton,
-        Spinner: iOSSpinner,
+        Spinner: IOSSpinner,
         spinners: [
           { size: "small" },
           { size: "regular" },
@@ -120,7 +120,7 @@ export default ({ MaterialDesignSpinner, MaterialDesignProgressSpinner, iOSSpinn
         renderer,
         keys,
         RaisedButton,
-        Spinner: iOSSpinner,
+        Spinner: IOSSpinner,
         spinners: [
           { className: "tests-spinner-themed-ios-spinner" }
         ]
@@ -133,7 +133,7 @@ export default ({ MaterialDesignSpinner, MaterialDesignProgressSpinner, iOSSpinn
         renderer,
         keys,
         RaisedButton,
-        Spinner: iOSSpinner,
+        Spinner: IOSSpinner,
         spinners: [
           {
             singleColor: true,
@@ -214,7 +214,7 @@ export default ({ MaterialDesignSpinner, MaterialDesignProgressSpinner, iOSSpinn
         renderer,
         keys,
         RaisedButton,
-        Spinner: iOSSpinner
+        Spinner: IOSSpinner
       })
     }
   ];

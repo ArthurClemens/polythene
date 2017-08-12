@@ -1074,4 +1074,4 @@ var index$3 = Object.freeze({
 	createProps: createProps$3
 });
 
-export { index as coreBaseSpinner, index$1 as coreMaterialDesignSpinner, index$2 as coreMaterialDesignProgressSpinner, index$3 as coreiOSSpinner };
+export { index as coreBaseSpinner, index$1 as coreMaterialDesignSpinner, index$2 as coreMaterialDesignProgressSpinner, index$3 as coreIOSSpinner };

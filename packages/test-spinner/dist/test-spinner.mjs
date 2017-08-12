@@ -1,5 +1,5 @@
-import { MaterialDesignProgressSpinner, MaterialDesignSpinner, RaisedButton, Slider, iOSSpinner, keys, renderer } from 'polythene-mithril';
-import { MaterialDesignProgressSpinner as MaterialDesignProgressSpinner$1, MaterialDesignSpinner as MaterialDesignSpinner$1, RaisedButton as RaisedButton$1, Slider as Slider$1, iOSSpinner as iOSSpinner$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
+import { IOSSpinner, MaterialDesignProgressSpinner, MaterialDesignSpinner, RaisedButton, Slider, keys, renderer } from 'polythene-mithril';
+import { IOSSpinner as IOSSpinner$1, MaterialDesignProgressSpinner as MaterialDesignProgressSpinner$1, MaterialDesignSpinner as MaterialDesignSpinner$1, RaisedButton as RaisedButton$1, Slider as Slider$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 
 function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
@@ -380,7 +380,7 @@ var progressSlider = (function (_ref) {
 var genericTests = (function (_ref) {
   var MaterialDesignSpinner$$1 = _ref.MaterialDesignSpinner,
       MaterialDesignProgressSpinner$$1 = _ref.MaterialDesignProgressSpinner,
-      iOSSpinner$$1 = _ref.iOSSpinner,
+      IOSSpinner$$1 = _ref.IOSSpinner,
       RaisedButton$$1 = _ref.RaisedButton,
       Slider$$1 = _ref.Slider,
       renderer$$1 = _ref.renderer,
@@ -394,7 +394,7 @@ var genericTests = (function (_ref) {
     color_light_4: "red"
   });
 
-  iOSSpinner$$1.theme(".tests-spinner-themed-ios-spinner", {
+  IOSSpinner$$1.theme(".tests-spinner-themed-ios-spinner", {
     color_light: "green",
     color_dark: "yellow"
   });
@@ -461,7 +461,7 @@ var genericTests = (function (_ref) {
       renderer: renderer$$1,
       keys: keys$$1,
       RaisedButton: RaisedButton$$1,
-      Spinner: iOSSpinner$$1,
+      Spinner: IOSSpinner$$1,
       spinners: [{ size: "small" }, { size: "regular" }, { size: "medium" }, { size: "large" }, { size: "fab" }]
     })
   }, {
@@ -471,7 +471,7 @@ var genericTests = (function (_ref) {
       renderer: renderer$$1,
       keys: keys$$1,
       RaisedButton: RaisedButton$$1,
-      Spinner: iOSSpinner$$1,
+      Spinner: IOSSpinner$$1,
       spinners: [{ className: "tests-spinner-themed-ios-spinner" }]
     })
   }, {
@@ -481,7 +481,7 @@ var genericTests = (function (_ref) {
       renderer: renderer$$1,
       keys: keys$$1,
       RaisedButton: RaisedButton$$1,
-      Spinner: iOSSpinner$$1,
+      Spinner: IOSSpinner$$1,
       spinners: [{
         singleColor: true,
         style: {
@@ -553,7 +553,7 @@ var genericTests = (function (_ref) {
       renderer: renderer$$1,
       keys: keys$$1,
       RaisedButton: RaisedButton$$1,
-      Spinner: iOSSpinner$$1
+      Spinner: IOSSpinner$$1
     })
   }];
 });
@@ -562,7 +562,7 @@ var mithrilTests = function mithrilTests() {
   return [];
 };
 
-var testsMithril = [].concat(genericTests({ RaisedButton: RaisedButton, iOSSpinner: iOSSpinner, MaterialDesignSpinner: MaterialDesignSpinner, MaterialDesignProgressSpinner: MaterialDesignProgressSpinner, Slider: Slider, renderer: renderer, keys: keys })).concat(mithrilTests({ RaisedButton: RaisedButton, iOSSpinner: iOSSpinner, MaterialDesignSpinner: MaterialDesignSpinner, MaterialDesignProgressSpinner: MaterialDesignProgressSpinner, Slider: Slider, renderer: renderer, keys: keys }));
+var testsMithril = [].concat(genericTests({ RaisedButton: RaisedButton, IOSSpinner: IOSSpinner, MaterialDesignSpinner: MaterialDesignSpinner, MaterialDesignProgressSpinner: MaterialDesignProgressSpinner, Slider: Slider, renderer: renderer, keys: keys })).concat(mithrilTests({ RaisedButton: RaisedButton, IOSSpinner: IOSSpinner, MaterialDesignSpinner: MaterialDesignSpinner, MaterialDesignProgressSpinner: MaterialDesignProgressSpinner, Slider: Slider, renderer: renderer, keys: keys }));
 
 /*
 object-assign
@@ -4433,9 +4433,14 @@ var reactTests = function reactTests(_ref) {
     component: function component() {
       return react.createElement(MaterialDesignSpinner$1, { permanent: true });
     }
+  }, {
+    name: "Option: permanent (JSX) -- iOS Spinner",
+    component: function component() {
+      return react.createElement(IOSSpinner$1, { permanent: true });
+    }
   }];
 };
 
-var testsReact = [].concat(genericTests({ RaisedButton: RaisedButton$1, iOSSpinner: iOSSpinner$1, MaterialDesignSpinner: MaterialDesignSpinner$1, MaterialDesignProgressSpinner: MaterialDesignProgressSpinner$1, Slider: Slider$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests({ RaisedButton: RaisedButton$1, iOSSpinner: iOSSpinner$1, MaterialDesignSpinner: MaterialDesignSpinner$1, MaterialDesignProgressSpinner: MaterialDesignProgressSpinner$1, Slider: Slider$1, renderer: renderer$1, keys: keys$1 }));
+var testsReact = [].concat(genericTests({ RaisedButton: RaisedButton$1, IOSSpinner: IOSSpinner$1, MaterialDesignSpinner: MaterialDesignSpinner$1, MaterialDesignProgressSpinner: MaterialDesignProgressSpinner$1, Slider: Slider$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests({ RaisedButton: RaisedButton$1, IOSSpinner: IOSSpinner$1, MaterialDesignSpinner: MaterialDesignSpinner$1, MaterialDesignProgressSpinner: MaterialDesignProgressSpinner$1, Slider: Slider$1, renderer: renderer$1, keys: keys$1 }));
 
 export { testsMithril as mithrilTests, testsReact as reactTests };

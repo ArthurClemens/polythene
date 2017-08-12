@@ -6,7 +6,7 @@ Available themed spinners:
 
 * Indeterminate spinners:
   * `MaterialDesignSpinner`
-  * `iOSSpinner`
+  * `IOSSpinner`
 * Determinate spinner:
   * `MaterialDesignProgressSpinner`
 
@@ -59,7 +59,7 @@ Available themed spinners:
 
 ### Indeterminate options
 
-For `MaterialDesignSpinner` and `iOSSpinner`:
+For `MaterialDesignSpinner` and `IOSSpinner`:
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |

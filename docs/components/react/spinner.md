@@ -19,7 +19,7 @@ import { MaterialDesignSpinner as Spinner } from "polythene-react"
 A typical iOS (indeterminate) spinner:
 
 ~~~javascript
-import { iOSSpinner as Spinner } from "polythene-react"
+import { IOSSpinner as Spinner } from "polythene-react"
 ~~~
 
 A Material Design determinate spinner:
@@ -28,7 +28,9 @@ A Material Design determinate spinner:
 import { MaterialDesignProgressSpinner as Spinner } from "polythene-react"
 ~~~
 
-Display the Spinner:
+### Displaying the Spinner
+
+#### With JSX
 
 ~~~jsx
 import React from "react"
@@ -37,7 +39,9 @@ import { MaterialDesignSpinner as Spinner } from "polythene-react"
 <Spinner show />
 ~~~
 
-or with hyperscript:
+#### With hyperscript
+
+<a href="https://jsfiddle.net/ArthurClemens/j74x8b9w/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 ~~~javascript
 import { renderer as h, MaterialDesignSpinner as Spinner } from "polythene-react"

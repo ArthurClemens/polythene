@@ -1,6 +1,6 @@
 import { StateComponent, renderer } from 'polythene-react-base';
 import { Conditional } from 'polythene-core';
-import { coreBaseSpinner, coreMaterialDesignProgressSpinner, coreMaterialDesignSpinner, coreiOSSpinner } from 'polythene-core-spinner';
+import { coreBaseSpinner, coreIOSSpinner, coreMaterialDesignProgressSpinner, coreMaterialDesignSpinner } from 'polythene-core-spinner';
 import { Shadow } from 'polythene-react-shadow';
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -16,21 +16,21 @@ BaseSpinner.classes = coreBaseSpinner.classes;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var SpinnerInstance = StateComponent(_extends({}, coreiOSSpinner, { component: BaseSpinner }));
+var SpinnerInstance = StateComponent(_extends({}, coreIOSSpinner, { component: BaseSpinner }));
 
 var SpinnerToggle = StateComponent(Conditional);
 SpinnerToggle.displayName = "SpinnerToggle";
 
-var iOSSpinner = function iOSSpinner(props) {
+var IOSSpinner = function IOSSpinner(props) {
   return renderer(SpinnerToggle, _extends({}, props, {
     placeholderClassName: BaseSpinner.classes.placeholder,
     instance: SpinnerInstance
   }));
 };
 
-iOSSpinner.theme = coreiOSSpinner.theme;
-iOSSpinner.classes = coreiOSSpinner.classes;
-iOSSpinner.displayName = "iOSSpinner";
+IOSSpinner.theme = coreIOSSpinner.theme;
+IOSSpinner.classes = coreIOSSpinner.classes;
+IOSSpinner.displayName = "IOSSpinner";
 
 var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -68,4 +68,4 @@ MaterialDesignProgressSpinner.theme = coreMaterialDesignProgressSpinner.theme;
 MaterialDesignProgressSpinner.classes = coreMaterialDesignProgressSpinner.classes;
 MaterialDesignProgressSpinner.displayName = "MaterialDesignProgressSpinner";
 
-export { iOSSpinner, MaterialDesignSpinner, MaterialDesignProgressSpinner };
+export { IOSSpinner, MaterialDesignSpinner, MaterialDesignProgressSpinner };

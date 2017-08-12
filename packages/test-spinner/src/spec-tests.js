@@ -1,5 +1,5 @@
 
-export default ({ MaterialDesignSpinner, iOSSpinner, renderer: h }) => {
+export default ({ MaterialDesignSpinner, IOSSpinner, renderer: h }) => {
   return [
     {
       name: "No options",
@@ -52,7 +52,7 @@ export default ({ MaterialDesignSpinner, iOSSpinner, renderer: h }) => {
 
     {
       name: "No options -- iOS Spinner",
-      component: iOSSpinner,
+      component: IOSSpinner,
       attrs: {
         permanent: true
       }
@@ -60,7 +60,7 @@ export default ({ MaterialDesignSpinner, iOSSpinner, renderer: h }) => {
     
     {
       name: "Option: content -- iOS Spinner",
-      component: iOSSpinner,
+      component: IOSSpinner,
       attrs: {
         content: h("span", {key: "content"}, "Content"),
         permanent: true
@@ -68,7 +68,7 @@ export default ({ MaterialDesignSpinner, iOSSpinner, renderer: h }) => {
     },
     {
       name: "Option: id -- iOS Spinner",
-      component: iOSSpinner,
+      component: IOSSpinner,
       attrs: {
         id: "id-x",
         permanent: true
@@ -76,7 +76,7 @@ export default ({ MaterialDesignSpinner, iOSSpinner, renderer: h }) => {
     },
     {
       name: "Option: class -- iOS Spinner",
-      component: iOSSpinner,
+      component: IOSSpinner,
       attrs: {
         className: "class-x",
         permanent: true
@@ -84,7 +84,7 @@ export default ({ MaterialDesignSpinner, iOSSpinner, renderer: h }) => {
     },
     {
       name: "Option: className -- iOS Spinner",
-      component: iOSSpinner,
+      component: IOSSpinner,
       attrs: {
         className: "className-x",
         permanent: true
@@ -92,7 +92,7 @@ export default ({ MaterialDesignSpinner, iOSSpinner, renderer: h }) => {
     },
     {
       name: "Option: element -- iOS Spinner",
-      component: iOSSpinner,
+      component: IOSSpinner,
       attrs: {
         element: "span",
         permanent: true
