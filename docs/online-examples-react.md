@@ -16,8 +16,9 @@ Try out Polythene in JSFiddles.
   * [Icon Button](https://jsfiddle.net/ArthurClemens/xuo1gow5/)
   * [Raised Button](https://jsfiddle.net/ArthurClemens/sbtonwbf/)
 * [Card](https://jsfiddle.net/ArthurClemens/dhq3cLrv/)
-* [Dialog](https://jsfiddle.net/ArthurClemens/m08o291L/)
-  * [Full screen](https://jsfiddle.net/ArthurClemens/npq4phf3/)
+* Dialog
+  * [Dialog layout, styling and opening](https://jsfiddle.net/ArthurClemens/m08o291L/)
+  * [Full screen dialog](https://jsfiddle.net/ArthurClemens/npq4phf3/)
   * [Dynamic content](https://jsfiddle.net/ArthurClemens/1fgh0bgt/)
 * [Icon](https://jsfiddle.net/ArthurClemens/ep9pf5wp/)
 * Inputs and Controls
@@ -27,6 +28,9 @@ Try out Polythene in JSFiddles.
   * [Switch](https://jsfiddle.net/ArthurClemens/orqdxd4a/)
 * [List](https://jsfiddle.net/ArthurClemens/yzba5Lvn/)  
 * [List Tile](https://jsfiddle.net/ArthurClemens/gmdcvjeL/)
+* Menu
+  * [Menu layout and styling](https://jsfiddle.net/ArthurClemens/gta0c3te/)
+  * [Menu opening variations](https://jsfiddle.net/ArthurClemens/Lm1o6f9y/)
 * [Ripple](https://jsfiddle.net/ArthurClemens/brx9wdhv/)
 * [Shadow](https://jsfiddle.net/ArthurClemens/uej4sw3q/)
 * [SVG](https://jsfiddle.net/ArthurClemens/qm31tx7b/)
@@ -56,6 +60,9 @@ Try out Polythene in JSFiddles.
   * [Switch](https://jsfiddle.net/ArthurClemens/0eaeadbm/)
 * [List](https://jsfiddle.net/ArthurClemens/3vdfmg8p/)
 * [List Tile](https://jsfiddle.net/ArthurClemens/mc9kaqgc/)
+* Menu
+  * [Menu layout and styling](https://jsfiddle.net/ArthurClemens/umrnvm13/)
+  * [Menu opening variations](https://jsfiddle.net/ArthurClemens/fzcys56b/)
 * [Ripple](https://jsfiddle.net/ArthurClemens/L0e0bb68/)
 * [Shadow](https://jsfiddle.net/ArthurClemens/ohuxgfef/)
 * [SVG](https://jsfiddle.net/ArthurClemens/3v5v5kdb/)

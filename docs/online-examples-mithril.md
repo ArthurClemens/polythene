@@ -14,8 +14,9 @@ Try out Polythene in JSFiddles.
   * [Icon Button](https://jsfiddle.net/ArthurClemens/xafv074k/)
   * [Raised Button](https://jsfiddle.net/ArthurClemens/e6werwgv/)
 * [Card](https://jsfiddle.net/ArthurClemens/47uy6e1w/)
-* [Dialog](https://jsfiddle.net/ArthurClemens/t4uy26Lb/)
-  * [Full screen](https://jsfiddle.net/ArthurClemens/v4uhjnyx/)
+* Dialog
+  * [Dialog layout, styling and opening](https://jsfiddle.net/ArthurClemens/t4uy26Lb/)
+  * [Full screen dialog](https://jsfiddle.net/ArthurClemens/v4uhjnyx/)
   * [Dynamic content](https://jsfiddle.net/ArthurClemens/0g6010eu/)
 * [Icon](https://jsfiddle.net/ArthurClemens/ubzhapwy/)
 * Inputs and Controls
@@ -26,6 +27,9 @@ Try out Polythene in JSFiddles.
   * [Switch](https://jsfiddle.net/ArthurClemens/70bejjr8/)
 * [List](https://jsfiddle.net/ArthurClemens/8k7gg3va/)  
 * [List Tile](https://jsfiddle.net/ArthurClemens/eyksxemo/)
+* Menu
+  * [Menu layout and styling](https://jsfiddle.net/ArthurClemens/431659xp/)
+  * [Menu opening variations](https://jsfiddle.net/ArthurClemens/0jccysmx/)
 * [Ripple](https://jsfiddle.net/ArthurClemens/rcyn8f64/)
 * [Shadow](https://jsfiddle.net/ArthurClemens/87wjreeu/)
 * [SVG](https://jsfiddle.net/ArthurClemens/wu1v74yk/)

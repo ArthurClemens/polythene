@@ -14,6 +14,8 @@ A simple, permanently visible menu:
 
 #### With JSX
 
+<a href="https://jsfiddle.net/ArthurClemens/gta0c3te/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+
 ~~~jsx
 import React from "react"
 import { Menu, List, ListTile } from "polythene-react"
@@ -28,14 +30,16 @@ import { Menu, List, ListTile } from "polythene-react"
 
 #### With hyperscript
 
+<a href="https://jsfiddle.net/ArthurClemens/umrnvm13/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+
 ~~~javascript
 import { renderer as h, Menu, List, ListTile } from "polythene-react"
 
-m(Menu, {
+h(Menu, {
   permanent: true,
-  content: m(List, [
-    m(ListTile, { title: "Yes" }),
-    m(ListTile, { title: "No" })
+  content: h(List, [
+    h(ListTile, { title: "Yes" }),
+    h(ListTile, { title: "No" })
   ])
 })
 ~~~
@@ -54,6 +58,8 @@ A number of elements must play together:
 Because we are using state, this is best created with a custom component where we can store the "menu open" state.
 
 #### With JSX
+
+<a href="https://jsfiddle.net/ArthurClemens/Lm1o6f9y/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 ~~~jsx
 import React, { Component } from "react"
@@ -97,6 +103,8 @@ export default class extends Component {
 ~~~
 
 #### With hyperscript
+
+<a href="https://jsfiddle.net/ArthurClemens/fzcys56b/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 ~~~javascript
 import React, { Component } from "react"

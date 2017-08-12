@@ -10,6 +10,8 @@
 
 ## Usage
 
+<a href="https://jsfiddle.net/ArthurClemens/431659xp/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+
 A simple, permanently visible menu:
 
 ~~~javascript
@@ -37,6 +39,8 @@ A number of elements must play together:
 4. A container that holds both menu and button (or list); because the Menu is positioned `absolute`, the container must have style `position: relative`
 
 Because we are using state, this is best created with a custom component where we can store the "menu open" state.
+
+<a href="https://jsfiddle.net/ArthurClemens/0jccysmx/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 ~~~javascript
 import m from "mithril"
