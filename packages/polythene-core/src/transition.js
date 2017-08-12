@@ -129,11 +129,12 @@ const transition = (opts, state) => {
       if (beforeTransition) {
         beforeTransition();
         el.offsetHeight; // force reflow
-        maybeDelayTransition();
+        setTimeout(() => {
+          maybeDelayTransition();
+        }, 0);
       } else {
         maybeDelayTransition();
       }
     });
   }
 };
-
