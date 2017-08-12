@@ -102,11 +102,11 @@ const hideInstance = (state, attrs) => {
       }
     ))
   )).then(() => {
+    state.transitioning(false);
     if (attrs.multipleDidHide) {
       attrs.multipleDidHide(id); // this will call attrs.didHide
     }
     state.visible(false);
-    state.transitioning(false);
   });
 };
 

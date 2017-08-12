@@ -230,11 +230,11 @@ var hideInstance = function hideInstance(state, attrs) {
     containerEl: state.containerEl,
     el: state.el
   })))).then(function () {
+    state.transitioning(false);
     if (attrs.multipleDidHide) {
       attrs.multipleDidHide(id); // this will call attrs.didHide
     }
     state.visible(false);
-    state.transitioning(false);
   });
 };
 

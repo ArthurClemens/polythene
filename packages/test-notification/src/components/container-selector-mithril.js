@@ -21,10 +21,9 @@ export default buttonGroup => {
   return {
     view: () => 
       h("div", [
-        h(Spawn1, { key: "one" }),
+        h(Spawn1),
         h("#notifs1",
           {
-            // key: "two",
             style: {
               position: "relative",
               height: "180px",
@@ -37,10 +36,9 @@ export default buttonGroup => {
             }
           )
         ),
-        h(Spawn2, { key: "three" }),
+        h(Spawn2),
         h("#notifs2",
           {
-            // key: "four",
             style: {
               position: "relative",
               height: "180px",

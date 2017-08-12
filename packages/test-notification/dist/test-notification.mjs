@@ -261,8 +261,7 @@ var containerSelector = (function (buttonGroup) {
 
   return {
     view: function view() {
-      return renderer("div", [renderer(Spawn1, { key: "one" }), renderer("#notifs1", {
-        // key: "two",
+      return renderer("div", [renderer(Spawn1), renderer("#notifs1", {
         style: {
           position: "relative",
           height: "180px"
@@ -270,8 +269,7 @@ var containerSelector = (function (buttonGroup) {
       }, renderer(Notification, {
         spawn: "container1",
         position: "container"
-      })), renderer(Spawn2, { key: "three" }), renderer("#notifs2", {
-        // key: "four",
+      })), renderer(Spawn2), renderer("#notifs2", {
         style: {
           position: "relative",
           height: "180px"
