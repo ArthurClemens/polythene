@@ -25,6 +25,7 @@ Try out Polythene in JSFiddles.
   * [Search](https://jsfiddle.net/ArthurClemens/4zmtfd5u/)
   * [Slider](https://jsfiddle.net/ArthurClemens/nL12sq4x/)
   * [Switch](https://jsfiddle.net/ArthurClemens/70bejjr8/)
+  * [Text Field](https://jsfiddle.net/ArthurClemens/m396q0hh/)
 * [List](https://jsfiddle.net/ArthurClemens/8k7gg3va/)  
 * [List Tile](https://jsfiddle.net/ArthurClemens/eyksxemo/)
 * Menu

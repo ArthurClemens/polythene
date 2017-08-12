@@ -26,6 +26,7 @@ Try out Polythene in JSFiddles.
   * [Radio Button](https://jsfiddle.net/ArthurClemens/b1vbbLgw/)
   * [Search](https://jsfiddle.net/ArthurClemens/qm85uyd9/)
   * [Switch](https://jsfiddle.net/ArthurClemens/orqdxd4a/)
+  * [Text Field](https://jsfiddle.net/ArthurClemens/dz21hu8c/)
 * [List](https://jsfiddle.net/ArthurClemens/yzba5Lvn/)  
 * [List Tile](https://jsfiddle.net/ArthurClemens/gmdcvjeL/)
 * Menu
@@ -58,6 +59,7 @@ Try out Polythene in JSFiddles.
   * [Search](https://jsfiddle.net/ArthurClemens/hruxczph/)
   * [Slider](https://jsfiddle.net/ArthurClemens/ekht8sef/)
   * [Switch](https://jsfiddle.net/ArthurClemens/0eaeadbm/)
+  * [Text Field](https://jsfiddle.net/ArthurClemens/yug5s0ha/)
 * [List](https://jsfiddle.net/ArthurClemens/3vdfmg8p/)
 * [List Tile](https://jsfiddle.net/ArthurClemens/mc9kaqgc/)
 * Menu

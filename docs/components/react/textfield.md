@@ -8,10 +8,11 @@
 [Text Field options](../textfield.md)
 
 
-
 ## Usage
 
 #### With JSX
+
+<a href="https://jsfiddle.net/ArthurClemens/dz21hu8c/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 ~~~jsx
 import React from "react"
@@ -21,6 +22,8 @@ import { TextField } from "polythene-react"
 ~~~
 
 #### With hyperscript
+
+<a href="https://jsfiddle.net/ArthurClemens/yug5s0ha/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 ~~~javascript
 import { renderer as h, TextField } from "polythene-react"
