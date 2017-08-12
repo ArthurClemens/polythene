@@ -31,6 +31,7 @@ Try out Polythene in JSFiddles.
 * Menu
   * [Menu layout and styling](https://jsfiddle.net/ArthurClemens/431659xp/)
   * [Menu opening variations](https://jsfiddle.net/ArthurClemens/0jccysmx/)
+* [Notification](https://jsfiddle.net/ArthurClemens/baex75f0/)
 * [Ripple](https://jsfiddle.net/ArthurClemens/rcyn8f64/)
 * [Shadow](https://jsfiddle.net/ArthurClemens/87wjreeu/)
 * [Spinner](https://jsfiddle.net/ArthurClemens/hnzvnhxa/)

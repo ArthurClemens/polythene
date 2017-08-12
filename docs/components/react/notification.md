@@ -22,6 +22,8 @@ Because a notification should float on top of everything else, outside of the co
 
 #### With JSX
 
+<a href="https://jsfiddle.net/ArthurClemens/c3wsbhj0/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+
 ~~~jsx
 import React from "react"
 import { Notification } from "polythene-react"
@@ -37,6 +39,8 @@ render() {
 ~~~
 
 #### With hyperscript
+
+<a href="https://jsfiddle.net/ArthurClemens/08g6aqpd/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 ~~~javascript
 import { renderer as h, Notification } from "polythene-react"
