@@ -311,8 +311,8 @@ or with hyperscript:
 
 ~~~javascript
 h(TextField, {
-  onChange: newState => vnode.state.value = newState.value,
-  value: vnode.state.value
+  onChange: newState => this.setState({ value: newState.value }),
+  value: this.state.value
 })
 ~~~
 
@@ -339,13 +339,13 @@ or with hyperscript:
 ~~~javascript
 h(TextField, {
   label: "Your name",
-  onChange: newState => vnode.state.hasFocus = newState.focus,
-  focus: vnode.state.hasFocus
+  onChange: newState => this.setState({ hasFocus: newState.focus }),
+  focus: this.state.hasFocus
 }),
 h(Button, {
   label: "Set focus",
   events: {
-    onclick: () => vnode.state.hasFocus = true
+    onClick: () => this.setState({ hasFocus: true })
   }
 })
 ~~~

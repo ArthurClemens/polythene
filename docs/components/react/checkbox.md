@@ -50,7 +50,7 @@ To read the checked state, use `onChange`:
 ~~~jsx
 <Checkbox 
   onChange={
-    state => this.setState({ checked: state.checked })
+    newState => this.setState({ checked: newState.checked })
   }
   checked={this.state.checked}
 />
@@ -60,8 +60,8 @@ To read the checked state, use `onChange`:
 
 ~~~javascript
 h(Checkbox, {
-  onChange: state => vnode.state.checked = state.checked,
-  checked: vnode.state.checked
+  onChange: newState => this.setState({ checked: newState.checked }),
+  checked: this.state.checked
 })
 ~~~
 
