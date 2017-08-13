@@ -102,11 +102,11 @@ const hideInstance = (state, attrs) => {
       }
     ))
   )).then(() => {
-    state.transitioning(false);
     if (attrs.multipleDidHide) {
       attrs.multipleDidHide(id); // this will call attrs.didHide
     }
     state.visible(false);
+    state.transitioning(false);
   });
 };
 
@@ -186,7 +186,7 @@ export const createContent = (vnode, { renderer: h }) => {
   const state = vnode.state;
   const attrs = vnode.attrs;
   if (state.mounted() && !state.transitioning()) {
-    if (attrs.hideInstance && state.visible()) {
+    if (attrs.hideInstance) {
       hideInstance(state, attrs);
     } else if (attrs.showInstance && !state.visible()) {
       showInstance(state, attrs);

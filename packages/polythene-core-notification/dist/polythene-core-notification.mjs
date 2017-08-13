@@ -230,11 +230,11 @@ var hideInstance = function hideInstance(state, attrs) {
     containerEl: state.containerEl,
     el: state.el
   })))).then(function () {
-    state.transitioning(false);
     if (attrs.multipleDidHide) {
       attrs.multipleDidHide(id); // this will call attrs.didHide
     }
     state.visible(false);
+    state.transitioning(false);
   });
 };
 
@@ -308,7 +308,7 @@ var createContent = function createContent(vnode, _ref2) {
   var state = vnode.state;
   var attrs = vnode.attrs;
   if (state.mounted() && !state.transitioning()) {
-    if (attrs.hideInstance && state.visible()) {
+    if (attrs.hideInstance) {
       hideInstance(state, attrs);
     } else if (attrs.showInstance && !state.visible()) {
       showInstance(state, attrs);
