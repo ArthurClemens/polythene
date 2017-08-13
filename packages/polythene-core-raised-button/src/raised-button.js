@@ -90,7 +90,10 @@ export const createProps = (vnode, { renderer: h, Shadow }) => {
         attrs.parentClassName || classes.component
       ].join(" "),
       animateOnTap: false,
-      shadowComponent: h(Shadow, { z: state.z, animated: true }),
+      shadowComponent: h(Shadow, {
+        z: attrs.disabled ? 0 : state.z,
+        animated: true
+      }),
       children
     },
     attrs

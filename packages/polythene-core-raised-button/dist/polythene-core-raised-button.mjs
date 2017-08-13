@@ -193,7 +193,10 @@ var createProps = function createProps(vnode, _ref) {
   return _extends({}, {
     parentClassName: [attrs.parentClassName || classes.component].join(" "),
     animateOnTap: false,
-    shadowComponent: h(Shadow, { z: state.z, animated: true }),
+    shadowComponent: h(Shadow, {
+      z: attrs.disabled ? 0 : state.z,
+      animated: true
+    }),
     children: children
   }, attrs);
 };

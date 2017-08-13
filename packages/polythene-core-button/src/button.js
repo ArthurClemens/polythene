@@ -129,7 +129,7 @@ export const createContent = (vnode, { renderer: h, keys: k, Ripple }) => {
         style: attrs.style
       },
       [
-        !disabled && attrs.shadowComponent // "protected" option, used by raised-button
+        attrs.shadowComponent // "protected" option, used by raised-button
           ? attrs.shadowComponent
           : null,
         // Ripple

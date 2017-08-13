@@ -134,7 +134,7 @@ exports[`test Option: disabled (true) 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={[Function]} />
+      z={0} />
   } />
 `;
 
@@ -147,7 +147,7 @@ exports[`test Option: disabled -- dark tone class 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={[Function]} />
+      z={0} />
   } />
 `;
 
@@ -368,7 +368,7 @@ exports[`test Themed button (with option disabled) 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={[Function]} />
+      z={0} />
   } />
 `;
 

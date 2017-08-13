@@ -18,6 +18,10 @@ exports[`test Dark tone class + light tone 1`] = `
   \"pe-button pe-text-button pe-raised-button pe-button--disabled pe-light-tone\"
   tabindex=\"-1\" disabled>
   <div class=\"pe-button__content\">
+    <div class=\"pe-shadow pe-shadow--animated\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-0\"></div>
+      <div class=\"pe-shadow__top pe-shadow--z-0\"></div>
+    </div>
     <div class=\"pe-button__label\">
       Disabled
     </div>
@@ -59,6 +63,10 @@ exports[`test Dark tone class + light tone class 1`] = `
   \"pe-button pe-text-button pe-raised-button pe-button--disabled\"
   tabindex=\"-1\" disabled>
   <div class=\"pe-button__content\">
+    <div class=\"pe-shadow pe-shadow--animated\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-0\"></div>
+      <div class=\"pe-shadow__top pe-shadow--z-0\"></div>
+    </div>
     <div class=\"pe-button__label\">
       Disabled
     </div>
@@ -192,6 +200,10 @@ exports[`test Option: disabled (true) 1`] = `
 \"pe-button pe-text-button pe-raised-button pe-button--disabled\"
 tabindex=\"-1\" disabled>
 <div class=\"pe-button__content\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-0\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-0\"></div>
+  </div>
   <div class=\"pe-button__label\">
     Disabled
   </div>
@@ -204,6 +216,10 @@ exports[`test Option: disabled -- dark tone class 1`] = `
 \"pe-button pe-text-button pe-raised-button pe-button--disabled\"
 tabindex=\"-1\" disabled>
 <div class=\"pe-button__content\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-0\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-0\"></div>
+  </div>
   <div class=\"pe-button__label\">
     Label
   </div>
@@ -487,6 +503,10 @@ exports[`test Themed button (with option disabled) 1`] = `
 \"pe-button pe-text-button pe-raised-button pe-button--disabled tests-raised-button-themed-button\"
 tabindex=\"-1\" disabled>
 <div class=\"pe-button__content\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-0\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-0\"></div>
+  </div>
   <div class=\"pe-button__label\">
     Disabled themed button
   </div>
