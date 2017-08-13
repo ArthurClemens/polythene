@@ -228,13 +228,11 @@ var getInitialState = function getInitialState(vnode, createStream) {
   var bottomOverflow = createStream(false);
   var footerEl = createStream();
   var headerEl = createStream();
-  var isScrolling = createStream();
+  var isScrolling = createStream(false);
   var scrollEl = createStream();
   var topOverflow = createStream(false);
   var el = createStream();
-  isScrolling.map(function (vnode1) {
-    return updateScrollOverflowState(vnode1);
-  });
+
   return {
     cleanUp: undefined,
     bottomOverflow: bottomOverflow,
@@ -257,9 +255,13 @@ var onMount = function onMount(vnode) {
   var state = vnode.state;
   state.el(dom);
 
-  state.scrollEl(vnode.dom.querySelector("." + classes.body));
-  state.footerEl(vnode.dom.querySelector("." + classes.footer));
-  state.headerEl(vnode.dom.querySelector("." + classes.title));
+  state.scrollEl(dom.querySelector("." + classes.body));
+  state.footerEl(dom.querySelector("." + classes.footer));
+  state.headerEl(dom.querySelector("." + classes.title));
+
+  state.isScrolling.map(function () {
+    return updateScrollOverflowState(vnode);
+  });
 
   var update = function update() {
     updateScrollOverflowState(vnode);
@@ -308,10 +310,10 @@ var createContent = function createContent(vnode, _ref2) {
     className: classes.body,
     key: "body"
   }, k.onscroll, function () {
-    state.isScrolling(vnode);
+    state.isScrolling(true);
     clearTimeout(state.scrollWatchId);
     state.scrollWatchId = setTimeout(function () {
-      state.isScrolling(vnode);
+      state.isScrolling(false);
     }, SCROLL_WATCH_END_TIMER);
   }), attrs.content || attrs.body || attrs.menu), attrs.footer ? h("div", {
     className: classes.footer,

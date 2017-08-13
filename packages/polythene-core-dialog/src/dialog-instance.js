@@ -9,15 +9,6 @@ export const theme = customTheme;
 
 const DEFAULT_Z = 3;
 
-export const getInitialState = (vnode, createStream) => {
-  const transitioning = createStream(false);
-  return {
-    cleanUp: undefined,
-    el:      undefined,
-    transitioning
-  };
-};
-
 const showDialog = (state, attrs) => {
   if (state.transitioning()) {
     return Promise.resolve();
@@ -52,6 +43,15 @@ const hideDialog = (state, attrs) => {
     }
     state.transitioning(false);
   });
+};
+
+export const getInitialState = (vnode, createStream) => {
+  const transitioning = createStream(false);
+  return {
+    cleanUp: undefined,
+    el:      undefined,
+    transitioning
+  };
 };
 
 export const onMount = vnode => {
@@ -127,13 +127,15 @@ export const createContent = (vnode, { renderer: h, Shadow, DialogPane }) => {
   }
   const pane = attrs.panes && attrs.panes.length
     ? attrs.panes[0]
-    : h(DialogPane, {
-      title: attrs.title,
-      body: attrs.content || attrs.body || attrs.menu,
-      footer: attrs.footer,
-      className: attrs.className,
-      style: attrs.style
-    });
+    : h(DialogPane,
+      {
+        title: attrs.title,
+        body: attrs.content || attrs.body || attrs.menu,
+        footer: attrs.footer,
+        className: attrs.className,
+        style: attrs.style
+      }
+    );
   return h("div",
     {
       className: [

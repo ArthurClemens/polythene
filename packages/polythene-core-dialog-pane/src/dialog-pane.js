@@ -39,13 +39,11 @@ export const getInitialState = (vnode, createStream) => {
   const bottomOverflow = createStream(false); 
   const footerEl = createStream();
   const headerEl = createStream();
-  const isScrolling = createStream();
+  const isScrolling = createStream(false);
   const scrollEl = createStream();
   const topOverflow = createStream(false);
   const el = createStream();
-  isScrolling.map(vnode1 =>
-    updateScrollOverflowState(vnode1)
-  );
+  
   return {
     cleanUp: undefined,
     bottomOverflow,
@@ -68,9 +66,13 @@ export const onMount = vnode => {
   const state = vnode.state;
   state.el(dom);
 
-  state.scrollEl(vnode.dom.querySelector(`.${classes.body}`));
-  state.footerEl(vnode.dom.querySelector(`.${classes.footer}`));
-  state.headerEl(vnode.dom.querySelector(`.${classes.title}`));
+  state.scrollEl(dom.querySelector(`.${classes.body}`));
+  state.footerEl(dom.querySelector(`.${classes.footer}`));
+  state.headerEl(dom.querySelector(`.${classes.title}`));
+
+  state.isScrolling.map(() =>
+    updateScrollOverflowState(vnode)
+  );
 
   const update = () => {
     updateScrollOverflowState(vnode);
@@ -141,10 +143,10 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
           className: classes.body,
           key: "body",
           [k.onscroll]: () => {
-            state.isScrolling(vnode);
+            state.isScrolling(true);
             clearTimeout(state.scrollWatchId);
             state.scrollWatchId = setTimeout(() => {
-              state.isScrolling(vnode);
+              state.isScrolling(false);
             }, SCROLL_WATCH_END_TIMER);
           }
         },
