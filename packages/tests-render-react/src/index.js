@@ -8,7 +8,7 @@ import { addLayoutStyles } from "polythene-utilities";
 import { addFastClick } from "polythene-fastclick";
 import { addTypography, addRoboto } from "polythene-style";
 import { rules as css } from "./styles";
-import { renderer as h, List, Toolbar, ListTile } from "polythene-react";
+import { renderer as h, List, Toolbar, ListTile, Snackbar, Notification } from "polythene-react";
 import Page from "./Page";
 import routes from "./routes";
 import ScrollToTop from "./ScrollToTop";
@@ -49,7 +49,9 @@ const Index = () =>
           })
         ))
       ))
-    )
+    ),
+    h(Snackbar),
+    h(Notification)
   ]);
 
 const routerMap = routes.map(route =>

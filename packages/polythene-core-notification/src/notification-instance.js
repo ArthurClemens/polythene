@@ -158,8 +158,10 @@ export const onMount = vnode => {
   state.mounted(true);
 };
 
-export const onUnMount = vnode =>
-  vnode.state.mounted(false);
+export const onUnMount = vnode => (
+  // vnode.attrs.multipleClear(),
+  vnode.state.mounted(false)
+);
 
 export const createProps = (vnode, { keys: k }) => {
   const attrs = vnode.attrs;

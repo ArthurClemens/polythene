@@ -171,7 +171,7 @@ export const Multi = ({ options: mOptions, renderer }) => {
       : Promise.resolve(instanceId);
   };
 
-  const clear = () => removeAll();
+  const clear = removeAll;
 
   const view = ({ attrs }) => {
     const spawn = attrs.spawn || mOptions.defaultId;
@@ -203,7 +203,8 @@ export const Multi = ({ options: mOptions, renderer }) => {
               pauseInstance: itemData.pause,
               unpauseInstance: itemData.unpause,
               multipleDidShow: itemData.didShow,
-              multipleDidHide: itemData.didHide
+              multipleDidHide: itemData.didHide,
+              multipleClear: clear
             },
             unpackAttrs(itemData.attrs)
           ));

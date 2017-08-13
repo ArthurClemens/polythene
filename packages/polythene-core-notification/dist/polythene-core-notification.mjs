@@ -287,7 +287,10 @@ var onMount = function onMount(vnode) {
 };
 
 var onUnMount = function onUnMount(vnode) {
-  return vnode.state.mounted(false);
+  return (
+    // vnode.attrs.multipleClear(),
+    vnode.state.mounted(false)
+  );
 };
 
 var createProps = function createProps(vnode, _ref) {

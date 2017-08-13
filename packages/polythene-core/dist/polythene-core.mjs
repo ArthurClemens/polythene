@@ -334,9 +334,7 @@ var Multi = function Multi(_ref) {
     return item ? item.hidePromise : Promise.resolve(instanceId);
   };
 
-  var clear = function clear() {
-    return removeAll();
-  };
+  var clear = removeAll;
 
   var view = function view(_ref2) {
     var attrs = _ref2.attrs;
@@ -363,7 +361,8 @@ var Multi = function Multi(_ref) {
         pauseInstance: itemData.pause,
         unpauseInstance: itemData.unpause,
         multipleDidShow: itemData.didShow,
-        multipleDidHide: itemData.didHide
+        multipleDidHide: itemData.didHide,
+        multipleClear: clear
       }, unpackAttrs(itemData.attrs)));
     }));
   };
