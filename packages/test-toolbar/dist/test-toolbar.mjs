@@ -3942,9 +3942,7 @@ var reactTests = function reactTests(_ref) {
 
   var ToolbarButton = function ToolbarButton(_ref2) {
     var svg = _ref2.svg;
-    return (// eslint-disable-line no-unused-vars
-      react.createElement(IconButton$$1, { icon: { svg: svg } })
-    );
+    return react.createElement(IconButton$$1, { icon: { svg: svg } });
   };
 
   return [{

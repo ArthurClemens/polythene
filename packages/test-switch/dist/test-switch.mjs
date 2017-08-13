@@ -307,7 +307,7 @@ var genericTests = (function (_ref) {
 
   var trustedBullsEyeIcon = h.trust(bullsEyeSVG);
 
-  var orange = "#EF6C00";
+  var orange = "#ef6c00";
   var blue = "#2196F3";
   Switch$$1.theme(".tests-switch-themed-switch", {
     label_font_size: 28,
@@ -324,11 +324,11 @@ var genericTests = (function (_ref) {
   Switch$$1.theme(".tests-switch-themed-icon", {
     color_light_thumb_off: "#fff",
     color_light_thumb_on: "#fff",
-    color_light_icon_on: "#EF6C00",
+    color_light_icon_on: orange,
     color_light_icon_off: "#ddd",
     color_dark_thumb_off: "#fff",
     color_dark_thumb_on: "#fff",
-    color_dark_icon_on: "#EF6C00",
+    color_dark_icon_on: orange,
     color_dark_icon_off: "#fff"
   });
 
