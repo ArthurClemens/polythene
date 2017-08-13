@@ -186,7 +186,7 @@ export const createContent = (vnode, { renderer: h }) => {
   const state = vnode.state;
   const attrs = vnode.attrs;
   if (state.mounted() && !state.transitioning()) {
-    if (attrs.hideInstance) {
+    if (attrs.hideInstance && state.visible()) {
       hideInstance(state, attrs);
     } else if (attrs.showInstance && !state.visible()) {
       showInstance(state, attrs);

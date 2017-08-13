@@ -308,7 +308,7 @@ var createContent = function createContent(vnode, _ref2) {
   var state = vnode.state;
   var attrs = vnode.attrs;
   if (state.mounted() && !state.transitioning()) {
-    if (attrs.hideInstance) {
+    if (attrs.hideInstance && state.visible()) {
       hideInstance(state, attrs);
     } else if (attrs.showInstance && !state.visible()) {
       showInstance(state, attrs);
