@@ -109,15 +109,19 @@ Shows a new message.
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **messageOptions** | required | Options object or Function that returns an options object | | See [Notification options](../notification.md) |
+| **messageOptions** | required | Options object or Function that returns an options object | | See [Notification options](../notification.md#options) |
 | **spawnOptions** | optional | Options object | | Pass `spawn` when using multiple spawners and `spawn` is also set at the spawner |
 | **Returns** |||| Promise |
+
+:fire: **Use a unique `key` for more reliable display of successive notifications.**
+
 
 Examples:
 
 ~~~javascript
 const messageOptions = {
-  title: "This is the message"
+  title: "This is the message",
+  key: "This is the message"
 }
 
 // variations:
@@ -132,7 +136,8 @@ In case the notification contents needs to change when a state changes (for inst
 
 ~~~javascript
 const optionsFn = () => ({
-  title: "This is the message"
+  title: "This is the message",
+  key: "This is the message"
 })
 
 Notification.show(optionsFn)
@@ -253,6 +258,7 @@ export default () =>
       onClick: () =>
         Notification.show({
           title: "This is the message",
+          key: "This is the message",
           layout: "vertical",
           action: <Button
             label="Let me think about it"
@@ -308,6 +314,7 @@ export default () =>
         onClick: () =>
           Notification.show({
             title: "This is the message",
+            key: "This is the message",
             layout: "vertical",
             action: h(Button, {
               label: "Let me think about it",
