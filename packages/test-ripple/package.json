@@ -1,6 +1,6 @@
 {
   "name": "test-ripple",
-  "version": "1.0.0-rc.3",
+  "version": "1.0.0-rc.4",
   "private": true,
   "description": "",
   "main": "dist/test-ripple.js",
@@ -17,8 +17,8 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-mithril": "^1.0.0-rc.3",
-    "polythene-react": "^1.0.0-rc.3"
+    "polythene-mithril": "^1.0.0-rc.4",
+    "polythene-react": "^1.0.0-rc.4"
   },
   "devDependencies": {
     "react": "^15.6.1",
