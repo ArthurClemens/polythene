@@ -39,8 +39,8 @@ export const Multi = ({ options: mOptions, renderer }) => {
     const index = itemIndex(id);
     if (index !== -1) {
       items.splice(index, 1);
+      onChange({ id, name: "removeItem" });
     }
-    onChange({ id, name: "removeItem" });
   };
 
   const replaceItem = (id, newItem) => {
@@ -76,7 +76,6 @@ export const Multi = ({ options: mOptions, renderer }) => {
   };
 
   const removeAll = () => {
-    // traditional for loop for IE10
     items.length = 0;
     onChange({ id: null, name: "removeAll" });
   };

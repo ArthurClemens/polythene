@@ -193,8 +193,8 @@ var Multi = function Multi(_ref) {
     var index = itemIndex(id);
     if (index !== -1) {
       items.splice(index, 1);
+      onChange({ id: id, name: "removeItem" });
     }
-    onChange({ id: id, name: "removeItem" });
   };
 
   var replaceItem = function replaceItem(id, newItem) {
@@ -232,7 +232,6 @@ var Multi = function Multi(_ref) {
   };
 
   var removeAll = function removeAll() {
-    // traditional for loop for IE10
     items.length = 0;
     onChange({ id: null, name: "removeAll" });
   };
