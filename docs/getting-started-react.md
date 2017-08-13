@@ -151,6 +151,7 @@ https://rawgit.com/ArthurClemens/polythene/master/packages/polythene-react/dist/
 Included:
 
 * All components
+* `subscribe`, `unsubscribe` from `polythene-core`
 * Layout styles from `polythene-utilities`
 * Text and Roboto font from `polythene-style`
 * Fast Click from `polythene-fastclick`

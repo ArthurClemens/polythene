@@ -32,7 +32,9 @@ Try out Polythene in JSFiddles.
 * Menu
   * [Menu layout and styling](https://jsfiddle.net/ArthurClemens/gta0c3te/)
   * [Menu opening variations](https://jsfiddle.net/ArthurClemens/Lm1o6f9y/)
-* [Notification](https://jsfiddle.net/ArthurClemens/c3wsbhj0/)
+* Notifications
+  * [Notification](https://jsfiddle.net/ArthurClemens/c3wsbhj0/)
+  * [Snackbar](https://jsfiddle.net/ArthurClemens/4edrmz42/)
 * [Ripple](https://jsfiddle.net/ArthurClemens/brx9wdhv/)
 * [Shadow](https://jsfiddle.net/ArthurClemens/uej4sw3q/)
 * [Spinner](https://jsfiddle.net/ArthurClemens/ykshk90g/)
@@ -68,7 +70,9 @@ Try out Polythene in JSFiddles.
 * Menu
   * [Menu layout and styling](https://jsfiddle.net/ArthurClemens/umrnvm13/)
   * [Menu opening variations](https://jsfiddle.net/ArthurClemens/fzcys56b/)
-* [Notification](https://jsfiddle.net/ArthurClemens/08g6aqpd/)
+* Notifications
+  * [Notification](https://jsfiddle.net/ArthurClemens/08g6aqpd/)
+  * [Snackbar](https://jsfiddle.net/ArthurClemens/opx44Lhq/)
 * [Ripple](https://jsfiddle.net/ArthurClemens/L0e0bb68/)
 * [Shadow](https://jsfiddle.net/ArthurClemens/ohuxgfef/)
 * [Spinner](https://jsfiddle.net/ArthurClemens/j74x8b9w/)
