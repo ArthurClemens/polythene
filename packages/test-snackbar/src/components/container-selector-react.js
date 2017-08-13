@@ -22,7 +22,7 @@ export default class extends Component {
   }
 
   render() {
-    const { buttonGroup: ButtonGroup, variations, spawn, position, foreground, background, tone } = this.props;
+    const { id, buttonGroup: ButtonGroup, variations, spawn, position, foreground, background, tone } = this.props;
     const backgroundStyle = Object.assign({}, pattern(foreground, background), {
       height: "220px",
       overflow: "hidden",
@@ -32,6 +32,7 @@ export default class extends Component {
     const containerSelectorId = `bottom_container_${spawn}`;
     return (<div>
       <ButtonGroup
+        id={id}
         variations={variations.map(opts =>
           Object.assign(
             {},

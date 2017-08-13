@@ -84,7 +84,16 @@ var genericTests = (function (_ref) {
     exclude: true,
     component: {
       view: function view() {
-        return h(buttonGroup, { variations: variations });
+        return h(buttonGroup, { id: "Main screen snackbar", variations: variations });
+      }
+    }
+  }, {
+    name: "Light tone",
+    interactive: true,
+    exclude: true,
+    component: {
+      view: function view() {
+        return h(buttonGroup, { id: "Light tone", variations: variations, snackbarOptions: { tone: "light" } });
       }
     }
   }, {
@@ -93,7 +102,7 @@ var genericTests = (function (_ref) {
     exclude: true,
     component: {
       view: function view() {
-        return h(containerSelector, { buttonGroup: buttonGroup, variations: variations, spawn: "container1", position: "container", foreground: "#fff", background: "#eceff1" });
+        return h(containerSelector, { id: "Snackbar in container", buttonGroup: buttonGroup, variations: variations, spawn: "container1", position: "container", foreground: "#fff", background: "#eceff1" });
       }
     }
   }, {
@@ -103,7 +112,7 @@ var genericTests = (function (_ref) {
     exclude: true,
     component: {
       view: function view() {
-        return h(containerSelector, { buttonGroup: buttonGroup, variations: variations, spawn: "container2", position: "container", foreground: "#444", background: "#263238", tone: "light" });
+        return h(containerSelector, { id: "Snackbar in container -- dark tone", buttonGroup: buttonGroup, variations: variations, spawn: "container2", position: "container", foreground: "#444", background: "#263238", tone: "light" });
       }
     }
   }];
@@ -112,27 +121,28 @@ var genericTests = (function (_ref) {
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var buttonGroup = {
-  view: function view(vnode) {
-    return renderer("div", [vnode.attrs.variations.map(function (opts) {
+  view: function view(_ref) {
+    var attrs = _ref.attrs;
+    return renderer("div", [attrs.variations.map(function (opts) {
       return renderer(RaisedButton, {
         label: opts.label,
         events: { onclick: function onclick() {
-            return Snackbar.show(_extends({}, opts, { key: opts.title // add a key to let Mithril better distinguish between the notifications
-            }), vnode.attrs.spawnOptions);
+            return Snackbar.show(_extends({}, opts, attrs.snackbarOptions, { key: opts.title // add a key to let Mithril better distinguish between the notifications
+            }), attrs.spawnOptions);
           } }
       });
     }), renderer(RaisedButton, {
       label: "Hide",
       disabled: Snackbar.count() === 0,
       events: { onclick: function onclick() {
-          return Snackbar.hide(vnode.attrs.spawnOptions);
+          return Snackbar.hide(attrs.spawnOptions);
         } }
     }), renderer(RaisedButton, {
       label: "Clear",
       disabled: Snackbar.count() === 0,
       events: {
         onclick: function onclick() {
-          return Snackbar.hide(vnode.attrs.spawnOptions).then(function () {
+          return Snackbar.hide(attrs.spawnOptions).then(function () {
             return Snackbar.clear();
           });
         }
@@ -4004,9 +4014,11 @@ var _class = function (_Component) {
     key: "render",
     value: function render() {
       var _props = this.props,
+          id = _props.id,
           variations = _props.variations,
           spawn = _props.spawn,
           position = _props.position,
+          snackbarOptions = _props.snackbarOptions,
           needsDisplay = _props.needsDisplay;
 
       var count = this.state.count;
@@ -4020,8 +4032,8 @@ var _class = function (_Component) {
             events: {
               onClick: function onClick() {
                 needsDisplay && needsDisplay();
-                Snackbar$1.show(_extends$3({}, opts, {
-                  key: opts.title // add a key to let React better distinguish between the notifications
+                Snackbar$1.show(_extends$3({}, opts, snackbarOptions, {
+                  key: id + "-" + opts.title // add a key to let React better distinguish between the notifications
                 }), { spawn: spawn, position: position });
               }
             }
@@ -4101,6 +4113,7 @@ var _class$1 = function (_Component) {
       var _this2 = this;
 
       var _props = this.props,
+          id = _props.id,
           ButtonGroup = _props.buttonGroup,
           variations = _props.variations,
           spawn = _props.spawn,
@@ -4120,6 +4133,7 @@ var _class$1 = function (_Component) {
         "div",
         null,
         react.createElement(ButtonGroup, {
+          id: id,
           variations: variations.map(function (opts) {
             return _extends$4({}, opts, {
               tone: tone,

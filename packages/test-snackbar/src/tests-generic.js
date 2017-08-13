@@ -90,7 +90,16 @@ export default ({ renderer: h, keys: k, Snackbar, Dialog, Button, buttonGroup, c
       exclude: true,
       component: {
         view: () =>
-          h(buttonGroup, { variations })
+          h(buttonGroup, { id: "Main screen snackbar", variations })
+      }
+    },
+    {
+      name: "Light tone",
+      interactive: true,
+      exclude: true,
+      component: {
+        view: () =>
+          h(buttonGroup, { id: "Light tone", variations, snackbarOptions: { tone: "light" } })
       }
     },
     {
@@ -99,7 +108,7 @@ export default ({ renderer: h, keys: k, Snackbar, Dialog, Button, buttonGroup, c
       exclude: true,
       component: {
         view: () =>
-          h(containerSelector, { buttonGroup, variations, spawn: "container1", position: "container", foreground: "#fff", background: "#eceff1" })
+          h(containerSelector, { id: "Snackbar in container", buttonGroup, variations, spawn: "container1", position: "container", foreground: "#fff", background: "#eceff1" })
       }
     },
     {
@@ -109,7 +118,7 @@ export default ({ renderer: h, keys: k, Snackbar, Dialog, Button, buttonGroup, c
       exclude: true,
       component: {
         view: () =>
-          h(containerSelector, { buttonGroup, variations, spawn: "container2", position: "container", foreground: "#444", background: "#263238", tone: "light" })
+          h(containerSelector, { id: "Snackbar in container -- dark tone", buttonGroup, variations, spawn: "container2", position: "container", foreground: "#444", background: "#263238", tone: "light" })
       }
     },
     

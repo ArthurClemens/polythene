@@ -37,7 +37,7 @@ export default class extends Component {
   }
 
   render() {
-    const { variations, spawn, position, needsDisplay } = this.props;
+    const { id, variations, spawn, position, snackbarOptions, needsDisplay } = this.props;
     const count = this.state.count;
     return (<div>
       {variations.map(opts =>
@@ -51,8 +51,9 @@ export default class extends Component {
                 Object.assign(
                   {},
                   opts,
+                  snackbarOptions,
                   {
-                    key: opts.title, // add a key to let React better distinguish between the notifications
+                    key: `${id}-${opts.title}`, // add a key to let React better distinguish between the notifications
                   } 
                 ), { spawn, position }
               );
