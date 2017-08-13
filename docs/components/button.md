@@ -21,6 +21,8 @@ Displays a text button with a [Ripple](ripple.md) effect.
 
 ## Keyboard control
 
+Read first: [Turning on keyboard control](../keyboard-control.md)
+
 1. Start keyboard control by tabbing to the button. It will show a focus state.
 1. Press Enter to simulate a click.
 

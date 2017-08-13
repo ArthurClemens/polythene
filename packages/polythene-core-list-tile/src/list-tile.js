@@ -6,7 +6,7 @@ export const getElement = () => "div"; // because primary or secondary content c
 
 export const theme = customTheme;
 
-const primaryContent = (h, requiresKeys, attrs, children) => {
+const primaryContent = (h, k, requiresKeys, attrs, children) => {
   const element = attrs.element
     ? attrs.element
     : attrs.url
@@ -33,7 +33,8 @@ const primaryContent = (h, requiresKeys, attrs, children) => {
     attrs.events,
     {
       className: classes.primary,
-      style: null
+      style: null,
+      [[k.tabindex]]: attrs[k.tabindex] || 0
     }
   );
   return h(element, props, [
@@ -147,7 +148,7 @@ export const createContent = (vnode, { renderer: h, requiresKeys, keys: k, Rippl
     attrs.ink && !attrs.disabled
       ? h(Ripple, Object.assign({}, attrs.ripple, requiresKeys ? { key: "ripple" } : null))
       : null,
-    primaryContent(h, requiresKeys, primaryAttrs, attrs.children || vnode.children),
+    primaryContent(h, k, requiresKeys, primaryAttrs, attrs.children || vnode.children),
     attrs.secondary
       ? secondaryContent(h, requiresKeys, Icon, attrs.secondary)
       : null

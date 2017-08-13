@@ -188,8 +188,7 @@ const createSlider = (vnode, { h, k, hasTicks, interactiveTrack }) => {
             [k.onkeydown]: e => {
               if (e.key !== "Tab") {
                 e.preventDefault();
-              }
-              if (e.key === "Escape") {
+              } else if (e.key === "Escape") {
                 state.controlEl.blur(e);
               } else if (e.key === "ArrowLeft" || e.key === "ArrowDown") {
                 state.decrement(e.shiftKey);

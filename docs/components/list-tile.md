@@ -24,6 +24,8 @@ Displays a list element as part of a [List](list.md).
 
 ## Keyboard control
 
+Read first: [Turning on keyboard control](../keyboard-control.md)
+
 This works for list tiles that are defined as link (when either option `element` is "a" or `url` is set).
 
 1. Start keyboard control by tabbing to the list tile. It will show a focus state.

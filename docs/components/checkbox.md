@@ -20,6 +20,8 @@ Form control to select one or more options from a set. Generates a styled checkb
 
 ## Keyboard control
 
+Read first: [Turning on keyboard control](../keyboard-control.md)
+
 1. Start keyboard control by tabbing to the checkbox. It will show a focus state.
 1. Press Enter to simulate a click.
 

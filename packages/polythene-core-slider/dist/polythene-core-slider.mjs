@@ -614,8 +614,7 @@ var createSlider = function createSlider(vnode, _ref) {
   }), _defineProperty(_ref3, k.onkeydown, function (e) {
     if (e.key !== "Tab") {
       e.preventDefault();
-    }
-    if (e.key === "Escape") {
+    } else if (e.key === "Escape") {
       state.controlEl.blur(e);
     } else if (e.key === "ArrowLeft" || e.key === "ArrowDown") {
       state.decrement(e.shiftKey);

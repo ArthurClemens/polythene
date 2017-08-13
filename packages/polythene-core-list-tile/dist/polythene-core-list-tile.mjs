@@ -87,7 +87,7 @@ var vars$1 = {
   // color_dark_background:           "inherit",
 };
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var paddingH = function paddingH(h) {
   return {
@@ -104,7 +104,7 @@ var paddingV = function paddingV(top, bottom) {
 };
 
 var layout = (function (selector, componentVars) {
-  return [_defineProperty({}, selector, [flex.layout, {
+  return [_defineProperty$1({}, selector, [flex.layout, {
     position: "relative",
     overflow: "hidden",
 
@@ -240,10 +240,10 @@ var layout = (function (selector, componentVars) {
   }])];
 });
 
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var style = function style(scopes, selector, componentVars, tint) {
-  return [_defineProperty$1({}, scopes.map(function (s) {
+  return [_defineProperty$2({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
     color: componentVars["color_" + tint + "_title"],
@@ -284,7 +284,7 @@ var style = function style(scopes, selector, componentVars, tint) {
 };
 
 var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, tint) {
-  return [_defineProperty$1({}, scopes.map(function (s) {
+  return [_defineProperty$2({}, scopes.map(function (s) {
     return s + selector + ":hover";
   }).join(","), {
     ":not(.pe-list__header):not(.pe-list-tile--disabled)": {
@@ -317,20 +317,22 @@ styler.generateStyles([selector], vars$1, fns);
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var getElement = function getElement() {
   return "div";
 }; // because primary or secondary content can be an "a", the container is always defined as "div", and option `element` is passed to primary content
 
 var theme = customTheme;
 
-var primaryContent = function primaryContent(h, requiresKeys, attrs, children) {
+var primaryContent = function primaryContent(h, k, requiresKeys, attrs, children) {
   var element = attrs.element ? attrs.element : attrs.url ? "a" : "div";
   var contentFrontClass = classes.content + " " + classes.contentFront;
   var frontComp = attrs.front ? h("div", _extends({}, requiresKeys ? { key: "front" } : null, { className: contentFrontClass }), attrs.front) : attrs.indent ? h("div", _extends({}, requiresKeys ? { key: "front" } : null, { className: contentFrontClass })) : null;
-  var props = _extends({}, filterSupportedAttributes(attrs), attrs.url, attrs.events, {
+  var props = _extends({}, filterSupportedAttributes(attrs), attrs.url, attrs.events, _defineProperty({
     className: classes.primary,
     style: null
-  });
+  }, [k.tabindex], attrs[k.tabindex] || 0));
   return h(element, props, [frontComp, h("div", {
     className: classes.content,
     style: attrs.style
@@ -369,7 +371,7 @@ var createContent = function createContent(vnode, _ref2) {
   var primaryAttrs = _extends({}, requiresKeys ? { key: "primary" } : null, attrs);
   delete primaryAttrs.id;
   delete primaryAttrs[k.class];
-  return [attrs.ink && !attrs.disabled ? h(Ripple, _extends({}, attrs.ripple, requiresKeys ? { key: "ripple" } : null)) : null, primaryContent(h, requiresKeys, primaryAttrs, attrs.children || vnode.children), attrs.secondary ? secondaryContent(h, requiresKeys, Icon, attrs.secondary) : null];
+  return [attrs.ink && !attrs.disabled ? h(Ripple, _extends({}, attrs.ripple, requiresKeys ? { key: "ripple" } : null)) : null, primaryContent(h, k, requiresKeys, primaryAttrs, attrs.children || vnode.children), attrs.secondary ? secondaryContent(h, requiresKeys, Icon, attrs.secondary) : null];
 };
 
 var listTile = Object.freeze({

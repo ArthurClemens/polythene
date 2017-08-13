@@ -196,10 +196,13 @@ var style = function style(scopes, selector, componentVars, tint) {
       }
     },
 
-    ".pe-button--focus": {
+    " .pe-button__focus": {
+      backgroundColor: componentVars["color_" + tint + "_focus_background"]
+    },
+
+    ".pe-button--focus, &:focus": {
       " .pe-button__focus": {
-        opacity: 1,
-        backgroundColor: componentVars["color_" + tint + "_focus_background"]
+        opacity: 1
       }
     }
   })];
