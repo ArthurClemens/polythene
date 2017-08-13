@@ -441,6 +441,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var theme = customTheme;
 
+var MAX_TICKS = 100;
 var focusElement = void 0;
 
 var deFocus = function deFocus(state) {
@@ -476,10 +477,9 @@ var updateValue = function updateValue(state, value) {
   updatePinPosition(state);
 };
 
-var generateTickMarks = function generateTickMarks(h, min, max, stepSize) {
-  var steps = Math.round((max - min) / stepSize);
+var generateTickMarks = function generateTickMarks(h, stepCount) {
   var items = [];
-  var s = steps + 1;
+  var s = stepCount + 1;
   while (s > 0) {
     items.push(h("div", {
       className: classes.tick,
@@ -579,7 +579,8 @@ var createSlider = function createSlider(vnode, _ref) {
   var state = vnode.state;
   var attrs = vnode.attrs;
   var fraction = state.fraction();
-  var stepCount = Math.max(10, parseInt(attrs.step, 10) || 1); // not more than 100 steps on the screen
+  var range = state.max - state.min;
+  var stepCount = Math.min(MAX_TICKS, parseInt(range / state.stepSize, 10));
 
   var onStartTrack = function onStartTrack(e) {
     return startTrack(state, attrs, e);
@@ -646,10 +647,10 @@ var createSlider = function createSlider(vnode, _ref) {
   }, h("div", { className: classes.trackBar }, h("div", { className: classes.trackBarValue }))), hasTicks && !attrs.disabled ? h("div", {
     className: classes.ticks,
     key: "ticks"
-  }, generateTickMarks(h, state.min, state.max, stepCount)) : null, hasTicks && attrs.pin && !attrs.disabled ? h("div", {
+  }, generateTickMarks(h, stepCount)) : null, hasTicks && attrs.pin && !attrs.disabled ? h("div", {
     className: classes.pin,
     key: "pin",
-    value: Math.round(state.value())
+    value: state.value()
   }) : null]);
 };
 
@@ -658,7 +659,8 @@ var getInitialState = function getInitialState(vnode, createStream) {
 
   var min = attrs.min !== undefined ? attrs.min : 0;
   var max = attrs.max !== undefined ? attrs.max : 100;
-  var step = attrs.step !== undefined ? attrs.step : 1;
+  var range = max - min;
+  var stepSize = attrs.stepSize !== undefined ? attrs.stepSize : 1;
   var defaultValue = attrs.defaultValue !== undefined ? attrs.defaultValue : attrs.value !== undefined ? attrs.value : 0;
   var previousValue = createStream(undefined);
   var isActive = createStream(false);
@@ -666,12 +668,13 @@ var getInitialState = function getInitialState(vnode, createStream) {
   var isDragging = createStream(false);
   var fraction = createStream(min);
   var value = createStream(0);
+  var normalizeFactor = 1 / stepSize;
 
   var setValue = function setValue(v) {
     if (v < min) v = min;
     if (v > max) v = max;
-    value(step ? Math.round(v / step) * step : v);
-    fraction((value() - min) / (max - min));
+    value(stepSize ? Math.round(v * normalizeFactor) / normalizeFactor : v);
+    fraction((value() - min) / range);
     if (attrs.onChange) {
       attrs.onChange({
         value: value()
@@ -681,11 +684,11 @@ var getInitialState = function getInitialState(vnode, createStream) {
   };
 
   var increment = function increment(useLargeStep) {
-    return setValue(value() + (useLargeStep ? 10 : 1) * (step || 1));
+    return setValue(value() + (useLargeStep ? 10 : 1) * (stepSize || 1));
   };
 
   var decrement = function decrement(useLargeStep) {
-    return setValue(value() - (useLargeStep ? 10 : 1) * (step || 1));
+    return setValue(value() - (useLargeStep ? 10 : 1) * (stepSize || 1));
   };
 
   setValue(defaultValue);
@@ -693,6 +696,7 @@ var getInitialState = function getInitialState(vnode, createStream) {
   return {
     min: min,
     max: max,
+    stepSize: stepSize,
     fraction: fraction,
     // DOM elements
     trackEl: null,

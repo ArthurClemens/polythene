@@ -245,6 +245,7 @@ m(Search, {
 ### Slider
 
 * Option `thumb` has been renamed to `icon`.
+* Option `step` has been renamed to `stepSize`.
 * To set the slider value, pass the value instead of writing `value` as function.
 
 ### SVG

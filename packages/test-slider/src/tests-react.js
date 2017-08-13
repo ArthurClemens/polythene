@@ -16,7 +16,7 @@ const reactTests = ({ Slider, renderer: h, keys: k }) => { // eslint-disable-lin
         <Slider 
           min={0}
           max={100}
-          step={10}
+          stepSize={10}
           defaultValue={50}
           pin
           ticks

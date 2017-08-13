@@ -6,6 +6,7 @@ import classes from "./classes";
 
 export const theme = customTheme;
 
+const MAX_TICKS = 100;
 let focusElement;
 
 const deFocus = state => {
@@ -40,10 +41,9 @@ const updateValue = (state, value) => {
   updatePinPosition(state);
 };
 
-const generateTickMarks = (h, min, max, stepSize) => {
-  const steps = Math.round((max - min) / stepSize);
+const generateTickMarks = (h, stepCount) => {
   const items = [];
-  let s = steps + 1;
+  let s = stepCount + 1;
   while (s > 0) {
     items.push(h("div", {
       className: classes.tick,
@@ -133,7 +133,8 @@ const createSlider = (vnode, { h, k, hasTicks, interactiveTrack }) => {
   const state = vnode.state;
   const attrs = vnode.attrs;
   const fraction = state.fraction();
-  const stepCount = Math.max(10, parseInt(attrs.step, 10) || 1); // not more than 100 steps on the screen
+  const range = state.max - state.min;
+  const stepCount = Math.min(MAX_TICKS, parseInt(range / state.stepSize, 10));
 
   const onStartTrack = e => (
     startTrack(state, attrs, e)
@@ -248,7 +249,7 @@ const createSlider = (vnode, { h, k, hasTicks, interactiveTrack }) => {
             className: classes.ticks,
             key: "ticks"
           },
-          generateTickMarks(h, state.min, state.max, stepCount)
+          generateTickMarks(h, stepCount)
         )
         : null,
       hasTicks && attrs.pin && !attrs.disabled
@@ -256,7 +257,7 @@ const createSlider = (vnode, { h, k, hasTicks, interactiveTrack }) => {
           {
             className: classes.pin,
             key: "pin",
-            value: Math.round(state.value())
+            value: state.value()
           }
         )
         : null
@@ -269,7 +270,10 @@ export const getInitialState = (vnode, createStream) => {
 
   const min = attrs.min !== undefined ? attrs.min : 0;
   const max = attrs.max !== undefined ? attrs.max : 100;
-  const step = attrs.step !== undefined ? attrs.step : 1;
+  const range = max - min;
+  const stepSize = attrs.stepSize !== undefined
+    ? attrs.stepSize
+    : 1;
   const defaultValue = attrs.defaultValue !== undefined
     ? attrs.defaultValue
     : attrs.value !== undefined
@@ -281,12 +285,16 @@ export const getInitialState = (vnode, createStream) => {
   const isDragging = createStream(false);
   const fraction = createStream(min);
   const value = createStream(0);
+  const normalizeFactor = 1 / stepSize;
 
   const setValue = v => {
     if (v < min) v = min;
     if (v > max) v = max;
-    value(step ? (Math.round(v / step) * step) : v);
-    fraction((value() - min) / (max - min));
+    value(stepSize
+      ? Math.round(v * normalizeFactor) / normalizeFactor
+      : v
+    );
+    fraction((value() - min) / range);
     if (attrs.onChange) {
       attrs.onChange({
         value: value()
@@ -296,16 +304,17 @@ export const getInitialState = (vnode, createStream) => {
   };
 
   const increment = useLargeStep =>
-    setValue(value() + (useLargeStep ? 10 : 1) * (step || 1));
+    setValue(value() + (useLargeStep ? 10 : 1) * (stepSize || 1));
 
   const decrement = useLargeStep =>
-    setValue(value() - (useLargeStep ? 10 : 1) * (step || 1));
+    setValue(value() - (useLargeStep ? 10 : 1) * (stepSize || 1));
   
   setValue(defaultValue);
   
   return {
     min,
     max,
+    stepSize,
     fraction,
     // DOM elements
     trackEl: null,

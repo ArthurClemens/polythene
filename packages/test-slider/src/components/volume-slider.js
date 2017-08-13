@@ -33,7 +33,7 @@ export default ({ h, Slider, Icon }) => {
   const defaults = {
     min: 0,
     max: 10,
-    step: 0,
+    stepSize: 0,
   };
   return {
     view: () =>

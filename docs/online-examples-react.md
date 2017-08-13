@@ -25,6 +25,7 @@ Try out Polythene in JSFiddles.
   * [Checkbox](https://jsfiddle.net/ArthurClemens/hp6ksg2m/)
   * [Radio Button](https://jsfiddle.net/ArthurClemens/b1vbbLgw/)
   * [Search](https://jsfiddle.net/ArthurClemens/qm85uyd9/)
+  * [Slider](https://jsfiddle.net/ArthurClemens/6crka9hy/)
   * [Switch](https://jsfiddle.net/ArthurClemens/orqdxd4a/)
   * [Text Field](https://jsfiddle.net/ArthurClemens/dz21hu8c/)
 * [List](https://jsfiddle.net/ArthurClemens/yzba5Lvn/)  

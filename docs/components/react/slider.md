@@ -33,6 +33,8 @@ import { renderer as h, Slider } from "polythene-react"
 h(Slider)
 ~~~
 
+### Ranges, steps and ticks
+
 Options to create a Slider with a range of 0 to 50 and a step size of 10 (step count of 6 including min and max), and a default value of 10:
 
 ~~~javascript
@@ -40,7 +42,7 @@ Options to create a Slider with a range of 0 to 50 and a step size of 10 (step c
   min: 0,
   max: 50,
   defaultValue: 10,
-  step: 10
+  stepSize: 10
 }
 ~~~
 
@@ -51,7 +53,7 @@ To add tick marks and pins:
   min: 0,
   max: 50,
   defaultValue: 10,
-  step: 10,
+  stepSize: 10,
   ticks: true,
   pin: true
 }

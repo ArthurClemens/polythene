@@ -62,7 +62,7 @@ The amount of change depends on the step size. This can be set with option `step
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **min** | optional | Number | 0 | Minimum slider value |
 | **max** | optional | Number | 100 | Maximum slider value |
-| **step** | optional | Number | 1 | Step size; set to 0 for a continuous (smooth) slider |
+| **stepSize** | optional | Number | 1 | Step size; set to 0 for a continuous (smooth) slider |
 | **value** | optional | Number | 0 | Managed Slider value (see: [Handling state](../handling-state.md)) |
 | **defaultValue** | optional | Number | 0 | Initial slider value |
 | **ticks** | optional | Boolean |  | Show a tick for each step; limited to 100 |

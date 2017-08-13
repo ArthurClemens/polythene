@@ -271,7 +271,7 @@ var volumeSlider = (function (_ref) {
   var defaults = {
     min: 0,
     max: 10,
-    step: 0
+    stepSize: 0
   };
   return {
     view: function view() {
@@ -325,24 +325,50 @@ var genericTests = (function (_ref) {
   });
 
   return [{
-    name: "No options (range 0-100, steps rounded to 1)",
+    name: "No options (range: 0 to 100, steps are rounded to 1)",
     interactive: true,
     component: onChange({ h: h, Slider: Slider$$1, attrs: {} })
   }, {
-    name: "Option: step (0), defaultValue (50)",
+    name: "Continuous slider, defaultValue (50)",
     interactive: true,
     component: onChange({ h: h, Slider: Slider$$1, attrs: {
-        step: 0,
+        stepSize: 0,
         defaultValue: 50
       } })
   }, {
-    name: "Option: min (-1), max (1), step (0.1)",
+    name: "Options: range: -1 to 1, stepSize: 0.1",
     interactive: true,
     component: onChange({ h: h, Slider: Slider$$1, attrs: {
         min: -1,
         max: 1,
-        step: 0.1
+        stepSize: 0.1
       } })
+  }, {
+    name: "Options: ticks, range 0 to 1, stepSize: .1",
+    interactive: true,
+    component: onChange({
+      h: h,
+      Slider: Slider$$1,
+      attrs: {
+        min: 0,
+        max: 1,
+        stepSize: .1,
+        ticks: true
+      }
+    })
+  }, {
+    name: "Option: ticks, range: -5 to 5, stepSize: .5",
+    interactive: true,
+    component: onChange({
+      h: h,
+      Slider: Slider$$1,
+      attrs: {
+        min: -5,
+        max: 5,
+        stepSize: .5,
+        ticks: true
+      }
+    })
   }, {
     name: "Use left value for extra \"unspecified value\" step",
     interactive: true,
@@ -359,26 +385,13 @@ var genericTests = (function (_ref) {
       }
     })
   }, {
-    name: "Option: ticks, step (10)",
-    interactive: true,
-    component: onChange({
-      h: h,
-      Slider: Slider$$1,
-      attrs: {
-        min: 0,
-        max: 100,
-        step: 10,
-        ticks: true
-      }
-    })
-  }, {
-    name: "Option: ticks with pin",
+    name: "Options: ticks with pin",
     interactive: true,
     component: Slider$$1,
     attrs: {
       min: 0,
       max: 100,
-      step: 10,
+      stepSize: 10,
       defaultValue: 20,
       pin: true,
       ticks: true
@@ -436,7 +449,7 @@ var genericTests = (function (_ref) {
     attrs: {
       min: 0,
       max: 100,
-      step: 10,
+      stepSize: 10,
       defaultValue: 2,
       pin: true,
       ticks: true,
@@ -4563,7 +4576,7 @@ var reactTests = function reactTests(_ref) {
       return react.createElement(Slider$$1, {
         min: 0,
         max: 100,
-        step: 10,
+        stepSize: 10,
         defaultValue: 50,
         pin: true,
         ticks: true
