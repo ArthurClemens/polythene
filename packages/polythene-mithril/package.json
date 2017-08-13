@@ -16,6 +16,7 @@
   ],
   "dependencies": {
     "mithril": "1.1.3",
+    "polythene-core": "^1.0.0-rc.3",
     "polythene-fastclick": "^1.0.0-rc.3",
     "polythene-mithril-base": "^1.0.0-rc.3",
     "polythene-mithril-button": "^1.0.0-rc.3",
