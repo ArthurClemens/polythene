@@ -104,7 +104,7 @@ import { renderer as h, ListTile, Icon } from "polythene-react"
 h(ListTile, {
   title: "My title",
   front: h(Icon, {
-    type: "large",
+    size: "large",
     avatar: true,
     src: "app/images/1.png"
   })
@@ -171,7 +171,7 @@ const starsSVG = <svg width="24" height="24" viewBox="0 0 24 24"><path d="M11.99
   title="My title"
   secondary={{
     icon: {
-      type: "small",
+      size: "small",
       svg: {starsSVG}
     },
     url: {
@@ -201,7 +201,7 @@ withRouter(({ history }) =>
       front: h(Icon, {
         src: "images/jennifer.png",
         avatar: true,
-        type: "large"
+        size: "large"
       }),
       url: {
         href: "/friends/jennifer"
@@ -227,7 +227,7 @@ h(ListTile, {
   title: "My title",
   secondary: {
     icon: {
-      type: "small",
+      size: "small",
       svg: m.trust(starsSVG)
     },
     url: {

@@ -46,7 +46,7 @@ m(List, {
       front: m(Icon, {
         src: "images/jennifer.png",
         avatar: true,
-        type: "large"
+        size: "large"
       }),
       url: {
         href: "/friends/jennifer"

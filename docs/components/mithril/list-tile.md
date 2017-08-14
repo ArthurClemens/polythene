@@ -48,7 +48,7 @@ import { ListTile, Icon } from "polythene-mithril"
 m(ListTile, {
   title: "My title",
   front: m(Icon, {
-    type: "large",
+    size: "large",
     avatar: true,
     src: "app/images/1.png"
   })
@@ -76,7 +76,7 @@ To make the primary content a link:
 m(ListTile, {
   title: "My title",
   front: m(Icon, {
-    type: "large",
+    size: "large",
     avatar: true,
     src: "app/images/1.png"
   }),
@@ -97,7 +97,7 @@ m(ListTile, {
   title: "My title",
   secondary: {
     icon: {
-      type: "small",
+      size: "small",
       svg: m.trust(starsSVG)
     },
     url: {
