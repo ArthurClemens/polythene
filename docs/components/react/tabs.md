@@ -10,7 +10,8 @@
 
 ## Usage
 
-Tab buttons are passed as a child node (hyperscript only), or with option `tabs`:
+Tabs can show a text label, an icon, or the combination of the two. 
+Because each tab are registered with the parent Tabs component, tabs cannot be passed as children but only as option parameter to Tabs.
 
 #### With JSX
 
@@ -20,9 +21,11 @@ Tab buttons are passed as a child node (hyperscript only), or with option `tabs`
 import React from "react"
 import { Tabs } from "polythene-react"
 
-const tabButtons = []
+const tabOptions = [{
+  //
+}]
 
-<Tabs tabs={tabButtons} />
+<Tabs tabs={tabOptions} />
 ~~~
 
 #### With hyperscript
@@ -32,24 +35,16 @@ const tabButtons = []
 ~~~javascript
 import { renderer as h, Tabs } from "polythene-react"
 
-const tabButtons = []
+const tabOptions = [{
+  //
+}]
 
 h(Tabs, {
-  tabs: tabButtons
+  tabs: tabOptions
 })
 ~~~
 
-Using hyperscript, tab buttons can also be passed as child element:
-
-~~~javascript
-h(Tabs,
-  tabButtons
-)
-~~~
-
 ### Tab options
-
-Each tab button is passed as an option object, and can show a text label, an icon, or the combination of the two.
 
 Text labels:
 
@@ -142,7 +137,7 @@ For example:
     height: "48px"
   }}
 >
-  <Tabs scrollable tabs={tabButtons} />
+  <Tabs scrollable tabs={tabOptions} />
 </div>
 ~~~
 
@@ -160,8 +155,10 @@ h("div",
     }
   },
   h(Tabs,
-    { scrollable: true },
-    tabButtons
+    {
+      scrollable: true,
+      tabs: tabOptions
+    }
   )
 )
 ~~~
@@ -208,7 +205,7 @@ import { Tabs } from "polythene-react"
 const arrowBackSVG = <svg width="24" height="24" viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
 const arrowForwardSVG = <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
 
-const tabButtons = [
+const tabOptions = [
   { label: "Web" },
   { label: "Shopping" },
   { label: "Videos" },
@@ -230,7 +227,7 @@ const tabButtons = [
     scrollable
     scrollIconBackward={{ svg: arrowBackSVG }}
     scrollIconForward={{ svg: arrowForwardSVG }}
-    tabs={tabButtons}
+    tabs={tabOptions}
   />
 </div>
 ~~~
@@ -243,7 +240,7 @@ import { renderer as h, Tabs } from "polythene-react"
 const arrowBackSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z\"/></svg>"
 const arrowForwardSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z\"/></svg>"
 
-const tabButtons = [
+const tabOptions = [
   { label: "Web" },
   { label: "Shopping" },
   { label: "Videos" },
@@ -266,9 +263,9 @@ h("div",
     {
       scrollable: true,
       scrollIconBackward: { svg: h.trust(arrowBackSVG) },
-      scrollIconForward: { svg: h.trust(arrowForwardSVG) }
-    },
-    tabButtons
+      scrollIconForward: { svg: h.trust(arrowForwardSVG) },
+      tabs: tabOptions
+    }
   )
 )
 ~~~
@@ -346,7 +343,7 @@ Tabs.theme(".tabs-fixed-width", {
 h(Tabs,
   {
     className: "tabs-fixed-width",
-    tabs: tabButtons
+    tabs: tabOptions
   }
 )
 ~~~
@@ -365,5 +362,3 @@ If the component - or a component's parent - has option `tone` set to "dark", th
 
 * Use `tone: "dark"` to render light on dark
 * Use `tone: "light"` to locally render normally when dark tone is set
-
-
