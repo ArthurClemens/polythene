@@ -68,7 +68,7 @@ var layout = (function (selector, componentVars) {
 
       " .pe-list-tile:not(.pe-list__header)": {
         ":not(:last-child)": {
-          " .pe-list-tile__content:not(.pe-list-tile__content--front)": borderStyle(componentVars)
+          " .pe-list-tile__content:not(.pe-list-tile__content-front)": borderStyle(componentVars)
         }
       }
     }
@@ -95,7 +95,7 @@ var style = function style(scopes, selector, componentVars, tint) {
     }
   }), _defineProperty$1(_scopes$map$join, ".pe-list--indented-borders", {
     " .pe-list-tile:not(.pe-list__header)": {
-      " .pe-list-tile__content:not(.pe-list-tile__content--front)": {
+      " .pe-list-tile__content:not(.pe-list-tile__content-front)": {
         borderColor: componentVars["color_" + tint + "_border"]
       }
     }

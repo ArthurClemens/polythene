@@ -58,12 +58,9 @@ export default (selector, componentVars) => [{
           ":not(.pe-list-tile--compact-front)": {
             width: componentVars.front_item_width + "px"
           },
-          ".pe-list-tile--compact-front": [
-            paddingH(componentVars.compact_side_padding),
-            {
-              width: componentVars.compact_front_item_width + "px"
-            }
-          ],
+          ".pe-list-tile--compact-front": {
+            width: componentVars.compact_front_item_width + "px"
+          },
 
           " small": {
             fontSize: componentVars.font_size_small + "px"
