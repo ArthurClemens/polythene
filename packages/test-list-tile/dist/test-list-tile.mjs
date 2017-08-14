@@ -82,6 +82,17 @@ var genericTests = (function (_ref) {
       })
     }
   }, {
+    name: "Option: compact front (Icon)",
+    component: ListTile$$1,
+    attrs: {
+      title: "Ancillary Justice",
+      front: h(Icon$$1, {
+        svg: trustedIconStars,
+        size: "medium"
+      }),
+      compactFront: true
+    }
+  }, {
     name: "Themed (color and font size)",
     component: ListTile$$1,
     attrs: {

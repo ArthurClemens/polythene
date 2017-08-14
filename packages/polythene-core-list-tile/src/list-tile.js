@@ -12,7 +12,11 @@ const primaryContent = (h, k, requiresKeys, attrs, children) => {
     : attrs.url
       ? "a"
       : "div";
-  const contentFrontClass = classes.content + " " + classes.contentFront;
+  const contentFrontClass = [
+    classes.content,
+    classes.contentFront,
+    attrs.compactFront ? classes.compactFront : null,
+  ].join(" ");
   const frontComp = attrs.front
     ? h("div", Object.assign(
       {},
@@ -119,12 +123,12 @@ export const createProps = (vnode, { keys: k }) => {
     {
       className: [
         classes.component,
-        attrs.selected   ? classes.selected : null,
-        attrs.disabled   ? classes.disabled : null,
-        attrs.sticky     ? classes.sticky : null,
-        attrs.compact    ? classes.compact : null,
-        attrs.hoverable  ? classes.hoverable : null,
-        attrs.selectable ? classes.selectable : null,
+        attrs.selected     ? classes.selected : null,
+        attrs.disabled     ? classes.disabled : null,
+        attrs.sticky       ? classes.sticky : null,
+        attrs.compact      ? classes.compact : null,
+        attrs.hoverable    ? classes.hoverable : null,
+        attrs.selectable   ? classes.selectable : null,
         attrs.tone === "dark" ? "pe-dark-tone" : null,
         attrs.tone === "light" ? "pe-light-tone" : null,
         heightClass,

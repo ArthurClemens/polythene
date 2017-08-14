@@ -81,6 +81,18 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
       }
     },
     {
+      name: "Option: compact front (Icon)",
+      component: ListTile,
+      attrs: {
+        title: "Ancillary Justice",
+        front: h(Icon, {
+          svg: trustedIconStars,
+          size: "medium"
+        }),
+        compactFront: true
+      }
+    },
+    {
       name: "Themed (color and font size)",
       component: ListTile,
       attrs: {

@@ -9,10 +9,11 @@ export default {
   secondary:       "pe-list-tile__secondary",
   subtitle:        "pe-list-tile__subtitle",
   title:           "pe-list-tile__title",
+  contentFront:    "pe-list-tile__content-front",
 
   // states
   compact:         "pe-list-tile--compact",
-  contentFront:    "pe-list-tile__content--front",
+  compactFront:    "pe-list-tile--compact-front",
   disabled:        "pe-list-tile--disabled",
   hasFront:        "pe-list-tile--front",
   hasHighSubtitle: "pe-list-tile--high-subtitle",

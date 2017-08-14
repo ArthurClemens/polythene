@@ -34,7 +34,7 @@ export default (selector, componentVars) => [{
 
       " .pe-list-tile:not(.pe-list__header)": {
         ":not(:last-child)": {
-          " .pe-list-tile__content:not(.pe-list-tile__content--front)": borderStyle(componentVars)
+          " .pe-list-tile__content:not(.pe-list-tile__content-front)": borderStyle(componentVars)
         }
       }
     }

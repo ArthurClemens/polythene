@@ -72,11 +72,12 @@ This works for list tiles that are defined as link (when either option `element`
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **content** | optional | String, hyperscript or component | | Any primary content; replaces children and ignores `title`, `subTitle` and `highSubtitle` |
-| **title** | optional | String | | The text content |
-| **subtitle** | optional | String | | Secondary text content (1 line high) |
+| **content**      | optional | String, hyperscript or component | | Any primary content; replaces children and ignores `title`, `subTitle` and `highSubtitle` |
+| **title**        | optional | String | | The text content |
+| **subtitle**     | optional | String | | Secondary text content (1 line high) |
 | **highSubtitle** | optional | String | | Secondary text content (2 lines high) |
-| **front** | optional | String, hyperscript or component |  | Content to show at the left of the primary content |
+| **front**        | optional | String, hyperscript or component |  | Content to show at the left of the primary content |
+| **compactFront** | optional | Boolean | | Set to `true` to reduce horizontal width of `front` content |
 | **url** | optional | Object with `href`, optionally `oncreate` (for Mithril) or `onClick` (for React) | | URL location; Mithril: for in-app route linking set `oncreate : m.route.link`; React: for in-app route linking use `onClick` and a router such as `react-router-dom` |
 
 ### List tile secondary content options

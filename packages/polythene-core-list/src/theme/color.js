@@ -16,7 +16,7 @@ const style = (scopes, selector, componentVars, tint) => [{
 
     ".pe-list--indented-borders": {
       " .pe-list-tile:not(.pe-list__header)": {
-        " .pe-list-tile__content:not(.pe-list-tile__content--front)": {
+        " .pe-list-tile__content:not(.pe-list-tile__content-front)": {
           borderColor: componentVars["color_" + tint + "_border"]
         }
       }

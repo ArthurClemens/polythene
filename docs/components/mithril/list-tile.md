@@ -119,7 +119,7 @@ m(ListTile, {
 * A list tile can optionally have an icon.
 * Text and icon are taken together as primary content. Primary content can optionally have a link.
 * A list tile can optionally have secondary content, displayed to the right. Secondary content can contain any content, and conditionally have a link.
-
+* Front content can be reduced in width with `compactFront`. Following the Material Design specs, this setting should be used for displaying a list of search results.
 
 ### Styling
 

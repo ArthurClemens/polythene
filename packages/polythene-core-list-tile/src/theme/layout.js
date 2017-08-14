@@ -34,7 +34,7 @@ export default (selector, componentVars) => [{
         flex.flex(), {
           position: "relative",
 
-          " .pe-list-tile__content:not(.pe-list-tile__content--front)": [
+          " .pe-list-tile__content:not(.pe-list-tile__content-front)": [
             flex.flex(),
             paddingV(componentVars.padding, componentVars.padding + 1)
           ]
@@ -50,10 +50,18 @@ export default (selector, componentVars) => [{
       " .pe-list-tile__content": [
         flex.layoutVertical,
         flex.selfCenter,
-        paddingH(componentVars.side_padding), {
-          ".pe-list-tile__content--front": [
-            paddingV(componentVars.padding - 5), {
-              width: componentVars.front_item_width + "px"
+        paddingH(componentVars.side_padding),
+        {
+          ".pe-list-tile__content-front": [
+            paddingV(componentVars.padding - 5)
+          ],
+          ":not(.pe-list-tile--compact-front)": {
+            width: componentVars.front_item_width + "px"
+          },
+          ".pe-list-tile--compact-front": [
+            paddingH(componentVars.compact_side_padding),
+            {
+              width: componentVars.compact_front_item_width + "px"
             }
           ],
 
@@ -63,7 +71,7 @@ export default (selector, componentVars) => [{
         }
       ],
 
-      " .pe-list-tile__content--front + .pe-list-tile__content": {
+      " .pe-list-tile__content-front + .pe-list-tile__content": {
         paddingLeft: 0
       },
 

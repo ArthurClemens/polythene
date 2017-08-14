@@ -12,10 +12,11 @@ var classes = {
   secondary: "pe-list-tile__secondary",
   subtitle: "pe-list-tile__subtitle",
   title: "pe-list-tile__title",
+  contentFront: "pe-list-tile__content-front",
 
   // states
   compact: "pe-list-tile--compact",
-  contentFront: "pe-list-tile__content--front",
+  compactFront: "pe-list-tile--compact-front",
   disabled: "pe-list-tile--disabled",
   hasFront: "pe-list-tile--front",
   hasHighSubtitle: "pe-list-tile--high-subtitle",
@@ -56,7 +57,9 @@ var vars$1 = {
   high_subtitle_line_count: 2,
   has_high_subtitle_padding: 13,
   front_item_width: 72,
+  compact_front_item_width: 64,
   side_padding: 2 * vars.grid_unit_component,
+  compact_side_padding: 1 * vars.grid_unit_component,
   font_size_title: 16,
   font_size_subtitle: 14,
   line_height_subtitle: 20,
@@ -119,7 +122,7 @@ var layout = (function (selector, componentVars) {
     " .pe-list-tile__primary": [flex.flex(), {
       position: "relative",
 
-      " .pe-list-tile__content:not(.pe-list-tile__content--front)": [flex.flex(), paddingV(componentVars.padding, componentVars.padding + 1)]
+      " .pe-list-tile__content:not(.pe-list-tile__content-front)": [flex.flex(), paddingV(componentVars.padding, componentVars.padding + 1)]
     }],
 
     " .pe-list-tile__secondary": {
@@ -129,8 +132,12 @@ var layout = (function (selector, componentVars) {
     },
 
     " .pe-list-tile__content": [flex.layoutVertical, flex.selfCenter, paddingH(componentVars.side_padding), {
-      ".pe-list-tile__content--front": [paddingV(componentVars.padding - 5), {
+      ".pe-list-tile__content-front": [paddingV(componentVars.padding - 5)],
+      ":not(.pe-list-tile--compact-front)": {
         width: componentVars.front_item_width + "px"
+      },
+      ".pe-list-tile--compact-front": [paddingH(componentVars.compact_side_padding), {
+        width: componentVars.compact_front_item_width + "px"
       }],
 
       " small": {
@@ -138,7 +145,7 @@ var layout = (function (selector, componentVars) {
       }
     }],
 
-    " .pe-list-tile__content--front + .pe-list-tile__content": {
+    " .pe-list-tile__content-front + .pe-list-tile__content": {
       paddingLeft: 0
     },
 
@@ -327,7 +334,7 @@ var theme = customTheme;
 
 var primaryContent = function primaryContent(h, k, requiresKeys, attrs, children) {
   var element = attrs.element ? attrs.element : attrs.url ? "a" : "div";
-  var contentFrontClass = classes.content + " " + classes.contentFront;
+  var contentFrontClass = [classes.content, classes.contentFront, attrs.compactFront ? classes.compactFront : null].join(" ");
   var frontComp = attrs.front ? h("div", _extends({}, requiresKeys ? { key: "front" } : null, { className: contentFrontClass }), attrs.front) : attrs.indent ? h("div", _extends({}, requiresKeys ? { key: "front" } : null, { className: contentFrontClass })) : null;
   var props = _extends({}, filterSupportedAttributes(attrs), attrs.url, attrs.events, _defineProperty({
     className: classes.primary,
