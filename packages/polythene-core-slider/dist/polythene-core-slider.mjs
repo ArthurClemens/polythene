@@ -614,20 +614,21 @@ var createSlider = function createSlider(vnode, _ref) {
   }), _defineProperty(_ref3, k.onkeydown, function (e) {
     if (e.key !== "Tab") {
       e.preventDefault();
-    } else if (e.key === "Escape") {
+    }
+    if (e.key === "Escape") {
       state.controlEl.blur(e);
     } else if (e.key === "ArrowLeft" || e.key === "ArrowDown") {
-      state.decrement(e.shiftKey);
+      state.decrement(state, e.shiftKey);
     } else if (e.key === "ArrowRight" || e.key === "ArrowUp") {
-      state.increment(e.shiftKey);
+      state.increment(state, e.shiftKey);
     } else if (e.key === "Home") {
-      state.setValue(state.min);
+      updateValue(state, state.min);
     } else if (e.key === "End") {
-      state.setValue(state.max);
+      updateValue(state, state.max);
     } else if (e.key === "PageDown") {
-      state.decrement(true);
+      state.decrement(state, true);
     } else if (e.key === "PageUp") {
-      state.increment(true);
+      state.increment(state, true);
     }
     readRangeData(state);
     updatePinPosition(state);
@@ -682,12 +683,12 @@ var getInitialState = function getInitialState(vnode, createStream) {
     previousValue(v);
   };
 
-  var increment = function increment(useLargeStep) {
-    return setValue(value() + (useLargeStep ? 10 : 1) * (stepSize || 1));
+  var increment = function increment(state, useLargeStep) {
+    return updateValue(state, value() + (useLargeStep ? 10 : 1) * (stepSize || 1));
   };
 
-  var decrement = function decrement(useLargeStep) {
-    return setValue(value() - (useLargeStep ? 10 : 1) * (stepSize || 1));
+  var decrement = function decrement(state, useLargeStep) {
+    return updateValue(state, value() - (useLargeStep ? 10 : 1) * (stepSize || 1));
   };
 
   setValue(defaultValue);
@@ -728,9 +729,12 @@ var onMount = function onMount(vnode) {
   state.trackEl = dom.querySelector("." + classes.track);
   state.controlEl = dom.querySelector("." + classes.control);
   state.pinEl = dom.querySelector("." + classes.pin);
+
+  readRangeData(state);
+
   if (attrs.pin) {
     setTimeout(function () {
-      updatePinPosition(state);
+      updateValue(state, state.value());
     }, 0);
   }
 };
