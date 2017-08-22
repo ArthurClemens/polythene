@@ -9,7 +9,7 @@ Can also be used as general-purpose component library that includes dialogs, car
 
 ## Status
 
-Version: `1.0.0-rc.3` (release candidate 3)
+Version: `1.0.0-rc.4` (release candidate 4)
 
 
 ## Main features
@@ -31,6 +31,10 @@ Version: `1.0.0-rc.3` (release candidate 3)
 * [Introduction](docs/introduction.md)
 * [Getting started with Mithril](docs/getting-started-mithril.md)
 * [Getting started with React](docs/getting-started-react.md)
+
+### Boilerplate
+
+* [Minimal setup example how to create a Polythene app for Mithril](https://github.com/ArthurClemens/Polythene-setup)
 
 
 ## Guides
