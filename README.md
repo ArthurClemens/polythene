@@ -34,7 +34,7 @@ Version: `1.0.0-rc.4` (release candidate 4)
 
 ### Boilerplate
 
-* [Minimal setup example how to create a Polythene app for Mithril](https://github.com/ArthurClemens/Polythene-setup)
+* [Minimal setup example how to create a Polythene app for Mithril](https://github.com/ArthurClemens/polythene-mithril-setup)
 
 
 ## Guides
