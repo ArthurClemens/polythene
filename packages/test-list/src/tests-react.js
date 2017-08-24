@@ -1,5 +1,5 @@
 import React from "react"; // eslint-disable-line no-unused-vars
-import { keys, renderer, List, Icon, ListTile } from "polythene-react";
+import { keys, renderer, List, Icon, ListTile, Notification } from "polythene-react";
 import genericTests from "./tests-generic";
 import { withRouter } from "react-router-dom";
 
@@ -28,103 +28,103 @@ const reactTests = ({ List, Icon, ListTile, renderer: h }) => {
   const listTileGrace = createUserListTile("Grace VanDam", "Binge watching...", "avatar-3");
 
   return [
-    {
-      section: "React specific tests",
-    },
-    {
-      name: "Options: header, tiles with urls",
-      interactive: true,
-      component: () =>
-        h("div", [
-          h(List, {
-            header: {
-              title: "Friends"
-            },
-            borders: true,
-            tiles: [
-              listTileJennifer,
-              listTileAli,
-              listTileGrace
-            ]
-          }),
-          h(List, {
-            header: {
-              title: "Friends"
-            },
-            borders: true,
-            tiles: [
-              listTileJennifer,
-              listTileAli,
-              listTileGrace
-            ]
-          })
-        ])
-    },
-    {
-      name: "Options: header.sticky",
-      interactive: true,
-      exclude: true,
-      component: () =>
-        h(".scrollable-list", ["one", "two", "three", "four", "five"].map(ord => {
-          return h(List,
-            {
-              header: {
-                title: `Sub header ${ord}`,
-                sticky: true
-              },
-              tiles: [
-                listTileJennifer,
-                listTileAli,
-                listTileGrace,
-                listTileJennifer,
-                listTileAli,
-                listTileGrace
-              ]
-            }
-          );
-        }))
-    },
+    // {
+    //   section: "React specific tests",
+    // },
+    // {
+    //   name: "Options: header, tiles with urls",
+    //   interactive: true,
+    //   component: () =>
+    //     h("div", [
+    //       h(List, {
+    //         header: {
+    //           title: "Friends"
+    //         },
+    //         borders: true,
+    //         tiles: [
+    //           listTileJennifer,
+    //           listTileAli,
+    //           listTileGrace
+    //         ]
+    //       }),
+    //       h(List, {
+    //         header: {
+    //           title: "Friends"
+    //         },
+    //         borders: true,
+    //         tiles: [
+    //           listTileJennifer,
+    //           listTileAli,
+    //           listTileGrace
+    //         ]
+    //       })
+    //     ])
+    // },
+    // {
+    //   name: "Options: header.sticky",
+    //   interactive: true,
+    //   exclude: true,
+    //   component: () =>
+    //     h(".scrollable-list", ["one", "two", "three", "four", "five"].map(ord => {
+    //       return h(List,
+    //         {
+    //           header: {
+    //             title: `Sub header ${ord}`,
+    //             sticky: true
+    //           },
+    //           tiles: [
+    //             listTileJennifer,
+    //             listTileAli,
+    //             listTileGrace,
+    //             listTileJennifer,
+    //             listTileAli,
+    //             listTileGrace
+    //           ]
+    //         }
+    //       );
+    //     }))
+    // },
     
-    {
-      section: "React JSX tests",
-    },
-    {
-      name: "Options: header, tiles, indent, indentedBorders (JSX)",
-      component: () =>
-        <List
-          indentedBorders
-          header={{
-            title: "Friends",
-            indent: true
-          }}
-        >
-          <ListTile key="one" indent title="Jennifer Barker" subtitle="Starting post doc" front={
-            <Icon
-              src="http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png"
-              avatar
-              size="large"
-            />}
-          />
-          <ListTile key="two" indent title="Ali Connors" subtitle="Brunch this weekend?" front={
-            <Icon
-              src="http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png"
-              avatar
-              size="large"
-            />}
-          />
-          <ListTile key="three" indent title="Grace VanDam" subtitle="Binge watching..." front={
-            <Icon
-              src="http://arthurclemens.github.io/assets/polythene/examples/avatar-3.png"
-              avatar
-              size="large"
-            />}
-          />
-        </List>
-    },
+    // {
+    //   section: "React JSX tests",
+    // },
+    // {
+    //   name: "Options: header, tiles, indent, indentedBorders (JSX)",
+    //   component: () =>
+    //     <List
+    //       indentedBorders
+    //       header={{
+    //         title: "Friends",
+    //         indent: true
+    //       }}
+    //     >
+    //       <ListTile key="one" indent title="Jennifer Barker" subtitle="Starting post doc" front={
+    //         <Icon
+    //           src="http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png"
+    //           avatar
+    //           size="large"
+    //         />}
+    //       />
+    //       <ListTile key="two" indent title="Ali Connors" subtitle="Brunch this weekend?" front={
+    //         <Icon
+    //           src="http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png"
+    //           avatar
+    //           size="large"
+    //         />}
+    //       />
+    //       <ListTile key="three" indent title="Grace VanDam" subtitle="Binge watching..." front={
+    //         <Icon
+    //           src="http://arthurclemens.github.io/assets/polythene/examples/avatar-3.png"
+    //           avatar
+    //           size="large"
+    //         />}
+    //       />
+    //     </List>
+    // },
   ];
     
 };
 
 export default []
-  .concat(genericTests({ List, Icon, ListTile, renderer, keys }))
-  .concat(reactTests({ List, Icon, ListTile, renderer, keys }));
+  .concat(genericTests({ List, Icon, ListTile, Notification, renderer, keys }))
+  .concat(reactTests({ List, Icon, ListTile, Notification, renderer, keys }));

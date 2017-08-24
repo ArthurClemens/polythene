@@ -1,4 +1,4 @@
-import { filterSupportedAttributes } from 'polythene-core';
+import { filterSupportedAttributes, isClient } from 'polythene-core';
 import { flex, mixin, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 
@@ -21,9 +21,11 @@ var classes = {
   hasFront: "pe-list-tile--front",
   hasHighSubtitle: "pe-list-tile--high-subtitle",
   hasSubtitle: "pe-list-tile--subtitle",
+  header: "pe-list-tile--header",
   hoverable: "pe-list-tile--hoverable",
   selectable: "pe-list-tile--selectable",
   selected: "pe-list-tile--selected",
+  highlight: "pe-list-tile--highlight",
   sticky: "pe-list-tile--sticky"
 };
 
@@ -75,6 +77,7 @@ var vars$1 = {
   color_light_hover_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
   color_light_focus_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
   color_light_selected_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
+  color_light_highlight_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
   // background color may be set in theme; disabled by default
   // color_light_background:          "inherit",
 
@@ -85,7 +88,8 @@ var vars$1 = {
   color_dark_list_header: rgba(vars.color_dark_foreground, vars.blend_dark_text_tertiary),
   color_dark_secondary: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
   color_dark_hover_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover),
-  color_dark_selected_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover)
+  color_dark_selected_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover),
+  color_dark_highlight_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover)
   // background color may be set in theme; disabled by default
   // color_dark_background:           "inherit",
 };
@@ -119,7 +123,7 @@ var layout = (function (selector, componentVars) {
       border: "none"
     }],
 
-    " .pe-list-tile__primary": [flex.flex(), {
+    ":not(.pe-list-tile--header) .pe-list-tile__primary": [flex.flex(), {
       position: "relative",
 
       " .pe-list-tile__content:not(.pe-list-tile__content-front)": [flex.flex(), paddingV(componentVars.padding, componentVars.padding + 1)]
@@ -133,7 +137,7 @@ var layout = (function (selector, componentVars) {
 
     " .pe-list-tile__content": [flex.layoutVertical, flex.selfCenter, paddingH(componentVars.side_padding), {
       ".pe-list-tile__content-front": [paddingV(componentVars.padding - 5)],
-      ":not(.pe-list-tile--compact-front)": {
+      ".pe-list-tile__content-front:not(.pe-list-tile--compact-front)": {
         width: componentVars.front_item_width + "px"
       },
       ".pe-list-tile--compact-front": {
@@ -188,7 +192,7 @@ var layout = (function (selector, componentVars) {
     },
 
     // List header
-    ".pe-list__header": {
+    ".pe-list-tile--header": {
       height: componentVars.single_height + "px",
 
       " .pe-list-tile__content": {
@@ -206,7 +210,7 @@ var layout = (function (selector, componentVars) {
     // Compact list
 
     " .pe-list--compact &, &.pe-list-tile--compact": {
-      ":not(.pe-list__header)": {
+      ":not(.pe-list-tile--header)": {
         " .pe-list-tile__content": paddingV(componentVars.compact_padding, componentVars.compact_padding + 1)
       }
     },
@@ -240,7 +244,7 @@ var layout = (function (selector, componentVars) {
 
     "html.pe-no-touch &.pe-list-tile--hoverable, \
       html.pe-no-touch &.pe-list-tile--selectable": {
-      ":not(.pe-list__header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected):hover": {
+      ":not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected):hover": {
         cursor: "pointer"
       }
     }
@@ -256,7 +260,7 @@ var style = function style(scopes, selector, componentVars, tint) {
     color: componentVars["color_" + tint + "_title"],
     backgroundColor: componentVars["color_" + tint + "_background"],
 
-    ".pe-list__header": {
+    ".pe-list-tile--header": {
       color: componentVars["color_" + tint + "_list_header"],
 
       " .pe-list-tile__primary, pe-list-tile__secondary": {
@@ -279,6 +283,11 @@ var style = function style(scopes, selector, componentVars, tint) {
         backgroundColor: componentVars["color_" + tint + "_selected_background"]
       }
     },
+    ".pe-list-tile--highlight": {
+      " .pe-list-tile__primary, pe-list-tile__secondary": {
+        backgroundColor: componentVars["color_" + tint + "_highlight_background"]
+      }
+    },
     "&.pe-list-tile--sticky": {
       backgroundColor: componentVars["color_" + tint + "_background"] || "inherit"
     },
@@ -294,7 +303,7 @@ var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, tint) 
   return [_defineProperty$2({}, scopes.map(function (s) {
     return s + selector + ":hover";
   }).join(","), {
-    ":not(.pe-list__header):not(.pe-list-tile--disabled)": {
+    ":not(.pe-list-tile--header):not(.pe-list-tile--disabled)": {
       " .pe-list-tile__primary, .pe-list-tile__secondary": {
         backgroundColor: componentVars["color_" + tint + "_hover_background"]
       }
@@ -333,57 +342,120 @@ var getElement = function getElement() {
 var theme = customTheme;
 
 var primaryContent = function primaryContent(h, k, requiresKeys, attrs, children) {
-  var element = attrs.element ? attrs.element : attrs.url ? "a" : "div";
+  var url = attrs.keyboardControl ? null : attrs.url;
+  var element = attrs.element ? attrs.element : url ? "a" : "div";
   var contentFrontClass = [classes.content, classes.contentFront, attrs.compactFront ? classes.compactFront : null].join(" ");
   var frontComp = attrs.front ? h("div", _extends({}, requiresKeys ? { key: "front" } : null, { className: contentFrontClass }), attrs.front) : attrs.indent ? h("div", _extends({}, requiresKeys ? { key: "front" } : null, { className: contentFrontClass })) : null;
-  var props = _extends({}, filterSupportedAttributes(attrs), attrs.url, attrs.events, _defineProperty({
+  var hasTabIndex = !attrs.header && attrs.url;
+  var props = _extends({}, filterSupportedAttributes(attrs), attrs.events, {
     className: classes.primary,
     style: null
-  }, [k.tabindex], attrs[k.tabindex] || 0));
+  }, hasTabIndex && _defineProperty({}, k.tabindex, attrs[k.tabindex] || 0), url);
   return h(element, props, [frontComp, h("div", {
     className: classes.content,
     style: attrs.style
   }, [attrs.content ? _extends({}, requiresKeys ? { key: "content" } : null, attrs.content) : children, attrs.title && !attrs.content ? h("div", _extends({}, requiresKeys ? { key: "title" } : null, { className: classes.title }), attrs.title) : null, attrs.subtitle ? h("div", _extends({}, requiresKeys ? { key: "subtitle" } : null, { className: classes.subtitle }), attrs.subtitle) : null, attrs.highSubtitle ? h("div", _extends({}, requiresKeys ? { key: "high-subtitle" } : null, { className: classes.subtitle + " " + classes.highSubtitle }), attrs.highSubtitle) : null])]);
 };
 
-var secondaryContent = function secondaryContent(h, requiresKeys, Icon) {
-  var secondaryAttrs = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+var secondaryContent = function secondaryContent(h, k, requiresKeys, Icon) {
+  var attrs = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : {};
 
-  var element = secondaryAttrs.element ? secondaryAttrs.element : secondaryAttrs.url ? "a" : "div";
-  return h(element, _extends({}, secondaryAttrs.url, {
+  var url = attrs.keyboardControl ? null : attrs.url;
+  var element = attrs.element ? attrs.element : url ? "a" : "div";
+  var hasTabIndex = attrs.url;
+  return h(element, _extends({}, url, {
     className: classes.secondary
-  }, requiresKeys ? { key: "secondary" } : null, filterSupportedAttributes(secondaryAttrs)), h("div", { className: classes.content }, [secondaryAttrs.icon ? h(Icon, secondaryAttrs.icon) : null, secondaryAttrs.content ? secondaryAttrs.content : null]));
+  }, requiresKeys ? { key: "secondary" } : null, filterSupportedAttributes(attrs), hasTabIndex && _defineProperty({}, k.tabindex, attrs[k.tabindex] || 0)), h("div", { className: classes.content }, [attrs.icon ? h(Icon, attrs.icon) : null, attrs.content ? attrs.content : null]));
 };
 
-var createProps = function createProps(vnode, _ref) {
-  var k = _ref.keys;
-
+var getInitialState = function getInitialState(vnode, createStream) {
   var attrs = vnode.attrs;
-  var heightClass = attrs.subtitle ? classes.hasSubtitle : attrs.highSubtitle ? classes.hasHighSubtitle : attrs.front || attrs.indent ? classes.hasFront : null;
-  return _extends({}, filterSupportedAttributes(attrs, { remove: ["tabindex", "tabIndex"] }), // tab index set in primary or secondary content
-  {
-    className: [classes.component, attrs.selected ? classes.selected : null, attrs.disabled ? classes.disabled : null, attrs.sticky ? classes.sticky : null, attrs.compact ? classes.compact : null, attrs.hoverable ? classes.hoverable : null, attrs.selectable ? classes.selectable : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, heightClass, attrs.className || attrs[k.class]].join(" ")
-    // events and url are attached to primary content to not interfere with controls
-  });
+  var highlight = createStream(attrs.defaultHighlight);
+  return {
+    highlight: highlight,
+    redrawOnUpdate: createStream.merge([highlight])
+  };
 };
 
-var createContent = function createContent(vnode, _ref2) {
-  var h = _ref2.renderer,
-      requiresKeys = _ref2.requiresKeys,
-      k = _ref2.keys,
-      Ripple = _ref2.Ripple,
-      Icon = _ref2.Icon;
+var onMount = function onMount(vnode) {
+  var state = vnode.state;
+  var attrs = vnode.attrs;
+  var dom = vnode.dom;
+  if (!dom) {
+    return;
+  }
+  if (isClient) {
+    if (attrs.register) {
+      var primaryDom = dom; //.querySelector(`.${classes.primary}`);
+
+      var onFocus = function onFocus() {
+        return state.highlight(true);
+      };
+      var onBlur = function onBlur() {
+        return state.highlight(false);
+      };
+
+      primaryDom.addEventListener("focus", onFocus, false);
+      primaryDom.addEventListener("blur", onBlur, false);
+
+      state.removeEventListeners = function () {
+        return primaryDom.removeEventListener("focus", onFocus, false), primaryDom.removeEventListener("blur", onBlur, false);
+      };
+
+      attrs.register(attrs.index, {
+        dom: primaryDom,
+        attrs: attrs
+      });
+
+      state.highlight.map(function (hasHighlight) {
+        if (attrs.setHighlightIndex && hasHighlight) {
+          attrs.setHighlightIndex(attrs.index);
+        }
+      });
+    }
+  }
+};
+
+var onUnMount = function onUnMount(vnode) {
+  return vnode.state.removeEventListeners && vnode.state.removeEventListeners();
+};
+
+var createProps = function createProps(vnode, _ref3) {
+  var k = _ref3.keys;
+
+  var state = vnode.state;
+  var attrs = vnode.attrs;
+  var highlight = state.highlight();
+  var hasTabIndex = !attrs.header && !attrs.url && !(attrs.secondary && attrs.secondary.url);
+  var heightClass = attrs.subtitle ? classes.hasSubtitle : attrs.highSubtitle ? classes.hasHighSubtitle : attrs.front || attrs.indent ? classes.hasFront : null;
+  return _extends({}, filterSupportedAttributes(attrs, { remove: ["tabindex", "tabIndex"] }), // tabindex is set elsewhere
+  {
+    className: [classes.component, attrs.selected ? classes.selected : null, attrs.disabled ? classes.disabled : null, attrs.sticky ? classes.sticky : null, attrs.compact ? classes.compact : null, attrs.hoverable ? classes.hoverable : null, attrs.selectable ? classes.selectable : null, highlight ? classes.highlight : null, attrs.header ? classes.header : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, heightClass, attrs.className || attrs[k.class]].join(" ")
+  }, hasTabIndex && _defineProperty({}, k.tabindex, attrs[k.tabindex] || 0)
+  // events and url are attached to primary content to not interfere with controls
+  );
+};
+
+var createContent = function createContent(vnode, _ref5) {
+  var h = _ref5.renderer,
+      requiresKeys = _ref5.requiresKeys,
+      k = _ref5.keys,
+      Ripple = _ref5.Ripple,
+      Icon = _ref5.Icon;
 
   var attrs = vnode.attrs;
   var primaryAttrs = _extends({}, requiresKeys ? { key: "primary" } : null, attrs);
   delete primaryAttrs.id;
   delete primaryAttrs[k.class];
-  return [attrs.ink && !attrs.disabled ? h(Ripple, _extends({}, attrs.ripple, requiresKeys ? { key: "ripple" } : null)) : null, primaryContent(h, k, requiresKeys, primaryAttrs, attrs.children || vnode.children), attrs.secondary ? secondaryContent(h, requiresKeys, Icon, attrs.secondary) : null];
+  return [attrs.ink && !attrs.disabled ? h(Ripple, _extends({}, attrs.ripple, requiresKeys ? { key: "ripple" } : null)) : null, primaryContent(h, k, requiresKeys, primaryAttrs, attrs.children || vnode.children), attrs.secondary ? secondaryContent(h, k, requiresKeys, Icon, attrs.secondary) : null];
 };
 
 var listTile = Object.freeze({
 	getElement: getElement,
 	theme: theme,
+	getInitialState: getInitialState,
+	onMount: onMount,
+	onUnMount: onUnMount,
 	createProps: createProps,
 	createContent: createContent
 });

@@ -22,6 +22,10 @@ const style = (scopes, selector, componentVars, tint) => {
         }
       },
 
+      " .pe-button__focus": {
+        backgroundColor: componentVars["color_" + tint + "_focus_background"]
+      },
+
       ".pe-button--selected": {
         " .pe-button__content": {
           backgroundColor: componentVars["color_" + tint + "_active_background"],
@@ -31,10 +35,6 @@ const style = (scopes, selector, componentVars, tint) => {
           opacity: 1,
           backgroundColor: componentVars["color_" + tint + "_focus_background"]
         }
-      },
-
-      " .pe-button__focus": {
-        backgroundColor: componentVars["color_" + tint + "_focus_background"]
       },
 
       ".pe-button--focus, &:focus": {

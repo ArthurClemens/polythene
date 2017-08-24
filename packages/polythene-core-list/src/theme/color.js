@@ -7,7 +7,7 @@ const style = (scopes, selector, componentVars, tint) => [{
     },
 
     ".pe-list--borders": {
-      " .pe-list-tile:not(.pe-list__header)": {
+      " .pe-list-tile": {
         ":not(:last-child)": {
           borderColor: componentVars["color_" + tint + "_border"]
         }
@@ -15,7 +15,7 @@ const style = (scopes, selector, componentVars, tint) => [{
     },
 
     ".pe-list--indented-borders": {
-      " .pe-list-tile:not(.pe-list__header)": {
+      " .pe-list-tile": {
         " .pe-list-tile__content:not(.pe-list-tile__content-front)": {
           borderColor: componentVars["color_" + tint + "_border"]
         }

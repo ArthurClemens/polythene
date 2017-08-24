@@ -1,10 +1,11 @@
-import { Icon, List, ListTile, keys, renderer } from 'polythene-mithril';
-import { Icon as Icon$1, List as List$1, ListTile as ListTile$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
+import { Icon, List, ListTile, Notification, keys, renderer } from 'polythene-mithril';
+import { Icon as Icon$1, List as List$1, ListTile as ListTile$1, Notification as Notification$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 
 var genericTests = (function (_ref) {
   var List$$1 = _ref.List,
       ListTile$$1 = _ref.ListTile,
       Icon$$1 = _ref.Icon,
+      Notification$$1 = _ref.Notification,
       h = _ref.renderer;
 
 
@@ -57,230 +58,174 @@ var genericTests = (function (_ref) {
     })
   });
 
-  return [{
-    name: "Child nodes",
-    component: List$$1,
-    attrs: {
-      borders: true
-    },
-    children: [h(ListTile$$1, {
-      title: "Jennifer Barker",
-      key: "Jennifer Barker",
-      subtitle: "Starting post doc"
-    }), h(ListTile$$1, {
-      title: "Ali Connors",
-      key: "Ali Connors",
-      subtitle: "Brunch this weekend?"
-    }), h(ListTile$$1, {
-      title: "Grace VanDam",
-      key: "Grace VanDam",
-      subtitle: "Binge watching..."
-    })]
-  }, {
-    name: "Option: tiles",
-    component: List$$1,
-    attrs: {
-      borders: true,
-      tiles: [h(ListTile$$1, {
-        title: "Jennifer Barker",
-        key: "Jennifer Barker",
-        subtitle: "Starting post doc"
-      }), h(ListTile$$1, {
-        title: "Ali Connors",
-        key: "Ali Connors",
-        subtitle: "Brunch this weekend?"
-      }), h(ListTile$$1, {
-        title: "Grace VanDam",
-        key: "Grace VanDam",
-        subtitle: "Binge watching..."
-      })]
-    }
-  }, {
-    name: "Options: header, tiles, indent, indentedBorders",
-    component: List$$1,
-    attrs: {
-      indentedBorders: true,
-      header: {
-        title: "Friends",
-        indent: true
-      },
-      tiles: [h(ListTile$$1, {
-        title: "Jennifer Barker",
-        subtitle: "Starting post doc",
-        indent: true,
-        key: "Jennifer Barker"
-      }), h(ListTile$$1, {
-        title: "Ali Connors",
-        subtitle: "Brunch this weekend?",
-        indent: true,
-        key: "Ali Connors"
-      }), h(ListTile$$1, {
-        title: "Grace VanDam",
-        subtitle: "Binge watching...",
-        indent: true,
-        key: "Grace VanDam"
-      })]
-    }
-  }, {
-    name: "Option: compact",
-    component: List$$1,
-    attrs: {
-      compact: true,
-      borders: true,
-      header: {
-        title: "Friends"
-      },
-      tiles: [ListTileJennifer, ListTileAli, ListTileGrace]
-    }
-  }, {
-    name: "Themed list (colors and padding)",
-    component: List$$1,
-    attrs: {
-      borders: true,
-      className: "tests-lists-themed-list"
-    },
-    children: [h(ListTile$$1, {
-      title: "Jennifer Barker",
-      key: "Jennifer Barker",
-      subtitle: "Starting post doc",
-      className: "tests-lists-themed-list-tile"
-    }), h(ListTile$$1, {
-      title: "Ali Connors",
-      key: "Ali Connors",
-      subtitle: "Brunch this weekend?",
-      className: "tests-lists-themed-list-tile"
-    }), h(ListTile$$1, {
-      title: "Grace VanDam",
-      key: "Grace VanDam",
-      subtitle: "Binge watching...",
-      className: "tests-lists-themed-list-tile"
-    })]
-  }, {
-    name: "Option: style (colors)",
-    component: List$$1,
-    attrs: {
-      header: { style: { color: "rgba(255,255,255,.8)" }, title: "Friends" },
-      tiles: [h(ListTile$$1, { style: { color: "#fff" }, title: "One", key: "One" }), h(ListTile$$1, { style: { color: "#fff" }, title: "Two", key: "Two" }), h(ListTile$$1, { style: { color: "#fff" }, title: "Three", key: "Three" })],
-      style: {
-        backgroundColor: "#EF6C00",
-        color: "#fff"
-      }
-    }
-  },
-
-  // Dark tone
+  return [
+  // {
+  //   name: "Child nodes",
+  //   component: List,
+  //   attrs: {
+  //     borders: true
+  //   },
+  //   children: [
+  //     h(ListTile, {
+  //       title: "Jennifer Barker",
+  //       key: "Jennifer Barker",
+  //       subtitle: "Starting post doc"
+  //     }),
+  //     h(ListTile, {
+  //       title: "Ali Connors",
+  //       key: "Ali Connors",
+  //       subtitle: "Brunch this weekend?"
+  //     }),
+  //     h(ListTile, {
+  //       title: "Grace VanDam",
+  //       key: "Grace VanDam",
+  //       subtitle: "Binge watching..."
+  //     })
+  //   ]
+  // },
+  // {
+  //   name: "Option: tiles",
+  //   component: List,
+  //   attrs: {
+  //     borders: true,
+  //     tiles: [
+  //       h(ListTile, {
+  //         title: "Jennifer Barker",
+  //         key: "Jennifer Barker",
+  //         subtitle: "Starting post doc"
+  //       }),
+  //       h(ListTile, {
+  //         title: "Ali Connors",
+  //         key: "Ali Connors",
+  //         subtitle: "Brunch this weekend?"
+  //       }),
+  //       h(ListTile, {
+  //         title: "Grace VanDam",
+  //         key: "Grace VanDam",
+  //         subtitle: "Binge watching..."
+  //       })
+  //     ]
+  //   }
+  // },
+  // {
+  //   name: "Options: header, tiles, indent, indentedBorders",
+  //   component: List,
+  //   attrs: {
+  //     indentedBorders: true,
+  //     header: {
+  //       title: "Friends",
+  //       indent: true
+  //     },
+  //     tiles: [
+  //       h(ListTile, {
+  //         title: "Jennifer Barker",
+  //         subtitle: "Starting post doc",
+  //         indent: true,
+  //         key: "Jennifer Barker",
+  //       }),
+  //       h(ListTile, {
+  //         title: "Ali Connors",
+  //         subtitle: "Brunch this weekend?",
+  //         indent: true,
+  //         key: "Ali Connors",
+  //       }),
+  //       h(ListTile, {
+  //         title: "Grace VanDam",
+  //         subtitle: "Binge watching...",
+  //         indent: true,
+  //         key: "Grace VanDam",
+  //       })
+  //     ]
+  //   }
+  // },
+  // {
+  //   name: "Option: compact",
+  //   component: List,
+  //   attrs: {
+  //     compact: true,
+  //     borders: true,
+  //     header: {
+  //       title: "Friends"
+  //     },
+  //     tiles: [
+  //       ListTileJennifer,
+  //       ListTileAli,
+  //       ListTileGrace
+  //     ]
+  //   }
+  // },
+  // {
+  //   name: "Themed list (colors and padding)",
+  //   component: List,
+  //   attrs: {
+  //     borders: true,
+  //     className: "tests-lists-themed-list"
+  //   },
+  //   children: [
+  //     h(ListTile, {
+  //       title: "Jennifer Barker",
+  //       key: "Jennifer Barker",
+  //       subtitle: "Starting post doc",
+  //       className: "tests-lists-themed-list-tile"
+  //     }),
+  //     h(ListTile, {
+  //       title: "Ali Connors",
+  //       key: "Ali Connors",
+  //       subtitle: "Brunch this weekend?",
+  //       className: "tests-lists-themed-list-tile"
+  //     }),
+  //     h(ListTile, {
+  //       title: "Grace VanDam",
+  //       key: "Grace VanDam",
+  //       subtitle: "Binge watching...",
+  //       className: "tests-lists-themed-list-tile"
+  //     })
+  //   ]
+  // },
+  // {
+  //   name: "Option: style (colors)",
+  //   component: List,
+  //   attrs: {
+  //     header: { style: { color: "rgba(255,255,255,.8)"}, title: "Friends" },
+  //     tiles: [
+  //       h(ListTile, { style: { color: "#fff" }, title: "One", key: "One" }),
+  //       h(ListTile, { style: { color: "#fff" }, title: "Two", key: "Two" }),
+  //       h(ListTile, { style: { color: "#fff" }, title: "Three", key: "Three" })
+  //     ],
+  //     style: {
+  //       backgroundColor: "#EF6C00",
+  //       color: "#fff"
+  //     }
+  //   }
+  // },
 
   {
-    name: "Option: class -- dark tone class",
+    name: "Keyboard control",
     interactive: true,
-    className: "pe-dark-tone",
-    component: List$$1,
-    attrs: {
-      borders: true,
-      header: {
-        title: "Friends"
-      },
-      tiles: [h(ListTile$$1, {
-        title: "Jennifer Barker",
-        key: "Jennifer Barker",
-        subtitle: "Starting post doc",
-        hoverable: true
-      }), h(ListTile$$1, {
-        title: "Ali Connors",
-        key: "Ali Connors",
-        subtitle: "Brunch this weekend?",
-        hoverable: true
-      }), h(ListTile$$1, {
-        title: "Grace VanDam",
-        key: "Grace VanDam",
-        subtitle: "Binge watching...",
-        hoverable: true
-      })]
-    }
-  }, {
-    name: "Themed list (colors and padding) -- dark tone class",
-    component: List$$1,
-    className: "pe-dark-tone",
-    attrs: {
-      borders: true,
-      className: "tests-lists-themed-list"
-    },
-    children: [h(ListTile$$1, {
-      title: "Jennifer Barker",
-      key: "Jennifer Barker",
-      subtitle: "Starting post doc",
-      className: "tests-lists-themed-list-tile"
-    }), h(ListTile$$1, {
-      title: "Ali Connors",
-      key: "Ali Connors",
-      subtitle: "Brunch this weekend?",
-      className: "tests-lists-themed-list-tile"
-    }), h(ListTile$$1, {
-      title: "Grace VanDam",
-      key: "Grace VanDam",
-      subtitle: "Binge watching...",
-      className: "tests-lists-themed-list-tile"
-    })]
-  }, {
-    name: "Dark tone class + light tone class",
-    interactive: true,
-    className: "pe-dark-tone",
-    component: List$$1,
-    attrs: {
-      className: "pe-light-tone",
-      style: { background: "#fff" },
-      borders: true,
-      header: {
-        title: "Friends"
-      },
-      tiles: [h(ListTile$$1, {
-        title: "Jennifer Barker",
-        key: "Jennifer Barker",
-        subtitle: "Starting post doc",
-        hoverable: true
-      }), h(ListTile$$1, {
-        title: "Ali Connors",
-        key: "Ali Connors",
-        subtitle: "Brunch this weekend?",
-        hoverable: true
-      }), h(ListTile$$1, {
-        title: "Grace VanDam",
-        key: "Grace VanDam",
-        subtitle: "Binge watching...",
-        hoverable: true
-      })]
-    }
-  }, {
-    name: "Dark tone class + light tone",
-    interactive: true,
-    className: "test-dark-tone",
-    component: List$$1,
-    attrs: {
-      style: { background: "#fff" },
-      borders: true,
-      header: {
-        title: "Friends"
-      },
-      tone: "light",
-      tiles: [h(ListTile$$1, {
-        title: "Jennifer Barker",
-        key: "Jennifer Barker",
-        subtitle: "Starting post doc",
-        hoverable: true
-      }), h(ListTile$$1, {
-        title: "Ali Connors",
-        key: "Ali Connors",
-        subtitle: "Brunch this weekend?",
-        hoverable: true
-      }), h(ListTile$$1, {
-        title: "Grace VanDam",
-        key: "Grace VanDam",
-        subtitle: "Binge watching...",
-        hoverable: true
-      })]
+    component: {
+      view: function view() {
+        return [h(List$$1, {
+          borders: true,
+          keyboardControl: true,
+          highlightIndex: 0,
+          onSelect: function onSelect(data) {
+            return Notification$$1.hide(), Notification$$1.show({
+              title: data.attrs.title,
+              showDuration: .1,
+              hideDuration: .2,
+              timeout: .8
+            });
+          },
+          tiles: [{ title: "A", header: true, events: { onclick: function onclick() {
+                return Notification$$1.show({ title: "should not happen" });
+              } } }, { title: "Amman" }, { title: "Amsterdam" }, { title: "Athens" }, { title: "B", header: true }, { title: "Bangkok" }, { title: "Beijing" }, { title: "Brussels" }, { title: "C", header: true }, { title: "Canberra" }, { title: "Cardiff" }, { title: "Copenhagen" }]
+        })];
+      }
     }
   }];
 });
+
+var iconStars = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>";
 
 var mithrilTests = function mithrilTests(_ref) {
   var List$$1 = _ref.List,
@@ -289,26 +234,43 @@ var mithrilTests = function mithrilTests(_ref) {
       h = _ref.renderer;
 
 
-  var createUserListTile = function createUserListTile(title, subtitle, filename) {
+  var trustedIconStars = h.trust(iconStars);
+
+  var createUserListTile = function createUserListTile(title, subtitle, filename, showSecondary) {
     return h(ListTile$$1, {
       title: title,
       key: title,
       subtitle: subtitle,
+      hoverable: true,
       front: h(Icon$$1, {
         src: "http://arthurclemens.github.io/assets/polythene/examples/" + filename + ".png",
         avatar: true,
         size: "large"
       }),
       url: {
-        href: "/",
+        href: "/#primary",
         oncreate: h.route.link
-      }
+      },
+      secondary: showSecondary ? {
+        icon: {
+          svg: trustedIconStars,
+          size: "medium"
+        },
+        url: {
+          href: "/#secondary",
+          oncreate: h.route.link
+        }
+      } : null
     });
   };
 
   var listTileJennifer = createUserListTile("Jennifer Barker", "Starting post doc", "avatar-1");
   var listTileAli = createUserListTile("Ali Connors", "Brunch this weekend?", "avatar-2");
   var listTileGrace = createUserListTile("Grace VanDam", "Binge watching...", "avatar-3");
+
+  var listTileWithSecondaryJennifer = createUserListTile("Jennifer Barker", "Starting post doc", "avatar-1", true);
+  var listTileWithSecondaryAli = createUserListTile("Ali Connors", "Brunch this weekend?", "avatar-2", true);
+  var listTileWithSecondaryGrace = createUserListTile("Grace VanDam", "Binge watching...", "avatar-3", true);
 
   return [{
     section: "Mithril specific tests"
@@ -333,6 +295,26 @@ var mithrilTests = function mithrilTests(_ref) {
       }
     }
   }, {
+    name: "Options: header, tiles with urls, secondary",
+    interactive: true,
+    component: {
+      view: function view() {
+        return [h(List$$1, {
+          header: {
+            title: "Friends"
+          },
+          borders: true,
+          tiles: [listTileWithSecondaryJennifer, listTileWithSecondaryAli, listTileWithSecondaryGrace]
+        }), h(List$$1, {
+          header: {
+            title: "Friends"
+          },
+          borders: true,
+          tiles: [listTileWithSecondaryJennifer, listTileWithSecondaryAli, listTileWithSecondaryGrace]
+        })];
+      }
+    }
+  }, {
     name: "Options: header.sticky",
     interactive: true,
     component: {
@@ -351,7 +333,7 @@ var mithrilTests = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril = [].concat(genericTests({ List: List, Icon: Icon, ListTile: ListTile, renderer: renderer, keys: keys })).concat(mithrilTests({ List: List, Icon: Icon, ListTile: ListTile, renderer: renderer, keys: keys }));
+var testsMithril = [].concat(genericTests({ List: List, Icon: Icon, ListTile: ListTile, Notification: Notification, renderer: renderer, keys: keys })).concat(mithrilTests({ List: List, Icon: Icon, ListTile: ListTile, Notification: Notification, renderer: renderer, keys: keys }));
 
 /*
 object-assign
@@ -7156,78 +7138,103 @@ var reactTests = function reactTests(_ref) {
   var listTileAli = createUserListTile("Ali Connors", "Brunch this weekend?", "avatar-2");
   var listTileGrace = createUserListTile("Grace VanDam", "Binge watching...", "avatar-3");
 
-  return [{
-    section: "React specific tests"
-  }, {
-    name: "Options: header, tiles with urls",
-    interactive: true,
-    component: function component() {
-      return h("div", [h(List$$1, {
-        header: {
-          title: "Friends"
-        },
-        borders: true,
-        tiles: [listTileJennifer, listTileAli, listTileGrace]
-      }), h(List$$1, {
-        header: {
-          title: "Friends"
-        },
-        borders: true,
-        tiles: [listTileJennifer, listTileAli, listTileGrace]
-      })]);
-    }
-  }, {
-    name: "Options: header.sticky",
-    interactive: true,
-    exclude: true,
-    component: function component() {
-      return h(".scrollable-list", ["one", "two", "three", "four", "five"].map(function (ord) {
-        return h(List$$1, {
-          header: {
-            title: "Sub header " + ord,
-            sticky: true
-          },
-          tiles: [listTileJennifer, listTileAli, listTileGrace, listTileJennifer, listTileAli, listTileGrace]
-        });
-      }));
-    }
-  }, {
-    section: "React JSX tests"
-  }, {
-    name: "Options: header, tiles, indent, indentedBorders (JSX)",
-    component: function component() {
-      return react.createElement(
-        List$$1,
-        {
-          indentedBorders: true,
-          header: {
-            title: "Friends",
-            indent: true
-          }
-        },
-        react.createElement(ListTile$$1, { key: "one", indent: true, title: "Jennifer Barker", subtitle: "Starting post doc", front: react.createElement(Icon$$1, {
-            src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
-            avatar: true,
-            size: "large"
-          })
-        }),
-        react.createElement(ListTile$$1, { key: "two", indent: true, title: "Ali Connors", subtitle: "Brunch this weekend?", front: react.createElement(Icon$$1, {
-            src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png",
-            avatar: true,
-            size: "large"
-          })
-        }),
-        react.createElement(ListTile$$1, { key: "three", indent: true, title: "Grace VanDam", subtitle: "Binge watching...", front: react.createElement(Icon$$1, {
-            src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-3.png",
-            avatar: true,
-            size: "large"
-          })
-        })
-      );
-    }
-  }];
+  return [
+    // {
+    //   section: "React specific tests",
+    // },
+    // {
+    //   name: "Options: header, tiles with urls",
+    //   interactive: true,
+    //   component: () =>
+    //     h("div", [
+    //       h(List, {
+    //         header: {
+    //           title: "Friends"
+    //         },
+    //         borders: true,
+    //         tiles: [
+    //           listTileJennifer,
+    //           listTileAli,
+    //           listTileGrace
+    //         ]
+    //       }),
+    //       h(List, {
+    //         header: {
+    //           title: "Friends"
+    //         },
+    //         borders: true,
+    //         tiles: [
+    //           listTileJennifer,
+    //           listTileAli,
+    //           listTileGrace
+    //         ]
+    //       })
+    //     ])
+    // },
+    // {
+    //   name: "Options: header.sticky",
+    //   interactive: true,
+    //   exclude: true,
+    //   component: () =>
+    //     h(".scrollable-list", ["one", "two", "three", "four", "five"].map(ord => {
+    //       return h(List,
+    //         {
+    //           header: {
+    //             title: `Sub header ${ord}`,
+    //             sticky: true
+    //           },
+    //           tiles: [
+    //             listTileJennifer,
+    //             listTileAli,
+    //             listTileGrace,
+    //             listTileJennifer,
+    //             listTileAli,
+    //             listTileGrace
+    //           ]
+    //         }
+    //       );
+    //     }))
+    // },
+
+    // {
+    //   section: "React JSX tests",
+    // },
+    // {
+    //   name: "Options: header, tiles, indent, indentedBorders (JSX)",
+    //   component: () =>
+    //     <List
+    //       indentedBorders
+    //       header={{
+    //         title: "Friends",
+    //         indent: true
+    //       }}
+    //     >
+    //       <ListTile key="one" indent title="Jennifer Barker" subtitle="Starting post doc" front={
+    //         <Icon
+    //           src="http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png"
+    //           avatar
+    //           size="large"
+    //         />}
+    //       />
+    //       <ListTile key="two" indent title="Ali Connors" subtitle="Brunch this weekend?" front={
+    //         <Icon
+    //           src="http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png"
+    //           avatar
+    //           size="large"
+    //         />}
+    //       />
+    //       <ListTile key="three" indent title="Grace VanDam" subtitle="Binge watching..." front={
+    //         <Icon
+    //           src="http://arthurclemens.github.io/assets/polythene/examples/avatar-3.png"
+    //           avatar
+    //           size="large"
+    //         />}
+    //       />
+    //     </List>
+    // },
+  ];
 };
 
-var testsReact = [].concat(genericTests({ List: List$1, Icon: Icon$1, ListTile: ListTile$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests({ List: List$1, Icon: Icon$1, ListTile: ListTile$1, renderer: renderer$1, keys: keys$1 }));
+var testsReact = [].concat(genericTests({ List: List$1, Icon: Icon$1, ListTile: ListTile$1, Notification: Notification$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests({ List: List$1, Icon: Icon$1, ListTile: ListTile$1, Notification: Notification$1, renderer: renderer$1, keys: keys$1 }));
 
 export { testsMithril as mithrilTests, testsReact as reactTests };

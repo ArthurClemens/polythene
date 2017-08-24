@@ -39,7 +39,7 @@ export default (selector, componentVars) => [{
       ],
 
       " .pe-button__wash, .pe-button__focus": [
-        mixin.defaultTransition("background-color"),
+        mixin.defaultTransition("background-color", "opacity"),
         mixin.fit(),
         {
           borderRadius: "inherit",
