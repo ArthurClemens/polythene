@@ -21,7 +21,7 @@ var genericTests = (function (_ref) {
 
   var dialogOptions = {
     body: "You pressed a message action",
-    footer: [h(Button$$1, {
+    footerButtons: [h(Button$$1, {
       label: "Cancel",
       events: _defineProperty({}, k.onclick, function () {
         Dialog$$1.hide();
@@ -4219,7 +4219,7 @@ var containerSelector$1 = (function (buttonGroup) {
 
 var dialogOptions = {
   body: "You pressed a message action",
-  footer: [react.createElement(Button$1, {
+  footerButtons: [react.createElement(Button$1, {
     label: "Cancel",
     events: {
       onClick: function onClick() {

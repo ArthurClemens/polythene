@@ -3,7 +3,7 @@ import { Notification, Dialog, Button, RaisedButton } from "polythene-react";
 
 const dialogOptions = {
   body: "You pressed a message action",
-  footer: [
+  footerButtons: [
     <Button
       label="Cancel"
       events={{

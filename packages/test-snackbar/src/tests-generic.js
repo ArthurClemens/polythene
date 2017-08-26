@@ -8,7 +8,7 @@ export default ({ renderer: h, keys: k, Snackbar, Dialog, Button, buttonGroup, c
 
   const dialogOptions = {
     body: "You pressed a message action",
-    footer: [
+    footerButtons: [
       h(Button, {
         label: "Cancel",
         events: {

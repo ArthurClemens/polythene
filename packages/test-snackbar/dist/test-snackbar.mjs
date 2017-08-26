@@ -21,7 +21,7 @@ var genericTests = (function (_ref) {
 
   var dialogOptions = {
     body: "You pressed a message action",
-    footer: [h(Button$$1, {
+    footerButtons: [h(Button$$1, {
       label: "Cancel",
       events: _defineProperty({}, k.onclick, function () {
         Dialog$$1.hide();

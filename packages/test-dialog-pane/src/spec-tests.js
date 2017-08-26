@@ -76,7 +76,7 @@ export default ({ DialogPane, renderer, Button }) => {
       attrs: {
         title: "Long dialog with a very long title that surely won't fit here",
         body: "Hello",
-        footer: cancelOkButtons({ renderer, Button })
+        footerButtons: cancelOkButtons({ renderer, Button })
       }
     },
   ];

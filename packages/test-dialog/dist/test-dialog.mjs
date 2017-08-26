@@ -175,9 +175,7 @@ var settings = (function (_ref) {
     menu: h(List$$1, {
       tiles: [createListTile("Show all notification content including sensitive notification content"), createListTile("Hide sensitive notification content"), createListTile("Hide all notification content")]
     }),
-    hideDelay: .15,
-    header: null,
-    footer: null
+    hideDelay: .15
   };
 });
 

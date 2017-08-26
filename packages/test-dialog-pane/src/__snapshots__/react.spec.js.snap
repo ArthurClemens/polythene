@@ -292,11 +292,14 @@ exports[`test Option: title and body (long text) - spec 2`] = `
       Hello
     </div>
     <div
-      className="pe-dialog-pane__footer">
-      <Button
-        label="Cancel" />
-      <Button
-        label="Save" />
+      className="pe-dialog-pane__footer pe-dialog-pane__footer--buttons">
+      <div
+        className="pe-dialog-pane__actions">
+        <Button
+          label="Cancel" />
+        <Button
+          label="Save" />
+      </div>
     </div>
   </div>
 </form>

@@ -187,7 +187,7 @@ const dialogOptions = {
   body: "Body", 
   footer: m(Toolbar, {
     content: [
-      h(ToolbarTitle, { text: "Footer" })
+      m(ToolbarTitle, { text: "Footer" })
     ]
   })
 })

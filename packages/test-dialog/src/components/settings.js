@@ -19,8 +19,6 @@ export default ({ renderer: h, keys: k, List, ListTile, Dialog })  => {
         createListTile("Hide all notification content")
       ]
     }),
-    hideDelay: .15,
-    header: null,
-    footer: null
+    hideDelay: .15
   };
 };

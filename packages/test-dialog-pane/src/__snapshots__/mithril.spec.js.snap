@@ -819,24 +819,27 @@ exports[`test Option: title and body (long text) - spec 2`] = `
     <div class=\"pe-dialog-pane__body\">
       Hello
     </div>
-    <div class=\"pe-dialog-pane__footer\">
-      <a class=\"pe-button pe-text-button\" tabindex=\"0\">
-      <div class=\"pe-button__content\">
-        <div class=\"pe-ripple\"></div>
-        <div class=\"pe-button__wash\"></div>
-        <div class=\"pe-button__focus\"></div>
-        <div class=\"pe-button__label\">
-          Cancel
-        </div>
-      </div></a><a class=\"pe-button pe-text-button\" tabindex=\"0\">
-      <div class=\"pe-button__content\">
-        <div class=\"pe-ripple\"></div>
-        <div class=\"pe-button__wash\"></div>
-        <div class=\"pe-button__focus\"></div>
-        <div class=\"pe-button__label\">
-          Save
-        </div>
-      </div></a>
+    <div class=
+    \"pe-dialog-pane__footer pe-dialog-pane__footer--buttons\">
+      <div class=\"pe-dialog-pane__actions\">
+        <a class=\"pe-button pe-text-button\" tabindex=\"0\">
+        <div class=\"pe-button__content\">
+          <div class=\"pe-ripple\"></div>
+          <div class=\"pe-button__wash\"></div>
+          <div class=\"pe-button__focus\"></div>
+          <div class=\"pe-button__label\">
+            Cancel
+          </div>
+        </div></a><a class=\"pe-button pe-text-button\" tabindex=\"0\">
+        <div class=\"pe-button__content\">
+          <div class=\"pe-ripple\"></div>
+          <div class=\"pe-button__wash\"></div>
+          <div class=\"pe-button__focus\"></div>
+          <div class=\"pe-button__label\">
+            Save
+          </div>
+        </div></a>
+      </div>
     </div>
   </div>
 </form>

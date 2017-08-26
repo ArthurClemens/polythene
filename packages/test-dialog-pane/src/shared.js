@@ -13,5 +13,5 @@ export const cancelOkButtons = ({ renderer: h, Button }) => [
 ];
 
 export const commonDialogProps = ({ renderer, keys, Button }) => ({
-  footer: cancelOkButtons({ renderer, keys, Button })
+  footerButtons: cancelOkButtons({ renderer, keys, Button })
 });
