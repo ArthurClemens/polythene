@@ -10,7 +10,11 @@ Changes to components:
 
 * Dialog
   * Option `footer` has been renamed to `footerButtons` to allow for more diverse footers
-  * Added options `header`
+  * Added option `header`
+  * Added option `fullBleed` to remove padding from the body element 
+  * Option `borders` has been changed from Boolean to String, with possible values: "always", "never", "overflow" (default)
+* List
+  * Added option `padding` to optionally remove the default top and bottom padding
 * ListTile
   * Added option `compactFront` to reduce the horizontal width of `front` content
 * Toolbar

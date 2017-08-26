@@ -133,6 +133,14 @@ var genericTests = (function (_ref) {
       tiles: [ListTileJennifer, ListTileAli, ListTileGrace]
     }
   }, {
+    name: "No padding",
+    component: List$$1,
+    attrs: {
+      padding: false,
+      borders: true,
+      tiles: [ListTileJennifer, ListTileAli, ListTileGrace]
+    }
+  }, {
     name: "Themed list (colors and padding)",
     component: List$$1,
     attrs: {

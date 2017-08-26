@@ -1,6 +1,6 @@
 exports[`test Child nodes 1`] = `
 <div
-  className="pe-list pe-list--borders      ">
+  className="pe-list pe-list--borders    pe-list--padding   ">
   <ListTile
     subtitle="Starting post doc"
     title="Jennifer Barker" />
@@ -15,7 +15,7 @@ exports[`test Child nodes 1`] = `
 
 exports[`test Dark tone class + light tone 1`] = `
 <div
-  className="pe-list pe-list--borders  pe-list--header   pe-light-tone "
+  className="pe-list pe-list--borders  pe-list--header  pe-list--padding  pe-light-tone "
   style={
     Object {
       "background": "#fff",
@@ -41,7 +41,7 @@ exports[`test Dark tone class + light tone 1`] = `
 
 exports[`test Dark tone class + light tone class 1`] = `
 <div
-  className="pe-list pe-list--borders  pe-list--header    pe-light-tone"
+  className="pe-list pe-list--borders  pe-list--header  pe-list--padding   pe-light-tone"
   style={
     Object {
       "background": "#fff",
@@ -67,12 +67,45 @@ exports[`test Dark tone class + light tone class 1`] = `
 
 exports[`test No options 1`] = `
 <div
-  className="pe-list       " />
+  className="pe-list     pe-list--padding   " />
+`;
+
+exports[`test No padding 1`] = `
+<div
+  className="pe-list pe-list--borders       ">
+  <ListTile
+    front={
+      <Icon
+        avatar={true}
+        size="large"
+        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png" />
+    }
+    subtitle="Starting post doc"
+    title="Jennifer Barker" />
+  <ListTile
+    front={
+      <Icon
+        avatar={true}
+        size="large"
+        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png" />
+    }
+    subtitle="Brunch this weekend?"
+    title="Ali Connors" />
+  <ListTile
+    front={
+      <Icon
+        avatar={true}
+        size="large"
+        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-3.png" />
+    }
+    subtitle="Binge watching..."
+    title="Grace VanDam" />
+</div>
 `;
 
 exports[`test Option: class -- dark tone class 1`] = `
 <div
-  className="pe-list pe-list--borders  pe-list--header    ">
+  className="pe-list pe-list--borders  pe-list--header  pe-list--padding   ">
   <ListTile
     className="pe-list__header "
     title="Friends" />
@@ -93,17 +126,17 @@ exports[`test Option: class -- dark tone class 1`] = `
 
 exports[`test Option: class 1`] = `
 <div
-  className="pe-list       class-x" />
+  className="pe-list     pe-list--padding   class-x" />
 `;
 
 exports[`test Option: className 1`] = `
 <div
-  className="pe-list       className-x" />
+  className="pe-list     pe-list--padding   className-x" />
 `;
 
 exports[`test Option: compact 1`] = `
 <div
-  className="pe-list pe-list--borders  pe-list--header pe-list--compact   ">
+  className="pe-list pe-list--borders  pe-list--header pe-list--compact pe-list--padding   ">
   <ListTile
     className="pe-list__header "
     title="Friends" />
@@ -139,18 +172,18 @@ exports[`test Option: compact 1`] = `
 
 exports[`test Option: element 1`] = `
 <a
-  className="pe-list       " />
+  className="pe-list     pe-list--padding   " />
 `;
 
 exports[`test Option: id 1`] = `
 <div
-  className="pe-list       "
+  className="pe-list     pe-list--padding   "
   id="id-x" />
 `;
 
 exports[`test Option: style (colors) 1`] = `
 <div
-  className="pe-list   pe-list--header    "
+  className="pe-list   pe-list--header  pe-list--padding   "
   style={
     Object {
       "backgroundColor": "#EF6C00",
@@ -191,7 +224,7 @@ exports[`test Option: style (colors) 1`] = `
 
 exports[`test Option: tiles 1`] = `
 <div
-  className="pe-list pe-list--borders      ">
+  className="pe-list pe-list--borders    pe-list--padding   ">
   <ListTile
     subtitle="Starting post doc"
     title="Jennifer Barker" />
@@ -281,7 +314,7 @@ exports[`test Options: header, tiles, indent, indentedBorders (JSX) 1`] = `
 
 exports[`test Options: header, tiles, indent, indentedBorders 1`] = `
 <div
-  className="pe-list  pe-list--indented-borders pe-list--header    ">
+  className="pe-list  pe-list--indented-borders pe-list--header  pe-list--padding   ">
   <ListTile
     className="pe-list__header "
     indent={true}
@@ -303,7 +336,7 @@ exports[`test Options: header, tiles, indent, indentedBorders 1`] = `
 
 exports[`test Themed list (colors and padding) -- dark tone class 1`] = `
 <div
-  className="pe-list pe-list--borders      tests-lists-themed-list">
+  className="pe-list pe-list--borders    pe-list--padding   tests-lists-themed-list">
   <ListTile
     className="tests-lists-themed-list-tile"
     subtitle="Starting post doc"
@@ -321,7 +354,7 @@ exports[`test Themed list (colors and padding) -- dark tone class 1`] = `
 
 exports[`test Themed list (colors and padding) 1`] = `
 <div
-  className="pe-list pe-list--borders      tests-lists-themed-list">
+  className="pe-list pe-list--borders    pe-list--padding   tests-lists-themed-list">
   <ListTile
     className="tests-lists-themed-list-tile"
     subtitle="Starting post doc"

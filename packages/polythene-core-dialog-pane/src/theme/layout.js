@@ -55,9 +55,7 @@ export default (selector, componentVars) => [{
           padding: componentVars.padding + "px",
           overflowY: "auto",
           "-webkit-overflow-scrolling": "touch",
-          borderWidth: componentVars.border_width + "px",
-          borderStyle: "solid none",
-          borderColor: "transparent",
+          
           // initially set max-height; will be overridden by dialog core with actual heights
           maxHeight: "calc(100vh - " + (2 * componentVars.padding) + "px - " + (componentVars.header_height + componentVars.footer_height) + "px)",
 
@@ -69,6 +67,26 @@ export default (selector, componentVars) => [{
           }
         }
       ],
+
+      ".pe-dialog-pane--header.pe-dialog-pane--border-top": {
+        " .pe-dialog-pane__body": {
+          borderTopStyle: "solid",
+          borderWidth: componentVars.border_width + "px"
+        }
+      },
+
+      ".pe-dialog-pane--footer.pe-dialog-pane--border-bottom": {
+        " .pe-dialog-pane__body": {
+          borderBottomStyle: "solid",
+          borderWidth: componentVars.border_width + "px"
+        }
+      },
+
+      ".pe-dialog-pane--body-full-bleed .pe-dialog-pane__body": {
+        padding: 0,
+        borderStyle: "none"
+      },
+
       " .pe-dialog-pane__header--title + .pe-dialog-pane__body": {
         paddingTop: 0
       },

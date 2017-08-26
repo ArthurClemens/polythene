@@ -12,7 +12,8 @@ var classes = {
   borders: "pe-list--borders",
   compact: "pe-list--compact",
   hasHeader: "pe-list--header",
-  indentedBorders: "pe-list--indented-borders"
+  indentedBorders: "pe-list--indented-borders",
+  padding: "pe-list--padding"
 };
 
 var vars$1 = {
@@ -40,7 +41,10 @@ var borderStyle = function borderStyle(componentVars) {
 
 var layout = (function (selector, componentVars) {
   return [_defineProperty({}, selector, {
-    padding: componentVars.padding + "px 0",
+
+    ".pe-list--padding": {
+      padding: componentVars.padding + "px 0"
+    },
 
     ".pe-list--header": {
       paddingTop: 0
@@ -131,7 +135,7 @@ var createProps = function createProps(vnode, _ref) {
 
   var attrs = vnode.attrs;
   return _extends({}, filterSupportedAttributes(attrs), {
-    className: [classes.component, attrs.borders ? classes.borders : null, attrs.indentedBorders ? classes.indentedBorders : null, attrs.header ? classes.hasHeader : null, attrs.compact ? classes.compact : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [classes.component, attrs.borders ? classes.borders : null, attrs.indentedBorders ? classes.indentedBorders : null, attrs.header ? classes.hasHeader : null, attrs.compact ? classes.compact : null, attrs.padding !== false ? classes.padding : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
 

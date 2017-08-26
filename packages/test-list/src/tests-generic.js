@@ -147,6 +147,19 @@ export default ({ List, ListTile, Icon, renderer: h }) => {
       }
     },
     {
+      name: "No padding",
+      component: List,
+      attrs: {
+        padding: false,
+        borders: true,
+        tiles: [
+          ListTileJennifer,
+          ListTileAli,
+          ListTileGrace
+        ]
+      }
+    },
+    {
       name: "Themed list (colors and padding)",
       component: List,
       attrs: {

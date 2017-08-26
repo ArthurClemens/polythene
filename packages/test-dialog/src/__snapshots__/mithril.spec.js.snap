@@ -108,7 +108,8 @@ exports[`test Option: modal with backdrop - spec 1`] = `
       <div class=\"pe-shadow__bottom pe-shadow--z-3\"></div>
       <div class=\"pe-shadow__top pe-shadow--z-3\"></div>
     </div>
-    <form class=\"pe-dialog-pane\">
+    <form class=
+    \"pe-dialog-pane pe-dialog-pane--header pe-dialog-pane--footer\">
       <div class=\"pe-dialog-pane__content\">
         <div class=
         \"pe-dialog-pane__header pe-dialog-pane__header--title\">
@@ -321,7 +322,7 @@ exports[`test Option: title and body (long text) - spec 1`] = `
       <div class=\"pe-shadow__bottom pe-shadow--z-3\"></div>
       <div class=\"pe-shadow__top pe-shadow--z-3\"></div>
     </div>
-    <form class=\"pe-dialog-pane\">
+    <form class=\"pe-dialog-pane pe-dialog-pane--header\">
       <div class=\"pe-dialog-pane__content\">
         <div class=
         \"pe-dialog-pane__header pe-dialog-pane__header--title\">

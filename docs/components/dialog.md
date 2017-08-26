@@ -58,7 +58,8 @@ Displays a single dialog, or a stack of dialogs.
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **z** | optional | Number 0-5 | 3 | Depth of the shadow |
 | **backdrop** | optional | Boolean | false | Set to `true` to show a backdrop background color |
-| **borders** | optional | Boolean | false | Set to `true` to show header and footer borders; by default borders are only shown with overflow content |
+| **borders** | optional | String | "overflow" | Options: "always", "never", "overflow" (when the body overflows the content area); a top border is only shown when a header is present; a bottom border is only shown when a footer is present |
+| **fullBleed** | optional | Boolean | false | Set to `true` to remove padding from the body element |
 
 ### Transition options
 

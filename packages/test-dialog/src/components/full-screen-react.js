@@ -38,8 +38,5 @@ export default {
       content: toolbarRow("New event")
     }
   ),
-  body: h("div",
-    { style: { padding: "21px" } },
-    h.trust(content)
-  )
+  body: h.trust(content)
 };

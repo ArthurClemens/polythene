@@ -271,6 +271,18 @@ var genericTests = (function (_ref) {
     color_dark_background: "#333"
   });
 
+  var paneToolbar = function paneToolbar() {
+    var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+        compact = _ref2.compact;
+
+    return h(Toolbar$$1, {
+      compact: compact,
+      content: [h(ToolbarTitle$$1, { key: "header", text: "Header" })],
+      tone: "light",
+      className: "tests-dialog-pane-themed-toolbar"
+    });
+  };
+
   return [{
     name: "Option: body",
     component: DialogPane$$1,
@@ -282,7 +294,12 @@ var genericTests = (function (_ref) {
     component: DialogPane$$1,
     attrs: {
       title: "Title",
-      body: "Body",
+      body: h("div", {
+        style: {
+          background: "#eee"
+        }
+      }, "Body"),
+
       footer: h("div", {
         style: {
           background: "#00c853",
@@ -292,20 +309,55 @@ var genericTests = (function (_ref) {
       }, "Footer")
     }
   }, {
-    name: "With Toolbar as header and footer",
+    name: "With Toolbar as header and footer, fullBleed",
     component: DialogPane$$1,
     attrs: {
-      header: h(Toolbar$$1, {
-        content: [h(ToolbarTitle$$1, { key: "header", text: "Header" })],
-        tone: "light",
-        className: "tests-dialog-pane-themed-toolbar"
-      }),
-      body: "Body",
+      header: paneToolbar(),
+      body: h("div", {
+        style: {
+          background: "#eee"
+        }
+      }, "Body"),
+      fullBleed: true,
       footer: h(Toolbar$$1, {
         content: [h(ToolbarTitle$$1, { key: "footer", text: "Footer" })],
         tone: "dark",
         className: "tests-dialog-pane-themed-toolbar"
       })
+    }
+  }, {
+    name: "With Toolbar (compact)",
+    component: DialogPane$$1,
+    attrs: {
+      header: paneToolbar({ compact: true }),
+      body: "Body"
+    }
+  }, {
+    name: "Option: borders (always)",
+    component: DialogPane$$1,
+    attrs: {
+      title: "Title",
+      body: renderer$$1.trust(longText),
+      footer: "Footer",
+      borders: "always"
+    }
+  }, {
+    name: "Option: borders (never)",
+    component: DialogPane$$1,
+    attrs: {
+      title: "Title",
+      body: renderer$$1.trust(longText),
+      footer: "Footer",
+      borders: "never"
+    }
+  }, {
+    name: "Option: borders (overflow)",
+    component: DialogPane$$1,
+    attrs: {
+      title: "Title",
+      body: renderer$$1.trust(longText),
+      footer: "Footer",
+      borders: "overflow"
     }
   }, {
     name: "Themed (color)",
@@ -4102,6 +4154,8 @@ var react = React_1;
 
 var reactTests = function reactTests() {
 
+  var cancelOkButtons$$1 = [react.createElement(Button$1, { label: "Cancel", key: "cancel" }), react.createElement(Button$1, { label: "Save", key: "save" })];
+
   return [{
     section: "React JSX tests"
   }, {
@@ -4110,7 +4164,7 @@ var reactTests = function reactTests() {
       return react.createElement(DialogPane$1, {
         title: "Long dialog with a very long title that surely won't fit here",
         body: renderer$1.trust(longText),
-        footer: cancelOkButtons({ renderer: renderer$1, Button: Button$1 })
+        footerButtons: cancelOkButtons$$1
       });
     }
   }];

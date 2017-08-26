@@ -4714,7 +4714,7 @@ var fullScreenOptions = {
     tone: "dark",
     content: toolbarRow("New event")
   }),
-  body: renderer$1("div", { style: { padding: "21px" } }, renderer$1.trust(content))
+  body: renderer$1.trust(content)
 };
 
 var DIALOG_CONFIRM$1 = "confirm-fullscreen";
@@ -4803,11 +4803,7 @@ var fullScreenJsxOptions = {
     className: "tests-dialog-react-jsx-themed-toolbar",
     tone: "dark"
   }),
-  body: react.createElement(
-    "div",
-    { style: { padding: "21px" } },
-    react.createElement(BodyText, null)
-  )
+  body: react.createElement(BodyText, null)
 };
 
 var reactTests = function reactTests(_ref) {

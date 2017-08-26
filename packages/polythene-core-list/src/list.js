@@ -19,6 +19,7 @@ export const createProps = (vnode, { keys: k }) => {
         attrs.indentedBorders ? classes.indentedBorders : null,
         attrs.header ? classes.hasHeader : null,
         attrs.compact ? classes.compact : null,
+        attrs.padding !== false ? classes.padding : null,
         attrs.tone === "dark" ? "pe-dark-tone" : null,
         attrs.tone === "light" ? "pe-light-tone" : null,
         attrs.className || attrs[k.class],

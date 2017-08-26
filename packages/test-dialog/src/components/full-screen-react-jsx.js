@@ -68,8 +68,6 @@ export default {
     className="tests-dialog-react-jsx-themed-toolbar"
     tone="dark"
   />,
-  body: <div style={{ padding: "21px" }}>
-    <BodyText />
-  </div>
+  body: <BodyText />
 };
 

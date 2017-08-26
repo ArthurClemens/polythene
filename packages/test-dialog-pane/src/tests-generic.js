@@ -16,6 +16,17 @@ export default ({ renderer, keys, DialogPane, Toolbar, ToolbarTitle, Button }) =
     color_dark_background:  "#333"
   });
 
+  const paneToolbar = ({ compact } = {}) =>
+    h(Toolbar, {
+      compact,
+      content: [
+        h(ToolbarTitle, { key: "header", text: "Header" })
+      ],
+      tone: "light",
+      className: "tests-dialog-pane-themed-toolbar"
+    });
+
+
   return [
     {
       name: "Option: body",
@@ -29,7 +40,12 @@ export default ({ renderer, keys, DialogPane, Toolbar, ToolbarTitle, Button }) =
       component: DialogPane,
       attrs: {
         title: "Title",
-        body: "Body", 
+        body: h("div", {
+          style: {
+            background: "#eee"
+          }
+        }, "Body"), 
+        
         footer: h("div",
           {
             style: {
@@ -43,17 +59,16 @@ export default ({ renderer, keys, DialogPane, Toolbar, ToolbarTitle, Button }) =
       }
     },
     {
-      name: "With Toolbar as header and footer",
+      name: "With Toolbar as header and footer, fullBleed",
       component: DialogPane,
       attrs: {
-        header: h(Toolbar, {
-          content: [
-            h(ToolbarTitle, { key: "header", text: "Header" })
-          ],
-          tone: "light",
-          className: "tests-dialog-pane-themed-toolbar"
-        }),
-        body: "Body", 
+        header: paneToolbar(),
+        body: h("div", {
+          style: {
+            background: "#eee"
+          }
+        }, "Body"),
+        fullBleed: true,
         footer: h(Toolbar, {
           content: [
             h(ToolbarTitle, { key: "footer", text: "Footer" })
@@ -61,6 +76,44 @@ export default ({ renderer, keys, DialogPane, Toolbar, ToolbarTitle, Button }) =
           tone: "dark",
           className: "tests-dialog-pane-themed-toolbar"
         }),
+      }
+    },
+    {
+      name: "With Toolbar (compact)",
+      component: DialogPane,
+      attrs: {
+        header: paneToolbar({ compact: true }),
+        body: "Body"
+      }
+    },
+    {
+      name: "Option: borders (always)",
+      component: DialogPane,
+      attrs: {
+        title: "Title",
+        body: renderer.trust(longText),
+        footer: "Footer",
+        borders: "always"
+      }
+    },
+    {
+      name: "Option: borders (never)",
+      component: DialogPane,
+      attrs: {
+        title: "Title",
+        body: renderer.trust(longText),
+        footer: "Footer",
+        borders: "never"
+      }
+    },
+    {
+      name: "Option: borders (overflow)",
+      component: DialogPane,
+      attrs: {
+        title: "Title",
+        body: renderer.trust(longText),
+        footer: "Footer",
+        borders: "overflow"
       }
     },
     {

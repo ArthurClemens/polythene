@@ -57,6 +57,7 @@ See: [List Tile](list-tile.md#keyboard-control)
 | **borders**         | optional | Boolean | | Set to `true` to add borders to list tiles |
 | **indentedBorders** | optional | Boolean | | Set to `true` to indent the list tile borders; note that list tiles must have option `indent` as well       |
 | **compact**         | optional | Boolean | | Set to `true` to reduce vertical padding of list tiles |
+| **padding**         | optional | Boolean | true | Set to `false` to remove top and bottom padding |
 
 
 ## Composition

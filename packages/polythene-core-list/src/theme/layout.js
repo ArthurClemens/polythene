@@ -6,7 +6,10 @@ const borderStyle = componentVars => ({
 
 export default (selector, componentVars) => [{
   [selector]: {
-    padding: componentVars.padding + "px 0",
+    
+    ".pe-list--padding": {
+      padding: componentVars.padding + "px 0",
+    },
 
     ".pe-list--header": {
       paddingTop: 0

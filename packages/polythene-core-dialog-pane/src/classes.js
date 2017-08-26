@@ -11,10 +11,12 @@ export default {
   title:             "pe-dialog-pane__title",
 
   // states
+  withHeader:        "pe-dialog-pane--header",
+  withFooter:        "pe-dialog-pane--footer",
   headerWithTitle:   "pe-dialog-pane__header--title",
   footerWithButtons: "pe-dialog-pane__footer--buttons",
   footerHigh:        "pe-dialog-pane__footer--high",
-  hasBottomOverflow: "pe-dialog-pane--overflow-bottom",
-  hasTopOverflow:    "pe-dialog-pane--overflow-top",
-  fullBleed:         "pe-dialog-pane--full-bleed",
+  borderBottom:      "pe-dialog-pane--border-bottom",
+  borderTop:         "pe-dialog-pane--border-top",
+  fullBleed:         "pe-dialog-pane--body-full-bleed",
 };

@@ -183,9 +183,13 @@ A dialog pane consist of the elements:
 * `body`
 * `footer`
 
-The `header` can be substibuted with convenience option `title`: this draws the title text according to Material Design specs.
+Variations:
 
-The `footer` can be substibuted with convenience option `footerButtons`: this accepts an array of buttons and will be drawn  right-aligned according to Material Design specs.
+* The `header` can be substibuted with convenience option `title`: this draws the title text according to Material Design specs.
+* The `footer` can be substibuted with convenience option `footerButtons`: this accepts an array of buttons and will be drawn  right-aligned according to Material Design specs.
+* Use `fullBleed` to remove the padding from the body area
+* Use `borders` to conditionally add a top and bottom border to the body
+
 
 #### Example with a Toolbar as custom header and footer
 
