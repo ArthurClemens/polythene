@@ -37,7 +37,7 @@ const style = (scopes, selector, componentVars, tint) => {
         }
       },
 
-      ".pe-button--focus, &:focus": {
+      ".pe-button--focus": {
         " .pe-button__focus": {
           opacity: 1
         }
