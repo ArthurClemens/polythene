@@ -102,7 +102,7 @@ var baseLayout = (function (selector, componentVars) {
       pointerEvents: "none"
     }],
 
-    " .pe-button__wash, .pe-button__focus": [mixin.defaultTransition("background-color"), mixin.fit(), {
+    " .pe-button__wash, .pe-button__focus": [mixin.defaultTransition("background-color", "opacity"), mixin.fit(), {
       borderRadius: "inherit",
       pointerEvents: "none"
     }],
@@ -200,7 +200,7 @@ var style = function style(scopes, selector, componentVars, tint) {
       }
     },
 
-    ".pe-button--focus, &:focus": {
+    ".pe-button--focus": {
       " .pe-button__focus": {
         opacity: 1
       }

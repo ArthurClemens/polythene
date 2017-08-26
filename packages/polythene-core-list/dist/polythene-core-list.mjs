@@ -133,12 +133,13 @@ var getElement = function getElement(vnode) {
 
 var theme = customTheme;
 
-var onSelect = function onSelect(vnode) {
+var onSelect = function onSelect(event, vnode) {
   var state = vnode.state;
   var attrs = vnode.attrs;
   if (attrs.onSelect) {
     var highlightIndex = state.highlightIndex();
     var data = {
+      event: event,
       index: highlightIndex,
       dom: state.tiles[highlightIndex].dom,
       attrs: state.tiles[highlightIndex].attrs
@@ -149,7 +150,7 @@ var onSelect = function onSelect(vnode) {
 
 var getInitialState = function getInitialState(vnode, createStream) {
   var attrs = vnode.attrs;
-  var highlightIndex = createStream(attrs.highlightIndex !== undefined ? attrs.highlightIndex : -1);
+  var highlightIndex = createStream(attrs.defaultHighlightIndex !== undefined ? attrs.defaultHighlightIndex : -1);
   var registerTile = function registerTile(state) {
     return function (index, data) {
       return state.tiles[index] = data;
@@ -193,7 +194,7 @@ var createProps = function createProps(vnode, _ref) {
       var _newIndex = Math.max(0, highlightIndex - 1);
       state.tiles[_newIndex].dom.focus();
     } else if (e.key === "Enter") {
-      onSelect(vnode);
+      onSelect(e, vnode);
     } else if (e.key === "Escape") {
       state.tiles[highlightIndex].dom.blur();
       state.highlightIndex(-1);
@@ -229,8 +230,8 @@ var createContent = function createContent(vnode, _ref3) {
       setHighlightIndex: state.highlightIndex,
       index: index,
       defaultHighlight: highlightIndex === index,
-      events: _extends({}, tileOpts.events, _defineProperty({}, k.onclick, function () {
-        return onSelect(vnode);
+      events: _extends({}, tileOpts.events, _defineProperty({}, k.onclick, function (e) {
+        return onSelect(e, vnode);
       }))
     }));
   }) : tiles];

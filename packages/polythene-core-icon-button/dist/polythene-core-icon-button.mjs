@@ -44,11 +44,11 @@ var layout = (function (selector, componentVars) {
   return [_defineProperty({}, selector, {
     // don"t set button size to facilitate different icon sizes
     display: "inline-block",
-    "vertical-align": "middle",
+    verticalAlign: "middle",
     cursor: "pointer",
     position: "relative",
-    "font-size": "1rem",
-    "border-radius": "50%",
+    fontSize: "1rem",
+    borderRadius: "50%",
     border: "none",
 
     " .pe-icon-button__content": {
