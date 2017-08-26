@@ -3,7 +3,8 @@ exports[`test Child node 1`] = `
   className="pe-list-tile          ">
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    style={null}
+    tabIndex={0}>
     <div
       className="pe-list-tile__content">
       <Icon
@@ -25,9 +26,10 @@ exports[`test Dark tone class + light tone 1`] = `
   className="pe-list-tile        pe-light-tone pe-list-tile--front ">
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    style={null}
+    tabIndex={0}>
     <div
-      className="pe-list-tile__content pe-list-tile__content--front">
+      className="pe-list-tile__content pe-list-tile__content-front ">
       <Icon
         size="medium"
         svg={
@@ -55,9 +57,10 @@ exports[`test Dark tone class + light tone class 1`] = `
   className="pe-list-tile         pe-list-tile--front pe-light-tone">
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    style={null}
+    tabIndex={0}>
     <div
-      className="pe-list-tile__content pe-list-tile__content--front">
+      className="pe-list-tile__content pe-list-tile__content-front ">
       <Icon
         size="medium"
         svg={
@@ -85,7 +88,8 @@ exports[`test No options 1`] = `
   className="pe-list-tile          ">
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    style={null}
+    tabIndex={0}>
     <div
       className="pe-list-tile__content" />
   </div>
@@ -114,7 +118,8 @@ exports[`test Option: class 1`] = `
   className="pe-list-tile          class-x">
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    style={null}
+    tabIndex={0}>
     <div
       className="pe-list-tile__content" />
   </div>
@@ -126,9 +131,41 @@ exports[`test Option: className 1`] = `
   className="pe-list-tile          className-x">
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    style={null}
+    tabIndex={0}>
     <div
       className="pe-list-tile__content" />
+  </div>
+</div>
+`;
+
+exports[`test Option: compact front (Icon) 1`] = `
+<div
+  className="pe-list-tile         pe-list-tile--front ">
+  <div
+    className="pe-list-tile__primary"
+    style={null}
+    tabIndex={0}>
+    <div
+      className="pe-list-tile__content pe-list-tile__content-front pe-list-tile--compact-front">
+      <Icon
+        size="medium"
+        svg={
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
+              }
+            } />
+        } />
+    </div>
+    <div
+      className="pe-list-tile__content">
+      <div
+        className="pe-list-tile__title">
+        Ancillary Justice
+      </div>
+    </div>
   </div>
 </div>
 `;
@@ -138,7 +175,8 @@ exports[`test Option: content 1`] = `
   className="pe-list-tile          ">
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    style={null}
+    tabIndex={0}>
     <div
       className="pe-list-tile__content">
       <Icon
@@ -160,7 +198,8 @@ exports[`test Option: disabled url -- dark tone class 1`] = `
   className="pe-list-tile  pe-list-tile--disabled        ">
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    style={null}
+    tabIndex={0}>
     <div
       className="pe-list-tile__content">
       <div
@@ -177,7 +216,8 @@ exports[`test Option: element 1`] = `
   className="pe-list-tile          ">
   <a
     className="pe-list-tile__primary"
-    style={null}>
+    style={null}
+    tabIndex={0}>
     <div
       className="pe-list-tile__content" />
   </a>
@@ -190,7 +230,8 @@ exports[`test Option: events 1`] = `
   <div
     className="pe-list-tile__primary"
     onClick={[Function]}
-    style={null}>
+    style={null}
+    tabIndex={0}>
     <div
       className="pe-list-tile__content">
       <div
@@ -207,9 +248,10 @@ exports[`test Option: front (Icon) 1`] = `
   className="pe-list-tile         pe-list-tile--front ">
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    style={null}
+    tabIndex={0}>
     <div
-      className="pe-list-tile__content pe-list-tile__content--front">
+      className="pe-list-tile__content pe-list-tile__content-front ">
       <Icon
         size="medium"
         svg={
@@ -237,9 +279,10 @@ exports[`test Option: front (avatar) 1`] = `
   className="pe-list-tile         pe-list-tile--front ">
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    style={null}
+    tabIndex={0}>
     <div
-      className="pe-list-tile__content pe-list-tile__content--front">
+      className="pe-list-tile__content pe-list-tile__content-front ">
       <Icon
         avatar={true}
         size="large"
@@ -261,7 +304,8 @@ exports[`test Option: highSubtitle 1`] = `
   className="pe-list-tile         pe-list-tile--high-subtitle ">
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    style={null}
+    tabIndex={0}>
     <div
       className="pe-list-tile__content">
       <div
@@ -282,7 +326,8 @@ exports[`test Option: highSubtitle and compact 1`] = `
   className="pe-list-tile    pe-list-tile--compact     pe-list-tile--high-subtitle ">
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    style={null}
+    tabIndex={0}>
     <div
       className="pe-list-tile__content">
       <div
@@ -318,7 +363,8 @@ exports[`test Option: hoverable 1`] = `
   className="pe-list-tile     pe-list-tile--hoverable     ">
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    style={null}
+    tabIndex={0}>
     <div
       className="pe-list-tile__content">
       <div
@@ -336,7 +382,8 @@ exports[`test Option: id 1`] = `
   id="id-x">
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    style={null}
+    tabIndex={0}>
     <div
       className="pe-list-tile__content" />
   </div>
@@ -348,9 +395,10 @@ exports[`test Option: indent 1`] = `
   className="pe-list-tile         pe-list-tile--front ">
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    style={null}
+    tabIndex={0}>
     <div
-      className="pe-list-tile__content pe-list-tile__content--front" />
+      className="pe-list-tile__content pe-list-tile__content-front " />
     <div
       className="pe-list-tile__content">
       <div
@@ -368,7 +416,8 @@ exports[`test Option: ink 1`] = `
   <Ripple />
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    style={null}
+    tabIndex={0}>
     <div
       className="pe-list-tile__content">
       <div
@@ -387,7 +436,8 @@ exports[`test Option: ink with ripple options 1`] = `
     opacityDecayVelocity={0.1} />
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    style={null}
+    tabIndex={0}>
     <div
       className="pe-list-tile__content">
       <div
@@ -404,7 +454,8 @@ exports[`test Option: secondary (Icon) 1`] = `
   className="pe-list-tile          ">
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    style={null}
+    tabIndex={0}>
     <div
       className="pe-list-tile__content">
       <div
@@ -437,7 +488,8 @@ exports[`test Option: secondary (content) 1`] = `
   className="pe-list-tile          ">
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    style={null}
+    tabIndex={0}>
     <div
       className="pe-list-tile__content">
       <div
@@ -474,7 +526,8 @@ exports[`test Option: selectable 1`] = `
   className="pe-list-tile      pe-list-tile--selectable    ">
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    style={null}
+    tabIndex={0}>
     <div
       className="pe-list-tile__content">
       <div
@@ -491,7 +544,8 @@ exports[`test Option: selected 1`] = `
   className="pe-list-tile pe-list-tile--selected         ">
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    style={null}
+    tabIndex={0}>
     <div
       className="pe-list-tile__content">
       <div
@@ -514,9 +568,10 @@ exports[`test Option: style (colors) 1`] = `
   }>
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    style={null}
+    tabIndex={0}>
     <div
-      className="pe-list-tile__content pe-list-tile__content--front">
+      className="pe-list-tile__content pe-list-tile__content-front ">
       <Icon
         size="medium"
         svg={
@@ -545,12 +600,42 @@ exports[`test Option: style (colors) 1`] = `
 </div>
 `;
 
+exports[`test Option: subContent 1`] = `
+<div
+  className="pe-list-tile          ">
+  <div
+    className="pe-list-tile__primary"
+    style={null}
+    tabIndex={0}>
+    <div
+      className="pe-list-tile__content">
+      <div
+        className="pe-list-tile__title">
+        Ancillary Justice
+      </div>
+      <div>
+        <div
+          style={
+            Object {
+              "background": "#c5e1a5",
+              "marginTop": "12px",
+            }
+          }>
+          The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`test Option: subtitle 1`] = `
 <div
   className="pe-list-tile         pe-list-tile--subtitle ">
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    style={null}
+    tabIndex={0}>
     <div
       className="pe-list-tile__content">
       <div
@@ -571,7 +656,8 @@ exports[`test Option: title 1`] = `
   className="pe-list-tile          ">
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    style={null}
+    tabIndex={0}>
     <div
       className="pe-list-tile__content">
       <div
@@ -598,9 +684,10 @@ exports[`test Themed (color and font size) -- dark tone class 1`] = `
   className="pe-list-tile         pe-list-tile--front tests-list-tile-themed-list-tile">
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    style={null}
+    tabIndex={0}>
     <div
-      className="pe-list-tile__content pe-list-tile__content--front">
+      className="pe-list-tile__content pe-list-tile__content-front ">
       <Icon
         size="medium"
         svg={
@@ -628,9 +715,10 @@ exports[`test Themed (color and font size) 1`] = `
   className="pe-list-tile         pe-list-tile--front tests-list-tile-themed-list-tile">
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    style={null}
+    tabIndex={0}>
     <div
-      className="pe-list-tile__content pe-list-tile__content--front">
+      className="pe-list-tile__content pe-list-tile__content-front ">
       <Icon
         size="medium"
         svg={

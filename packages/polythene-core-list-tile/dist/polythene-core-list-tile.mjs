@@ -132,13 +132,14 @@ var layout = (function (selector, componentVars) {
     },
 
     " .pe-list-tile__content": [flex.layoutVertical, flex.selfCenter, paddingH(componentVars.side_padding), {
-      ".pe-list-tile__content-front": [paddingV(componentVars.padding - 5)],
-      ":not(.pe-list-tile--compact-front)": {
-        width: componentVars.front_item_width + "px"
-      },
-      ".pe-list-tile--compact-front": {
-        width: componentVars.compact_front_item_width + "px"
-      },
+      ".pe-list-tile__content-front": [paddingV(componentVars.padding - 5), {
+        ".pe-list-tile--compact-front": {
+          width: componentVars.compact_front_item_width + "px"
+        },
+        ":not(.pe-list-tile--compact-front)": {
+          width: componentVars.front_item_width + "px"
+        }
+      }],
 
       " small": {
         fontSize: componentVars.font_size_small + "px"
@@ -343,7 +344,7 @@ var primaryContent = function primaryContent(h, k, requiresKeys, attrs, children
   return h(element, props, [frontComp, h("div", {
     className: classes.content,
     style: attrs.style
-  }, [attrs.content ? _extends({}, requiresKeys ? { key: "content" } : null, attrs.content) : children, attrs.title && !attrs.content ? h("div", _extends({}, requiresKeys ? { key: "title" } : null, { className: classes.title }), attrs.title) : null, attrs.subtitle ? h("div", _extends({}, requiresKeys ? { key: "subtitle" } : null, { className: classes.subtitle }), attrs.subtitle) : null, attrs.highSubtitle ? h("div", _extends({}, requiresKeys ? { key: "high-subtitle" } : null, { className: classes.subtitle + " " + classes.highSubtitle }), attrs.highSubtitle) : null])]);
+  }, [attrs.content ? _extends({}, requiresKeys ? { key: "content" } : null, attrs.content) : children, attrs.title && !attrs.content ? h("div", _extends({}, requiresKeys ? { key: "title" } : null, { className: classes.title }), attrs.title) : null, attrs.subtitle ? h("div", _extends({}, requiresKeys ? { key: "subtitle" } : null, { className: classes.subtitle }), attrs.subtitle) : null, attrs.highSubtitle ? h("div", _extends({}, requiresKeys ? { key: "highSubtitle" } : null, { className: classes.subtitle + " " + classes.highSubtitle }), attrs.highSubtitle) : null, attrs.subContent ? h("div", _extends({}, requiresKeys ? { key: "subContent" } : null, { className: classes.subContent }), attrs.subContent) : null])]);
 };
 
 var secondaryContent = function secondaryContent(h, requiresKeys, Icon) {

@@ -17,6 +17,7 @@ Changes to components:
   * Added option `padding` to optionally remove the default top and bottom padding
 * ListTile
   * Added option `compactFront` to reduce the horizontal width of `front` content
+  * Added option `subContent` to show other types of content below the title (without height restriction)
 * Toolbar
   * Added sub-component ToolbarTitle to improve styling 
   * Removed default background colors to better fit in a Dialog
