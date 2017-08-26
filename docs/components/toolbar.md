@@ -39,12 +39,22 @@ See [Material Design Toolbars](https://material.io/guidelines/layout/structure.h
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **compact** | optional | Boolean | false | Set to `true` to create a more compact Toolbar |
 
+### ToolbarTitle options
+
+| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
+| **text**      | either text or children | Boolean |  | Title text |
+| **center**    | optional | Boolean | false | Set to `true` to center the text |
+| **indent**    | optional | Boolean | false | Set to `true` to indent the text as if it would be next to an icon |
+
+
 
 ## Composition
 
 Toolbar is often composed from:
 
 * [Icon Button](icon-button.md)
+* ToolbarTitle (see usage examples)
 
 
 ## CSS classes

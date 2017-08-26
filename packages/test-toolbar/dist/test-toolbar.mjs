@@ -1,13 +1,14 @@
-import { IconButton, Shadow, Toolbar, renderer } from 'polythene-mithril';
+import { IconButton, Shadow, Toolbar, ToolbarTitle, renderer } from 'polythene-mithril';
 import { classes } from 'polythene-core-toolbar';
-import { IconButton as IconButton$1, Shadow as Shadow$1, Toolbar as Toolbar$1, renderer as renderer$1 } from 'polythene-react';
+import { IconButton as IconButton$1, Shadow as Shadow$1, Toolbar as Toolbar$1, ToolbarTitle as ToolbarTitle$1, renderer as renderer$1 } from 'polythene-react';
 
 var iconMenuSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>";
 var iconRefreshSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>";
 var iconAddSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>";
 
 var shared = (function (_ref) {
-  var IconButton$$1 = _ref.IconButton,
+  var ToolbarTitle$$1 = _ref.ToolbarTitle,
+      IconButton$$1 = _ref.IconButton,
       h = _ref.renderer;
 
 
@@ -26,10 +27,37 @@ var shared = (function (_ref) {
 
   var toolbarTitleAsSpan = [toolbarButton("menu", trustedIconMenu), h("span", { key: "title" }, "Toolbar with a very very very long title"), toolbarButton("add", trustedIconAddSVG)];
 
-  var toolbarTitleAtStart = [h("div", {
-    className: classes.title,
-    key: "title"
-  }, "Title"), toolbarButton("add", trustedIconAddSVG)];
+  var toolbarTitleComponent = [toolbarButton("menu", trustedIconMenu), h(ToolbarTitle$$1, {
+    key: "title",
+    text: "Toolbar with a very very very long title"
+  }), toolbarButton("add", trustedIconAddSVG)];
+
+  var toolbarTitleComponentCentered = [h(ToolbarTitle$$1, {
+    key: "title",
+    text: "Toolbar with a very very very long title",
+    center: true
+  })];
+
+  var toolbarTitleComponentCenteredBalanced = [toolbarButton("menu", trustedIconMenu), h(ToolbarTitle$$1, {
+    key: "title",
+    text: "Toolbar with a very very very long title",
+    center: true
+  }), h(IconButton$$1, {
+    inactive: true,
+    key: "placeholder",
+    icon: { content: "" }
+  })];
+
+  var toolbarTitleComponentIndented = [h(ToolbarTitle$$1, {
+    key: "title",
+    text: "Toolbar with a very very very long title",
+    indent: true
+  }), toolbarButton("add", trustedIconAddSVG)];
+
+  var toolbarTitleComponentAtStart = [h(ToolbarTitle$$1, {
+    key: "title",
+    text: "Toolbar with a very very very long title"
+  }), toolbarButton("add", trustedIconAddSVG)];
 
   var toolbarRowIndentedTitle = [h("div", {
     className: classes.indentedTitle,
@@ -38,23 +66,32 @@ var shared = (function (_ref) {
 
   return {
     toolbarRow: toolbarRow,
+    toolbarRowIndentedTitle: toolbarRowIndentedTitle,
+    toolbarTitleComponent: toolbarTitleComponent,
+    toolbarTitleComponentCentered: toolbarTitleComponentCentered,
+    toolbarTitleComponentCenteredBalanced: toolbarTitleComponentCenteredBalanced,
+    toolbarTitleComponentIndented: toolbarTitleComponentIndented,
     toolbarTitleAsSpan: toolbarTitleAsSpan,
-    toolbarTitleAtStart: toolbarTitleAtStart,
-    toolbarRowIndentedTitle: toolbarRowIndentedTitle
+    toolbarTitleComponentAtStart: toolbarTitleComponentAtStart
   };
 });
 
 var genericTests = (function (_ref) {
   var Toolbar$$1 = _ref.Toolbar,
+      ToolbarTitle$$1 = _ref.ToolbarTitle,
       IconButton$$1 = _ref.IconButton,
       Shadow$$1 = _ref.Shadow,
       h = _ref.renderer;
 
-  var _shared = shared({ IconButton: IconButton$$1, renderer: h }),
+  var _shared = shared({ IconButton: IconButton$$1, ToolbarTitle: ToolbarTitle$$1, renderer: h }),
       toolbarRow = _shared.toolbarRow,
+      toolbarRowIndentedTitle = _shared.toolbarRowIndentedTitle,
       toolbarTitleAsSpan = _shared.toolbarTitleAsSpan,
-      toolbarTitleAtStart = _shared.toolbarTitleAtStart,
-      toolbarRowIndentedTitle = _shared.toolbarRowIndentedTitle;
+      toolbarTitleComponent = _shared.toolbarTitleComponent,
+      toolbarTitleComponentAtStart = _shared.toolbarTitleComponentAtStart,
+      toolbarTitleComponentCentered = _shared.toolbarTitleComponentCentered,
+      toolbarTitleComponentCenteredBalanced = _shared.toolbarTitleComponentCenteredBalanced,
+      toolbarTitleComponentIndented = _shared.toolbarTitleComponentIndented;
 
   Toolbar$$1.theme(".tests-toolbar-themed-toolbar", {
     color_light_background: "#00c853",
@@ -80,22 +117,46 @@ var genericTests = (function (_ref) {
       content: toolbarRow
     }
   }, {
+    name: "ToolbarTitle",
+    component: Toolbar$$1,
+    attrs: {
+      content: toolbarTitleComponent
+    }
+  }, {
+    name: "ToolbarTitle, centered",
+    component: Toolbar$$1,
+    attrs: {
+      content: toolbarTitleComponentCentered
+    }
+  }, {
+    name: "ToolbarTitle, centered, balanced with placeholder",
+    component: Toolbar$$1,
+    attrs: {
+      content: toolbarTitleComponentCenteredBalanced
+    }
+  }, {
+    name: "ToolbarTitle, indented (without left icon)",
+    component: Toolbar$$1,
+    attrs: {
+      content: toolbarTitleComponentIndented
+    }
+  }, {
+    name: "ToolbarTitle, at start",
+    component: Toolbar$$1,
+    attrs: {
+      content: toolbarTitleComponentAtStart
+    }
+  }, {
     name: "Title as span",
     component: Toolbar$$1,
     attrs: {
       content: toolbarTitleAsSpan
     }
   }, {
-    name: "Indented title (without icons)",
+    name: "Title as span, indented (without left icon)",
     component: Toolbar$$1,
     attrs: {
       content: toolbarRowIndentedTitle
-    }
-  }, {
-    name: "Title at start",
-    component: Toolbar$$1,
-    attrs: {
-      content: toolbarTitleAtStart
     }
   }, {
     name: "Option: style (colors and height)",
@@ -171,7 +232,7 @@ var mithrilTests = function mithrilTests() {
   return [];
 };
 
-var testsMithril = [].concat(genericTests({ Toolbar: Toolbar, IconButton: IconButton, Shadow: Shadow, renderer: renderer })).concat(mithrilTests({ Toolbar: Toolbar, IconButton: IconButton, Shadow: Shadow, renderer: renderer }));
+var testsMithril = [].concat(genericTests({ Toolbar: Toolbar, ToolbarTitle: ToolbarTitle, IconButton: IconButton, Shadow: Shadow, renderer: renderer })).concat(mithrilTests({ Toolbar: Toolbar, ToolbarTitle: ToolbarTitle, IconButton: IconButton, Shadow: Shadow, renderer: renderer }));
 
 /*
 object-assign
@@ -3934,10 +3995,11 @@ var iconAddSVG$1 = react.createElement(
 
 var reactTests = function reactTests(_ref) {
   var Toolbar$$1 = _ref.Toolbar,
+      ToolbarTitle$$1 = _ref.ToolbarTitle,
       IconButton$$1 = _ref.IconButton,
       h = _ref.renderer;
 
-  var _shared = shared({ IconButton: IconButton$$1, renderer: h }),
+  var _shared = shared({ IconButton: IconButton$$1, ToolbarTitle: ToolbarTitle$$1, renderer: h }),
       toolbarRow = _shared.toolbarRow;
 
   var ToolbarButton = function ToolbarButton(_ref2) {
@@ -4017,6 +4079,6 @@ var reactTests = function reactTests(_ref) {
   }];
 };
 
-var testsReact = [].concat(genericTests({ Toolbar: Toolbar$1, IconButton: IconButton$1, Shadow: Shadow$1, renderer: renderer$1 })).concat(reactTests({ Toolbar: Toolbar$1, IconButton: IconButton$1, Shadow: Shadow$1, renderer: renderer$1 }));
+var testsReact = [].concat(genericTests({ Toolbar: Toolbar$1, ToolbarTitle: ToolbarTitle$1, IconButton: IconButton$1, Shadow: Shadow$1, renderer: renderer$1 })).concat(reactTests({ Toolbar: Toolbar$1, ToolbarTitle: ToolbarTitle$1, IconButton: IconButton$1, Shadow: Shadow$1, renderer: renderer$1 }));
 
 export { testsMithril as mithrilTests, testsReact as reactTests };

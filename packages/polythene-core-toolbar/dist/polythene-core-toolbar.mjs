@@ -3,13 +3,21 @@ import { flex, mixin, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 
 var classes = {
+
+  // Toolbar
+
   component: "pe-toolbar",
+
+  // states
+  compact: "pe-toolbar--compact",
+
+  // Toolbar title
 
   // elements
   title: "pe-toolbar__title",
 
   // states
-  compact: "pe-toolbar--compact",
+  centeredTitle: "pe-toolbar__title--center",
   indentedTitle: "pe-toolbar__title--indent"
 };
 
@@ -20,20 +28,22 @@ var height_desktop = vars.grid_unit_component * 8; // 64
 
 var vars$1 = {
   padding_side: padding_side,
+  height: height_desktop,
+  height_compact: height_mobile_portrait,
+
+  // title vars
   title_padding: title_padding,
   indent: vars.unit_indent,
   transition_duration: vars.animation_duration,
   font_size: 18,
   line_height: vars.line_height,
 
-  height: height_desktop,
-  height_compact: height_mobile_portrait,
-
+  // color vars
   color_light_text: rgba(vars.color_light_foreground, vars.blend_light_text_primary),
   color_dark_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
 
   // default gray background, expected to be overridden
-  color_light_background: "#CFD8DC", // blue-gray-100
+  color_light_background: "#fff",
   color_dark_background: "#37474F" // blue-gray-800
 };
 
@@ -50,10 +60,6 @@ var layout = (function (selector, componentVars) {
       height: componentVars.height_compact + "px"
     },
 
-    "> *:not(.disabled)": {
-      // make elements (e.g. buttons) respond to mouse/touch events
-      pointerEvents: "auto"
-    },
     " > span, .pe-toolbar__title, .pe-toolbar__title--indent": [flex.layout, flex.flex(1), mixin.ellipsis(1, vars.line_height, "em"), {
       transformOrigin: "left 50%",
       lineHeight: vars.line_height + "em",
@@ -64,6 +70,11 @@ var layout = (function (selector, componentVars) {
     },
     " .pe-toolbar__title--indent": {
       marginLeft: componentVars.indent - componentVars.padding_side + "px"
+    },
+    " .pe-toolbar__title--center": {
+      textAlign: "center",
+      marginLeft: componentVars.title_padding + "px",
+      marginRight: componentVars.title_padding + "px"
     },
     " .pe-fit": [mixin.fit(), {
       margin: 0
@@ -127,4 +138,30 @@ var toolbar = Object.freeze({
 	createContent: createContent
 });
 
-export { toolbar as coreToolbar, classes, vars$1 as vars };
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var getElement$1 = function getElement(vnode) {
+  return vnode.attrs.element || "div";
+};
+
+var createProps$1 = function createProps(vnode, _ref) {
+  var k = _ref.keys;
+
+  var attrs = vnode.attrs;
+  return _extends$2({}, filterSupportedAttributes(attrs), {
+    className: [classes.title, attrs.indent ? classes.indentedTitle : null, attrs.center ? classes.centeredTitle : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+  }, attrs.events);
+};
+
+var createContent$1 = function createContent(vnode) {
+  var attrs = vnode.attrs;
+  return attrs.text ? attrs.text : attrs.content ? attrs.content : attrs.children || vnode.children || attrs;
+};
+
+var toolbarTitle = Object.freeze({
+	getElement: getElement$1,
+	createProps: createProps$1,
+	createContent: createContent$1
+});
+
+export { toolbar as coreToolbar, toolbarTitle as coreToolbarTitle, classes, vars$1 as vars };

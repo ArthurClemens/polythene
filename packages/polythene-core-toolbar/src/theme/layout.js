@@ -16,10 +16,6 @@ export default (selector, componentVars) => [{
         height: componentVars.height_compact + "px"
       },
 
-      "> *:not(.disabled)": {
-        // make elements (e.g. buttons) respond to mouse/touch events
-        pointerEvents: "auto"
-      },
       " > span, .pe-toolbar__title, .pe-toolbar__title--indent": [
         flex.layout,
         flex.flex(1),
@@ -35,6 +31,11 @@ export default (selector, componentVars) => [{
       },
       " .pe-toolbar__title--indent": {
         marginLeft: (componentVars.indent - componentVars.padding_side) + "px"
+      },
+      " .pe-toolbar__title--center": {
+        textAlign: "center",
+        marginLeft: componentVars.title_padding + "px",
+        marginRight: componentVars.title_padding + "px"
       },
       " .pe-fit": [
         mixin.fit(), {
