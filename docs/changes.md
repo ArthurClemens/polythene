@@ -19,7 +19,7 @@ Changes to components:
 * ListTile
   * Added option `compactFront` to reduce the horizontal width of `front` content
   * Added option `subContent` to show other types of content below the title (without height restriction)
-  * Added optoin `header`
+  * Added option `header`
 * Toolbar
   * Added sub-component ToolbarTitle to improve styling 
   * Removed default background colors to better fit in a Dialog
