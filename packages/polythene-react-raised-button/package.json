@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-raised-button",
-  "version": "1.0.0-rc.4",
+  "version": "1.0.0-rc.5",
   "description": "",
   "main": "dist/polythene-react-raised-button.js",
   "module": "dist/polythene-react-raised-button.mjs",
@@ -14,10 +14,10 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-raised-button": "^1.0.0-rc.4",
+    "polythene-core-raised-button": "^1.0.0-rc.5",
     "polythene-react-base": "^1.0.0-rc.4",
-    "polythene-react-button": "^1.0.0-rc.4",
-    "polythene-react-shadow": "^1.0.0-rc.4"
+    "polythene-react-button": "^1.0.0-rc.5",
+    "polythene-react-shadow": "^1.0.0-rc.5"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

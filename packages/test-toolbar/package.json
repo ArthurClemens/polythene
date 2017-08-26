@@ -1,6 +1,6 @@
 {
   "name": "test-toolbar",
-  "version": "1.0.0-rc.4",
+  "version": "1.0.0-rc.5",
   "private": true,
   "description": "",
   "main": "dist/test-toolbar.js",
@@ -17,9 +17,9 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-toolbar": "^1.0.0-rc.4",
-    "polythene-mithril": "^1.0.0-rc.4",
-    "polythene-react": "^1.0.0-rc.4"
+    "polythene-core-toolbar": "^1.0.0-rc.5",
+    "polythene-mithril": "^1.0.0-rc.5",
+    "polythene-react": "^1.0.0-rc.5"
   },
   "devDependencies": {
     "react": "^15.6.1"

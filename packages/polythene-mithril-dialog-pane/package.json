@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-dialog-pane",
-  "version": "1.0.0-rc.4",
+  "version": "1.0.0-rc.5",
   "description": "",
   "main": "dist/polythene-mithril-dialog-pane.js",
   "module": "dist/polythene-mithril-dialog-pane.mjs",
@@ -14,7 +14,7 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-dialog-pane": "^1.0.0-rc.4",
+    "polythene-core-dialog-pane": "^1.0.0-rc.5",
     "polythene-mithril-base": "^1.0.0-rc.4"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",

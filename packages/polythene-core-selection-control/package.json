@@ -1,6 +1,6 @@
 {
   "name": "polythene-core-selection-control",
-  "version": "1.0.0-rc.4",
+  "version": "1.0.0-rc.5",
   "description": "",
   "main": "dist/polythene-core-selection-control.js",
   "module": "dist/polythene-core-selection-control.mjs",
@@ -16,7 +16,7 @@
   "dependencies": {
     "polythene-core": "^1.0.0-rc.4",
     "polythene-core-css": "^1.0.0-rc.4",
-    "polythene-theme": "^1.0.0-rc.4"
+    "polythene-theme": "^1.0.0-rc.5"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

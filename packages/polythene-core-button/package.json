@@ -1,6 +1,6 @@
 {
   "name": "polythene-core-button",
-  "version": "1.0.0-rc.4",
+  "version": "1.0.0-rc.5",
   "description": "",
   "main": "dist/polythene-core-button.js",
   "module": "dist/polythene-core-button.mjs",
@@ -16,7 +16,7 @@
   "dependencies": {
     "polythene-core": "^1.0.0-rc.4",
     "polythene-core-css": "^1.0.0-rc.4",
-    "polythene-theme": "^1.0.0-rc.4"
+    "polythene-theme": "^1.0.0-rc.5"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

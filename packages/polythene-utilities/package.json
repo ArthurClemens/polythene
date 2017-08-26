@@ -1,6 +1,6 @@
 {
   "name": "polythene-utilities",
-  "version": "1.0.0-rc.4",
+  "version": "1.0.0-rc.5",
   "description": "",
   "main": "dist/polythene-utilities.js",
   "module": "dist/polythene-utilities.mjs",

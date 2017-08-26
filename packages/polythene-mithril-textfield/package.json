@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-textfield",
-  "version": "1.0.0-rc.4",
+  "version": "1.0.0-rc.5",
   "description": "",
   "main": "dist/polythene-mithril-textfield.js",
   "module": "dist/polythene-mithril-textfield.mjs",
@@ -14,7 +14,7 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-textfield": "^1.0.0-rc.4",
+    "polythene-core-textfield": "^1.0.0-rc.5",
     "polythene-mithril-base": "^1.0.0-rc.4"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",

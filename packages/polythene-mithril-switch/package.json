@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-switch",
-  "version": "1.0.0-rc.4",
+  "version": "1.0.0-rc.5",
   "description": "",
   "main": "dist/polythene-mithril-switch.js",
   "module": "dist/polythene-mithril-switch.mjs",
@@ -14,11 +14,11 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-selection-control": "^1.0.0-rc.4",
-    "polythene-core-switch": "^1.0.0-rc.4",
+    "polythene-core-selection-control": "^1.0.0-rc.5",
+    "polythene-core-switch": "^1.0.0-rc.5",
     "polythene-mithril-base": "^1.0.0-rc.4",
-    "polythene-mithril-icon-button": "^1.0.0-rc.4",
-    "polythene-mithril-shadow": "^1.0.0-rc.4"
+    "polythene-mithril-icon-button": "^1.0.0-rc.5",
+    "polythene-mithril-shadow": "^1.0.0-rc.5"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

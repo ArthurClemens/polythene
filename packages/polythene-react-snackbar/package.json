@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-snackbar",
-  "version": "1.0.0-rc.4",
+  "version": "1.0.0-rc.5",
   "description": "",
   "main": "dist/polythene-react-snackbar.js",
   "module": "dist/polythene-react-snackbar.mjs",
@@ -15,7 +15,7 @@
   ],
   "dependencies": {
     "polythene-core": "^1.0.0-rc.4",
-    "polythene-core-snackbar": "^1.0.0-rc.4",
+    "polythene-core-snackbar": "^1.0.0-rc.5",
     "polythene-react-base": "^1.0.0-rc.4"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",

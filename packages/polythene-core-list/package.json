@@ -1,6 +1,6 @@
 {
   "name": "polythene-core-list",
-  "version": "1.0.0-rc.4",
+  "version": "1.0.0-rc.5",
   "description": "",
   "main": "dist/polythene-core-list.js",
   "module": "dist/polythene-core-list.mjs",
@@ -16,8 +16,8 @@
   "dependencies": {
     "polythene-core": "^1.0.0-rc.4",
     "polythene-core-css": "^1.0.0-rc.4",
-    "polythene-core-list-tile": "^1.0.0-rc.4",
-    "polythene-theme": "^1.0.0-rc.4"
+    "polythene-core-list-tile": "^1.0.0-rc.5",
+    "polythene-theme": "^1.0.0-rc.5"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

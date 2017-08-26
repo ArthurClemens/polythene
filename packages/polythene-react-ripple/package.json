@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-ripple",
-  "version": "1.0.0-rc.4",
+  "version": "1.0.0-rc.5",
   "description": "",
   "main": "dist/polythene-react-ripple.js",
   "module": "dist/polythene-react-ripple.mjs",
@@ -14,7 +14,7 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-ripple": "^1.0.0-rc.4",
+    "polythene-core-ripple": "^1.0.0-rc.5",
     "polythene-react-base": "^1.0.0-rc.4"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
