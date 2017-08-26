@@ -2,7 +2,7 @@
 
 ## Pre release
 
-### 1.0.0-rc.5 (WIP)
+### 1.0.0-rc.5
 
 Various bug fixes. Contains fixes for server-side rendering.
 
