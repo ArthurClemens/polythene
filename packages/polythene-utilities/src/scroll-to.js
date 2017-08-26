@@ -5,8 +5,12 @@
 */
 
 import { easing } from "./easing";
+import { isServer } from "polythene-core";
 
 export const scrollTo = opts => {
+  if (isServer) {
+    return;
+  }
   const element = opts.element;
   const which = (opts.direction === "horizontal") ? "scrollLeft" : "scrollTop";
   const to = opts.to;
@@ -36,8 +40,10 @@ export const scrollTo = opts => {
   });
 };
 
-const requestAnimFrame = (() =>
-  window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || (callback =>
-    window.setTimeout(callback, 1000 / 60)
-  )
-)();
+const requestAnimFrame = isServer
+  ? () => {}
+  : (() =>
+    window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || (callback =>
+      window.setTimeout(callback, 1000 / 60)
+    )
+  )();
