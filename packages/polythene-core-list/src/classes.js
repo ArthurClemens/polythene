@@ -1,9 +1,10 @@
+import { classes as coreListTileClasses } from "polythene-core-list-tile";
 
 export default {
   component:       "pe-list",
 
   // elements
-  header:          "pe-list__header",
+  header:          coreListTileClasses.header,
 
   // states
   borders:         "pe-list--borders",

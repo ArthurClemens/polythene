@@ -16,7 +16,7 @@ export default [{
   ],
 
   // Remove dotted link borders in Firefox
-  " a, a:active, a:focus, input:active, input[type]:focus": {
+  " a, a:active, a:focus, input:active, *:focus": {
     outline: 0
   },
 

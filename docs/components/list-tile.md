@@ -58,6 +58,7 @@ This works for list tiles that are defined as link (when either option `element`
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
+| **header**    | optional       | Boolean  | false       | Set to `true` to make this a header tile |
 | **indent** | optional | Boolean | | Set to `true` to indent the content |
 | **selected** | optional | Boolean | false | Set to `true` to show a selected state; adds class "selected" |
 | **disabled** | optional | Boolean | false | Set to `true` to deactivate the url and hover state (in case of [List](List.md) with setting `hoverable`) and show a disabled state; adds class "disabled" |

@@ -1,9 +1,9 @@
 import React from "react"; // eslint-disable-line no-unused-vars
-import { keys, renderer, List, Icon, ListTile } from "polythene-react";
+import { keys, renderer, List, Icon, ListTile, Notification } from "polythene-react";
 import genericTests from "./tests-generic";
 import { withRouter } from "react-router-dom";
 
-const reactTests = ({ List, Icon, ListTile, renderer: h }) => {
+const reactTests = ({ List, Icon, ListTile, Notification, renderer: h }) => {
 
   const createUserListTile = (title, subtitle, filename) =>
     h(withRouter(({ history }) => 
@@ -26,6 +26,13 @@ const reactTests = ({ List, Icon, ListTile, renderer: h }) => {
   const listTileJennifer = createUserListTile("Jennifer Barker", "Starting post doc", "avatar-1");
   const listTileAli = createUserListTile("Ali Connors", "Brunch this weekend?", "avatar-2");
   const listTileGrace = createUserListTile("Grace VanDam", "Binge watching...", "avatar-3");
+
+  const selectTile = ({ title }) => (
+    { title }
+  );
+  const headerTile = ({ title }) => (
+    { title, header: true }
+  );
 
   return [
     {
@@ -121,10 +128,42 @@ const reactTests = ({ List, Icon, ListTile, renderer: h }) => {
           />
         </List>
     },
+    {
+      name: "Keyboard control (JSX) (demo without state)",
+      component: () =>
+        <List
+          keyboardControl
+          highlightIndex={0}
+          onSelect={data => (
+            Notification.hide(),
+            Notification.show({
+              title: data.attrs.title,
+              showDuration: .1,
+              hideDuration: .2,
+              timeout: .8
+            })
+          )}
+          tiles={[
+            headerTile({ title: "A"}),
+            selectTile({ title: "Amman" }),
+            selectTile({ title: "Amsterdam" }),
+            selectTile({ title: "Athens" }),
+            headerTile({ title: "B" }),
+            selectTile({ title: "Bangkok" }),
+            selectTile({ title: "Beijing" }),
+            selectTile({ title: "Brussels" }),
+            headerTile({ title: "C" }),
+            selectTile({ title: "Canberra" }),
+            selectTile({ title: "Cardiff" }),
+            selectTile({ title: "Copenhagen" }),
+          ]}
+        />
+        
+    }
   ];
     
 };
 
 export default []
-  .concat(genericTests({ List, Icon, ListTile, renderer, keys }))
-  .concat(reactTests({ List, Icon, ListTile, renderer, keys }));
+  .concat(genericTests({ List, Icon, ListTile, Notification, renderer, keys }))
+  .concat(reactTests({ List, Icon, ListTile, Notification, renderer, keys }));

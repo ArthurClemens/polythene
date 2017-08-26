@@ -1,4 +1,4 @@
-import { filterSupportedAttributes } from "polythene-core";
+import { filterSupportedAttributes, isClient } from "polythene-core";
 import { customTheme } from "./theme";
 import classes from "./classes";
 
@@ -7,9 +7,12 @@ export const getElement = () => "div"; // because primary or secondary content c
 export const theme = customTheme;
 
 const primaryContent = (h, k, requiresKeys, attrs, children) => {
+  const url = attrs.keyboardControl
+    ? null
+    : attrs.url;
   const element = attrs.element
     ? attrs.element
-    : attrs.url
+    : url
       ? "a"
       : "div";
   const contentFrontClass = [
@@ -30,16 +33,17 @@ const primaryContent = (h, k, requiresKeys, attrs, children) => {
         { className: contentFrontClass }
       ))
       : null;
+  const hasTabIndex = !attrs.header && attrs.url;
   const props = Object.assign(
     {},
     filterSupportedAttributes(attrs),
-    attrs.url,
     attrs.events,
     {
       className: classes.primary,
-      style: null,
-      [[k.tabindex]]: attrs[k.tabindex] || 0
-    }
+      style: null
+    },
+    hasTabIndex && { [k.tabindex]: attrs[k.tabindex] || 0 },
+    url
   );
   return h(element, props, [
     frontComp,
@@ -89,34 +93,90 @@ const primaryContent = (h, k, requiresKeys, attrs, children) => {
   ]);
 };
 
-const secondaryContent = (h, requiresKeys, Icon, secondaryAttrs = {}) => {
-  const element = secondaryAttrs.element
-    ? secondaryAttrs.element
-    : secondaryAttrs.url
+const secondaryContent = (h, k, requiresKeys, Icon, attrs = {}) => {
+  const url = attrs.keyboardControl
+    ? null
+    : attrs.url;
+  const element = attrs.element
+    ? attrs.element
+    : url
       ? "a"
       : "div";
+  const hasTabIndex = attrs.url;
   return h(element,
     Object.assign(
       {},
-      secondaryAttrs.url,
+      url,
       {
         className: classes.secondary,
       },
       requiresKeys ? { key: "secondary" } : null,
-      filterSupportedAttributes(secondaryAttrs)
+      filterSupportedAttributes(attrs),
+      hasTabIndex && { [k.tabindex]: attrs[k.tabindex] || 0 }
     ),
     h("div",
       { className: classes.content },
       [
-        secondaryAttrs.icon ? h(Icon, secondaryAttrs.icon) : null,
-        secondaryAttrs.content ? secondaryAttrs.content : null
+        attrs.icon ? h(Icon, attrs.icon) : null,
+        attrs.content ? attrs.content : null
       ]
     )
   );
 };
 
-export const createProps = (vnode, { keys: k }) => {
+export const getInitialState = (vnode, createStream) => {
   const attrs = vnode.attrs;
+  const highlight = createStream(attrs.defaultHighlight);
+  return {
+    highlight,
+    redrawOnUpdate: createStream.merge([highlight])
+  };
+};
+
+export const onMount = vnode => {
+  const state = vnode.state;
+  const attrs = vnode.attrs;
+  const dom = vnode.dom;
+  if (!dom) {
+    return;
+  }
+  if (isClient) {
+    if (attrs.register) {
+      const primaryDom = dom; //.querySelector(`.${classes.primary}`);
+
+      const onFocus = () => state.highlight(true);
+      const onBlur = () => state.highlight(false);
+      
+      primaryDom.addEventListener("focus", onFocus, false);
+      primaryDom.addEventListener("blur", onBlur, false);
+
+      state.removeEventListeners = () => (
+        primaryDom.removeEventListener("focus", onFocus, false),
+        primaryDom.removeEventListener("blur", onBlur, false)
+      );
+
+      attrs.register(attrs.index, {
+        dom: primaryDom,
+        attrs
+      });
+
+      state.highlight.map(hasHighlight => {
+        if (attrs.setHighlightIndex && hasHighlight) {
+          attrs.setHighlightIndex(attrs.index);
+        }
+      });
+    }
+  }
+};
+
+export const onUnMount = vnode =>
+  vnode.state.removeEventListeners && vnode.state.removeEventListeners();
+
+export const createProps = (vnode, { keys: k }) => {
+  const state = vnode.state;
+  const attrs = vnode.attrs;
+  const highlight = state.highlight();
+  const hasTabIndex = !attrs.header && !attrs.url && !(attrs.secondary && attrs.secondary.url);
   const heightClass = attrs.subtitle
     ? classes.hasSubtitle
     : attrs.highSubtitle
@@ -126,7 +186,7 @@ export const createProps = (vnode, { keys: k }) => {
         : null;
   return Object.assign(
     {},
-    filterSupportedAttributes(attrs, { remove: ["tabindex", "tabIndex"] }), // tab index set in primary or secondary content
+    filterSupportedAttributes(attrs, { remove: ["tabindex", "tabIndex"] }), // tabindex is set elsewhere
     {
       className: [
         classes.component,
@@ -136,12 +196,15 @@ export const createProps = (vnode, { keys: k }) => {
         attrs.compact      ? classes.compact : null,
         attrs.hoverable    ? classes.hoverable : null,
         attrs.selectable   ? classes.selectable : null,
+        highlight          ? classes.highlight : null,
+        attrs.header       ? classes.header : null,
         attrs.tone === "dark" ? "pe-dark-tone" : null,
         attrs.tone === "light" ? "pe-light-tone" : null,
         heightClass,
         attrs.className || attrs[k.class],
-      ].join(" ")
-    }
+      ].join(" "),
+    },
+    hasTabIndex && { [k.tabindex]: attrs[k.tabindex] || 0 }
     // events and url are attached to primary content to not interfere with controls
   );
 };
@@ -161,7 +224,7 @@ export const createContent = (vnode, { renderer: h, requiresKeys, keys: k, Rippl
       : null,
     primaryContent(h, k, requiresKeys, primaryAttrs, attrs.children || vnode.children),
     attrs.secondary
-      ? secondaryContent(h, requiresKeys, Icon, attrs.secondary)
+      ? secondaryContent(h, k, requiresKeys, Icon, attrs.secondary)
       : null
   ];
 };

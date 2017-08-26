@@ -1,5 +1,214 @@
-import { Icon, List, ListTile, keys, renderer } from 'polythene-mithril';
-import { Icon as Icon$1, List as List$1, ListTile as ListTile$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
+import { Icon, List, ListTile, Notification, keys, renderer } from 'polythene-mithril';
+import { Icon as Icon$1, List as List$1, ListTile as ListTile$1, Notification as Notification$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
+
+function unwrapExports (x) {
+	return x && x.__esModule ? x['default'] : x;
+}
+
+function createCommonjsModule(fn, module) {
+	return module = { exports: {} }, fn(module, module.exports), module.exports;
+}
+
+var stream$2 = createCommonjsModule(function (module) {
+	"use strict";
+
+	var guid = 0,
+	    HALT = {};
+	function createStream() {
+		function stream() {
+			if (arguments.length > 0 && arguments[0] !== HALT) updateStream(stream, arguments[0]);
+			return stream._state.value;
+		}
+		initStream(stream);
+
+		if (arguments.length > 0 && arguments[0] !== HALT) updateStream(stream, arguments[0]);
+
+		return stream;
+	}
+	function initStream(stream) {
+		stream.constructor = createStream;
+		stream._state = { id: guid++, value: undefined, state: 0, derive: undefined, recover: undefined, deps: {}, parents: [], endStream: undefined };
+		stream.map = stream["fantasy-land/map"] = map, stream["fantasy-land/ap"] = ap, stream["fantasy-land/of"] = createStream;
+		stream.valueOf = valueOf, stream.toJSON = toJSON, stream.toString = valueOf;
+
+		Object.defineProperties(stream, {
+			end: { get: function get() {
+					if (!stream._state.endStream) {
+						var endStream = createStream();
+						endStream.map(function (value) {
+							if (value === true) unregisterStream(stream), unregisterStream(endStream);
+							return value;
+						});
+						stream._state.endStream = endStream;
+					}
+					return stream._state.endStream;
+				} }
+		});
+	}
+	function updateStream(stream, value) {
+		updateState(stream, value);
+		for (var id in stream._state.deps) {
+			updateDependency(stream._state.deps[id], false);
+		}finalize(stream);
+	}
+	function updateState(stream, value) {
+		stream._state.value = value;
+		stream._state.changed = true;
+		if (stream._state.state !== 2) stream._state.state = 1;
+	}
+	function updateDependency(stream, mustSync) {
+		var state = stream._state,
+		    parents = state.parents;
+		if (parents.length > 0 && parents.every(active) && (mustSync || parents.some(changed))) {
+			var value = stream._state.derive();
+			if (value === HALT) return false;
+			updateState(stream, value);
+		}
+	}
+	function finalize(stream) {
+		stream._state.changed = false;
+		for (var id in stream._state.deps) {
+			stream._state.deps[id]._state.changed = false;
+		}
+	}
+
+	function combine(fn, streams) {
+		if (!streams.every(valid)) throw new Error("Ensure that each item passed to m.prop.combine/m.prop.merge is a stream");
+		return initDependency(createStream(), streams, function () {
+			return fn.apply(this, streams.concat([streams.filter(changed)]));
+		});
+	}
+
+	function initDependency(dep, streams, derive) {
+		var state = dep._state;
+		state.derive = derive;
+		state.parents = streams.filter(notEnded);
+
+		registerDependency(dep, state.parents);
+		updateDependency(dep, true);
+
+		return dep;
+	}
+	function registerDependency(stream, parents) {
+		for (var i = 0; i < parents.length; i++) {
+			parents[i]._state.deps[stream._state.id] = stream;
+			registerDependency(stream, parents[i]._state.parents);
+		}
+	}
+	function unregisterStream(stream) {
+		for (var i = 0; i < stream._state.parents.length; i++) {
+			var parent = stream._state.parents[i];
+			delete parent._state.deps[stream._state.id];
+		}
+		for (var id in stream._state.deps) {
+			var dependent = stream._state.deps[id];
+			var index = dependent._state.parents.indexOf(stream);
+			if (index > -1) dependent._state.parents.splice(index, 1);
+		}
+		stream._state.state = 2; //ended
+		stream._state.deps = {};
+	}
+
+	function map(fn) {
+		return combine(function (stream) {
+			return fn(stream());
+		}, [this]);
+	}
+	function ap(stream) {
+		return combine(function (s1, s2) {
+			return s1()(s2());
+		}, [stream, this]);
+	}
+	function valueOf() {
+		return this._state.value;
+	}
+	function toJSON() {
+		return this._state.value != null && typeof this._state.value.toJSON === "function" ? this._state.value.toJSON() : this._state.value;
+	}
+
+	function valid(stream) {
+		return stream._state;
+	}
+	function active(stream) {
+		return stream._state.state === 1;
+	}
+	function changed(stream) {
+		return stream._state.changed;
+	}
+	function notEnded(stream) {
+		return stream._state.state !== 2;
+	}
+
+	function merge(streams) {
+		return combine(function () {
+			return streams.map(function (s) {
+				return s();
+			});
+		}, streams);
+	}
+	createStream["fantasy-land/of"] = createStream;
+	createStream.merge = merge;
+	createStream.combine = combine;
+	createStream.HALT = HALT;
+
+	module["exports"] = createStream;
+});
+
+var stream = stream$2;
+
+var keyboardState = (function (_ref) {
+  var h = _ref.h,
+      List$$1 = _ref.List,
+      ListTile$$1 = _ref.ListTile;
+
+
+  ListTile$$1.theme(".tests-list-keyboard-list-tile", {
+    color_light_selected_background: "#80d8ff"
+  });
+
+  var cityTile = function cityTile(_ref2) {
+    var title = _ref2.title,
+        selectedTitle = _ref2.selectedTitle;
+    return {
+      title: title,
+      key: title,
+      selected: title === selectedTitle,
+      className: "tests-list-keyboard-list-tile"
+    };
+  };
+
+  var headerTile = function headerTile(_ref3) {
+    var title = _ref3.title;
+    return {
+      title: title,
+      key: title,
+      header: true
+    };
+  };
+
+  return {
+    oninit: function oninit(vnode) {
+      var selected = stream();
+      vnode.state = {
+        selected: selected,
+        redrawOnUpdate: stream.merge([selected]) // for React
+      };
+    },
+    view: function view(vnode) {
+      var state = vnode.state;
+      var selectedTitle = state.selected();
+      return h(List$$1, {
+        borders: true,
+        keyboardControl: true,
+        defaultHighlightIndex: 0,
+        onSelect: function onSelect(data) {
+          return state.selected(data.attrs.title);
+        },
+        tiles: [headerTile({ title: "A" }), cityTile({ title: "Amman", selectedTitle: selectedTitle }), cityTile({ title: "Amsterdam", selectedTitle: selectedTitle }), cityTile({ title: "Athens", selectedTitle: selectedTitle }), headerTile({ title: "B" }), cityTile({ title: "Bangkok", selectedTitle: selectedTitle }), cityTile({ title: "Beijing", selectedTitle: selectedTitle }), cityTile({ title: "Brussels", selectedTitle: selectedTitle }), headerTile({ title: "C" }), cityTile({ title: "Canberra", selectedTitle: selectedTitle }), cityTile({ title: "Cardiff", selectedTitle: selectedTitle }), cityTile({ title: "Copenhagen", selectedTitle: selectedTitle })]
+      });
+    }
+  };
+});
 
 var genericTests = (function (_ref) {
   var List$$1 = _ref.List,
@@ -7,6 +216,8 @@ var genericTests = (function (_ref) {
       Icon$$1 = _ref.Icon,
       h = _ref.renderer;
 
+
+  var KeyboardState = keyboardState({ h: h, List: List$$1, ListTile: ListTile$$1 });
 
   List$$1.theme(".tests-lists-themed-list", {
     color_light_background: "#F57C00",
@@ -174,6 +385,10 @@ var genericTests = (function (_ref) {
         color: "#fff"
       }
     }
+  }, {
+    name: "Keyboard control",
+    interactive: true,
+    component: KeyboardState
   },
 
   // Dark tone
@@ -290,6 +505,8 @@ var genericTests = (function (_ref) {
   }];
 });
 
+var iconStars = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>";
+
 var mithrilTests = function mithrilTests(_ref) {
   var List$$1 = _ref.List,
       Icon$$1 = _ref.Icon,
@@ -297,26 +514,43 @@ var mithrilTests = function mithrilTests(_ref) {
       h = _ref.renderer;
 
 
-  var createUserListTile = function createUserListTile(title, subtitle, filename) {
+  var trustedIconStars = h.trust(iconStars);
+
+  var createUserListTile = function createUserListTile(title, subtitle, filename, showSecondary) {
     return h(ListTile$$1, {
       title: title,
       key: title,
       subtitle: subtitle,
+      hoverable: true,
       front: h(Icon$$1, {
         src: "http://arthurclemens.github.io/assets/polythene/examples/" + filename + ".png",
         avatar: true,
         size: "large"
       }),
       url: {
-        href: "/",
+        href: "/#primary",
         oncreate: h.route.link
-      }
+      },
+      secondary: showSecondary ? {
+        icon: {
+          svg: trustedIconStars,
+          size: "medium"
+        },
+        url: {
+          href: "/#secondary",
+          oncreate: h.route.link
+        }
+      } : null
     });
   };
 
   var listTileJennifer = createUserListTile("Jennifer Barker", "Starting post doc", "avatar-1");
   var listTileAli = createUserListTile("Ali Connors", "Brunch this weekend?", "avatar-2");
   var listTileGrace = createUserListTile("Grace VanDam", "Binge watching...", "avatar-3");
+
+  var listTileWithSecondaryJennifer = createUserListTile("Jennifer Barker", "Starting post doc", "avatar-1", true);
+  var listTileWithSecondaryAli = createUserListTile("Ali Connors", "Brunch this weekend?", "avatar-2", true);
+  var listTileWithSecondaryGrace = createUserListTile("Grace VanDam", "Binge watching...", "avatar-3", true);
 
   return [{
     section: "Mithril specific tests"
@@ -341,6 +575,26 @@ var mithrilTests = function mithrilTests(_ref) {
       }
     }
   }, {
+    name: "Options: header, tiles with urls, secondary",
+    interactive: true,
+    component: {
+      view: function view() {
+        return [h(List$$1, {
+          header: {
+            title: "Friends"
+          },
+          borders: true,
+          tiles: [listTileWithSecondaryJennifer, listTileWithSecondaryAli, listTileWithSecondaryGrace]
+        }), h(List$$1, {
+          header: {
+            title: "Friends"
+          },
+          borders: true,
+          tiles: [listTileWithSecondaryJennifer, listTileWithSecondaryAli, listTileWithSecondaryGrace]
+        })];
+      }
+    }
+  }, {
     name: "Options: header.sticky",
     interactive: true,
     component: {
@@ -359,7 +613,7 @@ var mithrilTests = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril = [].concat(genericTests({ List: List, Icon: Icon, ListTile: ListTile, renderer: renderer, keys: keys })).concat(mithrilTests({ List: List, Icon: Icon, ListTile: ListTile, renderer: renderer, keys: keys }));
+var testsMithril = [].concat(genericTests({ List: List, Icon: Icon, ListTile: ListTile, Notification: Notification, renderer: renderer, keys: keys })).concat(mithrilTests({ List: List, Icon: Icon, ListTile: ListTile, Notification: Notification, renderer: renderer, keys: keys }));
 
 /*
 object-assign
@@ -4104,14 +4358,6 @@ var React_1 = React$1;
 
 var react = React_1;
 
-function unwrapExports (x) {
-	return x && x.__esModule ? x['default'] : x;
-}
-
-function createCommonjsModule(fn, module) {
-	return module = { exports: {} }, fn(module, module.exports), module.exports;
-}
-
 var factoryWithThrowingShims = function factoryWithThrowingShims() {
   function shim(props, propName, componentName, location, propFullName, secret) {
     if (secret === ReactPropTypesSecret_1$2) {
@@ -7135,6 +7381,7 @@ var reactTests = function reactTests(_ref) {
   var List$$1 = _ref.List,
       Icon$$1 = _ref.Icon,
       ListTile$$1 = _ref.ListTile,
+      Notification$$1 = _ref.Notification,
       h = _ref.renderer;
 
 
@@ -7163,6 +7410,15 @@ var reactTests = function reactTests(_ref) {
   var listTileJennifer = createUserListTile("Jennifer Barker", "Starting post doc", "avatar-1");
   var listTileAli = createUserListTile("Ali Connors", "Brunch this weekend?", "avatar-2");
   var listTileGrace = createUserListTile("Grace VanDam", "Binge watching...", "avatar-3");
+
+  var selectTile = function selectTile(_ref3) {
+    var title = _ref3.title;
+    return { title: title };
+  };
+  var headerTile = function headerTile(_ref4) {
+    var title = _ref4.title;
+    return { title: title, header: true };
+  };
 
   return [{
     section: "React specific tests"
@@ -7233,9 +7489,27 @@ var reactTests = function reactTests(_ref) {
         })
       );
     }
+  }, {
+    name: "Keyboard control (JSX) (demo without state)",
+    component: function component() {
+      return react.createElement(List$$1, {
+        keyboardControl: true,
+        highlightIndex: 0,
+        onSelect: function onSelect(data) {
+          return Notification$$1.hide(), Notification$$1.show({
+            title: data.attrs.title,
+            showDuration: .1,
+            hideDuration: .2,
+            timeout: .8
+          });
+        },
+        tiles: [headerTile({ title: "A" }), selectTile({ title: "Amman" }), selectTile({ title: "Amsterdam" }), selectTile({ title: "Athens" }), headerTile({ title: "B" }), selectTile({ title: "Bangkok" }), selectTile({ title: "Beijing" }), selectTile({ title: "Brussels" }), headerTile({ title: "C" }), selectTile({ title: "Canberra" }), selectTile({ title: "Cardiff" }), selectTile({ title: "Copenhagen" })]
+      });
+    }
+
   }];
 };
 
-var testsReact = [].concat(genericTests({ List: List$1, Icon: Icon$1, ListTile: ListTile$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests({ List: List$1, Icon: Icon$1, ListTile: ListTile$1, renderer: renderer$1, keys: keys$1 }));
+var testsReact = [].concat(genericTests({ List: List$1, Icon: Icon$1, ListTile: ListTile$1, Notification: Notification$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests({ List: List$1, Icon: Icon$1, ListTile: ListTile$1, Notification: Notification$1, renderer: renderer$1, keys: keys$1 }));
 
 export { testsMithril as mithrilTests, testsReact as reactTests };

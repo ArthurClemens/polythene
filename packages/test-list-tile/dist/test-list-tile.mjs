@@ -58,7 +58,7 @@ var genericTests = (function (_ref) {
       subContent: h("div", {
         style: {
           background: "#c5e1a5",
-          marginTop: "10px"
+          marginTop: "12px"
         }
       }, "The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before.")
     }

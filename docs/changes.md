@@ -15,9 +15,11 @@ Changes to components:
   * Option `borders` has been changed from Boolean to String, with possible values: "always", "never", "overflow" (default)
 * List
   * Added option `padding` to optionally remove the default top and bottom padding
+  * Added keyboard control
 * ListTile
   * Added option `compactFront` to reduce the horizontal width of `front` content
   * Added option `subContent` to show other types of content below the title (without height restriction)
+  * Added optoin `header`
 * Toolbar
   * Added sub-component ToolbarTitle to improve styling 
   * Removed default background colors to better fit in a Dialog

@@ -25,8 +25,8 @@ export default (selector, componentVars) => [{
     },
 
     ".pe-list--borders": {
-      " .pe-list-tile:not(.pe-list__header)": {
-        ":not(:last-child)": {
+      " .pe-list-tile": {
+        ":not(.pe-list-tile--header):not(:last-child)": {
           "&": borderStyle(componentVars)
         }
       }
@@ -35,8 +35,8 @@ export default (selector, componentVars) => [{
     ".pe-list--indented-borders": {
       borderTop: "none",
 
-      " .pe-list-tile:not(.pe-list__header)": {
-        ":not(:last-child)": {
+      " .pe-list-tile": {
+        ":not(.pe-list-tile--header):not(:last-child)": {
           " .pe-list-tile__content:not(.pe-list-tile__content-front)": borderStyle(componentVars)
         }
       }

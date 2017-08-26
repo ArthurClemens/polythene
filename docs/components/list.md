@@ -22,7 +22,9 @@ Lists are also the base component of [Menus](menu.md).
 
 ## Keyboard control
 
-See: [List Tile](list-tile.md#keyboard-control)
+Besides the regular accessibility keyboard control, List offers additional keyboard control for use in selectable lists (for instance when displaying search results). See option `keyboardControl` and usage examples.
+
+See also: [List Tile](list-tile.md#keyboard-control)
 
 
 ## Options
@@ -58,6 +60,17 @@ See: [List Tile](list-tile.md#keyboard-control)
 | **indentedBorders** | optional | Boolean | | Set to `true` to indent the list tile borders; note that list tiles must have option `indent` as well       |
 | **compact**         | optional | Boolean | | Set to `true` to reduce vertical padding of list tiles |
 | **padding**         | optional | Boolean | true | Set to `false` to remove top and bottom padding |
+
+
+### List keyboard control options
+
+| **Parameter**       |  **Mandatory** | **Type** | **Default** | **Description** |
+| ------------------- | -------------- | -------- | ----------- | --------------- |
+| **keyboardControl** | optional | Boolean | | Set to `true` to enable keyboard control |
+| **defaultHighlightIndex** | optional | Number | | Sets the initally highlighted index; after user interaction the index will be updated internally |
+| **onSelect**  | optional | Function(state {Object}) | | Callback function that accepts the list selected state (Object with properties `event`, `index` {Number}, `dom` {HTMLElement}, `attrs` {Object}) |
+
+
 
 
 ## Composition

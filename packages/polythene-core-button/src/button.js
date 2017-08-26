@@ -98,7 +98,7 @@ export const createProps = (vnode, { keys: k }) => {
             onKeyDownHandler(e);
           }
         }
-      },
+      }
     },
     attrs.events,
     attrs.url,

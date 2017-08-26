@@ -1,5 +1,9 @@
 
+import keyboardState from "./components/keyboard-state";
+
 export default ({ List, ListTile, Icon, renderer: h }) => {
+
+  const KeyboardState = keyboardState({ h, List, ListTile });
 
   List.theme(".tests-lists-themed-list", {
     color_light_background: "#F57C00",
@@ -203,6 +207,11 @@ export default ({ List, ListTile, Icon, renderer: h }) => {
         }
       }
     },
+    {
+      name: "Keyboard control",
+      interactive: true,
+      component: KeyboardState
+    },
 
     // Dark tone
 
@@ -307,7 +316,7 @@ export default ({ List, ListTile, Icon, renderer: h }) => {
       className: "test-dark-tone",
       component: List,
       attrs: {
-        style: { background: "#fff" },      
+        style: { background: "#fff" },
         borders: true,
         header: {
           title: "Friends"

@@ -30,7 +30,7 @@ export default (selector, componentVars) => [{
         }
       ],
 
-      " .pe-list-tile__primary": [
+      ":not(.pe-list-tile--header) .pe-list-tile__primary": [
         flex.flex(), {
           position: "relative",
 
@@ -63,7 +63,7 @@ export default (selector, componentVars) => [{
               },
             }
           ],
-          
+
           " small": {
             fontSize: componentVars.font_size_small + "px"
           }
@@ -127,7 +127,7 @@ export default (selector, componentVars) => [{
       },
 
       // List header
-      ".pe-list__header": {
+      ".pe-list-tile--header": {
         height: componentVars.single_height + "px",
 
         " .pe-list-tile__content": {
@@ -147,7 +147,7 @@ export default (selector, componentVars) => [{
       // Compact list
 
       " .pe-list--compact &, &.pe-list-tile--compact": {
-        ":not(.pe-list__header)": {
+        ":not(.pe-list-tile--header)": {
           " .pe-list-tile__content": paddingV(componentVars.compact_padding, componentVars.compact_padding + 1)
         }
       },
@@ -181,7 +181,7 @@ export default (selector, componentVars) => [{
 
       "html.pe-no-touch &.pe-list-tile--hoverable, \
       html.pe-no-touch &.pe-list-tile--selectable": {
-        ":not(.pe-list__header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected):hover": {
+        ":not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected):hover": {
           cursor: "pointer"
         }
       }

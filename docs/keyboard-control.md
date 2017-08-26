@@ -7,7 +7,9 @@ Polythene supports navigation by keyboard, but often browsers need to be set up 
 * Go to Settings > Appearance
   * Turn on: "Pressing Tab on a web page highlights links, as well as form fields"
 
-## Safari
+## Safari (MacOS)
+
+Safari on Mac does not give focus to links when they have a `href`. To turn on expected behavior:
 
 * Go to Preferences > Tab Advanced
   * Under Accessibility, check "Press Tab to highlight each item on a webpage"

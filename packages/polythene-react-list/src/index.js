@@ -1,8 +1,8 @@
-import { ViewComponent } from "polythene-react-base";
+import { StateComponent } from "polythene-react-base";
 import { coreList as core } from "polythene-core-list";
 import { ListTile } from "polythene-react-list-tile";
 
-export const List = ViewComponent(Object.assign(
+export const List = StateComponent(Object.assign(
   {},
   core,
   {

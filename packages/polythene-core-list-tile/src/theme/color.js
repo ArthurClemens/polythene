@@ -3,7 +3,7 @@ const style = (scopes, selector, componentVars, tint) => [{
     color:           componentVars["color_" + tint + "_title"],
     backgroundColor: componentVars["color_" + tint + "_background"],
 
-    ".pe-list__header": {
+    ".pe-list-tile--header": {
       color: componentVars["color_" + tint + "_list_header"],
 
       " .pe-list-tile__primary, pe-list-tile__secondary": {
@@ -26,6 +26,11 @@ const style = (scopes, selector, componentVars, tint) => [{
         backgroundColor: componentVars["color_" + tint + "_selected_background"]
       }
     },
+    ".pe-list-tile--highlight:not(.pe-list-tile--selected)": {
+      " .pe-list-tile__primary, pe-list-tile__secondary": {
+        backgroundColor: componentVars["color_" + tint + "_highlight_background"]
+      }
+    },
     "&.pe-list-tile--sticky": {
       backgroundColor: componentVars["color_" + tint + "_background"] || "inherit"
     },
@@ -39,7 +44,7 @@ const style = (scopes, selector, componentVars, tint) => [{
 
 const noTouchStyle = (scopes, selector, componentVars, tint) => [{
   [scopes.map(s => s + selector + ":hover").join(",")]: {
-    ":not(.pe-list__header):not(.pe-list-tile--disabled)": {
+    ":not(.pe-list-tile--header):not(.pe-list-tile--disabled)": {
       " .pe-list-tile__primary, .pe-list-tile__secondary": {
         backgroundColor: componentVars["color_" + tint + "_hover_background"]
       }

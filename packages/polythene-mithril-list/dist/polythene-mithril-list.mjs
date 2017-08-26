@@ -1,10 +1,10 @@
-import { ViewComponent } from 'polythene-mithril-base';
+import { StateComponent } from 'polythene-mithril-base';
 import { coreList } from 'polythene-core-list';
 import { ListTile } from 'polythene-mithril-list-tile';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var List = ViewComponent(_extends({}, coreList, {
+var List = StateComponent(_extends({}, coreList, {
   createProps: function createProps(vnode, args) {
     return coreList.createProps(vnode, _extends(args, { ListTile: ListTile }));
   },

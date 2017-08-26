@@ -18,8 +18,10 @@ export default {
   hasFront:        "pe-list-tile--front",
   hasHighSubtitle: "pe-list-tile--high-subtitle",
   hasSubtitle:     "pe-list-tile--subtitle",
+  header:          "pe-list-tile--header",
   hoverable:       "pe-list-tile--hoverable",
   selectable:      "pe-list-tile--selectable",
   selected:        "pe-list-tile--selected",
+  highlight:       "pe-list-tile--highlight",
   sticky:          "pe-list-tile--sticky",
 };
