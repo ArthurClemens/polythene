@@ -1,5 +1,5 @@
-import { Button, Dialog, DialogPane, Icon, IconButton, List, ListTile, RaisedButton, Toolbar, keys, renderer } from 'polythene-mithril';
-import { Button as Button$1, Dialog as Dialog$1, DialogPane as DialogPane$1, Icon as Icon$1, IconButton as IconButton$1, List as List$1, ListTile as ListTile$1, RaisedButton as RaisedButton$1, Toolbar as Toolbar$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
+import { Button, Dialog, DialogPane, Icon, IconButton, List, ListTile, RaisedButton, Toolbar, ToolbarTitle, keys, renderer } from 'polythene-mithril';
+import { Button as Button$1, Dialog as Dialog$1, DialogPane as DialogPane$1, Icon as Icon$1, IconButton as IconButton$1, List as List$1, ListTile as ListTile$1, RaisedButton as RaisedButton$1, Toolbar as Toolbar$1, ToolbarTitle as ToolbarTitle$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 
 function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -41,6 +41,10 @@ var fullScreen = (function (_ref) {
       Dialog$$1 = _ref.Dialog;
 
 
+  Toolbar$$1.theme(".tests-dialog-full-screen-themed-toolbar", {
+    color_dark_background: "#00c853"
+  });
+
   var fullScreenToolbarRow = function fullScreenToolbarRow(title) {
     return [h(IconButton$$1, {
       key: "close",
@@ -57,23 +61,11 @@ var fullScreen = (function (_ref) {
     })];
   };
 
-  var FullScreenPane = {
-    view: function view() {
-      return h("div", [h(Toolbar$$1, {
-        key: "toolbar",
-        content: fullScreenToolbarRow("New event")
-      }), h("div", {
-        key: "content",
-        style: { padding: "21px" }
-      }, h.trust(longText))]);
-    }
-  };
-
   var confirmDialogOpts = {
     body: "This event is not yet saved. Are you sure you want to delete this event?",
     modal: true,
     backdrop: true,
-    footer: [h(Button$$1, {
+    footerButtons: [h(Button$$1, {
       label: "Cancel",
       events: _defineProperty$3({}, k.onclick, function () {
         return Dialog$$1.hide({ id: DIALOG_CONFIRM });
@@ -92,8 +84,13 @@ var fullScreen = (function (_ref) {
   };
 
   return {
-    body: h(FullScreenPane),
-    fullScreen: true
+    fullScreen: true,
+    header: h(Toolbar$$1, {
+      className: "tests-dialog-full-screen-themed-toolbar",
+      tone: "dark",
+      content: fullScreenToolbarRow("New event")
+    }),
+    body: h.trust(longText)
   };
 });
 
@@ -109,7 +106,7 @@ var fullwidth = (function (_ref) {
       width: "280px"
     },
     body: [h(".pe-dialog-pane__title", "Let your apps know your location"), h("div", "This means that your location data will be sent to our servers, anonymously of course.")],
-    footer: [h(Button$$1, {
+    footerButtons: [h(Button$$1, {
       label: "Turn on location services",
       events: _defineProperty$4({}, k.onclick, function () {
         return Dialog$$1.hide();
@@ -195,7 +192,7 @@ var replaceDialog = (function (_ref) {
 
   var dialogTwoOptions = {
     body: "Dialog Two",
-    footer: h(Button$$1, {
+    footerButtons: h(Button$$1, {
       label: "Show One",
       events: _defineProperty$7({}, k.onclick, function () {
         return Dialog$$1.show(dialogOneOptions);
@@ -205,7 +202,7 @@ var replaceDialog = (function (_ref) {
 
   var dialogOneOptions = {
     body: "Dialog One",
-    footer: h(Button$$1, {
+    footerButtons: h(Button$$1, {
       label: "Show Two",
       events: _defineProperty$7({}, k.onclick, function () {
         return Dialog$$1.show(dialogTwoOptions);
@@ -228,15 +225,18 @@ var genericTests = (function (_ref) {
       Button$$1 = _ref.Button,
       RaisedButton$$1 = _ref.RaisedButton,
       Toolbar$$1 = _ref.Toolbar,
+      ToolbarTitle$$1 = _ref.ToolbarTitle,
       IconButton$$1 = _ref.IconButton,
       Icon$$1 = _ref.Icon,
       List$$1 = _ref.List,
       ListTile$$1 = _ref.ListTile;
 
 
+  var h = renderer$$1;
+
   var Opener = function Opener(dialogAttrs) {
     var label = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "Open";
-    return renderer$$1(RaisedButton$$1, {
+    return h(RaisedButton$$1, {
       label: label,
       events: _defineProperty$1({}, keys$$1.onclick, function () {
         return Dialog$$1.show(dialogAttrs);
@@ -246,7 +246,7 @@ var genericTests = (function (_ref) {
 
   var OpenerWithPromise = function OpenerWithPromise(dialogAttrs) {
     var label = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "Open";
-    return renderer$$1(RaisedButton$$1, {
+    return h(RaisedButton$$1, {
       label: label,
       events: _defineProperty$1({}, keys$$1.onclick, function () {
         return Dialog$$1.show(dialogAttrs).then(function (id) {
@@ -260,6 +260,11 @@ var genericTests = (function (_ref) {
     border_radius: 5,
     color_light_background: "#2196F3",
     color_light_text: "#fff"
+  });
+
+  Toolbar$$1.theme(".tests-dialog-themed-toolbar", {
+    color_light_background: "#eee",
+    color_dark_background: "#333"
   });
 
   return [{
@@ -278,7 +283,7 @@ var genericTests = (function (_ref) {
     component: {
       view: function view() {
         return Opener({
-          content: renderer$$1("div", "Hello"),
+          content: h("div", "Hello"),
           className: "dialog-tests-rounded-blue"
         });
       }
@@ -331,7 +336,7 @@ var genericTests = (function (_ref) {
         return Opener({
           title: "Long dialog with a very long title that surely won't fit here",
           body: renderer$$1.trust(longText),
-          footer: cancelOkButtons({ renderer: renderer$$1, keys: keys$$1, Button: Button$$1, Dialog: Dialog$$1 })
+          footerButtons: cancelOkButtons({ renderer: renderer$$1, keys: keys$$1, Button: Button$$1, Dialog: Dialog$$1 })
         });
       }
     }
@@ -342,10 +347,10 @@ var genericTests = (function (_ref) {
     component: {
       view: function view() {
         return Opener({
-          panes: [renderer$$1(DialogPane$$1, {
+          panes: [h(DialogPane$$1, {
             title: "Long dialog with a very long title that surely won't fit here",
             body: renderer$$1.trust(longText),
-            footer: cancelOkButtons({ renderer: renderer$$1, keys: keys$$1, Button: Button$$1, Dialog: Dialog$$1 })
+            footerButtons: cancelOkButtons({ renderer: renderer$$1, keys: keys$$1, Button: Button$$1, Dialog: Dialog$$1 })
           })]
         });
       }
@@ -359,7 +364,7 @@ var genericTests = (function (_ref) {
         return Opener({
           title: "Long dialog with a very long title that surely won't fit here",
           body: renderer$$1.trust(longText),
-          footer: cancelOkButtons({ renderer: renderer$$1, keys: keys$$1, Button: Button$$1, Dialog: Dialog$$1 }),
+          footerButtons: cancelOkButtons({ renderer: renderer$$1, keys: keys$$1, Button: Button$$1, Dialog: Dialog$$1 }),
           modal: true,
           backdrop: true
         });
@@ -544,14 +549,23 @@ var genericTests = (function (_ref) {
       }
     }
   }, {
-    name: "Option: no transition",
+    name: "Option: Toolbar as custom header and footer",
     interactive: true,
     exclude: true,
     component: {
       view: function view() {
         return Opener({
-          body: renderer$$1.trust(shortText),
-          transition: "none"
+          header: h(Toolbar$$1, {
+            content: [h(ToolbarTitle$$1, { key: "header", text: "Header" })],
+            tone: "light",
+            className: "tests-dialog-themed-toolbar"
+          }),
+          body: "Body",
+          footer: h(Toolbar$$1, {
+            content: [h(ToolbarTitle$$1, { key: "footer", text: "Footer" })],
+            tone: "dark",
+            className: "tests-dialog-themed-toolbar"
+          })
         });
       }
     }
@@ -781,7 +795,7 @@ var form = (function () {
         file(null);
       }
     },
-    footer: [renderer(Button, {
+    footerButtons: [renderer(Button, {
       label: "Cancel",
       events: {
         onclick: function onclick() {
@@ -833,7 +847,7 @@ var mithrilTests = function mithrilTests(_ref) {
   }];
 };
 
-var testsMithril = [].concat(genericTests({ Dialog: Dialog, DialogPane: DialogPane, Button: Button, RaisedButton: RaisedButton, Toolbar: Toolbar, IconButton: IconButton, Icon: Icon, List: List, ListTile: ListTile, renderer: renderer, keys: keys })).concat(mithrilTests({ Dialog: Dialog, DialogPane: DialogPane, Button: Button, RaisedButton: RaisedButton, Toolbar: Toolbar, IconButton: IconButton, Icon: Icon, List: List, ListTile: ListTile, renderer: renderer, keys: keys }));
+var testsMithril = [].concat(genericTests({ Dialog: Dialog, DialogPane: DialogPane, Button: Button, RaisedButton: RaisedButton, Toolbar: Toolbar, ToolbarTitle: ToolbarTitle, IconButton: IconButton, Icon: Icon, List: List, ListTile: ListTile, renderer: renderer, keys: keys })).concat(mithrilTests({ Dialog: Dialog, DialogPane: DialogPane, Button: Button, RaisedButton: RaisedButton, Toolbar: Toolbar, ToolbarTitle: ToolbarTitle, IconButton: IconButton, Icon: Icon, List: List, ListTile: ListTile, renderer: renderer, keys: keys }));
 
 /*
 object-assign
@@ -4629,7 +4643,7 @@ var Pane = function (_Component) {
             _this2.setState({ file: null });
           }
         },
-        footer: react.createElement(
+        footerButtons: react.createElement(
           "div",
           null,
           react.createElement(Button$1, {
@@ -4666,6 +4680,10 @@ var iconClose = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\
 
 var content = "Content...";
 
+Toolbar$1.theme(".tests-dialog-react-themed-toolbar", {
+  color_dark_background: "#00c853"
+});
+
 var toolbarRow = function toolbarRow(title) {
   return [renderer$1(IconButton$1, {
     key: "close",
@@ -4691,15 +4709,12 @@ var toolbarRow = function toolbarRow(title) {
 var fullScreenOptions = {
   fullScreen: true,
   backdrop: true,
-  content: [renderer$1(Toolbar$1, {
-    content: toolbarRow("New event"),
-    key: "header"
+  header: renderer$1(Toolbar$1, {
+    className: "tests-dialog-react-themed-toolbar",
+    tone: "dark",
+    content: toolbarRow("New event")
   }),
-  // content
-  renderer$1("div", {
-    style: { padding: "21px" },
-    key: "content"
-  }, renderer$1.trust(content))]
+  body: renderer$1.trust(content)
 };
 
 var DIALOG_CONFIRM$1 = "confirm-fullscreen";
@@ -4724,11 +4739,15 @@ var BodyText = function BodyText() {
   );
 };
 
+Toolbar$1.theme(".tests-dialog-react-jsx-themed-toolbar", {
+  color_dark_background: "#00c853"
+});
+
 var confirmDialogOpts = {
   body: "This event is not yet saved. Are you sure you want to delete this event?",
   modal: true,
   backdrop: true,
-  footer: [react.createElement(Button$1, {
+  footerButtons: [react.createElement(Button$1, {
     label: "Cancel",
     events: {
       onClick: function onClick() {
@@ -4779,13 +4798,12 @@ var toolbarRow$1 = function toolbarRow(title) {
 var fullScreenJsxOptions = {
   fullScreen: true,
   backdrop: true,
-  content: [react.createElement(Toolbar$1, {
-    content: toolbarRow$1("New event")
-  }), react.createElement(
-    "div",
-    { style: { padding: "21px" } },
-    react.createElement(BodyText, null)
-  )]
+  header: react.createElement(Toolbar$1, {
+    content: toolbarRow$1("New event"),
+    className: "tests-dialog-react-jsx-themed-toolbar",
+    tone: "dark"
+  }),
+  body: react.createElement(BodyText, null)
 };
 
 var reactTests = function reactTests(_ref) {
@@ -4811,7 +4829,7 @@ var reactTests = function reactTests(_ref) {
     body: "Discard draft?",
     modal: true,
     backdrop: true,
-    footer: [react.createElement(Button$1, { key: "cancel", label: "Cancel", events: { onClick: Dialog$$1.hide } }), react.createElement(Button$1, { key: "discard", label: "Discard", events: { onClick: Dialog$$1.hide } })]
+    footerButtons: [react.createElement(Button$1, { key: "cancel", label: "Cancel", events: { onClick: Dialog$$1.hide } }), react.createElement(Button$1, { key: "discard", label: "Discard", events: { onClick: Dialog$$1.hide } })]
   };
 
   var shortText = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
@@ -4855,7 +4873,7 @@ var reactTests = function reactTests(_ref) {
       return react.createElement(Opener, { dialogAttrs: {
           title: "Long dialog with a very long title that surely won't fit here",
           body: react.createElement(LongText, null),
-          footer: cancelOkButtons
+          footerButtons: cancelOkButtons
         } });
     }
   }, {
@@ -4884,6 +4902,6 @@ var reactTests = function reactTests(_ref) {
   }];
 };
 
-var testsReact = [].concat(genericTests({ Dialog: Dialog$1, DialogPane: DialogPane$1, Button: Button$1, RaisedButton: RaisedButton$1, Toolbar: Toolbar$1, IconButton: IconButton$1, Icon: Icon$1, List: List$1, ListTile: ListTile$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests({ Dialog: Dialog$1, DialogPane: DialogPane$1, Button: Button$1, RaisedButton: RaisedButton$1, Toolbar: Toolbar$1, IconButton: IconButton$1, Icon: Icon$1, List: List$1, ListTile: ListTile$1, renderer: renderer$1, keys: keys$1 }));
+var testsReact = [].concat(genericTests({ Dialog: Dialog$1, DialogPane: DialogPane$1, Button: Button$1, RaisedButton: RaisedButton$1, Toolbar: Toolbar$1, ToolbarTitle: ToolbarTitle$1, IconButton: IconButton$1, Icon: Icon$1, List: List$1, ListTile: ListTile$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests({ Dialog: Dialog$1, DialogPane: DialogPane$1, Button: Button$1, RaisedButton: RaisedButton$1, Toolbar: Toolbar$1, ToolbarTitle: ToolbarTitle$1, IconButton: IconButton$1, Icon: Icon$1, List: List$1, ListTile: ListTile$1, renderer: renderer$1, keys: keys$1 }));
 
 export { testsMithril as mithrilTests, testsReact as reactTests };

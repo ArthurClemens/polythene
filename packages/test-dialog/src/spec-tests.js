@@ -72,7 +72,7 @@ export default ({ DialogInstance, renderer, keys, Button, Dialog }) => {
       attrs: {
         title: "Long dialog with a very long title that surely won't fit here",
         body: renderer.trust(longText),
-        footer: cancelOkButtons({ renderer, keys, Button, Dialog }),
+        footerButtons: cancelOkButtons({ renderer, keys, Button, Dialog }),
         modal: true,
         backdrop: true
       }

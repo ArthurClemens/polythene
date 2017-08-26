@@ -53,14 +53,16 @@ export default (selector, componentVars) => [{
         paddingH(componentVars.side_padding),
         {
           ".pe-list-tile__content-front": [
-            paddingV(componentVars.padding - 5)
+            paddingV(componentVars.padding - 5),
+            {
+              ".pe-list-tile--compact-front": {
+                width: componentVars.compact_front_item_width + "px"
+              },
+              ":not(.pe-list-tile--compact-front)": {
+                width: componentVars.front_item_width + "px"
+              },
+            }
           ],
-          ".pe-list-tile__content-front:not(.pe-list-tile--compact-front)": {
-            width: componentVars.front_item_width + "px"
-          },
-          ".pe-list-tile--compact-front": {
-            width: componentVars.compact_front_item_width + "px"
-          },
 
           " small": {
             fontSize: componentVars.font_size_small + "px"

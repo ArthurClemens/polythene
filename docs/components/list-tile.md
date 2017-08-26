@@ -58,6 +58,7 @@ This works for list tiles that are defined as link (when either option `element`
 
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
+| **header**    | optional       | Boolean  | false       | Set to `true` to make this a header tile |
 | **indent** | optional | Boolean | | Set to `true` to indent the content |
 | **selected** | optional | Boolean | false | Set to `true` to show a selected state; adds class "selected" |
 | **disabled** | optional | Boolean | false | Set to `true` to deactivate the url and hover state (in case of [List](List.md) with setting `hoverable`) and show a disabled state; adds class "disabled" |
@@ -76,6 +77,7 @@ This works for list tiles that are defined as link (when either option `element`
 | **title**        | optional | String | | The text content |
 | **subtitle**     | optional | String | | Secondary text content (1 line high) |
 | **highSubtitle** | optional | String | | Secondary text content (2 lines high) |
+| **subContent**   | optional | String, hyperscript or component | | Secondary content (no height restriction) |
 | **front**        | optional | String, hyperscript or component |  | Content to show at the left of the primary content |
 | **compactFront** | optional | Boolean | | Set to `true` to reduce horizontal width of `front` content |
 | **url** | optional | Object with `href`, optionally `oncreate` (for Mithril) or `onClick` (for React) | | URL location; Mithril: for in-app route linking set `oncreate : m.route.link`; React: for in-app route linking use `onClick` and a router such as `react-router-dom` |

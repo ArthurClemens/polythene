@@ -170,27 +170,6 @@ exports[`test Dark tone class + light tone class 1`] = `
 </div>
 `;
 
-exports[`test Indented title (without icons) 1`] = `
-<div
-  className="pe-toolbar    ">
-  <div
-    className="pe-toolbar__title--indent">
-    Indented title
-  </div>
-  <IconButton
-    icon={
-      Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                }
-          } />,
-      }
-    } />
-</div>
-`;
-
 exports[`test JSX toolbar row (JSX) 1`] = `
 <Toolbar>
   <ToolbarButton
@@ -723,13 +702,118 @@ exports[`test Title as span 1`] = `
 </div>
 `;
 
-exports[`test Title at start 1`] = `
+exports[`test Title as span, indented (without left icon) 1`] = `
 <div
   className="pe-toolbar    ">
   <div
-    className="pe-toolbar__title">
-    Title
+    className="pe-toolbar__title--indent">
+    Indented title
   </div>
+  <IconButton
+    icon={
+      Object {
+        "svg": <div
+          dangerouslySetInnerHTML={
+              Object {
+                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
+                }
+          } />,
+      }
+    } />
+</div>
+`;
+
+exports[`test ToolbarTitle 1`] = `
+<div
+  className="pe-toolbar    ">
+  <IconButton
+    icon={
+      Object {
+        "svg": <div
+          dangerouslySetInnerHTML={
+              Object {
+                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
+                }
+          } />,
+      }
+    } />
+  <ToolbarTitle
+    text="Toolbar with a very very very long title" />
+  <IconButton
+    icon={
+      Object {
+        "svg": <div
+          dangerouslySetInnerHTML={
+              Object {
+                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
+                }
+          } />,
+      }
+    } />
+</div>
+`;
+
+exports[`test ToolbarTitle, at start 1`] = `
+<div
+  className="pe-toolbar    ">
+  <ToolbarTitle
+    text="Toolbar with a very very very long title" />
+  <IconButton
+    icon={
+      Object {
+        "svg": <div
+          dangerouslySetInnerHTML={
+              Object {
+                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
+                }
+          } />,
+      }
+    } />
+</div>
+`;
+
+exports[`test ToolbarTitle, centered 1`] = `
+<div
+  className="pe-toolbar    ">
+  <ToolbarTitle
+    center={true}
+    text="Toolbar with a very very very long title" />
+</div>
+`;
+
+exports[`test ToolbarTitle, centered, balanced with a placeholder 1`] = `
+<div
+  className="pe-toolbar    ">
+  <IconButton
+    icon={
+      Object {
+        "svg": <div
+          dangerouslySetInnerHTML={
+              Object {
+                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
+                }
+          } />,
+      }
+    } />
+  <ToolbarTitle
+    center={true}
+    text="Toolbar with a very very very long title" />
+  <IconButton
+    icon={
+      Object {
+        "content": "",
+      }
+    }
+    inactive={true} />
+</div>
+`;
+
+exports[`test ToolbarTitle, indented (without left icon) 1`] = `
+<div
+  className="pe-toolbar    ">
+  <ToolbarTitle
+    indent={true}
+    text="Toolbar with a very very very long title" />
   <IconButton
     icon={
       Object {

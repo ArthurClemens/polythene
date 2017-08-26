@@ -1,4 +1,4 @@
-import { isServer } from 'polythene-core';
+import { isClient, isServer } from 'polythene-core';
 import { flex, styler } from 'polythene-core-css';
 
 var addWebFont = function addWebFont(vendor, family, key) {
@@ -183,6 +183,9 @@ var addLayoutStyles = function addLayoutStyles() {
 */
 
 var scrollTo = function scrollTo(opts) {
+  if (isServer) {
+    return;
+  }
   var element = opts.element;
   var which = opts.direction === "horizontal" ? "scrollLeft" : "scrollTop";
   var to = opts.to;
@@ -212,7 +215,7 @@ var scrollTo = function scrollTo(opts) {
   });
 };
 
-var requestAnimFrame = function () {
+var requestAnimFrame = isServer ? function () {} : function () {
   return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function (callback) {
     return window.setTimeout(callback, 1000 / 60);
   };
@@ -225,7 +228,9 @@ var Timer = function Timer() {
       cb = void 0;
 
   var stop = function stop() {
-    return window.clearTimeout(timerId);
+    if (isClient) {
+      window.clearTimeout(timerId);
+    }
   };
 
   var pause = function pause() {
@@ -233,7 +238,11 @@ var Timer = function Timer() {
   };
 
   var startTimer = function startTimer() {
-    return stop(), startTime = new Date(), timerId = window.setTimeout(cb, remaining);
+    if (isClient) {
+      stop();
+      startTime = new Date();
+      timerId = window.setTimeout(cb, remaining);
+    }
   };
 
   var start = function start(callback, delaySeconds) {

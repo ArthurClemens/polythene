@@ -8,12 +8,13 @@ const style = (scopes, selector, componentVars, tint) => [{
       color: componentVars["color_" + tint + "_title_text"]
     },
     " .pe-dialog-pane__body": {
-      color: componentVars["color_" + tint + "_body_text"]
+      color: componentVars["color_" + tint + "_body_text"],
+      borderColor: "transparen" // default
     },
-    "&.pe-dialog-pane--overflow-top .pe-dialog-pane__body": {
+    ".pe-dialog-pane--border-top .pe-dialog-pane__body": {
       borderTopColor: componentVars["color_" + tint + "_body_border"]
     },
-    "&.pe-dialog-pane--overflow-bottom .pe-dialog-pane__body": {
+    ".pe-dialog-pane--border-bottom .pe-dialog-pane__body": {
       borderBottomColor: componentVars["color_" + tint + "_body_border"]
     }
   }

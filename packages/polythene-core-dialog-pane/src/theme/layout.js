@@ -35,14 +35,18 @@ export default (selector, componentVars) => [{
       },
 
       " .pe-dialog-pane__header": {
-        padding: [(componentVars.padding - 4), componentVars.padding, (componentVars.header_bottom - 4), componentVars.padding].map((v) => (v + "px")).join(" "),
         minHeight: componentVars.header_height + "px",
 
         " .pe-dialog-pane__title": [
-          mixin.ellipsis(1), {
+          mixin.ellipsis(1),
+          {
             width: "100%"
           }
         ]
+      },
+
+      " .pe-dialog-pane__header--title": {
+        padding: [(componentVars.padding - 4), componentVars.padding, (componentVars.header_bottom - 4), componentVars.padding].map((v) => (v + "px")).join(" ")
       },
 
       " .pe-dialog-pane__body": [
@@ -51,9 +55,7 @@ export default (selector, componentVars) => [{
           padding: componentVars.padding + "px",
           overflowY: "auto",
           "-webkit-overflow-scrolling": "touch",
-          borderWidth: "1px",
-          borderStyle: "solid none",
-          borderColor: "transparent",
+          
           // initially set max-height; will be overridden by dialog core with actual heights
           maxHeight: "calc(100vh - " + (2 * componentVars.padding) + "px - " + (componentVars.header_height + componentVars.footer_height) + "px)",
 
@@ -65,19 +67,40 @@ export default (selector, componentVars) => [{
           }
         }
       ],
-      " .pe-dialog-pane__header + .pe-dialog-pane__body": {
+
+      ".pe-dialog-pane--header.pe-dialog-pane--border-top": {
+        " .pe-dialog-pane__body": {
+          borderTopStyle: "solid",
+          borderWidth: componentVars.border_width + "px"
+        }
+      },
+
+      ".pe-dialog-pane--footer.pe-dialog-pane--border-bottom": {
+        " .pe-dialog-pane__body": {
+          borderBottomStyle: "solid",
+          borderWidth: componentVars.border_width + "px"
+        }
+      },
+
+      ".pe-dialog-pane--body-full-bleed .pe-dialog-pane__body": {
+        padding: 0,
+        borderStyle: "none"
+      },
+
+      " .pe-dialog-pane__header--title + .pe-dialog-pane__body": {
         paddingTop: 0
       },
 
       " .pe-dialog-pane__footer": {
-        padding: "2px 8px",
-        minHeight: componentVars.footer_height + "px",
-        fontSize: 0, // remove inline block spacing
-
         ".pe-dialog-pane__footer--high": {
           // when buttons are stacked vertically
           paddingBottom: "8px"
-        }
+        },
+        ".pe-dialog-pane__footer--buttons": {
+          padding: "2px 8px",
+          minHeight: componentVars.footer_height + "px",
+          fontSize: 0, // remove inline block spacing
+        },
       },
 
       " .pe-dialog-pane__actions": [
@@ -110,7 +133,6 @@ export default (selector, componentVars) => [{
       width: "100vw",
     },
     " .pe-dialog-pane, .pe-dialog-pane__body": {
-      padding: 0,
       height: "100vh",
       maxHeight: "100vh",
       border: "none",

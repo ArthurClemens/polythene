@@ -10,12 +10,16 @@ const BodyText = () => (
     {[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15].map(num => <p key={num}>{shortText}</p>)}
   </div>
 );
-  
+
+Toolbar.theme(".tests-dialog-react-jsx-themed-toolbar", {
+  color_dark_background:  "#00c853"
+});
+
 const confirmDialogOpts = ({
   body: "This event is not yet saved. Are you sure you want to delete this event?",
   modal: true,
   backdrop: true,
-  footer: [
+  footerButtons: [
     <Button
       label="Cancel"
       events={{
@@ -59,12 +63,11 @@ const toolbarRow = title => [
 export default {
   fullScreen: true,
   backdrop: true,
-  content: [
-    <Toolbar
-      content={toolbarRow("New event")}
-    />,
-    <div style={{ padding: "21px" }}>
-      <BodyText />
-    </div>
-  ]
+  header: <Toolbar
+    content={toolbarRow("New event")}
+    className="tests-dialog-react-jsx-themed-toolbar"
+    tone="dark"
+  />,
+  body: <BodyText />
 };
+

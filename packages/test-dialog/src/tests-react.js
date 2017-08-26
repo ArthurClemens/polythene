@@ -1,5 +1,5 @@
 import React, { Component } from "react"; // eslint-disable-line no-unused-vars
-import { renderer, keys, Dialog, DialogPane, Button, RaisedButton, Toolbar, IconButton, Icon, List, ListTile } from "polythene-react";
+import { renderer, keys, Dialog, DialogPane, Button, RaisedButton, Toolbar, ToolbarTitle, IconButton, Icon, List, ListTile } from "polythene-react";
 import genericTests from "./tests-generic";
 import ConditionalDialogPane from "./components/form-react";
 import fullScreenOptions from "./components/full-screen-react";
@@ -19,7 +19,7 @@ const reactTests = ({ Dialog, RaisedButton }) => {
     body: "Discard draft?",
     modal: true,
     backdrop: true,
-    footer: [
+    footerButtons: [
       <Button key="cancel" label="Cancel" events={{ onClick: Dialog.hide }} />,
       <Button key="discard" label="Discard" events={{ onClick: Dialog.hide }} />
     ]
@@ -64,7 +64,7 @@ const reactTests = ({ Dialog, RaisedButton }) => {
         <Opener dialogAttrs={{
           title: "Long dialog with a very long title that surely won't fit here",
           body: <LongText />,
-          footer: cancelOkButtons
+          footerButtons: cancelOkButtons
         }} />
     },
     {
@@ -95,5 +95,5 @@ const reactTests = ({ Dialog, RaisedButton }) => {
 };
 
 export default []
-  .concat(genericTests({ Dialog, DialogPane, Button, RaisedButton, Toolbar, IconButton, Icon, List, ListTile, renderer, keys }))
-  .concat(reactTests({ Dialog, DialogPane, Button, RaisedButton, Toolbar, IconButton, Icon, List, ListTile, renderer, keys }));
+  .concat(genericTests({ Dialog, DialogPane, Button, RaisedButton, Toolbar, ToolbarTitle, IconButton, Icon, List, ListTile, renderer, keys }))
+  .concat(reactTests({ Dialog, DialogPane, Button, RaisedButton, Toolbar, ToolbarTitle, IconButton, Icon, List, ListTile, renderer, keys }));

@@ -132,6 +132,10 @@ html {
   background-color: #444;
 }
 
+.tests-dialog-pane .pe-dialog-pane {
+  background: #fff;
+}
+
 .pe-dark-tone .result-title,
 .test-dark-tone .result-title {
   color: #aaa;

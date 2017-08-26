@@ -2,12 +2,30 @@ import { longText, cancelOkButtons } from "./shared";
 import form from "./components/form";
 import stream from "mithril/stream";
 
-export default ({ renderer, keys, DialogPane, Button }) => {
+export default ({ renderer, keys, DialogPane, Toolbar, ToolbarTitle, Button }) => {
+
+  const h = renderer;
 
   DialogPane.theme(".dialog-pane-tests-blue-dialog", {
     color_light_background: "#2196F3",
-    color_light_body_text:          "#fff"
+    color_light_body_text:  "#fff"
   });
+
+  Toolbar.theme(".tests-dialog-pane-themed-toolbar", {
+    color_light_background: "#00c853",
+    color_dark_background:  "#333"
+  });
+
+  const paneToolbar = ({ compact } = {}) =>
+    h(Toolbar, {
+      compact,
+      content: [
+        h(ToolbarTitle, { key: "header", text: "Header" })
+      ],
+      tone: "light",
+      className: "tests-dialog-pane-themed-toolbar"
+    });
+
 
   return [
     {
@@ -18,10 +36,91 @@ export default ({ renderer, keys, DialogPane, Button }) => {
       }
     },
     {
+      name: "With title, body and footer",
+      component: DialogPane,
+      attrs: {
+        title: "Title",
+        body: h("div", {
+          style: {
+            background: "#eee"
+          }
+        }, "Body"), 
+        
+        footer: h("div",
+          {
+            style: {
+              background: "#00c853",
+              color: "#fff",
+              padding: "16px 24px"
+            }
+          },
+          "Footer"
+        )
+      }
+    },
+    {
+      name: "With Toolbar as header and footer, fullBleed",
+      component: DialogPane,
+      attrs: {
+        header: paneToolbar(),
+        body: h("div", {
+          style: {
+            background: "#eee"
+          }
+        }, "Body"),
+        fullBleed: true,
+        footer: h(Toolbar, {
+          content: [
+            h(ToolbarTitle, { key: "footer", text: "Footer" })
+          ],
+          tone: "dark",
+          className: "tests-dialog-pane-themed-toolbar"
+        }),
+      }
+    },
+    {
+      name: "With Toolbar (compact)",
+      component: DialogPane,
+      attrs: {
+        header: paneToolbar({ compact: true }),
+        body: "Body"
+      }
+    },
+    {
+      name: "Option: borders (always)",
+      component: DialogPane,
+      attrs: {
+        title: "Title",
+        body: renderer.trust(longText),
+        footer: "Footer",
+        borders: "always"
+      }
+    },
+    {
+      name: "Option: borders (never)",
+      component: DialogPane,
+      attrs: {
+        title: "Title",
+        body: renderer.trust(longText),
+        footer: "Footer",
+        borders: "never"
+      }
+    },
+    {
+      name: "Option: borders (overflow)",
+      component: DialogPane,
+      attrs: {
+        title: "Title",
+        body: renderer.trust(longText),
+        footer: "Footer",
+        borders: "overflow"
+      }
+    },
+    {
       name: "Themed (color)",
       component: DialogPane,
       attrs: {
-        content: renderer("div", "Hello"),
+        content: h("div", "Hello"),
         className: "dialog-pane-tests-blue-dialog"
       }
     },
@@ -43,7 +142,7 @@ export default ({ renderer, keys, DialogPane, Button }) => {
       attrs: {
         title: "Long dialog with a very long title that surely won't fit here",
         body: renderer.trust(longText),
-        footer: cancelOkButtons({ renderer, Button })
+        footerButtons: cancelOkButtons({ renderer, Button })
       }
     },
     {
@@ -58,7 +157,7 @@ export default ({ renderer, keys, DialogPane, Button }) => {
           };
         },
         view: vnode => (
-          renderer(DialogPane, form({ renderer, keys, Button, file: vnode.state.file }))
+          h(DialogPane, form({ renderer, keys, Button, file: vnode.state.file }))
         )
       }
     },

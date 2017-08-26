@@ -1,13 +1,17 @@
-import shared from "./shared";
+import shared from "./components/shared";
 
-export default ({ Toolbar, IconButton, Shadow, renderer: h }) => {
+export default ({ Toolbar, ToolbarTitle, IconButton, Shadow, renderer: h }) => {
 
   const {
     toolbarRow,
+    toolbarRowIndentedTitle,
     toolbarTitleAsSpan,
-    toolbarTitleAtStart,
-    toolbarRowIndentedTitle
-  } = shared({ IconButton, renderer: h });
+    toolbarTitleComponent,
+    toolbarTitleComponentAtStart,
+    toolbarTitleComponentCentered,
+    toolbarTitleComponentCenteredBalanced,
+    toolbarTitleComponentIndented,
+  } = shared({ IconButton, ToolbarTitle, renderer: h });
 
   Toolbar.theme(".tests-toolbar-themed-toolbar", {
     color_light_background: "#00c853",
@@ -37,6 +41,41 @@ export default ({ Toolbar, IconButton, Shadow, renderer: h }) => {
       }
     },
     {
+      name: "ToolbarTitle",
+      component: Toolbar,
+      attrs: {
+        content: toolbarTitleComponent
+      }
+    },
+    {
+      name: "ToolbarTitle, centered",
+      component: Toolbar,
+      attrs: {
+        content: toolbarTitleComponentCentered
+      }
+    },
+    {
+      name: "ToolbarTitle, centered, balanced with a placeholder",
+      component: Toolbar,
+      attrs: {
+        content: toolbarTitleComponentCenteredBalanced
+      }
+    },
+    {
+      name: "ToolbarTitle, indented (without left icon)",
+      component: Toolbar,
+      attrs: {
+        content: toolbarTitleComponentIndented
+      }
+    },
+    {
+      name: "ToolbarTitle, at start",
+      component: Toolbar,
+      attrs: {
+        content: toolbarTitleComponentAtStart
+      }
+    },
+    {
       name: "Title as span",
       component: Toolbar,
       attrs: {
@@ -44,17 +83,10 @@ export default ({ Toolbar, IconButton, Shadow, renderer: h }) => {
       }
     },
     {
-      name: "Indented title (without icons)",
+      name: "Title as span, indented (without left icon)",
       component: Toolbar,
       attrs: {
         content: toolbarRowIndentedTitle
-      }
-    },
-    {
-      name: "Title at start",
-      component: Toolbar,
-      attrs: {
-        content: toolbarTitleAtStart
       }
     },
     {

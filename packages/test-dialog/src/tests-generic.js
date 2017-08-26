@@ -6,16 +6,18 @@ import settings from "./components/settings";
 import replaceDialog from "./components/replace-dialog";
 // import replacePane from "./components/replace-pane";
 
-export default ({ renderer, keys, Dialog, DialogPane, Button, RaisedButton, Toolbar, IconButton, Icon, List, ListTile }) => {
+export default ({ renderer, keys, Dialog, DialogPane, Button, RaisedButton, Toolbar, ToolbarTitle, IconButton, Icon, List, ListTile }) => {
 
-  const Opener = (dialogAttrs, label = "Open") => renderer(RaisedButton, {
+  const h = renderer;
+
+  const Opener = (dialogAttrs, label = "Open") => h(RaisedButton, {
     label,
     events: {
       [keys.onclick]: () => Dialog.show(dialogAttrs)
     }
   });
 
-  const OpenerWithPromise = (dialogAttrs, label = "Open") => renderer(RaisedButton, {
+  const OpenerWithPromise = (dialogAttrs, label = "Open") => h(RaisedButton, {
     label,
     events: {
       [keys.onclick]: () => Dialog.show(dialogAttrs).then(id => alert("dialog shown: " + id))
@@ -26,6 +28,11 @@ export default ({ renderer, keys, Dialog, DialogPane, Button, RaisedButton, Tool
     border_radius:          5,
     color_light_background: "#2196F3",
     color_light_text:  "#fff",
+  });
+
+  Toolbar.theme(".tests-dialog-themed-toolbar", {
+    color_light_background: "#eee",
+    color_dark_background: "#333",
   });
 
   return [
@@ -45,7 +52,7 @@ export default ({ renderer, keys, Dialog, DialogPane, Button, RaisedButton, Tool
       component: {
         view: () => 
           Opener({
-            content: renderer("div", "Hello"),
+            content: h("div", "Hello"),
             className: "dialog-tests-rounded-blue"
           })
       }
@@ -98,7 +105,7 @@ export default ({ renderer, keys, Dialog, DialogPane, Button, RaisedButton, Tool
           Opener({
             title: "Long dialog with a very long title that surely won't fit here",
             body: renderer.trust(longText),
-            footer: cancelOkButtons({ renderer, keys, Button, Dialog })
+            footerButtons: cancelOkButtons({ renderer, keys, Button, Dialog })
           })
       }
     },
@@ -109,10 +116,10 @@ export default ({ renderer, keys, Dialog, DialogPane, Button, RaisedButton, Tool
       component: {
         view: () => 
           Opener({
-            panes: [renderer(DialogPane, {
+            panes: [h(DialogPane, {
               title: "Long dialog with a very long title that surely won't fit here",
               body: renderer.trust(longText),
-              footer: cancelOkButtons({ renderer, keys, Button, Dialog })
+              footerButtons: cancelOkButtons({ renderer, keys, Button, Dialog })
             })]
           })
       }
@@ -126,7 +133,7 @@ export default ({ renderer, keys, Dialog, DialogPane, Button, RaisedButton, Tool
           Opener({
             title: "Long dialog with a very long title that surely won't fit here",
             body: renderer.trust(longText),
-            footer: cancelOkButtons({ renderer, keys, Button, Dialog }),
+            footerButtons: cancelOkButtons({ renderer, keys, Button, Dialog }),
             modal: true,
             backdrop: true
           })
@@ -293,13 +300,26 @@ export default ({ renderer, keys, Dialog, DialogPane, Button, RaisedButton, Tool
       }
     },
     {
-      name: "Option: no transition",
+      name: "Option: Toolbar as custom header and footer",
       interactive: true,
       exclude: true,
       component: {
         view: () => Opener({
-          body: renderer.trust(shortText),
-          transition: "none"
+          header: h(Toolbar, {
+            content: [
+              h(ToolbarTitle, { key: "header", text: "Header" })
+            ],
+            tone: "light",
+            className: "tests-dialog-themed-toolbar"
+          }),
+          body: "Body", 
+          footer: h(Toolbar, {
+            content: [
+              h(ToolbarTitle, { key: "footer", text: "Footer" })
+            ],
+            tone: "dark",
+            className: "tests-dialog-themed-toolbar"
+          }),
         })
       }
     },

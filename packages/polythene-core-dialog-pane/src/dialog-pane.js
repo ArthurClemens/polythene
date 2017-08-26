@@ -96,14 +96,22 @@ export const onUnMount = vnode => (
 export const createProps = (vnode, { keys: k }) => {
   const state = vnode.state;
   const attrs = unpackAttrs(vnode.attrs);
+  const borders = attrs.borders || "overflow";
+  const showTopBorder = borders === "always" || (borders === "overflow" && state.topOverflow());
+  const showBottomBorder = borders === "always" || (borders === "overflow" && state.bottomOverflow());
+  const withHeader = attrs.header !== undefined || attrs.title !== undefined;
+  const withFooter = attrs.footer !== undefined || attrs.footerButtons !== undefined;
   return Object.assign(
     {},
     filterSupportedAttributes(attrs, { remove: ["style"] }), // style set in content, and set by show/hide transition
     {
       className: [
         classes.component,
-        state.topOverflow() || attrs.borders ? classes.hasTopOverflow : null,
-        state.bottomOverflow() || attrs.borders ? classes.hasBottomOverflow : null,
+        attrs.fullBleed ? classes.fullBleed : null,
+        showTopBorder ? classes.borderTop : null,
+        showBottomBorder ? classes.borderBottom : null,
+        withHeader ? classes.withHeader : null,
+        withFooter ? classes.withFooter : null,
         attrs.tone === "dark" ? "pe-dark-tone" : null,
         attrs.tone === "light" ? "pe-light-tone" : null,
         attrs.className || attrs[k.class],
@@ -126,18 +134,23 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
       style: attrs.style
     },
     [
-      attrs.title
-        ? h("div",
-          {
-            className: classes.header,
-            key: "header"
-          },
-          h("div",
-            { className: classes.title },
-            attrs.title
+      attrs.header
+        ? attrs.header
+        : attrs.title
+          ? h("div",
+            {
+              className: [
+                classes.header,
+                classes.headerWithTitle
+              ].join(" "),
+              key: "title"
+            },
+            h("div",
+              { className: classes.title },
+              attrs.title
+            )
           )
-        )
-        : null,
+          : null,
       h("div",
         {
           className: classes.body,
@@ -158,12 +171,23 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
             className: classes.footer,
             key: "footer"
           },
-          h("div",
-            { className: classes.actions },
-            attrs.footer
-          )
+          attrs.footer
         )
-        : null
+        : attrs.footerButtons
+          ? h("div",
+            {
+              className: [
+                classes.footer,
+                classes.footerWithButtons
+              ].join(" "),
+              key: "footer"
+            },
+            h("div",
+              { className: classes.actions },
+              attrs.footerButtons
+            )
+          )
+          : null
     ]
   );
 };

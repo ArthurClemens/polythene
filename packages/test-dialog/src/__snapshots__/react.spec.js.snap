@@ -104,7 +104,7 @@ exports[`test Option: modal with backdrop - spec 1`] = `
             }
           } />
       }
-      footer={
+      footerButtons={
         Array [
           <Button
             events={

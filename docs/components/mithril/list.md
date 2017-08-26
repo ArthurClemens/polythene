@@ -98,6 +98,69 @@ If you do choose to use it, add some styles to the container that holds the list
 }
 ~~~
 
+### Keyboard control
+
+Sometimes it is useful to enable selecting list values with the keyboard, for instance with autocomplete search suggestions.
+
+* `keyboardControl` enables keyboard control.
+* The list can be navigated using TAB, the arrow keys.
+* List items can be selected with ENTER and clicking.
+* List Tiles with option `header` will be skipped.
+* The current item is highlighted; the initial highlighted item is set with `defaultHighlightIndex`.
+* Callback function `onSelect` allows to interpret the selected item; passed parameters are: 
+  * `event`
+  * `index`
+  * `dom`
+  * `attrs`
+
+**Note:**
+
+* When using stacked lists, the one list does not know the state of the other list. Instead use one single list and set headers with ListTile option `header`.
+* Option `onclick` is ignored because this is internally implemented by List. Use `onSelect` instead.
+
+
+~~~javascript
+
+const selectTile = ({ title, selectedTitle }) => (
+  {
+    title,
+    selected: title === selectedTitle
+  }
+);
+const headerTile = ({ title }) => (
+  {
+    title,
+    header: true
+  }
+);
+
+// Assuming we are storing the selected item with `selectedTitle`
+const selectedTitle = state.selected();
+
+h(List, {
+  keyboardControl: true,
+  highlightIndex: 0,
+  onSelect: ({ attrs }) => (
+    state.selected(attrs.title),
+  ),
+  tiles: [
+    headerTile({ title: "A"}),
+    selectTile({ title: "Amman", selectedTitle }),
+    selectTile({ title: "Amsterdam", selectedTitle }),
+    selectTile({ title: "Athens", selectedTitle }),
+    headerTile({ title: "B" }),
+    selectTile({ title: "Bangkok", selectedTitle }),
+    selectTile({ title: "Beijing", selectedTitle }),
+    selectTile({ title: "Brussels", selectedTitle }),
+    headerTile({ title: "C" }),
+    selectTile({ title: "Canberra", selectedTitle }),
+    selectTile({ title: "Cardiff", selectedTitle }),
+    selectTile({ title: "Copenhagen", selectedTitle }),
+  ]
+})
+~~~
+
+
 
 ## Appearance
 

@@ -26,7 +26,7 @@ const style = (scopes, selector, componentVars, tint) => [{
         backgroundColor: componentVars["color_" + tint + "_selected_background"]
       }
     },
-    ".pe-list-tile--highlight": {
+    ".pe-list-tile--highlight:not(.pe-list-tile--selected)": {
       " .pe-list-tile__primary, pe-list-tile__secondary": {
         backgroundColor: componentVars["color_" + tint + "_highlight_background"]
       }

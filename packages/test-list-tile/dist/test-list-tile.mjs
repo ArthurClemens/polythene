@@ -51,6 +51,18 @@ var genericTests = (function (_ref) {
       compact: true
     }
   }, {
+    name: "Option: subContent",
+    component: ListTile$$1,
+    attrs: {
+      title: "Ancillary Justice",
+      subContent: h("div", {
+        style: {
+          background: "#c5e1a5",
+          marginTop: "12px"
+        }
+      }, "The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before.")
+    }
+  }, {
     name: "Option: events",
     interactive: true,
     component: ListTile$$1,

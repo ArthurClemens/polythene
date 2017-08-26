@@ -13,7 +13,8 @@ var classes$1 = {
   borders: "pe-list--borders",
   compact: "pe-list--compact",
   hasHeader: "pe-list--header",
-  indentedBorders: "pe-list--indented-borders"
+  indentedBorders: "pe-list--indented-borders",
+  padding: "pe-list--padding"
 };
 
 var vars$1 = {
@@ -41,7 +42,10 @@ var borderStyle = function borderStyle(componentVars) {
 
 var layout = (function (selector, componentVars) {
   return [_defineProperty$1({}, selector, {
-    padding: componentVars.padding + "px 0",
+
+    ".pe-list--padding": {
+      padding: componentVars.padding + "px 0"
+    },
 
     ".pe-list--header": {
       paddingTop: 0
@@ -177,7 +181,7 @@ var createProps = function createProps(vnode, _ref) {
   var state = vnode.state;
   var attrs = vnode.attrs;
   return _extends({}, filterSupportedAttributes(attrs), {
-    className: [classes$1.component, attrs.borders ? classes$1.borders : null, attrs.indentedBorders ? classes$1.indentedBorders : null, attrs.header ? classes$1.hasHeader : null, attrs.compact ? classes$1.compact : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [classes$1.component, attrs.borders ? classes$1.borders : null, attrs.indentedBorders ? classes$1.indentedBorders : null, attrs.header ? classes$1.hasHeader : null, attrs.compact ? classes$1.compact : null, attrs.padding !== false ? classes$1.padding : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, attrs.keyboardControl && _defineProperty({}, k.onkeydown, function (e) {
     var highlightIndex = state.highlightIndex();
     if (e.key === "ArrowDown" || e.key === "ArrowRight") {

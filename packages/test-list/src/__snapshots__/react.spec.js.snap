@@ -1,6 +1,6 @@
 exports[`test Child nodes 1`] = `
 <div
-  className="pe-list pe-list--borders      ">
+  className="pe-list pe-list--borders    pe-list--padding   ">
   <ListTile
     subtitle="Starting post doc"
     title="Jennifer Barker" />
@@ -15,14 +15,15 @@ exports[`test Child nodes 1`] = `
 
 exports[`test Dark tone class + light tone 1`] = `
 <div
-  className="pe-list pe-list--borders  pe-list--header   pe-light-tone "
+  className="pe-list pe-list--borders  pe-list--header  pe-list--padding  pe-light-tone "
   style={
     Object {
       "background": "#fff",
     }
   }>
   <ListTile
-    className="pe-list__header "
+    className="pe-list-tile--header "
+    header={true}
     title="Friends" />
   <ListTile
     hoverable={true}
@@ -41,14 +42,15 @@ exports[`test Dark tone class + light tone 1`] = `
 
 exports[`test Dark tone class + light tone class 1`] = `
 <div
-  className="pe-list pe-list--borders  pe-list--header    pe-light-tone"
+  className="pe-list pe-list--borders  pe-list--header  pe-list--padding   pe-light-tone"
   style={
     Object {
       "background": "#fff",
     }
   }>
   <ListTile
-    className="pe-list__header "
+    className="pe-list-tile--header "
+    header={true}
     title="Friends" />
   <ListTile
     hoverable={true}
@@ -65,16 +67,181 @@ exports[`test Dark tone class + light tone class 1`] = `
 </div>
 `;
 
+exports[`test Keyboard control (JSX) (demo without state) 1`] = `
+<List
+  highlightIndex={0}
+  keyboardControl={true}
+  onSelect={[Function]}
+  tiles={
+    Array [
+      Object {
+        "header": true,
+        "title": "A",
+      },
+      Object {
+        "title": "Amman",
+      },
+      Object {
+        "title": "Amsterdam",
+      },
+      Object {
+        "title": "Athens",
+      },
+      Object {
+        "header": true,
+        "title": "B",
+      },
+      Object {
+        "title": "Bangkok",
+      },
+      Object {
+        "title": "Beijing",
+      },
+      Object {
+        "title": "Brussels",
+      },
+      Object {
+        "header": true,
+        "title": "C",
+      },
+      Object {
+        "title": "Canberra",
+      },
+      Object {
+        "title": "Cardiff",
+      },
+      Object {
+        "title": "Copenhagen",
+      },
+    ]
+  } />
+`;
+
+exports[`test Keyboard control 1`] = `
+<List
+  borders={true}
+  defaultHighlightIndex={0}
+  keyboardControl={true}
+  onSelect={[Function]}
+  tiles={
+    Array [
+      Object {
+        "header": true,
+        "key": "A",
+        "title": "A",
+      },
+      Object {
+        "className": "tests-list-keyboard-list-tile",
+        "key": "Amman",
+        "selected": false,
+        "title": "Amman",
+      },
+      Object {
+        "className": "tests-list-keyboard-list-tile",
+        "key": "Amsterdam",
+        "selected": false,
+        "title": "Amsterdam",
+      },
+      Object {
+        "className": "tests-list-keyboard-list-tile",
+        "key": "Athens",
+        "selected": false,
+        "title": "Athens",
+      },
+      Object {
+        "header": true,
+        "key": "B",
+        "title": "B",
+      },
+      Object {
+        "className": "tests-list-keyboard-list-tile",
+        "key": "Bangkok",
+        "selected": false,
+        "title": "Bangkok",
+      },
+      Object {
+        "className": "tests-list-keyboard-list-tile",
+        "key": "Beijing",
+        "selected": false,
+        "title": "Beijing",
+      },
+      Object {
+        "className": "tests-list-keyboard-list-tile",
+        "key": "Brussels",
+        "selected": false,
+        "title": "Brussels",
+      },
+      Object {
+        "header": true,
+        "key": "C",
+        "title": "C",
+      },
+      Object {
+        "className": "tests-list-keyboard-list-tile",
+        "key": "Canberra",
+        "selected": false,
+        "title": "Canberra",
+      },
+      Object {
+        "className": "tests-list-keyboard-list-tile",
+        "key": "Cardiff",
+        "selected": false,
+        "title": "Cardiff",
+      },
+      Object {
+        "className": "tests-list-keyboard-list-tile",
+        "key": "Copenhagen",
+        "selected": false,
+        "title": "Copenhagen",
+      },
+    ]
+  } />
+`;
+
 exports[`test No options 1`] = `
 <div
-  className="pe-list       " />
+  className="pe-list     pe-list--padding   " />
+`;
+
+exports[`test No padding 1`] = `
+<div
+  className="pe-list pe-list--borders       ">
+  <ListTile
+    front={
+      <Icon
+        avatar={true}
+        size="large"
+        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png" />
+    }
+    subtitle="Starting post doc"
+    title="Jennifer Barker" />
+  <ListTile
+    front={
+      <Icon
+        avatar={true}
+        size="large"
+        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png" />
+    }
+    subtitle="Brunch this weekend?"
+    title="Ali Connors" />
+  <ListTile
+    front={
+      <Icon
+        avatar={true}
+        size="large"
+        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-3.png" />
+    }
+    subtitle="Binge watching..."
+    title="Grace VanDam" />
+</div>
 `;
 
 exports[`test Option: class -- dark tone class 1`] = `
 <div
-  className="pe-list pe-list--borders  pe-list--header    ">
+  className="pe-list pe-list--borders  pe-list--header  pe-list--padding   ">
   <ListTile
-    className="pe-list__header "
+    className="pe-list-tile--header "
+    header={true}
     title="Friends" />
   <ListTile
     hoverable={true}
@@ -93,19 +260,20 @@ exports[`test Option: class -- dark tone class 1`] = `
 
 exports[`test Option: class 1`] = `
 <div
-  className="pe-list       class-x" />
+  className="pe-list     pe-list--padding   class-x" />
 `;
 
 exports[`test Option: className 1`] = `
 <div
-  className="pe-list       className-x" />
+  className="pe-list     pe-list--padding   className-x" />
 `;
 
 exports[`test Option: compact 1`] = `
 <div
-  className="pe-list pe-list--borders  pe-list--header pe-list--compact   ">
+  className="pe-list pe-list--borders  pe-list--header pe-list--compact pe-list--padding   ">
   <ListTile
-    className="pe-list__header "
+    className="pe-list-tile--header "
+    header={true}
     title="Friends" />
   <ListTile
     front={
@@ -139,18 +307,18 @@ exports[`test Option: compact 1`] = `
 
 exports[`test Option: element 1`] = `
 <a
-  className="pe-list       " />
+  className="pe-list     pe-list--padding   " />
 `;
 
 exports[`test Option: id 1`] = `
 <div
-  className="pe-list       "
+  className="pe-list     pe-list--padding   "
   id="id-x" />
 `;
 
 exports[`test Option: style (colors) 1`] = `
 <div
-  className="pe-list   pe-list--header    "
+  className="pe-list   pe-list--header  pe-list--padding   "
   style={
     Object {
       "backgroundColor": "#EF6C00",
@@ -158,7 +326,8 @@ exports[`test Option: style (colors) 1`] = `
     }
   }>
   <ListTile
-    className="pe-list__header "
+    className="pe-list-tile--header "
+    header={true}
     style={
       Object {
         "color": "rgba(255,255,255,.8)",
@@ -191,7 +360,7 @@ exports[`test Option: style (colors) 1`] = `
 
 exports[`test Option: tiles 1`] = `
 <div
-  className="pe-list pe-list--borders      ">
+  className="pe-list pe-list--borders    pe-list--padding   ">
   <ListTile
     subtitle="Starting post doc"
     title="Jennifer Barker" />
@@ -281,9 +450,10 @@ exports[`test Options: header, tiles, indent, indentedBorders (JSX) 1`] = `
 
 exports[`test Options: header, tiles, indent, indentedBorders 1`] = `
 <div
-  className="pe-list  pe-list--indented-borders pe-list--header    ">
+  className="pe-list  pe-list--indented-borders pe-list--header  pe-list--padding   ">
   <ListTile
-    className="pe-list__header "
+    className="pe-list-tile--header "
+    header={true}
     indent={true}
     title="Friends" />
   <ListTile
@@ -303,7 +473,7 @@ exports[`test Options: header, tiles, indent, indentedBorders 1`] = `
 
 exports[`test Themed list (colors and padding) -- dark tone class 1`] = `
 <div
-  className="pe-list pe-list--borders      tests-lists-themed-list">
+  className="pe-list pe-list--borders    pe-list--padding   tests-lists-themed-list">
   <ListTile
     className="tests-lists-themed-list-tile"
     subtitle="Starting post doc"
@@ -321,7 +491,7 @@ exports[`test Themed list (colors and padding) -- dark tone class 1`] = `
 
 exports[`test Themed list (colors and padding) 1`] = `
 <div
-  className="pe-list pe-list--borders      tests-lists-themed-list">
+  className="pe-list pe-list--borders    pe-list--padding   tests-lists-themed-list">
   <ListTile
     className="tests-lists-themed-list-tile"
     subtitle="Starting post doc"

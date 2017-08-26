@@ -7,12 +7,13 @@ export const getElement = vnode =>
 
 export const theme = customTheme;
 
-const onSelect = vnode => {
+const onSelect = (event, vnode) => {
   const state = vnode.state;
   const attrs = vnode.attrs;
   if (attrs.onSelect) {
     const highlightIndex = state.highlightIndex();
     const data = {
+      event,
       index: highlightIndex,
       dom: state.tiles[highlightIndex].dom,
       attrs: state.tiles[highlightIndex].attrs
@@ -23,8 +24,8 @@ const onSelect = vnode => {
 
 export const getInitialState = (vnode, createStream) => {
   const attrs = vnode.attrs;
-  const highlightIndex = createStream(attrs.highlightIndex !== undefined
-    ? attrs.highlightIndex
+  const highlightIndex = createStream(attrs.defaultHighlightIndex !== undefined
+    ? attrs.defaultHighlightIndex
     : -1);
   const registerTile = state => (index, data) => state.tiles[index] = data;
   return {
@@ -60,6 +61,7 @@ export const createProps = (vnode, { keys: k }) => {
         attrs.indentedBorders ? classes.indentedBorders : null,
         attrs.header ? classes.hasHeader : null,
         attrs.compact ? classes.compact : null,
+        attrs.padding !== false ? classes.padding : null,
         attrs.tone === "dark" ? "pe-dark-tone" : null,
         attrs.tone === "light" ? "pe-light-tone" : null,
         attrs.className || attrs[k.class],
@@ -77,7 +79,7 @@ export const createProps = (vnode, { keys: k }) => {
           const newIndex = Math.max(0, highlightIndex - 1);
           state.tiles[newIndex].dom.focus();
         } else if (e.key === "Enter") {
-          onSelect(vnode);
+          onSelect(e, vnode);
         } else if (e.key === "Escape") {
           state.tiles[highlightIndex].dom.blur();
           state.highlightIndex(-1);
@@ -137,7 +139,7 @@ export const createContent = (vnode, { renderer: h, requiresKeys, keys: k, ListT
                 {},
                 tileOpts.events,
                 {
-                  [k.onclick]: () => onSelect(vnode)
+                  [k.onclick]: e => onSelect(e, vnode)
                 }
               )
             }

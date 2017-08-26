@@ -77,9 +77,16 @@ const primaryContent = (h, k, requiresKeys, attrs, children) => {
         attrs.highSubtitle
           ? h("div", Object.assign(
             {},
-            requiresKeys ? { key: "high-subtitle" } : null,
+            requiresKeys ? { key: "highSubtitle" } : null,
             { className: classes.subtitle + " " + classes.highSubtitle }
           ), attrs.highSubtitle)
+          : null,
+        attrs.subContent
+          ? h("div", Object.assign(
+            {},
+            requiresKeys ? { key: "subContent" } : null,
+            { className: classes.subContent }
+          ), attrs.subContent)
           : null
       ]
     )

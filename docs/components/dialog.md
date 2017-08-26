@@ -41,11 +41,14 @@ Displays a single dialog, or a stack of dialogs.
 | **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **formOptions** | optional | Options Object | | Form attribute options such as `type` or `enctype` |
-| **title** | optional | String |  | Header title; if omitted, no header will be shown |
-| **body** | optional | String, hyperscript or component |  | Body content; if omitted, no body will be shown |
-| **menu** | optional | [Menu](../polythene-menu) options object |  | Pass a menu to use the dialog as enhanced (higher) menu |
-| **footer** | optional | String, hyperscript or component |  | Footer actions, usually an array of buttons |
-| **modal** | optional | Boolean | false | Set to true to create a modal dialog; tapping the backdrop or pressing ESCAPE will not close the dialog |
+| **header**      | optional | String, hyperscript or component | | Header row |
+| **title**       | optional | String |  | Header title; if omitted, no header will be shown |
+| **body**        | optional | String, hyperscript or component |  | Body content; if omitted, no body will be shown |
+| **menu**        | optional | [Menu](../polythene-menu) options object |  | Pass a menu to use the dialog as enhanced (higher) menu |
+| **footer**       | optional | String, hyperscript or component | | Footer row |
+| **footerButtons** | optional | String, hyperscript or component | | Footer buttons to show in the footer row |
+| **panes**       | optional | Array of type `DialogPane` | | Used internally |
+| **modal**       | optional | Boolean | false | Set to true to create a modal dialog; tapping the backdrop or pressing ESCAPE will not close the dialog |
 | **fullScreen** | optional | Boolean | false | Set to true to make the dialog full screen; tapping the backdrop or pressing ESCAPE will not close the dialog; should be done for mobile screens only; `title` and `footer` will be ignored; pass a [Toolbar](toolbar.md) to `body` (see "Usage" for an example) |
 | **updateContentOnScroll** | optional | Boolean | false | Set to true to "unfreeze" dialog contents during scrolling; for performance this is set to false by default |
 
@@ -55,7 +58,8 @@ Displays a single dialog, or a stack of dialogs.
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **z** | optional | Number 0-5 | 3 | Depth of the shadow |
 | **backdrop** | optional | Boolean | false | Set to `true` to show a backdrop background color |
-| **borders** | optional | Boolean | false | Set to `true` to show header and footer borders; by default borders are only shown with overflow content |
+| **borders** | optional | String | "overflow" | Options: "always", "never", "overflow" (when the body overflows the content area); a top border is only shown when a header is present; a bottom border is only shown when a footer is present |
+| **fullBleed** | optional | Boolean | false | Set to `true` to remove padding from the body element |
 
 ### Transition options
 
@@ -77,6 +81,16 @@ Displays a single dialog, or a stack of dialogs.
 | **spawn**        | optional | String | "default_dialog" | Dialog spawner id |
 | **id**           | optional | String | "default_dialog" | Dialog instance id |
 
+### DialogPane options
+
+| **Parameter**    |  **Mandatory** | **Type** | **Default** | **Description** |
+| ---------------- | -------------- | -------- | ----------- | --------------- |
+| **header**       | optional | String, hyperscript or component | | Header row |
+| **title**        | optional | String                           |  | Header title |
+| **body**         | optional | String, hyperscript or component | | Body section |
+| **footer**       | optional | String, hyperscript or component | | Footer row |
+| **footerButtons** | optional | String, hyperscript or component | | Footer buttons to show in the footer row |
+
 
 ## Composition
 
@@ -84,6 +98,7 @@ Dialog is composed from:
 
 * Multi (`polythene-core`)
 * [Shadow](shadow.md)
+* DialogPane
 
 
 ## CSS classes

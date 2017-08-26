@@ -244,11 +244,12 @@ h(ListTile, {
 
 ## Appearance
 
-* A list tile can have 1 to 3 lines:
+* Following Material Design specs, a list tile can have 1 to 3 lines (except when using `subContent`):
   * `title`: titel on a single line
   * `subtitle`: subtitle on a single line
   * `highSubtitle`: subtitle runs over 2 lines
-  * Use option `compact` to reduce the vertical padding.
+  * Use option `compact` to reduce the vertical padding
+  * Use option `subContent` to show any other content below the title
 * A list tile can optionally have an icon.
 * Text and icon are taken together as primary content. Primary content can optionally have a link.
 * A list tile can optionally have secondary content, displayed to the right. Secondary content can contain any content, and conditionally have a link.
