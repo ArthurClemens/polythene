@@ -25,7 +25,7 @@ export default () => ({
       file(null);
     }
   },
-  footer: [
+  footerButtons: [
     h(Button, {
       label: "Cancel",
       events: {

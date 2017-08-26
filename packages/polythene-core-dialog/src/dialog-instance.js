@@ -130,8 +130,10 @@ export const createContent = (vnode, { renderer: h, Shadow, DialogPane }) => {
     : h(DialogPane,
       {
         title: attrs.title,
+        header: attrs.header,
         body: attrs.content || attrs.body || attrs.menu,
         footer: attrs.footer,
+        footerButtons: attrs.footerButtons,
         className: attrs.className,
         style: attrs.style
       }

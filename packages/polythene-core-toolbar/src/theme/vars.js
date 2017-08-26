@@ -22,7 +22,7 @@ export default {
   color_light_text:          rgba(vars.color_light_foreground, vars.blend_light_text_primary),
   color_dark_text:           rgba(vars.color_dark_foreground,  vars.blend_dark_text_primary),
 
-  // default gray background, expected to be overridden
-  color_light_background:    "#fff",
-  color_dark_background:     "#37474F"  // blue-gray-800
+  // background colors may be set in theme; disabled by default
+  // color_light_background:    "transparent",
+  // color_dark_background:     "transparent",
 };

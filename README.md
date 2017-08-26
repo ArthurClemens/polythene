@@ -42,6 +42,7 @@ Version: `1.0.0-rc.4` (release candidate 4)
 * [Documentation](docs/README.md)
 * [Developing](docs/developing.md)
 * [Migrating from 0.2](docs/migrating-from-02.md)
+* [Change log](docs/changes.md)
 
 
 ## Compatibility

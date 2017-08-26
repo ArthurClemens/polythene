@@ -17,7 +17,7 @@ export default ({ renderer: h, keys: k, Button, file }) => ({
       file(null);
     }
   },
-  footer: [
+  footerButtons: [
     h(Button, {
       label: "Cancel"
     }),

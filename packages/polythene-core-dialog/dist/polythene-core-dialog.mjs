@@ -103,15 +103,6 @@ var theme = customTheme;
 
 var DEFAULT_Z = 3;
 
-var getInitialState = function getInitialState(vnode, createStream) {
-  var transitioning = createStream(false);
-  return {
-    cleanUp: undefined,
-    el: undefined,
-    transitioning: transitioning
-  };
-};
-
 var showDialog = function showDialog(state, attrs) {
   if (state.transitioning()) {
     return Promise.resolve();
@@ -140,6 +131,15 @@ var hideDialog = function hideDialog(state, attrs) {
     }
     state.transitioning(false);
   });
+};
+
+var getInitialState = function getInitialState(vnode, createStream) {
+  var transitioning = createStream(false);
+  return {
+    cleanUp: undefined,
+    el: undefined,
+    transitioning: transitioning
+  };
 };
 
 var onMount = function onMount(vnode) {
@@ -208,8 +208,10 @@ var createContent = function createContent(vnode, _ref2) {
   }
   var pane = attrs.panes && attrs.panes.length ? attrs.panes[0] : h(DialogPane, {
     title: attrs.title,
+    header: attrs.header,
     body: attrs.content || attrs.body || attrs.menu,
     footer: attrs.footer,
+    footerButtons: attrs.footerButtons,
     className: attrs.className,
     style: attrs.style
   });

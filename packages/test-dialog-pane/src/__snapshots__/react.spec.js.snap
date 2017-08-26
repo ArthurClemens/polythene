@@ -7,7 +7,7 @@ exports[`test Conditional button states 1`] = `
       onChange={[Function]}
       type="file" />
   }
-  footer={
+  footerButtons={
     Array [
       <Button
         label="Cancel" />,
@@ -164,7 +164,7 @@ exports[`test Option: title and body (long text) - spec 1`] = `
   <div
     className="pe-dialog-pane__content ">
     <div
-      className="pe-dialog-pane__header">
+      className="pe-dialog-pane__header pe-dialog-pane__header--title">
       <div
         className="pe-dialog-pane__title">
         Long dialog with a very long title that surely won\'t fit here
@@ -190,7 +190,7 @@ exports[`test Option: title and body (long text) - spec 2`] = `
   <div
     className="pe-dialog-pane__content ">
     <div
-      className="pe-dialog-pane__header">
+      className="pe-dialog-pane__header pe-dialog-pane__header--title">
       <div
         className="pe-dialog-pane__title">
         Long dialog with a very long title that surely won\'t fit here
@@ -203,13 +203,10 @@ exports[`test Option: title and body (long text) - spec 2`] = `
     </div>
     <div
       className="pe-dialog-pane__footer">
-      <div
-        className="pe-dialog-pane__actions">
-        <Button
-          label="Cancel" />
-        <Button
-          label="Save" />
-      </div>
+      <Button
+        label="Cancel" />
+      <Button
+        label="Save" />
     </div>
   </div>
 </form>
@@ -242,7 +239,7 @@ exports[`test Option: title, body, footer 1`] = `
   <div
     className="pe-dialog-pane__content ">
     <div
-      className="pe-dialog-pane__header">
+      className="pe-dialog-pane__header pe-dialog-pane__header--title">
       <div
         className="pe-dialog-pane__title">
         Long dialog with a very long title that surely won\'t fit here
@@ -259,7 +256,7 @@ exports[`test Option: title, body, footer 1`] = `
         } />
     </div>
     <div
-      className="pe-dialog-pane__footer">
+      className="pe-dialog-pane__footer pe-dialog-pane__footer--buttons">
       <div
         className="pe-dialog-pane__actions">
         <Button
@@ -298,6 +295,78 @@ exports[`test Themed (color) 1`] = `
       onScroll={[Function]}>
       <div>
         Hello
+      </div>
+    </div>
+  </div>
+</form>
+`;
+
+exports[`test With Toolbar as header and footer 1`] = `
+<form
+  className="pe-dialog-pane     ">
+  <div
+    className="pe-dialog-pane__content ">
+    <div
+      className="pe-dialog-pane__header">
+      <Toolbar
+        className="tests-dialog-pane-themed-toolbar"
+        content={
+          Array [
+            <ToolbarTitle
+              text="Header" />,
+          ]
+        }
+        tone="light" />
+    </div>
+    <div
+      className="pe-dialog-pane__body"
+      onScroll={[Function]}>
+      Body
+    </div>
+    <div
+      className="pe-dialog-pane__footer">
+      <Toolbar
+        className="tests-dialog-pane-themed-toolbar"
+        content={
+          Array [
+            <ToolbarTitle
+              text="Footer" />,
+          ]
+        }
+        tone="dark" />
+    </div>
+  </div>
+</form>
+`;
+
+exports[`test With title, body and footer 1`] = `
+<form
+  className="pe-dialog-pane     ">
+  <div
+    className="pe-dialog-pane__content ">
+    <div
+      className="pe-dialog-pane__header pe-dialog-pane__header--title">
+      <div
+        className="pe-dialog-pane__title">
+        Title
+      </div>
+    </div>
+    <div
+      className="pe-dialog-pane__body"
+      onScroll={[Function]}>
+      Body
+    </div>
+    <div
+      className="pe-dialog-pane__footer">
+      <div
+        style={
+          Object {
+            "background": "#00c853",
+            "color": "#fff",
+            "padding": "16px 24px",
+          }
+        }>
+        Footer
       </div>
     </div>
   </div>

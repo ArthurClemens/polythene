@@ -4,6 +4,10 @@ const iconClose = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d
 
 const content = "Content...";
 
+Toolbar.theme(".tests-dialog-react-themed-toolbar", {
+  color_dark_background:  "#00c853"
+});
+
 const toolbarRow = title => [
   h(IconButton, {
     key: "close",
@@ -27,20 +31,15 @@ const toolbarRow = title => [
 export default {
   fullScreen: true,
   backdrop: true,
-  content: [
-    h(Toolbar,
-      {
-        content: toolbarRow("New event"),
-        key: "header"
-      }
-    ),
-    // content
-    h("div",
-      {
-        style: { padding: "21px" },
-        key: "content"
-      },
-      h.trust(content)
-    )
-  ]
+  header: h(Toolbar,
+    {
+      className: "tests-dialog-react-themed-toolbar",
+      tone: "dark",
+      content: toolbarRow("New event")
+    }
+  ),
+  body: h("div",
+    { style: { padding: "21px" } },
+    h.trust(content)
+  )
 };

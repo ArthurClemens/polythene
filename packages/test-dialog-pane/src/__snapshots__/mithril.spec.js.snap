@@ -2,7 +2,8 @@ exports[`test Conditional button states 1`] = `
 "<form class=\"pe-dialog-pane\" name=\"demo\" type=\"post\" enctype=
 \"multipart/form-data\" id=\"demo\">
   <div class=\"pe-dialog-pane__content\">
-    <div class=\"pe-dialog-pane__header\">
+    <div class=
+    \"pe-dialog-pane__header pe-dialog-pane__header--title\">
       <div class=\"pe-dialog-pane__title\">
         Select a file...
       </div>
@@ -10,7 +11,8 @@ exports[`test Conditional button states 1`] = `
     <div class=\"pe-dialog-pane__body\">
       <input type=\"file\" id=\"file\" name=\"file\">
     </div>
-    <div class=\"pe-dialog-pane__footer\">
+    <div class=
+    \"pe-dialog-pane__footer pe-dialog-pane__footer--buttons\">
       <div class=\"pe-dialog-pane__actions\">
         <a class=\"pe-button pe-text-button\" tabindex=\"0\">
         <div class=\"pe-button__content\">
@@ -128,7 +130,8 @@ exports[`test Option: style 1`] = `
 exports[`test Option: title and body (long text) - spec 1`] = `
 "<form class=\"pe-dialog-pane\">
   <div class=\"pe-dialog-pane__content\">
-    <div class=\"pe-dialog-pane__header\">
+    <div class=
+    \"pe-dialog-pane__header pe-dialog-pane__header--title\">
       <div class=\"pe-dialog-pane__title\">
         Long dialog with a very long title that surely won\'t fit
         here
@@ -294,7 +297,8 @@ exports[`test Option: title and body (long text) - spec 1`] = `
 exports[`test Option: title and body (long text) - spec 2`] = `
 "<form class=\"pe-dialog-pane\">
   <div class=\"pe-dialog-pane__content\">
-    <div class=\"pe-dialog-pane__header\">
+    <div class=
+    \"pe-dialog-pane__header pe-dialog-pane__header--title\">
       <div class=\"pe-dialog-pane__title\">
         Long dialog with a very long title that surely won\'t fit
         here
@@ -304,25 +308,23 @@ exports[`test Option: title and body (long text) - spec 2`] = `
       Hello
     </div>
     <div class=\"pe-dialog-pane__footer\">
-      <div class=\"pe-dialog-pane__actions\">
-        <a class=\"pe-button pe-text-button\" tabindex=\"0\">
-        <div class=\"pe-button__content\">
-          <div class=\"pe-ripple\"></div>
-          <div class=\"pe-button__wash\"></div>
-          <div class=\"pe-button__focus\"></div>
-          <div class=\"pe-button__label\">
-            Cancel
-          </div>
-        </div></a><a class=\"pe-button pe-text-button\" tabindex=\"0\">
-        <div class=\"pe-button__content\">
-          <div class=\"pe-ripple\"></div>
-          <div class=\"pe-button__wash\"></div>
-          <div class=\"pe-button__focus\"></div>
-          <div class=\"pe-button__label\">
-            Save
-          </div>
-        </div></a>
-      </div>
+      <a class=\"pe-button pe-text-button\" tabindex=\"0\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple\"></div>
+        <div class=\"pe-button__wash\"></div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-button__label\">
+          Cancel
+        </div>
+      </div></a><a class=\"pe-button pe-text-button\" tabindex=\"0\">
+      <div class=\"pe-button__content\">
+        <div class=\"pe-ripple\"></div>
+        <div class=\"pe-button__wash\"></div>
+        <div class=\"pe-button__focus\"></div>
+        <div class=\"pe-button__label\">
+          Save
+        </div>
+      </div></a>
     </div>
   </div>
 </form>
@@ -332,7 +334,8 @@ exports[`test Option: title and body (long text) - spec 2`] = `
 exports[`test Option: title, body, footer 1`] = `
 "<form class=\"pe-dialog-pane\">
   <div class=\"pe-dialog-pane__content\">
-    <div class=\"pe-dialog-pane__header\">
+    <div class=
+    \"pe-dialog-pane__header pe-dialog-pane__header--title\">
       <div class=\"pe-dialog-pane__title\">
         Long dialog with a very long title that surely won\'t fit
         here
@@ -490,7 +493,8 @@ exports[`test Option: title, body, footer 1`] = `
         deserunt mollit anim id est laborum.
       </p>
     </div>
-    <div class=\"pe-dialog-pane__footer\">
+    <div class=
+    \"pe-dialog-pane__footer pe-dialog-pane__footer--buttons\">
       <div class=\"pe-dialog-pane__actions\">
         <a class=\"pe-button pe-text-button\" tabindex=\"0\">
         <div class=\"pe-button__content\">
@@ -535,6 +539,56 @@ exports[`test Themed (color) 1`] = `
     <div class=\"pe-dialog-pane__body\">
       <div>
         Hello
+      </div>
+    </div>
+  </div>
+</form>
+"
+`;
+
+exports[`test With Toolbar as header and footer 1`] = `
+"<form class=\"pe-dialog-pane\">
+  <div class=\"pe-dialog-pane__content\">
+    <div class=\"pe-dialog-pane__header\">
+      <div class=
+      \"pe-toolbar pe-light-tone tests-dialog-pane-themed-toolbar\">
+        <div class=\"pe-toolbar__title\">
+          Header
+        </div>
+      </div>
+    </div>
+    <div class=\"pe-dialog-pane__body\">
+      Body
+    </div>
+    <div class=\"pe-dialog-pane__footer\">
+      <div class=
+      \"pe-toolbar pe-dark-tone tests-dialog-pane-themed-toolbar\">
+        <div class=\"pe-toolbar__title\">
+          Footer
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+"
+`;
+
+exports[`test With title, body and footer 1`] = `
+"<form class=\"pe-dialog-pane\">
+  <div class=\"pe-dialog-pane__content\">
+    <div class=
+    \"pe-dialog-pane__header pe-dialog-pane__header--title\">
+      <div class=\"pe-dialog-pane__title\">
+        Title
+      </div>
+    </div>
+    <div class=\"pe-dialog-pane__body\">
+      Body
+    </div>
+    <div class=\"pe-dialog-pane__footer\">
+      <div style=
+      \"background: rgb(0, 200, 83); color: rgb(255, 255, 255); padding: 16px 24px;\">
+      Footer
       </div>
     </div>
   </div>

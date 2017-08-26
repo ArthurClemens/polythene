@@ -30,7 +30,7 @@ class Pane extends Component {
             this.setState({file: null});
           }
         }}
-        footer={<div>
+        footerButtons={<div>
           <Button
             label="Cancel"
             events={{

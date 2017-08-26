@@ -102,6 +102,7 @@ export const createProps = (vnode, { keys: k }) => {
     {
       className: [
         classes.component,
+        // attrs.fullBleed ? classes.fullBleed : null,
         state.topOverflow() || attrs.borders ? classes.hasTopOverflow : null,
         state.bottomOverflow() || attrs.borders ? classes.hasBottomOverflow : null,
         attrs.tone === "dark" ? "pe-dark-tone" : null,
@@ -126,18 +127,29 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
       style: attrs.style
     },
     [
-      attrs.title
+      attrs.header
         ? h("div",
           {
             className: classes.header,
             key: "header"
           },
-          h("div",
-            { className: classes.title },
-            attrs.title
-          )
+          attrs.header
         )
-        : null,
+        : attrs.title
+          ? h("div",
+            {
+              className: [
+                classes.header,
+                classes.headerWithTitle
+              ].join(" "),
+              key: "title"
+            },
+            h("div",
+              { className: classes.title },
+              attrs.title
+            )
+          )
+          : null,
       h("div",
         {
           className: classes.body,
@@ -158,12 +170,23 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
             className: classes.footer,
             key: "footer"
           },
-          h("div",
-            { className: classes.actions },
-            attrs.footer
-          )
+          attrs.footer
         )
-        : null
+        : attrs.footerButtons
+          ? h("div",
+            {
+              className: [
+                classes.footer,
+                classes.footerWithButtons
+              ].join(" "),
+              key: "footer"
+            },
+            h("div",
+              { className: classes.actions },
+              attrs.footerButtons
+            )
+          )
+          : null
     ]
   );
 };

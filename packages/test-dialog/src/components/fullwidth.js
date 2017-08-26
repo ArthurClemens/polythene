@@ -7,7 +7,7 @@ export default ({ renderer: h, keys: k, Dialog, Button }) => ({
     h(".pe-dialog-pane__title", "Let your apps know your location"),
     h("div", "This means that your location data will be sent to our servers, anonymously of course.")
   ],
-  footer: [
+  footerButtons: [
     h(Button, {
       label: "Turn on location services",
       events: {

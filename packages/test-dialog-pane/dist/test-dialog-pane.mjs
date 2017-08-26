@@ -1,5 +1,5 @@
-import { Button, DialogPane, keys, renderer } from 'polythene-mithril';
-import { Button as Button$1, DialogPane as DialogPane$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
+import { Button, DialogPane, Toolbar, ToolbarTitle, keys, renderer } from 'polythene-mithril';
+import { Button as Button$1, DialogPane as DialogPane$1, Toolbar as Toolbar$1, ToolbarTitle as ToolbarTitle$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 
 var shortText = "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>";
 
@@ -43,7 +43,7 @@ var form = (function (_ref) {
       alert("Posted: " + file());
       file(null);
     }), _formOptions),
-    footer: [h(Button$$1, {
+    footerButtons: [h(Button$$1, {
       label: "Cancel"
     }), h(Button$$1, {
       disabled: file() === undefined,
@@ -254,12 +254,21 @@ var genericTests = (function (_ref) {
   var renderer$$1 = _ref.renderer,
       keys$$1 = _ref.keys,
       DialogPane$$1 = _ref.DialogPane,
+      Toolbar$$1 = _ref.Toolbar,
+      ToolbarTitle$$1 = _ref.ToolbarTitle,
       Button$$1 = _ref.Button;
 
+
+  var h = renderer$$1;
 
   DialogPane$$1.theme(".dialog-pane-tests-blue-dialog", {
     color_light_background: "#2196F3",
     color_light_body_text: "#fff"
+  });
+
+  Toolbar$$1.theme(".tests-dialog-pane-themed-toolbar", {
+    color_light_background: "#00c853",
+    color_dark_background: "#333"
   });
 
   return [{
@@ -269,10 +278,40 @@ var genericTests = (function (_ref) {
       body: "Hello"
     }
   }, {
+    name: "With title, body and footer",
+    component: DialogPane$$1,
+    attrs: {
+      title: "Title",
+      body: "Body",
+      footer: h("div", {
+        style: {
+          background: "#00c853",
+          color: "#fff",
+          padding: "16px 24px"
+        }
+      }, "Footer")
+    }
+  }, {
+    name: "With Toolbar as header and footer",
+    component: DialogPane$$1,
+    attrs: {
+      header: h(Toolbar$$1, {
+        content: [h(ToolbarTitle$$1, { key: "header", text: "Header" })],
+        tone: "light",
+        className: "tests-dialog-pane-themed-toolbar"
+      }),
+      body: "Body",
+      footer: h(Toolbar$$1, {
+        content: [h(ToolbarTitle$$1, { key: "footer", text: "Footer" })],
+        tone: "dark",
+        className: "tests-dialog-pane-themed-toolbar"
+      })
+    }
+  }, {
     name: "Themed (color)",
     component: DialogPane$$1,
     attrs: {
-      content: renderer$$1("div", "Hello"),
+      content: h("div", "Hello"),
       className: "dialog-pane-tests-blue-dialog"
     }
   }, {
@@ -292,7 +331,7 @@ var genericTests = (function (_ref) {
     attrs: {
       title: "Long dialog with a very long title that surely won't fit here",
       body: renderer$$1.trust(longText),
-      footer: cancelOkButtons({ renderer: renderer$$1, Button: Button$$1 })
+      footerButtons: cancelOkButtons({ renderer: renderer$$1, Button: Button$$1 })
     }
   }, {
     name: "Conditional button states",
@@ -306,7 +345,7 @@ var genericTests = (function (_ref) {
         };
       },
       view: function view(vnode) {
-        return renderer$$1(DialogPane$$1, form({ renderer: renderer$$1, keys: keys$$1, Button: Button$$1, file: vnode.state.file }));
+        return h(DialogPane$$1, form({ renderer: renderer$$1, keys: keys$$1, Button: Button$$1, file: vnode.state.file }));
       }
     }
   }];
@@ -316,7 +355,7 @@ var mithrilTests = function mithrilTests() {
   return [];
 };
 
-var testsMithril = [].concat(genericTests({ DialogPane: DialogPane, Button: Button, renderer: renderer, keys: keys })).concat(mithrilTests({ DialogPane: DialogPane, Button: Button, renderer: renderer, keys: keys }));
+var testsMithril = [].concat(genericTests({ DialogPane: DialogPane, Toolbar: Toolbar, ToolbarTitle: ToolbarTitle, Button: Button, renderer: renderer, keys: keys })).concat(mithrilTests({ DialogPane: DialogPane, Toolbar: Toolbar, ToolbarTitle: ToolbarTitle, Button: Button, renderer: renderer, keys: keys }));
 
 /*
 object-assign
@@ -4077,6 +4116,6 @@ var reactTests = function reactTests() {
   }];
 };
 
-var testsReact = [].concat(genericTests({ DialogPane: DialogPane$1, Button: Button$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests({ DialogPane: DialogPane$1, Button: Button$1, renderer: renderer$1, keys: keys$1 }));
+var testsReact = [].concat(genericTests({ DialogPane: DialogPane$1, Toolbar: Toolbar$1, ToolbarTitle: ToolbarTitle$1, Button: Button$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests({ DialogPane: DialogPane$1, Toolbar: Toolbar$1, ToolbarTitle: ToolbarTitle$1, Button: Button$1, renderer: renderer$1, keys: keys$1 }));
 
 export { testsMithril as mithrilTests, testsReact as reactTests };

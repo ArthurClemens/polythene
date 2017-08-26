@@ -14,9 +14,12 @@ var classes = {
   title: "pe-dialog-pane__title",
 
   // states
+  headerWithTitle: "pe-dialog-pane__header--title",
+  footerWithButtons: "pe-dialog-pane__footer--buttons",
   footerHigh: "pe-dialog-pane__footer--high",
   hasBottomOverflow: "pe-dialog-pane--overflow-bottom",
-  hasTopOverflow: "pe-dialog-pane--overflow-top"
+  hasTopOverflow: "pe-dialog-pane--overflow-top",
+  fullBleed: "pe-dialog-pane--full-bleed"
 };
 
 var vars$1 = {
@@ -24,6 +27,8 @@ var vars$1 = {
   header_bottom: 20,
   header_height: 60,
   footer_height: 52,
+
+  border_width: 1,
 
   color_light_title_text: "inherit",
   color_light_body_text: "inherit",
@@ -72,9 +77,6 @@ var layout = (function (selector, componentVars) {
     },
 
     " .pe-dialog-pane__header": {
-      padding: [componentVars.padding - 4, componentVars.padding, componentVars.header_bottom - 4, componentVars.padding].map(function (v) {
-        return v + "px";
-      }).join(" "),
       minHeight: componentVars.header_height + "px",
 
       " .pe-dialog-pane__title": [mixin.ellipsis(1), {
@@ -82,11 +84,17 @@ var layout = (function (selector, componentVars) {
       }]
     },
 
+    " .pe-dialog-pane__header--title": {
+      padding: [componentVars.padding - 4, componentVars.padding, componentVars.header_bottom - 4, componentVars.padding].map(function (v) {
+        return v + "px";
+      }).join(" ")
+    },
+
     " .pe-dialog-pane__body": [flex.selfStretch, {
       padding: componentVars.padding + "px",
       overflowY: "auto",
       "-webkit-overflow-scrolling": "touch",
-      borderWidth: "1px",
+      borderWidth: componentVars.border_width + "px",
       borderStyle: "solid none",
       borderColor: "transparent",
       // initially set max-height; will be overridden by dialog core with actual heights
@@ -99,18 +107,19 @@ var layout = (function (selector, componentVars) {
         marginTop: "16px"
       }
     }],
-    " .pe-dialog-pane__header + .pe-dialog-pane__body": {
+    " .pe-dialog-pane__header--title + .pe-dialog-pane__body": {
       paddingTop: 0
     },
 
     " .pe-dialog-pane__footer": {
-      padding: "2px 8px",
-      minHeight: componentVars.footer_height + "px",
-      fontSize: 0, // remove inline block spacing
-
       ".pe-dialog-pane__footer--high": {
         // when buttons are stacked vertically
         paddingBottom: "8px"
+      },
+      ".pe-dialog-pane__footer--buttons": {
+        padding: "2px 8px",
+        minHeight: componentVars.footer_height + "px",
+        fontSize: 0 // remove inline block spacing
       }
     },
 
@@ -137,7 +146,6 @@ var layout = (function (selector, componentVars) {
       width: "100vw"
     },
     " .pe-dialog-pane, .pe-dialog-pane__body": {
-      padding: 0,
       height: "100vh",
       maxHeight: "100vh",
       border: "none",
@@ -289,7 +297,9 @@ var createProps = function createProps(vnode, _ref) {
   var attrs = unpackAttrs(vnode.attrs);
   return _extends({}, filterSupportedAttributes(attrs, { remove: ["style"] }), // style set in content, and set by show/hide transition
   {
-    className: [classes.component, state.topOverflow() || attrs.borders ? classes.hasTopOverflow : null, state.bottomOverflow() || attrs.borders ? classes.hasBottomOverflow : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [classes.component,
+    // attrs.fullBleed ? classes.fullBleed : null,
+    state.topOverflow() || attrs.borders ? classes.hasTopOverflow : null, state.bottomOverflow() || attrs.borders ? classes.hasBottomOverflow : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, attrs.formOptions);
 };
 
@@ -303,9 +313,12 @@ var createContent = function createContent(vnode, _ref2) {
   return h("div", {
     className: [classes.content, attrs.menu ? classes.menuContent : null].join(" "),
     style: attrs.style
-  }, [attrs.title ? h("div", {
+  }, [attrs.header ? h("div", {
     className: classes.header,
     key: "header"
+  }, attrs.header) : attrs.title ? h("div", {
+    className: [classes.header, classes.headerWithTitle].join(" "),
+    key: "title"
   }, h("div", { className: classes.title }, attrs.title)) : null, h("div", _defineProperty({
     className: classes.body,
     key: "body"
@@ -318,7 +331,10 @@ var createContent = function createContent(vnode, _ref2) {
   }), attrs.content || attrs.body || attrs.menu), attrs.footer ? h("div", {
     className: classes.footer,
     key: "footer"
-  }, h("div", { className: classes.actions }, attrs.footer)) : null]);
+  }, attrs.footer) : attrs.footerButtons ? h("div", {
+    className: [classes.footer, classes.footerWithButtons].join(" "),
+    key: "footer"
+  }, h("div", { className: classes.actions }, attrs.footerButtons)) : null]);
 };
 
 var dialogPane = Object.freeze({

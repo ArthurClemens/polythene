@@ -7,6 +7,8 @@ export default {
   header_height: 60,
   footer_height: 52,
 
+  border_width: 1,
+
   color_light_title_text:          "inherit",
   color_light_body_text:           "inherit",
   color_light_body_border:         rgba(vars.color_light_foreground, vars.blend_light_border_light),

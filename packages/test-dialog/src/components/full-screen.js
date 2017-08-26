@@ -5,6 +5,10 @@ const closeSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=
 
 export default ({ renderer: h, keys: k, Toolbar, IconButton, Button, Dialog }) => {
 
+  Toolbar.theme(".tests-dialog-full-screen-themed-toolbar", {
+    color_dark_background: "#00c853"
+  });
+
   const fullScreenToolbarRow = title => [
     h(IconButton, {
       key: "close",
@@ -23,25 +27,11 @@ export default ({ renderer: h, keys: k, Toolbar, IconButton, Button, Dialog }) =
     })
   ];
 
-  const FullScreenPane = {
-    view: () => 
-      h("div", [
-        h(Toolbar, {
-          key: "toolbar",
-          content: fullScreenToolbarRow("New event")
-        }),
-        h("div", {
-          key: "content",
-          style: { padding: "21px" }
-        }, h.trust(longText))
-      ])
-  };
-
   const confirmDialogOpts = ({
     body: "This event is not yet saved. Are you sure you want to delete this event?",
     modal: true,
     backdrop: true,
-    footer: [
+    footerButtons: [
       h(Button, {
         label: "Cancel",
         events: {
@@ -63,8 +53,15 @@ export default ({ renderer: h, keys: k, Toolbar, IconButton, Button, Dialog }) =
   });
 
   return {
-    body: h(FullScreenPane),
-    fullScreen: true
+    fullScreen: true,
+    header: h(Toolbar,
+      {
+        className: "tests-dialog-full-screen-themed-toolbar",
+        tone: "dark",
+        content: fullScreenToolbarRow("New event")
+      }
+    ),
+    body: h.trust(longText)
   };
 
 };

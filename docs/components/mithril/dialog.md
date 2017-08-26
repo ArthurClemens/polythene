@@ -12,9 +12,11 @@
 
 <a href="https://jsfiddle.net/ArthurClemens/t4uy26Lb/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
+### Calling a Dialog
+
 Other than most other components, `Dialog` is not rendered directly but invoked through function calls `show` and `hide`.
 
-### Dialog spawner
+#### Dialog spawner
 
 Dialogs will be spawned from the component invocation: `m(Dialog)`. To show a dialog instance, use `Dialog.show()` - more on that later.
 
@@ -39,7 +41,7 @@ Style side notes:
 * Writing the dialog at the bottom makes for less surprises (instead of using CSS only for positioning); Mobile Safari sometimes has surprises with `position: fixed`, so placing it here will most likely work as intended.
 * The order of elements in the root view may differ - CSS attribute `z-index` is set higher than other content.
 
-### Multiple dialog spawners
+#### Multiple dialog spawners
 
 Usually you'll use only one location for dialogs - on top of all content and centered on screen - but it is possible to have a dialog instance spawned from a different location.
 
@@ -55,7 +57,7 @@ Calls to show the that particular dialog will then also need to pass the same sp
 Dialog.show(dialogOptions, { spawn: "special" })
 ~~~
 
-### Showing and hiding dialogs
+#### Showing and hiding dialogs
 
 Dialog functions:
 
@@ -64,7 +66,7 @@ Dialog.show(options)
 Dialog.hide(options)
 ~~~
 
-#### show
+##### show
 
 Shows a new dialog instance.
 
@@ -105,7 +107,7 @@ Dialog.show(
 )
 ~~~
 
-##### Dynamic content
+###### Dynamic content
 
 When passing a POJO object to `Dialog.show`, the object contents is rendered statically and changes will not get reflected properly. Passing the options as a function ensures that the options are read afresh with the new state:
 
@@ -122,7 +124,7 @@ Dialog.show(optionsFn)
 See a more complete example below at "Conditional footer buttons".
 
 
-#### hide
+##### hide
 
 Hides the current dialog instance.
 
@@ -142,7 +144,7 @@ Dialog.hide({ spawn: "special" })
 Dialog.hide().then(() => console.log("dialog hidden"))
 ~~~
 
-### Callbacks
+#### Callbacks
 
 Two optional callback options can be used after the transition: `didShow` and `didHide`. Useful when a route change is needed after the dialog is displayed or hidden:
 
@@ -152,7 +154,45 @@ const dialogOptions = {
 }
 ~~~
 
-### Example with modal and backdrop
+### Drawing a Dialog
+
+A dialog pane consist of the elements:
+
+* `header`
+* `body`
+* `footer`
+
+The `header` can be substibuted with convenience option `title`: this draws the title text according to Material Design specs.
+
+The `footer` can be substibuted with convenience option `footerButtons`: this accepts an array of buttons and will be drawn  right-aligned according to Material Design specs.
+
+#### Example with a Toolbar as custom header and footer
+
+A dialog header can contain any content, but using a [Toolbar](../toolbar.md) is convenient to display action buttons (not according to Material Design specs, but nonetheless used in many interfaces).
+
+~~~javascript
+import m from "mithril"
+import { Dialog, Toolbar, ToolbarTitle } from "polythene-mithril"
+
+const dialogOptions = {
+  header: m(Toolbar, {
+    content: [
+      m(ToolbarTitle, { text: "Title" })
+    ]
+  }),
+  body: "Body", 
+  footer: m(Toolbar, {
+    content: [
+      h(ToolbarTitle, { text: "Footer" })
+    ]
+  })
+})
+
+Dialog.show(dialogOptions)
+~~~
+
+
+#### Example with modal and backdrop
 
 A modal dialog is a dialog that can only be closed with an explicit choice; clicking the background does not count as a choice.
 
@@ -175,13 +215,13 @@ const dialogOptions = {
   body: "Discard draft?",
   modal: true,
   backdrop: true,
-  footer: footerButtons
+  footerButtons
 })
 
 Dialog.show(dialogOptions)
 ~~~
 
-### Full screen dialog
+#### Full screen dialog
 
 A full screen dialog uses [Toolbar](../toolbar.md) to implement its own header (options `title` and `footer` are not used).
 
@@ -215,23 +255,11 @@ const fullScreenToolbarRow = title => [
   })
 ]
 
-const FullScreenPane = {
-  view: () => 
-    m("div", [
-      m(Toolbar, {
-        content: fullScreenToolbarRow("New event")
-      }),
-      m("div", {
-        style: { padding: "21px" }
-      }, m.trust(longText))
-    ])
-}
-
 const confirmDialogOpts = ({
   body: "This event is not yet saved. Are you sure you want to delete this event?",
   modal: true,
   backdrop: true,
-  footer: [
+  footerButtons: [
     m(Button, {
       label: "Cancel",
       events: {
@@ -253,12 +281,15 @@ const confirmDialogOpts = ({
 })
 
 Dialog.show({
-  body: m(FullScreenPane),
+  header: m(Toolbar,
+    { content: fullScreenToolbarRow("New event") }
+  ),
+  body: m.trust(longText)),
   fullScreen: true
 })
 ~~~
 
-### Dynamic content: conditional footer buttons
+#### Dynamic content: conditional footer buttons
 
 To create dynamic dialog content, pass the dialog options as function.
 
@@ -296,7 +327,7 @@ Dialog.show(() =>
         file(null)
       }
     },
-    footer: [
+    footerButtons: [
       m(Button, {
         label: "Cancel",
         events: {

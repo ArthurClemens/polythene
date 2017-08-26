@@ -110,7 +110,8 @@ exports[`test Option: modal with backdrop - spec 1`] = `
     </div>
     <form class=\"pe-dialog-pane\">
       <div class=\"pe-dialog-pane__content\">
-        <div class=\"pe-dialog-pane__header\">
+        <div class=
+        \"pe-dialog-pane__header pe-dialog-pane__header--title\">
           <div class=\"pe-dialog-pane__title\">
             Long dialog with a very long title that surely won\'t
             fit here
@@ -283,7 +284,8 @@ exports[`test Option: modal with backdrop - spec 1`] = `
             deserunt mollit anim id est laborum.
           </p>
         </div>
-        <div class=\"pe-dialog-pane__footer\">
+        <div class=
+        \"pe-dialog-pane__footer pe-dialog-pane__footer--buttons\">
           <div class=\"pe-dialog-pane__actions\">
             <a class=\"pe-button pe-text-button\" tabindex=\"0\">
             <div class=\"pe-button__content\">
@@ -321,7 +323,8 @@ exports[`test Option: title and body (long text) - spec 1`] = `
     </div>
     <form class=\"pe-dialog-pane\">
       <div class=\"pe-dialog-pane__content\">
-        <div class=\"pe-dialog-pane__header\">
+        <div class=
+        \"pe-dialog-pane__header pe-dialog-pane__header--title\">
           <div class=\"pe-dialog-pane__title\">
             Long dialog with a very long title that surely won\'t
             fit here

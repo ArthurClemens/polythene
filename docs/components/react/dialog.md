@@ -10,15 +10,17 @@
 
 ## Usage
 
+### Calling a Dialog
+
 Other than most other components, `Dialog` is not rendered directly but invoked through function calls `show` and `hide`.
 
-### Dialog spawner
+#### Dialog spawner
 
 Dialogs will be spawned from the component invocation (`<Dialog />`). To show a dialog instance, use `Dialog.show()` - more on that later.
 
 Because a dialog should float on top of everything else, outside of the context of the caller, it can be considered a global component. It is best placed in the root view, so that it is not obstructed by other components:
 
-#### With JSX
+##### With JSX
 
 <a href="https://jsfiddle.net/ArthurClemens/m08o291L/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
@@ -35,7 +37,7 @@ render() {
 }
 ~~~
 
-#### With hyperscript
+##### With hyperscript
 
 ~~~javascript
 import { renderer as h, Dialog } from "polythene-react"
@@ -54,7 +56,7 @@ Styling side notes:
 * The order of elements in the root view may differ - CSS attribute `z-index` is set higher than other content.
 
 
-### Multiple dialog spawners
+#### Multiple dialog spawners
 
 Usually you'll use only one location for dialogs - on top of all content and centered on screen - but it is possible to have a dialog instance spawned from a different location.
 
@@ -76,7 +78,7 @@ Calls to show the that particular dialog will then also need to pass the same sp
 Dialog.show(dialogOptions, { spawn: "special" })
 ~~~
 
-### Showing and hiding dialogs
+#### Showing and hiding dialogs
 
 Dialog functions:
 
@@ -85,7 +87,7 @@ Dialog.show(options)
 Dialog.hide(options)
 ~~~
 
-#### show
+##### show
 
 Shows a new dialog instance.
 
@@ -126,7 +128,7 @@ Dialog.show(
 )
 ~~~
 
-##### Dynamic content
+###### Dynamic content
 
 **NOTE: the following only applies to passing options as a POJO. For React, the better alternative is to manage state in a DialogPane wrapper component. See a more complete example below at "Conditional footer buttons".**
 
@@ -143,7 +145,7 @@ Dialog.show(optionsFn)
 ~~~
 
 
-#### hide
+##### hide
 
 Hides the current dialog instance.
 
@@ -163,7 +165,7 @@ Dialog.hide({ spawn: "special" })
 Dialog.hide().then(() => console.log("dialog hidden"))
 ~~~
 
-### Callbacks
+#### Callbacks
 
 Two optional callback options can be used after the transition: `didShow` and `didHide`. Useful when a route change is needed after the dialog is displayed or hidden:
 
@@ -173,13 +175,66 @@ const dialogOptions = {
 }
 ~~~
 
-### Example with modal and backdrop
+### Drawing a Dialog
+
+A dialog pane consist of the elements:
+
+* `header`
+* `body`
+* `footer`
+
+The `header` can be substibuted with convenience option `title`: this draws the title text according to Material Design specs.
+
+The `footer` can be substibuted with convenience option `footerButtons`: this accepts an array of buttons and will be drawn  right-aligned according to Material Design specs.
+
+#### Example with a Toolbar as custom header and footer
+
+A dialog header can contain any content, but using a [Toolbar](../toolbar.md) is convenient to display action buttons (not according to Material Design specs, but nonetheless used in many interfaces).
+
+##### With JSX
+
+~~~jsx
+import React from "react"
+import { Dialog, Toolbar, ToolbarTitle } from "polythene-react"
+
+const dialogOptions = {
+  header: <Toolbar><ToolbarTitle>Title</ToolbarTitle></Toolbar>,
+  body: "Body",
+  footer: <Toolbar><ToolbarTitle>Footer</ToolbarTitle></Toolbar>,
+}
+
+Dialog.show(dialogOptions)
+~~~
+
+##### With hyperscript
+
+~~~javascript
+import { renderer as h, Dialog, Toolbar, ToolbarTitle } from "polythene-react"
+
+const dialogOptions = {
+  header: h(Toolbar, {
+    content: [
+      h(ToolbarTitle, { text: "Title", key: "title" })
+    ]
+  }),
+  body: "Body", 
+  footer: h(Toolbar, {
+    content: [
+      h(ToolbarTitle, { text: "Footer", key: "footer" })
+    ]
+  })
+})
+
+Dialog.show(dialogOptions)
+~~~
+
+#### Example with modal and backdrop
 
 A modal dialog is a dialog that can only be closed with an explicit choice; clicking the background does not count as a choice.
 
 To make this behavior explicit, a modal dialog often has a tinted backdrop. This also gives focus to the dialog contents.
 
-#### With JSX
+##### With JSX
 
 ~~~jsx
 import React from "react"
@@ -195,13 +250,13 @@ const dialogOptions = {
   body: "Discard draft?",
   modal: true,
   backdrop: true,
-  footer: footerButtons
+  footerButtons
 }
 
 Dialog.show(dialogOptions)
 ~~~
 
-#### With hyperscript
+##### With hyperscript
 
 ~~~javascript
 import { renderer as h, Dialog, Button } from "polythene-react"
@@ -225,13 +280,13 @@ const dialogOptions = {
   body: "Discard draft?",
   modal: true,
   backdrop: true,
-  footer: footerButtons
+  footerButtons
 })
 
 Dialog.show(dialogOptions)
 ~~~
 
-### Full screen dialog
+#### Full screen dialog
 
 A full screen dialog uses [Toolbar](../toolbar.md) to implement its own header (options `title` and `footer` are not used):
 
@@ -261,7 +316,7 @@ const confirmDialogOpts = ({
   body: "This event is not yet saved. Are you sure you want to delete this event?",
   modal: true,
   backdrop: true,
-  footer: [
+  footerButtons: [
     <Button
       label="Cancel"
       events={{
@@ -285,14 +340,12 @@ const confirmDialogOpts = ({
 Dialog.show({
   fullScreen: true,
   backdrop: true,
-  content: [
-    <Toolbar content={toolbarRow("New event")} />,
-    <div style={{ padding: "21px" }}><BodyText /></div>
-  ]
+  header: <Toolbar content={toolbarRow("New event")} />,
+  body: <BodyText />
 })
 ~~~
 
-#### With hyperscript
+##### With hyperscript
 
 ~~~javascript
 import { renderer as h, Button, Toolbar, IconButton } from "polythene-react"
@@ -328,28 +381,16 @@ const toolbarRow = title => [
 const dialogOptions = {
   fullScreen: true,
   backdrop: true,
-  content: [
-    h(Toolbar,
-      {
-        content: toolbarRow("New event"),
-        key: "header"
-      }
-    ),
-    // content
-    h("div",
-      {
-        style: { padding: "21px" },
-        key: "content"
-      },
-      h.trust(content)
-    )
-  ]
+  header: h(Toolbar,
+    { content: toolbarRow("New event") }
+  ),
+  body: h.trust(content)
 }
 
 Dialog.show(dialogOptions)
 ~~~
 
-### Dynamic content: conditional footer buttons
+#### Dynamic content: conditional footer buttons
 
 To create dynamic dialog content, create a DialogPane wrapper component.
 
@@ -392,7 +433,7 @@ class ConditionalDialogPane extends Component {
             this.setState({file: null})
           }
         }}
-        footer={<div>
+        footerButtons={<div>
           <Button
             label="Cancel"
             events={{
@@ -419,7 +460,6 @@ Dialog.show({
   panes: [<ConditionalDialogPane />]  
 })
 ~~~
-
 
 
 ## Appearance

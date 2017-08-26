@@ -8,7 +8,7 @@ export default ({ renderer: h, keys: k, Button }) => () => {
   const options = [
     {
       body: "Pane One",
-      footer: h(Button, {
+      footerButtons: h(Button, {
         label: "Show Two",
         events: {
           [k.onclick]: () => index(currentIndex + 1)
@@ -17,7 +17,7 @@ export default ({ renderer: h, keys: k, Button }) => () => {
     },
     {
       body: "Pane Two",
-      footer: h(Button, {
+      footerButtons: h(Button, {
         label: "Show One",
         events: {
           [k.onclick]: () => index(currentIndex + 1)

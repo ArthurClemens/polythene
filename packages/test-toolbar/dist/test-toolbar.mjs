@@ -129,7 +129,7 @@ var genericTests = (function (_ref) {
       content: toolbarTitleComponentCentered
     }
   }, {
-    name: "ToolbarTitle, centered, balanced with placeholder",
+    name: "ToolbarTitle, centered, balanced with a placeholder",
     component: Toolbar$$1,
     attrs: {
       content: toolbarTitleComponentCenteredBalanced
