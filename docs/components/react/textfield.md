@@ -280,7 +280,7 @@ h(TextField, {
 
 ### Reading and setting the value
 
-See also [Handling state](../handling-state.md).
+See also [Handling state](../../handling-state.md).
 
 To read the input value, use `onChange`:
 

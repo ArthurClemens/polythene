@@ -86,7 +86,7 @@ h(RadioGroup, {
 
 Note that `name` is required when using RadioGroup.
 
-See also [Handling state](../handling-state.md).
+See also [Handling state](../../handling-state.md).
 
 To read the checked state, use `onChange`. But unlike [Checkbox](checkbox.md), the checked state does not need to be set explicitly - this is handled by Radio Group:
 

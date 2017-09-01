@@ -78,7 +78,7 @@ Not all button states need to be defined.
 
 ### Logic: storing and clearing the value
 
-See also [Handling state](../handling-state.md).
+See also [Handling state](../../handling-state.md).
 
 To add logic to the search field, we will wrap the search field in a component. We will store the Text Field state in our component state, and set the input value programmatically. For this we will use the Text Field's `value`, `focus` and `onChange`:
 
