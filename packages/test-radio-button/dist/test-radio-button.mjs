@@ -217,8 +217,9 @@ var onChange = (function (_ref) {
         }
       }, "Value: " + (checkedValue === undefined ? "Not set" : checkedValue)), h(RadioGroup$$1, {
         name: "onChange",
-        onChange: function onChange(newValue) {
-          return state.checkedValue(newValue);
+        onChange: function onChange(_ref2) {
+          var value = _ref2.value;
+          return state.checkedValue(value);
         },
         content: [{
           value: "One",

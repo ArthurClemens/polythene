@@ -22,7 +22,7 @@ export default ({ h, RadioGroup }) => ({
       ),
       h(RadioGroup, {
         name: "onChange",
-        onChange: newValue => state.checkedValue(newValue),
+        onChange: ({ value }) => state.checkedValue(value),
         content: [
           {
             value: "One",

@@ -64,7 +64,7 @@ export const createContent = (vnode, { renderer: h, RadioButton }) => {
           /* this component's options */
           onChange: newState => (
             state.checkedValue(newState.value),
-            attrs.onChange && attrs.onChange(newState.value)
+            attrs.onChange && attrs.onChange({ value: newState.value })
           ),
           checked: isChecked
         }

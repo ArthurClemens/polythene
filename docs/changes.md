@@ -2,6 +2,14 @@
 
 ## Pre release
 
+### 1.0.0-rc.6
+
+Changes to components:
+
+* RadioGroup
+  * `onChange` now returns a state object that contains a variable `value`
+
+
 ### 1.0.0-rc.5
 
 Various bug fixes. Contains fixes for server-side rendering.

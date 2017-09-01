@@ -56,7 +56,7 @@ var createContent = function createContent(vnode, _ref2) {
     buttonOpts, {
       /* this component's options */
       onChange: function onChange(newState) {
-        return state.checkedValue(newState.value), attrs.onChange && attrs.onChange(newState.value);
+        return state.checkedValue(newState.value), attrs.onChange && attrs.onChange({ value: newState.value });
       },
       checked: isChecked
     }));
