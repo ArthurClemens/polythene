@@ -41,7 +41,7 @@ h(Checkbox, {
 
 ### Reading and setting the checked state
 
-See also [Handling state](../handling-state.md).
+See also [Handling state](../../handling-state.md).
 
 To read the checked state, use `onChange`:
 

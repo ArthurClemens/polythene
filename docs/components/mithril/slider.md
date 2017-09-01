@@ -47,7 +47,7 @@ To add tick marks and pins:
 
 ### Reading and setting the slider value
 
-See also [Handling state](../handling-state.md).
+See also [Handling state](../../handling-state.md).
 
 To read the slider value, use `onChange`:
 
