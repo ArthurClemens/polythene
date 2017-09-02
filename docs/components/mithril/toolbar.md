@@ -113,7 +113,7 @@ m("div",
 
 Below are examples how to change the Toolbar appearance, either with a theme or with CSS.
 
-You can find more information about theming in [Theming](../theming.md).
+You can find more information about theming in  [Theming](../../theming.md).
 
 #### Themed component
 

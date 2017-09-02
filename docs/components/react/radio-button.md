@@ -88,9 +88,22 @@ Note that `name` is required when using RadioGroup.
 
 See also [Handling state](../../handling-state.md).
 
-To read the checked state, use `onChange`. But unlike [Checkbox](checkbox.md), the checked state does not need to be set explicitly - this is handled by Radio Group:
+
+#### Reading the checked state
+
+To read the checked state, use `onChange`:
 
 #### With JSX
+
+Before `1.0.0-rc.6`:
+
+~~~jsx
+<RadioGroup
+  onChange={newValue => this.setState({ checkedValue: newValue })}
+/>
+~~~
+
+After `1.0.0-rc.6`:
 
 ~~~jsx
 <RadioGroup
@@ -100,11 +113,46 @@ To read the checked state, use `onChange`. But unlike [Checkbox](checkbox.md), t
 
 #### With hyperscript
 
+Before `1.0.0-rc.6`:
+
+~~~javascript
+h(RadioGroup, {
+  onChange: newValue => this.setState({ checkedValue: newValue })
+})
+~~~
+
+After `1.0.0-rc.6`:
+
 ~~~javascript
 h(RadioGroup, {
   onChange: state => this.setState({ checkedValue: state.value })
 })
 ~~~
+
+But unlike [Checkbox](checkbox.md), the checked state does not need to be set explicitly - this is handled by Radio Group:
+
+
+#### Setting the checked state
+
+Unlike [Checkbox](checkbox.md), the checked state does not need to be set explicitly - this is handled by Radio Group.
+
+To set the initially checked radio button, pass `defaultChecked` to the `button` option:
+
+~~~javascript
+[
+  {
+    value: "1",
+    label: "One",
+    defaultChecked: true
+  },
+  {
+    value: "2",
+    label: "Two",
+  }
+]
+~~~
+
+
 
 ### Shared options
 
@@ -147,7 +195,7 @@ Both Radio Button and Radio Group can be styled using `theme`, `style` and CSS.
 
 Below are examples how to change the Radio Button appearance, either with a theme or with CSS.
 
-You can find more information about theming in [Theming](../theming.md).
+You can find more information about theming in  [Theming](../../theming.md).
 
 #### Themed component
 

@@ -16,7 +16,7 @@ State is handled by your app. That means that your app sets the initial state an
 
 ### Example: SVG 
 
-[SVG](packages/svg.md) is a component that illustrates how small components can be combined into larger ones. SVG is most often used as parameter to [Icon](packages/icon.md).
+[SVG](components/svg.md) is a component that illustrates how small components can be combined into larger ones. SVG is most often used as parameter to [Icon](components/icon.md).
 
 #### Mithril example
 
@@ -58,7 +58,7 @@ h(Icon,
 
 ### Example: Icon Button
 
-And the Icon component can also be used to create a somewhat larger component, for example [Icon Button](packages/icon-button.md).
+And the Icon component can also be used to create a somewhat larger component, for example [Icon Button](components/icon-button.md).
 
 #### Mithril example
 

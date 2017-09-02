@@ -26,7 +26,7 @@ html.wf-active body {
 }
 ~~~
 
-Or with JavaScript using [styler](../polythene-core-css):
+Or with JavaScript using `styler`:
 
 ~~~javascript
 import { styler } from "polythene-core-css"
