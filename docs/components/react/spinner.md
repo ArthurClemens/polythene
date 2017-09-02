@@ -191,7 +191,7 @@ Use option `singleColor` to use only one color (by default the primary color).
 
 Below are examples how to change the Spinner appearance, either with a theme or with CSS.
 
-You can find more information about theming in [Theming](../theming.md).
+You can find more information about theming in  [Theming](../../theming.md).
 
 #### Themed component
 

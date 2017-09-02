@@ -129,14 +129,14 @@ m(TextField, {
 
 ## Components supporting onChange
 
-* [Menu](menu.md)
-* [Radio Group](radio-group.md)
-* [Selection Control](selection-control.md)
-  * [Checkbox](checkbox.md)
-  * [Radio Button](radio-button.md)
-  * [Switch](switch.md)
-* [Slider](slider.md)
-* [Tabs](tabs.md)
-* [Text Field](textfield.md)
+* [Menu](components/menu.md)
+* [Radio Group](components/radio-group.md)
+* [Selection Control](components/selection-control.md)
+  * [Checkbox](components/checkbox.md)
+  * [Radio Button](components/radio-button.md)
+  * [Switch](components/switch.md)
+* [Slider](components/slider.md)
+* [Tabs](components/tabs.md)
+* [Text Field](components/textfield.md)
 
 

@@ -44,7 +44,7 @@ Displays a single dialog, or a stack of dialogs.
 | **header**      | optional | String, hyperscript or component | | Header row |
 | **title**       | optional | String |  | Header title; if omitted, no header will be shown |
 | **body**        | optional | String, hyperscript or component |  | Body content; if omitted, no body will be shown |
-| **menu**        | optional | [Menu](../polythene-menu) options object |  | Pass a menu to use the dialog as enhanced (higher) menu |
+| **menu**        | optional | [Menu](menu.md) options object |  | Pass a menu to use the dialog as enhanced (higher) menu |
 | **footer**       | optional | String, hyperscript or component | | Footer row |
 | **footerButtons** | optional | String, hyperscript or component | | Footer buttons to show in the footer row |
 | **panes**       | optional | Array of type `DialogPane` | | Used internally |

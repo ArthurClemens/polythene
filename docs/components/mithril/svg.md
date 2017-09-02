@@ -60,7 +60,7 @@ A large collection of such ready to use SVG modules is available at [mmsvg](http
 
 ### Usage with Icon component
 
-SVG options can be passed to [icon](Icon-mithril.md):
+SVG options can be passed to [icon](../icon.md):
 
 ~~~javascript
 import { Icon } from "polythene-mithril"
@@ -75,7 +75,7 @@ m(Icon, { svg: m.trust(svgString) })
 
 Below are examples how to change the SVG appearance, either with a theme or with CSS.
 
-You can find more information about theming in [Theming](../theming.md).
+You can find more information about theming in  [Theming](../../theming.md).
 
 #### Themed component
 
