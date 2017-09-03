@@ -239,8 +239,12 @@ var customTheme = function customTheme(customSelector, customVars) {
   return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
 };
 
-styler.generateStyles([baseSelector], vars$1, baseFns);
-styler.generateStyles([selector], vars$1, fns);
+var styles = function styles() {
+  return styler.createStyleSheets([baseSelector], vars$1, baseFns).concat(styler.createStyleSheets([selector], vars$1, fns));
+};
+
+// styler.generateStyles([baseSelector], vars, baseFns);
+// styler.generateStyles([selector], vars, fns);
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -375,4 +379,4 @@ var button = Object.freeze({
 	createContent: createContent
 });
 
-export { button as coreButton, classes, vars$1 as vars };
+export { button as coreButton, classes, vars$1 as vars, styles };

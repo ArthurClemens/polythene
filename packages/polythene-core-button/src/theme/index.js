@@ -13,5 +13,9 @@ const selector = `.${classes.component.replace(/ /g, ".")}`;
 export const customTheme = (customSelector, customVars) => 
   styler.generateStyles([customSelector, selector], {...vars, ...customVars}, fns);
 
-styler.generateStyles([baseSelector], vars, baseFns);
-styler.generateStyles([selector], vars, fns);
+export const styles = () => 
+  styler.createStyleSheets([baseSelector], vars, baseFns)
+    .concat(styler.createStyleSheets([selector], vars, fns));
+
+// styler.generateStyles([baseSelector], vars, baseFns);
+// styler.generateStyles([selector], vars, fns);

@@ -7,7 +7,8 @@
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
-    "build": "npm run rollup"
+    "build-css": "node ../../scripts/writeCSS.js",
+    "build": "npm run rollup && yarn run build-css"
   },
   "files": [
     "dist",

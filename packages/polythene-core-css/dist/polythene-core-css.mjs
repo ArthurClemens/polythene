@@ -405,11 +405,19 @@ var generateStyles = function generateStyles(selectors, vars, styleFns) {
   }));
 };
 
+var createStyleSheets = function createStyleSheets(selectors, vars, styleFns) {
+  var selector = selectors.join("");
+  return styleFns.map(function (fn) {
+    return fn(selector, vars);
+  });
+};
+
 var styler = {
   add: add,
   addToDocument: addToDocument,
-  remove: remove,
-  generateStyles: generateStyles
+  createStyleSheets: createStyleSheets,
+  generateStyles: generateStyles,
+  remove: remove
 };
 
 var hex = function hex(value) {

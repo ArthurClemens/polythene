@@ -1,12 +1,23 @@
-/* global __dirname */
+/* global __dirname, process */
 const path = require("path");
+const glob = require("glob");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+const nodeModules = path.join(process.cwd(), "node_modules");
+
+const PATHS = {
+  index: "../index.js",
+  // Create a list of CSS files from Polythene components:
+  style: glob.sync(`${nodeModules}/polythene-*/dist/*.css`),
+};
 
 module.exports = {
 
   context: path.resolve(__dirname, "../src"), 
 
   entry: {
-    index: "../index.js"
+    index: PATHS.index,
+    style: PATHS.style
   },
 
   resolve: {
@@ -20,8 +31,8 @@ module.exports = {
   },
 
   output: {
-    path: path.resolve(__dirname, "../dist/js"),
-    filename: "[name].js"
+    path: path.resolve(__dirname, "../dist/"),
+    filename: "js/[name].js"
   },
 
   module: {
@@ -32,11 +43,19 @@ module.exports = {
         use: [{
           loader: "babel-loader"
         }]
+      },
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: "css-loader"
+        })
       }
     ]
   },
 
   plugins: [
+    new ExtractTextPlugin("css/styles.css"),
   ],
 
   devtool: "source-map"
