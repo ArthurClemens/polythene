@@ -18,12 +18,12 @@
     "polythene-fastclick": "^1.0.0-rc.4",
     "polythene-mithril": "^1.0.0-rc.5",
     "polythene-style": "^1.0.0-rc.5",
-    "polythene-test": "^1.0.0-rc.5",
+    "polythene-tests": "^1.0.0-rc.5",
     "polythene-utilities": "^1.0.0-rc.5"
   },
   "devDependencies": {
-    "npm-run-all": "^4.0.2",
-    "webpack": "^2.5.1",
-    "webpack-dev-server": "^2.4.1"
+    "npm-run-all": "^4.1.1",
+    "webpack": "^3.5.5",
+    "webpack-dev-server": "^2.7.1"
   }
 }
