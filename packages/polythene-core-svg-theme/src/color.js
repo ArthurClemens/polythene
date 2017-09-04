@@ -2,7 +2,8 @@
 const style = (scopes, selector, componentVars, tint) => [{
   [scopes.map(s => s + selector).join(",")]: {
     color: "inherit",
-
+    border: "2px solid red",
+    
     " svg": {
       color: "inherit",
 

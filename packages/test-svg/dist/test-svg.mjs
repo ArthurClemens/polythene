@@ -118,6 +118,7 @@ object-assign
 @license MIT
 */
 
+'use strict';
 /* eslint-disable no-unused-vars */
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -177,7 +178,7 @@ function shouldUseNative() {
 	}
 }
 
-var index = shouldUseNative() ? Object.assign : function (target, source) {
+var objectAssign = shouldUseNative() ? Object.assign : function (target, source) {
 	var from;
 	var to = toObject(target);
 	var symbols;
@@ -214,6 +215,8 @@ var index = shouldUseNative() ? Object.assign : function (target, source) {
  *
  * 
  */
+'use strict';
+
 /**
  * WARNING: DO NOT manually require this module.
  * This is a replacement for `invariant(...)` used by the error code system
@@ -240,6 +243,8 @@ function reactProdInvariant(code) {
 }
 
 var reactProdInvariant_1 = reactProdInvariant;
+
+"use strict";
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -277,6 +282,18 @@ emptyFunction.thatReturnsArgument = function (arg) {
 };
 
 var emptyFunction_1 = emptyFunction;
+
+/**
+ * Copyright 2014-2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
 
 /**
  * Similar to invariant but only logs a warning if the condition is not met.
@@ -330,6 +347,18 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 var warning_1 = warning;
+
+/**
+ * Copyright 2015-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
 
 function warnNoop(publicInstance, callerName) {
   if (process.env.NODE_ENV !== 'production') {
@@ -423,6 +452,8 @@ var ReactNoopUpdateQueue_1 = ReactNoopUpdateQueue;
  * 
  */
 
+'use strict';
+
 var canDefineProperty$1 = false;
 if (process.env.NODE_ENV !== 'production') {
   try {
@@ -446,6 +477,8 @@ var canDefineProperty_1 = canDefineProperty$1;
  *
  */
 
+'use strict';
+
 var emptyObject = {};
 
 if (process.env.NODE_ENV !== 'production') {
@@ -463,6 +496,8 @@ var emptyObject_1 = emptyObject;
  * of patent rights can be found in the PATENTS file in the same directory.
  *
  */
+
+'use strict';
 
 /**
  * Use invariant() to assert state which your program assumes to be true.
@@ -518,6 +553,8 @@ var invariant_1 = invariant;
  *
  */
 
+'use strict';
+
 /**
  * Forked from fbjs/warning:
  * https://github.com/facebook/fbjs/blob/e66ba20ad5be433eb54423f2b097d829324d9de6/packages/fbjs/src/__forks__/warning.js
@@ -572,6 +609,18 @@ if (process.env.NODE_ENV !== 'production') {
 var lowPriorityWarning_1 = lowPriorityWarning$1;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
 
 /**
  * Base class helpers for the updating state of a component.
@@ -686,13 +735,26 @@ ComponentDummy.prototype = ReactComponent.prototype;
 ReactPureComponent.prototype = new ComponentDummy();
 ReactPureComponent.prototype.constructor = ReactPureComponent;
 // Avoid an extra prototype jump for these methods.
-index(ReactPureComponent.prototype, ReactComponent.prototype);
+objectAssign(ReactPureComponent.prototype, ReactComponent.prototype);
 ReactPureComponent.prototype.isPureReactComponent = true;
 
 var ReactBaseClasses = {
   Component: ReactComponent,
   PureComponent: ReactPureComponent
 };
+
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * 
+ */
+
+'use strict';
 
 /**
  * Static poolers. Several custom versions for each potential number of
@@ -800,6 +862,8 @@ var PooledClass_1 = PooledClass;
  * 
  */
 
+'use strict';
+
 /**
  * Keeps track of the current owner.
  *
@@ -828,6 +892,8 @@ var ReactCurrentOwner_1 = ReactCurrentOwner;
  * 
  */
 
+'use strict';
+
 // The Symbol used to tag the ReactElement type. If there is no native Symbol
 // nor polyfill, then a plain number is used for performance.
 
@@ -836,6 +902,18 @@ var REACT_ELEMENT_TYPE = typeof Symbol === 'function' && Symbol['for'] && Symbol
 var ReactElementSymbol = REACT_ELEMENT_TYPE;
 
 var _typeof$1 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/**
+ * Copyright 2014-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
 
 var hasOwnProperty$1 = Object.prototype.hasOwnProperty;
 
@@ -1088,7 +1166,7 @@ ReactElement.cloneElement = function (element, config, children) {
   var propName;
 
   // Original props are copied
-  var props = index({}, element.props);
+  var props = objectAssign({}, element.props);
 
   // Reserved names are extracted
   var key = element.key;
@@ -1170,6 +1248,8 @@ var ReactElement_1 = ReactElement;
  * 
  */
 
+'use strict';
+
 /* global Symbol */
 
 var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
@@ -1208,6 +1288,8 @@ var getIteratorFn_1 = getIteratorFn;
  *
  * 
  */
+
+'use strict';
 
 /**
  * Escape and wrap key so it is safe to use as a reactid
@@ -1256,6 +1338,18 @@ var KeyEscapeUtils = {
 var KeyEscapeUtils_1 = KeyEscapeUtils;
 
 var _typeof$2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
 
 var SEPARATOR = '.';
 var SUBSEPARATOR = ':';
@@ -1410,6 +1504,18 @@ function traverseAllChildren(children, callback, traverseContext) {
 }
 
 var traverseAllChildren_1 = traverseAllChildren;
+
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
 
 var twoArgumentPooler = PooledClass_1.twoArgumentPooler;
 var fourArgumentPooler = PooledClass_1.fourArgumentPooler;
@@ -1584,6 +1690,19 @@ var ReactChildren = {
 var ReactChildren_1 = ReactChildren;
 
 var _typeof$4 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/**
+ * Copyright 2016-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * 
+ */
+
+'use strict';
 
 function isNative(fn) {
   // Based on isNative() from Lodash
@@ -1954,6 +2073,8 @@ var ReactComponentTreeHook_1 = ReactComponentTreeHook;
  * 
  */
 
+'use strict';
+
 var ReactPropTypeLocationNames = {};
 
 if (process.env.NODE_ENV !== 'production') {
@@ -1977,11 +2098,25 @@ var ReactPropTypeLocationNames_1 = ReactPropTypeLocationNames;
  * 
  */
 
+'use strict';
+
 var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 var ReactPropTypesSecret_1 = ReactPropTypesSecret;
 
 var _typeof$5 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
 
 var ReactComponentTreeHook$1;
 
@@ -2051,6 +2186,25 @@ function checkReactTypeSpec(typeSpecs, values, location, componentName, element,
 var checkReactTypeSpec_1 = checkReactTypeSpec;
 
 var _typeof$3 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/**
+ * Copyright 2014-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+/**
+ * ReactElementValidator provides a wrapper around a element factory
+ * which validates the props passed to the element. This is intended to be
+ * used only in DEV and could be replaced by a static type checker for languages
+ * that support it.
+ */
+
+'use strict';
 
 function getDeclarationErrorAddendum() {
   if (ReactCurrentOwner_1.current) {
@@ -2278,6 +2432,18 @@ var ReactElementValidator$2 = {
 var ReactElementValidator_1 = ReactElementValidator$2;
 
 /**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
+
+/**
  * Create a factory that creates HTML tag elements.
  *
  * @private
@@ -2441,11 +2607,24 @@ var ReactDOMFactories_1 = ReactDOMFactories;
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+'use strict';
+
 var ReactPropTypesSecret$2 = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 var ReactPropTypesSecret_1$2 = ReactPropTypesSecret$2;
 
 var _typeof$7 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
+
+'use strict';
 
 if (process.env.NODE_ENV !== 'production') {
   var invariant$2 = invariant_1;
@@ -2499,6 +2678,17 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
 var checkPropTypes_1 = checkPropTypes;
 
 var _typeof$6 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
+
+'use strict';
 
 var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, throwOnDirectAccess) {
   /* global Symbol */
@@ -2973,6 +3163,17 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
   return ReactPropTypes;
 };
 
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
+
+'use strict';
+
 // React 15.5 references this module, and assumes PropTypes are still callable in production.
 // Therefore we re-export development-only version with all the PropTypes checks here.
 // However if one is migrating to the `prop-types` npm library, they will go through the
@@ -2983,6 +3184,18 @@ var factory_1 = function factory_1(isValidElement) {
   var throwOnDirectAccess = false;
   return factoryWithTypeCheckers(isValidElement, throwOnDirectAccess);
 };
+
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
 
 var isValidElement = ReactElement_1.isValidElement;
 
@@ -2998,9 +3211,23 @@ var ReactPropTypes = factory_1(isValidElement);
  *
  */
 
+'use strict';
+
 var ReactVersion = '15.6.1';
 
 var _typeof$8 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
 
 if (process.env.NODE_ENV !== 'production') {
   var warning$2 = warning_1;
@@ -3298,13 +3525,13 @@ function factory$2(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
       if (process.env.NODE_ENV !== 'production') {
         validateTypeDef(Constructor, _childContextTypes, 'childContext');
       }
-      Constructor.childContextTypes = index({}, Constructor.childContextTypes, _childContextTypes);
+      Constructor.childContextTypes = objectAssign({}, Constructor.childContextTypes, _childContextTypes);
     },
     contextTypes: function contextTypes(Constructor, _contextTypes) {
       if (process.env.NODE_ENV !== 'production') {
         validateTypeDef(Constructor, _contextTypes, 'context');
       }
-      Constructor.contextTypes = index({}, Constructor.contextTypes, _contextTypes);
+      Constructor.contextTypes = objectAssign({}, Constructor.contextTypes, _contextTypes);
     },
     /**
      * Special case getDefaultProps which should move into statics but requires
@@ -3321,7 +3548,7 @@ function factory$2(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
       if (process.env.NODE_ENV !== 'production') {
         validateTypeDef(Constructor, _propTypes, 'prop');
       }
-      Constructor.propTypes = index({}, Constructor.propTypes, _propTypes);
+      Constructor.propTypes = objectAssign({}, Constructor.propTypes, _propTypes);
     },
     statics: function statics(Constructor, _statics) {
       mixStaticSpecIntoComponent(Constructor, _statics);
@@ -3618,7 +3845,7 @@ function factory$2(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
   };
 
   var ReactClassComponent = function ReactClassComponent() {};
-  index(ReactClassComponent.prototype, ReactComponent.prototype, ReactClassMixin);
+  objectAssign(ReactClassComponent.prototype, ReactComponent.prototype, ReactClassMixin);
 
   /**
    * Creates a composite component class given a class specification.
@@ -3718,11 +3945,34 @@ function factory$2(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
 
 var factory_1$2 = factory$2;
 
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
+
 var Component = ReactBaseClasses.Component;
 
 var isValidElement$1 = ReactElement_1.isValidElement;
 
 var createClass = factory_1$2(Component, isValidElement$1, ReactNoopUpdateQueue_1);
+
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+'use strict';
 
 /**
  * Returns the first child in a collection of children and verifies that there
@@ -3745,6 +3995,18 @@ function onlyChild(children) {
 
 var onlyChild_1 = onlyChild;
 
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
+
 var createElement = ReactElement_1.createElement;
 var createFactory = ReactElement_1.createFactory;
 var cloneElement = ReactElement_1.cloneElement;
@@ -3759,7 +4021,7 @@ if (process.env.NODE_ENV !== 'production') {
   cloneElement = ReactElementValidator.cloneElement;
 }
 
-var __spread = index;
+var __spread = objectAssign;
 var createMixin = function createMixin(mixin) {
   return mixin;
 };
@@ -3770,7 +4032,7 @@ if (process.env.NODE_ENV !== 'production') {
   __spread = function __spread() {
     lowPriorityWarning(warnedForSpread, 'React.__spread is deprecated and should not be used. Use ' + 'Object.assign directly or another helper function with similar ' + 'semantics. You may be seeing this warning due to your compiler. ' + 'See https://fb.me/react-spread-deprecation for more details.');
     warnedForSpread = true;
-    return index.apply(null, arguments);
+    return objectAssign.apply(null, arguments);
   };
 
   createMixin = function createMixin(mixin) {
@@ -3852,6 +4114,8 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 var React_1 = React$1;
+
+'use strict';
 
 var react = React_1;
 
