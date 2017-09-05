@@ -15,7 +15,7 @@ const build = function(dir) {
 shell.exec("lerna bootstrap");
 
 componentNames.forEach(function(name) {
-  const themeDir = `packages/polythene-core-${name}-theme`;
+  const themeDir = `packages/polythene-theme-${name}`;
   const coreDir = `packages/polythene-core-${name}`;
   const mithrilDir = `packages/polythene-mithril-${name}`;
   const reactDir = `packages/polythene-react-${name}`;

@@ -1,2 +1,34 @@
-.pe-svg{line-height:1}.pe-svg svg{width:inherit;height:inherit}.pe-dark-tone.pe-svg,.pe-dark-tone .pe-svg{color:inherit;border:2px solid red}.pe-dark-tone.pe-svg svg,.pe-dark-tone .pe-svg svg{color:inherit}.pe-dark-tone.pe-svg svg circle:not([fill=none]),.pe-dark-tone .pe-svg svg circle:not([fill=none]),.pe-dark-tone.pe-svg svg path:not([fill=none]),.pe-dark-tone .pe-svg svg path:not([fill=none]),.pe-dark-tone.pe-svg svg polygon:not([fill=none]),.pe-dark-tone .pe-svg svg polygon:not([fill=none]),.pe-dark-tone.pe-svg svg rect:not([fill=none]),.pe-dark-tone .pe-svg svg rect:not([fill=none]){fill:currentcolor}.pe-light-tone.pe-svg,.pe-light-tone .pe-svg,.pe-svg{color:inherit;border:2px solid red}.pe-light-tone.pe-svg svg,.pe-light-tone .pe-svg svg,.pe-svg svg{color:inherit}.pe-light-tone.pe-svg svg circle:not([fill=none]),.pe-light-tone .pe-svg svg circle:not([fill=none]),.pe-light-tone.pe-svg svg path:not([fill=none]),.pe-light-tone .pe-svg svg path:not([fill=none]),.pe-light-tone.pe-svg svg polygon:not([fill=none]),.pe-light-tone .pe-svg svg polygon:not([fill=none]),.pe-light-tone.pe-svg svg rect:not([fill=none]),.pe-light-tone .pe-svg svg rect:not([fill=none]),.pe-svg svg circle:not([fill=none]),.pe-svg svg path:not([fill=none]),.pe-svg svg polygon:not([fill=none]),.pe-svg svg rect:not([fill=none]){fill:currentcolor}
+.pe-svg {
+  line-height: 1;
+}
+
+.pe-svg svg {
+  width: inherit;
+  height: inherit;
+}
+
+.pe-dark-tone.pe-svg,.pe-dark-tone .pe-svg {
+  color: inherit;
+}
+
+.pe-dark-tone.pe-svg svg,.pe-dark-tone .pe-svg svg {
+  color: inherit;
+}
+
+.pe-dark-tone.pe-svg svg path:not([fill=none]),.pe-dark-tone .pe-svg svg path:not([fill=none]),.pe-dark-tone.pe-svg svg rect:not([fill=none]),.pe-dark-tone .pe-svg svg rect:not([fill=none]),.pe-dark-tone.pe-svg svg circle:not([fill=none]),.pe-dark-tone .pe-svg svg circle:not([fill=none]),.pe-dark-tone.pe-svg svg polygon:not([fill=none]),.pe-dark-tone .pe-svg svg polygon:not([fill=none]) {
+  fill: currentcolor;
+}
+
+.pe-svg,.pe-light-tone.pe-svg,.pe-light-tone .pe-svg {
+  color: inherit;
+}
+
+.pe-svg svg,.pe-light-tone.pe-svg svg,.pe-light-tone .pe-svg svg {
+  color: inherit;
+}
+
+.pe-svg svg path:not([fill=none]),.pe-light-tone.pe-svg svg path:not([fill=none]),.pe-light-tone .pe-svg svg path:not([fill=none]),.pe-svg svg rect:not([fill=none]),.pe-light-tone.pe-svg svg rect:not([fill=none]),.pe-light-tone .pe-svg svg rect:not([fill=none]),.pe-svg svg circle:not([fill=none]),.pe-light-tone.pe-svg svg circle:not([fill=none]),.pe-light-tone .pe-svg svg circle:not([fill=none]),.pe-svg svg polygon:not([fill=none]),.pe-light-tone.pe-svg svg polygon:not([fill=none]),.pe-light-tone .pe-svg svg polygon:not([fill=none]) {
+  fill: currentcolor;
+}
+
 /*# sourceMappingURL=styles.css.map*/

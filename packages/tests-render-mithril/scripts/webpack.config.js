@@ -5,20 +5,24 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const nodeModules = path.join(process.cwd(), "node_modules");
 
-const PATHS = {
-  index: "../index.js",
-  // Create a list of CSS files from Polythene components:
-  style: glob.sync(`${nodeModules}/polythene-*/dist/*.css`),
-};
+// Create a list of CSS files from Polythene components
+const CSSFiles = glob.sync(`${nodeModules}/polythene-*/dist/*.css`)
+  // Add test specific CSS files
+  .concat(
+    glob.sync(`${nodeModules}/tests-*/node_modules/test-*/node_modules/polythene-*/dist/*.css`)
+  );
 
 module.exports = {
 
-  context: path.resolve(__dirname, "../src"), 
+  context: path.resolve(__dirname, "../src"),
 
-  entry: {
-    index: PATHS.index,
-    style: PATHS.style
-  },
+  entry: Object.assign(
+    {},
+    {
+      index: "../index.js",
+    },
+    CSSFiles.length ? { style : CSSFiles } : null
+  ),
 
   resolve: {
     alias: {

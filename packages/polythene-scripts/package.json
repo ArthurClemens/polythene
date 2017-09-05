@@ -1,0 +1,30 @@
+{
+  "name": "polythene-scripts",
+  "version": "1.0.0-rc.5",
+  "description": "",
+  "main": "dist/polythene-scripts.js",
+  "module": "dist/polythene-scripts.mjs",
+  "scripts": {
+    "clean": "rm -rf dist && mkdir dist",
+    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js",
+    "build": "npm run rollup",
+    "test": "node test"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "dependencies": {
+    "autoprefixer": "^7.1.3",
+    "cssbeautify": "^0.3.1",
+    "j2c": "^1.0.0-4",
+    "j2c-plugin-prefix-browser": "^1.0.6",
+    "polythene-core-css": "^1.0.0-rc.4",
+    "postcss": "^6.0.10"
+  },
+  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "command-line-args": "^4.0.7"
+  }
+}

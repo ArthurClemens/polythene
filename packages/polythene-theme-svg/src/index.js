@@ -8,13 +8,15 @@ import color from "./color";
 const fns = [layout, color];
 const selector = `.${classes.component}`;
 
-export const theme = (customSelector, customVars) => 
+export const addThemeStyle = (customSelector, customVars) => 
   styler.generateStyles([customSelector, selector], {...vars, ...customVars}, fns);
-
-if (themeVars.css === "js") {
-  styler.generateStyles([selector], vars, fns);
-}
 
 export const styles = () => 
   styler.createStyleSheets([selector], vars, fns);
 
+export const themeStyles = (customSelector, customVars) => 
+  styler.createStyleSheets([customSelector, selector], {...vars, ...customVars}, fns);
+
+if (themeVars.css === "js") {
+  styler.generateStyles([selector], vars, fns);
+}

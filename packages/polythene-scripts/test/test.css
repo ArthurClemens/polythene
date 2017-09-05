@@ -1,0 +1,65 @@
+.test-theme-svg-1.pe-svg {
+  line-height: 1;
+}
+
+.test-theme-svg-1.pe-svg svg {
+  width: inherit;
+  height: inherit;
+}
+
+.pe-dark-tone.test-theme-svg-1.pe-svg,.pe-dark-tone .test-theme-svg-1.pe-svg {
+  color: inherit;
+}
+
+.pe-dark-tone.test-theme-svg-1.pe-svg svg,.pe-dark-tone .test-theme-svg-1.pe-svg svg {
+  color: inherit;
+}
+
+.pe-dark-tone.test-theme-svg-1.pe-svg svg path:not([fill=none]),.pe-dark-tone .test-theme-svg-1.pe-svg svg path:not([fill=none]),.pe-dark-tone.test-theme-svg-1.pe-svg svg rect:not([fill=none]),.pe-dark-tone .test-theme-svg-1.pe-svg svg rect:not([fill=none]),.pe-dark-tone.test-theme-svg-1.pe-svg svg circle:not([fill=none]),.pe-dark-tone .test-theme-svg-1.pe-svg svg circle:not([fill=none]),.pe-dark-tone.test-theme-svg-1.pe-svg svg polygon:not([fill=none]),.pe-dark-tone .test-theme-svg-1.pe-svg svg polygon:not([fill=none]) {
+  fill: orange;
+}
+
+.test-theme-svg-1.pe-svg,.pe-light-tone.test-theme-svg-1.pe-svg,.pe-light-tone .test-theme-svg-1.pe-svg {
+  color: inherit;
+}
+
+.test-theme-svg-1.pe-svg svg,.pe-light-tone.test-theme-svg-1.pe-svg svg,.pe-light-tone .test-theme-svg-1.pe-svg svg {
+  color: inherit;
+}
+
+.test-theme-svg-1.pe-svg svg path:not([fill=none]),.pe-light-tone.test-theme-svg-1.pe-svg svg path:not([fill=none]),.pe-light-tone .test-theme-svg-1.pe-svg svg path:not([fill=none]),.test-theme-svg-1.pe-svg svg rect:not([fill=none]),.pe-light-tone.test-theme-svg-1.pe-svg svg rect:not([fill=none]),.pe-light-tone .test-theme-svg-1.pe-svg svg rect:not([fill=none]),.test-theme-svg-1.pe-svg svg circle:not([fill=none]),.pe-light-tone.test-theme-svg-1.pe-svg svg circle:not([fill=none]),.pe-light-tone .test-theme-svg-1.pe-svg svg circle:not([fill=none]),.test-theme-svg-1.pe-svg svg polygon:not([fill=none]),.pe-light-tone.test-theme-svg-1.pe-svg svg polygon:not([fill=none]),.pe-light-tone .test-theme-svg-1.pe-svg svg polygon:not([fill=none]) {
+  fill: #0D47A1;
+}
+
+.test-theme-svg-2.pe-svg {
+  line-height: 1;
+}
+
+.test-theme-svg-2.pe-svg svg {
+  width: inherit;
+  height: inherit;
+}
+
+.pe-dark-tone.test-theme-svg-2.pe-svg,.pe-dark-tone .test-theme-svg-2.pe-svg {
+  color: inherit;
+}
+
+.pe-dark-tone.test-theme-svg-2.pe-svg svg,.pe-dark-tone .test-theme-svg-2.pe-svg svg {
+  color: inherit;
+}
+
+.pe-dark-tone.test-theme-svg-2.pe-svg svg path:not([fill=none]),.pe-dark-tone .test-theme-svg-2.pe-svg svg path:not([fill=none]),.pe-dark-tone.test-theme-svg-2.pe-svg svg rect:not([fill=none]),.pe-dark-tone .test-theme-svg-2.pe-svg svg rect:not([fill=none]),.pe-dark-tone.test-theme-svg-2.pe-svg svg circle:not([fill=none]),.pe-dark-tone .test-theme-svg-2.pe-svg svg circle:not([fill=none]),.pe-dark-tone.test-theme-svg-2.pe-svg svg polygon:not([fill=none]),.pe-dark-tone .test-theme-svg-2.pe-svg svg polygon:not([fill=none]) {
+  fill: red;
+}
+
+.test-theme-svg-2.pe-svg,.pe-light-tone.test-theme-svg-2.pe-svg,.pe-light-tone .test-theme-svg-2.pe-svg {
+  color: inherit;
+}
+
+.test-theme-svg-2.pe-svg svg,.pe-light-tone.test-theme-svg-2.pe-svg svg,.pe-light-tone .test-theme-svg-2.pe-svg svg {
+  color: inherit;
+}
+
+.test-theme-svg-2.pe-svg svg path:not([fill=none]),.pe-light-tone.test-theme-svg-2.pe-svg svg path:not([fill=none]),.pe-light-tone .test-theme-svg-2.pe-svg svg path:not([fill=none]),.test-theme-svg-2.pe-svg svg rect:not([fill=none]),.pe-light-tone.test-theme-svg-2.pe-svg svg rect:not([fill=none]),.pe-light-tone .test-theme-svg-2.pe-svg svg rect:not([fill=none]),.test-theme-svg-2.pe-svg svg circle:not([fill=none]),.pe-light-tone.test-theme-svg-2.pe-svg svg circle:not([fill=none]),.pe-light-tone .test-theme-svg-2.pe-svg svg circle:not([fill=none]),.test-theme-svg-2.pe-svg svg polygon:not([fill=none]),.pe-light-tone.test-theme-svg-2.pe-svg svg polygon:not([fill=none]),.pe-light-tone .test-theme-svg-2.pe-svg svg polygon:not([fill=none]) {
+  fill: green;
+}

@@ -27,7 +27,6 @@ var style = function style(scopes, selector, componentVars, tint) {
     return s + selector;
   }).join(","), {
     color: "inherit",
-    border: "2px solid red",
 
     " svg": {
       color: "inherit",
@@ -51,16 +50,20 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 var fns = [layout, color];
 var selector = "." + classes.component;
 
-var theme = function theme(customSelector, customVars) {
+var addThemeStyle = function addThemeStyle(customSelector, customVars) {
   return styler.generateStyles([customSelector, selector], _extends({}, vars$1, customVars), fns);
+};
+
+var styles = function styles() {
+  return styler.createStyleSheets([selector], vars$1, fns);
+};
+
+var themeStyles = function themeStyles(customSelector, customVars) {
+  return styler.createStyleSheets([customSelector, selector], _extends({}, vars$1, customVars), fns);
 };
 
 if (vars.css === "js") {
   styler.generateStyles([selector], vars$1, fns);
 }
 
-var styles = function styles() {
-  return styler.createStyleSheets([selector], vars$1, fns);
-};
-
-export { theme, styles };
+export { addThemeStyle, styles, themeStyles };

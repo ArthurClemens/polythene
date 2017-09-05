@@ -9,7 +9,6 @@
 
 .pe-dark-tone.pe-svg,.pe-dark-tone .pe-svg {
   color: inherit;
-  border: 2px solid red;
 }
 
 .pe-dark-tone.pe-svg svg,.pe-dark-tone .pe-svg svg {
@@ -22,7 +21,6 @@
 
 .pe-svg,.pe-light-tone.pe-svg,.pe-light-tone .pe-svg {
   color: inherit;
-  border: 2px solid red;
 }
 
 .pe-svg svg,.pe-light-tone.pe-svg svg,.pe-light-tone .pe-svg svg {
