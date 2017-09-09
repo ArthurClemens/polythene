@@ -6,7 +6,6 @@ var classes = {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-// import { customTheme } from "./theme";
 var getElement = function getElement(vnode) {
   return vnode.attrs.element || "div";
 };
@@ -33,7 +32,5 @@ var svg = Object.freeze({
 	createProps: createProps,
 	createContent: createContent
 });
-
-// export { default as vars } from "./theme/vars";
 
 export { svg as coreSVG, classes };

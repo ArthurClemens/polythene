@@ -18,7 +18,7 @@ writeCSS(options)
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **styles**    | required       | Array of `themeStyles` |  | Similar to [Styling components with variables](../theming/configuration-variables.md), now passed as an arry  |
 | **path**      | required       | String   |             |  Where to save the output CSS file |
-| **autoprefix** | optional      | Boolean  | false       | Set to `true` to add prefixes; not needed if your bundler adds prefixes too |
+| **autoPrefix** | optional      | Boolean  | false       | Set to `true` to add vendor prefixes; not needed if your bundler writes prefixes |
 
 
 ### Example
@@ -41,6 +41,6 @@ const styles = [
 writeCSS({
   styles,
   path: "./app.css",
-  autoprefix: true
+  autoPrefix: true
 })
 ~~~

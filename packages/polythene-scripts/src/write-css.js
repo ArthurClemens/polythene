@@ -6,6 +6,7 @@ const postcss      = require("postcss");
 
 const j2c = new J2c();
 const COLOR_RED = "\x1b[31m";
+const COLOR_WHITE = "\x1b[37m";
 
 const makeStyleSheet = (...styles) =>
   styles.reduce((acc, styleList) =>
@@ -34,21 +35,21 @@ const saveToFile = (path, cssString) =>
     if (err) throw err;
   });
 
-export const writeCSS = ({ styles, autoprefix, path }) => {
+export const writeCSS = ({ styles, path, autoPrefix }) => {
 
   const cssString = styles.reduce((acc, current) => (
     acc + makeStyleSheet(current)
   ), "");
 
-  if (autoprefix) {
-    postcss([autoprefixer]).process(cssString).then(result => {
-      result.warnings().forEach(warn => {
-        console.warn(COLOR_RED, "Warning", warn.toString()); // eslint-disable-line no-console
-      });
-      saveToFile(path, beautify(result.css));
-    });
-  } else {
-    saveToFile(path, beautify(cssString));
+  const plugins = [];
+  if (autoPrefix) {
+    plugins.push(autoprefixer);
   }
+  postcss(plugins).process(cssString).then(result => {
+    result.warnings().forEach(warn => {
+      console.warn(COLOR_RED, "Warning", COLOR_WHITE, warn.toString()); // eslint-disable-line no-console
+    });
+    saveToFile(path, beautify(result.css));
+  });
 };
 

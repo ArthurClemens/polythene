@@ -15,5 +15,6 @@ const styles = [
 writeCSS({
   styles,
   path: "./test/test.css",
-  autoprefix: true
+  autoPrefix: true,
+  sourceMap: true,
 });

@@ -1,5 +1,4 @@
 import { filterSupportedAttributes } from "polythene-core";
-// import { customTheme } from "./theme";
 import classes from "./classes";
 
 export const getElement = vnode =>
