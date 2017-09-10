@@ -2,9 +2,9 @@ import stream from "mithril/stream";
 
 export default ({ h, List, ListTile }) => {
 
-  ListTile.theme(".tests-list-keyboard-list-tile", {
-    color_light_selected_background: "#80d8ff"
-  });
+  // ListTile.theme(".tests-list-keyboard-list-tile", {
+  //   color_light_selected_background: "#80d8ff"
+  // });
 
   const cityTile = ({ title, selectedTitle }) => (
     {

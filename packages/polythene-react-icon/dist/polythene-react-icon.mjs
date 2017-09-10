@@ -13,7 +13,6 @@ var Icon = ViewComponent(_extends({}, coreIcon, {
   }
 }));
 
-Icon.theme = coreIcon.theme;
 Icon.displayName = "Icon";
 
 export { Icon };

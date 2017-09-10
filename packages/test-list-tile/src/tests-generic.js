@@ -4,13 +4,13 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
 
   const trustedIconStars = h.trust(iconStars);
 
-  ListTile.theme(".tests-list-tile-themed-list-tile", {
-    color_light_title:      "#424242",
-    color_light_background: "#FFECB3",
-    color_dark_title:       "#FFECB3",
-    color_dark_background:  "#5D4037",
-    font_size_title:        21
-  });
+  // ListTile.theme(".tests-list-tile-themed-list-tile", {
+  //   color_light_title:      "#424242",
+  //   color_light_background: "#FFECB3",
+  //   color_dark_title:       "#FFECB3",
+  //   color_dark_background:  "#5D4037",
+  //   font_size_title:        21
+  // });
 
   return [
     {

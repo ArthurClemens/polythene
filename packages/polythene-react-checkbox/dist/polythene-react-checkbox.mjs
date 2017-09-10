@@ -30,7 +30,6 @@ var Checkbox = StateComponent(_extends({}, coreCheckbox, {
   component: SelectionControl
 }));
 
-Checkbox.theme = coreCheckbox.theme;
 Checkbox.displayName = "Checkbox";
 
 export { Checkbox };

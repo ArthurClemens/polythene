@@ -1,8 +1,10 @@
 
 export default ({ Ripple }) => {
-  Ripple.theme(".tests-ripple-themed-ripple", {
-    color_light: "#F44336"
-  });
+
+  // Ripple.theme(".tests-ripple-themed-ripple", {
+  //   color_light: "#F44336"
+  // });
+
   return [
     {
       name: "No options",

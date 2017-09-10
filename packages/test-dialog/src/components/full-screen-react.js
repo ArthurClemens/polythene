@@ -4,9 +4,9 @@ const iconClose = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d
 
 const content = "Content...";
 
-Toolbar.theme(".tests-dialog-react-themed-toolbar", {
-  color_dark_background:  "#00c853"
-});
+// Toolbar.theme(".tests-dialog-react-themed-toolbar", {
+//   color_dark_background:  "#00c853"
+// });
 
 const toolbarRow = title => [
   h(IconButton, {

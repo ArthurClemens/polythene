@@ -30,7 +30,6 @@ var Card = ViewComponent(_extends({}, coreCard, {
   }
 }));
 
-Card.theme = coreCard.theme;
 Card.displayName = "Card";
 
 export { Card };

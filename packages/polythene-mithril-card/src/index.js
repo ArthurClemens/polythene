@@ -15,5 +15,4 @@ export const Card = ViewComponent(Object.assign(
   }
 ));
 
-Card.theme = core.theme;
 Card.displayName = "Card";

@@ -1,10 +1,5 @@
 import { styler } from 'polythene-core-css';
-import { classes } from 'polythene-core-svg';
-
-var vars = {
-  color_light: "currentcolor",
-  color_dark: "currentcolor"
-};
+import { classes, vars } from 'polythene-core-svg';
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 

@@ -23,6 +23,5 @@ export const MaterialDesignSpinner = props => (
   ))
 );
 
-MaterialDesignSpinner.theme = core.theme;
 MaterialDesignSpinner.classes = core.classes;
 MaterialDesignSpinner.displayName = "MaterialDesignSpinner";

@@ -18,13 +18,14 @@
 
 ## Usage in JavaScript modules
 
-Add Polythene to your project with yarn or npm.
+Add Polythene to your project with [yarn](https://yarnpkg.com/) or [npm](https://www.npmjs.com).
 
 ### Which packages do you need?
 
-Required:
+Essential:
 
 * `polythene-mithril`
+* `polythene-css` Provides CSS files; optionally activates CSS-in-JS [more info](css.md)
 
 Recommended:
 
@@ -39,13 +40,13 @@ Optional:
 ### Installation
 
 ~~~bash
-yarn add polythene-mithril polythene-style
+yarn add polythene-mithril polythene-css polythene-style
 ~~~
 
 or
 
 ~~~bash
-npm install --save polythene-mithril polythene-style
+npm install --save polythene-mithril polythene-css polythene-style
 ~~~
 
 
@@ -56,6 +57,7 @@ npm install --save polythene-mithril polythene-style
 ~~~javascript
 import m from "mithril"
 import { RaisedButton } from "polythene-mithril"
+import "polythene-css"
 
 m(RaisedButton, {
   label: "Click"
@@ -67,10 +69,10 @@ m(RaisedButton, {
 ~~~javascript
 import m from "mithril"
 import { RaisedButton, Dialog } from "polythene-mithril"
-import { addTypography, addRoboto } from "polythene-style"
+import { addTypography } from "polythene-style"
+import "polythene-css"
 
 addTypography()
-addRoboto()
 
 const App = {
   view: () => [
@@ -104,6 +106,7 @@ https://rawgit.com/ArthurClemens/polythene/master/packages/polythene-mithril/dis
 Included:
 
 * All components
+* All component styles from `polythene-css`
 * `subscribe`, `unsubscribe` from `polythene-core`
 * Layout styles from `polythene-utilities`
 * Text and Roboto font from `polythene-style`

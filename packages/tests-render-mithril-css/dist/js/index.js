@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 24);
+/******/ 	return __webpack_require__(__webpack_require__.s = 23);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -616,15 +616,354 @@ var transition = function transition(opts, state) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* unused harmony export keys */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return renderer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StateComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ViewComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mithril__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mithril___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_mithril__);
+
+
+var keys = {
+  autofocus: "autofocus",
+  class: "class",
+  className: "class",
+  enctype: "enctype",
+  formaction: "formaction",
+  maxlength: "maxlength",
+  minlength: "minlength",
+  onblur: "onblur",
+  onchange: "onchange",
+  onclick: "onclick",
+  onfocus: "onfocus",
+  oninput: "oninput",
+  onkeydown: "onkeydown",
+  onkeyup: "onkeyup",
+  onmousedown: "onmousedown",
+  onmouseout: "onmouseout",
+  onmouseover: "onmouseover",
+  onmouseup: "onmouseup",
+  onscroll: "onscroll",
+  onsubmit: "onsubmit",
+  ontouchend: "ontouchend",
+  ontouchmove: "ontouchmove",
+  ontouchstart: "ontouchstart",
+  readonly: "readonly",
+  tabindex: "tabindex"
+};
+
+var renderer = __WEBPACK_IMPORTED_MODULE_0_mithril___default.a;
+
+function createCommonjsModule(fn, module) {
+	return module = { exports: {} }, fn(module, module.exports), module.exports;
+}
+
+var stream$2 = createCommonjsModule(function (module) {
+	/* eslint-disable */
+	(function () {
+		"use strict";
+		/* eslint-enable */
+
+		var guid = 0,
+		    HALT = {};
+		function createStream() {
+			function stream() {
+				if (arguments.length > 0 && arguments[0] !== HALT) updateStream(stream, arguments[0]);
+				return stream._state.value;
+			}
+			initStream(stream);
+
+			if (arguments.length > 0 && arguments[0] !== HALT) updateStream(stream, arguments[0]);
+
+			return stream;
+		}
+		function initStream(stream) {
+			stream.constructor = createStream;
+			stream._state = { id: guid++, value: undefined, state: 0, derive: undefined, recover: undefined, deps: {}, parents: [], endStream: undefined, unregister: undefined };
+			stream.map = stream["fantasy-land/map"] = map, stream["fantasy-land/ap"] = ap, stream["fantasy-land/of"] = createStream;
+			stream.valueOf = valueOf, stream.toJSON = toJSON, stream.toString = valueOf;
+
+			Object.defineProperties(stream, {
+				end: { get: function get() {
+						if (!stream._state.endStream) {
+							var endStream = createStream();
+							endStream.map(function (value) {
+								if (value === true) {
+									unregisterStream(stream);
+									endStream._state.unregister = function () {
+										unregisterStream(endStream);
+									};
+								}
+								return value;
+							});
+							stream._state.endStream = endStream;
+						}
+						return stream._state.endStream;
+					} }
+			});
+		}
+		function updateStream(stream, value) {
+			updateState(stream, value);
+			for (var id in stream._state.deps) {
+				updateDependency(stream._state.deps[id], false);
+			}if (stream._state.unregister != null) stream._state.unregister();
+			finalize(stream);
+		}
+		function updateState(stream, value) {
+			stream._state.value = value;
+			stream._state.changed = true;
+			if (stream._state.state !== 2) stream._state.state = 1;
+		}
+		function updateDependency(stream, mustSync) {
+			var state = stream._state,
+			    parents = state.parents;
+			if (parents.length > 0 && parents.every(active) && (mustSync || parents.some(changed))) {
+				var value = stream._state.derive();
+				if (value === HALT) return false;
+				updateState(stream, value);
+			}
+		}
+		function finalize(stream) {
+			stream._state.changed = false;
+			for (var id in stream._state.deps) {
+				stream._state.deps[id]._state.changed = false;
+			}
+		}
+
+		function combine(fn, streams) {
+			if (!streams.every(valid)) throw new Error("Ensure that each item passed to stream.combine/stream.merge is a stream");
+			return initDependency(createStream(), streams, function () {
+				return fn.apply(this, streams.concat([streams.filter(changed)]));
+			});
+		}
+
+		function initDependency(dep, streams, derive) {
+			var state = dep._state;
+			state.derive = derive;
+			state.parents = streams.filter(notEnded);
+
+			registerDependency(dep, state.parents);
+			updateDependency(dep, true);
+
+			return dep;
+		}
+		function registerDependency(stream, parents) {
+			for (var i = 0; i < parents.length; i++) {
+				parents[i]._state.deps[stream._state.id] = stream;
+				registerDependency(stream, parents[i]._state.parents);
+			}
+		}
+		function unregisterStream(stream) {
+			for (var i = 0; i < stream._state.parents.length; i++) {
+				var parent = stream._state.parents[i];
+				delete parent._state.deps[stream._state.id];
+			}
+			for (var id in stream._state.deps) {
+				var dependent = stream._state.deps[id];
+				var index = dependent._state.parents.indexOf(stream);
+				if (index > -1) dependent._state.parents.splice(index, 1);
+			}
+			stream._state.state = 2; //ended
+			stream._state.deps = {};
+		}
+
+		function map(fn) {
+			return combine(function (stream) {
+				return fn(stream());
+			}, [this]);
+		}
+		function ap(stream) {
+			return combine(function (s1, s2) {
+				return s1()(s2());
+			}, [stream, this]);
+		}
+		function valueOf() {
+			return this._state.value;
+		}
+		function toJSON() {
+			return this._state.value != null && typeof this._state.value.toJSON === "function" ? this._state.value.toJSON() : this._state.value;
+		}
+
+		function valid(stream) {
+			return stream._state;
+		}
+		function active(stream) {
+			return stream._state.state === 1;
+		}
+		function changed(stream) {
+			return stream._state.changed;
+		}
+		function notEnded(stream) {
+			return stream._state.state !== 2;
+		}
+
+		function merge(streams) {
+			return combine(function () {
+				return streams.map(function (s) {
+					return s();
+				});
+			}, streams);
+		}
+
+		function scan(reducer, seed, stream) {
+			var newStream = combine(function (s) {
+				return seed = reducer(seed, s._state.value);
+			}, [stream]);
+
+			if (newStream._state.state === 0) newStream(seed);
+
+			return newStream;
+		}
+
+		function scanMerge(tuples, seed) {
+			var streams = tuples.map(function (tuple) {
+				var stream = tuple[0];
+				if (stream._state.state === 0) stream(undefined);
+				return stream;
+			});
+
+			var newStream = combine(function () {
+				var changed = arguments[arguments.length - 1];
+
+				streams.forEach(function (stream, idx) {
+					if (changed.indexOf(stream) > -1) {
+						seed = tuples[idx][1](seed, stream._state.value);
+					}
+				});
+
+				return seed;
+			}, streams);
+
+			return newStream;
+		}
+
+		createStream["fantasy-land/of"] = createStream;
+		createStream.merge = merge;
+		createStream.combine = combine;
+		createStream.scan = scan;
+		createStream.scanMerge = scanMerge;
+		createStream.HALT = HALT;
+
+		module["exports"] = createStream;
+	})();
+});
+
+"use strict";
+
+var stream = stream$2;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var requiresKeys = false;
+
+var StateComponent = function StateComponent(_ref) {
+  var _ref$createContent = _ref.createContent,
+      createContent = _ref$createContent === undefined ? function () {} : _ref$createContent,
+      _ref$createProps = _ref.createProps,
+      createProps = _ref$createProps === undefined ? function () {} : _ref$createProps,
+      _ref$component = _ref.component,
+      component = _ref$component === undefined ? null : _ref$component,
+      _ref$getElement = _ref.getElement,
+      getElement = _ref$getElement === undefined ? function () {
+    return "div";
+  } : _ref$getElement,
+      _ref$getInitialState = _ref.getInitialState,
+      getInitialState = _ref$getInitialState === undefined ? function () {
+    return {};
+  } : _ref$getInitialState,
+      _ref$onMount = _ref.onMount,
+      onMount = _ref$onMount === undefined ? function () {} : _ref$onMount,
+      _ref$onUnMount = _ref.onUnMount,
+      onUnMount = _ref$onUnMount === undefined ? function () {} : _ref$onUnMount,
+      _ref$view = _ref.view,
+      view = _ref$view === undefined ? null : _ref$view;
+
+
+  var oninit = function oninit(vnode) {
+    var protoState = _extends({}, vnode);
+    var initialState = getInitialState(protoState, stream);
+    vnode.state = initialState;
+    vnode._mounted = false;
+
+    vnode.state.redrawOnUpdate && vnode.state.redrawOnUpdate.map(function () {
+      return vnode._mounted && setTimeout(renderer.redraw);
+    });
+  };
+
+  var oncreate = function oncreate(vnode) {
+    vnode._mounted = true;
+    onMount(vnode);
+  };
+
+  var render = function render(vnode) {
+    return renderer(component || getElement(vnode), createProps(vnode, { renderer: renderer, requiresKeys: requiresKeys, keys: keys }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, requiresKeys: requiresKeys, keys: keys }), vnode.attrs.after]);
+  };
+
+  return {
+    view: view ? function (vnode) {
+      return view(vnode, { render: render, renderer: renderer });
+    } : function (vnode) {
+      return render(vnode);
+    },
+    oninit: oninit,
+    oncreate: oncreate,
+    onremove: onUnMount
+  };
+};
+
+var requiresKeys$1 = false;
+
+var ViewComponent = function ViewComponent(_ref) {
+  var _ref$createContent = _ref.createContent,
+      createContent = _ref$createContent === undefined ? function () {} : _ref$createContent,
+      _ref$createProps = _ref.createProps,
+      createProps = _ref$createProps === undefined ? function () {} : _ref$createProps,
+      _ref$getElement = _ref.getElement,
+      getElement = _ref$getElement === undefined ? function () {
+    return "div";
+  } : _ref$getElement,
+      _ref$component = _ref.component,
+      component = _ref$component === undefined ? null : _ref$component,
+      _ref$view = _ref.view,
+      view = _ref$view === undefined ? null : _ref$view,
+      _ref$onMount = _ref.onMount,
+      onMount = _ref$onMount === undefined ? function () {} : _ref$onMount,
+      _ref$onUnMount = _ref.onUnMount,
+      onUnMount = _ref$onUnMount === undefined ? function () {} : _ref$onUnMount;
+
+
+  var render = function render(vnode) {
+    return renderer(component || getElement(vnode), createProps(vnode, { renderer: renderer, requiresKeys: requiresKeys$1, keys: keys }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, requiresKeys: requiresKeys$1, keys: keys }), vnode.attrs.after]);
+  };
+
+  return {
+    view: view ? function (vnode) {
+      return view(vnode, { render: render, renderer: renderer });
+    } : function (vnode) {
+      return render(vnode);
+    },
+    oncreate: onMount,
+    onremove: onUnMount
+  };
+};
+
+
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return mixinFlex; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return mixin; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return styler; });
 /* unused harmony export hex */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return rgba; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_j2c_plugin_prefix_browser__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_j2c_plugin_prefix_browser__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_j2c_plugin_prefix_browser___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_j2c_plugin_prefix_browser__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_j2c__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_j2c__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_j2c___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_j2c__);
 
 
@@ -1065,354 +1404,13 @@ var rgba = function rgba(colorStr) {
 
 
 /***/ }),
-/* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export keys */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return renderer; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StateComponent; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ViewComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mithril__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mithril___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_mithril__);
-
-
-var keys = {
-  autofocus: "autofocus",
-  class: "class",
-  className: "class",
-  enctype: "enctype",
-  formaction: "formaction",
-  maxlength: "maxlength",
-  minlength: "minlength",
-  onblur: "onblur",
-  onchange: "onchange",
-  onclick: "onclick",
-  onfocus: "onfocus",
-  oninput: "oninput",
-  onkeydown: "onkeydown",
-  onkeyup: "onkeyup",
-  onmousedown: "onmousedown",
-  onmouseout: "onmouseout",
-  onmouseover: "onmouseover",
-  onmouseup: "onmouseup",
-  onscroll: "onscroll",
-  onsubmit: "onsubmit",
-  ontouchend: "ontouchend",
-  ontouchmove: "ontouchmove",
-  ontouchstart: "ontouchstart",
-  readonly: "readonly",
-  tabindex: "tabindex"
-};
-
-var renderer = __WEBPACK_IMPORTED_MODULE_0_mithril___default.a;
-
-function createCommonjsModule(fn, module) {
-	return module = { exports: {} }, fn(module, module.exports), module.exports;
-}
-
-var stream$2 = createCommonjsModule(function (module) {
-	/* eslint-disable */
-	(function () {
-		"use strict";
-		/* eslint-enable */
-
-		var guid = 0,
-		    HALT = {};
-		function createStream() {
-			function stream() {
-				if (arguments.length > 0 && arguments[0] !== HALT) updateStream(stream, arguments[0]);
-				return stream._state.value;
-			}
-			initStream(stream);
-
-			if (arguments.length > 0 && arguments[0] !== HALT) updateStream(stream, arguments[0]);
-
-			return stream;
-		}
-		function initStream(stream) {
-			stream.constructor = createStream;
-			stream._state = { id: guid++, value: undefined, state: 0, derive: undefined, recover: undefined, deps: {}, parents: [], endStream: undefined, unregister: undefined };
-			stream.map = stream["fantasy-land/map"] = map, stream["fantasy-land/ap"] = ap, stream["fantasy-land/of"] = createStream;
-			stream.valueOf = valueOf, stream.toJSON = toJSON, stream.toString = valueOf;
-
-			Object.defineProperties(stream, {
-				end: { get: function get() {
-						if (!stream._state.endStream) {
-							var endStream = createStream();
-							endStream.map(function (value) {
-								if (value === true) {
-									unregisterStream(stream);
-									endStream._state.unregister = function () {
-										unregisterStream(endStream);
-									};
-								}
-								return value;
-							});
-							stream._state.endStream = endStream;
-						}
-						return stream._state.endStream;
-					} }
-			});
-		}
-		function updateStream(stream, value) {
-			updateState(stream, value);
-			for (var id in stream._state.deps) {
-				updateDependency(stream._state.deps[id], false);
-			}if (stream._state.unregister != null) stream._state.unregister();
-			finalize(stream);
-		}
-		function updateState(stream, value) {
-			stream._state.value = value;
-			stream._state.changed = true;
-			if (stream._state.state !== 2) stream._state.state = 1;
-		}
-		function updateDependency(stream, mustSync) {
-			var state = stream._state,
-			    parents = state.parents;
-			if (parents.length > 0 && parents.every(active) && (mustSync || parents.some(changed))) {
-				var value = stream._state.derive();
-				if (value === HALT) return false;
-				updateState(stream, value);
-			}
-		}
-		function finalize(stream) {
-			stream._state.changed = false;
-			for (var id in stream._state.deps) {
-				stream._state.deps[id]._state.changed = false;
-			}
-		}
-
-		function combine(fn, streams) {
-			if (!streams.every(valid)) throw new Error("Ensure that each item passed to stream.combine/stream.merge is a stream");
-			return initDependency(createStream(), streams, function () {
-				return fn.apply(this, streams.concat([streams.filter(changed)]));
-			});
-		}
-
-		function initDependency(dep, streams, derive) {
-			var state = dep._state;
-			state.derive = derive;
-			state.parents = streams.filter(notEnded);
-
-			registerDependency(dep, state.parents);
-			updateDependency(dep, true);
-
-			return dep;
-		}
-		function registerDependency(stream, parents) {
-			for (var i = 0; i < parents.length; i++) {
-				parents[i]._state.deps[stream._state.id] = stream;
-				registerDependency(stream, parents[i]._state.parents);
-			}
-		}
-		function unregisterStream(stream) {
-			for (var i = 0; i < stream._state.parents.length; i++) {
-				var parent = stream._state.parents[i];
-				delete parent._state.deps[stream._state.id];
-			}
-			for (var id in stream._state.deps) {
-				var dependent = stream._state.deps[id];
-				var index = dependent._state.parents.indexOf(stream);
-				if (index > -1) dependent._state.parents.splice(index, 1);
-			}
-			stream._state.state = 2; //ended
-			stream._state.deps = {};
-		}
-
-		function map(fn) {
-			return combine(function (stream) {
-				return fn(stream());
-			}, [this]);
-		}
-		function ap(stream) {
-			return combine(function (s1, s2) {
-				return s1()(s2());
-			}, [stream, this]);
-		}
-		function valueOf() {
-			return this._state.value;
-		}
-		function toJSON() {
-			return this._state.value != null && typeof this._state.value.toJSON === "function" ? this._state.value.toJSON() : this._state.value;
-		}
-
-		function valid(stream) {
-			return stream._state;
-		}
-		function active(stream) {
-			return stream._state.state === 1;
-		}
-		function changed(stream) {
-			return stream._state.changed;
-		}
-		function notEnded(stream) {
-			return stream._state.state !== 2;
-		}
-
-		function merge(streams) {
-			return combine(function () {
-				return streams.map(function (s) {
-					return s();
-				});
-			}, streams);
-		}
-
-		function scan(reducer, seed, stream) {
-			var newStream = combine(function (s) {
-				return seed = reducer(seed, s._state.value);
-			}, [stream]);
-
-			if (newStream._state.state === 0) newStream(seed);
-
-			return newStream;
-		}
-
-		function scanMerge(tuples, seed) {
-			var streams = tuples.map(function (tuple) {
-				var stream = tuple[0];
-				if (stream._state.state === 0) stream(undefined);
-				return stream;
-			});
-
-			var newStream = combine(function () {
-				var changed = arguments[arguments.length - 1];
-
-				streams.forEach(function (stream, idx) {
-					if (changed.indexOf(stream) > -1) {
-						seed = tuples[idx][1](seed, stream._state.value);
-					}
-				});
-
-				return seed;
-			}, streams);
-
-			return newStream;
-		}
-
-		createStream["fantasy-land/of"] = createStream;
-		createStream.merge = merge;
-		createStream.combine = combine;
-		createStream.scan = scan;
-		createStream.scanMerge = scanMerge;
-		createStream.HALT = HALT;
-
-		module["exports"] = createStream;
-	})();
-});
-
-"use strict";
-
-var stream = stream$2;
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var requiresKeys = false;
-
-var StateComponent = function StateComponent(_ref) {
-  var _ref$createContent = _ref.createContent,
-      createContent = _ref$createContent === undefined ? function () {} : _ref$createContent,
-      _ref$createProps = _ref.createProps,
-      createProps = _ref$createProps === undefined ? function () {} : _ref$createProps,
-      _ref$component = _ref.component,
-      component = _ref$component === undefined ? null : _ref$component,
-      _ref$getElement = _ref.getElement,
-      getElement = _ref$getElement === undefined ? function () {
-    return "div";
-  } : _ref$getElement,
-      _ref$getInitialState = _ref.getInitialState,
-      getInitialState = _ref$getInitialState === undefined ? function () {
-    return {};
-  } : _ref$getInitialState,
-      _ref$onMount = _ref.onMount,
-      onMount = _ref$onMount === undefined ? function () {} : _ref$onMount,
-      _ref$onUnMount = _ref.onUnMount,
-      onUnMount = _ref$onUnMount === undefined ? function () {} : _ref$onUnMount,
-      _ref$view = _ref.view,
-      view = _ref$view === undefined ? null : _ref$view;
-
-
-  var oninit = function oninit(vnode) {
-    var protoState = _extends({}, vnode);
-    var initialState = getInitialState(protoState, stream);
-    vnode.state = initialState;
-    vnode._mounted = false;
-
-    vnode.state.redrawOnUpdate && vnode.state.redrawOnUpdate.map(function () {
-      return vnode._mounted && setTimeout(renderer.redraw);
-    });
-  };
-
-  var oncreate = function oncreate(vnode) {
-    vnode._mounted = true;
-    onMount(vnode);
-  };
-
-  var render = function render(vnode) {
-    return renderer(component || getElement(vnode), createProps(vnode, { renderer: renderer, requiresKeys: requiresKeys, keys: keys }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, requiresKeys: requiresKeys, keys: keys }), vnode.attrs.after]);
-  };
-
-  return {
-    view: view ? function (vnode) {
-      return view(vnode, { render: render, renderer: renderer });
-    } : function (vnode) {
-      return render(vnode);
-    },
-    oninit: oninit,
-    oncreate: oncreate,
-    onremove: onUnMount
-  };
-};
-
-var requiresKeys$1 = false;
-
-var ViewComponent = function ViewComponent(_ref) {
-  var _ref$createContent = _ref.createContent,
-      createContent = _ref$createContent === undefined ? function () {} : _ref$createContent,
-      _ref$createProps = _ref.createProps,
-      createProps = _ref$createProps === undefined ? function () {} : _ref$createProps,
-      _ref$getElement = _ref.getElement,
-      getElement = _ref$getElement === undefined ? function () {
-    return "div";
-  } : _ref$getElement,
-      _ref$component = _ref.component,
-      component = _ref$component === undefined ? null : _ref$component,
-      _ref$view = _ref.view,
-      view = _ref$view === undefined ? null : _ref$view,
-      _ref$onMount = _ref.onMount,
-      onMount = _ref$onMount === undefined ? function () {} : _ref$onMount,
-      _ref$onUnMount = _ref.onUnMount,
-      onUnMount = _ref$onUnMount === undefined ? function () {} : _ref$onUnMount;
-
-
-  var render = function render(vnode) {
-    return renderer(component || getElement(vnode), createProps(vnode, { renderer: renderer, requiresKeys: requiresKeys$1, keys: keys }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, requiresKeys: requiresKeys$1, keys: keys }), vnode.attrs.after]);
-  };
-
-  return {
-    view: view ? function (vnode) {
-      return view(vnode, { render: render, renderer: renderer });
-    } : function (vnode) {
-      return render(vnode);
-    },
-    oncreate: onMount,
-    onremove: onUnMount
-  };
-};
-
-
-
-
-/***/ }),
 /* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* unused harmony export componentConfig */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_style__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_style__ = __webpack_require__(26);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0_polythene_style__["a"]; });
-
-
 // Placeholder for custom theme config file
 // In your app paths setup, change the current path to your custom config file; see the theme README.
 
@@ -1445,15 +1443,16 @@ var componentConfig = {};
 
 
 
+
 /***/ }),
 /* 4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Icon; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_icon__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_mithril_svg__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_icon__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_mithril_svg__ = __webpack_require__(16);
 
 
 
@@ -1469,7 +1468,6 @@ var Icon = Object(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["b" /* Vi
   }
 }));
 
-Icon.theme = __WEBPACK_IMPORTED_MODULE_1_polythene_core_icon__["a" /* coreIcon */].theme;
 Icon.displayName = "Icon";
 
 
@@ -1481,8 +1479,8 @@ Icon.displayName = "Icon";
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Shadow; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_shadow__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_shadow__ = __webpack_require__(34);
 
 
 
@@ -1490,7 +1488,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var Shadow = Object(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["b" /* ViewComponent */])(_extends({}, __WEBPACK_IMPORTED_MODULE_1_polythene_core_shadow__["a" /* coreShadow */]));
 
-Shadow.theme = __WEBPACK_IMPORTED_MODULE_1_polythene_core_shadow__["a" /* coreShadow */].theme;
 Shadow.displayName = "Shadow";
 
 
@@ -1501,15 +1498,13 @@ Shadow.displayName = "Shadow";
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return selectionControl; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return viewControl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return selectionControl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return viewControl; });
 /* unused harmony export classes */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return vars$1; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return layout; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return color; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return vars$1; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_theme__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__ = __webpack_require__(2);
 
 
 
@@ -1545,7 +1540,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-// Does not export theme
 var getElement = function getElement(vnode) {
   return vnode.attrs.element || "div";
 };
@@ -1762,172 +1756,6 @@ var vars$1 = {
   color_dark_focus_off_opacity: .09
 };
 
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-// Returns a style function to be used by checkbox and radio-button
-
-var makeSize = function makeSize(componentVars, height) {
-  var iconSize = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].unit_icon_size;
-
-  var labelSize = iconSize + componentVars.label_height;
-  var iconOffset = (labelSize - iconSize) / 2;
-  return {
-    " .pe-control__form-label": {
-      height: height + "px"
-    },
-    " .pe-control__box": {
-      width: iconSize + "px",
-      height: iconSize + "px"
-    },
-    " .pe-button__content": {
-      width: labelSize + "px",
-      height: labelSize + "px",
-
-      " .pe-icon": [__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["b" /* mixin */].fit(iconOffset)]
-    }
-  };
-};
-
-var activeButton = function activeButton() {
-  return {
-    opacity: 1,
-    zIndex: 1
-  };
-};
-
-var inactiveButton = function inactiveButton() {
-  return {
-    opacity: 0,
-    zIndex: 0
-  };
-};
-
-var layout = (function (selector, componentVars, type) {
-  var _selector;
-
-  return [_defineProperty$1({}, selector, (_selector = {
-    display: "inline-block",
-    boxSizing: "border-box",
-    margin: 0,
-    padding: 0
-
-  }, _defineProperty$1(_selector, " input[type=" + type + "]", {
-    display: "none"
-  }), _defineProperty$1(_selector, " .pe-control__form-label", [__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].layoutHorizontal, __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].layoutCenter, {
-    position: "relative",
-    cursor: "pointer",
-    fontSize: componentVars.label_font_size + "px",
-    lineHeight: componentVars.label_height + "px",
-    margin: 0,
-    color: "inherit",
-
-    ":focus": {
-      outline: 0
-    }
-  }]), _defineProperty$1(_selector, ".pe-control--inactive", {
-    " .pe-control__form-label": {
-      cursor: "default"
-    }
-  }), _defineProperty$1(_selector, " .pe-control__box", {
-    position: "relative",
-    display: "inline-block",
-    boxSizing: "border-box",
-    width: componentVars.label_height + "px",
-    height: componentVars.label_height + "px",
-    color: "inherit",
-
-    ":focus": {
-      outline: 0
-    }
-  }), _defineProperty$1(_selector, " .pe-button.pe-control__button", [__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["b" /* mixin */].defaultTransition("opacity", componentVars.animation_duration), {
-    position: "absolute",
-    left: -((componentVars.button_size - componentVars.icon_size) / 2) + "px",
-    top: -((componentVars.button_size - componentVars.icon_size) / 2) + "px",
-    zIndex: 1
-  }]), _defineProperty$1(_selector, ".pe-control--off", {
-    " .pe-control__button--on": inactiveButton(),
-    " .pe-control__button--off": activeButton()
-  }), _defineProperty$1(_selector, ".pe-control--on", {
-    " .pe-control__button--on": activeButton(),
-    " .pe-control__button--off": inactiveButton()
-  }), _defineProperty$1(_selector, " .pe-control__label", [__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["b" /* mixin */].defaultTransition("all", componentVars.animation_duration), {
-    paddingLeft: componentVars.label_padding_before + "px",
-    paddingRight: componentVars.label_padding_after + "px"
-  }]), _defineProperty$1(_selector, ".pe-control--disabled", {
-    " .pe-control__form-label": {
-      cursor: "auto"
-    },
-    " .pe-control__button": {
-      pointerEvents: "none"
-    }
-  }), _defineProperty$1(_selector, " .pe-button__content", {
-    " .pe-icon": {
-      position: "absolute"
-    }
-  }), _defineProperty$1(_selector, ".pe-control--small", makeSize(componentVars, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].unit_icon_size_small, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].unit_icon_size_small)), _defineProperty$1(_selector, ".pe-control--regular", makeSize(componentVars, componentVars.label_height, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].unit_icon_size)), _defineProperty$1(_selector, ".pe-control--medium", makeSize(componentVars, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].unit_icon_size_medium, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].unit_icon_size_medium)), _defineProperty$1(_selector, ".pe-control--large", makeSize(componentVars, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].unit_icon_size_large, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].unit_icon_size_large)), _selector))];
-});
-
-function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var style = function style(scopes, selector, componentVars, tint) {
-  return [_defineProperty$2({}, scopes.map(function (s) {
-    return s + selector;
-  }).join(","), {
-    color: componentVars["color_" + tint + "_on"], // override by specifying "color"
-
-    " .pe-control__label": {
-      color: componentVars["color_" + tint + "_label"]
-    },
-    " .pe-control__box": {
-      " .pe-control__button": {
-        color: "inherit",
-
-        " .pe-control__button--on": {
-          color: componentVars["color_" + tint + "_on_icon"] || "inherit"
-        },
-
-        " .pe-control__button--off": {
-          color: componentVars["color_" + tint + "_off_icon"] || componentVars["color_" + tint + "_off"]
-        }
-      }
-    },
-    ".pe-control--off": {
-      " .pe-button--focus .pe-button__focus": {
-        opacity: componentVars["color_" + tint + "_focus_off_opacity"],
-        backgroundColor: componentVars["color_" + tint + "_focus_off"]
-      },
-      " .pe-control__label": {
-        color: componentVars["color_" + tint + "_off_label"] || componentVars["color_" + tint + "_label"]
-      }
-    },
-    ".pe-control--on": {
-      " .pe-button--focus .pe-button__focus": {
-        opacity: componentVars["color_" + tint + "_focus_on_opacity"],
-        backgroundColor: componentVars["color_" + tint + "_focus_on"]
-      },
-      " .pe-control__label": {
-        color: componentVars["color_" + tint + "_on_label"] || componentVars["color_" + tint + "_label"]
-      }
-    },
-
-    ".pe-control--disabled": {
-      " .pe-control__label": {
-        color: componentVars["color_" + tint + "_disabled"]
-      },
-      " .pe-control__box": {
-        " .pe-control__button--on, .pe-control__button--off": {
-          color: componentVars["color_" + tint + "_disabled"]
-        }
-      }
-    }
-  })];
-};
-
-var color = (function (selector, componentVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
-});
-
 
 
 
@@ -1936,14 +1764,75 @@ var color = (function (selector, componentVars) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return addWebFont; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return easing; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return IconButton; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_icon_button__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_mithril_icon__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_mithril_button__ = __webpack_require__(8);
+
+
+
+
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var IconButton = Object(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["b" /* ViewComponent */])(_extends({}, __WEBPACK_IMPORTED_MODULE_1_polythene_core_icon_button__["a" /* coreIconButton */], {
+  createProps: function createProps(vnode, args) {
+    return __WEBPACK_IMPORTED_MODULE_1_polythene_core_icon_button__["a" /* coreIconButton */].createProps(vnode, _extends(args, { Icon: __WEBPACK_IMPORTED_MODULE_2_polythene_mithril_icon__["a" /* Icon */] }));
+  },
+  createContent: function createContent(vnode, args) {
+    return __WEBPACK_IMPORTED_MODULE_1_polythene_core_icon_button__["a" /* coreIconButton */].createContent(vnode, _extends(args, { Icon: __WEBPACK_IMPORTED_MODULE_2_polythene_mithril_icon__["a" /* Icon */] }));
+  },
+  component: __WEBPACK_IMPORTED_MODULE_3_polythene_mithril_button__["a" /* Button */]
+}));
+
+IconButton.displayName = "IconButton";
+
+
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Button; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_button__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_mithril_ripple__ = __webpack_require__(10);
+
+
+
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var Button = Object(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["a" /* StateComponent */])(_extends({}, __WEBPACK_IMPORTED_MODULE_1_polythene_core_button__["b" /* coreButton */], {
+  createProps: function createProps(vnode, args) {
+    return __WEBPACK_IMPORTED_MODULE_1_polythene_core_button__["b" /* coreButton */].createProps(vnode, _extends(args, { Ripple: __WEBPACK_IMPORTED_MODULE_2_polythene_mithril_ripple__["a" /* Ripple */] }));
+  },
+  createContent: function createContent(vnode, args) {
+    return __WEBPACK_IMPORTED_MODULE_1_polythene_core_button__["b" /* coreButton */].createContent(vnode, _extends(args, { Ripple: __WEBPACK_IMPORTED_MODULE_2_polythene_mithril_ripple__["a" /* Ripple */] }));
+  }
+}));
+
+Button.displayName = "Button";
+
+
+
+
+/***/ }),
+/* 9 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return addWebFont; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return easing; });
 /* unused harmony export layoutStyles */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return addLayoutStyles; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return scrollTo; });
+/* unused harmony export addLayoutStyles */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return scrollTo; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Timer; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__ = __webpack_require__(2);
 
 
 
@@ -2211,82 +2100,18 @@ var Timer = function Timer() {
 
 
 /***/ }),
-/* 8 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return IconButton; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_icon_button__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_mithril_icon__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_mithril_button__ = __webpack_require__(9);
-
-
-
-
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var IconButton = Object(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["b" /* ViewComponent */])(_extends({}, __WEBPACK_IMPORTED_MODULE_1_polythene_core_icon_button__["a" /* coreIconButton */], {
-  createProps: function createProps(vnode, args) {
-    return __WEBPACK_IMPORTED_MODULE_1_polythene_core_icon_button__["a" /* coreIconButton */].createProps(vnode, _extends(args, { Icon: __WEBPACK_IMPORTED_MODULE_2_polythene_mithril_icon__["a" /* Icon */] }));
-  },
-  createContent: function createContent(vnode, args) {
-    return __WEBPACK_IMPORTED_MODULE_1_polythene_core_icon_button__["a" /* coreIconButton */].createContent(vnode, _extends(args, { Icon: __WEBPACK_IMPORTED_MODULE_2_polythene_mithril_icon__["a" /* Icon */] }));
-  },
-  component: __WEBPACK_IMPORTED_MODULE_3_polythene_mithril_button__["a" /* Button */]
-}));
-
-IconButton.theme = __WEBPACK_IMPORTED_MODULE_1_polythene_core_icon_button__["a" /* coreIconButton */].theme;
-IconButton.displayName = "IconButton";
-
-
-
-
-/***/ }),
-/* 9 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Button; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_button__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_mithril_ripple__ = __webpack_require__(10);
-
-
-
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var Button = Object(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["a" /* StateComponent */])(_extends({}, __WEBPACK_IMPORTED_MODULE_1_polythene_core_button__["b" /* coreButton */], {
-  createProps: function createProps(vnode, args) {
-    return __WEBPACK_IMPORTED_MODULE_1_polythene_core_button__["b" /* coreButton */].createProps(vnode, _extends(args, { Ripple: __WEBPACK_IMPORTED_MODULE_2_polythene_mithril_ripple__["a" /* Ripple */] }));
-  },
-  createContent: function createContent(vnode, args) {
-    return __WEBPACK_IMPORTED_MODULE_1_polythene_core_button__["b" /* coreButton */].createContent(vnode, _extends(args, { Ripple: __WEBPACK_IMPORTED_MODULE_2_polythene_mithril_ripple__["a" /* Ripple */] }));
-  }
-}));
-
-Button.theme = __WEBPACK_IMPORTED_MODULE_1_polythene_core_button__["b" /* coreButton */].theme;
-Button.displayName = "Button";
-
-
-
-
-/***/ }),
 /* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Ripple; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_ripple__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_ripple__ = __webpack_require__(29);
 
 
 
 var Ripple = Object(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["a" /* StateComponent */])(__WEBPACK_IMPORTED_MODULE_1_polythene_core_ripple__["a" /* coreRipple */]);
 
-Ripple.theme = __WEBPACK_IMPORTED_MODULE_1_polythene_core_ripple__["a" /* coreRipple */].theme;
 Ripple.displayName = "Ripple";
 
 
@@ -2298,7 +2123,7 @@ Ripple.displayName = "Ripple";
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ListTile; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_list_tile__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_mithril_icon__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_mithril_ripple__ = __webpack_require__(10);
@@ -2318,7 +2143,6 @@ var ListTile = Object(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["a" /
   }
 }));
 
-ListTile.theme = __WEBPACK_IMPORTED_MODULE_1_polythene_core_list_tile__["b" /* coreListTile */].theme;
 ListTile.displayName = "ListTile";
 
 
@@ -2333,7 +2157,7 @@ ListTile.displayName = "ListTile";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return classes; });
 /* unused harmony export vars */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_theme__ = __webpack_require__(3);
 
 
@@ -2628,13 +2452,12 @@ var style = function style(scopes, selector, componentVars, tint) {
     },
     "&.pe-list-tile--sticky": {
       backgroundColor: componentVars["color_" + tint + "_background"] || "inherit"
-    },
-    ":not(.pe-list-tile--disabled)": {
-      " a.pe-list-tile__primary:focus, a.pe-list-tile__secondary:focus": {
-        backgroundColor: componentVars["color_" + tint + "_focus_background"] || "inherit"
-      }
-    }
-  })];
+      // ":not(.pe-list-tile--disabled)": {
+      //   " a.pe-list-tile__primary:focus, a.pe-list-tile__secondary:focus": {
+      //     backgroundColor: componentVars["color_" + tint + "_focus_background"] || "inherit"
+      //   }
+      // }
+    } })];
 };
 
 var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, tint) {
@@ -2809,8 +2632,8 @@ var listTile = Object.freeze({
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return iconButton; });
 /* unused harmony export classes */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return vars$1; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_core_css__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_theme__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_theme__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__ = __webpack_require__(2);
 
 
 
@@ -2824,115 +2647,7 @@ var classes = {
   compact: "pe-icon-button--compact"
 };
 
-var padding = (__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].grid_unit_icon_button - __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].unit_icon_size) / 2; // 12
-var padding_compact = (__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].grid_unit_icon_button - __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].unit_icon_size) / 3; // 8
-var color_light = Object(__WEBPACK_IMPORTED_MODULE_0_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_light_text_secondary);
-var color_dark = Object(__WEBPACK_IMPORTED_MODULE_0_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_dark_text_secondary);
-
-var vars$1 = {
-  padding: padding,
-  padding_compact: padding_compact,
-
-  color_background: "transparent", // only specify this variable to get all 2 states
-  // theme specific background colors may be set in theme; disabled by default
-  // color_light_background:    "none",
-  // color_dark_background:     "none",
-
-  color_light: color_light,
-  color_light_disabled: Object(__WEBPACK_IMPORTED_MODULE_0_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_light_text_disabled),
-  color_light_wash: color_light,
-  color_light_wash_opacity: __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_light_background_hover_medium,
-  color_light_focus_opacity: __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_light_background_hover_medium,
-
-  color_dark: color_dark,
-  color_dark_disabled: Object(__WEBPACK_IMPORTED_MODULE_0_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_dark_text_disabled),
-  color_dark_wash: color_dark,
-  color_dark_wash_opacity: __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_dark_background_hover_medium,
-  color_dark_focus_opacity: __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_dark_background_hover_medium
-};
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var layout = (function (selector, componentVars) {
-  return [_defineProperty({}, selector, {
-    // don"t set button size to facilitate different icon sizes
-    display: "inline-block",
-    verticalAlign: "middle",
-    cursor: "pointer",
-    position: "relative",
-    fontSize: "1rem",
-    borderRadius: "50%",
-    border: "none",
-
-    " .pe-icon-button__content": {
-      "line-height": 1,
-      padding: componentVars.padding + "px"
-    },
-
-    ".pe-icon-button--compact": {
-      " .pe-icon-button__content": {
-        padding: componentVars.padding_compact + "px"
-      }
-    }
-  })];
-});
-
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var style = function style(scopes, selector, componentVars, tint) {
-  return [_defineProperty$1({}, scopes.map(function (s) {
-    return s + selector;
-  }).join(","), {
-    color: componentVars["color_" + tint],
-    backgroundColor: componentVars["color_" + tint + "_background"] || componentVars["color_background"],
-    " .pe-button__wash": {
-      opacity: componentVars["color_" + tint + "_wash_opacity"]
-    },
-
-    ".pe-button--focus, &.pe-button--selected": {
-      " .pe-button__focus": {
-        opacity: componentVars["color_" + tint + "_focus_opacity"],
-        backgroundColor: "currentcolor"
-      }
-    },
-
-    ".pe-button--disabled": {
-      color: componentVars["color_" + tint + "_disabled"]
-    }
-  })];
-};
-
-var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, tint) {
-  return [_defineProperty$1({}, scopes.map(function (s) {
-    return s + selector + ":hover";
-  }).join(","), {
-    " .pe-button__wash": {
-      backgroundColor: componentVars["color_" + tint + "_wash"]
-    }
-  })];
-};
-
-var color = (function (selector, componentVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light tone
-  noTouchStyle(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, "dark"), // inside dark tone
-  noTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, "light")];
-});
-
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var fns = [layout, color];
-var selector = "." + classes.component.replace(/ /g, ".");
-
-var customTheme = function customTheme(customSelector, customVars) {
-  return __WEBPACK_IMPORTED_MODULE_0_polythene_core_css__["d" /* styler */].generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
-};
-
-__WEBPACK_IMPORTED_MODULE_0_polythene_core_css__["d" /* styler */].generateStyles([selector], vars$1, fns);
-
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var theme = customTheme;
 
 // Don't export 'element': it will be the wrapped button component (set in polythene-xxx-icon-button)
 
@@ -2958,10 +2673,36 @@ var createContent = function createContent() {
 };
 
 var iconButton = Object.freeze({
-	theme: theme,
 	createProps: createProps,
 	createContent: createContent
 });
+
+var padding = (__WEBPACK_IMPORTED_MODULE_0_polythene_theme__["a" /* vars */].grid_unit_icon_button - __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["a" /* vars */].unit_icon_size) / 2; // 12
+var padding_compact = (__WEBPACK_IMPORTED_MODULE_0_polythene_theme__["a" /* vars */].grid_unit_icon_button - __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["a" /* vars */].unit_icon_size) / 3; // 8
+var color_light = Object(__WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_0_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["a" /* vars */].blend_light_text_secondary);
+var color_dark = Object(__WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_0_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["a" /* vars */].blend_dark_text_secondary);
+
+var vars$1 = {
+  padding: padding,
+  padding_compact: padding_compact,
+
+  color_background: "transparent", // only specify this variable to get all 2 states
+  // theme specific background colors may be set in theme; disabled by default
+  // color_light_background:    "none",
+  // color_dark_background:     "none",
+
+  color_light: color_light,
+  color_light_disabled: Object(__WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_0_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["a" /* vars */].blend_light_text_disabled),
+  color_light_wash: color_light,
+  color_light_wash_opacity: __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["a" /* vars */].blend_light_background_hover_medium,
+  color_light_focus_opacity: __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["a" /* vars */].blend_light_background_hover_medium,
+
+  color_dark: color_dark,
+  color_dark_disabled: Object(__WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_0_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["a" /* vars */].blend_dark_text_disabled),
+  color_dark_wash: color_dark,
+  color_dark_wash_opacity: __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["a" /* vars */].blend_dark_background_hover_medium,
+  color_dark_focus_opacity: __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["a" /* vars */].blend_dark_background_hover_medium
+};
 
 
 
@@ -2977,296 +2718,12 @@ module.exports = m;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export addRoboto */
-/* unused harmony export addTypography */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return vars; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_utilities__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_core__ = __webpack_require__(0);
-
-
-
-
-var robotoStyles = [{
-  "html, body, button, input, select, textarea": {
-    fontFamily: "Roboto, Helvetica, Arial, sans-serif"
-  }
-}];
-
-var addRoboto = function addRoboto() {
-  return Object(__WEBPACK_IMPORTED_MODULE_0_polythene_utilities__["c" /* addWebFont */])("google", "Roboto:400,500,700,400italic:latin"), __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["d" /* styler */].add("pe-roboto", robotoStyles);
-};
-
-// Global style variables
-
-//const isTablet = window.innerWidth >= 600;
-var isDesktop = __WEBPACK_IMPORTED_MODULE_2_polythene_core__["f" /* isClient */] ? window.innerWidth >= 1024 : true;
-
-var grid_unit = 4;
-var grid_unit_component = 8;
-
-var animation_curve_slow_in_fast_out = "cubic-bezier(.4, 0, .2, 1)";
-var animation_curve_slow_in_linear_out = "cubic-bezier(0, 0, .2, 1)";
-var animation_curve_linear_in_fast_out = "cubic-bezier(.4, 0, 1, 1)";
-
-var vars = {
-  css: "js", // "js" or "file"
-
-  // grid
-  grid_unit: grid_unit,
-  grid_unit_component: grid_unit_component,
-  grid_unit_menu: 56,
-  grid_unit_icon_button: 6 * grid_unit_component, // 48
-
-  // common sizes
-  unit_block_border_radius: 2,
-  unit_item_border_radius: 2,
-  unit_indent: 72,
-  unit_side_padding: isDesktop ? 24 : 16,
-
-  // buttons
-  unit_touch_height: 48,
-  unit_icon_size_small: 2 * grid_unit_component, // 16
-  unit_icon_size: 3 * grid_unit_component, // 24
-  unit_icon_size_medium: 4 * grid_unit_component, // 32
-  unit_icon_size_large: 5 * grid_unit_component, // 40
-
-  // screen dimensions
-  unit_screen_size_extra_large: 1280,
-  unit_screen_size_large: 960,
-  unit_screen_size_medium: 480,
-  unit_screen_size_small: 320,
-
-  // transitions
-  animation_duration: ".18s",
-  animation_curve_slow_in_fast_out: animation_curve_slow_in_fast_out,
-  animation_curve_slow_in_linear_out: animation_curve_slow_in_linear_out,
-  animation_curve_linear_in_fast_out: animation_curve_linear_in_fast_out,
-  animation_curve_default: "ease-out",
-
-  // font
-  font_weight_light: 300,
-  font_weight_normal: 400,
-  font_weight_medium: 500,
-  font_weight_bold: 700,
-  font_size_title: 20,
-  line_height: 1.3,
-
-  // base colors
-  color_primary: "33, 150, 243", // blue 500
-  color_primary_active: "30, 136, 229", // blue 600
-  color_primary_dark: "25, 118, 210", // blue 700
-  color_primary_faded: "100, 181, 249", // blue 300
-  color_primary_foreground: "255, 255, 255",
-
-  color_light_background: "255, 255, 255",
-  color_light_foreground: "0, 0, 0",
-  color_dark_background: "34, 34, 34",
-  color_dark_foreground: "255, 255, 255",
-
-  // blends
-  blend_light_text_primary: .87,
-  blend_light_text_regular: .73,
-  blend_light_text_secondary: .54,
-  blend_light_text_tertiary: .40,
-  blend_light_text_disabled: .26,
-  blend_light_border_light: .11,
-  blend_light_background_active: .14,
-  blend_light_background_hover: .06,
-  blend_light_background_hover_medium: .12, // for the lighter tinted icon buttons
-  blend_light_background_disabled: .09,
-  blend_light_overlay_background: .3,
-
-  blend_dark_text_primary: 1,
-  blend_dark_text_regular: .87,
-  blend_dark_text_secondary: .70,
-  blend_dark_text_tertiary: .40,
-  blend_dark_text_disabled: .26,
-  blend_dark_border_light: .10,
-  blend_dark_background_active: .14,
-  blend_dark_background_hover: .08,
-  blend_dark_background_hoverMedium: .12, // for the lighter tinted icon buttons
-  blend_dark_background_disabled: .12,
-  blend_dark_overlay_background: .3,
-
-  // css vendor prefixes
-  prefixes_animation: ["o", "moz", "webkit"],
-  prefixes_appearance: ["o", "moz", "ms", "webkit"],
-  prefixes_background_size: ["o", "moz", "webkit"],
-  prefixes_box_shadow: ["moz", "webkit"],
-  prefixes_keyframes: ["o", "moz", "webkit"],
-  prefixes_transform: ["o", "moz", "ms", "webkit"],
-  prefixes_transition: ["o", "moz", "webkit"],
-  prefixes_user_select: ["moz", "ms", "webkit"],
-
-  // breakpoints
-  breakpoint_small_handset_portrait: 0,
-  breakpoint_medium_handset_portrait: 360,
-  breakpoint_large_handset_portrait: 400,
-  breakpoint_small_tablet_portrait: 600,
-  breakpoint_large_tablet_portrait: 720,
-  // landscape
-  breakpoint_small_handset_landscape: 480,
-  breakpoint_medium_handset_landscape: 600,
-  breakpoint_large_handset_landscape: 720,
-
-  // environment
-  env_tablet: __WEBPACK_IMPORTED_MODULE_2_polythene_core__["f" /* isClient */] ? window.innerWidth >= 600 : false,
-  env_desktop: __WEBPACK_IMPORTED_MODULE_2_polythene_core__["f" /* isClient */] ? window.innerWidth >= 1024 : true,
-
-  // z-index
-  z_menu: 1000,
-  z_header_container: 2000,
-  z_fixed_header_container: 3000,
-  z_notification: 4000,
-  z_dialog: 5000
-};
-
-var fontSize = 14;
-
-var typographyStyles = [{
-  " h1, h2, h3, h4, h5, h6, p": {
-    margin: 0,
-    padding: 0
-  }
-}, {
-  " h1 small, h2 small, h3 small, h4 small, h5 small, h6 small": {
-    "font-weight": vars.font_weight_normal,
-    "line-height": vars.line_height,
-    "letter-spacing": "-0.02em",
-    "font-size": "0.6em"
-  }
-}, {
-  " h1": {
-    "font-size": "56px",
-    "font-weight": vars.font_weight_normal,
-    "line-height": vars.line_height,
-    "margin-top": "24px",
-    "margin-bottom": "24px"
-  }
-}, {
-  " h2": {
-    "font-size": "45px",
-    "font-weight": vars.font_weight_normal,
-    "line-height": "48px",
-    "margin-top": "24px",
-    "margin-bottom": "24px"
-  }
-}, {
-  " h3": {
-    "font-size": "34px",
-    "font-weight": vars.font_weight_normal,
-    "line-height": "40px",
-    "margin-top": "24px",
-    "margin-bottom": "24px"
-  }
-}, {
-  " h4": {
-    "font-size": "24px",
-    "font-weight": vars.font_weight_normal,
-    "line-height": "32px",
-    "-moz-osx-font-smoothing": "grayscale",
-    "margin-top": "24px",
-    "margin-bottom": "16px"
-  }
-}, {
-  " h5": {
-    "font-size": "20px",
-    "font-weight": vars.font_weight_medium,
-    "line-height": "1",
-    "letter-spacing": "-0.02em",
-    "margin-top": "24px",
-    "margin-bottom": "16px"
-  }
-}, {
-  " h6": {
-    "font-size": "16px",
-    "font-weight": vars.font_weight_normal,
-    "line-height": "24px",
-    "letter-spacing": "0.04em",
-    "margin-top": "24px",
-    "margin-bottom": "16px"
-  }
-}, {
-  " html, body": {
-    "font-size": fontSize + "px",
-    "line-height": "20px",
-    "font-weight": vars.font_weight_normal
-  },
-  " p": {
-    "font-size": fontSize + "px",
-    "font-weight": vars.font_weight_normal,
-    "line-height": "24px",
-    "letter-spacing": "0",
-    "margin-bottom": "16px"
-  },
-  " blockquote": {
-    "position": "relative",
-    "font-size": "24px",
-    "font-weight": vars.font_weight_normal,
-    "font-style": "italic",
-    "line-height": vars.line_height,
-    "letter-spacing": "0.08em",
-    "margin-top": "24px",
-    "margin-bottom": "16px"
-  },
-  " ul, ol": {
-    "font-size": fontSize + "px",
-    "font-weight": vars.font_weight_normal,
-    "line-height": "24px",
-    "letter-spacing": 0
-  },
-  " b, strong": {
-    "font-weight": vars.font_weight_medium
-  }
-}];
-
-var resetStyles = [{
-  // apply a natural box layout model to all elements, but allow elements to change
-  " html": {
-    "box-sizing": "border-box"
-  },
-  " *, *:before, *:after": {
-    "box-sizing": "inherit"
-  },
-  " *": [
-  // remove tap highlight in mobile Safari
-  {
-    "-webkit-tap-highlight-color": "rgba(0,0,0,0)"
-  }, {
-    "-webkit-tap-highlight-color": "transparent" // For some Androids
-  }],
-
-  // Remove dotted link borders in Firefox
-  " a, a:active, a:focus, input:active, *:focus": {
-    outline: 0
-  },
-
-  // Mobile Safari: override default fading of disabled elements
-  " input:disabled": {
-    opacity: 1
-  }
-}];
-
-var addTypography = function addTypography() {
-  return __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["d" /* styler */].add("pe-material-design-typography", resetStyles, typographyStyles);
-};
-
-
-
-
-/***/ }),
-/* 16 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return button; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return classes; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return vars$1; });
-/* unused harmony export styles */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_theme__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__ = __webpack_require__(2);
 
 
 
@@ -3291,232 +2748,6 @@ var classes = {
   selected: "pe-button--selected"
 };
 
-var touch_height = __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].unit_touch_height;
-var height = 36;
-
-var vars$1 = {
-  margin_h: __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].grid_unit,
-  border_radius: __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].unit_item_border_radius,
-  font_size: 14,
-  font_weight: 500,
-  outer_padding_v: (touch_height - height) / 2,
-  padding_h: 2 * __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].grid_unit,
-  padding_v: 11,
-  min_width: 8 * __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].grid_unit_component,
-  text_transform: "uppercase",
-  border_width: 0, // no border in MD, but used to correctly set the height when a theme does set a border
-  animation_duration: __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].animation_duration,
-
-  color_light_background: "transparent",
-  color_light_text: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_light_text_primary),
-  color_light_hover_background: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_light_background_hover),
-  color_light_focus_background: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_light_background_hover),
-  color_light_active_background: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_light_background_active),
-  color_light_disabled_background: "transparent",
-  color_light_disabled_text: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_light_text_disabled),
-
-  // border colors may be set in theme; disabled by default
-  // color_light_border:              "transparent", // only specify this variable to get all 4 states
-  // color_light_hover_border:        "transparent",
-  // color_light_active_border:       "transparent",
-  // color_light_disabled_border:     "transparent",
-
-  color_dark_background: "transparent",
-  color_dark_text: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_dark_text_primary),
-  color_dark_hover_background: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_dark_background_hover),
-  color_dark_focus_background: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_dark_background_hover),
-  color_dark_active_background: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_dark_background_active),
-  color_dark_disabled_background: "transparent",
-  color_dark_disabled_text: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_dark_text_disabled)
-
-  // border colors may be set in theme; disabled by default
-  // color_dark_border:               "transparent", // only specify this variable to get all 4 states
-  // color_dark_hover_border:         "transparent",
-  // color_dark_active_border:        "transparent",
-  // color_dark_disabled_border:      "transparent"
-};
-
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var baseLayout = (function (selector, componentVars) {
-  return [_defineProperty$1({}, selector, [__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["b" /* mixin */].defaultTransition("all", componentVars.animation_duration), {
-    userSelect: "none",
-    outline: "none",
-    padding: 0,
-    textDecoration: "none",
-    textAlign: "center",
-    cursor: "pointer",
-    transition: "all " + componentVars.animation_duration + " ease-in-out",
-
-    ".pe-button--selected, &.pe-button--disabled, &.pe-button--inactive": {
-      cursor: "default",
-      pointerEvents: "none"
-    },
-
-    ".pe-button--focus": {
-      " .pe-button__focus": {
-        opacity: 1
-      }
-    },
-
-    " .pe-button__content": {
-      position: "relative",
-      borderRadius: "inherit"
-    },
-
-    " .pe-button__label": [__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["b" /* mixin */].fontSmoothing(), {
-      position: "relative",
-      display: "block",
-      borderRadius: "inherit",
-      pointerEvents: "none"
-    }],
-
-    " .pe-button__wash, .pe-button__focus": [__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["b" /* mixin */].defaultTransition("background-color", "opacity"), __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["b" /* mixin */].fit(), {
-      borderRadius: "inherit",
-      pointerEvents: "none"
-    }],
-
-    " .pe-button__focus": {
-      opacity: 0
-    },
-
-    " .pe-button__wash": {
-      zIndex: 0
-    }
-  }])];
-});
-
-function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var layout = (function (selector, componentVars) {
-  return [_defineProperty$2({}, selector, [{
-    display: "inline-block",
-    minWidth: componentVars.min_width + "px",
-    margin: "0 " + componentVars.margin_h + "px",
-    padding: componentVars.outer_padding_v + "px 0",
-    background: "transparent",
-    border: "none",
-
-    " .pe-button__content": {
-      position: "relative",
-      borderWidth: 0,
-      padding: "0 " + componentVars.padding_h + "px",
-      borderRadius: componentVars.border_radius + "px"
-    },
-
-    " .pe-button__label": {
-      padding: componentVars.padding_v + "px 0",
-      fontSize: componentVars.font_size + "px",
-      lineHeight: componentVars.font_size + "px",
-      fontWeight: componentVars.font_weight,
-      textTransform: componentVars.text_transform,
-      whiteSpace: "pre"
-    },
-
-    ".pe-button--borders": {
-      " .pe-button__wash, .pe-button__focus, .pe-ripple": __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["b" /* mixin */].fit(-1),
-
-      " .pe-button__content": {
-        borderStyle: "solid",
-        borderWidth: "1px"
-      },
-      " .pe-button__label": {
-        padding: componentVars.padding_v - 1 + "px 0"
-      }
-    }
-  }])];
-});
-
-function _defineProperty$3(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var style = function style(scopes, selector, componentVars, tint) {
-  var normalBorder = componentVars["color_" + tint + "_border"] || "transparent";
-  var activeBorder = componentVars["color_" + tint + "_active_border"] || normalBorder;
-  var disabledBorder = componentVars["color_" + tint + "_disabled_border"] || normalBorder;
-  return [_defineProperty$3({}, scopes.map(function (s) {
-    return s + selector;
-  }).join(","), {
-    "&, &:link, &:visited": {
-      color: componentVars["color_" + tint + "_text"]
-    },
-
-    " .pe-button__content": {
-      backgroundColor: componentVars["color_" + tint + "_background"],
-      borderColor: normalBorder
-    },
-
-    ".pe-button--disabled": {
-      color: componentVars["color_" + tint + "_disabled_text"],
-
-      " .pe-button__content": {
-        backgroundColor: componentVars["color_" + tint + "_disabled_background"],
-        borderColor: disabledBorder
-      }
-    },
-
-    " .pe-button__focus": {
-      backgroundColor: componentVars["color_" + tint + "_focus_background"]
-    },
-
-    ".pe-button--selected": {
-      " .pe-button__content": {
-        backgroundColor: componentVars["color_" + tint + "_active_background"],
-        borderColor: activeBorder
-      },
-      " .pe-button__focus": {
-        opacity: 1,
-        backgroundColor: componentVars["color_" + tint + "_focus_background"]
-      }
-    },
-
-    ".pe-button--focus": {
-      " .pe-button__focus": {
-        opacity: 1
-      }
-    }
-  })];
-};
-
-var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, tint) {
-  var normalBorder = componentVars["color_" + tint + "_border"] || "transparent";
-  var hoverBorder = componentVars["color_" + tint + "_border"] || normalBorder;
-  return [_defineProperty$3({}, scopes.map(function (s) {
-    return s + selector + ":hover";
-  }).join(","), {
-    ":not(.pe-button--selected):not(.pe-button--inactive) .pe-button__wash": {
-      backgroundColor: componentVars["color_" + tint + "_hover_background"],
-      borderColor: hoverBorder
-    }
-  })];
-};
-
-var color = (function (selector, componentVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light tone
-  noTouchStyle(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, "dark"), // inside dark tone
-  noTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, "light")];
-});
-
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var fns = [layout, color];
-var baseFns = [baseLayout];
-var baseSelector = "." + classes.base;
-var selector = "." + classes.component.replace(/ /g, ".");
-
-var customTheme = function customTheme(customSelector, customVars) {
-  return __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["d" /* styler */].generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
-};
-
-var styles = function styles() {
-  return __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["d" /* styler */].createStyleSheets([baseSelector], vars$1, baseFns).concat(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["d" /* styler */].createStyleSheets([selector], vars$1, fns));
-};
-
-if (__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].css === "js") {
-  __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["d" /* styler */].generateStyles([baseSelector], vars$1, baseFns);
-  __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["d" /* styler */].generateStyles([selector], vars$1, fns);
-}
-
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -3526,8 +2757,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var getElement = function getElement(vnode) {
   return vnode.attrs.element || "a";
 };
-
-var theme = customTheme;
 
 var getInitialState = function getInitialState(vnode, createStream) {
   var dom = createStream();
@@ -3642,7 +2871,6 @@ var createContent = function createContent(vnode, _ref3) {
 
 var button = Object.freeze({
 	getElement: getElement,
-	theme: theme,
 	getInitialState: getInitialState,
 	onMount: onMount,
 	onUnMount: onUnMount,
@@ -3650,17 +2878,62 @@ var button = Object.freeze({
 	createContent: createContent
 });
 
+var touch_height = __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].unit_touch_height;
+var height = 36;
+
+var vars$1 = {
+  margin_h: __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].grid_unit,
+  border_radius: __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].unit_item_border_radius,
+  font_size: 14,
+  font_weight: 500,
+  outer_padding_v: (touch_height - height) / 2,
+  padding_h: 2 * __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].grid_unit,
+  padding_v: 11,
+  min_width: 8 * __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].grid_unit_component,
+  text_transform: "uppercase",
+  border_width: 0, // no border in MD, but used to correctly set the height when a theme does set a border
+  animation_duration: __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].animation_duration,
+
+  color_light_background: "transparent",
+  color_light_text: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_light_text_primary),
+  color_light_hover_background: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_light_background_hover),
+  color_light_focus_background: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_light_background_hover),
+  color_light_active_background: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_light_background_active),
+  color_light_disabled_background: "transparent",
+  color_light_disabled_text: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_light_text_disabled),
+
+  // border colors may be set in theme; disabled by default
+  // color_light_border:              "transparent", // only specify this variable to get all 4 states
+  // color_light_hover_border:        "transparent",
+  // color_light_active_border:       "transparent",
+  // color_light_disabled_border:     "transparent",
+
+  color_dark_background: "transparent",
+  color_dark_text: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_dark_text_primary),
+  color_dark_hover_background: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_dark_background_hover),
+  color_dark_focus_background: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_dark_background_hover),
+  color_dark_active_background: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_dark_background_active),
+  color_dark_disabled_background: "transparent",
+  color_dark_disabled_text: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_dark_text_disabled)
+
+  // border colors may be set in theme; disabled by default
+  // color_dark_border:               "transparent", // only specify this variable to get all 4 states
+  // color_dark_hover_border:         "transparent",
+  // color_dark_active_border:        "transparent",
+  // color_dark_disabled_border:      "transparent"
+};
+
 
 
 
 /***/ }),
-/* 17 */
+/* 16 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SVG; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_svg__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_svg__ = __webpack_require__(33);
 
 
 
@@ -3674,7 +2947,7 @@ SVG.displayName = "SVG";
 
 
 /***/ }),
-/* 18 */
+/* 17 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3682,7 +2955,7 @@ SVG.displayName = "SVG";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return classes$1; });
 /* unused harmony export vars */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_core_list_tile__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_theme__ = __webpack_require__(3);
 
@@ -4065,33 +3338,32 @@ var menu = Object.freeze({
 
 
 /***/ }),
-/* 19 */
+/* 18 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DialogPane; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_dialog_pane__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_dialog_pane__ = __webpack_require__(39);
 
 
 
 var DialogPane = Object(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["a" /* StateComponent */])(__WEBPACK_IMPORTED_MODULE_1_polythene_core_dialog_pane__["a" /* coreDialogPane */]);
 
-DialogPane.theme = __WEBPACK_IMPORTED_MODULE_1_polythene_core_dialog_pane__["a" /* coreDialogPane */].theme;
 DialogPane.displayName = "DialogPane";
 
 
 
 
 /***/ }),
-/* 20 */
+/* 19 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RaisedButton; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_raised_button__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_mithril_button__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_raised_button__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_mithril_button__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_mithril_shadow__ = __webpack_require__(5);
 
 
@@ -4110,14 +3382,13 @@ var RaisedButton = Object(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["
   component: __WEBPACK_IMPORTED_MODULE_2_polythene_mithril_button__["a" /* Button */]
 }));
 
-RaisedButton.theme = __WEBPACK_IMPORTED_MODULE_1_polythene_core_raised_button__["a" /* coreRaisedButton */].theme;
 RaisedButton.displayName = "RaisedButton";
 
 
 
 
 /***/ }),
-/* 21 */
+/* 20 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4126,8 +3397,8 @@ RaisedButton.displayName = "RaisedButton";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return vars$1; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return transitions; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_utilities__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_utilities__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_theme__ = __webpack_require__(3);
 
 
@@ -4512,16 +3783,16 @@ var transitions = {
 
 
 /***/ }),
-/* 22 */
+/* 21 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RadioButton; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_radio_button__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_radio_button__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_core_selection_control__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_mithril_icon__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_polythene_mithril_icon_button__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_polythene_mithril_icon_button__ = __webpack_require__(7);
 
 
 
@@ -4530,9 +3801,9 @@ var transitions = {
 
 var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var ViewControl = Object(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["b" /* ViewComponent */])(_extends$2({}, __WEBPACK_IMPORTED_MODULE_2_polythene_core_selection_control__["e" /* viewControl */], {
+var ViewControl = Object(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["b" /* ViewComponent */])(_extends$2({}, __WEBPACK_IMPORTED_MODULE_2_polythene_core_selection_control__["c" /* viewControl */], {
   createContent: function createContent(vnode, args) {
-    return __WEBPACK_IMPORTED_MODULE_2_polythene_core_selection_control__["e" /* viewControl */].createContent(vnode, _extends$2(args, { Icon: __WEBPACK_IMPORTED_MODULE_3_polythene_mithril_icon__["a" /* Icon */], IconButton: __WEBPACK_IMPORTED_MODULE_4_polythene_mithril_icon_button__["a" /* IconButton */] }));
+    return __WEBPACK_IMPORTED_MODULE_2_polythene_core_selection_control__["c" /* viewControl */].createContent(vnode, _extends$2(args, { Icon: __WEBPACK_IMPORTED_MODULE_3_polythene_mithril_icon__["a" /* Icon */], IconButton: __WEBPACK_IMPORTED_MODULE_4_polythene_mithril_icon_button__["a" /* IconButton */] }));
   }
 }));
 
@@ -4540,9 +3811,9 @@ ViewControl.displayName = "ViewControl";
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var SelectionControl = Object(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["a" /* StateComponent */])(_extends$1({}, __WEBPACK_IMPORTED_MODULE_2_polythene_core_selection_control__["b" /* coreSelectionControl */], {
+var SelectionControl = Object(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["a" /* StateComponent */])(_extends$1({}, __WEBPACK_IMPORTED_MODULE_2_polythene_core_selection_control__["a" /* coreSelectionControl */], {
   createContent: function createContent(vnode, args) {
-    return __WEBPACK_IMPORTED_MODULE_2_polythene_core_selection_control__["b" /* coreSelectionControl */].createContent(vnode, _extends$1(args, { ViewControl: ViewControl }));
+    return __WEBPACK_IMPORTED_MODULE_2_polythene_core_selection_control__["a" /* coreSelectionControl */].createContent(vnode, _extends$1(args, { ViewControl: ViewControl }));
   }
 }));
 
@@ -4554,8 +3825,25 @@ var RadioButton = Object(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["a
   component: SelectionControl
 }));
 
-RadioButton.theme = __WEBPACK_IMPORTED_MODULE_1_polythene_core_radio_button__["a" /* coreRadioButton */].theme;
 RadioButton.displayName = "RadioButton";
+
+
+
+
+/***/ }),
+/* 22 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TextField; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_textfield__ = __webpack_require__(52);
+
+
+
+var TextField = Object(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["a" /* StateComponent */])(__WEBPACK_IMPORTED_MODULE_1_polythene_core_textfield__["a" /* coreTextField */]);
+
+TextField.displayName = "TextField";
 
 
 
@@ -4565,18 +3853,8 @@ RadioButton.displayName = "RadioButton";
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TextField; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_textfield__ = __webpack_require__(54);
-
-
-
-var TextField = Object(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["a" /* StateComponent */])(__WEBPACK_IMPORTED_MODULE_1_polythene_core_textfield__["a" /* coreTextField */]);
-
-TextField.theme = __WEBPACK_IMPORTED_MODULE_1_polythene_core_textfield__["a" /* coreTextField */].theme;
-TextField.displayName = "TextField";
-
-
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_index__ = __webpack_require__(24);
 
 
 /***/ }),
@@ -4584,169 +3862,648 @@ TextField.displayName = "TextField";
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_index__ = __webpack_require__(25);
-
-
-/***/ }),
-/* 25 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mithril__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mithril___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_mithril__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_fastclick__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_utilities__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_mithril__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_polythene_css_dist_polythene_css__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_polythene_css_dist_polythene_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_polythene_css_dist_polythene_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_mithril__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_css_dist_polythene_css__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_css_dist_polythene_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_polythene_css_dist_polythene_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_css_dist_polythene_typography_css__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_css_dist_polythene_typography_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_polythene_css_dist_polythene_typography_css__);
 
 
 
-// import { addTypography, addRoboto } from "polythene-style";
 
-
-// import "polythene-css";
-
-// import * as polytheneCSS from "polythene-css";
-
-// polytheneCSS.SVG.addStyle(".themed-svg", {
-//   color_light: "red",
-//   color_dark: "orange"
-// });
-
-addTypography();
-addRoboto();
-Object(__WEBPACK_IMPORTED_MODULE_2_polythene_utilities__["b" /* addLayoutStyles */])();
-Object(__WEBPACK_IMPORTED_MODULE_1_polythene_fastclick__["a" /* addFastClick */])();
 
 
 
 var linkIconSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z\"/></svg>";
 
-__WEBPACK_IMPORTED_MODULE_3_polythene_mithril__["a" /* Button */].theme(".themed-button", {
-  color_light_background: "#FF1744",
-  color_light_text: "#fff"
-});
-
 var App = {
   view: function view() {
-    return __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".page", [__WEBPACK_IMPORTED_MODULE_0_mithril___default()(".row", [__WEBPACK_IMPORTED_MODULE_0_mithril___default()("h1", "Polythene for Mithril"), __WEBPACK_IMPORTED_MODULE_0_mithril___default()("h2", "Standalone Test")]), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".row", [__WEBPACK_IMPORTED_MODULE_0_mithril___default()("h2", "SVG"), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".component", __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_3_polythene_mithril__["h" /* SVG */], {
+    return __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".page", [__WEBPACK_IMPORTED_MODULE_0_mithril___default()(".row", [__WEBPACK_IMPORTED_MODULE_0_mithril___default()("h1", "Polythene for Mithril"), __WEBPACK_IMPORTED_MODULE_0_mithril___default()("h2", "CSS Test")]), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".row", [__WEBPACK_IMPORTED_MODULE_0_mithril___default()("h2", "SVG"), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".component", __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_mithril__["g" /* SVG */], {
       content: __WEBPACK_IMPORTED_MODULE_0_mithril___default.a.trust(linkIconSVG),
       className: "themed-svg"
-    }))]), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".row", [__WEBPACK_IMPORTED_MODULE_0_mithril___default()("h2", "Raised Button"), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".component", __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_3_polythene_mithril__["g" /* RaisedButton */], {
+    }))]), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".row", [__WEBPACK_IMPORTED_MODULE_0_mithril___default()("h2", "Raised Button"), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".component", __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_mithril__["f" /* RaisedButton */], {
       label: "Button"
-    }))]), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".row", [__WEBPACK_IMPORTED_MODULE_0_mithril___default()("h2", "Regular Button"), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".component", __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_3_polythene_mithril__["a" /* Button */], {
+    }))]), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".row", [__WEBPACK_IMPORTED_MODULE_0_mithril___default()("h2", "Regular Button"), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".component", __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_mithril__["a" /* Button */], {
       label: "Button"
-    }))]), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".row", [__WEBPACK_IMPORTED_MODULE_0_mithril___default()("h2", "Themed Regular Button"), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".component", __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_3_polythene_mithril__["a" /* Button */], {
-      label: "Button",
-      className: "themed-button"
-    }))]), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".row", [__WEBPACK_IMPORTED_MODULE_0_mithril___default()("h2", "FAB"), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".component", __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_3_polythene_mithril__["d" /* FAB */], {
+    }))]), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".row", [__WEBPACK_IMPORTED_MODULE_0_mithril___default()("h2", "Icon Button"), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".component", __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_mithril__["d" /* IconButton */], {
       icon: {
         svg: __WEBPACK_IMPORTED_MODULE_0_mithril___default.a.trust(linkIconSVG)
       }
-    }))]), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".row", [__WEBPACK_IMPORTED_MODULE_0_mithril___default()("h2", "Checkbox"), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".component", __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_3_polythene_mithril__["b" /* Checkbox */], {
+    }))]),
+    // m(".row",
+    //   [
+    //     m("h2", "FAB"),
+    //     m(".component", 
+    //       m(FAB, {
+    //         icon: {
+    //           svg: m.trust(linkIconSVG)
+    //         }
+    //       })
+    //     )
+    //   ]
+    // ),
+    __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".row", [__WEBPACK_IMPORTED_MODULE_0_mithril___default()("h2", "Tabs"), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".component", __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_mithril__["i" /* Tabs */], {
+      tabs: [{ label: "New" }, { label: "Favorites" }, { label: "Saved" }],
+      autofit: true
+    }))]), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".row", [__WEBPACK_IMPORTED_MODULE_0_mithril___default()("h2", "Card"), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".component", __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_mithril__["b" /* Card */], {
+      className: "themed-card",
+      content: [{
+        primary: {
+          title: "Get Ready",
+          subtitle: "2 Unlimited",
+          media: {
+            ratio: "square",
+            size: "medium",
+            content: __WEBPACK_IMPORTED_MODULE_0_mithril___default()("img", {
+              src: "https://lastfm-img2.akamaized.net/i/u/avatar170s/ca297951611442bda8ea55fba764c757"
+            })
+          }
+        }
+      }, {
+        actions: {
+          content: [__WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_mithril__["a" /* Button */], {
+            label: "Listen now"
+          })]
+        }
+      }]
+    }))]), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".row", [__WEBPACK_IMPORTED_MODULE_0_mithril___default()("h2", "Checkbox"), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".component", __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_mithril__["c" /* Checkbox */], {
       label: "Label"
-    }))]), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".row", [__WEBPACK_IMPORTED_MODULE_0_mithril___default()("h2", "Switch"), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".component", __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_3_polythene_mithril__["k" /* Switch */], {
+    }))]), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".row", [__WEBPACK_IMPORTED_MODULE_0_mithril___default()("h2", "Switch"), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".component", __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_mithril__["h" /* Switch */], {
       label: "Label"
-    }))]), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".row", [__WEBPACK_IMPORTED_MODULE_0_mithril___default()("h2", "TextField"), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".component", __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_3_polythene_mithril__["l" /* TextField */], {
-      defaultValue: "abC",
-      validate: function validate(value) {
-        return value !== value.toLowerCase() ? {
-          valid: false,
-          error: "Only use lowercase characters."
-        } : null;
-      },
-      validateAtStart: true
-    }))]), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".row", [__WEBPACK_IMPORTED_MODULE_0_mithril___default()("h2", "Slider"), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".component", __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_3_polythene_mithril__["i" /* Slider */], {
-      defaultValue: 50
-    }))]), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".row", [__WEBPACK_IMPORTED_MODULE_0_mithril___default()("h2", "Spinner"), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".component", __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_3_polythene_mithril__["e" /* MaterialDesignSpinner */], {
-      permanent: true
-    }))]), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".row", [__WEBPACK_IMPORTED_MODULE_0_mithril___default()("h2", "Dialog"), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".component", __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_3_polythene_mithril__["g" /* RaisedButton */], {
-      label: "Show dialog",
-      events: {
-        onclick: function onclick() {
-          return __WEBPACK_IMPORTED_MODULE_3_polythene_mithril__["c" /* Dialog */].show({
-            /* note the Dialog component is below the other elements in the app */
-            title: "Hello",
-            body: "Click outside to close, or press ESCAPE",
-            backdrop: true
-          });
-        }
-      }
-    }))]), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".row", [__WEBPACK_IMPORTED_MODULE_0_mithril___default()("h2", "Notification"), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".component", __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_3_polythene_mithril__["g" /* RaisedButton */], {
-      label: "Show Notification",
-      events: {
-        onclick: function onclick() {
-          return __WEBPACK_IMPORTED_MODULE_3_polythene_mithril__["f" /* Notification */].show({
-            /* note the Notification component is below the other elements in the app */
-            title: "Hello"
-          });
-        }
-      }
-    }))]), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".row", [__WEBPACK_IMPORTED_MODULE_0_mithril___default()("h2", "Snackbar"), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".component", __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_3_polythene_mithril__["g" /* RaisedButton */], {
-      label: "Show Snackbar",
-      events: {
-        onclick: function onclick() {
-          return __WEBPACK_IMPORTED_MODULE_3_polythene_mithril__["j" /* Snackbar */].show({
-            /* note the Snackbar component is below the other elements in the app */
-            title: "Hello"
-          });
-        }
-      }
-    }))]), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_3_polythene_mithril__["c" /* Dialog */]), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_3_polythene_mithril__["j" /* Snackbar */]), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_3_polythene_mithril__["f" /* Notification */])]);
+    }))]), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".row", [__WEBPACK_IMPORTED_MODULE_0_mithril___default()("h2", "Radio Button"), __WEBPACK_IMPORTED_MODULE_0_mithril___default()(".component", __WEBPACK_IMPORTED_MODULE_0_mithril___default()(__WEBPACK_IMPORTED_MODULE_1_polythene_mithril__["e" /* RadioGroup */], {
+      name: "defaultChecked",
+      content: [{
+        value: "One",
+        label: "One"
+      }, {
+        value: "Two",
+        label: "Two",
+        defaultChecked: true
+      }]
+    }))])]
+
+    // m(".row",
+    //   [
+    //     m("h2", "TextField"),
+    //     m(".component", 
+    //       m(TextField, {
+    //         defaultValue: "abC",
+    //         validate: value => 
+    //           value !== value.toLowerCase()
+    //             ? ({
+    //               valid: false,
+    //               error: "Only use lowercase characters."
+    //             })
+    //             : null,
+    //         validateAtStart: true
+    //       })
+    //     )
+    //   ]
+    // ),
+    // m(".row",
+    //   [
+    //     m("h2", "Slider"),
+    //     m(".component", 
+    //       m(Slider, {
+    //         defaultValue: 50
+    //       })
+    //     )
+    //   ]
+    // ),
+    // m(".row",
+    //   [
+    //     m("h2", "Spinner"),
+    //     m(".component", 
+    //       m(MaterialDesignSpinner, {
+    //         permanent: true
+    //       })
+    //     )
+    //   ]
+    // ),
+    // m(".row",
+    //   [
+    //     m("h2", "Dialog"),
+    //     m(".component", 
+    //       m(RaisedButton, {
+    //         label: "Show dialog",
+    //         events: {
+    //           onclick: () => Dialog.show({
+    //             /* note the Dialog component is below the other elements in the app */
+    //             title: "Hello",
+    //             body: "Click outside to close, or press ESCAPE",
+    //             backdrop: true
+    //           })
+    //         }
+    //       })
+    //     )
+    //   ]
+    // ),
+    // m(".row",
+    //   [
+    //     m("h2", "Notification"),
+    //     m(".component", 
+    //       m(RaisedButton, {
+    //         label: "Show Notification",
+    //         events: {
+    //           onclick: () => Notification.show({
+    //             /* note the Notification component is below the other elements in the app */
+    //             title: "Hello"
+    //           })
+    //         }
+    //       })
+    //     )
+    //   ]
+    // ),
+    // m(".row",
+    //   [
+    //     m("h2", "Snackbar"),
+    //     m(".component", 
+    //       m(RaisedButton, {
+    //         label: "Show Snackbar",
+    //         events: {
+    //           onclick: () => Snackbar.show({
+    //             /* note the Snackbar component is below the other elements in the app */
+    //             title: "Hello"
+    //           })
+    //         }
+    //       })
+    //     )
+    //   ]
+    // ),
+    // m(Dialog),
+    // m(Snackbar),
+    // m(Notification)
+    );
   }
 };
 
 __WEBPACK_IMPORTED_MODULE_0_mithril___default.a.mount(document.querySelector("#root"), App);
 
 /***/ }),
+/* 25 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(1);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_mithril_button__ = __webpack_require__(8);
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_1_polythene_mithril_button__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_mithril_card__ = __webpack_require__(30);
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_2_polythene_mithril_card__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_mithril_checkbox__ = __webpack_require__(35);
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_3_polythene_mithril_checkbox__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_polythene_mithril_dialog__ = __webpack_require__(37);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_polythene_mithril_dialog_pane__ = __webpack_require__(18);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_polythene_mithril_fab__ = __webpack_require__(40);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_polythene_mithril_icon__ = __webpack_require__(4);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_polythene_mithril_icon_button__ = __webpack_require__(7);
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_8_polythene_mithril_icon_button__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_polythene_mithril_list__ = __webpack_require__(43);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_polythene_mithril_list_tile__ = __webpack_require__(11);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_polythene_mithril_menu__ = __webpack_require__(45);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_polythene_mithril_notification__ = __webpack_require__(46);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_polythene_mithril_radio_button__ = __webpack_require__(21);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_polythene_mithril_radio_group__ = __webpack_require__(48);
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_14_polythene_mithril_radio_group__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_polythene_mithril_raised_button__ = __webpack_require__(19);
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_15_polythene_mithril_raised_button__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_polythene_mithril_ripple__ = __webpack_require__(10);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_polythene_mithril_search__ = __webpack_require__(50);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_polythene_mithril_shadow__ = __webpack_require__(5);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_polythene_mithril_slider__ = __webpack_require__(53);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20_polythene_mithril_snackbar__ = __webpack_require__(55);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21_polythene_mithril_spinner__ = __webpack_require__(57);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22_polythene_mithril_svg__ = __webpack_require__(16);
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "g", function() { return __WEBPACK_IMPORTED_MODULE_22_polythene_mithril_svg__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23_polythene_mithril_switch__ = __webpack_require__(59);
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "h", function() { return __WEBPACK_IMPORTED_MODULE_23_polythene_mithril_switch__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24_polythene_mithril_tabs__ = __webpack_require__(61);
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "i", function() { return __WEBPACK_IMPORTED_MODULE_24_polythene_mithril_tabs__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25_polythene_mithril_textfield__ = __webpack_require__(22);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26_polythene_mithril_toolbar__ = __webpack_require__(63);
+/* unused harmony namespace reexport */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/***/ }),
 /* 26 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return addFastClick; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_fastclick__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_fastclick___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_fastclick__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core__ = __webpack_require__(0);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return vars; });
+/* unused harmony export typographyStyles */
+/* unused harmony export addTypography */
+/* unused harmony export layoutStyles */
+/* unused harmony export addLayoutStyles */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_utilities__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__ = __webpack_require__(2);
 
 
 
-var THROTTLE_DELAY = 100;
-var REINIT_DELAY = THROTTLE_DELAY + 50;
-var layer = __WEBPACK_IMPORTED_MODULE_1_polythene_core__["f" /* isClient */] ? document.body : { body: {} };
 
-var fastClick = void 0;
-var timeoutId = void 0;
-var enabled = void 0;
+// Global style variables
 
-var add = function add() {
-  if (!enabled) {
-    fastClick = new __WEBPACK_IMPORTED_MODULE_0_fastclick___default.a(layer);
-    enabled = true;
-  }
+//const isTablet = window.innerWidth >= 600;
+var isDesktop = __WEBPACK_IMPORTED_MODULE_0_polythene_core__["f" /* isClient */] ? window.innerWidth >= 1024 : true;
+
+var grid_unit = 4;
+var grid_unit_component = 8;
+
+var animation_curve_slow_in_fast_out = "cubic-bezier(.4, 0, .2, 1)";
+var animation_curve_slow_in_linear_out = "cubic-bezier(0, 0, .2, 1)";
+var animation_curve_linear_in_fast_out = "cubic-bezier(.4, 0, 1, 1)";
+
+var vars = {
+  // grid
+  grid_unit: grid_unit,
+  grid_unit_component: grid_unit_component,
+  grid_unit_menu: 56,
+  grid_unit_icon_button: 6 * grid_unit_component, // 48
+
+  // common sizes
+  unit_block_border_radius: 2,
+  unit_item_border_radius: 2,
+  unit_indent: 72,
+  unit_side_padding: isDesktop ? 24 : 16,
+
+  // buttons
+  unit_touch_height: 48,
+  unit_icon_size_small: 2 * grid_unit_component, // 16
+  unit_icon_size: 3 * grid_unit_component, // 24
+  unit_icon_size_medium: 4 * grid_unit_component, // 32
+  unit_icon_size_large: 5 * grid_unit_component, // 40
+
+  // screen dimensions
+  unit_screen_size_extra_large: 1280,
+  unit_screen_size_large: 960,
+  unit_screen_size_medium: 480,
+  unit_screen_size_small: 320,
+
+  // transitions
+  animation_duration: ".18s",
+  animation_curve_slow_in_fast_out: animation_curve_slow_in_fast_out,
+  animation_curve_slow_in_linear_out: animation_curve_slow_in_linear_out,
+  animation_curve_linear_in_fast_out: animation_curve_linear_in_fast_out,
+  animation_curve_default: "ease-out",
+
+  // font
+  font_weight_light: 300,
+  font_weight_normal: 400,
+  font_weight_medium: 500,
+  font_weight_bold: 700,
+  font_size_title: 20,
+  line_height: 1.3,
+
+  // base colors
+  color_primary: "33, 150, 243", // blue 500
+  color_primary_active: "30, 136, 229", // blue 600
+  color_primary_dark: "25, 118, 210", // blue 700
+  color_primary_faded: "100, 181, 249", // blue 300
+  color_primary_foreground: "255, 255, 255",
+
+  color_light_background: "255, 255, 255",
+  color_light_foreground: "0, 0, 0",
+  color_dark_background: "34, 34, 34",
+  color_dark_foreground: "255, 255, 255",
+
+  // blends
+  blend_light_text_primary: .87,
+  blend_light_text_regular: .73,
+  blend_light_text_secondary: .54,
+  blend_light_text_tertiary: .40,
+  blend_light_text_disabled: .26,
+  blend_light_border_light: .11,
+  blend_light_background_active: .14,
+  blend_light_background_hover: .06,
+  blend_light_background_hover_medium: .12, // for the lighter tinted icon buttons
+  blend_light_background_disabled: .09,
+  blend_light_overlay_background: .3,
+
+  blend_dark_text_primary: 1,
+  blend_dark_text_regular: .87,
+  blend_dark_text_secondary: .70,
+  blend_dark_text_tertiary: .40,
+  blend_dark_text_disabled: .26,
+  blend_dark_border_light: .10,
+  blend_dark_background_active: .14,
+  blend_dark_background_hover: .08,
+  blend_dark_background_hoverMedium: .12, // for the lighter tinted icon buttons
+  blend_dark_background_disabled: .12,
+  blend_dark_overlay_background: .3,
+
+  // css vendor prefixes
+  prefixes_animation: ["o", "moz", "webkit"],
+  prefixes_appearance: ["o", "moz", "ms", "webkit"],
+  prefixes_background_size: ["o", "moz", "webkit"],
+  prefixes_box_shadow: ["moz", "webkit"],
+  prefixes_keyframes: ["o", "moz", "webkit"],
+  prefixes_transform: ["o", "moz", "ms", "webkit"],
+  prefixes_transition: ["o", "moz", "webkit"],
+  prefixes_user_select: ["moz", "ms", "webkit"],
+
+  // breakpoints
+  breakpoint_small_handset_portrait: 0,
+  breakpoint_medium_handset_portrait: 360,
+  breakpoint_large_handset_portrait: 400,
+  breakpoint_small_tablet_portrait: 600,
+  breakpoint_large_tablet_portrait: 720,
+  // landscape
+  breakpoint_small_handset_landscape: 480,
+  breakpoint_medium_handset_landscape: 600,
+  breakpoint_large_handset_landscape: 720,
+
+  // environment
+  env_tablet: __WEBPACK_IMPORTED_MODULE_0_polythene_core__["f" /* isClient */] ? window.innerWidth >= 600 : false,
+  env_desktop: __WEBPACK_IMPORTED_MODULE_0_polythene_core__["f" /* isClient */] ? window.innerWidth >= 1024 : true,
+
+  // z-index
+  z_menu: 1000,
+  z_header_container: 2000,
+  z_fixed_header_container: 3000,
+  z_notification: 4000,
+  z_dialog: 5000
 };
 
-var remove = function remove() {
-  if (enabled) {
-    fastClick.destroy();
-    enabled = false;
+var fontSize = 14;
+
+var styles = [{
+  " h1, h2, h3, h4, h5, h6, p": {
+    margin: 0,
+    padding: 0
   }
+}, {
+  " h1 small, h2 small, h3 small, h4 small, h5 small, h6 small": {
+    "font-weight": vars.font_weight_normal,
+    "line-height": vars.line_height,
+    "letter-spacing": "-0.02em",
+    "font-size": "0.6em"
+  }
+}, {
+  " h1": {
+    "font-size": "56px",
+    "font-weight": vars.font_weight_normal,
+    "line-height": vars.line_height,
+    "margin-top": "24px",
+    "margin-bottom": "24px"
+  }
+}, {
+  " h2": {
+    "font-size": "45px",
+    "font-weight": vars.font_weight_normal,
+    "line-height": "48px",
+    "margin-top": "24px",
+    "margin-bottom": "24px"
+  }
+}, {
+  " h3": {
+    "font-size": "34px",
+    "font-weight": vars.font_weight_normal,
+    "line-height": "40px",
+    "margin-top": "24px",
+    "margin-bottom": "24px"
+  }
+}, {
+  " h4": {
+    "font-size": "24px",
+    "font-weight": vars.font_weight_normal,
+    "line-height": "32px",
+    "-moz-osx-font-smoothing": "grayscale",
+    "margin-top": "24px",
+    "margin-bottom": "16px"
+  }
+}, {
+  " h5": {
+    "font-size": "20px",
+    "font-weight": vars.font_weight_medium,
+    "line-height": "1",
+    "letter-spacing": "-0.02em",
+    "margin-top": "24px",
+    "margin-bottom": "16px"
+  }
+}, {
+  " h6": {
+    "font-size": "16px",
+    "font-weight": vars.font_weight_normal,
+    "line-height": "24px",
+    "letter-spacing": "0.04em",
+    "margin-top": "24px",
+    "margin-bottom": "16px"
+  }
+}, {
+  " html, body": {
+    "font-size": fontSize + "px",
+    "line-height": "20px",
+    "font-weight": vars.font_weight_normal
+  },
+  " p": {
+    "font-size": fontSize + "px",
+    "font-weight": vars.font_weight_normal,
+    "line-height": "24px",
+    "letter-spacing": "0",
+    "margin-bottom": "16px"
+  },
+  " blockquote": {
+    "position": "relative",
+    "font-size": "24px",
+    "font-weight": vars.font_weight_normal,
+    "font-style": "italic",
+    "line-height": vars.line_height,
+    "letter-spacing": "0.08em",
+    "margin-top": "24px",
+    "margin-bottom": "16px"
+  },
+  " ul, ol": {
+    "font-size": fontSize + "px",
+    "font-weight": vars.font_weight_normal,
+    "line-height": "24px",
+    "letter-spacing": 0
+  },
+  " b, strong": {
+    "font-weight": vars.font_weight_medium
+  }
+}];
+
+var resetStyles = [{
+  // apply a natural box layout model to all elements, but allow elements to change
+  " html": {
+    "box-sizing": "border-box"
+  },
+  " *, *:before, *:after": {
+    "box-sizing": "inherit"
+  },
+  " *": [
+  // remove tap highlight in mobile Safari
+  {
+    "-webkit-tap-highlight-color": "rgba(0,0,0,0)"
+  }, {
+    "-webkit-tap-highlight-color": "transparent" // For some Androids
+  }],
+
+  // Remove dotted link borders in Firefox
+  " a, a:active, a:focus, input:active, *:focus": {
+    outline: 0
+  },
+
+  // Mobile Safari: override default fading of disabled elements
+  " input:disabled": {
+    opacity: 1
+  }
+}];
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+var fontParam = "Roboto:400,500,700";
+
+var baseRobotoStyle = [{
+  "html, body, button, input, select, textarea": {
+    fontFamily: "Roboto, Helvetica, Arial, sans-serif"
+  }
+}];
+
+var robotoStyles = [{
+  "@import": "url(\"https://fonts.googleapis.com/css?family=" + fontParam + "\")"
+}].concat(baseRobotoStyle);
+
+var addTypography = function addTypography() {
+  Object(__WEBPACK_IMPORTED_MODULE_1_polythene_utilities__["b" /* addWebFont */])("google", "Roboto:400,500,700,400italic:latin");
+  __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["d" /* styler */].add("pe-material-design-typography", resetStyles, baseRobotoStyle, typographyStyles);
 };
 
-var handleScroll = function handleScroll() {
-  remove();
-  if (timeoutId) {
-    clearTimeout(timeoutId);
-  }
-  timeoutId = setTimeout(add, REINIT_DELAY);
-};
+var typographyStyles = [].concat(_toConsumableArray(robotoStyles), _toConsumableArray(styles), _toConsumableArray(resetStyles));
 
-var addFastClick = function addFastClick() {
-  if (__WEBPACK_IMPORTED_MODULE_1_polythene_core__["h" /* isTouch */] && __WEBPACK_IMPORTED_MODULE_1_polythene_core__["f" /* isClient */]) {
-    Object(__WEBPACK_IMPORTED_MODULE_1_polythene_core__["o" /* subscribe */])("scroll", handleScroll, THROTTLE_DELAY);
-    add();
+var flexClasses = [{
+  ".layout, .layout.horizontal": __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].layout,
+  ".layout.horizontal.inline, .layout.vertical.inline": __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].layoutInline,
+  ".layout.horizontal": __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].layoutHorizontal,
+  ".layout.horizontal.reverse": __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].layoutHorizontalReverse,
+  ".layout.vertical": __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].layoutVertical,
+  ".layout.vertical.reverse": __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].layoutVerticalReverse,
+  ".layout.wrap": __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].layoutWrap,
+  ".layout.wrap.reverse": __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].layoutWrapReverse,
+  ".flex": __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].flex(1),
+  ".span.flex": { "display": "block" }, // for IE 10
+  ".flex.auto-vertical": __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].flexAutoVertical,
+  ".flex.auto": __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].flexAuto,
+  ".flex.none": __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].flexIndex("none"),
+  ".flex.one": __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].flexIndex(1),
+  ".flex.two": __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].flexIndex(2),
+  ".flex.three": __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].flexIndex(3),
+  ".flex.four": __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].flexIndex(4),
+  ".flex.five": __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].flexIndex(5),
+  ".flex.six": __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].flexIndex(6),
+  ".flex.seven": __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].flexIndex(7),
+  ".flex.eight": __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].flexIndex(8),
+  ".flex.nine": __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].flexIndex(9),
+  ".flex.ten": __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].flexIndex(10),
+  ".flex.eleven": __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].flexIndex(11),
+  ".flex.twelve": __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].flexIndex(12),
+
+  // alignment in cross axis
+  ".layout.start": __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].layoutStart,
+  ".layout.center, .layout.center-center": __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].layoutCenter,
+  ".layout.end": __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].layoutEnd,
+
+  // alignment in main axis
+  ".layout.start-justified": __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].layoutStartJustified,
+  ".layout.center-justified, .layout.center-center": __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].layoutCenterJustified,
+  ".layout.end-justified": __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].layoutEndJustified,
+  ".layout.around-justified": __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].layoutAroundJustified,
+  ".layout.justified": __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].layoutJustified,
+
+  // self alignment
+  ".self-start": __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].selfStart,
+  ".self-center": __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].selfCenter,
+  ".self-end": __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].selfEnd,
+  ".self-stretch": __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["a" /* flex */].selfStretch
+}];
+
+var commonClasses = [{
+  ".pe-block": {
+    display: "block"
+  },
+
+  ".pe-inline-block": {
+    display: "inline-block"
+  },
+
+  // ie support for hidden
+  ".pe-hidden": {
+    display: "none !important"
+  },
+
+  ".pe-relative": {
+    position: "relative"
+  },
+
+  ".pe-absolute": {
+    position: "absolute"
+  },
+
+  ".pe-fit": {
+    position: "absolute",
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0
+  },
+
+  ".pe-fullbleed": {
+    margin: 0,
+    height: "100vh"
   }
+}];
+
+function _toConsumableArray$1(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+var layoutStyles = [].concat(_toConsumableArray$1(flexClasses), _toConsumableArray$1(commonClasses));
+
+var addLayoutStyles = function addLayoutStyles() {
+  return __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["d" /* styler */].add("pe-layout", flexClasses, commonClasses);
 };
 
 
@@ -4754,854 +4511,6 @@ var addFastClick = function addFastClick() {
 
 /***/ }),
 /* 27 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_RESULT__;;(function () {
-	'use strict';
-
-	/**
-	 * @preserve FastClick: polyfill to remove click delays on browsers with touch UIs.
-	 *
-	 * @codingstandard ftlabs-jsv2
-	 * @copyright The Financial Times Limited [All Rights Reserved]
-	 * @license MIT License (see LICENSE.txt)
-	 */
-
-	/*jslint browser:true, node:true*/
-	/*global define, Event, Node*/
-
-
-	/**
-	 * Instantiate fast-clicking listeners on the specified layer.
-	 *
-	 * @constructor
-	 * @param {Element} layer The layer to listen on
-	 * @param {Object} [options={}] The options to override the defaults
-	 */
-	function FastClick(layer, options) {
-		var oldOnClick;
-
-		options = options || {};
-
-		/**
-		 * Whether a click is currently being tracked.
-		 *
-		 * @type boolean
-		 */
-		this.trackingClick = false;
-
-
-		/**
-		 * Timestamp for when click tracking started.
-		 *
-		 * @type number
-		 */
-		this.trackingClickStart = 0;
-
-
-		/**
-		 * The element being tracked for a click.
-		 *
-		 * @type EventTarget
-		 */
-		this.targetElement = null;
-
-
-		/**
-		 * X-coordinate of touch start event.
-		 *
-		 * @type number
-		 */
-		this.touchStartX = 0;
-
-
-		/**
-		 * Y-coordinate of touch start event.
-		 *
-		 * @type number
-		 */
-		this.touchStartY = 0;
-
-
-		/**
-		 * ID of the last touch, retrieved from Touch.identifier.
-		 *
-		 * @type number
-		 */
-		this.lastTouchIdentifier = 0;
-
-
-		/**
-		 * Touchmove boundary, beyond which a click will be cancelled.
-		 *
-		 * @type number
-		 */
-		this.touchBoundary = options.touchBoundary || 10;
-
-
-		/**
-		 * The FastClick layer.
-		 *
-		 * @type Element
-		 */
-		this.layer = layer;
-
-		/**
-		 * The minimum time between tap(touchstart and touchend) events
-		 *
-		 * @type number
-		 */
-		this.tapDelay = options.tapDelay || 200;
-
-		/**
-		 * The maximum time for a tap
-		 *
-		 * @type number
-		 */
-		this.tapTimeout = options.tapTimeout || 700;
-
-		if (FastClick.notNeeded(layer)) {
-			return;
-		}
-
-		// Some old versions of Android don't have Function.prototype.bind
-		function bind(method, context) {
-			return function() { return method.apply(context, arguments); };
-		}
-
-
-		var methods = ['onMouse', 'onClick', 'onTouchStart', 'onTouchMove', 'onTouchEnd', 'onTouchCancel'];
-		var context = this;
-		for (var i = 0, l = methods.length; i < l; i++) {
-			context[methods[i]] = bind(context[methods[i]], context);
-		}
-
-		// Set up event handlers as required
-		if (deviceIsAndroid) {
-			layer.addEventListener('mouseover', this.onMouse, true);
-			layer.addEventListener('mousedown', this.onMouse, true);
-			layer.addEventListener('mouseup', this.onMouse, true);
-		}
-
-		layer.addEventListener('click', this.onClick, true);
-		layer.addEventListener('touchstart', this.onTouchStart, false);
-		layer.addEventListener('touchmove', this.onTouchMove, false);
-		layer.addEventListener('touchend', this.onTouchEnd, false);
-		layer.addEventListener('touchcancel', this.onTouchCancel, false);
-
-		// Hack is required for browsers that don't support Event#stopImmediatePropagation (e.g. Android 2)
-		// which is how FastClick normally stops click events bubbling to callbacks registered on the FastClick
-		// layer when they are cancelled.
-		if (!Event.prototype.stopImmediatePropagation) {
-			layer.removeEventListener = function(type, callback, capture) {
-				var rmv = Node.prototype.removeEventListener;
-				if (type === 'click') {
-					rmv.call(layer, type, callback.hijacked || callback, capture);
-				} else {
-					rmv.call(layer, type, callback, capture);
-				}
-			};
-
-			layer.addEventListener = function(type, callback, capture) {
-				var adv = Node.prototype.addEventListener;
-				if (type === 'click') {
-					adv.call(layer, type, callback.hijacked || (callback.hijacked = function(event) {
-						if (!event.propagationStopped) {
-							callback(event);
-						}
-					}), capture);
-				} else {
-					adv.call(layer, type, callback, capture);
-				}
-			};
-		}
-
-		// If a handler is already declared in the element's onclick attribute, it will be fired before
-		// FastClick's onClick handler. Fix this by pulling out the user-defined handler function and
-		// adding it as listener.
-		if (typeof layer.onclick === 'function') {
-
-			// Android browser on at least 3.2 requires a new reference to the function in layer.onclick
-			// - the old one won't work if passed to addEventListener directly.
-			oldOnClick = layer.onclick;
-			layer.addEventListener('click', function(event) {
-				oldOnClick(event);
-			}, false);
-			layer.onclick = null;
-		}
-	}
-
-	/**
-	* Windows Phone 8.1 fakes user agent string to look like Android and iPhone.
-	*
-	* @type boolean
-	*/
-	var deviceIsWindowsPhone = navigator.userAgent.indexOf("Windows Phone") >= 0;
-
-	/**
-	 * Android requires exceptions.
-	 *
-	 * @type boolean
-	 */
-	var deviceIsAndroid = navigator.userAgent.indexOf('Android') > 0 && !deviceIsWindowsPhone;
-
-
-	/**
-	 * iOS requires exceptions.
-	 *
-	 * @type boolean
-	 */
-	var deviceIsIOS = /iP(ad|hone|od)/.test(navigator.userAgent) && !deviceIsWindowsPhone;
-
-
-	/**
-	 * iOS 4 requires an exception for select elements.
-	 *
-	 * @type boolean
-	 */
-	var deviceIsIOS4 = deviceIsIOS && (/OS 4_\d(_\d)?/).test(navigator.userAgent);
-
-
-	/**
-	 * iOS 6.0-7.* requires the target element to be manually derived
-	 *
-	 * @type boolean
-	 */
-	var deviceIsIOSWithBadTarget = deviceIsIOS && (/OS [6-7]_\d/).test(navigator.userAgent);
-
-	/**
-	 * BlackBerry requires exceptions.
-	 *
-	 * @type boolean
-	 */
-	var deviceIsBlackBerry10 = navigator.userAgent.indexOf('BB10') > 0;
-
-	/**
-	 * Determine whether a given element requires a native click.
-	 *
-	 * @param {EventTarget|Element} target Target DOM element
-	 * @returns {boolean} Returns true if the element needs a native click
-	 */
-	FastClick.prototype.needsClick = function(target) {
-		switch (target.nodeName.toLowerCase()) {
-
-		// Don't send a synthetic click to disabled inputs (issue #62)
-		case 'button':
-		case 'select':
-		case 'textarea':
-			if (target.disabled) {
-				return true;
-			}
-
-			break;
-		case 'input':
-
-			// File inputs need real clicks on iOS 6 due to a browser bug (issue #68)
-			if ((deviceIsIOS && target.type === 'file') || target.disabled) {
-				return true;
-			}
-
-			break;
-		case 'label':
-		case 'iframe': // iOS8 homescreen apps can prevent events bubbling into frames
-		case 'video':
-			return true;
-		}
-
-		return (/\bneedsclick\b/).test(target.className);
-	};
-
-
-	/**
-	 * Determine whether a given element requires a call to focus to simulate click into element.
-	 *
-	 * @param {EventTarget|Element} target Target DOM element
-	 * @returns {boolean} Returns true if the element requires a call to focus to simulate native click.
-	 */
-	FastClick.prototype.needsFocus = function(target) {
-		switch (target.nodeName.toLowerCase()) {
-		case 'textarea':
-			return true;
-		case 'select':
-			return !deviceIsAndroid;
-		case 'input':
-			switch (target.type) {
-			case 'button':
-			case 'checkbox':
-			case 'file':
-			case 'image':
-			case 'radio':
-			case 'submit':
-				return false;
-			}
-
-			// No point in attempting to focus disabled inputs
-			return !target.disabled && !target.readOnly;
-		default:
-			return (/\bneedsfocus\b/).test(target.className);
-		}
-	};
-
-
-	/**
-	 * Send a click event to the specified element.
-	 *
-	 * @param {EventTarget|Element} targetElement
-	 * @param {Event} event
-	 */
-	FastClick.prototype.sendClick = function(targetElement, event) {
-		var clickEvent, touch;
-
-		// On some Android devices activeElement needs to be blurred otherwise the synthetic click will have no effect (#24)
-		if (document.activeElement && document.activeElement !== targetElement) {
-			document.activeElement.blur();
-		}
-
-		touch = event.changedTouches[0];
-
-		// Synthesise a click event, with an extra attribute so it can be tracked
-		clickEvent = document.createEvent('MouseEvents');
-		clickEvent.initMouseEvent(this.determineEventType(targetElement), true, true, window, 1, touch.screenX, touch.screenY, touch.clientX, touch.clientY, false, false, false, false, 0, null);
-		clickEvent.forwardedTouchEvent = true;
-		targetElement.dispatchEvent(clickEvent);
-	};
-
-	FastClick.prototype.determineEventType = function(targetElement) {
-
-		//Issue #159: Android Chrome Select Box does not open with a synthetic click event
-		if (deviceIsAndroid && targetElement.tagName.toLowerCase() === 'select') {
-			return 'mousedown';
-		}
-
-		return 'click';
-	};
-
-
-	/**
-	 * @param {EventTarget|Element} targetElement
-	 */
-	FastClick.prototype.focus = function(targetElement) {
-		var length;
-
-		// Issue #160: on iOS 7, some input elements (e.g. date datetime month) throw a vague TypeError on setSelectionRange. These elements don't have an integer value for the selectionStart and selectionEnd properties, but unfortunately that can't be used for detection because accessing the properties also throws a TypeError. Just check the type instead. Filed as Apple bug #15122724.
-		if (deviceIsIOS && targetElement.setSelectionRange && targetElement.type.indexOf('date') !== 0 && targetElement.type !== 'time' && targetElement.type !== 'month') {
-			length = targetElement.value.length;
-			targetElement.setSelectionRange(length, length);
-		} else {
-			targetElement.focus();
-		}
-	};
-
-
-	/**
-	 * Check whether the given target element is a child of a scrollable layer and if so, set a flag on it.
-	 *
-	 * @param {EventTarget|Element} targetElement
-	 */
-	FastClick.prototype.updateScrollParent = function(targetElement) {
-		var scrollParent, parentElement;
-
-		scrollParent = targetElement.fastClickScrollParent;
-
-		// Attempt to discover whether the target element is contained within a scrollable layer. Re-check if the
-		// target element was moved to another parent.
-		if (!scrollParent || !scrollParent.contains(targetElement)) {
-			parentElement = targetElement;
-			do {
-				if (parentElement.scrollHeight > parentElement.offsetHeight) {
-					scrollParent = parentElement;
-					targetElement.fastClickScrollParent = parentElement;
-					break;
-				}
-
-				parentElement = parentElement.parentElement;
-			} while (parentElement);
-		}
-
-		// Always update the scroll top tracker if possible.
-		if (scrollParent) {
-			scrollParent.fastClickLastScrollTop = scrollParent.scrollTop;
-		}
-	};
-
-
-	/**
-	 * @param {EventTarget} targetElement
-	 * @returns {Element|EventTarget}
-	 */
-	FastClick.prototype.getTargetElementFromEventTarget = function(eventTarget) {
-
-		// On some older browsers (notably Safari on iOS 4.1 - see issue #56) the event target may be a text node.
-		if (eventTarget.nodeType === Node.TEXT_NODE) {
-			return eventTarget.parentNode;
-		}
-
-		return eventTarget;
-	};
-
-
-	/**
-	 * On touch start, record the position and scroll offset.
-	 *
-	 * @param {Event} event
-	 * @returns {boolean}
-	 */
-	FastClick.prototype.onTouchStart = function(event) {
-		var targetElement, touch, selection;
-
-		// Ignore multiple touches, otherwise pinch-to-zoom is prevented if both fingers are on the FastClick element (issue #111).
-		if (event.targetTouches.length > 1) {
-			return true;
-		}
-
-		targetElement = this.getTargetElementFromEventTarget(event.target);
-		touch = event.targetTouches[0];
-
-		if (deviceIsIOS) {
-
-			// Only trusted events will deselect text on iOS (issue #49)
-			selection = window.getSelection();
-			if (selection.rangeCount && !selection.isCollapsed) {
-				return true;
-			}
-
-			if (!deviceIsIOS4) {
-
-				// Weird things happen on iOS when an alert or confirm dialog is opened from a click event callback (issue #23):
-				// when the user next taps anywhere else on the page, new touchstart and touchend events are dispatched
-				// with the same identifier as the touch event that previously triggered the click that triggered the alert.
-				// Sadly, there is an issue on iOS 4 that causes some normal touch events to have the same identifier as an
-				// immediately preceeding touch event (issue #52), so this fix is unavailable on that platform.
-				// Issue 120: touch.identifier is 0 when Chrome dev tools 'Emulate touch events' is set with an iOS device UA string,
-				// which causes all touch events to be ignored. As this block only applies to iOS, and iOS identifiers are always long,
-				// random integers, it's safe to to continue if the identifier is 0 here.
-				if (touch.identifier && touch.identifier === this.lastTouchIdentifier) {
-					event.preventDefault();
-					return false;
-				}
-
-				this.lastTouchIdentifier = touch.identifier;
-
-				// If the target element is a child of a scrollable layer (using -webkit-overflow-scrolling: touch) and:
-				// 1) the user does a fling scroll on the scrollable layer
-				// 2) the user stops the fling scroll with another tap
-				// then the event.target of the last 'touchend' event will be the element that was under the user's finger
-				// when the fling scroll was started, causing FastClick to send a click event to that layer - unless a check
-				// is made to ensure that a parent layer was not scrolled before sending a synthetic click (issue #42).
-				this.updateScrollParent(targetElement);
-			}
-		}
-
-		this.trackingClick = true;
-		this.trackingClickStart = event.timeStamp;
-		this.targetElement = targetElement;
-
-		this.touchStartX = touch.pageX;
-		this.touchStartY = touch.pageY;
-
-		// Prevent phantom clicks on fast double-tap (issue #36)
-		if ((event.timeStamp - this.lastClickTime) < this.tapDelay) {
-			event.preventDefault();
-		}
-
-		return true;
-	};
-
-
-	/**
-	 * Based on a touchmove event object, check whether the touch has moved past a boundary since it started.
-	 *
-	 * @param {Event} event
-	 * @returns {boolean}
-	 */
-	FastClick.prototype.touchHasMoved = function(event) {
-		var touch = event.changedTouches[0], boundary = this.touchBoundary;
-
-		if (Math.abs(touch.pageX - this.touchStartX) > boundary || Math.abs(touch.pageY - this.touchStartY) > boundary) {
-			return true;
-		}
-
-		return false;
-	};
-
-
-	/**
-	 * Update the last position.
-	 *
-	 * @param {Event} event
-	 * @returns {boolean}
-	 */
-	FastClick.prototype.onTouchMove = function(event) {
-		if (!this.trackingClick) {
-			return true;
-		}
-
-		// If the touch has moved, cancel the click tracking
-		if (this.targetElement !== this.getTargetElementFromEventTarget(event.target) || this.touchHasMoved(event)) {
-			this.trackingClick = false;
-			this.targetElement = null;
-		}
-
-		return true;
-	};
-
-
-	/**
-	 * Attempt to find the labelled control for the given label element.
-	 *
-	 * @param {EventTarget|HTMLLabelElement} labelElement
-	 * @returns {Element|null}
-	 */
-	FastClick.prototype.findControl = function(labelElement) {
-
-		// Fast path for newer browsers supporting the HTML5 control attribute
-		if (labelElement.control !== undefined) {
-			return labelElement.control;
-		}
-
-		// All browsers under test that support touch events also support the HTML5 htmlFor attribute
-		if (labelElement.htmlFor) {
-			return document.getElementById(labelElement.htmlFor);
-		}
-
-		// If no for attribute exists, attempt to retrieve the first labellable descendant element
-		// the list of which is defined here: http://www.w3.org/TR/html5/forms.html#category-label
-		return labelElement.querySelector('button, input:not([type=hidden]), keygen, meter, output, progress, select, textarea');
-	};
-
-
-	/**
-	 * On touch end, determine whether to send a click event at once.
-	 *
-	 * @param {Event} event
-	 * @returns {boolean}
-	 */
-	FastClick.prototype.onTouchEnd = function(event) {
-		var forElement, trackingClickStart, targetTagName, scrollParent, touch, targetElement = this.targetElement;
-
-		if (!this.trackingClick) {
-			return true;
-		}
-
-		// Prevent phantom clicks on fast double-tap (issue #36)
-		if ((event.timeStamp - this.lastClickTime) < this.tapDelay) {
-			this.cancelNextClick = true;
-			return true;
-		}
-
-		if ((event.timeStamp - this.trackingClickStart) > this.tapTimeout) {
-			return true;
-		}
-
-		// Reset to prevent wrong click cancel on input (issue #156).
-		this.cancelNextClick = false;
-
-		this.lastClickTime = event.timeStamp;
-
-		trackingClickStart = this.trackingClickStart;
-		this.trackingClick = false;
-		this.trackingClickStart = 0;
-
-		// On some iOS devices, the targetElement supplied with the event is invalid if the layer
-		// is performing a transition or scroll, and has to be re-detected manually. Note that
-		// for this to function correctly, it must be called *after* the event target is checked!
-		// See issue #57; also filed as rdar://13048589 .
-		if (deviceIsIOSWithBadTarget) {
-			touch = event.changedTouches[0];
-
-			// In certain cases arguments of elementFromPoint can be negative, so prevent setting targetElement to null
-			targetElement = document.elementFromPoint(touch.pageX - window.pageXOffset, touch.pageY - window.pageYOffset) || targetElement;
-			targetElement.fastClickScrollParent = this.targetElement.fastClickScrollParent;
-		}
-
-		targetTagName = targetElement.tagName.toLowerCase();
-		if (targetTagName === 'label') {
-			forElement = this.findControl(targetElement);
-			if (forElement) {
-				this.focus(targetElement);
-				if (deviceIsAndroid) {
-					return false;
-				}
-
-				targetElement = forElement;
-			}
-		} else if (this.needsFocus(targetElement)) {
-
-			// Case 1: If the touch started a while ago (best guess is 100ms based on tests for issue #36) then focus will be triggered anyway. Return early and unset the target element reference so that the subsequent click will be allowed through.
-			// Case 2: Without this exception for input elements tapped when the document is contained in an iframe, then any inputted text won't be visible even though the value attribute is updated as the user types (issue #37).
-			if ((event.timeStamp - trackingClickStart) > 100 || (deviceIsIOS && window.top !== window && targetTagName === 'input')) {
-				this.targetElement = null;
-				return false;
-			}
-
-			this.focus(targetElement);
-			this.sendClick(targetElement, event);
-
-			// Select elements need the event to go through on iOS 4, otherwise the selector menu won't open.
-			// Also this breaks opening selects when VoiceOver is active on iOS6, iOS7 (and possibly others)
-			if (!deviceIsIOS || targetTagName !== 'select') {
-				this.targetElement = null;
-				event.preventDefault();
-			}
-
-			return false;
-		}
-
-		if (deviceIsIOS && !deviceIsIOS4) {
-
-			// Don't send a synthetic click event if the target element is contained within a parent layer that was scrolled
-			// and this tap is being used to stop the scrolling (usually initiated by a fling - issue #42).
-			scrollParent = targetElement.fastClickScrollParent;
-			if (scrollParent && scrollParent.fastClickLastScrollTop !== scrollParent.scrollTop) {
-				return true;
-			}
-		}
-
-		// Prevent the actual click from going though - unless the target node is marked as requiring
-		// real clicks or if it is in the whitelist in which case only non-programmatic clicks are permitted.
-		if (!this.needsClick(targetElement)) {
-			event.preventDefault();
-			this.sendClick(targetElement, event);
-		}
-
-		return false;
-	};
-
-
-	/**
-	 * On touch cancel, stop tracking the click.
-	 *
-	 * @returns {void}
-	 */
-	FastClick.prototype.onTouchCancel = function() {
-		this.trackingClick = false;
-		this.targetElement = null;
-	};
-
-
-	/**
-	 * Determine mouse events which should be permitted.
-	 *
-	 * @param {Event} event
-	 * @returns {boolean}
-	 */
-	FastClick.prototype.onMouse = function(event) {
-
-		// If a target element was never set (because a touch event was never fired) allow the event
-		if (!this.targetElement) {
-			return true;
-		}
-
-		if (event.forwardedTouchEvent) {
-			return true;
-		}
-
-		// Programmatically generated events targeting a specific element should be permitted
-		if (!event.cancelable) {
-			return true;
-		}
-
-		// Derive and check the target element to see whether the mouse event needs to be permitted;
-		// unless explicitly enabled, prevent non-touch click events from triggering actions,
-		// to prevent ghost/doubleclicks.
-		if (!this.needsClick(this.targetElement) || this.cancelNextClick) {
-
-			// Prevent any user-added listeners declared on FastClick element from being fired.
-			if (event.stopImmediatePropagation) {
-				event.stopImmediatePropagation();
-			} else {
-
-				// Part of the hack for browsers that don't support Event#stopImmediatePropagation (e.g. Android 2)
-				event.propagationStopped = true;
-			}
-
-			// Cancel the event
-			event.stopPropagation();
-			event.preventDefault();
-
-			return false;
-		}
-
-		// If the mouse event is permitted, return true for the action to go through.
-		return true;
-	};
-
-
-	/**
-	 * On actual clicks, determine whether this is a touch-generated click, a click action occurring
-	 * naturally after a delay after a touch (which needs to be cancelled to avoid duplication), or
-	 * an actual click which should be permitted.
-	 *
-	 * @param {Event} event
-	 * @returns {boolean}
-	 */
-	FastClick.prototype.onClick = function(event) {
-		var permitted;
-
-		// It's possible for another FastClick-like library delivered with third-party code to fire a click event before FastClick does (issue #44). In that case, set the click-tracking flag back to false and return early. This will cause onTouchEnd to return early.
-		if (this.trackingClick) {
-			this.targetElement = null;
-			this.trackingClick = false;
-			return true;
-		}
-
-		// Very odd behaviour on iOS (issue #18): if a submit element is present inside a form and the user hits enter in the iOS simulator or clicks the Go button on the pop-up OS keyboard the a kind of 'fake' click event will be triggered with the submit-type input element as the target.
-		if (event.target.type === 'submit' && event.detail === 0) {
-			return true;
-		}
-
-		permitted = this.onMouse(event);
-
-		// Only unset targetElement if the click is not permitted. This will ensure that the check for !targetElement in onMouse fails and the browser's click doesn't go through.
-		if (!permitted) {
-			this.targetElement = null;
-		}
-
-		// If clicks are permitted, return true for the action to go through.
-		return permitted;
-	};
-
-
-	/**
-	 * Remove all FastClick's event listeners.
-	 *
-	 * @returns {void}
-	 */
-	FastClick.prototype.destroy = function() {
-		var layer = this.layer;
-
-		if (deviceIsAndroid) {
-			layer.removeEventListener('mouseover', this.onMouse, true);
-			layer.removeEventListener('mousedown', this.onMouse, true);
-			layer.removeEventListener('mouseup', this.onMouse, true);
-		}
-
-		layer.removeEventListener('click', this.onClick, true);
-		layer.removeEventListener('touchstart', this.onTouchStart, false);
-		layer.removeEventListener('touchmove', this.onTouchMove, false);
-		layer.removeEventListener('touchend', this.onTouchEnd, false);
-		layer.removeEventListener('touchcancel', this.onTouchCancel, false);
-	};
-
-
-	/**
-	 * Check whether FastClick is needed.
-	 *
-	 * @param {Element} layer The layer to listen on
-	 */
-	FastClick.notNeeded = function(layer) {
-		var metaViewport;
-		var chromeVersion;
-		var blackberryVersion;
-		var firefoxVersion;
-
-		// Devices that don't support touch don't need FastClick
-		if (typeof window.ontouchstart === 'undefined') {
-			return true;
-		}
-
-		// Chrome version - zero for other browsers
-		chromeVersion = +(/Chrome\/([0-9]+)/.exec(navigator.userAgent) || [,0])[1];
-
-		if (chromeVersion) {
-
-			if (deviceIsAndroid) {
-				metaViewport = document.querySelector('meta[name=viewport]');
-
-				if (metaViewport) {
-					// Chrome on Android with user-scalable="no" doesn't need FastClick (issue #89)
-					if (metaViewport.content.indexOf('user-scalable=no') !== -1) {
-						return true;
-					}
-					// Chrome 32 and above with width=device-width or less don't need FastClick
-					if (chromeVersion > 31 && document.documentElement.scrollWidth <= window.outerWidth) {
-						return true;
-					}
-				}
-
-			// Chrome desktop doesn't need FastClick (issue #15)
-			} else {
-				return true;
-			}
-		}
-
-		if (deviceIsBlackBerry10) {
-			blackberryVersion = navigator.userAgent.match(/Version\/([0-9]*)\.([0-9]*)/);
-
-			// BlackBerry 10.3+ does not require Fastclick library.
-			// https://github.com/ftlabs/fastclick/issues/251
-			if (blackberryVersion[1] >= 10 && blackberryVersion[2] >= 3) {
-				metaViewport = document.querySelector('meta[name=viewport]');
-
-				if (metaViewport) {
-					// user-scalable=no eliminates click delay.
-					if (metaViewport.content.indexOf('user-scalable=no') !== -1) {
-						return true;
-					}
-					// width=device-width (or less than device-width) eliminates click delay.
-					if (document.documentElement.scrollWidth <= window.outerWidth) {
-						return true;
-					}
-				}
-			}
-		}
-
-		// IE10 with -ms-touch-action: none or manipulation, which disables double-tap-to-zoom (issue #97)
-		if (layer.style.msTouchAction === 'none' || layer.style.touchAction === 'manipulation') {
-			return true;
-		}
-
-		// Firefox version - zero for other browsers
-		firefoxVersion = +(/Firefox\/([0-9]+)/.exec(navigator.userAgent) || [,0])[1];
-
-		if (firefoxVersion >= 27) {
-			// Firefox 27+ does not have tap delay if the content is not zoomable - https://bugzilla.mozilla.org/show_bug.cgi?id=922896
-
-			metaViewport = document.querySelector('meta[name=viewport]');
-			if (metaViewport && (metaViewport.content.indexOf('user-scalable=no') !== -1 || document.documentElement.scrollWidth <= window.outerWidth)) {
-				return true;
-			}
-		}
-
-		// IE11: prefixed -ms-touch-action is no longer supported and it's recomended to use non-prefixed version
-		// http://msdn.microsoft.com/en-us/library/windows/apps/Hh767313.aspx
-		if (layer.style.touchAction === 'none' || layer.style.touchAction === 'manipulation') {
-			return true;
-		}
-
-		return false;
-	};
-
-
-	/**
-	 * Factory method for creating a FastClick object
-	 *
-	 * @param {Element} layer The layer to listen on
-	 * @param {Object} [options={}] The options to override the defaults
-	 */
-	FastClick.attach = function(layer, options) {
-		return new FastClick(layer, options);
-	};
-
-
-	if (true) {
-
-		// AMD. Register as an anonymous module.
-		!(__WEBPACK_AMD_DEFINE_RESULT__ = function() {
-			return FastClick;
-		}.call(exports, __webpack_require__, exports, module),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	} else if (typeof module !== 'undefined' && module.exports) {
-		module.exports = FastClick.attach;
-		module.exports.FastClick = FastClick;
-	} else {
-		window.FastClick = FastClick;
-	}
-}());
-
-
-/***/ }),
-/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6232,7 +5141,7 @@ exports.prefixPlugin = prefixPlugin;
 
 
 /***/ }),
-/* 29 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6895,95 +5804,7 @@ module.exports = j2c;
 
 
 /***/ }),
-/* 30 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(2);
-/* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_mithril_button__ = __webpack_require__(9);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_1_polythene_mithril_button__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_mithril_card__ = __webpack_require__(32);
-/* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_mithril_checkbox__ = __webpack_require__(37);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_3_polythene_mithril_checkbox__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_polythene_mithril_dialog__ = __webpack_require__(39);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_4_polythene_mithril_dialog__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_polythene_mithril_dialog_pane__ = __webpack_require__(19);
-/* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_polythene_mithril_fab__ = __webpack_require__(42);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_6_polythene_mithril_fab__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_polythene_mithril_icon__ = __webpack_require__(4);
-/* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_polythene_mithril_icon_button__ = __webpack_require__(8);
-/* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_polythene_mithril_list__ = __webpack_require__(45);
-/* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_polythene_mithril_list_tile__ = __webpack_require__(11);
-/* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_polythene_mithril_menu__ = __webpack_require__(47);
-/* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_polythene_mithril_notification__ = __webpack_require__(48);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_12_polythene_mithril_notification__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_polythene_mithril_radio_button__ = __webpack_require__(22);
-/* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_polythene_mithril_radio_group__ = __webpack_require__(50);
-/* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_polythene_mithril_raised_button__ = __webpack_require__(20);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "g", function() { return __WEBPACK_IMPORTED_MODULE_15_polythene_mithril_raised_button__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_polythene_mithril_ripple__ = __webpack_require__(10);
-/* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_polythene_mithril_search__ = __webpack_require__(52);
-/* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_polythene_mithril_shadow__ = __webpack_require__(5);
-/* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_polythene_mithril_slider__ = __webpack_require__(55);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "i", function() { return __WEBPACK_IMPORTED_MODULE_19_polythene_mithril_slider__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20_polythene_mithril_snackbar__ = __webpack_require__(57);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "j", function() { return __WEBPACK_IMPORTED_MODULE_20_polythene_mithril_snackbar__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21_polythene_mithril_spinner__ = __webpack_require__(59);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_21_polythene_mithril_spinner__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22_polythene_mithril_svg__ = __webpack_require__(17);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "h", function() { return __WEBPACK_IMPORTED_MODULE_22_polythene_mithril_svg__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23_polythene_mithril_switch__ = __webpack_require__(61);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "k", function() { return __WEBPACK_IMPORTED_MODULE_23_polythene_mithril_switch__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24_polythene_mithril_tabs__ = __webpack_require__(63);
-/* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25_polythene_mithril_textfield__ = __webpack_require__(23);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "l", function() { return __WEBPACK_IMPORTED_MODULE_25_polythene_mithril_textfield__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26_polythene_mithril_toolbar__ = __webpack_require__(65);
-/* unused harmony namespace reexport */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/***/ }),
-/* 31 */
+/* 29 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6991,7 +5812,7 @@ module.exports = j2c;
 /* unused harmony export classes */
 /* unused harmony export vars */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_theme__ = __webpack_require__(3);
 
 
@@ -7235,13 +6056,13 @@ var ripple = Object.freeze({
 
 
 /***/ }),
-/* 32 */
+/* 30 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export Card */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_card__ = __webpack_require__(33);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Card; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_card__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_mithril_icon__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_mithril_list_tile__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_polythene_mithril_shadow__ = __webpack_require__(5);
@@ -7277,14 +6098,13 @@ var Card = Object(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["b" /* Vi
   }
 }));
 
-Card.theme = __WEBPACK_IMPORTED_MODULE_1_polythene_core_card__["a" /* coreCard */].theme;
 Card.displayName = "Card";
 
 
 
 
 /***/ }),
-/* 33 */
+/* 31 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7295,8 +6115,8 @@ Card.displayName = "Card";
 /* unused harmony export classes */
 /* unused harmony export vars */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_theme__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_theme__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__ = __webpack_require__(2);
 
 
 
@@ -7339,363 +6159,7 @@ var classes = {
   textTight: "pe-card__text--tight"
 };
 
-var padding_v = 24;
-var padding_actions_v = 8;
-var actions_button_margin_v = 2;
-
-var vars$1 = {
-  image_size_small: 1 * 80,
-  image_size_regular: 1.4 * 80,
-  image_size_medium: 2 * 80,
-  image_size_large: 3 * 80,
-  border_radius: __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].unit_block_border_radius,
-  padding_h: 16,
-  offset_small_padding_v: padding_v - 16,
-  padding_actions_h: 8,
-  title_padding_h: 16,
-  title_padding_v: 24,
-  tight_title_padding_bottom: 16,
-  text_padding_h: 16,
-  text_padding_v: 16,
-  text_padding_bottom: 24,
-  tight_text_padding_bottom: 16,
-  subtitle_line_height_padding_bottom: 7,
-  text_line_height_padding_top: 6,
-  text_line_height_padding_bottom: 7,
-  one_line_height_with_icon: 72,
-  icon_element_width: 72 - 4,
-  one_line_padding_v: 8,
-  actions_padding_v: padding_actions_v - 6,
-  actions_button_margin_v: actions_button_margin_v,
-  actions_vertical_padding_v: padding_actions_v - actions_button_margin_v,
-
-  color_light_main_background: Object(__WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].color_light_background),
-  color_light_title_text: Object(__WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].blend_light_text_primary),
-  color_light_subtitle_text: Object(__WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].blend_light_text_secondary),
-  color_light_text: Object(__WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].blend_light_text_regular),
-  color_light_actions_border: Object(__WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].blend_light_border_light),
-  color_light_overlay_background: Object(__WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].color_light_background, __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].blend_light_overlay_background),
-
-  color_dark_main_background: Object(__WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].color_dark_background),
-  color_dark_title_text: Object(__WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].blend_dark_text_primary),
-  color_dark_subtitle_text: Object(__WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].blend_dark_text_secondary),
-  color_dark_text: Object(__WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].blend_dark_text_regular),
-  color_dark_actions_border: Object(__WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].blend_dark_border_light),
-  color_dark_overlay_background: Object(__WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].color_dark_background, __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].blend_dark_overlay_background)
-};
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var layout = (function (selector, componentVars) {
-  return [_defineProperty({}, selector, {
-    display: "block",
-    position: "relative",
-    borderRadius: componentVars.border_radius + "px",
-
-    "&, a:link, a:visited": {
-      textDecoration: "none"
-    },
-
-    " .pe-card__content": {
-      position: "relative",
-      borderRadius: "inherit",
-      overflow: "hidden",
-      width: "inherit",
-      height: "inherit"
-    },
-
-    " .pe-card__media": {
-      position: "relative",
-      overflow: "hidden",
-      borderTopLeftRadius: "inherit",
-      borderTopRightRadius: "inherit",
-      zIndex: 1, // makes rounded corners on absolute images work (without this, no rounded image)
-
-      "&.pe-card__media--landscape": {
-        paddingBottom: 100 / 16 * 9 + "%"
-      },
-      "&.pe-card__media--square": {
-        paddingBottom: "100%"
-      },
-      "&:last-child": {
-        "&, img": {
-          borderBottomLeftRadius: componentVars.border_radius + "px",
-          borderBottomRightRadius: componentVars.border_radius + "px"
-        }
-      },
-      " img": [__WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["b" /* mixin */].fit(), {
-        display: "none",
-        width: "100%",
-        maxWidth: "none",
-
-        "&.pe-card__media--crop-x": {
-          width: "100%",
-          height: "auto",
-          display: "block"
-        },
-        "&.pe-card__media--crop-y": {
-          height: "100%",
-          width: "auto",
-          display: "block"
-        }
-      }]
-    },
-
-    " .pe-card__header + .pe-card__media": {
-      borderTopLeftRadius: 0,
-      borderTopRightRadius: 0
-    },
-
-    " .pe-card__primary-media": {
-      margin: "16px 16px 0 16px",
-
-      " .pe-card__media--small": {
-        width: componentVars.image_size_small + "px"
-      },
-      " .pe-card__media--regular": {
-        width: componentVars.image_size_regular + "px"
-      },
-      " .pe-card__media--medium": {
-        width: componentVars.image_size_medium + "px"
-      },
-      " .pe-card__media--large": {
-        width: componentVars.image_size_large + "px",
-        marginBottom: "16px"
-      },
-      " .pe-card__media": {
-        "&, img": {
-          borderRadius: 0
-        }
-      },
-
-      " .shadow + &": {
-        // first child
-        "&, img": {
-          borderTopLeftRadius: componentVars.border_radius + "px",
-          borderTopRightRadius: componentVars.border_radius + "px"
-        }
-      }
-    },
-
-    " .pe-card__overlay": __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["b" /* mixin */].fit(),
-
-    " .pe-card__media__dimmer": [__WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["b" /* mixin */].fit(), {
-      zIndex: 1
-    }],
-
-    " .pe-card__overlay__content": {
-      position: "absolute",
-      bottom: 0,
-      top: "auto",
-      right: 0,
-      left: 0,
-      zIndex: 2
-    },
-
-    " .pe-card__header": {
-      height: componentVars.one_line_height_with_icon + "px",
-
-      " .pe-list-tile__title": {
-        fontSize: "14px",
-        fontWeight: __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].font_weight_normal,
-        lineHeight: "20px",
-        marginTop: "2px"
-      },
-      " .pe-list-tile__subtitle": {
-        marginTop: "-1px"
-      }
-    },
-
-    " .pe-card__primary": [__WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["a" /* flex */].layoutHorizontal, {
-      position: "relative",
-
-      "&.pe-card__primary--media:not(:last-child)": {
-        paddingBottom: "16px"
-      },
-      "&.pe-card__primary--media + .pe-card__actions": {
-        marginTop: "-16px"
-      },
-      "& + .pe-card__text": {
-        marginTop: "-16px"
-      },
-      "&.pe-card__primary--tight": {
-        " .pe-card__title": {
-          paddingBottom: componentVars.tight_title_padding_bottom - componentVars.subtitle_line_height_padding_bottom + "px"
-        }
-      }
-    }],
-    " .pe-card__title": [__WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["a" /* flex */].flex(), {
-      padding: [componentVars.title_padding_v, componentVars.title_padding_h, componentVars.title_padding_v - componentVars.subtitle_line_height_padding_bottom, componentVars.title_padding_h].map(function (v) {
-        return v + "px";
-      }).join(" "),
-      fontSize: "24px",
-      lineHeight: "29px"
-    }],
-    " .pe-card__subtitle": {
-      fontSize: "14px",
-      lineHeight: "24px"
-    },
-
-    " .pe-card__actions": [{
-      minHeight: 36 + 2 * 8 + "px",
-      padding: componentVars.actions_padding_v + "px" + " " + componentVars.padding_actions_h + "px",
-
-      "&.pe-card__actions--tight": {
-        minHeight: 0,
-        padding: 0
-      },
-      "&.pe-card__actions--horizontal:not(.pe-card__actions--justified)": [__WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["a" /* flex */].layoutHorizontal, __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["a" /* flex */].layoutCenter, {
-        " :first-child": {
-          marginLeft: 0
-        },
-        " .pe-button": {
-          minWidth: 0
-        },
-        " .pe-button--icon": {
-          marginRight: "8px"
-        }
-      }],
-
-      "&.pe-card__actions--justified": [__WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["a" /* flex */].layoutJustified],
-
-      "&.pe-card__actions--vertical": [__WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["a" /* flex */].layoutVertical, {
-        ":not(.pe-card__actions--tight)": {
-          // vertical flex layout
-          paddingTop: componentVars.actions_vertical_padding_v + "px",
-          paddingBottom: componentVars.actions_vertical_padding_v + "px"
-        },
-
-        // nested
-        " .pe-card__actions": [{
-          marginLeft: -componentVars.padding_actions_h + "px",
-          marginRight: -componentVars.padding_actions_h + "px",
-          minHeight: 0,
-
-          "&:first-child": {
-            marginTop: -componentVars.actions_vertical_padding_v + "px"
-          },
-          "&:last-child": {
-            marginBottom: -componentVars.actions_vertical_padding_v + "px"
-          }
-        }],
-
-        " .pe-button": {
-          height: "36px",
-          padding: 0,
-          marginTop: componentVars.actions_button_margin_v + "px",
-          marginBottom: componentVars.actions_button_margin_v + "px"
-        },
-        " .pe-list": {
-          padding: 0
-        }
-      }]
-    }],
-
-    " .pe-card__text": {
-      paddingTop: componentVars.text_padding_v - componentVars.text_line_height_padding_top + "px",
-      paddingRight: componentVars.text_padding_h + "px",
-      paddingLeft: componentVars.text_padding_h + "px",
-      paddingBottom: componentVars.tight_text_padding_bottom - componentVars.text_line_height_padding_bottom + "px",
-      fontSize: "14px",
-      lineHeight: "24px",
-
-      "&:last-child": {
-        paddingBottom: componentVars.text_padding_bottom - componentVars.text_line_height_padding_bottom + "px"
-      },
-      "&.pe-card__text--tight, &.pe-card__text--tight:last-child": {
-        paddingBottom: componentVars.tight_text_padding_bottom - componentVars.text_line_height_padding_bottom + "px"
-      },
-      " .pe-card__actions + &": {
-        marginTop: "8px"
-      }
-    },
-
-    " .pe-card__text, .pe-card__primary": {
-      "& + .pe-card__actions:not(:last-child)": {
-        marginTop: -(componentVars.offset_small_padding_v + 1) + "px",
-        marginBottom: -(componentVars.offset_small_padding_v - 1) + "px"
-      }
-    }
-  })];
-});
-
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var style = function style(scopes, selector, componentVars, tint) {
-  return [_defineProperty$1({}, scopes.map(function (s) {
-    return s + selector;
-  }).join(","), {
-    backgroundColor: componentVars["color_" + tint + "_main_background"]
-  })];
-};
-
-var color = (function (selector, componentVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
-});
-
-function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var style$1 = function style(scopes, selector, componentVars, tint) {
-  return [_defineProperty$2({}, scopes.map(function (s) {
-    return s + selector;
-  }).join(","), {
-    " .pe-card__title": {
-      color: componentVars["color_" + tint + "_title_text"]
-    },
-    " .pe-card__subtitle": {
-      color: componentVars["color_" + tint + "_subtitle_text"]
-    },
-    " .pe-card__text": {
-      color: componentVars["color_" + tint + "_text"]
-    },
-    " .pe-card__actions--borders": {
-      borderTop: "1px solid " + componentVars["color_" + tint + "_actions_border"]
-    }
-  })];
-};
-
-var contentColor = (function (selector, componentVars) {
-  return [style$1([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-  style$1(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
-});
-
-function _defineProperty$3(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var style$2 = function style(scopes, selector, componentVars, tint) {
-  return [_defineProperty$3({}, scopes.map(function (s) {
-    return s + selector;
-  }).join(","), {
-    " .pe-card__overlay__content": {
-      backgroundColor: componentVars["color_" + tint + "_overlay_background"]
-    }
-  })];
-};
-
-var overlayColor = (function (selector, componentVars) {
-  return [style$2([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-  style$2(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
-});
-
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var selector = "." + classes.component;
-var contentSelector = "." + classes.content;
-var overlaySheetSelector = "." + classes.overlaySheet;
-var overlayContentSelector = "." + classes.overlayContent;
-
-var customTheme = function customTheme(customSelector, customVars) {
-  return __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["d" /* styler */].generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), [layout, color]), __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["d" /* styler */].generateStyles([customSelector, " " + overlaySheetSelector], _extends$1({}, vars$1, customVars), [overlayColor]), __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["d" /* styler */].generateStyles([customSelector, " " + contentSelector], _extends$1({}, vars$1, customVars), [contentColor]), __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["d" /* styler */].generateStyles([customSelector, " " + overlayContentSelector], _extends$1({}, vars$1, customVars), [contentColor]);
-};
-
-__WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["d" /* styler */].generateStyles([selector], vars$1, [layout, color]);
-__WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["d" /* styler */].generateStyles([overlaySheetSelector], vars$1, [overlayColor]);
-__WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["d" /* styler */].generateStyles([contentSelector], vars$1, [contentColor]);
-__WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["d" /* styler */].generateStyles([overlayContentSelector], vars$1, [contentColor]);
-
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var theme = customTheme;
 
 var createOverlay = function createOverlay(_ref) {
   var dispatcher = _ref.dispatcher,
@@ -7805,13 +6269,12 @@ var createContent = function createContent(vnode, _ref5) {
 };
 
 var card = Object.freeze({
-	theme: theme,
 	getElement: getElement,
 	createProps: createProps,
 	createContent: createContent
 });
 
-var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var actionLayoutClasses = {
   horizontal: classes.actionsHorizontal,
@@ -7828,7 +6291,7 @@ var createProps$1 = function createProps(vnode, _ref) {
   var k = _ref.keys;
 
   var attrs = vnode.attrs;
-  return _extends$2({}, Object(__WEBPACK_IMPORTED_MODULE_0_polythene_core__["c" /* filterSupportedAttributes */])(attrs), {
+  return _extends$1({}, Object(__WEBPACK_IMPORTED_MODULE_0_polythene_core__["c" /* filterSupportedAttributes */])(attrs), {
     key: "card-actions",
     className: [classes.actions, actionClassForLayout(attrs.layout), attrs.bordered ? classes.actionsBordered : null, attrs.tight ? classes.actionsTight : null, attrs.className || attrs[k.class]].join(" ")
   });
@@ -7843,7 +6306,7 @@ var cardActions = Object.freeze({
 	createContent: createContent$1
 });
 
-var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var imageRatios = {
   landscape: 16 / 9,
@@ -7929,7 +6392,7 @@ var createProps$2 = function createProps(vnode, _ref2) {
 
   var attrs = vnode.attrs;
   var ratio = attrs.ratio || "landscape";
-  return _extends$3({}, Object(__WEBPACK_IMPORTED_MODULE_0_polythene_core__["c" /* filterSupportedAttributes */])(attrs), {
+  return _extends$2({}, Object(__WEBPACK_IMPORTED_MODULE_0_polythene_core__["c" /* filterSupportedAttributes */])(attrs), {
     key: "card-media",
     className: [classes.media, mediaSizeClass(attrs.size), ratio === "landscape" ? classes.mediaRatioLandscape : classes.mediaRatioSquare, attrs.className || attrs[k.class]].join(" ")
   });
@@ -7940,7 +6403,7 @@ var createContent$2 = function createContent(vnode, _ref3) {
 
   var attrs = vnode.attrs;
   var dispatcher = attrs.dispatcher;
-  return [_extends$3({}, attrs.content, { key: "content" }), attrs.overlay ? dispatcher({ overlay: attrs.overlay, key: "overlay" }) : h("div", {
+  return [_extends$2({}, attrs.content, { key: "content" }), attrs.overlay ? dispatcher({ overlay: attrs.overlay, key: "overlay" }) : h("div", {
     className: classes.mediaDimmer,
     key: "dimmer"
   })];
@@ -7952,14 +6415,14 @@ var cardMedia = Object.freeze({
 	createContent: createContent$2
 });
 
-var _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var createProps$3 = function createProps(vnode) {
   var attrs = vnode.attrs;
   var primaryHasMedia = Array.isArray(attrs.content) ? attrs.content.reduce(function (total, current) {
     return Object.keys(current)[0] === "media" ? true : total;
   }, false) : attrs.media || false;
-  return _extends$4({}, Object(__WEBPACK_IMPORTED_MODULE_0_polythene_core__["c" /* filterSupportedAttributes */])(attrs), {
+  return _extends$3({}, Object(__WEBPACK_IMPORTED_MODULE_0_polythene_core__["c" /* filterSupportedAttributes */])(attrs), {
     key: "card-primary",
     className: [classes.primary, attrs.tight ? classes.primaryTight : null, primaryHasMedia ? classes.primaryHasMedia : null].join(" ")
   });
@@ -8007,11 +6470,56 @@ var cardPrimary = Object.freeze({
 	createContent: createContent$3
 });
 
+var padding_v = 24;
+var padding_actions_v = 8;
+var actions_button_margin_v = 2;
+
+var vars$1 = {
+  image_size_small: 1 * 80,
+  image_size_regular: 1.4 * 80,
+  image_size_medium: 2 * 80,
+  image_size_large: 3 * 80,
+  border_radius: __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].unit_block_border_radius,
+  padding_h: 16,
+  offset_small_padding_v: padding_v - 16,
+  padding_actions_h: 8,
+  title_padding_h: 16,
+  title_padding_v: 24,
+  tight_title_padding_bottom: 16,
+  text_padding_h: 16,
+  text_padding_v: 16,
+  text_padding_bottom: 24,
+  tight_text_padding_bottom: 16,
+  subtitle_line_height_padding_bottom: 7,
+  text_line_height_padding_top: 6,
+  text_line_height_padding_bottom: 7,
+  one_line_height_with_icon: 72,
+  icon_element_width: 72 - 4,
+  one_line_padding_v: 8,
+  actions_padding_v: padding_actions_v - 6,
+  actions_button_margin_v: actions_button_margin_v,
+  actions_vertical_padding_v: padding_actions_v - actions_button_margin_v,
+
+  color_light_main_background: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_light_background),
+  color_light_title_text: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_light_text_primary),
+  color_light_subtitle_text: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_light_text_secondary),
+  color_light_text: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_light_text_regular),
+  color_light_actions_border: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_light_border_light),
+  color_light_overlay_background: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_light_background, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_light_overlay_background),
+
+  color_dark_main_background: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_dark_background),
+  color_dark_title_text: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_dark_text_primary),
+  color_dark_subtitle_text: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_dark_text_secondary),
+  color_dark_text: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_dark_text_regular),
+  color_dark_actions_border: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_dark_border_light),
+  color_dark_overlay_background: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_dark_background, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_dark_overlay_background)
+};
+
 
 
 
 /***/ }),
-/* 34 */
+/* 32 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8019,7 +6527,7 @@ var cardPrimary = Object.freeze({
 /* unused harmony export classes */
 /* unused harmony export vars */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_theme__ = __webpack_require__(3);
 
 
@@ -8161,12 +6669,13 @@ var icon = Object.freeze({
 
 
 /***/ }),
-/* 35 */
+/* 33 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return svg; });
 /* unused harmony export classes */
+/* unused harmony export vars */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_core__ = __webpack_require__(0);
 
 
@@ -8203,11 +6712,16 @@ var svg = Object.freeze({
 	createContent: createContent
 });
 
+var vars = {
+  color_light: "currentcolor",
+  color_dark: "currentcolor"
+};
+
 
 
 
 /***/ }),
-/* 36 */
+/* 34 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8215,7 +6729,7 @@ var svg = Object.freeze({
 /* unused harmony export classes */
 /* unused harmony export vars */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_theme__ = __webpack_require__(3);
 
 
@@ -8338,16 +6852,16 @@ var shadow = Object.freeze({
 
 
 /***/ }),
-/* 37 */
+/* 35 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Checkbox; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_checkbox__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_checkbox__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_core_selection_control__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_mithril_icon__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_polythene_mithril_icon_button__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_polythene_mithril_icon_button__ = __webpack_require__(7);
 
 
 
@@ -8356,9 +6870,9 @@ var shadow = Object.freeze({
 
 var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var ViewControl = Object(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["b" /* ViewComponent */])(_extends$2({}, __WEBPACK_IMPORTED_MODULE_2_polythene_core_selection_control__["e" /* viewControl */], {
+var ViewControl = Object(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["b" /* ViewComponent */])(_extends$2({}, __WEBPACK_IMPORTED_MODULE_2_polythene_core_selection_control__["c" /* viewControl */], {
   createContent: function createContent(vnode, args) {
-    return __WEBPACK_IMPORTED_MODULE_2_polythene_core_selection_control__["e" /* viewControl */].createContent(vnode, _extends$2(args, { Icon: __WEBPACK_IMPORTED_MODULE_3_polythene_mithril_icon__["a" /* Icon */], IconButton: __WEBPACK_IMPORTED_MODULE_4_polythene_mithril_icon_button__["a" /* IconButton */] }));
+    return __WEBPACK_IMPORTED_MODULE_2_polythene_core_selection_control__["c" /* viewControl */].createContent(vnode, _extends$2(args, { Icon: __WEBPACK_IMPORTED_MODULE_3_polythene_mithril_icon__["a" /* Icon */], IconButton: __WEBPACK_IMPORTED_MODULE_4_polythene_mithril_icon_button__["a" /* IconButton */] }));
   }
 }));
 
@@ -8366,9 +6880,9 @@ ViewControl.displayName = "ViewControl";
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var SelectionControl = Object(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["a" /* StateComponent */])(_extends$1({}, __WEBPACK_IMPORTED_MODULE_2_polythene_core_selection_control__["b" /* coreSelectionControl */], {
+var SelectionControl = Object(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["a" /* StateComponent */])(_extends$1({}, __WEBPACK_IMPORTED_MODULE_2_polythene_core_selection_control__["a" /* coreSelectionControl */], {
   createContent: function createContent(vnode, args) {
-    return __WEBPACK_IMPORTED_MODULE_2_polythene_core_selection_control__["b" /* coreSelectionControl */].createContent(vnode, _extends$1(args, { ViewControl: ViewControl }));
+    return __WEBPACK_IMPORTED_MODULE_2_polythene_core_selection_control__["a" /* coreSelectionControl */].createContent(vnode, _extends$1(args, { ViewControl: ViewControl }));
   }
 }));
 
@@ -8380,47 +6894,29 @@ var Checkbox = Object(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["a" /
   component: SelectionControl
 }));
 
-Checkbox.theme = __WEBPACK_IMPORTED_MODULE_1_polythene_core_checkbox__["a" /* coreCheckbox */].theme;
 Checkbox.displayName = "Checkbox";
 
 
 
 
 /***/ }),
-/* 38 */
+/* 36 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return checkbox; });
 /* unused harmony export classes */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_core_css__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_selection_control__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_core_selection_control__ = __webpack_require__(6);
 /* unused harmony reexport vars */
-
 
 
 var classes = {
   component: "pe-checkbox-control"
 };
 
-var layout$1 = (function (selector, componentVars) {
-  return Object(__WEBPACK_IMPORTED_MODULE_1_polythene_core_selection_control__["c" /* layout */])(selector, componentVars, "checkbox");
-});
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var color$1 = (function (selector, componentVars) {
-  return Object(__WEBPACK_IMPORTED_MODULE_1_polythene_core_selection_control__["a" /* color */])(selector, componentVars);
-});
-
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var fns = [layout$1, color$1];
-var selector = "." + classes.component;
-
-var customTheme = function customTheme(customSelector, customVars) {
-  return __WEBPACK_IMPORTED_MODULE_0_polythene_core_css__["d" /* styler */].generateStyles([customSelector, selector], _extends$1({}, __WEBPACK_IMPORTED_MODULE_1_polythene_core_selection_control__["d" /* vars */], customVars), fns);
-};
-
-__WEBPACK_IMPORTED_MODULE_0_polythene_core_css__["d" /* styler */].generateStyles([selector], __WEBPACK_IMPORTED_MODULE_1_polythene_core_selection_control__["d" /* vars */], fns);
+// Don't export 'element': it will be the wrapped selection control component (set in polythene-xxx-checkbox)
 
 var iconOn = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\"/></svg>";
 var iconOff = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\"/></svg>";
@@ -8430,18 +6926,11 @@ var icons = {
   iconOn: iconOn
 };
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var theme = customTheme;
-
-// Don't export 'element': it will be the wrapped selection control component (set in polythene-xxx-checkbox)
-
 // Props to be passed to a selection control
 
 var createProps = function createProps(vnode) {
   var attrs = vnode.attrs;
   return _extends({}, attrs, {
-    theme: theme,
     icons: icons,
     selectable: attrs.selectable || function () {
       return true;
@@ -8452,7 +6941,6 @@ var createProps = function createProps(vnode) {
 };
 
 var checkbox = Object.freeze({
-	theme: theme,
 	createProps: createProps
 });
 
@@ -8460,16 +6948,16 @@ var checkbox = Object.freeze({
 
 
 /***/ }),
-/* 39 */
+/* 37 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* unused harmony export DialogInstance */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Dialog; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(2);
+/* unused harmony export Dialog */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_core_dialog__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_mithril_dialog_pane__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_core_dialog__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_mithril_dialog_pane__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_polythene_mithril_shadow__ = __webpack_require__(5);
 
 
@@ -8506,14 +6994,13 @@ Object.getOwnPropertyNames(Multiple).forEach(function (p) {
   return Dialog[p] = Multiple[p];
 });
 
-Dialog.theme = __WEBPACK_IMPORTED_MODULE_2_polythene_core_dialog__["b" /* coreDialogInstance */].theme;
 Dialog.displayName = "Dialog";
 
 
 
 
 /***/ }),
-/* 40 */
+/* 38 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8522,8 +7009,8 @@ Dialog.displayName = "Dialog";
 /* unused harmony export vars */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return transitions; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_core_menu__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_core_menu__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_theme__ = __webpack_require__(3);
 
 
@@ -8803,7 +7290,7 @@ var transitions = {
 
 
 /***/ }),
-/* 41 */
+/* 39 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8811,7 +7298,7 @@ var transitions = {
 /* unused harmony export classes */
 /* unused harmony export vars */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_theme__ = __webpack_require__(3);
 
 
@@ -9187,15 +7674,15 @@ var dialogPane = Object.freeze({
 
 
 /***/ }),
-/* 42 */
+/* 40 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FAB; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_fab__ = __webpack_require__(43);
+/* unused harmony export FAB */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_fab__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_mithril_icon__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_mithril_raised_button__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_mithril_raised_button__ = __webpack_require__(19);
 
 
 
@@ -9213,21 +7700,20 @@ var FAB = Object(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["b" /* Vie
   component: __WEBPACK_IMPORTED_MODULE_3_polythene_mithril_raised_button__["a" /* RaisedButton */]
 }));
 
-FAB.theme = __WEBPACK_IMPORTED_MODULE_1_polythene_core_fab__["a" /* coreFAB */].theme;
 FAB.displayName = "FAB";
 
 
 
 
 /***/ }),
-/* 43 */
+/* 41 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return fab; });
 /* unused harmony export classes */
 /* unused harmony export vars */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_core_css__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_core_css__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_theme__ = __webpack_require__(3);
 
 
@@ -9382,7 +7868,7 @@ var fab = Object.freeze({
 
 
 /***/ }),
-/* 44 */
+/* 42 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9390,8 +7876,8 @@ var fab = Object.freeze({
 /* unused harmony export classes */
 /* unused harmony export vars */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_theme__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_theme__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_core_css__ = __webpack_require__(2);
 
 
 
@@ -9400,107 +7886,9 @@ var classes = {
   component: "pe-button pe-text-button pe-raised-button"
 };
 
-var vars$1 = {
-  color_light_background: "#fff",
-  color_light_text: Object(__WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].blend_light_text_primary),
-  color_light_hover_background: "transparent",
-  color_light_focus_background: Object(__WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].blend_light_background_hover),
-  color_light_active_background: Object(__WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].blend_light_background_hover), // same as hover
-  color_light_disabled_background: Object(__WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].blend_light_background_disabled),
-  color_light_disabled_text: Object(__WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].blend_light_text_disabled),
-
-  color_dark_background: Object(__WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].color_primary),
-  color_dark_text: Object(__WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].blend_dark_text_primary),
-  color_dark_hover_background: __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].color_primary_active,
-  color_dark_focus_background: __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].color_primary_active,
-  color_dark_active_background: __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].color_primary_dark,
-  color_dark_disabled_background: Object(__WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].blend_dark_background_disabled),
-  color_dark_disabled_text: Object(__WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].blend_dark_text_disabled)
-};
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var style = function style(scopes, selector, componentVars, tint) {
-  var normalBorder = componentVars["color_" + tint + "_border"] || "transparent";
-  var activeBorder = componentVars["color_" + tint + "_active_border"] || normalBorder;
-  var disabledBorder = componentVars["color_" + tint + "_disabled_border"] || normalBorder;
-  return [_defineProperty({}, scopes.map(function (s) {
-    return s + selector;
-  }).join(","), {
-    "&, &:link, &:visited": {
-      color: componentVars["color_" + tint + "_text"]
-    },
-
-    " .pe-button__content": {
-      backgroundColor: componentVars["color_" + tint + "_background"],
-      borderColor: normalBorder
-    },
-
-    ".pe-button--disabled": {
-      color: componentVars["color_" + tint + "_disabled_text"],
-
-      " .pe-button__content": {
-        backgroundColor: componentVars["color_" + tint + "_disabled_background"],
-        borderColor: disabledBorder
-      }
-    },
-
-    ".pe-button--selected": {
-      " .pe-button__content": {
-        backgroundColor: componentVars["color_" + tint + "_active_background"],
-        borderColor: activeBorder
-      },
-      " .pe-button__focus": {
-        opacity: 1,
-        backgroundColor: componentVars["color_" + tint + "_focus_background"]
-      }
-    },
-
-    ".pe-button--focus": {
-      " .pe-button__focus": {
-        opacity: 1,
-        backgroundColor: componentVars["color_" + tint + "_focus_background"]
-      }
-    }
-  })];
-};
-
-var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, tint) {
-  var normalBorder = componentVars["color_" + tint + "_border"];
-  var hoverBorder = componentVars["color_" + tint + "_border"] || normalBorder;
-  return [_defineProperty({}, scopes.map(function (s) {
-    return s + selector + ":hover";
-  }).join(","), {
-    ":not(.pe-button--selected):not(.pe-button--inactive) .pe-button__wash": {
-      backgroundColor: componentVars["color_" + tint + "_hover_background"],
-      borderColor: hoverBorder
-    }
-  })];
-};
-
-var color = (function (selector, componentVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light tone
-  noTouchStyle(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, "dark"), // inside dark tone
-  noTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, "light")];
-});
-
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var fns = [color];
-var selector = "." + classes.component.replace(/ /g, ".");
-
-var customTheme = function customTheme(customSelector, customVars) {
-  return __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["d" /* styler */].generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
-};
-
-__WEBPACK_IMPORTED_MODULE_1_polythene_core_css__["d" /* styler */].generateStyles([selector], vars$1, fns);
-
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 // Don't export 'getElement': it will be the wrapped button component (set in polythene-xxx-raised-button)
-
-var theme = customTheme;
 
 var MAX_Z = 5;
 
@@ -9600,7 +7988,6 @@ var createContent = function createContent() {
 };
 
 var raisedButton = Object.freeze({
-	theme: theme,
 	getInitialState: getInitialState,
 	onMount: onMount,
 	onUnMount: onUnMount,
@@ -9608,17 +7995,35 @@ var raisedButton = Object.freeze({
 	createContent: createContent
 });
 
+var vars$1 = {
+  color_light_background: "#fff",
+  color_light_text: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_light_text_primary),
+  color_light_hover_background: "transparent",
+  color_light_focus_background: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_light_background_hover),
+  color_light_active_background: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_light_background_hover), // same as hover
+  color_light_disabled_background: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_light_background_disabled),
+  color_light_disabled_text: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_light_text_disabled),
+
+  color_dark_background: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_primary),
+  color_dark_text: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_dark_text_primary),
+  color_dark_hover_background: __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_primary_active,
+  color_dark_focus_background: __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_primary_active,
+  color_dark_active_background: __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_primary_dark,
+  color_dark_disabled_background: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_dark_background_disabled),
+  color_dark_disabled_text: Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_dark_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_dark_text_disabled)
+};
+
 
 
 
 /***/ }),
-/* 45 */
+/* 43 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* unused harmony export List */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_list__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_list__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_mithril_list_tile__ = __webpack_require__(11);
 
 
@@ -9635,14 +8040,13 @@ var List = Object(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["a" /* St
   }
 }));
 
-List.theme = __WEBPACK_IMPORTED_MODULE_1_polythene_core_list__["a" /* coreList */].theme;
 List.displayName = "List";
 
 
 
 
 /***/ }),
-/* 46 */
+/* 44 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9650,7 +8054,7 @@ List.displayName = "List";
 /* unused harmony export classes */
 /* unused harmony export vars */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_core_list_tile__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_theme__ = __webpack_require__(3);
 
@@ -9905,14 +8309,14 @@ var list = Object.freeze({
 
 
 /***/ }),
-/* 47 */
+/* 45 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* unused harmony export Menu */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_core_menu__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_core_menu__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_mithril_shadow__ = __webpack_require__(5);
 
 
@@ -9939,22 +8343,21 @@ var Menu = {
   }
 };
 
-Menu.theme = __WEBPACK_IMPORTED_MODULE_2_polythene_core_menu__["b" /* coreMenu */].theme;
 Menu.displayName = "Menu";
 
 
 
 
 /***/ }),
-/* 48 */
+/* 46 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* unused harmony export NotificationInstance */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Notification; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(2);
+/* unused harmony export Notification */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_core_notification__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_core_notification__ = __webpack_require__(20);
 
 
 
@@ -9981,47 +8384,29 @@ Object.getOwnPropertyNames(Multiple).forEach(function (p) {
   return Notification[p] = Multiple[p];
 });
 
-Notification.theme = __WEBPACK_IMPORTED_MODULE_2_polythene_core_notification__["b" /* coreNotificationInstance */].theme;
 Notification.displayName = "Notification";
 
 
 
 
 /***/ }),
-/* 49 */
+/* 47 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return radioButton; });
 /* unused harmony export classes */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_core_css__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_selection_control__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_core_selection_control__ = __webpack_require__(6);
 /* unused harmony reexport vars */
-
 
 
 var classes = {
   component: "pe-radio-control"
 };
 
-var layout$1 = (function (selector, componentVars) {
-  return Object(__WEBPACK_IMPORTED_MODULE_1_polythene_core_selection_control__["c" /* layout */])(selector, componentVars, "radio");
-});
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var color$1 = (function (selector, componentVars) {
-  return Object(__WEBPACK_IMPORTED_MODULE_1_polythene_core_selection_control__["a" /* color */])(selector, componentVars);
-});
-
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var fns = [layout$1, color$1];
-var selector = "." + classes.component;
-
-var customTheme = function customTheme(customSelector, customVars) {
-  return __WEBPACK_IMPORTED_MODULE_0_polythene_core_css__["d" /* styler */].generateStyles([customSelector, selector], _extends$1({}, __WEBPACK_IMPORTED_MODULE_1_polythene_core_selection_control__["d" /* vars */], customVars), fns);
-};
-
-__WEBPACK_IMPORTED_MODULE_0_polythene_core_css__["d" /* styler */].generateStyles([selector], __WEBPACK_IMPORTED_MODULE_1_polythene_core_selection_control__["d" /* vars */], fns);
+// Don't export 'element': it will be the wrapped selection control component (set in polythene-xxx-checkbox)
 
 var iconOn = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\"/></svg>";
 var iconOff = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\"/></svg>";
@@ -10031,18 +8416,11 @@ var icons = {
   iconOn: iconOn
 };
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var theme = customTheme;
-
-// Don't export 'element': it will be the wrapped selection control component (set in polythene-xxx-checkbox)
-
 // Props to be passed to a selection control
 
 var createProps = function createProps(vnode) {
   var attrs = vnode.attrs;
   return _extends({}, attrs, {
-    theme: theme,
     icons: icons,
     selectable: attrs.selectable || function (selected) {
       return !selected;
@@ -10053,7 +8431,6 @@ var createProps = function createProps(vnode) {
 };
 
 var radioButton = Object.freeze({
-	theme: theme,
 	createProps: createProps
 });
 
@@ -10061,14 +8438,14 @@ var radioButton = Object.freeze({
 
 
 /***/ }),
-/* 50 */
+/* 48 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export RadioGroup */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_radio_group__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_mithril_radio_button__ = __webpack_require__(22);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RadioGroup; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_radio_group__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_mithril_radio_button__ = __webpack_require__(21);
 
 
 
@@ -10087,7 +8464,7 @@ RadioGroup.displayName = "RadioGroup";
 
 
 /***/ }),
-/* 51 */
+/* 49 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10170,14 +8547,14 @@ var radioGroup = Object.freeze({
 
 
 /***/ }),
-/* 52 */
+/* 50 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* unused harmony export Search */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_search__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_mithril_textfield__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_search__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_mithril_textfield__ = __webpack_require__(22);
 
 
 
@@ -10190,14 +8567,13 @@ var Search = Object(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["a" /* 
   }
 }));
 
-Search.theme = __WEBPACK_IMPORTED_MODULE_1_polythene_core_search__["a" /* coreSearch */].theme;
 Search.displayName = "Search";
 
 
 
 
 /***/ }),
-/* 53 */
+/* 51 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10205,7 +8581,7 @@ Search.displayName = "Search";
 /* unused harmony export classes */
 /* unused harmony export vars */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_theme__ = __webpack_require__(3);
 
 
@@ -10446,7 +8822,7 @@ var search = Object.freeze({
 
 
 /***/ }),
-/* 54 */
+/* 52 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10454,7 +8830,7 @@ var search = Object.freeze({
 /* unused harmony export classes */
 /* unused harmony export vars */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_theme__ = __webpack_require__(3);
 
 
@@ -11186,26 +9562,25 @@ var textfield = Object.freeze({
 
 
 /***/ }),
-/* 55 */
+/* 53 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Slider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_slider__ = __webpack_require__(56);
+/* unused harmony export Slider */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_slider__ = __webpack_require__(54);
 
 
 
 var Slider = Object(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["a" /* StateComponent */])(__WEBPACK_IMPORTED_MODULE_1_polythene_core_slider__["a" /* coreSlider */]);
 
-Slider.theme = __WEBPACK_IMPORTED_MODULE_1_polythene_core_slider__["a" /* coreSlider */].theme;
 Slider.displayName = "Slider";
 
 
 
 
 /***/ }),
-/* 56 */
+/* 54 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11213,7 +9588,7 @@ Slider.displayName = "Slider";
 /* unused harmony export classes */
 /* unused harmony export vars */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_theme__ = __webpack_require__(3);
 
 
@@ -11998,15 +10373,15 @@ var slider = Object.freeze({
 
 
 /***/ }),
-/* 57 */
+/* 55 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* unused harmony export SnackbarInstance */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Snackbar; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(2);
+/* unused harmony export Snackbar */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_core_snackbar__ = __webpack_require__(58);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_core_snackbar__ = __webpack_require__(56);
 
 
 
@@ -12033,14 +10408,13 @@ Object.getOwnPropertyNames(Multiple).forEach(function (p) {
   return Snackbar[p] = Multiple[p];
 });
 
-Snackbar.theme = __WEBPACK_IMPORTED_MODULE_2_polythene_core_snackbar__["b" /* coreSnackbarInstance */].theme;
 Snackbar.displayName = "Snackbar";
 
 
 
 
 /***/ }),
-/* 58 */
+/* 56 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12048,8 +10422,8 @@ Snackbar.displayName = "Snackbar";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return classes$1; });
 /* unused harmony export vars */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return transitions; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_core_notification__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_core_notification__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_theme__ = __webpack_require__(3);
 
 
@@ -12217,16 +10591,16 @@ var transitions = {
 
 
 /***/ }),
-/* 59 */
+/* 57 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* unused harmony export IOSSpinner */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MaterialDesignSpinner; });
+/* unused harmony export MaterialDesignSpinner */
 /* unused harmony export MaterialDesignProgressSpinner */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_core_spinner__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_core_spinner__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_mithril_shadow__ = __webpack_require__(5);
 
 
@@ -12260,7 +10634,6 @@ var IOSSpinner = {
   }
 };
 
-IOSSpinner.theme = __WEBPACK_IMPORTED_MODULE_2_polythene_core_spinner__["b" /* coreIOSSpinner */].theme;
 IOSSpinner.classes = __WEBPACK_IMPORTED_MODULE_2_polythene_core_spinner__["b" /* coreIOSSpinner */].classes;
 IOSSpinner.displayName = "IOSSpinner";
 
@@ -12280,7 +10653,6 @@ var MaterialDesignSpinner = {
   }
 };
 
-MaterialDesignSpinner.theme = __WEBPACK_IMPORTED_MODULE_2_polythene_core_spinner__["d" /* coreMaterialDesignSpinner */].theme;
 MaterialDesignSpinner.classes = __WEBPACK_IMPORTED_MODULE_2_polythene_core_spinner__["d" /* coreMaterialDesignSpinner */].classes;
 MaterialDesignSpinner.displayName = "MaterialDesignSpinner";
 
@@ -12300,7 +10672,6 @@ var MaterialDesignProgressSpinner = {
   }
 };
 
-MaterialDesignProgressSpinner.theme = __WEBPACK_IMPORTED_MODULE_2_polythene_core_spinner__["c" /* coreMaterialDesignProgressSpinner */].theme;
 MaterialDesignProgressSpinner.classes = __WEBPACK_IMPORTED_MODULE_2_polythene_core_spinner__["c" /* coreMaterialDesignProgressSpinner */].classes;
 MaterialDesignProgressSpinner.displayName = "MaterialDesignProgressSpinner";
 
@@ -12308,7 +10679,7 @@ MaterialDesignProgressSpinner.displayName = "MaterialDesignProgressSpinner";
 
 
 /***/ }),
-/* 60 */
+/* 58 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12317,9 +10688,9 @@ MaterialDesignProgressSpinner.displayName = "MaterialDesignProgressSpinner";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return index$2; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return index$3; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_theme__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_utilities__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_utilities__ = __webpack_require__(9);
 
 
 
@@ -13167,7 +11538,7 @@ var handlePercentage = function handlePercentage(percentage, state, size, attrs)
       var progress = timestamp - start;
       var stepPercentage = 1.0 / animationDuration * progress;
       var newPercentage = previousPercentage + stepPercentage * (percentage - previousPercentage);
-      animate(el, size, __WEBPACK_IMPORTED_MODULE_3_polythene_utilities__["d" /* easing */].easeInOutQuad(newPercentage));
+      animate(el, size, __WEBPACK_IMPORTED_MODULE_3_polythene_utilities__["c" /* easing */].easeInOutQuad(newPercentage));
       if (start && progress < animationDuration) {
         window.requestAnimationFrame(step);
       } else {
@@ -13400,16 +11771,16 @@ var index$3 = Object.freeze({
 
 
 /***/ }),
-/* 61 */
+/* 59 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Switch; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_switch__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_switch__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_core_selection_control__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_mithril_shadow__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_polythene_mithril_icon_button__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_polythene_mithril_icon_button__ = __webpack_require__(7);
 
 
 
@@ -13428,9 +11799,9 @@ ViewControl.displayName = "ViewControl";
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var SelectionControl = Object(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["a" /* StateComponent */])(_extends$1({}, __WEBPACK_IMPORTED_MODULE_2_polythene_core_selection_control__["b" /* coreSelectionControl */], {
+var SelectionControl = Object(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["a" /* StateComponent */])(_extends$1({}, __WEBPACK_IMPORTED_MODULE_2_polythene_core_selection_control__["a" /* coreSelectionControl */], {
   createContent: function createContent(vnode, args) {
-    return __WEBPACK_IMPORTED_MODULE_2_polythene_core_selection_control__["b" /* coreSelectionControl */].createContent(vnode, _extends$1(args, { ViewControl: ViewControl }));
+    return __WEBPACK_IMPORTED_MODULE_2_polythene_core_selection_control__["a" /* coreSelectionControl */].createContent(vnode, _extends$1(args, { ViewControl: ViewControl }));
   }
 }));
 
@@ -13442,14 +11813,13 @@ var Switch = Object(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["a" /* 
   component: SelectionControl
 }));
 
-Switch.theme = __WEBPACK_IMPORTED_MODULE_1_polythene_core_switch__["a" /* coreSwitch */].theme;
 Switch.displayName = "Switch";
 
 
 
 
 /***/ }),
-/* 62 */
+/* 60 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13457,10 +11827,10 @@ Switch.displayName = "Switch";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return viewControl; });
 /* unused harmony export classes */
 /* unused harmony export vars */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_core_css__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_theme__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_core_selection_control__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_core_icon_button__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_theme__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_selection_control__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_core_icon_button__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_core_css__ = __webpack_require__(2);
 
 
 
@@ -13475,269 +11845,7 @@ var classes = {
   track: "pe-switch-control__track"
 };
 
-var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var hit_area_padding = (__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].grid_unit_icon_button - __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].unit_icon_size) / 2; // 12
-
-var vars$3 = _extends$2({}, __WEBPACK_IMPORTED_MODULE_2_polythene_core_selection_control__["d" /* vars */], {
-  track_height: 14,
-  track_length: 36,
-  thumb_size: 20,
-  padding: __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].grid_unit_component,
-  icon_button_padding: __WEBPACK_IMPORTED_MODULE_3_polythene_core_icon_button__["b" /* vars */].padding,
-  hit_area_padding: hit_area_padding,
-
-  animation_duration: __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].animation_duration,
-
-  color_light_thumb_on: Object(__WEBPACK_IMPORTED_MODULE_0_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_primary),
-  color_light_thumb_off: "#f1f1f1",
-  color_light_thumb_disabled: "#bdbdbd",
-  color_light_wash_on: Object(__WEBPACK_IMPORTED_MODULE_0_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_primary),
-  color_light_wash_off: __WEBPACK_IMPORTED_MODULE_3_polythene_core_icon_button__["b" /* vars */].color_light_wash,
-
-  color_light_track_on: Object(__WEBPACK_IMPORTED_MODULE_0_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_primary_faded),
-  color_light_track_on_opacity: .55,
-  color_light_track_off: Object(__WEBPACK_IMPORTED_MODULE_0_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_light_text_regular),
-  color_light_track_off_opacity: .55,
-  color_light_track_disabled: Object(__WEBPACK_IMPORTED_MODULE_0_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_light_background_disabled),
-  color_light_track_disabled_opacity: 1,
-
-  // icon color may be set in theme; default "currentcolor"
-  // color_light_icon_on:                   "currentcolor",
-  // color_light_icon_off:                  "currentcolor",
-
-  // color_light_focus_on and so on taken from selectionControlVars
-
-  color_dark_thumb_on: Object(__WEBPACK_IMPORTED_MODULE_0_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_primary),
-  color_dark_thumb_off: "#bdbdbd",
-  color_dark_thumb_disabled: "#555",
-  color_dark_wash_on: Object(__WEBPACK_IMPORTED_MODULE_0_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_primary),
-  color_dark_wash_off: __WEBPACK_IMPORTED_MODULE_3_polythene_core_icon_button__["b" /* vars */].color_dark_wash,
-
-  color_dark_track_on: Object(__WEBPACK_IMPORTED_MODULE_0_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].color_primary_faded, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].blend_dark_text_tertiary), // or "#5a7f7c"
-  color_dark_track_on_opacity: 9,
-  color_dark_track_off: "#717171",
-  color_dark_track_off_opacity: .55,
-  color_dark_track_disabled: "#717171",
-  color_dark_track_disabled_opacity: .3
-
-  // icon color may be set in theme; default "currentcolor"
-  // color_dark_icon_on:                    "currentcolor"
-  // color_dark_icon_off:                   "currentcolor"
-
-  // color_dark_focus_on and so on taken from selectionControlVars
-});
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var transition = function transition(componentVars, properties) {
-  var duration = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : componentVars.animation_duration;
-  return [__WEBPACK_IMPORTED_MODULE_0_polythene_core_css__["b" /* mixin */].defaultTransition(properties, duration, "ease-out")];
-};
-
-var customSize = function customSize(componentVars, size) {
-  var factor = size / __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].unit_icon_size;
-  var thumbSize = Math.floor(0.5 * componentVars.thumb_size * factor) * 2; // round to even
-  var scaledTrackHeight = Math.floor(0.5 * componentVars.track_height * factor) * 2; // round to even
-  var scaledTrackWidth = Math.floor(0.5 * componentVars.track_length * factor) * 2;
-  var scaledThumbSize = Math.floor(0.5 * componentVars.thumb_size * factor) * 2;
-  var trackTop = (componentVars.label_height * factor - scaledTrackHeight) / 2;
-  var thumbPadding = componentVars.icon_button_padding;
-  var thumbMargin = (size - scaledThumbSize) / 2;
-  var thumbOuterSize = size + 2 * thumbPadding;
-  var thumbOffsetMin = -(thumbOuterSize / 2) + thumbSize / 2;
-  var thumbOffsetMax = thumbOffsetMin + scaledTrackWidth - thumbSize;
-  var thumbOffsetY = thumbOffsetMin + thumbMargin;
-  var trackVisualOffset = 0.3; // prevent sub pixel of track to shine through knob border
-
-  return {
-    " .pe-control__form-label": {
-      height: size + "px",
-      minWidth: scaledTrackWidth + "px"
-    },
-    " .pe-control__label": [__WEBPACK_IMPORTED_MODULE_0_polythene_core_css__["b" /* mixin */].defaultTransition("all", componentVars.animation_duration), {
-      paddingLeft: componentVars.padding * factor + 8 + scaledTrackWidth + "px"
-    }],
-    " .pe-switch-control__track": {
-      left: trackVisualOffset + "px",
-      height: scaledTrackHeight + "px",
-      width: scaledTrackWidth - 2 * trackVisualOffset + "px",
-      top: trackTop + "px",
-      borderRadius: scaledTrackHeight + "px"
-    },
-    " .pe-switch-control__thumb": {
-      top: thumbOffsetY + "px",
-      left: thumbOffsetMin + "px"
-    },
-
-    " .pe-switch-control__knob": {
-      width: scaledThumbSize + "px",
-      height: scaledThumbSize + "px",
-      margin: thumbMargin + "px"
-    },
-
-    " .pe-button__content": {
-      padding: thumbPadding + "px"
-    },
-
-    ".pe-control--on": {
-      " .pe-switch-control__thumb": {
-        left: thumbOffsetMax + "px"
-      }
-    }
-  };
-};
-
-var layout$1 = (function (selector, componentVars) {
-  return Object(__WEBPACK_IMPORTED_MODULE_2_polythene_core_selection_control__["c" /* layout */])(selector, componentVars, "checkbox").concat([_defineProperty({}, selector, {
-    " .pe-switch-control__track": [transition(componentVars, "background, opacity"), {
-      position: "absolute",
-      left: 0
-    }],
-
-    " .pe-switch-control__thumb": [transition(componentVars, "left, color"), {
-      position: "absolute",
-      zIndex: 1, // Prevents flickering of text label when toggling
-      color: "inherit",
-
-      ":focus": {
-        outline: 0
-      }
-    }],
-
-    " .pe-switch-control__knob": {
-      position: "relative",
-      borderRadius: "50%"
-    },
-
-    " .pe-button__content .pe-switch-control__knob .pe-icon": [__WEBPACK_IMPORTED_MODULE_0_polythene_core_css__["b" /* mixin */].fit(), transition(componentVars, "color"), {
-      width: "100%",
-      height: "100%"
-    }],
-
-    " .pe-button__focus": [transition(componentVars, "all")],
-
-    ".pe-control--small": customSize(componentVars, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].unit_icon_size_small),
-    ".pe-control--regular": customSize(componentVars, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].unit_icon_size),
-    ".pe-control--medium": customSize(componentVars, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].unit_icon_size_medium),
-    ".pe-control--large": customSize(componentVars, __WEBPACK_IMPORTED_MODULE_1_polythene_theme__["a" /* vars */].unit_icon_size_large)
-  })]);
-});
-
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var style = function style(scopes, selector, componentVars, tint) {
-  return [_defineProperty$1({}, scopes.map(function (s) {
-    return s + selector;
-  }).join(","), {
-
-    " .pe-control__label": {
-      color: componentVars["color_" + tint + "_label"]
-    },
-
-    ".pe-control--off": {
-      " .pe-switch-control__track": {
-        opacity: componentVars["color_" + tint + "_track_off_opacity"],
-        backgroundColor: componentVars["color_" + tint + "_track_off"]
-      },
-      " .pe-switch-control__thumb": {
-        color: componentVars["color_" + tint + "_thumb_off"]
-      },
-      " .pe-switch-control__knob": {
-        backgroundColor: "currentcolor"
-      },
-      " .pe-button--focus": {
-        " .pe-button__focus": {
-          opacity: componentVars["color_" + tint + "_focus_off_opacity"],
-          backgroundColor: componentVars["color_" + tint + "_focus_off"]
-        }
-      },
-      " .pe-icon": {
-        color: componentVars["color_" + tint + "_icon_off"] || "currentcolor"
-      },
-      " .pe-control__label": {
-        color: componentVars["color_" + tint + "_off_label"]
-      }
-    },
-
-    ".pe-control--on": {
-      " .pe-switch-control__track": {
-        opacity: componentVars["color_" + tint + "_track_on_opacity"],
-        backgroundColor: componentVars["color_" + tint + "_track_on"]
-      },
-      " .pe-switch-control__thumb": {
-        color: componentVars["color_" + tint + "_thumb_on"]
-      },
-      " .pe-switch-control__knob": {
-        backgroundColor: "currentcolor"
-      },
-      " .pe-button--focus": {
-        " .pe-button__focus": {
-          opacity: componentVars["color_" + tint + "_focus_on_opacity"],
-          backgroundColor: componentVars["color_" + tint + "_focus_on"]
-        }
-      },
-      " .pe-icon": {
-        color: componentVars["color_" + tint + "_icon_on"] || "currentcolor"
-      },
-      " .pe-control__label": {
-        color: componentVars["color_" + tint + "_on_label"]
-      }
-    },
-
-    ".pe-control--on.pe-control--disabled, &.pe-control--off.pe-control--disabled": {
-      " .pe-control__label": {
-        color: componentVars["color_" + tint + "_disabled"]
-      },
-      " .pe-switch-control__track": {
-        opacity: componentVars["color_" + tint + "_track_disabled_opacity"],
-        backgroundColor: componentVars["color_" + tint + "_track_disabled"]
-      },
-      " .pe-switch-control__thumb": {
-        color: componentVars["color_" + tint + "_thumb_disabled"]
-      }
-    }
-  })];
-};
-
-var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, tint) {
-  return [_defineProperty$1({}, scopes.map(function (s) {
-    return s + selector + ":hover";
-  }).join(","), {
-    ".pe-control--on": {
-      " .pe-button__wash": {
-        backgroundColor: componentVars["color_" + tint + "_wash_on"]
-      }
-    },
-    ".pe-control--off": {
-      " .pe-button__wash": {
-        backgroundColor: componentVars["color_" + tint + "_wash_off"]
-      }
-    }
-  })];
-};
-
-var color = (function (selector, componentVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light tone
-  noTouchStyle(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, "dark"), // inside dark tone
-  noTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, "light")];
-});
-
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var fns = [layout$1, color];
-var selector = "." + classes.component;
-
-var customTheme = function customTheme(customSelector, customVars) {
-  return __WEBPACK_IMPORTED_MODULE_0_polythene_core_css__["d" /* styler */].generateStyles([customSelector, selector], _extends$1({}, vars$3, customVars), fns);
-};
-
-__WEBPACK_IMPORTED_MODULE_0_polythene_core_css__["d" /* styler */].generateStyles([selector], vars$3, fns);
-
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var theme = customTheme;
 
 // Don't export 'element': it will be the wrapped selection control component (set in polythene-xxx-checkbox)
 
@@ -13746,7 +11854,6 @@ var theme = customTheme;
 var createProps = function createProps(vnode) {
   var attrs = vnode.attrs;
   return _extends({}, attrs, {
-    theme: theme,
     selectable: attrs.selectable || function () {
       return true;
     }, // default: always selectable, regardless the checked state
@@ -13756,11 +11863,10 @@ var createProps = function createProps(vnode) {
 };
 
 var _switch = Object.freeze({
-	theme: theme,
 	createProps: createProps
 });
 
-var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var getElement = function getElement(vnode) {
   return vnode.attrs.element || "div";
@@ -13780,7 +11886,7 @@ var createContent = function createContent(vnode, _ref) {
   return [h("div", {
     className: classes.track,
     key: "track"
-  }), h(IconButton, _extends$3({}, {
+  }), h(IconButton, _extends$1({}, {
     className: classes.thumb,
     key: "button",
     content: h("div", { className: classes.knob }, [attrs.icon ? attrs.icon : null, raised ? h(Shadow, {
@@ -13800,20 +11906,73 @@ var viewControl = Object.freeze({
 	createContent: createContent
 });
 
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var hit_area_padding = (__WEBPACK_IMPORTED_MODULE_0_polythene_theme__["a" /* vars */].grid_unit_icon_button - __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["a" /* vars */].unit_icon_size) / 2; // 12
+
+var vars$3 = _extends$2({}, __WEBPACK_IMPORTED_MODULE_1_polythene_core_selection_control__["b" /* vars */], {
+  track_height: 14,
+  track_length: 36,
+  thumb_size: 20,
+  padding: __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["a" /* vars */].grid_unit_component,
+  icon_button_padding: __WEBPACK_IMPORTED_MODULE_2_polythene_core_icon_button__["b" /* vars */].padding,
+  hit_area_padding: hit_area_padding,
+
+  animation_duration: __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["a" /* vars */].animation_duration,
+
+  color_light_thumb_on: Object(__WEBPACK_IMPORTED_MODULE_3_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_0_polythene_theme__["a" /* vars */].color_primary),
+  color_light_thumb_off: "#f1f1f1",
+  color_light_thumb_disabled: "#bdbdbd",
+  color_light_wash_on: Object(__WEBPACK_IMPORTED_MODULE_3_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_0_polythene_theme__["a" /* vars */].color_primary),
+  color_light_wash_off: __WEBPACK_IMPORTED_MODULE_2_polythene_core_icon_button__["b" /* vars */].color_light_wash,
+
+  color_light_track_on: Object(__WEBPACK_IMPORTED_MODULE_3_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_0_polythene_theme__["a" /* vars */].color_primary_faded),
+  color_light_track_on_opacity: .55,
+  color_light_track_off: Object(__WEBPACK_IMPORTED_MODULE_3_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_0_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["a" /* vars */].blend_light_text_regular),
+  color_light_track_off_opacity: .55,
+  color_light_track_disabled: Object(__WEBPACK_IMPORTED_MODULE_3_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_0_polythene_theme__["a" /* vars */].color_light_foreground, __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["a" /* vars */].blend_light_background_disabled),
+  color_light_track_disabled_opacity: 1,
+
+  // icon color may be set in theme; default "currentcolor"
+  // color_light_icon_on:                   "currentcolor",
+  // color_light_icon_off:                  "currentcolor",
+
+  // color_light_focus_on and so on taken from selectionControlVars
+
+  color_dark_thumb_on: Object(__WEBPACK_IMPORTED_MODULE_3_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_0_polythene_theme__["a" /* vars */].color_primary),
+  color_dark_thumb_off: "#bdbdbd",
+  color_dark_thumb_disabled: "#555",
+  color_dark_wash_on: Object(__WEBPACK_IMPORTED_MODULE_3_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_0_polythene_theme__["a" /* vars */].color_primary),
+  color_dark_wash_off: __WEBPACK_IMPORTED_MODULE_2_polythene_core_icon_button__["b" /* vars */].color_dark_wash,
+
+  color_dark_track_on: Object(__WEBPACK_IMPORTED_MODULE_3_polythene_core_css__["c" /* rgba */])(__WEBPACK_IMPORTED_MODULE_0_polythene_theme__["a" /* vars */].color_primary_faded, __WEBPACK_IMPORTED_MODULE_0_polythene_theme__["a" /* vars */].blend_dark_text_tertiary), // or "#5a7f7c"
+  color_dark_track_on_opacity: 9,
+  color_dark_track_off: "#717171",
+  color_dark_track_off_opacity: .55,
+  color_dark_track_disabled: "#717171",
+  color_dark_track_disabled_opacity: .3
+
+  // icon color may be set in theme; default "currentcolor"
+  // color_dark_icon_on:                    "currentcolor"
+  // color_dark_icon_off:                   "currentcolor"
+
+  // color_dark_focus_on and so on taken from selectionControlVars
+});
+
 
 
 
 /***/ }),
-/* 63 */
+/* 61 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export Tabs */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_tabs__ = __webpack_require__(64);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Tabs; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_tabs__ = __webpack_require__(62);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_mithril_icon__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_mithril_button__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_polythene_mithril_icon_button__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_mithril_button__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_polythene_mithril_icon_button__ = __webpack_require__(7);
 
 
 
@@ -13847,14 +12006,13 @@ var Tabs = Object(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["a" /* St
   }
 }));
 
-Tabs.theme = __WEBPACK_IMPORTED_MODULE_1_polythene_core_tabs__["c" /* coreTabs */].theme;
 Tabs.displayName = "Tabs";
 
 
 
 
 /***/ }),
-/* 64 */
+/* 62 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13864,11 +12022,11 @@ Tabs.displayName = "Tabs";
 /* unused harmony export classes */
 /* unused harmony export vars */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_utilities__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_utilities__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_theme__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_core_button__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_polythene_core_button__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_polythene_core_icon_button__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_polythene_core_css__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_polythene_core_css__ = __webpack_require__(2);
 
 
 
@@ -13950,281 +12108,9 @@ var classes$1 = {
   label: __WEBPACK_IMPORTED_MODULE_3_polythene_core_button__["a" /* classes */].label
 };
 
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var layout = (function (selector, componentVars) {
-  return [_defineProperty$1({}, selector, {
-    userSelect: "none",
-    transform: "translate3d(0,0,0)",
-    "-webkit-overflow-scrolling": "touch",
-
-    "& ::-webkit-scrollbar": {
-      "display": "none"
-    },
-
-    ".pe-tabs--menu": {
-      // reset sizes to fit within a small space
-      " .pe-tabs__tab": {
-        height: componentVars.menu_tab_height + "px"
-      },
-      " .pe-tabs__tab---icon": {
-        height: componentVars.menu_tab_icon_label_height + "px"
-      },
-      " .pe-tabs__tab, .pe-tabs__tab.pe-tabs__tab---icon, .pe-tabs__tab.pe-text-button": {
-        minWidth: 0,
-        height: componentVars.menu_tab_icon_label_height + "px",
-
-        " .pe-button__content": {
-          padding: "0 " + componentVars.tab_menu_content_padding_v + "px",
-          height: componentVars.menu_tab_height + "px",
-
-          " .pe-icon": {
-            marginBottom: 0
-          },
-          " .pe-button__content": {
-            fontSize: "10px",
-            lineHeight: "12px",
-            textTransform: "none"
-          }
-        }
-      }
-    },
-
-    ".pe-tabs--scrollable": {
-      // hide scrollbar (this approach is required for Firefox)
-      "max-height": componentVars.tab_height + "px",
-      "-ms-overflow-style": "none",
-
-      " .pe-tabs__scroll-button": {
-        // default hide, show with html.pe-no-touch
-        display: "none"
-      },
-
-      " .pe-tabs__row": {
-        marginBottom: -componentVars.scrollbar_offset + "px"
-      }
-    },
-
-    " .pe-no-touch &": {
-      ".pe-tabs--scrollable": {
-        backgroundColor: "inherit"
-      },
-
-      " .pe-tabs__scroll-button": {
-        position: "absolute",
-        display: "block",
-        top: 0,
-        backgroundColor: "inherit",
-        zIndex: 1,
-        borderRadius: 0,
-
-        " .pe-button__content": {
-          borderRadius: 0,
-          backgroundColor: "inherit",
-          transitionProperty: componentVars.tab_label_transition_property,
-          transitionDuration: componentVars.scroll_button_fade_duration + "s",
-          transitionTimingFunction: "ease-out",
-          transitionDelay: componentVars.scroll_button_fade_delay + "s",
-          opacity: componentVars.scroll_button_opacity
-        }
-      },
-      ".pe-tabs--start .pe-tabs__scroll-button-start": {
-        pointerEvents: "none",
-        cursor: "default",
-
-        " .pe-button__content": {
-          opacity: 0
-        }
-      },
-      ".pe-tabs--end .pe-tabs__scroll-button-end": {
-        pointerEvents: "none",
-        cursor: "default",
-
-        " .pe-button__content": {
-          opacity: 0
-        }
-      },
-
-      " .pe-tabs__scroll-button-start": {
-        left: 0
-      },
-      " .pe-tabs__scroll-button-end": {
-        right: 0
-      }
-    },
-
-    " .pe-tabs__row": [__WEBPACK_IMPORTED_MODULE_5_polythene_core_css__["a" /* flex */].layoutHorizontal, {
-      userSelect: "none",
-      position: "relative",
-      whiteSpace: "nowrap",
-
-      ".pe-tabs__row--indent": {
-        margin: 0,
-        paddingLeft: componentVars.tabs_indent + "px",
-        overflow: "auto"
-      },
-
-      ".pe-tabs__row--centered": __WEBPACK_IMPORTED_MODULE_5_polythene_core_css__["a" /* flex */].layoutCenterJustified
-    }],
-
-    " .pe-tabs__scroll-button-offset": [__WEBPACK_IMPORTED_MODULE_5_polythene_core_css__["a" /* flex */].flex(), __WEBPACK_IMPORTED_MODULE_5_polythene_core_css__["a" /* flex */].flexIndex("none")],
-
-    " .pe-tabs__tab": [__WEBPACK_IMPORTED_MODULE_5_polythene_core_css__["a" /* flex */].flex(), __WEBPACK_IMPORTED_MODULE_5_polythene_core_css__["a" /* flex */].flexIndex("none"), __WEBPACK_IMPORTED_MODULE_5_polythene_core_css__["b" /* mixin */].defaultTransition("color"), {
-      userSelect: "none",
-      margin: 0,
-      borderRadius: 0,
-      height: componentVars.tab_height + "px",
-      padding: 0,
-      color: "inherit",
-      minWidth: !isNaN(componentVars.tab_min_width) ? componentVars.tab_min_width + "px" : componentVars.tab_min_width, // for smaller screens, see also media query below
-      maxWidth: !isNaN(componentVars.tab_max_width) ? componentVars.tab_max_width + "px" : componentVars.tab_max_width,
-
-      ".pe-text-button .pe-button__content": {
-        padding: "0 " + componentVars.tab_content_padding_v + "px",
-        height: componentVars.tab_height + "px",
-        lineHeight: __WEBPACK_IMPORTED_MODULE_2_polythene_theme__["a" /* vars */].line_height + "em",
-        borderRadius: 0,
-
-        " .pe-button__label, .pe-icon": {
-          maxWidth: componentVars.label_max_width + "px", // or .pe-tabs width minus 56dp
-          lineHeight: componentVars.tab_label_line_height + "px",
-          maxHeight: 2 * componentVars.tab_label_line_height + "px",
-          overflow: "hidden",
-          whiteSpace: "normal"
-        },
-        " .pe-button__label": [__WEBPACK_IMPORTED_MODULE_5_polythene_core_css__["b" /* mixin */].defaultTransition("opacity", componentVars.animation_duration), {
-          margin: componentVars.tab_label_vertical_offset + "px 0 0 0",
-          padding: 0,
-          opacity: componentVars.label_opacity
-        }],
-        " .pe-icon": {
-          marginLeft: "auto",
-          marginRight: "auto"
-        },
-        " .pe-button__focus": {
-          display: "none"
-        }
-      },
-      ".pe-button--selected .pe-button__content": {
-        " .pe-button__label": {
-          opacity: 1
-        }
-      },
-      ".pe-tabs__tab---icon": {
-        "&, .pe-button__content": [{
-          height: componentVars.tab_icon_label_height + "px"
-        }, {
-          " .pe-button__content, .pe-icon": {
-            margin: "0 auto"
-          }
-        }, {
-          " .pe-icon": {
-            marginBottom: componentVars.tab_icon_label_icon_spacing + "px"
-          }
-        }]
-      }
-    }],
-
-    ".pe-tabs--compact": {
-      " .pe-tabs__tab": {
-        minWidth: "initial"
-      }
-    },
-
-    " .pe-tabs__tab-content": [__WEBPACK_IMPORTED_MODULE_5_polythene_core_css__["a" /* flex */].layoutCenterCenter, __WEBPACK_IMPORTED_MODULE_5_polythene_core_css__["a" /* flex */].layoutVertical, {
-      height: "inherit"
-    }],
-
-    ".pe-tabs--autofit .pe-tabs__tab": [__WEBPACK_IMPORTED_MODULE_5_polythene_core_css__["a" /* flex */].flex(), {
-      minWidth: "initial",
-      maxWidth: "none"
-    }],
-
-    ".pe-tabs__active--selectable": {
-      " .pe-tabs__tab.pe-button--selected": {
-        cursor: "pointer",
-        pointerEvents: "initial"
-      }
-    },
-
-    " .pe-tabs__indicator": {
-      transform: "translate3d(0,0,0)",
-      transformOrigin: "left 50%",
-      transitionProperty: "all",
-      transitionTimingFunction: "ease-out",
-      position: "absolute",
-      height: componentVars.tab_indicator_height + "px",
-      bottom: 0,
-      left: 0,
-      width: "100%" // and transformed with js
-      // background-color defined in implementation/theme css
-    },
-
-    " .pe-toolbar--tabs .pe-toolbar__bar &": [__WEBPACK_IMPORTED_MODULE_5_polythene_core_css__["b" /* mixin */].fit(), {
-      width: "auto",
-      margin: 0,
-      top: "auto"
-    }]
-
-    // ["@media (min-width: " + vars.breakpoint_small_tablet_portrait + "px)"]: {
-    //   ":not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit) .pe-tabs__tab": {
-    //     minWidth: componentVars.tab_min_width_tablet + "px"
-    //   }
-    // }
-  })];
-});
-
-function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var style = function style(scopes, selector, componentVars, tint) {
-  return [_defineProperty$2({}, scopes.map(function (s) {
-    return s + selector;
-  }).join(","), {
-    color: componentVars["color_" + tint],
-
-    " .pe-tabs__tab.pe-button--selected": {
-      color: componentVars["color_" + tint + "_selected"],
-
-      " .pe-button__content": {
-        background: componentVars["color_" + tint + "_selected_background"]
-      }
-    },
-    " .pe-tabs__tab:not(.pe-button--selected) .pe-icon": {
-      color: componentVars["color_" + tint + "_icon"]
-    },
-    " .pe-tabs__indicator": {
-      backgroundColor: componentVars["color_" + tint + "_tab_indicator"]
-    },
-    " .pe-tabs__scroll-button": {
-      color: "inherit"
-    }
-  })];
-};
-
-var color = (function (selector, componentVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
-});
-
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var fns = [layout, color];
-var selector = "." + classes$1.component;
-
-var customTheme = function customTheme(customSelector, customVars) {
-  return __WEBPACK_IMPORTED_MODULE_5_polythene_core_css__["d" /* styler */].generateStyles([customSelector, selector], _extends$1({}, vars$3, customVars), fns);
-};
-
-__WEBPACK_IMPORTED_MODULE_5_polythene_core_css__["d" /* styler */].generateStyles([selector], vars$3, fns);
-
-var arrowBackward = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\"/></svg>";
-var arrowForward = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\"/></svg>";
-
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var theme = customTheme;
 
 var whenCreateDone = function whenCreateDone() {
   return Promise.resolve();
@@ -14289,7 +12175,7 @@ var scrollToTab = function scrollToTab(state, tabIndex) {
     var duration = Math.abs(currentLeft - left) / vars$3.tabs_scroll_speed;
     var delaySeconds = vars$3.tabs_scroll_delay || 0;
     setTimeout(function () {
-      Object(__WEBPACK_IMPORTED_MODULE_1_polythene_utilities__["e" /* scrollTo */])({
+      Object(__WEBPACK_IMPORTED_MODULE_1_polythene_utilities__["d" /* scrollTo */])({
         element: scroller,
         to: left,
         duration: Math.max(vars$3.tabs_scroll_min_duration, duration),
@@ -14531,7 +12417,6 @@ var createContent = function createContent(vnode, _ref3) {
 };
 
 var tabs = Object.freeze({
-	theme: theme,
 	getInitialState: getInitialState,
 	onMount: onMount,
 	onUnMount: onUnMount,
@@ -14539,9 +12424,9 @@ var tabs = Object.freeze({
 	createContent: createContent
 });
 
-var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-function _defineProperty$3(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 // Don't export 'element': it will be the wrapped Button component (set in polythene-xxx-tabs/tab)
 
@@ -14566,13 +12451,13 @@ var createProps$1 = function createProps(vnode, _ref) {
   // Let internal onclick function co-exist with passed button option
   attrs.events = attrs.events || {};
   attrs.events[k.onclick] = attrs.events[k.onclick] || function () {};
-  return _extends$2({}, attrs, {
+  return _extends$1({}, attrs, {
     content: h("div", { className: classes$1.tabContent }, [attrs.icon ? h(Icon, attrs.icon) : null, attrs.label ? h("div", { className: classes$1.label }, h("span", attrs.label)) : null]),
     className: [classes$1.tab, attrs.icon && attrs.label ? classes$1.tabHasIcon : null, attrs.className || attrs[k.class]].join(" "),
     selected: attrs.selected,
     wash: false,
     ripple: true,
-    events: _extends$2({}, attrs.events, _defineProperty$3({}, k.onclick, function (e) {
+    events: _extends$1({}, attrs.events, _defineProperty$1({}, k.onclick, function (e) {
       attrs.onSelect();
       attrs.events[k.onclick](e);
     }))
@@ -14590,6 +12475,9 @@ var tab = Object.freeze({
 });
 
 // Don't export 'element': it will be the wrapped IconButton component (set in polythene-xxx-tabs/scroll-button)
+
+var arrowBackward = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\"/></svg>";
+var arrowForward = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\"/></svg>";
 
 var onMount$2 = function onMount(vnode) {
   var dom = vnode.dom;
@@ -14623,32 +12511,30 @@ var scrollButton = Object.freeze({
 
 
 /***/ }),
-/* 65 */
+/* 63 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* unused harmony export Toolbar */
 /* unused harmony export ToolbarTitle */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_toolbar__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_toolbar__ = __webpack_require__(64);
 
 
 
 var Toolbar = Object(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["b" /* ViewComponent */])(__WEBPACK_IMPORTED_MODULE_1_polythene_core_toolbar__["a" /* coreToolbar */]);
 
-Toolbar.theme = __WEBPACK_IMPORTED_MODULE_1_polythene_core_toolbar__["a" /* coreToolbar */].theme;
 Toolbar.displayName = "Toolbar";
 
 var ToolbarTitle = Object(__WEBPACK_IMPORTED_MODULE_0_polythene_mithril_base__["b" /* ViewComponent */])(__WEBPACK_IMPORTED_MODULE_1_polythene_core_toolbar__["b" /* coreToolbarTitle */]);
 
-ToolbarTitle.theme = __WEBPACK_IMPORTED_MODULE_1_polythene_core_toolbar__["b" /* coreToolbarTitle */].theme;
 ToolbarTitle.displayName = "ToolbarTitle";
 
 
 
 
 /***/ }),
-/* 66 */
+/* 64 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14657,7 +12543,7 @@ ToolbarTitle.displayName = "ToolbarTitle";
 /* unused harmony export classes */
 /* unused harmony export vars */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polythene_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polythene_core_css__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_polythene_theme__ = __webpack_require__(3);
 
 
@@ -14829,9 +12715,13 @@ var toolbarTitle = Object.freeze({
 
 
 /***/ }),
-/* 67 */,
-/* 68 */,
-/* 69 */
+/* 65 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 66 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

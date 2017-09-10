@@ -1,6 +1,5 @@
 /* global __dirname */
 const path = require("path");
-// const glob = require("glob");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
@@ -46,7 +45,7 @@ module.exports = {
   },
 
   plugins: [
-    new ExtractTextPlugin("css/styles.css"),
+    new ExtractTextPlugin("css/app.css"),
   ],
 
   devtool: "source-map"

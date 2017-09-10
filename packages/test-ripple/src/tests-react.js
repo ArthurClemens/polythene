@@ -12,9 +12,9 @@ const reactTests = ({ Ripple, renderer: h }) => { // eslint-disable-line no-unus
     })
   );
 
-  Ripple.theme(".react-ripple-themed-ripple", {
-    color_light: "#F44336"
-  });
+  // Ripple.theme(".react-ripple-themed-ripple", {
+  //   color_light: "#F44336"
+  // });
 
   return [
     {

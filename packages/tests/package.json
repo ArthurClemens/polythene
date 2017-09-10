@@ -1,14 +1,14 @@
 {
-  "name": "polythene-test",
+  "name": "polythene-tests",
   "private": true,
   "version": "1.0.0-rc.5",
   "description": "",
-  "main": "dist/polythene-test.js",
-  "module": "dist/polythene-test.mjs",
+  "main": "dist/polythene-tests.js",
+  "module": "dist/polythene-tests.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
-    "build": "npm run rollup"
+    "build": "yarn run rollup"
   },
   "dependencies": {
     "test-button": "^1.0.0-rc.5",

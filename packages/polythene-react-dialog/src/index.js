@@ -29,5 +29,4 @@ const Multiple = Multi({ options, renderer });
 export const Dialog = StateComponent(Multiple);
 Object.getOwnPropertyNames(Multiple).forEach(p => Dialog[p] = Multiple[p]);
 
-Dialog.theme = core.theme;
 Dialog.displayName = "Dialog";

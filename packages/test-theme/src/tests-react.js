@@ -9,10 +9,10 @@ const reactTests = () => {
     borders: true,
   }));
 
-  Button.theme(".tests-custom-theme-secondary-button", {
-    color_light_border: "#ddd",
-    color_light_background: "#fff"
-  });
+  // Button.theme(".tests-custom-theme-secondary-button", {
+  //   color_light_border: "#ddd",
+  //   color_light_background: "#fff"
+  // });
 
   return [
     {

@@ -1,6 +1,4 @@
-# Polythene utility scripts
-
-Scripts to use outside of app code.
+# Polythene helper scripts
 
 
 ## Write CSS
@@ -26,14 +24,14 @@ writeCSS(options)
 
 ~~~javascript
 import { writeCSS } from "polythene-scripts"
-import { themeStyles } from "polythene-css-svg"
+import { addStyle } from "polythene-css-svg"
 
 const styles = [
-  themeStyles(".themed-svg-red", {
+  addStyle(".themed-svg-red", {
     color_light: "red",
     color_dark: "orange"
   }),
-  themeStyles(".themed-svg-green", {
+  addStyle(".themed-svg-green", {
     color_light: "green",
     color_dark: "blue"
   })

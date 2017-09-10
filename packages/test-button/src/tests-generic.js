@@ -1,22 +1,22 @@
 
 export default ({ Button }) => {
   
-  Button.theme(".tests-button-themed-button", {
-    color_light_background: "#2196F3",
-    color_dark_background: "#2196F3",
-    color_light_text: "#fff"
-  });
+  // Button.theme(".tests-button-themed-button", {
+  //   color_light_background: "#2196F3",
+  //   color_dark_background: "#2196F3",
+  //   color_light_text: "#fff"
+  // });
 
-  Button.theme(".blue-on-dark-Button", {
-    color_dark_text: "#2196F3"
-  });
+  // Button.theme(".blue-on-dark-Button", {
+  //   color_dark_text: "#2196F3"
+  // });
 
-  Button.theme(".tests-button-bordered-button", {
-    color_light_text: "#673ab7",
-    color_light_border: "#673ab7",
-    color_dark_text: "yellow",
-    color_dark_border: "yellow"
-  });
+  // Button.theme(".tests-button-bordered-button", {
+  //   color_light_text: "#673ab7",
+  //   color_light_border: "#673ab7",
+  //   color_dark_text: "yellow",
+  //   color_dark_border: "yellow"
+  // });
   
   return [
     {

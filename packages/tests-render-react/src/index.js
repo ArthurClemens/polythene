@@ -4,9 +4,9 @@ import {
   Route,
   withRouter,
 } from "react-router-dom";
-import { addLayoutStyles } from "polythene-utilities";
 import { addFastClick } from "polythene-fastclick";
-import { addTypography, addRoboto } from "polythene-style";
+import { addLayoutStyles, addTypography } from "polythene-style";
+import "polythene-css";
 import { rules as css } from "./styles";
 import { renderer as h, List, Toolbar, ListTile, Snackbar, Notification } from "polythene-react";
 import Page from "./Page";
@@ -14,7 +14,6 @@ import routes from "./routes";
 import ScrollToTop from "./ScrollToTop";
 
 addTypography();
-addRoboto();
 addLayoutStyles();
 addFastClick();
 

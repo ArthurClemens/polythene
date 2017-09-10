@@ -1,8 +1,7 @@
 import m from "mithril";
 import * as polytheneCSS from "polythene-css";
 import { addFastClick } from "polythene-fastclick";
-import { addLayoutStyles } from "polythene-utilities";
-import { addTypography, addRoboto } from "polythene-style";
+import { addLayoutStyles, addTypography } from "polythene-style";
 import { rules as css } from "./styles";
 import page from "./page";
 import { renderer as h, List, ListTile, Toolbar } from "polythene-mithril";
@@ -14,7 +13,6 @@ polytheneCSS.SVG.addStyle(".tests-svg-themed-svg", {
 });
 
 addTypography();
-addRoboto();
 addLayoutStyles();
 addFastClick();
 

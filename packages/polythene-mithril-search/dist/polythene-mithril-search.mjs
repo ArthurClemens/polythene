@@ -10,7 +10,6 @@ var Search = StateComponent(_extends({}, coreSearch, {
   }
 }));
 
-Search.theme = coreSearch.theme;
 Search.displayName = "Search";
 
 export { Search };

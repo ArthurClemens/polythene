@@ -23,6 +23,5 @@ export const IOSSpinner = {
     ))
 };
 
-IOSSpinner.theme = core.theme;
 IOSSpinner.classes = core.classes;
 IOSSpinner.displayName = "IOSSpinner";

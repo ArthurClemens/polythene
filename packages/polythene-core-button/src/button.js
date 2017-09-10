@@ -1,11 +1,8 @@
 import { filterSupportedAttributes, isClient } from "polythene-core";
-import { customTheme } from "./theme";
 import classes from "./classes";
 
 export const getElement = vnode =>
   vnode.attrs.element || "a";
-
-export const theme = customTheme;
 
 export const getInitialState = (vnode, createStream) => {
   const dom = createStream();

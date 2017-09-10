@@ -30,7 +30,6 @@ var RadioButton = StateComponent(_extends({}, coreRadioButton, {
   component: SelectionControl
 }));
 
-RadioButton.theme = coreRadioButton.theme;
 RadioButton.displayName = "RadioButton";
 
 export { RadioButton };

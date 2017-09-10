@@ -15,7 +15,6 @@ var FAB = ViewComponent(_extends({}, coreFAB, {
   component: RaisedButton
 }));
 
-FAB.theme = coreFAB.theme;
 FAB.displayName = "FAB";
 
 export { FAB };

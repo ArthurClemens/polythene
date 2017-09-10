@@ -6,15 +6,15 @@ export default ({ renderer, keys, DialogPane, Toolbar, ToolbarTitle, Button }) =
 
   const h = renderer;
 
-  DialogPane.theme(".dialog-pane-tests-blue-dialog", {
-    color_light_background: "#2196F3",
-    color_light_body_text:  "#fff"
-  });
+  // DialogPane.theme(".dialog-pane-tests-blue-dialog", {
+  //   color_light_background: "#2196F3",
+  //   color_light_body_text:  "#fff"
+  // });
 
-  Toolbar.theme(".tests-dialog-pane-themed-toolbar", {
-    color_light_background: "#00c853",
-    color_dark_background:  "#333"
-  });
+  // Toolbar.theme(".tests-dialog-pane-themed-toolbar", {
+  //   color_light_background: "#00c853",
+  //   color_dark_background:  "#333"
+  // });
 
   const paneToolbar = ({ compact } = {}) =>
     h(Toolbar, {

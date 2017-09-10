@@ -15,7 +15,6 @@ var RaisedButton = StateComponent(_extends({}, coreRaisedButton, {
   component: Button
 }));
 
-RaisedButton.theme = coreRaisedButton.theme;
 RaisedButton.displayName = "RaisedButton";
 
 export { RaisedButton };

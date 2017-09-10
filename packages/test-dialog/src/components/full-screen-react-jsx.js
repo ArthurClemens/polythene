@@ -11,9 +11,9 @@ const BodyText = () => (
   </div>
 );
 
-Toolbar.theme(".tests-dialog-react-jsx-themed-toolbar", {
-  color_dark_background:  "#00c853"
-});
+// Toolbar.theme(".tests-dialog-react-jsx-themed-toolbar", {
+//   color_dark_background:  "#00c853"
+// });
 
 const confirmDialogOpts = ({
   body: "This event is not yet saved. Are you sure you want to delete this event?",

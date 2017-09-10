@@ -33,4 +33,9 @@ var svg = Object.freeze({
 	createContent: createContent
 });
 
-export { svg as coreSVG, classes };
+var vars = {
+  color_light: "currentcolor",
+  color_dark: "currentcolor"
+};
+
+export { svg as coreSVG, classes, vars };

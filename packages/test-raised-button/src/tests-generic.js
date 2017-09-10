@@ -1,10 +1,10 @@
 
 export default ({ RaisedButton }) => {
 
-  RaisedButton.theme(".tests-raised-button-themed-button", {
-    color_light_background: "#FF1744",
-    color_light_text: "#fff"
-  });
+  // RaisedButton.theme(".tests-raised-button-themed-button", {
+  //   color_light_background: "#FF1744",
+  //   color_light_text: "#fff"
+  // });
 
   return [
     {

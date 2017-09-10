@@ -28,7 +28,6 @@ var IOSSpinner = function IOSSpinner(props) {
   }));
 };
 
-IOSSpinner.theme = coreIOSSpinner.theme;
 IOSSpinner.classes = coreIOSSpinner.classes;
 IOSSpinner.displayName = "IOSSpinner";
 
@@ -46,7 +45,6 @@ var MaterialDesignSpinner = function MaterialDesignSpinner(props) {
   }));
 };
 
-MaterialDesignSpinner.theme = coreMaterialDesignSpinner.theme;
 MaterialDesignSpinner.classes = coreMaterialDesignSpinner.classes;
 MaterialDesignSpinner.displayName = "MaterialDesignSpinner";
 
@@ -64,7 +62,6 @@ var MaterialDesignProgressSpinner = function MaterialDesignProgressSpinner(props
   }));
 };
 
-MaterialDesignProgressSpinner.theme = coreMaterialDesignProgressSpinner.theme;
 MaterialDesignProgressSpinner.classes = coreMaterialDesignProgressSpinner.classes;
 MaterialDesignProgressSpinner.displayName = "MaterialDesignProgressSpinner";
 

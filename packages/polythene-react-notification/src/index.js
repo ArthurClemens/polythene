@@ -22,5 +22,4 @@ const Multiple = Multi({ options, renderer });
 export const Notification = StateComponent(Multiple);
 Object.getOwnPropertyNames(Multiple).forEach(p => Notification[p] = Multiple[p]);
 
-Notification.theme = core.theme;
 Notification.displayName = "Notification";

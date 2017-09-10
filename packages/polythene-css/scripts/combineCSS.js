@@ -1,19 +1,18 @@
 const fs           = require("fs");
-const glob         = require("glob-fs")({ gitignore: true });
-const shell        = require("shelljs");
+const glob         = require("glob-fs")();
 const { writeCSS } = require("polythene-scripts");
-
-const outPath = "./dist/polythene.css";
-
-shell.touch(outPath);
-shell.rm(outPath);
-
-const files = glob.readdirSync("./dist/*.css");
+const outPath      = "./dist/polythene.css";
 
 const stripComment = str =>
   str.replace(/(\\r|\\n)\/\*#.*$/, "");
 
-const combinedFiles = files.reduce((acc, filename) =>
+const filterStyleCSS = file =>
+  file !== "dist/polythene-layout.css" &&
+  file !== "dist/polythene-typography.css";
+
+const files = glob.readdirSync("./dist/*.css");
+
+const combinedFiles = files.filter(filterStyleCSS).reduce((acc, filename) =>
   acc + stripComment(fs.readFileSync(filename, "utf8")), "");
 
 if (combinedFiles) {

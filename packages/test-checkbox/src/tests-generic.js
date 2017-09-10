@@ -11,16 +11,16 @@ export default ({ Checkbox, RaisedButton, renderer: h, keys: k }) => {
   const trustedIconStarsOutline = h.trust(iconStarOutlineSVG);
   const trustedIconStarFilled = h.trust(iconStarFilledSVG);
 
-  const themeColor = "#ff1744";
-  Checkbox.theme(".tests-checkbox-themed-checkbox", {
-    label_font_size: 28,
-    color_light_on:    themeColor,
-    color_light_off:   themeColor,
-    color_dark_on:     themeColor,
-    color_dark_off:    themeColor,
-    color_light_label: themeColor,
-    color_dark_label:  themeColor
-  });
+  // const themeColor = "#ff1744";
+  // Checkbox.theme(".tests-checkbox-themed-checkbox", {
+  //   label_font_size: 28,
+  //   color_light_on:    themeColor,
+  //   color_light_off:   themeColor,
+  //   color_dark_on:     themeColor,
+  //   color_dark_off:    themeColor,
+  //   color_light_label: themeColor,
+  //   color_dark_label:  themeColor
+  // });
 
   const sizeNames = ["small", "regular", "medium", "large"];
 

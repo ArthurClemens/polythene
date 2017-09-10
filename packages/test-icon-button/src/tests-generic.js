@@ -3,12 +3,13 @@ const iconFavorite = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><pat
 export default ({ IconButton, Icon, SVG, renderer: h }) => {
 
   const trustedIconFavorite = h.trust(iconFavorite);
-  IconButton.theme(".tests-icon-button-themed-icon-button", {
-    padding: 24,
-    color_light_background: "purple",
-    color_dark_background: "orange",
-    color_light: "white"
-  });
+  
+  // IconButton.theme(".tests-icon-button-themed-icon-button", {
+  //   padding: 24,
+  //   color_light_background: "purple",
+  //   color_dark_background: "orange",
+  //   color_light: "white"
+  // });
 
   const sizeNames = ["small", "regular", "medium", "large"];
 

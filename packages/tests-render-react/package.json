@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "polythene-core": "^1.0.0-rc.4",
+    "polythene-css": "^1.0.0-rc.5",
     "polythene-fastclick": "^1.0.0-rc.4",
     "polythene-react": "^1.0.0-rc.5",
     "polythene-style": "^1.0.0-rc.5",

@@ -159,11 +159,11 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
       })
   };
 
-  Card.theme(".tests-card-colored-card", {
-    color_light_main_background: "#0097a7",
-    color_light_title_text: "#fff",
-    color_light_subtitle_text: "#fff"
-  });
+  // Card.theme(".tests-card-colored-card", {
+  //   color_light_main_background: "#0097a7",
+  //   color_light_title_text: "#fff",
+  //   color_light_subtitle_text: "#fff"
+  // });
 
   return [
     {

@@ -15,7 +15,6 @@ var IconButton = StateComponent(_extends({}, coreIconButton, {
   component: Button
 }));
 
-IconButton.theme = coreIconButton.theme;
 IconButton.displayName = "IconButton";
 
 export { IconButton };

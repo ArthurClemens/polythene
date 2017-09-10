@@ -10,15 +10,15 @@ export default ({ RadioButton, RadioGroup, renderer: h, keys: k }) => {
   const trustedIconStarsOutline = h.trust(iconStarOutlineSVG);
   const trustedIconStarFilled = h.trust(iconStarFilledSVG);
 
-  RadioButton.theme(".tests-radio-button-themed-radio", {
-    label_font_size:   28,
-    color_light_on:    "#2196F3",
-    color_light_off:   "#2196F3",
-    color_dark_on:     "#2196F3",
-    color_dark_off:    "#2196F3",
-    color_light_label: "#2196F3",
-    color_dark_label:  "#2196F3"
-  });
+  // RadioButton.theme(".tests-radio-button-themed-radio", {
+  //   label_font_size:   28,
+  //   color_light_on:    "#2196F3",
+  //   color_light_off:   "#2196F3",
+  //   color_dark_on:     "#2196F3",
+  //   color_dark_off:    "#2196F3",
+  //   color_light_label: "#2196F3",
+  //   color_dark_label:  "#2196F3"
+  // });
 
   const sizeNames = ["small", "regular", "medium", "large"];
 

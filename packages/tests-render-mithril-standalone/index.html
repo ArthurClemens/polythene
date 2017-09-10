@@ -40,6 +40,9 @@ h2 {
   margin: 0;
   color: #444;
 }
+.pe-control.pe-radio-control + .pe-control.pe-radio-control {
+  margin-left: 40px;
+}
 @media only screen and (min-width:480px) {
   .page {
     padding: 16px;
@@ -57,32 +60,36 @@ h2 {
 /* global m, polythene, polytheneCSS */
 const {
   Button,
-  RaisedButton,
-  FAB,
+  Card,
   Checkbox,
   Dialog,
-  Switch,
-  TextField,
-  Slider,
+  FAB,
   MaterialDesignSpinner,
   Notification,
+  RadioGroup,
+  RaisedButton,
+  Slider,
   Snackbar,
   SVG,
+  Switch,
+  Tabs,
+  TextField,
 } = polythene;
 
 const {
+  Button: buttonCSS,
   SVG: svgCSS,
 } = polytheneCSS;
 
 const linkIconSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z\"/></svg>";
 
-Button.theme(".themed-button", {
+buttonCSS.addStyle(".themed-button", {
   color_light_background: "#FF1744",
   color_light_text: "#fff"
 });
 
 svgCSS.addStyle(".themed-svg", {
-  color_light: "#FF1744"
+  color_light: "#2196f3"
 });
 
 const app = {
@@ -146,6 +153,55 @@ const app = {
           )
         ]
       ),
+      m(".row", 
+        [
+          m("h2", "Tabs"),
+          m(".component", 
+            m(Tabs, {
+              tabs: [
+                { label: "New" },
+                { label: "Favorites" },
+                { label: "Saved" }
+              ],
+              autofit: true
+            })
+          )
+        ]
+      ),
+      m(".row",
+        [
+          m("h2", "Card"),
+          m(".component", 
+            m(Card, {
+              className: "themed-card",
+              content: [
+                {
+                  primary: {
+                    title: "Get Ready",
+                    subtitle: "2 Unlimited",
+                    media: {
+                      ratio: "square",
+                      size: "medium",
+                      content: m("img", {
+                        src: "https://lastfm-img2.akamaized.net/i/u/avatar170s/ca297951611442bda8ea55fba764c757"
+                      })
+                    }
+                  }
+                },
+                {
+                  actions: {
+                    content: [
+                      m(Button, {
+                        label: "Listen now"
+                      })
+                    ]
+                  }
+                }
+              ]
+            })
+          )
+        ]
+      ),
       m(".row",
         [
           m("h2", "Checkbox"),
@@ -163,6 +219,29 @@ const app = {
             m(Switch, {
               label: "Label"
             })
+          )
+        ]
+      ),
+      m(".row",
+        [
+          m("h2", "Radio Button"),
+          m(".component", 
+            m(RadioGroup,
+              {
+                name: "defaultChecked",
+                content: [
+                  {
+                    value: "One",
+                    label: "One",
+                  },
+                  {
+                    value: "Two",
+                    label: "Two",
+                    defaultChecked: true
+                  }
+                ]
+              }
+            )
           )
         ]
       ),

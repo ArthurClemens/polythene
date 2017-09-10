@@ -13,5 +13,4 @@ export const IconButton = ViewComponent(Object.assign(
   }
 ));
 
-IconButton.theme = core.theme;
 IconButton.displayName = "IconButton";

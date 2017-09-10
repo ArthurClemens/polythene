@@ -4,17 +4,16 @@ import genericTests from "./tests-generic";
 const h = renderer;
 
 const secondaryButton = {
-  theme: Button.theme,
   view: vnode => h(Button, {
     className: "tests-custom-theme-secondary-button",
     borders: true,
     ...vnode.attrs
   })
 };
-secondaryButton.theme(".tests-custom-theme-secondary-button", {
-  color_light_border: "#ddd",
-  color_light_background: "#fff"
-});
+// secondaryButton.theme(".tests-custom-theme-secondary-button", {
+//   color_light_border: "#ddd",
+//   color_light_background: "#fff"
+// });
 
 const mithrilTests = () => [
   {

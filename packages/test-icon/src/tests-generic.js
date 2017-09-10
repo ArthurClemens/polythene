@@ -4,11 +4,11 @@ export default ({ Icon, SVG, renderer: h }) => {
   
   const trustedIconStars = h.trust(iconStars);
 
-  Icon.theme(".tests-icon-themed-icon", {
-    size_regular: 50,
-    color_light: "purple",
-    color_dark: "orange"
-  });
+  // Icon.theme(".tests-icon-themed-icon", {
+  //   size_regular: 50,
+  //   color_light: "purple",
+  //   color_dark: "orange"
+  // });
 
   const sizeNames = ["small", "regular", "medium", "large"];
 

@@ -1,8 +1,5 @@
 import { filterSupportedAttributes } from "polythene-core";
-import { customTheme } from "./theme";
 import classes from "./classes";
-
-export const theme = customTheme;
 
 const createOverlay = ({ dispatcher, attrs, h, k }) => {
   const element = attrs.element || "div";

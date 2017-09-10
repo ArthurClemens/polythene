@@ -2,14 +2,14 @@ const themeColor = "#2196F3";
 
 export default ({ renderer: h, Menu, List, ListTile }) => {
 
-  Menu.theme(".menu-tests-blue-menu", {
-    color_dark_background: themeColor,
-    border_radius: 6
-  });
-  ListTile.theme(".menu-tests-blue-menu-list-tile", {
-    color_light_title: "#fff",
-    color_light_background: themeColor
-  });
+  // Menu.theme(".menu-tests-blue-menu", {
+  //   color_dark_background: themeColor,
+  //   border_radius: 6
+  // });
+  // ListTile.theme(".menu-tests-blue-menu-list-tile", {
+  //   color_light_title: "#fff",
+  //   color_light_background: themeColor
+  // });
 
   const themedList = h(List, [
     h(ListTile, {

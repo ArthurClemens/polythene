@@ -17,20 +17,19 @@ export default ({ renderer: h, Tabs }) => {
 
   const OnChange = onChange({ h, Tabs });
 
-  Tabs.theme(".tests-tabs-fixed-width", {
-    tab_max_width: 110,
-    tab_min_width: 110
-  });
+  // Tabs.theme(".tests-tabs-fixed-width", {
+  //   tab_max_width: 110,
+  //   tab_min_width: 110
+  // });
 
-  Tabs.theme(".tests-tabs-custom_color", {
-    color_light: "#00BCD4",
-    color_light_selected: "#F44336",
-    color_light_tab_indicator: "#F44336",
-    color_dark: "#00BCD4",
-    color_dark_selected: "#F44336",
-    color_dark_tab_indicator: "#F44336"
-  });
-
+  // Tabs.theme(".tests-tabs-custom_color", {
+  //   color_light: "#00BCD4",
+  //   color_light_selected: "#F44336",
+  //   color_light_tab_indicator: "#F44336",
+  //   color_dark: "#00BCD4",
+  //   color_dark_selected: "#F44336",
+  //   color_dark_tab_indicator: "#F44336"
+  // });
 
   const threeButtons = [
     { label: "New" },

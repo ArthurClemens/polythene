@@ -1,5 +1,4 @@
-import * as coreIconButton from "./icon-button";
+import * as coreIconButton from "./icon-button"; export { coreIconButton };
 
-export { coreIconButton };
 export { default as classes } from "./classes";
-export { default as vars } from "./theme/vars";
+export { default as vars } from "./vars";

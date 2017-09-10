@@ -1,0 +1,58 @@
+.pe-button.pe-icon-button {
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  position: relative;
+  font-size: 1rem;
+  border-radius: 50%;
+  border: none
+}
+
+.pe-button.pe-icon-button .pe-icon-button__content {
+  line-height: 1;
+  padding: 12px
+}
+
+.pe-button.pe-icon-button.pe-icon-button--compact .pe-icon-button__content {
+  padding: 8px
+}
+
+.pe-dark-tone.pe-button.pe-icon-button,.pe-dark-tone .pe-button.pe-icon-button {
+  color: hsla(0,0%,100%,.7);
+  background-color: transparent
+}
+
+.pe-dark-tone.pe-button.pe-icon-button.pe-button--focus .pe-button__focus,.pe-dark-tone .pe-button.pe-icon-button.pe-button--focus .pe-button__focus,.pe-dark-tone.pe-button.pe-icon-button.pe-button--selected .pe-button__focus,.pe-dark-tone .pe-button.pe-icon-button.pe-button--selected .pe-button__focus {
+  background-color: currentcolor
+}
+
+.pe-dark-tone.pe-button.pe-icon-button.pe-button--disabled,.pe-dark-tone .pe-button.pe-icon-button.pe-button--disabled {
+  color: hsla(0,0%,100%,.26)
+}
+
+.pe-button.pe-icon-button,.pe-light-tone.pe-button.pe-icon-button,.pe-light-tone .pe-button.pe-icon-button {
+  color: rgba(0,0,0,.54);
+  background-color: transparent
+}
+
+.pe-button.pe-icon-button .pe-button__wash,.pe-light-tone.pe-button.pe-icon-button .pe-button__wash,.pe-light-tone .pe-button.pe-icon-button .pe-button__wash {
+  opacity: .12
+}
+
+.pe-button.pe-icon-button.pe-button--focus .pe-button__focus,.pe-button.pe-icon-button.pe-button--selected .pe-button__focus,.pe-light-tone.pe-button.pe-icon-button.pe-button--focus .pe-button__focus,.pe-light-tone .pe-button.pe-icon-button.pe-button--focus .pe-button__focus,.pe-light-tone.pe-button.pe-icon-button.pe-button--selected .pe-button__focus,.pe-light-tone .pe-button.pe-icon-button.pe-button--selected .pe-button__focus {
+  opacity: .12;
+  background-color: currentcolor
+}
+
+.pe-button.pe-icon-button.pe-button--disabled,.pe-light-tone.pe-button.pe-icon-button.pe-button--disabled,.pe-light-tone .pe-button.pe-icon-button.pe-button--disabled {
+  color: rgba(0,0,0,.26)
+}
+
+html.pe-no-touch .pe-dark-tone .pe-button.pe-icon-button:hover .pe-button__wash {
+  background-color: hsla(0,0%,100%,.7)
+}
+
+html.pe-no-touch .pe-button.pe-icon-button:hover .pe-button__wash,html.pe-no-touch .pe-light-tone .pe-button.pe-icon-button:hover .pe-button__wash {
+  background-color: rgba(0,0,0,.54)
+}
+/*# sourceMappingURL=polythene-icon-button.css.map */

@@ -10,5 +10,4 @@ export const Checkbox = StateComponent(Object.assign(
   }
 ));
 
-Checkbox.theme = core.theme;
 Checkbox.displayName = "Checkbox";

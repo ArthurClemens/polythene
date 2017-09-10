@@ -4,17 +4,17 @@ import progressSlider from "./components/progress-slider";
 
 export default ({ MaterialDesignSpinner, MaterialDesignProgressSpinner, IOSSpinner, RaisedButton, Slider, renderer, keys }) => {
 
-  MaterialDesignSpinner.theme(".tests-spinner-themed-md-spinner", {
-    color_light_1: "orange",
-    color_light_2: "red",
-    color_light_3: "orange",
-    color_light_4: "red",
-  });
+  // MaterialDesignSpinner.theme(".tests-spinner-themed-md-spinner", {
+  //   color_light_1: "orange",
+  //   color_light_2: "red",
+  //   color_light_3: "orange",
+  //   color_light_4: "red",
+  // });
 
-  IOSSpinner.theme(".tests-spinner-themed-ios-spinner", {
-    color_light: "green",
-    color_dark:  "yellow"
-  });
+  // IOSSpinner.theme(".tests-spinner-themed-ios-spinner", {
+  //   color_light: "green",
+  //   color_dark:  "yellow"
+  // });
 
   return [
     {

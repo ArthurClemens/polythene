@@ -13,8 +13,6 @@ const animation_curve_slow_in_linear_out = "cubic-bezier(0, 0, .2, 1)";
 const animation_curve_linear_in_fast_out = "cubic-bezier(.4, 0, 1, 1)";
 
 export const vars = {
-  css: "js", // "js" or "file"
-
   // grid
   grid_unit,
   grid_unit_component,

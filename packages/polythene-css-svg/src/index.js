@@ -1,6 +1,5 @@
 import { styler } from "polythene-core-css";
-import { classes } from "polythene-core-svg";
-import vars from "./vars";
+import { classes, vars } from "polythene-core-svg";
 import layout from "./layout";
 import color from "./color";
 

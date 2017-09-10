@@ -1,7 +1,4 @@
-import { customTheme } from "./theme";
 import classes from "./classes";
-
-export const theme = customTheme;
 
 // Don't export 'element': it will be the wrapped selection control component (set in polythene-xxx-checkbox)
 
@@ -13,7 +10,6 @@ export const createProps = vnode => {
     {},
     attrs,
     {
-      theme,
       selectable: attrs.selectable || (() => true), // default: always selectable, regardless the checked state
       instanceClass: classes.component,
       type: "checkbox"

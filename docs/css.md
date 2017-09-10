@@ -2,42 +2,34 @@
 
 Polythene styles can be included in 2 ways:
 
-1. Linking to CSS files
+1. Importing/linking CSS files
 2. Using CSS-in-JS
 
-Which option you choose may depend on how (and if) you want to use theming.
+Which option you choose may depend on how (and if) you want to use theming - more on that below.
 
 
 ## Getting started
 
-With either option, first install `polythene-css`:
-
-~~~bash
-yarn add polythene-css
-~~~
-
-or
-
-~~~bash
-npm install --save polythene-css
-~~~
+With either option, `polythene-css` should be installed - see [Getting started with Mithril](getting-started-mithril.md) or [Getting started with React](getting-started-react.md).
 
 
 ## Using CSS files
 
-* A good fit if you are using a bundler that already grabs and bundles all CSS files.
-* Or if you don't want to be reliant on the client rendering, for example when doing server-side rendering or when using a static site generator.
+Choose this:
+* If you are using a bundler that already grabs and bundles all CSS files.
+* or if you don't want to be reliant on the client rendering, for example when doing server-side rendering or when using a static site generator.
 
-### Theming options
+### Theming
 
-* Generate a themed CSS file using `polythene-scripts`
-  * Includes an extra build step, although this can be automated.
-* Handwritten CSS
-  * No build step. But this ay not be future proof; when a component structure would change later on, your custom CSS may no longer work.
+Theming options are more limited than using CSS-in-JS as styles will not be added on the fly. But it is still possible to use the same tools as CSS-in-JS, only with an extra build step that results in a CSS file. This step can be automated of course.
+
+[polythene-scripts](packages/polythene-scripts.md) provides the tooling for writing CSS based on component variables. Alt
+
+The alternative way is to add handwritten CSS. This does not involve a build step, but this may not be future proof; when a component structure would change later on, your custom CSS may no longer work.
 
 ### Usage
 
-Package `polythene-css` contains all combined CSS files.
+Package `polythene-css` contains all combined CSS files. Including this in `package.json` dependencies provides all CSS files so they can be imported from node_modules.
 
 
 #### Importing 
@@ -47,7 +39,8 @@ Most bundlers have options for importing CSS files. Frequently used with Webpack
 Importing all CSS:
 
 ~~~javascript
-import "polythene-css/dist/polythene.css"
+import "polythene-css/dist/polythene.css" // Component CSS
+import "polythene-css/dist/typography.css" // Default Material Design styles including Roboto font
 ~~~
 
 Importing only the button component CSS:
@@ -109,10 +102,9 @@ npm install --save polythene-style
 ### Usage
 
 ~~~javascript
-import { addTypography, addRoboto } from "polythene-style"
+import { addTypography } from "polythene-style"
 
 addTypography()
-addRoboto()
 ~~~
 
 See also:

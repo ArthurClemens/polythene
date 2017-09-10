@@ -9,8 +9,10 @@ const styles        = require(componentPath).styles();
 const shortName     = name.replace("-css-", "-");
 const outPath       = `./dist/${shortName}.css`;
 
-writeCSS({
-  path: outPath,
-  styles,
-  beautify: true,
-});
+if (styles) {
+  writeCSS({
+    path: outPath,
+    styles,
+    beautify: true,
+  });
+}

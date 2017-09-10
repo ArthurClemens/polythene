@@ -4,37 +4,37 @@ export default ({ Button, FAB, Icon, IconButton, List, ListTile, renderer: h }) 
 
   const trustedAlarmSVG = h.trust(alarmSVG);
 
-  Button.theme(".tests-custom-theme-blue-button", {
-    color_light_background: "#2196F3",
-    color_light_text: "#fff"
-  });
+  // Button.theme(".tests-custom-theme-blue-button", {
+  //   color_light_background: "#2196F3",
+  //   color_light_text: "#fff"
+  // });
 
-  Button.theme(".tests-custom-theme-red-button", {
-    color_light_background: "#ff0000",
-    color_light_text: "#fff"
-  });
+  // Button.theme(".tests-custom-theme-red-button", {
+  //   color_light_background: "#ff0000",
+  //   color_light_text: "#fff"
+  // });
 
-  Icon.theme(".tests-custom-theme-red-icon", {
-    color_light: "red"
-  });
+  // Icon.theme(".tests-custom-theme-red-icon", {
+  //   color_light: "red"
+  // });
 
-  FAB.theme(".tests-custom-theme-red-fab", {
-    color_light_background: "#ff0000",
-    color_light: "#fff"
-  });
+  // FAB.theme(".tests-custom-theme-red-fab", {
+  //   color_light_background: "#ff0000",
+  //   color_light: "#fff"
+  // });
 
-  IconButton.theme(".tests-custom-theme-large-icon-button", {
-    padding: 50,
-    color_background: "#fff"
-  });
+  // IconButton.theme(".tests-custom-theme-large-icon-button", {
+  //   padding: 50,
+  //   color_background: "#fff"
+  // });
 
-  List.theme(".tests-custom-theme-blue-list", {
-    color_light_border: "#2196F3"
-  });
+  // List.theme(".tests-custom-theme-blue-list", {
+  //   color_light_border: "#2196F3"
+  // });
 
-  ListTile.theme(".tests-custom-theme-red-list-tile", {
-    color_light_title: "red"
-  });
+  // ListTile.theme(".tests-custom-theme-red-list-tile", {
+  //   color_light_title: "red"
+  // });
 
   return [
     {

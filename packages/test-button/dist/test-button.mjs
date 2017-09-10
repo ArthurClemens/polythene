@@ -5,22 +5,22 @@ var genericTests = (function (_ref) {
   var Button$$1 = _ref.Button;
 
 
-  Button$$1.theme(".tests-button-themed-button", {
-    color_light_background: "#2196F3",
-    color_dark_background: "#2196F3",
-    color_light_text: "#fff"
-  });
+  // Button.theme(".tests-button-themed-button", {
+  //   color_light_background: "#2196F3",
+  //   color_dark_background: "#2196F3",
+  //   color_light_text: "#fff"
+  // });
 
-  Button$$1.theme(".blue-on-dark-Button", {
-    color_dark_text: "#2196F3"
-  });
+  // Button.theme(".blue-on-dark-Button", {
+  //   color_dark_text: "#2196F3"
+  // });
 
-  Button$$1.theme(".tests-button-bordered-button", {
-    color_light_text: "#673ab7",
-    color_light_border: "#673ab7",
-    color_dark_text: "yellow",
-    color_dark_border: "yellow"
-  });
+  // Button.theme(".tests-button-bordered-button", {
+  //   color_light_text: "#673ab7",
+  //   color_light_border: "#673ab7",
+  //   color_dark_text: "yellow",
+  //   color_dark_border: "yellow"
+  // });
 
   return [{
     name: "Option: label",
@@ -7686,12 +7686,12 @@ var reactTests = function reactTests(_ref) {
     return react.createElement(Button$$1, _extends({ className: "react-secondary-button", borders: true }, props));
   };
 
-  Button$$1.theme(".react-secondary-button", {
-    color_light_text: "#673ab7",
-    color_light_border: "#673ab7",
-    color_dark_text: "yellow",
-    color_dark_border: "yellow"
-  });
+  // Button.theme(".react-secondary-button", {
+  //   color_light_text: "#673ab7",
+  //   color_light_border: "#673ab7",
+  //   color_dark_text: "yellow",
+  //   color_dark_border: "yellow"
+  // });
 
   var withCounter = compose(withState("counter", "setCounter", 0), withHandlers({
     increment: function increment(_ref2) {
@@ -7704,12 +7704,12 @@ var reactTests = function reactTests(_ref) {
     }
   }));
 
-  Button$$1.theme(".react-button-bordered-button", {
-    color_light_text: "#673ab7",
-    color_light_border: "#673ab7",
-    color_dark_text: "yellow",
-    color_dark_border: "yellow"
-  });
+  // Button.theme(".react-button-bordered-button", {
+  //   color_light_text: "#673ab7",
+  //   color_light_border: "#673ab7",
+  //   color_dark_text: "yellow",
+  //   color_dark_border: "yellow"
+  // });
 
   return [{
     section: "React specific tests"

@@ -14,7 +14,6 @@ var ListTile = StateComponent(_extends({}, coreListTile, {
   }
 }));
 
-ListTile.theme = coreListTile.theme;
 ListTile.displayName = "ListTile";
 
 export { ListTile };

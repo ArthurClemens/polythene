@@ -3,12 +3,13 @@ const iconAlarm = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d
 export default ({ FAB, Icon, renderer: h }) => {
 
   const trustedIconAlarm = h.trust(iconAlarm);
-  FAB.theme(".tests-fab-themed-fab", {
-    color_light_background: "#fff",
-    color_dark_background:  "#0097A7",
-    color_light:            "#2196F3",
-    color_dark:             "#B2EBF2"
-  });
+  
+  // FAB.theme(".tests-fab-themed-fab", {
+  //   color_light_background: "#fff",
+  //   color_dark_background:  "#0097A7",
+  //   color_light:            "#2196F3",
+  //   color_dark:             "#B2EBF2"
+  // });
 
   return [
     {

@@ -24,16 +24,16 @@ export default ({ renderer, keys, Dialog, DialogPane, Button, RaisedButton, Tool
     }
   });
 
-  Dialog.theme(".dialog-tests-rounded-blue", {
-    border_radius:          5,
-    color_light_background: "#2196F3",
-    color_light_text:  "#fff",
-  });
+  // Dialog.theme(".dialog-tests-rounded-blue", {
+  //   border_radius:          5,
+  //   color_light_background: "#2196F3",
+  //   color_light_text:  "#fff",
+  // });
 
-  Toolbar.theme(".tests-dialog-themed-toolbar", {
-    color_light_background: "#eee",
-    color_dark_background: "#333",
-  });
+  // Toolbar.theme(".tests-dialog-themed-toolbar", {
+  //   color_light_background: "#eee",
+  //   color_dark_background: "#333",
+  // });
 
   return [
     {

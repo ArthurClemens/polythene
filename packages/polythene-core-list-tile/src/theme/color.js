@@ -33,12 +33,12 @@ const style = (scopes, selector, componentVars, tint) => [{
     },
     "&.pe-list-tile--sticky": {
       backgroundColor: componentVars["color_" + tint + "_background"] || "inherit"
-    },
-    ":not(.pe-list-tile--disabled)": {
-      " a.pe-list-tile__primary:focus, a.pe-list-tile__secondary:focus": {
-        backgroundColor: componentVars["color_" + tint + "_focus_background"] || "inherit"
-      }
     }
+    // ":not(.pe-list-tile--disabled)": {
+    //   " a.pe-list-tile__primary:focus, a.pe-list-tile__secondary:focus": {
+    //     backgroundColor: componentVars["color_" + tint + "_focus_background"] || "inherit"
+    //   }
+    // }
   }
 }];
 

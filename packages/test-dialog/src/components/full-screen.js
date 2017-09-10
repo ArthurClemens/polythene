@@ -5,9 +5,9 @@ const closeSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=
 
 export default ({ renderer: h, keys: k, Toolbar, IconButton, Button, Dialog }) => {
 
-  Toolbar.theme(".tests-dialog-full-screen-themed-toolbar", {
-    color_dark_background: "#00c853"
-  });
+  // Toolbar.theme(".tests-dialog-full-screen-themed-toolbar", {
+  //   color_dark_background: "#00c853"
+  // });
 
   const fullScreenToolbarRow = title => [
     h(IconButton, {

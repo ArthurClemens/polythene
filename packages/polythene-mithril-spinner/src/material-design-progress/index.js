@@ -23,6 +23,5 @@ export const MaterialDesignProgressSpinner = {
     ))
 };
 
-MaterialDesignProgressSpinner.theme = core.theme;
 MaterialDesignProgressSpinner.classes = core.classes;
 MaterialDesignProgressSpinner.displayName = "MaterialDesignProgressSpinner";

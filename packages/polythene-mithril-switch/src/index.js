@@ -10,5 +10,4 @@ export const Switch = StateComponent(Object.assign(
   }
 ));
 
-Switch.theme = core.theme;
 Switch.displayName = "Switch";

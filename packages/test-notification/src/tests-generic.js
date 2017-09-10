@@ -1,10 +1,10 @@
 
 export default ({ renderer: h, keys: k, Notification, Dialog, Button, buttonGroup, containerSelector }) => {
 
-  Notification.theme(".notification-tests-blue-notification", {
-    color_dark_background: "#2196F3",
-    border_radius: 5
-  });
+  // Notification.theme(".notification-tests-blue-notification", {
+  //   color_dark_background: "#2196F3",
+  //   border_radius: 5
+  // });
 
   const dialogOptions = {
     body: "You pressed a message action",

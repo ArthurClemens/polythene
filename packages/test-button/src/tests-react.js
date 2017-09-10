@@ -9,13 +9,12 @@ const reactTests = ({ Button, renderer: h }) => {
   const SecondaryButton = props =>
     <Button className="react-secondary-button" borders {...props} />;
 
-  Button.theme(".react-secondary-button", {
-    color_light_text: "#673ab7",
-    color_light_border: "#673ab7",
-    color_dark_text: "yellow",
-    color_dark_border: "yellow"
-  });
-
+  // Button.theme(".react-secondary-button", {
+  //   color_light_text: "#673ab7",
+  //   color_light_border: "#673ab7",
+  //   color_dark_text: "yellow",
+  //   color_dark_border: "yellow"
+  // });
 
   const withCounter = compose(
     withState("counter", "setCounter", 0),
@@ -24,12 +23,12 @@ const reactTests = ({ Button, renderer: h }) => {
     })
   );
 
-  Button.theme(".react-button-bordered-button", {
-    color_light_text: "#673ab7",
-    color_light_border: "#673ab7",
-    color_dark_text: "yellow",
-    color_dark_border: "yellow"
-  });
+  // Button.theme(".react-button-bordered-button", {
+  //   color_light_text: "#673ab7",
+  //   color_light_border: "#673ab7",
+  //   color_dark_text: "yellow",
+  //   color_dark_border: "yellow"
+  // });
 
   return [
     {
