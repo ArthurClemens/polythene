@@ -1,9 +1,9 @@
 {
-  "name": "polythene-theme-svg",
+  "name": "polythene-css-svg",
   "version": "1.0.0-rc.5",
   "description": "",
-  "main": "dist/polythene-theme-svg.js",
-  "module": "dist/polythene-theme-svg.mjs",
+  "main": "dist/polythene-css-svg.js",
+  "module": "dist/polythene-css-svg.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",

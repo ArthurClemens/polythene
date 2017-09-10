@@ -1,5 +1,5 @@
 const { writeCSS } = require("../dist/polythene-scripts");
-const { themeStyles } = require("../../polythene-theme-svg");
+const { themeStyles } = require("../../polythene-css-svg");
 
 const styles = [
   themeStyles(".test-theme-svg-1", {

@@ -10,5 +10,6 @@ const outPath       = `./dist/${name}.css`;
 
 writeCSS({
   path: outPath,
-  styles
+  styles,
+  beautify: true,
 });

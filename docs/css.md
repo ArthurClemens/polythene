@@ -1,5 +1,36 @@
 # Polythene CSS
 
+Polythene styles can be included in 2 ways:
+
+1. Including CSS files
+2. Using css-in-js
+
+
+
+
+
+
+
+
+Get component CSS files (or all components) and add them to your project
+* Use css-in-js
+
+Options for theming:
+
+* With CSS files: generate themed CSS, add this to the project
+    * Using polythene-scripts
+* With css-in-js
+    * Easiest when theming components (no build step required)
+
+
+
+
+
+
+
+
+
+
 Polythene uses [j2c](http://j2c.py.gy) to write styles directly to the head of the page.
 
 Component styles are added automatically to the page.

@@ -14,10 +14,8 @@
     "README.md"
   ],
   "dependencies": {
-    "loadjs": "^3.5.1",
     "polythene-core-svg": "^1.0.0-rc.5",
-    "polythene-react-base": "^1.0.0-rc.4",
-    "polythene-theme-svg": "^1.0.0-rc.5"
+    "polythene-react-base": "^1.0.0-rc.4"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

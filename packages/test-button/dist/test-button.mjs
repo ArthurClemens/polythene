@@ -300,6 +300,7 @@ object-assign
 @license MIT
 */
 
+'use strict';
 /* eslint-disable no-unused-vars */
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -359,7 +360,7 @@ function shouldUseNative() {
 	}
 }
 
-var index = shouldUseNative() ? Object.assign : function (target, source) {
+var objectAssign = shouldUseNative() ? Object.assign : function (target, source) {
 	var from;
 	var to = toObject(target);
 	var symbols;
@@ -396,6 +397,8 @@ var index = shouldUseNative() ? Object.assign : function (target, source) {
  *
  * 
  */
+'use strict';
+
 /**
  * WARNING: DO NOT manually require this module.
  * This is a replacement for `invariant(...)` used by the error code system
@@ -422,6 +425,8 @@ function reactProdInvariant(code) {
 }
 
 var reactProdInvariant_1 = reactProdInvariant;
+
+"use strict";
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -459,6 +464,18 @@ emptyFunction.thatReturnsArgument = function (arg) {
 };
 
 var emptyFunction_1 = emptyFunction;
+
+/**
+ * Copyright 2014-2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
 
 /**
  * Similar to invariant but only logs a warning if the condition is not met.
@@ -511,12 +528,24 @@ if (process.env.NODE_ENV !== 'production') {
   })();
 }
 
-var warning_1 = warning;
+var warning_1$1 = warning;
+
+/**
+ * Copyright 2015-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
 
 function warnNoop(publicInstance, callerName) {
   if (process.env.NODE_ENV !== 'production') {
     var constructor = publicInstance.constructor;
-    process.env.NODE_ENV !== 'production' ? warning_1(false, '%s(...): Can only update a mounted or mounting component. ' + 'This usually means you called %s() on an unmounted component. ' + 'This is a no-op. Please check the code for the %s component.', callerName, callerName, constructor && (constructor.displayName || constructor.name) || 'ReactClass') : void 0;
+    process.env.NODE_ENV !== 'production' ? warning_1$1(false, '%s(...): Can only update a mounted or mounting component. ' + 'This usually means you called %s() on an unmounted component. ' + 'This is a no-op. Please check the code for the %s component.', callerName, callerName, constructor && (constructor.displayName || constructor.name) || 'ReactClass') : void 0;
   }
 }
 
@@ -605,6 +634,8 @@ var ReactNoopUpdateQueue_1 = ReactNoopUpdateQueue;
  * 
  */
 
+'use strict';
+
 var canDefineProperty$1 = false;
 if (process.env.NODE_ENV !== 'production') {
   try {
@@ -628,6 +659,8 @@ var canDefineProperty_1 = canDefineProperty$1;
  *
  */
 
+'use strict';
+
 var emptyObject = {};
 
 if (process.env.NODE_ENV !== 'production') {
@@ -645,6 +678,8 @@ var emptyObject_1 = emptyObject;
  * of patent rights can be found in the PATENTS file in the same directory.
  *
  */
+
+'use strict';
 
 /**
  * Use invariant() to assert state which your program assumes to be true.
@@ -688,7 +723,7 @@ function invariant(condition, format, a, b, c, d, e, f) {
   }
 }
 
-var invariant_1 = invariant;
+var invariant_1$1 = invariant;
 
 /**
  * Copyright 2014-2015, Facebook, Inc.
@@ -699,6 +734,8 @@ var invariant_1 = invariant;
  * of patent rights can be found in the PATENTS file in the same directory.
  *
  */
+
+'use strict';
 
 /**
  * Forked from fbjs/warning:
@@ -756,6 +793,18 @@ var lowPriorityWarning_1 = lowPriorityWarning$1;
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 /**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
+
+/**
  * Base class helpers for the updating state of a component.
  */
 function ReactComponent(props, context, updater) {
@@ -795,7 +844,7 @@ ReactComponent.prototype.isReactComponent = {};
  * @protected
  */
 ReactComponent.prototype.setState = function (partialState, callback) {
-  !((typeof partialState === 'undefined' ? 'undefined' : _typeof(partialState)) === 'object' || typeof partialState === 'function' || partialState == null) ? process.env.NODE_ENV !== 'production' ? invariant_1(false, 'setState(...): takes an object of state variables to update or a function which returns an object of state variables.') : reactProdInvariant_1('85') : void 0;
+  !((typeof partialState === 'undefined' ? 'undefined' : _typeof(partialState)) === 'object' || typeof partialState === 'function' || partialState == null) ? process.env.NODE_ENV !== 'production' ? invariant_1$1(false, 'setState(...): takes an object of state variables to update or a function which returns an object of state variables.') : reactProdInvariant_1('85') : void 0;
   this.updater.enqueueSetState(this, partialState);
   if (callback) {
     this.updater.enqueueCallback(this, callback, 'setState');
@@ -868,13 +917,26 @@ ComponentDummy.prototype = ReactComponent.prototype;
 ReactPureComponent.prototype = new ComponentDummy();
 ReactPureComponent.prototype.constructor = ReactPureComponent;
 // Avoid an extra prototype jump for these methods.
-index(ReactPureComponent.prototype, ReactComponent.prototype);
+objectAssign(ReactPureComponent.prototype, ReactComponent.prototype);
 ReactPureComponent.prototype.isPureReactComponent = true;
 
 var ReactBaseClasses = {
   Component: ReactComponent,
   PureComponent: ReactPureComponent
 };
+
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * 
+ */
+
+'use strict';
 
 /**
  * Static poolers. Several custom versions for each potential number of
@@ -929,7 +991,7 @@ var fourArgumentPooler$1 = function fourArgumentPooler(a1, a2, a3, a4) {
 
 var standardReleaser = function standardReleaser(instance) {
   var Klass = this;
-  !(instance instanceof Klass) ? process.env.NODE_ENV !== 'production' ? invariant_1(false, 'Trying to release an instance into a pool of a different type.') : reactProdInvariant_1('25') : void 0;
+  !(instance instanceof Klass) ? process.env.NODE_ENV !== 'production' ? invariant_1$1(false, 'Trying to release an instance into a pool of a different type.') : reactProdInvariant_1('25') : void 0;
   instance.destructor();
   if (Klass.instancePool.length < Klass.poolSize) {
     Klass.instancePool.push(instance);
@@ -982,6 +1044,8 @@ var PooledClass_1 = PooledClass;
  * 
  */
 
+'use strict';
+
 /**
  * Keeps track of the current owner.
  *
@@ -1010,6 +1074,8 @@ var ReactCurrentOwner_1 = ReactCurrentOwner;
  * 
  */
 
+'use strict';
+
 // The Symbol used to tag the ReactElement type. If there is no native Symbol
 // nor polyfill, then a plain number is used for performance.
 
@@ -1018,6 +1084,18 @@ var REACT_ELEMENT_TYPE = typeof Symbol === 'function' && Symbol['for'] && Symbol
 var ReactElementSymbol = REACT_ELEMENT_TYPE;
 
 var _typeof$1 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/**
+ * Copyright 2014-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
 
 var hasOwnProperty$1 = Object.prototype.hasOwnProperty;
 
@@ -1059,7 +1137,7 @@ function defineKeyPropWarningGetter(props, displayName) {
   var warnAboutAccessingKey = function warnAboutAccessingKey() {
     if (!specialPropKeyWarningShown) {
       specialPropKeyWarningShown = true;
-      process.env.NODE_ENV !== 'production' ? warning_1(false, '%s: `key` is not a prop. Trying to access it will result ' + 'in `undefined` being returned. If you need to access the same ' + 'value within the child component, you should pass it as a different ' + 'prop. (https://fb.me/react-special-props)', displayName) : void 0;
+      process.env.NODE_ENV !== 'production' ? warning_1$1(false, '%s: `key` is not a prop. Trying to access it will result ' + 'in `undefined` being returned. If you need to access the same ' + 'value within the child component, you should pass it as a different ' + 'prop. (https://fb.me/react-special-props)', displayName) : void 0;
     }
   };
   warnAboutAccessingKey.isReactWarning = true;
@@ -1073,7 +1151,7 @@ function defineRefPropWarningGetter(props, displayName) {
   var warnAboutAccessingRef = function warnAboutAccessingRef() {
     if (!specialPropRefWarningShown) {
       specialPropRefWarningShown = true;
-      process.env.NODE_ENV !== 'production' ? warning_1(false, '%s: `ref` is not a prop. Trying to access it will result ' + 'in `undefined` being returned. If you need to access the same ' + 'value within the child component, you should pass it as a different ' + 'prop. (https://fb.me/react-special-props)', displayName) : void 0;
+      process.env.NODE_ENV !== 'production' ? warning_1$1(false, '%s: `ref` is not a prop. Trying to access it will result ' + 'in `undefined` being returned. If you need to access the same ' + 'value within the child component, you should pass it as a different ' + 'prop. (https://fb.me/react-special-props)', displayName) : void 0;
     }
   };
   warnAboutAccessingRef.isReactWarning = true;
@@ -1270,7 +1348,7 @@ ReactElement.cloneElement = function (element, config, children) {
   var propName;
 
   // Original props are copied
-  var props = index({}, element.props);
+  var props = objectAssign({}, element.props);
 
   // Reserved names are extracted
   var key = element.key;
@@ -1352,6 +1430,8 @@ var ReactElement_1 = ReactElement;
  * 
  */
 
+'use strict';
+
 /* global Symbol */
 
 var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
@@ -1390,6 +1470,8 @@ var getIteratorFn_1 = getIteratorFn;
  *
  * 
  */
+
+'use strict';
 
 /**
  * Escape and wrap key so it is safe to use as a reactid
@@ -1438,6 +1520,18 @@ var KeyEscapeUtils = {
 var KeyEscapeUtils_1 = KeyEscapeUtils;
 
 var _typeof$2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
 
 var SEPARATOR = '.';
 var SUBSEPARATOR = ':';
@@ -1532,7 +1626,7 @@ function traverseAllChildrenImpl(children, nameSoFar, callback, traverseContext)
               mapsAsChildrenAddendum = ' Check the render method of `' + mapsAsChildrenOwnerName + '`.';
             }
           }
-          process.env.NODE_ENV !== 'production' ? warning_1(didWarnAboutMaps, 'Using Maps as children is not yet fully supported. It is an ' + 'experimental feature that might be removed. Convert it to a ' + 'sequence / iterable of keyed ReactElements instead.%s', mapsAsChildrenAddendum) : void 0;
+          process.env.NODE_ENV !== 'production' ? warning_1$1(didWarnAboutMaps, 'Using Maps as children is not yet fully supported. It is an ' + 'experimental feature that might be removed. Convert it to a ' + 'sequence / iterable of keyed ReactElements instead.%s', mapsAsChildrenAddendum) : void 0;
           didWarnAboutMaps = true;
         }
         // Iterator will provide entry [k,v] tuples rather than values.
@@ -1560,7 +1654,7 @@ function traverseAllChildrenImpl(children, nameSoFar, callback, traverseContext)
         }
       }
       var childrenString = String(children);
-      process.env.NODE_ENV !== 'production' ? invariant_1(false, 'Objects are not valid as a React child (found: %s).%s', childrenString === '[object Object]' ? 'object with keys {' + Object.keys(children).join(', ') + '}' : childrenString, addendum) : reactProdInvariant_1('31', childrenString === '[object Object]' ? 'object with keys {' + Object.keys(children).join(', ') + '}' : childrenString, addendum);
+      process.env.NODE_ENV !== 'production' ? invariant_1$1(false, 'Objects are not valid as a React child (found: %s).%s', childrenString === '[object Object]' ? 'object with keys {' + Object.keys(children).join(', ') + '}' : childrenString, addendum) : reactProdInvariant_1('31', childrenString === '[object Object]' ? 'object with keys {' + Object.keys(children).join(', ') + '}' : childrenString, addendum);
     }
   }
 
@@ -1592,6 +1686,18 @@ function traverseAllChildren(children, callback, traverseContext) {
 }
 
 var traverseAllChildren_1 = traverseAllChildren;
+
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
 
 var twoArgumentPooler = PooledClass_1.twoArgumentPooler;
 var fourArgumentPooler = PooledClass_1.fourArgumentPooler;
@@ -1767,6 +1873,19 @@ var ReactChildren_1 = ReactChildren;
 
 var _typeof$4 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
+/**
+ * Copyright 2016-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * 
+ */
+
+'use strict';
+
 function isNative(fn) {
   // Based on isNative() from Lodash
   var funcToString = Function.prototype.toString;
@@ -1910,29 +2029,29 @@ function describeID(id) {
   if (ownerID) {
     ownerName = ReactComponentTreeHook.getDisplayName(ownerID);
   }
-  process.env.NODE_ENV !== 'production' ? warning_1(element, 'ReactComponentTreeHook: Missing React element for debugID %s when ' + 'building stack', id) : void 0;
+  process.env.NODE_ENV !== 'production' ? warning_1$1(element, 'ReactComponentTreeHook: Missing React element for debugID %s when ' + 'building stack', id) : void 0;
   return describeComponentFrame(name, element && element._source, ownerName);
 }
 
 var ReactComponentTreeHook = {
   onSetChildren: function onSetChildren(id, nextChildIDs) {
     var item = getItem(id);
-    !item ? process.env.NODE_ENV !== 'production' ? invariant_1(false, 'Item must have been set') : reactProdInvariant_1('144') : void 0;
+    !item ? process.env.NODE_ENV !== 'production' ? invariant_1$1(false, 'Item must have been set') : reactProdInvariant_1('144') : void 0;
     item.childIDs = nextChildIDs;
 
     for (var i = 0; i < nextChildIDs.length; i++) {
       var nextChildID = nextChildIDs[i];
       var nextChild = getItem(nextChildID);
-      !nextChild ? process.env.NODE_ENV !== 'production' ? invariant_1(false, 'Expected hook events to fire for the child before its parent includes it in onSetChildren().') : reactProdInvariant_1('140') : void 0;
-      !(nextChild.childIDs != null || _typeof$4(nextChild.element) !== 'object' || nextChild.element == null) ? process.env.NODE_ENV !== 'production' ? invariant_1(false, 'Expected onSetChildren() to fire for a container child before its parent includes it in onSetChildren().') : reactProdInvariant_1('141') : void 0;
-      !nextChild.isMounted ? process.env.NODE_ENV !== 'production' ? invariant_1(false, 'Expected onMountComponent() to fire for the child before its parent includes it in onSetChildren().') : reactProdInvariant_1('71') : void 0;
+      !nextChild ? process.env.NODE_ENV !== 'production' ? invariant_1$1(false, 'Expected hook events to fire for the child before its parent includes it in onSetChildren().') : reactProdInvariant_1('140') : void 0;
+      !(nextChild.childIDs != null || _typeof$4(nextChild.element) !== 'object' || nextChild.element == null) ? process.env.NODE_ENV !== 'production' ? invariant_1$1(false, 'Expected onSetChildren() to fire for a container child before its parent includes it in onSetChildren().') : reactProdInvariant_1('141') : void 0;
+      !nextChild.isMounted ? process.env.NODE_ENV !== 'production' ? invariant_1$1(false, 'Expected onMountComponent() to fire for the child before its parent includes it in onSetChildren().') : reactProdInvariant_1('71') : void 0;
       if (nextChild.parentID == null) {
         nextChild.parentID = id;
         // TODO: This shouldn't be necessary but mounting a new root during in
         // componentWillMount currently causes not-yet-mounted components to
         // be purged from our tree data so their parent id is missing.
       }
-      !(nextChild.parentID === id) ? process.env.NODE_ENV !== 'production' ? invariant_1(false, 'Expected onBeforeMountComponent() parent and onSetChildren() to be consistent (%s has parents %s and %s).', nextChildID, nextChild.parentID, id) : reactProdInvariant_1('142', nextChildID, nextChild.parentID, id) : void 0;
+      !(nextChild.parentID === id) ? process.env.NODE_ENV !== 'production' ? invariant_1$1(false, 'Expected onBeforeMountComponent() parent and onSetChildren() to be consistent (%s has parents %s and %s).', nextChildID, nextChild.parentID, id) : reactProdInvariant_1('142', nextChildID, nextChild.parentID, id) : void 0;
     }
   },
   onBeforeMountComponent: function onBeforeMountComponent(id, element, parentID) {
@@ -1957,7 +2076,7 @@ var ReactComponentTreeHook = {
   },
   onMountComponent: function onMountComponent(id) {
     var item = getItem(id);
-    !item ? process.env.NODE_ENV !== 'production' ? invariant_1(false, 'Item must have been set') : reactProdInvariant_1('144') : void 0;
+    !item ? process.env.NODE_ENV !== 'production' ? invariant_1$1(false, 'Item must have been set') : reactProdInvariant_1('144') : void 0;
     item.isMounted = true;
     var isRoot = item.parentID === 0;
     if (isRoot) {
@@ -2136,6 +2255,8 @@ var ReactComponentTreeHook_1 = ReactComponentTreeHook;
  * 
  */
 
+'use strict';
+
 var ReactPropTypeLocationNames = {};
 
 if (process.env.NODE_ENV !== 'production') {
@@ -2159,11 +2280,25 @@ var ReactPropTypeLocationNames_1 = ReactPropTypeLocationNames;
  * 
  */
 
+'use strict';
+
 var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 var ReactPropTypesSecret_1 = ReactPropTypesSecret;
 
 var _typeof$5 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
 
 var ReactComponentTreeHook$1;
 
@@ -2200,12 +2335,12 @@ function checkReactTypeSpec(typeSpecs, values, location, componentName, element,
       try {
         // This is intentionally an invariant that gets caught. It's the same
         // behavior as without this statement except with a better message.
-        !(typeof typeSpecs[typeSpecName] === 'function') ? process.env.NODE_ENV !== 'production' ? invariant_1(false, '%s: %s type `%s` is invalid; it must be a function, usually from React.PropTypes.', componentName || 'React class', ReactPropTypeLocationNames_1[location], typeSpecName) : reactProdInvariant_1('84', componentName || 'React class', ReactPropTypeLocationNames_1[location], typeSpecName) : void 0;
+        !(typeof typeSpecs[typeSpecName] === 'function') ? process.env.NODE_ENV !== 'production' ? invariant_1$1(false, '%s: %s type `%s` is invalid; it must be a function, usually from React.PropTypes.', componentName || 'React class', ReactPropTypeLocationNames_1[location], typeSpecName) : reactProdInvariant_1('84', componentName || 'React class', ReactPropTypeLocationNames_1[location], typeSpecName) : void 0;
         error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret_1);
       } catch (ex) {
         error = ex;
       }
-      process.env.NODE_ENV !== 'production' ? warning_1(!error || error instanceof Error, '%s: type specification of %s `%s` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a %s. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).', componentName || 'React class', ReactPropTypeLocationNames_1[location], typeSpecName, typeof error === 'undefined' ? 'undefined' : _typeof$5(error)) : void 0;
+      process.env.NODE_ENV !== 'production' ? warning_1$1(!error || error instanceof Error, '%s: type specification of %s `%s` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a %s. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).', componentName || 'React class', ReactPropTypeLocationNames_1[location], typeSpecName, typeof error === 'undefined' ? 'undefined' : _typeof$5(error)) : void 0;
       if (error instanceof Error && !(error.message in loggedTypeFailures)) {
         // Only monitor this failure once because there tends to be a lot of the
         // same error.
@@ -2224,7 +2359,7 @@ function checkReactTypeSpec(typeSpecs, values, location, componentName, element,
           }
         }
 
-        process.env.NODE_ENV !== 'production' ? warning_1(false, 'Failed %s type: %s%s', location, error.message, componentStackInfo) : void 0;
+        process.env.NODE_ENV !== 'production' ? warning_1$1(false, 'Failed %s type: %s%s', location, error.message, componentStackInfo) : void 0;
       }
     }
   }
@@ -2233,6 +2368,25 @@ function checkReactTypeSpec(typeSpecs, values, location, componentName, element,
 var checkReactTypeSpec_1 = checkReactTypeSpec;
 
 var _typeof$3 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/**
+ * Copyright 2014-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+/**
+ * ReactElementValidator provides a wrapper around a element factory
+ * which validates the props passed to the element. This is intended to be
+ * used only in DEV and could be replaced by a static type checker for languages
+ * that support it.
+ */
+
+'use strict';
 
 function getDeclarationErrorAddendum() {
   if (ReactCurrentOwner_1.current) {
@@ -2307,7 +2461,7 @@ function validateExplicitKey(element, parentType) {
     childOwner = ' It was passed a child from ' + element._owner.getName() + '.';
   }
 
-  process.env.NODE_ENV !== 'production' ? warning_1(false, 'Each child in an array or iterator should have a unique "key" prop.' + '%s%s See https://fb.me/react-warning-keys for more information.%s', currentComponentErrorInfo, childOwner, ReactComponentTreeHook_1.getCurrentStackAddendum(element)) : void 0;
+  process.env.NODE_ENV !== 'production' ? warning_1$1(false, 'Each child in an array or iterator should have a unique "key" prop.' + '%s%s See https://fb.me/react-warning-keys for more information.%s', currentComponentErrorInfo, childOwner, ReactComponentTreeHook_1.getCurrentStackAddendum(element)) : void 0;
 }
 
 /**
@@ -2368,7 +2522,7 @@ function validatePropTypes(element) {
     checkReactTypeSpec_1(componentClass.propTypes, element.props, 'prop', name, element, null);
   }
   if (typeof componentClass.getDefaultProps === 'function') {
-    process.env.NODE_ENV !== 'production' ? warning_1(componentClass.getDefaultProps.isReactClassApproved, 'getDefaultProps is only used on classic React.createClass ' + 'definitions. Use a static property named `defaultProps` instead.') : void 0;
+    process.env.NODE_ENV !== 'production' ? warning_1$1(componentClass.getDefaultProps.isReactClassApproved, 'getDefaultProps is only used on classic React.createClass ' + 'definitions. Use a static property named `defaultProps` instead.') : void 0;
   }
 }
 
@@ -2395,7 +2549,7 @@ var ReactElementValidator$2 = {
 
         var currentSource = props !== null && props !== undefined && props.__source !== undefined ? props.__source : null;
         ReactComponentTreeHook_1.pushNonStandardWarningStack(true, currentSource);
-        process.env.NODE_ENV !== 'production' ? warning_1(false, 'React.createElement: type is invalid -- expected a string (for ' + 'built-in components) or a class/function (for composite ' + 'components) but got: %s.%s', type == null ? type : typeof type === 'undefined' ? 'undefined' : _typeof$3(type), info) : void 0;
+        process.env.NODE_ENV !== 'production' ? warning_1$1(false, 'React.createElement: type is invalid -- expected a string (for ' + 'built-in components) or a class/function (for composite ' + 'components) but got: %s.%s', type == null ? type : typeof type === 'undefined' ? 'undefined' : _typeof$3(type), info) : void 0;
         ReactComponentTreeHook_1.popNonStandardWarningStack();
       }
     }
@@ -2458,6 +2612,18 @@ var ReactElementValidator$2 = {
 };
 
 var ReactElementValidator_1 = ReactElementValidator$2;
+
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
 
 /**
  * Create a factory that creates HTML tag elements.
@@ -2623,15 +2789,28 @@ var ReactDOMFactories_1 = ReactDOMFactories;
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+'use strict';
+
 var ReactPropTypesSecret$2 = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 var ReactPropTypesSecret_1$2 = ReactPropTypesSecret$2;
 
 var _typeof$7 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
+
+'use strict';
+
 if (process.env.NODE_ENV !== 'production') {
-  var invariant$2 = invariant_1;
-  var warning$1 = warning_1;
+  var invariant$2 = invariant_1$1;
+  var warning$1 = warning_1$1;
   var ReactPropTypesSecret$3 = ReactPropTypesSecret_1$2;
   var loggedTypeFailures$1 = {};
 }
@@ -2681,6 +2860,17 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
 var checkPropTypes_1 = checkPropTypes;
 
 var _typeof$6 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
+
+'use strict';
 
 var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, throwOnDirectAccess) {
   /* global Symbol */
@@ -2823,14 +3013,14 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
       if (secret !== ReactPropTypesSecret_1$2) {
         if (throwOnDirectAccess) {
           // New behavior only for users of `prop-types` package
-          invariant_1(false, 'Calling PropTypes validators directly is not supported by the `prop-types` package. ' + 'Use `PropTypes.checkPropTypes()` to call them. ' + 'Read more at http://fb.me/use-check-prop-types');
+          invariant_1$1(false, 'Calling PropTypes validators directly is not supported by the `prop-types` package. ' + 'Use `PropTypes.checkPropTypes()` to call them. ' + 'Read more at http://fb.me/use-check-prop-types');
         } else if (process.env.NODE_ENV !== 'production' && typeof console !== 'undefined') {
           // Old behavior for people using React.PropTypes
           var cacheKey = componentName + ':' + propName;
           if (!manualPropTypeCallCache[cacheKey] &&
           // Avoid spamming the console because they are often not actionable except for lib authors
           manualPropTypeWarningCount < 3) {
-            warning_1(false, 'You are manually calling a React.PropTypes validation ' + 'function for the `%s` prop on `%s`. This is deprecated ' + 'and will throw in the standalone `prop-types` package. ' + 'You may be seeing this warning due to a third-party PropTypes ' + 'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.', propFullName, componentName);
+            warning_1$1(false, 'You are manually calling a React.PropTypes validation ' + 'function for the `%s` prop on `%s`. This is deprecated ' + 'and will throw in the standalone `prop-types` package. ' + 'You may be seeing this warning due to a third-party PropTypes ' + 'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.', propFullName, componentName);
             manualPropTypeCallCache[cacheKey] = true;
             manualPropTypeWarningCount++;
           }
@@ -2923,7 +3113,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
 
   function createEnumTypeChecker(expectedValues) {
     if (!Array.isArray(expectedValues)) {
-      process.env.NODE_ENV !== 'production' ? warning_1(false, 'Invalid argument supplied to oneOf, expected an instance of array.') : void 0;
+      process.env.NODE_ENV !== 'production' ? warning_1$1(false, 'Invalid argument supplied to oneOf, expected an instance of array.') : void 0;
       return emptyFunction_1.thatReturnsNull;
     }
 
@@ -2966,14 +3156,14 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
 
   function createUnionTypeChecker(arrayOfTypeCheckers) {
     if (!Array.isArray(arrayOfTypeCheckers)) {
-      process.env.NODE_ENV !== 'production' ? warning_1(false, 'Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
+      process.env.NODE_ENV !== 'production' ? warning_1$1(false, 'Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
       return emptyFunction_1.thatReturnsNull;
     }
 
     for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
       var checker = arrayOfTypeCheckers[i];
       if (typeof checker !== 'function') {
-        warning_1(false, 'Invalid argument supplid to oneOfType. Expected an array of check functions, but ' + 'received %s at index %s.', getPostfixForTypeWarning(checker), i);
+        warning_1$1(false, 'Invalid argument supplid to oneOfType. Expected an array of check functions, but ' + 'received %s at index %s.', getPostfixForTypeWarning(checker), i);
         return emptyFunction_1.thatReturnsNull;
       }
     }
@@ -3155,6 +3345,17 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
   return ReactPropTypes;
 };
 
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
+
+'use strict';
+
 // React 15.5 references this module, and assumes PropTypes are still callable in production.
 // Therefore we re-export development-only version with all the PropTypes checks here.
 // However if one is migrating to the `prop-types` npm library, they will go through the
@@ -3165,6 +3366,18 @@ var factory_1 = function factory_1(isValidElement) {
   var throwOnDirectAccess = false;
   return factoryWithTypeCheckers(isValidElement, throwOnDirectAccess);
 };
+
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
 
 var isValidElement = ReactElement_1.isValidElement;
 
@@ -3180,12 +3393,26 @@ var ReactPropTypes = factory_1(isValidElement);
  *
  */
 
+'use strict';
+
 var ReactVersion = '15.6.1';
 
 var _typeof$8 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
+
 if (process.env.NODE_ENV !== 'production') {
-  var warning$2 = warning_1;
+  var warning$2 = warning_1$1;
 }
 
 var MIXINS_KEY = 'mixins';
@@ -3480,13 +3707,13 @@ function factory$1(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
       if (process.env.NODE_ENV !== 'production') {
         validateTypeDef(Constructor, _childContextTypes, 'childContext');
       }
-      Constructor.childContextTypes = index({}, Constructor.childContextTypes, _childContextTypes);
+      Constructor.childContextTypes = objectAssign({}, Constructor.childContextTypes, _childContextTypes);
     },
     contextTypes: function contextTypes(Constructor, _contextTypes) {
       if (process.env.NODE_ENV !== 'production') {
         validateTypeDef(Constructor, _contextTypes, 'context');
       }
-      Constructor.contextTypes = index({}, Constructor.contextTypes, _contextTypes);
+      Constructor.contextTypes = objectAssign({}, Constructor.contextTypes, _contextTypes);
     },
     /**
      * Special case getDefaultProps which should move into statics but requires
@@ -3503,7 +3730,7 @@ function factory$1(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
       if (process.env.NODE_ENV !== 'production') {
         validateTypeDef(Constructor, _propTypes, 'prop');
       }
-      Constructor.propTypes = index({}, Constructor.propTypes, _propTypes);
+      Constructor.propTypes = objectAssign({}, Constructor.propTypes, _propTypes);
     },
     statics: function statics(Constructor, _statics) {
       mixStaticSpecIntoComponent(Constructor, _statics);
@@ -3528,12 +3755,12 @@ function factory$1(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
 
     // Disallow overriding of base class methods unless explicitly allowed.
     if (ReactClassMixin.hasOwnProperty(name)) {
-      invariant_1(specPolicy === 'OVERRIDE_BASE', 'ReactClassInterface: You are attempting to override ' + '`%s` from your class specification. Ensure that your method names ' + 'do not overlap with React methods.', name);
+      invariant_1$1(specPolicy === 'OVERRIDE_BASE', 'ReactClassInterface: You are attempting to override ' + '`%s` from your class specification. Ensure that your method names ' + 'do not overlap with React methods.', name);
     }
 
     // Disallow defining methods more than once unless explicitly allowed.
     if (isAlreadyDefined) {
-      invariant_1(specPolicy === 'DEFINE_MANY' || specPolicy === 'DEFINE_MANY_MERGED', 'ReactClassInterface: You are attempting to define ' + '`%s` on your component more than once. This conflict may be due ' + 'to a mixin.', name);
+      invariant_1$1(specPolicy === 'DEFINE_MANY' || specPolicy === 'DEFINE_MANY_MERGED', 'ReactClassInterface: You are attempting to define ' + '`%s` on your component more than once. This conflict may be due ' + 'to a mixin.', name);
     }
   }
 
@@ -3555,8 +3782,8 @@ function factory$1(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
       return;
     }
 
-    invariant_1(typeof spec !== 'function', "ReactClass: You're attempting to " + 'use a component class or function as a mixin. Instead, just use a ' + 'regular object.');
-    invariant_1(!isValidElement(spec), "ReactClass: You're attempting to " + 'use a component as a mixin. Instead, just use a regular object.');
+    invariant_1$1(typeof spec !== 'function', "ReactClass: You're attempting to " + 'use a component class or function as a mixin. Instead, just use a ' + 'regular object.');
+    invariant_1$1(!isValidElement(spec), "ReactClass: You're attempting to " + 'use a component as a mixin. Instead, just use a regular object.');
 
     var proto = Constructor.prototype;
     var autoBindPairs = proto.__reactAutoBindPairs;
@@ -3601,7 +3828,7 @@ function factory$1(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
             var specPolicy = ReactClassInterface[name];
 
             // These cases should already be caught by validateMethodOverride.
-            invariant_1(isReactClassMethod && (specPolicy === 'DEFINE_MANY_MERGED' || specPolicy === 'DEFINE_MANY'), 'ReactClass: Unexpected spec policy %s for key %s ' + 'when mixing in component specs.', specPolicy, name);
+            invariant_1$1(isReactClassMethod && (specPolicy === 'DEFINE_MANY_MERGED' || specPolicy === 'DEFINE_MANY'), 'ReactClass: Unexpected spec policy %s for key %s ' + 'when mixing in component specs.', specPolicy, name);
 
             // For methods which are defined more than once, call the existing
             // methods before calling the new property, merging if appropriate.
@@ -3636,10 +3863,10 @@ function factory$1(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
       }
 
       var isReserved = name in RESERVED_SPEC_KEYS;
-      invariant_1(!isReserved, 'ReactClass: You are attempting to define a reserved ' + 'property, `%s`, that shouldn\'t be on the "statics" key. Define it ' + 'as an instance property instead; it will still be accessible on the ' + 'constructor.', name);
+      invariant_1$1(!isReserved, 'ReactClass: You are attempting to define a reserved ' + 'property, `%s`, that shouldn\'t be on the "statics" key. Define it ' + 'as an instance property instead; it will still be accessible on the ' + 'constructor.', name);
 
       var isInherited = name in Constructor;
-      invariant_1(!isInherited, 'ReactClass: You are attempting to define ' + '`%s` on your component more than once. This conflict may be ' + 'due to a mixin.', name);
+      invariant_1$1(!isInherited, 'ReactClass: You are attempting to define ' + '`%s` on your component more than once. This conflict may be ' + 'due to a mixin.', name);
       Constructor[name] = property;
     }
   }
@@ -3652,11 +3879,11 @@ function factory$1(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
    * @return {object} one after it has been mutated to contain everything in two.
    */
   function mergeIntoWithNoDuplicateKeys(one, two) {
-    invariant_1(one && two && (typeof one === 'undefined' ? 'undefined' : _typeof$8(one)) === 'object' && (typeof two === 'undefined' ? 'undefined' : _typeof$8(two)) === 'object', 'mergeIntoWithNoDuplicateKeys(): Cannot merge non-objects.');
+    invariant_1$1(one && two && (typeof one === 'undefined' ? 'undefined' : _typeof$8(one)) === 'object' && (typeof two === 'undefined' ? 'undefined' : _typeof$8(two)) === 'object', 'mergeIntoWithNoDuplicateKeys(): Cannot merge non-objects.');
 
     for (var key in two) {
       if (two.hasOwnProperty(key)) {
-        invariant_1(one[key] === undefined, 'mergeIntoWithNoDuplicateKeys(): ' + 'Tried to merge two objects with the same key: `%s`. This conflict ' + 'may be due to a mixin; in particular, this may be caused by two ' + 'getInitialState() or getDefaultProps() methods returning objects ' + 'with clashing keys.', key);
+        invariant_1$1(one[key] === undefined, 'mergeIntoWithNoDuplicateKeys(): ' + 'Tried to merge two objects with the same key: `%s`. This conflict ' + 'may be due to a mixin; in particular, this may be caused by two ' + 'getInitialState() or getDefaultProps() methods returning objects ' + 'with clashing keys.', key);
         one[key] = two[key];
       }
     }
@@ -3800,7 +4027,7 @@ function factory$1(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
   };
 
   var ReactClassComponent = function ReactClassComponent() {};
-  index(ReactClassComponent.prototype, ReactComponent.prototype, ReactClassMixin);
+  objectAssign(ReactClassComponent.prototype, ReactComponent.prototype, ReactClassMixin);
 
   /**
    * Creates a composite component class given a class specification.
@@ -3846,7 +4073,7 @@ function factory$1(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
           initialState = null;
         }
       }
-      invariant_1((typeof initialState === 'undefined' ? 'undefined' : _typeof$8(initialState)) === 'object' && !Array.isArray(initialState), '%s.getInitialState(): must return an object or null', Constructor.displayName || 'ReactCompositeComponent');
+      invariant_1$1((typeof initialState === 'undefined' ? 'undefined' : _typeof$8(initialState)) === 'object' && !Array.isArray(initialState), '%s.getInitialState(): must return an object or null', Constructor.displayName || 'ReactCompositeComponent');
 
       this.state = initialState;
     });
@@ -3878,7 +4105,7 @@ function factory$1(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
       }
     }
 
-    invariant_1(Constructor.prototype.render, 'createClass(...): Class specification must implement a `render` method.');
+    invariant_1$1(Constructor.prototype.render, 'createClass(...): Class specification must implement a `render` method.');
 
     if (process.env.NODE_ENV !== 'production') {
       warning$2(!Constructor.prototype.componentShouldUpdate, '%s has a method called ' + 'componentShouldUpdate(). Did you mean shouldComponentUpdate()? ' + 'The name is phrased as a question because the function is ' + 'expected to return a value.', spec.displayName || 'A component');
@@ -3900,11 +4127,34 @@ function factory$1(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
 
 var factory_1$2 = factory$1;
 
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
+
 var Component = ReactBaseClasses.Component;
 
 var isValidElement$1 = ReactElement_1.isValidElement;
 
 var createClass = factory_1$2(Component, isValidElement$1, ReactNoopUpdateQueue_1);
+
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+'use strict';
 
 /**
  * Returns the first child in a collection of children and verifies that there
@@ -3921,11 +4171,23 @@ var createClass = factory_1$2(Component, isValidElement$1, ReactNoopUpdateQueue_
  * structure.
  */
 function onlyChild(children) {
-  !ReactElement_1.isValidElement(children) ? process.env.NODE_ENV !== 'production' ? invariant_1(false, 'React.Children.only expected to receive a single React element child.') : reactProdInvariant_1('143') : void 0;
+  !ReactElement_1.isValidElement(children) ? process.env.NODE_ENV !== 'production' ? invariant_1$1(false, 'React.Children.only expected to receive a single React element child.') : reactProdInvariant_1('143') : void 0;
   return children;
 }
 
 var onlyChild_1 = onlyChild;
+
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
 
 var createElement = ReactElement_1.createElement;
 var createFactory = ReactElement_1.createFactory;
@@ -3941,7 +4203,7 @@ if (process.env.NODE_ENV !== 'production') {
   cloneElement = ReactElementValidator.cloneElement;
 }
 
-var __spread = index;
+var __spread = objectAssign;
 var createMixin = function createMixin(mixin) {
   return mixin;
 };
@@ -3952,7 +4214,7 @@ if (process.env.NODE_ENV !== 'production') {
   __spread = function __spread() {
     lowPriorityWarning(warnedForSpread, 'React.__spread is deprecated and should not be used. Use ' + 'Object.assign directly or another helper function with similar ' + 'semantics. You may be seeing this warning due to your compiler. ' + 'See https://fb.me/react-spread-deprecation for more details.');
     warnedForSpread = true;
-    return index.apply(null, arguments);
+    return objectAssign.apply(null, arguments);
   };
 
   createMixin = function createMixin(mixin) {
@@ -4035,6 +4297,8 @@ if (process.env.NODE_ENV !== 'production') {
 
 var React_1 = React$1;
 
+'use strict';
+
 var react = React_1;
 
 var react_2 = react.Component;
@@ -4047,13 +4311,24 @@ function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
 }
 
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
+
+'use strict';
+
 var factoryWithThrowingShims = function factoryWithThrowingShims() {
   function shim(props, propName, componentName, location, propFullName, secret) {
     if (secret === ReactPropTypesSecret_1$2) {
       // It is still safe when called from React.
       return;
     }
-    invariant_1(false, 'Calling PropTypes validators directly is not supported by the `prop-types` package. ' + 'Use PropTypes.checkPropTypes() to call them. ' + 'Read more at http://fb.me/use-check-prop-types');
+    invariant_1$1(false, 'Calling PropTypes validators directly is not supported by the `prop-types` package. ' + 'Use PropTypes.checkPropTypes() to call them. ' + 'Read more at http://fb.me/use-check-prop-types');
   }
   shim.isRequired = shim;
   function getShim() {
@@ -4089,7 +4364,7 @@ var factoryWithThrowingShims = function factoryWithThrowingShims() {
 
 var _typeof$10 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var index$2 = createCommonjsModule(function (module) {
+var propTypes = createCommonjsModule(function (module) {
   /**
    * Copyright 2013-present, Facebook, Inc.
    * All rights reserved.
@@ -4125,6 +4400,8 @@ var index$2 = createCommonjsModule(function (module) {
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  */
+
+'use strict';
 
 /**
  * Similar to invariant but only logs a warning if the condition is not met.
@@ -4169,7 +4446,7 @@ if (__DEV__) {
   };
 }
 
-var warning_1$2 = warning$3;
+var warning_1$3 = warning$3;
 
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -4179,6 +4456,8 @@ var warning_1$2 = warning$3;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  */
+
+'use strict';
 
 /**
  * Use invariant() to assert state which your program assumes to be true.
@@ -4218,7 +4497,9 @@ var invariant$3 = function invariant(condition, format, a, b, c, d, e, f) {
   }
 };
 
-var invariant_1$2 = invariant$3;
+var invariant_1$3 = invariant$3;
+
+'use strict';
 
 var isAbsolute = function isAbsolute(pathname) {
   return pathname.charAt(0) === '/';
@@ -4287,11 +4568,11 @@ var resolvePathname = function resolvePathname(to) {
   return result;
 };
 
-var index$3 = resolvePathname;
+var resolvePathname_1 = resolvePathname;
 
 var _typeof2$1 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var index$5 = createCommonjsModule(function (module, exports) {
+var valueEqual_1 = createCommonjsModule(function (module, exports) {
   'use strict';
 
   exports.__esModule = true;
@@ -4338,7 +4619,9 @@ var index$5 = createCommonjsModule(function (module, exports) {
   exports.default = valueEqual;
 });
 
-var PathUtils = createCommonjsModule(function (module, exports) {
+unwrapExports(valueEqual_1);
+
+var PathUtils$1 = createCommonjsModule(function (module, exports) {
   'use strict';
 
   exports.__esModule = true;
@@ -4401,9 +4684,10 @@ var PathUtils = createCommonjsModule(function (module, exports) {
   };
 });
 
-var PathUtils_1 = PathUtils.addLeadingSlash;
-var PathUtils_6 = PathUtils.parsePath;
-var PathUtils_7 = PathUtils.createPath;
+unwrapExports(PathUtils$1);
+var PathUtils_1 = PathUtils$1.addLeadingSlash;
+var PathUtils_6 = PathUtils$1.parsePath;
+var PathUtils_7 = PathUtils$1.createPath;
 
 var LocationUtils = createCommonjsModule(function (module, exports) {
   'use strict';
@@ -4421,9 +4705,9 @@ var LocationUtils = createCommonjsModule(function (module, exports) {
     }return target;
   };
 
-  var _resolvePathname2 = _interopRequireDefault(index$3);
+  var _resolvePathname2 = _interopRequireDefault(resolvePathname_1);
 
-  var _valueEqual2 = _interopRequireDefault(index$5);
+  var _valueEqual2 = _interopRequireDefault(valueEqual_1);
 
   function _interopRequireDefault(obj) {
     return obj && obj.__esModule ? obj : { default: obj };
@@ -4433,7 +4717,7 @@ var LocationUtils = createCommonjsModule(function (module, exports) {
     var location = void 0;
     if (typeof path === 'string') {
       // Two-arg form: push(path, state)
-      location = (0, PathUtils.parsePath)(path);
+      location = (0, PathUtils$1.parsePath)(path);
       location.state = state;
     } else {
       // One-arg form: push(location)
@@ -4490,12 +4774,14 @@ var LocationUtils = createCommonjsModule(function (module, exports) {
   };
 });
 
+unwrapExports(LocationUtils);
+
 var createTransitionManager_1 = createCommonjsModule(function (module, exports) {
   'use strict';
 
   exports.__esModule = true;
 
-  var _warning2 = _interopRequireDefault(warning_1$2);
+  var _warning2 = _interopRequireDefault(warning_1$3);
 
   function _interopRequireDefault(obj) {
     return obj && obj.__esModule ? obj : { default: obj };
@@ -4578,6 +4864,8 @@ var createTransitionManager_1 = createCommonjsModule(function (module, exports) 
   exports.default = createTransitionManager;
 });
 
+unwrapExports(createTransitionManager_1);
+
 var DOMUtils = createCommonjsModule(function (module, exports) {
   'use strict';
 
@@ -4636,6 +4924,8 @@ var DOMUtils = createCommonjsModule(function (module, exports) {
   };
 });
 
+unwrapExports(DOMUtils);
+
 var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var createBrowserHistory_1 = createCommonjsModule(function (module, exports) {
@@ -4659,9 +4949,9 @@ var createBrowserHistory_1 = createCommonjsModule(function (module, exports) {
     }return target;
   };
 
-  var _warning2 = _interopRequireDefault(warning_1$2);
+  var _warning2 = _interopRequireDefault(warning_1$3);
 
-  var _invariant2 = _interopRequireDefault(invariant_1$2);
+  var _invariant2 = _interopRequireDefault(invariant_1$3);
 
   var _createTransitionManager2 = _interopRequireDefault(createTransitionManager_1);
 
@@ -4702,7 +4992,7 @@ var createBrowserHistory_1 = createCommonjsModule(function (module, exports) {
         _props$keyLength = props.keyLength,
         keyLength = _props$keyLength === undefined ? 6 : _props$keyLength;
 
-    var basename = props.basename ? (0, PathUtils.stripTrailingSlash)((0, PathUtils.addLeadingSlash)(props.basename)) : '';
+    var basename = props.basename ? (0, PathUtils$1.stripTrailingSlash)((0, PathUtils$1.addLeadingSlash)(props.basename)) : '';
 
     var getDOMLocation = function getDOMLocation(historyState) {
       var _ref = historyState || {},
@@ -4716,9 +5006,9 @@ var createBrowserHistory_1 = createCommonjsModule(function (module, exports) {
 
       var path = pathname + search + hash;
 
-      (0, _warning2.default)(!basename || (0, PathUtils.hasBasename)(path, basename), 'You are attempting to use a basename on a page whose URL path does not begin ' + 'with the basename. Expected path "' + path + '" to begin with "' + basename + '".');
+      (0, _warning2.default)(!basename || (0, PathUtils$1.hasBasename)(path, basename), 'You are attempting to use a basename on a page whose URL path does not begin ' + 'with the basename. Expected path "' + path + '" to begin with "' + basename + '".');
 
-      if (basename) path = (0, PathUtils.stripBasename)(path, basename);
+      if (basename) path = (0, PathUtils$1.stripBasename)(path, basename);
 
       return (0, LocationUtils.createLocation)(path, state, key);
     };
@@ -4796,7 +5086,7 @@ var createBrowserHistory_1 = createCommonjsModule(function (module, exports) {
     // Public interface
 
     var createHref = function createHref(location) {
-      return basename + (0, PathUtils.createPath)(location);
+      return basename + (0, PathUtils$1.createPath)(location);
     };
 
     var push = function push(path, state) {
@@ -4972,7 +5262,7 @@ var createMemoryHistory_1 = createCommonjsModule(function (module, exports) {
     }return target;
   };
 
-  var _warning2 = _interopRequireDefault(warning_1$2);
+  var _warning2 = _interopRequireDefault(warning_1$3);
 
   var _createTransitionManager2 = _interopRequireDefault(createTransitionManager_1);
 
@@ -5018,7 +5308,7 @@ var createMemoryHistory_1 = createCommonjsModule(function (module, exports) {
 
     // Public interface
 
-    var createHref = PathUtils.createPath;
+    var createHref = PathUtils$1.createPath;
 
     var push = function push(path, state) {
       (0, _warning2.default)(!((typeof path === 'undefined' ? 'undefined' : _typeof(path)) === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to push when the 1st ' + 'argument is a location-like object that already has state; it is ignored');
@@ -5210,7 +5500,7 @@ var Router = function (_React$Component) {
         children = _props.children,
         history = _props.history;
 
-    invariant_1$2(children == null || react.Children.count(children) === 1, 'A <Router> may have only one child element');
+    invariant_1$3(children == null || react.Children.count(children) === 1, 'A <Router> may have only one child element');
 
     // Do this here so we can setState when a <Redirect> changes the
     // location in componentWillMount. This happens e.g. when doing
@@ -5223,7 +5513,7 @@ var Router = function (_React$Component) {
   };
 
   Router.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-    warning_1$2(this.props.history === nextProps.history, 'You cannot change <Router history>');
+    warning_1$3(this.props.history === nextProps.history, 'You cannot change <Router history>');
   };
 
   Router.prototype.componentWillUnmount = function componentWillUnmount() {
@@ -5240,14 +5530,14 @@ var Router = function (_React$Component) {
 }(react.Component);
 
 Router.propTypes = {
-  history: index$2.object.isRequired,
-  children: index$2.node
+  history: propTypes.object.isRequired,
+  children: propTypes.node
 };
 Router.contextTypes = {
-  router: index$2.object
+  router: propTypes.object
 };
 Router.childContextTypes = {
-  router: index$2.object.isRequired
+  router: propTypes.object.isRequired
 };
 
 var _typeof$11 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -5297,11 +5587,11 @@ var MemoryRouter = function (_React$Component) {
 }(react.Component);
 
 MemoryRouter.propTypes = {
-  initialEntries: index$2.array,
-  initialIndex: index$2.number,
-  getUserConfirmation: index$2.func,
-  keyLength: index$2.number,
-  children: index$2.node
+  initialEntries: propTypes.array,
+  initialIndex: propTypes.number,
+  getUserConfirmation: propTypes.func,
+  keyLength: propTypes.number,
+  children: propTypes.node
 };
 
 var _typeof$13 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -5375,16 +5665,16 @@ var Prompt = function (_React$Component) {
 }(react.Component);
 
 Prompt.propTypes = {
-  when: index$2.bool,
-  message: index$2.oneOfType([index$2.func, index$2.string]).isRequired
+  when: propTypes.bool,
+  message: propTypes.oneOfType([propTypes.func, propTypes.string]).isRequired
 };
 Prompt.defaultProps = {
   when: true
 };
 Prompt.contextTypes = {
-  router: index$2.shape({
-    history: index$2.shape({
-      block: index$2.func.isRequired
+  router: propTypes.shape({
+    history: propTypes.shape({
+      block: propTypes.func.isRequired
     }).isRequired
   }).isRequired
 };
@@ -5456,24 +5746,24 @@ var Redirect = function (_React$Component) {
 }(react.Component);
 
 Redirect.propTypes = {
-  push: index$2.bool,
-  from: index$2.string,
-  to: index$2.oneOfType([index$2.string, index$2.object])
+  push: propTypes.bool,
+  from: propTypes.string,
+  to: propTypes.oneOfType([propTypes.string, propTypes.object])
 };
 Redirect.defaultProps = {
   push: false
 };
 Redirect.contextTypes = {
-  router: index$2.shape({
-    history: index$2.shape({
-      push: index$2.func.isRequired,
-      replace: index$2.func.isRequired
+  router: propTypes.shape({
+    history: propTypes.shape({
+      push: propTypes.func.isRequired,
+      replace: propTypes.func.isRequired
     }).isRequired,
-    staticContext: index$2.object
+    staticContext: propTypes.object
   }).isRequired
 };
 
-var index$8 = Array.isArray || function (arr) {
+var isarray = Array.isArray || function (arr) {
   return Object.prototype.toString.call(arr) == '[object Array]';
 };
 
@@ -5482,7 +5772,7 @@ var _typeof$16 = typeof Symbol === "function" && typeof Symbol.iterator === "sym
 /**
  * Expose `pathToRegexp`.
  */
-var index$7 = pathToRegexp;
+var pathToRegexp_1$1 = pathToRegexp;
 var parse_1 = parse;
 var compile_1 = compile;
 var tokensToFunction_1 = tokensToFunction;
@@ -5658,7 +5948,7 @@ function tokensToFunction(tokens) {
         }
       }
 
-      if (index$8(value)) {
+      if (isarray(value)) {
         if (!token.repeat) {
           throw new TypeError('Expected "' + token.name + '" to not repeat, but received `' + JSON.stringify(value) + '`');
         }
@@ -5809,7 +6099,7 @@ function stringToRegexp(path, keys, options) {
  * @return {!RegExp}
  */
 function tokensToRegExp(tokens, keys, options) {
-  if (!index$8(keys)) {
+  if (!isarray(keys)) {
     options = /** @type {!Object} */keys || options;
     keys = [];
   }
@@ -5885,7 +6175,7 @@ function tokensToRegExp(tokens, keys, options) {
  * @return {!RegExp}
  */
 function pathToRegexp(path, keys, options) {
-  if (!index$8(keys)) {
+  if (!isarray(keys)) {
     options = /** @type {!Object} */keys || options;
     keys = [];
   }
@@ -5896,17 +6186,17 @@ function pathToRegexp(path, keys, options) {
     return regexpToRegexp(path, /** @type {!Array} */keys);
   }
 
-  if (index$8(path)) {
+  if (isarray(path)) {
     return arrayToRegexp( /** @type {!Array} */path, /** @type {!Array} */keys, options);
   }
 
   return stringToRegexp( /** @type {string} */path, /** @type {!Array} */keys, options);
 }
 
-index$7.parse = parse_1;
-index$7.compile = compile_1;
-index$7.tokensToFunction = tokensToFunction_1;
-index$7.tokensToRegExp = tokensToRegExp_1;
+pathToRegexp_1$1.parse = parse_1;
+pathToRegexp_1$1.compile = compile_1;
+pathToRegexp_1$1.tokensToFunction = tokensToFunction_1;
+pathToRegexp_1$1.tokensToRegExp = tokensToRegExp_1;
 
 var patternCache = {};
 var cacheLimit = 10000;
@@ -5919,7 +6209,7 @@ var compilePath = function compilePath(pattern, options) {
   if (cache[pattern]) return cache[pattern];
 
   var keys = [];
-  var re = index$7(pattern, keys, options);
+  var re = pathToRegexp_1$1(pattern, keys, options);
   var compiledPattern = { re: re, keys: keys };
 
   if (cacheCount < cacheLimit) {
@@ -6055,17 +6345,17 @@ var Route = function (_React$Component) {
         render = _props.render,
         children = _props.children;
 
-    warning_1$2(!(component && render), 'You should not use <Route component> and <Route render> in the same route; <Route render> will be ignored');
+    warning_1$3(!(component && render), 'You should not use <Route component> and <Route render> in the same route; <Route render> will be ignored');
 
-    warning_1$2(!(component && children), 'You should not use <Route component> and <Route children> in the same route; <Route children> will be ignored');
+    warning_1$3(!(component && children), 'You should not use <Route component> and <Route children> in the same route; <Route children> will be ignored');
 
-    warning_1$2(!(render && children), 'You should not use <Route render> and <Route children> in the same route; <Route children> will be ignored');
+    warning_1$3(!(render && children), 'You should not use <Route render> and <Route children> in the same route; <Route children> will be ignored');
   };
 
   Route.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps, nextContext) {
-    warning_1$2(!(nextProps.location && !this.props.location), '<Route> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.');
+    warning_1$3(!(nextProps.location && !this.props.location), '<Route> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.');
 
-    warning_1$2(!(!nextProps.location && this.props.location), '<Route> elements should not change from controlled to uncontrolled (or vice versa). You provided a "location" prop initially but omitted it on a subsequent render.');
+    warning_1$3(!(!nextProps.location && this.props.location), '<Route> elements should not change from controlled to uncontrolled (or vice versa). You provided a "location" prop initially but omitted it on a subsequent render.');
 
     this.setState({
       match: this.computeMatch(nextProps, nextContext.router)
@@ -6097,24 +6387,24 @@ var Route = function (_React$Component) {
 }(react.Component);
 
 Route.propTypes = {
-  computedMatch: index$2.object, // private, from <Switch>
-  path: index$2.string,
-  exact: index$2.bool,
-  strict: index$2.bool,
-  component: index$2.func,
-  render: index$2.func,
-  children: index$2.oneOfType([index$2.func, index$2.node]),
-  location: index$2.object
+  computedMatch: propTypes.object, // private, from <Switch>
+  path: propTypes.string,
+  exact: propTypes.bool,
+  strict: propTypes.bool,
+  component: propTypes.func,
+  render: propTypes.func,
+  children: propTypes.oneOfType([propTypes.func, propTypes.node]),
+  location: propTypes.object
 };
 Route.contextTypes = {
-  router: index$2.shape({
-    history: index$2.object.isRequired,
-    route: index$2.object.isRequired,
-    staticContext: index$2.object
+  router: propTypes.shape({
+    history: propTypes.object.isRequired,
+    route: propTypes.object.isRequired,
+    staticContext: propTypes.object
   })
 };
 Route.childContextTypes = {
-  router: index$2.object.isRequired
+  router: propTypes.object.isRequired
 };
 
 var _typeof$17 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -6198,7 +6488,7 @@ var createURL = function createURL(location) {
 
 var staticHandler = function staticHandler(methodName) {
   return function () {
-    invariant_1$2(false, 'You cannot %s with <StaticRouter>', methodName);
+    invariant_1$3(false, 'You cannot %s with <StaticRouter>', methodName);
   };
 };
 
@@ -6283,16 +6573,16 @@ var StaticRouter = function (_React$Component) {
 }(react.Component);
 
 StaticRouter.propTypes = {
-  basename: index$2.string,
-  context: index$2.object.isRequired,
-  location: index$2.oneOfType([index$2.string, index$2.object])
+  basename: propTypes.string,
+  context: propTypes.object.isRequired,
+  location: propTypes.oneOfType([propTypes.string, propTypes.object])
 };
 StaticRouter.defaultProps = {
   basename: '',
   location: '/'
 };
 StaticRouter.childContextTypes = {
-  router: index$2.object.isRequired
+  router: propTypes.object.isRequired
 };
 
 var _typeof$18 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -6329,9 +6619,9 @@ var Switch = function (_React$Component) {
   }
 
   Switch.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-    warning_1$2(!(nextProps.location && !this.props.location), '<Switch> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.');
+    warning_1$3(!(nextProps.location && !this.props.location), '<Switch> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.');
 
-    warning_1$2(!(!nextProps.location && this.props.location), '<Switch> elements should not change from controlled to uncontrolled (or vice versa). You provided a "location" prop initially but omitted it on a subsequent render.');
+    warning_1$3(!(!nextProps.location && this.props.location), '<Switch> elements should not change from controlled to uncontrolled (or vice versa). You provided a "location" prop initially but omitted it on a subsequent render.');
   };
 
   Switch.prototype.render = function render() {
@@ -6366,19 +6656,21 @@ var Switch = function (_React$Component) {
 }(react.Component);
 
 Switch.contextTypes = {
-  router: index$2.shape({
-    route: index$2.object.isRequired
+  router: propTypes.shape({
+    route: propTypes.object.isRequired
   }).isRequired
 };
 Switch.propTypes = {
-  children: index$2.node,
-  location: index$2.object
+  children: propTypes.node,
+  location: propTypes.object
 };
 
 /**
  * Copyright 2015, Yahoo! Inc.
  * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
  */
+'use strict';
+
 var REACT_STATICS = {
     childContextTypes: true,
     contextTypes: true,
@@ -6401,7 +6693,7 @@ var KNOWN_STATICS = {
 
 var isGetOwnPropertySymbolsAvailable = typeof Object.getOwnPropertySymbols === 'function';
 
-var index$10 = function hoistNonReactStatics(targetComponent, sourceComponent, customStatics) {
+var hoistNonReactStatics = function hoistNonReactStatics(targetComponent, sourceComponent, customStatics) {
     if (typeof sourceComponent !== 'string') {
         // don't hoist over string (html) components
         var keys = Object.getOwnPropertyNames(sourceComponent);
@@ -6455,10 +6747,10 @@ var withRouter = function withRouter(Component) {
   C.displayName = 'withRouter(' + (Component.displayName || Component.name) + ')';
   C.WrappedComponent = Component;
   C.propTypes = {
-    wrappedComponentRef: index$2.func
+    wrappedComponentRef: propTypes.func
   };
 
-  return index$10(C, Component);
+  return hoistNonReactStatics(C, Component);
 };
 
 var _typeof$9 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -6508,11 +6800,11 @@ var BrowserRouter = function (_React$Component) {
 }(react.Component);
 
 BrowserRouter.propTypes = {
-  basename: index$2.string,
-  forceRefresh: index$2.bool,
-  getUserConfirmation: index$2.func,
-  keyLength: index$2.number,
-  children: index$2.node
+  basename: propTypes.string,
+  forceRefresh: propTypes.bool,
+  getUserConfirmation: propTypes.func,
+  keyLength: propTypes.number,
+  children: propTypes.node
 };
 
 var createHashHistory_1 = createCommonjsModule(function (module, exports) {
@@ -6530,9 +6822,9 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
     }return target;
   };
 
-  var _warning2 = _interopRequireDefault(warning_1$2);
+  var _warning2 = _interopRequireDefault(warning_1$3);
 
-  var _invariant2 = _interopRequireDefault(invariant_1$2);
+  var _invariant2 = _interopRequireDefault(invariant_1$3);
 
   var _createTransitionManager2 = _interopRequireDefault(createTransitionManager_1);
 
@@ -6545,19 +6837,19 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
   var HashPathCoders = {
     hashbang: {
       encodePath: function encodePath(path) {
-        return path.charAt(0) === '!' ? path : '!/' + (0, PathUtils.stripLeadingSlash)(path);
+        return path.charAt(0) === '!' ? path : '!/' + (0, PathUtils$1.stripLeadingSlash)(path);
       },
       decodePath: function decodePath(path) {
         return path.charAt(0) === '!' ? path.substr(1) : path;
       }
     },
     noslash: {
-      encodePath: PathUtils.stripLeadingSlash,
-      decodePath: PathUtils.addLeadingSlash
+      encodePath: PathUtils$1.stripLeadingSlash,
+      decodePath: PathUtils$1.addLeadingSlash
     },
     slash: {
-      encodePath: PathUtils.addLeadingSlash,
-      decodePath: PathUtils.addLeadingSlash
+      encodePath: PathUtils$1.addLeadingSlash,
+      decodePath: PathUtils$1.addLeadingSlash
     }
   };
 
@@ -6592,7 +6884,7 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
         _props$hashType = props.hashType,
         hashType = _props$hashType === undefined ? 'slash' : _props$hashType;
 
-    var basename = props.basename ? (0, PathUtils.stripTrailingSlash)((0, PathUtils.addLeadingSlash)(props.basename)) : '';
+    var basename = props.basename ? (0, PathUtils$1.stripTrailingSlash)((0, PathUtils$1.addLeadingSlash)(props.basename)) : '';
 
     var _HashPathCoders$hashT = HashPathCoders[hashType],
         encodePath = _HashPathCoders$hashT.encodePath,
@@ -6601,9 +6893,9 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
     var getDOMLocation = function getDOMLocation() {
       var path = decodePath(getHashPath());
 
-      (0, _warning2.default)(!basename || (0, PathUtils.hasBasename)(path, basename), 'You are attempting to use a basename on a page whose URL path does not begin ' + 'with the basename. Expected path "' + path + '" to begin with "' + basename + '".');
+      (0, _warning2.default)(!basename || (0, PathUtils$1.hasBasename)(path, basename), 'You are attempting to use a basename on a page whose URL path does not begin ' + 'with the basename. Expected path "' + path + '" to begin with "' + basename + '".');
 
-      if (basename) path = (0, PathUtils.stripBasename)(path, basename);
+      if (basename) path = (0, PathUtils$1.stripBasename)(path, basename);
 
       return (0, LocationUtils.createLocation)(path);
     };
@@ -6634,7 +6926,7 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
 
         if (!forceNextPop && (0, LocationUtils.locationsAreEqual)(prevLocation, location)) return; // A hashchange doesn't always == location change.
 
-        if (ignorePath === (0, PathUtils.createPath)(location)) return; // Ignore this change; we already setState in push/replace.
+        if (ignorePath === (0, PathUtils$1.createPath)(location)) return; // Ignore this change; we already setState in push/replace.
 
         ignorePath = null;
 
@@ -6666,11 +6958,11 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
       // keeping a list of paths we've seen in sessionStorage.
       // Instead, we just default to 0 for paths we don't know.
 
-      var toIndex = allPaths.lastIndexOf((0, PathUtils.createPath)(toLocation));
+      var toIndex = allPaths.lastIndexOf((0, PathUtils$1.createPath)(toLocation));
 
       if (toIndex === -1) toIndex = 0;
 
-      var fromIndex = allPaths.lastIndexOf((0, PathUtils.createPath)(fromLocation));
+      var fromIndex = allPaths.lastIndexOf((0, PathUtils$1.createPath)(fromLocation));
 
       if (fromIndex === -1) fromIndex = 0;
 
@@ -6689,12 +6981,12 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
     if (path !== encodedPath) replaceHashPath(encodedPath);
 
     var initialLocation = getDOMLocation();
-    var allPaths = [(0, PathUtils.createPath)(initialLocation)];
+    var allPaths = [(0, PathUtils$1.createPath)(initialLocation)];
 
     // Public interface
 
     var createHref = function createHref(location) {
-      return '#' + encodePath(basename + (0, PathUtils.createPath)(location));
+      return '#' + encodePath(basename + (0, PathUtils$1.createPath)(location));
     };
 
     var push = function push(path, state) {
@@ -6706,7 +6998,7 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
       transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
         if (!ok) return;
 
-        var path = (0, PathUtils.createPath)(location);
+        var path = (0, PathUtils$1.createPath)(location);
         var encodedPath = encodePath(basename + path);
         var hashChanged = getHashPath() !== encodedPath;
 
@@ -6717,7 +7009,7 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
           ignorePath = path;
           pushHashPath(encodedPath);
 
-          var prevIndex = allPaths.lastIndexOf((0, PathUtils.createPath)(history.location));
+          var prevIndex = allPaths.lastIndexOf((0, PathUtils$1.createPath)(history.location));
           var nextPaths = allPaths.slice(0, prevIndex === -1 ? 0 : prevIndex + 1);
 
           nextPaths.push(path);
@@ -6741,7 +7033,7 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
       transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
         if (!ok) return;
 
-        var path = (0, PathUtils.createPath)(location);
+        var path = (0, PathUtils$1.createPath)(location);
         var encodedPath = encodePath(basename + path);
         var hashChanged = getHashPath() !== encodedPath;
 
@@ -6753,7 +7045,7 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
           replaceHashPath(encodedPath);
         }
 
-        var prevIndex = allPaths.indexOf((0, PathUtils.createPath)(history.location));
+        var prevIndex = allPaths.indexOf((0, PathUtils$1.createPath)(history.location));
 
         if (prevIndex !== -1) allPaths[prevIndex] = path;
 
@@ -6888,10 +7180,10 @@ var HashRouter = function (_React$Component) {
 }(react.Component);
 
 HashRouter.propTypes = {
-  basename: index$2.string,
-  getUserConfirmation: index$2.func,
-  hashType: index$2.oneOf(['hashbang', 'noslash', 'slash']),
-  children: index$2.node
+  basename: propTypes.string,
+  getUserConfirmation: propTypes.func,
+  hashType: propTypes.oneOf(['hashbang', 'noslash', 'slash']),
+  children: propTypes.node
 };
 
 var _typeof$20 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -6989,99 +7281,22 @@ var Link = function (_React$Component) {
 }(react.Component);
 
 Link.propTypes = {
-  onClick: index$2.func,
-  target: index$2.string,
-  replace: index$2.bool,
-  to: index$2.oneOfType([index$2.string, index$2.object]).isRequired
+  onClick: propTypes.func,
+  target: propTypes.string,
+  replace: propTypes.bool,
+  to: propTypes.oneOfType([propTypes.string, propTypes.object]).isRequired
 };
 Link.defaultProps = {
   replace: false
 };
 Link.contextTypes = {
-  router: index$2.shape({
-    history: index$2.shape({
-      push: index$2.func.isRequired,
-      replace: index$2.func.isRequired,
-      createHref: index$2.func.isRequired
+  router: propTypes.shape({
+    history: propTypes.shape({
+      push: propTypes.func.isRequired,
+      replace: propTypes.func.isRequired,
+      createHref: propTypes.func.isRequired
     }).isRequired
   }).isRequired
-};
-
-var _typeof2$3 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var _extends$7 = Object.assign || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }return target;
-};
-
-var _typeof$21 = typeof Symbol === "function" && _typeof2$3(Symbol.iterator) === "symbol" ? function (obj) {
-  return typeof obj === "undefined" ? "undefined" : _typeof2$3(obj);
-} : function (obj) {
-  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof2$3(obj);
-};
-
-function _objectWithoutProperties$3(obj, keys) {
-  var target = {};for (var i in obj) {
-    if (keys.indexOf(i) >= 0) continue;if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;target[i] = obj[i];
-  }return target;
-}
-
-/**
- * A <Link> wrapper that knows if it's "active" or not.
- */
-var NavLink = function NavLink(_ref) {
-  var to = _ref.to,
-      exact = _ref.exact,
-      strict = _ref.strict,
-      location = _ref.location,
-      activeClassName = _ref.activeClassName,
-      className = _ref.className,
-      activeStyle = _ref.activeStyle,
-      style = _ref.style,
-      getIsActive = _ref.isActive,
-      rest = _objectWithoutProperties$3(_ref, ['to', 'exact', 'strict', 'location', 'activeClassName', 'className', 'activeStyle', 'style', 'isActive']);
-
-  return react.createElement(Route, {
-    path: (typeof to === 'undefined' ? 'undefined' : _typeof$21(to)) === 'object' ? to.pathname : to,
-    exact: exact,
-    strict: strict,
-    location: location,
-    children: function children(_ref2) {
-      var location = _ref2.location,
-          match = _ref2.match;
-
-      var isActive = !!(getIsActive ? getIsActive(match, location) : match);
-
-      return react.createElement(Link, _extends$7({
-        to: to,
-        className: isActive ? [activeClassName, className].filter(function (i) {
-          return i;
-        }).join(' ') : className,
-        style: isActive ? _extends$7({}, style, activeStyle) : style
-      }, rest));
-    }
-  });
-};
-
-NavLink.propTypes = {
-  to: Link.propTypes.to,
-  exact: index$2.bool,
-  strict: index$2.bool,
-  location: index$2.object,
-  activeClassName: index$2.string,
-  className: index$2.string,
-  activeStyle: index$2.object,
-  style: index$2.object,
-  isActive: index$2.func
-};
-
-NavLink.defaultProps = {
-  activeClassName: 'active'
 };
 
 /**
@@ -7098,7 +7313,9 @@ NavLink.defaultProps = {
 
 /*eslint-disable no-self-compare */
 
-var index$11 = createCommonjsModule(function (module, exports) {
+'use strict';
+
+var lib = createCommonjsModule(function (module, exports) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -7151,6 +7368,8 @@ var index$11 = createCommonjsModule(function (module, exports) {
     };
   };
 });
+
+unwrapExports(lib);
 
 function symbolObservablePonyfill(root) {
 	var result;

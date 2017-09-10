@@ -1,8 +1,7 @@
-import { vars } from 'polythene-theme';
 import { styler } from 'polythene-core-css';
 import { classes } from 'polythene-core-svg';
 
-var vars$1 = {
+var vars = {
   color_light: "currentcolor",
   color_dark: "currentcolor"
 };
@@ -50,20 +49,18 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 var fns = [layout, color];
 var selector = "." + classes.component;
 
-var addThemeStyle = function addThemeStyle(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends({}, vars$1, customVars), fns);
+var addStyle = function addStyle(customSelector, customVars) {
+  return styler.generateStyles([customSelector, selector], _extends({}, vars, customVars), fns);
 };
 
 var styles = function styles() {
-  return styler.createStyleSheets([selector], vars$1, fns);
+  return styler.createStyleSheets([selector], vars, fns);
 };
 
 var themeStyles = function themeStyles(customSelector, customVars) {
-  return styler.createStyleSheets([customSelector, selector], _extends({}, vars$1, customVars), fns);
+  return styler.createStyleSheets([customSelector, selector], _extends({}, vars, customVars), fns);
 };
 
-if (vars.css === "js") {
-  styler.generateStyles([selector], vars$1, fns);
-}
+styler.generateStyles([selector], vars, fns);
 
-export { addThemeStyle, styles, themeStyles };
+export { addStyle, styles, themeStyles };

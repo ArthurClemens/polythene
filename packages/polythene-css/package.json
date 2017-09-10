@@ -1,0 +1,25 @@
+{
+  "name": "polythene-css",
+  "version": "1.0.0-rc.5",
+  "description": "",
+  "main": "dist/polythene-css.js",
+  "module": "dist/polythene-css.mjs",
+  "scripts": {
+    "clean": "rm -rf dist && mkdir dist",
+    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
+    "build-standalone": "DEPS=1 MODULE_NAME=polytheneCSS ENTRY=scripts/standalone.js SOURCEMAP=1 DEST=./dist/polythene-css-standalone.js ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd-includes.js",
+    "copy-css": "node ./scripts/copyCSS.js",
+    "combine-css": "node ./scripts/combineCSS.js",
+    "build": "yarn run clean && npm run rollup && yarn run build-standalone && yarn run copy-css && yarn run combine-css"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "dependencies": {
+    "polythene-css-svg": "^1.0.0-rc.5",
+    "polythene-scripts": "^1.0.0-rc.5"
+  },
+  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
+  "license": "MIT"
+}

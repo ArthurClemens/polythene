@@ -3,6 +3,7 @@ const cssbeautify  = require("cssbeautify");
 const fs           = require("fs");
 const J2c          = require("j2c");
 const postcss      = require("postcss");
+const cssnano      = require("cssnano");
 
 const j2c = new J2c();
 const COLOR_RED = "\x1b[31m";
@@ -24,7 +25,7 @@ const makeStyleSheet = (...styles) =>
       )
       : acc, "");
 
-const beautify = cssString =>
+const beautifyCSS = cssString =>
   cssbeautify(cssString, {
     indent: "  "
   });
@@ -35,21 +36,37 @@ const saveToFile = (path, cssString) =>
     if (err) throw err;
   });
 
-export const writeCSS = ({ styles, path, autoPrefix }) => {
-
+export const processCSS = ({ styles, path, autoPrefix }) => {
   const cssString = styles.reduce((acc, current) => (
     acc + makeStyleSheet(current)
   ), "");
+  return { cssString, path, autoPrefix };
+};
 
+export const writeCSS = ({ css, styles, path, autoPrefix, beautify }) => {
+  const cssString = css
+    ? css
+    : styles
+      ? styles.reduce((acc, current) => acc + makeStyleSheet(current), "")
+      : "";
+
+  const mapPath = `${path}.map`;
   const plugins = [];
   if (autoPrefix) {
-    plugins.push(autoprefixer);
+    plugins.push(autoprefixer());
   }
-  postcss(plugins).process(cssString).then(result => {
-    result.warnings().forEach(warn => {
-      console.warn(COLOR_RED, "Warning", COLOR_WHITE, warn.toString()); // eslint-disable-line no-console
+  plugins.push(cssnano({ preset: "default" }));
+  postcss(plugins)
+    .process(cssString, {
+      to:  path,
+      map: { inline: false }
+    })
+    .then(result => {
+      result.warnings().forEach(warn => {
+        console.warn(COLOR_RED, "Warning", COLOR_WHITE, warn.toString()); // eslint-disable-line no-console
+      });
+      saveToFile(path, beautify ? beautifyCSS(result.css) : result.css);
+      saveToFile(mapPath, result.map);
     });
-    saveToFile(path, beautify(result.css));
-  });
 };
 

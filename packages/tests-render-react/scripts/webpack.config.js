@@ -1,13 +1,28 @@
-/* global __dirname */
+/* global __dirname, process */
 const path = require("path");
+const glob = require("glob");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+const nodeModules = path.join(process.cwd(), "node_modules");
+
+// Create a list of CSS files from Polythene components
+const CSSFiles = glob.sync(`${nodeModules}/polythene-*/dist/*.css`)
+  // Add test-specific CSS files
+  .concat(
+    glob.sync(`${nodeModules}/tests-*/node_modules/test-*/node_modules/polythene-*/dist/*.css`)
+  );
 
 module.exports = {
 
   context: path.resolve(__dirname, "../src"), 
 
-  entry: {
-    index: "../index.js"
-  },
+  entry: Object.assign(
+    {},
+    {
+      index: "../index.js",
+    },
+    CSSFiles.length ? { style : CSSFiles } : null
+  ),
 
   resolve: {
     alias: {
@@ -28,6 +43,13 @@ module.exports = {
         use: [{
           loader: "babel-loader"
         }]
+      },
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: "css-loader"
+        })
       }
     ]
   },

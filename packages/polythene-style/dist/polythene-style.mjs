@@ -24,9 +24,9 @@ var animation_curve_slow_in_fast_out = "cubic-bezier(.4, 0, .2, 1)";
 var animation_curve_slow_in_linear_out = "cubic-bezier(0, 0, .2, 1)";
 var animation_curve_linear_in_fast_out = "cubic-bezier(.4, 0, 1, 1)";
 
-
-
 var vars = {
+  css: "js", // "js" or "file"
+
   // grid
   grid_unit: grid_unit,
   grid_unit_component: grid_unit_component,

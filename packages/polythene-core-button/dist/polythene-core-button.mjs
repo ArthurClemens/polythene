@@ -1,6 +1,6 @@
 import { filterSupportedAttributes, isClient } from 'polythene-core';
-import { mixin, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
+import { mixin, rgba, styler } from 'polythene-core-css';
 
 var baseClass = "pe-button";
 
@@ -243,8 +243,10 @@ var styles = function styles() {
   return styler.createStyleSheets([baseSelector], vars$1, baseFns).concat(styler.createStyleSheets([selector], vars$1, fns));
 };
 
-// styler.generateStyles([baseSelector], vars, baseFns);
-// styler.generateStyles([selector], vars, fns);
+if (vars.css === "js") {
+  styler.generateStyles([baseSelector], vars$1, baseFns);
+  styler.generateStyles([selector], vars$1, fns);
+}
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 

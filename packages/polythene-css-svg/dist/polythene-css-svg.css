@@ -30,3 +30,5 @@
 .pe-svg svg path:not([fill=none]),.pe-light-tone.pe-svg svg path:not([fill=none]),.pe-light-tone .pe-svg svg path:not([fill=none]),.pe-svg svg rect:not([fill=none]),.pe-light-tone.pe-svg svg rect:not([fill=none]),.pe-light-tone .pe-svg svg rect:not([fill=none]),.pe-svg svg circle:not([fill=none]),.pe-light-tone.pe-svg svg circle:not([fill=none]),.pe-light-tone .pe-svg svg circle:not([fill=none]),.pe-svg svg polygon:not([fill=none]),.pe-light-tone.pe-svg svg polygon:not([fill=none]),.pe-light-tone .pe-svg svg polygon:not([fill=none]) {
   fill: currentcolor;
 }
+
+/*# sourceMappingURL=polythene-css-svg.css.map */

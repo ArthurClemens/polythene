@@ -1,16 +1,16 @@
 /* global __dirname, process */
 const path = require("path");
-const glob = require("glob");
+// const glob = require("glob");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-const nodeModules = path.join(process.cwd(), "node_modules");
+// const nodeModules = path.join(process.cwd(), "node_modules");
 
-// Create a list of CSS files from Polythene components
-const CSSFiles = glob.sync(`${nodeModules}/polythene-*/dist/*.css`)
-  // Add test specific CSS files
-  .concat(
-    glob.sync(`${nodeModules}/tests-*/node_modules/test-*/node_modules/polythene-*/dist/*.css`)
-  );
+// // Create a list of CSS files from Polythene components
+// const CSSFiles = glob.sync(`${nodeModules}/polythene-*/dist/*.css`)
+//   // Add test-specific CSS files
+//   .concat(
+//     glob.sync(`${nodeModules}/tests-*/node_modules/test-*/node_modules/polythene-*/dist/*.css`)
+//   );
 
 module.exports = {
 
@@ -20,8 +20,8 @@ module.exports = {
     {},
     {
       index: "../index.js",
-    },
-    CSSFiles.length ? { style : CSSFiles } : null
+    }
+    // CSSFiles.length ? { style : CSSFiles } : null
   ),
 
   resolve: {
