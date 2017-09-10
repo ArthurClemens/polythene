@@ -2,7 +2,7 @@
 
 Polythene is an implementation of Google's Material Design, but it can also be used with (radically) different styling.
 
-This section describes a number of ways to create customizations - from simple local colors to radical changes.
+This section describes a number of ways to create customizations - from simple local colors to more radical changes.
 
 
 ## Customization options

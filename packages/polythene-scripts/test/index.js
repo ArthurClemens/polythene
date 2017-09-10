@@ -1,5 +1,9 @@
-const { writeCSS } = require("../dist/polythene-scripts");
+const shell           = require("shelljs");
+const glob            = require("glob-fs")();
+const { writeCSS }    = require("../dist/polythene-scripts");
 const { themeStyles } = require("../../polythene-css-svg");
+
+glob.readdirSync("./test/*.css*").map(file => shell.rm(file));
 
 const styles = [
   themeStyles(".test-theme-svg-1", {
@@ -12,9 +16,35 @@ const styles = [
   })
 ];
 
+/* 
+Expect file:
+* to be minified
+* to have a sourcemap
+*/
 writeCSS({
   styles,
-  path: "./test/test.css",
-  autoPrefix: true,
-  sourceMap: true,
+  path: "./test/test-defaults.css"
+});
+
+/* 
+Expect file:
+* to be minified
+* not to have a sourcemap
+*/
+writeCSS({
+  styles,
+  path: "./test/test-no-sourcemap.css",
+  sourceMap: false,
+});
+
+/* 
+Expect file:
+* not to be minified
+* to be beautified
+* to have a sourcemap
+*/
+writeCSS({
+  styles,
+  path: "./test/test-beautify.css",
+  beautify: true
 });

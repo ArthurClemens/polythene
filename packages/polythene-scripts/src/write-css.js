@@ -43,7 +43,7 @@ export const processCSS = ({ styles, path, autoPrefix }) => {
   return { cssString, path, autoPrefix };
 };
 
-export const writeCSS = ({ css, styles, path, autoPrefix, beautify }) => {
+export const writeCSS = ({ css, styles, path, autoPrefix, beautify, sourceMap=true }) => {
   const cssString = css
     ? css
     : styles
@@ -51,22 +51,30 @@ export const writeCSS = ({ css, styles, path, autoPrefix, beautify }) => {
       : "";
 
   const mapPath = `${path}.map`;
+
   const plugins = [];
   if (autoPrefix) {
     plugins.push(autoprefixer());
   }
   plugins.push(cssnano({ preset: "default" }));
-  postcss(plugins)
-    .process(cssString, {
+
+  const options = sourceMap
+    ? {
       to:  path,
       map: { inline: false }
-    })
+    }
+    : {};
+
+  postcss(plugins)
+    .process(cssString, options)
     .then(result => {
       result.warnings().forEach(warn => {
         console.warn(COLOR_RED, "Warning", COLOR_WHITE, warn.toString()); // eslint-disable-line no-console
       });
       saveToFile(path, beautify ? beautifyCSS(result.css) : result.css);
-      saveToFile(mapPath, result.map);
+      if (sourceMap) {
+        saveToFile(mapPath, result.map);
+      }
     });
 };
 

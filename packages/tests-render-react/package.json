@@ -1,5 +1,5 @@
 {
-  "name": "polythene-test-render-react",
+  "name": "polythene-tests-render-react",
   "version": "1.0.0-rc.5",
   "private": true,
   "main": "dist/js/test.js",
