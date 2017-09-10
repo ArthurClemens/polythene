@@ -29,7 +29,7 @@ The alternative way is to add handwritten CSS. This does not involve a build ste
 
 ### Usage
 
-Package `polythene-css` contains all combined CSS files. Including this in `package.json` dependencies provides all CSS files so they can be imported from node_modules.
+Package `polythene-css` contains all combined CSS files. Its existence in `node_modules` makes it possible to import CSS files **without** having to use `import` in JavaScript (which would enable CSS-in-JS, not what we want here).
 
 
 #### Importing 
@@ -39,11 +39,11 @@ Most bundlers have options for importing CSS files. Frequently used with Webpack
 Importing all CSS:
 
 ~~~javascript
-import "polythene-css/dist/polythene.css" // Component CSS
-import "polythene-css/dist/typography.css" // Default Material Design styles including Roboto font
+import "polythene-css/dist/polythene.css"   // Component CSS
+import "polythene-css/dist/typography.css"  // Default Material Design styles including Roboto font
 ~~~
 
-Importing only the button component CSS:
+Importing only one component's CSS:
 
 ~~~javascript
 import "polythene-css/dist/polythene-button.css"
@@ -61,23 +61,21 @@ Note that it is far too easy to forget to update these files, so this can only b
 
 ## Using CSS-in-JS
 
-Using CSS-in-JS has minimal setup costs and is most dynamic.
+Using CSS-in-JS has minimal setup costs and gives the possibility to add themed component styles on the fly.
 
-Component styles are automatically added to `<head>`, using [j2c](http://j2c.py.gy).
+Component styles are automatically added to `<head>` using [j2c](http://j2c.py.gy).
 
 
 ### Theming options
 
-Requires no build step and is as simple as: `addStyle(".themed-component", { vars })`.
-
-More details at: [Theming](theming.md)
+This requires no build step and is as simple as: `addStyle(".themed-component", { vars })`. More details at: [Theming](theming.md)
 
 ### Usage
 
 Importing `polythene-css` activates CSS-in-JS:
 
 ~~~javascript
-import "polythene-css";
+import "polythene-css"
 ~~~
 
 
