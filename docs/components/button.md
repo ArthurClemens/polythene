@@ -31,7 +31,7 @@ Read first: [Turning on keyboard control](../keyboard-control.md)
 
 ### Common component options
 
-| **Parameter** | **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** | **Required** | **Type** | **Default** | **Description** |
 | --- | --- | --- | --- | --- |
 | **element** | optional | String | "a" | HTML element tag; may also be "button" |
 | **className** | optional | String |  | Extra CSS class appended to `pe-text-button` |
@@ -46,7 +46,7 @@ Read first: [Turning on keyboard control](../keyboard-control.md)
 
 ### Button specific options
 
-| **Parameter** | **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** | **Required** | **Type** | **Default** | **Description** |
 | --- | --- | --- | --- | --- |
 | **label** | use `label` or `content` | String |  | The button label |
 | **url** | optional | Object with `href`, optionally `oncreate` (for Mithril) or `onClick` (for React) |  | URL location; Mithril: for in-app route linking set `oncreate : m.route.link`; React: for in-app route linking use `onClick` and a router such as `react-router-dom` |
@@ -58,7 +58,7 @@ Read first: [Turning on keyboard control](../keyboard-control.md)
 
 ### Button appearance options
 
-| **Parameter** | **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** | **Required** | **Type** | **Default** | **Description** |
 | --- | --- | --- | --- | --- |
 | **wash** | optional | Boolean | true | Set to false to hide the effect on hover |
 | **ink** | optional | Boolean | true | Set to false to disable the ripple effect on click/tap |

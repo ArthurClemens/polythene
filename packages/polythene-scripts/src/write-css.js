@@ -56,7 +56,10 @@ export const writeCSS = ({ css, styles, path, autoPrefix, beautify, sourceMap=tr
   if (autoPrefix) {
     plugins.push(autoprefixer());
   }
-  plugins.push(cssnano({ preset: "default" }));
+  plugins.push(cssnano({
+    preset: "default",
+    reduceIdents: false
+  }));
 
   const options = sourceMap
     ? {

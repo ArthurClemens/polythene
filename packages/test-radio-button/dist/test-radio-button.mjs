@@ -1,4 +1,5 @@
 import { RadioButton, RadioGroup, keys, renderer } from 'polythene-mithril';
+import { RadioButtonCSS } from 'polythene-css';
 import { RadioButton as RadioButton$1, RadioGroup as RadioGroup$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 
 function createCommonjsModule(fn, module) {
@@ -283,8 +284,7 @@ var iconStarOutlineSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24.00 24
 var iconStarFilledSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\"/></svg>";
 
 var genericTests = (function (_ref) {
-  var RadioButton$$1 = _ref.RadioButton,
-      RadioGroup$$1 = _ref.RadioGroup,
+  var RadioGroup$$1 = _ref.RadioGroup,
       h = _ref.renderer,
       k = _ref.keys;
 
@@ -292,15 +292,15 @@ var genericTests = (function (_ref) {
   var trustedIconStarsOutline = h.trust(iconStarOutlineSVG);
   var trustedIconStarFilled = h.trust(iconStarFilledSVG);
 
-  // RadioButton.theme(".tests-radio-button-themed-radio", {
-  //   label_font_size:   28,
-  //   color_light_on:    "#2196F3",
-  //   color_light_off:   "#2196F3",
-  //   color_dark_on:     "#2196F3",
-  //   color_dark_off:    "#2196F3",
-  //   color_light_label: "#2196F3",
-  //   color_dark_label:  "#2196F3"
-  // });
+  RadioButtonCSS.addStyle(".tests-radio-button-themed-radio", {
+    label_font_size: 28,
+    color_light_on: "#2196F3",
+    color_light_off: "#2196F3",
+    color_dark_on: "#2196F3",
+    color_dark_off: "#2196F3",
+    color_light_label: "#2196F3",
+    color_dark_label: "#2196F3"
+  });
 
   var sizeNames = ["small", "regular", "medium", "large"];
 

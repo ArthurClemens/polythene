@@ -1,14 +1,15 @@
 import { RaisedButton, renderer } from 'polythene-mithril';
+import { RaisedButtonCSS } from 'polythene-css';
 import { RaisedButton as RaisedButton$1, renderer as renderer$1 } from 'polythene-react';
 
 var genericTests = (function (_ref) {
   var RaisedButton$$1 = _ref.RaisedButton;
 
 
-  // RaisedButton.theme(".tests-raised-button-themed-button", {
-  //   color_light_background: "#FF1744",
-  //   color_light_text: "#fff"
-  // });
+  RaisedButtonCSS.addStyle(".tests-raised-button-themed-button", {
+    color_light_background: "#FF1744",
+    color_light_text: "#fff"
+  });
 
   return [{
     name: "Option: label",

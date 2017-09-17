@@ -1,5 +1,4 @@
-import * as coreTextField from "./textfield";
+import * as coreTextField from "./textfield"; export { coreTextField };
 
-export { coreTextField };
 export { default as classes } from "./classes";
-export { default as vars } from "./theme/vars";
+export { default as vars } from "./vars";

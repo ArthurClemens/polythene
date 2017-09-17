@@ -1,5 +1,4 @@
 import { vars } from 'polythene-theme';
-import { rgba } from 'polythene-core-css';
 
 var classes = {
   component: "pe-button pe-icon-button",
@@ -40,6 +39,11 @@ var iconButton = Object.freeze({
 	createProps: createProps,
 	createContent: createContent
 });
+
+var rgba = function rgba(colorStr) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return "rgba(" + colorStr + ", " + opacity + ")";
+};
 
 var padding = (vars.grid_unit_icon_button - vars.unit_icon_size) / 2; // 12
 var padding_compact = (vars.grid_unit_icon_button - vars.unit_icon_size) / 3; // 8

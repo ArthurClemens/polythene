@@ -1,6 +1,5 @@
 import { filterSupportedAttributes, isClient } from 'polythene-core';
 import { vars } from 'polythene-theme';
-import { rgba } from 'polythene-core-css';
 
 var baseClass = "pe-button";
 
@@ -151,6 +150,11 @@ var button = Object.freeze({
 	createProps: createProps,
 	createContent: createContent
 });
+
+var rgba = function rgba(colorStr) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return "rgba(" + colorStr + ", " + opacity + ")";
+};
 
 var touch_height = vars.unit_touch_height;
 var height = 36;

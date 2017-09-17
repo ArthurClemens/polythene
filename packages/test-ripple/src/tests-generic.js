@@ -1,9 +1,10 @@
+import { RippleCSS } from "polythene-css";
 
 export default ({ Ripple }) => {
 
-  // Ripple.theme(".tests-ripple-themed-ripple", {
-  //   color_light: "#F44336"
-  // });
+  RippleCSS.addStyle(".tests-ripple-themed-ripple", {
+    color_light: "#F44336"
+  });
 
   return [
     {

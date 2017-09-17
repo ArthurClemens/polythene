@@ -1,5 +1,4 @@
 import { filterSupportedAttributes, hide, show, subscribe, unsubscribe } from 'polythene-core';
-import { flex, rgba, styler } from 'polythene-core-css';
 import { classes } from 'polythene-core-menu';
 import { vars } from 'polythene-theme';
 
@@ -20,77 +19,6 @@ var classes$1 = {
   menuContent: classes.content
 };
 
-var vars$1 = {
-  border_radius: vars.unit_block_border_radius,
-
-  color_light_backdrop_background: "rgba(0, 0, 0, .4)",
-  color_dark_backdrop_background: "rgba(0, 0, 0, .5)",
-
-  color_light_background: rgba(vars.color_light_background),
-  color_dark_background: rgba(vars.color_dark_background),
-
-  color_light_text: rgba(vars.color_light_foreground, vars.blend_light_text_regular),
-  color_dark_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_regular)
-};
-
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var layout = (function (selector, componentVars) {
-  return [_defineProperty$1({}, selector, [flex.layoutCenterCenter, {
-    position: "fixed",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    zIndex: vars.z_dialog,
-    height: "100%", // 100vh would make the dialog go beneath Mobile Safari toolbar
-    padding: componentVars.padding + "px 40px",
-
-    ".pe-dialog--full-screen": {
-      padding: 0
-
-      // dialog-content styles: see dialog pane
-    },
-
-    " .pe-dialog__content": {
-      position: "relative",
-      borderRadius: componentVars.border_radius + "px"
-    }
-  }])];
-});
-
-function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var style = function style(scopes, selector, componentVars, tint) {
-  return [_defineProperty$2({}, scopes.map(function (s) {
-    return s + selector;
-  }).join(","), {
-    " .pe-dialog__content": {
-      backgroundColor: componentVars["color_" + tint + "_background"],
-      color: componentVars["color_" + tint + "_text"]
-    },
-    "&.pe-dialog--backdrop": {
-      backgroundColor: componentVars["color_" + tint + "_backdrop_background"]
-    }
-  })];
-};
-
-var color = (function (selector, componentVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
-});
-
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var fns = [layout, color];
-var selector = "." + classes$1.component;
-
-var customTheme = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
-};
-
-styler.generateStyles([selector], vars$1, fns);
-
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -98,8 +26,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var getElement = function getElement(vnode) {
   return vnode.attrs.element || "div";
 };
-
-var theme = customTheme;
 
 var DEFAULT_Z = 3;
 
@@ -226,13 +152,30 @@ var createContent = function createContent(vnode, _ref2) {
 
 var dialogInstance = Object.freeze({
 	getElement: getElement,
-	theme: theme,
 	getInitialState: getInitialState,
 	onMount: onMount,
 	onUnMount: onUnMount,
 	createProps: createProps,
 	createContent: createContent
 });
+
+var rgba = function rgba(colorStr) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return "rgba(" + colorStr + ", " + opacity + ")";
+};
+
+var vars$1 = {
+  border_radius: vars.unit_block_border_radius,
+
+  color_light_backdrop_background: "rgba(0, 0, 0, .4)",
+  color_dark_backdrop_background: "rgba(0, 0, 0, .5)",
+
+  color_light_background: rgba(vars.color_light_background),
+  color_dark_background: rgba(vars.color_dark_background),
+
+  color_light_text: rgba(vars.color_light_foreground, vars.blend_light_text_regular),
+  color_dark_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_regular)
+};
 
 var ANIMATION_DURATION = .220;
 

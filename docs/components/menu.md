@@ -23,7 +23,7 @@ A local popup menu with a list of choices. A menu contains one or more [Lists](l
 
 ### Common component options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional       | String   | "div"       | HTML element tag |
 | **className** | optional       | String   |             | Extra CSS class appended to `pe-menu` |
@@ -37,7 +37,7 @@ A local popup menu with a list of choices. A menu contains one or more [Lists](l
 
 ### Menu specific options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **visible** | required | Boolean | false | Set to true to show the menu |
 | **permanent** | optional | Boolean |  | Set to true to always show the menu (mostly used for demonstration purposes) |
@@ -47,7 +47,7 @@ A local popup menu with a list of choices. A menu contains one or more [Lists](l
 
 ### Menu appearance options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **offset** | optional | Number | 16 | Horizontal offset  |
 | **origin** | optional | String: "top-left", "top-right", "bottom-left", "bottom-right" | "top-left" (if `target` is specified) | Positioned menu corner |
@@ -56,7 +56,7 @@ A local popup menu with a list of choices. A menu contains one or more [Lists](l
 
 ### Transition options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **transition** | optional | String: "both", "show", "hide", "none" | "both" | Sets when a transition is used |
 | **showDuration** | optional | Number | .150 | The show transition duration in seconds |

@@ -27,8 +27,9 @@ Create custom CSS by passing a new CSS class and component [configuration variab
 ~~~javascript
 import mithril from "mithril"
 import { Button } from "polythene-mithril"
+import { ButtonCSS } from "polythene-css"
 
-Button.theme(".blue-button", {
+ButtonCSS.addStyle(".blue-button", {
   color_light_background: "blue",
   color_light_text:       "white"
 })
@@ -44,8 +45,9 @@ m(Button, {
 ~~~jsx
 import React from "react"
 import { Button } from "polythene-react"
+import { ButtonCSS } from "polythene-css"
 
-Button.theme(".blue-button", {
+ButtonCSS.addStyle(".blue-button", {
   color_light_background: "blue",
   color_light_text:       "white"
 })
@@ -57,8 +59,9 @@ Button.theme(".blue-button", {
 
 ~~~javascript
 import { renderer as h, Button } from "polythene-react"
+import { ButtonCSS } from "polythene-css"
 
-Button.theme(".blue-button", {
+ButtonCSS.addStyle(".blue-button", {
   color_light_background: "blue",
   color_light_text:       "white"
 })
@@ -68,5 +71,3 @@ h(Button, {
   label: "Blue Button"
 })
 ~~~ 
-
-

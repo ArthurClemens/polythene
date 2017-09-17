@@ -1,5 +1,6 @@
 import { Dialog, IconButton, List, ListTile, Menu, RaisedButton, Shadow, keys, renderer } from 'polythene-mithril';
 import { styler } from 'polythene-core-css';
+import { ListTileCSS, MenuCSS } from 'polythene-css';
 import { Dialog as Dialog$1, IconButton as IconButton$1, List as List$1, ListTile as ListTile$1, Menu as Menu$1, RaisedButton as RaisedButton$1, Shadow as Shadow$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 
 var menuItems = (function (_ref) {
@@ -559,19 +560,18 @@ var themeColor = "#2196F3";
 
 var themed = (function (_ref) {
   var h = _ref.renderer,
-      Menu$$1 = _ref.Menu,
       List$$1 = _ref.List,
       ListTile$$1 = _ref.ListTile;
 
 
-  // Menu.theme(".menu-tests-blue-menu", {
-  //   color_dark_background: themeColor,
-  //   border_radius: 6
-  // });
-  // ListTile.theme(".menu-tests-blue-menu-list-tile", {
-  //   color_light_title: "#fff",
-  //   color_light_background: themeColor
-  // });
+  MenuCSS.addStyle(".menu-tests-blue-menu", {
+    color_dark_background: themeColor,
+    border_radius: 6
+  });
+  ListTileCSS.addStyle(".menu-tests-blue-menu-list-tile", {
+    color_light_title: "#fff",
+    color_light_background: themeColor
+  });
 
   var themedList = h(List$$1, [h(ListTile$$1, {
     title: "Yes",

@@ -47,7 +47,7 @@ The amount of change depends on the step size. This can be set with option `step
 
 ### Common component options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional       | String   | "div"       | HTML element tag |
 | **className** | optional       | String   |             | Extra CSS class appended to `pe-slider` |
@@ -60,7 +60,7 @@ The amount of change depends on the step size. This can be set with option `step
 
 ### Slider specific options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **min** | optional | Number | 0 | Minimum slider value |
 | **max** | optional | Number | 100 | Maximum slider value |
@@ -75,7 +75,7 @@ The amount of change depends on the step size. This can be set with option `step
 
 ### Appearance options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **icon** | optional | String, hyperscript or component | | Adds a String, hyperscript or component to the slider control |
 

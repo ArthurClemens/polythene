@@ -1,10 +1,11 @@
+import { RaisedButtonCSS } from "polythene-css";
 
 export default ({ RaisedButton }) => {
 
-  // RaisedButton.theme(".tests-raised-button-themed-button", {
-  //   color_light_background: "#FF1744",
-  //   color_light_text: "#fff"
-  // });
+  RaisedButtonCSS.addStyle(".tests-raised-button-themed-button", {
+    color_light_background: "#FF1744",
+    color_light_text: "#fff"
+  });
 
   return [
     {

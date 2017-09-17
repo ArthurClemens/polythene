@@ -1,5 +1,3 @@
-import { vars } from 'polythene-core-selection-control';
-
 var classes = {
   component: "pe-checkbox-control"
 };
@@ -34,4 +32,5 @@ var checkbox = Object.freeze({
 	createProps: createProps
 });
 
-export { checkbox as coreCheckbox, classes, vars };
+export { checkbox as coreCheckbox, classes };
+export { vars } from 'polythene-core-selection-control';

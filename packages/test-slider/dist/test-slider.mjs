@@ -1,4 +1,5 @@
 import { Icon, Slider, TextField, keys, renderer } from 'polythene-mithril';
+import { SliderCSS } from 'polythene-css';
 import { rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 import { Icon as Icon$1, Slider as Slider$1, TextField as TextField$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
@@ -313,18 +314,18 @@ var genericTests = (function (_ref) {
 
   var VolumeSlider = volumeSlider({ Slider: Slider$$1, Icon: Icon$$1, h: h });
 
-  // Slider.theme(".slider-custom-icon", {
-  //   color_light_thumb_on: "#f50057",
-  //   color_light_icon:     "#fff",
-  //   thumb_size:           18
-  // });
+  SliderCSS.addStyle(".slider-custom-icon", {
+    color_light_thumb_on: "#f50057",
+    color_light_icon: "#fff",
+    thumb_size: 18
+  });
 
-  // Slider.theme(".slider-custom-color", {
-  //   color_light_track_active:   "#82b1ff",
-  //   color_light_track_inactive: "#c5cae9",
-  //   color_light_track_value:    "#f50057",
-  //   color_light_thumb_on:       "#f50057"
-  // });
+  SliderCSS.addStyle(".slider-custom-color", {
+    color_light_track_active: "#82b1ff",
+    color_light_track_inactive: "#c5cae9",
+    color_light_track_value: "#f50057",
+    color_light_thumb_on: "#f50057"
+  });
 
   return [{
     name: "No options (range: 0 to 100, steps are rounded to 1)",

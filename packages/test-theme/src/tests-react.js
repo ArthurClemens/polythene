@@ -1,6 +1,7 @@
 import React from "react"; // eslint-disable-line no-unused-vars
 import { renderer, Button, FAB, Icon, IconButton, List, ListTile } from "polythene-react";
 import genericTests from "./tests-generic";
+import { ButtonCSS } from "polythene-css";
 
 const reactTests = () => {
 
@@ -9,10 +10,10 @@ const reactTests = () => {
     borders: true,
   }));
 
-  // Button.theme(".tests-custom-theme-secondary-button", {
-  //   color_light_border: "#ddd",
-  //   color_light_background: "#fff"
-  // });
+  ButtonCSS.addStyle(".tests-custom-theme-secondary-button", {
+    color_light_border: "#ddd",
+    color_light_background: "#fff"
+  });
 
   return [
     {

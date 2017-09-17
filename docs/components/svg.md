@@ -15,7 +15,7 @@ This is a low-level and simple module for handling SVGs. If you want to use SVG 
 
 ### Common component options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional       | String   | "div" | HTML element tag |
 | **className** | optional       | String   |       | Extra CSS class appended to `pe-svg` |

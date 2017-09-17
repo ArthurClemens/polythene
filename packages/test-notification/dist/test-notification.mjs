@@ -1,4 +1,5 @@
 import { Button, Dialog, Notification, RaisedButton, keys, renderer } from 'polythene-mithril';
+import { NotificationCSS } from 'polythene-css';
 import { Button as Button$1, Dialog as Dialog$1, Notification as Notification$1, RaisedButton as RaisedButton$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 import { subscribe, unsubscribe } from 'polythene-core';
 
@@ -14,10 +15,10 @@ var genericTests = (function (_ref) {
       containerSelector = _ref.containerSelector;
 
 
-  // Notification.theme(".notification-tests-blue-notification", {
-  //   color_dark_background: "#2196F3",
-  //   border_radius: 5
-  // });
+  NotificationCSS.addStyle(".notification-tests-blue-notification", {
+    color_dark_background: "#2196F3",
+    border_radius: 5
+  });
 
   var dialogOptions = {
     body: "You pressed a message action",

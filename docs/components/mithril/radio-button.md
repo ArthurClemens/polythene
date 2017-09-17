@@ -137,7 +137,9 @@ You can find more information about theming in  [Theming](../../theming.md).
 #### Themed component
 
 ~~~javascript
-RadioButton.theme(".themed-radio-button", {
+import { RadioButtonCSS } from "polythene-css"
+
+RadioButtonCSS.addStyle(".themed-radio-button", {
   color_light_on:    "#2196F3",
   color_light_off:   "#2196F3",
   color_light_label: "#2196F3"

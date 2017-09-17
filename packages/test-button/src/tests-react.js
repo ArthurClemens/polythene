@@ -3,18 +3,19 @@ import { withRouter } from "react-router-dom";
 import { renderer, Button } from "polythene-react";
 import genericTests from "./tests-generic";
 import { compose, withState, withHandlers } from "recompose";
+import { ButtonCSS } from "polythene-css";
 
 const reactTests = ({ Button, renderer: h }) => {
 
   const SecondaryButton = props =>
     <Button className="react-secondary-button" borders {...props} />;
 
-  // Button.theme(".react-secondary-button", {
-  //   color_light_text: "#673ab7",
-  //   color_light_border: "#673ab7",
-  //   color_dark_text: "yellow",
-  //   color_dark_border: "yellow"
-  // });
+  ButtonCSS.addStyle(".react-secondary-button", {
+    color_light_text: "#673ab7",
+    color_light_border: "#673ab7",
+    color_dark_text: "yellow",
+    color_dark_border: "yellow"
+  });
 
   const withCounter = compose(
     withState("counter", "setCounter", 0),
@@ -22,13 +23,6 @@ const reactTests = ({ Button, renderer: h }) => {
       increment: ({ setCounter }) => () => setCounter(n => n + 1)
     })
   );
-
-  // Button.theme(".react-button-bordered-button", {
-  //   color_light_text: "#673ab7",
-  //   color_light_border: "#673ab7",
-  //   color_dark_text: "yellow",
-  //   color_dark_border: "yellow"
-  // });
 
   return [
     {
@@ -143,7 +137,7 @@ const reactTests = ({ Button, renderer: h }) => {
     },
     {
       name: "Themed Button: (option: borders) (JSX)",
-      component: () => <Button label="Button" className="react-button-bordered-button" borders />
+      component: () => <Button label="Button" className="react-secondary-button" borders />
     },
     {
       name: "Option: inactivate (2s) (JSX)",

@@ -1,4 +1,5 @@
 import { Icon, IconButton, SVG, renderer } from 'polythene-mithril';
+import { IconButtonCSS } from 'polythene-css';
 import { Icon as Icon$1, IconButton as IconButton$1, SVG as SVG$1, renderer as renderer$1 } from 'polythene-react';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -14,12 +15,12 @@ var genericTests = (function (_ref) {
 
   var trustedIconFavorite = h.trust(iconFavorite$1);
 
-  // IconButton.theme(".tests-icon-button-themed-icon-button", {
-  //   padding: 24,
-  //   color_light_background: "purple",
-  //   color_dark_background: "orange",
-  //   color_light: "white"
-  // });
+  IconButtonCSS.addStyle(".tests-icon-button-themed-icon-button", {
+    padding: 24,
+    color_light_background: "purple",
+    color_dark_background: "orange",
+    color_light: "white"
+  });
 
   var sizeNames = ["small", "regular", "medium", "large"];
 

@@ -36,7 +36,7 @@ This works for list tiles that are defined as link (when either option `element`
 
 ### Common component options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element** | optional | String | "div" | HTML element tag |
 | **className** | optional | String |  | Extra CSS class appended to `pe-list-tile` |
@@ -49,14 +49,14 @@ This works for list tiles that are defined as link (when either option `element`
 
 ### List tile content options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **content**   | -              | -        |             | See below |
 | **secondary** | optional       | Object   |             | Options for secondary content, see below |
 
 ### List tile appearance options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **header**    | optional       | Boolean  | false       | Set to `true` to make this a header tile |
 | **indent** | optional | Boolean | | Set to `true` to indent the content |
@@ -71,7 +71,7 @@ This works for list tiles that are defined as link (when either option `element`
 
 ### List tile primary content options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **content**      | optional | String, hyperscript or component | | Any primary content; replaces children and ignores `title`, `subTitle` and `highSubtitle` |
 | **title**        | optional | String | | The text content |
@@ -84,7 +84,7 @@ This works for list tiles that are defined as link (when either option `element`
 
 ### List tile secondary content options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **secondary.element** | optional | String | See "Layout of secondary content" below | HTML element for secondary content |
 | **secondary.icon** | optional | Object |  | [Icon](Icon.md) options object for icon in secondary content; will be placed above secondary.content |

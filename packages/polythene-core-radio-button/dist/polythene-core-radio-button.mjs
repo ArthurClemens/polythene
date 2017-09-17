@@ -1,5 +1,3 @@
-import { vars } from 'polythene-core-selection-control';
-
 var classes = {
   component: "pe-radio-control"
 };
@@ -34,4 +32,5 @@ var radioButton = Object.freeze({
 	createProps: createProps
 });
 
-export { radioButton as coreRadioButton, classes, vars };
+export { radioButton as coreRadioButton, classes };
+export { vars } from 'polythene-core-selection-control';

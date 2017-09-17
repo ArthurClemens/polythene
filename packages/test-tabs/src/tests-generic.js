@@ -1,4 +1,5 @@
 import onChange from "./components/onChange";
+import { TabsCSS } from "polythene-css";
 
 const iconHeartSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24.00 24.00\" enable-background=\"new 0 0 24.00 24.00\" xml:space=\"preserve\"><path fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"0.2\" stroke-linejoin=\"round\" d=\"M 11.9994,21.3497L 10.5504,20.0327C 5.4014,15.3607 1.99939,12.2736 1.99939,8.49762C 1.99939,5.41364 4.41537,2.99762 7.49939,2.99762C 9.24039,2.99762 10.9084,3.80566 11.9994,5.08362C 13.0904,3.80566 14.7584,2.99762 16.4994,2.99762C 19.5834,2.99762 21.9994,5.41364 21.9994,8.49762C 21.9994,12.2736 18.5974,15.3607 13.4484,20.0327L 11.9994,21.3497 Z \"/></svg>";
 const iconBellSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24.00 24.00\" enable-background=\"new 0 0 24.00 24.00\" xml:space=\"preserve\"><path fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"0.2\" stroke-linejoin=\"round\" d=\"M 14,20C 14,21.1046 13.1046,22 12,22C 10.8954,22 10,21.1046 10,20L 14,20 Z M 12,2.00001C 12.5523,2.00001 13,2.44772 13,3L 13,4.08298C 15.8377,4.55905 18,7.02702 18,10L 18,16L 21,19L 3,19L 6,16L 6.00001,9.99998C 6.00001,7.02698 8.1623,4.55902 11,4.08294L 11,3C 11,2.44772 11.4477,2.00001 12,2.00001 Z \"/></svg>";
@@ -17,19 +18,19 @@ export default ({ renderer: h, Tabs }) => {
 
   const OnChange = onChange({ h, Tabs });
 
-  // Tabs.theme(".tests-tabs-fixed-width", {
-  //   tab_max_width: 110,
-  //   tab_min_width: 110
-  // });
+  TabsCSS.addStyle(".tests-tabs-fixed-width", {
+    tab_max_width: 110,
+    tab_min_width: 110
+  });
 
-  // Tabs.theme(".tests-tabs-custom_color", {
-  //   color_light: "#00BCD4",
-  //   color_light_selected: "#F44336",
-  //   color_light_tab_indicator: "#F44336",
-  //   color_dark: "#00BCD4",
-  //   color_dark_selected: "#F44336",
-  //   color_dark_tab_indicator: "#F44336"
-  // });
+  TabsCSS.addStyle(".tests-tabs-custom_color", {
+    color_light: "#00BCD4",
+    color_light_selected: "#F44336",
+    color_light_tab_indicator: "#F44336",
+    color_dark: "#00BCD4",
+    color_dark_selected: "#F44336",
+    color_dark_tab_indicator: "#F44336"
+  });
 
   const threeButtons = [
     { label: "New" },

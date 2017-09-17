@@ -79,7 +79,9 @@ You can find more information about theming in [Theming](../../theming.md).
 #### Themed component
 
 ~~~javascript
-Button.theme(".bordered-button", {
+import { ButtonCSS } from "polythene-css"
+
+ButtonCSS.addStyle(".bordered-button", {
   color_light_text:   "#673ab7",
   color_light_border: "#673ab7",
   color_dark_text:    "yellow",

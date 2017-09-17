@@ -1,6 +1,6 @@
 import { StateComponent, renderer } from "polythene-mithril-base";
 import { Multi } from "polythene-core";
-import { coreDialogInstance as core, transitions, classes } from "polythene-core-dialog";
+import { coreDialogInstance as core, classes, transitions } from "polythene-core-dialog";
 import { DialogPane } from "polythene-mithril-dialog-pane";
 import { Shadow } from "polythene-mithril-shadow";
 

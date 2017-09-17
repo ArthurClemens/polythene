@@ -1,6 +1,5 @@
 import { filterSupportedAttributes } from 'polythene-core';
 import { vars } from 'polythene-theme';
-import { rgba } from 'polythene-core-css';
 
 var classes = {
   component: "pe-control",
@@ -198,6 +197,11 @@ var viewControl = Object.freeze({
 	getElement: getElement$1,
 	createContent: createContent$1
 });
+
+var rgba = function rgba(colorStr) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return "rgba(" + colorStr + ", " + opacity + ")";
+};
 
 var vars$1 = {
   label_font_size: 2 * vars.grid_unit_component, // 16

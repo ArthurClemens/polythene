@@ -21,7 +21,7 @@ Displays an [Icon](icon.md) as a button. Also called toggle button.
 
 ### Common component options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional | String | "div" | HTML element tag |
 | **className** | optional | String |  | Extra CSS class appended to `pe-icon-button` |
@@ -36,7 +36,7 @@ Displays an [Icon](icon.md) as a button. Also called toggle button.
 
 ### Icon button specific options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **icon**      | either icon or child nodes must be passed | Object |  | [Icon](icon.md) options object; also used to show an round "avatar" portrait image |
 | **compact**   | optional | Boolean | | Set to `true` to use less padding |

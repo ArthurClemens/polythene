@@ -1,6 +1,7 @@
 import stream from "mithril/stream";
 
 const STEP_DURATION = 2000;
+const MAX_VALUE = 1000;
 
 export default ({ renderer: h, keys: k, Spinner, RaisedButton, Slider, animated, updateDuration, showActivateButton }) => ({
   oninit: vnode => {
@@ -35,10 +36,10 @@ export default ({ renderer: h, keys: k, Spinner, RaisedButton, Slider, animated,
         },
         h(Slider, {
           min: 0,
-          max: 1,
+          max: MAX_VALUE,
           step: 0,
-          value: percentage,
-          onChange: ({ value }) => state.percentage(value),
+          value: percentage * MAX_VALUE,
+          onChange: ({ value }) => state.percentage(value / MAX_VALUE),
           style: {
             display: "flex",
             alignItems: "center"

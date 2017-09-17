@@ -1,6 +1,5 @@
 import { filterSupportedAttributes } from 'polythene-core';
 import { vars } from 'polythene-theme';
-import { rgba } from 'polythene-core-css';
 
 var classes = {
   component: "pe-card",
@@ -350,6 +349,11 @@ var cardPrimary = Object.freeze({
 	createProps: createProps$3,
 	createContent: createContent$3
 });
+
+var rgba = function rgba(colorStr) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return "rgba(" + colorStr + ", " + opacity + ")";
+};
 
 var padding_v = 24;
 var padding_actions_v = 8;

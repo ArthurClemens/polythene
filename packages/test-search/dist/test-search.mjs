@@ -1,4 +1,5 @@
 import { Button, IconButton, Search, Shadow, keys, renderer } from 'polythene-mithril';
+import { SearchCSS } from 'polythene-css';
 import { Button as Button$1, IconButton as IconButton$1, Search as Search$1, Shadow as Shadow$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -10,10 +11,10 @@ var genericTests = (function (_ref) {
       Shadow$$1 = _ref.Shadow;
 
 
-  // Search.theme(".tests-search-themed-search", {
-  //   color_dark_input_text: "#fff",
-  //   color_dark_background: "#43a047"
-  // });
+  SearchCSS.addStyle(".tests-search-themed-search", {
+    color_dark_input_text: "#fff",
+    color_dark_background: "#43a047"
+  });
 
   var Block = {
     view: function view(_ref2) {

@@ -28,7 +28,7 @@ This implementation closely follows the [design specification](https://material.
 
 ### Common component options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional | String | "a" | HTML element tag |
 | **className**     | optional | String |  | Extra CSS class appended to `pe-card` |
@@ -42,7 +42,7 @@ This implementation closely follows the [design specification](https://material.
 
 ### Options for card
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **url** | optional | Object with `href`, optionally `oncreate` (for Mithril) or `onClick` (for React) | | URL for the entire card; Mithril: for in-app route linking set `oncreate : m.route.link`; React: for in-app route linking use `onClick` and a router such as `react-router-dom` |
 | **content** | required | String, hyperscript or component or Array |  | Any content, or a list of option objects for distinct areas - see below |
@@ -58,7 +58,7 @@ Next to the card itself, each content parts has a set of options:
 
 ### Options for primary
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional | String | "div" | HTML element tag |
 | **className** | optional | String |  | Extra CSS class appended to `pe-card__primary` |
@@ -70,7 +70,7 @@ Next to the card itself, each content parts has a set of options:
 
 ### Options for text
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional | String | "div" | HTML tag |
 | **className** | optional | String |  | Extra CSS class appended to `pe-card__text` |
@@ -79,7 +79,7 @@ Next to the card itself, each content parts has a set of options:
 
 ### Options for header
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **className** | optional | String |  | Extra CSS class appended to `pe-card__header` |
 | **element**   | optional | String | "a" | HTML tag |
@@ -91,7 +91,7 @@ Next to the card itself, each content parts has a set of options:
 
 ### Options for media
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **className** | optional | String |  | Extra CSS class appended to `pe-card__media` |
 | **content**   | required | String, hyperscript or component |  | The image |
@@ -104,7 +104,7 @@ Next to the card itself, each content parts has a set of options:
 
 ### Options for actions
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **bordered**  | optional | Boolean | | Set to `true` to add a top border |
 | **className** | optional | String |  | Extra CSS class appended to `pe-card__actions` |

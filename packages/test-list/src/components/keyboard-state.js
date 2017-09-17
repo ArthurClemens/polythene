@@ -1,10 +1,12 @@
+import { ListTileCSS } from "polythene-css";
+
 import stream from "mithril/stream";
 
-export default ({ h, List, ListTile }) => {
+export default ({ h, List }) => {
 
-  // ListTile.theme(".tests-list-keyboard-list-tile", {
-  //   color_light_selected_background: "#80d8ff"
-  // });
+  ListTileCSS.addStyle(".tests-list-keyboard-list-tile", {
+    color_light_selected_background: "#80d8ff"
+  });
 
   const cityTile = ({ title, selectedTitle }) => (
     {
@@ -54,7 +56,7 @@ export default ({ h, List, ListTile }) => {
           cityTile({ title: "Cardiff", selectedTitle }),
           cityTile({ title: "Copenhagen", selectedTitle }),
         ]
-      })
+      });
     }
   };
 };

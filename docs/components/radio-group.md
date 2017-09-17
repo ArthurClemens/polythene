@@ -20,7 +20,7 @@ Described in:
 
 ### Common component options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional       | String   | "div"       | HTML element tag for the Radio Button container |
 | **className** | optional       | String   |             | Extra CSS class appended to `pe-radio-group` |
@@ -32,7 +32,7 @@ Described in:
 
 ### Radio Group specific
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **buttons**   | use `buttons` or `content` | Array | | List of [Radio Button options](radio-button.md#options) |
 | **all**       | optional       | Options Object | | [Radio Button options](radio-button.md#options) that will be applied to all Radio Buttons |

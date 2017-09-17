@@ -27,7 +27,7 @@ Differences from [Raised Button](raised-button.md) behaviour:
 
 ### Common component options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional | String | "div" | HTML element tag |
 | **className** | optional | String |       | Extra CSS class appended to `pe-fab` |
@@ -46,7 +46,7 @@ See: [Button options](Button.md#options)
 
 ### FAB specific options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **icon**      | use `icon` or `content` | Object |  | [Icon](Icon.md) options object |
 | **mini**      | optional | Boolean | false | Set to true to display a small button (class name `pe-fab--mini`) |

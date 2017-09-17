@@ -1,6 +1,5 @@
 import { filterSupportedAttributes, hide, isClient, isServer, show } from 'polythene-core';
 import { Timer } from 'polythene-utilities';
-import { flex, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 
 var classes = {
@@ -20,128 +19,6 @@ var classes = {
   vertical: "pe-notification--vertical"
 };
 
-var buttonPaddingH = 8; // padding, inner text space
-
-var vars$1 = {
-  width: 274,
-  min_height: 80,
-  border_radius: vars.unit_block_border_radius,
-  title_padding_h: buttonPaddingH,
-  title_single_padding_v: 14,
-  title_multi_padding_v: 20,
-  side_padding: 24 - buttonPaddingH,
-  font_size: 14,
-  line_height: 20,
-
-  color_light_background: rgba(vars.color_light_background),
-  color_light_text: rgba(vars.color_light_foreground, vars.blend_light_dark_primary),
-
-  color_dark_background: rgba(vars.color_dark_background),
-  color_dark_text: rgba(vars.color_dark_foreground, vars.blend_light_text_primary)
-};
-
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var layout = (function (selector, componentVars) {
-  return [_defineProperty$1({}, selector, [flex.layoutCenter, {
-    width: componentVars.width + "px",
-    minHeight: componentVars.min_height + "px",
-    position: "relative",
-    padding: "0 " + componentVars.side_padding + "px",
-    margin: "0 auto",
-    borderRadius: componentVars.border_radius + "px",
-    pointerEvents: "all",
-
-    " .pe-notification__content": {
-      width: "100%"
-    },
-
-    " .pe-notification__title": {
-      padding: componentVars.title_single_padding_v + "px " + componentVars.title_padding_h + "px",
-      fontSize: componentVars.font_size + "px",
-      lineHeight: componentVars.line_height + "px"
-    },
-
-    " .pe-notification__action": {
-      " .pe-button": {
-        margin: 0
-      }
-    },
-
-    "&.pe-notification--horizontal": {
-      " .pe-notification__content": flex.layoutHorizontal,
-      " .pe-notification__title": flex.flex(),
-      " .pe-notification__title--multi-line": {
-        paddingTop: componentVars.title_multi_padding_v + "px",
-        paddingBottom: componentVars.title_multi_padding_v + "px"
-      },
-      " .pe-notification__action": flex.layoutCenter
-    },
-    "&.pe-notification--vertical": {
-      " .pe-notification__content": flex.layoutVertical,
-      " .pe-notification__title": {
-        paddingBottom: "4px"
-      },
-      " .pe-notification__title--multi-line": {
-        paddingTop: componentVars.title_multi_padding_v + "px"
-      },
-      " .pe-notification__action": flex.layoutEndJustified
-    }
-  }])];
-});
-
-function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var style = function style(scopes, selector, componentVars, tint) {
-  return [_defineProperty$2({}, scopes.map(function (s) {
-    return s + selector;
-  }).join(","), {
-    color: componentVars["color_" + tint + "_text"],
-    background: componentVars["color_" + tint + "_background"]
-  })];
-};
-
-var color = (function (selector, componentVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
-});
-
-function _defineProperty$3(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var holderLayout = (function (selector) {
-  var _ref;
-
-  return [(_ref = {}, _defineProperty$3(_ref, selector, [flex.layoutCenterCenter, {
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
-    zIndex: vars.z_notification,
-    pointerEvents: "none",
-
-    ".pe-multiple--screen": {
-      position: "fixed"
-    }
-  }]), _defineProperty$3(_ref, ":not(.pe-notification--container) .pe-multiple--container", {
-    position: "absolute"
-  }), _ref)];
-});
-
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var fns = [layout, color];
-var selector = "." + classes.component;
-
-var holderFns = [holderLayout];
-var holderSelector = "." + classes.holder;
-
-var customTheme = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
-};
-
-styler.generateStyles([selector], vars$1, fns);
-styler.generateStyles([holderSelector], vars$1, holderFns);
-
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -151,8 +28,6 @@ var DEFAULT_TIME_OUT = 3;
 var getElement = function getElement(vnode) {
   return vnode.attrs.element || "div";
 };
-
-var theme = customTheme;
 
 var pauseInstance = function pauseInstance(state) {
   state.paused(true);
@@ -331,13 +206,37 @@ var createContent = function createContent(vnode, _ref2) {
 
 var notificationInstance = Object.freeze({
 	getElement: getElement,
-	theme: theme,
 	getInitialState: getInitialState,
 	onMount: onMount,
 	onUnMount: onUnMount,
 	createProps: createProps,
 	createContent: createContent
 });
+
+var rgba = function rgba(colorStr) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return "rgba(" + colorStr + ", " + opacity + ")";
+};
+
+var buttonPaddingH = 8; // padding, inner text space
+
+var vars$1 = {
+  width: 274,
+  min_height: 80,
+  border_radius: vars.unit_block_border_radius,
+  title_padding_h: buttonPaddingH,
+  title_single_padding_v: 14,
+  title_multi_padding_v: 20,
+  side_padding: 24 - buttonPaddingH,
+  font_size: 14,
+  line_height: 20,
+
+  color_light_background: rgba(vars.color_light_background),
+  color_light_text: rgba(vars.color_light_foreground, vars.blend_light_dark_primary),
+
+  color_dark_background: rgba(vars.color_dark_background),
+  color_dark_text: rgba(vars.color_dark_foreground, vars.blend_light_text_primary)
+};
 
 var ANIMATION_DURATION = .5;
 

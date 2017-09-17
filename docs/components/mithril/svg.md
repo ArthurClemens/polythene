@@ -80,7 +80,9 @@ You can find more information about theming in  [Theming](../../theming.md).
 #### Themed component
 
 ~~~javascript
-SVG.theme(".themed-svg", {
+import { SVGCSS } from "polythene-css"
+
+SVGCSS.addStyle(".themed-svg", {
   color_light: "#0d47a1",
   color_dark: "orange"
 })

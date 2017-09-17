@@ -1,4 +1,5 @@
 import { Icon, SVG, renderer } from 'polythene-mithril';
+import { IconCSS } from 'polythene-css';
 import { Icon as Icon$1, SVG as SVG$1, renderer as renderer$1 } from 'polythene-react';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -13,11 +14,11 @@ var genericTests = (function (_ref) {
 
   var trustedIconStars = h.trust(iconStars$1);
 
-  // Icon.theme(".tests-icon-themed-icon", {
-  //   size_regular: 50,
-  //   color_light: "purple",
-  //   color_dark: "orange"
-  // });
+  IconCSS.addStyle(".tests-icon-themed-icon", {
+    size_regular: 50,
+    color_light: "purple",
+    color_dark: "orange"
+  });
 
   var sizeNames = ["small", "regular", "medium", "large"];
 

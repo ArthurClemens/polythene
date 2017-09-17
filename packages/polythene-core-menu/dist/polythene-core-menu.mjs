@@ -1,5 +1,4 @@
 import { filterSupportedAttributes, hide, isServer, show, subscribe, unsubscribe } from 'polythene-core';
-import { mixin, rgba, styler } from 'polythene-core-css';
 import { classes } from 'polythene-core-list-tile';
 import { vars } from 'polythene-theme';
 
@@ -22,105 +21,6 @@ var classes$1 = {
   selectedListTile: classes.selected
 };
 
-var vars$1 = {
-  sizes: [1, 1.5, 2, 3, 4, 5, 6, 7],
-  min_size: 1.5,
-  max_size_small_screen: 5,
-  size_factor: vars.grid_unit_menu,
-  border_radius: vars.unit_block_border_radius,
-
-  color_light_background: rgba(vars.color_light_background),
-  color_dark_background: rgba(vars.color_dark_background)
-  // text colors are set by content, usually list tiles
-};
-
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var unifySize$1 = function unifySize(componentVars, size) {
-  return size < componentVars.min_size ? componentVars.min_size : size;
-};
-
-var widthClass$1 = function widthClass(size) {
-  var sizeStr = size.toString().replace(".", "-");
-  return "pe-menu--width-" + sizeStr;
-};
-
-var widthStyle = function widthStyle(componentVars, size) {
-  var s = unifySize$1(componentVars, size);
-  return _defineProperty$1({}, "&." + widthClass$1(s), {
-    width: componentVars.size_factor * s + "px",
-    "max-width": "100%"
-  });
-};
-
-var layout = (function (selector, componentVars) {
-  var _ref3;
-
-  return [(_ref3 = {}, _defineProperty$1(_ref3, selector, [componentVars.sizes.map(function (size) {
-    return widthStyle(componentVars, size);
-  }), _defineProperty$1({
-    transitionTimingFunction: "ease-out",
-    transitionProperty: "all",
-    zIndex: vars.z_menu,
-    opacity: 0,
-    position: "absolute",
-    width: "100%",
-    minWidth: vars.grid_unit_menu * componentVars.min_size + "px",
-
-    "&.pe-menu--width-auto": {
-      width: "auto"
-    },
-
-    "&.pe-menu--visible": {
-      opacity: 1
-    },
-
-    "&.pe-menu--permanent": {
-      position: "relative",
-      opacity: 1,
-      zIndex: 0
-    },
-
-    " .pe-menu__content": {
-      width: "100%",
-      borderRadius: componentVars.border_radius + "px"
-    }
-
-  }, "@media (max-width: " + vars.unit_screen_size_large + "px)", {
-    "max-width": componentVars.max_size_small_screen * vars.grid_unit_menu + "px"
-  })]), _defineProperty$1(_ref3, " .pe-menu__content", {
-    " .pe-list-tile__title": [mixin.ellipsis("none")]
-  }), _ref3)];
-});
-
-function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var style = function style(scopes, selector, componentVars, tint) {
-  return [_defineProperty$2({}, scopes.map(function (s) {
-    return s + selector;
-  }).join(","), {
-    " .pe-menu__content": {
-      "background-color": componentVars["color_" + tint + "_background"]
-    }
-  })];
-};
-
-var color = (function (selector, componentVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
-});
-
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var fns = [layout, color];
-var selector = "." + classes$1.component;
-
-var customTheme = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
-};
-
-styler.generateStyles([selector], vars$1, fns);
-
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -128,8 +28,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var getElement = function getElement(vnode) {
   return vnode.attrs.element || "div";
 };
-
-var theme = customTheme;
 
 var SHADOW_Z = 1;
 var OFFSET_V = -8;
@@ -366,12 +264,28 @@ var createContent = function createContent(vnode, _ref2) {
 
 var menu = Object.freeze({
 	getElement: getElement,
-	theme: theme,
 	onMount: onMount,
 	onUnMount: onUnMount,
 	getInitialState: getInitialState,
 	createProps: createProps,
 	createContent: createContent
 });
+
+var rgba = function rgba(colorStr) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return "rgba(" + colorStr + ", " + opacity + ")";
+};
+
+var vars$1 = {
+  sizes: [1, 1.5, 2, 3, 4, 5, 6, 7],
+  min_size: 1.5,
+  max_size_small_screen: 5,
+  size_factor: vars.grid_unit_menu,
+  border_radius: vars.unit_block_border_radius,
+
+  color_light_background: rgba(vars.color_light_background),
+  color_dark_background: rgba(vars.color_dark_background)
+  // text colors are set by content, usually list tiles
+};
 
 export { menu as coreMenu, classes$1 as classes, vars$1 as vars };

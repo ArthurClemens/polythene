@@ -1,11 +1,8 @@
 import { filterSupportedAttributes, unpackAttrs, subscribe, unsubscribe } from "polythene-core";
-import { customTheme } from "./theme";
 import classes from "./classes";
 
 export const getElement = vnode =>
   vnode.attrs.element || "form";
-
-export const theme = customTheme;
 
 const SCROLL_WATCH_END_TIMER = 150;
 

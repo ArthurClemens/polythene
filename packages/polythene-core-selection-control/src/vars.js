@@ -1,5 +1,7 @@
 import { vars } from "polythene-theme";
-import { rgba } from "polythene-core-css";
+
+const rgba = (colorStr, opacity = 1) =>
+  `rgba(${colorStr}, ${opacity})`;
 
 export default {
   label_font_size:                     2 * vars.grid_unit_component, // 16

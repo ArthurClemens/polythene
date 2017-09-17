@@ -30,7 +30,7 @@ Read first: [Turning on keyboard control](../keyboard-control.md)
 
 ### Common component options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional       | String   | "div"       | HTML element tag for the checkbox container |
 | **className** | optional       | String   |             | Extra CSS class appended to `pe-checkbox-control` |
@@ -43,7 +43,7 @@ Read first: [Turning on keyboard control](../keyboard-control.md)
 
 ### Checkbox specific
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **name**      | optional | String | | Input element name |
 | **label**     | optional | String | | Text label |
@@ -56,7 +56,7 @@ Read first: [Turning on keyboard control](../keyboard-control.md)
 
 ### Appearance options
 
-| **Parameter**  |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter**  |  **Required** | **Type** | **Default** | **Description** |
 | -------------- | -------------- | -------- | ----------- | --------------- |
 | **iconOn**     | optional | Options object for [Icon](icon.md) | | Assigns a different icon for the on state |
 | **iconOff**    | optional | Options object for [Icon](icon.md) | | Assigns a different icon for the off state |

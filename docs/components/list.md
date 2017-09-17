@@ -31,7 +31,7 @@ See also: [List Tile](list-tile.md#keyboard-control)
 
 ### Common component options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional | String | "div" | HTML element tag |
 | **className** | optional | String |  | Extra CSS class appended to `pe-list` |
@@ -45,7 +45,7 @@ See also: [List Tile](list-tile.md#keyboard-control)
 
 ### List specific options
 
-| **Parameter**     |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter**     |  **Required** | **Type** | **Default** | **Description** |
 | ----------------- | -------------- | -------- | ----------- | --------------- |
 | **header**        | optional | Object | | Options object for a [List Tile](list-tile.md); any list tile option can be used; in addition the options `title` and `sticky` |
 | **header.title**  | optional | String | | Title text label |
@@ -54,7 +54,7 @@ See also: [List Tile](list-tile.md#keyboard-control)
 
 ### List appearance options
 
-| **Parameter**       |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter**       |  **Required** | **Type** | **Default** | **Description** |
 | ------------------- | -------------- | -------- | ----------- | --------------- |
 | **borders**         | optional | Boolean | | Set to `true` to add borders to list tiles |
 | **indentedBorders** | optional | Boolean | | Set to `true` to indent the list tile borders; note that list tiles must have option `indent` as well       |
@@ -64,7 +64,7 @@ See also: [List Tile](list-tile.md#keyboard-control)
 
 ### List keyboard control options
 
-| **Parameter**       |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter**       |  **Required** | **Type** | **Default** | **Description** |
 | ------------------- | -------------- | -------- | ----------- | --------------- |
 | **keyboardControl** | optional | Boolean | | Set to `true` to enable keyboard control |
 | **defaultHighlightIndex** | optional | Number | | Sets the initally highlighted index; after user interaction the index will be updated internally |

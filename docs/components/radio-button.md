@@ -22,7 +22,7 @@ Form control to select a single option from a set. Generates a styled radio butt
 
 ### Common component options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional       | String   | "div"       | HTML element tag for the Radio Button container |
 | **className** | optional       | String   |         | Extra CSS class appended to `pe-radio-control` |
@@ -35,7 +35,7 @@ Form control to select a single option from a set. Generates a styled radio butt
 
 ### Radio button specific
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **name**      | optional, but required when using [Radio Group](radio-group.md) | String | | Input element name |
 | **label**     | optional | String | | Text label |
@@ -48,7 +48,7 @@ Form control to select a single option from a set. Generates a styled radio butt
 
 ### Appearance options
 
-| **Parameter**  |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter**  |  **Required** | **Type** | **Default** | **Description** |
 | -------------- | -------------- | -------- | ----------- | --------------- |
 | **iconOn**     | optional | Options object for [Icon](icon.md) | | Assigns a different icon for the on state |
 | **iconOff**    | optional | Options object for [Icon](icon.md) | | Assigns a different icon for the off state |

@@ -28,7 +28,7 @@ Adds a touch ripple effect to an element.
 
 ### Common component options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional | String | "div" | HTML element tag |
 | **className** | optional | String |  | Extra CSS class appended to `pe-ripple` |
@@ -38,7 +38,7 @@ Adds a touch ripple effect to an element.
 
 ### Ripple specific options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **start**     | optional | Function | | Callback function just before the ripple starts; see Callback functions |
 | **end**       | optional | Function | | Callback function when the ripple has ended; see Callback functions |
@@ -47,7 +47,7 @@ Adds a touch ripple effect to an element.
 
 ### Ripple appearance options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **unconstrained**           | optional | Boolean | false | Set to `true` to make the ripple shape no longer bound to the target element |   
 | **center**                  | optional | Boolean | false | Set to `true` to start the ripple from the center |

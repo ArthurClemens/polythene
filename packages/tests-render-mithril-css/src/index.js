@@ -3,20 +3,21 @@ import m from "mithril";
 import {
   Button,
   Card,
-  IconButton,
-  RaisedButton,
-  // FAB,
   Checkbox,
-  // Dialog,
-  Switch,
+  Dialog,
+  FAB,
+  Icon,
+  IconButton,
+  MaterialDesignSpinner,
+  Notification,
   RadioGroup,
-  // TextField,
-  // Slider,
-  // MaterialDesignSpinner,
-  // Notification,
-  // Snackbar,
+  RaisedButton,
+  Slider,
+  Snackbar,
+  SVG,
+  Switch,
   Tabs,
-  SVG
+  TextField,
 } from "polythene-mithril";
 
 import "polythene-css/dist/polythene.css";
@@ -64,6 +65,18 @@ const App = {
       ),
       m(".row", 
         [
+          m("h2", "Icon"),
+          m(".component", 
+            m(Icon, {
+              size: "large",
+              src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
+              avatar: true
+            })
+          )
+        ]
+      ),
+      m(".row", 
+        [
           m("h2", "Icon Button"),
           m(".component", 
             m(IconButton, {
@@ -74,18 +87,18 @@ const App = {
           )
         ]
       ),
-      // m(".row",
-      //   [
-      //     m("h2", "FAB"),
-      //     m(".component", 
-      //       m(FAB, {
-      //         icon: {
-      //           svg: m.trust(linkIconSVG)
-      //         }
-      //       })
-      //     )
-      //   ]
-      // ),
+      m(".row",
+        [
+          m("h2", "FAB"),
+          m(".component", 
+            m(FAB, {
+              icon: {
+                svg: m.trust(linkIconSVG)
+              }
+            })
+          )
+        ]
+      ),
       m(".row", 
         [
           m("h2", "Tabs"),
@@ -178,101 +191,98 @@ const App = {
           )
         ]
       ),
-
-      // m(".row",
-      //   [
-      //     m("h2", "TextField"),
-      //     m(".component", 
-      //       m(TextField, {
-      //         defaultValue: "abC",
-      //         validate: value => 
-      //           value !== value.toLowerCase()
-      //             ? ({
-      //               valid: false,
-      //               error: "Only use lowercase characters."
-      //             })
-      //             : null,
-      //         validateAtStart: true
-      //       })
-      //     )
-      //   ]
-      // ),
-      // m(".row",
-      //   [
-      //     m("h2", "Slider"),
-      //     m(".component", 
-      //       m(Slider, {
-      //         defaultValue: 50
-      //       })
-      //     )
-      //   ]
-      // ),
-      // m(".row",
-      //   [
-      //     m("h2", "Spinner"),
-      //     m(".component", 
-      //       m(MaterialDesignSpinner, {
-      //         permanent: true
-      //       })
-      //     )
-      //   ]
-      // ),
-      // m(".row",
-      //   [
-      //     m("h2", "Dialog"),
-      //     m(".component", 
-      //       m(RaisedButton, {
-      //         label: "Show dialog",
-      //         events: {
-      //           onclick: () => Dialog.show({
-      //             /* note the Dialog component is below the other elements in the app */
-      //             title: "Hello",
-      //             body: "Click outside to close, or press ESCAPE",
-      //             backdrop: true
-      //           })
-      //         }
-      //       })
-      //     )
-      //   ]
-      // ),
-      // m(".row",
-      //   [
-      //     m("h2", "Notification"),
-      //     m(".component", 
-      //       m(RaisedButton, {
-      //         label: "Show Notification",
-      //         events: {
-      //           onclick: () => Notification.show({
-      //             /* note the Notification component is below the other elements in the app */
-      //             title: "Hello"
-      //           })
-      //         }
-      //       })
-      //     )
-      //   ]
-      // ),
-      // m(".row",
-      //   [
-      //     m("h2", "Snackbar"),
-      //     m(".component", 
-      //       m(RaisedButton, {
-      //         label: "Show Snackbar",
-      //         events: {
-      //           onclick: () => Snackbar.show({
-      //             /* note the Snackbar component is below the other elements in the app */
-      //             title: "Hello"
-      //           })
-      //         }
-      //       })
-      //     )
-      //   ]
-      // ),
-      // m(Dialog),
-      // m(Snackbar),
-      // m(Notification)
+      m(".row",
+        [
+          m("h2", "TextField"),
+          m(".component", 
+            m(TextField, {
+              defaultValue: "abC",
+              validate: value => 
+                value !== value.toLowerCase()
+                  ? ({
+                    valid: false,
+                    error: "Only use lowercase characters."
+                  })
+                  : null,
+              validateAtStart: true
+            })
+          )
+        ]
+      ),
+      m(".row",
+        [
+          m("h2", "Slider"),
+          m(".component", 
+            m(Slider, {
+              defaultValue: 50
+            })
+          )
+        ]
+      ),
+      m(".row",
+        [
+          m("h2", "Spinner"),
+          m(".component", 
+            m(MaterialDesignSpinner, {
+              permanent: true
+            })
+          )
+        ]
+      ),
+      m(".row",
+        [
+          m("h2", "Dialog"),
+          m(".component", 
+            m(RaisedButton, {
+              label: "Show dialog",
+              events: {
+                onclick: () => Dialog.show({
+                  /* note the Dialog component is below the other elements in the app */
+                  title: "Hello",
+                  body: "Click outside to close, or press ESCAPE",
+                  backdrop: true
+                })
+              }
+            })
+          )
+        ]
+      ),
+      m(".row",
+        [
+          m("h2", "Notification"),
+          m(".component", 
+            m(RaisedButton, {
+              label: "Show Notification",
+              events: {
+                onclick: () => Notification.show({
+                  /* note the Notification component is below the other elements in the app */
+                  title: "Hello"
+                })
+              }
+            })
+          )
+        ]
+      ),
+      m(".row",
+        [
+          m("h2", "Snackbar"),
+          m(".component", 
+            m(RaisedButton, {
+              label: "Show Snackbar",
+              events: {
+                onclick: () => Snackbar.show({
+                  /* note the Snackbar component is below the other elements in the app */
+                  title: "Hello"
+                })
+              }
+            })
+          )
+        ]
+      ),
+      m(Dialog),
+      m(Snackbar),
+      m(Notification)
     ])
 };
 
 m.mount(document.querySelector("#root"), App);
-
-

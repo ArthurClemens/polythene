@@ -1,4 +1,5 @@
 import { Button, DialogPane, Toolbar, ToolbarTitle, keys, renderer } from 'polythene-mithril';
+import { DialogPaneCSS, ToolbarCSS } from 'polythene-css';
 import { Button as Button$1, DialogPane as DialogPane$1, Toolbar as Toolbar$1, ToolbarTitle as ToolbarTitle$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 
 var shortText = "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>";
@@ -263,15 +264,15 @@ var genericTests = (function (_ref) {
 
   var h = renderer$$1;
 
-  // DialogPane.theme(".dialog-pane-tests-blue-dialog", {
-  //   color_light_background: "#2196F3",
-  //   color_light_body_text:  "#fff"
-  // });
+  DialogPaneCSS.addStyle(".dialog-pane-tests-blue-dialog", {
+    color_light_background: "#2196F3",
+    color_light_body_text: "#fff"
+  });
 
-  // Toolbar.theme(".tests-dialog-pane-themed-toolbar", {
-  //   color_light_background: "#00c853",
-  //   color_dark_background:  "#333"
-  // });
+  ToolbarCSS.addStyle(".tests-dialog-pane-themed-toolbar", {
+    color_light_background: "#00c853",
+    color_dark_background: "#333"
+  });
 
   var paneToolbar = function paneToolbar() {
     var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},

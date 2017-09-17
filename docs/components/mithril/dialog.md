@@ -72,7 +72,7 @@ Shows a new dialog instance.
 
 `Dialog.show(dialogOptions, spawnOptions)`
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **dialogOptions** | required | Options object or Function that returns an options object | | See [Dialog options](../dialog.md) |
 | **spawnOptions** | optional | Options object | | Pass `id` if you are using multiple simultaneous dialogs; pass `spawn` when using multiple spawners and `spawn` is also set at the spawner |
@@ -130,7 +130,7 @@ Hides the current dialog instance.
 
 `Dialog.hide(spawnOptions)`
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **spawnOptions** | optional | Options object | | Pass `id` if you are using multiple simultaneous dialogs; pass `spawn` when using multiple spawners and `spawn` is also set at the spawner |
 | **Returns** |||| Promise |
@@ -363,7 +363,9 @@ You can find more information about theming in  [Theming](../../theming.md).
 #### Themed component
 
 ~~~javascript
-Dialog.theme(".themed-dialog", {
+import { DialogCSS } from "polythene-css"
+
+DialogCSS.addStyle(".themed-dialog", {
   color_light_content_background: "#2196F3",
   color_light_body_text: "#fff",
   border_radius: 5
@@ -420,7 +422,7 @@ const messageOptions = {
 
 #### Custom transition
 
-Use option `transitions` to define custom transition behaviour. See `src/theme/transitions.js` for the default behavior.
+Use option `transitions` to define custom transition behaviour. See `src/transitions.js` for the default behavior.
 
 To create a fade in while moving up:
 

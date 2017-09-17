@@ -23,7 +23,7 @@ Choose this:
 
 Theming options are more limited than using CSS-in-JS as styles will not be added on the fly. But it is still possible to use the same tools as CSS-in-JS, only with an extra build step that results in a CSS file. This step can be automated of course.
 
-[polythene-scripts](packages/polythene-scripts.md) provides the tooling for writing CSS based on component variables. Alt
+[polythene-scripts](packages/polythene-scripts.md) provides the tooling for writing CSS based on component variables.
 
 The alternative way is to add handwritten CSS. This does not involve a build step, but this may not be future proof; when a component structure would change later on, your custom CSS may no longer work.
 

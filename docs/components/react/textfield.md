@@ -362,7 +362,9 @@ You can find more information about theming in  [Theming](../../theming.md).
 #### Themed component
 
 ~~~javascript
-TextField.theme(".themed-textfield", {
+import { TextFieldCSS } from "polythene-css"
+
+TextFieldCSS.addStyle(".themed-textfield", {
   color_light_input_text: "#0D47A1",
   color_light_input_background: "#BBDEFB",
   color_light_focus_border: "#0D47A1",

@@ -1,4 +1,5 @@
 import { IOSSpinner, MaterialDesignProgressSpinner, MaterialDesignSpinner, RaisedButton, Slider, keys, renderer } from 'polythene-mithril';
+import { IOSSpinnerCSS, MaterialDesignSpinnerCSS } from 'polythene-css';
 import { IOSSpinner as IOSSpinner$1, MaterialDesignProgressSpinner as MaterialDesignProgressSpinner$1, MaterialDesignSpinner as MaterialDesignSpinner$1, RaisedButton as RaisedButton$1, Slider as Slider$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 
 function createCommonjsModule(fn, module) {
@@ -309,6 +310,7 @@ var _extends$2 = Object.assign || function (target) { for (var i = 1; i < argume
 function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var STEP_DURATION$1 = 2000;
+var MAX_VALUE = 1000;
 
 var progressSlider = (function (_ref) {
   var h = _ref.renderer,
@@ -351,12 +353,12 @@ var progressSlider = (function (_ref) {
         }
       }, h(Slider$$1, {
         min: 0,
-        max: 1,
+        max: MAX_VALUE,
         step: 0,
-        value: percentage,
+        value: percentage * MAX_VALUE,
         onChange: function onChange(_ref3) {
           var value = _ref3.value;
-          return state.percentage(value);
+          return state.percentage(value / MAX_VALUE);
         },
         style: {
           display: "flex",
@@ -389,17 +391,17 @@ var genericTests = (function (_ref) {
       keys$$1 = _ref.keys;
 
 
-  // MaterialDesignSpinner.theme(".tests-spinner-themed-md-spinner", {
-  //   color_light_1: "orange",
-  //   color_light_2: "red",
-  //   color_light_3: "orange",
-  //   color_light_4: "red",
-  // });
+  MaterialDesignSpinnerCSS.addStyle(".tests-spinner-themed-md-spinner", {
+    color_light_1: "orange",
+    color_light_2: "red",
+    color_light_3: "orange",
+    color_light_4: "red"
+  });
 
-  // IOSSpinner.theme(".tests-spinner-themed-ios-spinner", {
-  //   color_light: "green",
-  //   color_dark:  "yellow"
-  // });
+  IOSSpinnerCSS.addStyle(".tests-spinner-themed-ios-spinner", {
+    color_light: "green",
+    color_dark: "yellow"
+  });
 
   return [{
     section: "Material Design Spinner"
@@ -4586,6 +4588,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var STEP_DURATION$2 = 2000;
+var MAX_VALUE$1 = 1000;
 
 var _class = function (_Component) {
   _inherits(_class, _Component);
@@ -4628,7 +4631,7 @@ var _class = function (_Component) {
       }
       var progress = timestamp - this._start;
       this.setState({
-        percentage: Math.min(1, 1.0 / STEP_DURATION$2 * progress)
+        percentage: Math.min(1, 1 / STEP_DURATION$2 * progress)
       });
       if (progress <= STEP_DURATION$2) {
         window.requestAnimationFrame(this.step);
@@ -4648,13 +4651,13 @@ var _class = function (_Component) {
         }
       }, renderer$1(Slider$1, {
         min: 0,
-        max: 1,
+        max: MAX_VALUE$1,
         step: 0,
-        value: percentage,
+        value: percentage * MAX_VALUE$1,
         permanent: true,
         onChange: function onChange(_ref) {
           var value = _ref.value;
-          return _this2.updatePercentage(value);
+          return _this2.updatePercentage(value / MAX_VALUE$1);
         },
         style: {
           display: "flex",

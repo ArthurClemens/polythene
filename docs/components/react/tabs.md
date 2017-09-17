@@ -279,7 +279,9 @@ You can find more information about theming in  [Theming](../../theming.md).
 #### Themed component
 
 ~~~javascript
-Tabs.theme(".themed-tabs", {
+import { TabsCSS } from "polythene-css"
+
+TabsCSS.addStyle(".themed-tabs", {
   color_light:               "#00BCD4",
   color_light_selected:      "#F44336",
   color_light_tab_indicator: "#F44336"
@@ -335,7 +337,7 @@ h(Tabs, {
 To use a fixed width without `autofit`:
 
 ~~~javascript
-Tabs.theme(".tabs-fixed-width", {
+Tabs.addStyle(".tabs-fixed-width", {
   tab_min_width:        100,
   tab_min_width_tablet: 100
 });

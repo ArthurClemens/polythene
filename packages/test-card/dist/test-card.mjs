@@ -1,4 +1,5 @@
 import { Button, Card, IconButton, List, ListTile, Tabs, keys, renderer } from 'polythene-mithril';
+import { CardCSS } from 'polythene-css';
 import { Button as Button$1, Card as Card$1, IconButton as IconButton$1, List as List$1, ListTile as ListTile$1, Tabs as Tabs$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -147,11 +148,11 @@ var genericTests = (function (_ref) {
     }
   };
 
-  // Card.theme(".tests-card-colored-card", {
-  //   color_light_main_background: "#0097a7",
-  //   color_light_title_text: "#fff",
-  //   color_light_subtitle_text: "#fff"
-  // });
+  CardCSS.addStyle(".tests-card-colored-card", {
+    color_light_main_background: "#0097a7",
+    color_light_title_text: "#fff",
+    color_light_subtitle_text: "#fff"
+  });
 
   return [{
     name: "Any content (list)",

@@ -1,14 +1,11 @@
 import { filterSupportedAttributes, show, hide, isClient, isServer } from "polythene-core";
 import { Timer } from "polythene-utilities";
-import { customTheme } from "./theme";
 import classes from "./classes";
 
 const DEFAULT_TIME_OUT = 3;
 
 export const getElement = vnode =>
   vnode.attrs.element || "div";
-
-export const theme = customTheme;
 
 const pauseInstance = state => {
   state.paused(true);

@@ -126,10 +126,10 @@ You can find more information about theming in  [Theming](../../theming.md).
 
 #### Themed component
 
-A Spinner themes are set regardless the type of spinner.
-
 ~~~javascript
-Spinner.theme(".themed-spinner", {
+import { MaterialDesignSpinnerCSS } from "polythene-css"
+
+MaterialDesignSpinnerCSS.addStyle(".themed-spinner", {
   color_light_background: "#2196F3",
   border_radius:          0
 })
@@ -143,9 +143,9 @@ m(Spinner, {
 
 Change CSS using the CSS classes in:
 
-* `polythene-core-spinner/src/ios/classes.js`
-* `polythene-core-spinner/src/material-design/classes.js`
-* `polythene-core-spinner/src/material-design-progress/classes.js`
+* `polythene-core-ios-spinner/src/classes.js`
+* `polythene-core-material-design-spinner/src/classes.js`
+* `polythene-core-material-design-progress-spinner/src/classes.js`
 
 Class names can be accessed by calling the `classes` property on the imported spinner:
 
@@ -160,7 +160,7 @@ import { MaterialDesignProgressSpinner as Spinner } from "polythene-mithril"
 Some style attributes can be set using option `style`. For example:
 
 ~~~javascript
-m(Spinner, {
+m(MaterialDesignProgressSpinner, {
   style: {
     color: "red"
   }

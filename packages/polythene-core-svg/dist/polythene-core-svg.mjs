@@ -10,8 +10,6 @@ var getElement = function getElement(vnode) {
   return vnode.attrs.element || "div";
 };
 
-var theme = function theme() {}; //customTheme;
-
 var createProps = function createProps(vnode, _ref) {
   var k = _ref.keys;
 
@@ -28,7 +26,6 @@ var createContent = function createContent(vnode) {
 
 var svg = Object.freeze({
 	getElement: getElement,
-	theme: theme,
 	createProps: createProps,
 	createContent: createContent
 });

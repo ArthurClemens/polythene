@@ -1,5 +1,4 @@
 import { filterSupportedAttributes } from 'polythene-core';
-import { rgba, styler } from 'polythene-core-css';
 import { classes } from 'polythene-core-list-tile';
 import { vars } from 'polythene-theme';
 
@@ -17,112 +16,6 @@ var classes$1 = {
   padding: "pe-list--padding"
 };
 
-var vars$1 = {
-  padding: vars.grid_unit_component, // vertical padding
-  padding_compact: vars.grid_unit_component * 3 / 4,
-  border_width_stacked: 1,
-  border_width_bordered: 1,
-
-  color_light_border: rgba(vars.color_light_foreground, vars.blend_light_border_light),
-  color_dark_border: rgba(vars.color_dark_foreground, vars.blend_dark_border_light)
-
-  // background color may be set in theme; disabled by default
-  // color_light_background: "inherit",
-  // color_dark_background:  "inherit"
-};
-
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var borderStyle = function borderStyle(componentVars) {
-  return {
-    borderStyle: "none none solid none",
-    borderWidth: componentVars.border_width_bordered + "px"
-  };
-};
-
-var layout = (function (selector, componentVars) {
-  return [_defineProperty$1({}, selector, {
-
-    ".pe-list--padding": {
-      padding: componentVars.padding + "px 0"
-    },
-
-    ".pe-list--header": {
-      paddingTop: 0
-    },
-
-    ".pe-list--compact": {
-      padding: componentVars.padding_compact + "px 0"
-    },
-
-    "& + &": {
-      borderStyle: "solid none none none",
-      borderWidth: componentVars.border_width_stacked + "px"
-    },
-
-    ".pe-list--borders": {
-      " .pe-list-tile": {
-        ":not(.pe-list-tile--header):not(:last-child)": {
-          "&": borderStyle(componentVars)
-        }
-      }
-    },
-
-    ".pe-list--indented-borders": {
-      borderTop: "none",
-
-      " .pe-list-tile": {
-        ":not(.pe-list-tile--header):not(:last-child)": {
-          " .pe-list-tile__content:not(.pe-list-tile__content-front)": borderStyle(componentVars)
-        }
-      }
-    }
-  })];
-});
-
-function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var style = function style(scopes, selector, componentVars, tint) {
-  var _scopes$map$join;
-
-  return [_defineProperty$2({}, scopes.map(function (s) {
-    return s + selector;
-  }).join(","), (_scopes$map$join = {
-    backgroundColor: componentVars["color_" + tint + "_background"]
-
-  }, _defineProperty$2(_scopes$map$join, "& + .pe-list", {
-    borderTopColor: componentVars["color_" + tint + "_border"]
-  }), _defineProperty$2(_scopes$map$join, ".pe-list--borders", {
-    " .pe-list-tile": {
-      ":not(:last-child)": {
-        borderColor: componentVars["color_" + tint + "_border"]
-      }
-    }
-  }), _defineProperty$2(_scopes$map$join, ".pe-list--indented-borders", {
-    " .pe-list-tile": {
-      " .pe-list-tile__content:not(.pe-list-tile__content-front)": {
-        borderColor: componentVars["color_" + tint + "_border"]
-      }
-    }
-  }), _scopes$map$join))];
-};
-
-var color = (function (selector, componentVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
-});
-
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var fns = [layout, color];
-var selector = "." + classes$1.component;
-
-var customTheme = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
-};
-
-styler.generateStyles([selector], vars$1, fns);
-
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -130,8 +23,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var getElement = function getElement(vnode) {
   return vnode.attrs.element || "div";
 };
-
-var theme = customTheme;
 
 var onSelect = function onSelect(event, vnode) {
   var state = vnode.state;
@@ -239,11 +130,29 @@ var createContent = function createContent(vnode, _ref3) {
 
 var list = Object.freeze({
 	getElement: getElement,
-	theme: theme,
 	getInitialState: getInitialState,
 	onMount: onMount,
 	createProps: createProps,
 	createContent: createContent
 });
+
+var rgba = function rgba(colorStr) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return "rgba(" + colorStr + ", " + opacity + ")";
+};
+
+var vars$1 = {
+  padding: vars.grid_unit_component, // vertical padding
+  padding_compact: vars.grid_unit_component * 3 / 4,
+  border_width_stacked: 1,
+  border_width_bordered: 1,
+
+  color_light_border: rgba(vars.color_light_foreground, vars.blend_light_border_light),
+  color_dark_border: rgba(vars.color_dark_foreground, vars.blend_dark_border_light)
+
+  // background color may be set in theme; disabled by default
+  // color_light_background: "inherit",
+  // color_dark_background:  "inherit"
+};
 
 export { list as coreList, classes$1 as classes, vars$1 as vars };

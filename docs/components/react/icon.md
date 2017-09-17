@@ -104,7 +104,9 @@ You can find more information about theming in  [Theming](../../theming.md).
 #### Themed component
 
 ~~~jsx
-Icon.theme(".themed-icon", {
+import { IconCSS } from "polythene-css"
+
+IconCSS.addStyle(".themed-icon", {
   size_regular: 50,
   color_light:  "purple",
   color_dark:   "orange"

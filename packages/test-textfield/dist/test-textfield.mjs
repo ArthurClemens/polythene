@@ -1,4 +1,5 @@
 import { RaisedButton, TextField, keys, renderer } from 'polythene-mithril';
+import { TextFieldCSS } from 'polythene-css';
 import { RaisedButton as RaisedButton$1, TextField as TextField$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 
 function createCommonjsModule(fn, module) {
@@ -325,12 +326,12 @@ var genericTests = (function (_ref) {
     }, test);
   };
 
-  // TextField.theme(".tests-textfield-themed-textfield", {
-  //   color_light_input_text: "#0D47A1",
-  //   color_light_input_background: "#BBDEFB",
-  //   color_light_focus_border: "#0D47A1",
-  //   input_padding_h: 12
-  // });
+  TextFieldCSS.addStyle(".tests-textfield-themed-textfield", {
+    color_light_input_text: "#0D47A1",
+    color_light_input_background: "#BBDEFB",
+    color_light_focus_border: "#0D47A1",
+    input_padding_h: 12
+  });
 
   var ipsum = "Lorem ipsum dolor sit amet, idque signiferumque at usu, eum recusabo aliquando id. Deleniti percipitur concludaturque eu eos. Vix elitr feugait ne. Mel agam integre eu, has minim aliquid salutandi eu. Est nusquam abhorreant ne. Ei wisi dicant eam, vix tota reque persequeris an. Quo in theophrastus reprehendunt, ius te graecis epicuri volutpat.";
   var shortIpsum = "Lorem ipsum dolor sit amet,";

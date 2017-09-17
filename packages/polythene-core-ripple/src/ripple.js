@@ -1,12 +1,9 @@
 import { pointerEndEvent, filterSupportedAttributes, isServer } from "polythene-core";
-import { customTheme } from "./theme";
-import animation from "./theme/animation";
+import animation from "./animation";
 import classes from "./classes";
 
 export const getElement = vnode =>
   vnode.attrs.element || "div";
-
-export const theme = customTheme;
 
 export const getInitialState = () => {
   return {

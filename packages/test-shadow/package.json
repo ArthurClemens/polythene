@@ -17,6 +17,7 @@
     "README.md"
   ],
   "dependencies": {
+    "polythene-css": "^1.0.0-rc.5",
     "polythene-mithril": "^1.0.0-rc.5",
     "polythene-react": "^1.0.0-rc.5"
   },

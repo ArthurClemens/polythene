@@ -94,7 +94,9 @@ You can find more information about theming in  [Theming](../../theming.md).
 #### Themed component
 
 ~~~javascript
-Slider.theme(".themed-slider", {
+import { SliderCSS } from "polythene-css"
+
+SliderCSS.addStyle(".themed-slider", {
   color_light_track_active:   "#82b1ff",
   color_light_track_inactive: "#c5cae9",
   color_light_track_value:    "#f50057",

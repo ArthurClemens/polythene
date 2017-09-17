@@ -1,13 +1,14 @@
 import { Ripple, renderer } from 'polythene-mithril';
+import { RippleCSS } from 'polythene-css';
 import { Ripple as Ripple$1, renderer as renderer$1 } from 'polythene-react';
 
 var genericTests = (function (_ref) {
   var Ripple$$1 = _ref.Ripple;
 
 
-  // Ripple.theme(".tests-ripple-themed-ripple", {
-  //   color_light: "#F44336"
-  // });
+  RippleCSS.addStyle(".tests-ripple-themed-ripple", {
+    color_light: "#F44336"
+  });
 
   return [{
     name: "No options",
@@ -4610,9 +4611,9 @@ var reactTests = function reactTests(_ref) {
     }
   }));
 
-  // Ripple.theme(".react-ripple-themed-ripple", {
-  //   color_light: "#F44336"
-  // });
+  RippleCSS.addStyle(".react-ripple-themed-ripple", {
+    color_light: "#F44336"
+  });
 
   return [{
     section: "React specific tests"

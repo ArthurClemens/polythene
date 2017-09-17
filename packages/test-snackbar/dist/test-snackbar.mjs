@@ -1,4 +1,5 @@
 import { Button, Dialog, FAB, RaisedButton, Snackbar, keys, renderer } from 'polythene-mithril';
+import { SnackbarCSS } from 'polythene-css';
 import { Button as Button$1, Dialog as Dialog$1, FAB as FAB$1, RaisedButton as RaisedButton$1, Snackbar as Snackbar$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 import { subscribe, unsubscribe } from 'polythene-core';
 
@@ -14,10 +15,10 @@ var genericTests = (function (_ref) {
       containerSelector = _ref.containerSelector;
 
 
-  // Snackbar.theme(".notification-tests-blue-notification", {
-  //   color_dark_background: "#2196F3",
-  //   border_radius: 5
-  // });
+  SnackbarCSS.addStyle(".notification-tests-blue-notification", {
+    color_dark_background: "#2196F3",
+    border_radius: 5
+  });
 
   var dialogOptions = {
     body: "You pressed a message action",

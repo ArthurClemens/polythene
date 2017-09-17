@@ -1,4 +1,5 @@
 import { Button, FAB, Icon, IconButton, List, ListTile, renderer } from 'polythene-mithril';
+import { ButtonCSS, FABCSS, IconButtonCSS, IconCSS, ListCSS, ListTileCSS } from 'polythene-css';
 import { Button as Button$1, FAB as FAB$1, Icon as Icon$1, IconButton as IconButton$1, List as List$1, ListTile as ListTile$1, renderer as renderer$1 } from 'polythene-react';
 
 var alarmSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3V9z\"/></svg>";
@@ -15,37 +16,37 @@ var genericTests = (function (_ref) {
 
   var trustedAlarmSVG = h.trust(alarmSVG);
 
-  // Button.theme(".tests-custom-theme-blue-button", {
-  //   color_light_background: "#2196F3",
-  //   color_light_text: "#fff"
-  // });
+  ButtonCSS.addStyle(".tests-custom-theme-blue-button", {
+    color_light_background: "#2196F3",
+    color_light_text: "#fff"
+  });
 
-  // Button.theme(".tests-custom-theme-red-button", {
-  //   color_light_background: "#ff0000",
-  //   color_light_text: "#fff"
-  // });
+  ButtonCSS.addStyle(".tests-custom-theme-red-button", {
+    color_light_background: "#ff0000",
+    color_light_text: "#fff"
+  });
 
-  // Icon.theme(".tests-custom-theme-red-icon", {
-  //   color_light: "red"
-  // });
+  IconCSS.addStyle(".tests-custom-theme-red-icon", {
+    color_light: "red"
+  });
 
-  // FAB.theme(".tests-custom-theme-red-fab", {
-  //   color_light_background: "#ff0000",
-  //   color_light: "#fff"
-  // });
+  FABCSS.addStyle(".tests-custom-theme-red-fab", {
+    color_light_background: "#ff0000",
+    color_light: "#fff"
+  });
 
-  // IconButton.theme(".tests-custom-theme-large-icon-button", {
-  //   padding: 50,
-  //   color_background: "#fff"
-  // });
+  IconButtonCSS.addStyle(".tests-custom-theme-large-icon-button", {
+    padding: 50,
+    color_background: "#fff"
+  });
 
-  // List.theme(".tests-custom-theme-blue-list", {
-  //   color_light_border: "#2196F3"
-  // });
+  ListCSS.addStyle(".tests-custom-theme-blue-list", {
+    color_light_border: "#2196F3"
+  });
 
-  // ListTile.theme(".tests-custom-theme-red-list-tile", {
-  //   color_light_title: "red"
-  // });
+  ListTileCSS.addStyle(".tests-custom-theme-red-list-tile", {
+    color_light_title: "red"
+  });
 
   return [{
     section: "Style variables"
@@ -144,10 +145,11 @@ var secondaryButton = {
     }, vnode.attrs));
   }
 };
-// secondaryButton.theme(".tests-custom-theme-secondary-button", {
-//   color_light_border: "#ddd",
-//   color_light_background: "#fff"
-// });
+
+ButtonCSS.addStyle(".tests-custom-theme-secondary-button", {
+  color_light_border: "#ddd",
+  color_light_background: "#fff"
+});
 
 var mithrilTests = function mithrilTests() {
   return [{
@@ -4181,10 +4183,10 @@ var reactTests = function reactTests() {
     }));
   };
 
-  // Button.theme(".tests-custom-theme-secondary-button", {
-  //   color_light_border: "#ddd",
-  //   color_light_background: "#fff"
-  // });
+  ButtonCSS.addStyle(".tests-custom-theme-secondary-button", {
+    color_light_border: "#ddd",
+    color_light_background: "#fff"
+  });
 
   return [{
     section: "React specific tests"

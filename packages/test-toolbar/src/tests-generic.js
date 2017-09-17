@@ -1,4 +1,5 @@
 import shared from "./components/shared";
+import { ToolbarCSS } from "polythene-css";
 
 export default ({ Toolbar, ToolbarTitle, IconButton, Shadow, renderer: h }) => {
 
@@ -13,10 +14,10 @@ export default ({ Toolbar, ToolbarTitle, IconButton, Shadow, renderer: h }) => {
     toolbarTitleComponentIndented,
   } = shared({ IconButton, ToolbarTitle, renderer: h });
 
-  // Toolbar.theme(".tests-toolbar-themed-toolbar", {
-  //   color_light_background: "#00c853",
-  //   color_dark_background:  "#00c853"
-  // });
+  ToolbarCSS.addStyle(".tests-toolbar-themed-toolbar", {
+    color_light_background: "#00c853",
+    color_dark_background:  "#00c853"
+  });
 
   return [
     {

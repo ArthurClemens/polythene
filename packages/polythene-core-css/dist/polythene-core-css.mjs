@@ -430,7 +430,7 @@ var hex = function hex(value) {
 
 var rgba = function rgba(colorStr) {
   var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-  return "rgba(" + colorStr + "," + opacity + ")";
+  return "rgba(" + colorStr + ", " + opacity + ")";
 };
 
 export { mixinFlex as flex, mixin, styler, hex, rgba };

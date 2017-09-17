@@ -1,7 +1,6 @@
 import { vars } from 'polythene-theme';
 import { vars as vars$1 } from 'polythene-core-selection-control';
 import { vars as vars$2 } from 'polythene-core-icon-button';
-import { rgba } from 'polythene-core-css';
 
 var classes = {
   component: "pe-switch-control",
@@ -74,6 +73,11 @@ var viewControl = Object.freeze({
 });
 
 var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var rgba = function rgba(colorStr) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return "rgba(" + colorStr + ", " + opacity + ")";
+};
 
 var hit_area_padding = (vars.grid_unit_icon_button - vars.unit_icon_size) / 2; // 12
 

@@ -1,85 +1,8 @@
 import { filterSupportedAttributes, getAnimationEndEvent, isServer, isTouch, pointerEndEvent } from 'polythene-core';
-import { mixin, styler } from 'polythene-core-css';
+import { styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 
-var classes = {
-  component: "pe-ripple",
-
-  // elements
-  mask: "pe-ripple__mask",
-  waves: "pe-ripple__waves",
-
-  // states
-  unconstrained: "pe-ripple--unconstrained",
-  wavesAnimating: "pe-ripple__waves--animating"
-};
-
-var vars$1 = {
-  color: "inherit" // only specify this variable to get both states
-  // color_light:   "inherit",
-  // color_dark:    "inherit"
-};
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var layout = (function (selector) {
-  return [_defineProperty({}, selector, [mixin.fit(), {
-    color: "inherit",
-    borderRadius: "inherit",
-    pointerEvents: "none",
-
-    ":not(.pe-ripple--unconstrained)": {
-      borderRadius: "inherit",
-
-      " .pe-ripple__mask": {
-        overflow: "hidden",
-        borderRadius: "inherit"
-      }
-    },
-    " .pe-ripple__mask": [mixin.fit(), {
-      transform: "translate3d(0,0,0)"
-    }],
-
-    " .pe-ripple__waves": {
-      outline: "1px solid transparent", // for IE10
-      position: "absolute",
-      borderRadius: "50%",
-      pointerEvents: "none",
-      display: "none"
-    },
-    " .pe-ripple__waves--animating": {
-      display: "block"
-    }
-  }])];
-});
-
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var style = function style(scopes, selector, componentVars, tint) {
-  return [_defineProperty$1({}, scopes.map(function (s) {
-    return s + selector;
-  }).join(","), {
-    color: componentVars["color_" + tint] || componentVars["color"] || "inherit"
-  })];
-};
-
-var color = (function (selector, componentVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
-});
-
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var fns = [layout, color];
-var selector = "." + classes.component;
-
-var customTheme = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
-};
-
-styler.generateStyles([selector], vars$1, fns);
-
-function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var ANIMATION_END_EVENT = getAnimationEndEvent();
 var DEFAULT_START_OPACITY = 0.2;
@@ -130,7 +53,7 @@ var animation = (function (_ref) {
     style.animationName = id;
     style.animationTimingFunction = attrs.animationTimingFunction || vars.animation_curve_default;
 
-    var keyframeStyle = [_defineProperty$2({}, "@keyframes " + id, {
+    var keyframeStyle = [_defineProperty({}, "@keyframes " + id, {
       " 0%": {
         transform: "scale(" + startScale + ")",
         "opacity": startOpacity
@@ -161,13 +84,23 @@ var animation = (function (_ref) {
   });
 });
 
+var classes = {
+  component: "pe-ripple",
+
+  // elements
+  mask: "pe-ripple__mask",
+  waves: "pe-ripple__waves",
+
+  // states
+  unconstrained: "pe-ripple--unconstrained",
+  wavesAnimating: "pe-ripple__waves--animating"
+};
+
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var getElement = function getElement(vnode) {
   return vnode.attrs.element || "div";
 };
-
-var theme = customTheme;
 
 var getInitialState = function getInitialState() {
   return {
@@ -229,11 +162,16 @@ var onUnMount = function onUnMount(_ref2) {
 
 var ripple = Object.freeze({
 	getElement: getElement,
-	theme: theme,
 	getInitialState: getInitialState,
 	createProps: createProps,
 	onMount: onMount,
 	onUnMount: onUnMount
 });
+
+var vars$1 = {
+  color: "inherit" // only specify this variable to get both states
+  // color_light:   "inherit",
+  // color_dark:    "inherit"
+};
 
 export { ripple as coreRipple, classes, vars$1 as vars };

@@ -1,10 +1,6 @@
-import { isTouch, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, isClient } from "polythene-core";
-import { filterSupportedAttributes } from "polythene-core";
-import { customTheme } from "./theme";
-import themeVars from "./theme/vars";
+import { isTouch, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, isClient, filterSupportedAttributes } from "polythene-core";
+import themeVars from "./vars";
 import classes from "./classes";
-
-export const theme = customTheme;
 
 const MAX_TICKS = 100;
 let focusElement;
@@ -37,7 +33,7 @@ const updatePinPosition = state => {
 };
 
 const updateValue = (state, value) => {
-  state.setValue(value);
+  state.setValue(value, true);
   updatePinPosition(state);
 };
 
@@ -287,7 +283,7 @@ export const getInitialState = (vnode, createStream) => {
   const value = createStream(0);
   const normalizeFactor = 1 / stepSize;
 
-  const setValue = v => {
+  const setValue = (v, shouldNotify = false) => {
     if (v < min) v = min;
     if (v > max) v = max;
     value(stepSize
@@ -295,7 +291,7 @@ export const getInitialState = (vnode, createStream) => {
       : v
     );
     fraction((value() - min) / range);
-    if (attrs.onChange) {
+    if (shouldNotify && attrs.onChange) {
       attrs.onChange({
         value: value()
       });

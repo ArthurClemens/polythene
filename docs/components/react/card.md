@@ -464,7 +464,9 @@ You can find more information about theming in  [Theming](../../theming.md).
 #### Themed component
 
 ~~~jsx
-Card.theme(".themed-card", {
+import { CardCSS } from "polythene-css"
+
+CardCSS.addStyle(".themed-card", {
   color_light_main_background: "#0097a7",
   color_light_title_text:      "#fff",
   color_light_subtitle_text:   "#fff"

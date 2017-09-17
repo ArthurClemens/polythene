@@ -1,3 +1,1 @@
-import { vars } from "polythene-core-selection-control";
-
-export default vars;
+export { vars } from "polythene-core-selection-control";

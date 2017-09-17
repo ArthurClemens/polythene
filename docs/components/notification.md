@@ -28,7 +28,7 @@ The information on this page refers to the **Notification** component, but it al
 
 ### Common component options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional       | String   | "div"       | HTML element tag |
 | **className** | optional       | String   |             | Extra CSS class appended to `pe-notification` |
@@ -41,7 +41,7 @@ The information on this page refers to the **Notification** component, but it al
 
 ### Notification specific options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **containerSelector** | optional | String |  | Selector of container HTML element that will be animated with the Notification (does not need to be the direct parent); for instance if a FAB button needs to move together with the Notification, both the FAB and Notification will be placed in the same container; transitions will then move both simultaneously; if set, the Notification's `position` will be `absolute` (default: `fixed`) |
 | **title** | required | String | | Text |
@@ -51,16 +51,16 @@ The information on this page refers to the **Notification** component, but it al
 
 ### Notification appearance options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **layout** | optional | String: "horizontal" or "vertical" | "horizontal" | Sets the arrangement of the action; by default the action is placed right to the title, but longer action labels better fit below the title |
 
 ### Transition options
 
-| **Parameter**    |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter**    |  **Required** | **Type** | **Default** | **Description** |
 | ---------------- | -------------- | -------- | ----------- | --------------- |
 | **transition**   | optional | String: "both", "show", "hide", "none" | "both" | Sets when a transition is used |
-| **transitions**  | optional | Object | Module `src/theme/transitions.js` | Object with functions for keys `show` and `hide`; see "Usage" for an example |
+| **transitions**  | optional | Object | Module `src/transitions.js` | Object with functions for keys `show` and `hide`; see "Usage" for an example |
 | **timeout**      |  |  | | See "Notification specific options" above |
 | **showDuration** | optional | Number | .150 | The show transition duration in seconds |
 | **hideDuration** | optional | Number | .150 | The hide transition duration in seconds |
@@ -71,7 +71,7 @@ The information on this page refers to the **Notification** component, but it al
 
 ### Spawn options
 
-| **Parameter**  |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter**  |  **Required** | **Type** | **Default** | **Description** |
 | -------------- | -------------- | -------- | ----------- | --------------- |
 | **spawn**      | optional       | String   | "default_notification" | Notification spawner id |
 | **id**         | optional       | String   | "default_notification" | Notification instance id |

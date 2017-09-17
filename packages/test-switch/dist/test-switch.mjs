@@ -1,4 +1,5 @@
 import { Icon, RaisedButton, Switch, keys, renderer } from 'polythene-mithril';
+import { SwitchCSS } from 'polythene-css';
 import { Icon as Icon$1, RaisedButton as RaisedButton$1, Switch as Switch$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 
 function createCommonjsModule(fn, module) {
@@ -309,31 +310,31 @@ var genericTests = (function (_ref) {
 
   var trustedBullsEyeIcon = h.trust(bullsEyeSVG);
 
-  // const orange = "#ef6c00";
-  // const blue = "#2196F3";
+  var orange = "#ef6c00";
+  var blue = "#2196F3";
 
-  // Switch.theme(".tests-switch-themed-switch", {
-  //   label_font_size: 28,
-  //   color_light_off_label: orange,
-  //   color_light_on_label:  blue,
-  //   color_dark_off_label:  orange,
-  //   color_dark_on_label:   blue,
-  //   color_light_thumb_off: orange,
-  //   color_light_thumb_on:  blue,
-  //   color_dark_thumb_off:  orange,
-  //   color_dark_thumb_on:   blue
-  // });
+  SwitchCSS.addStyle(".tests-switch-themed-switch", {
+    label_font_size: 28,
+    color_light_off_label: orange,
+    color_light_on_label: blue,
+    color_dark_off_label: orange,
+    color_dark_on_label: blue,
+    color_light_thumb_off: orange,
+    color_light_thumb_on: blue,
+    color_dark_thumb_off: orange,
+    color_dark_thumb_on: blue
+  });
 
-  // Switch.theme(".tests-switch-themed-icon", {
-  //   color_light_thumb_off: "#fff",
-  //   color_light_thumb_on:  "#fff",
-  //   color_light_icon_on:   orange,
-  //   color_light_icon_off:  "#ddd",
-  //   color_dark_thumb_off:  "#fff",
-  //   color_dark_thumb_on:   "#fff",
-  //   color_dark_icon_on:    orange,
-  //   color_dark_icon_off:   "#fff"
-  // });
+  SwitchCSS.addStyle(".tests-switch-themed-icon", {
+    color_light_thumb_off: "#fff",
+    color_light_thumb_on: "#fff",
+    color_light_icon_on: orange,
+    color_light_icon_off: "#ddd",
+    color_dark_thumb_off: "#fff",
+    color_dark_thumb_on: "#fff",
+    color_dark_icon_on: orange,
+    color_dark_icon_off: "#fff"
+  });
 
   var sizeNames = ["small", "regular", "medium", "large"];
 

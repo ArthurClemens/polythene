@@ -1,0 +1,44 @@
+.pe-ripple {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  color: inherit;
+  pointer-events: none
+}
+
+.pe-ripple,.pe-ripple:not(.pe-ripple--unconstrained) {
+  border-radius: inherit
+}
+
+.pe-ripple:not(.pe-ripple--unconstrained) .pe-ripple__mask {
+  overflow: hidden;
+  border-radius: inherit
+}
+
+.pe-ripple .pe-ripple__mask {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateZ(0)
+}
+
+.pe-ripple .pe-ripple__waves {
+  outline: 1px solid transparent;
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  display: none
+}
+
+.pe-ripple .pe-ripple__waves--animating {
+  display: block
+}
+
+.pe-dark-tone.pe-ripple,.pe-dark-tone .pe-ripple,.pe-light-tone.pe-ripple,.pe-light-tone .pe-ripple,.pe-ripple {
+  color: inherit
+}
+/*# sourceMappingURL=polythene-ripple.css.map */

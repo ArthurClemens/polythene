@@ -1,4 +1,5 @@
 import { Icon, List, ListTile, Notification, keys, renderer } from 'polythene-mithril';
+import { ListCSS, ListTileCSS } from 'polythene-css';
 import { Icon as Icon$1, List as List$1, ListTile as ListTile$1, Notification as Notification$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 
 function unwrapExports (x) {
@@ -161,9 +162,9 @@ var keyboardState = (function (_ref) {
       List$$1 = _ref.List;
 
 
-  // ListTile.theme(".tests-list-keyboard-list-tile", {
-  //   color_light_selected_background: "#80d8ff"
-  // });
+  ListTileCSS.addStyle(".tests-list-keyboard-list-tile", {
+    color_light_selected_background: "#80d8ff"
+  });
 
   var cityTile = function cityTile(_ref2) {
     var title = _ref2.title,
@@ -218,21 +219,21 @@ var genericTests = (function (_ref) {
 
   var KeyboardState = keyboardState({ h: h, List: List$$1, ListTile: ListTile$$1 });
 
-  // List.theme(".tests-lists-themed-list", {
-  //   color_light_background: "#F57C00",
-  //   color_light_border:     "#F57C00",
-  //   color_dark_background:  "#5D4037",
-  //   color_dark_border:      "#5D4037",
-  //   padding: 32
-  // });
-  // ListTile.theme(".tests-lists-themed-list-tile", {
-  //   color_light_title:      "#fff",
-  //   color_light_subtitle:   "rgba(255,255,255,.8)",
-  //   color_light_background: "#EF6C00",
-  //   color_dark_title:       "#D7CCC8",
-  //   color_dark_subtitle:    "#BCAAA4",
-  //   color_dark_background:  "#4E342E"
-  // });
+  ListCSS.addStyle(".tests-lists-themed-list", {
+    color_light_background: "#F57C00",
+    color_light_border: "#F57C00",
+    color_dark_background: "#5D4037",
+    color_dark_border: "#5D4037",
+    padding: 32
+  });
+  ListTileCSS.addStyle(".tests-lists-themed-list-tile", {
+    color_light_title: "#fff",
+    color_light_subtitle: "rgba(255,255,255,.8)",
+    color_light_background: "#EF6C00",
+    color_dark_title: "#D7CCC8",
+    color_dark_subtitle: "#BCAAA4",
+    color_dark_background: "#4E342E"
+  });
 
   var ListTileJennifer = h(ListTile$$1, {
     title: "Jennifer Barker",

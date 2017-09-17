@@ -252,7 +252,9 @@ You can find more information about theming in  [Theming](../../theming.md).
 #### Themed component
 
 ~~~javascript
-Menu.theme(".themed-menu", {
+import { MenuCSS } from "polythene-css"
+
+MenuCSS.addStyle(".themed-menu", {
   color_light_background: "#2196F3",
   border_radius:          0
 })

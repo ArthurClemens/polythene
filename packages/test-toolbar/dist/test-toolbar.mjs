@@ -1,5 +1,6 @@
 import { IconButton, Shadow, Toolbar, ToolbarTitle, renderer } from 'polythene-mithril';
 import { classes } from 'polythene-core-toolbar';
+import { ToolbarCSS } from 'polythene-css';
 import { IconButton as IconButton$1, Shadow as Shadow$1, Toolbar as Toolbar$1, ToolbarTitle as ToolbarTitle$1, renderer as renderer$1 } from 'polythene-react';
 
 var iconMenuSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>";
@@ -93,10 +94,10 @@ var genericTests = (function (_ref) {
       toolbarTitleComponentCenteredBalanced = _shared.toolbarTitleComponentCenteredBalanced,
       toolbarTitleComponentIndented = _shared.toolbarTitleComponentIndented;
 
-  // Toolbar.theme(".tests-toolbar-themed-toolbar", {
-  //   color_light_background: "#00c853",
-  //   color_dark_background:  "#00c853"
-  // });
+  ToolbarCSS.addStyle(".tests-toolbar-themed-toolbar", {
+    color_light_background: "#00c853",
+    color_dark_background: "#00c853"
+  });
 
   return [{
     name: "Child node",

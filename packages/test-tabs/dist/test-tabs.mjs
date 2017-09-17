@@ -1,4 +1,5 @@
 import { Tabs, keys, renderer } from 'polythene-mithril';
+import { TabsCSS } from 'polythene-css';
 import { Tabs as Tabs$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 
 function createCommonjsModule(fn, module) {
@@ -253,19 +254,19 @@ var genericTests = (function (_ref) {
 
   var OnChange = onChange({ h: h, Tabs: Tabs$$1 });
 
-  // Tabs.theme(".tests-tabs-fixed-width", {
-  //   tab_max_width: 110,
-  //   tab_min_width: 110
-  // });
+  TabsCSS.addStyle(".tests-tabs-fixed-width", {
+    tab_max_width: 110,
+    tab_min_width: 110
+  });
 
-  // Tabs.theme(".tests-tabs-custom_color", {
-  //   color_light: "#00BCD4",
-  //   color_light_selected: "#F44336",
-  //   color_light_tab_indicator: "#F44336",
-  //   color_dark: "#00BCD4",
-  //   color_dark_selected: "#F44336",
-  //   color_dark_tab_indicator: "#F44336"
-  // });
+  TabsCSS.addStyle(".tests-tabs-custom_color", {
+    color_light: "#00BCD4",
+    color_light_selected: "#F44336",
+    color_light_tab_indicator: "#F44336",
+    color_dark: "#00BCD4",
+    color_dark_selected: "#F44336",
+    color_dark_tab_indicator: "#F44336"
+  });
 
   var threeButtons = [{ label: "New" }, { label: "My Favorites" }, { label: "Saved" }];
 

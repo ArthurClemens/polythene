@@ -1,0 +1,24 @@
+{
+  "name": "polythene-mithril-ios-spinner",
+  "version": "1.0.0-rc.5",
+  "description": "",
+  "main": "dist/polythene-mithril-ios-spinner.js",
+  "module": "dist/polythene-mithril-ios-spinner.mjs",
+  "scripts": {
+    "clean": "rm -rf dist && mkdir dist",
+    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
+    "build": "yarn run rollup"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "dependencies": {
+    "polythene-core": "^1.0.0-rc.4",
+    "polythene-core-ios-spinner": "^1.0.0-rc.5",
+    "polythene-mithril-base": "^1.0.0-rc.4",
+    "polythene-mithril-base-spinner": "^1.0.0-rc.5"
+  },
+  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
+  "license": "MIT"
+}

@@ -25,7 +25,7 @@ Displays a single dialog, or a stack of dialogs.
 
 ### Common component options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional       | String   | "form"      | HTML element tag |
 | **className**     | optional       | String   |             | Extra CSS class appended to `pe-dialog` |
@@ -38,7 +38,7 @@ Displays a single dialog, or a stack of dialogs.
 
 ### Dialog specific options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **formOptions** | optional | Options Object | | Form attribute options such as `type` or `enctype` |
 | **header**      | optional | String, hyperscript or component | | Header row |
@@ -54,7 +54,7 @@ Displays a single dialog, or a stack of dialogs.
 
 ### Dialog appearance options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **z** | optional | Number 0-5 | 3 | Depth of the shadow |
 | **backdrop** | optional | Boolean | false | Set to `true` to show a backdrop background color |
@@ -63,10 +63,10 @@ Displays a single dialog, or a stack of dialogs.
 
 ### Transition options
 
-| **Parameter**    |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter**    |  **Required** | **Type** | **Default** | **Description** |
 | ---------------- | -------------- | -------- | ----------- | --------------- |
 | **transition**   | optional | String: "both", "show", "hide", "none" | "both" | Sets when a transition is used |
-| **transitions**  | optional | Object | Module `src/theme/transitions.js` | Object with functions for keys `show` and `hide`; see "Usage" for an example |
+| **transitions**  | optional | Object | Module `src/transitions.js` | Object with functions for keys `show` and `hide`; see "Usage" for an example |
 | **showDuration** | optional | Number | .150 | The show transition duration in seconds |
 | **hideDuration** | optional | Number | .150 | The hide transition duration in seconds |
 | **showDelay**    | optional | Number | 0 | The show delay duration in seconds |
@@ -76,14 +76,14 @@ Displays a single dialog, or a stack of dialogs.
 
 ### Spawn options
 
-| **Parameter**    |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter**    |  **Required** | **Type** | **Default** | **Description** |
 | ---------------- | -------------- | -------- | ----------- | --------------- |
 | **spawn**        | optional | String | "default_dialog" | Dialog spawner id |
 | **id**           | optional | String | "default_dialog" | Dialog instance id |
 
 ### DialogPane options
 
-| **Parameter**    |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter**    |  **Required** | **Type** | **Default** | **Description** |
 | ---------------- | -------------- | -------- | ----------- | --------------- |
 | **header**       | optional | String, hyperscript or component | | Header row |
 | **title**        | optional | String                           |  | Header title |

@@ -1,4 +1,5 @@
 import { Icon, ListTile, keys, renderer } from 'polythene-mithril';
+import { ListTileCSS } from 'polythene-css';
 import { Icon as Icon$1, ListTile as ListTile$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -14,13 +15,13 @@ var genericTests = (function (_ref) {
 
   var trustedIconStars = h.trust(iconStars$1);
 
-  // ListTile.theme(".tests-list-tile-themed-list-tile", {
-  //   color_light_title:      "#424242",
-  //   color_light_background: "#FFECB3",
-  //   color_dark_title:       "#FFECB3",
-  //   color_dark_background:  "#5D4037",
-  //   font_size_title:        21
-  // });
+  ListTileCSS.addStyle(".tests-list-tile-themed-list-tile", {
+    color_light_title: "#424242",
+    color_light_background: "#FFECB3",
+    color_dark_title: "#FFECB3",
+    color_dark_background: "#5D4037",
+    font_size_title: 21
+  });
 
   return [{
     name: "Option: title",

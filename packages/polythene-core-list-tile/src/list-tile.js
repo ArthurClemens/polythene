@@ -1,10 +1,7 @@
 import { filterSupportedAttributes, isClient } from "polythene-core";
-import { customTheme } from "./theme";
 import classes from "./classes";
 
 export const getElement = () => "div"; // because primary or secondary content can be an "a", the container is always defined as "div", and option `element` is passed to primary content
-
-export const theme = customTheme;
 
 const primaryContent = (h, k, requiresKeys, attrs, children) => {
   const url = attrs.keyboardControl

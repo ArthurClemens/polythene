@@ -1,26 +1,27 @@
 import { Button, renderer } from 'polythene-mithril';
+import { ButtonCSS } from 'polythene-css';
 import { Button as Button$1, renderer as renderer$1 } from 'polythene-react';
 
 var genericTests = (function (_ref) {
   var Button$$1 = _ref.Button;
 
 
-  // Button.theme(".tests-button-themed-button", {
-  //   color_light_background: "#2196F3",
-  //   color_dark_background: "#2196F3",
-  //   color_light_text: "#fff"
-  // });
+  ButtonCSS.addStyle(".tests-button-themed-button", {
+    color_light_background: "#2196F3",
+    color_dark_background: "#2196F3",
+    color_light_text: "#fff"
+  });
 
-  // Button.theme(".blue-on-dark-Button", {
-  //   color_dark_text: "#2196F3"
-  // });
+  ButtonCSS.addStyle(".blue-on-dark-Button", {
+    color_dark_text: "#2196F3"
+  });
 
-  // Button.theme(".tests-button-bordered-button", {
-  //   color_light_text: "#673ab7",
-  //   color_light_border: "#673ab7",
-  //   color_dark_text: "yellow",
-  //   color_dark_border: "yellow"
-  // });
+  ButtonCSS.addStyle(".tests-button-bordered-button", {
+    color_light_text: "#673ab7",
+    color_light_border: "#673ab7",
+    color_dark_text: "yellow",
+    color_dark_border: "yellow"
+  });
 
   return [{
     name: "Option: label",
@@ -7686,12 +7687,12 @@ var reactTests = function reactTests(_ref) {
     return react.createElement(Button$$1, _extends({ className: "react-secondary-button", borders: true }, props));
   };
 
-  // Button.theme(".react-secondary-button", {
-  //   color_light_text: "#673ab7",
-  //   color_light_border: "#673ab7",
-  //   color_dark_text: "yellow",
-  //   color_dark_border: "yellow"
-  // });
+  ButtonCSS.addStyle(".react-secondary-button", {
+    color_light_text: "#673ab7",
+    color_light_border: "#673ab7",
+    color_dark_text: "yellow",
+    color_dark_border: "yellow"
+  });
 
   var withCounter = compose(withState("counter", "setCounter", 0), withHandlers({
     increment: function increment(_ref2) {
@@ -7703,13 +7704,6 @@ var reactTests = function reactTests(_ref) {
       };
     }
   }));
-
-  // Button.theme(".react-button-bordered-button", {
-  //   color_light_text: "#673ab7",
-  //   color_light_border: "#673ab7",
-  //   color_dark_text: "yellow",
-  //   color_dark_border: "yellow"
-  // });
 
   return [{
     section: "React specific tests"
@@ -7806,7 +7800,7 @@ var reactTests = function reactTests(_ref) {
   }, {
     name: "Themed Button: (option: borders) (JSX)",
     component: function component() {
-      return react.createElement(Button$$1, { label: "Button", className: "react-button-bordered-button", borders: true });
+      return react.createElement(Button$$1, { label: "Button", className: "react-secondary-button", borders: true });
     }
   }, {
     name: "Option: inactivate (2s) (JSX)",

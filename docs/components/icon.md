@@ -20,7 +20,7 @@ Displays an icon (image or [SVG](svg.md)).
 
 ### Common component options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional | String | "div" | HTML element tag |
 | **className** | optional | String |       | Extra CSS class appended to `pe-icon` |
@@ -33,7 +33,7 @@ Displays an icon (image or [SVG](svg.md)).
 
 ### Icon options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **svg**       | either `src` or `svg` must be passed | Object |  | [SVG](SVG.md) options object |
 | **src**       | either `src` or `svg` must be passed | String |  | Icon URL (for `img` only) |

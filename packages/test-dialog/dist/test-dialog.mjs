@@ -1,4 +1,5 @@
 import { Button, Dialog, DialogPane, Icon, IconButton, List, ListTile, RaisedButton, Toolbar, ToolbarTitle, keys, renderer } from 'polythene-mithril';
+import { DialogCSS, ToolbarCSS } from 'polythene-css';
 import { Button as Button$1, Dialog as Dialog$1, DialogPane as DialogPane$1, Icon as Icon$1, IconButton as IconButton$1, List as List$1, ListTile as ListTile$1, RaisedButton as RaisedButton$1, Toolbar as Toolbar$1, ToolbarTitle as ToolbarTitle$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 
 function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -41,9 +42,9 @@ var fullScreen = (function (_ref) {
       Dialog$$1 = _ref.Dialog;
 
 
-  // Toolbar.theme(".tests-dialog-full-screen-themed-toolbar", {
-  //   color_dark_background: "#00c853"
-  // });
+  ToolbarCSS.addStyle(".tests-dialog-full-screen-themed-toolbar", {
+    color_dark_background: "#00c853"
+  });
 
   var fullScreenToolbarRow = function fullScreenToolbarRow(title) {
     return [h(IconButton$$1, {
@@ -213,8 +214,6 @@ var replaceDialog = (function (_ref) {
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-// import replacePane from "./components/replace-pane";
-
 var genericTests = (function (_ref) {
   var renderer$$1 = _ref.renderer,
       keys$$1 = _ref.keys,
@@ -254,16 +253,16 @@ var genericTests = (function (_ref) {
     });
   };
 
-  // Dialog.theme(".dialog-tests-rounded-blue", {
-  //   border_radius:          5,
-  //   color_light_background: "#2196F3",
-  //   color_light_text:  "#fff",
-  // });
+  DialogCSS.addStyle(".dialog-tests-rounded-blue", {
+    border_radius: 5,
+    color_light_background: "#2196F3",
+    color_light_text: "#fff"
+  });
 
-  // Toolbar.theme(".tests-dialog-themed-toolbar", {
-  //   color_light_background: "#eee",
-  //   color_dark_background: "#333",
-  // });
+  ToolbarCSS.addStyle(".tests-dialog-themed-toolbar", {
+    color_light_background: "#eee",
+    color_dark_background: "#333"
+  });
 
   return [{
     name: "Option: body",
@@ -4944,9 +4943,9 @@ var iconClose = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\
 
 var content = "Content...";
 
-// Toolbar.theme(".tests-dialog-react-themed-toolbar", {
-//   color_dark_background:  "#00c853"
-// });
+ToolbarCSS.addStyle(".tests-dialog-react-themed-toolbar", {
+  color_dark_background: "#00c853"
+});
 
 var toolbarRow = function toolbarRow(title) {
   return [renderer$1(IconButton$1, {
@@ -5003,9 +5002,9 @@ var BodyText = function BodyText() {
   );
 };
 
-// Toolbar.theme(".tests-dialog-react-jsx-themed-toolbar", {
-//   color_dark_background:  "#00c853"
-// });
+ToolbarCSS.addStyle(".tests-dialog-react-jsx-themed-toolbar", {
+  color_dark_background: "#00c853"
+});
 
 var confirmDialogOpts = {
   body: "This event is not yet saved. Are you sure you want to delete this event?",

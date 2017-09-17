@@ -1,10 +1,11 @@
+import { SnackbarCSS } from "polythene-css";
 
 export default ({ renderer: h, keys: k, Snackbar, Dialog, Button, buttonGroup, containerSelector }) => {
 
-  // Snackbar.theme(".notification-tests-blue-notification", {
-  //   color_dark_background: "#2196F3",
-  //   border_radius: 5
-  // });
+  SnackbarCSS.addStyle(".notification-tests-blue-notification", {
+    color_dark_background: "#2196F3",
+    border_radius: 5
+  });
 
   const dialogOptions = {
     body: "You pressed a message action",
