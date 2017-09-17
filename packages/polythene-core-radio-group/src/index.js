@@ -1,4 +1,3 @@
-import * as coreRadioGroup from "./radio-group";
-export { coreRadioGroup };
+import * as coreRadioGroup from "./radio-group"; export { coreRadioGroup };
 
 export { default as classes } from "./classes";

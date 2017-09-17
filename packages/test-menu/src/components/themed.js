@@ -1,12 +1,14 @@
+import { MenuCSS, ListTileCSS } from "polythene-css";
+
 const themeColor = "#2196F3";
 
-export default ({ renderer: h, Menu, List, ListTile }) => {
+export default ({ renderer: h, List, ListTile }) => {
 
-  Menu.theme(".menu-tests-blue-menu", {
+  MenuCSS.addStyle(".menu-tests-blue-menu", {
     color_dark_background: themeColor,
     border_radius: 6
   });
-  ListTile.theme(".menu-tests-blue-menu-list-tile", {
+  ListTileCSS.addStyle(".menu-tests-blue-menu-list-tile", {
     color_light_title: "#fff",
     color_light_background: themeColor
   });

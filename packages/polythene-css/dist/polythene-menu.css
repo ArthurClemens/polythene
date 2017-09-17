@@ -1,0 +1,86 @@
+.pe-menu.pe-menu--width-1-5 {
+  width: 84px;
+  max-width: 100%
+}
+
+.pe-menu.pe-menu--width-2 {
+  width: 112px;
+  max-width: 100%
+}
+
+.pe-menu.pe-menu--width-3 {
+  width: 168px;
+  max-width: 100%
+}
+
+.pe-menu.pe-menu--width-4 {
+  width: 224px;
+  max-width: 100%
+}
+
+.pe-menu.pe-menu--width-5 {
+  width: 280px;
+  max-width: 100%
+}
+
+.pe-menu.pe-menu--width-6 {
+  width: 336px;
+  max-width: 100%
+}
+
+.pe-menu.pe-menu--width-7 {
+  width: 392px;
+  max-width: 100%
+}
+
+.pe-menu {
+  transition-timing-function: ease-out;
+  transition-property: all;
+  z-index: 1;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  min-width: 84px
+}
+
+.pe-menu.pe-menu--width-auto {
+  width: auto
+}
+
+.pe-menu.pe-menu--visible {
+  opacity: 1
+}
+
+.pe-menu.pe-menu--permanent {
+  position: relative;
+  opacity: 1;
+  z-index: 0
+}
+
+.pe-menu .pe-menu__content {
+  width: 100%;
+  border-radius: 2px
+}
+
+@media (max-width:960px) {
+  .pe-menu {
+    max-width: 280px
+  }
+}
+
+.pe-menu__content .pe-list-tile__title {
+  text-overflow: clip;
+  overflow: initial;
+  display: block;
+  height: auto;
+  max-height: none
+}
+
+.pe-dark-tone.pe-menu .pe-menu__content,.pe-dark-tone .pe-menu .pe-menu__content {
+  background-color: #222
+}
+
+.pe-light-tone.pe-menu .pe-menu__content,.pe-light-tone .pe-menu .pe-menu__content,.pe-menu .pe-menu__content {
+  background-color: #fff
+}
+/*# sourceMappingURL=polythene-menu.css.map */

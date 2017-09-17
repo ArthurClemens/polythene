@@ -1,17 +1,18 @@
 import { longText, cancelOkButtons } from "./shared";
 import form from "./components/form";
 import stream from "mithril/stream";
+import { DialogPaneCSS, ToolbarCSS } from "polythene-css";
 
 export default ({ renderer, keys, DialogPane, Toolbar, ToolbarTitle, Button }) => {
 
   const h = renderer;
 
-  DialogPane.theme(".dialog-pane-tests-blue-dialog", {
+  DialogPaneCSS.addStyle(".dialog-pane-tests-blue-dialog", {
     color_light_background: "#2196F3",
     color_light_body_text:  "#fff"
   });
 
-  Toolbar.theme(".tests-dialog-pane-themed-toolbar", {
+  ToolbarCSS.addStyle(".tests-dialog-pane-themed-toolbar", {
     color_light_background: "#00c853",
     color_dark_background:  "#333"
   });

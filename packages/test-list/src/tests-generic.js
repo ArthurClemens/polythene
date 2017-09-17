@@ -1,3 +1,4 @@
+import { ListCSS, ListTileCSS } from "polythene-css";
 
 import keyboardState from "./components/keyboard-state";
 
@@ -5,14 +6,14 @@ export default ({ List, ListTile, Icon, renderer: h }) => {
 
   const KeyboardState = keyboardState({ h, List, ListTile });
 
-  List.theme(".tests-lists-themed-list", {
+  ListCSS.addStyle(".tests-lists-themed-list", {
     color_light_background: "#F57C00",
     color_light_border:     "#F57C00",
     color_dark_background:  "#5D4037",
     color_dark_border:      "#5D4037",
     padding: 32
   });
-  ListTile.theme(".tests-lists-themed-list-tile", {
+  ListTileCSS.addStyle(".tests-lists-themed-list-tile", {
     color_light_title:      "#fff",
     color_light_subtitle:   "rgba(255,255,255,.8)",
     color_light_background: "#EF6C00",

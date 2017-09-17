@@ -1,17 +1,18 @@
 import { renderer, Button, FAB, Icon, IconButton, List, ListTile } from "polythene-mithril";
 import genericTests from "./tests-generic";
+import { ButtonCSS } from "polythene-css";
 
 const h = renderer;
 
 const secondaryButton = {
-  theme: Button.theme,
   view: vnode => h(Button, {
     className: "tests-custom-theme-secondary-button",
     borders: true,
     ...vnode.attrs
   })
 };
-secondaryButton.theme(".tests-custom-theme-secondary-button", {
+
+ButtonCSS.addStyle(".tests-custom-theme-secondary-button", {
   color_light_border: "#ddd",
   color_light_background: "#fff"
 });

@@ -18,13 +18,14 @@
 
 ## Usage in JavaScript modules
 
-Add Polythene to your project with yarn or npm.
+Add Polythene to your project with [yarn](https://yarnpkg.com/) or [npm](https://www.npmjs.com).
 
 ### Which packages do you need?
 
-Required:
+Essential:
 
 * `polythene-react`
+* `polythene-css` Provides CSS files; optionally activates CSS-in-JS [more info](css.md)
 
 Recommended:
 
@@ -40,13 +41,13 @@ Optional:
 ### Installation
 
 ~~~bash
-yarn add polythene-react polythene-style
+yarn add polythene-react polythene-css polythene-style
 ~~~
 
 or
 
 ~~~bash
-npm install --save polythene-react polythene-style
+npm install --save polythene-react polythene-css polythene-style
 ~~~
 
 ### Examples
@@ -58,6 +59,7 @@ npm install --save polythene-react polythene-style
 ~~~jsx
 import React from "react"
 import { RaisedButton } from "polythene-react"
+import "polythene-css"
 
 <RaisedButton label="Click" />
 ~~~
@@ -81,10 +83,10 @@ h(RaisedButton, {
 import React from "react"
 import ReactDOM from "react-dom"
 import { renderer as h, RaisedButton, Dialog } from "polythene-react"
-import { addTypography, addRoboto } from "polythene-style"
+import "polythene-css"
+import { addTypography } from "polythene-style"
 
 addTypography()
-addRoboto()
 
 const App = () => (
   <div>
@@ -113,10 +115,9 @@ ReactDOM.render(<App />, mountNode)
 ~~~javascript
 import ReactDOM from "react-dom"
 import { renderer as h, RaisedButton, Dialog } from "polythene-react"
-import { addTypography, addRoboto } from "polythene-style"
+import { addTypography } from "polythene-style"
 
 addTypography()
-addRoboto()
 
 const App = () => (
   h("div", [
@@ -151,6 +152,7 @@ https://rawgit.com/ArthurClemens/polythene/master/packages/polythene-react/dist/
 Included:
 
 * All components
+* All component styles from `polythene-css`
 * `subscribe`, `unsubscribe` from `polythene-core`
 * Layout styles from `polythene-utilities`
 * Text and Roboto font from `polythene-style`

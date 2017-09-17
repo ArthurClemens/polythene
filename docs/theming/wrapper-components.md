@@ -13,6 +13,7 @@ Let's say we want to create a flat, bordered secondary button:
 // secondary-button.js
 import m from "mithril"
 import { Button } from "polythene-mithril"
+import { ButtonCSS } from "polythene-css"
 
 export const SecondaryButton = {
   view: vnode =>
@@ -27,8 +28,8 @@ export const SecondaryButton = {
 }
 
 // Create CSS for this component:
-Button.theme(".secondary-button", {
-  color_light_border: "#ddd",
+ButtonCSS.addStyle(".secondary-button", {
+  color_light_border:     "#ddd",
   color_light_background: "#fff"
 })
 ~~~
@@ -50,13 +51,14 @@ m(SecondaryButton, {
 ~~~jsx
 // secondary-button.js
 import { Button } from "polythene-react"
+import { ButtonCSS } from "polythene-css"
 
 export const SecondaryButton = props =>
   <Button className="secondary-button" borders {...props} />
 
 // Create CSS for this component:
-Button.theme(".secondary-button", {
-  color_light_border: "#ddd",
+ButtonCSS.addStyle(".secondary-button", {
+  color_light_border:     "#ddd",
   color_light_background: "#fff"
 })
 ~~~
@@ -69,8 +71,3 @@ import { SecondaryButton } from "./secondary-button"
 
 <SecondaryButton label="Help" />
 ~~~
-
-
-
-
-

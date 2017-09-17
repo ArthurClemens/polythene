@@ -2,6 +2,7 @@ import React from "react"; // eslint-disable-line no-unused-vars
 import { renderer, Ripple } from "polythene-react";
 import genericTests from "./tests-generic";
 import { compose, withState, withHandlers } from "recompose";
+import { RippleCSS } from "polythene-css";
 
 const reactTests = ({ Ripple, renderer: h }) => { // eslint-disable-line no-unused-vars
 
@@ -12,7 +13,7 @@ const reactTests = ({ Ripple, renderer: h }) => { // eslint-disable-line no-unus
     })
   );
 
-  Ripple.theme(".react-ripple-themed-ripple", {
+  RippleCSS.addStyle(".react-ripple-themed-ripple", {
     color_light: "#F44336"
   });
 

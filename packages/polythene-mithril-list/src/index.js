@@ -11,5 +11,4 @@ export const List = StateComponent(Object.assign(
   }
 ));
 
-List.theme = core.theme;
 List.displayName = "List";

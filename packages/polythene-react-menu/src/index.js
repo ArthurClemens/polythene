@@ -25,5 +25,4 @@ export const Menu = props => (
   ))
 );
 
-Menu.theme = core.theme;
 Menu.displayName = "Menu";

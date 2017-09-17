@@ -14,8 +14,6 @@
 
 ## Topics
 
-* [Handling state](handling-state.md)
-* [URLs and router links](handling-urls.md)
 * [CSS](css.md)
 * [Theming](theming.md)
   * [Light and dark](theming/light-and-dark.md)
@@ -23,6 +21,8 @@
   * [Wrapper components](theming/wrapper-components.md)
   * [Global theme file](theming/global-theme-file.md)
   * [Custom CSS](theming/custom-css.md)
+* [Handling state](handling-state.md)
+* [URLs and router links](handling-urls.md)
 
 ## Components
 

@@ -24,7 +24,6 @@ Object.getOwnPropertyNames(Multiple).forEach(function (p) {
   return Notification[p] = Multiple[p];
 });
 
-Notification.theme = coreNotificationInstance.theme;
 Notification.displayName = "Notification";
 
 export { NotificationInstance, Notification };

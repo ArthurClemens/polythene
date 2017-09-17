@@ -1,7 +1,8 @@
+import { SearchCSS } from "polythene-css";
 
 export default ({ renderer: h, Search, SearchField, Shadow }) => {
 
-  Search.theme(".tests-search-themed-search", {
+  SearchCSS.addStyle(".tests-search-themed-search", {
     color_dark_input_text: "#fff",
     color_dark_background: "#43a047"
   });

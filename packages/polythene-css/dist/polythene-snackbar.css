@@ -1,0 +1,52 @@
+.pe-snackbar__holder {
+  -ms-flex-pack: center;
+  justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -ms-flex-preferred-size: initial;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  position: fixed;
+  top: auto;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none
+}
+
+.pe-notification--container .pe-snackbar__holder {
+  position: relative
+}
+
+.pe-notification.pe-snackbar {
+  min-height: 0
+}
+
+@media (min-width:480px) {
+  .pe-notification.pe-snackbar {
+    width: 100%;
+    min-width: 288px;
+    max-width: 568px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px
+  }
+
+  .pe-notification.pe-snackbar.pe-notification--horizontal .pe-notification__title {
+    padding-right: 30px
+  }
+}
+
+.pe-dark-tone.pe-notification.pe-snackbar,.pe-dark-tone .pe-notification.pe-snackbar {
+  color: hsla(0,0%,100%,.87);
+  background: #222
+}
+
+.pe-light-tone.pe-notification.pe-snackbar,.pe-light-tone .pe-notification.pe-snackbar,.pe-notification.pe-snackbar {
+  color: #000;
+  background: #fff
+}
+/*# sourceMappingURL=polythene-snackbar.css.map */

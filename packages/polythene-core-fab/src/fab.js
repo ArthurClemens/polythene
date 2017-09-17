@@ -1,7 +1,4 @@
-import { customTheme } from "./theme";
 import classes from "./classes";
-
-export const theme = customTheme;
 
 // Don't export 'element': it will be the wrapped raised button component (set in polythene-xxx-fab)
 

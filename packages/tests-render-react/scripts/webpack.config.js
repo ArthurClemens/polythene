@@ -1,12 +1,14 @@
 /* global __dirname */
 const path = require("path");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
 
   context: path.resolve(__dirname, "../src"), 
 
   entry: {
-    index: "../index.js"
+    index: "../index.js",
+    // style: `${path.join(process.cwd(), "node_modules")}/polythene-css/dist/polythene.css`
   },
 
   resolve: {
@@ -28,11 +30,19 @@ module.exports = {
         use: [{
           loader: "babel-loader"
         }]
+      },
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: "css-loader"
+        })
       }
     ]
   },
 
   plugins: [
+    new ExtractTextPlugin("css/app.css"),
   ],
 
   devtool: "source-map"

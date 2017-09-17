@@ -6,9 +6,8 @@ This package includes Material Design styles (typography and font).
 ## Usage
 
 ~~~javascript
-import { addRoboto, addTypography } from "polythene-style"
+import { addTypography } from "polythene-style"
 
-addRoboto()
 addTypography()
 ~~~
 

@@ -1,12 +1,13 @@
 /* global __dirname */
 const path = require("path");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
 
-  context: path.resolve(__dirname, "../src"), 
+  context: path.resolve(__dirname, "../src"),
 
   entry: {
-    index: "../index.js"
+    index: "../index.js",
   },
 
   resolve: {
@@ -20,8 +21,8 @@ module.exports = {
   },
 
   output: {
-    path: path.resolve(__dirname, "../dist/js"),
-    filename: "[name].js"
+    path: path.resolve(__dirname, "../dist/"),
+    filename: "js/[name].js"
   },
 
   module: {
@@ -32,11 +33,19 @@ module.exports = {
         use: [{
           loader: "babel-loader"
         }]
+      },
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: "css-loader"
+        })
       }
     ]
   },
 
   plugins: [
+    new ExtractTextPlugin("css/app.css"),
   ],
 
   devtool: "source-map"

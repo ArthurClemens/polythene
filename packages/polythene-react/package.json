@@ -7,8 +7,8 @@
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
-    "build-standalone": "DEPS=1 ENTRY=standalone.js SOURCEMAP=1 DEST=./dist/polythene-react-standalone.js ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd-includes.js && echo '// Version 1.0.0-rc.3' >> ./dist/polythene-react-standalone.js",
-    "build": "npm run rollup && yarn run build-standalone"
+    "build-standalone": "DEPS=1 ENTRY=scripts/standalone.js SOURCEMAP=1 DEST=./dist/polythene-react-standalone.js ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd-includes.js",
+    "build": "yarn run rollup && yarn run build-standalone"
   },
   "files": [
     "dist",
@@ -16,6 +16,7 @@
   ],
   "dependencies": {
     "polythene-core": "^1.0.0-rc.4",
+    "polythene-css": "^1.0.0-rc.4",
     "polythene-fastclick": "^1.0.0-rc.4",
     "polythene-react-base": "^1.0.0-rc.4",
     "polythene-react-button": "^1.0.0-rc.5",
@@ -26,8 +27,11 @@
     "polythene-react-fab": "^1.0.0-rc.5",
     "polythene-react-icon": "^1.0.0-rc.5",
     "polythene-react-icon-button": "^1.0.0-rc.5",
+    "polythene-react-ios-spinner": "^1.0.0-rc.5",
     "polythene-react-list": "^1.0.0-rc.5",
     "polythene-react-list-tile": "^1.0.0-rc.5",
+    "polythene-react-material-design-spinner": "^1.0.0-rc.5",
+    "polythene-react-material-design-progress-spinner": "^1.0.0-rc.5",
     "polythene-react-menu": "^1.0.0-rc.5",
     "polythene-react-notification": "^1.0.0-rc.5",
     "polythene-react-radio-button": "^1.0.0-rc.5",
@@ -38,14 +42,12 @@
     "polythene-react-shadow": "^1.0.0-rc.5",
     "polythene-react-slider": "^1.0.0-rc.5",
     "polythene-react-snackbar": "^1.0.0-rc.5",
-    "polythene-react-spinner": "^1.0.0-rc.5",
     "polythene-react-svg": "^1.0.0-rc.5",
     "polythene-react-switch": "^1.0.0-rc.5",
     "polythene-react-tabs": "^1.0.0-rc.5",
     "polythene-react-textfield": "^1.0.0-rc.5",
     "polythene-react-toolbar": "^1.0.0-rc.5",
-    "polythene-style": "^1.0.0-rc.5",
-    "polythene-utilities": "^1.0.0-rc.5"
+    "polythene-style": "^1.0.0-rc.5"
   },
   "devDependencies": {
     "react": "^15.6.1",

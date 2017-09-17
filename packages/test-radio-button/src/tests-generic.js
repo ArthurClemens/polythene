@@ -1,3 +1,4 @@
+import { RadioButtonCSS } from "polythene-css";
 import onChange from "./components/onChange";
 import events from "./components/events";
 
@@ -5,12 +6,12 @@ const iconStarOutlineSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24.00 
 
 const iconStarFilledSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\"/></svg>";
 
-export default ({ RadioButton, RadioGroup, renderer: h, keys: k }) => {
+export default ({ RadioGroup, renderer: h, keys: k }) => {
 
   const trustedIconStarsOutline = h.trust(iconStarOutlineSVG);
   const trustedIconStarFilled = h.trust(iconStarFilledSVG);
 
-  RadioButton.theme(".tests-radio-button-themed-radio", {
+  RadioButtonCSS.addStyle(".tests-radio-button-themed-radio", {
     label_font_size:   28,
     color_light_on:    "#2196F3",
     color_light_off:   "#2196F3",

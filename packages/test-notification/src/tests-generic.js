@@ -1,7 +1,8 @@
+import { NotificationCSS } from "polythene-css";
 
 export default ({ renderer: h, keys: k, Notification, Dialog, Button, buttonGroup, containerSelector }) => {
 
-  Notification.theme(".notification-tests-blue-notification", {
+  NotificationCSS.addStyle(".notification-tests-blue-notification", {
     color_dark_background: "#2196F3",
     border_radius: 5
   });

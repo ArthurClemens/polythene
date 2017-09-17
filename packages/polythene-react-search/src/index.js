@@ -10,5 +10,4 @@ export const Search = StateComponent(Object.assign(
   }
 ));
 
-Search.theme = core.theme;
 Search.displayName = "Search";

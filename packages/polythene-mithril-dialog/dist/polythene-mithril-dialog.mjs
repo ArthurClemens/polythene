@@ -33,7 +33,6 @@ Object.getOwnPropertyNames(Multiple).forEach(function (p) {
   return Dialog[p] = Multiple[p];
 });
 
-Dialog.theme = coreDialogInstance.theme;
 Dialog.displayName = "Dialog";
 
 export { DialogInstance, Dialog };

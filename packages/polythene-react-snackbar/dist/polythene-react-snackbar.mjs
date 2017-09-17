@@ -24,7 +24,6 @@ Object.getOwnPropertyNames(Multiple).forEach(function (p) {
   return Snackbar[p] = Multiple[p];
 });
 
-Snackbar.theme = coreSnackbarInstance.theme;
 Snackbar.displayName = "Snackbar";
 
 export { SnackbarInstance, Snackbar };

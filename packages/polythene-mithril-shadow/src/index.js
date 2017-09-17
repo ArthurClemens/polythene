@@ -6,5 +6,4 @@ export const Shadow = ViewComponent(Object.assign(
   core
 ));
 
-Shadow.theme = core.theme;
 Shadow.displayName = "Shadow";

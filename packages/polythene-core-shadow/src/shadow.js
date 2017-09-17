@@ -1,11 +1,8 @@
 import { filterSupportedAttributes } from "polythene-core";
-import { customTheme } from "./theme";
 import classes from "./classes";
 
 export const getElement = vnode =>
   vnode.attrs.element || "div";
-
-export const theme = customTheme;
 
 export const createProps = (vnode, { keys: k }) => {
   const attrs = vnode.attrs;

@@ -11,6 +11,7 @@ Available themed spinners:
   * `MaterialDesignProgressSpinner`
 
 
+
 ## Main features
 
 * Conditionally show spinner
@@ -31,7 +32,7 @@ Available themed spinners:
 
 ### Common component options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional | String | "div" | HTML element tag |
 | **className** | optional | String |       | Extra CSS class appended to `pe-spinner` |
@@ -44,14 +45,14 @@ Available themed spinners:
 
 ### Spinner options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **permanent** | optional | Boolean | | Set to `true` to always show the spinner (mostly used for demonstration purposes) |
 | **show** | optional | Boolean | | Set to true to show the spinner |
 
 ### Spinner appearance options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **size** | optional | String | "regular" | Either "small" (24px), "regular" (32px), "medium" (40px), "large" (48px), "fab" (56px). Adds CSS class "small", "regular", "medium", "large", "fab" |
 | **raised** | optional | Boolean | | Set to `true` to create a FAB-like appearance with shadow and whitespace around the spinner |
@@ -61,7 +62,7 @@ Available themed spinners:
 
 For `MaterialDesignSpinner` and `IOSSpinner`:
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **singleColor** | optional | Boolean | | Set to true to use only one color (by default the primary color) |
 
@@ -69,7 +70,7 @@ For `MaterialDesignSpinner` and `IOSSpinner`:
 
 For `MaterialDesignProgressSpinner`:
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **percentage** | optional | Number (0..1) or Function | | (Determinate spinner) Sets the progress percentage value |
 | **animated** | optional | Boolean | false | Set to `true` to animate the progress between subsequent steps |
@@ -87,8 +88,6 @@ Spinner sometimes uses:
 
 See:
 
-* `polythene-core-spinner/src/ios/classes.js`
-* `polythene-core-spinner/src/material-design/classes.js`
-* `polythene-core-spinner/src/material-design-progress/classes.js`
-
-
+* `polythene-core-ios-spinner/src/classes.js`
+* `polythene-core-material-design-spinner/src/classes.js`
+* `polythene-core-material-design-progress-spinner/src/classes.js`

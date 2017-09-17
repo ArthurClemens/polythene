@@ -31,7 +31,6 @@ var Tabs = StateComponent(_extends({}, coreTabs, {
   }
 }));
 
-Tabs.theme = coreTabs.theme;
 Tabs.displayName = "Tabs";
 
 export { Tabs };

@@ -76,7 +76,9 @@ You can find more information about theming in  [Theming](../../theming.md).
 #### Themed component
 
 ~~~jsx
-FAB.theme(".themed-fab", {
+import { FABCSS } from "polythene-css"
+
+FABCSS.addStyle(".themed-fab", {
   color_light_background: "#2196f3",
   color_dark_background:  "#0097a7",
   color_light:            "#fff",

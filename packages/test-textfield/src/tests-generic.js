@@ -1,6 +1,7 @@
 import focus from "./components/focus";
 import onChange from "./components/onChange";
 import setValue from "./components/set-value";
+import { TextFieldCSS } from "polythene-css";
 
 export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
 
@@ -18,7 +19,7 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
       test
     );
 
-  TextField.theme(".tests-textfield-themed-textfield", {
+  TextFieldCSS.addStyle(".tests-textfield-themed-textfield", {
     color_light_input_text: "#0D47A1",
     color_light_input_background: "#BBDEFB",
     color_light_focus_border: "#0D47A1",

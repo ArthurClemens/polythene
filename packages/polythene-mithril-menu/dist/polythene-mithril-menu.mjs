@@ -23,7 +23,6 @@ var Menu = {
   }
 };
 
-Menu.theme = coreMenu.theme;
 Menu.displayName = "Menu";
 
 export { Menu };

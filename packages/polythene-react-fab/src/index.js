@@ -13,5 +13,4 @@ export const FAB = StateComponent(Object.assign(
   }
 ));
 
-FAB.theme = core.theme;
 FAB.displayName = "FAB";

@@ -8,4 +8,4 @@ export const hex = value => {
 };
 
 export const rgba = (colorStr, opacity = 1) =>
-  "rgba(" + colorStr + "," + opacity + ")";
+  `rgba(${colorStr}, ${opacity})`;

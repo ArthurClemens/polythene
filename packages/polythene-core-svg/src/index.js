@@ -1,5 +1,4 @@
-import * as coreSVG from "./svg";
+import * as coreSVG from "./svg"; export { coreSVG };
 
-export { coreSVG };
 export { default as classes } from "./classes";
-export { default as vars } from "./theme/vars";
+export { default as vars } from "./vars";

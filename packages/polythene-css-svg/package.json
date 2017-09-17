@@ -1,0 +1,24 @@
+{
+  "name": "polythene-css-svg",
+  "version": "1.0.0-rc.5",
+  "description": "",
+  "main": "dist/polythene-css-svg.js",
+  "module": "dist/polythene-css-svg.mjs",
+  "scripts": {
+    "clean": "rm -rf dist && mkdir dist",
+    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
+    "build:css": "node ../../scripts/writeComponentCSS.js",
+    "build": "yarn run rollup && yarn run build:css"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "dependencies": {
+    "polythene-core-svg": "^1.0.0-rc.5",
+    "polythene-core-css": "^1.0.0-rc.4",
+    "polythene-theme": "^1.0.0-rc.5"
+  },
+  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
+  "license": "MIT"
+}

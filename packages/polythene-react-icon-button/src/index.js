@@ -13,5 +13,4 @@ export const IconButton = StateComponent(Object.assign(
   }
 ));
 
-IconButton.theme = core.theme;
 IconButton.displayName = "IconButton";

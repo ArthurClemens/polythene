@@ -12,5 +12,4 @@ export const ListTile = StateComponent(Object.assign(
   }
 ));
 
-ListTile.theme = core.theme;
 ListTile.displayName = "ListTile";

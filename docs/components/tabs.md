@@ -28,7 +28,7 @@ Displays a tab row of navigation buttons.
 
 ### Common component options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional       | String | "div" | HTML element tag |
 | **className**     | optional       | String |  | Extra CSS class appended to `pe-tabs` |
@@ -41,7 +41,7 @@ Displays a tab row of navigation buttons.
 
 ### Tabs options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **tabs**   | use `content` or `tabs` | Array of option objects | | Button row content |
 | **all**  | optional       | Options Object | | Tab button options that will be applied to all tabs, see "Tab button options" below |
@@ -49,7 +49,7 @@ Displays a tab row of navigation buttons.
 
 ### Tabs appearance options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **menu** | optional | Boolean | false | Set to `true` to make the tabs behave like a mobile navigation menu; this removes the minimum width settings from the tab buttons and compresses padding and label font size |
 | **small** | optional | Boolean | false | Set to `true` to reduce the tab widths on larger screens |
@@ -70,7 +70,7 @@ Tab buttons use the same parameters as [button](button.md), except for `wash` (d
 
 These options can be grouped into `tabsOpts` and applied to all tabs.
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element** | optional | String | "a" (if `url` is passed) or "div" | HTML element tag |
 | **events** | optional | Object | | Button events; options object containing one or more events like `onclick` |

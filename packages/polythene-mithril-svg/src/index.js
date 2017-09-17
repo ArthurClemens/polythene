@@ -6,5 +6,4 @@ export const SVG = ViewComponent(Object.assign(
   core
 ));
 
-SVG.theme = core.theme;
 SVG.displayName = "SVG";

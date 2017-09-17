@@ -11,5 +11,4 @@ export const Tabs = StateComponent(Object.assign(
   }
 ));
 
-Tabs.theme = core.theme;
 Tabs.displayName = "Tabs";

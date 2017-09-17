@@ -1,0 +1,59 @@
+{
+  "name": "polythene-css",
+  "version": "1.0.0-rc.5",
+  "description": "",
+  "main": "dist/polythene-css.js",
+  "module": "dist/polythene-css.mjs",
+  "scripts": {
+    "clean": "rm -rf dist && mkdir dist",
+    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
+    "build-standalone": "DEPS=1 MODULE_NAME=polytheneCSS ENTRY=scripts/standalone.js SOURCEMAP=1 DEST=./dist/polythene-css-standalone.js ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd-includes.js",
+    "copy-css": "node ./scripts/copyCSS.js",
+    "combine-css": "node ./scripts/combineCSS.js",
+    "build": "yarn run rollup && yarn run build-standalone && yarn run copy-css && yarn run combine-css"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "dependencies": {
+    "polythene-core": "^1.0.0-rc.4",
+    "polythene-core-css": "^1.0.0-rc.4",
+    "polythene-css-base-spinner": "^1.0.0-rc.5",
+    "polythene-css-button": "^1.0.0-rc.5",
+    "polythene-css-card": "^1.0.0-rc.5",
+    "polythene-css-checkbox": "^1.0.0-rc.5",
+    "polythene-css-dialog": "^1.0.0-rc.5",
+    "polythene-css-dialog-pane": "^1.0.0-rc.5",
+    "polythene-css-fab": "^1.0.0-rc.5",
+    "polythene-css-icon": "^1.0.0-rc.5",
+    "polythene-css-icon-button": "^1.0.0-rc.5",
+    "polythene-css-ios-spinner": "^1.0.0-rc.5",
+    "polythene-css-list": "^1.0.0-rc.5",
+    "polythene-css-list-tile": "^1.0.0-rc.5",
+    "polythene-css-material-design-spinner": "^1.0.0-rc.5",
+    "polythene-css-material-design-progress-spinner": "^1.0.0-rc.5",
+    "polythene-css-menu": "^1.0.0-rc.5",
+    "polythene-css-notification": "^1.0.0-rc.5",
+    "polythene-css-radio-button": "^1.0.0-rc.5",
+    "polythene-css-raised-button": "^1.0.0-rc.5",
+    "polythene-css-ripple": "^1.0.0-rc.5",
+    "polythene-css-search": "^1.0.0-rc.5",
+    "polythene-css-selection-control": "^1.0.0-rc.5",
+    "polythene-css-shadow": "^1.0.0-rc.5",
+    "polythene-css-slider": "^1.0.0-rc.5",
+    "polythene-css-snackbar": "^1.0.0-rc.5",
+    "polythene-css-svg": "^1.0.0-rc.5",
+    "polythene-css-switch": "^1.0.0-rc.5",
+    "polythene-css-tabs": "^1.0.0-rc.5",
+    "polythene-css-textfield": "^1.0.0-rc.5",
+    "polythene-css-toolbar": "^1.0.0-rc.5",
+    "polythene-style": "^1.0.0-rc.5",
+    "polythene-utilities": "^1.0.0-rc.5"
+  },
+  "devDependencies": {
+    "polythene-scripts": "^1.0.0-rc.5"
+  },
+  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
+  "license": "MIT"
+}

@@ -4,7 +4,6 @@ import genericTests from "./tests-generic";
 import ProgressSlider from "./components/progress-slider-react-hyperscript";
 
 const reactTests = ({ Shadow, renderer: h, keys: k }) => { // eslint-disable-line no-unused-vars
-  
   return [
     {
       section: "React specific tests",

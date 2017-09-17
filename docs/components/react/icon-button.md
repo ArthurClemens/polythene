@@ -123,7 +123,9 @@ You can find more information about theming in  [Theming](../../theming.md).
 #### Themed component
 
 ~~~jsx
-IconButton.theme(".themed-icon-button", {
+import { IconButtonCSS } from "polythene-css"
+
+IconButtonCSS.addStyle(".themed-icon-button", {
   padding:                24,
   color_light_background: "purple",
   color_dark_background:  "orange",

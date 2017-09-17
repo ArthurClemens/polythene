@@ -91,7 +91,9 @@ You can find more information about theming in  [Theming](../../theming.md).
 #### Themed component
 
 ~~~javascript
-Ripple.theme(".themed-ripple", {
+import { RippleCSS } from "polythene-css"
+
+RippleCSS.addStyle(".themed-ripple", {
   color_light:   "#F44336"
 })
 

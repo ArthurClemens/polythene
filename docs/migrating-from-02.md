@@ -345,8 +345,9 @@ export default {
 ~~~javascript
 // any script
 import { Button } from "polythene-mithril"
+import { ButtonCSS } from "polythene-css"
 
-Button.theme("blue-button", {
+ButtonCSS.addStyle("blue-button", {
   color_light_normal_background: "blue",
   color_light_normal_text: "white"
 })

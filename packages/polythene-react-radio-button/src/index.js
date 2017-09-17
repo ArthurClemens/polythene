@@ -10,5 +10,4 @@ export const RadioButton = StateComponent(Object.assign(
   }
 ));
 
-RadioButton.theme = core.theme;
 RadioButton.displayName = "RadioButton";

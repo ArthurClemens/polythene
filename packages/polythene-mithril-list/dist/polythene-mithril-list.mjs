@@ -13,7 +13,6 @@ var List = StateComponent(_extends({}, coreList, {
   }
 }));
 
-List.theme = coreList.theme;
 List.displayName = "List";
 
 export { List };

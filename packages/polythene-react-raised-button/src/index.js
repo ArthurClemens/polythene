@@ -13,5 +13,4 @@ export const RaisedButton = StateComponent(Object.assign(
   }
 ));
 
-RaisedButton.theme = core.theme;
 RaisedButton.displayName = "RaisedButton";

@@ -19,7 +19,7 @@ Adds a configurable shadow to an element.
 
 ### Common component options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional | String | "div" | HTML element tag |
 | **className** | optional | String |  | Extra CSS class appended to `pe-shadow` |
@@ -30,7 +30,7 @@ Adds a configurable shadow to an element.
 
 ### Shadow appearance options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **z** | optional | Number 0-5 | 1 | Depth of the shadow; value `0` results in no shadow |
 | **animated** | optional | Boolean | false | Set to true to animate the shadow when setting a new z value. |

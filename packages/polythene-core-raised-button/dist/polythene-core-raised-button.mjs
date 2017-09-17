@@ -1,112 +1,14 @@
 import { isServer, pointerEndEvent, pointerStartMoveEvent, subscribe } from 'polythene-core';
-import { rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
+import { rgba } from 'polythene-core-css';
 
 var classes = {
   component: "pe-button pe-text-button pe-raised-button"
 };
 
-var vars$1 = {
-  color_light_background: "#fff",
-  color_light_text: rgba(vars.color_light_foreground, vars.blend_light_text_primary),
-  color_light_hover_background: "transparent",
-  color_light_focus_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
-  color_light_active_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover), // same as hover
-  color_light_disabled_background: rgba(vars.color_light_foreground, vars.blend_light_background_disabled),
-  color_light_disabled_text: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
-
-  color_dark_background: rgba(vars.color_primary),
-  color_dark_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
-  color_dark_hover_background: vars.color_primary_active,
-  color_dark_focus_background: vars.color_primary_active,
-  color_dark_active_background: vars.color_primary_dark,
-  color_dark_disabled_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_disabled),
-  color_dark_disabled_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled)
-};
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var style = function style(scopes, selector, componentVars, tint) {
-  var normalBorder = componentVars["color_" + tint + "_border"] || "transparent";
-  var activeBorder = componentVars["color_" + tint + "_active_border"] || normalBorder;
-  var disabledBorder = componentVars["color_" + tint + "_disabled_border"] || normalBorder;
-  return [_defineProperty({}, scopes.map(function (s) {
-    return s + selector;
-  }).join(","), {
-    "&, &:link, &:visited": {
-      color: componentVars["color_" + tint + "_text"]
-    },
-
-    " .pe-button__content": {
-      backgroundColor: componentVars["color_" + tint + "_background"],
-      borderColor: normalBorder
-    },
-
-    ".pe-button--disabled": {
-      color: componentVars["color_" + tint + "_disabled_text"],
-
-      " .pe-button__content": {
-        backgroundColor: componentVars["color_" + tint + "_disabled_background"],
-        borderColor: disabledBorder
-      }
-    },
-
-    ".pe-button--selected": {
-      " .pe-button__content": {
-        backgroundColor: componentVars["color_" + tint + "_active_background"],
-        borderColor: activeBorder
-      },
-      " .pe-button__focus": {
-        opacity: 1,
-        backgroundColor: componentVars["color_" + tint + "_focus_background"]
-      }
-    },
-
-    ".pe-button--focus": {
-      " .pe-button__focus": {
-        opacity: 1,
-        backgroundColor: componentVars["color_" + tint + "_focus_background"]
-      }
-    }
-  })];
-};
-
-var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, tint) {
-  var normalBorder = componentVars["color_" + tint + "_border"];
-  var hoverBorder = componentVars["color_" + tint + "_border"] || normalBorder;
-  return [_defineProperty({}, scopes.map(function (s) {
-    return s + selector + ":hover";
-  }).join(","), {
-    ":not(.pe-button--selected):not(.pe-button--inactive) .pe-button__wash": {
-      backgroundColor: componentVars["color_" + tint + "_hover_background"],
-      borderColor: hoverBorder
-    }
-  })];
-};
-
-var color = (function (selector, componentVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light tone
-  noTouchStyle(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, "dark"), // inside dark tone
-  noTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, "light")];
-});
-
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var fns = [color];
-var selector = "." + classes.component.replace(/ /g, ".");
-
-var customTheme = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
-};
-
-styler.generateStyles([selector], vars$1, fns);
-
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 // Don't export 'getElement': it will be the wrapped button component (set in polythene-xxx-raised-button)
-
-var theme = customTheme;
 
 var MAX_Z = 5;
 
@@ -206,12 +108,29 @@ var createContent = function createContent() {
 };
 
 var raisedButton = Object.freeze({
-	theme: theme,
 	getInitialState: getInitialState,
 	onMount: onMount,
 	onUnMount: onUnMount,
 	createProps: createProps,
 	createContent: createContent
 });
+
+var vars$1 = {
+  color_light_background: "#fff",
+  color_light_text: rgba(vars.color_light_foreground, vars.blend_light_text_primary),
+  color_light_hover_background: "transparent",
+  color_light_focus_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
+  color_light_active_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover), // same as hover
+  color_light_disabled_background: rgba(vars.color_light_foreground, vars.blend_light_background_disabled),
+  color_light_disabled_text: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
+
+  color_dark_background: rgba(vars.color_primary),
+  color_dark_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
+  color_dark_hover_background: vars.color_primary_active,
+  color_dark_focus_background: vars.color_primary_active,
+  color_dark_active_background: vars.color_primary_dark,
+  color_dark_disabled_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_disabled),
+  color_dark_disabled_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled)
+};
 
 export { raisedButton as coreRaisedButton, classes, vars$1 as vars };

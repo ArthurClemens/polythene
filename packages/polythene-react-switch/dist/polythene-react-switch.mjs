@@ -30,7 +30,6 @@ var Switch = StateComponent(_extends({}, coreSwitch, {
   component: SelectionControl
 }));
 
-Switch.theme = coreSwitch.theme;
 Switch.displayName = "Switch";
 
 export { Switch };

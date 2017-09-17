@@ -37,7 +37,9 @@ You can find more information about theming in  [Theming](../../theming.md).
 #### Themed component
 
 ~~~javascript
-RaisedButton.theme(".themed-raised-button", {
+import { RaisedButtonCSS } from "polythene-css"
+
+RaisedButtonCSS.addStyle(".themed-raised-button", {
   color_light_background: "#ff1744",
   color_light_text:       "#fff"
 })

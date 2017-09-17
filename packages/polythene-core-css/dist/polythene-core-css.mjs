@@ -405,11 +405,19 @@ var generateStyles = function generateStyles(selectors, vars, styleFns) {
   }));
 };
 
+var createStyleSheets = function createStyleSheets(selectors, vars, styleFns) {
+  var selector = selectors.join("");
+  return styleFns.map(function (fn) {
+    return fn(selector, vars);
+  });
+};
+
 var styler = {
   add: add,
   addToDocument: addToDocument,
-  remove: remove,
-  generateStyles: generateStyles
+  createStyleSheets: createStyleSheets,
+  generateStyles: generateStyles,
+  remove: remove
 };
 
 var hex = function hex(value) {
@@ -422,7 +430,7 @@ var hex = function hex(value) {
 
 var rgba = function rgba(colorStr) {
   var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-  return "rgba(" + colorStr + "," + opacity + ")";
+  return "rgba(" + colorStr + ", " + opacity + ")";
 };
 
 export { mixinFlex as flex, mixin, styler, hex, rgba };

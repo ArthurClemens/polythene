@@ -43,7 +43,7 @@ const addToDocument = (opts, ...styles) => {
   if (id) {
     styleEl.setAttribute("id", id);
   }
-  styles.forEach((styleList) => {
+  styles.forEach(styleList => {
     // each style returns a list
     if (Object.keys(styleList).length) {
       styleList.forEach(style => {
@@ -70,9 +70,15 @@ const generateStyles = (selectors, vars, styleFns) => {
   add(id, styleFns.map(fn => fn(selector, vars)));
 };
 
+const createStyleSheets = (selectors, vars, styleFns) => {
+  const selector = selectors.join("");
+  return styleFns.map(fn => fn(selector, vars));
+};
+
 export default {
   add,
   addToDocument,
+  createStyleSheets,
+  generateStyles,
   remove,
-  generateStyles
 };

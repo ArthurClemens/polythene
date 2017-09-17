@@ -21,7 +21,7 @@ See [Material Design Toolbars](https://material.io/guidelines/layout/structure.h
 
 ### Common component options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional | String | "div" | HTML element tag |
 | **className** | optional | String |  | Extra CSS class appended to `pe-toolbar` |
@@ -35,13 +35,13 @@ See [Material Design Toolbars](https://material.io/guidelines/layout/structure.h
 
 ### Toolbar appearance options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **compact** | optional | Boolean | false | Set to `true` to create a more compact Toolbar |
 
 ### ToolbarTitle options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **text**      | either text or children | Boolean |  | Title text |
 | **center**    | optional | Boolean | false | Set to `true` to center the text |

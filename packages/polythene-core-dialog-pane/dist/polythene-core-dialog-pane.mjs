@@ -1,5 +1,4 @@
 import { filterSupportedAttributes, subscribe, unpackAttrs, unsubscribe } from 'polythene-core';
-import { flex, mixin, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 
 var classes = {
@@ -24,197 +23,6 @@ var classes = {
   fullBleed: "pe-dialog-pane--body-full-bleed"
 };
 
-var vars$1 = {
-  padding: 3 * vars.grid_unit_component,
-  header_bottom: 20,
-  header_height: 60,
-  footer_height: 52,
-
-  border_width: 1,
-
-  color_light_title_text: "inherit",
-  color_light_body_text: "inherit",
-  color_light_body_border: rgba(vars.color_light_foreground, vars.blend_light_border_light),
-  color_light_background: "inherit",
-
-  color_dark_title_text: "inherit",
-  color_dark_body_text: "inherit",
-  color_dark_body_border: rgba(vars.color_dark_foreground, vars.blend_dark_border_light),
-  color_dark_background: "inherit"
-};
-
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var lineHeightTitle = 24;
-
-var layout = (function (selector, componentVars) {
-  var _ref;
-
-  return [(_ref = {}, _defineProperty$1(_ref, selector, [flex.layoutVertical, {
-    position: "relative",
-    maxHeight: "100%",
-    minWidth: 56 * 5 + "px",
-    maxWidth: 7 * vars.grid_unit_menu + "px",
-    borderRadius: "inherit",
-    margin: 0,
-
-    ".pe-menu__content": {
-      " .pe-dialog-pane__body": {
-        padding: 0,
-        border: "none"
-      }
-    },
-    " .pe-dialog-pane__header, pe-dialog-pane__body, pe-dialog-pane__header": {
-      zIndex: 1
-    },
-
-    " .pe-dialog-pane__title": {
-      fontSize: vars.font_size_title + "px",
-      lineHeight: lineHeightTitle + "px",
-      fontWeight: vars.font_weight_medium,
-
-      "& + div": {
-        marginTop: "16px"
-      }
-    },
-
-    " .pe-dialog-pane__header": {
-      minHeight: componentVars.header_height + "px",
-
-      " .pe-dialog-pane__title": [mixin.ellipsis(1), {
-        width: "100%"
-      }]
-    },
-
-    " .pe-dialog-pane__header--title": {
-      padding: [componentVars.padding - 4, componentVars.padding, componentVars.header_bottom - 4, componentVars.padding].map(function (v) {
-        return v + "px";
-      }).join(" ")
-    },
-
-    " .pe-dialog-pane__body": [flex.selfStretch, {
-      padding: componentVars.padding + "px",
-      overflowY: "auto",
-      "-webkit-overflow-scrolling": "touch",
-
-      // initially set max-height; will be overridden by dialog core with actual heights
-      maxHeight: "calc(100vh - " + 2 * componentVars.padding + "px - " + (componentVars.header_height + componentVars.footer_height) + "px)",
-
-      " p": {
-        margin: 0
-      },
-      " p + p": {
-        marginTop: "16px"
-      }
-    }],
-
-    ".pe-dialog-pane--header.pe-dialog-pane--border-top": {
-      " .pe-dialog-pane__body": {
-        borderTopStyle: "solid",
-        borderWidth: componentVars.border_width + "px"
-      }
-    },
-
-    ".pe-dialog-pane--footer.pe-dialog-pane--border-bottom": {
-      " .pe-dialog-pane__body": {
-        borderBottomStyle: "solid",
-        borderWidth: componentVars.border_width + "px"
-      }
-    },
-
-    ".pe-dialog-pane--body-full-bleed .pe-dialog-pane__body": {
-      padding: 0,
-      borderStyle: "none"
-    },
-
-    " .pe-dialog-pane__header--title + .pe-dialog-pane__body": {
-      paddingTop: 0
-    },
-
-    " .pe-dialog-pane__footer": {
-      ".pe-dialog-pane__footer--high": {
-        // when buttons are stacked vertically
-        paddingBottom: "8px"
-      },
-      ".pe-dialog-pane__footer--buttons": {
-        padding: "2px 8px",
-        minHeight: componentVars.footer_height + "px",
-        fontSize: 0 // remove inline block spacing
-      }
-    },
-
-    " .pe-dialog-pane__actions": [flex.layoutHorizontal, flex.layoutEndJustified, flex.layoutWrap, {
-      margin: "0 -4px",
-
-      " .pe-button": {
-        height: "36px",
-        marginTop: "6px",
-        marginBottom: "6px",
-        padding: 0
-      }
-    }]
-  }]), _defineProperty$1(_ref, ".pe-menu__content", {
-    " .pe-dialog-pane__body": {
-      padding: 0,
-      border: "none"
-    }
-  }), _defineProperty$1(_ref, " .pe-dialog--full-screen", {
-    " .pe-dialog-pane__content": {
-      borderRadius: 0,
-      maxWidth: "none",
-      height: "100vh",
-      width: "100vw"
-    },
-    " .pe-dialog-pane, .pe-dialog-pane__body": {
-      height: "100vh",
-      maxHeight: "100vh",
-      border: "none",
-      maxWidth: "initial"
-    }
-  }), _ref)];
-});
-
-function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var style = function style(scopes, selector, componentVars, tint) {
-  return [_defineProperty$2({}, scopes.map(function (s) {
-    return s + selector;
-  }).join(","), {
-
-    backgroundColor: componentVars["color_" + tint + "_background"],
-
-    " .pe-dialog-pane__header .pe-dialog-pane__title": {
-      color: componentVars["color_" + tint + "_title_text"]
-    },
-    " .pe-dialog-pane__body": {
-      color: componentVars["color_" + tint + "_body_text"],
-      borderColor: "transparen" // default
-    },
-    ".pe-dialog-pane--border-top .pe-dialog-pane__body": {
-      borderTopColor: componentVars["color_" + tint + "_body_border"]
-    },
-    ".pe-dialog-pane--border-bottom .pe-dialog-pane__body": {
-      borderBottomColor: componentVars["color_" + tint + "_body_border"]
-    }
-  })];
-};
-
-var color = (function (selector, componentVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
-});
-
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var fns = [layout, color];
-var selector = "." + classes.component;
-
-var customTheme = function customTheme(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
-};
-
-styler.generateStyles([selector], vars$1, fns);
-
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -222,8 +30,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var getElement = function getElement(vnode) {
   return vnode.attrs.element || "form";
 };
-
-var theme = customTheme;
 
 var SCROLL_WATCH_END_TIMER = 150;
 
@@ -360,12 +166,35 @@ var createContent = function createContent(vnode, _ref2) {
 
 var dialogPane = Object.freeze({
 	getElement: getElement,
-	theme: theme,
 	getInitialState: getInitialState,
 	onMount: onMount,
 	onUnMount: onUnMount,
 	createProps: createProps,
 	createContent: createContent
 });
+
+var rgba = function rgba(colorStr) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return "rgba(" + colorStr + ", " + opacity + ")";
+};
+
+var vars$1 = {
+  padding: 3 * vars.grid_unit_component,
+  header_bottom: 20,
+  header_height: 60,
+  footer_height: 52,
+
+  border_width: 1,
+
+  color_light_title_text: "inherit",
+  color_light_body_text: "inherit",
+  color_light_body_border: rgba(vars.color_light_foreground, vars.blend_light_border_light),
+  color_light_background: "inherit",
+
+  color_dark_title_text: "inherit",
+  color_dark_body_text: "inherit",
+  color_dark_body_border: rgba(vars.color_dark_foreground, vars.blend_dark_border_light),
+  color_dark_background: "inherit"
+};
 
 export { dialogPane as coreDialogPane, classes, vars$1 as vars };

@@ -1,11 +1,8 @@
 import { filterSupportedAttributes, subscribe, unsubscribe, show, hide, isServer } from "polythene-core";
-import { customTheme } from "./theme";
 import classes from "./classes";
 
 export const getElement = vnode =>
   vnode.attrs.element || "div";
-
-export const theme = customTheme;
 
 const SHADOW_Z         = 1;
 const OFFSET_V         = -8;

@@ -28,7 +28,7 @@ Form input field. Generates a styled text input element.
 
 ### Common component options
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional       | String   | "div"       | HTML element tag |
 | **className**     | optional       | String   |             | Extra CSS class appended to `pe-textfield` |
@@ -43,7 +43,7 @@ Form input field. Generates a styled text input element.
 
 These options have effect on the overall component (label, input, help, error).
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **counter** | optional | Number | | Set to any number greater than 0 to create a character counter below the field; optionally combine with `maxlength` (see below) |
 | **dense** | optional | Boolean | | Creates a more compact layout |
@@ -66,7 +66,7 @@ These options have effect on the overall component (label, input, help, error).
 
 These options also have effect on the generated HTML input field.
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **autofocus** (React: **autoFocus**) | optional | Boolean | | Set to `true` to give the input field autofocus |
 | **disabled** | optional | Boolean | | Creates a disabled input field |
@@ -90,7 +90,7 @@ These options also have effect on the generated HTML input field.
 
 ### Functions
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **onChange**  | optional | Function(state {Object}) | | Callback function that accepts the field state (Object with properties `focus` {Boolean}, `dirty` {Boolean}, `value` {String}, `el` {HTMLElement}, `invalid` {Boolean}, `error` {String}) |
 | **validate** | optional | Function(value) | | Use for custom validation; the validate function accepts the current field value; it should return an object with attributes `valid` (Boolean) and `error` (message string) |

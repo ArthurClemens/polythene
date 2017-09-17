@@ -118,7 +118,9 @@ You can find more information about theming in  [Theming](../../theming.md).
 #### Themed component
 
 ~~~javascript
-Toolbar.theme(".themed-toolbar", {
+import { ToolbarCSS } from "polythene-css"
+
+ToolbarCSS.addStyle(".themed-toolbar", {
   color_dark_background: "#00c853"
 })
 

@@ -1,16 +1,6 @@
-import { addWebFont } from 'polythene-utilities';
-import { styler } from 'polythene-core-css';
 import { isClient } from 'polythene-core';
-
-var robotoStyles = [{
-  "html, body, button, input, select, textarea": {
-    fontFamily: "Roboto, Helvetica, Arial, sans-serif"
-  }
-}];
-
-var addRoboto = function addRoboto() {
-  return addWebFont("google", "Roboto:400,500,700,400italic:latin"), styler.add("pe-roboto", robotoStyles);
-};
+import { addWebFont } from 'polythene-utilities';
+import { flex, styler } from 'polythene-core-css';
 
 // Global style variables
 
@@ -25,6 +15,7 @@ var animation_curve_slow_in_linear_out = "cubic-bezier(0, 0, .2, 1)";
 var animation_curve_linear_in_fast_out = "cubic-bezier(.4, 0, 1, 1)";
 
 var vars = {
+  // grid
   grid_unit: grid_unit,
   grid_unit_component: grid_unit_component,
   grid_unit_menu: 56,
@@ -136,7 +127,7 @@ var vars = {
 
 var fontSize = 14;
 
-var typographyStyles = [{
+var styles = [{
   " h1, h2, h3, h4, h5, h6, p": {
     margin: 0,
     padding: 0
@@ -260,8 +251,115 @@ var resetStyles = [{
   }
 }];
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+var fontParam = "Roboto:400,500,700";
+
+var baseRobotoStyle = [{
+  "html, body, button, input, select, textarea": {
+    fontFamily: "Roboto, Helvetica, Arial, sans-serif"
+  }
+}];
+
+var robotoStyles = [{
+  "@import": "url(\"https://fonts.googleapis.com/css?family=" + fontParam + "\")"
+}].concat(baseRobotoStyle);
+
 var addTypography = function addTypography() {
-  return styler.add("pe-material-design-typography", resetStyles, typographyStyles);
+  addWebFont("google", "Roboto:400,500,700,400italic:latin");
+  styler.add("pe-material-design-typography", resetStyles, baseRobotoStyle, typographyStyles);
 };
 
-export { addRoboto, addTypography, vars };
+var typographyStyles = [].concat(_toConsumableArray(robotoStyles), _toConsumableArray(styles), _toConsumableArray(resetStyles));
+
+var flexClasses = [{
+  ".layout, .layout.horizontal": flex.layout,
+  ".layout.horizontal.inline, .layout.vertical.inline": flex.layoutInline,
+  ".layout.horizontal": flex.layoutHorizontal,
+  ".layout.horizontal.reverse": flex.layoutHorizontalReverse,
+  ".layout.vertical": flex.layoutVertical,
+  ".layout.vertical.reverse": flex.layoutVerticalReverse,
+  ".layout.wrap": flex.layoutWrap,
+  ".layout.wrap.reverse": flex.layoutWrapReverse,
+  ".flex": flex.flex(1),
+  ".span.flex": { "display": "block" }, // for IE 10
+  ".flex.auto-vertical": flex.flexAutoVertical,
+  ".flex.auto": flex.flexAuto,
+  ".flex.none": flex.flexIndex("none"),
+  ".flex.one": flex.flexIndex(1),
+  ".flex.two": flex.flexIndex(2),
+  ".flex.three": flex.flexIndex(3),
+  ".flex.four": flex.flexIndex(4),
+  ".flex.five": flex.flexIndex(5),
+  ".flex.six": flex.flexIndex(6),
+  ".flex.seven": flex.flexIndex(7),
+  ".flex.eight": flex.flexIndex(8),
+  ".flex.nine": flex.flexIndex(9),
+  ".flex.ten": flex.flexIndex(10),
+  ".flex.eleven": flex.flexIndex(11),
+  ".flex.twelve": flex.flexIndex(12),
+
+  // alignment in cross axis
+  ".layout.start": flex.layoutStart,
+  ".layout.center, .layout.center-center": flex.layoutCenter,
+  ".layout.end": flex.layoutEnd,
+
+  // alignment in main axis
+  ".layout.start-justified": flex.layoutStartJustified,
+  ".layout.center-justified, .layout.center-center": flex.layoutCenterJustified,
+  ".layout.end-justified": flex.layoutEndJustified,
+  ".layout.around-justified": flex.layoutAroundJustified,
+  ".layout.justified": flex.layoutJustified,
+
+  // self alignment
+  ".self-start": flex.selfStart,
+  ".self-center": flex.selfCenter,
+  ".self-end": flex.selfEnd,
+  ".self-stretch": flex.selfStretch
+}];
+
+var commonClasses = [{
+  ".pe-block": {
+    display: "block"
+  },
+
+  ".pe-inline-block": {
+    display: "inline-block"
+  },
+
+  // ie support for hidden
+  ".pe-hidden": {
+    display: "none !important"
+  },
+
+  ".pe-relative": {
+    position: "relative"
+  },
+
+  ".pe-absolute": {
+    position: "absolute"
+  },
+
+  ".pe-fit": {
+    position: "absolute",
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0
+  },
+
+  ".pe-fullbleed": {
+    margin: 0,
+    height: "100vh"
+  }
+}];
+
+function _toConsumableArray$1(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+var layoutStyles = [].concat(_toConsumableArray$1(flexClasses), _toConsumableArray$1(commonClasses));
+
+var addLayoutStyles = function addLayoutStyles() {
+  return styler.add("pe-layout", flexClasses, commonClasses);
+};
+
+export { vars, typographyStyles, addTypography, layoutStyles, addLayoutStyles };

@@ -84,7 +84,7 @@ Shows a new message.
 
 `Notification.show(messageOptions, spawnOptions)`
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **messageOptions** | required | Options object or Function that returns an options object | | See [Notification options](../notification.md) |
 | **spawnOptions** | optional | Options object | | Pass `spawn` when using multiple spawners and `spawn` is also set at the spawner |
@@ -123,7 +123,7 @@ Hides the current message.
 
 `Notification.hide(spawnOptions)`
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **spawnOptions** | optional | Options object | | Pass `spawn` when using multiple spawners and `spawn` is also set at the spawner |
 | **Returns** |||| Promise |
@@ -142,7 +142,7 @@ Pauses the timer of the current message.
 
 `Notification.pause(spawnOptions)`
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **spawnOptions** | optional | Options object | | Pass `spawn` when using multiple spawners and `spawn` is also set at the spawner |
 | **Returns** |||| Returns nothing |
@@ -151,7 +151,7 @@ Pauses the timer of the current message.
 
 Unpauses the timer of the current message.
 
-| **Parameter** |  **Mandatory** | **Type** | **Default** | **Description** |
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **spawnOptions** | optional | Options object | | Pass `spawn` when using multiple spawners and `spawn` is also set at the spawner |
 | **Returns** |||| Returns nothing |
@@ -250,7 +250,9 @@ You can find more information about theming in  [Theming](../../theming.md).
 #### Themed component
 
 ~~~javascript
-Notification.theme(".themed-notification", {
+import { NotificationCSS } from "polythene-css"
+
+NotificationCSS.addStyle(".themed-notification", {
   color_dark_background: "#2196F3",
   border_radius: 5
 })
@@ -298,7 +300,7 @@ The transitions for showing and hiding of notifications can be customized with t
 
 #### Custom transition
 
-Use option `transitions` to define custom transition behaviour. See `src/theme/transitions.js` for the default behavior.
+Use option `transitions` to define custom transition behaviour. See `src/transitions.js` for the default behavior.
 
 To create a fade-in while moving up:
 

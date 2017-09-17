@@ -264,7 +264,9 @@ You can find more information about theming in  [Theming](../../theming.md).
 #### Themed component
 
 ~~~javascript
-ListTile.theme(".themed-list-tile", {
+import { ListTileCSS } from "polythene-css"
+
+ListTileCSS.addStyle(".themed-list-tile", {
   color_light_title:      "#424242",
   color_light_background: "#FFECB3",
   color_dark_title:       "#FFECB3",

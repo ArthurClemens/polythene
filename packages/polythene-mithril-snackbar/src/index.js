@@ -22,5 +22,4 @@ const Multiple = Multi({ options, renderer });
 export const Snackbar = StateComponent(Multiple);
 Object.getOwnPropertyNames(Multiple).forEach(p => Snackbar[p] = Multiple[p]);
 
-Snackbar.theme = core.theme;
 Snackbar.displayName = "Snackbar";

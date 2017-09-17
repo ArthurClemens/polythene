@@ -1,6 +1,6 @@
 import { StateComponent, renderer } from "polythene-react-base";
 import { Multi } from "polythene-core";
-import { coreDialogInstance as core, transitions, classes } from "polythene-core-dialog";
+import { coreDialogInstance as core, classes, transitions } from "polythene-core-dialog";
 import { DialogPane } from "polythene-react-dialog-pane";
 import { Shadow } from "polythene-react-shadow";
 
@@ -29,5 +29,4 @@ const Multiple = Multi({ options, renderer });
 export const Dialog = StateComponent(Multiple);
 Object.getOwnPropertyNames(Multiple).forEach(p => Dialog[p] = Multiple[p]);
 
-Dialog.theme = core.theme;
 Dialog.displayName = "Dialog";

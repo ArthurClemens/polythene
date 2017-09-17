@@ -21,7 +21,6 @@ var Menu = function Menu(props) {
   }));
 };
 
-Menu.theme = coreMenu.theme;
 Menu.displayName = "Menu";
 
 export { Menu };

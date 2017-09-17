@@ -1,5 +1,4 @@
-import * as coreRadioButton from "./radio-button";
+import * as coreRadioButton from "./radio-button"; export { coreRadioButton };
 
-export { coreRadioButton };
 export { default as classes } from "./classes";
-export { default as vars } from "./theme/vars";
+export { vars } from "./vars";

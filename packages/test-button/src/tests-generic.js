@@ -1,17 +1,18 @@
+import { ButtonCSS } from "polythene-css";
 
 export default ({ Button }) => {
   
-  Button.theme(".tests-button-themed-button", {
+  ButtonCSS.addStyle(".tests-button-themed-button", {
     color_light_background: "#2196F3",
     color_dark_background: "#2196F3",
     color_light_text: "#fff"
   });
 
-  Button.theme(".blue-on-dark-Button", {
+  ButtonCSS.addStyle(".blue-on-dark-Button", {
     color_dark_text: "#2196F3"
   });
 
-  Button.theme(".tests-button-bordered-button", {
+  ButtonCSS.addStyle(".tests-button-bordered-button", {
     color_light_text: "#673ab7",
     color_light_border: "#673ab7",
     color_dark_text: "yellow",

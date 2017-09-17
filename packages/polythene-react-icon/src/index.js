@@ -11,5 +11,4 @@ export const Icon = ViewComponent(Object.assign(
   }
 ));
 
-Icon.theme = core.theme;
 Icon.displayName = "Icon";

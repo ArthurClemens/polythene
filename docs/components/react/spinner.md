@@ -196,7 +196,9 @@ You can find more information about theming in  [Theming](../../theming.md).
 #### Themed component
 
 ~~~javascript
-Spinner.theme(".themed-spinner", {
+import { SpinnerCSS } from "polythene-css"
+
+SpinnerCSS.addStyle(".themed-spinner", {
   color_light_background: "#2196F3",
   border_radius:          0
 })

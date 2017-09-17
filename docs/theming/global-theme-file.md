@@ -2,7 +2,7 @@
 
 # Global theme file
 
-Use this method to set global theme variables, such as the primary action color. 
+Use this method to set global theme variables, such as the app's primary action color. 
 
 
 ## Background: how a theme is found

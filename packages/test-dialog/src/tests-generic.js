@@ -4,7 +4,7 @@ import fullwidth from "./components/fullwidth";
 import menu from "./components/menu";
 import settings from "./components/settings";
 import replaceDialog from "./components/replace-dialog";
-// import replacePane from "./components/replace-pane";
+import { DialogCSS, ToolbarCSS } from "polythene-css";
 
 export default ({ renderer, keys, Dialog, DialogPane, Button, RaisedButton, Toolbar, ToolbarTitle, IconButton, Icon, List, ListTile }) => {
 
@@ -24,13 +24,13 @@ export default ({ renderer, keys, Dialog, DialogPane, Button, RaisedButton, Tool
     }
   });
 
-  Dialog.theme(".dialog-tests-rounded-blue", {
+  DialogCSS.addStyle(".dialog-tests-rounded-blue", {
     border_radius:          5,
     color_light_background: "#2196F3",
     color_light_text:  "#fff",
   });
 
-  Toolbar.theme(".tests-dialog-themed-toolbar", {
+  ToolbarCSS.addStyle(".tests-dialog-themed-toolbar", {
     color_light_background: "#eee",
     color_dark_background: "#333",
   });

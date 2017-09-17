@@ -1,11 +1,8 @@
 import { filterSupportedAttributes } from "polythene-core";
 import { isTouch, subscribe, unsubscribe } from "polythene-core";
 import { scrollTo } from "polythene-utilities";
-import vars from "./theme/vars";
+import vars from "./vars";
 import classes from "./classes";
-import { customTheme } from "./theme";
-
-export const theme = customTheme;
 
 const whenCreateDone = () => Promise.resolve();
 

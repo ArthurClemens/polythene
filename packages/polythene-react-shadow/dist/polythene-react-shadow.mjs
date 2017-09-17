@@ -5,7 +5,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var Shadow = ViewComponent(_extends({}, coreShadow));
 
-Shadow.theme = coreShadow.theme;
 Shadow.displayName = "Shadow";
 
 export { Shadow };

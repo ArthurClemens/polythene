@@ -231,7 +231,9 @@ You can find more information about theming in  [Theming](../../theming.md).
 #### Themed component
 
 ~~~javascript
-Search.theme(".themed-search", {
+import { SearchCSS } from "polythene-css"
+
+SearchCSS.addStyle(".themed-search", {
   color_light_input_text: "#0D47A1",
   color_light_background: "#BBDEFB",
   color_dark_input_text:  "#eee",

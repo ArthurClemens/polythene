@@ -173,7 +173,9 @@ You can find more information about theming in  [Theming](../../theming.md).
 #### Themed component
 
 ~~~javascript
-List.theme(".themed-list", {
+import { ListCSS } from "polythene-css"
+
+ListCSS.addStyle(".themed-list", {
   color_light_background: "#F57C00",
   color_light_border:     "#F57C00",
   color_dark_background:  "#5D4037",
