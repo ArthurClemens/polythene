@@ -58,7 +58,7 @@ The styles are automatically added to `<head>`. This is triggered by having `imp
 
 ### Writing styles to CSS files
 
-It is also possible to generate static files using the same `addStyle` function.
+It is also possible to generate static files.
 
 Steps: 
 

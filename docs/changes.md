@@ -4,8 +4,13 @@
 
 ### 1.0.0-rc.6
 
+CSS can now optionally be read from files; see [CSS](css.md) for more details.
+
+
 Changes to components:
 
+* All
+  * As consequence of the CSS change, the component method `theme` has been replaced with `addStyle`; see [Theming Configuration variables](theming/configuration-variables.md)
 * RadioGroup
   * `onChange` now returns a state object that contains a variable `value`
 

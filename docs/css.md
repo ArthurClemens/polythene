@@ -2,8 +2,9 @@
 
 Polythene styles can be included in 2 ways:
 
+1. Using CSS-in-JS
 1. Importing/linking CSS files
-2. Using CSS-in-JS
+
 
 Which option you choose may depend on how (and if) you want to use theming - more on that below.
 
@@ -11,6 +12,26 @@ Which option you choose may depend on how (and if) you want to use theming - mor
 ## Getting started
 
 With either option, `polythene-css` should be installed - see [Getting started with Mithril](getting-started-mithril.md) or [Getting started with React](getting-started-react.md).
+
+
+## Using CSS-in-JS
+
+Using CSS-in-JS has minimal setup costs and gives the possibility to add themed component styles on the fly.
+
+Component styles are automatically added to `<head>` using [j2c](http://j2c.py.gy).
+
+
+### Theming options
+
+This requires no build step and is as simple as: `addStyle(".themed-component", { vars })`; more details at: [Theming Configuration variables](theming/configuration-variables.md).
+
+### Usage
+
+Importing `polythene-css` activates CSS-in-JS:
+
+~~~javascript
+import "polythene-css"
+~~~
 
 
 ## Using CSS files
@@ -56,27 +77,6 @@ Copy the Polythene CSS file (or files) to your project and link to there.
 
 Note that it is far too easy to forget to update these files, so this can only be recommended if you automate the copying.
 
-
-
-
-## Using CSS-in-JS
-
-Using CSS-in-JS has minimal setup costs and gives the possibility to add themed component styles on the fly.
-
-Component styles are automatically added to `<head>` using [j2c](http://j2c.py.gy).
-
-
-### Theming options
-
-This requires no build step and is as simple as: `addStyle(".themed-component", { vars })`. More details at: [Theming](theming.md)
-
-### Usage
-
-Importing `polythene-css` activates CSS-in-JS:
-
-~~~javascript
-import "polythene-css"
-~~~
 
 
 

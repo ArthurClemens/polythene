@@ -13,22 +13,21 @@ writeCSS(options)
 
 ~~~javascript
 import { writeCSS } from "polythene-scripts"
-import { addStyle } from "polythene-css-svg"
+import { SVGCSS, ButtonCSS } from "polythene-css"
 
 const styles = [
-  addStyle(".themed-svg-red", {
+  themeStyles(".themed-svg-red", {
     color_light: "red",
     color_dark: "orange"
   }),
-  addStyle(".themed-svg-green", {
-    color_light: "green",
-    color_dark: "blue"
+  ButtonCSS.themeStyles(".themed-red-button", {
+    color_light_text: "red"
   })
 ]
 
 writeCSS({
   styles,
-  path: "./app.css",
+  path: "./theme.css",
   autoPrefix: true
 })
 ~~~
