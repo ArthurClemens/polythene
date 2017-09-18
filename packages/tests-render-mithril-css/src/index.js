@@ -120,6 +120,7 @@ const App = {
           m(".component", 
             m(Card, {
               className: "themed-card",
+              tone: "dark",
               content: [
                 {
                   primary: {
