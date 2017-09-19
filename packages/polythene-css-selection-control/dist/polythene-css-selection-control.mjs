@@ -167,8 +167,8 @@ var color = (function (selector, componentVars) {
   style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
 });
 
-var styles = function styles() {
+var getStyle = function getStyle() {
   return null;
 };
 
-export { styles, layout, color };
+export { getStyle, layout, color };

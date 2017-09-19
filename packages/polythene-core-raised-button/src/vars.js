@@ -1,5 +1,7 @@
 import { vars } from "polythene-theme";
-import { rgba } from "polythene-core-css";
+
+const rgba = (colorStr, opacity = 1) =>
+  `rgba(${colorStr}, ${opacity})`;
 
 export default {
   color_light_background:          "#fff",

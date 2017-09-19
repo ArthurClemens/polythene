@@ -1,6 +1,5 @@
 import { isServer, pointerEndEvent, pointerStartMoveEvent, subscribe } from 'polythene-core';
 import { vars } from 'polythene-theme';
-import { rgba } from 'polythene-core-css';
 
 var classes = {
   component: "pe-button pe-text-button pe-raised-button"
@@ -114,6 +113,11 @@ var raisedButton = Object.freeze({
 	createProps: createProps,
 	createContent: createContent
 });
+
+var rgba = function rgba(colorStr) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return "rgba(" + colorStr + ", " + opacity + ")";
+};
 
 var vars$1 = {
   color_light_background: "#fff",

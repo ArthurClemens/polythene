@@ -91,14 +91,10 @@ var addStyle = function addStyle(customSelector, customVars) {
   return styler.generateStyles([customSelector, selector], _extends({}, vars, customVars), fns);
 };
 
-var styles = function styles() {
-  return styler.createStyleSheets([selector], vars, fns);
-};
-
-var themeStyles = function themeStyles(customSelector, customVars) {
-  return styler.createStyleSheets([customSelector, selector], _extends({}, vars, customVars), fns);
+var getStyle = function getStyle(customSelector, customVars) {
+  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends({}, vars, customVars), fns) : styler.createStyleSheets([selector], vars, fns);
 };
 
 styler.generateStyles([selector], vars, fns);
 
-export { addStyle, styles, themeStyles };
+export { addStyle, getStyle };

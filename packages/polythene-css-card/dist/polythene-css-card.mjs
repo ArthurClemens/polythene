@@ -306,12 +306,8 @@ var addStyle = function addStyle(customSelector, customVars) {
   styler.generateStyles([customSelector, selector], _extends({}, vars, customVars), [layout, color]), styler.generateStyles([customSelector, " " + overlaySheetSelector], _extends({}, vars, customVars), [overlayColor]), styler.generateStyles([customSelector, " " + contentSelector], _extends({}, vars, customVars), [contentColor]), styler.generateStyles([customSelector, " " + overlayContentSelector], _extends({}, vars, customVars), [contentColor]);
 };
 
-var styles = function styles() {
-  return styler.createStyleSheets([selector], vars, [layout, color]).concat(styler.createStyleSheets([overlaySheetSelector], vars, [overlayColor])).concat(styler.createStyleSheets([contentSelector], vars, [contentColor])).concat(styler.createStyleSheets([overlayContentSelector], vars, [contentColor]));
-};
-
-var themeStyles = function themeStyles(customSelector, customVars) {
-  return styler.createStyleSheets([customSelector, selector], _extends({}, vars, customVars), [layout, color]).concat(styler.createStyleSheets([customSelector, " " + overlaySheetSelector], _extends({}, vars, customVars), [overlayColor])).concat(styler.createStyleSheets([customSelector, " " + contentSelector], _extends({}, vars, customVars), [contentColor])).concat(styler.createStyleSheets([customSelector, " " + overlayContentSelector], _extends({}, vars, customVars), [contentColor]));
+var getStyle = function getStyle(customSelector, customVars) {
+  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends({}, vars, customVars), [layout, color]).concat(styler.createStyleSheets([customSelector, " " + overlaySheetSelector], _extends({}, vars, customVars), [overlayColor])).concat(styler.createStyleSheets([customSelector, " " + contentSelector], _extends({}, vars, customVars), [contentColor])).concat(styler.createStyleSheets([customSelector, " " + overlayContentSelector], _extends({}, vars, customVars), [contentColor])) : styler.createStyleSheets([selector], vars, [layout, color]).concat(styler.createStyleSheets([overlaySheetSelector], vars, [overlayColor])).concat(styler.createStyleSheets([contentSelector], vars, [contentColor])).concat(styler.createStyleSheets([overlayContentSelector], vars, [contentColor]));
 };
 
 styler.generateStyles([selector], vars, [layout, color]);
@@ -319,4 +315,4 @@ styler.generateStyles([overlaySheetSelector], vars, [overlayColor]);
 styler.generateStyles([contentSelector], vars, [contentColor]);
 styler.generateStyles([overlayContentSelector], vars, [contentColor]);
 
-export { addStyle, styles, themeStyles };
+export { addStyle, getStyle };

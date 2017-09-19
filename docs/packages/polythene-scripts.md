@@ -12,16 +12,16 @@ writeCSS(options)
 ### Example
 
 ~~~javascript
-import { writeCSS } from "polythene-scripts"
-import { SVGCSS, ButtonCSS } from "polythene-css"
+const { writeCSS } = require("polythene-scripts");
+const { SVGCSS, ButtonCSS } = require("polythene-css");
 
 const styles = [
-  themeStyles(".themed-svg-red", {
+  ButtonCSS.getStyle(".themed-red-button", {
+    color_light_text: "red"
+  }),
+  SVGCSS.getStyle(".themed-svg-red", {
     color_light: "red",
     color_dark: "orange"
-  }),
-  ButtonCSS.themeStyles(".themed-red-button", {
-    color_light_text: "red"
   })
 ]
 

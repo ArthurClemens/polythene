@@ -1,4 +1,4 @@
 export { default as layout } from "./layout";
 export { default as color } from "./color";
 
-export const styles = () => null;
+export const getStyle = () => null;

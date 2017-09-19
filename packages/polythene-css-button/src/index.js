@@ -12,12 +12,11 @@ const selector = `.${classes.component.replace(/ /g, ".")}`;
 export const addStyle = (customSelector, customVars) => 
   styler.generateStyles([customSelector, selector], {...vars, ...customVars}, fns);
 
-export const styles = () => 
-  styler.createStyleSheets([baseSelector], vars, baseFns)
-    .concat(styler.createStyleSheets([selector], vars, fns));
-
-export const themeStyles = (customSelector, customVars) => 
-  styler.createStyleSheets([customSelector, selector], {...vars, ...customVars}, fns);
+export const getStyle = (customSelector, customVars) => 
+  customSelector
+    ? styler.createStyleSheets([customSelector, selector], {...vars, ...customVars}, fns)
+    : styler.createStyleSheets([baseSelector], vars, baseFns)
+      .concat(styler.createStyleSheets([selector], vars, fns));  
 
 styler.generateStyles([baseSelector], vars, baseFns);
 styler.generateStyles([selector], vars, fns);

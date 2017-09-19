@@ -47,7 +47,8 @@
     "polythene-react-tabs": "^1.0.0-rc.5",
     "polythene-react-textfield": "^1.0.0-rc.5",
     "polythene-react-toolbar": "^1.0.0-rc.5",
-    "polythene-style": "^1.0.0-rc.5"
+    "polythene-style": "^1.0.0-rc.5",
+    "polythene-utilities": "^1.0.0-rc.5"
   },
   "devDependencies": {
     "react": "^15.6.1",

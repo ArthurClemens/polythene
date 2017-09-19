@@ -13,12 +13,11 @@ const holderSelector = `.${classes.holder}`;
 export const addStyle = (customSelector, customVars) => 
   styler.generateStyles([customSelector, selector], {...vars, ...customVars}, fns);
 
-export const styles = () => 
-  styler.createStyleSheets([holderSelector], vars, holderFns)
-    .concat(styler.createStyleSheets([selector], vars, fns));
-
-export const themeStyles = (customSelector, customVars) => 
-  styler.createStyleSheets([customSelector, selector], {...vars, ...customVars}, fns);
+export const getStyle = (customSelector, customVars) => 
+  customSelector
+    ? styler.createStyleSheets([customSelector, selector], {...vars, ...customVars}, fns)
+    : styler.createStyleSheets([holderSelector], vars, holderFns)
+      .concat(styler.createStyleSheets([selector], vars, fns));
 
 styler.generateStyles([holderSelector], vars, holderFns);
 styler.generateStyles([selector], vars, fns);
