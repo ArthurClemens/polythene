@@ -2,6 +2,11 @@
 
 ## Pre release
 
+### 1.0.0-rc.7
+
+Fix for newly introduced bug in button onclick handling.
+
+
 ### 1.0.0-rc.6
 
 * CSS can now optionally be read from files (as opposed to CSS-in-JS only); see [CSS](css.md) for more details.

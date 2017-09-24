@@ -7,7 +7,7 @@ export const getElement = vnode =>
 export const getInitialState = (vnode, createStream) => {
   const dom = createStream();
   const focus = createStream(false);
-  const click = createStream();
+  const click = createStream(); // Force redraw for IE 11
   const inactive = createStream(false);
   const mouseover = createStream(false);
   return {
