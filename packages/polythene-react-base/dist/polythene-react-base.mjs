@@ -20765,7 +20765,7 @@ var StateComponent = function StateComponent(_ref) {
         this.state.redrawOnUpdate && this.state.redrawOnUpdate.map(function (values) {
           return _this2._mounted && _this2.setState({ redrawValues: values });
         });
-        onMount(this.createVirtualNode());
+        onMount(this.createVirtualNode(), { keys: keys });
       }
     }, {
       key: "componentWillUnmount",
@@ -20856,7 +20856,7 @@ var ViewComponent = function ViewComponent(_ref) {
     _createClass$2(_class, [{
       key: "componentDidMount",
       value: function componentDidMount() {
-        onMount(this.createVirtualNode());
+        onMount(this.createVirtualNode(), { keys: keys });
       }
     }, {
       key: "componentWillUnmount",

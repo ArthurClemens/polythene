@@ -28,7 +28,7 @@ export const ViewComponent = ({
     view: view
       ? vnode => view(vnode, { render, renderer })
       : vnode => render(vnode),
-    oncreate: onMount,
+    oncreate: vnode => onMount(vnode, { keys }),
     onremove: onUnMount
   };
 };

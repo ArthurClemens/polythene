@@ -33,26 +33,38 @@ var getElement = function getElement(vnode) {
 
 var getInitialState = function getInitialState(vnode, createStream) {
   var dom = createStream();
+  var click = createStream(false);
   var focus = createStream(false);
   var inactive = createStream(false);
   var mouseover = createStream(false);
   return {
     dom: dom,
+    click: click,
     focus: focus,
     inactive: inactive,
     mouseover: mouseover,
-    redrawOnUpdate: createStream.merge([dom, focus, inactive, mouseover])
+    redrawOnUpdate: createStream.merge([dom, click, focus, inactive, mouseover])
   };
 };
 
-var onMount = function onMount(vnode) {
+var onMount = function onMount(vnode, _ref) {
+  var k = _ref.keys;
+
   if (!vnode.dom) {
     return;
   }
   var state = vnode.state;
+  var attrs = vnode.attrs;
   state.dom(vnode.dom);
 
   if (isClient) {
+    var handleInactivate = function handleInactivate() {
+      return state.inactive(true), setTimeout(function () {
+        return state.inactive(false);
+      }, attrs.inactivate * 1000);
+    };
+    var onClickHandler = attrs.events ? attrs.events[k.onclick] : null;
+
     var onFocus = function onFocus() {
       return state.focus(!state.mouseover());
     };
@@ -65,14 +77,17 @@ var onMount = function onMount(vnode) {
     var onMouseOut = function onMouseOut() {
       return state.mouseover(false);
     };
-
+    var onClick = function onClick(e) {
+      return state.click(e), attrs.inactivate !== undefined && handleInactivate(), onClickHandler ? onClickHandler(e) : true;
+    };
     vnode.dom.addEventListener("focus", onFocus, false);
     vnode.dom.addEventListener("blur", onBlur, false);
     vnode.dom.addEventListener("mouseover", onMouseOver, false);
     vnode.dom.addEventListener("mouseout", onMouseOut, false);
+    vnode.dom.addEventListener("click", onClick, false);
 
     state.removeEventListeners = function () {
-      return vnode.dom.removeEventListener("focus", onFocus, false), vnode.dom.removeEventListener("blur", onBlur, false), vnode.dom.removeEventListener("mouseover", onBlur, false), vnode.dom.removeEventListener("mouseout", onMouseOut, false);
+      return vnode.dom.removeEventListener("focus", onFocus, false), vnode.dom.removeEventListener("blur", onBlur, false), vnode.dom.removeEventListener("mouseover", onBlur, false), vnode.dom.removeEventListener("mouseout", onMouseOut, false), vnode.dom.removeEventListener("click", onClick, false);
     };
   }
 };
@@ -81,10 +96,10 @@ var onUnMount = function onUnMount(vnode) {
   return vnode.state.removeEventListeners && vnode.state.removeEventListeners();
 };
 
-var createProps = function createProps(vnode, _ref) {
-  var _ref2;
+var createProps = function createProps(vnode, _ref2) {
+  var _ref3;
 
-  var k = _ref.keys;
+  var k = _ref2.keys;
 
   var state = vnode.state;
   var attrs = vnode.attrs;
@@ -93,33 +108,25 @@ var createProps = function createProps(vnode, _ref) {
   var onClickHandler = attrs.events && attrs.events[k.onclick];
   var onKeyDownHandler = attrs.events && attrs.events[k.onkeydown] || onClickHandler;
 
-  var handleInactivate = function handleInactivate() {
-    return state.inactive(true), setTimeout(function () {
-      return state.inactive(false);
-    }, attrs.inactivate * 1000);
-  };
-
   return _extends({}, filterSupportedAttributes(attrs, { add: [k.formaction, "type"], remove: ["style"] }), // Set style on content, not on component
   {
     className: [attrs.parentClassName || classes.component, attrs.selected ? classes.selected : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, attrs.borders ? classes.borders : null, state.focus() ? classes.focused : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
-  }, inactive ? null : (_ref2 = {}, _defineProperty(_ref2, k.tabindex, disabled || inactive ? -1 : attrs[k.tabindex] || 0), _defineProperty(_ref2, k.onclick, function (e) {
-    return attrs.inactivate !== undefined && handleInactivate(), onClickHandler && onClickHandler(e), true;
-  }), _defineProperty(_ref2, k.onkeydown, function (e) {
+  }, inactive ? null : (_ref3 = {}, _defineProperty(_ref3, k.tabindex, disabled || inactive ? -1 : attrs[k.tabindex] || 0), _defineProperty(_ref3, k.onkeydown, function (e) {
     if (e.key === "Enter" && state.focus()) {
       state.focus(false);
       if (onKeyDownHandler) {
         onKeyDownHandler(e);
       }
     }
-  }), _ref2), attrs.events, attrs.url, disabled ? { disabled: true } : null);
+  }), _ref3), attrs.events ? _extends({}, attrs.events, _defineProperty({}, k.onclick, null)) : null, attrs.url, disabled ? { disabled: true } : null);
 };
 
-var createContent = function createContent(vnode, _ref3) {
+var createContent = function createContent(vnode, _ref4) {
   var _h;
 
-  var h = _ref3.renderer,
-      k = _ref3.keys,
-      Ripple = _ref3.Ripple;
+  var h = _ref4.renderer,
+      k = _ref4.keys,
+      Ripple = _ref4.Ripple;
 
   var state = vnode.state;
   var attrs = vnode.attrs;

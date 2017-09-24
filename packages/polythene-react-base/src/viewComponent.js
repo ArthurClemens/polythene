@@ -24,7 +24,7 @@ export const ViewComponent = ({
     }
 
     componentDidMount() {
-      onMount(this.createVirtualNode());
+      onMount(this.createVirtualNode(), { keys });
     }
 
     componentWillUnmount() {

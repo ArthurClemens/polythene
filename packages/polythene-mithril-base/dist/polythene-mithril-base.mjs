@@ -268,7 +268,7 @@ var StateComponent = function StateComponent(_ref) {
 
   var oncreate = function oncreate(vnode) {
     vnode._mounted = true;
-    onMount(vnode);
+    onMount(vnode, { keys: keys });
   };
 
   var render = function render(vnode) {
@@ -318,7 +318,9 @@ var ViewComponent = function ViewComponent(_ref) {
     } : function (vnode) {
       return render(vnode);
     },
-    oncreate: onMount,
+    oncreate: function oncreate(vnode) {
+      return onMount(vnode, { keys: keys });
+    },
     onremove: onUnMount
   };
 };

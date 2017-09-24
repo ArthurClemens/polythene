@@ -31,7 +31,7 @@ export const StateComponent = ({
 
   const oncreate = vnode => {
     vnode._mounted = true;
-    onMount(vnode);
+    onMount(vnode, { keys });
   };
 
   const render = vnode => {

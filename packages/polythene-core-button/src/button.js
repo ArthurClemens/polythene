@@ -6,41 +6,62 @@ export const getElement = vnode =>
 
 export const getInitialState = (vnode, createStream) => {
   const dom = createStream();
+  const click = createStream(false);
   const focus = createStream(false);
   const inactive = createStream(false);
   const mouseover = createStream(false);
   return {
     dom,
+    click,
     focus,
     inactive,
     mouseover,
-    redrawOnUpdate: createStream.merge([dom, focus, inactive, mouseover])
+    redrawOnUpdate: createStream.merge([dom, click, focus, inactive, mouseover])
   };
 };
 
-export const onMount = vnode => {
+export const onMount = (vnode, { keys: k }) => {
   if (!vnode.dom) {
     return;
   }
   const state = vnode.state;
+  const attrs = vnode.attrs;
   state.dom(vnode.dom);
   
   if (isClient) {
+    const handleInactivate = () => (
+      state.inactive(true),
+      setTimeout(() => (
+        state.inactive(false)
+      ), attrs.inactivate * 1000)
+    );
+    const onClickHandler = attrs.events
+      ? attrs.events[k.onclick]
+      : null;
+
     const onFocus = () => state.focus(!state.mouseover());
     const onBlur = () => state.focus(false);
     const onMouseOver = () => state.mouseover(true);
     const onMouseOut = () => state.mouseover(false);
-    
+    const onClick = e => (
+      state.click(e),
+      attrs.inactivate !== undefined && handleInactivate(),
+      onClickHandler
+        ? onClickHandler(e)
+        : true
+    );
     vnode.dom.addEventListener("focus", onFocus, false);
     vnode.dom.addEventListener("blur", onBlur, false);
     vnode.dom.addEventListener("mouseover", onMouseOver, false);
     vnode.dom.addEventListener("mouseout", onMouseOut, false);
+    vnode.dom.addEventListener("click", onClick, false);
 
     state.removeEventListeners = () => (
       vnode.dom.removeEventListener("focus", onFocus, false),
       vnode.dom.removeEventListener("blur", onBlur, false),
       vnode.dom.removeEventListener("mouseover", onBlur, false),
-      vnode.dom.removeEventListener("mouseout", onMouseOut, false)
+      vnode.dom.removeEventListener("mouseout", onMouseOut, false),
+      vnode.dom.removeEventListener("click", onClick, false)
     );
   }
 };
@@ -56,13 +77,6 @@ export const createProps = (vnode, { keys: k }) => {
   const onClickHandler = attrs.events && attrs.events[k.onclick];
   const onKeyDownHandler = (attrs.events && attrs.events[k.onkeydown]) || onClickHandler;
 
-  const handleInactivate = () => (
-    state.inactive(true),
-    setTimeout(() => (
-      state.inactive(false)
-    ), attrs.inactivate * 1000)
-  );
-  
   return Object.assign(
     {}, 
     filterSupportedAttributes(attrs, { add: [k.formaction, "type"], remove: ["style"] }), // Set style on content, not on component
@@ -83,11 +97,6 @@ export const createProps = (vnode, { keys: k }) => {
       [k.tabindex]: disabled || inactive
         ? -1
         : attrs[k.tabindex] || 0,
-      [k.onclick]: e => (
-        attrs.inactivate !== undefined && handleInactivate(),
-        onClickHandler && onClickHandler(e),
-        true
-      ),
       [k.onkeydown]: e => {
         if (e.key === "Enter" && state.focus()) {
           state.focus(false);
@@ -97,7 +106,15 @@ export const createProps = (vnode, { keys: k }) => {
         }
       }
     },
-    attrs.events,
+    attrs.events
+      ? Object.assign(
+        {},
+        attrs.events,
+        {
+          [k.onclick]: null // handled by event listener
+        }
+      )
+      : null,
     attrs.url,
     disabled ? { disabled: true } : null
   );
