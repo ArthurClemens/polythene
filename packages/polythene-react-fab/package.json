@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-fab",
-  "version": "1.0.0-rc.5",
+  "version": "1.0.0-rc.6",
   "description": "",
   "main": "dist/polythene-react-fab.js",
   "module": "dist/polythene-react-fab.mjs",
@@ -14,10 +14,10 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-fab": "^1.0.0-rc.5",
-    "polythene-react-base": "^1.0.0-rc.4",
-    "polythene-react-icon": "^1.0.0-rc.5",
-    "polythene-react-raised-button": "^1.0.0-rc.5"
+    "polythene-core-fab": "^1.0.0-rc.6",
+    "polythene-react-base": "^1.0.0-rc.6",
+    "polythene-react-icon": "^1.0.0-rc.6",
+    "polythene-react-raised-button": "^1.0.0-rc.6"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

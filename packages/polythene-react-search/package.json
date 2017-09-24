@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-search",
-  "version": "1.0.0-rc.5",
+  "version": "1.0.0-rc.6",
   "description": "",
   "main": "dist/polythene-react-search.js",
   "module": "dist/polythene-react-search.mjs",
@@ -14,9 +14,9 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-search": "^1.0.0-rc.5",
-    "polythene-react-base": "^1.0.0-rc.4",
-    "polythene-react-textfield": "^1.0.0-rc.5"
+    "polythene-core-search": "^1.0.0-rc.6",
+    "polythene-react-base": "^1.0.0-rc.6",
+    "polythene-react-textfield": "^1.0.0-rc.6"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

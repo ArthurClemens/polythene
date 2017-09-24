@@ -1,6 +1,6 @@
 {
   "name": "polythene-core-tabs",
-  "version": "1.0.0-rc.5",
+  "version": "1.0.0-rc.6",
   "description": "",
   "main": "dist/polythene-core-tabs.js",
   "module": "dist/polythene-core-tabs.mjs",
@@ -14,11 +14,11 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "^1.0.0-rc.4",
-    "polythene-core-button": "^1.0.0-rc.5",
-    "polythene-core-icon-button": "^1.0.0-rc.5",
-    "polythene-theme": "^1.0.0-rc.5",
-    "polythene-utilities": "^1.0.0-rc.5"
+    "polythene-core": "^1.0.0-rc.6",
+    "polythene-core-button": "^1.0.0-rc.6",
+    "polythene-core-icon-button": "^1.0.0-rc.6",
+    "polythene-theme": "^1.0.0-rc.6",
+    "polythene-utilities": "^1.0.0-rc.6"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

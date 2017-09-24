@@ -1,6 +1,6 @@
 {
   "name": "polythene-core",
-  "version": "1.0.0-rc.4",
+  "version": "1.0.0-rc.6",
   "description": "",
   "main": "dist/polythene-core.js",
   "module": "dist/polythene-core.mjs",

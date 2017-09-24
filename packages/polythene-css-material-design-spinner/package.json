@@ -1,6 +1,6 @@
 {
   "name": "polythene-css-material-design-spinner",
-  "version": "1.0.0-rc.5",
+  "version": "1.0.0-rc.6",
   "description": "",
   "main": "dist/polythene-css-material-design-spinner.js",
   "module": "dist/polythene-css-material-design-spinner.mjs",
@@ -15,9 +15,9 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-material-design-spinner": "^1.0.0-rc.5",
-    "polythene-core-css": "^1.0.0-rc.4",
-    "polythene-theme": "^1.0.0-rc.5"
+    "polythene-core-css": "^1.0.0-rc.6",
+    "polythene-core-material-design-spinner": "^1.0.0-rc.6",
+    "polythene-theme": "^1.0.0-rc.6"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"
