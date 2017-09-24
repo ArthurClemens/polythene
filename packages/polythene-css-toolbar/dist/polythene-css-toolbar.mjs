@@ -28,6 +28,7 @@ var layout = (function (selector, componentVars) {
     },
     " .pe-toolbar__title--center": {
       textAlign: "center",
+      justifyContent: "center",
       marginLeft: componentVars.title_padding + "px",
       marginRight: componentVars.title_padding + "px"
     },

@@ -47,6 +47,7 @@
 
 .pe-toolbar .pe-toolbar__title--center {
   text-align: center;
+  justify-content: center;
   margin-left: 20px;
   margin-right: 20px
 }
