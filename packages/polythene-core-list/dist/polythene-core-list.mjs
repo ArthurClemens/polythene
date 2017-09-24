@@ -109,13 +109,13 @@ var createContent = function createContent(vnode, _ref3) {
   var highlightIndex = state.highlightIndex();
   var tiles = attrs.tiles ? attrs.tiles : attrs.content ? attrs.content : attrs.children || vnode.children;
   var index = -1;
-  return [headerOpts ? h(ListTile, _extends({}, requiresKeys ? { key: "header" } : null, headerOpts, {
+  return [headerOpts ? h(ListTile, _extends({}, requiresKeys ? { key: "header" } : null, attrs.all, headerOpts, {
     header: true
   })) : null, attrs.keyboardControl ? tiles.map(function (tileOpts) {
     if (!tileOpts.header) {
       index++;
     }
-    return tileOpts.tag !== undefined ? tileOpts : h(ListTile, _extends({}, tileOpts, !tileOpts.header && {
+    return tileOpts.tag !== undefined ? tileOpts : h(ListTile, _extends({}, attrs.all, tileOpts, !tileOpts.header && {
       keyboardControl: true,
       register: state.registerTile(state),
       setHighlightIndex: state.highlightIndex,
@@ -125,6 +125,8 @@ var createContent = function createContent(vnode, _ref3) {
         return onSelect(e, vnode);
       }))
     }));
+  }) : attrs.all ? tiles.map(function (tileOpts) {
+    return h(ListTile, _extends({}, attrs.all, tileOpts));
   }) : tiles];
 };
 

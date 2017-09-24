@@ -1,9 +1,11 @@
 import React, { Component } from "react"; // eslint-disable-line no-unused-vars
+import { withRouter } from "react-router-dom";
 import { renderer, keys, Menu, List, ListTile, Shadow, IconButton, RaisedButton } from "polythene-react";
 import genericTests from "./tests-generic";
 import SimpleHyperscript from "./components/simple-react-hyperscript";
 import SimpleJSX from "./components/simple-jsx";
 import SettingsJSX from "./components/settings-dialog-jsx";
+import Links from "./components/links-react";
 
 const reactTests = ({ renderer: h, Menu, List, ListTile }) => {
 
@@ -24,8 +26,16 @@ const reactTests = ({ renderer: h, Menu, List, ListTile }) => {
       name: "Simple menu (demo without state) (hyperscript)",
       interactive: true,
       exclude: true,
-      component: () => 
+      component: () =>
         h(SimpleHyperscript)
+    },
+    {
+      name: "Menu with links",
+      interactive: true,
+      exclude: true,
+      component: withRouter(({ history }) => 
+        h(Links, { history })
+      )
     },
     {
       section: "React JSX tests",

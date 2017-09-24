@@ -51,6 +51,8 @@ See also: [List Tile](list-tile.md#keyboard-control)
 | **header.title**  | optional | String | | Title text label |
 | **header.sticky** | optional | Boolean | | Make header sticky when scrolling; [does not work in Edge](http://caniuse.com/#feat=css-sticky) |
 | **tiles**         | use `tiles` or `content` | Array of type String, hyperscript or component | | List of [List Tiles](list-tile.md) |
+| **all**  | optional       | Options Object | | [List Tiles](list-tile.md) options that will be applied to all tiles; only works when List children are passed as options (instead of passing a list of ListTile components) |
+
 
 ### List appearance options
 

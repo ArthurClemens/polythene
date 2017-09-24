@@ -111,6 +111,7 @@ export const createContent = (vnode, { renderer: h, requiresKeys, keys: k, ListT
     headerOpts ? h(ListTile, Object.assign(
       {},
       requiresKeys ? { key: "header" } : null,
+      attrs.all,
       headerOpts,
       {
         header: true
@@ -125,6 +126,7 @@ export const createContent = (vnode, { renderer: h, requiresKeys, keys: k, ListT
           ? tileOpts
           : h(ListTile, Object.assign(
             {},
+            attrs.all,
             tileOpts,
             !tileOpts.header && {
               keyboardControl: true,
@@ -142,6 +144,14 @@ export const createContent = (vnode, { renderer: h, requiresKeys, keys: k, ListT
             }
           ));
       })
-      : tiles
+      : attrs.all
+        ? tiles.map(tileOpts =>
+          h(ListTile, Object.assign(
+            {},
+            attrs.all,
+            tileOpts
+          ))
+        )
+        : tiles
   ];
 };

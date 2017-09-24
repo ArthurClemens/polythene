@@ -1,6 +1,8 @@
 import { renderer, keys, Dialog, RaisedButton, Menu, List, ListTile, Shadow, IconButton } from "polythene-mithril";
 import genericTests from "./tests-generic";
 import settingsDialog from "./components/settings-dialog";
+import opener from "./components/opener";
+import links from "./components/links-mithril";
 
 const mithrilTests = ({ Menu, List, ListTile, renderer: h }) => {
 
@@ -25,6 +27,12 @@ const mithrilTests = ({ Menu, List, ListTile, renderer: h }) => {
             }
           )
       }
+    },
+    {
+      name: "Menu with links",
+      interactive: true,
+      exclude: true,
+      component: opener({ renderer, keys, Menu, RaisedButton, List, ListTile, menuFn: links, id: "links" })
     },
   ];
     

@@ -5,7 +5,7 @@ export default ({ show, target, h, Menu, List, didHide, getState }) =>
     show,
     didHide,
     getState,
-    size: 2, 
+    size: 5, 
     content: h(List,
       {
         all: {
@@ -16,11 +16,19 @@ export default ({ show, target, h, Menu, List, didHide, getState }) =>
       },
       [
         {
-          title: "Yes",
+          title: "Link to Shadow",
+          url: {
+            href: "/shadow",
+            oncreate: h.route.link
+          }
         },
         {
-          title: "No",
-        }
+          title: "Link to Button",
+          url: {
+            href: "/button",
+            oncreate: h.route.link
+          }
+        },
       ]
     )
   });
