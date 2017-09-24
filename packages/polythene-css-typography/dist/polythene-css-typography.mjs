@@ -132,15 +132,11 @@ var typography = (function () {
   }];
 });
 
-var fontParam = "Roboto:400,500,700";
-
 var roboto = (function () {
   return [{
     "html, body, button, input, select, textarea": {
       fontFamily: "Roboto, Helvetica, Arial, sans-serif"
     }
-  }, {
-    "@import": "url(\"https://fonts.googleapis.com/css?family=" + fontParam + "\")"
   }];
 });
 
@@ -163,7 +159,9 @@ var addRoboto = function addRoboto() {
 
 var addTypography = function addTypography() {
   addRoboto();
-  styler.add("pe-material-design-typography", reset, typography);
+  styler.add("pe-material-design-typography", fns.map(function (s) {
+    return s();
+  }));
 };
 
 export { addStyle, getStyle, addRoboto, addTypography };

@@ -22,5 +22,5 @@ export const addRoboto = () => {
 
 export const addTypography = () => {
   addRoboto();
-  styler.add("pe-material-design-typography", reset, typography);
+  styler.add("pe-material-design-typography", fns.map(s => s()));
 };
