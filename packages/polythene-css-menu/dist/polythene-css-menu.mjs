@@ -16,23 +16,21 @@ var widthClass = function widthClass(size) {
 var widthStyle = function widthStyle(componentVars, size) {
   var s = unifySize(componentVars, size);
   return _defineProperty({}, "&." + widthClass(s), {
-    width: componentVars.size_factor * s + "px",
-    "max-width": "100%"
+    width: componentVars.size_factor * s + "px"
   });
 };
 
 var layout = (function (selector, componentVars) {
-  var _ref3;
+  var _ref2;
 
-  return [(_ref3 = {}, _defineProperty(_ref3, selector, [componentVars.sizes.map(function (size) {
+  return [(_ref2 = {}, _defineProperty(_ref2, selector, [componentVars.sizes.map(function (size) {
     return widthStyle(componentVars, size);
-  }), _defineProperty({
+  }), {
     transitionTimingFunction: "ease-out",
     transitionProperty: "all",
     zIndex: vars$1.z_menu,
     opacity: 0,
     position: "absolute",
-    width: "100%",
     minWidth: vars$1.grid_unit_menu * componentVars.min_size + "px",
 
     "&.pe-menu--width-auto": {
@@ -53,12 +51,9 @@ var layout = (function (selector, componentVars) {
       width: "100%",
       borderRadius: componentVars.border_radius + "px"
     }
-
-  }, "@media (max-width: " + vars$1.unit_screen_size_large + "px)", {
-    "max-width": componentVars.max_size_small_screen * vars$1.grid_unit_menu + "px"
-  })]), _defineProperty(_ref3, " .pe-menu__content", {
+  }]), _defineProperty(_ref2, " .pe-menu__content", {
     " .pe-list-tile__title": [mixin.ellipsis("none")]
-  }), _ref3)];
+  }), _ref2)];
 });
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }

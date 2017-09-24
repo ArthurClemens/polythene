@@ -13,8 +13,7 @@ const widthStyle = (componentVars, size) => {
   const s = unifySize(componentVars, size);
   return {
     ["&." + widthClass(s)]: {
-      width: componentVars.size_factor * s + "px",
-      "max-width": "100%"
+      width: componentVars.size_factor * s + "px"
     }
   };
 };
@@ -30,7 +29,6 @@ export default (selector, componentVars) => [{
       zIndex: vars.z_menu,
       opacity: 0,
       position: "absolute",
-      width: "100%",
       minWidth: vars.grid_unit_menu * componentVars.min_size + "px",
 
       "&.pe-menu--width-auto": {
@@ -50,10 +48,6 @@ export default (selector, componentVars) => [{
       " .pe-menu__content": {
         width: "100%",
         borderRadius: componentVars.border_radius + "px"
-      },
-
-      ["@media (max-width: " + vars.unit_screen_size_large + "px)"]: {
-        "max-width": componentVars.max_size_small_screen * vars.grid_unit_menu + "px"
       }
     }
   ],
