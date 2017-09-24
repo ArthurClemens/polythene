@@ -116,7 +116,7 @@ For further control over the `primary` content, you can pass an array to `primar
 
 ~~~javascript
 import { Card, IconButton } from "polythene-react"
-import { addLayoutStyles } from "polythene-core-css"
+import { addLayoutStyles } from "polythene-css"
 
 addLayoutStyles() // to use m(".flex")
 

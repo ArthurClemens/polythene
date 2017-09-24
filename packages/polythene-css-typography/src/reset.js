@@ -1,4 +1,4 @@
-export default [{
+export default () => [{
   // apply a natural box layout model to all elements, but allow elements to change
   " html": {
     "box-sizing": "border-box"

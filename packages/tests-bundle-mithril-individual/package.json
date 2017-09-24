@@ -30,8 +30,7 @@
     "polythene-mithril-svg": "^1.0.0-rc.5",
     "polythene-mithril-switch": "^1.0.0-rc.5",
     "polythene-mithril-tabs": "^1.0.0-rc.5",
-    "polythene-mithril-textfield": "^1.0.0-rc.5",
-    "polythene-style": "^1.0.0-rc.5"
+    "polythene-mithril-textfield": "^1.0.0-rc.5"
   },
   "devDependencies": {
     "npm-run-all": "^4.1.1",

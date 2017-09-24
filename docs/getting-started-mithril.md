@@ -25,11 +25,7 @@ Add Polythene to your project with [yarn](https://yarnpkg.com/) or [npm](https:/
 Essential:
 
 * `polythene-mithril`
-* `polythene-css` Provides CSS files; optionally activates CSS-in-JS [more info](css.md)
-
-Recommended:
-
-* `polythene-style` Material Design styles (typography and font) [more info](packages/polythene-style.md)
+* `polythene-css` Provides component CSS files and Material Design styles (typography and font); optionally activates CSS-in-JS [more info](css.md)
 
 Optional:
 
@@ -40,13 +36,13 @@ Optional:
 ### Installation
 
 ~~~bash
-yarn add polythene-mithril polythene-css polythene-style
+yarn add polythene-mithril polythene-css
 ~~~
 
 or
 
 ~~~bash
-npm install --save polythene-mithril polythene-css polythene-style
+npm install --save polythene-mithril polythene-css
 ~~~
 
 
@@ -69,8 +65,7 @@ m(RaisedButton, {
 ~~~javascript
 import m from "mithril"
 import { RaisedButton, Dialog } from "polythene-mithril"
-import { addTypography } from "polythene-style"
-import "polythene-css"
+import { addTypography } from "polythene-css"
 
 addTypography()
 

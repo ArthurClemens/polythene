@@ -51,14 +51,6 @@ isomorphic-fetch@^2.1.1:
     node-fetch "^1.0.1"
     whatwg-fetch ">=0.10.0"
 
-j2c-plugin-prefix-browser@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/j2c-plugin-prefix-browser/-/j2c-plugin-prefix-browser-1.0.6.tgz#bf36395d1dc3d95f3e3dacea9dca9829baa95fd1"
-
-j2c@^1.0.0-4:
-  version "1.0.0-4"
-  resolved "https://registry.yarnpkg.com/j2c/-/j2c-1.0.0-4.tgz#a1c85b2b8bc4f71cb8f8bb53e8b396fa3fd899f0"
-
 js-tokens@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-3.0.1.tgz#08e9f132484a2c45a30907e9dc4d5567b7f114d7"
@@ -79,79 +71,6 @@ node-fetch@^1.0.1:
 object-assign@^4.1.0, object-assign@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
-
-polythene-core-css@^1.0.0-rc.4:
-  version "1.0.0-rc.4"
-  resolved "https://registry.yarnpkg.com/polythene-core-css/-/polythene-core-css-1.0.0-rc.4.tgz#4bd2183bcbce096e8d0dc22710cefe61b33cc28c"
-  dependencies:
-    j2c "^1.0.0-4"
-    j2c-plugin-prefix-browser "^1.0.6"
-    polythene-core "^1.0.0-rc.4"
-
-polythene-core-shadow@^1.0.0-rc.5:
-  version "1.0.0-rc.5"
-  resolved "https://registry.yarnpkg.com/polythene-core-shadow/-/polythene-core-shadow-1.0.0-rc.5.tgz#5c950ce65c1c365116dc61459b1015f993afa6af"
-  dependencies:
-    polythene-core "^1.0.0-rc.4"
-    polythene-core-css "^1.0.0-rc.4"
-    polythene-theme "^1.0.0-rc.5"
-
-polythene-core-spinner@^1.0.0-rc.5:
-  version "1.0.0-rc.5"
-  resolved "https://registry.yarnpkg.com/polythene-core-spinner/-/polythene-core-spinner-1.0.0-rc.5.tgz#53f3528661a466dedd8e65a0d724d21a50eea9b0"
-  dependencies:
-    polythene-core "^1.0.0-rc.4"
-    polythene-core-css "^1.0.0-rc.4"
-    polythene-theme "^1.0.0-rc.5"
-    polythene-utilities "^1.0.0-rc.5"
-
-polythene-core@^1.0.0-rc.4:
-  version "1.0.0-rc.4"
-  resolved "https://registry.yarnpkg.com/polythene-core/-/polythene-core-1.0.0-rc.4.tgz#3942453d959785671024909895a6677eab5b3b8b"
-
-polythene-react-base@^1.0.0-rc.4:
-  version "1.0.0-rc.4"
-  resolved "https://registry.yarnpkg.com/polythene-react-base/-/polythene-react-base-1.0.0-rc.4.tgz#355d66d13386651e6a5d7600c41126d835e751fb"
-  dependencies:
-    polythene-core "^1.0.0-rc.4"
-
-polythene-react-shadow@^1.0.0-rc.5:
-  version "1.0.0-rc.5"
-  resolved "https://registry.yarnpkg.com/polythene-react-shadow/-/polythene-react-shadow-1.0.0-rc.5.tgz#1bb568875d4518a497a81e8eb75fbdd3f8d21eb9"
-  dependencies:
-    polythene-core-shadow "^1.0.0-rc.5"
-    polythene-react-base "^1.0.0-rc.4"
-
-polythene-react-spinner@^1.0.0-rc.5:
-  version "1.0.0-rc.5"
-  resolved "https://registry.yarnpkg.com/polythene-react-spinner/-/polythene-react-spinner-1.0.0-rc.5.tgz#58b0dad615247586b7902da1e2a6fadbeec23be1"
-  dependencies:
-    polythene-core "^1.0.0-rc.4"
-    polythene-core-spinner "^1.0.0-rc.5"
-    polythene-react-base "^1.0.0-rc.4"
-    polythene-react-shadow "^1.0.0-rc.5"
-
-polythene-style@^1.0.0-rc.5:
-  version "1.0.0-rc.5"
-  resolved "https://registry.yarnpkg.com/polythene-style/-/polythene-style-1.0.0-rc.5.tgz#1c656c234c1384e921b2eef202c0cd48f4399537"
-  dependencies:
-    polythene-core "^1.0.0-rc.4"
-    polythene-core-css "^1.0.0-rc.4"
-    polythene-utilities "^1.0.0-rc.5"
-
-polythene-theme@^1.0.0-rc.5:
-  version "1.0.0-rc.5"
-  resolved "https://registry.yarnpkg.com/polythene-theme/-/polythene-theme-1.0.0-rc.5.tgz#b8a891b2185458629999c2ac875624d634ca6c5a"
-  dependencies:
-    polythene-style "^1.0.0-rc.5"
-
-polythene-utilities@^1.0.0-rc.5:
-  version "1.0.0-rc.5"
-  resolved "https://registry.yarnpkg.com/polythene-utilities/-/polythene-utilities-1.0.0-rc.5.tgz#5ddefdd3199c9600bbad739067cc31035797504b"
-  dependencies:
-    polythene-core "^1.0.0-rc.4"
-    polythene-core-css "^1.0.0-rc.4"
-    webfontloader "^1.6.27"
 
 promise@^7.1.1:
   version "7.1.1"
@@ -187,10 +106,6 @@ setimmediate@^1.0.5:
 ua-parser-js@^0.7.9:
   version "0.7.12"
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.12.tgz#04c81a99bdd5dc52263ea29d24c6bf8d4818a4bb"
-
-webfontloader@^1.6.27:
-  version "1.6.28"
-  resolved "https://registry.yarnpkg.com/webfontloader/-/webfontloader-1.6.28.tgz#db786129253cb6e8eae54c2fb05f870af6675bae"
 
 whatwg-fetch@>=0.10.0:
   version "2.0.3"

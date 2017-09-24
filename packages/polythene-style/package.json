@@ -7,18 +7,14 @@
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
-    "write-css": "node ./scripts/writeCSS.js",
-    "build": "yarn run rollup && yarn run write-css"
+    "build": "yarn run rollup"
   },
   "files": [
     "dist",
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "^1.0.0-rc.4",
-    "polythene-core-css": "^1.0.0-rc.4",
-    "polythene-scripts": "^1.0.0-rc.5",
-    "polythene-utilities": "^1.0.0-rc.5"
+    "polythene-core": "^1.0.0-rc.4"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

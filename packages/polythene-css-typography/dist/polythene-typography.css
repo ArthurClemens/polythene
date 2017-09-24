@@ -1,7 +1,28 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700");
-
 body,button,html,input,select,textarea {
   font-family: Roboto,Helvetica,Arial,sans-serif
+}
+
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700");
+
+html {
+  box-sizing: border-box
+}
+
+*,:after,:before {
+  box-sizing: inherit
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent
+}
+
+:focus,a,a:active,a:focus,input:active {
+  outline: 0
+}
+
+input:disabled {
+  opacity: 1
 }
 
 h1,h2,h3,h4,h5,h6,p {
@@ -106,26 +127,5 @@ ol,ul {
 
 b,strong {
   font-weight: 500
-}
-
-html {
-  box-sizing: border-box
-}
-
-*,:after,:before {
-  box-sizing: inherit
-}
-
-* {
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  -webkit-tap-highlight-color: transparent
-}
-
-:focus,a,a:active,a:focus,input:active {
-  outline: 0
-}
-
-input:disabled {
-  opacity: 1
 }
 /*# sourceMappingURL=polythene-typography.css.map */

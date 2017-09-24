@@ -27,3 +27,7 @@ import * as SwitchCSS                        from "polythene-css-switch";       
 import * as TabsCSS                          from "polythene-css-tabs";                             export { TabsCSS };
 import * as TextFieldCSS                     from "polythene-css-textfield";                        export { TextFieldCSS };
 import * as ToolbarCSS                       from "polythene-css-toolbar";                          export { ToolbarCSS };
+import * as TypographyCSS                    from "polythene-css-typography";                       export { TypographyCSS };
+
+export { addTypography, addRoboto } from "polythene-css-typography";
+export { addLayoutStyles } from "polythene-core-css";

@@ -5,4 +5,4 @@
 * [polythene-utilities: Utility functions](packages/polythene-utilities.md)
 * [polythene-scripts: Utility scripts](packages/polythene-scripts.md)
 * [polythene-core-css: CSS tools](packages/polythene-core-css.md)
-* [polythene-style: Material Design style](packages/polythene-style.md)
+* [polythene-style: Material Design style variables](packages/polythene-style.md)

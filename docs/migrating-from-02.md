@@ -46,11 +46,11 @@ m(Button, {})
 v0.2                             |  v1.0
 -------------------------------- | ----------------
 `fastclick`                      | part of `polythene-utilities`
-`font-roboto`                    | part of `polythene-style`
+`font-roboto`                    | part of `polythene-css-typography`
 `polythene/common/mixin`         | part of `polythene-core-css`
 `polythene/common/webfontloader` | part of `polythene-utilities`
 `polythene/config`               | `polythene-theme`
-`polythene/theme`                | `polythene-style`
+`polythene/theme`                | `polythene-css-typography`
 `polythene/layout/theme/theme`   | part of `polythene-utilities`
 
 

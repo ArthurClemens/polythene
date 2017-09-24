@@ -110,7 +110,7 @@ For further control over the `primary` content, you can pass an array to `primar
 
 ~~~jsx
 import { Card, IconButton } from "polythene-react"
-import { addLayoutStyles } from "polythene-core-css"
+import { addLayoutStyles } from "polythene-css"
 
 addLayoutStyles() // to use className="flex"
 
@@ -242,7 +242,7 @@ h(Card, {
 For further control over the `primary` content, you can pass an array to `primary.content`.
 
 ~~~javascript
-import { addLayoutStyles } from "polythene-core-css"
+import { addLayoutStyles } from "polythene-css"
 addLayoutStyles() // to use h(".flex")
 
 h(Card, {

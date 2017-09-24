@@ -1,9 +1,9 @@
 {
-  "name": "polythene-css-style",
+  "name": "polythene-css-typography",
   "version": "1.0.0-rc.5",
   "description": "",
-  "main": "dist/polythene-css-style.js",
-  "module": "dist/polythene-css-style.mjs",
+  "main": "dist/polythene-css-typography.js",
+  "module": "dist/polythene-css-typography.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
@@ -17,7 +17,8 @@
   "dependencies": {
     "polythene-style": "^1.0.0-rc.5",
     "polythene-core-css": "^1.0.0-rc.4",
-    "polythene-theme": "^1.0.0-rc.5"
+    "polythene-theme": "^1.0.0-rc.5",
+    "polythene-utilities": "^1.0.0-rc.5"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

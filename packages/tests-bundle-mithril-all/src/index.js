@@ -19,8 +19,7 @@ import {
   Tabs,
   TextField,
 } from "polythene-mithril";
-import { addTypography } from "polythene-style";
-import "polythene-css";
+import { addTypography } from "polythene-css";
 
 addTypography();
 

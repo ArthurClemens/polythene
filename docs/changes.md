@@ -4,8 +4,8 @@
 
 ### 1.0.0-rc.6
 
-* CSS can now optionally be read from files; see [CSS](css.md) for more details.
-* `addLayoutStyles` is now imported from `polythene-core-css`; see [Layout styles](packages/polythene-core-css.md)
+* CSS can now optionally be read from files (as opposed to CSS-in-JS only); see [CSS](css.md) for more details.
+* `addLayoutStyles` and `addTypography` are now imported from `polythene-css`; see [CSS](css.md).
 
 Changes to components:
 

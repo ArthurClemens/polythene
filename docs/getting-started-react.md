@@ -25,11 +25,7 @@ Add Polythene to your project with [yarn](https://yarnpkg.com/) or [npm](https:/
 Essential:
 
 * `polythene-react`
-* `polythene-css` Provides CSS files; optionally activates CSS-in-JS [more info](css.md)
-
-Recommended:
-
-* `polythene-style` Material Design styles (typography and font) [more info](packages/polythene-style.md)
+* `polythene-css` Provides component CSS files and Material Design styles (typography and font); optionally activates CSS-in-JS [more info](css.md)
 
 Optional:
 
@@ -84,7 +80,7 @@ import React from "react"
 import ReactDOM from "react-dom"
 import { renderer as h, RaisedButton, Dialog } from "polythene-react"
 import "polythene-css"
-import { addTypography } from "polythene-style"
+import { addTypography } from "polythene-css"
 
 addTypography()
 
@@ -115,7 +111,7 @@ ReactDOM.render(<App />, mountNode)
 ~~~javascript
 import ReactDOM from "react-dom"
 import { renderer as h, RaisedButton, Dialog } from "polythene-react"
-import { addTypography } from "polythene-style"
+import { addTypography } from "polythene-css"
 
 addTypography()
 

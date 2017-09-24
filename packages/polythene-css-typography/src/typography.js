@@ -1,8 +1,8 @@
-import { vars } from "./variables";
+import { vars } from "polythene-style";
 
 const fontSize = 14;
 
-export default [
+export default () => [
   {
     " h1, h2, h3, h4, h5, h6, p": {
       margin: 0,

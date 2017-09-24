@@ -17,8 +17,7 @@ import { SVG } from "polythene-mithril-svg";
 import { Switch } from "polythene-mithril-switch";
 import { Tabs } from "polythene-mithril-tabs";
 import { TextField } from "polythene-mithril-textfield";
-import { addTypography } from "polythene-style";
-import "polythene-css";
+import { addTypography } from "polythene-css";
 
 addTypography();
 

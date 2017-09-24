@@ -1,3 +1,3 @@
-# Style Component CSS
+# Typography CSS
 
 [Documentation](https://github.com/ArthurClemens/polythene/tree/master/docs/css.md)
