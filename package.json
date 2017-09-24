@@ -7,7 +7,8 @@
     "build:tests": "node ./scripts/buildTests",
     "tests:run": "node ./scripts/runTests",
     "tests:update": "node_modules/jest/bin/jest.js --updateSnapshot",
-    "github:demos": "node ./scripts/copyToDemos"
+    "github:demos": "node ./scripts/copyToDemos",
+    "docs:check": "./node_modules/broken-link-checker/bin/blc -ro http://localhost:6419/"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -24,6 +25,7 @@
     "babel-preset-es2015-rollup": "^3.0.0",
     "babel-register": "^6.26.0",
     "babili-webpack-plugin": "0.1.2",
+    "broken-link-checker": "^0.7.6",
     "css-loader": "^0.28.7",
     "cssnano": "^3.10.0",
     "del": "^3.0.0",

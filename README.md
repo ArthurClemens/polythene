@@ -57,6 +57,7 @@ Version: `1.0.0-rc.5` (release candidate 5)
 * Edge: 13+
 * Firefox: 49+
 * Internet Explorer: 11
+  * When using React, IE 11 needs a Promise polyfill. Example: `<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Promise" type="text/javascript" />`
 * Mobile Safari: 9+
 * Safari: 9+
 
