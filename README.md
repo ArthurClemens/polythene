@@ -9,7 +9,7 @@ Can also be used as general-purpose component library that includes dialogs, car
 
 ## Status
 
-Version: `1.0.0-rc.5` (release candidate 5)
+Version: `1.0.0-rc.6` (release candidate 6)
 
 
 ## Main features
