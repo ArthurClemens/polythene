@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-tabs",
-  "version": "1.0.0-rc.6",
+  "version": "1.0.0-rc.7",
   "description": "",
   "main": "dist/polythene-mithril-tabs.js",
   "module": "dist/polythene-mithril-tabs.mjs",
@@ -14,11 +14,11 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-tabs": "^1.0.0-rc.6",
+    "polythene-core-tabs": "^1.0.0-rc.7",
     "polythene-mithril-base": "^1.0.0-rc.6",
-    "polythene-mithril-button": "^1.0.0-rc.6",
+    "polythene-mithril-button": "^1.0.0-rc.7",
     "polythene-mithril-icon": "^1.0.0-rc.6",
-    "polythene-mithril-icon-button": "^1.0.0-rc.6"
+    "polythene-mithril-icon-button": "^1.0.0-rc.7"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

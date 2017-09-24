@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-button",
-  "version": "1.0.0-rc.6",
+  "version": "1.0.0-rc.7",
   "description": "",
   "main": "dist/polythene-mithril-button.js",
   "module": "dist/polythene-mithril-button.mjs",
@@ -14,7 +14,7 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-button": "^1.0.0-rc.6",
+    "polythene-core-button": "^1.0.0-rc.7",
     "polythene-mithril-base": "^1.0.0-rc.6",
     "polythene-mithril-ripple": "^1.0.0-rc.6"
   },

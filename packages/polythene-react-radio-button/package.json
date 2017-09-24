@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-radio-button",
-  "version": "1.0.0-rc.6",
+  "version": "1.0.0-rc.7",
   "description": "",
   "main": "dist/polythene-react-radio-button.js",
   "module": "dist/polythene-react-radio-button.mjs",
@@ -18,7 +18,7 @@
     "polythene-core-selection-control": "^1.0.0-rc.6",
     "polythene-react-base": "^1.0.0-rc.6",
     "polythene-react-icon": "^1.0.0-rc.6",
-    "polythene-react-icon-button": "^1.0.0-rc.6"
+    "polythene-react-icon-button": "^1.0.0-rc.7"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

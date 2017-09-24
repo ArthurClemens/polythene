@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-raised-button",
-  "version": "1.0.0-rc.6",
+  "version": "1.0.0-rc.7",
   "description": "",
   "main": "dist/polythene-mithril-raised-button.js",
   "module": "dist/polythene-mithril-raised-button.mjs",
@@ -16,7 +16,7 @@
   "dependencies": {
     "polythene-core-raised-button": "^1.0.0-rc.6",
     "polythene-mithril-base": "^1.0.0-rc.6",
-    "polythene-mithril-button": "^1.0.0-rc.6",
+    "polythene-mithril-button": "^1.0.0-rc.7",
     "polythene-mithril-shadow": "^1.0.0-rc.6"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",

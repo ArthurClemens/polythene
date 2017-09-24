@@ -1,6 +1,6 @@
 {
   "name": "polythene-core-tabs",
-  "version": "1.0.0-rc.6",
+  "version": "1.0.0-rc.7",
   "description": "",
   "main": "dist/polythene-core-tabs.js",
   "module": "dist/polythene-core-tabs.mjs",
@@ -15,7 +15,7 @@
   ],
   "dependencies": {
     "polythene-core": "^1.0.0-rc.6",
-    "polythene-core-button": "^1.0.0-rc.6",
+    "polythene-core-button": "^1.0.0-rc.7",
     "polythene-core-icon-button": "^1.0.0-rc.6",
     "polythene-theme": "^1.0.0-rc.6",
     "polythene-utilities": "^1.0.0-rc.6"

@@ -1,6 +1,6 @@
 {
   "name": "test-slider",
-  "version": "1.0.0-rc.6",
+  "version": "1.0.0-rc.7",
   "private": true,
   "description": "",
   "main": "dist/test-slider.js",
@@ -18,9 +18,9 @@
   ],
   "dependencies": {
     "polythene-core-css": "^1.0.0-rc.6",
-    "polythene-css": "^1.0.0-rc.6",
-    "polythene-mithril": "^1.0.0-rc.6",
-    "polythene-react": "^1.0.0-rc.6",
+    "polythene-css": "^1.0.0-rc.7",
+    "polythene-mithril": "^1.0.0-rc.7",
+    "polythene-react": "^1.0.0-rc.7",
     "polythene-theme": "^1.0.0-rc.6"
   },
   "devDependencies": {

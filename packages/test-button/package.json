@@ -1,6 +1,6 @@
 {
   "name": "test-button",
-  "version": "1.0.0-rc.6",
+  "version": "1.0.0-rc.7",
   "private": true,
   "description": "",
   "main": "dist/test-button.js",
@@ -17,9 +17,9 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-css": "^1.0.0-rc.6",
-    "polythene-mithril": "^1.0.0-rc.6",
-    "polythene-react": "^1.0.0-rc.6"
+    "polythene-css": "^1.0.0-rc.7",
+    "polythene-mithril": "^1.0.0-rc.7",
+    "polythene-react": "^1.0.0-rc.7"
   },
   "devDependencies": {
     "react": "^15.6.1",
