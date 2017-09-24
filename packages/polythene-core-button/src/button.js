@@ -147,17 +147,15 @@ export const createContent = (vnode, { renderer: h, keys: k, Ripple }) => {
           ? attrs.shadowComponent
           : null,
         // Ripple
-        disabled || noink
+        disabled || noink || !Ripple || !state.dom()
           ? null
-          : Ripple /*&& state.dom()*/
-            ? h(Ripple, Object.assign({},
-              {
-                key: "ripple",
-                target: state.dom()
-              },
-              attrs.ripple
-            ))
-            : null,
+          : h(Ripple, Object.assign({},
+            {
+              key: "ripple",
+              target: state.dom()
+            },
+            attrs.ripple
+          )),
         // hover
         noWash ? null : h("div", { key: "wash", className: classes.wash }),
         // focus

@@ -138,11 +138,10 @@ var createContent = function createContent(vnode, _ref4) {
   return label ? h("div", (_h = {}, _defineProperty(_h, k.class, classes.content), _defineProperty(_h, "style", attrs.style), _h), [attrs.shadowComponent // "protected" option, used by raised-button
   ? attrs.shadowComponent : null,
   // Ripple
-  disabled || noink ? null : Ripple /*&& state.dom()*/
-  ? h(Ripple, _extends({}, {
+  disabled || noink || !Ripple || !state.dom() ? null : h(Ripple, _extends({}, {
     key: "ripple",
     target: state.dom()
-  }, attrs.ripple)) : null,
+  }, attrs.ripple)),
   // hover
   noWash ? null : h("div", { key: "wash", className: classes.wash }),
   // focus
