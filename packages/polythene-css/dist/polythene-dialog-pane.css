@@ -148,7 +148,7 @@
 
 .pe-dark-tone.pe-dialog-pane .pe-dialog-pane__body,.pe-dark-tone .pe-dialog-pane .pe-dialog-pane__body {
   color: inherit;
-  border-color: transparen
+  border-color: transparent
 }
 
 .pe-dark-tone.pe-dialog-pane.pe-dialog-pane--border-top .pe-dialog-pane__body,.pe-dark-tone .pe-dialog-pane.pe-dialog-pane--border-top .pe-dialog-pane__body {
@@ -169,7 +169,7 @@
 
 .pe-dialog-pane .pe-dialog-pane__body,.pe-light-tone.pe-dialog-pane .pe-dialog-pane__body,.pe-light-tone .pe-dialog-pane .pe-dialog-pane__body {
   color: inherit;
-  border-color: transparen
+  border-color: transparent
 }
 
 .pe-dialog-pane.pe-dialog-pane--border-top .pe-dialog-pane__body,.pe-light-tone.pe-dialog-pane.pe-dialog-pane--border-top .pe-dialog-pane__body,.pe-light-tone .pe-dialog-pane.pe-dialog-pane--border-top .pe-dialog-pane__body {

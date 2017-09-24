@@ -14,7 +14,7 @@
   bottom: 0;
   z-index: 1;
   height: 100%;
-  padding: undefinedpx 40px
+  padding: 24px 40px
 }
 
 .pe-dialog.pe-dialog--full-screen {

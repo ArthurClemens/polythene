@@ -5,7 +5,7 @@
 ### 1.0.0-rc.6
 
 * CSS can now optionally be read from files (as opposed to CSS-in-JS only); see [CSS](css.md) for more details.
-* `addLayoutStyles` and `addTypography` are now imported from `polythene-css`; see [CSS](css.md).
+* `addLayoutStyles` and `addTypography` are now both imported from `polythene-css`; see [CSS](css.md).
 
 Changes to components:
 
@@ -13,11 +13,15 @@ Changes to components:
   * As consequence of the CSS change, the component method `theme` has been replaced with `addStyle`; see [Theming Configuration variables](theming/configuration-variables.md)
 * RadioGroup
   * `onChange` now returns a state object that contains a variable `value`
+* List
+  * Added option `all`, analogous to Tab's `all`
+
+Various bug fixes. 
 
 
 ### 1.0.0-rc.5
 
-Various bug fixes. Contains fixes for server-side rendering.
+Contains fixes for server-side rendering.
 
 Changes to components:
 
@@ -37,10 +41,10 @@ Changes to components:
   * Added sub-component ToolbarTitle to improve styling 
   * Removed default background colors to better fit in a Dialog
 
+Various bug fixes. 
+
 
 ### 1.0.0-rc.4
-
-Various bug fixes.
 
 Changes to components:
 
@@ -54,6 +58,8 @@ Changes to components:
   * Option `step` has been renamed to `stepSize` to prevent confusion with step count
 * Spinner
   * Renamed `iOSSpinner` to `IOSSpinner` to work with React
+
+Various bug fixes.
 
 
 ### 1.0.0-rc.1 to 1.0.0-rc.3

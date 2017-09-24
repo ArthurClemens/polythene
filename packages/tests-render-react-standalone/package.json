@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "http-server -p 3300",
     "build": "yarn run update",
-    "update": "cd ../polythene-react && yarn run build-standalone && cd - && cp ../polythene-react/dist/polythene-react-standalone.js* js/"
+    "update": "cd ../polythene-react && yarn run build-standalone && cd - && cp ../polythene-react/dist/polythene-react-standalone.js* js/ && cd ../polythene-css && yarn run build-standalone && cd - && cp ../polythene-css/dist/polythene-css-standalone.js* js/"
   },
   "devDependencies": {
     "http-server": "^0.10.0"
