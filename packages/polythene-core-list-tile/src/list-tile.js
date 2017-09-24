@@ -42,52 +42,55 @@ const primaryContent = (h, k, requiresKeys, attrs, children) => {
     hasTabIndex && { [k.tabindex]: attrs[k.tabindex] || 0 },
     url
   );
-  return h(element, props, [
-    frontComp,
-    h("div",
-      {
-        className: classes.content,
-        style: attrs.style
-      },
-      [
-        attrs.content
-          ? Object.assign(
-            {},
-            requiresKeys ? { key: "content" } : null,
-            attrs.content
-          )
-          : children,
-        attrs.title && !attrs.content
-          ? h("div", Object.assign(
-            {},
-            requiresKeys ? { key: "title" } : null,
-            { className: classes.title }
-          ), attrs.title)
-          : null,
-        attrs.subtitle
-          ? h("div", Object.assign(
-            {},
-            requiresKeys ? { key: "subtitle" } : null,
-            { className: classes.subtitle }
-          ), attrs.subtitle)
-          : null,
-        attrs.highSubtitle
-          ? h("div", Object.assign(
-            {},
-            requiresKeys ? { key: "highSubtitle" } : null,
-            { className: classes.subtitle + " " + classes.highSubtitle }
-          ), attrs.highSubtitle)
-          : null,
-        attrs.subContent
-          ? h("div", Object.assign(
-            {},
-            requiresKeys ? { key: "subContent" } : null,
-            { className: classes.subContent }
-          ), attrs.subContent)
-          : null
-      ]
-    )
-  ]);
+  const content = attrs.content
+    ? attrs.content 
+    : [
+      frontComp,
+      h("div",
+        {
+          className: classes.content,
+          style: attrs.style
+        },
+        [
+          attrs.content
+            ? Object.assign(
+              {},
+              requiresKeys ? { key: "content" } : null,
+              attrs.content
+            )
+            : children,
+          attrs.title && !attrs.content
+            ? h("div", Object.assign(
+              {},
+              requiresKeys ? { key: "title" } : null,
+              { className: classes.title }
+            ), attrs.title)
+            : null,
+          attrs.subtitle
+            ? h("div", Object.assign(
+              {},
+              requiresKeys ? { key: "subtitle" } : null,
+              { className: classes.subtitle }
+            ), attrs.subtitle)
+            : null,
+          attrs.highSubtitle
+            ? h("div", Object.assign(
+              {},
+              requiresKeys ? { key: "highSubtitle" } : null,
+              { className: classes.subtitle + " " + classes.highSubtitle }
+            ), attrs.highSubtitle)
+            : null,
+          attrs.subContent
+            ? h("div", Object.assign(
+              {},
+              requiresKeys ? { key: "subContent" } : null,
+              { className: classes.subContent }
+            ), attrs.subContent)
+            : null
+        ]
+      )
+    ];
+  return h(element, props, content);
 };
 
 const secondaryContent = (h, k, requiresKeys, Icon, attrs = {}) => {
