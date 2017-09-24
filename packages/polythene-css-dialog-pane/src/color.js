@@ -9,7 +9,7 @@ const style = (scopes, selector, componentVars, tint) => [{
     },
     " .pe-dialog-pane__body": {
       color: componentVars["color_" + tint + "_body_text"],
-      borderColor: "transparen" // default
+      borderColor: "transparent" // default
     },
     ".pe-dialog-pane--border-top .pe-dialog-pane__body": {
       borderTopColor: componentVars["color_" + tint + "_body_border"]
