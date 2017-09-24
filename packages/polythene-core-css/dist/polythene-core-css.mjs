@@ -185,7 +185,7 @@ var selfStretch = {
   "align-self": "stretch"
 };
 
-var mixinFlex = {
+var flex$1 = {
   flex: flex,
   flexAuto: flexAuto,
   flexAutoVertical: flexAutoVertical,
@@ -433,4 +433,92 @@ var rgba = function rgba(colorStr) {
   return "rgba(" + colorStr + ", " + opacity + ")";
 };
 
-export { mixinFlex as flex, mixin, styler, hex, rgba };
+var flex$2 = [{
+  ".layout, .layout.horizontal": flex$1.layout,
+  ".layout.horizontal.inline, .layout.vertical.inline": flex$1.layoutInline,
+  ".layout.horizontal": flex$1.layoutHorizontal,
+  ".layout.horizontal.reverse": flex$1.layoutHorizontalReverse,
+  ".layout.vertical": flex$1.layoutVertical,
+  ".layout.vertical.reverse": flex$1.layoutVerticalReverse,
+  ".layout.wrap": flex$1.layoutWrap,
+  ".layout.wrap.reverse": flex$1.layoutWrapReverse,
+  ".flex": flex$1.flex(1),
+  ".span.flex": { "display": "block" }, // for IE 10
+  ".flex.auto-vertical": flex$1.flexAutoVertical,
+  ".flex.auto": flex$1.flexAuto,
+  ".flex.none": flex$1.flexIndex("none"),
+  ".flex.one": flex$1.flexIndex(1),
+  ".flex.two": flex$1.flexIndex(2),
+  ".flex.three": flex$1.flexIndex(3),
+  ".flex.four": flex$1.flexIndex(4),
+  ".flex.five": flex$1.flexIndex(5),
+  ".flex.six": flex$1.flexIndex(6),
+  ".flex.seven": flex$1.flexIndex(7),
+  ".flex.eight": flex$1.flexIndex(8),
+  ".flex.nine": flex$1.flexIndex(9),
+  ".flex.ten": flex$1.flexIndex(10),
+  ".flex.eleven": flex$1.flexIndex(11),
+  ".flex.twelve": flex$1.flexIndex(12),
+
+  // alignment in cross axis
+  ".layout.start": flex$1.layoutStart,
+  ".layout.center, .layout.center-center": flex$1.layoutCenter,
+  ".layout.end": flex$1.layoutEnd,
+
+  // alignment in main axis
+  ".layout.start-justified": flex$1.layoutStartJustified,
+  ".layout.center-justified, .layout.center-center": flex$1.layoutCenterJustified,
+  ".layout.end-justified": flex$1.layoutEndJustified,
+  ".layout.around-justified": flex$1.layoutAroundJustified,
+  ".layout.justified": flex$1.layoutJustified,
+
+  // self alignment
+  ".self-start": flex$1.selfStart,
+  ".self-center": flex$1.selfCenter,
+  ".self-end": flex$1.selfEnd,
+  ".self-stretch": flex$1.selfStretch
+}];
+
+var commonStyle = [{
+  ".pe-block": {
+    display: "block"
+  },
+
+  ".pe-inline-block": {
+    display: "inline-block"
+  },
+
+  // ie support for hidden
+  ".pe-hidden": {
+    display: "none !important"
+  },
+
+  ".pe-relative": {
+    position: "relative"
+  },
+
+  ".pe-absolute": {
+    position: "absolute"
+  },
+
+  ".pe-fit": {
+    position: "absolute",
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0
+  },
+
+  ".pe-fullbleed": {
+    margin: 0,
+    height: "100vh"
+  }
+}];
+
+var layoutStyles = [flex$2, commonStyle];
+
+var addLayoutStyles = function addLayoutStyles() {
+  return styler.add("pe-layout", flex$2, commonStyle);
+};
+
+export { flex$1 as flex, mixin, styler, hex, rgba, layoutStyles, addLayoutStyles };

@@ -17,8 +17,6 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "^1.0.0-rc.4",
-    "polythene-core-css": "^1.0.0-rc.4",
     "polythene-css-base-spinner": "^1.0.0-rc.5",
     "polythene-css-button": "^1.0.0-rc.5",
     "polythene-css-card": "^1.0.0-rc.5",
@@ -47,9 +45,7 @@
     "polythene-css-switch": "^1.0.0-rc.5",
     "polythene-css-tabs": "^1.0.0-rc.5",
     "polythene-css-textfield": "^1.0.0-rc.5",
-    "polythene-css-toolbar": "^1.0.0-rc.5",
-    "polythene-style": "^1.0.0-rc.5",
-    "polythene-utilities": "^1.0.0-rc.5"
+    "polythene-css-toolbar": "^1.0.0-rc.5"
   },
   "devDependencies": {
     "polythene-scripts": "^1.0.0-rc.5"

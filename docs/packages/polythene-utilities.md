@@ -3,7 +3,6 @@
 * **easing**: Easing functions
 * **scrollTo**: Animated scroll to a position
 * **Timer**: Simple start/stop/pause/resume timer
-* **Layout classes**: Provides common and flexbox classes
 * **Web font loader**: Loads one or more web fonts
 
 
@@ -19,7 +18,6 @@ import { easing } from "polythene-utilities"
 // percentage is some value between 0 and 1
 const value = start + change * easing.easeInOutCubic(percentage)
 ~~~
-
 
 
 ## scrollTo
@@ -88,101 +86,6 @@ timer.resume()
 timer.stop()
 ~~~
 
-
-## Layout classes
-
-Provides common and flexbox classes. Note that these are extra and not required for Polythene apps.
-
-### Usage
-
-#### Classes
-
-~~~javascript
-import { addLayoutStyles } from "polythene-utilities"
-
-addLayoutStyles()
-~~~
-
-#### Mithril example
-
-~~~javascript
-m(".layout.vertical", ...)
-~~~
-
-#### React JSX example
-
-~~~javascript
-<div className="layout vertical" />
-~~~
-
-
-### List of layout classes 
-
-#### Common
-
-~~~css
-.pe-block
-.pe-inline-block
-.pe-hidden
-.pe-relative
-.pe-absolute
-.pe-fit
-.pe-fullbleed
-~~~
-
-#### Flex
-
-~~~css
-/* flex */
-.flex
-.flex.auto
-.flex.auto-vertical
-.flex.none
-.flex.one
-.flex.two
-.flex.three
-.flex.four
-.flex.five
-.flex.six
-.flex.seven
-.flex.eight
-.flex.nine
-.flex.ten
-.flex.eleven
-.flex.twelve
-
-/* layout */
-.layout
-.layout.horizontal
-.layout.horizontal.inline
-.layout.vertical.inline
-.layout.horizontal
-.layout.horizontal.reverse
-.layout.vertical
-.layout.vertical.reverse
-.layout.wrap
-.layout.wrap.reverse
-
-/* alignment in cross axis */
-.layout.start
-.layout.center,
-.layout.center-center
-.layout.end
-
-/* alignment in main axis */
-.layout.start-justified
-.layout.center-justified
-.layout.center-center
-.layout.end-justified
-.layout.around-justified
-.layout.justified
-
-/* self alignment */
-.self-start
-.self-center
-.self-end
-.self-stretch
-~~~
 
 
 ## Web font loader

@@ -1,5 +1,4 @@
-import { isTouch, getAnimationEndEvent } from "polythene-core";
-import { styler } from "polythene-core-css";
+import { isTouch, getAnimationEndEvent, isServer } from "polythene-core";
 import { vars } from "polythene-theme";
 
 const ANIMATION_END_EVENT =    getAnimationEndEvent();
@@ -8,6 +7,23 @@ const DEFAULT_END_OPACITY =    0.0;
 const DEFAULT_START_SCALE =    0.1;
 const DEFAULT_END_SCALE =      2.0;
 const OPACITY_DECAY_VELOCITY = 0.35;
+
+const addStyleToHead = (id, stylesheet) => {
+  if (isServer) return;
+  const documentRef = window.document;
+  const styleEl = documentRef.createElement("style");
+  styleEl.setAttribute("id", id);
+  styleEl.appendChild(documentRef.createTextNode(stylesheet));
+  documentRef.head.appendChild(styleEl);
+};
+
+const removeStyleFromHead = id => {
+  if (isServer) return;
+  const el = document.getElementById(id);
+  if (el && el.parentNode) {
+    el.parentNode.removeChild(el);
+  }
+};
 
 export default ({ e, id, el, attrs, classes }) => {
   return new Promise(resolve => {
@@ -54,22 +70,20 @@ export default ({ e, id, el, attrs, classes }) => {
     style.animationName = id;
     style.animationTimingFunction = attrs.animationTimingFunction || vars.animation_curve_default;
 
-    const keyframeStyle = [{
-      [`@keyframes ${id}`]: {
-        " 0%": {
-          transform: "scale(" + startScale + ")",
-          "opacity": startOpacity
-        },
-        " 100%": {
-          transform: "scale(" + endScale + ")",
-          "opacity": endOpacity
-        }
+    const rippleStyleSheet = `@keyframes ${id} {
+      0% {
+        transform:scale(${startScale});
+        opacity: ${startOpacity}
       }
-    }];
-    styler.add(id, keyframeStyle);
+      100% {
+        transform:scale(${endScale});
+        opacity: ${endOpacity};
+      }
+    }`;
+    addStyleToHead(id, rippleStyleSheet);
 
     const animationDone = evt => {
-      styler.remove(id);
+      removeStyleFromHead(id);
       waves.removeEventListener(ANIMATION_END_EVENT, animationDone, false);
       if (attrs.persistent) {
         style.opacity = endOpacity;

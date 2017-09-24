@@ -301,7 +301,7 @@ A full screen dialog uses [Toolbar](../toolbar.md) to implement its own header (
 ~~~jsx
 import React from "react"
 import { Dialog, Button, Toolbar, IconButton } from "polythene-react"
-import { addLayoutStyles } from "polythene-utilities"
+import { addLayoutStyles } from "polythene-core-css"
 
 addLayoutStyles() // to use <span className="flex" />
 
@@ -353,7 +353,7 @@ Dialog.show({
 
 ~~~javascript
 import { renderer as h, Button, Toolbar, IconButton } from "polythene-react"
-import { addLayoutStyles } from "polythene-utilities"
+import { addLayoutStyles } from "polythene-core-css"
 
 addLayoutStyles() // to use h(".flex")
 

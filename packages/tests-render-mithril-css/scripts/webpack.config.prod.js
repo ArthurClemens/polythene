@@ -1,5 +1,4 @@
-/* global __dirname */
-const path = require("path");
+
 const config = require("./webpack.config.js");
 const BabiliPlugin = require("babili-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;

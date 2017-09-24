@@ -7,8 +7,7 @@ module.exports = {
   context: path.resolve(__dirname, "../src"),
 
   entry: {
-    index: "../index.js",
-    // style: `${path.join(process.cwd(), "node_modules")}/polythene-css/dist/polythene.css`
+    index: "../index.js"
   },
 
   externals: {

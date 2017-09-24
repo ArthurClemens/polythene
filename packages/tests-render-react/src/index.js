@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import { addFastClick } from "polythene-fastclick";
 import { addTypography } from "polythene-style";
-import { addLayoutStyles } from "polythene-utilities";
+import { addLayoutStyles } from "polythene-core-css";
 import "polythene-css";
 import { rules as css } from "./styles";
 import { renderer as h, List, Toolbar, ListTile, Snackbar, Notification } from "polythene-react";

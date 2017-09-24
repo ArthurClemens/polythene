@@ -234,7 +234,7 @@ A full screen dialog uses [Toolbar](../toolbar.md) to implement its own header (
 ~~~javascript
 import m from "mithril"
 import { renderer as h, Button, Toolbar, IconButton } from "polythene-mithril"
-import { addLayoutStyles } from "polythene-utilities"
+import { addLayoutStyles } from "polythene-core-css"
 
 addLayoutStyles() // to use m(".flex")
 

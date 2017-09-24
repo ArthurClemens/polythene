@@ -1,26 +1,23 @@
 {
-  "name": "polythene-core-css",
-  "version": "1.0.0-rc.4",
+  "name": "polythene-css-style",
+  "version": "1.0.0-rc.5",
   "description": "",
-  "main": "dist/polythene-core-css.js",
-  "module": "dist/polythene-core-css.mjs",
+  "main": "dist/polythene-css-style.js",
+  "module": "dist/polythene-css-style.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
-    "write-css": "node ./scripts/writeCSS.js",
-    "build": "yarn run rollup && yarn run write-css"
+    "build:css": "node ../../scripts/writeComponentCSS.js",
+    "build": "yarn run rollup && yarn run build:css"
   },
   "files": [
     "dist",
     "README.md"
   ],
   "dependencies": {
-    "j2c": "^1.0.0-4",
-    "j2c-plugin-prefix-browser": "^1.0.6",
-    "polythene-core": "^1.0.0-rc.4"
-  },
-  "devDependencies": {
-    "polythene-scripts": "^1.0.0-rc.5"
+    "polythene-style": "^1.0.0-rc.5",
+    "polythene-core-css": "^1.0.0-rc.4",
+    "polythene-theme": "^1.0.0-rc.5"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

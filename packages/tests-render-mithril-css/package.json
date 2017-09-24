@@ -10,6 +10,7 @@
     "dev:serve": "webpack-dev-server --config scripts/webpack.config.dev.js --port 3600",
     "dev:watch": "webpack --watch --config scripts/webpack.config.dev.js",
     "writeCSS": "node ./scripts/writeThemeCSS",
+    "stats": "webpack --config scripts/webpack.config.prod.js --profile --json > stats.json",
     "build": "yarn run writeCSS && webpack -p --config scripts/webpack.config.prod.js"
   },
   "dependencies": {

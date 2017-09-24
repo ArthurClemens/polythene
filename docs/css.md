@@ -115,18 +115,18 @@ See also:
 
 Package `polythene-utilities` includes helper classes that are useful to quickly add layout styles to hyperscript / jsx.
 
-See: [Complete list of layout classes](packages/polythene-utilities.md#list-of-layout-classes)
+See: [Complete list of layout classes](packages/polythene-core-css.md#list-of-layout-classes)
 
 ### Installation
 
 ~~~bash
-yarn add polythene-utilities
+yarn add polythene-core-css
 ~~~
 
 or
 
 ~~~bash
-npm install --save polythene-utilities
+npm install --save polythene-core-css
 ~~~
 
 
@@ -135,7 +135,7 @@ npm install --save polythene-utilities
 #### Classes
 
 ~~~javascript
-import { addLayoutStyles } from "polythene-utilities"
+import { addLayoutStyles } from "polythene-core-css"
 
 addLayoutStyles()
 ~~~

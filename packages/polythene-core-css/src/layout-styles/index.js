@@ -1,4 +1,4 @@
-import { styler } from "polythene-core-css";
+import styler from "../styler";
 import flex from "./flex-classes";
 import commonStyle from "./common-classes";
 

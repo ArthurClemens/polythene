@@ -16,9 +16,7 @@
   ],
   "dependencies": {
     "mithril": "1.1.3",
-    "polythene-core": "^1.0.0-rc.4",
     "polythene-css": "^1.0.0-rc.5",
-    "polythene-fastclick": "^1.0.0-rc.4",
     "polythene-mithril-base": "^1.0.0-rc.4",
     "polythene-mithril-button": "^1.0.0-rc.5",
     "polythene-mithril-card": "^1.0.0-rc.5",
@@ -47,9 +45,13 @@
     "polythene-mithril-switch": "^1.0.0-rc.5",
     "polythene-mithril-tabs": "^1.0.0-rc.5",
     "polythene-mithril-textfield": "^1.0.0-rc.5",
-    "polythene-mithril-toolbar": "^1.0.0-rc.5",
-    "polythene-style": "^1.0.0-rc.5",
-    "polythene-utilities": "^1.0.0-rc.5"
+    "polythene-mithril-toolbar": "^1.0.0-rc.5"
+  },
+  "devDependencies": {
+    "polythene-core": "^1.0.0-rc.4",
+    "polythene-core-css": "^1.0.0-rc.4",
+    "polythene-fastclick": "^1.0.0-rc.4",
+    "polythene-style": "^1.0.0-rc.5"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

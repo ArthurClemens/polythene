@@ -1,8 +1,5 @@
 import { filterSupportedAttributes, getAnimationEndEvent, isServer, isTouch, pointerEndEvent } from 'polythene-core';
-import { styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var ANIMATION_END_EVENT = getAnimationEndEvent();
 var DEFAULT_START_OPACITY = 0.2;
@@ -10,6 +7,23 @@ var DEFAULT_END_OPACITY = 0.0;
 var DEFAULT_START_SCALE = 0.1;
 var DEFAULT_END_SCALE = 2.0;
 var OPACITY_DECAY_VELOCITY = 0.35;
+
+var addStyleToHead = function addStyleToHead(id, stylesheet) {
+  if (isServer) return;
+  var documentRef = window.document;
+  var styleEl = documentRef.createElement("style");
+  styleEl.setAttribute("id", id);
+  styleEl.appendChild(documentRef.createTextNode(stylesheet));
+  documentRef.head.appendChild(styleEl);
+};
+
+var removeStyleFromHead = function removeStyleFromHead(id) {
+  if (isServer) return;
+  var el = document.getElementById(id);
+  if (el && el.parentNode) {
+    el.parentNode.removeChild(el);
+  }
+};
 
 var animation = (function (_ref) {
   var e = _ref.e,
@@ -53,20 +67,11 @@ var animation = (function (_ref) {
     style.animationName = id;
     style.animationTimingFunction = attrs.animationTimingFunction || vars.animation_curve_default;
 
-    var keyframeStyle = [_defineProperty({}, "@keyframes " + id, {
-      " 0%": {
-        transform: "scale(" + startScale + ")",
-        "opacity": startOpacity
-      },
-      " 100%": {
-        transform: "scale(" + endScale + ")",
-        "opacity": endOpacity
-      }
-    })];
-    styler.add(id, keyframeStyle);
+    var rippleStyleSheet = "@keyframes " + id + " {\n      0% {\n        transform:scale(" + startScale + ");\n        opacity: " + startOpacity + "\n      }\n      100% {\n        transform:scale(" + endScale + ");\n        opacity: " + endOpacity + ";\n      }\n    }";
+    addStyleToHead(id, rippleStyleSheet);
 
     var animationDone = function animationDone(evt) {
-      styler.remove(id);
+      removeStyleFromHead(id);
       waves.removeEventListener(ANIMATION_END_EVENT, animationDone, false);
       if (attrs.persistent) {
         style.opacity = endOpacity;

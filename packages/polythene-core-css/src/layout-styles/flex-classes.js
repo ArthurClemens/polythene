@@ -1,4 +1,4 @@
-import { flex } from "polythene-core-css";
+import flex from "../mixin-flex";
 
 export default [{
   ".layout, .layout.horizontal": flex.layout,
