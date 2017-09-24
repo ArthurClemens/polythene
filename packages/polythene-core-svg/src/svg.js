@@ -4,6 +4,14 @@ import classes from "./classes";
 export const getElement = vnode =>
   vnode.attrs.element || "div";
 
+export const onMount = vnode => {
+  if (!vnode.dom) {
+    return;
+  }
+  // Prevent that SVG gets keyboard focus
+  vnode.dom.querySelector("svg").setAttribute("focusable", "false");
+};
+
 export const createProps = (vnode, { keys: k }) => {
   const attrs = vnode.attrs;
   return Object.assign(
@@ -26,3 +34,5 @@ export const createContent = vnode => {
     ? attrs.content
     : attrs.children || vnode.children || attrs;
 };
+
+

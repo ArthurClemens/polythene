@@ -10,6 +10,14 @@ var getElement = function getElement(vnode) {
   return vnode.attrs.element || "div";
 };
 
+var onMount = function onMount(vnode) {
+  if (!vnode.dom) {
+    return;
+  }
+  // Prevent that SVG gets keyboard focus
+  vnode.dom.querySelector("svg").setAttribute("focusable", "false");
+};
+
 var createProps = function createProps(vnode, _ref) {
   var k = _ref.keys;
 
@@ -26,6 +34,7 @@ var createContent = function createContent(vnode) {
 
 var svg = Object.freeze({
 	getElement: getElement,
+	onMount: onMount,
 	createProps: createProps,
 	createContent: createContent
 });
