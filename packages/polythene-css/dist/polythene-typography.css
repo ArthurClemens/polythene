@@ -2,8 +2,6 @@ body,button,html,input,select,textarea {
   font-family: Roboto,Helvetica,Arial,sans-serif
 }
 
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700");
-
 html {
   box-sizing: border-box
 }
