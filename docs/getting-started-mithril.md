@@ -101,10 +101,9 @@ https://rawgit.com/ArthurClemens/polythene/master/packages/polythene-mithril/dis
 Included:
 
 * All components
-* All component styles from `polythene-css`
+* All component styles, plus Material Design styles (typography and font), from `polythene-css`
 * `subscribe`, `unsubscribe` from `polythene-core`
 * Layout styles from `polythene-utilities`
-* Text and Roboto font from `polythene-style`
 * Fast Click from `polythene-fastclick`
 
 Not included:

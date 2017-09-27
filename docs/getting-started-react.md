@@ -37,13 +37,13 @@ Optional:
 ### Installation
 
 ~~~bash
-yarn add polythene-react polythene-css polythene-style
+yarn add polythene-react polythene-css
 ~~~
 
 or
 
 ~~~bash
-npm install --save polythene-react polythene-css polythene-style
+npm install --save polythene-react polythene-css
 ~~~
 
 ### Examples
@@ -148,10 +148,9 @@ https://rawgit.com/ArthurClemens/polythene/master/packages/polythene-react/dist/
 Included:
 
 * All components
-* All component styles from `polythene-css`
+* All component styles, plus Material Design styles (typography and font), from `polythene-css`
 * `subscribe`, `unsubscribe` from `polythene-core`
 * Layout styles from `polythene-utilities`
-* Text and Roboto font from `polythene-style`
 * Fast Click from `polythene-fastclick`
 
 Not included:
