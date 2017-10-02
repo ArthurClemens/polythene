@@ -32,9 +32,9 @@ var getElement = function getElement(vnode) {
 };
 
 var getInitialState = function getInitialState(vnode, createStream) {
-  var dom = createStream();
+  var dom = createStream(null);
   var focus = createStream(false);
-  var click = createStream();
+  var click = createStream(null); // Force redraw for IE 11
   var inactive = createStream(false);
   var mouseover = createStream(false);
   return {
