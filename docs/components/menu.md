@@ -42,7 +42,7 @@ A local popup menu with a list of choices. A menu contains one or more [Lists](l
 | **visible** | required | Boolean | false | Set to true to show the menu |
 | **permanent** | optional | Boolean |  | Set to true to always show the menu (mostly used for demonstration purposes) |
 | **target** | optional | String |  | HTML element selector to position to, for instance `"#my-button"` |
-| **reposition** | optional | Boolean | true | Set to `false` to not position the menu to the menu item ([List Tile](list-tile.md)) that has class "selected" |
+| **reposition** | optional | Boolean | false | Set to `true` to position the menu to the menu item ([List Tile](list-tile.md)) that has class "selected" |
 | **show** | optional | Boolean | | Set to true to show the menu |
 
 ### Menu appearance options

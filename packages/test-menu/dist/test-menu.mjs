@@ -517,6 +517,7 @@ var settings = (function (_ref) {
         hideDelay: .240,
         size: 5,
         offset: 16,
+        reposition: true,
         content: h(List$$1, {
           hoverable: true,
           tiles: menuOptions.map(function (setting, index) {

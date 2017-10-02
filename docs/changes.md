@@ -2,6 +2,14 @@
 
 ## Pre release
 
+### 1.0.0-rc.8
+
+Changes to components:
+
+* Menu
+  * Option `reposition` is now by default `false`
+
+
 ### 1.0.0-rc.7
 
 Fix for newly introduced bug in button onclick handling.

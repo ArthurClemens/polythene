@@ -24,9 +24,8 @@ const positionMenu = (state, attrs) => {
   }
   const contentEl = state.dom().querySelector("." + classes.content);
   const origin = attrs.origin || "top-left";
-  const reposition = attrs.reposition === false ? false : true;
   let positionOffset = 0;
-  if (reposition) {
+  if (attrs.reposition) {
     const firstItem = contentEl.querySelectorAll("." + classes.listTile)[0];
     const selectedItem = contentEl.querySelector("." + classes.selectedListTile);
     if (firstItem && selectedItem) {
