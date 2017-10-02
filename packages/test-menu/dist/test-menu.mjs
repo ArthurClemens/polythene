@@ -791,7 +791,7 @@ var links = (function (_ref) {
       target = _ref.target,
       h = _ref.h,
       Menu$$1 = _ref.Menu,
-      List$$1 = _ref.List,
+      ListTile$$1 = _ref.ListTile,
       didHide = _ref.didHide,
       getState = _ref.getState;
   return h(Menu$$1, {
@@ -800,25 +800,50 @@ var links = (function (_ref) {
     didHide: didHide,
     getState: getState,
     size: 5,
-    content: h(List$$1, {
-      all: {
-        element: "a",
-        ink: true,
-        hoverable: true
-      }
-    }, [{
+    content: h("div", {
+      // all: {
+      //   element: "a",
+      //   ink: true,
+      //   hoverable: true,
+      // },
+    }, [h(ListTile$$1, {
       title: "Link to Shadow",
       url: {
         href: "/shadow",
         oncreate: h.route.link
       }
-    }, {
+    }), h(ListTile$$1, {
       title: "Link to Button",
       url: {
         href: "/button",
         oncreate: h.route.link
       }
-    }])
+    })])
+    // content: h(List,
+    //   {
+    //     all: {
+    //       element: "a",
+    //       ink: true,
+    //       hoverable: true,
+    //     },
+    //   },
+    //   [
+    //     {
+    //       title: "Link to Shadow",
+    //       url: {
+    //         href: "/shadow",
+    //         oncreate: h.route.link
+    //       }
+    //     },
+    //     {
+    //       title: "Link to Button",
+    //       url: {
+    //         href: "/button",
+    //         oncreate: h.route.link
+    //       }
+    //     },
+    //   ]
+    // )
   });
 });
 
@@ -8328,8 +8353,6 @@ var _class$2 = function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      var history = this.props.history;
-
       var isOpen = this.state.isOpen;
       var target = "links-menu";
       return renderer$1("div", { style: { position: "relative" } }, [renderer$1(RaisedButton$1, {
@@ -8346,25 +8369,19 @@ var _class$2 = function (_Component) {
         size: 5,
         content: renderer$1(List$1, {
           all: {
-            element: "a",
+            element: Link,
             ink: true,
             hoverable: true
           }
         }, [{
           title: "Link to Shadow",
           url: {
-            href: "/shadow",
-            onClick: function onClick(e) {
-              return e.preventDefault(), history.push("/shadow");
-            }
+            to: "/shadow"
           }
         }, {
           title: "Link to Button",
           url: {
-            href: "/button",
-            onClick: function onClick(e) {
-              return e.preventDefault(), history.push("/button");
-            }
+            to: "/button"
           }
         }])
       })]);

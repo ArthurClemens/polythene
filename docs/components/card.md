@@ -44,7 +44,7 @@ This implementation closely follows the [design specification](https://material.
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **url** | optional | Object with `href`, optionally `oncreate` (for Mithril) or `onClick` (for React) | | URL for the entire card; Mithril: for in-app route linking set `oncreate : m.route.link`; React: for in-app route linking use `onClick` and a router such as `react-router-dom` |
+| **url** | optional | Object with `href`, optionally `oncreate` (for Mithril) or `onClick` (for React) or `to` (for React Router) | | URL for the entire card; Mithril: for in-app route linking set `oncreate : m.route.link`; React: for in-app route linking use `onClick` and a router such as `react-router-dom` |
 | **content** | required | String, hyperscript or component or Array |  | Any content, or a list of option objects for distinct areas - see below |
 | **z** | optional | Number 0-5 | 1 | Depth of the shadow |
 

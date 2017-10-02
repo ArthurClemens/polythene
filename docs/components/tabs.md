@@ -76,7 +76,7 @@ These options can be grouped into `tabsOpts` and applied to all tabs.
 | **events** | optional | Object | | Button events; options object containing one or more events like `onclick` |
 | **className** | optional | String |  | Extra CSS class appended to "pe-button pe-tabs__tab" |
 | **label** | required | String | | The button label |
-| **url** | optional | Object with `href`, optionally `oncreate` (for Mithril) or `onClick` (for React) | | URL location; Mithril: for in-app route linking set `oncreate : m.route.link`; React: for in-app route linking use `onClick` and a router such as `react-router-dom` |
+| **url** | optional | Object with `href`, optionally `oncreate` (for Mithril) or `onClick` (for React) or `to` (for React Router) | | URL location; Mithril: for in-app route linking set `oncreate : m.route.link`; React: for in-app route linking use `onClick` and a router such as `react-router-dom` |
 | **ink** | optional | Boolean | true | Set to false to disable the ripple effect on click/tap |
 | **disabled** | optional | Boolean | false | Disables the button |
 | **selected** | optional | Boolean | false | Set to true to show the button as selected |
