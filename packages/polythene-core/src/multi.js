@@ -12,7 +12,7 @@ export const Multi = ({ options: mOptions, renderer }) => {
   let current;
   
   const getInitialState = (vnode, createStream) => {
-    current = createStream();
+    current = createStream(null);
     return {
       current,
       redrawOnUpdate: createStream.merge([current])

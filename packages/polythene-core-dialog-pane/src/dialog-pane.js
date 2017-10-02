@@ -34,12 +34,12 @@ const updateFooterState = vnode => {
 
 export const getInitialState = (vnode, createStream) => {
   const bottomOverflow = createStream(false); 
-  const footerEl = createStream();
-  const headerEl = createStream();
+  const footerEl = createStream(null);
+  const headerEl = createStream(null);
   const isScrolling = createStream(false);
-  const scrollEl = createStream();
+  const scrollEl = createStream(null);
   const topOverflow = createStream(false);
-  const el = createStream();
+  const el = createStream(null);
   
   return {
     cleanUp: undefined,

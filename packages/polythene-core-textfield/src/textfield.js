@@ -95,16 +95,16 @@ export const getInitialState = (vnode, createStream) => {
       ? attrs.value
       : "";
 
-  const el = createStream();
-  const inputEl = createStream();
-  const setValue = createStream();
+  const el = createStream(null);
+  const inputEl = createStream(null);
+  const setValue = createStream(null);
   const error = createStream(attrs.error);
   const hasFocus = createStream(attrs.focus || false);
-  const setFocus = createStream();
+  const setFocus = createStream(null);
   const isTouched = createStream(false); // true when any change is made
   const isDirty = createStream(defaultValue !== ""); // true for any input
   const isInvalid = createStream(false);
-  const previousValue = createStream();
+  const previousValue = createStream(null);
 
   return {
     defaultValue,

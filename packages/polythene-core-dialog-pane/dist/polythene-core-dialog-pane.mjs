@@ -61,12 +61,12 @@ var updateFooterState = function updateFooterState(vnode) {
 
 var getInitialState = function getInitialState(vnode, createStream) {
   var bottomOverflow = createStream(false);
-  var footerEl = createStream();
-  var headerEl = createStream();
+  var footerEl = createStream(null);
+  var headerEl = createStream(null);
   var isScrolling = createStream(false);
-  var scrollEl = createStream();
+  var scrollEl = createStream(null);
   var topOverflow = createStream(false);
-  var el = createStream();
+  var el = createStream(null);
 
   return {
     cleanUp: undefined,

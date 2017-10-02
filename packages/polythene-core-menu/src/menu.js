@@ -190,7 +190,7 @@ export const onUnMount = vnode => {
 };
 
 export const getInitialState = (vnode, createStream) => {
-  const dom = createStream();
+  const dom = createStream(null);
   const visible = createStream(false);
   return {
     dom,
