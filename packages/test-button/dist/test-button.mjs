@@ -6672,88 +6672,6 @@ Switch.propTypes = {
  */
 'use strict';
 
-var REACT_STATICS = {
-    childContextTypes: true,
-    contextTypes: true,
-    defaultProps: true,
-    displayName: true,
-    getDefaultProps: true,
-    mixins: true,
-    propTypes: true,
-    type: true
-};
-
-var KNOWN_STATICS = {
-    name: true,
-    length: true,
-    prototype: true,
-    caller: true,
-    arguments: true,
-    arity: true
-};
-
-var isGetOwnPropertySymbolsAvailable = typeof Object.getOwnPropertySymbols === 'function';
-
-var hoistNonReactStatics = function hoistNonReactStatics(targetComponent, sourceComponent, customStatics) {
-    if (typeof sourceComponent !== 'string') {
-        // don't hoist over string (html) components
-        var keys = Object.getOwnPropertyNames(sourceComponent);
-
-        /* istanbul ignore else */
-        if (isGetOwnPropertySymbolsAvailable) {
-            keys = keys.concat(Object.getOwnPropertySymbols(sourceComponent));
-        }
-
-        for (var i = 0; i < keys.length; ++i) {
-            if (!REACT_STATICS[keys[i]] && !KNOWN_STATICS[keys[i]] && (!customStatics || !customStatics[keys[i]])) {
-                try {
-                    targetComponent[keys[i]] = sourceComponent[keys[i]];
-                } catch (error) {}
-            }
-        }
-    }
-
-    return targetComponent;
-};
-
-var _extends$5 = Object.assign || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }return target;
-};
-
-function _objectWithoutProperties$1(obj, keys) {
-  var target = {};for (var i in obj) {
-    if (keys.indexOf(i) >= 0) continue;if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;target[i] = obj[i];
-  }return target;
-}
-
-/**
- * A public higher-order component to access the imperative API
- */
-var withRouter = function withRouter(Component) {
-  var C = function C(props) {
-    var wrappedComponentRef = props.wrappedComponentRef,
-        remainingProps = _objectWithoutProperties$1(props, ['wrappedComponentRef']);
-
-    return react.createElement(Route, { render: function render(routeComponentProps) {
-        return react.createElement(Component, _extends$5({}, remainingProps, routeComponentProps, { ref: wrappedComponentRef }));
-      } });
-  };
-
-  C.displayName = 'withRouter(' + (Component.displayName || Component.name) + ')';
-  C.WrappedComponent = Component;
-  C.propTypes = {
-    wrappedComponentRef: propTypes.func
-  };
-
-  return hoistNonReactStatics(C, Component);
-};
-
 var _typeof$9 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 function _classCallCheck(instance, Constructor) {
@@ -7718,27 +7636,24 @@ var reactTests = function reactTests(_ref) {
       });
     }
   }, {
-    name: "With router",
+    name: "With React Router Link",
     interactive: true,
-    component: withRouter(function (_ref3) {
-      var history = _ref3.history;
+    component: function component() {
       return h(Button$$1, {
         label: "Go to /shadow",
+        element: Link,
         url: {
-          href: "/shadow",
-          onClick: function onClick(e) {
-            return e.preventDefault(), history.push("/shadow");
-          }
+          to: "/shadow"
         }
       });
-    })
+    }
   }, {
     name: "Option: events (onclick)",
     interactive: true,
     exclude: true,
-    component: withCounter(function (_ref4) {
-      var counter = _ref4.counter,
-          increment = _ref4.increment;
+    component: withCounter(function (_ref3) {
+      var counter = _ref3.counter,
+          increment = _ref3.increment;
       return h("div", [h("div", "onclick called: " + counter), h(Button$$1, {
         label: "Button",
         events: {
@@ -7750,9 +7665,9 @@ var reactTests = function reactTests(_ref) {
     name: "Key down (after having focus) results in click",
     interactive: true,
     exclude: true,
-    component: withCounter(function (_ref5) {
-      var counter = _ref5.counter,
-          increment = _ref5.increment;
+    component: withCounter(function (_ref4) {
+      var counter = _ref4.counter,
+          increment = _ref4.increment;
       return h("div", [h("div", "onclick called: " + counter), h(Button$$1, {
         label: "Button",
         events: {
