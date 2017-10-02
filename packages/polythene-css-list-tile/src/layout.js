@@ -41,6 +41,10 @@ export default (selector, componentVars) => [{
         }
       ],
 
+      ":not(.pe-list-tile--disabled)": {
+        outline: "none"
+      },
+
       " .pe-list-tile__secondary": {
         textAlign: "right",
         fontSize: componentVars.font_size_title + "px",
