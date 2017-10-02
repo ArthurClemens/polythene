@@ -29,7 +29,7 @@
 .pe-menu {
   transition-timing-function: ease-out;
   transition-property: all;
-  z-index: 1;
+  z-index: 1000;
   opacity: 0;
   position: absolute;
   min-width: 84px
