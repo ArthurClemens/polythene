@@ -74,7 +74,7 @@ var hideSpinner = function hideSpinner(state, attrs) {
 
 var getInitialState = function getInitialState(vnode, createStream) {
   var visible = createStream(false);
-  var dom = createStream();
+  var dom = createStream(null);
   return {
     dom: dom,
     visible: visible,

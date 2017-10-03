@@ -219,7 +219,7 @@ var onUnMount = function onUnMount(vnode) {
 };
 
 var getInitialState = function getInitialState(vnode, createStream) {
-  var dom = createStream();
+  var dom = createStream(null);
   var visible = createStream(false);
   return {
     dom: dom,

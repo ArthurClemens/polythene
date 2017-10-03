@@ -11,7 +11,7 @@ var getElement = function getElement(vnode) {
 };
 
 var getInitialState = function getInitialState(vnode, createStream) {
-  var checkedValue = createStream();
+  var checkedValue = createStream(null);
   return {
     checkedValue: checkedValue,
     redrawOnUpdate: createStream.merge([checkedValue])

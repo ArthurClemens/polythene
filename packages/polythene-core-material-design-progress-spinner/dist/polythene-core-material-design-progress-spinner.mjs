@@ -119,7 +119,7 @@ var getSize = function getSize(attrs) {
 
 var getInitialState = function getInitialState(vnode, createStream) {
   var percentage = createStream(0);
-  var dom = createStream();
+  var dom = createStream(null);
   var animating = createStream(false);
   return {
     dom: dom,

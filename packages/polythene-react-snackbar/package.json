@@ -16,7 +16,7 @@
   "dependencies": {
     "polythene-core": "^1.0.0-rc.6",
     "polythene-core-snackbar": "^1.0.0-rc.6",
-    "polythene-react-base": "^1.0.0-rc.6"
+    "polythene-react-base": "^1.0.0-rc.7"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

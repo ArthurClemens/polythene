@@ -15,7 +15,7 @@
   ],
   "dependencies": {
     "polythene-core-raised-button": "^1.0.0-rc.6",
-    "polythene-react-base": "^1.0.0-rc.6",
+    "polythene-react-base": "^1.0.0-rc.7",
     "polythene-react-button": "^1.0.0-rc.7",
     "polythene-react-shadow": "^1.0.0-rc.6"
   },

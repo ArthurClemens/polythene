@@ -791,7 +791,7 @@ var links = (function (_ref) {
       target = _ref.target,
       h = _ref.h,
       Menu$$1 = _ref.Menu,
-      ListTile$$1 = _ref.ListTile,
+      List$$1 = _ref.List,
       didHide = _ref.didHide,
       getState = _ref.getState;
   return h(Menu$$1, {
@@ -800,50 +800,25 @@ var links = (function (_ref) {
     didHide: didHide,
     getState: getState,
     size: 5,
-    content: h("div", {
-      // all: {
-      //   element: "a",
-      //   ink: true,
-      //   hoverable: true,
-      // },
-    }, [h(ListTile$$1, {
+    content: h(List$$1, {
+      all: {
+        element: "a",
+        ink: true,
+        hoverable: true
+      }
+    }, [{
       title: "Link to Shadow",
       url: {
         href: "/shadow",
         oncreate: h.route.link
       }
-    }), h(ListTile$$1, {
+    }, {
       title: "Link to Button",
       url: {
         href: "/button",
         oncreate: h.route.link
       }
-    })])
-    // content: h(List,
-    //   {
-    //     all: {
-    //       element: "a",
-    //       ink: true,
-    //       hoverable: true,
-    //     },
-    //   },
-    //   [
-    //     {
-    //       title: "Link to Shadow",
-    //       url: {
-    //         href: "/shadow",
-    //         oncreate: h.route.link
-    //       }
-    //     },
-    //     {
-    //       title: "Link to Button",
-    //       url: {
-    //         href: "/button",
-    //         oncreate: h.route.link
-    //       }
-    //     },
-    //   ]
-    // )
+    }])
   });
 });
 

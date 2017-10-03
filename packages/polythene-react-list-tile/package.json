@@ -15,7 +15,7 @@
   ],
   "dependencies": {
     "polythene-core-list-tile": "^1.0.0-rc.6",
-    "polythene-react-base": "^1.0.0-rc.6",
+    "polythene-react-base": "^1.0.0-rc.7",
     "polythene-react-icon": "^1.0.0-rc.6",
     "polythene-react-ripple": "^1.0.0-rc.6"
   },

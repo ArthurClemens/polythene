@@ -130,16 +130,16 @@ var getInitialState = function getInitialState(vnode, createStream) {
 
   var defaultValue = attrs.defaultValue !== undefined ? attrs.defaultValue : attrs.value !== undefined ? attrs.value : "";
 
-  var el = createStream();
-  var inputEl = createStream();
-  var setValue = createStream();
+  var el = createStream(null);
+  var inputEl = createStream(null);
+  var setValue = createStream(null);
   var error = createStream(attrs.error);
   var hasFocus = createStream(attrs.focus || false);
-  var setFocus = createStream();
+  var setFocus = createStream(null);
   var isTouched = createStream(false); // true when any change is made
   var isDirty = createStream(defaultValue !== ""); // true for any input
   var isInvalid = createStream(false);
-  var previousValue = createStream();
+  var previousValue = createStream(null);
 
   return {
     defaultValue: defaultValue,
