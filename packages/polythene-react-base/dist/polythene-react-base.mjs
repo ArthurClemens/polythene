@@ -1,3 +1,5 @@
+import { isClient } from 'polythene-core';
+
 var keys = {
   autofocus: "autoFocus",
   class: "className",
@@ -3956,7 +3958,7 @@ if (process.env.NODE_ENV !== 'production') {
   };
 }
 
-var React = {
+var React$1 = {
   // Modern
 
   Children: {
@@ -3994,7 +3996,7 @@ var React = {
 if (process.env.NODE_ENV !== 'production') {
   var warnedForCreateClass = false;
   if (canDefineProperty) {
-    Object.defineProperty(React, 'PropTypes', {
+    Object.defineProperty(React$1, 'PropTypes', {
       get: function get() {
         lowPriorityWarning(didWarnPropTypesDeprecated, 'Accessing PropTypes via the main React package is deprecated,' + ' and will be removed in  React v16.0.' + ' Use the latest available v15.* prop-types package from npm instead.' + ' For info on usage, compatibility, migration and more, see ' + 'https://fb.me/prop-types-docs');
         didWarnPropTypesDeprecated = true;
@@ -4002,7 +4004,7 @@ if (process.env.NODE_ENV !== 'production') {
       }
     });
 
-    Object.defineProperty(React, 'createClass', {
+    Object.defineProperty(React$1, 'createClass', {
       get: function get() {
         lowPriorityWarning(warnedForCreateClass, 'Accessing createClass via the main React package is deprecated,' + ' and will be removed in React v16.0.' + " Use a plain JavaScript class instead. If you're not yet " + 'ready to migrate, create-react-class v15.* is available ' + 'on npm as a temporary, drop-in replacement. ' + 'For more info see https://fb.me/react-create-class');
         warnedForCreateClass = true;
@@ -4014,10 +4016,10 @@ if (process.env.NODE_ENV !== 'production') {
   // React.DOM factories are deprecated. Wrap these methods so that
   // invocations of the React.DOM namespace and alert users to switch
   // to the `react-dom-factories` package.
-  React.DOM = {};
+  React$1.DOM = {};
   var warnedForFactories = false;
   Object.keys(ReactDOMFactories_1).forEach(function (factory) {
-    React.DOM[factory] = function () {
+    React$1.DOM[factory] = function () {
       if (!warnedForFactories) {
         lowPriorityWarning(false, 'Accessing factories like React.DOM.%s has been deprecated ' + 'and will be removed in v16.0+. Use the ' + 'react-dom-factories package instead. ' + ' Version 1.0 provides a drop-in replacement.' + ' For more info, see https://fb.me/react-dom-factories', factory);
         warnedForFactories = true;
@@ -4027,13 +4029,11 @@ if (process.env.NODE_ENV !== 'production') {
   });
 }
 
-var React_1 = React;
+var React_1 = React$1;
 
 'use strict';
 
 var react = React_1;
-
-var react_2 = react.Component;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -4079,8 +4079,8 @@ h(StateComponent, { subject: "airco"});
 */
 
 var MithrilToReact = function MithrilToReact(component) {
-  return function (_Component) {
-    _inherits(_class, _Component);
+  return function (_React$Component) {
+    _inherits(_class, _React$Component);
 
     function _class(props) {
       _classCallCheck(this, _class);
@@ -4124,7 +4124,7 @@ var MithrilToReact = function MithrilToReact(component) {
     }]);
 
     return _class;
-  }(react_2);
+  }(react.Component);
 };
 
 /* eslint-disable complexity, max-statements */
@@ -20738,14 +20738,15 @@ var StateComponent = function StateComponent(_ref) {
       view = _ref$view === undefined ? null : _ref$view;
 
 
-  return function (_Component) {
-    _inherits$1(_class, _Component);
+  return function (_React$Component) {
+    _inherits$1(_class, _React$Component);
 
     function _class(props) {
       _classCallCheck$1(this, _class);
 
       var _this = _possibleConstructorReturn$1(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, props));
 
+      _this.dom = null;
       var protoState = _extends$3({}, component, _this.createVirtualNode(), {
         redrawValues: undefined
       });
@@ -20787,8 +20788,8 @@ var StateComponent = function StateComponent(_ref) {
     }, {
       key: "registerDOM",
       value: function registerDOM(el) {
-        if (!this.dom) {
-          this.dom = reactDom.findDOMNode(el);
+        if (isClient && !this.dom && el) {
+          this.dom = el instanceof HTMLElement ? el : reactDom.findDOMNode(el);
         }
       }
     }, {
@@ -20805,7 +20806,7 @@ var StateComponent = function StateComponent(_ref) {
     }]);
 
     return _class;
-  }(react_2);
+  }(react.Component);
 };
 
 var _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -20840,14 +20841,15 @@ var ViewComponent = function ViewComponent(_ref) {
       view = _ref$view === undefined ? null : _ref$view;
 
 
-  return function (_Component) {
-    _inherits$2(_class, _Component);
+  return function (_React$Component) {
+    _inherits$2(_class, _React$Component);
 
     function _class(props) {
       _classCallCheck$4(this, _class);
 
       var _this = _possibleConstructorReturn$2(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, props));
 
+      _this.dom = null;
       _this.registerDOM = _this.registerDOM.bind(_this);
       _this._render = _this._render.bind(_this);
       return _this;
@@ -20876,8 +20878,8 @@ var ViewComponent = function ViewComponent(_ref) {
     }, {
       key: "registerDOM",
       value: function registerDOM(el) {
-        if (!this.dom) {
-          this.dom = reactDom.findDOMNode(el);
+        if (isClient && !this.dom && el) {
+          this.dom = el instanceof HTMLElement ? el : reactDom.findDOMNode(el);
         }
       }
     }, {
@@ -20894,7 +20896,7 @@ var ViewComponent = function ViewComponent(_ref) {
     }]);
 
     return _class;
-  }(react_2);
+  }(react.Component);
 };
 
 export { keys, MithrilToReact, renderer, StateComponent, ViewComponent };

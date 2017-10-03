@@ -31,11 +31,11 @@ const StateComponent = {
 h(StateComponent, { subject: "airco"});
 */
 
-import { Component } from "react";
+import React from "react";
 
 export const MithrilToReact = component => (
 
-  class extends Component {
+  class extends React.Component {
 
     constructor(props) {
       super(props);

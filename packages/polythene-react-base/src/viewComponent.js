@@ -1,4 +1,4 @@
-import { Component } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import { renderer } from "./renderer";
 import { keys } from "./keys";
@@ -16,10 +16,11 @@ export const ViewComponent = ({
   view = null
 }) => {
   
-  return class extends Component {
+  return class extends React.Component {
 
     constructor(props) {
       super(props);
+      this.dom = null;
       this.registerDOM = this.registerDOM.bind(this);
       this._render = this._render.bind(this);
     }
@@ -42,8 +43,10 @@ export const ViewComponent = ({
     }
 
     registerDOM(el) {
-      if (el && isClient && !this.dom) {
-        this.dom = ReactDOM.findDOMNode(el);
+      if (isClient && !this.dom && el) {
+        this.dom = el instanceof HTMLElement
+          ? el
+          : ReactDOM.findDOMNode(el);
       }
     }
 
