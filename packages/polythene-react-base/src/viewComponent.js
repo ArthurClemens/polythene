@@ -42,7 +42,7 @@ export const ViewComponent = ({
     }
 
     registerDOM(el) {
-      if (!this.dom && isClient && this._mounted) {
+      if (!this.dom && el && isClient) {
         this.dom = ReactDOM.findDOMNode(el);
       }
     }
