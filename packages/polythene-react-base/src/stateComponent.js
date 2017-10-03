@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import stream from "mithril/stream";
 import { renderer } from "./renderer";
 import { keys } from "./keys";
+import { isClient } from "polythene-core";
 
 const requiresKeys = true;
 
@@ -59,7 +60,7 @@ export const StateComponent = ({
     }
 
     registerDOM(el) {
-      if (!this.dom) {
+      if (!this.dom && isClient) {
         this.dom = ReactDOM.findDOMNode(el);
       }
     }

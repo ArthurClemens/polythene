@@ -2,6 +2,7 @@ import { Component } from "react";
 import ReactDOM from "react-dom";
 import { renderer } from "./renderer";
 import { keys } from "./keys";
+import { isClient } from "polythene-core";
 
 const requiresKeys = true;
 
@@ -41,7 +42,7 @@ export const ViewComponent = ({
     }
 
     registerDOM(el) {
-      if (!this.dom) {
+      if (!this.dom && isClient) {
         this.dom = ReactDOM.findDOMNode(el);
       }
     }
