@@ -34,16 +34,19 @@ export const ViewComponent = ({
 
     createVirtualNode() {
       const props = Object.assign({}, this.props);
+      if (!this.dom && this._mounted) {
+        this.dom = ReactDOM.findDOMNode(this.el);
+      }
       return {
         attrs: props,
         children: props.children,
-        dom: this.dom
+        dom: this.dom,
       };
     }
 
     registerDOM(el) {
-      if (!this.dom && el && isClient) {
-        this.dom = ReactDOM.findDOMNode(el);
+      if (el) {
+        this.el = el;
       }
     }
 

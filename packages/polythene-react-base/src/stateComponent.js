@@ -51,6 +51,9 @@ export const StateComponent = ({
 
     createVirtualNode() {
       const props = Object.assign({}, this.props);
+      if (!this.dom && this._mounted) {
+        this.dom = ReactDOM.findDOMNode(this.el);
+      }
       return {
         state: this.state,
         attrs: props,
@@ -60,8 +63,8 @@ export const StateComponent = ({
     }
 
     registerDOM(el) {
-      if (!this.dom && el && isClient) {
-        this.dom = ReactDOM.findDOMNode(el);
+      if (el) {
+        this.el = el;
       }
     }
 
