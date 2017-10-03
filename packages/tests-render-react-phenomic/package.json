@@ -1,0 +1,33 @@
+{
+  "name": "polythene-tests-render-react-phenomic",
+  "version": "1.0.0-rc.7",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "start": "phenomic start",
+    "build": "phenomic build",
+    "serve": "http-server dist -p 3901"
+  },
+  "dependencies": {
+    "@phenomic/cli": "^1.0.0-alpha.11",
+    "@phenomic/core": "^1.0.0-alpha.10",
+    "@phenomic/plugin-bundler-webpack": "^1.0.0-alpha.11",
+    "@phenomic/preset-react-app": "^1.0.0-alpha.11",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "polythene-css": "^1.0.0-rc.7",
+    "polythene-react": "^1.0.0-rc.7",
+    "react": "15.6.1",
+    "react-dom": "15.6.1",
+    "react-helmet": "^5.2.0",
+    "react-router": "3.2.0"
+  },
+  "devDependencies": {
+    "http-server": "^0.10.0"
+  },
+  "phenomic": {
+    "presets": [
+      "@phenomic/preset-react-app"
+    ],
+    "port": 3900
+  }
+}
