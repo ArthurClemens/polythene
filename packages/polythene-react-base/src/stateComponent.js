@@ -60,7 +60,7 @@ export const StateComponent = ({
     }
 
     registerDOM(el) {
-      if (!this.dom && isClient) {
+      if (!this.dom && isClient && this._mounted) {
         this.dom = ReactDOM.findDOMNode(el);
       }
     }
