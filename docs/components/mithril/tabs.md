@@ -40,8 +40,8 @@ Icons:
 
 ~~~javascript
 [
-  { icon: { svg: m.trust(iconHeartSVG) } },
-  { icon: { svg: m.trust(iconAlarmSVG) } },
+  { icon: { svg: { content: m.trust(iconHeartSVG) } } },
+  { icon: { svg: { content: m.trust(iconAlarmSVG) } } },
   ...
 ];
 ~~~
@@ -52,11 +52,11 @@ Text labels and icons combined:
 [
   {
     label: "Favs",
-    icon: { svg: m.trust(iconHeartSVG) }
+    icon: { svg: { content: m.trust(iconHeartSVG) } }
   },
   {
     label: "Notifs",
-    icon: { svg: m.trust(iconAlarmSVG) },
+    icon: { svg: { content: m.trust(iconAlarmSVG) } },
   },
   ...
 ]
@@ -185,8 +185,8 @@ m("div",
   m(Tabs,
     {
       scrollable: true,
-      scrollIconBackward: { svg: m.trust(arrowBackSVG) },
-      scrollIconForward: { svg: m.trust(arrowForwardSVG) },
+      scrollIconBackward: { svg: { content: m.trust(arrowBackSVG) } },
+      scrollIconForward: { svg: { content: m.trust(arrowForwardSVG) } },
       tabs: tabOptions
     }
   )

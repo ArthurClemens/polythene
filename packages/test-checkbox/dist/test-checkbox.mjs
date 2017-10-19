@@ -390,10 +390,10 @@ var genericTests = (function (_ref) {
         }, sizes(sizeNames, {
           label: "Label",
           iconOn: {
-            svg: trustedIconStarFilled
+            svg: { content: trustedIconStarFilled }
           },
           iconOff: {
-            svg: trustedIconStarsOutline
+            svg: { content: trustedIconStarsOutline }
           }
         }));
       }
@@ -4644,8 +4644,8 @@ var reactTests = function reactTests(_ref) {
         },
         react.createElement(Checkbox$$1, {
           label: "Label",
-          iconOff: { svg: iconStarOutlineSVG$1 },
-          iconOn: { svg: iconStarFilledSVG$1 }
+          iconOff: { svg: { content: iconStarOutlineSVG$1 } },
+          iconOn: { svg: { content: iconStarFilledSVG$1 } }
         })
       );
     }

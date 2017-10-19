@@ -3,7 +3,7 @@ import { ListCSS, ListTileCSS } from 'polythene-css';
 import { Icon as Icon$1, List as List$1, ListTile as ListTile$1, Notification as Notification$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 
 function unwrapExports (x) {
-	return x && x.__esModule ? x['default'] : x;
+	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
 }
 
 function createCommonjsModule(fn, module) {
@@ -533,7 +533,7 @@ var mithrilTests = function mithrilTests(_ref) {
       },
       secondary: showSecondary ? {
         icon: {
-          svg: trustedIconStars,
+          svg: { content: trustedIconStars },
           size: "medium"
         },
         url: {

@@ -19,7 +19,7 @@ const reactTests = ({ IconButton, Icon, SVG, renderer: h }) => { // eslint-disab
       component: withRouter(({ history }) => 
         h(IconButton, {
           icon: {
-            svg: trustedIconFavorite
+            svg: { content: trustedIconFavorite }
           },
           url: {
             href: "/shadow",
@@ -37,12 +37,12 @@ const reactTests = ({ IconButton, Icon, SVG, renderer: h }) => { // eslint-disab
         }, [
           h(IconButton, {
             icon: {
-              svg: trustedIconFavorite
+              svg: { content: trustedIconFavorite }
             },
           }),
           h(IconButton, {
             icon: {
-              svg: trustedIconFavorite
+              svg: { content: trustedIconFavorite }
             },
             className: "tests-icon-button-themed-icon-button"
           })
@@ -57,13 +57,13 @@ const reactTests = ({ IconButton, Icon, SVG, renderer: h }) => { // eslint-disab
         }, [
           h(IconButton, {
             icon: {
-              svg: trustedIconFavorite
+              svg: { content: trustedIconFavorite }
             },
             tone: "light"
           }),
           h(IconButton, {
             icon: {
-              svg: trustedIconFavorite
+              svg: { content: trustedIconFavorite }
             },
             tone: "light",
             className: "tests-icon-button-themed-icon-button"
@@ -76,7 +76,7 @@ const reactTests = ({ IconButton, Icon, SVG, renderer: h }) => { // eslint-disab
     },
     {
       name: "Option: icon as attribute (JSX)",
-      component: () => <IconButton icon={{svg: iconFavoriteSVG}} />
+      component: () => <IconButton icon={{ svg: { content: iconFavoriteSVG } }} />
     },
     {
       name: "Option: icon as component (JSX)",
@@ -84,14 +84,14 @@ const reactTests = ({ IconButton, Icon, SVG, renderer: h }) => { // eslint-disab
     },
     {
       name: "Option: style (JSX)",
-      component: () => <IconButton icon={{svg: iconFavoriteSVG}} style={{ color: "#FFCCBC", backgroundColor: "#4E342E" }}>{iconFavoriteSVG}</IconButton>
+      component: () => <IconButton icon={{ svg: { content: iconFavoriteSVG } }} style={{ color: "#FFCCBC", backgroundColor: "#4E342E" }}>{iconFavoriteSVG}</IconButton>
     },
     {
       name: "With router (JSX)",
       interactive: true,
       component: withRouter(({ history }) => 
         <IconButton
-          icon={{svg: iconFavoriteSVG}}
+          icon={{ svg: { content: iconFavoriteSVG } }}
           url={{
             href: "/shadow",
             onClick: e => (e.preventDefault(), history.push("/shadow"))

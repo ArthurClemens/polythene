@@ -61,27 +61,27 @@ export default ({ renderer: h, Tabs }) => {
 
   const iconButtons = [
     {
-      icon: { svg: iconHeart }
+      icon: { svg: { content: iconHeart } }
     },
     {
-      icon: { svg: iconBell }
+      icon: { svg: { content: iconBell } }
     },
     {
-      icon: { svg: iconSettings }
+      icon: { svg: { content: iconSettings } }
     }
   ];
 
   const iconTextButtons = [
     {
-      icon: { svg: iconHeart },
+      icon: { svg: { content: iconHeart } },
       label: "Favs"
     },
     {
-      icon: { svg: iconBell },
+      icon: { svg: { content: iconBell } },
       label: "Notifs"
     },
     {
-      icon: { svg: iconSettings },
+      icon: { svg: { content: iconSettings } },
       label: "Custom"
     }
   ];
@@ -208,8 +208,8 @@ export default ({ renderer: h, Tabs }) => {
           }, h(Tabs, {
             tabs: longList,
             scrollable: true,
-            scrollIconBackward: { svg: arrowBack },
-            scrollIconForward: { svg: arrowForward }
+            scrollIconBackward: { svg: { content: arrowBack } },
+            scrollIconForward: { svg: { content: arrowForward } }
           }))
       }
     },

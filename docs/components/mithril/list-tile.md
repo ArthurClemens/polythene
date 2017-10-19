@@ -62,7 +62,7 @@ const starsSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=
 
 // ...
 front: m(Icon, {
-  svg: m.trust(starsSVG)
+  svg: { content: m.trust(starsSVG) }
 })
 ~~~
 
@@ -98,7 +98,7 @@ m(ListTile, {
   secondary: {
     icon: {
       size: "small",
-      svg: m.trust(starsSVG)
+      svg: { content: m.trust(starsSVG) }
     },
     url: {
       href: "/favs",

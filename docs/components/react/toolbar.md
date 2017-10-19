@@ -42,10 +42,10 @@ const ToolbarButton = ({ svg }) =>
   <IconButton icon={{ svg }} />
 
 <Toolbar>
-  <ToolbarButton svg={iconMenuSVG} />
+  <ToolbarButton svg={{ content: iconMenuSVG }} />
   <ToolbarTitle>Title</ToolbarTitle>
-  <ToolbarButton svg={iconRefreshSVG} />
-  <ToolbarButton svg={iconAddSVG} />
+  <ToolbarButton svg={{ content: iconRefreshSVG }} />
+  <ToolbarButton svg={{ content: iconAddSVG }} />
 </Toolbar>
 ~~~
 
@@ -118,7 +118,7 @@ Use a dummy placeholder at the right to bring balance. For instance with an empt
 
 ~~~jsx
 <Toolbar>
-  <IconButton><Icon svg={iconMenuSVG} /></IconButton>
+  <IconButton><Icon svg={{ content: iconMenuSVG }} /></IconButton>
   <ToolbarTitle center>Title</ToolbarTitle>
   <IconButton inactive><Icon /></IconButton>
 </Toolbar>
@@ -130,7 +130,7 @@ With hyperscript:
 h(Toolbar, [
   // keys omitted for brevity
   h(IconButton, {
-    icon: { svg: h.trust(iconMenuSVG) }
+    icon: { svg: { content: h.trust(iconMenuSVG) } }
   }),
   h(ToolbarTitle, { text: "Title", center: true }),
   h(IconButton, {

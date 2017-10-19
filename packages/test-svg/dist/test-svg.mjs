@@ -22,10 +22,6 @@ var genericTests = (function (_ref) {
     attrs: null,
     children: [trustedIconStars]
   }, {
-    name: "Option: attribute (trusted)",
-    component: SVG$$1,
-    attrs: trustedIconStars
-  }, {
     name: "Option: content (trusted)",
     component: SVG$$1,
     attrs: {
@@ -4144,7 +4140,7 @@ var reactTests = function reactTests(_ref) {
           padding: "10px"
         },
         className: "pe-light-tone"
-      }, h(SVG$$1, h.trust(iconStars$2)));
+      }, h(SVG$$1, { content: h.trust(iconStars$2) }));
     }
   }, {
     name: "Dark tone class + light tone",

@@ -99,10 +99,10 @@ export default ({ Checkbox, RaisedButton, renderer: h, keys: k }) => {
           sizes(sizeNames, {
             label: "Label",
             iconOn: {
-              svg: trustedIconStarFilled
+              svg: { content: trustedIconStarFilled }
             },
             iconOff: {
-              svg: trustedIconStarsOutline
+              svg: { content: trustedIconStarsOutline }
             }
           })
         )

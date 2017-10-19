@@ -400,7 +400,7 @@ var genericTests = (function (_ref) {
           label: "Label",
           className: "tests-switch-themed-icon",
           icon: h(Icon$$1, {
-            svg: trustedBullsEyeIcon
+            svg: { content: trustedBullsEyeIcon }
           })
         }));
       }

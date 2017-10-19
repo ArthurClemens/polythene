@@ -56,18 +56,18 @@ var genericTests = (function (_ref) {
     key: "three",
     icon: {
       size: "medium",
-      svg: iconLess
+      svg: { content: iconLess }
     }
   })];
 
   var iconButtonRow = [h(".flex", { key: "space" }), h(IconButton$$1, {
-    icon: { svg: iconHeart },
+    icon: { svg: { content: iconHeart } },
     key: "heart"
   }), h(IconButton$$1, {
-    icon: { svg: iconBookmark },
+    icon: { svg: { content: iconBookmark } },
     key: "bookmark"
   }), h(IconButton$$1, {
-    icon: { svg: iconShare },
+    icon: { svg: { content: iconShare } },
     key: "share"
   })];
 
@@ -75,13 +75,13 @@ var genericTests = (function (_ref) {
     layout: "justified",
     tight: true,
     content: [h(IconButton$$1, {
-      icon: { svg: iconHeart },
+      icon: { svg: { content: iconHeart } },
       key: "heart"
     }), h(IconButton$$1, {
-      icon: { svg: iconBookmark },
+      icon: { svg: { content: iconBookmark } },
       key: "bookmark"
     }), h(IconButton$$1, {
-      icon: { svg: iconShare },
+      icon: { svg: { content: iconShare } },
       key: "share"
     })]
   };
@@ -89,13 +89,13 @@ var genericTests = (function (_ref) {
   var verticalButtonActions = {
     layout: "vertical",
     content: [h(IconButton$$1, {
-      icon: { svg: iconHeart },
+      icon: { svg: { content: iconHeart } },
       key: "heart"
     }), h(IconButton$$1, {
-      icon: { svg: iconBookmark },
+      icon: { svg: { content: iconBookmark } },
       key: "bookmark"
     }), h(IconButton$$1, {
-      icon: { svg: iconShare },
+      icon: { svg: { content: iconShare } },
       key: "share"
     })]
   };

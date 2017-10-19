@@ -31,8 +31,8 @@ const reactTests = ({ Checkbox, renderer: h }) => { // eslint-disable-line no-un
         >
           <Checkbox
             label="Label"
-            iconOff={{ svg: iconStarOutlineSVG }}
-            iconOn={{ svg: iconStarFilledSVG }}
+            iconOff={{ svg: { content: iconStarOutlineSVG }}}
+            iconOn={{ svg: { content: iconStarFilledSVG }}}
           />
         </div>
     },

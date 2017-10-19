@@ -45,7 +45,7 @@ const toolbarRow = title => [
   <IconButton
     key="close"
     icon={{
-      svg: iconClose
+      svg: { content: iconClose }
     }}
     events={{
       onClick: () => Dialog.show(confirmDialogOpts, { id: DIALOG_CONFIRM })

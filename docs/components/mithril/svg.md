@@ -65,7 +65,7 @@ SVG options can be passed to [icon](../icon.md):
 ~~~javascript
 import { Icon } from "polythene-mithril"
 
-m(Icon, { svg: m.trust(svgString) })
+m(Icon, { svg: { content: m.trust(svgString) } })
 ~~~
 
 

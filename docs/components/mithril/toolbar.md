@@ -81,7 +81,7 @@ Use a dummy placeholder at the right to bring back balance. For instance with an
 ~~~javascript
 m(Toolbar, [
   m(IconButton, {
-    icon: { svg: m.trust(iconMenuSVG) }
+    icon: { svg: { content: m.trust(iconMenuSVG) } }
   }),
   m(ToolbarTitle, { text: "Title", center: true }),
   m(IconButton, {

@@ -17,8 +17,8 @@ export const onMount = vnode => {
 export const createProps = (vnode, { renderer: h, keys: k }) => {
   const attrs = vnode.attrs;
   const icon = attrs.position === "start"
-    ? attrs.icon || { svg: h.trust(arrowBackward) }
-    : attrs.icon || { svg: h.trust(arrowForward) };
+    ? attrs.icon || { svg: { content: h.trust(arrowBackward) } }
+    : attrs.icon || { svg: { content: h.trust(arrowForward) } };
   return {
     className: [
       classes.scrollButton,

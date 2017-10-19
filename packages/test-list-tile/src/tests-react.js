@@ -49,7 +49,7 @@ const reactTests = ({ Icon, ListTile, renderer: h }) => {
           title: "Ancillary Justice",
           secondary: {
             icon: {
-              svg: trustedIconStars,
+              svg: { content: trustedIconStars },
               size: "medium"
             },
             url: {
@@ -73,7 +73,7 @@ const reactTests = ({ Icon, ListTile, renderer: h }) => {
           }),
           secondary: {
             icon: {
-              svg: trustedIconStars
+              svg: { content: trustedIconStars }
             },
             url: {
               href: "/shadow",
@@ -100,7 +100,7 @@ const reactTests = ({ Icon, ListTile, renderer: h }) => {
           }),
           secondary: {
             icon: {
-              svg: trustedIconStars
+              svg: { content: trustedIconStars }
             },
             url: {
               href: "/shadow",
@@ -133,7 +133,7 @@ const reactTests = ({ Icon, ListTile, renderer: h }) => {
             size="large"
           />}
           secondary={{
-            icon: { svg: iconStarsSVG },
+            icon: { svg: { content: iconStarsSVG } },
             url: {
               href: "/shadow",
               onClick: e => (e.preventDefault(), history.push("/shadow"))

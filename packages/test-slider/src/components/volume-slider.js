@@ -42,14 +42,14 @@ export default ({ h, Slider, Icon }) => {
         h(Slider, Object.assign({}, defaults, {
           defaultValue: 4,
           before: h(Icon, {
-            svg: volumeIcon
+            svg: { content: volumeIcon }
           })
         })),
         h(".header", "Alarm volume"),
         h(Slider, Object.assign({}, defaults, {
           defaultValue: 2,
           before: h(Icon, {
-            svg: alarmIcon
+            svg: { content: alarmIcon }
           })
         })),
         h(".header", "Headphone volume"),
@@ -57,7 +57,7 @@ export default ({ h, Slider, Icon }) => {
           defaultValue: 2,
           disabled: true,
           before: h(Icon, {
-            svg: headphonesIcon
+            svg: { content: headphonesIcon }
           })
         }))
       ])

@@ -281,18 +281,18 @@ var volumeSlider = (function (_ref) {
       return h(".volume", [h(".header", "Media volume"), h(Slider$$1, _extends$1({}, defaults, {
         defaultValue: 4,
         before: h(Icon$$1, {
-          svg: volumeIcon
+          svg: { content: volumeIcon }
         })
       })), h(".header", "Alarm volume"), h(Slider$$1, _extends$1({}, defaults, {
         defaultValue: 2,
         before: h(Icon$$1, {
-          svg: alarmIcon
+          svg: { content: alarmIcon }
         })
       })), h(".header", "Headphone volume"), h(Slider$$1, _extends$1({}, defaults, {
         defaultValue: 2,
         disabled: true,
         before: h(Icon$$1, {
-          svg: headphonesIcon
+          svg: { content: headphonesIcon }
         })
       }))]);
     }
@@ -427,7 +427,7 @@ var genericTests = (function (_ref) {
       max: 100,
       defaultValue: 50,
       icon: h(Icon$$1, {
-        svg: bullsEyeIcon
+        svg: { content: bullsEyeIcon }
       }),
       className: "slider-custom-icon"
     }
@@ -457,7 +457,7 @@ var genericTests = (function (_ref) {
       pin: true,
       ticks: true,
       before: h(Icon$$1, {
-        svg: volumeIcon
+        svg: { content: volumeIcon }
       })
     }
   }, {

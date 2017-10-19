@@ -113,7 +113,7 @@ export default ({ IconButton, Icon, SVG, renderer: h }) => {
               }
             },
             sizes(sizeNames, {
-              svg: trustedIconFavorite
+              svg: { content: trustedIconFavorite }
             })
           )
       }

@@ -15,7 +15,7 @@ const mithrilTests = ({ FAB, renderer: h }) => {
       component: FAB,
       attrs: {
         icon: {
-          svg: trustedIconAlarm
+          svg: { content: trustedIconAlarm }
         },
         url: {
           href: "/shadow",
@@ -32,12 +32,12 @@ const mithrilTests = ({ FAB, renderer: h }) => {
         }, [
           h(FAB, {
             icon: {
-              svg: trustedIconAlarm
+              svg: { content: trustedIconAlarm }
             }
           }),
           h(FAB, {
             icon: {
-              svg: trustedIconAlarm
+              svg: { content: trustedIconAlarm }
             },
             className: "tests-fab-themed-fab"
           })
@@ -53,13 +53,13 @@ const mithrilTests = ({ FAB, renderer: h }) => {
         }, [
           h(FAB, {
             icon: {
-              svg: trustedIconAlarm
+              svg: { content: trustedIconAlarm }
             },
             tint: "light"
           }),
           h(FAB, {
             icon: {
-              svg: trustedIconAlarm
+              svg: { content: trustedIconAlarm }
             },
             className: "tests-fab-themed-fab",
             tint: "light"

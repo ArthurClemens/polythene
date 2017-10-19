@@ -32,12 +32,12 @@ const mithrilTests = ({ IconButton, renderer: h }) => {
         }, [
           h(IconButton, {
             icon: {
-              svg: trustedIconFavorite
+              svg: { content: trustedIconFavorite }
             },
           }),
           h(IconButton, {
             icon: {
-              svg: trustedIconFavorite
+              svg: { content: trustedIconFavorite }
             },
             className: "tests-icon-button-themed-icon-button"
           })
@@ -53,13 +53,13 @@ const mithrilTests = ({ IconButton, renderer: h }) => {
         }, [
           h(IconButton, {
             icon: {
-              svg: trustedIconFavorite
+              svg: { content: trustedIconFavorite }
             },
             tone: "light"
           }),
           h(IconButton, {
             icon: {
-              svg: trustedIconFavorite
+              svg: { content: trustedIconFavorite }
             },
             tone: "light",
             className: "tests-icon-button-themed-icon-button"

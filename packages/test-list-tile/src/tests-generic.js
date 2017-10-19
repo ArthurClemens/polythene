@@ -109,7 +109,7 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
       attrs: {
         title: "Ancillary Justice",
         front: h(Icon, {
-          svg: trustedIconStars,
+          svg: { content: trustedIconStars },
           size: "medium"
         })
       }
@@ -120,7 +120,7 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
       attrs: {
         title: "Ancillary Justice",
         front: h(Icon, {
-          svg: trustedIconStars,
+          svg: { content: trustedIconStars },
           size: "medium"
         }),
         compactFront: true
@@ -132,7 +132,7 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
       attrs: {
         title: "Ancillary Justice",
         front: h(Icon, {
-          svg: trustedIconStars,
+          svg: { content: trustedIconStars },
           size: "medium"
         }),
         className: "tests-list-tile-themed-list-tile"
@@ -144,7 +144,7 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
       attrs: {
         title: "Ancillary Justice",
         front: h(Icon, {
-          svg: trustedIconStars,
+          svg: { content: trustedIconStars },
           size: "medium"
         }),
         style: {
@@ -221,7 +221,7 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
         title: "Ancillary Justice",
         secondary: {
           icon: {
-            svg: trustedIconStars,
+            svg: { content: trustedIconStars },
             size: "medium"
           }
         }
@@ -246,7 +246,7 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
       attrs: {
         title: "Ancillary Justice",
         front: h(Icon, {
-          svg: trustedIconStars,
+          svg: { content: trustedIconStars },
           size: "medium"
         }),
         className: "tests-list-tile-themed-list-tile"
@@ -260,7 +260,7 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
         title: "Ancillary Justice",
         className: "pe-light-tone",
         front: h(Icon, {
-          svg: trustedIconStars,
+          svg: { content: trustedIconStars },
           size: "medium"
         })
       }
@@ -273,7 +273,7 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
         title: "Ancillary Justice",
         tone: "light",
         front: h(Icon, {
-          svg: trustedIconStars,
+          svg: { content: trustedIconStars },
           size: "medium"
         })
       }

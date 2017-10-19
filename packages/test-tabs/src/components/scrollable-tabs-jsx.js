@@ -25,8 +25,8 @@ export default () => (
   >
     <Tabs
       scrollable
-      scrollIconBackward={{ svg: arrowBackSVG }}
-      scrollIconForward={{ svg: arrowForwardSVG }}
+      scrollIconBackward={{ svg: { content: arrowBackSVG } }}
+      scrollIconForward={{ svg: { content: arrowForwardSVG } }}
       tabs={tabButtons}
     />
   </div>

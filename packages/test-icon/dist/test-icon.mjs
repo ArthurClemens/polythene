@@ -49,7 +49,7 @@ var genericTests = (function (_ref) {
     name: "Option: style",
     component: Icon$$1,
     attrs: {
-      svg: trustedIconStars,
+      svg: { content: trustedIconStars },
       style: {
         color: "#EF6C00"
       }
@@ -58,7 +58,7 @@ var genericTests = (function (_ref) {
     name: "Themed (color and size)",
     component: Icon$$1,
     attrs: {
-      svg: trustedIconStars,
+      svg: { content: trustedIconStars },
       className: "tests-icon-themed-icon"
     }
   }, {
@@ -71,7 +71,7 @@ var genericTests = (function (_ref) {
             alignItems: "center"
           }
         }, sizes(sizeNames, {
-          svg: trustedIconStars
+          svg: { content: trustedIconStars }
         }));
       }
     }
@@ -114,7 +114,7 @@ var genericTests = (function (_ref) {
     component: Icon$$1,
     className: "pe-dark-tone",
     attrs: {
-      svg: trustedIconStars,
+      svg: { content: trustedIconStars },
       className: "tests-icon-themed-icon"
     }
   }];
@@ -137,9 +137,9 @@ var mithrilTests = function mithrilTests(_ref) {
         return h(".pe-light-tone", {
           style: { background: "#fff" }
         }, [h(Icon$$1, {
-          svg: trustedIconStars
+          svg: { content: trustedIconStars }
         }), h(Icon$$1, {
-          svg: trustedIconStars,
+          svg: { content: trustedIconStars },
           className: "tests-icon-themed-icon"
         })]);
       }
@@ -152,10 +152,10 @@ var mithrilTests = function mithrilTests(_ref) {
         return h("div", {
           style: { background: "#fff" }
         }, [h(Icon$$1, {
-          svg: trustedIconStars,
+          svg: { content: trustedIconStars },
           tone: "light"
         }), h(Icon$$1, {
-          svg: trustedIconStars,
+          svg: { content: trustedIconStars },
           tone: "light",
           className: "tests-icon-themed-icon"
         })]);
@@ -4195,9 +4195,9 @@ var reactTests = function reactTests(_ref) {
       return h(".pe-light-tone", {
         style: { background: "#fff" }
       }, [h(Icon$$1, {
-        svg: h.trust(iconStars$2)
+        svg: { content: h.trust(iconStars$2) }
       }), h(Icon$$1, {
-        svg: h.trust(iconStars$2),
+        svg: { content: h.trust(iconStars$2) },
         className: "tests-icon-themed-icon"
       })]);
     }
@@ -4208,10 +4208,10 @@ var reactTests = function reactTests(_ref) {
       return h("div", {
         style: { background: "#fff" }
       }, [h(Icon$$1, {
-        svg: h.trust(iconStars$2),
+        svg: { content: h.trust(iconStars$2) },
         tone: "light"
       }), h(Icon$$1, {
-        svg: h.trust(iconStars$2),
+        svg: { content: h.trust(iconStars$2) },
         tone: "light",
         className: "tests-icon-themed-icon"
       })]);
@@ -4221,7 +4221,7 @@ var reactTests = function reactTests(_ref) {
   }, {
     name: "Option: svg as attribute (JSX)",
     component: function component() {
-      return react.createElement(Icon$$1, { svg: iconStarsSVG });
+      return react.createElement(Icon$$1, { svg: { content: iconStarsSVG } });
     }
   }, {
     name: "Option: SVG as component (JSX)",
@@ -4239,7 +4239,15 @@ var reactTests = function reactTests(_ref) {
   }, {
     name: "Option: style (JSX)",
     component: function component() {
-      return react.createElement(Icon$$1, { svg: iconStarsSVG, style: { color: "#EF6C00" } });
+      return react.createElement(
+        Icon$$1,
+        { style: { color: "#EF6C00" } },
+        react.createElement(
+          SVG$$1,
+          null,
+          iconStarsSVG
+        )
+      );
     }
   }];
 };

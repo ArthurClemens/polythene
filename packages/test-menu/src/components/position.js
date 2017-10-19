@@ -72,7 +72,7 @@ const createPositionContainer = ({ h, k, Menu, List, ListTile, Shadow, IconButto
               : null,
             h(IconButton, {
               id: attrs.id,
-              icon: { svg: h.trust(iconMoreVertSVG) },
+              icon: { svg: { content: h.trust(iconMoreVertSVG) } },
               events: {
                 [k.onclick]: () => state.show(true)
               }

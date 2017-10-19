@@ -68,7 +68,7 @@ var simple = (function (_ref) {
 });
 
 function unwrapExports (x) {
-	return x && x.__esModule ? x['default'] : x;
+	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
 }
 
 function createCommonjsModule(fn, module) {
@@ -434,7 +434,7 @@ var createPositionContainer = function createPositionContainer(_ref) {
         })
       }), h(".bar-row.pe-dark-tone.layout.horizontal", [attrs.buttonPosition === "right" ? h(".flex") : null, h(IconButton$$1, {
         id: attrs.id,
-        icon: { svg: h.trust(iconMoreVertSVG) },
+        icon: { svg: { content: h.trust(iconMoreVertSVG) } },
         events: _defineProperty$1({}, k.onclick, function () {
           return state.show(true);
         })

@@ -171,7 +171,7 @@ var onMount = function onMount(vnode) {
   state.setValue.map(function (_ref) {
     var type = _ref.type,
         focus = _ref.focus;
-    return focus !== undefined && state.setFocus(focus), type === "input" && (attrs.validateOnInput || attrs.counter) && state.isTouched(state.inputEl().value !== ""), type !== "input" && state.isTouched(state.inputEl().value !== ""), type === "onblur" && state.isTouched(true), state.isDirty(state.inputEl().value !== ""), checkValidity(vnode), notifyState(vnode), state.previousValue(state.inputEl().value);
+    return console.log("state.setValue", type, focus), focus !== undefined && state.setFocus(focus), type === "input" && (attrs.validateOnInput || attrs.counter) && state.isTouched(state.inputEl().value !== ""), type !== "input" && state.isTouched(state.inputEl().value !== ""), type === "onblur" && state.isTouched(true), state.isDirty(state.inputEl().value !== ""), checkValidity(vnode), notifyState(vnode), state.previousValue(state.inputEl().value);
   });
 
   state.setFocus.map(function (focusState) {
@@ -220,7 +220,8 @@ var createContent = function createContent(vnode, _ref3) {
   }
 
   var value = attrs.value !== undefined ? attrs.value : inputEl ? inputEl.value : state.previousValue();
-  var valueStr = value === undefined ? "" : value.toString();
+
+  var valueStr = value === undefined || value === null ? "" : value.toString();
 
   if (inputEl && state.previousValue() !== valueStr) {
     inputEl.value = valueStr;
@@ -256,7 +257,7 @@ var createContent = function createContent(vnode, _ref3) {
     key: "input",
     className: classes.input,
     disabled: attrs.disabled
-  }, type ? { type: type } : null, attrs.name ? { name: attrs.name } : null, !ignoreEvent(attrs, [k.onclick]) ? _defineProperty({}, k.onclick, function () {
+  }, type ? { type: type } : null, attrs.name ? { name: attrs.name } : null, !ignoreEvent(attrs, k.onclick) ? _defineProperty({}, k.onclick, function () {
     if (inactive) {
       return;
     }
@@ -264,7 +265,7 @@ var createContent = function createContent(vnode, _ref3) {
     // for instance when the user tapped to the current field off screen
     state.setFocus(true);
     notifyState(vnode);
-  }) : null, !ignoreEvent(attrs, [k.onfocus]) ? _defineProperty({}, k.onfocus, function () {
+  }) : null, !ignoreEvent(attrs, k.onfocus) ? _defineProperty({}, k.onfocus, function () {
     if (inactive) {
       return;
     }
@@ -277,15 +278,15 @@ var createContent = function createContent(vnode, _ref3) {
       state.el().classList.add(classes.stateFocused);
     }
     notifyState(vnode);
-  }) : null, !ignoreEvent(attrs, [k.onblur]) ? _defineProperty({}, k.onblur, function () {
+  }) : null, !ignoreEvent(attrs, k.onblur) ? _defineProperty({}, k.onblur, function () {
     state.setValue({ type: "onblur", focus: false });
     // same principle as onfocus
     state.el().classList.remove(classes.stateFocused);
-  }) : null, !ignoreEvent(attrs, [k.oninput]) ? _defineProperty({}, k.oninput, function () {
+  }) : null, !ignoreEvent(attrs, k.oninput) ? _defineProperty({}, k.oninput, function () {
     // default input event
     // may be overwritten by attrs.events
     state.setValue({ type: "input" });
-  }) : null, !ignoreEvent(attrs, [k.onkeydown]) ? _defineProperty({}, k.onkeydown, function (e) {
+  }) : null, !ignoreEvent(attrs, k.onkeydown) ? _defineProperty({}, k.onkeydown, function (e) {
     if (e.key === "Enter") {
       state.isTouched(true);
     } else if (e.key === "Escape") {

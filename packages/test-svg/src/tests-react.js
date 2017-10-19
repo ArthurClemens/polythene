@@ -21,7 +21,7 @@ const reactTests = ({ SVG, renderer: h }) => {
             padding: "10px"
           },
           className: "pe-light-tone"
-        }, h(SVG, h.trust(iconStars)))
+        }, h(SVG, { content: h.trust(iconStars) }))
     },
     {
       name: "Dark tone class + light tone",

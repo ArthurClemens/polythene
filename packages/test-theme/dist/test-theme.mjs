@@ -76,7 +76,7 @@ var genericTests = (function (_ref) {
     attrs: {
       className: "tests-custom-theme-red-fab",
       icon: {
-        svg: trustedAlarmSVG
+        svg: { content: trustedAlarmSVG }
       }
     }
   }, {
@@ -84,7 +84,7 @@ var genericTests = (function (_ref) {
     component: Icon$$1,
     attrs: {
       className: "tests-custom-theme-red-icon",
-      svg: trustedAlarmSVG
+      svg: { content: trustedAlarmSVG }
     }
   }, {
     name: "Theme with style variables: icon button (should have large padding)",
@@ -92,7 +92,7 @@ var genericTests = (function (_ref) {
     attrs: {
       className: "tests-custom-theme-large-icon-button",
       icon: {
-        svg: trustedAlarmSVG
+        svg: { content: trustedAlarmSVG }
       }
     }
   }, {

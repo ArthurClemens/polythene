@@ -195,7 +195,7 @@ var containerSelector = {
       id: containerSelectorId
     }, renderer(FAB, {
       className: "self-end",
-      icon: { svg: renderer.trust(iconPlusSVG) },
+      icon: { svg: { content: renderer.trust(iconPlusSVG) } },
       z: 1,
       style: {
         margin: "0 16px 16px 0"
@@ -4432,7 +4432,7 @@ var _class$1 = function (_Component) {
             },
             react.createElement(FAB$1, {
               className: "self-end",
-              icon: { svg: iconPlus },
+              icon: { svg: { content: iconPlus } },
               z: 1,
               style: {
                 margin: "0 16px 16px 0"

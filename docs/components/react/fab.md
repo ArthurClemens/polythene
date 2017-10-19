@@ -20,7 +20,7 @@ import { FAB } from "polythene-react"
 
 const iconSVG = <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
 
-<FAB mini icon={{svg: iconSVG}} />
+<FAB mini icon={{ svg: { content: iconSVG } }} />
 ~~~
 
 Instead of passing `icon` as option, the Icon component can be used as child:
@@ -28,7 +28,7 @@ Instead of passing `icon` as option, the Icon component can be used as child:
 ~~~jsx
 import { FAB, Icon } from "polythene-react"
 
-<FAB mini><Icon svg={iconSVG} />
+<FAB mini><Icon svg={{ content: iconSVG }} />
 ~~~
 
 or even with Icon and SVG components:
@@ -51,7 +51,7 @@ const iconSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\
 
 h(FAB, {
   mini: true,
-  icon: { svg: h.trust(iconSVG) }
+  icon: { svg: { content: h.trust(iconSVG) } }
 })
 ~~~
 
@@ -85,14 +85,14 @@ FABCSS.addStyle(".themed-fab", {
   color_dark:             "#b2ebf2"
 })
 
-<FAB icon={{svg: starsSVG}} className="themed-fab" />
+<FAB icon={{ svg: { content: starsSVG } }} className="themed-fab" />
 ~~~
 
 or with hyperscript:
 
 ~~~javascript
 h(FAB, {
-  icon: { svg: h.trust(starsSVG) },
+  icon: { svg: { content: h.trust(starsSVG) } },
   className: "themed-svg"
 })
 ~~~
@@ -113,7 +113,7 @@ Some style attributes can be set using option `style`. For example:
 
 ~~~jsx
 <FAB
-  icon={{svg: starsSVG}}
+  icon={{ svg: { content: starsSVG } }}
   style={{ color: "#ef6c00" }}
 />
 ~~~

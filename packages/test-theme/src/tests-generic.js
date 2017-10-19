@@ -71,7 +71,7 @@ export default ({ Button, FAB, Icon, IconButton, List, ListTile, renderer: h }) 
       attrs: {
         className: "tests-custom-theme-red-fab",
         icon: {
-          svg: trustedAlarmSVG
+          svg: { content: trustedAlarmSVG }
         }
       }
     },
@@ -80,7 +80,7 @@ export default ({ Button, FAB, Icon, IconButton, List, ListTile, renderer: h }) 
       component: Icon,
       attrs: {
         className: "tests-custom-theme-red-icon",
-        svg: trustedAlarmSVG
+        svg: { content: trustedAlarmSVG }
       }
     },
     {
@@ -89,7 +89,7 @@ export default ({ Button, FAB, Icon, IconButton, List, ListTile, renderer: h }) 
       attrs: {
         className: "tests-custom-theme-large-icon-button",
         icon: {
-          svg: trustedAlarmSVG
+          svg: { content: trustedAlarmSVG }
         }
       }
     },

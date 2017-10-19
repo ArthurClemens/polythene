@@ -80,7 +80,7 @@ const volumeIconSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><pa
 
 m(Slider, {
   before: m(Icon, {
-    svg: m.trust(volumeIconSVG)
+    svg: { content: m.trust(volumeIconSVG) }
   })
 })
 ~~~

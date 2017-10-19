@@ -468,7 +468,7 @@ var createProps$2 = function createProps(vnode, _ref) {
       k = _ref.keys;
 
   var attrs = vnode.attrs;
-  var icon = attrs.position === "start" ? attrs.icon || { svg: h.trust(arrowBackward) } : attrs.icon || { svg: h.trust(arrowForward) };
+  var icon = attrs.position === "start" ? attrs.icon || { svg: { content: h.trust(arrowBackward) } } : attrs.icon || { svg: { content: h.trust(arrowForward) } };
   return {
     className: [classes$1.scrollButton, attrs.className || attrs[k.class]].join(" "),
     icon: icon,

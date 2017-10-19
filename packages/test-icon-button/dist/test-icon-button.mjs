@@ -108,7 +108,7 @@ var genericTests = (function (_ref) {
             alignItems: "center"
           }
         }, sizes(sizeNames, {
-          svg: trustedIconFavorite
+          svg: { content: trustedIconFavorite }
         }));
       }
     }
@@ -176,11 +176,11 @@ var mithrilTests = function mithrilTests(_ref) {
           style: { background: "#fff", padding: "10px" }
         }, [h(IconButton$$1, {
           icon: {
-            svg: trustedIconFavorite
+            svg: { content: trustedIconFavorite }
           }
         }), h(IconButton$$1, {
           icon: {
-            svg: trustedIconFavorite
+            svg: { content: trustedIconFavorite }
           },
           className: "tests-icon-button-themed-icon-button"
         })]);
@@ -195,12 +195,12 @@ var mithrilTests = function mithrilTests(_ref) {
           style: { background: "#fff", padding: "10px" }
         }, [h(IconButton$$1, {
           icon: {
-            svg: trustedIconFavorite
+            svg: { content: trustedIconFavorite }
           },
           tone: "light"
         }), h(IconButton$$1, {
           icon: {
-            svg: trustedIconFavorite
+            svg: { content: trustedIconFavorite }
           },
           tone: "light",
           className: "tests-icon-button-themed-icon-button"
@@ -4220,7 +4220,7 @@ var React_1 = React$1;
 var react = React_1;
 
 function unwrapExports (x) {
-	return x && x.__esModule ? x['default'] : x;
+	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
 }
 
 function createCommonjsModule(fn, module) {
@@ -7221,7 +7221,7 @@ var reactTests = function reactTests(_ref) {
       var history = _ref2.history;
       return h(IconButton$$1, {
         icon: {
-          svg: trustedIconFavorite
+          svg: { content: trustedIconFavorite }
         },
         url: {
           href: "/shadow",
@@ -7239,11 +7239,11 @@ var reactTests = function reactTests(_ref) {
         style: { background: "#fff", padding: "10px" }
       }, [h(IconButton$$1, {
         icon: {
-          svg: trustedIconFavorite
+          svg: { content: trustedIconFavorite }
         }
       }), h(IconButton$$1, {
         icon: {
-          svg: trustedIconFavorite
+          svg: { content: trustedIconFavorite }
         },
         className: "tests-icon-button-themed-icon-button"
       })]);
@@ -7256,12 +7256,12 @@ var reactTests = function reactTests(_ref) {
         style: { background: "#fff", padding: "10px" }
       }, [h(IconButton$$1, {
         icon: {
-          svg: trustedIconFavorite
+          svg: { content: trustedIconFavorite }
         },
         tone: "light"
       }), h(IconButton$$1, {
         icon: {
-          svg: trustedIconFavorite
+          svg: { content: trustedIconFavorite }
         },
         tone: "light",
         className: "tests-icon-button-themed-icon-button"
@@ -7272,7 +7272,7 @@ var reactTests = function reactTests(_ref) {
   }, {
     name: "Option: icon as attribute (JSX)",
     component: function component() {
-      return react.createElement(IconButton$$1, { icon: { svg: iconFavoriteSVG } });
+      return react.createElement(IconButton$$1, { icon: { svg: { content: iconFavoriteSVG } } });
     }
   }, {
     name: "Option: icon as component (JSX)",
@@ -7296,7 +7296,7 @@ var reactTests = function reactTests(_ref) {
     component: function component() {
       return react.createElement(
         IconButton$$1,
-        { icon: { svg: iconFavoriteSVG }, style: { color: "#FFCCBC", backgroundColor: "#4E342E" } },
+        { icon: { svg: { content: iconFavoriteSVG } }, style: { color: "#FFCCBC", backgroundColor: "#4E342E" } },
         iconFavoriteSVG
       );
     }
@@ -7306,7 +7306,7 @@ var reactTests = function reactTests(_ref) {
     component: withRouter(function (_ref3) {
       var history = _ref3.history;
       return react.createElement(IconButton$$1, {
-        icon: { svg: iconFavoriteSVG },
+        icon: { svg: { content: iconFavoriteSVG } },
         url: {
           href: "/shadow",
           onClick: function onClick(e) {

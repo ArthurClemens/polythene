@@ -43,10 +43,10 @@ const reactTests = ({ Toolbar, ToolbarTitle, IconButton, renderer: h }) => {
       name: "JSX toolbar row (JSX)",
       component: () =>
         <Toolbar>
-          <ToolbarButton svg={iconMenuSVG} />
+          <ToolbarButton svg={{ content: iconMenuSVG }} />
           <span>Title</span>
-          <ToolbarButton svg={iconRefreshSVG} />
-          <ToolbarButton svg={iconAddSVG} />
+          <ToolbarButton svg={{ content: iconRefreshSVG }} />
+          <ToolbarButton svg={{ content: iconAddSVG }} />
         </Toolbar>
     },
     {
@@ -67,10 +67,10 @@ const reactTests = ({ Toolbar, ToolbarTitle, IconButton, renderer: h }) => {
       component: () =>
         <div style={{position: "relative"}}>
           <Toolbar>
-            <ToolbarButton svg={iconMenuSVG} />
+            <ToolbarButton svg={{ content: iconMenuSVG }} />
             <span>Title</span>
-            <ToolbarButton svg={iconRefreshSVG} />
-            <ToolbarButton svg={iconAddSVG} />
+            <ToolbarButton svg={{ content: iconRefreshSVG }} />
+            <ToolbarButton svg={{ content: iconAddSVG }} />
           </Toolbar>
           <Shadow />
         </div>

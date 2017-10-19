@@ -102,7 +102,7 @@ var genericTests = (function (_ref) {
     attrs: {
       title: "Ancillary Justice",
       front: h(Icon$$1, {
-        svg: trustedIconStars,
+        svg: { content: trustedIconStars },
         size: "medium"
       })
     }
@@ -112,7 +112,7 @@ var genericTests = (function (_ref) {
     attrs: {
       title: "Ancillary Justice",
       front: h(Icon$$1, {
-        svg: trustedIconStars,
+        svg: { content: trustedIconStars },
         size: "medium"
       }),
       compactFront: true
@@ -123,7 +123,7 @@ var genericTests = (function (_ref) {
     attrs: {
       title: "Ancillary Justice",
       front: h(Icon$$1, {
-        svg: trustedIconStars,
+        svg: { content: trustedIconStars },
         size: "medium"
       }),
       className: "tests-list-tile-themed-list-tile"
@@ -134,7 +134,7 @@ var genericTests = (function (_ref) {
     attrs: {
       title: "Ancillary Justice",
       front: h(Icon$$1, {
-        svg: trustedIconStars,
+        svg: { content: trustedIconStars },
         size: "medium"
       }),
       style: {
@@ -206,7 +206,7 @@ var genericTests = (function (_ref) {
       title: "Ancillary Justice",
       secondary: {
         icon: {
-          svg: trustedIconStars,
+          svg: { content: trustedIconStars },
           size: "medium"
         }
       }
@@ -230,7 +230,7 @@ var genericTests = (function (_ref) {
     attrs: {
       title: "Ancillary Justice",
       front: h(Icon$$1, {
-        svg: trustedIconStars,
+        svg: { content: trustedIconStars },
         size: "medium"
       }),
       className: "tests-list-tile-themed-list-tile"
@@ -243,7 +243,7 @@ var genericTests = (function (_ref) {
       title: "Ancillary Justice",
       className: "pe-light-tone",
       front: h(Icon$$1, {
-        svg: trustedIconStars,
+        svg: { content: trustedIconStars },
         size: "medium"
       })
     }
@@ -255,7 +255,7 @@ var genericTests = (function (_ref) {
       title: "Ancillary Justice",
       tone: "light",
       front: h(Icon$$1, {
-        svg: trustedIconStars,
+        svg: { content: trustedIconStars },
         size: "medium"
       })
     }
@@ -304,7 +304,7 @@ var mithrilTests = function mithrilTests(_ref) {
       title: "Ancillary Justice",
       secondary: {
         icon: {
-          svg: trustedIconStars,
+          svg: { content: trustedIconStars },
           size: "medium"
         },
         url: {
@@ -326,7 +326,7 @@ var mithrilTests = function mithrilTests(_ref) {
       }),
       secondary: {
         icon: {
-          svg: trustedIconStars
+          svg: { content: trustedIconStars }
         },
         url: {
           href: "/",
@@ -352,7 +352,7 @@ var mithrilTests = function mithrilTests(_ref) {
       }),
       secondary: {
         icon: {
-          svg: trustedIconStars
+          svg: { content: trustedIconStars }
         },
         url: {
           href: "/",
@@ -4373,7 +4373,7 @@ var React_1 = React$1;
 var react = React_1;
 
 function unwrapExports (x) {
-	return x && x.__esModule ? x['default'] : x;
+	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
 }
 
 function createCommonjsModule(fn, module) {
@@ -7407,7 +7407,7 @@ var reactTests = function reactTests(_ref) {
         title: "Ancillary Justice",
         secondary: {
           icon: {
-            svg: trustedIconStars,
+            svg: { content: trustedIconStars },
             size: "medium"
           },
           url: {
@@ -7433,7 +7433,7 @@ var reactTests = function reactTests(_ref) {
         }),
         secondary: {
           icon: {
-            svg: trustedIconStars
+            svg: { content: trustedIconStars }
           },
           url: {
             href: "/shadow",
@@ -7463,7 +7463,7 @@ var reactTests = function reactTests(_ref) {
         }),
         secondary: {
           icon: {
-            svg: trustedIconStars
+            svg: { content: trustedIconStars }
           },
           url: {
             href: "/shadow",
@@ -7501,7 +7501,7 @@ var reactTests = function reactTests(_ref) {
           size: "large"
         }),
         secondary: {
-          icon: { svg: iconStarsSVG },
+          icon: { svg: { content: iconStarsSVG } },
           url: {
             href: "/shadow",
             onClick: function onClick(e) {
