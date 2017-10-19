@@ -281,7 +281,7 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
             ? { name: attrs.name }
             : null,
 
-          !ignoreEvent(attrs, [k.onclick])
+          !ignoreEvent(attrs, k.onclick)
             ? {
               [k.onclick]: () => {
                 if (inactive) {
@@ -295,7 +295,7 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
             }
             : null,
 
-          !ignoreEvent(attrs, [k.onfocus])
+          !ignoreEvent(attrs, k.onfocus)
             ? {
               [k.onfocus]: () => {
                 if (inactive) {
@@ -314,7 +314,7 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
             }
             : null,
               
-          !ignoreEvent(attrs, [k.onblur])
+          !ignoreEvent(attrs, k.onblur)
             ? {
               [k.onblur]: () => {
                 state.setValue({ type: "onblur", focus: false });
@@ -324,7 +324,7 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
             }
             : null,
 
-          !ignoreEvent(attrs, [k.oninput])
+          !ignoreEvent(attrs, k.oninput)
             ? {
               [k.oninput]: () => {
                 // default input event
@@ -334,7 +334,7 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
             }
             : null,
 
-          !ignoreEvent(attrs, [k.onkeydown])
+          !ignoreEvent(attrs, k.onkeydown)
             ? {
               [k.onkeydown]: e => {
                 if (e.key === "Enter") {
