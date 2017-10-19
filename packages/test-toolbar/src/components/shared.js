@@ -12,7 +12,7 @@ export default ({ ToolbarTitle, IconButton, renderer: h }) => {
 
   const toolbarButton = (key, svg) => h(IconButton, {
     key,
-    icon: { svg }
+    icon: { svg: { content: svg } }
   });
 
   const toolbarRow = [

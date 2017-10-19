@@ -132,14 +132,14 @@ var getInitialState = function getInitialState(vnode, createStream) {
 
   var el = createStream(null);
   var inputEl = createStream(null);
-  var setValue = createStream(null);
+  var setValue = createStream({});
   var error = createStream(attrs.error);
   var hasFocus = createStream(attrs.focus || false);
   var setFocus = createStream(null);
   var isTouched = createStream(false); // true when any change is made
   var isDirty = createStream(defaultValue !== ""); // true for any input
   var isInvalid = createStream(false);
-  var previousValue = createStream(null);
+  var previousValue = createStream(undefined);
 
   return {
     defaultValue: defaultValue,
@@ -171,7 +171,7 @@ var onMount = function onMount(vnode) {
   state.setValue.map(function (_ref) {
     var type = _ref.type,
         focus = _ref.focus;
-    return console.log("state.setValue", type, focus), focus !== undefined && state.setFocus(focus), type === "input" && (attrs.validateOnInput || attrs.counter) && state.isTouched(state.inputEl().value !== ""), type !== "input" && state.isTouched(state.inputEl().value !== ""), type === "onblur" && state.isTouched(true), state.isDirty(state.inputEl().value !== ""), checkValidity(vnode), notifyState(vnode), state.previousValue(state.inputEl().value);
+    return focus !== undefined && state.setFocus(focus), type === "input" && (attrs.validateOnInput || attrs.counter) && state.isTouched(state.inputEl().value !== ""), type !== "input" && state.isTouched(state.inputEl().value !== ""), type === "onblur" && state.isTouched(true), state.isDirty(state.inputEl().value !== ""), checkValidity(vnode), notifyState(vnode), state.previousValue(state.inputEl().value);
   });
 
   state.setFocus.map(function (focusState) {
@@ -220,8 +220,7 @@ var createContent = function createContent(vnode, _ref3) {
   }
 
   var value = attrs.value !== undefined ? attrs.value : inputEl ? inputEl.value : state.previousValue();
-
-  var valueStr = value === undefined || value === null ? "" : value.toString();
+  var valueStr = value === undefined ? "" : value.toString();
 
   if (inputEl && state.previousValue() !== valueStr) {
     inputEl.value = valueStr;

@@ -102,15 +102,18 @@ export default ({ Button, FAB, Icon, IconButton, List, ListTile, renderer: h }) 
         tiles: [
           h(ListTile, {
             title: "Jennifer Barker",
-            subtitle: "Starting post doc"
+            subtitle: "Starting post doc",
+            key: "a",
           }),
           h(ListTile, {
             title: "Ali Connors",
-            subtitle: "Brunch this weekend?"
+            subtitle: "Brunch this weekend?",
+            key: "b",
           }),
           h(ListTile, {
             title: "Mike Eden",
-            subtitle: "Watch a game"
+            subtitle: "Watch a game",
+            key: "c",
           })
         ]
       }
@@ -123,17 +126,20 @@ export default ({ Button, FAB, Icon, IconButton, List, ListTile, renderer: h }) 
           h(ListTile, {
             className: "tests-custom-theme-red-list-tile",
             title: "Jennifer Barker",
-            subtitle: "Starting post doc"
+            subtitle: "Starting post doc",
+            key: "a",
           }),
           h(ListTile, {
             className: "tests-custom-theme-red-list-tile",
             title: "Ali Connors",
-            subtitle: "Brunch this weekend?"
+            subtitle: "Brunch this weekend?",
+            key: "b",
           }),
           h(ListTile, {
             className: "tests-custom-theme-red-list-tile",
             title: "Mike Eden",
-            subtitle: "Watch a game"
+            subtitle: "Watch a game",
+            key: "c",
           })
         ]
       }

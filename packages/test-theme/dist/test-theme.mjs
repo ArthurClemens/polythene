@@ -103,13 +103,16 @@ var genericTests = (function (_ref) {
       borders: true,
       tiles: [h(ListTile$$1, {
         title: "Jennifer Barker",
-        subtitle: "Starting post doc"
+        subtitle: "Starting post doc",
+        key: "a"
       }), h(ListTile$$1, {
         title: "Ali Connors",
-        subtitle: "Brunch this weekend?"
+        subtitle: "Brunch this weekend?",
+        key: "b"
       }), h(ListTile$$1, {
         title: "Mike Eden",
-        subtitle: "Watch a game"
+        subtitle: "Watch a game",
+        key: "c"
       })]
     }
   }, {
@@ -119,15 +122,18 @@ var genericTests = (function (_ref) {
       tiles: [h(ListTile$$1, {
         className: "tests-custom-theme-red-list-tile",
         title: "Jennifer Barker",
-        subtitle: "Starting post doc"
+        subtitle: "Starting post doc",
+        key: "a"
       }), h(ListTile$$1, {
         className: "tests-custom-theme-red-list-tile",
         title: "Ali Connors",
-        subtitle: "Brunch this weekend?"
+        subtitle: "Brunch this weekend?",
+        key: "b"
       }), h(ListTile$$1, {
         className: "tests-custom-theme-red-list-tile",
         title: "Mike Eden",
-        subtitle: "Watch a game"
+        subtitle: "Watch a game",
+        key: "c"
       })]
     }
   }];

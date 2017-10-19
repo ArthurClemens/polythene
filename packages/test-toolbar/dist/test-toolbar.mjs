@@ -20,7 +20,7 @@ var shared = (function (_ref) {
   var toolbarButton = function toolbarButton(key, svg) {
     return h(IconButton$$1, {
       key: key,
-      icon: { svg: svg }
+      icon: { svg: { content: svg } }
     });
   };
 
