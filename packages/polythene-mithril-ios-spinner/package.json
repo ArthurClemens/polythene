@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-ios-spinner",
-  "version": "1.0.0-rc.6",
+  "version": "1.0.0-rc.8",
   "description": "",
   "main": "dist/polythene-mithril-ios-spinner.js",
   "module": "dist/polythene-mithril-ios-spinner.mjs",
@@ -14,10 +14,10 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "^1.0.0-rc.6",
-    "polythene-core-ios-spinner": "^1.0.0-rc.6",
-    "polythene-mithril-base": "^1.0.0-rc.6",
-    "polythene-mithril-base-spinner": "^1.0.0-rc.6"
+    "polythene-core": "^1.0.0-rc.8",
+    "polythene-core-ios-spinner": "^1.0.0-rc.8",
+    "polythene-mithril-base": "^1.0.0-rc.8",
+    "polythene-mithril-base-spinner": "^1.0.0-rc.8"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

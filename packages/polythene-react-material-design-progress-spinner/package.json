@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-material-design-progress-spinner",
-  "version": "1.0.0-rc.6",
+  "version": "1.0.0-rc.8",
   "description": "",
   "main": "dist/polythene-react-material-design-progress-spinner.js",
   "module": "dist/polythene-react-material-design-progress-spinner.mjs",
@@ -14,10 +14,10 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "^1.0.0-rc.6",
-    "polythene-core-material-design-progress-spinner": "^1.0.0-rc.6",
-    "polythene-react-base": "^1.0.0-rc.7",
-    "polythene-react-base-spinner": "^1.0.0-rc.6"
+    "polythene-core": "^1.0.0-rc.8",
+    "polythene-core-material-design-progress-spinner": "^1.0.0-rc.8",
+    "polythene-react-base": "^1.0.0-rc.8",
+    "polythene-react-base-spinner": "^1.0.0-rc.8"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

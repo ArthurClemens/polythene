@@ -1,6 +1,6 @@
 {
   "name": "polythene-core-ripple",
-  "version": "1.0.0-rc.6",
+  "version": "1.0.0-rc.8",
   "description": "",
   "main": "dist/polythene-core-ripple.js",
   "module": "dist/polythene-core-ripple.mjs",
@@ -14,8 +14,8 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "^1.0.0-rc.6",
-    "polythene-theme": "^1.0.0-rc.6"
+    "polythene-core": "^1.0.0-rc.8",
+    "polythene-theme": "^1.0.0-rc.8"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"
