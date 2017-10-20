@@ -9,7 +9,7 @@ Can also be used as general-purpose component library that includes dialogs, car
 
 ## Status
 
-Version: `1.0.0-rc.7` (release candidate 7)
+Version: `1.0.0-rc.8` (release candidate 8)
 
 
 ## Main features
@@ -48,7 +48,7 @@ Version: `1.0.0-rc.7` (release candidate 7)
 ## Compatibility
 
 * Mithril 1.x
-* React 15.x
+* React 16.x
 
 
 ## Browser support

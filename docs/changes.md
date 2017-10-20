@@ -4,10 +4,16 @@
 
 ### 1.0.0-rc.8
 
+Updated for React 16.
+
 Changes to components:
 
 * Menu
   * Option `reposition` is now by default `false`
+* Icon
+  * Option `svg` must now use option `content` as well 
+
+Various bug fixes (thanks sjungwirth!)
 
 
 ### 1.0.0-rc.7
@@ -29,7 +35,7 @@ Changes to components:
 * List
   * Added option `all`, analogous to Tab's `all`
 
-Various bug fixes. 
+Various bug fixes.
 
 
 ### 1.0.0-rc.5
