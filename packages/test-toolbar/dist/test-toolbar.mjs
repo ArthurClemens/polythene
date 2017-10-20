@@ -20,7 +20,7 @@ var shared = (function (_ref) {
   var toolbarButton = function toolbarButton(key, svg) {
     return h(IconButton$$1, {
       key: key,
-      icon: { svg: svg }
+      icon: { svg: { content: svg } }
     });
   };
 
@@ -4297,14 +4297,14 @@ var reactTests = function reactTests(_ref) {
       return react.createElement(
         Toolbar$$1,
         null,
-        react.createElement(ToolbarButton, { svg: iconMenuSVG$1 }),
+        react.createElement(ToolbarButton, { svg: { content: iconMenuSVG$1 } }),
         react.createElement(
           "span",
           null,
           "Title"
         ),
-        react.createElement(ToolbarButton, { svg: iconRefreshSVG$1 }),
-        react.createElement(ToolbarButton, { svg: iconAddSVG$1 })
+        react.createElement(ToolbarButton, { svg: { content: iconRefreshSVG$1 } }),
+        react.createElement(ToolbarButton, { svg: { content: iconAddSVG$1 } })
       );
     }
   }, {
@@ -4329,14 +4329,14 @@ var reactTests = function reactTests(_ref) {
         react.createElement(
           Toolbar$$1,
           null,
-          react.createElement(ToolbarButton, { svg: iconMenuSVG$1 }),
+          react.createElement(ToolbarButton, { svg: { content: iconMenuSVG$1 } }),
           react.createElement(
             "span",
             null,
             "Title"
           ),
-          react.createElement(ToolbarButton, { svg: iconRefreshSVG$1 }),
-          react.createElement(ToolbarButton, { svg: iconAddSVG$1 })
+          react.createElement(ToolbarButton, { svg: { content: iconRefreshSVG$1 } }),
+          react.createElement(ToolbarButton, { svg: { content: iconAddSVG$1 } })
         ),
         react.createElement(Shadow$1, null)
       );

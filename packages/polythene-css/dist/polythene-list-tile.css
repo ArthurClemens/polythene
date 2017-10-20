@@ -10,7 +10,7 @@
 .pe-list-tile.pe-list-tile--sticky {
   position: sticky;
   top: 0;
-  z-index: 1
+  z-index: 2
 }
 
 .pe-list-tile .pe-list-tile__primary,.pe-list-tile .pe-list-tile__secondary {
@@ -40,6 +40,10 @@
   flex-basis: 0.000000001px;
   padding-top: 13px;
   padding-bottom: 14px
+}
+
+.pe-list-tile:not(.pe-list-tile--disabled) {
+  outline: none
 }
 
 .pe-list-tile .pe-list-tile__secondary {

@@ -49,9 +49,8 @@ var positionMenu = function positionMenu(state, attrs) {
   }
   var contentEl = state.dom().querySelector("." + classes$1.content);
   var origin = attrs.origin || "top-left";
-  var reposition = attrs.reposition === false ? false : true;
   var positionOffset = 0;
-  if (reposition) {
+  if (attrs.reposition) {
     var firstItem = contentEl.querySelectorAll("." + classes$1.listTile)[0];
     var selectedItem = contentEl.querySelector("." + classes$1.selectedListTile);
     if (firstItem && selectedItem) {
@@ -220,7 +219,7 @@ var onUnMount = function onUnMount(vnode) {
 };
 
 var getInitialState = function getInitialState(vnode, createStream) {
-  var dom = createStream();
+  var dom = createStream(null);
   var visible = createStream(false);
   return {
     dom: dom,

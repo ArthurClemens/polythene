@@ -52,23 +52,26 @@ m(Button, {
 
 ### Router links
 
-React does not include a router. [React Router](https://github.com/ReactTraining/react-router) is well known external router library. 
+React does not include a router itself, but [React Router](https://github.com/ReactTraining/react-router) is a well known external router library. 
+
+Use the `Link` component (with option `element`) to render route-aware links.
 
 #### With JSX
 
 <a href="https://jsfiddle.net/ArthurClemens/1hm2w5xd/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 ~~~jsx
-import { HashRouter as Router, Switch, Route } from "react-router-dom"
+import { HashRouter as Router, Switch, Route, Link } from "react-router-dom"
 import { RaisedButton } from "polythene-react"
 
 const Index = ({ history }) => 
   <div>
     <h1>Home</h1>
     <RaisedButton
+      element={Link}
       label="Go to page 1"
-      events={{
-        onClick: e => history.push("/page1")
+      url={{
+        to: "/page1"
       }}
     />
   </div>
@@ -77,9 +80,10 @@ const Page1 = ({ history }) =>
   <div>
     <h1>Page 1</h1>
     <RaisedButton
+      element={Link}
       label="Go to home"
-      events={{
-        onClick: e => history.push("/")
+      url={{
+        to: "/"
       }}
     />
   </div>
@@ -101,16 +105,17 @@ ReactDOM.render(
 <a href="https://jsfiddle.net/ArthurClemens/gqef8c0g/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 ~~~javascript
-import { HashRouter as Router, Switch, Route } from "react-router-dom"
+import { HashRouter as Router, Switch, Route, Link } from "react-router-dom"
 import { RaisedButton } from "polythene-react"
 
 const Index = ({ history }) => 
   h("div", [
     h("h1", "Home"),
     h(RaisedButton, {
+      element: Link,
       label: "Go to page 1",
-      events: {
-        onClick: e => history.push("/page1")
+      url: {
+        to: "/page1"
       }
      })
   ])
@@ -119,9 +124,10 @@ const Page1 = ({ history }) =>
   h("div", [
     h("h1", "Page 1"),
     h(RaisedButton, {
+      element: Link,
       label: "Go to home",
-      events: {
-        onClick: e => history.push("/")
+      url: {
+        to: "/"
       }
      })
   ])

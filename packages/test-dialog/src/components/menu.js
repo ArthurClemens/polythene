@@ -7,7 +7,7 @@ export default ({ renderer: h, keys: k, Icon, List, ListTile, Dialog }) => ({
     tiles: [1, 2, 3].map(() =>
       h(ListTile, {
         front: h(Icon, {
-          svg: h.trust(iconArrowSVG)
+          svg: { content: h.trust(iconArrowSVG) }
         }),
         hoverable: true,
         title: "Account",

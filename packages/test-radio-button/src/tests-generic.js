@@ -127,8 +127,8 @@ export default ({ RadioGroup, renderer: h, keys: k }) => {
         content: sizeNames.map(size => ({
           size,
           value: size,
-          iconOn: { svg: trustedIconStarFilled },
-          iconOff: { svg: trustedIconStarsOutline }
+          iconOn: { svg: { content: trustedIconStarFilled } },
+          iconOff: { svg: { content: trustedIconStarsOutline } }
         }))
       }
     },

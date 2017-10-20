@@ -43,12 +43,11 @@ export default ({ Icon, SVG, renderer: h }) => {
         svg: { content: trustedIconStars }
       }
     },
-
     {
       name: "Option: style",
       component: Icon,
       attrs: {
-        svg: trustedIconStars,
+        svg: { content: trustedIconStars },
         style: {
           color: "#EF6C00"
         }
@@ -58,7 +57,7 @@ export default ({ Icon, SVG, renderer: h }) => {
       name: "Themed (color and size)",
       component: Icon,
       attrs: {
-        svg: trustedIconStars,
+        svg: { content: trustedIconStars },
         className: "tests-icon-themed-icon"
       }
     },
@@ -73,7 +72,7 @@ export default ({ Icon, SVG, renderer: h }) => {
             }
           },
           sizes(sizeNames, {
-            svg: trustedIconStars,
+            svg: { content: trustedIconStars },
           })
         )
       }
@@ -120,7 +119,7 @@ export default ({ Icon, SVG, renderer: h }) => {
       component: Icon,
       className: "pe-dark-tone",
       attrs: {
-        svg: trustedIconStars,
+        svg: { content: trustedIconStars },
         className: "tests-icon-themed-icon"
       }
     },

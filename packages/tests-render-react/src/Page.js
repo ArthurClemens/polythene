@@ -11,7 +11,7 @@ const NavBar = (name, previous) =>
       [
         previous && h(withRouter(({ history }) =>
           h(IconButton, {
-            icon: { svg: iconBack },
+            icon: { svg: { content: iconBack } },
             url: {
               href: "/",
               onClick: e => (e.preventDefault(), history.push(previous))

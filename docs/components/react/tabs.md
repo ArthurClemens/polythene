@@ -60,8 +60,8 @@ Icons:
 
 ~~~javascript
 [
-  { icon: { svg: m.trust(iconHeartSVG) } },
-  { icon: { svg: m.trust(iconAlarmSVG) } },
+  { icon: { svg: { content: h.trust(iconHeartSVG) } } },
+  { icon: { svg: { content: h.trust(iconAlarmSVG) } } },
   ...
 ];
 ~~~
@@ -72,11 +72,11 @@ Text labels and icons combined:
 [
   {
     label: "Favs",
-    icon: { svg: m.trust(iconHeartSVG) }
+    icon: { svg: { content: h.trust(iconHeartSVG) } }
   },
   {
     label: "Notifs",
-    icon: { svg: m.trust(iconAlarmSVG) },
+    icon: { svg: { content: h.trust(iconAlarmSVG) } },
   },
   ...
 ]
@@ -225,8 +225,8 @@ const tabOptions = [
 >
   <Tabs
     scrollable
-    scrollIconBackward={{ svg: arrowBackSVG }}
-    scrollIconForward={{ svg: arrowForwardSVG }}
+    scrollIconBackward={{ svg: { content: arrowBackSVG } }}
+    scrollIconForward={{ svg: { content: arrowForwardSVG } }}
     tabs={tabOptions}
   />
 </div>
@@ -262,8 +262,8 @@ h("div",
   h(Tabs,
     {
       scrollable: true,
-      scrollIconBackward: { svg: h.trust(arrowBackSVG) },
-      scrollIconForward: { svg: h.trust(arrowForwardSVG) },
+      scrollIconBackward: { svg: { content: h.trust(arrowBackSVG) } },
+      scrollIconForward: { svg: { content: h.trust(arrowForwardSVG) } },
       tabs: tabOptions
     }
   )

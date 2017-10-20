@@ -19,7 +19,7 @@ const reactTests = ({ FAB, Icon, SVG, renderer: h }) => { // eslint-disable-line
       component: withRouter(({ history }) => 
         h(FAB, {
           icon: {
-            svg: trustedIconAlarm
+            svg: { content: trustedIconAlarm }
           },
           url: {
             href: "/shadow",
@@ -37,12 +37,12 @@ const reactTests = ({ FAB, Icon, SVG, renderer: h }) => { // eslint-disable-line
         }, [
           h(FAB, {
             icon: {
-              svg: trustedIconAlarm
+              svg: { content: trustedIconAlarm }
             }
           }),
           h(FAB, {
             icon: {
-              svg: trustedIconAlarm
+              svg: { content: trustedIconAlarm }
             },
             className: "tests-fab-themed-fab"
           })
@@ -57,13 +57,13 @@ const reactTests = ({ FAB, Icon, SVG, renderer: h }) => { // eslint-disable-line
         }, [
           h(FAB, {
             icon: {
-              svg: trustedIconAlarm
+              svg: { content: trustedIconAlarm }
             },
             tint: "light"
           }),
           h(FAB, {
             icon: {
-              svg: trustedIconAlarm
+              svg: { content: trustedIconAlarm }
             },
             className: "tests-fab-themed-fab",
             tint: "light"
@@ -76,7 +76,7 @@ const reactTests = ({ FAB, Icon, SVG, renderer: h }) => { // eslint-disable-line
     },
     {
       name: "Option: icon as attribute (JSX)",
-      component: () => <FAB icon={{svg: iconAlarmSVG}} mini />
+      component: () => <FAB icon={{ svg: { content: iconAlarmSVG } }} mini />
     },
     {
       name: "Option: icon as component (JSX)",
@@ -84,18 +84,18 @@ const reactTests = ({ FAB, Icon, SVG, renderer: h }) => { // eslint-disable-line
     },
     {
       name: "Option: z (5) (JSX)",
-      component: () => <FAB mini icon={{svg: iconAlarmSVG}} z={5} />
+      component: () => <FAB mini icon={{ svg: { content: iconAlarmSVG } }} z={5} />
     },
     {
       name: "Option: style (JSX)",
-      component: () => <FAB icon={{svg: iconAlarmSVG}} style={{ color: "#ef6c00", backgroundColor: "#fff" }} />
+      component: () => <FAB icon={{ svg: { content: iconAlarmSVG } }} style={{ color: "#ef6c00", backgroundColor: "#fff" }} />
     },
     {
       name: "With router (JSX)",
       interactive: true,
       component: withRouter(({ history }) => 
         <FAB
-          icon={{svg: iconAlarmSVG}}
+          icon={{ svg: { content: iconAlarmSVG } }}
           url={{
             href: "/shadow",
             onClick: e => (e.preventDefault(), history.push("/shadow"))

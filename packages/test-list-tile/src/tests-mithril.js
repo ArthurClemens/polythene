@@ -43,7 +43,7 @@ const mithrilTests = ({ Icon, ListTile, renderer: h }) => {
         title: "Ancillary Justice",
         secondary: {
           icon: {
-            svg: trustedIconStars,
+            svg: { content: trustedIconStars },
             size: "medium"
           },
           url: {
@@ -66,7 +66,7 @@ const mithrilTests = ({ Icon, ListTile, renderer: h }) => {
         }),
         secondary: {
           icon: {
-            svg: trustedIconStars
+            svg: { content: trustedIconStars }
           },
           url: {
             href: "/",
@@ -92,7 +92,7 @@ const mithrilTests = ({ Icon, ListTile, renderer: h }) => {
         }),
         secondary: {
           icon: {
-            svg: trustedIconStars
+            svg: { content: trustedIconStars }
           },
           url: {
             href: "/",

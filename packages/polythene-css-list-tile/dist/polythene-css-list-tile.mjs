@@ -37,6 +37,10 @@ var layout = (function (selector, componentVars) {
       " .pe-list-tile__content:not(.pe-list-tile__content-front)": [flex.flex(), paddingV(componentVars.padding, componentVars.padding + 1)]
     }],
 
+    ":not(.pe-list-tile--disabled)": {
+      outline: "none"
+    },
+
     " .pe-list-tile__secondary": {
       textAlign: "right",
       fontSize: componentVars.font_size_title + "px",

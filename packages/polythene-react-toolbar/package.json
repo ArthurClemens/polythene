@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-toolbar",
-  "version": "1.0.0-rc.6",
+  "version": "1.0.0-rc.8",
   "description": "",
   "main": "dist/polythene-react-toolbar.js",
   "module": "dist/polythene-react-toolbar.mjs",
@@ -14,8 +14,8 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-toolbar": "^1.0.0-rc.6",
-    "polythene-react-base": "^1.0.0-rc.6"
+    "polythene-core-toolbar": "^1.0.0-rc.8",
+    "polythene-react-base": "^1.0.0-rc.8"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

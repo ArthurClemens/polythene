@@ -17,10 +17,10 @@ const mithrilTests = ({ Icon, renderer: h }) => {
           style: { background: "#fff" }
         }, [
           h(Icon, {
-            svg: trustedIconStars
+            svg: { content: trustedIconStars }
           }),
           h(Icon, {
-            svg: trustedIconStars,
+            svg: { content: trustedIconStars },
             className: "tests-icon-themed-icon"
           })
         ])
@@ -34,11 +34,11 @@ const mithrilTests = ({ Icon, renderer: h }) => {
           style: { background: "#fff" }
         }, [
           h(Icon, {
-            svg: trustedIconStars,
+            svg: { content: trustedIconStars },
             tone: "light"
           }),
           h(Icon, {
-            svg: trustedIconStars,
+            svg: { content: trustedIconStars },
             tone: "light",
             className: "tests-icon-themed-icon"
           })

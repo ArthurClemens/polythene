@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-svg",
-  "version": "1.0.0-rc.6",
+  "version": "1.0.0-rc.8",
   "description": "",
   "main": "dist/polythene-mithril-svg.js",
   "module": "dist/polythene-mithril-svg.mjs",
@@ -14,8 +14,8 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-svg": "^1.0.0-rc.6",
-    "polythene-mithril-base": "^1.0.0-rc.6"
+    "polythene-core-svg": "^1.0.0-rc.8",
+    "polythene-mithril-base": "^1.0.0-rc.8"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { renderer as h, Menu, List, RaisedButton } from "polythene-react";
+import { Link } from "react-router-dom";
 
 export default class extends Component {
 
@@ -11,7 +12,6 @@ export default class extends Component {
   }
 
   render() {
-    const { history } = this.props;
     const isOpen = this.state.isOpen;
     const target = "links-menu";
     return h("div",
@@ -33,7 +33,7 @@ export default class extends Component {
           content: h(List,
             {
               all: {
-                element: "a",
+                element: Link,
                 ink: true,
                 hoverable: true,
               },
@@ -42,15 +42,13 @@ export default class extends Component {
               {
                 title: "Link to Shadow",
                 url: {
-                  href: "/shadow",
-                  onClick: e => (e.preventDefault(), history.push("/shadow"))
+                  to: "/shadow",
                 }
               },
               {
                 title: "Link to Button",
                 url: {
-                  href: "/button",
-                  onClick: e => (e.preventDefault(), history.push("/button"))
+                  to: "/button",
                 }
               },
             ]

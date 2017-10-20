@@ -24,7 +24,7 @@ const mithrilTests = ({ List, Icon, ListTile, renderer: h }) => {
       },
       secondary: showSecondary ? {
         icon: {
-          svg: trustedIconStars,
+          svg: { content: trustedIconStars },
           size: "medium"
         },
         url: {

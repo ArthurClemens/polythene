@@ -166,7 +166,7 @@ var Multi = function Multi(_ref) {
   var current = void 0;
 
   var getInitialState = function getInitialState(vnode, createStream) {
-    current = createStream();
+    current = createStream(null);
     return {
       current: current,
       redrawOnUpdate: createStream.merge([current])

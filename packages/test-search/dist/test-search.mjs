@@ -337,7 +337,7 @@ var searchField = (function (_ref) {
     view: function view(_ref2) {
       var attrs = _ref2.attrs;
       return h(IconButton$$1, {
-        icon: { svg: iconBack },
+        icon: { svg: { content: iconBack } },
         ink: false,
         events: _defineProperty({}, k.onclick, attrs.leave)
       });
@@ -348,7 +348,7 @@ var searchField = (function (_ref) {
     view: function view(_ref3) {
       var attrs = _ref3.attrs;
       return h(IconButton$$1, {
-        icon: { svg: iconClear },
+        icon: { svg: { content: iconClear } },
         ink: false,
         events: _defineProperty({}, k.onclick, attrs.clear)
       });
@@ -358,7 +358,7 @@ var searchField = (function (_ref) {
   var SearchIcon = {
     view: function view() {
       return h(IconButton$$1, {
-        icon: { svg: iconSearch },
+        icon: { svg: { content: iconSearch } },
         inactive: true
       });
     }
@@ -367,7 +367,7 @@ var searchField = (function (_ref) {
   var MicIcon = {
     view: function view() {
       return h(IconButton$$1, {
-        icon: { svg: iconMic },
+        icon: { svg: { content: iconMic } },
         inactive: true
       });
     }
@@ -4475,7 +4475,7 @@ var iconMic = renderer$1.trust(iconMicSVG$1);
 var BackButton = function BackButton(_ref) {
   var leave = _ref.leave;
   return renderer$1(IconButton$1, {
-    icon: { svg: iconBack },
+    icon: { svg: { content: iconBack } },
     ink: false,
     events: { onClick: leave }
   });
@@ -4484,7 +4484,7 @@ var BackButton = function BackButton(_ref) {
 var ClearButton = function ClearButton(_ref2) {
   var clear = _ref2.clear;
   return renderer$1(IconButton$1, {
-    icon: { svg: iconClear },
+    icon: { svg: { content: iconClear } },
     ink: false,
     events: { onClick: clear }
   });
@@ -4492,14 +4492,14 @@ var ClearButton = function ClearButton(_ref2) {
 
 var SearchIcon = function SearchIcon() {
   return renderer$1(IconButton$1, {
-    icon: { svg: iconSearch },
+    icon: { svg: { content: iconSearch } },
     inactive: true
   });
 };
 
 var MicIcon = function MicIcon() {
   return renderer$1(IconButton$1, {
-    icon: { svg: iconMic },
+    icon: { svg: { content: iconMic } },
     inactive: true
   });
 };
@@ -4610,7 +4610,7 @@ var iconMic$1 = react.createElement(
 var BackButton$1 = function BackButton(_ref) {
   var leave = _ref.leave;
   return react.createElement(IconButton$1, {
-    icon: { svg: iconBack$1 },
+    icon: { svg: { content: iconBack$1 } },
     ink: false,
     events: { onClick: leave }
   });
@@ -4619,7 +4619,7 @@ var BackButton$1 = function BackButton(_ref) {
 var ClearButton$1 = function ClearButton(_ref2) {
   var clear = _ref2.clear;
   return react.createElement(IconButton$1, {
-    icon: { svg: iconClear$1 },
+    icon: { svg: { content: iconClear$1 } },
     ink: false,
     events: { onClick: clear }
   });
@@ -4627,14 +4627,14 @@ var ClearButton$1 = function ClearButton(_ref2) {
 
 var SearchIcon$1 = function SearchIcon() {
   return react.createElement(IconButton$1, {
-    icon: { svg: iconSearch$1 },
+    icon: { svg: { content: iconSearch$1 } },
     inactive: true
   });
 };
 
 var MicIcon$1 = function MicIcon() {
   return react.createElement(IconButton$1, {
-    icon: { svg: iconMic$1 },
+    icon: { svg: { content: iconMic$1 } },
     inactive: true
   });
 };

@@ -138,9 +138,9 @@ m(Card, {
           actions: {
             layout: "vertical",
             content: [
-              m(IconButton, { icon: { svg: m.trust(iconHeart) } }),
-              m(IconButton, { icon: { svg: m.trust(iconBookmark) } }),
-              m(IconButton, { icon: { svg: m.trust(iconShare) } })
+              m(IconButton, { icon: { svg: { content: m.trust(iconHeart) } } }),
+              m(IconButton, { icon: { svg: { content: m.trust(iconBookmark) } } }),
+              m(IconButton, { icon: { svg: { content: m.trust(iconShare) } } })
             ]
           }
         }

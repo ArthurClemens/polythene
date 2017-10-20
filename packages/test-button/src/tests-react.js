@@ -1,5 +1,5 @@
 import React from "react"; // eslint-disable-line no-unused-vars
-import { withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { renderer, Button } from "polythene-react";
 import genericTests from "./tests-generic";
 import { compose, withState, withHandlers } from "recompose";
@@ -39,17 +39,16 @@ const reactTests = ({ Button, renderer: h }) => {
         })
     },
     {
-      name: "With router",
+      name: "With React Router Link",
       interactive: true,
-      component: withRouter(({ history }) => 
+      component: () => 
         h(Button, {
           label: "Go to /shadow",
+          element: Link,
           url: {
-            href: "/shadow",
-            onClick: e => (e.preventDefault(), history.push("/shadow"))
+            to: "/shadow",
           },
         })
-      )
     },
     {
       name: "Option: events (onclick)",

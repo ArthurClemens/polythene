@@ -130,16 +130,16 @@ var getInitialState = function getInitialState(vnode, createStream) {
 
   var defaultValue = attrs.defaultValue !== undefined ? attrs.defaultValue : attrs.value !== undefined ? attrs.value : "";
 
-  var el = createStream();
-  var inputEl = createStream();
-  var setValue = createStream();
+  var el = createStream(null);
+  var inputEl = createStream(null);
+  var setValue = createStream({});
   var error = createStream(attrs.error);
   var hasFocus = createStream(attrs.focus || false);
-  var setFocus = createStream();
+  var setFocus = createStream(null);
   var isTouched = createStream(false); // true when any change is made
   var isDirty = createStream(defaultValue !== ""); // true for any input
   var isInvalid = createStream(false);
-  var previousValue = createStream();
+  var previousValue = createStream(undefined);
 
   return {
     defaultValue: defaultValue,
@@ -256,7 +256,7 @@ var createContent = function createContent(vnode, _ref3) {
     key: "input",
     className: classes.input,
     disabled: attrs.disabled
-  }, type ? { type: type } : null, attrs.name ? { name: attrs.name } : null, !ignoreEvent(attrs, [k.onclick]) ? _defineProperty({}, k.onclick, function () {
+  }, type ? { type: type } : null, attrs.name ? { name: attrs.name } : null, !ignoreEvent(attrs, k.onclick) ? _defineProperty({}, k.onclick, function () {
     if (inactive) {
       return;
     }
@@ -264,7 +264,7 @@ var createContent = function createContent(vnode, _ref3) {
     // for instance when the user tapped to the current field off screen
     state.setFocus(true);
     notifyState(vnode);
-  }) : null, !ignoreEvent(attrs, [k.onfocus]) ? _defineProperty({}, k.onfocus, function () {
+  }) : null, !ignoreEvent(attrs, k.onfocus) ? _defineProperty({}, k.onfocus, function () {
     if (inactive) {
       return;
     }
@@ -277,15 +277,15 @@ var createContent = function createContent(vnode, _ref3) {
       state.el().classList.add(classes.stateFocused);
     }
     notifyState(vnode);
-  }) : null, !ignoreEvent(attrs, [k.onblur]) ? _defineProperty({}, k.onblur, function () {
+  }) : null, !ignoreEvent(attrs, k.onblur) ? _defineProperty({}, k.onblur, function () {
     state.setValue({ type: "onblur", focus: false });
     // same principle as onfocus
     state.el().classList.remove(classes.stateFocused);
-  }) : null, !ignoreEvent(attrs, [k.oninput]) ? _defineProperty({}, k.oninput, function () {
+  }) : null, !ignoreEvent(attrs, k.oninput) ? _defineProperty({}, k.oninput, function () {
     // default input event
     // may be overwritten by attrs.events
     state.setValue({ type: "input" });
-  }) : null, !ignoreEvent(attrs, [k.onkeydown]) ? _defineProperty({}, k.onkeydown, function (e) {
+  }) : null, !ignoreEvent(attrs, k.onkeydown) ? _defineProperty({}, k.onkeydown, function (e) {
     if (e.key === "Enter") {
       state.isTouched(true);
     } else if (e.key === "Escape") {

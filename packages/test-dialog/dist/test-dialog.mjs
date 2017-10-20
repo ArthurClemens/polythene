@@ -49,7 +49,7 @@ var fullScreen = (function (_ref) {
   var fullScreenToolbarRow = function fullScreenToolbarRow(title) {
     return [h(IconButton$$1, {
       key: "close",
-      icon: { svg: h.trust(closeSVG) },
+      icon: { svg: { content: h.trust(closeSVG) } },
       events: _defineProperty$3({}, k.onclick, function () {
         return Dialog$$1.show(confirmDialogOpts, { id: DIALOG_CONFIRM });
       })
@@ -138,7 +138,7 @@ var menu = (function (_ref) {
       tiles: [1, 2, 3].map(function () {
         return h(ListTile$$1, {
           front: h(Icon$$1, {
-            svg: h.trust(iconArrowSVG)
+            svg: { content: h.trust(iconArrowSVG) }
           }),
           hoverable: true,
           title: "Account",
@@ -4951,7 +4951,7 @@ var toolbarRow = function toolbarRow(title) {
   return [renderer$1(IconButton$1, {
     key: "close",
     icon: {
-      svg: renderer$1.trust(iconClose)
+      svg: { content: renderer$1.trust(iconClose) }
     },
     events: {
       onClick: function onClick() {
@@ -5036,7 +5036,7 @@ var toolbarRow$1 = function toolbarRow(title) {
   return [react.createElement(IconButton$1, {
     key: "close",
     icon: {
-      svg: iconClose$1
+      svg: { content: iconClose$1 }
     },
     events: {
       onClick: function onClick() {

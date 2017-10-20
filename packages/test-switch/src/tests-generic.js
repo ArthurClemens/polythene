@@ -110,7 +110,7 @@ export default ({ Switch, Icon, RaisedButton, renderer: h, keys: k }) => {
             label: "Label",
             className: "tests-switch-themed-icon",
             icon: h(Icon, {
-              svg: trustedBullsEyeIcon
+              svg: { content: trustedBullsEyeIcon }
             })
           }))
       }

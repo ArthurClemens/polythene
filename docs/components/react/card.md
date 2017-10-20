@@ -131,9 +131,9 @@ addLayoutStyles() // to use className="flex"
             actions: {
               layout: "vertical",
               content: <div>
-                <IconButton icon={{ svg: iconHeart }} />
-                <IconButton icon={{ svg: iconBookmark }} />
-                <IconButton icon={{ svg: iconShare }} />
+                <IconButton icon={{ svg: { content: iconHeart } }} />
+                <IconButton icon={{ svg: { content: iconBookmark } }} />
+                <IconButton icon={{ svg: { content: iconShare } }} />
               </div>
             }
           }
@@ -263,9 +263,9 @@ h(Card, {
           actions: {
             layout: "vertical",
             content: [
-              h(IconButton, { icon: { svg: h.trust(iconHeart) } }),
-              h(IconButton, { icon: { svg: h.trust(iconBookmark) } }),
-              h(IconButton, { icon: { svg: h.trust(iconShare) } })
+              h(IconButton, { icon: { svg: { content: h.trust(iconHeart) } } }),
+              h(IconButton, { icon: { svg: { content: h.trust(iconBookmark) } } }),
+              h(IconButton, { icon: { svg: { content: h.trust(iconShare) } } })
             ]
           }
         }

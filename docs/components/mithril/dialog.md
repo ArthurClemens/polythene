@@ -245,7 +245,7 @@ const closeSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=
 
 const fullScreenToolbarRow = title => [
   m(IconButton, {
-    icon: { svg: m.trust(closeSVG) },
+    icon: { svg: { content: m.trust(closeSVG) } },
     events: {
       onclick: () => Dialog.show(confirmDialogOpts, { id: DIALOG_CONFIRM })
     }

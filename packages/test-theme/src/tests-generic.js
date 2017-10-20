@@ -71,7 +71,7 @@ export default ({ Button, FAB, Icon, IconButton, List, ListTile, renderer: h }) 
       attrs: {
         className: "tests-custom-theme-red-fab",
         icon: {
-          svg: trustedAlarmSVG
+          svg: { content: trustedAlarmSVG }
         }
       }
     },
@@ -80,7 +80,7 @@ export default ({ Button, FAB, Icon, IconButton, List, ListTile, renderer: h }) 
       component: Icon,
       attrs: {
         className: "tests-custom-theme-red-icon",
-        svg: trustedAlarmSVG
+        svg: { content: trustedAlarmSVG }
       }
     },
     {
@@ -89,7 +89,7 @@ export default ({ Button, FAB, Icon, IconButton, List, ListTile, renderer: h }) 
       attrs: {
         className: "tests-custom-theme-large-icon-button",
         icon: {
-          svg: trustedAlarmSVG
+          svg: { content: trustedAlarmSVG }
         }
       }
     },
@@ -102,15 +102,18 @@ export default ({ Button, FAB, Icon, IconButton, List, ListTile, renderer: h }) 
         tiles: [
           h(ListTile, {
             title: "Jennifer Barker",
-            subtitle: "Starting post doc"
+            subtitle: "Starting post doc",
+            key: "a",
           }),
           h(ListTile, {
             title: "Ali Connors",
-            subtitle: "Brunch this weekend?"
+            subtitle: "Brunch this weekend?",
+            key: "b",
           }),
           h(ListTile, {
             title: "Mike Eden",
-            subtitle: "Watch a game"
+            subtitle: "Watch a game",
+            key: "c",
           })
         ]
       }
@@ -123,17 +126,20 @@ export default ({ Button, FAB, Icon, IconButton, List, ListTile, renderer: h }) 
           h(ListTile, {
             className: "tests-custom-theme-red-list-tile",
             title: "Jennifer Barker",
-            subtitle: "Starting post doc"
+            subtitle: "Starting post doc",
+            key: "a",
           }),
           h(ListTile, {
             className: "tests-custom-theme-red-list-tile",
             title: "Ali Connors",
-            subtitle: "Brunch this weekend?"
+            subtitle: "Brunch this weekend?",
+            key: "b",
           }),
           h(ListTile, {
             className: "tests-custom-theme-red-list-tile",
             title: "Mike Eden",
-            subtitle: "Watch a game"
+            subtitle: "Watch a game",
+            key: "c",
           })
         ]
       }

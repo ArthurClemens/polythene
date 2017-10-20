@@ -9,7 +9,7 @@ const navBar = (name, previous) =>
     style: { backgroundColor: "rgba(255,255,255,.93)" }
   }, [
     previous && h(IconButton, {
-      icon: { svg: iconBack },
+      icon: { svg: { content: iconBack } },
       url: {
         href: "/",
         oncreate: m.route.link

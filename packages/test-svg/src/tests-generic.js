@@ -19,11 +19,6 @@ export default ({ SVG, renderer: h }) => {
       children: [trustedIconStars]
     },
     {
-      name: "Option: attribute (trusted)",
-      component: SVG,
-      attrs: trustedIconStars,
-    },
-    {
       name: "Option: content (trusted)",
       component: SVG,
       attrs: {

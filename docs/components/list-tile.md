@@ -80,7 +80,7 @@ This works for list tiles that are defined as link (when either option `element`
 | **subContent**   | optional | String, hyperscript or component | | Secondary content (no height restriction) |
 | **front**        | optional | String, hyperscript or component |  | Content to show at the left of the primary content |
 | **compactFront** | optional | Boolean | | Set to `true` to reduce horizontal width of `front` content |
-| **url** | optional | Object with `href`, optionally `oncreate` (for Mithril) or `onClick` (for React) | | URL location; Mithril: for in-app route linking set `oncreate : m.route.link`; React: for in-app route linking use `onClick` and a router such as `react-router-dom` |
+| **url** | optional | Object with `href`, optionally `oncreate` (for Mithril) or `onClick` (for React) or `to` (for React Router) | | URL location; Mithril: for in-app route linking set `oncreate : m.route.link`; React: for in-app route linking use `onClick` and a router such as `react-router-dom` |
 
 ### List tile secondary content options
 

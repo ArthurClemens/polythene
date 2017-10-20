@@ -52,7 +52,7 @@ import { renderer as h, Icon, SVG } from "polythene-react"
 const iconSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\"/></svg>"
 
 h(Icon,
-  h(SVG, m.trust(iconSVG))
+  h(SVG, { content: m.trust(iconSVG) })
 )
 ~~~
 
@@ -88,7 +88,7 @@ const iconSVG = "..." // see above
 m(IconButton,
   {
     icon: {
-      svg: m.trust(iconSVG)
+      svg: { content: m.trust(iconSVG) }
     }
   }
 )
@@ -121,7 +121,7 @@ const iconSVG = ... // see above
 
 <IconButton
   icon={{
-    svg: iconSVG
+    svg: { content: iconSVG }
   }}
 />
 ~~~
@@ -136,7 +136,7 @@ import { renderer as h, Icon, IconButton, SVG } from "polythene-react"
 const iconSVG = "..." // see above
 
 const StarIcon = h(Icon,
-  h(SVG, h.trust(iconSVG))
+  h(SVG, { content: h.trust(iconSVG) })
 )
 
 h(IconButton, StarIcon)
@@ -152,7 +152,7 @@ const iconSVG = "..." // see above
 h(IconButton,
   {
     icon: {
-      svg: h.trust(iconSVG)
+      svg: { content: h.trust(iconSVG) }
     }
   }
 )

@@ -1,7 +1,7 @@
 /*
 Build to an Universal Module Definition
 */
-import { pkg, createConfig } from "./rollup.base.js";
+import { pkg, createConfig } from "./rollup.base";
 import uglify from "rollup-plugin-uglify";
 
 const env = process.env; // eslint-disable-line no-undef

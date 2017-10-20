@@ -95,16 +95,16 @@ export const getInitialState = (vnode, createStream) => {
       ? attrs.value
       : "";
 
-  const el = createStream();
-  const inputEl = createStream();
-  const setValue = createStream();
+  const el = createStream(null);
+  const inputEl = createStream(null);
+  const setValue = createStream({});
   const error = createStream(attrs.error);
   const hasFocus = createStream(attrs.focus || false);
-  const setFocus = createStream();
+  const setFocus = createStream(null);
   const isTouched = createStream(false); // true when any change is made
   const isDirty = createStream(defaultValue !== ""); // true for any input
   const isInvalid = createStream(false);
-  const previousValue = createStream();
+  const previousValue = createStream(undefined);
 
   return {
     defaultValue,
@@ -281,7 +281,7 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
             ? { name: attrs.name }
             : null,
 
-          !ignoreEvent(attrs, [k.onclick])
+          !ignoreEvent(attrs, k.onclick)
             ? {
               [k.onclick]: () => {
                 if (inactive) {
@@ -295,7 +295,7 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
             }
             : null,
 
-          !ignoreEvent(attrs, [k.onfocus])
+          !ignoreEvent(attrs, k.onfocus)
             ? {
               [k.onfocus]: () => {
                 if (inactive) {
@@ -314,7 +314,7 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
             }
             : null,
               
-          !ignoreEvent(attrs, [k.onblur])
+          !ignoreEvent(attrs, k.onblur)
             ? {
               [k.onblur]: () => {
                 state.setValue({ type: "onblur", focus: false });
@@ -324,7 +324,7 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
             }
             : null,
 
-          !ignoreEvent(attrs, [k.oninput])
+          !ignoreEvent(attrs, k.oninput)
             ? {
               [k.oninput]: () => {
                 // default input event
@@ -334,7 +334,7 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
             }
             : null,
 
-          !ignoreEvent(attrs, [k.onkeydown])
+          !ignoreEvent(attrs, k.onkeydown)
             ? {
               [k.onkeydown]: e => {
                 if (e.key === "Enter") {

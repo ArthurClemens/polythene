@@ -15,7 +15,7 @@ export default ({ renderer: h, keys: k, Search, IconButton, Shadow } ) => {
   const BackButton = {
     view: ({ attrs }) =>
       h(IconButton, {
-        icon: { svg: iconBack },
+        icon: { svg: { content: iconBack } },
         ink: false,
         events: { [k.onclick]: attrs.leave },
       })
@@ -24,7 +24,7 @@ export default ({ renderer: h, keys: k, Search, IconButton, Shadow } ) => {
   const ClearButton = {
     view: ({ attrs }) =>
       h(IconButton, {
-        icon: { svg: iconClear },
+        icon: { svg: { content: iconClear } },
         ink: false,
         events: { [k.onclick]: attrs.clear },
       })
@@ -33,7 +33,7 @@ export default ({ renderer: h, keys: k, Search, IconButton, Shadow } ) => {
   const SearchIcon = {
     view: () => 
       h(IconButton, {
-        icon: { svg: iconSearch },
+        icon: { svg: { content: iconSearch } },
         inactive: true,
       })
   };
@@ -41,7 +41,7 @@ export default ({ renderer: h, keys: k, Search, IconButton, Shadow } ) => {
   const MicIcon = {
     view: () => 
       h(IconButton, {
-        icon: { svg: iconMic },
+        icon: { svg: { content: iconMic } },
         inactive: true,
       })
   };

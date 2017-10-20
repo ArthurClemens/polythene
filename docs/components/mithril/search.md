@@ -126,7 +126,7 @@ const iconMic = m.trust(iconMicSVG)
 const BackButton = {
   view: ({ attrs }) =>
     m(IconButton, {
-      icon: { svg: iconBack },
+      icon: { svg: { content: iconBack } },
       ink: false,
       events: { onclick: attrs.leave }
     })
@@ -135,7 +135,7 @@ const BackButton = {
 const ClearButton = {
   view: ({ attrs }) =>
     m(IconButton, {
-      icon: { svg: iconClear },
+      icon: { svg: { content: iconClear } },
       ink: false,
       events: { onclick: attrs.clear }
     })
@@ -144,7 +144,7 @@ const ClearButton = {
 const SearchIcon = {
   view: () => 
     m(IconButton, {
-      icon: { svg: iconSearch },
+      icon: { svg: { content: iconSearch } },
       // make this appear as Icon Button but without interactivity:
       inactive: true
     })
@@ -153,7 +153,7 @@ const SearchIcon = {
 const MicIcon = {
   view: () =>
     m(IconButton, {
-      icon: { svg: iconMic },
+      icon: { svg: { content: iconMic } },
       // make this appear as Icon Button but without interactivity:
       inactive: true
     })

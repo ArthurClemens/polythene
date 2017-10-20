@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-shadow",
-  "version": "1.0.0-rc.6",
+  "version": "1.0.0-rc.8",
   "description": "",
   "main": "dist/polythene-react-shadow.js",
   "module": "dist/polythene-react-shadow.mjs",
@@ -14,8 +14,8 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-shadow": "^1.0.0-rc.6",
-    "polythene-react-base": "^1.0.0-rc.6"
+    "polythene-core-shadow": "^1.0.0-rc.8",
+    "polythene-react-base": "^1.0.0-rc.8"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
   "license": "MIT"

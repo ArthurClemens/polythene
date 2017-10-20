@@ -63,7 +63,7 @@ export default class extends Component {
         >
           <FAB
             className="self-end"
-            icon={{svg: iconPlus}}
+            icon={{ svg: { content: iconPlus } }}
             z={1}
             style={{
               margin: "0 16px 16px 0"

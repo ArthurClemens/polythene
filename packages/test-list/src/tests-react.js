@@ -27,12 +27,8 @@ const reactTests = ({ List, Icon, ListTile, Notification, renderer: h }) => {
   const listTileAli = createUserListTile("Ali Connors", "Brunch this weekend?", "avatar-2");
   const listTileGrace = createUserListTile("Grace VanDam", "Binge watching...", "avatar-3");
 
-  const selectTile = ({ title }) => (
-    { title }
-  );
-  const headerTile = ({ title }) => (
-    { title, header: true }
-  );
+  const selectTile = ({ title }) => ({ title });
+  const headerTile = ({ title }) => ({ title, header: true });
 
   return [
     {

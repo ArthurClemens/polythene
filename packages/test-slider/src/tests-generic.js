@@ -137,7 +137,7 @@ export default ({ Slider, Icon, renderer: h }) => {
         max: 100,
         defaultValue: 50,
         icon: h(Icon, {
-          svg: bullsEyeIcon
+          svg: { content: bullsEyeIcon }
         }),
         className: "slider-custom-icon"
       }
@@ -170,7 +170,7 @@ export default ({ Slider, Icon, renderer: h }) => {
         pin: true,
         ticks: true,
         before: h(Icon, {
-          svg: volumeIcon
+          svg: { content: volumeIcon }
         })
       }
     },

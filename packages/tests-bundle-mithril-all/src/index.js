@@ -81,7 +81,7 @@ const App = {
           m(".component", 
             m(IconButton, {
               icon: {
-                svg: m.trust(linkIconSVG)
+                svg: { content: m.trust(linkIconSVG) }
               }
             })
           )
@@ -93,7 +93,7 @@ const App = {
           m(".component", 
             m(FAB, {
               icon: {
-                svg: m.trust(linkIconSVG)
+                svg: { content: m.trust(linkIconSVG) }
               }
             })
           )

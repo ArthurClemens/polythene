@@ -47,7 +47,7 @@
     "react-test-renderer": "^15.6.1",
     "rollup": "^0.49.2",
     "rollup-plugin-babel": "^3.0.2",
-    "rollup-plugin-commonjs": "^8.2.0",
+    "@lhorie/rollup-plugin-commonjs": "^8.2.3",
     "rollup-plugin-eslint": "^4.0.0",
     "rollup-plugin-livereload": "^0.6.0",
     "rollup-plugin-node-resolve": "^3.0.0",

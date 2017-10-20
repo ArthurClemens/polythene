@@ -53,7 +53,7 @@ const hideSpinner = (state, attrs) => {
 
 export const getInitialState = (vnode, createStream) => {
   const visible = createStream(false);
-  const dom = createStream();
+  const dom = createStream(null);
   return {
     dom,
     visible,

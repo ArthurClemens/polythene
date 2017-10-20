@@ -84,7 +84,7 @@ const getSize = attrs => {
 
 export const getInitialState = (vnode, createStream) => {
   const percentage = createStream(0);
-  const dom = createStream();
+  const dom = createStream(null);
   const animating = createStream(false);
   return {
     dom,

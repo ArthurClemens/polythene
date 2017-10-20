@@ -173,8 +173,8 @@ const iconStarFilledSVG = <svg width="24" height="24" viewBox="0 0 24 24"><path 
 
 <Checkbox
   label="Label"
-  iconOff={{ svg: iconStarOutlineSVG }}
-  iconOn={{ svg: iconStarFilledSVG }}
+  iconOff={{ svg: { content: iconStarOutlineSVG } }}
+  iconOn={{ svg: { content: iconStarFilledSVG } }}
 />
 ~~~
 

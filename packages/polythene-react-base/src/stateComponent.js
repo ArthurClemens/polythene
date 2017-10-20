@@ -1,8 +1,9 @@
-import { Component } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import stream from "mithril/stream";
 import { renderer } from "./renderer";
 import { keys } from "./keys";
+import { isClient } from "polythene-core";
 
 const requiresKeys = true;
 
@@ -17,10 +18,11 @@ export const StateComponent = ({
   view = null
 }) => {
   
-  return class extends Component {
+  return class extends React.Component {
     
     constructor(props) {
       super(props);
+      this.dom = null;
       const protoState = Object.assign(
         {},
         component,
@@ -32,7 +34,7 @@ export const StateComponent = ({
       const initialState = getInitialState(protoState, stream);
       this.state = initialState;
       this.registerDOM = this.registerDOM.bind(this);
-      this._render = this._render.bind(this);
+      this._render = this._render.bind(this);      
     }
     
     componentDidMount() {
@@ -59,8 +61,10 @@ export const StateComponent = ({
     }
 
     registerDOM(el) {
-      if (!this.dom) {
-        this.dom = ReactDOM.findDOMNode(el);
+      if (isClient && !this.dom && el) {
+        this.dom = el instanceof HTMLElement
+          ? el
+          : ReactDOM.findDOMNode(el);
       }
     }
 

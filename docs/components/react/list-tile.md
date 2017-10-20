@@ -62,7 +62,7 @@ const starsSVG = <svg width="24" height="24" viewBox="0 0 24 24"><path d="M11.99
 
 // ...
 front={<Icon
-  svg={starsSVG}
+  svg={{ content: starsSVG }}
 />}
 ~~~
 
@@ -118,7 +118,7 @@ const starsSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=
 
 // ...
 front: h(Icon, {
-  svg: h.trust(starsSVG)
+  svg: { content: h.trust(starsSVG) }
 })
 ~~~
 
@@ -172,7 +172,7 @@ const starsSVG = <svg width="24" height="24" viewBox="0 0 24 24"><path d="M11.99
   secondary={{
     icon: {
       size: "small",
-      svg: {starsSVG}
+      svg: { content: starsSVG }
     },
     url: {
       href: "/friends/jennifer"
@@ -228,7 +228,7 @@ h(ListTile, {
   secondary: {
     icon: {
       size: "small",
-      svg: m.trust(starsSVG)
+      svg: { content: h.trust(starsSVG) }
     },
     url: {
       href: "/friends/jennifer"

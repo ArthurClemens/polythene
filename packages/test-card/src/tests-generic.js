@@ -47,7 +47,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
       key: "three",
       icon: {
         size: "medium",
-        svg: iconLess
+        svg: { content: iconLess }
       }
     })
   ];
@@ -55,15 +55,15 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
   const iconButtonRow = [
     h(".flex", { key: "space" }),
     h(IconButton, {
-      icon: { svg: iconHeart },
+      icon: { svg: { content: iconHeart } },
       key: "heart"
     }),
     h(IconButton, {
-      icon: { svg: iconBookmark },
+      icon: { svg: { content: iconBookmark } },
       key: "bookmark"
     }),
     h(IconButton, {
-      icon: { svg: iconShare },
+      icon: { svg: { content: iconShare } },
       key: "share"
     })
   ];
@@ -73,15 +73,15 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
     tight: true,
     content: [
       h(IconButton, {
-        icon: { svg: iconHeart },
+        icon: { svg: { content: iconHeart } },
         key: "heart"
       }),
       h(IconButton, {
-        icon: { svg: iconBookmark },
+        icon: { svg: { content: iconBookmark } },
         key: "bookmark"
       }),
       h(IconButton, {
-        icon: { svg: iconShare },
+        icon: { svg: { content: iconShare } },
         key: "share"
       })
     ]
@@ -91,15 +91,15 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
     layout: "vertical",
     content: [
       h(IconButton, {
-        icon: { svg: iconHeart },
+        icon: { svg: { content: iconHeart } },
         key: "heart"
       }),
       h(IconButton, {
-        icon: { svg: iconBookmark },
+        icon: { svg: { content: iconBookmark } },
         key: "bookmark"
       }),
       h(IconButton, {
-        icon: { svg: iconShare },
+        icon: { svg: { content: iconShare } },
         key: "share"
       })
     ]

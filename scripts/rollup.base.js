@@ -3,7 +3,7 @@ import fs from "fs";
 import babel from "rollup-plugin-babel";
 import eslint from "rollup-plugin-eslint";
 import resolve from "rollup-plugin-node-resolve";
-import commonjs from "rollup-plugin-commonjs";
+import commonjs from "@lhorie/rollup-plugin-commonjs";
 
 const env = process.env; // eslint-disable-line no-undef
 export const pkg = JSON.parse(fs.readFileSync("./package.json"));

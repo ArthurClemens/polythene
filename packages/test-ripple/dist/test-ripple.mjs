@@ -4233,6 +4233,10 @@ var react_2 = react.Component;
  */
 'use strict';
 
+function unwrapExports (x) {
+	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+}
+
 function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
 }
@@ -4290,6 +4294,8 @@ var lib = createCommonjsModule(function (module, exports) {
     };
   };
 });
+
+unwrapExports(lib);
 
 function symbolObservablePonyfill(root) {
 	var result;

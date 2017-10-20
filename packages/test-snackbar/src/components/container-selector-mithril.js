@@ -50,7 +50,7 @@ export default {
           },
           h(FAB, {
             className: "self-end",
-            icon: { svg: h.trust(iconPlusSVG) },
+            icon: { svg: { content: h.trust(iconPlusSVG) } },
             z: 1,
             style: {
               margin: "0 16px 16px 0"

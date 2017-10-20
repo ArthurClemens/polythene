@@ -19,7 +19,7 @@ const createIcon = (h, iconType, attrs, className) => (
     },
     attrs[iconType]
       ? attrs[iconType]
-      : { svg: h.trust(attrs.icons[iconType]) },
+      : { svg: { content: h.trust(attrs.icons[iconType]) } },
     attrs.icon,
     attrs.size
       ? { size: attrs.size }

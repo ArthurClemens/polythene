@@ -397,8 +397,8 @@ var genericTests = (function (_ref) {
         return {
           size: size,
           value: size,
-          iconOn: { svg: trustedIconStarFilled },
-          iconOff: { svg: trustedIconStarsOutline }
+          iconOn: { svg: { content: trustedIconStarFilled } },
+          iconOff: { svg: { content: trustedIconStarsOutline } }
         };
       })
     }

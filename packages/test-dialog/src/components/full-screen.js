@@ -13,7 +13,7 @@ export default ({ renderer: h, keys: k, Toolbar, IconButton, Button, Dialog }) =
   const fullScreenToolbarRow = title => [
     h(IconButton, {
       key: "close",
-      icon: { svg: h.trust(closeSVG) },
+      icon: { svg: { content: h.trust(closeSVG) } },
       events: {
         [k.onclick]: () => Dialog.show(confirmDialogOpts, { id: DIALOG_CONFIRM })
       }

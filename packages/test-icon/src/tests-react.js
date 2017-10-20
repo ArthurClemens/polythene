@@ -19,10 +19,10 @@ const reactTests = ({ Icon, SVG, renderer: h }) => { // eslint-disable-line no-u
           style: { background: "#fff" }
         }, [
           h(Icon, {
-            svg: h.trust(iconStars),
+            svg: { content: h.trust(iconStars) },
           }),
           h(Icon, {
-            svg: h.trust(iconStars),
+            svg: { content: h.trust(iconStars) },
             className: "tests-icon-themed-icon"
           })
         ])
@@ -35,11 +35,11 @@ const reactTests = ({ Icon, SVG, renderer: h }) => { // eslint-disable-line no-u
           style: { background: "#fff" }
         }, [
           h(Icon, {
-            svg: h.trust(iconStars),
+            svg: { content: h.trust(iconStars) },
             tone: "light"
           }),
           h(Icon, {
-            svg: h.trust(iconStars),
+            svg: { content: h.trust(iconStars) },
             tone: "light",
             className: "tests-icon-themed-icon"
           })
@@ -51,7 +51,7 @@ const reactTests = ({ Icon, SVG, renderer: h }) => { // eslint-disable-line no-u
     },
     {
       name: "Option: svg as attribute (JSX)",
-      component: () => <Icon svg={iconStarsSVG} />
+      component: () => <Icon svg={{ content: iconStarsSVG }} />
     },
     {
       name: "Option: SVG as component (JSX)",
@@ -59,7 +59,7 @@ const reactTests = ({ Icon, SVG, renderer: h }) => { // eslint-disable-line no-u
     },
     {
       name: "Option: style (JSX)",
-      component: () => <Icon svg={iconStarsSVG} style={{ color: "#EF6C00" }} />
+      component: () => <Icon style={{ color: "#EF6C00" }}><SVG>{iconStarsSVG}</SVG></Icon>
     },
   ];
 };

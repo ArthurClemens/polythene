@@ -68,7 +68,7 @@ var simple = (function (_ref) {
 });
 
 function unwrapExports (x) {
-	return x && x.__esModule ? x['default'] : x;
+	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
 }
 
 function createCommonjsModule(fn, module) {
@@ -434,7 +434,7 @@ var createPositionContainer = function createPositionContainer(_ref) {
         })
       }), h(".bar-row.pe-dark-tone.layout.horizontal", [attrs.buttonPosition === "right" ? h(".flex") : null, h(IconButton$$1, {
         id: attrs.id,
-        icon: { svg: h.trust(iconMoreVertSVG) },
+        icon: { svg: { content: h.trust(iconMoreVertSVG) } },
         events: _defineProperty$1({}, k.onclick, function () {
           return state.show(true);
         })
@@ -517,6 +517,7 @@ var settings = (function (_ref) {
         hideDelay: .240,
         size: 5,
         offset: 16,
+        reposition: true,
         content: h(List$$1, {
           hoverable: true,
           tiles: menuOptions.map(function (setting, index) {
@@ -8327,8 +8328,6 @@ var _class$2 = function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      var history = this.props.history;
-
       var isOpen = this.state.isOpen;
       var target = "links-menu";
       return renderer$1("div", { style: { position: "relative" } }, [renderer$1(RaisedButton$1, {
@@ -8345,25 +8344,19 @@ var _class$2 = function (_Component) {
         size: 5,
         content: renderer$1(List$1, {
           all: {
-            element: "a",
+            element: Link,
             ink: true,
             hoverable: true
           }
         }, [{
           title: "Link to Shadow",
           url: {
-            href: "/shadow",
-            onClick: function onClick(e) {
-              return e.preventDefault(), history.push("/shadow");
-            }
+            to: "/shadow"
           }
         }, {
           title: "Link to Button",
           url: {
-            href: "/button",
-            onClick: function onClick(e) {
-              return e.preventDefault(), history.push("/button");
-            }
+            to: "/button"
           }
         }])
       })]);

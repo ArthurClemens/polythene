@@ -277,21 +277,21 @@ var genericTests = (function (_ref) {
   var longList = [{ label: "Web" }, { label: "Shopping" }, { label: "Videos" }, { label: "Images" }, { label: "Books" }, { label: "More" }];
 
   var iconButtons = [{
-    icon: { svg: iconHeart }
+    icon: { svg: { content: iconHeart } }
   }, {
-    icon: { svg: iconBell }
+    icon: { svg: { content: iconBell } }
   }, {
-    icon: { svg: iconSettings }
+    icon: { svg: { content: iconSettings } }
   }];
 
   var iconTextButtons = [{
-    icon: { svg: iconHeart },
+    icon: { svg: { content: iconHeart } },
     label: "Favs"
   }, {
-    icon: { svg: iconBell },
+    icon: { svg: { content: iconBell } },
     label: "Notifs"
   }, {
-    icon: { svg: iconSettings },
+    icon: { svg: { content: iconSettings } },
     label: "Custom"
   }];
 
@@ -405,8 +405,8 @@ var genericTests = (function (_ref) {
         }, h(Tabs$$1, {
           tabs: longList,
           scrollable: true,
-          scrollIconBackward: { svg: arrowBack },
-          scrollIconForward: { svg: arrowForward }
+          scrollIconBackward: { svg: { content: arrowBack } },
+          scrollIconForward: { svg: { content: arrowForward } }
         }));
       }
     }
@@ -4636,8 +4636,8 @@ var ScrollableTabs = (function () {
     },
     react.createElement(Tabs$1, {
       scrollable: true,
-      scrollIconBackward: { svg: arrowBackSVG$1 },
-      scrollIconForward: { svg: arrowForwardSVG$1 },
+      scrollIconBackward: { svg: { content: arrowBackSVG$1 } },
+      scrollIconForward: { svg: { content: arrowForwardSVG$1 } },
       tabs: tabButtons
     })
   );

@@ -366,7 +366,7 @@ const toolbarRow = title => [
   h(IconButton, {
     key: "close",
     icon: {
-      svg: h.trust(iconClose)
+      svg: { content: h.trust(iconClose) }
     },
     events: {
       onClick: () => Dialog.hide()

@@ -22,7 +22,7 @@ import { IconButton } from "polythene-react"
 
 const starsSVG = <svg width="24" height="24" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>
 
-<IconButton icon={{ svg: starsSVG }} />
+<IconButton icon={{ svg: { content: starsSVG } }} />
 ~~~
 
 Instead of passing `icon` as option, the Icon component can be used as child:
@@ -30,7 +30,7 @@ Instead of passing `icon` as option, the Icon component can be used as child:
 ~~~jsx
 import { IconButton, Icon } from "polythene-react"
 
-<IconButton><Icon svg={starsSVG} /></IconButton>
+<IconButton><Icon svg={{ content: starsSVG }} /></IconButton>
 ~~~
 
 Or even:
@@ -52,7 +52,7 @@ import { renderer as h, IconButton } from "polythene-react"
 const starsSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>"
 
 h(IconButton, {
-  icon: { svg: h.trust(starsSVG) }
+  icon: { svg: { content: h.trust(starsSVG) } }
 })
 ~~~
 
@@ -66,7 +66,7 @@ import { renderer as h, Icon, IconButton, SVG } from "polythene-react"
 const starsSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>"
 
 const StarIcon = h(Icon,
-  h(SVG, m.trust(starsSVG))
+  h(SVG, { content: h.trust(starsSVG) })
 )
 
 h(IconButton, StarIcon)
@@ -87,14 +87,14 @@ Pass [Button](../button.md) options to change the behaviour and appearance - see
 Disable hover and ripple effects:
 
 ~~~jsx
-<IconButton icon={{svg: starsSVG}} wash={false} ink={false} />
+<IconButton icon={{ svg: { content: starsSVG } }} wash={false} ink={false} />
 ~~~
 
 or with hyperscript:
 
 ~~~javascript
 h(IconButton, {
-  icon: { svg: m.trust(starsSVG) },
+  icon: { svg: { content: h.trust(starsSVG) } },
   wash: false,
   ink: false
 })
@@ -103,7 +103,7 @@ h(IconButton, {
 Alternatively, use `inactive`:
 
 ~~~jsx
-<IconButton icon={{svg: starsSVG}} inactive />
+<IconButton icon={{ svg: { content: starsSVG } }} inactive />
 ~~~
 
 ### Size
@@ -111,7 +111,7 @@ Alternatively, use `inactive`:
 `compact` reduces the button padding:
 
 ~~~jsx
-<IconButton icon={{svg: starsSVG}} compact />
+<IconButton icon={{ svg: { content: starsSVG } }} compact />
 ~~~
 
 ### Styling
@@ -132,7 +132,7 @@ IconButtonCSS.addStyle(".themed-icon-button", {
   color_light:            "white"
 })
 
-<IconButton icon={{svg: starsSVG}} className="themed-icon-button" />
+<IconButton icon={{ svg: { content: starsSVG } }} className="themed-icon-button" />
 ~~~
 
 #### CSS
@@ -158,7 +158,7 @@ The icon color is set with the CSS (text) `color` attribute of the parent elemen
 Some style attributes can be set using option `style`. For example:
 
 ~~~jsx
-<FAB icon={{svg: starsSVG}} style={{ color: "#FFCCBC", backgroundColor: "#4E342E" }} />
+<FAB icon={{ svg: { content: starsSVG } }} style={{ color: "#FFCCBC", backgroundColor: "#4E342E" }} />
 ~~~
 
 ### Dark or light tone

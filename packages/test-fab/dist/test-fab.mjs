@@ -139,7 +139,7 @@ var mithrilTests = function mithrilTests(_ref) {
     component: FAB$$1,
     attrs: {
       icon: {
-        svg: trustedIconAlarm
+        svg: { content: trustedIconAlarm }
       },
       url: {
         href: "/shadow",
@@ -155,11 +155,11 @@ var mithrilTests = function mithrilTests(_ref) {
           style: { background: "#fff", padding: "10px" }
         }, [h(FAB$$1, {
           icon: {
-            svg: trustedIconAlarm
+            svg: { content: trustedIconAlarm }
           }
         }), h(FAB$$1, {
           icon: {
-            svg: trustedIconAlarm
+            svg: { content: trustedIconAlarm }
           },
           className: "tests-fab-themed-fab"
         })]);
@@ -174,12 +174,12 @@ var mithrilTests = function mithrilTests(_ref) {
           style: { background: "#fff", padding: "10px" }
         }, [h(FAB$$1, {
           icon: {
-            svg: trustedIconAlarm
+            svg: { content: trustedIconAlarm }
           },
           tint: "light"
         }), h(FAB$$1, {
           icon: {
-            svg: trustedIconAlarm
+            svg: { content: trustedIconAlarm }
           },
           className: "tests-fab-themed-fab",
           tint: "light"
@@ -4199,7 +4199,7 @@ var React_1 = React$1;
 var react = React_1;
 
 function unwrapExports (x) {
-	return x && x.__esModule ? x['default'] : x;
+	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
 }
 
 function createCommonjsModule(fn, module) {
@@ -7200,7 +7200,7 @@ var reactTests = function reactTests(_ref) {
       var history = _ref2.history;
       return h(FAB$$1, {
         icon: {
-          svg: trustedIconAlarm
+          svg: { content: trustedIconAlarm }
         },
         url: {
           href: "/shadow",
@@ -7218,11 +7218,11 @@ var reactTests = function reactTests(_ref) {
         style: { background: "#fff", padding: "10px" }
       }, [h(FAB$$1, {
         icon: {
-          svg: trustedIconAlarm
+          svg: { content: trustedIconAlarm }
         }
       }), h(FAB$$1, {
         icon: {
-          svg: trustedIconAlarm
+          svg: { content: trustedIconAlarm }
         },
         className: "tests-fab-themed-fab"
       })]);
@@ -7235,12 +7235,12 @@ var reactTests = function reactTests(_ref) {
         style: { background: "#fff", padding: "10px" }
       }, [h(FAB$$1, {
         icon: {
-          svg: trustedIconAlarm
+          svg: { content: trustedIconAlarm }
         },
         tint: "light"
       }), h(FAB$$1, {
         icon: {
-          svg: trustedIconAlarm
+          svg: { content: trustedIconAlarm }
         },
         className: "tests-fab-themed-fab",
         tint: "light"
@@ -7251,7 +7251,7 @@ var reactTests = function reactTests(_ref) {
   }, {
     name: "Option: icon as attribute (JSX)",
     component: function component() {
-      return react.createElement(FAB$$1, { icon: { svg: iconAlarmSVG }, mini: true });
+      return react.createElement(FAB$$1, { icon: { svg: { content: iconAlarmSVG } }, mini: true });
     }
   }, {
     name: "Option: icon as component (JSX)",
@@ -7273,12 +7273,12 @@ var reactTests = function reactTests(_ref) {
   }, {
     name: "Option: z (5) (JSX)",
     component: function component() {
-      return react.createElement(FAB$$1, { mini: true, icon: { svg: iconAlarmSVG }, z: 5 });
+      return react.createElement(FAB$$1, { mini: true, icon: { svg: { content: iconAlarmSVG } }, z: 5 });
     }
   }, {
     name: "Option: style (JSX)",
     component: function component() {
-      return react.createElement(FAB$$1, { icon: { svg: iconAlarmSVG }, style: { color: "#ef6c00", backgroundColor: "#fff" } });
+      return react.createElement(FAB$$1, { icon: { svg: { content: iconAlarmSVG } }, style: { color: "#ef6c00", backgroundColor: "#fff" } });
     }
   }, {
     name: "With router (JSX)",
@@ -7286,7 +7286,7 @@ var reactTests = function reactTests(_ref) {
     component: withRouter(function (_ref3) {
       var history = _ref3.history;
       return react.createElement(FAB$$1, {
-        icon: { svg: iconAlarmSVG },
+        icon: { svg: { content: iconAlarmSVG } },
         url: {
           href: "/shadow",
           onClick: function onClick(e) {
