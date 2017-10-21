@@ -2,6 +2,12 @@
 
 ## Pre release
 
+### 1.0.0-rc.9
+
+Bug fixes.
+
+
+
 ### 1.0.0-rc.8
 
 Updated for React 16.
@@ -13,7 +19,7 @@ Changes to components:
 * Icon
   * Option `svg` must now use option `content` as well 
 
-Various bug fixes (thanks sjungwirth!)
+Various bug fixes (thanks sjungwirth!).
 
 
 ### 1.0.0-rc.7

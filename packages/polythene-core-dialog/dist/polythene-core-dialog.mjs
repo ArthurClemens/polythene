@@ -139,7 +139,8 @@ var createContent = function createContent(vnode, _ref2) {
     footer: attrs.footer,
     footerButtons: attrs.footerButtons,
     className: attrs.className,
-    style: attrs.style
+    style: attrs.style,
+    fullBleed: attrs.fullBleed
   });
   return h("div", {
     className: [classes$1.content, attrs.menu ? classes$1.menuContent : null].join(" "),

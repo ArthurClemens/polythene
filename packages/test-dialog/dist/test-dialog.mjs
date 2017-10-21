@@ -546,7 +546,7 @@ var genericTests = (function (_ref) {
       }
     }
   }, {
-    name: "Option: Toolbar as custom header and footer",
+    name: "Option: Toolbar as custom header and footer, fullBleed body",
     interactive: true,
     exclude: true,
     component: {
@@ -558,6 +558,7 @@ var genericTests = (function (_ref) {
             className: "tests-dialog-themed-toolbar"
           }),
           body: "Body",
+          fullBleed: true,
           footer: h(Toolbar$$1, {
             content: [h(ToolbarTitle$$1, { key: "footer", text: "Footer" })],
             tone: "dark",

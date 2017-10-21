@@ -132,7 +132,8 @@ export const createContent = (vnode, { renderer: h, Shadow, DialogPane }) => {
         footer: attrs.footer,
         footerButtons: attrs.footerButtons,
         className: attrs.className,
-        style: attrs.style
+        style: attrs.style,
+        fullBleed: attrs.fullBleed
       }
     );
   return h("div",
