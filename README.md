@@ -32,9 +32,10 @@ Version: `1.0.0-rc.8` (release candidate 8)
 * [Getting started with Mithril](docs/getting-started-mithril.md)
 * [Getting started with React](docs/getting-started-react.md)
 
-### Boilerplate
+### Setup examples
 
-* [Minimal setup example how to create a Polythene app for Mithril](https://github.com/ArthurClemens/polythene-mithril-setup)
+* [polythene-mithril-setup](https://github.com/ArthurClemens/polythene-mithril-setup)
+* [polythene-react-setup](https://github.com/ArthurClemens/polythene-react-setup)
 
 
 ## Guides
